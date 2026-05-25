@@ -29,98 +29,10 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { useYearRanges, generateYearRange } from "@/lib/useYearRanges";
+import { squarify, layoutGroups, type TreemapItem as TreemapItemBase } from "@/lib/treemapLayout";
 
-interface Rect {
-  x: number;
-  y: number;
-  width: number;
-  height: number;
-}
-
-interface TreemapItem {
-  value: number;
-  data: Entity;
-}
-
-const GAP = 0.15;
-
-function squarify(
-  items: TreemapItem[],
-  x: number,
-  y: number,
-  width: number,
-  height: number
-): (Rect & { data: Entity })[] {
-  const total = items.reduce((sum, item) => sum + item.value, 0);
-  if (total === 0 || items.length === 0) return [];
-
-  const normalized = items.map((item) => ({
-    ...item,
-    normalizedValue: (item.value / total) * width * height,
-  }));
-
-  return slice(normalized, x, y, width, height);
-}
-
-function slice(
-  items: (TreemapItem & { normalizedValue: number })[],
-  x: number,
-  y: number,
-  width: number,
-  height: number
-): (Rect & { data: Entity })[] {
-  if (items.length === 0) return [];
-  if (items.length === 1) {
-    return [{ x, y, width, height, data: items[0].data }];
-  }
-
-  const total = items.reduce((sum, item) => sum + item.normalizedValue, 0);
-
-  let sum = 0;
-  let splitIndex = 0;
-  for (let i = 0; i < items.length; i++) {
-    sum += items[i].normalizedValue;
-    if (sum >= total / 2) {
-      splitIndex = i + 1;
-      break;
-    }
-  }
-  splitIndex = Math.max(1, Math.min(splitIndex, items.length - 1));
-
-  const leftItems = items.slice(0, splitIndex);
-  const rightItems = items.slice(splitIndex);
-
-  const leftSum = leftItems.reduce(
-    (sum, item) => sum + item.normalizedValue,
-    0
-  );
-
-  if (width >= height) {
-    const leftWidth = width * (leftSum / total) - GAP / 2;
-    return [
-      ...slice(leftItems, x, y, leftWidth, height),
-      ...slice(
-        rightItems,
-        x + leftWidth + GAP,
-        y,
-        width - leftWidth - GAP,
-        height
-      ),
-    ];
-  } else {
-    const leftHeight = height * (leftSum / total) - GAP / 2;
-    return [
-      ...slice(leftItems, x, y, width, leftHeight),
-      ...slice(
-        rightItems,
-        x,
-        y + leftHeight + GAP,
-        width,
-        height - leftHeight - GAP
-      ),
-    ];
-  }
-}
+// Treemap layout extracted to a shared module (see src/lib/treemapLayout.ts).
+type TreemapItem = TreemapItemBase<Entity>;
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -560,32 +472,15 @@ export function EntitiesTreemap() {
     );
   }
 
-  const totalBudget = sortedGroups.reduce(
-    (sum, [, items]) => sum + items.reduce((s, item) => s + item.value, 0),
-    0
+  // Group layout (full-width rows for big groups, nested corner block for small
+  // ones) is shared with SecretariatTreemap via layoutGroups.
+  const itemsByGroup = Object.fromEntries(sortedGroups);
+  const groupRects = layoutGroups(
+    sortedGroups.map(([key, items]) => ({
+      key,
+      total: items.reduce((s, item) => s + item.value, 0),
+    }))
   );
-
-  const MIN_HEIGHT_THRESHOLD = 5;
-  const { regularGroups, smallGroups } = sortedGroups.reduce<{
-    regularGroups: Array<[string, TreemapItem[]]>;
-    smallGroups: Array<[string, TreemapItem[]]>;
-  }>(
-    (acc, [groupKey, groupItems]) => {
-      const groupTotal = groupItems.reduce((sum, item) => sum + item.value, 0);
-      const groupHeight = (groupTotal / totalBudget) * 100;
-
-      if (groupHeight < MIN_HEIGHT_THRESHOLD) {
-        acc.smallGroups.push([groupKey, groupItems]);
-      } else {
-        acc.regularGroups.push([groupKey, groupItems]);
-      }
-      return acc;
-    },
-    { regularGroups: [], smallGroups: [] }
-  );
-
-  const groupSpacing = GAP;
-  let currentY = 0;
 
   const renderEntities = (
     groupKey: string,
@@ -725,69 +620,16 @@ export function EntitiesTreemap() {
 
       {/* Treemap */}
       <div className="relative h-[650px] w-full bg-gray-100">
-        {regularGroups.slice(0, -1).map(([groupKey, groupItems]) => {
-          const groupTotal = groupItems.reduce(
-            (sum, item) => sum + item.value,
-            0
-          );
-          const groupHeight = (groupTotal / totalBudget) * 100 - groupSpacing;
-          const elements = renderEntities(
-            groupKey,
-            groupItems,
-            0,
-            currentY,
-            100,
-            groupHeight
-          );
-          currentY += groupHeight + groupSpacing;
-          return elements;
-        })}
-
-        {regularGroups.length > 0 &&
-          (() => {
-            const lastRowGroups = [...regularGroups.slice(-1), ...smallGroups];
-            const lastRowTotal = lastRowGroups.reduce(
-              (sum, [, items]) =>
-                sum + items.reduce((s, item) => s + item.value, 0),
-              0
-            );
-            const lastRowHeight =
-              (lastRowTotal / totalBudget) * 100 - groupSpacing;
-
-            const groupTreemapItems = lastRowGroups.map(
-              ([groupKey, items]) => ({
-                groupKey,
-                value: items.reduce((sum, item) => sum + item.value, 0),
-                items,
-              })
-            );
-
-            const groupRects = squarify(
-              groupTreemapItems.map((g) => ({
-                value: g.value,
-                data: {
-                  entity: g.groupKey,
-                  system_grouping: g.groupKey,
-                } as Entity,
-              })),
-              0,
-              currentY,
-              100,
-              lastRowHeight
-            );
-
-            return groupRects.flatMap((groupRect, idx) => {
-              const { groupKey, items } = groupTreemapItems[idx];
-              return renderEntities(
-                groupKey,
-                items,
-                groupRect.x,
-                groupRect.y,
-                groupRect.width,
-                groupRect.height
-              );
-            });
-          })()}
+        {groupRects.flatMap((gr) =>
+          renderEntities(
+            gr.key,
+            itemsByGroup[gr.key] || [],
+            gr.x,
+            gr.y,
+            gr.width,
+            gr.height
+          )
+        )}
       </div>
 
       {/* Legend */}

@@ -22,6 +22,7 @@ def generate_manifest():
         "entitySpending": {"years": detect_years("entity-spending"), "default": 2023 if FUSE_SECRETARIAT else "latest", "fusionYears": FUSION_YEARS },
         "countryExpenses": {"years": detect_years("country-expenses"), "default": "latest"},
         "sdgExpenses": {"years": detect_years("sdg-expenses"), "default": "latest"},
+        "secretariat": {"years": detect_years("secretariat"), "default": "latest"},
     }
     
     # Add min/max for convenience

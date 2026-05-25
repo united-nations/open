@@ -17,6 +17,7 @@ interface YearRanges {
   entitySpending: YearRange & { fusionYears?: number[] };
   countryExpenses: YearRange;
   sdgExpenses: YearRange;
+  secretariat: YearRange;
 }
 
 const YEAR_RANGES = manifest as YearRanges;
