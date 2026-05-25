@@ -1,3 +1,8 @@
+# Feature flag: fuse UN Secretariat sub-entity data into CEB expenses (steps 06 & 99).
+# Set to False to temporarily produce CEB-only expenses (keeps the UN/UN-DPO
+# aggregates, drops the ~150 Secretariat sub-entities). Re-run python/06, 07, 99.
+FUSE_SECRETARIAT = False
+
 ENTITY_MAPPING = {
     "UN-HABITAT": "UN-Habitat", "UNHABITAT": "UN-Habitat",
     "UNWOMEN": "UN Women", "UN-Women": "UN Women", "UNWTO": "UN Tourism",

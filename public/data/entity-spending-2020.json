@@ -1,225 +1,15 @@
 [
   {
-    "entity": "ACABQ",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 5220146.0
-  },
-  {
-    "entity": "AMISOM",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 15924565.0
-  },
-  {
-    "entity": "ASM-AQMT",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 5909357.0
-  },
-  {
-    "entity": "BINUH",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 20036530.0
-  },
-  {
-    "entity": "BOA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 3489880.0
-  },
-  {
-    "entity": "CEB",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1145603.0
-  },
-  {
-    "entity": "CMP-CYPRUS",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 441450.0
-  },
-  {
-    "entity": "CNMC",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 4211000.0
-  },
-  {
-    "entity": "COC",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 36407.0
-  },
-  {
-    "entity": "CONS",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 72693614.0
-  },
-  {
-    "entity": "CPC",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 20597.0
-  },
-  {
     "entity": "CTBTO",
     "source": "ceb",
     "year": 2020,
     "amount": 113298823.0
   },
   {
-    "entity": "CTED",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 10795582.0
-  },
-  {
-    "entity": "DCO",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 207882871.0
-  },
-  {
-    "entity": "DESA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 120452260.0
-  },
-  {
-    "entity": "DEV-ACCT",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 14199400.0
-  },
-  {
-    "entity": "DGACM",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 323495888.0
-  },
-  {
-    "entity": "DGC",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 100899851.0
-  },
-  {
-    "entity": "DHIP",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 48093.0
-  },
-  {
-    "entity": "DMSPC",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 141962696.0
-  },
-  {
-    "entity": "DOS",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 191853368.0
-  },
-  {
-    "entity": "DPO",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 105081624.0
-  },
-  {
-    "entity": "DPPA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 81116726.0
-  },
-  {
-    "entity": "DSS",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 124763564.0
-  },
-  {
-    "entity": "ECA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 95188982.0
-  },
-  {
-    "entity": "ECCC",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 7000000.0
-  },
-  {
-    "entity": "ECE",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 50898169.0
-  },
-  {
-    "entity": "ECLAC",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 69720859.0
-  },
-  {
-    "entity": "EO",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 3120950.0
-  },
-  {
-    "entity": "EOSG",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 34552790.0
-  },
-  {
-    "entity": "ESCAP",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 73820341.0
-  },
-  {
-    "entity": "ESCWA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 44490650.0
-  },
-  {
     "entity": "FAO",
     "source": "ceb",
     "year": 2020,
     "amount": 1550512909.636166
-  },
-  {
-    "entity": "GA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1902458.0
-  },
-  {
-    "entity": "GoE-DRC",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1286010.0
-  },
-  {
-    "entity": "HSU",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 9098269.0
-  },
-  {
-    "entity": "IAAC",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 383032.0
   },
   {
     "entity": "IAEA",
@@ -246,34 +36,10 @@
     "amount": 191354716.5358
   },
   {
-    "entity": "ICJ",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 25740652.0
-  },
-  {
-    "entity": "ICSC",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 3425453.0
-  },
-  {
     "entity": "IFAD",
     "source": "ceb",
     "year": 2020,
     "amount": 190620000.0
-  },
-  {
-    "entity": "IIIM",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 18307266.0
-  },
-  {
-    "entity": "IIMM",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 10819610.0
   },
   {
     "entity": "ILO",
@@ -312,238 +78,10 @@
     "amount": 246469593.47799236
   },
   {
-    "entity": "JIU",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 2028703.0
-  },
-  {
-    "entity": "JPO",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 42681600.0
-  },
-  {
-    "entity": "MICT",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 85776068.0
-  },
-  {
-    "entity": "MINUJUSTH",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 38694400.0
-  },
-  {
-    "entity": "MINURSO",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 55734000.0
-  },
-  {
-    "entity": "MINUSCA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 896283590.0
-  },
-  {
-    "entity": "MINUSMA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1147842482.0
-  },
-  {
-    "entity": "MONUSCO",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1036086567.0
-  },
-  {
-    "entity": "MPTF-CVD",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 62926199.0
-  },
-  {
-    "entity": "MPTF-HTI",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 4104154.0
-  },
-  {
-    "entity": "MPTF-PBF",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 156369960.0
-  },
-  {
-    "entity": "OAJ",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 10089208.0
-  },
-  {
-    "entity": "OCHA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1978315407.0
-  },
-  {
-    "entity": "OCT",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 35780921.0
-  },
-  {
-    "entity": "ODA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 23390203.0
-  },
-  {
-    "entity": "ODET",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1218508.0
-  },
-  {
-    "entity": "OHCHR",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 297735994.0
-  },
-  {
-    "entity": "OICT",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 70682488.0
-  },
-  {
-    "entity": "OIOS",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 49749423.0
-  },
-  {
-    "entity": "OJSRS",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 15516902.0
-  },
-  {
-    "entity": "OLA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 28602205.0
-  },
-  {
-    "entity": "OMBUD",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 5826660.0
-  },
-  {
-    "entity": "OMBUD-RES1904",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 557849.0
-  },
-  {
-    "entity": "OOSA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 4875605.0
-  },
-  {
     "entity": "OPCW",
     "source": "ceb",
     "year": 2020,
     "amount": 88600299.39
-  },
-  {
-    "entity": "OPGA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1354547.0
-  },
-  {
-    "entity": "OSAA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 5726740.0
-  },
-  {
-    "entity": "OSESG-FG",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 7200836.0
-  },
-  {
-    "entity": "OSESG-GL",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 4352653.0
-  },
-  {
-    "entity": "OSESG-Horn",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1429234.0
-  },
-  {
-    "entity": "OSESG-Myanmar",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 937165.0
-  },
-  {
-    "entity": "OSESG-SCRES1559",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 341941.0
-  },
-  {
-    "entity": "OSESG-Yemen",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 18049454.0
-  },
-  {
-    "entity": "OSLA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 182700.0
-  },
-  {
-    "entity": "OSRSG Migration",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": -2989.0
-  },
-  {
-    "entity": "OSRSG-CAAC",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 3014732.0
-  },
-  {
-    "entity": "OSRSG-SVC",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 3526808.0
-  },
-  {
-    "entity": "OSRSG-VAC",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 2288608.0
-  },
-  {
-    "entity": "OTHER",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 9770773.0
   },
   {
     "entity": "PAHO",
@@ -552,112 +90,10 @@
     "amount": 1182006000.0
   },
   {
-    "entity": "PESG-WS",
-    "source": "secretariat",
+    "entity": "UN",
+    "source": "ceb",
     "year": 2020,
-    "amount": 9630.0
-  },
-  {
-    "entity": "POE-DPRK",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 2783674.0
-  },
-  {
-    "entity": "POE-MALI",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1045851.0
-  },
-  {
-    "entity": "POE-SOMALIA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1752336.0
-  },
-  {
-    "entity": "PoE-CAR",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1170365.0
-  },
-  {
-    "entity": "PoE-Libya",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1299637.0
-  },
-  {
-    "entity": "PoE-S.Sudan",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1164680.0
-  },
-  {
-    "entity": "PoE-Sudan",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1054769.0
-  },
-  {
-    "entity": "PoE-Yemen",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 2077258.0
-  },
-  {
-    "entity": "RSCE",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 36800300.0
-  },
-  {
-    "entity": "RSCSL",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 2410114.0
-  },
-  {
-    "entity": "SASG-Cyp",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 2469215.0
-  },
-  {
-    "entity": "SASG-PGENOCIDE",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1698928.0
-  },
-  {
-    "entity": "SC-RES1540",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 2874671.0
-  },
-  {
-    "entity": "SC-RES2231",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1661383.0
-  },
-  {
-    "entity": "STA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 261827180.0
-  },
-  {
-    "entity": "SWEO",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 18830.0
-  },
-  {
-    "entity": "Special Expenses",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 80657246.0
+    "amount": 6478738801.84
   },
   {
     "entity": "UN Tourism",
@@ -669,19 +105,19 @@
     "entity": "UN Women",
     "source": "ceb",
     "year": 2020,
-    "amount": 449202094.091
+    "amount": 439509965.091
+  },
+  {
+    "entity": "UN-DPO",
+    "source": "ceb",
+    "year": 2020,
+    "amount": 7336866635.97
   },
   {
     "entity": "UN-Habitat",
     "source": "ceb",
     "year": 2020,
-    "amount": 298022009.86
-  },
-  {
-    "entity": "UN-OHRLLS",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 5889644.0
+    "amount": 149389094.86
   },
   {
     "entity": "UNAIDS",
@@ -690,52 +126,10 @@
     "amount": 191535514.0
   },
   {
-    "entity": "UNAKRT",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 10732439.0
-  },
-  {
-    "entity": "UNAMA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 135324776.0
-  },
-  {
-    "entity": "UNAMI",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 103812754.0
-  },
-  {
-    "entity": "UNAMID",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 509718766.0
-  },
-  {
-    "entity": "UNAOC",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 3658832.0
-  },
-  {
     "entity": "UNCDF",
     "source": "ceb",
     "year": 2020,
     "amount": 81669567.71
-  },
-  {
-    "entity": "UNCTAD",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 100385534.0
-  },
-  {
-    "entity": "UNDOF",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 60927100.0
   },
   {
     "entity": "UNDP",
@@ -744,16 +138,10 @@
     "amount": 5021893659.49
   },
   {
-    "entity": "UNDRR",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 28234561.0
-  },
-  {
     "entity": "UNEP",
     "source": "ceb",
     "year": 2020,
-    "amount": 512980362.76
+    "amount": 491138909.76
   },
   {
     "entity": "UNESCO",
@@ -768,22 +156,10 @@
     "amount": 73229083.0
   },
   {
-    "entity": "UNFICYP",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 49393840.0
-  },
-  {
     "entity": "UNFPA",
     "source": "ceb",
     "year": 2020,
     "amount": 1228101620.4160986
-  },
-  {
-    "entity": "UNGC",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 5877992.0
   },
   {
     "entity": "UNHCR",
@@ -798,40 +174,10 @@
     "amount": 6283252271.64
   },
   {
-    "entity": "UNIDIR",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 6044685.0
-  },
-  {
     "entity": "UNIDO",
     "source": "ceb",
     "year": 2020,
     "amount": 284549906.826211
-  },
-  {
-    "entity": "UNIFIL",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 479886100.0
-  },
-  {
-    "entity": "UNIOGBIS",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 15577713.0
-  },
-  {
-    "entity": "UNISFA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 259010300.0
-  },
-  {
-    "entity": "UNITAD",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 28242230.0
   },
   {
     "entity": "UNITAID",
@@ -840,94 +186,16 @@
     "amount": 257250000.0
   },
   {
-    "entity": "UNITAMS",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1427933.0
-  },
-  {
     "entity": "UNITAR",
     "source": "ceb",
     "year": 2020,
     "amount": 34679033.48
   },
   {
-    "entity": "UNJSPB",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 4867521.0
-  },
-  {
-    "entity": "UNLB",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 63266500.0
-  },
-  {
-    "entity": "UNMAS",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 60055436.0
-  },
-  {
-    "entity": "UNMHA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 46716574.0
-  },
-  {
-    "entity": "UNMIK",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 37239895.0
-  },
-  {
-    "entity": "UNMISS",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1182647334.0
-  },
-  {
-    "entity": "UNMOGIP",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 9851178.0
-  },
-  {
-    "entity": "UNOAU",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 9583638.0
-  },
-  {
-    "entity": "UNOCA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 7166615.0
-  },
-  {
     "entity": "UNODC",
     "source": "ceb",
     "year": 2020,
-    "amount": 355685889.38
-  },
-  {
-    "entity": "UNOG",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 79807480.0
-  },
-  {
-    "entity": "UNON",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 20761248.0
-  },
-  {
-    "entity": "UNOP",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 16865019.0
+    "amount": 333101185.38
   },
   {
     "entity": "UNOPS",
@@ -936,94 +204,16 @@
     "amount": 1140724892.04941
   },
   {
-    "entity": "UNOV",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 19036022.0
-  },
-  {
-    "entity": "UNOWAS",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 12408085.0
-  },
-  {
-    "entity": "UNRCCA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 2861998.0
-  },
-  {
-    "entity": "UNRGID",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 1649075.0
-  },
-  {
-    "entity": "UNRISD",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 2401420.0
-  },
-  {
-    "entity": "UNROD",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 2804869.0
-  },
-  {
     "entity": "UNRWA",
     "source": "ceb",
     "year": 2020,
     "amount": 1127619220.4
   },
   {
-    "entity": "UNRoD",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 119157.0
-  },
-  {
-    "entity": "UNSCO",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 8876880.0
-  },
-  {
-    "entity": "UNSCOL",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 8826867.0
-  },
-  {
-    "entity": "UNSMIL",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 71631396.0
-  },
-  {
-    "entity": "UNSOM",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 102082464.0
-  },
-  {
-    "entity": "UNSOS",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 522490200.0
-  },
-  {
     "entity": "UNSSC",
     "source": "ceb",
     "year": 2020,
     "amount": 11610875.0
-  },
-  {
-    "entity": "UNTSO",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 34814876.0
   },
   {
     "entity": "UNU",
@@ -1038,22 +228,10 @@
     "amount": 28952238.139999997
   },
   {
-    "entity": "UNVMC",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 59354756.0
-  },
-  {
     "entity": "UPU",
     "source": "ceb",
     "year": 2020,
     "amount": 95597653.449233
-  },
-  {
-    "entity": "VRA",
-    "source": "secretariat",
-    "year": 2020,
-    "amount": 824751.0
   },
   {
     "entity": "WFP",
