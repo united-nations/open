@@ -3,7 +3,6 @@ import type { Metadata, Viewport } from "next";
 import { Roboto } from "next/font/google";
 // Note: @undp/data-viz styles are bundled with the components
 import "./globals.css";
-import { Providers } from "./providers";
 
 // https://fonts.google.com/specimen/Roboto
 // 100 (Thin), 300 (Light), 400 (Regular), 500 (Medium), 700 (Bold), 800 (ExtraBold), 900 (Black)
@@ -47,7 +46,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${roboto.className} antialiased`}>
       <body>
-        <Providers>{children}</Providers>
+        {children}
         <GoogleAnalytics gaId="G-XYZ" />
       </body>
     </html>
