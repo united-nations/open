@@ -528,7 +528,7 @@ export default function Home() {
       <footer className="border-t border-gray-200 bg-white py-8">
         <div className="mx-auto max-w-6xl px-6 text-center text-sm text-gray-500 md:px-12 lg:px-16">
           <p>&copy; {new Date().getFullYear()} United Nations</p>
-          <a href="https://github.com/un-fck/open.unfck.org" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-xs text-gray-400 hover:text-gray-600">Open Source</a>
+          <a href="https://github.com/united-nations/transparency" target="_blank" rel="noopener noreferrer" className="mt-2 inline-block text-xs text-gray-400 hover:text-gray-600">Open Source</a>
         </div>
       </footer>
     </div>

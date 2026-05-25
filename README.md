@@ -1,6 +1,6 @@
 # UN Transparency Portal
 
-**[open.unfck.org](https://open.unfck.org)**
+**[open.un.org](https://open.un.org)**
 
 The UN Transparency Portal makes financial data from across the UN System accessible through interactive visualizations. Explore who contributes, which organizations receive funding, where resources are deployed, and which Sustainable Development Goals they support.
 

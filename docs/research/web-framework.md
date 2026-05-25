@@ -597,7 +597,7 @@ The open.un.org dashboards appear to use custom JavaScript visualizations. For N
 ### Project Structure Recommendation
 
 ```
-open.unfck.org/
+open.un.org/
 ├── public/
 │   └── data/                    # Processed JSON data files
 │       ├── revenue.json

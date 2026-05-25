@@ -13,7 +13,7 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://open.unfck.org"),
+  metadataBase: new URL("https://open.un.org"),
   title: "UN Transparency Portal",
   description:
     "The Transparency Portal at open.un.org provides access to financial information from across the UN System. Explore who contributes, which organizations are funded, where funds are spent, and towards which goals.",
