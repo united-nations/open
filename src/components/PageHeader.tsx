@@ -12,16 +12,23 @@ export function PageHeader() {
       >
         Skip to main content
       </a>
-      <div className="mx-auto flex max-w-6xl items-center gap-4 px-6 py-4 md:px-12 lg:px-16">
+      {/* Gap matches the logo's internal "United"–"Nations" word-space (22.83 viewBox
+          units = 18% of logo height), minus the title's left side-bearing, so
+          "United Nations Transparency Portal" reads as one phrase. Scales with logo:
+          h-12 → 8.06px, h-14 → 9.41px. */}
+      <div className="mx-auto flex max-w-6xl items-center gap-[8.06px] px-6 py-4 md:gap-[9.41px] md:px-12 lg:px-16">
         <Image
-          src={`${basePath}/images/UN_Logo_Stacked_Colour_English.svg`}
+          src={`${basePath}/images/UN_Logo_Horizontal_Colour_English.svg`}
           alt="United Nations"
-          width={60}
+          width={160}
           height={60}
           className="h-12 w-auto select-none md:h-14"
           draggable={false}
         />
-        <h1 className="text-2xl font-bold tracking-tight text-gray-900 md:text-3xl">
+        {/* Sized & baseline-aligned to the logo's "United Nations" wordmark:
+            cap-height = 53.75/126.89 of the logo height, so font-size = 0.596 × logo height
+            (h-12 → 28.6px, h-14 → 33.37px). leading-none + items-center aligns the baseline. */}
+        <h1 className="text-[28.6px] font-light leading-none tracking-tight text-gray-900 md:text-[33.37px]">
           Transparency Portal
         </h1>
       </div>
