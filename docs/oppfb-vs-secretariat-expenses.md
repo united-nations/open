@@ -191,6 +191,39 @@ management" with DPO's and DGC's into one meaningless bucket spanning 30 section
 **Rule: join on functional area, key aggregates on `(section, entity, subprogramme)`, and treat the
 subprogramme name as a label scoped to its entity — never as a standalone dimension.**
 
+### Subprogramme does not — and cannot — reach voluntary money
+
+**OPPFB contains no voluntary / extrabudgetary spending at all.** Every column of every sheet was
+searched for voluntary/XB/trust-fund markers; the only hits are false positives ("Committee on
+*Contributions*", the organ that sets assessment rates; and "145. Grants and *contributions*", an
+object of expenditure — money paid *out*). `FUND` has exactly one value, `10UNA` (the Regular Budget
+fund), and every funding code is an **Appropriation** (`APRO 1/2`) or a **Commitment Authority**
+(`CA GA/SG …`) — both assessed instruments authorised by the General Assembly.
+
+This is not an artefact of these extracts. Subprogrammes are the *programme-of-work architecture the
+GA approves for the assessed budget*. Voluntary money is governed per trust fund and per donor
+agreement, so it is not organised into subprogrammes in the first place.
+
+The voluntary pillar therefore lives **only in the CSV** — $22.15bn over 2019–2023, 815 rows, across
+84 entities / 32 sections / 9 priority areas. Its fine grain is not subprogramme but the **trust fund
+name in `NOTE`** (175 distinct: "MPTF - Peacebuilding Fund", "Trust Fund in Support of AMISOM", …),
+present on 98% of rows and covering 74% of voluntary money. Top voluntary entities: OCHA ($10.1bn),
+UNEP ($2.9bn), UNODC ($1.8bn), OHCHR ($1.1bn).
+
+**Trust fund is to voluntary what subprogramme is to the Regular Budget.** The two pillars have
+different, non-interchangeable internal structures and there is no bridge between them:
+
+| | Regular Budget | Voluntary |
+|---|---|---|
+| Source | OPPFB (+ CSV) | CSV only |
+| Fine grain | subprogramme (2025–26 only, non-SPM) | trust fund (`NOTE`, 2019–23) |
+| Object of expenditure | yes | no |
+| Monthly | yes | no |
+
+⚠️ **Consequence for the portal:** any subprogramme view is inherently a *Regular-Budget-only* view
+covering ~22% of Secretariat spending, and must be labelled as such. A "subprogramme breakdown" that
+silently omits OCHA's $10bn of voluntary spending would badly mislead.
+
 ## 7. What this means for the portal
 
 1. **OPPFB is safe to trust.** The exact section-level tie-out to the known-reliable CSV is strong
