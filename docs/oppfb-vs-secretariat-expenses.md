@@ -115,7 +115,39 @@ booked after the earlier extract was cut, plus BIP carrying `Others`/`SPM` rows 
 differently. **Prefer BIP for 2025.** Note BIP flattens SPMs into a single `SPM` type, losing the
 cluster breakdown, so the two are complementary rather than one strictly dominating.
 
-## 6. What this means for the portal
+## 6. Subprogramme: absent from both expenditure datasets, but recoverable for 2025
+
+Neither actuals dataset carries a subprogramme column. The CSV's finest grain is
+section × entity × priority area; `Appropriation and Expenditure.xlsx` stops at
+section × entity × object of expenditure. For **2019–2024 there is no subprogramme breakdown at
+all**.
+
+Two OPPFB files change this for 2025–2026:
+
+- **`Approved budget 2026`** has `SUBPROGRAMME` explicitly — 231 of them, with a dedicated
+  `Summary by subprogramme` sheet. Budget only, 2026 only, no actuals.
+- **BIP** has no subprogramme column, but it does have **`Functional area`** (393 values) — and the
+  2026 file carries *both* `FUNCTIONAL_AREA` and `SUBPROGRAMME`, so it **is a crosswalk**.
+
+The crosswalk is clean: of 325 functional areas in the 2026 file, **zero map to more than one
+subprogramme**. Applying it to the 2025 BIP actuals:
+
+| Entity type | Mapped to a subprogramme | Unmapped |
+|---|---|---|
+| Non-SPM | **$2,788.5m (100.0%)** | $0.9m |
+| SPM | — | $706.4m |
+
+The unmapped remainder is *entirely* Special Political Missions, and that is by design rather than a
+gap: the 2026 file assigns every SPM a single placeholder subprogramme (`SPM`), because SPMs are not
+structured into subprogrammes.
+
+**So subprogramme-level actuals are obtainable for 2025 Regular Budget (non-SPM)** by joining BIP's
+functional area to the 2026 crosswalk — a dimension the CSV cannot produce for any year. Caveat: this
+applies a 2026 structure to 2025 actuals. That essentially every non-SPM functional area matched
+suggests the structure was stable across the two years, but it is an assumption, and it does **not**
+extend back to 2019–2024.
+
+## 7. What this means for the portal
 
 1. **OPPFB is safe to trust.** The exact section-level tie-out to the known-reliable CSV is strong
    validation of both.
