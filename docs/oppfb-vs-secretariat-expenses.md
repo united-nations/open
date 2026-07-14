@@ -115,12 +115,13 @@ booked after the earlier extract was cut, plus BIP carrying `Others`/`SPM` rows 
 differently. **Prefer BIP for 2025.** Note BIP flattens SPMs into a single `SPM` type, losing the
 cluster breakdown, so the two are complementary rather than one strictly dominating.
 
-## 6. Subprogramme: absent from both expenditure datasets, but recoverable for 2025
+## 6. Subprogramme: absent from both datasets, recoverable for RB 2025 — and for voluntary via the PPB
 
 Neither actuals dataset carries a subprogramme column. The CSV's finest grain is
 section × entity × priority area; `Appropriation and Expenditure.xlsx` stops at
-section × entity × object of expenditure. For **2019–2024 there is no subprogramme breakdown at
-all**.
+section × entity × object of expenditure. So for **2019–2024 neither dataset has a subprogramme
+breakdown** — though the PPB documents do publish one, for both regular budget *and* extrabudgetary
+resources; see the voluntary subsection below.
 
 Two OPPFB files change this for 2025–2026:
 
@@ -142,10 +143,10 @@ gap: the 2026 file assigns every SPM a single placeholder subprogramme (`SPM`), 
 structured into subprogrammes.
 
 **So subprogramme-level actuals are obtainable for 2025 Regular Budget (non-SPM)** by joining BIP's
-functional area to the 2026 crosswalk — a dimension the CSV cannot produce for any year. Caveat: this
+functional area to the 2026 crosswalk — a dimension the CSV does not carry for any year. Caveat: this
 applies a 2026 structure to 2025 actuals. That essentially every non-SPM functional area matched
 suggests the structure was stable across the two years, but it is an assumption, and it does **not**
-extend back to 2019–2024.
+extend back to 2019–2024 from the OPPFB data (for those years, the PPB documents are the route).
 
 ### How functional area maps to subprogramme
 
@@ -191,38 +192,67 @@ management" with DPO's and DGC's into one meaningless bucket spanning 30 section
 **Rule: join on functional area, key aggregates on `(section, entity, subprogramme)`, and treat the
 subprogramme name as a label scoped to its entity — never as a standalone dimension.**
 
-### Subprogramme does not — and cannot — reach voluntary money
+### Voluntary money *is* broken down by subprogramme — but only in the PPB documents
 
-**OPPFB contains no voluntary / extrabudgetary spending at all.** Every column of every sheet was
+**OPPFB itself contains no voluntary / extrabudgetary spending.** Every column of every sheet was
 searched for voluntary/XB/trust-fund markers; the only hits are false positives ("Committee on
 *Contributions*", the organ that sets assessment rates; and "145. Grants and *contributions*", an
 object of expenditure — money paid *out*). `FUND` has exactly one value, `10UNA` (the Regular Budget
 fund), and every funding code is an **Appropriation** (`APRO 1/2`) or a **Commitment Authority**
-(`CA GA/SG …`) — both assessed instruments authorised by the General Assembly.
+(`CA GA/SG …`) — both assessed instruments.
 
-This is not an artefact of these extracts. Subprogrammes are the *programme-of-work architecture the
-GA approves for the assessed budget*. Voluntary money is governed per trust fund and per donor
-agreement, so it is not organised into subprogrammes in the first place.
+**But that is a limit of these extracts, not of the subprogramme concept.** The proposed programme
+budget (PPB) documents *do* publish extrabudgetary resources by subprogramme. Every section document
+carries a table `X.17`, *"Overall: evolution of financial resources by source of funding, component
+and subprogramme"*, split into **(1) Regular budget** and **(2) Extrabudgetary** — both broken down by
+the same components, and both including prior-year **actual expenditure**.
 
-The voluntary pillar therefore lives **only in the CSV** — $22.15bn over 2019–2023, 815 rows, across
-84 entities / 32 sections / 9 priority areas. Its fine grain is not subprogramme but the **trust fund
-name in `NOTE`** (175 distinct: "MPTF - Peacebuilding Fund", "Trust Fund in Support of AMISOM", …),
-present on 98% of rows and covering 74% of voluntary money. Top voluntary entities: OCHA ($10.1bn),
-UNEP ($2.9bn), UNODC ($1.8bn), OHCHR ($1.1bn).
+The components in that table are exactly the component letters decoded from the functional-area codes
+above — the ERP coding scheme and the PPB table are the same architecture:
 
-**Trust fund is to voluntary what subprogramme is to the Regular Budget.** The two pillars have
-different, non-interchangeable internal structures and there is no bridge between them:
+| PPB table row | Functional-area letters |
+|---|---|
+| A. Policymaking organs | `AB` |
+| B. Executive direction and management | `AA` |
+| C. Programme of work (numbered subprogrammes) | `AC` |
+| D. Programme support | `AD` |
+
+#### ⚠️ The PPB's extrabudgetary figures do NOT reconcile with the CSV's voluntary figures
+
+Worked example — UNEP / Section 14 (Environment), 2023, from **A/79/6 Sect. 14, Table 14.17**:
+
+| Measure | PPB Table 14.17 | CSV | Match? |
+|---|---|---|---|
+| Regular budget expenditure | $20,859.7k | $20,859,739 (`REFERENCE = A/79/6`) | ✅ **exact** |
+| Extrabudgetary / voluntary expenditure | $587,760.7k | $671,941,000 (`REFERENCE = Financial Statement`) | ❌ **$84m apart (14%)** |
+
+This is a **provenance split**, and it explains the whole situation. The CSV sources its regular
+budget from the PPB (all 144 `A/79/6` rows are `Regular assessed`) but its voluntary from the
+**financial statements** (812 of 815 `Voluntary` rows). The PPB's "extrabudgetary" and the financial
+statements' "voluntary" are *different measurement bases*, not the same quantity at different grains.
+That is precisely why the subprogramme dimension was lost on the voluntary side.
+
+#### Implications
+
+- A voluntary-by-subprogramme breakdown **is obtainable** — from the PPB section documents, a source
+  the CSV already cites. It requires parsing table `X.17` from ~40 section PDFs per year.
+- It **cannot simply be bolted onto the CSV's voluntary totals**: the bases differ by ~14% for UNEP.
+  Either publish PPB extrabudgetary as its own series, or use the PPB subprogramme *shares* to
+  apportion the CSV total — an approximation that must be labelled as one.
+- Until then, the voluntary pillar in the CSV ($22.15bn over 2019–2023; 84 entities / 32 sections /
+  9 priority areas) has as its finest grain the **trust fund name in `NOTE`** (175 distinct: "MPTF -
+  Peacebuilding Fund", "Trust Fund in Support of AMISOM", …), on 98% of rows / 74% of the money. Top
+  voluntary entities: OCHA ($10.1bn), UNEP ($2.9bn), UNODC ($1.8bn), OHCHR ($1.1bn).
 
 | | Regular Budget | Voluntary |
 |---|---|---|
-| Source | OPPFB (+ CSV) | CSV only |
-| Fine grain | subprogramme (2025–26 only, non-SPM) | trust fund (`NOTE`, 2019–23) |
-| Object of expenditure | yes | no |
-| Monthly | yes | no |
+| Source in hand | OPPFB + CSV | CSV only |
+| Fine grain in hand | subprogramme (2025–26), object of expenditure, monthly | trust fund (`NOTE`, 2019–23) |
+| Subprogramme obtainable? | ✅ yes, already | ⚠️ yes, but only via PPB table `X.17` — and on a different basis |
 
-⚠️ **Consequence for the portal:** any subprogramme view is inherently a *Regular-Budget-only* view
-covering ~22% of Secretariat spending, and must be labelled as such. A "subprogramme breakdown" that
-silently omits OCHA's $10bn of voluntary spending would badly mislead.
+⚠️ **Consequence for the portal:** with the data currently in hand, any subprogramme view is a
+*Regular-Budget-only* view covering ~22% of Secretariat spending and must be labelled as such. A
+"subprogramme breakdown" that silently omits OCHA's $10bn of voluntary spending would badly mislead.
 
 ## 7. What this means for the portal
 
