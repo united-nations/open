@@ -147,6 +147,50 @@ applies a 2026 structure to 2025 actuals. That essentially every non-SPM functio
 suggests the structure was stable across the two years, but it is an assumption, and it does **not**
 extend back to 2019–2024.
 
+### How functional area maps to subprogramme
+
+**It is a lookup, not a formula.** Treat the functional area as an *opaque key* and join through the
+2026 table. The relation is **many-to-one** — 325 functional areas roll up onto 231 subprogramme
+labels (mean 1.38 FAs per subprogramme, max 34). Functional area is the finer grain.
+
+The code *does* have anatomy — `[section token][component letters][serial]` — and the component
+letters mirror the canonical four-part structure of every UN budget section:
+
+| Letters | Component |
+|---|---|
+| `AB` | Policymaking organs |
+| `AA` | Executive direction and management |
+| `AC` | **Programme of work** — the numbered subprogrammes (133 FAs, the substantive bulk) |
+| `AD` | Programme support |
+
+(plus `AT` staff assessment, `E*` Regular Programme of Technical Cooperation, `C*` construction /
+major maintenance). So `S9AC0008` reads as "section 9, programme of work, item 8" →
+*Subprogramme 8 Sustainable forest management*.
+
+**Use that anatomy only as a sanity check — never parse it.** Two reasons:
+
+- the serial does not reliably match the subprogramme number (`29ACI012` → *Subprogramme 4*, not 12);
+- the leading section token equals the actual budget section only **51%** of the time. `18AF0001` is
+  *Committee on Missing Persons in Cyprus*, which sits in section **24** (Human rights), not 18 —
+  the prefixes carry legacy numbering from before sections were renumbered.
+
+### ⚠️ `SUBPROGRAMME` is a label, not a unique key
+
+Generic labels are reused right across the Secretariat:
+
+| Label | Entities | Sections |
+|---|---|---|
+| Executive direction and management | **32** | 30 |
+| Programme support | 25 | 25 |
+| Policymaking organs | 13 | 13 |
+
+13 of the 230 labels are reused across more than one entity, and they carry **24.7% of the 2026
+budget**. Grouping by subprogramme name alone would silently fuse DESA's "Executive direction and
+management" with DPO's and DGC's into one meaningless bucket spanning 30 sections.
+
+**Rule: join on functional area, key aggregates on `(section, entity, subprogramme)`, and treat the
+subprogramme name as a label scoped to its entity — never as a standalone dimension.**
+
 ## 7. What this means for the portal
 
 1. **OPPFB is safe to trust.** The exact section-level tie-out to the known-reliable CSV is strong
