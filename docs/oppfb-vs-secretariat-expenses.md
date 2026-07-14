@@ -226,19 +226,112 @@ Worked example — UNEP / Section 14 (Environment), 2023, from **A/79/6 Sect. 14
 | Regular budget expenditure | $20,859.7k | $20,859,739 (`REFERENCE = A/79/6`) | ✅ **exact** |
 | Extrabudgetary / voluntary expenditure | $587,760.7k | $671,941,000 (`REFERENCE = Financial Statement`) | ❌ **$84m apart (14%)** |
 
-This is a **provenance split**, and it explains the whole situation. The CSV sources its regular
-budget from the PPB (all 144 `A/79/6` rows are `Regular assessed`) but its voluntary from the
-**financial statements** (812 of 815 `Voluntary` rows). The PPB's "extrabudgetary" and the financial
-statements' "voluntary" are *different measurement bases*, not the same quantity at different grains.
-That is precisely why the subprogramme dimension was lost on the voluntary side.
+This is a **provenance split**. The CSV sources its regular budget from the PPB (all 144 `A/79/6` rows
+are `Regular assessed`) but its voluntary from the **financial statements** (812 of 815 `Voluntary`
+rows). The PPB's "extrabudgetary" and the financial statements' "voluntary" are *different
+measurement bases*, not the same quantity at different grains. That is why the subprogramme dimension
+was lost on the voluntary side.
+
+#### Why exactly do they differ? (documents consulted)
+
+Sources: **A/79/6 (Sect. 14)** — Environment; **A/79/5/Add.7** — UNEP audited financial statements
+2023; **A/79/7** — ACABQ first report.
+
+**First, what the CSV's number actually is.** It reproduces to the dollar:
+
+```
+UNEP IPSAS total expenses (A/79/5/Add.7, Statement II)   696,642k
+  less "Regular budget" segment (Note 4)                 −24,701k
+  = 671,941k  ==  CSV Voluntary $671,941,000   ✅ exact
+```
+
+So the CSV's "Voluntary" for UNEP is definitionally **"total accrual expenses minus the UN
+regular-budget segment"** — a residual, not a measured voluntary figure.
+
+**Three structural reasons the two diverge**, in the documents' own words:
+
+1. **Accounting basis.** A/79/5/Add.7, Note 5 ¶120: *"UNEP prepares its budget on a **modified cash
+   basis**, while expenses are presented on **accrual basis** in the financial statements."* The PPB
+   figure is budgetary expenditure out of Umoja; the FS figure is IPSAS expense. (Note the pure
+   non-cash items are tiny — depreciation + amortisation together are just $337k, 0.05% of expenses —
+   so this is about unliquidated obligations and recognition timing, not depreciation.)
+2. **Entity scope — the big one.** UNEP's reporting entity (Note 1 ¶4) consolidates fund groups that
+   section 14's programme budget does not govern: the **MEA convention secretariats** ($119.2m — BRS,
+   CBD, CITES, CMS, Minamata, Ozone, regional seas…, each with its own COP-approved budget) and the
+   **Multilateral Fund for the Montreal Protocol** ($114.2m, its own Executive Committee), plus an
+   end-of-service benefits segment ($13.0m). UNEP's own IPSAS 24 reconciliation books an **entity
+   difference of $580,452k**, defined (Note 5 ¶126) as *"cash flows of fund groups other than the
+   organization… The financial statements include results for all fund groups."* Tellingly, UNEP's
+   only budget-to-actual statement (Statement V) covers **just the Environment Fund + regular
+   budget — $122.0m, about 17% of its $696.6m consolidated expenses.**
+3. **Vintage.** A/79/6 (Sect. 14), footnote (a) to table 14.14, which by its wording carries to 14.17:
+   *"the expenditure presented in this table and subsequent tables is **not final** and may be subject
+   to adjustments that could result in minor differences between the information contained in the
+   present report and the financial statements."* The PPB anticipates divergence — though it calls it
+   "minor", and 14.3% is not minor.
+
+#### ⚠️ But the gap does NOT close, and the PPB never defines its own scope
+
+The tempting story — "the PPB simply excludes the MEAs and the Multilateral Fund" — **is wrong**.
+Testing it:
+
+```
+CSV voluntary 671,941k − Conventions 119,195k − Multilateral Fund 114,168k = 438,578k
+PPB extrabudgetary                                                         = 587,761k
+→ the PPB figure is 149,183k HIGHER, not lower.
+```
+
+Entity scope *over*-explains the gap. And UNSCEAR appears on **both** sides (PPB table 14.17 EDM line
+$324.3k; FS Conventions segment $392k), so the PPB clearly does include convention-type money. No
+combination of UNEP's seven reporting segments sums to $587,760.7k — intersegment eliminations
+(−$86.0m) make gross-segment arithmetic unreliable in any case.
+
+**Worse, the PPB never says what its extrabudgetary figure includes.** A/79/6 (Sect. 14) has *no*
+fund-level resource table, no footnote and no annex defining scope. The strings "Environment Fund",
+"Multilateral Fund", "trust fund" and "earmarked" appear **zero times** in any resource context —
+and the same is true of A/74/6, A/76/6, A/77/6 and A/78/6 (Sect. 14). The closest thing to a scope
+statement is ¶14.112: *"The extrabudgetary resources under the present section are subject to the
+oversight of the United Nations Environment Assembly."* That is about oversight, not composition.
+A/79/6 (Introduction) contains no definition of "extrabudgetary resources" either.
+
+**Conclusion: the two figures are not reconcilable from published documents.** There is no published
+bridge between the PPB's extrabudgetary expenditure and the financial statements, and UNEP's own
+budget-to-actual reconciliation deliberately does not attempt one (it covers 17% of expenses).
+Treating the PPB total as either "all UNEP voluntary" or as a defined subset would be an assumption,
+not a citation.
+
+#### 🐛 Side-effect: the CSV's UNEP total is $3.84m short
+
+The mixed provenance has a concrete cost. The CSV *reports* the PPB's regular-budget figure
+($20,859.7k) but *derives* voluntary by subtracting the **financial statements'** regular-budget
+segment ($24,701k) — a different, larger number. It therefore subtracts more RB than it adds back:
+
+```
+CSV implied UNEP 2023 total   20,859.7k + 671,941k = 692,800.7k
+FS actual UNEP 2023 total                            696,642.0k
+shortfall                                              3,841.3k   ( = 24,701 − 20,859.7 exactly )
+```
+
+The same mixed-basis construction presumably applies to every entity whose RB comes from the PPB and
+whose voluntary comes from a financial statement. **Worth checking across the dataset.**
+
+#### 🐛 And "Voluntary" is a misnomer
+
+Because the CSV's voluntary is *everything that is not the UN regular budget*, it sweeps in money that
+is **assessed** — just not assessed by the UN General Assembly. In UNEP's 2023 statements the
+Conventions segment includes **$60.6m of assessed contributions** and the Multilateral Fund
+**$157.1m of assessed contributions** (COP- and Executive-Committee-assessed). These sit inside the
+CSV's `Voluntary` bucket.
 
 #### Implications
 
 - A voluntary-by-subprogramme breakdown **is obtainable** — from the PPB section documents, a source
   the CSV already cites. It requires parsing table `X.17` from ~40 section PDFs per year.
-- It **cannot simply be bolted onto the CSV's voluntary totals**: the bases differ by ~14% for UNEP.
-  Either publish PPB extrabudgetary as its own series, or use the PPB subprogramme *shares* to
-  apportion the CSV total — an approximation that must be labelled as one.
+- It **cannot simply be bolted onto the CSV's voluntary totals**: the bases differ by ~14% for UNEP
+  and there is **no published bridge** between them. Either publish PPB extrabudgetary as its own,
+  clearly-labelled series, or use the PPB subprogramme *shares* to apportion the CSV total — an
+  approximation that must be labelled as one. Do **not** present PPB subprogramme parts as if they
+  sum to the CSV's published voluntary whole; they do not.
 - Until then, the voluntary pillar in the CSV ($22.15bn over 2019–2023; 84 entities / 32 sections /
   9 priority areas) has as its finest grain the **trust fund name in `NOTE`** (175 distinct: "MPTF -
   Peacebuilding Fund", "Trust Fund in Support of AMISOM", …), on 98% of rows / 74% of the money. Top
