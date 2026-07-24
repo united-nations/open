@@ -2,10 +2,18 @@
 
 import { ExternalLink, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
-import { Entity, SecretariatFund } from "@/types";
+import { Entity, SecretariatData, SecretariatFund } from "@/types";
 import { formatBudget } from "@/lib/entities";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { ShareButton } from "@/components/ShareButton";
+import { useYearRanges, generateYearRange } from "@/lib/useYearRanges";
+import {
+  FinancingInstrumentChart,
+  FinancingInstrumentDataPoint,
+  FinancingSeries,
+} from "@/components/charts/FinancingInstrumentChart";
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 interface SecretariatSidebarProps {
   entity: string;
@@ -16,21 +24,64 @@ interface SecretariatSidebarProps {
   onClose: () => void;
 }
 
+// Colors stay in the UN-blue family used by the CEB financing-instrument chart:
+// assessed = full blue, voluntary = lighter blue. The peacekeeping (Other
+// assessed) split uses a darker blue so it reads as "assessed" but distinct.
+const ASSESSED_COLOR = "#009edb";          // = CEB "Assessed"
+const OTHER_ASSESSED_COLOR = "#2d6a7e";    // un-blue-dark (peacekeeping assessed)
+const VOLUNTARY_COLOR = "#4db8e8";         // = CEB "Voluntary un-earmarked"
+
 // Source-type colors (matches the three SOURCE_TYPE values in the data).
 const SOURCE_COLORS: Record<string, string> = {
   "Regular assessed": "bg-un-blue",
-  "Other Assessed": "bg-un-blue-slate",
-  Voluntary: "bg-camouflage-green",
+  "Other Assessed": "bg-un-blue-dark",
+  Voluntary: "bg-[#4db8e8]",
 };
 const sourceColor = (s: string) => SOURCE_COLORS[s] ?? "bg-gray-400";
+
+// Financing-instrument series for the timeline (the dataset's 3 SOURCE_TYPE values).
+// Distinct from the CEB 4-category scheme — see definitions in the data docs.
+const SEC_SERIES: FinancingSeries[] = [
+  { key: "Regular assessed", label: "Regular assessed", color: ASSESSED_COLOR,
+    tooltip: "Regular programme budget assessed contributions" },
+  { key: "Other Assessed", label: "Other assessed", color: OTHER_ASSESSED_COLOR,
+    tooltip: "Separately-assessed budgets — chiefly peacekeeping operations (and, for the tribunals, the residual mechanism)" },
+  { key: "Voluntary", label: "Voluntary", color: VOLUNTARY_COLOR,
+    tooltip: "Voluntary contributions (trust funds)" },
+];
 
 export function SecretariatSidebar({ entity, details, funds, year, onClose }: SecretariatSidebarProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const [showAll, setShowAll] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [trend, setTrend] = useState<FinancingInstrumentDataPoint[]>([]);
   const focusTrapRef = useFocusTrap(true);
+  const yearRanges = useYearRanges();
+
+  // Build the financing-instrument timeline by summing each year's funds by
+  // SOURCE_TYPE (mirrors how the CEB sidebar assembles its trend from year files).
+  useEffect(() => {
+    const years = generateYearRange(yearRanges.secretariat.min, yearRanges.secretariat.max);
+    Promise.all(
+      years.map((y) =>
+        fetch(`${basePath}/data/secretariat-${y}.json`)
+          .then((r) => r.json())
+          .then((d: SecretariatData) => ({ y, items: d.funds[entity] ?? [] }))
+          .catch(() => ({ y, items: [] as SecretariatFund[] }))
+      )
+    ).then((results) => {
+      const points: FinancingInstrumentDataPoint[] = results.map(({ y, items }) => {
+        const point: FinancingInstrumentDataPoint = { year: String(y) };
+        for (const s of SEC_SERIES) point[s.key] = 0;
+        for (const f of items) {
+          if (f.source_type in point) point[f.source_type] = (point[f.source_type] as number) + f.amount;
+        }
+        return point;
+      });
+      setTrend(points);
+    });
+  }, [entity, yearRanges.secretariat.min, yearRanges.secretariat.max]);
 
   useEffect(() => {
     const id = requestAnimationFrame(() => setIsVisible(true));
@@ -73,10 +124,6 @@ export function SecretariatSidebar({ entity, details, funds, year, onClose }: Se
   };
 
   const total = funds.reduce((s, f) => s + f.amount, 0);
-  // Sort by amount desc; only positive amounts are drawn as bars.
-  const sorted = [...funds].sort((a, b) => b.amount - a.amount);
-  const displayed = showAll ? sorted : sorted.slice(0, 10);
-  const maxAmount = sorted.length > 0 ? Math.max(...sorted.map((f) => f.amount)) : 0;
 
   // Source-type subtotals for the summary row.
   const bySource = funds.reduce<Record<string, number>>((acc, f) => {
@@ -169,43 +216,15 @@ export function SecretariatSidebar({ entity, details, funds, year, onClose }: Se
             </div>
           )}
 
-          {/* Trust funds / identifiers breakdown */}
+          {/* Funding by financing instrument over time */}
           <div>
             <h3 className="mb-3 text-lg font-normal uppercase tracking-wider text-gray-900">
-              Trust funds &amp; identifiers
+              Funding by financing instrument
             </h3>
-            <p className="mb-3 text-xs text-gray-500">
-              Voluntary contributions are itemized by trust fund; assessed amounts by budget
-              identifier. Amounts ≤ 0 (corrections) are listed but not drawn as bars.
-            </p>
-            <div className="space-y-1.5">
-              {displayed.map((f, i) => {
-                const widthPct = maxAmount > 0 && f.amount > 0 ? (f.amount / maxAmount) * 100 : 0;
-                return (
-                  <div key={`${f.label}-${i}`} className="flex items-center gap-2">
-                    <div className="w-40 flex-shrink-0 truncate text-left text-xs font-medium" title={f.label}>
-                      {f.label}
-                    </div>
-                    <div className="flex flex-1 items-center">
-                      <div
-                        className={`h-2 rounded-sm ${sourceColor(f.source_type)}`}
-                        style={{ width: `${widthPct}%` }}
-                      />
-                    </div>
-                    <div className="w-16 flex-shrink-0 text-right text-xs text-gray-500">
-                      {formatBudget(f.amount)}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-            {sorted.length > 10 && (
-              <button
-                onClick={() => setShowAll((v) => !v)}
-                className="mt-3 text-xs font-medium text-un-blue hover:underline"
-              >
-                {showAll ? "Show less" : `Show all ${sorted.length}`}
-              </button>
+            {trend.length > 0 ? (
+              <FinancingInstrumentChart data={trend} series={SEC_SERIES} showLegend />
+            ) : (
+              <p className="text-sm text-gray-500">No data available</p>
             )}
           </div>
         </div>

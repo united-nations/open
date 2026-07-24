@@ -30,6 +30,16 @@ PART_DESC_FIXES = {
     "Safety and Security": "Safety and security",    # casing variant (Part XII)
 }
 
+# Peacekeeping is a separate budget (its own assessment scale & July-June cycle),
+# not part of the regular programme budget — even though it's administratively
+# part of the Secretariat. It shows up as SOURCE_TYPE "Other Assessed" (mission
+# budgets + the peacekeeping support account). Reclassify it into its own
+# "budget part" so the Budget Part lens doesn't imply it's part of the PPB.
+# Exception: the international tribunals' residual mechanism (MICT) is ALSO
+# "Other Assessed" but separately assessed and NOT peacekeeping — keep as-is.
+PEACEKEEPING_PART = "Peacekeeping Budget"
+OTHER_ASSESSED_NON_PK = {"MICT"}  # residual mechanism for the criminal tribunals
+
 def load() -> pd.DataFrame:
     df = pd.read_csv(SRC)
     df = df.rename(columns={
@@ -40,6 +50,12 @@ def load() -> pd.DataFrame:
     df["entity"] = df["entity"].apply(normalize_entity)
     df["part_id"] = df["part_id"].replace(PART_ID_FIXES)
     df["part_desc"] = df["part_desc"].replace(PART_DESC_FIXES)
+
+    # Override the budget part for the separately-financed peacekeeping account.
+    pk = (df["source_type"] == "Other Assessed") & (~df["entity"].isin(OTHER_ASSESSED_NON_PK))
+    df.loc[pk, "part_id"] = PEACEKEEPING_PART
+    df.loc[pk, "part_desc"] = PEACEKEEPING_PART
+
     return df[["priority_area", "part_id", "part_desc", "entity", "year", "amount", "source_type", "note"]]
 
 def build_records(year_df: pd.DataFrame) -> list[dict]:

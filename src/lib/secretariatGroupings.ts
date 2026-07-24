@@ -64,13 +64,24 @@ const PART_LABELS: Array<[string, string]> = [
   ["XIV", "Staff assessment"],
 ];
 
-export const budgetPartStyles: Record<string, SystemGroupingStyle> =
-  Object.fromEntries(
+export const budgetPartStyles: Record<string, SystemGroupingStyle> = {
+  // Peacekeeping is a separate budget (not part of the regular programme budget);
+  // python/11 reclassifies its "Other Assessed" rows into this synthetic part.
+  // Keyed by the exact part_id the export emits. au-chico matches the
+  // peacekeeping color used in the main entities treemap. Order 0 = sorts first.
+  "Peacekeeping Budget": {
+    label: "Peacekeeping Budget (separate from regular budget)",
+    bgColor: "bg-au-chico",
+    textColor: "text-white",
+    order: 0,
+  },
+  ...Object.fromEntries(
     PART_LABELS.map(([id, label], i) => [
       id,
       { label: `Part ${id} — ${label}`, ...PALETTE[i % PALETTE.length], order: i + 1 },
     ])
-  );
+  ),
+};
 
 export function getGroupingStyles(lens: GroupingLens): Record<string, SystemGroupingStyle> {
   return lens === "priorityArea" ? priorityAreaStyles : budgetPartStyles;

@@ -220,7 +220,7 @@ export function SecretariatTreemap() {
     return (
       <div className="w-full">
         {controls}
-        <div className="flex h-[650px] w-full items-center justify-center bg-gray-100">
+        <div className="flex h-[975px] w-full items-center justify-center bg-gray-100">
           <p className="text-lg text-gray-500">Loading…</p>
         </div>
       </div>
@@ -231,7 +231,7 @@ export function SecretariatTreemap() {
     <div className="w-full">
       {controls}
 
-      <div className="relative h-[650px] w-full bg-gray-100">
+      <div className="relative h-[975px] w-full bg-gray-100">
         {positioned.map(({ tile, x, y, w, h, groupKey }, i) => {
           const styles = getGroupStyle(lens, groupKey);
           const isHovered = hovered === tile.entity;
