@@ -6,6 +6,9 @@ import { useEffect, useState } from "react";
 
 export function AnimatedCornerLogo() {
   const pathname = usePathname();
+  // `/system` is the home page (`/` only redirects there). trailingSlash is on,
+  // so accept both spellings.
+  const isHome = pathname === "/system" || pathname === "/system/";
 
   // Always start hidden to prevent flash
   const [cornerClass, setCornerClass] = useState("corner-slide-hidden");
@@ -13,7 +16,7 @@ export function AnimatedCornerLogo() {
 
   useEffect(() => {
     // Only animate on home page
-    if (pathname !== "/") return;
+    if (!isHome) return;
 
     // On home page, start the animation sequence
     const cornerTimer = setTimeout(() => {
@@ -29,10 +32,10 @@ export function AnimatedCornerLogo() {
       clearTimeout(cornerTimer);
       clearTimeout(spriteTimer);
     };
-  }, [pathname]);
+  }, [isHome]);
 
   // Only render on main page
-  if (pathname !== "/") return null;
+  if (!isHome) return null;
 
   return (
     <div>

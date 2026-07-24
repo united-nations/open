@@ -1,6 +1,9 @@
 import { GoogleAnalytics } from "@next/third-parties/google";
 import type { Metadata, Viewport } from "next";
 import { Roboto } from "next/font/google";
+import { AnimatedCornerLogo } from "@/components/AnimatedCornerLogo";
+import { SiteFooter } from "@/components/SiteFooter";
+import { SiteHeader } from "@/components/SiteHeader";
 // Note: @undp/data-viz styles are bundled with the components
 import "./globals.css";
 
@@ -13,7 +16,10 @@ const roboto = Roboto({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://open.un.org"),
-  title: "UN Transparency Portal",
+  title: {
+    default: "UN Transparency Portal",
+    template: "%s | UN Transparency Portal",
+  },
   description:
     "The Transparency Portal at open.un.org provides access to financial information from across the UN System. Explore who contributes, which organizations are funded, where funds are spent, and towards which goals.",
   openGraph: {
@@ -27,8 +33,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "UN Transparency Portal",
-    description:
-      "Access financial information from across the UN System.",
+    description: "Access financial information from across the UN System.",
   },
 };
 
@@ -45,8 +50,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${roboto.className} antialiased`}>
-      <body>
-        {children}
+      <body className="flex min-h-screen flex-col bg-background text-foreground">
+        <AnimatedCornerLogo />
+        <SiteHeader />
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
+        <SiteFooter />
         <GoogleAnalytics gaId="G-XYZ" />
       </body>
     </html>
