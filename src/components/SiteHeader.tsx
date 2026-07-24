@@ -119,12 +119,11 @@ export function SiteHeader() {
             <DropdownMenuTrigger asChild>
               <Button
                 variant="ghost"
-                size="sm"
+                size="icon"
                 aria-label="Open navigation menu"
-                className="inline-flex h-auto shrink-0 items-center gap-1 bg-trout! px-2 py-1 text-xs text-white! hover:bg-trout/90! sm:gap-2 sm:px-2.5 sm:py-1.5 sm:text-sm lg:hidden"
+                className="size-9 shrink-0 text-foreground/80 hover:bg-transparent hover:text-foreground lg:hidden"
               >
-                <Menu className="h-3 w-3 sm:h-4 sm:w-4" />
-                <span>Menu</span>
+                <Menu className="size-6" />
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
