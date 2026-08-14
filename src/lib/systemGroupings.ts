@@ -15,15 +15,17 @@ export const systemGroupingStyles: Record<string, SystemGroupingStyle> = {
     textColor: "text-black",
     order: 1,
   },
+  // Both peacekeeping keys share one short label: only one of them carries
+  // entities at a time, so the legend must not show the pair as two entries.
   "Peacekeeping Operations and Political Missions": {
-    label: "Peacekeeping Operations & Political Missions",
+    label: "Peacekeeping",
     bgColor: "bg-au-chico",
     textColor: "text-white",
     order: 2,
   },
-  // Revenue-mode synthetic grouping for UN-DPO aggregate
+  // Synthetic grouping for the UN-DPO CEB aggregate
   "Peacekeeping Operations": {
-    label: "Peacekeeping Operations",
+    label: "Peacekeeping",
     bgColor: "bg-au-chico",
     textColor: "text-white",
     order: 2,

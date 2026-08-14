@@ -254,6 +254,17 @@ export function EntitiesTreemap() {
     {} as Record<string, number>
   );
 
+  // Legend entries: every grouping that actually has entities on screen.
+  // The two peacekeeping keys share a label (only one is ever populated), so
+  // dedupe by label to keep a single entry.
+  const seenLegendLabels = new Set<string>();
+  const legendGroups = getSortedSystemGroupings().filter(([group, styles]) => {
+    if (!groupCounts[group]) return false;
+    if (seenLegendLabels.has(styles.label)) return false;
+    seenLegendLabels.add(styles.label);
+    return true;
+  });
+
   // Check if all groups are active
   const allGroupsActive =
     activeGroups.size === Object.keys(systemGroupingStyles).length;
@@ -649,21 +660,12 @@ export function EntitiesTreemap() {
 
         {/* System Grouping Legend */}
         <div className="flex flex-wrap gap-3">
-          {getSortedSystemGroupings()
-            .filter(([group]) => {
-              // In revenue mode, show "Peacekeeping Operations" instead of "Peacekeeping Operations and Political Missions"
-              if (showRevenue) {
-                return group !== "Peacekeeping Operations and Political Missions" && groupCounts[group] && groupCounts[group] > 0;
-              }
-              // In spending mode, show "Peacekeeping Operations and Political Missions" instead of "Peacekeeping Operations"
-              return group !== "Peacekeeping Operations" && groupCounts[group] && groupCounts[group] > 0;
-            })
-            .map(([group, styles]) => (
-              <div key={group} className="flex items-center gap-1.5">
-                <div className={`h-3 w-3 rounded-sm ${styles.bgColor}`} />
-                <span className="text-xs text-gray-600">{styles.label}</span>
-              </div>
-            ))}
+          {legendGroups.map(([group, styles]) => (
+            <div key={group} className="flex items-center gap-1.5">
+              <div className={`h-3 w-3 rounded-sm ${styles.bgColor}`} />
+              <span className="text-xs text-gray-600">{styles.label}</span>
+            </div>
+          ))}
         </div>
       </div>
 
