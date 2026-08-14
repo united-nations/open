@@ -18,6 +18,7 @@ import {
 import { ClickHint } from "@/components/ui/ClickHint";
 import { useYearRanges, generateYearRange } from "@/lib/useYearRanges";
 import { squarify, layoutGroups, type TreemapItem } from "@/lib/treemapLayout";
+import { TreemapGroupHeader } from "@/components/charts/TreemapGroupHeader";
 import {
   GroupingLens,
   getGroupingStyles,
@@ -25,6 +26,11 @@ import {
 } from "@/lib/secretariatGroupings";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+const CHART_HEIGHT = 975;
+// A band must be this large before its inline legend strip fits above the tiles.
+const MIN_HEADER_HEIGHT_PX = 44;
+const MIN_HEADER_WIDTH_PCT = 7;
 
 // A drawable tile: one (entity, group) record with net amount > 0.
 interface Tile {
@@ -151,35 +157,122 @@ export function SecretariatTreemap() {
     return { groups, pageTotal, hiddenCount, hiddenTotal };
   }, [data, lens, searchQuery]);
 
-  // Build absolutely-positioned tiles: lay out the groups (big groups as
-  // full-width rows, small ones bundled into a nested corner block), then
-  // squarify each group's entities inside its rectangle.
-  const positioned: Array<{ tile: Tile; x: number; y: number; w: number; h: number; groupKey: string }> = [];
+  // Lay out the groups (big groups as full-width rows, small ones bundled into
+  // a nested corner block), then squarify each group's entities inside its own
+  // rectangle. Tiles use the group's local 0-100 space so the group wrapper can
+  // reserve pixel height for its inline legend strip.
   const tilesByGroup = Object.fromEntries(groups.map((g) => [g.groupKey, g.tiles]));
+  const netTotalByGroup = Object.fromEntries(groups.map((g) => [g.groupKey, g.netTotal]));
   const groupRects = layoutGroups(
     groups
       .filter((g) => g.drawTotal > 0)
       .map((g) => ({ key: g.groupKey, total: g.drawTotal }))
   );
-  for (const gr of groupRects) {
+  const laidOutGroups = groupRects.map((gr) => {
     const items: TreemapItem<Tile>[] = (tilesByGroup[gr.key] ?? []).map((t) => ({
       value: t.amount,
       data: t,
     }));
-    const rects = squarify(items, gr.x, gr.y, gr.width, gr.height);
-    rects.forEach((rect) =>
-      positioned.push({
-        tile: rect.data,
-        x: rect.x,
-        y: rect.y,
-        w: rect.width,
-        h: rect.height,
-        groupKey: gr.key,
-      })
-    );
-  }
+    return {
+      rect: gr,
+      tiles: squarify(items, 0, 0, 100, 100),
+      // Bands too small for a legend strip fall back to the footer legend.
+      showHeader:
+        (gr.height / 100) * CHART_HEIGHT >= MIN_HEADER_HEIGHT_PX &&
+        gr.width >= MIN_HEADER_WIDTH_PCT,
+    };
+  });
+  const leftoverLegendGroups = laidOutGroups
+    .filter((g) => !g.showHeader)
+    .map((g) => g.rect.key);
 
   const lensLabel = lens === "priorityArea" ? "Priority Area" : "Budget Part";
+
+  const renderTile = (
+    tile: Tile,
+    rect: { x: number; y: number; width: number; height: number },
+    groupKey: string,
+    i: number
+  ) => {
+    const styles = getGroupStyle(lens, groupKey);
+    const isHovered = hovered === tile.entity;
+    const showLabel = rect.width > 4 && rect.height > 4;
+    const sharePct = tile.entityTotal > 0
+      ? Math.round((tile.amount / tile.entityTotal) * 100)
+      : 0;
+    const longName = entityMeta[tile.entity]?.entity_long;
+    return (
+      <Tooltip key={`${tile.entity}-${groupKey}-${i}`} delayDuration={50} disableHoverableContent>
+        <TooltipTrigger asChild>
+          <div
+            data-entity={tile.entity}
+            className={`absolute cursor-pointer transition-[left,top,width,height] duration-[800ms] ease-in-out hover:ring-2 hover:ring-white/60 hover:brightness-110 ${styles.bgColor} ${styles.textColor}`}
+            style={{
+              left: `${rect.x}%`,
+              top: `${rect.y}%`,
+              width: `${rect.width}%`,
+              height: `${rect.height}%`,
+              opacity: isHovered ? 1 : 0.9,
+              zIndex: isHovered ? 10 : 1,
+            }}
+            onClick={() => {
+              setSelectedEntity(tile.entity);
+              replaceToSidebar("secretariat", tile.entity);
+            }}
+            onMouseEnter={() => setHovered(tile.entity)}
+            onMouseLeave={() => setHovered(null)}
+          >
+            {showLabel && (
+              <div className="relative h-full overflow-hidden p-1">
+                <div className="flex items-center gap-1 truncate text-xs font-medium leading-tight">
+                  {tile.entity}
+                  {tile.isPartial && (
+                    <SplitSquareHorizontal
+                      className="h-3 w-3 shrink-0 opacity-70"
+                      aria-label="Partial — only part of this entity"
+                    />
+                  )}
+                </div>
+                <div className="truncate text-xs leading-tight opacity-70">
+                  {formatBudget(tile.amount)}
+                </div>
+              </div>
+            )}
+          </div>
+        </TooltipTrigger>
+        <TooltipContent
+          side="top"
+          sideOffset={8}
+          className="max-w-xs border border-slate-200 bg-white text-slate-800 shadow-lg sm:max-w-sm"
+          hideWhenDetached
+          avoidCollisions
+          collisionPadding={12}
+        >
+          <div className="max-w-xs p-1 text-center sm:max-w-sm">
+            <p className="text-xs font-medium leading-tight sm:text-sm">
+              {longName ?? tile.entity}
+            </p>
+            {longName && (
+              <p className="text-xs text-slate-400">{tile.entity}</p>
+            )}
+            <div className="mt-1 flex items-center justify-center gap-1.5">
+              <div className={`h-2 w-2 rounded-full ${styles.bgColor}`} />
+              <span className="text-xs text-slate-500">{styles.label}</span>
+            </div>
+            <p className="mt-1 text-xs font-semibold text-slate-600">
+              {formatBudget(tile.amount)}
+            </p>
+            {tile.isPartial && (
+              <p className="mt-1 text-xs text-slate-500">
+                Part of {tile.entity} — {sharePct}% of its {year} total ({formatBudget(tile.entityTotal)})
+              </p>
+            )}
+            <ClickHint />
+          </div>
+        </TooltipContent>
+      </Tooltip>
+    );
+  };
 
   const controls = (
     <div className="mb-3 flex flex-col gap-2">
@@ -220,7 +313,10 @@ export function SecretariatTreemap() {
     return (
       <div className="w-full">
         {controls}
-        <div className="flex h-[975px] w-full items-center justify-center bg-gray-100">
+        <div
+          className="flex w-full items-center justify-center bg-gray-100"
+          style={{ height: CHART_HEIGHT }}
+        >
           <p className="text-lg text-gray-500">Loading…</p>
         </div>
       </div>
@@ -231,102 +327,52 @@ export function SecretariatTreemap() {
     <div className="w-full">
       {controls}
 
-      <div className="relative h-[975px] w-full bg-gray-100">
-        {positioned.map(({ tile, x, y, w, h, groupKey }, i) => {
-          const styles = getGroupStyle(lens, groupKey);
-          const isHovered = hovered === tile.entity;
-          const showLabel = w > 4 && h > 4;
-          const sharePct = tile.entityTotal > 0
-            ? Math.round((tile.amount / tile.entityTotal) * 100)
-            : 0;
-          const longName = entityMeta[tile.entity]?.entity_long;
+      <div className="relative w-full" style={{ height: CHART_HEIGHT }}>
+        {laidOutGroups.map(({ rect: gr, tiles, showHeader }) => {
+          const groupStyles = getGroupStyle(lens, gr.key);
           return (
-            <Tooltip key={`${tile.entity}-${groupKey}-${i}`} delayDuration={50} disableHoverableContent>
-              <TooltipTrigger asChild>
-                <div
-                  data-entity={tile.entity}
-                  className={`absolute cursor-pointer transition-[left,top,width,height] duration-[800ms] ease-in-out hover:ring-2 hover:ring-white/60 hover:brightness-110 ${styles.bgColor} ${styles.textColor}`}
-                  style={{
-                    left: `${x}%`,
-                    top: `${y}%`,
-                    width: `${w}%`,
-                    height: `${h}%`,
-                    opacity: isHovered ? 1 : 0.9,
-                    zIndex: isHovered ? 10 : 1,
-                  }}
-                  onClick={() => {
-                    setSelectedEntity(tile.entity);
-                    replaceToSidebar("secretariat", tile.entity);
-                  }}
-                  onMouseEnter={() => setHovered(tile.entity)}
-                  onMouseLeave={() => setHovered(null)}
-                >
-                  {showLabel && (
-                    <div className="relative h-full overflow-hidden p-1">
-                      <div className="flex items-center gap-1 truncate text-xs font-medium leading-tight">
-                        {tile.entity}
-                        {tile.isPartial && (
-                          <SplitSquareHorizontal
-                            className="h-3 w-3 shrink-0 opacity-70"
-                            aria-label="Partial — only part of this entity"
-                          />
-                        )}
-                      </div>
-                      <div className="truncate text-xs leading-tight opacity-70">
-                        {formatBudget(tile.amount)}
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </TooltipTrigger>
-              <TooltipContent
-                side="top"
-                sideOffset={8}
-                className="max-w-xs border border-slate-200 bg-white text-slate-800 shadow-lg sm:max-w-sm"
-                hideWhenDetached
-                avoidCollisions
-                collisionPadding={12}
-              >
-                <div className="max-w-xs p-1 text-center sm:max-w-sm">
-                  <p className="text-xs font-medium leading-tight sm:text-sm">
-                    {longName ?? tile.entity}
-                  </p>
-                  {longName && (
-                    <p className="text-xs text-slate-400">{tile.entity}</p>
-                  )}
-                  <div className="mt-1 flex items-center justify-center gap-1.5">
-                    <div className={`h-2 w-2 rounded-full ${styles.bgColor}`} />
-                    <span className="text-xs text-slate-500">{styles.label}</span>
-                  </div>
-                  <p className="mt-1 text-xs font-semibold text-slate-600">
-                    {formatBudget(tile.amount)}
-                  </p>
-                  {tile.isPartial && (
-                    <p className="mt-1 text-xs text-slate-500">
-                      Part of {tile.entity} — {sharePct}% of its {year} total ({formatBudget(tile.entityTotal)})
-                    </p>
-                  )}
-                  <ClickHint />
-                </div>
-              </TooltipContent>
-            </Tooltip>
-          );
-        })}
-      </div>
-
-      {/* Legend */}
-      <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5">
-        {groups.map((g) => {
-          const styles = getGroupStyle(lens, g.groupKey);
-          return (
-            <div key={g.groupKey} className="flex items-center gap-1.5 text-xs text-gray-600">
-              <span className={`inline-block h-3 w-3 rounded-sm ${styles.bgColor}`} />
-              <span>{styles.label}</span>
-              <span className="text-gray-400">{formatBudget(g.netTotal)}</span>
+            <div
+              key={gr.key}
+              className="absolute flex flex-col"
+              style={{
+                left: `${gr.x}%`,
+                top: `${gr.y}%`,
+                width: `${gr.width}%`,
+                height: `${gr.height}%`,
+              }}
+            >
+              {showHeader && (
+                <TreemapGroupHeader
+                  colorClass={groupStyles.bgColor}
+                  label={groupStyles.label}
+                  amount={formatBudget(netTotalByGroup[gr.key] ?? 0)}
+                />
+              )}
+              <div className="relative min-h-0 flex-1 bg-gray-100">
+                {tiles.map((rect, i) => renderTile(rect.data, rect, gr.key, i))}
+              </div>
             </div>
           );
         })}
       </div>
+
+      {/* Fallback legend — only for bands too small to carry an inline strip */}
+      {leftoverLegendGroups.length > 0 && (
+        <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5">
+          {leftoverLegendGroups.map((groupKey) => {
+            const styles = getGroupStyle(lens, groupKey);
+            return (
+              <div key={groupKey} className="flex items-center gap-1.5 text-xs text-gray-600">
+                <span className={`inline-block h-3 w-3 rounded-sm ${styles.bgColor}`} />
+                <span>{styles.label}</span>
+                <span className="text-gray-400">
+                  {formatBudget(netTotalByGroup[groupKey] ?? 0)}
+                </span>
+              </div>
+            );
+          })}
+        </div>
+      )}
 
       {/* Footnote: total + non-drawable count */}
       <p className="mt-3 text-xs text-gray-500">

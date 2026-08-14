@@ -30,11 +30,17 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { useYearRanges, generateYearRange } from "@/lib/useYearRanges";
 import { squarify, layoutGroups, type TreemapItem as TreemapItemBase } from "@/lib/treemapLayout";
+import { TreemapGroupHeader } from "@/components/charts/TreemapGroupHeader";
 
 // Treemap layout extracted to a shared module (see src/lib/treemapLayout.ts).
 type TreemapItem = TreemapItemBase<Entity>;
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+const CHART_HEIGHT = 650;
+// A band must be this large before its inline legend strip fits above the tiles.
+const MIN_HEADER_HEIGHT_PX = 44;
+const MIN_HEADER_WIDTH_PCT = 7;
 
 export function EntitiesTreemap() {
   const yearRanges = useYearRanges();
@@ -482,18 +488,26 @@ export function EntitiesTreemap() {
     }))
   );
 
-  const renderEntities = (
-    groupKey: string,
-    items: TreemapItem[],
-    x: number,
-    y: number,
-    width: number,
-    height: number
-  ) => {
+  // Bands large enough to carry an inline legend strip get one; the rest fall
+  // back to a compact legend under the chart so no colour is left unexplained.
+  const headerVisibility: Record<string, boolean> = Object.fromEntries(
+    groupRects.map((gr) => [
+      gr.key,
+      (gr.height / 100) * CHART_HEIGHT >= MIN_HEADER_HEIGHT_PX &&
+        gr.width >= MIN_HEADER_WIDTH_PCT,
+    ])
+  );
+  const leftoverLegendGroups = groupRects
+    .filter((gr) => !headerVisibility[gr.key])
+    .map((gr) => gr.key);
+
+  // Tiles are laid out in each group's own 0-100 coordinate space, so the
+  // group wrapper can reserve pixel height for its inline legend strip.
+  const renderEntities = (groupKey: string, items: TreemapItem[]) => {
     const styles =
       systemGroupingStyles[groupKey] || getSystemGroupingStyle(groupKey);
     const sortedItems = [...items].sort((a, b) => b.value - a.value);
-    const rects = squarify(sortedItems, x, y, width, height);
+    const rects = squarify(sortedItems, 0, 0, 100, 100);
 
     return rects.map((rect, i) => {
       const entityBudget = budgetData[rect.data.entity] || 0;
@@ -618,68 +632,81 @@ export function EntitiesTreemap() {
     <div className="w-full">
       {filterControlsJSX}
 
-      {/* Treemap */}
-      <div className="relative h-[650px] w-full bg-gray-100">
-        {groupRects.flatMap((gr) =>
-          renderEntities(
-            gr.key,
-            itemsByGroup[gr.key] || [],
-            gr.x,
-            gr.y,
-            gr.width,
-            gr.height
-          )
-        )}
+      {/* Revenue type key — applies to every tile, so it stays above the chart */}
+      {showRevenue && (
+        <div className="mb-1.5 flex flex-wrap justify-end gap-3">
+          {[
+            { type: "Assessed", label: "Assessed" },
+            { type: "Voluntary un-earmarked", label: "Voluntary un-earmarked" },
+            { type: "Voluntary earmarked", label: "Voluntary earmarked" },
+          ].map(({ type, label }) => (
+            <Tooltip key={type} delayDuration={200}>
+              <TooltipTrigger asChild>
+                <div className="flex cursor-help items-center gap-1.5">
+                  <div className="h-3 w-3 rounded-sm" style={{ backgroundColor: getFinancingInstrumentColor(type) }} />
+                  <span className="text-xs text-gray-600 underline decoration-dotted underline-offset-2">{label}</span>
+                </div>
+              </TooltipTrigger>
+              <TooltipContent
+                side="top"
+                sideOffset={4}
+                className="max-w-[250px] border border-slate-200 bg-white text-slate-800 shadow-lg"
+              >
+                <p className="text-xs">{FINANCING_INSTRUMENT_TOOLTIPS[type]}</p>
+              </TooltipContent>
+            </Tooltip>
+          ))}
+        </div>
+      )}
+
+      {/* Treemap — every group carries its own legend strip above its tiles */}
+      <div
+        className="relative w-full"
+        style={{ height: CHART_HEIGHT }}
+      >
+        {groupRects.map((gr) => {
+          const styles =
+            systemGroupingStyles[gr.key] || getSystemGroupingStyle(gr.key);
+          const showHeader = headerVisibility[gr.key];
+          return (
+            <div
+              key={gr.key}
+              className="absolute flex flex-col"
+              style={{
+                left: `${gr.x}%`,
+                top: `${gr.y}%`,
+                width: `${gr.width}%`,
+                height: `${gr.height}%`,
+              }}
+            >
+              {showHeader && (
+                <TreemapGroupHeader
+                  colorClass={styles.bgColor}
+                  label={styles.label}
+                />
+              )}
+              <div className="relative min-h-0 flex-1 bg-gray-100">
+                {renderEntities(gr.key, itemsByGroup[gr.key] || [])}
+              </div>
+            </div>
+          );
+        })}
       </div>
 
-      {/* Legend */}
-      <div className="mt-3 flex flex-wrap items-center justify-between gap-4">
-        {/* Revenue Type Legend (only in revenue mode) */}
-        {showRevenue && (
-          <div className="flex flex-wrap gap-3">
-            {[
-              { type: "Assessed", label: "Assessed" },
-              { type: "Voluntary un-earmarked", label: "Voluntary un-earmarked" },
-              { type: "Voluntary earmarked", label: "Voluntary earmarked" },
-            ].map(({ type, label }) => (
-              <Tooltip key={type} delayDuration={200}>
-                <TooltipTrigger asChild>
-                  <div className="flex cursor-help items-center gap-1.5">
-                    <div className="h-3 w-3 rounded-sm" style={{ backgroundColor: getFinancingInstrumentColor(type) }} />
-                    <span className="text-xs text-gray-600 underline decoration-dotted underline-offset-2">{label}</span>
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent 
-                  side="top" 
-                  sideOffset={4}
-                  className="max-w-[250px] border border-slate-200 bg-white text-slate-800 shadow-lg"
-                >
-                  <p className="text-xs">{FINANCING_INSTRUMENT_TOOLTIPS[type]}</p>
-                </TooltipContent>
-              </Tooltip>
-            ))}
-          </div>
-        )}
-
-        {/* System Grouping Legend */}
-        <div className="flex flex-wrap gap-3">
-          {getSortedSystemGroupings()
-            .filter(([group]) => {
-              // In revenue mode, show "Peacekeeping Operations" instead of "Peacekeeping Operations and Political Missions"
-              if (showRevenue) {
-                return group !== "Peacekeeping Operations and Political Missions" && groupCounts[group] && groupCounts[group] > 0;
-              }
-              // In spending mode, show "Peacekeeping Operations and Political Missions" instead of "Peacekeeping Operations"
-              return group !== "Peacekeeping Operations" && groupCounts[group] && groupCounts[group] > 0;
-            })
-            .map(([group, styles]) => (
+      {/* Fallback legend — only for bands too small to carry an inline strip */}
+      {leftoverLegendGroups.length > 0 && (
+        <div className="mt-3 flex flex-wrap gap-3">
+          {leftoverLegendGroups.map((group) => {
+            const styles = getSystemGroupingStyle(group);
+            return (
               <div key={group} className="flex items-center gap-1.5">
                 <div className={`h-3 w-3 rounded-sm ${styles.bgColor}`} />
                 <span className="text-xs text-gray-600">{styles.label}</span>
               </div>
-            ))}
+            );
+          })}
         </div>
-      </div>
+      )}
 
       {selectedEntity && (
         <EntitySidebar
