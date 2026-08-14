@@ -27,10 +27,6 @@ import {
 } from "@/lib/contributors";
 import { FINANCING_INSTRUMENT_TOOLTIPS, getFinancingInstrumentColor } from "@/lib/financingInstruments";
 import { useYearRanges, generateYearRange } from "@/lib/useYearRanges";
-import {
-  TreemapGroupHeader,
-  TREEMAP_HEADER_PX,
-} from "@/components/charts/TreemapGroupHeader";
 
 interface Rect {
   x: number;
@@ -160,9 +156,6 @@ function slice(
 }
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-
-const CHART_HEIGHT = 780;
-const SECTION_GAP_PX = 4;
 
 export function ContributorsTreemap() {
   const yearRanges = useYearRanges();
@@ -306,17 +299,15 @@ export function ContributorsTreemap() {
   const unattributedTotal = unattributedItems.reduce((sum, item) => sum + item.value, 0);
   const grandTotal = govTotal + orgTotal + unattributedTotal;
 
-  // Each section reserves a fixed pixel strip for its inline legend; the rest
-  // of the chart height is shared between sections in proportion to their totals.
+  // Calculate height percentages (with gaps between sections)
+  const sectionGap = 0.5;
   const numSections = (govTotal > 0 ? 1 : 0) + (orgTotal > 0 ? 1 : 0) + (unattributedTotal > 0 ? 1 : 0);
-  const chromeHeight =
-    numSections * TREEMAP_HEADER_PX + Math.max(0, numSections - 1) * SECTION_GAP_PX;
-  const tileHeight = Math.max(0, CHART_HEIGHT - chromeHeight);
-
-  const govHeightPx = grandTotal > 0 ? (govTotal / grandTotal) * tileHeight : 0;
-  const orgHeightPx = grandTotal > 0 ? (orgTotal / grandTotal) * tileHeight : 0;
-  const unattributedHeightPx = grandTotal > 0 ? (unattributedTotal / grandTotal) * tileHeight : 0;
-  const orgHeightPct = (orgHeightPx / CHART_HEIGHT) * 100;
+  const totalGapSpace = sectionGap * Math.max(0, numSections - 1);
+  const availableHeight = 100 - totalGapSpace;
+  
+  const govHeightPct = grandTotal > 0 ? (govTotal / grandTotal) * availableHeight : 0;
+  const orgHeightPct = grandTotal > 0 ? (orgTotal / grandTotal) * availableHeight : 0;
+  const unattributedHeightPct = grandTotal > 0 ? (unattributedTotal / grandTotal) * availableHeight : 0;
 
   // Generate rects for each group (in their own 0-100 coordinate space)
   const govRects = govItems.length > 0 ? squarify(govItems, 0, 0, 100, 100, DEFAULT_GAP) : [];
@@ -469,82 +460,96 @@ export function ContributorsTreemap() {
         />
       </div>
 
-      {/* Each contributor type carries its legend directly above its own tiles */}
-      <div className="w-full" style={{ height: CHART_HEIGHT }}>
-        {/* Government donors — the financing-instrument shading applies here only */}
+      <div className="relative h-[780px] w-full bg-gray-100">
+        {/* Government donors section */}
         {govRects.length > 0 && (
-          <div>
-            <TreemapGroupHeader
-              colorClass="bg-un-blue"
-              label="Government"
-              right={
-                <div className="flex flex-wrap justify-end gap-3">
-                  {CONTRIBUTION_TYPES.filter((t) => t.type !== "Other").map(({ type, label }) => (
-                    <Tooltip key={type} delayDuration={200}>
-                      <TooltipTrigger asChild>
-                        <div className="flex cursor-help items-center gap-1.5">
-                          <div className="h-2.5 w-2.5 rounded-sm" style={{ backgroundColor: getFinancingInstrumentColor(type) }} />
-                          <span className="text-xs text-gray-600 underline decoration-dotted underline-offset-2">{label}</span>
-                        </div>
-                      </TooltipTrigger>
-                      <TooltipContent
-                        side="top"
-                        sideOffset={4}
-                        className="max-w-[250px] border border-slate-200 bg-white text-slate-800 shadow-lg"
-                      >
-                        <p className="text-xs">{FINANCING_INSTRUMENT_TOOLTIPS[type]}</p>
-                      </TooltipContent>
-                    </Tooltip>
-                  ))}
-                </div>
-              }
-            />
-            <div className="relative w-full bg-gray-100" style={{ height: govHeightPx }}>
-              {govRects.map((rect, i) => renderContributor(rect, i))}
-            </div>
+          <div 
+            className="absolute left-0 top-0 w-full"
+            style={{ height: `${govHeightPct}%` }}
+          >
+            {govRects.map((rect, i) => renderContributor(rect, i))}
           </div>
         )}
-
-        {/* Non-Government donors — grouped by category, one shared colour */}
+        
+        {/* Non-Government donors section - grouped by category */}
         {categoryRects.length > 0 && (
-          <div style={{ marginTop: govRects.length > 0 ? SECTION_GAP_PX : 0 }}>
-            <TreemapGroupHeader
-              colorClass="bg-smoky"
-              swatchClassName="opacity-60"
-              label="Non-Government"
-            />
-            <div className="relative w-full bg-gray-100" style={{ height: orgHeightPx }}>
-              {categoryRects.map((cat) => (
-                <div
-                  key={cat.category}
-                  className="absolute top-0 h-full"
-                  style={{ left: `${cat.x}%`, width: `${cat.width}%` }}
-                >
-                  {cat.rects.map((rect, i) => renderContributor(rect, i))}
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Unattributed (third category) */}
-        {unattributedRects.length > 0 && (
-          <div
-            style={{
-              marginTop:
-                govRects.length > 0 || categoryRects.length > 0 ? SECTION_GAP_PX : 0,
+          <div 
+            className="absolute left-0 w-full"
+            style={{ 
+              top: `${govHeightPct + (govTotal > 0 ? sectionGap : 0)}%`,
+              height: `${orgHeightPct}%` 
             }}
           >
-            <TreemapGroupHeader
-              colorClass="bg-gray-400"
-              swatchClassName="opacity-60"
-              label="Unattributed"
-            />
-            <div className="relative w-full bg-gray-100" style={{ height: unattributedHeightPx }}>
-              {unattributedRects.map((rect, i) => renderContributor(rect, i))}
-            </div>
+            {categoryRects.map((cat) => (
+              <div
+                key={cat.category}
+                className="absolute top-0 h-full"
+                style={{ left: `${cat.x}%`, width: `${cat.width}%` }}
+              >
+                {cat.rects.map((rect, i) => renderContributor(rect, i))}
+              </div>
+            ))}
           </div>
         )}
+
+        {/* Unattributed section (third category) */}
+        {unattributedRects.length > 0 && (
+          <div 
+            className="absolute left-0 w-full"
+            style={{ 
+              top: `${govHeightPct + (govTotal > 0 ? sectionGap : 0) + orgHeightPct + (orgTotal > 0 ? sectionGap : 0)}%`,
+              height: `${unattributedHeightPct}%` 
+            }}
+          >
+            {unattributedRects.map((rect, i) => renderContributor(rect, i))}
+          </div>
+        )}
+      </div>
+
+      {/* Legend */}
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-4">
+        {/* Financing Instrument Legend (applies to government donors) */}
+        <div className="flex flex-wrap gap-3">
+          {CONTRIBUTION_TYPES.filter(t => t.type !== "Other").map(({ type, label }) => (
+            <Tooltip key={type} delayDuration={200}>
+              <TooltipTrigger asChild>
+                <div className="flex cursor-help items-center gap-1.5">
+                  <div className="h-3 w-3 rounded-sm" style={{ backgroundColor: getFinancingInstrumentColor(type) }} />
+                  <span className="text-xs text-gray-600 underline decoration-dotted underline-offset-2">{label}</span>
+                </div>
+              </TooltipTrigger>
+              <TooltipContent 
+                side="top" 
+                sideOffset={4}
+                className="max-w-[250px] border border-slate-200 bg-white text-slate-800 shadow-lg"
+              >
+                <p className="text-xs">{FINANCING_INSTRUMENT_TOOLTIPS[type]}</p>
+              </TooltipContent>
+            </Tooltip>
+          ))}
+        </div>
+        
+        {/* Contributor Type Legend */}
+        <div className="flex flex-wrap gap-3">
+          {govTotal > 0 && (
+            <div className="flex items-center gap-1.5">
+              <div className="h-3 w-3 rounded-sm bg-un-blue" />
+              <span className="text-xs text-gray-600">Government</span>
+            </div>
+          )}
+          {orgTotal > 0 && (
+            <div className="flex items-center gap-1.5">
+              <div className="h-3 w-3 rounded-sm bg-smoky opacity-60" />
+              <span className="text-xs text-gray-600">Non-Government</span>
+            </div>
+          )}
+          {unattributedTotal > 0 && (
+            <div className="flex items-center gap-1.5">
+              <div className="h-3 w-3 rounded-sm bg-gray-400 opacity-60" />
+              <span className="text-xs text-gray-600">Unattributed</span>
+            </div>
+          )}
+        </div>
       </div>
 
       {selectedContributor && (
