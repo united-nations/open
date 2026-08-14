@@ -618,22 +618,8 @@ export function EntitiesTreemap() {
     <div className="w-full">
       {filterControlsJSX}
 
-      {/* Treemap */}
-      <div className="relative h-[650px] w-full bg-gray-100">
-        {groupRects.flatMap((gr) =>
-          renderEntities(
-            gr.key,
-            itemsByGroup[gr.key] || [],
-            gr.x,
-            gr.y,
-            gr.width,
-            gr.height
-          )
-        )}
-      </div>
-
-      {/* Legend */}
-      <div className="mt-3 flex flex-wrap items-center justify-between gap-4">
+      {/* Legend — above the treemap, so the colour key is read before the tiles */}
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-4">
         {/* Revenue Type Legend (only in revenue mode) */}
         {showRevenue && (
           <div className="flex flex-wrap gap-3">
@@ -649,8 +635,8 @@ export function EntitiesTreemap() {
                     <span className="text-xs text-gray-600 underline decoration-dotted underline-offset-2">{label}</span>
                   </div>
                 </TooltipTrigger>
-                <TooltipContent 
-                  side="top" 
+                <TooltipContent
+                  side="top"
                   sideOffset={4}
                   className="max-w-[250px] border border-slate-200 bg-white text-slate-800 shadow-lg"
                 >
@@ -679,6 +665,20 @@ export function EntitiesTreemap() {
               </div>
             ))}
         </div>
+      </div>
+
+      {/* Treemap */}
+      <div className="relative h-[650px] w-full bg-gray-100">
+        {groupRects.flatMap((gr) =>
+          renderEntities(
+            gr.key,
+            itemsByGroup[gr.key] || [],
+            gr.x,
+            gr.y,
+            gr.width,
+            gr.height
+          )
+        )}
       </div>
 
       {selectedEntity && (

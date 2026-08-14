@@ -231,6 +231,20 @@ export function SecretariatTreemap() {
     <div className="w-full">
       {controls}
 
+      {/* Legend — above the treemap, so the colour key is read before the tiles */}
+      <div className="mb-3 flex flex-wrap gap-x-4 gap-y-1.5">
+        {groups.map((g) => {
+          const styles = getGroupStyle(lens, g.groupKey);
+          return (
+            <div key={g.groupKey} className="flex items-center gap-1.5 text-xs text-gray-600">
+              <span className={`inline-block h-3 w-3 rounded-sm ${styles.bgColor}`} />
+              <span>{styles.label}</span>
+              <span className="text-gray-400">{formatBudget(g.netTotal)}</span>
+            </div>
+          );
+        })}
+      </div>
+
       <div className="relative h-[975px] w-full bg-gray-100">
         {positioned.map(({ tile, x, y, w, h, groupKey }, i) => {
           const styles = getGroupStyle(lens, groupKey);
@@ -310,20 +324,6 @@ export function SecretariatTreemap() {
                 </div>
               </TooltipContent>
             </Tooltip>
-          );
-        })}
-      </div>
-
-      {/* Legend */}
-      <div className="mt-4 flex flex-wrap gap-x-4 gap-y-1.5">
-        {groups.map((g) => {
-          const styles = getGroupStyle(lens, g.groupKey);
-          return (
-            <div key={g.groupKey} className="flex items-center gap-1.5 text-xs text-gray-600">
-              <span className={`inline-block h-3 w-3 rounded-sm ${styles.bgColor}`} />
-              <span>{styles.label}</span>
-              <span className="text-gray-400">{formatBudget(g.netTotal)}</span>
-            </div>
           );
         })}
       </div>

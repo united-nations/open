@@ -460,6 +460,52 @@ export function ContributorsTreemap() {
         />
       </div>
 
+      {/* Legend — above the treemap, so the colour key is read before the tiles */}
+      <div className="mb-3 flex flex-wrap items-center justify-between gap-4">
+        {/* Financing Instrument Legend (applies to government donors) */}
+        <div className="flex flex-wrap gap-3">
+          {CONTRIBUTION_TYPES.filter(t => t.type !== "Other").map(({ type, label }) => (
+            <Tooltip key={type} delayDuration={200}>
+              <TooltipTrigger asChild>
+                <div className="flex cursor-help items-center gap-1.5">
+                  <div className="h-3 w-3 rounded-sm" style={{ backgroundColor: getFinancingInstrumentColor(type) }} />
+                  <span className="text-xs text-gray-600 underline decoration-dotted underline-offset-2">{label}</span>
+                </div>
+              </TooltipTrigger>
+              <TooltipContent
+                side="top"
+                sideOffset={4}
+                className="max-w-[250px] border border-slate-200 bg-white text-slate-800 shadow-lg"
+              >
+                <p className="text-xs">{FINANCING_INSTRUMENT_TOOLTIPS[type]}</p>
+              </TooltipContent>
+            </Tooltip>
+          ))}
+        </div>
+
+        {/* Contributor Type Legend */}
+        <div className="flex flex-wrap gap-3">
+          {govTotal > 0 && (
+            <div className="flex items-center gap-1.5">
+              <div className="h-3 w-3 rounded-sm bg-un-blue" />
+              <span className="text-xs text-gray-600">Government</span>
+            </div>
+          )}
+          {orgTotal > 0 && (
+            <div className="flex items-center gap-1.5">
+              <div className="h-3 w-3 rounded-sm bg-smoky opacity-60" />
+              <span className="text-xs text-gray-600">Non-Government</span>
+            </div>
+          )}
+          {unattributedTotal > 0 && (
+            <div className="flex items-center gap-1.5">
+              <div className="h-3 w-3 rounded-sm bg-gray-400 opacity-60" />
+              <span className="text-xs text-gray-600">Unattributed</span>
+            </div>
+          )}
+        </div>
+      </div>
+
       <div className="relative h-[780px] w-full bg-gray-100">
         {/* Government donors section */}
         {govRects.length > 0 && (
@@ -504,52 +550,6 @@ export function ContributorsTreemap() {
             {unattributedRects.map((rect, i) => renderContributor(rect, i))}
           </div>
         )}
-      </div>
-
-      {/* Legend */}
-      <div className="mt-3 flex flex-wrap items-center justify-between gap-4">
-        {/* Financing Instrument Legend (applies to government donors) */}
-        <div className="flex flex-wrap gap-3">
-          {CONTRIBUTION_TYPES.filter(t => t.type !== "Other").map(({ type, label }) => (
-            <Tooltip key={type} delayDuration={200}>
-              <TooltipTrigger asChild>
-                <div className="flex cursor-help items-center gap-1.5">
-                  <div className="h-3 w-3 rounded-sm" style={{ backgroundColor: getFinancingInstrumentColor(type) }} />
-                  <span className="text-xs text-gray-600 underline decoration-dotted underline-offset-2">{label}</span>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent 
-                side="top" 
-                sideOffset={4}
-                className="max-w-[250px] border border-slate-200 bg-white text-slate-800 shadow-lg"
-              >
-                <p className="text-xs">{FINANCING_INSTRUMENT_TOOLTIPS[type]}</p>
-              </TooltipContent>
-            </Tooltip>
-          ))}
-        </div>
-        
-        {/* Contributor Type Legend */}
-        <div className="flex flex-wrap gap-3">
-          {govTotal > 0 && (
-            <div className="flex items-center gap-1.5">
-              <div className="h-3 w-3 rounded-sm bg-un-blue" />
-              <span className="text-xs text-gray-600">Government</span>
-            </div>
-          )}
-          {orgTotal > 0 && (
-            <div className="flex items-center gap-1.5">
-              <div className="h-3 w-3 rounded-sm bg-smoky opacity-60" />
-              <span className="text-xs text-gray-600">Non-Government</span>
-            </div>
-          )}
-          {unattributedTotal > 0 && (
-            <div className="flex items-center gap-1.5">
-              <div className="h-3 w-3 rounded-sm bg-gray-400 opacity-60" />
-              <span className="text-xs text-gray-600">Unattributed</span>
-            </div>
-          )}
-        </div>
       </div>
 
       {selectedContributor && (
