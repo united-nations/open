@@ -96,6 +96,131 @@ export function layoutGroups(
   return result;
 }
 
+/**
+ * Gapless slice-and-dice, from ../budget-explorer, whose treemap the
+ * /secretariat page follows. Two differences from `squarify` above:
+ * - no gap between rectangles, because the tiles are set apart by a hairline
+ *   inset shadow instead, which is what lets a band stay readable when it is
+ *   only a few pixels tall;
+ * - `forceRows` lays small items out in horizontal rows instead of splitting
+ *   on the aspect ratio, which reads better on a narrow screen.
+ */
+export function squarifyDense<T>(
+  items: TreemapItem<T>[],
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  forceRows = false
+): (Rect & { data: T })[] {
+  const total = items.reduce((sum, item) => sum + item.value, 0);
+  if (total === 0 || items.length === 0) return [];
+
+  const normalized = items.map((item) => ({
+    ...item,
+    normalizedValue: (item.value / total) * width * height,
+  }));
+
+  return sliceDense(normalized, x, y, width, height, forceRows);
+}
+
+function sliceDense<T>(
+  items: (TreemapItem<T> & { normalizedValue: number })[],
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+  forceRows: boolean
+): (Rect & { data: T })[] {
+  if (items.length === 0) return [];
+  if (items.length === 1) {
+    return [{ x, y, width, height, data: items[0].data }];
+  }
+
+  const total = items.reduce((sum, item) => sum + item.normalizedValue, 0);
+
+  // Narrow screens: pack the items into horizontal rows of 2-4, wider rows when
+  // the items are of a similar size.
+  if (forceRows && items.length >= 3) {
+    const values = items.map((i) => i.normalizedValue);
+    const uniformity = Math.min(...values) / Math.max(...values);
+    let rowSize = 2;
+    if (uniformity > 0.7 && items.length >= 6) rowSize = 4;
+    else if (uniformity > 0.5 && items.length >= 4) rowSize = 3;
+
+    const rows: (typeof items)[] = [];
+    let row: typeof items = [];
+    let rowSum = 0;
+    const targetRowSum = total / Math.ceil(items.length / rowSize);
+    items.forEach((item, i) => {
+      row.push(item);
+      rowSum += item.normalizedValue;
+      const endRow =
+        row.length >= rowSize ||
+        i === items.length - 1 ||
+        (rowSum >= targetRowSum * 0.8 && row.length >= 2);
+      if (endRow) {
+        rows.push(row);
+        row = [];
+        rowSum = 0;
+      }
+    });
+
+    if (rows.length > 1) {
+      const results: (Rect & { data: T })[] = [];
+      let currentY = y;
+      for (const r of rows) {
+        const sum = r.reduce((s, item) => s + item.normalizedValue, 0);
+        const rowHeight = height * (sum / total);
+        let currentX = x;
+        for (const item of r) {
+          const itemWidth = width * (item.normalizedValue / sum);
+          results.push({
+            x: currentX,
+            y: currentY,
+            width: itemWidth,
+            height: rowHeight,
+            data: item.data,
+          });
+          currentX += itemWidth;
+        }
+        currentY += rowHeight;
+      }
+      return results;
+    }
+  }
+
+  let sum = 0;
+  let splitIndex = 0;
+  for (let i = 0; i < items.length; i++) {
+    sum += items[i].normalizedValue;
+    if (sum >= total / 2) {
+      splitIndex = i + 1;
+      break;
+    }
+  }
+  splitIndex = Math.max(1, Math.min(splitIndex, items.length - 1));
+
+  const leftItems = items.slice(0, splitIndex);
+  const rightItems = items.slice(splitIndex);
+  const leftSum = leftItems.reduce((s, item) => s + item.normalizedValue, 0);
+
+  // Stack vertically on a narrow screen; otherwise split along the longer side.
+  const splitVertically = forceRows || width / height <= 0.7;
+  if (splitVertically) {
+    const leftHeight = height * (leftSum / total);
+    return [
+      ...sliceDense(leftItems, x, y, width, leftHeight, forceRows),
+      ...sliceDense(rightItems, x, y + leftHeight, width, height - leftHeight, forceRows),
+    ];
+  }
+  const leftWidth = width * (leftSum / total);
+  return [
+    ...sliceDense(leftItems, x, y, leftWidth, height, forceRows),
+    ...sliceDense(rightItems, x + leftWidth, y, width - leftWidth, height, forceRows),
+  ];
+}
+
 function slice<T>(
   items: (TreemapItem<T> & { normalizedValue: number })[],
   x: number,

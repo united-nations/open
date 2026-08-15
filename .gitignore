@@ -260,3 +260,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Reference data pulled from sibling repo releases (large, regenerable)
+data/references/

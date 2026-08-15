@@ -23,6 +23,10 @@ def generate_manifest():
         "countryExpenses": {"years": detect_years("country-expenses"), "default": "latest"},
         "sdgExpenses": {"years": detect_years("sdg-expenses"), "default": "latest"},
         "secretariat": {"years": detect_years("secretariat"), "default": "latest"},
+        # Budget documents (python/12). The PPB year is the expenditure year;
+        # the PKO year is the first year of the July-June cycle.
+        "budgetPpb": {"years": detect_years("budget-ppb"), "default": "latest"},
+        "budgetPko": {"years": detect_years("budget-pko"), "default": "latest"},
     }
     
     # Add min/max for convenience

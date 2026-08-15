@@ -8,7 +8,9 @@ import type { SystemGroupingStyle } from "@/lib/systemGroupings";
 export type GroupingLens = "priorityArea" | "budgetPart";
 
 // Shared palette of theme bg classes (UN palette) with readable text colors.
-const PALETTE: Array<{ bgColor: string; textColor: string }> = [
+// Also used by budgetGroupings.ts, so that every treemap on /secretariat draws
+// its groups from one palette.
+export const PALETTE: Array<{ bgColor: string; textColor: string }> = [
   { bgColor: "bg-un-blue", textColor: "text-white" },
   { bgColor: "bg-camouflage-green", textColor: "text-white" },
   { bgColor: "bg-au-chico", textColor: "text-white" },
@@ -62,6 +64,69 @@ const PART_LABELS: Array<[string, string]> = [
   ["XII", "Safety and security"],
   ["XIII", "Development Account"],
   ["XIV", "Staff assessment"],
+];
+
+// Short names for the part bands of the treemap, from ../budget-explorer, whose
+// treemap this page's layout follows. The long descriptions above are too wide
+// for the label column beside the bands.
+export const PART_SHORT_NAMES: Record<string, string> = {
+  I: "Policymaking & Coordination",
+  II: "Political Affairs",
+  III: "Justice & Law",
+  IV: "International Development",
+  V: "Regional Development",
+  VI: "Human Rights & Humanitarian",
+  VII: "Global Communications",
+  VIII: "Support Services",
+  IX: "Internal Oversight",
+  X: "Joint Activities & Special",
+  XI: "Capital Expenditure",
+  XII: "Safety & Security",
+  XIII: "Development Account",
+  XIV: "Staff Assessment",
+  "Peacekeeping Budget": "Peacekeeping (separate budget)",
+};
+
+/**
+ * Band fill and hover colors, as hex rather than theme classes, because the
+ * treemap paints them inline. Parts I-IX are the UN palette from globals.css;
+ * X-XIV are the lighter variants ../budget-explorer adds, so that all fourteen
+ * parts stay apart instead of cycling a twelve-color palette.
+ */
+export const PART_BAND_COLORS: Record<string, { bg: string; hover: string }> = {
+  I: { bg: "#009edb", hover: "#007ab8" },
+  II: { bg: "#4a7c7e", hover: "#3d6668" },
+  III: { bg: "#7d8471", hover: "#666d5d" },
+  IV: { bg: "#9b8b7a", hover: "#7f7264" },
+  V: { bg: "#a0665c", hover: "#84544c" },
+  VI: { bg: "#6c5b7b", hover: "#594b66" },
+  VII: { bg: "#5a6c7d", hover: "#4a5967" },
+  VIII: { bg: "#495057", hover: "#3a4045" },
+  IX: { bg: "#969696", hover: "#7a7a7a" },
+  X: { bg: "#33b8e8", hover: "#009edb" },
+  XI: { bg: "#6a9a9c", hover: "#4a7c7e" },
+  XII: { bg: "#9aa390", hover: "#7d8471" },
+  XIII: { bg: "#b8a899", hover: "#9b8b7a" },
+  XIV: { bg: "#c08579", hover: "#a0665c" },
+  // Peacekeeping keeps the au-chico family it has in the entities treemap, one
+  // shade darker than Part V so the two bands never read as the same group.
+  "Peacekeeping Budget": { bg: "#7a4a42", hover: "#633b35" },
+};
+
+/** The same colors in order, for lenses that have no fixed key (priority areas). */
+export const BAND_PALETTE: Array<{ bg: string; hover: string }> = [
+  { bg: "#009edb", hover: "#007ab8" },
+  { bg: "#4a7c7e", hover: "#3d6668" },
+  { bg: "#7d8471", hover: "#666d5d" },
+  { bg: "#9b8b7a", hover: "#7f7264" },
+  { bg: "#a0665c", hover: "#84544c" },
+  { bg: "#6c5b7b", hover: "#594b66" },
+  { bg: "#5a6c7d", hover: "#4a5967" },
+  { bg: "#495057", hover: "#3a4045" },
+  { bg: "#969696", hover: "#7a7a7a" },
+  { bg: "#33b8e8", hover: "#009edb" },
+  { bg: "#6a9a9c", hover: "#4a7c7e" },
+  { bg: "#9aa390", hover: "#7d8471" },
 ];
 
 export const budgetPartStyles: Record<string, SystemGroupingStyle> = {

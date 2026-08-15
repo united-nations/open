@@ -1,0 +1,3231 @@
+{
+  "meta": {
+    "stream": "ppb",
+    "title": "Programme budget",
+    "label": "PPB 2020 expenditure in 2018 (USD)",
+    "edition": 2020,
+    "measure": "expenditure",
+    "year": 2018,
+    "fiscalYear": "2018",
+    "currency": "USD",
+    "total": 2185736600,
+    "fundingSources": [
+      "regular_budget",
+      "other_assessed",
+      "extrabudgetary"
+    ],
+    "fundingStates": {
+      "regular_budget": "available",
+      "other_assessed": "not_published",
+      "extrabudgetary": "not_published"
+    },
+    "partial": true,
+    "scopeLabel": "Sections of the programme budget, regular budget only",
+    "scopeWarning": "This year covers the regular budget only: the budget for 2020 (document A/74/6) publishes no other assessed and extrabudgetary expenditure for 2018. The total is therefore much lower than the years that carry all three funding sources, and the two are not comparable. 11 rows cannot be drawn (Peaceful uses of outer space, Executive direction and management, Programme of work, Post, Non-post, Department of Management Strategy, Policy and Compliance, Department of Operational Support, Office of Information and Communications Technology, International Civil Service Commission, Overview of financial and post resources, United Nations System Chief Executives Board for Coordination); see the note below.",
+    "hierarchyProjection": "USD Whole/Part/section hierarchy with RB, OA and XB side by side, followed by one source-role-selected component allocation outline per section/entity. Object, post, duplicate and CHF schedules remain outside additive arithmetic. Selected lower outline: 40 source tables, 274 printed observations and 186 materialized lower nodes; 102 parallel tables and 0 other-currency tables remain outside additive arithmetic.",
+    "documentSymbol": "A/74/6",
+    "documentUrl": "https://documents.un.org/api/symbol/access?s=A%2F74%2F6%20%28Sect.%201%29&l=en&t=docx",
+    "omitted": [
+      {
+        "kind": "section",
+        "code": "6",
+        "label": "Peaceful uses of outer space",
+        "values": {},
+        "reason": "The budget prints no expenditure for this section."
+      },
+      {
+        "kind": "allocation",
+        "code": null,
+        "label": "Executive direction and management",
+        "values": {},
+        "reason": "The budget prints no expenditure for this allocation."
+      },
+      {
+        "kind": "allocation",
+        "code": null,
+        "label": "Programme of work",
+        "values": {},
+        "reason": "The budget prints no expenditure for this allocation."
+      },
+      {
+        "kind": "allocation",
+        "code": null,
+        "label": "Post",
+        "values": {},
+        "reason": "The budget prints no expenditure for this allocation."
+      },
+      {
+        "kind": "allocation",
+        "code": null,
+        "label": "Non-post",
+        "values": {},
+        "reason": "The budget prints no expenditure for this allocation."
+      },
+      {
+        "kind": "section",
+        "code": "29A",
+        "label": "Department of Management Strategy, Policy and Compliance",
+        "values": {},
+        "reason": "The budget prints no expenditure for this section."
+      },
+      {
+        "kind": "section",
+        "code": "29B",
+        "label": "Department of Operational Support",
+        "values": {},
+        "reason": "The budget prints no expenditure for this section."
+      },
+      {
+        "kind": "section",
+        "code": "29C",
+        "label": "Office of Information and Communications Technology",
+        "values": {},
+        "reason": "The budget prints no expenditure for this section."
+      },
+      {
+        "kind": "entity",
+        "code": "I",
+        "label": "International Civil Service Commission",
+        "values": {},
+        "reason": "The budget prints no expenditure for this entity."
+      },
+      {
+        "kind": "entity",
+        "code": "II",
+        "label": "Overview of financial and post resources",
+        "values": {},
+        "reason": "The budget prints no expenditure for this entity."
+      },
+      {
+        "kind": "entity",
+        "code": "III",
+        "label": "United Nations System Chief Executives Board for Coordination",
+        "values": {},
+        "reason": "The budget prints no expenditure for this entity."
+      }
+    ],
+    "source": {
+      "repo": "united-nations/programme-budget-data",
+      "release": "financial-data-v1.4",
+      "url": "https://github.com/united-nations/programme-budget-data/releases/tag/financial-data-v1.4"
+    }
+  },
+  "nodes": [
+    {
+      "id": "whole",
+      "parentId": null,
+      "kind": "whole",
+      "code": null,
+      "label": "Programme budget",
+      "amount": 2185736600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 2185736600
+      },
+      "completeness": "incomplete",
+      "note": "Exact sum of the displayed children for published coverage; one or more funding streams are incomplete or not published, so this is not a complete all-sources allocation."
+    },
+    {
+      "id": "part-I",
+      "parentId": "whole",
+      "kind": "part",
+      "code": "I",
+      "label": "Overall policymaking, direction and coordination",
+      "amount": 347490500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 347490500
+      },
+      "completeness": "incomplete",
+      "note": "Exact sum of the displayed children for published coverage; one or more funding streams are incomplete or not published, so this is not a complete all-sources allocation."
+    },
+    {
+      "id": "section-2",
+      "parentId": "part-I",
+      "kind": "section",
+      "code": "2",
+      "label": "General Assembly and Economic and Social Council affairs and conference management",
+      "amount": 307101700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 307101700
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-2~component",
+      "parentId": "section-2",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 307101700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 307101700
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-2~component~programme-of-work",
+      "parentId": "section-2~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 288982600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 288982600
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-2~component~programme-support",
+      "parentId": "section-2~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 13886800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 13886800
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-2~component~executive-direction-and-management",
+      "parentId": "section-2~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 3803100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 3803100
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-2~component~policymaking-organs",
+      "parentId": "section-2~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Policymaking organs",
+      "amount": 429200,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 429200
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-1",
+      "parentId": "part-I",
+      "kind": "section",
+      "code": "1",
+      "label": "Overall policymaking, direction and coordination",
+      "amount": 40388800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 40388800
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-1~lower-level-allocation-not-itemized",
+      "parentId": "section-1",
+      "kind": "allocation",
+      "code": null,
+      "label": "Lower-level allocation not itemized",
+      "amount": 39118100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 39118100
+      },
+      "completeness": "not_published",
+      "isRemainder": true,
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-1~i-i-policymaking-organs",
+      "parentId": "section-1",
+      "kind": "entity",
+      "code": "I",
+      "label": "Policymaking organs",
+      "amount": 1270700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1270700
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "part-II",
+      "parentId": "whole",
+      "kind": "part",
+      "code": "II",
+      "label": "Political affairs",
+      "amount": 343829600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 343829600
+      },
+      "completeness": "incomplete",
+      "note": "Exact sum of the displayed children for published coverage; one or more funding streams are incomplete or not published, so this is not a complete all-sources allocation."
+    },
+    {
+      "id": "section-3",
+      "parentId": "part-II",
+      "kind": "section",
+      "code": "3",
+      "label": "Political affairs",
+      "amount": 325872200,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 325872200
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-3~lower-level-allocation-not-itemized",
+      "parentId": "section-3",
+      "kind": "allocation",
+      "code": null,
+      "label": "Lower-level allocation not itemized",
+      "amount": 277268100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 277268100
+      },
+      "completeness": "not_published",
+      "isRemainder": true,
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-3~i-i-department-of-political-and-peacebuilding-affairs",
+      "parentId": "section-3",
+      "kind": "entity",
+      "code": "I",
+      "label": "Department of Political and Peacebuilding Affairs",
+      "amount": 45792400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 45792400
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-3~i-i-department-of-political-and-peacebuilding-affairs~component",
+      "parentId": "section-3~i-i-department-of-political-and-peacebuilding-affairs",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 45792400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 45792400
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-3~i-i-department-of-political-and-peacebuilding-affairs~component~programme-of-work",
+      "parentId": "section-3~i-i-department-of-political-and-peacebuilding-affairs~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 40042000,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 40042000
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-3~i-i-department-of-political-and-peacebuilding-affairs~component~programme-support",
+      "parentId": "section-3~i-i-department-of-political-and-peacebuilding-affairs~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 2736700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 2736700
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-3~i-i-department-of-political-and-peacebuilding-affairs~component~executive-direction-and-management",
+      "parentId": "section-3~i-i-department-of-political-and-peacebuilding-affairs~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 2599400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 2599400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-3~i-i-department-of-political-and-peacebuilding-affairs~component~policymaking-organs",
+      "parentId": "section-3~i-i-department-of-political-and-peacebuilding-affairs~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Policymaking organs",
+      "amount": 414300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 414300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-3~ii-ii-special-political-missions",
+      "parentId": "section-3",
+      "kind": "entity",
+      "code": "II",
+      "label": "Special political missions",
+      "amount": 2811700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 2811700
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-4",
+      "parentId": "part-II",
+      "kind": "section",
+      "code": "4",
+      "label": "Disarmament",
+      "amount": 12379400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 12379400
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-4~component",
+      "parentId": "section-4",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 12379300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 12379300
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-4~component~programme-of-work",
+      "parentId": "section-4~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 9402700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 9402700
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-4~component~executive-direction-and-management",
+      "parentId": "section-4~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 2129400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 2129400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-4~component~programme-support",
+      "parentId": "section-4~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 840700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 840700
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-4~component~policymaking-organs",
+      "parentId": "section-4~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Policymaking organs",
+      "amount": 6500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 6500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-4~lower-level-allocation-not-itemized",
+      "parentId": "section-4",
+      "kind": "allocation",
+      "code": null,
+      "label": "Lower-level allocation not itemized",
+      "amount": 100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 100
+      },
+      "completeness": "not_published",
+      "isRemainder": true,
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-5",
+      "parentId": "part-II",
+      "kind": "section",
+      "code": "5",
+      "label": "Peacekeeping operations",
+      "amount": 5578000,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 5578000
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-5~component",
+      "parentId": "section-5",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 5578000,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 5578000
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-5~component~programme-of-work",
+      "parentId": "section-5~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 4660300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 4660300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-5~component~executive-direction-and-management",
+      "parentId": "section-5~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 809300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 809300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-5~component~programme-support",
+      "parentId": "section-5~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 108400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 108400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "part-V",
+      "parentId": "whole",
+      "kind": "part",
+      "code": "V",
+      "label": "Regional cooperation for development",
+      "amount": 277212100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 277212100
+      },
+      "completeness": "incomplete",
+      "note": "Exact sum of the displayed children for published coverage; one or more funding streams are incomplete or not published, so this is not a complete all-sources allocation."
+    },
+    {
+      "id": "section-18",
+      "parentId": "part-V",
+      "kind": "section",
+      "code": "18",
+      "label": "Economic and social development in Africa",
+      "amount": 69355400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 69355400
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-18~component",
+      "parentId": "section-18",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 69355400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 69355400
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-18~component~programme-of-work",
+      "parentId": "section-18~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 35378900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 35378900
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-18~component~programme-support",
+      "parentId": "section-18~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 24985000,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 24985000
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-18~component~executive-direction-and-management",
+      "parentId": "section-18~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 8596300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 8596300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-18~component~policymaking-organs",
+      "parentId": "section-18~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Policymaking organs",
+      "amount": 395200,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 395200
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-21",
+      "parentId": "part-V",
+      "kind": "section",
+      "code": "21",
+      "label": "Economic and social development in Latin America and the Caribbean",
+      "amount": 57450500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 57450500
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-21~component",
+      "parentId": "section-21",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 57450600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 57450600
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-21~component~programme-of-work",
+      "parentId": "section-21~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 32853500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 32853500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-21~component~programme-support",
+      "parentId": "section-21~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 19733900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 19733900
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-21~component~executive-direction-and-management",
+      "parentId": "section-21~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 4088100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 4088100
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-21~component~policymaking-organs",
+      "parentId": "section-21~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Policymaking organs",
+      "amount": 775100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 775100
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-19",
+      "parentId": "part-V",
+      "kind": "section",
+      "code": "19",
+      "label": "Economic and social development in Asia and the Pacific",
+      "amount": 52117500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 52117500
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-19~component",
+      "parentId": "section-19",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 52117500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 52117500
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-19~component~programme-of-work",
+      "parentId": "section-19~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 28276400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 28276400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-19~component~programme-support",
+      "parentId": "section-19~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 20172900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 20172900
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-19~component~executive-direction-and-management",
+      "parentId": "section-19~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 3200600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 3200600
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-19~component~policymaking-organs",
+      "parentId": "section-19~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Policymaking organs",
+      "amount": 467600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 467600
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-22",
+      "parentId": "part-V",
+      "kind": "section",
+      "code": "22",
+      "label": "Economic and social development in Western Asia",
+      "amount": 35533300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 35533300
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-22~component",
+      "parentId": "section-22",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 35533300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 35533300
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-22~component~programme-of-work",
+      "parentId": "section-22~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 18914500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 18914500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-22~component~programme-support",
+      "parentId": "section-22~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 13937300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 13937300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-22~component~executive-direction-and-management",
+      "parentId": "section-22~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 2594400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 2594400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-22~component~policymaking-organs",
+      "parentId": "section-22~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Policymaking organs",
+      "amount": 87100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 87100
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-20",
+      "parentId": "part-V",
+      "kind": "section",
+      "code": "20",
+      "label": "Economic development in Europe",
+      "amount": 34180600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 34180600
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-20~component",
+      "parentId": "section-20",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 34180500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 34180500
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-20~component~programme-of-work",
+      "parentId": "section-20~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 26844300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 26844300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-20~component~executive-direction-and-management",
+      "parentId": "section-20~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 4427300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 4427300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-20~component~programme-support",
+      "parentId": "section-20~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 2908900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 2908900
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-20~lower-level-allocation-not-itemized",
+      "parentId": "section-20",
+      "kind": "allocation",
+      "code": null,
+      "label": "Lower-level allocation not itemized",
+      "amount": 100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 100
+      },
+      "completeness": "not_published",
+      "isRemainder": true,
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-23",
+      "parentId": "part-V",
+      "kind": "section",
+      "code": "23",
+      "label": "Regular programme of technical cooperation",
+      "amount": 28574800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 28574800
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-23~b-b-regional-and-subregional-advisory-services",
+      "parentId": "section-23",
+      "kind": "component",
+      "code": "B",
+      "label": "Regional and subregional advisory services",
+      "amount": 17473200,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 17473200
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-23~a-a-sectoral-advisory-services",
+      "parentId": "section-23",
+      "kind": "component",
+      "code": "A",
+      "label": "Sectoral advisory services",
+      "amount": 11101600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 11101600
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "part-XIV",
+      "parentId": "whole",
+      "kind": "part",
+      "code": "XIV",
+      "label": "Staff assessment",
+      "amount": 258900100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 258900100
+      },
+      "completeness": "incomplete",
+      "note": "Exact sum of the displayed children for published coverage; one or more funding streams are incomplete or not published, so this is not a complete all-sources allocation."
+    },
+    {
+      "id": "section-36",
+      "parentId": "part-XIV",
+      "kind": "section",
+      "code": "36",
+      "label": "Staff assessment",
+      "amount": 258900100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 258900100
+      },
+      "completeness": "not_published",
+      "note": "The expenditure total is source-linked; this fast view does not assert a complete lower allocation schedule."
+    },
+    {
+      "id": "part-IV",
+      "parentId": "whole",
+      "kind": "part",
+      "code": "IV",
+      "label": "International cooperation for development",
+      "amount": 224719700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 224719700
+      },
+      "completeness": "incomplete",
+      "note": "Exact sum of the displayed children for published coverage; one or more funding streams are incomplete or not published, so this is not a complete all-sources allocation."
+    },
+    {
+      "id": "section-9",
+      "parentId": "part-IV",
+      "kind": "section",
+      "code": "9",
+      "label": "Economic and social affairs",
+      "amount": 80292000,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 80292000
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-9~component",
+      "parentId": "section-9",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 80292000,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 80292000
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-9~component~programme-of-work",
+      "parentId": "section-9~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 69893000,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 69893000
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-9~component~executive-direction-and-management",
+      "parentId": "section-9~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 4874700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 4874700
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-9~component~programme-support",
+      "parentId": "section-9~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 4307500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 4307500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-9~component~policymaking-organs",
+      "parentId": "section-9~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Policymaking organs",
+      "amount": 1216800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1216800
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-12",
+      "parentId": "part-IV",
+      "kind": "section",
+      "code": "12",
+      "label": "Trade and development",
+      "amount": 68669200,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 68669200
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-12~component",
+      "parentId": "section-12",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 68669200,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 68669200
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-12~component~programme-of-work",
+      "parentId": "section-12~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 52216000,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 52216000
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-12~component~programme-support",
+      "parentId": "section-12~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 11172300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 11172300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-12~component~executive-direction-and-management",
+      "parentId": "section-12~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 5119400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 5119400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-12~component~policymaking-organs",
+      "parentId": "section-12~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Policymaking organs",
+      "amount": 161500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 161500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-16",
+      "parentId": "part-IV",
+      "kind": "section",
+      "code": "16",
+      "label": "International drug control, crime and terrorism prevention and criminal justice",
+      "amount": 21473800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 21473800
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-16~component",
+      "parentId": "section-16",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 21473900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 21473900
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-16~component~programme-of-work",
+      "parentId": "section-16~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 19446500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 19446500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-16~component~executive-direction-and-management",
+      "parentId": "section-16~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 835700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 835700
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-16~component~policymaking-organs",
+      "parentId": "section-16~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Policymaking organs",
+      "amount": 683600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 683600
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-16~component~programme-support",
+      "parentId": "section-16~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 508100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 508100
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-14",
+      "parentId": "part-IV",
+      "kind": "section",
+      "code": "14",
+      "label": "Environment",
+      "amount": 20486900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 20486900
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-14~component",
+      "parentId": "section-14",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 20486900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 20486900
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-14~component~programme-of-work",
+      "parentId": "section-14~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 15995500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 15995500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-14~component~executive-direction-and-management",
+      "parentId": "section-14~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 3737900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 3737900
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-14~component~programme-support",
+      "parentId": "section-14~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 751500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 751500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-14~component~policymaking-organs",
+      "parentId": "section-14~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Policymaking organs",
+      "amount": 2000,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 2000
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-15",
+      "parentId": "part-IV",
+      "kind": "section",
+      "code": "15",
+      "label": "Human settlements",
+      "amount": 11544300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 11544300
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-15~component",
+      "parentId": "section-15",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 11544300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 11544300
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-15~component~programme-of-work",
+      "parentId": "section-15~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 8207500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 8207500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-15~component~executive-direction-and-management",
+      "parentId": "section-15~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 2210400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 2210400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-15~component~programme-support",
+      "parentId": "section-15~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 1117200,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1117200
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-15~component~policymaking-organs",
+      "parentId": "section-15~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Policymaking organs",
+      "amount": 9200,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 9200
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-17",
+      "parentId": "part-IV",
+      "kind": "section",
+      "code": "17",
+      "label": "UN-Women",
+      "amount": 8961300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 8961300
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-17~component",
+      "parentId": "section-17",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 8961200,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 8961200
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-17~component~programme-of-work",
+      "parentId": "section-17~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 7307700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 7307700
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-17~component~executive-direction-and-management",
+      "parentId": "section-17~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 891300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 891300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-17~component~programme-support",
+      "parentId": "section-17~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 696300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 696300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-17~component~policymaking-organs",
+      "parentId": "section-17~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Policymaking organs",
+      "amount": 65900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 65900
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-17~lower-level-allocation-not-itemized",
+      "parentId": "section-17",
+      "kind": "allocation",
+      "code": null,
+      "label": "Lower-level allocation not itemized",
+      "amount": 100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 100
+      },
+      "completeness": "not_published",
+      "isRemainder": true,
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-11",
+      "parentId": "part-IV",
+      "kind": "section",
+      "code": "11",
+      "label": "United Nations support for the New Partnership for Africa\u2019s Development",
+      "amount": 7765400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 7765400
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-11~component",
+      "parentId": "section-11",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 7765400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 7765400
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-11~component~programme-of-work",
+      "parentId": "section-11~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 7765400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 7765400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-10",
+      "parentId": "part-IV",
+      "kind": "section",
+      "code": "10",
+      "label": "Least developed countries, landlocked developing countries and small island developing States",
+      "amount": 5526800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 5526800
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-10~component",
+      "parentId": "section-10",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 5526800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 5526800
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-10~component~programme-of-work",
+      "parentId": "section-10~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 4209100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 4209100
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-10~component~executive-direction-and-management",
+      "parentId": "section-10~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 1317700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1317700
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "part-VI",
+      "parentId": "whole",
+      "kind": "part",
+      "code": "VI",
+      "label": "Human rights and humanitarian affairs",
+      "amount": 202985100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 202985100
+      },
+      "completeness": "incomplete",
+      "note": "Exact sum of the displayed children for published coverage; one or more funding streams are incomplete or not published, so this is not a complete all-sources allocation."
+    },
+    {
+      "id": "section-24",
+      "parentId": "part-VI",
+      "kind": "section",
+      "code": "24",
+      "label": "Human rights",
+      "amount": 113884800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 113884800
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-24~component",
+      "parentId": "section-24",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 113884800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 113884800
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-24~component~programme-of-work",
+      "parentId": "section-24~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 91840700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 91840700
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-24~component~executive-direction-and-management",
+      "parentId": "section-24~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 8134200,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 8134200
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-24~component~policymaking-organs",
+      "parentId": "section-24~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Policymaking organs",
+      "amount": 8009500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 8009500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-24~component~programme-support",
+      "parentId": "section-24~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 5900400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 5900400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-25",
+      "parentId": "part-VI",
+      "kind": "section",
+      "code": "25",
+      "label": "International protection, durable solutions and assistance to refugees",
+      "amount": 42954400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 42954400
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-25~component",
+      "parentId": "section-25",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 42954400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 42954400
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-25~component~programme-support",
+      "parentId": "section-25~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 42262900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 42262900
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-25~component~executive-direction-and-management",
+      "parentId": "section-25~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 691500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 691500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-26",
+      "parentId": "part-VI",
+      "kind": "section",
+      "code": "26",
+      "label": "Palestine refugees",
+      "amount": 28457600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 28457600
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-26~component",
+      "parentId": "section-26",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 28457600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 28457600
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-26~component~programme-of-work",
+      "parentId": "section-26~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 28457600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 28457600
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-27",
+      "parentId": "part-VI",
+      "kind": "section",
+      "code": "27",
+      "label": "Humanitarian assistance",
+      "amount": 17688300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 17688300
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-27~financial-resources-by-component",
+      "parentId": "section-27",
+      "kind": "entity",
+      "code": null,
+      "label": "Financial resources by component",
+      "amount": 17688300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 17688300
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-27~financial-resources-by-component~programme-of-work",
+      "parentId": "section-27~financial-resources-by-component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 10333700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 10333700
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-27~financial-resources-by-component~executive-direction-and-management",
+      "parentId": "section-27~financial-resources-by-component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 6097300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 6097300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-27~financial-resources-by-component~programme-support",
+      "parentId": "section-27~financial-resources-by-component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 1257300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1257300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "part-XII",
+      "parentId": "whole",
+      "kind": "part",
+      "code": "XII",
+      "label": "Safety and security",
+      "amount": 128855900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 128855900
+      },
+      "completeness": "incomplete",
+      "note": "Exact sum of the displayed children for published coverage; one or more funding streams are incomplete or not published, so this is not a complete all-sources allocation."
+    },
+    {
+      "id": "section-34",
+      "parentId": "part-XII",
+      "kind": "section",
+      "code": "34",
+      "label": "Safety and security",
+      "amount": 128855900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 128855900
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-34~component",
+      "parentId": "section-34",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 125352100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 125352100
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-34~component~programme-of-work",
+      "parentId": "section-34~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 119200400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 119200400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-34~component~executive-direction-and-management",
+      "parentId": "section-34~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 3208700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 3208700
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-34~component~programme-support",
+      "parentId": "section-34~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 2943000,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 2943000
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-34~lower-level-allocation-not-itemized",
+      "parentId": "section-34",
+      "kind": "allocation",
+      "code": null,
+      "label": "Lower-level allocation not itemized",
+      "amount": 3503800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 3503800
+      },
+      "completeness": "not_published",
+      "isRemainder": true,
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "part-VIII",
+      "parentId": "whole",
+      "kind": "part",
+      "code": "VIII",
+      "label": "Common support services",
+      "amount": 103084300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 103084300
+      },
+      "completeness": "incomplete",
+      "note": "Exact sum of the displayed children for published coverage; one or more funding streams are incomplete or not published, so this is not a complete all-sources allocation."
+    },
+    {
+      "id": "section-29E",
+      "parentId": "part-VIII",
+      "kind": "section",
+      "code": "29E",
+      "label": "Administration, Geneva",
+      "amount": 69230900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 69230900
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-29E~component",
+      "parentId": "section-29E",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 69230900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 69230900
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-29E~component~programme-of-work",
+      "parentId": "section-29E~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 68256500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 68256500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-29E~component~executive-direction-and-management",
+      "parentId": "section-29E~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 974400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 974400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-29F",
+      "parentId": "part-VIII",
+      "kind": "section",
+      "code": "29F",
+      "label": "Administration, Vienna",
+      "amount": 18565700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 18565700
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-29F~lower-level-allocation-not-itemized",
+      "parentId": "section-29F",
+      "kind": "allocation",
+      "code": null,
+      "label": "Lower-level allocation not itemized",
+      "amount": 18565700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 18565700
+      },
+      "completeness": "not_published",
+      "isRemainder": true,
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-29G",
+      "parentId": "part-VIII",
+      "kind": "section",
+      "code": "29G",
+      "label": "Administration, Nairobi",
+      "amount": 15287700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 15287700
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-29G~component",
+      "parentId": "section-29G",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 15287700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 15287700
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-29G~component~programme-of-work",
+      "parentId": "section-29G~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 14473800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 14473800
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-29G~component~executive-direction-and-management",
+      "parentId": "section-29G~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 813900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 813900
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "part-VII",
+      "parentId": "whole",
+      "kind": "part",
+      "code": "VII",
+      "label": "Global Communications",
+      "amount": 91402800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 91402800
+      },
+      "completeness": "incomplete",
+      "note": "Exact sum of the displayed children for published coverage; one or more funding streams are incomplete or not published, so this is not a complete all-sources allocation."
+    },
+    {
+      "id": "section-28",
+      "parentId": "part-VII",
+      "kind": "section",
+      "code": "28",
+      "label": "Global communications",
+      "amount": 91402800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 91402800
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-28~component",
+      "parentId": "section-28",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 91402900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 91402900
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-28~component~programme-of-work",
+      "parentId": "section-28~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 86377800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 86377800
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-28~component~programme-support",
+      "parentId": "section-28~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 3387400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 3387400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-28~component~executive-direction-and-management",
+      "parentId": "section-28~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 1637700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1637700
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "part-X",
+      "parentId": "whole",
+      "kind": "part",
+      "code": "X",
+      "label": "Jointly financed administrative activities and special expenses",
+      "amount": 83975300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 83975300
+      },
+      "completeness": "incomplete",
+      "note": "Exact sum of the displayed children for published coverage; one or more funding streams are incomplete or not published, so this is not a complete all-sources allocation."
+    },
+    {
+      "id": "section-32",
+      "parentId": "part-X",
+      "kind": "section",
+      "code": "32",
+      "label": "Special expenses",
+      "amount": 77781300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 77781300
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-32~a-a-contributions-to-after-service-health-insurance",
+      "parentId": "section-32",
+      "kind": "component",
+      "code": "A",
+      "label": "Contributions to after-service health insurance",
+      "amount": 71969500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 71969500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-32~c-c-general-insurance",
+      "parentId": "section-32",
+      "kind": "allocation",
+      "code": "C",
+      "label": "General insurance",
+      "amount": 3327800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 3327800
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-32~b-b-compensatory-payments",
+      "parentId": "section-32",
+      "kind": "component",
+      "code": "B",
+      "label": "Compensatory payments",
+      "amount": 1546800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1546800
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-32~e-e-pension-payments-to-former-secretaries-general",
+      "parentId": "section-32",
+      "kind": "component",
+      "code": "E",
+      "label": "Pension payments to former Secretaries-General",
+      "amount": 622800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 622800
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-32~d-d-bank-charges",
+      "parentId": "section-32",
+      "kind": "allocation",
+      "code": "D",
+      "label": "Bank charges",
+      "amount": 314400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 314400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-31",
+      "parentId": "part-X",
+      "kind": "section",
+      "code": "31",
+      "label": "Jointly financed administrative activities",
+      "amount": 6194000,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 6194000
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-31~lower-level-allocation-not-itemized",
+      "parentId": "section-31",
+      "kind": "allocation",
+      "code": null,
+      "label": "Lower-level allocation not itemized",
+      "amount": 6194000,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 6194000
+      },
+      "completeness": "not_published",
+      "isRemainder": true,
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "part-III",
+      "parentId": "whole",
+      "kind": "part",
+      "code": "III",
+      "label": "International justice and law",
+      "amount": 51413800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 51413800
+      },
+      "completeness": "incomplete",
+      "note": "Exact sum of the displayed children for published coverage; one or more funding streams are incomplete or not published, so this is not a complete all-sources allocation."
+    },
+    {
+      "id": "section-8",
+      "parentId": "part-III",
+      "kind": "section",
+      "code": "8",
+      "label": "Legal affairs",
+      "amount": 26071700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 26071700
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-8~i-i-office-of-legal-affairs",
+      "parentId": "section-8",
+      "kind": "entity",
+      "code": "I",
+      "label": "Office of Legal Affairs",
+      "amount": 26071700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 26071700
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-8~i-i-office-of-legal-affairs~component",
+      "parentId": "section-8~i-i-office-of-legal-affairs",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 26071700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 26071700
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-8~i-i-office-of-legal-affairs~component~programme-of-work",
+      "parentId": "section-8~i-i-office-of-legal-affairs~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 22241900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 22241900
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-8~i-i-office-of-legal-affairs~component~policymaking-organs",
+      "parentId": "section-8~i-i-office-of-legal-affairs~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Policymaking organs",
+      "amount": 1734800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1734800
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-8~i-i-office-of-legal-affairs~component~executive-direction-and-management",
+      "parentId": "section-8~i-i-office-of-legal-affairs~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 1168300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1168300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-8~i-i-office-of-legal-affairs~component~programme-support",
+      "parentId": "section-8~i-i-office-of-legal-affairs~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 926700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 926700
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-8~ii-ii-independent-investigative-mechanism-for-myanmar",
+      "parentId": "section-8",
+      "kind": "entity",
+      "code": "II",
+      "label": "Independent Investigative Mechanism for Myanmar",
+      "amount": 0,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 0
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-8~ii-ii-independent-investigative-mechanism-for-myanmar~component",
+      "parentId": "section-8~ii-ii-independent-investigative-mechanism-for-myanmar",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 0,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 0
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-8~ii-ii-independent-investigative-mechanism-for-myanmar~component~programme-of-work",
+      "parentId": "section-8~ii-ii-independent-investigative-mechanism-for-myanmar~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 0,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 0
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-8~iii-iii-international-impartial-and-independent-mechanism-to",
+      "parentId": "section-8",
+      "kind": "entity",
+      "code": "III",
+      "label": "International, Impartial and Independent Mechanism to Assist in the Investigation and Prosecution of Persons Responsible for the Most Serious Crimes under International Law Committed in the Syrian Arab Republic since March 2011",
+      "amount": 0,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 0
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-8~iii-iii-international-impartial-and-independent-mechanism-to~component",
+      "parentId": "section-8~iii-iii-international-impartial-and-independent-mechanism-to",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 0,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 0
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-8~iii-iii-international-impartial-and-independent-mechanism-to~component~programme-of-work",
+      "parentId": "section-8~iii-iii-international-impartial-and-independent-mechanism-to~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 0,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 0
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-7",
+      "parentId": "part-III",
+      "kind": "section",
+      "code": "7",
+      "label": "International Court of Justice",
+      "amount": 25342100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 25342100
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-7~component",
+      "parentId": "section-7",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 25342100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 25342100
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-7~component~registry",
+      "parentId": "section-7~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Registry",
+      "amount": 14509100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 14509100
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-7~component~members-of-the-court",
+      "parentId": "section-7~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Members of the Court",
+      "amount": 7178400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 7178400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-7~component~programme-support",
+      "parentId": "section-7~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 3654600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 3654600
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "part-XI",
+      "parentId": "whole",
+      "kind": "part",
+      "code": "XI",
+      "label": "Capital expenditures",
+      "amount": 36239400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 36239400
+      },
+      "completeness": "incomplete",
+      "note": "Exact sum of the displayed children for published coverage; one or more funding streams are incomplete or not published, so this is not a complete all-sources allocation."
+    },
+    {
+      "id": "section-33",
+      "parentId": "part-XI",
+      "kind": "section",
+      "code": "33",
+      "label": "Construction, alteration, improvement and major maintenance",
+      "amount": 36239400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 36239400
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-33~2-2-geneva",
+      "parentId": "section-33",
+      "kind": "subprogramme",
+      "code": "2",
+      "label": "Geneva",
+      "amount": 20186700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 20186700
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~2-2-geneva~alteration-and-improvement",
+      "parentId": "section-33~2-2-geneva",
+      "kind": "allocation",
+      "code": null,
+      "label": "Alteration and improvement",
+      "amount": 18345300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 18345300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~2-2-geneva~major-maintenance",
+      "parentId": "section-33~2-2-geneva",
+      "kind": "allocation",
+      "code": null,
+      "label": "Major maintenance",
+      "amount": 1841400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1841400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~1-1-headquarters",
+      "parentId": "section-33",
+      "kind": "subprogramme",
+      "code": "1",
+      "label": "Headquarters",
+      "amount": 5960700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 5960700
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~1-1-headquarters~major-maintenance",
+      "parentId": "section-33~1-1-headquarters",
+      "kind": "allocation",
+      "code": null,
+      "label": "Major maintenance",
+      "amount": 4349300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 4349300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~1-1-headquarters~alteration-and-improvement",
+      "parentId": "section-33~1-1-headquarters",
+      "kind": "allocation",
+      "code": null,
+      "label": "Alteration and improvement",
+      "amount": 1611400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1611400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~5-5-escap",
+      "parentId": "section-33",
+      "kind": "subprogramme",
+      "code": "5",
+      "label": "ESCAP",
+      "amount": 3727800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 3727800
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~5-5-escap~alteration-and-improvement",
+      "parentId": "section-33~5-5-escap",
+      "kind": "allocation",
+      "code": null,
+      "label": "Alteration and improvement",
+      "amount": 2705300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 2705300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~5-5-escap~major-maintenance",
+      "parentId": "section-33~5-5-escap",
+      "kind": "allocation",
+      "code": null,
+      "label": "Major maintenance",
+      "amount": 1022500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1022500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~4-4-nairobi",
+      "parentId": "section-33",
+      "kind": "subprogramme",
+      "code": "4",
+      "label": "Nairobi",
+      "amount": 2550200,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 2550200
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~4-4-nairobi~major-maintenance",
+      "parentId": "section-33~4-4-nairobi",
+      "kind": "allocation",
+      "code": null,
+      "label": "Major maintenance",
+      "amount": 1291700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1291700
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~4-4-nairobi~alteration-and-improvement",
+      "parentId": "section-33~4-4-nairobi",
+      "kind": "allocation",
+      "code": null,
+      "label": "Alteration and improvement",
+      "amount": 1258500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1258500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~b-b-united-nations-enterprise-network",
+      "parentId": "section-33",
+      "kind": "component",
+      "code": "B",
+      "label": "United Nations enterprise network",
+      "amount": 1798300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1798300
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~b-b-united-nations-enterprise-network~unlabelled-printed-allocation",
+      "parentId": "section-33~b-b-united-nations-enterprise-network",
+      "kind": "allocation",
+      "code": null,
+      "label": "Unlabelled printed allocation",
+      "amount": 1798300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1798300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~3-3-vienna",
+      "parentId": "section-33",
+      "kind": "subprogramme",
+      "code": "3",
+      "label": "Vienna",
+      "amount": 843200,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 843200
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~3-3-vienna~major-maintenance",
+      "parentId": "section-33~3-3-vienna",
+      "kind": "allocation",
+      "code": null,
+      "label": "Major maintenance",
+      "amount": 614700,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 614700
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~3-3-vienna~alteration-and-improvement",
+      "parentId": "section-33~3-3-vienna",
+      "kind": "allocation",
+      "code": null,
+      "label": "Alteration and improvement",
+      "amount": 228500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 228500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~6-6-eclac",
+      "parentId": "section-33",
+      "kind": "subprogramme",
+      "code": "6",
+      "label": "ECLAC",
+      "amount": 626800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 626800
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~6-6-eclac~alteration-and-improvement",
+      "parentId": "section-33~6-6-eclac",
+      "kind": "allocation",
+      "code": null,
+      "label": "Alteration and improvement",
+      "amount": 481300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 481300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~6-6-eclac~major-maintenance",
+      "parentId": "section-33~6-6-eclac",
+      "kind": "allocation",
+      "code": null,
+      "label": "Major maintenance",
+      "amount": 145500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 145500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~7-7-eca",
+      "parentId": "section-33",
+      "kind": "subprogramme",
+      "code": "7",
+      "label": "ECA",
+      "amount": 288100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 288100
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~7-7-eca~major-maintenance",
+      "parentId": "section-33~7-7-eca",
+      "kind": "allocation",
+      "code": null,
+      "label": "Major maintenance",
+      "amount": 250300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 250300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~7-7-eca~alteration-and-improvement",
+      "parentId": "section-33~7-7-eca",
+      "kind": "allocation",
+      "code": null,
+      "label": "Alteration and improvement",
+      "amount": 37800,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 37800
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~8-8-escwa",
+      "parentId": "section-33",
+      "kind": "subprogramme",
+      "code": "8",
+      "label": "ESCWA",
+      "amount": 257600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 257600
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-33~8-8-escwa~alteration-and-improvement",
+      "parentId": "section-33~8-8-escwa",
+      "kind": "allocation",
+      "code": null,
+      "label": "Alteration and improvement",
+      "amount": 257600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 257600
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "part-IX",
+      "parentId": "whole",
+      "kind": "part",
+      "code": "IX",
+      "label": "Internal oversight",
+      "amount": 21428600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 21428600
+      },
+      "completeness": "incomplete",
+      "note": "Exact sum of the displayed children for published coverage; one or more funding streams are incomplete or not published, so this is not a complete all-sources allocation."
+    },
+    {
+      "id": "section-30",
+      "parentId": "part-IX",
+      "kind": "section",
+      "code": "30",
+      "label": "Internal oversight",
+      "amount": 21428600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 21428600
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-30~component",
+      "parentId": "section-30",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 21428600,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 21428600
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-30~component~programme-of-work",
+      "parentId": "section-30~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme of work",
+      "amount": 18454200,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 18454200
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-30~component~programme-support",
+      "parentId": "section-30~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Programme support",
+      "amount": 1515100,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1515100
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-30~component~executive-direction-and-management",
+      "parentId": "section-30~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Executive direction and management",
+      "amount": 1459300,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1459300
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "part-XIII",
+      "parentId": "whole",
+      "kind": "part",
+      "code": "XIII",
+      "label": "Development Account",
+      "amount": 14199400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 14199400
+      },
+      "completeness": "incomplete",
+      "note": "Exact sum of the displayed children for published coverage; one or more funding streams are incomplete or not published, so this is not a complete all-sources allocation."
+    },
+    {
+      "id": "section-35",
+      "parentId": "part-XIII",
+      "kind": "section",
+      "code": "35",
+      "label": "Development Account",
+      "amount": 14199400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 14199400
+      },
+      "completeness": "incomplete",
+      "note": "The node total is compared with the sum of the selected lower source-table rows; exact arithmetic does not certify universal lower-level coverage."
+    },
+    {
+      "id": "section-35~component",
+      "parentId": "section-35",
+      "kind": "entity",
+      "code": null,
+      "label": "Component",
+      "amount": 14199400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 14199400
+      },
+      "completeness": "incomplete",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-35~component~development-account",
+      "parentId": "section-35~component",
+      "kind": "allocation",
+      "code": null,
+      "label": "Development Account",
+      "amount": 14199400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 14199400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    }
+  ]
+}

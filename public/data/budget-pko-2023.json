@@ -1,0 +1,5197 @@
+{
+  "meta": {
+    "stream": "pko",
+    "title": "Peacekeeping operations",
+    "label": "Peacekeeping expenditure 2023/24 (USD)",
+    "cycle": 2025,
+    "measure": "expenditure",
+    "year": 2023,
+    "fiscalYear": "2023/24",
+    "currency": "USD",
+    "total": 4967008500,
+    "costClasses": {
+      "military_police_personnel": "Military and police personnel",
+      "civilian_personnel": "Civilian personnel",
+      "operational_costs": "Operational costs"
+    },
+    "missionNames": {
+      "MINURSO": "United Nations Mission for the Referendum in Western Sahara",
+      "MINUSCA": "United Nations Multidimensional Integrated Stabilization Mission in the Central African Republic",
+      "MINUSMA": "United Nations Multidimensional Integrated Stabilization Mission in Mali",
+      "MONUSCO": "United Nations Organization Stabilization Mission in the Democratic Republic of the Congo",
+      "RSCE": "Regional Service Centre in Entebbe",
+      "UNDOF": "United Nations Disengagement Observer Force",
+      "UNFICYP": "United Nations Peacekeeping Force in Cyprus",
+      "UNGSC": "United Nations Global Service Centre",
+      "UNIFIL": "United Nations Interim Force in Lebanon",
+      "UNISFA": "United Nations Interim Security Force for Abyei",
+      "UNMIK": "United Nations Interim Administration Mission in Kosovo",
+      "UNMISS": "United Nations Mission in South Sudan",
+      "UNSOS": "United Nations Support Office in Somalia",
+      "UNSOH": "United Nations Support Office in Somalia (successor arrangement)"
+    },
+    "partial": false,
+    "scopeLabel": "Peacekeeping missions included in the per-mission corpus",
+    "scopeWarning": "This is not the complete UN peacekeeping budget. The support account, enterprise items and some closed-mission accounts are outside this corpus.",
+    "coverage": {
+      "missionsInCycleReference": 12,
+      "missionsDisplayed": 12,
+      "displayedMissionCodes": [
+        "MINURSO",
+        "MINUSCA",
+        "MONUSCO",
+        "RSCE",
+        "UNDOF",
+        "UNFICYP",
+        "UNGSC",
+        "UNIFIL",
+        "UNISFA",
+        "UNMIK",
+        "UNMISS",
+        "UNSOS"
+      ],
+      "missingCanonicalDetail": [],
+      "noPublishedValueForLens": [],
+      "completeness": "complete_for_published_lens"
+    },
+    "verification": {
+      "hierarchyArithmetic": "exact",
+      "sourceBinding": "existing_extraction_reference",
+      "sourceCellCertification": "not_run",
+      "overall": "partial"
+    },
+    "source": {
+      "repo": "united-nations/programme-budget-data",
+      "release": "financial-data-v1.4",
+      "url": "https://github.com/united-nations/programme-budget-data/releases/tag/financial-data-v1.4"
+    }
+  },
+  "nodes": [
+    {
+      "id": "all-missions",
+      "parentId": null,
+      "kind": "whole",
+      "code": null,
+      "label": "Peacekeeping missions",
+      "amount": 4967008500,
+      "basis": "derived_sum_of_included_missions"
+    },
+    {
+      "id": "MINURSO",
+      "parentId": "all-missions",
+      "kind": "mission",
+      "code": "MINURSO",
+      "label": "United Nations Mission for the Referendum in Western Sahara",
+      "amount": 64209100,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Gross requirements",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA",
+      "parentId": "all-missions",
+      "kind": "mission",
+      "code": "MINUSCA",
+      "label": "United Nations Multidimensional Integrated Stabilization Mission in the Central African Republic",
+      "amount": 1142981500,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Gross requirements",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO",
+      "parentId": "all-missions",
+      "kind": "mission",
+      "code": "MONUSCO",
+      "label": "United Nations Organization Stabilization Mission in the Democratic Republic of the Congo",
+      "amount": 1000358900,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Gross requirements",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE",
+      "parentId": "all-missions",
+      "kind": "mission",
+      "code": "RSCE",
+      "label": "Regional Service Centre in Entebbe",
+      "amount": 43533200,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "Gross requirements",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF",
+      "parentId": "all-missions",
+      "kind": "mission",
+      "code": "UNDOF",
+      "label": "United Nations Disengagement Observer Force",
+      "amount": 66910500,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Gross requirements",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP",
+      "parentId": "all-missions",
+      "kind": "mission",
+      "code": "UNFICYP",
+      "label": "United Nations Peacekeeping Force in Cyprus",
+      "amount": 56086300,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Gross requirements",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC",
+      "parentId": "all-missions",
+      "kind": "mission",
+      "code": "UNGSC",
+      "label": "United Nations Global Service Centre",
+      "amount": 65766400,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "Gross requirements",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL",
+      "parentId": "all-missions",
+      "kind": "mission",
+      "code": "UNIFIL",
+      "label": "United Nations Interim Force in Lebanon",
+      "amount": 511532400,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Gross requirements",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA",
+      "parentId": "all-missions",
+      "kind": "mission",
+      "code": "UNISFA",
+      "label": "United Nations Interim Security Force for Abyei",
+      "amount": 287112000,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Gross requirements",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK",
+      "parentId": "all-missions",
+      "kind": "mission",
+      "code": "UNMIK",
+      "label": "United Nations Interim Administration Mission in Kosovo",
+      "amount": 40628900,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Gross requirements",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS",
+      "parentId": "all-missions",
+      "kind": "mission",
+      "code": "UNMISS",
+      "label": "United Nations Mission in South Sudan",
+      "amount": 1154913900,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Gross requirements",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS",
+      "parentId": "all-missions",
+      "kind": "mission",
+      "code": "UNSOS",
+      "label": "United Nations Support Office in Somalia",
+      "amount": 532975400,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Gross requirements",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~military_police_personnel",
+      "parentId": "MINURSO",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 7782600,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~military_police_personnel",
+      "parentId": "MINUSCA",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 627114000,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~military_police_personnel",
+      "parentId": "MONUSCO",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 506091600,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~military_police_personnel",
+      "parentId": "UNDOF",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 40413000,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~military_police_personnel",
+      "parentId": "UNFICYP",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 24089400,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~military_police_personnel",
+      "parentId": "UNIFIL",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 329705000,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~military_police_personnel",
+      "parentId": "UNISFA",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 129563400,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~military_police_personnel",
+      "parentId": "UNMIK",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 576900,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~military_police_personnel",
+      "parentId": "UNMISS",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 514227600,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~military_police_personnel",
+      "parentId": "UNSOS",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 133008000,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~civilian_personnel",
+      "parentId": "MINURSO",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 25011400,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~civilian_personnel",
+      "parentId": "MINUSCA",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 234813800,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~civilian_personnel",
+      "parentId": "MONUSCO",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 266820800,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~civilian_personnel",
+      "parentId": "RSCE",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 36994100,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~civilian_personnel",
+      "parentId": "UNDOF",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 15143000,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~civilian_personnel",
+      "parentId": "UNFICYP",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 16390300,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~civilian_personnel",
+      "parentId": "UNGSC",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 46108500,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~civilian_personnel",
+      "parentId": "UNIFIL",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 135216400,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~civilian_personnel",
+      "parentId": "UNISFA",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 54264200,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~civilian_personnel",
+      "parentId": "UNMIK",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 33040500,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~civilian_personnel",
+      "parentId": "UNMISS",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 335342900,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~civilian_personnel",
+      "parentId": "UNSOS",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 97011200,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~operational_costs",
+      "parentId": "MINURSO",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 31415100,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~operational_costs",
+      "parentId": "MINUSCA",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 281053700,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~operational_costs",
+      "parentId": "MONUSCO",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 227446500,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~operational_costs",
+      "parentId": "RSCE",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 6539100,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~operational_costs",
+      "parentId": "UNDOF",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 11354500,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~operational_costs",
+      "parentId": "UNFICYP",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 15606600,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~operational_costs",
+      "parentId": "UNGSC",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 19657900,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~operational_costs",
+      "parentId": "UNIFIL",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 46611000,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~operational_costs",
+      "parentId": "UNISFA",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 103284400,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~operational_costs",
+      "parentId": "UNMIK",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 7011500,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~operational_costs",
+      "parentId": "UNMISS",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 305343400,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~operational_costs",
+      "parentId": "UNSOS",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 302956200,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Subtotal",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~military_police_personnel~formed-police-units",
+      "parentId": "MINURSO~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Formed police units",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Formed police units",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~military_police_personnel~formed-police-units",
+      "parentId": "MINUSCA~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Formed police units",
+      "amount": 82580700,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Formed police units",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~military_police_personnel~formed-police-units",
+      "parentId": "MONUSCO~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Formed police units",
+      "amount": 43619900,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Formed police units",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~military_police_personnel~formed-police-units",
+      "parentId": "UNDOF~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Formed police units",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Formed police units",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~military_police_personnel~formed-police-units",
+      "parentId": "UNFICYP~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Formed police units",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Formed police units",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~military_police_personnel~formed-police-units",
+      "parentId": "UNIFIL~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Formed police units",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Formed police units",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~military_police_personnel~formed-police-units",
+      "parentId": "UNISFA~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Formed police units",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Formed police units",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~military_police_personnel~formed-police-units",
+      "parentId": "UNMIK~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Formed police units",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Formed police units",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~military_police_personnel~formed-police-units",
+      "parentId": "UNMISS~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Formed police units",
+      "amount": 27085900,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Formed police units",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~military_police_personnel~formed-police-units",
+      "parentId": "UNSOS~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Formed police units",
+      "amount": 6467400,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Formed police units",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~military_police_personnel~military-contingents",
+      "parentId": "MINURSO~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military contingents",
+      "amount": 935700,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Military contingents",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~military_police_personnel~military-contingents",
+      "parentId": "MINUSCA~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military contingents",
+      "amount": 503122100,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Military contingents",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~military_police_personnel~military-contingents",
+      "parentId": "MONUSCO~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military contingents",
+      "amount": 412789400,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Military contingents",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~military_police_personnel~military-contingents",
+      "parentId": "UNDOF~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military contingents",
+      "amount": 40413000,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Military contingents",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~military_police_personnel~military-contingents",
+      "parentId": "UNFICYP~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military contingents",
+      "amount": 20837300,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Military contingents",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~military_police_personnel~military-contingents",
+      "parentId": "UNIFIL~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military contingents",
+      "amount": 329705000,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Military contingents",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~military_police_personnel~military-contingents",
+      "parentId": "UNISFA~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military contingents",
+      "amount": 120103600,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Military contingents",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~military_police_personnel~military-contingents",
+      "parentId": "UNMIK~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military contingents",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Military contingents",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~military_police_personnel~military-contingents",
+      "parentId": "UNMISS~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military contingents",
+      "amount": 452729800,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Military contingents",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~military_police_personnel~military-contingents",
+      "parentId": "UNSOS~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military contingents",
+      "amount": 126430300,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Military contingents",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~military_police_personnel~military-observers",
+      "parentId": "MINURSO~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military observers",
+      "amount": 6792900,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Military observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~military_police_personnel~military-observers",
+      "parentId": "MINUSCA~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military observers",
+      "amount": 8764000,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Military observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~military_police_personnel~military-observers",
+      "parentId": "MONUSCO~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military observers",
+      "amount": 28554000,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Military observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~military_police_personnel~military-observers",
+      "parentId": "UNDOF~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military observers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Military observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~military_police_personnel~military-observers",
+      "parentId": "UNFICYP~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military observers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Military observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~military_police_personnel~military-observers",
+      "parentId": "UNIFIL~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military observers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Military observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~military_police_personnel~military-observers",
+      "parentId": "UNISFA~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military observers",
+      "amount": 7096000,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Military observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~military_police_personnel~military-observers",
+      "parentId": "UNMIK~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military observers",
+      "amount": 234500,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Military observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~military_police_personnel~military-observers",
+      "parentId": "UNMISS~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military observers",
+      "amount": 8646200,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Military observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~military_police_personnel~military-observers",
+      "parentId": "UNSOS~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Military observers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Military observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~military_police_personnel~united-nations-police",
+      "parentId": "MINURSO~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations police",
+      "amount": 54000,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "United Nations police",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~military_police_personnel~united-nations-police",
+      "parentId": "MINUSCA~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations police",
+      "amount": 32647200,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "United Nations police",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~military_police_personnel~united-nations-police",
+      "parentId": "MONUSCO~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations police",
+      "amount": 21128300,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "United Nations police",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~military_police_personnel~united-nations-police",
+      "parentId": "UNDOF~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations police",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "United Nations police",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~military_police_personnel~united-nations-police",
+      "parentId": "UNFICYP~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations police",
+      "amount": 3252100,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "United Nations police",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~military_police_personnel~united-nations-police",
+      "parentId": "UNIFIL~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations police",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "United Nations police",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~military_police_personnel~united-nations-police",
+      "parentId": "UNISFA~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations police",
+      "amount": 2363800,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "United Nations police",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~military_police_personnel~united-nations-police",
+      "parentId": "UNMIK~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations police",
+      "amount": 342400,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "United Nations police",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~military_police_personnel~united-nations-police",
+      "parentId": "UNMISS~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations police",
+      "amount": 25765700,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "United Nations police",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~military_police_personnel~united-nations-police",
+      "parentId": "UNSOS~military_police_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations police",
+      "amount": 110300,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "United Nations police",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~civilian_personnel~general-temporary-assistance",
+      "parentId": "MINURSO~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "General temporary assistance",
+      "amount": 202500,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "General temporary assistance",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~civilian_personnel~general-temporary-assistance",
+      "parentId": "MINUSCA~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "General temporary assistance",
+      "amount": 6924800,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "General temporary assistance",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~civilian_personnel~general-temporary-assistance",
+      "parentId": "MONUSCO~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "General temporary assistance",
+      "amount": 4710800,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "General temporary assistance",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~civilian_personnel~general-temporary-assistance",
+      "parentId": "RSCE~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "General temporary assistance",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "General temporary assistance",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~civilian_personnel~general-temporary-assistance",
+      "parentId": "UNDOF~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "General temporary assistance",
+      "amount": 140000,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "General temporary assistance",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~civilian_personnel~general-temporary-assistance",
+      "parentId": "UNFICYP~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "General temporary assistance",
+      "amount": 525200,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "General temporary assistance",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~civilian_personnel~general-temporary-assistance",
+      "parentId": "UNGSC~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "General temporary assistance",
+      "amount": 256500,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "General temporary assistance",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~civilian_personnel~general-temporary-assistance",
+      "parentId": "UNIFIL~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "General temporary assistance",
+      "amount": 431100,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "General temporary assistance",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~civilian_personnel~general-temporary-assistance",
+      "parentId": "UNISFA~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "General temporary assistance",
+      "amount": 2950400,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "General temporary assistance",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~civilian_personnel~general-temporary-assistance",
+      "parentId": "UNMIK~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "General temporary assistance",
+      "amount": 2300,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "General temporary assistance",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~civilian_personnel~general-temporary-assistance",
+      "parentId": "UNMISS~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "General temporary assistance",
+      "amount": 5416100,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "General temporary assistance",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~civilian_personnel~general-temporary-assistance",
+      "parentId": "UNSOS~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "General temporary assistance",
+      "amount": 1194400,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "General temporary assistance",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~civilian_personnel~government-provided-personnel",
+      "parentId": "MINURSO~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Government-provided personnel",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Government-provided personnel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~civilian_personnel~government-provided-personnel",
+      "parentId": "MINUSCA~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Government-provided personnel",
+      "amount": 5718500,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Government-provided personnel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~civilian_personnel~government-provided-personnel",
+      "parentId": "MONUSCO~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Government-provided personnel",
+      "amount": 2546400,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Government-provided personnel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~civilian_personnel~government-provided-personnel",
+      "parentId": "RSCE~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Government-provided personnel",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "Government-provided personnel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~civilian_personnel~government-provided-personnel",
+      "parentId": "UNDOF~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Government-provided personnel",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Government-provided personnel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~civilian_personnel~government-provided-personnel",
+      "parentId": "UNFICYP~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Government-provided personnel",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Government-provided personnel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~civilian_personnel~government-provided-personnel",
+      "parentId": "UNIFIL~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Government-provided personnel",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Government-provided personnel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~civilian_personnel~government-provided-personnel",
+      "parentId": "UNISFA~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Government-provided personnel",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Government-provided personnel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~civilian_personnel~government-provided-personnel",
+      "parentId": "UNMIK~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Government-provided personnel",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Government-provided personnel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~civilian_personnel~government-provided-personnel",
+      "parentId": "UNMISS~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Government-provided personnel",
+      "amount": 2103600,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Government-provided personnel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~civilian_personnel~government-provided-personnel",
+      "parentId": "UNSOS~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "Government-provided personnel",
+      "amount": 242700,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Government-provided personnel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~civilian_personnel~international-staff",
+      "parentId": "UNGSC~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "International staff",
+      "amount": 24257400,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "International staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~civilian_personnel~international-staff",
+      "parentId": "MINURSO~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "International staff",
+      "amount": 17252100,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "International staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~civilian_personnel~international-staff",
+      "parentId": "MINUSCA~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "International staff",
+      "amount": 174417800,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "International staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~civilian_personnel~international-staff",
+      "parentId": "MONUSCO~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "International staff",
+      "amount": 151899900,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "International staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~civilian_personnel~international-staff",
+      "parentId": "RSCE~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "International staff",
+      "amount": 24026300,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "International staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~civilian_personnel~international-staff",
+      "parentId": "UNDOF~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "International staff",
+      "amount": 11000100,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "International staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~civilian_personnel~international-staff",
+      "parentId": "UNFICYP~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "International staff",
+      "amount": 7644300,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "International staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~civilian_personnel~international-staff",
+      "parentId": "UNIFIL~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "International staff",
+      "amount": 66503300,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "International staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~civilian_personnel~international-staff",
+      "parentId": "UNISFA~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "International staff",
+      "amount": 43195500,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "International staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~civilian_personnel~international-staff",
+      "parentId": "UNMIK~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "International staff",
+      "amount": 20914900,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "International staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~civilian_personnel~international-staff",
+      "parentId": "UNMISS~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "International staff",
+      "amount": 216293200,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "International staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~civilian_personnel~international-staff",
+      "parentId": "UNSOS~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "International staff",
+      "amount": 86221700,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "International staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~civilian_personnel~national-general-service-staff",
+      "parentId": "UNGSC~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National General Service staff",
+      "amount": 21534000,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "National General Service staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~civilian_personnel~national-general-service-staff",
+      "parentId": "MINURSO~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National General Service staff",
+      "amount": 6476800,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "National General Service staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~civilian_personnel~national-general-service-staff",
+      "parentId": "MINUSCA~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National General Service staff",
+      "amount": 18702500,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "National General Service staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~civilian_personnel~national-general-service-staff",
+      "parentId": "MONUSCO~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National General Service staff",
+      "amount": 60795500,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "National General Service staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~civilian_personnel~national-general-service-staff",
+      "parentId": "RSCE~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National General Service staff",
+      "amount": 8268300,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "National General Service staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~civilian_personnel~national-general-service-staff",
+      "parentId": "UNDOF~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National General Service staff",
+      "amount": 3943800,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "National General Service staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~civilian_personnel~national-general-service-staff",
+      "parentId": "UNFICYP~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National General Service staff",
+      "amount": 7561200,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "National General Service staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~civilian_personnel~national-general-service-staff",
+      "parentId": "UNIFIL~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National General Service staff",
+      "amount": 59434100,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "National General Service staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~civilian_personnel~national-general-service-staff",
+      "parentId": "UNISFA~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National General Service staff",
+      "amount": 4746900,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "National General Service staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~civilian_personnel~national-general-service-staff",
+      "parentId": "UNMIK~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National General Service staff",
+      "amount": 8804000,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "National General Service staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~civilian_personnel~national-general-service-staff",
+      "parentId": "UNMISS~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National General Service staff",
+      "amount": 65334500,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "National General Service staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~civilian_personnel~national-general-service-staff",
+      "parentId": "UNSOS~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National General Service staff",
+      "amount": 4787500,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "National General Service staff",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~civilian_personnel~national-professional-officer",
+      "parentId": "UNGSC~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National Professional Officer",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "National Professional Officer",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~civilian_personnel~national-professional-officer",
+      "parentId": "MINURSO~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National Professional Officer",
+      "amount": 254700,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "National Professional Officer",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~civilian_personnel~national-professional-officer",
+      "parentId": "MONUSCO~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National Professional Officer",
+      "amount": 22335500,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "National Professional Officer",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~civilian_personnel~national-professional-officer",
+      "parentId": "RSCE~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National Professional Officer",
+      "amount": 4418200,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "National Professional Officer",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~civilian_personnel~national-professional-officer",
+      "parentId": "UNDOF~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National Professional Officer",
+      "amount": 59100,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "National Professional Officer",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~civilian_personnel~national-professional-officer",
+      "parentId": "UNFICYP~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National Professional Officer",
+      "amount": 659600,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "National Professional Officer",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~civilian_personnel~national-professional-officer",
+      "parentId": "UNIFIL~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National Professional Officer",
+      "amount": 8847900,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "National Professional Officer",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~civilian_personnel~national-professional-officer",
+      "parentId": "UNISFA~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National Professional Officer",
+      "amount": 1063100,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "National Professional Officer",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~civilian_personnel~national-professional-officer",
+      "parentId": "UNMIK~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National Professional Officer",
+      "amount": 2386600,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "National Professional Officer",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~civilian_personnel~national-professional-officer",
+      "parentId": "UNSOS~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National Professional Officer",
+      "amount": 3312200,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "National Professional Officer",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~civilian_personnel~national-professional-officers",
+      "parentId": "MINUSCA~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National Professional Officers",
+      "amount": 11812200,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "National Professional Officers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~civilian_personnel~national-professional-officers",
+      "parentId": "UNMISS~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "National Professional Officers",
+      "amount": 20998700,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "National Professional Officers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~civilian_personnel~united-nations-volunteers",
+      "parentId": "UNGSC~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations Volunteers",
+      "amount": 60600,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "United Nations Volunteers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~civilian_personnel~united-nations-volunteers",
+      "parentId": "MINURSO~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations Volunteers",
+      "amount": 825300,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "United Nations Volunteers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~civilian_personnel~united-nations-volunteers",
+      "parentId": "MINUSCA~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations Volunteers",
+      "amount": 17238000,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "United Nations Volunteers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~civilian_personnel~united-nations-volunteers",
+      "parentId": "MONUSCO~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations Volunteers",
+      "amount": 24532700,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "United Nations Volunteers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~civilian_personnel~united-nations-volunteers",
+      "parentId": "RSCE~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations Volunteers",
+      "amount": 281300,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "United Nations Volunteers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~civilian_personnel~united-nations-volunteers",
+      "parentId": "UNDOF~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations Volunteers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "United Nations Volunteers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~civilian_personnel~united-nations-volunteers",
+      "parentId": "UNFICYP~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations Volunteers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "United Nations Volunteers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~civilian_personnel~united-nations-volunteers",
+      "parentId": "UNIFIL~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations Volunteers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "United Nations Volunteers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~civilian_personnel~united-nations-volunteers",
+      "parentId": "UNISFA~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations Volunteers",
+      "amount": 2308300,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "United Nations Volunteers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~civilian_personnel~united-nations-volunteers",
+      "parentId": "UNMIK~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations Volunteers",
+      "amount": 932700,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "United Nations Volunteers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~civilian_personnel~united-nations-volunteers",
+      "parentId": "UNMISS~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations Volunteers",
+      "amount": 25196800,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "United Nations Volunteers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~civilian_personnel~united-nations-volunteers",
+      "parentId": "UNSOS~civilian_personnel",
+      "kind": "item",
+      "code": null,
+      "label": "United Nations Volunteers",
+      "amount": 1252700,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "United Nations Volunteers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~operational_costs~air-operations",
+      "parentId": "MINURSO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Air operations",
+      "amount": 17410400,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Air operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~operational_costs~air-operations",
+      "parentId": "MINUSCA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Air operations",
+      "amount": 79075100,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Air operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~operational_costs~air-operations",
+      "parentId": "MONUSCO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Air operations",
+      "amount": 66970500,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Air operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~operational_costs~air-operations",
+      "parentId": "RSCE~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Air operations",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "Air operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~operational_costs~air-operations",
+      "parentId": "UNDOF~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Air operations",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Air operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~operational_costs~air-operations",
+      "parentId": "UNFICYP~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Air operations",
+      "amount": 2359500,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Air operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~operational_costs~air-operations",
+      "parentId": "UNGSC~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Air operations",
+      "amount": 4900,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "Air operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~operational_costs~air-operations",
+      "parentId": "UNIFIL~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Air operations",
+      "amount": 3364400,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Air operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~operational_costs~air-operations",
+      "parentId": "UNISFA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Air operations",
+      "amount": 32508100,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Air operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~operational_costs~air-operations",
+      "parentId": "UNMIK~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Air operations",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Air operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~operational_costs~air-operations",
+      "parentId": "UNMISS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Air operations",
+      "amount": 108896700,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Air operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~operational_costs~air-operations",
+      "parentId": "UNSOS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Air operations",
+      "amount": 94099800,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Air operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~operational_costs~civilian-electoral-observers",
+      "parentId": "MINURSO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Civilian electoral observers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Civilian electoral observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~operational_costs~civilian-electoral-observers",
+      "parentId": "MINUSCA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Civilian electoral observers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Civilian electoral observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~operational_costs~civilian-electoral-observers",
+      "parentId": "MONUSCO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Civilian electoral observers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Civilian electoral observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~operational_costs~civilian-electoral-observers",
+      "parentId": "RSCE~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Civilian electoral observers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "Civilian electoral observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~operational_costs~civilian-electoral-observers",
+      "parentId": "UNDOF~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Civilian electoral observers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Civilian electoral observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~operational_costs~civilian-electoral-observers",
+      "parentId": "UNFICYP~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Civilian electoral observers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Civilian electoral observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~operational_costs~civilian-electoral-observers",
+      "parentId": "UNGSC~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Civilian electoral observers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "Civilian electoral observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~operational_costs~civilian-electoral-observers",
+      "parentId": "UNIFIL~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Civilian electoral observers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Civilian electoral observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~operational_costs~civilian-electoral-observers",
+      "parentId": "UNISFA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Civilian electoral observers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Civilian electoral observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~operational_costs~civilian-electoral-observers",
+      "parentId": "UNMIK~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Civilian electoral observers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Civilian electoral observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~operational_costs~civilian-electoral-observers",
+      "parentId": "UNMISS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Civilian electoral observers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Civilian electoral observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~operational_costs~civilian-electoral-observers",
+      "parentId": "UNSOS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Civilian electoral observers",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Civilian electoral observers",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~operational_costs~communications-and-information-technology",
+      "parentId": "MINURSO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Communications and information technology",
+      "amount": 2487700,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Communications and information technology",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~operational_costs~communications-and-information-technology",
+      "parentId": "MINUSCA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Communications and information technology",
+      "amount": 38738700,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Communications and information technology",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~operational_costs~communications-and-information-technology",
+      "parentId": "MONUSCO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Communications and information technology",
+      "amount": 44004800,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Communications and information technology",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~operational_costs~communications-and-information-technology",
+      "parentId": "RSCE~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Communications and information technology",
+      "amount": 4217200,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "Communications and information technology",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~operational_costs~communications-and-information-technology",
+      "parentId": "UNDOF~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Communications and information technology",
+      "amount": 1383800,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Communications and information technology",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~operational_costs~communications-and-information-technology",
+      "parentId": "UNFICYP~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Communications and information technology",
+      "amount": 1590000,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Communications and information technology",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~operational_costs~communications-and-information-technology",
+      "parentId": "UNGSC~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Communications and information technology",
+      "amount": 11179000,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "Communications and information technology",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~operational_costs~communications-and-information-technology",
+      "parentId": "UNIFIL~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Communications and information technology",
+      "amount": 7461400,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Communications and information technology",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~operational_costs~communications-and-information-technology",
+      "parentId": "UNISFA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Communications and information technology",
+      "amount": 10225200,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Communications and information technology",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~operational_costs~communications-and-information-technology",
+      "parentId": "UNMIK~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Communications and information technology",
+      "amount": 1265900,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Communications and information technology",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~operational_costs~communications-and-information-technology",
+      "parentId": "UNMISS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Communications and information technology",
+      "amount": 32789600,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Communications and information technology",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~operational_costs~communications-and-information-technology",
+      "parentId": "UNSOS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Communications and information technology",
+      "amount": 36170700,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Communications and information technology",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~operational_costs~consultants-and-consulting-services",
+      "parentId": "MINURSO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Consultants and consulting services",
+      "amount": 33100,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Consultants and consulting services",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~operational_costs~consultants-and-consulting-services",
+      "parentId": "MINUSCA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Consultants and consulting services",
+      "amount": 327700,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Consultants and consulting services",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~operational_costs~consultants-and-consulting-services",
+      "parentId": "MONUSCO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Consultants and consulting services",
+      "amount": 492000,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Consultants and consulting services",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~operational_costs~consultants-and-consulting-services",
+      "parentId": "RSCE~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Consultants and consulting services",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "Consultants and consulting services",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~operational_costs~consultants-and-consulting-services",
+      "parentId": "UNDOF~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Consultants and consulting services",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Consultants and consulting services",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~operational_costs~consultants-and-consulting-services",
+      "parentId": "UNFICYP~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Consultants and consulting services",
+      "amount": 27900,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Consultants and consulting services",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~operational_costs~consultants-and-consulting-services",
+      "parentId": "UNGSC~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Consultants and consulting services",
+      "amount": 251800,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "Consultants and consulting services",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~operational_costs~consultants-and-consulting-services",
+      "parentId": "UNIFIL~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Consultants and consulting services",
+      "amount": 127100,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Consultants and consulting services",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~operational_costs~consultants-and-consulting-services",
+      "parentId": "UNISFA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Consultants and consulting services",
+      "amount": 1275600,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Consultants and consulting services",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~operational_costs~consultants-and-consulting-services",
+      "parentId": "UNMIK~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Consultants and consulting services",
+      "amount": 21200,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Consultants and consulting services",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~operational_costs~consultants-and-consulting-services",
+      "parentId": "UNMISS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Consultants and consulting services",
+      "amount": 1001100,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Consultants and consulting services",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~operational_costs~consultants-and-consulting-services",
+      "parentId": "UNSOS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Consultants and consulting services",
+      "amount": 255200,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Consultants and consulting services",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~operational_costs~facilities-and-infrastructure",
+      "parentId": "MINURSO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Facilities and infrastructure",
+      "amount": 4049200,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Facilities and infrastructure",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~operational_costs~facilities-and-infrastructure",
+      "parentId": "MINUSCA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Facilities and infrastructure",
+      "amount": 71817600,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Facilities and infrastructure",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~operational_costs~facilities-and-infrastructure",
+      "parentId": "MONUSCO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Facilities and infrastructure",
+      "amount": 57375900,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Facilities and infrastructure",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~operational_costs~facilities-and-infrastructure",
+      "parentId": "RSCE~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Facilities and infrastructure",
+      "amount": 1773200,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "Facilities and infrastructure",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~operational_costs~facilities-and-infrastructure",
+      "parentId": "UNDOF~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Facilities and infrastructure",
+      "amount": 5968500,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Facilities and infrastructure",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~operational_costs~facilities-and-infrastructure",
+      "parentId": "UNFICYP~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Facilities and infrastructure",
+      "amount": 8352500,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Facilities and infrastructure",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~operational_costs~facilities-and-infrastructure",
+      "parentId": "UNGSC~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Facilities and infrastructure",
+      "amount": 6588300,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "Facilities and infrastructure",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~operational_costs~facilities-and-infrastructure",
+      "parentId": "UNIFIL~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Facilities and infrastructure",
+      "amount": 20402900,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Facilities and infrastructure",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~operational_costs~facilities-and-infrastructure",
+      "parentId": "UNISFA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Facilities and infrastructure",
+      "amount": 34235300,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Facilities and infrastructure",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~operational_costs~facilities-and-infrastructure",
+      "parentId": "UNMIK~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Facilities and infrastructure",
+      "amount": 2208600,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Facilities and infrastructure",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~operational_costs~facilities-and-infrastructure",
+      "parentId": "UNMISS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Facilities and infrastructure",
+      "amount": 90108900,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Facilities and infrastructure",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~operational_costs~facilities-and-infrastructure",
+      "parentId": "UNSOS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Facilities and infrastructure",
+      "amount": 94533100,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Facilities and infrastructure",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~operational_costs~ground-transportation",
+      "parentId": "MINURSO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Ground transportation",
+      "amount": 1387100,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Ground transportation",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~operational_costs~ground-transportation",
+      "parentId": "MINUSCA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Ground transportation",
+      "amount": 19397700,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Ground transportation",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~operational_costs~ground-transportation",
+      "parentId": "MONUSCO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Ground transportation",
+      "amount": 10045400,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Ground transportation",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~operational_costs~ground-transportation",
+      "parentId": "RSCE~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Ground transportation",
+      "amount": 71200,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "Ground transportation",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~operational_costs~ground-transportation",
+      "parentId": "UNDOF~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Ground transportation",
+      "amount": 2277900,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Ground transportation",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~operational_costs~ground-transportation",
+      "parentId": "UNFICYP~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Ground transportation",
+      "amount": 1648900,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Ground transportation",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~operational_costs~ground-transportation",
+      "parentId": "UNGSC~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Ground transportation",
+      "amount": 346100,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "Ground transportation",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~operational_costs~ground-transportation",
+      "parentId": "UNIFIL~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Ground transportation",
+      "amount": 9627500,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Ground transportation",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~operational_costs~ground-transportation",
+      "parentId": "UNISFA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Ground transportation",
+      "amount": 2311600,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Ground transportation",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~operational_costs~ground-transportation",
+      "parentId": "UNMIK~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Ground transportation",
+      "amount": 137100,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Ground transportation",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~operational_costs~ground-transportation",
+      "parentId": "UNMISS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Ground transportation",
+      "amount": 13557500,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Ground transportation",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~operational_costs~ground-transportation",
+      "parentId": "UNSOS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Ground transportation",
+      "amount": 12893100,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Ground transportation",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~operational_costs~marine-operations",
+      "parentId": "MINURSO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Marine operations",
+      "amount": 62200,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Marine operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~operational_costs~marine-operations",
+      "parentId": "MINUSCA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Marine operations",
+      "amount": 900600,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Marine operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~operational_costs~marine-operations",
+      "parentId": "MONUSCO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Marine operations",
+      "amount": 1392700,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Marine operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~operational_costs~marine-operations",
+      "parentId": "RSCE~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Marine operations",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "Marine operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~operational_costs~marine-operations",
+      "parentId": "UNDOF~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Marine operations",
+      "amount": 31800,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Marine operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~operational_costs~marine-operations",
+      "parentId": "UNFICYP~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Marine operations",
+      "amount": 181800,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Marine operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~operational_costs~marine-operations",
+      "parentId": "UNGSC~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Marine operations",
+      "amount": 11900,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "Marine operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~operational_costs~marine-operations",
+      "parentId": "UNIFIL~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Marine operations",
+      "amount": 84100,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Marine operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~operational_costs~marine-operations",
+      "parentId": "UNISFA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Marine operations",
+      "amount": 260700,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Marine operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~operational_costs~marine-operations",
+      "parentId": "UNMIK~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Marine operations",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Marine operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~operational_costs~marine-operations",
+      "parentId": "UNMISS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Marine operations",
+      "amount": 3662200,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Marine operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~operational_costs~marine-operations",
+      "parentId": "UNSOS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Marine operations",
+      "amount": 1086600,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Marine operations",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~operational_costs~medical",
+      "parentId": "MINURSO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Medical",
+      "amount": 90700,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Medical",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~operational_costs~medical",
+      "parentId": "MINUSCA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Medical",
+      "amount": 2035300,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Medical",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~operational_costs~medical",
+      "parentId": "MONUSCO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Medical",
+      "amount": 1143500,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Medical",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~operational_costs~medical",
+      "parentId": "RSCE~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Medical",
+      "amount": 100,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "Medical",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~operational_costs~medical",
+      "parentId": "UNDOF~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Medical",
+      "amount": 141000,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Medical",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~operational_costs~medical",
+      "parentId": "UNFICYP~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Medical",
+      "amount": 217100,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Medical",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~operational_costs~medical",
+      "parentId": "UNGSC~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Medical",
+      "amount": 40100,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "Medical",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~operational_costs~medical",
+      "parentId": "UNIFIL~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Medical",
+      "amount": 1065400,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Medical",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~operational_costs~medical",
+      "parentId": "UNISFA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Medical",
+      "amount": 659900,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Medical",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~operational_costs~medical",
+      "parentId": "UNMIK~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Medical",
+      "amount": 41100,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Medical",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~operational_costs~medical",
+      "parentId": "UNMISS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Medical",
+      "amount": 1246900,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Medical",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~operational_costs~medical",
+      "parentId": "UNSOS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Medical",
+      "amount": 9041500,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Medical",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~operational_costs~official-travel",
+      "parentId": "MINURSO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Official travel",
+      "amount": 571800,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Official travel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~operational_costs~official-travel",
+      "parentId": "MINUSCA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Official travel",
+      "amount": 3559600,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Official travel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~operational_costs~official-travel",
+      "parentId": "MONUSCO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Official travel",
+      "amount": 4472500,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Official travel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~operational_costs~official-travel",
+      "parentId": "RSCE~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Official travel",
+      "amount": 130600,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "Official travel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~operational_costs~official-travel",
+      "parentId": "UNDOF~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Official travel",
+      "amount": 160600,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Official travel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~operational_costs~official-travel",
+      "parentId": "UNFICYP~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Official travel",
+      "amount": 280800,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Official travel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~operational_costs~official-travel",
+      "parentId": "UNGSC~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Official travel",
+      "amount": 361200,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "Official travel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~operational_costs~official-travel",
+      "parentId": "UNIFIL~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Official travel",
+      "amount": 618800,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Official travel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~operational_costs~official-travel",
+      "parentId": "UNISFA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Official travel",
+      "amount": 1070900,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Official travel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~operational_costs~official-travel",
+      "parentId": "UNMIK~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Official travel",
+      "amount": 237800,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Official travel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~operational_costs~official-travel",
+      "parentId": "UNMISS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Official travel",
+      "amount": 2213900,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Official travel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~operational_costs~official-travel",
+      "parentId": "UNSOS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Official travel",
+      "amount": 1611300,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Official travel",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~operational_costs~other-supplies-services-and-equipment",
+      "parentId": "MINURSO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Other supplies, services and equipment",
+      "amount": 5322900,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Other supplies, services and equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~operational_costs~other-supplies-services-and-equipment",
+      "parentId": "MINUSCA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Other supplies, services and equipment",
+      "amount": 62209400,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Other supplies, services and equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~operational_costs~other-supplies-services-and-equipment",
+      "parentId": "MONUSCO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Other supplies, services and equipment",
+      "amount": 40437200,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Other supplies, services and equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~operational_costs~other-supplies-services-and-equipment",
+      "parentId": "RSCE~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Other supplies, services and equipment",
+      "amount": 346800,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "Other supplies, services and equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~operational_costs~other-supplies-services-and-equipment",
+      "parentId": "UNDOF~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Other supplies, services and equipment",
+      "amount": 1091400,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Other supplies, services and equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~operational_costs~other-supplies-services-and-equipment",
+      "parentId": "UNFICYP~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Other supplies, services and equipment",
+      "amount": 948100,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Other supplies, services and equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~operational_costs~other-supplies-services-and-equipment",
+      "parentId": "UNGSC~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Other supplies, services and equipment",
+      "amount": 874600,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "Other supplies, services and equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~operational_costs~other-supplies-services-and-equipment",
+      "parentId": "UNIFIL~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Other supplies, services and equipment",
+      "amount": 3359400,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Other supplies, services and equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~operational_costs~other-supplies-services-and-equipment",
+      "parentId": "UNISFA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Other supplies, services and equipment",
+      "amount": 19987100,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Other supplies, services and equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~operational_costs~other-supplies-services-and-equipment",
+      "parentId": "UNMIK~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Other supplies, services and equipment",
+      "amount": 3099800,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Other supplies, services and equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~operational_costs~other-supplies-services-and-equipment",
+      "parentId": "UNMISS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Other supplies, services and equipment",
+      "amount": 48436400,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Other supplies, services and equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~operational_costs~other-supplies-services-and-equipment",
+      "parentId": "UNSOS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Other supplies, services and equipment",
+      "amount": 53264900,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Other supplies, services and equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~operational_costs~quick-impact-projects",
+      "parentId": "MINURSO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Quick-impact projects",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Quick-impact projects",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~operational_costs~quick-impact-projects",
+      "parentId": "MINUSCA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Quick-impact projects",
+      "amount": 2992000,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Quick-impact projects",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~operational_costs~quick-impact-projects",
+      "parentId": "MONUSCO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Quick-impact projects",
+      "amount": 1112000,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Quick-impact projects",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~operational_costs~quick-impact-projects",
+      "parentId": "RSCE~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Quick-impact projects",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "Quick-impact projects",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~operational_costs~quick-impact-projects",
+      "parentId": "UNDOF~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Quick-impact projects",
+      "amount": 299500,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Quick-impact projects",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~operational_costs~quick-impact-projects",
+      "parentId": "UNFICYP~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Quick-impact projects",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Quick-impact projects",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~operational_costs~quick-impact-projects",
+      "parentId": "UNGSC~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Quick-impact projects",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "Quick-impact projects",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~operational_costs~quick-impact-projects",
+      "parentId": "UNIFIL~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Quick-impact projects",
+      "amount": 500000,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Quick-impact projects",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~operational_costs~quick-impact-projects",
+      "parentId": "UNISFA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Quick-impact projects",
+      "amount": 750000,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Quick-impact projects",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~operational_costs~quick-impact-projects",
+      "parentId": "UNMIK~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Quick-impact projects",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Quick-impact projects",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~operational_costs~quick-impact-projects",
+      "parentId": "UNMISS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Quick-impact projects",
+      "amount": 3430200,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Quick-impact projects",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~operational_costs~quick-impact-projects",
+      "parentId": "UNSOS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Quick-impact projects",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Quick-impact projects",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINURSO~operational_costs~special-equipment",
+      "parentId": "MINURSO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Special equipment",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/736",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F736&l=en&t=docx",
+        "rowLabel": "Special equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MINUSCA~operational_costs~special-equipment",
+      "parentId": "MINUSCA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Special equipment",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/765",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F765&l=en&t=docx",
+        "rowLabel": "Special equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "MONUSCO~operational_costs~special-equipment",
+      "parentId": "MONUSCO~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Special equipment",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/744",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F744&l=en&t=docx",
+        "rowLabel": "Special equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "RSCE~operational_costs~special-equipment",
+      "parentId": "RSCE~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Special equipment",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/751",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F751&l=en&t=docx",
+        "rowLabel": "Special equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNDOF~operational_costs~special-equipment",
+      "parentId": "UNDOF~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Special equipment",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/761",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F761&l=en&t=docx",
+        "rowLabel": "Special equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNFICYP~operational_costs~special-equipment",
+      "parentId": "UNFICYP~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Special equipment",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/733",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F733&l=en&t=docx",
+        "rowLabel": "Special equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNGSC~operational_costs~special-equipment",
+      "parentId": "UNGSC~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Special equipment",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/767",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F767&l=en&t=docx",
+        "rowLabel": "Special equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNIFIL~operational_costs~special-equipment",
+      "parentId": "UNIFIL~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Special equipment",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/752",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F752&l=en&t=docx",
+        "rowLabel": "Special equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNISFA~operational_costs~special-equipment",
+      "parentId": "UNISFA~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Special equipment",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/741",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F741&l=en&t=docx",
+        "rowLabel": "Special equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMIK~operational_costs~special-equipment",
+      "parentId": "UNMIK~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Special equipment",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/735",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F735&l=en&t=docx",
+        "rowLabel": "Special equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNMISS~operational_costs~special-equipment",
+      "parentId": "UNMISS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Special equipment",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/750",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F750&l=en&t=docx",
+        "rowLabel": "Special equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    },
+    {
+      "id": "UNSOS~operational_costs~special-equipment",
+      "parentId": "UNSOS~operational_costs",
+      "kind": "item",
+      "code": null,
+      "label": "Special equipment",
+      "amount": 0,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/79/755",
+        "url": "https://documents.un.org/api/symbol/access?s=A%2F79%2F755&l=en&t=docx",
+        "rowLabel": "Special equipment",
+        "columnHeader": "expenditure \u00b7 2023/24"
+      }
+    }
+  ]
+}

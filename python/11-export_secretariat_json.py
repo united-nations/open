@@ -46,6 +46,7 @@ def load() -> pd.DataFrame:
         "PRIORITY_AREA": "priority_area", "PART_ID": "part_id",
         "PART_DESCRIPTION": "part_desc", "ENTITY": "entity", "YEAR": "year",
         "AMOUNT": "amount", "SOURCE_TYPE": "source_type", "NOTE": "note",
+        "SECTION_ID": "section_id", "SECTION_DESCRIPTION": "section_desc",
     })
     df["entity"] = df["entity"].apply(normalize_entity)
     df["part_id"] = df["part_id"].replace(PART_ID_FIXES)
@@ -56,16 +57,26 @@ def load() -> pd.DataFrame:
     df.loc[pk, "part_id"] = PEACEKEEPING_PART
     df.loc[pk, "part_desc"] = PEACEKEEPING_PART
 
-    return df[["priority_area", "part_id", "part_desc", "entity", "year", "amount", "source_type", "note"]]
+    df["section_id"] = df["section_id"].astype(str)
+    return df[["priority_area", "part_id", "part_desc", "section_id", "section_desc",
+               "entity", "year", "amount", "source_type", "note"]]
 
 def build_records(year_df: pd.DataFrame) -> list[dict]:
-    """Net amount aggregated by (entity, priority_area, part). Both lenses derive from this."""
-    agg = (year_df.groupby(["entity", "priority_area", "part_id", "part_desc"], as_index=False)["amount"]
-                  .sum())
+    """Net amount aggregated by (entity, priority_area, part, section).
+
+    The section is the level between the part and the entity in the budget
+    documents, and the treemap draws the three levels as one nest, so it has to
+    travel with the record.
+    """
+    keys = ["entity", "priority_area", "part_id", "part_desc",
+            "section_id", "section_desc"]
+    agg = year_df.groupby(keys, as_index=False)["amount"].sum()
     agg = agg.sort_values("amount", ascending=False)
     return [
         {"entity": r.entity, "priority_area": r.priority_area,
-         "part_id": r.part_id, "part_desc": r.part_desc, "amount": round(r.amount, 2)}
+         "part_id": r.part_id, "part_desc": r.part_desc,
+         "section_id": r.section_id, "section_desc": r.section_desc,
+         "amount": round(r.amount, 2)}
         for r in agg.itertuples()
     ]
 

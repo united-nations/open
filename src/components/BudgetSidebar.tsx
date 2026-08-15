@@ -1,0 +1,301 @@
+"use client";
+
+import { ExternalLink, X } from "lucide-react";
+import { useCallback, useEffect, useState } from "react";
+import type { BudgetMeta, BudgetNode } from "@/types";
+import { formatBudget } from "@/lib/entities";
+import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { ShareButton } from "@/components/ShareButton";
+import { FUNDING_SOURCES } from "@/lib/budgetGroupings";
+
+interface BudgetSidebarProps {
+  node: BudgetNode;
+  parent: BudgetNode | null;
+  childNodes: BudgetNode[];
+  meta: BudgetMeta;
+  hashPrefix: string;
+  onSelect: (id: string) => void;
+  onClose: () => void;
+}
+
+export function BudgetSidebar({
+  node,
+  parent,
+  childNodes,
+  meta,
+  hashPrefix,
+  onSelect,
+  onClose,
+}: BudgetSidebarProps) {
+  const [isVisible, setIsVisible] = useState(false);
+  const [isClosing, setIsClosing] = useState(false);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const focusTrapRef = useFocusTrap(true);
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setIsVisible(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
+  const handleClose = useCallback(() => {
+    setIsClosing(true);
+    setTimeout(() => onClose(), 300);
+  }, [onClose]);
+
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") handleClose();
+    };
+    document.addEventListener("keydown", handleEscape);
+    return () => document.removeEventListener("keydown", handleEscape);
+  }, [handleClose]);
+
+  useEffect(() => {
+    document.documentElement.style.overflow = "hidden";
+    return () => {
+      document.documentElement.style.overflow = "";
+    };
+  }, []);
+
+  const minSwipeDistance = 50;
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+  const onTouchMove = (e: React.TouchEvent) => setTouchEnd(e.targetTouches[0].clientX);
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    if (touchStart - touchEnd < -minSwipeDistance) handleClose();
+  };
+
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    if (e.target === e.currentTarget) handleClose();
+  };
+
+  const shareOfTotal = meta.total > 0 ? (node.amount / meta.total) * 100 : 0;
+  const childMax = childNodes.reduce((m, c) => Math.max(m, c.amount), 0);
+  const fundingEntries = Object.entries(node.values ?? {}).filter(([, v]) => v > 0);
+  // The published total leaves out any section that prints only one funding
+  // source (International Trade Centre, in the 2027 edition), but the
+  // funding-source rows still contain it. Say so, rather than let the reader
+  // add the rows up and find a different number.
+  const fundingSum = fundingEntries.reduce((s, [, v]) => s + v, 0);
+  const fundingGap = fundingSum - node.amount;
+  const omittedLabels = (meta.omitted ?? []).map((o) => o.label).join(", ");
+  const isPrinted = node.basis.includes("printed");
+  const titleId = "budget-sidebar-title";
+
+  // What the row is, and where it sits. The rows below a section keep the name
+  // of their kind, because "component" and "entity" are not the same thing and
+  // the reader should not have to guess which one a tile is.
+  const KIND_NAMES: Partial<Record<typeof node.kind, string>> = {
+    entity: "Entity",
+    component: "Component",
+    subprogramme: "Subprogramme",
+    allocation: "Allocation",
+  };
+
+  const subtitle = () => {
+    if (node.kind === "section") return `Budget section ${node.code}`;
+    if (node.kind === "part") return `Budget part ${node.code}`;
+    if (node.kind === "mission") return meta.missionNames?.[node.code ?? ""] ?? "Peacekeeping mission";
+    if (node.kind === "class") return meta.missionNames?.[node.mission ?? ""] ?? node.mission ?? "";
+    if (node.kind === "item") return parent?.label ?? "";
+    const kindName = KIND_NAMES[node.kind];
+    if (kindName) return parent ? `${kindName} of ${parent.label}` : kindName;
+    return meta.scopeLabel;
+  };
+
+  return (
+    <div
+      className={`fixed inset-0 z-50 flex items-center justify-end bg-black/50 transition-all duration-300 ease-out ${isVisible && !isClosing ? "opacity-100" : "opacity-0"}`}
+      onClick={handleBackdropClick}
+    >
+      <div
+        ref={focusTrapRef}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby={titleId}
+        className={`h-full w-full overflow-y-auto bg-white shadow-2xl transition-transform duration-300 ease-out sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px] ${isVisible && !isClosing ? "translate-x-0" : "translate-x-full"}`}
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}
+      >
+        {/* Header */}
+        <div className="sticky top-0 z-10 border-b border-gray-300 bg-white px-6 pb-2 pt-4 sm:px-8 sm:pb-3 sm:pt-6">
+          <div className="flex items-start justify-between gap-4">
+            <div className="flex-1">
+              <h2
+                id={titleId}
+                className="text-xl font-bold leading-tight text-gray-900 sm:text-2xl"
+              >
+                {node.kind === "mission" ? (node.code ?? node.label) : node.label}
+              </h2>
+              <p className="mt-1 text-sm text-gray-600">
+                {subtitle()} · {meta.fiscalYear}
+              </p>
+            </div>
+            <div className="flex items-center gap-2">
+              <ShareButton hash={`${hashPrefix}=${encodeURIComponent(node.id)}`} />
+              <button
+                onClick={handleClose}
+                className="flex h-8 w-8 flex-shrink-0 cursor-pointer items-center justify-center rounded-full bg-gray-200 text-gray-600 transition-all duration-200 ease-out hover:bg-gray-400 hover:text-gray-100 focus:outline-none"
+                aria-label="Close sidebar"
+              >
+                <X className="h-3 w-3" />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="space-y-6 px-6 pb-6 pt-4 sm:px-8 sm:pb-8 sm:pt-5">
+          {/* Total */}
+          <div>
+            <span className="text-sm font-normal uppercase tracking-wide text-gray-600">
+              Expenditure {meta.fiscalYear}
+            </span>
+            <p className="text-2xl font-bold text-gray-900">{formatBudget(node.amount)}</p>
+            <p className="mt-1 text-xs text-gray-500">
+              {shareOfTotal.toFixed(1)}% of {formatBudget(meta.total)} —{" "}
+              {meta.stream === "pko"
+                ? "all missions in this corpus"
+                : "the whole programme budget"}
+              {parent && parent.kind !== "whole" && (
+                <>
+                  {" · "}
+                  {((node.amount / parent.amount) * 100).toFixed(1)}% of {parent.label}
+                </>
+              )}
+            </p>
+          </div>
+
+          {/* Funding sources (programme budget only) */}
+          {fundingEntries.length > 0 && (
+            <div>
+              <h3 className="mb-2 text-lg font-normal uppercase tracking-wider text-gray-900">
+                By funding source
+              </h3>
+              <div className="space-y-2">
+                {fundingEntries
+                  .sort((a, b) => b[1] - a[1])
+                  .map(([key, amount]) => {
+                    const style = FUNDING_SOURCES[key];
+                    return (
+                      <div key={key} className="flex items-center gap-2 text-sm">
+                        <span
+                          className={`inline-block h-2.5 w-2.5 shrink-0 rounded-sm ${style?.color ?? "bg-gray-400"}`}
+                          title={style?.tooltip}
+                        />
+                        <span className="flex-1 text-gray-700">{style?.label ?? key}</span>
+                        <span className="text-gray-900">{formatBudget(amount)}</span>
+                      </div>
+                    );
+                  })}
+              </div>
+              {Math.abs(fundingGap) > 1000 && (
+                <p className="mt-2 text-xs text-gray-500">
+                  These sources add to {formatBudget(fundingSum)},{" "}
+                  {formatBudget(Math.abs(fundingGap))}{" "}
+                  {fundingGap > 0 ? "more than" : "less than"} the published total.
+                  {omittedLabels && (
+                    <> The budget prints no combined total for {omittedLabels}, so
+                    that amount stays out of the total.</>
+                  )}
+                </p>
+              )}
+              {node.completeness && node.completeness !== "complete" && (
+                <p className="mt-2 text-xs text-gray-500">
+                  Not every funding source is published for this line
+                  {node.completeness === "not_published" ? "" : " (partly published)"}.
+                </p>
+              )}
+            </div>
+          )}
+
+          {/* Children */}
+          {childNodes.length > 0 && (
+            <div>
+              <h3 className="mb-3 text-lg font-normal uppercase tracking-wider text-gray-900">
+                {node.kind === "whole"
+                  ? "Breakdown"
+                  : node.kind === "mission"
+                    ? "By cost class"
+                    : node.kind === "class"
+                      ? "Cost items"
+                      : node.kind === "part"
+                        ? "Sections"
+                        : // Below a section the children are of one kind, so
+                          // name that kind rather than call everything a section.
+                          (KIND_NAMES[childNodes[0].kind]
+                            ? `${KIND_NAMES[childNodes[0].kind]}s`
+                            : "Breakdown")}
+              </h3>
+              <div className="space-y-1.5">
+                {childNodes.map((c) => (
+                  <button
+                    key={c.id}
+                    onClick={() => onSelect(c.id)}
+                    className="block w-full cursor-pointer text-left"
+                  >
+                    <div className="flex items-baseline justify-between gap-3 text-sm">
+                      <span className="truncate text-gray-700">{c.label}</span>
+                      <span className="shrink-0 text-gray-900">{formatBudget(c.amount)}</span>
+                    </div>
+                    <div className="mt-0.5 h-1.5 w-full rounded-sm bg-gray-100">
+                      <div
+                        className="h-1.5 rounded-sm bg-un-blue"
+                        style={{
+                          width: `${childMax > 0 ? Math.max(0, (c.amount / childMax) * 100) : 0}%`,
+                        }}
+                      />
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Provenance */}
+          <div>
+            <h3 className="mb-2 text-lg font-normal uppercase tracking-wider text-gray-900">
+              Where this number comes from
+            </h3>
+            <p className="text-sm leading-relaxed text-gray-700">
+              {isPrinted
+                ? "This amount is printed in the budget document."
+                : "This amount is not printed as one figure. It is the sum of the lines below it."}
+            </p>
+            {node.source && (
+              <p className="mt-1 text-sm text-gray-700">
+                Table row “{node.source.rowLabel}”, column “{node.source.columnHeader}”.
+              </p>
+            )}
+            <a
+              href={node.source?.url ?? meta.documentUrl ?? meta.source.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-2 inline-flex items-center gap-1.5 text-sm text-un-blue hover:underline"
+            >
+              {node.source?.symbol ?? meta.documentSymbol ?? "Source document"}
+              <ExternalLink className="h-3.5 w-3.5" />
+            </a>
+            <p className="mt-3 text-xs text-gray-500">
+              Extracted automatically from the budget documents by{" "}
+              <a
+                href={meta.source.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-un-blue hover:underline"
+              >
+                {meta.source.repo} {meta.source.release}
+              </a>
+              . Read the caveats before you quote a figure.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
