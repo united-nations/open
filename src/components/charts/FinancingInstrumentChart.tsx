@@ -17,20 +17,33 @@ import {
 import {
   FINANCING_INSTRUMENT_COLORS,
   FINANCING_INSTRUMENT_TOOLTIPS,
-  getFinancingInstrumentColor,
 } from "@/lib/financingInstruments";
 import { formatBudget } from "@/lib/contributors";
 
 export interface FinancingInstrumentDataPoint {
   year: string;
-  Assessed?: number;
-  "Voluntary un-earmarked"?: number;
-  "Voluntary earmarked"?: number;
-  Other?: number;
+  [key: string]: number | string;
 }
+
+export interface FinancingSeries {
+  key: string;
+  label: string;
+  color: string;
+  tooltip?: string;
+}
+
+// Default series = the CEB revenue financing instruments (4 categories).
+const DEFAULT_SERIES: FinancingSeries[] = [
+  { key: "Assessed", label: "Assessed", color: FINANCING_INSTRUMENT_COLORS.assessed, tooltip: FINANCING_INSTRUMENT_TOOLTIPS["Assessed"] },
+  { key: "Voluntary un-earmarked", label: "Voluntary un-earmarked", color: FINANCING_INSTRUMENT_COLORS.voluntary_unearmarked, tooltip: FINANCING_INSTRUMENT_TOOLTIPS["Voluntary un-earmarked"] },
+  { key: "Voluntary earmarked", label: "Voluntary earmarked", color: FINANCING_INSTRUMENT_COLORS.voluntary_earmarked, tooltip: FINANCING_INSTRUMENT_TOOLTIPS["Voluntary earmarked"] },
+  { key: "Other", label: "Other", color: FINANCING_INSTRUMENT_COLORS.other, tooltip: FINANCING_INSTRUMENT_TOOLTIPS["Other"] },
+];
 
 interface FinancingInstrumentChartProps {
   data: FinancingInstrumentDataPoint[];
+  /** Stacked series to render. Defaults to the CEB 4-category revenue scheme. */
+  series?: FinancingSeries[];
   height?: number;
   showLegend?: boolean;
   compact?: boolean;
@@ -47,19 +60,22 @@ const formatTooltipValue = (value: number | undefined) => {
   return formatBudget(value);
 };
 
-function LegendChip({ type, color }: { type: string; color: string }) {
-  const tooltip = FINANCING_INSTRUMENT_TOOLTIPS[type];
-  
+function LegendChip({ type, color, tooltip }: { type: string; color: string; tooltip?: string }) {
+  const chip = (
+    <div className="flex items-center gap-1.5 rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700">
+      <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: color }} />
+      <span>{type}</span>
+    </div>
+  );
+  if (!tooltip) return chip;
+
   return (
     <Tooltip delayDuration={200}>
       <TooltipTrigger asChild>
-        <div className="flex cursor-help items-center gap-1.5 rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700">
-          <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: color }} />
-          <span>{type}</span>
-        </div>
+        <div className="cursor-help">{chip}</div>
       </TooltipTrigger>
-      <TooltipContent 
-        side="top" 
+      <TooltipContent
+        side="top"
         sideOffset={4}
         className="max-w-[250px] border border-slate-200 bg-white text-slate-800 shadow-lg"
       >
@@ -74,7 +90,13 @@ export function FinancingInstrumentChart({
   height = 280,
   showLegend = true,
   compact = false,
+  series = DEFAULT_SERIES,
 }: FinancingInstrumentChartProps) {
+  // Only render series that have at least one positive value across the data.
+  const activeSeries = series.filter((s) =>
+    data.some((d) => typeof d[s.key] === "number" && (d[s.key] as number) > 0)
+  );
+
   if (data.length === 0) {
     return (
       <div className="flex h-full items-center justify-center text-gray-500">
@@ -89,12 +111,9 @@ export function FinancingInstrumentChart({
     <div className="flex flex-col">
       {showLegend && (
         <div className="mb-3 flex flex-wrap gap-2">
-          <LegendChip type="Assessed" color={FINANCING_INSTRUMENT_COLORS.assessed} />
-          <LegendChip type="Voluntary un-earmarked" color={FINANCING_INSTRUMENT_COLORS.voluntary_unearmarked} />
-          <LegendChip type="Voluntary earmarked" color={FINANCING_INSTRUMENT_COLORS.voluntary_earmarked} />
-          {data.some(d => d.Other && d.Other > 0) && (
-            <LegendChip type="Other" color={FINANCING_INSTRUMENT_COLORS.other} />
-          )}
+          {activeSeries.map((s) => (
+            <LegendChip key={s.key} type={s.label} color={s.color} tooltip={s.tooltip} />
+          ))}
         </div>
       )}
       <div style={{ height: chartHeight }} className="w-full">
@@ -130,36 +149,16 @@ export function FinancingInstrumentChart({
                 fontSize: "12px",
               }}
             />
-            <Area
-              type="monotone"
-              dataKey="Assessed"
-              stackId="1"
-              stroke={getFinancingInstrumentColor("Assessed")}
-              fill={getFinancingInstrumentColor("Assessed")}
-            />
-            <Area
-              type="monotone"
-              dataKey="Voluntary un-earmarked"
-              stackId="1"
-              stroke={getFinancingInstrumentColor("Voluntary un-earmarked")}
-              fill={getFinancingInstrumentColor("Voluntary un-earmarked")}
-            />
-            <Area
-              type="monotone"
-              dataKey="Voluntary earmarked"
-              stackId="1"
-              stroke={getFinancingInstrumentColor("Voluntary earmarked")}
-              fill={getFinancingInstrumentColor("Voluntary earmarked")}
-            />
-            {data.some(d => d.Other && d.Other > 0) && (
+            {activeSeries.map((s) => (
               <Area
+                key={s.key}
                 type="monotone"
-                dataKey="Other"
+                dataKey={s.key}
                 stackId="1"
-                stroke={getFinancingInstrumentColor("Other")}
-                fill={getFinancingInstrumentColor("Other")}
+                stroke={s.color}
+                fill={s.color}
               />
-            )}
+            ))}
           </AreaChart>
         </ResponsiveContainer>
       </div>

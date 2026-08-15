@@ -1,0 +1,162 @@
+"use client";
+
+import { Button } from "@/components/ui/button";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { cn } from "@/lib/utils";
+import { Globe, Landmark, Menu } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+// Mirrors the page container used by the page sections so the header content
+// lines up with the main column.
+const pageWidth = "max-w-6xl";
+const pagePadding = "px-6 md:px-12 lg:px-16";
+
+const navItems = [
+  { href: "/system", label: "UN System Financials", icon: Globe },
+  { href: "/secretariat", label: "UN Secretariat Financials", icon: Landmark },
+];
+
+export function SiteHeader() {
+  const pathname = usePathname();
+  // Outboard the emblem into the page margin on very wide viewports — needs
+  // ~46px of side margin; 1408px is comfortable for max-w-6xl.
+  const outboardOnly = "hidden min-[1408px]:block";
+  const inlineOnly = "min-[1408px]:hidden";
+
+  return (
+    <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 py-3 backdrop-blur-sm supports-backdrop-filter:bg-background/60">
+      {/* Skip link for keyboard/screen reader users */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:rounded focus:bg-white focus:px-4 focus:py-2 focus:text-un-blue focus:ring-2 focus:ring-un-blue focus:outline-none"
+      >
+        Skip to main content
+      </a>
+      <div
+        className={cn(
+          "relative mx-auto flex items-center gap-4",
+          pagePadding,
+          pageWidth,
+        )}
+      >
+        {/* Emblem aspect ≈ 1.198:1. Outboard variant tucks into the
+            container's left padding so its right edge sits 7.26px from where
+            the wordmark begins (matches the inline emblem→wordmark gap on
+            un-transcribed). The 56.74px offset = lg:px-16 (64px) − 7.26px.
+            Inline variant takes over below 1408px viewports. */}
+        <Link
+          href="/system"
+          aria-label="UN Transparency Portal — home"
+          className={cn(
+            "absolute end-[calc(100%-56.74px)] top-1/2 h-10 w-[47.9px] -translate-y-1/2 transition-opacity hover:opacity-75",
+            outboardOnly,
+          )}
+        >
+          <Image
+            src={`${basePath}/images/un-emblem-colour.svg`}
+            alt=""
+            width={152}
+            height={127}
+            className="h-10 w-[47.9px] shrink-0 select-none"
+            draggable={false}
+          />
+        </Link>
+        <Link
+          href="/system"
+          aria-label="UN Transparency Portal — home"
+          className="inline-flex items-center gap-2.5 transition-opacity hover:opacity-75"
+        >
+          <Image
+            src={`${basePath}/images/un-emblem-colour.svg`}
+            alt=""
+            width={152}
+            height={127}
+            className={cn("h-10 w-[47.9px] shrink-0 select-none", inlineOnly)}
+            draggable={false}
+          />
+          <span className="flex flex-col items-start gap-1 md:flex-row md:items-center md:gap-2.5">
+            <span className="text-lg leading-none tracking-tight text-foreground md:text-[23.83px]">
+              <span className="hidden font-bold md:inline">
+                United Nations{" "}
+              </span>
+              <span className="font-light">Transparency Portal</span>
+            </span>
+          </span>
+        </Link>
+        <div className="ms-auto flex items-center">
+          {/* Inline nav on wide viewports */}
+          <nav className="hidden items-center gap-1 lg:flex">
+            {navItems.map(({ href, label }) => {
+              const active = pathname === href || pathname === `${href}/`;
+              return (
+                <Link
+                  key={href}
+                  href={href}
+                  aria-current={active ? "page" : undefined}
+                  className={cn(
+                    "rounded-md px-3 py-1.5 text-sm whitespace-nowrap transition-colors",
+                    active
+                      ? "bg-un-blue/10 font-medium text-un-blue"
+                      : "text-foreground/80 hover:bg-muted hover:text-foreground",
+                  )}
+                >
+                  {label}
+                </Link>
+              );
+            })}
+          </nav>
+          {/* Collapsed nav below lg */}
+          <DropdownMenu modal={false}>
+            <DropdownMenuTrigger asChild>
+              <Button
+                variant="ghost"
+                size="icon"
+                aria-label="Open navigation menu"
+                className="size-9 shrink-0 text-foreground/80 hover:bg-transparent hover:text-foreground lg:hidden"
+              >
+                <Menu className="size-6" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              {navItems.map(({ href, label, icon: Icon }) => {
+                const active = pathname === href || pathname === `${href}/`;
+                return (
+                  <DropdownMenuItem
+                    key={href}
+                    asChild={!active}
+                    className={
+                      active
+                        ? "cursor-default bg-un-blue/10 font-medium text-un-blue"
+                        : ""
+                    }
+                  >
+                    {active ? (
+                      <span className="flex items-center gap-2">
+                        <Icon className="h-4 w-4" />
+                        {label}
+                      </span>
+                    ) : (
+                      <Link href={href} className="flex items-center gap-2">
+                        <Icon className="h-4 w-4" />
+                        {label}
+                      </Link>
+                    )}
+                  </DropdownMenuItem>
+                );
+              })}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </div>
+      </div>
+    </header>
+  );
+}

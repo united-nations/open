@@ -1,225 +1,15 @@
 [
   {
-    "entity": "ACABQ",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 6927175.0
-  },
-  {
-    "entity": "AMISOM",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 11773562.0
-  },
-  {
-    "entity": "ASM-AQMT",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 5827500.0
-  },
-  {
-    "entity": "BINUH",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 23017493.0
-  },
-  {
-    "entity": "BOA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 3467390.0
-  },
-  {
-    "entity": "CEB",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 1513263.0
-  },
-  {
-    "entity": "CMP-CYPRUS",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 445136.0
-  },
-  {
-    "entity": "CNMC",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 6013731.0
-  },
-  {
-    "entity": "COC",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 292560.0
-  },
-  {
-    "entity": "CONS",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 112760540.0
-  },
-  {
-    "entity": "CPC",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 599716.0
-  },
-  {
     "entity": "CTBTO",
     "source": "ceb",
     "year": 2022,
     "amount": 116556665.0
   },
   {
-    "entity": "CTED",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 11647188.0
-  },
-  {
-    "entity": "DCO",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 238224199.0
-  },
-  {
-    "entity": "DESA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 144000776.0
-  },
-  {
-    "entity": "DEV-ACCT",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 16199400.0
-  },
-  {
-    "entity": "DGACM",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 320413268.0
-  },
-  {
-    "entity": "DGC",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 107778470.0
-  },
-  {
-    "entity": "DHIP",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 115033.0
-  },
-  {
-    "entity": "DMSPC",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 141649673.0
-  },
-  {
-    "entity": "DOS",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 205722837.0
-  },
-  {
-    "entity": "DPO",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 115379973.0
-  },
-  {
-    "entity": "DPPA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 89009037.0
-  },
-  {
-    "entity": "DSS",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 136294255.0
-  },
-  {
-    "entity": "ECA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 90248096.0
-  },
-  {
-    "entity": "ECCC",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 4847718.0
-  },
-  {
-    "entity": "ECE",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 59755713.0
-  },
-  {
-    "entity": "ECLAC",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 75444677.0
-  },
-  {
-    "entity": "EO",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 3161419.0
-  },
-  {
-    "entity": "EOSG",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 42748548.0
-  },
-  {
-    "entity": "ESCAP",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 75968084.0
-  },
-  {
-    "entity": "ESCWA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 56846471.0
-  },
-  {
     "entity": "FAO",
     "source": "ceb",
     "year": 2022,
     "amount": 1942174005.0
-  },
-  {
-    "entity": "GA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 2676370.0
-  },
-  {
-    "entity": "GoE-DRC",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 1272400.0
-  },
-  {
-    "entity": "HSU",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 8868617.0
-  },
-  {
-    "entity": "IAAC",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 482274.0
   },
   {
     "entity": "IAEA",
@@ -246,34 +36,10 @@
     "amount": 174399899.94
   },
   {
-    "entity": "ICJ",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 27001910.0
-  },
-  {
-    "entity": "ICSC",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 4329734.0
-  },
-  {
     "entity": "IFAD",
     "source": "ceb",
     "year": 2022,
     "amount": 219641199.0
-  },
-  {
-    "entity": "IIIM",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 21550554.0
-  },
-  {
-    "entity": "IIMM",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 13849077.0
   },
   {
     "entity": "ILO",
@@ -324,238 +90,10 @@
     "amount": 218869984.86
   },
   {
-    "entity": "JIU",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 2395561.0
-  },
-  {
-    "entity": "JPO",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 50398640.0
-  },
-  {
-    "entity": "MICT",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 90979360.0
-  },
-  {
-    "entity": "MINURSO",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 55851000.0
-  },
-  {
-    "entity": "MINUSCA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 1036799281.0
-  },
-  {
-    "entity": "MINUSMA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 1178885036.0
-  },
-  {
-    "entity": "MONUSCO",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 1018858197.0
-  },
-  {
-    "entity": "MPTF-CVD",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": -652862.0
-  },
-  {
-    "entity": "MPTF-HTI",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 4852699.0
-  },
-  {
-    "entity": "MPTF-PBF",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 185333009.0
-  },
-  {
-    "entity": "OAJ",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 10004535.0
-  },
-  {
-    "entity": "OCHA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 2471660991.0
-  },
-  {
-    "entity": "OCT",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 54505199.0
-  },
-  {
-    "entity": "ODA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 31623365.0
-  },
-  {
-    "entity": "ODET",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": -143164.0
-  },
-  {
-    "entity": "OHCHR",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 385142166.0
-  },
-  {
-    "entity": "OICT",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 70259119.0
-  },
-  {
-    "entity": "OIOS",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 52044226.0
-  },
-  {
-    "entity": "OJSRS",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 13721896.0
-  },
-  {
-    "entity": "OLA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 36463410.0
-  },
-  {
-    "entity": "OMBUD",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 5496150.0
-  },
-  {
-    "entity": "OMBUD-RES1904",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 621300.0
-  },
-  {
-    "entity": "OOSA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 5764105.0
-  },
-  {
     "entity": "OPCW",
     "source": "ceb",
     "year": 2022,
     "amount": 88672666.67
-  },
-  {
-    "entity": "OPGA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 2335982.0
-  },
-  {
-    "entity": "OSAA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 5743471.0
-  },
-  {
-    "entity": "OSASG-Cyprus",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 2523500.0
-  },
-  {
-    "entity": "OSCS",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 1471468.0
-  },
-  {
-    "entity": "OSESG-FG",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": -4900.0
-  },
-  {
-    "entity": "OSESG-GL",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 4887049.0
-  },
-  {
-    "entity": "OSESG-Horn",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 1586100.0
-  },
-  {
-    "entity": "OSESG-Myanmar",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 1887761.0
-  },
-  {
-    "entity": "OSESG-SCRES1559",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 393400.0
-  },
-  {
-    "entity": "OSESG-Yemen",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 16240600.0
-  },
-  {
-    "entity": "OSLA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 125000.0
-  },
-  {
-    "entity": "OSRSG-CAAC",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 4488022.0
-  },
-  {
-    "entity": "OSRSG-SVC",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 5569067.0
-  },
-  {
-    "entity": "OSRSG-VAC",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 2928619.0
-  },
-  {
-    "entity": "OTHER",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 5477892.0
   },
   {
     "entity": "PAHO",
@@ -564,124 +102,10 @@
     "amount": 1435675930.0
   },
   {
-    "entity": "PESG-WS",
-    "source": "secretariat",
+    "entity": "UN",
+    "source": "ceb",
     "year": 2022,
-    "amount": 267900.0
-  },
-  {
-    "entity": "POE-DPRK",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 2943900.0
-  },
-  {
-    "entity": "POE-MALI",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 852600.0
-  },
-  {
-    "entity": "POE-SOMALIA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 1472200.0
-  },
-  {
-    "entity": "PoE-CAR",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 789200.0
-  },
-  {
-    "entity": "PoE-Haiti",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 1500.0
-  },
-  {
-    "entity": "PoE-Libya",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 1223300.0
-  },
-  {
-    "entity": "PoE-S.Sudan",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 1013000.0
-  },
-  {
-    "entity": "PoE-Sudan",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 956900.0
-  },
-  {
-    "entity": "PoE-Yemen",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 1926200.0
-  },
-  {
-    "entity": "RSCE",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 41571600.0
-  },
-  {
-    "entity": "RSCSL",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 2453647.0
-  },
-  {
-    "entity": "SASG-PGENOCIDE",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 2393600.0
-  },
-  {
-    "entity": "SC-RES1540",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 2598200.0
-  },
-  {
-    "entity": "SC-RES2231",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 1230600.0
-  },
-  {
-    "entity": "SPM",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 213.0
-  },
-  {
-    "entity": "STA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 284937022.0
-  },
-  {
-    "entity": "STL",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 6000000.0
-  },
-  {
-    "entity": "SWEO",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 6.0
-  },
-  {
-    "entity": "Special Expenses",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 82649765.0
+    "amount": 7276591885.0
   },
   {
     "entity": "UN Tourism",
@@ -693,55 +117,25 @@
     "entity": "UN Women",
     "source": "ceb",
     "year": 2022,
-    "amount": 550262100.0
+    "amount": 540250889.0
+  },
+  {
+    "entity": "UN-DPO",
+    "source": "ceb",
+    "year": 2022,
+    "amount": 7091307082.0
   },
   {
     "entity": "UN-Habitat",
     "source": "ceb",
     "year": 2022,
-    "amount": 419232424.0
-  },
-  {
-    "entity": "UN-OHRLLS",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 9085802.0
+    "amount": 218121819.0
   },
   {
     "entity": "UNAIDS",
     "source": "ceb",
     "year": 2022,
     "amount": 194763468.0
-  },
-  {
-    "entity": "UNAKRT",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 7341577.0
-  },
-  {
-    "entity": "UNAMA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 134131514.0
-  },
-  {
-    "entity": "UNAMI",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 99379895.0
-  },
-  {
-    "entity": "UNAMID",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 64886545.0
-  },
-  {
-    "entity": "UNAOC",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 5584751.0
   },
   {
     "entity": "UNCCD",
@@ -756,34 +150,16 @@
     "amount": 116211137.0
   },
   {
-    "entity": "UNCTAD",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 123510575.0
-  },
-  {
-    "entity": "UNDOF",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 61197700.0
-  },
-  {
     "entity": "UNDP",
     "source": "ceb",
     "year": 2022,
     "amount": 5317255342.0
   },
   {
-    "entity": "UNDRR",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 54345585.0
-  },
-  {
     "entity": "UNEP",
     "source": "ceb",
     "year": 2022,
-    "amount": 648791530.0
+    "amount": 627312925.0
   },
   {
     "entity": "UNESCO",
@@ -798,22 +174,10 @@
     "amount": 132507131.0
   },
   {
-    "entity": "UNFICYP",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 52139220.0
-  },
-  {
     "entity": "UNFPA",
     "source": "ceb",
     "year": 2022,
     "amount": 1442843391.0
-  },
-  {
-    "entity": "UNGC",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 8025892.0
   },
   {
     "entity": "UNHCR",
@@ -834,40 +198,10 @@
     "amount": 10131153.0
   },
   {
-    "entity": "UNIDIR",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 7251044.0
-  },
-  {
     "entity": "UNIDO",
     "source": "ceb",
     "year": 2022,
     "amount": 330112180.02
-  },
-  {
-    "entity": "UNIFIL",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 476825800.0
-  },
-  {
-    "entity": "UNIOGBIS",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": -4900.0
-  },
-  {
-    "entity": "UNISFA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 326810000.0
-  },
-  {
-    "entity": "UNITAD",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 32453265.0
   },
   {
     "entity": "UNITAID",
@@ -876,94 +210,16 @@
     "amount": 189680000.0
   },
   {
-    "entity": "UNITAMS",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 57333938.0
-  },
-  {
     "entity": "UNITAR",
     "source": "ceb",
     "year": 2022,
     "amount": 41360976.0
   },
   {
-    "entity": "UNJSPB",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 5172001.0
-  },
-  {
-    "entity": "UNLB",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 65621700.0
-  },
-  {
-    "entity": "UNMAS",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 62102555.0
-  },
-  {
-    "entity": "UNMHA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 29531000.0
-  },
-  {
-    "entity": "UNMIK",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 40612608.0
-  },
-  {
-    "entity": "UNMISS",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 1115765422.0
-  },
-  {
-    "entity": "UNMOGIP",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 9549542.0
-  },
-  {
-    "entity": "UNOAU",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 9795302.0
-  },
-  {
-    "entity": "UNOCA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 8044200.0
-  },
-  {
     "entity": "UNODC",
     "source": "ceb",
     "year": 2022,
-    "amount": 419337757.0
-  },
-  {
-    "entity": "UNOG",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 87712014.0
-  },
-  {
-    "entity": "UNON",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 19502860.0
-  },
-  {
-    "entity": "UNOP",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 40481602.0
+    "amount": 395454466.0
   },
   {
     "entity": "UNOPS",
@@ -972,88 +228,16 @@
     "amount": 1222875603.0
   },
   {
-    "entity": "UNOV",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 22647368.0
-  },
-  {
-    "entity": "UNOWAS",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 14526500.0
-  },
-  {
-    "entity": "UNRCCA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 3011100.0
-  },
-  {
-    "entity": "UNRGID",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 1745400.0
-  },
-  {
-    "entity": "UNRISD",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 3351062.0
-  },
-  {
     "entity": "UNRWA",
     "source": "ceb",
     "year": 2022,
     "amount": 1312390153.0
   },
   {
-    "entity": "UNRoD",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 3419071.0
-  },
-  {
-    "entity": "UNSCO",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 10013323.0
-  },
-  {
-    "entity": "UNSCOL",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 10275700.0
-  },
-  {
-    "entity": "UNSMIL",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 82340900.0
-  },
-  {
-    "entity": "UNSOM",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 100519780.0
-  },
-  {
-    "entity": "UNSOS",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 516411000.0
-  },
-  {
     "entity": "UNSSC",
     "source": "ceb",
     "year": 2022,
     "amount": 15248460.0
-  },
-  {
-    "entity": "UNTSO",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 38961945.0
   },
   {
     "entity": "UNU",
@@ -1068,22 +252,10 @@
     "amount": 30296820.0
   },
   {
-    "entity": "UNVMC",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 61117600.0
-  },
-  {
     "entity": "UPU",
     "source": "ceb",
     "year": 2022,
     "amount": 80576263.27
-  },
-  {
-    "entity": "VRA",
-    "source": "secretariat",
-    "year": 2022,
-    "amount": 1840181.0
   },
   {
     "entity": "WFP",

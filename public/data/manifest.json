@@ -54,14 +54,8 @@
       2023,
       2024
     ],
-    "default": 2023,
-    "fusionYears": [
-      2019,
-      2020,
-      2021,
-      2022,
-      2023
-    ],
+    "default": 2024,
+    "fusionYears": [],
     "min": 2011,
     "max": 2024
   },
@@ -98,23 +92,16 @@
     "min": 2018,
     "max": 2024
   },
-  "uninfoCountries": {
+  "secretariat": {
     "years": [
-      2024
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
     ],
-    "default": 2024,
-    "min": 2024,
-    "max": 2024
-  },
-  "uninfoSdgs": {
-    "years": [
-      2024
-    ],
-    "default": 2024,
-    "min": 2024,
-    "max": 2024
-  },
-  "uninfoProjects": {
-    "available": true
+    "default": 2023,
+    "min": 2019,
+    "max": 2023
   }
 }

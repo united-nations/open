@@ -79,3 +79,23 @@ export interface EntitySpendingBreakdown {
   byCountry: { name: string; iso3: string; amount: number }[];
   bySDG: { sdg: number; amount: number }[];
 }
+
+// /secretariat page (data/un-secretariat-expenses.csv)
+export interface SecretariatRecord {
+  entity: string;
+  priority_area: string;
+  part_id: string;
+  part_desc: string;
+  amount: number;
+}
+
+export interface SecretariatFund {
+  label: string;
+  source_type: string;
+  amount: number;
+}
+
+export interface SecretariatData {
+  records: SecretariatRecord[];
+  funds: Record<string, SecretariatFund[]>;
+}

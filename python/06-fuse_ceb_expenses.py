@@ -6,7 +6,7 @@ Tiered approach:
 """
 import pandas as pd
 from pathlib import Path
-from utils import normalize_entity
+from utils import normalize_entity, FUSE_SECRETARIAT
 
 ceb_dir = Path("data/ceb")
 clean, fused = ceb_dir / "clean", ceb_dir / "fused"
@@ -33,8 +33,13 @@ def load_secretariat() -> pd.DataFrame:
 
 def fuse_expenses():
     ceb = load_ceb()
-    sec = load_secretariat()
-    
+    if FUSE_SECRETARIAT:
+        sec = load_secretariat()
+    else:
+        # Flag off: empty Secretariat frame => all years take the CEB-only (Tier 1) path.
+        print("FUSE_SECRETARIAT=false: producing CEB-only expenses (no Secretariat fusion)")
+        sec = pd.DataFrame(columns=["year", "entity", "amount", "source_type"])
+
     years = sorted(ceb["year"].unique())
     sec_years = set(sec["year"].unique())  # 2019-2023
     
