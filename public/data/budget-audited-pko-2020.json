@@ -1,0 +1,270 @@
+{
+  "meta": {
+    "stream": "pko",
+    "title": "Peacekeeping mission accounts",
+    "label": "Audited peacekeeping mission expenditure 2019/20 (USD)",
+    "measure": "expenditure",
+    "year": 2020,
+    "fiscalYear": "2019/20",
+    "currency": "USD",
+    "total": 6363244100.0,
+    "fundingSources": [
+      "regular_budget",
+      "other_assessed",
+      "extrabudgetary"
+    ],
+    "fundingLabels": {
+      "regular_budget": "Regular assessed",
+      "other_assessed": "Other assessed",
+      "extrabudgetary": "Voluntary"
+    },
+    "partial": false,
+    "scopeLabel": "Separately assessed peacekeeping mission accounts",
+    "scopeWarning": "This block contains the mission-account performance-report rows only. The peacekeeping support account is reported as other assessed expenditure in the responsible programme-budget sections above.",
+    "sourceKind": "audited",
+    "source": {
+      "repo": "open.un.org",
+      "release": "audited financial statements extract",
+      "url": "https://open.un.org/un-secretariat-financials/expenses?tab=second"
+    }
+  },
+  "nodes": [
+    {
+      "id": "audited-missions",
+      "parentId": null,
+      "tier": "whole",
+      "kind": "whole",
+      "code": null,
+      "label": "Peacekeeping mission accounts",
+      "amount": 6363244100.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 6363244100.0
+      }
+    },
+    {
+      "id": "MINUJUSTH",
+      "parentId": "audited-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "MINUJUSTH",
+      "label": "MINUJUSTH",
+      "amount": 38694400.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 38694400.0
+      },
+      "mission": "MINUJUSTH"
+    },
+    {
+      "id": "MINURSO",
+      "parentId": "audited-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "MINURSO",
+      "label": "MINURSO",
+      "amount": 55734000.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 55734000.0
+      },
+      "mission": "MINURSO"
+    },
+    {
+      "id": "MINUSCA",
+      "parentId": "audited-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "MINUSCA",
+      "label": "MINUSCA",
+      "amount": 895690300.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 895690300.0
+      },
+      "mission": "MINUSCA"
+    },
+    {
+      "id": "MINUSMA",
+      "parentId": "audited-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "MINUSMA",
+      "label": "MINUSMA",
+      "amount": 1136908900.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 1136908900.0
+      },
+      "mission": "MINUSMA"
+    },
+    {
+      "id": "MONUSCO",
+      "parentId": "audited-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "MONUSCO",
+      "label": "MONUSCO",
+      "amount": 1036092000.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 1036092000.0
+      },
+      "mission": "MONUSCO"
+    },
+    {
+      "id": "OTHER",
+      "parentId": "audited-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "OTHER",
+      "label": "OTHER",
+      "amount": 744200.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 744200.0
+      },
+      "mission": "OTHER"
+    },
+    {
+      "id": "RSCE",
+      "parentId": "audited-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "RSCE",
+      "label": "RSCE",
+      "amount": 35375900.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 35375900.0
+      },
+      "mission": "RSCE"
+    },
+    {
+      "id": "UNAMID",
+      "parentId": "audited-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNAMID",
+      "label": "UNAMID",
+      "amount": 509292600.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 509292600.0
+      },
+      "mission": "UNAMID"
+    },
+    {
+      "id": "UNDOF",
+      "parentId": "audited-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNDOF",
+      "label": "UNDOF",
+      "amount": 60927100.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 60927100.0
+      },
+      "mission": "UNDOF"
+    },
+    {
+      "id": "UNFICYP",
+      "parentId": "audited-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNFICYP",
+      "label": "UNFICYP",
+      "amount": 49392500.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 49392500.0
+      },
+      "mission": "UNFICYP"
+    },
+    {
+      "id": "UNIFIL",
+      "parentId": "audited-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNIFIL",
+      "label": "UNIFIL",
+      "amount": 479886100.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 479886100.0
+      },
+      "mission": "UNIFIL"
+    },
+    {
+      "id": "UNISFA",
+      "parentId": "audited-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNISFA",
+      "label": "UNISFA",
+      "amount": 259010300.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 259010300.0
+      },
+      "mission": "UNISFA"
+    },
+    {
+      "id": "UNLB",
+      "parentId": "audited-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNLB",
+      "label": "UNLB",
+      "amount": 63266500.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 63266500.0
+      },
+      "mission": "UNLB"
+    },
+    {
+      "id": "UNMIK",
+      "parentId": "audited-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNMIK",
+      "label": "UNMIK",
+      "amount": 37239900.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 37239900.0
+      },
+      "mission": "UNMIK"
+    },
+    {
+      "id": "UNMISS",
+      "parentId": "audited-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNMISS",
+      "label": "UNMISS",
+      "amount": 1182499200.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 1182499200.0
+      },
+      "mission": "UNMISS"
+    },
+    {
+      "id": "UNSOS",
+      "parentId": "audited-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNSOS",
+      "label": "UNSOS",
+      "amount": 522490200.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 522490200.0
+      },
+      "mission": "UNSOS"
+    }
+  ]
+}

@@ -14,6 +14,7 @@ ENTITY_MAPPING = {
     "SASG-CYP": "OSASG-Cyprus", "PESG-WSAHARA": "PESG-WS", "OSESG-BDI": "OSESG-FG",
     "GEXP-DRC": "GoE-DRC", "UNGCO": "UNGC", "OVRA": "VRA", "ETHICS": "EO",
     "AOJ": "OAJ", "IM-MYANMAR": "IIMM", "OSET": "ODET", "RCS": "DCO", "UN-RGID": "UNRGID",
+    "UNROD": "UNRoD",
 }
 
 # Donor name normalization - map variants to canonical names

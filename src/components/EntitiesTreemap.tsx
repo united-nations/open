@@ -484,7 +484,7 @@ export function EntitiesTreemap() {
   }
 
   // Group layout (full-width rows for big groups, nested corner block for small
-  // ones) is shared with SecretariatTreemap via layoutGroups.
+  // ones) is handled by the shared layoutGroups helper.
   const itemsByGroup = Object.fromEntries(sortedGroups);
   const groupRects = layoutGroups(
     sortedGroups.map(([key, items]) => ({

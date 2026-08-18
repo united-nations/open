@@ -27,6 +27,7 @@ const navItems = [
 
 export function SiteHeader() {
   const pathname = usePathname();
+  const activePath = pathname === "/" ? "/system" : pathname;
   // Outboard the emblem into the page margin on very wide viewports — needs
   // ~46px of side margin; 1408px is comfortable for max-w-6xl.
   const outboardOnly = "hidden min-[1408px]:block";
@@ -96,7 +97,7 @@ export function SiteHeader() {
           {/* Inline nav on wide viewports */}
           <nav className="hidden items-center gap-1 lg:flex">
             {navItems.map(({ href, label }) => {
-              const active = pathname === href || pathname === `${href}/`;
+              const active = activePath === href || activePath === `${href}/`;
               return (
                 <Link
                   key={href}
@@ -128,7 +129,7 @@ export function SiteHeader() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               {navItems.map(({ href, label, icon: Icon }) => {
-                const active = pathname === href || pathname === `${href}/`;
+                const active = activePath === href || activePath === `${href}/`;
                 return (
                   <DropdownMenuItem
                     key={href}

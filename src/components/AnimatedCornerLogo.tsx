@@ -6,9 +6,9 @@ import { useEffect, useState } from "react";
 
 export function AnimatedCornerLogo() {
   const pathname = usePathname();
-  // `/system` is the home page (`/` only redirects there). trailingSlash is on,
-  // so accept both spellings.
-  const isHome = pathname === "/system" || pathname === "/system/";
+  // The System Financials home is available at both `/` and `/system/`.
+  const isHome =
+    pathname === "/" || pathname === "/system" || pathname === "/system/";
 
   // Always start hidden to prevent flash
   const [cornerClass, setCornerClass] = useState("corner-slide-hidden");

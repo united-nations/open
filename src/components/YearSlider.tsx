@@ -8,6 +8,8 @@ interface YearSliderProps {
   selectedYear: number;
   onChange: (year: number) => void;
   disabled?: boolean;
+  /** Caption for a year. Peacekeeping runs July-June, so 2024 reads "2024/25". */
+  formatLabel?: (year: number) => string;
 }
 
 export function YearSlider({
@@ -15,6 +17,7 @@ export function YearSlider({
   selectedYear,
   onChange,
   disabled = false,
+  formatLabel,
 }: YearSliderProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -248,8 +251,8 @@ export function YearSlider({
           />
         </div>
       </div>
-      <span className="min-w-[3ch] text-sm font-medium text-gray-900">
-        {displayYear}
+      <span className="min-w-[3ch] whitespace-nowrap text-sm font-medium text-gray-900">
+        {formatLabel ? formatLabel(displayYear) : displayYear}
       </span>
     </div>
   );

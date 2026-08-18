@@ -80,22 +80,182 @@ export interface EntitySpendingBreakdown {
   bySDG: { sdg: number; amount: number }[];
 }
 
-// /secretariat page (data/un-secretariat-expenses.csv)
-export interface SecretariatRecord {
-  entity: string;
-  priority_area: string;
-  part_id: string;
-  part_desc: string;
-  amount: number;
+// /secretariat page — budget-document treemaps distilled by python/12 from the
+// `financial-data-v1.6` release of united-nations/programme-budget-data.
+// One flat node list per view; `parentId` gives the hierarchy.
+
+/**
+ * The level of the chart a node sits at. The programme budget runs
+ * whole -> part -> section -> budget unit -> detail; the budget-unit tier is
+ * the one the treemap draws as tiles, and it is the same kind of thing in
+ * every section, which the rows below it are not.
+ */
+export type BudgetNodeTier =
+  | "whole"
+  | "part"
+  | "section"
+  | "budget_unit"
+  | "detail"
+  | "mission"
+  | "class"
+  | "item";
+
+export type BudgetNodeKind =
+  // Programme budget: the whole, its parts and sections, then what the fascicle
+  // calls the rows below them.
+  | "whole"
+  | "part"
+  | "section"
+  | "entity"
+  | "programme"
+  | "component"
+  | "subprogramme"
+  | "allocation"
+  // Peacekeeping: mission, cost class, cost item.
+  | "mission"
+  | "class"
+  | "item";
+
+/** What a budget unit is: a heading the fascicle prints, or a generated wrapper. */
+export type BudgetUnitType =
+  | "entity"
+  | "programme"
+  | "special_purpose"
+  | "unassigned";
+
+/** Why a budget unit exists, which is what decides how it may be labelled. */
+export type BudgetUnitRole =
+  | "source_node"
+  | "section_scope"
+  | "special_purpose"
+  | "coverage_remainder";
+
+/**
+ * An organization the release ties to this row, from the source-evidenced
+ * entity dimension. `relationship` says on what grounds: `direct_financial_entity`
+ * is a heading the fascicle prints for this very row, `section_owner` is the one
+ * organization the release says owns the whole section.
+ */
+export interface BudgetNodeEntity {
+  name: string;
+  acronym: string | null;
+  relationship: string;
+  evidenceUrl?: string | null;
 }
 
-export interface SecretariatFund {
+export interface BudgetNodeSource {
+  symbol: string;
+  url: string;
+  rowLabel: string;
+  columnHeader: string;
+}
+
+export interface BudgetNode {
+  id: string;
+  parentId: string | null;
+  /** Which level of the chart this is. */
+  tier: BudgetNodeTier;
+  /** What the budget document calls the row. */
+  kind: BudgetNodeKind;
+  code: string | null;
   label: string;
-  source_type: string;
+  /** Full dollars. */
   amount: number;
+  /** "printed"/"directly_printed" = in the source document; otherwise derived. */
+  basis: string;
+  /** The same amount split by funding source, where the source publishes it. */
+  values?: Partial<
+    Record<"regular_budget" | "other_assessed" | "extrabudgetary", number>
+  >;
+  completeness?: string;
+  /** The document prints this row as a lump, without itemizing it. */
+  isRemainder?: boolean;
+  /** What the release says about how this figure was arrived at. */
+  note?: string;
+  /** Budget units only. */
+  unitType?: BudgetUnitType;
+  role?: BudgetUnitRole;
+  /** The organization the release ties to this row, where it names one. */
+  entity?: BudgetNodeEntity;
+  /** Sections only: the release's verdict on who owns the section, and why. */
+  entityStatus?: string;
+  entityNote?: string;
+  /** PKO only. */
+  mission?: string;
+  costClass?: string;
+  source?: BudgetNodeSource;
 }
 
-export interface SecretariatData {
-  records: SecretariatRecord[];
-  funds: Record<string, SecretariatFund[]>;
+export interface BudgetCoverage {
+  missionsInCycleReference?: number;
+  missionsDisplayed?: number;
+  displayedMissionCodes?: string[];
+  missingCanonicalDetail?: string[];
+  noPublishedValueForLens?: string[];
+  completeness?: string;
+}
+
+/** How much of the year is covered by the release's entity dimension. */
+export interface BudgetEntityDimension {
+  entities: number;
+  sections: number;
+  relationships: number;
+  printedFinancialEntities?: number;
+  sectionsWithoutSingleEntity?: number;
+  unresolvedPrintedFinancialEntities?: number;
+  /** Budget units this portal could name, out of the units it draws. */
+  namedUnits: number;
+  units: number;
+  producer: string;
+  producerGitHead: string;
+  sourceFiles: Array<{ path: string; sha256: string }>;
+}
+
+/** A node the budget document publishes only in part, so it cannot be drawn. */
+export interface BudgetOmission {
+  kind: BudgetNodeKind;
+  code: string | null;
+  label: string;
+  values: Record<string, number>;
+  reason: string;
+}
+
+export interface BudgetMeta {
+  stream: "ppb" | "pko";
+  /** Whether the tree comes from audited actuals or budget documents. */
+  sourceKind?: "audited" | "budget_document";
+  title: string;
+  label: string;
+  measure: string;
+  /** Expenditure year (PPB), or the first year of the July-June cycle (PKO). */
+  year: number;
+  /** How the year is written: "2023", or "2024/25" for peacekeeping. */
+  fiscalYear: string;
+  currency: string;
+  total: number;
+  scopeLabel: string;
+  scopeWarning: string;
+  /** True when the year publishes only some of the funding sources. */
+  partial?: boolean;
+  fundingStates?: Record<string, string>;
+  edition?: number;
+  cycle?: number;
+  documentSymbol?: string | null;
+  documentUrl?: string | null;
+  fundingSources?: string[];
+  /** Dataset-specific display names for the shared funding-source keys. */
+  fundingLabels?: Record<string, string>;
+  costClasses?: Record<string, string>;
+  missionNames?: Record<string, string>;
+  coverage?: BudgetCoverage;
+  /** Source-evidenced organization lookup for every displayed PPB edition. */
+  entityDimension?: BudgetEntityDimension | null;
+  omitted?: BudgetOmission[];
+  verification?: Record<string, string>;
+  source: { repo: string; release: string; url: string };
+}
+
+export interface BudgetData {
+  meta: BudgetMeta;
+  nodes: BudgetNode[];
 }

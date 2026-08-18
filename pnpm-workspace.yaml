@@ -1,0 +1,7 @@
+# pnpm 11 defaults to strictDepBuilds, which errors on unrun build scripts.
+# Both packages ship prebuilt binaries for this platform (@img/sharp-linux-x64,
+# napi prebuilds), so their install scripts are only a check plus a
+# build-from-source fallback we don't need.
+allowBuilds:
+  sharp: false
+  unrs-resolver: false

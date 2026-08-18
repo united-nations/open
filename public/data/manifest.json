@@ -92,7 +92,7 @@
     "min": 2018,
     "max": 2024
   },
-  "secretariat": {
+  "budgetAuditedPpb": {
     "years": [
       2019,
       2020,
@@ -103,5 +103,41 @@
     "default": 2023,
     "min": 2019,
     "max": 2023
+  },
+  "budgetAuditedPko": {
+    "years": [
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "default": 2023,
+    "min": 2019,
+    "max": 2023
+  },
+  "budgetPpb": {
+    "years": [
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "default": 2025,
+    "min": 2019,
+    "max": 2025
+  },
+  "budgetPko": {
+    "years": [
+      2022,
+      2023,
+      2024
+    ],
+    "default": 2024,
+    "min": 2022,
+    "max": 2024
   }
 }

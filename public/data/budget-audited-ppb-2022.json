@@ -1,0 +1,4096 @@
+{
+  "meta": {
+    "stream": "ppb",
+    "title": "Audited Secretariat expenditure",
+    "label": "Audited Secretariat expenditure 2022 (USD)",
+    "measure": "expenditure",
+    "year": 2022,
+    "fiscalYear": "2022",
+    "currency": "USD",
+    "total": 8736337735.0,
+    "fundingSources": [
+      "regular_budget",
+      "other_assessed",
+      "extrabudgetary"
+    ],
+    "fundingLabels": {
+      "regular_budget": "Regular assessed",
+      "other_assessed": "Other assessed",
+      "extrabudgetary": "Voluntary"
+    },
+    "partial": false,
+    "scopeLabel": "Programme budget sections, excluding mission-account assessments",
+    "scopeWarning": "Regular assessed, other assessed and voluntary expenditure are shown together in their programme-budget sections. Other assessed support-account resources remain with the Headquarters entities they finance. Separately assessed mission accounts are shown in the Peacekeeping block below.",
+    "sourceKind": "audited",
+    "source": {
+      "repo": "open.un.org",
+      "release": "audited financial statements extract",
+      "url": "https://open.un.org/un-secretariat-financials/expenses?tab=second"
+    }
+  },
+  "nodes": [
+    {
+      "id": "audited-programme",
+      "parentId": null,
+      "tier": "whole",
+      "kind": "whole",
+      "code": null,
+      "label": "Programme budget sections",
+      "amount": 8736337735.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 443094000.0,
+        "regular_budget": 3236269601.0,
+        "extrabudgetary": 5056974134.0
+      }
+    },
+    {
+      "id": "audited-part-I",
+      "parentId": "audited-programme",
+      "tier": "part",
+      "kind": "part",
+      "code": "I",
+      "label": "Overall policymaking, direction and coordination",
+      "amount": 711202167.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 5443600.0,
+        "regular_budget": 396600703.0,
+        "extrabudgetary": 309157864.0
+      }
+    },
+    {
+      "id": "audited-part-I~section-1",
+      "parentId": "audited-part-I",
+      "tier": "section",
+      "kind": "section",
+      "code": "1",
+      "label": "Overall policy-making, direction and coordination",
+      "amount": 388452917.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 5443600.0,
+        "regular_budget": 78488349.0,
+        "extrabudgetary": 304520968.0
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-acabq",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ACABQ",
+      "label": "ACABQ",
+      "amount": 6927175.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 526000.0,
+        "regular_budget": 6401175.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ACABQ",
+        "acronym": "ACABQ",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-boa",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "BOA",
+      "label": "BOA",
+      "amount": 3467390.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 3467390.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "BOA",
+        "acronym": "BOA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-coc",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "COC",
+      "label": "COC",
+      "amount": 292560.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 292560.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "COC",
+        "acronym": "COC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-cpc",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "CPC",
+      "label": "CPC",
+      "amount": 599716.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 599716.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "CPC",
+        "acronym": "CPC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-dco",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DCO",
+      "label": "DCO",
+      "amount": 238224199.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 13442461.0,
+        "extrabudgetary": 224781738.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "DCO",
+        "acronym": "DCO",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-dhip",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DHIP",
+      "label": "DHIP",
+      "amount": 115033.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 115033.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "DHIP",
+        "acronym": "DHIP",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-eo",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "EO",
+      "label": "EO",
+      "amount": 3161419.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 1090800.0,
+        "regular_budget": 2070619.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "EO",
+        "acronym": "EO",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-eosg",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "EOSG",
+      "label": "EOSG",
+      "amount": 42748548.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 1100100.0,
+        "regular_budget": 17529384.0,
+        "extrabudgetary": 24119064.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "EOSG",
+        "acronym": "EOSG",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-ga",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "GA",
+      "label": "GA",
+      "amount": 2676370.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 2676370.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "GA",
+        "acronym": "GA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-iaac",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "IAAC",
+      "label": "IAAC",
+      "amount": 482274.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 482274.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "IAAC",
+        "acronym": "IAAC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-oaj",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OAJ",
+      "label": "OAJ",
+      "amount": 10004535.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 546100.0,
+        "regular_budget": 9458435.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OAJ",
+        "acronym": "OAJ",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-odet",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ODET",
+      "label": "ODET",
+      "amount": -143164.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": -143164.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ODET",
+        "acronym": "ODET",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-ombud",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OMBUD",
+      "label": "OMBUD",
+      "amount": 5496150.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 2055600.0,
+        "regular_budget": 3440550.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OMBUD",
+        "acronym": "OMBUD",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-osla",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSLA",
+      "label": "OSLA",
+      "amount": 125000.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 125000.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSLA",
+        "acronym": "OSLA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-osrsg-caac",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSRSG-CAAC",
+      "label": "OSRSG-CAAC",
+      "amount": 4488022.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 2363544.0,
+        "extrabudgetary": 2124478.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSRSG-CAAC",
+        "acronym": "OSRSG-CAAC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-osrsg-svc",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSRSG-SVC",
+      "label": "OSRSG-SVC",
+      "amount": 5569067.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1601025.0,
+        "extrabudgetary": 3968042.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSRSG-SVC",
+        "acronym": "OSRSG-SVC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-osrsg-vac",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSRSG-VAC",
+      "label": "OSRSG-VAC",
+      "amount": 2928619.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 2704405.0,
+        "extrabudgetary": 224214.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSRSG-VAC",
+        "acronym": "OSRSG-VAC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-sweo",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "SWEO",
+      "label": "SWEO",
+      "amount": 6.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 6.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "SWEO",
+        "acronym": "SWEO",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-ungc",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNGC",
+      "label": "UNGC",
+      "amount": 8025892.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 8025892.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNGC",
+        "acronym": "UNGC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-unjspb",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNJSPB",
+      "label": "UNJSPB",
+      "amount": 5172001.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 5172001.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNJSPB",
+        "acronym": "UNJSPB",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-unog",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNOG",
+      "label": "UNOG",
+      "amount": 3310061.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 3310061.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNOG",
+        "acronym": "UNOG",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-unon",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNON",
+      "label": "UNON",
+      "amount": 1166738.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1166738.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNON",
+        "acronym": "UNON",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-unop",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNOP",
+      "label": "UNOP",
+      "amount": 40481602.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 40481602.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNOP",
+        "acronym": "UNOP",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-unov",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNOV",
+      "label": "UNOV",
+      "amount": 1293523.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1293523.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNOV",
+        "acronym": "UNOV",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-1~entity-vra",
+      "parentId": "audited-part-I~section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "VRA",
+      "label": "VRA",
+      "amount": 1840181.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 901085.0,
+        "extrabudgetary": 939096.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "VRA",
+        "acronym": "VRA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-2",
+      "parentId": "audited-part-I",
+      "tier": "section",
+      "kind": "section",
+      "code": "2",
+      "label": "General Assembly and Economic and Social Council affairs and conference management",
+      "amount": 322749250.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 318112354.0,
+        "extrabudgetary": 4636896.0
+      }
+    },
+    {
+      "id": "audited-part-I~section-2~entity-dgacm",
+      "parentId": "audited-part-I~section-2",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DGACM",
+      "label": "DGACM",
+      "amount": 320413268.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 318112354.0,
+        "extrabudgetary": 2300914.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "DGACM",
+        "acronym": "DGACM",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-I~section-2~entity-opga",
+      "parentId": "audited-part-I~section-2",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OPGA",
+      "label": "OPGA",
+      "amount": 2335982.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 2335982.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OPGA",
+        "acronym": "OPGA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II",
+      "parentId": "audited-programme",
+      "tier": "part",
+      "kind": "part",
+      "code": "II",
+      "label": "Political affairs",
+      "amount": 1402565467.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 99981800.0,
+        "regular_budget": 864022271.0,
+        "extrabudgetary": 438561396.0
+      }
+    },
+    {
+      "id": "audited-part-II~section-3",
+      "parentId": "audited-part-II",
+      "tier": "section",
+      "kind": "section",
+      "code": "3",
+      "label": "Political affairs",
+      "amount": 1110058732.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 8363800.0,
+        "regular_budget": 791809976.0,
+        "extrabudgetary": 309884956.0
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-asm-aqmt",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ASM-AQMT",
+      "label": "ASM-AQMT",
+      "amount": 5827500.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 5827500.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ASM-AQMT",
+        "acronym": "ASM-AQMT",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-binuh",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "BINUH",
+      "label": "BINUH",
+      "amount": 23017493.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 23017300.0,
+        "extrabudgetary": 193.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "BINUH",
+        "acronym": "BINUH",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-cnmc",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "CNMC",
+      "label": "CNMC",
+      "amount": 6013731.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 3686800.0,
+        "extrabudgetary": 2326931.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "CNMC",
+        "acronym": "CNMC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-cted",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "CTED",
+      "label": "CTED",
+      "amount": 11647188.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 11250700.0,
+        "extrabudgetary": 396488.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "CTED",
+        "acronym": "CTED",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-dppa",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DPPA",
+      "label": "DPPA",
+      "amount": 89009037.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 47859000.0,
+        "extrabudgetary": 41150037.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "DPPA",
+        "acronym": "DPPA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-goe-drc",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "GoE-DRC",
+      "label": "GoE-DRC",
+      "amount": 1272400.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1272400.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "GoE-DRC",
+        "acronym": "GoE-DRC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-hsu",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "HSU",
+      "label": "HSU",
+      "amount": 8868617.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 8868617.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "HSU",
+        "acronym": "HSU",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-mptf-pbf",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MPTF-PBF",
+      "label": "MPTF-PBF",
+      "amount": 185333009.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 185333009.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "MPTF-PBF",
+        "acronym": "MPTF-PBF",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-oct",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OCT",
+      "label": "OCT",
+      "amount": 54505199.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1630254.0,
+        "extrabudgetary": 52874945.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OCT",
+        "acronym": "OCT",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-ojsrs",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OJSRS",
+      "label": "OJSRS",
+      "amount": 13721896.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 12630300.0,
+        "extrabudgetary": 1091596.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OJSRS",
+        "acronym": "OJSRS",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-ombud-res1904",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OMBUD-RES1904",
+      "label": "OMBUD-RES1904",
+      "amount": 621300.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 621300.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OMBUD-RES1904",
+        "acronym": "OMBUD-RES1904",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-osasg-cyprus",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSASG-Cyprus",
+      "label": "OSASG-Cyprus",
+      "amount": 2523500.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 2523500.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSASG-Cyprus",
+        "acronym": "OSASG-Cyprus",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-osesg-fg",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSESG-FG",
+      "label": "OSESG-FG",
+      "amount": -4900.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": -4900.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSESG-FG",
+        "acronym": "OSESG-FG",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-osesg-gl",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSESG-GL",
+      "label": "OSESG-GL",
+      "amount": 4887049.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 4406100.0,
+        "extrabudgetary": 480949.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSESG-GL",
+        "acronym": "OSESG-GL",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-osesg-horn",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSESG-Horn",
+      "label": "OSESG-Horn",
+      "amount": 1586100.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1586100.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSESG-Horn",
+        "acronym": "OSESG-Horn",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-osesg-myanmar",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSESG-Myanmar",
+      "label": "OSESG-Myanmar",
+      "amount": 1887761.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1223800.0,
+        "extrabudgetary": 663961.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSESG-Myanmar",
+        "acronym": "OSESG-Myanmar",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-osesg-scres1559",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSESG-SCRES1559",
+      "label": "OSESG-SCRES1559",
+      "amount": 393400.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 393400.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSESG-SCRES1559",
+        "acronym": "OSESG-SCRES1559",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-osesg-yemen",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSESG-Yemen",
+      "label": "OSESG-Yemen",
+      "amount": 16240600.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 16240600.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSESG-Yemen",
+        "acronym": "OSESG-Yemen",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-pesg-ws",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "PESG-WS",
+      "label": "PESG-WS",
+      "amount": 267900.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 267900.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "PESG-WS",
+        "acronym": "PESG-WS",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-poe-dprk",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "POE-DPRK",
+      "label": "POE-DPRK",
+      "amount": 2943900.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 2943900.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "POE-DPRK",
+        "acronym": "POE-DPRK",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-poe-mali",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "POE-MALI",
+      "label": "POE-MALI",
+      "amount": 852600.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 852600.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "POE-MALI",
+        "acronym": "POE-MALI",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-poe-somalia",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "POE-SOMALIA",
+      "label": "POE-SOMALIA",
+      "amount": 1472200.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1472200.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "POE-SOMALIA",
+        "acronym": "POE-SOMALIA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-poe-car",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "PoE-CAR",
+      "label": "PoE-CAR",
+      "amount": 789200.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 789200.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "PoE-CAR",
+        "acronym": "PoE-CAR",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-poe-haiti",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "PoE-Haiti",
+      "label": "PoE-Haiti",
+      "amount": 1500.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1500.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "PoE-Haiti",
+        "acronym": "PoE-Haiti",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-poe-libya",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "PoE-Libya",
+      "label": "PoE-Libya",
+      "amount": 1223300.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1223300.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "PoE-Libya",
+        "acronym": "PoE-Libya",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-poe-s.sudan",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "PoE-S.Sudan",
+      "label": "PoE-S.Sudan",
+      "amount": 1013000.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1013000.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "PoE-S.Sudan",
+        "acronym": "PoE-S.Sudan",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-poe-sudan",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "PoE-Sudan",
+      "label": "PoE-Sudan",
+      "amount": 956900.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 956900.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "PoE-Sudan",
+        "acronym": "PoE-Sudan",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-poe-yemen",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "PoE-Yemen",
+      "label": "PoE-Yemen",
+      "amount": 1926200.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1926200.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "PoE-Yemen",
+        "acronym": "PoE-Yemen",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-rsce",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "RSCE",
+      "label": "RSCE",
+      "amount": 1820200.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1820200.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "RSCE",
+        "acronym": "RSCE",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-sasg-pgenocide",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "SASG-PGENOCIDE",
+      "label": "SASG-PGENOCIDE",
+      "amount": 2393600.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 2393600.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "SASG-PGENOCIDE",
+        "acronym": "SASG-PGENOCIDE",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-sc-res1540",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "SC-RES1540",
+      "label": "SC-RES1540",
+      "amount": 2598200.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 2598200.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "SC-RES1540",
+        "acronym": "SC-RES1540",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-sc-res2231",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "SC-RES2231",
+      "label": "SC-RES2231",
+      "amount": 1230600.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1230600.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "SC-RES2231",
+        "acronym": "SC-RES2231",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-spm",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "SPM",
+      "label": "SPM",
+      "amount": 213.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 213.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "SPM",
+        "acronym": "SPM",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-unama",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNAMA",
+      "label": "UNAMA",
+      "amount": 134131514.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 134130300.0,
+        "extrabudgetary": 1214.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNAMA",
+        "acronym": "UNAMA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-unami",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNAMI",
+      "label": "UNAMI",
+      "amount": 99379895.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 98214800.0,
+        "extrabudgetary": 1165095.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNAMI",
+        "acronym": "UNAMI",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-unaoc",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNAOC",
+      "label": "UNAOC",
+      "amount": 5584751.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 5584751.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNAOC",
+        "acronym": "UNAOC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-uniogbis",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNIOGBIS",
+      "label": "UNIOGBIS",
+      "amount": -4900.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": -4900.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNIOGBIS",
+        "acronym": "UNIOGBIS",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-unitad",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNITAD",
+      "label": "UNITAD",
+      "amount": 32453265.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 24351000.0,
+        "extrabudgetary": 8102265.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNITAD",
+        "acronym": "UNITAD",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-unitams",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNITAMS",
+      "label": "UNITAMS",
+      "amount": 57333938.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 56649000.0,
+        "extrabudgetary": 684938.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNITAMS",
+        "acronym": "UNITAMS",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-unmha",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNMHA",
+      "label": "UNMHA",
+      "amount": 29531000.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 29531000.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNMHA",
+        "acronym": "UNMHA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-unoau",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNOAU",
+      "label": "UNOAU",
+      "amount": 9795302.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 8363800.0,
+        "regular_budget": 807194.0,
+        "extrabudgetary": 624308.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNOAU",
+        "acronym": "UNOAU",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-unoca",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNOCA",
+      "label": "UNOCA",
+      "amount": 8044200.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 8044200.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNOCA",
+        "acronym": "UNOCA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-unowas",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNOWAS",
+      "label": "UNOWAS",
+      "amount": 14526500.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 14526500.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNOWAS",
+        "acronym": "UNOWAS",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-unrcca",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNRCCA",
+      "label": "UNRCCA",
+      "amount": 3011100.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 3011100.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNRCCA",
+        "acronym": "UNRCCA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-unrgid",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNRGID",
+      "label": "UNRGID",
+      "amount": 1745400.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1745400.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNRGID",
+        "acronym": "UNRGID",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-unrod",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNRoD",
+      "label": "UNRoD",
+      "amount": 3419071.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 3402392.0,
+        "extrabudgetary": 16679.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNRoD",
+        "acronym": "UNRoD",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-unsco",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNSCO",
+      "label": "UNSCO",
+      "amount": 10013323.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 10013323.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNSCO",
+        "acronym": "UNSCO",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-unscol",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNSCOL",
+      "label": "UNSCOL",
+      "amount": 10275700.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 10275700.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNSCOL",
+        "acronym": "UNSCOL",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-unsmil",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNSMIL",
+      "label": "UNSMIL",
+      "amount": 82340900.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 82340900.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNSMIL",
+        "acronym": "UNSMIL",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-unsom",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNSOM",
+      "label": "UNSOM",
+      "amount": 100519780.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 100000800.0,
+        "extrabudgetary": 518980.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNSOM",
+        "acronym": "UNSOM",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-3~entity-unvmc",
+      "parentId": "audited-part-II~section-3",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNVMC",
+      "label": "UNVMC",
+      "amount": 61117600.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 61117600.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNVMC",
+        "acronym": "UNVMC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-4",
+      "parentId": "audited-part-II",
+      "tier": "section",
+      "kind": "section",
+      "code": "4",
+      "label": "Disarmament",
+      "amount": 38874409.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 13883636.0,
+        "extrabudgetary": 24990773.0
+      }
+    },
+    {
+      "id": "audited-part-II~section-4~entity-oda",
+      "parentId": "audited-part-II~section-4",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ODA",
+      "label": "ODA",
+      "amount": 31623365.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 13883636.0,
+        "extrabudgetary": 17739729.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ODA",
+        "acronym": "ODA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-4~entity-unidir",
+      "parentId": "audited-part-II~section-4",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNIDIR",
+      "label": "UNIDIR",
+      "amount": 7251044.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 7251044.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNIDIR",
+        "acronym": "UNIDIR",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-5",
+      "parentId": "audited-part-II",
+      "tier": "section",
+      "kind": "section",
+      "code": "5",
+      "label": "Peacekeeping operations",
+      "amount": 247868221.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 91618000.0,
+        "regular_budget": 54000174.0,
+        "extrabudgetary": 102250047.0
+      }
+    },
+    {
+      "id": "audited-part-II~section-5~entity-amisom",
+      "parentId": "audited-part-II~section-5",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "AMISOM",
+      "label": "AMISOM",
+      "amount": 11773562.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 11773562.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "AMISOM",
+        "acronym": "AMISOM",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-5~entity-dpo",
+      "parentId": "audited-part-II~section-5",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DPO",
+      "label": "DPO",
+      "amount": 115379973.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 91618000.0,
+        "regular_budget": 5488687.0,
+        "extrabudgetary": 18273286.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "DPO",
+        "acronym": "DPO",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-5~entity-minusca",
+      "parentId": "audited-part-II~section-5",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MINUSCA",
+      "label": "MINUSCA",
+      "amount": 520281.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 520281.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "MINUSCA",
+        "acronym": "MINUSCA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-5~entity-minusma",
+      "parentId": "audited-part-II~section-5",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MINUSMA",
+      "label": "MINUSMA",
+      "amount": 8853736.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 8853736.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "MINUSMA",
+        "acronym": "MINUSMA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-5~entity-monusco",
+      "parentId": "audited-part-II~section-5",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MONUSCO",
+      "label": "MONUSCO",
+      "amount": 1797.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 1797.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "MONUSCO",
+        "acronym": "MONUSCO",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-5~entity-other",
+      "parentId": "audited-part-II~section-5",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OTHER",
+      "label": "OTHER",
+      "amount": 135.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 135.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OTHER",
+        "acronym": "OTHER",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-5~entity-unamid",
+      "parentId": "audited-part-II~section-5",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNAMID",
+      "label": "UNAMID",
+      "amount": 4845.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 4845.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNAMID",
+        "acronym": "UNAMID",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-5~entity-unficyp",
+      "parentId": "audited-part-II~section-5",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNFICYP",
+      "label": "UNFICYP",
+      "amount": 20.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 20.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNFICYP",
+        "acronym": "UNFICYP",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-5~entity-unmas",
+      "parentId": "audited-part-II~section-5",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNMAS",
+      "label": "UNMAS",
+      "amount": 62102555.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 62102555.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNMAS",
+        "acronym": "UNMAS",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-5~entity-unmik",
+      "parentId": "audited-part-II~section-5",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNMIK",
+      "label": "UNMIK",
+      "amount": 8.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 8.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNMIK",
+        "acronym": "UNMIK",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-5~entity-unmiss",
+      "parentId": "audited-part-II~section-5",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNMISS",
+      "label": "UNMISS",
+      "amount": 719822.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 719822.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNMISS",
+        "acronym": "UNMISS",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-5~entity-unmogip",
+      "parentId": "audited-part-II~section-5",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNMOGIP",
+      "label": "UNMOGIP",
+      "amount": 9549542.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 9549542.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNMOGIP",
+        "acronym": "UNMOGIP",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-5~entity-untso",
+      "parentId": "audited-part-II~section-5",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNTSO",
+      "label": "UNTSO",
+      "amount": 38961945.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 38961945.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNTSO",
+        "acronym": "UNTSO",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-II~section-6",
+      "parentId": "audited-part-II",
+      "tier": "section",
+      "kind": "section",
+      "code": "6",
+      "label": "Peaceful uses of outer space",
+      "amount": 5764105.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 4328485.0,
+        "extrabudgetary": 1435620.0
+      }
+    },
+    {
+      "id": "audited-part-II~section-6~entity-oosa",
+      "parentId": "audited-part-II~section-6",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OOSA",
+      "label": "OOSA",
+      "amount": 5764105.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 4328485.0,
+        "extrabudgetary": 1435620.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OOSA",
+        "acronym": "OOSA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-III",
+      "parentId": "audited-programme",
+      "tier": "part",
+      "kind": "part",
+      "code": "III",
+      "label": "International justice and law",
+      "amount": 210487253.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 93562100.0,
+        "regular_budget": 94837286.0,
+        "extrabudgetary": 22087867.0
+      }
+    },
+    {
+      "id": "audited-part-III~section-7",
+      "parentId": "audited-part-III",
+      "tier": "section",
+      "kind": "section",
+      "code": "7",
+      "label": "International Court of Justice",
+      "amount": 27001910.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 27070603.0,
+        "extrabudgetary": -68693.0
+      }
+    },
+    {
+      "id": "audited-part-III~section-7~entity-icj",
+      "parentId": "audited-part-III~section-7",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ICJ",
+      "label": "ICJ",
+      "amount": 27001910.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 27070603.0,
+        "extrabudgetary": -68693.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ICJ",
+        "acronym": "ICJ",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-III~section-8",
+      "parentId": "audited-part-III",
+      "tier": "section",
+      "kind": "section",
+      "code": "8",
+      "label": "Legal affairs",
+      "amount": 183485343.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 93562100.0,
+        "regular_budget": 67766683.0,
+        "extrabudgetary": 22156560.0
+      }
+    },
+    {
+      "id": "audited-part-III~section-8~entity-eccc",
+      "parentId": "audited-part-III~section-8",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ECCC",
+      "label": "ECCC",
+      "amount": 4847718.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 4847718.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ECCC",
+        "acronym": "ECCC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-III~section-8~entity-iiim",
+      "parentId": "audited-part-III~section-8",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "IIIM",
+      "label": "IIIM",
+      "amount": 21550554.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 14562187.0,
+        "extrabudgetary": 6988367.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "IIIM",
+        "acronym": "IIIM",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-III~section-8~entity-iimm",
+      "parentId": "audited-part-III~section-8",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "IIMM",
+      "label": "IIMM",
+      "amount": 13849077.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 12297523.0,
+        "extrabudgetary": 1551554.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "IIMM",
+        "acronym": "IIMM",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-III~section-8~entity-mict",
+      "parentId": "audited-part-III~section-8",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MICT",
+      "label": "MICT",
+      "amount": 90979360.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 89690200.0,
+        "extrabudgetary": 1289160.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "MICT",
+        "acronym": "MICT",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-III~section-8~entity-ola",
+      "parentId": "audited-part-III~section-8",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OLA",
+      "label": "OLA",
+      "amount": 36463410.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 3871900.0,
+        "regular_budget": 27605608.0,
+        "extrabudgetary": 4985902.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OLA",
+        "acronym": "OLA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-III~section-8~entity-rscsl",
+      "parentId": "audited-part-III~section-8",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "RSCSL",
+      "label": "RSCSL",
+      "amount": 2453647.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 2453647.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "RSCSL",
+        "acronym": "RSCSL",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-III~section-8~entity-stl",
+      "parentId": "audited-part-III~section-8",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "STL",
+      "label": "STL",
+      "amount": 6000000.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 6000000.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "STL",
+        "acronym": "STL",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-III~section-8~entity-unakrt",
+      "parentId": "audited-part-III~section-8",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNAKRT",
+      "label": "UNAKRT",
+      "amount": 7341577.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 7341577.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNAKRT",
+        "acronym": "UNAKRT",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IV",
+      "parentId": "audited-programme",
+      "tier": "part",
+      "kind": "part",
+      "code": "IV",
+      "label": "International cooperation for development",
+      "amount": 1706362535.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 259683636.0,
+        "extrabudgetary": 1446678899.0
+      }
+    },
+    {
+      "id": "audited-part-IV~section-10",
+      "parentId": "audited-part-IV",
+      "tier": "section",
+      "kind": "section",
+      "code": "10",
+      "label": "Least developed countries, landlocked developing countries and small island developing States",
+      "amount": 9085802.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 6882731.0,
+        "extrabudgetary": 2203071.0
+      }
+    },
+    {
+      "id": "audited-part-IV~section-10~entity-un-ohrlls",
+      "parentId": "audited-part-IV~section-10",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UN-OHRLLS",
+      "label": "UN-OHRLLS",
+      "amount": 9085802.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 6882731.0,
+        "extrabudgetary": 2203071.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UN-OHRLLS",
+        "acronym": "UN-OHRLLS",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IV~section-11",
+      "parentId": "audited-part-IV",
+      "tier": "section",
+      "kind": "section",
+      "code": "11",
+      "label": "United Nations system support for the African Union\u2019s Agenda 2063: The Africa We Want",
+      "amount": 9433450.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 7883470.0,
+        "extrabudgetary": 1549980.0
+      }
+    },
+    {
+      "id": "audited-part-IV~section-11~entity-dgc",
+      "parentId": "audited-part-IV~section-11",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DGC",
+      "label": "DGC",
+      "amount": 1411506.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1411506.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "DGC",
+        "acronym": "DGC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IV~section-11~entity-eca",
+      "parentId": "audited-part-IV~section-11",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ECA",
+      "label": "ECA",
+      "amount": 807005.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 807005.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ECA",
+        "acronym": "ECA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IV~section-11~entity-osaa",
+      "parentId": "audited-part-IV~section-11",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSAA",
+      "label": "OSAA",
+      "amount": 5743471.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 5664959.0,
+        "extrabudgetary": 78512.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSAA",
+        "acronym": "OSAA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IV~section-11~entity-oscs",
+      "parentId": "audited-part-IV~section-11",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSCS",
+      "label": "OSCS",
+      "amount": 1471468.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 1471468.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSCS",
+        "acronym": "OSCS",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IV~section-12",
+      "parentId": "audited-part-IV",
+      "tier": "section",
+      "kind": "section",
+      "code": "12",
+      "label": "Trade and development",
+      "amount": 121803304.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 73517490.0,
+        "extrabudgetary": 48285814.0
+      }
+    },
+    {
+      "id": "audited-part-IV~section-12~entity-unctad",
+      "parentId": "audited-part-IV~section-12",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNCTAD",
+      "label": "UNCTAD",
+      "amount": 121803304.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 73517490.0,
+        "extrabudgetary": 48285814.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNCTAD",
+        "acronym": "UNCTAD",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IV~section-13",
+      "parentId": "audited-part-IV",
+      "tier": "section",
+      "kind": "section",
+      "code": "13",
+      "label": "International Trade Centre",
+      "amount": 120889125.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 19073386.0,
+        "extrabudgetary": 101815739.0
+      }
+    },
+    {
+      "id": "audited-part-IV~section-13~entity-itc",
+      "parentId": "audited-part-IV~section-13",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ITC",
+      "label": "ITC",
+      "amount": 120889125.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 19073386.0,
+        "extrabudgetary": 101815739.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ITC",
+        "acronym": "ITC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IV~section-14",
+      "parentId": "audited-part-IV",
+      "tier": "section",
+      "kind": "section",
+      "code": "14",
+      "label": "Environment",
+      "amount": 648110605.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 21478605.0,
+        "extrabudgetary": 626632000.0
+      }
+    },
+    {
+      "id": "audited-part-IV~section-14~entity-unep",
+      "parentId": "audited-part-IV~section-14",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNEP",
+      "label": "UNEP",
+      "amount": 648110605.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 21478605.0,
+        "extrabudgetary": 626632000.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNEP",
+        "acronym": "UNEP",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IV~section-15",
+      "parentId": "audited-part-IV",
+      "tier": "section",
+      "kind": "section",
+      "code": "15",
+      "label": "Human settlements",
+      "amount": 199991696.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 13313696.0,
+        "extrabudgetary": 186678000.0
+      }
+    },
+    {
+      "id": "audited-part-IV~section-15~entity-un-habitat",
+      "parentId": "audited-part-IV~section-15",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UN-Habitat",
+      "label": "UN-Habitat",
+      "amount": 199991696.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 13313696.0,
+        "extrabudgetary": 186678000.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UN-Habitat",
+        "acronym": "UN-Habitat",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IV~section-16",
+      "parentId": "audited-part-IV",
+      "tier": "section",
+      "kind": "section",
+      "code": "16",
+      "label": "International drug control, crime and terrorism prevention and criminal justice",
+      "amount": 394515229.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 22916101.0,
+        "extrabudgetary": 371599128.0
+      }
+    },
+    {
+      "id": "audited-part-IV~section-16~entity-unodc",
+      "parentId": "audited-part-IV~section-16",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNODC",
+      "label": "UNODC",
+      "amount": 394515229.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 22916101.0,
+        "extrabudgetary": 371599128.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNODC",
+        "acronym": "UNODC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IV~section-17",
+      "parentId": "audited-part-IV",
+      "tier": "section",
+      "kind": "section",
+      "code": "17",
+      "label": "UN-Women",
+      "amount": 10011211.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 10011211.0
+      }
+    },
+    {
+      "id": "audited-part-IV~section-17~entity-un women",
+      "parentId": "audited-part-IV~section-17",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UN Women",
+      "label": "UN Women",
+      "amount": 10011211.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 10011211.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UN Women",
+        "acronym": "UN Women",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IV~section-9",
+      "parentId": "audited-part-IV",
+      "tier": "section",
+      "kind": "section",
+      "code": "9",
+      "label": "Economic and social affairs",
+      "amount": 192522113.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 84606946.0,
+        "extrabudgetary": 107915167.0
+      }
+    },
+    {
+      "id": "audited-part-IV~section-9~entity-desa",
+      "parentId": "audited-part-IV~section-9",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DESA",
+      "label": "DESA",
+      "amount": 134571863.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 84606946.0,
+        "extrabudgetary": 49964917.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "DESA",
+        "acronym": "DESA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IV~section-9~entity-jpo",
+      "parentId": "audited-part-IV~section-9",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "JPO",
+      "label": "JPO",
+      "amount": 50398640.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 50398640.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "JPO",
+        "acronym": "JPO",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IV~section-9~entity-mptf-cvd",
+      "parentId": "audited-part-IV~section-9",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MPTF-CVD",
+      "label": "MPTF-CVD",
+      "amount": -652862.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": -652862.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "MPTF-CVD",
+        "acronym": "MPTF-CVD",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IV~section-9~entity-mptf-hti",
+      "parentId": "audited-part-IV~section-9",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MPTF-HTI",
+      "label": "MPTF-HTI",
+      "amount": 4852699.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 4852699.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "MPTF-HTI",
+        "acronym": "MPTF-HTI",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IV~section-9~entity-other",
+      "parentId": "audited-part-IV~section-9",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OTHER",
+      "label": "OTHER",
+      "amount": 711.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 711.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OTHER",
+        "acronym": "OTHER",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IV~section-9~entity-unrisd",
+      "parentId": "audited-part-IV~section-9",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNRISD",
+      "label": "UNRISD",
+      "amount": 3351062.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "extrabudgetary": 3351062.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNRISD",
+        "acronym": "UNRISD",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-IX",
+      "parentId": "audited-programme",
+      "tier": "part",
+      "kind": "part",
+      "code": "IX",
+      "label": "Internal oversight",
+      "amount": 52044226.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 31073500.0,
+        "regular_budget": 20876939.0,
+        "extrabudgetary": 93787.0
+      }
+    },
+    {
+      "id": "audited-part-IX~section-30",
+      "parentId": "audited-part-IX",
+      "tier": "section",
+      "kind": "section",
+      "code": "30",
+      "label": "Internal oversight",
+      "amount": 52044226.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 31073500.0,
+        "regular_budget": 20876939.0,
+        "extrabudgetary": 93787.0
+      }
+    },
+    {
+      "id": "audited-part-IX~section-30~entity-oios",
+      "parentId": "audited-part-IX~section-30",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OIOS",
+      "label": "OIOS",
+      "amount": 52044226.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 31073500.0,
+        "regular_budget": 20876939.0,
+        "extrabudgetary": 93787.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OIOS",
+        "acronym": "OIOS",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-V",
+      "parentId": "audited-programme",
+      "tier": "part",
+      "kind": "part",
+      "code": "V",
+      "label": "Regional cooperation for development",
+      "amount": 374745473.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 312252899.0,
+        "extrabudgetary": 62492574.0
+      }
+    },
+    {
+      "id": "audited-part-V~section-18",
+      "parentId": "audited-part-V",
+      "tier": "section",
+      "kind": "section",
+      "code": "18",
+      "label": "Economic and social development in Africa",
+      "amount": 96916840.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 80619280.0,
+        "extrabudgetary": 16297560.0
+      }
+    },
+    {
+      "id": "audited-part-V~section-18~entity-eca",
+      "parentId": "audited-part-V~section-18",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ECA",
+      "label": "ECA",
+      "amount": 95899357.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 79601797.0,
+        "extrabudgetary": 16297560.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ECA",
+        "acronym": "ECA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-V~section-18~entity-other",
+      "parentId": "audited-part-V~section-18",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OTHER",
+      "label": "OTHER",
+      "amount": 1017483.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1017483.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OTHER",
+        "acronym": "OTHER",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-V~section-19",
+      "parentId": "audited-part-V",
+      "tier": "section",
+      "kind": "section",
+      "code": "19",
+      "label": "Economic and social development in Asia and the Pacific",
+      "amount": 72572305.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 52231908.0,
+        "extrabudgetary": 20340397.0
+      }
+    },
+    {
+      "id": "audited-part-V~section-19~entity-escap",
+      "parentId": "audited-part-V~section-19",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ESCAP",
+      "label": "ESCAP",
+      "amount": 72572305.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 52231908.0,
+        "extrabudgetary": 20340397.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ESCAP",
+        "acronym": "ESCAP",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-V~section-20",
+      "parentId": "audited-part-V",
+      "tier": "section",
+      "kind": "section",
+      "code": "20",
+      "label": "Economic and social development in Europe",
+      "amount": 57421482.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 36273867.0,
+        "extrabudgetary": 21147615.0
+      }
+    },
+    {
+      "id": "audited-part-V~section-20~entity-ece",
+      "parentId": "audited-part-V~section-20",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ECE",
+      "label": "ECE",
+      "amount": 57421482.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 36273867.0,
+        "extrabudgetary": 21147615.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ECE",
+        "acronym": "ECE",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-V~section-21",
+      "parentId": "audited-part-V",
+      "tier": "section",
+      "kind": "section",
+      "code": "21",
+      "label": "Economic and social development in Latin America and the Caribbean",
+      "amount": 71378187.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 58024391.0,
+        "extrabudgetary": 13353796.0
+      }
+    },
+    {
+      "id": "audited-part-V~section-21~entity-eclac",
+      "parentId": "audited-part-V~section-21",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ECLAC",
+      "label": "ECLAC",
+      "amount": 71378187.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 58024391.0,
+        "extrabudgetary": 13353796.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ECLAC",
+        "acronym": "ECLAC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-V~section-22",
+      "parentId": "audited-part-V",
+      "tier": "section",
+      "kind": "section",
+      "code": "22",
+      "label": "Economic and social development in Western Asia",
+      "amount": 51894629.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 46277275.0,
+        "extrabudgetary": 5617354.0
+      }
+    },
+    {
+      "id": "audited-part-V~section-22~entity-escwa",
+      "parentId": "audited-part-V~section-22",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ESCWA",
+      "label": "ESCWA",
+      "amount": 51894629.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 46277275.0,
+        "extrabudgetary": 5617354.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ESCWA",
+        "acronym": "ESCWA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-V~section-23",
+      "parentId": "audited-part-V",
+      "tier": "section",
+      "kind": "section",
+      "code": "23",
+      "label": "Regular programme of technical cooperation",
+      "amount": 24562030.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 38826178.0,
+        "extrabudgetary": -14264148.0
+      }
+    },
+    {
+      "id": "audited-part-V~section-23~entity-desa",
+      "parentId": "audited-part-V~section-23",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DESA",
+      "label": "DESA",
+      "amount": 9428913.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 9428913.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "DESA",
+        "acronym": "DESA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-V~section-23~entity-eca",
+      "parentId": "audited-part-V~section-23",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ECA",
+      "label": "ECA",
+      "amount": -6458266.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 7805882.0,
+        "extrabudgetary": -14264148.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ECA",
+        "acronym": "ECA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-V~section-23~entity-ece",
+      "parentId": "audited-part-V~section-23",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ECE",
+      "label": "ECE",
+      "amount": 2334231.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 2334231.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ECE",
+        "acronym": "ECE",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-V~section-23~entity-eclac",
+      "parentId": "audited-part-V~section-23",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ECLAC",
+      "label": "ECLAC",
+      "amount": 4066490.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 4066490.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ECLAC",
+        "acronym": "ECLAC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-V~section-23~entity-escap",
+      "parentId": "audited-part-V~section-23",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ESCAP",
+      "label": "ESCAP",
+      "amount": 3395779.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 3395779.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ESCAP",
+        "acronym": "ESCAP",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-V~section-23~entity-escwa",
+      "parentId": "audited-part-V~section-23",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ESCWA",
+      "label": "ESCWA",
+      "amount": 4951842.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 4951842.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ESCWA",
+        "acronym": "ESCWA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-V~section-23~entity-ocha",
+      "parentId": "audited-part-V~section-23",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OCHA",
+      "label": "OCHA",
+      "amount": 707270.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 707270.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OCHA",
+        "acronym": "OCHA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-V~section-23~entity-ohchr",
+      "parentId": "audited-part-V~section-23",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OHCHR",
+      "label": "OHCHR",
+      "amount": 2342401.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 2342401.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OHCHR",
+        "acronym": "OHCHR",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-V~section-23~entity-un-habitat",
+      "parentId": "audited-part-V~section-23",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UN-Habitat",
+      "label": "UN-Habitat",
+      "amount": 1118909.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1118909.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UN-Habitat",
+        "acronym": "UN-Habitat",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-V~section-23~entity-unctad",
+      "parentId": "audited-part-V~section-23",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNCTAD",
+      "label": "UNCTAD",
+      "amount": 1707271.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1707271.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNCTAD",
+        "acronym": "UNCTAD",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-V~section-23~entity-unodc",
+      "parentId": "audited-part-V~section-23",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNODC",
+      "label": "UNODC",
+      "amount": 967190.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 967190.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNODC",
+        "acronym": "UNODC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-VI",
+      "parentId": "audited-programme",
+      "tier": "part",
+      "kind": "part",
+      "code": "VI",
+      "label": "Human rights and humanitarian affairs",
+      "amount": 2985300998.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 2079700.0,
+        "regular_budget": 238756706.0,
+        "extrabudgetary": 2744464592.0
+      }
+    },
+    {
+      "id": "audited-part-VI~section-24",
+      "parentId": "audited-part-VI",
+      "tier": "section",
+      "kind": "section",
+      "code": "24",
+      "label": "Human rights",
+      "amount": 383244901.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 2079700.0,
+        "regular_budget": 142086810.0,
+        "extrabudgetary": 239078391.0
+      }
+    },
+    {
+      "id": "audited-part-VI~section-24~entity-cmp-cyprus",
+      "parentId": "audited-part-VI~section-24",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "CMP-CYPRUS",
+      "label": "CMP-CYPRUS",
+      "amount": 445136.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 445136.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "CMP-CYPRUS",
+        "acronym": "CMP-CYPRUS",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-VI~section-24~entity-ohchr",
+      "parentId": "audited-part-VI~section-24",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OHCHR",
+      "label": "OHCHR",
+      "amount": 382799765.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 2079700.0,
+        "regular_budget": 141641674.0,
+        "extrabudgetary": 239078391.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OHCHR",
+        "acronym": "OHCHR",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-VI~section-25",
+      "parentId": "audited-part-VI",
+      "tier": "section",
+      "kind": "section",
+      "code": "25",
+      "label": "International protection, durable solutions and assistance to refugees",
+      "amount": 42211028.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 42211028.0
+      }
+    },
+    {
+      "id": "audited-part-VI~section-25~entity-unhcr",
+      "parentId": "audited-part-VI~section-25",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNHCR",
+      "label": "UNHCR",
+      "amount": 42211028.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 42211028.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNHCR",
+        "acronym": "UNHCR",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-VI~section-26",
+      "parentId": "audited-part-VI",
+      "tier": "section",
+      "kind": "section",
+      "code": "26",
+      "label": "Palestine refugees",
+      "amount": 34545763.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 34545763.0
+      }
+    },
+    {
+      "id": "audited-part-VI~section-26~entity-unrwa",
+      "parentId": "audited-part-VI~section-26",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNRWA",
+      "label": "UNRWA",
+      "amount": 34545763.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 34545763.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNRWA",
+        "acronym": "UNRWA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-VI~section-27",
+      "parentId": "audited-part-VI",
+      "tier": "section",
+      "kind": "section",
+      "code": "27",
+      "label": "Humanitarian assistance",
+      "amount": 2525299306.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 19913105.0,
+        "extrabudgetary": 2505386201.0
+      }
+    },
+    {
+      "id": "audited-part-VI~section-27~entity-ocha",
+      "parentId": "audited-part-VI~section-27",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OCHA",
+      "label": "OCHA",
+      "amount": 2470953721.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 18644308.0,
+        "extrabudgetary": 2452309413.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OCHA",
+        "acronym": "OCHA",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-VI~section-27~entity-undrr",
+      "parentId": "audited-part-VI~section-27",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNDRR",
+      "label": "UNDRR",
+      "amount": 54345585.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1268797.0,
+        "extrabudgetary": 53076788.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNDRR",
+        "acronym": "UNDRR",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-VII",
+      "parentId": "audited-programme",
+      "tier": "part",
+      "kind": "part",
+      "code": "VII",
+      "label": "Global Communications",
+      "amount": 106366964.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 565400.0,
+        "regular_budget": 98176168.0,
+        "extrabudgetary": 7625396.0
+      }
+    },
+    {
+      "id": "audited-part-VII~section-28",
+      "parentId": "audited-part-VII",
+      "tier": "section",
+      "kind": "section",
+      "code": "28",
+      "label": "Global Communications",
+      "amount": 106366964.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 565400.0,
+        "regular_budget": 98176168.0,
+        "extrabudgetary": 7625396.0
+      }
+    },
+    {
+      "id": "audited-part-VII~section-28~entity-dgc",
+      "parentId": "audited-part-VII~section-28",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DGC",
+      "label": "DGC",
+      "amount": 106366964.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 565400.0,
+        "regular_budget": 98176168.0,
+        "extrabudgetary": 7625396.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "DGC",
+        "acronym": "DGC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-VIII",
+      "parentId": "audited-programme",
+      "tier": "part",
+      "kind": "part",
+      "code": "VIII",
+      "label": "Common support services",
+      "amount": 546183112.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 206575900.0,
+        "regular_budget": 318627630.0,
+        "extrabudgetary": 20979582.0
+      }
+    },
+    {
+      "id": "audited-part-VIII~section-29a",
+      "parentId": "audited-part-VIII",
+      "tier": "section",
+      "kind": "section",
+      "code": "29A",
+      "label": "Department of Management Strategy, Policy and Compliance",
+      "amount": 146109236.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 87533900.0,
+        "regular_budget": 58557827.0,
+        "extrabudgetary": 17509.0
+      }
+    },
+    {
+      "id": "audited-part-VIII~section-29a~entity-dmspc",
+      "parentId": "audited-part-VIII~section-29a",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DMSPC",
+      "label": "DMSPC",
+      "amount": 141649673.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 83117300.0,
+        "regular_budget": 58557827.0,
+        "extrabudgetary": -25454.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "DMSPC",
+        "acronym": "DMSPC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-VIII~section-29a~entity-other",
+      "parentId": "audited-part-VIII~section-29a",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OTHER",
+      "label": "OTHER",
+      "amount": 4459563.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 4416600.0,
+        "extrabudgetary": 42963.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OTHER",
+        "acronym": "OTHER",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-VIII~section-29b",
+      "parentId": "audited-part-VIII",
+      "tier": "section",
+      "kind": "section",
+      "code": "29B",
+      "label": "Department of Operational Support",
+      "amount": 205722837.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 100506900.0,
+        "regular_budget": 90739761.0,
+        "extrabudgetary": 14476176.0
+      }
+    },
+    {
+      "id": "audited-part-VIII~section-29b~entity-dos",
+      "parentId": "audited-part-VIII~section-29b",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DOS",
+      "label": "DOS",
+      "amount": 205722837.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 100506900.0,
+        "regular_budget": 90739761.0,
+        "extrabudgetary": 14476176.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "DOS",
+        "acronym": "DOS",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-VIII~section-29c",
+      "parentId": "audited-part-VIII",
+      "tier": "section",
+      "kind": "section",
+      "code": "29C",
+      "label": "Office of Information and Communications Technology",
+      "amount": 70259119.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 18535100.0,
+        "regular_budget": 51724019.0
+      }
+    },
+    {
+      "id": "audited-part-VIII~section-29c~entity-oict",
+      "parentId": "audited-part-VIII~section-29c",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OICT",
+      "label": "OICT",
+      "amount": 70259119.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 18535100.0,
+        "regular_budget": 51724019.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OICT",
+        "acronym": "OICT",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-VIII~section-29e",
+      "parentId": "audited-part-VIII",
+      "tier": "section",
+      "kind": "section",
+      "code": "29E",
+      "label": "Administration, Geneva",
+      "amount": 84401953.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 77897459.0,
+        "extrabudgetary": 6504494.0
+      }
+    },
+    {
+      "id": "audited-part-VIII~section-29e~entity-unog",
+      "parentId": "audited-part-VIII~section-29e",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNOG",
+      "label": "UNOG",
+      "amount": 84401953.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 77897459.0,
+        "extrabudgetary": 6504494.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNOG",
+        "acronym": "UNOG",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-VIII~section-29f",
+      "parentId": "audited-part-VIII",
+      "tier": "section",
+      "kind": "section",
+      "code": "29F",
+      "label": "Administration, Vienna",
+      "amount": 21353845.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 21353845.0
+      }
+    },
+    {
+      "id": "audited-part-VIII~section-29f~entity-unov",
+      "parentId": "audited-part-VIII~section-29f",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNOV",
+      "label": "UNOV",
+      "amount": 21353845.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 21353845.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNOV",
+        "acronym": "UNOV",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-VIII~section-29g",
+      "parentId": "audited-part-VIII",
+      "tier": "section",
+      "kind": "section",
+      "code": "29G",
+      "label": "Administration, Nairobi",
+      "amount": 18336122.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 18354719.0,
+        "extrabudgetary": -18597.0
+      }
+    },
+    {
+      "id": "audited-part-VIII~section-29g~entity-unon",
+      "parentId": "audited-part-VIII~section-29g",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNON",
+      "label": "UNON",
+      "amount": 18336122.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 18354719.0,
+        "extrabudgetary": -18597.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNON",
+        "acronym": "UNON",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-X",
+      "parentId": "audited-programme",
+      "tier": "part",
+      "kind": "part",
+      "code": "X",
+      "label": "Jointly financed administrative activities and special expenses",
+      "amount": 90888323.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 90607300.0,
+        "extrabudgetary": 281023.0
+      }
+    },
+    {
+      "id": "audited-part-X~section-31",
+      "parentId": "audited-part-X",
+      "tier": "section",
+      "kind": "section",
+      "code": "31",
+      "label": "Jointly financed administrative activities",
+      "amount": 8238558.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 7957535.0,
+        "extrabudgetary": 281023.0
+      }
+    },
+    {
+      "id": "audited-part-X~section-31~entity-ceb",
+      "parentId": "audited-part-X~section-31",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "CEB",
+      "label": "CEB",
+      "amount": 1513263.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 1232240.0,
+        "extrabudgetary": 281023.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "CEB",
+        "acronym": "CEB",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-X~section-31~entity-icsc",
+      "parentId": "audited-part-X~section-31",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ICSC",
+      "label": "ICSC",
+      "amount": 4329734.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 4329734.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "ICSC",
+        "acronym": "ICSC",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-X~section-31~entity-jiu",
+      "parentId": "audited-part-X~section-31",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "JIU",
+      "label": "JIU",
+      "amount": 2395561.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 2395561.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "JIU",
+        "acronym": "JIU",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-X~section-32",
+      "parentId": "audited-part-X",
+      "tier": "section",
+      "kind": "section",
+      "code": "32",
+      "label": "Special expenses",
+      "amount": 82649765.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 82649765.0
+      }
+    },
+    {
+      "id": "audited-part-X~section-32~entity-special expenses",
+      "parentId": "audited-part-X~section-32",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "Special Expenses",
+      "label": "Special Expenses",
+      "amount": 82649765.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 82649765.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Special Expenses",
+        "acronym": "Special Expenses",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-XI",
+      "parentId": "audited-programme",
+      "tier": "part",
+      "kind": "part",
+      "code": "XI",
+      "label": "Capital expenditures",
+      "amount": 112760540.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 112760540.0
+      }
+    },
+    {
+      "id": "audited-part-XI~section-33",
+      "parentId": "audited-part-XI",
+      "tier": "section",
+      "kind": "section",
+      "code": "33",
+      "label": "Construction, alteration, improvement and major maintenance",
+      "amount": 112760540.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 112760540.0
+      }
+    },
+    {
+      "id": "audited-part-XI~section-33~entity-cons",
+      "parentId": "audited-part-XI~section-33",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "CONS",
+      "label": "CONS",
+      "amount": 112760540.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 112760540.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "CONS",
+        "acronym": "CONS",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-XII",
+      "parentId": "audited-programme",
+      "tier": "part",
+      "kind": "part",
+      "code": "XII",
+      "label": "Safety and security",
+      "amount": 136294255.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 3812000.0,
+        "regular_budget": 127931101.0,
+        "extrabudgetary": 4551154.0
+      }
+    },
+    {
+      "id": "audited-part-XII~section-34",
+      "parentId": "audited-part-XII",
+      "tier": "section",
+      "kind": "section",
+      "code": "34",
+      "label": "Safety and security",
+      "amount": 136294255.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 3812000.0,
+        "regular_budget": 127931101.0,
+        "extrabudgetary": 4551154.0
+      }
+    },
+    {
+      "id": "audited-part-XII~section-34~entity-dss",
+      "parentId": "audited-part-XII~section-34",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DSS",
+      "label": "DSS",
+      "amount": 136294255.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "other_assessed": 3812000.0,
+        "regular_budget": 127931101.0,
+        "extrabudgetary": 4551154.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "DSS",
+        "acronym": "DSS",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-XIII",
+      "parentId": "audited-programme",
+      "tier": "part",
+      "kind": "part",
+      "code": "XIII",
+      "label": "Development Account",
+      "amount": 16199400.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 16199400.0
+      }
+    },
+    {
+      "id": "audited-part-XIII~section-35",
+      "parentId": "audited-part-XIII",
+      "tier": "section",
+      "kind": "section",
+      "code": "35",
+      "label": "Development Account",
+      "amount": 16199400.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 16199400.0
+      }
+    },
+    {
+      "id": "audited-part-XIII~section-35~entity-dev-acct",
+      "parentId": "audited-part-XIII~section-35",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DEV-ACCT",
+      "label": "DEV-ACCT",
+      "amount": 16199400.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 16199400.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "DEV-ACCT",
+        "acronym": "DEV-ACCT",
+        "relationship": "audited_entity"
+      }
+    },
+    {
+      "id": "audited-part-XIV",
+      "parentId": "audited-programme",
+      "tier": "part",
+      "kind": "part",
+      "code": "XIV",
+      "label": "Staff assessment",
+      "amount": 284937022.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 284937022.0
+      }
+    },
+    {
+      "id": "audited-part-XIV~section-36",
+      "parentId": "audited-part-XIV",
+      "tier": "section",
+      "kind": "section",
+      "code": "36",
+      "label": "Staff Assessment",
+      "amount": 284937022.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 284937022.0
+      }
+    },
+    {
+      "id": "audited-part-XIV~section-36~entity-sta",
+      "parentId": "audited-part-XIV~section-36",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "STA",
+      "label": "STA",
+      "amount": 284937022.0,
+      "basis": "derived_from_audited_rows",
+      "values": {
+        "regular_budget": 284937022.0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "STA",
+        "acronym": "STA",
+        "relationship": "audited_entity"
+      }
+    }
+  ]
+}
