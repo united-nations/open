@@ -299,10 +299,10 @@ def build_peacekeeping(year: int, frame: pd.DataFrame) -> dict:
         )
 
     assert abs(sum(node["amount"] for node in nodes[1:]) - nodes[0]["amount"]) < 1
-    periods = sorted(
-        str(value) for value in frame["financial_year"].dropna().unique()
-    )
-    period_label = ", ".join(periods) if periods else str(year)
+    # The audited extract keys each peacekeeping cycle by its ending calendar
+    # year. Its FINANCIAL_YEAR field is inconsistent in 2021 and 2022, where it
+    # contains only that ending year, so derive the July-June label here.
+    period_label = f"{year - 1}/{str(year)[-2:]}"
     return {
         "meta": {
             "stream": "pko",

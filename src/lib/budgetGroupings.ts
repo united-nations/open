@@ -164,7 +164,20 @@ export function fiscalYearLabel(year: number): string {
   return `${year}/${String(year + 1).slice(2)}`;
 }
 
+/** Audited PKO files are keyed by the calendar year in which the cycle ends. */
+export function auditedFiscalYearLabel(year: number): string {
+  return `${year - 1}/${String(year).slice(2)}`;
+}
+
 /** The funding sources of the programme budget, in the order the fascicles use. */
+export const BUDGET_FUNDING_SOURCES = [
+  "regular_budget",
+  "other_assessed",
+  "extrabudgetary",
+] as const;
+
+export type BudgetFundingSource = (typeof BUDGET_FUNDING_SOURCES)[number];
+
 export const FUNDING_SOURCES: Record<
   string,
   { label: string; color: string; tooltip: string }
