@@ -33,17 +33,24 @@ const DATASET_DETAILS: Record<
 
 const BLOCK_DETAILS: Record<
   BudgetBlock,
-  { label: string; description: string; hashPrefix: string }
+  {
+    label: string;
+    subtitle: string;
+    description: string;
+    hashPrefix: string;
+  }
 > = {
   programme: {
-    label: "Secretariat budget",
+    label: "Programme budget",
+    subtitle: "UN Secretariat and special political missions",
     description:
       "Budget parts and sections, with funding sources shown as shades",
     hashPrefix: "secretariat",
   },
   peacekeeping: {
-    label: "Peacekeeping Operations budget",
-    description: "Separately assessed mission accounts on July–June cycles",
+    label: "Peacekeeping budgets",
+    subtitle: "Separately assessed peacekeeping missions",
+    description: "Mission budgets and accounts on July–June cycles",
     hashPrefix: "pko",
   },
 };
@@ -204,7 +211,14 @@ export function SecretariatDataTreemap() {
                   {blockDetails.label}
                 </span>
                 <span
-                  className={`mt-1 block text-xl leading-none font-bold sm:text-2xl ${
+                  className={`mt-1 block text-xs leading-snug ${
+                    selected ? "text-white/85" : "text-gray-500"
+                  }`}
+                >
+                  {blockDetails.subtitle}
+                </span>
+                <span
+                  className={`mt-3 block text-xl leading-none font-bold sm:text-2xl ${
                     selected ? "text-white" : "text-gray-900"
                   }`}
                 >
@@ -235,7 +249,7 @@ export function SecretariatDataTreemap() {
             key={programmeDataset}
             dataset={programmeDataset}
             hashPrefix={BLOCK_DETAILS.programme.hashPrefix}
-            sectionId="secretariat"
+            sectionId="budget"
             onTotalChange={recordProgrammeTotal}
           />
         </section>
@@ -250,7 +264,7 @@ export function SecretariatDataTreemap() {
             key={peacekeepingDataset}
             dataset={peacekeepingDataset}
             hashPrefix={BLOCK_DETAILS.peacekeeping.hashPrefix}
-            sectionId="secretariat"
+            sectionId="budget"
             onTotalChange={recordPeacekeepingTotal}
           />
         </section>
