@@ -58,6 +58,49 @@ export interface DonorContribution {
   Other?: number;
 }
 
+export type RegularBudgetPaymentStatus =
+  | "paid_on_time"
+  | "paid_late"
+  | "not_paid_in_full";
+
+export interface RegularBudgetContributor {
+  name: string;
+  assessment_rate: number;
+  assessment_amount: number;
+  payment_status: RegularBudgetPaymentStatus;
+  payment_date: string | null;
+}
+
+export interface RegularBudgetContributorsData {
+  meta: {
+    year: number;
+    as_of: string;
+    due_date: string;
+    member_state_count: number;
+    assessment_total: number;
+    assessment_amount_column: "Net contributions" | "Total contributions";
+    paid_in_full_count: number;
+    paid_on_time_count: number;
+    paid_late_count: number;
+    not_paid_in_full_count: number;
+    amount_reconciliation: {
+      checked_paid_states: number;
+      exact_matches: number;
+      discrepancies: {
+        name: string;
+        honour_roll_amount: number;
+        assessment_document_amount: number;
+      }[];
+    };
+    sources: {
+      assessment_document: { symbol: string; url: string };
+      honour_roll: { url: string; archive_url: string };
+      scale: { url: string; workbook_url: string };
+    };
+  };
+  contributors: RegularBudgetContributor[];
+}
+
 export interface EntityRevenue {
   total: number;
   year: number;

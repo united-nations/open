@@ -85,9 +85,9 @@ The local PPB cache applies the source-reconciliation rules from the
 `codex/financial-source-reconciliation` branch on top of the immutable v1.6
 base. The main user-facing completeness measure is the area of generic
 budget-unit tiles. For 2023 expenditure, this falls from $1,467.4 million in
-the v1.6 view to $2.5 million, or 0.020% of the combined PPB view. The remaining
-generic shares are 0.234% for 2019, 0.145% for 2020, 0.097% for 2021, 0.096%
-for 2022, 0.034% for 2024, and 0.127% for 2025.
+the v1.6 view to zero material remainder, or 0.000% of the combined PPB view.
+The remaining generic shares are 0.234% for 2019, 0.145% for 2020, 0.097% for
+2021, 0.096% for 2022, 0.034% for 2024, and 0.127% for 2025.
 
 A residual tile is retained when the source corpus does not establish an exact
 lower schedule. Its label now names the missing funding stream when possible,

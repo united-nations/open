@@ -92,6 +92,21 @@
     "min": 2018,
     "max": 2024
   },
+  "regularBudgetContributors": {
+    "years": [
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "default": 2026,
+    "min": 2019,
+    "max": 2026
+  },
   "budgetAuditedPpb": {
     "years": [
       2019,

@@ -1,32 +1,18 @@
 import type { Metadata } from "next";
 import { DataPlaceholder } from "@/components/DataPlaceholder";
+import { RegularBudgetContributorsTreemap } from "@/components/RegularBudgetContributorsTreemap";
 import { SectionBanner } from "@/components/SectionBanner";
 import { SecretariatDataTreemap } from "@/components/SecretariatDataTreemap";
 
 export const metadata: Metadata = {
   title: "UN Secretariat Financials",
   description:
-    "Explore UN Secretariat expenditure from audited financial statements or the PPB and PKO budget documents.",
+    "Explore UN regular-budget assessments and Secretariat expenditure from audited financial statements or the PPB and PKO budget documents.",
 };
 
 export default function SecretariatPage() {
   return (
     <>
-      <SectionBanner
-        id="contributors"
-        imageSrc="/images/banners/hero-banner-homepage.png"
-        title="Who contributes to the UN Secretariat?"
-        description="Member States finance the programme and peacekeeping budgets through assessed contributions. Voluntary contributions also support Secretariat activities. Explore who provides these resources and how they are funded."
-      />
-      <section className="mx-auto max-w-6xl px-6 py-12 md:px-12 lg:px-16">
-        <DataPlaceholder
-          type="treemap"
-          height="h-96"
-          title="Contributor treemap"
-          description="Assessed and voluntary contributions by contributor"
-        />
-      </section>
-
       <SectionBanner
         id="budget"
         imageSrc="/images/banners/hero-banner-secretariat-expenses.png"
@@ -65,6 +51,16 @@ export default function SecretariatPage() {
           title="Priority areas treemap"
           description="Expenditure and entities by priority area"
         />
+      </section>
+
+      <SectionBanner
+        id="contributors"
+        imageSrc="/images/banners/hero-banner-homepage.png"
+        title="Who contributes to the UN Secretariat?"
+        description="Member States finance the United Nations regular budget through assessed contributions. Explore each Member State's assessment and whether it was paid in full by the due date, paid later, or was not listed as paid in full."
+      />
+      <section className="mx-auto max-w-6xl px-6 py-12 md:px-12 lg:px-16">
+        <RegularBudgetContributorsTreemap />
       </section>
     </>
   );

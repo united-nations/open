@@ -194,7 +194,6 @@ export function ContributorsTreemap() {
           status: info.status,
           category: info.category || (isGovernmentDonor(info.status) ? "Government" : "Non-Government"),
           contributions: info.contributions,
-          payment_status: info.payment_status,
           is_other: info.is_other,
         }));
         setContributors(parsed);

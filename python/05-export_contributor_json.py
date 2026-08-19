@@ -27,9 +27,7 @@ def load_data():
     fused["rev_cat"] = fused["rev_type"].apply(rev_category)
     
     states = pd.read_csv("data/ceb/member_states.csv")
-    state_info = {row["country"]: {"status": row["status"],
-                                    "payment_status": row["payment_status"] if pd.notna(row["payment_status"]) else None,
-                                    "payment_date": row["payment_date"] if pd.notna(row["payment_date"]) else None}
+    state_info = {row["country"]: {"status": row["status"]}
                   for _, row in states.iterrows()}
     return fused, state_info
 
@@ -53,9 +51,6 @@ def export_donors_json(df: pd.DataFrame, state_info: dict):
             if row["donor_type"] == "Government":
                 if d in state_info:
                     donors[d]["status"] = state_info[d]["status"]
-                    if year == max(YEARS) and state_info[d].get("payment_status"):
-                        donors[d]["payment_status"] = state_info[d]["payment_status"]
-                        donors[d]["payment_date"] = state_info[d]["payment_date"]
                 else:
                     donors[d]["status"] = "nonmember"
             

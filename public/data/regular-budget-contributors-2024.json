@@ -1,0 +1,1386 @@
+{
+  "meta": {
+    "year": 2024,
+    "as_of": "2024-12-30",
+    "due_date": "2024-02-08",
+    "member_state_count": 193,
+    "assessment_total": 3220125936,
+    "assessment_amount_column": "Net contributions",
+    "paid_in_full_count": 152,
+    "paid_on_time_count": 51,
+    "paid_late_count": 101,
+    "not_paid_in_full_count": 41,
+    "amount_reconciliation": {
+      "checked_paid_states": 152,
+      "exact_matches": 152,
+      "discrepancies": []
+    },
+    "sources": {
+      "assessment_document": {
+        "symbol": "ST/ADM/SER.B/1067",
+        "url": "https://documents.un.org/api/symbol/access?l=en&s=ST%2FADM%2FSER.B%2F1067&t=pdf"
+      },
+      "honour_roll": {
+        "url": "https://www.un.org/en/ga/contributions/honourroll_2024.shtml",
+        "archive_url": "https://www.un.org/en/ga/contributions/previous_honourrolls.shtml"
+      },
+      "scale": {
+        "url": "https://www.un.org/en/ga/contributions/scale.shtml",
+        "workbook_url": "https://www.un.org/en/ga/contributions/Scale of Assessments for RB 1946-2027.xlsx"
+      }
+    }
+  },
+  "contributors": [
+    {
+      "name": "United States of America",
+      "assessment_rate": 22.0,
+      "assessment_amount": 762434310,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "China",
+      "assessment_rate": 15.254,
+      "assessment_amount": 480636257,
+      "payment_status": "paid_late",
+      "payment_date": "2024-12-27"
+    },
+    {
+      "name": "Japan",
+      "assessment_rate": 8.033,
+      "assessment_amount": 253110729,
+      "payment_status": "paid_late",
+      "payment_date": "2024-04-25"
+    },
+    {
+      "name": "Germany",
+      "assessment_rate": 6.111,
+      "assessment_amount": 192550687,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-02-07"
+    },
+    {
+      "name": "United Kingdom of Great Britain and Northern Ireland",
+      "assessment_rate": 4.375,
+      "assessment_amount": 137851293,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-29"
+    },
+    {
+      "name": "France",
+      "assessment_rate": 4.318,
+      "assessment_amount": 136055287,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-12"
+    },
+    {
+      "name": "Italy",
+      "assessment_rate": 3.189,
+      "assessment_amount": 100481777,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-02-07"
+    },
+    {
+      "name": "Canada",
+      "assessment_rate": 2.628,
+      "assessment_amount": 82805302,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-11"
+    },
+    {
+      "name": "Republic of Korea",
+      "assessment_rate": 2.574,
+      "assessment_amount": 81103823,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-29"
+    },
+    {
+      "name": "Spain",
+      "assessment_rate": 2.134,
+      "assessment_amount": 67239922,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-28"
+    },
+    {
+      "name": "Australia",
+      "assessment_rate": 2.111,
+      "assessment_amount": 66515218,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-09"
+    },
+    {
+      "name": "Brazil",
+      "assessment_rate": 2.013,
+      "assessment_amount": 63427349,
+      "payment_status": "paid_late",
+      "payment_date": "2024-05-16"
+    },
+    {
+      "name": "Russian Federation",
+      "assessment_rate": 1.866,
+      "assessment_amount": 58795546,
+      "payment_status": "paid_late",
+      "payment_date": "2024-06-28"
+    },
+    {
+      "name": "Netherlands",
+      "assessment_rate": 1.377,
+      "assessment_amount": 43387710,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-02-05"
+    },
+    {
+      "name": "Mexico",
+      "assessment_rate": 1.221,
+      "assessment_amount": 38472326,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Saudi Arabia",
+      "assessment_rate": 1.184,
+      "assessment_amount": 37306498,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-15"
+    },
+    {
+      "name": "Switzerland",
+      "assessment_rate": 1.134,
+      "assessment_amount": 35731055,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-16"
+    },
+    {
+      "name": "India",
+      "assessment_rate": 1.044,
+      "assessment_amount": 32895257,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-31"
+    },
+    {
+      "name": "Sweden",
+      "assessment_rate": 0.871,
+      "assessment_amount": 27444224,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-13"
+    },
+    {
+      "name": "Türkiye",
+      "assessment_rate": 0.845,
+      "assessment_amount": 26624993,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-22"
+    },
+    {
+      "name": "Poland",
+      "assessment_rate": 0.837,
+      "assessment_amount": 26372922,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-30"
+    },
+    {
+      "name": "Belgium",
+      "assessment_rate": 0.828,
+      "assessment_amount": 26089342,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-26"
+    },
+    {
+      "name": "Argentina",
+      "assessment_rate": 0.719,
+      "assessment_amount": 22654875,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Austria",
+      "assessment_rate": 0.679,
+      "assessment_amount": 21394520,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-02-05"
+    },
+    {
+      "name": "Norway",
+      "assessment_rate": 0.679,
+      "assessment_amount": 21394520,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-11"
+    },
+    {
+      "name": "United Arab Emirates",
+      "assessment_rate": 0.635,
+      "assessment_amount": 20008131,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-21"
+    },
+    {
+      "name": "Israel",
+      "assessment_rate": 0.561,
+      "assessment_amount": 17676474,
+      "payment_status": "paid_late",
+      "payment_date": "2024-11-20"
+    },
+    {
+      "name": "Denmark",
+      "assessment_rate": 0.553,
+      "assessment_amount": 17424403,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-31"
+    },
+    {
+      "name": "Indonesia",
+      "assessment_rate": 0.549,
+      "assessment_amount": 17298368,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-28"
+    },
+    {
+      "name": "Singapore",
+      "assessment_rate": 0.504,
+      "assessment_amount": 15880469,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-16"
+    },
+    {
+      "name": "Ireland",
+      "assessment_rate": 0.439,
+      "assessment_amount": 13832392,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-22"
+    },
+    {
+      "name": "Chile",
+      "assessment_rate": 0.42,
+      "assessment_amount": 13233724,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Finland",
+      "assessment_rate": 0.417,
+      "assessment_amount": 13139198,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-19"
+    },
+    {
+      "name": "Iran (Islamic Republic of)",
+      "assessment_rate": 0.371,
+      "assessment_amount": 11689790,
+      "payment_status": "paid_late",
+      "payment_date": "2024-11-19"
+    },
+    {
+      "name": "Thailand",
+      "assessment_rate": 0.368,
+      "assessment_amount": 11595263,
+      "payment_status": "paid_late",
+      "payment_date": "2024-06-13"
+    },
+    {
+      "name": "Portugal",
+      "assessment_rate": 0.353,
+      "assessment_amount": 11122630,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-02-07"
+    },
+    {
+      "name": "Malaysia",
+      "assessment_rate": 0.348,
+      "assessment_amount": 10965086,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-30"
+    },
+    {
+      "name": "Czechia",
+      "assessment_rate": 0.34,
+      "assessment_amount": 10713015,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-02-07"
+    },
+    {
+      "name": "Greece",
+      "assessment_rate": 0.325,
+      "assessment_amount": 10240382,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-09"
+    },
+    {
+      "name": "Romania",
+      "assessment_rate": 0.312,
+      "assessment_amount": 9830767,
+      "payment_status": "paid_late",
+      "payment_date": "2024-08-05"
+    },
+    {
+      "name": "New Zealand",
+      "assessment_rate": 0.309,
+      "assessment_amount": 9736240,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-02-07"
+    },
+    {
+      "name": "Qatar",
+      "assessment_rate": 0.269,
+      "assessment_amount": 8475885,
+      "payment_status": "paid_late",
+      "payment_date": "2024-04-23"
+    },
+    {
+      "name": "Colombia",
+      "assessment_rate": 0.246,
+      "assessment_amount": 7751181,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-09"
+    },
+    {
+      "name": "South Africa",
+      "assessment_rate": 0.244,
+      "assessment_amount": 7688164,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-28"
+    },
+    {
+      "name": "Kuwait",
+      "assessment_rate": 0.234,
+      "assessment_amount": 7373075,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-10"
+    },
+    {
+      "name": "Hungary",
+      "assessment_rate": 0.228,
+      "assessment_amount": 7184022,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-02-02"
+    },
+    {
+      "name": "Philippines",
+      "assessment_rate": 0.212,
+      "assessment_amount": 6679879,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-06"
+    },
+    {
+      "name": "Nigeria",
+      "assessment_rate": 0.182,
+      "assessment_amount": 5734614,
+      "payment_status": "paid_late",
+      "payment_date": "2024-09-11"
+    },
+    {
+      "name": "Venezuela (Bolivarian Republic of)",
+      "assessment_rate": 0.175,
+      "assessment_amount": 5514051,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Peru",
+      "assessment_rate": 0.163,
+      "assessment_amount": 5135945,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-25"
+    },
+    {
+      "name": "Slovakia",
+      "assessment_rate": 0.155,
+      "assessment_amount": 4883874,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-25"
+    },
+    {
+      "name": "Egypt",
+      "assessment_rate": 0.139,
+      "assessment_amount": 4379733,
+      "payment_status": "paid_late",
+      "payment_date": "2024-06-27"
+    },
+    {
+      "name": "Kazakhstan",
+      "assessment_rate": 0.133,
+      "assessment_amount": 4190679,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-09"
+    },
+    {
+      "name": "Iraq",
+      "assessment_rate": 0.128,
+      "assessment_amount": 4033134,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Pakistan",
+      "assessment_rate": 0.114,
+      "assessment_amount": 3592011,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Oman",
+      "assessment_rate": 0.111,
+      "assessment_amount": 3497484,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Algeria",
+      "assessment_rate": 0.109,
+      "assessment_amount": 3434467,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-25"
+    },
+    {
+      "name": "Cuba",
+      "assessment_rate": 0.095,
+      "assessment_amount": 2993342,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-02-01"
+    },
+    {
+      "name": "Viet Nam",
+      "assessment_rate": 0.093,
+      "assessment_amount": 2930325,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-26"
+    },
+    {
+      "name": "Uruguay",
+      "assessment_rate": 0.092,
+      "assessment_amount": 2898816,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Croatia",
+      "assessment_rate": 0.091,
+      "assessment_amount": 2867307,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-25"
+    },
+    {
+      "name": "Panama",
+      "assessment_rate": 0.09,
+      "assessment_amount": 2835798,
+      "payment_status": "paid_late",
+      "payment_date": "2024-12-13"
+    },
+    {
+      "name": "Slovenia",
+      "assessment_rate": 0.079,
+      "assessment_amount": 2489200,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-02-05"
+    },
+    {
+      "name": "Ecuador",
+      "assessment_rate": 0.077,
+      "assessment_amount": 2426183,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Lithuania",
+      "assessment_rate": 0.077,
+      "assessment_amount": 2426183,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-31"
+    },
+    {
+      "name": "Costa Rica",
+      "assessment_rate": 0.069,
+      "assessment_amount": 2174111,
+      "payment_status": "paid_late",
+      "payment_date": "2024-11-07"
+    },
+    {
+      "name": "Luxembourg",
+      "assessment_rate": 0.068,
+      "assessment_amount": 2142603,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-19"
+    },
+    {
+      "name": "Dominican Republic",
+      "assessment_rate": 0.067,
+      "assessment_amount": 2111094,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-07"
+    },
+    {
+      "name": "Bulgaria",
+      "assessment_rate": 0.056,
+      "assessment_amount": 1764497,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-02-07"
+    },
+    {
+      "name": "Ukraine",
+      "assessment_rate": 0.056,
+      "assessment_amount": 1764497,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-09"
+    },
+    {
+      "name": "Morocco",
+      "assessment_rate": 0.055,
+      "assessment_amount": 1732988,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-09"
+    },
+    {
+      "name": "Bahrain",
+      "assessment_rate": 0.054,
+      "assessment_amount": 1701479,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-29"
+    },
+    {
+      "name": "Latvia",
+      "assessment_rate": 0.05,
+      "assessment_amount": 1575443,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-16"
+    },
+    {
+      "name": "Sri Lanka",
+      "assessment_rate": 0.045,
+      "assessment_amount": 1417899,
+      "payment_status": "paid_late",
+      "payment_date": "2024-06-06"
+    },
+    {
+      "name": "Estonia",
+      "assessment_rate": 0.044,
+      "assessment_amount": 1386390,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-23"
+    },
+    {
+      "name": "Belarus",
+      "assessment_rate": 0.041,
+      "assessment_amount": 1291863,
+      "payment_status": "paid_late",
+      "payment_date": "2024-09-27"
+    },
+    {
+      "name": "Guatemala",
+      "assessment_rate": 0.041,
+      "assessment_amount": 1291863,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-28"
+    },
+    {
+      "name": "Trinidad and Tobago",
+      "assessment_rate": 0.037,
+      "assessment_amount": 1165828,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-19"
+    },
+    {
+      "name": "Cyprus",
+      "assessment_rate": 0.036,
+      "assessment_amount": 1134319,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-30"
+    },
+    {
+      "name": "Iceland",
+      "assessment_rate": 0.036,
+      "assessment_amount": 1134319,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-16"
+    },
+    {
+      "name": "Lebanon",
+      "assessment_rate": 0.036,
+      "assessment_amount": 1134319,
+      "payment_status": "paid_late",
+      "payment_date": "2024-10-28"
+    },
+    {
+      "name": "Turkmenistan",
+      "assessment_rate": 0.034,
+      "assessment_amount": 1071302,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-21"
+    },
+    {
+      "name": "Serbia",
+      "assessment_rate": 0.032,
+      "assessment_amount": 1008283,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-21"
+    },
+    {
+      "name": "Azerbaijan",
+      "assessment_rate": 0.03,
+      "assessment_amount": 945266,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-25"
+    },
+    {
+      "name": "Kenya",
+      "assessment_rate": 0.03,
+      "assessment_amount": 945266,
+      "payment_status": "paid_late",
+      "payment_date": "2024-06-27"
+    },
+    {
+      "name": "Uzbekistan",
+      "assessment_rate": 0.027,
+      "assessment_amount": 850739,
+      "payment_status": "paid_late",
+      "payment_date": "2024-04-22"
+    },
+    {
+      "name": "Paraguay",
+      "assessment_rate": 0.026,
+      "assessment_amount": 819231,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Ghana",
+      "assessment_rate": 0.024,
+      "assessment_amount": 756213,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Côte d'Ivoire",
+      "assessment_rate": 0.022,
+      "assessment_amount": 693195,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Jordan",
+      "assessment_rate": 0.022,
+      "assessment_amount": 693195,
+      "payment_status": "paid_late",
+      "payment_date": "2024-06-26"
+    },
+    {
+      "name": "Brunei Darussalam",
+      "assessment_rate": 0.021,
+      "assessment_amount": 661686,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-28"
+    },
+    {
+      "name": "Bahamas",
+      "assessment_rate": 0.019,
+      "assessment_amount": 598668,
+      "payment_status": "paid_late",
+      "payment_date": "2024-08-23"
+    },
+    {
+      "name": "Bolivia (Plurinational State of)",
+      "assessment_rate": 0.019,
+      "assessment_amount": 598668,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Malta",
+      "assessment_rate": 0.019,
+      "assessment_amount": 598668,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-20"
+    },
+    {
+      "name": "Mauritius",
+      "assessment_rate": 0.019,
+      "assessment_amount": 598668,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-20"
+    },
+    {
+      "name": "Tunisia",
+      "assessment_rate": 0.019,
+      "assessment_amount": 598668,
+      "payment_status": "paid_late",
+      "payment_date": "2024-04-04"
+    },
+    {
+      "name": "Libya",
+      "assessment_rate": 0.018,
+      "assessment_amount": 567160,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Botswana",
+      "assessment_rate": 0.015,
+      "assessment_amount": 472633,
+      "payment_status": "paid_late",
+      "payment_date": "2024-05-03"
+    },
+    {
+      "name": "Cameroon",
+      "assessment_rate": 0.013,
+      "assessment_amount": 409615,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "El Salvador",
+      "assessment_rate": 0.013,
+      "assessment_amount": 409615,
+      "payment_status": "paid_late",
+      "payment_date": "2024-09-18"
+    },
+    {
+      "name": "Gabon",
+      "assessment_rate": 0.013,
+      "assessment_amount": 409615,
+      "payment_status": "paid_late",
+      "payment_date": "2024-09-18"
+    },
+    {
+      "name": "Bosnia and Herzegovina",
+      "assessment_rate": 0.012,
+      "assessment_amount": 378106,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-21"
+    },
+    {
+      "name": "Equatorial Guinea",
+      "assessment_rate": 0.012,
+      "assessment_amount": 378106,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-26"
+    },
+    {
+      "name": "Monaco",
+      "assessment_rate": 0.011,
+      "assessment_amount": 346597,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-02-07"
+    },
+    {
+      "name": "Angola",
+      "assessment_rate": 0.01,
+      "assessment_amount": 315089,
+      "payment_status": "paid_late",
+      "payment_date": "2024-09-04"
+    },
+    {
+      "name": "Bangladesh",
+      "assessment_rate": 0.01,
+      "assessment_amount": 315089,
+      "payment_status": "paid_late",
+      "payment_date": "2024-10-02"
+    },
+    {
+      "name": "Democratic Republic of the Congo",
+      "assessment_rate": 0.01,
+      "assessment_amount": 315089,
+      "payment_status": "paid_late",
+      "payment_date": "2024-09-03"
+    },
+    {
+      "name": "Ethiopia",
+      "assessment_rate": 0.01,
+      "assessment_amount": 315089,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-21"
+    },
+    {
+      "name": "Liechtenstein",
+      "assessment_rate": 0.01,
+      "assessment_amount": 315089,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-23"
+    },
+    {
+      "name": "Myanmar",
+      "assessment_rate": 0.01,
+      "assessment_amount": 315089,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Nepal",
+      "assessment_rate": 0.01,
+      "assessment_amount": 315089,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-02-05"
+    },
+    {
+      "name": "Papua New Guinea",
+      "assessment_rate": 0.01,
+      "assessment_amount": 315089,
+      "payment_status": "paid_late",
+      "payment_date": "2024-09-30"
+    },
+    {
+      "name": "Sudan",
+      "assessment_rate": 0.01,
+      "assessment_amount": 315089,
+      "payment_status": "paid_late",
+      "payment_date": "2024-09-06"
+    },
+    {
+      "name": "Uganda",
+      "assessment_rate": 0.01,
+      "assessment_amount": 315089,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "United Republic of Tanzania",
+      "assessment_rate": 0.01,
+      "assessment_amount": 315089,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Honduras",
+      "assessment_rate": 0.009,
+      "assessment_amount": 283580,
+      "payment_status": "paid_late",
+      "payment_date": "2024-05-30"
+    },
+    {
+      "name": "Namibia",
+      "assessment_rate": 0.009,
+      "assessment_amount": 283580,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-14"
+    },
+    {
+      "name": "Syrian Arab Republic",
+      "assessment_rate": 0.009,
+      "assessment_amount": 283580,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Albania",
+      "assessment_rate": 0.008,
+      "assessment_amount": 252071,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-01"
+    },
+    {
+      "name": "Barbados",
+      "assessment_rate": 0.008,
+      "assessment_amount": 252071,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-02-02"
+    },
+    {
+      "name": "Georgia",
+      "assessment_rate": 0.008,
+      "assessment_amount": 252071,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-15"
+    },
+    {
+      "name": "Jamaica",
+      "assessment_rate": 0.008,
+      "assessment_amount": 252071,
+      "payment_status": "paid_late",
+      "payment_date": "2024-04-26"
+    },
+    {
+      "name": "Yemen",
+      "assessment_rate": 0.008,
+      "assessment_amount": 252071,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Zambia",
+      "assessment_rate": 0.008,
+      "assessment_amount": 252071,
+      "payment_status": "paid_late",
+      "payment_date": "2024-08-16"
+    },
+    {
+      "name": "Armenia",
+      "assessment_rate": 0.007,
+      "assessment_amount": 220562,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-12"
+    },
+    {
+      "name": "Cambodia",
+      "assessment_rate": 0.007,
+      "assessment_amount": 220562,
+      "payment_status": "paid_late",
+      "payment_date": "2024-05-09"
+    },
+    {
+      "name": "Lao People's Democratic Republic",
+      "assessment_rate": 0.007,
+      "assessment_amount": 220562,
+      "payment_status": "paid_late",
+      "payment_date": "2024-09-23"
+    },
+    {
+      "name": "North Macedonia",
+      "assessment_rate": 0.007,
+      "assessment_amount": 220562,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-14"
+    },
+    {
+      "name": "Senegal",
+      "assessment_rate": 0.007,
+      "assessment_amount": 220562,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-09"
+    },
+    {
+      "name": "Zimbabwe",
+      "assessment_rate": 0.007,
+      "assessment_amount": 220562,
+      "payment_status": "paid_late",
+      "payment_date": "2024-04-10"
+    },
+    {
+      "name": "Afghanistan",
+      "assessment_rate": 0.006,
+      "assessment_amount": 189054,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Haiti",
+      "assessment_rate": 0.006,
+      "assessment_amount": 189054,
+      "payment_status": "paid_late",
+      "payment_date": "2024-10-23"
+    },
+    {
+      "name": "Andorra",
+      "assessment_rate": 0.005,
+      "assessment_amount": 157545,
+      "payment_status": "paid_late",
+      "payment_date": "2024-05-13"
+    },
+    {
+      "name": "Benin",
+      "assessment_rate": 0.005,
+      "assessment_amount": 157545,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-09"
+    },
+    {
+      "name": "Congo",
+      "assessment_rate": 0.005,
+      "assessment_amount": 157545,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Democratic People's Republic of Korea",
+      "assessment_rate": 0.005,
+      "assessment_amount": 157545,
+      "payment_status": "paid_late",
+      "payment_date": "2024-12-30"
+    },
+    {
+      "name": "Mali",
+      "assessment_rate": 0.005,
+      "assessment_amount": 157545,
+      "payment_status": "paid_late",
+      "payment_date": "2024-09-10"
+    },
+    {
+      "name": "Nicaragua",
+      "assessment_rate": 0.005,
+      "assessment_amount": 157545,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Republic of Moldova",
+      "assessment_rate": 0.005,
+      "assessment_amount": 157545,
+      "payment_status": "paid_late",
+      "payment_date": "2024-04-10"
+    },
+    {
+      "name": "Burkina Faso",
+      "assessment_rate": 0.004,
+      "assessment_amount": 126035,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Fiji",
+      "assessment_rate": 0.004,
+      "assessment_amount": 126035,
+      "payment_status": "paid_late",
+      "payment_date": "2024-07-16"
+    },
+    {
+      "name": "Guyana",
+      "assessment_rate": 0.004,
+      "assessment_amount": 126035,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-07"
+    },
+    {
+      "name": "Madagascar",
+      "assessment_rate": 0.004,
+      "assessment_amount": 126035,
+      "payment_status": "paid_late",
+      "payment_date": "2024-11-25"
+    },
+    {
+      "name": "Maldives",
+      "assessment_rate": 0.004,
+      "assessment_amount": 126035,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-04"
+    },
+    {
+      "name": "Mongolia",
+      "assessment_rate": 0.004,
+      "assessment_amount": 126035,
+      "payment_status": "paid_late",
+      "payment_date": "2024-05-13"
+    },
+    {
+      "name": "Montenegro",
+      "assessment_rate": 0.004,
+      "assessment_amount": 126035,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-21"
+    },
+    {
+      "name": "Mozambique",
+      "assessment_rate": 0.004,
+      "assessment_amount": 126035,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-16"
+    },
+    {
+      "name": "Chad",
+      "assessment_rate": 0.003,
+      "assessment_amount": 94526,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-09"
+    },
+    {
+      "name": "Guinea",
+      "assessment_rate": 0.003,
+      "assessment_amount": 94526,
+      "payment_status": "paid_late",
+      "payment_date": "2024-09-13"
+    },
+    {
+      "name": "Niger",
+      "assessment_rate": 0.003,
+      "assessment_amount": 94526,
+      "payment_status": "paid_late",
+      "payment_date": "2024-09-06"
+    },
+    {
+      "name": "Rwanda",
+      "assessment_rate": 0.003,
+      "assessment_amount": 94526,
+      "payment_status": "paid_late",
+      "payment_date": "2024-05-03"
+    },
+    {
+      "name": "Suriname",
+      "assessment_rate": 0.003,
+      "assessment_amount": 94526,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Tajikistan",
+      "assessment_rate": 0.003,
+      "assessment_amount": 94526,
+      "payment_status": "paid_late",
+      "payment_date": "2024-06-28"
+    },
+    {
+      "name": "Antigua and Barbuda",
+      "assessment_rate": 0.002,
+      "assessment_amount": 63018,
+      "payment_status": "paid_late",
+      "payment_date": "2024-04-16"
+    },
+    {
+      "name": "Eswatini",
+      "assessment_rate": 0.002,
+      "assessment_amount": 63018,
+      "payment_status": "paid_late",
+      "payment_date": "2024-09-20"
+    },
+    {
+      "name": "Kyrgyzstan",
+      "assessment_rate": 0.002,
+      "assessment_amount": 63018,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-14"
+    },
+    {
+      "name": "Malawi",
+      "assessment_rate": 0.002,
+      "assessment_amount": 63018,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Mauritania",
+      "assessment_rate": 0.002,
+      "assessment_amount": 63018,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Saint Kitts and Nevis",
+      "assessment_rate": 0.002,
+      "assessment_amount": 63018,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Saint Lucia",
+      "assessment_rate": 0.002,
+      "assessment_amount": 63018,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-13"
+    },
+    {
+      "name": "San Marino",
+      "assessment_rate": 0.002,
+      "assessment_amount": 63018,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-13"
+    },
+    {
+      "name": "Seychelles",
+      "assessment_rate": 0.002,
+      "assessment_amount": 63018,
+      "payment_status": "paid_late",
+      "payment_date": "2024-08-16"
+    },
+    {
+      "name": "South Sudan",
+      "assessment_rate": 0.002,
+      "assessment_amount": 63018,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Togo",
+      "assessment_rate": 0.002,
+      "assessment_amount": 63018,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Belize",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-24"
+    },
+    {
+      "name": "Bhutan",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-02-07"
+    },
+    {
+      "name": "Burundi",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_late",
+      "payment_date": "2024-06-28"
+    },
+    {
+      "name": "Cabo Verde",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Central African Republic",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Comoros",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_late",
+      "payment_date": "2024-08-28"
+    },
+    {
+      "name": "Djibouti",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-05"
+    },
+    {
+      "name": "Dominica",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-20"
+    },
+    {
+      "name": "Eritrea",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_late",
+      "payment_date": "2024-04-02"
+    },
+    {
+      "name": "Gambia",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-09"
+    },
+    {
+      "name": "Grenada",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Guinea-Bissau",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Kiribati",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-19"
+    },
+    {
+      "name": "Lesotho",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_late",
+      "payment_date": "2024-06-10"
+    },
+    {
+      "name": "Liberia",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Marshall Islands",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-28"
+    },
+    {
+      "name": "Micronesia (Federated States of)",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_late",
+      "payment_date": "2024-08-20"
+    },
+    {
+      "name": "Nauru",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-16"
+    },
+    {
+      "name": "Palau",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-06"
+    },
+    {
+      "name": "Saint Vincent and the Grenadines",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Samoa",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_late",
+      "payment_date": "2024-02-29"
+    },
+    {
+      "name": "Sao Tome and Principe",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Sierra Leone",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Solomon Islands",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Somalia",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_late",
+      "payment_date": "2024-12-17"
+    },
+    {
+      "name": "Timor-Leste",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "not_paid_in_full",
+      "payment_date": null
+    },
+    {
+      "name": "Tonga",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-01"
+    },
+    {
+      "name": "Tuvalu",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_on_time",
+      "payment_date": "2024-01-25"
+    },
+    {
+      "name": "Vanuatu",
+      "assessment_rate": 0.001,
+      "assessment_amount": 31509,
+      "payment_status": "paid_late",
+      "payment_date": "2024-03-19"
+    }
+  ]
+}

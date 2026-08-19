@@ -17,6 +17,7 @@ interface YearRanges {
   entitySpending: YearRange & { fusionYears?: number[] };
   countryExpenses: YearRange;
   sdgExpenses: YearRange;
+  regularBudgetContributors: YearRange;
   budgetAuditedPpb: YearRange;
   budgetAuditedPko: YearRange;
   // Budget documents. budgetPpb is keyed by expenditure year, budgetPko by the

@@ -13,6 +13,7 @@ dependencies = [
     "pandas>=2.3.3",
     "pyairtable>=3.3.0",
     "pycountry>=24.6.1",
+    "pymupdf>=1.26.4",
     "python-dotenv>=1.2.1",
     "rich>=14.3.2",
     "tqdm>=4.67.2",

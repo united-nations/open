@@ -21,8 +21,8 @@
     },
     "partial": false,
     "scopeLabel": "Sections of the programme budget, all funding sources",
-    "scopeWarning": "Expenditure in 2023 as printed in the proposed programme budget for 2025 (document A/79/6). Regular budget, other assessed and extrabudgetary resources are added together, but not every section publishes all three. Peacekeeping operations are a separate budget, shown below. The tiles are the budget units of each section, named after the organization the budget document ties them to where it names one: 73 of 87 units in this year, from the 73 organizations the release evidences for the 2025 edition. The rest keep the heading the fascicle prints.",
-    "hierarchyProjection": "USD whole/Part/section hierarchy with RB, OA and XB side by side, followed by a stable budget-unit tier. Printed entities remain entities; section-wide, programme, special-purpose and unitemized scopes use explicit neutral wrappers. Deeper rows preserve each selected source schedule instead of claiming one universal entity/component/subprogramme order. Selected lower outline: 152 source tables, 1027 printed observations and 521 materialized lower nodes; 125 parallel tables and 2 other-currency tables remain outside additive arithmetic.",
+    "scopeWarning": "Expenditure in 2023 as printed in the proposed programme budget for 2025 (document A/79/6). Regular budget, other assessed and extrabudgetary resources are added together, but not every section publishes all three. Peacekeeping operations are a separate budget, shown below. The tiles are the budget units of each section, named after the organization the budget document ties them to where it names one: 73 of 86 units in this year, from the 73 organizations the release evidences for the 2025 edition. The rest keep the heading the fascicle prints.",
+    "hierarchyProjection": "USD whole/Part/section hierarchy with RB, OA and XB side by side, followed by a stable budget-unit tier. Printed entities remain entities; section-wide, programme, special-purpose and unitemized scopes use explicit neutral wrappers. Deeper rows preserve each selected source schedule instead of claiming one universal entity/component/subprogramme order. Selected lower outline: 154 source tables, 1029 printed observations and 522 materialized lower nodes; 123 parallel tables and 2 other-currency tables remain outside additive arithmetic.",
     "entityDimension": {
       "sections": 41,
       "entities": 73,
@@ -31,9 +31,9 @@
       "unresolvedPrintedFinancialEntities": 1,
       "sectionsWithoutSingleEntity": 13,
       "namedUnits": 73,
-      "units": 87,
+      "units": 86,
       "producer": "pipeline.emit.ppb_entity_dimension",
-      "producerGitHead": "6e9c9225656258decf7b44869a662b83b7382e05",
+      "producerGitHead": "4c4145b46df1e26ff67d6687ae1f677c9cb4ce0e",
       "sourceFiles": [
         {
           "path": "data/processed/ppb2025/extracted/narratives.csv",
@@ -5956,6 +5956,76 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
     },
     {
+      "id": "section-1~general-assembly",
+      "parentId": "section-1",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": null,
+      "label": "General Assembly",
+      "amount": 4381900,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 2695400,
+        "extrabudgetary": 1686500
+      },
+      "completeness": "incomplete",
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "General Assembly",
+        "acronym": null,
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F79%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-1~general-assembly~presidents-of-the-general-assembly",
+      "parentId": "section-1~general-assembly",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": null,
+      "label": "Presidents of the General Assembly",
+      "amount": 1891000,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 204500,
+        "extrabudgetary": 1686500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-1~general-assembly~travel-of-representatives-of-member-states-that-are-least-de",
+      "parentId": "section-1~general-assembly",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": null,
+      "label": "Travel of representatives of Member States that are least developed countries",
+      "amount": 1307400,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1307400
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
+      "id": "section-1~general-assembly~department-for-general-assembly-and-conference-management-ba",
+      "parentId": "section-1~general-assembly",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": null,
+      "label": "Department for General Assembly and Conference Management backstopping of the Presidents of the General Assembly",
+      "amount": 1183500,
+      "basis": "derived",
+      "values": {
+        "regular_budget": 1183500
+      },
+      "completeness": "not_published",
+      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
+    },
+    {
       "id": "section-1~office-of-the-special-representative-of-the-secretary-genera-2",
       "parentId": "section-1",
       "tier": "budget_unit",
@@ -6113,64 +6183,6 @@
       "values": {
         "regular_budget": 2716700,
         "extrabudgetary": 576600
-      },
-      "completeness": "not_published",
-      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
-    },
-    {
-      "id": "section-1~regular-budget-amount-not-itemized-in-source",
-      "parentId": "section-1",
-      "tier": "budget_unit",
-      "kind": "allocation",
-      "code": null,
-      "label": "Regular-budget amount not itemized in source",
-      "amount": 2490900,
-      "basis": "derived",
-      "values": {
-        "regular_budget": 2490900
-      },
-      "completeness": "not_published",
-      "unitType": "unassigned",
-      "role": "coverage_remainder",
-      "isRemainder": true,
-      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
-    },
-    {
-      "id": "section-1~general-assembly",
-      "parentId": "section-1",
-      "tier": "budget_unit",
-      "kind": "entity",
-      "code": null,
-      "label": "General Assembly",
-      "amount": 1891000,
-      "basis": "derived",
-      "values": {
-        "regular_budget": 204500,
-        "extrabudgetary": 1686500
-      },
-      "completeness": "incomplete",
-      "unitType": "entity",
-      "role": "source_node",
-      "entity": {
-        "name": "General Assembly",
-        "acronym": null,
-        "relationship": "organizational_unit",
-        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F79%2F6%20%28Sect.%201%29&l=en&t=docx"
-      },
-      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."
-    },
-    {
-      "id": "section-1~general-assembly~presidents-of-the-general-assembly",
-      "parentId": "section-1~general-assembly",
-      "tier": "detail",
-      "kind": "allocation",
-      "code": null,
-      "label": "Presidents of the General Assembly",
-      "amount": 1891000,
-      "basis": "derived",
-      "values": {
-        "regular_budget": 204500,
-        "extrabudgetary": 1686500
       },
       "completeness": "not_published",
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls."

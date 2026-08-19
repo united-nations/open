@@ -22,6 +22,7 @@ def generate_manifest():
         "entitySpending": {"years": detect_years("entity-spending"), "default": 2023 if FUSE_SECRETARIAT else "latest", "fusionYears": FUSION_YEARS },
         "countryExpenses": {"years": detect_years("country-expenses"), "default": "latest"},
         "sdgExpenses": {"years": detect_years("sdg-expenses"), "default": "latest"},
+        "regularBudgetContributors": {"years": detect_years("regular-budget-contributors"), "default": "latest"},
         "budgetAuditedPpb": {"years": detect_years("budget-audited-ppb"), "default": "latest"},
         "budgetAuditedPko": {"years": detect_years("budget-audited-pko"), "default": "latest"},
         # Budget documents (python/12). PPB starts at expenditure year 2023.

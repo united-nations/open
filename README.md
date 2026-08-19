@@ -7,21 +7,23 @@ The UN Transparency Portal makes financial data from across the UN System access
 ## Features
 
 - UN System
-    - **Contributors** — Treemaps and trends showing government and donor contributions by financing instrument
-    - **Entities** — Spending breakdowns for 48+ UN organizations
-    - **Countries** — Interactive world map with geographic spending data
-    - **SDGs** — Grid visualization of spending by Sustainable Development Goal
+  - **Contributors** — Treemaps and trends showing government and donor contributions by financing instrument
+  - **Entities** — Spending breakdowns for 48+ UN organizations
+  - **Countries** — Interactive world map with geographic spending data
+  - **SDGs** — Grid visualization of spending by Sustainable Development Goal
 - UN Secretariat
-    - Switch between audited-statement expenses and PPB + PKO budget-document expenditure
+  - **Regular-budget contributors** — Member State assessments and paid-in-full status
+  - Switch between audited-statement expenses and PPB + PKO budget-document expenditure
 
 ## Data Sources
 
-| Source                                                                           | Coverage                                              | Description                                             |
-| -------------------------------------------------------------------------------- | ----------------------------------------------------- | ------------------------------------------------------- |
-| [CEB Financial Statistics](https://unsceb.org/financial-statistics)              | 2011–2024                                             | Audited financial data from 48+ UN System organizations |
-| UN Secretariat Spending                                                          | 2019–2023                                             | Granular breakdown into 150+ departments and missions   |
-| [Programme Budget Data](https://github.com/united-nations/programme-budget-data) | PPB expenditure 2019–2025; PKO cycles 2022/23–2024/25 | PPB hierarchy plus separately assessed mission budgets  |
-| [UNINFO](https://uninfo.org/)                                                    | 2022–2024                                             | Cooperation Framework data for 127 countries            |
+| Source                                                                           | Coverage                                               | Description                                             |
+| -------------------------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------- |
+| [CEB Financial Statistics](https://unsceb.org/financial-statistics)              | 2011–2024                                              | Audited financial data from 48+ UN System organizations |
+| UN Secretariat Spending                                                          | 2019–2023                                              | Granular breakdown into 150+ departments and missions   |
+| [Programme Budget Data](https://github.com/united-nations/programme-budget-data) | PPB expenditure 2019–2025; PKO cycles 2022/23–2024/25  | PPB hierarchy plus separately assessed mission budgets  |
+| [Committee on Contributions](https://www.un.org/en/ga/contributions/)            | Regular-budget assessments and honour rolls, 2019–2026 | Member State assessments and paid-in-full status        |
+| [UNINFO](https://uninfo.org/)                                                    | 2022–2024                                              | Cooperation Framework data for 127 countries            |
 
 The two Secretariat treemap sources are deliberately selectable rather than
 merged. Both source views follow the budget hierarchy and contain separate
@@ -88,6 +90,7 @@ See [`docs/`](docs/) for detailed documentation:
 - [Data Availability](docs/data-availability.md) — What data exists for which years
 - [Data Fusion: Revenue](docs/data-fusion-revenue.md) — How revenue sources are combined
 - [Data Fusion: Expenses](docs/data-fusion-expenses.md) — How expense data is merged
+- [Regular-budget Contributors](docs/regular-budget-contributors.md) — Assessment and payment-status methodology
 - [Research Notes](docs/research/) — Background research and data source analysis
 
 ## License

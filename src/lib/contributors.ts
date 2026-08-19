@@ -5,7 +5,6 @@ export interface Contributor {
   status: ContributorStatus;
   category: string;  // Donor category (Government, Foundations, Private Sector, etc.)
   contributions: Record<string, Record<string, number>>;
-  payment_status?: "punctual" | "late" | "missing";
   is_other?: boolean;  // Aggregated "Other X" entries (not clickable)
 }
 
@@ -13,7 +12,6 @@ export interface ContributorData {
   status: ContributorStatus;
   category: string;  // Donor category (Government, Foundations, Private Sector, etc.)
   contributions: Record<string, Record<string, number>>;
-  payment_status?: "punctual" | "late" | "missing";
   is_other?: boolean;  // Aggregated "Other X" entries (not clickable)
 }
 
