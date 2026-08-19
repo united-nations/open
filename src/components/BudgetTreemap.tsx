@@ -32,6 +32,8 @@ import { YearSlider } from "@/components/YearSlider";
 import { useYearRanges } from "@/lib/useYearRanges";
 import { squarifyDense, type TreemapItem } from "@/lib/treemapLayout";
 import {
+  auditedFiscalYearLabel,
+  BUDGET_FUNDING_SOURCES,
   COST_CLASS_BAND_COLORS,
   COST_CLASS_SHORT,
   costClassStyles,
@@ -40,6 +42,7 @@ import {
   unitCaption,
   unitExplanation,
   unitSearchText,
+  type BudgetFundingSource,
   type PkoLens,
 } from "@/lib/budgetGroupings";
 import {
@@ -53,21 +56,30 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 /** Gap between two bands, in pixels. */
 const BAND_GAP = 2;
+const LABEL_GAP = 2;
+const COMPACT_LABEL_HEIGHT = 14;
+const STACKED_LABEL_HEIGHT = 31;
+const COMPACT_PROGRAMME_PARTS = new Set([
+  "IX",
+  "X",
+  "XI",
+  "XII",
+  "XIII",
+  "XIV",
+]);
 
-const FUNDING_SHADE_OPACITY: Record<string, number> = {
+const FUNDING_SHADE_OPACITY: Record<BudgetFundingSource, number> = {
   regular_budget: 1,
   other_assessed: 1,
   extrabudgetary: 0.85,
 };
 
-function positiveFundingValues(node: BudgetNode): [string, number][] {
-  return Object.entries(node.values ?? {})
-    .filter((entry): entry is [string, number] => entry[1] > 0)
-    .sort(
-      (a, b) =>
-        Object.keys(FUNDING_SHADE_OPACITY).indexOf(a[0]) -
-        Object.keys(FUNDING_SHADE_OPACITY).indexOf(b[0]),
-    );
+function positiveFundingValues(
+  node: BudgetNode,
+): [BudgetFundingSource, number][] {
+  return BUDGET_FUNDING_SOURCES.map(
+    (key) => [key, node.values?.[key] ?? 0] as [BudgetFundingSource, number],
+  ).filter(([, amount]) => amount > 0);
 }
 
 interface Tile {
@@ -92,6 +104,57 @@ interface Band {
   variance: number | null;
   groups: Group[];
   colors: { bg: string; hover: string };
+}
+
+interface BandLayout {
+  band: Band;
+  startY: number;
+  height: number;
+}
+
+interface BandLabelPosition {
+  band: Band;
+  y: number;
+  compact: boolean;
+  height: number;
+}
+
+/**
+ * Keep every side label legible while preserving its band's vertical anchor.
+ * Mission lists use the same compact row as the small programme-budget parts;
+ * the three cost-class labels and larger programme parts retain two rows.
+ */
+function layoutBandLabels(
+  bandLayout: BandLayout[],
+  canvasHeight: number,
+): BandLabelPosition[] {
+  const positions = bandLayout.map(({ band, startY }) => {
+    const compact =
+      COMPACT_PROGRAMME_PARTS.has(band.caption) ||
+      (band.caption === "" && bandLayout.length > 3);
+    return {
+      band,
+      y: (startY / 100) * canvasHeight,
+      compact,
+      height: compact ? COMPACT_LABEL_HEIGHT : STACKED_LABEL_HEIGHT,
+    };
+  });
+
+  // First move collisions down, then work back from the canvas edge. This
+  // gives the same collision rule to PPB, audited PPB and both PKO lenses.
+  for (let i = 1; i < positions.length; i++) {
+    const minimumY = positions[i - 1].y + positions[i - 1].height + LABEL_GAP;
+    positions[i].y = Math.max(positions[i].y, minimumY);
+  }
+  for (let i = positions.length - 1; i >= 0; i--) {
+    const maximumY =
+      i === positions.length - 1
+        ? canvasHeight - positions[i].height
+        : positions[i + 1].y - LABEL_GAP - positions[i].height;
+    positions[i].y = Math.min(positions[i].y, maximumY);
+  }
+
+  return positions;
 }
 
 /** "↗3.2%", with a variation selector so iOS draws an arrow, not an emoji. */
@@ -120,7 +183,9 @@ interface BudgetTreemapProps {
   hashPrefix: string;
   /** Section to scroll to when a deep link opens. */
   sectionId: string;
-  /** Reports the selected file's root total to the budget selector. */
+  /** Funding sources included in the boxes, chart and sidebar. */
+  activeFundingSources: BudgetFundingSource[];
+  /** Reports the filtered root total to the budget selector. */
   onTotalChange?: (total: number) => void;
 }
 
@@ -128,11 +193,17 @@ export function BudgetTreemap({
   dataset,
   hashPrefix,
   sectionId,
+  activeFundingSources,
   onTotalChange,
 }: BudgetTreemapProps) {
   const yearRanges = useYearRanges();
   const isAudited = dataset.startsWith("budget-audited-");
   const isPko = dataset.endsWith("-pko");
+  const yearLabel = isPko
+    ? isAudited
+      ? auditedFiscalYearLabel
+      : fiscalYearLabel
+    : undefined;
   const range =
     dataset === "budget-audited-ppb"
       ? yearRanges.budgetAuditedPpb
@@ -223,36 +294,98 @@ export function BudgetTreemap({
     setMounted(true);
   }, []);
 
+  const activeFundingSet = useMemo(
+    () => new Set(activeFundingSources),
+    [activeFundingSources],
+  );
+
+  const filterNode = useCallback(
+    (node: BudgetNode): BudgetNode => {
+      // The detailed PKO release predates the shared funding-source fields.
+      // Its complete tree is separately assessed, so treat every amount as OA.
+      const sourceValues =
+        node.values && Object.keys(node.values).length > 0
+          ? node.values
+          : isPko
+            ? { other_assessed: node.amount }
+            : {};
+      const values = Object.fromEntries(
+        BUDGET_FUNDING_SOURCES.filter(
+          (source) =>
+            activeFundingSet.has(source) && sourceValues[source] != null,
+        ).map((source) => [source, sourceValues[source] ?? 0]),
+      );
+      return {
+        ...node,
+        amount: Object.values(values).reduce((sum, amount) => sum + amount, 0),
+        values,
+      };
+    },
+    [activeFundingSet, isPko],
+  );
+
+  const filteredData = useMemo<BudgetData | null>(() => {
+    if (!data) return null;
+    const nodes = data.nodes.map(filterNode);
+    const root = nodes.find((node) => node.parentId === null);
+    const omitted = data.meta.omitted
+      ?.map((item) => ({
+        ...item,
+        values: Object.fromEntries(
+          Object.entries(item.values).filter(([source]) =>
+            activeFundingSet.has(source as BudgetFundingSource),
+          ),
+        ),
+      }))
+      .filter((item) => Object.keys(item.values).length > 0);
+    return {
+      ...data,
+      meta: {
+        ...data.meta,
+        total: root?.amount ?? 0,
+        fundingSources: [...activeFundingSources],
+        omitted,
+      },
+      nodes,
+    };
+  }, [activeFundingSet, activeFundingSources, data, filterNode]);
+
+  const filteredPrevious = useMemo<BudgetData | null>(() => {
+    if (!previous) return null;
+    return { ...previous, nodes: previous.nodes.map(filterNode) };
+  }, [filterNode, previous]);
+
   useEffect(() => {
-    if (data) onTotalChange?.(data.meta.total);
-  }, [data, onTotalChange]);
+    if (filteredData) onTotalChange?.(filteredData.meta.total);
+  }, [filteredData, onTotalChange]);
 
   const byId = useMemo(() => {
     const map: Record<string, BudgetNode> = {};
-    for (const n of data?.nodes ?? []) map[n.id] = n;
+    for (const n of filteredData?.nodes ?? []) map[n.id] = n;
     return map;
-  }, [data]);
+  }, [filteredData]);
 
   const childrenOf = useMemo(() => {
     const map: Record<string, BudgetNode[]> = {};
-    for (const n of data?.nodes ?? []) {
+    for (const n of filteredData?.nodes ?? []) {
       if (n.parentId) (map[n.parentId] ??= []).push(n);
     }
     for (const list of Object.values(map))
       list.sort((a, b) => b.amount - a.amount);
     return map;
-  }, [data]);
+  }, [filteredData]);
 
   const previousAmounts = useMemo(() => {
     const map: Record<string, number> = {};
-    for (const n of previous?.nodes ?? []) map[n.id] = n.amount;
+    for (const n of filteredPrevious?.nodes ?? []) map[n.id] = n.amount;
     return map;
-  }, [previous]);
+  }, [filteredPrevious]);
 
   const entityPlacements = useMemo(() => {
     const placements: Record<string, Set<string>> = {};
-    for (const node of data?.nodes ?? []) {
-      if (node.tier !== "budget_unit" || !node.entity) continue;
+    for (const node of filteredData?.nodes ?? []) {
+      if (node.tier !== "budget_unit" || !node.entity || node.amount <= 0)
+        continue;
       const key = node.entity.acronym ?? node.entity.name;
       // Catch-all accounting rows are not organizations and must not receive
       // the marker used for real entities funded through several sections.
@@ -260,11 +393,11 @@ export function BudgetTreemap({
       (placements[key] ??= new Set()).add(node.parentId ?? node.id);
     }
     return placements;
-  }, [data]);
+  }, [filteredData]);
 
   // Resolve a pending deep link once the data is there.
   useEffect(() => {
-    if (pendingDeepLink && byId[pendingDeepLink]) {
+    if (pendingDeepLink && byId[pendingDeepLink]?.amount > 0) {
       setSelectedId(pendingDeepLink);
       setPendingDeepLink(null);
     }
@@ -273,15 +406,19 @@ export function BudgetTreemap({
   // A section, mission or component that the chosen year does not print has no
   // node: close the sidebar rather than leave the year before on screen.
   useEffect(() => {
-    if (selectedId && data && !byId[selectedId]) {
+    if (
+      selectedId &&
+      filteredData &&
+      (!byId[selectedId] || byId[selectedId].amount <= 0)
+    ) {
       setSelectedId(null);
       clearSidebarHash();
     }
-  }, [selectedId, data, byId]);
+  }, [selectedId, filteredData, byId]);
 
   const { bands, drawnTotal } = useMemo(() => {
     const empty = { bands: [] as Band[], drawnTotal: 0 };
-    if (!data) return empty;
+    if (!filteredData) return empty;
 
     const query = searchQuery.trim().toLowerCase();
     const keep = (node: BudgetNode, extra = "") =>
@@ -303,7 +440,7 @@ export function BudgetTreemap({
     if (!isPko) {
       // Part -> section -> budget unit. The tiles are one tier, so two tiles of
       // the same size mean the same thing wherever they sit in the chart.
-      const parts = data.nodes
+      const parts = filteredData.nodes
         .filter((n) => n.tier === "part")
         .sort(
           (a, b) =>
@@ -357,11 +494,11 @@ export function BudgetTreemap({
 
     // Audited peacekeeping has mission totals but no cost-class hierarchy. Use
     // the same band renderer, with one shaded mission tile in each band.
-    const detailedItems = data.nodes.filter(
+    const detailedItems = filteredData.nodes.filter(
       (n) => n.kind === "item" && n.amount > 0,
     );
     if (detailedItems.length === 0) {
-      const missions = data.nodes
+      const missions = filteredData.nodes
         .filter((n) => n.kind === "mission" && n.amount > 0)
         .filter((n) => keep(n))
         .sort((a, b) => b.amount - a.amount);
@@ -387,7 +524,7 @@ export function BudgetTreemap({
     // and grouped by the other one.
     const items = detailedItems;
     const missionTotals: Record<string, number> = {};
-    for (const n of data.nodes) {
+    for (const n of filteredData.nodes) {
       if (n.kind === "mission") missionTotals[n.code ?? n.id] = n.amount;
     }
     const missionOrder = Object.keys(missionTotals).sort(
@@ -418,7 +555,7 @@ export function BudgetTreemap({
         .sort((a, b) => b.total - a.total);
       const total = groups.reduce((s, g) => s + g.total, 0);
       if (total <= 0) continue;
-      const missionNode = data.nodes.find(
+      const missionNode = filteredData.nodes.find(
         (n) => n.kind === "mission" && n.code === bandKey,
       );
       built.push({
@@ -444,7 +581,7 @@ export function BudgetTreemap({
 
     return { bands: built, drawnTotal: built.reduce((s, b) => s + b.total, 0) };
   }, [
-    data,
+    filteredData,
     isPko,
     lens,
     searchQuery,
@@ -469,19 +606,10 @@ export function BudgetTreemap({
     });
   }, [bands, canvasHeight]);
 
-  // Band names sit at the top of their band; push one down only when the name
-  // above it would otherwise overlap.
-  const labelPositions = useMemo(() => {
-    const positions = bandLayout.map(({ band, startY }) => ({
-      key: band.key,
-      y: startY,
-    }));
-    for (let i = 1; i < positions.length; i++) {
-      const above = positions[i - 1];
-      if (positions[i].y < above.y + 1.2) positions[i].y = above.y + 1.25;
-    }
-    return positions;
-  }, [bandLayout]);
+  const labelPositions = useMemo(
+    () => layoutBandLabels(bandLayout, canvasHeight),
+    [bandLayout, canvasHeight],
+  );
 
   const openSidebar = useCallback(
     (id: string) => {
@@ -506,20 +634,17 @@ export function BudgetTreemap({
     openSidebar(tile.node.id);
   };
 
-  const meta = data?.meta;
+  const meta = filteredData?.meta;
   const selected = selectedId ? byId[selectedId] : null;
   const hasCostClassDetail =
-    data?.nodes.some((node) => node.kind === "item") ?? !isAudited;
-  const availableFundingSources = (meta?.fundingSources ?? []).filter((key) =>
-    (data?.nodes ?? []).some(
-      (node) => (node.values?.[key as keyof typeof node.values] ?? 0) > 0,
-    ),
-  );
+    filteredData?.nodes.some((node) => node.kind === "item") ?? !isAudited;
   const hasSplitEntities = Object.values(entityPlacements).some(
     (placements) => placements.size > 1,
   );
   const fundingLabel = (key: string) =>
-    meta?.fundingLabels?.[key] ?? FUNDING_SOURCES[key]?.label ?? key;
+    meta?.fundingLabels?.[key] ??
+    FUNDING_SOURCES[key as BudgetFundingSource]?.label ??
+    key;
 
   const controls = (
     <div className="mb-3 flex flex-col flex-wrap gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-3">
@@ -534,9 +659,7 @@ export function BudgetTreemap({
       />
       <div className="flex flex-wrap items-center gap-4">
         <span className="text-sm text-gray-500">
-          Expenditure{" "}
-          {meta?.fiscalYear ??
-            (isPko && !isAudited ? fiscalYearLabel(year) : year)}{" "}
+          Expenditure {meta?.fiscalYear ?? (yearLabel ? yearLabel(year) : year)}{" "}
           · USD
         </span>
         {/* One year is not a range: a slider that cannot be moved only invites
@@ -546,7 +669,7 @@ export function BudgetTreemap({
             years={range.years}
             selectedYear={year}
             onChange={setYear}
-            formatLabel={isPko && !isAudited ? fiscalYearLabel : undefined}
+            formatLabel={yearLabel}
           />
         )}
         {isPko && hasCostClassDetail && (
@@ -595,7 +718,11 @@ export function BudgetTreemap({
         {controls}
         <div className="flex h-64 w-full items-center justify-center bg-gray-50">
           <p className="text-sm text-gray-500">
-            Nothing matches “{searchQuery}”.
+            {activeFundingSources.length === 0
+              ? "Select at least one funding source."
+              : searchQuery.trim()
+                ? `Nothing matches “${searchQuery}”.`
+                : "No expenditure is available for the selected funding sources."}
           </p>
         </div>
       </div>
@@ -608,33 +735,15 @@ export function BudgetTreemap({
 
       {meta.partial && (
         <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
-          {meta.scopeLabel}. This year is not comparable with the others: the
-          total below is {formatBudget(meta.total)}, against about $12 billion
-          in the years that publish all three funding sources.
+          {meta.scopeLabel}. This year does not publish every funding source, so
+          it is not directly comparable with years that do.
         </p>
       )}
 
-      {availableFundingSources.length > 0 && (
-        <div className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-2">
-          <span className="text-xs font-medium text-gray-500">
-            Funding source
-          </span>
-          {availableFundingSources.map((key) => (
-            <div key={key} className="flex items-center gap-1.5">
-              <span
-                className="inline-block h-3 w-3 rounded-sm bg-gray-500"
-                style={{ opacity: FUNDING_SHADE_OPACITY[key] ?? 0.35 }}
-                title={FUNDING_SOURCES[key]?.tooltip}
-              />
-              <span className="text-xs text-gray-600">{fundingLabel(key)}</span>
-            </div>
-          ))}
-          {hasSplitEntities && (
-            <div className="flex items-center gap-1.5 text-xs text-gray-500">
-              <SplitSquareHorizontal className="h-3 w-3" />
-              <span>Entity appears in multiple budget locations</span>
-            </div>
-          )}
+      {hasSplitEntities && (
+        <div className="mb-3 flex items-center gap-1.5 text-xs text-gray-500">
+          <SplitSquareHorizontal className="h-3 w-3" />
+          <span>Entity appears in multiple budget locations</span>
         </div>
       )}
 
@@ -834,28 +943,32 @@ export function BudgetTreemap({
           className="relative hidden w-60 shrink-0 lg:block"
           style={{ height: `${canvasHeight}px` }}
         >
-          {labelPositions.map((position) => {
-            const entry = bandLayout.find((b) => b.band.key === position.key);
-            if (!entry) return null;
-            const { band } = entry;
-            return (
-              <div
-                key={`label-${band.key}`}
-                className="absolute left-0 flex -translate-y-px text-xs leading-none"
-                style={{ top: `${position.y}%`, color: band.colors.bg }}
-              >
-                {band.caption && (
-                  <span className="w-6 font-medium">{band.caption}.</span>
-                )}
+          {labelPositions.map(({ band, y, compact }) => (
+            <div
+              key={`label-${band.key}`}
+              className={`absolute left-0 flex -translate-y-px text-xs leading-none ${compact ? "whitespace-nowrap" : ""}`}
+              style={{ top: `${y}px`, color: band.colors.bg }}
+            >
+              {band.caption && (
+                <span className="w-6 font-medium">{band.caption}.</span>
+              )}
+              {compact ? (
+                <>
+                  <span className="font-medium">{band.name}</span>
+                  <span className="ml-3">
+                    {formatBudget(band.total)} {formatVariance(band.variance)}
+                  </span>
+                </>
+              ) : (
                 <div className="leading-tight">
                   <div className="font-medium">{band.name}</div>
                   <div className="mt-0.5">
                     {formatBudget(band.total)} {formatVariance(band.variance)}
                   </div>
                 </div>
-              </div>
-            );
-          })}
+              )}
+            </div>
+          ))}
         </div>
       </div>
 
@@ -867,7 +980,7 @@ export function BudgetTreemap({
             Math.abs(drawnTotal - meta.total) > 1000 && (
               <> of {formatBudget(meta.total)} in the published total</>
             )}
-          {previous && " · the change is against the year before"}
+          {filteredPrevious && " · the change is against the year before"}
         </p>
         <p>{meta.scopeWarning}</p>
         {(meta.omitted ?? []).length > 0 && (
@@ -1018,10 +1131,9 @@ export function BudgetTreemap({
         <BudgetSidebar
           node={selected}
           parent={selected.parentId ? byId[selected.parentId] : null}
-          childNodes={childrenOf[selected.id] ?? []}
+          childrenByParent={childrenOf}
           meta={meta}
           hashPrefix={hashPrefix}
-          onSelect={openSidebar}
           onClose={() => {
             setSelectedId(null);
             clearSidebarHash();

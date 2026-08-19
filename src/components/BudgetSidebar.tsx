@@ -15,20 +15,127 @@ import {
 interface BudgetSidebarProps {
   node: BudgetNode;
   parent: BudgetNode | null;
-  childNodes: BudgetNode[];
+  childrenByParent: Record<string, BudgetNode[]>;
   meta: BudgetMeta;
   hashPrefix: string;
-  onSelect: (id: string) => void;
   onClose: () => void;
+}
+
+const KIND_NAMES: Partial<Record<BudgetNode["kind"], string>> = {
+  whole: "Total",
+  part: "Budget part",
+  entity: "Entity",
+  programme: "Programme",
+  component: "Component",
+  subprogramme: "Subprogramme",
+  allocation: "Allocation",
+  section: "Section",
+  mission: "Mission",
+  class: "Cost class",
+  item: "Cost item",
+};
+
+function maximumHierarchyAmount(
+  nodes: BudgetNode[],
+  childrenByParent: Record<string, BudgetNode[]>,
+): number {
+  return nodes.reduce(
+    (maximum, child) =>
+      Math.max(
+        maximum,
+        child.amount,
+        maximumHierarchyAmount(
+          childrenByParent[child.id] ?? [],
+          childrenByParent,
+        ),
+      ),
+    0,
+  );
+}
+
+function BudgetHierarchy({
+  nodes,
+  childrenByParent,
+  depth = 0,
+  scaleMaximum,
+  parentAmount,
+}: {
+  nodes: BudgetNode[];
+  childrenByParent: Record<string, BudgetNode[]>;
+  depth?: number;
+  scaleMaximum?: number;
+  parentAmount?: number;
+}) {
+  // One quantitative scale for the entire expanded subtree. A nested row's
+  // neutral reference is its parent on that same scale, so both absolute size
+  // and the child's share of its parent remain visible.
+  const commonMaximum =
+    scaleMaximum ?? maximumHierarchyAmount(nodes, childrenByParent);
+  const referenceAmount = parentAmount ?? commonMaximum;
+  const scaledWidth = (amount: number) =>
+    commonMaximum > 0
+      ? Math.min(100, Math.max(0, (amount / commonMaximum) * 100))
+      : 0;
+
+  return (
+    <ul
+      className={
+        depth === 0
+          ? "space-y-2"
+          : "mt-2 ml-3 space-y-2 border-l border-gray-200 pl-3"
+      }
+    >
+      {nodes.map((child) => {
+        const descendants = childrenByParent[child.id] ?? [];
+        return (
+          <li key={child.id}>
+            <div className="flex items-baseline justify-between gap-3 text-sm">
+              <span className="min-w-0 text-gray-700">
+                {KIND_NAMES[child.kind] && (
+                  <span className="mr-1.5 text-[10px] tracking-wide text-gray-400 uppercase">
+                    {KIND_NAMES[child.kind]}
+                  </span>
+                )}
+                {child.entity?.name ?? child.label}
+              </span>
+              <span className="shrink-0 text-gray-900">
+                {formatBudget(child.amount)}
+              </span>
+            </div>
+            <div className="relative mt-0.5 h-1.5 w-full">
+              <div
+                className="absolute inset-y-0 left-0 rounded-sm bg-gray-100"
+                style={{
+                  width: `${scaledWidth(referenceAmount)}%`,
+                }}
+              />
+              <div
+                className="absolute inset-y-0 left-0 rounded-sm bg-un-blue"
+                style={{ width: `${scaledWidth(child.amount)}%` }}
+              />
+            </div>
+            {descendants.length > 0 && (
+              <BudgetHierarchy
+                nodes={descendants}
+                childrenByParent={childrenByParent}
+                depth={depth + 1}
+                scaleMaximum={commonMaximum}
+                parentAmount={child.amount}
+              />
+            )}
+          </li>
+        );
+      })}
+    </ul>
+  );
 }
 
 export function BudgetSidebar({
   node,
   parent,
-  childNodes,
+  childrenByParent,
   meta,
   hashPrefix,
-  onSelect,
   onClose,
 }: BudgetSidebarProps) {
   const [isVisible, setIsVisible] = useState(false);
@@ -79,7 +186,7 @@ export function BudgetSidebar({
   };
 
   const shareOfTotal = meta.total > 0 ? (node.amount / meta.total) * 100 : 0;
-  const childMax = childNodes.reduce((m, c) => Math.max(m, c.amount), 0);
+  const childNodes = childrenByParent[node.id] ?? [];
   const fundingEntries = Object.entries(node.values ?? {}).filter(
     ([, v]) => v > 0,
   );
@@ -96,14 +203,6 @@ export function BudgetSidebar({
   // What the row is, and where it sits. The rows below a budget unit keep the
   // name of their kind, because "component" and "subprogramme" are not the same
   // thing and the reader should not have to guess which one a row is.
-  const KIND_NAMES: Partial<Record<typeof node.kind, string>> = {
-    entity: "Entity",
-    programme: "Programme",
-    component: "Component",
-    subprogramme: "Subprogramme",
-    allocation: "Allocation",
-  };
-
   const subtitle = () => {
     if (node.tier === "section") return `Budget section ${node.code}`;
     if (node.tier === "part") return `Budget part ${node.code}`;
@@ -258,48 +357,12 @@ export function BudgetSidebar({
           {childNodes.length > 0 && (
             <div>
               <h3 className="mb-3 text-lg font-normal tracking-wider text-gray-900 uppercase">
-                {node.tier === "whole"
-                  ? "Breakdown"
-                  : node.tier === "mission"
-                    ? "By cost class"
-                    : node.tier === "class"
-                      ? "Cost items"
-                      : node.tier === "part"
-                        ? "Sections"
-                        : node.tier === "section"
-                          ? "Budget units"
-                          : // Below a budget unit the children are of one kind,
-                            // so name that kind rather than say "breakdown".
-                            KIND_NAMES[childNodes[0].kind]
-                            ? `${KIND_NAMES[childNodes[0].kind]}s`
-                            : "Breakdown"}
+                Budget hierarchy
               </h3>
-              <div className="space-y-1.5">
-                {childNodes.map((c) => (
-                  <button
-                    key={c.id}
-                    onClick={() => onSelect(c.id)}
-                    className="block w-full cursor-pointer text-left"
-                  >
-                    <div className="flex items-baseline justify-between gap-3 text-sm">
-                      <span className="truncate text-gray-700">
-                        {c.entity?.name ?? c.label}
-                      </span>
-                      <span className="shrink-0 text-gray-900">
-                        {formatBudget(c.amount)}
-                      </span>
-                    </div>
-                    <div className="mt-0.5 h-1.5 w-full rounded-sm bg-gray-100">
-                      <div
-                        className="h-1.5 rounded-sm bg-un-blue"
-                        style={{
-                          width: `${childMax > 0 ? Math.max(0, (c.amount / childMax) * 100) : 0}%`,
-                        }}
-                      />
-                    </div>
-                  </button>
-                ))}
-              </div>
+              <BudgetHierarchy
+                nodes={childNodes}
+                childrenByParent={childrenByParent}
+              />
             </div>
           )}
 

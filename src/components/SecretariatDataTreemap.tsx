@@ -2,18 +2,23 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { BudgetTreemap } from "@/components/BudgetTreemap";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
 import { clearSidebarHash } from "@/hooks/useDeepLink";
 import { formatBudget } from "@/lib/entities";
+import {
+  BUDGET_FUNDING_SOURCES,
+  FUNDING_SOURCES,
+  type BudgetFundingSource,
+} from "@/lib/budgetGroupings";
 
 type SecretariatDataset = "audited" | "ppb";
 type BudgetBlock = "programme" | "peacekeeping";
+
+const FUNDING_FILTER_LABELS: Record<BudgetFundingSource, string> = {
+  regular_budget: "Regular budget",
+  other_assessed: "Other assessed",
+  extrabudgetary: "Extrabudgetary",
+};
 
 const DATASET_DETAILS: Record<
   SecretariatDataset,
@@ -35,21 +40,18 @@ const BLOCK_DETAILS: Record<
   BudgetBlock,
   {
     label: string;
-    subtitle: string;
     description: string;
     hashPrefix: string;
   }
 > = {
   programme: {
-    label: "Programme budget",
-    subtitle: "UN Secretariat and special political missions",
+    label: "Secretariat & Special Political Missions",
     description:
       "Budget parts and sections, with funding sources shown as shades",
     hashPrefix: "secretariat",
   },
   peacekeeping: {
-    label: "Peacekeeping budgets",
-    subtitle: "Separately assessed peacekeeping missions",
+    label: "Peacekeeping",
     description: "Mission budgets and accounts on July–June cycles",
     hashPrefix: "pko",
   },
@@ -58,6 +60,9 @@ const BLOCK_DETAILS: Record<
 export function SecretariatDataTreemap() {
   const [dataset, setDataset] = useState<SecretariatDataset>("audited");
   const [activeBlock, setActiveBlock] = useState<BudgetBlock>("programme");
+  const [activeFundingSources, setActiveFundingSources] = useState<
+    BudgetFundingSource[]
+  >(["regular_budget", "other_assessed"]);
   const [blockTotals, setBlockTotals] = useState<{
     programme: number | null;
     peacekeeping: number | null;
@@ -83,8 +88,8 @@ export function SecretariatDataTreemap() {
     };
   }, []);
 
-  const changeDataset = (value: string) => {
-    if (value !== "audited" && value !== "ppb") return;
+  const changeDataset = (value: SecretariatDataset) => {
+    if (value === dataset) return;
     clearSidebarHash();
     setBlockTotals({ programme: null, peacekeeping: null });
     setDataset(value);
@@ -110,7 +115,7 @@ export function SecretariatDataTreemap() {
       : null;
   const selectorColumns =
     combinedTotal && combinedTotal > 0
-      ? `${blockTotals.programme! / combinedTotal}fr ${blockTotals.peacekeeping! / combinedTotal}fr`
+      ? `minmax(8rem, ${blockTotals.programme! / combinedTotal}fr) minmax(8rem, ${blockTotals.peacekeeping! / combinedTotal}fr)`
       : "1fr 1fr";
 
   const programmeDataset =
@@ -124,45 +129,52 @@ export function SecretariatDataTreemap() {
     setActiveBlock(block);
   };
 
+  const toggleFundingSource = (source: BudgetFundingSource) => {
+    setActiveFundingSources((current) =>
+      current.includes(source)
+        ? current.filter((item) => item !== source)
+        : BUDGET_FUNDING_SOURCES.filter(
+            (item) => item === source || current.includes(item),
+          ),
+    );
+  };
+
   return (
     <div className="w-full">
-      <div className="mb-6 border-l-2 border-un-blue bg-gray-50 px-4 py-3">
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-          <div className="max-w-3xl">
-            <label
-              id="secretariat-dataset-label"
-              className="text-xs font-medium tracking-wide text-gray-500 uppercase"
-            >
-              Data source
-            </label>
-            <p className="mt-1 text-sm leading-relaxed text-gray-700">
-              {details.description}
-            </p>
-          </div>
-
-          <Select value={dataset} onValueChange={changeDataset}>
-            <SelectTrigger
-              aria-labelledby="secretariat-dataset-label"
-              className="h-9 w-full shrink-0 border-gray-300 bg-white sm:w-[280px]"
-            >
-              <SelectValue asChild>
-                <span>{details.label}</span>
-              </SelectValue>
-            </SelectTrigger>
-            <SelectContent
-              className="border-gray-300 bg-white sm:w-[280px]"
-              position="popper"
-              align="end"
-              sideOffset={4}
-            >
-              <SelectItem value="audited">
-                {DATASET_DETAILS.audited.label}
-              </SelectItem>
-              <SelectItem value="ppb">{DATASET_DETAILS.ppb.label}</SelectItem>
-            </SelectContent>
-          </Select>
+      <div className="mb-6">
+        <div
+          className="flex flex-wrap items-center gap-2"
+          role="group"
+          aria-labelledby="secretariat-dataset-label"
+        >
+          <span
+            id="secretariat-dataset-label"
+            className="mr-2 text-xs font-medium tracking-wide text-gray-500 uppercase"
+          >
+            Data source
+          </span>
+          <span
+            className={`text-sm ${dataset === "audited" ? "font-medium text-gray-900" : "text-gray-500"}`}
+          >
+            {DATASET_DETAILS.audited.label}
+          </span>
+          <Switch
+            checked={dataset === "ppb"}
+            onCheckedChange={(checked) =>
+              changeDataset(checked ? "ppb" : "audited")
+            }
+            aria-label="Toggle between audited financial statements and programme budget data"
+          />
+          <span
+            className={`text-sm ${dataset === "ppb" ? "font-medium text-gray-900" : "text-gray-500"}`}
+          >
+            {DATASET_DETAILS.ppb.label}
+          </span>
         </div>
 
+        <p className="mt-2 max-w-4xl text-sm leading-relaxed text-gray-700">
+          {details.description}
+        </p>
         <p className="mt-2 text-xs text-gray-500">
           These sources use different scopes and accounting bases. Compare the
           composition within a source; do not treat their totals as directly
@@ -171,6 +183,35 @@ export function SecretariatDataTreemap() {
       </div>
 
       <div>
+        <div
+          className="mb-3 flex flex-wrap gap-2"
+          role="group"
+          aria-label="Funding sources"
+        >
+          {BUDGET_FUNDING_SOURCES.map((source) => {
+            const active = activeFundingSources.includes(source);
+            return (
+              <button
+                key={source}
+                type="button"
+                aria-pressed={active}
+                title={FUNDING_SOURCES[source].tooltip}
+                onClick={() => toggleFundingSource(source)}
+                className={`flex cursor-pointer items-center gap-1.5 rounded-full px-2 py-1 text-xs transition-colors focus-visible:ring-2 focus-visible:ring-un-blue focus-visible:ring-offset-2 focus-visible:outline-none ${
+                  active
+                    ? "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                    : "bg-white text-gray-400 ring-1 ring-gray-200 hover:bg-gray-50 hover:text-gray-600"
+                }`}
+              >
+                <span
+                  className={`h-2.5 w-2.5 rounded-full ${FUNDING_SOURCES[source].color} ${active ? "opacity-100" : "opacity-40"}`}
+                />
+                <span>{FUNDING_FILTER_LABELS[source]}</span>
+              </button>
+            );
+          })}
+        </div>
+
         <div
           className="grid gap-2 pb-3"
           style={{ gridTemplateColumns: selectorColumns }}
@@ -211,13 +252,6 @@ export function SecretariatDataTreemap() {
                   {blockDetails.label}
                 </span>
                 <span
-                  className={`mt-1 block text-xs leading-snug ${
-                    selected ? "text-white/85" : "text-gray-500"
-                  }`}
-                >
-                  {blockDetails.subtitle}
-                </span>
-                <span
                   className={`mt-3 block text-xl leading-none font-bold sm:text-2xl ${
                     selected ? "text-white" : "text-gray-900"
                   }`}
@@ -250,6 +284,7 @@ export function SecretariatDataTreemap() {
             dataset={programmeDataset}
             hashPrefix={BLOCK_DETAILS.programme.hashPrefix}
             sectionId="budget"
+            activeFundingSources={activeFundingSources}
             onTotalChange={recordProgrammeTotal}
           />
         </section>
@@ -265,13 +300,16 @@ export function SecretariatDataTreemap() {
             dataset={peacekeepingDataset}
             hashPrefix={BLOCK_DETAILS.peacekeeping.hashPrefix}
             sectionId="budget"
+            activeFundingSources={activeFundingSources}
             onTotalChange={recordPeacekeepingTotal}
           />
         </section>
 
         <p className="mt-3 text-xs text-gray-500">
-          Box width represents each selected year&apos;s USD total. The budgets
-          use different fiscal periods and are not added into a combined total.
+          Box width represents the selected funding sources in each selected
+          year. A minimum width keeps a zero-value budget selectable. The
+          budgets use different fiscal periods and are not added into a combined
+          total.
         </p>
       </div>
     </div>
