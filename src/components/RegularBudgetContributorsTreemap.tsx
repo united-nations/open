@@ -286,18 +286,13 @@ export function RegularBudgetContributorsTreemap() {
               </div>
             )}
             {statusRows.map((row, index) => {
-              const style = STATUS_STYLES[row.status];
               return (
                 <div
                   key={row.status}
                   className={`pointer-events-none absolute inset-x-0 z-20 border-white ${index === 0 ? "" : "border-t-4"}`}
                   style={{ top: `${row.y}%`, height: `${row.height}%` }}
                   aria-hidden="true"
-                >
-                  <span className="absolute top-1 left-1 max-w-[calc(100%-0.5rem)] truncate rounded-sm bg-slate-950/85 px-2 py-1 text-[10px] font-semibold text-white shadow-sm sm:top-2 sm:left-2 sm:text-xs">
-                    {style.label} · {formatCurrency(row.assessmentTotal, true)}
-                  </span>
-                </div>
+                />
               );
             })}
           </div>
