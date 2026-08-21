@@ -2,7 +2,12 @@
 
 import { ExternalLink, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
-import type { BudgetMeta, BudgetNode } from "@/types";
+import type {
+  BudgetFundingSource,
+  BudgetMeta,
+  BudgetNode,
+  BudgetNodeSource,
+} from "@/types";
 import { formatBudget } from "@/lib/entities";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { ShareButton } from "@/components/ShareButton";
@@ -34,6 +39,63 @@ const KIND_NAMES: Partial<Record<BudgetNode["kind"], string>> = {
   class: "Cost class",
   item: "Cost item",
 };
+
+function uniqueSources(sources: Array<BudgetNodeSource | undefined>) {
+  return sources.filter(
+    (source, index): source is BudgetNodeSource =>
+      source !== undefined &&
+      sources.findIndex((candidate) => candidate?.url === source.url) === index,
+  );
+}
+
+function amountSources(node: BudgetNode): BudgetNodeSource[] {
+  if (
+    node.allSourcesAmount !== undefined &&
+    node.amount === node.allSourcesAmount &&
+    node.sources?.total_all_sources
+  ) {
+    return [node.sources.total_all_sources];
+  }
+  const fundingSources = Object.keys(node.values ?? {}).map(
+    (funding) => node.sources?.[funding as BudgetFundingSource],
+  );
+  const sources = uniqueSources(fundingSources);
+  return sources.length > 0 ? sources : node.source ? [node.source] : [];
+}
+
+function BudgetAmount({
+  amount,
+  sources,
+  className,
+}: {
+  amount: number;
+  sources: BudgetNodeSource[];
+  className?: string;
+}) {
+  return (
+    <span className={`inline-flex items-center gap-1 ${className ?? ""}`}>
+      <span>{formatBudget(amount)}</span>
+      {uniqueSources(sources).map((source) => {
+        const location = source.pdfPage
+          ? `${source.symbol}, PDF page ${source.pdfPage}`
+          : `${source.symbol} PDF`;
+        return (
+          <a
+            key={source.url}
+            href={source.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Open source for ${formatBudget(amount)}: ${location}`}
+            title={`Open ${location}`}
+            className="inline-flex shrink-0 text-un-blue hover:text-blue-800"
+          >
+            <ExternalLink className="h-3.5 w-3.5" />
+          </a>
+        );
+      })}
+    </span>
+  );
+}
 
 function maximumHierarchyAmount(
   nodes: BudgetNode[],
@@ -98,9 +160,11 @@ function BudgetHierarchy({
                 )}
                 {child.entity?.name ?? child.label}
               </span>
-              <span className="shrink-0 text-gray-900">
-                {formatBudget(child.amount)}
-              </span>
+              <BudgetAmount
+                amount={child.amount}
+                sources={amountSources(child)}
+                className="shrink-0 text-gray-900"
+              />
             </div>
             <div className="relative mt-0.5 h-1.5 w-full">
               <div
@@ -196,6 +260,8 @@ export function BudgetSidebar({
   // add the rows up and find a different number.
   const fundingSum = fundingEntries.reduce((s, [, v]) => s + v, 0);
   const fundingGap = fundingSum - node.amount;
+  const childSum = childNodes.reduce((sum, child) => sum + child.amount, 0);
+  const childGap = node.amount - childSum;
   const omittedLabels = (meta.omitted ?? []).map((o) => o.label).join(", ");
   const isPrinted = node.basis.includes("printed");
   const titleId = "budget-sidebar-title";
@@ -280,9 +346,11 @@ export function BudgetSidebar({
             <span className="text-sm font-normal tracking-wide text-gray-600 uppercase">
               Expenditure {meta.fiscalYear}
             </span>
-            <p className="text-2xl font-bold text-gray-900">
-              {formatBudget(node.amount)}
-            </p>
+            <BudgetAmount
+              amount={node.amount}
+              sources={amountSources(node)}
+              className="text-2xl font-bold text-gray-900"
+            />
             <p className="mt-1 text-xs text-gray-500">
               {shareOfTotal.toFixed(1)}% of {formatBudget(meta.total)} —{" "}
               {meta.stream === "pko"
@@ -323,9 +391,19 @@ export function BudgetSidebar({
                           title={style?.tooltip}
                         />
                         <span className="flex-1 text-gray-700">{label}</span>
-                        <span className="text-gray-900">
-                          {formatBudget(amount)}
-                        </span>
+                        <BudgetAmount
+                          amount={amount}
+                          sources={
+                            node.sources?.[key as BudgetFundingSource]
+                              ? [
+                                  node.sources[
+                                    key as BudgetFundingSource
+                                  ] as BudgetNodeSource,
+                                ]
+                              : []
+                          }
+                          className="text-gray-900"
+                        />
                       </div>
                     );
                   })}
@@ -367,6 +445,15 @@ export function BudgetSidebar({
                 nodes={childNodes}
                 childrenByParent={childrenByParent}
               />
+              {Math.abs(childGap) > 5000 && (
+                <p className="mt-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-900">
+                  The published parent total is {formatBudget(node.amount)}, but
+                  the published lines below add to {formatBudget(childSum)} — a
+                  difference of {formatBudget(Math.abs(childGap))}. The parent
+                  total remains authoritative; this breakdown is flagged and is
+                  not used to size the treemap.
+                </p>
+              )}
             </div>
           )}
 

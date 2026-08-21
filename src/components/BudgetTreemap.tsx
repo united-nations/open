@@ -17,7 +17,11 @@
 // python/12 writes the programme-budget-data trees. Both use one node contract.
 
 import { useCallback, useEffect, useMemo, useState } from "react";
-import { ExternalLink, SplitSquareHorizontal } from "lucide-react";
+import {
+  ExternalLink,
+  SplitSquareHorizontal,
+  TriangleAlert,
+} from "lucide-react";
 import type { BudgetData, BudgetNode } from "@/types";
 import {
   useDeepLink,
@@ -318,10 +322,60 @@ export function BudgetTreemap({
             activeFundingSet.has(source) && sourceValues[source] != null,
         ).map((source) => [source, sourceValues[source] ?? 0]),
       );
+      const selectedAmount = Object.values(values).reduce(
+        (sum, amount) => sum + amount,
+        0,
+      );
+      const allSourcesSelected = BUDGET_FUNDING_SOURCES.every((source) =>
+        activeFundingSet.has(source),
+      );
+      const selectedBreakdowns = BUDGET_FUNDING_SOURCES.filter(
+        (source) =>
+          activeFundingSet.has(source) && sourceValues[source] !== undefined,
+      )
+        .map((source) => node.breakdowns?.[source])
+        .filter((item) => item !== undefined);
+      const componentBreakdown =
+        selectedBreakdowns.length > 0 &&
+        selectedBreakdowns.length === Object.keys(values).length &&
+        selectedBreakdowns.every(
+          (item) => item.childAmount !== null && item.difference !== null,
+        )
+          ? {
+              childAmount: selectedBreakdowns.reduce(
+                (sum, item) => sum + (item.childAmount ?? 0),
+                0,
+              ),
+              difference: selectedBreakdowns.reduce(
+                (sum, item) => sum + (item.difference ?? 0),
+                0,
+              ),
+              outcome: selectedBreakdowns.some(
+                (item) => item.outcome === "printed_source_discrepancy",
+              )
+                ? "printed_source_discrepancy"
+                : "exact",
+              completeness: selectedBreakdowns.every(
+                (item) => item.completeness === "complete",
+              )
+                ? "complete"
+                : "incomplete",
+            }
+          : undefined;
       return {
         ...node,
-        amount: Object.values(values).reduce((sum, amount) => sum + amount, 0),
+        // With every PPB funding source selected, keep the producer's parent
+        // total.  A subset is a new UI lens and is necessarily the sum of the
+        // selected RB/OA/XB values.
+        amount:
+          allSourcesSelected && node.allSourcesAmount !== undefined
+            ? node.allSourcesAmount
+            : selectedAmount,
         values,
+        breakdown:
+          allSourcesSelected && node.breakdowns?.selected_funding_sources
+            ? node.breakdowns.selected_funding_sources
+            : componentBreakdown,
       };
     },
     [activeFundingSet, isPko],
@@ -441,6 +495,24 @@ export function BudgetTreemap({
     const built: Band[] = [];
 
     if (!isPko) {
+      const root = filteredData.nodes.find((node) => node.parentId === null);
+      if (root && Math.abs(root.breakdown?.difference ?? 0) > 5000) {
+        const tile = tileOf(root, root.label);
+        return {
+          bands: [
+            {
+              key: root.id,
+              caption: "",
+              name: root.label,
+              total: root.amount,
+              variance: tile.variance,
+              groups: [{ key: root.id, total: root.amount, tiles: [tile] }],
+              colors: BAND_PALETTE[0],
+            },
+          ],
+          drawnTotal: root.amount,
+        };
+      }
       // Part -> section -> budget unit. The tiles are one tier, so two tiles of
       // the same size mean the same thing wherever they sit in the chart.
       const parts = filteredData.nodes
@@ -452,12 +524,36 @@ export function BudgetTreemap({
         );
       for (const [index, part] of parts.entries()) {
         const groups: Group[] = [];
+        if (Math.abs(part.breakdown?.difference ?? 0) > 5000) {
+          const tile = tileOf(part, part.label);
+          const code = part.code ?? "";
+          built.push({
+            key: part.id,
+            caption: code,
+            name: PART_SHORT_NAMES[code] ?? part.label,
+            total: part.amount,
+            variance: tile.variance,
+            groups: [{ key: part.id, total: part.amount, tiles: [tile] }],
+            colors:
+              PART_BAND_COLORS[code] ??
+              BAND_PALETTE[index % BAND_PALETTE.length],
+          });
+          continue;
+        }
         for (const section of childrenOf[part.id] ?? []) {
           const units = (childrenOf[section.id] ?? []).filter(
             (n) => n.tier === "budget_unit",
           );
           // A section the release does not divide into units is its own tile.
-          const rows = units.length > 0 ? units : [section];
+          const hasMaterialBreakdownDifference =
+            Math.abs(section.breakdown?.difference ?? 0) > 5000;
+          // A discrepant breakdown is still available in the sidebar, but it
+          // must not determine treemap area. Draw the authoritative section
+          // parent as one flagged tile instead.
+          const rows =
+            units.length > 0 && !hasMaterialBreakdownDifference
+              ? units
+              : [section];
           const tiles = rows
             .filter(
               (n) =>
@@ -731,6 +827,12 @@ export function BudgetTreemap({
     return <p className="text-sm text-gray-500">No budget data available.</p>;
   }
 
+  const withheldBreakdowns = filteredData.nodes.filter(
+    (node) =>
+      ["whole", "part", "section"].includes(node.tier) &&
+      Math.abs(node.breakdown?.difference ?? 0) > 5000,
+  ).length;
+
   if (bands.length === 0) {
     return (
       <div className="w-full">
@@ -756,6 +858,16 @@ export function BudgetTreemap({
         <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
           {meta.scopeLabel}. This year does not publish every funding source, so
           it is not directly comparable with years that do.
+        </p>
+      )}
+
+      {withheldBreakdowns > 0 && (
+        <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
+          {withheldBreakdowns} published parent total
+          {withheldBreakdowns === 1 ? " has" : "s have"} a lower-level breakdown
+          that does not reconcile. The chart preserves each parent total and
+          withholds its child geometry; open the flagged tile to inspect the
+          published lines and difference.
         </p>
       )}
 
@@ -929,6 +1041,14 @@ export function BudgetTreemap({
                                     <SplitSquareHorizontal
                                       className="h-3 w-3 shrink-0 opacity-80"
                                       aria-label="Appears in multiple budget locations"
+                                    />
+                                  )}
+                                  {Math.abs(
+                                    tile.node.breakdown?.difference ?? 0,
+                                  ) > 5000 && (
+                                    <TriangleAlert
+                                      className="h-3 w-3 shrink-0 text-amber-200"
+                                      aria-label="Published breakdown does not reconcile"
                                     />
                                   )}
                                 </div>

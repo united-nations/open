@@ -42,7 +42,10 @@ tiles of one band were not comparable with each other. The release now projects
 that level onto a single **budget-unit** tier: a printed entity where the
 fascicle names one, and an explicitly labelled generated wrapper where it does
 not (`section_scope`, `programme`, `special_purpose`, `coverage_remainder`).
-The tier is additive, so the tiles of a section still add up to the section.
+The tier is additive when the source reconciles. If independently printed
+children disagree with their printed parent, the parent stays authoritative;
+the portal flags the difference and withholds those children from treemap
+geometry rather than drawing the difference as expenditure.
 
 The sibling repository now builds the orthogonal, source-evidenced **entity
 dimension** for PPB 2021–2027. Small overlay files bind those added fields to
@@ -74,19 +77,25 @@ Both outputs share one node shape, so one frontend component draws both:
             scopeLabel, scopeWarning, coverage, verification, omitted,
             fundingSources, partial, entityDimension},
   "nodes": [ {id, parentId, tier, kind, code, label, amount, basis,
-              values?, unitType?, role?, entity?, sources?}, ... ]
+              values?, breakdowns?, unitType?, role?, entity?, sources?}, ... ]
 }
 
 `amount` is full dollars (the release prints thousands, and carries the exact
 value as a string). `basis` says whether the number is printed in the source
-document or derived by adding the children. Nothing is recomputed here: the
-values are copied, and the script only asserts that the tree adds up.
+document or derived. An available all-source parent is never replaced by the
+sum of RB, OA and XB; that sum is retained separately for reconciliation. Only
+when no all-source amount exists does the portal use a clearly labelled sum of
+the available funding streams. The exporter validates all seven non-empty
+RB/OA/XB filter combinations and accepts a material child gap only when the
+producer explicitly flags the same signed source discrepancy.
 
 Only the USD expenditure views are exported. The release also has a CHF view of
 PPB 2027, and appropriation and proposed views of the peacekeeping cycles; the
 portal shows actual spending in USD, so those are left aside.
 """
+import csv
 import hashlib
+import itertools
 import json
 import re
 import shutil
@@ -96,6 +105,13 @@ from pathlib import Path
 SRC = Path("data/references/programme-budget-data-financial-v1.6")
 ENTITY_SRC = Path("data/references/programme-budget-data-ppb-entities")
 OUT = Path("public/data")
+
+# The immutable v1.6 views already carry a source citation for every numeric
+# lens, but that release predates the producer's PDF-page join.  When the
+# sibling checkout is available, use its independently generated document
+# outline to fill those still-null page fields.  A future release with pages
+# embedded remains authoritative and does not need this fallback.
+PROGRAMME_BUDGET_DATA = Path("../programme-budget-data")
 
 RELEASE = {
     "repo": "united-nations/programme-budget-data",
@@ -231,6 +247,76 @@ def short_id(tree_node_id: str) -> str:
     return tail.replace(":Part ", "-").replace(":", "-").replace(" ", "-")
 
 
+def citation_source(citation: dict | None) -> dict | None:
+    """Compact one producer citation for a sidebar amount link."""
+    if not citation:
+        return None
+    header = citation.get("headerPath") or []
+    page = citation.get("pdfPage")
+    url = citation.get("pdfUrl") or citation.get("sourceDocumentUrl")
+    if not url:
+        return None
+    if page is not None:
+        url = f"{url.split('#', 1)[0]}#page={page}"
+    return {
+        "symbol": citation["symbol"].replace("_", "/"),
+        "url": url,
+        "pdfPage": page,
+        "pageStatus": citation.get("pageStatus"),
+        "rowLabel": citation.get("rowLabel") or "",
+        "columnHeader": " › ".join(str(item) for item in header),
+        "tableTitle": citation.get("tableTitle") or citation.get("tableCaption"),
+    }
+
+
+def apply_pdf_page_index(view: dict, edition: int) -> tuple[int, int]:
+    """Fill legacy null citation pages from the producer's page-index output.
+
+    The join key is the canonical document symbol plus the physical Word table
+    ordinal, exactly the producer key in ``financial_export.py``.  A missing or
+    ambiguous page remains null; no neighbouring page is guessed.
+    """
+    outline = (
+        PROGRAMME_BUDGET_DATA / "data" / "processed" / f"ppb{edition}"
+        / "extracted" / "document_outline.csv"
+    )
+    citations = view.get("citations") or []
+    if not outline.is_file():
+        return 0, len(citations)
+
+    ordinals: dict[str, int] = {}
+    pages: dict[tuple[str, int], tuple[int, str | None]] = {}
+    with outline.open(encoding="utf-8", newline="") as handle:
+        for row in csv.DictReader(handle):
+            if row.get("block_type") != "table-content":
+                continue
+            symbol = re.sub(r"\s+", " ", row.get("symbol") or "").strip().casefold()
+            ordinal = ordinals.get(symbol, 0) + 1
+            ordinals[symbol] = ordinal
+            page = (row.get("page") or "").strip()
+            if page.isdigit():
+                pages[(symbol, ordinal)] = (
+                    int(page), (row.get("located_by") or "").strip() or None
+                )
+
+    located = 0
+    for citation in citations:
+        if citation.get("pdfPage") is not None:
+            located += 1
+            continue
+        symbol = re.sub(r"\s+", " ", citation["symbol"]).strip().casefold()
+        match = pages.get((symbol, int(citation["tableOrdinal"])))
+        if not match:
+            continue
+        page, located_by = match
+        citation["pdfPage"] = page
+        citation["pageStatus"] = "located"
+        citation["pageLocatedBy"] = located_by
+        citation["pageMissReason"] = None
+        located += 1
+    return located, len(citations)
+
+
 def stable_id(parent_id: str, label: str, used: set[str]) -> str:
     """An id for a node below the section, built from where it sits.
 
@@ -355,6 +441,17 @@ def build_ppb(view: dict) -> dict:
     lens = view["lens"]
     year = lens["dataYear"]
     edition = lens["edition"]
+    citations = view.get("citations") or []
+    citations_by_id = {citation["citationId"]: citation for citation in citations}
+
+    def source_for(value: dict) -> dict | None:
+        primary = value.get("primarySource")
+        if not primary:
+            return None
+        # Top-level citations receive the independently located page overlay;
+        # the embedded primarySource is retained as a self-contained fallback.
+        citation = citations_by_id.get(primary.get("citationId"), primary)
+        return citation_source(citation)
 
     relationships, section_verdicts, entity_summary = entity_index(view)
 
@@ -393,6 +490,14 @@ def build_ppb(view: dict) -> dict:
     # Section tree id -> the one entity the release says owns that section.
     section_owner: dict[str, dict] = {}
     for n in ordered:
+        # The producer retains source-control differences as auditable lineage
+        # facts.  They are reconciliation controls, not expenditure, so they
+        # must never become treemap tiles.
+        if n.get("chartRole") == "reconciliation_control":
+            assert not children_of.get(n["treeNodeId"]), (
+                f"PPB {edition}: reconciliation control unexpectedly has children"
+            )
+            continue
         # A node without a published total cannot be drawn, and nothing below it
         # can be either: its children would have no parent to hang from, and the
         # release leaves the whole branch out of the totals above it as well.
@@ -401,15 +506,24 @@ def build_ppb(view: dict) -> dict:
             dropped.add(n["treeNodeId"])
             continue
         code = (n.get("code") or "").replace("Part ", "")
-        totals = n["values"].get("total_all_sources") or {}
-        total_block = totals.get("total") or {}
-        amount = money(total_block.get("money"))
-
         published = {}
         for fs in FUNDING_SOURCES:
             fs_amount = money(((n["values"].get(fs) or {}).get("total") or {}).get("money"))
             if fs_amount is not None:
                 published[fs] = fs_amount
+
+        totals = n["values"].get("total_all_sources") or {}
+        total_block = totals.get("total") or {}
+        authoritative_amount = money(total_block.get("money"))
+        funding_sum = sum(published.values()) if published else None
+        amount = authoritative_amount
+        amount_basis = total_block.get("basis") or "printed"
+        if amount is None and funding_sum is not None:
+            # A missing all-source figure is different from a printed parent
+            # that disagrees with its components.  Only the former falls back
+            # to a clearly labelled sum of the available funding streams.
+            amount = funding_sum
+            amount_basis = "derived_available_funding_sum"
 
         if amount is None:
             # No published total across the funding sources. Record what it does
@@ -460,10 +574,82 @@ def build_ppb(view: dict) -> dict:
             "code": code or None,
             "label": label,
             "amount": amount,
-            "basis": total_block.get("basis") or "printed",
+            "basis": amount_basis,
             "values": published,
             "completeness": totals.get("completeness"),
         }
+        if authoritative_amount is not None:
+            entry["allSourcesAmount"] = authoritative_amount
+        if funding_sum is not None:
+            entry["fundingBreakdownTotal"] = funding_sum
+            if authoritative_amount is not None:
+                entry["fundingDifference"] = authoritative_amount - funding_sum
+
+        # Preserve the producer's reconciliation at every funding lens.  The
+        # frontend chooses the matching record after the user filters RB/OA/XB.
+        breakdowns = {}
+        for funding in [*FUNDING_SOURCES, "total_all_sources"]:
+            value = n["values"].get(funding) or {}
+            child_amount = money((value.get("children") or {}).get("money"))
+            difference = money(value.get("difference"))
+            outcome = value.get("arithmeticOutcome")
+            if child_amount is not None or difference is not None or outcome:
+                breakdowns[funding] = {
+                    "childAmount": child_amount,
+                    "difference": difference,
+                    "outcome": outcome or "not_testable",
+                    "completeness": value.get("completeness"),
+                }
+        component_breakdowns = [
+            breakdowns[funding]
+            for funding in published
+            if funding in breakdowns
+            and breakdowns[funding]["childAmount"] is not None
+            and breakdowns[funding]["difference"] is not None
+        ]
+        if published and len(component_breakdowns) == len(published):
+            component_difference = sum(
+                item["difference"] for item in component_breakdowns
+            )
+            source_flagged = any(
+                item["outcome"] == "printed_source_discrepancy"
+                for item in component_breakdowns
+            )
+            breakdowns["selected_funding_sources"] = {
+                "childAmount": sum(
+                    item["childAmount"] for item in component_breakdowns
+                ),
+                "difference": component_difference,
+                "outcome": (
+                    "printed_source_discrepancy"
+                    if abs(component_difference) > 5000 and source_flagged
+                    else "unreconciled_difference"
+                    if abs(component_difference) > 5000
+                    else "exact"
+                ),
+                "completeness": (
+                    "complete"
+                    if all(
+                        item.get("completeness") == "complete"
+                        for item in component_breakdowns
+                    )
+                    else "incomplete"
+                ),
+            }
+        if breakdowns:
+            entry["breakdowns"] = breakdowns
+
+        sources = {}
+        for funding in [*FUNDING_SOURCES, "total_all_sources"]:
+            source = source_for(n["values"].get(funding) or {})
+            if source:
+                sources[funding] = source
+        if sources:
+            entry["sources"] = sources
+            # The unfiltered sidebar amount uses the producer's all-source
+            # total. Keep the singular field for the shared PPB/PKO sidebar.
+            if sources.get("total_all_sources"):
+                entry["source"] = sources["total_all_sources"]
         if tier == "budget_unit":
             entry["unitType"] = n["budgetUnitType"]
             entry["role"] = role
@@ -503,7 +689,6 @@ def build_ppb(view: dict) -> dict:
 
     # One budget document family per edition: A/74/6 ... A/81/6, one fascicle
     # per section. The symbol of the family is what belongs in the source line.
-    citations = view.get("citations") or []
     symbols = {re.sub(r"\s*\(.*", "", c["symbol"]).replace("_", "/") for c in citations}
     assert len(symbols) <= 1, f"PPB {edition}: several document families {symbols}"
     symbol = symbols.pop() if symbols else None
@@ -699,7 +884,7 @@ def build_pko(cycle: dict, view: dict) -> dict:
 # --------------------------------------------------------------------------
 
 def check_tree(payload: dict, name: str) -> None:
-    """Every node must have a parent, and children must add up to their parent."""
+    """Validate hierarchy arithmetic without turning differences into spend."""
     nodes = payload["nodes"]
     by_id = {n["id"]: n for n in nodes}
     children: dict[str, list[dict]] = {}
@@ -708,23 +893,81 @@ def check_tree(payload: dict, name: str) -> None:
             assert n["parentId"] in by_id, f"{name}: orphan node {n['id']}"
             children.setdefault(n["parentId"], []).append(n)
 
-    residue = 0
-    for parent_id, kids in children.items():
-        parent = by_id[parent_id]
-        diff = sum(k["amount"] for k in kids) - parent["amount"]
+    unaccounted = []
+
+    def amount_for(node: dict, selected: tuple[str, ...]) -> int:
+        if (
+            len(selected) == len(FUNDING_SOURCES)
+            and node.get("allSourcesAmount") is not None
+        ):
+            return node["allSourcesAmount"]
+        values = node.get("values") or {}
+        return sum(values.get(funding, 0) for funding in selected)
+
+    selections = (
+        list(itertools.chain.from_iterable(
+            itertools.combinations(FUNDING_SOURCES, size)
+            for size in range(1, len(FUNDING_SOURCES) + 1)
+        ))
+        if payload["meta"].get("stream") == "ppb"
+        else [tuple()]
+    )
+    for selected in selections:
+        lens = "+".join(selected) if selected else "all"
+        for parent_id, kids in children.items():
+            parent = by_id[parent_id]
+            parent_amount = (
+                amount_for(parent, selected) if selected else parent["amount"]
+            )
+            child_sum = sum(
+                amount_for(child, selected) if selected else child["amount"]
+                for child in kids
+            )
+            diff = parent_amount - child_sum
         # Differences of a few hundred dollars come from the printed thousands.
         # The release guarantees no displayed parent/child gap above $5,000
         # without an explicit remainder row, so anything larger is a real gap
         # and must be visible here.
-        if abs(diff) > 5000:
-            residue += diff
-            print(f"  ! {name}: {parent['label']} = {parent['amount']:,}, "
-                  f"children add to {parent['amount'] + diff:,} (difference {diff:,})")
+            if abs(diff) > 5000:
+                component_records = [
+                    (parent.get("breakdowns") or {}).get(funding)
+                    for funding in selected
+                    if funding in (parent.get("values") or {})
+                ]
+                declared_difference = (
+                    sum(record["difference"] for record in component_records)
+                    if component_records
+                    and all(
+                        record is not None and record.get("difference") is not None
+                        for record in component_records
+                    )
+                    else None
+                )
+                explicitly_flagged = (
+                    declared_difference is not None
+                    and abs(declared_difference - diff) <= 5000
+                    and any(
+                        record.get("outcome") == "printed_source_discrepancy"
+                        for record in component_records
+                        if record is not None
+                    )
+                )
+                print(
+                    f"  ! {name} [{lens}]: {parent['label']} = {parent_amount:,}, "
+                    f"children add to {child_sum:,} (difference {diff:,}; "
+                    f"{'source flagged' if explicitly_flagged else 'UNACCOUNTED'})"
+                )
+                if not explicitly_flagged:
+                    unaccounted.append((f"{parent_id} [{lens}]", diff))
 
     root = next(n for n in nodes if n["parentId"] is None)
     assert root["amount"] == payload["meta"]["total"], f"{name}: root != declared total"
-    if residue:
-        print(f"  ! {name}: total unexplained difference {residue:,}")
+    if unaccounted:
+        largest = max(abs(diff) for _, diff in unaccounted)
+        raise AssertionError(
+            f"{name}: {len(unaccounted)} unflagged parent/child discrepancies remain; "
+            f"largest absolute difference {largest:,}"
+        )
 
 
 def prepare(release_dir: Path, pko_dir: Path | None = None) -> None:
@@ -801,6 +1044,7 @@ def export() -> None:
             "from the programme-budget-data repository first."
         )
         view = json.loads(source_path.read_text())
+        pages, citations = apply_pdf_page_index(view, edition)
         overlay = json.loads(overlay_path.read_text())
         apply_entity_overlay(view, overlay, source_path)
         payload = build_ppb(view)
@@ -810,7 +1054,8 @@ def export() -> None:
         (OUT / f"{name}.json").write_text(json.dumps(payload, indent=2))
         flag = " (partial scope)" if payload["meta"]["partial"] else ""
         print(f"{name}.json: {len(payload['nodes'])} nodes, "
-              f"${payload['meta']['total'] / 1e9:.2f}B{flag} ✓")
+              f"${payload['meta']['total'] / 1e9:.2f}B{flag}; "
+              f"{pages}/{citations} source citations page-linked ✓")
         for o in payload["meta"]["omitted"]:
             values = ", ".join(f"{FUNDING_NAMES[k]} {v:,}" for k, v in o["values"].items())
             print(f"  - not drawn: {o['label']} — {o['reason']}"

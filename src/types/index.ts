@@ -234,8 +234,28 @@ export interface BudgetNodeEntity {
 export interface BudgetNodeSource {
   symbol: string;
   url: string;
+  /** Physical PDF page, when independently located by the producer. */
+  pdfPage?: number | null;
+  pageStatus?: string | null;
   rowLabel: string;
   columnHeader: string;
+  tableTitle?: string | null;
+}
+
+export type BudgetFundingSource =
+  | "regular_budget"
+  | "other_assessed"
+  | "extrabudgetary";
+
+export type BudgetSourceLens = BudgetFundingSource | "total_all_sources";
+
+export interface BudgetNodeBreakdown {
+  /** Sum of the displayed immediate children, where it can be tested. */
+  childAmount: number | null;
+  /** Parent minus immediate children. */
+  difference: number | null;
+  outcome: string;
+  completeness?: string;
 }
 
 export interface BudgetNode {
@@ -251,10 +271,27 @@ export interface BudgetNode {
   amount: number;
   /** "printed"/"directly_printed" = in the source document; otherwise derived. */
   basis: string;
+  /** Producer's authoritative all-source amount, before UI funding filters. */
+  allSourcesAmount?: number;
+  /** Sum of the separately published RB/OA/XB values. */
+  fundingBreakdownTotal?: number;
+  /** allSourcesAmount minus fundingBreakdownTotal. */
+  fundingDifference?: number;
   /** The same amount split by funding source, where the source publishes it. */
-  values?: Partial<
-    Record<"regular_budget" | "other_assessed" | "extrabudgetary", number>
+  values?: Partial<Record<BudgetFundingSource, number>>;
+  /** Source reconciliation by funding lens, retained separately from spend. */
+  breakdowns?: Partial<
+    Record<
+      | "regular_budget"
+      | "other_assessed"
+      | "extrabudgetary"
+      | "total_all_sources"
+      | "selected_funding_sources",
+      BudgetNodeBreakdown
+    >
   >;
+  /** Reconciliation for the funding sources currently selected in the UI. */
+  breakdown?: BudgetNodeBreakdown;
   completeness?: string;
   /** The document prints this row as a lump, without itemizing it. */
   isRemainder?: boolean;
@@ -271,6 +308,8 @@ export interface BudgetNode {
   /** PKO only. */
   mission?: string;
   costClass?: string;
+  /** Producer-designated source for each numeric PPB funding lens. */
+  sources?: Partial<Record<BudgetSourceLens, BudgetNodeSource>>;
   source?: BudgetNodeSource;
 }
 
