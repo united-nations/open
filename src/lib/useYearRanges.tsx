@@ -18,8 +18,10 @@ interface YearRanges {
   countryExpenses: YearRange;
   sdgExpenses: YearRange;
   regularBudgetContributors: YearRange;
+  trustFundContributors: YearRange;
   budgetAuditedPpb: YearRange;
   budgetAuditedPko: YearRange;
+  budgetTrustFunds: YearRange;
   // Budget documents. budgetPpb is keyed by expenditure year, budgetPko by the
   // first year of the July-June cycle (2024 means 2024/25).
   budgetPpb: YearRange;

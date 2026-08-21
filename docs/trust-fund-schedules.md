@@ -1,7 +1,7 @@
 # Schedule of Individual Trust Funds extraction
 
-**Status:** production extraction, validation, and audited-entity crosswalk
-implemented; compact frontend exports and UI integration remain deferred.
+**Status:** production extraction, validation, audited-entity crosswalk,
+frontend exports, and Secretariat entity/contributor views implemented.
 
 The pipeline retrieves the English annual *Schedule of Individual Trust Funds*
 records discovered through the UN Digital Library. The 2020 document is absent
@@ -29,6 +29,14 @@ Build the entity crosswalk after Stage 2 exists:
 
 ```bash
 uv run python python/15-build_trust_fund_entity_crosswalk.py
+```
+
+Export the compact entity and contributor datasets, then refresh the frontend
+year manifest:
+
+```bash
+uv run python python/16-export_trust_fund_json.py
+uv run python python/99-generate_manifest.py
 ```
 
 Use `--years 2023 2024` for a subset. The default output directory is
@@ -61,6 +69,12 @@ and gitignored.
   aggregation pending authoritative review.
 - `crosswalk/quality-profile.json`: mapping cardinality, value-weighted coverage,
   unresolved cases, section changes, and known limitations.
+- `public/data/budget-trust-funds-{year}.json`: current-period trust-fund
+  expenses grouped by the approved entity crosswalk, with individual funds as
+  children.
+- `public/data/trust-fund-contributors-{year}.json`: signed named contributor
+  amounts, destination funds and mapped entities, adjustments, and per-fund
+  reconciliation residuals.
 
 All monetary values are integer United States dollars. A printed dash is stored
 as zero with a separate `*_reported_as_dash` flag. Negative parenthesized values
@@ -138,6 +152,38 @@ Finally, the relationship is organizational attribution only. It does not show
 that a donor financed a particular entity expense or subprogramme in the same
 year. Schedule amounts are gross fund accounts with transfers and must not be
 added to PPB extrabudgetary expenditure or consolidated Secretariat totals.
+
+## Frontend metric and contributor limitations
+
+The entity view is deliberately a third, XB-only source. It uses the
+current-period `Total expenses` line from each fund and excludes unresolved
+funds from entity aggregation. RB and OA are unavailable for this source. The
+result is not a replacement for, or an amount to add to, the consolidated
+audited or PPB views.
+
+The contributor view uses recognized voluntary contributions, not cash
+receipts or receivables. For each fund-year it retains named rows only up to the
+printed contribution total that exactly matches the financial-performance
+statement. This rule is important where a continuation page contains a second
+inter-organization or internal-transfer schedule after the contribution total.
+Printed present-value and fund-to-fund adjustments are retained separately;
+negative named donor rows remain in the donor's signed net.
+
+The printed totals reconcile exactly to the statements, but the named rows do
+not always add to those totals because several PDF layouts omit or misalign an
+individual amount. The export never allocates the residual. Absolute-residual
+named-row completeness is 99.9999% (2017), 99.9999% (2018), 100% (2019),
+99.9998% (2020), 99.9948% (2021), 99.9331% (2022), 99.3009% (2023), and
+99.7874% (2024). The UI shows the applicable percentage and residual for the
+selected year. Contributors with a zero or negative annual net remain in JSON
+but cannot be represented as positive treemap area.
+
+Contributor-to-entity destinations inherit the fund's organizational
+crosswalk. They mean that the contribution was recognized by a fund assigned
+to that entity; they do not establish that the donor financed an entity's
+particular expense, programme, or activity. Contributions to the seven
+unresolved fund codes remain visible with an unresolved entity rather than
+being dropped or guessed.
 
 ## Suggested manual checks
 

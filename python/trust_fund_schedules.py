@@ -1266,7 +1266,8 @@ def normalize_flow_table(table: dict) -> list[dict]:
             "flow_type": table["table_kind"],
             "counterparty_group": group,
             "counterparty": label,
-            "is_total": label.lower().startswith("total"),
+            "is_total": label.lower().startswith("total")
+            or label.lower() == "grand total",
         }
         for column in measure_columns:
             amount, is_dash = parse_amount(literal.get(column, ""))

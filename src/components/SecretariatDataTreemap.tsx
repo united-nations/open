@@ -2,7 +2,6 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { BudgetTreemap } from "@/components/BudgetTreemap";
-import { Switch } from "@/components/ui/switch";
 import { clearSidebarHash } from "@/hooks/useDeepLink";
 import { formatBudget } from "@/lib/entities";
 import {
@@ -11,7 +10,7 @@ import {
   type BudgetFundingSource,
 } from "@/lib/budgetGroupings";
 
-type SecretariatDataset = "audited" | "ppb";
+type SecretariatDataset = "audited" | "ppb" | "trust_funds";
 type BudgetBlock = "programme" | "peacekeeping";
 
 const FUNDING_FILTER_LABELS: Record<BudgetFundingSource, string> = {
@@ -33,6 +32,11 @@ const DATASET_DETAILS: Record<
     label: "Programme budget data (PPB + PKO)",
     description:
       "Expenditure reported in the Proposed Programme Budget editions, covering 2019–2025, paired with separately assessed peacekeeping mission budgets on their July–June cycles.",
+  },
+  trust_funds: {
+    label: "Individual trust-fund schedules",
+    description:
+      "Current-period expenses from the audited Schedule of Individual Trust Funds, mapped to Secretariat entities through a reconstructed historical crosswalk. This source is extrabudgetary only.",
   },
 };
 
@@ -72,7 +76,10 @@ export function SecretariatDataTreemap() {
 
   useEffect(() => {
     const selectBlockFromHash = () => {
-      if (window.location.hash.startsWith("#pko=")) {
+      if (window.location.hash.startsWith("#trust-fund-entity=")) {
+        setDataset("trust_funds");
+        setActiveFundingSources(["extrabudgetary"]);
+      } else if (window.location.hash.startsWith("#pko=")) {
         setActiveBlock("peacekeeping");
       } else if (window.location.hash.startsWith("#secretariat=")) {
         setActiveBlock("programme");
@@ -93,6 +100,11 @@ export function SecretariatDataTreemap() {
     clearSidebarHash();
     setBlockTotals({ programme: null, peacekeeping: null });
     setDataset(value);
+    if (value === "trust_funds") {
+      setActiveFundingSources(["extrabudgetary"]);
+    } else if (dataset === "trust_funds") {
+      setActiveFundingSources(["regular_budget", "other_assessed"]);
+    }
   };
 
   const recordProgrammeTotal = useCallback((total: number) => {
@@ -153,23 +165,25 @@ export function SecretariatDataTreemap() {
           >
             Data source
           </span>
-          <span
-            className={`text-sm ${dataset === "audited" ? "font-medium text-gray-900" : "text-gray-500"}`}
-          >
-            {DATASET_DETAILS.audited.label}
-          </span>
-          <Switch
-            checked={dataset === "ppb"}
-            onCheckedChange={(checked) =>
-              changeDataset(checked ? "ppb" : "audited")
-            }
-            aria-label="Toggle between audited financial statements and programme budget data"
-          />
-          <span
-            className={`text-sm ${dataset === "ppb" ? "font-medium text-gray-900" : "text-gray-500"}`}
-          >
-            {DATASET_DETAILS.ppb.label}
-          </span>
+          <div className="inline-flex flex-wrap gap-1 rounded-md bg-gray-100 p-1">
+            {(Object.keys(DATASET_DETAILS) as SecretariatDataset[]).map(
+              (source) => (
+                <button
+                  key={source}
+                  type="button"
+                  aria-pressed={dataset === source}
+                  onClick={() => changeDataset(source)}
+                  className={`rounded px-3 py-1.5 text-sm transition-colors focus-visible:ring-2 focus-visible:ring-un-blue focus-visible:outline-none ${
+                    dataset === source
+                      ? "bg-white font-medium text-gray-900 shadow-sm"
+                      : "text-gray-500 hover:text-gray-800"
+                  }`}
+                >
+                  {DATASET_DETAILS[source].label}
+                </button>
+              ),
+            )}
+          </div>
         </div>
 
         <p className="mt-2 max-w-4xl text-sm leading-relaxed text-gray-700">
@@ -190,14 +204,17 @@ export function SecretariatDataTreemap() {
         >
           {BUDGET_FUNDING_SOURCES.map((source) => {
             const active = activeFundingSources.includes(source);
+            const disabled =
+              dataset === "trust_funds" && source !== "extrabudgetary";
             return (
               <button
                 key={source}
                 type="button"
                 aria-pressed={active}
+                disabled={disabled}
                 title={FUNDING_SOURCES[source].tooltip}
                 onClick={() => toggleFundingSource(source)}
-                className={`flex cursor-pointer items-center gap-1.5 rounded-full px-2 py-1 text-xs transition-colors focus-visible:ring-2 focus-visible:ring-un-blue focus-visible:ring-offset-2 focus-visible:outline-none ${
+                className={`flex items-center gap-1.5 rounded-full px-2 py-1 text-xs transition-colors focus-visible:ring-2 focus-visible:ring-un-blue focus-visible:ring-offset-2 focus-visible:outline-none ${disabled ? "cursor-not-allowed opacity-40" : "cursor-pointer"} ${
                   active
                     ? "bg-gray-100 text-gray-700 hover:bg-gray-200"
                     : "bg-white text-gray-400 ring-1 ring-gray-200 hover:bg-gray-50 hover:text-gray-600"
@@ -212,104 +229,121 @@ export function SecretariatDataTreemap() {
           })}
         </div>
 
-        <div
-          className="grid gap-2 pb-3"
-          style={{ gridTemplateColumns: selectorColumns }}
-          role="tablist"
-          aria-label="Budget"
-        >
-          {(Object.keys(BLOCK_DETAILS) as BudgetBlock[]).map((block) => {
-            const blockDetails = BLOCK_DETAILS[block];
-            const selected = block === activeBlock;
-            const total = blockTotals[block];
+        {dataset !== "trust_funds" && (
+          <div
+            className="grid gap-2 pb-3"
+            style={{ gridTemplateColumns: selectorColumns }}
+            role="tablist"
+            aria-label="Budget"
+          >
+            {(Object.keys(BLOCK_DETAILS) as BudgetBlock[]).map((block) => {
+              const blockDetails = BLOCK_DETAILS[block];
+              const selected = block === activeBlock;
+              const total = blockTotals[block];
 
-            return (
-              <button
-                key={block}
-                id={`${block}-budget-tab`}
-                type="button"
-                role="tab"
-                aria-selected={selected}
-                aria-controls={`${block}-budget-panel`}
-                tabIndex={selected ? 0 : -1}
-                onClick={() => selectBlock(block)}
-                onKeyDown={(event) => {
-                  if (event.key !== "ArrowLeft" && event.key !== "ArrowRight")
-                    return;
-                  event.preventDefault();
-                  const nextBlock =
-                    block === "programme" ? "peacekeeping" : "programme";
-                  selectBlock(nextBlock);
-                  document.getElementById(`${nextBlock}-budget-tab`)?.focus();
-                }}
-                className={`relative min-h-24 min-w-0 border px-3 py-4 text-left transition-colors focus-visible:z-20 focus-visible:ring-2 focus-visible:ring-un-blue focus-visible:ring-offset-2 focus-visible:outline-none sm:px-5 ${
-                  selected
-                    ? "z-10 border-un-blue bg-un-blue text-white"
-                    : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
-                }`}
-              >
-                <span className="block text-sm leading-tight font-semibold sm:text-base">
-                  {blockDetails.label}
-                </span>
-                <span
-                  className={`mt-3 block text-xl leading-none font-bold sm:text-2xl ${
-                    selected ? "text-white" : "text-gray-900"
+              return (
+                <button
+                  key={block}
+                  id={`${block}-budget-tab`}
+                  type="button"
+                  role="tab"
+                  aria-selected={selected}
+                  aria-controls={`${block}-budget-panel`}
+                  tabIndex={selected ? 0 : -1}
+                  onClick={() => selectBlock(block)}
+                  onKeyDown={(event) => {
+                    if (event.key !== "ArrowLeft" && event.key !== "ArrowRight")
+                      return;
+                    event.preventDefault();
+                    const nextBlock =
+                      block === "programme" ? "peacekeeping" : "programme";
+                    selectBlock(nextBlock);
+                    document.getElementById(`${nextBlock}-budget-tab`)?.focus();
+                  }}
+                  className={`relative min-h-24 min-w-0 border px-3 py-4 text-left transition-colors focus-visible:z-20 focus-visible:ring-2 focus-visible:ring-un-blue focus-visible:ring-offset-2 focus-visible:outline-none sm:px-5 ${
+                    selected
+                      ? "z-10 border-un-blue bg-un-blue text-white"
+                      : "border-gray-300 bg-white text-gray-700 hover:bg-gray-50"
                   }`}
                 >
-                  {total === null ? "Loading…" : formatBudget(total)}
-                </span>
-                {selected && (
+                  <span className="block text-sm leading-tight font-semibold sm:text-base">
+                    {blockDetails.label}
+                  </span>
                   <span
-                    aria-hidden="true"
-                    className="absolute top-full left-1/2 -translate-x-1/2 border-x-[12px] border-t-[12px] border-x-transparent border-t-un-blue"
-                  />
-                )}
-              </button>
-            );
-          })}
-        </div>
+                    className={`mt-3 block text-xl leading-none font-bold sm:text-2xl ${
+                      selected ? "text-white" : "text-gray-900"
+                    }`}
+                  >
+                    {total === null ? "Loading…" : formatBudget(total)}
+                  </span>
+                  {selected && (
+                    <span
+                      aria-hidden="true"
+                      className="absolute top-full left-1/2 -translate-x-1/2 border-x-[12px] border-t-[12px] border-x-transparent border-t-un-blue"
+                    />
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        )}
 
-        <p className="mt-2 mb-4 text-sm text-gray-600">
-          {activeDetails.description}
-        </p>
+        {dataset !== "trust_funds" && (
+          <p className="mt-2 mb-4 text-sm text-gray-600">
+            {activeDetails.description}
+          </p>
+        )}
 
-        <section
-          id="programme-budget-panel"
-          role="tabpanel"
-          aria-labelledby="programme-budget-tab"
-          hidden={activeBlock !== "programme"}
-        >
-          <BudgetTreemap
-            key={programmeDataset}
-            dataset={programmeDataset}
-            hashPrefix={BLOCK_DETAILS.programme.hashPrefix}
-            sectionId="budget"
-            activeFundingSources={activeFundingSources}
-            onTotalChange={recordProgrammeTotal}
-          />
-        </section>
+        {dataset === "trust_funds" ? (
+          <section>
+            <BudgetTreemap
+              key="budget-trust-funds"
+              dataset="budget-trust-funds"
+              hashPrefix="trust-fund-entity"
+              sectionId="budget"
+              activeFundingSources={activeFundingSources}
+            />
+          </section>
+        ) : (
+          <>
+            <section
+              id="programme-budget-panel"
+              role="tabpanel"
+              aria-labelledby="programme-budget-tab"
+              hidden={activeBlock !== "programme"}
+            >
+              <BudgetTreemap
+                key={programmeDataset}
+                dataset={programmeDataset}
+                hashPrefix={BLOCK_DETAILS.programme.hashPrefix}
+                sectionId="budget"
+                activeFundingSources={activeFundingSources}
+                onTotalChange={recordProgrammeTotal}
+              />
+            </section>
 
-        <section
-          id="peacekeeping-budget-panel"
-          role="tabpanel"
-          aria-labelledby="peacekeeping-budget-tab"
-          hidden={activeBlock !== "peacekeeping"}
-        >
-          <BudgetTreemap
-            key={peacekeepingDataset}
-            dataset={peacekeepingDataset}
-            hashPrefix={BLOCK_DETAILS.peacekeeping.hashPrefix}
-            sectionId="budget"
-            activeFundingSources={activeFundingSources}
-            onTotalChange={recordPeacekeepingTotal}
-          />
-        </section>
+            <section
+              id="peacekeeping-budget-panel"
+              role="tabpanel"
+              aria-labelledby="peacekeeping-budget-tab"
+              hidden={activeBlock !== "peacekeeping"}
+            >
+              <BudgetTreemap
+                key={peacekeepingDataset}
+                dataset={peacekeepingDataset}
+                hashPrefix={BLOCK_DETAILS.peacekeeping.hashPrefix}
+                sectionId="budget"
+                activeFundingSources={activeFundingSources}
+                onTotalChange={recordPeacekeepingTotal}
+              />
+            </section>
+          </>
+        )}
 
         <p className="mt-3 text-xs text-gray-500">
           Box width represents the selected funding sources in each selected
           year. A minimum width keeps a zero-value budget selectable. The
-          budgets use different fiscal periods and are not added into a combined
-          total.
+          sources use different scopes and are not added into a combined total.
         </p>
       </div>
     </div>

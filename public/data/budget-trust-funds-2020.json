@@ -1,0 +1,4593 @@
+{
+  "meta": {
+    "stream": "trust_funds",
+    "sourceKind": "trust_fund_schedule",
+    "title": "Schedule of Individual Trust Funds",
+    "label": "Individual trust-fund expenses 2020 (USD)",
+    "measure": "IPSAS expenses",
+    "year": 2020,
+    "fiscalYear": "2020",
+    "currency": "USD",
+    "total": 2807454505,
+    "scopeLabel": "Current-period expenses of trust funds with an approved entity crosswalk",
+    "scopeWarning": "This is gross fund-level accounting and is not additive to PPB or consolidated Secretariat expenditure. Entity assignments reconstruct the old open-data mapping.",
+    "fundingSources": [
+      "extrabudgetary"
+    ],
+    "fundingLabels": {
+      "extrabudgetary": "Individual trust funds"
+    },
+    "documentSymbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+    "documentUrl": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+    "verification": {
+      "schedule_total_usd": "2807473452",
+      "mapped_total_usd": "2807454505",
+      "mapped_funds": "141",
+      "unresolved_funds": "4",
+      "unresolved_fund_codes": "ANC, EER, GNA, SWE"
+    },
+    "source": {
+      "repo": "transparency",
+      "release": "trust-fund schedule extraction",
+      "url": "https://github.com/united-nations/transparency"
+    }
+  },
+  "nodes": [
+    {
+      "id": "trust-funds",
+      "parentId": null,
+      "tier": "whole",
+      "kind": "whole",
+      "code": null,
+      "label": "Mapped individual trust funds",
+      "amount": 2807454505,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 2807454505
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-funds~xb",
+      "parentId": "trust-funds",
+      "tier": "part",
+      "kind": "part",
+      "code": "XB",
+      "label": "Individual trust funds",
+      "amount": 2807454505,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 2807454505
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-funds~entities",
+      "parentId": "trust-funds~xb",
+      "tier": "section",
+      "kind": "section",
+      "code": "TF",
+      "label": "Mapped Secretariat entities",
+      "amount": 2807454505,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 2807454505
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:AMISOM",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "AMISOM",
+      "label": "AMISOM",
+      "amount": 16083658,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 16083658
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "AMISOM",
+        "acronym": "AMISOM",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:AMISOM:fund:SAU",
+      "parentId": "trust-fund-entity:AMISOM",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SAU",
+      "label": "Trust Fund in Support of the African Union Mission to Somalia (AMISOM)",
+      "amount": 16083658,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 16083658
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:BINUH",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "BINUH",
+      "label": "United Nations Integrated Office in Haiti",
+      "amount": 14,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 14
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Integrated Office in Haiti",
+        "acronym": "BINUH",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:BINUH:fund:HKA",
+      "parentId": "trust-fund-entity:BINUH",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HKA",
+      "label": "Trust Fund in Support of the Political Transition in Haiti",
+      "amount": 14,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 14
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:CEB",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "CEB",
+      "label": "United Nations System Chief Executives Board for Coordination",
+      "amount": 175871,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 175871
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations System Chief Executives Board for Coordination",
+        "acronym": "CEB",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:CEB:fund:HBP",
+      "parentId": "trust-fund-entity:CEB",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HBP",
+      "label": "Trust Fund for the Implementation of HLCM Plan of Action for the Harmonization of Business Practices in the United Nations system",
+      "amount": 175871,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 175871
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:CNMC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "CNMC",
+      "label": "United Nations Support for the Cameroon-Nigeria Mixed Commission",
+      "amount": 746925,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 746925
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Support for the Cameroon-Nigeria Mixed Commission",
+        "acronym": "CNMC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:CNMC:fund:CNM",
+      "parentId": "trust-fund-entity:CNMC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CNM",
+      "label": "Trust Fund in Support of the Cameroon-Nigeria Border Demarcation and Other Activities Related to Preventive Diplomacy and Peacemaking",
+      "amount": 746925,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 746925
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:CTED",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "CTED",
+      "label": "Counter-Terrorism Committee Executive Directorate",
+      "amount": 306675,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 306675
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Counter-Terrorism Committee Executive Directorate",
+        "acronym": "CTED",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:CTED:fund:CTD",
+      "parentId": "trust-fund-entity:CTED",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CTD",
+      "label": "Trust Fund for the Counter-Terrorism Committee Executive Directorate",
+      "amount": 306675,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 306675
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DCO",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DCO",
+      "label": "Resident coordinator system",
+      "amount": 197767538,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 197767538
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Resident coordinator system",
+        "acronym": "RC system",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DCO:fund:DSA",
+      "parentId": "trust-fund-entity:DCO",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DSA",
+      "label": "Special Purpose Trust Fund for the Reinvigorated Resident Coordinator (RC) System",
+      "amount": 197767538,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 197767538
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DESA",
+      "label": "Department of Economic and Social Affairs",
+      "amount": 32289322,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 32289322
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Economic and Social Affairs",
+        "acronym": "DESA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:XES",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "XES",
+      "label": "Trust Fund for Department of Economic and Social Affairs Capacity Development Programme",
+      "amount": 13180973,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 13180973
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:PDF",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PDF",
+      "label": "Trust Fund for United Nations Peace and Development",
+      "amount": 10875062,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 10875062
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:HIA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HIA",
+      "label": "Trust Fund to Support Activities for the Follow-up to the International Conference on Financing for Development",
+      "amount": 2651574,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2651574
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:OTB",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "OTB",
+      "label": "Trust Fund to Support the launch and operationalization of the Technology Bank for LDCs",
+      "amount": 1798204,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1798204
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:PGA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PGA",
+      "label": "Trust Fund for Population and Development",
+      "amount": 1357184,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1357184
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:WKA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "WKA",
+      "label": "Trust Fund to Support the Work of the High-level Political Forum on Sustainable Development",
+      "amount": 1229616,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1229616
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:GBA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GBA",
+      "label": "Trust Fund for Statistical Development and Capacity Building",
+      "amount": 473585,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 473585
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:KSA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "KSA",
+      "label": "Trust Fund in Support of the United Nations Forum on Forests",
+      "amount": 407773,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 407773
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:WOA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "WOA",
+      "label": "Trust Fund for the Follow-up to the World Summit for Social Development",
+      "amount": 101280,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 101280
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:IDA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "IDA",
+      "label": "United Nations Voluntary Fund on Disability",
+      "amount": 78550,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 78550
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:CSA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CSA",
+      "label": "Trust Fund for Case Studies on the Functioning of the Operational Activities for Development of the United Nations System",
+      "amount": 59195,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 59195
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:FII",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "FII",
+      "label": "Trust Fund on Indigenous Issues",
+      "amount": 41445,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 41445
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:WAA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "WAA",
+      "label": "Trust Fund for Aging",
+      "amount": 20108,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 20108
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:FYA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "FYA",
+      "label": "United Nations Trust Fund on Family Activities",
+      "amount": 15097,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 15097
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:IEA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "IEA",
+      "label": "United Nations Youth Fund",
+      "amount": 158,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 158
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:HCB",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HCB",
+      "label": "Host Country Agreements - rken (Volume 1)",
+      "amount": 35,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 35
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:AMR",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "AMR",
+      "label": "Trust Fund for the Annual Ministerial Review and the Development Cooperation Forum",
+      "amount": -517,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": -517
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGACM",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DGACM",
+      "label": "Department for General Assembly and Conference Management",
+      "amount": 1920033,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1920033
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department for General Assembly and Conference Management",
+        "acronym": "DGACM",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGACM:fund:GTA",
+      "parentId": "trust-fund-entity:DGACM",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GTA",
+      "label": "Trust Fund for German Language Translation",
+      "amount": 1791869,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1791869
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGACM:fund:ACM",
+      "parentId": "trust-fund-entity:DGACM",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ACM",
+      "label": "Trust Fund in Support of General Assembly and Conference Management Activities",
+      "amount": 128164,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 128164
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DGC",
+      "label": "Department of Global Communications",
+      "amount": 6207167,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 6207167
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Global Communications",
+        "acronym": "DGC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGC:fund:ESA",
+      "parentId": "trust-fund-entity:DGC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ESA",
+      "label": "Trust Fund for Economic and Social Information",
+      "amount": 5563164,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 5563164
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGC:fund:GCU",
+      "parentId": "trust-fund-entity:DGC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GCU",
+      "label": "United Nations Trust Fund for Government Contributions to UNICS",
+      "amount": 629166,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 629166
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGC:fund:ERA",
+      "parentId": "trust-fund-entity:DGC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ERA",
+      "label": "Development Forum Trust Fund",
+      "amount": 13192,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 13192
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGC:fund:SNA",
+      "parentId": "trust-fund-entity:DGC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SNA",
+      "label": "Trust Fund to promote information to United Nations staff about the work of the Organization (formerly Secretariat News Trust Fund)",
+      "amount": 1645,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1645
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DMSPC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DMSPC",
+      "label": "Department of Management Strategy, Policy and Compliance",
+      "amount": 0,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Management Strategy, Policy and Compliance",
+        "acronym": "DMSPC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DMSPC:fund:YFA",
+      "parentId": "trust-fund-entity:DMSPC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "YFA",
+      "label": "Trust Fund for Assistance in the Training of United Nations Staff in the French Language",
+      "amount": 0,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DOS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DOS",
+      "label": "Department of Operational Support",
+      "amount": 9082194,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 9082194
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Operational Support",
+        "acronym": "DOS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DOS:fund:LLB",
+      "parentId": "trust-fund-entity:DOS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LLB",
+      "label": "Trust Fund in Support of the Department of Operational Support",
+      "amount": 9082194,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 9082194
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPO",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DPO",
+      "label": "Department of Peace Operations",
+      "amount": 9762804,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 9762804
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Peace Operations",
+        "acronym": "DPO",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPO:fund:LLA",
+      "parentId": "trust-fund-entity:DPO",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LLA",
+      "label": "Trust Fund in Support of the Department of Peacekeeping Operations",
+      "amount": 9763894,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 9763894
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPO:fund:CPK",
+      "parentId": "trust-fund-entity:DPO",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CPK",
+      "label": "Trust Fund in Support Peacekeeping Activities",
+      "amount": -1090,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": -1090
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPPA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DPPA",
+      "label": "Department of Political and Peacebuilding Affairs",
+      "amount": 37233811,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 37233811
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Political and Peacebuilding Affairs",
+        "acronym": "DPPA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPPA:fund:SZA",
+      "parentId": "trust-fund-entity:DPPA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SZA",
+      "label": "Trust Fund in Support of Political Affairs",
+      "amount": 34549563,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 34549563
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPPA:fund:PSO",
+      "parentId": "trust-fund-entity:DPPA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PSO",
+      "label": "Trust Fund for the Peacebuilding Support Office",
+      "amount": 2685182,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2685182
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPPA:fund:PYA",
+      "parentId": "trust-fund-entity:DPPA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PYA",
+      "label": "Trust Fund for Preventive Action",
+      "amount": -934,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": -934
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DSS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DSS",
+      "label": "Department of Safety and Security",
+      "amount": 562961,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 562961
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Safety and Security",
+        "acronym": "DSS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DSS:fund:UGA",
+      "parentId": "trust-fund-entity:DSS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "UGA",
+      "label": "Trust Fund for Security of Staff Members of the United Nations System",
+      "amount": 562961,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 562961
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ECA",
+      "label": "Economic Commission for Africa",
+      "amount": 9962171,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 9962171
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Economic Commission for Africa",
+        "acronym": "ECA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECA:fund:HDM",
+      "parentId": "trust-fund-entity:ECA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HDM",
+      "label": "ECA as Executing Agency for Miscellaneous Technical Co-operation Funds",
+      "amount": 8301126,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 8301126
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECA:fund:IDP",
+      "parentId": "trust-fund-entity:ECA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "IDP",
+      "label": "African Institute for Economic Development and Planning (IDEP)",
+      "amount": 1661042,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1661042
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECA:fund:CFE",
+      "parentId": "trust-fund-entity:ECA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CFE",
+      "label": "Trust Fund for ECA Construction",
+      "amount": 3,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 3
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECE",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ECE",
+      "label": "Economic Commission for Europe",
+      "amount": 15150176,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 15150176
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Economic Commission for Europe",
+        "acronym": "ECE",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECE:fund:ECE",
+      "parentId": "trust-fund-entity:ECE",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ECE",
+      "label": "ECE Local Technical Co-operation Trust Funds",
+      "amount": 12263849,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 12263849
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECE:fund:LRA",
+      "parentId": "trust-fund-entity:ECE",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LRA",
+      "label": "Trust Fund for the Financing of the Implementation of the Convention on Long-Range Transboundary Air Pollution",
+      "amount": 2845473,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2845473
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECE:fund:EIA",
+      "parentId": "trust-fund-entity:ECE",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "EIA",
+      "label": "Trust Fund for Environmental Performance Reviews and the \"Environment for Europe\"",
+      "amount": 37751,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 37751
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECE:fund:EHA",
+      "parentId": "trust-fund-entity:ECE",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "EHA",
+      "label": "UN/ECE Trust Fund on Human Settlements",
+      "amount": 2951,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2951
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECE:fund:EAA",
+      "parentId": "trust-fund-entity:ECE",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "EAA",
+      "label": "United Nations Electronic Data Interchange for Administration, Commerce and Transport",
+      "amount": 684,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 684
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECE:fund:LTA",
+      "parentId": "trust-fund-entity:ECE",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LTA",
+      "label": "Trust Fund for the ECE Study on Long-Term European Timber Trends and Prospects",
+      "amount": -532,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": -532
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECLAC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ECLAC",
+      "label": "Economic Commission for Latin America and the Caribbean",
+      "amount": 8130642,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 8130642
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Economic Commission for Latin America and the Caribbean",
+        "acronym": "ECLAC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECLAC:fund:BTS",
+      "parentId": "trust-fund-entity:ECLAC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "BTS",
+      "label": "ECLAC Santiago - Technical Cooperation Project Trust Funds",
+      "amount": 8066310,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 8066310
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECLAC:fund:LAC",
+      "parentId": "trust-fund-entity:ECLAC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LAC",
+      "label": "ECLAC - Miscellaneous project accounts",
+      "amount": 64332,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 64332
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "EOSG",
+      "label": "Executive Office of the Secretary-General",
+      "amount": 17190985,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 17190985
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Executive Office of the Secretary-General",
+        "acronym": "EOSG",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG:fund:LJA",
+      "parentId": "trust-fund-entity:EOSG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LJA",
+      "label": "Trust Fund for Special Projects of the Secretary-General",
+      "amount": 8919234,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 8919234
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG:fund:GIV",
+      "parentId": "trust-fund-entity:EOSG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GIV",
+      "label": "Trust Fund to Support Global Impact and Vulnerability Alert System",
+      "amount": 3867629,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 3867629
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG:fund:CCS",
+      "parentId": "trust-fund-entity:EOSG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CCS",
+      "label": "Trust Fund for Climate Change Support",
+      "amount": 2866065,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2866065
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG:fund:CCR",
+      "parentId": "trust-fund-entity:EOSG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CCR",
+      "label": "Trust Fund to Support the Coordination and Coherence of the Rule of Law Activities of the United Nations System",
+      "amount": 777042,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 777042
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG:fund:COC",
+      "parentId": "trust-fund-entity:EOSG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "COC",
+      "label": "Trust Fund to Support Management and Reform Activities",
+      "amount": 761015,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 761015
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ESCAP",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ESCAP",
+      "label": "Economic and Social Commission for Asia and the Pacific",
+      "amount": 15852555,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 15852555
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Economic and Social Commission for Asia and the Pacific",
+        "acronym": "ESCAP",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ESCAP:fund:BKT",
+      "parentId": "trust-fund-entity:ESCAP",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "BKT",
+      "label": "ESCAP - Technical Cooperation Project Trust Funds - Local",
+      "amount": 13022406,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 13022406
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ESCAP:fund:BTF",
+      "parentId": "trust-fund-entity:ESCAP",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "BTF",
+      "label": "General Trust Fund for ESCAP Regional Activities",
+      "amount": 2830149,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2830149
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ESCWA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ESCWA",
+      "label": "Economic and Social Commission for Western Asia",
+      "amount": 4752133,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 4752133
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Economic and Social Commission for Western Asia",
+        "acronym": "ESCWA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ESCWA:fund:WVZ",
+      "parentId": "trust-fund-entity:ESCWA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "WVZ",
+      "label": "ESCWA - Technical Cooperation Trust Fund",
+      "amount": 4752133,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 4752133
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:HSU",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "HSU",
+      "label": "HSU",
+      "amount": 9110814,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 9110814
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "HSU",
+        "acronym": "HSU",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:HSU:fund:HYA",
+      "parentId": "trust-fund-entity:HSU",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HYA",
+      "label": "Trust Fund for Human Security",
+      "amount": 9110814,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 9110814
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ICJ",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ICJ",
+      "label": "International Court of Justice",
+      "amount": 237,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 237
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "International Court of Justice",
+        "acronym": "ICJ",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ICJ:fund:TJA",
+      "parentId": "trust-fund-entity:ICJ",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "TJA",
+      "label": "Trust Fund to Assist States in the Judicial Settlement of Disputes through the International Court of Justice",
+      "amount": 237,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 237
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:IIIM",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "IIIM",
+      "label": "International, Impartial and Independent Mechanism to Assist in the Investigation and Prosecution of Persons Responsible for the Most Serious Crimes under International Law Committed in the Syrian Arab Republic since March 2011",
+      "amount": 1203486,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1203486
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "International, Impartial and Independent Mechanism to Assist in the Investigation and Prosecution of Persons Responsible for the Most Serious Crimes under International Law Committed in the Syrian Arab Republic since March 2011",
+        "acronym": "IIIM",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:IIIM:fund:SIM",
+      "parentId": "trust-fund-entity:IIIM",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SIM",
+      "label": "Trust Fund in Support of the International Impartial and Independent Mechanism",
+      "amount": 1203486,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1203486
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:JPO",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "JPO",
+      "label": "JPO",
+      "amount": 42738142,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 42738142
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "JPO",
+        "acronym": "JPO",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:JPO:fund:JPO",
+      "parentId": "trust-fund-entity:JPO",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "JPO",
+      "label": "Trust Fund for Junior Professional Officer Programme Administered by Department of Economic and Social Affairs",
+      "amount": 42738142,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 42738142
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MICT",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MICT",
+      "label": "MICT",
+      "amount": 1452796,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1452796
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "MICT",
+        "acronym": "MICT",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MICT:fund:RMB",
+      "parentId": "trust-fund-entity:MICT",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "RMB",
+      "label": "Trust Fund to Support the Activities of the International Residual Mechanism for Criminal Tribunals",
+      "amount": 1452796,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1452796
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MICT:fund:IOA",
+      "parentId": "trust-fund-entity:MICT",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "IOA",
+      "label": "Voluntary Trust Fund to Support the Activities of the International Tribunal Established by Security Council Resolution UOT (NVVP)",
+      "amount": 0,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSCA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MINUSCA",
+      "label": "United Nations Multidimensional Integrated Stabilization Mission in the Central African Republic",
+      "amount": 593372,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 593372
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Multidimensional Integrated Stabilization Mission in the Central African Republic",
+        "acronym": "MINUSCA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSCA:fund:CAF",
+      "parentId": "trust-fund-entity:MINUSCA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CAF",
+      "label": "Trust Fund in Support of Peacebuilding Efforts in the Central African Republic",
+      "amount": 593360,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 593360
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSCA:fund:MIS",
+      "parentId": "trust-fund-entity:MINUSCA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "MIS",
+      "label": "Trust Fund in Support of the African-led International Support Mission in the Central African Republic (MISCA)",
+      "amount": 12,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 12
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSMA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MINUSMA",
+      "label": "United Nations Multidimensional Integrated Stabilization Mission in Mali",
+      "amount": 11832301,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 11832301
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Multidimensional Integrated Stabilization Mission in Mali",
+        "acronym": "MINUSMA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSMA:fund:PSM",
+      "parentId": "trust-fund-entity:MINUSMA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PSM",
+      "label": "Trust Fund in Support of Peace and Security in Mali",
+      "amount": 11832254,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 11832254
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSMA:fund:MSM",
+      "parentId": "trust-fund-entity:MINUSMA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "MSM",
+      "label": "Trust Fund in Support of the African-led International Support Mission in Mali",
+      "amount": 47,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 47
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MONUSCO",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MONUSCO",
+      "label": "United Nations Organization Stabilization Mission in the Democratic Republic of the Congo",
+      "amount": -4104,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": -4104
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Organization Stabilization Mission in the Democratic Republic of the Congo",
+        "acronym": "MONUSCO",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MONUSCO:fund:NGA",
+      "parentId": "trust-fund-entity:MONUSCO",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "NGA",
+      "label": "Trust Fund to Support Peace Process in the Democratic Republic of Congo",
+      "amount": -4104,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": -4104
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCHA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OCHA",
+      "label": "Office for the Coordination of Humanitarian Affairs",
+      "amount": 1933863750,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1933863750
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office for the Coordination of Humanitarian Affairs",
+        "acronym": "OCHA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCHA:fund:DDN",
+      "parentId": "trust-fund-entity:OCHA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DDN",
+      "label": "Trust Fund for the Strengthening of the Office of the Emergency Relief Coordinator",
+      "amount": 1104119496,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1104119496
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCHA:fund:CER",
+      "parentId": "trust-fund-entity:OCHA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CER",
+      "label": "Central Emergency Response Fund",
+      "amount": 829744254,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 829744254
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCHA:fund:CLR",
+      "parentId": "trust-fund-entity:OCHA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CLR",
+      "label": "Trust Fund Central Emergency Response Fund Loan component",
+      "amount": 0,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCT",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OCT",
+      "label": "Office of Counter-Terrorism",
+      "amount": 34094562,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 34094562
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of Counter-Terrorism",
+        "acronym": "UNOCT",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCT:fund:CTI",
+      "parentId": "trust-fund-entity:OCT",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CTI",
+      "label": "Trust Fund for Counter-Terrorism",
+      "amount": 34094562,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 34094562
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ODA",
+      "label": "Office for Disarmament Affairs",
+      "amount": 6426004,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 6426004
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office for Disarmament Affairs",
+        "acronym": "ODA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DGA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DGA",
+      "label": "Trust Fund for Global and Regional Disarmament Activities",
+      "amount": 4393899,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 4393899
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DBA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DBA",
+      "label": "Trust Fund for the United Nations Regional Centre for Peace, Disarmament and Development in Latin America",
+      "amount": 1211787,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1211787
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DGT",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DGT",
+      "label": "Sub-account for supporting the implementation of the Arms Trade Treaty and Programme of Action",
+      "amount": 484013,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 484013
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DFA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DFA",
+      "label": "Trust Fund for the United Nations Regional Centre for Peace and Disarmament in Asia",
+      "amount": 232846,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 232846
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DAA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DAA",
+      "label": "United Nations Regional Centre for Peace and Disarmament in Africa",
+      "amount": 36581,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 36581
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DWA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DWA",
+      "label": "Trust Fund for the United Nations Disarmament Information Programme",
+      "amount": 36139,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 36139
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:PIA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PIA",
+      "label": "Trust Fund for Public Awareness on Disarmament Affairs",
+      "amount": 30680,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 30680
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DJA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DJA",
+      "label": "Trust Fund for the establishment of a Joint Investigative Mechanism (gfj) pursuant to rkp`o OOPR (OMNR)",
+      "amount": 59,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 59
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODET",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ODET",
+      "label": "Office for Digital and Emerging Technologies",
+      "amount": 1231327,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1231327
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office for Digital and Emerging Technologies",
+        "acronym": "ODET",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODET:fund:DUN",
+      "parentId": "trust-fund-entity:ODET",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DUN",
+      "label": "Trust Fund for Digital Agenda",
+      "amount": 1231327,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1231327
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OHCHR",
+      "label": "Office of the United Nations High Commissioner for Human Rights",
+      "amount": 187528000,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 187528000
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the United Nations High Commissioner for Human Rights",
+        "acronym": "OHCHR",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:HCA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HCA",
+      "label": "Trust Fund for the Support to the Activities of the Centre for Human Rights",
+      "amount": 158819607,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 158819607
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:AHA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "AHA",
+      "label": "Voluntary Fund for Advisory Services and Technical Assistance in the Field of Human Rights",
+      "amount": 16270500,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 16270500
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:CHA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CHA",
+      "label": "United Nations Voluntary Fund for Victims of Torture",
+      "amount": 9271019,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 9271019
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:CIA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CIA",
+      "label": "Trust Fund for a Human Rights Education Programme in Cambodia",
+      "amount": 1297465,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1297465
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:SHA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SHA",
+      "label": "United Nations Trust Fund on Contemporary Forms of Slavery",
+      "amount": 859364,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 859364
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:UPR",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "UPR",
+      "label": "Voluntary Fund for Financial and Technical Assistance for the Implementation of the Universal Periodic Review",
+      "amount": 468973,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 468973
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:VTA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "VTA",
+      "label": "Voluntary Technical Assistance Trust Fund to Support the Paticipation of Least Developed Countries & Small Island Developing States in the work of the Human Rights Council",
+      "amount": 231087,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 231087
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:VPU",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "VPU",
+      "label": "Voluntary Fund for Participation in the Universal Periodic Review",
+      "amount": 185359,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 185359
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:IHA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "IHA",
+      "label": "United Nations Voluntary Fund for Indigenous Populations",
+      "amount": 124626,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 124626
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OIOS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OIOS",
+      "label": "Office of Internal Oversight Services",
+      "amount": 40113,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 40113
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of Internal Oversight Services",
+        "acronym": "OIOS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OIOS:fund:QOA",
+      "parentId": "trust-fund-entity:OIOS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "QOA",
+      "label": "United Nations Trust Fund for Enhancing Professional Capacity in Internal Oversight Functions",
+      "amount": 40113,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 40113
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OJSRS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OJSRS",
+      "label": "OJSRS",
+      "amount": 438798,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 438798
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OJSRS",
+        "acronym": "OJSRS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OJSRS:fund:SCC",
+      "parentId": "trust-fund-entity:OJSRS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SCC",
+      "label": "Trust Fund to support the Syrian Constitutional Committee",
+      "amount": 438798,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 438798
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OLA",
+      "label": "Office of Legal Affairs",
+      "amount": 1782508,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1782508
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of Legal Affairs",
+        "acronym": "OLA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:PIL",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PIL",
+      "label": "Trust Fund for the Office of Legal Affairs to Support the Promotion of International Law",
+      "amount": 980111,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 980111
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:TTA",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "TTA",
+      "label": "United Nations Commission on International Trade Law Symposia",
+      "amount": 628206,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 628206
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:KJA",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "KJA",
+      "label": "Trust Fund to Assist Members of the Commission on the Limits of the Continental Shelf from Developing States to Participate in its Meetings",
+      "amount": 101172,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 101172
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:CLA",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CLA",
+      "label": "Trust Fund for Legal Affairs and related issues",
+      "amount": 88333,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 88333
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:TLA",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "TLA",
+      "label": "Trust Fund for the United Nations Programme of Assistance in the Teaching, Study, Dissemination and Wider Appreciation of International Law",
+      "amount": 4168,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 4168
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:KUA",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "KUA",
+      "label": "Trust Fund to Assist Developing States in the Preparation of Submissions to the Commission on the Limits of the Continental Shelf",
+      "amount": -19482,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": -19482
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OOSA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OOSA",
+      "label": "Office for Outer Space Affairs",
+      "amount": 1101367,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1101367
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office for Outer Space Affairs",
+        "acronym": "OOSA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OOSA:fund:SBA",
+      "parentId": "trust-fund-entity:OOSA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SBA",
+      "label": "Trust Fund in Support of United Nations Programme on Peaceful Uses of Outer Space",
+      "amount": 1101367,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1101367
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OPGA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OPGA",
+      "label": "OPGA",
+      "amount": 1354547,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1354547
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OPGA",
+        "acronym": "OPGA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OPGA:fund:GAC",
+      "parentId": "trust-fund-entity:OPGA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GAC",
+      "label": "Trust Fund in Support of the Office of the President of the General Assembly",
+      "amount": 1354547,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1354547
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSAA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSAA",
+      "label": "Office of the Special Adviser on Africa",
+      "amount": 12,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 12
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the Special Adviser on Africa",
+        "acronym": "OSAA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSAA:fund:NAA",
+      "parentId": "trust-fund-entity:OSAA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "NAA",
+      "label": "Trust Fund for the Support of Activities of OSAA to the New Partnership for Africa's Development (NEPAD) and Tokyo International Conference on African Development (TICAD) Process",
+      "amount": 12,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 12
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSESG-GL",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSESG-GL",
+      "label": "OSESG-GL",
+      "amount": -25518,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": -25518
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSESG-GL",
+        "acronym": "OSESG-GL",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSESG-GL:fund:GLA",
+      "parentId": "trust-fund-entity:OSESG-GL",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GLA",
+      "label": "Trust Fund in support of the Office of the Special Envoy of the Secretary-General for the Great Lakes Region",
+      "amount": -25518,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": -25518
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSESG-Myanmar",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSESG-Myanmar",
+      "label": "OSESG-Myanmar",
+      "amount": 0,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSESG-Myanmar",
+        "acronym": "OSESG-Myanmar",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSESG-Myanmar:fund:MYM",
+      "parentId": "trust-fund-entity:OSESG-Myanmar",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "MYM",
+      "label": "Trust Fund in support of executing the mandate of the Special Envoy of Secretary-General on Myanmar (SESG-Myanmar)",
+      "amount": 0,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-CAAC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSRSG-CAAC",
+      "label": "Office of the Special Representative of the Secretary-General for Children and Armed Conflict",
+      "amount": 899445,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 899445
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the Special Representative of the Secretary-General for Children and Armed Conflict",
+        "acronym": "SRSG-CAAC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-CAAC:fund:NNA",
+      "parentId": "trust-fund-entity:OSRSG-CAAC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "NNA",
+      "label": "Trust Fund for Children and Armed Conflict",
+      "amount": 899445,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 899445
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-SVC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSRSG-SVC",
+      "label": "Office of the Special Representative of the Secretary-General on Sexual Violence in Conflict",
+      "amount": 2136722,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 2136722
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the Special Representative of the Secretary-General on Sexual Violence in Conflict",
+        "acronym": "SRSG-SVC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-SVC:fund:SVC",
+      "parentId": "trust-fund-entity:OSRSG-SVC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SVC",
+      "label": "Trust Fund in Support of the Office of the Special Representative of the Secretary-General on Sexual Violence in Conflict",
+      "amount": 2136722,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2136722
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-VAC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSRSG-VAC",
+      "label": "Office of the Special Representative of the Secretary-General on Violence against Children",
+      "amount": 77323,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 77323
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the Special Representative of the Secretary-General on Violence against Children",
+        "acronym": "SRSG-VAC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-VAC:fund:SVD",
+      "parentId": "trust-fund-entity:OSRSG-VAC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SVD",
+      "label": "Trust Fund in Support of the Special Representative of the Secretary-General on Violence against Children",
+      "amount": 77323,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 77323
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OTHER",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OTHER",
+      "label": "OTHER",
+      "amount": 37042,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 37042
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OTHER",
+        "acronym": "OTHER",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OTHER:fund:YRA",
+      "parentId": "trust-fund-entity:OTHER",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "YRA",
+      "label": "Trust Fund for Will and Gift to the UN",
+      "amount": 33772,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 33772
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OTHER:fund:JTA",
+      "parentId": "trust-fund-entity:OTHER",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "JTA",
+      "label": "Trust Fund for the Millennium Assembly and the Millennium Summit of the United Nations",
+      "amount": 3229,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 3229
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OTHER:fund:CLO",
+      "parentId": "trust-fund-entity:OTHER",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CLO",
+      "label": "Trust Funds converted from IMIS to be closed",
+      "amount": 30,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 30
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OTHER:fund:UIC",
+      "parentId": "trust-fund-entity:OTHER",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "UIC",
+      "label": "Trust Fund for the United Nations Operation in Cote d'Ivoire",
+      "amount": 11,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 11
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UN-OHRLLS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UN-OHRLLS",
+      "label": "Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States",
+      "amount": 271908,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 271908
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States",
+        "acronym": "UN-OHRLLS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UN-OHRLLS:fund:LLS",
+      "parentId": "trust-fund-entity:UN-OHRLLS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LLS",
+      "label": "Trust Fund in Support of Activities Undertaken by the Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (OHRLLS)",
+      "amount": 271908,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 271908
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAKRT",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNAKRT",
+      "label": "UNAKRT",
+      "amount": 10795180,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 10795180
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNAKRT",
+        "acronym": "UNAKRT",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAKRT:fund:KRT",
+      "parentId": "trust-fund-entity:UNAKRT",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "KRT",
+      "label": "UNAKRT - UN Assistance for the Khmer Rouge Trails",
+      "amount": 10795180,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 10795180
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAMI",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNAMI",
+      "label": "United Nations Assistance Mission for Iraq",
+      "amount": 3823638,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 3823638
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Assistance Mission for Iraq",
+        "acronym": "UNAMI",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAMI:fund:CIB",
+      "parentId": "trust-fund-entity:UNAMI",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CIB",
+      "label": "Trust Fund in support of the construction and renovation of the United Nations compound in Baghdad",
+      "amount": 3823638,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 3823638
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAMID",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNAMID",
+      "label": "UNAMID",
+      "amount": 426380,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 426380
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNAMID",
+        "acronym": "UNAMID",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAMID:fund:JMS",
+      "parentId": "trust-fund-entity:UNAMID",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "JMS",
+      "label": "Trust Fund for the AU-UN Joint Mediation Support Team (JMST) for Darfur",
+      "amount": 377234,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 377234
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAMID:fund:LPD",
+      "parentId": "trust-fund-entity:UNAMID",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LPD",
+      "label": "Trust Fund to Support Lasting Peace in Darfur",
+      "amount": 49146,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 49146
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAOC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNAOC",
+      "label": "United Nations Alliance of Civilizations",
+      "amount": 3677781,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 3677781
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Alliance of Civilizations",
+        "acronym": "UNAOC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAOC:fund:YJA",
+      "parentId": "trust-fund-entity:UNAOC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "YJA",
+      "label": "Trust Fund for Alliance of Civilizations",
+      "amount": 3677781,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 3677781
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNCTAD",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNCTAD",
+      "label": "United Nations Conference on Trade and Development",
+      "amount": 31345350,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 31345350
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Conference on Trade and Development",
+        "acronym": "UNCTAD",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNCTAD:fund:TXB",
+      "parentId": "trust-fund-entity:UNCTAD",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "TXB",
+      "label": "Trust Fund for UNCTAD Technical Cooperation Projects",
+      "amount": 31220010,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 31220010
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNCTAD:fund:OUN",
+      "parentId": "trust-fund-entity:UNCTAD",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "OUN",
+      "label": "Technical Cooperation Trust Fund for One UN projects implemented by UNCTAD",
+      "amount": 125340,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 125340
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNDRR",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNDRR",
+      "label": "United Nations Office for Disaster Risk Reduction",
+      "amount": 28422263,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 28422263
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Office for Disaster Risk Reduction",
+        "acronym": "UNDRR",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNDRR:fund:DXA",
+      "parentId": "trust-fund-entity:UNDRR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DXA",
+      "label": "Trust Fund for Disaster Reduction",
+      "amount": 28422155,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 28422155
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNDRR:fund:DLA",
+      "parentId": "trust-fund-entity:UNDRR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DLA",
+      "label": "Sasakawa - UNDRO Disaster Prevention Award Endowment Fund",
+      "amount": 108,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 108
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNFICYP",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNFICYP",
+      "label": "United Nations Peacekeeping Force in Cyprus",
+      "amount": 1340,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1340
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Peacekeeping Force in Cyprus",
+        "acronym": "UNFICYP",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNFICYP:fund:CYP",
+      "parentId": "trust-fund-entity:UNFICYP",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CYP",
+      "label": "Trust Fund to Support Peace and Security in Cyprus",
+      "amount": 1340,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1340
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNGC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNGC",
+      "label": "United Nations Global Compact",
+      "amount": 5959318,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 5959318
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Global Compact",
+        "acronym": "UNGC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNGC:fund:GKA",
+      "parentId": "trust-fund-entity:UNGC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GKA",
+      "label": "Global Compact Trust Fund",
+      "amount": 5959318,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 5959318
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNIDIR",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNIDIR",
+      "label": "United Nations Institute for Disarmament Research",
+      "amount": 6089205,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 6089205
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Institute for Disarmament Research",
+        "acronym": "UNIDIR",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNIDIR:fund:DRA",
+      "parentId": "trust-fund-entity:UNIDIR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DRA",
+      "label": "United Nations Institute for Disarmament Research",
+      "amount": 6089205,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 6089205
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNIOGBIS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNIOGBIS",
+      "label": "UNIOGBIS",
+      "amount": 33308,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 33308
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNIOGBIS",
+        "acronym": "UNIOGBIS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNIOGBIS:fund:GYA",
+      "parentId": "trust-fund-entity:UNIOGBIS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GYA",
+      "label": "Trust Fund for United Nations Integrated Peace Building Office in Guinea Bissau (UNIOGBIS)",
+      "amount": 33308,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 33308
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNITAD",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNITAD",
+      "label": "UNITAD",
+      "amount": 4785766,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 4785766
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNITAD",
+        "acronym": "UNITAD",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNITAD:fund:IIT",
+      "parentId": "trust-fund-entity:UNITAD",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "IIT",
+      "label": "Trust Fund to Support the Iraq Investigative Team pursuant to rkp`o OPTV (OMNT)",
+      "amount": 4785766,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 4785766
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNMAS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNMAS",
+      "label": "UNMAS",
+      "amount": 61967204,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 61967204
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNMAS",
+        "acronym": "UNMAS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNMAS:fund:MNA",
+      "parentId": "trust-fund-entity:UNMAS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "MNA",
+      "label": "Voluntary Trust Fund for Assistance in Mine Action",
+      "amount": 61967204,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 61967204
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNMIK",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNMIK",
+      "label": "United Nations Interim Administration Mission in Kosovo",
+      "amount": 0,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Interim Administration Mission in Kosovo",
+        "acronym": "UNMIK",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNMIK:fund:KDB",
+      "parentId": "trust-fund-entity:UNMIK",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "KDB",
+      "label": "Trust Fund to Support the Implementation of Community-based Assistance Projects of the Roma, Ashkali and Egyptian Communities in Kosovo",
+      "amount": 0,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNMISS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNMISS",
+      "label": "United Nations Mission in South Sudan",
+      "amount": 148728,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 148728
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Mission in South Sudan",
+        "acronym": "UNMISS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNMISS:fund:RSS",
+      "parentId": "trust-fund-entity:UNMISS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "RSS",
+      "label": "Trust Fund for the United Nations Mission in South Sudan",
+      "amount": 148728,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 148728
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOAU",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNOAU",
+      "label": "United Nations Office to the African Union",
+      "amount": 22822,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 22822
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Office to the African Union",
+        "acronym": "UNOAU",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOAU:fund:OAU",
+      "parentId": "trust-fund-entity:UNOAU",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "OAU",
+      "label": "Trust Fund to support the rkl^r pursuant to Security Councils OOPM (OMNS) OPTU (OMNT) and OQRT (OMNV)",
+      "amount": 22822,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 22822
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOG",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNOG",
+      "label": "United Nations Office at Geneva",
+      "amount": 6022477,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 6022477
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Office at Geneva",
+        "acronym": "UNOG",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOG:fund:LSS",
+      "parentId": "trust-fund-entity:UNOG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LSS",
+      "label": "Trust Fund for UNOG Local Support Services",
+      "amount": 5953090,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 5953090
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOG:fund:LEA",
+      "parentId": "trust-fund-entity:UNOG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LEA",
+      "label": "Library Endowment Fund",
+      "amount": 51973,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 51973
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOG:fund:SDP",
+      "parentId": "trust-fund-entity:UNOG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SDP",
+      "label": "Trust Fund for Sports for Development and Peace",
+      "amount": 17414,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 17414
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNON",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNON",
+      "label": "United Nations Office at Nairobi",
+      "amount": 534124,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 534124
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Office at Nairobi",
+        "acronym": "UNON",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNON:fund:UNN",
+      "parentId": "trust-fund-entity:UNON",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "UNN",
+      "label": "Trust Fund for UNON Extrabudgetary",
+      "amount": 534124,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 534124
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOP",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNOP",
+      "label": "United Nations Office for Partnerships",
+      "amount": 19065061,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 19065061
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Office for Partnerships",
+        "acronym": "UNOP",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOP:fund:QGA",
+      "parentId": "trust-fund-entity:UNOP",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "QGA",
+      "label": "United Nations Fund for International Partnership (UNFIP)",
+      "amount": 10374793,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 10374793
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOP:fund:UDF",
+      "parentId": "trust-fund-entity:UNOP",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "UDF",
+      "label": "UN Democracy Trust Fund",
+      "amount": 8036737,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 8036737
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOP:fund:QGB",
+      "parentId": "trust-fund-entity:UNOP",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "QGB",
+      "label": "Trust Fund for Partnerships",
+      "amount": 653531,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 653531
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNRISD",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNRISD",
+      "label": "United Nations Research Institute for Social Development",
+      "amount": 2660372,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 2660372
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Research Institute for Social Development",
+        "acronym": "UNRISD",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNRISD:fund:RIA",
+      "parentId": "trust-fund-entity:UNRISD",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "RIA",
+      "label": "United Nations Research Institute for Social Development",
+      "amount": 2660372,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2660372
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNRoD",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNRoD",
+      "label": "United Nations Register of Damage Caused by the Construction of the Wall in the Occupied Palestinian Territory",
+      "amount": 119245,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 119245
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Register of Damage Caused by the Construction of the Wall in the Occupied Palestinian Territory",
+        "acronym": "UNRoD",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNRoD:fund:ROD",
+      "parentId": "trust-fund-entity:UNRoD",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ROD",
+      "label": "Trust Fund in Support of the United Nations Register of Damage",
+      "amount": 119245,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 119245
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNSMIL",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNSMIL",
+      "label": "United Nations Support Mission in Libya",
+      "amount": 0,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Support Mission in Libya",
+        "acronym": "UNSMIL",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNSMIL:fund:PSL",
+      "parentId": "trust-fund-entity:UNSMIL",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PSL",
+      "label": "Trust Fund in Support of Peace and Security in Libya",
+      "amount": 0,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNSOM",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNSOM",
+      "label": "United Nations Assistance Mission in Somalia",
+      "amount": 39605,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 39605
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Assistance Mission in Somalia",
+        "acronym": "UNSOM",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNSOM:fund:SOP",
+      "parentId": "trust-fund-entity:UNSOM",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SOP",
+      "label": "Trust Fund for Peacebuilding in Somalia",
+      "amount": 39605,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 39605
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNSOS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNSOS",
+      "label": "United Nations Support Office in Somalia",
+      "amount": 0,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Support Office in Somalia",
+        "acronym": "UNSOS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNSOS:fund:STS",
+      "parentId": "trust-fund-entity:UNSOS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "STS",
+      "label": "Trust Fund in Support of the Somali Transitional Security Institutions",
+      "amount": 0,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:VRA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "VRA",
+      "label": "Office of the Victims' Rights Advocate",
+      "amount": 152749,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 152749
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the Victims' Rights Advocate",
+        "acronym": "OVRA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    },
+    {
+      "id": "trust-fund-entity:VRA:fund:SVB",
+      "parentId": "trust-fund-entity:VRA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SVB",
+      "label": "Trust Fund in Support of Victims of Sexual Exploitaion and Abuse",
+      "amount": 152749,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 152749
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
+        "url": "https://docs.un.org/en/(DMSPC%2FOPPFB)%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2020"
+      }
+    }
+  ]
+}

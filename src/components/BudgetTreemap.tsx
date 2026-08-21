@@ -178,7 +178,8 @@ interface BudgetTreemapProps {
     | "budget-ppb"
     | "budget-pko"
     | "budget-audited-ppb"
-    | "budget-audited-pko";
+    | "budget-audited-pko"
+    | "budget-trust-funds";
   /** Hash prefix for deep links, e.g. "secretariat" or "pko". */
   hashPrefix: string;
   /** Section to scroll to when a deep link opens. */
@@ -198,14 +199,16 @@ export function BudgetTreemap({
 }: BudgetTreemapProps) {
   const yearRanges = useYearRanges();
   const isAudited = dataset.startsWith("budget-audited-");
+  const isTrustFund = dataset === "budget-trust-funds";
   const isPko = dataset.endsWith("-pko");
   const yearLabel = isPko
     ? isAudited
       ? auditedFiscalYearLabel
       : fiscalYearLabel
     : undefined;
-  const range =
-    dataset === "budget-audited-ppb"
+  const range = isTrustFund
+    ? yearRanges.budgetTrustFunds
+    : dataset === "budget-audited-ppb"
       ? yearRanges.budgetAuditedPpb
       : dataset === "budget-audited-pko"
         ? yearRanges.budgetAuditedPko
@@ -456,7 +459,20 @@ export function BudgetTreemap({
           // A section the release does not divide into units is its own tile.
           const rows = units.length > 0 ? units : [section];
           const tiles = rows
-            .filter((n) => n.amount > 0 && keep(n, unitSearchText(n, section)))
+            .filter(
+              (n) =>
+                n.amount > 0 &&
+                keep(
+                  n,
+                  `${unitSearchText(n, section)} ${
+                    isTrustFund
+                      ? (childrenOf[n.id] ?? [])
+                          .map((child) => `${child.code ?? ""} ${child.label}`)
+                          .join(" ")
+                      : ""
+                  }`,
+                ),
+            )
             .map((n) =>
               tileOf(
                 n,
@@ -583,6 +599,7 @@ export function BudgetTreemap({
   }, [
     filteredData,
     isPko,
+    isTrustFund,
     lens,
     searchQuery,
     childrenOf,
@@ -654,7 +671,9 @@ export function BudgetTreemap({
         placeholder={
           isPko
             ? "Search missions and cost items..."
-            : "Search sections and entities..."
+            : isTrustFund
+              ? "Search entities and trust funds..."
+              : "Search sections and entities..."
         }
       />
       <div className="flex flex-wrap items-center gap-4">
@@ -757,7 +776,9 @@ export function BudgetTreemap({
                 ? hasCostClassDetail && lens === "costClass"
                   ? "Cost classes"
                   : "Missions"
-                : "Budget parts"}
+                : isTrustFund
+                  ? "Trust-fund expenses"
+                  : "Budget parts"}
             </div>
             <button
               onClick={() => setIsExpanded(!isExpanded)}

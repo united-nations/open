@@ -3,6 +3,7 @@ import { DataPlaceholder } from "@/components/DataPlaceholder";
 import { RegularBudgetContributorsTreemap } from "@/components/RegularBudgetContributorsTreemap";
 import { SectionBanner } from "@/components/SectionBanner";
 import { SecretariatDataTreemap } from "@/components/SecretariatDataTreemap";
+import { TrustFundContributorsTreemap } from "@/components/TrustFundContributorsTreemap";
 
 export const metadata: Metadata = {
   title: "UN Secretariat Financials",
@@ -57,10 +58,31 @@ export default function SecretariatPage() {
         id="contributors"
         imageSrc="/images/banners/hero-banner-homepage.png"
         title="Who contributes to the UN Secretariat?"
-        description="Member States finance the United Nations regular budget through assessed contributions. Explore each Member State's assessment and whether it was paid in full by the due date, paid later, or was not listed as paid in full."
+        description="Explore assessed regular-budget contributions and recognized voluntary contributions to individual Secretariat trust funds."
       />
       <section className="mx-auto max-w-6xl px-6 py-12 md:px-12 lg:px-16">
+        <div className="mb-5">
+          <h2 className="text-2xl font-bold text-gray-900">
+            Regular-budget assessments
+          </h2>
+          <p className="mt-1 max-w-4xl text-sm leading-relaxed text-gray-600">
+            Each Member State&apos;s assessment and whether it was paid in full
+            by the due date, paid later, or was not listed as paid in full.
+          </p>
+        </div>
         <RegularBudgetContributorsTreemap />
+
+        <div className="mt-16 mb-5 border-t border-gray-200 pt-12">
+          <h2 className="text-2xl font-bold text-gray-900">
+            Extrabudgetary trust-fund contributions
+          </h2>
+          <p className="mt-1 max-w-4xl text-sm leading-relaxed text-gray-600">
+            Recognized voluntary contributions by contributor, destination trust
+            fund, and the Secretariat entity assigned through the reconstructed
+            fund crosswalk.
+          </p>
+        </div>
+        <TrustFundContributorsTreemap />
       </section>
     </>
   );

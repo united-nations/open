@@ -101,6 +101,51 @@ export interface RegularBudgetContributorsData {
   contributors: RegularBudgetContributor[];
 }
 
+export interface TrustFundDestination {
+  fund_code: string;
+  fund_name: string;
+  entity_code: string | null;
+  entity_name: string | null;
+  entity_id: string | null;
+  amount_usd: number;
+}
+
+export interface TrustFundContributor {
+  name: string;
+  counterparty_group: "Government" | "Others" | "Mixed";
+  amount_usd: number;
+  positive_amount_usd: number;
+  negative_amount_usd: number;
+  reported_names: string[];
+  destinations: TrustFundDestination[];
+}
+
+export interface TrustFundContributorsData {
+  meta: {
+    year: number;
+    currency: "USD";
+    measure: "Recognized voluntary contributions";
+    statement_total_usd: number;
+    named_rows_total_usd: number;
+    contributor_total_usd: number;
+    adjustment_total_usd: number;
+    unallocated_residual_usd: number;
+    named_row_completeness: number;
+    unresolved_entity_amount_usd: number;
+    source: { symbol: string; url: string };
+    method_note: string;
+    mapping_note: string;
+  };
+  contributors: TrustFundContributor[];
+  adjustments: { label: string; amount_usd: number }[];
+  reconciliation: {
+    fund_code: string;
+    statement_amount_usd: number;
+    named_rows_amount_usd: number;
+    residual_usd: number;
+  }[];
+}
+
 export interface EntityRevenue {
   total: number;
   year: number;
@@ -264,9 +309,9 @@ export interface BudgetOmission {
 }
 
 export interface BudgetMeta {
-  stream: "ppb" | "pko";
+  stream: "ppb" | "pko" | "trust_funds";
   /** Whether the tree comes from audited actuals or budget documents. */
-  sourceKind?: "audited" | "budget_document";
+  sourceKind?: "audited" | "budget_document" | "trust_fund_schedule";
   title: string;
   label: string;
   measure: string;

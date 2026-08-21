@@ -1,0 +1,4048 @@
+{
+  "meta": {
+    "stream": "trust_funds",
+    "sourceKind": "trust_fund_schedule",
+    "title": "Schedule of Individual Trust Funds",
+    "label": "Individual trust-fund expenses 2017 (USD)",
+    "measure": "IPSAS expenses",
+    "year": 2017,
+    "fiscalYear": "2017",
+    "currency": "USD",
+    "total": 1830373359,
+    "scopeLabel": "Current-period expenses of trust funds with an approved entity crosswalk",
+    "scopeWarning": "This is gross fund-level accounting and is not additive to PPB or consolidated Secretariat expenditure. Entity assignments reconstruct the old open-data mapping.",
+    "fundingSources": [
+      "extrabudgetary"
+    ],
+    "fundingLabels": {
+      "extrabudgetary": "Individual trust funds"
+    },
+    "documentSymbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+    "documentUrl": "https://digitallibrary.un.org/record/1644706",
+    "verification": {
+      "schedule_total_usd": "1830924497",
+      "mapped_total_usd": "1830373359",
+      "mapped_funds": "126",
+      "unresolved_funds": "5",
+      "unresolved_fund_codes": "ANC, DVA, EER, GNA, SWE"
+    },
+    "source": {
+      "repo": "transparency",
+      "release": "trust-fund schedule extraction",
+      "url": "https://github.com/united-nations/transparency"
+    }
+  },
+  "nodes": [
+    {
+      "id": "trust-funds",
+      "parentId": null,
+      "tier": "whole",
+      "kind": "whole",
+      "code": null,
+      "label": "Mapped individual trust funds",
+      "amount": 1830373359,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1830373359
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-funds~xb",
+      "parentId": "trust-funds",
+      "tier": "part",
+      "kind": "part",
+      "code": "XB",
+      "label": "Individual trust funds",
+      "amount": 1830373359,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1830373359
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-funds~entities",
+      "parentId": "trust-funds~xb",
+      "tier": "section",
+      "kind": "section",
+      "code": "TF",
+      "label": "Mapped Secretariat entities",
+      "amount": 1830373359,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1830373359
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:AMISOM",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "AMISOM",
+      "label": "AMISOM",
+      "amount": 24868485,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 24868485
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "AMISOM",
+        "acronym": "AMISOM",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:AMISOM:fund:SAU",
+      "parentId": "trust-fund-entity:AMISOM",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SAU",
+      "label": "Trust Fund in Support of the African Union Mission to Somalia (AMISOM)",
+      "amount": 24868485,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 24868485
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:BINUH",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "BINUH",
+      "label": "United Nations Integrated Office in Haiti",
+      "amount": 120820,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 120820
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Integrated Office in Haiti",
+        "acronym": "BINUH",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:BINUH:fund:HKA",
+      "parentId": "trust-fund-entity:BINUH",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HKA",
+      "label": "Trust Fund in Support of the Political Transition in Haiti",
+      "amount": 120820,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 120820
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:CEB",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "CEB",
+      "label": "United Nations System Chief Executives Board for Coordination",
+      "amount": 643837,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 643837
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations System Chief Executives Board for Coordination",
+        "acronym": "CEB",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:CEB:fund:HBP",
+      "parentId": "trust-fund-entity:CEB",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HBP",
+      "label": "Trust Fund for the Implementation of HLCM Plan of Action for the Harmonization of Business Practices in the United Nations system",
+      "amount": 643837,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 643837
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:CTED",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "CTED",
+      "label": "Counter-Terrorism Committee Executive Directorate",
+      "amount": 402255,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 402255
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Counter-Terrorism Committee Executive Directorate",
+        "acronym": "CTED",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:CTED:fund:CTD",
+      "parentId": "trust-fund-entity:CTED",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CTD",
+      "label": "Trust Fund for the Counter-Terrorism Committee Executive Directorate",
+      "amount": 402255,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 402255
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DESA",
+      "label": "Department of Economic and Social Affairs",
+      "amount": 26951543,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 26951543
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Economic and Social Affairs",
+        "acronym": "DESA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:XES",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "XES",
+      "label": "Trust Fund for Department of Economic and Social Affairs Capacity Development Programme",
+      "amount": 16891599,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 16891599
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:PDF",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PDF",
+      "label": "Trust Fund for United Nations Peace and Development",
+      "amount": 4315554,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 4315554
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:WKA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "WKA",
+      "label": "Trust Fund to Support the Work of the High-level Political Forum on Sustainable Development",
+      "amount": 1476648,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1476648
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:PGA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PGA",
+      "label": "Trust Fund for Population and Development",
+      "amount": 1115594,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1115594
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:KSA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "KSA",
+      "label": "Trust Fund in Support of the United Nations Forum on Forests",
+      "amount": 1047463,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1047463
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:CSA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CSA",
+      "label": "Trust Fund for Case Studies on the Functioning of the Operational Activities for Development of the United Nations System",
+      "amount": 808881,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 808881
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:HIA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HIA",
+      "label": "Trust Fund to Support Activities for the Follow-up to the International Conference on Financing for Development",
+      "amount": 482403,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 482403
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:GBA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GBA",
+      "label": "Trust Fund for Statistical Development and Capacity Building",
+      "amount": 225963,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 225963
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:AMR",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "AMR",
+      "label": "Trust Fund for the Annual Ministerial Review and the Development Cooperation Forum",
+      "amount": 172919,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 172919
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:FII",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "FII",
+      "label": "Trust Fund on Indigenous Issues",
+      "amount": 151072,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 151072
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:IDA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "IDA",
+      "label": "United Nations Voluntary Fund on Disability",
+      "amount": 150383,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 150383
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:WOA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "WOA",
+      "label": "Trust Fund for the Follow-up to the World Summit for Social Development",
+      "amount": 58794,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 58794
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:OTB",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "OTB",
+      "label": "Trust Fund to Support the launch and operationalization of the Technology Bank for LDCs",
+      "amount": 23384,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 23384
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:WAA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "WAA",
+      "label": "Trust Fund for Aging",
+      "amount": 15150,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 15150
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:IEA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "IEA",
+      "label": "United Nations Youth Fund",
+      "amount": 9641,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 9641
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:FYA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "FYA",
+      "label": "United Nations Trust Fund on Family Activities",
+      "amount": 6095,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 6095
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGACM",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DGACM",
+      "label": "Department for General Assembly and Conference Management",
+      "amount": 3434426,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 3434426
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department for General Assembly and Conference Management",
+        "acronym": "DGACM",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGACM:fund:GTA",
+      "parentId": "trust-fund-entity:DGACM",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GTA",
+      "label": "Trust Fund for German Language Translation",
+      "amount": 1818571,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1818571
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGACM:fund:ACM",
+      "parentId": "trust-fund-entity:DGACM",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ACM",
+      "label": "Trust Fund in Support of General Assembly and Conference Management Activities",
+      "amount": 1615855,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1615855
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DGC",
+      "label": "Department of Global Communications",
+      "amount": 2048467,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 2048467
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Global Communications",
+        "acronym": "DGC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGC:fund:ESA",
+      "parentId": "trust-fund-entity:DGC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ESA",
+      "label": "Trust Fund for Economic and Social Information",
+      "amount": 1568153,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1568153
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGC:fund:GCU",
+      "parentId": "trust-fund-entity:DGC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GCU",
+      "label": "United Nations Trust Fund for Government Contributions to UNICS",
+      "amount": 478220,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 478220
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGC:fund:SNA",
+      "parentId": "trust-fund-entity:DGC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SNA",
+      "label": "Trust Fund to promote information to United Nations staff about the work of the Organization (formerly Secretariat News Trust Fund)",
+      "amount": 10680,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 10680
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGC:fund:ERA",
+      "parentId": "trust-fund-entity:DGC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ERA",
+      "label": "Development Forum Trust Fund",
+      "amount": -8586,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": -8586
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DMSPC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DMSPC",
+      "label": "Department of Management Strategy, Policy and Compliance",
+      "amount": 289,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 289
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Management Strategy, Policy and Compliance",
+        "acronym": "DMSPC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DMSPC:fund:YFA",
+      "parentId": "trust-fund-entity:DMSPC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "YFA",
+      "label": "Trust Fund for Assistance in the Training of United Nations Staff in the French Language",
+      "amount": 289,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 289
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPO",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DPO",
+      "label": "Department of Peace Operations",
+      "amount": 17745717,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 17745717
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Peace Operations",
+        "acronym": "DPO",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPO:fund:LLA",
+      "parentId": "trust-fund-entity:DPO",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LLA",
+      "label": "Trust Fund in Support of the Department of Peacekeeping Operations",
+      "amount": 17539482,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 17539482
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPO:fund:CPK",
+      "parentId": "trust-fund-entity:DPO",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CPK",
+      "label": "Trust Fund in Support Peacekeeping Activities",
+      "amount": 206235,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 206235
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPPA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DPPA",
+      "label": "Department of Political and Peacebuilding Affairs",
+      "amount": 38854236,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 38854236
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Political and Peacebuilding Affairs",
+        "acronym": "DPPA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPPA:fund:SZA",
+      "parentId": "trust-fund-entity:DPPA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SZA",
+      "label": "Trust Fund in Support of Political Affairs",
+      "amount": 35698628,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 35698628
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPPA:fund:PSO",
+      "parentId": "trust-fund-entity:DPPA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PSO",
+      "label": "Trust Fund for the Peacebuilding Support Office",
+      "amount": 2842399,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2842399
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPPA:fund:PYA",
+      "parentId": "trust-fund-entity:DPPA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PYA",
+      "label": "Trust Fund for Preventive Action",
+      "amount": 313209,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 313209
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DSS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DSS",
+      "label": "Department of Safety and Security",
+      "amount": 449,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 449
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Safety and Security",
+        "acronym": "DSS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DSS:fund:UGA",
+      "parentId": "trust-fund-entity:DSS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "UGA",
+      "label": "Trust Fund for Security of Staff Members of the United Nations System",
+      "amount": 449,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 449
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ECA",
+      "label": "Economic Commission for Africa",
+      "amount": 15096641,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 15096641
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Economic Commission for Africa",
+        "acronym": "ECA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECA:fund:HDM",
+      "parentId": "trust-fund-entity:ECA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HDM",
+      "label": "ECA as Executing Agency for Miscellaneous Technical Co-operation Funds",
+      "amount": 15096641,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 15096641
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECE",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ECE",
+      "label": "Economic Commission for Europe",
+      "amount": 14146668,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 14146668
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Economic Commission for Europe",
+        "acronym": "ECE",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECE:fund:ECE",
+      "parentId": "trust-fund-entity:ECE",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ECE",
+      "label": "ECE Local Technical Co-operation Trust Funds",
+      "amount": 10875396,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 10875396
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECE:fund:LRA",
+      "parentId": "trust-fund-entity:ECE",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LRA",
+      "label": "Trust Fund for the Financing of the Implementation of the Convention on Long-Range Transboundary Air Pollution",
+      "amount": 2973067,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2973067
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECE:fund:EHA",
+      "parentId": "trust-fund-entity:ECE",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "EHA",
+      "label": "UN/ECE Trust Fund on Human Settlements",
+      "amount": 119353,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 119353
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECE:fund:EIA",
+      "parentId": "trust-fund-entity:ECE",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "EIA",
+      "label": "Trust Fund for Environmental Performance Reviews and the \"Environment for Europe\"",
+      "amount": 95829,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 95829
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECE:fund:LTA",
+      "parentId": "trust-fund-entity:ECE",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LTA",
+      "label": "Trust Fund for the ECE Study on Long-Term European Timber Trends and Prospects",
+      "amount": 72754,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 72754
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECE:fund:EAA",
+      "parentId": "trust-fund-entity:ECE",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "EAA",
+      "label": "United Nations Electronic Data Interchange for Administration, Commerce and Transport",
+      "amount": 10269,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 10269
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECLAC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ECLAC",
+      "label": "Economic Commission for Latin America and the Caribbean",
+      "amount": 7744494,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 7744494
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Economic Commission for Latin America and the Caribbean",
+        "acronym": "ECLAC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECLAC:fund:BTS",
+      "parentId": "trust-fund-entity:ECLAC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "BTS",
+      "label": "ECLAC Santiago - Technical Cooperation Project Trust Funds",
+      "amount": 7611071,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 7611071
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECLAC:fund:LAC",
+      "parentId": "trust-fund-entity:ECLAC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LAC",
+      "label": "ECLAC - Miscellaneous project accounts",
+      "amount": 133423,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 133423
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "EOSG",
+      "label": "Executive Office of the Secretary-General",
+      "amount": 12670409,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 12670409
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Executive Office of the Secretary-General",
+        "acronym": "EOSG",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG:fund:LJA",
+      "parentId": "trust-fund-entity:EOSG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LJA",
+      "label": "Trust Fund for Special Projects of the Secretary-General",
+      "amount": 9326329,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 9326329
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG:fund:GIV",
+      "parentId": "trust-fund-entity:EOSG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GIV",
+      "label": "Trust Fund to Support Global Impact and Vulnerability Alert System",
+      "amount": 2118515,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2118515
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG:fund:CCS",
+      "parentId": "trust-fund-entity:EOSG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CCS",
+      "label": "Trust Fund for Climate Change Support",
+      "amount": 778864,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 778864
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG:fund:COC",
+      "parentId": "trust-fund-entity:EOSG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "COC",
+      "label": "Trust Fund to Support Management and Reform Activities",
+      "amount": 447544,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 447544
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG:fund:CCR",
+      "parentId": "trust-fund-entity:EOSG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CCR",
+      "label": "Trust Fund to Support the Coordination and Coherence of the Rule of Law Activities of the United Nations System",
+      "amount": -843,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": -843
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ESCAP",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ESCAP",
+      "label": "Economic and Social Commission for Asia and the Pacific",
+      "amount": 17571127,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 17571127
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Economic and Social Commission for Asia and the Pacific",
+        "acronym": "ESCAP",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ESCAP:fund:BKT",
+      "parentId": "trust-fund-entity:ESCAP",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "BKT",
+      "label": "ESCAP - Technical Cooperation Project Trust Funds - Local",
+      "amount": 15603278,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 15603278
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ESCAP:fund:BTF",
+      "parentId": "trust-fund-entity:ESCAP",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "BTF",
+      "label": "General Trust Fund for ESCAP Regional Activities",
+      "amount": 1967849,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1967849
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ESCWA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ESCWA",
+      "label": "Economic and Social Commission for Western Asia",
+      "amount": 3625153,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 3625153
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Economic and Social Commission for Western Asia",
+        "acronym": "ESCWA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ESCWA:fund:WVZ",
+      "parentId": "trust-fund-entity:ESCWA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "WVZ",
+      "label": "ESCWA - Technical Cooperation Trust Fund",
+      "amount": 3625153,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 3625153
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:HSU",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "HSU",
+      "label": "HSU",
+      "amount": 7970642,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 7970642
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "HSU",
+        "acronym": "HSU",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:HSU:fund:HYA",
+      "parentId": "trust-fund-entity:HSU",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HYA",
+      "label": "Trust Fund for Human Security",
+      "amount": 7970642,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 7970642
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ICJ",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ICJ",
+      "label": "International Court of Justice",
+      "amount": 10,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 10
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "International Court of Justice",
+        "acronym": "ICJ",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ICJ:fund:TJA",
+      "parentId": "trust-fund-entity:ICJ",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "TJA",
+      "label": "Trust Fund to Assist States in the Judicial Settlement of Disputes through the International Court of Justice",
+      "amount": 10,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 10
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:IIIM",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "IIIM",
+      "label": "International, Impartial and Independent Mechanism to Assist in the Investigation and Prosecution of Persons Responsible for the Most Serious Crimes under International Law Committed in the Syrian Arab Republic since March 2011",
+      "amount": 1400527,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1400527
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "International, Impartial and Independent Mechanism to Assist in the Investigation and Prosecution of Persons Responsible for the Most Serious Crimes under International Law Committed in the Syrian Arab Republic since March 2011",
+        "acronym": "IIIM",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:IIIM:fund:SIM",
+      "parentId": "trust-fund-entity:IIIM",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SIM",
+      "label": "Trust Fund in Support of the International Impartial and Independent Mechanism",
+      "amount": 1400527,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1400527
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:JPO",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "JPO",
+      "label": "JPO",
+      "amount": 36128381,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 36128381
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "JPO",
+        "acronym": "JPO",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:JPO:fund:JPO",
+      "parentId": "trust-fund-entity:JPO",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "JPO",
+      "label": "Trust Fund for Junior Professional Officer Programme Administered by Department of Economic and Social Affairs",
+      "amount": 36128381,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 36128381
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MICT",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MICT",
+      "label": "MICT",
+      "amount": 874456,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 874456
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "MICT",
+        "acronym": "MICT",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MICT:fund:IOA",
+      "parentId": "trust-fund-entity:MICT",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "IOA",
+      "label": "Voluntary Trust Fund to Support the Activities of the International Tribunal Established by Security Council Resolution UOT (NVVP)",
+      "amount": 848563,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 848563
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MICT:fund:RMB",
+      "parentId": "trust-fund-entity:MICT",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "RMB",
+      "label": "Trust Fund to Support the Activities of the International Residual Mechanism for Criminal Tribunals",
+      "amount": 25893,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 25893
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSCA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MINUSCA",
+      "label": "United Nations Multidimensional Integrated Stabilization Mission in the Central African Republic",
+      "amount": 386653,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 386653
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Multidimensional Integrated Stabilization Mission in the Central African Republic",
+        "acronym": "MINUSCA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSCA:fund:CAF",
+      "parentId": "trust-fund-entity:MINUSCA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CAF",
+      "label": "Trust Fund in Support of Peacebuilding Efforts in the Central African Republic",
+      "amount": 386653,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 386653
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSCA:fund:MIS",
+      "parentId": "trust-fund-entity:MINUSCA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "MIS",
+      "label": "Trust Fund in Support of the African-led International Support Mission in the Central African Republic (MISCA)",
+      "amount": 0,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSMA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MINUSMA",
+      "label": "United Nations Multidimensional Integrated Stabilization Mission in Mali",
+      "amount": 11447325,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 11447325
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Multidimensional Integrated Stabilization Mission in Mali",
+        "acronym": "MINUSMA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSMA:fund:PSM",
+      "parentId": "trust-fund-entity:MINUSMA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PSM",
+      "label": "Trust Fund in Support of Peace and Security in Mali",
+      "amount": 11015689,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 11015689
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSMA:fund:MSM",
+      "parentId": "trust-fund-entity:MINUSMA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "MSM",
+      "label": "Trust Fund in Support of the African-led International Support Mission in Mali",
+      "amount": 431636,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 431636
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MONUSCO",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MONUSCO",
+      "label": "United Nations Organization Stabilization Mission in the Democratic Republic of the Congo",
+      "amount": 161820,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 161820
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Organization Stabilization Mission in the Democratic Republic of the Congo",
+        "acronym": "MONUSCO",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MONUSCO:fund:NGA",
+      "parentId": "trust-fund-entity:MONUSCO",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "NGA",
+      "label": "Trust Fund to Support Peace Process in the Democratic Republic of Congo",
+      "amount": 161820,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 161820
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCHA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OCHA",
+      "label": "Office for the Coordination of Humanitarian Affairs",
+      "amount": 1204262197,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1204262197
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office for the Coordination of Humanitarian Affairs",
+        "acronym": "OCHA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCHA:fund:DDN",
+      "parentId": "trust-fund-entity:OCHA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DDN",
+      "label": "Trust Fund for the Strengthening of the Office of the Emergency Relief Coordinator",
+      "amount": 786653437,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 786653437
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCHA:fund:CER",
+      "parentId": "trust-fund-entity:OCHA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CER",
+      "label": "Central Emergency Response Fund",
+      "amount": 417608760,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 417608760
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCHA:fund:CLR",
+      "parentId": "trust-fund-entity:OCHA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CLR",
+      "label": "Trust Fund Central Emergency Response Fund Loan component",
+      "amount": 0,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCT",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OCT",
+      "label": "Office of Counter-Terrorism",
+      "amount": 10566647,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 10566647
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of Counter-Terrorism",
+        "acronym": "UNOCT",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCT:fund:CTI",
+      "parentId": "trust-fund-entity:OCT",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CTI",
+      "label": "Trust Fund for Counter-Terrorism",
+      "amount": 10566647,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 10566647
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ODA",
+      "label": "Office for Disarmament Affairs",
+      "amount": 11686152,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 11686152
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office for Disarmament Affairs",
+        "acronym": "ODA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DBA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DBA",
+      "label": "Trust Fund for the United Nations Regional Centre for Peace, Disarmament and Development in Latin America",
+      "amount": 3668058,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 3668058
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DGA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DGA",
+      "label": "Trust Fund for Global and Regional Disarmament Activities",
+      "amount": 2157929,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2157929
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DJA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DJA",
+      "label": "Trust Fund for the establishment of a Joint Investigative Mechanism (gfj) pursuant to rkp`o OOPR (OMNR)",
+      "amount": 1872985,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1872985
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DAA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DAA",
+      "label": "United Nations Regional Centre for Peace and Disarmament in Africa",
+      "amount": 1823449,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1823449
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DGT",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DGT",
+      "label": "Sub-account for supporting the implementation of the Arms Trade Treaty and Programme of Action",
+      "amount": 1694079,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1694079
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DFA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DFA",
+      "label": "Trust Fund for the United Nations Regional Centre for Peace and Disarmament in Asia",
+      "amount": 469652,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 469652
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OHCHR",
+      "label": "Office of the United Nations High Commissioner for Human Rights",
+      "amount": 135105821,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 135105821
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the United Nations High Commissioner for Human Rights",
+        "acronym": "OHCHR",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:HCA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HCA",
+      "label": "Trust Fund for the Support to the Activities of the Centre for Human Rights",
+      "amount": 110458475,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 110458475
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:AHA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "AHA",
+      "label": "Voluntary Fund for Advisory Services and Technical Assistance in the Field of Human Rights",
+      "amount": 12714816,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 12714816
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:CHA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CHA",
+      "label": "United Nations Voluntary Fund for Victims of Torture",
+      "amount": 9528940,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 9528940
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:SHA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SHA",
+      "label": "United Nations Trust Fund on Contemporary Forms of Slavery",
+      "amount": 682133,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 682133
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:CIA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CIA",
+      "label": "Trust Fund for a Human Rights Education Programme in Cambodia",
+      "amount": 570429,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 570429
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:VTA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "VTA",
+      "label": "Voluntary Technical Assistance Trust Fund to Support the Paticipation of Least Developed Countries & Small Island Developing States in the work of the Human Rights Council",
+      "amount": 390264,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 390264
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:IHA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "IHA",
+      "label": "United Nations Voluntary Fund for Indigenous Populations",
+      "amount": 361491,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 361491
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:UPR",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "UPR",
+      "label": "Voluntary Fund for Financial and Technical Assistance for the Implementation of the Universal Periodic Review",
+      "amount": 331799,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 331799
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:VPU",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "VPU",
+      "label": "Voluntary Fund for Participation in the Universal Periodic Review",
+      "amount": 67474,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 67474
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OIOS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OIOS",
+      "label": "Office of Internal Oversight Services",
+      "amount": 141745,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 141745
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of Internal Oversight Services",
+        "acronym": "OIOS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OIOS:fund:QOA",
+      "parentId": "trust-fund-entity:OIOS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "QOA",
+      "label": "United Nations Trust Fund for Enhancing Professional Capacity in Internal Oversight Functions",
+      "amount": 141745,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 141745
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OLA",
+      "label": "Office of Legal Affairs",
+      "amount": 3011976,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 3011976
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of Legal Affairs",
+        "acronym": "OLA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:PIL",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PIL",
+      "label": "Trust Fund for the Office of Legal Affairs to Support the Promotion of International Law",
+      "amount": 1319392,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1319392
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:TTA",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "TTA",
+      "label": "United Nations Commission on International Trade Law Symposia",
+      "amount": 751996,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 751996
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:KJA",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "KJA",
+      "label": "Trust Fund to Assist Members of the Commission on the Limits of the Continental Shelf from Developing States to Participate in its Meetings",
+      "amount": 524195,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 524195
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:CLA",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CLA",
+      "label": "Trust Fund for Legal Affairs and related issues",
+      "amount": 224005,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 224005
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:TLA",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "TLA",
+      "label": "Trust Fund for the United Nations Programme of Assistance in the Teaching, Study, Dissemination and Wider Appreciation of International Law",
+      "amount": 119670,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 119670
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:KUA",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "KUA",
+      "label": "Trust Fund to Assist Developing States in the Preparation of Submissions to the Commission on the Limits of the Continental Shelf",
+      "amount": 72718,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 72718
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OOSA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OOSA",
+      "label": "Office for Outer Space Affairs",
+      "amount": 922562,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 922562
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office for Outer Space Affairs",
+        "acronym": "OOSA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OOSA:fund:SBA",
+      "parentId": "trust-fund-entity:OOSA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SBA",
+      "label": "Trust Fund in Support of United Nations Programme on Peaceful Uses of Outer Space",
+      "amount": 922562,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 922562
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OPGA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OPGA",
+      "label": "OPGA",
+      "amount": 1676999,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1676999
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OPGA",
+        "acronym": "OPGA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OPGA:fund:GAC",
+      "parentId": "trust-fund-entity:OPGA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GAC",
+      "label": "Trust Fund in Support of the Office of the President of the General Assembly",
+      "amount": 1676999,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1676999
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSAA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSAA",
+      "label": "Office of the Special Adviser on Africa",
+      "amount": 6439,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 6439
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the Special Adviser on Africa",
+        "acronym": "OSAA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSAA:fund:NAA",
+      "parentId": "trust-fund-entity:OSAA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "NAA",
+      "label": "Trust Fund for the Support of Activities of OSAA to the New Partnership for Africa's Development (NEPAD) and Tokyo International Conference on African Development (TICAD) Process",
+      "amount": 6439,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 6439
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSESG-GL",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSESG-GL",
+      "label": "OSESG-GL",
+      "amount": 480078,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 480078
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSESG-GL",
+        "acronym": "OSESG-GL",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSESG-GL:fund:GLA",
+      "parentId": "trust-fund-entity:OSESG-GL",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GLA",
+      "label": "Trust Fund in support of the Office of the Special Envoy of the Secretary-General for the Great Lakes Region",
+      "amount": 480078,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 480078
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-CAAC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSRSG-CAAC",
+      "label": "Office of the Special Representative of the Secretary-General for Children and Armed Conflict",
+      "amount": 561545,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 561545
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the Special Representative of the Secretary-General for Children and Armed Conflict",
+        "acronym": "SRSG-CAAC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-CAAC:fund:NNA",
+      "parentId": "trust-fund-entity:OSRSG-CAAC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "NNA",
+      "label": "Trust Fund for Children and Armed Conflict",
+      "amount": 561545,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 561545
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-SVC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSRSG-SVC",
+      "label": "Office of the Special Representative of the Secretary-General on Sexual Violence in Conflict",
+      "amount": 1697852,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1697852
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the Special Representative of the Secretary-General on Sexual Violence in Conflict",
+        "acronym": "SRSG-SVC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-SVC:fund:SVC",
+      "parentId": "trust-fund-entity:OSRSG-SVC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SVC",
+      "label": "Trust Fund in Support of the Office of the Special Representative of the Secretary-General on Sexual Violence in Conflict",
+      "amount": 1697852,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1697852
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-VAC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSRSG-VAC",
+      "label": "Office of the Special Representative of the Secretary-General on Violence against Children",
+      "amount": 74636,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 74636
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the Special Representative of the Secretary-General on Violence against Children",
+        "acronym": "SRSG-VAC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-VAC:fund:SVD",
+      "parentId": "trust-fund-entity:OSRSG-VAC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SVD",
+      "label": "Trust Fund in Support of the Special Representative of the Secretary-General on Violence against Children",
+      "amount": 74636,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 74636
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OTHER",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OTHER",
+      "label": "OTHER",
+      "amount": 1332842,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1332842
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OTHER",
+        "acronym": "OTHER",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OTHER:fund:JTA",
+      "parentId": "trust-fund-entity:OTHER",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "JTA",
+      "label": "Trust Fund for the Millennium Assembly and the Millennium Summit of the United Nations",
+      "amount": 1343950,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1343950
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OTHER:fund:UIC",
+      "parentId": "trust-fund-entity:OTHER",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "UIC",
+      "label": "Trust Fund for the United Nations Operation in Cote d'Ivoire",
+      "amount": 6277,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 6277
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OTHER:fund:YRA",
+      "parentId": "trust-fund-entity:OTHER",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "YRA",
+      "label": "Trust Fund for Will and Gift to the UN",
+      "amount": 10,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 10
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OTHER:fund:CLO",
+      "parentId": "trust-fund-entity:OTHER",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CLO",
+      "label": "Trust Funds converted from IMIS to be closed",
+      "amount": -17395,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": -17395
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UN-OHRLLS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UN-OHRLLS",
+      "label": "Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States",
+      "amount": 1105362,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1105362
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States",
+        "acronym": "UN-OHRLLS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UN-OHRLLS:fund:LLS",
+      "parentId": "trust-fund-entity:UN-OHRLLS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LLS",
+      "label": "Trust Fund in Support of Activities Undertaken by the Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (OHRLLS)",
+      "amount": 1105362,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1105362
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAKRT",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNAKRT",
+      "label": "UNAKRT",
+      "amount": 19866116,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 19866116
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNAKRT",
+        "acronym": "UNAKRT",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAKRT:fund:KRT",
+      "parentId": "trust-fund-entity:UNAKRT",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "KRT",
+      "label": "UNAKRT - UN Assistance for the Khmer Rouge Trails",
+      "amount": 19866116,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 19866116
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAMI",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNAMI",
+      "label": "United Nations Assistance Mission for Iraq",
+      "amount": 5672102,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 5672102
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Assistance Mission for Iraq",
+        "acronym": "UNAMI",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAMI:fund:CIB",
+      "parentId": "trust-fund-entity:UNAMI",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CIB",
+      "label": "Trust Fund in support of the construction and renovation of the United Nations compound in Baghdad",
+      "amount": 5672102,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 5672102
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAMID",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNAMID",
+      "label": "UNAMID",
+      "amount": 54083,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 54083
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNAMID",
+        "acronym": "UNAMID",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAMID:fund:JMS",
+      "parentId": "trust-fund-entity:UNAMID",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "JMS",
+      "label": "Trust Fund for the AU-UN Joint Mediation Support Team (JMST) for Darfur",
+      "amount": 52022,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 52022
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAMID:fund:LPD",
+      "parentId": "trust-fund-entity:UNAMID",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LPD",
+      "label": "Trust Fund to Support Lasting Peace in Darfur",
+      "amount": 2061,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2061
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAOC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNAOC",
+      "label": "United Nations Alliance of Civilizations",
+      "amount": 3137717,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 3137717
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Alliance of Civilizations",
+        "acronym": "UNAOC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAOC:fund:YJA",
+      "parentId": "trust-fund-entity:UNAOC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "YJA",
+      "label": "Trust Fund for Alliance of Civilizations",
+      "amount": 3137717,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 3137717
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNCTAD",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNCTAD",
+      "label": "United Nations Conference on Trade and Development",
+      "amount": 35018949,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 35018949
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Conference on Trade and Development",
+        "acronym": "UNCTAD",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNCTAD:fund:TXB",
+      "parentId": "trust-fund-entity:UNCTAD",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "TXB",
+      "label": "Trust Fund for UNCTAD Technical Cooperation Projects",
+      "amount": 34636432,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 34636432
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNCTAD:fund:OUN",
+      "parentId": "trust-fund-entity:UNCTAD",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "OUN",
+      "label": "Technical Cooperation Trust Fund for One UN projects implemented by UNCTAD",
+      "amount": 382517,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 382517
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNDRR",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNDRR",
+      "label": "United Nations Office for Disaster Risk Reduction",
+      "amount": 26429358,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 26429358
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Office for Disaster Risk Reduction",
+        "acronym": "UNDRR",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNDRR:fund:DXA",
+      "parentId": "trust-fund-entity:UNDRR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DXA",
+      "label": "Trust Fund for Disaster Reduction",
+      "amount": 26363406,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 26363406
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNDRR:fund:DLA",
+      "parentId": "trust-fund-entity:UNDRR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DLA",
+      "label": "Sasakawa - UNDRO Disaster Prevention Award Endowment Fund",
+      "amount": 65952,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 65952
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNGC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNGC",
+      "label": "United Nations Global Compact",
+      "amount": 4549191,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 4549191
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Global Compact",
+        "acronym": "UNGC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNGC:fund:GKA",
+      "parentId": "trust-fund-entity:UNGC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GKA",
+      "label": "Global Compact Trust Fund",
+      "amount": 4549191,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 4549191
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNIDIR",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNIDIR",
+      "label": "United Nations Institute for Disarmament Research",
+      "amount": 2309542,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 2309542
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Institute for Disarmament Research",
+        "acronym": "UNIDIR",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNIDIR:fund:DRA",
+      "parentId": "trust-fund-entity:UNIDIR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DRA",
+      "label": "United Nations Institute for Disarmament Research",
+      "amount": 2309542,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2309542
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNIOGBIS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNIOGBIS",
+      "label": "UNIOGBIS",
+      "amount": 223209,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 223209
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNIOGBIS",
+        "acronym": "UNIOGBIS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNIOGBIS:fund:GYA",
+      "parentId": "trust-fund-entity:UNIOGBIS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GYA",
+      "label": "Trust Fund for United Nations Integrated Peace Building Office in Guinea Bissau (UNIOGBIS)",
+      "amount": 223209,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 223209
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNITAD",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNITAD",
+      "label": "UNITAD",
+      "amount": 1382,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1382
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNITAD",
+        "acronym": "UNITAD",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNITAD:fund:IIT",
+      "parentId": "trust-fund-entity:UNITAD",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "IIT",
+      "label": "Trust Fund to Support the Iraq Investigative Team pursuant to rkp`o OPTV (OMNT)",
+      "amount": 1382,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1382
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNMAS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNMAS",
+      "label": "UNMAS",
+      "amount": 70349778,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 70349778
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNMAS",
+        "acronym": "UNMAS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNMAS:fund:MNA",
+      "parentId": "trust-fund-entity:UNMAS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "MNA",
+      "label": "Voluntary Trust Fund for Assistance in Mine Action",
+      "amount": 70349778,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 70349778
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOG",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNOG",
+      "label": "United Nations Office at Geneva",
+      "amount": 3203304,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 3203304
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Office at Geneva",
+        "acronym": "UNOG",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOG:fund:LSS",
+      "parentId": "trust-fund-entity:UNOG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LSS",
+      "label": "Trust Fund for UNOG Local Support Services",
+      "amount": 2132236,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2132236
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOG:fund:SDP",
+      "parentId": "trust-fund-entity:UNOG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SDP",
+      "label": "Trust Fund for Sports for Development and Peace",
+      "amount": 1027635,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1027635
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOG:fund:LEA",
+      "parentId": "trust-fund-entity:UNOG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LEA",
+      "label": "Library Endowment Fund",
+      "amount": 43433,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 43433
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNON",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNON",
+      "label": "United Nations Office at Nairobi",
+      "amount": 1182362,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1182362
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Office at Nairobi",
+        "acronym": "UNON",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNON:fund:UNN",
+      "parentId": "trust-fund-entity:UNON",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "UNN",
+      "label": "Trust Fund for UNON Extrabudgetary",
+      "amount": 1182362,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1182362
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOP",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNOP",
+      "label": "United Nations Office for Partnerships",
+      "amount": 36708966,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 36708966
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Office for Partnerships",
+        "acronym": "UNOP",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOP:fund:QGA",
+      "parentId": "trust-fund-entity:UNOP",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "QGA",
+      "label": "United Nations Fund for International Partnership (UNFIP)",
+      "amount": 25643800,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 25643800
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOP:fund:UDF",
+      "parentId": "trust-fund-entity:UNOP",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "UDF",
+      "label": "UN Democracy Trust Fund",
+      "amount": 11054996,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 11054996
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOP:fund:QGB",
+      "parentId": "trust-fund-entity:UNOP",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "QGB",
+      "label": "Trust Fund for Partnerships",
+      "amount": 10170,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 10170
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNRISD",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNRISD",
+      "label": "United Nations Research Institute for Social Development",
+      "amount": 2024990,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 2024990
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Research Institute for Social Development",
+        "acronym": "UNRISD",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNRISD:fund:RIA",
+      "parentId": "trust-fund-entity:UNRISD",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "RIA",
+      "label": "United Nations Research Institute for Social Development",
+      "amount": 2024990,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2024990
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNRoD",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNRoD",
+      "label": "United Nations Register of Damage Caused by the Construction of the Wall in the Occupied Palestinian Territory",
+      "amount": 840541,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 840541
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Register of Damage Caused by the Construction of the Wall in the Occupied Palestinian Territory",
+        "acronym": "UNRoD",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNRoD:fund:ROD",
+      "parentId": "trust-fund-entity:UNRoD",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ROD",
+      "label": "Trust Fund in Support of the United Nations Register of Damage",
+      "amount": 840541,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 840541
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNSMIL",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNSMIL",
+      "label": "United Nations Support Mission in Libya",
+      "amount": 0,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Support Mission in Libya",
+        "acronym": "UNSMIL",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNSMIL:fund:PSL",
+      "parentId": "trust-fund-entity:UNSMIL",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PSL",
+      "label": "Trust Fund in Support of Peace and Security in Libya",
+      "amount": 0,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNSOM",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNSOM",
+      "label": "United Nations Assistance Mission in Somalia",
+      "amount": 1870001,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1870001
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Assistance Mission in Somalia",
+        "acronym": "UNSOM",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNSOM:fund:SOP",
+      "parentId": "trust-fund-entity:UNSOM",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SOP",
+      "label": "Trust Fund for Peacebuilding in Somalia",
+      "amount": 1870001,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1870001
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNSOS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNSOS",
+      "label": "United Nations Support Office in Somalia",
+      "amount": 0,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Support Office in Somalia",
+        "acronym": "UNSOS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNSOS:fund:STS",
+      "parentId": "trust-fund-entity:UNSOS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "STS",
+      "label": "Trust Fund in Support of the Somali Transitional Security Institutions",
+      "amount": 0,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:VRA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "VRA",
+      "label": "Office of the Victims' Rights Advocate",
+      "amount": 4085,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 4085
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the Victims' Rights Advocate",
+        "acronym": "OVRA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    },
+    {
+      "id": "trust-fund-entity:VRA:fund:SVB",
+      "parentId": "trust-fund-entity:VRA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SVB",
+      "label": "Trust Fund in Support of Victims of Sexual Exploitaion and Abuse",
+      "amount": 4085,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 4085
+      },
+      "source": {
+        "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+        "url": "https://digitallibrary.un.org/record/1644706",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2017"
+      }
+    }
+  ]
+}

@@ -89,6 +89,8 @@ export function unitExplanation(unit: BudgetNode): string | null {
 export const ENTITY_RELATIONSHIP_NOTES: Record<string, string> = {
   audited_entity:
     "the audited extract assigns these source rows to this entity",
+  trust_fund_crosswalk:
+    "the reconstructed old open-data crosswalk assigns this trust fund to the entity",
   direct_financial_entity:
     "the budget prints this row under the entity's own heading",
   section_owner:

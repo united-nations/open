@@ -120,6 +120,45 @@ class TrustFundScheduleTests(unittest.TestCase):
         self.assertEqual(rows[-1]["counterparty"], "Total")
         self.assertEqual(rows[-1]["total_usd"], 251_048_887)
 
+    def test_grand_total_is_classified_as_total(self) -> None:
+        table = {
+            "table_id": "2024-p269-voluntary-contribution-3.34.1-y055",
+            "calendar_year": 2024,
+            "recid": 4099450,
+            "page": 269,
+            "schedule_number": "3.34.1",
+            "fund_code": "TXB",
+            "table_kind": "voluntary_contribution",
+            "columns": [
+                "counterparty",
+                "monetary",
+                "in_kind",
+                "refunds_transfers_adjustments",
+                "total",
+            ],
+            "rows": [
+                {
+                    "y": 100,
+                    "counterparty": "European Union",
+                    "monetary": "4 991 183",
+                    "in_kind": "-",
+                    "refunds_transfers_adjustments": "-",
+                    "total": "4 991 183",
+                },
+                {
+                    "y": 110,
+                    "counterparty": "Grand Total",
+                    "monetary": "44 233 137",
+                    "in_kind": "-",
+                    "refunds_transfers_adjustments": "(82 600)",
+                    "total": "44 150 537",
+                },
+            ],
+        }
+        rows = schedules.normalize_flow_table(table)
+        self.assertFalse(rows[0]["is_total"])
+        self.assertTrue(rows[1]["is_total"])
+
 
 if __name__ == "__main__":
     unittest.main()

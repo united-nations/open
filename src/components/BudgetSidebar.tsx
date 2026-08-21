@@ -212,6 +212,8 @@ export function BudgetSidebar({
       return meta.missionNames?.[node.mission ?? ""] ?? node.mission ?? "";
     if (node.tier === "item") return parent?.label ?? "";
     // One budget unit of a section — the level the treemap draws as tiles.
+    if (node.tier === "budget_unit" && meta.stream === "trust_funds")
+      return "Secretariat entity";
     if (node.tier === "budget_unit")
       return parent ? `Budget unit of ${parent.label}` : "Budget unit";
     const kindName = KIND_NAMES[node.kind];
@@ -285,7 +287,9 @@ export function BudgetSidebar({
               {shareOfTotal.toFixed(1)}% of {formatBudget(meta.total)} —{" "}
               {meta.stream === "pko"
                 ? "all missions in this corpus"
-                : "the whole programme budget"}
+                : meta.stream === "trust_funds"
+                  ? "mapped individual trust funds"
+                  : "the whole programme budget"}
               {parent && parent.tier !== "whole" && (
                 <>
                   {" · "}
@@ -374,9 +378,13 @@ export function BudgetSidebar({
             <p className="text-sm leading-relaxed text-gray-700">
               {meta.sourceKind === "audited"
                 ? "This amount is aggregated from rows in the audited Secretariat expenditure extract."
-                : isPrinted
-                  ? "This amount is printed in the budget document."
-                  : "This amount is not printed as one figure. It is the sum of the lines below it."}
+                : meta.sourceKind === "trust_fund_schedule"
+                  ? node.tier === "detail"
+                    ? "This current-period expense is printed for the individual trust fund in the annual schedule."
+                    : "This amount is the sum of current-period trust-fund expenses assigned to this entity by the reconstructed crosswalk."
+                  : isPrinted
+                    ? "This amount is printed in the budget document."
+                    : "This amount is not printed as one figure. It is the sum of the lines below it."}
             </p>
             {printedAs && (
               <p className="mt-1 text-sm text-gray-700">
@@ -430,7 +438,9 @@ export function BudgetSidebar({
             <p className="mt-3 text-xs text-gray-500">
               {meta.sourceKind === "audited"
                 ? "Prepared from the audited expenditure extract by "
-                : "Extracted automatically from the budget documents by "}
+                : meta.sourceKind === "trust_fund_schedule"
+                  ? "Extracted from the audited individual trust-fund schedules by "
+                  : "Extracted automatically from the budget documents by "}
               <a
                 href={meta.source.url}
                 target="_blank"

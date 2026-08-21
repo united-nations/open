@@ -1,0 +1,4645 @@
+{
+  "meta": {
+    "stream": "trust_funds",
+    "sourceKind": "trust_fund_schedule",
+    "title": "Schedule of Individual Trust Funds",
+    "label": "Individual trust-fund expenses 2024 (USD)",
+    "measure": "IPSAS expenses",
+    "year": 2024,
+    "fiscalYear": "2024",
+    "currency": "USD",
+    "total": 3198950858,
+    "scopeLabel": "Current-period expenses of trust funds with an approved entity crosswalk",
+    "scopeWarning": "This is gross fund-level accounting and is not additive to PPB or consolidated Secretariat expenditure. Entity assignments reconstruct the old open-data mapping.",
+    "fundingSources": [
+      "extrabudgetary"
+    ],
+    "fundingLabels": {
+      "extrabudgetary": "Individual trust funds"
+    },
+    "documentSymbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+    "documentUrl": "https://digitallibrary.un.org/record/4087012",
+    "verification": {
+      "schedule_total_usd": "3198967527",
+      "mapped_total_usd": "3198950858",
+      "mapped_funds": "141",
+      "unresolved_funds": "4",
+      "unresolved_fund_codes": "ANC, MWF, SWE, YEA"
+    },
+    "source": {
+      "repo": "transparency",
+      "release": "trust-fund schedule extraction",
+      "url": "https://github.com/united-nations/transparency"
+    }
+  },
+  "nodes": [
+    {
+      "id": "trust-funds",
+      "parentId": null,
+      "tier": "whole",
+      "kind": "whole",
+      "code": null,
+      "label": "Mapped individual trust funds",
+      "amount": 3198950858,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 3198950858
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-funds~xb",
+      "parentId": "trust-funds",
+      "tier": "part",
+      "kind": "part",
+      "code": "XB",
+      "label": "Individual trust funds",
+      "amount": 3198950858,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 3198950858
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-funds~entities",
+      "parentId": "trust-funds~xb",
+      "tier": "section",
+      "kind": "section",
+      "code": "TF",
+      "label": "Mapped Secretariat entities",
+      "amount": 3198950858,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 3198950858
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:AMISOM",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "AMISOM",
+      "label": "AMISOM",
+      "amount": 20617097,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 20617097
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "AMISOM",
+        "acronym": "AMISOM",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:AMISOM:fund:SAU",
+      "parentId": "trust-fund-entity:AMISOM",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SAU",
+      "label": "Trust Fund in Support of the African Union Mission to Somalia (AMISOM)",
+      "amount": 20617097,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 20617097
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:BINUH",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "BINUH",
+      "label": "United Nations Integrated Office in Haiti",
+      "amount": 17,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 17
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Integrated Office in Haiti",
+        "acronym": "BINUH",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:BINUH:fund:HKA",
+      "parentId": "trust-fund-entity:BINUH",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HKA",
+      "label": "Trust Fund in Support of the Political Transition in Haiti",
+      "amount": 17,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 17
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:CEB",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "CEB",
+      "label": "United Nations System Chief Executives Board for Coordination",
+      "amount": 8,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 8
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations System Chief Executives Board for Coordination",
+        "acronym": "CEB",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:CEB:fund:HBP",
+      "parentId": "trust-fund-entity:CEB",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HBP",
+      "label": "Trust Fund for the Implementation of HLCM Plan of Action for the Harmonization of Business Practices in the United Nations system",
+      "amount": 8,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 8
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:CNMC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "CNMC",
+      "label": "United Nations Support for the Cameroon-Nigeria Mixed Commission",
+      "amount": 1351452,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1351452
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Support for the Cameroon-Nigeria Mixed Commission",
+        "acronym": "CNMC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:CNMC:fund:CNM",
+      "parentId": "trust-fund-entity:CNMC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CNM",
+      "label": "Trust Fund in Support of the Cameroon-Nigeria Border Demarcation and Other Activities Related to Preventive Diplomacy and Peacemaking",
+      "amount": 1351452,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1351452
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:CTED",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "CTED",
+      "label": "Counter-Terrorism Committee Executive Directorate",
+      "amount": 9335,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 9335
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Counter-Terrorism Committee Executive Directorate",
+        "acronym": "CTED",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:CTED:fund:CTD",
+      "parentId": "trust-fund-entity:CTED",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CTD",
+      "label": "Trust Fund for the Counter-Terrorism Committee Executive Directorate",
+      "amount": 9335,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 9335
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DCO",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DCO",
+      "label": "Resident coordinator system",
+      "amount": 227298794,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 227298794
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Resident coordinator system",
+        "acronym": "RC system",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DCO:fund:DSA",
+      "parentId": "trust-fund-entity:DCO",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DSA",
+      "label": "Special Purpose Trust Fund for the Reinvigorated Resident Coordinator (RC) System",
+      "amount": 220006287,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 220006287
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DCO:fund:LMR",
+      "parentId": "trust-fund-entity:DCO",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LMR",
+      "label": "Trust Fund for Locally Mobilized Non-Core Support for the UN Resident Coordinator Offices",
+      "amount": 7292507,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 7292507
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DESA",
+      "label": "Department of Economic and Social Affairs",
+      "amount": 61734477,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 61734477
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Economic and Social Affairs",
+        "acronym": "DESA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:PDF",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PDF",
+      "label": "Trust Fund for United Nations Peace and Development",
+      "amount": 27291913,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 27291913
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:XES",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "XES",
+      "label": "Trust Fund for Department of Economic and Social Affairs Capacity Development Programme",
+      "amount": 20997144,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 20997144
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:HIA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HIA",
+      "label": "Trust Fund to Support Activities for the Follow-up to the International Conference on Financing for Development",
+      "amount": 5141260,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 5141260
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:WKA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "WKA",
+      "label": "Trust Fund to Support the Work of the High-level Political Forum on Sustainable Development",
+      "amount": 3068993,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 3068993
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:OTB",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "OTB",
+      "label": "Trust Fund to Support the launch and operationalization of the Technology Bank for LDCs",
+      "amount": 2248509,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2248509
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:HCB",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HCB",
+      "label": "Host Country Agreements - rken (Volume 1)",
+      "amount": 853430,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 853430
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:GBA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GBA",
+      "label": "Trust Fund for Statistical Development and Capacity Building",
+      "amount": 717587,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 717587
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:PGA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PGA",
+      "label": "Trust Fund for Population and Development",
+      "amount": 437097,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 437097
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:KSA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "KSA",
+      "label": "Trust Fund in Support of the United Nations Forum on Forests",
+      "amount": 414397,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 414397
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:FII",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "FII",
+      "label": "Trust Fund on Indigenous Issues",
+      "amount": 271921,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 271921
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:CSA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CSA",
+      "label": "Trust Fund for Case Studies on the Functioning of the Operational Activities for Development of the United Nations System",
+      "amount": 131694,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 131694
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:WOA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "WOA",
+      "label": "Trust Fund for the Follow-up to the World Summit for Social Development",
+      "amount": 80259,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 80259
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:IDA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "IDA",
+      "label": "United Nations Voluntary Fund on Disability",
+      "amount": 44337,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 44337
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:FYA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "FYA",
+      "label": "United Nations Trust Fund on Family Activities",
+      "amount": 42769,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 42769
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:IEA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "IEA",
+      "label": "United Nations Youth Fund",
+      "amount": 6394,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 6394
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:WAA",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "WAA",
+      "label": "Trust Fund for Aging",
+      "amount": 1800,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1800
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DESA:fund:AMR",
+      "parentId": "trust-fund-entity:DESA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "AMR",
+      "label": "Trust Fund for the Annual Ministerial Review and the Development Cooperation Forum",
+      "amount": -15027,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": -15027
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGACM",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DGACM",
+      "label": "Department for General Assembly and Conference Management",
+      "amount": 2799466,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 2799466
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department for General Assembly and Conference Management",
+        "acronym": "DGACM",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGACM:fund:GTA",
+      "parentId": "trust-fund-entity:DGACM",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GTA",
+      "label": "Trust Fund for German Language Translation",
+      "amount": 2316972,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2316972
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGACM:fund:ACM",
+      "parentId": "trust-fund-entity:DGACM",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ACM",
+      "label": "Trust Fund in Support of General Assembly and Conference Management Activities",
+      "amount": 482494,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 482494
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DGC",
+      "label": "Department of Global Communications",
+      "amount": 7073934,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 7073934
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Global Communications",
+        "acronym": "DGC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGC:fund:ESA",
+      "parentId": "trust-fund-entity:DGC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ESA",
+      "label": "Trust Fund for Economic and Social Information",
+      "amount": 5747385,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 5747385
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGC:fund:GCU",
+      "parentId": "trust-fund-entity:DGC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GCU",
+      "label": "United Nations Trust Fund for Government Contributions to UNICS",
+      "amount": 906476,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 906476
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGC:fund:ERA",
+      "parentId": "trust-fund-entity:DGC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ERA",
+      "label": "Development Forum Trust Fund",
+      "amount": 420073,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 420073
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DGC:fund:SNA",
+      "parentId": "trust-fund-entity:DGC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SNA",
+      "label": "Trust Fund to promote information to United Nations staff about the work of the Organization (formerly Secretariat News Trust Fund)",
+      "amount": 0,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DMSPC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DMSPC",
+      "label": "Department of Management Strategy, Policy and Compliance",
+      "amount": 573120,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 573120
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Management Strategy, Policy and Compliance",
+        "acronym": "DMSPC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DMSPC:fund:ESW",
+      "parentId": "trust-fund-entity:DMSPC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ESW",
+      "label": "Trust Fund in Support of the System-Wide Evaluation",
+      "amount": 573120,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 573120
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DOS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DOS",
+      "label": "Department of Operational Support",
+      "amount": 19328730,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 19328730
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Operational Support",
+        "acronym": "DOS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DOS:fund:LLB",
+      "parentId": "trust-fund-entity:DOS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LLB",
+      "label": "Trust Fund in Support of the Department of Operational Support",
+      "amount": 19328730,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 19328730
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPO",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DPO",
+      "label": "Department of Peace Operations",
+      "amount": 29979116,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 29979116
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Peace Operations",
+        "acronym": "DPO",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPO:fund:LLA",
+      "parentId": "trust-fund-entity:DPO",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LLA",
+      "label": "Trust Fund in Support of the Department of Peacekeeping Operations",
+      "amount": 29900177,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 29900177
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPO:fund:CPK",
+      "parentId": "trust-fund-entity:DPO",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CPK",
+      "label": "Trust Fund in Support Peacekeeping Activities",
+      "amount": 78939,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 78939
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPPA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DPPA",
+      "label": "Department of Political and Peacebuilding Affairs",
+      "amount": 42786195,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 42786195
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Political and Peacebuilding Affairs",
+        "acronym": "DPPA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPPA:fund:SZA",
+      "parentId": "trust-fund-entity:DPPA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SZA",
+      "label": "Trust Fund in Support of Political Affairs",
+      "amount": 38485775,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 38485775
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPPA:fund:PSO",
+      "parentId": "trust-fund-entity:DPPA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PSO",
+      "label": "Trust Fund for the Peacebuilding Support Office",
+      "amount": 4293279,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 4293279
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DPPA:fund:PYA",
+      "parentId": "trust-fund-entity:DPPA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PYA",
+      "label": "Trust Fund for Preventive Action",
+      "amount": 7141,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 7141
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DSS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "DSS",
+      "label": "Department of Safety and Security",
+      "amount": 5745268,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 5745268
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Department of Safety and Security",
+        "acronym": "DSS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:DSS:fund:UGA",
+      "parentId": "trust-fund-entity:DSS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "UGA",
+      "label": "Trust Fund for Security of Staff Members of the United Nations System",
+      "amount": 5745268,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 5745268
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ECA",
+      "label": "Economic Commission for Africa",
+      "amount": 17789332,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 17789332
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Economic Commission for Africa",
+        "acronym": "ECA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECA:fund:HDM",
+      "parentId": "trust-fund-entity:ECA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HDM",
+      "label": "ECA as Executing Agency for Miscellaneous Technical Co-operation Funds",
+      "amount": 14194355,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 14194355
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECA:fund:IDP",
+      "parentId": "trust-fund-entity:ECA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "IDP",
+      "label": "African Institute for Economic Development and Planning (IDEP)",
+      "amount": 3400400,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 3400400
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECA:fund:CFE",
+      "parentId": "trust-fund-entity:ECA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CFE",
+      "label": "Trust Fund for ECA Construction",
+      "amount": 194577,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 194577
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECE",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ECE",
+      "label": "Economic Commission for Europe",
+      "amount": 26948823,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 26948823
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Economic Commission for Europe",
+        "acronym": "ECE",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECE:fund:ECE",
+      "parentId": "trust-fund-entity:ECE",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ECE",
+      "label": "ECE Local Technical Co-operation Trust Funds",
+      "amount": 23225818,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 23225818
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECE:fund:LRA",
+      "parentId": "trust-fund-entity:ECE",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LRA",
+      "label": "Trust Fund for the Financing of the Implementation of the Convention on Long-Range Transboundary Air Pollution",
+      "amount": 3723005,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 3723005
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECLAC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ECLAC",
+      "label": "Economic Commission for Latin America and the Caribbean",
+      "amount": 11629073,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 11629073
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Economic Commission for Latin America and the Caribbean",
+        "acronym": "ECLAC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECLAC:fund:BTS",
+      "parentId": "trust-fund-entity:ECLAC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "BTS",
+      "label": "ECLAC Santiago - Technical Cooperation Project Trust Funds",
+      "amount": 11621312,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 11621312
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ECLAC:fund:LAC",
+      "parentId": "trust-fund-entity:ECLAC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LAC",
+      "label": "ECLAC - Miscellaneous project accounts",
+      "amount": 7761,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 7761
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "EOSG",
+      "label": "Executive Office of the Secretary-General",
+      "amount": 23838848,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 23838848
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Executive Office of the Secretary-General",
+        "acronym": "EOSG",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG:fund:LJA",
+      "parentId": "trust-fund-entity:EOSG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LJA",
+      "label": "Trust Fund for Special Projects of the Secretary-General",
+      "amount": 13166035,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 13166035
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG:fund:CCS",
+      "parentId": "trust-fund-entity:EOSG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CCS",
+      "label": "Trust Fund for Climate Change Support",
+      "amount": 6481746,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 6481746
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG:fund:GIV",
+      "parentId": "trust-fund-entity:EOSG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GIV",
+      "label": "Trust Fund to Support Global Impact and Vulnerability Alert System",
+      "amount": 2564241,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2564241
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG:fund:COC",
+      "parentId": "trust-fund-entity:EOSG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "COC",
+      "label": "Trust Fund to Support Management and Reform Activities",
+      "amount": 1192600,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1192600
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:EOSG:fund:CCR",
+      "parentId": "trust-fund-entity:EOSG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CCR",
+      "label": "Trust Fund to Support the Coordination and Coherence of the Rule of Law Activities of the United Nations System",
+      "amount": 434226,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 434226
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ESCAP",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ESCAP",
+      "label": "Economic and Social Commission for Asia and the Pacific",
+      "amount": 27465315,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 27465315
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Economic and Social Commission for Asia and the Pacific",
+        "acronym": "ESCAP",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ESCAP:fund:BKT",
+      "parentId": "trust-fund-entity:ESCAP",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "BKT",
+      "label": "ESCAP - Technical Cooperation Project Trust Funds - Local",
+      "amount": 24967460,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 24967460
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ESCAP:fund:BTF",
+      "parentId": "trust-fund-entity:ESCAP",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "BTF",
+      "label": "General Trust Fund for ESCAP Regional Activities",
+      "amount": 2497855,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2497855
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ESCWA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ESCWA",
+      "label": "Economic and Social Commission for Western Asia",
+      "amount": 7456536,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 7456536
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Economic and Social Commission for Western Asia",
+        "acronym": "ESCWA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ESCWA:fund:WVZ",
+      "parentId": "trust-fund-entity:ESCWA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "WVZ",
+      "label": "ESCWA - Technical Cooperation Trust Fund",
+      "amount": 7456536,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 7456536
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:HSU",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "HSU",
+      "label": "HSU",
+      "amount": 6248735,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 6248735
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "HSU",
+        "acronym": "HSU",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:HSU:fund:HYA",
+      "parentId": "trust-fund-entity:HSU",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HYA",
+      "label": "Trust Fund for Human Security",
+      "amount": 6248735,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 6248735
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ICJ",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ICJ",
+      "label": "International Court of Justice",
+      "amount": 886224,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 886224
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "International Court of Justice",
+        "acronym": "ICJ",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ICJ:fund:TJA",
+      "parentId": "trust-fund-entity:ICJ",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "TJA",
+      "label": "Trust Fund to Assist States in the Judicial Settlement of Disputes through the International Court of Justice",
+      "amount": 743238,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 743238
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ICJ:fund:ICJ",
+      "parentId": "trust-fund-entity:ICJ",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ICJ",
+      "label": "Trust Fund for the Judicial Fellowship of the International Court of Justice",
+      "amount": 142986,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 142986
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:IIIM",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "IIIM",
+      "label": "International, Impartial and Independent Mechanism to Assist in the Investigation and Prosecution of Persons Responsible for the Most Serious Crimes under International Law Committed in the Syrian Arab Republic since March 2011",
+      "amount": 6292432,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 6292432
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "International, Impartial and Independent Mechanism to Assist in the Investigation and Prosecution of Persons Responsible for the Most Serious Crimes under International Law Committed in the Syrian Arab Republic since March 2011",
+        "acronym": "IIIM",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:IIIM:fund:SIM",
+      "parentId": "trust-fund-entity:IIIM",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SIM",
+      "label": "Trust Fund in Support of the International Impartial and Independent Mechanism",
+      "amount": 6292432,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 6292432
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:IIMM",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "IIMM",
+      "label": "Independent Investigative Mechanism for Myanmar",
+      "amount": 3398004,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 3398004
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Independent Investigative Mechanism for Myanmar",
+        "acronym": "IIMM",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:IIMM:fund:IIM",
+      "parentId": "trust-fund-entity:IIMM",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "IIM",
+      "label": "Trust Fund for the Independent Investigative Mechanism for Myanmar",
+      "amount": 3398004,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 3398004
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:JPO",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "JPO",
+      "label": "JPO",
+      "amount": 61004159,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 61004159
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "JPO",
+        "acronym": "JPO",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:JPO:fund:JPO",
+      "parentId": "trust-fund-entity:JPO",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "JPO",
+      "label": "Trust Fund for Junior Professional Officer Programme Administered by Department of Economic and Social Affairs",
+      "amount": 61004159,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 61004159
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MICT",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MICT",
+      "label": "MICT",
+      "amount": 1358433,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1358433
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "MICT",
+        "acronym": "MICT",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MICT:fund:RMB",
+      "parentId": "trust-fund-entity:MICT",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "RMB",
+      "label": "Trust Fund to Support the Activities of the International Residual Mechanism for Criminal Tribunals",
+      "amount": 1358433,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1358433
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSCA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MINUSCA",
+      "label": "United Nations Multidimensional Integrated Stabilization Mission in the Central African Republic",
+      "amount": 107060,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 107060
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Multidimensional Integrated Stabilization Mission in the Central African Republic",
+        "acronym": "MINUSCA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSCA:fund:CAF",
+      "parentId": "trust-fund-entity:MINUSCA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CAF",
+      "label": "Trust Fund in Support of Peacebuilding Efforts in the Central African Republic",
+      "amount": 107046,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 107046
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSCA:fund:MIS",
+      "parentId": "trust-fund-entity:MINUSCA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "MIS",
+      "label": "Trust Fund in Support of the African-led International Support Mission in the Central African Republic (MISCA)",
+      "amount": 14,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 14
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSMA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MINUSMA",
+      "label": "United Nations Multidimensional Integrated Stabilization Mission in Mali",
+      "amount": -1408566,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": -1408566
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Multidimensional Integrated Stabilization Mission in Mali",
+        "acronym": "MINUSMA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSMA:fund:MSM",
+      "parentId": "trust-fund-entity:MINUSMA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "MSM",
+      "label": "Trust Fund in Support of the African-led International Support Mission in Mali",
+      "amount": 52,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 52
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MINUSMA:fund:PSM",
+      "parentId": "trust-fund-entity:MINUSMA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PSM",
+      "label": "Trust Fund in Support of Peace and Security in Mali",
+      "amount": -1408618,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": -1408618
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MONUSCO",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MONUSCO",
+      "label": "United Nations Organization Stabilization Mission in the Democratic Republic of the Congo",
+      "amount": 156,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 156
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Organization Stabilization Mission in the Democratic Republic of the Congo",
+        "acronym": "MONUSCO",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:MONUSCO:fund:NGA",
+      "parentId": "trust-fund-entity:MONUSCO",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "NGA",
+      "label": "Trust Fund to Support Peace Process in the Democratic Republic of Congo",
+      "amount": 156,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 156
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCHA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OCHA",
+      "label": "Office for the Coordination of Humanitarian Affairs",
+      "amount": 1934316553,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1934316553
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office for the Coordination of Humanitarian Affairs",
+        "acronym": "OCHA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCHA:fund:DDN",
+      "parentId": "trust-fund-entity:OCHA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DDN",
+      "label": "Trust Fund for the Strengthening of the Office of the Emergency Relief Coordinator",
+      "amount": 1353385514,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1353385514
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCHA:fund:CER",
+      "parentId": "trust-fund-entity:OCHA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CER",
+      "label": "Central Emergency Response Fund",
+      "amount": 580931039,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 580931039
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCHA:fund:CLR",
+      "parentId": "trust-fund-entity:OCHA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CLR",
+      "label": "Trust Fund Central Emergency Response Fund Loan component",
+      "amount": 0,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCT",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OCT",
+      "label": "Office of Counter-Terrorism",
+      "amount": 44619892,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 44619892
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of Counter-Terrorism",
+        "acronym": "UNOCT",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OCT:fund:CTI",
+      "parentId": "trust-fund-entity:OCT",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CTI",
+      "label": "Trust Fund for Counter-Terrorism",
+      "amount": 44619892,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 44619892
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ODA",
+      "label": "Office for Disarmament Affairs",
+      "amount": 16671576,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 16671576
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office for Disarmament Affairs",
+        "acronym": "ODA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DGA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DGA",
+      "label": "Trust Fund for Global and Regional Disarmament Activities",
+      "amount": 13628741,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 13628741
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DBA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DBA",
+      "label": "Trust Fund for the United Nations Regional Centre for Peace, Disarmament and Development in Latin America",
+      "amount": 1531865,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1531865
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DGT",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DGT",
+      "label": "Sub-account for supporting the implementation of the Arms Trade Treaty and Programme of Action",
+      "amount": 743039,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 743039
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DFA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DFA",
+      "label": "Trust Fund for the United Nations Regional Centre for Peace and Disarmament in Asia",
+      "amount": 350027,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 350027
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DWA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DWA",
+      "label": "Trust Fund for the United Nations Disarmament Information Programme",
+      "amount": 245162,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 245162
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DAA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DAA",
+      "label": "United Nations Regional Centre for Peace and Disarmament in Africa",
+      "amount": 172656,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 172656
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:DJA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DJA",
+      "label": "Trust Fund for the establishment of a Joint Investigative Mechanism (gfj) pursuant to rkp`o OOPR (OMNR)",
+      "amount": 58,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 58
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODA:fund:PIA",
+      "parentId": "trust-fund-entity:ODA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PIA",
+      "label": "Trust Fund for Public Awareness on Disarmament Affairs",
+      "amount": 28,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 28
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODET",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "ODET",
+      "label": "Office for Digital and Emerging Technologies",
+      "amount": 1456718,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1456718
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office for Digital and Emerging Technologies",
+        "acronym": "ODET",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODET:fund:OST",
+      "parentId": "trust-fund-entity:ODET",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "OST",
+      "label": "Trust Fund in Support of the Office of the Secretary-General's Envoy on Technology",
+      "amount": 1456674,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1456674
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:ODET:fund:DUN",
+      "parentId": "trust-fund-entity:ODET",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DUN",
+      "label": "Trust Fund for Digital Agenda",
+      "amount": 44,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 44
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OHCHR",
+      "label": "Office of the United Nations High Commissioner for Human Rights",
+      "amount": 282198098,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 282198098
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the United Nations High Commissioner for Human Rights",
+        "acronym": "OHCHR",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:HCA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "HCA",
+      "label": "Trust Fund for the Support to the Activities of the Centre for Human Rights",
+      "amount": 235532156,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 235532156
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:AHA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "AHA",
+      "label": "Voluntary Fund for Advisory Services and Technical Assistance in the Field of Human Rights",
+      "amount": 29993058,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 29993058
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:CHA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CHA",
+      "label": "United Nations Voluntary Fund for Victims of Torture",
+      "amount": 10333840,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 10333840
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:CIA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CIA",
+      "label": "Trust Fund for a Human Rights Education Programme in Cambodia",
+      "amount": 1829631,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1829631
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:SHA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SHA",
+      "label": "United Nations Trust Fund on Contemporary Forms of Slavery",
+      "amount": 1324661,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1324661
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:VTA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "VTA",
+      "label": "Voluntary Technical Assistance Trust Fund to Support the Paticipation of Least Developed Countries & Small Island Developing States in the work of the Human Rights Council",
+      "amount": 1221290,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1221290
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:IHA",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "IHA",
+      "label": "United Nations Voluntary Fund for Indigenous Populations",
+      "amount": 984430,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 984430
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:UPR",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "UPR",
+      "label": "Voluntary Fund for Financial and Technical Assistance for the Implementation of the Universal Periodic Review",
+      "amount": 812530,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 812530
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OHCHR:fund:VPU",
+      "parentId": "trust-fund-entity:OHCHR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "VPU",
+      "label": "Voluntary Fund for Participation in the Universal Periodic Review",
+      "amount": 166502,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 166502
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OIOS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OIOS",
+      "label": "Office of Internal Oversight Services",
+      "amount": 5,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 5
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of Internal Oversight Services",
+        "acronym": "OIOS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OIOS:fund:QOA",
+      "parentId": "trust-fund-entity:OIOS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "QOA",
+      "label": "United Nations Trust Fund for Enhancing Professional Capacity in Internal Oversight Functions",
+      "amount": 5,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 5
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OJSRS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OJSRS",
+      "label": "OJSRS",
+      "amount": 786240,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 786240
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OJSRS",
+        "acronym": "OJSRS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OJSRS:fund:SCC",
+      "parentId": "trust-fund-entity:OJSRS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SCC",
+      "label": "Trust Fund to support the Syrian Constitutional Committee",
+      "amount": 786240,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 786240
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OLA",
+      "label": "Office of Legal Affairs",
+      "amount": 6084796,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 6084796
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of Legal Affairs",
+        "acronym": "OLA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:PIL",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PIL",
+      "label": "Trust Fund for the Office of Legal Affairs to Support the Promotion of International Law",
+      "amount": 3290163,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 3290163
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:TTA",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "TTA",
+      "label": "United Nations Commission on International Trade Law Symposia",
+      "amount": 1580106,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1580106
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:KJA",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "KJA",
+      "label": "Trust Fund to Assist Members of the Commission on the Limits of the Continental Shelf from Developing States to Participate in its Meetings",
+      "amount": 566299,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 566299
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:CLA",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CLA",
+      "label": "Trust Fund for Legal Affairs and related issues",
+      "amount": 470613,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 470613
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:TLA",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "TLA",
+      "label": "Trust Fund for the United Nations Programme of Assistance in the Teaching, Study, Dissemination and Wider Appreciation of International Law",
+      "amount": 101040,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 101040
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OLA:fund:KUA",
+      "parentId": "trust-fund-entity:OLA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "KUA",
+      "label": "Trust Fund to Assist Developing States in the Preparation of Submissions to the Commission on the Limits of the Continental Shelf",
+      "amount": 76575,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 76575
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OOSA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OOSA",
+      "label": "Office for Outer Space Affairs",
+      "amount": 2022254,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 2022254
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office for Outer Space Affairs",
+        "acronym": "OOSA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OOSA:fund:SBA",
+      "parentId": "trust-fund-entity:OOSA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SBA",
+      "label": "Trust Fund in Support of United Nations Programme on Peaceful Uses of Outer Space",
+      "amount": 2022254,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2022254
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OPGA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OPGA",
+      "label": "OPGA",
+      "amount": 2603079,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 2603079
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OPGA",
+        "acronym": "OPGA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OPGA:fund:GAC",
+      "parentId": "trust-fund-entity:OPGA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GAC",
+      "label": "Trust Fund in Support of the Office of the President of the General Assembly",
+      "amount": 2603079,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2603079
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSAA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSAA",
+      "label": "Office of the Special Adviser on Africa",
+      "amount": 482407,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 482407
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the Special Adviser on Africa",
+        "acronym": "OSAA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSAA:fund:NAA",
+      "parentId": "trust-fund-entity:OSAA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "NAA",
+      "label": "Trust Fund for the Support of Activities of OSAA to the New Partnership for Africa's Development (NEPAD) and Tokyo International Conference on African Development (TICAD) Process",
+      "amount": 482407,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 482407
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSC-SEA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSC-SEA",
+      "label": "Office of the United Nations Special Coordinator on Improving the United Nations Response to Sexual Exploitation and Abuse",
+      "amount": 69161,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 69161
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the United Nations Special Coordinator on Improving the United Nations Response to Sexual Exploitation and Abuse",
+        "acronym": "SEA Coordinator",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSC-SEA:fund:SEA",
+      "parentId": "trust-fund-entity:OSC-SEA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SEA",
+      "label": "Trust Fund in support of the Special Coordinator on improving the United Nations response to Sexual Exploitation and Abuse",
+      "amount": 69161,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 69161
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSCS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSCS",
+      "label": "OSCS",
+      "amount": 1241915,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1241915
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSCS",
+        "acronym": "OSCS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSCS:fund:SCS",
+      "parentId": "trust-fund-entity:OSCS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SCS",
+      "label": "Trust Fund in support of the activities of the Office of the UN Special Coordinator for the Development in the Sahel",
+      "amount": 1241915,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1241915
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSESG-GL",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSESG-GL",
+      "label": "OSESG-GL",
+      "amount": 1127930,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1127930
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSESG-GL",
+        "acronym": "OSESG-GL",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSESG-GL:fund:GLA",
+      "parentId": "trust-fund-entity:OSESG-GL",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GLA",
+      "label": "Trust Fund in support of the Office of the Special Envoy of the Secretary-General for the Great Lakes Region",
+      "amount": 1127930,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1127930
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSESG-Myanmar",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSESG-Myanmar",
+      "label": "OSESG-Myanmar",
+      "amount": 558945,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 558945
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSESG-Myanmar",
+        "acronym": "OSESG-Myanmar",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSESG-Myanmar:fund:MYM",
+      "parentId": "trust-fund-entity:OSESG-Myanmar",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "MYM",
+      "label": "Trust Fund in support of executing the mandate of the Special Envoy of Secretary-General on Myanmar (SESG-Myanmar)",
+      "amount": 558945,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 558945
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-CAAC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSRSG-CAAC",
+      "label": "Office of the Special Representative of the Secretary-General for Children and Armed Conflict",
+      "amount": 3037615,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 3037615
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the Special Representative of the Secretary-General for Children and Armed Conflict",
+        "acronym": "SRSG-CAAC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-CAAC:fund:NNA",
+      "parentId": "trust-fund-entity:OSRSG-CAAC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "NNA",
+      "label": "Trust Fund for Children and Armed Conflict",
+      "amount": 3037615,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 3037615
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-SVC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSRSG-SVC",
+      "label": "Office of the Special Representative of the Secretary-General on Sexual Violence in Conflict",
+      "amount": 6192308,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 6192308
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the Special Representative of the Secretary-General on Sexual Violence in Conflict",
+        "acronym": "SRSG-SVC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-SVC:fund:SVC",
+      "parentId": "trust-fund-entity:OSRSG-SVC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SVC",
+      "label": "Trust Fund in Support of the Office of the Special Representative of the Secretary-General on Sexual Violence in Conflict",
+      "amount": 6192308,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 6192308
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-VAC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSRSG-VAC",
+      "label": "Office of the Special Representative of the Secretary-General on Violence against Children",
+      "amount": 340712,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 340712
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the Special Representative of the Secretary-General on Violence against Children",
+        "acronym": "SRSG-VAC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSRSG-VAC:fund:SVD",
+      "parentId": "trust-fund-entity:OSRSG-VAC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SVD",
+      "label": "Trust Fund in Support of the Special Representative of the Secretary-General on Violence against Children",
+      "amount": 340712,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 340712
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OTHER",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OTHER",
+      "label": "OTHER",
+      "amount": 11072008,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 11072008
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OTHER",
+        "acronym": "OTHER",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OTHER:fund:MSS",
+      "parentId": "trust-fund-entity:OTHER",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "MSS",
+      "label": "Trust Fund in Support of the Multinational Security Support (MSS) Mission in Haiti",
+      "amount": 10829727,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 10829727
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OTHER:fund:JTA",
+      "parentId": "trust-fund-entity:OTHER",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "JTA",
+      "label": "Trust Fund for the Millennium Assembly and the Millennium Summit of the United Nations",
+      "amount": 208769,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 208769
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OTHER:fund:YRA",
+      "parentId": "trust-fund-entity:OTHER",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "YRA",
+      "label": "Trust Fund for Will and Gift to the UN",
+      "amount": 33472,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 33472
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OTHER:fund:CLO",
+      "parentId": "trust-fund-entity:OTHER",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CLO",
+      "label": "Trust Funds converted from IMIS to be closed",
+      "amount": 28,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 28
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OTHER:fund:UIC",
+      "parentId": "trust-fund-entity:OTHER",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "UIC",
+      "label": "Trust Fund for the United Nations Operation in Cote d'Ivoire",
+      "amount": 12,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 12
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UN-OHRLLS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UN-OHRLLS",
+      "label": "Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States",
+      "amount": 1808919,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1808919
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States",
+        "acronym": "UN-OHRLLS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UN-OHRLLS:fund:LLS",
+      "parentId": "trust-fund-entity:UN-OHRLLS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LLS",
+      "label": "Trust Fund in Support of Activities Undertaken by the Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (OHRLLS)",
+      "amount": 1808919,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1808919
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAKRT",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNAKRT",
+      "label": "UNAKRT",
+      "amount": 2239635,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 2239635
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNAKRT",
+        "acronym": "UNAKRT",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAKRT:fund:KRT",
+      "parentId": "trust-fund-entity:UNAKRT",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "KRT",
+      "label": "UNAKRT - UN Assistance for the Khmer Rouge Trails",
+      "amount": 2239635,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2239635
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAMI",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNAMI",
+      "label": "United Nations Assistance Mission for Iraq",
+      "amount": 31014298,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 31014298
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Assistance Mission for Iraq",
+        "acronym": "UNAMI",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAMI:fund:CIB",
+      "parentId": "trust-fund-entity:UNAMI",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CIB",
+      "label": "Trust Fund in support of the construction and renovation of the United Nations compound in Baghdad",
+      "amount": 31014298,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 31014298
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAMID",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNAMID",
+      "label": "UNAMID",
+      "amount": 423,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 423
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNAMID",
+        "acronym": "UNAMID",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAMID:fund:JMS",
+      "parentId": "trust-fund-entity:UNAMID",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "JMS",
+      "label": "Trust Fund for the AU-UN Joint Mediation Support Team (JMST) for Darfur",
+      "amount": 399,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 399
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAMID:fund:LPD",
+      "parentId": "trust-fund-entity:UNAMID",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LPD",
+      "label": "Trust Fund to Support Lasting Peace in Darfur",
+      "amount": 24,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 24
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAOC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNAOC",
+      "label": "United Nations Alliance of Civilizations",
+      "amount": 4963431,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 4963431
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Alliance of Civilizations",
+        "acronym": "UNAOC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNAOC:fund:YJA",
+      "parentId": "trust-fund-entity:UNAOC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "YJA",
+      "label": "Trust Fund for Alliance of Civilizations",
+      "amount": 4963431,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 4963431
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNCTAD",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNCTAD",
+      "label": "United Nations Conference on Trade and Development",
+      "amount": 55815830,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 55815830
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Conference on Trade and Development",
+        "acronym": "UNCTAD",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNCTAD:fund:TXB",
+      "parentId": "trust-fund-entity:UNCTAD",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "TXB",
+      "label": "Trust Fund for UNCTAD Technical Cooperation Projects",
+      "amount": 54683601,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 54683601
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNCTAD:fund:OUN",
+      "parentId": "trust-fund-entity:UNCTAD",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "OUN",
+      "label": "Technical Cooperation Trust Fund for One UN projects implemented by UNCTAD",
+      "amount": 1132229,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1132229
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNDRR",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNDRR",
+      "label": "United Nations Office for Disaster Risk Reduction",
+      "amount": 61389542,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 61389542
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Office for Disaster Risk Reduction",
+        "acronym": "UNDRR",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNDRR:fund:DXA",
+      "parentId": "trust-fund-entity:UNDRR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DXA",
+      "label": "Trust Fund for Disaster Reduction",
+      "amount": 61389431,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 61389431
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNDRR:fund:DLA",
+      "parentId": "trust-fund-entity:UNDRR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DLA",
+      "label": "Sasakawa - UNDRO Disaster Prevention Award Endowment Fund",
+      "amount": 111,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 111
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNFICYP",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNFICYP",
+      "label": "United Nations Peacekeeping Force in Cyprus",
+      "amount": 2,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 2
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Peacekeeping Force in Cyprus",
+        "acronym": "UNFICYP",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNFICYP:fund:CYP",
+      "parentId": "trust-fund-entity:UNFICYP",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "CYP",
+      "label": "Trust Fund to Support Peace and Security in Cyprus",
+      "amount": 2,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNGC",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNGC",
+      "label": "United Nations Global Compact",
+      "amount": 9223419,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 9223419
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Global Compact",
+        "acronym": "UNGC",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNGC:fund:GKA",
+      "parentId": "trust-fund-entity:UNGC",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "GKA",
+      "label": "Global Compact Trust Fund",
+      "amount": 9223419,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 9223419
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNIDIR",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNIDIR",
+      "label": "United Nations Institute for Disarmament Research",
+      "amount": 13466384,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 13466384
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Institute for Disarmament Research",
+        "acronym": "UNIDIR",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNIDIR:fund:DRA",
+      "parentId": "trust-fund-entity:UNIDIR",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "DRA",
+      "label": "United Nations Institute for Disarmament Research",
+      "amount": 13466384,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 13466384
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNITAD",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNITAD",
+      "label": "UNITAD",
+      "amount": 7131745,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 7131745
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNITAD",
+        "acronym": "UNITAD",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNITAD:fund:IIT",
+      "parentId": "trust-fund-entity:UNITAD",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "IIT",
+      "label": "Trust Fund to Support the Iraq Investigative Team pursuant to rkp`o OPTV (OMNT)",
+      "amount": 7131745,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 7131745
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNITAMS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNITAMS",
+      "label": "UNITAMS",
+      "amount": 40456,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 40456
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNITAMS",
+        "acronym": "UNITAMS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNITAMS:fund:AMS",
+      "parentId": "trust-fund-entity:UNITAMS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "AMS",
+      "label": "Trust Fund for the United Nations Integrated Transition Assistance Mission in Sudan",
+      "amount": 40456,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 40456
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNMAS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNMAS",
+      "label": "UNMAS",
+      "amount": 42221949,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 42221949
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "UNMAS",
+        "acronym": "UNMAS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNMAS:fund:MNA",
+      "parentId": "trust-fund-entity:UNMAS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "MNA",
+      "label": "Voluntary Trust Fund for Assistance in Mine Action",
+      "amount": 42221949,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 42221949
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNMIK",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNMIK",
+      "label": "United Nations Interim Administration Mission in Kosovo",
+      "amount": 0,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Interim Administration Mission in Kosovo",
+        "acronym": "UNMIK",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNMIK:fund:KDB",
+      "parentId": "trust-fund-entity:UNMIK",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "KDB",
+      "label": "Trust Fund to Support the Implementation of Community-based Assistance Projects of the Roma, Ashkali and Egyptian Communities in Kosovo",
+      "amount": 0,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 0
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNMISS",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNMISS",
+      "label": "United Nations Mission in South Sudan",
+      "amount": 1395806,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 1395806
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Mission in South Sudan",
+        "acronym": "UNMISS",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNMISS:fund:RSS",
+      "parentId": "trust-fund-entity:UNMISS",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "RSS",
+      "label": "Trust Fund for the United Nations Mission in South Sudan",
+      "amount": 1395806,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 1395806
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOAU",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNOAU",
+      "label": "United Nations Office to the African Union",
+      "amount": 656331,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 656331
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Office to the African Union",
+        "acronym": "UNOAU",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOAU:fund:OAU",
+      "parentId": "trust-fund-entity:UNOAU",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "OAU",
+      "label": "Trust Fund to support the rkl^r pursuant to Security Councils OOPM (OMNS) OPTU (OMNT) and OQRT (OMNV)",
+      "amount": 656331,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 656331
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOG",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNOG",
+      "label": "United Nations Office at Geneva",
+      "amount": 2862997,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 2862997
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Office at Geneva",
+        "acronym": "UNOG",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOG:fund:LSS",
+      "parentId": "trust-fund-entity:UNOG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LSS",
+      "label": "Trust Fund for UNOG Local Support Services",
+      "amount": 2862862,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2862862
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOG:fund:LEA",
+      "parentId": "trust-fund-entity:UNOG",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "LEA",
+      "label": "Library Endowment Fund",
+      "amount": 135,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 135
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNON",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNON",
+      "label": "United Nations Office at Nairobi",
+      "amount": 47787,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 47787
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Office at Nairobi",
+        "acronym": "UNON",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNON:fund:UNN",
+      "parentId": "trust-fund-entity:UNON",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "UNN",
+      "label": "Trust Fund for UNON Extrabudgetary",
+      "amount": 47787,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 47787
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOP",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNOP",
+      "label": "United Nations Office for Partnerships",
+      "amount": 32119642,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 32119642
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Office for Partnerships",
+        "acronym": "UNOP",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOP:fund:QGA",
+      "parentId": "trust-fund-entity:UNOP",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "QGA",
+      "label": "United Nations Fund for International Partnership (UNFIP)",
+      "amount": 23555783,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 23555783
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOP:fund:UDF",
+      "parentId": "trust-fund-entity:UNOP",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "UDF",
+      "label": "UN Democracy Trust Fund",
+      "amount": 6481148,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 6481148
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNOP:fund:QGB",
+      "parentId": "trust-fund-entity:UNOP",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "QGB",
+      "label": "Trust Fund for Partnerships",
+      "amount": 2082711,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2082711
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNRISD",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNRISD",
+      "label": "United Nations Research Institute for Social Development",
+      "amount": 3978121,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 3978121
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Research Institute for Social Development",
+        "acronym": "UNRISD",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNRISD:fund:RIA",
+      "parentId": "trust-fund-entity:UNRISD",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "RIA",
+      "label": "United Nations Research Institute for Social Development",
+      "amount": 3978121,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 3978121
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNRoD",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNRoD",
+      "label": "United Nations Register of Damage Caused by the Construction of the Wall in the Occupied Palestinian Territory",
+      "amount": 93178,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 93178
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Register of Damage Caused by the Construction of the Wall in the Occupied Palestinian Territory",
+        "acronym": "UNRoD",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNRoD:fund:ROD",
+      "parentId": "trust-fund-entity:UNRoD",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ROD",
+      "label": "Trust Fund in Support of the United Nations Register of Damage",
+      "amount": 93178,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 93178
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNSMIL",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNSMIL",
+      "label": "United Nations Support Mission in Libya",
+      "amount": 61003,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 61003
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Support Mission in Libya",
+        "acronym": "UNSMIL",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNSMIL:fund:PSL",
+      "parentId": "trust-fund-entity:UNSMIL",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "PSL",
+      "label": "Trust Fund in Support of Peace and Security in Libya",
+      "amount": 61003,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 61003
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNSOM",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNSOM",
+      "label": "United Nations Assistance Mission in Somalia",
+      "amount": 762532,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 762532
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "United Nations Assistance Mission in Somalia",
+        "acronym": "UNSOM",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNSOM:fund:SOP",
+      "parentId": "trust-fund-entity:UNSOM",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SOP",
+      "label": "Trust Fund for Peacebuilding in Somalia",
+      "amount": 762532,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 762532
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:VRA",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "VRA",
+      "label": "Office of the Victims' Rights Advocate",
+      "amount": 463643,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 463643
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Office of the Victims' Rights Advocate",
+        "acronym": "OVRA",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:VRA:fund:SVB",
+      "parentId": "trust-fund-entity:VRA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SVB",
+      "label": "Trust Fund in Support of Victims of Sexual Exploitaion and Abuse",
+      "amount": 463643,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 463643
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    }
+  ]
+}

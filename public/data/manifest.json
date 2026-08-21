@@ -107,6 +107,21 @@
     "min": 2019,
     "max": 2026
   },
+  "trustFundContributors": {
+    "years": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "default": 2024,
+    "min": 2017,
+    "max": 2024
+  },
   "budgetAuditedPpb": {
     "years": [
       2019,
@@ -130,6 +145,21 @@
     "default": 2023,
     "min": 2019,
     "max": 2023
+  },
+  "budgetTrustFunds": {
+    "years": [
+      2017,
+      2018,
+      2019,
+      2020,
+      2021,
+      2022,
+      2023,
+      2024
+    ],
+    "default": 2024,
+    "min": 2017,
+    "max": 2024
   },
   "budgetPpb": {
     "years": [
