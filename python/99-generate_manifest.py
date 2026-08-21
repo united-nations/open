@@ -23,10 +23,10 @@ def generate_manifest():
         "countryExpenses": {"years": detect_years("country-expenses"), "default": "latest"},
         "sdgExpenses": {"years": detect_years("sdg-expenses"), "default": "latest"},
         "regularBudgetContributors": {"years": detect_years("regular-budget-contributors"), "default": "latest"},
-        "trustFundContributors": {"years": detect_years("trust-fund-contributors"), "default": "latest"},
+        "trustFundContributors": {"years": detect_years("trust-fund-contributors"), "default": 2023},
         "budgetAuditedPpb": {"years": detect_years("budget-audited-ppb"), "default": "latest"},
         "budgetAuditedPko": {"years": detect_years("budget-audited-pko"), "default": "latest"},
-        "budgetTrustFunds": {"years": detect_years("budget-trust-funds"), "default": "latest"},
+        "budgetTrustFunds": {"years": detect_years("budget-trust-funds"), "default": 2023},
         # Budget documents (python/12). PPB starts at expenditure year 2023.
         # PKO is keyed by the first year and starts at 2022, which is its
         # 2022/23 cycle and matches audited PKO file 2023 (keyed by ending year).
