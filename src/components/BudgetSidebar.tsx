@@ -16,6 +16,8 @@ import {
   FUNDING_SOURCES,
   unitExplanation,
 } from "@/lib/budgetGroupings";
+import { BAND_PALETTE } from "@/lib/secretariatGroupings";
+import { squarifyDense } from "@/lib/treemapLayout";
 
 interface BudgetSidebarProps {
   node: BudgetNode;
@@ -94,6 +96,142 @@ function BudgetAmount({
         );
       })}
     </span>
+  );
+}
+
+interface MiniTreemapDatum {
+  id: string;
+  label: string;
+  amount: number;
+  color: string;
+  isGap?: boolean;
+}
+
+const FUNDING_TREEMAP_COLORS: Record<BudgetFundingSource, string> = {
+  regular_budget: "#009edb",
+  other_assessed: "#4a7c7e",
+  extrabudgetary: "#006b96",
+};
+
+function MiniBudgetTreemap({
+  node,
+  childNodes,
+  meta,
+}: {
+  node: BudgetNode;
+  childNodes: BudgetNode[];
+  meta: BudgetMeta;
+}) {
+  const positiveChildren = childNodes.filter((child) => child.amount > 0);
+  const hasNegativeChild = childNodes.some((child) => child.amount < 0);
+  const positiveChildTotal = positiveChildren.reduce(
+    (sum, child) => sum + child.amount,
+    0,
+  );
+  const gap = node.amount - positiveChildTotal;
+
+  let data: MiniTreemapDatum[] = positiveChildren.map((child, index) => ({
+    id: child.id,
+    label: child.entity?.name ?? child.label,
+    amount: child.amount,
+    color: BAND_PALETTE[index % BAND_PALETTE.length].bg,
+  }));
+  let caption = "Area shows each published line's share of this amount.";
+
+  if (hasNegativeChild) {
+    caption =
+      "Area compares the positive published lines; negative adjustments remain listed below.";
+  } else if (gap > 5000) {
+    data.push({
+      id: `${node.id}-not-itemized`,
+      label: "Not itemized in the published breakdown",
+      amount: gap,
+      color: "#d1d5db",
+      isGap: true,
+    });
+    caption =
+      "Area shows the published lines; grey is the part not itemized below this level.";
+  } else if (gap < -5000) {
+    caption =
+      "Area compares the published lines with one another; together they exceed the published parent total.";
+  }
+
+  // A leaf can still have a meaningful funding-source composition. This keeps
+  // the sidebar useful for entity rows that the document does not subdivide.
+  if (data.length === 0) {
+    data = Object.entries(node.values ?? {})
+      .filter((entry): entry is [BudgetFundingSource, number] => entry[1] > 0)
+      .map(([funding, amount]) => ({
+        id: funding,
+        label:
+          meta.fundingLabels?.[funding] ??
+          FUNDING_SOURCES[funding]?.label ??
+          funding,
+        amount,
+        color: FUNDING_TREEMAP_COLORS[funding],
+      }));
+    caption = "Area shows the funding-source composition of this amount.";
+  }
+
+  if (data.length === 0) return null;
+
+  const rects = squarifyDense(
+    data
+      .sort((a, b) => b.amount - a.amount)
+      .map((item) => ({ value: item.amount, data: item })),
+    0,
+    0,
+    100,
+    100,
+  );
+
+  return (
+    <div>
+      <div
+        role="img"
+        aria-label={`Treemap breakdown of ${node.entity?.name ?? node.label}`}
+        className="relative h-44 w-full overflow-hidden rounded-sm bg-gray-100"
+      >
+        {rects.map((rect) => {
+          const item = rect.data;
+          const showLabel = rect.width > 15 && rect.height > 14;
+          const showAmount = rect.width > 24 && rect.height > 30;
+          return (
+            <div
+              key={item.id}
+              className="absolute overflow-hidden border border-white/70"
+              style={{
+                left: `${rect.x}%`,
+                top: `${rect.y}%`,
+                width: `${rect.width}%`,
+                height: `${rect.height}%`,
+                backgroundColor: item.color,
+                backgroundImage: item.isGap
+                  ? "repeating-linear-gradient(45deg, rgba(255,255,255,0.2) 0 4px, transparent 4px 8px)"
+                  : undefined,
+              }}
+              title={`${item.label}: ${formatBudget(item.amount)}`}
+            >
+              {showLabel && (
+                <div
+                  className={`flex h-full flex-col justify-end p-1.5 leading-tight ${item.isGap ? "text-gray-800" : "text-white"}`}
+                >
+                  <span className="line-clamp-2 text-[11px] font-medium">
+                    {item.label}
+                  </span>
+                  {showAmount && (
+                    <span className="mt-0.5 text-[10px] opacity-90">
+                      {formatBudget(item.amount)}
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
+          );
+        })}
+      </div>
+      <p className="mt-1.5 text-xs leading-relaxed text-gray-500">{caption}</p>
+    </div>
   );
 }
 
@@ -437,24 +575,36 @@ export function BudgetSidebar({
             </div>
           )}
 
-          {/* Children */}
-          {childNodes.length > 0 && (
+          {/* Hierarchy or, for an undivided leaf, funding-source composition */}
+          {(childNodes.length > 0 || fundingEntries.length > 1) && (
             <div>
               <h3 className="mb-3 text-lg font-normal tracking-wider text-gray-900 uppercase">
-                Budget hierarchy
+                Budget breakdown
               </h3>
-              <BudgetHierarchy
-                nodes={childNodes}
-                childrenByParent={childrenByParent}
+              <MiniBudgetTreemap
+                node={node}
+                childNodes={childNodes}
+                meta={meta}
               />
-              {Math.abs(childGap) > 5000 && (
-                <p className="mt-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-900">
-                  The published parent total is {formatBudget(node.amount)}, but
-                  the published lines below add to {formatBudget(childSum)} — a
-                  difference of {formatBudget(Math.abs(childGap))}. The parent
-                  total remains authoritative; this breakdown is flagged and is
-                  not used to size the treemap.
-                </p>
+              {childNodes.length > 0 && (
+                <>
+                  <div className="mt-4">
+                    <BudgetHierarchy
+                      nodes={childNodes}
+                      childrenByParent={childrenByParent}
+                    />
+                  </div>
+                  {Math.abs(childGap) > 5000 && (
+                    <p className="mt-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-900">
+                      The published parent total is {formatBudget(node.amount)},
+                      but the published lines below add to{" "}
+                      {formatBudget(childSum)}— a difference of{" "}
+                      {formatBudget(Math.abs(childGap))}. The parent total
+                      remains authoritative; this breakdown is flagged and is
+                      not used to size the main treemap.
+                    </p>
+                  )}
+                </>
               )}
             </div>
           )}
