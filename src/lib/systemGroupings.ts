@@ -84,6 +84,12 @@ export const systemGroupingStyles: Record<string, SystemGroupingStyle> = {
     textColor: "text-white",
     order: 11,
   },
+  Uncategorized: {
+    label: "Uncategorized",
+    bgColor: "bg-gray-400",
+    textColor: "text-black",
+    order: 12,
+  },
 };
 
 /**
@@ -108,6 +114,6 @@ export function getSortedSystemGroupings(): Array<
   [string, SystemGroupingStyle]
 > {
   return Object.entries(systemGroupingStyles).sort(
-    ([, a], [, b]) => a.order - b.order
+    ([, a], [, b]) => a.order - b.order,
   );
 }

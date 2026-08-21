@@ -7,6 +7,11 @@ from utils import normalize_entity
 
 DATA = Path("public/data")
 YEARS = list(range(2011, 2025))
+UNCATEGORIZED = "Uncategorized"
+SYNTHETIC_ENTITY_GROUPS = {
+    "UN": "UN Secretariat",
+    "UN-DPO": "Peacekeeping Operations",
+}
 
 def load_revenue() -> dict[str, dict[int, float]]:
     """Load revenue from fused CSV, aggregated by entity."""
@@ -30,7 +35,12 @@ def load_expenses() -> dict[str, dict[int, float]]:
 
 def main():
     entities = json.loads((DATA / "entities.json").read_text())
-    entity_to_group = {e["entity"]: e.get("system_grouping", "Other") for e in entities}
+    entity_to_group = {
+        e["entity"]: e.get("system_grouping") or UNCATEGORIZED
+        for e in entities
+        if e.get("entity")
+    }
+    entity_to_group.update(SYNTHETIC_ENTITY_GROUPS)
     groups = list(dict.fromkeys(e.get("system_grouping") for e in entities if e.get("system_grouping")))
     
     rev, exp = load_revenue(), load_expenses()
@@ -38,7 +48,19 @@ def main():
     
     entities_by_group = defaultdict(list)
     for e in all_entities:
-        entities_by_group[entity_to_group.get(e, "Other")].append(e)
+        entities_by_group[entity_to_group.get(e, UNCATEGORIZED)].append(e)
+
+    # Include fallback groups discovered from the financial data. This keeps
+    # entities with incomplete or entirely missing metadata selectable instead
+    # of silently omitting them from the trends UI.
+    groups.extend(group for group in entities_by_group if group not in groups)
+
+    grouped_entities = {
+        entity
+        for group in groups
+        for entity in entities_by_group[group]
+    }
+    assert grouped_entities == set(all_entities), "Some financial entities have no visible trend grouping"
     
     def year_series(entity_set):
         return [{"year": y,

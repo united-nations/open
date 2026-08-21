@@ -10,7 +10,7 @@ import {
   getSystemGroupingStyle,
   getSortedSystemGroupings,
 } from "@/lib/systemGroupings";
-import { formatBudget } from "@/lib/entities";
+import { createUncategorizedEntity, formatBudget, normalizeEntityForDisplay } from "@/lib/entities";
 import { EntitySidebar } from "@/components/EntitySidebar";
 import { YearSlider } from "@/components/YearSlider";
 import {
@@ -59,17 +59,6 @@ export function EntitiesTreemap() {
     sectionId: "entities",
     onNavigateAway: () => setSelectedEntity(null),
   });
-
-  // Open sidebar when data is loaded and there's a pending deep link
-  useEffect(() => {
-    if (!loading && pendingDeepLink && entities.length > 0) {
-      const entity = entities.find(e => e.entity === pendingDeepLink);
-      if (entity) {
-        setSelectedEntity(entity);
-      }
-      setPendingDeepLink(null);
-    }
-  }, [loading, pendingDeepLink, entities, setPendingDeepLink]);
 
   // Current year based on mode
   const currentYear = showRevenue ? revenueYear : spendingYear;
@@ -201,25 +190,44 @@ export function EntitiesTreemap() {
     ? Object.fromEntries(Object.entries(revenueData).map(([k, v]) => [k, v.total]))
     : spendingData;
 
-  // Check if current spending year has secretariat fusion (detailed breakdown)
-  const isFusionYear = yearRanges.entitySpending.fusionYears?.includes(spendingYear) ?? false;
+  const entityMetadata = new Map(
+    entities
+      .filter((entity) => entity.entity)
+      .map((entity) => [entity.entity, normalizeEntityForDisplay(entity)])
+  );
+  const syntheticMetadata = new Map(
+    syntheticEntities.map((entity) => [entity.entity, entity])
+  );
 
-  // Use synthetic entities for UN/UN-DPO when showing CEB aggregates:
-  // - Revenue mode: always (CEB only has aggregates for revenue)
-  // - Expenses mode: non-fusion years (2011-2018, 2024) use CEB aggregates
-  const useSyntheticEntities = showRevenue || !isFusionYear;
+  // Drive the treemap from the financial dataset, not the metadata dataset.
+  // Missing groupings receive the explicit Uncategorized group, while missing
+  // metadata records receive a minimal placeholder so no positive value is
+  // silently lost at the join.
+  const activeEntities = Object.entries(budgetData)
+    .filter(([entity, amount]) => entity && amount > 0)
+    .map(
+      ([entity]) =>
+        syntheticMetadata.get(entity) ||
+        entityMetadata.get(entity) ||
+        createUncategorizedEntity(entity)
+    );
 
-  const activeEntities = useSyntheticEntities
-    ? [
-        ...syntheticEntities.filter((e) => budgetData[e.entity]),
-        ...entities.filter(
-          (e) =>
-            budgetData[e.entity] &&
-            e.entity !== "UN" &&
-            e.entity !== "UN-DPO"
-        ),
-      ]
-    : entities.filter((e) => spendingData[e.entity] && spendingData[e.entity] > 0);
+  // Resolve against the reconciled list so placeholder entities can be linked.
+  useEffect(() => {
+    if (loading || !pendingDeepLink) return;
+
+    const timer = window.setTimeout(() => {
+      const entity = activeEntities.find(
+        (candidate) => candidate.entity === pendingDeepLink
+      );
+      if (entity) {
+        setSelectedEntity(entity);
+      }
+      setPendingDeepLink(null);
+    }, 0);
+
+    return () => window.clearTimeout(timer);
+  }, [loading, pendingDeepLink, activeEntities, setPendingDeepLink]);
 
   const toggleGroup = (groupKey: string) => {
     setActiveGroups((prev) => {
@@ -236,14 +244,8 @@ export function EntitiesTreemap() {
     setActiveGroups(new Set(Object.keys(systemGroupingStyles)));
   };
 
-  // Get entities with budget > 0
-  const entitiesWithBudget = activeEntities.filter(
-    (entity) =>
-      entity.entity &&
-      entity.system_grouping &&
-      budgetData[entity.entity] &&
-      budgetData[entity.entity] > 0
-  );
+  // activeEntities is already reconciled to positive financial values.
+  const entitiesWithBudget = activeEntities;
 
   // Count entities for each group
   const groupCounts = entitiesWithBudget.reduce(

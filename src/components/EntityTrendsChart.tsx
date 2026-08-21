@@ -38,6 +38,7 @@ const SYSTEM_GROUP_COLORS: Record<string, string> = {
   "Other Entities": "#6b7280",  // gray-500
   "Other Bodies": "#9b8b7a",  // pale-oyster
   "Intergovernmental and Expert Bodies": "#6b7280",  // gray-500
+  "Uncategorized": "#9ca3af",  // gray-400
 };
 
 // Tailwind class mapping for system groups (for multi-select component)
@@ -55,6 +56,7 @@ const SYSTEM_GROUP_BG_CLASSES: Record<string, string> = {
   "Other Entities": "bg-gray-500",
   "Other Bodies": "bg-pale-oyster",
   "Intergovernmental and Expert Bodies": "bg-gray-500",
+  "Uncategorized": "bg-gray-400",
 };
 
 // Color palette for compare lines - designed for good contrast
@@ -120,7 +122,7 @@ export function EntityTrendsChart() {
   React.useEffect(() => {
     if (data && !hasSetDefaultSelection) {
       // Categories to exclude from default selection
-      const excludeFromDefault = new Set(["Other Entities", "Other Bodies", "Intergovernmental and Expert Bodies"]);
+      const excludeFromDefault = new Set(["Other Entities", "Other Bodies", "Intergovernmental and Expert Bodies", "Uncategorized"]);
       
       // Calculate total expenses for each system group (sum of latest year or all years)
       const groupExpenses: Array<{ group: string; total: number }> = [];

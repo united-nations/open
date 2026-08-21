@@ -27,11 +27,15 @@
       "Other Entities",
       "Other Bodies",
       "Funds and Programmes",
-      "Research and Training"
+      "Research and Training",
+      "Uncategorized",
+      "Peacekeeping Operations"
     ],
     "entitiesByGroup": {
+      "Peacekeeping Operations and Political Missions": [],
       "UN Secretariat": [
         "ITC",
+        "UN",
         "UN-Habitat",
         "UNEP",
         "UNODC"
@@ -47,6 +51,7 @@
         "UNFCCC",
         "WTO"
       ],
+      "Regional Commissions": [],
       "Specialized Agencies": [
         "FAO",
         "ICAO",
@@ -62,6 +67,8 @@
         "WIPO",
         "WMO"
       ],
+      "International Court of Justice": [],
+      "Intergovernmental and Expert Bodies": [],
       "Other Entities": [
         "UN Women",
         "UNHCR",
@@ -84,6 +91,16 @@
         "UNITAR",
         "UNSSC",
         "UNU"
+      ],
+      "Uncategorized": [
+        "IARC",
+        "IRMCT",
+        "PAHO",
+        "UNCCD",
+        "UNITAID"
+      ],
+      "Peacekeeping Operations": [
+        "UN-DPO"
       ]
     }
   },
@@ -236,72 +253,72 @@
       {
         "year": 2011,
         "revenue": null,
-        "expenses": 1163906420.0
+        "expenses": 5520752420.0
       },
       {
         "year": 2012,
         "revenue": null,
-        "expenses": 1001328315.0
+        "expenses": 5206049195.0
       },
       {
         "year": 2013,
-        "revenue": 1240034665.85,
-        "expenses": 1107156765.0
+        "revenue": 5365287110.75,
+        "expenses": 5417546385.0
       },
       {
         "year": 2014,
-        "revenue": 1331201027.0,
-        "expenses": 1173224233.0
+        "revenue": 6369343939.7,
+        "expenses": 6317875333.0
       },
       {
         "year": 2015,
-        "revenue": 1179227391.16,
-        "expenses": 1108338271.0
+        "revenue": 6727025057.16,
+        "expenses": 6721478176.0
       },
       {
         "year": 2016,
-        "revenue": 1356404151.23,
-        "expenses": 1080878318.0
+        "revenue": 6503333162.830001,
+        "expenses": 6793912318.0
       },
       {
         "year": 2017,
-        "revenue": 1354714105.69,
-        "expenses": 1156630742.0
+        "revenue": 6837382095.19,
+        "expenses": 6947549270.0
       },
       {
         "year": 2018,
-        "revenue": 1449750086.89,
-        "expenses": 1175237153.96
+        "revenue": 7476568304.14,
+        "expenses": 7413744741.5
       },
       {
         "year": 2019,
-        "revenue": 1579142079.21,
-        "expenses": 1276918789.69
+        "revenue": 7929148315.22,
+        "expenses": 7895296340.46
       },
       {
         "year": 2020,
-        "revenue": 1515951155.93,
-        "expenses": 1104924190.0
+        "revenue": 8030009590.649999,
+        "expenses": 7583662991.84
       },
       {
         "year": 2021,
-        "revenue": 1507718857.0,
-        "expenses": 1313070312.17
+        "revenue": 8467459266.78,
+        "expenses": 7702027191.08
       },
       {
         "year": 2022,
-        "revenue": 1706881332.0,
-        "expenses": 1399340995.0
+        "revenue": 8876202456.0,
+        "expenses": 8675932880.0
       },
       {
         "year": 2023,
-        "revenue": 1858469853.0,
-        "expenses": 1448093001.0
+        "revenue": 9404721425.0,
+        "expenses": 9094056981.0
       },
       {
         "year": 2024,
-        "revenue": 2043471136.0,
-        "expenses": 1641070382.0
+        "revenue": 9682926939.0,
+        "expenses": 9242060730.0
       }
     ],
     "Related Organizations": [
@@ -466,7 +483,7 @@
       },
       {
         "year": 2014,
-        "revenue": 7156433077.11,
+        "revenue": 7156433077.110001,
         "expenses": 6395416578.0
       },
       {
@@ -836,7 +853,7 @@
       },
       {
         "year": 2016,
-        "revenue": 16790531521.800001,
+        "revenue": 16790531521.8,
         "expenses": 16364707697.0
       },
       {
@@ -950,6 +967,150 @@
         "year": 2024,
         "revenue": 218088468.0,
         "expenses": 171794047.0
+      }
+    ],
+    "Uncategorized": [
+      {
+        "year": 2011,
+        "revenue": null,
+        "expenses": 836321196.0
+      },
+      {
+        "year": 2012,
+        "revenue": null,
+        "expenses": 908104309.0
+      },
+      {
+        "year": 2013,
+        "revenue": 1067562781.0,
+        "expenses": 1070222402.0
+      },
+      {
+        "year": 2014,
+        "revenue": 1725654190.0,
+        "expenses": 1645688652.0
+      },
+      {
+        "year": 2015,
+        "revenue": 1370476350.0,
+        "expenses": 1379321927.0
+      },
+      {
+        "year": 2016,
+        "revenue": 1385308220.0,
+        "expenses": 1363470773.0
+      },
+      {
+        "year": 2017,
+        "revenue": 1433052154.0,
+        "expenses": 1435096541.0
+      },
+      {
+        "year": 2018,
+        "revenue": 1560213431.15,
+        "expenses": 1562291876.9
+      },
+      {
+        "year": 2019,
+        "revenue": 1401624778.81,
+        "expenses": 1395307015.63
+      },
+      {
+        "year": 2020,
+        "revenue": 1458968408.58,
+        "expenses": 1493151347.24
+      },
+      {
+        "year": 2021,
+        "revenue": 1926197061.9851031,
+        "expenses": 2080844313.38
+      },
+      {
+        "year": 2022,
+        "revenue": 1800802009.9776356,
+        "expenses": 1785381661.73
+      },
+      {
+        "year": 2023,
+        "revenue": 1436158422.16,
+        "expenses": 1449126651.83
+      },
+      {
+        "year": 2024,
+        "revenue": 366071945.12,
+        "expenses": 1487451167.25
+      }
+    ],
+    "Peacekeeping Operations": [
+      {
+        "year": 2011,
+        "revenue": null,
+        "expenses": 7573730000.0
+      },
+      {
+        "year": 2012,
+        "revenue": null,
+        "expenses": 7544235000.0
+      },
+      {
+        "year": 2013,
+        "revenue": 7335213000.0,
+        "expenses": 7273147000.0
+      },
+      {
+        "year": 2014,
+        "revenue": 7999450000.0,
+        "expenses": 7862742000.0
+      },
+      {
+        "year": 2015,
+        "revenue": 8770847000.0,
+        "expenses": 8759159000.0
+      },
+      {
+        "year": 2016,
+        "revenue": 8726356000.0,
+        "expenses": 8876176000.0
+      },
+      {
+        "year": 2017,
+        "revenue": 8275515000.0,
+        "expenses": 8263932000.0
+      },
+      {
+        "year": 2018,
+        "revenue": 7744298607.8,
+        "expenses": 7987831960.61
+      },
+      {
+        "year": 2019,
+        "revenue": 7462547123.78,
+        "expenses": 7760762953.94
+      },
+      {
+        "year": 2020,
+        "revenue": 7340493005.54,
+        "expenses": 7336866635.97
+      },
+      {
+        "year": 2021,
+        "revenue": 7210429383.83,
+        "expenses": 7265453455.4800005
+      },
+      {
+        "year": 2022,
+        "revenue": 6768862885.0,
+        "expenses": 7091307082.0
+      },
+      {
+        "year": 2023,
+        "revenue": 6989676619.0,
+        "expenses": 7226664864.0
+      },
+      {
+        "year": 2024,
+        "revenue": 6799165959.0,
+        "expenses": 7341051634.0
       }
     ]
   },
@@ -2720,7 +2881,7 @@
       },
       {
         "year": 2018,
-        "revenue": 94121500.07999998,
+        "revenue": 94121500.08,
         "expenses": 60853360.76
       },
       {
@@ -4073,12 +4234,12 @@
       },
       {
         "year": 2015,
-        "revenue": 4910873535.999999,
+        "revenue": 4910873536.0,
         "expenses": 4893472393.0
       },
       {
         "year": 2016,
-        "revenue": 5908911778.200001,
+        "revenue": 5908911778.2,
         "expenses": 5355409043.0
       },
       {
@@ -4212,7 +4373,7 @@
       },
       {
         "year": 2014,
-        "revenue": 375055038.60999995,
+        "revenue": 375055038.61,
         "expenses": 337594738.0
       },
       {
@@ -4232,7 +4393,7 @@
       },
       {
         "year": 2018,
-        "revenue": 436235113.88999987,
+        "revenue": 436235113.89,
         "expenses": 355663225.04
       },
       {
