@@ -264,3 +264,6 @@ __marimo__/
 
 # Reference data pulled from sibling repo releases (large, regenerable)
 data/references/
+
+# Source files and generated outputs from the trust-fund schedule extractor
+data/trust-fund-schedules/

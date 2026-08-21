@@ -23,6 +23,7 @@ The UN Transparency Portal makes financial data from across the UN System access
 | UN Secretariat Spending                                                          | 2019–2023                                              | Granular breakdown into 150+ departments and missions   |
 | [Programme Budget Data](https://github.com/united-nations/programme-budget-data) | PPB expenditure 2019–2025; PKO cycles 2022/23–2024/25  | PPB hierarchy plus separately assessed mission budgets  |
 | [Committee on Contributions](https://www.un.org/en/ga/contributions/)            | Regular-budget assessments and honour rolls, 2019–2026 | Member State assessments and paid-in-full status        |
+| [Schedule of Individual Trust Funds](https://digitallibrary.un.org/record/4060617) | 2017–2024                                             | Audited fund statements and contributor schedules       |
 | [UNINFO](https://uninfo.org/)                                                    | 2022–2024                                              | Cooperation Framework data for 127 countries            |
 
 The two Secretariat treemap sources are deliberately selectable rather than
@@ -91,6 +92,7 @@ See [`docs/`](docs/) for detailed documentation:
 - [Data Fusion: Revenue](docs/data-fusion-revenue.md) — How revenue sources are combined
 - [Data Fusion: Expenses](docs/data-fusion-expenses.md) — How expense data is merged
 - [Regular-budget Contributors](docs/regular-budget-contributors.md) — Assessment and payment-status methodology
+- [Trust-fund Schedules](docs/trust-fund-schedules.md) — PDF extraction, schema, and validation gates
 - [Research Notes](docs/research/) — Background research and data source analysis
 
 ## License
