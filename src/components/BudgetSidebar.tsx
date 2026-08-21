@@ -262,6 +262,8 @@ export function BudgetSidebar({
   const fundingGap = fundingSum - node.amount;
   const childSum = childNodes.reduce((sum, child) => sum + child.amount, 0);
   const childGap = node.amount - childSum;
+  const displayedSources = amountSources(node);
+  const displayedSource = displayedSources[0];
   const omittedLabels = (meta.omitted ?? []).map((o) => o.label).join(", ");
   const isPrinted = node.basis.includes("printed");
   const titleId = "budget-sidebar-title";
@@ -348,7 +350,7 @@ export function BudgetSidebar({
             </span>
             <BudgetAmount
               amount={node.amount}
-              sources={amountSources(node)}
+              sources={displayedSources}
               className="text-2xl font-bold text-gray-900"
             />
             <p className="mt-1 text-xs text-gray-500">
@@ -507,19 +509,24 @@ export function BudgetSidebar({
                 .
               </p>
             )}
-            {node.source && (
+            {displayedSource && (
               <p className="mt-1 text-sm text-gray-700">
-                Table row “{node.source.rowLabel}”, column “
-                {node.source.columnHeader}”.
+                Table row “{displayedSource.rowLabel}”, column “
+                {displayedSource.columnHeader}”.
               </p>
             )}
             <a
-              href={node.source?.url ?? meta.documentUrl ?? meta.source.url}
+              href={displayedSource?.url ?? meta.documentUrl ?? meta.source.url}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 inline-flex items-center gap-1.5 text-sm text-un-blue hover:underline"
             >
-              {node.source?.symbol ?? meta.documentSymbol ?? "Source document"}
+              {displayedSource?.symbol ??
+                meta.documentSymbol ??
+                "Source document"}
+              {displayedSource?.pdfPage
+                ? `, page ${displayedSource.pdfPage}`
+                : ""}
               <ExternalLink className="h-3.5 w-3.5" />
             </a>
             <p className="mt-3 text-xs text-gray-500">
