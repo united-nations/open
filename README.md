@@ -92,7 +92,7 @@ See [`docs/`](docs/) for detailed documentation:
 - [Data Fusion: Revenue](docs/data-fusion-revenue.md) — How revenue sources are combined
 - [Data Fusion: Expenses](docs/data-fusion-expenses.md) — How expense data is merged
 - [Regular-budget Contributors](docs/regular-budget-contributors.md) — Assessment and payment-status methodology
-- [Trust-fund Schedules](docs/trust-fund-schedules.md) — PDF extraction, schema, and validation gates
+- [Trust-fund Schedules](docs/trust-fund-schedules.md) — PDF extraction, schema, validation gates, and entity crosswalk
 - [Research Notes](docs/research/) — Background research and data source analysis
 
 ## License
