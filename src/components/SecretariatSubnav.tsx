@@ -15,7 +15,7 @@ export function SecretariatSubnav() {
   const pathname = usePathname().replace(/\/$/, "") || "/";
 
   return (
-    <div className="sticky top-[65px] z-30 border-b border-gray-200 bg-white/95 backdrop-blur-sm">
+    <div className="sticky top-[65px] z-30 border-b border-gray-200 bg-white/95 backdrop-blur-sm min-[1408px]:top-14">
       <nav
         aria-label="UN Secretariat financials"
         className="mx-auto flex max-w-6xl overflow-x-auto px-6 md:px-12 lg:px-16"

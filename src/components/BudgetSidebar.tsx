@@ -12,6 +12,11 @@ import { formatBudget } from "@/lib/entities";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { ShareButton } from "@/components/ShareButton";
 import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import {
   ENTITY_RELATIONSHIP_NOTES,
   FUNDING_SOURCES,
   unitExplanation,
@@ -104,6 +109,7 @@ interface MiniTreemapDatum {
   label: string;
   amount: number;
   color: string;
+  node?: BudgetNode;
   isGap?: boolean;
 }
 
@@ -116,10 +122,12 @@ const FUNDING_TREEMAP_COLORS: Record<BudgetFundingSource, string> = {
 function MiniBudgetTreemap({
   node,
   childNodes,
+  childrenByParent,
   meta,
 }: {
   node: BudgetNode;
   childNodes: BudgetNode[];
+  childrenByParent: Record<string, BudgetNode[]>;
   meta: BudgetMeta;
 }) {
   const positiveChildren = childNodes.filter((child) => child.amount > 0);
@@ -135,6 +143,7 @@ function MiniBudgetTreemap({
     label: child.entity?.name ?? child.label,
     amount: child.amount,
     color: BAND_PALETTE[index % BAND_PALETTE.length].bg,
+    node: child,
   }));
   let caption = "Area shows each published line's share of this amount.";
 
@@ -184,15 +193,67 @@ function MiniBudgetTreemap({
     100,
     100,
   );
+  const layeredRects = rects.map((rect) => {
+    const item = rect.data;
+    const grandchildren =
+      meta.stream === "ppb" && item.node
+        ? (childrenByParent[item.node.id] ?? [])
+        : [];
+    const positiveGrandchildren = grandchildren.filter(
+      (child) => child.amount > 0,
+    );
+    const grandchildTotal = positiveGrandchildren.reduce(
+      (sum, child) => sum + child.amount,
+      0,
+    );
+    const grandchildGap = item.amount - grandchildTotal;
+    const hasNegativeGrandchild = grandchildren.some(
+      (child) => child.amount < 0,
+    );
+    const secondLevel: MiniTreemapDatum[] = positiveGrandchildren.map(
+      (child) => ({
+        id: child.id,
+        label: child.entity?.name ?? child.label,
+        amount: child.amount,
+        color: item.color,
+        node: child,
+      }),
+    );
+    if (!hasNegativeGrandchild && grandchildGap > 5000 && item.node) {
+      secondLevel.push({
+        id: `${item.node.id}-not-itemized`,
+        label: "Not itemized below this level",
+        amount: grandchildGap,
+        color: "#d1d5db",
+        isGap: true,
+      });
+    }
+    return {
+      ...rect,
+      secondLevelRects: squarifyDense(
+        secondLevel
+          .sort((a, b) => b.amount - a.amount)
+          .map((child) => ({ value: child.amount, data: child })),
+        0,
+        0,
+        100,
+        100,
+      ),
+    };
+  });
+  if (layeredRects.some((rect) => rect.secondLevelRects.length > 0)) {
+    caption +=
+      " Subdivisions show the next published level; hover or focus them for details.";
+  }
 
   return (
     <div>
       <div
-        role="img"
+        role="group"
         aria-label={`Treemap breakdown of ${node.entity?.name ?? node.label}`}
         className="relative h-44 w-full overflow-hidden rounded-sm bg-gray-100"
       >
-        {rects.map((rect) => {
+        {layeredRects.map((rect) => {
           const item = rect.data;
           const showLabel = rect.width > 15 && rect.height > 14;
           const showAmount = rect.width > 24 && rect.height > 30;
@@ -210,11 +271,61 @@ function MiniBudgetTreemap({
                   ? "repeating-linear-gradient(45deg, rgba(255,255,255,0.2) 0 4px, transparent 4px 8px)"
                   : undefined,
               }}
-              title={`${item.label}: ${formatBudget(item.amount)}`}
+              title={
+                rect.secondLevelRects.length === 0
+                  ? `${item.label}: ${formatBudget(item.amount)}`
+                  : undefined
+              }
             >
+              {rect.secondLevelRects.map((secondRect) => {
+                const secondItem = secondRect.data;
+                const kind = secondItem.node
+                  ? KIND_NAMES[secondItem.node.kind]
+                  : null;
+                const share =
+                  item.amount > 0 ? (secondItem.amount / item.amount) * 100 : 0;
+                return (
+                  <Tooltip key={secondItem.id} delayDuration={75}>
+                    <TooltipTrigger asChild>
+                      <div
+                        tabIndex={0}
+                        aria-label={`${kind ? `${kind}: ` : ""}${secondItem.label}, ${formatBudget(secondItem.amount)}, ${share.toFixed(1)}% of ${item.label}`}
+                        className="absolute border border-white/80 focus-visible:z-10 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none focus-visible:ring-inset"
+                        style={{
+                          left: `${secondRect.x}%`,
+                          top: `${secondRect.y}%`,
+                          width: `${secondRect.width}%`,
+                          height: `${secondRect.height}%`,
+                          backgroundColor: secondItem.color,
+                          backgroundImage: secondItem.isGap
+                            ? "repeating-linear-gradient(45deg, rgba(255,255,255,0.2) 0 4px, transparent 4px 8px)"
+                            : undefined,
+                        }}
+                      />
+                    </TooltipTrigger>
+                    <TooltipContent
+                      side="top"
+                      sideOffset={6}
+                      collisionPadding={12}
+                      className="max-w-64 border border-slate-200 bg-white text-slate-800 shadow-lg"
+                    >
+                      {kind && (
+                        <p className="text-[10px] tracking-wide text-slate-500 uppercase">
+                          {kind}
+                        </p>
+                      )}
+                      <p className="font-medium">{secondItem.label}</p>
+                      <p className="mt-0.5 text-slate-600">
+                        {formatBudget(secondItem.amount)} · {share.toFixed(1)}%
+                        of {item.label}
+                      </p>
+                    </TooltipContent>
+                  </Tooltip>
+                );
+              })}
               {showLabel && (
                 <div
-                  className={`flex h-full flex-col justify-end p-1.5 leading-tight ${item.isGap ? "text-gray-800" : "text-white"}`}
+                  className={`pointer-events-none relative z-[2] flex h-full flex-col justify-end p-1.5 leading-tight ${item.isGap ? "text-gray-800" : "text-white"}`}
                 >
                   <span className="line-clamp-2 text-[11px] font-medium">
                     {item.label}
@@ -258,62 +369,51 @@ function BudgetHierarchy({
   childrenByParent,
   depth = 0,
   scaleMaximum,
-  parentAmount,
 }: {
   nodes: BudgetNode[];
   childrenByParent: Record<string, BudgetNode[]>;
   depth?: number;
   scaleMaximum?: number;
-  parentAmount?: number;
 }) {
-  // One quantitative scale for the entire expanded subtree. A nested row's
-  // neutral reference is its parent on that same scale, so both absolute size
-  // and the child's share of its parent remain visible.
+  // One quantitative scale for the entire expanded subtree, so bar lengths
+  // remain directly comparable across hierarchy levels.
   const commonMaximum =
     scaleMaximum ?? maximumHierarchyAmount(nodes, childrenByParent);
-  const referenceAmount = parentAmount ?? commonMaximum;
   const scaledWidth = (amount: number) =>
     commonMaximum > 0
       ? Math.min(100, Math.max(0, (amount / commonMaximum) * 100))
       : 0;
 
   return (
-    <ul
-      className={
-        depth === 0
-          ? "space-y-2"
-          : "mt-2 ml-3 space-y-2 border-l border-gray-200 pl-3"
-      }
-    >
+    <ul className={depth === 0 ? "space-y-2" : "mt-2 space-y-2"}>
       {nodes.map((child) => {
         const descendants = childrenByParent[child.id] ?? [];
         return (
           <li key={child.id}>
-            <div className="flex items-baseline justify-between gap-3 text-sm">
-              <span className="min-w-0 text-gray-700">
+            <div className="grid grid-cols-[minmax(0,1fr)_4rem_5.5rem] items-center gap-x-3 text-sm sm:grid-cols-[minmax(0,1fr)_5rem_6rem]">
+              <span
+                className="min-w-0 leading-tight text-gray-700"
+                style={{ paddingLeft: `${depth * 0.75}rem` }}
+              >
                 {KIND_NAMES[child.kind] && (
-                  <span className="mr-1.5 text-[10px] tracking-wide text-gray-400 uppercase">
+                  <span className="mb-0.5 block text-[10px] tracking-wide text-gray-400 uppercase">
                     {KIND_NAMES[child.kind]}
                   </span>
                 )}
-                {child.entity?.name ?? child.label}
+                <span className="block">
+                  {child.entity?.name ?? child.label}
+                </span>
               </span>
+              <div className="h-1.5 w-full">
+                <div
+                  className="h-full rounded-sm bg-un-blue"
+                  style={{ width: `${scaledWidth(child.amount)}%` }}
+                />
+              </div>
               <BudgetAmount
                 amount={child.amount}
                 sources={amountSources(child)}
-                className="shrink-0 text-gray-900"
-              />
-            </div>
-            <div className="relative mt-0.5 h-1.5 w-full">
-              <div
-                className="absolute inset-y-0 left-0 rounded-sm bg-gray-100"
-                style={{
-                  width: `${scaledWidth(referenceAmount)}%`,
-                }}
-              />
-              <div
-                className="absolute inset-y-0 left-0 rounded-sm bg-un-blue"
-                style={{ width: `${scaledWidth(child.amount)}%` }}
+                className="justify-self-end whitespace-nowrap text-gray-900"
               />
             </div>
             {descendants.length > 0 && (
@@ -322,7 +422,6 @@ function BudgetHierarchy({
                 childrenByParent={childrenByParent}
                 depth={depth + 1}
                 scaleMaximum={commonMaximum}
-                parentAmount={child.amount}
               />
             )}
           </li>
@@ -584,6 +683,7 @@ export function BudgetSidebar({
               <MiniBudgetTreemap
                 node={node}
                 childNodes={childNodes}
+                childrenByParent={childrenByParent}
                 meta={meta}
               />
               {childNodes.length > 0 && (

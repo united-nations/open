@@ -34,7 +34,7 @@ export function SiteHeader() {
   const inlineOnly = "min-[1408px]:hidden";
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 py-3 backdrop-blur-sm supports-backdrop-filter:bg-background/60">
+    <header className="sticky top-0 z-40 w-full border-b border-border bg-background/95 py-3 backdrop-blur-sm supports-backdrop-filter:bg-background/95">
       {/* Skip link for keyboard/screen reader users */}
       <a
         href="#main-content"

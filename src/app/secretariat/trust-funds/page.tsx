@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { BudgetTreemap } from "@/components/BudgetTreemap";
+import { PageSectionNav } from "@/components/PageSectionNav";
 import { SectionBanner } from "@/components/SectionBanner";
 import { TrustFundContributorsTreemap } from "@/components/TrustFundContributorsTreemap";
 
@@ -9,13 +10,20 @@ export const metadata: Metadata = {
     "Explore individual UN Secretariat trust funds and their contributors.",
 };
 
+const pageSections = [
+  { id: "trust-fund-spending", label: "Fund spending" },
+  { id: "trust-fund-contributors", label: "Contributors" },
+] as const;
+
 export default function TrustFundsPage() {
   return (
     <>
+      <PageSectionNav sections={pageSections} underSecretariatNav />
+
       <SectionBanner
         id="trust-fund-spending"
-        imageSrc="/images/banners/hero-banner-secretariat-expenses.png"
-        title="How do trust funds spend funds?"
+        underSecretariatNav
+        title="How are the trust funds spending?"
         description="Explore individual trust-fund expenses grouped by their mapped Secretariat entity."
       />
       <section className="mx-auto max-w-6xl px-6 py-12 md:px-12 lg:px-16">
@@ -30,7 +38,7 @@ export default function TrustFundsPage() {
 
       <SectionBanner
         id="trust-fund-contributors"
-        imageSrc="/images/banners/hero-banner-homepage.png"
+        underSecretariatNav
         title="Who contributes to trust funds?"
         description="Explore recognized voluntary contributions by contributor and destination fund."
       />

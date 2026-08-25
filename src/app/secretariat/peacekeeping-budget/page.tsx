@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DataPlaceholder } from "@/components/DataPlaceholder";
+import { PageSectionNav } from "@/components/PageSectionNav";
 import { SectionBanner } from "@/components/SectionBanner";
 
 export const metadata: Metadata = {
@@ -8,12 +9,19 @@ export const metadata: Metadata = {
     "Explore how peacekeeping missions spend funds and who contributes to them.",
 };
 
+const pageSections = [
+  { id: "peacekeeping-spending", label: "Mission spending" },
+  { id: "peacekeeping-contributors", label: "Contributors" },
+] as const;
+
 export default function PeacekeepingBudgetPage() {
   return (
     <>
+      <PageSectionNav sections={pageSections} underSecretariatNav />
+
       <SectionBanner
         id="peacekeeping-spending"
-        imageSrc="/images/banners/hero-banner-secretariat-expenses.png"
+        underSecretariatNav
         title="How do peacekeeping missions spend funds?"
         description="A geographic view of peacekeeping mission expenditure."
       />
@@ -28,7 +36,7 @@ export default function PeacekeepingBudgetPage() {
 
       <SectionBanner
         id="peacekeeping-contributors"
-        imageSrc="/images/banners/hero-banner-homepage.png"
+        underSecretariatNav
         title="Who contributes to peacekeeping missions?"
         description="Assessed contributions to UN peacekeeping operations."
       />

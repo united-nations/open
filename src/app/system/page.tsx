@@ -1,4 +1,6 @@
 import {
+  ArrowDown,
+  ArrowRight,
   Banknote,
   Building2,
   FileText,
@@ -12,19 +14,28 @@ import {
 } from "lucide-react";
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { ContributorsTreemap } from "@/components/ContributorsTreemap";
 import { ContributorTrendsChart } from "@/components/ContributorTrendsChart";
 import { CountryMap } from "@/components/CountryMap";
-import { DataPlaceholder } from "@/components/DataPlaceholder";
 import { EntitiesTreemap } from "@/components/EntitiesTreemap";
 import { EntityTrendsChart } from "@/components/EntityTrendsChart";
 import { ExpandableCard } from "@/components/ExpandableCard";
 import { QuoteBlock } from "@/components/QuoteBlock";
+import { PageSectionNav } from "@/components/PageSectionNav";
 import { ResourceLink } from "@/components/ResourceLink";
 import { SectionBanner } from "@/components/SectionBanner";
 import SDGsGrid from "@/components/SDGsGrid";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+const pageSections = [
+  { id: "donors", label: "Contributors" },
+  { id: "entities", label: "Organizations" },
+  { id: "countries", label: "Locations" },
+  { id: "sdgs", label: "Goals" },
+  { id: "background", label: "Background" },
+] as const;
 
 export const metadata: Metadata = {
   title: "UN System Financials",
@@ -36,7 +47,10 @@ export default function SystemPage() {
   return (
     <>
       {/* Welcome Section */}
-      <section className="mx-auto max-w-6xl px-6 py-12 md:px-12 md:py-16 lg:px-16">
+      <section className="mx-auto max-w-6xl px-6 pt-8 pb-6 md:px-12 lg:px-16">
+        <h1 className="mb-4 text-4xl font-bold tracking-tight text-gray-900">
+          Understand the financing of the UN System.
+        </h1>
         <p className="max-w-3xl text-base leading-relaxed text-gray-700 md:text-lg">
           The Transparency Portal opens up financial data from across the UN
           System.
@@ -44,15 +58,41 @@ export default function SystemPage() {
           Explore who contributes, which organizations are funded, where
           resources are deployed, and which goals they support.
         </p>
+        <div className="mt-6 grid gap-3 sm:grid-cols-2">
+          <a
+            href="#donors"
+            className="group flex items-center gap-3 bg-gray-100 px-4 py-4 text-sm font-medium text-gray-900 transition-colors hover:bg-sky-50"
+          >
+            <ArrowDown
+              className="size-4 shrink-0 text-un-blue transition-transform group-hover:translate-y-0.5"
+              aria-hidden="true"
+            />
+            <span>Explore finances across the UN System</span>
+          </a>
+          <Link
+            href="/secretariat"
+            className="group flex items-center gap-3 bg-gray-100 px-4 py-4 text-sm font-medium text-gray-900 transition-colors hover:bg-sky-50"
+          >
+            <ArrowRight
+              className="size-4 shrink-0 text-un-blue transition-transform group-hover:translate-x-0.5"
+              aria-hidden="true"
+            />
+            <span>Drill down on UN Secretariat finances</span>
+          </Link>
+        </div>
       </section>
 
+      <PageSectionNav sections={pageSections} />
+
       {/* Donors Section */}
-      <SectionBanner
-        id="donors"
-        imageSrc="/images/banners/hero-banner-homepage.png"
-        title="Who is contributing?"
-        description="The work of the UN System is financially supported by many contributors. Explore who is contributing to the UN System, which organizations they fund, and what type of contributions they make — from assessed and voluntary core contributions to earmarked funding."
-      />
+      <div className="pt-6">
+        <SectionBanner
+          id="donors"
+          imageSrc="/images/banners/hero-banner-homepage.png"
+          title="Who is contributing?"
+          description="The work of the UN System is financially supported by many contributors. Explore who is contributing to the UN System, which organizations they fund, and what type of contributions they make — from assessed and voluntary core contributions to earmarked funding."
+        />
+      </div>
       <section className="mx-auto max-w-6xl px-6 py-12 md:px-12 lg:px-16">
         <ContributorsTreemap />
         <p className="mt-4 text-xs text-gray-500">
@@ -135,7 +175,7 @@ export default function SystemPage() {
       </section>
 
       {/* Background Section */}
-      <section className="bg-white py-12 md:py-16">
+      <section id="background" className="scroll-mt-28 bg-white py-12 md:py-16">
         <div className="mx-auto max-w-6xl px-6 md:px-12 lg:px-16">
           <h2 className="mb-8 text-2xl font-bold text-gray-900">Background</h2>
 

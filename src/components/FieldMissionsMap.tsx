@@ -37,6 +37,8 @@ interface FieldMissionModel {
 const MAX_MISSION_RADIUS_PX = 28;
 const UNDP_MIN_RADIUS_PX = 0.25;
 const DOLLARS_PER_RADIUS_PIXEL_SQUARED = 1_500_000;
+const CONNECTOR_FILL = "#d1d5db";
+const CONNECTOR_STROKE = "#6b7280";
 
 /**
  * DotDensityMap maps `radius` through a square-root scale with a hard-coded
@@ -201,20 +203,20 @@ export function FieldMissionsMap() {
         >
           <polygon
             points={`${secretariatEnd},0 ${spmEnd},0 ${expandedSpmEnd},56 0,56`}
-            fill={spmColor}
-            fillOpacity="0.08"
+            fill={CONNECTOR_FILL}
+            fillOpacity="0.3"
           />
           <polygon
             points={`${spmEnd},0 ${pkoEnd},0 100,56 ${expandedSpmEnd},56`}
-            fill={pkoColor}
-            fillOpacity="0.06"
+            fill={CONNECTOR_FILL}
+            fillOpacity="0.3"
           />
           <line
             x1={secretariatEnd}
             y1="0"
             x2="0"
             y2="56"
-            stroke={spmColor}
+            stroke={CONNECTOR_STROKE}
             strokeOpacity="0.55"
             vectorEffect="non-scaling-stroke"
           />
@@ -223,14 +225,34 @@ export function FieldMissionsMap() {
             y1="0"
             x2="100"
             y2="56"
-            stroke={pkoColor}
+            stroke={CONNECTOR_STROKE}
             strokeOpacity="0.55"
             vectorEffect="non-scaling-stroke"
           />
         </svg>
       </div>
 
-      <div className="border border-gray-200 bg-white">
+      <div className="relative border border-gray-200 bg-white">
+        <div
+          className="absolute bottom-3 left-3 z-10 flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-sm border border-gray-200 bg-white/95 px-3 py-2 text-xs text-gray-700 shadow-sm"
+          aria-label="Mission type legend"
+        >
+          {(
+            [
+              ["spm", spmColor],
+              ["pko", pkoColor],
+            ] as const
+          ).map(([group, color]) => (
+            <span key={group} className="flex items-center gap-1.5">
+              <span
+                className="size-2.5 shrink-0 rounded-full"
+                style={{ backgroundColor: color }}
+                aria-hidden="true"
+              />
+              {entitiesData.groups[group].label}
+            </span>
+          ))}
+        </div>
         <DotDensityMap
           data={model.points}
           colorDomain={["spm", "pko"]}

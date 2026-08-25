@@ -896,9 +896,14 @@ export function BudgetTreemap({
       Math.abs(node.breakdown?.difference ?? 0) > 5000,
   ).length;
   const publishedRoot = data.nodes.find((node) => node.parentId === null);
-  const headlineTotal = headlineFundingSource
-    ? (publishedRoot?.values?.[headlineFundingSource] ?? 0)
-    : null;
+  const headlineSources = headlineFundingSource
+    ? [
+        headlineFundingSource,
+        ...activeFundingSources.filter(
+          (source) => source !== headlineFundingSource,
+        ),
+      ]
+    : [];
   const drawnTileCount = bands.reduce(
     (bandTotal, band) =>
       bandTotal +
@@ -930,14 +935,21 @@ export function BudgetTreemap({
     <div className="w-full">
       {controls}
 
-      {headlineFundingSource && (
-        <div className="mb-4 border-l-4 border-un-blue bg-sky-50 px-4 py-3">
-          <p className="text-xs font-medium tracking-wide text-gray-600 uppercase">
-            {fundingLabel(headlineFundingSource)} total
-          </p>
-          <p className="mt-1 text-3xl font-bold text-gray-900">
-            {formatBudget(headlineTotal ?? 0)}
-          </p>
+      {headlineSources.length > 0 && (
+        <div className="mb-4 flex flex-wrap gap-3">
+          {headlineSources.map((source) => (
+            <div
+              key={source}
+              className="min-w-48 flex-1 border-l-4 border-un-blue bg-sky-50 px-4 py-3"
+            >
+              <p className="text-xs font-medium tracking-wide text-gray-600 uppercase">
+                {fundingLabel(source)} total
+              </p>
+              <p className="mt-1 text-3xl font-bold text-gray-900">
+                {formatBudget(publishedRoot?.values?.[source] ?? 0)}
+              </p>
+            </div>
+          ))}
         </div>
       )}
 

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PageSectionNav } from "@/components/PageSectionNav";
 import { RegularBudgetContributorsTreemap } from "@/components/RegularBudgetContributorsTreemap";
 import { RegularBudgetView } from "@/components/RegularBudgetView";
 import { SectionBanner } from "@/components/SectionBanner";
@@ -9,13 +10,20 @@ export const metadata: Metadata = {
     "Explore regular-budget spending and assessed contributions from UN Member States.",
 };
 
+const pageSections = [
+  { id: "regular-budget-spending", label: "Spending" },
+  { id: "regular-budget-contributors", label: "Contributors" },
+] as const;
+
 export default function RegularBudgetPage() {
   return (
     <>
+      <PageSectionNav sections={pageSections} underSecretariatNav />
+
       <SectionBanner
         id="regular-budget-spending"
-        imageSrc="/images/banners/hero-banner-secretariat-expenses.png"
-        title="What does the UN spend on the regular budget?"
+        underSecretariatNav
+        title="How does the regular budget and spending break down?"
         description="Explore expenditure in the UN programme budget by budget part, section and entity."
       />
       <section className="mx-auto max-w-6xl px-6 py-12 md:px-12 lg:px-16">
@@ -24,7 +32,7 @@ export default function RegularBudgetPage() {
 
       <SectionBanner
         id="regular-budget-contributors"
-        imageSrc="/images/banners/hero-banner-homepage.png"
+        underSecretariatNav
         title="Who contributes to the regular budget?"
         description="Explore Member State assessments, paid-in-full status and the timing of payments."
       />

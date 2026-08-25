@@ -145,8 +145,7 @@
  * 
  * Strategy:
  * 1. Always show scrollbar gutter (reserved space) on <html> to prevent horizontal shifts
- * 2. Force scrollbar on <body> to ensure consistent spacing
- * 3. Hide visual scrollbar in Webkit browsers while maintaining functionality
+ * 2. Keep <body> overflow visible so the document has one viewport scroll container
  * 
  * Result: Smooth navigation without content jumping left/right
  * Browser Support: Works across all modern browsers
@@ -156,15 +155,6 @@
 html {
   overflow-y: scroll;
   scrollbar-gutter: stable;
-}
-
-body {
-  overflow-y: scroll;
-}
-
-/* Hide scrollbar for Webkit browsers (Chrome, Safari) */
-body::-webkit-scrollbar {
-  display: none;
 }
 
 /**
@@ -248,4 +238,3 @@ body::-webkit-scrollbar {
   opacity: 0;
   transform: translateX(-60px) rotate(-360deg) scale(0.3);
 }
-
