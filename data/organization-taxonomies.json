@@ -1,0 +1,104 @@
+{
+  "schema_version": 1,
+  "system_groupings": [
+    { "key": "UN Secretariat", "label": "UN Secretariat", "order": 1 },
+    {
+      "key": "Peacekeeping Operations and Political Missions",
+      "label": "Peacekeeping",
+      "order": 2
+    },
+    { "key": "Peacekeeping Operations", "label": "Peacekeeping", "order": 2 },
+    {
+      "key": "Regional Commissions",
+      "label": "Regional Commissions",
+      "order": 3
+    },
+    {
+      "key": "Funds and Programmes",
+      "label": "Funds & Programmes",
+      "order": 4
+    },
+    {
+      "key": "Research and Training",
+      "label": "Research & Training",
+      "order": 5
+    },
+    { "key": "Subsidiary Organs", "label": "Subsidiary Organs", "order": 6 },
+    {
+      "key": "International Court of Justice",
+      "label": "International Court of Justice",
+      "order": 7
+    },
+    {
+      "key": "Intergovernmental and Expert Bodies",
+      "label": "Intergovernmental and Expert Bodies",
+      "order": 8
+    },
+    {
+      "key": "Specialized Agencies",
+      "label": "Specialized Agencies",
+      "order": 9
+    },
+    {
+      "key": "Related Organizations",
+      "label": "Related Organizations",
+      "order": 10
+    },
+    { "key": "Other Entities", "label": "Other Entities", "order": 11 },
+    { "key": "Other Bodies", "label": "Other Bodies", "order": 12 },
+    { "key": "Uncategorized", "label": "Uncategorized", "order": 13 }
+  ],
+  "regions": [
+    { "key": "Africa", "label": "Africa", "order": 1 },
+    { "key": "Asia", "label": "Asia", "order": 2 },
+    { "key": "Americas", "label": "Americas", "order": 3 },
+    { "key": "Europe", "label": "Europe", "order": 4 },
+    { "key": "Oceania", "label": "Oceania", "order": 5 },
+    { "key": "Global and Interregional", "label": "Global", "order": 6 }
+  ],
+  "contributor_categories": {
+    "Government": "Government",
+    "Non-Government": "Non-Gov",
+    "NGOs": "NGO",
+    "Foundations": "Foundation",
+    "Private Sector": "Private",
+    "Academic": "Academic",
+    "European Union": "EU",
+    "Multilateral - IFIs": "IFI",
+    "Multilateral - Global Funds": "Global Fund",
+    "Multilateral - UN Orgs": "UN Org",
+    "Multilateral - UN Pooled Funds": "UN Pooled",
+    "Multilateral - Other": "Multilateral",
+    "Other Contributors": "Other",
+    "No Contributor": "N/A",
+    "Other": "Other",
+    "Unattributed": "Unattributed"
+  },
+  "contributor_statuses": [
+    { "key": "member", "label": "Member State", "order": 1 },
+    { "key": "observer", "label": "Observer State", "order": 2 },
+    { "key": "nonmember", "label": "Non-Member State", "order": 3 },
+    { "key": "organization", "label": "Non-Government", "order": 4 }
+  ],
+  "financing_instruments": [
+    {
+      "key": "Assessed",
+      "label": "Assessed",
+      "order": 1,
+      "tooltip": "Fixed contributions calculated by formula that Member States pay upon signing a treaty"
+    },
+    {
+      "key": "Voluntary un-earmarked",
+      "label": "Voluntary un-earmarked",
+      "order": 2,
+      "tooltip": "Voluntary contributions without restrictions on use (core funding)"
+    },
+    {
+      "key": "Voluntary earmarked",
+      "label": "Voluntary earmarked",
+      "order": 3,
+      "tooltip": "Voluntary contributions tied to specific purposes or programmes (non-core)"
+    },
+    { "key": "Other", "label": "Other", "order": 4, "tooltip": "Other revenue" }
+  ]
+}

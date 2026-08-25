@@ -34,7 +34,11 @@ import { ChartSearchInput } from "@/components/ui/chart-search-input";
 import { Switch } from "@/components/ui/switch";
 import { YearSlider } from "@/components/YearSlider";
 import { useYearRanges } from "@/lib/useYearRanges";
-import { squarifyDense, type TreemapItem } from "@/lib/treemapLayout";
+import {
+  layoutGroups,
+  squarifyDense,
+  type TreemapItem,
+} from "@/lib/treemapLayout";
 import {
   auditedFiscalYearLabel,
   BUDGET_FUNDING_SOURCES,
@@ -192,6 +196,10 @@ interface BudgetTreemapProps {
   activeFundingSources: BudgetFundingSource[];
   /** Reports the filtered root total to the budget selector. */
   onTotalChange?: (total: number) => void;
+  /** Show one source as the only headline total, even when other sources are drawn. */
+  headlineFundingSource?: BudgetFundingSource;
+  /** Trust-fund pages can draw the individual funds rather than entity totals. */
+  trustFundLevel?: "entity" | "fund";
 }
 
 export function BudgetTreemap({
@@ -200,10 +208,13 @@ export function BudgetTreemap({
   sectionId,
   activeFundingSources,
   onTotalChange,
+  headlineFundingSource,
+  trustFundLevel = "entity",
 }: BudgetTreemapProps) {
   const yearRanges = useYearRanges();
   const isAudited = dataset.startsWith("budget-audited-");
   const isTrustFund = dataset === "budget-trust-funds";
+  const usesOverviewGroupLayout = isTrustFund && trustFundLevel === "fund";
   const isPko = dataset.endsWith("-pko");
   const yearLabel = isPko
     ? isAudited
@@ -288,6 +299,10 @@ export function BudgetTreemap({
     const updateLayout = () => {
       const width = window.innerWidth;
       setIsMobile(width < 640);
+      if (usesOverviewGroupLayout) {
+        setCanvasHeight(720);
+        return;
+      }
       setCanvasHeight(
         width < 640 ? (isExpanded ? 6000 : 2000) : width < 1024 ? 1600 : 1200,
       );
@@ -295,7 +310,7 @@ export function BudgetTreemap({
     updateLayout();
     window.addEventListener("resize", updateLayout);
     return () => window.removeEventListener("resize", updateLayout);
-  }, [isExpanded]);
+  }, [isExpanded, usesOverviewGroupLayout]);
 
   useEffect(() => {
     setMounted(true);
@@ -513,6 +528,46 @@ export function BudgetTreemap({
           drawnTotal: root.amount,
         };
       }
+      if (isTrustFund && trustFundLevel === "fund") {
+        const entityNodes = filteredData.nodes.filter(
+          (node) => node.tier === "budget_unit",
+        );
+        const groups = entityNodes
+          .map((entityNode) => {
+            const tiles = (childrenOf[entityNode.id] ?? [])
+              .filter(
+                (node) =>
+                  node.tier === "detail" &&
+                  node.amount > 0 &&
+                  keep(node, `${entityNode.code ?? ""} ${entityNode.label}`),
+              )
+              .map((node) => tileOf(node, node.label))
+              .sort((a, b) => b.node.amount - a.node.amount);
+            return {
+              key: entityNode.id,
+              total: tiles.reduce((sum, tile) => sum + tile.node.amount, 0),
+              tiles,
+            };
+          })
+          .filter((group) => group.total > 0)
+          .sort((a, b) => b.total - a.total);
+        const total = groups.reduce((sum, group) => sum + group.total, 0);
+        if (total <= 0) return empty;
+        return {
+          bands: [
+            {
+              key: "individual-trust-funds",
+              caption: "",
+              name: "Individual trust funds",
+              total,
+              variance: null,
+              groups,
+              colors: BAND_PALETTE[0],
+            },
+          ],
+          drawnTotal: total,
+        };
+      }
       // Part -> section -> budget unit. The tiles are one tier, so two tiles of
       // the same size mean the same thing wherever they sit in the chart.
       const parts = filteredData.nodes
@@ -696,6 +751,7 @@ export function BudgetTreemap({
     filteredData,
     isPko,
     isTrustFund,
+    trustFundLevel,
     lens,
     searchQuery,
     childrenOf,
@@ -760,7 +816,9 @@ export function BudgetTreemap({
     key;
 
   const controls = (
-    <div className="mb-3 flex flex-col flex-wrap gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-3">
+    <div
+      className={`${usesOverviewGroupLayout ? "mb-6" : "mb-3"} flex flex-col flex-wrap gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-3`}
+    >
       <ChartSearchInput
         value={searchQuery}
         onChange={setSearchQuery}
@@ -773,10 +831,12 @@ export function BudgetTreemap({
         }
       />
       <div className="flex flex-wrap items-center gap-4">
-        <span className="text-sm text-gray-500">
-          Expenditure {meta?.fiscalYear ?? (yearLabel ? yearLabel(year) : year)}{" "}
-          · USD
-        </span>
+        {!usesOverviewGroupLayout && (
+          <span className="text-sm text-gray-500">
+            Expenditure{" "}
+            {meta?.fiscalYear ?? (yearLabel ? yearLabel(year) : year)} · USD
+          </span>
+        )}
         {/* One year is not a range: a slider that cannot be moved only invites
             the reader to look for years that are not there. */}
         {range.years.length > 1 && (
@@ -816,7 +876,10 @@ export function BudgetTreemap({
     return (
       <div className="w-full">
         {controls}
-        <div className="flex h-[1200px] w-full items-center justify-center bg-gray-50">
+        <div
+          className="flex w-full items-center justify-center bg-gray-50"
+          style={{ height: `${canvasHeight}px` }}
+        >
           <p className="text-lg text-gray-500">Loading…</p>
         </div>
       </div>
@@ -832,6 +895,19 @@ export function BudgetTreemap({
       ["whole", "part", "section"].includes(node.tier) &&
       Math.abs(node.breakdown?.difference ?? 0) > 5000,
   ).length;
+  const publishedRoot = data.nodes.find((node) => node.parentId === null);
+  const headlineTotal = headlineFundingSource
+    ? (publishedRoot?.values?.[headlineFundingSource] ?? 0)
+    : null;
+  const drawnTileCount = bands.reduce(
+    (bandTotal, band) =>
+      bandTotal +
+      band.groups.reduce(
+        (groupTotal, group) => groupTotal + group.tiles.length,
+        0,
+      ),
+    0,
+  );
 
   if (bands.length === 0) {
     return (
@@ -853,6 +929,17 @@ export function BudgetTreemap({
   return (
     <div className="w-full">
       {controls}
+
+      {headlineFundingSource && (
+        <div className="mb-4 border-l-4 border-un-blue bg-sky-50 px-4 py-3">
+          <p className="text-xs font-medium tracking-wide text-gray-600 uppercase">
+            {fundingLabel(headlineFundingSource)} total
+          </p>
+          <p className="mt-1 text-3xl font-bold text-gray-900">
+            {formatBudget(headlineTotal ?? 0)}
+          </p>
+        </div>
+      )}
 
       {meta.partial && (
         <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
@@ -878,10 +965,21 @@ export function BudgetTreemap({
         </div>
       )}
 
+      {usesOverviewGroupLayout && (
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-600">
+          <span>
+            {drawnTileCount} tile{drawnTileCount === 1 ? "" : "s"} · tile area
+            uses individual trust-fund expenses
+          </span>
+        </div>
+      )}
+
       <div className="flex flex-col gap-2 lg:flex-row">
         {/* Narrow screens have no room for the name column, so the bands are
             listed above the chart, with a button that makes them tappable. */}
-        <div className="block space-y-2 rounded bg-gray-50 px-2 py-3 lg:hidden">
+        <div
+          className={`${usesOverviewGroupLayout ? "hidden" : "block"} space-y-2 rounded bg-gray-50 px-2 py-3 lg:hidden`}
+        >
           <div className="flex items-center justify-between">
             <div className="text-xs font-medium text-gray-700">
               {isPko
@@ -924,14 +1022,28 @@ export function BudgetTreemap({
         >
           {bandLayout.map(({ band, startY, height }) => {
             const bandHeightPx = (height / 100) * canvasHeight;
-            const groupRects = squarifyDense<Group>(
-              band.groups.map((g) => ({ value: g.total, data: g })),
-              0,
-              0,
-              100,
-              100,
-              isMobile,
-            );
+            const groupRects = usesOverviewGroupLayout
+              ? layoutGroups(
+                  band.groups.map((group) => ({
+                    key: group.key,
+                    total: group.total,
+                  })),
+                  100,
+                  100,
+                  0.4,
+                  5,
+                ).map((rect) => ({
+                  ...rect,
+                  data: band.groups.find((group) => group.key === rect.key)!,
+                }))
+              : squarifyDense<Group>(
+                  band.groups.map((g) => ({ value: g.total, data: g })),
+                  0,
+                  0,
+                  100,
+                  100,
+                  isMobile,
+                );
 
             return (
               <div
@@ -941,6 +1053,14 @@ export function BudgetTreemap({
               >
                 {groupRects.map((groupRect) => {
                   const group = groupRect.data;
+                  const groupIndex = band.groups.findIndex(
+                    (candidate) => candidate.key === group.key,
+                  );
+                  const groupColors = usesOverviewGroupLayout
+                    ? BAND_PALETTE[
+                        Math.max(0, groupIndex) % BAND_PALETTE.length
+                      ]
+                    : band.colors;
                   const items: TreemapItem<Tile>[] = group.tiles.map((t) => ({
                     value: t.node.amount,
                     data: t,
@@ -951,7 +1071,7 @@ export function BudgetTreemap({
                     0,
                     100,
                     100,
-                    isMobile,
+                    usesOverviewGroupLayout ? false : isMobile,
                   );
                   const groupHeightPx = (groupRect.height / 100) * bandHeightPx;
 
@@ -966,13 +1086,32 @@ export function BudgetTreemap({
                         height: `${groupRect.height}%`,
                       }}
                     >
+                      {isTrustFund && trustFundLevel === "fund" && (
+                        <span
+                          className="pointer-events-none absolute top-0 left-0 z-20 max-w-[60%] truncate bg-white/90 px-1.5 py-1 text-[10px] font-bold shadow-sm sm:text-xs"
+                          style={{ color: groupColors.bg }}
+                        >
+                          {byId[group.key]?.entity?.acronym ??
+                            byId[group.key]?.code ??
+                            byId[group.key]?.label}
+                        </span>
+                      )}
                       {tileRects.map((rect) => {
                         const tile = rect.data;
                         const isHovered = hovered === tile.node.id;
                         const tileHeightPx =
                           (rect.height / 100) * groupHeightPx;
-                        const showName = tileHeightPx > 13 && rect.width > 2;
-                        const showAmount = tileHeightPx > 30 && rect.width > 4;
+                        const tileWidthPercent =
+                          (groupRect.width * rect.width) / 100;
+                        const tileHeightPercent =
+                          (height * groupRect.height * rect.height) / 10_000;
+                        const showName = usesOverviewGroupLayout
+                          ? tileWidthPercent > 4 && tileHeightPercent > 3
+                          : tileHeightPx > 13 && rect.width > 2;
+                        const showAmount =
+                          !usesOverviewGroupLayout &&
+                          tileHeightPx > 30 &&
+                          rect.width > 4;
                         const caption = tile.caption;
                         const fundingValues = positiveFundingValues(tile.node);
                         const fundingTotal = fundingValues.reduce(
@@ -989,8 +1128,11 @@ export function BudgetTreemap({
                               top: `${rect.y}%`,
                               width: `${rect.width}%`,
                               height: `${rect.height}%`,
-                              backgroundColor:
-                                fundingTotal > 0 ? "#ffffff" : band.colors.bg,
+                              backgroundColor: usesOverviewGroupLayout
+                                ? groupColors.bg
+                                : fundingTotal > 0
+                                  ? "#ffffff"
+                                  : groupColors.bg,
                               filter: isHovered
                                 ? "brightness(0.82)"
                                 : undefined,
@@ -1009,14 +1151,14 @@ export function BudgetTreemap({
                               setTooltip(null);
                             }}
                           >
-                            {fundingTotal > 0 && (
+                            {!usesOverviewGroupLayout && fundingTotal > 0 && (
                               <div className="absolute inset-0 flex flex-col">
                                 {fundingValues.map(([key, amount]) => (
                                   <div
                                     key={key}
                                     style={{
                                       height: `${(amount / fundingTotal) * 100}%`,
-                                      backgroundColor: band.colors.bg,
+                                      backgroundColor: groupColors.bg,
                                       opacity:
                                         FUNDING_SHADE_OPACITY[key] ?? 0.35,
                                     }}
@@ -1033,9 +1175,17 @@ export function BudgetTreemap({
                                 }}
                               />
                             )}
-                            <div className="relative flex h-full w-full flex-col items-start overflow-hidden px-0.5">
+                            <div
+                              className={
+                                usesOverviewGroupLayout
+                                  ? "relative flex h-full w-full flex-col items-start justify-end overflow-hidden p-1.5 text-[10px] leading-tight drop-shadow-sm sm:p-2 sm:text-xs"
+                                  : "relative flex h-full w-full flex-col items-start overflow-hidden px-0.5"
+                              }
+                            >
                               {showName && (
-                                <div className="flex w-full items-center gap-1 text-left text-xs leading-tight font-semibold text-white">
+                                <div
+                                  className={`flex w-full items-center gap-1 text-left leading-tight font-semibold text-white ${usesOverviewGroupLayout ? "" : "text-xs"}`}
+                                >
                                   <span className="truncate">{caption}</span>
                                   {tile.appearsInMultipleLocations && (
                                     <SplitSquareHorizontal
@@ -1064,8 +1214,9 @@ export function BudgetTreemap({
                               aria-hidden="true"
                               className="pointer-events-none absolute inset-0"
                               style={{
-                                boxShadow:
-                                  "inset 0 0 0 0.5px rgba(255, 255, 255, 0.6)",
+                                boxShadow: usesOverviewGroupLayout
+                                  ? "inset 0 0 0 0.5px rgba(255, 255, 255, 0.8)"
+                                  : "inset 0 0 0 0.5px rgba(255, 255, 255, 0.6)",
                               }}
                             />
                           </div>
@@ -1081,7 +1232,7 @@ export function BudgetTreemap({
 
         {/* The band names, beside their band */}
         <div
-          className="relative hidden w-60 shrink-0 lg:block"
+          className={`relative w-60 shrink-0 ${usesOverviewGroupLayout ? "hidden" : "hidden lg:block"}`}
           style={{ height: `${canvasHeight}px` }}
         >
           {labelPositions.map(({ band, y, compact }) => (
@@ -1115,14 +1266,22 @@ export function BudgetTreemap({
 
       {/* Total, scope caveat and source */}
       <div className="mt-3 space-y-1 text-xs text-gray-500">
-        <p>
-          {meta.title} · {meta.scopeLabel}: {formatBudget(drawnTotal)}
-          {searchQuery.trim() === "" &&
-            Math.abs(drawnTotal - meta.total) > 1000 && (
-              <> of {formatBudget(meta.total)} in the published total</>
-            )}
-          {filteredPrevious && " · the change is against the year before"}
-        </p>
+        {headlineFundingSource ? (
+          <p>
+            {meta.title} · {meta.scopeLabel}. The headline total reports only{" "}
+            {fundingLabel(headlineFundingSource).toLowerCase()}; optional
+            funding sources are shown only in the detailed breakdown.
+          </p>
+        ) : (
+          <p>
+            {meta.title} · {meta.scopeLabel}: {formatBudget(drawnTotal)}
+            {searchQuery.trim() === "" &&
+              Math.abs(drawnTotal - meta.total) > 1000 && (
+                <> of {formatBudget(meta.total)} in the published total</>
+              )}
+            {filteredPrevious && " · the change is against the year before"}
+          </p>
+        )}
         <p>{meta.scopeWarning}</p>
         {(meta.omitted ?? []).length > 0 && (
           <p>

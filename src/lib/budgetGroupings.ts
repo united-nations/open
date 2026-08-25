@@ -9,9 +9,13 @@
 // The Budget-Part colors are the ones the older Secretariat treemap already
 // uses, so the two pages stay recognizable.
 
-import type { BudgetNode } from "@/types";
+import type {
+  BudgetFundingSource as BudgetFundingSourceType,
+  BudgetNode,
+} from "@/types";
 import type { SystemGroupingStyle } from "@/lib/systemGroupings";
 import { PALETTE, budgetPartStyles } from "@/lib/secretariatGroupings";
+import secretariatTaxonomies from "../../data/secretariat-taxonomies.json";
 
 export type PpbLens = "budgetPart";
 export type PkoLens = "mission" | "costClass";
@@ -67,16 +71,16 @@ export function unitCaption(
  */
 export function unitExplanation(unit: BudgetNode): string | null {
   if (unit.entity?.relationship === "section_owner") {
-    return "The budget document does not print a heading for this row. The whole section belongs to this one organization, so the amount is its.";
+    return secretariatTaxonomies.budget_unit_explanations.section_owner;
   }
   if (unit.isRemainder) {
-    return "The document prints this as a lump, without saying what is inside it.";
+    return secretariatTaxonomies.budget_unit_explanations.remainder;
   }
   if (unit.role === "section_scope") {
-    return "Everything the section spends without putting it under a named entity.";
+    return secretariatTaxonomies.budget_unit_explanations.section_scope;
   }
   if (unit.unitType === "special_purpose") {
-    return "Allocations the section keeps apart from its regular work.";
+    return secretariatTaxonomies.budget_unit_explanations.special_purpose;
   }
   return null;
 }
@@ -86,21 +90,8 @@ export function unitExplanation(unit: BudgetNode): string | null {
  * carries a link to the paragraph it was read from, which is why the page can
  * name the entity at all.
  */
-export const ENTITY_RELATIONSHIP_NOTES: Record<string, string> = {
-  audited_entity:
-    "the audited extract assigns these source rows to this entity",
-  trust_fund_crosswalk:
-    "the reconstructed old open-data crosswalk assigns this trust fund to the entity",
-  direct_financial_entity:
-    "the budget prints this row under the entity's own heading",
-  section_owner:
-    "the release names it the one organization the section belongs to",
-  organizational_unit:
-    "the release names it an organizational unit of the section",
-  implementing_entity:
-    "the release names it as implementing the section's work",
-  project_responsibility: "the release names it responsible for the project",
-};
+export const ENTITY_RELATIONSHIP_NOTES: Record<string, string> =
+  secretariatTaxonomies.entity_relationship_notes;
 
 /** Everything a tile can be searched by, including names it does not display. */
 export function unitSearchText(
@@ -120,26 +111,31 @@ export function unitSearchText(
 }
 
 /** The three peacekeeping cost classes, in the order the fascicles print them. */
-export const costClassStyles: Record<string, SystemGroupingStyle> = {
+const costClassVisuals: Record<
+  string,
+  Pick<SystemGroupingStyle, "bgColor" | "textColor">
+> = {
   military_police_personnel: {
-    label: "Military and police personnel",
     bgColor: "bg-un-blue",
     textColor: "text-white",
-    order: 1,
   },
   civilian_personnel: {
-    label: "Civilian personnel",
     bgColor: "bg-faded-jade",
     textColor: "text-white",
-    order: 2,
   },
   operational_costs: {
-    label: "Operational costs",
     bgColor: "bg-au-chico",
     textColor: "text-white",
-    order: 3,
   },
 };
+
+export const costClassStyles: Record<string, SystemGroupingStyle> =
+  Object.fromEntries(
+    secretariatTaxonomies.cost_classes.map(({ key, label, order }) => [
+      key,
+      { label, order, ...costClassVisuals[key] },
+    ]),
+  );
 
 /** Band fills for the three cost classes, matching costClassStyles above. */
 export const COST_CLASS_BAND_COLORS: Record<
@@ -152,11 +148,12 @@ export const COST_CLASS_BAND_COLORS: Record<
 };
 
 /** Short captions for the tiles of a mission band. */
-export const COST_CLASS_SHORT: Record<string, string> = {
-  military_police_personnel: "Military & police",
-  civilian_personnel: "Civilian staff",
-  operational_costs: "Operational",
-};
+export const COST_CLASS_SHORT: Record<string, string> = Object.fromEntries(
+  secretariatTaxonomies.cost_classes.map(({ key, short_label }) => [
+    key,
+    short_label,
+  ]),
+);
 
 /**
  * Peacekeeping runs from July to June, so the cycle that starts in 2024 is
@@ -172,35 +169,31 @@ export function auditedFiscalYearLabel(year: number): string {
 }
 
 /** The funding sources of the programme budget, in the order the fascicles use. */
-export const BUDGET_FUNDING_SOURCES = [
-  "regular_budget",
-  "other_assessed",
-  "extrabudgetary",
-] as const;
+export type BudgetFundingSource = BudgetFundingSourceType;
 
-export type BudgetFundingSource = (typeof BUDGET_FUNDING_SOURCES)[number];
+export const BUDGET_FUNDING_SOURCES = secretariatTaxonomies.funding_sources
+  .toSorted((a, b) => a.order - b.order)
+  .map(({ key }) => key) as BudgetFundingSource[];
+
+const fundingSourceVisuals: Record<BudgetFundingSource, string> = {
+  regular_budget: "bg-un-blue",
+  other_assessed: "bg-un-blue",
+  extrabudgetary: "bg-un-blue-dark",
+};
 
 export const FUNDING_SOURCES: Record<
   string,
   { label: string; color: string; tooltip: string }
-> = {
-  regular_budget: {
-    label: "Regular budget",
-    color: "bg-un-blue",
-    tooltip: "Assessed contributions to the regular programme budget",
-  },
-  other_assessed: {
-    label: "Other assessed",
-    color: "bg-un-blue",
-    tooltip:
-      "Separately assessed budgets, chiefly peacekeeping and the tribunals",
-  },
-  extrabudgetary: {
-    label: "Extrabudgetary",
-    color: "bg-un-blue-dark",
-    tooltip: "Voluntary contributions and other extrabudgetary resources",
-  },
-};
+> = Object.fromEntries(
+  secretariatTaxonomies.funding_sources.map(({ key, label, tooltip }) => [
+    key,
+    {
+      label,
+      tooltip,
+      color: fundingSourceVisuals[key as BudgetFundingSource],
+    },
+  ]),
+);
 
 export const FALLBACK_STYLE: SystemGroupingStyle = {
   label: "Other",

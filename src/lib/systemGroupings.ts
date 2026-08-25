@@ -1,96 +1,112 @@
+import organizationTaxonomies from "../../data/organization-taxonomies.json";
+
 // Centralized system grouping configuration
 // Defines visual styling and metadata for each system grouping used in the entities treemap
 
 export interface SystemGroupingStyle {
   bgColor: string;
   textColor: string;
+  hexColor?: string;
   order: number;
   label: string;
 }
 
-export const systemGroupingStyles: Record<string, SystemGroupingStyle> = {
+type SystemGroupingVisual = Pick<
+  SystemGroupingStyle,
+  "bgColor" | "textColor" | "hexColor"
+>;
+
+// Visual choices belong to the website. Keys, labels, and ordering come from
+// the shared organization taxonomy in data/.
+const systemGroupingVisuals: Record<string, SystemGroupingVisual> = {
   "UN Secretariat": {
-    label: "UN Secretariat",
     bgColor: "bg-gray-300",
     textColor: "text-black",
-    order: 1,
+    hexColor: "#d1d5db",
   },
   // Both peacekeeping keys share one short label: only one of them carries
   // entities at a time, so the legend must not show the pair as two entries.
   "Peacekeeping Operations and Political Missions": {
-    label: "Peacekeeping",
     bgColor: "bg-au-chico",
     textColor: "text-white",
-    order: 2,
+    hexColor: "#a0665c",
   },
   // Synthetic grouping for the UN-DPO CEB aggregate
   "Peacekeeping Operations": {
-    label: "Peacekeeping",
     bgColor: "bg-au-chico",
     textColor: "text-white",
-    order: 2,
+    hexColor: "#a0665c",
   },
   "Regional Commissions": {
-    label: "Regional Commissions",
     bgColor: "bg-smoky",
     textColor: "text-white",
-    order: 3,
+    hexColor: "#6c5b7b",
   },
   "Funds and Programmes": {
-    label: "Funds & Programmes",
     bgColor: "bg-camouflage-green",
     textColor: "text-white",
-    order: 4,
+    hexColor: "#7d8471",
   },
   "Research and Training": {
-    label: "Research & Training",
     bgColor: "bg-camouflage-green",
     textColor: "text-white",
-    order: 5,
+    hexColor: "#7d8471",
   },
   "Subsidiary Organs": {
-    label: "Subsidiary Organs",
     bgColor: "bg-trout",
     textColor: "text-white",
-    order: 6,
+    hexColor: "#495057",
   },
   "International Court of Justice": {
-    label: "International Court of Justice",
     bgColor: "bg-shuttle-gray",
     textColor: "text-white",
-    order: 7,
+    hexColor: "#5a6c7d",
   },
-  "Specialized Agencies": {
-    label: "Specialized Agencies",
-    bgColor: "bg-shuttle-gray",
-    textColor: "text-white",
-    order: 8,
-  },
-  "Related Organizations": {
-    label: "Related Organizations",
-    bgColor: "bg-black",
-    textColor: "text-white",
-    order: 9,
-  },
-  "Other Entities": {
-    label: "Other Entities",
+  "Intergovernmental and Expert Bodies": {
     bgColor: "bg-gray-500",
     textColor: "text-white",
-    order: 10,
+    hexColor: "#6b7280",
+  },
+  "Specialized Agencies": {
+    bgColor: "bg-shuttle-gray",
+    textColor: "text-white",
+    hexColor: "#5a6c7d",
+  },
+  "Related Organizations": {
+    bgColor: "bg-black",
+    textColor: "text-white",
+    hexColor: "#1f2937",
+  },
+  "Other Entities": {
+    bgColor: "bg-gray-500",
+    textColor: "text-white",
+    hexColor: "#6b7280",
   },
   "Other Bodies": {
-    label: "Other Bodies",
     bgColor: "bg-pale-oyster",
     textColor: "text-white",
-    order: 11,
+    hexColor: "#9b8b7a",
   },
   Uncategorized: {
-    label: "Uncategorized",
     bgColor: "bg-gray-400",
     textColor: "text-black",
-    order: 12,
+    hexColor: "#9ca3af",
   },
 };
+
+const fallbackVisual: SystemGroupingVisual = {
+  bgColor: "bg-gray-400",
+  textColor: "text-white",
+  hexColor: "#9ca3af",
+};
+
+export const systemGroupingStyles: Record<string, SystemGroupingStyle> =
+  Object.fromEntries(
+    organizationTaxonomies.system_groupings.map(({ key, label, order }) => [
+      key,
+      { label, order, ...(systemGroupingVisuals[key] ?? fallbackVisual) },
+    ]),
+  );
 
 /**
  * Get style configuration for a system grouping
@@ -101,6 +117,7 @@ export function getSystemGroupingStyle(grouping: string): SystemGroupingStyle {
     systemGroupingStyles[grouping] || {
       bgColor: "bg-gray-400",
       textColor: "text-white",
+      hexColor: "#9ca3af",
       order: 999,
       label: grouping,
     }

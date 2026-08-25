@@ -1,38 +1,45 @@
-export type ContributorStatus = "member" | "observer" | "nonmember" | "organization";
+import organizationTaxonomies from "../../data/organization-taxonomies.json";
+
+export type ContributorStatus =
+  | "member"
+  | "observer"
+  | "nonmember"
+  | "organization";
 
 export interface Contributor {
   name: string;
   status: ContributorStatus;
-  category: string;  // Donor category (Government, Foundations, Private Sector, etc.)
+  category: string; // Donor category (Government, Foundations, Private Sector, etc.)
   contributions: Record<string, Record<string, number>>;
-  is_other?: boolean;  // Aggregated "Other X" entries (not clickable)
+  is_other?: boolean; // Aggregated "Other X" entries (not clickable)
 }
 
 export interface ContributorData {
   status: ContributorStatus;
-  category: string;  // Donor category (Government, Foundations, Private Sector, etc.)
+  category: string; // Donor category (Government, Foundations, Private Sector, etc.)
   contributions: Record<string, Record<string, number>>;
-  is_other?: boolean;  // Aggregated "Other X" entries (not clickable)
+  is_other?: boolean; // Aggregated "Other X" entries (not clickable)
 }
 
 // Short display labels for contributor categories
-export const CATEGORY_LABELS: Record<string, string> = {
-  "Government": "Government",
-  "Non-Government": "Non-Gov",
-  "NGOs": "NGO",
-  "Foundations": "Foundation",
-  "Private Sector": "Private",
-  "Academic": "Academic",
-  "European Union": "EU",
-  "Multilateral - IFIs": "IFI",
-  "Multilateral - Global Funds": "Global Fund",
-  "Multilateral - UN Orgs": "UN Org",
-  "Multilateral - UN Pooled Funds": "UN Pooled",
-  "Multilateral - Other": "Multilateral",
-  "Other Contributors": "Other",
-  "No Contributor": "N/A",
-  "Other": "Other",
-  "Unattributed": "Unattributed",
+export const CATEGORY_LABELS: Record<string, string> =
+  organizationTaxonomies.contributor_categories;
+
+const contributorStatusMetadata = Object.fromEntries(
+  organizationTaxonomies.contributor_statuses.map(({ key, label, order }) => [
+    key,
+    { label, order },
+  ]),
+);
+
+const contributorStatusVisuals: Record<
+  string,
+  { bgColor: string; textColor: string }
+> = {
+  member: { bgColor: "bg-un-blue", textColor: "text-white" },
+  observer: { bgColor: "bg-[#4db8e8]", textColor: "text-white" },
+  nonmember: { bgColor: "bg-[#99d6f2]", textColor: "text-gray-800" },
+  organization: { bgColor: "bg-smoky", textColor: "text-white" },
 };
 
 // Unattributed is a special category for revenue where we don't know the source
@@ -41,43 +48,16 @@ export const isUnattributed = (contributor: Contributor): boolean => {
 };
 
 export const getStatusStyle = (status: string) => {
-  switch (status) {
-    case "member":
-      return {
-        bgColor: "bg-un-blue",
-        textColor: "text-white",
-        label: "Member State",
-        order: 1,
-      };
-    case "observer":
-      return {
-        bgColor: "bg-[#4db8e8]",
-        textColor: "text-white",
-        label: "Observer State",
-        order: 2,
-      };
-    case "nonmember":
-      return {
-        bgColor: "bg-[#99d6f2]",
-        textColor: "text-gray-800",
-        label: "Non-Member State",
-        order: 3,
-      };
-    case "organization":
-      return {
-        bgColor: "bg-smoky",
-        textColor: "text-white",
-        label: "Non-Government",
-        order: 4,
-      };
-    default:
-      return {
+  const metadata = contributorStatusMetadata[status];
+  const visual = contributorStatusVisuals[status];
+  return metadata && visual
+    ? { ...visual, ...metadata }
+    : {
         bgColor: "bg-gray-500",
         textColor: "text-white",
         label: "Unknown",
         order: 999,
       };
-  }
 };
 
 export const isGovernmentDonor = (status: ContributorStatus): boolean => {
@@ -85,14 +65,14 @@ export const isGovernmentDonor = (status: ContributorStatus): boolean => {
 };
 
 export const getTotalContributions = (
-  contributions: Record<string, Record<string, number>>
+  contributions: Record<string, Record<string, number>>,
 ): number => {
   return Object.values(contributions).reduce((total, entityContributions) => {
     return (
       total +
       Object.values(entityContributions).reduce(
         (sum, amount) => sum + amount,
-        0
+        0,
       )
     );
   }, 0);
@@ -116,11 +96,11 @@ export const getDisplayName = (name: string): string => {
 };
 
 export const getContributionTypeOrder = (type: string): number => {
-  if (type === "Assessed") return 1;
-  if (type === "Voluntary un-earmarked") return 2;
-  if (type === "Voluntary earmarked") return 3;
-  if (type === "Other") return 4;
-  return 5;
+  return (
+    organizationTaxonomies.financing_instruments.find(
+      (instrument) => instrument.key === type,
+    )?.order ?? 5
+  );
 };
 
 // Opacity classes for use with a base color
@@ -141,9 +121,11 @@ export const getContributionTypeBgColor = (type: string): string => {
   return "bg-gray-500";
 };
 
-export const CONTRIBUTION_TYPES = [
-  { type: "Assessed", label: "Assessed", opacity: "opacity-100", bgColor: "bg-un-blue-muted" },
-  { type: "Voluntary un-earmarked", label: "Voluntary un-earmarked", opacity: "opacity-80", bgColor: "bg-un-blue-muted/80" },
-  { type: "Voluntary earmarked", label: "Voluntary earmarked", opacity: "opacity-60", bgColor: "bg-un-blue-muted/60" },
-  { type: "Other", label: "Other", opacity: "opacity-40", bgColor: "bg-un-blue-muted/40" },
-] as const;
+export const CONTRIBUTION_TYPES = organizationTaxonomies.financing_instruments
+  .toSorted((a, b) => a.order - b.order)
+  .map(({ key, label }) => ({
+    type: key,
+    label,
+    opacity: getContributionTypeColor(key),
+    bgColor: getContributionTypeBgColor(key),
+  }));

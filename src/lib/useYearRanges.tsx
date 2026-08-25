@@ -19,6 +19,7 @@ interface YearRanges {
   sdgExpenses: YearRange;
   regularBudgetContributors: YearRange;
   trustFundContributors: YearRange;
+  secretariatOverview: YearRange;
   budgetAuditedPpb: YearRange;
   budgetAuditedPko: YearRange;
   budgetTrustFunds: YearRange;

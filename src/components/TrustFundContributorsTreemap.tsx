@@ -16,16 +16,34 @@ import {
   useDeepLink,
 } from "@/hooks/useDeepLink";
 import { useYearRanges } from "@/lib/useYearRanges";
-import { squarify } from "@/lib/treemapLayout";
+import { layoutGroups, squarifyDense } from "@/lib/treemapLayout";
 import type { TrustFundContributor, TrustFundContributorsData } from "@/types";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-const GROUP_STYLES = {
-  Government: "bg-un-blue text-slate-950",
-  Others: "bg-emerald-700 text-white",
-  Mixed: "bg-slate-600 text-white",
+type ContributorGroup = "governments" | "other";
+
+const GROUP_STYLES: Record<
+  ContributorGroup,
+  { label: string; tile: string; color: string }
+> = {
+  governments: {
+    label: "Governments",
+    tile: "bg-un-blue text-slate-950",
+    color: "#009edb",
+  },
+  other: {
+    label: "Other contributors",
+    tile: "bg-emerald-700 text-white",
+    color: "#047857",
+  },
 } as const;
+
+function groupOf(contributor: TrustFundContributor): ContributorGroup {
+  return contributor.counterparty_group === "Government"
+    ? "governments"
+    : "other";
+}
 
 function currency(value: number, compact = false): string {
   return new Intl.NumberFormat("en-US", {
@@ -101,19 +119,61 @@ export function TrustFundContributorsTreemap() {
         (!needle || contributor.name.toLocaleLowerCase().includes(needle)),
     );
   }, [current, query]);
+  const contributorGroups = useMemo(
+    () =>
+      (Object.keys(GROUP_STYLES) as ContributorGroup[])
+        .map((key) => {
+          const members = contributors
+            .filter((contributor) => groupOf(contributor) === key)
+            .sort(
+              (a, b) =>
+                b.amount_usd - a.amount_usd || a.name.localeCompare(b.name),
+            );
+          return {
+            key,
+            members,
+            total: members.reduce(
+              (sum, contributor) => sum + contributor.amount_usd,
+              0,
+            ),
+          };
+        })
+        .filter((group) => group.total > 0)
+        .sort((a, b) => b.total - a.total),
+    [contributors],
+  );
+  const groupRectangles = useMemo(
+    () =>
+      layoutGroups(
+        contributorGroups.map((group) => ({
+          key: group.key,
+          total: group.total,
+        })),
+        100,
+        100,
+        0.4,
+        5,
+      ).map((rectangle) => ({
+        ...rectangle,
+        data: contributorGroups.find((group) => group.key === rectangle.key)!,
+      })),
+    [contributorGroups],
+  );
   const rectangles = useMemo(
     () =>
-      squarify(
-        contributors.map((contributor) => ({
-          value: contributor.amount_usd,
-          data: contributor,
-        })),
-        0,
-        0,
-        100,
-        100,
+      groupRectangles.flatMap((groupRectangle) =>
+        squarifyDense(
+          groupRectangle.data.members.map((contributor) => ({
+            value: contributor.amount_usd,
+            data: contributor,
+          })),
+          groupRectangle.x,
+          groupRectangle.y,
+          groupRectangle.width,
+          groupRectangle.height,
+        ),
       ),
-    [contributors],
+    [groupRectangles],
   );
   const nonPositiveCount =
     current?.contributors.filter((contributor) => contributor.amount_usd <= 0)
@@ -159,9 +219,26 @@ export function TrustFundContributorsTreemap() {
           </div>
 
           <div className="relative h-[560px] w-full bg-gray-100 sm:h-[680px] lg:h-[780px]">
+            {groupRectangles.map((rectangle) => {
+              const style = GROUP_STYLES[rectangle.data.key];
+              return (
+                <div
+                  key={`label-${rectangle.data.key}`}
+                  className="pointer-events-none absolute z-20 max-w-[60%] truncate bg-white/90 px-1.5 py-1 text-[10px] font-bold shadow-sm sm:text-xs"
+                  style={{
+                    left: `${rectangle.x}%`,
+                    top: `${rectangle.y}%`,
+                    color: style.color,
+                  }}
+                >
+                  {style.label}
+                </div>
+              );
+            })}
             {rectangles.length > 0 ? (
               rectangles.map((rectangle) => {
                 const contributor = rectangle.data;
+                const group = groupOf(contributor);
                 const showName = rectangle.width > 4.5 && rectangle.height > 3;
                 const showAmount = rectangle.width > 7 && rectangle.height > 5;
                 return (
@@ -170,7 +247,7 @@ export function TrustFundContributorsTreemap() {
                       <button
                         type="button"
                         onClick={() => open(contributor)}
-                        className={`absolute overflow-hidden text-left shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.75)] transition-[left,top,width,height,filter] duration-700 hover:z-10 hover:brightness-110 focus-visible:z-20 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none focus-visible:ring-inset ${GROUP_STYLES[contributor.counterparty_group]}`}
+                        className={`absolute overflow-hidden text-left shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.75)] transition-[left,top,width,height,filter] duration-700 hover:z-10 hover:brightness-110 focus-visible:z-20 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none focus-visible:ring-inset ${GROUP_STYLES[group].tile}`}
                         style={{
                           left: `${rectangle.x}%`,
                           top: `${rectangle.y}%`,

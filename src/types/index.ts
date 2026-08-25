@@ -146,6 +146,81 @@ export interface TrustFundContributorsData {
   }[];
 }
 
+export type SecretariatFundingSource =
+  | "regular_budget"
+  | "other_assessed"
+  | "extrabudgetary";
+
+export type SecretariatGroup = "secretariat" | "spm" | "pko" | "other";
+
+export interface SecretariatGroupDefinition {
+  label: string;
+  color: string;
+  text_color: string;
+  order: number;
+  field_legend: boolean;
+}
+
+export interface SecretariatOverviewCell {
+  priority_area: string;
+  funding_source: SecretariatFundingSource;
+  amount: number;
+}
+
+export interface SecretariatOverviewEntity {
+  code: string;
+  total: number;
+  primary_priority: string;
+  split_across_priorities: boolean;
+  group: SecretariatGroup;
+  group_basis: string;
+  cells: SecretariatOverviewCell[];
+}
+
+export interface SecretariatOverviewData {
+  meta: {
+    year: number;
+    currency: "USD";
+    measure: "expenses";
+    total: number;
+    priorities: string[];
+    funding_sources: SecretariatFundingSource[];
+    groups: Record<SecretariatGroup, SecretariatGroupDefinition>;
+    classification_note: string;
+    source: { label: string; url: string };
+  };
+  entities: SecretariatOverviewEntity[];
+}
+
+export interface SecretariatMissionLocation {
+  code: string;
+  name: string;
+  kind: "pko" | "spm" | "support";
+  area: string;
+  areaKind: "country" | "territory" | "subnational" | "region";
+  iso3: string | null;
+  lat: number;
+  long: number;
+  certainty: "certain" | "approximate" | "contested";
+  officeElsewhere?: boolean;
+  note?: string;
+}
+
+export interface SecretariatEntitiesData {
+  schema_version: 1;
+  classification_note: string;
+  groups: Record<SecretariatGroup, SecretariatGroupDefinition>;
+  entities: Record<string, { group: SecretariatGroup; basis: string }>;
+  aliases: Record<string, string>;
+  map_notes: {
+    placement: string;
+    boundary_disclaimer: string;
+    kashmir_disclaimer: string;
+  };
+  locations: SecretariatMissionLocation[];
+  excluded_from_map: Array<{ code: string; reason: string }>;
+}
+
 export interface EntityRevenue {
   total: number;
   year: number;

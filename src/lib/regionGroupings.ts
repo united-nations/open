@@ -1,3 +1,5 @@
+import organizationTaxonomies from "../../data/organization-taxonomies.json";
+
 // Centralized region grouping configuration
 // Defines visual styling and metadata for each CEB region used in the country treemap
 
@@ -8,44 +10,47 @@ export interface RegionStyle {
   label: string;
 }
 
-export const regionStyles: Record<string, RegionStyle> = {
+const regionVisuals: Record<
+  string,
+  Pick<RegionStyle, "bgColor" | "textColor">
+> = {
   Africa: {
-    label: "Africa",
     bgColor: "bg-camouflage-green",
     textColor: "text-white",
-    order: 1,
   },
   Asia: {
-    label: "Asia",
     bgColor: "bg-au-chico",
     textColor: "text-white",
-    order: 2,
   },
   Americas: {
-    label: "Americas",
     bgColor: "bg-smoky",
     textColor: "text-white",
-    order: 3,
   },
   Europe: {
-    label: "Europe",
     bgColor: "bg-shuttle-gray",
     textColor: "text-white",
-    order: 4,
   },
   Oceania: {
-    label: "Oceania",
     bgColor: "bg-trout",
     textColor: "text-white",
-    order: 5,
   },
   "Global and Interregional": {
-    label: "Global",
     bgColor: "bg-gray-500",
     textColor: "text-white",
-    order: 6,
   },
 };
+
+const fallbackVisual = {
+  bgColor: "bg-gray-400",
+  textColor: "text-white",
+};
+
+export const regionStyles: Record<string, RegionStyle> = Object.fromEntries(
+  organizationTaxonomies.regions.map(({ key, label, order }) => [
+    key,
+    { label, order, ...(regionVisuals[key] ?? fallbackVisual) },
+  ]),
+);
 
 /**
  * Get style configuration for a region

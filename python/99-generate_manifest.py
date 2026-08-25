@@ -24,6 +24,7 @@ def generate_manifest():
         "sdgExpenses": {"years": detect_years("sdg-expenses"), "default": "latest"},
         "regularBudgetContributors": {"years": detect_years("regular-budget-contributors"), "default": "latest"},
         "trustFundContributors": {"years": detect_years("trust-fund-contributors"), "default": 2023},
+        "secretariatOverview": {"years": detect_years("secretariat-overview"), "default": "latest"},
         "budgetAuditedPpb": {"years": detect_years("budget-audited-ppb"), "default": "latest"},
         "budgetAuditedPko": {"years": detect_years("budget-audited-pko"), "default": "latest"},
         "budgetTrustFunds": {"years": detect_years("budget-trust-funds"), "default": 2023},

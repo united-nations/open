@@ -4,6 +4,7 @@
 // Reuses the SystemGroupingStyle shape from systemGroupings.ts.
 
 import type { SystemGroupingStyle } from "@/lib/systemGroupings";
+import secretariatTaxonomies from "../../data/secretariat-taxonomies.json";
 
 export type GroupingLens = "priorityArea" | "budgetPart";
 
@@ -30,62 +31,29 @@ function build(labels: string[]): Record<string, SystemGroupingStyle> {
     labels.map((label, i) => [
       label,
       { label, ...PALETTE[i % PALETTE.length], order: i + 1 },
-    ])
+    ]),
   );
 }
 
 // Priority areas — keyed by the exact PRIORITY_AREA strings in the data.
 // Ordered roughly by typical budget magnitude for a sensible default layout.
 export const priorityAreaStyles: Record<string, SystemGroupingStyle> = build([
-  "Maintenance of international peace and security",
-  "Effective functioning of the organization",
-  "Promotion of sustained economic growth and sustainable development",
-  "Promotion of international justice and law",
-  "Promotion and protection of human rights",
-  "Effective coordination of humanitarian assistance efforts",
-  "Disarmament",
-  "Development of Africa",
-  "Drug control, crime prevention and combating terrorism",
+  ...secretariatTaxonomies.priority_areas,
 ]);
 
 // Budget parts — keyed by part_id (Roman numeral). Labels are the part descriptions.
-const PART_LABELS: Array<[string, string]> = [
-  ["I", "Overall policymaking, direction and coordination"],
-  ["II", "Political affairs"],
-  ["III", "International justice and law"],
-  ["IV", "International cooperation for development"],
-  ["V", "Regional cooperation for development"],
-  ["VI", "Human rights and humanitarian affairs"],
-  ["VII", "Global Communications"],
-  ["VIII", "Common support services"],
-  ["IX", "Internal oversight"],
-  ["X", "Jointly financed administrative activities and special expenses"],
-  ["XI", "Capital expenditures"],
-  ["XII", "Safety and security"],
-  ["XIII", "Development Account"],
-  ["XIV", "Staff assessment"],
-];
+const PART_LABELS: Array<[string, string]> =
+  secretariatTaxonomies.budget_parts.map(({ code, label }) => [code, label]);
 
 // Short names for the part bands of the treemap, from ../budget-explorer, whose
 // treemap this page's layout follows. The long descriptions above are too wide
 // for the label column beside the bands.
-export const PART_SHORT_NAMES: Record<string, string> = {
-  I: "Policymaking & Coordination",
-  II: "Political Affairs",
-  III: "Justice & Law",
-  IV: "International Development",
-  V: "Regional Development",
-  VI: "Human Rights & Humanitarian",
-  VII: "Global Communications",
-  VIII: "Support Services",
-  IX: "Internal Oversight",
-  X: "Joint Activities & Special",
-  XI: "Capital Expenditure",
-  XII: "Safety & Security",
-  XIII: "Development Account",
-  XIV: "Staff Assessment",
-  "Peacekeeping Budget": "Peacekeeping (separate budget)",
-};
+export const PART_SHORT_NAMES: Record<string, string> = Object.fromEntries(
+  [
+    ...secretariatTaxonomies.special_budget_parts,
+    ...secretariatTaxonomies.budget_parts,
+  ].map(({ code, short_label }) => [code, short_label]),
+);
 
 /**
  * Band fill and hover colors, as hex rather than theme classes, because the
@@ -130,31 +98,38 @@ export const BAND_PALETTE: Array<{ bg: string; hover: string }> = [
 ];
 
 export const budgetPartStyles: Record<string, SystemGroupingStyle> = {
-  // Peacekeeping is a separate budget (not part of the regular programme budget);
-  // python/11 reclassifies its "Other Assessed" rows into this synthetic part.
-  // Keyed by the exact part_id the export emits. au-chico matches the
-  // peacekeeping color used in the main entities treemap. Order 0 = sorts first.
-  "Peacekeeping Budget": {
-    label: "Peacekeeping Budget (separate from regular budget)",
-    bgColor: "bg-au-chico",
-    textColor: "text-white",
-    order: 0,
-  },
+  ...Object.fromEntries(
+    secretariatTaxonomies.special_budget_parts.map(({ code, label, order }) => [
+      code,
+      {
+        label,
+        bgColor: "bg-au-chico",
+        textColor: "text-white",
+        order,
+      },
+    ]),
+  ),
   ...Object.fromEntries(
     PART_LABELS.map(([id, label], i) => [
       id,
-      { label: `Part ${id} — ${label}`, ...PALETTE[i % PALETTE.length], order: i + 1 },
-    ])
+      {
+        label: `Part ${id} — ${label}`,
+        ...PALETTE[i % PALETTE.length],
+        order: i + 1,
+      },
+    ]),
   ),
 };
 
-export function getGroupingStyles(lens: GroupingLens): Record<string, SystemGroupingStyle> {
+export function getGroupingStyles(
+  lens: GroupingLens,
+): Record<string, SystemGroupingStyle> {
   return lens === "priorityArea" ? priorityAreaStyles : budgetPartStyles;
 }
 
 export function getGroupStyle(
   lens: GroupingLens,
-  key: string
+  key: string,
 ): SystemGroupingStyle {
   return (
     getGroupingStyles(lens)[key] || {

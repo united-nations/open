@@ -122,6 +122,18 @@
     "min": 2017,
     "max": 2024
   },
+  "secretariatOverview": {
+    "years": [
+      2019,
+      2020,
+      2021,
+      2022,
+      2023
+    ],
+    "default": 2023,
+    "min": 2019,
+    "max": 2023
+  },
   "budgetAuditedPpb": {
     "years": [
       2019,

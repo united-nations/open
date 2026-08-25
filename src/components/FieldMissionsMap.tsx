@@ -1,0 +1,328 @@
+"use client";
+
+import { useEffect, useMemo, useState } from "react";
+import { DotDensityMap } from "@undp/data-viz";
+import { SecretariatGroupBar } from "@/components/SecretariatStackedBar";
+import { YearSlider } from "@/components/YearSlider";
+import { loadStaticData, loadYearData } from "@/lib/data";
+import { formatBudget } from "@/lib/entities";
+import { useYearRanges } from "@/lib/useYearRanges";
+import type {
+  SecretariatEntitiesData,
+  SecretariatGroup,
+  SecretariatMissionLocation,
+  SecretariatOverviewData,
+} from "@/types";
+
+type MappedGroup = Extract<SecretariatGroup, "spm" | "pko">;
+
+interface MissionPoint {
+  lat: number;
+  long: number;
+  radius: number;
+  color: MappedGroup;
+  label: string;
+  data: {
+    location: SecretariatMissionLocation;
+    amount: number;
+    group: MappedGroup;
+  };
+}
+
+interface FieldMissionModel {
+  totals: Record<SecretariatGroup, number>;
+  points: MissionPoint[];
+}
+
+const MAX_MISSION_RADIUS_PX = 28;
+const UNDP_MIN_RADIUS_PX = 0.25;
+const DOLLARS_PER_RADIUS_PIXEL_SQUARED = 1_500_000;
+
+/**
+ * DotDensityMap maps `radius` through a square-root scale with a hard-coded
+ * range of [0.25, maxRadius]. Feed it the inverse of that scale so its final
+ * SVG radius is exactly sqrt(amount / a fixed dollar scale). The signed value
+ * also cancels the library's minimum-radius floor for the smallest missions.
+ * Because the dollar scale is fixed, area stays proportional both within a
+ * year and when the year changes.
+ */
+function proportionalAreaRadiusInput(amount: number) {
+  const renderedRadius = Math.sqrt(amount / DOLLARS_PER_RADIUS_PIXEL_SQUARED);
+  const scalePosition =
+    (renderedRadius - UNDP_MIN_RADIUS_PX) /
+    (MAX_MISSION_RADIUS_PX - UNDP_MIN_RADIUS_PX);
+  return Math.sign(scalePosition) * scalePosition ** 2;
+}
+
+export function FieldMissionsMap() {
+  const years = useYearRanges().secretariatOverview;
+  const [year, setYear] = useState(years.default);
+  const [entitiesData, setEntitiesData] =
+    useState<SecretariatEntitiesData | null>(null);
+  const [overview, setOverview] = useState<SecretariatOverviewData | null>(
+    null,
+  );
+  const [locationsError, setLocationsError] = useState<string | null>(null);
+  const [overviewError, setOverviewError] = useState<string | null>(null);
+
+  useEffect(() => {
+    let active = true;
+    loadStaticData<SecretariatEntitiesData>("secretariat-entities.json")
+      .then((data) => {
+        if (active) setEntitiesData(data);
+      })
+      .catch(() => {
+        if (active) setLocationsError("Failed to load mission locations.");
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+    loadYearData<SecretariatOverviewData>("secretariat-overview", year)
+      .then((data) => {
+        if (active) setOverview(data);
+      })
+      .catch(() => {
+        if (active)
+          setOverviewError(`Failed to load ${year} mission expenses.`);
+      });
+    return () => {
+      active = false;
+    };
+  }, [year]);
+
+  const current = overview?.meta.year === year ? overview : null;
+  const model = useMemo<FieldMissionModel | null>(() => {
+    if (!current || !entitiesData) return null;
+
+    const totals = Object.fromEntries(
+      (Object.keys(current.meta.groups) as SecretariatGroup[]).map((group) => [
+        group,
+        0,
+      ]),
+    ) as FieldMissionModel["totals"];
+    const amountsByCanonicalCode = new Map<string, number>();
+
+    for (const entity of current.entities) {
+      totals[entity.group] += entity.total;
+      const canonicalCode = entitiesData.aliases[entity.code] ?? entity.code;
+      amountsByCanonicalCode.set(
+        canonicalCode,
+        (amountsByCanonicalCode.get(canonicalCode) ?? 0) + entity.total,
+      );
+    }
+
+    const locatedMissions = entitiesData.locations
+      .filter(
+        (
+          location,
+        ): location is SecretariatMissionLocation & {
+          kind: MappedGroup;
+        } => location.kind === "spm" || location.kind === "pko",
+      )
+      .map((location) => ({
+        location,
+        amount: amountsByCanonicalCode.get(location.code) ?? 0,
+      }))
+      .filter(({ amount }) => amount > 0)
+      .sort(
+        (a, b) =>
+          b.amount - a.amount || a.location.code.localeCompare(b.location.code),
+      );
+    const points = locatedMissions.map(({ location, amount }) => ({
+      lat: location.lat,
+      long: location.long,
+      radius: proportionalAreaRadiusInput(amount),
+      color: location.kind,
+      label: location.code,
+      data: { location, amount, group: location.kind },
+    }));
+
+    return { totals, points };
+  }, [current, entitiesData]);
+
+  if (!model || !entitiesData) {
+    return (
+      <div className="flex h-[36rem] items-center justify-center bg-gray-50 text-gray-500">
+        {locationsError ?? overviewError ?? "Loading field mission data…"}
+      </div>
+    );
+  }
+
+  const boxGroups = (
+    Object.entries(entitiesData.groups) as Array<
+      [SecretariatGroup, (typeof entitiesData.groups)[SecretariatGroup]]
+    >
+  )
+    .sort(([, a], [, b]) => a.order - b.order)
+    .map(([group]) => group);
+  const boxTotal = boxGroups.reduce(
+    (sum, group) => sum + model.totals[group],
+    0,
+  );
+  const missionTotal = model.totals.spm + model.totals.pko;
+  const secretariatEnd = (model.totals.secretariat / boxTotal) * 100;
+  const spmEnd =
+    ((model.totals.secretariat + model.totals.spm) / boxTotal) * 100;
+  const pkoEnd =
+    ((model.totals.secretariat + model.totals.spm + model.totals.pko) /
+      boxTotal) *
+    100;
+  const expandedSpmEnd = (model.totals.spm / missionTotal) * 100;
+  const spmColor = entitiesData.groups.spm.color;
+  const pkoColor = entitiesData.groups.pko.color;
+
+  return (
+    <div className="w-full">
+      <div className="mb-3 flex justify-end">
+        <YearSlider
+          years={years.years}
+          selectedYear={year}
+          onChange={(nextYear) => {
+            setOverviewError(null);
+            setYear(nextYear);
+          }}
+        />
+      </div>
+
+      <SecretariatGroupBar
+        groups={entitiesData.groups}
+        amounts={model.totals}
+      />
+
+      <div className="relative h-14" aria-hidden="true">
+        <svg
+          viewBox="0 0 100 56"
+          preserveAspectRatio="none"
+          className="absolute inset-0 size-full"
+        >
+          <polygon
+            points={`${secretariatEnd},0 ${spmEnd},0 ${expandedSpmEnd},56 0,56`}
+            fill={spmColor}
+            fillOpacity="0.08"
+          />
+          <polygon
+            points={`${spmEnd},0 ${pkoEnd},0 100,56 ${expandedSpmEnd},56`}
+            fill={pkoColor}
+            fillOpacity="0.06"
+          />
+          <line
+            x1={secretariatEnd}
+            y1="0"
+            x2="0"
+            y2="56"
+            stroke={spmColor}
+            strokeOpacity="0.55"
+            vectorEffect="non-scaling-stroke"
+          />
+          <line
+            x1={pkoEnd}
+            y1="0"
+            x2="100"
+            y2="56"
+            stroke={pkoColor}
+            strokeOpacity="0.55"
+            vectorEffect="non-scaling-stroke"
+          />
+        </svg>
+      </div>
+
+      <div className="border border-gray-200 bg-white">
+        <DotDensityMap
+          data={model.points}
+          colorDomain={["spm", "pko"]}
+          colors={[spmColor, pkoColor]}
+          radius={MAX_MISSION_RADIUS_PX}
+          maxRadiusValue={1}
+          mapProjection="equalEarth"
+          scale={1.15}
+          centerPoint={[0, 6]}
+          zoomInteraction="button"
+          mapBorderWidth={0.5}
+          mapBorderColor="#d1d5db"
+          mapNoDataColor="#f3f4f6"
+          height={520}
+          padding="0px"
+          showAntarctica={false}
+          isWorldMap
+          showColorScale={false}
+          showLabels={false}
+          footNote=""
+          ariaLabel={`Map of special political mission and peacekeeping operation expenses in ${year}`}
+          tooltip={(point: MissionPoint) => (
+            <div style={{ maxWidth: "260px", padding: "4px" }}>
+              <p
+                style={{
+                  margin: 0,
+                  color: "#0f172a",
+                  fontSize: "14px",
+                  fontWeight: 600,
+                }}
+              >
+                {point.data.location.code}
+              </p>
+              <p
+                style={{
+                  margin: "3px 0 0",
+                  color: "#475569",
+                  fontSize: "12px",
+                  lineHeight: 1.35,
+                }}
+              >
+                {point.data.location.name}
+              </p>
+              <p
+                style={{
+                  margin: "6px 0 0",
+                  color: "#64748b",
+                  fontSize: "12px",
+                }}
+              >
+                {entitiesData.groups[point.data.group].label} ·{" "}
+                {point.data.location.area}
+              </p>
+              <p
+                style={{
+                  margin: "4px 0 0",
+                  color: "#334155",
+                  fontSize: "13px",
+                  fontWeight: 700,
+                }}
+              >
+                {formatBudget(point.data.amount)}
+              </p>
+            </div>
+          )}
+          styles={{
+            tooltip: {
+              backgroundColor: "white",
+              border: "1px solid #e2e8f0",
+              borderRadius: "6px",
+              padding: "8px 12px",
+              boxShadow:
+                "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)",
+            },
+          }}
+        />
+      </div>
+
+      <div className="mt-3 text-xs leading-relaxed text-gray-500">
+        <details className="max-w-2xl">
+          <summary className="cursor-pointer text-un-blue">
+            Map placement and boundary notes
+          </summary>
+          <div className="mt-2 space-y-2">
+            <p>{entitiesData.map_notes.placement}</p>
+            <p>{entitiesData.map_notes.boundary_disclaimer}</p>
+            {model.points.some(
+              (point) => point.data.location.code === "UNMOGIP",
+            ) && <p>{entitiesData.map_notes.kashmir_disclaimer}</p>}
+          </div>
+        </details>
+      </div>
+    </div>
+  );
+}

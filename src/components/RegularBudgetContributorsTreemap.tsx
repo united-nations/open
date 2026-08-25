@@ -8,6 +8,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { YearSlider } from "@/components/YearSlider";
+import { RegularBudgetPaymentTimeline } from "@/components/RegularBudgetPaymentTimeline";
 import { squarify } from "@/lib/treemapLayout";
 import { useYearRanges } from "@/lib/useYearRanges";
 import type {
@@ -20,25 +21,30 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const STATUS_STYLES: Record<
   RegularBudgetPaymentStatus,
-  { label: string; tile: string; swatch: string; text: string }
+  {
+    label: string;
+    tile: string;
+    swatch: string;
+    text: string;
+  }
 > = {
   paid_on_time: {
     label: "Paid in full on time",
-    tile: "bg-un-blue",
-    swatch: "bg-un-blue",
-    text: "text-slate-950",
+    tile: "bg-[#004987]",
+    swatch: "bg-[#004987]",
+    text: "text-white",
   },
   paid_late: {
     label: "Paid in full after due date",
-    tile: "bg-[#9a6700]",
-    swatch: "bg-[#9a6700]",
-    text: "text-white",
+    tile: "bg-[#66C6E8]",
+    swatch: "bg-[#66C6E8]",
+    text: "text-[#003B5C]",
   },
   not_paid_in_full: {
     label: "Not listed as paid in full",
-    tile: "bg-[#8f5148]",
-    swatch: "bg-[#8f5148]",
-    text: "text-white",
+    tile: "bg-[#EAF7FB]",
+    swatch: "bg-[#EAF7FB]",
+    text: "text-[#003B5C]",
   },
 };
 
@@ -155,9 +161,7 @@ export function RegularBudgetContributorsTreemap() {
       statusRows.flatMap((row) =>
         squarify(
           filteredContributors
-            .filter(
-              (contributor) => contributor.payment_status === row.status,
-            )
+            .filter((contributor) => contributor.payment_status === row.status)
             .map((contributor) => ({
               value: contributor.assessment_amount,
               data: contributor,
@@ -189,7 +193,7 @@ export function RegularBudgetContributorsTreemap() {
           <div
             role="img"
             tabIndex={0}
-            className={`absolute overflow-hidden text-left shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.75)] transition-[left,top,width,height,filter] duration-700 hover:z-10 hover:brightness-110 focus-visible:z-20 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none focus-visible:ring-inset ${style.tile} ${style.text}`}
+            className={`absolute overflow-hidden text-left transition-[left,top,width,height,filter] duration-700 hover:z-10 hover:brightness-110 focus-visible:z-20 focus-visible:ring-2 focus-visible:ring-white focus-visible:outline-none focus-visible:ring-inset ${contributor.payment_status === "not_paid_in_full" ? "shadow-[inset_0_0_0_2px_#004987]" : "shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.75)]"} ${style.tile} ${style.text}`}
             style={{
               left: `${rectangle.x}%`,
               top: `${rectangle.y}%`,
@@ -259,7 +263,9 @@ export function RegularBudgetContributorsTreemap() {
                 const style = STATUS_STYLES[status];
                 return (
                   <div key={status} className="flex items-center gap-1.5">
-                    <span className={`h-3 w-3 rounded-sm ${style.swatch}`} />
+                    <span
+                      className={`h-3 w-3 rounded-sm border border-gray-200 ${style.swatch}`}
+                    />
                     <span className="text-xs text-gray-600">
                       {style.label} ({statusCount(data, status)})
                     </span>
@@ -286,6 +292,16 @@ export function RegularBudgetContributorsTreemap() {
               </div>
             )}
             {statusRows.map((row, index) => {
+              if (row.status === "not_paid_in_full") {
+                return (
+                  <div
+                    key={row.status}
+                    className="pointer-events-none absolute inset-x-0 z-20 h-1 -translate-y-full bg-white"
+                    style={{ top: `${row.y}%` }}
+                    aria-hidden="true"
+                  />
+                );
+              }
               return (
                 <div
                   key={row.status}
@@ -296,6 +312,8 @@ export function RegularBudgetContributorsTreemap() {
               );
             })}
           </div>
+
+          <RegularBudgetPaymentTimeline data={data} />
 
           <div className="mt-4 space-y-2 text-xs leading-relaxed text-gray-500">
             <p>

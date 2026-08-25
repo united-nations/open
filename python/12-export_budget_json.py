@@ -102,6 +102,8 @@ import shutil
 import sys
 from pathlib import Path
 
+from domain_taxonomies import load_secretariat_taxonomies
+
 SRC = Path("data/references/programme-budget-data-financial-v1.6")
 ENTITY_SRC = Path("data/references/programme-budget-data-ppb-entities")
 OUT = Path("public/data")
@@ -138,57 +140,23 @@ PKO_CYCLES = (2024, 2025, 2026)
 # expenditure only. Entity overlays cover every drawn edition.
 PPB_EDITIONS_DRAWN = range(2021, 2028)
 
-# The release labels the parts "Part I" ... "Part XIV", without a description.
-# The descriptions are the ones the Budget-Part lens already uses in
-# src/lib/secretariatGroupings.ts (keep the two lists in step).
+SECRETARIAT_TAXONOMIES = load_secretariat_taxonomies()
 PART_DESCRIPTIONS = {
-    "I": "Overall policymaking, direction and coordination",
-    "II": "Political affairs",
-    "III": "International justice and law",
-    "IV": "International cooperation for development",
-    "V": "Regional cooperation for development",
-    "VI": "Human rights and humanitarian affairs",
-    "VII": "Global Communications",
-    "VIII": "Common support services",
-    "IX": "Internal oversight",
-    "X": "Jointly financed administrative activities and special expenses",
-    "XI": "Capital expenditures",
-    "XII": "Safety and security",
-    "XIII": "Development Account",
-    "XIV": "Staff assessment",
+    part["code"]: part["label"]
+    for part in SECRETARIAT_TAXONOMIES["budget_parts"]
 }
-
-FUNDING_SOURCES = ["regular_budget", "other_assessed", "extrabudgetary"]
-
+ORDERED_FUNDING = sorted(
+    SECRETARIAT_TAXONOMIES["funding_sources"], key=lambda source: source["order"]
+)
+FUNDING_SOURCES = [source["key"] for source in ORDERED_FUNDING]
 FUNDING_NAMES = {
-    "regular_budget": "regular budget",
-    "other_assessed": "other assessed",
-    "extrabudgetary": "extrabudgetary",
+    source["key"]: source["sentence_label"] for source in ORDERED_FUNDING
 }
-
 COST_CLASS_LABELS = {
-    "military_police_personnel": "Military and police personnel",
-    "civilian_personnel": "Civilian personnel",
-    "operational_costs": "Operational costs",
+    cost_class["key"]: cost_class["label"]
+    for cost_class in SECRETARIAT_TAXONOMIES["cost_classes"]
 }
-
-# Long names for the missions in the peacekeeping corpus.
-MISSION_NAMES = {
-    "MINURSO": "United Nations Mission for the Referendum in Western Sahara",
-    "MINUSCA": "United Nations Multidimensional Integrated Stabilization Mission in the Central African Republic",
-    "MINUSMA": "United Nations Multidimensional Integrated Stabilization Mission in Mali",
-    "MONUSCO": "United Nations Organization Stabilization Mission in the Democratic Republic of the Congo",
-    "RSCE": "Regional Service Centre in Entebbe",
-    "UNDOF": "United Nations Disengagement Observer Force",
-    "UNFICYP": "United Nations Peacekeeping Force in Cyprus",
-    "UNGSC": "United Nations Global Service Centre",
-    "UNIFIL": "United Nations Interim Force in Lebanon",
-    "UNISFA": "United Nations Interim Security Force for Abyei",
-    "UNMIK": "United Nations Interim Administration Mission in Kosovo",
-    "UNMISS": "United Nations Mission in South Sudan",
-    "UNSOS": "United Nations Support Office in Somalia",
-    "UNSOH": "United Nations Support Office in Somalia (successor arrangement)",
-}
+MISSION_NAMES = SECRETARIAT_TAXONOMIES["peacekeeping_mission_names"]
 
 
 def sha256(path: Path) -> str:

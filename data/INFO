@@ -1,3 +1,11 @@
 Sources:
 - un-secretariat-expenses.csv: https://open.un.org/un-secretariat-financials/expenses?tab=second Note that UN Secretariat expenses include double counting and the total does thus not match with the UN System expenses entry for the Secretariat.
 - Global-Indicator-Framework-after-2025-review-English.xlsx: https://unsceb.org/expenses-sdg
+
+Versioned portal taxonomies:
+- sdgs.json: SDG numbers and official short/full titles. Official display colours remain in the website code.
+- organization-taxonomies.json: system and regional groupings, contributor categories/statuses, and financing-instrument labels.
+- secretariat-taxonomies.json: priority areas, budget parts, cost classes, funding sources, budget-unit explanations, and peacekeeping mission names.
+- secretariat-entities.json: Secretariat/SPM/PKO/other classifications and field-mission locations.
+
+The frontend imports these files directly. Python exporters load and validate shared taxonomy data through python/domain_taxonomies.py.

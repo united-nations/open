@@ -97,7 +97,10 @@ export function SiteHeader() {
           {/* Inline nav on wide viewports */}
           <nav className="hidden items-center gap-1 lg:flex">
             {navItems.map(({ href, label }) => {
-              const active = activePath === href || activePath === `${href}/`;
+              const active =
+                activePath === href ||
+                activePath === `${href}/` ||
+                activePath.startsWith(`${href}/`);
               return (
                 <Link
                   key={href}
@@ -129,7 +132,10 @@ export function SiteHeader() {
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end">
               {navItems.map(({ href, label, icon: Icon }) => {
-                const active = activePath === href || activePath === `${href}/`;
+                const active =
+                  activePath === href ||
+                  activePath === `${href}/` ||
+                  activePath.startsWith(`${href}/`);
                 return (
                   <DropdownMenuItem
                     key={href}
