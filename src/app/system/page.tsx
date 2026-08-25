@@ -51,10 +51,7 @@ export default function SystemPage() {
         <h1 className="mb-4 text-4xl font-bold tracking-tight text-gray-900">
           Understand the financing of the UN System.
         </h1>
-        <p className="max-w-3xl text-base leading-relaxed text-gray-700 md:text-lg">
-          The Transparency Portal opens up financial data from across the UN
-          System.
-          <br />
+        <p className="text-base leading-relaxed text-gray-700 md:text-lg lg:whitespace-nowrap">
           Explore who contributes, which organizations are funded, where
           resources are deployed, and which goals they support.
         </p>

@@ -175,6 +175,13 @@ export const BUDGET_FUNDING_SOURCES = secretariatTaxonomies.funding_sources
   .toSorted((a, b) => a.order - b.order)
   .map(({ key }) => key) as BudgetFundingSource[];
 
+/** Funding-source shades used within a budget unit's base colour. */
+export const FUNDING_SHADE_OPACITY: Record<BudgetFundingSource, number> = {
+  regular_budget: 1,
+  other_assessed: 1,
+  extrabudgetary: 0.85,
+};
+
 const fundingSourceVisuals: Record<BudgetFundingSource, string> = {
   regular_budget: "bg-un-blue",
   other_assessed: "bg-un-blue",

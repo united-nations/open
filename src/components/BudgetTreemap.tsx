@@ -46,6 +46,7 @@ import {
   COST_CLASS_SHORT,
   costClassStyles,
   fiscalYearLabel,
+  FUNDING_SHADE_OPACITY,
   FUNDING_SOURCES,
   unitCaption,
   unitExplanation,
@@ -75,12 +76,6 @@ const COMPACT_PROGRAMME_PARTS = new Set([
   "XIII",
   "XIV",
 ]);
-
-const FUNDING_SHADE_OPACITY: Record<BudgetFundingSource, number> = {
-  regular_budget: 1,
-  other_assessed: 1,
-  extrabudgetary: 0.85,
-};
 
 function positiveFundingValues(
   node: BudgetNode,
@@ -243,7 +238,6 @@ export function BudgetTreemap({
 
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
   const [canvasHeight, setCanvasHeight] = useState(1200);
   const [tooltip, setTooltip] = useState<{
     x: number;
@@ -303,14 +297,12 @@ export function BudgetTreemap({
         setCanvasHeight(720);
         return;
       }
-      setCanvasHeight(
-        width < 640 ? (isExpanded ? 6000 : 2000) : width < 1024 ? 1600 : 1200,
-      );
+      setCanvasHeight(width < 640 ? 2000 : width < 1024 ? 1600 : 1200);
     };
     updateLayout();
     window.addEventListener("resize", updateLayout);
     return () => window.removeEventListener("resize", updateLayout);
-  }, [isExpanded, usesOverviewGroupLayout]);
+  }, [usesOverviewGroupLayout]);
 
   useEffect(() => {
     setMounted(true);
@@ -446,6 +438,35 @@ export function BudgetTreemap({
       list.sort((a, b) => b.amount - a.amount);
     return map;
   }, [filteredData]);
+
+  // The chart responds to the RB/OA/XB controls, but the sidebar is a stable
+  // reference view: it always receives every published funding source.
+  const sidebarNodes = useMemo(
+    () =>
+      (data?.nodes ?? []).map((node) =>
+        isPko && Object.keys(node.values ?? {}).length === 0
+          ? { ...node, values: { other_assessed: node.amount } }
+          : node,
+      ),
+    [data, isPko],
+  );
+  const sidebarById = useMemo(
+    () =>
+      Object.fromEntries(sidebarNodes.map((node) => [node.id, node])) as Record<
+        string,
+        BudgetNode
+      >,
+    [sidebarNodes],
+  );
+  const sidebarChildrenOf = useMemo(() => {
+    const map: Record<string, BudgetNode[]> = {};
+    for (const node of sidebarNodes) {
+      if (node.parentId) (map[node.parentId] ??= []).push(node);
+    }
+    for (const list of Object.values(map))
+      list.sort((a, b) => b.amount - a.amount);
+    return map;
+  }, [sidebarNodes]);
 
   const previousAmounts = useMemo(() => {
     const map: Record<string, number> = {};
@@ -804,7 +825,7 @@ export function BudgetTreemap({
   };
 
   const meta = filteredData?.meta;
-  const selected = selectedId ? byId[selectedId] : null;
+  const selected = selectedId ? sidebarById[selectedId] : null;
   const hasCostClassDetail =
     filteredData?.nodes.some((node) => node.kind === "item") ?? !isAudited;
   const hasSplitEntities = Object.values(entityPlacements).some(
@@ -992,7 +1013,7 @@ export function BudgetTreemap({
         <div
           className={`${usesOverviewGroupLayout ? "hidden" : "block"} space-y-2 rounded bg-gray-50 px-2 py-3 lg:hidden`}
         >
-          <div className="flex items-center justify-between">
+          <div>
             <div className="text-xs font-medium text-gray-700">
               {isPko
                 ? hasCostClassDetail && lens === "costClass"
@@ -1002,12 +1023,6 @@ export function BudgetTreemap({
                   ? "Trust-fund expenses"
                   : "Budget parts"}
             </div>
-            <button
-              onClick={() => setIsExpanded(!isExpanded)}
-              className="rounded-md bg-un-blue px-3 py-1.5 text-xs font-medium text-white transition-colors hover:bg-un-blue/90"
-            >
-              {isExpanded ? "Collapse" : "Expand"}
-            </button>
           </div>
           <div className="flex flex-wrap gap-x-3 gap-y-1.5">
             {bands.map((band) => (
@@ -1277,14 +1292,8 @@ export function BudgetTreemap({
       </div>
 
       {/* Total, scope caveat and source */}
-      <div className="mt-3 space-y-1 text-xs text-gray-500">
-        {headlineFundingSource ? (
-          <p>
-            {meta.title} · {meta.scopeLabel}. The headline total reports only{" "}
-            {fundingLabel(headlineFundingSource).toLowerCase()}; optional
-            funding sources are shown only in the detailed breakdown.
-          </p>
-        ) : (
+      {!headlineFundingSource && (
+        <div className="mt-3 space-y-1 text-xs text-gray-500">
           <p>
             {meta.title} · {meta.scopeLabel}: {formatBudget(drawnTotal)}
             {searchQuery.trim() === "" &&
@@ -1293,55 +1302,55 @@ export function BudgetTreemap({
               )}
             {filteredPrevious && " · the change is against the year before"}
           </p>
-        )}
-        <p>{meta.scopeWarning}</p>
-        {(meta.omitted ?? []).length > 0 && (
+          <p>{meta.scopeWarning}</p>
+          {(meta.omitted ?? []).length > 0 && (
+            <p>
+              Not drawn, because the budget prints no total for them:{" "}
+              {(meta.omitted ?? [])
+                .map(
+                  (o) =>
+                    o.label +
+                    (Object.keys(o.values).length
+                      ? ` (only ${Object.entries(o.values)
+                          .map(
+                            ([key, amount]) =>
+                              `${FUNDING_SOURCES[key]?.label ?? key} ${formatBudget(amount)}`,
+                          )
+                          .join(", ")})`
+                      : ""),
+                )
+                .join("; ")}
+              .
+            </p>
+          )}
           <p>
-            Not drawn, because the budget prints no total for them:{" "}
-            {(meta.omitted ?? [])
-              .map(
-                (o) =>
-                  o.label +
-                  (Object.keys(o.values).length
-                    ? ` (only ${Object.entries(o.values)
-                        .map(
-                          ([key, amount]) =>
-                            `${FUNDING_SOURCES[key]?.label ?? key} ${formatBudget(amount)}`,
-                        )
-                        .join(", ")})`
-                    : ""),
-              )
-              .join("; ")}
-            .
-          </p>
-        )}
-        <p>
-          Source:{" "}
-          {meta.documentUrl && meta.documentSymbol ? (
+            Source:{" "}
+            {meta.documentUrl && meta.documentSymbol ? (
+              <a
+                href={meta.documentUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-un-blue hover:underline"
+              >
+                {meta.documentSymbol}
+                <ExternalLink className="h-3 w-3" />
+              </a>
+            ) : (
+              "budget fascicles"
+            )}
+            {" · extracted by "}
             <a
-              href={meta.documentUrl}
+              href={meta.source.url}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1 text-un-blue hover:underline"
             >
-              {meta.documentSymbol}
+              {meta.source.repo} {meta.source.release}
               <ExternalLink className="h-3 w-3" />
             </a>
-          ) : (
-            "budget fascicles"
-          )}
-          {" · extracted by "}
-          <a
-            href={meta.source.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-1 text-un-blue hover:underline"
-          >
-            {meta.source.repo} {meta.source.release}
-            <ExternalLink className="h-3 w-3" />
-          </a>
-        </p>
-      </div>
+          </p>
+        </div>
+      )}
 
       {/* Tooltip: a sheet at the foot of a narrow screen, otherwise at the cursor */}
       {tooltip && isMobile && (
@@ -1442,9 +1451,9 @@ export function BudgetTreemap({
       {selected && (
         <BudgetSidebar
           node={selected}
-          parent={selected.parentId ? byId[selected.parentId] : null}
-          childrenByParent={childrenOf}
-          meta={meta}
+          parent={selected.parentId ? sidebarById[selected.parentId] : null}
+          childrenByParent={sidebarChildrenOf}
+          meta={data.meta}
           hashPrefix={hashPrefix}
           onClose={() => {
             setSelectedId(null);

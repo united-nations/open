@@ -10,10 +10,9 @@ export default function SecretariatLayout({
         <h1 className="mb-4 text-4xl font-bold tracking-tight text-gray-900">
           Understand the financing of the UN Secretariat.
         </h1>
-        <p className="max-w-3xl text-base leading-relaxed text-gray-700 md:text-lg">
-          Explore its regular budget, peacekeeping budget and trust funds,
-          including spending by entities and missions and contributions from
-          Member States and other funders.
+        <p className="text-base leading-relaxed text-gray-700 md:text-lg lg:whitespace-nowrap">
+          Get an overview of entities and priority areas, and dive into the
+          details of the regular budget and the peacekeeping budget.
         </p>
       </section>
       {children}
