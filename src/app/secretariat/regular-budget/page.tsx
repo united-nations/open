@@ -23,7 +23,7 @@ export default function RegularBudgetPage() {
       <SectionBanner
         id="regular-budget-spending"
         underSecretariatNav
-        title="How does the regular budget and spending break down?"
+        title="How is the regular budget spent?"
         description="Explore expenditure in the UN programme budget by budget part, section and entity."
       />
       <section className="mx-auto max-w-6xl px-6 py-12 md:px-12 lg:px-16">

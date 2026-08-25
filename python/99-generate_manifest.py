@@ -19,20 +19,20 @@ def generate_manifest():
     manifest = {
         "donors": {"years": detect_years("donors"), "default": "latest"},
         "entityRevenue": {"years": detect_years("entity-revenue"), "default": "latest"},
-        "entitySpending": {"years": detect_years("entity-spending"), "default": 2023 if FUSE_SECRETARIAT else "latest", "fusionYears": FUSION_YEARS },
+        "entitySpending": {"years": detect_years("entity-spending"), "default": "latest", "fusionYears": FUSION_YEARS },
         "countryExpenses": {"years": detect_years("country-expenses"), "default": "latest"},
         "sdgExpenses": {"years": detect_years("sdg-expenses"), "default": "latest"},
         "regularBudgetContributors": {"years": detect_years("regular-budget-contributors"), "default": "latest"},
-        "trustFundContributors": {"years": detect_years("trust-fund-contributors"), "default": 2023},
+        "trustFundContributors": {"years": detect_years("trust-fund-contributors"), "default": "latest"},
         "secretariatOverview": {"years": detect_years("secretariat-overview"), "default": "latest"},
         "budgetAuditedPpb": {"years": detect_years("budget-audited-ppb"), "default": "latest"},
         "budgetAuditedPko": {"years": detect_years("budget-audited-pko"), "default": "latest"},
-        "budgetTrustFunds": {"years": detect_years("budget-trust-funds"), "default": 2023},
-        # Budget documents (python/12). PPB starts at expenditure year 2023.
+        "budgetTrustFunds": {"years": detect_years("budget-trust-funds"), "default": "latest"},
+        # Budget documents (python/12). PPB is keyed by expenditure year.
         # PKO is keyed by the first year and starts at 2022, which is its
         # 2022/23 cycle and matches audited PKO file 2023 (keyed by ending year).
-        "budgetPpb": {"years": detect_years("budget-ppb"), "default": 2023},
-        "budgetPko": {"years": detect_years("budget-pko"), "default": 2022},
+        "budgetPpb": {"years": detect_years("budget-ppb"), "default": "latest"},
+        "budgetPko": {"years": detect_years("budget-pko"), "default": "latest"},
     }
     
     # Add min/max for convenience

@@ -71,6 +71,11 @@ export function SecretariatStackedBar({
               </TooltipContent>
             </Tooltip>
           )}
+          {onSelect && (
+            <span className="text-[10px] text-gray-400">
+              · click a segment to filter
+            </span>
+          )}
         </div>
         {onSelect && selected && (
           <button
@@ -195,7 +200,7 @@ export function SecretariatGroupBar({
 
   return (
     <SecretariatStackedBar
-      label="Group"
+      label="By group"
       segments={segments}
       selected={selected}
       onSelect={

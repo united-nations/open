@@ -309,14 +309,14 @@ export function SecretariatOverview() {
 
       <div className="mb-8 space-y-4 rounded-lg border border-gray-200 bg-white p-4 sm:p-5">
         <SecretariatStackedBar
-          label="Priority area"
+          label="By priority area"
           info={`Priority-area amounts use the full source allocation. Entity tiles use one primary priority for placement, except Staff Assessment, which remains split. ${current.meta.classification_note}`}
           segments={barSegments.priority}
           selected={priority}
           onSelect={setPriority}
         />
         <SecretariatStackedBar
-          label="Funding type"
+          label="By funding type"
           segments={barSegments.funding}
           selected={funding}
           onSelect={(key) => setFunding(key as SecretariatFundingSource | null)}

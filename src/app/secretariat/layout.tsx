@@ -12,7 +12,7 @@ export default function SecretariatLayout({
         </h1>
         <p className="text-base leading-relaxed text-gray-700 md:text-lg lg:whitespace-nowrap">
           Get an overview of entities and priority areas, and dive into the
-          details of the regular budget and the peacekeeping budget.
+          details of regular and peacekeeping budgets.
         </p>
       </section>
       {children}
