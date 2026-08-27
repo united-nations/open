@@ -1,21 +1,17 @@
-import { SecretariatSubnav } from "@/components/SecretariatSubnav";
+import { SectionChrome } from "@/components/SectionChrome";
+import { SECRETARIAT_NAV } from "@/lib/navigation";
 
 export default function SecretariatLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <>
-      <SecretariatSubnav />
-      <section className="mx-auto w-full max-w-6xl px-6 pt-8 pb-6 md:px-12 lg:px-16">
-        <h1 className="mb-4 text-4xl font-bold tracking-tight text-gray-900">
-          Understand the financing of the UN Secretariat.
-        </h1>
-        <p className="text-base leading-relaxed text-gray-700 md:text-lg lg:whitespace-nowrap">
-          Get an overview of entities and priority areas, and dive into the
-          details of regular and peacekeeping budgets.
-        </p>
-      </section>
+    <SectionChrome
+      title="Understand the financing of the UN Secretariat."
+      intro="Get an overview of entities and priority areas, and open programme and peacekeeping budgets, field missions, and trust funds."
+      navLabel="UN Secretariat financials"
+      items={SECRETARIAT_NAV}
+    >
       {children}
-    </>
+    </SectionChrome>
   );
 }

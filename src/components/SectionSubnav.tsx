@@ -3,25 +3,34 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import type { SectionNavItem } from "@/lib/navigation";
 
-const items = [
-  { href: "/secretariat", label: "Overview" },
-  { href: "/secretariat/regular-budget", label: "Regular Budget" },
-  { href: "/secretariat/peacekeeping-budget", label: "Peacekeeping Budget" },
-  { href: "/secretariat/trust-funds", label: "Trust Funds" },
-] as const;
+function normalizePath(pathname: string) {
+  return pathname.replace(/\/$/, "") || "/";
+}
 
-export function SecretariatSubnav() {
-  const pathname = usePathname().replace(/\/$/, "") || "/";
+function isActive(pathname: string, item: SectionNavItem) {
+  if (pathname === item.href) return true;
+  return item.aliases?.some((alias) => pathname === alias) ?? false;
+}
+
+export function SectionSubnav({
+  items,
+  label,
+}: {
+  items: readonly SectionNavItem[];
+  label: string;
+}) {
+  const pathname = normalizePath(usePathname());
 
   return (
     <div className="sticky top-[65px] z-30 border-b border-gray-200 bg-white/95 backdrop-blur-sm min-[1408px]:top-14">
       <nav
-        aria-label="UN Secretariat financials"
+        aria-label={label}
         className="mx-auto flex max-w-6xl overflow-x-auto px-6 md:px-12 lg:px-16"
       >
         {items.map((item) => {
-          const active = pathname === item.href;
+          const active = isActive(pathname, item);
           return (
             <Link
               key={item.href}

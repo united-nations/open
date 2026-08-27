@@ -61,7 +61,7 @@ export function RegularBudgetView() {
       {informational && (
         <p className="mb-4 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-sm text-amber-950">
           Other assessed and extrabudgetary expenditure are not part of the
-          regular budget itself and are displayed for informational purposes.
+          programme budget itself and are displayed for informational purposes.
         </p>
       )}
 

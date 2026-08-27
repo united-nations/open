@@ -1,61 +1,38 @@
 import type { Metadata } from "next";
 import { DataPlaceholder } from "@/components/DataPlaceholder";
-import { PageSectionNav } from "@/components/PageSectionNav";
-import { SectionBanner } from "@/components/SectionBanner";
+import {
+  Methodology,
+  PeacekeepingBudgetMethodologyNotes,
+  SecretariatMethodology,
+} from "@/components/Methodology";
+import { PageBody } from "@/components/PageBody";
+import { PageHeading } from "@/components/PageHeading";
 
 export const metadata: Metadata = {
   title: "UN Peacekeeping Budget",
-  description:
-    "Explore how peacekeeping missions spend funds and who contributes to them.",
+  description: "Explore how peacekeeping missions spend funds.",
 };
-
-const pageSections = [
-  { id: "peacekeeping-spending", label: "Mission spending" },
-  { id: "peacekeeping-contributors", label: "Contributors" },
-] as const;
 
 export default function PeacekeepingBudgetPage() {
   return (
     <>
-      <PageSectionNav sections={pageSections} underSecretariatNav />
-
-      <SectionBanner
+      <PageHeading
         id="peacekeeping-spending"
-        underSecretariatNav
         title="How do peacekeeping missions spend funds?"
         description="A geographic view of peacekeeping mission expenditure."
       />
-      <section className="mx-auto max-w-6xl px-6 py-12 md:px-12 lg:px-16">
+      <PageBody>
         <DataPlaceholder
           type="map"
           height="h-[32rem]"
           title="Peacekeeping missions map"
           description="Mission expenditure and operating locations"
         />
-      </section>
-
-      <SectionBanner
-        id="peacekeeping-contributors"
-        underSecretariatNav
-        title="Who contributes to peacekeeping missions?"
-        description="Assessed contributions to UN peacekeeping operations."
-      />
-      <section className="mx-auto max-w-6xl px-6 py-12 md:px-12 lg:px-16">
-        <DataPlaceholder
-          type="chart"
-          height="h-96"
-          title="Peacekeeping contributors"
-          description="Contributor data will be added here"
-        />
-      </section>
-
-      <section className="mx-auto max-w-6xl px-6 pb-12 md:px-12 lg:px-16">
-        <p className="border-l-4 border-un-blue bg-sky-50 px-4 py-4 text-sm leading-relaxed text-gray-700">
-          The spending view will use peacekeeping budget and performance-report
-          data on July–June financial cycles. The contributor source and its
-          methodology will be documented when that dataset is added.
-        </p>
-      </section>
+      </PageBody>
+      <Methodology>
+        <SecretariatMethodology />
+        <PeacekeepingBudgetMethodologyNotes />
+      </Methodology>
     </>
   );
 }

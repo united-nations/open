@@ -66,7 +66,7 @@ export function TrustFundContributorsTreemap() {
   const [selectedName, setSelectedName] = useState<string | null>(null);
   const [pending, setPending] = useDeepLink({
     hashPrefix: "trust-fund-contributor",
-    sectionId: "contributors",
+    sectionId: "trust-fund-contributors",
     onNavigateAway: () => setSelectedName(null),
   });
 

@@ -1,0 +1,25 @@
+export type SectionNavItem = {
+  href: string;
+  label: string;
+  aliases?: readonly string[];
+};
+
+export const SYSTEM_NAV = [
+  {
+    href: "/system/contributors",
+    label: "Contributors",
+    aliases: ["/system"],
+  },
+  { href: "/system/organizations", label: "Organizations" },
+  { href: "/system/locations", label: "Locations" },
+  { href: "/system/goals", label: "Goals" },
+] as const satisfies readonly SectionNavItem[];
+
+export const SECRETARIAT_NAV = [
+  { href: "/secretariat", label: "Overview" },
+  { href: "/secretariat/contributors", label: "Contributors" },
+  { href: "/secretariat/programme-budget", label: "Programme Budget" },
+  { href: "/secretariat/peacekeeping-budget", label: "Peacekeeping Budget" },
+  { href: "/secretariat/field-missions", label: "Field Missions" },
+  { href: "/secretariat/trust-funds", label: "Trust Funds" },
+] as const satisfies readonly SectionNavItem[];

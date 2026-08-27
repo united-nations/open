@@ -21,11 +21,11 @@ export const metadata: Metadata = {
     template: "%s | UN Transparency Portal",
   },
   description:
-    "The Transparency Portal at open.un.org provides access to financial information from across the UN System. Explore who contributes, which organizations are funded, where funds are spent, and towards which goals.",
+    "The Transparency Portal at open.un.org provides access to financial information from across the UN System and the UN Secretariat. Explore contributions, organizations, locations, goals, budgets, field missions, and trust funds.",
   openGraph: {
     title: "UN Transparency Portal",
     description:
-      "Access financial information from across the UN System. Explore contributors, organizations, spending locations, and sustainable development goals.",
+      "Access financial information from across the UN System and the UN Secretariat.",
     type: "website",
     locale: "en_US",
     siteName: "United Nations",
@@ -33,7 +33,8 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "UN Transparency Portal",
-    description: "Access financial information from across the UN System.",
+    description:
+      "Access financial information from across the UN System and the UN Secretariat.",
   },
 };
 

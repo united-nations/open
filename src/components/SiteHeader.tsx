@@ -27,7 +27,7 @@ const navItems = [
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const activePath = pathname === "/" ? "/system" : pathname;
+  const activePath = pathname.replace(/\/$/, "") || "/";
   // Outboard the emblem into the page margin on very wide viewports — needs
   // ~46px of side margin; 1408px is comfortable for max-w-6xl.
   const outboardOnly = "hidden min-[1408px]:block";
@@ -55,7 +55,7 @@ export function SiteHeader() {
             un-transcribed). The 56.74px offset = lg:px-16 (64px) − 7.26px.
             Inline variant takes over below 1408px viewports. */}
         <Link
-          href="/system"
+          href="/"
           aria-label="UN Transparency Portal — home"
           className={cn(
             "absolute end-[calc(100%-56.74px)] top-1/2 h-10 w-[47.9px] -translate-y-1/2 transition-opacity hover:opacity-75",
@@ -72,7 +72,7 @@ export function SiteHeader() {
           />
         </Link>
         <Link
-          href="/system"
+          href="/"
           aria-label="UN Transparency Portal — home"
           className="inline-flex items-center gap-2.5 transition-opacity hover:opacity-75"
         >

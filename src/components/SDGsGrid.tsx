@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useEffect, useState, useCallback, useRef } from "react";
+import React, {
+  useEffect,
+  useLayoutEffect,
+  useState,
+  useCallback,
+  useRef,
+} from "react";
 import SDGModal from "./SDGModal";
 import { YearSlider } from "@/components/YearSlider";
 import { useDeepLink, replaceToSidebar, clearSidebarHash } from "@/hooks/useDeepLink";
@@ -24,27 +30,38 @@ interface TreemapItem { value: number; name: string; }
 const GAP = 0.4; // Gap between entity cells (percentage)
 const SDG_GAP = 0.8;
 const ITEMS_PER_ROW = 6;
-// Container aspect ratio (width/height) - used to calculate square cells in grid mode
-const CONTAINER_ASPECT = 1.8;
 
-// Grid layout: equal square sizes, 6 per row
-function gridLayout(items: TreemapItem[]): (Rect & { data: TreemapItem })[] {
-  if (items.length === 0) return [];
+// Grid layout: equal square sizes, 6 per row.
+// Positions are percentages of the container, so cellHeight must be scaled by
+// the container's width/height for the tiles to paint as squares.
+function gridLayout(
+  items: TreemapItem[],
+  containerAspect: number,
+): (Rect & { data: TreemapItem })[] {
+  if (items.length === 0 || !(containerAspect > 0)) return [];
   const numRows = Math.ceil(items.length / ITEMS_PER_ROW);
-  const totalColGaps = (ITEMS_PER_ROW - 1) * SDG_GAP;
-  const cellWidth = (100 - totalColGaps) / ITEMS_PER_ROW;
-  // Scale height to make cells appear square given container aspect ratio
-  const cellHeight = cellWidth * CONTAINER_ASPECT;
+  const cols = Math.min(ITEMS_PER_ROW, items.length);
+  const totalColGaps = (cols - 1) * SDG_GAP;
   const totalRowGaps = (numRows - 1) * SDG_GAP;
-  const totalHeight = numRows * cellHeight + totalRowGaps;
-  // Center vertically if grid doesn't fill container
-  const yOffset = totalHeight < 100 ? (100 - totalHeight) / 2 : 0;
+
+  let cellWidth = (100 - (ITEMS_PER_ROW - 1) * SDG_GAP) / ITEMS_PER_ROW;
+  let cellHeight = cellWidth * containerAspect;
+  const unscaledHeight = numRows * cellHeight + totalRowGaps;
+  if (unscaledHeight > 100) {
+    cellHeight = (100 - totalRowGaps) / numRows;
+    cellWidth = cellHeight / containerAspect;
+  }
+
+  const gridWidth = cols * cellWidth + totalColGaps;
+  const gridHeight = numRows * cellHeight + totalRowGaps;
+  const xOffset = (100 - gridWidth) / 2;
+  const yOffset = (100 - gridHeight) / 2;
 
   return items.map((item, i) => {
     const row = Math.floor(i / ITEMS_PER_ROW);
     const col = i % ITEMS_PER_ROW;
     return {
-      x: col * (cellWidth + SDG_GAP),
+      x: xOffset + col * (cellWidth + SDG_GAP),
       y: yOffset + row * (cellHeight + SDG_GAP),
       width: cellWidth,
       height: cellHeight,
@@ -54,10 +71,13 @@ function gridLayout(items: TreemapItem[]): (Rect & { data: TreemapItem })[] {
 }
 
 // Treemap layout: sizes proportional to value
-function treemapLayout(items: TreemapItem[]): (Rect & { data: TreemapItem })[] {
+function treemapLayout(
+  items: TreemapItem[],
+  containerAspect: number,
+): (Rect & { data: TreemapItem })[] {
   if (items.length === 0) return [];
   const totalValue = items.reduce((sum, item) => sum + item.value, 0);
-  if (totalValue === 0) return gridLayout(items);
+  if (totalValue === 0) return gridLayout(items, containerAspect);
 
   const rows: TreemapItem[][] = [];
   for (let i = 0; i < items.length; i += ITEMS_PER_ROW) {
@@ -130,6 +150,7 @@ export default function SDGsGrid() {
   const [bgFaded, setBgFaded] = useState<boolean>(false); // Background fades to light when entities visible
   const [hasScrollRevealed, setHasScrollRevealed] = useState<boolean>(false);
   const gridRef = useRef<HTMLDivElement>(null);
+  const [containerAspect, setContainerAspect] = useState(0);
   const [expensesData, setExpensesData] = useState<SDGExpensesData | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [selectedYear, setSelectedYear] = useState<number>(yearRanges.sdgExpenses.default);
@@ -233,8 +254,21 @@ export default function SDGsGrid() {
   const items: TreemapItem[] = filteredSDGData.map((d) => ({ name: d.sdgNumber.toString(), value: d.total }));
   const dataLookup = Object.fromEntries(filteredSDGData.map((d) => [d.sdgNumber.toString(), d]));
 
-  const gridRects = gridLayout(items);
-  const treemapRects = treemapLayout(items);
+  useLayoutEffect(() => {
+    const element = gridRef.current;
+    if (!element) return;
+    const update = () => {
+      const { width, height } = element.getBoundingClientRect();
+      if (width > 0 && height > 0) setContainerAspect(width / height);
+    };
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(element);
+    return () => observer.disconnect();
+  }, [filteredSDGData.length]);
+
+  const gridRects = gridLayout(items, containerAspect);
+  const treemapRects = treemapLayout(items, containerAspect);
   const rects = showSpending ? treemapRects : gridRects;
 
   // Create lookup by SDG number for positions
@@ -257,7 +291,10 @@ export default function SDGsGrid() {
             </div>
           </div>
         </div>
-        <div className="flex h-[calc(100vh-320px)] min-h-[600px] w-full items-center justify-center bg-gray-100">
+        <div
+          ref={gridRef}
+          className="flex h-[calc(100vh-320px)] min-h-[600px] w-full items-center justify-center bg-gray-100"
+        >
           <p className="text-lg text-gray-500">No SDGs match the search criteria</p>
         </div>
       </>
