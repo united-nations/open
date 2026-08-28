@@ -10,11 +10,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageBody } from "@/components/PageBody";
 import { ResourceLink } from "@/components/ResourceLink";
-import { SECRETARIAT_NAV, SYSTEM_NAV } from "@/lib/navigation";
+import { SYSTEM_NAV, visibleSecretariatNav } from "@/lib/navigation";
 
 export const metadata: Metadata = {
   description:
-    "Access financial information from across the UN System and the UN Secretariat. Explore contributions, organizations, locations, goals, budgets, field missions, and trust funds.",
+    "Access financial information from across the UN System and the UN Secretariat. Explore contributions, organizations, locations, goals, and Secretariat budgets.",
 };
 
 export default function HomePage() {
@@ -37,7 +37,7 @@ export default function HomePage() {
           <HomeSectionCard
             href="/secretariat"
             title="UN Secretariat Financials"
-            links={SECRETARIAT_NAV}
+            links={visibleSecretariatNav()}
           />
         </div>
       </section>

@@ -1,3 +1,5 @@
+import { SHOW_FIELD_MISSIONS, SHOW_TRUST_FUNDS } from "@/lib/featureFlags";
+
 export type SectionNavItem = {
   href: string;
   label: string;
@@ -23,3 +25,11 @@ export const SECRETARIAT_NAV = [
   { href: "/secretariat/field-missions", label: "Field Missions" },
   { href: "/secretariat/trust-funds", label: "Trust Funds" },
 ] as const satisfies readonly SectionNavItem[];
+
+export function visibleSecretariatNav(): SectionNavItem[] {
+  return SECRETARIAT_NAV.filter((item) => {
+    if (item.href === "/secretariat/trust-funds") return SHOW_TRUST_FUNDS;
+    if (item.href === "/secretariat/field-missions") return SHOW_FIELD_MISSIONS;
+    return true;
+  });
+}

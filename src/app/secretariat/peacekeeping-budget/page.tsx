@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { DataPlaceholder } from "@/components/DataPlaceholder";
+import { FieldMissionsMap } from "@/components/FieldMissionsMap";
 import {
   Methodology,
   PeacekeepingBudgetMethodologyNotes,
@@ -22,12 +22,7 @@ export default function PeacekeepingBudgetPage() {
         description="A geographic view of peacekeeping mission expenditure."
       />
       <PageBody>
-        <DataPlaceholder
-          type="map"
-          height="h-[32rem]"
-          title="Peacekeeping missions map"
-          description="Mission expenditure and operating locations"
-        />
+        <FieldMissionsMap kinds={["pko"]} />
       </PageBody>
       <Methodology>
         <SecretariatMethodology />

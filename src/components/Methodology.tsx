@@ -1,4 +1,5 @@
 import { ExpandableCard } from "@/components/ExpandableCard";
+import { SHOW_TRUST_FUNDS } from "@/lib/featureFlags";
 
 export function Methodology({ children }: { children: React.ReactNode }) {
   return (
@@ -224,13 +225,17 @@ export function SecretariatContributorsMethodologyNotes() {
         The contributor source and its methodology will be documented when that
         dataset is added.
       </p>
-      <h4 className="font-medium text-gray-900">Trust Funds</h4>
-      <p>
-        Recognized contributions come from audited Schedules of Individual Trust
-        Funds. Entity grouping uses a reconstructed historical crosswalk; it
-        identifies the entity responsible for a fund, not a direct link between
-        a contributor and a particular expense.
-      </p>
+      {SHOW_TRUST_FUNDS && (
+        <>
+          <h4 className="font-medium text-gray-900">Trust Funds</h4>
+          <p>
+            Recognized contributions come from audited Schedules of Individual
+            Trust Funds. Entity grouping uses a reconstructed historical
+            crosswalk; it identifies the entity responsible for a fund, not a
+            direct link between a contributor and a particular expense.
+          </p>
+        </>
+      )}
     </>
   );
 }
@@ -248,11 +253,18 @@ export function ProgrammeBudgetMethodologyNotes() {
 
 export function PeacekeepingBudgetMethodologyNotes() {
   return (
-    <p>
-      The spending view will use peacekeeping budget and performance-report data
-      on July–June financial cycles. The contributor source and its methodology
-      will be documented when that dataset is added.
-    </p>
+    <>
+      <p>
+        The map shows peacekeeping operation expenses from the Secretariat
+        overview series (calendar year). Special political missions are not
+        included on this page.
+      </p>
+      <p>
+        A view based on peacekeeping budget and performance-report data on
+        July–June financial cycles will be added later. The contributor source
+        and its methodology will be documented when that dataset is added.
+      </p>
+    </>
   );
 }
 

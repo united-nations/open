@@ -15,6 +15,7 @@ import type {
 } from "@/types";
 
 type MappedGroup = Extract<SecretariatGroup, "spm" | "pko">;
+const DEFAULT_MISSION_KINDS: readonly MappedGroup[] = ["spm", "pko"];
 
 interface MissionPoint {
   lat: number;
@@ -56,7 +57,11 @@ function proportionalAreaRadiusInput(amount: number) {
   return Math.sign(scalePosition) * scalePosition ** 2;
 }
 
-export function FieldMissionsMap() {
+export function FieldMissionsMap({
+  kinds = DEFAULT_MISSION_KINDS,
+}: {
+  kinds?: readonly MappedGroup[];
+}) {
   const years = useYearRanges().secretariatOverview;
   const [year, setYear] = useState(years.default);
   const [entitiesData, setEntitiesData] =
@@ -123,7 +128,7 @@ export function FieldMissionsMap() {
           location,
         ): location is SecretariatMissionLocation & {
           kind: MappedGroup;
-        } => location.kind === "spm" || location.kind === "pko",
+        } => kinds.includes(location.kind as MappedGroup),
       )
       .map((location) => ({
         location,
@@ -144,7 +149,7 @@ export function FieldMissionsMap() {
     }));
 
     return { totals, points };
-  }, [current, entitiesData]);
+  }, [current, entitiesData, kinds]);
 
   if (!model || !entitiesData) {
     return (
@@ -165,6 +170,7 @@ export function FieldMissionsMap() {
     (sum, group) => sum + model.totals[group],
     0,
   );
+  const showComposition = kinds.includes("spm") && kinds.includes("pko");
   const missionTotal = model.totals.spm + model.totals.pko;
   const secretariatEnd = (model.totals.secretariat / boxTotal) * 100;
   const spmEnd =
@@ -174,8 +180,7 @@ export function FieldMissionsMap() {
       boxTotal) *
     100;
   const expandedSpmEnd = (model.totals.spm / missionTotal) * 100;
-  const spmColor = entitiesData.groups.spm.color;
-  const pkoColor = entitiesData.groups.pko.color;
+  const kindColors = kinds.map((group) => entitiesData.groups[group].color);
 
   return (
     <div className="w-full">
@@ -190,63 +195,62 @@ export function FieldMissionsMap() {
         />
       </div>
 
-      <SecretariatGroupBar
-        groups={entitiesData.groups}
-        amounts={model.totals}
-      />
+      {showComposition && (
+        <SecretariatGroupBar
+          groups={entitiesData.groups}
+          amounts={model.totals}
+        />
+      )}
 
-      <div className="relative h-14" aria-hidden="true">
-        <svg
-          viewBox="0 0 100 56"
-          preserveAspectRatio="none"
-          className="absolute inset-0 size-full"
-        >
-          <polygon
-            points={`${secretariatEnd},0 ${spmEnd},0 ${expandedSpmEnd},56 0,56`}
-            fill={CONNECTOR_FILL}
-            fillOpacity="0.3"
-          />
-          <polygon
-            points={`${spmEnd},0 ${pkoEnd},0 100,56 ${expandedSpmEnd},56`}
-            fill={CONNECTOR_FILL}
-            fillOpacity="0.3"
-          />
-          <line
-            x1={secretariatEnd}
-            y1="0"
-            x2="0"
-            y2="56"
-            stroke={CONNECTOR_STROKE}
-            strokeOpacity="0.55"
-            vectorEffect="non-scaling-stroke"
-          />
-          <line
-            x1={pkoEnd}
-            y1="0"
-            x2="100"
-            y2="56"
-            stroke={CONNECTOR_STROKE}
-            strokeOpacity="0.55"
-            vectorEffect="non-scaling-stroke"
-          />
-        </svg>
-      </div>
+      {showComposition && (
+        <div className="relative h-14" aria-hidden="true">
+          <svg
+            viewBox="0 0 100 56"
+            preserveAspectRatio="none"
+            className="absolute inset-0 size-full"
+          >
+            <polygon
+              points={`${secretariatEnd},0 ${spmEnd},0 ${expandedSpmEnd},56 0,56`}
+              fill={CONNECTOR_FILL}
+              fillOpacity="0.3"
+            />
+            <polygon
+              points={`${spmEnd},0 ${pkoEnd},0 100,56 ${expandedSpmEnd},56`}
+              fill={CONNECTOR_FILL}
+              fillOpacity="0.3"
+            />
+            <line
+              x1={secretariatEnd}
+              y1="0"
+              x2="0"
+              y2="56"
+              stroke={CONNECTOR_STROKE}
+              strokeOpacity="0.55"
+              vectorEffect="non-scaling-stroke"
+            />
+            <line
+              x1={pkoEnd}
+              y1="0"
+              x2="100"
+              y2="56"
+              stroke={CONNECTOR_STROKE}
+              strokeOpacity="0.55"
+              vectorEffect="non-scaling-stroke"
+            />
+          </svg>
+        </div>
+      )}
 
       <div className="relative border border-gray-200 bg-white">
         <div
           className="absolute bottom-3 left-3 z-10 flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-sm border border-gray-200 bg-white/95 px-3 py-2 text-xs text-gray-700 shadow-sm"
           aria-label="Mission type legend"
         >
-          {(
-            [
-              ["spm", spmColor],
-              ["pko", pkoColor],
-            ] as const
-          ).map(([group, color]) => (
+          {kinds.map((group) => (
             <span key={group} className="flex items-center gap-1.5">
               <span
                 className="size-2.5 shrink-0 rounded-full"
-                style={{ backgroundColor: color }}
+                style={{ backgroundColor: entitiesData.groups[group].color }}
                 aria-hidden="true"
               />
               {entitiesData.groups[group].label}
@@ -255,8 +259,8 @@ export function FieldMissionsMap() {
         </div>
         <DotDensityMap
           data={model.points}
-          colorDomain={["spm", "pko"]}
-          colors={[spmColor, pkoColor]}
+          colorDomain={[...kinds]}
+          colors={kindColors}
           radius={MAX_MISSION_RADIUS_PX}
           maxRadiusValue={1}
           mapProjection="equalEarth"
@@ -273,7 +277,13 @@ export function FieldMissionsMap() {
           showColorScale={false}
           showLabels={false}
           footNote=""
-          ariaLabel={`Map of special political mission and peacekeeping operation expenses in ${year}`}
+          ariaLabel={
+            kinds.includes("spm") && kinds.includes("pko")
+              ? `Map of special political mission and peacekeeping operation expenses in ${year}`
+              : kinds.includes("pko")
+                ? `Map of peacekeeping operation expenses in ${year}`
+                : `Map of special political mission expenses in ${year}`
+          }
           tooltip={(point: MissionPoint) => (
             <div style={{ maxWidth: "260px", padding: "4px" }}>
               <p
