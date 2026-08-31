@@ -107,6 +107,16 @@
     "min": 2019,
     "max": 2026
   },
+  "peacekeepingContributors": {
+    "years": [
+      2022,
+      2023,
+      2024
+    ],
+    "default": 2024,
+    "min": 2022,
+    "max": 2024
+  },
   "trustFundContributors": {
     "years": [
       2017,
