@@ -18,6 +18,7 @@ interface YearRanges {
   countryExpenses: YearRange;
   sdgExpenses: YearRange;
   regularBudgetContributors: YearRange;
+  peacekeepingContributors: YearRange;
   trustFundContributors: YearRange;
   secretariatOverview: YearRange;
   budgetAuditedPpb: YearRange;

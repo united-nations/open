@@ -222,8 +222,12 @@ export function SecretariatContributorsMethodologyNotes() {
       </p>
       <h4 className="font-medium text-gray-900">Peacekeeping Budget</h4>
       <p>
-        The contributor source and its methodology will be documented when that
-        dataset is added.
+        Assessed contributions come from the mission-by-mission assessment
+        circulars indexed by the UN Committee on Contributions. Assessment
+        sections are added and prior-period credit sections are subtracted. The
+        result shows amounts assessed, not payments received or outstanding
+        balances. Source-level exceptions identified during reconciliation are
+        disclosed with the chart and retained in the exported data.
       </p>
       {SHOW_TRUST_FUNDS && (
         <>

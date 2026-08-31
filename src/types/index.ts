@@ -101,6 +101,71 @@ export interface RegularBudgetContributorsData {
   contributors: RegularBudgetContributor[];
 }
 
+export interface PeacekeepingMissionAssessment {
+  code: string;
+  name: string;
+  gross_assessment: number;
+  net_assessment: number;
+  source_symbol: string;
+  source_url: string;
+}
+
+export interface PeacekeepingContributor {
+  name: string;
+  gross_assessment: number;
+  net_assessment: number;
+  tax_equalization_adjustment: number;
+  missions: PeacekeepingMissionAssessment[];
+}
+
+export interface PeacekeepingContributorsData {
+  meta: {
+    stream: "pko-contributors";
+    title: string;
+    cycle_year: number;
+    fiscal_year: string;
+    period: string;
+    currency: "USD";
+    measure: "net_assessment";
+    total_gross_assessment: number;
+    total_net_assessment: number;
+    source_page: string;
+    scope: string;
+    coverage: {
+      missions: number;
+      contributors: number;
+      table_sections: number;
+    };
+    verification: {
+      member_states_per_section: number;
+      country_sets_consistent: boolean;
+      rates_total_100_percent: boolean;
+      gross_rows_match_source_summary: boolean;
+      mission_documents: number;
+      source_rate_anomalies: {
+        mission_code: string;
+        symbol: string;
+        section: string;
+        contributor: string;
+        printed_peacekeeping_rate: number;
+        implied_rate_from_gross_amount: number;
+        difference_percentage_points: number;
+      }[];
+      rows_derived_from_printed_totals: {
+        mission_code: string;
+        symbol: string;
+        section: string;
+        rows: {
+          contributor: string;
+          gross: number;
+          net: number;
+        }[];
+      }[];
+    };
+  };
+  contributors: PeacekeepingContributor[];
+}
+
 export interface TrustFundDestination {
   fund_code: string;
   fund_name: string;

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { DataPlaceholder } from "@/components/DataPlaceholder";
 import {
   Methodology,
   SecretariatContributorsMethodologyNotes,
@@ -7,6 +6,7 @@ import {
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
+import { PeacekeepingContributorsTreemap } from "@/components/PeacekeepingContributorsTreemap";
 import { RegularBudgetContributorsTreemap } from "@/components/RegularBudgetContributorsTreemap";
 import { TrustFundContributorsTreemap } from "@/components/TrustFundContributorsTreemap";
 import { SHOW_TRUST_FUNDS } from "@/lib/featureFlags";
@@ -36,12 +36,7 @@ export default function SecretariatContributorsPage() {
         description="Assessed contributions to UN peacekeeping operations."
       />
       <PageBody>
-        <DataPlaceholder
-          type="chart"
-          height="h-96"
-          title="Peacekeeping contributors"
-          description="Contributor data will be added here"
-        />
+        <PeacekeepingContributorsTreemap />
       </PageBody>
 
       {SHOW_TRUST_FUNDS && (

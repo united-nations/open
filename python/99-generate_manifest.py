@@ -23,6 +23,7 @@ def generate_manifest():
         "countryExpenses": {"years": detect_years("country-expenses"), "default": "latest"},
         "sdgExpenses": {"years": detect_years("sdg-expenses"), "default": "latest"},
         "regularBudgetContributors": {"years": detect_years("regular-budget-contributors"), "default": "latest"},
+        "peacekeepingContributors": {"years": detect_years("peacekeeping-contributors"), "default": "latest"},
         "trustFundContributors": {"years": detect_years("trust-fund-contributors"), "default": "latest"},
         "secretariatOverview": {"years": detect_years("secretariat-overview"), "default": "latest"},
         "budgetAuditedPpb": {"years": detect_years("budget-audited-ppb"), "default": "latest"},
