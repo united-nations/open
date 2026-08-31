@@ -24,6 +24,7 @@ import {
 } from "@/lib/budgetGroupings";
 import { BAND_PALETTE } from "@/lib/secretariatGroupings";
 import { squarifyDense } from "@/lib/treemapLayout";
+import { ProgrammeBudgetNodeTrend } from "@/components/ProgrammeBudgetNodeTrend";
 
 interface BudgetSidebarProps {
   node: BudgetNode;
@@ -31,6 +32,8 @@ interface BudgetSidebarProps {
   childrenByParent: Record<string, BudgetNode[]>;
   meta: BudgetMeta;
   hashPrefix: string;
+  dataset?: string;
+  years?: number[];
   onClose: () => void;
 }
 
@@ -709,6 +712,8 @@ export function BudgetSidebar({
   childrenByParent,
   meta,
   hashPrefix,
+  dataset,
+  years,
   onClose,
 }: BudgetSidebarProps) {
   const [isVisible, setIsVisible] = useState(false);
@@ -798,6 +803,10 @@ export function BudgetSidebar({
     // One budget unit of a section — the level the treemap draws as tiles.
     if (node.tier === "budget_unit" && meta.stream === "trust_funds")
       return "Secretariat entity";
+    if (node.entity?.relationship === "entity_aggregate")
+      return parent?.tier === "part"
+        ? `Entity in budget part ${parent.code}`
+        : "Entity";
     if (node.tier === "budget_unit")
       return parent ? `Budget unit of ${parent.label}` : "Budget unit";
     const kindName = KIND_NAMES[node.kind];
@@ -809,6 +818,12 @@ export function BudgetSidebar({
   // organization name where the entity dimension supports one.
   const heading =
     node.tier === "section" ? node.label : (node.entity?.name ?? node.label);
+  const breakdownHeading =
+    node.entity?.relationship === "entity_aggregate"
+      ? "Entity breakdown"
+      : node.tier === "section"
+        ? "Section breakdown"
+        : "Budget breakdown";
 
   return (
     <div
@@ -908,11 +923,22 @@ export function BudgetSidebar({
             </div>
           )}
 
+          {meta.stream === "ppb" &&
+            dataset?.startsWith("budget-ppb-") &&
+            years &&
+            years.length > 0 && (
+              <ProgrammeBudgetNodeTrend
+                node={node}
+                dataset={dataset}
+                years={years}
+              />
+            )}
+
           {/* Hierarchy or, for an undivided leaf, funding-source composition */}
           {(childNodes.length > 0 || fundingEntries.length > 1) && (
             <div>
               <h3 className="mb-3 text-lg font-normal tracking-wider text-gray-900 uppercase">
-                Budget breakdown
+                {breakdownHeading}
               </h3>
               <MiniBudgetTreemap
                 node={node}

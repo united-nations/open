@@ -154,6 +154,7 @@ export function FinancingInstrumentChart({
                 key={s.key}
                 type="monotone"
                 dataKey={s.key}
+                name={s.label}
                 stackId="1"
                 stroke={s.color}
                 fill={s.color}

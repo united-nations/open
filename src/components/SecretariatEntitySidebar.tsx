@@ -2,10 +2,18 @@
 
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { X } from "lucide-react";
+import {
+  FUNDING_SOURCE_TREND_SERIES,
+  SidebarStackedTrend,
+  type FinancingInstrumentDataPoint,
+} from "@/components/SidebarStackedTrend";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { loadYearData } from "@/lib/data";
 import { formatBudget } from "@/lib/entities";
+import { useYearRanges } from "@/lib/useYearRanges";
 import type {
   SecretariatFundingSource,
+  SecretariatOverviewData,
   SecretariatOverviewEntity,
 } from "@/types";
 
@@ -53,6 +61,48 @@ export function SecretariatEntitySidebar({
   const selectedAmount = selectedPriority
     ? (priorities.find(([label]) => label === selectedPriority)?.[1] ?? 0)
     : null;
+  const years = useYearRanges().secretariatOverview.years;
+  const [fundingTrend, setFundingTrend] = useState<
+    FinancingInstrumentDataPoint[] | null
+  >(null);
+
+  useEffect(() => {
+    let active = true;
+    Promise.all(
+      years.map((trendYear) =>
+        loadYearData<SecretariatOverviewData>(
+          "secretariat-overview",
+          trendYear,
+        )
+          .then((data) => ({ year: trendYear, data }))
+          .catch(() => ({ year: trendYear, data: null })),
+      ),
+    ).then((rows) => {
+      if (!active) return;
+      setFundingTrend(
+        rows.map(({ year: trendYear, data }) => {
+          const match = data?.entities.find((item) => item.code === entity.code);
+          const amounts = {
+            regular_budget: 0,
+            other_assessed: 0,
+            extrabudgetary: 0,
+          };
+          if (match) {
+            for (const cell of match.cells) {
+              amounts[cell.funding_source] += cell.amount;
+            }
+          }
+          return {
+            year: String(trendYear),
+            ...amounts,
+          };
+        }),
+      );
+    });
+    return () => {
+      active = false;
+    };
+  }, [entity.code, years]);
 
   useEffect(() => {
     const id = requestAnimationFrame(() => setVisible(true));
@@ -177,6 +227,12 @@ export function SecretariatEntitySidebar({
               ))}
             </dl>
           </section>
+
+          <SidebarStackedTrend
+            heading="Trend by funding source"
+            data={fundingTrend}
+            series={FUNDING_SOURCE_TREND_SERIES}
+          />
 
           <p className="border-l-2 border-un-blue bg-sky-50 px-3 py-2 text-xs leading-relaxed text-gray-600">
             Priority-area amounts retain the source allocation. The primary

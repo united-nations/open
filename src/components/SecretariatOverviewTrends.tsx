@@ -13,8 +13,7 @@ import {
 import { FinancingInstrumentChart } from "@/components/charts/FinancingInstrumentChart";
 import { loadYearData } from "@/lib/data";
 import { formatBudget } from "@/lib/entities";
-import { FINANCING_INSTRUMENT_COLORS } from "@/lib/financingInstruments";
-import { FUNDING_SOURCES } from "@/lib/budgetGroupings";
+import { FUNDING_SOURCE_TREND_SERIES } from "@/components/SidebarStackedTrend";
 import { priorityAreaColor } from "@/lib/secretariatGroupings";
 import { useYearRanges } from "@/lib/useYearRanges";
 import type {
@@ -27,19 +26,6 @@ const formatYAxis = (value: number) => {
   if (value >= 1e6) return `$${(value / 1e6).toFixed(0)}M`;
   return `$${value}`;
 };
-
-const FUNDING_SERIES = (
-  ["regular_budget", "other_assessed", "extrabudgetary"] as const
-).map((key) => ({
-  key,
-  label: FUNDING_SOURCES[key].label,
-  color:
-    key === "regular_budget"
-      ? FINANCING_INSTRUMENT_COLORS.assessed
-      : key === "other_assessed"
-        ? FINANCING_INSTRUMENT_COLORS.voluntary_unearmarked
-        : FINANCING_INSTRUMENT_COLORS.voluntary_earmarked,
-}));
 
 export function SecretariatOverviewTrends() {
   const years = useYearRanges().secretariatOverview.years;
@@ -140,20 +126,6 @@ export function SecretariatOverviewTrends() {
           <h4 className="mb-3 text-sm font-medium text-gray-700">
             Spending by priority area
           </h4>
-          <div className="mb-3 flex flex-wrap gap-2">
-            {priorities.map((name) => (
-              <div
-                key={name}
-                className="flex items-center gap-1.5 rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700"
-              >
-                <span
-                  className="h-2.5 w-2.5 shrink-0 rounded-full"
-                  style={{ backgroundColor: priorityAreaColor(name) }}
-                />
-                <span>{name}</span>
-              </div>
-            ))}
-          </div>
           <div className="h-[280px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <LineChart
@@ -178,9 +150,11 @@ export function SecretariatOverviewTrends() {
                   mirror
                 />
                 <Tooltip
-                  formatter={(value) =>
-                    typeof value === "number" ? formatBudget(value) : "N/A"
-                  }
+                  shared={false}
+                  formatter={(value, name) => [
+                    typeof value === "number" ? formatBudget(value) : "N/A",
+                    String(name),
+                  ]}
                   labelFormatter={(label) => `Year: ${label}`}
                   contentStyle={{
                     backgroundColor: "white",
@@ -208,7 +182,10 @@ export function SecretariatOverviewTrends() {
           <h4 className="mb-3 text-sm font-medium text-gray-700">
             Spending by funding source
           </h4>
-          <FinancingInstrumentChart data={fundingData} series={FUNDING_SERIES} />
+          <FinancingInstrumentChart
+            data={fundingData}
+            series={FUNDING_SOURCE_TREND_SERIES}
+          />
         </div>
       </div>
     </div>

@@ -1,14 +1,28 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { DotDensityMap } from "@undp/data-viz";
+import { PeacekeepingMissionSidebar } from "@/components/PeacekeepingMissionSidebar";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { ClickHint } from "@/components/ui/ClickHint";
 import { YearSlider } from "@/components/YearSlider";
+import {
+  clearSidebarHash,
+  replaceToSidebar,
+  useDeepLink,
+} from "@/hooks/useDeepLink";
 import { loadStaticData, loadYearData } from "@/lib/data";
 import { formatBudget } from "@/lib/entities";
 import {
   COST_CLASS_BAND_COLORS,
+  COST_CLASS_KEYS,
   COST_CLASS_SHORT,
   fiscalYearLabel,
+  type CostClassKey,
 } from "@/lib/budgetGroupings";
 import { useYearRanges } from "@/lib/useYearRanges";
 import type {
@@ -18,13 +32,6 @@ import type {
   SecretariatMissionLocation,
 } from "@/types";
 
-const COST_CLASS_KEYS = [
-  "military_police_personnel",
-  "civilian_personnel",
-  "operational_costs",
-] as const;
-
-type CostClassKey = (typeof COST_CLASS_KEYS)[number];
 type PointKind = "pko" | "support";
 
 const FIELD_COLOR = "#009edb";
@@ -131,17 +138,28 @@ function MoneyBar({
   color: string;
 }) {
   const width = max > 0 ? (Math.max(0, value) / max) * 100 : 0;
+  const label = formatBudget(value);
   return (
-    <div
-      className="h-4 w-full min-w-[4.5rem] bg-gray-100"
-      title={formatBudget(value)}
-      aria-label={formatBudget(value)}
-    >
-      <div
-        className="h-full"
-        style={{ width: `${width}%`, backgroundColor: color }}
-      />
-    </div>
+    <Tooltip delayDuration={50}>
+      <TooltipTrigger asChild>
+        <div
+          className="h-4 w-full min-w-[4.5rem] bg-gray-100"
+          aria-label={label}
+        >
+          <div
+            className="h-full"
+            style={{ width: `${width}%`, backgroundColor: color }}
+          />
+        </div>
+      </TooltipTrigger>
+      <TooltipContent
+        side="top"
+        sideOffset={6}
+        className="border border-slate-200 bg-white text-slate-800 shadow-lg"
+      >
+        <p className="text-sm font-semibold">{label}</p>
+      </TooltipContent>
+    </Tooltip>
   );
 }
 
@@ -166,29 +184,53 @@ function DistributionBar({
   if (sum <= 0) {
     return <span className="text-xs text-gray-400">—</span>;
   }
-  const title = parts
+  const ariaLabel = parts
     .map(
       (part) =>
         `${part.label}: ${formatBudget(part.value)} (${((part.value / sum) * 100).toFixed(0)}%)`,
     )
     .join(" · ");
   return (
-    <div
-      className="flex h-4 w-full min-w-[8rem] overflow-hidden bg-gray-100"
-      title={title}
-      aria-label={title}
-    >
-      {parts.map((part) => (
+    <Tooltip delayDuration={50}>
+      <TooltipTrigger asChild>
         <div
-          key={part.key}
-          className="h-full"
-          style={{
-            width: `${(part.value / sum) * 100}%`,
-            backgroundColor: part.color,
-          }}
-        />
-      ))}
-    </div>
+          className="flex h-4 w-full min-w-[8rem] overflow-hidden bg-gray-100"
+          aria-label={ariaLabel}
+        >
+          {parts.map((part) => (
+            <div
+              key={part.key}
+              className="h-full"
+              style={{
+                width: `${(part.value / sum) * 100}%`,
+                backgroundColor: part.color,
+              }}
+            />
+          ))}
+        </div>
+      </TooltipTrigger>
+      <TooltipContent
+        side="top"
+        sideOffset={6}
+        className="border border-slate-200 bg-white text-slate-800 shadow-lg"
+      >
+        <ul className="space-y-1 text-xs">
+          {parts.map((part) => (
+            <li key={part.key} className="flex items-center gap-2">
+              <span
+                className="size-2 shrink-0"
+                style={{ backgroundColor: part.color }}
+                aria-hidden="true"
+              />
+              <span>
+                {part.label}: {formatBudget(part.value)} (
+                {((part.value / sum) * 100).toFixed(0)}%)
+              </span>
+            </li>
+          ))}
+        </ul>
+      </TooltipContent>
+    </Tooltip>
   );
 }
 
@@ -200,6 +242,17 @@ export function PeacekeepingBudgetView() {
     null,
   );
   const [error, setError] = useState<string | null>(null);
+  const [selectedCode, setSelectedCode] = useState<string | null>(null);
+  const [pending, setPending] = useDeepLink({
+    hashPrefix: "pko-mission",
+    sectionId: "peacekeeping-spending",
+    onNavigateAway: () => setSelectedCode(null),
+  });
+
+  const openMission = useCallback((code: string) => {
+    setSelectedCode(code);
+    replaceToSidebar("pko-mission", code);
+  }, []);
 
   useEffect(() => {
     let active = true;
@@ -238,6 +291,12 @@ export function PeacekeepingBudgetView() {
     return buildRows(current, entities);
   }, [current, entities]);
 
+  useEffect(() => {
+    if (!pending) return;
+    setSelectedCode(pending);
+    setPending(null);
+  }, [pending, setPending]);
+
   const points = useMemo<MapPoint[]>(() => {
     return rows
       .filter((row) => row.location)
@@ -260,6 +319,11 @@ export function PeacekeepingBudgetView() {
   }
 
   const maxTotal = rows.reduce((max, row) => Math.max(max, row.total), 0);
+  const selectedRow = rows.find((row) => row.code === selectedCode);
+  const selectedLocation =
+    selectedCode && entities
+      ? resolveLocation(selectedCode, entities)
+      : undefined;
 
   return (
     <div className="w-full">
@@ -310,6 +374,14 @@ export function PeacekeepingBudgetView() {
           showColorScale={false}
           showLabels={false}
           footNote=""
+          resetSelectionOnDoubleClick={false}
+          highlightedDataPoints={selectedCode ? [selectedCode] : []}
+          onSeriesMouseClick={(point: MapPoint | undefined) => {
+            const code =
+              point?.data?.code ??
+              (typeof point?.label === "string" ? point.label : undefined);
+            if (code) openMission(code);
+          }}
           ariaLabel={`Map of peacekeeping budget expenditure in ${current.meta.fiscalYear}`}
           tooltip={(point: MapPoint) => (
             <div style={{ maxWidth: "260px", padding: "4px" }}>
@@ -369,6 +441,7 @@ export function PeacekeepingBudgetView() {
           }}
         />
       </div>
+      <ClickHint text="Click a mission for details" />
 
       <div className="mt-3 text-xs leading-relaxed text-gray-500">
         <details className="max-w-2xl">
@@ -423,7 +496,16 @@ export function PeacekeepingBudgetView() {
               {rows.map((row) => (
                 <tr
                   key={row.code}
-                  className="border-b border-gray-100 align-middle"
+                  className={`cursor-pointer border-b border-gray-100 align-middle hover:bg-gray-50 ${selectedCode === row.code ? "bg-sky-50" : ""}`}
+                  onClick={() => openMission(row.code)}
+                  onKeyDown={(event) => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      event.preventDefault();
+                      openMission(row.code);
+                    }
+                  }}
+                  tabIndex={0}
+                  aria-label={`Open details for ${row.code}`}
                 >
                   <td className="py-2.5 pr-3">
                     <div className="font-semibold text-gray-900">
@@ -455,6 +537,7 @@ export function PeacekeepingBudgetView() {
                         href={row.source.url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={(event) => event.stopPropagation()}
                         className="whitespace-nowrap text-un-blue hover:underline"
                       >
                         {row.source.symbol}
@@ -469,6 +552,32 @@ export function PeacekeepingBudgetView() {
           </table>
         </div>
       </div>
+
+      {selectedCode && (
+        <PeacekeepingMissionSidebar
+          key={selectedCode}
+          code={selectedCode}
+          name={selectedRow?.name ?? selectedLocation?.name ?? selectedCode}
+          kindLabel={
+            selectedRow
+              ? KIND_LABEL[selectedRow.kind]
+              : selectedLocation?.kind === "support"
+                ? KIND_LABEL.support
+                : KIND_LABEL.pko
+          }
+          locationLabel={
+            selectedRow?.location?.area ?? selectedLocation?.area ?? null
+          }
+          fiscalYear={current.meta.fiscalYear}
+          total={selectedRow ? selectedRow.total : null}
+          classes={selectedRow ? selectedRow.classes : null}
+          source={selectedRow?.source}
+          onClose={() => {
+            setSelectedCode(null);
+            clearSidebarHash();
+          }}
+        />
+      )}
     </div>
   );
 }

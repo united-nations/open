@@ -7,9 +7,9 @@
 // than in a legend below it.
 //
 //   PPB sections part band -> budget section tile
-//   PPB entities one entity band -> canonical entity tile; published amounts
-//                that cannot be assigned without guessing stay in one explicit
-//                unassigned tile
+//   PPB entities part band -> canonical entity tile; published amounts that
+//                cannot be assigned without guessing stay explicitly
+//                unassigned inside their budget part
 //   detailed PKO mission band -> cost class -> cost item, or the same the other
 //                way round when the lens is switched
 //   audited PKO  mission band -> mission total
@@ -126,6 +126,7 @@ interface BandLabelPosition {
 interface EntityProjection {
   nodes: BudgetNode[];
   sidebarNodes: BudgetNode[];
+  partNodes: BudgetNode[];
   namedAmount: number;
   unassignedAmount: number;
 }
@@ -133,6 +134,7 @@ interface EntityProjection {
 const EMPTY_ENTITY_PROJECTION: EntityProjection = {
   nodes: [],
   sidebarNodes: [],
+  partNodes: [],
   namedAmount: 0,
   unassignedAmount: 0,
 };
@@ -149,14 +151,17 @@ function addFundingValues(
 }
 
 /**
- * Build an entity lens without changing the source hierarchy.
+ * Build an entity lens without changing the source hierarchy. Budget parts
+ * remain the first level; entity identities are aggregated only within a part.
  *
  * A single-owner section can be assigned in full to its source-evidenced
  * owner. Multi-entity sections use their printed budget units. Anything else,
  * including a lower breakdown that exceeds its authoritative section total,
  * stays explicitly unassigned instead of being relabelled as an entity.
  */
-function buildEntityProjection(data: BudgetData | null): EntityProjection {
+export function buildEntityProjection(
+  data: BudgetData | null,
+): EntityProjection {
   if (!data) return EMPTY_ENTITY_PROJECTION;
 
   const children: Record<string, BudgetNode[]> = {};
@@ -165,9 +170,11 @@ function buildEntityProjection(data: BudgetData | null): EntityProjection {
   }
 
   interface Aggregate {
+    part: BudgetNode;
     entity?: BudgetNode["entity"];
     amount: number;
     values: Partial<Record<BudgetFundingSource, number>>;
+    sourceRoots: Map<string, BudgetNode>;
     sections: Map<
       string,
       {
@@ -179,22 +186,31 @@ function buildEntityProjection(data: BudgetData | null): EntityProjection {
   }
 
   const aggregates = new Map<string, Aggregate>();
+  const aggregateKey = (part: BudgetNode, entity: BudgetNode["entity"]) =>
+    `${part.id}::${entity?.id ?? entity?.name ?? "unassigned"}`;
   const add = (
+    part: BudgetNode,
     section: BudgetNode,
     entity: BudgetNode["entity"],
     amount: number,
     values: BudgetNode["values"],
+    sourceRoot?: BudgetNode,
   ) => {
     if (amount <= 0) return;
-    const key = entity?.id ?? entity?.name ?? "unassigned";
+    const key = aggregateKey(part, entity);
     const aggregate = aggregates.get(key) ?? {
+      part,
       entity,
       amount: 0,
       values: {},
+      sourceRoots: new Map(),
       sections: new Map(),
     };
     aggregate.amount += amount;
     addFundingValues(aggregate.values, values);
+    if (entity && sourceRoot) {
+      aggregate.sourceRoots.set(sourceRoot.id, sourceRoot);
+    }
     const placement = aggregate.sections.get(section.id) ?? {
       section,
       amount: 0,
@@ -205,53 +221,177 @@ function buildEntityProjection(data: BudgetData | null): EntityProjection {
     aggregate.sections.set(section.id, placement);
     aggregates.set(key, aggregate);
   };
-
-  for (const section of data.nodes.filter(
-    (node) => node.tier === "section" && node.amount > 0,
-  )) {
-    if (section.entity?.relationship === "section_owner") {
-      add(section, section.entity, section.amount, section.values);
-      continue;
+  const clearPart = (part: BudgetNode) => {
+    for (const [key, aggregate] of aggregates) {
+      if (aggregate.part.id === part.id) aggregates.delete(key);
+    }
+  };
+  const reduceUnassigned = (
+    part: BudgetNode,
+    amount: number,
+    values: Partial<Record<BudgetFundingSource, number>>,
+  ) => {
+    const aggregate = aggregates.get(aggregateKey(part, undefined));
+    if (!aggregate || aggregate.amount < amount) return false;
+    if (
+      BUDGET_FUNDING_SOURCES.some(
+        (source) => (values[source] ?? 0) > (aggregate.values[source] ?? 0),
+      )
+    ) {
+      return false;
     }
 
-    const units = (children[section.id] ?? []).filter(
-      (node) => node.tier === "budget_unit" && node.amount > 0,
+    aggregate.amount -= amount;
+    for (const source of BUDGET_FUNDING_SOURCES) {
+      let remaining = values[source] ?? 0;
+      if (remaining <= 0) continue;
+      aggregate.values[source] = (aggregate.values[source] ?? 0) - remaining;
+      for (const placement of aggregate.sections.values()) {
+        const available = placement.values[source] ?? 0;
+        const reduction = Math.min(available, remaining);
+        if (reduction <= 0) continue;
+        placement.values[source] = available - reduction;
+        placement.amount -= reduction;
+        remaining -= reduction;
+        if (remaining <= 0) break;
+      }
+    }
+    return true;
+  };
+
+  const root = data.nodes.find((node) => node.parentId === null);
+  const partNodes = data.nodes.filter(
+    (node) => node.tier === "part" && node.amount > 0,
+  );
+  const syntheticPartNodes: BudgetNode[] = [];
+
+  for (const part of partNodes) {
+    const sections = (children[part.id] ?? []).filter(
+      (node) => node.tier === "section" && node.amount > 0,
     );
-    const unitsTotal = units.reduce((sum, node) => sum + node.amount, 0);
-    if (units.length === 0 || unitsTotal > section.amount) {
-      add(section, undefined, section.amount, section.values);
+    const sectionsTotal = sections.reduce(
+      (sum, section) => sum + section.amount,
+      0,
+    );
+
+    // An authoritative part total takes precedence over a materially larger
+    // lower breakdown. Keeping the entire part unassigned avoids inventing a
+    // proportional entity allocation.
+    if (sectionsTotal - part.amount > 5000) {
+      add(part, part, undefined, part.amount, part.values);
       continue;
     }
 
-    const unitFundingTotals: Partial<Record<BudgetFundingSource, number>> = {};
-    for (const unit of units) {
-      add(section, unit.entity, unit.amount, unit.values);
-      addFundingValues(unitFundingTotals, unit.values);
+    const sectionFundingTotals: Partial<Record<BudgetFundingSource, number>> =
+      {};
+    for (const section of sections) {
+      addFundingValues(sectionFundingTotals, section.values);
+      if (section.entity?.relationship === "section_owner") {
+        const sectionUnits = (children[section.id] ?? []).filter(
+          (node) => node.tier === "budget_unit" && node.amount > 0,
+        );
+        const ownerIdentity = section.entity.id ?? section.entity.name;
+        const sourceRoot =
+          sectionUnits.find(
+            (unit) => (unit.entity?.id ?? unit.entity?.name) === ownerIdentity,
+          ) ?? (sectionUnits.length === 1 ? sectionUnits[0] : section);
+        add(
+          part,
+          section,
+          section.entity,
+          section.amount,
+          section.values,
+          sourceRoot,
+        );
+        continue;
+      }
+
+      const units = (children[section.id] ?? []).filter(
+        (node) => node.tier === "budget_unit" && node.amount > 0,
+      );
+      const unitsTotal = units.reduce((sum, node) => sum + node.amount, 0);
+      if (units.length === 0 || unitsTotal > section.amount) {
+        add(part, section, undefined, section.amount, section.values);
+        continue;
+      }
+
+      const unitFundingTotals: Partial<Record<BudgetFundingSource, number>> =
+        {};
+      for (const unit of units) {
+        add(part, section, unit.entity, unit.amount, unit.values, unit);
+        addFundingValues(unitFundingTotals, unit.values);
+      }
+      const residual = section.amount - unitsTotal;
+      if (residual > 0) {
+        const residualValues = Object.fromEntries(
+          BUDGET_FUNDING_SOURCES.map((source) => [
+            source,
+            Math.max(
+              0,
+              (section.values?.[source] ?? 0) -
+                (unitFundingTotals[source] ?? 0),
+            ),
+          ]).filter(([, amount]) => Number(amount) > 0),
+        ) as Partial<Record<BudgetFundingSource, number>>;
+        add(part, section, undefined, residual, residualValues);
+      }
     }
-    const residual = section.amount - unitsTotal;
+
+    const overrun = sectionsTotal - part.amount;
+    if (overrun > 0) {
+      // Small source rounding differences are removed only from the explicitly
+      // unassigned amount. Named entity figures remain exactly as published.
+      const overrunValues = Object.fromEntries(
+        BUDGET_FUNDING_SOURCES.map((source) => [
+          source,
+          Math.max(
+            0,
+            (sectionFundingTotals[source] ?? 0) - (part.values?.[source] ?? 0),
+          ),
+        ]).filter(([, amount]) => Number(amount) > 0),
+      ) as Partial<Record<BudgetFundingSource, number>>;
+      if (!reduceUnassigned(part, overrun, overrunValues)) {
+        clearPart(part);
+        add(part, part, undefined, part.amount, part.values);
+        continue;
+      }
+    }
+
+    const residual = part.amount - sectionsTotal;
     if (residual > 0) {
       const residualValues = Object.fromEntries(
         BUDGET_FUNDING_SOURCES.map((source) => [
           source,
           Math.max(
             0,
-            (section.values?.[source] ?? 0) - (unitFundingTotals[source] ?? 0),
+            (part.values?.[source] ?? 0) - (sectionFundingTotals[source] ?? 0),
           ),
         ]).filter(([, amount]) => Number(amount) > 0),
       ) as Partial<Record<BudgetFundingSource, number>>;
-      add(section, undefined, residual, residualValues);
+      add(part, part, undefined, residual, residualValues);
     }
   }
 
-  const root = data.nodes.find((node) => node.parentId === null);
-  const assignedTotal = [...aggregates.values()].reduce(
-    (sum, aggregate) => sum + aggregate.amount,
-    0,
-  );
-  if (root && root.amount > assignedTotal) {
-    // Preserve small whole-vs-section rounding differences without pretending
-    // they belong to an organization.
-    add(root, undefined, root.amount - assignedTotal, {});
+  const partsTotal = partNodes.reduce((sum, part) => sum + part.amount, 0);
+  if (root && root.amount > partsTotal) {
+    // Preserve a whole-vs-parts remainder as its own explicit first-level
+    // bucket instead of folding it into an actual budget part.
+    const residual = root.amount - partsTotal;
+    const residualPart: BudgetNode = {
+      id: "part-unassigned",
+      parentId: root.id,
+      tier: "part",
+      kind: "part",
+      code: null,
+      label: "Not assigned to a budget part",
+      amount: residual,
+      basis: "derived_entity_projection",
+      values: {},
+      completeness: "incomplete",
+      note: "Published whole-budget amount not reconciled to a budget part.",
+    };
+    syntheticPartNodes.push(residualPart);
+    add(residualPart, root, undefined, residual, {});
   }
 
   const nodes: BudgetNode[] = [];
@@ -264,7 +404,7 @@ function buildEntityProjection(data: BudgetData | null): EntityProjection {
     const named = Boolean(aggregate.entity);
     const node: BudgetNode = {
       id,
-      parentId: null,
+      parentId: aggregate.part.id,
       tier: "budget_unit",
       kind: named ? "entity" : "allocation",
       code: aggregate.entity?.acronym ?? null,
@@ -285,30 +425,60 @@ function buildEntityProjection(data: BudgetData | null): EntityProjection {
     if (named) namedAmount += aggregate.amount;
     else unassignedAmount += aggregate.amount;
 
-    for (const placement of aggregate.sections.values()) {
-      sidebarNodes.push({
-        id: `${id}~${placement.section.id}`,
-        parentId: id,
-        tier: "detail",
-        kind: "allocation",
-        code: placement.section.code,
-        label:
-          placement.section.tier === "section"
-            ? `Section ${placement.section.code}: ${placement.section.label}`
-            : "Programme-budget reconciliation remainder",
-        amount: placement.amount,
-        basis: "derived_entity_projection",
-        values: placement.values,
-        completeness: placement.section.completeness,
-        source: placement.section.source,
-        sources: placement.section.sources,
-        note: "Contribution of this budget section to the entity grouping.",
-      });
+    if (named && aggregate.sourceRoots.size > 0) {
+      const cloneDescendants = (
+        sourceParentId: string,
+        targetParentId: string,
+      ) => {
+        for (const child of children[sourceParentId] ?? []) {
+          const cloneId = `${id}~entity-detail~${child.id}`;
+          sidebarNodes.push({
+            ...child,
+            id: cloneId,
+            parentId: targetParentId,
+            basis: "derived_entity_projection",
+          });
+          cloneDescendants(child.id, cloneId);
+        }
+      };
+      for (const sourceRoot of aggregate.sourceRoots.values()) {
+        cloneDescendants(sourceRoot.id, id);
+      }
+    } else {
+      // The unassigned tile has no organizational hierarchy. Its section
+      // contributions remain useful evidence for why ownership is unresolved.
+      for (const placement of aggregate.sections.values()) {
+        sidebarNodes.push({
+          id: `${id}~${placement.section.id}`,
+          parentId: id,
+          tier: "detail",
+          kind: "allocation",
+          code: placement.section.code,
+          label:
+            placement.section.tier === "section"
+              ? `Section ${placement.section.code}: ${placement.section.label}`
+              : "Programme-budget reconciliation remainder",
+          amount: placement.amount,
+          basis: "derived_entity_projection",
+          values: placement.values,
+          completeness: placement.section.completeness,
+          source: placement.section.source,
+          sources: placement.section.sources,
+          note: "Contribution of this budget section to the unassigned amount.",
+        });
+      }
     }
   }
 
   nodes.sort((a, b) => b.amount - a.amount);
-  return { nodes, sidebarNodes, namedAmount, unassignedAmount };
+  sidebarNodes.unshift(...syntheticPartNodes);
+  return {
+    nodes,
+    sidebarNodes,
+    partNodes: [...partNodes, ...syntheticPartNodes],
+    namedAmount,
+    unassignedAmount,
+  };
 }
 
 /**
@@ -726,9 +896,10 @@ export function BudgetTreemap({
   const previousAmounts = useMemo(() => {
     const map: Record<string, number> = {};
     for (const n of filteredPrevious?.nodes ?? []) map[n.id] = n.amount;
+    for (const n of previousEntityProjection.partNodes) map[n.id] = n.amount;
     for (const n of previousEntityProjection.nodes) map[n.id] = n.amount;
     return map;
-  }, [filteredPrevious, previousEntityProjection.nodes]);
+  }, [filteredPrevious, previousEntityProjection]);
 
   const entityPlacements = useMemo(() => {
     const placements: Record<string, Set<string>> = {};
@@ -806,42 +977,48 @@ export function BudgetTreemap({
         };
       }
       if (isAlignedPpb && ppbGrouping === "entity") {
-        const tiles = entityProjection.nodes
-          .filter(
-            (node) =>
-              node.amount > 0 &&
-              keep(
+        const parts = [...entityProjection.partNodes].sort(
+          (a, b) =>
+            (budgetPartStyles[a.code ?? ""]?.order ?? 999) -
+            (budgetPartStyles[b.code ?? ""]?.order ?? 999),
+        );
+        for (const [index, part] of parts.entries()) {
+          const groups = entityProjection.nodes
+            .filter(
+              (node) =>
+                node.parentId === part.id &&
+                node.amount > 0 &&
+                keep(
+                  node,
+                  `${node.entity?.acronym ?? ""} ${node.entity?.name ?? ""} ${part.code ?? ""} ${part.label}`,
+                ),
+            )
+            .map((node) => {
+              const tile = tileOf(
                 node,
-                `${node.entity?.acronym ?? ""} ${node.entity?.name ?? ""}`,
-              ),
-          )
-          .map((node) =>
-            tileOf(
-              node,
-              node.entity?.acronym ?? node.entity?.name ?? node.label,
-            ),
-          );
-        const total = tiles.reduce((sum, tile) => sum + tile.node.amount, 0);
-        if (total <= 0) return empty;
+                node.entity?.acronym ?? node.entity?.name ?? node.label,
+              );
+              return { key: node.id, total: node.amount, tiles: [tile] };
+            })
+            .sort((a, b) => b.total - a.total);
+          if (groups.length === 0) continue;
+          const total = groups.reduce((sum, group) => sum + group.total, 0);
+          const code = part.code ?? "";
+          built.push({
+            key: part.id,
+            caption: code,
+            name: PART_SHORT_NAMES[code] ?? part.label,
+            total,
+            variance: percentChange(part.amount, previousAmounts[part.id]),
+            groups,
+            colors:
+              PART_BAND_COLORS[code] ??
+              BAND_PALETTE[index % BAND_PALETTE.length],
+          });
+        }
         return {
-          bands: [
-            {
-              key: "programme-budget-entities",
-              caption: "",
-              name: "Entities",
-              total,
-              variance: null,
-              groups: [
-                {
-                  key: "programme-budget-entities",
-                  total,
-                  tiles,
-                },
-              ],
-              colors: BAND_PALETTE[0],
-            },
-          ],
-          drawnTotal: total,
+          bands: built,
+          drawnTotal: built.reduce((sum, band) => sum + band.total, 0),
         };
       }
       if (isTrustFund && trustFundLevel === "fund") {
@@ -1042,6 +1219,7 @@ export function BudgetTreemap({
   }, [
     filteredData,
     entityProjection.nodes,
+    entityProjection.partNodes,
     isAlignedPpb,
     isPko,
     isTrustFund,
@@ -1336,9 +1514,7 @@ export function BudgetTreemap({
                   : "Missions"
                 : isTrustFund
                   ? "Trust-fund expenses"
-                  : isAlignedPpb && ppbGrouping === "entity"
-                    ? "Entity grouping"
-                    : "Budget parts"}
+                  : "Budget parts"}
             </div>
           </div>
           <div className="flex flex-wrap gap-x-3 gap-y-1.5">
@@ -1776,6 +1952,8 @@ export function BudgetTreemap({
           childrenByParent={sidebarChildrenOf}
           meta={filteredData.meta}
           hashPrefix={hashPrefix}
+          dataset={dataset}
+          years={years}
           onClose={() => {
             setSelectedId(null);
             clearSidebarHash();

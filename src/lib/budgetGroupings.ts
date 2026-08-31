@@ -148,12 +148,25 @@ export const COST_CLASS_BAND_COLORS: Record<
   operational_costs: { bg: "#a0665c", hover: "#84544c" },
 };
 
+/** The three published peacekeeping cost classes, in document order. */
+export const COST_CLASS_KEYS = [
+  "military_police_personnel",
+  "civilian_personnel",
+  "operational_costs",
+] as const;
+
+export type CostClassKey = (typeof COST_CLASS_KEYS)[number];
+
 /** Short captions for the tiles of a mission band. */
 export const COST_CLASS_SHORT: Record<string, string> = Object.fromEntries(
   secretariatTaxonomies.cost_classes.map(({ key, short_label }) => [
     key,
     short_label,
   ]),
+);
+
+export const COST_CLASS_LABELS: Record<string, string> = Object.fromEntries(
+  secretariatTaxonomies.cost_classes.map(({ key, label }) => [key, label]),
 );
 
 /**
