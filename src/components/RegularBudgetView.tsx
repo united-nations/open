@@ -68,7 +68,7 @@ export function RegularBudgetView() {
   ]);
   const [metric, setMetric] = useState<BudgetMetricKey>("expenditure");
   const [year, setYear] = useState(2025);
-  const [grouping, setGrouping] = useState<PpbGrouping>("section");
+  const [grouping, setGrouping] = useState<PpbGrouping>("entity");
   const availableMetrics = METRICS.filter((item) =>
     METRIC_YEARS[item.key].includes(year),
   );
@@ -155,15 +155,15 @@ export function RegularBudgetView() {
         {(
           [
             {
-              key: "section",
-              label: "Budget sections",
-              title: "One tile per numbered programme-budget section.",
-            },
-            {
               key: "entity",
               label: "Entities",
               title:
-                "Canonical organizations aggregated across their budget locations; unassignable amounts remain explicit.",
+                "Canonical organizations aggregated within each budget part; unassignable amounts remain explicit.",
+            },
+            {
+              key: "section",
+              label: "Budget sections",
+              title: "One tile per numbered programme-budget section.",
             },
           ] as Array<{ key: PpbGrouping; label: string; title: string }>
         ).map((option) => {

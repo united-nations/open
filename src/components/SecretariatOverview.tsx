@@ -203,7 +203,14 @@ export function SecretariatOverview() {
 
   return (
     <div className="w-full">
-      <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:flex-wrap sm:items-end sm:justify-between">
+      <div className="mb-6">
+        <div className="mb-4 max-w-xl">
+          <YearSlider
+            years={years.years}
+            selectedYear={year}
+            onChange={setYear}
+          />
+        </div>
         <FundingSourcePills
           selected={activeFunding}
           onToggle={(source) =>
@@ -211,11 +218,6 @@ export function SecretariatOverview() {
               toggleFundingSource(currentSources, source),
             )
           }
-        />
-        <YearSlider
-          years={years.years}
-          selectedYear={year}
-          onChange={setYear}
         />
       </div>
 

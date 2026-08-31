@@ -178,7 +178,7 @@ export function RegularBudgetPaymentTimeline({
               strokeDasharray="5 4"
               label={{
                 value: "100% target",
-                position: "insideTopLeft",
+                position: "insideTopRight",
                 fill: "#374151",
                 fontSize: 11,
               }}
