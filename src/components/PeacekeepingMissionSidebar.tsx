@@ -30,6 +30,11 @@ const COST_CLASS_TREND_SERIES: FinancingSeries[] = COST_CLASS_KEYS.map(
   }),
 );
 
+interface CostItem {
+  label: string;
+  amount: number;
+}
+
 export interface PeacekeepingMissionSidebarProps {
   code: string;
   name: string;
@@ -38,6 +43,7 @@ export interface PeacekeepingMissionSidebarProps {
   fiscalYear: string;
   total: number | null;
   classes: Record<CostClassKey, number | null> | null;
+  items: Record<CostClassKey, CostItem[]> | null;
   source?: BudgetNodeSource;
   onClose: () => void;
 }
@@ -58,6 +64,7 @@ export function PeacekeepingMissionSidebar({
   fiscalYear,
   total,
   classes,
+  items,
   source,
   onClose,
 }: PeacekeepingMissionSidebarProps) {
@@ -126,9 +133,10 @@ export function PeacekeepingMissionSidebar({
   }, [code, years]);
 
   const classRows = COST_CLASS_KEYS.flatMap((key) => {
-    const amount = classes?.[key];
-    if (amount === null || amount === undefined) return [];
-    return [{ key, amount }];
+    const amount = classes?.[key] ?? null;
+    const lines = items?.[key] ?? [];
+    if (amount === null && lines.length === 0) return [];
+    return [{ key, amount, lines }];
   });
   const titleId = "peacekeeping-mission-sidebar-title";
 
@@ -190,29 +198,68 @@ export function PeacekeepingMissionSidebar({
               <h3 className="text-sm font-semibold tracking-wide text-gray-900 uppercase">
                 Expenditure {fiscalYear} by cost class
               </h3>
-              <dl className="mt-3 divide-y divide-gray-100">
-                {classRows.map(({ key, amount }) => (
-                  <div
-                    key={key}
-                    className="flex items-center justify-between gap-4 py-2 text-sm"
-                  >
-                    <dt className="flex items-center gap-2 text-gray-600">
-                      <span
-                        className="size-2.5 shrink-0"
-                        style={{
-                          backgroundColor:
-                            COST_CLASS_BAND_COLORS[key]?.bg ?? "#6b7280",
-                        }}
-                        aria-hidden="true"
-                      />
-                      {COST_CLASS_LABELS[key] ?? key}
-                    </dt>
-                    <dd className="font-semibold text-gray-900">
-                      {formatBudget(amount)}
-                    </dd>
-                  </div>
-                ))}
-              </dl>
+              <div className="mt-3 space-y-5">
+                {classRows.map(({ key, amount, lines }) => {
+                  const classTotal = amount ?? 0;
+                  return (
+                    <div key={key}>
+                      <div className="flex items-start justify-between gap-4 text-sm">
+                        <span className="flex items-center gap-2 font-medium text-gray-900">
+                          <span
+                            className="size-2.5 shrink-0"
+                            style={{
+                              backgroundColor:
+                                COST_CLASS_BAND_COLORS[key]?.bg ?? "#6b7280",
+                            }}
+                            aria-hidden="true"
+                          />
+                          {COST_CLASS_LABELS[key] ?? key}
+                        </span>
+                        <span className="shrink-0 font-semibold text-gray-900">
+                          {amount === null ? "—" : formatBudget(amount)}
+                        </span>
+                      </div>
+                      {lines.length > 0 && (
+                        <ul className="mt-2 space-y-2">
+                          {lines.map((line, index) => (
+                            <li key={`${line.label}-${index}`}>
+                              <div className="flex items-start justify-between gap-4 text-sm">
+                                <span className="text-gray-600">
+                                  {line.label}
+                                </span>
+                                <span className="shrink-0 tabular-nums text-gray-900">
+                                  {formatBudget(line.amount)}
+                                </span>
+                              </div>
+                              <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-gray-100">
+                                <div
+                                  className="h-full"
+                                  style={{
+                                    width: `${
+                                      classTotal > 0
+                                        ? Math.max(
+                                            0,
+                                            Math.min(
+                                              100,
+                                              (line.amount / classTotal) * 100,
+                                            ),
+                                          )
+                                        : 0
+                                    }%`,
+                                    backgroundColor:
+                                      COST_CLASS_BAND_COLORS[key]?.bg ??
+                                      "#6b7280",
+                                  }}
+                                />
+                              </div>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
             </section>
           )}
 

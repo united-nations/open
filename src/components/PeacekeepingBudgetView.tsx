@@ -77,6 +77,11 @@ function pointKind(
   return "pko";
 }
 
+interface CostItem {
+  label: string;
+  amount: number;
+}
+
 interface MissionRow {
   code: string;
   name: string;
@@ -84,6 +89,7 @@ interface MissionRow {
   kind: PointKind;
   total: number;
   classes: Record<CostClassKey, number | null>;
+  items: Record<CostClassKey, CostItem[]>;
   source: BudgetNode["source"];
 }
 
@@ -92,6 +98,7 @@ function buildRows(data: BudgetData, entities: SecretariatEntitiesData) {
     (node) => node.tier === "mission" && node.costClass === "total",
   );
   const classNodes = data.nodes.filter((node) => node.tier === "class");
+  const itemNodes = data.nodes.filter((node) => node.tier === "item");
   const rows: MissionRow[] = missions.map((mission) => {
     const code = mission.code ?? mission.mission ?? mission.id;
     const location = resolveLocation(code, entities);
@@ -103,6 +110,17 @@ function buildRows(data: BudgetData, entities: SecretariatEntitiesData) {
         return [key, match ? match.amount : null];
       }),
     ) as Record<CostClassKey, number | null>;
+    const items = Object.fromEntries(
+      COST_CLASS_KEYS.map((key) => {
+        const lines = itemNodes
+          .filter((node) => node.mission === code && node.costClass === key)
+          .map((node) => ({ label: node.label, amount: node.amount }))
+          .sort(
+            (a, b) => b.amount - a.amount || a.label.localeCompare(b.label),
+          );
+        return [key, lines];
+      }),
+    ) as Record<CostClassKey, CostItem[]>;
     return {
       code,
       name: mission.label,
@@ -110,6 +128,7 @@ function buildRows(data: BudgetData, entities: SecretariatEntitiesData) {
       kind: pointKind(code, location),
       total: mission.amount,
       classes,
+      items,
       source: mission.source,
     };
   });
@@ -140,26 +159,17 @@ function MoneyBar({
   const width = max > 0 ? (Math.max(0, value) / max) * 100 : 0;
   const label = formatBudget(value);
   return (
-    <Tooltip delayDuration={50}>
-      <TooltipTrigger asChild>
+    <div className="grid grid-cols-[minmax(0,1fr)_4.75rem] items-center gap-2">
+      <div className="h-4 bg-gray-100" aria-hidden="true">
         <div
-          className="h-4 w-full min-w-[4.5rem] bg-gray-100"
-          aria-label={label}
-        >
-          <div
-            className="h-full"
-            style={{ width: `${width}%`, backgroundColor: color }}
-          />
-        </div>
-      </TooltipTrigger>
-      <TooltipContent
-        side="top"
-        sideOffset={6}
-        className="border border-slate-200 bg-white text-slate-800 shadow-lg"
-      >
-        <p className="text-sm font-semibold">{label}</p>
-      </TooltipContent>
-    </Tooltip>
+          className="h-full"
+          style={{ width: `${width}%`, backgroundColor: color }}
+        />
+      </div>
+      <span className="text-right text-xs tabular-nums text-gray-900">
+        {label}
+      </span>
+    </div>
   );
 }
 
@@ -336,23 +346,27 @@ export function PeacekeepingBudgetView() {
         />
       </div>
 
-      <div className="relative border border-gray-200 bg-white">
+      <div className="pko-dot-map relative border border-gray-200 bg-white">
         <div
           className="absolute bottom-3 left-3 z-10 flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-sm border border-gray-200 bg-white/95 px-3 py-2 text-xs text-gray-700 shadow-sm"
           aria-label="Mission type legend"
         >
-          {(["pko", "support"] as const).map((kind) => (
-            <span key={kind} className="flex items-center gap-1.5">
-              <span
-                className="size-2.5 shrink-0 rounded-full"
-                style={{
-                  backgroundColor: kind === "pko" ? FIELD_COLOR : SUPPORT_COLOR,
-                }}
-                aria-hidden="true"
-              />
-              {KIND_LABEL[kind]}
-            </span>
-          ))}
+          {(["pko", "support"] as const).map((kind) => {
+            const color = kind === "pko" ? FIELD_COLOR : SUPPORT_COLOR;
+            return (
+              <span key={kind} className="flex items-center gap-1.5">
+                <span
+                  className="size-2.5 shrink-0 rounded-full"
+                  style={{
+                    backgroundColor: `${color}47`,
+                    boxShadow: `inset 0 0 0 1.5px ${color}`,
+                  }}
+                  aria-hidden="true"
+                />
+                {KIND_LABEL[kind]}
+              </span>
+            );
+          })}
         </div>
         <DotDensityMap
           data={points}
@@ -486,9 +500,8 @@ export function PeacekeepingBudgetView() {
               <tr className="border-b border-gray-200 text-left text-xs text-gray-500">
                 <th className="py-2 pr-3 font-medium">Mission</th>
                 <th className="py-2 pr-3 font-medium">Location</th>
-                <th className="py-2 pr-3 font-medium">Type</th>
-                <th className="w-[28%] py-2 pr-3 font-medium">Distribution</th>
-                <th className="w-[16%] py-2 pr-3 font-medium">Total</th>
+                <th className="w-[28%] py-2 pr-3 font-medium">Cost classes</th>
+                <th className="w-[22%] py-2 pr-3 font-medium">Total</th>
                 <th className="py-2 font-medium">Source</th>
               </tr>
             </thead>
@@ -513,13 +526,15 @@ export function PeacekeepingBudgetView() {
                     </div>
                     <div className="text-xs leading-snug text-gray-600">
                       {row.name}
+                      {row.kind === "support" && (
+                        <span className="ml-1.5 inline-flex items-center rounded-full bg-[#a0665c]/10 px-1.5 py-0.5 text-[10px] font-medium text-[#a0665c]">
+                          Support mission
+                        </span>
+                      )}
                     </div>
                   </td>
                   <td className="py-2.5 pr-3 text-gray-700">
                     {row.location?.area ?? "—"}
-                  </td>
-                  <td className="py-2.5 pr-3 text-gray-700">
-                    {KIND_LABEL[row.kind]}
                   </td>
                   <td className="py-2.5 pr-3">
                     <DistributionBar classes={row.classes} />
@@ -571,6 +586,7 @@ export function PeacekeepingBudgetView() {
           fiscalYear={current.meta.fiscalYear}
           total={selectedRow ? selectedRow.total : null}
           classes={selectedRow ? selectedRow.classes : null}
+          items={selectedRow ? selectedRow.items : null}
           source={selectedRow?.source}
           onClose={() => {
             setSelectedCode(null);
