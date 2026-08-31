@@ -805,9 +805,10 @@ export function BudgetSidebar({
     return meta.scopeLabel;
   };
 
-  // The heading names the organization where the release evidences one, because
-  // that is what the tile said.
-  const heading = node.entity?.name ?? node.label;
+  // A section view stays a section view. Other tiles may use the canonical
+  // organization name where the entity dimension supports one.
+  const heading =
+    node.tier === "section" ? node.label : (node.entity?.name ?? node.label);
 
   return (
     <div

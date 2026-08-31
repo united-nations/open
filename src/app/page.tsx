@@ -10,6 +10,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageBody } from "@/components/PageBody";
 import { ResourceLink } from "@/components/ResourceLink";
+import { SystemCategoryTreemap } from "@/components/SystemCategoryTreemap";
 import { SYSTEM_NAV, visibleSecretariatNav } from "@/lib/navigation";
 
 export const metadata: Metadata = {
@@ -40,6 +41,7 @@ export default function HomePage() {
             links={visibleSecretariatNav()}
           />
         </div>
+        <SystemCategoryTreemap />
       </section>
 
       <PageBody className="md:py-16">

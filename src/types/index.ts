@@ -300,6 +300,8 @@ export type BudgetUnitRole =
  * organization the release says owns the whole section.
  */
 export interface BudgetNodeEntity {
+  /** Stable canonical entity identity from the source-evidenced dimension. */
+  id?: string;
   name: string;
   acronym: string | null;
   relationship: string;

@@ -50,23 +50,23 @@
       "namedUnits": 66,
       "units": 112,
       "producer": "pipeline.emit.ppb_entity_dimension",
-      "producerGitHead": "84dd665bf4c8319a9c237878f3c26b965a1c84aa",
+      "producerGitHead": "d98a1a4f2defa4641e1d4e41eb1eb201c1c4951f",
       "sourceFiles": [
         {
-          "path": "data/processed/ppb2021/extracted/narratives.csv",
-          "sha256": "317fedb313114712270850ec9c6d398bd3986a639bd93847d74569c22f8270d8"
+          "path": "portal-data/ppb/narratives/2021.json",
+          "sha256": "70c87622735dcf9e070736703b3252783f814e4e4043a8bb9568910133a0c01d"
         },
         {
-          "path": "data/processed/ppb2021/extracted/paragraphs.csv",
-          "sha256": "c996610b8375a6c40400a8ab56ab89cf034845405f96546894910a8025fd41cd"
+          "path": "portal-data/ppb/document_outline/2021.json",
+          "sha256": "9f2a217ad636c60a532c333f12901fb97035926d6e781b69ef70189fa5d9dfd3"
         },
         {
-          "path": "data/processed/ppb2021/extracted/budget_entity_groups.csv",
-          "sha256": "7320993eb5cd3510b82f9bb4ba48b7db97b35043ac3720795ed50f3e321c50b0"
+          "path": "portal-data/ppb/budget_entity_groups/2021.json",
+          "sha256": "3c26bea20e1056c7994e74e999e1eea315a4d59d3c4f050206079c47c21d1230"
         },
         {
-          "path": "data/processed/sections_reference.csv",
-          "sha256": "950ed72d7e5c38428dd03b28146dea05932be34b5182b965a4cb1e38c1045cc0"
+          "path": "portal-data/reference.json",
+          "sha256": "bc93780e37caf5380dc898b741957720686f9de656357aae087b70af6eb0b125"
         }
       ]
     },
@@ -391,6 +391,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:department-of-safety-and-security:6358a4d5fa",
         "name": "Department of Safety and Security",
         "acronym": "DSS",
         "relationship": "section_owner",
@@ -508,6 +509,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:department-of-safety-and-security:6358a4d5fa",
         "name": "Department of Safety and Security",
         "acronym": "DSS",
         "relationship": "section_owner",
@@ -1183,6 +1185,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:department-of-global-communications:7b3ff28c92",
         "name": "Department of Global Communications",
         "acronym": "DGC",
         "relationship": "section_owner",
@@ -1300,6 +1303,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:department-of-global-communications:7b3ff28c92",
         "name": "Department of Global Communications",
         "acronym": "DGC",
         "relationship": "section_owner",
@@ -2150,6 +2154,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:office-of-internal-oversight-services:bcf9265069",
         "name": "Office of Internal Oversight Services",
         "acronym": "OIOS",
         "relationship": "section_owner",
@@ -2267,6 +2272,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:office-of-internal-oversight-services:bcf9265069",
         "name": "Office of Internal Oversight Services",
         "acronym": "OIOS",
         "relationship": "section_owner",
@@ -3208,6 +3214,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:executive-office-of-the-secretary-general:382e4a11f5",
         "name": "Executive Office of the Secretary-General",
         "acronym": "EOSG",
         "relationship": "organizational_unit",
@@ -3428,6 +3435,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:board-of-auditors-including-its-secretariat:5176980384",
         "name": "Board of Auditors (including its secretariat)",
         "acronym": null,
         "relationship": "organizational_unit",
@@ -3648,6 +3656,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:office-of-administration-of-justice:f47f838aec",
         "name": "Office of Administration of Justice",
         "acronym": "OAJ",
         "relationship": "organizational_unit",
@@ -3868,6 +3877,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:office-of-the-united-nations-ombudsman-and-mediation-ser:72716f6347",
         "name": "Office of the United Nations Ombudsman and Mediation Services",
         "acronym": "UNOMS",
         "relationship": "organizational_unit",
@@ -4088,6 +4098,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:ethics-office:e419af2e45",
         "name": "Ethics Office",
         "acronym": "Ethics Office",
         "relationship": "organizational_unit",
@@ -4277,6 +4288,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:general-assembly:e898909073",
         "name": "General Assembly",
         "acronym": null,
         "relationship": "organizational_unit",
@@ -4557,6 +4569,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:office-of-the-director-general-united-nations-office-at-:82e9b8e25c",
         "name": "Office of the Director-General, United Nations Office at Geneva",
         "acronym": null,
         "relationship": "organizational_unit",
@@ -4715,6 +4728,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:office-of-the-director-general-united-nations-office-at-:9c10d736f0",
         "name": "Office of the Director-General, United Nations Office at Nairobi",
         "acronym": null,
         "relationship": "organizational_unit",
@@ -4873,6 +4887,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:office-of-the-special-representative-of-the-secretary-ge:36aaf7096f",
         "name": "Office of the Special Representative of the Secretary-General for Children and Armed Conflict",
         "acronym": "SRSG-CAAC",
         "relationship": "organizational_unit",
@@ -5031,6 +5046,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:office-of-the-special-representative-of-the-secretary-ge:69920669e2",
         "name": "Office of the Special Representative of the Secretary-General on Sexual Violence in Conflict",
         "acronym": "SRSG-SVC",
         "relationship": "organizational_unit",
@@ -5189,6 +5205,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:office-of-the-special-representative-of-the-secretary-ge:9a789bfb19",
         "name": "Office of the Special Representative of the Secretary-General on Violence against Children",
         "acronym": "SRSG-VAC",
         "relationship": "organizational_unit",
@@ -5347,6 +5364,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:office-of-the-victims-rights-advocate:5e396287da",
         "name": "Office of the Victims' Rights Advocate",
         "acronym": "OVRA",
         "relationship": "organizational_unit",
@@ -5505,6 +5523,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:united-nations-joint-staff-pension-board-including-unite:3e18843a8c",
         "name": "United Nations Joint Staff Pension Board (including United Nations participation in the costs of the secretariat of the United Nations Joint Staff Pension Fund)",
         "acronym": null,
         "relationship": "organizational_unit",
@@ -5663,6 +5682,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:advisory-committee-on-administrative-and-budgetary-quest:33e7f05823",
         "name": "Advisory Committee on Administrative and Budgetary Questions (including its secretariat)",
         "acronym": null,
         "relationship": "organizational_unit",
@@ -5804,6 +5824,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:committee-for-programme-and-coordination:e9661a3fc9",
         "name": "Committee for Programme and Coordination",
         "acronym": null,
         "relationship": "organizational_unit",
@@ -5873,6 +5894,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:committee-on-contributions:1037ad42ac",
         "name": "Committee on Contributions",
         "acronym": null,
         "relationship": "organizational_unit",
@@ -5942,6 +5964,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:independent-audit-advisory-committee:cdd1550708",
         "name": "Independent Audit Advisory Committee",
         "acronym": null,
         "relationship": "organizational_unit",
@@ -6011,6 +6034,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:investigation-into-the-conditions-and-circumstances-resu:a20340854f",
         "name": "Investigation into the conditions and circumstances resulting in the tragic death of Dag Hammarskj\u00f6ld and of the members of the party accompanying him",
         "acronym": "Hammarskj\u00f6ld investigation",
         "relationship": "organizational_unit",
@@ -6080,6 +6104,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:office-of-the-director-general-united-nations-office-at-:a2e64a4178",
         "name": "Office of the Director-General, United Nations Office at Vienna",
         "acronym": null,
         "relationship": "organizational_unit",
@@ -6149,6 +6174,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:resident-coordinator-system:a0b83212e8",
         "name": "Resident coordinator system",
         "acronym": "RC system",
         "relationship": "organizational_unit",
@@ -6300,6 +6326,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:department-for-general-assembly-and-conference-managemen:d3b96fb200",
         "name": "Department for General Assembly and Conference Management",
         "acronym": "DGACM",
         "relationship": "section_owner",
@@ -6388,6 +6415,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:department-for-general-assembly-and-conference-managemen:d3b96fb200",
         "name": "Department for General Assembly and Conference Management",
         "acronym": "DGACM",
         "relationship": "section_owner",
@@ -7947,6 +7975,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:united-nations-office-to-the-african-union:1a220fd206",
         "name": "United Nations Office to the African Union",
         "acronym": null,
         "relationship": "direct_financial_entity",
@@ -8136,6 +8165,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:department-of-political-and-peacebuilding-affairs:683a184de8",
         "name": "Department of Political and Peacebuilding Affairs",
         "acronym": "DPPA",
         "relationship": "direct_financial_entity",
@@ -9006,6 +9036,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:office-of-counter-terrorism:5ec69c0e80",
         "name": "Office of Counter-Terrorism",
         "acronym": "UNOCT",
         "relationship": "direct_financial_entity",
@@ -9164,6 +9195,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:united-nations-register-of-damage-caused-by-the-construc:95d7d6a590",
         "name": "United Nations Register of Damage Caused by the Construction of the Wall in the Occupied Palestinian Territory",
         "acronym": "UNRoD",
         "relationship": "direct_financial_entity",
@@ -9311,6 +9343,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:office-of-the-united-nations-special-coordinator-for-the:7c596a5412",
         "name": "Office of the United Nations Special Coordinator for the Middle East Peace Process",
         "acronym": null,
         "relationship": "direct_financial_entity",
@@ -12057,6 +12090,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:department-of-peace-operations:5dff155e7e",
         "name": "Department of Peace Operations",
         "acronym": "DPO",
         "relationship": "direct_financial_entity",
@@ -12853,6 +12887,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:united-nations-military-observer-group-in-india-and-paki:a250487a83",
         "name": "United Nations Military Observer Group in India and Pakistan",
         "acronym": "UNMOGIP",
         "relationship": "direct_financial_entity",
@@ -12922,6 +12957,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:united-nations-truce-supervision-organization:768f401425",
         "name": "United Nations Truce Supervision Organization",
         "acronym": "UNTSO",
         "relationship": "direct_financial_entity",
@@ -13008,6 +13044,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:office-for-disarmament-affairs:ae1c445f5a",
         "name": "Office for Disarmament Affairs",
         "acronym": "ODA",
         "relationship": "section_owner",
@@ -13094,6 +13131,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:office-for-disarmament-affairs:ae1c445f5a",
         "name": "Office for Disarmament Affairs",
         "acronym": "ODA",
         "relationship": "section_owner",
@@ -13834,6 +13872,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:office-for-outer-space-affairs:c0e1518ec7",
         "name": "Office for Outer Space Affairs",
         "acronym": "OOSA",
         "relationship": "section_owner",
@@ -13920,6 +13959,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:office-for-outer-space-affairs:c0e1518ec7",
         "name": "Office for Outer Space Affairs",
         "acronym": "OOSA",
         "relationship": "section_owner",
@@ -14309,6 +14349,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:office-of-legal-affairs:26ec3d7280",
         "name": "Office of Legal Affairs",
         "acronym": "OLA",
         "relationship": "direct_financial_entity",
@@ -15253,6 +15294,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:international-impartial-and-independent-mechanism-to-ass:e39d132bf4",
         "name": "International, Impartial and Independent Mechanism to Assist in the Investigation and Prosecution of Persons Responsible for the Most Serious Crimes under International Law Committed in the Syrian Arab Republic since March 2011",
         "acronym": "IIIM",
         "relationship": "direct_financial_entity",
@@ -15396,6 +15438,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:independent-investigative-mechanism-for-myanmar:661441143f",
         "name": "Independent Investigative Mechanism for Myanmar",
         "acronym": "IIMM",
         "relationship": "direct_financial_entity",
@@ -15475,6 +15518,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:international-court-of-justice:bba9df47ba",
         "name": "International Court of Justice",
         "acronym": "ICJ",
         "relationship": "section_owner",
@@ -15554,6 +15598,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:international-court-of-justice:bba9df47ba",
         "name": "International Court of Justice",
         "acronym": "ICJ",
         "relationship": "section_owner",
@@ -15901,6 +15946,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:department-of-economic-and-social-affairs:dc7b378fcc",
         "name": "Department of Economic and Social Affairs",
         "acronym": "DESA",
         "relationship": "section_owner",
@@ -15987,6 +16033,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:department-of-economic-and-social-affairs:dc7b378fcc",
         "name": "Department of Economic and Social Affairs",
         "acronym": "DESA",
         "relationship": "section_owner",
@@ -17015,6 +17062,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:office-of-the-high-representative-for-the-least-develope:9b79e98c03",
         "name": "Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States",
         "acronym": "UN-OHRLLS",
         "relationship": "section_owner",
@@ -17101,6 +17149,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:office-of-the-high-representative-for-the-least-develope:9b79e98c03",
         "name": "Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States",
         "acronym": "UN-OHRLLS",
         "relationship": "section_owner",
@@ -17616,6 +17665,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:office-of-the-special-adviser-on-africa:84f593bbc4",
         "name": "Office of the Special Adviser on Africa",
         "acronym": "OSAA",
         "relationship": "section_owner",
@@ -17702,6 +17752,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:office-of-the-special-adviser-on-africa:84f593bbc4",
         "name": "Office of the Special Adviser on Africa",
         "acronym": "OSAA",
         "relationship": "section_owner",
@@ -18060,6 +18111,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:united-nations-conference-on-trade-and-development:407a3c62a0",
         "name": "United Nations Conference on Trade and Development",
         "acronym": "UNCTAD",
         "relationship": "section_owner",
@@ -18146,6 +18198,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:united-nations-conference-on-trade-and-development:407a3c62a0",
         "name": "United Nations Conference on Trade and Development",
         "acronym": "UNCTAD",
         "relationship": "section_owner",
@@ -18877,6 +18930,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:international-trade-centre:a71d59425b",
         "name": "International Trade Centre",
         "acronym": "ITC",
         "relationship": "section_owner",
@@ -18948,6 +19002,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:international-trade-centre:a71d59425b",
         "name": "International Trade Centre",
         "acronym": "ITC",
         "relationship": "section_owner",
@@ -19034,6 +19089,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:united-nations-environment-programme:9994683ed0",
         "name": "United Nations Environment Programme",
         "acronym": "UNEP",
         "relationship": "section_owner",
@@ -19120,6 +19176,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:united-nations-environment-programme:9994683ed0",
         "name": "United Nations Environment Programme",
         "acronym": "UNEP",
         "relationship": "section_owner",
@@ -20004,6 +20061,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:united-nations-human-settlements-programme:b9433a11b0",
         "name": "United Nations Human Settlements Programme",
         "acronym": "UN-Habitat",
         "relationship": "section_owner",
@@ -20090,6 +20148,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:united-nations-human-settlements-programme:b9433a11b0",
         "name": "United Nations Human Settlements Programme",
         "acronym": "UN-Habitat",
         "relationship": "section_owner",
@@ -21340,6 +21399,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:united-nations-office-on-drugs-and-crime:b0b46e46ee",
         "name": "United Nations Office on Drugs and Crime",
         "acronym": "UNODC",
         "relationship": "section_owner",
@@ -21426,6 +21486,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:united-nations-office-on-drugs-and-crime:b0b46e46ee",
         "name": "United Nations Office on Drugs and Crime",
         "acronym": "UNODC",
         "relationship": "section_owner",
@@ -22454,6 +22515,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:united-nations-entity-for-gender-equality-and-the-empowe:db39785d0f",
         "name": "United Nations Entity for Gender Equality and the Empowerment of Women",
         "acronym": "UN-Women",
         "relationship": "section_owner",
@@ -22540,6 +22602,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:united-nations-entity-for-gender-equality-and-the-empowe:db39785d0f",
         "name": "United Nations Entity for Gender Equality and the Empowerment of Women",
         "acronym": "UN-Women",
         "relationship": "section_owner",
@@ -23222,6 +23285,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:economic-commission-for-africa:15f8bf93ac",
         "name": "Economic Commission for Africa",
         "acronym": "ECA",
         "relationship": "direct_financial_entity",
@@ -24235,6 +24299,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:regional-commissions-new-york-office:b52bb095b1",
         "name": "Regional Commissions New York Office",
         "acronym": "RCNYO",
         "relationship": "direct_financial_entity",
@@ -24321,6 +24386,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:economic-and-social-commission-for-asia-and-the-pacific-:ea883c44d3",
         "name": "Economic and Social Commission for Asia and the Pacific (ESCAP) is the regional intergovernmental platform and development arm of the United Nations and",
         "acronym": null,
         "relationship": "section_owner",
@@ -24407,6 +24473,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:economic-and-social-commission-for-asia-and-the-pacific-:ea883c44d3",
         "name": "Economic and Social Commission for Asia and the Pacific (ESCAP) is the regional intergovernmental platform and development arm of the United Nations and",
         "acronym": null,
         "relationship": "section_owner",
@@ -25435,6 +25502,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:economic-commission-for-europe:90187162ae",
         "name": "Economic Commission for Europe",
         "acronym": "ECE",
         "relationship": "section_owner",
@@ -25521,6 +25589,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:economic-commission-for-europe:90187162ae",
         "name": "Economic Commission for Europe",
         "acronym": "ECE",
         "relationship": "section_owner",
@@ -26405,6 +26474,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:economic-commission-for-latin-america-and-the-caribbean:d3a80ba1e7",
         "name": "Economic Commission for Latin America and the Caribbean",
         "acronym": "ECLAC",
         "relationship": "section_owner",
@@ -26491,6 +26561,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:economic-commission-for-latin-america-and-the-caribbean:d3a80ba1e7",
         "name": "Economic Commission for Latin America and the Caribbean",
         "acronym": "ECLAC",
         "relationship": "section_owner",
@@ -27807,6 +27878,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:economic-and-social-commission-for-western-asia:86abdaa8ef",
         "name": "Economic and Social Commission for Western Asia",
         "acronym": "ESCWA",
         "relationship": "section_owner",
@@ -27893,6 +27965,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:economic-and-social-commission-for-western-asia:86abdaa8ef",
         "name": "Economic and Social Commission for Western Asia",
         "acronym": "ESCWA",
         "relationship": "section_owner",
@@ -29566,6 +29639,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:office-of-the-united-nations-high-commissioner-for-human:2dab098997",
         "name": "Office of the United Nations High Commissioner for Human Rights",
         "acronym": "OHCHR",
         "relationship": "direct_financial_entity",
@@ -30314,6 +30388,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:committee-on-missing-persons-in-cyprus:cfda12ca53",
         "name": "Committee on Missing Persons in Cyprus",
         "acronym": "CMP",
         "relationship": "direct_financial_entity",
@@ -30400,6 +30475,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:office-of-the-united-nations-high-commissioner-for-refug:e382ae1b78",
         "name": "Office of the United Nations High Commissioner for Refugees",
         "acronym": "UNHCR",
         "relationship": "section_owner",
@@ -30486,6 +30562,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:office-of-the-united-nations-high-commissioner-for-refug:e382ae1b78",
         "name": "Office of the United Nations High Commissioner for Refugees",
         "acronym": "UNHCR",
         "relationship": "section_owner",
@@ -30842,6 +30919,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:united-nations-relief-and-works-agency-for-palestine-ref:263cd81c6b",
         "name": "United Nations Relief and Works Agency for Palestine Refugees in the Near East",
         "acronym": "UNRWA",
         "relationship": "section_owner",
@@ -30928,6 +31006,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:united-nations-relief-and-works-agency-for-palestine-ref:263cd81c6b",
         "name": "United Nations Relief and Works Agency for Palestine Refugees in the Near East",
         "acronym": "UNRWA",
         "relationship": "section_owner",
@@ -32020,6 +32099,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:department-of-operational-support:8b8c591f4c",
         "name": "Department of Operational Support",
         "acronym": "DOS",
         "relationship": "section_owner",
@@ -32137,6 +32217,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:department-of-operational-support:8b8c591f4c",
         "name": "Department of Operational Support",
         "acronym": "DOS",
         "relationship": "section_owner",
@@ -33399,6 +33480,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:office-of-information-and-communications-technology:a48b7c098a",
         "name": "Office of Information and Communications Technology",
         "acronym": "OICT",
         "relationship": "section_owner",
@@ -33516,6 +33598,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:office-of-information-and-communications-technology:a48b7c098a",
         "name": "Office of Information and Communications Technology",
         "acronym": "OICT",
         "relationship": "section_owner",
@@ -34154,6 +34237,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:department-of-management-strategy-policy-and-compliance:019d36a68e",
         "name": "Department of Management Strategy, Policy and Compliance",
         "acronym": "DMSPC",
         "relationship": "section_owner",
@@ -34271,6 +34355,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:department-of-management-strategy-policy-and-compliance:019d36a68e",
         "name": "Department of Management Strategy, Policy and Compliance",
         "acronym": "DMSPC",
         "relationship": "section_owner",
@@ -35920,6 +36005,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:united-nations-office-at-geneva:0fde45bf0b",
         "name": "United Nations Office at Geneva",
         "acronym": "UNOG",
         "relationship": "section_owner",
@@ -36006,6 +36092,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:united-nations-office-at-geneva:0fde45bf0b",
         "name": "United Nations Office at Geneva",
         "acronym": "UNOG",
         "relationship": "section_owner",
@@ -36602,6 +36689,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:united-nations-office-at-vienna:c594cc71b0",
         "name": "United Nations Office at Vienna",
         "acronym": "UNOV",
         "relationship": "section_owner",
@@ -36688,6 +36776,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:united-nations-office-at-vienna:c594cc71b0",
         "name": "United Nations Office at Vienna",
         "acronym": "UNOV",
         "relationship": "section_owner",
@@ -37212,6 +37301,7 @@
       "entityStatus": "single_owner",
       "entityNote": "The section's Mandates and background text identifies one responsible entity.",
       "entity": {
+        "id": "entity:united-nations-office-at-nairobi:5c616c1c1e",
         "name": "United Nations Office at Nairobi",
         "acronym": "UNON",
         "relationship": "section_owner",
@@ -37298,6 +37388,7 @@
       "unitType": "unassigned",
       "role": "section_scope",
       "entity": {
+        "id": "entity:united-nations-office-at-nairobi:5c616c1c1e",
         "name": "United Nations Office at Nairobi",
         "acronym": "UNON",
         "relationship": "section_owner",
@@ -38536,6 +38627,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:international-civil-service-commission:4af716405a",
         "name": "International Civil Service Commission",
         "acronym": "ICSC",
         "relationship": "organizational_unit",
@@ -38605,6 +38697,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:joint-inspection-unit:09fe547e10",
         "name": "Joint Inspection Unit",
         "acronym": "JIU",
         "relationship": "organizational_unit",
@@ -38674,6 +38767,7 @@
       "unitType": "entity",
       "role": "source_node",
       "entity": {
+        "id": "entity:united-nations-system-chief-executives-board-for-coordin:492c6dd14c",
         "name": "United Nations System Chief Executives Board for Coordination",
         "acronym": "CEB",
         "relationship": "organizational_unit",

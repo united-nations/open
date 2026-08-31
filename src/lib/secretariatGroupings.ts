@@ -97,6 +97,20 @@ export const BAND_PALETTE: Array<{ bg: string; hover: string }> = [
   { bg: "#9aa390", hover: "#7d8471" },
 ];
 
+const PRIORITY_COLOR_OVERRIDES: Record<string, string> = {
+  "Drug control, crime prevention and combating terrorism": "#9a6b2f",
+};
+
+/** Fill colour for a GA priority area, stable across charts. */
+export function priorityAreaColor(name: string): string {
+  const names = Object.keys(priorityAreaStyles);
+  return (
+    PRIORITY_COLOR_OVERRIDES[name] ??
+    BAND_PALETTE[Math.max(0, names.indexOf(name)) % BAND_PALETTE.length]?.bg ??
+    "#6b7280"
+  );
+}
+
 export const budgetPartStyles: Record<string, SystemGroupingStyle> = {
   ...Object.fromEntries(
     secretariatTaxonomies.special_budget_parts.map(({ code, label, order }) => [

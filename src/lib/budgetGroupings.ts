@@ -18,6 +18,7 @@ import { PALETTE, budgetPartStyles } from "@/lib/secretariatGroupings";
 import secretariatTaxonomies from "../../data/secretariat-taxonomies.json";
 
 export type PpbLens = "budgetPart";
+export type PpbGrouping = "section" | "entity";
 export type PkoLens = "mission" | "costClass";
 export type BudgetLens = PpbLens | PkoLens;
 

@@ -9,6 +9,7 @@ import {
 } from "@/components/ui/tooltip";
 import { YearSlider } from "@/components/YearSlider";
 import { RegularBudgetPaymentTimeline } from "@/components/RegularBudgetPaymentTimeline";
+import { RegularBudgetPaymentStatusTrends } from "@/components/RegularBudgetPaymentStatusTrends";
 import { squarify } from "@/lib/treemapLayout";
 import { useYearRanges } from "@/lib/useYearRanges";
 import type {
@@ -314,6 +315,7 @@ export function RegularBudgetContributorsTreemap() {
           </div>
 
           <RegularBudgetPaymentTimeline data={data} />
+          <RegularBudgetPaymentStatusTrends />
 
           <div className="mt-4 space-y-2 text-xs leading-relaxed text-gray-500">
             <p>

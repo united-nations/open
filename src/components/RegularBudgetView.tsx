@@ -2,11 +2,16 @@
 
 import { useState } from "react";
 import { BudgetTreemap } from "@/components/BudgetTreemap";
+import {
+  FundingSourcePills,
+  toggleFundingSource,
+} from "@/components/FundingSourcePills";
+import { ProgrammeBudgetTrends } from "@/components/ProgrammeBudgetTrends";
 import { YearSlider } from "@/components/YearSlider";
 import {
   BUDGET_FUNDING_SOURCES,
-  FUNDING_SOURCES,
   type BudgetFundingSource,
+  type PpbGrouping,
 } from "@/lib/budgetGroupings";
 import type { BudgetMetricKey } from "@/types";
 
@@ -63,6 +68,7 @@ export function RegularBudgetView() {
   ]);
   const [metric, setMetric] = useState<BudgetMetricKey>("expenditure");
   const [year, setYear] = useState(2025);
+  const [grouping, setGrouping] = useState<PpbGrouping>("section");
   const availableMetrics = METRICS.filter((item) =>
     METRIC_YEARS[item.key].includes(year),
   );
@@ -83,19 +89,6 @@ export function RegularBudgetView() {
   const selectMetric = (nextMetric: BudgetMetricKey) => {
     setMetric(nextMetric);
     if (nextMetric !== "expenditure") setActive(["regular_budget"]);
-  };
-
-  const toggle = (source: BudgetFundingSource) => {
-    setActive((current) => {
-      if (current.includes(source)) {
-        return current.length === 1
-          ? current
-          : current.filter((item) => item !== source);
-      }
-      return BUDGET_FUNDING_SOURCES.filter(
-        (item) => item === source || current.includes(item),
-      );
-    });
   };
 
   return (
@@ -140,35 +133,55 @@ export function RegularBudgetView() {
         })}
       </div>
 
-      <div
-        className="mb-4 flex flex-wrap gap-2"
-        role="group"
-        aria-label="Funding sources"
-      >
-        {(metric === "expenditure"
-          ? BUDGET_FUNDING_SOURCES
-          : (["regular_budget"] as BudgetFundingSource[])
-        ).map((source) => {
-          const selected = active.includes(source);
-          const selectable = metric === "expenditure";
+      <div className="mb-4">
+        <FundingSourcePills
+          selected={active}
+          sources={
+            metric === "expenditure"
+              ? BUDGET_FUNDING_SOURCES
+              : (["regular_budget"] as BudgetFundingSource[])
+          }
+          disabled={metric !== "expenditure"}
+          onToggle={(source) =>
+            setActive((current) => toggleFundingSource(current, source))
+          }
+        />
+      </div>
+
+      <div className="mb-4 flex flex-wrap items-center gap-2">
+        <span className="mr-1 text-xs font-medium tracking-wide text-gray-500 uppercase">
+          Group by
+        </span>
+        {(
+          [
+            {
+              key: "section",
+              label: "Budget sections",
+              title: "One tile per numbered programme-budget section.",
+            },
+            {
+              key: "entity",
+              label: "Entities",
+              title:
+                "Canonical organizations aggregated across their budget locations; unassignable amounts remain explicit.",
+            },
+          ] as Array<{ key: PpbGrouping; label: string; title: string }>
+        ).map((option) => {
+          const selected = grouping === option.key;
           return (
             <button
-              key={source}
+              key={option.key}
               type="button"
               aria-pressed={selected}
-              disabled={!selectable}
-              title={FUNDING_SOURCES[source].tooltip}
-              onClick={() => selectable && toggle(source)}
-              className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs transition-colors focus-visible:ring-2 focus-visible:ring-un-blue focus-visible:outline-none ${
+              title={option.title}
+              onClick={() => setGrouping(option.key)}
+              className={`rounded-full px-3 py-1.5 text-xs transition-colors focus-visible:ring-2 focus-visible:ring-un-blue focus-visible:outline-none ${
                 selected
-                  ? "bg-gray-100 font-medium text-gray-800"
-                  : "bg-white text-gray-400 ring-1 ring-gray-200"
+                  ? "bg-gray-800 font-medium text-white"
+                  : "bg-white text-gray-600 ring-1 ring-gray-200 hover:bg-gray-50"
               }`}
             >
-              <span
-                className={`size-2.5 rounded-full ${FUNDING_SOURCES[source].color} ${selected ? "opacity-100" : "opacity-35"}`}
-              />
-              {FUNDING_SOURCES[source].label}
+              {option.label}
             </button>
           );
         })}
@@ -184,7 +197,9 @@ export function RegularBudgetView() {
         availableYears={METRIC_YEARS[metric]}
         showYearSelector={false}
         headlineFundingSource="regular_budget"
+        ppbGrouping={grouping}
       />
+      <ProgrammeBudgetTrends />
     </div>
   );
 }

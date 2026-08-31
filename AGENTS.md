@@ -55,8 +55,8 @@ Key fusion logic (see [docs/data-fusion-revenue.md](docs/data-fusion-revenue.md)
 ### Frontend structure
 
 - `/` is a directory (no charts): two boxes linking to System and Secretariat sub-pages, plus Further Resources.
-- `/system` and `/secretariat` share the same chrome (`SectionChrome`: title, intro, tab row). Each tab is its own route. `/system/` re-exports `/system/contributors`.
-- System tabs: Contributors, Organizations, Locations, Goals. Secretariat tabs: Overview, Contributors, Programme Budget, Peacekeeping Budget, Field Missions, Trust Funds.
+- `/system` and `/secretariat` share the same chrome (`SectionChrome`: title, intro, tab row). Each tab is its own route. `/system/` re-exports `/system/organizations`.
+- System tabs: Organizations, Contributors, Locations, Goals. Secretariat tabs: Overview, Contributors, Programme Budget, Peacekeeping Budget, Field Missions, Trust Funds.
 - Per-view components follow naming families that sort together: `*Treemap`, `*Sidebar`, `*TrendsChart`. Reusable chart primitives in `src/components/charts/`; shadcn primitives in `src/components/ui/` (do not edit these — compose on top of them). Shared page chrome: `SectionChrome`, `SectionSubnav`, `PageHeading`, `Methodology`.
 - `src/lib/` holds domain mappings consumed by components: `entities.ts`, `contributors.ts`, `sdgs.ts`, `financingInstruments.ts`, `regionGroupings.ts`, `systemGroupings.ts`, `navigation.ts`. Shared TS interfaces in `src/types/index.ts`.
 

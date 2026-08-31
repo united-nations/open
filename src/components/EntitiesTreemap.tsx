@@ -4,13 +4,22 @@ import { useEffect, useState } from "react";
 import { X } from "lucide-react";
 import { ChartSearchInput } from "@/components/ui/chart-search-input";
 import { Entity, BudgetEntry, EntityRevenue } from "@/types";
-import { useDeepLink, replaceToSidebar, clearSidebarHash } from "@/hooks/useDeepLink";
+import {
+  useDeepLink,
+  replaceToSidebar,
+  clearSidebarHash,
+} from "@/hooks/useDeepLink";
 import {
   systemGroupingStyles,
   getSystemGroupingStyle,
   getSortedSystemGroupings,
 } from "@/lib/systemGroupings";
-import { createUncategorizedEntity, formatBudget, normalizeEntityForDisplay } from "@/lib/entities";
+import { CEB_AGGREGATE_ENTITIES } from "@/lib/cebAggregates";
+import {
+  createUncategorizedEntity,
+  formatBudget,
+  normalizeEntityForDisplay,
+} from "@/lib/entities";
 import { EntitySidebar } from "@/components/EntitySidebar";
 import { YearSlider } from "@/components/YearSlider";
 import {
@@ -19,7 +28,10 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { ClickHint } from "@/components/ui/ClickHint";
-import { FINANCING_INSTRUMENT_TOOLTIPS, getFinancingInstrumentColor } from "@/lib/financingInstruments";
+import {
+  FINANCING_INSTRUMENT_TOOLTIPS,
+  getFinancingInstrumentColor,
+} from "@/lib/financingInstruments";
 import {
   Select,
   SelectContent,
@@ -29,7 +41,11 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { useYearRanges, generateYearRange } from "@/lib/useYearRanges";
-import { squarify, layoutGroups, type TreemapItem as TreemapItemBase } from "@/lib/treemapLayout";
+import {
+  squarify,
+  layoutGroups,
+  type TreemapItem as TreemapItemBase,
+} from "@/lib/treemapLayout";
 
 // Treemap layout extracted to a shared module (see src/lib/treemapLayout.ts).
 type TreemapItem = TreemapItemBase<Entity>;
@@ -38,22 +54,34 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export function EntitiesTreemap() {
   const yearRanges = useYearRanges();
-  const SPENDING_YEARS = generateYearRange(yearRanges.entitySpending.min, yearRanges.entitySpending.max);
-  const REVENUE_YEARS = generateYearRange(yearRanges.entityRevenue.min, yearRanges.entityRevenue.max);
+  const SPENDING_YEARS = generateYearRange(
+    yearRanges.entitySpending.min,
+    yearRanges.entitySpending.max,
+  );
+  const REVENUE_YEARS = generateYearRange(
+    yearRanges.entityRevenue.min,
+    yearRanges.entityRevenue.max,
+  );
 
   const [entities, setEntities] = useState<Entity[]>([]);
   const [spendingData, setSpendingData] = useState<Record<string, number>>({});
-  const [revenueData, setRevenueData] = useState<Record<string, EntityRevenue>>({});
+  const [revenueData, setRevenueData] = useState<Record<string, EntityRevenue>>(
+    {},
+  );
   const [showRevenue, setShowRevenue] = useState(false);
   const [hoveredEntity, setHoveredEntity] = useState<string | null>(null);
   const [selectedEntity, setSelectedEntity] = useState<Entity | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeGroups, setActiveGroups] = useState<Set<string>>(
-    new Set(Object.keys(systemGroupingStyles))
+    new Set(Object.keys(systemGroupingStyles)),
   );
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [spendingYear, setSpendingYear] = useState<number>(yearRanges.entitySpending.default);
-  const [revenueYear, setRevenueYear] = useState<number>(yearRanges.entityRevenue.default);
+  const [spendingYear, setSpendingYear] = useState<number>(
+    yearRanges.entitySpending.default,
+  );
+  const [revenueYear, setRevenueYear] = useState<number>(
+    yearRanges.entityRevenue.default,
+  );
   const [pendingDeepLink, setPendingDeepLink] = useDeepLink({
     hashPrefix: "entity",
     sectionId: "entities",
@@ -83,7 +111,7 @@ export function EntitiesTreemap() {
             acc[entry.entity] = entry.amount;
             return acc;
           },
-          {}
+          {},
         );
         setSpendingData(spendingLookup);
         if (!showRevenue) setLoading(false);
@@ -108,95 +136,22 @@ export function EntitiesTreemap() {
       });
   }, [revenueYear, showRevenue]);
 
-  // Synthetic entities for CEB aggregates (UN and UN-DPO)
-  const syntheticUN: Entity = {
-    entity: "UN",
-    entity_long: "UN Secretariat (incl. Political Missions)",
-    entity_combined: "UN Secretariat (incl. Political Missions)",
-    entity_description: "Aggregate for the UN Secretariat including Special Political Missions. CEB reports this as a single entity. Excludes UNEP, UNODC, UN-Habitat, and ITC which report separately.",
-    entity_link: "https://unsceb.org",
-    entity_link_is_un_org: 1,
-    system_grouping: "UN Secretariat",
-    category: "CEB Aggregate",
-    un_principal_organ: "General Assembly",
-    un_pillar: null,
-    is_ceb_member: true,
-    head_of_entity_level: null,
-    head_of_entity_title_specific: null,
-    head_of_entity_title_general: null,
-    head_of_entity_name: null,
-    head_of_entity_bio: null,
-    head_of_entity_headshot: null,
-    global_leadership_team_url: null,
-    on_display: "TRUE",
-    foundational_mandate: null,
-    organizational_chart_link: null,
-    budget_financial_reporting_link: null,
-    results_framework_link: null,
-    strategic_plan_link: null,
-    annual_reports_link: null,
-    transparency_portal_link: null,
-    socials_linkedin: null,
-    socials_twitter: null,
-    socials_instagram: null,
-    entity_news_page: null,
-    entity_branding_page: null,
-    entity_data_page: null,
-    entity_logo_page: null,
-    entity_wikipedia_page: null,
-  };
-
-  const syntheticDPO: Entity = {
-    entity: "UN-DPO",
-    entity_long: "Peacekeeping Operations",
-    entity_combined: "Peacekeeping Operations (UN-DPO)",
-    entity_description: "Aggregate for UN Peacekeeping Operations. CEB reports all peacekeeping missions under this single entity.",
-    entity_link: "https://peacekeeping.un.org",
-    entity_link_is_un_org: 1,
-    system_grouping: "Peacekeeping Operations",
-    category: "CEB Aggregate",
-    un_principal_organ: "Security Council",
-    un_pillar: null,
-    is_ceb_member: true,
-    head_of_entity_level: null,
-    head_of_entity_title_specific: null,
-    head_of_entity_title_general: null,
-    head_of_entity_name: null,
-    head_of_entity_bio: null,
-    head_of_entity_headshot: null,
-    global_leadership_team_url: null,
-    on_display: "TRUE",
-    foundational_mandate: null,
-    organizational_chart_link: null,
-    budget_financial_reporting_link: null,
-    results_framework_link: null,
-    strategic_plan_link: null,
-    annual_reports_link: null,
-    transparency_portal_link: null,
-    socials_linkedin: null,
-    socials_twitter: null,
-    socials_instagram: null,
-    entity_news_page: null,
-    entity_branding_page: null,
-    entity_data_page: null,
-    entity_logo_page: null,
-    entity_wikipedia_page: null,
-  };
-
-  const syntheticEntities: Entity[] = [syntheticUN, syntheticDPO];
+  const syntheticEntities: Entity[] = CEB_AGGREGATE_ENTITIES;
 
   // Get the appropriate budget data and entities based on toggle
-  const budgetData = showRevenue 
-    ? Object.fromEntries(Object.entries(revenueData).map(([k, v]) => [k, v.total]))
+  const budgetData = showRevenue
+    ? Object.fromEntries(
+        Object.entries(revenueData).map(([k, v]) => [k, v.total]),
+      )
     : spendingData;
 
   const entityMetadata = new Map(
     entities
       .filter((entity) => entity.entity)
-      .map((entity) => [entity.entity, normalizeEntityForDisplay(entity)])
+      .map((entity) => [entity.entity, normalizeEntityForDisplay(entity)]),
   );
   const syntheticMetadata = new Map(
-    syntheticEntities.map((entity) => [entity.entity, entity])
+    syntheticEntities.map((entity) => [entity.entity, entity]),
   );
 
   // Drive the treemap from the financial dataset, not the metadata dataset.
@@ -209,7 +164,7 @@ export function EntitiesTreemap() {
       ([entity]) =>
         syntheticMetadata.get(entity) ||
         entityMetadata.get(entity) ||
-        createUncategorizedEntity(entity)
+        createUncategorizedEntity(entity),
     );
 
   // Resolve against the reconciled list so placeholder entities can be linked.
@@ -218,7 +173,7 @@ export function EntitiesTreemap() {
 
     const timer = window.setTimeout(() => {
       const entity = activeEntities.find(
-        (candidate) => candidate.entity === pendingDeepLink
+        (candidate) => candidate.entity === pendingDeepLink,
       );
       if (entity) {
         setSelectedEntity(entity);
@@ -253,7 +208,7 @@ export function EntitiesTreemap() {
       acc[entity.system_grouping] = (acc[entity.system_grouping] || 0) + 1;
       return acc;
     },
-    {} as Record<string, number>
+    {} as Record<string, number>,
   );
 
   // Legend entries: every grouping that actually has entities on screen.
@@ -335,7 +290,7 @@ export function EntitiesTreemap() {
     return entityList.filter(
       (entity) =>
         entity.entity?.toLowerCase().includes(searchTerm) ||
-        entity.entity_long?.toLowerCase().includes(searchTerm)
+        entity.entity_long?.toLowerCase().includes(searchTerm),
     );
   };
 
@@ -348,8 +303,10 @@ export function EntitiesTreemap() {
   }
 
   // Filter entities by active groups, budget > 0, and search
-  const filteredEntities = searchEntities(searchQuery, entitiesWithBudget)
-    .filter((entity) => activeGroups.has(entity.system_grouping));
+  const filteredEntities = searchEntities(
+    searchQuery,
+    entitiesWithBudget,
+  ).filter((entity) => activeGroups.has(entity.system_grouping));
 
   // Group entities by system_grouping
   const groups = filteredEntities.reduce(
@@ -363,7 +320,7 @@ export function EntitiesTreemap() {
       }
       return acc;
     },
-    {} as Record<string, TreemapItem[]>
+    {} as Record<string, TreemapItem[]>,
   );
 
   const sortedGroups = Object.entries(groups).sort(([groupA], [groupB]) => {
@@ -386,10 +343,11 @@ export function EntitiesTreemap() {
 
           {/* Filter Dropdown */}
           <div className="relative w-full sm:w-[280px]">
-            <Select value={getSelectedValue()} onValueChange={handleValueChange}>
-              <SelectTrigger
-                className="h-9 w-full rounded-none border-0 border-b border-gray-300 bg-transparent px-0 py-1.5 text-sm transition-all duration-300 ease-out hover:border-gray-400 focus:border-gray-400 focus:outline-none focus:ring-0 focus-visible:outline-none focus-visible:ring-0"
-              >
+            <Select
+              value={getSelectedValue()}
+              onValueChange={handleValueChange}
+            >
+              <SelectTrigger className="h-9 w-full rounded-none border-0 border-b border-gray-300 bg-transparent px-0 py-1.5 text-sm transition-all duration-300 ease-out hover:border-gray-400 focus:border-gray-400 focus:ring-0 focus:outline-none focus-visible:ring-0 focus-visible:outline-none">
                 <SelectValue asChild>
                   <span className="flex items-center transition-all duration-300 ease-out">
                     {getDisplayText()}
@@ -455,7 +413,9 @@ export function EntitiesTreemap() {
 
           {/* Funding/Spending Toggle */}
           <div className="flex h-9 items-center gap-2">
-            <span className={`text-sm ${showRevenue ? "font-medium text-gray-900" : "text-gray-500"}`}>
+            <span
+              className={`text-sm ${showRevenue ? "font-medium text-gray-900" : "text-gray-500"}`}
+            >
               Funding
             </span>
             <Switch
@@ -463,7 +423,9 @@ export function EntitiesTreemap() {
               onCheckedChange={(checked) => setShowRevenue(!checked)}
               aria-label="Toggle between funding and spending"
             />
-            <span className={`text-sm ${!showRevenue ? "font-medium text-gray-900" : "text-gray-500"}`}>
+            <span
+              className={`text-sm ${!showRevenue ? "font-medium text-gray-900" : "text-gray-500"}`}
+            >
               Spending
             </span>
           </div>
@@ -492,7 +454,7 @@ export function EntitiesTreemap() {
     sortedGroups.map(([key, items]) => ({
       key,
       total: items.reduce((s, item) => s + item.value, 0),
-    }))
+    })),
   );
 
   const renderEntities = (
@@ -501,7 +463,7 @@ export function EntitiesTreemap() {
     x: number,
     y: number,
     width: number,
-    height: number
+    height: number,
   ) => {
     const styles =
       systemGroupingStyles[groupKey] || getSystemGroupingStyle(groupKey);
@@ -513,7 +475,7 @@ export function EntitiesTreemap() {
       const showLabel = rect.width > 3 && rect.height > 2;
       const isHovered = hoveredEntity === rect.data.entity;
       const entityGroupStyle = getSystemGroupingStyle(
-        rect.data.system_grouping || ""
+        rect.data.system_grouping || "",
       );
 
       // Get revenue breakdown for bar chart display
@@ -521,12 +483,20 @@ export function EntitiesTreemap() {
       const hasRevenueBreakdown = showRevenue && entityRevenue?.by_type;
       const revenueTypes = hasRevenueBreakdown
         ? Object.entries(entityRevenue.by_type).sort((a, b) => {
-            const order = ["Assessed", "Voluntary un-earmarked", "Voluntary earmarked", "Other"];
+            const order = [
+              "Assessed",
+              "Voluntary un-earmarked",
+              "Voluntary earmarked",
+              "Other",
+            ];
             return order.indexOf(a[0]) - order.indexOf(b[0]);
           })
         : [];
       const revenueTotal = hasRevenueBreakdown
-        ? Object.values(entityRevenue.by_type).reduce((sum, val) => sum + val, 0)
+        ? Object.values(entityRevenue.by_type).reduce(
+            (sum, val) => sum + val,
+            0,
+          )
         : 0;
 
       // Get opacity for revenue type (using category color as base)
@@ -584,7 +554,7 @@ export function EntitiesTreemap() {
               {/* Label overlay */}
               {showLabel && (
                 <div className="relative h-full overflow-hidden p-1">
-                  <div className="truncate text-xs font-medium leading-tight">
+                  <div className="truncate text-xs leading-tight font-medium">
                     {rect.data.entity === "UN" || rect.data.entity === "UN-DPO"
                       ? rect.data.entity_long
                       : rect.data.entity}
@@ -605,7 +575,7 @@ export function EntitiesTreemap() {
             collisionPadding={12}
           >
             <div className="max-w-xs p-1 text-center sm:max-w-sm">
-              <p className="text-xs font-medium leading-tight sm:text-sm">
+              <p className="text-xs leading-tight font-medium sm:text-sm">
                 {rect.data.entity_long}
               </p>
               <div className="mt-1 flex items-center justify-center gap-1.5">
@@ -638,14 +608,24 @@ export function EntitiesTreemap() {
           <div className="flex flex-wrap gap-3">
             {[
               { type: "Assessed", label: "Assessed" },
-              { type: "Voluntary un-earmarked", label: "Voluntary un-earmarked" },
+              {
+                type: "Voluntary un-earmarked",
+                label: "Voluntary un-earmarked",
+              },
               { type: "Voluntary earmarked", label: "Voluntary earmarked" },
             ].map(({ type, label }) => (
               <Tooltip key={type} delayDuration={200}>
                 <TooltipTrigger asChild>
                   <div className="flex cursor-help items-center gap-1.5">
-                    <div className="h-3 w-3 rounded-sm" style={{ backgroundColor: getFinancingInstrumentColor(type) }} />
-                    <span className="text-xs text-gray-600 underline decoration-dotted underline-offset-2">{label}</span>
+                    <div
+                      className="h-3 w-3 rounded-sm"
+                      style={{
+                        backgroundColor: getFinancingInstrumentColor(type),
+                      }}
+                    />
+                    <span className="text-xs text-gray-600 underline decoration-dotted underline-offset-2">
+                      {label}
+                    </span>
                   </div>
                 </TooltipTrigger>
                 <TooltipContent
@@ -653,7 +633,9 @@ export function EntitiesTreemap() {
                   sideOffset={4}
                   className="max-w-[250px] border border-slate-200 bg-white text-slate-800 shadow-lg"
                 >
-                  <p className="text-xs">{FINANCING_INSTRUMENT_TOOLTIPS[type]}</p>
+                  <p className="text-xs">
+                    {FINANCING_INSTRUMENT_TOOLTIPS[type]}
+                  </p>
                 </TooltipContent>
               </Tooltip>
             ))}
@@ -680,8 +662,8 @@ export function EntitiesTreemap() {
             gr.x,
             gr.y,
             gr.width,
-            gr.height
-          )
+            gr.height,
+          ),
         )}
       </div>
 

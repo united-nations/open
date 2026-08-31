@@ -36,7 +36,36 @@
     "scopeLabel": "Proposed regular budget",
     "scopeWarning": "2023 proposed regular budget from PPB 2023 (A/77/6), published in 2022.",
     "hierarchyProjection": "USD whole/Part/section hierarchy with RB, OA and XB side by side, followed by a stable budget-unit tier. Printed entities remain entities; section-wide, programme, special-purpose and unitemized scopes use explicit neutral wrappers. Deeper rows preserve each selected source schedule instead of claiming one universal entity/component/subprogramme order. Independently printed parents remain authoritative; a source-control difference is retained only as normalized reconciliation metadata, never as treemap expenditure. Selected lower outline: 143 source tables, 982 printed observations and 495 materialized lower nodes; 112 parallel tables and 2 other-currency tables remain outside additive arithmetic.",
-    "entityDimension": null,
+    "entityDimension": {
+      "sections": 41,
+      "entities": 68,
+      "relationships": 100,
+      "printedFinancialEntities": 41,
+      "unresolvedPrintedFinancialEntities": 1,
+      "sectionsWithoutSingleEntity": 13,
+      "namedUnits": 67,
+      "units": 75,
+      "producer": "pipeline.emit.ppb_entity_dimension",
+      "producerGitHead": "d98a1a4f2defa4641e1d4e41eb1eb201c1c4951f",
+      "sourceFiles": [
+        {
+          "path": "portal-data/ppb/narratives/2023.json",
+          "sha256": "302f217224880927db2ef33adb503211adb3bf2d721485c4d93d6ea1575c8f80"
+        },
+        {
+          "path": "portal-data/ppb/document_outline/2023.json",
+          "sha256": "8651c920e44f34cf1107b75a077036ae46960393e0d8d4262bbcfd91c5059cf2"
+        },
+        {
+          "path": "portal-data/ppb/budget_entity_groups/2023.json",
+          "sha256": "9e8aed60d2f28c9382fcdf5f9110912828644f32a4cd2fdd78fb2dc356176f2d"
+        },
+        {
+          "path": "portal-data/reference.json",
+          "sha256": "bc93780e37caf5380dc898b741957720686f9de656357aae087b70af6eb0b125"
+        }
+      ]
+    },
     "documentSymbol": "A/77/6",
     "documentUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx",
     "omitted": [],
@@ -117,6 +146,15 @@
           "regular_budget": 124540400
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:department-of-safety-and-security:6358a4d5fa",
+        "name": "Department of Safety and Security",
+        "acronym": "DSS",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2034%29&l=en&t=docx"
+      },
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 124540400
@@ -142,6 +180,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:department-of-safety-and-security:6358a4d5fa",
+        "name": "Department of Safety and Security",
+        "acronym": "DSS",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2034%29&l=en&t=docx"
+      },
       "note": "Orthogonal sum of the generated wrapper's complete RB, OA and XB values.",
       "metricAmounts": {
         "proposed": 124540400
@@ -326,6 +371,15 @@
           "regular_budget": 100999600
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:department-of-global-communications:7b3ff28c92",
+        "name": "Department of Global Communications",
+        "acronym": "DGC",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2028%29&l=en&t=docx"
+      },
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 100999600
@@ -351,6 +405,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:department-of-global-communications:7b3ff28c92",
+        "name": "Department of Global Communications",
+        "acronym": "DGC",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2028%29&l=en&t=docx"
+      },
       "note": "Orthogonal sum of the generated wrapper's complete RB, OA and XB values.",
       "metricAmounts": {
         "proposed": 100999600
@@ -535,6 +596,15 @@
           "regular_budget": 21356100
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:office-of-internal-oversight-services:bcf9265069",
+        "name": "Office of Internal Oversight Services",
+        "acronym": "OIOS",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2030%29&l=en&t=docx"
+      },
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 21356100
@@ -560,6 +630,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:office-of-internal-oversight-services:bcf9265069",
+        "name": "Office of Internal Oversight Services",
+        "acronym": "OIOS",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2030%29&l=en&t=docx"
+      },
       "note": "Orthogonal sum of the generated wrapper's complete RB, OA and XB values.",
       "metricAmounts": {
         "proposed": 21356100
@@ -744,6 +821,8 @@
           "regular_budget": 80830200
         }
       },
+      "entityStatus": "multiple_entities",
+      "entityNote": "The section publishes several organizational units; no single section owner is asserted.",
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 80830200
@@ -769,6 +848,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:executive-office-of-the-secretary-general:382e4a11f5",
+        "name": "Executive Office of the Secretary-General",
+        "acronym": "EOSG",
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 16869700
@@ -817,6 +903,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:board-of-auditors-including-its-secretariat:5176980384",
+        "name": "Board of Auditors (including its secretariat)",
+        "acronym": null,
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 3784800
@@ -865,6 +958,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:office-of-administration-of-justice:f47f838aec",
+        "name": "Office of Administration of Justice",
+        "acronym": "OAJ",
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 9782600
@@ -913,6 +1013,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:office-of-the-united-nations-ombudsman-and-mediation-ser:72716f6347",
+        "name": "Office of the United Nations Ombudsman and Mediation Services",
+        "acronym": "UNOMS",
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 3898800
@@ -961,6 +1068,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:ethics-office:e419af2e45",
+        "name": "Ethics Office",
+        "acronym": "Ethics Office",
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 2174100
@@ -1009,6 +1123,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:general-assembly:e898909073",
+        "name": "General Assembly",
+        "acronym": null,
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 2782500
@@ -1103,6 +1224,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:office-of-the-director-general-united-nations-office-at-:82e9b8e25c",
+        "name": "Office of the Director-General, United Nations Office at Geneva",
+        "acronym": null,
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 3336000
@@ -1151,6 +1279,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:office-of-the-director-general-united-nations-office-at-:9c10d736f0",
+        "name": "Office of the Director-General, United Nations Office at Nairobi",
+        "acronym": null,
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 865600
@@ -1199,6 +1334,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:office-of-the-special-representative-of-the-secretary-ge:36aaf7096f",
+        "name": "Office of the Special Representative of the Secretary-General for Children and Armed Conflict",
+        "acronym": "SRSG-CAAC",
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 2304700
@@ -1247,6 +1389,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:office-of-the-special-representative-of-the-secretary-ge:69920669e2",
+        "name": "Office of the Special Representative of the Secretary-General on Sexual Violence in Conflict",
+        "acronym": "SRSG-SVC",
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 1789400
@@ -1295,6 +1444,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:office-of-the-special-representative-of-the-secretary-ge:9a789bfb19",
+        "name": "Office of the Special Representative of the Secretary-General on Violence against Children",
+        "acronym": "SRSG-VAC",
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 2331800
@@ -1343,6 +1499,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:office-of-the-united-nations-special-coordinator-on-impr:d5dcfb0093",
+        "name": "Office of the United Nations Special Coordinator on Improving the United Nations Response to Sexual Exploitation and Abuse",
+        "acronym": "SEA Coordinator",
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 936900
@@ -1391,6 +1554,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:office-of-the-victims-rights-advocate:5e396287da",
+        "name": "Office of the Victims' Rights Advocate",
+        "acronym": "OVRA",
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 848100
@@ -1439,6 +1609,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:united-nations-joint-staff-pension-board-including-unite:3e18843a8c",
+        "name": "United Nations Joint Staff Pension Board (including United Nations participation in the costs of the secretariat of the United Nations Joint Staff Pension Fund)",
+        "acronym": null,
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 5378400
@@ -1487,6 +1664,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:advisory-committee-on-administrative-and-budgetary-quest:33e7f05823",
+        "name": "Advisory Committee on Administrative and Budgetary Questions (including its secretariat)",
+        "acronym": null,
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 6633700
@@ -1535,6 +1719,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:committee-for-programme-and-coordination:e9661a3fc9",
+        "name": "Committee for Programme and Coordination",
+        "acronym": null,
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 544000
@@ -1560,6 +1751,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:committee-on-contributions:1037ad42ac",
+        "name": "Committee on Contributions",
+        "acronym": null,
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 341700
@@ -1585,6 +1783,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:independent-audit-advisory-committee:cdd1550708",
+        "name": "Independent Audit Advisory Committee",
+        "acronym": null,
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 511700
@@ -1610,6 +1815,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:investigation-into-the-conditions-and-circumstances-resu:a20340854f",
+        "name": "Investigation into the conditions and circumstances resulting in the tragic death of Dag Hammarskj\u00f6ld and of the members of the party accompanying him",
+        "acronym": "Hammarskj\u00f6ld investigation",
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 0
@@ -1635,6 +1847,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:office-of-the-director-general-united-nations-office-at-:a2e64a4178",
+        "name": "Office of the Director-General, United Nations Office at Vienna",
+        "acronym": null,
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 1346000
@@ -1660,6 +1879,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:resident-coordinator-system:a0b83212e8",
+        "name": "Resident coordinator system",
+        "acronym": "RC system",
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 13442500
@@ -1708,6 +1934,15 @@
           "regular_budget": 343036700
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:department-for-general-assembly-and-conference-managemen:d3b96fb200",
+        "name": "Department for General Assembly and Conference Management",
+        "acronym": "DGACM",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%202%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 343036700
@@ -1733,6 +1968,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:department-for-general-assembly-and-conference-managemen:d3b96fb200",
+        "name": "Department for General Assembly and Conference Management",
+        "acronym": "DGACM",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%202%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 343036700
@@ -2250,6 +2492,8 @@
           "regular_budget": 835382200
         }
       },
+      "entityStatus": "multiple_entities",
+      "entityNote": "The main-fascicle entities are separately evidenced; special political missions remain a parallel programme.",
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 835382200
@@ -2275,6 +2519,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:united-nations-office-to-the-african-union:1a220fd206",
+        "name": "United Nations Office to the African Union",
+        "acronym": null,
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%203%29&l=en&t=docx"
+      },
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 950900
@@ -2323,6 +2574,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:department-of-political-and-peacebuilding-affairs:683a184de8",
+        "name": "Department of Political and Peacebuilding Affairs",
+        "acronym": "DPPA",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%203%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 47587900
@@ -2601,6 +2859,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:office-of-counter-terrorism:5ec69c0e80",
+        "name": "Office of Counter-Terrorism",
+        "acronym": "UNOCT",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%203%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 5988200
@@ -2649,6 +2914,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:united-nations-register-of-damage-caused-by-the-construc:95d7d6a590",
+        "name": "United Nations Register of Damage Caused by the Construction of the Wall in the Occupied Palestinian Territory",
+        "acronym": "UNRoD",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%203%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 2892400
@@ -2697,6 +2969,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:office-of-the-united-nations-special-coordinator-for-the:7c596a5412",
+        "name": "Office of the United Nations Special Coordinator for the Middle East Peace Process",
+        "acronym": null,
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%203%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 10887500
@@ -3803,6 +4082,8 @@
           "regular_budget": 54731800
         }
       },
+      "entityStatus": "multiple_entities",
+      "entityNote": "The peacekeeping policy and observer entities are separately evidenced.",
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 54731800
@@ -3828,6 +4109,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:department-of-peace-operations:5dff155e7e",
+        "name": "Department of Peace Operations",
+        "acronym": "DPO",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%205%29&l=en&t=docx"
+      },
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 5867800
@@ -4014,6 +4302,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:united-nations-military-observer-group-in-india-and-paki:a250487a83",
+        "name": "United Nations Military Observer Group in India and Pakistan",
+        "acronym": "UNMOGIP",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%205%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 9861000
@@ -4039,6 +4334,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:united-nations-truce-supervision-organization:768f401425",
+        "name": "United Nations Truce Supervision Organization",
+        "acronym": "UNTSO",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%205%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 39003000
@@ -4061,6 +4363,15 @@
         "proposed": {
           "regular_budget": 12706200
         }
+      },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:office-for-disarmament-affairs:ae1c445f5a",
+        "name": "Office for Disarmament Affairs",
+        "acronym": "ODA",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%204%29&l=en&t=docx"
       },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
@@ -4087,6 +4398,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:office-for-disarmament-affairs:ae1c445f5a",
+        "name": "Office for Disarmament Affairs",
+        "acronym": "ODA",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%204%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 12706200
@@ -4317,6 +4635,15 @@
           "regular_budget": 4484000
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:office-for-outer-space-affairs:c0e1518ec7",
+        "name": "Office for Outer Space Affairs",
+        "acronym": "OOSA",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%206%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 4484000
@@ -4342,6 +4669,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:office-for-outer-space-affairs:c0e1518ec7",
+        "name": "Office for Outer Space Affairs",
+        "acronym": "OOSA",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%206%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 4484000
@@ -4411,6 +4745,8 @@
           "regular_budget": 58807700
         }
       },
+      "entityStatus": "multiple_entities",
+      "entityNote": "The legal entities and investigative mechanisms are separately evidenced.",
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 58807700
@@ -4436,6 +4772,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:office-of-legal-affairs:26ec3d7280",
+        "name": "Office of Legal Affairs",
+        "acronym": "OLA",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%208%29&l=en&t=docx"
+      },
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 28745100
@@ -4691,6 +5034,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:independent-investigative-mechanism-for-myanmar:661441143f",
+        "name": "Independent Investigative Mechanism for Myanmar",
+        "acronym": "IIMM",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%208%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 12933400
@@ -4739,6 +5089,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:international-impartial-and-independent-mechanism-to-ass:e39d132bf4",
+        "name": "International, Impartial and Independent Mechanism to Assist in the Investigation and Prosecution of Persons Responsible for the Most Serious Crimes under International Law Committed in the Syrian Arab Republic since March 2011",
+        "acronym": "IIIM",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%208%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 17129200
@@ -4785,6 +5142,15 @@
           "regular_budget": 28463200
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:international-court-of-justice:bba9df47ba",
+        "name": "International Court of Justice",
+        "acronym": "ICJ",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%207%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 28463200
@@ -4810,6 +5176,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:international-court-of-justice:bba9df47ba",
+        "name": "International Court of Justice",
+        "acronym": "ICJ",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%207%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 28463200
@@ -4925,6 +5298,15 @@
           "regular_budget": 85814100
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:department-of-economic-and-social-affairs:dc7b378fcc",
+        "name": "Department of Economic and Social Affairs",
+        "acronym": "DESA",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%209%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 85814100
@@ -4950,6 +5332,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:department-of-economic-and-social-affairs:dc7b378fcc",
+        "name": "Department of Economic and Social Affairs",
+        "acronym": "DESA",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%209%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 85814100
@@ -5272,6 +5661,15 @@
           "regular_budget": 7469900
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:office-of-the-high-representative-for-the-least-develope:9b79e98c03",
+        "name": "Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States",
+        "acronym": "UN-OHRLLS",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2010%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 7469900
@@ -5297,6 +5695,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:office-of-the-high-representative-for-the-least-develope:9b79e98c03",
+        "name": "Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States",
+        "acronym": "UN-OHRLLS",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2010%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 7469900
@@ -5435,6 +5840,15 @@
           "regular_budget": 8271700
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:office-of-the-special-adviser-on-africa:84f593bbc4",
+        "name": "Office of the Special Adviser on Africa",
+        "acronym": "OSAA",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2011%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 8271700
@@ -5460,6 +5874,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:office-of-the-special-adviser-on-africa:84f593bbc4",
+        "name": "Office of the Special Adviser on Africa",
+        "acronym": "OSAA",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2011%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 8271700
@@ -5598,6 +6019,15 @@
           "regular_budget": 72644800
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:united-nations-conference-on-trade-and-development:407a3c62a0",
+        "name": "United Nations Conference on Trade and Development",
+        "acronym": "UNCTAD",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2012%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 72644800
@@ -5623,6 +6053,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:united-nations-conference-on-trade-and-development:407a3c62a0",
+        "name": "United Nations Conference on Trade and Development",
+        "acronym": "UNCTAD",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2012%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 72644800
@@ -5853,6 +6290,15 @@
           "regular_budget": 20174900
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:international-trade-centre:a71d59425b",
+        "name": "International Trade Centre",
+        "acronym": "ITC",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2013%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 20174900
@@ -5878,6 +6324,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:international-trade-centre:a71d59425b",
+        "name": "International Trade Centre",
+        "acronym": "ITC",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2013%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 20174900
@@ -5900,6 +6353,15 @@
         "proposed": {
           "regular_budget": 22826800
         }
+      },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:united-nations-environment-programme:9994683ed0",
+        "name": "United Nations Environment Programme",
+        "acronym": "UNEP",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2014%29&l=en&t=docx"
       },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
@@ -5926,6 +6388,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:united-nations-environment-programme:9994683ed0",
+        "name": "United Nations Environment Programme",
+        "acronym": "UNEP",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2014%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 22826800
@@ -6294,6 +6763,15 @@
           "regular_budget": 14095300
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:united-nations-human-settlements-programme:b9433a11b0",
+        "name": "United Nations Human Settlements Programme",
+        "acronym": "UN-Habitat",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2015%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 14095300
@@ -6319,6 +6797,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:united-nations-human-settlements-programme:b9433a11b0",
+        "name": "United Nations Human Settlements Programme",
+        "acronym": "UN-Habitat",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2015%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 14095300
@@ -6526,6 +7011,15 @@
           "regular_budget": 21866600
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:united-nations-office-on-drugs-and-crime:b0b46e46ee",
+        "name": "United Nations Office on Drugs and Crime",
+        "acronym": "UNODC",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2016%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 21866600
@@ -6551,6 +7045,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:united-nations-office-on-drugs-and-crime:b0b46e46ee",
+        "name": "United Nations Office on Drugs and Crime",
+        "acronym": "UNODC",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2016%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 21866600
@@ -6873,6 +7374,15 @@
           "regular_budget": 9957600
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:united-nations-entity-for-gender-equality-and-the-empowe:db39785d0f",
+        "name": "United Nations Entity for Gender Equality and the Empowerment of Women",
+        "acronym": "UN-Women",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2017%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 9957600
@@ -6898,6 +7408,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:united-nations-entity-for-gender-equality-and-the-empowe:db39785d0f",
+        "name": "United Nations Entity for Gender Equality and the Empowerment of Women",
+        "acronym": "UN-Women",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2017%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 9957600
@@ -7082,6 +7599,8 @@
           "regular_budget": 78311200
         }
       },
+      "entityStatus": "multiple_entities",
+      "entityNote": "ECA and the Regional Commissions New York Office are separately evidenced.",
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 78311200
@@ -7107,6 +7626,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:economic-commission-for-africa:15f8bf93ac",
+        "name": "Economic Commission for Africa",
+        "acronym": "ECA",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2018%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 77273700
@@ -7546,6 +8072,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:regional-commissions-new-york-office:b52bb095b1",
+        "name": "Regional Commissions New York Office",
+        "acronym": "RCNYO",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2018%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 1037500
@@ -7568,6 +8101,15 @@
         "proposed": {
           "regular_budget": 54312300
         }
+      },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:economic-and-social-commission-for-asia-and-the-pacific:5f076d7329",
+        "name": "Economic and Social Commission for Asia and the Pacific",
+        "acronym": "ESCAP",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2019%29&l=en&t=docx"
       },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
@@ -7594,6 +8136,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:economic-and-social-commission-for-asia-and-the-pacific:5f076d7329",
+        "name": "Economic and Social Commission for Asia and the Pacific",
+        "acronym": "ESCAP",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2019%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 54312300
@@ -7916,6 +8465,15 @@
           "regular_budget": 35545800
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:economic-commission-for-europe:90187162ae",
+        "name": "Economic Commission for Europe",
+        "acronym": "ECE",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2020%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 35545800
@@ -7941,6 +8499,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:economic-commission-for-europe:90187162ae",
+        "name": "Economic Commission for Europe",
+        "acronym": "ECE",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2020%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 35545800
@@ -8217,6 +8782,15 @@
           "regular_budget": 59354500
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:economic-commission-for-latin-america-and-the-caribbean:d3a80ba1e7",
+        "name": "Economic Commission for Latin America and the Caribbean",
+        "acronym": "ECLAC",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2021%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 59354500
@@ -8242,6 +8816,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:economic-commission-for-latin-america-and-the-caribbean:d3a80ba1e7",
+        "name": "Economic Commission for Latin America and the Caribbean",
+        "acronym": "ECLAC",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2021%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 59354500
@@ -8656,6 +9237,15 @@
           "regular_budget": 44105900
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:economic-and-social-commission-for-western-asia:86abdaa8ef",
+        "name": "Economic and Social Commission for Western Asia",
+        "acronym": "ESCWA",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2022%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 44105900
@@ -8681,6 +9271,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:economic-and-social-commission-for-western-asia:86abdaa8ef",
+        "name": "Economic and Social Commission for Western Asia",
+        "acronym": "ESCWA",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2022%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 44105900
@@ -8934,6 +9531,8 @@
           "regular_budget": 40264800
         }
       },
+      "entityStatus": "implementing_entities",
+      "entityNote": "The technical-cooperation programme has implementing entities rather than one section owner.",
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 40264800
@@ -9304,6 +9903,8 @@
           "regular_budget": 144889800
         }
       },
+      "entityStatus": "multiple_entities",
+      "entityNote": "The human-rights entities or mechanisms are separately evidenced.",
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 144889800
@@ -9329,6 +9930,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:office-of-the-united-nations-high-commissioner-for-human:2dab098997",
+        "name": "Office of the United Nations High Commissioner for Human Rights",
+        "acronym": "OHCHR",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=docx"
+      },
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 144268900
@@ -9561,6 +10169,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:committee-on-missing-persons-in-cyprus:cfda12ca53",
+        "name": "Committee on Missing Persons in Cyprus",
+        "acronym": "CMP",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 620900
@@ -9583,6 +10198,15 @@
         "proposed": {
           "regular_budget": 42212300
         }
+      },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:office-of-the-united-nations-high-commissioner-for-refug:e382ae1b78",
+        "name": "Office of the United Nations High Commissioner for Refugees",
+        "acronym": "UNHCR",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2025%29&l=en&t=docx"
       },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
@@ -9609,6 +10233,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:office-of-the-united-nations-high-commissioner-for-refug:e382ae1b78",
+        "name": "Office of the United Nations High Commissioner for Refugees",
+        "acronym": "UNHCR",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2025%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 42212300
@@ -9701,6 +10332,15 @@
           "regular_budget": 44039700
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:united-nations-relief-and-works-agency-for-palestine-ref:263cd81c6b",
+        "name": "United Nations Relief and Works Agency for Palestine Refugees in the Near East",
+        "acronym": "UNRWA",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2026%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 44039700
@@ -9726,6 +10366,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:united-nations-relief-and-works-agency-for-palestine-ref:263cd81c6b",
+        "name": "United Nations Relief and Works Agency for Palestine Refugees in the Near East",
+        "acronym": "UNRWA",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2026%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 44039700
@@ -9772,6 +10419,8 @@
           "regular_budget": 18544100
         }
       },
+      "entityStatus": "multiple_entities",
+      "entityNote": "OCHA and UNDRR are separately evidenced.",
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 18544100
@@ -10119,6 +10768,15 @@
           "regular_budget": 91351300
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:department-of-operational-support:8b8c591f4c",
+        "name": "Department of Operational Support",
+        "acronym": "DOS",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029B%29&l=en&t=docx"
+      },
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 91351300
@@ -10144,6 +10802,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:department-of-operational-support:8b8c591f4c",
+        "name": "Department of Operational Support",
+        "acronym": "DOS",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029B%29&l=en&t=docx"
+      },
       "note": "Orthogonal sum of the generated wrapper's complete RB, OA and XB values.",
       "metricAmounts": {
         "proposed": 91351300
@@ -10420,6 +11085,15 @@
           "regular_budget": 52728900
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:office-of-information-and-communications-technology:a48b7c098a",
+        "name": "Office of Information and Communications Technology",
+        "acronym": "OICT",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029C%29&l=en&t=docx"
+      },
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 52728900
@@ -10445,6 +11119,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:office-of-information-and-communications-technology:a48b7c098a",
+        "name": "Office of Information and Communications Technology",
+        "acronym": "OICT",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029C%29&l=en&t=docx"
+      },
       "note": "Orthogonal sum of the generated wrapper's complete RB, OA and XB values.",
       "metricAmounts": {
         "proposed": 52728900
@@ -10583,6 +11264,15 @@
           "regular_budget": 58250000
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:department-of-management-strategy-policy-and-compliance:019d36a68e",
+        "name": "Department of Management Strategy, Policy and Compliance",
+        "acronym": "DMSPC",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029A%29&l=en&t=docx"
+      },
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 58250000
@@ -10608,6 +11298,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:department-of-management-strategy-policy-and-compliance:019d36a68e",
+        "name": "Department of Management Strategy, Policy and Compliance",
+        "acronym": "DMSPC",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029A%29&l=en&t=docx"
+      },
       "note": "Orthogonal sum of the generated wrapper's complete RB, OA and XB values.",
       "metricAmounts": {
         "proposed": 58250000
@@ -11010,6 +11707,15 @@
           "regular_budget": 75231600
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:united-nations-office-at-geneva:0fde45bf0b",
+        "name": "United Nations Office at Geneva",
+        "acronym": "UNOG",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029E%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 75231600
@@ -11035,6 +11741,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:united-nations-office-at-geneva:0fde45bf0b",
+        "name": "United Nations Office at Geneva",
+        "acronym": "UNOG",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029E%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 75231600
@@ -11219,6 +11932,15 @@
           "regular_budget": 18502600
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:united-nations-office-at-vienna:c594cc71b0",
+        "name": "United Nations Office at Vienna",
+        "acronym": "UNOV",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029F%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 18502600
@@ -11244,6 +11966,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:united-nations-office-at-vienna:c594cc71b0",
+        "name": "United Nations Office at Vienna",
+        "acronym": "UNOV",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029F%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 18502600
@@ -11405,6 +12134,15 @@
           "regular_budget": 16657200
         }
       },
+      "entityStatus": "single_owner",
+      "entityNote": "The section's Mandates and background text identifies one responsible entity.",
+      "entity": {
+        "id": "entity:united-nations-office-at-nairobi:5c616c1c1e",
+        "name": "United Nations Office at Nairobi",
+        "acronym": "UNON",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029G%29&l=en&t=docx"
+      },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 16657200
@@ -11430,6 +12168,13 @@
       },
       "unitType": "unassigned",
       "role": "section_scope",
+      "entity": {
+        "id": "entity:united-nations-office-at-nairobi:5c616c1c1e",
+        "name": "United Nations Office at Nairobi",
+        "acronym": "UNON",
+        "relationship": "section_owner",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029G%29&l=en&t=docx"
+      },
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 16657200
@@ -11614,6 +12359,8 @@
           "regular_budget": 84811400
         }
       },
+      "entityStatus": "non_entity_budget_category",
+      "entityNote": "Special expenses are accounting categories, not one organizational entity.",
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 84811400
@@ -11777,6 +12524,8 @@
           "regular_budget": 7936300
         }
       },
+      "entityStatus": "multiple_entities",
+      "entityNote": "ICSC, JIU and CEB are separately evidenced.",
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 7936300
@@ -11802,6 +12551,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:international-civil-service-commission:4af716405a",
+        "name": "International Civil Service Commission",
+        "acronym": "ICSC",
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2031%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 4361900
@@ -11827,6 +12583,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:joint-inspection-unit:09fe547e10",
+        "name": "Joint Inspection Unit",
+        "acronym": "JIU",
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2031%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 2313300
@@ -11852,6 +12615,13 @@
       },
       "unitType": "entity",
       "role": "source_node",
+      "entity": {
+        "id": "entity:united-nations-system-chief-executives-board-for-coordin:492c6dd14c",
+        "name": "United Nations System Chief Executives Board for Coordination",
+        "acronym": "CEB",
+        "relationship": "organizational_unit",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2031%29&l=en&t=docx"
+      },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 1261100
@@ -11898,6 +12668,8 @@
           "regular_budget": 29727000
         }
       },
+      "entityStatus": "shared_project_responsibility",
+      "entityNote": "Capital-project responsibility varies by project type and duty station.",
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 29727000
@@ -12751,6 +13523,8 @@
           "regular_budget": 15199400
         }
       },
+      "entityStatus": "funding_mechanism",
+      "entityNote": "The Development Account is a funding mechanism rather than one organizational entity.",
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 15199400
@@ -12822,6 +13596,8 @@
           "regular_budget": 283622900
         }
       },
+      "entityStatus": "non_entity_budget_category",
+      "entityNote": "Staff assessment is an accounting consolidation, not one organizational entity.",
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 283622900

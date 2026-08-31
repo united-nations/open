@@ -107,6 +107,7 @@ import itertools
 import json
 import re
 import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -411,6 +412,7 @@ def entity_index(view: dict) -> tuple[dict[str, dict], dict[str, dict], dict | N
     for r in dimension["relationships"]:
         entity = entities[r["entityId"]]
         relationships[r["relationshipId"]] = {
+            "id": entity["entityId"],
             "name": entity["canonicalName"],
             "acronym": entity["acronym"],
             "relationship": r["relationship"],
@@ -649,6 +651,11 @@ def build_ppb(view: dict, financial: dict | None = None) -> dict:
 
         tier = n["chartTier"]
         role = n["chartRole"]
+        if tier == "section" and code in section_verdicts:
+            # The entity dimension is built from the canonical section
+            # reference. Prefer that clean title to source-view variants such
+            # as "Political affairs (other)" and numbered headings.
+            label = section_verdicts[code]["sectionTitle"]
         parent_tree = n["parentTreeNodeId"]
         parent_id = ids.get(parent_tree) if parent_tree else None
         if tier in ("whole", "part", "section"):
@@ -1329,6 +1336,23 @@ def prepare_local_financial() -> None:
         )
         target = target_dir / f"{edition}.json"
         target.write_text(json.dumps(views[0]))
+        overlay_target = ENTITY_SRC / f"{edition}.json"
+        overlay_target.parent.mkdir(parents=True, exist_ok=True)
+        subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "pipeline.emit.ppb_entity_dimension",
+                "--input",
+                str(target.resolve()),
+                "--overlay-output",
+                str(overlay_target.resolve()),
+                "--published-data-dir",
+                str((PROGRAMME_BUDGET_DATA / "apps/portal/public/data").resolve()),
+            ],
+            cwd=PROGRAMME_BUDGET_DATA,
+            check=True,
+        )
         print(
             f"cached local PPB {edition} (expenditure {views[0]['lens']['dataYear']}, "
             f"{len(views[0]['nodes'])} nodes)"
@@ -1341,9 +1365,20 @@ def export() -> None:
         f"    uv run python/12-export_budget_json.py --release <unpacked-release>"
     )
 
-    stale = sorted(p for p in OUT.glob("budget-ppb-*.json")
-                   if int(p.stem.rsplit("-", 1)[1]) not in
-                   {e - 2 for e in PPB_EDITIONS_DRAWN})
+    expected_ppb_files = {
+        f"budget-ppb-{metric}-{edition + definition['yearOffset']}.json"
+        for edition in PPB_EDITIONS_DRAWN
+        for metric, definition in PPB_METRICS.items()
+        if metric != "expenditure" or edition + definition["yearOffset"] >= 2019
+    } | {
+        f"budget-ppb-{edition - 2}.json"
+        for edition in PPB_EDITIONS_DRAWN
+        if edition - 2 >= 2019
+    }
+    stale = sorted(
+        path for path in OUT.glob("budget-ppb-*.json")
+        if path.name not in expected_ppb_files
+    )
     for path in stale:
         path.unlink()
         print(f"removed {path.name} (its edition is not drawn)")

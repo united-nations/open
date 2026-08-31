@@ -1,7 +1,6 @@
 "use client";
 
 import { useCallback, useRef, useState, useEffect } from "react";
-import { Play, Pause } from "lucide-react";
 
 interface YearSliderProps {
   years: number[];
@@ -21,7 +20,6 @@ export function YearSlider({
 }: YearSliderProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
   // Track the visual position during drag (only commits on release)
   const [dragYear, setDragYear] = useState<number | null>(null);
 
@@ -55,7 +53,6 @@ export function YearSlider({
     (e: React.MouseEvent) => {
       if (disabled) return;
       e.preventDefault();
-      setIsPlaying(false);
       setIsDragging(true);
       const year = getYearFromPosition(e.clientX);
       setDragYear(year);
@@ -96,7 +93,6 @@ export function YearSlider({
     (e: React.TouchEvent) => {
       if (disabled) return;
       e.preventDefault(); // Prevent page scroll from interfering
-      setIsPlaying(false);
       setIsDragging(true);
       const touch = e.touches[0];
       const year = getYearFromPosition(touch.clientX);
@@ -148,23 +144,19 @@ export function YearSlider({
         case "ArrowLeft":
         case "ArrowDown":
           e.preventDefault();
-          setIsPlaying(false);
           newIndex = Math.max(0, currentIndex - 1);
           break;
         case "ArrowRight":
         case "ArrowUp":
           e.preventDefault();
-          setIsPlaying(false);
           newIndex = Math.min(sortedYears.length - 1, currentIndex + 1);
           break;
         case "Home":
           e.preventDefault();
-          setIsPlaying(false);
           newIndex = 0;
           break;
         case "End":
           e.preventDefault();
-          setIsPlaying(false);
           newIndex = sortedYears.length - 1;
           break;
         default:
@@ -178,32 +170,6 @@ export function YearSlider({
     [disabled, sortedYears, selectedYear, onChange]
   );
 
-  // Auto-advance when playing
-  useEffect(() => {
-    if (!isPlaying) return;
-    const currentIndex = sortedYears.indexOf(selectedYear);
-    if (currentIndex >= sortedYears.length - 1) {
-      setIsPlaying(false);
-      return;
-    }
-    const timer = setTimeout(() => {
-      onChange(sortedYears[currentIndex + 1]);
-    }, 2400);
-    return () => clearTimeout(timer);
-  }, [isPlaying, selectedYear, sortedYears, onChange]);
-
-  const handlePlayClick = () => {
-    if (isPlaying) {
-      setIsPlaying(false);
-    } else {
-      const currentIndex = sortedYears.indexOf(selectedYear);
-      if (currentIndex >= sortedYears.length - 1) {
-        onChange(sortedYears[0]);
-      }
-      setIsPlaying(true);
-    }
-  };
-
   const thumbPosition = getPositionFromYear(displayYear);
 
   if (sortedYears.length <= 1) {
@@ -212,17 +178,6 @@ export function YearSlider({
 
   return (
     <div className="flex h-9 items-center gap-2">
-      <button
-        type="button"
-        onClick={handlePlayClick}
-        disabled={disabled}
-        aria-label={isPlaying ? "Pause" : "Play"}
-        className={`flex h-6 w-6 items-center justify-center text-gray-400 transition-colors hover:text-gray-900 focus:outline-none focus-visible:text-gray-900 ${
-          disabled ? "cursor-not-allowed opacity-50" : ""
-        }`}
-      >
-        {isPlaying ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5" />}
-      </button>
       <div
         ref={trackRef}
         role="slider"

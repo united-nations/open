@@ -6,9 +6,10 @@
 // the documents print. The band names sit in a column beside the chart rather
 // than in a legend below it.
 //
-//   PPB          part band -> section -> budget unit (the tiles: one level, the
-//                same kind of thing in every section, named after the
-//                organization the budget ties it to where it names one)
+//   PPB sections part band -> budget section tile
+//   PPB entities one entity band -> canonical entity tile; published amounts
+//                that cannot be assigned without guessing stay in one explicit
+//                unassigned tile
 //   detailed PKO mission band -> cost class -> cost item, or the same the other
 //                way round when the lens is switched
 //   audited PKO  mission band -> mission total
@@ -48,10 +49,10 @@ import {
   fiscalYearLabel,
   FUNDING_SHADE_OPACITY,
   FUNDING_SOURCES,
-  unitCaption,
   unitExplanation,
   unitSearchText,
   type BudgetFundingSource,
+  type PpbGrouping,
   type PkoLens,
 } from "@/lib/budgetGroupings";
 import {
@@ -120,6 +121,194 @@ interface BandLabelPosition {
   y: number;
   compact: boolean;
   height: number;
+}
+
+interface EntityProjection {
+  nodes: BudgetNode[];
+  sidebarNodes: BudgetNode[];
+  namedAmount: number;
+  unassignedAmount: number;
+}
+
+const EMPTY_ENTITY_PROJECTION: EntityProjection = {
+  nodes: [],
+  sidebarNodes: [],
+  namedAmount: 0,
+  unassignedAmount: 0,
+};
+
+function addFundingValues(
+  target: Partial<Record<BudgetFundingSource, number>>,
+  values: BudgetNode["values"],
+) {
+  for (const source of BUDGET_FUNDING_SOURCES) {
+    if (values?.[source] !== undefined) {
+      target[source] = (target[source] ?? 0) + (values[source] ?? 0);
+    }
+  }
+}
+
+/**
+ * Build an entity lens without changing the source hierarchy.
+ *
+ * A single-owner section can be assigned in full to its source-evidenced
+ * owner. Multi-entity sections use their printed budget units. Anything else,
+ * including a lower breakdown that exceeds its authoritative section total,
+ * stays explicitly unassigned instead of being relabelled as an entity.
+ */
+function buildEntityProjection(data: BudgetData | null): EntityProjection {
+  if (!data) return EMPTY_ENTITY_PROJECTION;
+
+  const children: Record<string, BudgetNode[]> = {};
+  for (const node of data.nodes) {
+    if (node.parentId) (children[node.parentId] ??= []).push(node);
+  }
+
+  interface Aggregate {
+    entity?: BudgetNode["entity"];
+    amount: number;
+    values: Partial<Record<BudgetFundingSource, number>>;
+    sections: Map<
+      string,
+      {
+        section: BudgetNode;
+        amount: number;
+        values: Partial<Record<BudgetFundingSource, number>>;
+      }
+    >;
+  }
+
+  const aggregates = new Map<string, Aggregate>();
+  const add = (
+    section: BudgetNode,
+    entity: BudgetNode["entity"],
+    amount: number,
+    values: BudgetNode["values"],
+  ) => {
+    if (amount <= 0) return;
+    const key = entity?.id ?? entity?.name ?? "unassigned";
+    const aggregate = aggregates.get(key) ?? {
+      entity,
+      amount: 0,
+      values: {},
+      sections: new Map(),
+    };
+    aggregate.amount += amount;
+    addFundingValues(aggregate.values, values);
+    const placement = aggregate.sections.get(section.id) ?? {
+      section,
+      amount: 0,
+      values: {},
+    };
+    placement.amount += amount;
+    addFundingValues(placement.values, values);
+    aggregate.sections.set(section.id, placement);
+    aggregates.set(key, aggregate);
+  };
+
+  for (const section of data.nodes.filter(
+    (node) => node.tier === "section" && node.amount > 0,
+  )) {
+    if (section.entity?.relationship === "section_owner") {
+      add(section, section.entity, section.amount, section.values);
+      continue;
+    }
+
+    const units = (children[section.id] ?? []).filter(
+      (node) => node.tier === "budget_unit" && node.amount > 0,
+    );
+    const unitsTotal = units.reduce((sum, node) => sum + node.amount, 0);
+    if (units.length === 0 || unitsTotal > section.amount) {
+      add(section, undefined, section.amount, section.values);
+      continue;
+    }
+
+    const unitFundingTotals: Partial<Record<BudgetFundingSource, number>> = {};
+    for (const unit of units) {
+      add(section, unit.entity, unit.amount, unit.values);
+      addFundingValues(unitFundingTotals, unit.values);
+    }
+    const residual = section.amount - unitsTotal;
+    if (residual > 0) {
+      const residualValues = Object.fromEntries(
+        BUDGET_FUNDING_SOURCES.map((source) => [
+          source,
+          Math.max(
+            0,
+            (section.values?.[source] ?? 0) - (unitFundingTotals[source] ?? 0),
+          ),
+        ]).filter(([, amount]) => Number(amount) > 0),
+      ) as Partial<Record<BudgetFundingSource, number>>;
+      add(section, undefined, residual, residualValues);
+    }
+  }
+
+  const root = data.nodes.find((node) => node.parentId === null);
+  const assignedTotal = [...aggregates.values()].reduce(
+    (sum, aggregate) => sum + aggregate.amount,
+    0,
+  );
+  if (root && root.amount > assignedTotal) {
+    // Preserve small whole-vs-section rounding differences without pretending
+    // they belong to an organization.
+    add(root, undefined, root.amount - assignedTotal, {});
+  }
+
+  const nodes: BudgetNode[] = [];
+  const sidebarNodes: BudgetNode[] = [];
+  let namedAmount = 0;
+  let unassignedAmount = 0;
+  for (const [key, aggregate] of aggregates) {
+    const safeKey = key.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    const id = `entity-aggregate-${safeKey}`;
+    const named = Boolean(aggregate.entity);
+    const node: BudgetNode = {
+      id,
+      parentId: null,
+      tier: "budget_unit",
+      kind: named ? "entity" : "allocation",
+      code: aggregate.entity?.acronym ?? null,
+      label: aggregate.entity?.name ?? "Not assigned to a single entity",
+      amount: aggregate.amount,
+      basis: "derived_entity_projection",
+      values: aggregate.values,
+      completeness: named ? "complete" : "incomplete",
+      entity: aggregate.entity
+        ? { ...aggregate.entity, relationship: "entity_aggregate" }
+        : undefined,
+      note: named
+        ? "Sum of published section or budget-unit amounts that the source-evidenced entity dimension assigns to this organization."
+        : "Published amounts that cannot be assigned to one organization without guessing.",
+    };
+    nodes.push(node);
+    sidebarNodes.push(node);
+    if (named) namedAmount += aggregate.amount;
+    else unassignedAmount += aggregate.amount;
+
+    for (const placement of aggregate.sections.values()) {
+      sidebarNodes.push({
+        id: `${id}~${placement.section.id}`,
+        parentId: id,
+        tier: "detail",
+        kind: "allocation",
+        code: placement.section.code,
+        label:
+          placement.section.tier === "section"
+            ? `Section ${placement.section.code}: ${placement.section.label}`
+            : "Programme-budget reconciliation remainder",
+        amount: placement.amount,
+        basis: "derived_entity_projection",
+        values: placement.values,
+        completeness: placement.section.completeness,
+        source: placement.section.source,
+        sources: placement.section.sources,
+        note: "Contribution of this budget section to the entity grouping.",
+      });
+    }
+  }
+
+  nodes.sort((a, b) => b.amount - a.amount);
+  return { nodes, sidebarNodes, namedAmount, unassignedAmount };
 }
 
 /**
@@ -206,6 +395,8 @@ interface BudgetTreemapProps {
   headlineFundingSource?: BudgetFundingSource;
   /** Trust-fund pages can draw the individual funds rather than entity totals. */
   trustFundLevel?: "entity" | "fund";
+  /** Programme-budget grouping dimension; sections and entities never share tiles. */
+  ppbGrouping?: PpbGrouping;
 }
 
 export function BudgetTreemap({
@@ -220,6 +411,7 @@ export function BudgetTreemap({
   onTotalChange,
   headlineFundingSource,
   trustFundLevel = "entity",
+  ppbGrouping = "section",
 }: BudgetTreemapProps) {
   const yearRanges = useYearRanges();
   const isAudited = dataset.startsWith("budget-audited-");
@@ -344,9 +536,9 @@ export function BudgetTreemap({
               node.values &&
               Object.keys(node.values).length > 0
             ? node.values
-          : isPko
-            ? { other_assessed: node.amount }
-            : {};
+            : isPko
+              ? { other_assessed: node.amount }
+              : {};
       const values = Object.fromEntries(
         BUDGET_FUNDING_SOURCES.filter(
           (source) =>
@@ -453,6 +645,21 @@ export function BudgetTreemap({
     return { ...previous, nodes: previous.nodes.map(filterNode) };
   }, [filterNode, previous]);
 
+  const entityProjection = useMemo(
+    () =>
+      isAlignedPpb && ppbGrouping === "entity"
+        ? buildEntityProjection(filteredData)
+        : EMPTY_ENTITY_PROJECTION,
+    [filteredData, isAlignedPpb, ppbGrouping],
+  );
+  const previousEntityProjection = useMemo(
+    () =>
+      isAlignedPpb && ppbGrouping === "entity"
+        ? buildEntityProjection(filteredPrevious)
+        : EMPTY_ENTITY_PROJECTION,
+    [filteredPrevious, isAlignedPpb, ppbGrouping],
+  );
+
   useEffect(() => {
     if (filteredData) onTotalChange?.(filteredData.meta.total);
   }, [filteredData, onTotalChange]);
@@ -475,30 +682,29 @@ export function BudgetTreemap({
 
   // The chart responds to the RB/OA/XB controls, but the sidebar is a stable
   // reference view: it always receives every published funding source.
-  const sidebarNodes = useMemo(
-    () =>
-      (data?.nodes ?? []).map((node) => {
-        const metricValues = node.metricValues?.[metric];
-        if (metricValues && Object.keys(metricValues).length > 0) {
-          return {
-            ...node,
-            values: metricValues,
-            amount: Object.values(metricValues).reduce(
-              (sum, value) => sum + value,
-              0,
-            ),
-            breakdown: undefined,
-          };
-        }
-        if (dataset.startsWith("budget-ppb")) {
-          return { ...node, values: {}, amount: 0, breakdown: undefined };
-        }
-        return isPko && Object.keys(node.values ?? {}).length === 0
-          ? { ...node, values: { other_assessed: node.amount } }
-          : node;
-      }),
-    [data, dataset, isPko, metric],
-  );
+  const sidebarNodes = useMemo(() => {
+    const sourceNodes = (data?.nodes ?? []).map((node) => {
+      const metricValues = node.metricValues?.[metric];
+      if (metricValues && Object.keys(metricValues).length > 0) {
+        return {
+          ...node,
+          values: metricValues,
+          amount: Object.values(metricValues).reduce(
+            (sum, value) => sum + value,
+            0,
+          ),
+          breakdown: undefined,
+        };
+      }
+      if (dataset.startsWith("budget-ppb")) {
+        return { ...node, values: {}, amount: 0, breakdown: undefined };
+      }
+      return isPko && Object.keys(node.values ?? {}).length === 0
+        ? { ...node, values: { other_assessed: node.amount } }
+        : node;
+    });
+    return [...sourceNodes, ...entityProjection.sidebarNodes];
+  }, [data, dataset, entityProjection.sidebarNodes, isPko, metric]);
   const sidebarById = useMemo(
     () =>
       Object.fromEntries(sidebarNodes.map((node) => [node.id, node])) as Record<
@@ -520,8 +726,9 @@ export function BudgetTreemap({
   const previousAmounts = useMemo(() => {
     const map: Record<string, number> = {};
     for (const n of filteredPrevious?.nodes ?? []) map[n.id] = n.amount;
+    for (const n of previousEntityProjection.nodes) map[n.id] = n.amount;
     return map;
-  }, [filteredPrevious]);
+  }, [filteredPrevious, previousEntityProjection.nodes]);
 
   const entityPlacements = useMemo(() => {
     const placements: Record<string, Set<string>> = {};
@@ -539,11 +746,11 @@ export function BudgetTreemap({
 
   // Resolve a pending deep link once the data is there.
   useEffect(() => {
-    if (pendingDeepLink && byId[pendingDeepLink]?.amount > 0) {
+    if (pendingDeepLink && sidebarById[pendingDeepLink]?.amount > 0) {
       setSelectedId(pendingDeepLink);
       setPendingDeepLink(null);
     }
-  }, [pendingDeepLink, byId, setPendingDeepLink]);
+  }, [pendingDeepLink, setPendingDeepLink, sidebarById]);
 
   // A section, mission or component that the chosen year does not print has no
   // node: close the sidebar rather than leave the year before on screen.
@@ -551,12 +758,12 @@ export function BudgetTreemap({
     if (
       selectedId &&
       filteredData &&
-      (!byId[selectedId] || byId[selectedId].amount <= 0)
+      (!sidebarById[selectedId] || sidebarById[selectedId].amount <= 0)
     ) {
       setSelectedId(null);
       clearSidebarHash();
     }
-  }, [selectedId, filteredData, byId]);
+  }, [selectedId, filteredData, sidebarById]);
 
   const { bands, drawnTotal } = useMemo(() => {
     const empty = { bands: [] as Band[], drawnTotal: 0 };
@@ -596,6 +803,45 @@ export function BudgetTreemap({
             },
           ],
           drawnTotal: root.amount,
+        };
+      }
+      if (isAlignedPpb && ppbGrouping === "entity") {
+        const tiles = entityProjection.nodes
+          .filter(
+            (node) =>
+              node.amount > 0 &&
+              keep(
+                node,
+                `${node.entity?.acronym ?? ""} ${node.entity?.name ?? ""}`,
+              ),
+          )
+          .map((node) =>
+            tileOf(
+              node,
+              node.entity?.acronym ?? node.entity?.name ?? node.label,
+            ),
+          );
+        const total = tiles.reduce((sum, tile) => sum + tile.node.amount, 0);
+        if (total <= 0) return empty;
+        return {
+          bands: [
+            {
+              key: "programme-budget-entities",
+              caption: "",
+              name: "Entities",
+              total,
+              variance: null,
+              groups: [
+                {
+                  key: "programme-budget-entities",
+                  total,
+                  tiles,
+                },
+              ],
+              colors: BAND_PALETTE[0],
+            },
+          ],
+          drawnTotal: total,
         };
       }
       if (isTrustFund && trustFundLevel === "fund") {
@@ -638,8 +884,10 @@ export function BudgetTreemap({
           drawnTotal: total,
         };
       }
-      // Part -> section -> budget unit. The tiles are one tier, so two tiles of
-      // the same size mean the same thing wherever they sit in the chart.
+      // Part -> budget section. Section labels and entity labels stay in
+      // separate views, so a tile never changes from a section name to an
+      // organization acronym merely because another edition has richer entity
+      // evidence.
       const parts = filteredData.nodes
         .filter((n) => n.tier === "part")
         .sort(
@@ -666,42 +914,16 @@ export function BudgetTreemap({
           continue;
         }
         for (const section of childrenOf[part.id] ?? []) {
-          const units = (childrenOf[section.id] ?? []).filter(
-            (n) => n.tier === "budget_unit",
-          );
-          // A section the release does not divide into units is its own tile.
-          const hasMaterialBreakdownDifference =
-            Math.abs(section.breakdown?.difference ?? 0) > 5000;
-          // A discrepant breakdown is still available in the sidebar, but it
-          // must not determine treemap area. Draw the authoritative section
-          // parent as one flagged tile instead.
-          const rows =
-            units.length > 0 && !hasMaterialBreakdownDifference
-              ? units
-              : [section];
-          const tiles = rows
-            .filter(
-              (n) =>
-                n.amount > 0 &&
-                keep(
-                  n,
-                  `${unitSearchText(n, section)} ${
-                    isTrustFund
-                      ? (childrenOf[n.id] ?? [])
-                          .map((child) => `${child.code ?? ""} ${child.label}`)
-                          .join(" ")
-                      : ""
-                  }`,
-                ),
+          const tiles =
+            section.amount > 0 &&
+            keep(
+              section,
+              (childrenOf[section.id] ?? [])
+                .map((child) => unitSearchText(child, section))
+                .join(" "),
             )
-            .map((n) =>
-              tileOf(
-                n,
-                n === section
-                  ? `${section.code}. ${section.label}`
-                  : unitCaption(n, section),
-              ),
-            );
+              ? [tileOf(section, section.label)]
+              : [];
           if (tiles.length === 0) continue;
           groups.push({
             key: section.id,
@@ -819,6 +1041,8 @@ export function BudgetTreemap({
     return { bands: built, drawnTotal: built.reduce((s, b) => s + b.total, 0) };
   }, [
     filteredData,
+    entityProjection.nodes,
+    isAlignedPpb,
     isPko,
     isTrustFund,
     trustFundLevel,
@@ -827,6 +1051,7 @@ export function BudgetTreemap({
     childrenOf,
     previousAmounts,
     entityPlacements,
+    ppbGrouping,
   ]);
 
   // Band heights, in percent of the canvas. The gaps come out of the height
@@ -898,7 +1123,9 @@ export function BudgetTreemap({
             ? "Search missions and cost items..."
             : isTrustFund
               ? "Search entities and trust funds..."
-              : "Search sections and entities..."
+              : isAlignedPpb && ppbGrouping === "entity"
+                ? "Search entities..."
+                : "Search budget sections..."
         }
       />
       <div className="flex flex-wrap items-center gap-4">
@@ -1048,6 +1275,18 @@ export function BudgetTreemap({
         </p>
       )}
 
+      {isAlignedPpb &&
+        ppbGrouping === "entity" &&
+        entityProjection.unassignedAmount > 0 && (
+          <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
+            {formatBudget(entityProjection.namedAmount)} is assigned to named
+            entities. {formatBudget(entityProjection.unassignedAmount)} remains
+            “Not assigned to a single entity” because the source identifies a
+            shared programme, accounting category, or unreconciled lower
+            breakdown rather than one owner.
+          </p>
+        )}
+
       {meta.partial && (
         <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
           {meta.scopeLabel}. This year does not publish every funding source, so
@@ -1065,7 +1304,7 @@ export function BudgetTreemap({
         </p>
       )}
 
-      {hasSplitEntities && (
+      {hasSplitEntities && ppbGrouping !== "entity" && (
         <div className="mb-3 flex items-center gap-1.5 text-xs text-gray-500">
           <SplitSquareHorizontal className="h-3 w-3" />
           <span>Entity appears in multiple budget locations</span>
@@ -1097,7 +1336,9 @@ export function BudgetTreemap({
                   : "Missions"
                 : isTrustFund
                   ? "Trust-fund expenses"
-                  : "Budget parts"}
+                  : isAlignedPpb && ppbGrouping === "entity"
+                    ? "Entity grouping"
+                    : "Budget parts"}
             </div>
           </div>
           <div className="flex flex-wrap gap-x-3 gap-y-1.5">
@@ -1443,7 +1684,9 @@ export function BudgetTreemap({
           </button>
           <div className="pr-8">
             <p className="text-sm leading-tight font-medium text-gray-900">
-              {tooltip.tile.node.entity?.name ?? tooltip.tile.caption}
+              {isAlignedPpb && ppbGrouping === "section"
+                ? tooltip.tile.caption
+                : (tooltip.tile.node.entity?.name ?? tooltip.tile.caption)}
             </p>
             {tooltip.tile.node.parentId && byId[tooltip.tile.node.parentId] && (
               <p className="mt-1 text-xs text-gray-500">
@@ -1488,7 +1731,9 @@ export function BudgetTreemap({
           }}
         >
           <p className="text-sm leading-tight font-medium text-gray-900">
-            {tooltip.tile.node.entity?.name ?? tooltip.tile.caption}
+            {isAlignedPpb && ppbGrouping === "section"
+              ? tooltip.tile.caption
+              : (tooltip.tile.node.entity?.name ?? tooltip.tile.caption)}
           </p>
           {tooltip.tile.node.parentId && byId[tooltip.tile.node.parentId] && (
             <p className="mt-1 text-xs text-gray-500">

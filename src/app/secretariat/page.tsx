@@ -20,7 +20,7 @@ export default function SecretariatPage() {
       <PageHeading
         id="priorities"
         title="How are Secretariat entities spending?"
-        description="Explore UN Secretariat expenses by priority area, entity, funding type and organizational group."
+        description="Explore UN Secretariat expenses by priority area and entity."
       />
       <PageBody>
         <SecretariatOverview />

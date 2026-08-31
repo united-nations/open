@@ -8,11 +8,11 @@ export type SectionNavItem = {
 
 export const SYSTEM_NAV = [
   {
-    href: "/system/contributors",
-    label: "Contributors",
+    href: "/system/organizations",
+    label: "Organizations",
     aliases: ["/system"],
   },
-  { href: "/system/organizations", label: "Organizations" },
+  { href: "/system/contributors", label: "Contributors" },
   { href: "/system/locations", label: "Locations" },
   { href: "/system/goals", label: "Goals" },
 ] as const satisfies readonly SectionNavItem[];

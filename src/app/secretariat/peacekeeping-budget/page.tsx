@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { FieldMissionsMap } from "@/components/FieldMissionsMap";
+import { PeacekeepingBudgetView } from "@/components/PeacekeepingBudgetView";
 import {
   Methodology,
   PeacekeepingBudgetMethodologyNotes,
@@ -19,10 +19,10 @@ export default function PeacekeepingBudgetPage() {
       <PageHeading
         id="peacekeeping-spending"
         title="How do peacekeeping missions spend funds?"
-        description="A geographic view of peacekeeping mission expenditure."
+        description="Peacekeeping budget expenditure by mission, location and cost class."
       />
       <PageBody>
-        <FieldMissionsMap kinds={["pko"]} />
+        <PeacekeepingBudgetView />
       </PageBody>
       <Methodology>
         <SecretariatMethodology />

@@ -255,14 +255,17 @@ export function PeacekeepingBudgetMethodologyNotes() {
   return (
     <>
       <p>
-        The map shows peacekeeping operation expenses from the Secretariat
-        overview series (calendar year). Special political missions are not
-        included on this page.
+        The map and table use peacekeeping budget and performance-report
+        expenditure on the July–June financial cycle. Only missions in that
+        corpus are shown. Support centres (RSCE, UNGSC, UNSOS) are included and
+        marked separately from field missions.
       </p>
       <p>
-        A view based on peacekeeping budget and performance-report data on
-        July–June financial cycles will be added later. The contributor source
-        and its methodology will be documented when that dataset is added.
+        Observer missions paid from the regular budget (UNTSO, UNMOGIP) are not
+        in this budget and are not on this map. The support account, enterprise
+        items and some closed-mission accounts sit outside this corpus. The
+        contributor source and its methodology will be documented when that
+        dataset is added.
       </p>
     </>
   );
