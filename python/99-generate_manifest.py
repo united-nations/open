@@ -9,7 +9,7 @@ OUT = Path("public/data")
 def detect_years(pattern: str) -> list[int]:
     """Find all years available for a given file pattern."""
     files = sorted(OUT.glob(f"{pattern}-*.json"))
-    return [int(f.stem.split("-")[-1]) for f in files]
+    return sorted({int(f.stem.split("-")[-1]) for f in files})
 
 def generate_manifest():
     # Years with secretariat sub-entity breakdown (fused with CEB).
@@ -28,7 +28,8 @@ def generate_manifest():
         "budgetAuditedPpb": {"years": detect_years("budget-audited-ppb"), "default": "latest"},
         "budgetAuditedPko": {"years": detect_years("budget-audited-pko"), "default": "latest"},
         "budgetTrustFunds": {"years": detect_years("budget-trust-funds"), "default": "latest"},
-        # Budget documents (python/12). PPB is keyed by expenditure year.
+        # Budget documents (python/12). PPB is keyed by target budget year;
+        # proposed, approved and expenditure files cover different subsets.
         # PKO is keyed by the first year and starts at 2022, which is its
         # 2022/23 cycle and matches audited PKO file 2023 (keyed by ending year).
         "budgetPpb": {"years": detect_years("budget-ppb"), "default": "latest"},

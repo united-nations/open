@@ -4,6 +4,7 @@ import { ChevronRight, ExternalLink, X } from "lucide-react";
 import { useCallback, useEffect, useState } from "react";
 import type {
   BudgetFundingSource,
+  BudgetMetricKey,
   BudgetMeta,
   BudgetNode,
   BudgetNodeSource,
@@ -715,6 +716,8 @@ export function BudgetSidebar({
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const focusTrapRef = useFocusTrap(true);
+  const metricLabel =
+    meta.metrics?.[meta.measure as BudgetMetricKey]?.label ?? "Expenditure";
 
   useEffect(() => {
     const id = requestAnimationFrame(() => setIsVisible(true));
@@ -858,7 +861,7 @@ export function BudgetSidebar({
           {fundingEntries.length > 0 && (
             <div>
               <h3 className="mb-2 text-lg font-normal tracking-wider text-gray-900 uppercase">
-                Expenditure {meta.fiscalYear} by funding source
+                {metricLabel} {meta.fiscalYear} by funding source
               </h3>
               <div className="space-y-2">
                 {fundingEntries.map(([key, amount]) => {

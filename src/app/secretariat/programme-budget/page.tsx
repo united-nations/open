@@ -11,7 +11,7 @@ import { RegularBudgetView } from "@/components/RegularBudgetView";
 export const metadata: Metadata = {
   title: "UN Programme Budget",
   description:
-    "Explore programme-budget spending by budget part, section and entity.",
+    "Compare programme-budget expenditure, approved resources and proposals by budget part, section and entity.",
 };
 
 export default function ProgrammeBudgetPage() {
@@ -19,8 +19,8 @@ export default function ProgrammeBudgetPage() {
     <>
       <PageHeading
         id="regular-budget-spending"
-        title="How is the programme budget spent?"
-        description="Explore expenditure in the UN programme budget by budget part, section and entity."
+        title="How is the programme budget allocated?"
+        description="Compare expenditure, approved resources and proposals by budget part, section and entity."
       />
       <PageBody>
         <RegularBudgetView />

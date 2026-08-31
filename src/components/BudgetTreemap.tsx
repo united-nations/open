@@ -22,7 +22,7 @@ import {
   SplitSquareHorizontal,
   TriangleAlert,
 } from "lucide-react";
-import type { BudgetData, BudgetNode } from "@/types";
+import type { BudgetData, BudgetMetricKey, BudgetNode } from "@/types";
 import {
   useDeepLink,
   replaceToSidebar,
@@ -179,6 +179,9 @@ interface BudgetTreemapProps {
   /** Dataset in public/data: one file per year, `{dataset}-{year}.json`. */
   dataset:
     | "budget-ppb"
+    | "budget-ppb-proposed"
+    | "budget-ppb-approved"
+    | "budget-ppb-expenditure"
     | "budget-pko"
     | "budget-audited-ppb"
     | "budget-audited-pko"
@@ -189,6 +192,14 @@ interface BudgetTreemapProps {
   sectionId: string;
   /** Funding sources included in the boxes, chart and sidebar. */
   activeFundingSources: BudgetFundingSource[];
+  /** PPB value lens; other budget streams continue to use expenditure. */
+  metric?: BudgetMetricKey;
+  /** Optional year controlled by a parent-level selector. */
+  selectedYear?: number;
+  /** Years that exist for the selected dataset. */
+  availableYears?: number[];
+  /** Keep the shared internal year slider for other budget views. */
+  showYearSelector?: boolean;
   /** Reports the filtered root total to the budget selector. */
   onTotalChange?: (total: number) => void;
   /** Show one source as the only headline total, even when other sources are drawn. */
@@ -202,6 +213,10 @@ export function BudgetTreemap({
   hashPrefix,
   sectionId,
   activeFundingSources,
+  metric = "expenditure",
+  selectedYear,
+  availableYears,
+  showYearSelector = true,
   onTotalChange,
   headlineFundingSource,
   trustFundLevel = "entity",
@@ -210,6 +225,7 @@ export function BudgetTreemap({
   const isAudited = dataset.startsWith("budget-audited-");
   const isTrustFund = dataset === "budget-trust-funds";
   const usesOverviewGroupLayout = isTrustFund && trustFundLevel === "fund";
+  const isAlignedPpb = dataset.startsWith("budget-ppb-");
   const isPko = dataset.endsWith("-pko");
   const yearLabel = isPko
     ? isAudited
@@ -226,7 +242,9 @@ export function BudgetTreemap({
           ? yearRanges.budgetPko
           : yearRanges.budgetPpb;
 
-  const [year, setYear] = useState<number>(range.default);
+  const [internalYear, setInternalYear] = useState<number>(range.default);
+  const year = selectedYear ?? internalYear;
+  const years = availableYears ?? range.years;
   const [data, setData] = useState<BudgetData | null>(null);
   // The year before, for the change figures beside the band names.
   const [previous, setPrevious] = useState<BudgetData | null>(null);
@@ -254,6 +272,7 @@ export function BudgetTreemap({
   useEffect(() => {
     let current = true;
     setLoading(true);
+    if (isAlignedPpb) setData(null);
     // The year before stays on screen until the new one arrives, so that moving
     // the slider does not flash an empty box.
     fetch(`${basePath}/data/${dataset}-${year}.json`)
@@ -270,10 +289,10 @@ export function BudgetTreemap({
     return () => {
       current = false;
     };
-  }, [dataset, year]);
+  }, [dataset, isAlignedPpb, year]);
 
   useEffect(() => {
-    if (!range.years.includes(year - 1)) {
+    if (!years.includes(year - 1)) {
       setPrevious(null);
       return;
     }
@@ -287,7 +306,7 @@ export function BudgetTreemap({
     return () => {
       current = false;
     };
-  }, [dataset, year, range.years]);
+  }, [dataset, year, years]);
 
   useEffect(() => {
     const updateLayout = () => {
@@ -317,9 +336,14 @@ export function BudgetTreemap({
     (node: BudgetNode): BudgetNode => {
       // The detailed PKO release predates the shared funding-source fields.
       // Its complete tree is separately assessed, so treat every amount as OA.
+      const metricValues = node.metricValues?.[metric];
       const sourceValues =
-        node.values && Object.keys(node.values).length > 0
-          ? node.values
+        metricValues && Object.keys(metricValues).length > 0
+          ? metricValues
+          : !dataset.startsWith("budget-ppb") &&
+              node.values &&
+              Object.keys(node.values).length > 0
+            ? node.values
           : isPko
             ? { other_assessed: node.amount }
             : {};
@@ -375,17 +399,23 @@ export function BudgetTreemap({
         // total.  A subset is a new UI lens and is necessarily the sum of the
         // selected RB/OA/XB values.
         amount:
-          allSourcesSelected && node.allSourcesAmount !== undefined
+          metric === "expenditure" &&
+          allSourcesSelected &&
+          node.allSourcesAmount !== undefined
             ? node.allSourcesAmount
             : selectedAmount,
         values,
         breakdown:
-          allSourcesSelected && node.breakdowns?.selected_funding_sources
+          metric === "expenditure" &&
+          allSourcesSelected &&
+          node.breakdowns?.selected_funding_sources
             ? node.breakdowns.selected_funding_sources
-            : componentBreakdown,
+            : metric === "expenditure"
+              ? componentBreakdown
+              : undefined,
       };
     },
-    [activeFundingSet, isPko],
+    [activeFundingSet, dataset, isPko, metric],
   );
 
   const filteredData = useMemo<BudgetData | null>(() => {
@@ -407,12 +437,16 @@ export function BudgetTreemap({
       meta: {
         ...data.meta,
         total: root?.amount ?? 0,
+        measure: metric,
+        fiscalYear: String(
+          data.meta.metrics?.[metric]?.dataYear ?? data.meta.fiscalYear,
+        ),
         fundingSources: [...activeFundingSources],
         omitted,
       },
       nodes,
     };
-  }, [activeFundingSet, activeFundingSources, data, filterNode]);
+  }, [activeFundingSet, activeFundingSources, data, filterNode, metric]);
 
   const filteredPrevious = useMemo<BudgetData | null>(() => {
     if (!previous) return null;
@@ -443,12 +477,27 @@ export function BudgetTreemap({
   // reference view: it always receives every published funding source.
   const sidebarNodes = useMemo(
     () =>
-      (data?.nodes ?? []).map((node) =>
-        isPko && Object.keys(node.values ?? {}).length === 0
+      (data?.nodes ?? []).map((node) => {
+        const metricValues = node.metricValues?.[metric];
+        if (metricValues && Object.keys(metricValues).length > 0) {
+          return {
+            ...node,
+            values: metricValues,
+            amount: Object.values(metricValues).reduce(
+              (sum, value) => sum + value,
+              0,
+            ),
+            breakdown: undefined,
+          };
+        }
+        if (dataset.startsWith("budget-ppb")) {
+          return { ...node, values: {}, amount: 0, breakdown: undefined };
+        }
+        return isPko && Object.keys(node.values ?? {}).length === 0
           ? { ...node, values: { other_assessed: node.amount } }
-          : node,
-      ),
-    [data, isPko],
+          : node;
+      }),
+    [data, dataset, isPko, metric],
   );
   const sidebarById = useMemo(
     () =>
@@ -835,6 +884,7 @@ export function BudgetTreemap({
     meta?.fundingLabels?.[key] ??
     FUNDING_SOURCES[key as BudgetFundingSource]?.label ??
     key;
+  const metricDefinition = meta?.metrics?.[metric];
 
   const controls = (
     <div
@@ -852,19 +902,22 @@ export function BudgetTreemap({
         }
       />
       <div className="flex flex-wrap items-center gap-4">
-        {!usesOverviewGroupLayout && (
+        {!usesOverviewGroupLayout && !isAlignedPpb && (
           <span className="text-sm text-gray-500">
-            Expenditure{" "}
-            {meta?.fiscalYear ?? (yearLabel ? yearLabel(year) : year)} · USD
+            {metricDefinition?.label ?? "Expenditure"}{" "}
+            {metricDefinition?.dataYear ??
+              meta?.fiscalYear ??
+              (yearLabel ? yearLabel(year) : year)}{" "}
+            · USD
           </span>
         )}
         {/* One year is not a range: a slider that cannot be moved only invites
             the reader to look for years that are not there. */}
-        {range.years.length > 1 && (
+        {showYearSelector && years.length > 1 && (
           <YearSlider
-            years={range.years}
+            years={years}
             selectedYear={year}
-            onChange={setYear}
+            onChange={setInternalYear}
             formatLabel={yearLabel}
           />
         )}
@@ -945,7 +998,7 @@ export function BudgetTreemap({
               ? "Select at least one funding source."
               : searchQuery.trim()
                 ? `Nothing matches “${searchQuery}”.`
-                : "No expenditure is available for the selected funding sources."}
+                : `No ${metricDefinition?.label.toLowerCase() ?? "budget value"} is available for the selected funding sources.`}
           </p>
         </div>
       </div>
@@ -954,7 +1007,7 @@ export function BudgetTreemap({
 
   return (
     <div className="w-full">
-      {controls}
+      {!isAlignedPpb && controls}
 
       {headlineSources.length > 0 && (
         <div className="mb-4 flex flex-wrap gap-3">
@@ -967,11 +1020,32 @@ export function BudgetTreemap({
                 {fundingLabel(source)} total
               </p>
               <p className="mt-1 text-3xl font-bold text-gray-900">
-                {formatBudget(publishedRoot?.values?.[source] ?? 0)}
+                {formatBudget(
+                  publishedRoot?.metricValues?.[metric]?.[source] ??
+                    publishedRoot?.values?.[source] ??
+                    0,
+                )}
               </p>
             </div>
           ))}
         </div>
+      )}
+
+      {meta.sourceNote && (
+        <p className="mb-3 border-l-4 border-amber-400 bg-amber-50 px-4 py-3 text-sm text-amber-950">
+          {meta.sourceNote}{" "}
+          {meta.documentUrl && meta.sourceDocument && (
+            <a
+              href={meta.documentUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1 font-medium text-un-blue hover:underline"
+            >
+              Open {meta.sourceDocument}
+              <ExternalLink className="h-3 w-3" />
+            </a>
+          )}
+        </p>
       )}
 
       {meta.partial && (
@@ -1006,6 +1080,8 @@ export function BudgetTreemap({
           </span>
         </div>
       )}
+
+      {isAlignedPpb && controls}
 
       <div className="flex flex-col gap-2 lg:flex-row">
         {/* Narrow screens have no room for the name column, so the bands are
@@ -1453,7 +1529,7 @@ export function BudgetTreemap({
           node={selected}
           parent={selected.parentId ? sidebarById[selected.parentId] : null}
           childrenByParent={sidebarChildrenOf}
-          meta={data.meta}
+          meta={filteredData.meta}
           hashPrefix={hashPrefix}
           onClose={() => {
             setSelectedId(null);

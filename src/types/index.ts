@@ -324,6 +324,18 @@ export type BudgetFundingSource =
 
 export type BudgetSourceLens = BudgetFundingSource | "total_all_sources";
 
+export type BudgetMetricKey = "expenditure" | "approved" | "proposed";
+
+export interface BudgetMetricDefinition {
+  label: string;
+  description: string;
+  dataYear: number;
+  yearOffset: number;
+  total: number;
+  sourceEdition?: number;
+  sourceDocument?: string;
+}
+
 export interface BudgetNodeBreakdown {
   /** Sum of the displayed immediate children, where it can be tested. */
   childAmount: number | null;
@@ -354,6 +366,11 @@ export interface BudgetNode {
   fundingDifference?: number;
   /** The same amount split by funding source, where the source publishes it. */
   values?: Partial<Record<BudgetFundingSource, number>>;
+  /** The same stable PPB hierarchy valued under each published budget lens. */
+  metricValues?: Partial<
+    Record<BudgetMetricKey, Partial<Record<BudgetFundingSource, number>>>
+  >;
+  metricAmounts?: Partial<Record<BudgetMetricKey, number>>;
   /** Source reconciliation by funding lens, retained separately from spend. */
   breakdowns?: Partial<
     Record<
@@ -435,6 +452,15 @@ export interface BudgetMeta {
   fiscalYear: string;
   currency: string;
   total: number;
+  metrics?: Partial<Record<BudgetMetricKey, BudgetMetricDefinition>>;
+  metricCoverage?: {
+    budgetUnits: number;
+    byMetric: Partial<Record<BudgetMetricKey, number>>;
+  };
+  sourceNote?: string;
+  sourceEdition?: number;
+  sourcePublicationYear?: number;
+  sourceDocument?: string;
   scopeLabel: string;
   scopeWarning: string;
   /** True when the year publishes only some of the funding sources. */

@@ -15,6 +15,11 @@ PPB file against the release's SHA256SUMS before copying it:
     uv run python/12-export_budget_json.py --release <tmp>
     uv run python/12-export_budget_json.py
 
+During extraction work, refresh the cache directly from the sibling checkout's
+canonical financial files before rebuilding the entity overlays:
+
+    uv run python/12-export_budget_json.py --local-financial
+
 Peacekeeping is not republished after v1.4, so the three cycle files still come
 from that release, whose archive carries them under `financial/pko/`:
 
@@ -89,10 +94,13 @@ the available funding streams. The exporter validates all seven non-empty
 RB/OA/XB filter combinations and accepts a material child gap only when the
 producer explicitly flags the same signed source discrepancy.
 
-Only the USD expenditure views are exported. The release also has a CHF view of
-PPB 2027, and appropriation and proposed views of the peacekeeping cycles; the
-portal shows actual spending in USD, so those are left aside.
+The USD expenditure view supplies the stable hierarchy. Approved/prior-year
+estimates and proposed/current-year estimates are projected onto the exact same
+source rows, with generated roll-ups filled from their mapped children. The CHF
+view of PPB 2027 and the peacekeeping appropriation/proposed views remain out of
+scope for this programme-budget page.
 """
+import copy
 import csv
 import hashlib
 import itertools
@@ -134,10 +142,9 @@ PKO_RELEASE = {
 PPB_EDITIONS = range(2020, 2028)
 PKO_CYCLES = (2024, 2025, 2026)
 
-# Which PPB editions the portal draws. Editions 2021–2027 provide expenditure
-# for 2019–2025 with all three funding sources. The 2020 edition (expenditure
-# 2018) is deliberately excluded because it publishes regular-budget
-# expenditure only. Entity overlays cover every drawn edition.
+# Which PPB editions the portal draws. PPB 2020's lower hierarchy is too sparse
+# for the portal's programme/subprogramme view, and its expenditure is RB-only.
+# Editions 2021–2027 provide the complete aligned series used here.
 PPB_EDITIONS_DRAWN = range(2021, 2028)
 
 SECRETARIAT_TAXONOMIES = load_secretariat_taxonomies()
@@ -151,6 +158,30 @@ ORDERED_FUNDING = sorted(
 FUNDING_SOURCES = [source["key"] for source in ORDERED_FUNDING]
 FUNDING_NAMES = {
     source["key"]: source["sentence_label"] for source in ORDERED_FUNDING
+}
+
+# The three comparable allocation lenses printed through the PPB series.  The
+# terminology changes with the source template: RB uses appropriation/approved
+# and proposed/estimate columns, while OA and XB call the same adjacent-year
+# columns estimates.  The exporter keeps those source semantics in the label
+# and chooses only values printed on the same physical rows as the expenditure
+# hierarchy, so switching metrics never changes the tree itself.
+PPB_METRICS = {
+    "expenditure": {
+        "label": "Expenditure",
+        "yearOffset": -2,
+        "description": "Actual expenditure reported in this budget edition.",
+    },
+    "approved": {
+        "label": "Approved",
+        "yearOffset": -1,
+        "description": "Approved or appropriated regular-budget resources.",
+    },
+    "proposed": {
+        "label": "Proposed",
+        "yearOffset": 0,
+        "description": "Proposed regular-budget resources.",
+    },
 }
 COST_CLASS_LABELS = {
     cost_class["key"]: cost_class["label"]
@@ -389,6 +420,103 @@ def entity_index(view: dict) -> tuple[dict[str, dict], dict[str, dict], dict | N
     return relationships, sections, dimension["summary"]
 
 
+def metric_value_resolver(financial: dict | None, view: dict):
+    """Return exact approved/proposed values on the expenditure tree's rows.
+
+    A target column is eligible only when it is printed in the same physical
+    source-table row as a citation selected for the expenditure node.  Derived
+    nodes may cite several rows; their target values are the de-duplicated sum
+    of those same rows.  This retains one stable hierarchy across every lens.
+    """
+    if not financial:
+        return lambda _node, _funding, _metric: None
+
+    edition = int(view["lens"]["edition"])
+    citations = {row["citationId"]: row for row in financial["citations"]}
+    observations_by_row: dict[tuple[str, int], list[dict]] = {}
+    observations_by_section: dict[str, list[dict]] = {}
+    for observation in financial["observations"]:
+        lens = observation.get("lens") or {}
+        if lens.get("edition") != edition or lens.get("currency") != "USD":
+            continue
+        citation = citations.get(observation.get("citationId"))
+        if not citation:
+            continue
+        key = (citation["tableId"], int(citation["row"]))
+        observations_by_row.setdefault(key, []).append(observation)
+        section = observation.get("sourceContext", {}).get("section")
+        if section is not None:
+            observations_by_section.setdefault(str(section), []).append(observation)
+
+    def candidates(metric: str, funding: str) -> list[tuple[str, int]]:
+        if metric == "approved":
+            if funding == "regular_budget":
+                measures = ("approved", "appropriation", "estimate", "requirements")
+            else:
+                measures = ("estimate", "approved", "appropriation", "requirements")
+            return [
+                (measure, data_year)
+                for data_year in (edition - 1, edition - 2)
+                for measure in measures
+            ]
+        if funding == "regular_budget":
+            measures = (
+                "proposed", "estimate_after_recosting",
+                "estimate_before_recosting", "estimate", "requirements",
+            )
+        else:
+            measures = (
+                "proposed", "estimate", "estimate_after_recosting",
+                "estimate_before_recosting", "requirements",
+            )
+        return [(measure, edition) for measure in measures]
+
+    def resolve(node: dict, funding: str, metric: str) -> int | None:
+        value = (node.get("values") or {}).get(funding) or {}
+        source_ids = value.get("sourceCitationIds") or []
+        row_keys = []
+        for citation_id in source_ids:
+            citation = citations.get(citation_id)
+            if citation:
+                row_keys.append((citation["tableId"], int(citation["row"])))
+        selected: dict[str, dict] = {}
+        for key in dict.fromkeys(row_keys):
+            rows = observations_by_row.get(key, [])
+            chosen = None
+            for measure, data_year in candidates(metric, funding):
+                matches = [
+                    row for row in rows
+                    if row["lens"].get("fundingSource") == funding
+                    and row["lens"].get("measure") == measure
+                    and row["lens"].get("dataYear") == data_year
+                ]
+                if len(matches) == 1:
+                    chosen = matches[0]
+                    break
+            if chosen:
+                selected[chosen["observationId"]] = chosen
+        if not selected:
+            # Section controls may be printed in the introduction while the
+            # expenditure hierarchy cites the section fascicle (or vice versa).
+            # Use the control only when the requested lens has exactly one
+            # independently printed section total.
+            if node.get("kind") == "section" and node.get("code") is not None:
+                section_rows = observations_by_section.get(str(node["code"]), [])
+                for measure, data_year in candidates(metric, funding):
+                    matches = [
+                        row for row in section_rows
+                        if row["lens"].get("fundingSource") == funding
+                        and row["lens"].get("measure") == measure
+                        and row["lens"].get("dataYear") == data_year
+                    ]
+                    if len(matches) == 1:
+                        return int(matches[0]["money"]["amountExact"])
+            return None
+        return sum(int(row["money"]["amountExact"]) for row in selected.values())
+
+    return resolve
+
+
 # --------------------------------------------------------------------------
 # Programme budget (PPB)
 # --------------------------------------------------------------------------
@@ -405,7 +533,7 @@ def stream_states(view: dict) -> dict[str, str]:
             for fs in FUNDING_SOURCES}
 
 
-def build_ppb(view: dict) -> dict:
+def build_ppb(view: dict, financial: dict | None = None) -> dict:
     lens = view["lens"]
     year = lens["dataYear"]
     edition = lens["edition"]
@@ -422,6 +550,7 @@ def build_ppb(view: dict) -> dict:
         return citation_source(citation)
 
     relationships, section_verdicts, entity_summary = entity_index(view)
+    resolve_metric_value = metric_value_resolver(financial, view)
 
     # Walk the tree from the root, so that a node is always built after its
     # parent and can be given an id below its parent's.
@@ -545,6 +674,19 @@ def build_ppb(view: dict) -> dict:
             "basis": amount_basis,
             "values": published,
             "completeness": totals.get("completeness"),
+            "metricValues": {
+                "expenditure": published,
+                **{
+                    metric: {
+                        funding: amount
+                        for funding in FUNDING_SOURCES
+                        if (
+                            amount := resolve_metric_value(n, funding, metric)
+                        ) is not None
+                    }
+                    for metric in ("approved", "proposed")
+                },
+            },
         }
         if authoritative_amount is not None:
             entry["allSourcesAmount"] = authoritative_amount
@@ -655,6 +797,65 @@ def build_ppb(view: dict) -> dict:
             entry["note"] = explanation
         nodes.append(entry)
 
+    # A generated wrapper or roll-up may not own a physical source row.  Fill
+    # only those missing metric/funding cells by summing its already mapped
+    # immediate children.  This is exact arithmetic over printed values and
+    # keeps the expenditure hierarchy identical for every metric.
+    children_by_parent: dict[str, list[dict]] = {}
+    for node in nodes:
+        if node["parentId"]:
+            children_by_parent.setdefault(node["parentId"], []).append(node)
+    def roll_up_metrics() -> None:
+        for node in reversed(nodes):
+            children = children_by_parent.get(node["id"], [])
+            metric_values = node["metricValues"]
+            for metric in PPB_METRICS:
+                values = metric_values.setdefault(metric, {})
+                for funding in FUNDING_SOURCES:
+                    if funding in values:
+                        continue
+                    available = [
+                        child["metricValues"].get(metric, {}).get(funding)
+                        for child in children
+                        if child["metricValues"].get(metric, {}).get(funding) is not None
+                    ]
+                    if available:
+                        values[funding] = sum(available)
+
+    roll_up_metrics()
+
+    # If an authoritative parent has exactly one unpriced child for a metric,
+    # the missing child's value is the exact remainder after its priced
+    # siblings. This principally carries section controls into their single
+    # special-purpose budget unit without changing the hierarchy.
+    for node in nodes:
+        children = children_by_parent.get(node["id"], [])
+        for metric in PPB_METRICS:
+            parent_values = node["metricValues"].get(metric, {})
+            for funding, parent_amount in parent_values.items():
+                missing = [
+                    child for child in children
+                    if funding not in child["metricValues"].get(metric, {})
+                ]
+                if len(missing) != 1:
+                    continue
+                known = sum(
+                    child["metricValues"].get(metric, {}).get(funding, 0)
+                    for child in children if child not in missing
+                )
+                remainder = parent_amount - known
+                if remainder >= 0:
+                    missing[0]["metricValues"].setdefault(metric, {})[funding] = remainder
+
+    roll_up_metrics()
+    for node in nodes:
+        metric_values = node["metricValues"]
+        node["metricAmounts"] = {
+            metric: sum(values.values())
+            for metric, values in metric_values.items()
+            if values
+        }
+
     # One budget document family per edition: A/74/6 ... A/81/6, one fascicle
     # per section. The symbol of the family is what belongs in the source line.
     symbols = {re.sub(r"\s*\(.*", "", c["symbol"]).replace("_", "/") for c in citations}
@@ -713,6 +914,24 @@ def build_ppb(view: dict) -> dict:
             f"units carry the headings as printed."
         )
 
+    root = next(n for n in nodes if n["tier"] == "whole")
+    metric_metadata = {
+        key: {
+            **spec,
+            "dataYear": edition + int(spec["yearOffset"]),
+            "total": root["metricAmounts"].get(key, 0),
+        }
+        for key, spec in PPB_METRICS.items()
+        if root["metricAmounts"].get(key, 0) > 0
+    }
+    unit_nodes = [node for node in nodes if node["tier"] == "budget_unit"]
+    metric_coverage = {
+        metric: sum(
+            metric in node["metricAmounts"] for node in unit_nodes
+        )
+        for metric in metric_metadata
+    }
+
     return {
         "meta": {
             "stream": "ppb",
@@ -724,6 +943,11 @@ def build_ppb(view: dict) -> dict:
             "fiscalYear": str(year),
             "currency": lens["currency"],
             "total": next(n["amount"] for n in nodes if n["tier"] == "whole"),
+            "metrics": metric_metadata,
+            "metricCoverage": {
+                "budgetUnits": len(unit_nodes),
+                "byMetric": metric_coverage,
+            },
             "fundingSources": FUNDING_SOURCES,
             "fundingStates": states,
             "partial": partial,
@@ -748,6 +972,98 @@ def build_ppb(view: dict) -> dict:
         },
         "nodes": nodes,
     }
+
+
+def annual_metric_payload(payload: dict, metric: str) -> dict:
+    """Project one PPB edition onto the budget year named by one metric.
+
+    Proposed year Y comes from PPB Y, approved year Y from PPB Y+1, and
+    expenditure year Y from PPB Y+2. Proposed and approved intentionally expose
+    only regular-budget values; OA/XB estimates are not treated as peer budget
+    categories or as reliable current-year actuals.
+    """
+    result = copy.deepcopy(payload)
+    source_edition = int(payload["meta"]["edition"])
+    target_year = int(payload["meta"]["metrics"][metric]["dataYear"])
+    document_symbol = payload["meta"].get("documentSymbol") or f"A/{source_edition + 54}/6"
+    allowed_funding = (
+        FUNDING_SOURCES if metric == "expenditure" else ["regular_budget"]
+    )
+
+    for node in result["nodes"]:
+        selected = {
+            funding: amount
+            for funding, amount in node.get("metricValues", {}).get(metric, {}).items()
+            if funding in allowed_funding
+        }
+        node["values"] = selected
+        node["metricValues"] = {metric: selected}
+        selected_amount = sum(selected.values())
+        node["metricAmounts"] = {metric: selected_amount}
+        if metric != "expenditure":
+            node["amount"] = selected_amount
+            for key in (
+                "allSourcesAmount", "fundingBreakdownTotal", "fundingDifference",
+                "breakdowns", "breakdown", "sources", "source",
+            ):
+                node.pop(key, None)
+
+    root = next(node for node in result["nodes"] if node["parentId"] is None)
+    if metric == "proposed":
+        source_note = (
+            f"{target_year} proposed regular budget from PPB {source_edition} "
+            f"({document_symbol}), published in {source_edition - 1}."
+        )
+        scope_label = "Proposed regular budget"
+    elif metric == "approved":
+        source_note = (
+            f"{target_year} approved regular budget, reported in PPB "
+            f"{source_edition} ({document_symbol}), published in {source_edition - 1}."
+        )
+        scope_label = "Approved regular budget"
+    else:
+        source_note = (
+            f"{target_year} expenditure, reported in PPB {source_edition} "
+            f"({document_symbol}), published in {source_edition - 1}. "
+            "Regular budget is shown by default; other assessed and "
+            "extrabudgetary expenditure can be added. OA/XB estimates are not "
+            "used for the proposed or approved categories."
+        )
+        scope_label = "Reported expenditure by funding source"
+
+    unit_nodes = [node for node in result["nodes"] if node["tier"] == "budget_unit"]
+    covered_units = sum(bool(node["values"]) for node in unit_nodes)
+    metric_definition = {
+        **payload["meta"]["metrics"][metric],
+        "dataYear": target_year,
+        "total": root["amount"] if metric == "expenditure" else root["metricAmounts"][metric],
+        "sourceEdition": source_edition,
+        "sourceDocument": document_symbol,
+    }
+    result["meta"].update({
+        "label": f"{target_year} {metric} from PPB {source_edition} (USD)",
+        "measure": metric,
+        "year": target_year,
+        "fiscalYear": str(target_year),
+        "total": metric_definition["total"],
+        "metrics": {metric: metric_definition},
+        "metricCoverage": {
+            "budgetUnits": len(unit_nodes),
+            "byMetric": {metric: covered_units},
+        },
+        "fundingSources": allowed_funding,
+        "fundingStates": {funding: "available" for funding in allowed_funding},
+        "partial": False,
+        "scopeLabel": scope_label,
+        "scopeWarning": source_note,
+        "sourceNote": source_note,
+        "sourceEdition": source_edition,
+        "sourcePublicationYear": source_edition - 1,
+        "sourceDocument": document_symbol,
+    })
+    if metric != "expenditure":
+        result["meta"]["omitted"] = []
+    return result
 
 
 # --------------------------------------------------------------------------
@@ -991,6 +1307,34 @@ def prepare(release_dir: Path, pko_dir: Path | None = None) -> None:
     print(f"Cached {SRC} ({size / 1e6:.1f} MB).")
 
 
+def prepare_local_financial() -> None:
+    """Cache each expenditure view from the sibling checkout's current build."""
+    target_dir = SRC / "ppb"
+    target_dir.mkdir(parents=True, exist_ok=True)
+    for edition in PPB_EDITIONS_DRAWN:
+        financial_path = (
+            PROGRAMME_BUDGET_DATA / "data" / "processed" / "financial" /
+            f"{edition}.json"
+        )
+        assert financial_path.is_file(), f"PPB {edition}: missing {financial_path}"
+        financial = json.loads(financial_path.read_text())
+        views = [
+            view for view in financial.get("treemapViews", [])
+            if view.get("lens", {}).get("edition") == edition
+            and view.get("lens", {}).get("measure") == "expenditure"
+            and view.get("lens", {}).get("currency") == "USD"
+        ]
+        assert len(views) == 1, (
+            f"PPB {edition}: expected one local USD expenditure view, found {len(views)}"
+        )
+        target = target_dir / f"{edition}.json"
+        target.write_text(json.dumps(views[0]))
+        print(
+            f"cached local PPB {edition} (expenditure {views[0]['lens']['dataYear']}, "
+            f"{len(views[0]['nodes'])} nodes)"
+        )
+
+
 def export() -> None:
     assert SRC.is_dir(), (
         f"{SRC} is missing. Download the release and run:\n"
@@ -1007,23 +1351,47 @@ def export() -> None:
     for edition in PPB_EDITIONS_DRAWN:
         source_path = SRC / "ppb" / f"{edition}.json"
         overlay_path = ENTITY_SRC / f"{edition}.json"
-        assert overlay_path.is_file(), (
-            f"PPB {edition}: {overlay_path} is missing. Build the entity overlays "
-            "from the programme-budget-data repository first."
-        )
         view = json.loads(source_path.read_text())
+        financial_path = (
+            PROGRAMME_BUDGET_DATA / "data" / "processed" / "financial" /
+            f"{edition}.json"
+        )
+        financial = (
+            json.loads(financial_path.read_text())
+            if financial_path.is_file() else None
+        )
         pages, citations = apply_pdf_page_index(view, edition)
-        overlay = json.loads(overlay_path.read_text())
-        apply_entity_overlay(view, overlay, source_path)
-        payload = build_ppb(view)
-        year = payload["meta"]["year"]
-        name = f"budget-ppb-{year}"
-        check_tree(payload, name)
-        (OUT / f"{name}.json").write_text(json.dumps(payload, indent=2))
+        if overlay_path.is_file():
+            overlay = json.loads(overlay_path.read_text())
+            if overlay.get("sourceViewSha256") == sha256(source_path):
+                apply_entity_overlay(view, overlay, source_path)
+            else:
+                print(
+                    f"  ! PPB {edition}: skipped stale entity overlay; "
+                    "the financial hierarchy remains complete"
+                )
+        payload = build_ppb(view, financial)
+        for metric in ("proposed", "approved", "expenditure"):
+            annual = annual_metric_payload(payload, metric)
+            year = annual["meta"]["year"]
+            if metric == "expenditure" and year < 2019:
+                continue
+            name = f"budget-ppb-{metric}-{year}"
+            if metric == "expenditure":
+                check_tree(annual, name)
+                # Keep the historical expenditure filename as a compatibility
+                # alias for existing links and downstream consumers.
+                (OUT / f"budget-ppb-{year}.json").write_text(
+                    json.dumps(annual, indent=2)
+                )
+            (OUT / f"{name}.json").write_text(json.dumps(annual, indent=2))
+            print(
+                f"{name}.json: {len(annual['nodes'])} nodes, "
+                f"${annual['meta']['total'] / 1e9:.2f}B; "
+                f"source PPB {edition} {annual['meta']['sourceDocument']}"
+            )
         flag = " (partial scope)" if payload["meta"]["partial"] else ""
-        print(f"{name}.json: {len(payload['nodes'])} nodes, "
-              f"${payload['meta']['total'] / 1e9:.2f}B{flag}; "
-              f"{pages}/{citations} source citations page-linked ✓")
+        print(f"  PPB {edition}: {pages}/{citations} source citations page-linked{flag} ✓")
         for o in payload["meta"]["omitted"]:
             values = ", ".join(f"{FUNDING_NAMES[k]} {v:,}" for k, v in o["values"].items())
             print(f"  - not drawn: {o['label']} — {o['reason']}"
@@ -1045,7 +1413,9 @@ def export() -> None:
 
 if __name__ == "__main__":
     args = sys.argv[1:]
-    if "--release" in args:
+    if "--local-financial" in args:
+        prepare_local_financial()
+    elif "--release" in args:
         pko = args[args.index("--pko") + 1] if "--pko" in args else None
         prepare(Path(args[args.index("--release") + 1]),
                 Path(pko) if pko else None)
