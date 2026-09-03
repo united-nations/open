@@ -35,6 +35,9 @@ importers:
       '@radix-ui/react-tooltip':
         specifier: ^1.2.8
         version: 1.2.8(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@un-eosg/ui':
+        specifier: github:UN-EOSG-Analytics/ui#feature-importable-components
+        version: https://codeload.github.com/UN-EOSG-Analytics/ui/tar.gz/55df6ea1bfd397c11e0e5a101d07dea418bc28c4(@radix-ui/react-dialog@1.1.15(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@radix-ui/react-dropdown-menu@2.1.16(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@radix-ui/react-popover@1.1.15(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(class-variance-authority@0.7.1)(clsx@2.1.1)(lucide-react@0.555.0(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0)(tw-animate-css@1.4.0)
       '@undp/data-viz':
         specifier: ^2.2.3
         version: 2.2.3(@undp/design-system-react@1.5.5(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(supports-color@7.2.0)(tailwindcss@4.1.18))(handlebars@4.7.8)(marked@17.0.1)(math-expression-evaluator@2.0.7)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-animate@0.2.10)(tailwind-merge@3.4.0)(tailwindcss-animate@1.0.7(tailwindcss@4.1.18))
@@ -1408,6 +1411,42 @@ packages:
   '@typescript-eslint/visitor-keys@8.54.0':
     resolution: {integrity: sha512-VFlhGSl4opC0bprJiItPQ1RfUhGDIBokcPwaFH4yiBCaNPeld/9VeXbiPO1cLyorQi1G1vL+ecBk1x8o1axORA==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
+
+  '@un-eosg/ui@https://codeload.github.com/UN-EOSG-Analytics/ui/tar.gz/55df6ea1bfd397c11e0e5a101d07dea418bc28c4':
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/UN-EOSG-Analytics/ui/tar.gz/55df6ea1bfd397c11e0e5a101d07dea418bc28c4}
+    version: 0.1.5
+    peerDependencies:
+      '@radix-ui/react-dialog': '>=1.1'
+      '@radix-ui/react-dropdown-menu': '>=2.1'
+      '@radix-ui/react-popover': '>=1.1'
+      class-variance-authority: '>=0.7'
+      clsx: '>=2'
+      lucide-react: '>=0.5'
+      react: '>=19'
+      react-dom: '>=19'
+      tailwind-merge: '>=3'
+      tw-animate-css: '>=1'
+    peerDependenciesMeta:
+      '@radix-ui/react-dialog':
+        optional: true
+      '@radix-ui/react-dropdown-menu':
+        optional: true
+      '@radix-ui/react-popover':
+        optional: true
+      class-variance-authority:
+        optional: true
+      clsx:
+        optional: true
+      lucide-react:
+        optional: true
+      react:
+        optional: true
+      react-dom:
+        optional: true
+      tailwind-merge:
+        optional: true
+      tw-animate-css:
+        optional: true
 
   '@undp/data-viz@2.2.3':
     resolution: {integrity: sha512-KKh0H7EE1wSJi2KooUPP/vvW4tSFucxZE8ZCna4l+gHP6gBG13+iEtlsl4+oUGyj6RSQDc/A93yDBsgFUReaHQ==}
@@ -5030,6 +5069,19 @@ snapshots:
     dependencies:
       '@typescript-eslint/types': 8.54.0
       eslint-visitor-keys: 4.2.1
+
+  '@un-eosg/ui@https://codeload.github.com/UN-EOSG-Analytics/ui/tar.gz/55df6ea1bfd397c11e0e5a101d07dea418bc28c4(@radix-ui/react-dialog@1.1.15(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@radix-ui/react-dropdown-menu@2.1.16(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(@radix-ui/react-popover@1.1.15(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0))(class-variance-authority@0.7.1)(clsx@2.1.1)(lucide-react@0.555.0(react@19.2.0))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-merge@3.4.0)(tw-animate-css@1.4.0)':
+    optionalDependencies:
+      '@radix-ui/react-dialog': 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@radix-ui/react-dropdown-menu': 2.1.16(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      '@radix-ui/react-popover': 1.1.15(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      class-variance-authority: 0.7.1
+      clsx: 2.1.1
+      lucide-react: 0.555.0(react@19.2.0)
+      react: 19.2.0
+      react-dom: 19.2.0(react@19.2.0)
+      tailwind-merge: 3.4.0
+      tw-animate-css: 1.4.0
 
   '@undp/data-viz@2.2.3(@undp/design-system-react@1.5.5(@types/react-dom@19.2.3(@types/react@19.2.10))(@types/react@19.2.10)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(supports-color@7.2.0)(tailwindcss@4.1.18))(handlebars@4.7.8)(marked@17.0.1)(math-expression-evaluator@2.0.7)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(tailwind-animate@0.2.10)(tailwind-merge@3.4.0)(tailwindcss-animate@1.0.7(tailwindcss@4.1.18))':
     dependencies:

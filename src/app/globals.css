@@ -9,6 +9,7 @@
 /* Import Tailwind CSS v4 - provides all utility classes and base styles */
 @import "tailwindcss";
 @import "tw-animate-css";
+@import "@un-eosg/ui/theme.css";
 
 /**
  * Root-level CSS Variables (Application Theme Tokens)

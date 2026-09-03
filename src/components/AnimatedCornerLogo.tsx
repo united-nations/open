@@ -1,70 +1,22 @@
 "use client";
 
-import Image from "next/image";
+import { AnimatedCornerLogo as UiAnimatedCornerLogo } from "@un-eosg/ui/components/animated-corner-logo";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export function AnimatedCornerLogo() {
   const pathname = usePathname();
-  // The System Financials home is available at both `/` and `/system/`.
-  const isHome =
-    pathname === "/" || pathname === "/system" || pathname === "/system/";
+  // The corner logo belongs only on Open's root homepage.
+  const isHome = pathname === "/";
 
-  // Always start hidden to prevent flash
-  const [cornerClass, setCornerClass] = useState("corner-slide-hidden");
-  const [spriteClass, setSpriteClass] = useState("un-two-zero-roll-hidden");
-
-  useEffect(() => {
-    // Only animate on home page
-    if (!isHome) return;
-
-    // On home page, start the animation sequence
-    const cornerTimer = setTimeout(() => {
-      setCornerClass("corner-slide-entrance");
-    }, 1500);
-
-    // Sprite rolls in shortly after corner starts (200ms after corner -> 1700ms total)
-    const spriteTimer = setTimeout(() => {
-      setSpriteClass("un-two-zero-roll-entrance");
-    }, 1200);
-
-    return () => {
-      clearTimeout(cornerTimer);
-      clearTimeout(spriteTimer);
-    };
-  }, [isHome]);
-
-  // Only render on main page
   if (!isHome) return null;
 
   return (
-    <div>
-      <a
-        href="https://un-two-zero.network/"
-        target="_blank"
-        rel="noopener noreferrer"
-        className={`fixed bottom-0 left-0 z-30 hidden cursor-pointer transition-opacity hover:opacity-80 md:block ${cornerClass}`}
-        aria-label="Visit UN 2.0 Network"
-      >
-        {/* Base corner logo */}
-        <Image
-          src="/images/un-two-zero-corner.svg"
-          alt="UN 2.0 Corner Logo"
-          width={123}
-          height={123}
-          className="block"
-        />
-        {/* UN20 Animation Sprite on top */}
-        <div className="absolute inset-0 flex items-center justify-start pt-2 pl-3">
-          <Image
-            src="/images/un-two-zero-logo-quintets.svg"
-            alt="UN 2.0 Animation"
-            width={31}
-            height={29}
-            className={`block ${spriteClass}`}
-          />
-        </div>
-      </a>
-    </div>
+    <UiAnimatedCornerLogo
+      label="Visit UN 2.0 Network"
+      href="https://un-two-zero.network/"
+      src={`${basePath}/images/un-two-zero-corner.svg`}
+    />
   );
 }
