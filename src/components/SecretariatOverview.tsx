@@ -199,8 +199,6 @@ export function SecretariatOverview() {
     );
   }
 
-  const listedPriorities = priorityTotals.map((item) => item.key);
-
   return (
     <div className="w-full">
       <div className="mb-6">
@@ -221,69 +219,56 @@ export function SecretariatOverview() {
         />
       </div>
 
-      <div className="mb-10 grid gap-8 md:grid-cols-2 md:items-start">
-        <div>
-          <h3 className="mb-3 text-sm font-semibold tracking-wide text-gray-600 uppercase">
-            Priority areas
-          </h3>
-          <ul className="space-y-2">
-            {listedPriorities.map((name) => (
-              <li key={name} className="flex items-start gap-2.5">
-                <span
-                  className="mt-1.5 size-2.5 shrink-0 rounded-sm"
-                  style={{ backgroundColor: priorityAreaColor(name) }}
-                  aria-hidden="true"
-                />
-                <p className="text-sm text-gray-900">{name}</p>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="mb-3 text-sm font-semibold tracking-wide text-gray-600 uppercase">
-            Spending by priority area
-          </h3>
-          <div
-            className="relative h-72 w-full overflow-hidden bg-gray-100 md:h-80"
-            role="img"
-            aria-label="Secretariat expenses by priority area"
-          >
-            {priorityRects.map((rect) => {
-              const total =
-                priorityTotals.find((item) => item.key === rect.key)?.total ??
-                0;
-              const color = priorityAreaColor(rect.key);
-              const showLabel = rect.width > 12 && rect.height > 10;
-              return (
-                <div
-                  key={rect.key}
-                  className="absolute overflow-hidden text-white"
-                  title={`${rect.key}: ${formatBudget(total)}`}
-                  style={{
-                    left: `${rect.x}%`,
-                    top: `${rect.y}%`,
-                    width: `${rect.width}%`,
-                    height: `${rect.height}%`,
-                    backgroundColor: color,
-                    boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.85)",
-                  }}
-                >
-                  {showLabel && (
-                    <div className="p-2">
-                      <div className="text-[11px] leading-tight font-semibold sm:text-xs">
-                        {rect.key}
-                      </div>
-                      <div className="mt-0.5 text-[10px] leading-tight opacity-90">
-                        {formatBudget(total)}
-                      </div>
+      <div className="mb-10">
+        <h3 className="mb-3 text-sm font-semibold tracking-wide text-gray-600 uppercase">
+          Spending by priority area
+        </h3>
+        <div
+          className="relative h-72 w-full overflow-hidden bg-gray-100 md:h-80"
+          role="img"
+          aria-label="Secretariat expenses by priority area"
+          aria-describedby="secretariat-priority-area-values"
+        >
+          {priorityRects.map((rect) => {
+            const total =
+              priorityTotals.find((item) => item.key === rect.key)?.total ?? 0;
+            const color = priorityAreaColor(rect.key);
+            const showLabel = rect.width > 12 && rect.height > 10;
+            return (
+              <div
+                key={rect.key}
+                className="absolute overflow-hidden text-white"
+                title={`${rect.key}: ${formatBudget(total)}`}
+                style={{
+                  left: `${rect.x}%`,
+                  top: `${rect.y}%`,
+                  width: `${rect.width}%`,
+                  height: `${rect.height}%`,
+                  backgroundColor: color,
+                  boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.85)",
+                }}
+              >
+                {showLabel && (
+                  <div className="p-2">
+                    <div className="text-[11px] leading-tight font-semibold sm:text-xs">
+                      {rect.key}
                     </div>
-                  )}
-                </div>
-              );
-            })}
-          </div>
+                    <div className="mt-0.5 text-[10px] leading-tight opacity-90">
+                      {formatBudget(total)}
+                    </div>
+                  </div>
+                )}
+              </div>
+            );
+          })}
         </div>
+        <ul id="secretariat-priority-area-values" className="sr-only">
+          {priorityTotals.map((item) => (
+            <li key={item.key}>
+              {item.key}: {formatBudget(item.total)}
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div className="mb-3 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">

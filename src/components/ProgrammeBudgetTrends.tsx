@@ -56,14 +56,15 @@ const formatYAxis = (value: number) => {
 };
 
 function regularBudgetAmount(data: BudgetData): number {
-  const root = data.nodes.find((node) => node.parentId === null) ?? data.nodes[0];
+  const root =
+    data.nodes.find((node) => node.parentId === null) ?? data.nodes[0];
   return root?.values?.regular_budget ?? 0;
 }
 
 export function ProgrammeBudgetTrends() {
-  const [points, setPoints] = useState<
-    Array<Record<string, number | string | null>> | null
-  >(null);
+  const [points, setPoints] = useState<Array<
+    Record<string, number | string | null>
+  > | null>(null);
 
   useEffect(() => {
     let active = true;
@@ -76,7 +77,10 @@ export function ProgrammeBudgetTrends() {
     Promise.all(jobs)
       .then((rows) => {
         if (!active) return;
-        const byYear = new Map<number, Record<string, number | string | null>>();
+        const byYear = new Map<
+          number,
+          Record<string, number | string | null>
+        >();
         for (const year of new Set(rows.map((row) => row.year))) {
           byYear.set(year, {
             year: String(year),
@@ -105,7 +109,10 @@ export function ProgrammeBudgetTrends() {
   }, []);
 
   const hasData = useMemo(
-    () => (points ?? []).some((point) => METRICS.some((metric) => point[metric.key] !== null)),
+    () =>
+      (points ?? []).some((point) =>
+        METRICS.some((metric) => point[metric.key] !== null),
+      ),
     [points],
   );
 
@@ -119,7 +126,7 @@ export function ProgrammeBudgetTrends() {
   if (!hasData) return null;
 
   return (
-    <div className="mt-10">
+    <div className="mt-10 w-full lg:w-1/2 lg:pe-3">
       <h3 className="mb-3 text-lg font-medium text-gray-900">
         Regular budget over time
       </h3>

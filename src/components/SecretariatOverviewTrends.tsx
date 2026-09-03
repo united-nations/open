@@ -2,30 +2,15 @@
 
 import { useEffect, useMemo, useState } from "react";
 import {
-  CartesianGrid,
-  Line,
-  LineChart,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
-import { FinancingInstrumentChart } from "@/components/charts/FinancingInstrumentChart";
+  FinancingInstrumentChart,
+  type FinancingInstrumentDataPoint,
+  type FinancingSeries,
+} from "@/components/charts/FinancingInstrumentChart";
 import { loadYearData } from "@/lib/data";
-import { formatBudget } from "@/lib/entities";
 import { FUNDING_SOURCE_TREND_SERIES } from "@/components/SidebarStackedTrend";
 import { priorityAreaColor } from "@/lib/secretariatGroupings";
 import { useYearRanges } from "@/lib/useYearRanges";
-import type {
-  BudgetFundingSource,
-  SecretariatOverviewData,
-} from "@/types";
-
-const formatYAxis = (value: number) => {
-  if (value >= 1e9) return `$${(value / 1e9).toFixed(0)}B`;
-  if (value >= 1e6) return `$${(value / 1e6).toFixed(0)}M`;
-  return `$${value}`;
-};
+import type { BudgetFundingSource, SecretariatOverviewData } from "@/types";
 
 export function SecretariatOverviewTrends() {
   const years = useYearRanges().secretariatOverview.years;
@@ -64,7 +49,7 @@ export function SecretariatOverviewTrends() {
   const priorityData = useMemo(() => {
     if (!series) return [];
     return series.map((row) => {
-      const point: Record<string, number | string> = {
+      const point: FinancingInstrumentDataPoint = {
         year: String(row.meta.year),
       };
       const amounts = new Map<string, number>();
@@ -82,6 +67,16 @@ export function SecretariatOverviewTrends() {
       return point;
     });
   }, [priorities, series]);
+
+  const prioritySeries = useMemo<FinancingSeries[]>(
+    () =>
+      priorities.map((name) => ({
+        key: name,
+        label: name,
+        color: priorityAreaColor(name),
+      })),
+    [priorities],
+  );
 
   const fundingData = useMemo(() => {
     if (!series) return [];
@@ -118,65 +113,16 @@ export function SecretariatOverviewTrends() {
 
   return (
     <div className="mt-10">
-      <h3 className="mb-4 text-lg font-medium text-gray-900">
-        Explore trends
-      </h3>
+      <h3 className="mb-4 text-lg font-medium text-gray-900">Explore trends</h3>
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-6">
         <div className="flex flex-col">
           <h4 className="mb-3 text-sm font-medium text-gray-700">
             Spending by priority area
           </h4>
-          <div className="h-[280px] w-full">
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart
-                data={priorityData}
-                margin={{ top: 20, right: 5, left: 5, bottom: 5 }}
-              >
-                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                <XAxis
-                  dataKey="year"
-                  tick={{ fontSize: 12 }}
-                  tickLine={false}
-                  axisLine={{ stroke: "#e5e7eb" }}
-                />
-                <YAxis
-                  orientation="right"
-                  width={1}
-                  tick={{ fontSize: 11, fill: "#6b7280", dx: -5, dy: -8 }}
-                  tickLine={false}
-                  axisLine={false}
-                  domain={[0, "auto"]}
-                  tickFormatter={formatYAxis}
-                  mirror
-                />
-                <Tooltip
-                  shared={false}
-                  formatter={(value, name) => [
-                    typeof value === "number" ? formatBudget(value) : "N/A",
-                    String(name),
-                  ]}
-                  labelFormatter={(label) => `Year: ${label}`}
-                  contentStyle={{
-                    backgroundColor: "white",
-                    border: "1px solid #e5e7eb",
-                    borderRadius: "4px",
-                    fontSize: "12px",
-                  }}
-                />
-                {priorities.map((name) => (
-                  <Line
-                    key={name}
-                    type="monotone"
-                    dataKey={name}
-                    stroke={priorityAreaColor(name)}
-                    strokeWidth={2}
-                    dot={false}
-                    activeDot={{ r: 4, strokeWidth: 0 }}
-                  />
-                ))}
-              </LineChart>
-            </ResponsiveContainer>
-          </div>
+          <FinancingInstrumentChart
+            data={priorityData}
+            series={prioritySeries}
+          />
         </div>
         <div className="flex flex-col">
           <h4 className="mb-3 text-sm font-medium text-gray-700">

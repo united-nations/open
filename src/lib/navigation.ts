@@ -19,7 +19,6 @@ export const SYSTEM_NAV = [
 
 export const SECRETARIAT_NAV = [
   { href: "/secretariat", label: "Overview" },
-  { href: "/secretariat/contributors", label: "Contributors" },
   { href: "/secretariat/programme-budget", label: "Programme Budget" },
   { href: "/secretariat/peacekeeping-budget", label: "Peacekeeping Budget" },
   { href: "/secretariat/field-missions", label: "Field Missions" },

@@ -1,5 +1,4 @@
 import { ExpandableCard } from "@/components/ExpandableCard";
-import { SHOW_TRUST_FUNDS } from "@/lib/featureFlags";
 
 export function Methodology({ children }: { children: React.ReactNode }) {
   return (
@@ -208,39 +207,40 @@ export function SecretariatOverviewMethodologyNotes() {
   );
 }
 
-export function SecretariatContributorsMethodologyNotes() {
+export function ProgrammeBudgetContributorsMethodologyNotes() {
   return (
-    <>
-      <h4 className="font-medium text-gray-900">Programme Budget</h4>
-      <p>
-        Contribution amounts come from annual assessment circulars; paid-in-full
-        status and dates come from the UN regular-budget honour roll, with
-        assessment rates checked against the historical scale of assessments.
-        The payment timeline adds a Member State&apos;s full assessment on the
-        date it appears as paid in full. Partial payments are not available from
-        the honour roll and are therefore not estimated.
-      </p>
-      <h4 className="font-medium text-gray-900">Peacekeeping Budget</h4>
-      <p>
-        Assessed contributions come from the mission-by-mission assessment
-        circulars indexed by the UN Committee on Contributions. Assessment
-        sections are added and prior-period credit sections are subtracted. The
-        result shows amounts assessed, not payments received or outstanding
-        balances. Source-level exceptions identified during reconciliation are
-        disclosed with the chart and retained in the exported data.
-      </p>
-      {SHOW_TRUST_FUNDS && (
-        <>
-          <h4 className="font-medium text-gray-900">Trust Funds</h4>
-          <p>
-            Recognized contributions come from audited Schedules of Individual
-            Trust Funds. Entity grouping uses a reconstructed historical
-            crosswalk; it identifies the entity responsible for a fund, not a
-            direct link between a contributor and a particular expense.
-          </p>
-        </>
-      )}
-    </>
+    <p>
+      Contribution amounts come from annual assessment circulars; paid-in-full
+      status and dates come from the UN regular-budget honour roll, with
+      assessment rates checked against the historical scale of assessments. The
+      payment timeline adds a Member State&apos;s full assessment on the date it
+      appears as paid in full. Partial payments are not available from the
+      honour roll and are therefore not estimated.
+    </p>
+  );
+}
+
+export function PeacekeepingContributorsMethodologyNotes() {
+  return (
+    <p>
+      Assessed contributions come from the mission-by-mission assessment
+      circulars indexed by the UN Committee on Contributions. Assessment
+      sections are added and prior-period credit sections are subtracted. The
+      result shows amounts assessed, not payments received or outstanding
+      balances. Source-level exceptions identified during reconciliation are
+      disclosed with the chart and retained in the exported data.
+    </p>
+  );
+}
+
+export function TrustFundContributorsMethodologyNotes() {
+  return (
+    <p>
+      Recognized contributions come from audited Schedules of Individual Trust
+      Funds. Entity grouping uses a reconstructed historical crosswalk; it
+      identifies the entity responsible for a fund, not a direct link between a
+      contributor and a particular expense.
+    </p>
   );
 }
 
