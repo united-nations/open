@@ -14,6 +14,7 @@ portal's ``budget-pko-{year}.json`` convention:
     public/data/peacekeeping-contributors-2022.json  # 2022/23
     public/data/peacekeeping-contributors-2023.json  # 2023/24
     public/data/peacekeeping-contributors-2024.json  # 2024/25
+    public/data/peacekeeping-contributors-2025.json  # 2025/26
 
 The exported amount is the sum of the circulars' rightmost ``Net assessment``
 column after subtracting ``Net credit`` sections.  For the United States, that
@@ -32,21 +33,23 @@ from urllib.parse import urlencode
 
 import pymupdf
 import requests
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup, NavigableString
 
 OUT = Path("public/data")
 USER_AGENT = {"User-Agent": "UN Transparency Portal data pipeline"}
 
 ASSESSMENTS_PAGE_URL = "https://www.un.org/en/ga/contributions/peacekeeping.shtml"
+PRIOR_ASSESSMENTS_PAGE_URL = "https://www.un.org/en/ga/contributions/prior.shtml"
 DOCUMENT_API_URL = "https://documents.un.org/api/symbol/access"
 
 CYCLES = {
     2022: "1 July 2022 to 30 June 2023",
     2023: "1 July 2023 to 30 June 2024",
     2024: "1 July 2024 to 30 June 2025",
+    2025: "1 July 2025 to 30 June 2026",
 }
 
-EXPECTED_MISSIONS = {
+HISTORICAL_MISSIONS = {
     "MINURSO",
     "MINUSCA",
     "MINUSMA",
@@ -60,14 +63,45 @@ EXPECTED_MISSIONS = {
     "UNSOS",
 }
 
+EXPECTED_MISSIONS = {
+    2022: HISTORICAL_MISSIONS,
+    2023: HISTORICAL_MISSIONS,
+    2024: HISTORICAL_MISSIONS,
+    2025: {
+        "MINURSO",
+        "MINUSCA",
+        "MONUSCO",
+        "UNDOF",
+        "UNFICYP",
+        "UNIFIL",
+        "UNISFA",
+        "UNMIK",
+        "UNMISS",
+        "UNSOH",
+        "UNSOS",
+    },
+}
+
+MISSION_NAME_OVERRIDES = {
+    # The prior-year HTML label accidentally omits "Stabilization" even though
+    # the linked statement PDFs print the mission's full official name.
+    "MINUSCA": (
+        "United Nations Multidimensional Integrated Stabilization Mission "
+        "in the Central African Republic"
+    ),
+}
+
 COUNTRY_ALIASES = {
     "Cote d'Ivoire": "Côte d'Ivoire",
     "Côte d’Ivoire": "Côte d'Ivoire",
+    "Bolivia": "Bolivia (Plurinational State of)",
     "Micronesia (Federated States of)": "Micronesia (Federated States of)",
+    "Micronesia": "Micronesia (Federated States of)",
     "Netherlands (Kingdom of the)": "Netherlands",
     "Netherlands (Kingdom of the)b": "Netherlands",
     "Netherlands (Kingdom of the)c": "Netherlands",
     "Turkey": "Türkiye",
+    "Syria": "Syrian Arab Republic",
     "Türkiye": "Türkiye",
     "Türkiyeb": "Türkiye",
 }
@@ -81,15 +115,25 @@ WRAPPED_COUNTRY_PREFIXES = {
 
 
 @dataclass(frozen=True)
+class StatementDocument:
+    period: str
+    symbol: str
+    url: str
+
+
+@dataclass(frozen=True)
 class Circular:
     cycle_year: int
     period: str
     mission_code: str
     mission_name: str
     symbol: str
+    statement_documents: tuple[StatementDocument, ...] = ()
 
     @property
     def url(self) -> str:
+        if self.statement_documents:
+            return PRIOR_ASSESSMENTS_PAGE_URL
         query = urlencode({"l": "en", "s": self.symbol, "t": "pdf"})
         return f"{DOCUMENT_API_URL}?{query}"
 
@@ -119,10 +163,79 @@ def mission_code(heading: str) -> str:
     return match.group(1)
 
 
+def discover_prior_circulars() -> list[Circular]:
+    """Discover the prior cycle's statement PDFs from its list-based index."""
+    soup = BeautifulSoup(fetch(PRIOR_ASSESSMENTS_PAGE_URL).text, "html.parser")
+    heading = next(
+        (
+            item
+            for item in soup.find_all("h5")
+            if compact(item.get_text(" ", strip=True)) == "Peacekeeping Operations"
+        ),
+        None,
+    )
+    mission_list = heading.find_next_sibling("ul") if heading else None
+    if mission_list is None:
+        raise ValueError("Prior assessment index has no peacekeeping mission list")
+
+    circulars: list[Circular] = []
+    for item in mission_list.find_all("li"):
+        # The source HTML has several unclosed outer <li> elements. Reading
+        # only direct text nodes identifies each mission reliably without
+        # accidentally attaching later missions' statement links.
+        label = compact(
+            " ".join(
+                str(child) for child in item.contents if isinstance(child, NavigableString)
+            )
+        )
+        match = re.search(
+            r"Assessment of Member States' contributions for the\s+financing of\s+"
+            r"(?:the\s+)?(.+?)\s+\(([A-Z]+)\)\s*$",
+            label,
+        )
+        if not match:
+            continue
+        name, code = match.groups()
+        statement_list = item.find("ul", recursive=False)
+        if statement_list is None:
+            raise ValueError(f"{code} has no statement-document list")
+
+        documents: list[StatementDocument] = []
+        for link in statement_list.find_all("a"):
+            parent_text = compact(link.parent.get_text(" ", strip=True))
+            symbol_match = re.search(r"ST/ADM/SER\.B/\d+", parent_text, re.IGNORECASE)
+            if not symbol_match:
+                raise ValueError(f"{code} statement link has no circular symbol")
+            documents.append(
+                StatementDocument(
+                    period=compact(link.get_text(" ", strip=True)),
+                    symbol=symbol_match.group(0).upper(),
+                    url=requests.utils.requote_uri(
+                        requests.compat.urljoin(PRIOR_ASSESSMENTS_PAGE_URL, link["href"])
+                    ),
+                )
+            )
+
+        symbols = {document.symbol for document in documents}
+        if len(symbols) != 1:
+            raise ValueError(f"{code} statement links disagree on symbol: {sorted(symbols)}")
+        circulars.append(
+            Circular(
+                cycle_year=2025,
+                period=CYCLES[2025],
+                mission_code=code,
+                mission_name=MISSION_NAME_OVERRIDES.get(code, name),
+                symbol=symbols.pop(),
+                statement_documents=tuple(documents),
+            )
+        )
+    return circulars
+
+
 def discover_circulars() -> dict[int, list[Circular]]:
     """Discover the target cycles from the official assessment index."""
     soup = BeautifulSoup(fetch(ASSESSMENTS_PAGE_URL).text, "html.parser")
-    by_period = {period: year for year, period in CYCLES.items()}
+    by_period = {period: year for year, period in CYCLES.items() if year < 2025}
     result: dict[int, list[Circular]] = {year: [] for year in CYCLES}
 
     for heading in soup.find_all("h5"):
@@ -153,12 +266,15 @@ def discover_circulars() -> dict[int, list[Circular]]:
                 )
             )
 
+    result[2025] = discover_prior_circulars()
+
     for year, circulars in result.items():
         codes = [circular.mission_code for circular in circulars]
         symbols = [circular.symbol for circular in circulars]
-        if set(codes) != EXPECTED_MISSIONS:
-            missing = sorted(EXPECTED_MISSIONS - set(codes))
-            extra = sorted(set(codes) - EXPECTED_MISSIONS)
+        expected = EXPECTED_MISSIONS[year]
+        if set(codes) != expected:
+            missing = sorted(expected - set(codes))
+            extra = sorted(set(codes) - expected)
             raise ValueError(f"{year} mission index mismatch; missing={missing}, extra={extra}")
         if len(codes) != len(set(codes)):
             raise ValueError(f"{year} mission index contains duplicate mission codes")
@@ -280,8 +396,285 @@ def parse_section_total(words: list[tuple]) -> dict | None:
     }
 
 
+def parse_statement_amount(value: str) -> int | None:
+    """Parse a monetary token in the compact Umoja statement layout."""
+    token = value.strip()
+    if token in {"-", "–", "—"}:
+        return 0
+    if not re.fullmatch(r"\(?[\d,]+\)?", token):
+        return None
+    negative = token.startswith("(") and token.endswith(")")
+    amount = int(re.sub(r"[^0-9]", "", token))
+    return -amount if negative else amount
+
+
+def parse_statement_member_row(words: list[tuple]) -> dict | None:
+    """Parse one row from the 2025/26 Umoja assessment statements.
+
+    The 20 source PDFs use several horizontal layouts, so their semantic token
+    order is more stable than fixed x-coordinate bands: country, level, three
+    percentage fields, then gross/staff/net amounts. The United States row
+    replaces its staff amount with an ``a/`` footnote marker, hence gross and
+    net are selected as the first and last monetary tokens.
+    """
+    tokens = [word[4] for word in words]
+    level_index = next(
+        (
+            index
+            for index, token in enumerate(tokens)
+            if re.fullmatch(r"[A-J](?:\d)?", token)
+        ),
+        None,
+    )
+    if level_index is None or level_index == 0:
+        return None
+
+    rate_indexes = [
+        index
+        for index, token in enumerate(tokens[level_index + 1 :], level_index + 1)
+        if re.fullmatch(r"\d+\.\d+", token)
+    ]
+    if len(rate_indexes) != 3 or rate_indexes != list(
+        range(rate_indexes[0], rate_indexes[0] + 3)
+    ):
+        return None
+
+    amounts = [
+        parsed
+        for token in tokens[rate_indexes[-1] + 1 :]
+        if (parsed := parse_statement_amount(token)) is not None
+    ]
+    if len(amounts) < 2:
+        return None
+    return {
+        "name": canonical_country(" ".join(tokens[:level_index])),
+        "regular_budget_rate": float(tokens[rate_indexes[0]]),
+        "peacekeeping_rate": float(tokens[rate_indexes[2]]),
+        "gross": amounts[0],
+        "net": amounts[-1],
+        "basis": "printed_member_state_row",
+    }
+
+
+def parse_statement_total(words: list[tuple]) -> dict | None:
+    """Parse a statement's final unlabelled gross/staff/net total row."""
+    tokens = [word[4] for word in words]
+    if any(re.fullmatch(r"[A-J](?:\d)?", token) for token in tokens):
+        return None
+    if any(re.fullmatch(r"\d+\.\d+", token) for token in tokens):
+        return None
+    amounts = [
+        parsed
+        for token in tokens
+        if (parsed := parse_statement_amount(token)) is not None
+    ]
+    if len(amounts) != 3:
+        return None
+    return {"gross": amounts[0], "net": amounts[-1]}
+
+
+def parse_statement_document(
+    circular: Circular, source: StatementDocument, heading_offset: int
+) -> list[dict]:
+    """Parse every assessment/credit statement in one linked 2025/26 PDF."""
+    response = fetch(source.url)
+    document = pymupdf.open(stream=response.content, filetype="pdf")
+    first_page = compact(document[0].get_text())
+    # Several source sheets leave the Mission field blank, omit the acronym,
+    # or use a slightly different expansion of it. The document ID is printed
+    # consistently and is also repeated beside every link on the source index.
+    if circular.symbol not in first_page:
+        raise ValueError(
+            f"{source.url} title does not match {circular.mission_code} {circular.symbol}"
+        )
+
+    sections: list[dict] = []
+    current: dict | None = None
+    for page_number, page in enumerate(document, 1):
+        page_text = compact(page.get_text())
+        if "Mission:" in page_text:
+            mandate_text = page_text.split("Mandate:", 1)[-1].split("Rates:", 1)[0]
+            dates = re.findall(r"\d{1,2}-[A-Za-z]{3}-\d{4}", mandate_text)
+            if not dates:
+                raise ValueError(f"{source.url} page {page_number} has no mandate date")
+            # Credit sheets describe only the historical balance cutoff rather
+            # than a from/to assessment range. Keep that semantic fallback in
+            # addition to the heading because not every rendered sheet exposes
+            # the heading consistently to text extraction.
+            kind = (
+                "credit"
+                if "CREDIT FROM" in page_text or len(dates) == 1
+                else "assessment"
+            )
+            statement_period = " to ".join(dates)
+            current = {
+                "heading": chr(ord("A") + heading_offset + len(sections)),
+                "label": (
+                    f"Credit at {statement_period}"
+                    if kind == "credit"
+                    else f"Assessment for {statement_period}"
+                ),
+                "kind": kind,
+                "rows": [],
+                "pages": [],
+                "source_total": None,
+                "source_period": source.period,
+                "statement_period": statement_period,
+                "source_url": source.url,
+            }
+            sections.append(current)
+
+        if current is None:
+            raise ValueError(f"{source.url} page {page_number} precedes its statement header")
+        current["pages"].append(page_number)
+        for words in group_words_by_line(page):
+            row = parse_statement_member_row(words)
+            if row:
+                current["rows"].append(row)
+                continue
+            source_total = parse_statement_total(words)
+            if source_total:
+                current["source_total"] = source_total
+
+    for section in sections:
+        section["source_file_page_count"] = len(document)
+    return sections
+
+
+def parse_statement_circular(circular: Circular) -> dict:
+    """Parse and aggregate the prior page's 2025/26 statement PDFs."""
+    sections: list[dict] = []
+    for source in circular.statement_documents:
+        sections.extend(parse_statement_document(circular, source, len(sections)))
+
+    reference_names: set[str] | None = None
+    signed_by_country: dict[str, dict[str, int]] = defaultdict(
+        lambda: {"gross": 0, "net": 0}
+    )
+    section_output: list[dict] = []
+    assessment_periods: set[str] = set()
+    for section in sections:
+        rows = section.pop("rows")
+        names = [row["name"] for row in rows]
+        duplicates = sorted(name for name, count in Counter(names).items() if count > 1)
+        if duplicates:
+            raise ValueError(
+                f"{circular.symbol} {section['source_period']} duplicates {duplicates}"
+            )
+        name_set = set(names)
+        if section["kind"] == "assessment":
+            if len(rows) != 193:
+                raise ValueError(
+                    f"{circular.symbol} {section['statement_period']}: expected 193 "
+                    f"states, found {len(rows)}"
+                )
+            if section["statement_period"] in assessment_periods:
+                raise ValueError(
+                    f"{circular.symbol} duplicates assessment period "
+                    f"{section['statement_period']}"
+                )
+            assessment_periods.add(section["statement_period"])
+            if reference_names is None:
+                reference_names = name_set
+            elif name_set != reference_names:
+                raise ValueError(
+                    f"{circular.symbol} assessment country set differs for "
+                    f"{section['statement_period']}"
+                )
+        elif reference_names is not None and not name_set.issubset(reference_names):
+            raise ValueError(
+                f"{circular.symbol} credit contains unknown states: "
+                f"{sorted(name_set - reference_names)}"
+            )
+
+        regular_rate_total = sum(row["regular_budget_rate"] for row in rows)
+        peacekeeping_rate_total = sum(row["peacekeeping_rate"] for row in rows)
+        if len(rows) == 193:
+            if abs(regular_rate_total - 100) > 0.001:
+                raise ValueError(
+                    f"{circular.symbol} {section['statement_period']} regular rates "
+                    f"total {regular_rate_total}"
+                )
+            if abs(peacekeeping_rate_total - 100) > 0.001:
+                raise ValueError(
+                    f"{circular.symbol} {section['statement_period']} peacekeeping "
+                    f"rates total {peacekeeping_rate_total}"
+                )
+
+        source_total = section["source_total"]
+        if source_total is None:
+            raise ValueError(
+                f"{circular.symbol} {section['statement_period']} has no total row"
+            )
+        row_gross = sum(row["gross"] for row in rows)
+        row_net = sum(row["net"] for row in rows)
+        if row_gross != source_total["gross"] or row_net != source_total["net"]:
+            raise ValueError(
+                f"{circular.symbol} {section['statement_period']} row sum does not "
+                f"match source total: rows=({row_gross}, {row_net}), "
+                f"source={source_total}"
+            )
+
+        sign = -1 if section["kind"] == "credit" else 1
+        for row in rows:
+            signed_by_country[row["name"]]["gross"] += sign * row["gross"]
+            signed_by_country[row["name"]]["net"] += sign * row["net"]
+        section_output.append(
+            {
+                **section,
+                "sign": sign,
+                "contributor_count": len(rows),
+                "omitted_zero_credit_rows": (
+                    193 - len(rows) if section["kind"] == "credit" else 0
+                ),
+                "rates_complete": True,
+                "regular_budget_rate_total": round(regular_rate_total, 4),
+                "peacekeeping_rate_total": round(peacekeeping_rate_total, 4),
+                "rate_total_matches_printed": True,
+                "rate_anomalies": [],
+                "derived_member_state_rows": [],
+                "gross": sign * row_gross,
+                "net": sign * row_net,
+            }
+        )
+
+    if reference_names is None:
+        raise ValueError(f"{circular.symbol} contains no assessment statements")
+    missing_contributors = reference_names - set(signed_by_country)
+    if missing_contributors:
+        raise ValueError(
+            f"{circular.symbol} has no ledger entries for {sorted(missing_contributors)}"
+        )
+    contributors = {
+        name: {"gross": values["gross"], "net": values["net"]}
+        for name, values in signed_by_country.items()
+    }
+    gross = sum(value["gross"] for value in contributors.values())
+    net = sum(value["net"] for value in contributors.values())
+    return {
+        "mission_code": circular.mission_code,
+        "mission_name": circular.mission_name,
+        "symbol": circular.symbol,
+        "url": circular.url,
+        "page_count": sum(
+            section["source_file_page_count"]
+            for section in section_output
+            if section["pages"][0] == 1
+        ),
+        "summary": {"gross": gross, "net_before_us_tax_credit": net},
+        "sections": section_output,
+        "statement_documents": [
+            {"period": source.period, "symbol": source.symbol, "url": source.url}
+            for source in circular.statement_documents
+        ],
+        "contributors": contributors,
+    }
+
+
 def parse_circular(circular: Circular) -> dict:
     """Parse and validate every signed Member State table in one circular."""
+    if circular.statement_documents:
+        return parse_statement_circular(circular)
     response = fetch(DOCUMENT_API_URL, params={"l": "en", "s": circular.symbol, "t": "pdf"})
     document = pymupdf.open(stream=response.content, filetype="pdf")
     first_page = compact(document[0].get_text())
@@ -555,6 +948,15 @@ def export_cycle(cycle_year: int, circulars: list[Circular]) -> dict:
                     "net_assessment": amount["net"],
                     "source_symbol": item["symbol"],
                     "source_url": item["url"],
+                    **(
+                        {
+                            "source_statement_urls": [
+                                source["url"] for source in item["statement_documents"]
+                            ]
+                        }
+                        if item.get("statement_documents")
+                        else {}
+                    ),
                 }
             )
         gross = sum(mission["gross_assessment"] for mission in missions)
@@ -573,6 +975,9 @@ def export_cycle(cycle_year: int, circulars: list[Circular]) -> dict:
     total_gross = sum(item["gross_assessment"] for item in contributors)
     total_net = sum(item["net_assessment"] for item in contributors)
     section_count = sum(len(item["sections"]) for item in parsed)
+    source_file_count = sum(
+        len(item.get("statement_documents", [])) or 1 for item in parsed
+    )
     rate_anomalies = [
         {
             "mission_code": item["mission_code"],
@@ -609,15 +1014,29 @@ def export_cycle(cycle_year: int, circulars: list[Circular]) -> dict:
             "measure": "net_assessment",
             "total_gross_assessment": total_gross,
             "total_net_assessment": total_net,
-            "source_page": ASSESSMENTS_PAGE_URL,
+            "source_page": (
+                PRIOR_ASSESSMENTS_PAGE_URL
+                if cycle_year == 2025
+                else ASSESSMENTS_PAGE_URL
+            ),
             "scope": (
-                "Mission assessment circulars indexed by the Committee on Contributions; "
-                "credits are subtracted and additional assessments are included."
+                (
+                    "Mission assessment documents indexed by the Committee on "
+                    "Contributions; credits are subtracted and split-period "
+                    "assessments are included."
+                )
+                if cycle_year == 2025
+                else (
+                    "Mission assessment circulars indexed by the Committee on "
+                    "Contributions; credits are subtracted and additional "
+                    "assessments are included."
+                )
             ),
             "coverage": {
                 "missions": len(parsed),
                 "contributors": len(contributors),
                 "table_sections": section_count,
+                **({"source_files": source_file_count} if cycle_year == 2025 else {}),
             },
             "verification": {
                 "member_states_per_section": 193,
@@ -637,6 +1056,11 @@ def export_cycle(cycle_year: int, circulars: list[Circular]) -> dict:
                     "page_count": item["page_count"],
                     "summary": item["summary"],
                     "sections": item["sections"],
+                    **(
+                        {"statement_documents": item["statement_documents"]}
+                        if item.get("statement_documents")
+                        else {}
+                    ),
                 }
                 for item in sorted(parsed, key=lambda value: value["mission_code"])
             ],

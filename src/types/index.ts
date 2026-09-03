@@ -108,6 +108,8 @@ export interface PeacekeepingMissionAssessment {
   net_assessment: number;
   source_symbol: string;
   source_url: string;
+  /** Direct statement PDFs when one circular is split across mandate periods. */
+  source_statement_urls?: string[];
 }
 
 export interface PeacekeepingContributor {

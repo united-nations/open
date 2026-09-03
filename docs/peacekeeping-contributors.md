@@ -2,13 +2,16 @@
 
 ## Scope
 
-The contributor export covers assessed contributions to the 11 peacekeeping
+The contributor export covers assessed contributions to the peacekeeping
 mission accounts indexed by the UN Committee on Contributions for the completed
-2022/23, 2023/24 and 2024/25 cycles. It does not infer contributions from the
-mission budgets and it does not include voluntary or trust-fund contributions.
+2022/23 through 2025/26 cycles. It does not infer contributions from the mission
+budgets and it does not include voluntary or trust-fund contributions.
 
 Source index:
 [Committee on Contributions — Peacekeeping](https://www.un.org/en/ga/contributions/peacekeeping.shtml).
+The 2025/26 statements are on the
+[Prior Peacekeeping Assessment Year](https://www.un.org/en/ga/contributions/prior.shtml)
+index.
 
 ## Source structure
 
@@ -55,6 +58,21 @@ therefore does not assign one annual rate to a contributor. It aggregates the
 actual amounts printed for each mission and retains the source document on each
 mission amount.
 
+The 2025/26 source is a new but more regular Umoja statement format. The prior
+assessment index exposes 20 PDF files for 11 mission accounts: most missions
+have separate links for mandate periods, and each file contains one or more
+three-page assessment or prior-period credit statements. The exporter discovers
+those links from the list-based index, collapses split mandate periods into one
+mission total, and retains every statement URL. Assessment statements contain
+all 193 Member States. The UNMIK prior-period credit legitimately contains only
+176 rows because 17 zero-credit States are omitted.
+
+The 2025/26 mission set replaces the closed MINUSMA account with the United
+Nations Support Office in Haiti (UNSOH), whose assessment begins on 1 October
+2025. Statements covering 2025 and 2026 also use separate annual scale periods;
+the export aggregates their printed dollar values rather than assigning a
+single annual rate.
+
 ## Export
 
 Run:
@@ -64,7 +82,7 @@ uv run python/14-export_peacekeeping_contributors.py
 uv run python/99-generate_manifest.py
 ```
 
-This produces `public/data/peacekeeping-contributors-{2022..2024}.json`, keyed
+This produces `public/data/peacekeeping-contributors-{2022..2025}.json`, keyed
 by the first year of the July–June cycle. Each file contains:
 
 - total gross and net assessments for the covered mission accounts;
@@ -87,6 +105,12 @@ Generation fails when:
   dollar amount implies a different rate;
 - Member State sets differ between sections or missions; or
 - signed gross rows do not reproduce the source circular's section-I total.
+
+For the 2025/26 Umoja statements, the equivalent final gate requires every
+statement's 193 assessment rows (or sparse credit rows) to reproduce its printed
+gross and net total. It also rejects duplicate assessment periods, disagreement
+between a statement link and its printed document symbol, and drift in the
+Member State set across split mandate periods.
 
 All rate exceptions and rows derived from source totals are exposed in the
 cycle-level `verification` object. The rightmost Member State value is used as

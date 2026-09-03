@@ -150,16 +150,24 @@ export function PeacekeepingContributorSidebar({
                         {mission.name}
                       </p>
                     </div>
-                    <a
-                      href={mission.source_url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={`Open ${mission.source_symbol} source for ${mission.code}`}
-                      className="inline-flex shrink-0 items-center gap-1 text-sm text-un-blue hover:underline"
-                    >
+                    <span className="inline-flex shrink-0 items-center gap-1 text-sm text-gray-900">
                       {currency(mission.net_assessment)}
-                      <ExternalLink className="h-3 w-3" />
-                    </a>
+                      {(
+                        mission.source_statement_urls ?? [mission.source_url]
+                      ).map((url, index, sources) => (
+                        <a
+                          key={url}
+                          href={url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`Open ${mission.source_symbol} source${sources.length > 1 ? ` statement ${index + 1} of ${sources.length}` : ""} for ${mission.code}`}
+                          title={`${mission.source_symbol}${sources.length > 1 ? ` · statement ${index + 1} of ${sources.length}` : ""}`}
+                          className="inline-flex text-un-blue hover:text-blue-800"
+                        >
+                          <ExternalLink className="h-3 w-3" />
+                        </a>
+                      ))}
+                    </span>
                   </div>
                   <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-gray-100">
                     <div
