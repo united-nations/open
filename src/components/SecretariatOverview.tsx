@@ -270,6 +270,13 @@ export function SecretariatOverview() {
         height={720}
         formatValue={formatBudget}
         formatAccessibleValue={formatBudget}
+        renderTooltip={({ row, leaf }) => (
+          <div className="space-y-1">
+            <p className="font-semibold">{leaf.label}</p>
+            <p>{row.label}</p>
+            <p>{formatBudget(leaf.value)}</p>
+          </div>
+        )}
         emptyContent={
           <div className="flex h-full items-center justify-center text-sm text-gray-500">
             No entities match the active filters.
@@ -299,7 +306,6 @@ export function SecretariatOverview() {
           key={`${selectedEntity.code}-${year}`}
           entity={selectedEntity}
           year={year}
-          groupLabel={current.meta.groups[selectedEntity.group].label}
           source={current.meta.source}
           selectedPriority={null}
           onClose={() => {

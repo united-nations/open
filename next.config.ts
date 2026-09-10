@@ -1,22 +1,8 @@
 import type { NextConfig } from 'next'
-import { realpathSync } from 'node:fs'
 import path from 'node:path'
 
-function commonPath(left: string, right: string) {
-    const leftRoot = path.parse(left).root
-    const rightRoot = path.parse(right).root
-    if (leftRoot !== rightRoot) {
-        throw new Error('The project and linked UI package must be on the same volume')
-    }
-    const leftParts = path.resolve(left).slice(leftRoot.length).split(path.sep)
-    const rightParts = path.resolve(right).slice(rightRoot.length).split(path.sep)
-    const divergence = leftParts.findIndex((part, index) => part !== rightParts[index])
-    const sharedParts = leftParts.slice(0, divergence === -1 ? leftParts.length : divergence)
-    return path.join(leftRoot, ...sharedParts)
-}
-
-const projectRoot = process.cwd()
-const uiPackageRoot = realpathSync(path.join(projectRoot, 'node_modules/@un-eosg/ui'))
+// The UI package is versioned inside node_modules; keep resolution in this app.
+const projectRoot = path.resolve(__dirname)
 
 // Set to your repository name for GitHub Pages, or '' for custom domain
 const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASE_PATH || '') : ''
@@ -27,7 +13,7 @@ const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASE_PATH 
 const nextConfig: NextConfig = {
     transpilePackages: ['@un-eosg/ui'],
     turbopack: {
-        root: commonPath(projectRoot, uiPackageRoot),
+        root: projectRoot,
     },
     output: 'export',
     trailingSlash: true,

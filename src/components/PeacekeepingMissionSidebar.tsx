@@ -38,7 +38,6 @@ interface CostItem {
 export interface PeacekeepingMissionSidebarProps {
   code: string;
   name: string;
-  kindLabel: string;
   locationLabel: string | null;
   fiscalYear: string;
   total: number | null;
@@ -107,7 +106,6 @@ function CostClassBreakdownRow({
 export function PeacekeepingMissionSidebar({
   code,
   name,
-  kindLabel,
   locationLabel,
   fiscalYear,
   total,
@@ -208,8 +206,7 @@ export function PeacekeepingMissionSidebar({
               {code}
             </h2>
             <p className="mt-1 text-sm text-gray-600">
-              {kindLabel}
-              {locationLabel ? ` · ${locationLabel}` : ""} · {fiscalYear}
+              {locationLabel ? `${locationLabel} · ` : ""}{fiscalYear}
             </p>
           </div>
           <SidebarControls

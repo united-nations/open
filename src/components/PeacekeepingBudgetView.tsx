@@ -465,8 +465,7 @@ export function PeacekeepingBudgetView() {
                     fontSize: "12px",
                   }}
                 >
-                  {KIND_LABEL[point.data.kind]}
-                  {point.data.location ? ` · ${point.data.location.area}` : ""}
+                  {point.data.location?.area}
                 </p>
                 <p
                   style={{
@@ -513,13 +512,6 @@ export function PeacekeepingBudgetView() {
             key={selectedCode}
             code={selectedCode}
             name={selectedRow?.name ?? selectedLocation?.name ?? selectedCode}
-            kindLabel={
-              selectedRow
-                ? KIND_LABEL[selectedRow.kind]
-                : selectedLocation?.kind === "support"
-                  ? KIND_LABEL.support
-                  : KIND_LABEL.pko
-            }
             locationLabel={
               selectedRow?.location?.area ?? selectedLocation?.area ?? null
             }

@@ -46,7 +46,6 @@ const FUNDING_COLORS: Record<SecretariatFundingSource, string> = {
 interface SecretariatEntitySidebarProps {
   entity: SecretariatOverviewEntity;
   year: number;
-  groupLabel: string;
   source: SecretariatOverviewData["meta"]["source"];
   selectedPriority: string | null;
   onClose: () => void;
@@ -55,7 +54,6 @@ interface SecretariatEntitySidebarProps {
 interface DisplayedEntity {
   entity: SecretariatOverviewEntity;
   year: number;
-  groupLabel: string;
   source: SecretariatOverviewData["meta"]["source"];
 }
 
@@ -84,7 +82,6 @@ function fundingAmounts(entity: SecretariatOverviewEntity) {
 export function SecretariatEntitySidebar({
   entity,
   year,
-  groupLabel,
   source,
   selectedPriority,
   onClose,
@@ -94,7 +91,6 @@ export function SecretariatEntitySidebar({
   const [displayed, setDisplayed] = useState<DisplayedEntity>({
     entity,
     year,
-    groupLabel,
     source,
   });
   const [requestedYear, setRequestedYear] = useState<number | null>(null);
@@ -139,7 +135,6 @@ export function SecretariatEntitySidebar({
         setDisplayed({
           entity: match,
           year: requestedYear,
-          groupLabel: data.meta.groups[match.group].label,
           source: data.meta.source,
         });
         setYearError(null);
@@ -326,11 +321,6 @@ export function SecretariatEntitySidebar({
               onClose={close}
               closeLabel="Close entity details"
             />
-          }
-          metadata={
-            <span className="text-sm text-gray-600">
-              {displayed.groupLabel}
-            </span>
           }
           total={{
             label: "Total expenses",
