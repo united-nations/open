@@ -3,12 +3,10 @@ import { PeacekeepingBudgetView } from "@/components/PeacekeepingBudgetView";
 import {
   Methodology,
   PeacekeepingBudgetMethodologyNotes,
-  PeacekeepingContributorsMethodologyNotes,
   SecretariatMethodology,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
-import { PeacekeepingContributorsTreemap } from "@/components/PeacekeepingContributorsTreemap";
 
 export const metadata: Metadata = {
   title: "UN Peacekeeping Budget",
@@ -27,18 +25,9 @@ export default function PeacekeepingBudgetPage() {
       <PageBody>
         <PeacekeepingBudgetView />
       </PageBody>
-      <PageHeading
-        id="peacekeeping-contributors"
-        title="Who contributes to peacekeeping missions?"
-        description="Assessed contributions to UN peacekeeping operations."
-      />
-      <PageBody>
-        <PeacekeepingContributorsTreemap />
-      </PageBody>
       <Methodology>
         <SecretariatMethodology />
         <PeacekeepingBudgetMethodologyNotes />
-        <PeacekeepingContributorsMethodologyNotes />
       </Methodology>
     </>
   );

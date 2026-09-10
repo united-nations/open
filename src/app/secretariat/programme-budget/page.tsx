@@ -2,12 +2,10 @@ import type { Metadata } from "next";
 import {
   Methodology,
   ProgrammeBudgetMethodologyNotes,
-  ProgrammeBudgetContributorsMethodologyNotes,
   SecretariatMethodology,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
-import { RegularBudgetContributorsTreemap } from "@/components/RegularBudgetContributorsTreemap";
 import { RegularBudgetView } from "@/components/RegularBudgetView";
 
 export const metadata: Metadata = {
@@ -27,18 +25,9 @@ export default function ProgrammeBudgetPage() {
       <PageBody>
         <RegularBudgetView />
       </PageBody>
-      <PageHeading
-        id="programme-budget-contributors"
-        title="Who contributes to the programme budget?"
-        description="Explore Member State assessments, paid-in-full status and the timing of payments."
-      />
-      <PageBody>
-        <RegularBudgetContributorsTreemap />
-      </PageBody>
       <Methodology>
         <SecretariatMethodology />
         <ProgrammeBudgetMethodologyNotes />
-        <ProgrammeBudgetContributorsMethodologyNotes />
       </Methodology>
     </>
   );

@@ -1396,6 +1396,7 @@ export function BudgetTreemap({
       key,
       label,
       value: node.amount,
+      layoutValue: node.amount,
       color,
       data: { node, sidebarNodeId, note },
       segments: positiveFundingValues(node).map(([source, value]) => ({
@@ -1493,36 +1494,6 @@ export function BudgetTreemap({
         0,
       );
 
-      if (
-        Math.abs(part.breakdown?.difference ?? 0) > 5000 ||
-        sectionTotal > part.amount
-      ) {
-        const remainder = remainderNode(
-          part,
-          [],
-          `${part.id}::unreconciled-sections`,
-          "Published part total (section breakdown withheld)",
-          part.amount,
-        );
-        rows.push({
-          key: part.id,
-          label: PART_SHORT_NAMES[part.code ?? ""] ?? part.label,
-          color,
-          data: part,
-          leaves: [
-            leaf(
-              remainder,
-              remainder.label,
-              color,
-              part.id,
-              remainder.id,
-              "Published section values do not reconcile to this budget part, so the lower geometry is withheld.",
-            ),
-          ],
-        });
-        continue;
-      }
-
       const subgroups = sections.map((section) => {
         if (ppbGrouping === "section") {
           return {
@@ -1534,39 +1505,26 @@ export function BudgetTreemap({
           };
         }
 
-        const units = (childrenOf[section.id] ?? []).filter(
-          (node) => node.tier === "budget_unit" && node.amount > 0,
-        );
-        const unitTotal = units.reduce((sum, unit) => sum + unit.amount, 0);
-        if (
-          Math.abs(section.breakdown?.difference ?? 0) > 5000 ||
-          unitTotal > section.amount
-        ) {
-          const remainder = remainderNode(
-            section,
-            [],
-            `${section.id}::unreconciled-entities`,
-            "Not assigned to a single entity",
-            section.amount,
-          );
+        // A section with an evidenced owner belongs wholly to that entity.
+        // Retain the section as the invisible intermediate grouping.
+        if (section.entity?.relationship === "section_owner") {
           return {
             key: section.id,
             label: `Section ${section.code ?? ""}: ${section.label}`,
             data: section,
             labelVisibility: "tooltip-only" as const,
-            leaves: [
-              leaf(
-                remainder,
-                remainder.label,
-                color,
-                section.id,
-                remainder.id,
-                "Published entity placements do not reconcile to this section, so its lower geometry is withheld.",
-              ),
-            ],
+            leaves: [leaf(
+              section,
+              section.entity.acronym ?? section.entity.name,
+              color,
+            )],
           };
         }
 
+        const units = (childrenOf[section.id] ?? []).filter(
+          (node) => node.tier === "budget_unit" && node.amount > 0,
+        );
+        const unitTotal = units.reduce((sum, unit) => sum + unit.amount, 0);
         const leaves = units.map((unit) =>
           leaf(
             unit,
@@ -1576,7 +1534,7 @@ export function BudgetTreemap({
             `${section.id}::${unit.id}`,
           ),
         );
-        if (unitTotal < section.amount) {
+        if (unitTotal === 0) {
           const remainder = remainderNode(
             section,
             units,
@@ -1599,11 +1557,14 @@ export function BudgetTreemap({
           label: `Section ${section.code ?? ""}: ${section.label}`,
           data: section,
           labelVisibility: "tooltip-only" as const,
-          leaves,
+          leaves: leaves.map((item) => ({
+            ...item,
+            layoutValue: unitTotal > 0 ? item.value / unitTotal * section.amount : item.value,
+          })),
         };
       });
 
-      if (sectionTotal < part.amount) {
+      if (sectionTotal === 0) {
         const remainder = remainderNode(
           part,
           sections,
@@ -1630,66 +1591,20 @@ export function BudgetTreemap({
 
       rows.push({
         key: part.id,
-        label: PART_SHORT_NAMES[part.code ?? ""] ?? part.label,
+        label: `${part.code ? `Part ${part.code}: ` : ""}${PART_SHORT_NAMES[part.code ?? ""] ?? part.label}`,
+        value: part.amount,
         color,
         data: part,
-        subgroups,
+        subgroups: subgroups.map((subgroup) => ({
+          ...subgroup,
+          leaves: subgroup.leaves.map((item) => ({
+            ...item,
+            layoutValue: sectionTotal > 0 ? item.layoutValue / sectionTotal * part.amount : item.layoutValue,
+          })),
+        })),
       });
     }
 
-    const partsTotal = parts.reduce((sum, part) => sum + part.amount, 0);
-    if (partsTotal < root.amount) {
-      const remainder = remainderNode(
-        root,
-        parts,
-        `${root.id}::unassigned-part`,
-        "Not assigned to a budget part",
-      );
-      const color = BAND_PALETTE[rows.length % BAND_PALETTE.length].bg;
-      rows.push({
-        key: remainder.id,
-        label: remainder.label,
-        color,
-        data: root,
-        leaves: [
-          leaf(
-            remainder,
-            remainder.label,
-            color,
-            root.id,
-            remainder.id,
-            remainder.note,
-          ),
-        ],
-      });
-    } else if (partsTotal > root.amount) {
-      const color = BAND_PALETTE[0].bg;
-      const remainder = remainderNode(
-        root,
-        [],
-        `${root.id}::unreconciled-parts`,
-        "Published total (budget-part breakdown withheld)",
-        root.amount,
-      );
-      return [
-        {
-          key: root.id,
-          label: root.label,
-          color,
-          data: root,
-          leaves: [
-            leaf(
-              remainder,
-              remainder.label,
-              color,
-              root.id,
-              remainder.id,
-              "Published budget-part values exceed the whole-budget total, so the lower geometry is withheld.",
-            ),
-          ],
-        },
-      ];
-    }
     return rows;
   }, [
     childrenOf,
@@ -1924,7 +1839,7 @@ export function BudgetTreemap({
         : [];
     const searchAccessory =
       isAlignedPpb && onPpbGroupingChange ? (
-        <div className="flex h-9 items-center gap-2">
+        <div className="flex flex-wrap items-center gap-2">
           <span
             className={`text-sm ${ppbGrouping === "entity" ? "font-medium text-gray-900" : "text-gray-500"}`}
           >
@@ -1958,37 +1873,42 @@ export function BudgetTreemap({
           </div>
         )}
 
-        {meta.sourceNote && (
-          <p className="mb-3 border-l-4 border-amber-400 bg-amber-50 px-4 py-3 text-sm text-amber-950">
-            {meta.sourceNote}
-          </p>
-        )}
+        {!usesSharedProgrammeBudget && (
+          <>
+            {meta.sourceNote && (
+              <p className="mb-3 border-l-4 border-amber-400 bg-amber-50 px-4 py-3 text-sm text-amber-950">
+                {meta.sourceNote}
+              </p>
+            )}
 
-        {isAlignedPpb &&
-          ppbGrouping === "entity" &&
-          entityProjection.unassignedAmount > 0 && (
-            <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
-              Amounts without a source-evidenced entity placement remain
-              explicit “Not assigned to a single entity” tiles inside their
-              published budget section.
-            </p>
-          )}
+            {isAlignedPpb &&
+              ppbGrouping === "entity" &&
+              entityProjection.unassignedAmount > 0 && (
+                <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
+                  Amounts without a source-evidenced entity placement remain
+                  explicit “Not assigned to a single entity” tiles inside their
+                  published budget section.
+                </p>
+              )}
 
-        {meta.partial && (
-          <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
-            {meta.scopeLabel}. This year does not publish every funding source,
-            so it is not directly comparable with years that do.
-          </p>
-        )}
+            {meta.partial && (
+              <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
+                {meta.scopeLabel}. This year does not publish every funding source,
+                so it is not directly comparable with years that do.
+              </p>
+            )}
 
-        {withheldBreakdowns > 0 && (
-          <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
-            {withheldBreakdowns} published parent total
-            {withheldBreakdowns === 1 ? " has" : "s have"} a lower-level
-            breakdown that does not reconcile. The chart preserves each parent
-            total and withholds its child geometry; open the flagged tile to
-            inspect the published lines and difference.
-          </p>
+            {withheldBreakdowns > 0 && (
+              <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
+                {withheldBreakdowns} published parent total
+                {withheldBreakdowns === 1 ? " has" : "s have"} a lower-level
+                breakdown that does not reconcile. The chart preserves each parent
+                total and withholds its child geometry; open the flagged tile to
+                inspect the published lines and difference.
+              </p>
+            )}
+
+          </>
         )}
 
         <GroupedTreemap<
@@ -1998,6 +1918,10 @@ export function BudgetTreemap({
           BudgetFundingSource
         >
           rows={sharedRows}
+          layout={usesSharedProgrammeBudget
+            ? { rowOrder: "input", orderedBands: true, rowGap: 3 }
+            : undefined}
+
           search={{
             value: searchQuery,
             onChange: setSearchQuery,
@@ -2092,6 +2016,7 @@ export function BudgetTreemap({
 
         {selected && (
           <BudgetSidebar
+            view={usesSharedProgrammeBudget ? ppbGrouping : undefined}
             node={selected}
             parent={selected.parentId ? sidebarById[selected.parentId] : null}
             childrenByParent={sidebarChildrenOf}

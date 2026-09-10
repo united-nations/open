@@ -23,20 +23,20 @@ const METRICS: Array<{
   {
     key: "proposed",
     label: "Proposed",
-    color: "#009edb",
+    color: "var(--color-un-orange)",
     years: [2021, 2022, 2023, 2024, 2025, 2026, 2027],
   },
   {
     key: "approved",
     label: "Approved",
-    color: "#2d6a7e",
-    years: [2020, 2021, 2022, 2023, 2024, 2025, 2026],
+    color: "var(--color-un-red)",
+    years: [2021, 2022, 2023, 2024, 2025, 2026],
   },
   {
     key: "expenditure",
     label: "Expenditure",
-    color: "#4a7c7e",
-    years: [2019, 2020, 2021, 2022, 2023, 2024, 2025],
+    color: "var(--color-un-purple)",
+    years: [2021, 2022, 2023, 2024, 2025],
   },
 ];
 

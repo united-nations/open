@@ -3,12 +3,10 @@ import { BudgetTreemap } from "@/components/BudgetTreemap";
 import {
   Methodology,
   SecretariatMethodology,
-  TrustFundContributorsMethodologyNotes,
   TrustFundsMethodologyNotes,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
-import { TrustFundContributorsTreemap } from "@/components/TrustFundContributorsTreemap";
 
 export const metadata: Metadata = {
   title: "UN Secretariat Trust Funds",
@@ -33,18 +31,9 @@ export default function TrustFundsPage() {
           trustFundLevel="fund"
         />
       </PageBody>
-      <PageHeading
-        id="trust-fund-contributors"
-        title="Who contributes to trust funds?"
-        description="Explore recognized voluntary contributions by contributor and destination fund."
-      />
-      <PageBody>
-        <TrustFundContributorsTreemap />
-      </PageBody>
       <Methodology>
         <SecretariatMethodology />
         <TrustFundsMethodologyNotes />
-        <TrustFundContributorsMethodologyNotes />
       </Methodology>
     </>
   );

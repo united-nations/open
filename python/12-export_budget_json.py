@@ -1,33 +1,20 @@
 """Export budget-document treemaps for the /secretariat page.
 
-Source: the `financial-data-v1.6` release of the sibling repository
-`united-nations/programme-budget-data`, refined by its
-`codex/financial-source-reconciliation` producer. The refinement exposes
-source detail that the release exporter had collapsed into remainder tiles,
-and removes Section 13 Swiss-franc rows from the USD totals.
+Source: the complete `financial-data-v1.8` release of
+`united-nations/programme-budget-data`. The release includes the current deeper
+financial hierarchy and embedded System Chart entity names; no separate entity
+overlay or sibling checkout is needed for release consumption.
 
-    gh release download financial-data-v1.6 \
+    gh release download financial-data-v1.8 \
         --repo united-nations/programme-budget-data -D <tmp> \
-        --pattern "*.json" --pattern "SHA256SUMS"
-Then cache the files this portal needs, and export. The import verifies every
-PPB file against the release's SHA256SUMS before copying it:
-
-    uv run python/12-export_budget_json.py --release <tmp>
+        --pattern "financial-data-v1.8.tar.gz"
+    tar -xzf <tmp>/financial-data-v1.8.tar.gz -C <tmp>
+    uv run python/12-export_budget_json.py --release <tmp>/financial-data-v1.8
     uv run python/12-export_budget_json.py
 
-During extraction work, refresh the cache directly from the sibling checkout's
-canonical financial files before rebuilding the entity overlays:
-
-    uv run python/12-export_budget_json.py --local-financial
-
-Peacekeeping is not republished after v1.4, so the three cycle files still come
-from that release, whose archive carries them under `financial/pko/`:
-
-    gh release download financial-data-v1.4 --repo … -D <tmp14> \
-        --pattern "financial-data-v1.4.tar.gz"
-    tar -xzf <tmp14>/financial-data-v1.4.tar.gz -C <tmp14>
-    uv run python/12-export_budget_json.py --release <tmp> \
-        --pko <tmp14>/financial-data-v1.4
+The import verifies every PPB and PKO file against the release's SHA256SUMS.
+For development only, `--local-financial` can refresh the PPB cache from a
+sibling checkout.
 
 Outputs, one file per year, following the portal's `{view}-{year}.json` rule:
 
@@ -49,21 +36,12 @@ fascicle names one, and an explicitly labelled generated wrapper where it does
 not (`section_scope`, `programme`, `special_purpose`, `coverage_remainder`).
 The tier is additive when the source reconciles. If independently printed
 children disagree with their printed parent, the parent stays authoritative;
-the portal flags the difference and withholds those children from treemap
-geometry rather than drawing the difference as expenditure.
+the portal flags the difference in the sidebar and normalizes available child
+areas to fill the parent without changing the displayed expenditure amounts.
 
-The sibling repository now builds the orthogonal, source-evidenced **entity
-dimension** for PPB 2021–2027. Small overlay files bind those added fields to
-the exact v1.6 financial view by SHA-256. Build them from
-`programme-budget-data` before this export. For example:
-
-    for edition in 2021 2022 2023 2024 2025 2026 2027; do
-      uv run python -m pipeline.emit.ppb_entity_dimension \
-        --input ../transparency/data/references/\
-programme-budget-data-financial-v1.6/ppb/$edition.json \
-        --overlay-output ../transparency/data/references/\
-programme-budget-data-ppb-entities/$edition.json
-    done
+The release embeds the orthogonal, source-evidenced entity dimension for
+PPB 2021–2027. Current System Chart short names are display metadata; budget
+identities and historical ownership remain source-derived.
 
 This script attaches each canonical name and known abbreviation to the units
 it resolves. Where the source says a section has exactly one owner, it also
@@ -113,8 +91,7 @@ from pathlib import Path
 
 from domain_taxonomies import load_secretariat_taxonomies
 
-SRC = Path("data/references/programme-budget-data-financial-v1.6")
-ENTITY_SRC = Path("data/references/programme-budget-data-ppb-entities")
+SRC = Path("data/references/programme-budget-data-financial-v1.8")
 OUT = Path("public/data")
 
 # The immutable v1.6 views already carry a source citation for every numeric
@@ -126,19 +103,10 @@ PROGRAMME_BUDGET_DATA = Path("../programme-budget-data")
 
 RELEASE = {
     "repo": "united-nations/programme-budget-data",
-    "release": "financial-data-v1.6 + source reconciliation",
-    "url": "https://github.com/united-nations/programme-budget-data/tree/codex/financial-source-reconciliation",
-    "baseRelease": "financial-data-v1.6",
-    "baseReleaseUrl": "https://github.com/united-nations/programme-budget-data/releases/tag/financial-data-v1.6",
+    "release": "financial-data-v1.8",
+    "url": "https://github.com/united-nations/programme-budget-data/releases/tag/financial-data-v1.8",
 }
-
-# Peacekeeping is unchanged since v1.4 and is not republished, so the PKO files
-# must say which release they are really from.
-PKO_RELEASE = {
-    "repo": "united-nations/programme-budget-data",
-    "release": "financial-data-v1.4",
-    "url": "https://github.com/united-nations/programme-budget-data/releases/tag/financial-data-v1.4",
-}
+PKO_RELEASE = RELEASE
 
 PPB_EDITIONS = range(2020, 2028)
 PKO_CYCLES = (2024, 2025, 2026)
@@ -201,13 +169,7 @@ def sha256(path: Path) -> str:
 
 
 def release_checksums(release_dir: Path) -> dict[str, str]:
-    """Release-asset basename -> digest, rejecting ambiguous checksum rows.
-
-    SHA256SUMS names the paths inside the release archive, while GitHub places
-    the standalone treemap downloads at the top of `release_dir`. Basenames are
-    therefore the shared identity. A duplicate basename is unsafe rather than
-    something to resolve by row order.
-    """
+    """Release-relative path -> digest, rejecting ambiguous checksum rows."""
     checksum_file = release_dir / "SHA256SUMS"
     assert checksum_file.is_file(), f"release has no {checksum_file.name}"
     checksums: dict[str, str] = {}
@@ -215,8 +177,8 @@ def release_checksums(release_dir: Path) -> dict[str, str]:
         match = re.fullmatch(r"([0-9a-f]{64})  (\S+)", line)
         assert match, f"SHA256SUMS line {line_number} is malformed"
         digest, raw_name = match.groups()
-        name = Path(raw_name).name
-        assert name not in checksums, f"SHA256SUMS repeats basename {name}"
+        name = raw_name
+        assert name not in checksums, f"SHA256SUMS repeats path {name}"
         checksums[name] = digest
     return checksums
 
@@ -356,45 +318,6 @@ def clean_label(label: str, code: str) -> str:
 # --------------------------------------------------------------------------
 # The entity dimension
 # --------------------------------------------------------------------------
-
-def apply_entity_overlay(view: dict, overlay: dict, source_path: Path) -> None:
-    """Apply additive entity fields only when they bind to this exact view."""
-    edition = view["lens"]["edition"]
-    assert overlay.get("schemaVersion") == 1, \
-        f"PPB {edition}: unsupported entity-overlay schema"
-    assert overlay.get("edition") == edition, \
-        f"PPB {edition}: entity overlay has the wrong edition"
-    assert overlay.get("sourceViewSha256") == sha256(source_path), \
-        f"PPB {edition}: entity overlay does not bind to the cached financial view"
-    dimension = overlay.get("entityDimension")
-    assert isinstance(dimension, dict) and dimension.get("edition") == edition, \
-        f"PPB {edition}: entity overlay has no valid dimension"
-
-    bindings = overlay.get("nodes")
-    assert isinstance(bindings, list), f"PPB {edition}: entity overlay has no node bindings"
-    by_id = {}
-    for row in bindings:
-        node_id = row.get("treeNodeId")
-        relationship_ids = row.get("entityRelationshipIds")
-        assert isinstance(node_id, str) and node_id not in by_id, \
-            f"PPB {edition}: invalid or duplicate entity-overlay node"
-        assert isinstance(relationship_ids, list) and all(
-            isinstance(value, str) for value in relationship_ids
-        ), f"PPB {edition}: invalid entity relationship list for {node_id}"
-        by_id[node_id] = relationship_ids
-    source_ids = {node["treeNodeId"] for node in view["nodes"]}
-    assert set(by_id) == source_ids, \
-        f"PPB {edition}: entity overlay and financial view have different nodes"
-
-    relationship_ids = {
-        row["relationshipId"] for row in dimension.get("relationships", [])
-    }
-    for node in view["nodes"]:
-        node_relationships = by_id[node["treeNodeId"]]
-        assert set(node_relationships) <= relationship_ids, \
-            f"PPB {edition}: entity overlay refers to an unknown relationship"
-        node["entityRelationshipIds"] = node_relationships
-    view["entityDimension"] = dimension
 
 def entity_index(view: dict) -> tuple[dict[str, dict], dict[str, dict], dict | None]:
     """Relationships and section verdicts of the release's entity dimension.
@@ -1261,57 +1184,35 @@ def check_tree(payload: dict, name: str) -> None:
         )
 
 
-def prepare(release_dir: Path, pko_dir: Path | None = None) -> None:
-    """Cache the release files this portal reads."""
+def prepare(release_dir: Path) -> None:
+    """Cache the complete versioned release, preserving exact source bytes."""
     assert release_dir.is_dir(), f"no such directory: {release_dir}"
     checksums = release_checksums(release_dir)
-    (SRC / "ppb").mkdir(parents=True, exist_ok=True)
-    (SRC / "pko").mkdir(parents=True, exist_ok=True)
+    manifest_path = release_dir / "release-manifest.json"
+    assert sha256(manifest_path) == checksums.get("release-manifest.json"), "release manifest checksum mismatch"
+    manifest = json.loads(manifest_path.read_text())
+    assert manifest["releaseId"] == RELEASE["release"], "unexpected financial release"
+
+    def cache(relative: str, target: Path) -> None:
+        source = release_dir / relative
+        assert sha256(source) == checksums.get(relative), f"checksum mismatch: {relative}"
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(source, target)
 
     for edition in PPB_EDITIONS:
-        matches = sorted(release_dir.glob(f"{edition}-expenditure-*-usd.json"))
-        assert len(matches) == 1, \
-            f"PPB {edition}: expected 1 standalone USD treemap file, found {len(matches)}"
-        asset = matches[0]
-        expected_digest = checksums.get(asset.name)
-        assert expected_digest is not None, \
-            f"PPB {edition}: {asset.name} is not bound by SHA256SUMS"
-        actual_digest = sha256(asset)
-        assert actual_digest == expected_digest, \
-            f"PPB {edition}: {asset.name} does not match SHA256SUMS"
-        view = json.loads(asset.read_text())
-        assert view["lens"]["currency"] == "USD", f"PPB {edition}: not a USD view"
-        assert view["lens"]["measure"] == "expenditure", f"PPB {edition}: not expenditure"
-        (SRC / "ppb" / f"{edition}.json").write_text(json.dumps(view))
-        entities = (view.get("entityDimension") or {}).get("summary")
-        print(f"  cached PPB {edition} (expenditure {view['lens']['dataYear']}, "
-              f"{len(view['nodes'])} nodes"
-              f"{f', {entities["entities"]} entities' if entities else ''})")
-
+        relative = f"financial/treemaps/ppb/{edition}-expenditure-{edition - 2}-usd.json"
+        cache(relative, SRC / "ppb" / f"{edition}.json")
+        cache(f"financial/{edition}.json", SRC / "financial" / f"{edition}.json")
+        view = json.loads((SRC / "ppb" / f"{edition}.json").read_text())
+        assert view["lens"]["currency"] == "USD" and view["lens"]["measure"] == "expenditure"
+        assert edition < 2021 or view.get("entityDimension"), f"PPB {edition}: missing embedded entities"
+        print(f"  cached PPB {edition}: {len(view['nodes'])} nodes")
     for cycle in PKO_CYCLES:
-        target = SRC / "pko" / f"{cycle}.json"
-        searched = [d / "financial" / "pko" / f"{cycle}.json" for d in
-                    (pko_dir, release_dir) if d] + \
-                   [d / f"{cycle}.json" for d in (pko_dir, release_dir) if d]
-        for candidate in searched:
-            if candidate.exists():
-                shutil.copyfile(candidate, target)
-                print(f"  cached PKO cycle {cycle} from {candidate.parent}")
-                break
-        else:
-            # Peacekeeping has not been republished since v1.4, so an earlier
-            # cache still applies. Only complain when there is nothing to fall
-            # back on.
-            assert target.exists(), (
-                f"PKO cycle {cycle} is in neither {release_dir} nor the cache. "
-                f"Unpack the {PKO_RELEASE['release']} archive and pass "
-                f"--pko <unpacked-archive>."
-            )
-            print(f"  kept the cached PKO cycle {cycle} "
-                  f"({PKO_RELEASE['release']}, not republished since)")
-
-    size = sum(f.stat().st_size for f in SRC.rglob("*.json"))
-    print(f"Cached {SRC} ({size / 1e6:.1f} MB).")
+        cache(f"financial/pko/{cycle}.json", SRC / "pko" / f"{cycle}.json")
+        print(f"  cached PKO cycle {cycle}")
+    cache("release-manifest.json", SRC / "release-manifest.json")
+    shutil.copyfile(release_dir / "SHA256SUMS", SRC / "SHA256SUMS")
+    print(f"Cached verified {RELEASE['release']} at {SRC}.")
 
 
 def prepare_local_financial() -> None:
@@ -1336,8 +1237,8 @@ def prepare_local_financial() -> None:
         )
         target = target_dir / f"{edition}.json"
         target.write_text(json.dumps(views[0]))
-        overlay_target = ENTITY_SRC / f"{edition}.json"
-        overlay_target.parent.mkdir(parents=True, exist_ok=True)
+        (SRC / "financial").mkdir(parents=True, exist_ok=True)
+        shutil.copyfile(financial_path, SRC / "financial" / f"{edition}.json")
         subprocess.run(
             [
                 sys.executable,
@@ -1345,8 +1246,8 @@ def prepare_local_financial() -> None:
                 "pipeline.emit.ppb_entity_dimension",
                 "--input",
                 str(target.resolve()),
-                "--overlay-output",
-                str(overlay_target.resolve()),
+                "--output",
+                str(target.resolve()),
                 "--published-data-dir",
                 str((PROGRAMME_BUDGET_DATA / "apps/portal/public/data").resolve()),
             ],
@@ -1385,26 +1286,11 @@ def export() -> None:
 
     for edition in PPB_EDITIONS_DRAWN:
         source_path = SRC / "ppb" / f"{edition}.json"
-        overlay_path = ENTITY_SRC / f"{edition}.json"
         view = json.loads(source_path.read_text())
-        financial_path = (
-            PROGRAMME_BUDGET_DATA / "data" / "processed" / "financial" /
-            f"{edition}.json"
-        )
-        financial = (
-            json.loads(financial_path.read_text())
-            if financial_path.is_file() else None
-        )
+        financial_path = SRC / "financial" / f"{edition}.json"
+        assert financial_path.is_file(), f"PPB {edition}: missing released financial source"
+        financial = json.loads(financial_path.read_text())
         pages, citations = apply_pdf_page_index(view, edition)
-        if overlay_path.is_file():
-            overlay = json.loads(overlay_path.read_text())
-            if overlay.get("sourceViewSha256") == sha256(source_path):
-                apply_entity_overlay(view, overlay, source_path)
-            else:
-                print(
-                    f"  ! PPB {edition}: skipped stale entity overlay; "
-                    "the financial hierarchy remains complete"
-                )
         payload = build_ppb(view, financial)
         for metric in ("proposed", "approved", "expenditure"):
             annual = annual_metric_payload(payload, metric)
@@ -1451,8 +1337,6 @@ if __name__ == "__main__":
     if "--local-financial" in args:
         prepare_local_financial()
     elif "--release" in args:
-        pko = args[args.index("--pko") + 1] if "--pko" in args else None
-        prepare(Path(args[args.index("--release") + 1]),
-                Path(pko) if pko else None)
+        prepare(Path(args[args.index("--release") + 1]))
     else:
         export()

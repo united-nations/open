@@ -8,11 +8,6 @@ import {
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { DotDensityMap } from "@undp/data-viz/DotDensityMap";
 import { PeacekeepingMissionSidebar } from "@/components/PeacekeepingMissionSidebar";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { ClickHint } from "@/components/ui/ClickHint";
 import { YearSlider } from "@/components/YearSlider";
 import {
@@ -23,7 +18,6 @@ import {
 import { loadStaticData, loadYearData } from "@/lib/data";
 import { formatBudget } from "@/lib/entities";
 import {
-  COST_CLASS_BAND_COLORS,
   COST_CLASS_KEYS,
   COST_CLASS_SHORT,
   fiscalYearLabel,
@@ -160,134 +154,6 @@ interface MapPoint {
   data: MissionRow;
 }
 
-function MoneyBar({
-  value,
-  max,
-  color,
-}: {
-  value: number;
-  max: number;
-  color: string;
-}) {
-  const width = max > 0 ? (Math.max(0, value) / max) * 100 : 0;
-  const label = formatBudget(value);
-  return (
-    <div className="grid grid-cols-[minmax(0,1fr)_4.75rem] items-center gap-2">
-      <div className="h-4 bg-gray-100" aria-hidden="true">
-        <div
-          className="h-full"
-          style={{ width: `${width}%`, backgroundColor: color }}
-        />
-      </div>
-      <span className="text-right text-xs text-gray-900 tabular-nums">
-        {label}
-      </span>
-    </div>
-  );
-}
-
-function DistributionBar({
-  classes,
-}: {
-  classes: Record<CostClassKey, number | null>;
-}) {
-  const parts = COST_CLASS_KEYS.flatMap((key) => {
-    const value = classes[key];
-    if (value === null || value <= 0) return [];
-    return [
-      {
-        key,
-        value,
-        color: COST_CLASS_BAND_COLORS[key]?.bg ?? "#6b7280",
-        label: COST_CLASS_SHORT[key] ?? key,
-      },
-    ];
-  });
-  const missingKeys = COST_CLASS_KEYS.filter((key) => classes[key] === null);
-  const zeroKeys = COST_CLASS_KEYS.filter((key) => classes[key] === 0);
-  const sum = parts.reduce((total, part) => total + part.value, 0);
-  if (sum <= 0) {
-    return (
-      <div className="space-y-1 text-xs text-gray-500">
-        {zeroKeys.length > 0 && (
-          <p>
-            Published as $0:{" "}
-            {zeroKeys.map((key) => COST_CLASS_SHORT[key] ?? key).join(", ")}
-          </p>
-        )}
-        {missingKeys.length > 0 && (
-          <p>
-            Not published:{" "}
-            {missingKeys.map((key) => COST_CLASS_SHORT[key] ?? key).join(", ")}
-          </p>
-        )}
-      </div>
-    );
-  }
-  const ariaLabel = parts
-    .map(
-      (part) =>
-        `${part.label}: ${formatBudget(part.value)} (${((part.value / sum) * 100).toFixed(0)}%)`,
-    )
-    .join(" · ");
-  return (
-    <div>
-      <Tooltip delayDuration={50}>
-        <TooltipTrigger asChild>
-          <div
-            className="flex h-4 w-full min-w-[8rem] overflow-hidden bg-gray-100"
-            aria-label={ariaLabel}
-          >
-            {parts.map((part) => (
-              <div
-                key={part.key}
-                className="h-full"
-                style={{
-                  width: `${(part.value / sum) * 100}%`,
-                  backgroundColor: part.color,
-                }}
-              />
-            ))}
-          </div>
-        </TooltipTrigger>
-        <TooltipContent
-          side="top"
-          sideOffset={6}
-          className="border border-slate-200 bg-white text-slate-800 shadow-lg"
-        >
-          <ul className="space-y-1 text-xs">
-            {parts.map((part) => (
-              <li key={part.key} className="flex items-center gap-2">
-                <span
-                  className="size-2 shrink-0"
-                  style={{ backgroundColor: part.color }}
-                  aria-hidden="true"
-                />
-                <span>
-                  {part.label}: {formatBudget(part.value)} (
-                  {((part.value / sum) * 100).toFixed(0)}%)
-                </span>
-              </li>
-            ))}
-          </ul>
-        </TooltipContent>
-      </Tooltip>
-      {missingKeys.length > 0 && (
-        <p className="mt-1 text-[10px] leading-tight text-gray-500">
-          Not published:{" "}
-          {missingKeys.map((key) => COST_CLASS_SHORT[key] ?? key).join(", ")}
-        </p>
-      )}
-      {zeroKeys.length > 0 && (
-        <p className="mt-1 text-[10px] leading-tight text-gray-500">
-          Published as $0:{" "}
-          {zeroKeys.map((key) => COST_CLASS_SHORT[key] ?? key).join(", ")}
-        </p>
-      )}
-    </div>
-  );
-}
-
 function MissionCostClassTooltip({
   context,
 }: {
@@ -337,11 +203,9 @@ function MissionCostClassTooltip({
 
 function MissionCostClassTreemap({
   rows,
-  source,
   onOpen,
 }: {
   rows: MissionRow[];
-  source: BudgetData["meta"]["source"];
   onOpen: (code: string) => void;
 }) {
   const treemapRows = rows.flatMap((mission) => {
@@ -354,7 +218,7 @@ function MissionCostClassTreemap({
           key: costClass,
           label: COST_CLASS_SHORT[costClass] ?? costClass,
           value: amount,
-          color: COST_CLASS_BAND_COLORS[costClass]?.bg ?? "#6b7280",
+          color: mission.kind === "support" ? "var(--color-faded-jade)" : "var(--color-un-blue)",
           data: { mission, costClass },
           onActivate: () => onOpen(mission.code),
         },
@@ -364,7 +228,7 @@ function MissionCostClassTreemap({
       {
         key: mission.code,
         label: mission.code,
-        color: mission.kind === "support" ? SUPPORT_COLOR : FIELD_COLOR,
+        color: mission.kind === "support" ? "var(--color-faded-jade)" : "var(--color-un-blue)",
         data: mission,
         leaves,
       } satisfies GroupedTreemapRow<
@@ -378,20 +242,6 @@ function MissionCostClassTreemap({
 
   return (
     <div>
-      <div className="mb-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-600">
-        {COST_CLASS_KEYS.map((key) => (
-          <span key={key} className="flex items-center gap-1.5">
-            <span
-              className="size-2.5 shrink-0"
-              style={{
-                backgroundColor: COST_CLASS_BAND_COLORS[key]?.bg ?? "#6b7280",
-              }}
-              aria-hidden="true"
-            />
-            {COST_CLASS_SHORT[key] ?? key}
-          </span>
-        ))}
-      </div>
       <GroupedTreemap<
         MissionRow,
         never,
@@ -407,22 +257,8 @@ function MissionCostClassTreemap({
         renderTooltip={(context) => (
           <MissionCostClassTooltip context={context} />
         )}
-        sources={[
-          {
-            key: source.release,
-            label: `${source.repo} · ${source.release}`,
-            href: source.url,
-            openInNewTab: true,
-            newTabLabel: "opens in a new tab",
-          },
-        ]}
-        sourceHeading="Source:"
       />
-      <p className="mt-2 max-w-3xl text-xs leading-relaxed text-gray-500">
-        Mission area represents total expenditure; each mission is subdivided by
-        published cost class. A missing class is not treated as zero, and
-        published zero values receive no area.
-      </p>
+
     </div>
   );
 }
@@ -511,7 +347,6 @@ export function PeacekeepingBudgetView() {
     );
   }
 
-  const maxTotal = rows.reduce((max, row) => Math.max(max, row.total), 0);
   const selectedRow = rows.find((row) => row.code === selectedCode);
   const selectedLocation =
     selectedCode && entities
@@ -530,15 +365,20 @@ export function PeacekeepingBudgetView() {
       </div>
 
       <section className="order-1">
-        <h3 className="mb-3 text-sm font-semibold tracking-wide text-gray-600 uppercase">
-          Mission expenditure by cost class · {current.meta.fiscalYear}
-        </h3>
+        <div aria-label="Mission type legend" className="mb-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-600">
+          <span className="flex items-center gap-1.5">
+            <span aria-hidden="true" className="size-2.5 bg-un-blue" />
+            Peacekeeping missions
+          </span>
+          <span className="flex items-center gap-1.5">
+            <span aria-hidden="true" className="size-2.5 bg-faded-jade" />
+            Support missions
+          </span>
+        </div>
         <MissionCostClassTreemap
           rows={rows}
-          source={current.meta.source}
           onOpen={openMission}
         />
-        <ClickHint text="Click a mission or cost class for details" />
       </section>
 
       <section className="order-3 mt-10">
@@ -664,105 +504,6 @@ export function PeacekeepingBudgetView() {
               <p>{entities.map_notes.boundary_disclaimer}</p>
             </div>
           </details>
-        </div>
-      </section>
-
-      <section className="order-2 mt-10">
-        <h3 className="mb-2 text-sm font-semibold tracking-wide text-gray-600 uppercase">
-          Mission expenditure · {current.meta.fiscalYear}
-        </h3>
-        <p className="mb-4 max-w-3xl text-xs leading-relaxed text-gray-500">
-          {current.meta.scopeWarning}
-        </p>
-        <div className="mb-3 flex flex-wrap gap-x-4 gap-y-1 text-xs text-gray-600">
-          {COST_CLASS_KEYS.map((key) => (
-            <span key={key} className="flex items-center gap-1.5">
-              <span
-                className="size-2.5 shrink-0"
-                style={{
-                  backgroundColor: COST_CLASS_BAND_COLORS[key]?.bg ?? "#6b7280",
-                }}
-                aria-hidden="true"
-              />
-              {COST_CLASS_SHORT[key] ?? key}
-            </span>
-          ))}
-        </div>
-        <div className="overflow-x-auto">
-          <table className="w-full min-w-[40rem] border-collapse text-sm">
-            <caption className="sr-only">
-              Peacekeeping mission expenditure by cost class for{" "}
-              {current.meta.fiscalYear}
-            </caption>
-            <thead>
-              <tr className="border-b border-gray-200 text-left text-xs text-gray-500">
-                <th className="py-2 pr-3 font-medium">Mission</th>
-                <th className="py-2 pr-3 font-medium">Location</th>
-                <th className="w-[28%] py-2 pr-3 font-medium">Cost classes</th>
-                <th className="w-[22%] py-2 pr-3 font-medium">Total</th>
-                <th className="py-2 font-medium">Source</th>
-              </tr>
-            </thead>
-            <tbody>
-              {rows.map((row) => (
-                <tr
-                  key={row.code}
-                  className={`cursor-pointer border-b border-gray-100 align-middle hover:bg-gray-50 ${selectedCode === row.code ? "bg-sky-50" : ""}`}
-                  onClick={() => openMission(row.code)}
-                  onKeyDown={(event) => {
-                    if (event.key === "Enter" || event.key === " ") {
-                      event.preventDefault();
-                      openMission(row.code);
-                    }
-                  }}
-                  tabIndex={0}
-                  aria-label={`Open details for ${row.code}`}
-                >
-                  <td className="py-2.5 pr-3">
-                    <div className="font-semibold text-gray-900">
-                      {row.code}
-                    </div>
-                    <div className="text-xs leading-snug text-gray-600">
-                      {row.name}
-                      {row.kind === "support" && (
-                        <span className="ml-1.5 inline-flex items-center rounded-full bg-[#a0665c]/10 px-1.5 py-0.5 text-[10px] font-medium text-[#a0665c]">
-                          Support mission
-                        </span>
-                      )}
-                    </div>
-                  </td>
-                  <td className="py-2.5 pr-3 text-gray-700">
-                    {row.location?.area ?? "—"}
-                  </td>
-                  <td className="py-2.5 pr-3">
-                    <DistributionBar classes={row.classes} />
-                  </td>
-                  <td className="py-2.5 pr-3">
-                    <MoneyBar
-                      value={row.total}
-                      max={maxTotal}
-                      color="#1f2937"
-                    />
-                  </td>
-                  <td className="py-2.5">
-                    {row.source?.url && row.source.symbol ? (
-                      <a
-                        href={row.source.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={(event) => event.stopPropagation()}
-                        className="whitespace-nowrap text-un-blue hover:underline"
-                      >
-                        {row.source.symbol}
-                      </a>
-                    ) : (
-                      "—"
-                    )}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
         </div>
       </section>
 

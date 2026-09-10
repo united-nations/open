@@ -1,11 +1,12 @@
 "use client";
 
 import { ChevronRight, ExternalLink } from "lucide-react";
+import { ExpandableCard } from "@/components/ExpandableCard";
 import { useCallback, useEffect, useState } from "react";
 import {
   GroupedTreemap,
-  type GroupedTreemapLeaf,
   type GroupedTreemapRow,
+  type GroupedTreemapLeaf,
   type GroupedTreemapSegment,
   type GroupedTreemapSubgroup,
   type GroupedTreemapTooltipContext,
@@ -20,11 +21,7 @@ import type {
 import { formatBudget } from "@/lib/entities";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { SidebarControls } from "@/components/SidebarControls";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import {
   BUDGET_FUNDING_SOURCES,
   FUNDING_SHADE_OPACITY,
@@ -33,6 +30,8 @@ import {
 import { BAND_PALETTE } from "@/lib/secretariatGroupings";
 import { ProgrammeBudgetNodeTrend } from "@/components/ProgrammeBudgetNodeTrend";
 
+const SHOW_SIDEBAR_MINI_TREEMAP = false;
+
 interface BudgetSidebarProps {
   node: BudgetNode;
   parent: BudgetNode | null;
@@ -40,6 +39,7 @@ interface BudgetSidebarProps {
   meta: BudgetMeta;
   hashPrefix: string;
   dataset?: string;
+  view?: "entity" | "section";
   years?: number[];
   onClose: () => void;
 }
@@ -144,116 +144,6 @@ function positiveFundingValues(
     (source) =>
       [source, node.values?.[source] ?? 0] as [BudgetFundingSource, number],
   ).filter(([, amount]) => amount > 0);
-}
-
-function FundingBreakdownRows({
-  node,
-  fundingLabels,
-  shadeColor,
-  useCanonicalColors = false,
-}: {
-  node?: BudgetNode;
-  fundingLabels?: BudgetMeta["fundingLabels"];
-  shadeColor: string;
-  useCanonicalColors?: boolean;
-}) {
-  const values = positiveFundingValues(node);
-  const total = values.reduce((sum, [, amount]) => sum + amount, 0);
-  if (total <= 0) return null;
-
-  return (
-    <div className="mt-2 space-y-1 border-t border-slate-200 pt-2">
-      {values.map(([source, amount]) => (
-        <div key={source} className="flex items-center gap-2 text-xs">
-          <span
-            className={`h-2.5 w-2.5 shrink-0 rounded-sm ${
-              useCanonicalColors
-                ? source === "extrabudgetary"
-                  ? "bg-open-funding-voluntary-earmarked"
-                  : "bg-open-funding-assessed"
-                : ""
-            }`}
-            style={
-              useCanonicalColors
-                ? undefined
-                : {
-                    backgroundColor: shadeColor,
-                    opacity: FUNDING_SHADE_OPACITY[source],
-                  }
-            }
-          />
-          <span className="min-w-0 flex-1 text-slate-600">
-            {fundingLabels?.[source] ??
-              FUNDING_SOURCES[source]?.label ??
-              source}
-          </span>
-          <span className="whitespace-nowrap text-slate-800">
-            {formatBudget(amount)} · {((amount / total) * 100).toFixed(1)}%
-          </span>
-        </div>
-      ))}
-    </div>
-  );
-}
-
-function HierarchyRowDetails({
-  node,
-  fundingLabels,
-}: {
-  node: BudgetNode;
-  fundingLabels?: BudgetMeta["fundingLabels"];
-}) {
-  const sources = amountSources(node);
-
-  return (
-    <div className="space-y-3">
-      <div>
-        <p className="font-medium text-slate-900">
-          {node.entity?.name ?? node.label}
-        </p>
-        <p className="mt-0.5 text-slate-600">{formatBudget(node.amount)}</p>
-        <FundingBreakdownRows
-          node={node}
-          fundingLabels={fundingLabels}
-          shadeColor="transparent"
-          useCanonicalColors
-        />
-      </div>
-
-      {sources.length > 0 && (
-        <div className="border-t border-slate-200 pt-2">
-          <p className="mb-1 font-medium text-slate-900">Source</p>
-          <div className="space-y-2">
-            {sources.map((source) => {
-              const location = source.pdfPage
-                ? `${source.symbol}, PDF page ${source.pdfPage}`
-                : `${source.symbol} PDF`;
-              return (
-                <div key={sourceKey(source)}>
-                  {source.tableTitle && (
-                    <p className="text-slate-600">
-                      Table “{source.tableTitle}”
-                    </p>
-                  )}
-                  <p className="text-slate-600">
-                    Row “{source.rowLabel}”, column “{source.columnHeader}”
-                  </p>
-                  <a
-                    href={source.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-1 inline-flex min-h-8 items-center text-un-blue underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-un-blue"
-                  >
-                    Open {location}
-                  </a>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      )}
-    </div>
-  );
 }
 
 interface MiniBudgetLeafData {
@@ -587,8 +477,6 @@ function BudgetHierarchy({
     <ul className={depth === 0 ? "space-y-2" : "mt-2 space-y-2"}>
       {nodes.map((child) => {
         const descendants = childrenByParent[child.id] ?? [];
-        const fundingValues = positiveFundingValues(child);
-        const barColor = depth === 0 ? "#009edb" : "#4a7c7e";
         const hasDescendants = descendants.length > 0;
         const isExpanded = expandedIds.has(child.id);
         const toggleExpanded = () => {
@@ -610,109 +498,64 @@ function BudgetHierarchy({
             <span className="block">{child.entity?.name ?? child.label}</span>
           </span>
         );
+        const fundingValues = positiveFundingValues(child);
+        const fundingTotal = fundingValues.reduce((sum, [, amount]) => sum + amount, 0);
         const bar = (
-          <div
-            aria-hidden="true"
-            className="relative h-1.5 w-full overflow-hidden rounded-sm"
-          >
-            {depth > 0 && parentAmount !== undefined && (
-              <div
-                className="absolute inset-y-0 left-0 rounded-sm bg-gray-200"
-                style={{ width: `${scaledWidth(parentAmount)}%` }}
-              />
-            )}
-            {fundingValues.length > 0 ? (
-              <>
-                {fundingValues.map(([source, amount], index) => {
-                  const precedingAmount = fundingValues
-                    .slice(0, index)
-                    .reduce((sum, [, value]) => sum + value, 0);
-                  return (
-                    <div
-                      key={source}
-                      className="absolute inset-y-0"
-                      style={{
-                        left: `${scaledWidth(precedingAmount)}%`,
-                        width: `${scaledWidth(amount)}%`,
-                        backgroundColor: barColor,
-                        opacity: FUNDING_SHADE_OPACITY[source],
-                      }}
-                    />
-                  );
-                })}
-                {fundingValues.slice(1).map(([source], index) => {
-                  const precedingAmount = fundingValues
-                    .slice(0, index + 1)
-                    .reduce((sum, [, value]) => sum + value, 0);
-                  return (
-                    <div
-                      key={`separator-${source}`}
-                      className="pointer-events-none absolute inset-y-0 z-[1] w-px bg-white"
-                      style={{
-                        left: `${scaledWidth(precedingAmount)}%`,
-                      }}
-                    />
-                  );
-                })}
-              </>
-            ) : (
-              <div
-                className="absolute inset-y-0 left-0 rounded-sm"
-                style={{
-                  width: `${scaledWidth(child.amount)}%`,
-                  backgroundColor: barColor,
-                }}
-              />
-            )}
-          </div>
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <span tabIndex={0} aria-label={`Funding sources for ${child.entity?.name ?? child.label}`}
+                className="flex min-h-8 w-full items-center focus-visible:outline-2 focus-visible:outline-un-blue">
+                <span className="relative block h-1.5 w-full overflow-hidden rounded-sm">
+                  {depth > 0 && parentAmount !== undefined && (
+                    <span className="absolute inset-y-0 start-0 rounded-sm bg-gray-200" style={{ width: `${scaledWidth(parentAmount)}%` }} />
+                  )}
+                  <span className="absolute inset-y-0 start-0 flex overflow-hidden rounded-sm bg-un-blue" style={{ width: `${scaledWidth(child.amount)}%` }}>
+                    {fundingValues.map(([source, amount]) => (
+                      <span key={source} className="h-full" style={{ width: `${amount / fundingTotal * 100}%`, backgroundColor: FUNDING_TREEMAP_COLORS[source] }} />
+                    ))}
+                  </span>
+                </span>
+              </span>
+            </TooltipTrigger>
+            <TooltipContent side="top" className="w-auto max-w-[calc(100vw-2rem)] space-y-2 rounded-lg bg-white p-3 text-black">
+              <div className="grid grid-cols-[max-content_4rem_max-content] items-center gap-x-2 gap-y-2 text-xs">
+              {fundingValues.map(([source, amount]) => (
+                <div key={source} className="contents">
+                  <span>{FUNDING_SOURCES[source].label}</span>
+                  <div className="w-full">
+                    <div className="h-1.5 rounded-sm" style={{ width: `${amount / fundingTotal * 100}%`, backgroundColor: FUNDING_TREEMAP_COLORS[source] }} />
+                  </div>
+                  <span className="text-end tabular-nums">{formatBudget(amount)}</span>
+                </div>
+              ))}
+              </div>
+              {fundingValues.length === 0 && <p className="text-xs">Funding-source breakdown unavailable.</p>}
+            </TooltipContent>
+          </Tooltip>
         );
+        const rowContent = (
+          <>
+            {hasDescendants ? (
+              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-secondary text-muted-foreground group-hover:bg-muted group-hover:text-foreground">
+                <ChevronRight aria-hidden="true" className={`size-4 transition-transform ${isExpanded ? "rotate-90" : ""}`} />
+              </span>
+            ) : <span className="size-8" aria-hidden="true" />}
+            {label}
+            {bar}
+            <span className="justify-self-end whitespace-nowrap text-gray-900">{formatBudget(child.amount)}</span>
+          </>
+        );
+        const rowClass = "group grid min-h-11 w-full min-w-0 grid-cols-[2rem_minmax(0,1fr)_4rem_5.5rem] items-center gap-x-2 rounded-sm px-1 py-1 text-left text-sm hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-un-blue sm:grid-cols-[2rem_minmax(0,1fr)_5rem_6rem] sm:gap-x-3";
         return (
           <li key={child.id}>
-            <div
-              className="flex min-w-0 items-stretch gap-1"
-              style={{ paddingInlineStart: `${depth * 0.75}rem` }}
-            >
+            <div style={{ paddingInlineStart: `${depth * 0.75}rem` }}>
               {hasDescendants ? (
-                <button
-                  type="button"
-                  aria-expanded={isExpanded}
-                  aria-label={`${isExpanded ? "Collapse" : "Expand"} ${child.entity?.name ?? child.label}`}
-                  onClick={toggleExpanded}
-                  className="flex size-11 shrink-0 cursor-pointer items-start justify-center rounded-sm pt-3 text-gray-400 hover:bg-slate-100 hover:text-gray-950 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-un-blue"
-                >
-                  <ChevronRight
-                    aria-hidden="true"
-                    className={`h-3.5 w-3.5 transition-transform ${isExpanded ? "rotate-90" : ""}`}
-                  />
+                <button type="button" aria-expanded={isExpanded} onClick={toggleExpanded} className={rowClass}>
+                  {rowContent}
                 </button>
               ) : (
-                <span className="w-11 shrink-0" aria-hidden="true" />
+                <div className={rowClass}>{rowContent}</div>
               )}
-
-              <Popover>
-                <PopoverTrigger asChild>
-                  <button
-                    type="button"
-                    aria-label={`Show financial details for ${child.entity?.name ?? child.label}`}
-                    className="grid min-h-11 min-w-0 flex-1 grid-cols-[minmax(0,1fr)_4rem_5.5rem] items-center gap-x-2 rounded-sm px-1 py-1 text-left text-sm hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-un-blue sm:grid-cols-[minmax(0,1fr)_5rem_6rem] sm:gap-x-3"
-                  >
-                    {label}
-                    {bar}
-                    <span className="justify-self-end whitespace-nowrap text-gray-900">
-                      {formatBudget(child.amount)}
-                    </span>
-                  </button>
-                </PopoverTrigger>
-                <PopoverContent
-                  side="top"
-                  sideOffset={8}
-                  collisionPadding={12}
-                  onEscapeKeyDown={(event) => event.stopPropagation()}
-                  className="max-h-[min(24rem,var(--radix-popover-content-available-height))] w-80 max-w-[calc(100vw-2rem)] overflow-y-auto border-slate-200 bg-white text-xs text-slate-800 shadow-lg"
-                >
-                  <HierarchyRowDetails node={child} />
-                </PopoverContent>
-              </Popover>
             </div>
             {hasDescendants && isExpanded && (
               <BudgetHierarchy
@@ -737,6 +580,7 @@ export function BudgetSidebar({
   meta,
   hashPrefix,
   dataset,
+  view,
   years,
   onClose,
 }: BudgetSidebarProps) {
@@ -745,8 +589,11 @@ export function BudgetSidebar({
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const focusTrapRef = useFocusTrap(true);
-  const metricLabel =
-    meta.metrics?.[meta.measure as BudgetMetricKey]?.label ?? "Expenditure";
+  const metricLabel = meta.measure === "approved"
+    ? "Approved resources"
+    : meta.measure === "proposed"
+      ? "Proposed resources"
+      : meta.metrics?.[meta.measure as BudgetMetricKey]?.label ?? "Expenditure";
 
   useEffect(() => {
     const id = requestAnimationFrame(() => setIsVisible(true));
@@ -790,6 +637,23 @@ export function BudgetSidebar({
   };
 
   const childNodes = childrenByParent[node.id] ?? [];
+  let breakdownNodes = childNodes;
+  const visitedWrappers = new Set<string>();
+  while (breakdownNodes.length === 1) {
+    const wrapper = breakdownNodes[0];
+    const sameEntity = node.entity && wrapper.entity &&
+      (wrapper.entity.id ?? wrapper.entity.name) === (node.entity.id ?? node.entity.name);
+    const descendants = childrenByParent[wrapper.id] ?? [];
+    const repeatsTotal = Math.abs(wrapper.amount - node.amount) < 0.5;
+    if ((!sameEntity && !repeatsTotal) || descendants.length === 0 || visitedWrappers.has(wrapper.id)) break;
+    visitedWrappers.add(wrapper.id);
+    breakdownNodes = descendants;
+  }
+  const hasBreakdown = breakdownNodes.length > 0 && !(
+    breakdownNodes.length === 1 &&
+    Math.abs(breakdownNodes[0].amount - node.amount) < 0.5 &&
+    (childrenByParent[breakdownNodes[0].id] ?? []).length === 0
+  );
   const fundingEntries = positiveFundingValues(node);
   const childSum = childNodes.reduce((sum, child) => sum + child.amount, 0);
   const childGap = node.amount - childSum;
@@ -831,6 +695,10 @@ export function BudgetSidebar({
       return parent?.tier === "part"
         ? `Entity in budget part ${parent.code}`
         : "Entity";
+    if (node.tier === "budget_unit" && node.entity && meta.stream === "ppb")
+      return parent?.tier === "section"
+        ? `Budget section ${parent.code}: ${parent.label}`
+        : "Secretariat entity";
     if (node.tier === "budget_unit")
       return parent ? `Budget unit of ${parent.label}` : "Budget unit";
     const kindName = KIND_NAMES[node.kind];
@@ -838,16 +706,10 @@ export function BudgetSidebar({
     return meta.scopeLabel;
   };
 
-  // A section view stays a section view. Other tiles may use the canonical
-  // organization name where the entity dimension supports one.
-  const heading =
-    node.tier === "section" ? node.label : (node.entity?.name ?? node.label);
-  const breakdownHeading =
-    node.entity?.relationship === "entity_aggregate"
-      ? "Entity breakdown"
-      : node.tier === "section"
-        ? "Section breakdown"
-        : "Budget breakdown";
+  const heading = view === "entity" && node.entity
+    ? node.entity.name
+    : node.tier === "section" ? node.label : (node.entity?.name ?? node.label);
+  const breakdownHeading = "Breakdown";
 
   return (
     <div
@@ -940,6 +802,42 @@ export function BudgetSidebar({
             </div>
           )}
 
+          {/* Hierarchy or, for an undivided leaf, funding-source composition */}
+          {hasBreakdown && (
+            <div>
+              <h3 className="mb-3 text-lg font-normal tracking-wider text-gray-900 uppercase">
+                {breakdownHeading}
+              </h3>
+              {SHOW_SIDEBAR_MINI_TREEMAP && <MiniBudgetTreemap
+                node={node}
+                childNodes={childNodes}
+                childrenByParent={childrenByParent}
+                meta={meta}
+              />}
+              {childNodes.length > 0 && (
+                <>
+                  <div className="mt-4">
+                    <BudgetHierarchy
+                      nodes={breakdownNodes}
+                      childrenByParent={childrenByParent}
+                    />
+                  </div>
+                  {Math.abs(childGap) > (dataset?.startsWith("budget-ppb") ? 0.5 : 5000) && (
+                    <p className="mt-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-900">
+                      The published parent total is {formatBudget(node.amount)},
+                      but the published lines below add to{" "}
+                      {formatBudget(childSum)}— a difference of{" "}
+                      {Math.abs(childGap).toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 })}.
+                      {dataset?.startsWith("budget-ppb")
+                        ? " Tile areas are scaled to fill the parent using the available breakdown; displayed amounts remain as published."
+                        : " The parent total remains authoritative; this breakdown is flagged and is not used to size the main treemap."}
+                    </p>
+                  )}
+                </>
+              )}
+            </div>
+          )}
+
           {meta.stream === "ppb" &&
             dataset?.startsWith("budget-ppb-") &&
             years &&
@@ -951,47 +849,9 @@ export function BudgetSidebar({
               />
             )}
 
-          {/* Hierarchy or, for an undivided leaf, funding-source composition */}
-          {(childNodes.length > 0 || fundingEntries.length > 1) && (
-            <div>
-              <h3 className="mb-3 text-lg font-normal tracking-wider text-gray-900 uppercase">
-                {breakdownHeading}
-              </h3>
-              <MiniBudgetTreemap
-                node={node}
-                childNodes={childNodes}
-                childrenByParent={childrenByParent}
-                meta={meta}
-              />
-              {childNodes.length > 0 && (
-                <>
-                  <div className="mt-4">
-                    <BudgetHierarchy
-                      nodes={childNodes}
-                      childrenByParent={childrenByParent}
-                    />
-                  </div>
-                  {Math.abs(childGap) > 5000 && (
-                    <p className="mt-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-900">
-                      The published parent total is {formatBudget(node.amount)},
-                      but the published lines below add to{" "}
-                      {formatBudget(childSum)}— a difference of{" "}
-                      {formatBudget(Math.abs(childGap))}. The parent total
-                      remains authoritative; this breakdown is flagged and is
-                      not used to size the main treemap.
-                    </p>
-                  )}
-                </>
-              )}
-            </div>
-          )}
-
           {/* Keep only references that take the reader to a concrete source. */}
           {(sourceReferences.length > 0 || meta.documentUrl) && (
-            <div>
-              <h3 className="mb-2 text-lg font-normal tracking-wider text-gray-900 uppercase">
-                Source references
-              </h3>
+            <ExpandableCard key={node.id} title="Source references">
               <div className="space-y-3">
                 {sourceReferences.map(({ fundingSource, reference }) => (
                   <div
@@ -1039,7 +899,7 @@ export function BudgetSidebar({
                   </a>
                 )}
               </div>
-            </div>
+            </ExpandableCard>
           )}
         </div>
       </div>

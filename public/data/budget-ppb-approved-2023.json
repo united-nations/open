@@ -37,16 +37,16 @@
     "scopeWarning": "2023 approved regular budget, reported in PPB 2024 (A/78/6), published in 2023.",
     "hierarchyProjection": "USD whole/Part/section hierarchy with RB, OA and XB side by side, followed by a stable budget-unit tier. Printed entities remain entities; section-wide, programme, special-purpose and unitemized scopes use explicit neutral wrappers. Deeper rows preserve each selected source schedule instead of claiming one universal entity/component/subprogramme order. Independently printed parents remain authoritative; a source-control difference is retained only as normalized reconciliation metadata, never as treemap expenditure. Selected lower outline: 151 source tables, 1006 printed observations and 506 materialized lower nodes; 115 parallel tables and 2 other-currency tables remain outside additive arithmetic.",
     "entityDimension": {
-      "sections": 41,
       "entities": 71,
-      "relationships": 104,
       "printedFinancialEntities": 45,
-      "unresolvedPrintedFinancialEntities": 1,
+      "relationships": 104,
+      "sections": 41,
       "sectionsWithoutSingleEntity": 13,
+      "unresolvedPrintedFinancialEntities": 1,
       "namedUnits": 71,
       "units": 78,
       "producer": "pipeline.emit.ppb_entity_dimension",
-      "producerGitHead": "d98a1a4f2defa4641e1d4e41eb1eb201c1c4951f",
+      "producerGitHead": "26f840ae407568af1fb7a55462f4322e2c5084d1",
       "sourceFiles": [
         {
           "path": "portal-data/ppb/narratives/2024.json",
@@ -63,6 +63,10 @@
         {
           "path": "portal-data/reference.json",
           "sha256": "bc93780e37caf5380dc898b741957720686f9de656357aae087b70af6eb0b125"
+        },
+        {
+          "path": "assets/references/system-chart-entities.json",
+          "sha256": "99b78e92eb5e6dc0376c8c62b9d43c6fddb50c9c75492b6c33def8ff2dda856c"
         }
       ]
     },
@@ -71,10 +75,8 @@
     "omitted": [],
     "source": {
       "repo": "united-nations/programme-budget-data",
-      "release": "financial-data-v1.6 + source reconciliation",
-      "url": "https://github.com/united-nations/programme-budget-data/tree/codex/financial-source-reconciliation",
-      "baseRelease": "financial-data-v1.6",
-      "baseReleaseUrl": "https://github.com/united-nations/programme-budget-data/releases/tag/financial-data-v1.6"
+      "release": "financial-data-v1.8",
+      "url": "https://github.com/united-nations/programme-budget-data/releases/tag/financial-data-v1.8"
     },
     "sourceNote": "2023 approved regular budget, reported in PPB 2024 (A/78/6), published in 2023.",
     "sourceEdition": 2024,
@@ -963,7 +965,7 @@
       "entity": {
         "id": "entity:board-of-auditors-including-its-secretariat:5176980384",
         "name": "Board of Auditors (including its secretariat)",
-        "acronym": null,
+        "acronym": "Board of Auditors",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -1128,7 +1130,7 @@
       "entity": {
         "id": "entity:ethics-office:e419af2e45",
         "name": "Ethics Office",
-        "acronym": "Ethics Office",
+        "acronym": "UNEO",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -1183,7 +1185,7 @@
       "entity": {
         "id": "entity:office-of-the-victims-rights-advocate:5e396287da",
         "name": "Office of the Victims' Rights Advocate",
-        "acronym": "OVRA",
+        "acronym": "VRA",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -1238,7 +1240,7 @@
       "entity": {
         "id": "entity:office-of-the-united-nations-special-coordinator-on-impr:d5dcfb0093",
         "name": "Office of the United Nations Special Coordinator on Improving the United Nations Response to Sexual Exploitation and Abuse",
-        "acronym": "SEA Coordinator",
+        "acronym": "OSC-SEA",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -1293,7 +1295,7 @@
       "entity": {
         "id": "entity:general-assembly:e898909073",
         "name": "General Assembly",
-        "acronym": null,
+        "acronym": "GA",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -1394,7 +1396,7 @@
       "entity": {
         "id": "entity:office-of-the-director-general-united-nations-office-at-:82e9b8e25c",
         "name": "Office of the Director-General, United Nations Office at Geneva",
-        "acronym": null,
+        "acronym": "UNOG ODG",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -1449,7 +1451,7 @@
       "entity": {
         "id": "entity:office-of-the-director-general-united-nations-office-at-:9c10d736f0",
         "name": "Office of the Director-General, United Nations Office at Nairobi",
-        "acronym": null,
+        "acronym": "UNON ODG",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -1504,7 +1506,7 @@
       "entity": {
         "id": "entity:office-of-the-special-representative-of-the-secretary-ge:36aaf7096f",
         "name": "Office of the Special Representative of the Secretary-General for Children and Armed Conflict",
-        "acronym": "SRSG-CAAC",
+        "acronym": "OSRSG-CAAC",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -1559,7 +1561,7 @@
       "entity": {
         "id": "entity:office-of-the-special-representative-of-the-secretary-ge:69920669e2",
         "name": "Office of the Special Representative of the Secretary-General on Sexual Violence in Conflict",
-        "acronym": "SRSG-SVC",
+        "acronym": "OSRSG-SVC",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -1614,7 +1616,7 @@
       "entity": {
         "id": "entity:office-of-the-special-representative-of-the-secretary-ge:9a789bfb19",
         "name": "Office of the Special Representative of the Secretary-General on Violence against Children",
-        "acronym": "SRSG-VAC",
+        "acronym": "OSRSG-VAC",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -1669,7 +1671,7 @@
       "entity": {
         "id": "entity:secretariat-of-the-united-nations-staff-pension-committe:7ab2a227de",
         "name": "Secretariat of the United Nations Staff Pension Committee (including reimbursement from the United Nations for services provided by the United Nation Joint Staff Pension Fund)",
-        "acronym": null,
+        "acronym": "UNSPC secretariat",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -1724,7 +1726,7 @@
       "entity": {
         "id": "entity:united-nations-youth-office:975034650b",
         "name": "United Nations Youth Office",
-        "acronym": "UNYO",
+        "acronym": "UN Youth",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -1779,7 +1781,7 @@
       "entity": {
         "id": "entity:advisory-committee-on-administrative-and-budgetary-quest:33e7f05823",
         "name": "Advisory Committee on Administrative and Budgetary Questions (including its secretariat)",
-        "acronym": null,
+        "acronym": "ACABQ",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -1834,7 +1836,7 @@
       "entity": {
         "id": "entity:committee-for-programme-and-coordination:e9661a3fc9",
         "name": "Committee for Programme and Coordination",
-        "acronym": null,
+        "acronym": "CPC",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -1866,7 +1868,7 @@
       "entity": {
         "id": "entity:committee-on-contributions:1037ad42ac",
         "name": "Committee on Contributions",
-        "acronym": null,
+        "acronym": "CoC",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -1898,7 +1900,7 @@
       "entity": {
         "id": "entity:independent-audit-advisory-committee:cdd1550708",
         "name": "Independent Audit Advisory Committee",
-        "acronym": null,
+        "acronym": "IAAC",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -2017,7 +2019,7 @@
       "entity": {
         "id": "entity:office-of-the-director-general-united-nations-office-at-:a2e64a4178",
         "name": "Office of the Director-General, United Nations Office at Vienna",
-        "acronym": null,
+        "acronym": "UNOV ODG",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -2049,7 +2051,7 @@
       "entity": {
         "id": "entity:resident-coordinator-system:a0b83212e8",
         "name": "Resident coordinator system",
-        "acronym": "RC system",
+        "acronym": "RCS",
         "relationship": "organizational_unit",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%201%29&l=en&t=docx"
       },
@@ -2689,7 +2691,7 @@
       "entity": {
         "id": "entity:united-nations-office-to-the-african-union:1a220fd206",
         "name": "United Nations Office to the African Union",
-        "acronym": null,
+        "acronym": "UNOAU",
         "relationship": "direct_financial_entity",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29&l=en&t=docx"
       },
@@ -3029,7 +3031,7 @@
       "entity": {
         "id": "entity:office-of-counter-terrorism:5ec69c0e80",
         "name": "Office of Counter-Terrorism",
-        "acronym": "UNOCT",
+        "acronym": "OCT",
         "relationship": "direct_financial_entity",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29&l=en&t=docx"
       },
@@ -3139,7 +3141,7 @@
       "entity": {
         "id": "entity:office-of-the-united-nations-special-coordinator-for-the:7c596a5412",
         "name": "Office of the United Nations Special Coordinator for the Middle East Peace Process",
-        "acronym": null,
+        "acronym": "UNSCO",
         "relationship": "direct_financial_entity",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29&l=en&t=docx"
       },
@@ -7523,7 +7525,7 @@
       "entity": {
         "id": "entity:united-nations-entity-for-gender-equality-and-the-empowe:db39785d0f",
         "name": "United Nations Entity for Gender Equality and the Empowerment of Women",
-        "acronym": "UN-Women",
+        "acronym": "UN Women",
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%2017%29&l=en&t=docx"
       },
@@ -7555,7 +7557,7 @@
       "entity": {
         "id": "entity:united-nations-entity-for-gender-equality-and-the-empowe:db39785d0f",
         "name": "United Nations Entity for Gender Equality and the Empowerment of Women",
-        "acronym": "UN-Women",
+        "acronym": "UN Women",
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%2017%29&l=en&t=docx"
       },

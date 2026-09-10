@@ -19,10 +19,10 @@ export const SYSTEM_NAV = [
 
 export const SECRETARIAT_NAV = [
   { href: "/secretariat", label: "Overview" },
-  { href: "/secretariat/programme-budget", label: "Programme Budget" },
-  { href: "/secretariat/peacekeeping-budget", label: "Peacekeeping Budget" },
+  { href: "/secretariat/programme-budget", label: "Programme Budget", aliases: ["/secretariat/programme-budget/contributors"] },
+  { href: "/secretariat/peacekeeping-budget", label: "Peacekeeping Budget", aliases: ["/secretariat/peacekeeping-budget/contributors"] },
   { href: "/secretariat/field-missions", label: "Field Missions" },
-  { href: "/secretariat/trust-funds", label: "Trust Funds" },
+  { href: "/secretariat/trust-funds", label: "Trust Funds", aliases: ["/secretariat/trust-funds/contributors"] },
 ] as const satisfies readonly SectionNavItem[];
 
 export function visibleSecretariatNav(): SectionNavItem[] {

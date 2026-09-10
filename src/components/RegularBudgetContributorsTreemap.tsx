@@ -164,6 +164,7 @@ export function RegularBudgetContributorsTreemap() {
     return STATUS_ORDER.map((status) => ({
       key: status,
       label: STATUS_STYLES[status].label,
+      labelColor: STATUS_STYLES[status].textColor,
       color: STATUS_STYLES[status].color,
       data: status,
       leaves: data.contributors
@@ -184,6 +185,9 @@ export function RegularBudgetContributorsTreemap() {
           value: contributor.assessment_amount,
           color: STATUS_STYLES[contributor.payment_status].color,
           textColor: STATUS_STYLES[contributor.payment_status].textColor,
+          borderColor: contributor.payment_status === "not_paid_in_full"
+            ? "var(--color-un-blue-shade)"
+            : undefined,
           data: contributor,
         })),
     })).filter((row) => row.leaves.length > 0) satisfies GroupedTreemapRow<
@@ -246,7 +250,7 @@ export function RegularBudgetContributorsTreemap() {
                 matchesContributor(leafLabel, query),
             }}
             totalLabel="Total"
-            layout={{ rowOrder: "input", consolidateSmallRows: false }}
+            layout={{ rowOrder: "input", consolidateSmallRows: false, leafGap: 2 }}
             plotClassName="h-[560px] sm:h-[680px] lg:h-[780px]"
             formatValue={(value) => formatCurrency(value, true)}
             formatAccessibleValue={(value) => formatCurrency(value)}

@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState } from "react";
-import { ExternalLink } from "lucide-react";
+import { ChevronRight, ExternalLink } from "lucide-react";
 import { SidebarControls } from "@/components/SidebarControls";
 import {
   SidebarStackedTrend,
@@ -54,6 +54,54 @@ function emptyClasses(): Record<CostClassKey, number> {
     civilian_personnel: 0,
     operational_costs: 0,
   };
+}
+
+function CostClassBreakdownRow({
+  label, amount, lines, maximum,
+}: {
+  label: string;
+  amount: number | null;
+  lines: CostItem[];
+  maximum: number;
+}) {
+  const [expanded, setExpanded] = useState(false);
+  const rowClass = "group grid min-h-11 w-full min-w-0 grid-cols-[2rem_minmax(0,1fr)_4rem_5.5rem] items-center gap-x-2 rounded-sm px-1 py-1 text-left text-sm hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-un-blue sm:grid-cols-[2rem_minmax(0,1fr)_5rem_6rem] sm:gap-x-3";
+  const bar = (value: number | null) => (
+    <span aria-hidden="true" className="relative h-1.5 overflow-hidden rounded-sm bg-gray-100">
+      <span className="absolute inset-y-0 start-0 rounded-sm bg-un-blue" style={{ width: `${maximum > 0 ? Math.min(100, Math.max(0, value ?? 0) / maximum * 100) : 0}%` }} />
+    </span>
+  );
+  const content = (
+    <>
+      {lines.length > 0 ? (
+        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-secondary text-muted-foreground group-hover:bg-muted group-hover:text-foreground">
+          <ChevronRight aria-hidden="true" className={`size-4 transition-transform ${expanded ? "rotate-90" : ""}`} />
+        </span>
+      ) : <span aria-hidden="true" className="size-8" />}
+      <span className="font-medium text-gray-900">{label}</span>
+      {bar(amount)}
+      <span className="justify-self-end whitespace-nowrap text-gray-900 tabular-nums">{amount === null ? "—" : formatBudget(amount)}</span>
+    </>
+  );
+  return (
+    <li>
+      {lines.length > 0 ? (
+        <button type="button" className={rowClass} aria-expanded={expanded} onClick={() => setExpanded(!expanded)}>{content}</button>
+      ) : <div className={rowClass}>{content}</div>}
+      {expanded && lines.length > 0 && (
+        <ul className="ps-3">
+          {lines.map((line, index) => (
+            <li key={`${line.label}-${index}`} className={rowClass}>
+              <span aria-hidden="true" className="size-8" />
+              <span className="text-gray-600">{line.label}</span>
+              {bar(line.amount)}
+              <span className="justify-self-end whitespace-nowrap text-gray-900 tabular-nums">{formatBudget(line.amount)}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </li>
+  );
 }
 
 export function PeacekeepingMissionSidebar({
@@ -190,70 +238,19 @@ export function PeacekeepingMissionSidebar({
           {classRows.length > 0 && (
             <section>
               <h3 className="text-sm font-semibold tracking-wide text-gray-900 uppercase">
-                Expenditure {fiscalYear} by cost class
+                Breakdown
               </h3>
-              <div className="mt-3 space-y-5">
-                {classRows.map(({ key, amount, lines }) => {
-                  const classTotal = amount ?? 0;
-                  return (
-                    <div key={key}>
-                      <div className="flex items-start justify-between gap-4 text-sm">
-                        <span className="flex items-center gap-2 font-medium text-gray-900">
-                          <span
-                            className="size-2.5 shrink-0"
-                            style={{
-                              backgroundColor:
-                                COST_CLASS_BAND_COLORS[key]?.bg ?? "#6b7280",
-                            }}
-                            aria-hidden="true"
-                          />
-                          {COST_CLASS_LABELS[key] ?? key}
-                        </span>
-                        <span className="shrink-0 font-semibold text-gray-900">
-                          {amount === null ? "—" : formatBudget(amount)}
-                        </span>
-                      </div>
-                      {lines.length > 0 && (
-                        <ul className="mt-2 space-y-2">
-                          {lines.map((line, index) => (
-                            <li key={`${line.label}-${index}`}>
-                              <div className="flex items-start justify-between gap-4 text-sm">
-                                <span className="text-gray-600">
-                                  {line.label}
-                                </span>
-                                <span className="shrink-0 tabular-nums text-gray-900">
-                                  {formatBudget(line.amount)}
-                                </span>
-                              </div>
-                              <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-gray-100">
-                                <div
-                                  className="h-full"
-                                  style={{
-                                    width: `${
-                                      classTotal > 0
-                                        ? Math.max(
-                                            0,
-                                            Math.min(
-                                              100,
-                                              (line.amount / classTotal) * 100,
-                                            ),
-                                          )
-                                        : 0
-                                    }%`,
-                                    backgroundColor:
-                                      COST_CLASS_BAND_COLORS[key]?.bg ??
-                                      "#6b7280",
-                                  }}
-                                />
-                              </div>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
+              <ul className="mt-3 space-y-1">
+                {classRows.map(({ key, amount, lines }) => (
+                  <CostClassBreakdownRow
+                    key={`${code}-${fiscalYear}-${key}`}
+                    label={COST_CLASS_LABELS[key] ?? key}
+                    amount={amount}
+                    lines={lines}
+                    maximum={Math.max(0, ...classRows.flatMap((row) => [row.amount ?? 0, ...row.lines.map((line) => line.amount)]))}
+                  />
+                ))}
+              </ul>
             </section>
           )}
 
