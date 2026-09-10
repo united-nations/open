@@ -1,17 +1,11 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import { getSystemGroupingStyle } from "@/lib/systemGroupings";
 import { loadStaticData, loadYearData } from "@/lib/data";
 import {
   createUncategorizedEntity,
-  formatBudget,
   normalizeEntityForDisplay,
 } from "@/lib/entities";
 import { layoutGroups } from "@/lib/treemapLayout";
@@ -19,7 +13,19 @@ import { useYearRanges } from "@/lib/useYearRanges";
 import { cn } from "@/lib/utils";
 import type { BudgetEntry, Entity } from "@/types";
 
-export function SystemCategoryTreemap() {
+export function SystemCategoryTreemap({
+  systemCard,
+  secretariatCard,
+}: {
+  systemCard: ReactNode;
+  secretariatCard: ReactNode;
+}) {
+  const overviewRef = useRef<HTMLDivElement>(null);
+  const frameRef = useRef<HTMLDivElement>(null);
+  const secretariatRef = useRef<HTMLAnchorElement>(null);
+  const systemCardRef = useRef<HTMLDivElement>(null);
+  const secretariatCardRef = useRef<HTMLDivElement>(null);
+  const [connectors, setConnectors] = useState<{ system: string; secretariat: string; secretariatOutline: string } | null>(null);
   const year = useYearRanges().entitySpending.default;
   const [entities, setEntities] = useState<Entity[]>([]);
   const [spending, setSpending] = useState<Record<string, number>>({});
@@ -64,91 +70,120 @@ export function SystemCategoryTreemap() {
     }
     return [...totals.entries()]
       .map(([key, total]) => ({ key, total }))
-      .sort(
-        (a, b) =>
-          getSystemGroupingStyle(a.key).order -
-          getSystemGroupingStyle(b.key).order,
-      );
+      .sort((a, b) => b.total - a.total || a.key.localeCompare(b.key));
   }, [entities, spending]);
 
-  const rects = useMemo(() => layoutGroups(groups, 100, 100, 0.35, 4), [groups]);
+  const rects = useMemo(() => {
+    const secretariat = groups.find(group => group.key === "UN Secretariat");
+    if (!secretariat) return layoutGroups(groups, 100, 100, 0, 4);
+    const total = groups.reduce((sum, group) => sum + group.total, 0);
+    const secretariatHeight = secretariat.total / total * 100;
+    const otherHeight = 100 - secretariatHeight;
+    return [
+      ...layoutGroups(groups.filter(group => group.key !== "UN Secretariat"), 100, otherHeight, 0, 4),
+      { key: secretariat.key, x: 0, y: otherHeight, width: 100, height: secretariatHeight },
+    ];
+  }, [groups]);
 
-  if (error) {
-    return (
-      <p className="mt-10 text-sm text-gray-500" role="status">
-        {error}
-      </p>
-    );
-  }
+  useEffect(() => {
+    const overview = overviewRef.current;
+    const frame = frameRef.current;
+    const systemCardElement = systemCardRef.current;
+    const secretariatCardElement = secretariatCardRef.current;
+    if (!overview || !frame || !systemCardElement || !secretariatCardElement) return;
+    const update = () => {
+      const origin = overview.getBoundingClientRect();
+      const whole = frame.getBoundingClientRect();
+      const system = systemCardElement.getBoundingClientRect();
+      const secretariat = secretariatCardElement.getBoundingClientRect();
+      const tile = secretariatRef.current?.getBoundingClientRect();
+      if (system.right >= whole.left || !tile) {
+        setConnectors(null);
+        return;
+      }
+      const path = (x: number, y: number, target: DOMRect, outline = false) => {
+        // Join the middle of the 1px card border; keep the white outline outside it.
+        const endX = target.right - origin.left - (outline ? 0 : 0.5);
+        // Meet the side of the card horizontally whenever the source is within
+        // its height; otherwise use a single straight segment to its nearest edge.
+        const endY = Math.max(target.top + 16 - origin.top,
+          Math.min(y, target.bottom - 16 - origin.top));
+        return `M ${x} ${y} L ${endX} ${endY}`;
+      };
+      const secretariatY = tile.top + tile.height / 2;
+      const connectorInset = whole.bottom - secretariatY;
+      setConnectors({
+        system: path(whole.left + 0.5 - origin.left, whole.top + connectorInset - origin.top, system),
+        secretariat: path(tile.left - origin.left, secretariatY - origin.top, secretariat),
+        secretariatOutline: path(tile.left - 2 - origin.left, secretariatY - origin.top, secretariat, true),
+      });
+    };
+    const observer = new ResizeObserver(update);
+    [overview, frame, systemCardElement, secretariatCardElement].forEach(element => observer.observe(element));
+    const animation = requestAnimationFrame(update);
+    return () => {
+      cancelAnimationFrame(animation);
+      observer.disconnect();
+    };
+  }, [rects]);
 
   return (
-    <section className="grid gap-8 rounded-lg border border-gray-200 bg-white p-6 md:col-span-2 md:grid-cols-2 md:items-center">
-      <div>
-        <h2 className="text-xl font-bold tracking-tight text-gray-900">
-          UN System organizations
-        </h2>
-        <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          Explore UN System organizations by category. Tile size shows spending.
-        </p>
+    <div ref={overviewRef} className="relative mt-10 grid items-center gap-8 md:grid-cols-[minmax(0,1.15fr)_5rem_minmax(0,0.85fr)] md:gap-0">
+      <div className="relative space-y-6 md:col-start-1 md:row-start-1">
+        <div ref={systemCardRef}>{systemCard}</div>
+        <div ref={secretariatCardRef}>{secretariatCard}</div>
       </div>
-
-      <div
-        className="relative h-72 w-full overflow-hidden bg-gray-100 md:justify-self-end md:w-[90%]"
-        role="img"
-        aria-label={`UN System spending by category in ${year}. Tile colors identify the organization categories.`}
-      >
-        {rects.length === 0 && (
-          <div className="flex h-full items-center justify-center text-sm text-gray-500">
-            Loading UN System categories…
-          </div>
-        )}
-        {rects.map((rect) => {
-          const styles = getSystemGroupingStyle(rect.key);
-          const total =
-            groups.find((group) => group.key === rect.key)?.total ?? 0;
-          return (
-            <Tooltip key={rect.key} delayDuration={50}>
-              <TooltipTrigger asChild>
+      <figure className="min-w-0 md:col-start-3 md:row-start-1">
+        <div ref={frameRef} className="rounded-lg border border-gray-700 bg-white p-1">
+          <div
+            className="relative h-90 w-full overflow-hidden rounded-sm bg-white"
+            role="group"
+            aria-label={`UN System spending by category in ${year}. Blue highlights the UN Secretariat within the System.`}
+          >
+            {error ? (
+              <p className="flex h-full items-center justify-center p-4 text-sm text-gray-500" role="status">{error}</p>
+            ) : rects.length === 0 ? (
+              <div className="flex h-full items-center justify-center text-sm text-gray-500">Loading UN System categories…</div>
+            ) : rects.map((rect) => {
+              const styles = getSystemGroupingStyle(rect.key);
+              const isSecretariat = rect.key === "UN Secretariat";
+              return (
                 <Link
-                  href="/system/organizations"
-                  aria-label={`${styles.label}. Opens UN System organizations.`}
+                  key={rect.key}
+                  ref={isSecretariat ? secretariatRef : undefined}
+                  href={isSecretariat ? "/secretariat" : "/system/organizations"}
+                  aria-label={`${styles.label}. Opens ${isSecretariat ? "UN Secretariat financials" : "UN System organizations"}.`}
                   className={cn(
-                    "absolute overflow-hidden text-left transition-[filter] hover:brightness-95",
-                    styles.bgColor,
-                    styles.textColor,
+                    "absolute overflow-hidden text-left transition-[filter] hover:brightness-95 focus-visible:z-10 focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-black",
+                    isSecretariat ? "bg-un-blue text-white" : "bg-gray-300 text-gray-800",
                   )}
                   style={{
-                    left: `${rect.x}%`,
-                    top: `${rect.y}%`,
-                    width: `${rect.width}%`,
-                    height: `${rect.height}%`,
-                    boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.9)",
+                    // Half of a 3px gap on each internal edge, with no outer inset.
+                    left: `calc(${rect.x}% + ${rect.x > 0.001 ? 1.5 : 0}px)`,
+                    top: `calc(${rect.y}% + ${rect.y > 0.001 ? 1.5 : 0}px)`,
+                    width: `max(0px, calc(${rect.width}% - ${(rect.x > 0.001 ? 1.5 : 0) + (rect.x + rect.width < 99.999 ? 1.5 : 0)}px))`,
+                    height: `max(0px, calc(${rect.height}% - ${(rect.y > 0.001 ? 1.5 : 0) + (rect.y + rect.height < 99.999 ? 1.5 : 0)}px))`,
                   }}
                 >
-                  <div className="h-full p-1.5 sm:p-2">
-                    <div className="text-[10px] leading-tight font-semibold sm:text-xs">
-                      {styles.label}
-                    </div>
-                    {rect.height > 12 && (
-                      <div className="mt-0.5 text-[10px] leading-tight opacity-80">
-                        {formatBudget(total)}
-                      </div>
-                    )}
+                  <div className={cn(
+                    "flex h-full overflow-hidden px-2",
+                    rect.height < 12 ? "items-center" : "items-start py-2",
+                  )}>
+                    <div className="min-w-0 truncate text-sm leading-tight font-semibold">{styles.label}</div>
                   </div>
                 </Link>
-              </TooltipTrigger>
-              <TooltipContent
-                side="top"
-                sideOffset={6}
-                className="border border-slate-200 bg-white text-slate-800 shadow-lg"
-              >
-                <p className="text-sm font-semibold">{styles.label}</p>
-                <p className="text-xs text-slate-600">{formatBudget(total)}</p>
-              </TooltipContent>
-            </Tooltip>
-          );
-        })}
-      </div>
-    </section>
+              );
+            })}
+          </div>
+        </div>
+      </figure>
+      {connectors && (
+        <svg aria-hidden="true" className="pointer-events-none absolute inset-0 hidden h-full w-full overflow-visible md:block" fill="none">
+          <path d={connectors.system} className="stroke-gray-700" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="round" />
+          <path d={connectors.secretariatOutline} className="stroke-white" strokeWidth="5" strokeLinecap="butt" strokeLinejoin="round" />
+          <path d={connectors.secretariat} className="stroke-un-blue" strokeWidth="1" strokeLinecap="butt" strokeLinejoin="round" />
+        </svg>
+      )}
+    </div>
   );
 }

@@ -81,7 +81,7 @@ export function layoutGroups(
   if (bandGroups.length > 0) {
     const bandTotal = bandGroups.reduce((sum, g) => sum + g.total, 0);
     const bandHeight = (bandTotal / totalBudget) * height - gap;
-    const rects = squarify(
+    const rects = (gap === 0 ? squarifyDense : squarify)(
       bandGroups.map((g) => ({ value: g.total, data: g.key })),
       0,
       currentY,
