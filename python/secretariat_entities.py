@@ -5,9 +5,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-import pandas as pd
-
 from utils import normalize_entity
+from secretariat_expenses import load_secretariat_expenses
 
 
 SRC = Path("data/secretariat-entities.json")
@@ -65,7 +64,7 @@ def load_secretariat_entities() -> dict:
         )
 
     if EXPENSES_SRC.exists():
-        expenses = pd.read_csv(EXPENSES_SRC, usecols=["ENTITY"])
+        expenses = load_secretariat_expenses()
         expense_codes = {
             normalize_entity(str(code)) for code in expenses["ENTITY"].dropna().unique()
         }

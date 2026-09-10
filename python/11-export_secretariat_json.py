@@ -1,8 +1,10 @@
 """Export audited Secretariat expenditure in the shared budget-tree contract.
 
-Source: ``data/un-secretariat-expenses.csv`` (2019-2023).
+Source: legacy ``data/un-secretariat-expenses.csv`` (2019-2023), extended
+with annual ARWO extracts (2024-2025) by ``10-extract_arwo_expenses.py``.
 
-Two files are written per reporting year:
+Three files are written per reporting year, including
+``secretariat-overview-{year}.json`` for priority and funding-source totals:
 
 ``budget-audited-ppb-{year}.json``
     whole -> budget part -> section -> entity. This is the programme-budget
@@ -29,10 +31,10 @@ import pandas as pd
 
 from domain_taxonomies import load_secretariat_taxonomies
 from secretariat_entities import load_secretariat_entities
+from secretariat_expenses import load_secretariat_expenses
 from utils import normalize_entity
 
 
-SRC = Path("data/un-secretariat-expenses.csv")
 OUT = Path("public/data")
 
 PART_ID_FIXES = {"ViII": "VIII"}
@@ -50,6 +52,8 @@ MISSION_ACCOUNT_REFERENCES = {
     "A/76/717",
     "A/77/779",
     "A/78/726",
+    "A/79/788",
+    "A/80/643",
 }
 
 SUPPORT_ACCOUNT_REFERENCES = {
@@ -58,6 +62,8 @@ SUPPORT_ACCOUNT_REFERENCES = {
     "A/76/596",
     "A/77/631",
     "A/78/638",
+    "A/79/680",
+    "A/80/631",
 }
 
 OTHER_ASSESSED_NON_PK_REFERENCES = {
@@ -66,6 +72,7 @@ OTHER_ASSESSED_NON_PK_REFERENCES = {
     "ST/ADM/SER.B/1025",
     "A/77/528",
     "A/79/555",
+    "A/80/505",
 }
 
 SECRETARIAT_TAXONOMIES = load_secretariat_taxonomies()
@@ -90,7 +97,7 @@ SECRETARIAT_ENTITIES = load_secretariat_entities()
 
 
 def load() -> pd.DataFrame:
-    df = pd.read_csv(SRC).rename(
+    df = load_secretariat_expenses().rename(
         columns={
             "PRIORITY_AREA": "priority_area",
             "PART_ID": "part_id",
@@ -193,7 +200,10 @@ def build_overview(year: int, frame: pd.DataFrame) -> dict:
             "funding_sources": list(SOURCE_KEYS.values()),
             "groups": SECRETARIAT_ENTITIES["groups"],
             "classification_note": SECRETARIAT_ENTITIES["classification_note"],
-            "source": OVERVIEW_SOURCE,
+            "source": OVERVIEW_SOURCE if year <= 2023 else {
+                "label": "Annual Report on the Work of the Organization — ARWO expenditure extract",
+                "url": "https://www.un.org/annualreport/",
+            },
         },
         "entities": entities,
     }
@@ -327,7 +337,11 @@ def build_programme(year: int, frame: pd.DataFrame) -> dict:
                 "the Peacekeeping block below."
             ),
             "sourceKind": "audited",
-            "source": SOURCE_META,
+            "source": SOURCE_META if year <= 2023 else {
+                "repo": "UN Annual Report on the Work of the Organization",
+                "release": "ARWO 2019–2025 expenditure workbook",
+                "url": "https://www.un.org/annualreport/",
+            },
         },
         "nodes": nodes,
     }
@@ -394,7 +408,11 @@ def build_peacekeeping(year: int, frame: pd.DataFrame) -> dict:
                 "sections above."
             ),
             "sourceKind": "audited",
-            "source": SOURCE_META,
+            "source": SOURCE_META if year <= 2023 else {
+                "repo": "UN Annual Report on the Work of the Organization",
+                "release": "ARWO 2019–2025 expenditure workbook",
+                "url": "https://www.un.org/annualreport/",
+            },
         },
         "nodes": nodes,
     }
