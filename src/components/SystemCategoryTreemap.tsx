@@ -7,50 +7,22 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import {
-  CEB_AGGREGATE_ENTITIES,
-  PEACEKEEPING_OPERATIONS_GROUP,
-  SECRETARIAT_PROPER_GROUP,
-} from "@/lib/cebAggregates";
+import { getSystemGroupingStyle } from "@/lib/systemGroupings";
 import { loadStaticData, loadYearData } from "@/lib/data";
 import {
   createUncategorizedEntity,
   formatBudget,
   normalizeEntityForDisplay,
 } from "@/lib/entities";
-import { getSystemGroupingStyle } from "@/lib/systemGroupings";
 import { layoutGroups } from "@/lib/treemapLayout";
 import { useYearRanges } from "@/lib/useYearRanges";
 import { cn } from "@/lib/utils";
-import type { BudgetEntry, Entity, SecretariatEntitiesData } from "@/types";
-
-const SECRETARIAT_GROUPS = new Set([
-  SECRETARIAT_PROPER_GROUP,
-  PEACEKEEPING_OPERATIONS_GROUP,
-]);
-
-function homeGroup(
-  entity: Entity,
-  pkoCodes: Set<string>,
-  aliases: Record<string, string>,
-): string {
-  const canonical = aliases[entity.entity] ?? entity.entity;
-  if (
-    entity.system_grouping === PEACEKEEPING_OPERATIONS_GROUP ||
-    pkoCodes.has(entity.entity) ||
-    pkoCodes.has(canonical)
-  ) {
-    return PEACEKEEPING_OPERATIONS_GROUP;
-  }
-  return entity.system_grouping;
-}
+import type { BudgetEntry, Entity } from "@/types";
 
 export function SystemCategoryTreemap() {
   const year = useYearRanges().entitySpending.default;
   const [entities, setEntities] = useState<Entity[]>([]);
   const [spending, setSpending] = useState<Record<string, number>>({});
-  const [pkoCodes, setPkoCodes] = useState<Set<string>>(new Set());
-  const [aliases, setAliases] = useState<Record<string, string>>({});
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -58,9 +30,8 @@ export function SystemCategoryTreemap() {
     Promise.all([
       loadStaticData<Entity[]>("entities.json"),
       loadYearData<BudgetEntry[]>("entity-spending", year),
-      loadStaticData<SecretariatEntitiesData>("secretariat-entities.json"),
     ])
-      .then(([entityList, spendingRows, secretariat]) => {
+      .then(([entityList, spendingRows]) => {
         if (!active) return;
         setEntities(entityList);
         setSpending(
@@ -69,14 +40,6 @@ export function SystemCategoryTreemap() {
             return acc;
           }, {}),
         );
-        setPkoCodes(
-          new Set(
-            Object.entries(secretariat.entities)
-              .filter(([, meta]) => meta.group === "pko")
-              .map(([code]) => code),
-          ),
-        );
-        setAliases(secretariat.aliases);
       })
       .catch(() => {
         if (active) setError("Failed to load UN System categories.");
@@ -92,17 +55,11 @@ export function SystemCategoryTreemap() {
         .filter((entity) => entity.entity)
         .map((entity) => [entity.entity, normalizeEntityForDisplay(entity)]),
     );
-    const synthetics = new Map(
-      CEB_AGGREGATE_ENTITIES.map((entity) => [entity.entity, entity]),
-    );
     const totals = new Map<string, number>();
     for (const [code, amount] of Object.entries(spending)) {
       if (!code || amount <= 0) continue;
-      const entity =
-        synthetics.get(code) ||
-        metadata.get(code) ||
-        createUncategorizedEntity(code);
-      const group = homeGroup(entity, pkoCodes, aliases);
+      const entity = metadata.get(code) || createUncategorizedEntity(code);
+      const group = entity.system_grouping;
       totals.set(group, (totals.get(group) ?? 0) + amount);
     }
     return [...totals.entries()]
@@ -112,7 +69,7 @@ export function SystemCategoryTreemap() {
           getSystemGroupingStyle(a.key).order -
           getSystemGroupingStyle(b.key).order,
       );
-  }, [aliases, entities, pkoCodes, spending]);
+  }, [entities, spending]);
 
   const rects = useMemo(() => layoutGroups(groups, 100, 100, 0.35, 4), [groups]);
 
@@ -128,12 +85,10 @@ export function SystemCategoryTreemap() {
     <section className="grid gap-8 rounded-lg border border-gray-200 bg-white p-6 md:col-span-2 md:grid-cols-2 md:items-center">
       <div>
         <h2 className="text-xl font-bold tracking-tight text-gray-900">
-          UN System vs UN Secretariat
+          UN System organizations
         </h2>
         <p className="mt-3 text-sm leading-relaxed text-gray-700">
-          The UN System is the full set of UN organizations. The UN Secretariat,
-          including peacekeeping operations, is one part of that System. Tile size
-          shows spending.
+          Explore UN System organizations by category. Tile size shows spending.
         </p>
       </div>
 
@@ -149,16 +104,14 @@ export function SystemCategoryTreemap() {
         )}
         {rects.map((rect) => {
           const styles = getSystemGroupingStyle(rect.key);
-          const inSecretariat = SECRETARIAT_GROUPS.has(rect.key);
-          const href = inSecretariat ? "/secretariat" : "/system";
           const total =
             groups.find((group) => group.key === rect.key)?.total ?? 0;
           return (
             <Tooltip key={rect.key} delayDuration={50}>
               <TooltipTrigger asChild>
                 <Link
-                  href={href}
-                  aria-label={`${styles.label}. Opens ${inSecretariat ? "UN Secretariat" : "UN System"} financials.`}
+                  href="/system/organizations"
+                  aria-label={`${styles.label}. Opens UN System organizations.`}
                   className={cn(
                     "absolute overflow-hidden text-left transition-[filter] hover:brightness-95",
                     styles.bgColor,

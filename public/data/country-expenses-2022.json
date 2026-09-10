@@ -9,7 +9,7 @@
     "entities": {
       "WFP": 1577916744.0,
       "UNICEF": 648666864.0,
-      "UN": 413196168.0,
+      "UN Secretariat (incl. Special Political Missions)": 413196168.0,
       "UNHCR": 214972274.0,
       "UNDP": 180941977.0,
       "WHO": 153254078.0,
@@ -36,11 +36,11 @@
     "long": 31.307,
     "total": 2686440256.0,
     "entities": {
-      "UN-DPO": 1311881245.0,
+      "DPO (incl. Peacekeeping Operations)": 1311881245.0,
       "WFP": 597950659.0,
       "UNICEF": 197535961.0,
       "UNHCR": 131968789.0,
-      "UN": 101148830.0,
+      "UN Secretariat (incl. Special Political Missions)": 101148830.0,
       "IOM": 90540212.0,
       "UNDP": 78035292.0,
       "UNOPS": 61290460.0,
@@ -68,7 +68,7 @@
     "entities": {
       "WFP": 1275659426.0,
       "UNICEF": 570818780.0,
-      "UN": 220217357.0,
+      "UN Secretariat (incl. Special Political Missions)": 220217357.0,
       "UNHCR": 148223450.0,
       "UNDP": 130720027.0,
       "WHO": 130531057.0,
@@ -92,8 +92,8 @@
     "total": 2331122307.0,
     "entities": {
       "WFP": 718457204.0,
-      "UN-DPO": 684174908.0,
-      "UN": 228068412.0,
+      "DPO (incl. Peacekeeping Operations)": 684174908.0,
+      "UN Secretariat (incl. Special Political Missions)": 228068412.0,
       "UNICEF": 223524243.0,
       "FAO": 79396271.0,
       "UNOPS": 68071308.0,
@@ -121,11 +121,11 @@
     "long": 21.7587,
     "total": 2210099169.0,
     "entities": {
-      "UN-DPO": 1150796322.0,
+      "DPO (incl. Peacekeeping Operations)": 1150796322.0,
       "WFP": 327043665.0,
       "UNICEF": 248164656.0,
       "UNHCR": 114283658.0,
-      "UN": 113794356.0,
+      "UN Secretariat (incl. Special Political Missions)": 113794356.0,
       "UNDP": 61430870.0,
       "WHO": 46912518.0,
       "UNFPA": 38098593.0,
@@ -157,7 +157,7 @@
       "WFP": 707859555.0,
       "UNICEF": 486099882.0,
       "UNHCR": 369926246.0,
-      "UN": 242808056.0,
+      "UN Secretariat (incl. Special Political Missions)": 242808056.0,
       "IOM": 99079926.0,
       "UNDP": 86019808.0,
       "WHO": 80482759.0,
@@ -182,12 +182,12 @@
     "long": 35.8623,
     "total": 2123662905.0,
     "entities": {
-      "UN-DPO": 524962165.0,
+      "DPO (incl. Peacekeeping Operations)": 524962165.0,
       "WFP": 483640616.0,
       "UNICEF": 323174004.0,
       "UNHCR": 281208185.0,
       "UNRWA": 185260387.0,
-      "UN": 152572403.0,
+      "UN Secretariat (incl. Special Political Missions)": 152572403.0,
       "UNDP": 93825245.0,
       "WHO": 20325505.0,
       "ILO": 15189349.0,
@@ -214,7 +214,7 @@
     "entities": {
       "WFP": 872009812.0,
       "UNICEF": 270326458.0,
-      "UN": 207961568.0,
+      "UN Secretariat (incl. Special Political Missions)": 207961568.0,
       "UNHCR": 193018001.0,
       "WHO": 62287693.0,
       "IOM": 59616164.0,
@@ -244,10 +244,10 @@
     "long": -3.9962,
     "total": 1782364203.0,
     "entities": {
-      "UN-DPO": 1319954318.0,
+      "DPO (incl. Peacekeeping Operations)": 1319954318.0,
       "WFP": 130073046.0,
       "UNICEF": 127786406.0,
-      "UN": 49512227.0,
+      "UN Secretariat (incl. Special Political Missions)": 49512227.0,
       "UNOPS": 38966339.0,
       "UNDP": 32826448.0,
       "UNHCR": 24018735.0,
@@ -276,10 +276,10 @@
     "long": 20.9394,
     "total": 1591024297.0,
     "entities": {
-      "UN-DPO": 1175389904.0,
+      "DPO (incl. Peacekeeping Operations)": 1175389904.0,
       "WFP": 135626351.0,
       "UNICEF": 74854616.0,
-      "UN": 45639653.0,
+      "UN Secretariat (incl. Special Political Missions)": 45639653.0,
       "UNHCR": 30853600.0,
       "UNDP": 29175300.0,
       "UNOPS": 23525648.0,
@@ -307,8 +307,8 @@
     "total": 1417068074.0,
     "entities": {
       "WFP": 438670216.0,
-      "UN-DPO": 209946203.0,
-      "UN": 200982416.0,
+      "DPO (incl. Peacekeeping Operations)": 209946203.0,
+      "UN Secretariat (incl. Special Political Missions)": 200982416.0,
       "UNICEF": 169671041.0,
       "UNHCR": 169170824.0,
       "UNDP": 73867974.0,
@@ -341,7 +341,7 @@
       "UNHCR": 176321838.0,
       "UNRWA": 152204113.0,
       "UNICEF": 130086132.0,
-      "UN": 120159623.0,
+      "UN Secretariat (incl. Special Political Missions)": 120159623.0,
       "IOM": 57206517.0,
       "UNDP": 53577671.0,
       "UNFPA": 40880919.0,
@@ -366,7 +366,7 @@
       "WFP": 173637696.0,
       "UNDP": 68397310.0,
       "UNICEF": 47298244.0,
-      "UN": 35109514.0,
+      "UN Secretariat (incl. Special Political Missions)": 35109514.0,
       "UNOPS": 19326367.0,
       "WHO": 17002627.0,
       "UNFPA": 8857179.0,
@@ -388,7 +388,7 @@
     "total": 1059136025.0,
     "entities": {
       "UNDP": 269652845.0,
-      "UN": 214853372.0,
+      "UN Secretariat (incl. Special Political Missions)": 214853372.0,
       "UNHCR": 165749580.0,
       "IOM": 124190511.0,
       "UNICEF": 95656839.0,
@@ -417,7 +417,7 @@
       "UNICEF": 285936640.0,
       "WFP": 269080711.0,
       "WHO": 141189239.0,
-      "UN": 92145834.0,
+      "UN Secretariat (incl. Special Political Missions)": 92145834.0,
       "UNDP": 81799331.0,
       "IOM": 50554366.0,
       "UNHCR": 49640620.0,
@@ -454,7 +454,7 @@
       "WHO": 36397655.0,
       "ILO": 22232237.0,
       "FAO": 18873098.0,
-      "UN": 16812798.0,
+      "UN Secretariat (incl. Special Political Missions)": 16812798.0,
       "UN Women": 7224831.0,
       "UNOPS": 4130792.0,
       "UNCDF": 3470034.0,
@@ -484,7 +484,7 @@
       "UNFPA": 11153362.0,
       "WHO": 9602438.0,
       "IOM": 6538449.0,
-      "UN": 5611901.0,
+      "UN Secretariat (incl. Special Political Missions)": 5611901.0,
       "ITC": 2113353.0,
       "FAO": 1710969.0,
       "UNIDO": 1617606.0,
@@ -507,7 +507,7 @@
       "WFP": 122951199.0,
       "UNHCR": 88820573.0,
       "UNDP": 44080979.0,
-      "UN": 26530363.0,
+      "UN Secretariat (incl. Special Political Missions)": 26530363.0,
       "FAO": 25561804.0,
       "ITC": 18228841.0,
       "UNFPA": 15597354.0,
@@ -534,7 +534,7 @@
       "WFP": 250091120.0,
       "UNICEF": 100483739.0,
       "UNHCR": 94169955.0,
-      "UN": 65462571.0,
+      "UN Secretariat (incl. Special Political Missions)": 65462571.0,
       "UNDP": 26546095.0,
       "UNOPS": 18162609.0,
       "FAO": 12552466.0,
@@ -570,7 +570,7 @@
       "WHO": 27802018.0,
       "UNFPA": 24349158.0,
       "UNDP": 22346469.0,
-      "UN": 21742591.0,
+      "UN Secretariat (incl. Special Political Missions)": 21742591.0,
       "UN Women": 12404678.0,
       "UNCDF": 12124587.0,
       "FAO": 10543999.0,
@@ -598,7 +598,7 @@
       "WFP": 215974931.0,
       "UNICEF": 127570075.0,
       "UNHCR": 79590435.0,
-      "UN": 40947754.0,
+      "UN Secretariat (incl. Special Political Missions)": 40947754.0,
       "UNDP": 36842540.0,
       "IOM": 30581228.0,
       "WHO": 19197464.0,
@@ -625,7 +625,7 @@
     "long": 35.2433,
     "total": 584656721.0,
     "entities": {
-      "UN": 193638210.0,
+      "UN Secretariat (incl. Special Political Missions)": 193638210.0,
       "UNICEF": 124449239.0,
       "UNHCR": 86935294.0,
       "UNDP": 38832348.0,
@@ -651,7 +651,7 @@
     "long": -74.2973,
     "total": 578516853.0,
     "entities": {
-      "UN": 118155435.0,
+      "UN Secretariat (incl. Special Political Missions)": 118155435.0,
       "WFP": 117268075.0,
       "UNDP": 96980263.0,
       "UNHCR": 59884767.0,
@@ -695,7 +695,7 @@
       "UNICEF": 104036145.0,
       "UNHCR": 84553609.0,
       "UNDP": 55320700.0,
-      "UN": 43703898.0,
+      "UN Secretariat (incl. Special Political Missions)": 43703898.0,
       "WHO": 19190286.0,
       "UNFPA": 10813994.0,
       "IOM": 8028720.0,
@@ -723,7 +723,7 @@
       "WHO": 31744062.0,
       "UNFPA": 30565826.0,
       "UNHCR": 27551969.0,
-      "UN": 19926292.0,
+      "UN Secretariat (incl. Special Political Missions)": 19926292.0,
       "IOM": 19573192.0,
       "UNOPS": 13986916.0,
       "FAO": 13930779.0,
@@ -749,7 +749,7 @@
       "WFP": 197566020.0,
       "UNICEF": 77468671.0,
       "UNHCR": 52650464.0,
-      "UN": 36612681.0,
+      "UN Secretariat (incl. Special Political Missions)": 36612681.0,
       "UNDP": 29179803.0,
       "UNFPA": 14758978.0,
       "WHO": 14125533.0,
@@ -783,7 +783,7 @@
       "UNHCR": 8097426.0,
       "FAO": 7600368.0,
       "ILO": 4382684.0,
-      "UN": 4095085.0,
+      "UN Secretariat (incl. Special Political Missions)": 4095085.0,
       "UN Women": 3812878.0,
       "IOM": 3528054.0,
       "UNAIDS": 1610122.0,
@@ -813,7 +813,7 @@
       "ILO": 4155242.0,
       "FAO": 2663279.0,
       "UNIDO": 2139099.0,
-      "UN": 1434503.0,
+      "UN Secretariat (incl. Special Political Missions)": 1434503.0,
       "UNFPA": 1392208.0,
       "UNAIDS": 634538.0,
       "ITC": 80875.0,
@@ -830,7 +830,7 @@
     "entities": {
       "WFP": 103571453.0,
       "UNICEF": 73098377.0,
-      "UN": 51300311.0,
+      "UN Secretariat (incl. Special Political Missions)": 51300311.0,
       "UNOPS": 36463585.0,
       "UNHCR": 34204905.0,
       "UNFPA": 21471332.0,
@@ -867,7 +867,7 @@
       "UNFPA": 9586001.0,
       "WFP": 4496261.0,
       "UN Women": 3729350.0,
-      "UN": 2257963.0,
+      "UN Secretariat (incl. Special Political Missions)": 2257963.0,
       "FAO": 1686755.0,
       "UNAIDS": 1288825.0,
       "UNEP": 747569.0,
@@ -895,7 +895,7 @@
       "UNHCR": 23557243.0,
       "UNICEF": 19562049.0,
       "PAHO": 18935447.0,
-      "UN": 6260963.0,
+      "UN Secretariat (incl. Special Political Missions)": 6260963.0,
       "UNFPA": 4721417.0,
       "IOM": 4550162.0,
       "FAO": 3140114.0,
@@ -918,7 +918,7 @@
     "entities": {
       "WFP": 94030640.0,
       "UNICEF": 60105401.0,
-      "UN": 47840486.0,
+      "UN Secretariat (incl. Special Political Missions)": 47840486.0,
       "UNDP": 31975994.0,
       "UNOPS": 26289815.0,
       "IOM": 20962100.0,
@@ -955,7 +955,7 @@
       "FAO": 2679684.0,
       "UNIDO": 2670911.0,
       "IOM": 2179016.0,
-      "UN": 2048502.0,
+      "UN Secretariat (incl. Special Political Missions)": 2048502.0,
       "UNAIDS": 921702.0,
       "UN-Habitat": 699326.0,
       "UN Tourism": 92556.0,
@@ -983,7 +983,7 @@
       "UNOPS": 2436259.0,
       "ITC": 2320778.0,
       "UNIDO": 2306106.0,
-      "UN": 2065514.0,
+      "UN Secretariat (incl. Special Political Missions)": 2065514.0,
       "UNAIDS": 1778050.0,
       "UNEP": 1741088.0,
       "IOM": 996631.0,
@@ -1008,7 +1008,7 @@
       "ILO": 9639684.0,
       "WHO": 9506014.0,
       "UNIDO": 7146751.0,
-      "UN": 5072929.0,
+      "UN Secretariat (incl. Special Political Missions)": 5072929.0,
       "UN Women": 4068790.0,
       "UN-Habitat": 2921184.0,
       "FAO": 2755638.0,
@@ -1034,7 +1034,7 @@
       "UNICEF": 58252207.0,
       "UNDP": 17533937.0,
       "FAO": 16627519.0,
-      "UN": 14057565.0,
+      "UN Secretariat (incl. Special Political Missions)": 14057565.0,
       "WHO": 11532945.0,
       "UNFPA": 10048406.0,
       "ILO": 6848868.0,
@@ -1061,7 +1061,7 @@
       "UNHCR": 47354239.0,
       "WHO": 29310481.0,
       "UNDP": 22834849.0,
-      "UN": 15224864.0,
+      "UN Secretariat (incl. Special Political Missions)": 15224864.0,
       "UNFPA": 11503591.0,
       "ILO": 6828990.0,
       "FAO": 5396295.0,
@@ -1085,7 +1085,7 @@
     "long": 8.2275,
     "total": 265053168.0,
     "entities": {
-      "UN": 134814846.0,
+      "UN Secretariat (incl. Special Political Missions)": 134814846.0,
       "WMO": 97950165.0,
       "UNICEF": 15018921.0,
       "IOM": 14023425.0,
@@ -1110,7 +1110,7 @@
       "UNHCR": 34673961.0,
       "IOM": 11657123.0,
       "WHO": 9512428.0,
-      "UN": 8099940.0,
+      "UN Secretariat (incl. Special Political Missions)": 8099940.0,
       "UNFPA": 6294715.0,
       "FAO": 5946531.0,
       "ICC": 2672027.0,
@@ -1140,7 +1140,7 @@
       "WHO": 17934008.0,
       "WFP": 17857663.0,
       "UNFPA": 6110040.0,
-      "UN": 5055058.0,
+      "UN Secretariat (incl. Special Political Missions)": 5055058.0,
       "FAO": 3815922.0,
       "ICC": 3210941.0,
       "UNOPS": 3155448.0,
@@ -1168,7 +1168,7 @@
       "FAO": 14448872.0,
       "WHO": 11834069.0,
       "UNHCR": 10077776.0,
-      "UN": 5201857.0,
+      "UN Secretariat (incl. Special Political Missions)": 5201857.0,
       "UN Women": 3886895.0,
       "ILO": 2779231.0,
       "UNAIDS": 1964069.0,
@@ -1204,7 +1204,7 @@
       "UNIDO": 3690889.0,
       "WFP": 3275466.0,
       "UNAIDS": 2118958.0,
-      "UN": 1820678.0,
+      "UN Secretariat (incl. Special Political Missions)": 1820678.0,
       "UNODC": 813633.0,
       "UNCDF": 703075.0,
       "UNOPS": 547274.0,
@@ -1223,7 +1223,7 @@
     "long": 100.9925,
     "total": 209187580.0,
     "entities": {
-      "UN": 105990476.0,
+      "UN Secretariat (incl. Special Political Missions)": 105990476.0,
       "WFP": 22537556.0,
       "UNICEF": 18000697.0,
       "UNHCR": 14409012.0,
@@ -1253,7 +1253,7 @@
     "long": -9.4295,
     "total": 197586648.0,
     "entities": {
-      "UN": 76999603.0,
+      "UN Secretariat (incl. Special Political Missions)": 76999603.0,
       "UNICEF": 25053913.0,
       "UNDP": 18435165.0,
       "WHO": 13949513.0,
@@ -1283,7 +1283,7 @@
     "total": 194276105.0,
     "entities": {
       "UNICEF": 78345603.0,
-      "UN": 24828720.0,
+      "UN Secretariat (incl. Special Political Missions)": 24828720.0,
       "UNHCR": 24214560.0,
       "PAHO": 20920612.0,
       "UNDP": 18729550.0,
@@ -1312,7 +1312,7 @@
       "UNICEF": 39598964.0,
       "WHO": 3103378.0,
       "IOM": 1209307.0,
-      "UN": 136337.0,
+      "UN Secretariat (incl. Special Political Missions)": 136337.0,
       "UNOPS": 52749.0,
       "UNDP": 111.0
     }
@@ -1330,7 +1330,7 @@
       "ICAO": 21134867.0,
       "UNODC": 9341198.0,
       "UNHCR": 8865900.0,
-      "UN": 5549498.0,
+      "UN Secretariat (incl. Special Political Missions)": 5549498.0,
       "UNICEF": 5459696.0,
       "PAHO": 4540463.0,
       "UNOPS": 3955858.0,
@@ -1357,7 +1357,7 @@
       "ILO": 7239604.0,
       "UNODC": 5454834.0,
       "FAO": 4603369.0,
-      "UN": 4578255.0,
+      "UN Secretariat (incl. Special Political Missions)": 4578255.0,
       "UNFPA": 4442813.0,
       "ICAO": 4405098.0,
       "UN Women": 4098675.0,
@@ -1380,7 +1380,7 @@
       "IOM": 29255254.0,
       "WFP": 25048662.0,
       "UNDP": 18935557.0,
-      "UN": 14404231.0,
+      "UN Secretariat (incl. Special Political Missions)": 14404231.0,
       "UNFPA": 10446657.0,
       "WHO": 8635879.0,
       "ILO": 7975985.0,
@@ -1415,7 +1415,7 @@
       "WFP": 6081383.0,
       "IOM": 2841010.0,
       "ILO": 2463431.0,
-      "UN": 2445659.0,
+      "UN Secretariat (incl. Special Political Missions)": 2445659.0,
       "FAO": 837472.0,
       "ITC": 420527.0,
       "UNAIDS": 354454.0,
@@ -1435,7 +1435,7 @@
     "total": 173657099.0,
     "entities": {
       "IOM": 86002258.0,
-      "UN": 65276357.0,
+      "UN Secretariat (incl. Special Political Missions)": 65276357.0,
       "UNHCR": 15634866.0,
       "UNU": 5630888.0,
       "WMO": 622968.0,
@@ -1462,7 +1462,7 @@
       "ILO": 4106378.0,
       "UNFPA": 3639539.0,
       "UN Women": 3327408.0,
-      "UN": 2392817.0,
+      "UN Secretariat (incl. Special Political Missions)": 2392817.0,
       "UNEP": 2223956.0,
       "UNAIDS": 1415402.0,
       "UN-Habitat": 1179548.0,
@@ -1489,7 +1489,7 @@
       "ILO": 423476.0,
       "ICAO": 402678.0,
       "UN Tourism": 72715.0,
-      "UN": 222.0
+      "UN Secretariat (incl. Special Political Missions)": 222.0
     }
   },
   {
@@ -1509,7 +1509,7 @@
       "FAO": 6159838.0,
       "ILO": 4649369.0,
       "UNOPS": 2486160.0,
-      "UN": 2476088.0,
+      "UN Secretariat (incl. Special Political Missions)": 2476088.0,
       "UNAIDS": 1869096.0,
       "UNCDF": 1163986.0,
       "IOM": 1066071.0,
@@ -1537,7 +1537,7 @@
       "UN Women": 4245515.0,
       "FAO": 3061682.0,
       "UNEP": 2582309.0,
-      "UN": 2448127.0,
+      "UN Secretariat (incl. Special Political Missions)": 2448127.0,
       "UNAIDS": 827696.0,
       "ILO": 777923.0,
       "ITC": 739117.0,
@@ -1569,7 +1569,7 @@
       "FAO": 4992429.0,
       "UNFPA": 3485606.0,
       "UNIDO": 2965622.0,
-      "UN": 1645597.0,
+      "UN Secretariat (incl. Special Political Missions)": 1645597.0,
       "UNODC": 882924.0,
       "UNAIDS": 643509.0,
       "UNEP": 111698.0,
@@ -1588,7 +1588,7 @@
       "UNICEF": 29298535.0,
       "WHO": 13499902.0,
       "UNHCR": 11100292.0,
-      "UN": 9502316.0,
+      "UN Secretariat (incl. Special Political Missions)": 9502316.0,
       "WFP": 9201189.0,
       "FAO": 8763499.0,
       "UNFPA": 5625699.0,
@@ -1618,7 +1618,7 @@
       "UNDP": 13195224.0,
       "ILO": 8084310.0,
       "WHO": 7381983.0,
-      "UN": 6575147.0,
+      "UN Secretariat (incl. Special Political Missions)": 6575147.0,
       "FAO": 5472301.0,
       "IOM": 3284798.0,
       "UNFPA": 2934102.0,
@@ -1647,7 +1647,7 @@
       "UNFPA": 6225927.0,
       "FAO": 3754379.0,
       "UN Women": 2991562.0,
-      "UN": 1550306.0,
+      "UN Secretariat (incl. Special Political Missions)": 1550306.0,
       "ILO": 1546875.0,
       "UNIDO": 1013029.0,
       "ITC": 590147.0,
@@ -1673,7 +1673,7 @@
       "UNDP": 20146007.0,
       "UNICEF": 17750491.0,
       "PAHO": 12860399.0,
-      "UN": 10552145.0,
+      "UN Secretariat (incl. Special Political Missions)": 10552145.0,
       "UNOPS": 4260339.0,
       "FAO": 3973385.0,
       "UNFPA": 3475484.0,
@@ -1702,7 +1702,7 @@
       "UNFPA": 10709556.0,
       "FAO": 4790759.0,
       "ILO": 4471419.0,
-      "UN": 4457648.0,
+      "UN Secretariat (incl. Special Political Missions)": 4457648.0,
       "UNHCR": 3240039.0,
       "UN Women": 3092818.0,
       "IOM": 2435032.0,
@@ -1724,7 +1724,7 @@
     "long": -71.543,
     "total": 139855284.0,
     "entities": {
-      "UN": 88860999.0,
+      "UN Secretariat (incl. Special Political Missions)": 88860999.0,
       "UNDP": 12067376.0,
       "UNHCR": 10632498.0,
       "UNICEF": 10220776.0,
@@ -1749,7 +1749,7 @@
       "WFP": 34038960.0,
       "UNICEF": 29298115.0,
       "UNDP": 10593571.0,
-      "UN": 8877501.0,
+      "UN Secretariat (incl. Special Political Missions)": 8877501.0,
       "WHO": 7109316.0,
       "UNFPA": 6734924.0,
       "UNIDO": 6400622.0,
@@ -1792,7 +1792,7 @@
       "UNIDO": 2040227.0,
       "UNAIDS": 1761151.0,
       "UNEP": 1431449.0,
-      "UN": 1410303.0,
+      "UN Secretariat (incl. Special Political Missions)": 1410303.0,
       "UNODC": 709328.0,
       "UN-Habitat": 421522.0,
       "UNOPS": 118481.0,
@@ -1816,7 +1816,7 @@
       "UNOPS": 3773732.0,
       "IOM": 3711592.0,
       "UNFPA": 3541140.0,
-      "UN": 1757948.0,
+      "UN Secretariat (incl. Special Political Missions)": 1757948.0,
       "ILO": 1087037.0,
       "UN Women": 1074293.0,
       "UNODC": 426828.0,
@@ -1839,7 +1839,7 @@
       "UNDP": 27842432.0,
       "WFP": 16289924.0,
       "ILO": 10946393.0,
-      "UN": 10412322.0,
+      "UN Secretariat (incl. Special Political Missions)": 10412322.0,
       "WHO": 9362183.0,
       "FAO": 6916058.0,
       "UNIDO": 5474769.0,
@@ -1867,7 +1867,7 @@
       "UNICEF": 52748805.0,
       "UN Women": 6965711.0,
       "UNCDF": 4396492.0,
-      "UN": 3812133.0,
+      "UN Secretariat (incl. Special Political Missions)": 3812133.0,
       "WFP": 613939.0,
       "IOM": 454838.0,
       "ILO": 422635.0,
@@ -1895,7 +1895,7 @@
       "UNFPA": 8533098.0,
       "IOM": 3272530.0,
       "ILO": 2371773.0,
-      "UN": 2032929.0,
+      "UN Secretariat (incl. Special Political Missions)": 2032929.0,
       "UNCDF": 1909137.0,
       "UNOPS": 1741305.0,
       "UNAIDS": 983860.0,
@@ -1920,7 +1920,7 @@
       "UNOPS": 7650906.0,
       "UNFPA": 6265408.0,
       "ITC": 5833743.0,
-      "UN": 4577924.0,
+      "UN Secretariat (incl. Special Political Missions)": 4577924.0,
       "IOM": 2234606.0,
       "FAO": 2004428.0,
       "UNHCR": 1911725.0,
@@ -1952,7 +1952,7 @@
       "UNFPA": 3794459.0,
       "ITC": 3547387.0,
       "UNIDO": 2720419.0,
-      "UN": 1351664.0,
+      "UN Secretariat (incl. Special Political Missions)": 1351664.0,
       "UNODC": 1242597.0,
       "FAO": 1107359.0,
       "UNAIDS": 440647.0,
@@ -1976,7 +1976,7 @@
       "WHO": 8921971.0,
       "UNFPA": 7853586.0,
       "UNOPS": 7284250.0,
-      "UN": 3009298.0,
+      "UN Secretariat (incl. Special Political Missions)": 3009298.0,
       "FAO": 2575605.0,
       "ILO": 2183285.0,
       "UNIDO": 1781845.0,
@@ -2003,7 +2003,7 @@
       "FAO": 12269847.0,
       "UNICEF": 10576283.0,
       "WHO": 8036902.0,
-      "UN": 6957751.0,
+      "UN Secretariat (incl. Special Political Missions)": 6957751.0,
       "UNOPS": 5218239.0,
       "ILO": 4813551.0,
       "UNFPA": 4525758.0,
@@ -2042,7 +2042,7 @@
       "UNAIDS": 895118.0,
       "UNEP": 884628.0,
       "IOM": 836747.0,
-      "UN": 754830.0,
+      "UN Secretariat (incl. Special Political Missions)": 754830.0,
       "FAO": 674328.0,
       "UN-Habitat": 188908.0
     }
@@ -2064,7 +2064,7 @@
       "UNIDO": 6361002.0,
       "UNAIDS": 4593823.0,
       "UNFPA": 3208689.0,
-      "UN": 1636159.0,
+      "UN Secretariat (incl. Special Political Missions)": 1636159.0,
       "UNEP": 984682.0,
       "FAO": 980705.0,
       "IOM": 727740.0,
@@ -2090,7 +2090,7 @@
       "UNHCR": 3041576.0,
       "UN Women": 2987203.0,
       "UNFPA": 2605919.0,
-      "UN": 2579731.0,
+      "UN Secretariat (incl. Special Political Missions)": 2579731.0,
       "ITC": 2412093.0,
       "FAO": 1628273.0,
       "ILO": 1313492.0,
@@ -2114,7 +2114,7 @@
       "WFP": 23085633.0,
       "UNHCR": 22331519.0,
       "UNICEF": 8353325.0,
-      "UN": 3806978.0,
+      "UN Secretariat (incl. Special Political Missions)": 3806978.0,
       "ILO": 2316436.0,
       "WHO": 2131218.0,
       "IOM": 1222542.0,
@@ -2145,7 +2145,7 @@
       "IOM": 6878756.0,
       "UNHCR": 6595803.0,
       "UNIDO": 5479817.0,
-      "UN": 4311758.0,
+      "UN Secretariat (incl. Special Political Missions)": 4311758.0,
       "WHO": 3141539.0,
       "WFP": 2045060.0,
       "ITC": 1860798.0,
@@ -2176,7 +2176,7 @@
       "ILO": 4081173.0,
       "UN Women": 3494267.0,
       "UNFPA": 1942014.0,
-      "UN": 1572393.0,
+      "UN Secretariat (incl. Special Political Missions)": 1572393.0,
       "WHO": 1410858.0,
       "FAO": 308269.0,
       "UNIDO": 178146.0,
@@ -2201,7 +2201,7 @@
       "UNFPA": 4188282.0,
       "ILO": 3613379.0,
       "ITC": 2198140.0,
-      "UN": 1780707.0,
+      "UN Secretariat (incl. Special Political Missions)": 1780707.0,
       "UNEP": 1494666.0,
       "UN-Habitat": 1222614.0,
       "IOM": 986357.0,
@@ -2229,7 +2229,7 @@
       "UNOPS": 4004965.0,
       "FAO": 1969853.0,
       "UNEP": 1560611.0,
-      "UN": 1208831.0,
+      "UN Secretariat (incl. Special Political Missions)": 1208831.0,
       "ITC": 1042289.0,
       "UNCDF": 624885.0,
       "UN Tourism": 497789.0,
@@ -2259,7 +2259,7 @@
       "IOM": 2972776.0,
       "FAO": 2058897.0,
       "UNIDO": 1956289.0,
-      "UN": 1527214.0,
+      "UN Secretariat (incl. Special Political Missions)": 1527214.0,
       "UN-Habitat": 1314201.0,
       "ITC": 1271682.0,
       "UNOPS": 626223.0,
@@ -2284,7 +2284,7 @@
       "FAO": 2526187.0,
       "ILO": 2209947.0,
       "UNFPA": 1978950.0,
-      "UN": 1673621.0,
+      "UN Secretariat (incl. Special Political Missions)": 1673621.0,
       "UNEP": 769753.0,
       "ITC": 632082.0,
       "UNAIDS": 625552.0,
@@ -2310,7 +2310,7 @@
       "IOM": 4589522.0,
       "WHO": 4282137.0,
       "UNFPA": 2109644.0,
-      "UN": 2073668.0,
+      "UN Secretariat (incl. Special Political Missions)": 2073668.0,
       "ICC": 1793133.0,
       "ILO": 1494509.0,
       "UNOPS": 1361432.0,
@@ -2333,7 +2333,7 @@
       "UNICEF": 7453587.0,
       "UNHCR": 6293799.0,
       "ICAO": 5805727.0,
-      "UN": 5270544.0,
+      "UN Secretariat (incl. Special Political Missions)": 5270544.0,
       "UN Tourism": 4089225.0,
       "UNIDO": 1751461.0,
       "UN-Habitat": 1185954.0,
@@ -2353,14 +2353,14 @@
     "long": 20.903,
     "total": 80024197.0,
     "entities": {
-      "UN-DPO": 44615557.0,
+      "DPO (incl. Peacekeeping Operations)": 44615557.0,
       "UNDP": 10839350.0,
       "UNICEF": 7697369.0,
       "IOM": 4664082.0,
       "UNOPS": 3700773.0,
       "UNHCR": 2028993.0,
       "UN Women": 1290444.0,
-      "UN": 1199811.0,
+      "UN Secretariat (incl. Special Political Missions)": 1199811.0,
       "WHO": 1147540.0,
       "UN-Habitat": 1143427.0,
       "UNFPA": 1005339.0,
@@ -2380,7 +2380,7 @@
       "UNHCR": 15369788.0,
       "PAHO": 6550782.0,
       "UNICEF": 4212902.0,
-      "UN": 1723742.0,
+      "UN Secretariat (incl. Special Political Missions)": 1723742.0,
       "UN Women": 1510798.0,
       "ILO": 1319522.0,
       "UNFPA": 979989.0,
@@ -2399,9 +2399,9 @@
     "long": 33.4299,
     "total": 77835847.0,
     "entities": {
-      "UN-DPO": 58093915.0,
+      "DPO (incl. Peacekeeping Operations)": 58093915.0,
       "UNDP": 13030129.0,
-      "UN": 3335317.0,
+      "UN Secretariat (incl. Special Political Missions)": 3335317.0,
       "UNHCR": 2264649.0,
       "IOM": 816354.0,
       "ILO": 190966.0,
@@ -2424,7 +2424,7 @@
       "FAO": 6989697.0,
       "UNFPA": 3172311.0,
       "UNIDO": 2944706.0,
-      "UN": 333144.0,
+      "UN Secretariat (incl. Special Political Missions)": 333144.0,
       "ILO": 332443.0,
       "UNDP": 268090.0,
       "IOM": 207338.0,
@@ -2446,7 +2446,7 @@
       "WHO": 6431038.0,
       "UNFPA": 3280901.0,
       "FAO": 1868241.0,
-      "UN": 1095065.0,
+      "UN Secretariat (incl. Special Political Missions)": 1095065.0,
       "ILO": 421926.0,
       "UNIDO": 370950.0,
       "UNAIDS": 279982.0,
@@ -2468,7 +2468,7 @@
     "entities": {
       "UNDP": 36815829.0,
       "WFP": 10213170.0,
-      "UN": 9356620.0,
+      "UN Secretariat (incl. Special Political Missions)": 9356620.0,
       "FAO": 6375196.0,
       "UNICEF": 5913356.0,
       "PAHO": 3022730.0,
@@ -2497,7 +2497,7 @@
       "IOM": 4216638.0,
       "WHO": 3197721.0,
       "UN Women": 3100434.0,
-      "UN": 1839700.0,
+      "UN Secretariat (incl. Special Political Missions)": 1839700.0,
       "FAO": 1282588.0,
       "UNFPA": 1117802.0,
       "ILO": 863917.0,
@@ -2521,7 +2521,7 @@
       "UNICEF": 11096101.0,
       "WHO": 4712074.0,
       "IOM": 4117831.0,
-      "UN": 4098859.0,
+      "UN Secretariat (incl. Special Political Missions)": 4098859.0,
       "FAO": 3656795.0,
       "UNFPA": 1863062.0,
       "UNOPS": 1279134.0,
@@ -2548,7 +2548,7 @@
       "UNFPA": 3881634.0,
       "UN Women": 2849476.0,
       "IOM": 2833208.0,
-      "UN": 2747820.0,
+      "UN Secretariat (incl. Special Political Missions)": 2747820.0,
       "FAO": 842122.0,
       "UNEP": 101289.0,
       "UNIDO": 80752.0,
@@ -2567,7 +2567,7 @@
       "UNICEF": 67762968.0,
       "UN Women": 4189197.0,
       "IOM": 154631.0,
-      "UN": 4303.0
+      "UN Secretariat (incl. Special Political Missions)": 4303.0
     }
   },
   {
@@ -2585,7 +2585,7 @@
       "WFP": 5704972.0,
       "UN Women": 2742061.0,
       "UNFPA": 2326663.0,
-      "UN": 1905279.0,
+      "UN Secretariat (incl. Special Political Missions)": 1905279.0,
       "UNIDO": 1585687.0,
       "UNOPS": 1277914.0,
       "ILO": 652948.0,
@@ -2611,7 +2611,7 @@
       "PAHO": 9406559.0,
       "UNFPA": 6036569.0,
       "FAO": 3215979.0,
-      "UN": 2853597.0,
+      "UN Secretariat (incl. Special Political Missions)": 2853597.0,
       "WFP": 2596715.0,
       "ILO": 2345057.0,
       "UNODC": 1833882.0,
@@ -2632,10 +2632,10 @@
     "long": -12.8858,
     "total": 69623782.0,
     "entities": {
-      "UN-DPO": 65469021.0,
+      "DPO (incl. Peacekeeping Operations)": 65469021.0,
       "UNOPS": 2436038.0,
       "UNHCR": 1720195.0,
-      "UN": -1472.0
+      "UN Secretariat (incl. Special Political Missions)": -1472.0
     }
   },
   {
@@ -2657,7 +2657,7 @@
       "UNFPA": 3258004.0,
       "WHO": 2854694.0,
       "ITC": 1567534.0,
-      "UN": 792973.0,
+      "UN Secretariat (incl. Special Political Missions)": 792973.0,
       "UNAIDS": 423660.0,
       "UNEP": 279623.0,
       "UN-Habitat": 279549.0,
@@ -2682,7 +2682,7 @@
       "ILO": 3479439.0,
       "ITC": 2599394.0,
       "UNFPA": 2515472.0,
-      "UN": 2104050.0,
+      "UN Secretariat (incl. Special Political Missions)": 2104050.0,
       "FAO": 1332020.0,
       "UNODC": 301283.0,
       "UNOPS": 230121.0,
@@ -2706,7 +2706,7 @@
       "WFP": 11953484.0,
       "UNICEF": 10294237.0,
       "WHO": 4573777.0,
-      "UN": 3123302.0,
+      "UN Secretariat (incl. Special Political Missions)": 3123302.0,
       "UN Women": 2602976.0,
       "UNFPA": 2395320.0,
       "ILO": 2267737.0,
@@ -2737,7 +2737,7 @@
       "ICAO": 3429002.0,
       "FAO": 2833398.0,
       "ILO": 2233815.0,
-      "UN": 1754505.0,
+      "UN Secretariat (incl. Special Political Missions)": 1754505.0,
       "UN Women": 1186594.0,
       "UNIDO": 1157282.0,
       "WMO": 773564.0,
@@ -2758,7 +2758,7 @@
       "UNHCR": 2342274.0,
       "UNICEF": 2120480.0,
       "UNU": 1687723.0,
-      "UN": 376163.0
+      "UN Secretariat (incl. Special Political Missions)": 376163.0
     }
   },
   {
@@ -2776,7 +2776,7 @@
       "ILO": 2298042.0,
       "UNHCR": 2115569.0,
       "WHO": 1910637.0,
-      "UN": 1417909.0,
+      "UN Secretariat (incl. Special Political Missions)": 1417909.0,
       "UNFPA": 1070804.0,
       "FAO": 567189.0,
       "IOM": 358122.0,
@@ -2803,7 +2803,7 @@
       "UNFPA": 4124334.0,
       "UNCDF": 3242104.0,
       "WHO": 3200002.0,
-      "UN": 2066622.0,
+      "UN Secretariat (incl. Special Political Missions)": 2066622.0,
       "UNIDO": 1496969.0,
       "ILO": 1223370.0,
       "IOM": 974046.0,
@@ -2821,7 +2821,7 @@
     "long": 34.8516,
     "total": 61235950.0,
     "entities": {
-      "UN": 56463262.0,
+      "UN Secretariat (incl. Special Political Missions)": 56463262.0,
       "UNHCR": 4247848.0,
       "WHO": 441474.0,
       "UNICEF": 77683.0,
@@ -2843,7 +2843,7 @@
       "ILO": 3117827.0,
       "WHO": 2080495.0,
       "ITC": 1274148.0,
-      "UN": 1230060.0,
+      "UN Secretariat (incl. Special Political Missions)": 1230060.0,
       "UNIDO": 1055168.0,
       "UNFPA": 924712.0,
       "UN Tourism": 129071.0,
@@ -2887,7 +2887,7 @@
       "WHO": 2512661.0,
       "IOM": 1130119.0,
       "ILO": 5233.0,
-      "UN": 119.0
+      "UN Secretariat (incl. Special Political Missions)": 119.0
     }
   },
   {
@@ -2904,7 +2904,7 @@
       "WHO": 2522498.0,
       "UNFPA": 1686090.0,
       "UNHCR": 1571224.0,
-      "UN": 1214641.0,
+      "UN Secretariat (incl. Special Political Missions)": 1214641.0,
       "UNIDO": 171745.0,
       "ILO": 102148.0,
       "FAO": 97571.0,
@@ -2921,7 +2921,7 @@
     "long": 5.2913,
     "total": 53811738.0,
     "entities": {
-      "UN": 33540589.0,
+      "UN Secretariat (incl. Special Political Missions)": 33540589.0,
       "IOM": 11631791.0,
       "UNU": 7923208.0,
       "UNHCR": 716150.0
@@ -2936,7 +2936,7 @@
     "total": 52995495.0,
     "entities": {
       "UNDP": 37752421.0,
-      "UN": 5180415.0,
+      "UN Secretariat (incl. Special Political Missions)": 5180415.0,
       "UNICEF": 3274077.0,
       "WHO": 2312671.0,
       "UNFPA": 1970994.0,
@@ -2966,7 +2966,7 @@
       "FAO": 1820110.0,
       "UNFPA": 1585601.0,
       "UNIDO": 1498513.0,
-      "UN": 1049232.0,
+      "UN Secretariat (incl. Special Political Missions)": 1049232.0,
       "IOM": 560360.0,
       "ITC": 389988.0,
       "UNEP": 144879.0,
@@ -2988,7 +2988,7 @@
       "PAHO": 3645382.0,
       "UNFPA": 3043083.0,
       "UN Women": 2545319.0,
-      "UN": 2074421.0,
+      "UN Secretariat (incl. Special Political Missions)": 2074421.0,
       "FAO": 2007864.0,
       "UNIDO": 1096177.0,
       "ICAO": 909225.0,
@@ -3012,7 +3012,7 @@
       "WHO": 8333226.0,
       "UNFPA": 4450173.0,
       "WFP": 3257323.0,
-      "UN": 1788684.0,
+      "UN Secretariat (incl. Special Political Missions)": 1788684.0,
       "FAO": 1657374.0,
       "UNHCR": 1507496.0,
       "ILO": 654304.0,
@@ -3041,7 +3041,7 @@
       "UN-Habitat": 539952.0,
       "ITU": 98134.0,
       "ILO": 82309.0,
-      "UN": 63676.0,
+      "UN Secretariat (incl. Special Political Missions)": 63676.0,
       "UN Tourism": 23962.0
     }
   },
@@ -3056,7 +3056,7 @@
       "IOM": 35577923.0,
       "UNICEF": 8288078.0,
       "UNHCR": 2304035.0,
-      "UN": 325760.0
+      "UN Secretariat (incl. Special Political Missions)": 325760.0
     }
   },
   {
@@ -3073,7 +3073,7 @@
       "WHO": 5618086.0,
       "UNFPA": 3158716.0,
       "ILO": 2077118.0,
-      "UN": 1431482.0,
+      "UN Secretariat (incl. Special Political Missions)": 1431482.0,
       "UN-Habitat": 1253744.0,
       "IOM": 1088810.0,
       "UNEP": 662442.0,
@@ -3095,7 +3095,7 @@
       "UNHCR": 5168313.0,
       "WHO": 3294654.0,
       "UN Women": 2848556.0,
-      "UN": 2704494.0,
+      "UN Secretariat (incl. Special Political Missions)": 2704494.0,
       "UNFPA": 2050347.0,
       "ILO": 1546205.0,
       "ITC": 1304820.0,
@@ -3117,7 +3117,7 @@
     "long": 14.5501,
     "total": 42787187.0,
     "entities": {
-      "UN": 37176832.0,
+      "UN Secretariat (incl. Special Political Missions)": 37176832.0,
       "IOM": 2956284.0,
       "UNHCR": 1308548.0,
       "UNICEF": 789402.0,
@@ -3137,7 +3137,7 @@
       "UNHCR": 3631464.0,
       "UN Women": 1547387.0,
       "ILO": 1453254.0,
-      "UN": 880324.0,
+      "UN Secretariat (incl. Special Political Missions)": 880324.0,
       "UN-Habitat": 724590.0,
       "IOM": 470832.0,
       "UN Tourism": 116269.0,
@@ -3158,7 +3158,7 @@
       "UNDP": 7678712.0,
       "WHO": 3622340.0,
       "FAO": 2761132.0,
-      "UN": 2011159.0,
+      "UN Secretariat (incl. Special Political Missions)": 2011159.0,
       "UNFPA": 1956223.0,
       "ILO": 1457159.0,
       "UNAIDS": 745986.0,
@@ -3185,7 +3185,7 @@
       "UNHCR": 4542748.0,
       "WHO": 4284702.0,
       "UNICEF": 3748359.0,
-      "UN": 2157230.0,
+      "UN Secretariat (incl. Special Political Missions)": 2157230.0,
       "IOM": 1924876.0,
       "ILO": 1843385.0,
       "UNFPA": 1487311.0,
@@ -3210,7 +3210,7 @@
       "WFP": 4376320.0,
       "ILO": 2456587.0,
       "UNFPA": 2263397.0,
-      "UN": 1365753.0,
+      "UN Secretariat (incl. Special Political Missions)": 1365753.0,
       "UNAIDS": 1320508.0,
       "FAO": 1277803.0,
       "UNIDO": 777784.0,
@@ -3237,7 +3237,7 @@
       "WHO": 1816871.0,
       "UNIDO": 1797060.0,
       "ILO": 1605147.0,
-      "UN": 1410059.0,
+      "UN Secretariat (incl. Special Political Missions)": 1410059.0,
       "UN Women": 1406649.0,
       "UNFPA": 1288585.0,
       "UNOPS": 1243328.0,
@@ -3256,7 +3256,7 @@
     "entities": {
       "UNICEF": 12816057.0,
       "UNDP": 9587560.0,
-      "UN": 6477661.0,
+      "UN Secretariat (incl. Special Political Missions)": 6477661.0,
       "WHO": 2272984.0,
       "FAO": 1485560.0,
       "UNFPA": 1180037.0,
@@ -3299,7 +3299,7 @@
       "WHO": 532277.0,
       "ILO": 317262.0,
       "UN Tourism": 121718.0,
-      "UN": 103440.0,
+      "UN Secretariat (incl. Special Political Missions)": 103440.0,
       "UN-Habitat": 65157.0
     }
   },
@@ -3314,7 +3314,7 @@
       "IOM": 26831996.0,
       "UNICEF": 4053939.0,
       "UNHCR": 2776561.0,
-      "UN": 282966.0,
+      "UN Secretariat (incl. Special Political Missions)": 282966.0,
       "ITU": 65741.0
     }
   },
@@ -3326,7 +3326,7 @@
     "long": 11.6094,
     "total": 32101445.0,
     "entities": {
-      "UN": 10661029.0,
+      "UN Secretariat (incl. Special Political Missions)": 10661029.0,
       "UNDP": 5918450.0,
       "WHO": 5182446.0,
       "UNICEF": 4602321.0,
@@ -3356,7 +3356,7 @@
       "UNICEF": 7035097.0,
       "WHO": 4524375.0,
       "UNFPA": 1671362.0,
-      "UN": 1261686.0,
+      "UN Secretariat (incl. Special Political Missions)": 1261686.0,
       "ILO": 844737.0,
       "FAO": 819684.0,
       "UNEP": 587752.0,
@@ -3377,7 +3377,7 @@
     "entities": {
       "UNICEF": 15019903.0,
       "UNDP": 7181769.0,
-      "UN": 3695256.0,
+      "UN Secretariat (incl. Special Political Missions)": 3695256.0,
       "PAHO": 1500553.0,
       "WFP": 1077409.0,
       "UNIDO": 835326.0,
@@ -3401,7 +3401,7 @@
       "UNICEF": 6019516.0,
       "WHO": 3382321.0,
       "WFP": 1765680.0,
-      "UN": 1207130.0,
+      "UN Secretariat (incl. Special Political Missions)": 1207130.0,
       "UNFPA": 1087696.0,
       "ITC": 1003905.0,
       "FAO": 949361.0,
@@ -3428,7 +3428,7 @@
       "UNIDO": 1392160.0,
       "WFP": 1386463.0,
       "UNFPA": 1375600.0,
-      "UN": 1126787.0,
+      "UN Secretariat (incl. Special Political Missions)": 1126787.0,
       "UN-Habitat": 298936.0,
       "UN Women": 260301.0,
       "ITC": 170500.0,
@@ -3453,7 +3453,7 @@
       "WHO": 2984424.0,
       "ITC": 2548740.0,
       "ILO": 1937281.0,
-      "UN": 997497.0,
+      "UN Secretariat (incl. Special Political Missions)": 997497.0,
       "FAO": 848027.0,
       "UNAIDS": 714337.0,
       "UNEP": 241876.0,
@@ -3472,7 +3472,7 @@
       "UNU": 22474013.0,
       "IOM": 2223914.0,
       "UNICEF": 1106999.0,
-      "UN": -14579.0
+      "UN Secretariat (incl. Special Political Missions)": -14579.0
     }
   },
   {
@@ -3487,7 +3487,7 @@
       "UNICEF": 3422671.0,
       "WHO": 3049160.0,
       "FAO": 1774678.0,
-      "UN": 1490930.0,
+      "UN Secretariat (incl. Special Political Missions)": 1490930.0,
       "IOM": 1389281.0,
       "ILO": 1295457.0,
       "WFP": 1230257.0,
@@ -3511,7 +3511,7 @@
       "UNICEF": 5157569.0,
       "WHO": 4036484.0,
       "UNFPA": 1813527.0,
-      "UN": 1417369.0,
+      "UN Secretariat (incl. Special Political Missions)": 1417369.0,
       "ILO": 1385018.0,
       "FAO": 891813.0,
       "UNAIDS": 881938.0,
@@ -3538,7 +3538,7 @@
       "UNICEF": 3788001.0,
       "WHO": 3669742.0,
       "UNEP": 1787790.0,
-      "UN": 1534129.0,
+      "UN Secretariat (incl. Special Political Missions)": 1534129.0,
       "UN Women": 925819.0,
       "UNFPA": 910762.0,
       "UNOPS": 504302.0,
@@ -3563,7 +3563,7 @@
       "FAO": 3841603.0,
       "UNHCR": 2711937.0,
       "PAHO": 2600525.0,
-      "UN": 1532758.0,
+      "UN Secretariat (incl. Special Political Missions)": 1532758.0,
       "UNAIDS": 570291.0,
       "ILO": 513084.0,
       "UN Women": 249114.0,
@@ -3586,7 +3586,7 @@
       "UNICEF": 3748293.0,
       "WHO": 3183967.0,
       "UNFPA": 1760559.0,
-      "UN": 1682277.0,
+      "UN Secretariat (incl. Special Political Missions)": 1682277.0,
       "FAO": 1680965.0,
       "ILO": 978686.0,
       "UNAIDS": 330026.0,
@@ -3608,7 +3608,7 @@
       "UNU": 1855177.0,
       "UN Women": 1024459.0,
       "UNICEF": 996618.0,
-      "UN": 343954.0
+      "UN Secretariat (incl. Special Political Missions)": 343954.0
     }
   },
   {
@@ -3623,7 +3623,7 @@
       "PAHO": 4111705.0,
       "UNDP": 3917059.0,
       "UN Women": 2765581.0,
-      "UN": 1559378.0,
+      "UN Secretariat (incl. Special Political Missions)": 1559378.0,
       "FAO": 1162773.0,
       "ILO": 951726.0,
       "UNAIDS": 756278.0,
@@ -3648,7 +3648,7 @@
       "UNHCR": 4879215.0,
       "UN-Habitat": 503593.0,
       "UN Tourism": 237133.0,
-      "UN": 171481.0,
+      "UN Secretariat (incl. Special Political Missions)": 171481.0,
       "ICAO": 45681.0,
       "ILO": 21678.0
     }
@@ -3665,7 +3665,7 @@
       "UNICEF": 5207105.0,
       "ICAO": 3887255.0,
       "UNHCR": 3429264.0,
-      "UN": 446871.0,
+      "UN Secretariat (incl. Special Political Missions)": 446871.0,
       "UN-Habitat": 66218.0
     }
   },
@@ -3683,7 +3683,7 @@
       "WHO": 1281581.0,
       "UNFPA": 1138510.0,
       "FAO": 1073330.0,
-      "UN": 764219.0,
+      "UN Secretariat (incl. Special Political Missions)": 764219.0,
       "UNDP": 393296.0,
       "ITU": 181896.0,
       "UNIDO": 30662.0,
@@ -3701,7 +3701,7 @@
       "UNDP": 7364903.0,
       "UNHCR": 4702107.0,
       "PAHO": 4307869.0,
-      "UN": 1542145.0,
+      "UN Secretariat (incl. Special Political Missions)": 1542145.0,
       "FAO": 900826.0,
       "UN Women": 748509.0,
       "ILO": 694523.0,
@@ -3724,7 +3724,7 @@
       "UNHCR": 1964357.0,
       "ILO": 1686804.0,
       "WHO": 1327400.0,
-      "UN": 1326273.0,
+      "UN Secretariat (incl. Special Political Missions)": 1326273.0,
       "IOM": 179011.0,
       "UNIDO": 153119.0,
       "UNOPS": 122748.0,
@@ -3745,7 +3745,7 @@
       "UNICEF": 1383395.0,
       "IOM": 841202.0,
       "WHO": 661286.0,
-      "UN": 267.0
+      "UN Secretariat (incl. Special Political Missions)": 267.0
     }
   },
   {
@@ -3757,7 +3757,7 @@
     "total": 16337697.0,
     "entities": {
       "UNDP": 9631253.0,
-      "UN": 2110018.0,
+      "UN Secretariat (incl. Special Political Missions)": 2110018.0,
       "UN Women": 1595190.0,
       "WMO": 993498.0,
       "WHO": 965473.0,
@@ -3778,7 +3778,7 @@
     "entities": {
       "UNDP": 10810265.0,
       "WHO": 1739504.0,
-      "UN": 1713057.0,
+      "UN Secretariat (incl. Special Political Missions)": 1713057.0,
       "ILO": 510665.0,
       "UNFPA": 329149.0,
       "FAO": 277597.0,
@@ -3802,7 +3802,7 @@
       "UNODC": 326312.0,
       "WHO": 232210.0,
       "UNIDO": 83173.0,
-      "UN": 68724.0,
+      "UN Secretariat (incl. Special Political Missions)": 68724.0,
       "UN Tourism": 26719.0,
       "UNDP": 0.0
     }
@@ -3819,7 +3819,7 @@
       "PAHO": 3858106.0,
       "UNDP": 2771426.0,
       "UNHCR": 1721119.0,
-      "UN": 817763.0,
+      "UN Secretariat (incl. Special Political Missions)": 817763.0,
       "ILO": 607780.0,
       "FAO": 513594.0,
       "UNOPS": 242858.0,
@@ -3844,7 +3844,7 @@
       "UN-Habitat": 798071.0,
       "UNCDF": 606257.0,
       "UNEP": 332627.0,
-      "UN": 40698.0,
+      "UN Secretariat (incl. Special Political Missions)": 40698.0,
       "ILO": 35312.0,
       "ITC": 7033.0,
       "UNOPS": 374.0
@@ -3863,7 +3863,7 @@
       "UNEP": 698513.0,
       "IOM": 463031.0,
       "ITU": 421165.0,
-      "UN": 120977.0,
+      "UN Secretariat (incl. Special Political Missions)": 120977.0,
       "ILO": 7883.0
     }
   },
@@ -3891,7 +3891,7 @@
     "entities": {
       "IOM": 6360213.0,
       "UNHCR": 5009207.0,
-      "UN": 165542.0,
+      "UN Secretariat (incl. Special Political Missions)": 165542.0,
       "UNODC": 19028.0
     }
   },
@@ -3904,7 +3904,7 @@
     "total": 10195128.0,
     "entities": {
       "UNU": 10150868.0,
-      "UN": 44260.0
+      "UN Secretariat (incl. Special Political Missions)": 44260.0
     }
   },
   {
@@ -3916,7 +3916,7 @@
     "total": 9850267.0,
     "entities": {
       "UNHCR": 3452445.0,
-      "UN": 2644885.0,
+      "UN Secretariat (incl. Special Political Missions)": 2644885.0,
       "UN Women": 1443890.0,
       "FAO": 1311746.0,
       "UNODC": 326319.0,
@@ -3936,7 +3936,7 @@
     "total": 9715156.0,
     "entities": {
       "UNDP": 3340634.0,
-      "UN": 1698073.0,
+      "UN Secretariat (incl. Special Political Missions)": 1698073.0,
       "ICAO": 1126049.0,
       "UNIDO": 919624.0,
       "ILO": 868963.0,
@@ -3957,7 +3957,7 @@
       "IOM": 6091381.0,
       "UNICEF": 3463305.0,
       "UN-Habitat": 107026.0,
-      "UN": 36691.0
+      "UN Secretariat (incl. Special Political Missions)": 36691.0
     }
   },
   {
@@ -3975,7 +3975,7 @@
       "UNDP": 319860.0,
       "ILO": 308154.0,
       "UN-Habitat": 153437.0,
-      "UN": 90776.0,
+      "UN Secretariat (incl. Special Political Missions)": 90776.0,
       "IOM": 12505.0
     }
   },
@@ -3991,7 +3991,7 @@
       "FAO": 1970916.0,
       "PAHO": 1452478.0,
       "ILO": 1147506.0,
-      "UN": 482162.0,
+      "UN Secretariat (incl. Special Political Missions)": 482162.0,
       "ITC": 175165.0,
       "UNEP": 85339.0,
       "UNIDO": 84176.0,
@@ -4008,7 +4008,7 @@
     "total": 8566142.0,
     "entities": {
       "UNIDO": 1944134.0,
-      "UN": 1775837.0,
+      "UN Secretariat (incl. Special Political Missions)": 1775837.0,
       "UNDP": 1401886.0,
       "UN-Habitat": 1308801.0,
       "IOM": 580828.0,
@@ -4030,7 +4030,7 @@
       "UNHCR": 2602544.0,
       "WHO": 1529485.0,
       "IOM": 695735.0,
-      "UN": 8590.0
+      "UN Secretariat (incl. Special Political Missions)": 8590.0
     }
   },
   {
@@ -4047,7 +4047,7 @@
       "PAHO": 358387.0,
       "ILO": 341302.0,
       "ITC": 232505.0,
-      "UN": 137670.0
+      "UN Secretariat (incl. Special Political Missions)": 137670.0
     }
   },
   {
@@ -4066,7 +4066,7 @@
       "UNODC": 326319.0,
       "UNIDO": 288018.0,
       "UN-Habitat": 73425.0,
-      "UN": 30661.0
+      "UN Secretariat (incl. Special Political Missions)": 30661.0
     }
   },
   {
@@ -4097,7 +4097,7 @@
       "FAO": 1257004.0,
       "ITC": 565278.0,
       "IOM": 534834.0,
-      "UN": 440262.0,
+      "UN Secretariat (incl. Special Political Missions)": 440262.0,
       "ILO": 150534.0,
       "UNEP": 92018.0,
       "UNOPS": 270.0
@@ -4116,7 +4116,7 @@
       "IOM": 964610.0,
       "UNHCR": 521547.0,
       "ILO": 134727.0,
-      "UN": 38022.0
+      "UN Secretariat (incl. Special Political Missions)": 38022.0
     }
   },
   {
@@ -4136,7 +4136,7 @@
       "UNFPA": 164082.0,
       "FAO": 83931.0,
       "UN Tourism": 62294.0,
-      "UN": 26110.0
+      "UN Secretariat (incl. Special Political Missions)": 26110.0
     }
   },
   {
@@ -4150,7 +4150,7 @@
       "UNICEF": 1942030.0,
       "IOM": 1850307.0,
       "UNHCR": 735812.0,
-      "UN": -6359.0
+      "UN Secretariat (incl. Special Political Missions)": -6359.0
     }
   },
   {
@@ -4180,7 +4180,7 @@
       "FAO": 162699.0,
       "UNOPS": 128940.0,
       "ILO": 90175.0,
-      "UN": 68506.0,
+      "UN Secretariat (incl. Special Political Missions)": 68506.0,
       "UNEP": 31000.0,
       "UNIDO": 14481.0
     }
@@ -4200,7 +4200,7 @@
       "ITC": 385904.0,
       "UNOPS": 290677.0,
       "FAO": 246672.0,
-      "UN": 78030.0,
+      "UN Secretariat (incl. Special Political Missions)": 78030.0,
       "UN-Habitat": 47630.0,
       "UNDP": 36849.0
     }
@@ -4219,7 +4219,7 @@
       "UNEP": 226970.0,
       "ILO": 112574.0,
       "UN-Habitat": 68403.0,
-      "UN": 31448.0,
+      "UN Secretariat (incl. Special Political Missions)": 31448.0,
       "ITC": 7033.0
     }
   },
@@ -4239,7 +4239,7 @@
       "UNIDO": 203375.0,
       "UNEP": 179456.0,
       "UNOPS": 97794.0,
-      "UN": 68506.0,
+      "UN Secretariat (incl. Special Political Missions)": 68506.0,
       "ILO": 47296.0
     }
   },
@@ -4251,7 +4251,7 @@
     "long": -175.1982,
     "total": 2996658.0,
     "entities": {
-      "UN": 1019215.0,
+      "UN Secretariat (incl. Special Political Missions)": 1019215.0,
       "FAO": 704784.0,
       "WHO": 624755.0,
       "IOM": 229590.0,
@@ -4269,7 +4269,7 @@
     "long": 150.5508,
     "total": 2605364.0,
     "entities": {
-      "UN": 1345484.0,
+      "UN Secretariat (incl. Special Political Missions)": 1345484.0,
       "WHO": 639630.0,
       "IOM": 373841.0,
       "ITC": 90983.0,
@@ -4319,7 +4319,7 @@
     "entities": {
       "IOM": 1132058.0,
       "FAO": 151149.0,
-      "UN": 88590.0,
+      "UN Secretariat (incl. Special Political Missions)": 88590.0,
       "WHO": 81371.0,
       "UNEP": 75549.0,
       "ILO": 24995.0
@@ -4364,7 +4364,7 @@
     "entities": {
       "UNICEF": 839157.0,
       "IOM": 405901.0,
-      "UN": -13492.0
+      "UN Secretariat (incl. Special Political Missions)": -13492.0
     }
   },
   {
@@ -4433,7 +4433,7 @@
     "entities": {
       "WMO": 789817.0,
       "ICAO": 106257.0,
-      "UN": 182.0
+      "UN Secretariat (incl. Special Political Missions)": 182.0
     }
   },
   {
@@ -4460,7 +4460,7 @@
     "total": 615222.0,
     "entities": {
       "UNOPS": 595104.0,
-      "UN": 20118.0
+      "UN Secretariat (incl. Special Political Missions)": 20118.0
     }
   },
   {
@@ -4488,7 +4488,7 @@
       "UNCDF": 51546.0,
       "IOM": 42188.0,
       "WHO": 34636.0,
-      "UN": 29803.0,
+      "UN Secretariat (incl. Special Political Missions)": 29803.0,
       "UNOPS": 13743.0,
       "FAO": 10383.0,
       "ITC": 7033.0
@@ -4554,7 +4554,7 @@
     "entities": {
       "ITC": 143790.0,
       "PAHO": 61752.0,
-      "UN": -54077.0
+      "UN Secretariat (incl. Special Political Missions)": -54077.0
     }
   },
   {
@@ -4579,7 +4579,7 @@
     "entities": {
       "UNEP": 104100.0,
       "WHO": 13082.0,
-      "UN": 576.0
+      "UN Secretariat (incl. Special Political Missions)": 576.0
     }
   },
   {
@@ -4626,7 +4626,7 @@
     "long": 12.4578,
     "total": 56817.0,
     "entities": {
-      "UN": 56817.0
+      "UN Secretariat (incl. Special Political Missions)": 56817.0
     }
   },
   {
@@ -4640,7 +4640,7 @@
       "UNEP": 40000.0,
       "ITC": 7033.0,
       "UNDP": 4371.0,
-      "UN": -1755.0
+      "UN Secretariat (incl. Special Political Missions)": -1755.0
     }
   },
   {

@@ -327,7 +327,13 @@ export function ContributorsTreemap() {
         label: ROWS.government.label,
         color: ROWS.government.color,
         data: "government" as const,
-        leaves: government.map(toLeaf),
+        subgroups: government.map((contributor) => ({
+          key: contributor.name,
+          label: getDisplayName(contributor.name),
+          data: contributor.name,
+          labelVisibility: "tooltip-only" as const,
+          leaves: [toLeaf(contributor)],
+        })),
       },
       {
         key: "non-government",

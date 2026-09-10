@@ -20,7 +20,6 @@ import {
   replaceToSidebar,
   useDeepLink,
 } from "@/hooks/useDeepLink";
-import { CEB_AGGREGATE_ENTITIES } from "@/lib/cebAggregates";
 import {
   createUncategorizedEntity,
   formatBudget,
@@ -43,12 +42,6 @@ function accessibleBudget(value: number): string {
     currency: "USD",
     maximumFractionDigits: 0,
   }).format(value);
-}
-
-function entityTileLabel(entity: Entity): string {
-  return entity.entity === "UN" || entity.entity === "UN-DPO"
-    ? entity.entity_long
-    : entity.entity;
 }
 
 function matchesEntity(entity: Entity, query: string): boolean {
@@ -195,16 +188,11 @@ export function EntitiesTreemap() {
         .filter((entity) => entity.entity)
         .map((entity) => [entity.entity, normalizeEntityForDisplay(entity)]),
     );
-    const synthetic = new Map(
-      CEB_AGGREGATE_ENTITIES.map((entity) => [entity.entity, entity]),
-    );
     return Object.entries(budgetData)
       .filter(([entity, amount]) => entity && amount > 0)
       .map(
         ([entity]) =>
-          synthetic.get(entity) ??
-          metadata.get(entity) ??
-          createUncategorizedEntity(entity),
+          metadata.get(entity) ?? createUncategorizedEntity(entity),
       );
   }, [budgetData, entities]);
 
@@ -228,7 +216,7 @@ export function EntitiesTreemap() {
   const entitiesByTileLabel = useMemo(
     () =>
       new Map(
-        activeEntities.map((entity) => [entityTileLabel(entity), entity]),
+        activeEntities.map((entity) => [entity.entity, entity]),
       ),
     [activeEntities],
   );
@@ -264,13 +252,13 @@ export function EntitiesTreemap() {
             )
             .map((entity) => ({
               key: entity.entity,
-              label: entityTileLabel(entity),
+              label: entity.entity,
               value: budgetData[entity.entity] ?? 0,
               color: style.hexColor,
               textColor:
                 style.textColor === "text-black"
                   ? "var(--color-un-black)"
-                  : undefined,
+                  : "var(--color-un-white)",
               data: entity,
               segments: showRevenue
                 ? FINANCING_INSTRUMENT_ORDER.map((type) => ({

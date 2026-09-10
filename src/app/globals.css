@@ -7,7 +7,8 @@
  */
 
 /* Import Tailwind CSS v4 - provides all utility classes and base styles */
-@import "tailwindcss";
+/* Anchor scanning to src even when linked packages widen Turbopack's root. */
+@import "tailwindcss" source("../");
 @import "tw-animate-css";
 @import "@un-eosg/ui/theme.css";
 
@@ -49,14 +50,7 @@
   --color-un-blue-muted: #4a90a4;
   --color-un-blue-dark: #2d6a7e;
   --color-un-blue-slate: #3d5a6c;
-  --color-trout: #495057;
-  --color-shuttle-gray: #5a6c7d;
-  --color-camouflage-green: #7d8471;
   --color-pale-oyster: #9b8b7a;
-  --color-smoky: #6c5b7b;
-  --color-au-chico: #a0665c;
-  --color-faded-jade: #4a7c7e;
-  --color-dusty-gray: #969696;
 
   /* shadcn */
   --color-sidebar-ring: var(--sidebar-ring);
@@ -96,6 +90,17 @@
 
 /* shadcn theming */
 :root {
+  /* Organization categories combine UN Blue with the UI library's UN80 palette. */
+  --color-open-system-category-secretariat: var(--color-un-blue);
+  --color-open-system-category-peacekeeping: var(--color-shuttle-gray);
+  --color-open-system-category-regional-commissions: var(--color-shuttle-gray);
+  --color-open-system-category-funds-programmes: var(--color-faded-jade);
+  --color-open-system-category-research-training: var(--color-dusty-gray);
+  --color-open-system-category-specialized-agencies: var(--color-au-chico);
+  --color-open-system-category-related-organizations: var(--color-camouflage-green);
+  --color-open-system-category-other-entities: var(--color-smoky);
+  --color-open-system-category-neutral: var(--color-dusty-gray);
+
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: black;
@@ -246,4 +251,11 @@ html {
   fill-opacity: 0.28 !important;
   stroke-opacity: 1;
   stroke-width: 1.5px;
+}
+
+/* Keep shared control tooltips consistent with the chart tooltips. */
+[data-slot="tooltip-content"] {
+  background-color: var(--color-un-white);
+  color: var(--color-un-black);
+  border: 1px solid var(--border);
 }

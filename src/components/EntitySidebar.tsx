@@ -1,6 +1,7 @@
 "use client";
 
-import { ExternalLink } from "lucide-react";
+import { ArrowRight, ExternalLink } from "lucide-react";
+import Link from "next/link";
 import { SidebarControls } from "@/components/SidebarControls";
 import { useCallback, useEffect, useState } from "react";
 import { Entity, Impact, EntityRevenue, CountryExpense, EntitySpendingBreakdown } from "@/types";
@@ -235,6 +236,10 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
 
   const principalOrgans = normalizePrincipalOrgans(entity.un_principal_organ);
   const description = entity.entity_description || entity.entity_long || "";
+  const budgetLink = entity.budget_financial_reporting_link;
+  const internalBudgetLink = budgetLink?.startsWith("/") && !budgetLink.startsWith("//")
+    ? budgetLink
+    : null;
 
   // Process revenue breakdown by financing instrument (use year-specific data)
   const revenueByType = yearRevenue?.by_type
@@ -330,17 +335,27 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
               </div>
             )}
 
-            {/* SystemChart Link */}
+            {/* Budget or System Chart link */}
             <div className="mt-4">
-              <a
-                href={`https://systemchart.un.org/?entity=${entity.entity?.toLowerCase()}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-sm text-un-blue hover:underline"
-              >
-                View in UN System Chart
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
+              {internalBudgetLink ? (
+                <Link
+                  href={internalBudgetLink}
+                  className="inline-flex items-center gap-1.5 text-sm text-un-blue hover:underline"
+                >
+                  View budget
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              ) : (
+                <a
+                  href={`https://systemchart.un.org/?entity=${entity.entity?.toLowerCase()}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-un-blue hover:underline"
+                >
+                  View in UN System Chart
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              )}
             </div>
           </div>
 

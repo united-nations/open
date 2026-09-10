@@ -21,30 +21,30 @@ type SystemGroupingVisual = Pick<
 const systemGroupingVisuals: Record<string, SystemGroupingVisual> = {
   "UN Secretariat": {
     bgColor: "bg-open-system-category-secretariat",
-    textColor: "text-black",
+    textColor: "text-white",
     hexColor: "var(--color-open-system-category-secretariat)",
   },
   // Both peacekeeping keys share one short label: only one of them carries
   // entities at a time, so the legend must not show the pair as two entries.
   "Peacekeeping Operations and Political Missions": {
     bgColor: "bg-open-system-category-peacekeeping",
-    textColor: "text-black",
+    textColor: "text-white",
     hexColor: "var(--color-open-system-category-peacekeeping)",
   },
-  // Synthetic grouping for the UN-DPO CEB aggregate
+  // Peacekeeping category
   "Peacekeeping Operations": {
     bgColor: "bg-open-system-category-peacekeeping",
-    textColor: "text-black",
+    textColor: "text-white",
     hexColor: "var(--color-open-system-category-peacekeeping)",
   },
   "Regional Commissions": {
     bgColor: "bg-open-system-category-regional-commissions",
-    textColor: "text-black",
+    textColor: "text-white",
     hexColor: "var(--color-open-system-category-regional-commissions)",
   },
   "Funds and Programmes": {
     bgColor: "bg-open-system-category-funds-programmes",
-    textColor: "text-black",
+    textColor: "text-white",
     hexColor: "var(--color-open-system-category-funds-programmes)",
   },
   "Research and Training": {
@@ -69,17 +69,17 @@ const systemGroupingVisuals: Record<string, SystemGroupingVisual> = {
   },
   "Specialized Agencies": {
     bgColor: "bg-open-system-category-specialized-agencies",
-    textColor: "text-black",
+    textColor: "text-white",
     hexColor: "var(--color-open-system-category-specialized-agencies)",
   },
   "Related Organizations": {
     bgColor: "bg-open-system-category-related-organizations",
-    textColor: "text-black",
+    textColor: "text-white",
     hexColor: "var(--color-open-system-category-related-organizations)",
   },
   "Other Entities": {
     bgColor: "bg-open-system-category-other-entities",
-    textColor: "text-black",
+    textColor: "text-white",
     hexColor: "var(--color-open-system-category-other-entities)",
   },
   "Other Bodies": {

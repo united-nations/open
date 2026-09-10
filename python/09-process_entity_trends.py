@@ -8,10 +8,6 @@ from utils import normalize_entity
 DATA = Path("public/data")
 YEARS = list(range(2011, 2025))
 UNCATEGORIZED = "Uncategorized"
-SYNTHETIC_ENTITY_GROUPS = {
-    "UN": "UN Secretariat",
-    "UN-DPO": "UN Secretariat",
-}
 
 def load_revenue() -> dict[str, dict[int, float]]:
     """Load revenue from fused CSV, aggregated by entity."""
@@ -40,7 +36,6 @@ def main():
         for e in entities
         if e.get("entity")
     }
-    entity_to_group.update(SYNTHETIC_ENTITY_GROUPS)
     groups = list(dict.fromkeys(e.get("system_grouping") for e in entities if e.get("system_grouping")))
     
     rev, exp = load_revenue(), load_expenses()

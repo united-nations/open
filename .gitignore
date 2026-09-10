@@ -262,7 +262,8 @@ __marimo__/
 .streamlit/secrets.toml
 
 # Reference data pulled from sibling repo releases (large, regenerable)
-data/references/
+data/references/*
+!data/references/ceb-aggregate-entities.json
 
 # Source files and generated outputs from the trust-fund schedule extractor
 data/trust-fund-schedules/

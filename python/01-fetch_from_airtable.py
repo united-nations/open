@@ -6,7 +6,7 @@ from pathlib import Path
 import pandas as pd
 from pyairtable import Api
 from dotenv import load_dotenv
-from utils import normalize_entity
+from utils import normalize_entity, include_ceb_aggregate_entities
 
 # Load environment variables from .env file
 load_dotenv()
@@ -139,5 +139,6 @@ df["category"] = df["category"].replace(category_normalizations)
 df["system_grouping"] = df["system_grouping"].replace(category_normalizations)
 
 output_path = Path("public/data/entities.json")
+df = pd.DataFrame(include_ceb_aggregate_entities(df.to_dict(orient="records")))
 df = df[output_columns]
 df.to_json(output_path, orient="records", indent=2)

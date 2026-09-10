@@ -71,8 +71,8 @@
       ],
       "Special Political Missions and Other Political Presences": [],
       "UN Secretariat": [
-        "UN",
-        "UN-DPO",
+        "DPO (incl. Peacekeeping Operations)",
+        "UN Secretariat (incl. Special Political Missions)",
         "UNODC"
       ],
       "Peacekeeping Operations": [],
@@ -1480,6 +1480,78 @@
         "expenses": 134037685.0
       }
     ],
+    "DPO (incl. Peacekeeping Operations)": [
+      {
+        "year": 2011,
+        "revenue": null,
+        "expenses": 7573730000.0
+      },
+      {
+        "year": 2012,
+        "revenue": null,
+        "expenses": 7544235000.0
+      },
+      {
+        "year": 2013,
+        "revenue": 7335213000.0,
+        "expenses": 7273147000.0
+      },
+      {
+        "year": 2014,
+        "revenue": 7999450000.0,
+        "expenses": 7862742000.0
+      },
+      {
+        "year": 2015,
+        "revenue": 8770847000.0,
+        "expenses": 8759159000.0
+      },
+      {
+        "year": 2016,
+        "revenue": 8726356000.0,
+        "expenses": 8876176000.0
+      },
+      {
+        "year": 2017,
+        "revenue": 8275515000.0,
+        "expenses": 8263932000.0
+      },
+      {
+        "year": 2018,
+        "revenue": 7744298607.8,
+        "expenses": 7987831960.61
+      },
+      {
+        "year": 2019,
+        "revenue": 7462547123.78,
+        "expenses": 7760762953.94
+      },
+      {
+        "year": 2020,
+        "revenue": 7340493005.54,
+        "expenses": 7336866635.97
+      },
+      {
+        "year": 2021,
+        "revenue": 7210429383.83,
+        "expenses": 7265453455.4800005
+      },
+      {
+        "year": 2022,
+        "revenue": 6768862885.0,
+        "expenses": 7091307082.0
+      },
+      {
+        "year": 2023,
+        "revenue": 6989676619.0,
+        "expenses": 7226664864.0
+      },
+      {
+        "year": 2024,
+        "revenue": 6799165959.0,
+        "expenses": 7341051634.0
+      }
+    ],
     "FAO": [
       {
         "year": 2011,
@@ -2632,7 +2704,7 @@
         "expenses": 1120053425.0
       }
     ],
-    "UN": [
+    "UN Secretariat (incl. Special Political Missions)": [
       {
         "year": 2011,
         "revenue": null,
@@ -2846,78 +2918,6 @@
         "year": 2024,
         "revenue": 520495019.99,
         "expenses": 622770150.4138006
-      }
-    ],
-    "UN-DPO": [
-      {
-        "year": 2011,
-        "revenue": null,
-        "expenses": 7573730000.0
-      },
-      {
-        "year": 2012,
-        "revenue": null,
-        "expenses": 7544235000.0
-      },
-      {
-        "year": 2013,
-        "revenue": 7335213000.0,
-        "expenses": 7273147000.0
-      },
-      {
-        "year": 2014,
-        "revenue": 7999450000.0,
-        "expenses": 7862742000.0
-      },
-      {
-        "year": 2015,
-        "revenue": 8770847000.0,
-        "expenses": 8759159000.0
-      },
-      {
-        "year": 2016,
-        "revenue": 8726356000.0,
-        "expenses": 8876176000.0
-      },
-      {
-        "year": 2017,
-        "revenue": 8275515000.0,
-        "expenses": 8263932000.0
-      },
-      {
-        "year": 2018,
-        "revenue": 7744298607.8,
-        "expenses": 7987831960.61
-      },
-      {
-        "year": 2019,
-        "revenue": 7462547123.78,
-        "expenses": 7760762953.94
-      },
-      {
-        "year": 2020,
-        "revenue": 7340493005.54,
-        "expenses": 7336866635.97
-      },
-      {
-        "year": 2021,
-        "revenue": 7210429383.83,
-        "expenses": 7265453455.4800005
-      },
-      {
-        "year": 2022,
-        "revenue": 6768862885.0,
-        "expenses": 7091307082.0
-      },
-      {
-        "year": 2023,
-        "revenue": 6989676619.0,
-        "expenses": 7226664864.0
-      },
-      {
-        "year": 2024,
-        "revenue": 6799165959.0,
-        "expenses": 7341051634.0
       }
     ],
     "UN-Habitat": [
@@ -3174,7 +3174,7 @@
       },
       {
         "year": 2018,
-        "revenue": 94121500.07999998,
+        "revenue": 94121500.08,
         "expenses": 60853360.76
       },
       {
@@ -4666,7 +4666,7 @@
       },
       {
         "year": 2014,
-        "revenue": 375055038.60999995,
+        "revenue": 375055038.61,
         "expenses": 337594738.0
       },
       {
@@ -4686,7 +4686,7 @@
       },
       {
         "year": 2018,
-        "revenue": 436235113.88999987,
+        "revenue": 436235113.89,
         "expenses": 355663225.04
       },
       {

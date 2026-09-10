@@ -1,9 +1,14 @@
+import json
+from pathlib import Path
+
 # Feature flag: fuse UN Secretariat sub-entity data into CEB expenses (steps 06 & 99).
 # Set to False to temporarily produce CEB-only expenses (keeps the UN/UN-DPO
 # aggregates, drops the ~150 Secretariat sub-entities). Re-run python/06, 07, 99.
 FUSE_SECRETARIAT = False
 
 ENTITY_MAPPING = {
+    "UN": "UN Secretariat (incl. Special Political Missions)",
+    "UN-DPO": "DPO (incl. Peacekeeping Operations)",
     "UN-HABITAT": "UN-Habitat", "UNHABITAT": "UN-Habitat",
     "UNWOMEN": "UN Women", "UN-Women": "UN Women", "UNWTO": "UN Tourism",
     "OHRLLS": "UN-OHRLLS", "POE-CAR": "PoE-CAR", "POE-HAITI": "PoE-Haiti",
@@ -108,3 +113,22 @@ def parse_amount(amount_str: str | float) -> float:
 
 def normalize_entity(entity: str) -> str:
     return ENTITY_MAPPING.get(entity, entity)
+
+# TODO: integrate properly with systemchart
+
+def include_ceb_aggregate_entities(entities: list[dict]) -> list[dict]:
+    """Merge reference metadata into the entity export, keyed by canonical name."""
+    by_name = {normalize_entity(row["entity"]): row.copy() for row in entities}
+    reference_path = (
+        Path(__file__).resolve().parents[1]
+        / "data/references/ceb-aggregate-entities.json"
+    )
+    references = json.loads(reference_path.read_text(encoding="utf-8"))
+    names = [normalize_entity(row["entity"]) for row in references]
+    if len(names) != len(set(names)):
+        raise ValueError(f"Duplicate CEB aggregate entities in {reference_path}")
+    for reference, name in zip(references, names):
+        row = by_name.setdefault(name, {})
+        row.update(reference)
+        row["entity"] = name
+    return list(by_name.values())

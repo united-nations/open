@@ -17,7 +17,7 @@ EXCLUDE_FROM_SEC = {"ITC", "UNHCR", "UNRWA"}
 # Entities where secretariat assessed is additive to CEB
 ADD_ASSESSED = {"UNEP", "UNODC"}
 # CEB aggregates replaced by secretariat breakdown
-REPLACE_AGGREGATES = {"UN", "UN-DPO"}
+REPLACE_AGGREGATES = {normalize_entity(code) for code in ("UN", "UN-DPO")}
 
 def load_ceb() -> pd.DataFrame:
     df = pd.read_csv(clean / "expenses_sub_agency.csv")
