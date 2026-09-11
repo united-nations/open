@@ -141,21 +141,14 @@ export function EntitiesTreemap() {
     null,
   );
   const [searchQuery, setSearchQuery] = useState("");
-  const [spendingYear, setSpendingYear] = useState(
-    yearRanges.entitySpending.default,
-  );
-  const [revenueYear, setRevenueYear] = useState(
-    yearRanges.entityRevenue.default,
-  );
+  const [currentYear, setCurrentYear] = useState(yearRanges.entitySpending.default);
   const [pendingDeepLink, setPendingDeepLink] = useDeepLink({
     hashPrefix: "entity",
     sectionId: "entities",
     onNavigateAway: () => setSelectedEntity(null),
   });
 
-  const currentYear = showRevenue ? revenueYear : spendingYear;
-  const currentYears = showRevenue ? revenueYears : spendingYears;
-  const setCurrentYear = showRevenue ? setRevenueYear : setSpendingYear;
+  const currentYears = Array.from(new Set([...spendingYears, ...revenueYears])).sort((a, b) => a - b);
 
   useEffect(() => {
     fetch(`${basePath}/data/entities.json`)
@@ -165,10 +158,18 @@ export function EntitiesTreemap() {
   }, []);
 
   useEffect(() => {
-    fetch(`${basePath}/data/entity-spending-${spendingYear}.json`)
+    let cancelled = false;
+    if (currentYear < yearRanges.entitySpending.min || currentYear > yearRanges.entitySpending.max) {
+      setSpendingData({});
+      setLoadedSpendingYear(currentYear);
+      setLoading(false);
+      return;
+    }
+    fetch(`${basePath}/data/entity-spending-${currentYear}.json`)
       .then((response) => response.json())
       .then((entries: BudgetEntry[]) => {
-        setLoadedSpendingYear(spendingYear);
+        if (cancelled) return;
+        setLoadedSpendingYear(currentYear);
         setSpendingData(
           Object.fromEntries(
             entries.map((entry) => [entry.entity, entry.amount]),
@@ -177,24 +178,36 @@ export function EntitiesTreemap() {
         if (!showRevenue) setLoading(false);
       })
       .catch((error) => {
+        if (cancelled) return;
         console.error("Failed to load expenses data:", error);
         if (!showRevenue) setLoading(false);
       });
-  }, [showRevenue, spendingYear]);
+    return () => { cancelled = true; };
+  }, [showRevenue, currentYear, yearRanges.entitySpending.min, yearRanges.entitySpending.max]);
 
   useEffect(() => {
-    fetch(`${basePath}/data/entity-revenue-${revenueYear}.json`)
+    let cancelled = false;
+    if (currentYear < yearRanges.entityRevenue.min || currentYear > yearRanges.entityRevenue.max) {
+      setRevenueData({});
+      setLoadedRevenueYear(currentYear);
+      setLoading(false);
+      return;
+    }
+    fetch(`${basePath}/data/entity-revenue-${currentYear}.json`)
       .then((response) => response.json())
       .then((data: Record<string, EntityRevenue>) => {
+        if (cancelled) return;
         setRevenueData(data);
-        setLoadedRevenueYear(revenueYear);
+        setLoadedRevenueYear(currentYear);
         if (showRevenue) setLoading(false);
       })
       .catch((error) => {
+        if (cancelled) return;
         console.error("Failed to load revenue data:", error);
         if (showRevenue) setLoading(false);
       });
-  }, [revenueYear, showRevenue]);
+    return () => { cancelled = true; };
+  }, [currentYear, showRevenue, yearRanges.entityRevenue.min, yearRanges.entityRevenue.max]);
 
   const budgetData = useMemo(
     () =>
@@ -412,9 +425,10 @@ export function EntitiesTreemap() {
       {selectedEntity && (
         <EntitySidebar
           entity={selectedEntity}
-          spending={spendingData[selectedEntity.entity] || 0}
-          revenue={revenueData[selectedEntity.entity] || null}
-          initialYear={revenueYear}
+          spending={loadedSpendingYear === currentYear ? spendingData[selectedEntity.entity] || 0 : 0}
+          revenue={loadedRevenueYear === currentYear ? revenueData[selectedEntity.entity] || null : null}
+          initialYear={currentYear}
+          initialDataComplete={loadedSpendingYear === currentYear && loadedRevenueYear === currentYear}
           onClose={() => {
             setSelectedEntity(null);
             clearSidebarHash();

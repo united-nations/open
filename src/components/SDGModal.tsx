@@ -7,7 +7,8 @@ import { SDG } from "@/lib/sdgs";
 import { SidebarControls } from "@/components/SidebarControls";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { navigateToSidebar } from "@/hooks/useDeepLink";
-import { YearSelector } from "@/components/ui/year-selector";
+import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
+import { FinancialPanelHeading, FinancialPanelRankedRow, FinancialPanelBar } from "@un-eosg/ui/components/financial-panel-parts";
 import { useYearRanges, generateYearRange } from "@/lib/useYearRanges";
 import { loadUninfoSdgs, loadUninfoCountryIndex, UninfoSdgData } from "@/lib/data";
 import { UninfoFundingBar } from "@/components/UninfoFundingBar";
@@ -131,9 +132,14 @@ export default function SDGModal({
   };
 
   useEffect(() => {
-    document.documentElement.style.overflow = "hidden";
+    const rootStyle = document.documentElement.style;
+    const previousOverflow = rootStyle.overflow;
+    const previousGutter = rootStyle.scrollbarGutter;
+    rootStyle.overflow = "hidden";
+    rootStyle.scrollbarGutter = "auto";
     return () => {
-      document.documentElement.style.overflow = "";
+      rootStyle.overflow = previousOverflow;
+      rootStyle.scrollbarGutter = previousGutter;
     };
   }, []);
 
@@ -169,52 +175,24 @@ export default function SDGModal({
         role="dialog"
         aria-modal="true"
         aria-labelledby={modalTitleId}
-        className={`h-full w-full overflow-y-auto bg-white shadow-2xl transition-transform duration-300 ease-out sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px] ${isVisible && !isClosing ? "translate-x-0" : "translate-x-full"}`}
+        className={`h-full w-full overflow-hidden bg-white shadow-2xl transition-transform duration-300 ease-out sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px] ${isVisible && !isClosing ? "translate-x-0" : "translate-x-full"}`}
         onClick={(e) => e.stopPropagation()}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        <div className="sticky top-0 z-10 border-b border-gray-300 bg-white px-4 pb-2 pt-3 sm:px-6 sm:pb-3 sm:pt-4">
-          <div className="flex items-start justify-between gap-3">
-            <div className="flex-1">
-              <div className="mb-1 flex items-center gap-2">
-                <div
-                  className="flex h-8 w-8 flex-shrink-0 items-center justify-center text-lg font-bold text-white"
-                  style={{ backgroundColor: color }}
-                >
-                  {sdg.number}
-                </div>
-                <h2 id={modalTitleId} className="text-lg font-bold leading-tight text-gray-900 sm:text-xl">
-                  {sdg.shortTitle}
-                </h2>
-              </div>
-              <p className="text-xs leading-relaxed text-gray-700 sm:text-sm">
-                {sdg.title}
-              </p>
-            </div>
-            <SidebarControls
-              shareHash={`sdg=${sdg.number}`}
-              onClose={handleClose}
-              closeLabel="Close modal"
-            />
-          </div>
-        </div>
-
-        <div className="relative space-y-4 px-4 pb-4 pt-3 sm:px-6 sm:pb-6 sm:pt-4">
+        <FinancialDetailPanel titleId={modalTitleId} className="sm:w-full"
+          title={<span className="flex items-start gap-2"><span className="flex size-6 shrink-0 items-center justify-center font-bold text-white" style={{backgroundColor:color}}>{sdg.number}</span><span className="min-w-0">{sdg.shortTitle}</span></span>}
+          subtitle={sdg.title}
+          yearSelectorPlacement="header"
+          yearSelector={{ years: availableYears, selected: selectedYear, onChange: setSelectedYear, label: "Select year", pending: loadingYear, pendingLabel: "Loading..." }}
+          controls={<SidebarControls shareHash={`sdg=${sdg.number}`} onClose={handleClose} closeLabel="Close modal" />}>
+        <div className="relative space-y-6">
           <DelayedChartLoading pending={loadingYear} requestKey={selectedYear} />
           {/* Entity Spending Breakdown */}
           {(sortedEntities.length > 0 || loadingYear) && (
             <div>
-              <div className="mb-3 flex items-center justify-between">
-                <h3 className="text-lg font-normal uppercase tracking-wider text-gray-900 sm:text-xl">
-                  Spending
-                </h3>
-                <div className="flex items-center gap-2">
-                  <YearSelector years={availableYears} selected={selectedYear} onChange={setSelectedYear} />
-                  {loadingYear && <span className="text-xs text-gray-400">Loading...</span>}
-                </div>
-              </div>
+              <FinancialPanelHeading className="mb-3">System-wide financials</FinancialPanelHeading>
 
               <div>
                 <span className="text-sm font-normal uppercase tracking-wide text-gray-600">
@@ -228,39 +206,15 @@ export default function SDGModal({
               </div>
 
               <div className="mt-4">
-                <span className="text-sm font-normal uppercase tracking-wide text-gray-600">
-                  By Entity
-                </span>
+                <FinancialPanelHeading subheading>Spending by entity</FinancialPanelHeading>
                 <div className="mt-2 space-y-1.5">
                   {displayedEntities.map((entity) => {
                     const normalizedWidth = (entity.amount / maxAmount) * 100;
                     return (
-                      <div
-                        key={entity.name}
-                        className="flex items-center gap-2"
-                      >
-                        <button
-                          onClick={() => navigateToSidebar("entity", entity.name)}
-                          className="w-20 flex-shrink-0 truncate text-left text-xs font-medium text-gray-700 hover:text-un-blue hover:underline"
-                          title={entity.name}
-                        >
-                          {entity.name}
-                        </button>
-                        <div className="flex flex-1 flex-col gap-px">
-                          <div
-                            className="flex h-2 overflow-hidden rounded-sm"
-                            style={{ width: `${normalizedWidth}%` }}
-                          >
-                            <div
-                              className="h-full w-full transition-all"
-                              style={{ backgroundColor: color }}
-                            />
-                          </div>
-                        </div>
-                        <div className="w-20 flex-shrink-0 text-right text-xs text-gray-500">
-                          {formatBudget(entity.amount)}
-                        </div>
-                      </div>
+                      <FinancialPanelRankedRow key={entity.name} label={entity.name} value={formatBudget(entity.amount)}
+                        onClick={() => navigateToSidebar("entity", entity.name)}>
+                        <FinancialPanelBar percent={normalizedWidth} color={color} />
+                      </FinancialPanelRankedRow>
                     );
                   })}
 
@@ -280,16 +234,14 @@ export default function SDGModal({
           {/* UNSDG Cooperation Framework Section */}
           {uninfoData && (
             <div className="border-t border-gray-200 pt-4">
-              <h3 className="mb-1 text-lg font-normal uppercase tracking-wider text-gray-900 sm:text-xl">
-                UNSDG Cooperation Framework
-              </h3>
+              <FinancialPanelHeading className="mb-1">UNSDG Cooperation Framework financials</FinancialPanelHeading>
               
               {selectedYear !== 2024 ? (
                 <p className="text-xs text-gray-500 italic">Data only available for 2024.</p>
               ) : (
                 <>
                   <p className="mb-4 text-xs text-gray-500">
-                    Country-level programme data only, not representative of total spending. <a href="#methodology" className="underline hover:text-gray-700">Learn more.</a>
+                    Country-level programme data only, not representative of total spending.
                   </p>
 
                   {/* Overall */}
@@ -379,15 +331,11 @@ export default function SDGModal({
 
           {/* Targets and Indicators */}
           <div className="border-t border-gray-200 pt-4">
-            <h3 className="mb-3 text-lg font-normal uppercase tracking-wider text-gray-900 sm:text-xl">
-              Targets & Indicators
-            </h3>
+            <FinancialPanelHeading className="mb-3">Targets and indicators</FinancialPanelHeading>
             <div className="space-y-4">
               {sdg.targets.map((target) => (
                 <div key={target.number}>
-                  <h4 className="mb-2 text-base font-normal uppercase tracking-wider text-gray-900 sm:text-lg">
-                    Target {target.number}
-                  </h4>
+                  <FinancialPanelHeading subheading className="mb-2">Target {target.number}</FinancialPanelHeading>
                   <p className="mb-3 text-xs leading-relaxed text-gray-700 sm:text-sm">
                     {target.description}
                   </p>
@@ -413,6 +361,7 @@ export default function SDGModal({
             </div>
           </div>
         </div>
+        </FinancialDetailPanel>
       </div>
     </div>
   );

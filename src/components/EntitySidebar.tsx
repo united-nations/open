@@ -1,4 +1,5 @@
 "use client";
+import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 
 import { ArrowRight, ExternalLink } from "lucide-react";
@@ -6,17 +7,13 @@ import Link from "next/link";
 import { SidebarControls } from "@/components/SidebarControls";
 import { useCallback, useEffect, useState } from "react";
 import { Entity, Impact, EntityRevenue, CountryExpense, EntitySpendingBreakdown } from "@/types";
-import {
-  getPrincipalOrganBadgeColor,
-  normalizePrincipalOrgans,
-} from "@/lib/principalOrgans";
 import { formatBudget } from "@/lib/entities";
 import { getContributionTypeBgColor, getContributionTypeOrder } from "@/lib/contributors";
 import { FinancingInstrumentLabel } from "@/components/FinancingInstrumentLabel";
 import { getFinancingInstrumentColor } from "@/lib/financingInstruments";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { navigateToSidebar } from "@/hooks/useDeepLink";
-import { YearSelector } from "@/components/ui/year-selector";
+import { FinancialPanelHeading, FinancialPanelBar, FinancialPanelRankedRow, FinancialPanelGoalBadge } from "@un-eosg/ui/components/financial-panel-parts";
 import { useYearRanges, generateYearRange } from "@/lib/useYearRanges";
 import { EntityTrendChart, EntityTrendDataPoint } from "@/components/charts/EntityTrendChart";
 import { FinancingInstrumentChart, FinancingInstrumentDataPoint } from "@/components/charts/FinancingInstrumentChart";
@@ -33,8 +30,11 @@ interface EntitySidebarProps {
   spending: number;
   revenue: EntityRevenue | null;
   initialYear: number;
+  initialDataComplete?: boolean;
   onClose: () => void;
 }
+
+const SHOW_ENTITY_IMPACTS = false;
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -49,7 +49,7 @@ const formatBudgetFixed = (amount: number): string => {
   return `$${amount.toFixed(2)}`;
 };
 
-export function EntitySidebar({ entity, spending, revenue, initialYear, onClose }: EntitySidebarProps) {
+export function EntitySidebar({ entity, spending, revenue, initialYear, initialDataComplete = true, onClose }: EntitySidebarProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [impacts, setImpacts] = useState<Impact[]>([]);
@@ -63,7 +63,10 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
   
   // Year selection
   const yearRanges = useYearRanges();
-  const availableYears = generateYearRange(yearRanges.entityRevenue.min, yearRanges.entityRevenue.max).reverse();
+  const availableYears = generateYearRange(
+    Math.min(yearRanges.entitySpending.min, yearRanges.entityRevenue.min),
+    Math.max(yearRanges.entitySpending.max, yearRanges.entityRevenue.max),
+  ).reverse();
   const [selectedYear, setSelectedYear] = useState(initialYear);
   const [yearSpending, setYearSpending] = useState<number>(spending);
   const [yearRevenue, setYearRevenue] = useState<EntityRevenue | null>(revenue);
@@ -121,22 +124,25 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
 
   // Fetch data when year changes
   useEffect(() => {
-    if (!entity?.entity || selectedYear === initialYear) {
+    if (!entity?.entity || (selectedYear === initialYear && initialDataComplete)) {
       setYearSpending(spending);
       setYearRevenue(revenue);
       return;
     }
+    let cancelled = false;
     setLoadingYear(true);
     Promise.all([
       fetch(`${basePath}/data/entity-revenue-${selectedYear}.json`).then(r => r.json()).catch(() => ({})),
       fetch(`${basePath}/data/entity-spending-${selectedYear}.json`).then(r => r.json()).catch(() => []),
     ]).then(([revenueData, spendingData]) => {
+      if (cancelled) return;
       const entityRevenue = revenueData[entity.entity] || null;
       setYearRevenue(entityRevenue);
       const spendingEntry = spendingData.find((e: { entity: string; amount: number }) => e.entity === entity.entity);
       setYearSpending(spendingEntry?.amount || 0);
-    }).finally(() => setLoadingYear(false));
-  }, [selectedYear, entity?.entity, initialYear, spending, revenue]);
+    }).finally(() => { if (!cancelled) setLoadingYear(false); });
+    return () => { cancelled = true; };
+  }, [selectedYear, entity?.entity, initialYear, initialDataComplete, spending, revenue]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 10);
@@ -144,7 +150,7 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
   }, []);
 
   useEffect(() => {
-    if (!entity?.entity) {
+    if (!SHOW_ENTITY_IMPACTS || !entity?.entity) {
       setImpacts([]);
       setLoadingImpacts(false);
       return;
@@ -223,9 +229,14 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
   };
 
   useEffect(() => {
-    document.documentElement.style.overflow = "hidden";
+    const rootStyle = document.documentElement.style;
+    const previousOverflow = rootStyle.overflow;
+    const previousGutter = rootStyle.scrollbarGutter;
+    rootStyle.overflow = "hidden";
+    rootStyle.scrollbarGutter = "auto";
     return () => {
-      document.documentElement.style.overflow = "";
+      rootStyle.overflow = previousOverflow;
+      rootStyle.scrollbarGutter = previousGutter;
     };
   }, []);
 
@@ -235,7 +246,6 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
 
   if (!entity) return null;
 
-  const principalOrgans = normalizePrincipalOrgans(entity.un_principal_organ);
   const description = entity.entity_description || entity.entity_long || "";
   const budgetLink = entity.budget_financial_reporting_link;
   const internalBudgetLink = budgetLink?.startsWith("/") && !budgetLink.startsWith("//")
@@ -270,72 +280,26 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
         role="dialog"
         aria-modal="true"
         aria-labelledby={sidebarTitleId}
-        className={`h-full w-full overflow-y-auto bg-white shadow-2xl transition-transform duration-300 ease-out sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px] ${isVisible && !isClosing ? "translate-x-0" : "translate-x-full"}`}
+        className={`h-full w-full overflow-hidden bg-white shadow-2xl transition-transform duration-300 ease-out sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px] ${isVisible && !isClosing ? "translate-x-0" : "translate-x-full"}`}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        {/* Header */}
-        <div className="sticky top-0 z-10 border-b border-gray-300 bg-white px-6 pb-2 pt-4 sm:px-8 sm:pb-3 sm:pt-6">
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex-1">
-              <h2 id={sidebarTitleId} className="text-xl font-bold leading-tight text-gray-900 sm:text-2xl lg:text-2xl">
-                {entity.entity}
-              </h2>
-              <p className="mt-1 text-sm text-gray-600">{entity.entity_long}</p>
-            </div>
-            <SidebarControls
-              shareHash={`entity=${encodeURIComponent(entity.entity || "")}`}
-              onClose={handleClose}
-              closeLabel="Close sidebar"
-            />
-          </div>
-        </div>
-
+        <FinancialDetailPanel
+          title={entity.entity}
+          subtitle={entity.entity_long}
+          titleId={sidebarTitleId}
+          className="sm:w-full"
+          yearSelectorPlacement="header"
+          yearSelector={{ years: availableYears, selected: selectedYear, onChange: setSelectedYear, label: "Select year", pending: loadingYear, pendingLabel: "Loading..." }}
+          controls={<SidebarControls shareHash={`entity=${encodeURIComponent(entity.entity || "")}`} onClose={handleClose} closeLabel="Close sidebar" />}
+        >
         {/* Content */}
-        <div className="relative space-y-6 px-6 pb-6 pt-4 sm:px-8 sm:pb-8 sm:pt-5">
+        <div className="relative space-y-6">
           <DelayedChartLoading pending={loadingYear} requestKey={selectedYear} />
           {/* Overview Section */}
           <div>
-            <div className="mb-3 flex items-center justify-between">
-              <h3 className="text-lg font-normal uppercase tracking-wider text-gray-900 sm:text-xl">
-                Overview
-              </h3>
-              <div className="flex items-center gap-2">
-                <YearSelector years={availableYears} selected={selectedYear} onChange={setSelectedYear} />
-                {loadingYear && <span className="text-xs text-gray-400">Loading...</span>}
-              </div>
-            </div>
-            {principalOrgans.length > 0 && (
-              <div>
-                <span className="text-sm font-normal uppercase tracking-wide text-gray-600">
-                  UN Principal Organ
-                </span>
-                <div className="mt-0.5 flex flex-wrap gap-1.5">
-                  {principalOrgans.map((principalOrgan) => (
-                    <span
-                      key={principalOrgan}
-                      className={`inline-block rounded-full px-3 py-1 text-sm font-medium text-black ${getPrincipalOrganBadgeColor(principalOrgan)}`}
-                    >
-                      {principalOrgan}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {description && (
-              <div className="mt-3">
-                <span className="text-sm font-normal uppercase tracking-wide text-gray-600">
-                  Description
-                </span>
-                <div className="mt-0.5">
-                  <p className="text-sm leading-relaxed text-gray-700">
-                    {description}
-                  </p>
-                </div>
-              </div>
-            )}
+            {description && <p className="text-sm leading-relaxed text-gray-700">{description}</p>}
 
             {/* Budget or System Chart link */}
             <div className="mt-4">
@@ -363,9 +327,6 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
 
           {/* Financials Section */}
           <div>
-            <h3 className="mb-3 text-lg font-normal uppercase tracking-wider text-gray-900 sm:text-xl">
-              Financials
-            </h3>
 
             {/* Total Spending */}
             <div>
@@ -400,9 +361,7 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
             {/* Funding by Financing Instrument */}
             {(yearRevenue && revenueByType.length > 0) || financingTrendData.length > 0 ? (
               <div className="mt-4">
-                <span className="text-sm font-normal uppercase tracking-wide text-gray-600">
-                  Funding by Financing Instrument
-                </span>
+                <FinancialPanelHeading subheading>Funding by Financing Instrument</FinancialPanelHeading>
                 {yearRevenue && revenueByType.length > 0 && (
                   <div className="mt-2 space-y-2">
                     {revenueByType.map(([type, amount]) => (
@@ -429,9 +388,7 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
             {/* Revenue vs Expenses Trend */}
             {trendData.length > 0 && (
               <div className="mt-4">
-                <span className="text-sm font-normal uppercase tracking-wide text-gray-600">
-                  Revenue vs Expenses
-                </span>
+                <FinancialPanelHeading subheading>Revenue vs Expenses</FinancialPanelHeading>
                 <div className="mt-1 flex gap-3 text-xs text-gray-500">
                   <span className="flex items-center gap-1">
                     <span className="inline-block h-2 w-2 rounded-full bg-un-blue" />
@@ -451,9 +408,7 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
             {/* Funding by Donor */}
             {yearRevenue && donorContributions.length > 0 && (
               <div className="mt-4">
-                <span className="text-sm font-normal uppercase tracking-wide text-gray-600">
-                  Funding by Donor
-                </span>
+                <FinancialPanelHeading subheading>Funding by Donor</FinancialPanelHeading>
                 <div className="mt-2 space-y-1.5">
                   {displayedDonors.map((contrib) => {
                     const typeEntries = Object.entries(contrib)
@@ -466,39 +421,17 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
                     const normalizedWidth = (contrib.total / maxDonorTotal) * 100;
 
                     return (
-                      <div
-                        key={contrib.donor}
-                        className="flex items-center gap-2"
-                      >
-                        <button
-                          onClick={() => navigateToSidebar("donor", contrib.donor)}
-                          className="w-24 flex-shrink-0 truncate text-left text-xs font-medium text-gray-700 hover:text-un-blue hover:underline"
-                          title={contrib.donor}
-                        >
-                          {contrib.donor.replace(
-                            "United Kingdom of Great Britain and Northern Ireland",
-                            "UK"
-                          ).replace("United States of America", "USA")}
-                        </button>
+                      <FinancialPanelRankedRow key={contrib.donor}
+                        title={contrib.donor}
+                        label={contrib.donor.replace("United Kingdom of Great Britain and Northern Ireland", "UK").replace("United States of America", "USA")}
+                        value={formatBudgetFixed(contrib.total)} onClick={() => navigateToSidebar("donor", contrib.donor)}>
                         <Tooltip delayDuration={200}>
                           <TooltipTrigger asChild>
                             <div className="flex flex-1 cursor-help flex-col gap-px">
-                              <div
-                                className="flex h-2 overflow-hidden rounded-sm"
-                                style={{ width: `${normalizedWidth}%` }}
-                              >
-                                {typeEntries.map(([type, amount]) => {
-                                  const typePercentage =
-                                    (amount / contrib.total) * 100;
-                                  return typePercentage > 0 ? (
-                                    <div
-                                      key={type}
-                                      className="transition-all"
-                                      style={{ width: `${typePercentage}%`, backgroundColor: getFinancingInstrumentColor(type) }}
-                                    />
-                                  ) : null;
-                                })}
-                              </div>
+                              <FinancialPanelBar percent={normalizedWidth}
+                                segments={typeEntries.filter(([, amount]) => amount > 0).map(([type, amount]) => ({
+                                  id: type, percent: amount / contrib.total * 100, color: getFinancingInstrumentColor(type)
+                                }))} />
                             </div>
                           </TooltipTrigger>
                           <TooltipContent
@@ -519,10 +452,7 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
                             </div>
                           </TooltipContent>
                         </Tooltip>
-                        <div className="w-16 flex-shrink-0 text-right text-xs text-gray-500">
-                          {formatBudgetFixed(contrib.total)}
-                        </div>
-                      </div>
+                      </FinancialPanelRankedRow>
                     );
                   })}
 
@@ -542,9 +472,7 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
           {/* Spending by Country Section */}
           {spendingBreakdown && spendingBreakdown.byCountry.length > 0 && (
             <div className="mt-4">
-              <span className="text-sm font-normal uppercase tracking-wide text-gray-600">
-                Spending by Country
-              </span>
+              <FinancialPanelHeading subheading>Spending by Country</FinancialPanelHeading>
               {loadingSpending ? (
                 <p className="mt-2 text-sm text-gray-500">Loading spending data...</p>
               ) : (
@@ -554,27 +482,10 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
                     const normalizedWidth = (country.amount / maxAmount) * 100;
 
                     return (
-                      <div
-                        key={country.iso3}
-                        className="flex items-center gap-2"
-                      >
-                        <button
-                          onClick={() => navigateToSidebar("country", country.iso3)}
-                          className="w-24 flex-shrink-0 truncate text-left text-xs font-medium text-gray-700 hover:text-un-blue hover:underline"
-                          title={country.name}
-                        >
-                          {country.name}
-                        </button>
-                        <div className="flex flex-1 flex-col gap-px">
-                          <div
-                            className="h-2 rounded-sm bg-un-blue"
-                            style={{ width: `${normalizedWidth}%` }}
-                          />
-                        </div>
-                        <div className="w-16 flex-shrink-0 text-right text-xs text-gray-500">
-                          {formatBudgetFixed(country.amount)}
-                        </div>
-                      </div>
+                      <FinancialPanelRankedRow key={country.iso3} label={country.name}
+                        value={formatBudgetFixed(country.amount)} onClick={() => navigateToSidebar("country", country.iso3)}>
+                        <FinancialPanelBar percent={normalizedWidth} color="var(--color-un-blue)" />
+                      </FinancialPanelRankedRow>
                     );
                   })}
 
@@ -594,9 +505,7 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
           {/* Spending by SDG Section */}
           {spendingBreakdown && spendingBreakdown.bySDG.length > 0 && (
             <div className="mt-4">
-              <span className="text-sm font-normal uppercase tracking-wide text-gray-600">
-                Spending by SDG
-              </span>
+              <FinancialPanelHeading subheading>Spending by SDG</FinancialPanelHeading>
               {loadingSpending ? (
                 <p className="mt-2 text-sm text-gray-500">Loading spending data...</p>
               ) : (
@@ -606,30 +515,11 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
                     const normalizedWidth = (item.amount / maxAmount) * 100;
 
                     return (
-                      <button
-                        key={item.sdg}
-                        onClick={() => navigateToSidebar("sdg", item.sdg)}
-                        className="group flex w-full items-center gap-2 rounded hover:bg-gray-50"
-                      >
-                        <span className="w-24 flex-shrink-0 truncate text-left text-xs text-gray-700 group-hover:text-un-blue group-hover:underline" title={SDG_SHORT_TITLES[item.sdg]}>
-                          {SDG_SHORT_TITLES[item.sdg]}
-                        </span>
-                        <div
-                          className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded text-[10px] font-bold text-white"
-                          style={{ backgroundColor: SDG_COLORS[item.sdg] }}
-                        >
-                          {item.sdg}
-                        </div>
-                        <div className="flex flex-1 flex-col gap-px">
-                          <div
-                            className="h-2 rounded-sm"
-                            style={{ width: `${normalizedWidth}%`, backgroundColor: SDG_COLORS[item.sdg] }}
-                          />
-                        </div>
-                        <div className="w-16 flex-shrink-0 text-right text-xs text-gray-500">
-                          {formatBudgetFixed(item.amount)}
-                        </div>
-                      </button>
+                      <FinancialPanelRankedRow key={item.sdg} label={SDG_SHORT_TITLES[item.sdg]}
+                        value={formatBudgetFixed(item.amount)} onClick={() => navigateToSidebar("sdg", item.sdg)}
+                        badge={<FinancialPanelGoalBadge label={String(item.sdg)} color={SDG_COLORS[item.sdg]} />}>
+                        <FinancialPanelBar percent={normalizedWidth} color={SDG_COLORS[item.sdg]} />
+                      </FinancialPanelRankedRow>
                     );
                   })}
                 </div>
@@ -637,11 +527,9 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
             </div>
           )}
 
-          {/* Impact Section */}
-          <div>
-            <h3 className="mb-3 text-lg font-normal uppercase tracking-wider text-gray-900 sm:text-xl">
-              Impact
-            </h3>
+          {/* Retained for a later, explicitly enabled impact view. */}
+          {SHOW_ENTITY_IMPACTS && <div>
+            <FinancialPanelHeading className="mb-3">Impact</FinancialPanelHeading>
             {loadingImpacts ? (
               <p className="text-sm text-gray-500">Loading impacts...</p>
             ) : impacts.length > 0 ? (
@@ -666,8 +554,9 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
                 No impact data available for this entity.
               </p>
             )}
-          </div>
+          </div>}
         </div>
+        </FinancialDetailPanel>
       </div>
     </div>
   );

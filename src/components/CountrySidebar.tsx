@@ -7,7 +7,8 @@ import { useCallback, useEffect, useState } from "react";
 import { formatBudget } from "@/lib/entities";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { navigateToSidebar } from "@/hooks/useDeepLink";
-import { YearSelector } from "@/components/ui/year-selector";
+import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
+import { FinancialPanelHeading, FinancialPanelRankedRow, FinancialPanelBar, FinancialPanelGoalBadge } from "@un-eosg/ui/components/financial-panel-parts";
 import { useYearRanges, generateYearRange } from "@/lib/useYearRanges";
 import { loadUninfoCountry, UninfoCountryFull } from "@/lib/data";
 import { UninfoFundingBar } from "@/components/UninfoFundingBar";
@@ -25,6 +26,17 @@ const UNINFO_SORT_OPTIONS: SortOption[] = [
   { value: "funding_gap", label: "Funding Gap" },
   { value: "spending_gap", label: "Spending Gap" },
 ];
+
+// Cumulative display levels; retain all existing content for now.
+type CooperationFrameworkLevel = "links" | "financials" | "results" | "projects";
+const COOPERATION_FRAMEWORK_LEVEL: CooperationFrameworkLevel = "projects";
+const COOPERATION_FRAMEWORK_VISIBILITY: Record<CooperationFrameworkLevel, { financials: boolean; results: boolean; projects: boolean }> = {
+  links: { financials: false, results: false, projects: false },
+  financials: { financials: true, results: false, projects: false },
+  results: { financials: true, results: true, projects: false },
+  projects: { financials: true, results: true, projects: true },
+};
+const cooperationFrameworkVisibility = COOPERATION_FRAMEWORK_VISIBILITY[COOPERATION_FRAMEWORK_LEVEL];
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -128,9 +140,14 @@ export function CountrySidebar({ country, initialYear, onClose }: CountrySidebar
   };
 
   useEffect(() => {
-    document.documentElement.style.overflow = "hidden";
+    const rootStyle = document.documentElement.style;
+    const previousOverflow = rootStyle.overflow;
+    const previousGutter = rootStyle.scrollbarGutter;
+    rootStyle.overflow = "hidden";
+    rootStyle.scrollbarGutter = "auto";
     return () => {
-      document.documentElement.style.overflow = "";
+      rootStyle.overflow = previousOverflow;
+      rootStyle.scrollbarGutter = previousGutter;
     };
   }, []);
 
@@ -160,41 +177,20 @@ export function CountrySidebar({ country, initialYear, onClose }: CountrySidebar
         role="dialog"
         aria-modal="true"
         aria-labelledby={sidebarTitleId}
-        className={`h-full w-full overflow-y-auto bg-white shadow-2xl transition-transform duration-300 ease-out sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px] ${isVisible && !isClosing ? "translate-x-0" : "translate-x-full"}`}
+        className={`h-full w-full overflow-hidden bg-white shadow-2xl transition-transform duration-300 ease-out sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px] ${isVisible && !isClosing ? "translate-x-0" : "translate-x-full"}`}
         onTouchStart={onTouchStart}
         onTouchMove={onTouchMove}
         onTouchEnd={onTouchEnd}
       >
-        {/* Header */}
-        <div className="sticky top-0 z-10 border-b border-gray-300 bg-white px-6 pb-2 pt-4 sm:px-8 sm:pb-3 sm:pt-6">
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex-1">
-              <h2 id={sidebarTitleId} className="text-xl font-bold leading-tight text-gray-900 sm:text-2xl lg:text-2xl">
-                {country.name}
-              </h2>
-            </div>
-            <SidebarControls
-              shareHash={`country=${encodeURIComponent(country.iso3)}`}
-              onClose={handleClose}
-              closeLabel="Close sidebar"
-            />
-          </div>
-        </div>
-
-        {/* Content */}
-        <div className="relative space-y-6 px-6 pb-6 pt-4 sm:px-8 sm:pb-8 sm:pt-5">
+        <FinancialDetailPanel title={country.name} titleId={sidebarTitleId} className="sm:w-full"
+          yearSelectorPlacement="header"
+          yearSelector={{ years: availableYears, selected: selectedYear, onChange: setSelectedYear, label: "Select year", pending: loadingYear, pendingLabel: "Loading..." }}
+          controls={<SidebarControls shareHash={`country=${encodeURIComponent(country.iso3)}`} onClose={handleClose} closeLabel="Close sidebar" />}>
+        <div className="relative space-y-6">
           <DelayedChartLoading pending={loadingYear} requestKey={selectedYear} />
           {/* Summary stats */}
           <div>
-            <div className="mb-3 flex items-center justify-between">
-              <h3 className="text-lg font-normal uppercase tracking-wider text-gray-900 sm:text-xl">
-                Summary
-              </h3>
-              <div className="flex items-center gap-2">
-                <YearSelector years={availableYears} selected={selectedYear} onChange={setSelectedYear} />
-                {loadingYear && <span className="text-xs text-gray-400">Loading...</span>}
-              </div>
-            </div>
+            <FinancialPanelHeading className="mb-3">System-wide financials</FinancialPanelHeading>
             <div className="grid grid-cols-2 gap-4">
               <div>
                 <span className="text-sm font-normal uppercase tracking-wide text-gray-600">
@@ -213,38 +209,15 @@ export function CountrySidebar({ country, initialYear, onClose }: CountrySidebar
                 </div>
               </div>
             </div>
-          </div>
-
-          {/* Overall Spending (CEB) */}
-          <div>
-            <h3 className="mb-3 text-lg font-normal uppercase tracking-wider text-gray-900 sm:text-xl">
-              Overall Spending
-            </h3>
-            <span className="text-sm font-normal uppercase tracking-wide text-gray-600">
-              By Entity
-            </span>
+            <FinancialPanelHeading subheading className="mt-4">Spending by entity</FinancialPanelHeading>
             <div className="mt-2 space-y-2">
               {displayedEntities.map(([entity, amount]) => {
                 const normalizedWidth = (amount / maxEntityTotal) * 100;
                 return (
-                  <div key={entity} className="flex items-center gap-2">
-                    <button
-                      onClick={() => navigateToSidebar("entity", entity)}
-                      className="w-20 flex-shrink-0 truncate text-left text-xs font-medium text-gray-700 hover:text-un-blue hover:underline"
-                      title={entity}
-                    >
-                      {entity}
-                    </button>
-                    <div className="flex flex-1 flex-col gap-px">
-                      <div
-                        className="h-2 rounded-sm bg-un-blue transition-all"
-                        style={{ width: `${normalizedWidth}%` }}
-                      />
-                    </div>
-                    <div className="w-20 flex-shrink-0 text-right text-xs text-gray-500">
-                      {formatBudgetFixed(amount)}
-                    </div>
-                  </div>
+                  <FinancialPanelRankedRow key={entity} label={entity} value={formatBudgetFixed(amount)}
+                    onClick={() => navigateToSidebar("entity", entity)}>
+                    <FinancialPanelBar percent={normalizedWidth} color="var(--color-un-blue)" />
+                  </FinancialPanelRankedRow>
                 );
               })}
 
@@ -261,22 +234,18 @@ export function CountrySidebar({ country, initialYear, onClose }: CountrySidebar
 
           {/* UN Cooperation Framework Section */}
           <div className="border-t border-gray-200 pt-6">
-            <h3 className="mb-1 text-lg font-normal uppercase tracking-wider text-gray-900 sm:text-xl">
-              UNSDG Cooperation Framework
-            </h3>
+            <FinancialPanelHeading className="mb-1">UNSDG Cooperation Framework financials</FinancialPanelHeading>
             
             {!uninfoData ? (
               <p className="text-xs text-gray-500 italic">
                 No Cooperation Framework data available. Frameworks are agreements between the UN and programme countries — developed countries and some others are not included.
               </p>
-            ) : selectedYear !== 2024 ? (
-              <p className="text-xs text-gray-500 italic">Data only available for 2024.</p>
             ) : (
               <>
                 <p className="text-xs text-gray-500">
-                  Country-level programme data only, not representative of total spending. <a href="#methodology" className="underline hover:text-gray-700">Learn more.</a>
+                  Country-level programme data only, not representative of total spending.
                 </p>
-                <div className="mb-4 flex flex-wrap gap-x-4 gap-y-1">
+                <div className="mb-4 mt-2 flex flex-wrap gap-x-4 gap-y-2">
                   <a
                     href={`https://uninfo.org/v2/location/${uninfoData.workspace_id}/programming/analysis/sdgs`}
                     target="_blank"
@@ -295,11 +264,11 @@ export function CountrySidebar({ country, initialYear, onClose }: CountrySidebar
                   </a>
                 </div>
                   
+                  {selectedYear !== 2024 && cooperationFrameworkVisibility.financials && <p className="text-xs italic text-gray-500">Data only available for 2024.</p>}
+                  {selectedYear === 2024 && cooperationFrameworkVisibility.financials && <>
                   {/* Overall */}
                   <div>
-                    <span className="text-sm font-normal uppercase tracking-wide text-gray-600">
-                      Overall
-                    </span>
+                    <FinancialPanelHeading subheading>Overall</FinancialPanelHeading>
                     <div className="mt-2">
                       <UninfoFundingBar
                         required={uninfoData.totals.required}
@@ -312,9 +281,7 @@ export function CountrySidebar({ country, initialYear, onClose }: CountrySidebar
                   {/* By SDG */}
                   <div className="mt-4">
                     <div className="flex items-center justify-between">
-                      <span className="text-sm font-normal uppercase tracking-wide text-gray-600">
-                        By SDG
-                      </span>
+                      <FinancialPanelHeading subheading>By SDG</FinancialPanelHeading>
                       <SortSelector options={UNINFO_SORT_OPTIONS} selected={uninfoSort} onChange={setUninfoSort} />
                     </div>
                     <div className="mt-2 space-y-1.5">
@@ -346,12 +313,7 @@ export function CountrySidebar({ country, initialYear, onClose }: CountrySidebar
                                   <span className="w-20 flex-shrink-0 truncate text-left text-xs text-gray-700 group-hover:text-un-blue group-hover:underline" title={SDG_SHORT_TITLES[sdg]}>
                                     {SDG_SHORT_TITLES[sdg]}
                                   </span>
-                                  <div
-                                    className="flex h-5 w-5 flex-shrink-0 items-center justify-center rounded text-[10px] font-bold text-white"
-                                    style={{ backgroundColor: SDG_COLORS[sdg] }}
-                                  >
-                                    {sdg}
-                                  </div>
+                                  <FinancialPanelGoalBadge label={String(sdg)} color={SDG_COLORS[sdg]} />
                                   <div className="flex flex-1 flex-col gap-px">
                                     <div
                                       className="relative h-2 overflow-hidden rounded-sm bg-gray-200"
@@ -380,12 +342,11 @@ export function CountrySidebar({ country, initialYear, onClose }: CountrySidebar
                     </div>
                   </div>
 
+                  </>}
                   {/* Results Framework */}
-                  {uninfoData.framework && uninfoData.framework.length > 0 && (
+                  {selectedYear === 2024 && cooperationFrameworkVisibility.results && uninfoData.framework && uninfoData.framework.length > 0 && (
                     <div className="mt-4">
-                      <span className="text-sm font-normal uppercase tracking-wide text-gray-600">
-                        Results Framework
-                      </span>
+                      <FinancialPanelHeading subheading>Results Framework</FinancialPanelHeading>
                       <div className="mt-2">
                         <ResultsFramework framework={uninfoData.framework} />
                       </div>
@@ -393,11 +354,9 @@ export function CountrySidebar({ country, initialYear, onClose }: CountrySidebar
                   )}
 
                   {/* Top Projects */}
-                  {uninfoData.projects.length > 0 && (
+                  {selectedYear === 2024 && cooperationFrameworkVisibility.projects && uninfoData.projects.length > 0 && (
                     <div className="mt-4">
-                      <span className="text-sm font-normal uppercase tracking-wide text-gray-600">
-                        Top Projects
-                      </span>
+                      <FinancialPanelHeading subheading>Top Projects</FinancialPanelHeading>
                       <div className="mt-2">
                         <UninfoProjectTable projects={uninfoData.projects} initialLimit={5} />
                       </div>
@@ -407,6 +366,7 @@ export function CountrySidebar({ country, initialYear, onClose }: CountrySidebar
               )}
           </div>
         </div>
+        </FinancialDetailPanel>
       </div>
     </div>
   );

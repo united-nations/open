@@ -7,7 +7,7 @@ import {
   type FinancialDetailPanelNotice,
   type FinancialDetailPanelTrend,
 } from "@un-eosg/ui/components/financial-detail-panel";
-import { DetailSection } from "@un-eosg/ui/components/detail-panel";
+import { FinancialPanelSection } from "@un-eosg/ui/components/financial-panel-parts";
 import { SidebarControls } from "@/components/SidebarControls";
 import {
   FUNDING_SOURCE_TREND_SERIES,
@@ -179,10 +179,15 @@ export function SecretariatEntitySidebar({
 
   useEffect(() => {
     const id = requestAnimationFrame(() => setVisible(true));
-    document.documentElement.style.overflow = "hidden";
+    const rootStyle = document.documentElement.style;
+    const previousOverflow = rootStyle.overflow;
+    const previousGutter = rootStyle.scrollbarGutter;
+    rootStyle.overflow = "hidden";
+    rootStyle.scrollbarGutter = "auto";
     return () => {
       cancelAnimationFrame(id);
-      document.documentElement.style.overflow = "";
+      rootStyle.overflow = previousOverflow;
+      rootStyle.scrollbarGutter = previousGutter;
     };
   }, []);
 
@@ -231,10 +236,6 @@ export function SecretariatEntitySidebar({
       id: fundingSource,
       label: <FundingSourceLabel source={fundingSource} variant="inline" />,
       value: formatBudget(amounts[fundingSource]),
-      share:
-        displayed.entity.total !== 0
-          ? `${((amounts[fundingSource] / displayed.entity.total) * 100).toFixed(1)}%`
-          : "0.0%",
       marker: null,
     })),
     note: breakdownComplete
@@ -298,9 +299,9 @@ export function SecretariatEntitySidebar({
               : displayed.entity.code
           }
           titleId={titleId}
-          eyebrow="Secretariat entity"
           controls={
             <SidebarControls
+              shareHash={`secretariat-entity=${encodeURIComponent(displayed.entity.code)}`}
               onClose={close}
               closeLabel="Close entity details"
             />
@@ -321,43 +322,22 @@ export function SecretariatEntitySidebar({
                 </>
               ) : undefined,
           }}
-          year={{
-            kind: "select",
-            label: "Year",
-            value: String(displayed.year),
-            options: [...years]
-              .sort((a, b) => b - a)
-              .map((availableYear) => ({
-                label: String(availableYear),
-                value: String(availableYear),
-              })),
-            onChange: (value) => {
-              const nextYear = Number(value);
+          yearSelectorPlacement="header"
+          yearSelector={{
+            years: [...years].sort((a,b) => b-a),
+            selected: displayed.year,
+            label: "Select year",
+            onChange: (nextYear) => {
               if (nextYear !== displayed.year) {
                 setYearError(null);
                 setRequestedYear(nextYear);
               }
             },
             pending: requestedYear !== null,
-            pendingLabel:
-              requestedYear === null ? undefined : `Loading ${requestedYear}…`,
+            pendingLabel: requestedYear === null ? undefined : `Loading ${requestedYear}…`,
           }}
           fundingBreakdown={fundingBreakdown}
           trend={trend}
-          sources={{
-            heading: "Source and methodology",
-            status: `Source for ${displayed.year} is ready.`,
-            newTabLabel: "opens in a new tab",
-            items: [
-              {
-                id: "secretariat-overview-source",
-                label: displayed.source.label,
-                href: displayed.source.url,
-                description:
-                  "Values are expenses in USD and may include negative corrections.",
-              },
-            ],
-          }}
           busy={requestedYear !== null}
           statusMessage={
             requestedYear === null
@@ -365,9 +345,9 @@ export function SecretariatEntitySidebar({
               : `Loading ${requestedYear} data. Showing ${displayed.year} until it is ready.`
           }
           notice={notice}
-          className="bg-white"
+          className="bg-white sm:w-full"
         >
-          <DetailSection heading="Priority areas">
+          <FinancialPanelSection heading="Priority areas">
             {priorities.length > 0 ? (
               <div className="space-y-3">
                 {priorities.map(([label, amount]) => (
@@ -404,13 +384,9 @@ export function SecretariatEntitySidebar({
                 No priority-area allocation is available for {displayed.year}.
               </p>
             )}
-          </DetailSection>
+          </FinancialPanelSection>
 
-          <p className="border-l-2 border-un-blue bg-sky-50 px-3 py-2 text-xs leading-relaxed text-gray-600">
-            Priority-area amounts retain the source allocation. The primary
-            priority used for overview placement does not replace this
-            breakdown.
-          </p>
+
         </FinancialDetailPanel>
       </aside>
     </div>
