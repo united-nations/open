@@ -1,4 +1,6 @@
 "use client";
+import { fundingSources } from "@un-eosg/ui/funding-sources";
+import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label";
 
 import { ChevronRight, ExternalLink } from "lucide-react";
 import { ExpandableCard } from "@/components/ExpandableCard";
@@ -21,12 +23,12 @@ import type {
 import { formatBudget } from "@/lib/entities";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { SidebarControls } from "@/components/SidebarControls";
-import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
 import {
-  BUDGET_FUNDING_SOURCES,
-  FUNDING_SHADE_OPACITY,
-  FUNDING_SOURCES,
-} from "@/lib/budgetGroupings";
+  Tooltip,
+  TooltipContent,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+import { BUDGET_FUNDING_SOURCES, FUNDING_SOURCES } from "@/lib/budgetGroupings";
 import { BAND_PALETTE } from "@/lib/secretariatGroupings";
 import { ProgrammeBudgetNodeTrend } from "@/components/ProgrammeBudgetNodeTrend";
 
@@ -131,9 +133,9 @@ function BudgetAmount({
 }
 
 const FUNDING_TREEMAP_COLORS: Record<BudgetFundingSource, string> = {
-  regular_budget: "#009edb",
-  other_assessed: "#4db8e8",
-  extrabudgetary: "#99d6f2",
+  regular_budget: fundingSources.regular_budget.color,
+  other_assessed: fundingSources.other_assessed.color,
+  extrabudgetary: fundingSources.extrabudgetary.color,
 };
 
 function positiveFundingValues(
@@ -165,13 +167,12 @@ function miniLeafLabel(node: BudgetNode): string {
 
 function miniFundingSegments(
   node: BudgetNode,
-  color: string,
 ): GroupedTreemapSegment<BudgetFundingSource>[] {
   return positiveFundingValues(node).map(([source, value]) => ({
     key: source,
     label: FUNDING_SOURCES[source]?.label ?? source,
     value,
-    color: `color-mix(in srgb, ${color} ${FUNDING_SHADE_OPACITY[source] * 100}%, white)`,
+    color: fundingSources[source].color,
     data: source,
   }));
 }
@@ -187,7 +188,7 @@ function miniNodeLeaf(
     value: node.amount,
     color,
     data: { node, parentAmount },
-    segments: miniFundingSegments(node, color),
+    segments: miniFundingSegments(node),
   };
 }
 
@@ -212,11 +213,7 @@ function miniChildSubgroup(
   index: number,
   childrenByParent: Record<string, BudgetNode[]>,
   stream: BudgetMeta["stream"],
-): GroupedTreemapSubgroup<
-  BudgetNode,
-  MiniBudgetLeafData,
-  BudgetFundingSource
-> {
+): GroupedTreemapSubgroup<BudgetNode, MiniBudgetLeafData, BudgetFundingSource> {
   const color = BAND_PALETTE[index % BAND_PALETTE.length].bg;
   const descendants =
     stream === "ppb" ? (childrenByParent[child.id] ?? []) : [];
@@ -253,16 +250,11 @@ function miniChildSubgroup(
   };
 }
 
-function miniFundingRows(
-  node: BudgetNode,
-  meta: BudgetMeta,
-): MiniBudgetRow[] {
+function miniFundingRows(node: BudgetNode, meta: BudgetMeta): MiniBudgetRow[] {
   const leaves = positiveFundingValues(node).map(([source, value]) => ({
     key: source,
     label:
-      meta.fundingLabels?.[source] ??
-      FUNDING_SOURCES[source]?.label ??
-      source,
+      meta.fundingLabels?.[source] ?? FUNDING_SOURCES[source]?.label ?? source,
     value,
     color: FUNDING_TREEMAP_COLORS[source],
     textColor: source === "regular_budget" ? undefined : "#1f2937",
@@ -286,10 +278,7 @@ function miniHierarchyRows(
   );
   const difference =
     node.amount - positive.reduce((sum, child) => sum + child.amount, 0);
-  if (
-    !childNodes.some((child) => child.amount < 0) &&
-    difference > 5000
-  ) {
+  if (!childNodes.some((child) => child.amount < 0) && difference > 5000) {
     subgroups.push({
       key: `${node.id}-not-itemized`,
       label: "Not itemized",
@@ -304,12 +293,14 @@ function miniHierarchyRows(
       ],
     });
   }
-  return [{
-    key: node.id,
-    label: miniLeafLabel(node),
-    data: node,
-    subgroups,
-  }];
+  return [
+    {
+      key: node.id,
+      label: miniLeafLabel(node),
+      data: node,
+      subgroups,
+    },
+  ];
 }
 
 function miniTreemapCaption(
@@ -499,37 +490,69 @@ function BudgetHierarchy({
           </span>
         );
         const fundingValues = positiveFundingValues(child);
-        const fundingTotal = fundingValues.reduce((sum, [, amount]) => sum + amount, 0);
+        const fundingTotal = fundingValues.reduce(
+          (sum, [, amount]) => sum + amount,
+          0,
+        );
         const bar = (
           <Tooltip>
             <TooltipTrigger asChild>
-              <span tabIndex={0} aria-label={`Funding sources for ${child.entity?.name ?? child.label}`}
-                className="flex min-h-8 w-full items-center focus-visible:outline-2 focus-visible:outline-un-blue">
+              <span
+                tabIndex={0}
+                aria-label={`Funding sources for ${child.entity?.name ?? child.label}`}
+                className="flex min-h-8 w-full items-center focus-visible:outline-2 focus-visible:outline-un-blue"
+              >
                 <span className="relative block h-1.5 w-full overflow-hidden rounded-sm">
                   {depth > 0 && parentAmount !== undefined && (
-                    <span className="absolute inset-y-0 start-0 rounded-sm bg-gray-200" style={{ width: `${scaledWidth(parentAmount)}%` }} />
+                    <span
+                      className="absolute inset-y-0 start-0 rounded-sm bg-gray-200"
+                      style={{ width: `${scaledWidth(parentAmount)}%` }}
+                    />
                   )}
-                  <span className="absolute inset-y-0 start-0 flex overflow-hidden rounded-sm bg-un-blue" style={{ width: `${scaledWidth(child.amount)}%` }}>
+                  <span
+                    className="absolute inset-y-0 start-0 flex overflow-hidden rounded-sm bg-un-blue"
+                    style={{ width: `${scaledWidth(child.amount)}%` }}
+                  >
                     {fundingValues.map(([source, amount]) => (
-                      <span key={source} className="h-full" style={{ width: `${amount / fundingTotal * 100}%`, backgroundColor: FUNDING_TREEMAP_COLORS[source] }} />
+                      <span
+                        key={source}
+                        className="h-full"
+                        style={{
+                          width: `${(amount / fundingTotal) * 100}%`,
+                          backgroundColor: FUNDING_TREEMAP_COLORS[source],
+                        }}
+                      />
                     ))}
                   </span>
                 </span>
               </span>
             </TooltipTrigger>
-            <TooltipContent side="top" className="w-auto max-w-[calc(100vw-2rem)] space-y-2 rounded-lg bg-white p-3 text-black">
+            <TooltipContent
+              side="top"
+              className="w-auto max-w-[calc(100vw-2rem)] space-y-2 rounded-lg bg-white p-3 text-black"
+            >
               <div className="grid grid-cols-[max-content_4rem_max-content] items-center gap-x-2 gap-y-2 text-xs">
-              {fundingValues.map(([source, amount]) => (
-                <div key={source} className="contents">
-                  <span>{FUNDING_SOURCES[source].label}</span>
-                  <div className="w-full">
-                    <div className="h-1.5 rounded-sm" style={{ width: `${amount / fundingTotal * 100}%`, backgroundColor: FUNDING_TREEMAP_COLORS[source] }} />
+                {fundingValues.map(([source, amount]) => (
+                  <div key={source} className="contents">
+                    <span>{FUNDING_SOURCES[source].label}</span>
+                    <div className="w-full">
+                      <div
+                        className="h-1.5 rounded-sm"
+                        style={{
+                          width: `${(amount / fundingTotal) * 100}%`,
+                          backgroundColor: FUNDING_TREEMAP_COLORS[source],
+                        }}
+                      />
+                    </div>
+                    <span className="text-end tabular-nums">
+                      {formatBudget(amount)}
+                    </span>
                   </div>
-                  <span className="text-end tabular-nums">{formatBudget(amount)}</span>
-                </div>
-              ))}
+                ))}
               </div>
-              {fundingValues.length === 0 && <p className="text-xs">Funding-source breakdown unavailable.</p>}
+              {fundingValues.length === 0 && (
+                <p className="text-xs">Funding-source breakdown unavailable.</p>
+              )}
             </TooltipContent>
           </Tooltip>
         );
@@ -537,20 +560,33 @@ function BudgetHierarchy({
           <>
             {hasDescendants ? (
               <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-secondary text-muted-foreground group-hover:bg-muted group-hover:text-foreground">
-                <ChevronRight aria-hidden="true" className={`size-4 transition-transform ${isExpanded ? "rotate-90" : ""}`} />
+                <ChevronRight
+                  aria-hidden="true"
+                  className={`size-4 transition-transform ${isExpanded ? "rotate-90" : ""}`}
+                />
               </span>
-            ) : <span className="size-8" aria-hidden="true" />}
+            ) : (
+              <span className="size-8" aria-hidden="true" />
+            )}
             {label}
             {bar}
-            <span className="justify-self-end whitespace-nowrap text-gray-900">{formatBudget(child.amount)}</span>
+            <span className="justify-self-end whitespace-nowrap text-gray-900">
+              {formatBudget(child.amount)}
+            </span>
           </>
         );
-        const rowClass = "group grid min-h-11 w-full min-w-0 grid-cols-[2rem_minmax(0,1fr)_4rem_5.5rem] items-center gap-x-2 rounded-sm px-1 py-1 text-left text-sm hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-un-blue sm:grid-cols-[2rem_minmax(0,1fr)_5rem_6rem] sm:gap-x-3";
+        const rowClass =
+          "group grid min-h-11 w-full min-w-0 grid-cols-[2rem_minmax(0,1fr)_4rem_5.5rem] items-center gap-x-2 rounded-sm px-1 py-1 text-left text-sm hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-un-blue sm:grid-cols-[2rem_minmax(0,1fr)_5rem_6rem] sm:gap-x-3";
         return (
           <li key={child.id}>
             <div style={{ paddingInlineStart: `${depth * 0.75}rem` }}>
               {hasDescendants ? (
-                <button type="button" aria-expanded={isExpanded} onClick={toggleExpanded} className={rowClass}>
+                <button
+                  type="button"
+                  aria-expanded={isExpanded}
+                  onClick={toggleExpanded}
+                  className={rowClass}
+                >
                   {rowContent}
                 </button>
               ) : (
@@ -589,11 +625,13 @@ export function BudgetSidebar({
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const focusTrapRef = useFocusTrap(true);
-  const metricLabel = meta.measure === "approved"
-    ? "Approved resources"
-    : meta.measure === "proposed"
-      ? "Proposed resources"
-      : meta.metrics?.[meta.measure as BudgetMetricKey]?.label ?? "Expenditure";
+  const metricLabel =
+    meta.measure === "approved"
+      ? "Approved resources"
+      : meta.measure === "proposed"
+        ? "Proposed resources"
+        : (meta.metrics?.[meta.measure as BudgetMetricKey]?.label ??
+          "Expenditure");
 
   useEffect(() => {
     const id = requestAnimationFrame(() => setIsVisible(true));
@@ -641,19 +679,29 @@ export function BudgetSidebar({
   const visitedWrappers = new Set<string>();
   while (breakdownNodes.length === 1) {
     const wrapper = breakdownNodes[0];
-    const sameEntity = node.entity && wrapper.entity &&
-      (wrapper.entity.id ?? wrapper.entity.name) === (node.entity.id ?? node.entity.name);
+    const sameEntity =
+      node.entity &&
+      wrapper.entity &&
+      (wrapper.entity.id ?? wrapper.entity.name) ===
+        (node.entity.id ?? node.entity.name);
     const descendants = childrenByParent[wrapper.id] ?? [];
     const repeatsTotal = Math.abs(wrapper.amount - node.amount) < 0.5;
-    if ((!sameEntity && !repeatsTotal) || descendants.length === 0 || visitedWrappers.has(wrapper.id)) break;
+    if (
+      (!sameEntity && !repeatsTotal) ||
+      descendants.length === 0 ||
+      visitedWrappers.has(wrapper.id)
+    )
+      break;
     visitedWrappers.add(wrapper.id);
     breakdownNodes = descendants;
   }
-  const hasBreakdown = breakdownNodes.length > 0 && !(
-    breakdownNodes.length === 1 &&
-    Math.abs(breakdownNodes[0].amount - node.amount) < 0.5 &&
-    (childrenByParent[breakdownNodes[0].id] ?? []).length === 0
-  );
+  const hasBreakdown =
+    breakdownNodes.length > 0 &&
+    !(
+      breakdownNodes.length === 1 &&
+      Math.abs(breakdownNodes[0].amount - node.amount) < 0.5 &&
+      (childrenByParent[breakdownNodes[0].id] ?? []).length === 0
+    );
   const fundingEntries = positiveFundingValues(node);
   const childSum = childNodes.reduce((sum, child) => sum + child.amount, 0);
   const childGap = node.amount - childSum;
@@ -706,9 +754,12 @@ export function BudgetSidebar({
     return meta.scopeLabel;
   };
 
-  const heading = view === "entity" && node.entity
-    ? node.entity.name
-    : node.tier === "section" ? node.label : (node.entity?.name ?? node.label);
+  const heading =
+    view === "entity" && node.entity
+      ? node.entity.name
+      : node.tier === "section"
+        ? node.label
+        : (node.entity?.name ?? node.label);
   const breakdownHeading = "Breakdown";
 
   return (
@@ -765,14 +816,13 @@ export function BudgetSidebar({
                     meta.fundingLabels?.[key] ?? style?.label ?? key;
                   return (
                     <div key={key} className="flex items-center gap-2 text-sm">
-                      <span
-                        className="inline-block h-2.5 w-2.5 shrink-0 rounded-sm"
-                        style={{
-                          backgroundColor: FUNDING_TREEMAP_COLORS[key],
-                        }}
-                        title={style?.tooltip}
-                      />
-                      <span className="flex-1 text-gray-700">{label}</span>
+                      <span className="flex-1">
+                        <FundingSourceLabel
+                          source={key}
+                          variant="inline"
+                          label={label}
+                        />
+                      </span>
                       <BudgetAmount
                         amount={amount}
                         sources={
@@ -808,12 +858,14 @@ export function BudgetSidebar({
               <h3 className="mb-3 text-lg font-normal tracking-wider text-gray-900 uppercase">
                 {breakdownHeading}
               </h3>
-              {SHOW_SIDEBAR_MINI_TREEMAP && <MiniBudgetTreemap
-                node={node}
-                childNodes={childNodes}
-                childrenByParent={childrenByParent}
-                meta={meta}
-              />}
+              {SHOW_SIDEBAR_MINI_TREEMAP && (
+                <MiniBudgetTreemap
+                  node={node}
+                  childNodes={childNodes}
+                  childrenByParent={childrenByParent}
+                  meta={meta}
+                />
+              )}
               {childNodes.length > 0 && (
                 <>
                   <div className="mt-4">
@@ -822,12 +874,18 @@ export function BudgetSidebar({
                       childrenByParent={childrenByParent}
                     />
                   </div>
-                  {Math.abs(childGap) > (dataset?.startsWith("budget-ppb") ? 0.5 : 5000) && (
+                  {Math.abs(childGap) >
+                    (dataset?.startsWith("budget-ppb") ? 0.5 : 5000) && (
                     <p className="mt-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-900">
                       The published parent total is {formatBudget(node.amount)},
                       but the published lines below add to{" "}
                       {formatBudget(childSum)}— a difference of{" "}
-                      {Math.abs(childGap).toLocaleString("en-US", { style: "currency", currency: "USD", maximumFractionDigits: 0 })}.
+                      {Math.abs(childGap).toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                        maximumFractionDigits: 0,
+                      })}
+                      .
                       {dataset?.startsWith("budget-ppb")
                         ? " Tile areas are scaled to fill the parent using the available breakdown; displayed amounts remain as published."
                         : " The parent total remains authoritative; this breakdown is flagged and is not used to size the main treemap."}

@@ -1,4 +1,6 @@
 "use client";
+import { ChartFooter } from "@/components/ChartFooter";
+import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label";
 
 import {
   GroupedTreemap,
@@ -9,11 +11,6 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { ContributorSidebar } from "@/components/ContributorSidebar";
 import { YearSlider } from "@/components/YearSlider";
 import { ClickHint } from "@/components/ui/ClickHint";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
 import {
   clearSidebarHash,
   replaceToSidebar,
@@ -33,7 +30,7 @@ import {
   isUnattributed,
 } from "@/lib/contributors";
 import {
-  FINANCING_INSTRUMENT_TOOLTIPS,
+  FINANCING_SOURCE_KEYS,
   getFinancingInstrumentColor,
 } from "@/lib/financingInstruments";
 import { generateYearRange, useYearRanges } from "@/lib/useYearRanges";
@@ -49,7 +46,7 @@ const ROWS: Record<
   government: {
     label: "Government",
     color: "var(--color-un-blue)",
-    textColor: "var(--color-foreground)",
+    textColor: "#ffffff",
   },
   "non-government": {
     label: "Non-Government",
@@ -59,7 +56,7 @@ const ROWS: Record<
   unattributed: {
     label: "Unattributed",
     color: "var(--color-dusty-gray)",
-    textColor: "var(--color-foreground)",
+    textColor: "#ffffff",
   },
 };
 
@@ -156,6 +153,9 @@ export function ContributorsTreemap() {
     useState<Contributor | null>(null);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [selectedFunding, setSelectedFunding] = useState<string[]>(() =>
+    CONTRIBUTION_TYPES.map(({ type }) => type),
+  );
   const [selectedYear, setSelectedYear] = useState(yearRanges.donors.default);
   const [pendingDeepLink, setPendingDeepLink] = useDeepLink({
     hashPrefix: "donor",
@@ -210,17 +210,39 @@ export function ContributorsTreemap() {
     return () => controller.abort();
   }, [selectedYear]);
 
-  const open = useCallback((contributor: Contributor) => {
-    setSelectedContributor(contributor);
-    replaceToSidebar("donor", contributor.name);
-  }, []);
+  const open = useCallback(
+    (contributor: Contributor) => {
+      setSelectedContributor(
+        contributors.find((item) => item.name === contributor.name) ??
+          contributor,
+      );
+      replaceToSidebar("donor", contributor.name);
+    },
+    [contributors],
+  );
 
   const positiveContributors = useMemo(
     () =>
-      contributors.filter(
-        (contributor) => getTotalContributions(contributor.contributions) > 0,
-      ),
-    [contributors],
+      contributors
+        .map((contributor) => ({
+          ...contributor,
+          contributions: Object.fromEntries(
+            Object.entries(contributor.contributions).map(
+              ([entity, amounts]) => [
+                entity,
+                Object.fromEntries(
+                  Object.entries(amounts).filter(([type]) =>
+                    selectedFunding.includes(type),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        }))
+        .filter(
+          (contributor) => getTotalContributions(contributor.contributions) > 0,
+        ),
+    [contributors, selectedFunding],
   );
 
   const toLeaf = useCallback(
@@ -253,7 +275,7 @@ export function ContributorsTreemap() {
         data: contributor,
         segments:
           isGovernmentDonor(contributor.status) && !hasNegativeAdjustment
-            ? breakdownEntries.map(([type, value]) => ({
+            ? [...breakdownEntries].reverse().map(([type, value]) => ({
                 key: type,
                 label: type,
                 value,
@@ -361,48 +383,41 @@ export function ContributorsTreemap() {
 
   return (
     <div className="w-full">
-      <div className="mb-3 flex justify-end">
-        <YearSlider
-          years={years}
-          selectedYear={selectedYear}
-          onChange={setSelectedYear}
-        />
-      </div>
-
       {!loading && contributors.length > 0 && (
         <>
-          <div className="mb-3 flex flex-wrap justify-end gap-3">
-            {CONTRIBUTION_TYPES.filter(({ type }) => type !== "Other").map(
-              ({ type, label }) => (
-                <Tooltip key={type} delayDuration={200}>
-                  <TooltipTrigger asChild>
-                    <div className="flex cursor-help items-center gap-1.5">
-                      <div
-                        className="h-3 w-3 rounded-sm"
-                        style={{
-                          backgroundColor: getFinancingInstrumentColor(type),
-                        }}
-                      />
-                      <span className="text-xs text-gray-600 underline decoration-dotted underline-offset-2">
-                        {label}
-                      </span>
-                    </div>
-                  </TooltipTrigger>
-                  <TooltipContent
-                    side="top"
-                    sideOffset={4}
-                    className="max-w-[250px] border border-slate-200 bg-white text-slate-800 shadow-lg"
-                  >
-                    <p className="text-xs">
-                      {FINANCING_INSTRUMENT_TOOLTIPS[type]}
-                    </p>
-                  </TooltipContent>
-                </Tooltip>
-              ),
-            )}
-          </div>
-
           <GroupedTreemap<ContributorRow, string, Contributor, string>
+            footer={
+              <ChartFooter hint="Click on a contributor to explore details" />
+            }
+            yearControl={
+              <YearSlider
+                years={years}
+                selectedYear={selectedYear}
+                onChange={setSelectedYear}
+              />
+            }
+            controls={
+              <div
+                className="flex flex-wrap gap-2"
+                role="group"
+                aria-label="Funding sources"
+              >
+                {CONTRIBUTION_TYPES.map(({ type }) => (
+                  <FundingSourceLabel
+                    key={type}
+                    source={FINANCING_SOURCE_KEYS[type]}
+                    selected={selectedFunding.includes(type)}
+                    onToggle={() =>
+                      setSelectedFunding((current) =>
+                        current.includes(type)
+                          ? current.filter((item) => item !== type)
+                          : [...current, type],
+                      )
+                    }
+                  />
+                ))}
+              </div>
+            }
             rows={rows}
             search={{
               value: searchQuery,
@@ -416,7 +431,11 @@ export function ContributorsTreemap() {
                     matchesQuery(contributor.name, query),
                 ),
             }}
-            totalLabel="Total"
+            totalLabel={
+              selectedFunding.length === CONTRIBUTION_TYPES.length
+                ? "Total"
+                : "Selected funding total"
+            }
             plotClassName="h-[560px] sm:h-[680px] lg:h-[780px]"
             showLeafValues
             formatValue={formatBudget}
@@ -426,7 +445,9 @@ export function ContributorsTreemap() {
             )}
             emptyContent={
               <div className="flex h-full items-center justify-center text-sm text-gray-500">
-                No contributors match your search.
+                {selectedFunding.length === 0
+                  ? "Select a funding source to show contributions."
+                  : "No contributors match the selected funding sources and search."}
               </div>
             }
           />

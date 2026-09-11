@@ -1,5 +1,6 @@
 "use client";
 
+import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
 import { useEffect, useState } from "react";
 import { RegularBudgetPaymentTimeline } from "@/components/RegularBudgetPaymentTimeline";
 import { YearSlider } from "@/components/YearSlider";
@@ -8,6 +9,7 @@ import { useYearRanges } from "@/lib/useYearRanges";
 import type { RegularBudgetContributorsData } from "@/types";
 
 export function RegularBudgetPaymentTimelineCard() {
+  const [measure, setMeasure] = useState("amount");
   const range = useYearRanges().regularBudgetContributors;
   const [selectedYear, setSelectedYear] = useState(range.default);
   const [loaded, setLoaded] = useState<RegularBudgetContributorsData | null>(
@@ -36,34 +38,54 @@ export function RegularBudgetPaymentTimelineCard() {
   }, [selectedYear]);
 
   return (
-    <section className="min-w-0">
-      <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-        <h3 className="text-lg font-medium text-gray-900">
-          Payment status within the year
-        </h3>
-        <YearSlider
-          years={range.years}
-          selectedYear={selectedYear}
-          onChange={setSelectedYear}
-          disabled={loading}
-        />
+    <section className="min-w-0 lg:row-span-4 lg:grid lg:grid-rows-subgrid">
+      <div className="contents">
+        <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
+          <h3 className="text-lg font-medium text-gray-900">
+            Payment status within the year
+          </h3>
+        </div>
+
+        <div className="mb-3 flex items-start">
+          <YearSlider
+            compact
+            years={range.years}
+            selectedYear={selectedYear}
+            onChange={setSelectedYear}
+            disabled={loading}
+          />
+        </div>
+        <div className="mb-3 flex items-start">
+          <BinaryToggle
+            variant="segmented"
+            label="Paid-in-full measure"
+            options={[
+              { value: "amount", label: "Assessments paid in full" },
+              { value: "count", label: "Member States paid in full" },
+            ]}
+            value={measure}
+            onValueChange={setMeasure}
+          />
+        </div>
       </div>
-      <p className="mb-4 text-xs leading-relaxed text-gray-500">
-        The curve adds a Member State&apos;s full assessment on the date it
-        appears as paid in full. Partial payments are not available from the
-        honour roll and are therefore not estimated.
-      </p>
-      {data && <RegularBudgetPaymentTimeline data={data} />}
-      {loading && (
-        <div className="flex h-80 items-center justify-center text-sm text-gray-500">
-          Loading payment status…
-        </div>
-      )}
-      {!loading && !data && (
-        <div className="flex h-80 items-center justify-center text-sm text-red-700">
-          Payment status is unavailable for {selectedYear}.
-        </div>
-      )}
+      <div>
+        {data && (
+          <RegularBudgetPaymentTimeline
+            data={data}
+            measure={measure === "count" ? "count" : "amount"}
+          />
+        )}
+        {loading && (
+          <div className="flex h-80 items-center justify-center text-sm text-gray-500">
+            Loading payment status…
+          </div>
+        )}
+        {!loading && !data && (
+          <div className="flex h-80 items-center justify-center text-sm text-red-700">
+            Payment status is unavailable for {selectedYear}.
+          </div>
+        )}
+      </div>
     </section>
   );
 }

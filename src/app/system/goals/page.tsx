@@ -1,8 +1,8 @@
+import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import {
   CebMethodology,
   GoalsMethodologyNotes,
-  Methodology,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
@@ -16,7 +16,15 @@ export const metadata: Metadata = {
 
 export default function SystemGoalsPage() {
   return (
-    <>
+    <ChartSourceProvider
+      label="CEB financial statistics"
+      details={
+        <>
+          <CebMethodology />
+          <GoalsMethodologyNotes />
+        </>
+      }
+    >
       <PageHeading
         id="sdgs"
         title="Which goals are funds spent towards?"
@@ -25,10 +33,6 @@ export default function SystemGoalsPage() {
       <PageBody>
         <SDGsGrid />
       </PageBody>
-      <Methodology>
-        <CebMethodology />
-        <GoalsMethodologyNotes />
-      </Methodology>
-    </>
+    </ChartSourceProvider>
   );
 }

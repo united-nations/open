@@ -1,6 +1,6 @@
+import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import {
-  Methodology,
   ProgrammeBudgetMethodologyNotes,
   SecretariatMethodology,
 } from "@/components/Methodology";
@@ -16,7 +16,15 @@ export const metadata: Metadata = {
 
 export default function ProgrammeBudgetPage() {
   return (
-    <>
+    <ChartSourceProvider
+      label="Proposed Programme Budget documents"
+      details={
+        <>
+          <SecretariatMethodology />
+          <ProgrammeBudgetMethodologyNotes />
+        </>
+      }
+    >
       <PageHeading
         id="regular-budget-spending"
         title="How is the programme budget allocated?"
@@ -25,10 +33,6 @@ export default function ProgrammeBudgetPage() {
       <PageBody>
         <RegularBudgetView />
       </PageBody>
-      <Methodology>
-        <SecretariatMethodology />
-        <ProgrammeBudgetMethodologyNotes />
-      </Methodology>
-    </>
+    </ChartSourceProvider>
   );
 }

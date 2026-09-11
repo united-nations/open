@@ -1,3 +1,4 @@
+import { fundingSources } from "@un-eosg/ui/funding-sources";
 // Grouping configuration for the budget-document treemaps on /secretariat
 // (data written by python/12-export_budget_json.py).
 //
@@ -197,20 +198,20 @@ export const FUNDING_SHADE_OPACITY: Record<BudgetFundingSource, number> = {
 };
 
 const fundingSourceVisuals: Record<BudgetFundingSource, string> = {
-  regular_budget: "bg-un-blue",
-  other_assessed: "bg-un-blue",
-  extrabudgetary: "bg-un-blue-dark",
+  regular_budget: "bg-open-funding-assessed",
+  other_assessed: "bg-open-funding-assessed",
+  extrabudgetary: "bg-open-funding-voluntary-earmarked",
 };
 
 export const FUNDING_SOURCES: Record<
   string,
   { label: string; color: string; tooltip: string }
 > = Object.fromEntries(
-  secretariatTaxonomies.funding_sources.map(({ key, label, tooltip }) => [
+  secretariatTaxonomies.funding_sources.map(({ key }) => [
     key,
     {
-      label,
-      tooltip,
+      label: fundingSources[key as BudgetFundingSource].label,
+      tooltip: fundingSources[key as BudgetFundingSource].explanation,
       color: fundingSourceVisuals[key as BudgetFundingSource],
     },
   ]),

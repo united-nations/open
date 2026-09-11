@@ -1,27 +1,37 @@
+import {
+  fundingSources,
+  type FundingSource,
+} from "@un-eosg/ui/funding-sources";
 import organizationTaxonomies from "../../data/organization-taxonomies.json";
 
 // Financing instrument definitions and colors based on UN Data Standards
 
+export const FINANCING_SOURCE_KEYS: Record<string, FundingSource> = {
+  Assessed: "assessed",
+  "Voluntary un-earmarked": "voluntary-unearmarked",
+  "Voluntary earmarked": "voluntary-earmarked",
+  Other: "other",
+  "Regular budget": "regular_budget",
+  "Other assessed": "other_assessed",
+  Extrabudgetary: "extrabudgetary",
+};
 export const FINANCING_INSTRUMENT_COLORS = {
-  assessed: "#009edb", // UN blue - full opacity
-  voluntary_unearmarked: "#4db8e8", // UN blue - lighter
-  voluntary_earmarked: "#99d6f2", // UN blue - lightest
-  other: "#cceaf7", // UN blue - very light
+  assessed: fundingSources.assessed.color,
+  voluntary_unearmarked: fundingSources["voluntary-unearmarked"].color,
+  voluntary_earmarked: fundingSources["voluntary-earmarked"].color,
+  other: fundingSources.other.color,
 };
-
-// Tailwind class equivalents for the colors above
 export const FINANCING_INSTRUMENT_BG_CLASSES: Record<string, string> = {
-  Assessed: "bg-un-blue",
-  "Voluntary un-earmarked": "bg-[#4db8e8]",
-  "Voluntary earmarked": "bg-[#99d6f2]",
-  Other: "bg-[#cceaf7]",
+  Assessed: "bg-open-funding-assessed",
+  "Voluntary un-earmarked": "bg-open-funding-voluntary-unearmarked",
+  "Voluntary earmarked": "bg-open-funding-voluntary-earmarked",
+  Other: "bg-open-funding-other",
 };
-
 export const FINANCING_INSTRUMENT_TOOLTIPS: Record<string, string> =
   Object.fromEntries(
-    organizationTaxonomies.financing_instruments.map(({ key, tooltip }) => [
-      key,
-      tooltip,
+    Object.entries(FINANCING_SOURCE_KEYS).map(([label, key]) => [
+      label,
+      fundingSources[key].explanation,
     ]),
   );
 
@@ -46,5 +56,5 @@ export const getFinancingInstrumentColor = (type: string): string => {
 };
 
 export const getFinancingInstrumentBgClass = (type: string): string => {
-  return FINANCING_INSTRUMENT_BG_CLASSES[type] || "bg-[#cceaf7]";
+  return FINANCING_INSTRUMENT_BG_CLASSES[type] || "bg-open-funding-other";
 };

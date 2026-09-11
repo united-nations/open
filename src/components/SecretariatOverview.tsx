@@ -1,4 +1,5 @@
 "use client";
+import { ChartFooter } from "@/components/ChartFooter";
 
 import {
   GroupedTreemap,
@@ -165,7 +166,8 @@ export function SecretariatOverview() {
         tile: OverviewTile,
       ): GroupedTreemapLeaf<OverviewTile, never> => ({
         key: tile.id,
-        label: tile.entity.code === "STA" ? "Staff Assessment" : tile.entity.code,
+        label:
+          tile.entity.code === "STA" ? "Staff Assessment" : tile.entity.code,
         value: tile.value,
         data: tile,
         onActivate: () => openEntity(tile.entity),
@@ -192,16 +194,18 @@ export function SecretariatOverview() {
               : tile.entity.group === key,
           );
           return subgroupTiles.length > 0
-            ? [{
-                key,
-                label:
-                  key === "other"
-                    ? "Other peace and security entities"
-                    : current.meta.groups[key].label,
-                data: key,
-                labelVisibility: "tooltip-only" as const,
-                leaves: subgroupTiles.map(toLeaf),
-              }]
+            ? [
+                {
+                  key,
+                  label:
+                    key === "other"
+                      ? "Other peace and security entities"
+                      : current.meta.groups[key].label,
+                  data: key,
+                  labelVisibility: "tooltip-only" as const,
+                  leaves: subgroupTiles.map(toLeaf),
+                },
+              ]
             : [];
         }),
       });
@@ -236,25 +240,25 @@ export function SecretariatOverview() {
 
   return (
     <div className="w-full">
-      <div className="mb-6">
-        <div className="mb-4 max-w-xl">
+      <GroupedTreemap<string, SecretariatGroup, OverviewTile, never>
+        footer={<ChartFooter hint="Click on an entity to explore details" />}
+        yearControl={
           <YearSlider
             years={years.years}
             selectedYear={year}
             onChange={setYear}
           />
-        </div>
-        <FundingSourcePills
-          selected={activeFunding}
-          onToggle={(source) =>
-            setActiveFunding((currentSources) =>
-              toggleFundingSource(currentSources, source),
-            )
-          }
-        />
-      </div>
-
-      <GroupedTreemap<string, SecretariatGroup, OverviewTile, never>
+        }
+        controls={
+          <FundingSourcePills
+            selected={activeFunding}
+            onToggle={(source) =>
+              setActiveFunding((currentSources) =>
+                toggleFundingSource(currentSources, source),
+              )
+            }
+          />
+        }
         rows={rows}
         search={{
           value: query,
@@ -283,21 +287,6 @@ export function SecretariatOverview() {
           </div>
         }
       />
-
-      <div className="mt-4 space-y-1 text-xs leading-relaxed text-gray-500">
-        <p>
-          {current.meta.source.label}. Values are expenses in USD and may
-          include negative corrections.
-        </p>
-        <a
-          href={current.meta.source.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-un-blue hover:underline"
-        >
-          Source methodology
-        </a>
-      </div>
 
       <SecretariatOverviewTrends />
 

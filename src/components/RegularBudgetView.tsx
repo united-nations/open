@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { Tooltip } from "@un-eosg/ui/components/tooltip";
 import { BudgetTreemap } from "@/components/BudgetTreemap";
 import {
   FundingSourcePills,
@@ -63,9 +64,6 @@ export function RegularBudgetView() {
   const [metric, setMetric] = useState<BudgetMetricKey>("expenditure");
   const [year, setYear] = useState(2025);
   const [grouping, setGrouping] = useState<PpbGrouping>("entity");
-  const availableMetrics = METRICS.filter((item) =>
-    METRIC_YEARS[item.key].includes(year),
-  );
 
   const selectYear = (nextYear: number) => {
     setYear(nextYear);
@@ -88,33 +86,37 @@ export function RegularBudgetView() {
   return (
     <div>
       <div className="mb-4 flex flex-wrap items-center gap-3">
-        <YearSlider
-          years={ALL_YEARS}
-          selectedYear={year}
-          onChange={selectYear}
-        />
         <div
           className="flex flex-wrap gap-1 rounded-md border border-gray-200 bg-white p-1"
           role="group"
           aria-label="Budget metric"
         >
-          {availableMetrics.map((item) => {
+          {METRICS.map((item) => {
             const selected = metric === item.key;
+            const unavailable = !METRIC_YEARS[item.key].includes(year);
+            const explanation = unavailable
+              ? `${item.label} data is not available for ${year} in the current dataset. ${item.description}`
+              : item.description;
             return (
-              <button
-                key={item.key}
-                type="button"
-                aria-pressed={selected}
-                title={item.description}
-                onClick={() => selectMetric(item.key)}
-                className={`rounded-full px-3 py-1.5 text-xs transition-colors focus-visible:ring-2 focus-visible:ring-un-blue focus-visible:outline-none ${
-                  selected
-                    ? "bg-un-blue font-medium text-white"
-                    : "text-gray-600 hover:bg-gray-50"
-                }`}
-              >
-                {item.label}
-              </button>
+              <Tooltip key={item.key} content={explanation}>
+                <button
+                  type="button"
+                  aria-pressed={selected}
+                  aria-disabled={unavailable}
+                  onClick={() => {
+                    if (!unavailable) selectMetric(item.key);
+                  }}
+                  className={`rounded-full px-3 py-1.5 text-xs transition-colors focus-visible:ring-2 focus-visible:ring-un-blue focus-visible:outline-none ${
+                    unavailable
+                      ? "cursor-not-allowed text-gray-400 opacity-60"
+                      : selected
+                        ? "bg-un-blue font-medium text-white"
+                        : "text-gray-600 hover:bg-gray-50"
+                  }`}
+                >
+                  {item.label}
+                </button>
+              </Tooltip>
             );
           })}
         </div>
@@ -122,6 +124,17 @@ export function RegularBudgetView() {
           selected={active}
           sources={BUDGET_FUNDING_SOURCES}
           disabled={metric !== "expenditure"}
+          explanations={
+            metric !== "expenditure"
+              ? {
+                  regular_budget: "This view covers the regular budget.",
+                  other_assessed:
+                    "This funding source is available only in the expenditure view of this chart.",
+                  extrabudgetary:
+                    "This funding source is available only in the expenditure view of this chart.",
+                }
+              : undefined
+          }
           grouped
           onToggle={(source) =>
             setActive((current) => toggleFundingSource(current, source))
@@ -130,6 +143,13 @@ export function RegularBudgetView() {
       </div>
 
       <BudgetTreemap
+        yearControl={
+          <YearSlider
+            years={ALL_YEARS}
+            selectedYear={year}
+            onChange={selectYear}
+          />
+        }
         dataset={DATASETS[metric]}
         hashPrefix="regular-budget"
         sectionId="regular-budget-spending"

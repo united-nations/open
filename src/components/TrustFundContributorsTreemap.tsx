@@ -1,4 +1,6 @@
 "use client";
+import { ChartFooter } from "@/components/ChartFooter";
+import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 
 import {
   GroupedTreemap,
@@ -27,7 +29,7 @@ const GROUP_STYLES: Record<
   governments: {
     label: "Governments",
     color: "#009edb",
-    textColor: "#020617",
+    textColor: "#ffffff",
   },
   other: {
     label: "Other contributors",
@@ -60,7 +62,7 @@ function ContributorTooltip({
 }: {
   context: GroupedTreemapTooltipContext<
     ContributorGroup,
-    never,
+    string,
     TrustFundContributor,
     never
   >;
@@ -84,6 +86,7 @@ function ContributorTooltip({
 export function TrustFundContributorsTreemap() {
   const years = useYearRanges().trustFundContributors;
   const [year, setYear] = useState(years.default);
+  const [hiddenGroups, setHiddenGroups] = useState<string[]>([]);
   const [query, setQuery] = useState("");
   const [data, setData] = useState<TrustFundContributorsData | null>(null);
   const [loadError, setLoadError] = useState<{
@@ -162,62 +165,53 @@ export function TrustFundContributorsTreemap() {
           label: GROUP_STYLES[key].label,
           color: GROUP_STYLES[key].color,
           data: key,
-          leaves: members.map((contributor) => ({
+          subgroups: members.map((contributor) => ({
             key: contributor.name,
             label: contributor.name,
-            value: contributor.amount_usd,
-            color: GROUP_STYLES[key].color,
-            textColor: GROUP_STYLES[key].textColor,
-            data: contributor,
-            onActivate: () => open(contributor),
+            labelVisibility: "tooltip-only" as const,
+            data: contributor.name,
+            leaves: [
+              {
+                key: contributor.name,
+                label: contributor.name,
+                value: contributor.amount_usd,
+                color: GROUP_STYLES[key].color,
+                textColor: GROUP_STYLES[key].textColor,
+                data: contributor,
+                onActivate: () => open(contributor),
+              },
+            ],
           })),
         } satisfies GroupedTreemapRow<
           ContributorGroup,
-          never,
+          string,
           TrustFundContributor,
           never
         >;
       },
     );
     return result
-      .filter((row) => row.leaves.length > 0)
+      .filter((row) => row.subgroups.length > 0)
       .sort(
         (a, b) =>
-          b.leaves.reduce((sum, leaf) => sum + leaf.value, 0) -
-          a.leaves.reduce((sum, leaf) => sum + leaf.value, 0),
+          b.subgroups.reduce((sum, group) => sum + group.leaves[0].value, 0) -
+          a.subgroups.reduce((sum, group) => sum + group.leaves[0].value, 0),
       );
   }, [open, positiveContributors]);
-  const visibleTotal = positiveContributors
-    .filter((contributor) => matchesQuery(contributor.name, query))
-    .reduce((sum, contributor) => sum + contributor.amount_usd, 0);
+  const visibleTotal = rows
+    .filter((row) => !hiddenGroups.includes(row.key))
+    .flatMap((row) => row.subgroups.flatMap((group) => group.leaves))
+    .filter((leaf) => matchesQuery(leaf.label, query))
+    .reduce((sum, leaf) => sum + leaf.value, 0);
   const nonPositiveCount =
     current?.contributors.filter((contributor) => contributor.amount_usd <= 0)
       .length ?? 0;
 
   return (
     <div className="w-full">
-      <div className="mb-3 flex justify-end">
-        <YearSlider
-          years={years.years}
-          selectedYear={year}
-          onChange={setYear}
-        />
-      </div>
-
       {current && (
         <>
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-600">
-            <div className="flex gap-4">
-              {(Object.keys(GROUP_STYLES) as ContributorGroup[]).map((key) => (
-                <span key={key} className="flex items-center gap-1.5">
-                  <span
-                    className="h-3 w-3 rounded-sm"
-                    style={{ backgroundColor: GROUP_STYLES[key].color }}
-                  />
-                  {GROUP_STYLES[key].label}
-                </span>
-              ))}
-            </div>
             <span>
               {currency(current.meta.contributor_total_usd, true)} named net ·{" "}
               {(current.meta.named_row_completeness * 100).toFixed(2)}%
@@ -225,13 +219,83 @@ export function TrustFundContributorsTreemap() {
             </span>
           </div>
 
-          <GroupedTreemap<
-            ContributorGroup,
-            never,
-            TrustFundContributor,
-            never
-          >
-            rows={rows}
+          <GroupedTreemap<ContributorGroup, string, TrustFundContributor, never>
+            footer={
+              <ChartFooter
+                details={
+                  <div className="space-y-2">
+                    <p>
+                      <a
+                        href={current.meta.source.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-un-blue underline"
+                      >
+                        {current.meta.source.symbol}
+                      </a>
+                    </p>
+                    <p>
+                      Tile area is the signed net of named
+                      recognized-contribution rows; click a contributor to see
+                      its funds and reconstructed entity destinations.
+                      {nonPositiveCount > 0 &&
+                        ` ${nonPositiveCount} contributors with a zero or negative annual net are retained in the data but cannot be drawn as areas.`}
+                    </p>
+                    <p>
+                      Named rows account for{" "}
+                      {(current.meta.named_row_completeness * 100).toFixed(2)}%
+                      of the printed fund totals on an absolute-residual basis.
+                      The unallocated net residual is{" "}
+                      {currency(current.meta.unallocated_residual_usd)}; it is
+                      not distributed across contributors. Present-value and
+                      internal-fund adjustments are also excluded from tiles and
+                      retained separately in the export.
+                    </p>
+                    <p>
+                      Entity attribution describes which Secretariat entity owns
+                      the destination fund; it does not prove that a contributor
+                      financed a particular expense.
+                      {current.meta.unresolved_entity_amount_usd !== 0 &&
+                        ` ${currency(current.meta.unresolved_entity_amount_usd)} of named contributions goes to funds whose entity mapping remains unresolved.`}
+                    </p>
+                  </div>
+                }
+                hint="Click on a contributor to explore details"
+              />
+            }
+            yearControl={
+              <YearSlider
+                years={years.years}
+                selectedYear={year}
+                onChange={setYear}
+              />
+            }
+            controls={
+              <div
+                className="flex flex-wrap gap-2"
+                role="group"
+                aria-label="Contributor groups"
+              >
+                {(Object.keys(GROUP_STYLES) as ContributorGroup[]).map(
+                  (key) => (
+                    <LegendLabel
+                      key={key}
+                      label={GROUP_STYLES[key].label}
+                      color={GROUP_STYLES[key].color}
+                      selected={!hiddenGroups.includes(key)}
+                      onToggle={() =>
+                        setHiddenGroups((current) =>
+                          current.includes(key)
+                            ? current.filter((item) => item !== key)
+                            : [...current, key],
+                        )
+                      }
+                    />
+                  ),
+                )}
+              </div>
+            }
+            rows={rows.filter((row) => !hiddenGroups.includes(row.key))}
             search={{
               value: query,
               onChange: setQuery,
@@ -243,11 +307,15 @@ export function TrustFundContributorsTreemap() {
             summaries={[
               {
                 key: "visible-total",
-                label: query ? "Matching positive total" : "Positive total",
+                label:
+                  query || hiddenGroups.length
+                    ? "Matching positive total"
+                    : "Positive total",
                 value: currency(visibleTotal, true),
               },
             ]}
             totalLabel="Total"
+            showLeafValues
             plotClassName="h-[560px] sm:h-[680px] lg:h-[780px]"
             formatValue={(value) => currency(value, true)}
             formatAccessibleValue={(value) => currency(value)}
@@ -256,46 +324,10 @@ export function TrustFundContributorsTreemap() {
             )}
             emptyContent={
               <div className="flex h-full items-center justify-center text-sm text-gray-500">
-                No positive contributors match your search.
+                No positive contributors match the selected groups and search.
               </div>
             }
-            sources={[
-              {
-                key: "financial-statements",
-                label: current.meta.source.symbol,
-                href: current.meta.source.url,
-                openInNewTab: true,
-                newTabLabel: "opens in a new tab",
-              },
-            ]}
-            sourceHeading="Source:"
           />
-
-          <div className="mt-4 space-y-2 text-xs leading-relaxed text-gray-500">
-            <p>
-              Tile area is the signed net of named recognized-contribution rows;
-              click a contributor to see its funds and reconstructed entity
-              destinations.
-              {nonPositiveCount > 0 &&
-                ` ${nonPositiveCount} contributors with a zero or negative annual net are retained in the data but cannot be drawn as areas.`}
-            </p>
-            <p>
-              Named rows account for{" "}
-              {(current.meta.named_row_completeness * 100).toFixed(2)}% of the
-              printed fund totals on an absolute-residual basis. The unallocated
-              net residual is {currency(current.meta.unallocated_residual_usd)};
-              it is not distributed across contributors. Present-value and
-              internal-fund adjustments are also excluded from tiles and
-              retained separately in the export.
-            </p>
-            <p>
-              Entity attribution describes which Secretariat entity owns the
-              destination fund; it does not prove that a contributor financed a
-              particular expense.
-              {current.meta.unresolved_entity_amount_usd !== 0 &&
-                ` ${currency(current.meta.unresolved_entity_amount_usd)} of named contributions goes to funds whose entity mapping remains unresolved.`}
-            </p>
-          </div>
         </>
       )}
 

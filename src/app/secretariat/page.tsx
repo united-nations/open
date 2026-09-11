@@ -1,6 +1,6 @@
+import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import {
-  Methodology,
   SecretariatMethodology,
   SecretariatOverviewMethodologyNotes,
 } from "@/components/Methodology";
@@ -16,7 +16,15 @@ export const metadata: Metadata = {
 
 export default function SecretariatPage() {
   return (
-    <>
+    <ChartSourceProvider
+      label="UN Secretariat programme budget and financial statements"
+      details={
+        <>
+          <SecretariatMethodology />
+          <SecretariatOverviewMethodologyNotes />
+        </>
+      }
+    >
       <PageHeading
         id="priorities"
         title="How are Secretariat entities spending?"
@@ -25,10 +33,6 @@ export default function SecretariatPage() {
       <PageBody>
         <SecretariatOverview />
       </PageBody>
-      <Methodology>
-        <SecretariatMethodology />
-        <SecretariatOverviewMethodologyNotes />
-      </Methodology>
-    </>
+    </ChartSourceProvider>
   );
 }

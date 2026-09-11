@@ -1,7 +1,7 @@
+import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { PeacekeepingBudgetView } from "@/components/PeacekeepingBudgetView";
 import {
-  Methodology,
   PeacekeepingBudgetMethodologyNotes,
   SecretariatMethodology,
 } from "@/components/Methodology";
@@ -16,7 +16,15 @@ export const metadata: Metadata = {
 
 export default function PeacekeepingBudgetPage() {
   return (
-    <>
+    <ChartSourceProvider
+      label="Peacekeeping budget and performance reports"
+      details={
+        <>
+          <SecretariatMethodology />
+          <PeacekeepingBudgetMethodologyNotes />
+        </>
+      }
+    >
       <PageHeading
         id="peacekeeping-spending"
         title="How do peacekeeping missions spend funds?"
@@ -25,10 +33,6 @@ export default function PeacekeepingBudgetPage() {
       <PageBody>
         <PeacekeepingBudgetView />
       </PageBody>
-      <Methodology>
-        <SecretariatMethodology />
-        <PeacekeepingBudgetMethodologyNotes />
-      </Methodology>
-    </>
+    </ChartSourceProvider>
   );
 }

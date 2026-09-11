@@ -1,8 +1,9 @@
+import { ChartFooter } from "@/components/ChartFooter";
+import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { FieldMissionsMap } from "@/components/FieldMissionsMap";
 import {
   FieldMissionsMethodologyNotes,
-  Methodology,
   SecretariatMethodology,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
@@ -16,7 +17,15 @@ export const metadata: Metadata = {
 
 export default function FieldMissionsPage() {
   return (
-    <>
+    <ChartSourceProvider
+      label="UN Secretariat field-mission data"
+      details={
+        <>
+          <SecretariatMethodology />
+          <FieldMissionsMethodologyNotes />
+        </>
+      }
+    >
       <PageHeading
         id="field-missions"
         title="How are field missions spending?"
@@ -24,11 +33,8 @@ export default function FieldMissionsPage() {
       />
       <PageBody>
         <FieldMissionsMap />
+        <ChartFooter hint="Click on a mission to explore details" />
       </PageBody>
-      <Methodology>
-        <SecretariatMethodology />
-        <FieldMissionsMethodologyNotes />
-      </Methodology>
-    </>
+    </ChartSourceProvider>
   );
 }

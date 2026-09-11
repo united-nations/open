@@ -5,7 +5,7 @@ import {
   type FinancingInstrumentDataPoint,
   type FinancingSeries,
 } from "@/components/charts/FinancingInstrumentChart";
-import { FINANCING_INSTRUMENT_COLORS } from "@/lib/financingInstruments";
+import { fundingSources } from "@un-eosg/ui/funding-sources";
 import { FUNDING_SOURCES } from "@/lib/budgetGroupings";
 
 export type { FinancingInstrumentDataPoint, FinancingSeries };
@@ -15,12 +15,7 @@ export const FUNDING_SOURCE_TREND_SERIES: FinancingSeries[] = (
 ).map((key) => ({
   key,
   label: FUNDING_SOURCES[key].label,
-  color:
-    key === "regular_budget"
-      ? FINANCING_INSTRUMENT_COLORS.assessed
-      : key === "other_assessed"
-        ? FINANCING_INSTRUMENT_COLORS.voluntary_unearmarked
-        : FINANCING_INSTRUMENT_COLORS.voluntary_earmarked,
+  color: fundingSources[key].color,
 }));
 
 const DEFAULT_HEADING =
@@ -46,11 +41,14 @@ export function SidebarStackedTrend({
     );
   }
 
-  const hasTrend = data.length >= 2 && series.some((item) =>
-    data.some(
-      (point) => typeof point[item.key] === "number" && Number(point[item.key]) > 0,
-    ),
-  );
+  const hasTrend =
+    data.length >= 2 &&
+    series.some((item) =>
+      data.some(
+        (point) =>
+          typeof point[item.key] === "number" && Number(point[item.key]) > 0,
+      ),
+    );
   if (!hasTrend) return null;
 
   return (

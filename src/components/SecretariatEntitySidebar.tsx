@@ -17,7 +17,7 @@ import { FinancingInstrumentChart } from "@/components/charts/FinancingInstrumen
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { loadYearData } from "@/lib/data";
 import { formatBudget } from "@/lib/entities";
-import { FINANCING_INSTRUMENT_COLORS } from "@/lib/financingInstruments";
+import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label";
 import { useYearRanges } from "@/lib/useYearRanges";
 import type {
   SecretariatFundingSource,
@@ -30,18 +30,6 @@ const FUNDING_SOURCES: readonly SecretariatFundingSource[] = [
   "other_assessed",
   "extrabudgetary",
 ];
-
-const FUNDING_LABELS: Record<SecretariatFundingSource, string> = {
-  regular_budget: "Regular budget",
-  other_assessed: "Other assessed",
-  extrabudgetary: "Extrabudgetary",
-};
-
-const FUNDING_COLORS: Record<SecretariatFundingSource, string> = {
-  regular_budget: FINANCING_INSTRUMENT_COLORS.assessed,
-  other_assessed: FINANCING_INSTRUMENT_COLORS.voluntary_unearmarked,
-  extrabudgetary: FINANCING_INSTRUMENT_COLORS.voluntary_earmarked,
-};
 
 interface SecretariatEntitySidebarProps {
   entity: SecretariatOverviewEntity;
@@ -241,18 +229,13 @@ export function SecretariatEntitySidebar({
       (fundingSource) => amounts[fundingSource] !== 0,
     ).map((fundingSource) => ({
       id: fundingSource,
-      label: FUNDING_LABELS[fundingSource],
+      label: <FundingSourceLabel source={fundingSource} variant="inline" />,
       value: formatBudget(amounts[fundingSource]),
       share:
         displayed.entity.total !== 0
           ? `${((amounts[fundingSource] / displayed.entity.total) * 100).toFixed(1)}%`
           : "0.0%",
-      marker: (
-        <span
-          className="block size-3 rounded-sm"
-          style={{ backgroundColor: FUNDING_COLORS[fundingSource] }}
-        />
-      ),
+      marker: null,
     })),
     note: breakdownComplete
       ? undefined

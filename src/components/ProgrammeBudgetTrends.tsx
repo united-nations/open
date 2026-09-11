@@ -1,4 +1,6 @@
 "use client";
+import { HierarchicalSingleSelect } from "@un-eosg/ui/components/hierarchical-single-select";
+import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -10,9 +12,10 @@ import {
   XAxis,
   YAxis,
 } from "recharts";
+import { PART_BAND_COLORS } from "@/lib/secretariatGroupings";
 import { loadYearData } from "@/lib/data";
 import { formatBudget } from "@/lib/entities";
-import type { BudgetData, BudgetMetricKey } from "@/types";
+import type { BudgetData, BudgetMetricKey, BudgetNode } from "@/types";
 
 const METRICS: Array<{
   key: BudgetMetricKey;
@@ -55,58 +58,94 @@ const formatYAxis = (value: number) => {
   return `$${value}`;
 };
 
-function regularBudgetAmount(data: BudgetData): number {
-  const root =
-    data.nodes.find((node) => node.parentId === null) ?? data.nodes[0];
-  return root?.values?.regular_budget ?? 0;
-}
-
 export function ProgrammeBudgetTrends() {
-  const [points, setPoints] = useState<Array<
-    Record<string, number | string | null>
-  > | null>(null);
+  const [hiddenMetrics, setHiddenMetrics] = useState<BudgetMetricKey[]>([]);
+  const [selectedNode, setSelectedNode] = useState("whole");
+  const [datasets, setDatasets] = useState<Array<{
+    metric: BudgetMetricKey;
+    year: number;
+    data: BudgetData;
+  }> | null>(null);
 
   useEffect(() => {
     let active = true;
     const jobs = METRICS.flatMap((metric) =>
       metric.years.map(async (year) => {
         const data = await loadYearData<BudgetData>(DATASETS[metric.key], year);
-        return { metric: metric.key, year, amount: regularBudgetAmount(data) };
+        return { metric: metric.key, year, data };
       }),
     );
     Promise.all(jobs)
       .then((rows) => {
         if (!active) return;
-        const byYear = new Map<
-          number,
-          Record<string, number | string | null>
-        >();
-        for (const year of new Set(rows.map((row) => row.year))) {
-          byYear.set(year, {
-            year: String(year),
-            proposed: null,
-            approved: null,
-            expenditure: null,
-          });
-        }
-        for (const row of rows) {
-          const point = byYear.get(row.year);
-          if (point) point[row.metric] = row.amount;
-        }
-        setPoints(
-          [...byYear.entries()]
-            .sort(([a], [b]) => a - b)
-            .map(([, point]) => point),
-        );
+        setDatasets(rows);
       })
       .catch((error: unknown) => {
         console.error("Failed to load programme-budget trends:", error);
-        if (active) setPoints([]);
+        if (active) setDatasets([]);
       });
     return () => {
       active = false;
     };
   }, []);
+
+  const groups = useMemo(() => {
+    const byId = new Map<string, BudgetNode>();
+    for (const row of [...(datasets ?? [])].sort((a, b) => a.year - b.year)) {
+      for (const node of row.data.nodes) {
+        if (node.tier === "part") byId.set(node.id, node);
+      }
+    }
+    const numerals = [
+      "I",
+      "II",
+      "III",
+      "IV",
+      "V",
+      "VI",
+      "VII",
+      "VIII",
+      "IX",
+      "X",
+      "XI",
+      "XII",
+      "XIII",
+      "XIV",
+    ];
+    return [
+      { id: "whole", label: "Whole regular budget", children: [] },
+      ...[...byId.values()]
+        .sort(
+          (a, b) =>
+            numerals.indexOf(a.code ?? "") - numerals.indexOf(b.code ?? ""),
+        )
+        .map((node) => ({
+          id: node.id,
+          label: `Part ${node.code}: ${node.label}`,
+          children: [],
+          color: PART_BAND_COLORS[node.code ?? ""]?.bg,
+        })),
+    ];
+  }, [datasets]);
+
+  const points = useMemo(() => {
+    if (!datasets) return null;
+    const byYear = new Map<number, Record<string, number | string | null>>();
+    for (const row of datasets) {
+      if (!byYear.has(row.year))
+        byYear.set(row.year, {
+          year: String(row.year),
+          proposed: null,
+          approved: null,
+          expenditure: null,
+        });
+      const node = row.data.nodes.find((item) => item.id === selectedNode);
+      byYear.get(row.year)![row.metric] = node?.values?.regular_budget ?? null;
+    }
+    return [...byYear.entries()]
+      .sort(([a], [b]) => a - b)
+      .map(([, point]) => point);
+  }, [datasets, selectedNode]);
 
   const hasData = useMemo(
     () =>
@@ -123,83 +162,106 @@ export function ProgrammeBudgetTrends() {
       </div>
     );
   }
-  if (!hasData) return null;
+  if (datasets?.length === 0) return null;
 
   return (
     <div className="mt-10 w-full lg:w-1/2 lg:pe-3">
       <h3 className="mb-3 text-lg font-medium text-gray-900">
         Regular budget over time
       </h3>
-      <p className="mb-4 max-w-3xl text-xs leading-relaxed text-gray-500">
-        Proposed, approved and expenditure figures cover different years because
-        they are published in different programme-budget editions.
-      </p>
-      <div className="mb-3 flex flex-wrap gap-2">
+      <div
+        className="mb-3 flex flex-wrap items-center gap-2"
+        role="group"
+        aria-label="Budget trends"
+      >
+        <HierarchicalSingleSelect
+          groups={groups}
+          selected={selectedNode}
+          onChange={setSelectedNode}
+        />
         {METRICS.map((metric) => (
-          <div
+          <LegendLabel
             key={metric.key}
-            className="flex items-center gap-1.5 rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700"
-          >
-            <span
-              className="h-2.5 w-2.5 rounded-full"
-              style={{ backgroundColor: metric.color }}
-            />
-            <span>{metric.label}</span>
-          </div>
+            label={metric.label}
+            color={metric.color}
+            selected={!hiddenMetrics.includes(metric.key)}
+            onToggle={() =>
+              setHiddenMetrics((current) =>
+                current.includes(metric.key)
+                  ? current.filter((key) => key !== metric.key)
+                  : [...current, metric.key],
+              )
+            }
+          />
         ))}
       </div>
       <div className="h-[280px] w-full">
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart
-            data={points}
-            margin={{ top: 20, right: 5, left: 5, bottom: 5 }}
+        {!hasData ? (
+          <div className="flex h-full items-center justify-center text-sm text-gray-500">
+            No regular-budget data is available for this item.
+          </div>
+        ) : hiddenMetrics.length === METRICS.length ? (
+          <div
+            className="flex h-full items-center justify-center text-sm text-gray-500"
+            role="status"
           >
-            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-            <XAxis
-              dataKey="year"
-              tick={{ fontSize: 12 }}
-              tickLine={false}
-              axisLine={{ stroke: "#e5e7eb" }}
-            />
-            <YAxis
-              orientation="right"
-              width={1}
-              tick={{ fontSize: 11, fill: "#6b7280", dx: -5, dy: -8 }}
-              tickLine={false}
-              axisLine={false}
-              domain={[0, "auto"]}
-              tickFormatter={formatYAxis}
-              mirror
-            />
-            <Tooltip
-              formatter={(value, name) =>
-                typeof value === "number"
-                  ? [formatBudget(value), String(name)]
-                  : ["—", String(name)]
-              }
-              labelFormatter={(label) => `Year: ${label}`}
-              contentStyle={{
-                backgroundColor: "white",
-                border: "1px solid #e5e7eb",
-                borderRadius: "4px",
-                fontSize: "12px",
-              }}
-            />
-            {METRICS.map((metric) => (
-              <Line
-                key={metric.key}
-                type="monotone"
-                dataKey={metric.key}
-                name={metric.label}
-                stroke={metric.color}
-                strokeWidth={2}
-                dot={false}
-                activeDot={{ r: 4, strokeWidth: 0 }}
-                connectNulls={false}
+            Select a measure to show the trend.
+          </div>
+        ) : (
+          <ResponsiveContainer width="100%" height="100%">
+            <LineChart
+              data={points}
+              margin={{ top: 20, right: 5, left: 5, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+              <XAxis
+                dataKey="year"
+                tick={{ fontSize: 12 }}
+                tickLine={false}
+                axisLine={{ stroke: "#e5e7eb" }}
               />
-            ))}
-          </LineChart>
-        </ResponsiveContainer>
+              <YAxis
+                orientation="right"
+                width={1}
+                tick={{ fontSize: 11, fill: "#6b7280", dx: -5, dy: -8 }}
+                tickLine={false}
+                axisLine={false}
+                domain={[0, "auto"]}
+                tickFormatter={formatYAxis}
+                mirror
+              />
+              <Tooltip
+                formatter={(value, name) =>
+                  typeof value === "number"
+                    ? [formatBudget(value), String(name)]
+                    : ["—", String(name)]
+                }
+                labelFormatter={(label) => `Year: ${label}`}
+                contentStyle={{
+                  backgroundColor: "white",
+                  border: "1px solid #e5e7eb",
+                  borderRadius: "4px",
+                  fontSize: "12px",
+                }}
+              />
+              {METRICS.filter(
+                (metric) => !hiddenMetrics.includes(metric.key),
+              ).map((metric) => (
+                <Line
+                  key={metric.key}
+                  type="monotone"
+                  dataKey={metric.key}
+                  name={metric.label}
+                  stroke={metric.color}
+                  strokeWidth={2}
+                  dot={false}
+                  activeDot={{ r: 4, strokeWidth: 0 }}
+                  connectNulls={false}
+                />
+              ))}
+            </LineChart>
+          </ResponsiveContainer>
+        )}
       </div>
     </div>
   );

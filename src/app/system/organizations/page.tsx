@@ -1,9 +1,9 @@
+import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { EntitiesTreemap } from "@/components/EntitiesTreemap";
 import { EntityTrendsChart } from "@/components/EntityTrendsChart";
 import {
   CebMethodology,
-  Methodology,
   OrganizationsMethodologyNotes,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
@@ -17,7 +17,15 @@ export const metadata: Metadata = {
 
 export default function SystemOrganizationsPage() {
   return (
-    <>
+    <ChartSourceProvider
+      label="CEB financial statistics"
+      details={
+        <>
+          <CebMethodology />
+          <OrganizationsMethodologyNotes />
+        </>
+      }
+    >
       <PageHeading
         id="entities"
         title="Which organizations are funded?"
@@ -32,10 +40,6 @@ export default function SystemOrganizationsPage() {
           <EntityTrendsChart />
         </div>
       </PageBody>
-      <Methodology>
-        <CebMethodology />
-        <OrganizationsMethodologyNotes />
-      </Methodology>
-    </>
+    </ChartSourceProvider>
   );
 }

@@ -1,9 +1,9 @@
+import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { CountryMap } from "@/components/CountryMap";
 import {
   CebMethodology,
   LocationsMethodologyNotes,
-  Methodology,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
@@ -16,7 +16,15 @@ export const metadata: Metadata = {
 
 export default function SystemLocationsPage() {
   return (
-    <>
+    <ChartSourceProvider
+      label="CEB financial statistics and UNINFO"
+      details={
+        <>
+          <CebMethodology />
+          <LocationsMethodologyNotes />
+        </>
+      }
+    >
       <PageHeading
         id="countries"
         title="Where are funds spent?"
@@ -25,10 +33,6 @@ export default function SystemLocationsPage() {
       <PageBody>
         <CountryMap />
       </PageBody>
-      <Methodology>
-        <CebMethodology />
-        <LocationsMethodologyNotes />
-      </Methodology>
-    </>
+    </ChartSourceProvider>
   );
 }

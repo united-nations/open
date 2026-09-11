@@ -1,4 +1,8 @@
 "use client";
+import { LegendLabel } from "@un-eosg/ui/components/legend-label";
+import { useState } from "react";
+import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label";
+import { FinancingInstrumentLabel } from "../FinancingInstrumentLabel";
 
 import {
   AreaChart,
@@ -15,6 +19,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import {
+  FINANCING_SOURCE_KEYS,
   FINANCING_INSTRUMENT_COLORS,
   FINANCING_INSTRUMENT_TOOLTIPS,
 } from "@/lib/financingInstruments";
@@ -34,10 +39,30 @@ export interface FinancingSeries {
 
 // Default series = the CEB revenue financing instruments (4 categories).
 const DEFAULT_SERIES: FinancingSeries[] = [
-  { key: "Assessed", label: "Assessed", color: FINANCING_INSTRUMENT_COLORS.assessed, tooltip: FINANCING_INSTRUMENT_TOOLTIPS["Assessed"] },
-  { key: "Voluntary un-earmarked", label: "Voluntary un-earmarked", color: FINANCING_INSTRUMENT_COLORS.voluntary_unearmarked, tooltip: FINANCING_INSTRUMENT_TOOLTIPS["Voluntary un-earmarked"] },
-  { key: "Voluntary earmarked", label: "Voluntary earmarked", color: FINANCING_INSTRUMENT_COLORS.voluntary_earmarked, tooltip: FINANCING_INSTRUMENT_TOOLTIPS["Voluntary earmarked"] },
-  { key: "Other", label: "Other", color: FINANCING_INSTRUMENT_COLORS.other, tooltip: FINANCING_INSTRUMENT_TOOLTIPS["Other"] },
+  {
+    key: "Assessed",
+    label: "Assessed",
+    color: FINANCING_INSTRUMENT_COLORS.assessed,
+    tooltip: FINANCING_INSTRUMENT_TOOLTIPS["Assessed"],
+  },
+  {
+    key: "Voluntary un-earmarked",
+    label: "Voluntary un-earmarked",
+    color: FINANCING_INSTRUMENT_COLORS.voluntary_unearmarked,
+    tooltip: FINANCING_INSTRUMENT_TOOLTIPS["Voluntary un-earmarked"],
+  },
+  {
+    key: "Voluntary earmarked",
+    label: "Voluntary earmarked",
+    color: FINANCING_INSTRUMENT_COLORS.voluntary_earmarked,
+    tooltip: FINANCING_INSTRUMENT_TOOLTIPS["Voluntary earmarked"],
+  },
+  {
+    key: "Other",
+    label: "Other",
+    color: FINANCING_INSTRUMENT_COLORS.other,
+    tooltip: FINANCING_INSTRUMENT_TOOLTIPS["Other"],
+  },
 ];
 
 interface FinancingInstrumentChartProps {
@@ -47,6 +72,11 @@ interface FinancingInstrumentChartProps {
   height?: number;
   showLegend?: boolean;
   compact?: boolean;
+  filterable?: boolean;
+  yAxisMax?: number;
+  tooltipValueFormatter?: (value: number) => string;
+  showTooltipTotal?: boolean;
+  valueFormatter?: (value: number) => string;
 }
 
 const formatYAxis = (value: number) => {
@@ -60,15 +90,27 @@ const formatTooltipValue = (value: number | undefined) => {
   return formatBudget(value);
 };
 
-function LegendChip({ type, color, tooltip }: { type: string; color: string; tooltip?: string }) {
+function LegendChip({
+  type,
+  color,
+  tooltip,
+}: {
+  type: string;
+  color: string;
+  tooltip?: string;
+}) {
+  if (FINANCING_SOURCE_KEYS[type])
+    return <FinancingInstrumentLabel type={type} variant="pill" />;
   const chip = (
     <div className="flex items-center gap-1.5 rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700">
-      <span className="h-2.5 w-2.5 rounded-full" style={{ backgroundColor: color }} />
+      <span
+        className="h-2.5 w-2.5 rounded-full"
+        style={{ backgroundColor: color }}
+      />
       <span>{type}</span>
     </div>
   );
   if (!tooltip) return chip;
-
   return (
     <Tooltip delayDuration={200}>
       <TooltipTrigger asChild>
@@ -91,10 +133,20 @@ export function FinancingInstrumentChart({
   showLegend = true,
   compact = false,
   series = DEFAULT_SERIES,
+  filterable = false,
+  valueFormatter,
+  yAxisMax,
+  tooltipValueFormatter,
+  showTooltipTotal = false,
 }: FinancingInstrumentChartProps) {
+  const [hiddenKeys, setHiddenKeys] = useState<string[]>([]);
   // Only render series that have at least one positive value across the data.
   const activeSeries = series.filter((s) =>
-    data.some((d) => typeof d[s.key] === "number" && (d[s.key] as number) > 0)
+    data.some((d) => typeof d[s.key] === "number" && (d[s.key] as number) > 0),
+  );
+
+  const visibleSeries = activeSeries.filter(
+    (s) => !filterable || !hiddenKeys.includes(s.key),
   );
 
   if (data.length === 0) {
@@ -110,58 +162,131 @@ export function FinancingInstrumentChart({
   return (
     <div className="flex flex-col">
       {showLegend && (
-        <div className="mb-3 flex flex-wrap gap-2">
-          {activeSeries.map((s) => (
-            <LegendChip key={s.key} type={s.label} color={s.color} tooltip={s.tooltip} />
-          ))}
+        <div
+          className="mb-3 flex flex-wrap gap-2"
+          role={filterable ? "group" : undefined}
+          aria-label={filterable ? "Trend filters" : undefined}
+        >
+          {activeSeries.map((s) =>
+            filterable && FINANCING_SOURCE_KEYS[s.label] ? (
+              <FundingSourceLabel
+                key={s.key}
+                source={FINANCING_SOURCE_KEYS[s.label]}
+                selected={!hiddenKeys.includes(s.key)}
+                onToggle={() =>
+                  setHiddenKeys((current) =>
+                    current.includes(s.key)
+                      ? current.filter((key) => key !== s.key)
+                      : [...current, s.key],
+                  )
+                }
+              />
+            ) : filterable ? (
+              <LegendLabel
+                key={s.key}
+                label={s.label}
+                color={s.color}
+                explanation={s.tooltip}
+                selected={!hiddenKeys.includes(s.key)}
+                onToggle={() =>
+                  setHiddenKeys((current) =>
+                    current.includes(s.key)
+                      ? current.filter((key) => key !== s.key)
+                      : [...current, s.key],
+                  )
+                }
+              />
+            ) : (
+              <LegendChip
+                key={s.key}
+                type={s.label}
+                color={s.color}
+                tooltip={s.tooltip}
+              />
+            ),
+          )}
         </div>
       )}
       <div style={{ height: chartHeight }} className="w-full">
-        <ResponsiveContainer width="100%" height="100%">
-          <AreaChart
-            data={data}
-            margin={{ top: 10, right: 5, left: 5, bottom: 5 }}
+        {visibleSeries.length === 0 ? (
+          <div
+            className="flex h-full items-center justify-center text-sm text-gray-500"
+            role="status"
           >
-            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-            <XAxis
-              dataKey="year"
-              tick={{ fontSize: compact ? 10 : 12 }}
-              tickLine={false}
-              axisLine={{ stroke: "#e5e7eb" }}
-            />
-            <YAxis
-              orientation="right"
-              width={1}
-              tick={{ fontSize: compact ? 9 : 11, fill: "#6b7280", dx: -5, dy: -8 }}
-              tickLine={false}
-              axisLine={false}
-              domain={[0, 'auto']}
-              tickFormatter={formatYAxis}
-              mirror
-            />
-            <RechartsTooltip
-              formatter={formatTooltipValue}
-              labelFormatter={(label) => `Year: ${label}`}
-              contentStyle={{
-                backgroundColor: "white",
-                border: "1px solid #e5e7eb",
-                borderRadius: "4px",
-                fontSize: "12px",
-              }}
-            />
-            {activeSeries.map((s) => (
-              <Area
-                key={s.key}
-                type="monotone"
-                dataKey={s.key}
-                name={s.label}
-                stackId="1"
-                stroke={s.color}
-                fill={s.color}
+            Select a category to show the trend.
+          </div>
+        ) : (
+          <ResponsiveContainer width="100%" height="100%">
+            <AreaChart
+              data={data}
+              margin={{ top: 10, right: 5, left: 5, bottom: 5 }}
+            >
+              <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+              <XAxis
+                dataKey="year"
+                tick={{ fontSize: compact ? 10 : 12 }}
+                tickLine={false}
+                axisLine={{ stroke: "#e5e7eb" }}
               />
-            ))}
-          </AreaChart>
-        </ResponsiveContainer>
+              <YAxis
+                orientation="right"
+                width={1}
+                tick={{
+                  fontSize: compact ? 9 : 11,
+                  fill: "#6b7280",
+                  dx: -5,
+                  dy: -8,
+                }}
+                tickLine={false}
+                axisLine={false}
+                domain={[0, yAxisMax ?? "auto"]}
+                ticks={
+                  yAxisMax
+                    ? Array.from(
+                        { length: 5 },
+                        (_, index) => (yAxisMax * index) / 4,
+                      )
+                    : undefined
+                }
+                tickFormatter={valueFormatter ?? formatYAxis}
+                mirror
+              />
+              <RechartsTooltip
+                formatter={(value) =>
+                  tooltipValueFormatter
+                    ? tooltipValueFormatter(Number(value))
+                    : valueFormatter
+                      ? valueFormatter(Number(value))
+                      : formatTooltipValue(Number(value))
+                }
+                labelFormatter={(label, payload) => {
+                  if (!showTooltipTotal) return `Year: ${label}`;
+                  let total = 0;
+                  for (const entry of payload)
+                    if (typeof entry.value === "number") total += entry.value;
+                  return `${label} · Selected total: ${(tooltipValueFormatter ?? valueFormatter ?? formatYAxis)(total)}`;
+                }}
+                contentStyle={{
+                  backgroundColor: "white",
+                  border: "1px solid #e5e7eb",
+                  borderRadius: "4px",
+                  fontSize: "12px",
+                }}
+              />
+              {visibleSeries.map((s) => (
+                <Area
+                  key={s.key}
+                  type="monotone"
+                  dataKey={s.key}
+                  name={s.label}
+                  stackId="1"
+                  stroke={s.color}
+                  fill={s.color}
+                />
+              ))}
+            </AreaChart>
+          </ResponsiveContainer>
+        )}
       </div>
     </div>
   );

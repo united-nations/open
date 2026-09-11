@@ -7,6 +7,7 @@ interface YearSliderProps {
   selectedYear: number;
   onChange: (year: number) => void;
   disabled?: boolean;
+  compact?: boolean;
   /** Caption for a year. Peacekeeping runs July-June, so 2024 reads "2024/25". */
   formatLabel?: (year: number) => string;
 }
@@ -16,6 +17,7 @@ export function YearSlider({
   selectedYear,
   onChange,
   disabled = false,
+  compact = false,
   formatLabel,
 }: YearSliderProps) {
   const trackRef = useRef<HTMLDivElement>(null);
@@ -42,11 +44,14 @@ export function YearSlider({
       if (!trackRef.current || sortedYears.length <= 1) return selectedYear;
 
       const rect = trackRef.current.getBoundingClientRect();
-      const position = Math.max(0, Math.min(1, (clientX - rect.left) / rect.width));
+      const position = Math.max(
+        0,
+        Math.min(1, (clientX - rect.left) / rect.width),
+      );
       const index = Math.round(position * (sortedYears.length - 1));
       return sortedYears[index];
     },
-    [sortedYears, selectedYear]
+    [sortedYears, selectedYear],
   );
 
   const handleMouseDown = useCallback(
@@ -57,7 +62,7 @@ export function YearSlider({
       const year = getYearFromPosition(e.clientX);
       setDragYear(year);
     },
-    [disabled, getYearFromPosition]
+    [disabled, getYearFromPosition],
   );
 
   const handleMouseMove = useCallback(
@@ -66,7 +71,7 @@ export function YearSlider({
       const year = getYearFromPosition(e.clientX);
       setDragYear(year);
     },
-    [isDragging, disabled, getYearFromPosition]
+    [isDragging, disabled, getYearFromPosition],
   );
 
   const handleMouseUp = useCallback(() => {
@@ -98,7 +103,7 @@ export function YearSlider({
       const year = getYearFromPosition(touch.clientX);
       setDragYear(year);
     },
-    [disabled, getYearFromPosition]
+    [disabled, getYearFromPosition],
   );
 
   const handleTouchMove = useCallback(
@@ -109,7 +114,7 @@ export function YearSlider({
       const year = getYearFromPosition(touch.clientX);
       setDragYear(year);
     },
-    [isDragging, disabled, getYearFromPosition]
+    [isDragging, disabled, getYearFromPosition],
   );
 
   const handleTouchEnd = useCallback(() => {
@@ -167,7 +172,7 @@ export function YearSlider({
         onChange(sortedYears[newIndex]);
       }
     },
-    [disabled, sortedYears, selectedYear, onChange]
+    [disabled, sortedYears, selectedYear, onChange],
   );
 
   const thumbPosition = getPositionFromYear(displayYear);
@@ -177,7 +182,7 @@ export function YearSlider({
   }
 
   return (
-    <div className="flex h-9 items-center gap-2">
+    <div className={`flex items-center gap-2 ${compact ? "h-6.5" : "h-9"}`}>
       <div
         ref={trackRef}
         role="slider"
@@ -187,7 +192,7 @@ export function YearSlider({
         aria-valuenow={displayYear}
         aria-label="Select year"
         aria-disabled={disabled}
-        className={`relative flex h-9 w-24 cursor-pointer touch-none items-center sm:w-32 focus:outline-none focus-visible:ring-2 focus-visible:ring-un-blue focus-visible:ring-offset-2 ${
+        className={`relative flex ${compact ? "h-6.5" : "h-9"} w-24 cursor-pointer touch-none items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-un-blue focus-visible:ring-offset-2 sm:w-32 ${
           disabled ? "cursor-not-allowed opacity-50" : ""
         }`}
         onMouseDown={handleMouseDown}
@@ -198,7 +203,7 @@ export function YearSlider({
         <div className="h-0.5 w-full bg-gray-300" />
         {/* Thumb - larger touch target */}
         <div
-          className={`absolute top-1/2 flex h-9 w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center`}
+          className={`absolute top-1/2 flex ${compact ? "h-6.5" : "h-9"} w-6 -translate-x-1/2 -translate-y-1/2 items-center justify-center`}
           style={{ left: `${thumbPosition}%` }}
         >
           <div
@@ -206,7 +211,7 @@ export function YearSlider({
           />
         </div>
       </div>
-      <span className="min-w-[3ch] whitespace-nowrap text-sm font-medium text-gray-900">
+      <span className="min-w-[3ch] text-sm font-medium whitespace-nowrap text-gray-900">
         {formatLabel ? formatLabel(displayYear) : displayYear}
       </span>
     </div>

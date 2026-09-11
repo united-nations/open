@@ -1,6 +1,10 @@
 "use client";
+import {
+  usePaymentChartScale,
+  paymentScaleMaximum,
+} from "@/components/PaymentChartScale";
 
-import { useMemo } from "react";
+import { useId, useMemo } from "react";
 import {
   Area,
   AreaChart,
@@ -31,7 +35,7 @@ function currency(amount: number): string {
 }
 
 function dateLabel(timestamp: number): string {
-  return new Intl.DateTimeFormat("en-US", {
+  return new Intl.DateTimeFormat("en-GB", {
     month: "short",
     day: "numeric",
     timeZone: "UTC",
@@ -45,7 +49,7 @@ function PaymentDeadlineLabel({ viewBox }: LabelProps) {
     <text
       x={viewBox.x + 6}
       y={viewBox.y + height * 0.25}
-      fill="#004987"
+      fill="var(--color-un-green-shade)"
       fontSize={11}
       textAnchor="start"
       dominantBaseline="middle"
@@ -57,8 +61,10 @@ function PaymentDeadlineLabel({ viewBox }: LabelProps) {
 
 export function RegularBudgetPaymentTimeline({
   data,
+  measure = "amount",
 }: {
   data: RegularBudgetContributorsData;
+  measure?: "amount" | "count";
 }) {
   const { points, monthTicks, dueDate, yearEnd } = useMemo(() => {
     const year = data.meta.year;
@@ -105,30 +111,46 @@ export function RegularBudgetPaymentTimeline({
     };
   }, [data]);
 
+  const sharedScale = usePaymentChartScale();
+  const target =
+    measure === "count" ? data.contributors.length : data.meta.assessment_total;
+  const yAxisMax =
+    sharedScale?.scales?.[measure] ?? paymentScaleMaximum(target);
   const finalPoint = points.at(-1);
+  const gradientId = useId().replace(/:/g, "");
+  const firstDate = points[0]?.date ?? dueDate;
+  const lastDate = finalPoint?.date ?? firstDate;
+  const deadlineOffset =
+    lastDate > firstDate
+      ? Math.max(0, Math.min(1, (dueDate - firstDate) / (lastDate - firstDate)))
+      : 1;
 
   return (
     <div id="regular-budget-payment-timing">
       <div
         className="h-80 w-full"
         role="img"
-        aria-label="Cumulative share of regular-budget assessments paid in full from January to December"
+        aria-label={
+          measure === "count"
+            ? "Cumulative Member States listed as paid in full"
+            : "Cumulative assessments of Member States listed as paid in full"
+        }
       >
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart
             data={points}
-            margin={{ top: 16, right: 24, bottom: 8, left: 0 }}
+            margin={{ top: 10, right: 5, bottom: 5, left: 5 }}
           >
             <defs>
-              <linearGradient
-                id="payment-timeline-fill"
-                x1="0"
-                y1="0"
-                x2="0"
-                y2="1"
-              >
-                <stop offset="0%" stopColor="#009EDB" stopOpacity={0.35} />
-                <stop offset="100%" stopColor="#009EDB" stopOpacity={0.05} />
+              <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="0">
+                <stop
+                  offset={deadlineOffset}
+                  stopColor="var(--color-un-green-shade)"
+                />
+                <stop
+                  offset={deadlineOffset}
+                  stopColor="var(--color-un-green)"
+                />
               </linearGradient>
             </defs>
             <CartesianGrid
@@ -141,45 +163,60 @@ export function RegularBudgetPaymentTimeline({
               type="number"
               domain={[points[0]?.date ?? 0, yearEnd]}
               ticks={monthTicks}
-              tickFormatter={(value: number) => dateLabel(value).split(" ")[0]}
+              tickFormatter={(value: number) =>
+                new Intl.DateTimeFormat("en-GB", {
+                  month: "short",
+                  timeZone: "UTC",
+                }).format(value)
+              }
               tick={{ fontSize: 11, fill: "#6b7280" }}
               axisLine={false}
               tickLine={false}
             />
             <YAxis
-              domain={[0, 100]}
-              ticks={[0, 25, 50, 75, 100]}
-              tickFormatter={(value: number) => `${value}%`}
-              tick={{ fontSize: 11, fill: "#6b7280" }}
+              orientation="right"
+              mirror
+              domain={[0, yAxisMax]}
+              ticks={Array.from(
+                { length: 5 },
+                (_, index) => (yAxisMax * index) / 4,
+              )}
+              tickFormatter={(value: number) =>
+                measure === "count"
+                  ? String(Math.round(value))
+                  : value >= 1e9
+                    ? `$${(value / 1e9).toFixed(1)}B`
+                    : `$${(value / 1e6).toFixed(0)}M`
+              }
+              tick={{ fontSize: 11, fill: "#6b7280", dx: -5, dy: -8 }}
               axisLine={false}
               tickLine={false}
-              width={42}
+              width={1}
             />
             <RechartsTooltip
               labelFormatter={(value) => dateLabel(Number(value))}
-              formatter={(value, name, item) => {
-                const point = item.payload as TimelinePoint;
-                if (name === "percent") {
-                  return [
-                    `${Number(value).toFixed(1)}% · ${currency(point.amount)} · ${point.countries} countries`,
-                    "Paid in full",
-                  ];
-                }
-                return [value, name];
-              }}
+              formatter={(value) => [
+                measure === "count"
+                  ? `${Number(value)} Member States`
+                  : currency(Number(value)),
+                "Listed as paid in full",
+              ]}
             />
             <ReferenceLine
               x={dueDate}
-              stroke="#004987"
+              stroke="var(--color-un-green-shade)"
               strokeDasharray="5 4"
               label={{ content: PaymentDeadlineLabel }}
             />
             <ReferenceLine
-              y={100}
+              y={target}
               stroke="#374151"
               strokeDasharray="5 4"
               label={{
-                value: "100% target",
+                value:
+                  measure === "count"
+                    ? `All Member States: ${target}`
+                    : `Total assessed: $${target.toLocaleString("en-GB", { maximumFractionDigits: 2 })}`,
                 position: "insideTopRight",
                 fill: "#374151",
                 fontSize: 11,
@@ -187,10 +224,11 @@ export function RegularBudgetPaymentTimeline({
             />
             <Area
               type="stepAfter"
-              dataKey="percent"
-              stroke="#009EDB"
+              dataKey={measure === "count" ? "countries" : "amount"}
+              stroke={`url(#${gradientId})`}
               strokeWidth={2.5}
-              fill="url(#payment-timeline-fill)"
+              fill={`url(#${gradientId})`}
+              fillOpacity={0.25}
               isAnimationActive={false}
             />
           </AreaChart>
@@ -200,7 +238,8 @@ export function RegularBudgetPaymentTimeline({
         As of {dateLabel(Date.parse(`${data.meta.as_of}T00:00:00Z`))},{" "}
         {finalPoint?.percent.toFixed(1)}% of assessed dollars from{" "}
         {finalPoint?.countries} Member States had been listed as paid in full.
-        The chart marks the 100% target even when it was not reached.
+        Each full assessment is included on the date the Member State is listed
+        as paid in full. Partial payments are not shown.
       </p>
     </div>
   );

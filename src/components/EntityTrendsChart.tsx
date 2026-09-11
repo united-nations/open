@@ -1,5 +1,7 @@
 "use client";
 
+import { LegendLabel } from "@un-eosg/ui/components/legend-label";
+
 import * as React from "react";
 import {
   LineChart,
@@ -54,6 +56,8 @@ export function EntityTrendsChart() {
   const [data, setData] = React.useState<EntityTrendsData | null>(null);
   const [loading, setLoading] = React.useState(true);
 
+  const [showRevenue, setShowRevenue] = React.useState(true);
+  const [showExpenses, setShowExpenses] = React.useState(true);
   // Left chart: single selection for revenue vs expenses
   const [selectedEntity, setSelectedEntity] = React.useState<string>("all");
 
@@ -331,21 +335,18 @@ export function EntityTrendsChart() {
                 getLabel={getSelectedLabel}
               />
 
-              {/* Legend */}
-              <div className="flex items-center gap-1.5 rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700">
-                <span
-                  className="h-2.5 w-2.5 rounded-full"
-                  style={{ backgroundColor: METRIC_COLORS.revenue }}
-                />
-                <span>Revenue</span>
-              </div>
-              <div className="flex items-center gap-1.5 rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700">
-                <span
-                  className="h-2.5 w-2.5 rounded-full"
-                  style={{ backgroundColor: METRIC_COLORS.expenses }}
-                />
-                <span>Expenses</span>
-              </div>
+              <LegendLabel
+                label="Revenue"
+                color={METRIC_COLORS.revenue}
+                selected={showRevenue}
+                onToggle={() => setShowRevenue((current) => !current)}
+              />
+              <LegendLabel
+                label="Expenses"
+                color={METRIC_COLORS.expenses}
+                selected={showExpenses}
+                onToggle={() => setShowExpenses((current) => !current)}
+              />
             </div>
           </div>
 
@@ -354,6 +355,13 @@ export function EntityTrendsChart() {
             {loading ? (
               <div className="flex h-full items-center justify-center text-gray-500">
                 Loading trends...
+              </div>
+            ) : !showRevenue && !showExpenses ? (
+              <div
+                className="flex h-full items-center justify-center text-gray-500"
+                role="status"
+              >
+                Select Revenue or Expenses to show the trend.
               </div>
             ) : revenueExpensesData.length === 0 ? (
               <div className="flex h-full items-center justify-center text-gray-500">
@@ -392,24 +400,28 @@ export function EntityTrendsChart() {
                       fontSize: "12px",
                     }}
                   />
-                  <Line
-                    type="monotone"
-                    dataKey="Revenue"
-                    stroke={METRIC_COLORS.revenue}
-                    strokeWidth={2}
-                    dot={false}
-                    activeDot={{ r: 4, strokeWidth: 0 }}
-                    connectNulls={false}
-                  />
-                  <Line
-                    type="monotone"
-                    dataKey="Expenses"
-                    stroke={METRIC_COLORS.expenses}
-                    strokeWidth={2}
-                    dot={false}
-                    activeDot={{ r: 4, strokeWidth: 0 }}
-                    connectNulls={false}
-                  />
+                  {showRevenue && (
+                    <Line
+                      type="monotone"
+                      dataKey="Revenue"
+                      stroke={METRIC_COLORS.revenue}
+                      strokeWidth={2}
+                      dot={false}
+                      activeDot={{ r: 4, strokeWidth: 0 }}
+                      connectNulls={false}
+                    />
+                  )}
+                  {showExpenses && (
+                    <Line
+                      type="monotone"
+                      dataKey="Expenses"
+                      stroke={METRIC_COLORS.expenses}
+                      strokeWidth={2}
+                      dot={false}
+                      activeDot={{ r: 4, strokeWidth: 0 }}
+                      connectNulls={false}
+                    />
+                  )}
                 </LineChart>
               </ResponsiveContainer>
             )}

@@ -1,7 +1,7 @@
+import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { BudgetTreemap } from "@/components/BudgetTreemap";
 import {
-  Methodology,
   SecretariatMethodology,
   TrustFundsMethodologyNotes,
 } from "@/components/Methodology";
@@ -16,7 +16,15 @@ export const metadata: Metadata = {
 
 export default function TrustFundsPage() {
   return (
-    <>
+    <ChartSourceProvider
+      label="Audited Schedules of Individual Trust Funds"
+      details={
+        <>
+          <SecretariatMethodology />
+          <TrustFundsMethodologyNotes />
+        </>
+      }
+    >
       <PageHeading
         id="trust-fund-spending"
         title="How are the trust funds spending?"
@@ -31,10 +39,6 @@ export default function TrustFundsPage() {
           trustFundLevel="fund"
         />
       </PageBody>
-      <Methodology>
-        <SecretariatMethodology />
-        <TrustFundsMethodologyNotes />
-      </Methodology>
-    </>
+    </ChartSourceProvider>
   );
 }

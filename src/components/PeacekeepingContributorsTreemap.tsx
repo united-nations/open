@@ -1,4 +1,5 @@
 "use client";
+import { ChartFooter } from "@/components/ChartFooter";
 
 import {
   GroupedTreemap,
@@ -143,9 +144,9 @@ export function PeacekeepingContributorsTreemap() {
       {
         key: "member-states",
         label: "Member States",
-        color: "#009edb",
+        color: "var(--color-un-blue-shade)",
         data: "member-states" as const,
-        leaves: positiveContributors
+        subgroups: positiveContributors
           .slice()
           .sort(
             (a, b) =>
@@ -155,11 +156,18 @@ export function PeacekeepingContributorsTreemap() {
           .map((contributor) => ({
             key: contributor.name,
             label: contributor.name,
-            value: contributor.net_assessment,
-            color: "#009edb",
-            textColor: "var(--color-un-black)",
-            data: contributor,
-            onActivate: () => open(contributor),
+            labelVisibility: "tooltip-only" as const,
+            leaves: [
+              {
+                key: contributor.name,
+                label: contributor.name,
+                value: contributor.net_assessment,
+                color: "var(--color-un-blue-shade)",
+                textColor: "var(--color-un-white)",
+                data: contributor,
+                onActivate: () => open(contributor),
+              },
+            ],
           })),
       } satisfies GroupedTreemapRow<
         "member-states",
@@ -176,33 +184,62 @@ export function PeacekeepingContributorsTreemap() {
 
   return (
     <div className="w-full">
-      <div className="mb-3 flex justify-end">
-        <YearSlider
-          years={years.years}
-          selectedYear={year}
-          onChange={setYear}
-          formatLabel={cycleLabel}
-        />
-      </div>
-
       {current && (
         <>
-          <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-600">
-            <span>
-              Tile area represents each Member State&apos;s net assessed amount
-            </span>
-            <span>
-              {current.meta.coverage.contributors} Member States ·{" "}
-              {current.meta.coverage.missions} missions
-            </span>
-          </div>
-
           <GroupedTreemap<
             "member-states",
             never,
             PeacekeepingContributor,
             never
           >
+            footer={
+              <ChartFooter
+                details={
+                  <div className="space-y-2">
+                    <p>
+                      The displayed total sums positive net assessments
+                      represented by tiles. Zero and negative amounts are
+                      excluded from the treemap.
+                    </p>
+                    <p>
+                      <a
+                        href={current.meta.source_page}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-un-blue underline"
+                      >
+                        Committee on Contributions source index
+                      </a>
+                    </p>
+                    <p>
+                      Net assessments add assessment sections and subtract
+                      prior-period credits. They do not show payments received,
+                      arrears or voluntary contributions. Click a Member State
+                      to see its mission breakdown and source circulars.
+                    </p>
+                    {exceptionCount > 0 && (
+                      <p className="border-l-2 border-amber-500 pl-2 text-amber-800">
+                        This cycle contains {exceptionCount} disclosed
+                        source-data exception{exceptionCount === 1 ? "" : "s"}.
+                        The affected contributor sidebar and export explain how
+                        each was handled.
+                      </p>
+                    )}
+                  </div>
+                }
+                hint="Click on a contributor to explore details"
+              />
+            }
+            yearControl={
+              <YearSlider
+                years={years.years}
+                selectedYear={year}
+                onChange={setYear}
+                formatLabel={cycleLabel}
+              />
+            }
+            controls={undefined}
+            showRowLabels={false}
             rows={rows}
             search={{
               value: query,
@@ -215,7 +252,7 @@ export function PeacekeepingContributorsTreemap() {
             summaries={[
               {
                 key: "visible-total",
-                label: query ? "Matching positive total" : "Positive total",
+                label: query ? "Matching total" : "Displayed total",
                 value: currency(visibleTotal, true),
               },
             ]}
@@ -231,33 +268,7 @@ export function PeacekeepingContributorsTreemap() {
                 No contributors match your search.
               </div>
             }
-            sources={[
-              {
-                key: "committee-on-contributions",
-                label: "Committee on Contributions source index",
-                href: current.meta.source_page,
-                openInNewTab: true,
-                newTabLabel: "opens in a new tab",
-              },
-            ]}
-            sourceHeading="Source:"
           />
-
-          <div className="mt-4 space-y-2 text-xs leading-relaxed text-gray-500">
-            <p>
-              Net assessments add assessment sections and subtract prior-period
-              credits. They do not show payments received, arrears or voluntary
-              contributions. Click a Member State to see its mission breakdown
-              and source circulars.
-            </p>
-            {exceptionCount > 0 && (
-              <p className="border-l-2 border-amber-500 pl-2 text-amber-800">
-                This cycle contains {exceptionCount} disclosed source-data
-                exception{exceptionCount === 1 ? "" : "s"}. The affected
-                contributor sidebar and export explain how each was handled.
-              </p>
-            )}
-          </div>
         </>
       )}
 

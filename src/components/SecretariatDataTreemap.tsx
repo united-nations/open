@@ -1,4 +1,5 @@
 "use client";
+import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label";
 
 import { useCallback, useEffect, useState } from "react";
 import { BudgetTreemap } from "@/components/BudgetTreemap";
@@ -6,18 +7,11 @@ import { clearSidebarHash } from "@/hooks/useDeepLink";
 import { formatBudget } from "@/lib/entities";
 import {
   BUDGET_FUNDING_SOURCES,
-  FUNDING_SOURCES,
   type BudgetFundingSource,
 } from "@/lib/budgetGroupings";
 
 type SecretariatDataset = "audited" | "ppb" | "trust_funds";
 type BudgetBlock = "programme" | "peacekeeping";
-
-const FUNDING_FILTER_LABELS: Record<BudgetFundingSource, string> = {
-  regular_budget: "Regular budget",
-  other_assessed: "Other assessed",
-  extrabudgetary: "Extrabudgetary",
-};
 
 const DATASET_DETAILS: Record<
   SecretariatDataset,
@@ -207,24 +201,13 @@ export function SecretariatDataTreemap() {
             const disabled =
               dataset === "trust_funds" && source !== "extrabudgetary";
             return (
-              <button
+              <FundingSourceLabel
+                source={source}
                 key={source}
-                type="button"
-                aria-pressed={active}
+                selected={active}
                 disabled={disabled}
-                title={FUNDING_SOURCES[source].tooltip}
-                onClick={() => toggleFundingSource(source)}
-                className={`flex items-center gap-1.5 rounded-full px-2 py-1 text-xs transition-colors focus-visible:ring-2 focus-visible:ring-un-blue focus-visible:ring-offset-2 focus-visible:outline-none ${disabled ? "cursor-not-allowed opacity-40" : "cursor-pointer"} ${
-                  active
-                    ? "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                    : "bg-white text-gray-400 ring-1 ring-gray-200 hover:bg-gray-50 hover:text-gray-600"
-                }`}
-              >
-                <span
-                  className={`h-2.5 w-2.5 rounded-full ${FUNDING_SOURCES[source].color} ${active ? "opacity-100" : "opacity-40"}`}
-                />
-                <span>{FUNDING_FILTER_LABELS[source]}</span>
-              </button>
+                onToggle={() => toggleFundingSource(source)}
+              />
             );
           })}
         </div>

@@ -10,9 +10,18 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { HierarchicalMultiSelect, HierarchicalGroup } from "@/components/ui/hierarchical-multi-select";
-import { HierarchicalSingleSelect, HierarchicalGroup as SingleSelectGroup } from "@/components/ui/hierarchical-single-select";
-import { FinancingInstrumentChart, FinancingInstrumentDataPoint } from "@/components/charts/FinancingInstrumentChart";
+import {
+  HierarchicalMultiSelect,
+  HierarchicalGroup,
+} from "@/components/ui/hierarchical-multi-select";
+import {
+  HierarchicalSingleSelect,
+  HierarchicalGroup as SingleSelectGroup,
+} from "@/components/ui/hierarchical-single-select";
+import {
+  FinancingInstrumentChart,
+  FinancingInstrumentDataPoint,
+} from "@/components/charts/FinancingInstrumentChart";
 import { formatBudget } from "@/lib/contributors";
 
 // Type for the contributor trends data
@@ -29,9 +38,9 @@ interface ContributorTrendsData {
     years: number[];
     governmentContributors: string[];
     nonGovContributors: string[];
-    nonGovCategories?: Record<string, string[]>;  // category -> donors
+    nonGovCategories?: Record<string, string[]>; // category -> donors
   };
-  aggregates: Record<string, ContributorYearData[]>;  // includes gov, non-gov, all, cat:X
+  aggregates: Record<string, ContributorYearData[]>; // includes gov, non-gov, all, cat:X
   contributors: Record<string, ContributorYearData[]>;
 }
 
@@ -39,7 +48,7 @@ interface ContributorTrendsData {
 const LINE_COLORS = [
   "#009edb", // UN blue
   "#2d6a7e", // UN blue dark
-  "#4a7c7e", // faded jade  
+  "#4a7c7e", // faded jade
   "#7d8471", // camouflage green
   "#9b7c6b", // au chico
   "#3d5a6c", // UN blue slate
@@ -52,8 +61,11 @@ const LINE_COLORS = [
 export function ContributorTrendsChart() {
   const [data, setData] = React.useState<ContributorTrendsData | null>(null);
   const [loading, setLoading] = React.useState(true);
-  const [selected, setSelected] = React.useState<Set<string>>(new Set(["gov", "non-gov"]));
-  const [financingContributor, setFinancingContributor] = React.useState<string>("all");
+  const [selected, setSelected] = React.useState<Set<string>>(
+    new Set(["gov", "non-gov"]),
+  );
+  const [financingContributor, setFinancingContributor] =
+    React.useState<string>("all");
 
   // Load data on mount
   React.useEffect(() => {
@@ -74,7 +86,7 @@ export function ContributorTrendsChart() {
   // Build hierarchical groups for compare chart (multi-select)
   const groups: HierarchicalGroup[] = React.useMemo(() => {
     if (!data) return [];
-    
+
     const nonGovSubgroups = data.meta.nonGovCategories
       ? Object.entries(data.meta.nonGovCategories).map(([cat, donors]) => ({
           id: `cat:${cat}`,
@@ -82,7 +94,7 @@ export function ContributorTrendsChart() {
           children: donors,
         }))
       : [];
-    
+
     return [
       {
         id: "gov",
@@ -103,11 +115,19 @@ export function ContributorTrendsChart() {
   // Build hierarchical groups for financing instrument chart (single-select)
   const financingSingleSelectGroups: SingleSelectGroup[] = React.useMemo(() => {
     if (!data) return [];
-    
+
     return [
       { id: "all", label: "All contributors", children: [] },
-      { id: "gov", label: "Government", children: data.meta.governmentContributors },
-      { id: "non-gov", label: "Non-Government", children: data.meta.nonGovContributors },
+      {
+        id: "gov",
+        label: "Government",
+        children: data.meta.governmentContributors,
+      },
+      {
+        id: "non-gov",
+        label: "Non-Government",
+        children: data.meta.nonGovContributors,
+      },
     ];
   }, [data]);
 
@@ -121,11 +141,11 @@ export function ContributorTrendsChart() {
   // Transform data for the chart based on selection
   const chartData = React.useMemo(() => {
     if (!data) return [];
-    
+
     const years = data.meta.years;
     return years.map((year, idx) => {
       const point: Record<string, number | string> = { year: year.toString() };
-      
+
       // Add data for each selected item
       Array.from(selected).forEach((id) => {
         if (id === "gov") {
@@ -140,7 +160,7 @@ export function ContributorTrendsChart() {
           point[id] = data.contributors[id][idx]?.total || 0;
         }
       });
-      
+
       return point;
     });
   }, [data, selected]);
@@ -150,7 +170,7 @@ export function ContributorTrendsChart() {
     const result: { dataKey: string; color: string; name: string }[] = [];
     const colors: Record<string, string> = {};
     let colorIdx = 0;
-    
+
     Array.from(selected).forEach((id) => {
       let name: string;
       if (id === "gov") {
@@ -162,10 +182,10 @@ export function ContributorTrendsChart() {
       } else {
         name = id;
       }
-      
+
       const color = LINE_COLORS[colorIdx % LINE_COLORS.length];
       colors[id] = color;
-      
+
       result.push({
         dataKey: name,
         color,
@@ -173,12 +193,15 @@ export function ContributorTrendsChart() {
       });
       colorIdx++;
     });
-    
+
     return { lines: result, colorMap: colors };
   }, [selected]);
 
   // Get color for a selected item (passed to HierarchicalMultiSelect for legend chips)
-  const getItemColor = React.useCallback((id: string) => colorMap[id], [colorMap]);
+  const getItemColor = React.useCallback(
+    (id: string) => colorMap[id],
+    [colorMap],
+  );
 
   // Custom tooltip formatter
   const formatTooltipValue = (value: number | undefined) => {
@@ -187,28 +210,32 @@ export function ContributorTrendsChart() {
   };
 
   // Data for stacked area chart (financing instruments, filtered by selected contributor)
-  const financingInstrumentData: FinancingInstrumentDataPoint[] = React.useMemo(() => {
-    if (!data) return [];
-    
-    // Get the appropriate data based on selection
-    let sourceData: ContributorYearData[] | undefined;
-    if (financingContributor === "all") {
-      sourceData = data.aggregates.all;
-    } else if (financingContributor === "gov" || financingContributor === "non-gov") {
-      sourceData = data.aggregates[financingContributor];
-    } else {
-      sourceData = data.contributors[financingContributor];
-    }
-    
-    if (!sourceData) return [];
-    
-    return sourceData.map((item) => ({
-      year: item.year.toString(),
-      Assessed: item.assessed,
-      "Voluntary un-earmarked": item.voluntary_unearmarked,
-      "Voluntary earmarked": item.voluntary_earmarked,
-    }));
-  }, [data, financingContributor]);
+  const financingInstrumentData: FinancingInstrumentDataPoint[] =
+    React.useMemo(() => {
+      if (!data) return [];
+
+      // Get the appropriate data based on selection
+      let sourceData: ContributorYearData[] | undefined;
+      if (financingContributor === "all") {
+        sourceData = data.aggregates.all;
+      } else if (
+        financingContributor === "gov" ||
+        financingContributor === "non-gov"
+      ) {
+        sourceData = data.aggregates[financingContributor];
+      } else {
+        sourceData = data.contributors[financingContributor];
+      }
+
+      if (!sourceData) return [];
+
+      return sourceData.map((item) => ({
+        year: item.year.toString(),
+        Assessed: item.assessed,
+        "Voluntary un-earmarked": item.voluntary_unearmarked,
+        "Voluntary earmarked": item.voluntary_earmarked,
+      }));
+    }, [data, financingContributor]);
 
   return (
     <>
@@ -231,67 +258,67 @@ export function ContributorTrendsChart() {
           </div>
 
           {/* Chart - mt-auto pushes to bottom of grid cell */}
-          <div className="mt-auto pt-3 h-[280px] w-full">
-              {loading ? (
-                <div className="flex h-full items-center justify-center text-gray-500">
-                  Loading trends...
-                </div>
-              ) : selected.size === 0 ? (
-                <div className="flex h-full items-center justify-center text-gray-500">
-                  Select at least one contributor to view trends
-                </div>
-              ) : (
-                <ResponsiveContainer width="100%" height="100%">
-                  <LineChart
-                    data={chartData}
-                    margin={{ top: 20, right: 5, left: 5, bottom: 5 }}
-                  >
-                    <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                    <XAxis
-                      dataKey="year"
-                      tick={{ fontSize: 12 }}
-                      tickLine={false}
-                      axisLine={{ stroke: "#e5e7eb" }}
+          <div className="mt-auto h-[280px] w-full pt-3">
+            {loading ? (
+              <div className="flex h-full items-center justify-center text-gray-500">
+                Loading trends...
+              </div>
+            ) : selected.size === 0 ? (
+              <div className="flex h-full items-center justify-center text-gray-500">
+                Select at least one contributor to view trends
+              </div>
+            ) : (
+              <ResponsiveContainer width="100%" height="100%">
+                <LineChart
+                  data={chartData}
+                  margin={{ top: 20, right: 5, left: 5, bottom: 5 }}
+                >
+                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                  <XAxis
+                    dataKey="year"
+                    tick={{ fontSize: 12 }}
+                    tickLine={false}
+                    axisLine={{ stroke: "#e5e7eb" }}
+                  />
+                  <YAxis
+                    orientation="right"
+                    width={1}
+                    tick={{ fontSize: 11, fill: "#6b7280", dx: -5, dy: -8 }}
+                    tickLine={false}
+                    axisLine={false}
+                    domain={[0, "auto"]}
+                    tickFormatter={(value) => {
+                      if (value >= 1e9) return `$${(value / 1e9).toFixed(0)}B`;
+                      if (value >= 1e6) return `$${(value / 1e6).toFixed(0)}M`;
+                      return `$${value}`;
+                    }}
+                    mirror
+                  />
+                  <Tooltip
+                    formatter={formatTooltipValue}
+                    labelFormatter={(label) => `Year: ${label}`}
+                    contentStyle={{
+                      backgroundColor: "white",
+                      border: "1px solid #e5e7eb",
+                      borderRadius: "4px",
+                      fontSize: "12px",
+                    }}
+                  />
+                  {lines.map((line) => (
+                    <Line
+                      key={line.dataKey}
+                      type="monotone"
+                      dataKey={line.dataKey}
+                      stroke={line.color}
+                      strokeWidth={2}
+                      dot={false}
+                      activeDot={{ r: 4, strokeWidth: 0 }}
                     />
-                    <YAxis
-                      orientation="right"
-                      width={1}
-                      tick={{ fontSize: 11, fill: "#6b7280", dx: -5, dy: -8 }}
-                      tickLine={false}
-                      axisLine={false}
-                      domain={[0, 'auto']}
-                      tickFormatter={(value) => {
-                        if (value >= 1e9) return `$${(value / 1e9).toFixed(0)}B`;
-                        if (value >= 1e6) return `$${(value / 1e6).toFixed(0)}M`;
-                        return `$${value}`;
-                      }}
-                      mirror
-                    />
-                    <Tooltip
-                      formatter={formatTooltipValue}
-                      labelFormatter={(label) => `Year: ${label}`}
-                      contentStyle={{
-                        backgroundColor: "white",
-                        border: "1px solid #e5e7eb",
-                        borderRadius: "4px",
-                        fontSize: "12px",
-                      }}
-                    />
-                    {lines.map((line) => (
-                      <Line
-                        key={line.dataKey}
-                        type="monotone"
-                        dataKey={line.dataKey}
-                        stroke={line.color}
-                        strokeWidth={2}
-                        dot={false}
-                        activeDot={{ r: 4, strokeWidth: 0 }}
-                      />
-                    ))}
-                  </LineChart>
-                </ResponsiveContainer>
-              )}
-            </div>
+                  ))}
+                </LineChart>
+              </ResponsiveContainer>
+            )}
+          </div>
         </div>
 
         {/* Chart B: Financing instruments (stacked area chart) */}
@@ -315,7 +342,11 @@ export function ContributorTrendsChart() {
                 Loading trends...
               </div>
             ) : (
-              <FinancingInstrumentChart data={financingInstrumentData} height={280} />
+              <FinancingInstrumentChart
+                data={financingInstrumentData}
+                height={280}
+                filterable
+              />
             )}
           </div>
         </div>

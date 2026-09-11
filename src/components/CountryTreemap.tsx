@@ -21,6 +21,7 @@ interface CountryExpense {
 
 interface CountryTreemapProps {
   data: CountryExpense[];
+  hideHeader?: boolean;
   searchQuery: string;
   onSearchChange: (value: string) => void;
   onCountryClick: (country: CountryExpense) => void;
@@ -73,6 +74,7 @@ function CountryTooltip({
 
 export function CountryTreemap({
   data,
+  hideHeader,
   searchQuery,
   onSearchChange,
   onCountryClick,
@@ -122,6 +124,7 @@ export function CountryTreemap({
   return (
     <GroupedTreemap<string, never, CountryExpense, never>
       rows={rows}
+      hideHeader={hideHeader}
       search={{
         value: searchQuery,
         onChange: onSearchChange,

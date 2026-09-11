@@ -1,8 +1,8 @@
 "use client";
+import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label";
 
 import {
   BUDGET_FUNDING_SOURCES,
-  FUNDING_SOURCES,
   type BudgetFundingSource,
 } from "@/lib/budgetGroupings";
 
@@ -26,12 +26,14 @@ export function FundingSourcePills({
   sources = BUDGET_FUNDING_SOURCES,
   disabled = false,
   grouped = false,
+  explanations,
 }: {
   selected: readonly BudgetFundingSource[];
   onToggle: (source: BudgetFundingSource) => void;
   sources?: readonly BudgetFundingSource[];
   disabled?: boolean;
   grouped?: boolean;
+  explanations?: Partial<Record<BudgetFundingSource, string>>;
 }) {
   return (
     <div
@@ -46,26 +48,14 @@ export function FundingSourcePills({
       {sources.map((source) => {
         const active = selected.includes(source);
         return (
-          <button
+          <FundingSourceLabel
+            source={source}
             key={source}
-            type="button"
-            aria-pressed={active}
+            selected={active}
+            explanation={explanations?.[source]}
             disabled={disabled}
-            title={FUNDING_SOURCES[source].tooltip}
-            onClick={() => onToggle(source)}
-            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 text-xs transition-colors focus-visible:ring-2 focus-visible:ring-un-blue focus-visible:outline-none ${
-              active
-                ? "bg-gray-100 font-medium text-gray-800"
-                : grouped
-                  ? "text-gray-500 hover:bg-gray-50"
-                  : "bg-white text-gray-400 ring-1 ring-gray-200"
-            }`}
-          >
-            <span
-              className={`size-2.5 rounded-full ${FUNDING_SOURCES[source].color} ${active ? "opacity-100" : "opacity-35"}`}
-            />
-            {FUNDING_SOURCES[source].label}
-          </button>
+            onToggle={() => onToggle(source)}
+          />
         );
       })}
     </div>

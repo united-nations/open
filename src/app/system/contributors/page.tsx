@@ -1,10 +1,10 @@
+import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { ContributorTrendsChart } from "@/components/ContributorTrendsChart";
 import { ContributorsTreemap } from "@/components/ContributorsTreemap";
 import {
   CebMethodology,
   ContributorsMethodologyNotes,
-  Methodology,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
@@ -17,7 +17,15 @@ export const metadata: Metadata = {
 
 export default function SystemContributorsPage() {
   return (
-    <>
+    <ChartSourceProvider
+      label="CEB financial statistics"
+      details={
+        <>
+          <CebMethodology />
+          <ContributorsMethodologyNotes />
+        </>
+      }
+    >
       <PageHeading
         id="donors"
         title="Who is contributing?"
@@ -32,10 +40,6 @@ export default function SystemContributorsPage() {
           <ContributorTrendsChart />
         </div>
       </PageBody>
-      <Methodology>
-        <CebMethodology />
-        <ContributorsMethodologyNotes />
-      </Methodology>
-    </>
+    </ChartSourceProvider>
   );
 }

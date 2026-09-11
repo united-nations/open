@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { HierarchicalMultiSelect } from "@/components/ui/hierarchical-multi-select";
 import {
   FinancingInstrumentChart,
   type FinancingInstrumentDataPoint,
@@ -13,6 +14,7 @@ import { useYearRanges } from "@/lib/useYearRanges";
 import type { BudgetFundingSource, SecretariatOverviewData } from "@/types";
 
 export function SecretariatOverviewTrends() {
+  const [hiddenPriorities, setHiddenPriorities] = useState<string[]>([]);
   const years = useYearRanges().secretariatOverview.years;
   const [series, setSeries] = useState<SecretariatOverviewData[] | null>(null);
 
@@ -119,10 +121,47 @@ export function SecretariatOverviewTrends() {
           <h4 className="mb-3 text-sm font-medium text-gray-700">
             Spending by priority area
           </h4>
-          <FinancingInstrumentChart
-            data={priorityData}
-            series={prioritySeries}
+          <HierarchicalMultiSelect
+            className="mb-3"
+            selectionSummary={
+              priorities.every((name) => !hiddenPriorities.includes(name))
+                ? "All priority areas"
+                : `${priorities.filter((name) => !hiddenPriorities.includes(name)).length} priority areas selected`
+            }
+            groups={prioritySeries.map((item) => ({
+              id: item.key,
+              label: item.label,
+              bgColor: item.color,
+              children: [],
+            }))}
+            selected={
+              new Set(
+                priorities.filter((name) => !hiddenPriorities.includes(name)),
+              )
+            }
+            onChange={(selected) =>
+              setHiddenPriorities(
+                priorities.filter((name) => !selected.has(name)),
+              )
+            }
+            getItemColor={priorityAreaColor}
           />
+          {priorities.every((name) => hiddenPriorities.includes(name)) ? (
+            <div
+              className="flex h-[280px] items-center justify-center text-sm text-gray-500"
+              role="status"
+            >
+              Select a priority area to show the trend.
+            </div>
+          ) : (
+            <FinancingInstrumentChart
+              data={priorityData}
+              series={prioritySeries.filter(
+                (item) => !hiddenPriorities.includes(item.key),
+              )}
+              showLegend={false}
+            />
+          )}
         </div>
         <div className="flex flex-col">
           <h4 className="mb-3 text-sm font-medium text-gray-700">

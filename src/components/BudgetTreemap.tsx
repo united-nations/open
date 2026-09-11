@@ -1,4 +1,5 @@
 "use client";
+import { ChartFooter } from "@/components/ChartFooter";
 
 // Budget-document treemap for /secretariat, in the layout of ../budget-explorer:
 // the groups are stacked as bands whose height is their share of the budget, the
@@ -37,7 +38,7 @@ import {
 import { formatBudget } from "@/lib/entities";
 import { BudgetSidebar } from "@/components/BudgetSidebar";
 import { ChartSearchInput } from "@/components/ui/chart-search-input";
-import { Switch } from "@/components/ui/switch";
+import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
 import { YearSlider } from "@/components/YearSlider";
 import { useYearRanges } from "@/lib/useYearRanges";
 import {
@@ -644,6 +645,7 @@ interface BudgetTreemapProps {
   availableYears?: number[];
   /** Keep the shared internal year slider for other budget views. */
   showYearSelector?: boolean;
+  yearControl?: React.ReactNode;
   /** Reports the filtered root total to the budget selector. */
   onTotalChange?: (total: number) => void;
   /** Show one source as the only headline total, even when other sources are drawn. */
@@ -665,6 +667,7 @@ export function BudgetTreemap({
   selectedYear,
   availableYears,
   showYearSelector = true,
+  yearControl,
   onTotalChange,
   headlineFundingSource,
   trustFundLevel = "entity",
@@ -1412,8 +1415,8 @@ export function BudgetTreemap({
     if (usesSharedTrustFundExpenses) {
       return filteredData.nodes
         .filter((node) => node.tier === "budget_unit")
-        .map((entity, index) => {
-          const color = BAND_PALETTE[index % BAND_PALETTE.length].bg;
+        .map((entity) => {
+          const color = "var(--color-un-blue)";
           const funds = (childrenOf[entity.id] ?? []).filter(
             (node) => node.tier === "detail" && node.amount > 0,
           );
@@ -1513,11 +1516,13 @@ export function BudgetTreemap({
             label: `Section ${section.code ?? ""}: ${section.label}`,
             data: section,
             labelVisibility: "tooltip-only" as const,
-            leaves: [leaf(
-              section,
-              section.entity.acronym ?? section.entity.name,
-              color,
-            )],
+            leaves: [
+              leaf(
+                section,
+                section.entity.acronym ?? section.entity.name,
+                color,
+              ),
+            ],
           };
         }
 
@@ -1559,7 +1564,10 @@ export function BudgetTreemap({
           labelVisibility: "tooltip-only" as const,
           leaves: leaves.map((item) => ({
             ...item,
-            layoutValue: unitTotal > 0 ? item.value / unitTotal * section.amount : item.value,
+            layoutValue:
+              unitTotal > 0
+                ? (item.value / unitTotal) * section.amount
+                : item.value,
           })),
         };
       });
@@ -1599,7 +1607,10 @@ export function BudgetTreemap({
           ...subgroup,
           leaves: subgroup.leaves.map((item) => ({
             ...item,
-            layoutValue: sectionTotal > 0 ? item.layoutValue / sectionTotal * part.amount : item.layoutValue,
+            layoutValue:
+              sectionTotal > 0
+                ? (item.layoutValue / sectionTotal) * part.amount
+                : item.layoutValue,
           })),
         })),
       });
@@ -1704,25 +1715,18 @@ export function BudgetTreemap({
           }
         />
         {isAlignedPpb && onPpbGroupingChange && (
-          <div className="flex h-9 items-center gap-2">
-            <span
-              className={`text-sm ${ppbGrouping === "entity" ? "font-medium text-gray-900" : "text-gray-500"}`}
-            >
-              Entities
-            </span>
-            <Switch
-              checked={ppbGrouping === "section"}
-              onCheckedChange={(checked) =>
-                onPpbGroupingChange(checked ? "section" : "entity")
-              }
-              aria-label="Toggle between entity and budget section tiles"
-            />
-            <span
-              className={`text-sm ${ppbGrouping === "section" ? "font-medium text-gray-900" : "text-gray-500"}`}
-            >
-              Sections
-            </span>
-          </div>
+          <BinaryToggle
+            variant="segmented"
+            label="Budget grouping"
+            options={[
+              { value: "entity", label: "Entities" },
+              { value: "section", label: "Sections" },
+            ]}
+            value={ppbGrouping}
+            onValueChange={(value) =>
+              onPpbGroupingChange(value === "section" ? "section" : "entity")
+            }
+          />
         )}
       </div>
       <div className="flex flex-wrap items-center gap-4">
@@ -1746,25 +1750,18 @@ export function BudgetTreemap({
           />
         )}
         {isPko && hasCostClassDetail && (
-          <div className="flex h-9 items-center gap-2">
-            <span
-              className={`text-sm ${lens === "costClass" ? "font-medium text-gray-900" : "text-gray-500"}`}
-            >
-              By Cost Class
-            </span>
-            <Switch
-              checked={lens === "mission"}
-              onCheckedChange={(checked) =>
-                setLens(checked ? "mission" : "costClass")
-              }
-              aria-label="Toggle between cost class and mission grouping"
-            />
-            <span
-              className={`text-sm ${lens === "mission" ? "font-medium text-gray-900" : "text-gray-500"}`}
-            >
-              By Mission
-            </span>
-          </div>
+          <BinaryToggle
+            variant="segmented"
+            label="Peacekeeping grouping"
+            options={[
+              { value: "costClass", label: "By Cost Class" },
+              { value: "mission", label: "By Mission" },
+            ]}
+            value={lens}
+            onValueChange={(value) =>
+              setLens(value === "mission" ? "mission" : "costClass")
+            }
+          />
         )}
       </div>
     </div>
@@ -1839,41 +1836,23 @@ export function BudgetTreemap({
         : [];
     const searchAccessory =
       isAlignedPpb && onPpbGroupingChange ? (
-        <div className="flex flex-wrap items-center gap-2">
-          <span
-            className={`text-sm ${ppbGrouping === "entity" ? "font-medium text-gray-900" : "text-gray-500"}`}
-          >
-            Entities
-          </span>
-          <Switch
-            checked={ppbGrouping === "section"}
-            onCheckedChange={(checked) =>
-              onPpbGroupingChange(checked ? "section" : "entity")
-            }
-            aria-label="Toggle between entity and budget section tiles"
-          />
-          <span
-            className={`text-sm ${ppbGrouping === "section" ? "font-medium text-gray-900" : "text-gray-500"}`}
-          >
-            Sections
-          </span>
-        </div>
+        <BinaryToggle
+          variant="segmented"
+          label="Budget grouping"
+          options={[
+            { value: "entity", label: "Entities" },
+            { value: "section", label: "Sections" },
+          ]}
+          value={ppbGrouping}
+          onValueChange={(value) =>
+            onPpbGroupingChange(value === "section" ? "section" : "entity")
+          }
+        />
       ) : undefined;
 
     return (
       <div className="w-full">
-        {showYearSelector && years.length > 1 && (
-          <div className="mb-3 flex justify-end">
-            <YearSlider
-              years={years}
-              selectedYear={year}
-              onChange={setInternalYear}
-              formatLabel={yearLabel}
-            />
-          </div>
-        )}
-
-        {!usesSharedProgrammeBudget && (
+        {!usesSharedProgrammeBudget && !usesSharedTrustFundExpenses && (
           <>
             {meta.sourceNote && (
               <p className="mb-3 border-l-4 border-amber-400 bg-amber-50 px-4 py-3 text-sm text-amber-950">
@@ -1893,8 +1872,8 @@ export function BudgetTreemap({
 
             {meta.partial && (
               <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
-                {meta.scopeLabel}. This year does not publish every funding source,
-                so it is not directly comparable with years that do.
+                {meta.scopeLabel}. This year does not publish every funding
+                source, so it is not directly comparable with years that do.
               </p>
             )}
 
@@ -1902,12 +1881,11 @@ export function BudgetTreemap({
               <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
                 {withheldBreakdowns} published parent total
                 {withheldBreakdowns === 1 ? " has" : "s have"} a lower-level
-                breakdown that does not reconcile. The chart preserves each parent
-                total and withholds its child geometry; open the flagged tile to
-                inspect the published lines and difference.
+                breakdown that does not reconcile. The chart preserves each
+                parent total and withholds its child geometry; open the flagged
+                tile to inspect the published lines and difference.
               </p>
             )}
-
           </>
         )}
 
@@ -1917,11 +1895,72 @@ export function BudgetTreemap({
           SharedBudgetLeafData,
           BudgetFundingSource
         >
+          footer={
+            <ChartFooter
+              details={
+                usesSharedProgrammeBudget || usesSharedTrustFundExpenses ? (
+                  <div className="space-y-3">
+                    <p className="font-medium">
+                      Selected year: {year} ·{" "}
+                      {metricDefinition?.label ?? metric}
+                    </p>
+                    {sharedSources.map((source) => (
+                      <p key={source.key}>
+                        <a
+                          href={source.href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-un-blue underline"
+                        >
+                          {source.label}
+                          <span className="sr-only"> (opens in a new tab)</span>
+                        </a>
+                      </p>
+                    ))}
+                    {meta.sourceNote && <p>{meta.sourceNote}</p>}
+                    {meta.scopeWarning && <p>{meta.scopeWarning}</p>}
+                    {usesSharedTrustFundExpenses &&
+                      filteredData.nodes.some(
+                        (node) => node.tier === "detail" && node.amount <= 0,
+                      ) && (
+                        <p className="text-sm">
+                          {
+                            filteredData.nodes.filter(
+                              (node) =>
+                                node.tier === "detail" && node.amount <= 0,
+                            ).length
+                          }{" "}
+                          trust funds with zero or negative annual expenses
+                          remain in the data but are omitted because they cannot
+                          be drawn as areas. The displayed total is the sum of
+                          visible positive fund tiles.
+                        </p>
+                      )}
+                    {usesSharedTrustFundExpenses && meta.partial && (
+                      <p>
+                        {meta.scopeLabel}. This year does not publish every
+                        funding source, so it is not directly comparable with
+                        years that do.
+                      </p>
+                    )}
+                  </div>
+                ) : undefined
+              }
+              hint={
+                isTrustFund
+                  ? "Click on a trust fund to explore details"
+                  : ppbGrouping === "section"
+                    ? "Click on a budget section to explore details"
+                    : "Click on an entity to explore details"
+              }
+            />
+          }
           rows={sharedRows}
-          layout={usesSharedProgrammeBudget
-            ? { rowOrder: "input", orderedBands: true, rowGap: 3 }
-            : undefined}
-
+          layout={
+            usesSharedProgrammeBudget
+              ? { rowOrder: "input", orderedBands: true, rowGap: 3 }
+              : undefined
+          }
           search={{
             value: searchQuery,
             onChange: setSearchQuery,
@@ -1937,6 +1976,17 @@ export function BudgetTreemap({
                 : "Search budget sections...",
             predicate: sharedSearchMatches,
           }}
+          yearControl={
+            yearControl ??
+            (showYearSelector && years.length > 1 ? (
+              <YearSlider
+                years={years}
+                selectedYear={year}
+                onChange={setInternalYear}
+                formatLabel={yearLabel}
+              />
+            ) : undefined)
+          }
           searchAccessory={searchAccessory}
           summaries={sharedProgrammeSummaries}
           totalLabel="Total"
@@ -1990,29 +2040,19 @@ export function BudgetTreemap({
                   : "No budget value is available for the selected controls."}
             </div>
           }
-          sources={sharedSources}
+          sources={
+            usesSharedProgrammeBudget || usesSharedTrustFundExpenses
+              ? undefined
+              : sharedSources
+          }
           sourceHeading="Source:"
         />
 
-        {usesSharedTrustFundExpenses &&
-          filteredData.nodes.some(
-            (node) => node.tier === "detail" && node.amount <= 0,
-          ) && (
-            <p className="mt-3 text-xs text-gray-500">
-              {
-                filteredData.nodes.filter(
-                  (node) => node.tier === "detail" && node.amount <= 0,
-                ).length
-              }{" "}
-              trust funds with zero or negative annual expenses remain in the
-              data but are omitted because they cannot be drawn as areas. The
-              displayed total is the sum of visible positive fund tiles.
-            </p>
+        {meta.scopeWarning &&
+          !usesSharedProgrammeBudget &&
+          !usesSharedTrustFundExpenses && (
+            <p className="mt-3 text-xs text-gray-500">{meta.scopeWarning}</p>
           )}
-
-        {meta.scopeWarning && (
-          <p className="mt-3 text-xs text-gray-500">{meta.scopeWarning}</p>
-        )}
 
         {selected && (
           <BudgetSidebar

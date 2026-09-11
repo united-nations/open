@@ -1,4 +1,6 @@
 "use client";
+import { ChartFooter } from "@/components/ChartFooter";
+import { FinancingInstrumentLabel } from "./FinancingInstrumentLabel";
 
 import {
   GroupedTreemap,
@@ -9,12 +11,7 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 import { EntitySidebar } from "@/components/EntitySidebar";
 import { YearSlider } from "@/components/YearSlider";
 import { ClickHint } from "@/components/ui/ClickHint";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
-import { Switch } from "@/components/ui/switch";
+import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
 import {
   clearSidebarHash,
   replaceToSidebar,
@@ -27,7 +24,6 @@ import {
 } from "@/lib/entities";
 import {
   FINANCING_INSTRUMENT_ORDER,
-  FINANCING_INSTRUMENT_TOOLTIPS,
   getFinancingInstrumentColor,
 } from "@/lib/financingInstruments";
 import { getSystemGroupingStyle } from "@/lib/systemGroupings";
@@ -191,8 +187,7 @@ export function EntitiesTreemap() {
     return Object.entries(budgetData)
       .filter(([entity, amount]) => entity && amount > 0)
       .map(
-        ([entity]) =>
-          metadata.get(entity) ?? createUncategorizedEntity(entity),
+        ([entity]) => metadata.get(entity) ?? createUncategorizedEntity(entity),
       );
   }, [budgetData, entities]);
 
@@ -214,10 +209,7 @@ export function EntitiesTreemap() {
   }, []);
 
   const entitiesByTileLabel = useMemo(
-    () =>
-      new Map(
-        activeEntities.map((entity) => [entity.entity, entity]),
-      ),
+    () => new Map(activeEntities.map((entity) => [entity.entity, entity])),
     [activeEntities],
   );
 
@@ -285,61 +277,42 @@ export function EntitiesTreemap() {
 
   return (
     <div className="w-full">
-      <div className="mb-3 flex flex-wrap items-end justify-end gap-4">
-        <YearSlider
-          years={currentYears}
-          selectedYear={currentYear}
-          onChange={setCurrentYear}
-        />
-        <div className="flex h-9 items-center gap-2">
-          <span
-            className={`text-sm ${showRevenue ? "font-medium text-gray-900" : "text-gray-500"}`}
-          >
-            Funding
-          </span>
-          <Switch
-            checked={!showRevenue}
-            onCheckedChange={(checked) => setShowRevenue(!checked)}
-            aria-label="Toggle between funding and spending"
-          />
-          <span
-            className={`text-sm ${!showRevenue ? "font-medium text-gray-900" : "text-gray-500"}`}
-          >
-            Spending
-          </span>
-        </div>
-      </div>
-
-      {showRevenue && (
-        <div className="mb-3 flex flex-wrap gap-3">
-          {FINANCING_INSTRUMENT_ORDER.map((type) => (
-            <Tooltip key={type} delayDuration={200}>
-              <TooltipTrigger asChild>
-                <div className="flex cursor-help items-center gap-1.5">
-                  <div
-                    className="h-3 w-3 rounded-sm"
-                    style={{
-                      backgroundColor: getFinancingInstrumentColor(type),
-                    }}
-                  />
-                  <span className="text-xs text-gray-600 underline decoration-dotted underline-offset-2">
-                    {type}
-                  </span>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent
-                side="top"
-                sideOffset={4}
-                className="max-w-[250px] border border-slate-200 bg-white text-slate-800 shadow-lg"
-              >
-                <p className="text-xs">{FINANCING_INSTRUMENT_TOOLTIPS[type]}</p>
-              </TooltipContent>
-            </Tooltip>
-          ))}
-        </div>
-      )}
-
       <GroupedTreemap<string, never, Entity, string>
+        footer={
+          <ChartFooter hint="Click on an organization to explore details" />
+        }
+        yearControl={
+          <YearSlider
+            years={currentYears}
+            selectedYear={currentYear}
+            onChange={setCurrentYear}
+          />
+        }
+        controls={
+          <>
+            {showRevenue && (
+              <div className="flex flex-wrap gap-2">
+                {FINANCING_INSTRUMENT_ORDER.map((type) => (
+                  <FinancingInstrumentLabel
+                    key={type}
+                    type={type}
+                    variant="pill"
+                  />
+                ))}
+              </div>
+            )}
+            <BinaryToggle
+              variant="segmented"
+              label="Financial measure"
+              options={[
+                { value: "funding", label: "Funding" },
+                { value: "spending", label: "Spending" },
+              ]}
+              value={showRevenue ? "funding" : "spending"}
+              onValueChange={(value) => setShowRevenue(value === "funding")}
+            />
+          </>
+        }
         rows={rows}
         search={{
           value: searchQuery,

@@ -1,4 +1,7 @@
 "use client";
+import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
+import { ChartFooter } from "@/components/ChartFooter";
+import { ChartHeader } from "@un-eosg/ui/components/chart-header";
 
 import React, {
   useEffect,
@@ -9,7 +12,11 @@ import React, {
 } from "react";
 import SDGModal from "./SDGModal";
 import { YearSlider } from "@/components/YearSlider";
-import { useDeepLink, replaceToSidebar, clearSidebarHash } from "@/hooks/useDeepLink";
+import {
+  useDeepLink,
+  replaceToSidebar,
+  clearSidebarHash,
+} from "@/hooks/useDeepLink";
 import { ChartSearchInput } from "@/components/ui/chart-search-input";
 import {
   Tooltip,
@@ -17,15 +24,23 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import { ClickHint } from "@/components/ui/ClickHint";
-import { Switch } from "@/components/ui/switch";
+import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
 import { formatBudget } from "@/lib/entities";
 import { useYearRanges, generateYearRange } from "@/lib/useYearRanges";
 import { SDG, SDGExpensesData, SDG_COLORS, SDG_SHORT_TITLES } from "@/lib/sdgs";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-interface Rect { x: number; y: number; width: number; height: number; }
-interface TreemapItem { value: number; name: string; }
+interface Rect {
+  x: number;
+  y: number;
+  width: number;
+  height: number;
+}
+interface TreemapItem {
+  value: number;
+  name: string;
+}
 
 const GAP = 0.4; // Gap between entity cells (percentage)
 const SDG_GAP = 0.8;
@@ -83,7 +98,9 @@ function treemapLayout(
   for (let i = 0; i < items.length; i += ITEMS_PER_ROW) {
     rows.push(items.slice(i, i + ITEMS_PER_ROW));
   }
-  const rowTotals = rows.map((row) => row.reduce((sum, item) => sum + item.value, 0));
+  const rowTotals = rows.map((row) =>
+    row.reduce((sum, item) => sum + item.value, 0),
+  );
   const grandTotal = rowTotals.reduce((sum, t) => sum + t, 0);
   const totalRowGaps = (rows.length - 1) * SDG_GAP;
   const availableHeight = 100 - totalRowGaps;
@@ -100,7 +117,13 @@ function treemapLayout(
 
     row.forEach((item) => {
       const itemWidth = (item.value / rowTotal) * availableWidth;
-      results.push({ x: currentX, y: currentY, width: itemWidth, height: rowHeight, data: item });
+      results.push({
+        x: currentX,
+        y: currentY,
+        width: itemWidth,
+        height: rowHeight,
+        data: item,
+      });
       currentX += itemWidth + SDG_GAP;
     });
     currentY += rowHeight + SDG_GAP;
@@ -109,21 +132,40 @@ function treemapLayout(
 }
 
 // Squarify for entity sub-treemaps
-function squarify(items: TreemapItem[], x: number, y: number, width: number, height: number): (Rect & { data: TreemapItem })[] {
+function squarify(
+  items: TreemapItem[],
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+): (Rect & { data: TreemapItem })[] {
   const total = items.reduce((sum, item) => sum + item.value, 0);
   if (total === 0 || items.length === 0) return [];
-  const normalized = items.map((item) => ({ ...item, normalizedValue: (item.value / total) * width * height }));
+  const normalized = items.map((item) => ({
+    ...item,
+    normalizedValue: (item.value / total) * width * height,
+  }));
   return slice(normalized, x, y, width, height);
 }
 
-function slice(items: (TreemapItem & { normalizedValue: number })[], x: number, y: number, width: number, height: number): (Rect & { data: TreemapItem })[] {
+function slice(
+  items: (TreemapItem & { normalizedValue: number })[],
+  x: number,
+  y: number,
+  width: number,
+  height: number,
+): (Rect & { data: TreemapItem })[] {
   if (items.length === 0) return [];
   if (items.length === 1) return [{ x, y, width, height, data: items[0] }];
   const total = items.reduce((sum, item) => sum + item.normalizedValue, 0);
-  let sum = 0, splitIndex = 0;
+  let sum = 0,
+    splitIndex = 0;
   for (let i = 0; i < items.length; i++) {
     sum += items[i].normalizedValue;
-    if (sum >= total / 2) { splitIndex = i + 1; break; }
+    if (sum >= total / 2) {
+      splitIndex = i + 1;
+      break;
+    }
   }
   splitIndex = Math.max(1, Math.min(splitIndex, items.length - 1));
   const leftItems = items.slice(0, splitIndex);
@@ -132,16 +174,37 @@ function slice(items: (TreemapItem & { normalizedValue: number })[], x: number, 
 
   if (width >= height) {
     const leftWidth = width * (leftSum / total) - GAP / 2;
-    return [...slice(leftItems, x, y, leftWidth, height), ...slice(rightItems, x + leftWidth + GAP, y, width - leftWidth - GAP, height)];
+    return [
+      ...slice(leftItems, x, y, leftWidth, height),
+      ...slice(
+        rightItems,
+        x + leftWidth + GAP,
+        y,
+        width - leftWidth - GAP,
+        height,
+      ),
+    ];
   } else {
     const leftHeight = height * (leftSum / total) - GAP / 2;
-    return [...slice(leftItems, x, y, width, leftHeight), ...slice(rightItems, x, y + leftHeight + GAP, width, height - leftHeight - GAP)];
+    return [
+      ...slice(leftItems, x, y, width, leftHeight),
+      ...slice(
+        rightItems,
+        x,
+        y + leftHeight + GAP,
+        width,
+        height - leftHeight - GAP,
+      ),
+    ];
   }
 }
 
 export default function SDGsGrid() {
   const yearRanges = useYearRanges();
-  const SDG_YEARS = generateYearRange(yearRanges.sdgExpenses.min, yearRanges.sdgExpenses.max);
+  const SDG_YEARS = generateYearRange(
+    yearRanges.sdgExpenses.min,
+    yearRanges.sdgExpenses.max,
+  );
 
   const [sdgs, setSdgs] = useState<SDG[]>([]);
   const [selectedSDG, setSelectedSDG] = useState<SDG | null>(null);
@@ -151,9 +214,13 @@ export default function SDGsGrid() {
   const [hasScrollRevealed, setHasScrollRevealed] = useState<boolean>(false);
   const gridRef = useRef<HTMLDivElement>(null);
   const [containerAspect, setContainerAspect] = useState(0);
-  const [expensesData, setExpensesData] = useState<SDGExpensesData | null>(null);
+  const [expensesData, setExpensesData] = useState<SDGExpensesData | null>(
+    null,
+  );
   const [searchQuery, setSearchQuery] = useState<string>("");
-  const [selectedYear, setSelectedYear] = useState<number>(yearRanges.sdgExpenses.default);
+  const [selectedYear, setSelectedYear] = useState<number>(
+    yearRanges.sdgExpenses.default,
+  );
 
   // Sequence animations: entities and background fade in proper order
   useEffect(() => {
@@ -178,16 +245,19 @@ export default function SDGsGrid() {
       if (ticking || !gridRef.current) return;
       ticking = true;
       requestAnimationFrame(() => {
-        if (gridRef.current && gridRef.current.getBoundingClientRect().top < window.innerHeight * 0.4) {
+        if (
+          gridRef.current &&
+          gridRef.current.getBoundingClientRect().top < window.innerHeight * 0.4
+        ) {
           setHasScrollRevealed(true);
           setShowSpending(true);
         }
         ticking = false;
       });
     };
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [hasScrollRevealed]);
 
   const parseSDGNumber = useCallback((value: string) => {
@@ -211,11 +281,15 @@ export default function SDGsGrid() {
   }, [pendingDeepLink, sdgs, setPendingDeepLink]);
 
   useEffect(() => {
-    fetch(`${basePath}/data/sdgs.json`).then((res) => res.json()).then(setSdgs);
+    fetch(`${basePath}/data/sdgs.json`)
+      .then((res) => res.json())
+      .then(setSdgs);
   }, []);
 
   useEffect(() => {
-    fetch(`${basePath}/data/sdg-expenses-${selectedYear}.json`).then((res) => res.json()).then(setExpensesData);
+    fetch(`${basePath}/data/sdg-expenses-${selectedYear}.json`)
+      .then((res) => res.json())
+      .then(setExpensesData);
   }, [selectedYear]);
 
   const searchTerm = searchQuery.toLowerCase().trim();
@@ -227,32 +301,58 @@ export default function SDGsGrid() {
     return shortTitle?.toLowerCase().includes(searchTerm) ?? false;
   };
 
-  const filterEntities = (entities: { [entity: string]: number }): { [entity: string]: number } => {
+  const filterEntities = (entities: {
+    [entity: string]: number;
+  }): { [entity: string]: number } => {
     if (!searchTerm) return entities;
-    return Object.fromEntries(Object.entries(entities).filter(([entity]) => entity.toLowerCase().includes(searchTerm)));
+    return Object.fromEntries(
+      Object.entries(entities).filter(([entity]) =>
+        entity.toLowerCase().includes(searchTerm),
+      ),
+    );
   };
 
   // Build filtered SDG data
-  const filteredSDGData: { sdgNumber: number; total: number; entities: { [entity: string]: number } }[] = [];
+  const filteredSDGData: {
+    sdgNumber: number;
+    total: number;
+    entities: { [entity: string]: number };
+  }[] = [];
   if (expensesData) {
     for (let i = 1; i <= 17; i++) {
       const data = expensesData[i.toString()];
       if (!data) continue;
       const sdgMatches = matchesSDG(i);
       if (sdgMatches) {
-        filteredSDGData.push({ sdgNumber: i, total: data.total, entities: data.entities });
+        filteredSDGData.push({
+          sdgNumber: i,
+          total: data.total,
+          entities: data.entities,
+        });
       } else {
         const filteredEntities = filterEntities(data.entities);
-        const filteredTotal = Object.values(filteredEntities).reduce((sum, val) => sum + val, 0);
+        const filteredTotal = Object.values(filteredEntities).reduce(
+          (sum, val) => sum + val,
+          0,
+        );
         if (filteredTotal > 0) {
-          filteredSDGData.push({ sdgNumber: i, total: filteredTotal, entities: filteredEntities });
+          filteredSDGData.push({
+            sdgNumber: i,
+            total: filteredTotal,
+            entities: filteredEntities,
+          });
         }
       }
     }
   }
 
-  const items: TreemapItem[] = filteredSDGData.map((d) => ({ name: d.sdgNumber.toString(), value: d.total }));
-  const dataLookup = Object.fromEntries(filteredSDGData.map((d) => [d.sdgNumber.toString(), d]));
+  const items: TreemapItem[] = filteredSDGData.map((d) => ({
+    name: d.sdgNumber.toString(),
+    value: d.total,
+  }));
+  const dataLookup = Object.fromEntries(
+    filteredSDGData.map((d) => [d.sdgNumber.toString(), d]),
+  );
 
   useLayoutEffect(() => {
     const element = gridRef.current;
@@ -273,29 +373,59 @@ export default function SDGsGrid() {
 
   // Create lookup by SDG number for positions
   const positionLookup: Record<string, Rect> = {};
-  rects.forEach((r) => { positionLookup[r.data.name] = r; });
+  rects.forEach((r) => {
+    positionLookup[r.data.name] = r;
+  });
 
   if (filteredSDGData.length === 0) {
     return (
       <>
-        <div className="mb-3 flex flex-col gap-2">
-          <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-3">
-            <ChartSearchInput value={searchQuery} onChange={setSearchQuery} placeholder="Search by SDG or entity..." />
-            <div className="flex items-center gap-4">
-              <YearSlider years={SDG_YEARS} selectedYear={selectedYear} onChange={setSelectedYear} />
-              <div className="flex h-9 items-center gap-2">
-                <span className={`text-sm ${!showSpending ? "font-medium text-gray-900" : "text-gray-500"}`}>Goals</span>
-                <Switch checked={showSpending} onCheckedChange={setShowSpending} aria-label="Toggle between goals and spending" />
-                <span className={`text-sm ${showSpending ? "font-medium text-gray-900" : "text-gray-500"}`}>Spending</span>
-              </div>
-            </div>
-          </div>
+        <div className="mb-3">
+          <ChartHeader
+            yearControl={
+              <YearSlider
+                years={SDG_YEARS}
+                selectedYear={selectedYear}
+                onChange={setSelectedYear}
+              />
+            }
+            controls={
+              <BinaryToggle
+                variant="segmented"
+                label="Goals view"
+                options={[
+                  { value: "goals", label: "Goals" },
+                  { value: "spending", label: "Spending" },
+                ]}
+                value={showSpending ? "spending" : "goals"}
+                onValueChange={(value) => setShowSpending(value === "spending")}
+              />
+            }
+            search={
+              <ChartSearchInput
+                value={searchQuery}
+                onChange={setSearchQuery}
+                placeholder="Search by SDG or entity..."
+              />
+            }
+            summaries={[
+              {
+                key: "total",
+                label: searchQuery ? "Matching total" : "Total",
+                value: formatBudget(
+                  filteredSDGData.reduce((sum, item) => sum + item.total, 0),
+                ),
+              },
+            ]}
+          />
         </div>
         <div
           ref={gridRef}
           className="flex h-[calc(100vh-320px)] min-h-[600px] w-full items-center justify-center bg-gray-100"
         >
-          <p className="text-lg text-gray-500">No SDGs match the search criteria</p>
+          <p className="text-lg text-gray-500">
+            No SDGs match the search criteria
+          </p>
         </div>
       </>
     );
@@ -303,119 +433,181 @@ export default function SDGsGrid() {
 
   return (
     <>
-      <div className="mb-3 flex flex-col gap-2">
-        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between sm:gap-3">
-          <ChartSearchInput value={searchQuery} onChange={setSearchQuery} placeholder="Search by SDG or entity..." />
-          <div className="flex items-center gap-4">
-            <YearSlider years={SDG_YEARS} selectedYear={selectedYear} onChange={setSelectedYear} />
-            <div className="flex h-9 items-center gap-2">
-              <span className={`text-sm ${!showSpending ? "font-medium text-gray-900" : "text-gray-500"}`}>Goals</span>
-              <Switch checked={showSpending} onCheckedChange={setShowSpending} aria-label="Toggle between goals and spending" />
-              <span className={`text-sm ${showSpending ? "font-medium text-gray-900" : "text-gray-500"}`}>Spending</span>
-            </div>
-          </div>
-        </div>
-      </div>
+      <ChartFrame
+        header={
+          <ChartHeader
+            yearControl={
+              <YearSlider
+                years={SDG_YEARS}
+                selectedYear={selectedYear}
+                onChange={setSelectedYear}
+              />
+            }
+            controls={
+              <BinaryToggle
+                variant="segmented"
+                label="Goals view"
+                options={[
+                  { value: "goals", label: "Goals" },
+                  { value: "spending", label: "Spending" },
+                ]}
+                value={showSpending ? "spending" : "goals"}
+                onValueChange={(value) => setShowSpending(value === "spending")}
+              />
+            }
+            search={
+              <ChartSearchInput
+                value={searchQuery}
+                onChange={setSearchQuery}
+                placeholder="Search by SDG or entity..."
+              />
+            }
+            summaries={[
+              {
+                key: "total",
+                label: searchQuery ? "Matching total" : "Total",
+                value: formatBudget(
+                  filteredSDGData.reduce((sum, item) => sum + item.total, 0),
+                ),
+              },
+            ]}
+          />
+        }
+        footer={<ChartFooter hint="Click on an SDG to explore details" />}
+      >
+        <div
+          ref={gridRef}
+          className="relative h-[calc(100vh-320px)] min-h-[600px] w-full"
+        >
+          {filteredSDGData.map((sdgData) => {
+            const sdgNumber = sdgData.sdgNumber;
+            const sdg = sdgs.find((s) => s.number === sdgNumber);
+            const color = SDG_COLORS[sdgNumber];
+            const shortTitle = SDG_SHORT_TITLES[sdgNumber];
+            const pos = positionLookup[sdgNumber.toString()];
+            if (!pos) return null;
 
-      <div ref={gridRef} className="relative h-[calc(100vh-320px)] min-h-[600px] w-full">
-        {filteredSDGData.map((sdgData) => {
-          const sdgNumber = sdgData.sdgNumber;
-          const sdg = sdgs.find((s) => s.number === sdgNumber);
-          const color = SDG_COLORS[sdgNumber];
-          const shortTitle = SDG_SHORT_TITLES[sdgNumber];
-          const pos = positionLookup[sdgNumber.toString()];
-          if (!pos) return null;
+            // Entity sub-treemap (render while visible OR fading out)
+            const entityRects =
+              showSpending || showEntities
+                ? squarify(
+                    Object.entries(sdgData.entities)
+                      .map(([name, value]) => ({ name, value }))
+                      .sort((a, b) => b.value - a.value),
+                    0,
+                    0,
+                    100,
+                    100,
+                  )
+                : [];
 
-          // Entity sub-treemap (render while visible OR fading out)
-          const entityRects = (showSpending || showEntities)
-            ? squarify(
-                Object.entries(sdgData.entities).map(([name, value]) => ({ name, value })).sort((a, b) => b.value - a.value),
-                0, 0, 100, 100
-              )
-            : [];
-
-          return (
-            <Tooltip key={sdgNumber} delayDuration={50}>
-              <TooltipTrigger asChild>
-                <div
-                  className="absolute cursor-pointer overflow-hidden text-white transition-all ease-in-out hover:brightness-110 hover:ring-2 hover:ring-white/60"
-                  style={{
-                    left: `${pos.x}%`,
-                    top: `${pos.y}%`,
-                    width: `${pos.width}%`,
-                    height: `${pos.height}%`,
-                    backgroundColor: bgFaded ? "#e5e7eb" : color,
-                    transitionDuration: "1400ms",
-                  }}
-                  onClick={() => {
-                    if (sdg) {
-                      setSelectedSDG(sdg);
-                      replaceToSidebar("sdg", sdg.number);
-                    }
-                  }}
-                >
-                  {/* Entity sub-treemap with fade */}
+            return (
+              <Tooltip key={sdgNumber} delayDuration={50}>
+                <TooltipTrigger asChild>
                   <div
-                    className="absolute inset-0 transition-opacity"
-                    style={{ opacity: showEntities ? 1 : 0, transitionDuration: "1000ms" }}
-                  >
-                    {entityRects.map((rect, i) => (
-                      <div
-                        key={`${sdgNumber}-entity-${i}`}
-                        className="absolute"
-                        style={{
-                          left: `${rect.x}%`,
-                          top: `${rect.y}%`,
-                          width: `${rect.width}%`,
-                          height: `${rect.height}%`,
-                          backgroundColor: color,
-                        }}
-                      >
-                        {rect.width > 3 && rect.height > 2 && (
-                          <div className="flex h-full items-end overflow-hidden p-1">
-                            <div className="truncate text-xs font-medium leading-tight">{rect.data.name}</div>
-                          </div>
-                        )}
-                      </div>
-                    ))}
-                  </div>
-
-                  {/* SDG label - full cell in grid mode, corner overlay in spending mode */}
-                  <div
-                    className="absolute z-10 flex transition-all"
+                    className="absolute cursor-pointer overflow-hidden text-white transition-all ease-in-out hover:ring-2 hover:ring-white/60 hover:brightness-110"
                     style={{
-                      left: 0,
-                      top: 0,
-                      padding: showSpending ? "0.5rem" : "1rem",
-                      backgroundColor: showSpending ? color : "transparent",
+                      left: `${pos.x}%`,
+                      top: `${pos.y}%`,
+                      width: `${pos.width}%`,
+                      height: `${pos.height}%`,
+                      backgroundColor: bgFaded ? "#e5e7eb" : color,
                       transitionDuration: "1400ms",
                     }}
+                    onClick={() => {
+                      if (sdg) {
+                        setSelectedSDG(sdg);
+                        replaceToSidebar("sdg", sdg.number);
+                      }
+                    }}
                   >
-                    <span className="mr-2 flex-shrink-0 text-2xl font-bold leading-none sm:text-3xl">{sdgNumber}</span>
-                    <div className="flex flex-col pt-0.5">
-                      <span className="text-left text-xs font-semibold leading-tight sm:text-sm">{shortTitle}</span>
-                      <span
-                        className="mt-0.5 text-xs opacity-90 transition-opacity sm:text-sm"
-                        style={{ opacity: showSpending ? 1 : 0, transitionDuration: "600ms" }}
-                      >
-                        {formatBudget(sdgData.total)}
+                    {/* Entity sub-treemap with fade */}
+                    <div
+                      className="absolute inset-0 transition-opacity"
+                      style={{
+                        opacity: showEntities ? 1 : 0,
+                        transitionDuration: "1000ms",
+                      }}
+                    >
+                      {entityRects.map((rect, i) => (
+                        <div
+                          key={`${sdgNumber}-entity-${i}`}
+                          className="absolute"
+                          style={{
+                            left: `${rect.x}%`,
+                            top: `${rect.y}%`,
+                            width: `${rect.width}%`,
+                            height: `${rect.height}%`,
+                            backgroundColor: color,
+                          }}
+                        >
+                          {rect.width > 3 && rect.height > 2 && (
+                            <div className="flex h-full items-end overflow-hidden p-1">
+                              <div className="truncate text-xs leading-tight font-medium">
+                                {rect.data.name}
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* SDG label - full cell in grid mode, corner overlay in spending mode */}
+                    <div
+                      className="absolute z-10 flex transition-all"
+                      style={{
+                        left: 0,
+                        top: 0,
+                        padding: showSpending ? "0.5rem" : "1rem",
+                        backgroundColor: showSpending ? color : "transparent",
+                        transitionDuration: "1400ms",
+                      }}
+                    >
+                      <span className="mr-2 flex-shrink-0 text-2xl leading-none font-bold sm:text-3xl">
+                        {sdgNumber}
                       </span>
+                      <div className="flex flex-col pt-0.5">
+                        <span className="text-left text-xs leading-tight font-semibold sm:text-sm">
+                          {shortTitle}
+                        </span>
+                        <span
+                          className="mt-0.5 text-xs opacity-90 transition-opacity sm:text-sm"
+                          style={{
+                            opacity: showSpending ? 1 : 0,
+                            transitionDuration: "600ms",
+                          }}
+                        >
+                          {formatBudget(sdgData.total)}
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
-              </TooltipTrigger>
-              <TooltipContent side="top" sideOffset={8} className="max-w-xs border border-slate-200 bg-white text-slate-800 shadow-lg sm:max-w-sm">
-                <div className="max-w-xs p-1 text-center sm:max-w-sm">
-                  <p className="text-sm font-bold leading-tight sm:text-base">SDG {sdgNumber}: {shortTitle}</p>
-                  {sdg && <p className="mt-1 text-xs leading-tight text-slate-600 sm:text-sm">{sdg.title}</p>}
-                  <p className="mt-1 text-xs font-semibold text-slate-600">{formatBudget(sdgData.total)}</p>
-                  <ClickHint />
-                </div>
-              </TooltipContent>
-            </Tooltip>
-          );
-        })}
-      </div>
+                </TooltipTrigger>
+                <TooltipContent
+                  side="top"
+                  sideOffset={8}
+                  className="max-w-xs border border-slate-200 bg-white text-slate-800 shadow-lg sm:max-w-sm"
+                >
+                  <div className="max-w-xs p-1 text-center sm:max-w-sm">
+                    <p className="text-sm leading-tight font-bold sm:text-base">
+                      SDG {sdgNumber}: {shortTitle}
+                    </p>
+                    {sdg && (
+                      <p className="mt-1 text-xs leading-tight text-slate-600 sm:text-sm">
+                        {sdg.title}
+                      </p>
+                    )}
+                    <p className="mt-1 text-xs font-semibold text-slate-600">
+                      {formatBudget(sdgData.total)}
+                    </p>
+                    <ClickHint />
+                  </div>
+                </TooltipContent>
+              </Tooltip>
+            );
+          })}
+        </div>
+      </ChartFrame>
 
       {selectedSDG && (
         <SDGModal
@@ -425,7 +617,9 @@ export default function SDGsGrid() {
             clearSidebarHash();
           }}
           color={SDG_COLORS[selectedSDG.number]}
-          entityExpenses={expensesData?.[selectedSDG.number.toString()]?.entities}
+          entityExpenses={
+            expensesData?.[selectedSDG.number.toString()]?.entities
+          }
           initialYear={selectedYear}
         />
       )}
