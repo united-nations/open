@@ -1,4 +1,5 @@
 "use client";
+import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 
 import { useCallback, useEffect, useState } from "react";
 import { formatBudget } from "@/lib/entities";
@@ -200,7 +201,8 @@ export default function SDGModal({
           </div>
         </div>
 
-        <div className="space-y-4 px-4 pb-4 pt-3 sm:px-6 sm:pb-6 sm:pt-4">
+        <div className="relative space-y-4 px-4 pb-4 pt-3 sm:px-6 sm:pb-6 sm:pt-4">
+          <DelayedChartLoading pending={loadingYear} requestKey={selectedYear} />
           {/* Entity Spending Breakdown */}
           {(sortedEntities.length > 0 || loadingYear) && (
             <div>

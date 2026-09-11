@@ -1,4 +1,5 @@
 "use client";
+import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 
 import { ArrowRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
@@ -292,7 +293,8 @@ export function EntitySidebar({ entity, spending, revenue, initialYear, onClose 
         </div>
 
         {/* Content */}
-        <div className="space-y-6 px-6 pb-6 pt-4 sm:px-8 sm:pb-8 sm:pt-5">
+        <div className="relative space-y-6 px-6 pb-6 pt-4 sm:px-8 sm:pb-8 sm:pt-5">
+          <DelayedChartLoading pending={loadingYear} requestKey={selectedYear} />
           {/* Overview Section */}
           <div>
             <div className="mb-3 flex items-center justify-between">

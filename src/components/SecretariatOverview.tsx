@@ -1,4 +1,5 @@
 "use client";
+import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
 
 import {
@@ -88,7 +89,7 @@ export function SecretariatOverview() {
     return () => controller.abort();
   }, [year]);
 
-  const current = data?.meta.year === year ? data : null;
+  const current = data;
   const selectedEntity = current?.entities.find(
     (entity) => entity.code === selectedCode,
   );
@@ -239,7 +240,8 @@ export function SecretariatOverview() {
   }
 
   return (
-    <div className="w-full">
+    <div className="relative w-full">
+      <DelayedChartLoading pending={data?.meta.year !== year} requestKey={year} />
       <GroupedTreemap<string, SecretariatGroup, OverviewTile, never>
         footer={<ChartFooter hint="Click on an entity to explore details" />}
         yearControl={

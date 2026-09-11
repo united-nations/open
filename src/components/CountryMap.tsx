@@ -1,4 +1,5 @@
 "use client";
+import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { ChartFooter } from "@/components/ChartFooter";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
@@ -60,6 +61,7 @@ export function CountryMap() {
     entities: Record<string, number>;
   } | null>(null);
   const [loading, setLoading] = useState(true);
+  const [loadedYear, setLoadedYear] = useState<number | null>(null);
   const [showMap, setShowMap] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedYear, setSelectedYear] = useState<number>(
@@ -92,6 +94,7 @@ export function CountryMap() {
       .then((res) => res.json())
       .then((data: CountryExpense[]) => {
         setCountryData(data);
+        setLoadedYear(selectedYear);
         setLoading(false);
       })
       .catch((err) => {
@@ -175,7 +178,8 @@ export function CountryMap() {
   };
 
   return (
-    <div className="w-full">
+    <div className="relative w-full">
+      <DelayedChartLoading pending={loadedYear !== selectedYear} requestKey={selectedYear} />
       <ChartFrame
         header={
           <ChartHeader

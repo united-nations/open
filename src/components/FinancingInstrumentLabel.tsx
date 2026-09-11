@@ -5,17 +5,26 @@ import { FINANCING_SOURCE_KEYS } from "@/lib/financingInstruments";
 export function FinancingInstrumentLabel({
   type,
   className,
+  selected,
+  onToggle,
   variant = "inline",
 }: {
   type: string;
   className?: string;
+  selected?: boolean;
+  onToggle?: () => void;
   variant?: "pill" | "inline";
 }) {
   const source = FINANCING_SOURCE_KEYS[type];
   return (
     <span className={className}>
       {source ? (
-        <FundingSourceLabel source={source} variant={variant} />
+        <FundingSourceLabel
+          source={source}
+          variant={variant}
+          selected={selected}
+          onToggle={onToggle}
+        />
       ) : (
         <span>{type}</span>
       )}

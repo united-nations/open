@@ -1,4 +1,5 @@
 "use client";
+import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 
 import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
 import { useEffect, useState } from "react";
@@ -16,7 +17,7 @@ export function RegularBudgetPaymentTimelineCard() {
     null,
   );
   const [failedYear, setFailedYear] = useState<number | null>(null);
-  const data = loaded?.meta.year === selectedYear ? loaded : null;
+  const data = loaded;
   const loading = data === null && failedYear !== selectedYear;
 
   useEffect(() => {
@@ -38,7 +39,8 @@ export function RegularBudgetPaymentTimelineCard() {
   }, [selectedYear]);
 
   return (
-    <section className="min-w-0 lg:row-span-4 lg:grid lg:grid-rows-subgrid">
+    <section className="relative min-w-0 lg:row-span-4 lg:grid lg:grid-rows-subgrid">
+      <DelayedChartLoading pending={loaded?.meta.year !== selectedYear} requestKey={selectedYear} />
       <div className="contents">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
           <h3 className="text-lg font-medium text-gray-900">
@@ -80,7 +82,7 @@ export function RegularBudgetPaymentTimelineCard() {
             Loading payment status…
           </div>
         )}
-        {!loading && !data && (
+        {failedYear === selectedYear && (
           <div className="flex h-80 items-center justify-center text-sm text-red-700">
             Payment status is unavailable for {selectedYear}.
           </div>

@@ -1,4 +1,5 @@
 "use client";
+import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 
 import { ExternalLink } from "lucide-react";
 import { SidebarControls } from "@/components/SidebarControls";
@@ -181,7 +182,8 @@ export function CountrySidebar({ country, initialYear, onClose }: CountrySidebar
         </div>
 
         {/* Content */}
-        <div className="space-y-6 px-6 pb-6 pt-4 sm:px-8 sm:pb-8 sm:pt-5">
+        <div className="relative space-y-6 px-6 pb-6 pt-4 sm:px-8 sm:pb-8 sm:pt-5">
+          <DelayedChartLoading pending={loadingYear} requestKey={selectedYear} />
           {/* Summary stats */}
           <div>
             <div className="mb-3 flex items-center justify-between">

@@ -1,4 +1,5 @@
 "use client";
+import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
 import { FinancingInstrumentLabel } from "./FinancingInstrumentLabel";
 
@@ -24,13 +25,32 @@ import {
 } from "@/lib/entities";
 import {
   FINANCING_INSTRUMENT_ORDER,
-  getFinancingInstrumentColor,
+  type FinancingInstrumentType,
 } from "@/lib/financingInstruments";
 import { getSystemGroupingStyle } from "@/lib/systemGroupings";
 import { generateYearRange, useYearRanges } from "@/lib/useYearRanges";
 import type { BudgetEntry, Entity, EntityRevenue } from "@/types";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+
+// Preserve each system group's hue while distinguishing its funding sources.
+const FUNDING_SHADE_STRENGTH: Record<FinancingInstrumentType, number> = {
+  Assessed: 0,
+  "Voluntary un-earmarked": 1,
+  "Voluntary earmarked": 2,
+  Other: 3,
+};
+
+function fundingSegmentColor(
+  baseColor: string,
+  type: FinancingInstrumentType,
+  darkText: boolean,
+): string {
+  const shade = FUNDING_SHADE_STRENGTH[type];
+  // Light groups keep dark labels; dark groups keep light labels.
+  const percentage = darkText ? 100 - shade * 20 : 64 + shade * 12;
+  return `color-mix(in srgb, ${baseColor} ${percentage}%, ${darkText ? "white" : "black"})`;
+}
 
 function accessibleBudget(value: number): string {
   return new Intl.NumberFormat("en-US", {
@@ -109,8 +129,17 @@ export function EntitiesTreemap() {
     {},
   );
   const [showRevenue, setShowRevenue] = useState(false);
+  const [hiddenFunding, setHiddenFunding] = useState<FinancingInstrumentType[]>(
+    [],
+  );
   const [selectedEntity, setSelectedEntity] = useState<Entity | null>(null);
   const [loading, setLoading] = useState(true);
+  const [loadedSpendingYear, setLoadedSpendingYear] = useState<number | null>(
+    null,
+  );
+  const [loadedRevenueYear, setLoadedRevenueYear] = useState<number | null>(
+    null,
+  );
   const [searchQuery, setSearchQuery] = useState("");
   const [spendingYear, setSpendingYear] = useState(
     yearRanges.entitySpending.default,
@@ -139,6 +168,7 @@ export function EntitiesTreemap() {
     fetch(`${basePath}/data/entity-spending-${spendingYear}.json`)
       .then((response) => response.json())
       .then((entries: BudgetEntry[]) => {
+        setLoadedSpendingYear(spendingYear);
         setSpendingData(
           Object.fromEntries(
             entries.map((entry) => [entry.entity, entry.amount]),
@@ -157,6 +187,7 @@ export function EntitiesTreemap() {
       .then((response) => response.json())
       .then((data: Record<string, EntityRevenue>) => {
         setRevenueData(data);
+        setLoadedRevenueYear(revenueYear);
         if (showRevenue) setLoading(false);
       })
       .catch((error) => {
@@ -171,11 +202,15 @@ export function EntitiesTreemap() {
         ? Object.fromEntries(
             Object.entries(revenueData).map(([entity, value]) => [
               entity,
-              value.total,
+              hiddenFunding.length === 0
+                ? value.total
+                : FINANCING_INSTRUMENT_ORDER.filter(
+                    (type) => !hiddenFunding.includes(type),
+                  ).reduce((sum, type) => sum + (value.by_type[type] ?? 0), 0),
             ]),
           )
         : spendingData,
-    [revenueData, showRevenue, spendingData],
+    [revenueData, showRevenue, spendingData, hiddenFunding],
   );
 
   const activeEntities = useMemo(() => {
@@ -253,19 +288,34 @@ export function EntitiesTreemap() {
                   : "var(--color-un-white)",
               data: entity,
               segments: showRevenue
-                ? FINANCING_INSTRUMENT_ORDER.map((type) => ({
-                    key: type,
-                    label: type,
-                    value: revenueData[entity.entity]?.by_type[type] ?? 0,
-                    color: getFinancingInstrumentColor(type),
-                    data: type,
-                  })).filter((segment) => segment.value > 0)
+                ? [...FINANCING_INSTRUMENT_ORDER]
+                    .reverse()
+                    .filter((type) => !hiddenFunding.includes(type))
+                    .map((type) => ({
+                      key: type,
+                      label: type,
+                      value: revenueData[entity.entity]?.by_type[type] ?? 0,
+                      color: fundingSegmentColor(
+                        style.hexColor ?? "var(--color-un-blue)",
+                        type,
+                        style.textColor === "text-black",
+                      ),
+                      data: type,
+                    }))
+                    .filter((segment) => segment.value > 0)
                 : undefined,
               onActivate: () => openEntity(entity),
             })),
         } satisfies GroupedTreemapRow<string, never, Entity, string>;
       });
-  }, [activeEntities, budgetData, openEntity, revenueData, showRevenue]);
+  }, [
+    activeEntities,
+    budgetData,
+    openEntity,
+    revenueData,
+    showRevenue,
+    hiddenFunding,
+  ]);
 
   if (loading) {
     return (
@@ -276,8 +326,41 @@ export function EntitiesTreemap() {
   }
 
   return (
-    <div className="w-full">
+    <div className="relative w-full">
+      <DelayedChartLoading
+        pending={
+          (showRevenue ? loadedRevenueYear : loadedSpendingYear) !== currentYear
+        }
+        requestKey={`${showRevenue}-${currentYear}`}
+      />
       <GroupedTreemap<string, never, Entity, string>
+        secondaryControls={
+          <div
+            className={`grid motion-safe:transition-[grid-template-rows,opacity] motion-safe:duration-500 motion-safe:ease-in-out ${showRevenue ? "grid-rows-[1fr] opacity-100" : "pointer-events-none grid-rows-[0fr] opacity-0"}`}
+            aria-hidden={!showRevenue}
+            inert={!showRevenue}
+          >
+            <div className="min-h-0 overflow-hidden">
+              <div className="flex flex-wrap gap-2 pt-3">
+                {FINANCING_INSTRUMENT_ORDER.map((type) => (
+                  <FinancingInstrumentLabel
+                    key={type}
+                    type={type}
+                    variant="pill"
+                    selected={!hiddenFunding.includes(type)}
+                    onToggle={() =>
+                      setHiddenFunding((current) =>
+                        current.includes(type)
+                          ? current.filter((item) => item !== type)
+                          : [...current, type],
+                      )
+                    }
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+        }
         footer={
           <ChartFooter hint="Click on an organization to explore details" />
         }
@@ -290,17 +373,6 @@ export function EntitiesTreemap() {
         }
         controls={
           <>
-            {showRevenue && (
-              <div className="flex flex-wrap gap-2">
-                {FINANCING_INSTRUMENT_ORDER.map((type) => (
-                  <FinancingInstrumentLabel
-                    key={type}
-                    type={type}
-                    variant="pill"
-                  />
-                ))}
-              </div>
-            )}
             <BinaryToggle
               variant="segmented"
               label="Financial measure"

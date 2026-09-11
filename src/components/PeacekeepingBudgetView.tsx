@@ -1,4 +1,5 @@
 "use client";
+import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { ChartFooter } from "@/components/ChartFooter";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
@@ -312,7 +313,7 @@ export function PeacekeepingBudgetView() {
     };
   }, [year]);
 
-  const current = budget?.meta.year === year ? budget : null;
+  const current = budget;
   const rows = useMemo(() => {
     if (!current || !entities) return [];
     return buildRows(current, entities);
@@ -379,7 +380,8 @@ export function PeacekeepingBudgetView() {
       : undefined;
 
   return (
-    <div className="flex w-full flex-col">
+    <div className="relative flex w-full flex-col">
+      <DelayedChartLoading pending={budget?.meta.year !== year} requestKey={year} />
       <ChartFrame
         header={
           <ChartHeader

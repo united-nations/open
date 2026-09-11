@@ -1,4 +1,5 @@
 "use client";
+import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 
 import { useCallback, useEffect, useState } from "react";
 import {
@@ -211,7 +212,8 @@ export function ContributorSidebar({
           </div>
         </div>
 
-        <div className="space-y-6 px-6 pb-6 pt-4 sm:px-8 sm:pb-8 sm:pt-5">
+        <div className="relative space-y-6 px-6 pb-6 pt-4 sm:px-8 sm:pb-8 sm:pt-5">
+          <DelayedChartLoading pending={loadingYear} requestKey={selectedYear} />
           {!yearContributor && !loadingYear && selectedYear !== initialYear ? (
             <>
             <div className="flex items-center justify-between">

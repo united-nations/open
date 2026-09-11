@@ -1,4 +1,5 @@
 "use client";
+import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
 
 // Budget-document treemap for /secretariat, in the layout of ../budget-explorer:
@@ -706,6 +707,7 @@ export function BudgetTreemap({
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
+  const [loadedRequest, setLoadedRequest] = useState("");
 
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -725,13 +727,12 @@ export function BudgetTreemap({
   useEffect(() => {
     let current = true;
     setLoading(true);
-    if (isAlignedPpb) setData(null);
     // The year before stays on screen until the new one arrives, so that moving
     // the slider does not flash an empty box.
     fetch(`${basePath}/data/${dataset}-${year}.json`)
       .then((res) => res.json())
       .then((d: BudgetData) => {
-        if (current) setData(d);
+        if (current) { setData(d); setLoadedRequest(`${dataset}-${year}`); }
       })
       .catch((err) =>
         console.error(`Failed to load ${dataset}-${year}.json:`, err),
@@ -1769,7 +1770,8 @@ export function BudgetTreemap({
 
   if (!mounted || (loading && !data)) {
     return (
-      <div className="w-full">
+      <div className="relative w-full">
+      <DelayedChartLoading pending={loadedRequest !== `${dataset}-${year}`} requestKey={`${dataset}-${year}`} />
         {controls}
         <div
           className="flex w-full items-center justify-center bg-gray-50"
@@ -1851,7 +1853,8 @@ export function BudgetTreemap({
       ) : undefined;
 
     return (
-      <div className="w-full">
+      <div className="relative w-full">
+      <DelayedChartLoading pending={loadedRequest !== `${dataset}-${year}`} requestKey={`${dataset}-${year}`} />
         {!usesSharedProgrammeBudget && !usesSharedTrustFundExpenses && (
           <>
             {meta.sourceNote && (
@@ -2076,7 +2079,8 @@ export function BudgetTreemap({
 
   if (bands.length === 0) {
     return (
-      <div className="w-full">
+      <div className="relative w-full">
+      <DelayedChartLoading pending={loadedRequest !== `${dataset}-${year}`} requestKey={`${dataset}-${year}`} />
         {controls}
         <div className="flex h-64 w-full items-center justify-center bg-gray-50">
           <p className="text-sm text-gray-500">
@@ -2092,7 +2096,8 @@ export function BudgetTreemap({
   }
 
   return (
-    <div className="w-full">
+    <div className="relative w-full">
+      <DelayedChartLoading pending={loadedRequest !== `${dataset}-${year}`} requestKey={`${dataset}-${year}`} />
       {!isAlignedPpb && controls}
 
       {headlineSources.length > 0 && (

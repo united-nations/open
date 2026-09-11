@@ -1,4 +1,5 @@
 "use client";
+import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
 
 import {
@@ -92,7 +93,9 @@ export function PeacekeepingContributorsTreemap() {
         }
         return response.json() as Promise<PeacekeepingContributorsData>;
       })
-      .then(setData)
+      .then((payload) => {
+        if (!controller.signal.aborted) setData(payload);
+      })
       .catch((reason: unknown) => {
         if (reason instanceof DOMException && reason.name === "AbortError")
           return;
@@ -105,7 +108,7 @@ export function PeacekeepingContributorsTreemap() {
     return () => controller.abort();
   }, [year]);
 
-  const current = data?.meta.cycle_year === year ? data : null;
+  const current = data;
   const error = loadError?.year === year ? loadError.message : null;
   const selected = current?.contributors.find(
     (contributor) => contributor.name === selectedName,
@@ -183,7 +186,8 @@ export function PeacekeepingContributorsTreemap() {
     .reduce((sum, contributor) => sum + contributor.net_assessment, 0);
 
   return (
-    <div className="w-full">
+    <div className="relative w-full">
+      <DelayedChartLoading pending={data?.meta.cycle_year !== year} requestKey={year} />
       {current && (
         <>
           <GroupedTreemap<

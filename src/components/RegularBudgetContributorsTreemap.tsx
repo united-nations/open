@@ -1,4 +1,5 @@
 "use client";
+import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { PaymentChartScaleProvider } from "@/components/PaymentChartScale";
 import { ChartFooter } from "@/components/ChartFooter";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
@@ -129,7 +130,7 @@ export function RegularBudgetContributorsTreemap() {
     year: number;
     message: string;
   } | null>(null);
-  const data = loadedData?.meta.year === selectedYear ? loadedData : null;
+  const data = loadedData;
   const error = loadError?.year === selectedYear ? loadError.message : null;
   const loading = data === null && error === null;
 
@@ -147,7 +148,7 @@ export function RegularBudgetContributorsTreemap() {
         return response.json() as Promise<RegularBudgetContributorsData>;
       })
       .then((payload) => {
-        setLoadedData(payload);
+        if (!controller.signal.aborted) setLoadedData(payload);
       })
       .catch((reason: unknown) => {
         if (reason instanceof DOMException && reason.name === "AbortError")
@@ -202,7 +203,8 @@ export function RegularBudgetContributorsTreemap() {
   }, [data]);
 
   return (
-    <div className="w-full">
+    <div className="relative w-full">
+      <DelayedChartLoading pending={loadedData?.meta.year !== selectedYear} requestKey={selectedYear} />
       {data && (
         <>
           <GroupedTreemap<

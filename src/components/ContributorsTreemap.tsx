@@ -1,4 +1,5 @@
 "use client";
+import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
 import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label";
 
@@ -185,6 +186,7 @@ export function ContributorsTreemap() {
         return response.json() as Promise<Record<string, ContributorData>>;
       })
       .then((data) => {
+        if (controller.signal.aborted) return;
         setContributors(
           Object.entries(data).map(([name, info]) => ({
             name,
@@ -274,12 +276,14 @@ export function ContributorsTreemap() {
           : undefined,
         data: contributor,
         segments:
-          isGovernmentDonor(contributor.status) && !hasNegativeAdjustment
+          !isUnattributed(contributor) && !hasNegativeAdjustment
             ? [...breakdownEntries].reverse().map(([type, value]) => ({
                 key: type,
                 label: type,
                 value,
-                color: getFinancingInstrumentColor(type),
+                color: isGovernmentDonor(contributor.status)
+                  ? getFinancingInstrumentColor(type)
+                  : `color-mix(in srgb, ${row.color} ${type === "Assessed" ? 64 : type === "Voluntary un-earmarked" ? 76 : type === "Voluntary earmarked" ? 88 : 100}%, black)`,
                 data: type,
               }))
             : undefined,
@@ -382,10 +386,12 @@ export function ContributorsTreemap() {
   }, [positiveContributors, toLeaf]);
 
   return (
-    <div className="w-full">
-      {!loading && contributors.length > 0 && (
+    <div className="relative w-full" aria-busy={loading}>
+      <DelayedChartLoading pending={loading} requestKey={selectedYear} />
+      {contributors.length > 0 && (
         <>
           <GroupedTreemap<ContributorRow, string, Contributor, string>
+            layout={{ rowOrder: "input", consolidateSmallRows: false }}
             footer={
               <ChartFooter hint="Click on a contributor to explore details" />
             }
@@ -454,7 +460,7 @@ export function ContributorsTreemap() {
         </>
       )}
 
-      {loading && (
+      {loading && contributors.length === 0 && (
         <div className="flex h-[780px] w-full items-center justify-center bg-gray-100">
           <p className="text-lg text-gray-500">Loading contributors...</p>
         </div>

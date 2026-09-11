@@ -1,4 +1,5 @@
 "use client";
+import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 
 import { useEffect, useMemo, useState } from "react";
 import { DotDensityMap } from "@undp/data-viz/DotDensityMap";
@@ -101,7 +102,7 @@ export function FieldMissionsMap({
     };
   }, [year]);
 
-  const current = overview?.meta.year === year ? overview : null;
+  const current = overview;
   const model = useMemo<FieldMissionModel | null>(() => {
     if (!current || !entitiesData) return null;
 
@@ -183,7 +184,8 @@ export function FieldMissionsMap({
   const kindColors = kinds.map((group) => entitiesData.groups[group].color);
 
   return (
-    <div className="w-full">
+    <div className="relative w-full">
+      <DelayedChartLoading pending={overview?.meta.year !== year} requestKey={year} />
       <div className="mb-3 flex justify-end">
         <YearSlider
           years={years.years}

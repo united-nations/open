@@ -176,6 +176,9 @@ export function SystemCategoryTreemap({
             })}
           </div>
         </div>
+        <figcaption className="mt-2 text-xs leading-relaxed text-gray-600">
+          Overview of the UN System and its categories of entities.
+        </figcaption>
       </figure>
       {connectors && (
         <svg aria-hidden="true" className="pointer-events-none absolute inset-0 hidden h-full w-full overflow-visible md:block" fill="none">

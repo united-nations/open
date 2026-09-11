@@ -1,4 +1,5 @@
 "use client";
+import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 
@@ -109,7 +110,9 @@ export function TrustFundContributorsTreemap() {
         if (!response.ok) throw new Error(`Failed to load ${year} data`);
         return response.json() as Promise<TrustFundContributorsData>;
       })
-      .then(setData)
+      .then((payload) => {
+        if (!controller.signal.aborted) setData(payload);
+      })
       .catch((reason: unknown) => {
         if (reason instanceof DOMException && reason.name === "AbortError")
           return;
@@ -122,7 +125,7 @@ export function TrustFundContributorsTreemap() {
     return () => controller.abort();
   }, [year]);
 
-  const current = data?.meta.year === year ? data : null;
+  const current = data;
   const error = loadError?.year === year ? loadError.message : null;
   const selected = current?.contributors.find(
     (contributor) => contributor.name === selectedName,
@@ -208,7 +211,8 @@ export function TrustFundContributorsTreemap() {
       .length ?? 0;
 
   return (
-    <div className="w-full">
+    <div className="relative w-full">
+      <DelayedChartLoading pending={data?.meta.year !== year} requestKey={year} />
       {current && (
         <>
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-600">

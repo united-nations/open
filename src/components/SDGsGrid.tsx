@@ -1,4 +1,5 @@
 "use client";
+import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { ChartFooter } from "@/components/ChartFooter";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
@@ -218,6 +219,7 @@ export default function SDGsGrid() {
     null,
   );
   const [searchQuery, setSearchQuery] = useState<string>("");
+  const [loadedYear, setLoadedYear] = useState<number | null>(null);
   const [selectedYear, setSelectedYear] = useState<number>(
     yearRanges.sdgExpenses.default,
   );
@@ -289,7 +291,7 @@ export default function SDGsGrid() {
   useEffect(() => {
     fetch(`${basePath}/data/sdg-expenses-${selectedYear}.json`)
       .then((res) => res.json())
-      .then(setExpensesData);
+      .then((data: SDGExpensesData) => { setExpensesData(data); setLoadedYear(selectedYear); });
   }, [selectedYear]);
 
   const searchTerm = searchQuery.toLowerCase().trim();
@@ -433,7 +435,7 @@ export default function SDGsGrid() {
 
   return (
     <>
-      <ChartFrame
+      <ChartFrame className="relative"
         header={
           <ChartHeader
             yearControl={
@@ -475,6 +477,7 @@ export default function SDGsGrid() {
         }
         footer={<ChartFooter hint="Click on an SDG to explore details" />}
       >
+        <DelayedChartLoading pending={loadedYear !== selectedYear} requestKey={selectedYear} />
         <div
           ref={gridRef}
           className="relative h-[calc(100vh-320px)] min-h-[600px] w-full"

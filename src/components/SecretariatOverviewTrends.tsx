@@ -169,6 +169,7 @@ export function SecretariatOverviewTrends() {
           </h4>
           <FinancingInstrumentChart
             data={fundingData}
+            filterable
             series={FUNDING_SOURCE_TREND_SERIES}
           />
         </div>
