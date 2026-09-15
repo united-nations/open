@@ -5,6 +5,7 @@ import { ChevronRight, ExternalLink } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { SidebarControls } from "@/components/SidebarControls";
 import { navigateToSidebar } from "@/hooks/useDeepLink";
+import { useContributorSidebarYear } from "@/hooks/useContributorSidebarYear";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
 import {
@@ -25,14 +26,28 @@ import { loadYearData } from "@/lib/data";
 const currency = sharedFormatBudget;
 
 export function TrustFundContributorSidebar({
-  contributor,
-  meta,
+  contributor: initialContributor,
+  meta: initialMeta,
   onClose,
 }: {
   contributor: TrustFundContributor;
   meta: TrustFundContributorsData["meta"];
   onClose: () => void;
 }) {
+  const selection = useContributorSidebarYear<TrustFundContributorsData>(
+    "trust-fund-contributors",
+    initialMeta.year,
+  );
+  const currentContributor = selection.isInitialYear
+    ? initialContributor
+    : selection.data?.contributors.find(
+        (item) => item.name === initialContributor.name,
+      );
+  const contributor = currentContributor ?? initialContributor;
+  const meta = selection.isInitialYear
+    ? initialMeta
+    : (selection.data?.meta ?? initialMeta);
+  const ready = !selection.loading && !selection.error && !!currentContributor;
   const years = useYearRanges().trustFundContributors.years;
   const yearKey = years.join(",");
   const [trend, setTrend] = useState<FinancingInstrumentDataPoint[] | null>(
@@ -141,7 +156,29 @@ export function TrustFundContributorSidebar({
         <FinancialDetailPanel
           title={contributor.name}
           titleId="trust-fund-contributor-title"
-          subtitle={`Recognized voluntary contributions · ${meta.year}`}
+          subtitle={`Recognized voluntary contributions · ${selection.year}`}
+          yearSelectorPlacement="header"
+          yearSelector={{
+            years,
+            selected: selection.year,
+            onChange: selection.setYear,
+            label: "Select year",
+            pending: selection.loading,
+            pendingLabel: "Loading…",
+          }}
+          busy={selection.loading}
+          notice={
+            !ready
+              ? {
+                  tone: selection.error ? "error" : "empty",
+                  description:
+                    selection.error ??
+                    (selection.loading
+                      ? "Loading contributor details…"
+                      : "No contributor data is published for this year."),
+                }
+              : undefined
+          }
           controls={
             <SidebarControls
               shareHash={`trust-fund-contributor=${encodeURIComponent(contributor.name)}`}
@@ -149,158 +186,167 @@ export function TrustFundContributorSidebar({
               closeLabel="Close sidebar"
             />
           }
-          total={{
-            label: "Net recognized amount",
-            value: currency(contributor.amount_usd),
-          }}
+          total={
+            ready
+              ? {
+                  label: "Net recognized amount",
+                  value: currency(contributor.amount_usd),
+                }
+              : undefined
+          }
           className="bg-white sm:w-full"
         >
-          {contributor.negative_amount_usd < 0 && (
-            <p className="mt-1 text-xs text-gray-500">
-              Gross positive rows {currency(contributor.positive_amount_usd)};
-              refunds/transfers {currency(contributor.negative_amount_usd)}.
-            </p>
-          )}
-          <FinancialPanelSection heading="Recognized contributions over time">
-            {trend === null ? (
-              <p role="status" className="text-sm text-gray-500">
-                Loading trend…
-              </p>
-            ) : (
-              <FinancingInstrumentChart
-                variant="bar"
-                compact
-                showLegend={false}
-                allowNegative
-                data={trend}
-                series={[
-                  {
-                    key: "contributions",
-                    label: "Net recognized contributions",
-                    color: "var(--color-un-blue)",
-                  },
-                ]}
-              />
-            )}
-            {trendIncomplete && (
-              <p className="mt-2 text-sm text-gray-500">
-                Years without a reported contributor amount appear as gaps.
-              </p>
-            )}
-          </FinancialPanelSection>
-          <FinancialPanelSection heading="Offices and trust funds">
-            <ul className="space-y-1">
-              {groups.map((group) => {
-                const key = group.entity_id ?? "unresolved";
-                const maximum = Math.max(
-                  0,
-                  ...groups.flatMap((item) => [
-                    item.amount,
-                    ...item.funds.map((fund) => fund.amount_usd),
-                  ]),
-                );
-                const bar = (amount: number) => (
-                  <FinancialPanelBar
-                    percent={maximum > 0 ? (amount / maximum) * 100 : 0}
-                    color="var(--color-un-blue)"
+          {ready && (
+            <>
+              {contributor.negative_amount_usd < 0 && (
+                <p className="mt-1 text-xs text-gray-500">
+                  Gross positive rows{" "}
+                  {currency(contributor.positive_amount_usd)}; refunds/transfers{" "}
+                  {currency(contributor.negative_amount_usd)}.
+                </p>
+              )}
+              <FinancialPanelSection heading="Recognized contributions over time">
+                {trend === null ? (
+                  <p role="status" className="text-sm text-gray-500">
+                    Loading trend…
+                  </p>
+                ) : (
+                  <FinancingInstrumentChart
+                    variant="bar"
+                    compact
+                    showLegend={false}
+                    allowNegative
+                    data={trend}
+                    series={[
+                      {
+                        key: "contributions",
+                        label: "Net recognized contributions",
+                        color: "var(--color-un-blue)",
+                      },
+                    ]}
                   />
-                );
-                return (
-                  <FinancialBreakdownRow
-                    key={key}
-                    label={group.entity_name}
-                    value={currency(group.amount)}
-                    bar={bar(group.amount)}
-                    tooltip={
-                      <div>
-                        <p className="font-medium">{group.entity_name}</p>
-                        <p>
-                          Recognized contributions: {currency(group.amount)}
-                        </p>
-                      </div>
-                    }
-                    expanded={expanded.has(key)}
-                    onToggle={() =>
-                      setExpanded((current) => {
-                        const next = new Set(current);
-                        if (next.has(key)) next.delete(key);
-                        else next.add(key);
-                        return next;
-                      })
-                    }
-                  >
-                    <ul className="mt-1 space-y-1">
-                      {[...group.funds]
-                        .sort((a, b) => b.amount_usd - a.amount_usd)
-                        .map((fund) => (
-                          <FinancialBreakdownRow
-                            key={fund.fund_code}
-                            label={`${fund.fund_code} · ${fund.fund_name}`}
-                            value={currency(fund.amount_usd)}
-                            bar={bar(fund.amount_usd)}
-                            depth={1}
-                            tooltip={
-                              <div>
-                                <p className="font-medium">
-                                  {fund.fund_code} · {fund.fund_name}
-                                </p>
-                                <p>{group.entity_name}</p>
-                                <p>
-                                  Recognized contributions:{" "}
-                                  {currency(fund.amount_usd)}
-                                </p>
-                              </div>
-                            }
-                          />
-                        ))}
-                      {group.entity_id && (
-                        <li className="ps-3 pt-1">
-                          <button
-                            type="button"
-                            className="text-sm text-un-blue hover:underline"
-                            onClick={() =>
-                              navigateToSidebar(
-                                "trust-fund-entity",
-                                group.entity_id!,
-                              )
-                            }
-                          >
-                            Open office details
-                          </button>
-                        </li>
-                      )}
-                    </ul>
-                  </FinancialBreakdownRow>
-                );
-              })}
-            </ul>
-          </FinancialPanelSection>
-          <details
-            key={`${contributor.name}-${meta.year}`}
-            className="group/sources mt-4"
-          >
-            <summary className="mb-3 flex w-fit cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden">
-              <FinancialPanelHeading subheading>
-                Source references
-              </FinancialPanelHeading>
-              <ChevronRight
-                aria-hidden="true"
-                className="size-3 group-open/sources:rotate-90"
-              />
-            </summary>
-            <p className="text-sm leading-relaxed text-gray-700">
-              {meta.method_note} {meta.mapping_note}
-            </p>
-            <a
-              href={meta.source.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 inline-flex items-center gap-1.5 text-sm text-un-blue hover:underline"
-            >
-              {meta.source.symbol}
-              <ExternalLink className="h-3.5 w-3.5" />
-            </a>
-          </details>
+                )}
+                {trendIncomplete && (
+                  <p className="mt-2 text-sm text-gray-500">
+                    Years without a reported contributor amount appear as gaps.
+                  </p>
+                )}
+              </FinancialPanelSection>
+              <FinancialPanelSection heading="Offices and trust funds">
+                <ul className="space-y-1">
+                  {groups.map((group) => {
+                    const key = group.entity_id ?? "unresolved";
+                    const maximum = Math.max(
+                      0,
+                      ...groups.flatMap((item) => [
+                        item.amount,
+                        ...item.funds.map((fund) => fund.amount_usd),
+                      ]),
+                    );
+                    const bar = (amount: number) => (
+                      <FinancialPanelBar
+                        percent={maximum > 0 ? (amount / maximum) * 100 : 0}
+                        color="var(--color-un-blue)"
+                      />
+                    );
+                    return (
+                      <FinancialBreakdownRow
+                        key={key}
+                        label={group.entity_name}
+                        value={currency(group.amount)}
+                        bar={bar(group.amount)}
+                        tooltip={
+                          <div>
+                            <p className="font-medium">{group.entity_name}</p>
+                            <p>
+                              Recognized contributions: {currency(group.amount)}
+                            </p>
+                          </div>
+                        }
+                        expanded={expanded.has(key)}
+                        onToggle={() =>
+                          setExpanded((current) => {
+                            const next = new Set(current);
+                            if (next.has(key)) next.delete(key);
+                            else next.add(key);
+                            return next;
+                          })
+                        }
+                      >
+                        <ul className="mt-1 space-y-1">
+                          {[...group.funds]
+                            .sort((a, b) => b.amount_usd - a.amount_usd)
+                            .map((fund) => (
+                              <FinancialBreakdownRow
+                                key={fund.fund_code}
+                                label={`${fund.fund_code} · ${fund.fund_name}`}
+                                value={currency(fund.amount_usd)}
+                                bar={bar(fund.amount_usd)}
+                                depth={1}
+                                tooltip={
+                                  <div>
+                                    <p className="font-medium">
+                                      {fund.fund_code} · {fund.fund_name}
+                                    </p>
+                                    <p>{group.entity_name}</p>
+                                    <p>
+                                      Recognized contributions:{" "}
+                                      {currency(fund.amount_usd)}
+                                    </p>
+                                  </div>
+                                }
+                              />
+                            ))}
+                          {group.entity_id && (
+                            <li className="ps-3 pt-1">
+                              <button
+                                type="button"
+                                className="text-sm text-un-blue hover:underline"
+                                onClick={() =>
+                                  navigateToSidebar(
+                                    "trust-fund-entity",
+                                    group.entity_id!,
+                                  )
+                                }
+                              >
+                                Open office details
+                              </button>
+                            </li>
+                          )}
+                        </ul>
+                      </FinancialBreakdownRow>
+                    );
+                  })}
+                </ul>
+              </FinancialPanelSection>
+              <details
+                key={`${contributor.name}-${meta.year}`}
+                className="group/sources mt-4"
+              >
+                <summary className="mb-3 flex w-fit cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden">
+                  <FinancialPanelHeading subheading>
+                    Source references
+                  </FinancialPanelHeading>
+                  <ChevronRight
+                    aria-hidden="true"
+                    className="size-3 group-open/sources:rotate-90"
+                  />
+                </summary>
+                <p className="text-sm leading-relaxed text-gray-700">
+                  {meta.method_note} {meta.mapping_note}
+                </p>
+                <a
+                  href={meta.source.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-flex items-center gap-1.5 text-sm text-un-blue hover:underline"
+                >
+                  {meta.source.symbol}
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </details>
+            </>
+          )}
         </FinancialDetailPanel>
       </aside>
     </div>
