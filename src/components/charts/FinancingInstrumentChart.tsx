@@ -3,6 +3,7 @@ import {
   TREND_CHART_HEIGHT,
   TREND_CHART_MARGIN,
 } from "@/components/charts/trendLayout";
+import { SourceAwareTrendTooltip } from "./SourceAwareTrendTooltip";
 import { FinancialChartTooltip } from "./FinancialChartTooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
@@ -19,7 +20,6 @@ import {
   XAxis,
   YAxis,
   CartesianGrid,
-  Tooltip as RechartsTooltip,
   ResponsiveContainer,
 } from "recharts";
 import {
@@ -249,8 +249,9 @@ export function FinancingInstrumentChart({
                 tickFormatter={valueFormatter ?? formatYAxis}
                 mirror
               />
-              <RechartsTooltip
-                wrapperStyle={tooltipSources ? { pointerEvents: "auto" } : undefined}
+              <SourceAwareTrendTooltip
+                key={visibleSeries.map((series) => series.key).join("|")}
+                interactive={Boolean(tooltipSources)}
                 content={(props) => (
                   <FinancialChartTooltip
                     {...props}
@@ -266,7 +267,10 @@ export function FinancingInstrumentChart({
                     }
                     totalLabel={showTooltipTotal ? "Selected total" : undefined}
                     showBars
-                    sources={tooltipSources?.(String(props.label ?? ""), visibleSeries.map((series) => series.key))}
+                    sources={tooltipSources?.(
+                      String(props.label ?? ""),
+                      visibleSeries.map((series) => series.key),
+                    )}
                   />
                 )}
               />

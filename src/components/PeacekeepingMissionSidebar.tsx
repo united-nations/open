@@ -26,6 +26,7 @@ import {
   fiscalYearLabel,
   type CostClassKey,
 } from "@/lib/budgetGroupings";
+import { collectBudgetNodeSources } from "@/lib/budgetSourceCollection";
 import { loadYearData } from "@/lib/data";
 import { formatBudget } from "@/lib/entities";
 import { useYearRanges } from "@/lib/useYearRanges";
@@ -159,6 +160,9 @@ export function PeacekeepingMissionSidebar({
   const [closing, setClosing] = useState(false);
   const focusTrapRef = useFocusTrap(true);
   const years = useYearRanges().budgetPko.years;
+  const [trendSources, setTrendSources] = useState<
+    Record<string, Partial<Record<CostClassKey, BudgetNodeSource[]>>>
+  >({});
   const [trend, setTrend] = useState<FinancingInstrumentDataPoint[] | null>(
     null,
   );
@@ -199,6 +203,26 @@ export function PeacekeepingMissionSidebar({
       ),
     ).then((rows) => {
       if (!active) return;
+      setTrendSources(
+        Object.fromEntries(
+          rows.map(({ year: trendYear, data }) => [
+            fiscalYearLabel(trendYear),
+            Object.fromEntries(
+              COST_CLASS_KEYS.map((key) => [
+                key,
+                data?.nodes
+                  .filter(
+                    (node) =>
+                      node.tier === "class" &&
+                      node.mission === code &&
+                      node.costClass === key,
+                  )
+                  .flatMap((node) => collectBudgetNodeSources(node)) ?? [],
+              ]),
+            ),
+          ]),
+        ),
+      );
       setTrend(
         rows.map(({ year: trendYear, data }) => {
           const amounts = emptyClasses();
@@ -323,6 +347,11 @@ export function PeacekeepingMissionSidebar({
               </ul>
               <div className="mt-4">
                 <SidebarStackedTrend
+                  tooltipSources={(year, visibleKeys) =>
+                    visibleKeys.flatMap(
+                      (key) => trendSources[year]?.[key as CostClassKey] ?? [],
+                    )
+                  }
                   showLegend={false}
                   data={trend}
                   series={COST_CLASS_TREND_SERIES}

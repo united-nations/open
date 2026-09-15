@@ -3,6 +3,8 @@ import {
   TREND_CHART_HEIGHT,
   TREND_CHART_MARGIN,
 } from "@/components/charts/trendLayout";
+import { SourceAwareTrendTooltip } from "./charts/SourceAwareTrendTooltip";
+import { budgetTrendSources } from "@/lib/budgetTrendSources";
 import { FinancialChartTooltip } from "./charts/FinancialChartTooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { HierarchicalSingleSelect } from "@un-eosg/ui/components/hierarchical-single-select";
@@ -14,7 +16,6 @@ import {
   Line,
   LineChart,
   ResponsiveContainer,
-  Tooltip,
   XAxis,
   YAxis,
 } from "recharts";
@@ -231,8 +232,33 @@ export function ProgrammeBudgetTrends() {
                 tickFormatter={formatYAxis}
                 mirror
               />
-              <Tooltip
-                content={(props) => <FinancialChartTooltip {...props} />}
+              <SourceAwareTrendTooltip
+                key={`${selectedNode}-${hiddenMetrics.join("|")}`}
+                interactive
+                content={(props) => (
+                  <FinancialChartTooltip
+                    {...props}
+                    sources={(datasets ?? [])
+                      .filter(
+                        (row) =>
+                          String(row.year) === String(props.label) &&
+                          !hiddenMetrics.includes(row.metric),
+                      )
+                      .flatMap((row) => {
+                        const node = row.data.nodes.find(
+                          (item) => item.id === selectedNode,
+                        );
+                        return node
+                          ? budgetTrendSources(
+                              row.data.nodes,
+                              node,
+                              row.metric,
+                              ["regular_budget"],
+                            )
+                          : [];
+                      })}
+                  />
+                )}
               />
               {METRICS.filter(
                 (metric) => !hiddenMetrics.includes(metric.key),

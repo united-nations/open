@@ -17,7 +17,11 @@ import {
   FinancialPanelBar,
 } from "@un-eosg/ui/components/financial-panel-parts";
 import { FinancialBreakdownRow } from "@un-eosg/ui/components/financial-breakdown-row";
-import type { TrustFundContributor, TrustFundContributorsData } from "@/types";
+import type {
+  BudgetNodeSource,
+  TrustFundContributor,
+  TrustFundContributorsData,
+} from "@/types";
 
 import {
   FinancingInstrumentChart,
@@ -53,12 +57,16 @@ export function TrustFundContributorSidebar({
   const ready = !selection.loading && !selection.error && !!currentContributor;
   const years = useYearRanges().trustFundContributors.years;
   const yearKey = years.join(",");
+  const [trendSources, setTrendSources] = useState<
+    Record<string, BudgetNodeSource[]>
+  >({});
   const [trend, setTrend] = useState<FinancingInstrumentDataPoint[] | null>(
     null,
   );
   const [trendIncomplete, setTrendIncomplete] = useState(false);
   useEffect(() => {
     let active = true;
+    const sourcesByYear: Record<string, BudgetNodeSource[]> = {};
     Promise.all(
       yearKey
         .split(",")
@@ -73,6 +81,10 @@ export function TrustFundContributorSidebar({
             const match = file.contributors.find(
               (item) => item.name === contributor.name,
             );
+            sourcesByYear[String(year)] =
+              match?.destinations.flatMap(
+                (fund) => fund.supportingSources ?? [],
+              ) ?? [];
             return {
               year: String(year),
               ...(match ? { contributions: match.amount_usd } : {}),
@@ -83,6 +95,7 @@ export function TrustFundContributorSidebar({
         }),
     ).then((points) => {
       if (!active) return;
+      setTrendSources(sourcesByYear);
       setTrend(points);
       setTrendIncomplete(points.some((point) => !("contributions" in point)));
     });
@@ -231,6 +244,11 @@ export function TrustFundContributorSidebar({
                   </p>
                 ) : (
                   <FinancingInstrumentChart
+                    tooltipSources={(year, visibleKeys) =>
+                      visibleKeys.includes("contributions")
+                        ? (trendSources[year] ?? [])
+                        : []
+                    }
                     variant="bar"
                     compact
                     showLegend={false}

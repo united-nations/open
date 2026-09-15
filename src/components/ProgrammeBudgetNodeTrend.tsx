@@ -6,6 +6,7 @@ import {
   SidebarStackedTrend,
   type FinancingInstrumentDataPoint,
 } from "@/components/SidebarStackedTrend";
+import { budgetTrendSources } from "@/lib/budgetTrendSources";
 import { loadYearData } from "@/lib/data";
 import type { BudgetData, BudgetNode } from "@/types";
 
@@ -78,6 +79,9 @@ export function ProgrammeBudgetNodeTrend({
   years: number[];
 }) {
   const [data, setData] = useState<FinancingInstrumentDataPoint[] | null>(null);
+  const [sourceFiles, setSourceFiles] = useState<
+    Record<string, { file: BudgetData; node: BudgetNode }>
+  >({});
   const yearKey = years.join(",");
 
   useEffect(() => {
@@ -90,14 +94,18 @@ export function ProgrammeBudgetNodeTrend({
       ),
     ).then((rows) => {
       if (!active) return;
+      const sources: Record<string, { file: BudgetData; node: BudgetNode }> =
+        {};
       setData(
         rows.flatMap(({ year, file }) => {
           if (!file) return [];
           const match = matchBudgetNode(file.nodes, node);
           if (!match) return [];
+          sources[String(year)] = { file, node: match };
           return [fundingPoint(year, match)];
         }),
       );
+      setSourceFiles(sources);
     });
     return () => {
       active = false;
@@ -116,6 +124,17 @@ export function ProgrammeBudgetNodeTrend({
 
   return (
     <SidebarStackedTrend
+      key={`${dataset}-${node.id}`}
+      tooltipSources={(year, keys) => {
+        const row = sourceFiles[year];
+        if (!row) return [];
+        const metric =
+          row.file.meta.measure === "approved" ||
+          row.file.meta.measure === "proposed"
+            ? row.file.meta.measure
+            : "expenditure";
+        return budgetTrendSources(row.file.nodes, row.node, metric, keys);
+      }}
       showLegend={false}
       data={data}
       series={FUNDING_SOURCE_TREND_SERIES}

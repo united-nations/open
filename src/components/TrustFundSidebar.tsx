@@ -18,12 +18,14 @@ import {
   type FinancingInstrumentDataPoint,
 } from "@/components/charts/FinancingInstrumentChart";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { collectBudgetHierarchySources } from "@/lib/budgetSourceCollection";
 import { loadYearData } from "@/lib/data";
 import { formatBudget } from "@un-eosg/ui/format-budget";
 import type {
   BudgetData,
   BudgetMeta,
   BudgetNode,
+  BudgetNodeSource,
   TrustFundContributorsData,
 } from "@/types";
 
@@ -63,6 +65,9 @@ export function TrustFundSidebar({
 }) {
   const focusTrapRef = useFocusTrap(true);
   const [showAllContributors, setShowAllContributors] = useState(false);
+  const [trendSources, setTrendSources] = useState<
+    Record<string, BudgetNodeSource[]>
+  >({});
   const [trend, setTrend] = useState<FinancingInstrumentDataPoint[] | null>(
     null,
   );
@@ -77,6 +82,7 @@ export function TrustFundSidebar({
   const codesKey = [...codes].sort().join(",");
   useEffect(() => {
     let active = true;
+    const sourcesByYear: Record<string, BudgetNodeSource[]> = {};
     Promise.all(
       yearKey
         .split(",")
@@ -94,6 +100,13 @@ export function TrustFundSidebar({
                     (item) => item.tier === "detail" && item.code === node.code,
                   )
                 : file.nodes.find((item) => item.id === node.id);
+            const childNodes: Record<string, BudgetNode[]> = {};
+            for (const item of file.nodes) {
+              if (item.parentId) (childNodes[item.parentId] ??= []).push(item);
+            }
+            sourcesByYear[String(value)] = matched
+              ? collectBudgetHierarchySources(matched, childNodes)
+              : [];
             return {
               year: String(value),
               ...(matched ? { expenses: matched.amount } : {}),
@@ -104,6 +117,7 @@ export function TrustFundSidebar({
         }),
     ).then((points) => {
       if (active) {
+        setTrendSources(sourcesByYear);
         setTrend(points);
         setTrendIncomplete(points.some((point) => !("expenses" in point)));
       }
@@ -230,6 +244,11 @@ export function TrustFundSidebar({
               </p>
             ) : (
               <FinancingInstrumentChart
+                tooltipSources={(year, visibleKeys) =>
+                  visibleKeys.includes("expenses")
+                    ? (trendSources[year] ?? [])
+                    : []
+                }
                 compact
                 showLegend={false}
                 data={trend}
