@@ -70,7 +70,7 @@ export function ContributorsMethodologyNotes() {
         (Governments, Foundations, Private Sector, Multilateral Organizations,
         etc.) using the CEB&apos;s contributor classification system. For
         earlier years, contributor categories are partially available. Where
-        specific donors are not identified, contributions are shown as
+        specific contributors are not identified, contributions are shown as
         aggregated totals (e.g., &ldquo;Other Foundations&rdquo;).
       </p>
       <p>

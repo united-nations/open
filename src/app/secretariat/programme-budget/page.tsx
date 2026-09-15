@@ -28,7 +28,21 @@ export default function ProgrammeBudgetPage() {
       <PageHeading
         id="regular-budget-spending"
         title="How is the programme budget allocated?"
-        description="Compare expenditure, approved resources and proposals by budget part, section and entity."
+        description={
+          <>
+            Compare expenditure, approved resources and proposals by budget
+            part, section and entity. This data is based on the{" "}
+            <a
+              href="https://www.un.org/en/ga/fifth/81/ppb2027.shtml"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2"
+            >
+              proposed programme budget of the UN
+            </a>
+            .
+          </>
+        }
       />
       <PageBody>
         <RegularBudgetView />

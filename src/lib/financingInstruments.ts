@@ -58,3 +58,23 @@ export const getFinancingInstrumentColor = (type: string): string => {
 export const getFinancingInstrumentBgClass = (type: string): string => {
   return FINANCING_INSTRUMENT_BG_CLASSES[type] || "bg-open-funding-other";
 };
+
+/** Tooltip reading order is independent of bottom-up treemap drawing order. */
+export function orderFundingTooltipRows<T extends { label: string }>(
+  rows: readonly T[] | undefined,
+): T[] {
+  const order = [
+    "assessed",
+    "voluntary-unearmarked",
+    "voluntary-earmarked",
+    "other",
+    "regular_budget",
+    "other_assessed",
+    "extrabudgetary",
+  ];
+  const rank = (label: string) => {
+    const index = order.indexOf(FINANCING_SOURCE_KEYS[label]);
+    return index < 0 ? order.length : index;
+  };
+  return [...(rows ?? [])].sort((a, b) => rank(a.label) - rank(b.label));
+}

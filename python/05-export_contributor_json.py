@@ -139,7 +139,7 @@ def export_contributor_trends_json(df: pd.DataFrame):
         
         aggregates["gov"].append(gov_t)
         aggregates["non-gov"].append(nongov_t)
-        aggregates["all"].append({k: gov_t[k] + nongov_t[k] for k in gov_t})
+        aggregates["all"].append({"year": year, **{k: gov_t[k] + nongov_t[k] for k in gov_t if k != "year"}})
         for cat in categories:
             aggregates[f"cat:{cat}"].append(cat_totals[cat])
     

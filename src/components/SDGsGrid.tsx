@@ -1,4 +1,5 @@
 "use client";
+import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { ChartFooter } from "@/components/ChartFooter";
@@ -24,7 +25,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { ClickHint } from "@/components/ui/ClickHint";
 import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
 import { formatBudget } from "@/lib/entities";
 import { useYearRanges, generateYearRange } from "@/lib/useYearRanges";
@@ -291,7 +291,10 @@ export default function SDGsGrid() {
   useEffect(() => {
     fetch(`${basePath}/data/sdg-expenses-${selectedYear}.json`)
       .then((res) => res.json())
-      .then((data: SDGExpensesData) => { setExpensesData(data); setLoadedYear(selectedYear); });
+      .then((data: SDGExpensesData) => {
+        setExpensesData(data);
+        setLoadedYear(selectedYear);
+      });
   }, [selectedYear]);
 
   const searchTerm = searchQuery.toLowerCase().trim();
@@ -435,7 +438,8 @@ export default function SDGsGrid() {
 
   return (
     <>
-      <ChartFrame className="relative"
+      <ChartFrame
+        className="relative"
         header={
           <ChartHeader
             yearControl={
@@ -477,7 +481,10 @@ export default function SDGsGrid() {
         }
         footer={<ChartFooter hint="Click on an SDG to explore details" />}
       >
-        <DelayedChartLoading pending={loadedYear !== selectedYear} requestKey={selectedYear} />
+        <DelayedChartLoading
+          pending={loadedYear !== selectedYear}
+          requestKey={selectedYear}
+        />
         <div
           ref={gridRef}
           className="relative h-[calc(100vh-320px)] min-h-[600px] w-full"
@@ -591,20 +598,15 @@ export default function SDGsGrid() {
                   sideOffset={8}
                   className="max-w-xs border border-slate-200 bg-white text-slate-800 shadow-lg sm:max-w-sm"
                 >
-                  <div className="max-w-xs p-1 text-center sm:max-w-sm">
-                    <p className="text-sm leading-tight font-bold sm:text-base">
-                      SDG {sdgNumber}: {shortTitle}
-                    </p>
-                    {sdg && (
-                      <p className="mt-1 text-xs leading-tight text-slate-600 sm:text-sm">
-                        {sdg.title}
-                      </p>
-                    )}
-                    <p className="mt-1 text-xs font-semibold text-slate-600">
-                      {formatBudget(sdgData.total)}
-                    </p>
-                    <ClickHint />
-                  </div>
+                  <FinancialTooltip
+                    title={`SDG ${sdgNumber}: ${shortTitle}`}
+                    context={sdg?.title}
+                    total={{
+                      label: "Spending",
+                      value: formatBudget(sdgData.total),
+                    }}
+                    actionHint="Click to explore details"
+                  />
                 </TooltipContent>
               </Tooltip>
             );

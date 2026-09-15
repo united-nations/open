@@ -1,4 +1,5 @@
 "use client";
+import { TREND_CHART_HEIGHT } from "@/components/charts/trendLayout";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import {
   usePaymentChartScale,
@@ -132,7 +133,10 @@ export function RegularBudgetPaymentStatusTrends() {
         <h3 className="mb-3 text-lg font-medium text-gray-900">
           Payment status over the years
         </h3>
-        <div className="flex h-80 items-center justify-center text-sm text-gray-500">
+        <div
+          className="flex items-center justify-center text-sm text-gray-500"
+          style={{ height: TREND_CHART_HEIGHT }}
+        >
           Loading payment status…
         </div>
       </section>
@@ -182,7 +186,10 @@ export function RegularBudgetPaymentStatusTrends() {
       </div>
       {chartData.length > 0 ? (
         hidden.length === STATUS_SERIES.length ? (
-          <div className="flex h-80 items-center justify-center text-sm text-gray-500">
+          <div
+            className="flex items-center justify-center text-sm text-gray-500"
+            style={{ height: TREND_CHART_HEIGHT }}
+          >
             Select a payment status to show the trend.
           </div>
         ) : (
@@ -190,7 +197,7 @@ export function RegularBudgetPaymentStatusTrends() {
             data={chartData}
             series={STATUS_SERIES.filter((item) => !hidden.includes(item.key))}
             showLegend={false}
-            height={320}
+            height={TREND_CHART_HEIGHT}
             showTooltipTotal
             tooltipValueFormatter={(value) =>
               measure === "count"

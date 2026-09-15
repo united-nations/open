@@ -1,4 +1,6 @@
 "use client";
+import { missionLocationLabel } from "@/lib/missionLocations";
+import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { ChartFooter } from "@/components/ChartFooter";
@@ -10,7 +12,6 @@ import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 import {
   GroupedTreemap,
   type GroupedTreemapRow,
-  type GroupedTreemapTooltipContext,
 } from "@un-eosg/ui/components/grouped-treemap";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { DotDensityMap } from "@undp/data-viz/DotDensityMap";
@@ -158,45 +159,33 @@ interface MapPoint {
   data: MissionRow;
 }
 
-function MissionCostClassTooltip({
-  context,
-}: {
-  context: GroupedTreemapTooltipContext<
-    MissionRow,
-    never,
-    MissionCostClassLeaf,
-    never
-  >;
-}) {
-  const leaf = context.leaf.data;
-  if (!leaf) return null;
-  const missing = COST_CLASS_KEYS.filter(
-    (key) => leaf.mission.classes[key] === null,
-  );
-  const zero = COST_CLASS_KEYS.filter((key) => leaf.mission.classes[key] === 0);
+function MissionTooltip({ mission }: { mission: MissionRow }) {
+  const color = mission.kind === "support" ? SUPPORT_COLOR : FIELD_COLOR;
   return (
-    <div className="space-y-1">
-      <p className="font-semibold">
-        {leaf.mission.code} · {leaf.mission.name}
-      </p>
-      <p>
-        {COST_CLASS_SHORT[leaf.costClass] ?? leaf.costClass}:{" "}
-        {formatBudget(context.leaf.value)}
-      </p>
-      {missing.length > 0 && (
-        <p className="opacity-75">
-          Not published:{" "}
-          {missing.map((key) => COST_CLASS_SHORT[key] ?? key).join(", ")}
-        </p>
-      )}
-      {zero.length > 0 && (
-        <p className="opacity-75">
-          Published as $0:{" "}
-          {zero.map((key) => COST_CLASS_SHORT[key] ?? key).join(", ")}
-        </p>
-      )}
-      <p className="opacity-75">Click for mission details</p>
-    </div>
+    <FinancialTooltip
+      title={mission.name}
+      parents={[
+        { label: KIND_LABEL[mission.kind], color },
+        { label: mission.code },
+      ]}
+      context={missionLocationLabel(mission.location)}
+      total={{ label: "Spending", value: formatBudget(mission.total) }}
+      rows={COST_CLASS_KEYS.map((key) => ({
+        label: COST_CLASS_SHORT[key] ?? key,
+        value:
+          mission.classes[key] === null
+            ? "Not published"
+            : formatBudget(mission.classes[key]!),
+        color,
+        share:
+          mission.classes[key] !== null &&
+          mission.classes[key]! >= 0 &&
+          mission.total > 0
+            ? mission.classes[key]! / mission.total
+            : undefined,
+      }))}
+      actionHint="Click to explore details"
+    />
   );
 }
 
@@ -250,7 +239,7 @@ function MissionCostClassTreemap({
         formatAccessibleValue={(value) => formatBudget(value)}
         showLeafValues
         renderTooltip={(context) => (
-          <MissionCostClassTooltip context={context} />
+          <MissionTooltip mission={context.row.data!} />
         )}
       />
     </div>
@@ -482,47 +471,7 @@ export function PeacekeepingBudgetView() {
               }}
               ariaLabel={`Map of peacekeeping budget expenditure in ${current.meta.fiscalYear}`}
               tooltip={(point: MapPoint) => (
-                <div style={{ maxWidth: "260px", padding: "4px" }}>
-                  <p
-                    style={{
-                      margin: 0,
-                      color: "#0f172a",
-                      fontSize: "14px",
-                      fontWeight: 600,
-                    }}
-                  >
-                    {point.data.code}
-                  </p>
-                  <p
-                    style={{
-                      margin: "3px 0 0",
-                      color: "#475569",
-                      fontSize: "12px",
-                      lineHeight: 1.35,
-                    }}
-                  >
-                    {point.data.name}
-                  </p>
-                  <p
-                    style={{
-                      margin: "6px 0 0",
-                      color: "#64748b",
-                      fontSize: "12px",
-                    }}
-                  >
-                    {point.data.location?.area}
-                  </p>
-                  <p
-                    style={{
-                      margin: "4px 0 0",
-                      color: "#334155",
-                      fontSize: "14px",
-                      fontWeight: 700,
-                    }}
-                  >
-                    {formatBudget(point.data.total)}
-                  </p>
-                </div>
+                <MissionTooltip mission={point.data} />
               )}
               styles={{
                 tooltip: {
@@ -546,7 +495,8 @@ export function PeacekeepingBudgetView() {
             code={selectedCode}
             name={selectedRow?.name ?? selectedLocation?.name ?? selectedCode}
             locationLabel={
-              selectedRow?.location?.area ?? selectedLocation?.area ?? null
+              missionLocationLabel(selectedRow?.location ?? selectedLocation) ??
+              null
             }
             fiscalYear={current.meta.fiscalYear}
             total={selectedRow ? selectedRow.total : null}

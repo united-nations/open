@@ -1,4 +1,5 @@
 "use client";
+import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { formatAssessmentRate } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { PaymentChartScaleProvider } from "@/components/PaymentChartScale";
@@ -77,16 +78,21 @@ function ContributorTooltip({
         : status.label;
 
   return (
-    <div className="space-y-1 text-center">
-      <p className="text-sm font-semibold">{contributor.name}</p>
-      <p className="text-xs font-medium">
-        {formatCurrency(contributor.assessment_amount)} assessment
-      </p>
-      <p className="text-xs opacity-75">
-        {formatAssessmentRate(contributor.assessment_rate)} assessment rate
-      </p>
-      <p className="text-xs opacity-75">{paymentDetail}</p>
-    </div>
+    <FinancialTooltip
+      title={contributor.name}
+      total={{
+        label: "Assessment",
+        value: formatCurrency(contributor.assessment_amount),
+      }}
+      rows={[
+        {
+          label: "Assessment rate",
+          value: formatAssessmentRate(contributor.assessment_rate),
+        },
+      ]}
+      notes={paymentDetail}
+      actionHint="Click to explore details"
+    />
   );
 }
 

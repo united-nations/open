@@ -511,11 +511,11 @@ export function EntitySidebar({
                 </div>
               )}
 
-              {/* Funding by Donor */}
+              {/* Funding by contributor */}
               {yearRevenue && donorContributions.length > 0 && (
                 <div className="mt-4">
                   <FinancialPanelHeading subheading>
-                    Funding by Donor
+                    Funding by contributor
                   </FinancialPanelHeading>
                   <div className="mt-2 space-y-1.5">
                     {displayedDonors.map((contrib) => {
@@ -597,7 +597,7 @@ export function EntitySidebar({
                         onClick={() => setShowAllDonors(true)}
                         className="mt-2 text-xs text-gray-600 underline hover:text-gray-900"
                       >
-                        Show all {donorContributions.length} donors
+                        Show all {donorContributions.length} contributors
                       </button>
                     )}
                   </div>

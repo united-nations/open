@@ -1,4 +1,8 @@
 "use client";
+import {
+  TREND_CHART_HEIGHT,
+  TREND_CHART_MARGIN,
+} from "@/components/charts/trendLayout";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import {
   usePaymentChartScale,
@@ -122,7 +126,8 @@ export function RegularBudgetPaymentTimeline({
   return (
     <div id="regular-budget-payment-timing">
       <div
-        className="h-80 w-full"
+        className="w-full"
+        style={{ height: TREND_CHART_HEIGHT }}
         role="img"
         aria-label={
           measure === "count"
@@ -131,10 +136,7 @@ export function RegularBudgetPaymentTimeline({
         }
       >
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart
-            data={points}
-            margin={{ top: 10, right: 5, bottom: 5, left: 5 }}
-          >
+          <AreaChart data={points} margin={TREND_CHART_MARGIN}>
             <defs>
               <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="0">
                 <stop

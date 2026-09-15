@@ -8,7 +8,10 @@ import { useMapBubbleZoom } from "@/hooks/useMapBubbleZoom";
 import { useEffect, useState } from "react";
 import { HybridMap } from "@undp/data-viz/HybridMap";
 import { CountrySidebar } from "@/components/CountrySidebar";
-import { CountryTreemap } from "@/components/CountryTreemap";
+import {
+  CountryTreemap,
+  CountryFinancialTooltip,
+} from "@/components/CountryTreemap";
 import { YearSlider } from "@/components/YearSlider";
 import {
   useDeepLink,
@@ -38,6 +41,7 @@ interface HybridMapDataPoint {
   label: string;
   data: {
     iso3: string;
+    region: string;
     name: string;
     total: number;
     entities: Record<string, number>;
@@ -145,6 +149,7 @@ export function CountryMap() {
     label: country.name,
     data: {
       iso3: country.iso3,
+      region: country.region,
       name: country.name,
       total: country.total,
       entities: country.entities,
@@ -255,59 +260,7 @@ export function CountryMap() {
               footNote=""
               showColorScale={false}
               tooltip={(d: HybridMapDataPoint) => (
-                <div style={{ textAlign: "center", padding: "4px" }}>
-                  <p
-                    style={{
-                      fontSize: "14px",
-                      fontWeight: 500,
-                      color: "#1e293b",
-                      margin: 0,
-                    }}
-                  >
-                    {d.data.name}
-                  </p>
-                  <p
-                    style={{
-                      fontSize: "14px",
-                      fontWeight: 600,
-                      color: "#475569",
-                      margin: "4px 0 0 0",
-                    }}
-                  >
-                    {formatBudget(d.data.total)}
-                  </p>
-                  <p
-                    style={{
-                      fontSize: "14px",
-                      fontWeight: 500,
-                      color: "#009edb",
-                      margin: "8px 0 0 0",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      gap: "4px",
-                    }}
-                  >
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="14"
-                      height="14"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="m9 9 5 12 1.8-5.2L21 14Z" />
-                      <path d="M7.2 2.2 8 5.1" />
-                      <path d="M5.1 8 2.2 7.2" />
-                      <path d="M14 4.1 12 6" />
-                      <path d="m6 12-1.9 2" />
-                    </svg>
-                    Click for details
-                  </p>
-                </div>
+                <CountryFinancialTooltip country={d.data} />
               )}
               onSeriesMouseClick={handleClick}
               styles={{

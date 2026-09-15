@@ -64,6 +64,9 @@ export function RegularBudgetView() {
   const [metric, setMetric] = useState<BudgetMetricKey>("expenditure");
   const [year, setYear] = useState(2025);
   const [grouping, setGrouping] = useState<PpbGrouping>("entity");
+  const showContextNote =
+    metric === "expenditure" &&
+    active.some((source) => source !== "regular_budget");
 
   const selectYear = (nextYear: number) => {
     setYear(nextYear);
@@ -141,6 +144,22 @@ export function RegularBudgetView() {
             setActive((current) => toggleFundingSource(current, source))
           }
         />
+      </div>
+
+      <div
+        className={`grid transition-[grid-template-rows,opacity] duration-500 motion-reduce:transition-none ${
+          showContextNote
+            ? "grid-rows-[1fr] opacity-100"
+            : "grid-rows-[0fr] opacity-0"
+        }`}
+        aria-hidden={!showContextNote}
+      >
+        <div className="min-h-0 overflow-hidden">
+          <p className="mb-4 text-sm text-gray-700">
+            Other assessed and extrabudgetary resources are not part of the
+            programme budget itself. They are shown here for context.
+          </p>
+        </div>
       </div>
 
       <BudgetTreemap

@@ -1,4 +1,6 @@
 "use client";
+import { orderFundingTooltipRows } from "@/lib/financingInstruments";
+import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
@@ -12,7 +14,6 @@ import {
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { EntitySidebar } from "@/components/EntitySidebar";
 import { YearSlider } from "@/components/YearSlider";
-import { ClickHint } from "@/components/ui/ClickHint";
 import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
 import {
   clearSidebarHash,
@@ -66,44 +67,33 @@ function matchesEntity(entity: Entity, query: string): boolean {
 
 function EntityTooltip({
   context,
+  showRevenue,
 }: {
   context: GroupedTreemapTooltipContext<string, never, Entity, string>;
+  showRevenue: boolean;
 }) {
   const entity = context.leaf.data;
   if (!entity) return null;
 
   return (
-    <div className="space-y-1 text-center">
-      <p className="text-sm font-semibold">{entity.entity_long}</p>
-      <div className="flex items-center justify-center gap-1.5 text-xs opacity-75">
-        <span
-          className="h-2 w-2 rounded-full"
-          style={{ backgroundColor: context.row.color }}
-        />
-        <span>{context.row.label}</span>
-      </div>
-      <p className="text-xs font-semibold">
-        {accessibleBudget(context.leaf.value)}
-      </p>
-      {context.leaf.segments?.map((segment) => (
-        <div
-          key={segment.key}
-          className="flex items-center justify-between gap-4 text-xs"
-        >
-          <span className="flex items-center gap-1.5">
-            <span
-              className="h-2 w-2 rounded-sm"
-              style={{ backgroundColor: segment.color }}
-            />
-            {segment.label}
-          </span>
-          <span className="tabular-nums">
-            {accessibleBudget(segment.value)}
-          </span>
-        </div>
-      ))}
-      <ClickHint />
-    </div>
+    <FinancialTooltip
+      title={entity.entity_long || entity.entity}
+      parents={[{ label: context.row.label, color: context.row.color }]}
+      total={{
+        label: showRevenue ? "Funding" : "Spending",
+        value: accessibleBudget(context.leaf.value),
+      }}
+      rows={orderFundingTooltipRows(context.leaf.segments).map((segment) => ({
+        label: segment.label,
+        value: accessibleBudget(segment.value),
+        color: segment.color,
+        share:
+          segment.value >= 0 && context.leaf.value > 0
+            ? segment.value / context.leaf.value
+            : undefined,
+      }))}
+      actionHint="Click to explore details"
+    />
   );
 }
 
@@ -434,7 +424,9 @@ export function EntitiesTreemap() {
         plotClassName="h-[650px]"
         formatValue={formatBudget}
         formatAccessibleValue={accessibleBudget}
-        renderTooltip={(context) => <EntityTooltip context={context} />}
+        renderTooltip={(context) => (
+          <EntityTooltip context={context} showRevenue={showRevenue} />
+        )}
         emptyContent={
           <div className="flex h-full items-center justify-center text-lg text-gray-500">
             No entities match the selected filters

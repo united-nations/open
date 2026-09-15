@@ -1,4 +1,9 @@
 "use client";
+import {
+  TREND_CHART_HEIGHT,
+  TREND_CHART_MARGIN,
+} from "@/components/charts/trendLayout";
+import { FinancialChartTooltip } from "./charts/FinancialChartTooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { HierarchicalSingleSelect } from "@un-eosg/ui/components/hierarchical-single-select";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
@@ -15,7 +20,6 @@ import {
 } from "recharts";
 import { PART_BAND_COLORS } from "@/lib/secretariatGroupings";
 import { loadYearData } from "@/lib/data";
-import { formatBudget } from "@/lib/entities";
 import type { BudgetData, BudgetMetricKey, BudgetNode } from "@/types";
 
 const METRICS: Array<{
@@ -27,13 +31,13 @@ const METRICS: Array<{
   {
     key: "proposed",
     label: "Proposed",
-    color: "var(--color-un-orange)",
+    color: "var(--color-un-green)",
     years: [2021, 2022, 2023, 2024, 2025, 2026, 2027],
   },
   {
     key: "approved",
     label: "Approved",
-    color: "var(--color-un-red)",
+    color: "var(--color-un-orange)",
     years: [2021, 2022, 2023, 2024, 2025, 2026],
   },
   {
@@ -110,7 +114,7 @@ export function ProgrammeBudgetTrends() {
       "XIV",
     ];
     return [
-      { id: "whole", label: "Whole regular budget", children: [] },
+      { id: "whole", label: "Whole programme budget", children: [] },
       ...[...byId.values()]
         .sort(
           (a, b) =>
@@ -154,7 +158,10 @@ export function ProgrammeBudgetTrends() {
 
   if (points === null) {
     return (
-      <div className="mt-10 h-[280px] text-sm text-gray-500">
+      <div
+        className="mt-10 text-sm text-gray-500"
+        style={{ height: TREND_CHART_HEIGHT }}
+      >
         Loading trends…
       </div>
     );
@@ -164,7 +171,7 @@ export function ProgrammeBudgetTrends() {
   return (
     <div className="mt-10 w-full lg:w-1/2 lg:pe-3">
       <h3 className="mb-3 text-lg font-medium text-gray-900">
-        Regular budget over time
+        Programme budget over time
       </h3>
       <div
         className="mb-3 flex flex-wrap items-center gap-2"
@@ -192,7 +199,7 @@ export function ProgrammeBudgetTrends() {
           />
         ))}
       </div>
-      <div className="h-[280px] w-full">
+      <div className="w-full" style={{ height: TREND_CHART_HEIGHT }}>
         {!hasData ? (
           <div className="flex h-full items-center justify-center text-sm text-gray-500">
             No regular-budget data is available for this item.
@@ -206,10 +213,7 @@ export function ProgrammeBudgetTrends() {
           </div>
         ) : (
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart
-              data={points}
-              margin={{ top: 20, right: 5, left: 5, bottom: 5 }}
-            >
+            <LineChart data={points} margin={TREND_CHART_MARGIN}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
               <XAxis
                 dataKey="year"
@@ -228,18 +232,7 @@ export function ProgrammeBudgetTrends() {
                 mirror
               />
               <Tooltip
-                formatter={(value, name) =>
-                  typeof value === "number"
-                    ? [formatBudget(value), String(name)]
-                    : ["—", String(name)]
-                }
-                labelFormatter={(label) => `Year: ${label}`}
-                contentStyle={{
-                  backgroundColor: "white",
-                  border: "1px solid #e5e7eb",
-                  borderRadius: "4px",
-                  fontSize: "12px",
-                }}
+                content={(props) => <FinancialChartTooltip {...props} />}
               />
               {METRICS.filter(
                 (metric) => !hiddenMetrics.includes(metric.key),

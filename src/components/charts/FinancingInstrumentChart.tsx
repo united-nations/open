@@ -1,8 +1,13 @@
 "use client";
+import {
+  TREND_CHART_HEIGHT,
+  TREND_CHART_MARGIN,
+} from "@/components/charts/trendLayout";
+import { FinancialChartTooltip } from "./FinancialChartTooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 import { useState } from "react";
-import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label";
+import { fundingSources } from "@un-eosg/ui/funding-sources";
 import { FinancingInstrumentLabel } from "../FinancingInstrumentLabel";
 
 import {
@@ -26,7 +31,6 @@ import {
   FINANCING_INSTRUMENT_COLORS,
   FINANCING_INSTRUMENT_TOOLTIPS,
 } from "@/lib/financingInstruments";
-import { formatBudget } from "@/lib/contributors";
 
 export interface FinancingInstrumentDataPoint {
   year: string;
@@ -87,11 +91,6 @@ interface FinancingInstrumentChartProps {
 
 const formatYAxis = sharedFormatBudget;
 
-const formatTooltipValue = (value: number | undefined) => {
-  if (value === undefined) return "";
-  return formatBudget(value);
-};
-
 function LegendChip({
   type,
   color,
@@ -131,7 +130,7 @@ function LegendChip({
 
 export function FinancingInstrumentChart({
   data,
-  height = 280,
+  height = TREND_CHART_HEIGHT,
   showLegend = true,
   compact = false,
   series = DEFAULT_SERIES,
@@ -177,25 +176,15 @@ export function FinancingInstrumentChart({
           aria-label={filterable ? "Trend filters" : undefined}
         >
           {activeSeries.map((s) =>
-            filterable && FINANCING_SOURCE_KEYS[s.label] ? (
-              <FundingSourceLabel
-                key={s.key}
-                source={FINANCING_SOURCE_KEYS[s.label]}
-                selected={!hiddenKeys.includes(s.key)}
-                onToggle={() =>
-                  setHiddenKeys((current) =>
-                    current.includes(s.key)
-                      ? current.filter((key) => key !== s.key)
-                      : [...current, s.key],
-                  )
-                }
-              />
-            ) : filterable ? (
+            filterable ? (
               <LegendLabel
                 key={s.key}
                 label={s.label}
                 color={s.color}
-                explanation={s.tooltip}
+                explanation={
+                  s.tooltip ??
+                  fundingSources[FINANCING_SOURCE_KEYS[s.label]]?.explanation
+                }
                 selected={!hiddenKeys.includes(s.key)}
                 onToggle={() =>
                   setHiddenKeys((current) =>
@@ -226,10 +215,7 @@ export function FinancingInstrumentChart({
           </div>
         ) : (
           <ResponsiveContainer width="100%" height="100%">
-            <Chart
-              data={data}
-              margin={{ top: 10, right: 5, left: 5, bottom: 5 }}
-            >
+            <Chart data={data} margin={TREND_CHART_MARGIN}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
               <XAxis
                 dataKey="year"
@@ -261,26 +247,23 @@ export function FinancingInstrumentChart({
                 mirror
               />
               <RechartsTooltip
-                formatter={(value) =>
-                  tooltipValueFormatter
-                    ? tooltipValueFormatter(Number(value))
-                    : valueFormatter
-                      ? valueFormatter(Number(value))
-                      : formatTooltipValue(Number(value))
-                }
-                labelFormatter={(label, payload) => {
-                  if (!showTooltipTotal) return `Year: ${label}`;
-                  let total = 0;
-                  for (const entry of payload)
-                    if (typeof entry.value === "number") total += entry.value;
-                  return `${label} · Selected total: ${(tooltipValueFormatter ?? valueFormatter ?? formatYAxis)(total)}`;
-                }}
-                contentStyle={{
-                  backgroundColor: "white",
-                  border: "1px solid #e5e7eb",
-                  borderRadius: "4px",
-                  fontSize: "12px",
-                }}
+                content={(props) => (
+                  <FinancialChartTooltip
+                    {...props}
+                    payload={props.payload?.map((entry) => ({
+                      ...entry,
+                      color:
+                        visibleSeries.find(
+                          (series) => series.key === entry.dataKey,
+                        )?.color ?? entry.color,
+                    }))}
+                    formatValue={
+                      tooltipValueFormatter ?? valueFormatter ?? formatYAxis
+                    }
+                    totalLabel={showTooltipTotal ? "Selected total" : undefined}
+                    showBars
+                  />
+                )}
               />
               {visibleSeries.map((s) =>
                 variant === "bar" ? (
@@ -300,7 +283,8 @@ export function FinancingInstrumentChart({
                     dataKey={s.key}
                     name={s.label}
                     stackId="1"
-                    stroke={s.color}
+                    stroke="white"
+                    strokeWidth={2}
                     fill={s.color}
                   />
                 ),

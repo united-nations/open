@@ -1,4 +1,5 @@
 "use client";
+import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
@@ -47,16 +48,14 @@ function ContributorTooltip({
   const contributor = context.leaf.data;
   if (!contributor) return null;
   return (
-    <div className="space-y-0.5">
-      <p className="text-sm font-semibold">{contributor.name}</p>
-      <p className="text-xs">
-        {currency(contributor.net_assessment)} net assessed
-      </p>
-      <p className="text-xs opacity-75">
-        {contributor.missions.length} mission account
-        {contributor.missions.length === 1 ? "" : "s"} · click for details
-      </p>
-    </div>
+    <FinancialTooltip
+      title={contributor.name}
+      total={{
+        label: "Net assessment",
+        value: currency(contributor.net_assessment),
+      }}
+      actionHint="Click to explore details"
+    />
   );
 }
 

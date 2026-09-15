@@ -1,4 +1,9 @@
 "use client";
+import {
+  TREND_CHART_HEIGHT,
+  TREND_CHART_MARGIN,
+} from "@/components/charts/trendLayout";
+import { FinancialChartTooltip } from "./charts/FinancialChartTooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
 import * as React from "react";
@@ -23,7 +28,6 @@ import {
   FinancingInstrumentChart,
   FinancingInstrumentDataPoint,
 } from "@/components/charts/FinancingInstrumentChart";
-import { formatBudget } from "@/lib/contributors";
 
 // Type for the contributor trends data
 interface ContributorYearData {
@@ -204,12 +208,6 @@ export function ContributorTrendsChart() {
     [colorMap],
   );
 
-  // Custom tooltip formatter
-  const formatTooltipValue = (value: number | undefined) => {
-    if (value === undefined) return "";
-    return formatBudget(value);
-  };
-
   // Data for stacked area chart (financing instruments, filtered by selected contributor)
   const financingInstrumentData: FinancingInstrumentDataPoint[] =
     React.useMemo(() => {
@@ -245,7 +243,7 @@ export function ContributorTrendsChart() {
         {/* Chart A: Compare contributors (line chart) */}
         <div className="flex flex-col">
           {/* Title and chips */}
-          <div className="space-y-2">
+          <div className="space-y-2 pb-3">
             <h4 className="text-sm font-medium text-gray-700">
               Compare contributors
             </h4>
@@ -259,7 +257,10 @@ export function ContributorTrendsChart() {
           </div>
 
           {/* Chart - mt-auto pushes to bottom of grid cell */}
-          <div className="mt-auto h-[280px] w-full pt-3">
+          <div
+            className="mt-auto w-full shrink-0"
+            style={{ height: TREND_CHART_HEIGHT }}
+          >
             {loading ? (
               <div className="flex h-full items-center justify-center text-gray-500">
                 Loading trends...
@@ -270,10 +271,7 @@ export function ContributorTrendsChart() {
               </div>
             ) : (
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart
-                  data={chartData}
-                  margin={{ top: 20, right: 5, left: 5, bottom: 5 }}
-                >
+                <LineChart data={chartData} margin={TREND_CHART_MARGIN}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                   <XAxis
                     dataKey="year"
@@ -292,14 +290,7 @@ export function ContributorTrendsChart() {
                     mirror
                   />
                   <Tooltip
-                    formatter={formatTooltipValue}
-                    labelFormatter={(label) => `Year: ${label}`}
-                    contentStyle={{
-                      backgroundColor: "white",
-                      border: "1px solid #e5e7eb",
-                      borderRadius: "4px",
-                      fontSize: "12px",
-                    }}
+                    content={(props) => <FinancialChartTooltip {...props} />}
                   />
                   {lines.map((line) => (
                     <Line
@@ -320,7 +311,7 @@ export function ContributorTrendsChart() {
 
         {/* Chart B: Financing instruments (stacked area chart) */}
         <div className="flex flex-col">
-          <div className="space-y-2">
+          <div className="space-y-2 pb-3">
             <h4 className="text-sm font-medium text-gray-700">
               Funding by financing instrument
             </h4>
@@ -333,15 +324,18 @@ export function ContributorTrendsChart() {
               />
             </div>
           </div>
-          <div className="mt-auto pt-3">
+          <div className="mt-auto">
             {loading ? (
-              <div className="flex h-[280px] items-center justify-center text-gray-500">
+              <div
+                className="flex items-center justify-center text-gray-500"
+                style={{ height: TREND_CHART_HEIGHT }}
+              >
                 Loading trends...
               </div>
             ) : (
               <FinancingInstrumentChart
                 data={financingInstrumentData}
-                height={280}
+                height={TREND_CHART_HEIGHT}
                 filterable
               />
             )}

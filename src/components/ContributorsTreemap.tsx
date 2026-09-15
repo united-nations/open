@@ -1,4 +1,5 @@
 "use client";
+import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
 import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label";
@@ -11,7 +12,6 @@ import {
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { ContributorSidebar } from "@/components/ContributorSidebar";
 import { YearSlider } from "@/components/YearSlider";
-import { ClickHint } from "@/components/ui/ClickHint";
 import {
   clearSidebarHash,
   replaceToSidebar,
@@ -121,28 +121,25 @@ function ContributorTooltip({
     );
 
   return (
-    <div className="space-y-1" aria-live="polite" aria-atomic="true">
-      <p className="text-xs opacity-75">{context.breadcrumb.join(" › ")}</p>
-      <p className="text-sm font-semibold">{contributor.name}</p>
-      <p className="text-xs opacity-75">{category}</p>
-      <p className="text-xs font-semibold">
-        Net total: {formatBudget(context.leaf.value)}
-      </p>
-      {breakdown.map(([type, value]) => (
-        <div key={type} className="flex justify-between gap-4 text-xs">
-          <span>
-            {type}
-            {value < 0 ? " (negative adjustment)" : ""}
-          </span>
-          <span className="tabular-nums">{formatBudget(value)}</span>
-        </div>
-      ))}
-      <ClickHint
-        text={
-          contributor.is_other ? "Click for breakdown" : "Click for details"
-        }
-      />
-    </div>
+    <FinancialTooltip
+      title={contributor.name}
+      parents={[{ label: category, color: context.row.color }]}
+      total={{
+        label: "Net contributions",
+        value: formatBudget(context.leaf.value),
+      }}
+      rows={breakdown.map(([type, value]) => ({
+        label: type + (value < 0 ? " (negative adjustment)" : ""),
+        value: formatBudget(value),
+        color: context.leaf.segments?.find((segment) => segment.label === type)
+          ?.color,
+        share:
+          value >= 0 && context.leaf.value > 0
+            ? value / context.leaf.value
+            : undefined,
+      }))}
+      actionHint="Click to explore details"
+    />
   );
 }
 

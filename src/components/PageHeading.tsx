@@ -2,10 +2,12 @@ export function PageHeading({
   title,
   description,
   id,
+  children,
 }: {
   title: string;
-  description: string;
+  description: React.ReactNode;
   id?: string;
+  children?: React.ReactNode;
 }) {
   return (
     <section id={id} className="w-full scroll-mt-28 bg-gray-50">
@@ -16,6 +18,7 @@ export function PageHeading({
         <p className="max-w-3xl text-sm leading-relaxed text-gray-700 lg:text-base">
           {description}
         </p>
+        {children}
       </div>
     </section>
   );

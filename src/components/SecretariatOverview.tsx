@@ -1,4 +1,6 @@
 "use client";
+import { orderFundingTooltipRows } from "@/lib/financingInstruments";
+import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
 
@@ -28,6 +30,7 @@ import { SecretariatOverviewTrends } from "@/components/SecretariatOverviewTrend
 import { priorityAreaColor } from "@/lib/secretariatGroupings";
 import { useYearRanges } from "@/lib/useYearRanges";
 import type {
+  Entity,
   SecretariatGroup,
   SecretariatOverviewCell,
   SecretariatOverviewData,
@@ -51,6 +54,30 @@ interface OverviewTile {
 }
 
 export function SecretariatOverview() {
+  const [entityNames, setEntityNames] = useState<Record<string, string>>({});
+  useEffect(() => {
+    let active = true;
+    fetch(`${basePath}/data/entities.json`)
+      .then((response) => {
+        if (!response.ok) throw new Error("Entity names unavailable");
+        return response.json() as Promise<Entity[]>;
+      })
+      .then((entities) => {
+        if (active)
+          setEntityNames(
+            Object.fromEntries(
+              entities
+                .filter((entity) => entity.entity_long)
+                .map((entity) => [entity.entity, entity.entity_long]),
+            ),
+          );
+      })
+      .catch(() => {});
+    return () => {
+      active = false;
+    };
+  }, []);
+
   const years = useYearRanges().secretariatOverview;
   const [year, setYear] = useState(years.default);
   const [data, setData] = useState<SecretariatOverviewData | null>(null);
@@ -281,11 +308,21 @@ export function SecretariatOverview() {
         formatValue={formatBudget}
         formatAccessibleValue={formatBudget}
         renderTooltip={({ row, leaf }) => (
-          <div className="space-y-1">
-            <p className="font-semibold">{leaf.label}</p>
-            <p>{row.label}</p>
-            <p>{formatBudget(leaf.value)}</p>
-          </div>
+          <FinancialTooltip
+            title={entityNames[leaf.data?.entity.code ?? ""] ?? leaf.label}
+            parents={[{ label: row.label, color: row.color }]}
+            total={{ label: "Spending", value: formatBudget(leaf.value) }}
+            rows={orderFundingTooltipRows(leaf.segments).map((segment) => ({
+              label: segment.label,
+              value: formatBudget(segment.value),
+              color: segment.color,
+              share:
+                leaf.value > 0 && segment.value >= 0
+                  ? segment.value / leaf.value
+                  : undefined,
+            }))}
+            actionHint="Click to explore details"
+          />
         )}
         emptyContent={
           <div className="flex h-full items-center justify-center text-sm text-gray-500">

@@ -1,4 +1,5 @@
 "use client";
+import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
 import {
@@ -6,7 +7,6 @@ import {
   type GroupedTreemapRow,
   type GroupedTreemapTooltipContext,
 } from "@un-eosg/ui/components/grouped-treemap";
-import { ClickHint } from "@/components/ui/ClickHint";
 import { formatBudget } from "@/lib/entities";
 import { getRegionStyle } from "@/lib/regionGroupings";
 
@@ -47,23 +47,25 @@ function CountryTooltip({
 }) {
   const country = context.leaf.data;
   if (!country) return null;
-  const region = getRegionStyle(country.region || "Unknown");
+  return <CountryFinancialTooltip country={country} />;
+}
 
+export function CountryFinancialTooltip({
+  country,
+}: {
+  country: { name: string; region?: string; total: number };
+}) {
+  const region = getRegionStyle(country.region || "Unknown");
   return (
-    <div className="space-y-1 text-center">
-      <p className="text-sm font-semibold">{country.name}</p>
-      <div className="flex items-center justify-center gap-1.5 text-xs opacity-75">
-        <span
-          className="h-2 w-2 rounded-full"
-          style={{ backgroundColor: region.color }}
-        />
-        <span>{region.label}</span>
-      </div>
-      <p className="text-xs font-semibold">
-        {formatAccessibleBudget(country.total)}
-      </p>
-      <ClickHint />
-    </div>
+    <FinancialTooltip
+      title={country.name}
+      parents={[{ label: region.label, color: region.color }]}
+      total={{
+        label: "Spending",
+        value: formatAccessibleBudget(country.total),
+      }}
+      actionHint="Click to explore details"
+    />
   );
 }
 

@@ -170,7 +170,11 @@ export function SecretariatOverviewTrends() {
           <FinancingInstrumentChart
             data={fundingData}
             filterable
-            series={FUNDING_SOURCE_TREND_SERIES}
+            series={FUNDING_SOURCE_TREND_SERIES.map((item) =>
+              item.key === "other_assessed"
+                ? { ...item, color: "var(--color-faded-jade)" }
+                : item,
+            )}
           />
         </div>
       </div>

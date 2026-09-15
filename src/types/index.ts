@@ -265,6 +265,9 @@ export interface SecretariatMissionLocation {
   /** Budget presentation category, independent of the office mandate. */
   budgetCategory?: "field_mission" | "support_center";
   area: string;
+  /** Broad geographic name for financial tooltips; independent of marker placement. */
+  displayArea?: string;
+  displayAreaSource?: string;
   areaKind: "country" | "territory" | "subnational" | "region";
   iso3: string | null;
   lat: number;

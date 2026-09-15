@@ -1,4 +1,5 @@
 "use client";
+import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { fundingSources } from "@un-eosg/ui/funding-sources";
 import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label";
 
@@ -355,28 +356,24 @@ function MiniBudgetTooltip({
   const share = parentAmount > 0 ? (leaf.value / parentAmount) * 100 : 0;
   const segments = positiveFundingValues(node);
   return (
-    <div className="space-y-1">
-      {kind && (
-        <p className="text-[10px] tracking-wide text-slate-400 uppercase">
-          {kind}
-        </p>
-      )}
-      <p className="font-medium">{leaf.label}</p>
-      <p className="opacity-80">
-        {formatBudget(leaf.value)}
-        {parentAmount > 0 ? ` · ${share.toFixed(1)}%` : ""}
-      </p>
-      {segments.map(([source, amount]) => (
-        <p key={source} className="flex justify-between gap-4 text-xs">
-          <span>
-            {fundingLabels?.[source] ??
-              FUNDING_SOURCES[source]?.label ??
-              source}
-          </span>
-          <span className="tabular-nums">{formatBudget(amount)}</span>
-        </p>
-      ))}
-    </div>
+    <FinancialTooltip
+      title={node?.label ?? leaf.label}
+      parents={context.breadcrumb
+        .filter((label) => label !== leaf.label)
+        .map((label) => ({ label }))}
+      context={kind}
+      total={{ label: "Total", value: formatBudget(leaf.value) }}
+      rows={segments.map(([source, amount]) => ({
+        label:
+          fundingLabels?.[source] ?? FUNDING_SOURCES[source]?.label ?? source,
+        value: formatBudget(amount),
+        color: FUNDING_TREEMAP_COLORS[source],
+        share: leaf.value > 0 && amount >= 0 ? amount / leaf.value : undefined,
+      }))}
+      notes={
+        parentAmount > 0 ? `${share.toFixed(1)}% of parent total` : undefined
+      }
+    />
   );
 }
 
@@ -521,35 +518,25 @@ function BudgetHierarchy({
           </span>
         );
         const tooltipContent = (
-          <div className="space-y-2">
-            <p className="text-xs text-gray-500">{kindLabel}</p>
-            <p className="max-w-sm text-sm font-medium whitespace-normal">
-              {fullName}
-            </p>
-            <p className="text-sm">Total: {formatBudget(child.amount)}</p>
-            <div className="grid grid-cols-[max-content_4rem_max-content] items-center gap-x-2 gap-y-2 text-xs">
-              {fundingValues.map(([source, amount]) => (
-                <div key={source} className="contents">
-                  <span>{FUNDING_SOURCES[source].label}</span>
-                  <div className="w-full">
-                    <div
-                      className="h-1.5 rounded-sm"
-                      style={{
-                        width: `${(amount / fundingTotal) * 100}%`,
-                        backgroundColor: FUNDING_TREEMAP_COLORS[source],
-                      }}
-                    />
-                  </div>
-                  <span className="text-end tabular-nums">
-                    {formatBudget(amount)}
-                  </span>
-                </div>
-              ))}
-            </div>
-            {fundingValues.length === 0 && (
-              <p className="text-xs">Funding-source breakdown unavailable.</p>
-            )}
-          </div>
+          <FinancialTooltip
+            title={fullName}
+            context={kindLabel}
+            total={{ label: "Total", value: formatBudget(child.amount) }}
+            rows={fundingValues.map(([source, amount]) => ({
+              label: FUNDING_SOURCES[source].label,
+              value: formatBudget(amount),
+              color: FUNDING_TREEMAP_COLORS[source],
+              share:
+                fundingTotal > 0 && amount >= 0
+                  ? amount / fundingTotal
+                  : undefined,
+            }))}
+            notes={
+              fundingValues.length === 0
+                ? "Funding-source breakdown unavailable."
+                : undefined
+            }
+          />
         );
         return (
           <FinancialBreakdownRow

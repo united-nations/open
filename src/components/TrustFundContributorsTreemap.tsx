@@ -1,4 +1,5 @@
 "use client";
+import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
@@ -65,16 +66,15 @@ function ContributorTooltip({
   const contributor = context.leaf.data;
   if (!contributor) return null;
   return (
-    <div className="space-y-0.5">
-      <p className="text-sm font-semibold">{contributor.name}</p>
-      <p className="text-xs">
-        {currency(contributor.amount_usd)} net recognized
-      </p>
-      <p className="text-xs opacity-75">
-        {contributor.destinations.length} destination fund
-        {contributor.destinations.length === 1 ? "" : "s"}
-      </p>
-    </div>
+    <FinancialTooltip
+      title={contributor.name}
+      parents={[{ label: context.row.label, color: context.row.color }]}
+      total={{
+        label: "Net recognized contributions",
+        value: currency(contributor.amount_usd),
+      }}
+      actionHint="Click to explore details"
+    />
   );
 }
 

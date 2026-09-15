@@ -1,4 +1,6 @@
 "use client";
+import { orderFundingTooltipRows } from "@/lib/financingInstruments";
+import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
 
@@ -2023,30 +2025,41 @@ export function BudgetTreemap({
               BudgetFundingSource
             >,
           ) => (
-            <div className="space-y-1">
-              <p className="text-sm font-semibold">{context.leaf.label}</p>
-              <p className="text-xs opacity-80">
-                {context.breadcrumb.join(" › ")}
-              </p>
-              <p className="text-xs font-medium">
-                {formatBudget(context.leaf.value)}
-              </p>
-              {(context.leaf.segments ?? []).map((segment) => (
-                <p
-                  key={segment.key}
-                  className="flex justify-between gap-4 text-xs"
-                >
-                  <span>{segment.label}</span>
-                  <span className="tabular-nums">
-                    {formatBudget(segment.value)}
-                  </span>
-                </p>
-              ))}
-              {context.leaf.data?.note && (
-                <p className="text-xs opacity-80">{context.leaf.data.note}</p>
-              )}
-              <p className="text-xs opacity-70">Click for details</p>
-            </div>
+            <FinancialTooltip
+              title={context.leaf.data?.node.label ?? context.leaf.label}
+              parents={context.breadcrumb
+                .filter(
+                  (label) =>
+                    label !== context.leaf.label &&
+                    !(isTrustFund && label === "Individual trust funds"),
+                )
+                .map((label, index) => ({
+                  label,
+                  color: index === 0 ? context.row.color : undefined,
+                }))}
+              total={{
+                label:
+                  metric === "expenditure"
+                    ? "Expenditure"
+                    : metric === "approved"
+                      ? "Approved budget"
+                      : "Proposed budget",
+                value: formatBudget(context.leaf.value),
+              }}
+              rows={orderFundingTooltipRows(context.leaf.segments)
+                .filter(() => !isTrustFund)
+                .map((segment) => ({
+                  label: segment.label,
+                  value: formatBudget(segment.value),
+                  color: segment.color,
+                  share:
+                    context.leaf.value > 0 && segment.value >= 0
+                      ? segment.value / context.leaf.value
+                      : undefined,
+                }))}
+              notes={context.leaf.data?.note}
+              actionHint="Click to explore details"
+            />
           )}
           emptyContent={
             <div className="flex h-full items-center justify-center text-sm text-gray-500">
@@ -2585,35 +2598,61 @@ export function BudgetTreemap({
             ✕
           </button>
           <div className="pr-8">
-            <p className="text-sm leading-tight font-medium text-gray-900">
-              {isAlignedPpb && ppbGrouping === "section"
-                ? tooltip.tile.caption
-                : (tooltip.tile.node.entity?.name ?? tooltip.tile.caption)}
-            </p>
-            {tooltip.tile.node.parentId && byId[tooltip.tile.node.parentId] && (
-              <p className="mt-1 text-xs text-gray-500">
-                {byId[tooltip.tile.node.parentId].label}
-              </p>
-            )}
-            <p className="mt-2 text-sm font-medium text-gray-900">
-              {formatBudget(tooltip.tile.node.amount)}{" "}
-              {formatVariance(tooltip.tile.variance)}
-            </p>
-            {positiveFundingValues(tooltip.tile.node).map(([key, amount]) => (
-              <p key={key} className="mt-0.5 text-xs text-gray-500">
-                {fundingLabel(key)} {formatBudget(amount)}
-              </p>
-            ))}
-            {tooltip.tile.appearsInMultipleLocations && (
-              <p className="mt-1 text-xs text-gray-500">
-                This entity also appears elsewhere in the budget hierarchy.
-              </p>
-            )}
-            {unitExplanation(tooltip.tile.node) && (
-              <p className="mt-1 text-xs text-gray-500">
-                {unitExplanation(tooltip.tile.node)}
-              </p>
-            )}
+            <FinancialTooltip
+              title={
+                isAlignedPpb && ppbGrouping === "section"
+                  ? tooltip.tile.caption
+                  : (tooltip.tile.node.entity?.name ?? tooltip.tile.caption)
+              }
+              parents={
+                tooltip.tile.node.parentId && byId[tooltip.tile.node.parentId]
+                  ? [{ label: byId[tooltip.tile.node.parentId].label }]
+                  : []
+              }
+              total={{
+                label:
+                  metric === "expenditure"
+                    ? "Expenditure"
+                    : metric === "approved"
+                      ? "Approved budget"
+                      : "Proposed budget",
+                value: formatBudget(tooltip.tile.node.amount),
+              }}
+              rows={positiveFundingValues(tooltip.tile.node)
+                .filter(() => !isTrustFund)
+                .map(([key, amount]) => ({
+                  label: fundingLabel(key),
+                  value: formatBudget(amount),
+                  color: FUNDING_SOURCES[key].color,
+                  share:
+                    tooltip.tile.node.amount > 0
+                      ? amount / tooltip.tile.node.amount
+                      : undefined,
+                }))}
+              notes={
+                <>
+                  {formatVariance(tooltip.tile.variance) && (
+                    <p>{formatVariance(tooltip.tile.variance)}</p>
+                  )}
+                  {tooltip.tile.appearsInMultipleLocations && (
+                    <p>
+                      This entity also appears elsewhere in the budget
+                      hierarchy.
+                    </p>
+                  )}
+                  {unitExplanation(tooltip.tile.node) && (
+                    <p>{unitExplanation(tooltip.tile.node)}</p>
+                  )}
+                  {isPko && tooltip.tile.node.costClass && (
+                    <p>
+                      {COST_CLASS_SHORT[tooltip.tile.node.costClass] ??
+                        tooltip.tile.node.costClass}
+                    </p>
+                  )}
+                </>
+              }
+              actionHint="Click to explore details"
+            />
             <button
               onClick={() => openSidebar(tooltip.tile.node.id)}
               className="mt-3 w-full rounded bg-un-blue px-4 py-2 text-sm font-medium text-white hover:bg-un-blue/90"
@@ -2632,42 +2671,60 @@ export function BudgetTreemap({
             top: Math.min(tooltip.y + 12, window.innerHeight - 200),
           }}
         >
-          <p className="text-sm leading-tight font-medium text-gray-900">
-            {isAlignedPpb && ppbGrouping === "section"
-              ? tooltip.tile.caption
-              : (tooltip.tile.node.entity?.name ?? tooltip.tile.caption)}
-          </p>
-          {tooltip.tile.node.parentId && byId[tooltip.tile.node.parentId] && (
-            <p className="mt-1 text-xs text-gray-500">
-              {byId[tooltip.tile.node.parentId].label}
-            </p>
-          )}
-          {isPko && tooltip.tile.node.costClass && (
-            <p className="text-xs text-gray-500">
-              {COST_CLASS_SHORT[tooltip.tile.node.costClass] ??
-                tooltip.tile.node.costClass}
-            </p>
-          )}
-          <p className="mt-1 text-xs font-medium text-gray-700">
-            {formatBudget(tooltip.tile.node.amount)}{" "}
-            {formatVariance(tooltip.tile.variance)}
-          </p>
-          {positiveFundingValues(tooltip.tile.node).map(([key, amount]) => (
-            <p key={key} className="mt-0.5 text-xs text-gray-500">
-              {fundingLabel(key)} {formatBudget(amount)}
-            </p>
-          ))}
-          {tooltip.tile.appearsInMultipleLocations && (
-            <p className="mt-1 text-xs text-gray-500">
-              This entity also appears elsewhere in the budget hierarchy.
-            </p>
-          )}
-          {unitExplanation(tooltip.tile.node) && (
-            <p className="mt-1 text-xs text-gray-500">
-              {unitExplanation(tooltip.tile.node)}
-            </p>
-          )}
-          <p className="mt-1 text-xs text-gray-400">Click for details</p>
+          <FinancialTooltip
+            title={
+              isAlignedPpb && ppbGrouping === "section"
+                ? tooltip.tile.caption
+                : (tooltip.tile.node.entity?.name ?? tooltip.tile.caption)
+            }
+            parents={
+              tooltip.tile.node.parentId && byId[tooltip.tile.node.parentId]
+                ? [{ label: byId[tooltip.tile.node.parentId].label }]
+                : []
+            }
+            total={{
+              label:
+                metric === "expenditure"
+                  ? "Expenditure"
+                  : metric === "approved"
+                    ? "Approved budget"
+                    : "Proposed budget",
+              value: formatBudget(tooltip.tile.node.amount),
+            }}
+            rows={positiveFundingValues(tooltip.tile.node)
+              .filter(() => !isTrustFund)
+              .map(([key, amount]) => ({
+                label: fundingLabel(key),
+                value: formatBudget(amount),
+                color: FUNDING_SOURCES[key].color,
+                share:
+                  tooltip.tile.node.amount > 0
+                    ? amount / tooltip.tile.node.amount
+                    : undefined,
+              }))}
+            notes={
+              <>
+                {formatVariance(tooltip.tile.variance) && (
+                  <p>{formatVariance(tooltip.tile.variance)}</p>
+                )}
+                {tooltip.tile.appearsInMultipleLocations && (
+                  <p>
+                    This entity also appears elsewhere in the budget hierarchy.
+                  </p>
+                )}
+                {unitExplanation(tooltip.tile.node) && (
+                  <p>{unitExplanation(tooltip.tile.node)}</p>
+                )}
+                {isPko && tooltip.tile.node.costClass && (
+                  <p>
+                    {COST_CLASS_SHORT[tooltip.tile.node.costClass] ??
+                      tooltip.tile.node.costClass}
+                  </p>
+                )}
+              </>
+            }
+            actionHint="Click to explore details"
+          />
         </div>
       )}
 

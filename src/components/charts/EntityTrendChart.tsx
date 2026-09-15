@@ -1,4 +1,6 @@
 "use client";
+import { TREND_CHART_MARGIN } from "@/components/charts/trendLayout";
+import { FinancialChartTooltip } from "./FinancialChartTooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
 import {
@@ -10,7 +12,6 @@ import {
   Tooltip as RechartsTooltip,
   ResponsiveContainer,
 } from "recharts";
-import { formatBudget } from "@/lib/contributors";
 
 export interface EntityTrendDataPoint {
   year: string;
@@ -25,12 +26,6 @@ interface EntityTrendChartProps {
 }
 
 const formatYAxis = sharedFormatBudget;
-
-const formatTooltipValue = (value: unknown) => {
-  if (value === null || value === undefined || typeof value !== "number")
-    return "N/A";
-  return formatBudget(value);
-};
 
 export function EntityTrendChart({
   data,
@@ -48,10 +43,7 @@ export function EntityTrendChart({
   return (
     <div style={{ height }} className="w-full">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart
-          data={validData}
-          margin={{ top: 10, right: 5, left: 5, bottom: 5 }}
-        >
+        <LineChart data={validData} margin={TREND_CHART_MARGIN}>
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
           <XAxis
             dataKey="year"
@@ -75,14 +67,7 @@ export function EntityTrendChart({
             mirror
           />
           <RechartsTooltip
-            formatter={formatTooltipValue}
-            labelFormatter={(label) => `Year: ${label}`}
-            contentStyle={{
-              backgroundColor: "white",
-              border: "1px solid #e5e7eb",
-              borderRadius: "4px",
-              fontSize: "12px",
-            }}
+            content={(props) => <FinancialChartTooltip {...props} />}
           />
           <Line
             type="monotone"

@@ -1,4 +1,9 @@
 "use client";
+import {
+  TREND_CHART_HEIGHT,
+  TREND_CHART_MARGIN,
+} from "@/components/charts/trendLayout";
+import { FinancialChartTooltip } from "./charts/FinancialChartTooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
@@ -21,7 +26,6 @@ import {
   HierarchicalSingleSelect,
   HierarchicalGroup as SingleSelectGroup,
 } from "@/components/ui/hierarchical-single-select";
-import { formatBudget } from "@/lib/entities";
 import {
   getSortedSystemGroupings,
   getSystemGroupingStyle,
@@ -303,13 +307,6 @@ export function EntityTrendsChart() {
     [colorMap],
   );
 
-  // Custom tooltip formatter
-  const formatTooltipValue = (value: unknown) => {
-    if (value === null || value === undefined || typeof value !== "number")
-      return "N/A";
-    return formatBudget(value);
-  };
-
   // Y-axis tick formatter
   const formatYAxis = sharedFormatBudget;
 
@@ -320,7 +317,7 @@ export function EntityTrendsChart() {
         {/* Chart A: Revenue vs Expenses (single selection) */}
         <div className="flex flex-col">
           {/* Title and selector */}
-          <div className="space-y-2">
+          <div className="space-y-2 pb-3">
             <h4 className="text-sm font-medium text-gray-700">
               Revenue vs Expenses
             </h4>
@@ -348,7 +345,10 @@ export function EntityTrendsChart() {
           </div>
 
           {/* Chart - mt-auto pushes to bottom of grid cell */}
-          <div className="mt-auto h-[280px] w-full pt-3">
+          <div
+            className="mt-auto w-full shrink-0"
+            style={{ height: TREND_CHART_HEIGHT }}
+          >
             {loading ? (
               <div className="flex h-full items-center justify-center text-gray-500">
                 Loading trends...
@@ -368,7 +368,7 @@ export function EntityTrendsChart() {
               <ResponsiveContainer width="100%" height="100%">
                 <LineChart
                   data={revenueExpensesData}
-                  margin={{ top: 20, right: 5, left: 5, bottom: 5 }}
+                  margin={TREND_CHART_MARGIN}
                 >
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                   <XAxis
@@ -388,14 +388,7 @@ export function EntityTrendsChart() {
                     mirror
                   />
                   <Tooltip
-                    formatter={formatTooltipValue}
-                    labelFormatter={(label) => `Year: ${label}`}
-                    contentStyle={{
-                      backgroundColor: "white",
-                      border: "1px solid #e5e7eb",
-                      borderRadius: "4px",
-                      fontSize: "12px",
-                    }}
+                    content={(props) => <FinancialChartTooltip {...props} />}
                   />
                   {showRevenue && (
                     <Line
@@ -428,7 +421,7 @@ export function EntityTrendsChart() {
         {/* Chart B: Compare expenses (multi-selection) */}
         <div className="flex flex-col">
           {/* Title and chips */}
-          <div className="space-y-2">
+          <div className="space-y-2 pb-3">
             <h4 className="text-sm font-medium text-gray-700">
               Compare expenses
             </h4>
@@ -442,7 +435,10 @@ export function EntityTrendsChart() {
           </div>
 
           {/* Chart - mt-auto pushes to bottom of grid cell */}
-          <div className="mt-auto h-[280px] w-full pt-3">
+          <div
+            className="mt-auto w-full shrink-0"
+            style={{ height: TREND_CHART_HEIGHT }}
+          >
             {loading ? (
               <div className="flex h-full items-center justify-center text-gray-500">
                 Loading trends...
@@ -453,10 +449,7 @@ export function EntityTrendsChart() {
               </div>
             ) : (
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart
-                  data={compareData}
-                  margin={{ top: 20, right: 5, left: 5, bottom: 5 }}
-                >
+                <LineChart data={compareData} margin={TREND_CHART_MARGIN}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                   <XAxis
                     dataKey="year"
@@ -475,14 +468,7 @@ export function EntityTrendsChart() {
                     mirror
                   />
                   <Tooltip
-                    formatter={formatTooltipValue}
-                    labelFormatter={(label) => `Year: ${label}`}
-                    contentStyle={{
-                      backgroundColor: "white",
-                      border: "1px solid #e5e7eb",
-                      borderRadius: "4px",
-                      fontSize: "12px",
-                    }}
+                    content={(props) => <FinancialChartTooltip {...props} />}
                   />
                   {compareLines.map((line) => (
                     <Line

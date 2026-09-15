@@ -1,4 +1,6 @@
 "use client";
+import { missionLocationLabel } from "@/lib/missionLocations";
+import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 
 import { useEffect, useMemo, useState } from "react";
@@ -185,7 +187,10 @@ export function FieldMissionsMap({
 
   return (
     <div className="relative w-full">
-      <DelayedChartLoading pending={overview?.meta.year !== year} requestKey={year} />
+      <DelayedChartLoading
+        pending={overview?.meta.year !== year}
+        requestKey={year}
+      />
       <div className="mb-3 flex justify-end">
         <YearSlider
           years={years.years}
@@ -287,48 +292,15 @@ export function FieldMissionsMap({
                 : `Map of special political mission expenses in ${year}`
           }
           tooltip={(point: MissionPoint) => (
-            <div style={{ maxWidth: "260px", padding: "4px" }}>
-              <p
-                style={{
-                  margin: 0,
-                  color: "#0f172a",
-                  fontSize: "14px",
-                  fontWeight: 600,
-                }}
-              >
-                {point.data.location.code}
-              </p>
-              <p
-                style={{
-                  margin: "3px 0 0",
-                  color: "#475569",
-                  fontSize: "12px",
-                  lineHeight: 1.35,
-                }}
-              >
-                {point.data.location.name}
-              </p>
-              <p
-                style={{
-                  margin: "6px 0 0",
-                  color: "#64748b",
-                  fontSize: "12px",
-                }}
-              >
-                {entitiesData.groups[point.data.group].label} ·{" "}
-                {point.data.location.area}
-              </p>
-              <p
-                style={{
-                  margin: "4px 0 0",
-                  color: "#334155",
-                  fontSize: "13px",
-                  fontWeight: 700,
-                }}
-              >
-                {formatBudget(point.data.amount)}
-              </p>
-            </div>
+            <FinancialTooltip
+              title={`${point.data.location.code} · ${point.data.location.name}`}
+              parents={[{ label: entitiesData.groups[point.data.group].label }]}
+              context={missionLocationLabel(point.data.location)}
+              total={{
+                label: "Spending",
+                value: formatBudget(point.data.amount),
+              }}
+            />
           )}
           styles={{
             tooltip: {
