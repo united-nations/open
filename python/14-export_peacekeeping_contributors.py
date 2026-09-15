@@ -530,6 +530,7 @@ def parse_statement_document(
         for words in group_words_by_line(page):
             row = parse_statement_member_row(words)
             if row:
+                row["pdf_page"] = page_number
                 current["rows"].append(row)
                 continue
             source_total = parse_statement_total(words)
@@ -622,6 +623,7 @@ def parse_statement_circular(circular: Circular) -> dict:
         section_output.append(
             {
                 **section,
+                "member_pages": {row["name"]: row["pdf_page"] for row in rows if row.get("pdf_page")},
                 "sign": sign,
                 "contributor_count": len(rows),
                 "omitted_zero_credit_rows": (
@@ -740,6 +742,7 @@ def parse_circular(circular: Circular) -> dict:
                         " ".join([*pending_name, row["name"]])
                     )
                     pending_name = []
+                row["pdf_page"] = page_number
                 current["rows"].append(row)
                 continue
 
@@ -873,6 +876,7 @@ def parse_circular(circular: Circular) -> dict:
         section_output.append(
             {
                 **section,
+                "member_pages": {row["name"]: row["pdf_page"] for row in rows if row.get("pdf_page")},
                 "sign": sign,
                 "contributor_count": len(rows),
                 "omitted_zero_credit_rows": (

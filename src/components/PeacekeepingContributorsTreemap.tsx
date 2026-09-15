@@ -1,4 +1,5 @@
 "use client";
+import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
@@ -23,6 +24,8 @@ import type {
   PeacekeepingContributorsData,
 } from "@/types";
 
+import { peacekeepingContributorSources } from "@/lib/peacekeepingSources";
+
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const currency = sharedFormatBudget;
@@ -37,7 +40,9 @@ function matchesQuery(name: string, query: string): boolean {
 
 function ContributorTooltip({
   context,
+  meta,
 }: {
+  meta: PeacekeepingContributorsData["meta"];
   context: GroupedTreemapTooltipContext<
     "member-states",
     never,
@@ -54,6 +59,15 @@ function ContributorTooltip({
         label: "Net assessment",
         value: currency(contributor.net_assessment),
       }}
+      notes={
+        <SourceReferenceLinks
+          references={peacekeepingContributorSources(
+            contributor.missions,
+            meta,
+            contributor.name,
+          )}
+        />
+      }
       actionHint="Click to explore details"
     />
   );
@@ -261,7 +275,7 @@ export function PeacekeepingContributorsTreemap() {
             formatValue={(value) => currency(value)}
             formatAccessibleValue={(value) => currency(value)}
             renderTooltip={(context) => (
-              <ContributorTooltip context={context} />
+              <ContributorTooltip context={context} meta={data.meta} />
             )}
             emptyContent={
               <div className="flex h-full items-center justify-center text-sm text-gray-500">

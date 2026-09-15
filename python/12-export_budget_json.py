@@ -225,58 +225,74 @@ def citation_source(citation: dict | None) -> dict | None:
         "url": url,
         "pdfPage": page,
         "pageStatus": citation.get("pageStatus"),
+        "pdfPageScope": citation.get("pdfPageScope") or citation.get("pagePrecision") or ("table" if page is not None else None),
+        "pageLocatedBy": citation.get("pageLocatedBy"),
         "rowLabel": citation.get("rowLabel") or "",
         "columnHeader": " › ".join(str(item) for item in header),
         "tableTitle": citation.get("tableTitle") or citation.get("tableCaption"),
     }
 
 
-def apply_pdf_page_index(view: dict, edition: int) -> tuple[int, int]:
-    """Fill legacy null citation pages from the producer's page-index output.
+def inherit_metric_sources(nodes: list[dict]) -> None:
+    """Attach contributing row evidence to already-calculated metric roll-ups.
 
-    The join key is the canonical document symbol plus the physical Word table
-    ordinal, exactly the producer key in ``financial_export.py``.  A missing or
-    ambiguous page remains null; no neighbouring page is guessed.
+    This fills citations only; values and selection semantics are untouched.
+    Printed controls retain their own references. Synthetic zero-valued parents
+    still retain their children's evidence, rather than treating zero as absent.
     """
-    outline = (
+    children: dict[str, list[dict]] = {}
+    for node in nodes:
+        if node.get("parentId"):
+            children.setdefault(node["parentId"], []).append(node)
+
+    def collect(node: dict, metric: str, funding: str) -> list[dict]:
+        direct = node.get("metricSources", {}).get(metric, {}).get(funding)
+        if direct:
+            return direct
+        if funding not in node.get("metricValues", {}).get(metric, {}):
+            return []
+        references = [
+            reference
+            for child in children.get(node["id"], [])
+            for reference in collect(child, metric, funding)
+        ]
+        unique = {
+            (ref["url"], ref.get("rowLabel"), ref.get("columnHeader")): {
+                **ref,
+                "label": f"{FUNDING_NAMES[funding]} — supporting row for calculated total",
+            }
+            for ref in references
+        }
+        if unique:
+            node.setdefault("metricSources", {}).setdefault(metric, {})[funding] = list(unique.values())
+        return list(unique.values())
+
+    for node in nodes:
+        for metric in PPB_METRICS:
+            for funding in node.get("metricValues", {}).get(metric, {}):
+                collect(node, metric, funding)
+
+
+def apply_pdf_page_index(view: dict, edition: int) -> tuple[int, int]:
+    """Apply a hash-bound producer PDF evidence sidecar to immutable citations.
+
+    Bare DOCX table ordinals cannot be joined across source revisions. Without
+    a matching sidecar preserve released citations; never guess from an outline.
+    """
+    sidecar = (
         PROGRAMME_BUDGET_DATA / "data" / "processed" / f"ppb{edition}"
-        / "extracted" / "document_outline.csv"
+        / "extracted" / "financial_pages.json"
     )
     citations = view.get("citations") or []
-    if not outline.is_file():
-        return 0, len(citations)
-
-    ordinals: dict[str, int] = {}
-    pages: dict[tuple[str, int], tuple[int, str | None]] = {}
-    with outline.open(encoding="utf-8", newline="") as handle:
-        for row in csv.DictReader(handle):
-            if row.get("block_type") != "table-content":
-                continue
-            symbol = re.sub(r"\s+", " ", row.get("symbol") or "").strip().casefold()
-            ordinal = ordinals.get(symbol, 0) + 1
-            ordinals[symbol] = ordinal
-            page = (row.get("page") or "").strip()
-            if page.isdigit():
-                pages[(symbol, ordinal)] = (
-                    int(page), (row.get("located_by") or "").strip() or None
-                )
-
-    located = 0
-    for citation in citations:
-        if citation.get("pdfPage") is not None:
-            located += 1
-            continue
-        symbol = re.sub(r"\s+", " ", citation["symbol"]).strip().casefold()
-        match = pages.get((symbol, int(citation["tableOrdinal"])))
-        if not match:
-            continue
-        page, located_by = match
-        citation["pdfPage"] = page
-        citation["pageStatus"] = "located"
-        citation["pageLocatedBy"] = located_by
-        citation["pageMissReason"] = None
-        located += 1
-    return located, len(citations)
+    if sidecar.is_file():
+        page_data = json.loads(sidecar.read_text())
+        assert page_data.get("edition") == edition, f"Wrong page sidecar edition: {sidecar}"
+        assert page_data.get("inputSha256") == sha256(SRC / "financial" / f"{edition}.json"), f"Stale page sidecar: {sidecar}"
+        evidence = page_data.get("citations", {})
+        for citation in citations:
+            if citation.get("citationId") in evidence:
+                citation.update(evidence[citation["citationId"]])
+    return sum(c.get("pdfPage") is not None for c in citations), len(citations)
 
 
 def stable_id(parent_id: str, label: str, used: set[str]) -> str:
@@ -354,7 +370,7 @@ def metric_value_resolver(financial: dict | None, view: dict):
     of those same rows.  This retains one stable hierarchy across every lens.
     """
     if not financial:
-        return lambda _node, _funding, _metric: None
+        return (lambda _node, _funding, _metric: None), (lambda _node, _funding, _metric: [])
 
     edition = int(view["lens"]["edition"])
     citations = {row["citationId"]: row for row in financial["citations"]}
@@ -396,7 +412,7 @@ def metric_value_resolver(financial: dict | None, view: dict):
             )
         return [(measure, edition) for measure in measures]
 
-    def resolve(node: dict, funding: str, metric: str) -> int | None:
+    def select(node: dict, funding: str, metric: str) -> list[dict]:
         value = (node.get("values") or {}).get(funding) or {}
         source_ids = value.get("sourceCitationIds") or []
         row_keys = []
@@ -435,11 +451,29 @@ def metric_value_resolver(financial: dict | None, view: dict):
                         and row["lens"].get("dataYear") == data_year
                     ]
                     if len(matches) == 1:
-                        return int(matches[0]["money"]["amountExact"])
-            return None
-        return sum(int(row["money"]["amountExact"]) for row in selected.values())
+                        return matches
+            return []
+        return list(selected.values())
 
-    return resolve
+    def resolve(node: dict, funding: str, metric: str) -> int | None:
+        selected = select(node, funding, metric)
+        return sum(int(row["money"]["amountExact"]) for row in selected) if selected else None
+
+    def references(node: dict, funding: str, metric: str) -> list[dict]:
+        # Exactly the observation columns that supplied the value above. The
+        # expenditure citation is only a row locator, never the target source.
+        selected = select(node, funding, metric)
+        result = []
+        for observation in selected:
+            source = citation_source(citations.get(observation.get("citationId")))
+            if source:
+                source["label"] = FUNDING_NAMES[funding]
+                if len(selected) > 1:
+                    source["label"] += " — supporting row for calculated total"
+                result.append(source)
+        return result
+
+    return resolve, references
 
 
 # --------------------------------------------------------------------------
@@ -474,8 +508,28 @@ def build_ppb(view: dict, financial: dict | None = None) -> dict:
         citation = citations_by_id.get(primary.get("citationId"), primary)
         return citation_source(citation)
 
+    def expenditure_sources(value: dict, funding: str) -> list[dict]:
+        # Derived totals often have several sourceCitationIds and no single
+        # primarySource. Retain every input instead of losing their provenance.
+        primary = value.get("primarySource") or {}
+        source_ids = list(dict.fromkeys(value.get("sourceCitationIds") or []))
+        if primary.get("citationId") and primary["citationId"] not in source_ids:
+            source_ids.append(primary["citationId"])
+        refs = []
+        for citation_id in source_ids:
+            citation = citations_by_id.get(citation_id)
+            if not citation and citation_id == primary.get("citationId"):
+                citation = primary
+            source = citation_source(citation)
+            if source:
+                source["label"] = FUNDING_NAMES[funding]
+                if len(source_ids) > 1 or (value.get("total") or {}).get("basis") != "printed":
+                    source["label"] += " — supporting row for calculated total"
+                refs.append(source)
+        return refs
+
     relationships, section_verdicts, entity_summary = entity_index(view)
-    resolve_metric_value = metric_value_resolver(financial, view)
+    resolve_metric_value, resolve_metric_sources = metric_value_resolver(financial, view)
 
     # Walk the tree from the root, so that a node is always built after its
     # parent and can be given an id below its parent's.
@@ -618,6 +672,19 @@ def build_ppb(view: dict, financial: dict | None = None) -> dict:
                 },
             },
         }
+        entry["metricSources"] = {
+            metric: {
+                funding: refs
+                for funding in entry["metricValues"].get(metric, {})
+                if (refs := resolve_metric_sources(n, funding, metric))
+            }
+            for metric in ("approved", "proposed")
+        }
+        entry["metricSources"]["expenditure"] = {
+            funding: refs
+            for funding in published
+            if (refs := expenditure_sources(n["values"].get(funding) or {}, funding))
+        }
         if authoritative_amount is not None:
             entry["allSourcesAmount"] = authoritative_amount
         if funding_sum is not None:
@@ -754,6 +821,16 @@ def build_ppb(view: dict, financial: dict | None = None) -> dict:
 
     roll_up_metrics()
 
+    def metric_evidence(node: dict, metric: str, funding: str) -> list[dict]:
+        direct = node.get("metricSources", {}).get(metric, {}).get(funding, [])
+        if direct:
+            return direct
+        return [
+            source
+            for child in children_by_parent.get(node["id"], [])
+            for source in metric_evidence(child, metric, funding)
+        ]
+
     # If an authoritative parent has exactly one unpriced child for a metric,
     # the missing child's value is the exact remainder after its priced
     # siblings. This principally carries section controls into their single
@@ -776,8 +853,26 @@ def build_ppb(view: dict, financial: dict | None = None) -> dict:
                 remainder = parent_amount - known
                 if remainder >= 0:
                     missing[0]["metricValues"].setdefault(metric, {})[funding] = remainder
+                    # This is subtraction, not a printed value on the
+                    # missing child's row. Preserve its parent and sibling
+                    # evidence and identify it explicitly as calculated.
+                    supporting = metric_evidence(node, metric, funding) + [
+                        source
+                        for child in children if child not in missing
+                        for source in metric_evidence(child, metric, funding)
+                    ]
+                    unique = {
+                        (ref["url"], ref["rowLabel"], ref["columnHeader"]): {
+                            **ref,
+                            "label": f"{FUNDING_NAMES[funding]} — supporting reference for calculated remainder",
+                        }
+                        for ref in supporting
+                    }
+                    if unique:
+                        missing[0].setdefault("metricSources", {}).setdefault(metric, {})[funding] = list(unique.values())
 
     roll_up_metrics()
+    inherit_metric_sources(nodes)
     for node in nodes:
         metric_values = node["metricValues"]
         node["metricAmounts"] = {
@@ -928,6 +1023,15 @@ def annual_metric_payload(payload: dict, metric: str) -> dict:
         }
         node["values"] = selected
         node["metricValues"] = {metric: selected}
+        selected_sources = {
+            funding: references
+            for funding, references in node.get("metricSources", {}).get(metric, {}).items()
+            if funding in selected
+        }
+        if selected_sources:
+            node["metricSources"] = {metric: selected_sources}
+        else:
+            node.pop("metricSources", None)
         selected_amount = sum(selected.values())
         node["metricAmounts"] = {metric: selected_amount}
         if metric != "expenditure":
@@ -1059,7 +1163,10 @@ def build_pko(cycle: dict, view: dict) -> dict:
                 "url": o["source"]["sourceDocumentUrl"],
                 "rowLabel": o["source"]["rowLabel"],
                 "columnHeader": o["source"]["columnHeader"],
+                **{key: o["source"][key] for key in ("pdfPage", "pdfPages", "pageStatus", "pdfPageScope") if key in o["source"]},
             }
+            if o["source"].get("pdfUrl"):
+                node["source"]["url"] = o["source"]["pdfUrl"]
         nodes.append(node)
 
     fiscal_year = view["lens"]["fiscalYear"]
@@ -1259,6 +1366,14 @@ def prepare_local_financial() -> None:
             f"{len(views[0]['nodes'])} nodes)"
         )
 
+    pko_dir = SRC / "pko"
+    pko_dir.mkdir(parents=True, exist_ok=True)
+    for cycle in PKO_CYCLES:
+        source = PROGRAMME_BUDGET_DATA / "data/processed/financial/pko" / f"{cycle}.json"
+        assert source.is_file(), f"PKO {cycle}: missing local financial export {source}"
+        shutil.copyfile(source, pko_dir / f"{cycle}.json")
+        print(f"cached local PKO {cycle} with PDF citations")
+
 
 def export() -> None:
     assert SRC.is_dir(), (
@@ -1291,6 +1406,7 @@ def export() -> None:
         assert financial_path.is_file(), f"PPB {edition}: missing released financial source"
         financial = json.loads(financial_path.read_text())
         pages, citations = apply_pdf_page_index(view, edition)
+        apply_pdf_page_index(financial, edition)
         payload = build_ppb(view, financial)
         for metric in ("proposed", "approved", "expenditure"):
             annual = annual_metric_payload(payload, metric)

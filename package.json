@@ -25,7 +25,7 @@
     "@radix-ui/react-slot": "^1.2.4",
     "@radix-ui/react-switch": "^1.2.6",
     "@radix-ui/react-tooltip": "^1.2.8",
-    "@un-eosg/ui": "file:../ui",
+    "@un-eosg/ui": "github:UN-EOSG-Analytics/ui#cd09ee19d4ed70171ea36dcaad6900b29c05a161",
     "@undp/data-viz": "^2.2.3",
     "@undp/design-system-react": "^1.5.5",
     "class-variance-authority": "^0.7.1",

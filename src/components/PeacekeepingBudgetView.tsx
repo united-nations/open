@@ -1,4 +1,5 @@
 "use client";
+import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { missionLocationLabel } from "@/lib/missionLocations";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
@@ -13,7 +14,8 @@ import {
   GroupedTreemap,
   type GroupedTreemapRow,
 } from "@un-eosg/ui/components/grouped-treemap";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { DotDensityMap } from "@undp/data-viz/DotDensityMap";
 import { PeacekeepingMissionSidebar } from "@/components/PeacekeepingMissionSidebar";
 import { YearSlider } from "@/components/YearSlider";
@@ -24,6 +26,7 @@ import {
 } from "@/hooks/useDeepLink";
 import { loadStaticData, loadYearData } from "@/lib/data";
 import { formatBudget } from "@/lib/entities";
+import { collectBudgetNodeSources } from "@/lib/budgetSourceCollection";
 import {
   COST_CLASS_KEYS,
   COST_CLASS_SHORT,
@@ -34,6 +37,7 @@ import { useYearRanges } from "@/lib/useYearRanges";
 import type {
   BudgetData,
   BudgetNode,
+  BudgetNodeSource,
   SecretariatEntitiesData,
   SecretariatMissionLocation,
 } from "@/types";
@@ -87,11 +91,14 @@ function pointKind(
 }
 
 interface CostItem {
+  references: BudgetNodeSource[];
   label: string;
   amount: number;
 }
 
 interface MissionRow {
+  references: BudgetNodeSource[];
+  classReferences: Record<CostClassKey, BudgetNodeSource[]>;
   code: string;
   name: string;
   location: SecretariatMissionLocation | undefined;
@@ -124,11 +131,23 @@ function buildRows(data: BudgetData, entities: SecretariatEntitiesData) {
         return [key, match ? match.amount : null];
       }),
     ) as Record<CostClassKey, number | null>;
+    const classReferences = Object.fromEntries(
+      COST_CLASS_KEYS.map((key) => [
+        key,
+        classNodes
+          .filter((node) => node.mission === code && node.costClass === key)
+          .flatMap((node) => collectBudgetNodeSources(node)),
+      ]),
+    ) as Record<CostClassKey, BudgetNodeSource[]>;
     const items = Object.fromEntries(
       COST_CLASS_KEYS.map((key) => {
         const lines = itemNodes
           .filter((node) => node.mission === code && node.costClass === key)
-          .map((node) => ({ label: node.label, amount: node.amount }))
+          .map((node) => ({
+            label: node.label,
+            amount: node.amount,
+            references: collectBudgetNodeSources(node),
+          }))
           .sort(
             (a, b) => b.amount - a.amount || a.label.localeCompare(b.label),
           );
@@ -137,6 +156,8 @@ function buildRows(data: BudgetData, entities: SecretariatEntitiesData) {
     ) as Record<CostClassKey, CostItem[]>;
     return {
       code,
+      references: collectBudgetNodeSources(mission),
+      classReferences,
       name: mission.label,
       location,
       kind: pointKind(code, location),
@@ -184,6 +205,14 @@ function MissionTooltip({ mission }: { mission: MissionRow }) {
             ? mission.classes[key]! / mission.total
             : undefined,
       }))}
+      notes={
+        <SourceReferenceLinks
+          references={[
+            ...mission.references,
+            ...Object.values(mission.classReferences).flat(),
+          ]}
+        />
+      }
       actionHint="Click to explore details"
     />
   );
@@ -258,6 +287,27 @@ export function PeacekeepingBudgetView() {
   const [query, setQuery] = useState("");
   const [hiddenKinds, setHiddenKinds] = useState<PointKind[]>([]);
   const [selectedCode, setSelectedCode] = useState<string | null>(null);
+  const [mapTooltip, setMapTooltip] = useState<{
+    mission: MissionRow;
+    x: number;
+    y: number;
+  } | null>(null);
+  const mapPointer = useRef({ x: 0, y: 0 });
+  const tooltipCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const keepMapTooltip = () => {
+    if (tooltipCloseTimer.current) clearTimeout(tooltipCloseTimer.current);
+  };
+  const closeMapTooltipSoon = () => {
+    keepMapTooltip();
+    tooltipCloseTimer.current = setTimeout(() => setMapTooltip(null), 180);
+  };
+  useEffect(() => {
+    setMapTooltip(null);
+    return () => {
+      if (tooltipCloseTimer.current) clearTimeout(tooltipCloseTimer.current);
+    };
+  }, [year, showMap, selectedCode]);
+
   const [pending, setPending] = useDeepLink({
     hashPrefix: "pko-mission",
     sectionId: "peacekeeping-spending",
@@ -440,7 +490,12 @@ export function PeacekeepingBudgetView() {
         </section>
 
         <section className="order-3" hidden={!showMap}>
-          <div className="pko-dot-map relative border border-gray-200 bg-white">
+          <div
+            className="pko-dot-map relative border border-gray-200 bg-white"
+            onPointerMoveCapture={(event) => {
+              mapPointer.current = { x: event.clientX, y: event.clientY };
+            }}
+          >
             <DotDensityMap
               data={points}
               colorDomain={["pko", "support"]}
@@ -470,9 +525,14 @@ export function PeacekeepingBudgetView() {
                 if (code) openMission(code);
               }}
               ariaLabel={`Map of peacekeeping budget expenditure in ${current.meta.fiscalYear}`}
-              tooltip={(point: MapPoint) => (
-                <MissionTooltip mission={point.data} />
-              )}
+              onSeriesMouseOver={(point: MapPoint | undefined) => {
+                if (!point) {
+                  closeMapTooltipSoon();
+                  return;
+                }
+                keepMapTooltip();
+                setMapTooltip({ mission: point.data, ...mapPointer.current });
+              }}
               styles={{
                 tooltip: {
                   backgroundColor: "white",
@@ -488,6 +548,40 @@ export function PeacekeepingBudgetView() {
         </section>
       </ChartFrame>
 
+      {mapTooltip &&
+        showMap &&
+        !selectedCode &&
+        createPortal(
+          <div
+            role="dialog"
+            aria-label={`${mapTooltip.mission.code} spending and sources`}
+            className="fixed z-[100] max-h-[min(32rem,80vh)] w-80 overflow-y-auto rounded-md border border-gray-200 bg-white p-3 shadow-lg"
+            style={{
+              left: Math.max(
+                8,
+                Math.min(mapTooltip.x + 12, window.innerWidth - 328),
+              ),
+              top: Math.max(
+                8,
+                Math.min(mapTooltip.y + 12, window.innerHeight - 440),
+              ),
+            }}
+            onMouseEnter={keepMapTooltip}
+            onMouseLeave={closeMapTooltipSoon}
+            onFocusCapture={keepMapTooltip}
+            onBlurCapture={(event) => {
+              if (!event.currentTarget.contains(event.relatedTarget))
+                closeMapTooltipSoon();
+            }}
+            onKeyDown={(event) => {
+              if (event.key === "Escape") setMapTooltip(null);
+            }}
+            onClick={(event) => event.stopPropagation()}
+          >
+            <MissionTooltip mission={mapTooltip.mission} />
+          </div>,
+          document.body,
+        )}
       {selectedCode && (
         <div className="order-4">
           <PeacekeepingMissionSidebar
@@ -502,7 +596,11 @@ export function PeacekeepingBudgetView() {
             total={selectedRow ? selectedRow.total : null}
             classes={selectedRow ? selectedRow.classes : null}
             items={selectedRow ? selectedRow.items : null}
+            classReferences={selectedRow?.classReferences}
             source={selectedRow?.source}
+            references={current.nodes
+              .filter((node) => node.mission === selectedCode)
+              .flatMap((node) => collectBudgetNodeSources(node))}
             onClose={() => {
               setSelectedCode(null);
               clearSidebarHash();

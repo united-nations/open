@@ -90,6 +90,46 @@ def entity_acronym(row: pd.Series) -> str:
     return compact(row["audited_entity_code"])
 
 
+def row_references(
+    rows: pd.DataFrame, source: dict[str, Any], year: int, *, contributions: bool = False
+) -> list[dict[str, Any]]:
+    """Keep the physical PDF page of each contributing extracted source row.
+
+    Pages in Stage 2 are one-based PDF pages, not printed page labels. Aggregates
+    must retain every supporting row rather than presenting a single fund's page
+    as the source for a calculated entity or contributor total.
+    """
+    references: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for row in rows.to_dict("records"):
+        column = str(year)
+        if contributions:
+            if pd.notna(row.get("total_usd")):
+                column = "Total"
+            elif pd.notna(row.get("refunds_transfers_adjustments_usd")):
+                column = "Refunds, transfers and adjustments"
+            else:
+                column = "Monetary + in-kind (calculated)"
+        reference = {
+            "symbol": source["symbol"],
+            "url": source.get("pdf_final_url") or source.get("source_pdf_url")
+            or source["landing_page_url"],
+            "label": f"{row['fund_code']} — {'Recognized contributions' if contributions else 'Expenditure'}",
+            "rowLabel": compact(row["counterparty"] if contributions else row["reported_line_item"]),
+            "columnHeader": column,
+            "tableTitle": f"Schedule {row['schedule_number']} — {'Voluntary contributions' if contributions else 'Financial performance'}",
+        }
+        if pd.notna(row.get("page")):
+            reference["pdfPage"] = int(row["page"])
+            reference["pdfPageScope"] = "row"
+            reference["pageStatus"] = "extracted_pdf_row"
+        key = json.dumps(reference, sort_keys=True)
+        if key not in seen:
+            references.append(reference)
+            seen.add(key)
+    return references
+
+
 def build_entity_export(
     year: int,
     facts: pd.DataFrame,
@@ -204,6 +244,7 @@ def build_entity_export(
                     "basis": "directly_printed",
                     "values": {"extrabudgetary": fund_amount},
                     "source": common_source,
+                    "supportingSources": row_references(group.loc[group["fund_code"].eq(fund.fund_code)], source, year),
                 }
             )
 
@@ -352,6 +393,7 @@ def build_contributor_export(
                         else None
                     ),
                     "amount_usd": fund_amount,
+                    "supportingSources": row_references(destination, source, year, contributions=True),
                 }
             )
         groups = sorted(set(contributor["counterparty_group"].dropna()))

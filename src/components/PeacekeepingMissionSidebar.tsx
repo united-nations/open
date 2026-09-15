@@ -1,13 +1,16 @@
 "use client";
+import { Tooltip } from "@un-eosg/ui/components/tooltip";
+import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 
 import { useCallback, useEffect, useState } from "react";
-import { ChevronRight, ExternalLink } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
 import {
   FinancialPanelHeading,
   FinancialPanelSection,
 } from "@un-eosg/ui/components/financial-panel-parts";
 import { FinancialBreakdownRow } from "@un-eosg/ui/components/financial-breakdown-row";
+import { SourceReferenceList } from "@/components/SourceReferenceList";
 import { SidebarControls } from "@/components/SidebarControls";
 import {
   SidebarStackedTrend,
@@ -37,6 +40,7 @@ const COST_CLASS_TREND_SERIES: FinancingSeries[] = COST_CLASS_KEYS.map(
 );
 
 interface CostItem {
+  references?: BudgetNodeSource[];
   label: string;
   amount: number;
 }
@@ -48,8 +52,10 @@ export interface PeacekeepingMissionSidebarProps {
   fiscalYear: string;
   total: number | null;
   classes: Record<CostClassKey, number | null> | null;
+  classReferences?: Partial<Record<CostClassKey, BudgetNodeSource[]>>;
   items: Record<CostClassKey, CostItem[]> | null;
   source?: BudgetNodeSource;
+  references?: BudgetNodeSource[];
   onClose: () => void;
 }
 
@@ -67,7 +73,9 @@ function CostClassBreakdownRow({
   lines,
   maximum,
   color,
+  references,
 }: {
+  references: BudgetNodeSource[];
   label: string;
   amount: number | null;
   lines: CostItem[];
@@ -89,30 +97,43 @@ function CostClassBreakdownRow({
       />
     </span>
   );
-  const tooltip = (title: string, value: number | null, kind: string) => (
+  const tooltip = (
+    title: string,
+    value: number | null,
+    kind: string,
+    sources: BudgetNodeSource[],
+  ) => (
     <div className="space-y-2">
       <p className="text-xs text-gray-500">{kind}</p>
       <p className="text-sm font-medium">{title}</p>
       <p>Expenditure: {value === null ? "Unavailable" : formatBudget(value)}</p>
+      <SourceReferenceLinks references={sources} />
     </div>
   );
   return (
     <FinancialBreakdownRow
+      interactiveTooltip
       label={label}
       value={amount === null ? "—" : formatBudget(amount)}
       bar={bar(amount)}
-      tooltip={tooltip(label, amount, "Budget group")}
+      tooltip={tooltip(label, amount, "Budget group", references)}
       expanded={expanded}
       onToggle={lines.length ? () => setExpanded(!expanded) : undefined}
     >
       <ul className="mt-1 space-y-1">
         {lines.map((line, index) => (
           <FinancialBreakdownRow
+            interactiveTooltip
             key={`${line.label}-${index}`}
             label={line.label}
             value={formatBudget(line.amount)}
             bar={bar(line.amount)}
-            tooltip={tooltip(line.label, line.amount, `Class · ${label}`)}
+            tooltip={tooltip(
+              line.label,
+              line.amount,
+              `Class · ${label}`,
+              line.references ?? [],
+            )}
             depth={1}
           />
         ))}
@@ -128,8 +149,10 @@ export function PeacekeepingMissionSidebar({
   fiscalYear,
   total,
   classes,
+  classReferences,
   items,
   source,
+  references,
   onClose,
 }: PeacekeepingMissionSidebarProps) {
   const [visible, setVisible] = useState(false);
@@ -241,7 +264,28 @@ export function PeacekeepingMissionSidebar({
           }
           total={
             total !== null
-              ? { label: "Total expenditure", value: formatBudget(total) }
+              ? {
+                  label: "Total expenditure",
+                  value: (
+                    <Tooltip
+                      interactive
+                      width={380}
+                      content={
+                        <SourceReferenceLinks
+                          references={
+                            references?.length
+                              ? references
+                              : source
+                                ? [source]
+                                : []
+                          }
+                        />
+                      }
+                    >
+                      <span tabIndex={0}>{formatBudget(total)}</span>
+                    </Tooltip>
+                  ),
+                }
               : undefined
           }
           notice={
@@ -262,6 +306,7 @@ export function PeacekeepingMissionSidebar({
                     key={`${code}-${fiscalYear}-${key}`}
                     label={COST_CLASS_LABELS[key] ?? key}
                     amount={amount}
+                    references={classReferences?.[key] ?? []}
                     color={
                       COST_CLASS_BAND_COLORS[key]?.bg ?? "var(--color-un-blue)"
                     }
@@ -286,7 +331,7 @@ export function PeacekeepingMissionSidebar({
             </FinancialPanelSection>
           )}
 
-          {source?.url && source.symbol && (
+          {Boolean(references?.length || (source?.url && source.symbol)) && (
             <details
               key={`${code}-${fiscalYear}`}
               className="group/sources mt-4"
@@ -300,16 +345,23 @@ export function PeacekeepingMissionSidebar({
                   className="size-3 transition-transform group-open/sources:rotate-90"
                 />
               </summary>
-              <a
-                href={source.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 inline-flex items-center gap-1.5 text-sm text-un-blue hover:underline"
-              >
-                {source.symbol}
-                {source.pdfPage ? `, PDF page ${source.pdfPage}` : " PDF"}
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
+              <div className="mt-3">
+                <SourceReferenceList
+                  references={
+                    references?.length
+                      ? references
+                      : source
+                        ? [
+                            {
+                              ...source,
+                              budgetItem: name,
+                              label: "Total expenditure",
+                            },
+                          ]
+                        : []
+                  }
+                />
+              </div>
             </details>
           )}
         </FinancialDetailPanel>

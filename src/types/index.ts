@@ -131,6 +131,21 @@ export interface PeacekeepingContributorsData {
     total_gross_assessment: number;
     total_net_assessment: number;
     source_page: string;
+    source_documents?: {
+      mission_code: string;
+      mission_name: string;
+      symbol: string;
+      url: string;
+      sections: {
+        heading: string;
+        label: string;
+        kind: string;
+        pages: number[];
+        source_url?: string;
+        member_pages?: Record<string, number>;
+        sign: number;
+      }[];
+    }[];
     scope: string;
     coverage: {
       missions: number;
@@ -168,6 +183,7 @@ export interface PeacekeepingContributorsData {
 }
 
 export interface TrustFundDestination {
+  supportingSources?: BudgetNodeSource[];
   fund_code: string;
   fund_name: string;
   entity_code: string | null;
@@ -384,7 +400,15 @@ export interface BudgetNodeSource {
   url: string;
   /** Physical PDF page, when independently located by the producer. */
   pdfPage?: number | null;
+  /** Physical pages for a multi-page table or supporting records. */
+  pdfPages?: number[];
+  /** Optional financial context, such as funding source or fund name. */
+  label?: string;
   pageStatus?: string | null;
+  pdfPageScope?: "row" | "table" | "section";
+  pageLocatedBy?: string | null;
+  /** Displayed budget item supported by this reference. */
+  budgetItem?: string;
   rowLabel: string;
   columnHeader: string;
   tableTitle?: string | null;
@@ -444,6 +468,13 @@ export interface BudgetNode {
     Record<BudgetMetricKey, Partial<Record<BudgetFundingSource, number>>>
   >;
   metricAmounts?: Partial<Record<BudgetMetricKey, number>>;
+  /** Citations bound to the same measure, year and funding source as each value. */
+  metricSources?: Partial<
+    Record<
+      BudgetMetricKey,
+      Partial<Record<BudgetFundingSource, BudgetNodeSource[]>>
+    >
+  >;
   /** Source reconciliation by funding lens, retained separately from spend. */
   breakdowns?: Partial<
     Record<
@@ -476,6 +507,8 @@ export interface BudgetNode {
   /** Producer-designated source for each numeric PPB funding lens. */
   sources?: Partial<Record<BudgetSourceLens, BudgetNodeSource>>;
   source?: BudgetNodeSource;
+  /** Supporting references for totals derived from several source records. */
+  supportingSources?: BudgetNodeSource[];
 }
 
 export interface BudgetCoverage {

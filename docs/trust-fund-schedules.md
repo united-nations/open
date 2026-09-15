@@ -207,3 +207,15 @@ Run the focused parser tests with:
 ```bash
 uv run python -m unittest discover -s python/tests
 ```
+
+## Frontend page citations
+
+The frontend exports retain `supportingSources` for fund expense leaves and contributor
+fund destinations. Each reference uses the source manifest's PDF URL and the
+one-based **physical PDF page** from Stage 2, with the fund, schedule, reported
+row, and selected column. These pages are not printed page labels. Entity totals
+gather all of their funds' references at display time; contributor totals gather references
+from their destinations. The sidebar source sections expose these links without
+adding source markers to chart amounts. Financial values and selection rules
+are unchanged. Generic document references remain as a fallback for older
+exports without page provenance.

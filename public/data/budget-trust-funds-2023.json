@@ -133,7 +133,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "SAU — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.31 — Financial performance",
+          "pdfPage": 87,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:BINUH",
@@ -178,7 +191,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "HKA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.18 — Financial performance",
+          "pdfPage": 55,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:CEB",
@@ -223,7 +249,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "HBP — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.8 — Financial performance",
+          "pdfPage": 370,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:CNMC",
@@ -268,7 +307,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "CNM — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.43 — Financial performance",
+          "pdfPage": 118,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:CTED",
@@ -313,7 +365,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "CTD — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.5 — Financial performance",
+          "pdfPage": 24,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DCO",
@@ -358,7 +423,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "DSA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.22 — Financial performance",
+          "pdfPage": 401,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DCO:fund:LMR",
@@ -377,7 +455,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "LMR — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.25 — Financial performance",
+          "pdfPage": 408,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DESA",
@@ -422,7 +513,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "PDF — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.3 — Financial performance",
+          "pdfPage": 250,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DESA:fund:XES",
@@ -441,7 +545,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "XES — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.39 — Financial performance",
+          "pdfPage": 279,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DESA:fund:WKA",
@@ -460,7 +577,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "WKA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.36 — Financial performance",
+          "pdfPage": 270,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DESA:fund:HCB",
@@ -479,7 +609,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "HCB — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.23 — Financial performance",
+          "pdfPage": 405,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DESA:fund:HIA",
@@ -498,7 +641,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "HIA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.16 — Financial performance",
+          "pdfPage": 215,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DESA:fund:GBA",
@@ -517,7 +673,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "GBA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.13 — Financial performance",
+          "pdfPage": 206,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DESA:fund:PGA",
@@ -536,7 +705,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "PGA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.31 — Financial performance",
+          "pdfPage": 253,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DESA:fund:KSA",
@@ -555,7 +737,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "KSA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.22 — Financial performance",
+          "pdfPage": 230,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DESA:fund:AMR",
@@ -574,7 +769,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "AMR — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.1 — Financial performance",
+          "pdfPage": 180,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DESA:fund:FII",
@@ -593,7 +801,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "FII — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.11 — Financial performance",
+          "pdfPage": 201,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DESA:fund:CSA",
@@ -612,7 +833,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "CSA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.5 — Financial performance",
+          "pdfPage": 194,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DESA:fund:IDA",
@@ -631,7 +865,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "IDA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.17 — Financial performance",
+          "pdfPage": 218,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DESA:fund:FYA",
@@ -650,7 +897,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "FYA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.12 — Financial performance",
+          "pdfPage": 204,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DESA:fund:WAA",
@@ -669,7 +929,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "WAA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.35 — Financial performance",
+          "pdfPage": 267,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DESA:fund:WOA",
@@ -688,7 +961,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "WOA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.37 — Financial performance",
+          "pdfPage": 273,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DESA:fund:IEA",
@@ -707,7 +993,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "IEA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.18 — Financial performance",
+          "pdfPage": 221,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DESA:fund:OTB",
@@ -726,7 +1025,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "OTB — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.28 — Financial performance",
+          "pdfPage": 244,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DGACM",
@@ -771,7 +1083,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "GTA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.7 — Financial performance",
+          "pdfPage": 367,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DGACM:fund:ACM",
@@ -790,7 +1115,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "ACM — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.1 — Financial performance",
+          "pdfPage": 351,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DGC",
@@ -835,7 +1173,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "ESA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 5.2 — Financial performance",
+          "pdfPage": 345,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DGC:fund:ERA",
@@ -854,7 +1205,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "ERA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 5.1 — Financial performance",
+          "pdfPage": 342,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DGC:fund:GCU",
@@ -873,7 +1237,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "GCU — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 5.3 — Financial performance",
+          "pdfPage": 348,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DGC:fund:SNA",
@@ -892,7 +1269,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "SNA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.15 — Financial performance",
+          "pdfPage": 386,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DMSPC",
@@ -937,7 +1327,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "ESW — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.26 — Financial performance",
+          "pdfPage": 412,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DOS",
@@ -982,7 +1385,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "LLB — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.44 — Financial performance",
+          "pdfPage": 121,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DPO",
@@ -1027,7 +1443,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "LLA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.2 — Financial performance",
+          "pdfPage": 59,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DPO:fund:CPK",
@@ -1046,7 +1475,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "CPK — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.4 — Financial performance",
+          "pdfPage": 21,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DPPA",
@@ -1091,7 +1533,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "SZA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.38 — Financial performance",
+          "pdfPage": 105,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DPPA:fund:PSO",
@@ -1110,7 +1565,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "PSO — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.28 — Financial performance",
+          "pdfPage": 79,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DPPA:fund:PYA",
@@ -1129,7 +1597,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "PYA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.29 — Financial performance",
+          "pdfPage": 82,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:DSS",
@@ -1174,7 +1655,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "UGA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.16 — Financial performance",
+          "pdfPage": 388,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ECA",
@@ -1219,7 +1713,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "IDP — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.41 — Financial performance",
+          "pdfPage": 285,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ECA:fund:HDM",
@@ -1238,7 +1745,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "HDM — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.15 — Financial performance",
+          "pdfPage": 212,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ECA:fund:CFE",
@@ -1257,7 +1777,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "CFE — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.21 — Financial performance",
+          "pdfPage": 398,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ECE",
@@ -1302,7 +1835,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "ECE — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.8 — Financial performance",
+          "pdfPage": 197,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ECE:fund:LRA",
@@ -1321,7 +1867,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "LRA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.25 — Financial performance",
+          "pdfPage": 238,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ECLAC",
@@ -1366,7 +1925,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "BTS — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.4 — Financial performance",
+          "pdfPage": 190,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ECLAC:fund:LAC",
@@ -1385,7 +1957,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "LAC — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.23 — Financial performance",
+          "pdfPage": 233,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:EOSG",
@@ -1430,7 +2015,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "LJA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.11 — Financial performance",
+          "pdfPage": 377,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:EOSG:fund:GIV",
@@ -1449,7 +2047,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "GIV — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.6 — Financial performance",
+          "pdfPage": 364,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:EOSG:fund:CCS",
@@ -1468,7 +2079,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "CCS — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.2 — Financial performance",
+          "pdfPage": 353,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:EOSG:fund:COC",
@@ -1487,7 +2111,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "COC — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.4 — Financial performance",
+          "pdfPage": 358,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:EOSG:fund:CCR",
@@ -1506,7 +2143,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "CCR — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 2.1 — Financial performance",
+          "pdfPage": 146,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ESCAP",
@@ -1551,7 +2201,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "BKT — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.2 — Financial performance",
+          "pdfPage": 183,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ESCAP:fund:BTF",
@@ -1570,7 +2233,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "BTF — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.3 — Financial performance",
+          "pdfPage": 187,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ESCWA",
@@ -1615,7 +2291,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "WVZ — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.38 — Financial performance",
+          "pdfPage": 276,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:HSU",
@@ -1660,7 +2349,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "HYA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 4.1 — Financial performance",
+          "pdfPage": 321,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ICJ",
@@ -1705,7 +2407,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "ICJ — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 2.14 — Financial performance",
+          "pdfPage": 177,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ICJ:fund:TJA",
@@ -1724,7 +2439,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "TJA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 2.9 — Financial performance",
+          "pdfPage": 163,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:IIIM",
@@ -1769,7 +2497,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "SIM — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 2.12 — Financial performance",
+          "pdfPage": 171,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:IIMM",
@@ -1814,7 +2555,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "IIM — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 2.13 — Financial performance",
+          "pdfPage": 174,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:JPO",
@@ -1859,7 +2613,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "JPO — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.2 — Financial performance",
+          "pdfPage": 224,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:MICT",
@@ -1904,7 +2671,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "RMB — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 2.8 — Financial performance",
+          "pdfPage": 160,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:MINUSCA",
@@ -1949,7 +2729,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "CAF — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.2 — Financial performance",
+          "pdfPage": 16,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:MINUSCA:fund:MIS",
@@ -1968,7 +2761,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "MIS — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.22 — Financial performance",
+          "pdfPage": 64,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:MINUSMA",
@@ -2013,7 +2819,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "PSM — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.27 — Financial performance",
+          "pdfPage": 76,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:MINUSMA:fund:MSM",
@@ -2032,7 +2851,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "MSM — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.23 — Financial performance",
+          "pdfPage": 66,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:MONUSCO",
@@ -2077,7 +2909,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "NGA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.24 — Financial performance",
+          "pdfPage": 68,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OCHA",
@@ -2122,7 +2967,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "DDN — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 4.6 — Financial performance",
+          "pdfPage": 307,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OCHA:fund:CER",
@@ -2141,7 +2999,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "CER — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 4.2 — Financial performance",
+          "pdfPage": 295,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OCHA:fund:CLR",
@@ -2160,7 +3031,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "CLR — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 4.5 — Financial performance",
+          "pdfPage": 305,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OCT",
@@ -2205,7 +3089,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "CTI — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.6 — Financial performance",
+          "pdfPage": 27,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ODA",
@@ -2250,7 +3147,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "DGA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.11 — Financial performance",
+          "pdfPage": 41,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ODA:fund:DBA",
@@ -2269,7 +3179,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "DBA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.9 — Financial performance",
+          "pdfPage": 35,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ODA:fund:DGT",
@@ -2288,7 +3211,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "DGT — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.12 — Financial performance",
+          "pdfPage": 44,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ODA:fund:DAA",
@@ -2307,7 +3243,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "DAA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.8 — Financial performance",
+          "pdfPage": 32,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ODA:fund:DFA",
@@ -2326,7 +3275,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "DFA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.1 — Financial performance",
+          "pdfPage": 38,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ODA:fund:PIA",
@@ -2345,7 +3307,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "PIA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.47 — Financial performance",
+          "pdfPage": 130,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ODA:fund:DWA",
@@ -2364,7 +3339,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "DWA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.46 — Financial performance",
+          "pdfPage": 127,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ODA:fund:DJA",
@@ -2383,7 +3371,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "DJA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.13 — Financial performance",
+          "pdfPage": 47,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ODET",
@@ -2428,7 +3429,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "OST — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.27 — Financial performance",
+          "pdfPage": 415,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:ODET:fund:DUN",
@@ -2447,7 +3461,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "DUN — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.2 — Financial performance",
+          "pdfPage": 396,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OHCHR",
@@ -2492,7 +3519,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "HCA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 4.9 — Financial performance",
+          "pdfPage": 316,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OHCHR:fund:AHA",
@@ -2511,7 +3551,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "AHA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 4.1 — Financial performance",
+          "pdfPage": 292,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OHCHR:fund:CHA",
@@ -2530,7 +3583,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "CHA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 4.3 — Financial performance",
+          "pdfPage": 299,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OHCHR:fund:SHA",
@@ -2549,7 +3615,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "SHA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 4.13 — Financial performance",
+          "pdfPage": 330,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OHCHR:fund:IHA",
@@ -2568,7 +3647,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "IHA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 4.11 — Financial performance",
+          "pdfPage": 324,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OHCHR:fund:VTA",
@@ -2587,7 +3679,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "VTA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 4.17 — Financial performance",
+          "pdfPage": 339,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OHCHR:fund:CIA",
@@ -2606,7 +3711,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "CIA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 4.4 — Financial performance",
+          "pdfPage": 302,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OHCHR:fund:VPU",
@@ -2625,7 +3743,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "VPU — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 4.16 — Financial performance",
+          "pdfPage": 336,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OHCHR:fund:UPR",
@@ -2644,7 +3775,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "UPR — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 4.15 — Financial performance",
+          "pdfPage": 333,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OIOS",
@@ -2689,7 +3833,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "QOA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.13 — Financial performance",
+          "pdfPage": 383,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OJSRS",
@@ -2734,7 +3891,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "SCC — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.49 — Financial performance",
+          "pdfPage": 135,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OLA",
@@ -2779,7 +3949,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "PIL — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 2.7 — Financial performance",
+          "pdfPage": 157,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OLA:fund:TTA",
@@ -2798,7 +3981,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "TTA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 2.11 — Financial performance",
+          "pdfPage": 168,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OLA:fund:KJA",
@@ -2817,7 +4013,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "KJA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 2.5 — Financial performance",
+          "pdfPage": 152,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OLA:fund:CLA",
@@ -2836,7 +4045,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "CLA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 2.2 — Financial performance",
+          "pdfPage": 149,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OLA:fund:KUA",
@@ -2855,7 +4077,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "KUA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 2.6 — Financial performance",
+          "pdfPage": 155,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OLA:fund:TLA",
@@ -2874,7 +4109,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "TLA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 2.1 — Financial performance",
+          "pdfPage": 165,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OOSA",
@@ -2919,7 +4167,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "SBA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.32 — Financial performance",
+          "pdfPage": 90,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OPGA",
@@ -2964,7 +4225,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "GAC — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.5 — Financial performance",
+          "pdfPage": 361,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OSAA",
@@ -3009,7 +4283,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "NAA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.27 — Financial performance",
+          "pdfPage": 241,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OSC-SEA",
@@ -3054,7 +4341,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "SEA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.28 — Financial performance",
+          "pdfPage": 418,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OSCS",
@@ -3099,7 +4399,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "SCS — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.42 — Financial performance",
+          "pdfPage": 289,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OSESG-GL",
@@ -3144,7 +4457,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "GLA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.16 — Financial performance",
+          "pdfPage": 52,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OSESG-Myanmar",
@@ -3189,7 +4515,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "MYM — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.5 — Financial performance",
+          "pdfPage": 138,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OSRSG-CAAC",
@@ -3234,7 +4573,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "NNA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.25 — Financial performance",
+          "pdfPage": 70,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OSRSG-SVC",
@@ -3279,7 +4631,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "SVC — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.36 — Financial performance",
+          "pdfPage": 99,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OSRSG-VAC",
@@ -3324,7 +4689,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "SVD — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.37 — Financial performance",
+          "pdfPage": 102,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OTHER",
@@ -3369,7 +4747,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "MSS — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.53 — Financial performance",
+          "pdfPage": 143,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OTHER:fund:YRA",
@@ -3388,7 +4779,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "YRA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.19 — Financial performance",
+          "pdfPage": 394,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OTHER:fund:JTA",
@@ -3407,7 +4811,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "JTA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.9 — Financial performance",
+          "pdfPage": 372,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OTHER:fund:CLO",
@@ -3426,7 +4843,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "CLO — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.3 — Financial performance",
+          "pdfPage": 356,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:OTHER:fund:UIC",
@@ -3445,7 +4875,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "UIC — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.4 — Financial performance",
+          "pdfPage": 111,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UN-OHRLLS",
@@ -3490,7 +4933,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "LLS — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.24 — Financial performance",
+          "pdfPage": 235,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNAKRT",
@@ -3535,7 +4991,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "KRT — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.21 — Financial performance",
+          "pdfPage": 227,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNAMI",
@@ -3580,7 +5049,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "CIB — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.3 — Financial performance",
+          "pdfPage": 19,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNAMID",
@@ -3625,7 +5107,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "JMS — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.19 — Financial performance",
+          "pdfPage": 57,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNAMID:fund:LPD",
@@ -3644,7 +5139,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "LPD — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.21 — Financial performance",
+          "pdfPage": 62,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNAOC",
@@ -3689,7 +5197,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "YJA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.4 — Financial performance",
+          "pdfPage": 282,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNCTAD",
@@ -3734,7 +5255,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "TXB — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.34 — Financial performance",
+          "pdfPage": 262,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNCTAD:fund:OUN",
@@ -3753,7 +5287,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "OUN — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.29 — Financial performance",
+          "pdfPage": 247,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNDRR",
@@ -3798,7 +5345,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "DXA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 4.8 — Financial performance",
+          "pdfPage": 313,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNDRR:fund:DLA",
@@ -3817,7 +5377,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "DLA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 4.7 — Financial performance",
+          "pdfPage": 311,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNFICYP",
@@ -3862,7 +5435,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "CYP — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.7 — Financial performance",
+          "pdfPage": 30,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNGC",
@@ -3907,7 +5493,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "GKA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.14 — Financial performance",
+          "pdfPage": 209,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNIDIR",
@@ -3952,7 +5551,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "DRA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.14 — Financial performance",
+          "pdfPage": 49,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNITAD",
@@ -3997,7 +5609,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "IIT — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.42 — Financial performance",
+          "pdfPage": 115,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNITAMS",
@@ -4042,7 +5667,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "AMS — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.52 — Financial performance",
+          "pdfPage": 141,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNMAS",
@@ -4087,7 +5725,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "MNA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 4.12 — Financial performance",
+          "pdfPage": 327,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNMIK",
@@ -4132,7 +5783,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "KDB — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.41 — Financial performance",
+          "pdfPage": 113,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNMISS",
@@ -4177,7 +5841,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "RSS — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.48 — Financial performance",
+          "pdfPage": 132,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNOAU",
@@ -4222,7 +5899,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "OAU — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.45 — Financial performance",
+          "pdfPage": 124,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNOG",
@@ -4267,7 +5957,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "LSS — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.12 — Financial performance",
+          "pdfPage": 380,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNOG:fund:LEA",
@@ -4286,7 +5989,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "LEA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.1 — Financial performance",
+          "pdfPage": 375,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNON",
@@ -4331,7 +6047,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "UNN — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 6.17 — Financial performance",
+          "pdfPage": 391,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNOP",
@@ -4376,7 +6105,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "QGA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 7.1 — Financial performance",
+          "pdfPage": 421,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNOP:fund:UDF",
@@ -4395,7 +6137,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "UDF — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.39 — Financial performance",
+          "pdfPage": 108,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNOP:fund:QGB",
@@ -4414,7 +6169,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "QGB — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 7.2 — Financial performance",
+          "pdfPage": 424,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNRISD",
@@ -4459,7 +6227,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "RIA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 3.32 — Financial performance",
+          "pdfPage": 256,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNRoD",
@@ -4504,7 +6285,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "ROD — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.3 — Financial performance",
+          "pdfPage": 84,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNSMIL",
@@ -4549,7 +6343,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "PSL — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.26 — Financial performance",
+          "pdfPage": 73,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:UNSOM",
@@ -4594,7 +6401,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "SOP — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.33 — Financial performance",
+          "pdfPage": 93,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     },
     {
       "id": "trust-fund-entity:VRA",
@@ -4639,7 +6459,20 @@
         "url": "https://digitallibrary.un.org/record/4060617",
         "rowLabel": "Total expenses",
         "columnHeader": "2023"
-      }
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "label": "SVB — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2023",
+          "tableTitle": "Schedule 1.35 — Financial performance",
+          "pdfPage": 96,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
     }
   ]
 }

@@ -1,4 +1,5 @@
 "use client";
+import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 
 import { useEffect, useState } from "react";
 import { ChevronRight } from "lucide-react";
@@ -10,6 +11,7 @@ import {
   FinancialPanelBar,
 } from "@un-eosg/ui/components/financial-panel-parts";
 import { Tooltip } from "@un-eosg/ui/components/tooltip";
+import { SourceReferenceList } from "@/components/SourceReferenceList";
 import { SidebarControls } from "@/components/SidebarControls";
 import {
   FinancingInstrumentChart,
@@ -138,12 +140,32 @@ export function TrustFundSidebar({
     contributors?.contributors
       .map((donor) => ({
         name: donor.name,
+        references: donor.destinations
+          .filter((destination) => includedCodes.has(destination.fund_code))
+          .flatMap((destination) => destination.supportingSources ?? []),
         amount: donor.destinations
           .filter((destination) => includedCodes.has(destination.fund_code))
           .reduce((sum, item) => sum + item.amount_usd, 0),
       }))
       .filter((donor) => donor.amount !== 0)
       .sort((a, b) => b.amount - a.amount) ?? [];
+  const expenseReferences =
+    node.tier === "detail"
+      ? (node.supportingSources ?? [])
+      : nodes
+          .filter(
+            (item) =>
+              item.tier === "detail" &&
+              item.code &&
+              includedCodes.has(item.code),
+          )
+          .flatMap((item) => item.supportingSources ?? []);
+  const contributionReferences =
+    contributors?.contributors.flatMap((contributor) =>
+      contributor.destinations
+        .filter((destination) => includedCodes.has(destination.fund_code))
+        .flatMap((destination) => destination.supportingSources ?? []),
+    ) ?? [];
   const maximum = Math.max(0, ...donorRows.map((donor) => donor.amount));
   const children = [...(childrenByParent[node.id] ?? [])].sort(
     (a, b) => b.amount - a.amount,
@@ -179,7 +201,25 @@ export function TrustFundSidebar({
           }
           total={{
             label: "Total expenditure",
-            value: formatBudget(node.amount),
+            value: (
+              <Tooltip
+                interactive
+                width={380}
+                content={
+                  <SourceReferenceLinks
+                    references={
+                      expenseReferences.length
+                        ? expenseReferences
+                        : node.source
+                          ? [node.source]
+                          : []
+                    }
+                  />
+                }
+              >
+                <span tabIndex={0}>{formatBudget(node.amount)}</span>
+              </Tooltip>
+            ),
           }}
           className="bg-white sm:w-full"
         >
@@ -212,21 +252,41 @@ export function TrustFundSidebar({
             <FinancialPanelSection heading="Funds">
               <div className="space-y-3">
                 {children.map((child) => (
-                  <FinancialPanelRankedRow
+                  <Tooltip
+                    interactive
                     key={child.id}
-                    label={child.code ?? child.label}
-                    title={child.label}
-                    value={formatBudget(child.amount)}
+                    width={380}
+                    content={
+                      <div>
+                        <p>
+                          {child.label}: {formatBudget(child.amount)}
+                        </p>
+                        <SourceReferenceLinks
+                          references={
+                            child.supportingSources ??
+                            (child.source ? [child.source] : [])
+                          }
+                        />
+                      </div>
+                    }
                   >
-                    <FinancialPanelBar
-                      percent={
-                        children[0].amount > 0
-                          ? (child.amount / children[0].amount) * 100
-                          : 0
-                      }
-                      color="var(--color-un-blue)"
-                    />
-                  </FinancialPanelRankedRow>
+                    <div tabIndex={0}>
+                      <FinancialPanelRankedRow
+                        label={child.code ?? child.label}
+                        title={child.label}
+                        value={formatBudget(child.amount)}
+                      >
+                        <FinancialPanelBar
+                          percent={
+                            children[0].amount > 0
+                              ? (child.amount / children[0].amount) * 100
+                              : 0
+                          }
+                          color="var(--color-un-blue)"
+                        />
+                      </FinancialPanelRankedRow>
+                    </div>
+                  </Tooltip>
                 ))}
               </div>
             </FinancialPanelSection>
@@ -236,11 +296,15 @@ export function TrustFundSidebar({
               {(showAllContributors ? donorRows : donorRows.slice(0, 10)).map(
                 (donor) => (
                   <Tooltip
+                    interactive
                     key={donor.name}
                     content={
-                      <span>
-                        {donor.name}: {formatBudget(donor.amount)}
-                      </span>
+                      <div>
+                        <p>
+                          {donor.name}: {formatBudget(donor.amount)}
+                        </p>
+                        <SourceReferenceLinks references={donor.references} />
+                      </div>
                     }
                   >
                     <div tabIndex={0}>
@@ -302,26 +366,30 @@ export function TrustFundSidebar({
               />
             </summary>
             <div className="mt-3 space-y-3 text-sm">
-              {node.source && (
-                <a
-                  href={node.source.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block text-un-blue hover:underline"
-                >
-                  {node.source.symbol}
-                </a>
-              )}
+              <SourceReferenceList
+                references={
+                  expenseReferences.length
+                    ? expenseReferences
+                    : node.source
+                      ? [node.source]
+                      : []
+                }
+              />
               {contributors && (
                 <>
-                  <a
-                    href={contributors.meta.source.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block text-un-blue hover:underline"
-                  >
-                    Contributions: {contributors.meta.source.symbol}
-                  </a>
+                  <SourceReferenceList
+                    references={
+                      contributionReferences.length
+                        ? contributionReferences
+                        : [
+                            {
+                              ...contributors.meta.source,
+                              rowLabel: "Recognized voluntary contributions",
+                              columnHeader: String(year),
+                            },
+                          ]
+                    }
+                  />
                   <p>
                     {contributors.meta.method_note}{" "}
                     {contributors.meta.mapping_note}

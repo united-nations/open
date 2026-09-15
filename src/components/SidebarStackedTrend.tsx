@@ -5,6 +5,7 @@ import {
   type FinancingInstrumentDataPoint,
   type FinancingSeries,
 } from "@/components/charts/FinancingInstrumentChart";
+import type { BudgetNodeSource } from "@/types";
 import { fundingSources } from "@un-eosg/ui/funding-sources";
 import { FUNDING_SOURCES } from "@/lib/budgetGroupings";
 
@@ -26,12 +27,14 @@ export function SidebarStackedTrend({
   data,
   series,
   showLegend = true,
+  tooltipSources,
 }: {
   heading?: string;
   headingClassName?: string;
   data: FinancingInstrumentDataPoint[] | null;
   series: FinancingSeries[];
   showLegend?: boolean;
+  tooltipSources?: (year: string, visibleKeys: string[]) => BudgetNodeSource[];
 }) {
   if (data === null) {
     return (
@@ -61,6 +64,7 @@ export function SidebarStackedTrend({
           series={series}
           showLegend={showLegend}
           compact
+          tooltipSources={tooltipSources}
         />
       </div>
     </section>

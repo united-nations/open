@@ -1,4 +1,5 @@
 "use client";
+import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
@@ -73,6 +74,13 @@ function ContributorTooltip({
         label: "Net recognized contributions",
         value: currency(contributor.amount_usd),
       }}
+      notes={
+        <SourceReferenceLinks
+          references={contributor.destinations.flatMap(
+            (destination) => destination.supportingSources ?? [],
+          )}
+        />
+      }
       actionHint="Click to explore details"
     />
   );

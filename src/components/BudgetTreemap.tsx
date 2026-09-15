@@ -1,5 +1,6 @@
 "use client";
 import { orderFundingTooltipRows } from "@/lib/financingInstruments";
+import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
@@ -39,6 +40,10 @@ import {
   clearSidebarHash,
 } from "@/hooks/useDeepLink";
 import { formatBudget } from "@/lib/entities";
+import {
+  collectBudgetNodeSources,
+  uniqueBudgetSources,
+} from "@/lib/budgetSourceCollection";
 import { BudgetSidebar } from "@/components/BudgetSidebar";
 import { ChartSearchInput } from "@/components/ui/chart-search-input";
 import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
@@ -258,12 +263,52 @@ export function buildEntityProjection(
     if (node.parentId) (children[node.parentId] ??= []).push(node);
   }
 
+  const supportingEvidence = (
+    roots: BudgetNode[],
+  ): Pick<BudgetNode, "supportingSources" | "metricSources"> => {
+    const evidenceNodes = new Map<string, BudgetNode>();
+    const visit = (node: BudgetNode) => {
+      if (evidenceNodes.has(node.id)) return;
+      evidenceNodes.set(node.id, node);
+      for (const child of children[node.id] ?? []) visit(child);
+    };
+    roots.forEach(visit);
+    return {
+      supportingSources: uniqueBudgetSources(
+        [...evidenceNodes.values()].flatMap((evidence) =>
+          collectBudgetNodeSources(evidence),
+        ),
+      ),
+      metricSources: Object.fromEntries(
+        (["approved", "proposed"] as const).map((metric) => [
+          metric,
+          Object.fromEntries(
+            BUDGET_FUNDING_SOURCES.map((funding) => [
+              funding,
+              uniqueBudgetSources(
+                [...evidenceNodes.values()].flatMap((evidence) =>
+                  (evidence.metricSources?.[metric]?.[funding] ?? []).map(
+                    (source) => ({
+                      ...source,
+                      budgetItem: source.budgetItem ?? evidence.label,
+                    }),
+                  ),
+                ),
+              ),
+            ]),
+          ),
+        ]),
+      ),
+    };
+  };
+
   interface Aggregate {
     part: BudgetNode;
     entity?: BudgetNode["entity"];
     amount: number;
     values: Partial<Record<BudgetFundingSource, number>>;
     sourceRoots: Map<string, BudgetNode>;
+    evidenceNodes: Map<string, BudgetNode>;
     sections: Map<
       string,
       {
@@ -293,8 +338,15 @@ export function buildEntityProjection(
       amount: 0,
       values: {},
       sourceRoots: new Map(),
+      evidenceNodes: new Map(),
       sections: new Map(),
     };
+    // The hierarchy root can differ from the row supplying the amount (for
+    // example a whole section assigned to its sole owning entity).
+    const evidenceNode =
+      amount === section.amount ? section : (sourceRoot ?? section);
+    aggregate.evidenceNodes.set(evidenceNode.id, evidenceNode);
+    if (sourceRoot) aggregate.evidenceNodes.set(sourceRoot.id, sourceRoot);
     aggregate.amount += amount;
     addFundingValues(aggregate.values, values);
     if (entity && sourceRoot) {
@@ -501,6 +553,7 @@ export function buildEntityProjection(
       amount: aggregate.amount,
       basis: "derived_entity_projection",
       values: aggregate.values,
+      ...supportingEvidence([...aggregate.evidenceNodes.values()]),
       completeness: named ? "complete" : "incomplete",
       entity: aggregate.entity
         ? { ...aggregate.entity, relationship: "entity_aggregate" }
@@ -553,6 +606,7 @@ export function buildEntityProjection(
           completeness: placement.section.completeness,
           source: placement.section.source,
           sources: placement.section.sources,
+          ...supportingEvidence([placement.section]),
           note: "Contribution of this budget section to the unassigned amount.",
         });
       }
@@ -666,7 +720,7 @@ export function BudgetTreemap({
   hashPrefix,
   sectionId,
   activeFundingSources,
-  metric = "expenditure",
+  metric: requestedMetric = "expenditure",
   selectedYear,
   availableYears,
   showYearSelector = true,
@@ -710,6 +764,18 @@ export function BudgetTreemap({
   const [searchQuery, setSearchQuery] = useState("");
   const [loading, setLoading] = useState(true);
   const [loadedRequest, setLoadedRequest] = useState("");
+  // A measure switch loads a different annual file. Keep the old measure with
+  // its data until the new file arrives, otherwise filtering the old file by
+  // the new measure produces zero-valued tiles and destroys the transition.
+  const waitingForData = loadedRequest !== `${dataset}-${year}`;
+  const loadedMeasure = data?.meta.measure;
+  const metric: BudgetMetricKey =
+    waitingForData &&
+    (loadedMeasure === "proposed" ||
+      loadedMeasure === "approved" ||
+      loadedMeasure === "expenditure")
+      ? loadedMeasure
+      : requestedMetric;
 
   const [mounted, setMounted] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
@@ -732,7 +798,10 @@ export function BudgetTreemap({
     // The year before stays on screen until the new one arrives, so that moving
     // the slider does not flash an empty box.
     fetch(`${basePath}/data/${dataset}-${year}.json`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`Budget request failed: ${res.status}`);
+        return res.json();
+      })
       .then((d: BudgetData) => {
         if (current) {
           setData(d);
@@ -761,7 +830,9 @@ export function BudgetTreemap({
       .then((d: BudgetData) => {
         if (current) setPrevious(d);
       })
-      .catch(() => setPrevious(null));
+      .catch(() => {
+        if (current) setPrevious(null);
+      });
     return () => {
       current = false;
     };
@@ -1725,8 +1796,8 @@ export function BudgetTreemap({
             variant="segmented"
             label="Budget grouping"
             options={[
-              { value: "entity", label: "Entities" },
               { value: "section", label: "Sections" },
+              { value: "entity", label: "Entities" },
             ]}
             value={ppbGrouping}
             onValueChange={(value) =>
@@ -1850,8 +1921,8 @@ export function BudgetTreemap({
           variant="segmented"
           label="Budget grouping"
           options={[
-            { value: "entity", label: "Entities" },
             { value: "section", label: "Sections" },
+            { value: "entity", label: "Entities" },
           ]}
           value={ppbGrouping}
           onValueChange={(value) =>
@@ -2017,6 +2088,7 @@ export function BudgetTreemap({
           showLeafValues
           formatValue={(value) => formatBudget(value)}
           formatAccessibleValue={(value) => formatBudget(value)}
+          interactiveTooltip
           renderTooltip={(
             context: GroupedTreemapTooltipContext<
               BudgetNode,
@@ -2057,7 +2129,21 @@ export function BudgetTreemap({
                       ? segment.value / context.leaf.value
                       : undefined,
                 }))}
-              notes={context.leaf.data?.note}
+              notes={
+                <>
+                  {context.leaf.data?.note}
+                  <SourceReferenceLinks
+                    references={
+                      context.leaf.data?.node
+                        ? collectBudgetNodeSources(
+                            context.leaf.data.node,
+                            metric,
+                          )
+                        : []
+                    }
+                  />
+                </>
+              }
               actionHint="Click to explore details"
             />
           )}

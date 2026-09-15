@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Tooltip } from "@un-eosg/ui/components/tooltip";
+import { SegmentedControl } from "@un-eosg/ui/components/segmented-control";
 import { BudgetTreemap } from "@/components/BudgetTreemap";
 import {
   FundingSourcePills,
@@ -63,7 +63,7 @@ export function RegularBudgetView() {
   ]);
   const [metric, setMetric] = useState<BudgetMetricKey>("expenditure");
   const [year, setYear] = useState(2025);
-  const [grouping, setGrouping] = useState<PpbGrouping>("entity");
+  const [grouping, setGrouping] = useState<PpbGrouping>("section");
   const showContextNote =
     metric === "expenditure" &&
     active.some((source) => source !== "regular_budget");
@@ -89,40 +89,26 @@ export function RegularBudgetView() {
   return (
     <div>
       <div className="mb-4 flex flex-wrap items-center gap-3">
-        <div
-          className="flex flex-wrap gap-1 rounded-md border border-gray-200 bg-white p-1"
-          role="group"
-          aria-label="Budget metric"
-        >
-          {METRICS.map((item) => {
-            const selected = metric === item.key;
+        <SegmentedControl
+          label="Budget metric"
+          value={metric}
+          onValueChange={(value) => {
+            const nextMetric = METRICS.find((item) => item.key === value)?.key;
+            if (nextMetric && METRIC_YEARS[nextMetric].includes(year))
+              selectMetric(nextMetric);
+          }}
+          options={METRICS.map((item) => {
             const unavailable = !METRIC_YEARS[item.key].includes(year);
-            const explanation = unavailable
-              ? `${item.label} data is not available for ${year} in the current dataset. ${item.description}`
-              : item.description;
-            return (
-              <Tooltip key={item.key} content={explanation}>
-                <button
-                  type="button"
-                  aria-pressed={selected}
-                  aria-disabled={unavailable}
-                  onClick={() => {
-                    if (!unavailable) selectMetric(item.key);
-                  }}
-                  className={`rounded-full px-3 py-1.5 text-xs transition-colors focus-visible:ring-2 focus-visible:ring-un-blue focus-visible:outline-none ${
-                    unavailable
-                      ? "cursor-not-allowed text-gray-400 opacity-60"
-                      : selected
-                        ? "bg-un-blue font-medium text-white"
-                        : "text-gray-600 hover:bg-gray-50"
-                  }`}
-                >
-                  {item.label}
-                </button>
-              </Tooltip>
-            );
+            return {
+              value: item.key,
+              label: item.label,
+              disabled: unavailable,
+              description: unavailable
+                ? `${item.label} data is not available for ${year} in the current dataset. ${item.description}`
+                : item.description,
+            };
           })}
-        </div>
+        />
         <FundingSourcePills
           neutral
           selected={active}
@@ -139,7 +125,6 @@ export function RegularBudgetView() {
                 }
               : undefined
           }
-          grouped
           onToggle={(source) =>
             setActive((current) => toggleFundingSource(current, source))
           }

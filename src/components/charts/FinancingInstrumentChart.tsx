@@ -6,6 +6,7 @@ import {
 import { FinancialChartTooltip } from "./FinancialChartTooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
+import type { BudgetNodeSource } from "@/types";
 import { useState } from "react";
 import { fundingSources } from "@un-eosg/ui/funding-sources";
 import { FinancingInstrumentLabel } from "../FinancingInstrumentLabel";
@@ -87,6 +88,7 @@ interface FinancingInstrumentChartProps {
   tooltipValueFormatter?: (value: number) => string;
   showTooltipTotal?: boolean;
   valueFormatter?: (value: number) => string;
+  tooltipSources?: (year: string, visibleKeys: string[]) => BudgetNodeSource[];
 }
 
 const formatYAxis = sharedFormatBudget;
@@ -141,6 +143,7 @@ export function FinancingInstrumentChart({
   showTooltipTotal = false,
   allowNegative = false,
   variant = "area",
+  tooltipSources,
 }: FinancingInstrumentChartProps) {
   const [hiddenKeys, setHiddenKeys] = useState<string[]>([]);
   // Include signed net series when requested; otherwise require a positive value.
@@ -247,6 +250,7 @@ export function FinancingInstrumentChart({
                 mirror
               />
               <RechartsTooltip
+                wrapperStyle={tooltipSources ? { pointerEvents: "auto" } : undefined}
                 content={(props) => (
                   <FinancialChartTooltip
                     {...props}
@@ -262,6 +266,7 @@ export function FinancingInstrumentChart({
                     }
                     totalLabel={showTooltipTotal ? "Selected total" : undefined}
                     showBars
+                    sources={tooltipSources?.(String(props.label ?? ""), visibleSeries.map((series) => series.key))}
                   />
                 )}
               />

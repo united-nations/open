@@ -1,9 +1,11 @@
 "use client";
+import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
+import { Tooltip } from "@un-eosg/ui/components/tooltip";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { fundingSources } from "@un-eosg/ui/funding-sources";
 import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label";
 
-import { ChevronRight, ExternalLink } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { FinancialBreakdownRow } from "@un-eosg/ui/components/financial-breakdown-row";
 import {
   FinancialPanelHeading,
@@ -23,9 +25,13 @@ import type {
   BudgetMetricKey,
   BudgetMeta,
   BudgetNode,
-  BudgetNodeSource,
 } from "@/types";
 import { formatBudget } from "@/lib/entities";
+import {
+  collectBudgetNodeSources,
+  collectBudgetHierarchySources,
+} from "@/lib/budgetSourceCollection";
+import { SourceReferenceList } from "@/components/SourceReferenceList";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { SidebarControls } from "@/components/SidebarControls";
 
@@ -61,78 +67,6 @@ const KIND_NAMES: Partial<Record<BudgetNode["kind"], string>> = {
   class: "Cost class",
   item: "Cost item",
 };
-
-function uniqueSources(sources: Array<BudgetNodeSource | undefined>) {
-  return sources.filter(
-    (source, index): source is BudgetNodeSource =>
-      source !== undefined &&
-      sources.findIndex(
-        (candidate) =>
-          candidate?.url === source.url &&
-          candidate.pdfPage === source.pdfPage &&
-          candidate.rowLabel === source.rowLabel &&
-          candidate.columnHeader === source.columnHeader,
-      ) === index,
-  );
-}
-
-function sourceKey(source: BudgetNodeSource) {
-  return [
-    source.url,
-    source.pdfPage ?? "",
-    source.rowLabel,
-    source.columnHeader,
-  ].join("|");
-}
-
-function amountSources(node: BudgetNode): BudgetNodeSource[] {
-  if (
-    node.allSourcesAmount !== undefined &&
-    node.amount === node.allSourcesAmount &&
-    node.sources?.total_all_sources
-  ) {
-    return [node.sources.total_all_sources];
-  }
-  const fundingSources = Object.keys(node.values ?? {}).map(
-    (funding) => node.sources?.[funding as BudgetFundingSource],
-  );
-  const sources = uniqueSources(fundingSources);
-  return sources.length > 0 ? sources : node.source ? [node.source] : [];
-}
-
-function BudgetAmount({
-  amount,
-  sources,
-  className,
-}: {
-  amount: number;
-  sources: BudgetNodeSource[];
-  className?: string;
-}) {
-  return (
-    <span className={`inline-flex items-center gap-1 ${className ?? ""}`}>
-      <span>{formatBudget(amount)}</span>
-      {uniqueSources(sources).map((source) => {
-        const location = source.pdfPage
-          ? `${source.symbol}, PDF page ${source.pdfPage}`
-          : `${source.symbol} PDF`;
-        return (
-          <a
-            key={sourceKey(source)}
-            href={source.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Open source for ${formatBudget(amount)}: ${location}`}
-            title={`Open ${location}`}
-            className="inline-flex shrink-0 text-un-blue hover:text-blue-800"
-          >
-            <ExternalLink className="h-3.5 w-3.5" />
-          </a>
-        );
-      })}
-    </span>
-  );
-}
 
 const FUNDING_TREEMAP_COLORS: Record<BudgetFundingSource, string> = {
   regular_budget: fundingSources.regular_budget.color,
@@ -341,6 +275,7 @@ function miniTreemapCaption(
 }
 
 function MiniBudgetTooltip({
+  metric,
   context,
   fundingLabels,
 }: {
@@ -350,6 +285,7 @@ function MiniBudgetTooltip({
     MiniBudgetLeafData,
     BudgetFundingSource
   >;
+  metric: BudgetMetricKey;
   fundingLabels?: BudgetMeta["fundingLabels"];
 }) {
   const { leaf } = context;
@@ -374,7 +310,14 @@ function MiniBudgetTooltip({
         share: leaf.value > 0 && amount >= 0 ? amount / leaf.value : undefined,
       }))}
       notes={
-        parentAmount > 0 ? `${share.toFixed(1)}% of parent total` : undefined
+        <>
+          {parentAmount > 0
+            ? `${share.toFixed(1)}% of parent total`
+            : undefined}
+          <SourceReferenceLinks
+            references={node ? collectBudgetNodeSources(node, metric) : []}
+          />
+        </>
       }
     />
   );
@@ -409,9 +352,15 @@ function MiniBudgetTreemap({
         formatValue={formatBudget}
         formatAccessibleValue={formatBudget}
         layout={{ rowOrder: "input", subgroupOrder: "input" }}
+        interactiveTooltip
         renderTooltip={(context) => (
           <MiniBudgetTooltip
             context={context}
+            metric={
+              meta.measure === "approved" || meta.measure === "proposed"
+                ? meta.measure
+                : "expenditure"
+            }
             fundingLabels={meta.fundingLabels}
           />
         )}
@@ -440,12 +389,14 @@ function maximumHierarchyAmount(
 }
 
 function BudgetHierarchy({
+  metric = "expenditure",
   nodes,
   childrenByParent,
   depth = 0,
   scaleMaximum,
   parentAmount,
 }: {
+  metric?: BudgetMetricKey;
   nodes: BudgetNode[];
   childrenByParent: Record<string, BudgetNode[]>;
   depth?: number;
@@ -535,9 +486,14 @@ function BudgetHierarchy({
                   : undefined,
             }))}
             notes={
-              fundingValues.length === 0
-                ? "Funding-source breakdown unavailable."
-                : undefined
+              <>
+                {fundingValues.length === 0
+                  ? "Funding-source breakdown unavailable."
+                  : undefined}
+                <SourceReferenceLinks
+                  references={collectBudgetNodeSources(child, metric)}
+                />
+              </>
             }
           />
         );
@@ -548,6 +504,7 @@ function BudgetHierarchy({
             badge={badge}
             value={formatBudget(child.amount)}
             bar={bar}
+            interactiveTooltip
             tooltip={tooltipContent}
             depth={depth}
             expanded={isExpanded}
@@ -555,6 +512,7 @@ function BudgetHierarchy({
           >
             {hasDescendants && isExpanded && (
               <BudgetHierarchy
+                metric={metric}
                 nodes={descendants}
                 childrenByParent={childrenByParent}
                 depth={depth + 1}
@@ -676,24 +634,15 @@ function BudgetDetailSidebar({
   const fundingEntries = positiveFundingValues(node);
   const childSum = childNodes.reduce((sum, child) => sum + child.amount, 0);
   const childGap = node.amount - childSum;
-  const labelledSourceReferences = fundingEntries.flatMap(([source]) => {
-    const reference = node.sources?.[source];
-    return reference
-      ? [
-          {
-            fundingSource: source,
-            reference,
-          },
-        ]
-      : [];
-  });
-  const sourceReferences =
-    labelledSourceReferences.length > 0
-      ? labelledSourceReferences
-      : amountSources(node).map((reference) => ({
-          fundingSource: null,
-          reference,
-        }));
+  const sourceMetric =
+    meta.measure === "approved" || meta.measure === "proposed"
+      ? meta.measure
+      : "expenditure";
+  const sourceReferences = collectBudgetHierarchySources(
+    node,
+    childrenByParent,
+    sourceMetric,
+  );
   const titleId = "budget-sidebar-title";
 
   // What the row is, and where it sits. The rows below a budget unit keep the
@@ -800,11 +749,24 @@ function BudgetDetailSidebar({
                         />
                       }
                       value={
-                        <BudgetAmount
-                          amount={amount}
-                          sources={[]}
-                          className="text-gray-900"
-                        />
+                        <Tooltip
+                          interactive
+                          content={
+                            <SourceReferenceLinks
+                              references={
+                                node.metricSources?.[sourceMetric]?.[key] ??
+                                (sourceMetric === "expenditure" &&
+                                node.sources?.[key]
+                                  ? [node.sources[key]!]
+                                  : [])
+                              }
+                            />
+                          }
+                        >
+                          <span tabIndex={0} className="text-gray-900">
+                            {formatBudget(amount)}
+                          </span>
+                        </Tooltip>
                       }
                       color={style?.color}
                       percent={
@@ -854,6 +816,12 @@ function BudgetDetailSidebar({
                 <>
                   <div className="mt-4">
                     <BudgetHierarchy
+                      metric={
+                        meta.measure === "approved" ||
+                        meta.measure === "proposed"
+                          ? meta.measure
+                          : "expenditure"
+                      }
                       nodes={breakdownNodes}
                       childrenByParent={childrenByParent}
                     />
@@ -887,50 +855,28 @@ function BudgetDetailSidebar({
                 />
               </summary>
               <div className="mt-3 space-y-3">
-                {sourceReferences.map(({ fundingSource, reference }) => (
-                  <div
-                    key={`${fundingSource ?? "all"}|${sourceKey(reference)}`}
-                  >
-                    {fundingSource && (
-                      <p className="text-sm font-semibold text-gray-900">
-                        {meta.fundingLabels?.[fundingSource] ??
-                          FUNDING_SOURCES[fundingSource]?.label ??
-                          fundingSource}
-                      </p>
-                    )}
-                    {reference.tableTitle && (
-                      <p className="mt-0.5 text-sm text-gray-700">
-                        Table “{reference.tableTitle}”
-                      </p>
-                    )}
-                    <p className="mt-0.5 text-sm text-gray-700">
-                      Row “{reference.rowLabel}”, column “
-                      {reference.columnHeader}”
+                {sourceReferences.length > 0 && (
+                  <>
+                    <p className="text-sm text-gray-600">
+                      References support this total and its breakdown.
+                      Calculated totals may combine multiple published rows.
                     </p>
-                    <a
-                      href={reference.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-1 inline-flex items-center gap-1.5 text-sm text-un-blue hover:underline"
-                    >
-                      {reference.symbol}
-                      {reference.pdfPage
-                        ? `, PDF page ${reference.pdfPage}`
-                        : " PDF"}
-                      <ExternalLink className="h-3.5 w-3.5" />
-                    </a>
-                  </div>
-                ))}
+                    <SourceReferenceList references={sourceReferences} />
+                  </>
+                )}
                 {sourceReferences.length === 0 && meta.documentUrl && (
-                  <a
-                    href={meta.documentUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm text-un-blue hover:underline"
-                  >
-                    {meta.documentSymbol ?? "Source document"} PDF
-                    <ExternalLink className="h-3.5 w-3.5" />
-                  </a>
+                  <SourceReferenceList
+                    references={[
+                      {
+                        symbol: meta.documentSymbol ?? "Source document",
+                        url: meta.documentUrl,
+                        budgetItem: node.label,
+                        label: metricLabel,
+                        rowLabel: "",
+                        columnHeader: meta.fiscalYear,
+                      },
+                    ]}
+                  />
                 )}
               </div>
             </details>

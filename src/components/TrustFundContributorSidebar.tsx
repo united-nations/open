@@ -1,8 +1,11 @@
 "use client";
+import { Tooltip } from "@un-eosg/ui/components/tooltip";
+import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
-import { ChevronRight, ExternalLink } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { SourceReferenceList } from "@/components/SourceReferenceList";
 import { SidebarControls } from "@/components/SidebarControls";
 import { navigateToSidebar } from "@/hooks/useDeepLink";
 import { useContributorSidebarYear } from "@/hooks/useContributorSidebarYear";
@@ -190,7 +193,23 @@ export function TrustFundContributorSidebar({
             ready
               ? {
                   label: "Net recognized amount",
-                  value: currency(contributor.amount_usd),
+                  value: (
+                    <Tooltip
+                      interactive
+                      width={380}
+                      content={
+                        <SourceReferenceLinks
+                          references={contributor.destinations.flatMap(
+                            (fund) => fund.supportingSources ?? [],
+                          )}
+                        />
+                      }
+                    >
+                      <span tabIndex={0}>
+                        {currency(contributor.amount_usd)}
+                      </span>
+                    </Tooltip>
+                  ),
                 }
               : undefined
           }
@@ -251,6 +270,7 @@ export function TrustFundContributorSidebar({
                     );
                     return (
                       <FinancialBreakdownRow
+                        interactiveTooltip
                         key={key}
                         label={group.entity_name}
                         value={currency(group.amount)}
@@ -261,6 +281,11 @@ export function TrustFundContributorSidebar({
                             <p>
                               Recognized contributions: {currency(group.amount)}
                             </p>
+                            <SourceReferenceLinks
+                              references={group.funds.flatMap(
+                                (fund) => fund.supportingSources ?? [],
+                              )}
+                            />
                           </div>
                         }
                         expanded={expanded.has(key)}
@@ -278,6 +303,7 @@ export function TrustFundContributorSidebar({
                             .sort((a, b) => b.amount_usd - a.amount_usd)
                             .map((fund) => (
                               <FinancialBreakdownRow
+                                interactiveTooltip
                                 key={fund.fund_code}
                                 label={`${fund.fund_code} · ${fund.fund_name}`}
                                 value={currency(fund.amount_usd)}
@@ -293,6 +319,9 @@ export function TrustFundContributorSidebar({
                                       Recognized contributions:{" "}
                                       {currency(fund.amount_usd)}
                                     </p>
+                                    <SourceReferenceLinks
+                                      references={fund.supportingSources ?? []}
+                                    />
                                   </div>
                                 }
                               />
@@ -335,15 +364,23 @@ export function TrustFundContributorSidebar({
                 <p className="text-sm leading-relaxed text-gray-700">
                   {meta.method_note} {meta.mapping_note}
                 </p>
-                <a
-                  href={meta.source.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-2 inline-flex items-center gap-1.5 text-sm text-un-blue hover:underline"
-                >
-                  {meta.source.symbol}
-                  <ExternalLink className="h-3.5 w-3.5" />
-                </a>
+                <SourceReferenceList
+                  references={
+                    contributor.destinations.flatMap(
+                      (destination) => destination.supportingSources ?? [],
+                    ).length
+                      ? contributor.destinations.flatMap(
+                          (destination) => destination.supportingSources ?? [],
+                        )
+                      : [
+                          {
+                            ...meta.source,
+                            rowLabel: "Recognized voluntary contributions",
+                            columnHeader: String(meta.year),
+                          },
+                        ]
+                  }
+                />
               </details>
             </>
           )}

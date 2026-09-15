@@ -12,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from trust_fund_frontend_exports import (  # noqa: E402
     canonical_counterparty,
+    row_references,
     selected_contribution_rows,
 )
 
@@ -72,6 +73,21 @@ class TrustFundFrontendExportTests(unittest.TestCase):
         )
         self.assertEqual(selected["counterparty"].tolist(), ["Government A"])
         self.assertEqual(reconciliation.iloc[0]["residual_usd"], 0)
+
+    def test_aggregate_references_keep_physical_pages_and_reported_rows(self) -> None:
+        rows = pd.DataFrame([
+            {"fund_code": "AAA", "page": 8, "reported_line_item": "Total expenses",
+             "schedule_number": "1.1"},
+            {"fund_code": "BBB", "page": 19, "reported_line_item": "Total expenses",
+             "schedule_number": "2.1"},
+        ])
+        source = {"symbol": "Schedule", "landing_page_url": "https://example.org/record",
+                  "pdf_final_url": "https://example.org/document.pdf"}
+        references = row_references(rows, source, 2023)
+        self.assertEqual([reference["pdfPage"] for reference in references], [8, 19])
+        self.assertEqual([reference["columnHeader"] for reference in references], ["2023", "2023"])
+        self.assertTrue(all(reference["url"].endswith(".pdf") for reference in references))
+        self.assertEqual(len(row_references(pd.concat([rows, rows]), source, 2023)), 2)
 
     def test_known_case_and_typo_variants_collapse(self) -> None:
         self.assertEqual(

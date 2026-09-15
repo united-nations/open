@@ -1,4 +1,5 @@
 "use client";
+import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
 import { ChevronRight, ExternalLink } from "lucide-react";
@@ -11,6 +12,8 @@ import {
   FinancialPanelBar,
 } from "@un-eosg/ui/components/financial-panel-parts";
 import { Tooltip } from "@un-eosg/ui/components/tooltip";
+import { SourceReferenceList } from "@/components/SourceReferenceList";
+import { peacekeepingContributorSources } from "@/lib/peacekeepingSources";
 import { SidebarControls } from "@/components/SidebarControls";
 import { useContributorSidebarYear } from "@/hooks/useContributorSidebarYear";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
@@ -146,7 +149,25 @@ export function PeacekeepingContributorSidebar({
             ready
               ? {
                   label: "Net assessed amount",
-                  value: currency(contributor.net_assessment),
+                  value: (
+                    <Tooltip
+                      interactive
+                      width={380}
+                      content={
+                        <SourceReferenceLinks
+                          references={peacekeepingContributorSources(
+                            missions,
+                            meta,
+                            contributor.name,
+                          )}
+                        />
+                      }
+                    >
+                      <span tabIndex={0}>
+                        {currency(contributor.net_assessment)}
+                      </span>
+                    </Tooltip>
+                  ),
                 }
               : undefined
           }
@@ -169,6 +190,7 @@ export function PeacekeepingContributorSidebar({
                 <div className="space-y-3">
                   {missions.map((mission) => (
                     <Tooltip
+                      interactive
                       key={mission.code}
                       width={380}
                       content={
@@ -181,6 +203,13 @@ export function PeacekeepingContributorSidebar({
                             Gross assessment:{" "}
                             {currency(mission.gross_assessment)}
                           </p>
+                          <SourceReferenceLinks
+                            references={peacekeepingContributorSources(
+                              [mission],
+                              meta,
+                              contributor.name,
+                            )}
+                          />
                         </div>
                       }
                     >
@@ -227,36 +256,18 @@ export function PeacekeepingContributorSidebar({
                     subtracted. These are amounts assessed for the cycle, not
                     amounts paid or outstanding.
                   </p>
-                  <ul className="space-y-2 text-sm">
-                    {Array.from(
-                      new Map(
-                        missions.flatMap((mission) =>
-                          (mission.source_statement_urls?.length
-                            ? mission.source_statement_urls
-                            : [mission.source_url]
-                          ).map(
-                            (url, index, sources) =>
-                              [
-                                url,
-                                `${mission.source_symbol}${sources.length > 1 ? ` · statement ${index + 1}` : ""}`,
-                              ] as const,
-                          ),
-                        ),
-                      ).entries(),
-                    ).map(([url, label]) => (
-                      <li key={url}>
-                        <a
-                          href={url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 text-un-blue hover:underline"
-                        >
-                          {label}
-                          <ExternalLink className="size-3" />
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
+                  <p className="text-sm text-gray-600">
+                    These links locate the mission assessment and credit tables,
+                    not the exact Member State row. Some credit tables omit
+                    Member States with no credit.
+                  </p>
+                  <SourceReferenceList
+                    references={peacekeepingContributorSources(
+                      missions,
+                      meta,
+                      contributor.name,
+                    )}
+                  />
                   {(rateExceptions.length > 0 || derivedRows.length > 0) && (
                     <div className="border-l-4 border-amber-500 bg-amber-50 p-4 text-sm text-amber-950">
                       <p className="font-semibold">Source-data exception</p>

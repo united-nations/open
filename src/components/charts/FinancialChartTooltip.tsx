@@ -1,4 +1,6 @@
 "use client";
+import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
+import type { BudgetNodeSource } from "@/types";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { formatBudget } from "@un-eosg/ui/format-budget";
 
@@ -11,6 +13,7 @@ export function FinancialChartTooltip({
   title,
   totalLabel,
   showBars = false,
+  sources = [],
 }: {
   active?: boolean;
   label?: unknown;
@@ -24,6 +27,7 @@ export function FinancialChartTooltip({
   title?: string;
   totalLabel?: string;
   showBars?: boolean;
+  sources?: readonly BudgetNodeSource[];
 }) {
   if (!active || !payload?.length) return null;
   const entries = payload.filter(
@@ -54,6 +58,7 @@ export function FinancialChartTooltip({
               : undefined,
         }))}
       />
+      <SourceReferenceLinks references={sources} />
     </div>
   );
 }
