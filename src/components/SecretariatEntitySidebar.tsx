@@ -20,6 +20,7 @@ import { FinancingInstrumentChart } from "@/components/charts/FinancingInstrumen
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { loadYearData } from "@/lib/data";
 import { formatBudget } from "@/lib/entities";
+import { fundingSources } from "@un-eosg/ui/funding-sources";
 import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label";
 import {
   PRIORITY_AREA_DISPLAY_ORDER,
@@ -252,9 +253,23 @@ export function SecretariatEntitySidebar({
           : `The funding-source breakdown differs from the displayed total by ${formatBudget(Math.abs(breakdownDifference))}.`,
     items: FUNDING_SOURCES.map((fundingSource) => ({
       id: fundingSource,
-      label: <FundingSourceLabel source={fundingSource} variant="inline" />,
+      label: (
+        <FundingSourceLabel
+          source={fundingSource}
+          variant="inline"
+          showMarker={false}
+        />
+      ),
       value: formatBudget(amounts[fundingSource]),
       marker: null,
+      color: fundingSources[fundingSource].color,
+      percent:
+        (Math.max(0, amounts[fundingSource]) /
+          Math.max(
+            1,
+            ...Object.values(amounts).map((amount) => Math.max(0, amount)),
+          )) *
+        100,
     })),
     content: (
       <div aria-busy={fundingTrend === null || undefined}>

@@ -4,6 +4,7 @@ import { FINANCING_SOURCE_KEYS } from "@/lib/financingInstruments";
 
 export function FinancingInstrumentLabel({
   type,
+  showMarker = true,
   neutral = false,
   className,
   selected,
@@ -11,6 +12,7 @@ export function FinancingInstrumentLabel({
   variant = "inline",
 }: {
   type: string;
+  showMarker?: boolean;
   neutral?: boolean;
   className?: string;
   selected?: boolean;
@@ -23,6 +25,7 @@ export function FinancingInstrumentLabel({
       {source ? (
         <FundingSourceLabel
           source={source}
+          showMarker={showMarker}
           palette={neutral ? "gray" : "blue"}
           variant={variant}
           selected={selected}

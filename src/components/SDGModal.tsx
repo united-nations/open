@@ -10,6 +10,7 @@ import { navigateToSidebar } from "@/hooks/useDeepLink";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
 import {
   FinancialPanelHeading,
+  FinancialPanelTotalRow,
   FinancialPanelRankedRow,
   FinancialPanelBar,
 } from "@un-eosg/ui/components/financial-panel-parts";
@@ -247,16 +248,10 @@ export default function SDGModal({
                   System-wide financials
                 </FinancialPanelHeading>
 
-                <div>
-                  <FinancialPanelHeading subheading>
-                    Total
-                  </FinancialPanelHeading>
-                  <div className="mt-0.5">
-                    <div className="text-base font-semibold text-gray-700">
-                      {formatBudget(totalExpenses)}
-                    </div>
-                  </div>
-                </div>
+                <FinancialPanelTotalRow
+                  label="Total spending"
+                  value={formatBudget(totalExpenses)}
+                />
 
                 <div className="mt-4">
                   <FinancialPanelHeading subheading>

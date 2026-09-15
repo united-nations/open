@@ -25,6 +25,8 @@ import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { navigateToSidebar } from "@/hooks/useDeepLink";
 import {
   FinancialPanelHeading,
+  FinancialPanelTotalRow,
+  FinancialPanelBreakdownRow,
   FinancialPanelBar,
   FinancialPanelRankedRow,
   FinancialPanelGoalBadge,
@@ -425,36 +427,21 @@ export function EntitySidebar({
 
             {/* Financials Section */}
             <div>
-              {/* Total Spending */}
-              <div>
-                <span className="text-base font-semibold text-gray-900">
-                  Total Spending
-                </span>
-                <div className="mt-0.5">
-                  <div className="text-base font-semibold text-gray-700">
-                    {yearSpending > 0 ? formatBudget(yearSpending) : "N/A"}
-                  </div>
-                </div>
-              </div>
-
-              {/* Total Funding */}
+              <FinancialPanelTotalRow
+                label="Total spending"
+                value={yearSpending > 0 ? formatBudget(yearSpending) : "N/A"}
+              />
               <div className="mt-3">
-                <span className="text-base font-semibold text-gray-900">
-                  Total Funding
-                </span>
-                <div className="mt-0.5">
-                  {yearRevenue ? (
-                    <div className="text-base font-semibold text-gray-700">
-                      {formatBudget(yearRevenue.total)}
-                    </div>
-                  ) : (
-                    <div className="text-sm text-gray-500 italic">
-                      Funding data not available at sub-entity level
-                    </div>
-                  )}
-                </div>
+                <FinancialPanelTotalRow
+                  label="Total funding"
+                  value={yearRevenue ? formatBudget(yearRevenue.total) : "—"}
+                />
+                {!yearRevenue && (
+                  <p className="mt-1 text-sm text-gray-500">
+                    Funding data not available at sub-entity level
+                  </p>
+                )}
               </div>
-
               {/* Funding by Financing Instrument */}
               {(yearRevenue && revenueByType.length > 0) ||
               financingTrendData.length > 0 ? (
@@ -465,15 +452,27 @@ export function EntitySidebar({
                   {yearRevenue && revenueByType.length > 0 && (
                     <div className="mt-2 space-y-2">
                       {revenueByType.map(([type, amount]) => (
-                        <div
+                        <FinancialPanelBreakdownRow
                           key={type}
-                          className="flex items-center justify-between gap-2"
-                        >
-                          <FinancingInstrumentLabel type={type} />
-                          <span className="text-sm font-semibold text-gray-700">
-                            {formatBudget(amount)}
-                          </span>
-                        </div>
+                          label={
+                            <FinancingInstrumentLabel
+                              type={type}
+                              showMarker={false}
+                            />
+                          }
+                          value={formatBudget(amount)}
+                          color={getFinancingInstrumentColor(type)}
+                          percent={
+                            (Math.max(0, amount) /
+                              Math.max(
+                                1,
+                                ...revenueByType.map(([, value]) =>
+                                  Math.max(0, value),
+                                ),
+                              )) *
+                            100
+                          }
+                        />
                       ))}
                     </div>
                   )}
@@ -495,16 +494,6 @@ export function EntitySidebar({
                   <FinancialPanelHeading subheading>
                     Revenue vs Expenses
                   </FinancialPanelHeading>
-                  <div className="mt-1 flex gap-3 text-xs text-gray-500">
-                    <span className="flex items-center gap-1">
-                      <span className="inline-block h-2 w-2 rounded-full bg-un-blue" />
-                      Revenue
-                    </span>
-                    <span className="flex items-center gap-1">
-                      <span className="inline-block h-2 w-2 rounded-full bg-faded-jade" />
-                      Expenses
-                    </span>
-                  </div>
                   <div className="mt-2">
                     <EntityTrendChart data={trendData} compact />
                   </div>

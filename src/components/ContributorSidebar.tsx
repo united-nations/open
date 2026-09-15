@@ -17,6 +17,8 @@ import { navigateToSidebar } from "@/hooks/useDeepLink";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
 import {
   FinancialPanelHeading,
+  FinancialPanelTotalRow,
+  FinancialPanelBreakdownRow,
   FinancialPanelRankedRow,
   FinancialPanelBar,
 } from "@un-eosg/ui/components/financial-panel-parts";
@@ -285,16 +287,10 @@ export function ContributorSidebar({
                   )}
 
                 <div>
-                  <div>
-                    <span className="text-base font-semibold text-gray-900">
-                      Total
-                    </span>
-                    <div className="mt-0.5">
-                      <div className="text-base font-semibold text-gray-700">
-                        {formatBudget(totalContributions)}
-                      </div>
-                    </div>
-                  </div>
+                  <FinancialPanelTotalRow
+                    label="Total"
+                    value={formatBudget(totalContributions)}
+                  />
 
                   <div className="mt-4">
                     <FinancialPanelHeading subheading>
@@ -302,15 +298,27 @@ export function ContributorSidebar({
                     </FinancialPanelHeading>
                     <div className="mt-2 space-y-2">
                       {breakdownEntries.map(([type, amount]) => (
-                        <div
+                        <FinancialPanelBreakdownRow
                           key={type}
-                          className="flex items-center justify-between gap-2"
-                        >
-                          <FinancingInstrumentLabel type={type} />
-                          <span className="text-sm font-semibold text-gray-700">
-                            {formatBudget(amount)}
-                          </span>
-                        </div>
+                          label={
+                            <FinancingInstrumentLabel
+                              type={type}
+                              showMarker={false}
+                            />
+                          }
+                          value={formatBudget(amount)}
+                          color={getFinancingInstrumentColor(type)}
+                          percent={
+                            (Math.max(0, amount) /
+                              Math.max(
+                                1,
+                                ...breakdownEntries.map(([, value]) =>
+                                  Math.max(0, value),
+                                ),
+                              )) *
+                            100
+                          }
+                        />
                       ))}
                     </div>
                     {trendsData.length > 0 && (

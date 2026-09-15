@@ -11,6 +11,7 @@ import { navigateToSidebar } from "@/hooks/useDeepLink";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
 import {
   FinancialPanelHeading,
+  FinancialPanelTotalRow,
   FinancialPanelRankedRow,
   FinancialPanelBar,
   FinancialPanelGoalBadge,
@@ -229,23 +230,15 @@ export function CountrySidebar({
               <FinancialPanelHeading className="mb-3">
                 System-wide financials
               </FinancialPanelHeading>
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <span className="text-base font-semibold text-gray-900">
-                    Total Spending
-                  </span>
-                  <div className="mt-0.5 text-xl font-bold text-gray-900">
-                    {formatBudget(yearCountry.total)}
-                  </div>
-                </div>
-                <div>
-                  <span className="text-base font-semibold text-gray-900">
-                    Entities Active
-                  </span>
-                  <div className="mt-0.5 text-lg font-semibold text-gray-700">
-                    {sortedEntities.length}
-                  </div>
-                </div>
+              <div className="space-y-3">
+                <FinancialPanelTotalRow
+                  label="Total spending"
+                  value={formatBudget(yearCountry.total)}
+                />
+                <FinancialPanelTotalRow
+                  label="Entities active"
+                  value={sortedEntities.length}
+                />
               </div>
               <FinancialPanelHeading subheading className="mt-4">
                 Spending by entity

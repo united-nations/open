@@ -5,7 +5,10 @@ import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label"
 
 import { ChevronRight, ExternalLink } from "lucide-react";
 import { FinancialBreakdownRow } from "@un-eosg/ui/components/financial-breakdown-row";
-import { FinancialPanelHeading } from "@un-eosg/ui/components/financial-panel-parts";
+import {
+  FinancialPanelHeading,
+  FinancialPanelBreakdownRow,
+} from "@un-eosg/ui/components/financial-panel-parts";
 import { useCallback, useEffect, useState } from "react";
 import {
   GroupedTreemap,
@@ -786,20 +789,35 @@ function BudgetDetailSidebar({
                   const label =
                     meta.fundingLabels?.[key] ?? style?.label ?? key;
                   return (
-                    <div key={key} className="flex items-center gap-2 text-sm">
-                      <span className="flex-1">
+                    <FinancialPanelBreakdownRow
+                      key={key}
+                      label={
                         <FundingSourceLabel
                           source={key}
                           variant="inline"
                           label={label}
+                          showMarker={false}
                         />
-                      </span>
-                      <BudgetAmount
-                        amount={amount}
-                        sources={[]}
-                        className="text-gray-900"
-                      />
-                    </div>
+                      }
+                      value={
+                        <BudgetAmount
+                          amount={amount}
+                          sources={[]}
+                          className="text-gray-900"
+                        />
+                      }
+                      color={style?.color}
+                      percent={
+                        (Math.max(0, amount) /
+                          Math.max(
+                            1,
+                            ...fundingEntries.map(([, value]) =>
+                              Math.max(0, value),
+                            ),
+                          )) *
+                        100
+                      }
+                    />
                   );
                 })}
               </div>
