@@ -1,3 +1,4 @@
+import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { Entity, BudgetEntry } from "@/types";
 
 export const UNCATEGORIZED_SYSTEM_GROUP = "Uncategorized";
@@ -60,14 +61,7 @@ export function createUncategorizedEntity(entityCode: string): Entity {
 /**
  * Format budget amount as currency
  */
-export const formatBudget = (amount: number): string => {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    notation: "compact",
-    maximumFractionDigits: 1,
-  }).format(amount);
-};
+export const formatBudget = sharedFormatBudget;
 
 /**
  * Create a URL-safe slug from entity name

@@ -1,4 +1,5 @@
 "use client";
+import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 
@@ -310,11 +311,7 @@ export function EntityTrendsChart() {
   };
 
   // Y-axis tick formatter
-  const formatYAxis = (value: number) => {
-    if (value >= 1e9) return `$${(value / 1e9).toFixed(0)}B`;
-    if (value >= 1e6) return `$${(value / 1e6).toFixed(0)}M`;
-    return `$${value}`;
-  };
+  const formatYAxis = sharedFormatBudget;
 
   return (
     <>

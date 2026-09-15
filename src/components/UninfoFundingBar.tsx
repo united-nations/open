@@ -1,3 +1,4 @@
+import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 interface UninfoFundingBarProps {
   required: number;
   available: number;
@@ -7,12 +8,7 @@ interface UninfoFundingBarProps {
   compact?: boolean; // Use fixed width (for tooltips)
 }
 
-const formatAmount = (n: number): string => {
-  if (n >= 1e9) return `$${(n / 1e9).toFixed(1)}B`;
-  if (n >= 1e6) return `$${(n / 1e6).toFixed(1)}M`;
-  if (n >= 1e3) return `$${(n / 1e3).toFixed(0)}K`;
-  return `$${n.toFixed(0)}`;
-};
+const formatAmount = sharedFormatBudget;
 
 // Convert hex to rgba for opacity
 const hexToRgba = (hex: string, alpha: number): string => {
@@ -25,9 +21,16 @@ const hexToRgba = (hex: string, alpha: number): string => {
 // UN Blue from globals.css
 const UN_BLUE = "#009edb";
 
-export function UninfoFundingBar({ required, available, spent, showLabels = true, color, compact = false }: UninfoFundingBarProps) {
+export function UninfoFundingBar({
+  required,
+  available,
+  spent,
+  showLabels = true,
+  color,
+  compact = false,
+}: UninfoFundingBarProps) {
   if (required <= 0) return null;
-  
+
   const max = required;
   const requiredPct = 100;
   const availablePct = Math.min((available / max) * 100, 100);
@@ -36,19 +39,35 @@ export function UninfoFundingBar({ required, available, spent, showLabels = true
   const baseColor = color || UN_BLUE;
   const spentColor = baseColor;
   const availColor = hexToRgba(baseColor, 0.35);
-  
+
   const bars = [
-    { label: "Required", pct: requiredPct, value: required, bgColor: "#e5e7eb" },
-    { label: "Available", pct: availablePct, value: available, bgColor: availColor },
+    {
+      label: "Required",
+      pct: requiredPct,
+      value: required,
+      bgColor: "#e5e7eb",
+    },
+    {
+      label: "Available",
+      pct: availablePct,
+      value: available,
+      bgColor: availColor,
+    },
     { label: "Spent", pct: spentPct, value: spent, bgColor: spentColor },
   ];
 
   if (!showLabels) {
     return (
       <div className="flex items-center gap-1">
-        {bars.map(b => (
-          <div key={b.label} className="flex-1 h-2 bg-gray-100 rounded-sm overflow-hidden">
-            <div className="h-full" style={{ width: `${b.pct}%`, backgroundColor: b.bgColor }} />
+        {bars.map((b) => (
+          <div
+            key={b.label}
+            className="h-2 flex-1 overflow-hidden rounded-sm bg-gray-100"
+          >
+            <div
+              className="h-full"
+              style={{ width: `${b.pct}%`, backgroundColor: b.bgColor }}
+            />
           </div>
         ))}
       </div>
@@ -59,13 +78,23 @@ export function UninfoFundingBar({ required, available, spent, showLabels = true
   if (compact) {
     return (
       <div className="w-56">
-        {bars.map(b => (
-          <div key={b.label} className="flex items-center gap-2 mb-1.5 last:mb-0">
-            <span className="w-16 flex-shrink-0 text-xs text-gray-600">{b.label}</span>
-            <div className="w-20 h-2 bg-gray-100 rounded-sm overflow-hidden">
-              <div className="h-full" style={{ width: `${b.pct}%`, backgroundColor: b.bgColor }} />
+        {bars.map((b) => (
+          <div
+            key={b.label}
+            className="mb-1.5 flex items-center gap-2 last:mb-0"
+          >
+            <span className="w-16 flex-shrink-0 text-xs text-gray-600">
+              {b.label}
+            </span>
+            <div className="h-2 w-20 overflow-hidden rounded-sm bg-gray-100">
+              <div
+                className="h-full"
+                style={{ width: `${b.pct}%`, backgroundColor: b.bgColor }}
+              />
             </div>
-            <span className="w-16 flex-shrink-0 text-right text-xs text-gray-500">{formatAmount(b.value)}</span>
+            <span className="w-16 flex-shrink-0 text-right text-xs text-gray-500">
+              {formatAmount(b.value)}
+            </span>
           </div>
         ))}
       </div>
@@ -75,13 +104,20 @@ export function UninfoFundingBar({ required, available, spent, showLabels = true
   // Full width mode for main display - aligned with entity bars (w-20 label, gap-2, w-20 amount)
   return (
     <div className="space-y-2">
-      {bars.map(b => (
+      {bars.map((b) => (
         <div key={b.label} className="flex items-center gap-2">
-          <span className="w-20 flex-shrink-0 text-xs text-gray-600">{b.label}</span>
-          <div className="flex-1 h-2 bg-gray-100 rounded-sm overflow-hidden">
-            <div className="h-full" style={{ width: `${b.pct}%`, backgroundColor: b.bgColor }} />
+          <span className="w-20 flex-shrink-0 text-xs text-gray-600">
+            {b.label}
+          </span>
+          <div className="h-2 flex-1 overflow-hidden rounded-sm bg-gray-100">
+            <div
+              className="h-full"
+              style={{ width: `${b.pct}%`, backgroundColor: b.bgColor }}
+            />
           </div>
-          <span className="w-20 flex-shrink-0 text-right text-xs text-gray-500">{formatAmount(b.value)}</span>
+          <span className="w-20 flex-shrink-0 text-right text-xs text-gray-500">
+            {formatAmount(b.value)}
+          </span>
         </div>
       ))}
     </div>

@@ -41,6 +41,20 @@ export const priorityAreaStyles: Record<string, SystemGroupingStyle> = build([
   ...secretariatTaxonomies.priority_areas,
 ]);
 
+// Fixed sidebar order: descending overall spending in the 2025 overview.
+// Keep independent of the selected entity/year and the palette's ordering.
+export const PRIORITY_AREA_DISPLAY_ORDER: readonly string[] = [
+  "Maintenance of international peace and security",
+  "Promotion of sustained economic growth and sustainable development",
+  "Effective coordination of humanitarian assistance efforts",
+  "Effective functioning of the organization",
+  "Drug control, crime prevention and combating terrorism",
+  "Promotion and protection of human rights",
+  "Promotion of international justice and law",
+  "Development of Africa",
+  "Disarmament",
+];
+
 // Budget parts — keyed by part_id (Roman numeral). Labels are the part descriptions.
 const PART_LABELS: Array<[string, string]> =
   secretariatTaxonomies.budget_parts.map(({ code, label }) => [code, label]);

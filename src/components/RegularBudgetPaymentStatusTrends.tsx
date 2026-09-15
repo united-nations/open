@@ -1,4 +1,5 @@
 "use client";
+import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import {
   usePaymentChartScale,
   paymentScaleMaximum,
@@ -194,7 +195,7 @@ export function RegularBudgetPaymentStatusTrends() {
             tooltipValueFormatter={(value) =>
               measure === "count"
                 ? `${value.toLocaleString("en-GB")} Member States`
-                : `$${value.toLocaleString("en-GB", { maximumFractionDigits: 2 })}`
+                : sharedFormatBudget(value)
             }
             yAxisMax={
               sharedScale?.scales?.[measure === "count" ? "count" : "amount"]

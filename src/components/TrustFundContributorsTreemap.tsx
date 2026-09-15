@@ -1,4 +1,5 @@
 "use client";
+import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
@@ -45,14 +46,7 @@ function groupOf(contributor: TrustFundContributor): ContributorGroup {
     : "other";
 }
 
-function currency(value: number, compact = false): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    notation: compact ? "compact" : "standard",
-    maximumFractionDigits: compact ? 1 : 0,
-  }).format(value);
-}
+const currency = sharedFormatBudget;
 
 function matchesQuery(name: string, query: string): boolean {
   return name.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase());
@@ -212,12 +206,15 @@ export function TrustFundContributorsTreemap() {
 
   return (
     <div className="relative w-full">
-      <DelayedChartLoading pending={data?.meta.year !== year} requestKey={year} />
+      <DelayedChartLoading
+        pending={data?.meta.year !== year}
+        requestKey={year}
+      />
       {current && (
         <>
           <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-600">
             <span>
-              {currency(current.meta.contributor_total_usd, true)} named net ·{" "}
+              {currency(current.meta.contributor_total_usd)} named net ·{" "}
               {(current.meta.named_row_completeness * 100).toFixed(2)}%
               named-row reconciliation
             </span>
@@ -315,13 +312,13 @@ export function TrustFundContributorsTreemap() {
                   query || hiddenGroups.length
                     ? "Matching positive total"
                     : "Positive total",
-                value: currency(visibleTotal, true),
+                value: currency(visibleTotal),
               },
             ]}
             totalLabel="Total"
             showLeafValues
             plotClassName="h-[560px] sm:h-[680px] lg:h-[780px]"
-            formatValue={(value) => currency(value, true)}
+            formatValue={(value) => currency(value)}
             formatAccessibleValue={(value) => currency(value)}
             renderTooltip={(context) => (
               <ContributorTooltip context={context} />
@@ -347,6 +344,7 @@ export function TrustFundContributorsTreemap() {
       )}
       {selected && current && (
         <TrustFundContributorSidebar
+          key={selected.name}
           contributor={selected}
           meta={current.meta}
           onClose={() => {

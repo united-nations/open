@@ -261,8 +261,8 @@ export function PeacekeepingBudgetMethodologyNotes() {
       <p>
         The map and table use peacekeeping budget and performance-report
         expenditure on the July–June financial cycle. Only missions in that
-        corpus are shown. Support centres (RSCE, UNGSC, UNSOS) are included and
-        marked separately from field missions.
+        corpus are shown. Service centres (RSCE, UNGSC) are included and marked
+        separately from field missions, including UNSOS.
       </p>
       <p>
         Observer missions paid from the regular budget (UNTSO, UNMOGIP) are not

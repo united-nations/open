@@ -5,9 +5,12 @@ import {
   FinancialDetailPanel,
   type FinancialDetailPanelFundingBreakdown,
   type FinancialDetailPanelNotice,
-  type FinancialDetailPanelTrend,
 } from "@un-eosg/ui/components/financial-detail-panel";
-import { FinancialPanelSection } from "@un-eosg/ui/components/financial-panel-parts";
+import {
+  FinancialPanelBar,
+  FinancialPanelRankedRow,
+  FinancialPanelSection,
+} from "@un-eosg/ui/components/financial-panel-parts";
 import { SidebarControls } from "@/components/SidebarControls";
 import {
   FUNDING_SOURCE_TREND_SERIES,
@@ -18,6 +21,10 @@ import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { loadYearData } from "@/lib/data";
 import { formatBudget } from "@/lib/entities";
 import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label";
+import {
+  PRIORITY_AREA_DISPLAY_ORDER,
+  priorityAreaColor,
+} from "@/lib/secretariatGroupings";
 import { useYearRanges } from "@/lib/useYearRanges";
 import type {
   SecretariatFundingSource,
@@ -90,9 +97,22 @@ export function SecretariatEntitySidebar({
   const focusTrapRef = useFocusTrap(true);
   const years = useYearRanges().secretariatOverview.years;
 
-  const priorities = useMemo(
-    () => amountRows(displayed.entity, "priority_area"),
-    [displayed.entity],
+  const priorities = useMemo(() => {
+    const values = new Map(amountRows(displayed.entity, "priority_area"));
+    for (const label of PRIORITY_AREA_DISPLAY_ORDER) {
+      if (!values.has(label)) values.set(label, 0);
+    }
+    return [...values.entries()].sort(([a], [b]) => {
+      const rank = (name: string) => {
+        const index = PRIORITY_AREA_DISPLAY_ORDER.indexOf(name);
+        return index < 0 ? PRIORITY_AREA_DISPLAY_ORDER.length : index;
+      };
+      return rank(a) - rank(b) || a.localeCompare(b);
+    });
+  }, [displayed.entity]);
+  const maxPriorityAmount = Math.max(
+    0,
+    ...priorities.map(([, amount]) => amount),
   );
   const amounts = useMemo(
     () => fundingAmounts(displayed.entity),
@@ -230,44 +250,43 @@ export function SecretariatEntitySidebar({
         : breakdownComplete
           ? `Funding-source breakdown for ${displayed.year} is ready.`
           : `The funding-source breakdown differs from the displayed total by ${formatBudget(Math.abs(breakdownDifference))}.`,
-    items: FUNDING_SOURCES.filter(
-      (fundingSource) => amounts[fundingSource] !== 0,
-    ).map((fundingSource) => ({
+    items: FUNDING_SOURCES.map((fundingSource) => ({
       id: fundingSource,
       label: <FundingSourceLabel source={fundingSource} variant="inline" />,
       value: formatBudget(amounts[fundingSource]),
       marker: null,
     })),
+    content: (
+      <div aria-busy={fundingTrend === null || undefined}>
+        {hasTrend && fundingTrend && (
+          <FinancingInstrumentChart
+            data={fundingTrend}
+            series={FUNDING_SOURCE_TREND_SERIES}
+            compact
+            showLegend={false}
+          />
+        )}
+        <p
+          aria-live="polite"
+          className={
+            hasTrend && !trendIncomplete
+              ? "sr-only"
+              : "mt-2 text-sm text-gray-500"
+          }
+        >
+          {fundingTrend === null
+            ? "Loading funding-source trend."
+            : !hasTrend
+              ? "No multi-year funding-source trend is available."
+              : trendIncomplete
+                ? "The trend is shown with one or more unavailable years."
+                : "Funding-source trend is ready."}
+        </p>
+      </div>
+    ),
     note: breakdownComplete
       ? undefined
       : `The published total and funding-source rows differ by ${formatBudget(Math.abs(breakdownDifference))}; the total is shown as published.`,
-  };
-
-  const trend: FinancialDetailPanelTrend = {
-    heading: "Trend by funding source",
-    state:
-      fundingTrend === null
-        ? "loading"
-        : !hasTrend
-          ? "empty"
-          : trendIncomplete
-            ? "incomplete"
-            : "ready",
-    status:
-      fundingTrend === null
-        ? "Loading funding-source trend."
-        : !hasTrend
-          ? "No multi-year funding-source trend is available."
-          : trendIncomplete
-            ? "The trend is shown with one or more unavailable years."
-            : "Funding-source trend is ready.",
-    content: hasTrend ? (
-      <FinancingInstrumentChart
-        data={fundingTrend}
-        series={FUNDING_SOURCE_TREND_SERIES}
-        compact
-      />
-    ) : undefined,
   };
 
   const notice: FinancialDetailPanelNotice | undefined = yearError
@@ -324,7 +343,7 @@ export function SecretariatEntitySidebar({
           }}
           yearSelectorPlacement="header"
           yearSelector={{
-            years: [...years].sort((a,b) => b-a),
+            years: [...years].sort((a, b) => b - a),
             selected: displayed.year,
             label: "Select year",
             onChange: (nextYear) => {
@@ -334,10 +353,10 @@ export function SecretariatEntitySidebar({
               }
             },
             pending: requestedYear !== null,
-            pendingLabel: requestedYear === null ? undefined : `Loading ${requestedYear}…`,
+            pendingLabel:
+              requestedYear === null ? undefined : `Loading ${requestedYear}…`,
           }}
           fundingBreakdown={fundingBreakdown}
-          trend={trend}
           busy={requestedYear !== null}
           statusMessage={
             requestedYear === null
@@ -348,45 +367,26 @@ export function SecretariatEntitySidebar({
           className="bg-white sm:w-full"
         >
           <FinancialPanelSection heading="Priority areas">
-            {priorities.length > 0 ? (
-              <div className="space-y-3">
-                {priorities.map(([label, amount]) => (
-                  <div key={label}>
-                    <div className="flex items-start justify-between gap-4 text-sm">
-                      <span className="text-gray-700">{label}</span>
-                      <span className="shrink-0 font-semibold text-gray-900">
-                        {formatBudget(amount)}
-                      </span>
-                    </div>
-                    <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-gray-100">
-                      <div
-                        className="h-full bg-un-blue"
-                        style={{
-                          width: `${
-                            displayed.entity.total > 0
-                              ? Math.max(
-                                  0,
-                                  Math.min(
-                                    100,
-                                    (amount / displayed.entity.total) * 100,
-                                  ),
-                                )
-                              : 0
-                          }%`,
-                        }}
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className="text-sm text-gray-500">
-                No priority-area allocation is available for {displayed.year}.
-              </p>
-            )}
+            <div className="space-y-3">
+              {priorities.map(([label, amount]) => (
+                <FinancialPanelRankedRow
+                  key={label}
+                  label={label}
+                  labelClassName="w-1/2"
+                  value={formatBudget(amount)}
+                >
+                  <FinancialPanelBar
+                    percent={
+                      maxPriorityAmount > 0
+                        ? (amount / maxPriorityAmount) * 100
+                        : 0
+                    }
+                    color={priorityAreaColor(label)}
+                  />
+                </FinancialPanelRankedRow>
+              ))}
+            </div>
           </FinancialPanelSection>
-
-
         </FinancialDetailPanel>
       </aside>
     </div>

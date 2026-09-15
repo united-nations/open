@@ -1,3 +1,4 @@
+import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import organizationTaxonomies from "../../data/organization-taxonomies.json";
 
 export type ContributorStatus =
@@ -78,14 +79,7 @@ export const getTotalContributions = (
   }, 0);
 };
 
-export const formatBudget = (amount: number): string => {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    notation: "compact",
-    maximumFractionDigits: 1,
-  }).format(amount);
-};
+export const formatBudget = sharedFormatBudget;
 
 export const getDisplayName = (name: string): string => {
   return name

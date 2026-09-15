@@ -1,4 +1,5 @@
 "use client";
+import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
 import {
   LineChart,
@@ -23,28 +24,34 @@ interface EntityTrendChartProps {
   compact?: boolean;
 }
 
-const formatYAxis = (value: number) => {
-  if (value >= 1e9) return `$${(value / 1e9).toFixed(0)}B`;
-  if (value >= 1e6) return `$${(value / 1e6).toFixed(0)}M`;
-  return `$${value}`;
-};
+const formatYAxis = sharedFormatBudget;
 
 const formatTooltipValue = (value: unknown) => {
-  if (value === null || value === undefined || typeof value !== "number") return "N/A";
+  if (value === null || value === undefined || typeof value !== "number")
+    return "N/A";
   return formatBudget(value);
 };
 
-export function EntityTrendChart({ data, height = 180, compact = true }: EntityTrendChartProps) {
+export function EntityTrendChart({
+  data,
+  height = 180,
+  compact = true,
+}: EntityTrendChartProps) {
   if (data.length === 0) return null;
 
   // Filter to only show years with data
-  const validData = data.filter(d => d.revenue !== null || d.expenses !== null);
+  const validData = data.filter(
+    (d) => d.revenue !== null || d.expenses !== null,
+  );
   if (validData.length === 0) return null;
 
   return (
     <div style={{ height }} className="w-full">
       <ResponsiveContainer width="100%" height="100%">
-        <LineChart data={validData} margin={{ top: 10, right: 5, left: 5, bottom: 5 }}>
+        <LineChart
+          data={validData}
+          margin={{ top: 10, right: 5, left: 5, bottom: 5 }}
+        >
           <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
           <XAxis
             dataKey="year"
@@ -55,10 +62,15 @@ export function EntityTrendChart({ data, height = 180, compact = true }: EntityT
           <YAxis
             orientation="right"
             width={1}
-            tick={{ fontSize: compact ? 9 : 11, fill: "#6b7280", dx: -5, dy: -8 }}
+            tick={{
+              fontSize: compact ? 9 : 11,
+              fill: "#6b7280",
+              dx: -5,
+              dy: -8,
+            }}
             tickLine={false}
             axisLine={false}
-            domain={[0, 'auto']}
+            domain={[0, "auto"]}
             tickFormatter={formatYAxis}
             mirror
           />

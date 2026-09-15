@@ -1,4 +1,5 @@
 "use client";
+import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 import { useState } from "react";
 import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label";
@@ -6,6 +7,8 @@ import { FinancingInstrumentLabel } from "../FinancingInstrumentLabel";
 
 import {
   AreaChart,
+  BarChart,
+  Bar,
   Area,
   XAxis,
   YAxis,
@@ -74,16 +77,15 @@ interface FinancingInstrumentChartProps {
   compact?: boolean;
   filterable?: boolean;
   yAxisMax?: number;
+  /** Allow signed net series, such as contribution adjustments. */
+  allowNegative?: boolean;
+  variant?: "area" | "bar";
   tooltipValueFormatter?: (value: number) => string;
   showTooltipTotal?: boolean;
   valueFormatter?: (value: number) => string;
 }
 
-const formatYAxis = (value: number) => {
-  if (value >= 1e9) return `$${(value / 1e9).toFixed(0)}B`;
-  if (value >= 1e6) return `$${(value / 1e6).toFixed(0)}M`;
-  return `$${value}`;
-};
+const formatYAxis = sharedFormatBudget;
 
 const formatTooltipValue = (value: number | undefined) => {
   if (value === undefined) return "";
@@ -138,11 +140,17 @@ export function FinancingInstrumentChart({
   yAxisMax,
   tooltipValueFormatter,
   showTooltipTotal = false,
+  allowNegative = false,
+  variant = "area",
 }: FinancingInstrumentChartProps) {
   const [hiddenKeys, setHiddenKeys] = useState<string[]>([]);
-  // Only render series that have at least one positive value across the data.
+  // Include signed net series when requested; otherwise require a positive value.
   const activeSeries = series.filter((s) =>
-    data.some((d) => typeof d[s.key] === "number" && (d[s.key] as number) > 0),
+    data.some(
+      (d) =>
+        typeof d[s.key] === "number" &&
+        (allowNegative ? (d[s.key] as number) !== 0 : (d[s.key] as number) > 0),
+    ),
   );
 
   const visibleSeries = activeSeries.filter(
@@ -157,6 +165,7 @@ export function FinancingInstrumentChart({
     );
   }
 
+  const Chart = variant === "bar" ? BarChart : AreaChart;
   const chartHeight = compact ? 180 : height;
 
   return (
@@ -217,7 +226,7 @@ export function FinancingInstrumentChart({
           </div>
         ) : (
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart
+            <Chart
               data={data}
               margin={{ top: 10, right: 5, left: 5, bottom: 5 }}
             >
@@ -239,7 +248,7 @@ export function FinancingInstrumentChart({
                 }}
                 tickLine={false}
                 axisLine={false}
-                domain={[0, yAxisMax ?? "auto"]}
+                domain={[allowNegative ? "auto" : 0, yAxisMax ?? "auto"]}
                 ticks={
                   yAxisMax
                     ? Array.from(
@@ -273,18 +282,30 @@ export function FinancingInstrumentChart({
                   fontSize: "12px",
                 }}
               />
-              {visibleSeries.map((s) => (
-                <Area
-                  key={s.key}
-                  type="monotone"
-                  dataKey={s.key}
-                  name={s.label}
-                  stackId="1"
-                  stroke={s.color}
-                  fill={s.color}
-                />
-              ))}
-            </AreaChart>
+              {visibleSeries.map((s) =>
+                variant === "bar" ? (
+                  <Bar
+                    key={s.key}
+                    dataKey={s.key}
+                    name={s.label}
+                    fill={s.color}
+                    stackId="1"
+                    maxBarSize={32}
+                    radius={4}
+                  />
+                ) : (
+                  <Area
+                    key={s.key}
+                    type="monotone"
+                    dataKey={s.key}
+                    name={s.label}
+                    stackId="1"
+                    stroke={s.color}
+                    fill={s.color}
+                  />
+                ),
+              )}
+            </Chart>
           </ResponsiveContainer>
         )}
       </div>

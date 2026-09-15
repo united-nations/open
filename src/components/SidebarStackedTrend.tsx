@@ -26,16 +26,18 @@ export function SidebarStackedTrend({
   headingClassName = DEFAULT_HEADING,
   data,
   series,
+  showLegend = true,
 }: {
-  heading: string;
+  heading?: string;
   headingClassName?: string;
   data: FinancingInstrumentDataPoint[] | null;
   series: FinancingSeries[];
+  showLegend?: boolean;
 }) {
   if (data === null) {
     return (
       <section>
-        <h3 className={headingClassName}>{heading}</h3>
+        {heading && <h3 className={headingClassName}>{heading}</h3>}
         <p className="mt-2 text-sm text-gray-500">Loading trend…</p>
       </section>
     );
@@ -53,9 +55,14 @@ export function SidebarStackedTrend({
 
   return (
     <section>
-      <h3 className={headingClassName}>{heading}</h3>
-      <div className="mt-3">
-        <FinancingInstrumentChart data={data} series={series} compact />
+      {heading && <h3 className={headingClassName}>{heading}</h3>}
+      <div className={heading ? "mt-3" : undefined}>
+        <FinancingInstrumentChart
+          data={data}
+          series={series}
+          showLegend={showLegend}
+          compact
+        />
       </div>
     </section>
   );

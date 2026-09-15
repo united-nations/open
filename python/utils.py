@@ -7,8 +7,8 @@ from pathlib import Path
 FUSE_SECRETARIAT = False
 
 ENTITY_MAPPING = {
-    "UN": "UN Secretariat (incl. Special Political Missions)",
-    "UN-DPO": "DPO (incl. Peacekeeping Operations)",
+    "UN": "UN Secretariat",
+    "UN-DPO": "Peacekeeping Operations",
     "UN-HABITAT": "UN-Habitat", "UNHABITAT": "UN-Habitat",
     "UNWOMEN": "UN Women", "UN-Women": "UN Women", "UNWTO": "UN Tourism",
     "OHRLLS": "UN-OHRLLS", "POE-CAR": "PoE-CAR", "POE-HAITI": "PoE-Haiti",

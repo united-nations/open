@@ -1,4 +1,5 @@
 "use client";
+import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { HierarchicalSingleSelect } from "@un-eosg/ui/components/hierarchical-single-select";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 
@@ -52,11 +53,7 @@ const DATASETS: Record<
   expenditure: "budget-ppb-expenditure",
 };
 
-const formatYAxis = (value: number) => {
-  if (value >= 1e9) return `$${(value / 1e9).toFixed(1)}B`;
-  if (value >= 1e6) return `$${(value / 1e6).toFixed(0)}M`;
-  return `$${value}`;
-};
+const formatYAxis = sharedFormatBudget;
 
 export function ProgrammeBudgetTrends() {
   const [hiddenMetrics, setHiddenMetrics] = useState<BudgetMetricKey[]>([]);

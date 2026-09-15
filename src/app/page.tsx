@@ -11,7 +11,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PageBody } from "@/components/PageBody";
 import { ResourceLink } from "@/components/ResourceLink";
-import { SystemCategoryTreemap } from "@/components/SystemCategoryTreemap";
 import { SYSTEM_NAV, visibleSecretariatNav } from "@/lib/navigation";
 
 export const metadata: Metadata = {
@@ -22,44 +21,44 @@ export const metadata: Metadata = {
 // Homepage wording stays local while we refine these navigation descriptions.
 const HOME_LINK_DESCRIPTIONS: Record<string, string> = {
   "/system/organizations": "Funding and spending across UN organizations.",
-  "/system/contributors": "Who funds the UN, and how.",
+  "/system/contributors": "Who funds the UN System, and how.",
   "/system/locations": "Where funds are spent, by country and region.",
   "/system/goals": "Spending across the 17 Sustainable Development Goals.",
   "/secretariat": "Overview of Secretariat spending across funding sources.",
-  "/secretariat/programme-budget": "Detailed breakdown of the regular budget and its contributors.",
-  "/secretariat/peacekeeping-budget": "Detailed breakdown of the peacekeeping budget and its contributors.",
+  "/secretariat/programme-budget":
+    "Detailed breakdown of the regular budget and its contributors.",
+  "/secretariat/peacekeeping-budget":
+    "Detailed breakdown of the peacekeeping budget.",
   "/secretariat/field-missions": "How are field missions spending?",
-  "/secretariat/trust-funds": "Detailed breakdown of voluntary funding via trust funds.",
+  "/secretariat/trust-funds":
+    "Detailed breakdown of voluntary funding via trust funds.",
 };
 
 export default function HomePage() {
   return (
     <>
       <section className="mx-auto max-w-6xl px-6 pt-8 pb-6 md:px-12 lg:px-16">
-        <h1 className="mb-4 text-4xl font-bold tracking-tight text-gray-900">
+        <h1 className="mb-2 text-4xl font-bold tracking-tight text-gray-900">
           Understand the financing of the UN.
         </h1>
-        <p className="text-base leading-relaxed text-gray-700 md:text-lg">
+        <p className="text-base leading-7 text-gray-700 md:text-lg">
           Explore contributions and spending across the UN System, and drill
           down into the budget of the UN Secretariat.
         </p>
-        <SystemCategoryTreemap
-          systemCard={
-            <HomeSectionCard
-              href="/system"
-              title="UN System"
-              links={SYSTEM_NAV}
-            />
-          }
-          secretariatCard={
-            <HomeSectionCard
-              href="/secretariat"
-              title="UN Secretariat"
-              links={visibleSecretariatNav()}
-              secretariat
-            />
-          }
-        />
+        <div className="mt-6 grid grid-cols-2 gap-4">
+          <HomeSectionCard
+            href="/system"
+            title="UN System"
+            description="The UN System comprises the UN Secretariat, funds and programmes, specialized agencies, related organizations, research and training institutes, and other entities."
+            links={SYSTEM_NAV}
+          />
+          <HomeSectionCard
+            href="/secretariat"
+            title="UN Secretariat"
+            description="The UN Secretariat is part of the UN System. Next to its departments and offices it comprises peacekeeping operations and special political missions."
+            links={visibleSecretariatNav()}
+          />
+        </div>
       </section>
 
       <PageBody className="md:py-16">
@@ -113,20 +112,21 @@ function HomeSectionCard({
   href,
   title,
   links,
-  secretariat = false,
+  description,
 }: {
   href: string;
   title: string;
   links: readonly { href: string; label: string }[];
-  secretariat?: boolean;
+  description: string;
 }) {
   return (
-    <section className={`rounded-lg border bg-white p-6 ${secretariat ? "border-un-blue" : "border-gray-700"}`}>
+    <section className="min-w-0 rounded-lg border border-gray-200 bg-white p-4 sm:p-6">
       <h2 className="text-xl font-bold text-gray-900">
         <Link href={href} className="hover:underline">
           {title}
         </Link>
       </h2>
+      <p className="mt-2 text-sm text-black">{description}</p>
       <ul className="mt-4 grid grid-cols-1 gap-2">
         {links.map((link) => (
           <li key={link.href} className="min-w-0">
@@ -136,7 +136,9 @@ function HomeSectionCard({
             >
               <span className="min-w-0">
                 <span className="block font-semibold">{link.label}</span>
-                <span className="mt-0.5 block text-gray-600">{HOME_LINK_DESCRIPTIONS[link.href]}</span>
+                <span className="mt-0.5 block text-gray-600">
+                  {HOME_LINK_DESCRIPTIONS[link.href]}
+                </span>
               </span>
               <ArrowRight className="size-6 shrink-0" aria-hidden="true" />
             </Link>

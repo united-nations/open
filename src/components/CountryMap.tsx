@@ -4,6 +4,7 @@ import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { ChartFooter } from "@/components/ChartFooter";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
 
+import { useMapBubbleZoom } from "@/hooks/useMapBubbleZoom";
 import { useEffect, useState } from "react";
 import { HybridMap } from "@undp/data-viz/HybridMap";
 import { CountrySidebar } from "@/components/CountrySidebar";
@@ -18,7 +19,6 @@ import { ChartSearchInput } from "@/components/ui/chart-search-input";
 import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
 import { formatBudget } from "@/lib/entities";
 import { useYearRanges, generateYearRange } from "@/lib/useYearRanges";
-import { getSortedRegions } from "@/lib/regionGroupings";
 
 interface CountryExpense {
   iso3: string;
@@ -47,6 +47,7 @@ interface HybridMapDataPoint {
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 export function CountryMap() {
+  const mapBubbleContainer = useMapBubbleZoom();
   const yearRanges = useYearRanges();
   const COUNTRY_YEARS = generateYearRange(
     yearRanges.countryExpenses.min,
@@ -179,7 +180,10 @@ export function CountryMap() {
 
   return (
     <div className="relative w-full">
-      <DelayedChartLoading pending={loadedYear !== selectedYear} requestKey={selectedYear} />
+      <DelayedChartLoading
+        pending={loadedYear !== selectedYear}
+        requestKey={selectedYear}
+      />
       <ChartFrame
         header={
           <ChartHeader
@@ -230,14 +234,15 @@ export function CountryMap() {
             </p>
           </div>
         ) : showMap ? (
-          <div className="h-[650px] w-full">
+          <div ref={mapBubbleContainer} className="h-[650px] w-full">
             <HybridMap
               data={mapData}
               mapProjection="equalEarth"
               scale={1.15}
               centerPoint={[0, 6]}
               colors={["#f3f4f6"]}
-              dotColor="#009edb"
+              radius={15}
+              dotColor="rgba(0, 158, 219, 0.4)"
               dotBorderColor="#009edb"
               zoomInteraction="button"
               mapBorderWidth={0.5}
@@ -327,23 +332,6 @@ export function CountryMap() {
               onSearchChange={setSearchQuery}
               onCountryClick={handleTreemapClick}
             />
-
-            {/* Region Legend */}
-            <div className="mt-3 flex flex-wrap gap-3">
-              {getSortedRegions()
-                .filter(([region]) => {
-                  // Only show regions that have data in the current filtered set
-                  return filteredData.some((c) => c.region === region);
-                })
-                .map(([region, styles]) => (
-                  <div key={region} className="flex items-center gap-1.5">
-                    <div className={`h-3 w-3 rounded-sm ${styles.bgColor}`} />
-                    <span className="text-xs text-gray-600">
-                      {styles.label}
-                    </span>
-                  </div>
-                ))}
-            </div>
           </>
         )}
       </ChartFrame>

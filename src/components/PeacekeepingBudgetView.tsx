@@ -43,7 +43,7 @@ const FIELD_COLOR = "#009edb";
 const SUPPORT_COLOR = "#a0665c";
 const KIND_LABEL: Record<PointKind, string> = {
   pko: "Field mission",
-  support: "Support center",
+  support: "Service centre",
 };
 
 const MAX_MISSION_RADIUS_PX = 28;
@@ -75,13 +75,11 @@ function pointKind(
   code: string,
   location: SecretariatMissionLocation | undefined,
 ): PointKind {
+  if (location?.budgetCategory === "field_mission") return "pko";
+  if (location?.budgetCategory === "support_center") return "support";
+  if (code === "UNSOS") return "pko";
   if (location?.kind === "support") return "support";
-  if (
-    code === "RSCE" ||
-    code === "UNGSC" ||
-    code === "UNLB" ||
-    code === "UNSOS"
-  ) {
+  if (code === "RSCE" || code === "UNGSC" || code === "UNLB") {
     return "support";
   }
   return "pko";
@@ -381,7 +379,10 @@ export function PeacekeepingBudgetView() {
 
   return (
     <div className="relative flex w-full flex-col">
-      <DelayedChartLoading pending={budget?.meta.year !== year} requestKey={year} />
+      <DelayedChartLoading
+        pending={budget?.meta.year !== year}
+        requestKey={year}
+      />
       <ChartFrame
         header={
           <ChartHeader
@@ -406,7 +407,7 @@ export function PeacekeepingBudgetView() {
                   variant="segmented"
                   label="Peacekeeping view"
                   options={[
-                    { value: "treemap", label: "Treemap" },
+                    { value: "treemap", label: "Budget chart" },
                     { value: "map", label: "Map" },
                   ]}
                   value={showMap ? "map" : "treemap"}
@@ -434,7 +435,7 @@ export function PeacekeepingBudgetView() {
         }
         footer={
           <ChartFooter
-            hint="Click on a mission or support center to explore details"
+            hint="Click on a mission or service centre to explore details"
             details={
               <div className="space-y-2">
                 <h4 className="font-medium">Map placement and boundaries</h4>

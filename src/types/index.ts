@@ -262,6 +262,8 @@ export interface SecretariatMissionLocation {
   code: string;
   name: string;
   kind: "pko" | "spm" | "support";
+  /** Budget presentation category, independent of the office mandate. */
+  budgetCategory?: "field_mission" | "support_center";
   area: string;
   areaKind: "country" | "territory" | "subnational" | "region";
   iso3: string | null;

@@ -1,4 +1,5 @@
 "use client";
+import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import {
   usePaymentChartScale,
   paymentScaleMaximum,
@@ -25,14 +26,7 @@ interface TimelinePoint {
   countries: number;
 }
 
-function currency(amount: number): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    notation: "compact",
-    maximumFractionDigits: 1,
-  }).format(amount);
-}
+const currency = sharedFormatBudget;
 
 function dateLabel(timestamp: number): string {
   return new Intl.DateTimeFormat("en-GB", {
@@ -48,7 +42,7 @@ function PaymentDeadlineLabel({ viewBox }: LabelProps) {
   return (
     <text
       x={viewBox.x + 6}
-      y={viewBox.y + height * 0.25}
+      y={viewBox.y + height * 0.5}
       fill="var(--color-un-green-shade)"
       fontSize={11}
       textAnchor="start"
@@ -184,9 +178,7 @@ export function RegularBudgetPaymentTimeline({
               tickFormatter={(value: number) =>
                 measure === "count"
                   ? String(Math.round(value))
-                  : value >= 1e9
-                    ? `$${(value / 1e9).toFixed(1)}B`
-                    : `$${(value / 1e6).toFixed(0)}M`
+                  : sharedFormatBudget(value)
               }
               tick={{ fontSize: 11, fill: "#6b7280", dx: -5, dy: -8 }}
               axisLine={false}
@@ -216,8 +208,9 @@ export function RegularBudgetPaymentTimeline({
                 value:
                   measure === "count"
                     ? `All Member States: ${target}`
-                    : `Total assessed: $${target.toLocaleString("en-GB", { maximumFractionDigits: 2 })}`,
+                    : `Total assessed: ${currency(target)}`,
                 position: "insideTopRight",
+                dx: -55,
                 fill: "#374151",
                 fontSize: 11,
               }}

@@ -732,7 +732,10 @@ export function BudgetTreemap({
     fetch(`${basePath}/data/${dataset}-${year}.json`)
       .then((res) => res.json())
       .then((d: BudgetData) => {
-        if (current) { setData(d); setLoadedRequest(`${dataset}-${year}`); }
+        if (current) {
+          setData(d);
+          setLoadedRequest(`${dataset}-${year}`);
+        }
       })
       .catch((err) =>
         console.error(`Failed to load ${dataset}-${year}.json:`, err),
@@ -1771,7 +1774,10 @@ export function BudgetTreemap({
   if (!mounted || (loading && !data)) {
     return (
       <div className="relative w-full">
-      <DelayedChartLoading pending={loadedRequest !== `${dataset}-${year}`} requestKey={`${dataset}-${year}`} />
+        <DelayedChartLoading
+          pending={loadedRequest !== `${dataset}-${year}`}
+          requestKey={`${dataset}-${year}`}
+        />
         {controls}
         <div
           className="flex w-full items-center justify-center bg-gray-50"
@@ -1854,7 +1860,10 @@ export function BudgetTreemap({
 
     return (
       <div className="relative w-full">
-      <DelayedChartLoading pending={loadedRequest !== `${dataset}-${year}`} requestKey={`${dataset}-${year}`} />
+        <DelayedChartLoading
+          pending={loadedRequest !== `${dataset}-${year}`}
+          requestKey={`${dataset}-${year}`}
+        />
         {!usesSharedProgrammeBudget && !usesSharedTrustFundExpenses && (
           <>
             {meta.sourceNote && (
@@ -1961,7 +1970,12 @@ export function BudgetTreemap({
           rows={sharedRows}
           layout={
             usesSharedProgrammeBudget
-              ? { rowOrder: "input", orderedBands: true, rowGap: 3 }
+              ? {
+                  rowOrder: "input",
+                  orderedBands: true,
+                  minBandHeight: 28,
+                  rowGap: 3,
+                }
               : undefined
           }
           search={{
@@ -2080,7 +2094,10 @@ export function BudgetTreemap({
   if (bands.length === 0) {
     return (
       <div className="relative w-full">
-      <DelayedChartLoading pending={loadedRequest !== `${dataset}-${year}`} requestKey={`${dataset}-${year}`} />
+        <DelayedChartLoading
+          pending={loadedRequest !== `${dataset}-${year}`}
+          requestKey={`${dataset}-${year}`}
+        />
         {controls}
         <div className="flex h-64 w-full items-center justify-center bg-gray-50">
           <p className="text-sm text-gray-500">
@@ -2097,7 +2114,10 @@ export function BudgetTreemap({
 
   return (
     <div className="relative w-full">
-      <DelayedChartLoading pending={loadedRequest !== `${dataset}-${year}`} requestKey={`${dataset}-${year}`} />
+      <DelayedChartLoading
+        pending={loadedRequest !== `${dataset}-${year}`}
+        requestKey={`${dataset}-${year}`}
+      />
       {!isAlignedPpb && controls}
 
       {headlineSources.length > 0 && (

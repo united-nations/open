@@ -17,12 +17,10 @@ export function SectionChrome({
   return (
     <>
       <section className="mx-auto w-full max-w-6xl px-6 pt-8 pb-6 md:px-12 lg:px-16">
-        <h1 className="mb-4 text-4xl font-bold tracking-tight text-gray-900">
+        <h1 className="mb-2 text-4xl font-bold tracking-tight text-gray-900">
           {title}
         </h1>
-        <p className="text-base leading-relaxed text-gray-700 md:text-lg">
-          {intro}
-        </p>
+        <p className="text-base leading-7 text-gray-700 md:text-lg">{intro}</p>
       </section>
       <SectionSubnav items={items} label={navLabel} />
       {children}

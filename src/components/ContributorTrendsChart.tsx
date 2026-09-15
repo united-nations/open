@@ -1,4 +1,5 @@
 "use client";
+import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
 import * as React from "react";
 import {
@@ -287,11 +288,7 @@ export function ContributorTrendsChart() {
                     tickLine={false}
                     axisLine={false}
                     domain={[0, "auto"]}
-                    tickFormatter={(value) => {
-                      if (value >= 1e9) return `$${(value / 1e9).toFixed(0)}B`;
-                      if (value >= 1e6) return `$${(value / 1e6).toFixed(0)}M`;
-                      return `$${value}`;
-                    }}
+                    tickFormatter={sharedFormatBudget}
                     mirror
                   />
                   <Tooltip

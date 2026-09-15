@@ -1,4 +1,5 @@
 "use client";
+import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
 
@@ -23,14 +24,7 @@ import type {
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-function currency(value: number, compact = false): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    notation: compact ? "compact" : "standard",
-    maximumFractionDigits: compact ? 1 : 0,
-  }).format(value);
-}
+const currency = sharedFormatBudget;
 
 function cycleLabel(year: number): string {
   return `${year}/${String(year + 1).slice(-2)}`;
@@ -187,7 +181,10 @@ export function PeacekeepingContributorsTreemap() {
 
   return (
     <div className="relative w-full">
-      <DelayedChartLoading pending={data?.meta.cycle_year !== year} requestKey={year} />
+      <DelayedChartLoading
+        pending={data?.meta.cycle_year !== year}
+        requestKey={year}
+      />
       {current && (
         <>
           <GroupedTreemap<
@@ -257,12 +254,12 @@ export function PeacekeepingContributorsTreemap() {
               {
                 key: "visible-total",
                 label: query ? "Matching total" : "Displayed total",
-                value: currency(visibleTotal, true),
+                value: currency(visibleTotal),
               },
             ]}
             totalLabel="Total"
             plotClassName="h-[560px] sm:h-[680px] lg:h-[780px]"
-            formatValue={(value) => currency(value, true)}
+            formatValue={(value) => currency(value)}
             formatAccessibleValue={(value) => currency(value)}
             renderTooltip={(context) => (
               <ContributorTooltip context={context} />

@@ -1,4 +1,5 @@
 "use client";
+import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
 import { FinancingInstrumentLabel } from "./FinancingInstrumentLabel";
@@ -52,13 +53,7 @@ function fundingSegmentColor(
   return `color-mix(in srgb, ${baseColor} ${percentage}%, ${darkText ? "white" : "black"})`;
 }
 
-function accessibleBudget(value: number): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(value);
-}
+const accessibleBudget = sharedFormatBudget;
 
 function matchesEntity(entity: Entity, query: string): boolean {
   const term = query.trim().toLocaleLowerCase();
@@ -141,14 +136,18 @@ export function EntitiesTreemap() {
     null,
   );
   const [searchQuery, setSearchQuery] = useState("");
-  const [currentYear, setCurrentYear] = useState(yearRanges.entitySpending.default);
+  const [currentYear, setCurrentYear] = useState(
+    yearRanges.entitySpending.default,
+  );
   const [pendingDeepLink, setPendingDeepLink] = useDeepLink({
     hashPrefix: "entity",
     sectionId: "entities",
     onNavigateAway: () => setSelectedEntity(null),
   });
 
-  const currentYears = Array.from(new Set([...spendingYears, ...revenueYears])).sort((a, b) => a - b);
+  const currentYears = Array.from(
+    new Set([...spendingYears, ...revenueYears]),
+  ).sort((a, b) => a - b);
 
   useEffect(() => {
     fetch(`${basePath}/data/entities.json`)
@@ -159,7 +158,10 @@ export function EntitiesTreemap() {
 
   useEffect(() => {
     let cancelled = false;
-    if (currentYear < yearRanges.entitySpending.min || currentYear > yearRanges.entitySpending.max) {
+    if (
+      currentYear < yearRanges.entitySpending.min ||
+      currentYear > yearRanges.entitySpending.max
+    ) {
       setSpendingData({});
       setLoadedSpendingYear(currentYear);
       setLoading(false);
@@ -182,12 +184,22 @@ export function EntitiesTreemap() {
         console.error("Failed to load expenses data:", error);
         if (!showRevenue) setLoading(false);
       });
-    return () => { cancelled = true; };
-  }, [showRevenue, currentYear, yearRanges.entitySpending.min, yearRanges.entitySpending.max]);
+    return () => {
+      cancelled = true;
+    };
+  }, [
+    showRevenue,
+    currentYear,
+    yearRanges.entitySpending.min,
+    yearRanges.entitySpending.max,
+  ]);
 
   useEffect(() => {
     let cancelled = false;
-    if (currentYear < yearRanges.entityRevenue.min || currentYear > yearRanges.entityRevenue.max) {
+    if (
+      currentYear < yearRanges.entityRevenue.min ||
+      currentYear > yearRanges.entityRevenue.max
+    ) {
       setRevenueData({});
       setLoadedRevenueYear(currentYear);
       setLoading(false);
@@ -206,8 +218,15 @@ export function EntitiesTreemap() {
         console.error("Failed to load revenue data:", error);
         if (showRevenue) setLoading(false);
       });
-    return () => { cancelled = true; };
-  }, [currentYear, showRevenue, yearRanges.entityRevenue.min, yearRanges.entityRevenue.max]);
+    return () => {
+      cancelled = true;
+    };
+  }, [
+    currentYear,
+    showRevenue,
+    yearRanges.entityRevenue.min,
+    yearRanges.entityRevenue.max,
+  ]);
 
   const budgetData = useMemo(
     () =>
@@ -425,10 +444,21 @@ export function EntitiesTreemap() {
       {selectedEntity && (
         <EntitySidebar
           entity={selectedEntity}
-          spending={loadedSpendingYear === currentYear ? spendingData[selectedEntity.entity] || 0 : 0}
-          revenue={loadedRevenueYear === currentYear ? revenueData[selectedEntity.entity] || null : null}
+          spending={
+            loadedSpendingYear === currentYear
+              ? spendingData[selectedEntity.entity] || 0
+              : 0
+          }
+          revenue={
+            loadedRevenueYear === currentYear
+              ? revenueData[selectedEntity.entity] || null
+              : null
+          }
           initialYear={currentYear}
-          initialDataComplete={loadedSpendingYear === currentYear && loadedRevenueYear === currentYear}
+          initialDataComplete={
+            loadedSpendingYear === currentYear &&
+            loadedRevenueYear === currentYear
+          }
           onClose={() => {
             setSelectedEntity(null);
             clearSidebarHash();

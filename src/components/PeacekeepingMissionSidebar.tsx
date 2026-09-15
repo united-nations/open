@@ -2,6 +2,12 @@
 
 import { useCallback, useEffect, useState } from "react";
 import { ChevronRight, ExternalLink } from "lucide-react";
+import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
+import {
+  FinancialPanelHeading,
+  FinancialPanelSection,
+} from "@un-eosg/ui/components/financial-panel-parts";
+import { FinancialBreakdownRow } from "@un-eosg/ui/components/financial-breakdown-row";
 import { SidebarControls } from "@/components/SidebarControls";
 import {
   SidebarStackedTrend,
@@ -56,50 +62,62 @@ function emptyClasses(): Record<CostClassKey, number> {
 }
 
 function CostClassBreakdownRow({
-  label, amount, lines, maximum,
+  label,
+  amount,
+  lines,
+  maximum,
+  color,
 }: {
   label: string;
   amount: number | null;
   lines: CostItem[];
   maximum: number;
+  color: string;
 }) {
   const [expanded, setExpanded] = useState(false);
-  const rowClass = "group grid min-h-11 w-full min-w-0 grid-cols-[2rem_minmax(0,1fr)_4rem_5.5rem] items-center gap-x-2 rounded-sm px-1 py-1 text-left text-sm hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-un-blue sm:grid-cols-[2rem_minmax(0,1fr)_5rem_6rem] sm:gap-x-3";
   const bar = (value: number | null) => (
-    <span aria-hidden="true" className="relative h-1.5 overflow-hidden rounded-sm bg-gray-100">
-      <span className="absolute inset-y-0 start-0 rounded-sm bg-un-blue" style={{ width: `${maximum > 0 ? Math.min(100, Math.max(0, value ?? 0) / maximum * 100) : 0}%` }} />
+    <span
+      aria-hidden="true"
+      className="relative h-1.5 overflow-hidden rounded-sm bg-gray-100"
+    >
+      <span
+        className="absolute inset-y-0 start-0 rounded-sm bg-un-blue"
+        style={{
+          backgroundColor: color,
+          width: `${maximum > 0 ? Math.min(100, (Math.max(0, value ?? 0) / maximum) * 100) : 0}%`,
+        }}
+      />
     </span>
   );
-  const content = (
-    <>
-      {lines.length > 0 ? (
-        <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-secondary text-muted-foreground group-hover:bg-muted group-hover:text-foreground">
-          <ChevronRight aria-hidden="true" className={`size-4 transition-transform ${expanded ? "rotate-90" : ""}`} />
-        </span>
-      ) : <span aria-hidden="true" className="size-8" />}
-      <span className="font-medium text-gray-900">{label}</span>
-      {bar(amount)}
-      <span className="justify-self-end whitespace-nowrap text-gray-900 tabular-nums">{amount === null ? "—" : formatBudget(amount)}</span>
-    </>
+  const tooltip = (title: string, value: number | null, kind: string) => (
+    <div className="space-y-2">
+      <p className="text-xs text-gray-500">{kind}</p>
+      <p className="text-sm font-medium">{title}</p>
+      <p>Expenditure: {value === null ? "Unavailable" : formatBudget(value)}</p>
+    </div>
   );
   return (
-    <li>
-      {lines.length > 0 ? (
-        <button type="button" className={rowClass} aria-expanded={expanded} onClick={() => setExpanded(!expanded)}>{content}</button>
-      ) : <div className={rowClass}>{content}</div>}
-      {expanded && lines.length > 0 && (
-        <ul className="ps-3">
-          {lines.map((line, index) => (
-            <li key={`${line.label}-${index}`} className={rowClass}>
-              <span aria-hidden="true" className="size-8" />
-              <span className="text-gray-600">{line.label}</span>
-              {bar(line.amount)}
-              <span className="justify-self-end whitespace-nowrap text-gray-900 tabular-nums">{formatBudget(line.amount)}</span>
-            </li>
-          ))}
-        </ul>
-      )}
-    </li>
+    <FinancialBreakdownRow
+      label={label}
+      value={amount === null ? "—" : formatBudget(amount)}
+      bar={bar(amount)}
+      tooltip={tooltip(label, amount, "Budget group")}
+      expanded={expanded}
+      onToggle={lines.length ? () => setExpanded(!expanded) : undefined}
+    >
+      <ul className="mt-1 space-y-1">
+        {lines.map((line, index) => (
+          <FinancialBreakdownRow
+            key={`${line.label}-${index}`}
+            label={line.label}
+            value={formatBudget(line.amount)}
+            bar={bar(line.amount)}
+            tooltip={tooltip(line.label, line.amount, `Class · ${label}`)}
+            depth={1}
+          />
+        ))}
+      </ul>
+    </FinancialBreakdownRow>
   );
 }
 
@@ -124,10 +142,14 @@ export function PeacekeepingMissionSidebar({
 
   useEffect(() => {
     const id = requestAnimationFrame(() => setVisible(true));
+    const previousOverflow = document.documentElement.style.overflow;
+    const previousGutter = document.documentElement.style.scrollbarGutter;
     document.documentElement.style.overflow = "hidden";
+    document.documentElement.style.scrollbarGutter = "auto";
     return () => {
       cancelAnimationFrame(id);
-      document.documentElement.style.overflow = "";
+      document.documentElement.style.overflow = previousOverflow;
+      document.documentElement.style.scrollbarGutter = previousGutter;
     };
   }, []);
 
@@ -178,11 +200,10 @@ export function PeacekeepingMissionSidebar({
     };
   }, [code, years]);
 
-  const classRows = COST_CLASS_KEYS.flatMap((key) => {
+  const classRows = COST_CLASS_KEYS.map((key) => {
     const amount = classes?.[key] ?? null;
     const lines = items?.[key] ?? [];
-    if (amount === null && lines.length === 0) return [];
-    return [{ key, amount, lines }];
+    return { key, amount, lines };
   });
   const titleId = "peacekeeping-mission-sidebar-title";
 
@@ -198,70 +219,87 @@ export function PeacekeepingMissionSidebar({
         role="dialog"
         aria-modal="true"
         aria-labelledby={titleId}
-        className={`h-full w-full overflow-y-auto bg-white shadow-2xl transition-transform duration-200 sm:w-[32rem] ${visible && !closing ? "translate-x-0" : "translate-x-full"}`}
+        className={`h-full w-full bg-white shadow-2xl transition-transform duration-200 sm:w-[32rem] ${visible && !closing ? "translate-x-0" : "translate-x-full"}`}
       >
-        <header className="sticky top-0 z-10 flex items-start justify-between gap-4 border-b border-gray-200 bg-white px-6 py-5">
-          <div>
-            <h2 id={titleId} className="text-2xl font-bold text-gray-900">
-              {code}
-            </h2>
-            <p className="mt-1 text-sm text-gray-600">
-              {locationLabel ? `${locationLabel} · ` : ""}{fiscalYear}
-            </p>
-          </div>
-          <SidebarControls
-            shareHash={`pko-mission=${encodeURIComponent(code)}`}
-            onClose={close}
-            closeLabel="Close mission details"
-          />
-        </header>
-
-        <div className="space-y-8 px-6 py-6">
-          <section>
-            <p className="text-xs font-medium tracking-wide text-gray-500 uppercase">
+        <FinancialDetailPanel
+          title={code}
+          titleId={titleId}
+          subtitle={
+            <>
               {name}
-            </p>
-            {total !== null ? (
-              <p className="mt-1 text-3xl font-bold text-gray-900">
-                {formatBudget(total)}
-              </p>
-            ) : (
-              <p className="mt-2 text-sm text-gray-600">
-                No published expenditure for {fiscalYear}.
-              </p>
-            )}
-          </section>
-
+              <br />
+              {locationLabel ? `${locationLabel} · ` : ""}
+              {fiscalYear}
+            </>
+          }
+          controls={
+            <SidebarControls
+              shareHash={`pko-mission=${encodeURIComponent(code)}`}
+              onClose={close}
+              closeLabel="Close mission details"
+            />
+          }
+          total={
+            total !== null
+              ? { label: "Total expenditure", value: formatBudget(total) }
+              : undefined
+          }
+          notice={
+            total === null
+              ? {
+                  tone: "empty",
+                  description: `No published expenditure for ${fiscalYear}.`,
+                }
+              : undefined
+          }
+          className="bg-white sm:w-full"
+        >
           {classRows.length > 0 && (
-            <section>
-              <h3 className="text-sm font-semibold tracking-wide text-gray-900 uppercase">
-                Breakdown
-              </h3>
+            <FinancialPanelSection heading="Expenditure by budget group and class">
               <ul className="mt-3 space-y-1">
                 {classRows.map(({ key, amount, lines }) => (
                   <CostClassBreakdownRow
                     key={`${code}-${fiscalYear}-${key}`}
                     label={COST_CLASS_LABELS[key] ?? key}
                     amount={amount}
+                    color={
+                      COST_CLASS_BAND_COLORS[key]?.bg ?? "var(--color-un-blue)"
+                    }
                     lines={lines}
-                    maximum={Math.max(0, ...classRows.flatMap((row) => [row.amount ?? 0, ...row.lines.map((line) => line.amount)]))}
+                    maximum={Math.max(
+                      0,
+                      ...classRows.flatMap((row) => [
+                        row.amount ?? 0,
+                        ...row.lines.map((line) => line.amount),
+                      ]),
+                    )}
                   />
                 ))}
               </ul>
-            </section>
+              <div className="mt-4">
+                <SidebarStackedTrend
+                  showLegend={false}
+                  data={trend}
+                  series={COST_CLASS_TREND_SERIES}
+                />
+              </div>
+            </FinancialPanelSection>
           )}
 
-          <SidebarStackedTrend
-            heading="Trend by cost class"
-            data={trend}
-            series={COST_CLASS_TREND_SERIES}
-          />
-
           {source?.url && source.symbol && (
-            <section>
-              <h3 className="text-sm font-semibold tracking-wide text-gray-900 uppercase">
-                Source
-              </h3>
+            <details
+              key={`${code}-${fiscalYear}`}
+              className="group/sources mt-4"
+            >
+              <summary className="flex w-fit cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden">
+                <FinancialPanelHeading subheading>
+                  Source references
+                </FinancialPanelHeading>
+                <ChevronRight
+                  aria-hidden="true"
+                  className="size-3 transition-transform group-open/sources:rotate-90"
+                />
+              </summary>
               <a
                 href={source.url}
                 target="_blank"
@@ -272,9 +310,9 @@ export function PeacekeepingMissionSidebar({
                 {source.pdfPage ? `, PDF page ${source.pdfPage}` : " PDF"}
                 <ExternalLink className="h-3.5 w-3.5" />
               </a>
-            </section>
+            </details>
           )}
-        </div>
+        </FinancialDetailPanel>
       </aside>
     </div>
   );

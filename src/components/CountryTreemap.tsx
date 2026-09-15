@@ -1,4 +1,5 @@
 "use client";
+import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
 import {
   GroupedTreemap,
@@ -37,13 +38,7 @@ function matchesCountry(country: CountryExpense, query: string): boolean {
   );
 }
 
-function formatAccessibleBudget(value: number): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(value);
-}
+const formatAccessibleBudget = sharedFormatBudget;
 
 function CountryTooltip({
   context,
@@ -143,7 +138,7 @@ export function CountryTreemap({
         },
       ]}
       totalLabel="Total"
-      layout={{ rowOrder: "input" }}
+      layout={{ rowOrder: "value-desc", consolidateSmallRows: true }}
       plotClassName="h-[650px]"
       formatValue={formatBudget}
       formatAccessibleValue={formatAccessibleBudget}

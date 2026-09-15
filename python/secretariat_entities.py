@@ -35,6 +35,7 @@ def load_secretariat_entities() -> dict:
     )
     for location in locations:
         assert location["kind"] in MISSION_KINDS
+        assert location.get("budgetCategory") in {None, "field_mission", "support_center"}
         entity = data["entities"].get(location["code"])
         if entity is None:
             continue

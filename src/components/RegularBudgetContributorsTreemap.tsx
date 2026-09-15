@@ -1,4 +1,5 @@
 "use client";
+import { formatAssessmentRate } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { PaymentChartScaleProvider } from "@/components/PaymentChartScale";
 import { ChartFooter } from "@/components/ChartFooter";
@@ -20,55 +21,25 @@ import type {
   RegularBudgetPaymentStatus,
 } from "@/types";
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+import {
+  REGULAR_BUDGET_STATUS_STYLES as STATUS_STYLES,
+  formatAssessmentCurrency as formatCurrency,
+  formatAssessmentDate as formatDate,
+} from "@/lib/regularBudgetContributors";
+import { RegularBudgetContributorSidebar } from "@/components/RegularBudgetContributorSidebar";
+import {
+  useDeepLink,
+  replaceToSidebar,
+  clearSidebarHash,
+} from "@/hooks/useDeepLink";
 
-const STATUS_STYLES: Record<
-  RegularBudgetPaymentStatus,
-  {
-    label: string;
-    color: string;
-    textColor?: string;
-  }
-> = {
-  paid_on_time: {
-    label: "Paid in full on time",
-    color: "var(--color-un-green-shade)",
-  },
-  paid_late: {
-    label: "Paid in full after due date",
-    color: "var(--color-un-green)",
-    textColor: "var(--color-un-green-shade)",
-  },
-  not_paid_in_full: {
-    label: "Not listed as paid in full",
-    color: "var(--color-un-green-tint)",
-    textColor: "var(--color-un-green-shade)",
-  },
-};
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const STATUS_ORDER: RegularBudgetPaymentStatus[] = [
   "paid_on_time",
   "paid_late",
   "not_paid_in_full",
 ];
-
-function formatCurrency(amount: number, compact = false): string {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    notation: compact ? "compact" : "standard",
-    maximumFractionDigits: compact ? 1 : 0,
-  }).format(amount);
-}
-
-function formatDate(value: string): string {
-  return new Intl.DateTimeFormat("en-GB", {
-    day: "numeric",
-    month: "long",
-    year: "numeric",
-    timeZone: "UTC",
-  }).format(new Date(`${value}T00:00:00Z`));
-}
 
 function statusCount(
   data: RegularBudgetContributorsData,
@@ -112,7 +83,7 @@ function ContributorTooltip({
         {formatCurrency(contributor.assessment_amount)} assessment
       </p>
       <p className="text-xs opacity-75">
-        {contributor.assessment_rate.toFixed(3)}% assessment rate
+        {formatAssessmentRate(contributor.assessment_rate)} assessment rate
       </p>
       <p className="text-xs opacity-75">{paymentDetail}</p>
     </div>
@@ -130,6 +101,16 @@ export function RegularBudgetContributorsTreemap() {
     year: number;
     message: string;
   } | null>(null);
+  const [selectedName, setSelectedName] = useState<string | null>(null);
+  const [pending, setPending] = useDeepLink({
+    hashPrefix: "regular-budget-contributor",
+    sectionId: "regular-budget-contributors",
+    onNavigateAway: () => setSelectedName(null),
+  });
+  const activeName =
+    pending && loadedData?.contributors.some((item) => item.name === pending)
+      ? pending
+      : selectedName;
   const data = loadedData;
   const error = loadError?.year === selectedYear ? loadError.message : null;
   const loading = data === null && error === null;
@@ -193,6 +174,11 @@ export function RegularBudgetContributorsTreemap() {
               ? "var(--color-un-green-shade)"
               : undefined,
           data: contributor,
+          onActivate: () => {
+            setPending(null);
+            setSelectedName(contributor.name);
+            replaceToSidebar("regular-budget-contributor", contributor.name);
+          },
         })),
     })).filter((row) => row.leaves.length > 0) satisfies GroupedTreemapRow<
       RegularBudgetPaymentStatus,
@@ -200,11 +186,14 @@ export function RegularBudgetContributorsTreemap() {
       RegularBudgetContributor,
       never
     >[];
-  }, [data]);
+  }, [data, setPending]);
 
   return (
-    <div className="relative w-full">
-      <DelayedChartLoading pending={loadedData?.meta.year !== selectedYear} requestKey={selectedYear} />
+    <div id="regular-budget-contributors" className="relative w-full">
+      <DelayedChartLoading
+        pending={loadedData?.meta.year !== selectedYear}
+        requestKey={selectedYear}
+      />
       {data && (
         <>
           <GroupedTreemap<
@@ -332,7 +321,7 @@ export function RegularBudgetContributorsTreemap() {
               leafGap: 2,
             }}
             plotClassName="h-[560px] sm:h-[680px] lg:h-[780px]"
-            formatValue={(value) => formatCurrency(value, true)}
+            formatValue={(value) => formatCurrency(value)}
             formatAccessibleValue={(value) => formatCurrency(value)}
             showLeafValues
             renderTooltip={(context) => (
@@ -360,6 +349,19 @@ export function RegularBudgetContributorsTreemap() {
         <div className="flex h-80 items-center justify-center bg-gray-100 px-6 text-center">
           <p className="text-sm text-red-700">{error}</p>
         </div>
+      )}
+      {activeName && data && (
+        <RegularBudgetContributorSidebar
+          key={activeName}
+          name={activeName}
+          initialData={data}
+          years={years.years}
+          onClose={() => {
+            setSelectedName(null);
+            setPending(null);
+            clearSidebarHash();
+          }}
+        />
       )}
       <PaymentChartScaleProvider>
         <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-0">

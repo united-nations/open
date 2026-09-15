@@ -56,7 +56,10 @@ function matchBudgetNode(
   return undefined;
 }
 
-function fundingPoint(year: number, node: BudgetNode): FinancingInstrumentDataPoint {
+function fundingPoint(
+  year: number,
+  node: BudgetNode,
+): FinancingInstrumentDataPoint {
   return {
     year: String(year),
     regular_budget: node.values?.regular_budget ?? 0,
@@ -101,12 +104,19 @@ export function ProgrammeBudgetNodeTrend({
     };
     // years is represented by yearKey so the effect does not rerun on a new array identity.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [dataset, node.id, node.entity?.id, node.entity?.acronym, node.tier, node.parentId, yearKey]);
+  }, [
+    dataset,
+    node.id,
+    node.entity?.id,
+    node.entity?.acronym,
+    node.tier,
+    node.parentId,
+    yearKey,
+  ]);
 
   return (
     <SidebarStackedTrend
-      heading="Trend by funding source"
-      headingClassName="mb-2 text-lg font-normal tracking-wider text-gray-900 uppercase"
+      showLegend={false}
       data={data}
       series={FUNDING_SOURCE_TREND_SERIES}
     />

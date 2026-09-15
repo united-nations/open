@@ -3,7 +3,8 @@ import { fundingSources } from "@un-eosg/ui/funding-sources";
 import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label";
 
 import { ChevronRight, ExternalLink } from "lucide-react";
-import { ExpandableCard } from "@/components/ExpandableCard";
+import { FinancialBreakdownRow } from "@un-eosg/ui/components/financial-breakdown-row";
+import { FinancialPanelHeading } from "@un-eosg/ui/components/financial-panel-parts";
 import { useCallback, useEffect, useState } from "react";
 import {
   GroupedTreemap,
@@ -23,13 +24,10 @@ import type {
 import { formatBudget } from "@/lib/entities";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { SidebarControls } from "@/components/SidebarControls";
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipTrigger,
-} from "@/components/ui/tooltip";
+
 import { BUDGET_FUNDING_SOURCES, FUNDING_SOURCES } from "@/lib/budgetGroupings";
 import { BAND_PALETTE } from "@/lib/secretariatGroupings";
+import { TrustFundSidebar } from "@/components/TrustFundSidebar";
 import { ProgrammeBudgetNodeTrend } from "@/components/ProgrammeBudgetNodeTrend";
 
 const SHOW_SIDEBAR_MINI_TREEMAP = false;
@@ -465,7 +463,7 @@ function BudgetHierarchy({
       : 0;
 
   return (
-    <ul className={depth === 0 ? "space-y-2" : "mt-2 space-y-2"}>
+    <ul className={depth === 0 ? "space-y-1" : "mt-1 space-y-1"}>
       {nodes.map((child) => {
         const descendants = childrenByParent[child.id] ?? [];
         const hasDescendants = descendants.length > 0;
@@ -479,120 +477,92 @@ function BudgetHierarchy({
             return next;
           });
         };
-        const label = (
-          <span className="min-w-0 leading-tight text-gray-700">
-            {child.kind === "subprogramme" && (
-              <span className="mb-0.5 block text-[10px] tracking-wide text-gray-400 uppercase">
-                {KIND_NAMES.subprogramme}
-              </span>
-            )}
-            <span className="block">{child.entity?.name ?? child.label}</span>
-          </span>
-        );
+        const fullName = child.entity?.name ?? child.label;
+        const kindLabel = KIND_NAMES[child.kind] ?? child.kind;
+        const badge =
+          child.kind === "subprogramme" ? (
+            <span
+              aria-label="Subprogramme"
+              className="flex size-6 shrink-0 items-center justify-center rounded-full bg-secondary text-xs text-muted-foreground"
+            >
+              SP
+            </span>
+          ) : undefined;
         const fundingValues = positiveFundingValues(child);
         const fundingTotal = fundingValues.reduce(
           (sum, [, amount]) => sum + amount,
           0,
         );
         const bar = (
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <span
-                tabIndex={0}
-                aria-label={`Funding sources for ${child.entity?.name ?? child.label}`}
-                className="flex min-h-8 w-full items-center focus-visible:outline-2 focus-visible:outline-un-blue"
-              >
-                <span className="relative block h-1.5 w-full overflow-hidden rounded-sm">
-                  {depth > 0 && parentAmount !== undefined && (
-                    <span
-                      className="absolute inset-y-0 start-0 rounded-sm bg-gray-200"
-                      style={{ width: `${scaledWidth(parentAmount)}%` }}
-                    />
-                  )}
-                  <span
-                    className="absolute inset-y-0 start-0 flex overflow-hidden rounded-sm bg-un-blue"
-                    style={{ width: `${scaledWidth(child.amount)}%` }}
-                  >
-                    {fundingValues.map(([source, amount]) => (
-                      <span
-                        key={source}
-                        className="h-full"
-                        style={{
-                          width: `${(amount / fundingTotal) * 100}%`,
-                          backgroundColor: FUNDING_TREEMAP_COLORS[source],
-                        }}
-                      />
-                    ))}
-                  </span>
-                </span>
-              </span>
-            </TooltipTrigger>
-            <TooltipContent
-              side="top"
-              className="w-auto max-w-[calc(100vw-2rem)] space-y-2 rounded-lg bg-white p-3 text-black"
-            >
-              <div className="grid grid-cols-[max-content_4rem_max-content] items-center gap-x-2 gap-y-2 text-xs">
-                {fundingValues.map(([source, amount]) => (
-                  <div key={source} className="contents">
-                    <span>{FUNDING_SOURCES[source].label}</span>
-                    <div className="w-full">
-                      <div
-                        className="h-1.5 rounded-sm"
-                        style={{
-                          width: `${(amount / fundingTotal) * 100}%`,
-                          backgroundColor: FUNDING_TREEMAP_COLORS[source],
-                        }}
-                      />
-                    </div>
-                    <span className="text-end tabular-nums">
-                      {formatBudget(amount)}
-                    </span>
-                  </div>
-                ))}
-              </div>
-              {fundingValues.length === 0 && (
-                <p className="text-xs">Funding-source breakdown unavailable.</p>
-              )}
-            </TooltipContent>
-          </Tooltip>
-        );
-        const rowContent = (
-          <>
-            {hasDescendants ? (
-              <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-secondary text-muted-foreground group-hover:bg-muted group-hover:text-foreground">
-                <ChevronRight
-                  aria-hidden="true"
-                  className={`size-4 transition-transform ${isExpanded ? "rotate-90" : ""}`}
+          <span className="flex min-h-6 w-full items-center focus-visible:outline-2 focus-visible:outline-un-blue">
+            <span className="relative block h-1.5 w-full overflow-hidden rounded-sm">
+              {depth > 0 && parentAmount !== undefined && (
+                <span
+                  className="absolute inset-y-0 start-0 rounded-sm bg-gray-200"
+                  style={{ width: `${scaledWidth(parentAmount)}%` }}
                 />
-              </span>
-            ) : (
-              <span className="size-8" aria-hidden="true" />
-            )}
-            {label}
-            {bar}
-            <span className="justify-self-end whitespace-nowrap text-gray-900">
-              {formatBudget(child.amount)}
-            </span>
-          </>
-        );
-        const rowClass =
-          "group grid min-h-11 w-full min-w-0 grid-cols-[2rem_minmax(0,1fr)_4rem_5.5rem] items-center gap-x-2 rounded-sm px-1 py-1 text-left text-sm hover:bg-slate-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-un-blue sm:grid-cols-[2rem_minmax(0,1fr)_5rem_6rem] sm:gap-x-3";
-        return (
-          <li key={child.id}>
-            <div style={{ paddingInlineStart: `${depth * 0.75}rem` }}>
-              {hasDescendants ? (
-                <button
-                  type="button"
-                  aria-expanded={isExpanded}
-                  onClick={toggleExpanded}
-                  className={rowClass}
-                >
-                  {rowContent}
-                </button>
-              ) : (
-                <div className={rowClass}>{rowContent}</div>
               )}
+              <span
+                className="absolute inset-y-0 start-0 flex overflow-hidden rounded-sm bg-un-blue"
+                style={{ width: `${scaledWidth(child.amount)}%` }}
+              >
+                {fundingValues.map(([source, amount]) => (
+                  <span
+                    key={source}
+                    className="h-full"
+                    style={{
+                      width: `${(amount / fundingTotal) * 100}%`,
+                      backgroundColor: FUNDING_TREEMAP_COLORS[source],
+                    }}
+                  />
+                ))}
+              </span>
+            </span>
+          </span>
+        );
+        const tooltipContent = (
+          <div className="space-y-2">
+            <p className="text-xs text-gray-500">{kindLabel}</p>
+            <p className="max-w-sm text-sm font-medium whitespace-normal">
+              {fullName}
+            </p>
+            <p className="text-sm">Total: {formatBudget(child.amount)}</p>
+            <div className="grid grid-cols-[max-content_4rem_max-content] items-center gap-x-2 gap-y-2 text-xs">
+              {fundingValues.map(([source, amount]) => (
+                <div key={source} className="contents">
+                  <span>{FUNDING_SOURCES[source].label}</span>
+                  <div className="w-full">
+                    <div
+                      className="h-1.5 rounded-sm"
+                      style={{
+                        width: `${(amount / fundingTotal) * 100}%`,
+                        backgroundColor: FUNDING_TREEMAP_COLORS[source],
+                      }}
+                    />
+                  </div>
+                  <span className="text-end tabular-nums">
+                    {formatBudget(amount)}
+                  </span>
+                </div>
+              ))}
             </div>
+            {fundingValues.length === 0 && (
+              <p className="text-xs">Funding-source breakdown unavailable.</p>
+            )}
+          </div>
+        );
+        return (
+          <FinancialBreakdownRow
+            key={child.id}
+            label={fullName}
+            badge={badge}
+            value={formatBudget(child.amount)}
+            bar={bar}
+            tooltip={tooltipContent}
+            depth={depth}
+            expanded={isExpanded}
+            onToggle={hasDescendants ? toggleExpanded : undefined}
+          >
             {hasDescendants && isExpanded && (
               <BudgetHierarchy
                 nodes={descendants}
@@ -602,14 +572,25 @@ function BudgetHierarchy({
                 parentAmount={child.amount}
               />
             )}
-          </li>
+          </FinancialBreakdownRow>
         );
       })}
     </ul>
   );
 }
 
-export function BudgetSidebar({
+export function BudgetSidebar(props: BudgetSidebarProps) {
+  if (props.meta.stream === "trust_funds")
+    return (
+      <TrustFundSidebar
+        key={`${props.node.id}:${props.meta.fiscalYear}:${props.years?.join(",")}`}
+        {...props}
+      />
+    );
+  return <BudgetDetailSidebar {...props} />;
+}
+
+function BudgetDetailSidebar({
   node,
   parent,
   childrenByParent,
@@ -804,11 +785,14 @@ export function BudgetSidebar({
         <div className="space-y-6 px-6 pt-4 pb-6 sm:px-8 sm:pt-5 sm:pb-8">
           {/* The sidebar always shows the full published funding-source view,
               independently of the filters applied to the main treemap. */}
-          {fundingEntries.length > 0 && (
+          {(fundingEntries.length > 0 ||
+            (meta.stream === "ppb" &&
+              dataset?.startsWith("budget-ppb-") &&
+              (years?.length ?? 0) > 0)) && (
             <div>
-              <h3 className="mb-2 text-lg font-normal tracking-wider text-gray-900 uppercase">
-                {metricLabel} {meta.fiscalYear} by funding source
-              </h3>
+              <FinancialPanelHeading subheading className="mb-2">
+                {metricLabel} by funding source
+              </FinancialPanelHeading>
               <div className="space-y-2">
                 {fundingEntries.map(([key, amount]) => {
                   const style = FUNDING_SOURCES[key];
@@ -825,39 +809,34 @@ export function BudgetSidebar({
                       </span>
                       <BudgetAmount
                         amount={amount}
-                        sources={
-                          node.sources?.[key as BudgetFundingSource]
-                            ? [
-                                node.sources[
-                                  key as BudgetFundingSource
-                                ] as BudgetNodeSource,
-                              ]
-                            : []
-                        }
+                        sources={[]}
                         className="text-gray-900"
                       />
                     </div>
                   );
                 })}
               </div>
-              {node.completeness && node.completeness !== "complete" && (
-                <p className="mt-2 text-xs text-gray-500">
-                  Not every funding source is published for this line
-                  {node.completeness === "not_published"
-                    ? ""
-                    : " (partly published)"}
-                  .
-                </p>
-              )}
+              <div className="mt-4">
+                {meta.stream === "ppb" &&
+                  dataset?.startsWith("budget-ppb-") &&
+                  years &&
+                  years.length > 0 && (
+                    <ProgrammeBudgetNodeTrend
+                      node={node}
+                      dataset={dataset}
+                      years={years}
+                    />
+                  )}
+              </div>
             </div>
           )}
 
           {/* Hierarchy or, for an undivided leaf, funding-source composition */}
           {hasBreakdown && (
             <div>
-              <h3 className="mb-3 text-lg font-normal tracking-wider text-gray-900 uppercase">
+              <FinancialPanelHeading subheading className="mb-3">
                 {breakdownHeading}
-              </h3>
+              </FinancialPanelHeading>
               {SHOW_SIDEBAR_MINI_TREEMAP && (
                 <MiniBudgetTreemap
                   node={node}
@@ -874,18 +853,12 @@ export function BudgetSidebar({
                       childrenByParent={childrenByParent}
                     />
                   </div>
-                  {Math.abs(childGap) >
-                    (dataset?.startsWith("budget-ppb") ? 0.5 : 5000) && (
+                  {Math.abs(childGap) > Math.abs(node.amount) * 0.001 && (
                     <p className="mt-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-900">
                       The published parent total is {formatBudget(node.amount)},
                       but the published lines below add to{" "}
                       {formatBudget(childSum)}— a difference of{" "}
-                      {Math.abs(childGap).toLocaleString("en-US", {
-                        style: "currency",
-                        currency: "USD",
-                        maximumFractionDigits: 0,
-                      })}
-                      .
+                      {formatBudget(Math.abs(childGap))}.
                       {dataset?.startsWith("budget-ppb")
                         ? " Tile areas are scaled to fill the parent using the available breakdown; displayed amounts remain as published."
                         : " The parent total remains authoritative; this breakdown is flagged and is not used to size the main treemap."}
@@ -896,21 +869,19 @@ export function BudgetSidebar({
             </div>
           )}
 
-          {meta.stream === "ppb" &&
-            dataset?.startsWith("budget-ppb-") &&
-            years &&
-            years.length > 0 && (
-              <ProgrammeBudgetNodeTrend
-                node={node}
-                dataset={dataset}
-                years={years}
-              />
-            )}
-
           {/* Keep only references that take the reader to a concrete source. */}
           {(sourceReferences.length > 0 || meta.documentUrl) && (
-            <ExpandableCard key={node.id} title="Source references">
-              <div className="space-y-3">
+            <details key={node.id} className="group/sources">
+              <summary className="flex w-fit cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden">
+                <FinancialPanelHeading subheading>
+                  Source references
+                </FinancialPanelHeading>
+                <ChevronRight
+                  aria-hidden="true"
+                  className="size-3 transition-transform group-open/sources:rotate-90"
+                />
+              </summary>
+              <div className="mt-3 space-y-3">
                 {sourceReferences.map(({ fundingSource, reference }) => (
                   <div
                     key={`${fundingSource ?? "all"}|${sourceKey(reference)}`}
@@ -957,7 +928,7 @@ export function BudgetSidebar({
                   </a>
                 )}
               </div>
-            </ExpandableCard>
+            </details>
           )}
         </div>
       </div>
