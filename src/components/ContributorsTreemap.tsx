@@ -412,6 +412,7 @@ export function ContributorsTreemap() {
                   <FundingSourceLabel
                     key={type}
                     source={FINANCING_SOURCE_KEYS[type]}
+                    palette="gray"
                     selected={selectedFunding.includes(type)}
                     onToggle={() =>
                       setSelectedFunding((current) =>

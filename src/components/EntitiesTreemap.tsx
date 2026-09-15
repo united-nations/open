@@ -376,6 +376,7 @@ export function EntitiesTreemap() {
               <div className="flex flex-wrap gap-2 pt-3">
                 {FINANCING_INSTRUMENT_ORDER.map((type) => (
                   <FinancingInstrumentLabel
+                    neutral
                     key={type}
                     type={type}
                     variant="pill"

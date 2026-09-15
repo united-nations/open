@@ -241,7 +241,10 @@ export function SecretariatOverview() {
 
   return (
     <div className="relative w-full">
-      <DelayedChartLoading pending={data?.meta.year !== year} requestKey={year} />
+      <DelayedChartLoading
+        pending={data?.meta.year !== year}
+        requestKey={year}
+      />
       <GroupedTreemap<string, SecretariatGroup, OverviewTile, never>
         footer={<ChartFooter hint="Click on an entity to explore details" />}
         yearControl={
@@ -253,6 +256,7 @@ export function SecretariatOverview() {
         }
         controls={
           <FundingSourcePills
+            neutral
             selected={activeFunding}
             onToggle={(source) =>
               setActiveFunding((currentSources) =>

@@ -121,6 +121,7 @@ export function RegularBudgetView() {
           })}
         </div>
         <FundingSourcePills
+          neutral
           selected={active}
           sources={BUDGET_FUNDING_SOURCES}
           disabled={metric !== "expenditure"}

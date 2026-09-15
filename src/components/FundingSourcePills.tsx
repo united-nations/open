@@ -22,12 +22,14 @@ export function toggleFundingSource(
 
 export function FundingSourcePills({
   selected,
+  neutral = false,
   onToggle,
   sources = BUDGET_FUNDING_SOURCES,
   disabled = false,
   grouped = false,
   explanations,
 }: {
+  neutral?: boolean;
   selected: readonly BudgetFundingSource[];
   onToggle: (source: BudgetFundingSource) => void;
   sources?: readonly BudgetFundingSource[];
@@ -50,6 +52,7 @@ export function FundingSourcePills({
         return (
           <FundingSourceLabel
             source={source}
+            palette={neutral ? "gray" : "blue"}
             key={source}
             selected={active}
             explanation={explanations?.[source]}

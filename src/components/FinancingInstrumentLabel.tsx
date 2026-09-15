@@ -4,12 +4,14 @@ import { FINANCING_SOURCE_KEYS } from "@/lib/financingInstruments";
 
 export function FinancingInstrumentLabel({
   type,
+  neutral = false,
   className,
   selected,
   onToggle,
   variant = "inline",
 }: {
   type: string;
+  neutral?: boolean;
   className?: string;
   selected?: boolean;
   onToggle?: () => void;
@@ -21,6 +23,7 @@ export function FinancingInstrumentLabel({
       {source ? (
         <FundingSourceLabel
           source={source}
+          palette={neutral ? "gray" : "blue"}
           variant={variant}
           selected={selected}
           onToggle={onToggle}
