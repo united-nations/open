@@ -1,4 +1,5 @@
 import { SectionSubnav } from "@/components/SectionSubnav";
+import { ChartDataDisclaimer } from "@/components/ChartDataDisclaimer";
 import type { SectionNavItem } from "@/lib/navigation";
 
 export function SectionChrome({
@@ -24,6 +25,7 @@ export function SectionChrome({
       </section>
       <SectionSubnav items={items} label={navLabel} />
       {children}
+      <ChartDataDisclaimer />
     </>
   );
 }

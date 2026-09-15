@@ -248,9 +248,9 @@ export default function SDGModal({
                 </FinancialPanelHeading>
 
                 <div>
-                  <span className="text-sm font-normal tracking-wide text-gray-600 uppercase">
+                  <FinancialPanelHeading subheading>
                     Total
-                  </span>
+                  </FinancialPanelHeading>
                   <div className="mt-0.5">
                     <div className="text-base font-semibold text-gray-700">
                       {formatBudget(totalExpenses)}
@@ -315,9 +315,9 @@ export default function SDGModal({
 
                     {/* Overall */}
                     <div>
-                      <span className="text-sm font-normal tracking-wide text-gray-600 uppercase">
+                      <FinancialPanelHeading subheading>
                         Overall
-                      </span>
+                      </FinancialPanelHeading>
                       <div className="mt-2">
                         <UninfoFundingBar
                           required={uninfoData.totals.required}
@@ -331,9 +331,9 @@ export default function SDGModal({
                     {Object.keys(uninfoData.countries).length > 0 && (
                       <div className="mt-4">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-normal tracking-wide text-gray-600 uppercase">
-                            By Country
-                          </span>
+                          <FinancialPanelHeading subheading>
+                            By country
+                          </FinancialPanelHeading>
                           {SHOW_UNINFO_SORT_CONTROLS && (
                             <SortSelector
                               options={UNINFO_SORT_OPTIONS}

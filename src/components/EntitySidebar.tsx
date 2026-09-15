@@ -427,7 +427,7 @@ export function EntitySidebar({
             <div>
               {/* Total Spending */}
               <div>
-                <span className="text-sm font-normal tracking-wide text-gray-600 uppercase">
+                <span className="text-base font-semibold text-gray-900">
                   Total Spending
                 </span>
                 <div className="mt-0.5">
@@ -439,7 +439,7 @@ export function EntitySidebar({
 
               {/* Total Funding */}
               <div className="mt-3">
-                <span className="text-sm font-normal tracking-wide text-gray-600 uppercase">
+                <span className="text-base font-semibold text-gray-900">
                   Total Funding
                 </span>
                 <div className="mt-0.5">

@@ -29,7 +29,7 @@ export default function HomePage() {
           Explore contributions and spending across the UN System, and drill
           down into the budget of the UN Secretariat.
         </p>
-        <div className="mt-6 grid grid-cols-2 gap-4">
+        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
           <HomeSectionCard
             href="/system"
             title="UN System"

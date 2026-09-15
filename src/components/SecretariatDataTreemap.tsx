@@ -155,7 +155,7 @@ export function SecretariatDataTreemap() {
         >
           <span
             id="secretariat-dataset-label"
-            className="mr-2 text-xs font-medium tracking-wide text-gray-500 uppercase"
+            className="mr-2 text-base font-semibold text-gray-900"
           >
             Data source
           </span>

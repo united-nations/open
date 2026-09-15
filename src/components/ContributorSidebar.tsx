@@ -272,7 +272,7 @@ export function ContributorSidebar({
                   displayContributor.category &&
                   displayContributor.category !== "Non-Government" && (
                     <div>
-                      <span className="text-sm font-normal tracking-wide text-gray-600 uppercase">
+                      <span className="text-base font-semibold text-gray-900">
                         Category
                       </span>
                       <div className="mt-0.5">
@@ -286,7 +286,7 @@ export function ContributorSidebar({
 
                 <div>
                   <div>
-                    <span className="text-sm font-normal tracking-wide text-gray-600 uppercase">
+                    <span className="text-base font-semibold text-gray-900">
                       Total
                     </span>
                     <div className="mt-0.5">

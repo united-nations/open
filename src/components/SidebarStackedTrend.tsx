@@ -18,8 +18,7 @@ export const FUNDING_SOURCE_TREND_SERIES: FinancingSeries[] = (
   color: fundingSources[key].color,
 }));
 
-const DEFAULT_HEADING =
-  "text-sm font-semibold tracking-wide text-gray-900 uppercase";
+const DEFAULT_HEADING = "text-base font-semibold text-gray-900";
 
 export function SidebarStackedTrend({
   heading,

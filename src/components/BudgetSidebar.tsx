@@ -874,7 +874,7 @@ function BudgetDetailSidebar({
                     key={`${fundingSource ?? "all"}|${sourceKey(reference)}`}
                   >
                     {fundingSource && (
-                      <p className="text-xs font-medium tracking-wide text-gray-500 uppercase">
+                      <p className="text-sm font-semibold text-gray-900">
                         {meta.fundingLabels?.[fundingSource] ??
                           FUNDING_SOURCES[fundingSource]?.label ??
                           fundingSource}

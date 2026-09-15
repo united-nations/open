@@ -231,7 +231,7 @@ export function CountrySidebar({
               </FinancialPanelHeading>
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <span className="text-sm font-normal tracking-wide text-gray-600 uppercase">
+                  <span className="text-base font-semibold text-gray-900">
                     Total Spending
                   </span>
                   <div className="mt-0.5 text-xl font-bold text-gray-900">
@@ -239,7 +239,7 @@ export function CountrySidebar({
                   </div>
                 </div>
                 <div>
-                  <span className="text-sm font-normal tracking-wide text-gray-600 uppercase">
+                  <span className="text-base font-semibold text-gray-900">
                     Entities Active
                   </span>
                   <div className="mt-0.5 text-lg font-semibold text-gray-700">

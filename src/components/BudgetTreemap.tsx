@@ -2140,7 +2140,7 @@ export function BudgetTreemap({
               key={source}
               className="min-w-48 flex-1 border-l-4 border-un-blue bg-sky-50 px-4 py-3"
             >
-              <p className="text-xs font-medium tracking-wide text-gray-600 uppercase">
+              <p className="text-base font-semibold text-gray-900">
                 {fundingLabel(source)} total
               </p>
               <p className="mt-1 text-3xl font-bold text-gray-900">
