@@ -65,13 +65,10 @@ and gitignored.
 - `crosswalk/trust-fund-entity-crosswalk.csv` and `.json`: one row per fund
   code, with audited entity, historical priority/section evidence, match method,
   confidence, and optional PPB entity ID.
-- `crosswalk/unresolved-review.csv`: funds deliberately excluded from entity
-  aggregation pending authoritative review.
+- `crosswalk/unresolved-review.csv`: funds displayed under Unmapped Trust Funds pending verified entity assignment.
 - `crosswalk/quality-profile.json`: mapping cardinality, value-weighted coverage,
   unresolved cases, section changes, and known limitations.
-- `public/data/budget-trust-funds-{year}.json`: current-period trust-fund
-  expenses grouped by the approved entity crosswalk, with individual funds as
-  children.
+- `public/data/budget-trust-funds-{year}.json`: current-period trust-fund expenses for every source fund, grouped by entity or Unmapped Trust Funds, with individual funds as children.
 - `public/data/trust-fund-contributors-{year}.json`: signed named contributor
   amounts, destination funds and mapped entities, adjustments, and per-fund
   reconciliation residuals.
@@ -131,8 +128,7 @@ output as audit evidence.
 
 The old site's procedure for assigning fund names to entities was not
 published, so this is a reproducible reconstruction of observed assignments,
-not an official UN crosswalk. Seven fund codes are left unresolved rather than
-assigned from institutional guesswork. The reviewed CSV records candidates and
+not an official UN crosswalk. Five historical fund codes remain unresolved rather than assigned from institutional guesswork. The latest ARWO workbook resolves MWF and YEA by exact normalized name (see below). The reviewed CSV records candidates and
 reasons for manual verification. One accepted mapping, the CERF loan component
 (`CLR`) to OCHA, is medium confidence because the old extract includes CERF but
 does not itemize the dormant loan component separately; it is marked
@@ -155,35 +151,67 @@ added to PPB extrabudgetary expenditure or consolidated Secretariat totals.
 
 ## Frontend metric and contributor limitations
 
-The entity view is deliberately a third, XB-only source. It uses the
-current-period `Total expenses` line from each fund and excludes unresolved
-funds from entity aggregation. RB and OA are unavailable for this source. The
-result is not a replacement for, or an amount to add to, the consolidated
-audited or PPB views.
+The entity view uses current-period `Total expenses` for **every fund in the
+source schedule**, including funds with no approved crosswalk or no crosswalk
+row at all. Missing mappings use the stable pseudo-entity
+`trust-fund-entity:UNMAPPED`, labelled **Unmapped Trust Funds**. This is not a UN
+entity. Signed and zero expenses remain in the data; zero/negative funds appear
+in a clickable list below the treemap rather than receiving artificial area.
+Totals include all signed source amounts. Positive tile totals can therefore
+differ from the signed schedule total. RB and OA are unavailable for this source.
 
-The contributor view uses recognized voluntary contributions, not cash
-receipts or receivables. For each fund-year it retains named rows only up to the
-printed contribution total that exactly matches the financial-performance
-statement. This rule is important where a continuation page contains a second
-inter-organization or internal-transfer schedule after the contribution total.
-Printed present-value and fund-to-fund adjustments are retained separately;
-negative named donor rows remain in the donor's signed net.
+The contributor view includes three disjoint flow categories:
 
-The printed totals reconcile exactly to the statements, but the named rows do
-not always add to those totals because several PDF layouts omit or misalign an
-individual amount. The export never allocates the residual. Absolute-residual
-named-row completeness is 99.9999% (2017), 99.9999% (2018), 100% (2019),
-99.9998% (2020), 99.9948% (2021), 99.9331% (2022), 99.3009% (2023), and
-99.7874% (2024). The UI shows the applicable percentage and residual for the
-selected year. Contributors with a zero or negative annual net remain in JSON
-but cannot be represented as positive treemap area.
+- Recognized voluntary contributions, selected before the statement-matching
+  printed voluntary total.
+- Inter-agency contributions and transfers, including UNDP MPTF.
+- Internal transfers between accounts.
 
-Contributor-to-entity destinations inherit the fund's organizational
-crosswalk. They mean that the contribution was recognized by a fund assigned
-to that entity; they do not establish that the donor financed an entity's
-particular expense, programme, or activity. Contributions to the seven
-unresolved fund codes remain visible with an unresolved entity rather than
-being dropped or guessed.
+The contributor treemap splits voluntary contributions into Government contributions
+and Other voluntary contributions, and displays Inter-organizational arrangements
+and Internal transfers as the other two groups. Classification follows each source
+row, so one contributor can appear in multiple groups. Tiles and their source links
+are category-specific; the sidebar retains the combined contributor.
+
+All use signed printed amounts, net of the row's refunds and adjustments.
+Receivable balances, printed subtotals and grand totals are excluded from named
+contributors. Present-value and voluntary-schedule internal adjustments remain
+separate. Continuation-page rows parsed under a voluntary-table layout **after**
+its statement-matching total are classified as transfers, retaining their
+original physical PDF page and coordinates. Each fund reconciles separately
+against voluntary contributions and other transfers and allocations in its
+financial-performance statement. Extraction residuals remain explicit and are
+never assigned to a contributor. The displayed completeness is recalculated for
+this expanded scope; it is not a claim of perfect extraction.
+
+MPTF counterparty spelling variants normalize to **UNDP Multi-Partner Trust Fund
+Office**. No upstream pooled-fund identity is inferred from that administrative
+agent name. Each contributor and destination retains a flow-type breakdown and
+page-specific evidence. These are **gross fund-account flows**, not cash receipts
+or new external funding: internal transfers can count previously contributed
+money again. Do not add them to original government contributions or consolidated
+Secretariat revenue. Investment/other revenue is not attributed to invented
+contributors.
+
+### Latest ARWO mapping evidence
+
+The crosswalk builder optionally reads `data/internal/ARWO_2019-2025.xlsx`, sheet
+`Data_Raw_19-25` (also presented in its `TF-Entity` pivot). It fills only unresolved
+mappings with exact normalized fund names and a unique entity and priority area;
+existing mappings are preserved. The output records workbook name, sheet and
+SHA-256. Without the workbook, unresolved funds still appear under the fallback
+pseudo-entity. Run with `--arwo-workbook PATH` to select the input explicitly.
+
+The 2024/2025 rows resolve MWF (Memorial Wall for Fallen UN Peacekeepers) to DPO
+and YEA (Yemen Special Envoy) to SESG-YEMEN. The workbook does not resolve ANC's
+different Afghanistan fund name or SWE's conflicting JIU/system-wide-evaluation
+labels; DVA, EER and GNA also lack exact-name matches. These five historical
+accounts remain unresolved; only ANC and SWE occur in the 2024 schedule.
+All 145 source accounts are now included in the 2024 export.
+
+Organizational attribution is not proof that a contributor funded a specific
+entity expense or activity. This source still covers the **Schedule of Individual
+Trust Funds**, not every trust fund elsewhere in the UN system or MPTF portfolio.
 
 ## Suggested manual checks
 
@@ -216,6 +244,5 @@ one-based **physical PDF page** from Stage 2, with the fund, schedule, reported
 row, and selected column. These pages are not printed page labels. Entity totals
 gather all of their funds' references at display time; contributor totals gather references
 from their destinations. The sidebar source sections expose these links without
-adding source markers to chart amounts. Financial values and selection rules
-are unchanged. Generic document references remain as a fallback for older
+adding source markers to chart amounts. Source amounts remain unchanged; the expanded contributor selection is described above. Generic document references remain as a fallback for older
 exports without page provenance.

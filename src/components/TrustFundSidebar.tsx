@@ -1,4 +1,5 @@
 "use client";
+import { TrustFundFlowBreakdown } from "@/components/TrustFundFlowBreakdown";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 
 import { useEffect, useState } from "react";
@@ -237,6 +238,7 @@ export function TrustFundSidebar({
           }}
           className="bg-white sm:w-full"
         >
+          {node.note && <p className="mb-3 text-sm">{node.note}</p>}
           <FinancialPanelSection heading="Expenditure history">
             {trend === null ? (
               <p role="status" className="text-sm text-gray-500">
@@ -310,7 +312,14 @@ export function TrustFundSidebar({
               </div>
             </FinancialPanelSection>
           )}
-          <FinancialPanelSection heading="Recognized contributions by contributor">
+          <TrustFundFlowBreakdown
+            flows={(contributors?.contributors ?? []).flatMap((item) =>
+              item.destinations
+                .filter((fund) => includedCodes.has(fund.fund_code))
+                .flatMap((fund) => fund.flows ?? []),
+            )}
+          />
+          <FinancialPanelSection heading="By contributor">
             <div className="space-y-3">
               {(showAllContributors ? donorRows : donorRows.slice(0, 10)).map(
                 (donor) => (
@@ -369,7 +378,7 @@ export function TrustFundSidebar({
               </p>
             )}
             <p className="mt-3 text-sm text-gray-500">
-              These are recognized voluntary contributions, not expenditure.
+              These are contributions and transfers, not expenditure.
               Contributor amounts may not cover all receipts; negative
               adjustments are included in the amounts but have no bar.
             </p>
@@ -403,7 +412,7 @@ export function TrustFundSidebar({
                         : [
                             {
                               ...contributors.meta.source,
-                              rowLabel: "Recognized voluntary contributions",
+                              rowLabel: "Contributions and transfers",
                               columnHeader: String(year),
                             },
                           ]

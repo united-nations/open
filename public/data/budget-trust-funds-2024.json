@@ -8,9 +8,9 @@
     "year": 2024,
     "fiscalYear": "2024",
     "currency": "USD",
-    "total": 3198950858,
-    "scopeLabel": "Current-period expenses of trust funds with an approved entity crosswalk",
-    "scopeWarning": "This is gross fund-level accounting and is not additive to PPB or consolidated Secretariat expenditure. Entity assignments reconstruct the old open-data mapping.",
+    "total": 3198967527,
+    "scopeLabel": "Current-period expenses of all funds in the Schedule of Individual Trust Funds",
+    "scopeWarning": "This is gross fund-level accounting and is not additive to PPB or consolidated Secretariat expenditure. Funds without a verified entity assignment are shown under Unmapped Trust Funds; this is a display group, not a UN entity.",
     "fundingSources": [
       "extrabudgetary"
     ],
@@ -21,10 +21,10 @@
     "documentUrl": "https://digitallibrary.un.org/record/4087012",
     "verification": {
       "schedule_total_usd": "3198967527",
-      "mapped_total_usd": "3198950858",
-      "mapped_funds": "141",
-      "unresolved_funds": "4",
-      "unresolved_fund_codes": "ANC, MWF, SWE, YEA"
+      "mapped_total_usd": "3198959003",
+      "mapped_funds": "143",
+      "unresolved_funds": "2",
+      "unresolved_fund_codes": "ANC, SWE"
     },
     "source": {
       "repo": "transparency",
@@ -39,11 +39,11 @@
       "tier": "whole",
       "kind": "whole",
       "code": null,
-      "label": "Mapped individual trust funds",
-      "amount": 3198950858,
+      "label": "Individual trust funds",
+      "amount": 3198967527,
       "basis": "derived_from_printed_fund_totals",
       "values": {
-        "extrabudgetary": 3198950858
+        "extrabudgetary": 3198967527
       },
       "source": {
         "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
@@ -59,10 +59,10 @@
       "kind": "part",
       "code": "XB",
       "label": "Individual trust funds",
-      "amount": 3198950858,
+      "amount": 3198967527,
       "basis": "derived_from_printed_fund_totals",
       "values": {
-        "extrabudgetary": 3198950858
+        "extrabudgetary": 3198967527
       },
       "source": {
         "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
@@ -77,11 +77,11 @@
       "tier": "section",
       "kind": "section",
       "code": "TF",
-      "label": "Mapped Secretariat entities",
-      "amount": 3198950858,
+      "label": "Secretariat entities and unmapped funds",
+      "amount": 3198967527,
       "basis": "derived_from_printed_fund_totals",
       "values": {
-        "extrabudgetary": 3198950858
+        "extrabudgetary": 3198967527
       },
       "source": {
         "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
@@ -123,6 +123,7 @@
       "kind": "allocation",
       "code": "SAU",
       "label": "Trust Fund in Support of the African Union Mission to Somalia (AMISOM)",
+      "note": null,
       "amount": 20617097,
       "basis": "directly_printed",
       "values": {
@@ -181,6 +182,7 @@
       "kind": "allocation",
       "code": "HKA",
       "label": "Trust Fund in Support of the Political Transition in Haiti",
+      "note": null,
       "amount": 17,
       "basis": "directly_printed",
       "values": {
@@ -239,6 +241,7 @@
       "kind": "allocation",
       "code": "HBP",
       "label": "Trust Fund for the Implementation of HLCM Plan of Action for the Harmonization of Business Practices in the United Nations system",
+      "note": null,
       "amount": 8,
       "basis": "directly_printed",
       "values": {
@@ -297,6 +300,7 @@
       "kind": "allocation",
       "code": "CNM",
       "label": "Trust Fund in Support of the Cameroon-Nigeria Border Demarcation and Other Activities Related to Preventive Diplomacy and Peacemaking",
+      "note": null,
       "amount": 1351452,
       "basis": "directly_printed",
       "values": {
@@ -355,6 +359,7 @@
       "kind": "allocation",
       "code": "CTD",
       "label": "Trust Fund for the Counter-Terrorism Committee Executive Directorate",
+      "note": null,
       "amount": 9335,
       "basis": "directly_printed",
       "values": {
@@ -396,7 +401,7 @@
       "role": "source_node",
       "entity": {
         "name": "Resident coordinator system",
-        "acronym": "RCS",
+        "acronym": "RC system",
         "relationship": "trust_fund_crosswalk"
       },
       "source": {
@@ -413,6 +418,7 @@
       "kind": "allocation",
       "code": "DSA",
       "label": "Special Purpose Trust Fund for the Reinvigorated Resident Coordinator (RC) System",
+      "note": null,
       "amount": 220006287,
       "basis": "directly_printed",
       "values": {
@@ -445,6 +451,7 @@
       "kind": "allocation",
       "code": "LMR",
       "label": "Trust Fund for Locally Mobilized Non-Core Support for the UN Resident Coordinator Offices",
+      "note": null,
       "amount": 7292507,
       "basis": "directly_printed",
       "values": {
@@ -503,6 +510,7 @@
       "kind": "allocation",
       "code": "PDF",
       "label": "Trust Fund for United Nations Peace and Development",
+      "note": null,
       "amount": 27291913,
       "basis": "directly_printed",
       "values": {
@@ -535,6 +543,7 @@
       "kind": "allocation",
       "code": "XES",
       "label": "Trust Fund for Department of Economic and Social Affairs Capacity Development Programme",
+      "note": null,
       "amount": 20997144,
       "basis": "directly_printed",
       "values": {
@@ -567,6 +576,7 @@
       "kind": "allocation",
       "code": "HIA",
       "label": "Trust Fund to Support Activities for the Follow-up to the International Conference on Financing for Development",
+      "note": null,
       "amount": 5141260,
       "basis": "directly_printed",
       "values": {
@@ -599,6 +609,7 @@
       "kind": "allocation",
       "code": "WKA",
       "label": "Trust Fund to Support the Work of the High-level Political Forum on Sustainable Development",
+      "note": null,
       "amount": 3068993,
       "basis": "directly_printed",
       "values": {
@@ -631,6 +642,7 @@
       "kind": "allocation",
       "code": "OTB",
       "label": "Trust Fund to Support the launch and operationalization of the Technology Bank for LDCs",
+      "note": null,
       "amount": 2248509,
       "basis": "directly_printed",
       "values": {
@@ -663,6 +675,7 @@
       "kind": "allocation",
       "code": "HCB",
       "label": "Host Country Agreements - rken (Volume 1)",
+      "note": null,
       "amount": 853430,
       "basis": "directly_printed",
       "values": {
@@ -695,6 +708,7 @@
       "kind": "allocation",
       "code": "GBA",
       "label": "Trust Fund for Statistical Development and Capacity Building",
+      "note": null,
       "amount": 717587,
       "basis": "directly_printed",
       "values": {
@@ -727,6 +741,7 @@
       "kind": "allocation",
       "code": "PGA",
       "label": "Trust Fund for Population and Development",
+      "note": null,
       "amount": 437097,
       "basis": "directly_printed",
       "values": {
@@ -759,6 +774,7 @@
       "kind": "allocation",
       "code": "KSA",
       "label": "Trust Fund in Support of the United Nations Forum on Forests",
+      "note": null,
       "amount": 414397,
       "basis": "directly_printed",
       "values": {
@@ -791,6 +807,7 @@
       "kind": "allocation",
       "code": "FII",
       "label": "Trust Fund on Indigenous Issues",
+      "note": null,
       "amount": 271921,
       "basis": "directly_printed",
       "values": {
@@ -823,6 +840,7 @@
       "kind": "allocation",
       "code": "CSA",
       "label": "Trust Fund for Case Studies on the Functioning of the Operational Activities for Development of the United Nations System",
+      "note": null,
       "amount": 131694,
       "basis": "directly_printed",
       "values": {
@@ -855,6 +873,7 @@
       "kind": "allocation",
       "code": "WOA",
       "label": "Trust Fund for the Follow-up to the World Summit for Social Development",
+      "note": null,
       "amount": 80259,
       "basis": "directly_printed",
       "values": {
@@ -887,6 +906,7 @@
       "kind": "allocation",
       "code": "IDA",
       "label": "United Nations Voluntary Fund on Disability",
+      "note": null,
       "amount": 44337,
       "basis": "directly_printed",
       "values": {
@@ -919,6 +939,7 @@
       "kind": "allocation",
       "code": "FYA",
       "label": "United Nations Trust Fund on Family Activities",
+      "note": null,
       "amount": 42769,
       "basis": "directly_printed",
       "values": {
@@ -951,6 +972,7 @@
       "kind": "allocation",
       "code": "IEA",
       "label": "United Nations Youth Fund",
+      "note": null,
       "amount": 6394,
       "basis": "directly_printed",
       "values": {
@@ -983,6 +1005,7 @@
       "kind": "allocation",
       "code": "WAA",
       "label": "Trust Fund for Aging",
+      "note": null,
       "amount": 1800,
       "basis": "directly_printed",
       "values": {
@@ -1015,6 +1038,7 @@
       "kind": "allocation",
       "code": "AMR",
       "label": "Trust Fund for the Annual Ministerial Review and the Development Cooperation Forum",
+      "note": null,
       "amount": -15027,
       "basis": "directly_printed",
       "values": {
@@ -1073,6 +1097,7 @@
       "kind": "allocation",
       "code": "GTA",
       "label": "Trust Fund for German Language Translation",
+      "note": null,
       "amount": 2316972,
       "basis": "directly_printed",
       "values": {
@@ -1105,6 +1130,7 @@
       "kind": "allocation",
       "code": "ACM",
       "label": "Trust Fund in Support of General Assembly and Conference Management Activities",
+      "note": null,
       "amount": 482494,
       "basis": "directly_printed",
       "values": {
@@ -1163,6 +1189,7 @@
       "kind": "allocation",
       "code": "ESA",
       "label": "Trust Fund for Economic and Social Information",
+      "note": null,
       "amount": 5747385,
       "basis": "directly_printed",
       "values": {
@@ -1195,6 +1222,7 @@
       "kind": "allocation",
       "code": "GCU",
       "label": "United Nations Trust Fund for Government Contributions to UNICS",
+      "note": null,
       "amount": 906476,
       "basis": "directly_printed",
       "values": {
@@ -1227,6 +1255,7 @@
       "kind": "allocation",
       "code": "ERA",
       "label": "Development Forum Trust Fund",
+      "note": null,
       "amount": 420073,
       "basis": "directly_printed",
       "values": {
@@ -1259,6 +1288,7 @@
       "kind": "allocation",
       "code": "SNA",
       "label": "Trust Fund to promote information to United Nations staff about the work of the Organization (formerly Secretariat News Trust Fund)",
+      "note": null,
       "amount": 0,
       "basis": "directly_printed",
       "values": {
@@ -1317,6 +1347,7 @@
       "kind": "allocation",
       "code": "ESW",
       "label": "Trust Fund in Support of the System-Wide Evaluation",
+      "note": null,
       "amount": 573120,
       "basis": "directly_printed",
       "values": {
@@ -1375,6 +1406,7 @@
       "kind": "allocation",
       "code": "LLB",
       "label": "Trust Fund in Support of the Department of Operational Support",
+      "note": null,
       "amount": 19328730,
       "basis": "directly_printed",
       "values": {
@@ -1407,10 +1439,10 @@
       "kind": "entity",
       "code": "DPO",
       "label": "Department of Peace Operations",
-      "amount": 29979116,
+      "amount": 29979132,
       "basis": "derived_from_printed_fund_totals",
       "values": {
-        "extrabudgetary": 29979116
+        "extrabudgetary": 29979132
       },
       "unitType": "entity",
       "role": "source_node",
@@ -1433,6 +1465,7 @@
       "kind": "allocation",
       "code": "LLA",
       "label": "Trust Fund in Support of the Department of Peacekeeping Operations",
+      "note": null,
       "amount": 29900177,
       "basis": "directly_printed",
       "values": {
@@ -1465,6 +1498,7 @@
       "kind": "allocation",
       "code": "CPK",
       "label": "Trust Fund in Support Peacekeeping Activities",
+      "note": null,
       "amount": 78939,
       "basis": "directly_printed",
       "values": {
@@ -1485,6 +1519,39 @@
           "columnHeader": "2024",
           "tableTitle": "Schedule 1.4 — Financial performance",
           "pdfPage": 21,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
+    },
+    {
+      "id": "trust-fund-entity:DPO:fund:MWF",
+      "parentId": "trust-fund-entity:DPO",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "MWF",
+      "label": "Trust Fund for the Memorial Wall for Fallen UN Peacekeepers",
+      "note": null,
+      "amount": 16,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 16
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+          "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+          "label": "MWF — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2024",
+          "tableTitle": "Schedule 6.29 — Financial performance",
+          "pdfPage": 422,
           "pdfPageScope": "row",
           "pageStatus": "extracted_pdf_row"
         }
@@ -1523,6 +1590,7 @@
       "kind": "allocation",
       "code": "SZA",
       "label": "Trust Fund in Support of Political Affairs",
+      "note": null,
       "amount": 38485775,
       "basis": "directly_printed",
       "values": {
@@ -1555,6 +1623,7 @@
       "kind": "allocation",
       "code": "PSO",
       "label": "Trust Fund for the Peacebuilding Support Office",
+      "note": null,
       "amount": 4293279,
       "basis": "directly_printed",
       "values": {
@@ -1587,6 +1656,7 @@
       "kind": "allocation",
       "code": "PYA",
       "label": "Trust Fund for Preventive Action",
+      "note": null,
       "amount": 7141,
       "basis": "directly_printed",
       "values": {
@@ -1645,6 +1715,7 @@
       "kind": "allocation",
       "code": "UGA",
       "label": "Trust Fund for Security of Staff Members of the United Nations System",
+      "note": null,
       "amount": 5745268,
       "basis": "directly_printed",
       "values": {
@@ -1703,6 +1774,7 @@
       "kind": "allocation",
       "code": "HDM",
       "label": "ECA as Executing Agency for Miscellaneous Technical Co-operation Funds",
+      "note": null,
       "amount": 14194355,
       "basis": "directly_printed",
       "values": {
@@ -1735,6 +1807,7 @@
       "kind": "allocation",
       "code": "IDP",
       "label": "African Institute for Economic Development and Planning (IDEP)",
+      "note": null,
       "amount": 3400400,
       "basis": "directly_printed",
       "values": {
@@ -1767,6 +1840,7 @@
       "kind": "allocation",
       "code": "CFE",
       "label": "Trust Fund for ECA Construction",
+      "note": null,
       "amount": 194577,
       "basis": "directly_printed",
       "values": {
@@ -1825,6 +1899,7 @@
       "kind": "allocation",
       "code": "ECE",
       "label": "ECE Local Technical Co-operation Trust Funds",
+      "note": null,
       "amount": 23225818,
       "basis": "directly_printed",
       "values": {
@@ -1857,6 +1932,7 @@
       "kind": "allocation",
       "code": "LRA",
       "label": "Trust Fund for the Financing of the Implementation of the Convention on Long-Range Transboundary Air Pollution",
+      "note": null,
       "amount": 3723005,
       "basis": "directly_printed",
       "values": {
@@ -1915,6 +1991,7 @@
       "kind": "allocation",
       "code": "BTS",
       "label": "ECLAC Santiago - Technical Cooperation Project Trust Funds",
+      "note": null,
       "amount": 11621312,
       "basis": "directly_printed",
       "values": {
@@ -1947,6 +2024,7 @@
       "kind": "allocation",
       "code": "LAC",
       "label": "ECLAC - Miscellaneous project accounts",
+      "note": null,
       "amount": 7761,
       "basis": "directly_printed",
       "values": {
@@ -2005,6 +2083,7 @@
       "kind": "allocation",
       "code": "LJA",
       "label": "Trust Fund for Special Projects of the Secretary-General",
+      "note": null,
       "amount": 13166035,
       "basis": "directly_printed",
       "values": {
@@ -2037,6 +2116,7 @@
       "kind": "allocation",
       "code": "CCS",
       "label": "Trust Fund for Climate Change Support",
+      "note": null,
       "amount": 6481746,
       "basis": "directly_printed",
       "values": {
@@ -2069,6 +2149,7 @@
       "kind": "allocation",
       "code": "GIV",
       "label": "Trust Fund to Support Global Impact and Vulnerability Alert System",
+      "note": null,
       "amount": 2564241,
       "basis": "directly_printed",
       "values": {
@@ -2101,6 +2182,7 @@
       "kind": "allocation",
       "code": "COC",
       "label": "Trust Fund to Support Management and Reform Activities",
+      "note": null,
       "amount": 1192600,
       "basis": "directly_printed",
       "values": {
@@ -2133,6 +2215,7 @@
       "kind": "allocation",
       "code": "CCR",
       "label": "Trust Fund to Support the Coordination and Coherence of the Rule of Law Activities of the United Nations System",
+      "note": null,
       "amount": 434226,
       "basis": "directly_printed",
       "values": {
@@ -2191,6 +2274,7 @@
       "kind": "allocation",
       "code": "BKT",
       "label": "ESCAP - Technical Cooperation Project Trust Funds - Local",
+      "note": null,
       "amount": 24967460,
       "basis": "directly_printed",
       "values": {
@@ -2223,6 +2307,7 @@
       "kind": "allocation",
       "code": "BTF",
       "label": "General Trust Fund for ESCAP Regional Activities",
+      "note": null,
       "amount": 2497855,
       "basis": "directly_printed",
       "values": {
@@ -2281,6 +2366,7 @@
       "kind": "allocation",
       "code": "WVZ",
       "label": "ESCWA - Technical Cooperation Trust Fund",
+      "note": null,
       "amount": 7456536,
       "basis": "directly_printed",
       "values": {
@@ -2339,6 +2425,7 @@
       "kind": "allocation",
       "code": "HYA",
       "label": "Trust Fund for Human Security",
+      "note": null,
       "amount": 6248735,
       "basis": "directly_printed",
       "values": {
@@ -2397,6 +2484,7 @@
       "kind": "allocation",
       "code": "TJA",
       "label": "Trust Fund to Assist States in the Judicial Settlement of Disputes through the International Court of Justice",
+      "note": null,
       "amount": 743238,
       "basis": "directly_printed",
       "values": {
@@ -2429,6 +2517,7 @@
       "kind": "allocation",
       "code": "ICJ",
       "label": "Trust Fund for the Judicial Fellowship of the International Court of Justice",
+      "note": null,
       "amount": 142986,
       "basis": "directly_printed",
       "values": {
@@ -2487,6 +2576,7 @@
       "kind": "allocation",
       "code": "SIM",
       "label": "Trust Fund in Support of the International Impartial and Independent Mechanism",
+      "note": null,
       "amount": 6292432,
       "basis": "directly_printed",
       "values": {
@@ -2545,6 +2635,7 @@
       "kind": "allocation",
       "code": "IIM",
       "label": "Trust Fund for the Independent Investigative Mechanism for Myanmar",
+      "note": null,
       "amount": 3398004,
       "basis": "directly_printed",
       "values": {
@@ -2603,6 +2694,7 @@
       "kind": "allocation",
       "code": "JPO",
       "label": "Trust Fund for Junior Professional Officer Programme Administered by Department of Economic and Social Affairs",
+      "note": null,
       "amount": 61004159,
       "basis": "directly_printed",
       "values": {
@@ -2661,6 +2753,7 @@
       "kind": "allocation",
       "code": "RMB",
       "label": "Trust Fund to Support the Activities of the International Residual Mechanism for Criminal Tribunals",
+      "note": null,
       "amount": 1358433,
       "basis": "directly_printed",
       "values": {
@@ -2719,6 +2812,7 @@
       "kind": "allocation",
       "code": "CAF",
       "label": "Trust Fund in Support of Peacebuilding Efforts in the Central African Republic",
+      "note": null,
       "amount": 107046,
       "basis": "directly_printed",
       "values": {
@@ -2751,6 +2845,7 @@
       "kind": "allocation",
       "code": "MIS",
       "label": "Trust Fund in Support of the African-led International Support Mission in the Central African Republic (MISCA)",
+      "note": null,
       "amount": 14,
       "basis": "directly_printed",
       "values": {
@@ -2809,6 +2904,7 @@
       "kind": "allocation",
       "code": "MSM",
       "label": "Trust Fund in Support of the African-led International Support Mission in Mali",
+      "note": null,
       "amount": 52,
       "basis": "directly_printed",
       "values": {
@@ -2841,6 +2937,7 @@
       "kind": "allocation",
       "code": "PSM",
       "label": "Trust Fund in Support of Peace and Security in Mali",
+      "note": null,
       "amount": -1408618,
       "basis": "directly_printed",
       "values": {
@@ -2899,6 +2996,7 @@
       "kind": "allocation",
       "code": "NGA",
       "label": "Trust Fund to Support Peace Process in the Democratic Republic of Congo",
+      "note": null,
       "amount": 156,
       "basis": "directly_printed",
       "values": {
@@ -2957,6 +3055,7 @@
       "kind": "allocation",
       "code": "DDN",
       "label": "Trust Fund for the Strengthening of the Office of the Emergency Relief Coordinator",
+      "note": null,
       "amount": 1353385514,
       "basis": "directly_printed",
       "values": {
@@ -2989,6 +3088,7 @@
       "kind": "allocation",
       "code": "CER",
       "label": "Central Emergency Response Fund",
+      "note": null,
       "amount": 580931039,
       "basis": "directly_printed",
       "values": {
@@ -3021,6 +3121,7 @@
       "kind": "allocation",
       "code": "CLR",
       "label": "Trust Fund Central Emergency Response Fund Loan component",
+      "note": null,
       "amount": 0,
       "basis": "directly_printed",
       "values": {
@@ -3079,6 +3180,7 @@
       "kind": "allocation",
       "code": "CTI",
       "label": "Trust Fund for Counter-Terrorism",
+      "note": null,
       "amount": 44619892,
       "basis": "directly_printed",
       "values": {
@@ -3137,6 +3239,7 @@
       "kind": "allocation",
       "code": "DGA",
       "label": "Trust Fund for Global and Regional Disarmament Activities",
+      "note": null,
       "amount": 13628741,
       "basis": "directly_printed",
       "values": {
@@ -3169,6 +3272,7 @@
       "kind": "allocation",
       "code": "DBA",
       "label": "Trust Fund for the United Nations Regional Centre for Peace, Disarmament and Development in Latin America",
+      "note": null,
       "amount": 1531865,
       "basis": "directly_printed",
       "values": {
@@ -3201,6 +3305,7 @@
       "kind": "allocation",
       "code": "DGT",
       "label": "Sub-account for supporting the implementation of the Arms Trade Treaty and Programme of Action",
+      "note": null,
       "amount": 743039,
       "basis": "directly_printed",
       "values": {
@@ -3233,6 +3338,7 @@
       "kind": "allocation",
       "code": "DFA",
       "label": "Trust Fund for the United Nations Regional Centre for Peace and Disarmament in Asia",
+      "note": null,
       "amount": 350027,
       "basis": "directly_printed",
       "values": {
@@ -3265,6 +3371,7 @@
       "kind": "allocation",
       "code": "DWA",
       "label": "Trust Fund for the United Nations Disarmament Information Programme",
+      "note": null,
       "amount": 245162,
       "basis": "directly_printed",
       "values": {
@@ -3297,6 +3404,7 @@
       "kind": "allocation",
       "code": "DAA",
       "label": "United Nations Regional Centre for Peace and Disarmament in Africa",
+      "note": null,
       "amount": 172656,
       "basis": "directly_printed",
       "values": {
@@ -3329,6 +3437,7 @@
       "kind": "allocation",
       "code": "DJA",
       "label": "Trust Fund for the establishment of a Joint Investigative Mechanism (gfj) pursuant to rkp`o OOPR (OMNR)",
+      "note": null,
       "amount": 58,
       "basis": "directly_printed",
       "values": {
@@ -3361,6 +3470,7 @@
       "kind": "allocation",
       "code": "PIA",
       "label": "Trust Fund for Public Awareness on Disarmament Affairs",
+      "note": null,
       "amount": 28,
       "basis": "directly_printed",
       "values": {
@@ -3419,6 +3529,7 @@
       "kind": "allocation",
       "code": "OST",
       "label": "Trust Fund in Support of the Office of the Secretary-General's Envoy on Technology",
+      "note": null,
       "amount": 1456674,
       "basis": "directly_printed",
       "values": {
@@ -3451,6 +3562,7 @@
       "kind": "allocation",
       "code": "DUN",
       "label": "Trust Fund for Digital Agenda",
+      "note": null,
       "amount": 44,
       "basis": "directly_printed",
       "values": {
@@ -3509,6 +3621,7 @@
       "kind": "allocation",
       "code": "HCA",
       "label": "Trust Fund for the Support to the Activities of the Centre for Human Rights",
+      "note": null,
       "amount": 235532156,
       "basis": "directly_printed",
       "values": {
@@ -3541,6 +3654,7 @@
       "kind": "allocation",
       "code": "AHA",
       "label": "Voluntary Fund for Advisory Services and Technical Assistance in the Field of Human Rights",
+      "note": null,
       "amount": 29993058,
       "basis": "directly_printed",
       "values": {
@@ -3573,6 +3687,7 @@
       "kind": "allocation",
       "code": "CHA",
       "label": "United Nations Voluntary Fund for Victims of Torture",
+      "note": null,
       "amount": 10333840,
       "basis": "directly_printed",
       "values": {
@@ -3605,6 +3720,7 @@
       "kind": "allocation",
       "code": "CIA",
       "label": "Trust Fund for a Human Rights Education Programme in Cambodia",
+      "note": null,
       "amount": 1829631,
       "basis": "directly_printed",
       "values": {
@@ -3637,6 +3753,7 @@
       "kind": "allocation",
       "code": "SHA",
       "label": "United Nations Trust Fund on Contemporary Forms of Slavery",
+      "note": null,
       "amount": 1324661,
       "basis": "directly_printed",
       "values": {
@@ -3669,6 +3786,7 @@
       "kind": "allocation",
       "code": "VTA",
       "label": "Voluntary Technical Assistance Trust Fund to Support the Paticipation of Least Developed Countries & Small Island Developing States in the work of the Human Rights Council",
+      "note": null,
       "amount": 1221290,
       "basis": "directly_printed",
       "values": {
@@ -3701,6 +3819,7 @@
       "kind": "allocation",
       "code": "IHA",
       "label": "United Nations Voluntary Fund for Indigenous Populations",
+      "note": null,
       "amount": 984430,
       "basis": "directly_printed",
       "values": {
@@ -3733,6 +3852,7 @@
       "kind": "allocation",
       "code": "UPR",
       "label": "Voluntary Fund for Financial and Technical Assistance for the Implementation of the Universal Periodic Review",
+      "note": null,
       "amount": 812530,
       "basis": "directly_printed",
       "values": {
@@ -3765,6 +3885,7 @@
       "kind": "allocation",
       "code": "VPU",
       "label": "Voluntary Fund for Participation in the Universal Periodic Review",
+      "note": null,
       "amount": 166502,
       "basis": "directly_printed",
       "values": {
@@ -3823,6 +3944,7 @@
       "kind": "allocation",
       "code": "QOA",
       "label": "United Nations Trust Fund for Enhancing Professional Capacity in Internal Oversight Functions",
+      "note": null,
       "amount": 5,
       "basis": "directly_printed",
       "values": {
@@ -3881,6 +4003,7 @@
       "kind": "allocation",
       "code": "SCC",
       "label": "Trust Fund to support the Syrian Constitutional Committee",
+      "note": null,
       "amount": 786240,
       "basis": "directly_printed",
       "values": {
@@ -3939,6 +4062,7 @@
       "kind": "allocation",
       "code": "PIL",
       "label": "Trust Fund for the Office of Legal Affairs to Support the Promotion of International Law",
+      "note": null,
       "amount": 3290163,
       "basis": "directly_printed",
       "values": {
@@ -3971,6 +4095,7 @@
       "kind": "allocation",
       "code": "TTA",
       "label": "United Nations Commission on International Trade Law Symposia",
+      "note": null,
       "amount": 1580106,
       "basis": "directly_printed",
       "values": {
@@ -4003,6 +4128,7 @@
       "kind": "allocation",
       "code": "KJA",
       "label": "Trust Fund to Assist Members of the Commission on the Limits of the Continental Shelf from Developing States to Participate in its Meetings",
+      "note": null,
       "amount": 566299,
       "basis": "directly_printed",
       "values": {
@@ -4035,6 +4161,7 @@
       "kind": "allocation",
       "code": "CLA",
       "label": "Trust Fund for Legal Affairs and related issues",
+      "note": null,
       "amount": 470613,
       "basis": "directly_printed",
       "values": {
@@ -4067,6 +4194,7 @@
       "kind": "allocation",
       "code": "TLA",
       "label": "Trust Fund for the United Nations Programme of Assistance in the Teaching, Study, Dissemination and Wider Appreciation of International Law",
+      "note": null,
       "amount": 101040,
       "basis": "directly_printed",
       "values": {
@@ -4099,6 +4227,7 @@
       "kind": "allocation",
       "code": "KUA",
       "label": "Trust Fund to Assist Developing States in the Preparation of Submissions to the Commission on the Limits of the Continental Shelf",
+      "note": null,
       "amount": 76575,
       "basis": "directly_printed",
       "values": {
@@ -4157,6 +4286,7 @@
       "kind": "allocation",
       "code": "SBA",
       "label": "Trust Fund in Support of United Nations Programme on Peaceful Uses of Outer Space",
+      "note": null,
       "amount": 2022254,
       "basis": "directly_printed",
       "values": {
@@ -4215,6 +4345,7 @@
       "kind": "allocation",
       "code": "GAC",
       "label": "Trust Fund in Support of the Office of the President of the General Assembly",
+      "note": null,
       "amount": 2603079,
       "basis": "directly_printed",
       "values": {
@@ -4273,6 +4404,7 @@
       "kind": "allocation",
       "code": "NAA",
       "label": "Trust Fund for the Support of Activities of OSAA to the New Partnership for Africa's Development (NEPAD) and Tokyo International Conference on African Development (TICAD) Process",
+      "note": null,
       "amount": 482407,
       "basis": "directly_printed",
       "values": {
@@ -4331,6 +4463,7 @@
       "kind": "allocation",
       "code": "SEA",
       "label": "Trust Fund in support of the Special Coordinator on improving the United Nations response to Sexual Exploitation and Abuse",
+      "note": null,
       "amount": 69161,
       "basis": "directly_printed",
       "values": {
@@ -4389,6 +4522,7 @@
       "kind": "allocation",
       "code": "SCS",
       "label": "Trust Fund in support of the activities of the Office of the UN Special Coordinator for the Development in the Sahel",
+      "note": null,
       "amount": 1241915,
       "basis": "directly_printed",
       "values": {
@@ -4447,6 +4581,7 @@
       "kind": "allocation",
       "code": "GLA",
       "label": "Trust Fund in support of the Office of the Special Envoy of the Secretary-General for the Great Lakes Region",
+      "note": null,
       "amount": 1127930,
       "basis": "directly_printed",
       "values": {
@@ -4505,6 +4640,7 @@
       "kind": "allocation",
       "code": "MYM",
       "label": "Trust Fund in support of executing the mandate of the Special Envoy of Secretary-General on Myanmar (SESG-Myanmar)",
+      "note": null,
       "amount": 558945,
       "basis": "directly_printed",
       "values": {
@@ -4525,6 +4661,65 @@
           "columnHeader": "2024",
           "tableTitle": "Schedule 1.5 — Financial performance",
           "pdfPage": 138,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
+    },
+    {
+      "id": "trust-fund-entity:OSESG-Yemen",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSESG-Yemen",
+      "label": "OSESG-Yemen",
+      "amount": 8129,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 8129
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSESG-Yemen",
+        "acronym": "OSESG-Yemen",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:OSESG-Yemen:fund:YEA",
+      "parentId": "trust-fund-entity:OSESG-Yemen",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "YEA",
+      "label": "Trust Fund in Support of Office of the Special Envoy of the Secretary General to Yemen (OSESGY)",
+      "note": null,
+      "amount": 8129,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 8129
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+          "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+          "label": "YEA — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2024",
+          "tableTitle": "Schedule 1.54 — Financial performance",
+          "pdfPage": 147,
           "pdfPageScope": "row",
           "pageStatus": "extracted_pdf_row"
         }
@@ -4563,6 +4758,7 @@
       "kind": "allocation",
       "code": "NNA",
       "label": "Trust Fund for Children and Armed Conflict",
+      "note": null,
       "amount": 3037615,
       "basis": "directly_printed",
       "values": {
@@ -4621,6 +4817,7 @@
       "kind": "allocation",
       "code": "SVC",
       "label": "Trust Fund in Support of the Office of the Special Representative of the Secretary-General on Sexual Violence in Conflict",
+      "note": null,
       "amount": 6192308,
       "basis": "directly_printed",
       "values": {
@@ -4679,6 +4876,7 @@
       "kind": "allocation",
       "code": "SVD",
       "label": "Trust Fund in Support of the Special Representative of the Secretary-General on Violence against Children",
+      "note": null,
       "amount": 340712,
       "basis": "directly_printed",
       "values": {
@@ -4737,6 +4935,7 @@
       "kind": "allocation",
       "code": "MSS",
       "label": "Trust Fund in Support of the Multinational Security Support (MSS) Mission in Haiti",
+      "note": null,
       "amount": 10829727,
       "basis": "directly_printed",
       "values": {
@@ -4769,6 +4968,7 @@
       "kind": "allocation",
       "code": "JTA",
       "label": "Trust Fund for the Millennium Assembly and the Millennium Summit of the United Nations",
+      "note": null,
       "amount": 208769,
       "basis": "directly_printed",
       "values": {
@@ -4801,6 +5001,7 @@
       "kind": "allocation",
       "code": "YRA",
       "label": "Trust Fund for Will and Gift to the UN",
+      "note": null,
       "amount": 33472,
       "basis": "directly_printed",
       "values": {
@@ -4833,6 +5034,7 @@
       "kind": "allocation",
       "code": "CLO",
       "label": "Trust Funds converted from IMIS to be closed",
+      "note": null,
       "amount": 28,
       "basis": "directly_printed",
       "values": {
@@ -4865,6 +5067,7 @@
       "kind": "allocation",
       "code": "UIC",
       "label": "Trust Fund for the United Nations Operation in Cote d'Ivoire",
+      "note": null,
       "amount": 12,
       "basis": "directly_printed",
       "values": {
@@ -4923,6 +5126,7 @@
       "kind": "allocation",
       "code": "LLS",
       "label": "Trust Fund in Support of Activities Undertaken by the Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (OHRLLS)",
+      "note": null,
       "amount": 1808919,
       "basis": "directly_printed",
       "values": {
@@ -4981,6 +5185,7 @@
       "kind": "allocation",
       "code": "KRT",
       "label": "UNAKRT - UN Assistance for the Khmer Rouge Trails",
+      "note": null,
       "amount": 2239635,
       "basis": "directly_printed",
       "values": {
@@ -5039,6 +5244,7 @@
       "kind": "allocation",
       "code": "CIB",
       "label": "Trust Fund in support of the construction and renovation of the United Nations compound in Baghdad",
+      "note": null,
       "amount": 31014298,
       "basis": "directly_printed",
       "values": {
@@ -5097,6 +5303,7 @@
       "kind": "allocation",
       "code": "JMS",
       "label": "Trust Fund for the AU-UN Joint Mediation Support Team (JMST) for Darfur",
+      "note": null,
       "amount": 399,
       "basis": "directly_printed",
       "values": {
@@ -5129,6 +5336,7 @@
       "kind": "allocation",
       "code": "LPD",
       "label": "Trust Fund to Support Lasting Peace in Darfur",
+      "note": null,
       "amount": 24,
       "basis": "directly_printed",
       "values": {
@@ -5187,6 +5395,7 @@
       "kind": "allocation",
       "code": "YJA",
       "label": "Trust Fund for Alliance of Civilizations",
+      "note": null,
       "amount": 4963431,
       "basis": "directly_printed",
       "values": {
@@ -5245,6 +5454,7 @@
       "kind": "allocation",
       "code": "TXB",
       "label": "Trust Fund for UNCTAD Technical Cooperation Projects",
+      "note": null,
       "amount": 54683601,
       "basis": "directly_printed",
       "values": {
@@ -5277,6 +5487,7 @@
       "kind": "allocation",
       "code": "OUN",
       "label": "Technical Cooperation Trust Fund for One UN projects implemented by UNCTAD",
+      "note": null,
       "amount": 1132229,
       "basis": "directly_printed",
       "values": {
@@ -5335,6 +5546,7 @@
       "kind": "allocation",
       "code": "DXA",
       "label": "Trust Fund for Disaster Reduction",
+      "note": null,
       "amount": 61389431,
       "basis": "directly_printed",
       "values": {
@@ -5367,6 +5579,7 @@
       "kind": "allocation",
       "code": "DLA",
       "label": "Sasakawa - UNDRO Disaster Prevention Award Endowment Fund",
+      "note": null,
       "amount": 111,
       "basis": "directly_printed",
       "values": {
@@ -5425,6 +5638,7 @@
       "kind": "allocation",
       "code": "CYP",
       "label": "Trust Fund to Support Peace and Security in Cyprus",
+      "note": null,
       "amount": 2,
       "basis": "directly_printed",
       "values": {
@@ -5483,6 +5697,7 @@
       "kind": "allocation",
       "code": "GKA",
       "label": "Global Compact Trust Fund",
+      "note": null,
       "amount": 9223419,
       "basis": "directly_printed",
       "values": {
@@ -5541,6 +5756,7 @@
       "kind": "allocation",
       "code": "DRA",
       "label": "United Nations Institute for Disarmament Research",
+      "note": null,
       "amount": 13466384,
       "basis": "directly_printed",
       "values": {
@@ -5599,6 +5815,7 @@
       "kind": "allocation",
       "code": "IIT",
       "label": "Trust Fund to Support the Iraq Investigative Team pursuant to rkp`o OPTV (OMNT)",
+      "note": null,
       "amount": 7131745,
       "basis": "directly_printed",
       "values": {
@@ -5657,6 +5874,7 @@
       "kind": "allocation",
       "code": "AMS",
       "label": "Trust Fund for the United Nations Integrated Transition Assistance Mission in Sudan",
+      "note": null,
       "amount": 40456,
       "basis": "directly_printed",
       "values": {
@@ -5677,6 +5895,98 @@
           "columnHeader": "2024",
           "tableTitle": "Schedule 1.52 — Financial performance",
           "pdfPage": 141,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
+    },
+    {
+      "id": "trust-fund-entity:UNMAPPED",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "UNMAPPED",
+      "label": "Unmapped Trust Funds",
+      "amount": 8524,
+      "basis": "derived_from_printed_fund_totals",
+      "values": {
+        "extrabudgetary": 8524
+      },
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Unmapped Trust Funds",
+        "acronym": "Unmapped Trust Funds",
+        "relationship": "unmapped"
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      }
+    },
+    {
+      "id": "trust-fund-entity:UNMAPPED:fund:ANC",
+      "parentId": "trust-fund-entity:UNMAPPED",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "ANC",
+      "label": "Trust Fund in Support of the United Nations Mission in Afghanistan UNAMA",
+      "note": "Entity mapping is missing; shown under Unmapped Trust Funds.",
+      "amount": 8782,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 8782
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+          "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+          "label": "ANC — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2024",
+          "tableTitle": "Schedule 1.1 — Financial performance",
+          "pdfPage": 13,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row"
+        }
+      ]
+    },
+    {
+      "id": "trust-fund-entity:UNMAPPED:fund:SWE",
+      "parentId": "trust-fund-entity:UNMAPPED",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": "SWE",
+      "label": "Trust Fund for Support of Joint Inspection Unit (JIU) Activities",
+      "note": "Entity mapping is missing; shown under Unmapped Trust Funds.",
+      "amount": -258,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": -258
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+        "url": "https://digitallibrary.un.org/record/4087012",
+        "rowLabel": "Total expenses",
+        "columnHeader": "2024"
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+          "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+          "label": "SWE — Expenditure",
+          "rowLabel": "Total expenses",
+          "columnHeader": "2024",
+          "tableTitle": "Schedule 3.33 — Financial performance",
+          "pdfPage": 263,
           "pdfPageScope": "row",
           "pageStatus": "extracted_pdf_row"
         }
@@ -5715,6 +6025,7 @@
       "kind": "allocation",
       "code": "MNA",
       "label": "Voluntary Trust Fund for Assistance in Mine Action",
+      "note": null,
       "amount": 42221949,
       "basis": "directly_printed",
       "values": {
@@ -5773,6 +6084,7 @@
       "kind": "allocation",
       "code": "KDB",
       "label": "Trust Fund to Support the Implementation of Community-based Assistance Projects of the Roma, Ashkali and Egyptian Communities in Kosovo",
+      "note": null,
       "amount": 0,
       "basis": "directly_printed",
       "values": {
@@ -5831,6 +6143,7 @@
       "kind": "allocation",
       "code": "RSS",
       "label": "Trust Fund for the United Nations Mission in South Sudan",
+      "note": null,
       "amount": 1395806,
       "basis": "directly_printed",
       "values": {
@@ -5889,6 +6202,7 @@
       "kind": "allocation",
       "code": "OAU",
       "label": "Trust Fund to support the rkl^r pursuant to Security Councils OOPM (OMNS) OPTU (OMNT) and OQRT (OMNV)",
+      "note": null,
       "amount": 656331,
       "basis": "directly_printed",
       "values": {
@@ -5947,6 +6261,7 @@
       "kind": "allocation",
       "code": "LSS",
       "label": "Trust Fund for UNOG Local Support Services",
+      "note": null,
       "amount": 2862862,
       "basis": "directly_printed",
       "values": {
@@ -5979,6 +6294,7 @@
       "kind": "allocation",
       "code": "LEA",
       "label": "Library Endowment Fund",
+      "note": null,
       "amount": 135,
       "basis": "directly_printed",
       "values": {
@@ -6037,6 +6353,7 @@
       "kind": "allocation",
       "code": "UNN",
       "label": "Trust Fund for UNON Extrabudgetary",
+      "note": null,
       "amount": 47787,
       "basis": "directly_printed",
       "values": {
@@ -6095,6 +6412,7 @@
       "kind": "allocation",
       "code": "QGA",
       "label": "United Nations Fund for International Partnership (UNFIP)",
+      "note": null,
       "amount": 23555783,
       "basis": "directly_printed",
       "values": {
@@ -6127,6 +6445,7 @@
       "kind": "allocation",
       "code": "UDF",
       "label": "UN Democracy Trust Fund",
+      "note": null,
       "amount": 6481148,
       "basis": "directly_printed",
       "values": {
@@ -6159,6 +6478,7 @@
       "kind": "allocation",
       "code": "QGB",
       "label": "Trust Fund for Partnerships",
+      "note": null,
       "amount": 2082711,
       "basis": "directly_printed",
       "values": {
@@ -6217,6 +6537,7 @@
       "kind": "allocation",
       "code": "RIA",
       "label": "United Nations Research Institute for Social Development",
+      "note": null,
       "amount": 3978121,
       "basis": "directly_printed",
       "values": {
@@ -6275,6 +6596,7 @@
       "kind": "allocation",
       "code": "ROD",
       "label": "Trust Fund in Support of the United Nations Register of Damage",
+      "note": null,
       "amount": 93178,
       "basis": "directly_printed",
       "values": {
@@ -6333,6 +6655,7 @@
       "kind": "allocation",
       "code": "PSL",
       "label": "Trust Fund in Support of Peace and Security in Libya",
+      "note": null,
       "amount": 61003,
       "basis": "directly_printed",
       "values": {
@@ -6391,6 +6714,7 @@
       "kind": "allocation",
       "code": "SOP",
       "label": "Trust Fund for Peacebuilding in Somalia",
+      "note": null,
       "amount": 762532,
       "basis": "directly_printed",
       "values": {
@@ -6449,6 +6773,7 @@
       "kind": "allocation",
       "code": "SVB",
       "label": "Trust Fund in Support of Victims of Sexual Exploitaion and Abuse",
+      "note": null,
       "amount": 463643,
       "basis": "directly_printed",
       "values": {

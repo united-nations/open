@@ -532,6 +532,40 @@ def quality_profile(
     }
 
 
+def extend_from_arwo(
+    crosswalk: pd.DataFrame, workbook: Path, facts: pd.DataFrame,
+    ppb_index: dict[str, dict[str, Any]],
+) -> pd.DataFrame:
+    """Resolve only previously missing mappings with unique exact-name evidence."""
+    import hashlib
+
+    result = crosswalk.copy()
+    if not workbook.exists():
+        return result
+    frame = pd.read_excel(workbook, sheet_name="Data_Raw_19-25")
+    frame = frame.loc[frame["SOURCE_TYPE"].eq("Voluntary") & frame["NOTE"].notna()].copy()
+    frame["normalized_fund_name"] = frame["NOTE"].map(normalize_fund_name)
+    frame["audited_entity_code"] = frame["ENTITY"].map(normalize_entity)
+    digest = hashlib.sha256(workbook.read_bytes()).hexdigest()
+    for index, fund in result.loc[~result["approved_for_aggregation"].astype(bool)].iterrows():
+        matches = frame.loc[frame["normalized_fund_name"].eq(normalize_fund_name(fund["fund_name"]))]
+        if matches.empty or matches["audited_entity_code"].nunique() != 1 or matches["PRIORITY_AREA"].nunique() != 1:
+            continue
+        evidence = evidence_fields(matches)
+        evidence.update(expense_fingerprint(fund["fund_code"], matches, facts))
+        evidence.update(ppb_match(evidence["audited_entity_code"], ppb_index))
+        evidence.update({
+            "mapping_status": "mapped", "approved_for_aggregation": True,
+            "mapping_method": "arwo_exact_normalized_name", "relation_type": "name_match",
+            "confidence": "high", "mapping_reason": "Exact fund name and unique entity in latest ARWO consolidated sheet.",
+            "mapping_workbook": workbook.name, "mapping_sheet": "Data_Raw_19-25",
+            "mapping_sha256": digest,
+        })
+        for key, value in evidence.items():
+            result.loc[index, key] = value
+    return result
+
+
 def write_outputs(
     output: Path, crosswalk: pd.DataFrame, profile: dict[str, Any]
 ) -> None:
@@ -560,6 +594,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--old-open", type=Path, default=DEFAULT_OLD_OPEN)
     parser.add_argument("--review", type=Path, default=DEFAULT_REVIEW)
     parser.add_argument("--ppb-entities", type=Path, default=DEFAULT_PPB_ENTITIES)
+    parser.add_argument("--arwo-workbook", type=Path, default=Path("data/internal/ARWO_2019-2025.xlsx"))
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
     return parser.parse_args()
 
@@ -573,6 +608,7 @@ def main() -> int:
     review = pd.read_csv(args.review)
     ppb_index = load_ppb_dimension(args.ppb_entities)
     crosswalk = build_crosswalk(funds, facts, voluntary, review, ppb_index)
+    crosswalk = extend_from_arwo(crosswalk, args.arwo_workbook, facts, ppb_index)
     profile = quality_profile(
         crosswalk,
         old_profile,

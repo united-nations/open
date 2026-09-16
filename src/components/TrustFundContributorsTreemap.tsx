@@ -20,33 +20,45 @@ import {
   useDeepLink,
 } from "@/hooks/useDeepLink";
 import { useYearRanges } from "@/lib/useYearRanges";
-import type { TrustFundContributor, TrustFundContributorsData } from "@/types";
+import type {
+  TrustFundContributor,
+  TrustFundContributorsData,
+  TrustFundFlow,
+} from "@/types";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-type ContributorGroup = "governments" | "other";
+type ContributorGroup = TrustFundFlow["group"];
+type ContributorTile = {
+  contributor: TrustFundContributor;
+  flow: TrustFundFlow;
+};
 
 const GROUP_STYLES: Record<
   ContributorGroup,
   { label: string; color: string; textColor: string }
 > = {
   governments: {
-    label: "Governments",
+    label: "Government",
     color: "#009edb",
     textColor: "#ffffff",
   },
   other: {
-    label: "Other contributors",
+    label: "Others",
     color: "#047857",
     textColor: "#ffffff",
   },
+  inter_organizational: {
+    label: "Inter-organizational arrangements",
+    color: "#4b7f82",
+    textColor: "#ffffff",
+  },
+  internal: {
+    label: "Internal transfers",
+    color: "#806491",
+    textColor: "#ffffff",
+  },
 };
-
-function groupOf(contributor: TrustFundContributor): ContributorGroup {
-  return contributor.counterparty_group === "Government"
-    ? "governments"
-    : "other";
-}
 
 const currency = sharedFormatBudget;
 
@@ -60,26 +72,29 @@ function ContributorTooltip({
   context: GroupedTreemapTooltipContext<
     ContributorGroup,
     string,
-    TrustFundContributor,
+    ContributorTile,
     never
   >;
 }) {
-  const contributor = context.leaf.data;
-  if (!contributor) return null;
+  const tile = context.leaf.data;
+  if (!tile) return null;
+  const { contributor, flow } = tile;
   return (
     <FinancialTooltip
       title={contributor.name}
       parents={[{ label: context.row.label, color: context.row.color }]}
       total={{
-        label: "Net recognized contributions",
-        value: currency(contributor.amount_usd),
+        label: "Net amount in this category",
+        value: currency(flow.amount_usd),
       }}
       notes={
-        <SourceReferenceLinks
-          references={contributor.destinations.flatMap(
-            (destination) => destination.supportingSources ?? [],
-          )}
-        />
+        <>
+          <p>
+            The sidebar combines this contributor’s funding across all
+            categories.
+          </p>
+          <SourceReferenceLinks references={flow.supportingSources ?? []} />
+        </>
       }
       actionHint="Click to explore details"
     />
@@ -149,40 +164,41 @@ export function TrustFundContributorsTreemap() {
     setSelectedName(contributor.name);
     replaceToSidebar("trust-fund-contributor", contributor.name);
   }, []);
-  const positiveContributors = useMemo(
+  const tiles = useMemo(
     () =>
-      current?.contributors.filter(
-        (contributor) => contributor.amount_usd > 0,
-      ) ?? [],
+      (current?.contributors ?? []).flatMap((contributor) =>
+        (contributor.flows ?? []).map((flow) => ({ contributor, flow })),
+      ),
     [current],
   );
   const rows = useMemo(() => {
     const result = (Object.keys(GROUP_STYLES) as ContributorGroup[]).map(
       (key) => {
-        const members = positiveContributors
-          .filter((contributor) => groupOf(contributor) === key)
+        const members = tiles
+          .filter((tile) => tile.flow.group === key && tile.flow.amount_usd > 0)
           .sort(
             (a, b) =>
-              b.amount_usd - a.amount_usd || a.name.localeCompare(b.name),
+              b.flow.amount_usd - a.flow.amount_usd ||
+              a.contributor.name.localeCompare(b.contributor.name),
           );
         return {
           key,
           label: GROUP_STYLES[key].label,
           color: GROUP_STYLES[key].color,
           data: key,
-          subgroups: members.map((contributor) => ({
-            key: contributor.name,
+          subgroups: members.map(({ contributor, flow }) => ({
+            key: `${key}:${contributor.name}`,
             label: contributor.name,
             labelVisibility: "tooltip-only" as const,
             data: contributor.name,
             leaves: [
               {
-                key: contributor.name,
+                key: `${key}:${contributor.name}`,
                 label: contributor.name,
-                value: contributor.amount_usd,
+                value: flow.amount_usd,
                 color: GROUP_STYLES[key].color,
                 textColor: GROUP_STYLES[key].textColor,
-                data: contributor,
+                data: { contributor, flow },
                 onActivate: () => open(contributor),
               },
             ],
@@ -190,7 +206,7 @@ export function TrustFundContributorsTreemap() {
         } satisfies GroupedTreemapRow<
           ContributorGroup,
           string,
-          TrustFundContributor,
+          ContributorTile,
           never
         >;
       },
@@ -202,15 +218,15 @@ export function TrustFundContributorsTreemap() {
           b.subgroups.reduce((sum, group) => sum + group.leaves[0].value, 0) -
           a.subgroups.reduce((sum, group) => sum + group.leaves[0].value, 0),
       );
-  }, [open, positiveContributors]);
+  }, [open, tiles]);
   const visibleTotal = rows
     .filter((row) => !hiddenGroups.includes(row.key))
     .flatMap((row) => row.subgroups.flatMap((group) => group.leaves))
     .filter((leaf) => matchesQuery(leaf.label, query))
     .reduce((sum, leaf) => sum + leaf.value, 0);
-  const nonPositiveCount =
-    current?.contributors.filter((contributor) => contributor.amount_usd <= 0)
-      .length ?? 0;
+  const nonPositiveCount = tiles.filter(
+    (tile) => tile.flow.amount_usd <= 0,
+  ).length;
 
   return (
     <div className="relative w-full">
@@ -220,15 +236,7 @@ export function TrustFundContributorsTreemap() {
       />
       {current && (
         <>
-          <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-600">
-            <span>
-              {currency(current.meta.contributor_total_usd)} named net ·{" "}
-              {(current.meta.named_row_completeness * 100).toFixed(2)}%
-              named-row reconciliation
-            </span>
-          </div>
-
-          <GroupedTreemap<ContributorGroup, string, TrustFundContributor, never>
+          <GroupedTreemap<ContributorGroup, string, ContributorTile, never>
             footer={
               <ChartFooter
                 details={
@@ -244,22 +252,27 @@ export function TrustFundContributorsTreemap() {
                       </a>
                     </p>
                     <p>
-                      Tile area is the signed net of named
-                      recognized-contribution rows; click a contributor to see
-                      its funds and reconstructed entity destinations.
+                      Tile area is the signed net of named contribution and
+                      transfer rows; click a contributor to see its funds and
+                      reconstructed entity destinations.
                       {nonPositiveCount > 0 &&
-                        ` ${nonPositiveCount} contributors with a zero or negative annual net are retained in the data but cannot be drawn as areas.`}
+                        ` ${nonPositiveCount} contributor-category amounts with a zero or negative annual net are retained in the data but cannot be drawn as areas.`}
                     </p>
                     <p>
-                      Named rows account for{" "}
-                      {(current.meta.named_row_completeness * 100).toFixed(2)}%
-                      of the printed fund totals on an absolute-residual basis.
-                      The unallocated net residual is{" "}
+                      Reconciliation compares extracted rows with reported
+                      totals for each fund and flow type. The match is{" "}
+                      {(current.meta.named_row_completeness * 100).toFixed(2)}%,
+                      calculated as 100% minus the sum of absolute differences
+                      divided by the sum of absolute reported totals. Unresolved
+                      differences may reflect extraction issues.
+                      Named contributors total{" "}
+                      {currency(current.meta.contributor_total_usd)} net. The
+                      unallocated net difference is{" "}
                       {currency(current.meta.unallocated_residual_usd)}; it is
-                      not distributed across contributors. Present-value and
-                      internal-fund adjustments are also excluded from tiles and
-                      retained separately in the export.
+                      not distributed across contributors. Accounting
+                      adjustments are retained separately in the export.
                     </p>
+                    <p>{current.meta.method_note}</p>
                     <p>
                       Entity attribution describes which Secretariat entity owns
                       the destination fund; it does not prove that a contributor

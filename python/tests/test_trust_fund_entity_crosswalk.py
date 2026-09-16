@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import sys
 import unittest
+import tempfile
+from unittest.mock import patch
 from pathlib import Path
 
 import pandas as pd
@@ -14,6 +16,30 @@ import trust_fund_entity_crosswalk as crosswalk
 
 
 class TrustFundEntityCrosswalkTests(unittest.TestCase):
+    def test_arwo_only_fills_unique_exact_missing_mappings(self) -> None:
+        existing = pd.DataFrame([
+            {"fund_code": "NEW", "fund_name": "New Fund", "approved_for_aggregation": False, "audited_entity_code": None},
+            {"fund_code": "AMB", "fund_name": "Ambiguous Fund", "approved_for_aggregation": False, "audited_entity_code": None},
+            {"fund_code": "OLD", "fund_name": "Old Fund", "approved_for_aggregation": True, "audited_entity_code": "KEEP"},
+        ])
+        rows = pd.DataFrame([
+            {"NOTE": name, "ENTITY": entity, "SOURCE_TYPE": "Voluntary", "PRIORITY_AREA": "P",
+             "PART_ID": "I", "PART_DESCRIPTION": "Part", "SECTION_ID": "1", "SECTION_DESCRIPTION": "Section", "YEAR": 2024, "AMOUNT": 10}
+            for name, entity in [("New Fund", "DPO"), ("Ambiguous Fund", "DPO"), ("Ambiguous Fund", "DESA"), ("Old Fund", "CHANGE")]
+        ])
+        facts = pd.DataFrame(columns=["fund_code", "statement_type", "line_item", "calendar_year", "period_year", "amount_usd"])
+        with tempfile.TemporaryDirectory() as directory:
+            workbook = Path(directory) / "arwo.xlsx"
+            self.assertTrue(crosswalk.extend_from_arwo(existing, workbook, facts, {}).equals(existing))
+            workbook.write_bytes(b"source fingerprint")
+            with patch.object(crosswalk.pd, "read_excel", return_value=rows):
+                result = crosswalk.extend_from_arwo(existing, workbook, facts, {}).set_index("fund_code")
+        self.assertTrue(result.loc["NEW", "approved_for_aggregation"])
+        self.assertEqual(result.loc["NEW", "audited_entity_code"], "DPO")
+        self.assertEqual(len(result.loc["NEW", "mapping_sha256"]), 64)
+        self.assertFalse(result.loc["AMB", "approved_for_aggregation"])
+        self.assertEqual(result.loc["OLD", "audited_entity_code"], "KEEP")
+
     def test_name_normalization_is_presentation_only(self) -> None:
         self.assertEqual(
             crosswalk.normalize_fund_name(" Trust Fund: A & B (UNHQ) "),

@@ -1,4 +1,5 @@
 "use client";
+import { TrustFundFlowBreakdown } from "@/components/TrustFundFlowBreakdown";
 import { Tooltip } from "@un-eosg/ui/components/tooltip";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
@@ -146,7 +147,7 @@ export function TrustFundContributorSidebar({
       const key = destination.entity_id ?? "unresolved";
       const current = grouped.get(key) ?? {
         entity_id: destination.entity_id,
-        entity_name: destination.entity_name ?? "Entity unresolved",
+        entity_name: destination.entity_name ?? "Unmapped Trust Funds",
         amount: 0,
         funds: [],
       };
@@ -172,7 +173,7 @@ export function TrustFundContributorSidebar({
         <FinancialDetailPanel
           title={contributor.name}
           titleId="trust-fund-contributor-title"
-          subtitle={`Recognized voluntary contributions · ${selection.year}`}
+          subtitle={`Contributions and transfers · ${selection.year}`}
           yearSelectorPlacement="header"
           yearSelector={{
             years,
@@ -205,7 +206,7 @@ export function TrustFundContributorSidebar({
           total={
             ready
               ? {
-                  label: "Net recognized amount",
+                  label: "Net contributions and transfers",
                   value: (
                     <Tooltip
                       interactive
@@ -237,7 +238,8 @@ export function TrustFundContributorSidebar({
                   {currency(contributor.negative_amount_usd)}.
                 </p>
               )}
-              <FinancialPanelSection heading="Recognized contributions over time">
+              <TrustFundFlowBreakdown flows={contributor.flows ?? []} />
+              <FinancialPanelSection heading="Contributions and transfers over time">
                 {trend === null ? (
                   <p role="status" className="text-sm text-gray-500">
                     Loading trend…
@@ -257,7 +259,7 @@ export function TrustFundContributorSidebar({
                     series={[
                       {
                         key: "contributions",
-                        label: "Net recognized contributions",
+                        label: "Net contributions and transfers",
                         color: "var(--color-un-blue)",
                       },
                     ]}
@@ -297,7 +299,8 @@ export function TrustFundContributorSidebar({
                           <div>
                             <p className="font-medium">{group.entity_name}</p>
                             <p>
-                              Recognized contributions: {currency(group.amount)}
+                              Contributions and transfers:{" "}
+                              {currency(group.amount)}
                             </p>
                             <SourceReferenceLinks
                               references={group.funds.flatMap(
@@ -334,7 +337,7 @@ export function TrustFundContributorSidebar({
                                     </p>
                                     <p>{group.entity_name}</p>
                                     <p>
-                                      Recognized contributions:{" "}
+                                      Contributions and transfers:{" "}
                                       {currency(fund.amount_usd)}
                                     </p>
                                     <SourceReferenceLinks
@@ -393,7 +396,7 @@ export function TrustFundContributorSidebar({
                       : [
                           {
                             ...meta.source,
-                            rowLabel: "Recognized voluntary contributions",
+                            rowLabel: "Contributions and transfers",
                             columnHeader: String(meta.year),
                           },
                         ]

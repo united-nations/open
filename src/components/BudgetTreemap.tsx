@@ -1085,11 +1085,15 @@ export function BudgetTreemap({
 
   // Resolve a pending deep link once the data is there.
   useEffect(() => {
-    if (pendingDeepLink && sidebarById[pendingDeepLink]?.amount > 0) {
+    if (
+      pendingDeepLink &&
+      sidebarById[pendingDeepLink] &&
+      (isTrustFund || sidebarById[pendingDeepLink].amount > 0)
+    ) {
       setSelectedId(pendingDeepLink);
       setPendingDeepLink(null);
     }
-  }, [pendingDeepLink, setPendingDeepLink, sidebarById]);
+  }, [pendingDeepLink, setPendingDeepLink, sidebarById, isTrustFund]);
 
   // A section, mission or component that the chosen year does not print has no
   // node: close the sidebar rather than leave the year before on screen.
@@ -1097,12 +1101,13 @@ export function BudgetTreemap({
     if (
       selectedId &&
       filteredData &&
-      (!sidebarById[selectedId] || sidebarById[selectedId].amount <= 0)
+      (!sidebarById[selectedId] ||
+        (!isTrustFund && sidebarById[selectedId].amount <= 0))
     ) {
       setSelectedId(null);
       clearSidebarHash();
     }
-  }, [selectedId, filteredData, sidebarById]);
+  }, [selectedId, filteredData, sidebarById, isTrustFund]);
 
   const { bands, drawnTotal } = useMemo(() => {
     const empty = { bands: [] as Band[], drawnTotal: 0 };
@@ -2015,10 +2020,10 @@ export function BudgetTreemap({
                                 node.tier === "detail" && node.amount <= 0,
                             ).length
                           }{" "}
-                          trust funds with zero or negative annual expenses
-                          remain in the data but are omitted because they cannot
-                          be drawn as areas. The displayed total is the sum of
-                          visible positive fund tiles.
+                          trust funds with zero or negative annual expenses are
+                          listed below the chart because they cannot be drawn as
+                          areas. The displayed total is the sum of visible
+                          positive fund tiles.
                         </p>
                       )}
                     {usesSharedTrustFundExpenses && meta.partial && (
@@ -2163,6 +2168,55 @@ export function BudgetTreemap({
           }
           sourceHeading="Source:"
         />
+
+        {usesSharedTrustFundExpenses &&
+          filteredData.nodes.some(
+            (item) => item.tier === "detail" && item.amount <= 0,
+          ) && (
+            <section
+              className="mt-4"
+              aria-label="Funds with zero or negative expenditure"
+            >
+              <h3 className="text-base font-semibold">
+                Funds with zero or negative expenditure
+              </h3>
+              <p className="mt-1 mb-2 text-sm">
+                These funds have no positive area in the treemap. Select a fund
+                to explore its details.
+              </p>
+              <div className="divide-y">
+                {filteredData.nodes
+                  .filter(
+                    (item) =>
+                      item.tier === "detail" &&
+                      item.amount <= 0 &&
+                      `${item.label} ${item.code}`
+                        .toLowerCase()
+                        .includes(searchQuery.trim().toLowerCase()),
+                  )
+                  .map((item) => (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => openSidebar(item.id)}
+                      className="flex w-full items-start justify-between gap-4 py-2 text-left text-sm hover:bg-gray-50"
+                    >
+                      <span>
+                        {item.label}
+                        <span className="block text-xs">
+                          {item.parentId
+                            ? sidebarById[item.parentId]?.label
+                            : "Unmapped Trust Funds"}
+                        </span>
+                      </span>
+                      <span className="shrink-0 tabular-nums">
+                        {formatBudget(item.amount)}
+                      </span>
+                    </button>
+                  ))}
+              </div>
+            </section>
+          )}
 
         {meta.scopeWarning &&
           !usesSharedProgrammeBudget &&

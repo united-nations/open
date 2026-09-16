@@ -4,7 +4,7 @@ The entity view uses current-period ``Total expenses``.  The contributor view
 uses named rows preceding the printed voluntary-contribution total that
 reconciles to the financial-performance statement.  Rows after that total can
 belong to a second transfer schedule on the same physical page and are not
-treated as contributions.
+treated as voluntary contributions; they are exported separately as transfers.
 """
 
 from __future__ import annotations
@@ -26,7 +26,19 @@ DEFAULT_OUTPUT = Path("public/data")
 
 REPO_URL = "https://github.com/united-nations/transparency"
 
+UNMAPPED_CODE = "UNMAPPED"
+UNMAPPED_NAME = "Unmapped Trust Funds"
+FLOW_LABELS = {
+    "voluntary_contribution": "Voluntary contributions",
+    "other_transfer_allocation_contributions": "Inter-agency contributions and transfers",
+    "other_transfer_allocation_internal_transfers": "Internal transfers",
+}
+
 COUNTERPARTY_ALIASES = {
+    "undp mptf": "UNDP Multi-Partner Trust Fund Office",
+    "undp multi-partner trust fund - mptf": "UNDP Multi-Partner Trust Fund Office",
+    "undp multi-partner trust fund mptf": "UNDP Multi-Partner Trust Fund Office",
+    "undp multi-partner trust fund": "UNDP Multi-Partner Trust Fund Office",
     "europena union": "European Union",
     "republic of korea": "Republic of Korea",
     "united states of america": "United States of America",
@@ -44,6 +56,7 @@ def compact(value: Any) -> str:
 
 def canonical_counterparty(value: str) -> str:
     name = compact(value)
+    name = re.sub(r"^(?:From/\(To\)|\(To\)/From|To/From)\s+", "", name, flags=re.I)
     return COUNTERPARTY_ALIASES.get(name.casefold(), name)
 
 
@@ -110,14 +123,15 @@ def row_references(
                 column = "Refunds, transfers and adjustments"
             else:
                 column = "Monetary + in-kind (calculated)"
+        flow_label = FLOW_LABELS.get(row.get("flow_type"), "Contributions and transfers")
         reference = {
             "symbol": source["symbol"],
             "url": source.get("pdf_final_url") or source.get("source_pdf_url")
             or source["landing_page_url"],
-            "label": f"{row['fund_code']} — {'Recognized contributions' if contributions else 'Expenditure'}",
+            "label": f"{row['fund_code']} — {flow_label if contributions else 'Expenditure'}",
             "rowLabel": compact(row["counterparty"] if contributions else row["reported_line_item"]),
             "columnHeader": column,
-            "tableTitle": f"Schedule {row['schedule_number']} — {'Voluntary contributions' if contributions else 'Financial performance'}",
+            "tableTitle": f"Schedule {row['schedule_number']} — {flow_label if contributions else 'Financial performance'}",
         }
         if pd.notna(row.get("page")):
             reference["pdfPage"] = int(row["page"])
@@ -136,6 +150,7 @@ def build_entity_export(
     crosswalk: pd.DataFrame,
     source: dict[str, Any],
     entity_names: dict[str, str],
+    funds: pd.DataFrame | None = None,
 ) -> dict[str, Any]:
     expenses = facts.loc[
         facts["calendar_year"].eq(year)
@@ -149,11 +164,19 @@ def build_entity_export(
         raise ValueError(f"Duplicate total-expense facts for {year}")
 
     joined = expenses.merge(crosswalk, on="fund_code", how="left", validate="1:1")
-    approved = joined["approved_for_aggregation"].fillna(False).astype(bool)
+    approved = joined["approved_for_aggregation"].eq(True)
     mapped = joined.loc[approved].copy()
     unmapped = joined.loc[~approved].copy()
     all_total = int(joined["amount_usd"].sum())
     mapped_total = int(mapped["amount_usd"].sum())
+
+    # Preserve every source fund, including codes absent from the crosswalk.
+    joined.loc[~approved, "audited_entity_code"] = UNMAPPED_CODE
+    joined.loc[~approved, "ppb_entity_name"] = UNMAPPED_NAME
+    joined.loc[~approved, "ppb_entity_acronym"] = UNMAPPED_NAME
+    if funds is not None:
+        joined["fund_name"] = joined["fund_name"].fillna(joined["fund_code"].map(funds.set_index("fund_code")["fund_name"]))
+    joined["fund_name"] = joined["fund_name"].fillna(joined["fund_code"])
 
     root_id = "trust-funds"
     part_id = "trust-funds~xb"
@@ -171,10 +194,10 @@ def build_entity_export(
             "tier": "whole",
             "kind": "whole",
             "code": None,
-            "label": "Mapped individual trust funds",
-            "amount": mapped_total,
+            "label": "Individual trust funds",
+            "amount": all_total,
             "basis": "derived_from_printed_fund_totals",
-            "values": {"extrabudgetary": mapped_total},
+            "values": {"extrabudgetary": all_total},
             "source": common_source,
         },
         {
@@ -184,9 +207,9 @@ def build_entity_export(
             "kind": "part",
             "code": "XB",
             "label": "Individual trust funds",
-            "amount": mapped_total,
+            "amount": all_total,
             "basis": "derived_from_printed_fund_totals",
-            "values": {"extrabudgetary": mapped_total},
+            "values": {"extrabudgetary": all_total},
             "source": common_source,
         },
         {
@@ -195,15 +218,15 @@ def build_entity_export(
             "tier": "section",
             "kind": "section",
             "code": "TF",
-            "label": "Mapped Secretariat entities",
-            "amount": mapped_total,
+            "label": "Secretariat entities and unmapped funds",
+            "amount": all_total,
             "basis": "derived_from_printed_fund_totals",
-            "values": {"extrabudgetary": mapped_total},
+            "values": {"extrabudgetary": all_total},
             "source": common_source,
         },
     ]
 
-    for code, group in mapped.groupby("audited_entity_code", sort=True):
+    for code, group in joined.groupby("audited_entity_code", sort=True):
         first = group.iloc[0]
         amount = int(group["amount_usd"].sum())
         entity_id = f"trust-fund-entity:{code}"
@@ -225,7 +248,7 @@ def build_entity_export(
                 "entity": {
                     "name": name,
                     "acronym": acronym,
-                    "relationship": "trust_fund_crosswalk",
+                    "relationship": "unmapped" if code == UNMAPPED_CODE else "trust_fund_crosswalk",
                 },
                 "source": common_source,
             }
@@ -240,6 +263,7 @@ def build_entity_export(
                     "kind": "allocation",
                     "code": fund.fund_code,
                     "label": fund.fund_name,
+                    "note": "Entity mapping is missing; shown under Unmapped Trust Funds." if code == UNMAPPED_CODE else None,
                     "amount": fund_amount,
                     "basis": "directly_printed",
                     "values": {"extrabudgetary": fund_amount},
@@ -248,7 +272,7 @@ def build_entity_export(
                 }
             )
 
-    if sum(node["amount"] for node in nodes if node["parentId"] == section_id) != mapped_total:
+    if sum(node["amount"] for node in nodes if node["parentId"] == section_id) != all_total:
         raise ValueError(f"Entity totals do not reconcile for {year}")
 
     return {
@@ -261,11 +285,12 @@ def build_entity_export(
             "year": year,
             "fiscalYear": str(year),
             "currency": "USD",
-            "total": mapped_total,
-            "scopeLabel": "Current-period expenses of trust funds with an approved entity crosswalk",
+            "total": all_total,
+            "scopeLabel": "Current-period expenses of all funds in the Schedule of Individual Trust Funds",
             "scopeWarning": (
                 "This is gross fund-level accounting and is not additive to PPB or consolidated "
-                "Secretariat expenditure. Entity assignments reconstruct the old open-data mapping."
+                "Secretariat expenditure. Funds without a verified entity assignment are shown under "
+                "Unmapped Trust Funds; this is a display group, not a UN entity."
             ),
             "fundingSources": ["extrabudgetary"],
             "fundingLabels": {"extrabudgetary": "Individual trust funds"},
@@ -301,7 +326,7 @@ def selected_contribution_rows(
         statements["calendar_year"].eq(year)
         & statements["period_year"].eq(year)
         & statements["statement_type"].eq("financial_performance")
-        & statements["line_item"].eq("Voluntary contributions"),
+        & statements["line_item"].isin(["Voluntary contributions", "Voluntary contribution"]),
         ["fund_code", "amount_usd"],
     ].copy()
     if statement.duplicated("fund_code").any():
@@ -352,6 +377,70 @@ def selected_contribution_rows(
     )
 
 
+def selected_funding_rows(
+    year: int, flows: pd.DataFrame, statements: pd.DataFrame
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Keep disjoint voluntary and transfer rows; exclude balances and subtotals.
+
+    Some continuation pages are parsed as voluntary tables throughout. Rows
+    after their statement-matching voluntary total belong to transfer schedules.
+    Their original page/row provenance and signed printed totals are retained.
+    Unexplained reconciliation residuals are never assigned to a counterparty.
+    """
+    voluntary, reconciliation = selected_contribution_rows(year, flows, statements)
+    reconciliation["flow_type"] = "voluntary_contribution"
+    keys = ["fund_code", "page", "source_y", "source_row_index"]
+    selected_keys = set(map(tuple, voluntary[keys].to_numpy()))
+    annual = flows.loc[flows["calendar_year"].eq(year)].copy()
+    transfers = annual.loc[
+        annual["flow_type"].isin(FLOW_LABELS)
+        & ~annual["is_total"].astype(bool)
+        & ~annual[keys].apply(tuple, axis=1).isin(selected_keys)
+    ].copy()
+    internal = transfers["flow_type"].eq("other_transfer_allocation_internal_transfers") | transfers["counterparty"].str.match(
+        r"(?i)^(?:from/\(to\)|\(to\)/from|to/from)"
+    )
+    transfers["flow_type"] = "other_transfer_allocation_contributions"
+    transfers.loc[internal, "flow_type"] = "other_transfer_allocation_internal_transfers"
+    transfers["effective_amount_usd"] = transfers.apply(effective_flow_amount, axis=1)
+    facts = statements.loc[
+        statements["calendar_year"].eq(year)
+        & statements["period_year"].eq(year)
+        & statements["statement_type"].eq("financial_performance")
+        & statements["line_item"].eq("Other transfers and allocations")
+    ]
+    if facts.duplicated("fund_code").any():
+        raise ValueError(f"Duplicate transfer facts for {year}")
+    named = transfers.groupby("fund_code")["effective_amount_usd"].sum()
+    if set(named.index) - set(facts["fund_code"]):
+        raise ValueError(f"Transfers without a financial-performance statement for {year}")
+    transfer_reconciliation = pd.DataFrame([
+        {"fund_code": row.fund_code, "flow_type": "other_transfers_and_allocations",
+         "statement_amount_usd": int(row.amount_usd),
+         "named_rows_amount_usd": int(named.get(row.fund_code, 0)),
+         "residual_usd": int(row.amount_usd) - int(named.get(row.fund_code, 0))}
+        for row in facts.itertuples()
+    ])
+    return pd.concat([voluntary, transfers], ignore_index=True), pd.concat(
+        [reconciliation, transfer_reconciliation], ignore_index=True
+    )
+
+
+def flow_breakdown(rows: pd.DataFrame, source: dict[str, Any], year: int) -> list[dict[str, Any]]:
+    groups = [
+        ("governments", "Government contributions", rows["flow_type"].eq("voluntary_contribution") & rows["counterparty_group"].eq("Government")),
+        ("other", "Other voluntary contributions", rows["flow_type"].eq("voluntary_contribution") & ~rows["counterparty_group"].eq("Government")),
+        ("inter_organizational", "Inter-organizational arrangements", rows["flow_type"].eq("other_transfer_allocation_contributions")),
+        ("internal", "Internal transfers", rows["flow_type"].eq("other_transfer_allocation_internal_transfers")),
+    ]
+    return [
+        {"type": rows.loc[mask, "flow_type"].iloc[0], "group": key, "label": label,
+         "amount_usd": int(rows.loc[mask, "effective_amount_usd"].sum()),
+         "supportingSources": row_references(rows.loc[mask], source, year, contributions=True)}
+        for key, label, mask in groups if mask.any()
+    ]
+
+
 def build_contributor_export(
     year: int,
     flows: pd.DataFrame,
@@ -361,10 +450,12 @@ def build_contributor_export(
     source: dict[str, Any],
     entity_names: dict[str, str],
 ) -> dict[str, Any]:
-    rows, reconciliation = selected_contribution_rows(year, flows, statements)
+    rows, reconciliation = selected_funding_rows(year, flows, statements)
     fund_lookup = funds.set_index("fund_code")["fund_name"].to_dict()
     crosswalk_lookup = crosswalk.set_index("fund_code")
-    rows["is_adjustment"] = rows["counterparty"].map(is_adjustment)
+    rows["is_adjustment"] = rows["counterparty"].str.contains("present value adjustment", case=False) | (
+        rows["flow_type"].eq("voluntary_contribution") & rows["counterparty"].map(is_adjustment)
+    )
     contributor_rows = rows.loc[~rows["is_adjustment"]].copy()
     adjustment_rows = rows.loc[rows["is_adjustment"]].copy()
     contributor_rows["name"] = contributor_rows["counterparty"].map(
@@ -377,21 +468,23 @@ def build_contributor_export(
         destinations: list[dict[str, Any]] = []
         for fund_code, destination in contributor.groupby("fund_code", sort=True):
             fund_amount = int(destination["effective_amount_usd"].sum())
-            mapping = crosswalk_lookup.loc[fund_code]
-            approved = bool(mapping["approved_for_aggregation"])
+            mapping = crosswalk_lookup.loc[fund_code] if fund_code in crosswalk_lookup.index else pd.Series(dtype=object)
+            approved = pd.notna(mapping.get("approved_for_aggregation")) and bool(mapping.get("approved_for_aggregation", False))
             destinations.append(
                 {
                     "fund_code": fund_code,
                     "fund_name": fund_lookup[fund_code],
-                    "entity_code": mapping["audited_entity_code"] if approved else None,
+                    "entity_code": mapping["audited_entity_code"] if approved else UNMAPPED_CODE,
                     "entity_name": (
-                        entity_name(mapping, entity_names) if approved else None
+                        entity_name(mapping, entity_names) if approved else UNMAPPED_NAME
                     ),
                     "entity_id": (
                         f"trust-fund-entity:{mapping['audited_entity_code']}"
                         if approved
-                        else None
+                        else f"trust-fund-entity:{UNMAPPED_CODE}"
                     ),
+                    "mapping_status": "mapped" if approved else "unresolved",
+                    "flows": flow_breakdown(destination, source, year),
                     "amount_usd": fund_amount,
                     "supportingSources": row_references(destination, source, year, contributions=True),
                 }
@@ -400,6 +493,7 @@ def build_contributor_export(
         contributors.append(
             {
                 "name": name,
+                "flows": flow_breakdown(contributor, source, year),
                 "counterparty_group": groups[0] if len(groups) == 1 else "Mixed",
                 "amount_usd": amount,
                 "positive_amount_usd": int(
@@ -442,8 +536,8 @@ def build_contributor_export(
         if absolute_statement
         else 1.0
     )
-    unresolved_codes = set(
-        crosswalk.loc[~crosswalk["approved_for_aggregation"].astype(bool), "fund_code"]
+    unresolved_codes = set(fund_lookup) - set(
+        crosswalk.loc[crosswalk["approved_for_aggregation"].astype(bool), "fund_code"]
     )
     unresolved_total = int(
         contributor_rows.loc[
@@ -456,7 +550,7 @@ def build_contributor_export(
         "meta": {
             "year": year,
             "currency": "USD",
-            "measure": "Recognized voluntary contributions",
+            "measure": "Contributions and transfers",
             "statement_total_usd": statement_total,
             "named_rows_total_usd": named_total,
             "contributor_total_usd": contributor_total,
@@ -469,9 +563,12 @@ def build_contributor_export(
                 "url": source["landing_page_url"],
             },
             "method_note": (
-                "Named contribution rows are retained only up to the printed total that "
-                "reconciles to the fund's financial-performance statement. Present-value "
-                "and internal-fund adjustments are reported separately."
+                "Includes recognized voluntary contributions, inter-agency contributions and transfers "
+                "(including UNDP MPTF), and internal transfers, net of reported refunds and adjustments. "
+                "Receivable balances are excluded. Present-value and voluntary-schedule internal "
+                "adjustments are reported separately. These are gross fund-level flows, not cash "
+                "receipts or new external funding: transfers between funds can count the same money "
+                "again. Unallocated extraction residuals are not assigned to contributors."
             ),
             "mapping_note": (
                 "Entity destinations are reconstructed organizational assignments for the "
@@ -519,7 +616,7 @@ def export_all(
         source = source_for_year(manifest, year)
         json_dump(
             output / f"budget-trust-funds-{year}.json",
-            build_entity_export(year, facts, crosswalk, source, entity_names),
+            build_entity_export(year, facts, crosswalk, source, entity_names, funds),
         )
         json_dump(
             output / f"trust-fund-contributors-{year}.json",

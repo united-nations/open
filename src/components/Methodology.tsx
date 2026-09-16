@@ -295,9 +295,11 @@ export function TrustFundsMethodologyNotes() {
   return (
     <p>
       Expenses come from audited Schedules of Individual Trust Funds. Entity
-      grouping uses a reconstructed historical crosswalk; it identifies the
-      entity responsible for a fund, not a direct link between a contributor and
-      a particular expense.
+      grouping uses a reconstructed historical crosswalk, supplemented by exact
+      fund-name matches in newer ARWO workbooks. Funds with missing mappings
+      appear under “Unmapped Trust Funds”, a display group rather than a UN
+      entity. The grouping identifies the entity responsible for a fund, not a
+      direct link between a contributor and a particular expense.
     </p>
   );
 }

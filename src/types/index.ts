@@ -182,7 +182,17 @@ export interface PeacekeepingContributorsData {
   contributors: PeacekeepingContributor[];
 }
 
+export interface TrustFundFlow {
+  group: "governments" | "other" | "inter_organizational" | "internal";
+  supportingSources?: BudgetNodeSource[];
+  type: string;
+  label: string;
+  amount_usd: number;
+}
+
 export interface TrustFundDestination {
+  flows?: TrustFundFlow[];
+  mapping_status?: "mapped" | "unresolved";
   supportingSources?: BudgetNodeSource[];
   fund_code: string;
   fund_name: string;
@@ -193,6 +203,7 @@ export interface TrustFundDestination {
 }
 
 export interface TrustFundContributor {
+  flows?: TrustFundFlow[];
   name: string;
   counterparty_group: "Government" | "Others" | "Mixed";
   amount_usd: number;
@@ -206,7 +217,7 @@ export interface TrustFundContributorsData {
   meta: {
     year: number;
     currency: "USD";
-    measure: "Recognized voluntary contributions";
+    measure: "Contributions and transfers";
     statement_total_usd: number;
     named_rows_total_usd: number;
     contributor_total_usd: number;

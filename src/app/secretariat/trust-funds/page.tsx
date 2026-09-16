@@ -11,7 +11,7 @@ import { PageHeading } from "@/components/PageHeading";
 export const metadata: Metadata = {
   title: "UN Secretariat Trust Funds",
   description:
-    "Explore individual UN Secretariat trust funds, their expenses and recognized voluntary contributions.",
+    "Explore individual UN Secretariat trust funds, their expenditure, contributions and transfers.",
 };
 
 export default function TrustFundsPage() {
@@ -28,7 +28,7 @@ export default function TrustFundsPage() {
       <PageHeading
         id="trust-fund-spending"
         title="How are the trust funds spending?"
-        description="Explore individual trust-fund expenses grouped by their mapped Secretariat entity."
+        description="Explore individual trust-fund expenses grouped by Secretariat entity, with unmatched funds shown under Unmapped Trust Funds."
       />
       <PageBody>
         <BudgetTreemap

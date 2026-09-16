@@ -23,7 +23,7 @@ export default function ContributorsPage() {
     >
       <PageHeading
         title="Who contributes to UN trust funds?"
-        description="Explore recognized contributions to UN Secretariat trust funds, by contributor and the entities responsible for the funds."
+        description="Explore contributions and transfers to UN Secretariat trust funds, by contributor and the entities responsible for the funds."
       />
       <section id="trust-fund-contributors" aria-label="Contributors">
         <PageBody>
