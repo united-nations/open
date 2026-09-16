@@ -4,11 +4,11 @@
     "currency": "USD",
     "measure": "Contributions and transfers",
     "statement_total_usd": 3152837231,
-    "named_rows_total_usd": 3132897116,
-    "contributor_total_usd": 3105683254,
+    "named_rows_total_usd": 3152880451,
+    "contributor_total_usd": 3125666589,
     "adjustment_total_usd": 27213862,
-    "unallocated_residual_usd": 19940115,
-    "named_row_completeness": 0.993643,
+    "unallocated_residual_usd": -43220,
+    "named_row_completeness": 0.999986,
     "unresolved_entity_amount_usd": 288385,
     "source": {
       "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
@@ -32048,6 +32048,753 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 1.32.1 — Voluntary contributions",
               "pdfPage": 91,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Other contributors (not individually identified)",
+      "flows": [
+        {
+          "type": "voluntary_contribution",
+          "group": "other",
+          "label": "Other voluntary contributions",
+          "amount_usd": 19943057,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "CER — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
+              "pdfPage": 297,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "CHA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.3.1 — Voluntary contributions",
+              "pdfPage": 300,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "CPK — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 1.4.1 — Voluntary contributions",
+              "pdfPage": 22,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "CSA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.5.1 — Voluntary contributions",
+              "pdfPage": 195,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "DDN — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.6.1 — Voluntary contributions",
+              "pdfPage": 309,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "DSA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 6.22.1 — Voluntary contributions",
+              "pdfPage": 403,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "HCA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.9.1 — Voluntary contributions",
+              "pdfPage": 318,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "HDM — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.15.1 — Voluntary contributions",
+              "pdfPage": 213,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "LLA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 1.20.1 — Voluntary contributions",
+              "pdfPage": 60,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 265,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "WKA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.36.1 — Voluntary contributions",
+              "pdfPage": 271,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "type": "other_transfer_allocation_contributions",
+          "group": "inter_organizational",
+          "label": "Inter-organizational arrangements",
+          "amount_usd": 40278,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "DDN — Inter-agency contributions and transfers",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.6.1 — Inter-agency contributions and transfers",
+              "pdfPage": 309,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "TXB — Inter-agency contributions and transfers",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Inter-agency contributions and transfers",
+              "pdfPage": 265,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "WKA — Inter-agency contributions and transfers",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.36.1 — Inter-agency contributions and transfers",
+              "pdfPage": 271,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        }
+      ],
+      "counterparty_group": "Others",
+      "amount_usd": 19983335,
+      "positive_amount_usd": 20053972,
+      "negative_amount_usd": -70637,
+      "reported_names": [
+        "Other donors"
+      ],
+      "destinations": [
+        {
+          "fund_code": "DSA",
+          "fund_name": "Special Purpose Trust Fund for the Reinvigorated Resident Coordinator (RC) System",
+          "entity_code": "DCO",
+          "entity_name": "Resident coordinator system",
+          "entity_id": "trust-fund-entity:DCO",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 19430335,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                  "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                  "label": "DSA — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 6.22.1 — Voluntary contributions",
+                  "pdfPage": 403,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 19430335,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "DSA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 6.22.1 — Voluntary contributions",
+              "pdfPage": 403,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "HDM",
+          "fund_name": "ECA as Executing Agency for Miscellaneous Technical Co-operation Funds",
+          "entity_code": "ECA",
+          "entity_name": "Economic Commission for Africa",
+          "entity_id": "trust-fund-entity:ECA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 237624,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                  "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                  "label": "HDM — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.15.1 — Voluntary contributions",
+                  "pdfPage": 213,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 237624,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "HDM — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.15.1 — Voluntary contributions",
+              "pdfPage": 213,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "HCA",
+          "fund_name": "Trust Fund for the Support to the Activities of the Centre for Human Rights",
+          "entity_code": "OHCHR",
+          "entity_name": "Office of the United Nations High Commissioner for Human Rights",
+          "entity_id": "trust-fund-entity:OHCHR",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 97149,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                  "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                  "label": "HCA — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 4.9.1 — Voluntary contributions",
+                  "pdfPage": 318,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 97149,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "HCA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.9.1 — Voluntary contributions",
+              "pdfPage": 318,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "TXB",
+          "fund_name": "Trust Fund for UNCTAD Technical Cooperation Projects",
+          "entity_code": "UNCTAD",
+          "entity_name": "United Nations Conference on Trade and Development",
+          "entity_id": "trust-fund-entity:UNCTAD",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 1100,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                  "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                  "label": "TXB — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+                  "pdfPage": 265,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            },
+            {
+              "type": "other_transfer_allocation_contributions",
+              "group": "inter_organizational",
+              "label": "Inter-organizational arrangements",
+              "amount_usd": 96000,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                  "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                  "label": "TXB — Inter-agency contributions and transfers",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.34.1 — Inter-agency contributions and transfers",
+                  "pdfPage": 265,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 97100,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 265,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "TXB — Inter-agency contributions and transfers",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Inter-agency contributions and transfers",
+              "pdfPage": 265,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "DDN",
+          "fund_name": "Trust Fund for the Strengthening of the Office of the Emergency Relief Coordinator",
+          "entity_code": "OCHA",
+          "entity_name": "Office for the Coordination of Humanitarian Affairs",
+          "entity_id": "trust-fund-entity:OCHA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 79642,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                  "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                  "label": "DDN — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 4.6.1 — Voluntary contributions",
+                  "pdfPage": 309,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            },
+            {
+              "type": "other_transfer_allocation_contributions",
+              "group": "inter_organizational",
+              "label": "Inter-organizational arrangements",
+              "amount_usd": 10300,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                  "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                  "label": "DDN — Inter-agency contributions and transfers",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 4.6.1 — Inter-agency contributions and transfers",
+                  "pdfPage": 309,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 89942,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "DDN — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.6.1 — Voluntary contributions",
+              "pdfPage": 309,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "DDN — Inter-agency contributions and transfers",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.6.1 — Inter-agency contributions and transfers",
+              "pdfPage": 309,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "CER",
+          "fund_name": "Central Emergency Response Fund",
+          "entity_code": "OCHA",
+          "entity_name": "Office for the Coordination of Humanitarian Affairs",
+          "entity_id": "trust-fund-entity:OCHA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 20000,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                  "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                  "label": "CER — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
+                  "pdfPage": 297,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 20000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "CER — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
+              "pdfPage": 297,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "CSA",
+          "fund_name": "Trust Fund for Case Studies on the Functioning of the Operational Activities for Development of the United Nations System",
+          "entity_code": "DESA",
+          "entity_name": "Department of Economic and Social Affairs",
+          "entity_id": "trust-fund-entity:DESA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 10887,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                  "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                  "label": "CSA — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.5.1 — Voluntary contributions",
+                  "pdfPage": 195,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 10887,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "CSA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.5.1 — Voluntary contributions",
+              "pdfPage": 195,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "LLA",
+          "fund_name": "Trust Fund in Support of the Department of Peacekeeping Operations",
+          "entity_code": "DPO",
+          "entity_name": "Department of Peace Operations",
+          "entity_id": "trust-fund-entity:DPO",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 4615,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                  "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                  "label": "LLA — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 1.20.1 — Voluntary contributions",
+                  "pdfPage": 60,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 4615,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "LLA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 1.20.1 — Voluntary contributions",
+              "pdfPage": 60,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "CHA",
+          "fund_name": "United Nations Voluntary Fund for Victims of Torture",
+          "entity_code": "OHCHR",
+          "entity_name": "Office of the United Nations High Commissioner for Human Rights",
+          "entity_id": "trust-fund-entity:OHCHR",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 298,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                  "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                  "label": "CHA — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 4.3.1 — Voluntary contributions",
+                  "pdfPage": 300,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 298,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "CHA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.3.1 — Voluntary contributions",
+              "pdfPage": 300,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "WKA",
+          "fund_name": "Trust Fund to Support the Work of the High-level Political Forum on Sustainable Development",
+          "entity_code": "DESA",
+          "entity_name": "Department of Economic and Social Affairs",
+          "entity_id": "trust-fund-entity:DESA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 66022,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                  "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                  "label": "WKA — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.36.1 — Voluntary contributions",
+                  "pdfPage": 271,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            },
+            {
+              "type": "other_transfer_allocation_contributions",
+              "group": "inter_organizational",
+              "label": "Inter-organizational arrangements",
+              "amount_usd": -66022,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                  "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                  "label": "WKA — Inter-agency contributions and transfers",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.36.1 — Inter-agency contributions and transfers",
+                  "pdfPage": 271,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 0,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "WKA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.36.1 — Voluntary contributions",
+              "pdfPage": 271,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "WKA — Inter-agency contributions and transfers",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.36.1 — Inter-agency contributions and transfers",
+              "pdfPage": 271,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "CPK",
+          "fund_name": "Trust Fund in Support Peacekeeping Activities",
+          "entity_code": "DPO",
+          "entity_name": "Department of Peace Operations",
+          "entity_id": "trust-fund-entity:DPO",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": -4615,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                  "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                  "label": "CPK — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 1.4.1 — Voluntary contributions",
+                  "pdfPage": 22,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": -4615,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "CPK — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 1.4.1 — Voluntary contributions",
+              "pdfPage": 22,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -91336,8 +92083,8 @@
     {
       "fund_code": "CER",
       "statement_amount_usd": 251048887,
-      "named_rows_amount_usd": 251028887,
-      "residual_usd": 20000,
+      "named_rows_amount_usd": 251048887,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -91350,8 +92097,8 @@
     {
       "fund_code": "CHA",
       "statement_amount_usd": 10555741,
-      "named_rows_amount_usd": 10555443,
-      "residual_usd": 298,
+      "named_rows_amount_usd": 10555741,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -91406,15 +92153,15 @@
     {
       "fund_code": "CPK",
       "statement_amount_usd": -89838,
-      "named_rows_amount_usd": -85223,
-      "residual_usd": -4615,
+      "named_rows_amount_usd": -89838,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
       "fund_code": "CSA",
       "statement_amount_usd": 12475,
-      "named_rows_amount_usd": 1588,
-      "residual_usd": 10887,
+      "named_rows_amount_usd": 12475,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -91455,8 +92202,8 @@
     {
       "fund_code": "DDN",
       "statement_amount_usd": 1643872511,
-      "named_rows_amount_usd": 1643792869,
-      "residual_usd": 79642,
+      "named_rows_amount_usd": 1643872511,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -91504,8 +92251,8 @@
     {
       "fund_code": "DSA",
       "statement_amount_usd": 152907214,
-      "named_rows_amount_usd": 133476879,
-      "residual_usd": 19430335,
+      "named_rows_amount_usd": 152907214,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -91630,8 +92377,8 @@
     {
       "fund_code": "HCA",
       "statement_amount_usd": 168097449,
-      "named_rows_amount_usd": 168000300,
-      "residual_usd": 97149,
+      "named_rows_amount_usd": 168097449,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -91644,8 +92391,8 @@
     {
       "fund_code": "HDM",
       "statement_amount_usd": 8123226,
-      "named_rows_amount_usd": 7885602,
-      "residual_usd": 237624,
+      "named_rows_amount_usd": 8123226,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -91798,8 +92545,8 @@
     {
       "fund_code": "LLA",
       "statement_amount_usd": 28700411,
-      "named_rows_amount_usd": 28695796,
-      "residual_usd": 4615,
+      "named_rows_amount_usd": 28700411,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -92155,8 +92902,8 @@
     {
       "fund_code": "TXB",
       "statement_amount_usd": 49669929,
-      "named_rows_amount_usd": 49668829,
-      "residual_usd": 1100,
+      "named_rows_amount_usd": 49669929,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -92218,8 +92965,8 @@
     {
       "fund_code": "WKA",
       "statement_amount_usd": 6874000,
-      "named_rows_amount_usd": 6807978,
-      "residual_usd": 66022,
+      "named_rows_amount_usd": 6874000,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -92456,8 +93203,8 @@
     {
       "fund_code": "DDN",
       "statement_amount_usd": 157768666,
-      "named_rows_amount_usd": 157758366,
-      "residual_usd": 10300,
+      "named_rows_amount_usd": 157768666,
+      "residual_usd": 0,
       "flow_type": "other_transfers_and_allocations"
     },
     {
@@ -93156,8 +93903,8 @@
     {
       "fund_code": "TXB",
       "statement_amount_usd": 5424911,
-      "named_rows_amount_usd": 5328911,
-      "residual_usd": 96000,
+      "named_rows_amount_usd": 5424911,
+      "residual_usd": 0,
       "flow_type": "other_transfers_and_allocations"
     },
     {
@@ -93219,8 +93966,8 @@
     {
       "fund_code": "WKA",
       "statement_amount_usd": -66022,
-      "named_rows_amount_usd": 0,
-      "residual_usd": -66022,
+      "named_rows_amount_usd": -66022,
+      "residual_usd": 0,
       "flow_type": "other_transfers_and_allocations"
     },
     {

@@ -4,11 +4,11 @@
     "currency": "USD",
     "measure": "Contributions and transfers",
     "statement_total_usd": 3195338700,
-    "named_rows_total_usd": 3193830363,
-    "contributor_total_usd": 3178661773,
-    "adjustment_total_usd": 15168590,
-    "unallocated_residual_usd": 1508337,
-    "named_row_completeness": 0.998005,
+    "named_rows_total_usd": 3195338703,
+    "contributor_total_usd": 3180140264,
+    "adjustment_total_usd": 15198439,
+    "unallocated_residual_usd": -3,
+    "named_row_completeness": 1.0,
     "unresolved_entity_amount_usd": 1900904,
     "source": {
       "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
@@ -58068,6 +58068,1171 @@
       ]
     },
     {
+      "name": "Other contributors (not individually identified)",
+      "flows": [
+        {
+          "type": "voluntary_contribution",
+          "group": "other",
+          "label": "Other voluntary contributions",
+          "amount_usd": 1490420,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "BKT — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.2.1 — Voluntary contributions",
+              "pdfPage": 188,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "BTS — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.4.1 — Voluntary contributions",
+              "pdfPage": 195,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "CHA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.3.1 — Voluntary contributions",
+              "pdfPage": 303,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "DDN — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.6.1 — Voluntary contributions",
+              "pdfPage": 311,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "DGA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 1.11.1 — Voluntary contributions",
+              "pdfPage": 42,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "DRA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 1.14.1 — Voluntary contributions",
+              "pdfPage": 50,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "DSA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 6.22.1 — Voluntary contributions",
+              "pdfPage": 405,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "ESA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 5.2.1 — Voluntary contributions",
+              "pdfPage": 347,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "GBA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.13.1 — Voluntary contributions",
+              "pdfPage": 211,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "HCA — Voluntary contributions",
+              "rowLabel": "Other Donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.9 — Voluntary contributions",
+              "pdfPage": 321,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "HDM — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.15.1 — Voluntary contributions",
+              "pdfPage": 217,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "IDP — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+              "pdfPage": 290,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "JPO — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.20.1 — Voluntary contributions",
+              "pdfPage": 229,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "KSA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.22.1 — Voluntary contributions",
+              "pdfPage": 235,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "LJA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 6.11.1 — Voluntary contributions",
+              "pdfPage": 380,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "LLS — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.24.1 — Voluntary contributions",
+              "pdfPage": 240,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "LMR — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 6.25.1 — Voluntary contributions",
+              "pdfPage": 411,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "PYA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 1.29.1 — Voluntary contributions",
+              "pdfPage": 84,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "SZA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 1.38.1 — Voluntary contributions",
+              "pdfPage": 107,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "WVZ — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.38.1 — Voluntary contributions",
+              "pdfPage": 280,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "type": "other_transfer_allocation_internal_transfers",
+          "group": "internal",
+          "label": "Internal transfers",
+          "amount_usd": -11929,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "KRT — Internal transfers",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.21.1 — Internal transfers",
+              "pdfPage": 232,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        }
+      ],
+      "counterparty_group": "Others",
+      "amount_usd": 1478491,
+      "positive_amount_usd": 3970526,
+      "negative_amount_usd": -2492035,
+      "reported_names": [
+        "Other Donors",
+        "Other donors"
+      ],
+      "destinations": [
+        {
+          "fund_code": "DSA",
+          "fund_name": "Special Purpose Trust Fund for the Reinvigorated Resident Coordinator (RC) System",
+          "entity_code": "DCO",
+          "entity_name": "Resident coordinator system",
+          "entity_id": "trust-fund-entity:DCO",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 2486433,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "DSA — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 6.22.1 — Voluntary contributions",
+                  "pdfPage": 405,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 2486433,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "DSA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 6.22.1 — Voluntary contributions",
+              "pdfPage": 405,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "BKT",
+          "fund_name": "ESCAP - Technical Cooperation Project Trust Funds - Local",
+          "entity_code": "ESCAP",
+          "entity_name": "Economic and Social Commission for Asia and the Pacific",
+          "entity_id": "trust-fund-entity:ESCAP",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 628798,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "BKT — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.2.1 — Voluntary contributions",
+                  "pdfPage": 188,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 628798,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "BKT — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.2.1 — Voluntary contributions",
+              "pdfPage": 188,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "LMR",
+          "fund_name": "Trust Fund for Locally Mobilized Non-Core Support for the UN Resident Coordinator Offices",
+          "entity_code": "DCO",
+          "entity_name": "Resident coordinator system",
+          "entity_id": "trust-fund-entity:DCO",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 276167,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "LMR — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 6.25.1 — Voluntary contributions",
+                  "pdfPage": 411,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 276167,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "LMR — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 6.25.1 — Voluntary contributions",
+              "pdfPage": 411,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "IDP",
+          "fund_name": "African Institute for Economic Development and Planning (IDEP)",
+          "entity_code": "ECA",
+          "entity_name": "Economic Commission for Africa",
+          "entity_id": "trust-fund-entity:ECA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 162767,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "IDP — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+                  "pdfPage": 290,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 162767,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "IDP — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+              "pdfPage": 290,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "BTS",
+          "fund_name": "ECLAC Santiago - Technical Cooperation Project Trust Funds",
+          "entity_code": "ECLAC",
+          "entity_name": "Economic Commission for Latin America and the Caribbean",
+          "entity_id": "trust-fund-entity:ECLAC",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 150814,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "BTS — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.4.1 — Voluntary contributions",
+                  "pdfPage": 195,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 150814,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "BTS — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.4.1 — Voluntary contributions",
+              "pdfPage": 195,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "KSA",
+          "fund_name": "Trust Fund in Support of the United Nations Forum on Forests",
+          "entity_code": "DESA",
+          "entity_name": "Department of Economic and Social Affairs",
+          "entity_id": "trust-fund-entity:DESA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 110000,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "KSA — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.22.1 — Voluntary contributions",
+                  "pdfPage": 235,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 110000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "KSA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.22.1 — Voluntary contributions",
+              "pdfPage": 235,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "HCA",
+          "fund_name": "Trust Fund for the Support to the Activities of the Centre for Human Rights",
+          "entity_code": "OHCHR",
+          "entity_name": "Office of the United Nations High Commissioner for Human Rights",
+          "entity_id": "trust-fund-entity:OHCHR",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 76521,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "HCA — Voluntary contributions",
+                  "rowLabel": "Other Donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 4.9 — Voluntary contributions",
+                  "pdfPage": 321,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 76521,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "HCA — Voluntary contributions",
+              "rowLabel": "Other Donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.9 — Voluntary contributions",
+              "pdfPage": 321,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "DGA",
+          "fund_name": "Trust Fund for Global and Regional Disarmament Activities",
+          "entity_code": "ODA",
+          "entity_name": "Office for Disarmament Affairs",
+          "entity_id": "trust-fund-entity:ODA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 51126,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "DGA — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 1.11.1 — Voluntary contributions",
+                  "pdfPage": 42,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 51126,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "DGA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 1.11.1 — Voluntary contributions",
+              "pdfPage": 42,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "DRA",
+          "fund_name": "United Nations Institute for Disarmament Research",
+          "entity_code": "UNIDIR",
+          "entity_name": "United Nations Institute for Disarmament Research",
+          "entity_id": "trust-fund-entity:UNIDIR",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 14759,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "DRA — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 1.14.1 — Voluntary contributions",
+                  "pdfPage": 50,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 14759,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "DRA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 1.14.1 — Voluntary contributions",
+              "pdfPage": 50,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "WVZ",
+          "fund_name": "ESCWA - Technical Cooperation Trust Fund",
+          "entity_code": "ESCWA",
+          "entity_name": "Economic and Social Commission for Western Asia",
+          "entity_id": "trust-fund-entity:ESCWA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 9980,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "WVZ — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.38.1 — Voluntary contributions",
+                  "pdfPage": 280,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 9980,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "WVZ — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.38.1 — Voluntary contributions",
+              "pdfPage": 280,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "DDN",
+          "fund_name": "Trust Fund for the Strengthening of the Office of the Emergency Relief Coordinator",
+          "entity_code": "OCHA",
+          "entity_name": "Office for the Coordination of Humanitarian Affairs",
+          "entity_id": "trust-fund-entity:OCHA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 2324,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "DDN — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 4.6.1 — Voluntary contributions",
+                  "pdfPage": 311,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 2324,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "DDN — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.6.1 — Voluntary contributions",
+              "pdfPage": 311,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "LJA",
+          "fund_name": "Trust Fund for Special Projects of the Secretary-General",
+          "entity_code": "EOSG",
+          "entity_name": "Executive Office of the Secretary-General",
+          "entity_id": "trust-fund-entity:EOSG",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 480,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "LJA — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 6.11.1 — Voluntary contributions",
+                  "pdfPage": 380,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 480,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "LJA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 6.11.1 — Voluntary contributions",
+              "pdfPage": 380,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "CHA",
+          "fund_name": "United Nations Voluntary Fund for Victims of Torture",
+          "entity_code": "OHCHR",
+          "entity_name": "Office of the United Nations High Commissioner for Human Rights",
+          "entity_id": "trust-fund-entity:OHCHR",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 307,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "CHA — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 4.3.1 — Voluntary contributions",
+                  "pdfPage": 303,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 307,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "CHA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.3.1 — Voluntary contributions",
+              "pdfPage": 303,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "HDM",
+          "fund_name": "ECA as Executing Agency for Miscellaneous Technical Co-operation Funds",
+          "entity_code": "ECA",
+          "entity_name": "Economic Commission for Africa",
+          "entity_id": "trust-fund-entity:ECA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": 50,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "HDM — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.15.1 — Voluntary contributions",
+                  "pdfPage": 217,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 50,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "HDM — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.15.1 — Voluntary contributions",
+              "pdfPage": 217,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "GBA",
+          "fund_name": "Trust Fund for Statistical Development and Capacity Building",
+          "entity_code": "DESA",
+          "entity_name": "Department of Economic and Social Affairs",
+          "entity_id": "trust-fund-entity:DESA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": -8705,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "GBA — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.13.1 — Voluntary contributions",
+                  "pdfPage": 211,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": -8705,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "GBA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.13.1 — Voluntary contributions",
+              "pdfPage": 211,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "KRT",
+          "fund_name": "UNAKRT - UN Assistance for the Khmer Rouge Trails",
+          "entity_code": "UNAKRT",
+          "entity_name": "UNAKRT",
+          "entity_id": "trust-fund-entity:UNAKRT",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "other_transfer_allocation_internal_transfers",
+              "group": "internal",
+              "label": "Internal transfers",
+              "amount_usd": -11929,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "KRT — Internal transfers",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.21.1 — Internal transfers",
+                  "pdfPage": 232,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": -11929,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "KRT — Internal transfers",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.21.1 — Internal transfers",
+              "pdfPage": 232,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "LLS",
+          "fund_name": "Trust Fund in Support of Activities Undertaken by the Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (OHRLLS)",
+          "entity_code": "UN-OHRLLS",
+          "entity_name": "Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States",
+          "entity_id": "trust-fund-entity:UN-OHRLLS",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": -20962,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "LLS — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.24.1 — Voluntary contributions",
+                  "pdfPage": 240,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": -20962,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "LLS — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.24.1 — Voluntary contributions",
+              "pdfPage": 240,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "PYA",
+          "fund_name": "Trust Fund for Preventive Action",
+          "entity_code": "DPPA",
+          "entity_name": "Department of Political and Peacebuilding Affairs",
+          "entity_id": "trust-fund-entity:DPPA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": -56990,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "PYA — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 1.29.1 — Voluntary contributions",
+                  "pdfPage": 84,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": -56990,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "PYA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 1.29.1 — Voluntary contributions",
+              "pdfPage": 84,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "SZA",
+          "fund_name": "Trust Fund in Support of Political Affairs",
+          "entity_code": "DPPA",
+          "entity_name": "Department of Political and Peacebuilding Affairs",
+          "entity_id": "trust-fund-entity:DPPA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": -348449,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "SZA — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 1.38.1 — Voluntary contributions",
+                  "pdfPage": 107,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": -348449,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "SZA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 1.38.1 — Voluntary contributions",
+              "pdfPage": 107,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "JPO",
+          "fund_name": "Trust Fund for Junior Professional Officer Programme Administered by Department of Economic and Social Affairs",
+          "entity_code": "JPO",
+          "entity_name": "JPO",
+          "entity_id": "trust-fund-entity:JPO",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": -350000,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "JPO — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.20.1 — Voluntary contributions",
+                  "pdfPage": 229,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": -350000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "JPO — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.20.1 — Voluntary contributions",
+              "pdfPage": 229,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "ESA",
+          "fund_name": "Trust Fund for Economic and Social Information",
+          "entity_code": "DGC",
+          "entity_name": "Department of Global Communications",
+          "entity_id": "trust-fund-entity:DGC",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "other",
+              "label": "Other voluntary contributions",
+              "amount_usd": -1695000,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+                  "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+                  "label": "ESA — Voluntary contributions",
+                  "rowLabel": "Other donors",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 5.2.1 — Voluntary contributions",
+                  "pdfPage": 347,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": -1695000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2024",
+              "url": "https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf",
+              "label": "ESA — Voluntary contributions",
+              "rowLabel": "Other donors",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 5.2.1 — Voluntary contributions",
+              "pdfPage": 347,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Oman",
       "flows": [
         {
@@ -97298,6 +98463,10 @@
   ],
   "adjustments": [
     {
+      "label": "Add/(Less): Discounting of Non-Current Receivable",
+      "amount_usd": 29849
+    },
+    {
       "label": "Add/(Less): Present Value Adjustment",
       "amount_usd": 15332726
     },
@@ -97357,8 +98526,8 @@
     {
       "fund_code": "BKT",
       "statement_amount_usd": 14620829,
-      "named_rows_amount_usd": 13992032,
-      "residual_usd": 628797,
+      "named_rows_amount_usd": 14620830,
+      "residual_usd": -1,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -97371,8 +98540,8 @@
     {
       "fund_code": "BTS",
       "statement_amount_usd": 17862899,
-      "named_rows_amount_usd": 17712085,
-      "residual_usd": 150814,
+      "named_rows_amount_usd": 17862899,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -97392,8 +98561,8 @@
     {
       "fund_code": "CCS",
       "statement_amount_usd": 7557752,
-      "named_rows_amount_usd": 7527903,
-      "residual_usd": 29849,
+      "named_rows_amount_usd": 7557752,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -97413,8 +98582,8 @@
     {
       "fund_code": "CHA",
       "statement_amount_usd": 11595270,
-      "named_rows_amount_usd": 11594963,
-      "residual_usd": 307,
+      "named_rows_amount_usd": 11595270,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -97518,8 +98687,8 @@
     {
       "fund_code": "DDN",
       "statement_amount_usd": 1269799538,
-      "named_rows_amount_usd": 1269797214,
-      "residual_usd": 2324,
+      "named_rows_amount_usd": 1269799538,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -97532,8 +98701,8 @@
     {
       "fund_code": "DGA",
       "statement_amount_usd": 14478943,
-      "named_rows_amount_usd": 14427817,
-      "residual_usd": 51126,
+      "named_rows_amount_usd": 14478943,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -97560,15 +98729,15 @@
     {
       "fund_code": "DRA",
       "statement_amount_usd": 9930835,
-      "named_rows_amount_usd": 9916076,
-      "residual_usd": 14759,
+      "named_rows_amount_usd": 9930835,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
       "fund_code": "DSA",
       "statement_amount_usd": 132520679,
-      "named_rows_amount_usd": 130034246,
-      "residual_usd": 2486433,
+      "named_rows_amount_usd": 132520679,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -97609,8 +98778,8 @@
     {
       "fund_code": "ESA",
       "statement_amount_usd": 10842130,
-      "named_rows_amount_usd": 12537130,
-      "residual_usd": -1695000,
+      "named_rows_amount_usd": 10842130,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -97644,8 +98813,8 @@
     {
       "fund_code": "GBA",
       "statement_amount_usd": 261254,
-      "named_rows_amount_usd": 269961,
-      "residual_usd": -8707,
+      "named_rows_amount_usd": 261256,
+      "residual_usd": -2,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -97693,8 +98862,8 @@
     {
       "fund_code": "HCA",
       "statement_amount_usd": 220210738,
-      "named_rows_amount_usd": 220134217,
-      "residual_usd": 76521,
+      "named_rows_amount_usd": 220210738,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -97707,8 +98876,8 @@
     {
       "fund_code": "HDM",
       "statement_amount_usd": 10528347,
-      "named_rows_amount_usd": 10528297,
-      "residual_usd": 50,
+      "named_rows_amount_usd": 10528347,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -97749,8 +98918,8 @@
     {
       "fund_code": "IDP",
       "statement_amount_usd": 1520767,
-      "named_rows_amount_usd": 1358000,
-      "residual_usd": 162767,
+      "named_rows_amount_usd": 1520767,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -97791,8 +98960,8 @@
     {
       "fund_code": "JPO",
       "statement_amount_usd": 75202783,
-      "named_rows_amount_usd": 75552783,
-      "residual_usd": -350000,
+      "named_rows_amount_usd": 75202783,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -97826,8 +98995,8 @@
     {
       "fund_code": "KSA",
       "statement_amount_usd": 523877,
-      "named_rows_amount_usd": 413877,
-      "residual_usd": 110000,
+      "named_rows_amount_usd": 523877,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -97854,8 +99023,8 @@
     {
       "fund_code": "LJA",
       "statement_amount_usd": 4850773,
-      "named_rows_amount_usd": 4850293,
-      "residual_usd": 480,
+      "named_rows_amount_usd": 4850773,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -97875,15 +99044,15 @@
     {
       "fund_code": "LLS",
       "statement_amount_usd": 11042164,
-      "named_rows_amount_usd": 11063125,
-      "residual_usd": -20961,
+      "named_rows_amount_usd": 11042163,
+      "residual_usd": 1,
       "flow_type": "voluntary_contribution"
     },
     {
       "fund_code": "LMR",
       "statement_amount_usd": 2447214,
-      "named_rows_amount_usd": 2171047,
-      "residual_usd": 276167,
+      "named_rows_amount_usd": 2447214,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -98050,8 +99219,8 @@
     {
       "fund_code": "PYA",
       "statement_amount_usd": -56990,
-      "named_rows_amount_usd": 0,
-      "residual_usd": -56990,
+      "named_rows_amount_usd": -56990,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -98197,8 +99366,8 @@
     {
       "fund_code": "SZA",
       "statement_amount_usd": 16212392,
-      "named_rows_amount_usd": 16560841,
-      "residual_usd": -348449,
+      "named_rows_amount_usd": 16212392,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -98302,8 +99471,8 @@
     {
       "fund_code": "WVZ",
       "statement_amount_usd": 4602170,
-      "named_rows_amount_usd": 4592190,
-      "residual_usd": 9980,
+      "named_rows_amount_usd": 4602170,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -98834,8 +100003,8 @@
     {
       "fund_code": "KRT",
       "statement_amount_usd": 1827371,
-      "named_rows_amount_usd": 1839300,
-      "residual_usd": -11929,
+      "named_rows_amount_usd": 1827371,
+      "residual_usd": 0,
       "flow_type": "other_transfers_and_allocations"
     },
     {

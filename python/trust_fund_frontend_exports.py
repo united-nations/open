@@ -35,6 +35,7 @@ FLOW_LABELS = {
 }
 
 COUNTERPARTY_ALIASES = {
+    "other donors": "Other contributors (not individually identified)",
     "undp mptf": "UNDP Multi-Partner Trust Fund Office",
     "undp multi-partner trust fund - mptf": "UNDP Multi-Partner Trust Fund Office",
     "undp multi-partner trust fund mptf": "UNDP Multi-Partner Trust Fund Office",
@@ -46,6 +47,7 @@ COUNTERPARTY_ALIASES = {
 
 ADJUSTMENT_PATTERNS = (
     re.compile(r"present value adjustment", re.I),
+    re.compile(r"discounting of non-current receivable", re.I),
     re.compile(r"^(?:from/\(to\)|\(to\)/from|to/from)(?:\s|$)", re.I),
 )
 
@@ -453,7 +455,7 @@ def build_contributor_export(
     rows, reconciliation = selected_funding_rows(year, flows, statements)
     fund_lookup = funds.set_index("fund_code")["fund_name"].to_dict()
     crosswalk_lookup = crosswalk.set_index("fund_code")
-    rows["is_adjustment"] = rows["counterparty"].str.contains("present value adjustment", case=False) | (
+    rows["is_adjustment"] = rows["counterparty"].str.contains("present value adjustment|discounting of non-current receivable", case=False, regex=True) | (
         rows["flow_type"].eq("voluntary_contribution") & rows["counterparty"].map(is_adjustment)
     )
     contributor_rows = rows.loc[~rows["is_adjustment"]].copy()

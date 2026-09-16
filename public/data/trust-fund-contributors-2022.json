@@ -4,11 +4,11 @@
     "currency": "USD",
     "measure": "Contributions and transfers",
     "statement_total_usd": 3250222450,
-    "named_rows_total_usd": 3244635861,
+    "named_rows_total_usd": 3244631809,
     "contributor_total_usd": 3321014310,
-    "adjustment_total_usd": -76378449,
-    "unallocated_residual_usd": 5586589,
-    "named_row_completeness": 0.998285,
+    "adjustment_total_usd": -76382501,
+    "unallocated_residual_usd": 5590641,
+    "named_row_completeness": 0.998286,
     "unresolved_entity_amount_usd": 0,
     "source": {
       "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
@@ -85905,7 +85905,7 @@
       "amount_usd": -418594
     },
     {
-      "label": "From/(To) Trust Fund for Climate Change Support (CCS) (GCU)",
+      "label": "From/(To) Trust Fund for Climate Change Support (CCS)",
       "amount_usd": 90000
     },
     {
@@ -85967,6 +85967,10 @@
     {
       "label": "From/(To) United Nations Regional Centre for Peace and Disarmament in Africa (DAA)",
       "amount_usd": -24670
+    },
+    {
+      "label": "From/(To) United Nations Trust Fund for Government Contributions to UNICS (GCU)",
+      "amount_usd": -4052
     },
     {
       "label": "From/(To) Voluntary Fund for Advisory Services and Technical Assistance in the of Human Rights (AHA)",
@@ -86264,8 +86268,8 @@
     {
       "fund_code": "ESA",
       "statement_amount_usd": 2763229,
-      "named_rows_amount_usd": 2767281,
-      "residual_usd": -4052,
+      "named_rows_amount_usd": 2763229,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {

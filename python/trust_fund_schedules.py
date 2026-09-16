@@ -1111,7 +1111,12 @@ def parse_amount(value: str) -> tuple[int | None, bool]:
 
 def is_flow_header(label: str) -> bool:
     normalized = label.lower().strip()
-    return any(term in normalized for term in FLOW_HEADER_TERMS)
+    normalized = re.sub(r"^\(?united states dollars\)?\s*", "", normalized)
+    if not normalized:
+        return True
+    return normalized in FLOW_HEADER_TERMS or bool(
+        re.fullmatch(r"(?:total as at |total for the year )?31 december(?: \d{4})?", normalized)
+    )
 
 
 def canonical_statement_label(value: str) -> str:

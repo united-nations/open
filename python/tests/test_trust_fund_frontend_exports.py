@@ -12,6 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from trust_fund_frontend_exports import (  # noqa: E402
     canonical_counterparty,
+    is_adjustment,
     selected_funding_rows,
     build_entity_export,
     flow_breakdown,
@@ -21,6 +22,12 @@ from trust_fund_frontend_exports import (  # noqa: E402
 
 
 class TrustFundFrontendExportTests(unittest.TestCase):
+    def test_unnamed_aggregate_and_discount_adjustment_remain_distinct(self) -> None:
+        self.assertEqual(canonical_counterparty("Other donors"),
+                         "Other contributors (not individually identified)")
+        self.assertFalse(is_adjustment("Other donors"))
+        self.assertTrue(is_adjustment("Add/(Less): Discounting of Non-Current Receivable"))
+
     def test_contributor_rows_stop_at_statement_matching_total(self) -> None:
         flows = pd.DataFrame(
             [

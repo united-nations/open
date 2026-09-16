@@ -1,0 +1,316 @@
+{
+  "validation_status": "pass",
+  "expected_grain": "one row per Schedule of Individual Trust Funds fund_code",
+  "source": {
+    "schedule_funds": "data/trust-fund-schedules/stage2/funds.csv",
+    "schedule_statement_facts": "data/trust-fund-schedules/stage2/statement-facts.csv",
+    "old_open_extract": "data/un-secretariat-expenses.csv",
+    "review_decisions": "data/trust-fund-entity-crosswalk-review.csv",
+    "ppb_entity_dimension": "data/references/programme-budget-data-ppb-entities"
+  },
+  "input_checks": {
+    "named_rows": 798,
+    "distinct_labels": 175,
+    "distinct_entities": 81,
+    "entity_ambiguous_labels": 0,
+    "priority_ambiguous_labels": 0,
+    "section_changing_labels": [
+      {
+        "old_open_fund_name": "African Institute for Economic Development and Planning",
+        "audited_entity_code": "ECA",
+        "section_ids": "18 | 23",
+        "years": "2019 | 2020 | 2021 | 2022 | 2023"
+      },
+      {
+        "old_open_fund_name": "Library Endowment Fund",
+        "audited_entity_code": "UNOG",
+        "section_ids": "1 | 29E",
+        "years": "2019 | 2020 | 2021 | 2022 | 2023"
+      },
+      {
+        "old_open_fund_name": "Trust Fund for UNOG Local Support Services",
+        "audited_entity_code": "UNOG",
+        "section_ids": "1 | 29E",
+        "years": "2019 | 2020 | 2021 | 2022 | 2023"
+      }
+    ]
+  },
+  "mapping": {
+    "total_funds": 157,
+    "mapped_funds": 152,
+    "mapped_share": 0.9681528662420382,
+    "exact_normalized_name": 134,
+    "curated_alias": 16,
+    "high_confidence": 151,
+    "medium_confidence": 1,
+    "unresolved_funds": 5,
+    "distinct_audited_entities": 75,
+    "ppb_entity_id_funds": 108,
+    "ppb_entity_id_share": 0.7105263157894737
+  },
+  "non_high_confidence_mappings": [
+    {
+      "fund_code": "CLR",
+      "fund_name": "Trust Fund Central Emergency Response Fund Loan component",
+      "audited_entity_code": "OCHA",
+      "mapping_reason": "The loan component is part of the Central Emergency Response Fund administered by OCHA but the old extract does not itemize the zero-expense loan component separately."
+    }
+  ],
+  "expense_fingerprint_diagnostic": {
+    "purpose": "Independent diagnostic only; expense equality is not a join rule.",
+    "comparable_mapped_funds": 151,
+    "within_one_percent": 103,
+    "within_five_percent": 132,
+    "weighted_absolute_difference_share": 0.024279206587880228,
+    "largest_absolute_differences": [
+      {
+        "fund_code": "DDN",
+        "fund_name": "Trust Fund for the Strengthening of the Office of the Emergency Relief Coordinator",
+        "audited_entity_code": "OCHA",
+        "expense_absolute_difference_usd": 284703068.0,
+        "expense_schedule_absolute_usd": 5887752626.0,
+        "expense_relative_absolute_difference": 0.04835513413772965
+      },
+      {
+        "fund_code": "CER",
+        "fund_name": "Central Emergency Response Fund",
+        "audited_entity_code": "OCHA",
+        "expense_absolute_difference_usd": 38079707.0,
+        "expense_schedule_absolute_usd": 3465776181.0,
+        "expense_relative_absolute_difference": 0.010987353196308438
+      },
+      {
+        "fund_code": "DSA",
+        "fund_name": "Special Purpose Trust Fund for the Reinvigorated Resident Coordinator (RC) System",
+        "audited_entity_code": "DCO",
+        "expense_absolute_difference_usd": 5628959.0,
+        "expense_schedule_absolute_usd": 984781181.0,
+        "expense_relative_absolute_difference": 0.0057159489931398275
+      },
+      {
+        "fund_code": "MNA",
+        "fund_name": "Voluntary Trust Fund for Assistance in Mine Action",
+        "audited_entity_code": "UNMAS",
+        "expense_absolute_difference_usd": 3016217.0,
+        "expense_schedule_absolute_usd": 347292911.0,
+        "expense_relative_absolute_difference": 0.008684936848595795
+      },
+      {
+        "fund_code": "DXA",
+        "fund_name": "Trust Fund for Disaster Reduction",
+        "audited_entity_code": "UNDRR",
+        "expense_absolute_difference_usd": 3015217.0,
+        "expense_schedule_absolute_usd": 210340324.0,
+        "expense_relative_absolute_difference": 0.014334945114946195
+      }
+    ]
+  },
+  "unresolved": [
+    {
+      "fund_code": "ANC",
+      "fund_name": "Trust Fund in Support of the United Nations Mission in Afghanistan UNAMA",
+      "candidate_entity_code": "UNAMA",
+      "confidence": "medium",
+      "mapping_reason": "The schedule title names UNAMA and the expense pattern is close but the only old-open UNAMA fund has a materially different title; an authoritative fund-code bridge is needed."
+    },
+    {
+      "fund_code": "DVA",
+      "fund_name": "Trust Fund for Development Planning and Projections",
+      "candidate_entity_code": "DESA",
+      "confidence": "low",
+      "mapping_reason": "Development planning and projections suggests DESA but the fund is effectively dormant and has no named row in the old extract."
+    },
+    {
+      "fund_code": "EER",
+      "fund_name": "Trust Fund in Support of the UN Coordinated Response to the Ebola Crisis",
+      "candidate_entity_code": null,
+      "confidence": "none",
+      "mapping_reason": "The Ebola-response fund is dormant in the overlap and has no named row in the old extract; its administering entity cannot be established from these sources."
+    },
+    {
+      "fund_code": "GNA",
+      "fund_name": "Trust Fund for the International Tribunal for the Prosecution of Persons Responsible for Genocide and Other Serious Violations of International Humanitarian Law Committed in the Territory of Rwanda",
+      "candidate_entity_code": "MICT",
+      "confidence": "low",
+      "mapping_reason": "The Rwanda Tribunal title suggests the residual mechanism but the fund is dormant in the overlap and has no named row in the old extract."
+    },
+    {
+      "fund_code": "SWE",
+      "fund_name": "Trust Fund for Support of Joint Inspection Unit (JIU) Activities",
+      "candidate_entity_code": null,
+      "confidence": "none",
+      "mapping_reason": "The five-year expense pattern points to the SWEO row while the schedule title says Joint Inspection Unit; the conflicting institutional labels require authoritative review."
+    }
+  ],
+  "value_coverage": [
+    {
+      "calendar_year": 2017,
+      "measure": "expenses",
+      "total_usd": 1830924497,
+      "mapped_usd": 1830373359,
+      "unmapped_usd": 551138,
+      "absolute_total_usd": 1830978637,
+      "absolute_mapped_usd": 1830427007,
+      "mapped_absolute_share": 0.9996987239562206
+    },
+    {
+      "calendar_year": 2017,
+      "measure": "voluntary_contributions",
+      "total_usd": 2070576592,
+      "mapped_usd": 2070668662,
+      "unmapped_usd": -92070,
+      "absolute_total_usd": 2078853958,
+      "absolute_mapped_usd": 2078684620,
+      "mapped_absolute_share": 0.9999185426184709
+    },
+    {
+      "calendar_year": 2018,
+      "measure": "expenses",
+      "total_usd": 2132994935,
+      "mapped_usd": 2132857623,
+      "unmapped_usd": 137312,
+      "absolute_total_usd": 2133667801,
+      "absolute_mapped_usd": 2133530489,
+      "mapped_absolute_share": 0.9999356450896735
+    },
+    {
+      "calendar_year": 2018,
+      "measure": "voluntary_contributions",
+      "total_usd": 2784614949,
+      "mapped_usd": 2784594949,
+      "unmapped_usd": 20000,
+      "absolute_total_usd": 2790860185,
+      "absolute_mapped_usd": 2790840185,
+      "mapped_absolute_share": 0.9999928337506452
+    },
+    {
+      "calendar_year": 2019,
+      "measure": "expenses",
+      "total_usd": 2382567766,
+      "mapped_usd": 2382554626,
+      "unmapped_usd": 13140,
+      "absolute_total_usd": 2384809004,
+      "absolute_mapped_usd": 2384795864,
+      "mapped_absolute_share": 0.9999944901247949
+    },
+    {
+      "calendar_year": 2019,
+      "measure": "voluntary_contributions",
+      "total_usd": 2402574955,
+      "mapped_usd": 2402575598,
+      "unmapped_usd": -643,
+      "absolute_total_usd": 2409524781,
+      "absolute_mapped_usd": 2409524138,
+      "mapped_absolute_share": 0.9999997331424001
+    },
+    {
+      "calendar_year": 2020,
+      "measure": "expenses",
+      "total_usd": 2807473452,
+      "mapped_usd": 2807454505,
+      "unmapped_usd": 18947,
+      "absolute_total_usd": 2807577806,
+      "absolute_mapped_usd": 2807558859,
+      "mapped_absolute_share": 0.9999932514782103
+    },
+    {
+      "calendar_year": 2020,
+      "measure": "voluntary_contributions",
+      "total_usd": 2244982757,
+      "mapped_usd": 2244982757,
+      "unmapped_usd": 0,
+      "absolute_total_usd": 2251739841,
+      "absolute_mapped_usd": 2251739841,
+      "mapped_absolute_share": 1.0
+    },
+    {
+      "calendar_year": 2021,
+      "measure": "expenses",
+      "total_usd": 2593761971,
+      "mapped_usd": 2593761416,
+      "unmapped_usd": 555,
+      "absolute_total_usd": 2593885723,
+      "absolute_mapped_usd": 2593885168,
+      "mapped_absolute_share": 0.9999997860352925
+    },
+    {
+      "calendar_year": 2021,
+      "measure": "voluntary_contributions",
+      "total_usd": 2902709570,
+      "mapped_usd": 2902711453,
+      "unmapped_usd": -1883,
+      "absolute_total_usd": 2905240884,
+      "absolute_mapped_usd": 2905239001,
+      "mapped_absolute_share": 0.9999993518609729
+    },
+    {
+      "calendar_year": 2022,
+      "measure": "expenses",
+      "total_usd": 3330854614,
+      "mapped_usd": 3330853394,
+      "unmapped_usd": 1220,
+      "absolute_total_usd": 3360104580,
+      "absolute_mapped_usd": 3360103360,
+      "mapped_absolute_share": 0.9999996369160629
+    },
+    {
+      "calendar_year": 2022,
+      "measure": "voluntary_contributions",
+      "total_usd": 2627577994,
+      "mapped_usd": 2627577994,
+      "unmapped_usd": 0,
+      "absolute_total_usd": 2634670832,
+      "absolute_mapped_usd": 2634670832,
+      "mapped_absolute_share": 1.0
+    },
+    {
+      "calendar_year": 2023,
+      "measure": "expenses",
+      "total_usd": 3381396352,
+      "mapped_usd": 3381285237,
+      "unmapped_usd": 111115,
+      "absolute_total_usd": 3381734536,
+      "absolute_mapped_usd": 3381623421,
+      "mapped_absolute_share": 0.9999671426012843
+    },
+    {
+      "calendar_year": 2023,
+      "measure": "voluntary_contributions",
+      "total_usd": 2835174980,
+      "mapped_usd": 2835174980,
+      "unmapped_usd": 0,
+      "absolute_total_usd": 2854017366,
+      "absolute_mapped_usd": 2854017366,
+      "mapped_absolute_share": 1.0
+    },
+    {
+      "calendar_year": 2024,
+      "measure": "expenses",
+      "total_usd": 3198967527,
+      "mapped_usd": 3198959003,
+      "unmapped_usd": 8524,
+      "absolute_total_usd": 3201815333,
+      "absolute_mapped_usd": 3201806293,
+      "mapped_absolute_share": 0.9999971766016901
+    },
+    {
+      "calendar_year": 2024,
+      "measure": "voluntary_contributions",
+      "total_usd": 2999202065,
+      "mapped_usd": 2997240106,
+      "unmapped_usd": 1961959,
+      "absolute_total_usd": 3047520529,
+      "absolute_mapped_usd": 3045558570,
+      "mapped_absolute_share": 0.9993562113917428
+    }
+  ],
+  "limitations": [
+    "The old-open mapping procedure is not published; exact names and reviewed aliases reproduce its observed fund-to-entity assignments but do not make them an official crosswalk.",
+    "Old-open expense amounts do not exactly reconcile to schedule expense in every year; expense fingerprints are diagnostics only and are never used to auto-accept a mapping.",
+    "An audited entity may own many funds. The output is one entity per mapped fund, not one fund per entity.",
+    "Programme-budget section is not a stable key: three old-open fund labels change section during 2019-2023. Section history is evidence only.",
+    "A trust-fund-to-entity relationship is organizational attribution. It does not prove that a donor financed a particular entity expense or subprogramme in the same year.",
+    "The trust-fund schedule is gross fund accounting and contains transfers. Mapped amounts must not be added to PPB extrabudgetary expenditure or consolidated Secretariat totals.",
+    "The audited entity universe is broader than the PPB entity dimension, especially for missions, envoys, pooled funds, and residual mechanisms; missing PPB entity IDs are expected."
+  ]
+}

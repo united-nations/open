@@ -40,8 +40,9 @@ uv run python python/99-generate_manifest.py
 ```
 
 Use `--years 2023 2024` for a subset. The default output directory is
-`data/trust-fund-schedules/`; source PDFs and generated outputs are reproducible
-and gitignored.
+`data/trust-fund-schedules/`. Source PDFs, the manifest, canonical extraction
+tables, crosswalk CSVs and quality reports are versioned. Duplicate exports
+remain gitignored; see that directory's README for the retention policy.
 
 ## Outputs and grain
 

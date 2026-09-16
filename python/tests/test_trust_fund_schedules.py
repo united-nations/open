@@ -19,6 +19,27 @@ def row(y: float, *words: tuple[float, float, str]) -> schedules.PhysicalRow:
 
 
 class TrustFundScheduleTests(unittest.TestCase):
+    def test_contributor_and_discount_rows_are_not_headers(self) -> None:
+        for label, amount in [
+            ("Other donors", "2 486 433"),
+            ("Other donors", "(1 695 000)"),
+            ("Add/(Less): Discounting of Non-Current Receivable", "29 849"),
+        ]:
+            with self.subTest(label=label, amount=amount):
+                table = {
+                    "table_id": "regression", "calendar_year": 2024,
+                    "recid": 4087012, "page": 356, "schedule_number": "1",
+                    "fund_code": "CCS", "table_kind": "voluntary_contribution",
+                    "columns": ["counterparty", "total"],
+                    "rows": [{"counterparty": label, "total": amount, "y": 100}],
+                }
+                result = schedules.normalize_flow_table(table)
+                self.assertEqual(len(result), 1)
+                self.assertEqual(result[0]["counterparty"], label)
+                self.assertEqual(result[0]["total_usd"], schedules.parse_amount(amount)[0])
+        for label in ["Donor", "(United States dollars) Donor", "Current", "Non-Current", "Total as at 31 December 2024"]:
+            self.assertTrue(schedules.is_flow_header(label))
+
     def test_documents_url_preserves_pseudo_symbol_slash(self) -> None:
         symbol = (
             "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020"

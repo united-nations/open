@@ -252,7 +252,7 @@ export function TrustFundContributorsTreemap() {
                       </a>
                     </p>
                     <p>
-                      Tile area is the signed net of named contribution and
+                      Tile area is the signed net of extracted contribution and
                       transfer rows; click a contributor to see its funds and
                       reconstructed entity destinations.
                       {nonPositiveCount > 0 &&
@@ -264,8 +264,9 @@ export function TrustFundContributorsTreemap() {
                       {(current.meta.named_row_completeness * 100).toFixed(2)}%,
                       calculated as 100% minus the sum of absolute differences
                       divided by the sum of absolute reported totals. Unresolved
-                      differences may reflect extraction issues.
-                      Named contributors total{" "}
+                      differences may reflect extraction issues or rounding.
+                      Contributor rows, including explicitly unidentified
+                      aggregates, total{" "}
                       {currency(current.meta.contributor_total_usd)} net. The
                       unallocated net difference is{" "}
                       {currency(current.meta.unallocated_residual_usd)}; it is

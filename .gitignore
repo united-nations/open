@@ -265,5 +265,8 @@ __marimo__/
 data/references/*
 !data/references/ceb-aggregate-entities.json
 
-# Source files and generated outputs from the trust-fund schedule extractor
-data/trust-fund-schedules/
+# Trust-fund schedules: retain canonical evidence; omit duplicate exports.
+data/trust-fund-schedules/raw/*.docx
+data/trust-fund-schedules/stage1/tables/
+data/trust-fund-schedules/stage2/trust-fund-schedules.json
+data/trust-fund-schedules/crosswalk/trust-fund-entity-crosswalk.json

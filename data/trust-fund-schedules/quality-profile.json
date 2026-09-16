@@ -1,0 +1,306 @@
+{
+  "validation_status": "pass",
+  "validation_gates": [
+    {
+      "name": "canonical_fund_identity",
+      "status": "pass",
+      "failure_count": 0,
+      "failure_examples": []
+    },
+    {
+      "name": "one_fund_year_and_core_statement",
+      "status": "pass",
+      "failure_count": 0,
+      "failure_examples": []
+    },
+    {
+      "name": "statement_fact_keys_and_equations",
+      "status": "pass",
+      "failure_count": 0,
+      "failure_examples": []
+    },
+    {
+      "name": "flow_component_arithmetic",
+      "status": "pass",
+      "failure_count": 0,
+      "failure_examples": []
+    },
+    {
+      "name": "voluntary_contribution_statement_reconciliation",
+      "status": "pass",
+      "failure_count": 0,
+      "failure_examples": []
+    }
+  ],
+  "documents": 8,
+  "calendar_years": [
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024
+  ],
+  "missing_2020_schedule_in_configured_sources": false,
+  "docx_available_count": 1,
+  "docx_unavailable_count": 7,
+  "literal_tables": 4511,
+  "funds": 157,
+  "fund_years": 1118,
+  "statement_facts": 111477,
+  "counterparty_flow_rows": 21040,
+  "missing_fund_code_tables": 0,
+  "duplicate_statement_fact_keys": 0,
+  "financial_position_reconciliations": 1118,
+  "financial_position_reconciliation_failures": 1,
+  "financial_position_reconciliation_failure_examples": [
+    {
+      "calendar_year": 2022,
+      "fund_code": "PDF",
+      "difference_usd": -90000
+    }
+  ],
+  "financial_performance_reconciliations": 1118,
+  "financial_performance_reconciliation_failures": 0,
+  "financial_performance_reconciliation_failure_examples": [],
+  "flow_component_reconciliations": 17359,
+  "flow_component_reconciliation_failures": 4,
+  "flow_component_reconciliation_failure_examples": [
+    {
+      "calendar_year": 2017,
+      "fund_code": "DGT",
+      "flow_type": "voluntary_contribution_receivable",
+      "counterparty": "Finland",
+      "reported_total_usd": 597372,
+      "calculated_total_usd": 597371,
+      "difference_usd": 1
+    },
+    {
+      "calendar_year": 2021,
+      "fund_code": "SBA",
+      "flow_type": "voluntary_contribution_receivable",
+      "counterparty": "Germany",
+      "reported_total_usd": 230361,
+      "calculated_total_usd": 230360,
+      "difference_usd": 1
+    },
+    {
+      "calendar_year": 2024,
+      "fund_code": "DSA",
+      "flow_type": "other_transfer_allocation_contributions",
+      "counterparty": "Add/(Less): Present Value Adjustment",
+      "reported_total_usd": 667549,
+      "calculated_total_usd": 0,
+      "difference_usd": 667549
+    },
+    {
+      "calendar_year": 2024,
+      "fund_code": "DSA",
+      "flow_type": "voluntary_contribution",
+      "counterparty": "Add/(Less): Present Value Adjustment",
+      "reported_total_usd": -316442,
+      "calculated_total_usd": 0,
+      "difference_usd": -316442
+    }
+  ],
+  "voluntary_contribution_statement_reconciliations": 1118,
+  "voluntary_contribution_statement_reconciliation_failures": 0,
+  "known_source_exceptions": [
+    {
+      "calendar_year": 2022,
+      "fund_code": "PDF",
+      "difference_usd": -90000,
+      "severity": "high",
+      "confidence": "high",
+      "note": "The source statement's printed totals differ by $90,000."
+    }
+  ],
+  "flow_arithmetic_exceptions": [
+    {
+      "calendar_year": 2017,
+      "fund_code": "DGT",
+      "flow_type": "voluntary_contribution_receivable",
+      "counterparty": "Finland",
+      "reported_total_usd": 597372,
+      "calculated_total_usd": 597371,
+      "difference_usd": 1,
+      "severity": "low",
+      "confidence": "high",
+      "note": "The printed component sum differs from its total by $1."
+    },
+    {
+      "calendar_year": 2021,
+      "fund_code": "SBA",
+      "flow_type": "voluntary_contribution_receivable",
+      "counterparty": "Germany",
+      "reported_total_usd": 230361,
+      "calculated_total_usd": 230360,
+      "difference_usd": 1,
+      "severity": "low",
+      "confidence": "high",
+      "note": "The printed component sum differs from its total by $1."
+    },
+    {
+      "calendar_year": 2024,
+      "fund_code": "DSA",
+      "flow_type": "other_transfer_allocation_contributions",
+      "counterparty": "Add/(Less): Present Value Adjustment",
+      "reported_total_usd": 667549,
+      "calculated_total_usd": 0,
+      "difference_usd": 667549,
+      "severity": "medium",
+      "confidence": "high",
+      "note": "The source prints the present-value adjustment only in the total column, with no component allocation."
+    },
+    {
+      "calendar_year": 2024,
+      "fund_code": "DSA",
+      "flow_type": "voluntary_contribution",
+      "counterparty": "Add/(Less): Present Value Adjustment",
+      "reported_total_usd": -316442,
+      "calculated_total_usd": 0,
+      "difference_usd": -316442,
+      "severity": "medium",
+      "confidence": "high",
+      "note": "The source prints the present-value adjustment only in the total column, with no component allocation."
+    }
+  ],
+  "warnings": [
+    "The Documents API returned DOCX for only 1 of 8 sources; table extraction uses the PDFs consistently."
+  ],
+  "extraction_by_year": [
+    {
+      "calendar_year": 2017,
+      "pdf_pages": 443,
+      "pages_with_text": 442,
+      "pages_with_detected_tables": 391,
+      "tables": 491,
+      "funds_detected": 131,
+      "table_kinds": {
+        "financial_performance": 131,
+        "financial_position": 131,
+        "other_transfer_allocation_contributions": 30,
+        "other_transfer_allocation_internal_transfers": 12,
+        "voluntary_contribution": 119,
+        "voluntary_contribution_receivable": 68
+      }
+    },
+    {
+      "calendar_year": 2018,
+      "pdf_pages": 457,
+      "pages_with_text": 456,
+      "pages_with_detected_tables": 404,
+      "tables": 509,
+      "funds_detected": 136,
+      "table_kinds": {
+        "financial_performance": 136,
+        "financial_position": 136,
+        "other_transfer_allocation_contributions": 31,
+        "other_transfer_allocation_internal_transfers": 16,
+        "voluntary_contribution": 119,
+        "voluntary_contribution_receivable": 71
+      }
+    },
+    {
+      "calendar_year": 2019,
+      "pdf_pages": 460,
+      "pages_with_text": 459,
+      "pages_with_detected_tables": 406,
+      "tables": 517,
+      "funds_detected": 141,
+      "table_kinds": {
+        "financial_performance": 141,
+        "financial_position": 141,
+        "other_transfer_allocation_contributions": 37,
+        "other_transfer_allocation_internal_transfers": 15,
+        "voluntary_contribution": 112,
+        "voluntary_contribution_receivable": 71
+      }
+    },
+    {
+      "calendar_year": 2020,
+      "pdf_pages": 476,
+      "pages_with_text": 475,
+      "pages_with_detected_tables": 422,
+      "tables": 534,
+      "funds_detected": 145,
+      "table_kinds": {
+        "financial_performance": 145,
+        "financial_position": 145,
+        "other_transfer_allocation_contributions": 38,
+        "other_transfer_allocation_internal_transfers": 15,
+        "voluntary_contribution": 122,
+        "voluntary_contribution_receivable": 69
+      }
+    },
+    {
+      "calendar_year": 2021,
+      "pdf_pages": 449,
+      "pages_with_text": 448,
+      "pages_with_detected_tables": 396,
+      "tables": 514,
+      "funds_detected": 137,
+      "table_kinds": {
+        "financial_performance": 137,
+        "financial_position": 137,
+        "other_transfer_allocation_contributions": 37,
+        "other_transfer_allocation_internal_transfers": 13,
+        "voluntary_contribution": 114,
+        "voluntary_contribution_receivable": 76
+      }
+    },
+    {
+      "calendar_year": 2022,
+      "pdf_pages": 450,
+      "pages_with_text": 449,
+      "pages_with_detected_tables": 396,
+      "tables": 531,
+      "funds_detected": 140,
+      "table_kinds": {
+        "financial_performance": 140,
+        "financial_position": 140,
+        "other_transfer_allocation_contributions": 43,
+        "other_transfer_allocation_internal_transfers": 23,
+        "voluntary_contribution": 110,
+        "voluntary_contribution_receivable": 75
+      }
+    },
+    {
+      "calendar_year": 2023,
+      "pdf_pages": 466,
+      "pages_with_text": 465,
+      "pages_with_detected_tables": 414,
+      "tables": 698,
+      "funds_detected": 143,
+      "table_kinds": {
+        "changes_in_net_assets": 143,
+        "financial_performance": 143,
+        "financial_position": 143,
+        "other_transfer_allocation_contributions": 50,
+        "other_transfer_allocation_internal_transfers": 25,
+        "voluntary_contribution": 115,
+        "voluntary_contribution_receivable": 79
+      }
+    },
+    {
+      "calendar_year": 2024,
+      "pdf_pages": 472,
+      "pages_with_text": 472,
+      "pages_with_detected_tables": 418,
+      "tables": 717,
+      "funds_detected": 145,
+      "table_kinds": {
+        "changes_in_net_assets": 145,
+        "financial_performance": 145,
+        "financial_position": 145,
+        "other_transfer_allocation_contributions": 49,
+        "other_transfer_allocation_internal_transfers": 31,
+        "voluntary_contribution": 122,
+        "voluntary_contribution_receivable": 80
+      }
+    }
+  ],
+  "stage1_table_index_rows": 4511
+}
