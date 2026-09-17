@@ -1,6 +1,13 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuRadioGroup,
+  DropdownMenuRadioItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
 import { SystemFlowDiagram } from "./SystemFlowDiagram";
@@ -283,48 +290,50 @@ export function SystemFlows() {
             columnControls={(
               ["funding", "organization", "spending"] as const
             ).map((dimension) => (
-              <label
-                key={dimension}
-                className={`relative inline-flex cursor-pointer items-center gap-1.5 rounded-full border border-border bg-secondary px-2 py-1 text-start text-xs text-black transition-colors focus-within:outline-2 focus-within:outline-offset-2 focus-within:outline-un-blue hover:bg-gray-200`}
-              >
-                <span className="sr-only">
-                  {dimension === "funding"
-                    ? "Funding from"
-                    : dimension === "organization"
-                      ? "Through"
-                      : "Spending by"}
-                </span>
-                <span
-                  aria-hidden="true"
-                  className="font-medium whitespace-nowrap text-black"
-                >
-                  {
-                    options[dimension].find(
+              <DropdownMenu key={dimension} modal={false}>
+                <DropdownMenuTrigger asChild>
+                  <button
+                    type="button"
+                    aria-label={
+                      dimension === "funding"
+                        ? "Funding from"
+                        : dimension === "organization"
+                          ? "Through"
+                          : "Spending by"
+                    }
+                    className="inline-flex w-max cursor-pointer items-center gap-1.5 rounded-full border border-border bg-secondary px-2 py-1 text-xs font-medium text-black transition-colors hover:bg-gray-200 data-[state=open]:bg-gray-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-un-blue"
+                  >
+                    {options[dimension].find(
                       ([value]) => value === choices[dimension],
-                    )?.[1]
-                  }
-                </span>
-                <ChevronDown
-                  aria-hidden="true"
-                  className="h-3.5 w-3.5 shrink-0 text-black"
-                />
-                <select
-                  className="absolute inset-0 h-full w-full cursor-pointer opacity-0"
-                  value={choices[dimension]}
-                  onChange={(event) =>
-                    setChoices((current) => ({
-                      ...current,
-                      [dimension]: event.target.value,
-                    }))
-                  }
+                    )?.[1]}
+                    <ChevronDown aria-hidden="true" className="size-3.5" />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent
+                  align="start"
+                  className="border-gray-300 bg-white text-black"
                 >
-                  {options[dimension].map(([value, label]) => (
-                    <option key={value} value={value}>
-                      {label}
-                    </option>
-                  ))}
-                </select>
-              </label>
+                  <DropdownMenuRadioGroup
+                    value={choices[dimension]}
+                    onValueChange={(value) =>
+                      setChoices((current) => ({
+                        ...current,
+                        [dimension]: value,
+                      }))
+                    }
+                  >
+                    {options[dimension].map(([value, label]) => (
+                      <DropdownMenuRadioItem
+                        key={value}
+                        value={value}
+                        className="cursor-pointer py-2 focus:bg-gray-50 focus:text-black data-[state=checked]:bg-gray-100"
+                      >
+                        {label}
+                      </DropdownMenuRadioItem>
+                    ))}
+                  </DropdownMenuRadioGroup>
+                </DropdownMenuContent>
+              </DropdownMenu>
             ))}
           />
         </div>

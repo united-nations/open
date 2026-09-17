@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import { SystemFlowDetails } from "./SystemFlowDetails";
 import {
   getFlowDetails,
@@ -30,9 +30,25 @@ export function SystemFlowDiagram({
     graph: FlowGraph;
     selection: FlowSelection;
   } | null>(null);
+  const [highlightState, setHighlight] = useState<{
+    graph: FlowGraph;
+    selection: FlowSelection;
+  } | null>(null);
   const hover = hoverState?.graph === graph ? hoverState : null;
   const pinned = pinnedState?.graph === graph ? pinnedState.selection : null;
-  const active = pinned ?? hover?.selection;
+  // Tooltips follow the pointer immediately; highlighting waits for intent.
+  // Cancel pending changes whenever the pointer moves or the graph changes.
+  useEffect(() => {
+    if (pinned) return;
+    const timer = window.setTimeout(
+      () => setHighlight(hover ? { graph, selection: hover.selection } : null),
+      hover ? 150 : 100,
+    );
+    return () => window.clearTimeout(timer);
+  }, [hover, graph, pinned]);
+  const highlight =
+    highlightState?.graph === graph ? highlightState.selection : null;
+  const active = pinned ?? highlight;
   const tooltip = hover ? getFlowDetails(graph, hover.selection) : null;
   const details = pinned ? getFlowDetails(graph, pinned) : null;
   const pin = (selection: FlowSelection) => {
@@ -42,6 +58,7 @@ export function SystemFlowDiagram({
         : { graph, selection },
     );
     setHover(null);
+    setHighlight(null);
   };
   const relatedEdge = (source: string, target: string) =>
     !active ||
@@ -67,6 +84,7 @@ export function SystemFlowDiagram({
         if (event.key === "Escape") {
           setHover(null);
           setPinned(null);
+          setHighlight(null);
         }
       }}
     >
@@ -281,6 +299,7 @@ export function SystemFlowDiagram({
               className="rounded-full border border-gray-300 px-3 py-1 text-sm hover:bg-gray-100"
               onClick={() => {
                 setPinned(null);
+                setHighlight(null);
                 setHover(null);
               }}
             >
