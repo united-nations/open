@@ -106,7 +106,7 @@ def entity_acronym(row: pd.Series) -> str:
 
 
 def row_references(
-    rows: pd.DataFrame, source: dict[str, Any], year: int, *, contributions: bool = False
+    rows: pd.DataFrame, source: dict[str, Any], year: int, *, contributions: bool = False, position_label: str | None = None
 ) -> list[dict[str, Any]]:
     """Keep the physical PDF page of each contributing extracted source row.
 
@@ -126,14 +126,19 @@ def row_references(
             else:
                 column = "Monetary + in-kind (calculated)"
         flow_label = FLOW_LABELS.get(row.get("flow_type"), "Contributions and transfers")
+        label = flow_label if contributions else position_label or "Expenditure"
+        row_label = compact(row["counterparty"] if contributions else row["reported_line_item"])
+        if position_label and pd.notna(row.get("section")):
+            row_label = f"{row['section']} — {row_label}"
+        table_title = flow_label if contributions else "Financial position" if position_label else "Financial performance"
         reference = {
             "symbol": source["symbol"],
             "url": source.get("pdf_final_url") or source.get("source_pdf_url")
             or source["landing_page_url"],
-            "label": f"{row['fund_code']} — {flow_label if contributions else 'Expenditure'}",
-            "rowLabel": compact(row["counterparty"] if contributions else row["reported_line_item"]),
+            "label": f"{row['fund_code']} — {label}",
+            "rowLabel": row_label,
             "columnHeader": column,
-            "tableTitle": f"Schedule {row['schedule_number']} — {flow_label if contributions else 'Financial performance'}",
+            "tableTitle": f"Schedule {row['schedule_number']} — {table_title}",
         }
         if pd.notna(row.get("page")):
             reference["pdfPage"] = int(row["page"])
@@ -144,6 +149,47 @@ def row_references(
             references.append(reference)
             seen.add(key)
     return references
+
+
+POSITION_LINES = {
+    "cash": ("Cash and cash equivalents", {"cash and cash equivalents"}),
+    "investments": ("Investments", {"investments"}),
+    "contributionsReceivable": ("Contributions receivable", {"voluntary contributions receivable", "voluntary contributions receivables", "assessed contributions receivable"}),
+    "otherReceivables": ("Other receivables", {"other receivables"}),
+    "totalAssets": ("Total assets", {"total assets"}),
+    "totalLiabilities": ("Total liabilities", {"total liabilities"}),
+    "netAssets": ("Net assets", {"total net assets"}),
+}
+
+
+def financial_position(year: int, facts: pd.DataFrame, codes: list[str], source: dict[str, Any]) -> dict[str, Any]:
+    """Year-end stocks, never revenue or spending capacity; omit incomplete totals."""
+    annual = facts.loc[
+        facts["calendar_year"].eq(year) & facts["period_year"].eq(year)
+        & facts["statement_type"].eq("financial_position") & facts["fund_code"].isin(codes)
+    ].copy()
+    normalized = annual["line_item"].str.casefold()
+    metrics = []
+    for key, (label, aliases) in POSITION_LINES.items():
+        rows = annual.loc[normalized.isin(aliases)]
+        # Current and non-current balances are separate source rows and both belong
+        # in the aggregate. Missing source facts must never silently become zero.
+        expected_rows = 2 if key in {"investments", "contributionsReceivable", "otherReceivables"} else 1
+        per_fund = rows.groupby("fund_code").size()
+        covered = int(per_fund.ge(expected_rows).sum())
+        references = row_references(rows, source, year, position_label=label)
+        components = []
+        if expected_rows == 2 and "section" in rows:
+            for section, component_label in [("Current assets", "Current"), ("Non-current assets", "Non-current")]:
+                component_rows = rows.loc[rows["section"].str.endswith(section)]
+                if component_rows["fund_code"].nunique() == len(codes):
+                    components.append({"label": component_label, "amount": int(component_rows["amount_usd"].sum())})
+        metrics.append({
+            "key": key, "label": label,
+            "amount": int(rows["amount_usd"].sum()) if covered == len(codes) and codes else None,
+            "fundsCovered": int(covered), "supportingSources": references, "components": components,
+        })
+    return {"asOf": f"{year}-12-31", "fundCount": len(codes), "metrics": metrics}
 
 
 def build_entity_export(
@@ -273,6 +319,15 @@ def build_entity_export(
                     "supportingSources": row_references(group.loc[group["fund_code"].eq(fund.fund_code)], source, year),
                 }
             )
+
+    for node in nodes:
+        if node["tier"] == "detail":
+            position_codes = [node["code"]]
+        elif node["tier"] == "budget_unit":
+            position_codes = joined.loc[joined["audited_entity_code"].eq(node["code"]), "fund_code"].tolist()
+        else:
+            continue  # Structural treemap nodes have no financial-position sidebar.
+        node["financialPosition"] = financial_position(year, facts, position_codes, source)
 
     if sum(node["amount"] for node in nodes if node["parentId"] == section_id) != all_total:
         raise ValueError(f"Entity totals do not reconcile for {year}")

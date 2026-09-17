@@ -50,7 +50,7 @@
   "funds": 157,
   "fund_years": 1118,
   "statement_facts": 111477,
-  "counterparty_flow_rows": 21040,
+  "counterparty_flow_rows": 21042,
   "missing_fund_code_tables": 0,
   "duplicate_statement_fact_keys": 0,
   "financial_position_reconciliations": 1118,
@@ -65,7 +65,7 @@
   "financial_performance_reconciliations": 1118,
   "financial_performance_reconciliation_failures": 0,
   "financial_performance_reconciliation_failure_examples": [],
-  "flow_component_reconciliations": 17359,
+  "flow_component_reconciliations": 17369,
   "flow_component_reconciliation_failures": 4,
   "flow_component_reconciliation_failure_examples": [
     {

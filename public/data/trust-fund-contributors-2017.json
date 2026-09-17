@@ -4,11 +4,11 @@
     "currency": "USD",
     "measure": "Contributions and transfers",
     "statement_total_usd": 2185776333,
-    "named_rows_total_usd": 2185774318,
-    "contributor_total_usd": 2188287872,
+    "named_rows_total_usd": 2185776333,
+    "contributor_total_usd": 2188289887,
     "adjustment_total_usd": -2513554,
-    "unallocated_residual_usd": 2015,
-    "named_row_completeness": 0.999999,
+    "unallocated_residual_usd": 0,
+    "named_row_completeness": 1.0,
     "unresolved_entity_amount_usd": 68223,
     "source": {
       "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
@@ -25,7 +25,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 415876168,
+          "amount_usd": 415895573,
           "supportingSources": [
             {
               "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
@@ -134,6 +134,17 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.8.1 — Voluntary contributions",
               "pdfPage": 182,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+              "label": "GBA — Voluntary contributions",
+              "rowLabel": "United Kingdom of Great Britain and Northern Ireland",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.13.1 — Voluntary contributions",
+              "pdfPage": 197,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             },
@@ -350,8 +361,8 @@
         }
       ],
       "counterparty_group": "Government",
-      "amount_usd": 415876168,
-      "positive_amount_usd": 416195935,
+      "amount_usd": 415895573,
+      "positive_amount_usd": 416215340,
       "negative_amount_usd": -319767,
       "reported_names": [
         "United Kingdom of Great Britain and Northern Ireland"
@@ -1298,6 +1309,49 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 4.1.1 — Voluntary contributions",
               "pdfPage": 283,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "GBA",
+          "fund_name": "Trust Fund for Statistical Development and Capacity Building",
+          "entity_code": "DESA",
+          "entity_name": "Department of Economic and Social Affairs",
+          "entity_id": "trust-fund-entity:DESA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "governments",
+              "label": "Government contributions",
+              "amount_usd": 19405,
+              "supportingSources": [
+                {
+                  "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+                  "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+                  "label": "GBA — Voluntary contributions",
+                  "rowLabel": "United Kingdom of Great Britain and Northern Ireland",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.13.1 — Voluntary contributions",
+                  "pdfPage": 197,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 19405,
+          "supportingSources": [
+            {
+              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+              "label": "GBA — Voluntary contributions",
+              "rowLabel": "United Kingdom of Great Britain and Northern Ireland",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.13.1 — Voluntary contributions",
+              "pdfPage": 197,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -47141,7 +47195,7 @@
       ]
     },
     {
-      "name": "Organization For Economic Cooperation and Development (To)/From Trust Fund for the Financing of the Implementation the Convention on Long-Range Transboundary Air Pollution",
+      "name": "Organization For Economic Cooperation and Development -OECD (To)/From Trust Fund for the Financing of the Implementation the Convention on Long-Range Transboundary Air Pollution",
       "flows": [
         {
           "type": "voluntary_contribution",
@@ -47153,7 +47207,7 @@
               "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
               "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
               "label": "ECE — Voluntary contributions",
-              "rowLabel": "Organization For Economic Cooperation and Development (To)/From Trust Fund for the Financing of the Implementation the Convention on Long-Range Transboundary Air Pollution",
+              "rowLabel": "Organization For Economic Cooperation and Development -OECD (To)/From Trust Fund for the Financing of the Implementation the Convention on Long-Range Transboundary Air Pollution",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.8.1 — Voluntary contributions",
               "pdfPage": 182,
@@ -47168,7 +47222,7 @@
       "positive_amount_usd": 329448,
       "negative_amount_usd": 0,
       "reported_names": [
-        "Organization For Economic Cooperation and Development (To)/From Trust Fund for the Financing of the Implementation the Convention on Long-Range Transboundary Air Pollution"
+        "Organization For Economic Cooperation and Development -OECD (To)/From Trust Fund for the Financing of the Implementation the Convention on Long-Range Transboundary Air Pollution"
       ],
       "destinations": [
         {
@@ -47189,7 +47243,7 @@
                   "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
                   "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
                   "label": "ECE — Voluntary contributions",
-                  "rowLabel": "Organization For Economic Cooperation and Development (To)/From Trust Fund for the Financing of the Implementation the Convention on Long-Range Transboundary Air Pollution",
+                  "rowLabel": "Organization For Economic Cooperation and Development -OECD (To)/From Trust Fund for the Financing of the Implementation the Convention on Long-Range Transboundary Air Pollution",
                   "columnHeader": "Total",
                   "tableTitle": "Schedule 3.8.1 — Voluntary contributions",
                   "pdfPage": 182,
@@ -47205,7 +47259,7 @@
               "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
               "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
               "label": "ECE — Voluntary contributions",
-              "rowLabel": "Organization For Economic Cooperation and Development (To)/From Trust Fund for the Financing of the Implementation the Convention on Long-Range Transboundary Air Pollution",
+              "rowLabel": "Organization For Economic Cooperation and Development -OECD (To)/From Trust Fund for the Financing of the Implementation the Convention on Long-Range Transboundary Air Pollution",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.8.1 — Voluntary contributions",
               "pdfPage": 182,
@@ -57413,7 +57467,7 @@
       ]
     },
     {
-      "name": "Org For Security And Cooperation In Europe - OSCE Secretariat (To)/From Trust Fund for the establishment of a Joint",
+      "name": "Org For Security And Cooperation In Europe - OSCE Secretariat (To)/From Trust Fund for the establishment of a Joint Investigative Mechanism (JIM) pursuant to UNSCR 2235 (2015)",
       "flows": [
         {
           "type": "voluntary_contribution",
@@ -57425,7 +57479,7 @@
               "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
               "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
               "label": "DGA — Voluntary contributions",
-              "rowLabel": "Org For Security And Cooperation In Europe - OSCE Secretariat (To)/From Trust Fund for the establishment of a Joint",
+              "rowLabel": "Org For Security And Cooperation In Europe - OSCE Secretariat (To)/From Trust Fund for the establishment of a Joint Investigative Mechanism (JIM) pursuant to UNSCR 2235 (2015)",
               "columnHeader": "Total",
               "tableTitle": "Schedule 1.11.1 — Voluntary contributions",
               "pdfPage": 39,
@@ -57440,7 +57494,7 @@
       "positive_amount_usd": 98500,
       "negative_amount_usd": 0,
       "reported_names": [
-        "Org For Security And Cooperation In Europe - OSCE Secretariat (To)/From Trust Fund for the establishment of a Joint"
+        "Org For Security And Cooperation In Europe - OSCE Secretariat (To)/From Trust Fund for the establishment of a Joint Investigative Mechanism (JIM) pursuant to UNSCR 2235 (2015)"
       ],
       "destinations": [
         {
@@ -57461,7 +57515,7 @@
                   "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
                   "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
                   "label": "DGA — Voluntary contributions",
-                  "rowLabel": "Org For Security And Cooperation In Europe - OSCE Secretariat (To)/From Trust Fund for the establishment of a Joint",
+                  "rowLabel": "Org For Security And Cooperation In Europe - OSCE Secretariat (To)/From Trust Fund for the establishment of a Joint Investigative Mechanism (JIM) pursuant to UNSCR 2235 (2015)",
                   "columnHeader": "Total",
                   "tableTitle": "Schedule 1.11.1 — Voluntary contributions",
                   "pdfPage": 39,
@@ -57477,7 +57531,7 @@
               "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
               "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
               "label": "DGA — Voluntary contributions",
-              "rowLabel": "Org For Security And Cooperation In Europe - OSCE Secretariat (To)/From Trust Fund for the establishment of a Joint",
+              "rowLabel": "Org For Security And Cooperation In Europe - OSCE Secretariat (To)/From Trust Fund for the establishment of a Joint Investigative Mechanism (JIM) pursuant to UNSCR 2235 (2015)",
               "columnHeader": "Total",
               "tableTitle": "Schedule 1.11.1 — Voluntary contributions",
               "pdfPage": 39,
@@ -60737,7 +60791,7 @@
       ]
     },
     {
-      "name": "Internet Governance Forum Support Association -",
+      "name": "Internet Governance Forum Support Association - IGFSA",
       "flows": [
         {
           "type": "voluntary_contribution",
@@ -60749,7 +60803,7 @@
               "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
               "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
               "label": "XES — Voluntary contributions",
-              "rowLabel": "Internet Governance Forum Support Association -",
+              "rowLabel": "Internet Governance Forum Support Association - IGFSA",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.39.1 — Voluntary contributions",
               "pdfPage": 276,
@@ -60764,7 +60818,7 @@
       "positive_amount_usd": 60000,
       "negative_amount_usd": 0,
       "reported_names": [
-        "Internet Governance Forum Support Association -"
+        "Internet Governance Forum Support Association - IGFSA"
       ],
       "destinations": [
         {
@@ -60785,7 +60839,7 @@
                   "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
                   "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
                   "label": "XES — Voluntary contributions",
-                  "rowLabel": "Internet Governance Forum Support Association -",
+                  "rowLabel": "Internet Governance Forum Support Association - IGFSA",
                   "columnHeader": "Total",
                   "tableTitle": "Schedule 3.39.1 — Voluntary contributions",
                   "pdfPage": 276,
@@ -60801,7 +60855,7 @@
               "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
               "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
               "label": "XES — Voluntary contributions",
-              "rowLabel": "Internet Governance Forum Support Association -",
+              "rowLabel": "Internet Governance Forum Support Association - IGFSA",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.39.1 — Voluntary contributions",
               "pdfPage": 276,
@@ -74457,82 +74511,6 @@
       ]
     },
     {
-      "name": "Investigative Mechanism (JIM) pursuant to UNSCR 2235",
-      "flows": [
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": -2015,
-          "supportingSources": [
-            {
-              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
-              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
-              "label": "DGA — Voluntary contributions",
-              "rowLabel": "Investigative Mechanism (JIM) pursuant to UNSCR 2235",
-              "columnHeader": "Monetary + in-kind (calculated)",
-              "tableTitle": "Schedule 1.11.1 — Voluntary contributions",
-              "pdfPage": 39,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ],
-      "counterparty_group": "Others",
-      "amount_usd": -2015,
-      "positive_amount_usd": 0,
-      "negative_amount_usd": -2015,
-      "reported_names": [
-        "Investigative Mechanism (JIM) pursuant to UNSCR 2235"
-      ],
-      "destinations": [
-        {
-          "fund_code": "DGA",
-          "fund_name": "Trust Fund for Global and Regional Disarmament Activities",
-          "entity_code": "ODA",
-          "entity_name": "Office for Disarmament Affairs",
-          "entity_id": "trust-fund-entity:ODA",
-          "mapping_status": "mapped",
-          "flows": [
-            {
-              "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
-              "amount_usd": -2015,
-              "supportingSources": [
-                {
-                  "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
-                  "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
-                  "label": "DGA — Voluntary contributions",
-                  "rowLabel": "Investigative Mechanism (JIM) pursuant to UNSCR 2235",
-                  "columnHeader": "Monetary + in-kind (calculated)",
-                  "tableTitle": "Schedule 1.11.1 — Voluntary contributions",
-                  "pdfPage": 39,
-                  "pdfPageScope": "row",
-                  "pageStatus": "extracted_pdf_row"
-                }
-              ]
-            }
-          ],
-          "amount_usd": -2015,
-          "supportingSources": [
-            {
-              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
-              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
-              "label": "DGA — Voluntary contributions",
-              "rowLabel": "Investigative Mechanism (JIM) pursuant to UNSCR 2235",
-              "columnHeader": "Monetary + in-kind (calculated)",
-              "tableTitle": "Schedule 1.11.1 — Voluntary contributions",
-              "pdfPage": 39,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "UN Habitat",
       "flows": [
         {
@@ -76367,190 +76345,6 @@
       ]
     },
     {
-      "name": "United Kingdom of Great Britain and Northern",
-      "flows": [
-        {
-          "type": "voluntary_contribution",
-          "group": "governments",
-          "label": "Government contributions",
-          "amount_usd": -23399,
-          "supportingSources": [
-            {
-              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
-              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
-              "label": "AMR — Voluntary contributions",
-              "rowLabel": "United Kingdom of Great Britain and Northern",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.1.1 — Voluntary contributions",
-              "pdfPage": 160,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            },
-            {
-              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
-              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
-              "label": "GBA — Voluntary contributions",
-              "rowLabel": "United Kingdom of Great Britain and Northern",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.13.1 — Voluntary contributions",
-              "pdfPage": 197,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            },
-            {
-              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
-              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
-              "label": "WKA — Voluntary contributions",
-              "rowLabel": "United Kingdom of Great Britain and Northern",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.36.1 — Voluntary contributions",
-              "pdfPage": 267,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ],
-      "counterparty_group": "Government",
-      "amount_usd": -23399,
-      "positive_amount_usd": 19405,
-      "negative_amount_usd": -42804,
-      "reported_names": [
-        "United Kingdom of Great Britain and Northern"
-      ],
-      "destinations": [
-        {
-          "fund_code": "GBA",
-          "fund_name": "Trust Fund for Statistical Development and Capacity Building",
-          "entity_code": "DESA",
-          "entity_name": "Department of Economic and Social Affairs",
-          "entity_id": "trust-fund-entity:DESA",
-          "mapping_status": "mapped",
-          "flows": [
-            {
-              "type": "voluntary_contribution",
-              "group": "governments",
-              "label": "Government contributions",
-              "amount_usd": 19405,
-              "supportingSources": [
-                {
-                  "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
-                  "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
-                  "label": "GBA — Voluntary contributions",
-                  "rowLabel": "United Kingdom of Great Britain and Northern",
-                  "columnHeader": "Total",
-                  "tableTitle": "Schedule 3.13.1 — Voluntary contributions",
-                  "pdfPage": 197,
-                  "pdfPageScope": "row",
-                  "pageStatus": "extracted_pdf_row"
-                }
-              ]
-            }
-          ],
-          "amount_usd": 19405,
-          "supportingSources": [
-            {
-              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
-              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
-              "label": "GBA — Voluntary contributions",
-              "rowLabel": "United Kingdom of Great Britain and Northern",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.13.1 — Voluntary contributions",
-              "pdfPage": 197,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "fund_code": "AMR",
-          "fund_name": "Trust Fund for the Annual Ministerial Review and the Development Cooperation Forum",
-          "entity_code": "DESA",
-          "entity_name": "Department of Economic and Social Affairs",
-          "entity_id": "trust-fund-entity:DESA",
-          "mapping_status": "mapped",
-          "flows": [
-            {
-              "type": "voluntary_contribution",
-              "group": "governments",
-              "label": "Government contributions",
-              "amount_usd": -7683,
-              "supportingSources": [
-                {
-                  "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
-                  "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
-                  "label": "AMR — Voluntary contributions",
-                  "rowLabel": "United Kingdom of Great Britain and Northern",
-                  "columnHeader": "Total",
-                  "tableTitle": "Schedule 3.1.1 — Voluntary contributions",
-                  "pdfPage": 160,
-                  "pdfPageScope": "row",
-                  "pageStatus": "extracted_pdf_row"
-                }
-              ]
-            }
-          ],
-          "amount_usd": -7683,
-          "supportingSources": [
-            {
-              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
-              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
-              "label": "AMR — Voluntary contributions",
-              "rowLabel": "United Kingdom of Great Britain and Northern",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.1.1 — Voluntary contributions",
-              "pdfPage": 160,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "fund_code": "WKA",
-          "fund_name": "Trust Fund to Support the Work of the High-level Political Forum on Sustainable Development",
-          "entity_code": "DESA",
-          "entity_name": "Department of Economic and Social Affairs",
-          "entity_id": "trust-fund-entity:DESA",
-          "mapping_status": "mapped",
-          "flows": [
-            {
-              "type": "voluntary_contribution",
-              "group": "governments",
-              "label": "Government contributions",
-              "amount_usd": -35121,
-              "supportingSources": [
-                {
-                  "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
-                  "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
-                  "label": "WKA — Voluntary contributions",
-                  "rowLabel": "United Kingdom of Great Britain and Northern",
-                  "columnHeader": "Total",
-                  "tableTitle": "Schedule 3.36.1 — Voluntary contributions",
-                  "pdfPage": 267,
-                  "pdfPageScope": "row",
-                  "pageStatus": "extracted_pdf_row"
-                }
-              ]
-            }
-          ],
-          "amount_usd": -35121,
-          "supportingSources": [
-            {
-              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
-              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
-              "label": "WKA — Voluntary contributions",
-              "rowLabel": "United Kingdom of Great Britain and Northern",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.36.1 — Voluntary contributions",
-              "pdfPage": 267,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Capacity Building (GBA) (To)/From Trust Fund to Support the work of the level Political Forum on Sustainable Development",
       "flows": [
         {
@@ -77107,6 +76901,136 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.39.1 — Inter-agency contributions and transfers",
               "pdfPage": 277,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "United Kingdom of Great Britain and Northern",
+      "flows": [
+        {
+          "type": "voluntary_contribution",
+          "group": "governments",
+          "label": "Government contributions",
+          "amount_usd": -42804,
+          "supportingSources": [
+            {
+              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+              "label": "AMR — Voluntary contributions",
+              "rowLabel": "United Kingdom of Great Britain and Northern",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.1.1 — Voluntary contributions",
+              "pdfPage": 160,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+              "label": "WKA — Voluntary contributions",
+              "rowLabel": "United Kingdom of Great Britain and Northern",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.36.1 — Voluntary contributions",
+              "pdfPage": 267,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        }
+      ],
+      "counterparty_group": "Government",
+      "amount_usd": -42804,
+      "positive_amount_usd": 0,
+      "negative_amount_usd": -42804,
+      "reported_names": [
+        "United Kingdom of Great Britain and Northern"
+      ],
+      "destinations": [
+        {
+          "fund_code": "AMR",
+          "fund_name": "Trust Fund for the Annual Ministerial Review and the Development Cooperation Forum",
+          "entity_code": "DESA",
+          "entity_name": "Department of Economic and Social Affairs",
+          "entity_id": "trust-fund-entity:DESA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "governments",
+              "label": "Government contributions",
+              "amount_usd": -7683,
+              "supportingSources": [
+                {
+                  "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+                  "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+                  "label": "AMR — Voluntary contributions",
+                  "rowLabel": "United Kingdom of Great Britain and Northern",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.1.1 — Voluntary contributions",
+                  "pdfPage": 160,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": -7683,
+          "supportingSources": [
+            {
+              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+              "label": "AMR — Voluntary contributions",
+              "rowLabel": "United Kingdom of Great Britain and Northern",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.1.1 — Voluntary contributions",
+              "pdfPage": 160,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "WKA",
+          "fund_name": "Trust Fund to Support the Work of the High-level Political Forum on Sustainable Development",
+          "entity_code": "DESA",
+          "entity_name": "Department of Economic and Social Affairs",
+          "entity_id": "trust-fund-entity:DESA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "governments",
+              "label": "Government contributions",
+              "amount_usd": -35121,
+              "supportingSources": [
+                {
+                  "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+                  "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+                  "label": "WKA — Voluntary contributions",
+                  "rowLabel": "United Kingdom of Great Britain and Northern",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.36.1 — Voluntary contributions",
+                  "pdfPage": 267,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": -35121,
+          "supportingSources": [
+            {
+              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+              "label": "WKA — Voluntary contributions",
+              "rowLabel": "United Kingdom of Great Britain and Northern",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.36.1 — Voluntary contributions",
+              "pdfPage": 267,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -80238,8 +80162,8 @@
     {
       "fund_code": "DGA",
       "statement_amount_usd": 2337952,
-      "named_rows_amount_usd": 2335937,
-      "residual_usd": 2015,
+      "named_rows_amount_usd": 2337952,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {

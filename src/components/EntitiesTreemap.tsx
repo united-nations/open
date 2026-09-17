@@ -251,6 +251,16 @@ export function EntitiesTreemap() {
   useEffect(() => {
     if (loading || !pendingDeepLink) return;
     const timer = window.setTimeout(() => {
+      const requestedYear = Number(
+        new URLSearchParams(window.location.search).get("year"),
+      );
+      if (yearRanges.entitySpending.years.includes(requestedYear)) {
+        if (currentYear !== requestedYear) {
+          setCurrentYear(requestedYear);
+          return;
+        }
+        if (loadedSpendingYear !== requestedYear) return;
+      }
       const entity = activeEntities.find(
         (candidate) => candidate.entity === pendingDeepLink,
       );
@@ -258,7 +268,15 @@ export function EntitiesTreemap() {
       setPendingDeepLink(null);
     }, 0);
     return () => window.clearTimeout(timer);
-  }, [activeEntities, loading, pendingDeepLink, setPendingDeepLink]);
+  }, [
+    activeEntities,
+    loading,
+    pendingDeepLink,
+    setPendingDeepLink,
+    currentYear,
+    loadedSpendingYear,
+    yearRanges.entitySpending.years,
+  ]);
 
   const openEntity = useCallback((entity: Entity) => {
     setSelectedEntity(entity);

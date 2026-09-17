@@ -4,11 +4,11 @@
     "currency": "USD",
     "measure": "Contributions and transfers",
     "statement_total_usd": 2932159160,
-    "named_rows_total_usd": 2932159163,
-    "contributor_total_usd": 2954778628,
+    "named_rows_total_usd": 2932159160,
+    "contributor_total_usd": 2954778625,
     "adjustment_total_usd": -22619465,
-    "unallocated_residual_usd": -3,
-    "named_row_completeness": 0.999999,
+    "unallocated_residual_usd": 0,
+    "named_row_completeness": 1.0,
     "unresolved_entity_amount_usd": 20000,
     "source": {
       "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
@@ -57412,7 +57412,7 @@
       ]
     },
     {
-      "name": "Extremena Agency of International Cooperation for",
+      "name": "Extremena Agency of International Cooperation for Develo",
       "flows": [
         {
           "type": "voluntary_contribution",
@@ -57424,7 +57424,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
               "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
               "label": "YJA — Voluntary contributions",
-              "rowLabel": "Extremena Agency of International Cooperation for",
+              "rowLabel": "Extremena Agency of International Cooperation for Develo",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.40.1 — Voluntary contributions",
               "pdfPage": 278,
@@ -57439,7 +57439,7 @@
       "positive_amount_usd": 170648,
       "negative_amount_usd": 0,
       "reported_names": [
-        "Extremena Agency of International Cooperation for"
+        "Extremena Agency of International Cooperation for Develo"
       ],
       "destinations": [
         {
@@ -57460,7 +57460,7 @@
                   "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
                   "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
                   "label": "YJA — Voluntary contributions",
-                  "rowLabel": "Extremena Agency of International Cooperation for",
+                  "rowLabel": "Extremena Agency of International Cooperation for Develo",
                   "columnHeader": "Total",
                   "tableTitle": "Schedule 3.40.1 — Voluntary contributions",
                   "pdfPage": 278,
@@ -57476,7 +57476,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
               "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
               "label": "YJA — Voluntary contributions",
-              "rowLabel": "Extremena Agency of International Cooperation for",
+              "rowLabel": "Extremena Agency of International Cooperation for Develo",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.40.1 — Voluntary contributions",
               "pdfPage": 278,
@@ -67024,7 +67024,7 @@
       ]
     },
     {
-      "name": "OECD",
+      "name": "Organization for Economic Cooperation and Development - OECD",
       "flows": [
         {
           "type": "voluntary_contribution",
@@ -67036,7 +67036,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
               "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
               "label": "ECE — Voluntary contributions",
-              "rowLabel": "OECD",
+              "rowLabel": "Organization for Economic Cooperation and Development - OECD",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.8.1 — Voluntary contributions",
               "pdfPage": 182,
@@ -67051,7 +67051,7 @@
       "positive_amount_usd": 56910,
       "negative_amount_usd": 0,
       "reported_names": [
-        "OECD"
+        "Organization for Economic Cooperation and Development - OECD"
       ],
       "destinations": [
         {
@@ -67072,7 +67072,7 @@
                   "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
                   "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
                   "label": "ECE — Voluntary contributions",
-                  "rowLabel": "OECD",
+                  "rowLabel": "Organization for Economic Cooperation and Development - OECD",
                   "columnHeader": "Total",
                   "tableTitle": "Schedule 3.8.1 — Voluntary contributions",
                   "pdfPage": 182,
@@ -67088,7 +67088,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
               "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
               "label": "ECE — Voluntary contributions",
-              "rowLabel": "OECD",
+              "rowLabel": "Organization for Economic Cooperation and Development - OECD",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.8.1 — Voluntary contributions",
               "pdfPage": 182,
@@ -67728,7 +67728,7 @@
       ]
     },
     {
-      "name": "Peace and Disarmament in Asia (DFA) From/(To) Trust Fund for the establishment of a Joint",
+      "name": "Peace and Disarmament in Asia (DFA) From/(To) Trust Fund for the establishment of a Joint Investigative Mechanism (JIM) pursuant to UNSCR 2235 (2015)",
       "flows": [
         {
           "type": "voluntary_contribution",
@@ -67740,7 +67740,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
               "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
               "label": "DGA — Voluntary contributions",
-              "rowLabel": "Peace and Disarmament in Asia (DFA) From/(To) Trust Fund for the establishment of a Joint",
+              "rowLabel": "Peace and Disarmament in Asia (DFA) From/(To) Trust Fund for the establishment of a Joint Investigative Mechanism (JIM) pursuant to UNSCR 2235 (2015)",
               "columnHeader": "Total",
               "tableTitle": "Schedule 1.11.1 — Voluntary contributions",
               "pdfPage": 40,
@@ -67755,7 +67755,7 @@
       "positive_amount_usd": 49621,
       "negative_amount_usd": 0,
       "reported_names": [
-        "Peace and Disarmament in Asia (DFA) From/(To) Trust Fund for the establishment of a Joint"
+        "Peace and Disarmament in Asia (DFA) From/(To) Trust Fund for the establishment of a Joint Investigative Mechanism (JIM) pursuant to UNSCR 2235 (2015)"
       ],
       "destinations": [
         {
@@ -67776,7 +67776,7 @@
                   "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
                   "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
                   "label": "DGA — Voluntary contributions",
-                  "rowLabel": "Peace and Disarmament in Asia (DFA) From/(To) Trust Fund for the establishment of a Joint",
+                  "rowLabel": "Peace and Disarmament in Asia (DFA) From/(To) Trust Fund for the establishment of a Joint Investigative Mechanism (JIM) pursuant to UNSCR 2235 (2015)",
                   "columnHeader": "Total",
                   "tableTitle": "Schedule 1.11.1 — Voluntary contributions",
                   "pdfPage": 40,
@@ -67792,7 +67792,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
               "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
               "label": "DGA — Voluntary contributions",
-              "rowLabel": "Peace and Disarmament in Asia (DFA) From/(To) Trust Fund for the establishment of a Joint",
+              "rowLabel": "Peace and Disarmament in Asia (DFA) From/(To) Trust Fund for the establishment of a Joint Investigative Mechanism (JIM) pursuant to UNSCR 2235 (2015)",
               "columnHeader": "Total",
               "tableTitle": "Schedule 1.11.1 — Voluntary contributions",
               "pdfPage": 40,
@@ -72346,7 +72346,7 @@
       ]
     },
     {
-      "name": "Caribbean Catastrophe Risk Insurance Facility Segregated",
+      "name": "Caribbean Catastrophe Risk Insurance Facility Segregated Po",
       "flows": [
         {
           "type": "voluntary_contribution",
@@ -72358,7 +72358,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
               "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
               "label": "BTS — Voluntary contributions",
-              "rowLabel": "Caribbean Catastrophe Risk Insurance Facility Segregated",
+              "rowLabel": "Caribbean Catastrophe Risk Insurance Facility Segregated Po",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.4.1 — Voluntary contributions",
               "pdfPage": 169,
@@ -72373,7 +72373,7 @@
       "positive_amount_usd": 25000,
       "negative_amount_usd": 0,
       "reported_names": [
-        "Caribbean Catastrophe Risk Insurance Facility Segregated"
+        "Caribbean Catastrophe Risk Insurance Facility Segregated Po"
       ],
       "destinations": [
         {
@@ -72394,7 +72394,7 @@
                   "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
                   "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
                   "label": "BTS — Voluntary contributions",
-                  "rowLabel": "Caribbean Catastrophe Risk Insurance Facility Segregated",
+                  "rowLabel": "Caribbean Catastrophe Risk Insurance Facility Segregated Po",
                   "columnHeader": "Total",
                   "tableTitle": "Schedule 3.4.1 — Voluntary contributions",
                   "pdfPage": 169,
@@ -72410,7 +72410,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
               "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
               "label": "BTS — Voluntary contributions",
-              "rowLabel": "Caribbean Catastrophe Risk Insurance Facility Segregated",
+              "rowLabel": "Caribbean Catastrophe Risk Insurance Facility Segregated Po",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.4.1 — Voluntary contributions",
               "pdfPage": 169,
@@ -77056,7 +77056,7 @@
       ]
     },
     {
-      "name": "Internet Governance Forum Support Association -",
+      "name": "Internet Governance Forum Support Association - IGFSA",
       "flows": [
         {
           "type": "voluntary_contribution",
@@ -77068,7 +77068,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
               "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
               "label": "XES — Voluntary contributions",
-              "rowLabel": "Internet Governance Forum Support Association -",
+              "rowLabel": "Internet Governance Forum Support Association - IGFSA",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.39.1 — Voluntary contributions",
               "pdfPage": 274,
@@ -77083,7 +77083,7 @@
       "positive_amount_usd": 10000,
       "negative_amount_usd": 0,
       "reported_names": [
-        "Internet Governance Forum Support Association -"
+        "Internet Governance Forum Support Association - IGFSA"
       ],
       "destinations": [
         {
@@ -77104,7 +77104,7 @@
                   "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
                   "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
                   "label": "XES — Voluntary contributions",
-                  "rowLabel": "Internet Governance Forum Support Association -",
+                  "rowLabel": "Internet Governance Forum Support Association - IGFSA",
                   "columnHeader": "Total",
                   "tableTitle": "Schedule 3.39.1 — Voluntary contributions",
                   "pdfPage": 274,
@@ -77120,7 +77120,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
               "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
               "label": "XES — Voluntary contributions",
-              "rowLabel": "Internet Governance Forum Support Association -",
+              "rowLabel": "Internet Governance Forum Support Association - IGFSA",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.39.1 — Voluntary contributions",
               "pdfPage": 274,
@@ -77588,7 +77588,7 @@
       ]
     },
     {
-      "name": "Organization for International Economic Relations -",
+      "name": "Organization for International Economic Relations - OIER",
       "flows": [
         {
           "type": "voluntary_contribution",
@@ -77600,7 +77600,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
               "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
               "label": "EHA — Voluntary contributions",
-              "rowLabel": "Organization for International Economic Relations -",
+              "rowLabel": "Organization for International Economic Relations - OIER",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.9.1 — Voluntary contributions",
               "pdfPage": 185,
@@ -77615,7 +77615,7 @@
       "positive_amount_usd": 9249,
       "negative_amount_usd": 0,
       "reported_names": [
-        "Organization for International Economic Relations -"
+        "Organization for International Economic Relations - OIER"
       ],
       "destinations": [
         {
@@ -77636,7 +77636,7 @@
                   "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
                   "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
                   "label": "EHA — Voluntary contributions",
-                  "rowLabel": "Organization for International Economic Relations -",
+                  "rowLabel": "Organization for International Economic Relations - OIER",
                   "columnHeader": "Total",
                   "tableTitle": "Schedule 3.9.1 — Voluntary contributions",
                   "pdfPage": 185,
@@ -77652,7 +77652,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
               "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
               "label": "EHA — Voluntary contributions",
-              "rowLabel": "Organization for International Economic Relations -",
+              "rowLabel": "Organization for International Economic Relations - OIER",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.9.1 — Voluntary contributions",
               "pdfPage": 185,
@@ -79790,82 +79790,6 @@
       ]
     },
     {
-      "name": "Trust Fund in Support of the Office of the Special Donor",
-      "flows": [
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 2018,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-              "label": "GLA — Voluntary contributions",
-              "rowLabel": "Trust Fund in Support of the Office of the Special Donor",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 1.16.1 — Voluntary contributions",
-              "pdfPage": 54,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ],
-      "counterparty_group": "Mixed",
-      "amount_usd": 2018,
-      "positive_amount_usd": 2018,
-      "negative_amount_usd": 0,
-      "reported_names": [
-        "Trust Fund in Support of the Office of the Special Donor"
-      ],
-      "destinations": [
-        {
-          "fund_code": "GLA",
-          "fund_name": "Trust Fund in support of the Office of the Special Envoy of the Secretary-General for the Great Lakes Region",
-          "entity_code": "OSESG-GL",
-          "entity_name": "OSESG-GL",
-          "entity_id": "trust-fund-entity:OSESG-GL",
-          "mapping_status": "mapped",
-          "flows": [
-            {
-              "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
-              "amount_usd": 2018,
-              "supportingSources": [
-                {
-                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-                  "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-                  "label": "GLA — Voluntary contributions",
-                  "rowLabel": "Trust Fund in Support of the Office of the Special Donor",
-                  "columnHeader": "Total",
-                  "tableTitle": "Schedule 1.16.1 — Voluntary contributions",
-                  "pdfPage": 54,
-                  "pdfPageScope": "row",
-                  "pageStatus": "extracted_pdf_row"
-                }
-              ]
-            }
-          ],
-          "amount_usd": 2018,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-              "label": "GLA — Voluntary contributions",
-              "rowLabel": "Trust Fund in Support of the Office of the Special Donor",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 1.16.1 — Voluntary contributions",
-              "pdfPage": 54,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Sovereign Military Order of Malta - SMOM",
       "flows": [
         {
@@ -80626,82 +80550,6 @@
       ]
     },
     {
-      "name": "Organization for Economic Cooperation and Development -",
-      "flows": [
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 0,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-              "label": "ECE — Voluntary contributions",
-              "rowLabel": "Organization for Economic Cooperation and Development -",
-              "columnHeader": "Refunds, transfers and adjustments",
-              "tableTitle": "Schedule 3.8.1 — Voluntary contributions",
-              "pdfPage": 182,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ],
-      "counterparty_group": "Others",
-      "amount_usd": 0,
-      "positive_amount_usd": 0,
-      "negative_amount_usd": 0,
-      "reported_names": [
-        "Organization for Economic Cooperation and Development -"
-      ],
-      "destinations": [
-        {
-          "fund_code": "ECE",
-          "fund_name": "ECE Local Technical Co-operation Trust Funds",
-          "entity_code": "ECE",
-          "entity_name": "Economic Commission for Europe",
-          "entity_id": "trust-fund-entity:ECE",
-          "mapping_status": "mapped",
-          "flows": [
-            {
-              "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
-              "amount_usd": 0,
-              "supportingSources": [
-                {
-                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-                  "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-                  "label": "ECE — Voluntary contributions",
-                  "rowLabel": "Organization for Economic Cooperation and Development -",
-                  "columnHeader": "Refunds, transfers and adjustments",
-                  "tableTitle": "Schedule 3.8.1 — Voluntary contributions",
-                  "pdfPage": 182,
-                  "pdfPageScope": "row",
-                  "pageStatus": "extracted_pdf_row"
-                }
-              ]
-            }
-          ],
-          "amount_usd": 0,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-              "label": "ECE — Voluntary contributions",
-              "rowLabel": "Organization for Economic Cooperation and Development -",
-              "columnHeader": "Refunds, transfers and adjustments",
-              "tableTitle": "Schedule 3.8.1 — Voluntary contributions",
-              "pdfPage": 182,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Organization of the Petroleum Exporting Countries -",
       "flows": [
         {
@@ -81182,82 +81030,6 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 1.32.1 — Voluntary contributions",
               "pdfPage": 98,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Investigative Mechanism (JIM) pursuant to UNSCR 2235",
-      "flows": [
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": -2015,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-              "label": "DGA — Voluntary contributions",
-              "rowLabel": "Investigative Mechanism (JIM) pursuant to UNSCR 2235",
-              "columnHeader": "Monetary + in-kind (calculated)",
-              "tableTitle": "Schedule 1.11.1 — Voluntary contributions",
-              "pdfPage": 40,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ],
-      "counterparty_group": "Others",
-      "amount_usd": -2015,
-      "positive_amount_usd": 0,
-      "negative_amount_usd": -2015,
-      "reported_names": [
-        "Investigative Mechanism (JIM) pursuant to UNSCR 2235"
-      ],
-      "destinations": [
-        {
-          "fund_code": "DGA",
-          "fund_name": "Trust Fund for Global and Regional Disarmament Activities",
-          "entity_code": "ODA",
-          "entity_name": "Office for Disarmament Affairs",
-          "entity_id": "trust-fund-entity:ODA",
-          "mapping_status": "mapped",
-          "flows": [
-            {
-              "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
-              "amount_usd": -2015,
-              "supportingSources": [
-                {
-                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-                  "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-                  "label": "DGA — Voluntary contributions",
-                  "rowLabel": "Investigative Mechanism (JIM) pursuant to UNSCR 2235",
-                  "columnHeader": "Monetary + in-kind (calculated)",
-                  "tableTitle": "Schedule 1.11.1 — Voluntary contributions",
-                  "pdfPage": 40,
-                  "pdfPageScope": "row",
-                  "pageStatus": "extracted_pdf_row"
-                }
-              ]
-            }
-          ],
-          "amount_usd": -2015,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-              "label": "DGA — Voluntary contributions",
-              "rowLabel": "Investigative Mechanism (JIM) pursuant to UNSCR 2235",
-              "columnHeader": "Monetary + in-kind (calculated)",
-              "tableTitle": "Schedule 1.11.1 — Voluntary contributions",
-              "pdfPage": 40,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -83431,8 +83203,8 @@
     {
       "fund_code": "DGA",
       "statement_amount_usd": 10368047,
-      "named_rows_amount_usd": 10366032,
-      "residual_usd": 2015,
+      "named_rows_amount_usd": 10368047,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -83592,8 +83364,8 @@
     {
       "fund_code": "GLA",
       "statement_amount_usd": 518336,
-      "named_rows_amount_usd": 520354,
-      "residual_usd": -2018,
+      "named_rows_amount_usd": 518336,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {

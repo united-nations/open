@@ -6,12 +6,16 @@ import {
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
+import {
+  FunctionsChart,
+  FunctionsTrendsChart,
+} from "@/components/FunctionsChart";
 import SDGsGrid from "@/components/SDGsGrid";
 
 export const metadata: Metadata = {
-  title: "UN System Goals",
+  title: "UN System Functions & Goals",
   description:
-    "Explore how UN System spending aligns with the 17 Sustainable Development Goals.",
+    "Explore UN System spending by function and Sustainable Development Goal.",
 };
 
 export default function SystemGoalsPage() {
@@ -26,12 +30,29 @@ export default function SystemGoalsPage() {
       }
     >
       <PageHeading
-        id="sdgs"
-        title="Which goals are funds spent towards?"
-        description="UN funding supports the 2030 Agenda for Sustainable Development. Explore how spending aligns with the 17 Sustainable Development Goals, from ending poverty to climate action."
+        id="functions-and-goals"
+        title="Which functions and goals do funds support?"
+        description="Explore spending across the UN’s four main functions and the Sustainable Development Goals. These are separate views of expenditure, not amounts to add together."
       />
       <PageBody>
-        <SDGsGrid />
+        <section id="sdgs">
+          <h2 className="mb-5 text-2xl font-bold">
+            Sustainable Development Goals
+          </h2>
+          <SDGsGrid />
+        </section>
+        <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
+          <section id="functions" className="min-w-0">
+            <h2 className="mb-4 text-xl font-bold">Spending by function</h2>
+            <ChartSourceProvider
+              label="CEB financial statistics"
+              details={<CebMethodology />}
+            >
+              <FunctionsChart />
+            </ChartSourceProvider>
+          </section>
+          <FunctionsTrendsChart />
+        </div>
       </PageBody>
     </ChartSourceProvider>
   );

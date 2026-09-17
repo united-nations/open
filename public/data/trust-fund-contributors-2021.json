@@ -4,11 +4,11 @@
     "currency": "USD",
     "measure": "Contributions and transfers",
     "statement_total_usd": 3278403679,
-    "named_rows_total_usd": 3278252679,
-    "contributor_total_usd": 3296428279,
+    "named_rows_total_usd": 3278403679,
+    "contributor_total_usd": 3296579279,
     "adjustment_total_usd": -18175600,
-    "unallocated_residual_usd": 151000,
-    "named_row_completeness": 0.999954,
+    "unallocated_residual_usd": 0,
+    "named_row_completeness": 1.0,
     "unresolved_entity_amount_usd": -1883,
     "source": {
       "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -40522,26 +40522,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 2708234,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Zimbabwe",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 260,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 40000,
+          "amount_usd": 2748234,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -40551,6 +40532,17 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
               "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Zimbabwe",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 260,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -40618,8 +40610,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 40000,
               "supportingSources": [
                 {
@@ -43200,7 +43192,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 1917520,
+          "amount_usd": 1941520,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -43216,30 +43208,22 @@
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
               "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Cameroon",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 260,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 24000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
               "label": "IDP — Voluntary contributions",
               "rowLabel": "Cameroon",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
               "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Cameroon",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 260,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -43350,8 +43334,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 24000,
               "supportingSources": [
                 {
@@ -43392,7 +43376,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 1766469,
+          "amount_usd": 1781469,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -43408,30 +43392,22 @@
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
               "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Mali",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 260,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 15000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
               "label": "IDP — Voluntary contributions",
               "rowLabel": "Mali",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
               "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Mali",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 260,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -43499,8 +43475,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 15000,
               "supportingSources": [
                 {
@@ -47530,7 +47506,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 985628,
+          "amount_usd": 1017628,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -47590,6 +47566,17 @@
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
               "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "IDP — Voluntary contributions",
+              "rowLabel": "Morocco",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+              "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
               "label": "JPO — Voluntary contributions",
               "rowLabel": "Morocco",
               "columnHeader": "Total",
@@ -47628,25 +47615,6 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 1.39.1 — Voluntary contributions",
               "pdfPage": 111,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 32000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "IDP — Voluntary contributions",
-              "rowLabel": "Morocco",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
-              "pdfPage": 281,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -48015,8 +47983,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 32000,
               "supportingSources": [
                 {
@@ -49496,7 +49464,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 733058,
+          "amount_usd": 748058,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -49512,30 +49480,22 @@
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
               "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Burkina Faso",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 260,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 15000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
               "label": "IDP — Voluntary contributions",
               "rowLabel": "Burkina Faso",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
               "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Burkina Faso",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 260,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -49603,8 +49563,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 15000,
               "supportingSources": [
                 {
@@ -53592,7 +53552,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 419523,
+          "amount_usd": 434523,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -53608,30 +53568,22 @@
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
               "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Togo",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 260,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 15000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
               "label": "IDP — Voluntary contributions",
               "rowLabel": "Togo",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
               "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Togo",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 260,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -53742,8 +53694,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 15000,
               "supportingSources": [
                 {
@@ -57354,8 +57306,19 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 259174,
+          "amount_usd": 274174,
           "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "IDP — Voluntary contributions",
+              "rowLabel": "Burundi",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+              "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
               "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
@@ -57375,25 +57338,6 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
               "pdfPage": 260,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 15000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "IDP — Voluntary contributions",
-              "rowLabel": "Burundi",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
-              "pdfPage": 281,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -57504,8 +57448,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 15000,
               "supportingSources": [
                 {
@@ -57806,7 +57750,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 103790,
+          "amount_usd": 259087,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -57818,15 +57762,7 @@
               "pdfPage": 312,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 155297,
-          "supportingSources": [
+            },
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
               "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
@@ -57859,8 +57795,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 155297,
               "supportingSources": [
                 {
@@ -58404,7 +58340,7 @@
       ]
     },
     {
-      "name": "Trust Fund to Support the Coordination and Coherence of the Rule of Law Activities the United Nations System (CCR)",
+      "name": "Trust Fund to Support the Coordination and Coherence of the Rule of Law Activities of the United Nations System (CCR)",
       "flows": [
         {
           "type": "other_transfer_allocation_internal_transfers",
@@ -58416,7 +58352,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
               "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
               "label": "HCA — Internal transfers",
-              "rowLabel": "From/(To) Trust Fund to Support the Coordination and Coherence of the Rule of Law Activities the United Nations System (CCR)",
+              "rowLabel": "From/(To) Trust Fund to Support the Coordination and Coherence of the Rule of Law Activities of the United Nations System (CCR)",
               "columnHeader": "Total",
               "tableTitle": "Schedule 4.9.1 — Internal transfers",
               "pdfPage": 312,
@@ -58431,7 +58367,7 @@
       "positive_amount_usd": 235193,
       "negative_amount_usd": 0,
       "reported_names": [
-        "From/(To) Trust Fund to Support the Coordination and Coherence of the Rule of Law Activities the United Nations System (CCR)"
+        "From/(To) Trust Fund to Support the Coordination and Coherence of the Rule of Law Activities of the United Nations System (CCR)"
       ],
       "destinations": [
         {
@@ -58452,7 +58388,7 @@
                   "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
                   "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
                   "label": "HCA — Internal transfers",
-                  "rowLabel": "From/(To) Trust Fund to Support the Coordination and Coherence of the Rule of Law Activities the United Nations System (CCR)",
+                  "rowLabel": "From/(To) Trust Fund to Support the Coordination and Coherence of the Rule of Law Activities of the United Nations System (CCR)",
                   "columnHeader": "Total",
                   "tableTitle": "Schedule 4.9.1 — Internal transfers",
                   "pdfPage": 312,
@@ -58468,7 +58404,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
               "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
               "label": "HCA — Internal transfers",
-              "rowLabel": "From/(To) Trust Fund to Support the Coordination and Coherence of the Rule of Law Activities the United Nations System (CCR)",
+              "rowLabel": "From/(To) Trust Fund to Support the Coordination and Coherence of the Rule of Law Activities of the United Nations System (CCR)",
               "columnHeader": "Total",
               "tableTitle": "Schedule 4.9.1 — Internal transfers",
               "pdfPage": 312,
@@ -58486,26 +58422,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 200000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Mozambique",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 260,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 32000,
+          "amount_usd": 232000,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -58515,6 +58432,17 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
               "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Mozambique",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 260,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -58582,8 +58510,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 32000,
               "supportingSources": [
                 {
@@ -63140,7 +63068,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 26014,
+          "amount_usd": 106014,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -63156,30 +63084,22 @@
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
               "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Egypt",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 260,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 80000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
               "label": "IDP — Voluntary contributions",
               "rowLabel": "Egypt",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
               "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Egypt",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 260,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -63204,8 +63124,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 80000,
               "supportingSources": [
                 {
@@ -63318,6 +63238,190 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
               "pdfPage": 260,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Algeria",
+      "flows": [
+        {
+          "type": "voluntary_contribution",
+          "group": "governments",
+          "label": "Government contributions",
+          "amount_usd": 105000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "CER — Voluntary contributions",
+              "rowLabel": "Algeria",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
+              "pdfPage": 290,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "DDN — Voluntary contributions",
+              "rowLabel": "Algeria",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.6.1 — Voluntary contributions",
+              "pdfPage": 302,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "IDP — Voluntary contributions",
+              "rowLabel": "Algeria",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+              "pdfPage": 280,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        }
+      ],
+      "counterparty_group": "Government",
+      "amount_usd": 105000,
+      "positive_amount_usd": 105000,
+      "negative_amount_usd": 0,
+      "reported_names": [
+        "Algeria"
+      ],
+      "destinations": [
+        {
+          "fund_code": "IDP",
+          "fund_name": "African Institute for Economic Development and Planning (IDEP)",
+          "entity_code": "ECA",
+          "entity_name": "Economic Commission for Africa",
+          "entity_id": "trust-fund-entity:ECA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "governments",
+              "label": "Government contributions",
+              "amount_usd": 80000,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+                  "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+                  "label": "IDP — Voluntary contributions",
+                  "rowLabel": "Algeria",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+                  "pdfPage": 280,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 80000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "IDP — Voluntary contributions",
+              "rowLabel": "Algeria",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+              "pdfPage": 280,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "CER",
+          "fund_name": "Central Emergency Response Fund",
+          "entity_code": "OCHA",
+          "entity_name": "Office for the Coordination of Humanitarian Affairs",
+          "entity_id": "trust-fund-entity:OCHA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "governments",
+              "label": "Government contributions",
+              "amount_usd": 20000,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+                  "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+                  "label": "CER — Voluntary contributions",
+                  "rowLabel": "Algeria",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
+                  "pdfPage": 290,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 20000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "CER — Voluntary contributions",
+              "rowLabel": "Algeria",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
+              "pdfPage": 290,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "DDN",
+          "fund_name": "Trust Fund for the Strengthening of the Office of the Emergency Relief Coordinator",
+          "entity_code": "OCHA",
+          "entity_name": "Office for the Coordination of Humanitarian Affairs",
+          "entity_id": "trust-fund-entity:OCHA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "governments",
+              "label": "Government contributions",
+              "amount_usd": 5000,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+                  "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+                  "label": "DDN — Voluntary contributions",
+                  "rowLabel": "Algeria",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 4.6.1 — Voluntary contributions",
+                  "pdfPage": 302,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 5000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "DDN — Voluntary contributions",
+              "rowLabel": "Algeria",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.6.1 — Voluntary contributions",
+              "pdfPage": 302,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -65064,8 +65168,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 80000,
           "supportingSources": [
             {
@@ -65082,7 +65186,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 80000,
       "positive_amount_usd": 80000,
       "negative_amount_usd": 0,
@@ -65100,8 +65204,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 80000,
               "supportingSources": [
                 {
@@ -65140,8 +65244,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 80000,
           "supportingSources": [
             {
@@ -65158,7 +65262,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 80000,
       "positive_amount_usd": 80000,
       "negative_amount_usd": 0,
@@ -65176,8 +65280,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 80000,
               "supportingSources": [
                 {
@@ -66280,26 +66384,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 30000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Cote d'Ivoire",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 260,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 32000,
+          "amount_usd": 62000,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -66309,6 +66394,17 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
               "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Cote d'Ivoire",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 260,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -66333,8 +66429,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 32000,
               "supportingSources": [
                 {
@@ -66656,26 +66752,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 45000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Djibouti",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 260,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 15000,
+          "amount_usd": 60000,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -66685,6 +66762,17 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
               "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Djibouti",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 260,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -66752,8 +66840,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 15000,
               "supportingSources": [
                 {
@@ -66780,6 +66868,190 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
               "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Angola",
+      "flows": [
+        {
+          "type": "voluntary_contribution",
+          "group": "governments",
+          "label": "Government contributions",
+          "amount_usd": 57000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "IDP — Voluntary contributions",
+              "rowLabel": "Angola",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+              "pdfPage": 280,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "SZA — Voluntary contributions",
+              "rowLabel": "Angola",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 1.38.1 — Voluntary contributions",
+              "pdfPage": 107,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Angola",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 259,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        }
+      ],
+      "counterparty_group": "Government",
+      "amount_usd": 57000,
+      "positive_amount_usd": 57000,
+      "negative_amount_usd": 0,
+      "reported_names": [
+        "Angola"
+      ],
+      "destinations": [
+        {
+          "fund_code": "IDP",
+          "fund_name": "African Institute for Economic Development and Planning (IDEP)",
+          "entity_code": "ECA",
+          "entity_name": "Economic Commission for Africa",
+          "entity_id": "trust-fund-entity:ECA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "governments",
+              "label": "Government contributions",
+              "amount_usd": 32000,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+                  "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+                  "label": "IDP — Voluntary contributions",
+                  "rowLabel": "Angola",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+                  "pdfPage": 280,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 32000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "IDP — Voluntary contributions",
+              "rowLabel": "Angola",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+              "pdfPage": 280,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "TXB",
+          "fund_name": "Trust Fund for UNCTAD Technical Cooperation Projects",
+          "entity_code": "UNCTAD",
+          "entity_name": "United Nations Conference on Trade and Development",
+          "entity_id": "trust-fund-entity:UNCTAD",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "governments",
+              "label": "Government contributions",
+              "amount_usd": 15000,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+                  "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+                  "label": "TXB — Voluntary contributions",
+                  "rowLabel": "Angola",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+                  "pdfPage": 259,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 15000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Angola",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 259,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "SZA",
+          "fund_name": "Trust Fund in Support of Political Affairs",
+          "entity_code": "DPPA",
+          "entity_name": "Department of Political and Peacebuilding Affairs",
+          "entity_id": "trust-fund-entity:DPPA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "governments",
+              "label": "Government contributions",
+              "amount_usd": 10000,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+                  "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+                  "label": "SZA — Voluntary contributions",
+                  "rowLabel": "Angola",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 1.38.1 — Voluntary contributions",
+                  "pdfPage": 107,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 10000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "SZA — Voluntary contributions",
+              "rowLabel": "Angola",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 1.38.1 — Voluntary contributions",
+              "pdfPage": 107,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -68972,26 +69244,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 7500,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Zambia",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 260,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 32000,
+          "amount_usd": 39500,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -69001,6 +69254,17 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
               "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Zambia",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 260,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -69025,8 +69289,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 32000,
               "supportingSources": [
                 {
@@ -69110,26 +69374,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 15000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Uganda",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 260,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 24000,
+          "amount_usd": 39000,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -69139,6 +69384,17 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
               "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Uganda",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 260,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -69163,8 +69419,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 24000,
               "supportingSources": [
                 {
@@ -69712,8 +69968,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 32000,
           "supportingSources": [
             {
@@ -69730,7 +69986,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 32000,
       "positive_amount_usd": 32000,
       "negative_amount_usd": 0,
@@ -69748,8 +70004,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 32000,
               "supportingSources": [
                 {
@@ -69788,8 +70044,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 32000,
           "supportingSources": [
             {
@@ -69806,7 +70062,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 32000,
       "positive_amount_usd": 32000,
       "negative_amount_usd": 0,
@@ -69824,8 +70080,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 32000,
               "supportingSources": [
                 {
@@ -69864,8 +70120,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 32000,
           "supportingSources": [
             {
@@ -69882,7 +70138,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 32000,
       "positive_amount_usd": 32000,
       "negative_amount_usd": 0,
@@ -69900,8 +70156,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 32000,
               "supportingSources": [
                 {
@@ -70016,8 +70272,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 32000,
           "supportingSources": [
             {
@@ -70034,7 +70290,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 32000,
       "positive_amount_usd": 32000,
       "negative_amount_usd": 0,
@@ -70052,8 +70308,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 32000,
               "supportingSources": [
                 {
@@ -70538,26 +70794,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 10000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Madagascar",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 260,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 20000,
+          "amount_usd": 30000,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -70567,6 +70804,17 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
               "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Madagascar",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 260,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -70591,8 +70839,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 20000,
               "supportingSources": [
                 {
@@ -71044,7 +71292,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 5000,
+          "amount_usd": 29000,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -71056,15 +71304,7 @@
               "pdfPage": 291,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 24000,
-          "supportingSources": [
+            },
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
               "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
@@ -71097,8 +71337,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 24000,
               "supportingSources": [
                 {
@@ -71826,266 +72066,6 @@
       ]
     },
     {
-      "name": "Algeria",
-      "flows": [
-        {
-          "type": "voluntary_contribution",
-          "group": "governments",
-          "label": "Government contributions",
-          "amount_usd": 25000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "CER — Voluntary contributions",
-              "rowLabel": "Algeria",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
-              "pdfPage": 290,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            },
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "DDN — Voluntary contributions",
-              "rowLabel": "Algeria",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 4.6.1 — Voluntary contributions",
-              "pdfPage": 302,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ],
-      "counterparty_group": "Government",
-      "amount_usd": 25000,
-      "positive_amount_usd": 25000,
-      "negative_amount_usd": 0,
-      "reported_names": [
-        "Algeria"
-      ],
-      "destinations": [
-        {
-          "fund_code": "CER",
-          "fund_name": "Central Emergency Response Fund",
-          "entity_code": "OCHA",
-          "entity_name": "Office for the Coordination of Humanitarian Affairs",
-          "entity_id": "trust-fund-entity:OCHA",
-          "mapping_status": "mapped",
-          "flows": [
-            {
-              "type": "voluntary_contribution",
-              "group": "governments",
-              "label": "Government contributions",
-              "amount_usd": 20000,
-              "supportingSources": [
-                {
-                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-                  "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-                  "label": "CER — Voluntary contributions",
-                  "rowLabel": "Algeria",
-                  "columnHeader": "Total",
-                  "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
-                  "pdfPage": 290,
-                  "pdfPageScope": "row",
-                  "pageStatus": "extracted_pdf_row"
-                }
-              ]
-            }
-          ],
-          "amount_usd": 20000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "CER — Voluntary contributions",
-              "rowLabel": "Algeria",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
-              "pdfPage": 290,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "fund_code": "DDN",
-          "fund_name": "Trust Fund for the Strengthening of the Office of the Emergency Relief Coordinator",
-          "entity_code": "OCHA",
-          "entity_name": "Office for the Coordination of Humanitarian Affairs",
-          "entity_id": "trust-fund-entity:OCHA",
-          "mapping_status": "mapped",
-          "flows": [
-            {
-              "type": "voluntary_contribution",
-              "group": "governments",
-              "label": "Government contributions",
-              "amount_usd": 5000,
-              "supportingSources": [
-                {
-                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-                  "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-                  "label": "DDN — Voluntary contributions",
-                  "rowLabel": "Algeria",
-                  "columnHeader": "Total",
-                  "tableTitle": "Schedule 4.6.1 — Voluntary contributions",
-                  "pdfPage": 302,
-                  "pdfPageScope": "row",
-                  "pageStatus": "extracted_pdf_row"
-                }
-              ]
-            }
-          ],
-          "amount_usd": 5000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "DDN — Voluntary contributions",
-              "rowLabel": "Algeria",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 4.6.1 — Voluntary contributions",
-              "pdfPage": 302,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Angola",
-      "flows": [
-        {
-          "type": "voluntary_contribution",
-          "group": "governments",
-          "label": "Government contributions",
-          "amount_usd": 25000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "SZA — Voluntary contributions",
-              "rowLabel": "Angola",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 1.38.1 — Voluntary contributions",
-              "pdfPage": 107,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            },
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Angola",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 259,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ],
-      "counterparty_group": "Government",
-      "amount_usd": 25000,
-      "positive_amount_usd": 25000,
-      "negative_amount_usd": 0,
-      "reported_names": [
-        "Angola"
-      ],
-      "destinations": [
-        {
-          "fund_code": "TXB",
-          "fund_name": "Trust Fund for UNCTAD Technical Cooperation Projects",
-          "entity_code": "UNCTAD",
-          "entity_name": "United Nations Conference on Trade and Development",
-          "entity_id": "trust-fund-entity:UNCTAD",
-          "mapping_status": "mapped",
-          "flows": [
-            {
-              "type": "voluntary_contribution",
-              "group": "governments",
-              "label": "Government contributions",
-              "amount_usd": 15000,
-              "supportingSources": [
-                {
-                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-                  "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-                  "label": "TXB — Voluntary contributions",
-                  "rowLabel": "Angola",
-                  "columnHeader": "Total",
-                  "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-                  "pdfPage": 259,
-                  "pdfPageScope": "row",
-                  "pageStatus": "extracted_pdf_row"
-                }
-              ]
-            }
-          ],
-          "amount_usd": 15000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Angola",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 259,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "fund_code": "SZA",
-          "fund_name": "Trust Fund in Support of Political Affairs",
-          "entity_code": "DPPA",
-          "entity_name": "Department of Political and Peacebuilding Affairs",
-          "entity_id": "trust-fund-entity:DPPA",
-          "mapping_status": "mapped",
-          "flows": [
-            {
-              "type": "voluntary_contribution",
-              "group": "governments",
-              "label": "Government contributions",
-              "amount_usd": 10000,
-              "supportingSources": [
-                {
-                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-                  "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-                  "label": "SZA — Voluntary contributions",
-                  "rowLabel": "Angola",
-                  "columnHeader": "Total",
-                  "tableTitle": "Schedule 1.38.1 — Voluntary contributions",
-                  "pdfPage": 107,
-                  "pdfPageScope": "row",
-                  "pageStatus": "extracted_pdf_row"
-                }
-              ]
-            }
-          ],
-          "amount_usd": 10000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "SZA — Voluntary contributions",
-              "rowLabel": "Angola",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 1.38.1 — Voluntary contributions",
-              "pdfPage": 107,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Haina International Terminals, Dominican Republic",
       "flows": [
         {
@@ -72244,26 +72224,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 10000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Rwanda",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 260,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 15000,
+          "amount_usd": 25000,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -72273,6 +72234,17 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
               "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Rwanda",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 260,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -72297,8 +72269,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 15000,
               "supportingSources": [
                 {
@@ -72604,12 +72576,88 @@
       ]
     },
     {
+      "name": "Botswana",
+      "flows": [
+        {
+          "type": "voluntary_contribution",
+          "group": "governments",
+          "label": "Government contributions",
+          "amount_usd": 24000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "IDP — Voluntary contributions",
+              "rowLabel": "Botswana",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+              "pdfPage": 280,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        }
+      ],
+      "counterparty_group": "Government",
+      "amount_usd": 24000,
+      "positive_amount_usd": 24000,
+      "negative_amount_usd": 0,
+      "reported_names": [
+        "Botswana"
+      ],
+      "destinations": [
+        {
+          "fund_code": "IDP",
+          "fund_name": "African Institute for Economic Development and Planning (IDEP)",
+          "entity_code": "ECA",
+          "entity_name": "Economic Commission for Africa",
+          "entity_id": "trust-fund-entity:ECA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "governments",
+              "label": "Government contributions",
+              "amount_usd": 24000,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+                  "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+                  "label": "IDP — Voluntary contributions",
+                  "rowLabel": "Botswana",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+                  "pdfPage": 280,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 24000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "IDP — Voluntary contributions",
+              "rowLabel": "Botswana",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+              "pdfPage": 280,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Namibia",
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 24000,
           "supportingSources": [
             {
@@ -72626,7 +72674,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 24000,
       "positive_amount_usd": 24000,
       "negative_amount_usd": 0,
@@ -72644,8 +72692,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 24000,
               "supportingSources": [
                 {
@@ -72684,8 +72732,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 24000,
           "supportingSources": [
             {
@@ -72702,7 +72750,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 24000,
       "positive_amount_usd": 24000,
       "negative_amount_usd": 0,
@@ -72720,8 +72768,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 24000,
               "supportingSources": [
                 {
@@ -73822,8 +73870,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 20000,
           "supportingSources": [
             {
@@ -73840,7 +73888,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 20000,
       "positive_amount_usd": 20000,
       "negative_amount_usd": 0,
@@ -73858,8 +73906,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 20000,
               "supportingSources": [
                 {
@@ -73898,8 +73946,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 20000,
           "supportingSources": [
             {
@@ -73916,7 +73964,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 20000,
       "positive_amount_usd": 20000,
       "negative_amount_usd": 0,
@@ -73934,8 +73982,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 20000,
               "supportingSources": [
                 {
@@ -73974,8 +74022,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 20000,
           "supportingSources": [
             {
@@ -73992,7 +74040,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 20000,
       "positive_amount_usd": 20000,
       "negative_amount_usd": 0,
@@ -74010,8 +74058,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 20000,
               "supportingSources": [
                 {
@@ -74050,8 +74098,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 20000,
           "supportingSources": [
             {
@@ -74068,7 +74116,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 20000,
       "positive_amount_usd": 20000,
       "negative_amount_usd": 0,
@@ -74086,8 +74134,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 20000,
               "supportingSources": [
                 {
@@ -74670,26 +74718,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 1461,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "WKA — Voluntary contributions",
-              "rowLabel": "Mauritius",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.36.1 — Voluntary contributions",
-              "pdfPage": 266,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 15000,
+          "amount_usd": 16461,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -74699,6 +74728,17 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
               "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "WKA — Voluntary contributions",
+              "rowLabel": "Mauritius",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.36.1 — Voluntary contributions",
+              "pdfPage": 266,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -74723,8 +74763,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 15000,
               "supportingSources": [
                 {
@@ -74958,8 +74998,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 15000,
           "supportingSources": [
             {
@@ -74976,7 +75016,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 15000,
       "positive_amount_usd": 15000,
       "negative_amount_usd": 0,
@@ -74994,8 +75034,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 15000,
               "supportingSources": [
                 {
@@ -75034,8 +75074,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 15000,
           "supportingSources": [
             {
@@ -75052,7 +75092,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 15000,
       "positive_amount_usd": 15000,
       "negative_amount_usd": 0,
@@ -75070,8 +75110,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 15000,
               "supportingSources": [
                 {
@@ -75110,8 +75150,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 15000,
           "supportingSources": [
             {
@@ -75128,7 +75168,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 15000,
       "positive_amount_usd": 15000,
       "negative_amount_usd": 0,
@@ -75146,8 +75186,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 15000,
               "supportingSources": [
                 {
@@ -75186,8 +75226,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 15000,
           "supportingSources": [
             {
@@ -75204,7 +75244,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 15000,
       "positive_amount_usd": 15000,
       "negative_amount_usd": 0,
@@ -75222,8 +75262,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 15000,
               "supportingSources": [
                 {
@@ -75262,8 +75302,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 15000,
           "supportingSources": [
             {
@@ -75280,7 +75320,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 15000,
       "positive_amount_usd": 15000,
       "negative_amount_usd": 0,
@@ -75298,8 +75338,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 15000,
               "supportingSources": [
                 {
@@ -75338,8 +75378,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 15000,
           "supportingSources": [
             {
@@ -75356,7 +75396,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 15000,
       "positive_amount_usd": 15000,
       "negative_amount_usd": 0,
@@ -75374,8 +75414,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 15000,
               "supportingSources": [
                 {
@@ -75414,8 +75454,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 15000,
           "supportingSources": [
             {
@@ -75432,7 +75472,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 15000,
       "positive_amount_usd": 15000,
       "negative_amount_usd": 0,
@@ -75450,8 +75490,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 15000,
               "supportingSources": [
                 {
@@ -75490,8 +75530,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 15000,
           "supportingSources": [
             {
@@ -75508,7 +75548,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 15000,
       "positive_amount_usd": 15000,
       "negative_amount_usd": 0,
@@ -75526,8 +75566,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 15000,
               "supportingSources": [
                 {
@@ -77226,8 +77266,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 10000,
           "supportingSources": [
             {
@@ -77244,7 +77284,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 10000,
       "positive_amount_usd": 10000,
       "negative_amount_usd": 0,
@@ -77262,8 +77302,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 10000,
               "supportingSources": [
                 {
@@ -77378,8 +77418,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 10000,
           "supportingSources": [
             {
@@ -77396,7 +77436,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 10000,
       "positive_amount_usd": 10000,
       "negative_amount_usd": 0,
@@ -77414,8 +77454,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 10000,
               "supportingSources": [
                 {
@@ -77454,8 +77494,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 10000,
           "supportingSources": [
             {
@@ -77472,7 +77512,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 10000,
       "positive_amount_usd": 10000,
       "negative_amount_usd": 0,
@@ -77490,8 +77530,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 10000,
               "supportingSources": [
                 {
@@ -77530,8 +77570,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 10000,
           "supportingSources": [
             {
@@ -77548,7 +77588,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 10000,
       "positive_amount_usd": 10000,
       "negative_amount_usd": 0,
@@ -77566,8 +77606,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 10000,
               "supportingSources": [
                 {
@@ -77606,8 +77646,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 10000,
           "supportingSources": [
             {
@@ -77624,7 +77664,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 10000,
       "positive_amount_usd": 10000,
       "negative_amount_usd": 0,
@@ -77642,8 +77682,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 10000,
               "supportingSources": [
                 {
@@ -77758,8 +77798,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 10000,
           "supportingSources": [
             {
@@ -77776,7 +77816,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 10000,
       "positive_amount_usd": 10000,
       "negative_amount_usd": 0,
@@ -77794,8 +77834,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 10000,
               "supportingSources": [
                 {
@@ -77910,8 +77950,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 10000,
           "supportingSources": [
             {
@@ -77928,7 +77968,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 10000,
       "positive_amount_usd": 10000,
       "negative_amount_usd": 0,
@@ -77946,8 +77986,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 10000,
               "supportingSources": [
                 {
@@ -77986,8 +78026,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 10000,
           "supportingSources": [
             {
@@ -78004,7 +78044,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 10000,
       "positive_amount_usd": 10000,
       "negative_amount_usd": 0,
@@ -78022,8 +78062,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 10000,
               "supportingSources": [
                 {
@@ -78138,8 +78178,8 @@
       "flows": [
         {
           "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
+          "group": "governments",
+          "label": "Government contributions",
           "amount_usd": 10000,
           "supportingSources": [
             {
@@ -78156,7 +78196,7 @@
           ]
         }
       ],
-      "counterparty_group": "Mixed",
+      "counterparty_group": "Government",
       "amount_usd": 10000,
       "positive_amount_usd": 10000,
       "negative_amount_usd": 0,
@@ -78174,8 +78214,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 10000,
               "supportingSources": [
                 {
@@ -87952,26 +87992,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": -32544,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
-              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Ethiopia",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 260,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 32000,
+          "amount_usd": -544,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -87981,6 +88002,17 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
               "pdfPage": 281,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Ethiopia",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 260,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -88005,8 +88037,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 32000,
               "supportingSources": [
                 {
@@ -89230,7 +89262,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": -113516,
+          "amount_usd": -33516,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -89253,15 +89285,7 @@
               "pdfPage": 357,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": 80000,
-          "supportingSources": [
+            },
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
               "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
@@ -89294,8 +89318,8 @@
           "flows": [
             {
               "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
+              "group": "governments",
+              "label": "Government contributions",
               "amount_usd": 80000,
               "supportingSources": [
                 {
@@ -90106,7 +90130,7 @@
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": -232423,
+          "amount_usd": -217423,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
@@ -90116,6 +90140,17 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 6.22.1 — Voluntary contributions",
               "pdfPage": 396,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "IDP — Voluntary contributions",
+              "rowLabel": "Benin",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+              "pdfPage": 280,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             },
@@ -90134,13 +90169,56 @@
         }
       ],
       "counterparty_group": "Government",
-      "amount_usd": -232423,
-      "positive_amount_usd": 9680,
+      "amount_usd": -217423,
+      "positive_amount_usd": 24680,
       "negative_amount_usd": -242103,
       "reported_names": [
         "Benin"
       ],
       "destinations": [
+        {
+          "fund_code": "IDP",
+          "fund_name": "African Institute for Economic Development and Planning (IDEP)",
+          "entity_code": "ECA",
+          "entity_name": "Economic Commission for Africa",
+          "entity_id": "trust-fund-entity:ECA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "governments",
+              "label": "Government contributions",
+              "amount_usd": 15000,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+                  "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+                  "label": "IDP — Voluntary contributions",
+                  "rowLabel": "Benin",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+                  "pdfPage": 280,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 15000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "label": "IDP — Voluntary contributions",
+              "rowLabel": "Benin",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+              "pdfPage": 280,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
         {
           "fund_code": "DSA",
           "fund_name": "Special Purpose Trust Fund for the Reinvigorated Resident Coordinator (RC) System",
@@ -91026,8 +91104,8 @@
     {
       "fund_code": "IDP",
       "statement_amount_usd": 989297,
-      "named_rows_amount_usd": 838297,
-      "residual_usd": 151000,
+      "named_rows_amount_usd": 989297,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {

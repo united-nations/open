@@ -518,6 +518,19 @@ export interface BudgetNode {
   /** Producer-designated source for each numeric PPB funding lens. */
   sources?: Partial<Record<BudgetSourceLens, BudgetNodeSource>>;
   source?: BudgetNodeSource;
+  /** Year-end accounting stocks, distinct from contributions and expenditure. */
+  financialPosition?: {
+    asOf: string;
+    fundCount: number;
+    metrics: Array<{
+      key: string;
+      label: string;
+      amount: number | null;
+      fundsCovered: number;
+      components?: Array<{ label: string; amount: number }>;
+      supportingSources: BudgetNodeSource[];
+    }>;
+  };
   /** Supporting references for totals derived from several source records. */
   supportingSources?: BudgetNodeSource[];
 }

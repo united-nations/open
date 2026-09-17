@@ -79,6 +79,7 @@ interface FinancingInstrumentChartProps {
   series?: FinancingSeries[];
   height?: number;
   showLegend?: boolean;
+  legendClassName?: string;
   compact?: boolean;
   filterable?: boolean;
   yAxisMax?: number;
@@ -134,6 +135,7 @@ export function FinancingInstrumentChart({
   data,
   height = TREND_CHART_HEIGHT,
   showLegend = true,
+  legendClassName = "",
   compact = false,
   series = DEFAULT_SERIES,
   filterable = false,
@@ -174,7 +176,7 @@ export function FinancingInstrumentChart({
     <div className="flex flex-col">
       {showLegend && (
         <div
-          className="mb-3 flex flex-wrap gap-2"
+          className={`mb-3 flex flex-wrap gap-2 ${legendClassName}`}
           role={filterable ? "group" : undefined}
           aria-label={filterable ? "Trend filters" : undefined}
         >
@@ -295,6 +297,7 @@ export function FinancingInstrumentChart({
                     stroke="white"
                     strokeWidth={2}
                     fill={s.color}
+                    fillOpacity={1}
                   />
                 ),
               )}

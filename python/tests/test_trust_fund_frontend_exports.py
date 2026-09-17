@@ -11,6 +11,7 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from trust_fund_frontend_exports import (  # noqa: E402
+    financial_position,
     canonical_counterparty,
     is_adjustment,
     selected_funding_rows,
@@ -22,6 +23,43 @@ from trust_fund_frontend_exports import (  # noqa: E402
 
 
 class TrustFundFrontendExportTests(unittest.TestCase):
+    def test_financial_position_uses_current_year_stocks_and_pdf_rows(self) -> None:
+        rows = []
+        for period, line, amount, page in [
+            (2023, "Cash and cash equivalents", 999, 8),
+            (2024, "Cash and cash equivalents", 10, 9),
+            (2024, "Voluntary contributions receivable", 20, 9),
+            (2024, "Voluntary contributions receivables", 30, 10),
+            (2024, "Total net assets", -5, 10),
+        ]:
+            rows.append({"calendar_year": 2024, "period_year": period,
+                         "statement_type": "financial_position", "fund_code": "ABC",
+                         "line_item": line, "reported_line_item": line,
+                         "amount_usd": amount, "page": page, "schedule_number": "1"})
+        facts = pd.DataFrame(rows)
+        source = {"symbol": "A/79/5", "landing_page_url": "https://example.org/source"}
+        position = financial_position(2024, facts, ["ABC"], source)
+        metrics = {row["key"]: row for row in position["metrics"]}
+        self.assertEqual(metrics["cash"]["amount"], 10)
+        self.assertEqual(metrics["contributionsReceivable"]["amount"], 50)
+        self.assertEqual(metrics["netAssets"]["amount"], -5)
+        self.assertIsNone(metrics["investments"]["amount"])
+        self.assertEqual([r["pdfPage"] for r in metrics["contributionsReceivable"]["supportingSources"]], [9, 10])
+        self.assertIn("Financial position", metrics["cash"]["supportingSources"][0]["tableTitle"])
+        same_page = facts.copy()
+        same_page["section"] = "Assets > Current assets"
+        same_page.loc[same_page.page.eq(10), "section"] = "Assets > Non-current assets"
+        same_page["page"] = 9
+        same_page.loc[same_page.line_item.str.contains("receivabl"), "reported_line_item"] = "Voluntary contributions receivable"
+        same_page_position = financial_position(2024, same_page, ["ABC"], source)
+        receivables = next(row for row in same_page_position["metrics"] if row["key"] == "contributionsReceivable")
+        self.assertEqual(len(receivables["supportingSources"]), 2)
+        self.assertEqual(receivables["components"], [{"label": "Current", "amount": 20}, {"label": "Non-current", "amount": 30}])
+        partial = financial_position(2024, facts, ["ABC", "MISSING"], source)
+        self.assertTrue(all(row["amount"] is None for row in partial["metrics"]))
+        incomplete = financial_position(2024, facts.loc[facts.page.ne(10)], ["ABC"], source)
+        self.assertIsNone(next(row for row in incomplete["metrics"] if row["key"] == "contributionsReceivable")["amount"])
+
     def test_unnamed_aggregate_and_discount_adjustment_remain_distinct(self) -> None:
         self.assertEqual(canonical_counterparty("Other donors"),
                          "Other contributors (not individually identified)")

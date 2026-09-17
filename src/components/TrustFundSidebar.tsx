@@ -239,6 +239,72 @@ export function TrustFundSidebar({
           className="bg-white sm:w-full"
         >
           {node.note && <p className="mb-3 text-sm">{node.note}</p>}
+          {node.financialPosition && (
+            <FinancialPanelSection heading="Financial position">
+              <p className="mb-3 text-sm text-gray-500">
+                As at 31 December {year}. These are year-end balances, not
+                annual flows.
+              </p>
+              <dl className="space-y-3">
+                {node.financialPosition.metrics.map((metric) => (
+                  <div
+                    key={metric.key}
+                    className="flex items-baseline justify-between gap-4 text-sm"
+                  >
+                    <dt>{metric.label}</dt>
+                    <dd className="shrink-0 text-right tabular-nums">
+                      {metric.amount === null ? (
+                        <span
+                          title={`${metric.fundsCovered} of ${node.financialPosition!.fundCount} funds have source data`}
+                        >
+                          Not available
+                        </span>
+                      ) : (
+                        <Tooltip
+                          interactive
+                          width={380}
+                          content={
+                            <div className="space-y-2">
+                              <p className="font-semibold">{metric.label}</p>
+                              {metric.components?.map((component) => (
+                                <div
+                                  key={component.label}
+                                  className="flex justify-between gap-4"
+                                >
+                                  <span>{component.label}</span>
+                                  <span>{formatBudget(component.amount)}</span>
+                                </div>
+                              ))}
+                              <SourceReferenceLinks
+                                references={metric.supportingSources}
+                              />
+                            </div>
+                          }
+                        >
+                          <span tabIndex={0}>
+                            {formatBudget(metric.amount)}
+                          </span>
+                        </Tooltip>
+                      )}
+                    </dd>
+                  </div>
+                ))}
+              </dl>
+              <p className="mt-3 text-sm text-gray-500">
+                Receivables are amounts due, not cash received. Net assets are
+                assets less liabilities. Neither cash, receivables nor net
+                assets alone indicates funding available to spend. Current and
+                non-current balances are combined; these rows overlap and must
+                not be added together.
+              </p>
+              {node.financialPosition.fundCount > 1 && (
+                <p className="mt-2 text-sm text-gray-500">
+                  Sum of {node.financialPosition.fundCount} fund accounts,
+                  without eliminating balances between funds.
+                </p>
+              )}
+            </FinancialPanelSection>
+          )}
           <FinancialPanelSection heading="Expenditure history">
             {trend === null ? (
               <p role="status" className="text-sm text-gray-500">
@@ -403,6 +469,13 @@ export function TrustFundSidebar({
                       : []
                 }
               />
+              {node.financialPosition && (
+                <SourceReferenceList
+                  references={node.financialPosition.metrics.flatMap(
+                    (metric) => metric.supportingSources,
+                  )}
+                />
+              )}
               {contributors && (
                 <>
                   <SourceReferenceList

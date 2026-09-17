@@ -4,11 +4,11 @@
     "currency": "USD",
     "measure": "Contributions and transfers",
     "statement_total_usd": 2668587125,
-    "named_rows_total_usd": 2668586061,
-    "contributor_total_usd": 2654334111,
+    "named_rows_total_usd": 2668590455,
+    "contributor_total_usd": 2654338505,
     "adjustment_total_usd": 14251950,
-    "unallocated_residual_usd": 1064,
-    "named_row_completeness": 0.999997,
+    "unallocated_residual_usd": -3330,
+    "named_row_completeness": 0.999999,
     "unresolved_entity_amount_usd": 0,
     "source": {
       "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
@@ -53079,7 +53079,7 @@
       ]
     },
     {
-      "name": "King Abdullah bin Abdulaziz International Centre for Interreligious and Intercultural Dialogue KAICIID",
+      "name": "King Abdullah bin Abdulaziz International Centre for Interreligious and Intercultural Dialogue - KAICIID",
       "flows": [
         {
           "type": "voluntary_contribution",
@@ -53091,7 +53091,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
               "url": "https://documents.un.org/doc/undoc/gen/n21/219/81/pdf/n2121981.pdf",
               "label": "YJA — Voluntary contributions",
-              "rowLabel": "King Abdullah bin Abdulaziz International Centre for Interreligious and Intercultural Dialogue KAICIID",
+              "rowLabel": "King Abdullah bin Abdulaziz International Centre for Interreligious and Intercultural Dialogue - KAICIID",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.40.1 — Voluntary contributions",
               "pdfPage": 298,
@@ -53106,7 +53106,7 @@
       "positive_amount_usd": 292398,
       "negative_amount_usd": 0,
       "reported_names": [
-        "King Abdullah bin Abdulaziz International Centre for Interreligious and Intercultural Dialogue KAICIID"
+        "King Abdullah bin Abdulaziz International Centre for Interreligious and Intercultural Dialogue - KAICIID"
       ],
       "destinations": [
         {
@@ -53127,7 +53127,7 @@
                   "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
                   "url": "https://documents.un.org/doc/undoc/gen/n21/219/81/pdf/n2121981.pdf",
                   "label": "YJA — Voluntary contributions",
-                  "rowLabel": "King Abdullah bin Abdulaziz International Centre for Interreligious and Intercultural Dialogue KAICIID",
+                  "rowLabel": "King Abdullah bin Abdulaziz International Centre for Interreligious and Intercultural Dialogue - KAICIID",
                   "columnHeader": "Total",
                   "tableTitle": "Schedule 3.40.1 — Voluntary contributions",
                   "pdfPage": 298,
@@ -53143,7 +53143,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
               "url": "https://documents.un.org/doc/undoc/gen/n21/219/81/pdf/n2121981.pdf",
               "label": "YJA — Voluntary contributions",
-              "rowLabel": "King Abdullah bin Abdulaziz International Centre for Interreligious and Intercultural Dialogue KAICIID",
+              "rowLabel": "King Abdullah bin Abdulaziz International Centre for Interreligious and Intercultural Dialogue - KAICIID",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.40.1 — Voluntary contributions",
               "pdfPage": 298,
@@ -77259,7 +77259,7 @@
       ]
     },
     {
-      "name": "European Telecommunications Network Operators' Association's -",
+      "name": "European Telecommunications Network Operators' Association's - ETNO",
       "flows": [
         {
           "type": "voluntary_contribution",
@@ -77271,7 +77271,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
               "url": "https://documents.un.org/doc/undoc/gen/n21/219/81/pdf/n2121981.pdf",
               "label": "XES — Voluntary contributions",
-              "rowLabel": "European Telecommunications Network Operators' Association's -",
+              "rowLabel": "European Telecommunications Network Operators' Association's - ETNO",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.39.1 — Voluntary contributions",
               "pdfPage": 294,
@@ -77286,7 +77286,7 @@
       "positive_amount_usd": 7726,
       "negative_amount_usd": 0,
       "reported_names": [
-        "European Telecommunications Network Operators' Association's -"
+        "European Telecommunications Network Operators' Association's - ETNO"
       ],
       "destinations": [
         {
@@ -77307,7 +77307,7 @@
                   "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
                   "url": "https://documents.un.org/doc/undoc/gen/n21/219/81/pdf/n2121981.pdf",
                   "label": "XES — Voluntary contributions",
-                  "rowLabel": "European Telecommunications Network Operators' Association's -",
+                  "rowLabel": "European Telecommunications Network Operators' Association's - ETNO",
                   "columnHeader": "Total",
                   "tableTitle": "Schedule 3.39.1 — Voluntary contributions",
                   "pdfPage": 294,
@@ -77323,7 +77323,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
               "url": "https://documents.un.org/doc/undoc/gen/n21/219/81/pdf/n2121981.pdf",
               "label": "XES — Voluntary contributions",
-              "rowLabel": "European Telecommunications Network Operators' Association's -",
+              "rowLabel": "European Telecommunications Network Operators' Association's - ETNO",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.39.1 — Voluntary contributions",
               "pdfPage": 294,
@@ -85926,82 +85926,6 @@
       ]
     },
     {
-      "name": "by UNCTAD (OUN)",
-      "flows": [
-        {
-          "type": "voluntary_contribution",
-          "group": "other",
-          "label": "Other voluntary contributions",
-          "amount_usd": -4394,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
-              "url": "https://documents.un.org/doc/undoc/gen/n21/219/81/pdf/n2121981.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "by UNCTAD (OUN)",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 280,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ],
-      "counterparty_group": "Others",
-      "amount_usd": -4394,
-      "positive_amount_usd": 0,
-      "negative_amount_usd": -4394,
-      "reported_names": [
-        "by UNCTAD (OUN)"
-      ],
-      "destinations": [
-        {
-          "fund_code": "TXB",
-          "fund_name": "Trust Fund for UNCTAD Technical Cooperation Projects",
-          "entity_code": "UNCTAD",
-          "entity_name": "United Nations Conference on Trade and Development",
-          "entity_id": "trust-fund-entity:UNCTAD",
-          "mapping_status": "mapped",
-          "flows": [
-            {
-              "type": "voluntary_contribution",
-              "group": "other",
-              "label": "Other voluntary contributions",
-              "amount_usd": -4394,
-              "supportingSources": [
-                {
-                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
-                  "url": "https://documents.un.org/doc/undoc/gen/n21/219/81/pdf/n2121981.pdf",
-                  "label": "TXB — Voluntary contributions",
-                  "rowLabel": "by UNCTAD (OUN)",
-                  "columnHeader": "Total",
-                  "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-                  "pdfPage": 280,
-                  "pdfPageScope": "row",
-                  "pageStatus": "extracted_pdf_row"
-                }
-              ]
-            }
-          ],
-          "amount_usd": -4394,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2020",
-              "url": "https://documents.un.org/doc/undoc/gen/n21/219/81/pdf/n2121981.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "by UNCTAD (OUN)",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 280,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Pvblic Foundation",
       "flows": [
         {
@@ -87802,7 +87726,7 @@
       "amount_usd": 126004
     },
     {
-      "label": "From/(To) Technical Cooperation Trust Fund for One UN projects implemented",
+      "label": "From/(To) Technical Cooperation Trust Fund for One UN projects implemented by UNCTAD (OUN)",
       "amount_usd": -4394
     },
     {
@@ -88869,8 +88793,8 @@
     {
       "fund_code": "TXB",
       "statement_amount_usd": 38638501,
-      "named_rows_amount_usd": 38634107,
-      "residual_usd": 4394,
+      "named_rows_amount_usd": 38638501,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {

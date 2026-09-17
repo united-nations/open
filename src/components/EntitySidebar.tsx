@@ -40,6 +40,7 @@ import {
   FinancingInstrumentChart,
   FinancingInstrumentDataPoint,
 } from "@/components/charts/FinancingInstrumentChart";
+import { EntityFunctions } from "@/components/EntityFunctions";
 import { SDG_COLORS, SDG_SHORT_TITLES } from "@/lib/sdgs";
 import {
   Tooltip,
@@ -646,6 +647,8 @@ export function EntitySidebar({
                 )}
               </div>
             )}
+
+            <EntityFunctions entity={entity.entity} year={selectedYear} />
 
             {/* Spending by SDG Section */}
             {spendingBreakdown && spendingBreakdown.bySDG.length > 0 && (

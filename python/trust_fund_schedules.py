@@ -605,7 +605,10 @@ def make_table(
     footer_candidates = [
         index
         for index in range(start, end)
-        if rows[index].y > 650 and rows[index].text.lower() == "(united states dollars)"
+        if rows[index].y > 650
+        and index > start
+        and rows[index].text.lower() == "(united states dollars)"
+        and not any("donor" in row.text.lower() for row in rows[index + 1 : min(end, index + 4)])
     ]
     if footer_candidates:
         end = min(end, footer_candidates[0])
@@ -1101,7 +1104,11 @@ def parse_amount(value: str) -> tuple[int | None, bool]:
         return None, False
     if value in {"-", "–", "—", "- -"}:
         return 0, True
+    # Adjacent zero cells can spill a separated dash into this numeric band.
+    value = re.sub(r"^[-–—]\s+|\s+[-–—]$", "", value).strip()
     negative = value.startswith("(") and value.endswith(")")
+    if not re.fullmatch(r"\(?[\d\s,]+\)?", value):
+        return None, False
     digits = re.sub(r"[^0-9]", "", value)
     if not digits:
         return None, False
@@ -1227,7 +1234,25 @@ def normalize_flow_table(table: dict) -> list[dict]:
             for column in measure_columns
         ):
             continue
+        literal = dict(literal)
         label = literal.get("counterparty", "").strip()
+        # Long names may cross into the first numeric column. Recover their
+        # trailing text only when a separate, numeric total confirms a data row.
+        if measure_columns and parse_amount(literal.get("total", ""))[0] is not None:
+            first_measure = measure_columns[0]
+            spill = re.fullmatch(r"(.*?[A-Za-z-])\s+(\(?[\d\s,]+\)?)", literal.get(first_measure, ""))
+            if spill:
+                label = join_words([label, spill.group(1)])
+                literal[first_measure] = spill.group(2)
+        # A resolution year can spill across the label/monetary boundary. It is
+        # part of the wrapped name, not a separate negative contribution.
+        if (
+            label
+            and re.fullmatch(r"\(\d{4}\)", literal.get("monetary", ""))
+            and all(not literal.get(column, "") for column in measure_columns if column != "monetary")
+        ):
+            label = join_words([label, literal["monetary"]])
+            literal["monetary"] = ""
         amounts = {
             column: parse_amount(literal.get(column, ""))[0]
             for column in measure_columns
@@ -1250,6 +1275,31 @@ def normalize_flow_table(table: dict) -> list[dict]:
             continue
         label = join_words([pending_label, label])
         pending_label = ""
+        # Split year headings are not unnamed contributors.
+        if (not label and not rows and amounts.get("total") == table["calendar_year"]
+            and all(amounts.get(column) is None for column in measure_columns if column != "total")):
+            continue
+        # An unlabelled group subtotal immediately before the next group is
+        # recognizable from its position and exact sum of the preceding rows.
+        next_label = next((r.get("counterparty", "").strip() for r in table["rows"][literal_index + 1:] if r.get("counterparty", "").strip()), "")
+        if (not label and group and next_label in COUNTERPARTY_GROUPS
+            and amounts.get("total") is not None
+            and amounts["total"] == sum(r.get("total_usd") or 0 for r in rows if r["counterparty_group"] == group and not r["is_total"])):
+            label = f"Total {group}"
+        # A wrapped label and its total can be printed on the next baseline.
+        # Complete the preceding partial row instead of counting it twice.
+        if (
+            last_data is not None
+            and last_data.get("total_usd") is None
+            and amounts.get("total") is not None
+            and all(amounts.get(column) is None for column in measure_columns if column != "total")
+            and float(literal.get("y", 0)) - float(last_data["source_y"]) < 15
+        ):
+            last_data["counterparty"] = join_words([last_data["counterparty"], label])
+            last_data["total_usd"] = amounts["total"]
+            last_data["total_reported_text"] = literal["total"]
+            last_data["total_reported_as_dash"] = parse_amount(literal["total"])[1]
+            continue
         if (
             not label
             and literal_index == last_amount_index
@@ -1257,6 +1307,10 @@ def normalize_flow_table(table: dict) -> list[dict]:
             and amounts.get("total") is not None
         ):
             label = "Total"
+        elif not label and amounts.get("total") is not None:
+            # The source occasionally leaves the contributor name blank. Keep
+            # its reported amount without inventing an identity or dropping it.
+            label = "Contributor not identified in source"
         if not label or is_flow_header(label):
             continue
         data = {

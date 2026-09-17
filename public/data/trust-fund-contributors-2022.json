@@ -4,11 +4,11 @@
     "currency": "USD",
     "measure": "Contributions and transfers",
     "statement_total_usd": 3250222450,
-    "named_rows_total_usd": 3244631809,
-    "contributor_total_usd": 3321014310,
+    "named_rows_total_usd": 3250222450,
+    "contributor_total_usd": 3326604951,
     "adjustment_total_usd": -76382501,
-    "unallocated_residual_usd": 5590641,
-    "named_row_completeness": 0.998286,
+    "unallocated_residual_usd": 0,
+    "named_row_completeness": 1.0,
     "unresolved_entity_amount_usd": 0,
     "source": {
       "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
@@ -38692,6 +38692,252 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 1.28.1 — Internal transfers",
               "pdfPage": 77,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Contributor not identified in source",
+      "flows": [
+        {
+          "type": "voluntary_contribution",
+          "group": "governments",
+          "label": "Government contributions",
+          "amount_usd": 1757665,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
+              "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
+              "label": "CER — Voluntary contributions",
+              "rowLabel": "Contributor not identified in source",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
+              "pdfPage": 287,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
+              "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
+              "label": "DDN — Voluntary contributions",
+              "rowLabel": "Contributor not identified in source",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.6.1 — Voluntary contributions",
+              "pdfPage": 299,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
+              "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
+              "label": "HCA — Voluntary contributions",
+              "rowLabel": "Contributor not identified in source",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.9.1 — Voluntary contributions",
+              "pdfPage": 308,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "type": "other_transfer_allocation_contributions",
+          "group": "inter_organizational",
+          "label": "Inter-organizational arrangements",
+          "amount_usd": 3834998,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
+              "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
+              "label": "DXA — Inter-agency contributions and transfers",
+              "rowLabel": "Contributor not identified in source",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.8.1 — Inter-agency contributions and transfers",
+              "pdfPage": 305,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        }
+      ],
+      "counterparty_group": "Government",
+      "amount_usd": 5592663,
+      "positive_amount_usd": 5592663,
+      "negative_amount_usd": 0,
+      "reported_names": [
+        "Contributor not identified in source"
+      ],
+      "destinations": [
+        {
+          "fund_code": "DXA",
+          "fund_name": "Trust Fund for Disaster Reduction",
+          "entity_code": "UNDRR",
+          "entity_name": "United Nations Office for Disaster Risk Reduction",
+          "entity_id": "trust-fund-entity:UNDRR",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "other_transfer_allocation_contributions",
+              "group": "inter_organizational",
+              "label": "Inter-organizational arrangements",
+              "amount_usd": 3834998,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
+                  "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
+                  "label": "DXA — Inter-agency contributions and transfers",
+                  "rowLabel": "Contributor not identified in source",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 4.8.1 — Inter-agency contributions and transfers",
+                  "pdfPage": 305,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 3834998,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
+              "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
+              "label": "DXA — Inter-agency contributions and transfers",
+              "rowLabel": "Contributor not identified in source",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.8.1 — Inter-agency contributions and transfers",
+              "pdfPage": 305,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "CER",
+          "fund_name": "Central Emergency Response Fund",
+          "entity_code": "OCHA",
+          "entity_name": "Office for the Coordination of Humanitarian Affairs",
+          "entity_id": "trust-fund-entity:OCHA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "governments",
+              "label": "Government contributions",
+              "amount_usd": 1637695,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
+                  "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
+                  "label": "CER — Voluntary contributions",
+                  "rowLabel": "Contributor not identified in source",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
+                  "pdfPage": 287,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 1637695,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
+              "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
+              "label": "CER — Voluntary contributions",
+              "rowLabel": "Contributor not identified in source",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
+              "pdfPage": 287,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "DDN",
+          "fund_name": "Trust Fund for the Strengthening of the Office of the Emergency Relief Coordinator",
+          "entity_code": "OCHA",
+          "entity_name": "Office for the Coordination of Humanitarian Affairs",
+          "entity_id": "trust-fund-entity:OCHA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "governments",
+              "label": "Government contributions",
+              "amount_usd": 110000,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
+                  "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
+                  "label": "DDN — Voluntary contributions",
+                  "rowLabel": "Contributor not identified in source",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 4.6.1 — Voluntary contributions",
+                  "pdfPage": 299,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 110000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
+              "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
+              "label": "DDN — Voluntary contributions",
+              "rowLabel": "Contributor not identified in source",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.6.1 — Voluntary contributions",
+              "pdfPage": 299,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "HCA",
+          "fund_name": "Trust Fund for the Support to the Activities of the Centre for Human Rights",
+          "entity_code": "OHCHR",
+          "entity_name": "Office of the United Nations High Commissioner for Human Rights",
+          "entity_id": "trust-fund-entity:OHCHR",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "governments",
+              "label": "Government contributions",
+              "amount_usd": 9970,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
+                  "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
+                  "label": "HCA — Voluntary contributions",
+                  "rowLabel": "Contributor not identified in source",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 4.9.1 — Voluntary contributions",
+                  "pdfPage": 308,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 9970,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
+              "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
+              "label": "HCA — Voluntary contributions",
+              "rowLabel": "Contributor not identified in source",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.9.1 — Voluntary contributions",
+              "pdfPage": 308,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -83747,82 +83993,6 @@
       ]
     },
     {
-      "name": "Internal",
-      "flows": [
-        {
-          "type": "other_transfer_allocation_internal_transfers",
-          "group": "internal",
-          "label": "Internal transfers",
-          "amount_usd": 2022,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
-              "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
-              "label": "PDF — Internal transfers",
-              "rowLabel": "Internal",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.30.1 — Internal transfers",
-              "pdfPage": 244,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ],
-      "counterparty_group": "Mixed",
-      "amount_usd": 2022,
-      "positive_amount_usd": 2022,
-      "negative_amount_usd": 0,
-      "reported_names": [
-        "Internal"
-      ],
-      "destinations": [
-        {
-          "fund_code": "PDF",
-          "fund_name": "Trust Fund for United Nations Peace and Development",
-          "entity_code": "DESA",
-          "entity_name": "Department of Economic and Social Affairs",
-          "entity_id": "trust-fund-entity:DESA",
-          "mapping_status": "mapped",
-          "flows": [
-            {
-              "type": "other_transfer_allocation_internal_transfers",
-              "group": "internal",
-              "label": "Internal transfers",
-              "amount_usd": 2022,
-              "supportingSources": [
-                {
-                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
-                  "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
-                  "label": "PDF — Internal transfers",
-                  "rowLabel": "Internal",
-                  "columnHeader": "Total",
-                  "tableTitle": "Schedule 3.30.1 — Internal transfers",
-                  "pdfPage": 244,
-                  "pdfPageScope": "row",
-                  "pageStatus": "extracted_pdf_row"
-                }
-              ]
-            }
-          ],
-          "amount_usd": 2022,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
-              "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
-              "label": "PDF — Internal transfers",
-              "rowLabel": "Internal",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.30.1 — Internal transfers",
-              "pdfPage": 244,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Swiss Federal Institute of Technology Lausanne",
       "flows": [
         {
@@ -85407,7 +85577,7 @@
       ]
     },
     {
-      "name": "Trust Fund in Support of Activities Undertaken by the Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (OHRLLS) (LLS)",
+      "name": "Internal From/(To) Trust Fund in Support of Activities Undertaken by the Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (OHRLLS) (LLS)",
       "flows": [
         {
           "type": "other_transfer_allocation_internal_transfers",
@@ -85419,7 +85589,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
               "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
               "label": "PDF — Internal transfers",
-              "rowLabel": "From/(To) Trust Fund in Support of Activities Undertaken by the Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (OHRLLS) (LLS)",
+              "rowLabel": "Internal From/(To) Trust Fund in Support of Activities Undertaken by the Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (OHRLLS) (LLS)",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.30.1 — Internal transfers",
               "pdfPage": 244,
@@ -85434,7 +85604,7 @@
       "positive_amount_usd": 0,
       "negative_amount_usd": -364189,
       "reported_names": [
-        "From/(To) Trust Fund in Support of Activities Undertaken by the Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (OHRLLS) (LLS)"
+        "Internal From/(To) Trust Fund in Support of Activities Undertaken by the Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (OHRLLS) (LLS)"
       ],
       "destinations": [
         {
@@ -85455,7 +85625,7 @@
                   "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
                   "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
                   "label": "PDF — Internal transfers",
-                  "rowLabel": "From/(To) Trust Fund in Support of Activities Undertaken by the Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (OHRLLS) (LLS)",
+                  "rowLabel": "Internal From/(To) Trust Fund in Support of Activities Undertaken by the Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (OHRLLS) (LLS)",
                   "columnHeader": "Total",
                   "tableTitle": "Schedule 3.30.1 — Internal transfers",
                   "pdfPage": 244,
@@ -85471,7 +85641,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2022",
               "url": "https://digitallibrary.un.org/record/4017052/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2022-EN.pdf",
               "label": "PDF — Internal transfers",
-              "rowLabel": "From/(To) Trust Fund in Support of Activities Undertaken by the Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (OHRLLS) (LLS)",
+              "rowLabel": "Internal From/(To) Trust Fund in Support of Activities Undertaken by the Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States (OHRLLS) (LLS)",
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.30.1 — Internal transfers",
               "pdfPage": 244,
@@ -86058,8 +86228,8 @@
     {
       "fund_code": "CER",
       "statement_amount_usd": 469854630,
-      "named_rows_amount_usd": 468216935,
-      "residual_usd": 1637695,
+      "named_rows_amount_usd": 469854630,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -86177,8 +86347,8 @@
     {
       "fund_code": "DDN",
       "statement_amount_usd": 1097019389,
-      "named_rows_amount_usd": 1096909389,
-      "residual_usd": 110000,
+      "named_rows_amount_usd": 1097019389,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -86359,8 +86529,8 @@
     {
       "fund_code": "HCA",
       "statement_amount_usd": 249612954,
-      "named_rows_amount_usd": 249602984,
-      "residual_usd": 9970,
+      "named_rows_amount_usd": 249612954,
+      "residual_usd": 0,
       "flow_type": "voluntary_contribution"
     },
     {
@@ -87227,8 +87397,8 @@
     {
       "fund_code": "DXA",
       "statement_amount_usd": 4215157,
-      "named_rows_amount_usd": 380159,
-      "residual_usd": 3834998,
+      "named_rows_amount_usd": 4215157,
+      "residual_usd": 0,
       "flow_type": "other_transfers_and_allocations"
     },
     {
@@ -87626,8 +87796,8 @@
     {
       "fund_code": "PDF",
       "statement_amount_usd": -364189,
-      "named_rows_amount_usd": -362167,
-      "residual_usd": -2022,
+      "named_rows_amount_usd": -364189,
+      "residual_usd": 0,
       "flow_type": "other_transfers_and_allocations"
     },
     {
