@@ -13,7 +13,7 @@ import {
 import SDGsGrid from "@/components/SDGsGrid";
 
 export const metadata: Metadata = {
-  title: "UN System Functions & Goals",
+  title: "UN System Goals and Functions",
   description:
     "Explore UN System spending by function and Sustainable Development Goal.",
 };
@@ -31,7 +31,7 @@ export default function SystemGoalsPage() {
     >
       <PageHeading
         id="functions-and-goals"
-        title="Which functions and goals do funds support?"
+        title="Which goals and functions do funds support?"
         description="Explore spending across the UN’s four main functions and the Sustainable Development Goals. These are separate views of expenditure, not amounts to add together."
       />
       <PageBody>

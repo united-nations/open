@@ -50,8 +50,11 @@ export function FunctionsChart() {
           : "Loading spending by function…"}
       </div>
     );
+  const requestedYear = pending
+    ? Number(new URLSearchParams(window.location.search).get("year"))
+    : null;
   const row =
-    data.data.find((item) => item.year === year) ??
+    data.data.find((item) => item.year === (year ?? requestedYear)) ??
     data.data[data.data.length - 1];
   return (
     <>

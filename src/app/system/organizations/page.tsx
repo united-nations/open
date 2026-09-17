@@ -1,6 +1,7 @@
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { EntitiesTreemap } from "@/components/EntitiesTreemap";
+import { SystemFlows } from "@/components/SystemFlows";
 import { EntityTrendsChart } from "@/components/EntityTrendsChart";
 import {
   CebMethodology,
@@ -34,11 +35,9 @@ export default function SystemOrganizationsPage() {
       <PageBody>
         <EntitiesTreemap />
         <div className="mt-10">
-          <h3 className="mb-4 text-lg font-medium text-gray-900">
-            Explore trends about organizations
-          </h3>
           <EntityTrendsChart />
         </div>
+        <SystemFlows />
       </PageBody>
     </ChartSourceProvider>
   );

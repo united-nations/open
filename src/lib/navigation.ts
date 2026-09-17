@@ -14,7 +14,7 @@ export const SYSTEM_NAV = [
   },
   { href: "/system/contributors", label: "Contributors" },
   { href: "/system/locations", label: "Locations" },
-  { href: "/system/goals", label: "Functions & Goals" },
+  { href: "/system/goals", label: "Goals and Functions" },
 ] as const satisfies readonly SectionNavItem[];
 
 export const SECRETARIAT_NAV = [

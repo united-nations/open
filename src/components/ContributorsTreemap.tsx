@@ -155,6 +155,7 @@ export function ContributorsTreemap() {
     CONTRIBUTION_TYPES.map(({ type }) => type),
   );
   const [selectedYear, setSelectedYear] = useState(yearRanges.donors.default);
+  const [loadedYear, setLoadedYear] = useState<number | null>(null);
   const [pendingDeepLink, setPendingDeepLink] = useDeepLink({
     hashPrefix: "donor",
     sectionId: "donors",
@@ -163,13 +164,31 @@ export function ContributorsTreemap() {
 
   useEffect(() => {
     if (!loading && pendingDeepLink && contributors.length > 0) {
+      const requestedYear = Number(
+        new URLSearchParams(window.location.search).get("year"),
+      );
+      if (yearRanges.donors.years.includes(requestedYear)) {
+        if (selectedYear !== requestedYear) {
+          setSelectedYear(requestedYear);
+          return;
+        }
+        if (loadedYear !== requestedYear) return;
+      }
       const contributor = contributors.find(
         (candidate) => candidate.name === pendingDeepLink,
       );
       if (contributor) setSelectedContributor(contributor);
       setPendingDeepLink(null);
     }
-  }, [contributors, loading, pendingDeepLink, setPendingDeepLink]);
+  }, [
+    contributors,
+    loading,
+    pendingDeepLink,
+    setPendingDeepLink,
+    selectedYear,
+    loadedYear,
+    yearRanges.donors.years,
+  ]);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -197,6 +216,7 @@ export function ContributorsTreemap() {
             is_other: info.is_other,
           })),
         );
+        setLoadedYear(selectedYear);
         setLoading(false);
       })
       .catch((reason: unknown) => {

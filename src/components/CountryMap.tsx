@@ -81,6 +81,16 @@ export function CountryMap() {
   // Open sidebar when data is loaded and there's a pending deep link
   useEffect(() => {
     if (!loading && pendingDeepLink && countryData.length > 0) {
+      const requestedYear = Number(
+        new URLSearchParams(window.location.search).get("year"),
+      );
+      if (yearRanges.countryExpenses.years.includes(requestedYear)) {
+        if (selectedYear !== requestedYear) {
+          setSelectedYear(requestedYear);
+          return;
+        }
+        if (loadedYear !== requestedYear) return;
+      }
       const country = countryData.find((c) => c.iso3 === pendingDeepLink);
       if (country) {
         setSelectedCountry({
@@ -92,20 +102,34 @@ export function CountryMap() {
       }
       setPendingDeepLink(null);
     }
-  }, [loading, pendingDeepLink, countryData, setPendingDeepLink]);
+  }, [
+    loading,
+    pendingDeepLink,
+    countryData,
+    setPendingDeepLink,
+    selectedYear,
+    loadedYear,
+    yearRanges.countryExpenses.years,
+  ]);
 
   useEffect(() => {
+    let cancelled = false;
     fetch(`${basePath}/data/country-expenses-${selectedYear}.json`)
       .then((res) => res.json())
       .then((data: CountryExpense[]) => {
+        if (cancelled) return;
         setCountryData(data);
         setLoadedYear(selectedYear);
         setLoading(false);
       })
       .catch((err) => {
+        if (cancelled) return;
         console.error("Failed to load country data:", err);
         setLoading(false);
       });
+    return () => {
+      cancelled = true;
+    };
   }, [selectedYear]);
 
   if (loading) {

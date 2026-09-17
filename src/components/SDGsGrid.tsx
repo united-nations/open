@@ -276,11 +276,28 @@ export default function SDGsGrid() {
 
   useEffect(() => {
     if (pendingDeepLink && sdgs.length > 0) {
+      const requestedYear = Number(
+        new URLSearchParams(window.location.search).get("year"),
+      );
+      if (yearRanges.sdgExpenses.years.includes(requestedYear)) {
+        if (selectedYear !== requestedYear) {
+          setSelectedYear(requestedYear);
+          return;
+        }
+        if (loadedYear !== requestedYear) return;
+      }
       const sdg = sdgs.find((s) => s.number === pendingDeepLink);
       if (sdg) setSelectedSDG(sdg);
       setPendingDeepLink(null);
     }
-  }, [pendingDeepLink, sdgs, setPendingDeepLink]);
+  }, [
+    pendingDeepLink,
+    sdgs,
+    setPendingDeepLink,
+    selectedYear,
+    loadedYear,
+    yearRanges.sdgExpenses.years,
+  ]);
 
   useEffect(() => {
     fetch(`${basePath}/data/sdgs.json`)
@@ -289,12 +306,17 @@ export default function SDGsGrid() {
   }, []);
 
   useEffect(() => {
+    let cancelled = false;
     fetch(`${basePath}/data/sdg-expenses-${selectedYear}.json`)
       .then((res) => res.json())
       .then((data: SDGExpensesData) => {
+        if (cancelled) return;
         setExpensesData(data);
         setLoadedYear(selectedYear);
       });
+    return () => {
+      cancelled = true;
+    };
   }, [selectedYear]);
 
   const searchTerm = searchQuery.toLowerCase().trim();
