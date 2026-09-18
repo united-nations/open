@@ -219,11 +219,15 @@ export function TrustFundContributorsTreemap() {
           a.subgroups.reduce((sum, group) => sum + group.leaves[0].value, 0),
       );
   }, [open, tiles]);
-  const visibleTotal = rows
-    .filter((row) => !hiddenGroups.includes(row.key))
-    .flatMap((row) => row.subgroups.flatMap((group) => group.leaves))
-    .filter((leaf) => matchesQuery(leaf.label, query))
-    .reduce((sum, leaf) => sum + leaf.value, 0);
+  const signedTiles = tiles.filter(
+    ({ contributor, flow }) =>
+      !hiddenGroups.includes(flow.group) &&
+      matchesQuery(contributor.name, query),
+  );
+  const visibleTotal = signedTiles.reduce(
+    (sum, { flow }) => sum + flow.amount_usd,
+    0,
+  );
   const nonPositiveCount = tiles.filter(
     (tile) => tile.flow.amount_usd <= 0,
   ).length;
@@ -239,6 +243,11 @@ export function TrustFundContributorsTreemap() {
           <GroupedTreemap<ContributorGroup, string, ContributorTile, never>
             footer={
               <ChartFooter
+                signedAmounts={signedTiles.map(({ contributor, flow }) => ({
+                  group: GROUP_STYLES[flow.group].label,
+                  label: contributor.name,
+                  amount: flow.amount_usd,
+                }))}
                 details={
                   <div className="space-y-2">
                     <p>
@@ -318,7 +327,14 @@ export function TrustFundContributorsTreemap() {
                 )}
               </div>
             }
-            rows={rows.filter((row) => !hiddenGroups.includes(row.key))}
+            rows={rows
+              .filter((row) => !hiddenGroups.includes(row.key))
+              .map((row) => ({
+                ...row,
+                value: signedTiles
+                  .filter((item) => item.flow.group === row.key)
+                  .reduce((sum, item) => sum + item.flow.amount_usd, 0),
+              }))}
             search={{
               value: query,
               onChange: setQuery,
@@ -331,9 +347,7 @@ export function TrustFundContributorsTreemap() {
               {
                 key: "visible-total",
                 label:
-                  query || hiddenGroups.length
-                    ? "Matching positive total"
-                    : "Positive total",
+                  query || hiddenGroups.length ? "Matching total" : "Total",
                 value: currency(visibleTotal),
               },
             ]}

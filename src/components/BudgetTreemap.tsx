@@ -3,6 +3,7 @@ import { orderFundingTooltipRows } from "@/lib/financingInstruments";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
+import { NegativeAmounts } from "./NegativeAmounts";
 import { ChartFooter } from "@/components/ChartFooter";
 
 // Budget-document treemap for /secretariat, in the layout of ../budget-explorer:
@@ -1109,7 +1110,7 @@ export function BudgetTreemap({
     }
   }, [selectedId, filteredData, sidebarById, isTrustFund]);
 
-  const { bands, drawnTotal } = useMemo(() => {
+  const { bands } = useMemo(() => {
     const empty = { bands: [] as Band[], drawnTotal: 0 };
     if (!filteredData) return empty;
 
@@ -1528,6 +1529,7 @@ export function BudgetTreemap({
           return {
             key: entity.id,
             label: entity.entity?.acronym ?? entity.code ?? entity.label,
+            value: entity.amount,
             color,
             data: entity,
             leaves,
@@ -1722,11 +1724,70 @@ export function BudgetTreemap({
     [],
   );
 
-  const sharedProgrammeSummaries = useMemo(() => {
+  // One accounting frontier: never sum a parent and its descendants together.
+  const accountingNodes = (filteredData?.nodes ?? []).filter((node) =>
+    usesSharedTrustFundExpenses
+      ? node.tier === "detail"
+      : usesSharedProgrammeBudget
+        ? node.tier === "section"
+        : node.kind === "mission",
+  );
+  const matchesAccountingNode = (node: BudgetNode) => {
+    const labels = [node.label, node.entity?.acronym ?? ""];
+    let parent = node.parentId ? byId[node.parentId] : undefined;
+    const visited = new Set<string>();
+    while (parent && !visited.has(parent.id)) {
+      visited.add(parent.id);
+      labels.push(parent.label);
+      parent = parent.parentId ? byId[parent.parentId] : undefined;
+    }
+    return labels
+      .join(" ")
+      .toLocaleLowerCase()
+      .includes(searchQuery.trim().toLocaleLowerCase());
+  };
+  const signedBudgetAmounts = (filteredData?.nodes ?? [])
+    .filter(
+      (node) => !childrenOf[node.id]?.length && matchesAccountingNode(node),
+    )
+    .flatMap((node) =>
+      node.values && Object.keys(node.values).length
+        ? Object.entries(node.values)
+            .filter(([key]) =>
+              activeFundingSources.some((source) => source === key),
+            )
+            .map(([key, amount]) => ({
+              group: node.label,
+              label: fundingLabel(key),
+              amount: amount ?? 0,
+            }))
+        : [
+            {
+              group: node.parentId ? byId[node.parentId]?.label : undefined,
+              label: node.label,
+              amount: node.amount,
+            },
+          ],
+    );
+  const signedBudgetTotal = !searchQuery.trim()
+    ? (filteredData?.meta.total ?? 0)
+    : accountingNodes
+        .filter(matchesAccountingNode)
+        .reduce((sum, node) => sum + node.amount, 0);
+
+  const sharedProgrammeSummaries = (() => {
+    if (usesSharedTrustFundExpenses)
+      return [
+        {
+          key: "net",
+          label: searchQuery ? "Matching total" : "Total",
+          value: formatBudget(signedBudgetTotal),
+        },
+      ];
     if (!usesSharedProgrammeBudget) return undefined;
     const query = searchQuery.trim().toLocaleLowerCase();
     return activeFundingSources.map((source) => {
-      const total = sharedRows.reduce(
+      const drawnSourceTotal = sharedRows.reduce(
         (rowSum, row) =>
           rowSum +
           (
@@ -1754,9 +1815,10 @@ export function BudgetTreemap({
                 }
                 return (
                   leafSum +
-                  (item.segments ?? [])
-                    .filter((segment) => segment.key === source)
-                    .reduce((sum, segment) => sum + segment.value, 0)
+                  (item.data?.node.values?.[source] ??
+                    (source === "regular_budget"
+                      ? (item.data?.node.amount ?? 0)
+                      : 0))
                 );
               }, 0),
             0,
@@ -1766,17 +1828,20 @@ export function BudgetTreemap({
       return {
         key: source,
         label: fundingLabel(source),
-        value: formatBudget(total),
+        value: formatBudget(
+          !query
+            ? (filteredData?.nodes.find((node) => node.parentId === null)
+                ?.values?.[source] ?? drawnSourceTotal)
+            : drawnSourceTotal +
+                accountingNodes
+                  .filter(
+                    (node) => node.amount <= 0 && matchesAccountingNode(node),
+                  )
+                  .reduce((sum, node) => sum + (node.values?.[source] ?? 0), 0),
+        ),
       };
     });
-  }, [
-    activeFundingSources,
-    fundingLabel,
-    searchQuery,
-    sharedRows,
-    sharedSearchMatches,
-    usesSharedProgrammeBudget,
-  ]);
+  })();
 
   const controls = (
     <div
@@ -1987,6 +2052,7 @@ export function BudgetTreemap({
         >
           footer={
             <ChartFooter
+              signedAmounts={signedBudgetAmounts}
               details={
                 usesSharedProgrammeBudget || usesSharedTrustFundExpenses ? (
                   <div className="space-y-3">
@@ -2022,8 +2088,8 @@ export function BudgetTreemap({
                           }{" "}
                           trust funds with zero or negative annual expenses are
                           listed below the chart because they cannot be drawn as
-                          areas. The displayed total is the sum of visible
-                          positive fund tiles.
+                          areas. The displayed total includes both positive and
+                          negative amounts.
                         </p>
                       )}
                     {usesSharedTrustFundExpenses && meta.partial && (
@@ -2667,14 +2733,18 @@ export function BudgetTreemap({
       {!headlineFundingSource && (
         <div className="mt-3 space-y-1 text-xs text-gray-500">
           <p>
-            {meta.title} · {meta.scopeLabel}: {formatBudget(drawnTotal)}
+            {meta.title} · {meta.scopeLabel}: {formatBudget(signedBudgetTotal)}
             {searchQuery.trim() === "" &&
-              Math.abs(drawnTotal - meta.total) > 1000 && (
+              Math.abs(signedBudgetTotal - meta.total) > 1000 && (
                 <> of {formatBudget(meta.total)} in the published total</>
               )}
             {filteredPrevious && " · the change is against the year before"}
           </p>
           <p>{meta.scopeWarning}</p>
+          <details>
+            <summary className="cursor-pointer">Source details</summary>
+            <NegativeAmounts entries={signedBudgetAmounts} />
+          </details>
           {(meta.omitted ?? []).length > 0 && (
             <p>
               Not drawn, because the budget prints no total for them:{" "}

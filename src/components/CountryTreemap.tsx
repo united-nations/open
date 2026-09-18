@@ -8,9 +8,12 @@ import {
   type GroupedTreemapTooltipContext,
 } from "@un-eosg/ui/components/grouped-treemap";
 import { formatBudget } from "@/lib/entities";
+import { geographicStyle } from "@/lib/geographicExpenses";
 import { getRegionStyle } from "@/lib/regionGroupings";
 
 interface CountryExpense {
+  level?: import("@/lib/geographicExpenses").GeographicLevel;
+  notes?: string[];
   iso3: string;
   name: string;
   region: string;
@@ -53,13 +56,29 @@ function CountryTooltip({
 export function CountryFinancialTooltip({
   country,
 }: {
-  country: { name: string; region?: string; total: number };
+  country: {
+    name: string;
+    region?: string;
+    total: number;
+    level?: import("@/lib/geographicExpenses").GeographicLevel;
+    notes?: string[];
+  };
 }) {
   const region = getRegionStyle(country.region || "Unknown");
   return (
     <FinancialTooltip
       title={country.name}
-      parents={[{ label: region.label, color: region.color }]}
+      parents={[
+        {
+          label: country.level
+            ? geographicStyle(country.level).label
+            : region.label,
+          color: country.level
+            ? geographicStyle(country.level).color
+            : region.color,
+        },
+      ]}
+      notes={country.notes?.join(" ")}
       total={{
         label: "Spending",
         value: formatAccessibleBudget(country.total),
@@ -114,13 +133,22 @@ export function CountryTreemap({
           })),
       } satisfies GroupedTreemapRow<string, never, CountryExpense, never>;
     });
-  const visibleTotal = positiveCountries
+  const visibleTotal = data
     .filter((country) => matchesCountry(country, searchQuery))
     .reduce((sum, country) => sum + country.total, 0);
 
   return (
     <GroupedTreemap<string, never, CountryExpense, never>
-      rows={rows}
+      rows={rows.map((row) => ({
+        ...row,
+        value: data
+          .filter(
+            (item) =>
+              (item.region || "Unknown") === row.key &&
+              matchesCountry(item, searchQuery),
+          )
+          .reduce((sum, item) => sum + item.total, 0),
+      }))}
       hideHeader={hideHeader}
       search={{
         value: searchQuery,

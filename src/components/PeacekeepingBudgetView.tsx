@@ -245,6 +245,7 @@ function MissionCostClassTreemap({
       {
         key: mission.code,
         label: mission.code,
+        value: mission.total,
         color: mission.kind === "support" ? SUPPORT_COLOR : FIELD_COLOR,
         data: mission,
         leaves,
@@ -474,6 +475,23 @@ export function PeacekeepingBudgetView() {
         }
         footer={
           <ChartFooter
+            signedAmounts={visibleRows.flatMap((row) =>
+              COST_CLASS_KEYS.flatMap((key) =>
+                row.items[key].length
+                  ? row.items[key].map((item) => ({
+                      group: row.code,
+                      label: item.label,
+                      amount: item.amount,
+                    }))
+                  : [
+                      {
+                        group: row.code,
+                        label: key,
+                        amount: row.classes[key] ?? 0,
+                      },
+                    ],
+              ),
+            )}
             hint="Click on a mission or service centre to explore details"
             details={
               <div className="space-y-2">

@@ -188,7 +188,10 @@ export function PeacekeepingContributorsTreemap() {
     ],
     [open, positiveContributors],
   );
-  const visibleTotal = positiveContributors
+  const signedContributors = (current?.contributors ?? []).filter((item) =>
+    matchesQuery(item.name, query),
+  );
+  const visibleTotal = signedContributors
     .filter((contributor) => matchesQuery(contributor.name, query))
     .reduce((sum, contributor) => sum + contributor.net_assessment, 0);
 
@@ -208,10 +211,15 @@ export function PeacekeepingContributorsTreemap() {
           >
             footer={
               <ChartFooter
+                signedAmounts={signedContributors.map((item) => ({
+                  label: item.name,
+                  amount: item.net_assessment,
+                  group: "Net assessments",
+                }))}
                 details={
                   <div className="space-y-2">
                     <p>
-                      The displayed total sums positive net assessments
+                      The displayed total sums signed net assessments
                       represented by tiles. Zero and negative amounts are
                       excluded from the treemap.
                     </p>
@@ -254,7 +262,7 @@ export function PeacekeepingContributorsTreemap() {
             }
             controls={undefined}
             showRowLabels={false}
-            rows={rows}
+            rows={rows.map((row) => ({ ...row, value: visibleTotal }))}
             search={{
               value: query,
               onChange: setQuery,

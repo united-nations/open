@@ -235,6 +235,20 @@ export function EntitiesTreemap() {
     [revenueData, showRevenue, spendingData, hiddenFunding],
   );
 
+  const signedEntries = Object.entries(budgetData).filter(([code]) => {
+    const entity =
+      entities.find((item) => item.entity === code) ??
+      createUncategorizedEntity(code);
+    return matchesEntity(entity, searchQuery);
+  });
+  const signedAmounts = signedEntries.map(([code, amount]) => ({
+    group:
+      entities.find((item) => item.entity === code)?.system_grouping ||
+      "Uncategorized",
+    label: code,
+    amount,
+  }));
+
   const activeEntities = useMemo(() => {
     const metadata = new Map(
       entities
@@ -403,7 +417,10 @@ export function EntitiesTreemap() {
           </div>
         }
         footer={
-          <ChartFooter hint="Click on an organization to explore details" />
+          <ChartFooter
+            hint="Click on an organization to explore details"
+            signedAmounts={signedAmounts}
+          />
         }
         yearControl={
           <YearSlider
@@ -426,7 +443,16 @@ export function EntitiesTreemap() {
             />
           </>
         }
-        rows={rows}
+        rows={rows.map((row) => ({
+          ...row,
+          value: signedEntries
+            .filter(
+              ([code]) =>
+                (entities.find((entity) => entity.entity === code)
+                  ?.system_grouping || "Uncategorized") === row.key,
+            )
+            .reduce((sum, [, amount]) => sum + amount, 0),
+        }))}
         search={{
           value: searchQuery,
           onChange: setSearchQuery,
@@ -437,6 +463,15 @@ export function EntitiesTreemap() {
             return entity ? matchesEntity(entity, query) : false;
           },
         }}
+        summaries={[
+          {
+            key: "net",
+            label: searchQuery ? "Matching total" : "Total",
+            value: formatBudget(
+              signedEntries.reduce((sum, [, amount]) => sum + amount, 0),
+            ),
+          },
+        ]}
         totalLabel="Total"
         showLeafValues
         plotClassName="h-[650px]"

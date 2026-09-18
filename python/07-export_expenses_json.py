@@ -130,8 +130,9 @@ def export_sdg_expenses(sdg: pd.DataFrame):
     for year in years:
         df = sdg[sdg["year"] == year]
         data = {}
-        for sdg_num in range(1, 18):
-            sdg_df = df[df["sdg"] == str(sdg_num)]
+        for sdg_num in [*range(1, 18), "unallocated"]:
+            key = "x00" if sdg_num == "unallocated" else str(sdg_num)
+            sdg_df = df[df["sdg"].astype(str).str.lower() == key]
             entities = sdg_df.groupby("entity")["amount"].sum().to_dict()
             data[str(sdg_num)] = {"total": sum(entities.values()), "entities": entities}
         with open(OUT / f"sdg-expenses-{year}.json", "w") as f:

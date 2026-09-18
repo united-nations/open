@@ -216,8 +216,8 @@
       "ICC": 191354717.8,
       "ILO": 39690864.46,
       "ITLOS": 0.0,
-      "UN Women": 69393287.98,
       "Peacekeeping Operations": 7336866636.0,
+      "UN Women": 69393287.98,
       "UNDP": 1271308041.0,
       "UNESCO": 17644316.0,
       "UNFPA": 24240885.9,
@@ -246,5 +246,9 @@
       "WHO": 95337928.0,
       "WTO": 289073673.8
     }
+  },
+  "unallocated": {
+    "total": 0,
+    "entities": {}
   }
 }

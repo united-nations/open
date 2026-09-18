@@ -63,8 +63,8 @@ export function FunctionsChart() {
         rows={UN_FUNCTIONS.map((item) => ({
           key: item.key,
           label: item.label,
-          color: item.color,
           value: row.functions[item.key] ?? 0,
+          color: item.color,
           leaves: Object.entries(row.entities)
             .map(([entity, amounts]) => ({
               key: `${item.key}:${entity}`,
@@ -104,6 +104,15 @@ export function FunctionsChart() {
         }
         footer={
           <ChartFooter
+            signedAmounts={Object.entries(row.entities).flatMap(
+              ([entity, amounts]) =>
+                Object.entries(amounts).map(([key, amount]) => ({
+                  group:
+                    UN_FUNCTIONS.find((item) => item.key === key)?.label ?? key,
+                  label: entity,
+                  amount: amount ?? 0,
+                })),
+            )}
             hint="Click on an organization to explore details."
             details={<FunctionsMethodology />}
           />

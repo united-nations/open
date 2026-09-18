@@ -134,6 +134,32 @@ export function SecretariatOverview() {
     replaceToSidebar("secretariat-entity", entity.code);
   }, []);
 
+  const signedAmounts = (current?.entities ?? [])
+    .filter((entity) =>
+      entity.code
+        .toLocaleLowerCase()
+        .includes(query.trim().toLocaleLowerCase()),
+    )
+    .flatMap((entity) => {
+      const cells = entity.cells.filter((cell) =>
+        fundingSet.has(cell.funding_source),
+      );
+      return entity.split_across_priorities
+        ? (current?.meta.priorities ?? []).map((priority) => ({
+            group: priority,
+            label: entity.code,
+            amount: sumCells(
+              cells.filter((cell) => cell.priority_area === priority),
+            ),
+          }))
+        : [
+            {
+              group: entity.primary_priority,
+              label: entity.code,
+              amount: sumCells(cells),
+            },
+          ];
+    });
   const tiles = useMemo<OverviewTile[]>(() => {
     if (!current) return [];
     const built: OverviewTile[] = [];
@@ -273,7 +299,12 @@ export function SecretariatOverview() {
         requestKey={year}
       />
       <GroupedTreemap<string, SecretariatGroup, OverviewTile, never>
-        footer={<ChartFooter hint="Click on an entity to explore details" />}
+        footer={
+          <ChartFooter
+            hint="Click on an entity to explore details"
+            signedAmounts={signedAmounts}
+          />
+        }
         yearControl={
           <YearSlider
             years={years.years}
@@ -292,7 +323,12 @@ export function SecretariatOverview() {
             }
           />
         }
-        rows={rows}
+        rows={rows.map((row) => ({
+          ...row,
+          value: signedAmounts
+            .filter((item) => item.group === row.key)
+            .reduce((sum, item) => sum + item.amount, 0),
+        }))}
         search={{
           value: query,
           onChange: setQuery,
@@ -303,6 +339,15 @@ export function SecretariatOverview() {
               .toLocaleLowerCase()
               .includes(needle.trim().toLocaleLowerCase()),
         }}
+        summaries={[
+          {
+            key: "net",
+            label: query ? "Matching total" : "Total",
+            value: formatBudget(
+              signedAmounts.reduce((sum, item) => sum + item.amount, 0),
+            ),
+          },
+        ]}
         totalLabel="Total"
         height={720}
         formatValue={formatBudget}

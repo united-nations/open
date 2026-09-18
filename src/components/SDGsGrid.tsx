@@ -324,7 +324,8 @@ export default function SDGsGrid() {
   const matchesSDG = (sdgNumber: number): boolean => {
     if (!searchTerm) return true;
     if (sdgNumber.toString().includes(searchTerm)) return true;
-    const shortTitle = SDG_SHORT_TITLES[sdgNumber];
+    const shortTitle =
+      sdgNumber === 0 ? "Unallocated" : SDG_SHORT_TITLES[sdgNumber];
     return shortTitle?.toLowerCase().includes(searchTerm) ?? false;
   };
 
@@ -346,10 +347,16 @@ export default function SDGsGrid() {
     entities: { [entity: string]: number };
   }[] = [];
   if (expensesData) {
-    for (let i = 1; i <= 17; i++) {
-      const data = expensesData[i.toString()];
+    for (const i of [
+      ...Array.from({ length: 17 }, (_, n) => n + 1),
+      ...(showSpending ? [0] : []),
+    ]) {
+      const data = expensesData[i === 0 ? "unallocated" : i.toString()];
       if (!data) continue;
-      const sdgMatches = matchesSDG(i);
+      const sdgMatches =
+        i === 0
+          ? !searchTerm || "unallocated".includes(searchTerm)
+          : matchesSDG(i);
       if (sdgMatches) {
         filteredSDGData.push({
           sdgNumber: i,
@@ -362,7 +369,7 @@ export default function SDGsGrid() {
           (sum, val) => sum + val,
           0,
         );
-        if (filteredTotal > 0) {
+        if (Object.keys(filteredEntities).length > 0) {
           filteredSDGData.push({
             sdgNumber: i,
             total: filteredTotal,
@@ -373,10 +380,12 @@ export default function SDGsGrid() {
     }
   }
 
-  const items: TreemapItem[] = filteredSDGData.map((d) => ({
-    name: d.sdgNumber.toString(),
-    value: d.total,
-  }));
+  const items: TreemapItem[] = filteredSDGData
+    .filter((d) => d.total > 0)
+    .map((d) => ({
+      name: d.sdgNumber.toString(),
+      value: d.total,
+    }));
   const dataLookup = Object.fromEntries(
     filteredSDGData.map((d) => [d.sdgNumber.toString(), d]),
   );
@@ -395,7 +404,27 @@ export default function SDGsGrid() {
   }, [filteredSDGData.length]);
 
   const gridRects = gridLayout(items, containerAspect);
-  const treemapRects = treemapLayout(items, containerAspect);
+  const unallocated = items.find((item) => item.name === "0");
+  const unallocatedHeight = unallocated
+    ? (100 * unallocated.value) /
+      items.reduce((sum, item) => sum + item.value, 0)
+    : 0;
+  const treemapRects = treemapLayout(
+    items.filter((item) => item.name !== "0"),
+    containerAspect,
+  ).map((rect) => ({
+    ...rect,
+    y: (rect.y * (100 - unallocatedHeight)) / 100,
+    height: (rect.height * (100 - unallocatedHeight)) / 100,
+  }));
+  if (unallocated)
+    treemapRects.push({
+      x: 0,
+      y: 100 - unallocatedHeight,
+      width: 100,
+      height: unallocatedHeight,
+      data: unallocated,
+    });
   const rects = showSpending ? treemapRects : gridRects;
 
   // Create lookup by SDG number for positions
@@ -501,7 +530,28 @@ export default function SDGsGrid() {
             ]}
           />
         }
-        footer={<ChartFooter hint="Click on an SDG to explore details" />}
+        footer={
+          <ChartFooter
+            hint="Click on an SDG to explore details"
+            signedAmounts={filteredSDGData.flatMap((row) =>
+              Object.entries(row.entities).map(([label, amount]) => ({
+                group:
+                  row.sdgNumber === 0 ? "Unallocated" : `SDG ${row.sdgNumber}`,
+                label,
+                amount,
+              })),
+            )}
+            details={
+              showSpending ? (
+                <p>
+                  Unallocated expenditure is reported without an SDG assignment.
+                  Differences between the SDG dataset and organization
+                  expenditure totals are not treated as unallocated spending.
+                </p>
+              ) : undefined
+            }
+          />
+        }
       >
         <DelayedChartLoading
           pending={loadedYear !== selectedYear}
@@ -514,8 +564,9 @@ export default function SDGsGrid() {
           {filteredSDGData.map((sdgData) => {
             const sdgNumber = sdgData.sdgNumber;
             const sdg = sdgs.find((s) => s.number === sdgNumber);
-            const color = SDG_COLORS[sdgNumber];
-            const shortTitle = SDG_SHORT_TITLES[sdgNumber];
+            const color = sdgNumber === 0 ? "#6b7280" : SDG_COLORS[sdgNumber];
+            const shortTitle =
+              sdgNumber === 0 ? "Unallocated" : SDG_SHORT_TITLES[sdgNumber];
             const pos = positionLookup[sdgNumber.toString()];
             if (!pos) return null;
 
@@ -524,6 +575,7 @@ export default function SDGsGrid() {
               showSpending || showEntities
                 ? squarify(
                     Object.entries(sdgData.entities)
+                      .filter(([, value]) => value > 0)
                       .map(([name, value]) => ({ name, value }))
                       .sort((a, b) => b.value - a.value),
                     0,
@@ -596,7 +648,7 @@ export default function SDGsGrid() {
                       }}
                     >
                       <span className="mr-2 flex-shrink-0 text-2xl leading-none font-bold sm:text-3xl">
-                        {sdgNumber}
+                        {sdgNumber || ""}
                       </span>
                       <div className="flex flex-col pt-0.5">
                         <span className="text-left text-xs leading-tight font-semibold sm:text-sm">
@@ -621,13 +673,23 @@ export default function SDGsGrid() {
                   className="max-w-xs border border-slate-200 bg-white text-slate-800 shadow-lg sm:max-w-sm"
                 >
                   <FinancialTooltip
-                    title={`SDG ${sdgNumber}: ${shortTitle}`}
-                    context={sdg?.title}
+                    title={
+                      sdgNumber === 0
+                        ? "Unallocated expenditure"
+                        : `SDG ${sdgNumber}: ${shortTitle}`
+                    }
+                    context={
+                      sdgNumber === 0
+                        ? "Reported without allocation to a Sustainable Development Goal."
+                        : sdg?.title
+                    }
                     total={{
                       label: "Spending",
                       value: formatBudget(sdgData.total),
                     }}
-                    actionHint="Click to explore details"
+                    actionHint={
+                      sdgNumber === 0 ? undefined : "Click to explore details"
+                    }
                   />
                 </TooltipContent>
               </Tooltip>

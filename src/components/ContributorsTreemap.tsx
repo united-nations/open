@@ -240,29 +240,43 @@ export function ContributorsTreemap() {
     [contributors],
   );
 
-  const positiveContributors = useMemo(
+  const signedContributors = useMemo(
     () =>
-      contributors
-        .map((contributor) => ({
-          ...contributor,
-          contributions: Object.fromEntries(
-            Object.entries(contributor.contributions).map(
-              ([entity, amounts]) => [
-                entity,
-                Object.fromEntries(
-                  Object.entries(amounts).filter(([type]) =>
-                    selectedFunding.includes(type),
-                  ),
-                ),
-              ],
+      contributors.map((contributor) => ({
+        ...contributor,
+        contributions: Object.fromEntries(
+          Object.entries(contributor.contributions).map(([entity, amounts]) => [
+            entity,
+            Object.fromEntries(
+              Object.entries(amounts).filter(([type]) =>
+                selectedFunding.includes(type),
+              ),
             ),
-          ),
-        }))
-        .filter(
-          (contributor) => getTotalContributions(contributor.contributions) > 0,
+          ]),
         ),
+      })),
     [contributors, selectedFunding],
   );
+
+  const positiveContributors = useMemo(
+    () =>
+      signedContributors.filter(
+        (item) => getTotalContributions(item.contributions) > 0,
+      ),
+    [signedContributors],
+  );
+  const visibleContributors = signedContributors.filter((item) =>
+    matchesQuery(item.name, searchQuery),
+  );
+  const signedAmounts = visibleContributors.map((item) => ({
+    group: isUnattributed(item)
+      ? "Unattributed"
+      : isGovernmentDonor(item.status)
+        ? "Government"
+        : "Non-Government",
+    label: item.name,
+    amount: getTotalContributions(item.contributions),
+  }));
 
   const toLeaf = useCallback(
     (contributor: Contributor) => {
@@ -410,7 +424,10 @@ export function ContributorsTreemap() {
           <GroupedTreemap<ContributorRow, string, Contributor, string>
             layout={{ rowOrder: "input", consolidateSmallRows: false }}
             footer={
-              <ChartFooter hint="Click on a contributor to explore details" />
+              <ChartFooter
+                hint="Click on a contributor to explore details"
+                signedAmounts={signedAmounts}
+              />
             }
             yearControl={
               <YearSlider
@@ -442,7 +459,23 @@ export function ContributorsTreemap() {
                 ))}
               </div>
             }
-            rows={rows}
+            rows={rows.map((row) => ({
+              ...row,
+              value: visibleContributors
+                .filter(
+                  (item) =>
+                    (isUnattributed(item)
+                      ? "unattributed"
+                      : isGovernmentDonor(item.status)
+                        ? "government"
+                        : "non-government") === row.key,
+                )
+                .reduce(
+                  (sum, item) =>
+                    sum + getTotalContributions(item.contributions),
+                  0,
+                ),
+            }))}
             search={{
               value: searchQuery,
               onChange: setSearchQuery,
@@ -455,6 +488,19 @@ export function ContributorsTreemap() {
                     matchesQuery(contributor.name, query),
                 ),
             }}
+            summaries={[
+              {
+                key: "net",
+                label: searchQuery ? "Matching total" : "Total",
+                value: formatBudget(
+                  visibleContributors.reduce(
+                    (sum, item) =>
+                      sum + getTotalContributions(item.contributions),
+                    0,
+                  ),
+                ),
+              },
+            ]}
             totalLabel={
               selectedFunding.length === CONTRIBUTION_TYPES.length
                 ? "Total"

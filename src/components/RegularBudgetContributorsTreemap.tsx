@@ -210,6 +210,17 @@ export function RegularBudgetContributorsTreemap() {
           >
             footer={
               <ChartFooter
+                signedAmounts={(data?.contributors ?? [])
+                  .filter(
+                    (item) =>
+                      !hiddenGroups.includes(item.payment_status) &&
+                      matchesContributor(item.name, searchQuery),
+                  )
+                  .map((item) => ({
+                    label: item.name,
+                    amount: item.assessment_amount,
+                    group: "Assessments",
+                  }))}
                 details={
                   <div className="space-y-2">
                     <p>
@@ -311,7 +322,18 @@ export function RegularBudgetContributorsTreemap() {
                 })}
               </div>
             }
-            rows={rows.filter((row) => !hiddenGroups.includes(row.key))}
+            rows={rows
+              .filter((row) => !hiddenGroups.includes(row.key))
+              .map((row) => ({
+                ...row,
+                value: (data?.contributors ?? [])
+                  .filter(
+                    (item) =>
+                      item.payment_status === row.key &&
+                      matchesContributor(item.name, searchQuery),
+                  )
+                  .reduce((sum, item) => sum + item.assessment_amount, 0),
+              }))}
             search={{
               value: searchQuery,
               onChange: setSearchQuery,
@@ -320,6 +342,21 @@ export function RegularBudgetContributorsTreemap() {
               predicate: (leafLabel, _subgroupLabel, _rowLabel, query) =>
                 matchesContributor(leafLabel, query),
             }}
+            summaries={[
+              {
+                key: "net",
+                label: searchQuery ? "Matching total" : "Total",
+                value: formatCurrency(
+                  (data?.contributors ?? [])
+                    .filter(
+                      (item) =>
+                        !hiddenGroups.includes(item.payment_status) &&
+                        matchesContributor(item.name, searchQuery),
+                    )
+                    .reduce((sum, item) => sum + item.assessment_amount, 0),
+                ),
+              },
+            ]}
             totalLabel="Total"
             layout={{
               rowOrder: "input",

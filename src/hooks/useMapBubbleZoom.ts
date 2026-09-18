@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 /**
- * HybridMap applies D3 zoom to a parent SVG group but exposes no zoom callback.
+ * The UNDP maps apply D3 zoom to a parent SVG group but exposes no zoom callback.
  * Partially counter-scale origin-centered circles so their screen radius grows
  * with the square root of zoom, preserving relative sizes and map positions.
  */

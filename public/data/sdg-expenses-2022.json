@@ -402,9 +402,9 @@
       "ITU": 7593644.64,
       "OPCW": 88672666.67,
       "PAHO": 1510331.0,
+      "Peacekeeping Operations": 7091307082.0,
       "UN Secretariat": 1287330343.0,
       "UN Women": 45143024.0,
-      "Peacekeeping Operations": 7091307082.0,
       "UN-Habitat": 5323124.0,
       "UNAIDS": 13738658.0,
       "UNDP": 945395710.0,
@@ -454,5 +454,9 @@
       "WHO": 98019667.0,
       "WTO": 308029763.8
     }
+  },
+  "unallocated": {
+    "total": 0,
+    "entities": {}
   }
 }

@@ -20,6 +20,7 @@ def generate_manifest():
         "donors": {"years": detect_years("donors"), "default": "latest"},
         "entityRevenue": {"years": detect_years("entity-revenue"), "default": "latest"},
         "entitySpending": {"years": detect_years("entity-spending"), "default": "latest", "fusionYears": FUSION_YEARS },
+        "geographicExpenses": {"years": detect_years("geographic-expenses"), "default": "latest"},
         "countryExpenses": {"years": detect_years("country-expenses"), "default": "latest"},
         "sdgExpenses": {"years": detect_years("sdg-expenses"), "default": "latest"},
         "regularBudgetContributors": {"years": detect_years("regular-budget-contributors"), "default": "latest"},
