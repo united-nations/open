@@ -42,13 +42,14 @@ import type {
   SecretariatMissionLocation,
 } from "@/types";
 
-type PointKind = "pko" | "support";
+type PointKind = "pko" | "support_office" | "support";
 
 const FIELD_COLOR = "#009edb";
 const SUPPORT_COLOR = "#a0665c";
 const KIND_LABEL: Record<PointKind, string> = {
-  pko: "Field mission",
-  support: "Service centre",
+  pko: "Field missions",
+  support_office: "Support office",
+  support: "Service centres",
 };
 
 const MAX_MISSION_RADIUS_PX = 28;
@@ -82,7 +83,7 @@ function pointKind(
 ): PointKind {
   if (location?.budgetCategory === "field_mission") return "pko";
   if (location?.budgetCategory === "support_center") return "support";
-  if (code === "UNSOS") return "pko";
+  if (location?.budgetCategory === "support_office" || code === "UNSOS") return "support_office";
   if (location?.kind === "support") return "support";
   if (code === "RSCE" || code === "UNGSC" || code === "UNLB") {
     return "support";
@@ -181,7 +182,7 @@ interface MapPoint {
 }
 
 function MissionTooltip({ mission }: { mission: MissionRow }) {
-  const color = mission.kind === "support" ? SUPPORT_COLOR : FIELD_COLOR;
+  const color = mission.kind === "support_office" ? "var(--color-un-purple)" : mission.kind === "support" ? SUPPORT_COLOR : FIELD_COLOR;
   return (
     <FinancialTooltip
       title={mission.name}
@@ -235,7 +236,7 @@ function MissionCostClassTreemap({
           key: costClass,
           label: COST_CLASS_SHORT[costClass] ?? costClass,
           value: amount,
-          color: mission.kind === "support" ? SUPPORT_COLOR : FIELD_COLOR,
+          color: mission.kind === "support_office" ? "var(--color-un-purple)" : mission.kind === "support" ? SUPPORT_COLOR : FIELD_COLOR,
           data: { mission, costClass },
           onActivate: () => onOpen(mission.code),
         },
@@ -246,7 +247,7 @@ function MissionCostClassTreemap({
         key: mission.code,
         label: mission.code,
         value: mission.total,
-        color: mission.kind === "support" ? SUPPORT_COLOR : FIELD_COLOR,
+        color: mission.kind === "support_office" ? "var(--color-un-purple)" : mission.kind === "support" ? SUPPORT_COLOR : FIELD_COLOR,
         data: mission,
         leaves,
       } satisfies GroupedTreemapRow<
@@ -374,11 +375,11 @@ export function PeacekeepingBudgetView() {
       ),
     [rows, hiddenKinds, query],
   );
-  const missionFilters = (["pko", "support"] as const).map((kind) => (
+  const missionFilters = (["pko", "support_office", "support"] as const).map((kind) => (
     <LegendLabel
       key={kind}
       label={KIND_LABEL[kind]}
-      color={kind === "pko" ? FIELD_COLOR : SUPPORT_COLOR}
+      color={kind === "support_office" ? "var(--color-un-purple)" : kind === "pko" ? FIELD_COLOR : SUPPORT_COLOR}
       selected={!hiddenKinds.includes(kind)}
       onToggle={() =>
         setHiddenKinds((current) =>
@@ -516,8 +517,8 @@ export function PeacekeepingBudgetView() {
           >
             <DotDensityMap
               data={points}
-              colorDomain={["pko", "support"]}
-              colors={[FIELD_COLOR, SUPPORT_COLOR]}
+              colorDomain={["pko", "support_office", "support"]}
+              colors={[FIELD_COLOR, "var(--color-un-purple)", SUPPORT_COLOR]}
               radius={MAX_MISSION_RADIUS_PX}
               maxRadiusValue={1}
               mapProjection="equalEarth"

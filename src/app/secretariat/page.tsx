@@ -8,6 +8,7 @@ import {
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
+import { SecretariatFlows } from "@/components/SecretariatFlows";
 import { SecretariatOverview } from "@/components/SecretariatOverview";
 
 export const metadata: Metadata = {
@@ -64,6 +65,7 @@ export default function SecretariatPage() {
       </PageHeading>
       <PageBody>
         <SecretariatOverview />
+        <SecretariatFlows />
       </PageBody>
     </ChartSourceProvider>
   );

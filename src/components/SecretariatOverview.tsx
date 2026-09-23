@@ -39,9 +39,6 @@ import type {
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-const PEACE_AND_SECURITY_PRIORITY =
-  "Maintenance of international peace and security";
-
 function sumCells(cells: SecretariatOverviewCell[]) {
   return cells.reduce((sum, cell) => sum + cell.amount, 0);
 }
@@ -116,7 +113,7 @@ export function SecretariatOverview() {
     return () => controller.abort();
   }, [year]);
 
-  const current = data;
+  const current = data?.meta.year === year ? data : null;
   const selectedEntity = current?.entities.find(
     (entity) => entity.code === selectedCode,
   );
@@ -136,7 +133,7 @@ export function SecretariatOverview() {
 
   const signedAmounts = (current?.entities ?? [])
     .filter((entity) =>
-      entity.code
+      (entity.code + " " + entity.name)
         .toLocaleLowerCase()
         .includes(query.trim().toLocaleLowerCase()),
     )
@@ -168,7 +165,7 @@ export function SecretariatOverview() {
         fundingSet.has(cell.funding_source),
       );
       const total = sumCells(baseCells);
-      if (total <= 0) continue;
+      if (!baseCells.length) continue;
 
       if (entity.split_across_priorities) {
         for (const placement of current.meta.priorities) {
@@ -233,28 +230,17 @@ export function SecretariatOverview() {
         data: name,
       };
 
-      if (name !== PEACE_AND_SECURITY_PRIORITY) {
-        builtRows.push({ ...base, leaves: sortedTiles.map(toLeaf) });
-        continue;
-      }
-
-      const subgroupOrder: SecretariatGroup[] = ["pko", "spm", "other"];
+      const subgroupOrder = (Object.keys(current.meta.groups) as SecretariatGroup[])
+        .sort((a, b) => current.meta.groups[a].order - current.meta.groups[b].order);
       builtRows.push({
         ...base,
         subgroups: subgroupOrder.flatMap((key) => {
-          const subgroupTiles = sortedTiles.filter((tile) =>
-            key === "other"
-              ? tile.entity.group !== "pko" && tile.entity.group !== "spm"
-              : tile.entity.group === key,
-          );
+          const subgroupTiles = sortedTiles.filter(tile => tile.entity.group === key);
           return subgroupTiles.length > 0
             ? [
                 {
                   key,
-                  label:
-                    key === "other"
-                      ? "Other peace and security entities"
-                      : current.meta.groups[key].label,
+                  label: current.meta.groups[key].label,
                   data: key,
                   labelVisibility: "tooltip-only" as const,
                   leaves: subgroupTiles.map(toLeaf),
@@ -335,7 +321,8 @@ export function SecretariatOverview() {
           label: "Search entities",
           placeholder: "Search entities...",
           predicate: (leafLabel, _subgroupLabel, _rowLabel, needle) =>
-            (entityCodeByLabel.get(leafLabel) ?? leafLabel)
+            ((entityCodeByLabel.get(leafLabel) ?? leafLabel) + " " +
+              (current.entities.find(e => e.code === entityCodeByLabel.get(leafLabel))?.name ?? ""))
               .toLocaleLowerCase()
               .includes(needle.trim().toLocaleLowerCase()),
         }}
@@ -354,7 +341,7 @@ export function SecretariatOverview() {
         formatAccessibleValue={formatBudget}
         renderTooltip={({ row, leaf }) => (
           <FinancialTooltip
-            title={entityNames[leaf.data?.entity.code ?? ""] ?? leaf.label}
+            title={leaf.data?.entity.name ?? entityNames[leaf.data?.entity.code ?? ""] ?? leaf.label}
             parents={[{ label: row.label, color: row.color }]}
             total={{ label: "Spending", value: formatBudget(leaf.value) }}
             rows={orderFundingTooltipRows(leaf.segments).map((segment) => ({
@@ -376,12 +363,24 @@ export function SecretariatOverview() {
         }
       />
 
+      <details className="mt-4 text-sm">
+        <summary className="cursor-pointer">All matching entities and signed adjustments</summary>
+        <ul className="mt-2 space-y-1">{current.entities.filter(entity =>
+          (entity.code + " " + entity.name).toLocaleLowerCase().includes(query.trim().toLocaleLowerCase())
+        ).map(entity => <li key={entity.code}>
+          <button className="underline underline-offset-2" onClick={() => openEntity(entity)}>{entity.name} ({entity.code})</button>
+          {" · "}{formatBudget(sumCells(entity.cells.filter(cell => fundingSet.has(cell.funding_source))))}
+        </li>)}</ul>
+      </details>
       <SecretariatOverviewTrends />
 
       {selectedEntity && (
         <SecretariatEntitySidebar
           key={`${selectedEntity.code}-${year}`}
-          entity={selectedEntity}
+          entity={{ ...selectedEntity,
+            cells: selectedEntity.cells.filter(cell => fundingSet.has(cell.funding_source)),
+            total: sumCells(selectedEntity.cells.filter(cell => fundingSet.has(cell.funding_source))) }}
+          selectionScope={activeFunding.length < BUDGET_FUNDING_SOURCES.length ? "Treemap funding selection · " + year : undefined}
           year={year}
           source={current.meta.source}
           selectedPriority={null}

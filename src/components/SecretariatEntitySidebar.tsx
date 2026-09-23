@@ -44,6 +44,7 @@ interface SecretariatEntitySidebarProps {
   year: number;
   source: SecretariatOverviewData["meta"]["source"];
   selectedPriority: string | null;
+  selectionScope?: string;
   onClose: () => void;
 }
 
@@ -80,6 +81,7 @@ export function SecretariatEntitySidebar({
   year,
   source,
   selectedPriority,
+  selectionScope,
   onClose,
 }: SecretariatEntitySidebarProps) {
   const [visible, setVisible] = useState(false);
@@ -165,6 +167,7 @@ export function SecretariatEntitySidebar({
   }, [entity.code, requestedYear]);
 
   useEffect(() => {
+    if (selectionScope) return;
     let active = true;
     Promise.all(
       years.map((trendYear) =>
@@ -196,7 +199,7 @@ export function SecretariatEntitySidebar({
     return () => {
       active = false;
     };
-  }, [entity, years]);
+  }, [entity, years, selectionScope]);
 
   useEffect(() => {
     const id = requestAnimationFrame(() => setVisible(true));
@@ -240,13 +243,13 @@ export function SecretariatEntitySidebar({
   const fundingBreakdown: FinancialDetailPanelFundingBreakdown = {
     heading: "Funding sources",
     state:
-      breakdownTotal === 0
+      displayed.entity.cells.length === 0
         ? "empty"
         : breakdownComplete
           ? "ready"
           : "incomplete",
     status:
-      breakdownTotal === 0
+      displayed.entity.cells.length === 0
         ? `No funding-source breakdown is available for ${displayed.year}.`
         : breakdownComplete
           ? `Funding-source breakdown for ${displayed.year} is ready.`
@@ -271,7 +274,7 @@ export function SecretariatEntitySidebar({
           )) *
         100,
     })),
-    content: (
+    content: selectionScope ? <p>{selectionScope}</p> : (
       <div aria-busy={fundingTrend === null || undefined}>
         {hasTrend && fundingTrend && (
           <FinancingInstrumentChart
@@ -327,21 +330,17 @@ export function SecretariatEntitySidebar({
         className={`h-full w-full bg-white shadow-2xl transition-transform duration-200 sm:w-[32rem] ${visible && !closing ? "translate-x-0" : "translate-x-full"}`}
       >
         <FinancialDetailPanel
-          title={
-            displayed.entity.code === "STA"
-              ? "Staff Assessment"
-              : displayed.entity.code
-          }
+          title={displayed.entity.name || displayed.entity.code}
           titleId={titleId}
           controls={
             <SidebarControls
-              shareHash={`secretariat-entity=${encodeURIComponent(displayed.entity.code)}`}
+              shareHash={selectionScope ? undefined : `secretariat-entity=${encodeURIComponent(displayed.entity.code)}`}
               onClose={close}
               closeLabel="Close entity details"
             />
           }
           total={{
-            label: "Total expenses",
+            label: selectionScope ? "Selected expenses" : "Total expenses",
             value: formatBudget(displayed.entity.total),
             details:
               selectedPriority && selectedAmount !== null ? (
@@ -357,7 +356,7 @@ export function SecretariatEntitySidebar({
               ) : undefined,
           }}
           yearSelectorPlacement="header"
-          yearSelector={{
+          yearSelector={selectionScope ? undefined : {
             years: [...years].sort((a, b) => b - a),
             selected: displayed.year,
             label: "Select year",
@@ -393,7 +392,7 @@ export function SecretariatEntitySidebar({
                   <FinancialPanelBar
                     percent={
                       maxPriorityAmount > 0
-                        ? (amount / maxPriorityAmount) * 100
+                        ? Math.max(0, amount / maxPriorityAmount) * 100
                         : 0
                     }
                     color={priorityAreaColor(label)}
