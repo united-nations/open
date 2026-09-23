@@ -1,12 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import ts from 'typescript';
-// The model is pure TypeScript; transpile in memory to avoid a new test dependency.
-async function moduleAt(path) {
- const source = ts.transpileModule(fs.readFileSync(path, 'utf8'), { compilerOptions: { module: ts.ModuleKind.ESNext, target: ts.ScriptTarget.ES2022 } }).outputText;
- return import(`data:text/javascript;base64,${Buffer.from(source).toString('base64')}`);
-}
+import { moduleAt } from "./moduleAt.mjs";
 const { buildSystemFlows } = await moduleAt('src/lib/systemFlows.ts');
 const { layoutSystemFlows } = await moduleAt('src/lib/systemFlowLayout.ts');
 const describe = (_column, key) => ({ label:key, color:'#000' });
@@ -43,8 +38,8 @@ test('real exports reconcile for every supported year and all selectors',()=>{
  const year=spending.year,revenue=read(`entity-revenue-${year}`),contributors=read(`donors-${year}`);
  for(const [name, contributor] of Object.entries(contributors)) contributor.group=name==='Unattributed'?'Unattributed':['member','observer','nonmember'].includes(contributor.status)?'Government':'Non-Government';
  const input={revenue,contributors,spending,functions:fn.data.find(r=>r.year===year).entities,entities:{}};
- for(const funding of ['contributor','category','instrument'])for(const dimension of ['region','country','function','goal']) {
- const graph=buildSystemFlows(input,{funding,organization:'organization',spending:dimension,limit:12},describe);
+ for(const organization of ['organization','category'])for(const funding of ['contributor','category','instrument'])for(const dimension of ['region','country','function','goal']) {
+ const graph=buildSystemFlows(input,{funding,organization,spending:dimension,limit:12},describe);
  const mid=new Set(graph.nodes.filter(n=>n.column===1).map(n=>n.id));
  const total=(side)=>graph.links.filter(l=>mid.has(l[side])).reduce((s,l)=>s+l.value,0);
  const rev=Object.values(revenue).reduce((s,r)=>s+r.total,0),exp=Object.values(spending.entities).reduce((s,r)=>s+(r.total??0),0);
