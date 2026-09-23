@@ -244,7 +244,7 @@ export type SecretariatFundingSource =
   | "other_assessed"
   | "extrabudgetary";
 
-export type SecretariatGroup = "secretariat" | "spm" | "pko" | "other";
+export type SecretariatGroup = "secretariat" | "regional" | "spm" | "pko" | "other" | "common" | "unallocated";
 
 export interface SecretariatGroupDefinition {
   label: string;
@@ -255,12 +255,16 @@ export interface SecretariatGroupDefinition {
 }
 
 export interface SecretariatOverviewCell {
+  record_ids: string[];
+  amount_exact: string;
   priority_area: string;
   funding_source: SecretariatFundingSource;
   amount: number;
 }
 
 export interface SecretariatOverviewEntity {
+  name: string;
+  entity_id: string | null;
   code: string;
   total: number;
   primary_priority: string;
@@ -271,6 +275,7 @@ export interface SecretariatOverviewEntity {
 }
 
 export interface SecretariatOverviewData {
+  records: import("@/lib/secretariatFlows").SecretariatRecord[];
   meta: {
     year: number;
     currency: "USD";
@@ -279,6 +284,7 @@ export interface SecretariatOverviewData {
     priorities: string[];
     funding_sources: SecretariatFundingSource[];
     groups: Record<SecretariatGroup, SecretariatGroupDefinition>;
+    funding_families: Record<string, string>;
     classification_note: string;
     source: { label: string; url: string };
   };
@@ -290,7 +296,7 @@ export interface SecretariatMissionLocation {
   name: string;
   kind: "pko" | "spm" | "support";
   /** Budget presentation category, independent of the office mandate. */
-  budgetCategory?: "field_mission" | "support_center";
+  budgetCategory?: "field_mission" | "support_office" | "support_center";
   area: string;
   /** Broad geographic name for financial tooltips; independent of marker placement. */
   displayArea?: string;
