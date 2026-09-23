@@ -63,3 +63,16 @@ test("negative-only and zero-net activity retain nodes, details, gross flows and
     for (const node of model.graph.nodes) assert.deepEqual(ids(selectionRows(model, { kind: "node", id: node.id })), ids(rows));
   }
 });
+
+
+test("compact funding groups can expand to every named arrangement without changing totals", () => {
+  const data = read(2025), expanded = new Set(Object.keys(data.meta.funding_families));
+  const compact = buildSecretariatFlows(data, data.records, expanded);
+  const complete = buildSecretariatFlows(data, data.records, expanded, Infinity);
+  assert.ok(compact.graph.nodes.some(n => n.isAggregate));
+  assert.ok(!complete.graph.nodes.some(n => n.isAggregate));
+  assert.equal(complete.graph.nodes.filter(n => n.column === 0).length,
+    new Set(data.records.map(r => r.arrangement.id)).size);
+  assert.ok(complete.graph.nodes.some(n => n.label.includes("Spotlight")));
+  near(sumRecords(complete.rows), sumRecords(compact.rows));
+});

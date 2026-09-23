@@ -6,7 +6,7 @@ The overview treemap and Sankey have separate controls and consume the same `sec
 
 Seven groups are independent of financing: departments/offices, regional commissions, peacekeeping missions/support, operational SPMs, other bodies, common costs/central allocations and unallocated. The map's geographic classification stays separate. UNSOS is Support office between Field missions and Service centres on the peacekeeping-budget page.
 
-Funding families distinguish programme, peacekeeping, IRMCT assessed, trust funds, identified treaty financing, unitemized extrabudgetary and unresolved convention identity. A reviewed exact-name table preserves individual funds, named arrangements and source aggregates. Expansion replaces a parent; the largest 12 arrangements appear individually and remaining occurrences stay in an inspectable group.
+Funding families distinguish programme, peacekeeping, IRMCT assessed, trust funds, identified treaty financing, unitemized extrabudgetary and unresolved convention identity. A reviewed exact-name table preserves individual funds, named arrangements and source aggregates. Expansion replaces a parent; the largest 12 arrangements appear individually and remaining occurrences stay in an inspectable group. Show every named arrangement expands that compact view without changing scope or totals.
 
 Both cuts conserve signed expenditure. Ribbons show gross positive activity; totals and details retain corrections. Negative-only and net-zero activity remain selectable. Selection restricts downstream amounts by source IDs. Scoped entity details retain the originating year and filters; full-entity trends and share links are only available in the existing unfiltered treemap context.
 

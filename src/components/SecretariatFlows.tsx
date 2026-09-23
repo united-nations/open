@@ -21,6 +21,7 @@ export function SecretariatFlows() {
   const [query, setQuery] = useState("");
   const [funding, setFunding] = useState<BudgetFundingSource[]>([...BUDGET_FUNDING_SOURCES]);
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [showAllArrangements, setShowAllArrangements] = useState(false);
   const [selected, setSelected] = useState<SecretariatOverviewEntity | null>(null);
   useEffect(() => {
     const controller = new AbortController();
@@ -34,7 +35,7 @@ export function SecretariatFlows() {
   const rows = useMemo(() => (current?.records ?? []).filter(r =>
     funding.includes(r.funding_source) && (r.code + " " + r.name).toLocaleLowerCase().includes(query.trim().toLocaleLowerCase())
   ), [current, funding, query]);
-  const model = useMemo(() => current ? buildSecretariatFlows(current, rows, expanded) : null, [current, rows, expanded]);
+  const model = useMemo(() => current ? buildSecretariatFlows(current, rows, expanded, showAllArrangements ? Infinity : 12) : null, [current, rows, expanded, showAllArrangements]);
   const openEntity = (code: string, members: SecretariatRecord[]) => {
     const entity = current?.entities.find(e => e.code === code);
     if (!entity) return;
@@ -59,6 +60,10 @@ export function SecretariatFlows() {
             const next = new Set(old); if (next.has(family)) next.delete(family); else next.add(family); return next;
           })} />{label}</label>)}
       </fieldset>
+      {expanded.size > 0 && <button type="button" className="rounded border border-gray-300 px-3 py-1 text-sm"
+        onClick={() => setShowAllArrangements(value => !value)}>
+        {showAllArrangements ? "Show largest arrangements with an expandable remainder" : "Show every named arrangement"}
+      </button>}
       <SankeyDiagram graph={model.graph} columnControls={["Funding arrangement", "Entity category", "Priority area"]}
         ariaLabel="Annual-report expenditure from funding arrangements through entity categories to priority areas"
         selectionLabel="Selected expenditure" clearLabel="Clear selection" formatValue={formatBudget}
