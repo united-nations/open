@@ -1,0 +1,3529 @@
+{
+  "schema_version": 1,
+  "source": {
+    "kind": "System Chart / Airtable catalogue",
+    "sha256": "de38c890beb5c58fffea2c88d9fa764f5d33c6e19e364962d649c001059a2b8d"
+  },
+  "entities": [
+    {
+      "id": "systemchart:rec4fungPfUuSNY0q",
+      "code": null,
+      "name": "Committee for Programme and Coordination",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec6crLpmTW91dO16",
+      "code": null,
+      "name": "Advisory Committee on the United Nations Programme of Assistance in the Teaching, Study, Dissemination and Wider Appreciation of International Law",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec8BNAEQILEbVJGt",
+      "code": null,
+      "name": "Committee on the Exercise of the Inalienable Rights of the Palestinian People",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recEQlNOUeQW4qV8D",
+      "code": null,
+      "name": "Committee on Contributions",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recFi0EuBgt1pg6rj",
+      "code": null,
+      "name": "Ad Hoc Committee established by General Assembly resolution 51/210",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recHMBFLWTtVstwAv",
+      "code": null,
+      "name": "Ad hoc committee to elaborate a comprehensive international convention on countering the use of information and communications technologies for criminal purposes",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recIUKyhuZNQNBO3H",
+      "code": null,
+      "name": "Ad Hoc Committee on a Comprehensive and Integral International Convention on Protection and Promotion of the Rights and Dignity of Persons with Disabilities",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recLavVEL4fiBfoq0",
+      "code": null,
+      "name": "Committee on Conferences",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recMesB8dNdS5FRs0",
+      "code": null,
+      "name": "Ad Hoc Committee on the Scope of Legal Protection under the Convention on the Safety of United Nations and Associated Personnel",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recdh99bziW2Fc3Pk",
+      "code": null,
+      "name": "Ad Hoc Committee of the General Assembly for the Announcement of Voluntary Contributions to the United Nations Relief and Works Agency for Palestine Refugees in the Near East",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reciOaUMSyi6XcnGs",
+      "code": null,
+      "name": "Committee for the United Nations Population Award",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recmG3ncR50YTZsKu",
+      "code": null,
+      "name": "Ad Hoc Committee on the Elaboration of a Convention Against Corruption",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recmbqxUVfCJLttvP",
+      "code": null,
+      "name": "Committee on Relations with the Host Country",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recpqLvZDloSeqG0O",
+      "code": null,
+      "name": "Ad Hoc Committee on the Administration of Justice at the United Nations",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recqabi0XPPw3CXXc",
+      "code": null,
+      "name": "Committee on Information",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recvoZLny9hanyCTA",
+      "code": null,
+      "name": "Ad Hoc Committee on Criminal Accountability of United Nations Officials and Experts on Mission",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recytYlsGE7KUNk0n",
+      "code": null,
+      "name": "Ad Hoc Committee of the General Assembly for the Announcement of Voluntary Contributions to the Programme of the United Nations High Commissioner for Refugees",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reczLnaAWWdhod70J",
+      "code": null,
+      "name": "United Nations Staff Pension Committee",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recudSf8ud6g7Mmwe",
+      "code": "1518 Committee",
+      "name": "Security Council Committee established pursuant to resolution 1518 (2003)",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec8tqqm0nhvFXXuK",
+      "code": "1533 Committee",
+      "name": "Security Council Committee established pursuant to resolution 1533 (2004) concerning the Democratic Republic of the Congo",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec5g6e9hYZXmJllv",
+      "code": "1591 Committee",
+      "name": "Security Council Committee established pursuant to resolution 1591 (2005) concerning the Sudan",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recoMEQSUn3RGll6t",
+      "code": "1636 Committee",
+      "name": "Security Council Committee established pursuant to resolution 1636 (2005)",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recHc0xHCBfoxy6F8",
+      "code": "1718 Committee",
+      "name": "Security Council Committee established pursuant to resolution 1718 (2006)",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec2SCzpPsaVZnOWR",
+      "code": "1737 Committee",
+      "name": "Security Council Committee established pursuant to resolution 1737 (2006)",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recXuwHUt75ThAbsS",
+      "code": "1970 Committee",
+      "name": "Security Council Committee established pursuant to resolution 1970 (2011) concerning Libya",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recFFckrGh0nscen7",
+      "code": "1988 Committee",
+      "name": "Security Council Committee established pursuant to resolution 1988 (2011)",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reclBQSkzGGLJqHAh",
+      "code": "2048 Committee",
+      "name": "Security Council Committee established pursuant to resolution 2048 (2012) concerning Guinea-Bissau",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recAfbfMJNLLOmtOk",
+      "code": "2140 Committee",
+      "name": "Security Council Committee established pursuant to resolution 2140 (2014)",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rectKaccdpHMvzAJU",
+      "code": "2206 Committee",
+      "name": "Security Council Committee established pursuant to resolution 2206 (2015) concerning South Sudan",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reclI9faynH4SbaKq",
+      "code": "2253 Committee",
+      "name": "Security Council Committee pursuant to resolutions 1267 (1999) 1989 (2011) and 2253 (2015) concerning Islamic State in Iraq and the Levant (Da’esh), Al-Qaida and associated individuals, groups, undertakings and entities",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recmJId4FO8dP9CqW",
+      "code": "2253 Ombudsperson",
+      "name": "Ombudsperson to the ISIL (Da'esh) and Al-Qaida Sanctions Committee",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recU88qlgr47EP76H",
+      "code": "2653 Committee",
+      "name": "Security Council Committee established pursuant to resolution 2653 (2022) concerning Haiti",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recnha80eiPMaBb9J",
+      "code": "2745 Committee",
+      "name": "Security Council Committee pursuant to resolution 2745 (2024)",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec9fPHZvvVbHcnI6",
+      "code": "ABDM",
+      "name": "Advisory Board on Disarmament Matters",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Boards",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec0ojV9ygldZ54lg",
+      "code": "ACABQ",
+      "name": "Advisory Committee on Administrative and Budgetary Questions",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Standing Committees and other bodies",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recCpDbQmjQny5ytk",
+      "code": "AHC Indian Ocean",
+      "name": "Ad Hoc Committee on the Indian Ocean",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recb0GgyNrfaD4Oz2",
+      "code": "ASMT",
+      "name": "Analytical Support and Sanctions Monitoring Team pursuant to resolutions 1526 (2004) and 2253 (2015) concerning Islamic State in Iraq and the Levant (ISIL) (Da’esh), Al-Qaida and the Taliban and associated individuals and entities",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recJWLLJ4JW0cAoaM",
+      "code": "Al-Shabaab Committee",
+      "name": "Security Council Committee pursuant to resolution 2713 (2023) concerning Al-Shabaab",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recUtGdOG1LWUqcLO",
+      "code": "BIG",
+      "name": "Business Innovation Group",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Other"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recSZyZHOHKDbGhJL",
+      "code": "BINUH",
+      "name": "United Nations Integrated Office in Haiti",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recyjr8pDI9LC3r2t",
+      "code": "Board of Auditors",
+      "name": "Board of Auditors",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Boards",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recmmTOUoegW52o2G",
+      "code": "C-24",
+      "name": "Special Committee on the Situation with regard to the Implementation of the Declaration on the Granting of Independence to Colonial Countries and Peoples",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recV6aV6SmrAUDrNa",
+      "code": "CBD",
+      "name": "Convention on Biological Diversity",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recGEImaUu5k1LzGT",
+      "code": "CCPCJ",
+      "name": "United Nations Commission on Crime Prevention and Criminal Justice",
+      "aliases": [],
+      "category": "Functional Commissions",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rectkaEeoZvO65Ahz",
+      "code": "CDP",
+      "name": "Committee for Development Policy",
+      "aliases": [],
+      "category": "Other Bodies and Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recsFC6T0ZKEMEJQ1",
+      "code": "CEB",
+      "name": "Secretariat of the UN System Chief Executives Board for Coordination",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": false,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:recuL2yjZA250pUB7",
+      "code": "CEPA",
+      "name": "Committee of Experts on Public Administration",
+      "aliases": [],
+      "category": "Other Bodies and Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recxOSyJEkIa0JL94",
+      "code": "CESCR",
+      "name": "Committee on Economic, Social and Cultural Rights",
+      "aliases": [],
+      "category": "Other Bodies and Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recOSIBVne90WCNxx",
+      "code": "CND",
+      "name": "United Nations Commission on Narcotic Drugs",
+      "aliases": [],
+      "category": "Functional Commissions",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recGudYcdfjhjBzPa",
+      "code": "CNMC",
+      "name": "United Nations Support for the Cameroon-Nigeria Mixed Commission",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recAiEgIi5czB9OTc",
+      "code": "COPUOS",
+      "name": "Committee on the Peaceful Uses of Outer Space",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recQvNAZsqdEVn0yw",
+      "code": "CPC",
+      "name": "Committee for Programme and Coordination",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Standing Committees and other bodies",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec6cVfnhr9GzX0Hk",
+      "code": "CPD",
+      "name": "United Nations Commission on Population and Development",
+      "aliases": [],
+      "category": "Functional Commissions",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec3qTmVlDDVXw00k",
+      "code": "CSTD",
+      "name": "United Nations Commission on Science and Technology for Development",
+      "aliases": [],
+      "category": "Functional Commissions",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reccQ3hjgDLMqdvzA",
+      "code": "CSW",
+      "name": "United Nations Commission on the Status of Women",
+      "aliases": [],
+      "category": "Functional Commissions",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recgjtGqf6Bc2hf6r",
+      "code": "CSocD",
+      "name": "United Nations Commission for Social Development",
+      "aliases": [],
+      "category": "Functional Commissions",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recJyl1TzkSmTWUzM",
+      "code": "CTBTO",
+      "name": "Preparatory Commission for the Comprehensive Nuclear-Test-Ban Treaty Organization",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Related Organizations"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec20nlHWHhTwdUur",
+      "code": "CTC",
+      "name": "Counter-Terrorism Committee",
+      "aliases": [],
+      "category": "Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reccTK7EVU2sFp0uA",
+      "code": "CTED",
+      "name": "Counter-Terrorism Committee Executive Directorate",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recKzqUYxXlkpNupJ",
+      "code": "Credentials Committee",
+      "name": "Credentials Committee",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recnioeNrdQNJUasl",
+      "code": "DA",
+      "name": "Development Account",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": false,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:reckfbfmHFmL1GR5X",
+      "code": "DCO",
+      "name": "Development Coordination Office",
+      "aliases": [
+        "RCS"
+      ],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recOs5gBofGjKDrcE",
+      "code": "DESA",
+      "name": "Department of Economic and Social Affairs",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recX99f6NvxX8Ft7p",
+      "code": "DGACM",
+      "name": "Department for General Assembly and Conference Management",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recVnkVxU48jphUJj",
+      "code": "DGC",
+      "name": "Department of Global Communications",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recwv9tyo7BadQejK",
+      "code": "DMSPC",
+      "name": "Department of Management Strategy, Policy and Compliance",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec8l0mYWuK0xegHy",
+      "code": "DOALOS",
+      "name": "Division for Ocean Affairs and the Law of the Sea",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recJXM4q1qfX37JPj",
+      "code": "DOS",
+      "name": "Department of Operational Support",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recqaF7RmTPNN9VPr",
+      "code": "DPO",
+      "name": "Department of Peace Operations",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recid2uT0NCwfjntt",
+      "code": "DPPA",
+      "name": "Department of Political and Peacebuilding Affairs",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rect1MYMj5Q8pJicq",
+      "code": "DSS",
+      "name": "Department of Safety and Security",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recxndYw1TgLU9w1d",
+      "code": "ECA",
+      "name": "Economic Commission for Africa",
+      "aliases": [],
+      "category": "Regional Commissions",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recvxJhz4HZD8A7DW",
+      "code": "ECE",
+      "name": "Economic Commission for Europe",
+      "aliases": [],
+      "category": "Regional Commissions",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recSG3XLBq8T1ODHA",
+      "code": "ECLAC",
+      "name": "Economic Commission for Latin America and the Caribbean",
+      "aliases": [],
+      "category": "Regional Commissions",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recnPtOYKtMK71eDR",
+      "code": "EOSG",
+      "name": "Executive Office of the Secretary-General",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec4cT8fdTPBWIdLF",
+      "code": "ESCAP",
+      "name": "Economic and Social Commission for Asia and the Pacific",
+      "aliases": [],
+      "category": "Regional Commissions",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recRbBKnLKQ1SCqiu",
+      "code": "ESCWA",
+      "name": "Economic and Social Commission for Western Asia",
+      "aliases": [],
+      "category": "Regional Commissions",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recyODC2QoLjSFM7Y",
+      "code": "Ethics Office",
+      "name": "United Nations Ethics Office",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec34mTr76akEumoS",
+      "code": "FAO",
+      "name": "Food and Agriculture Organization",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Specialized Agencies"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recnfDGdly4EwcAqi",
+      "code": "FP-Delisting",
+      "name": "Focal Point for De-listing",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recb1o7tJGgojo4XZ",
+      "code": "Fifth Committee",
+      "name": "Administrative and Budgetary Committee",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Main Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recBpBLTjYahyv6gP",
+      "code": "First Committee",
+      "name": "Disarmament and International Security",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Main Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recbADaJDd2oeY6PZ",
+      "code": "Fourth Committee",
+      "name": "Special Political and Decolonization",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Main Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recsAMbWFpthJXgCv",
+      "code": "GHS",
+      "name": "Committee of Experts on the Transport of Dangerous Goods and on the Globally Harmonized System of Classification and Labelling of Chemicals",
+      "aliases": [],
+      "category": "Other Bodies and Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recpXvpJOrzKWOFll",
+      "code": "General Committee",
+      "name": "General Committee",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recBnzdRxwKlLAs7t",
+      "code": "GoE-DRC",
+      "name": "Group of Experts on the Democratic Republic of the Congo",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recIdB3zEg9k3LcA1",
+      "code": "HLPF",
+      "name": "High-level Political Forum on Sustainable Development",
+      "aliases": [],
+      "category": "Other Subsidiary Bodies",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly",
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recZgh2dBZQxv4CZV",
+      "code": "HRC",
+      "name": "Human Rights Council",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Assemblies and Councils",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recTkCXGkQwj7iUjN",
+      "code": "High-level Committee on South-South Cooperation",
+      "name": "High-level Committee on South-South Cooperation",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recF6cy6ItbhWOHk8",
+      "code": "IAAC",
+      "name": "Independent Audit Advisory Committee",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recncAmoLow3joz7t",
+      "code": "IAEA",
+      "name": "International Atomic Energy Agency",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Related Organizations"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recSIDg0GKfVWxE4B",
+      "code": "IARC",
+      "name": "International Agency for Research on Cancer",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Specialized Agencies"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recoWyTcy03jBMarj",
+      "code": "ICAO",
+      "name": "International Civil Aviation Organization",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Specialized Agencies"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec0bNSqNgqo95dai",
+      "code": "ICC",
+      "name": "International Criminal Court",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Related Organizations"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recOOLbZemD5LgGj4",
+      "code": "ICJ",
+      "name": "International Court of Justice",
+      "aliases": [],
+      "category": "International Court of Justice",
+      "subcategory": null,
+      "principal_organs": [
+        "International Court of Justice"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recJJOi4LgzwXCf8y",
+      "code": "ICSC",
+      "name": "International Civil Service Commission",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Commissions",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": false
+    },
+    {
+      "id": "systemchart:recq8le2JmCvOVZUj",
+      "code": "IFAD",
+      "name": "International Fund for Agricultural Development",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Specialized Agencies"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recy7YnXXyHHd3CY4",
+      "code": "IIIM",
+      "name": "International, Impartial and Independent Mechanism to Assist in the Investigation and Prosecution of Persons Responsible for the Most Serious Crimes under International Law Committed in the Syrian Arab Republic since March 2011",
+      "aliases": [],
+      "category": "Other Mechanisms",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recNA16uoctYIGPO4",
+      "code": "IIMM",
+      "name": "Independent Investigative Mechanism for Myanmar",
+      "aliases": [],
+      "category": "Other Mechanisms",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reclHRkid64dk3Gjs",
+      "code": "IIMP",
+      "name": "Independent Institution on Missing Persons in the Syrian Arab Republic",
+      "aliases": [],
+      "category": "Other Mechanisms",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recfnGmbX8HIZ9at6",
+      "code": "ILC",
+      "name": "International Law Commission",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Commissions",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rectSWiGQEmZwFpam",
+      "code": "ILO",
+      "name": "International Labor Organization",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Specialized Agencies"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recLFYcap9SbigiSH",
+      "code": "IMF",
+      "name": "International Monetary Fund",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Specialized Agencies"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rechM09wNlTVl2QJo",
+      "code": "IMO",
+      "name": "International Maritime Organization",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Specialized Agencies"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recZ2RPUepU1VEQ38",
+      "code": "INCB",
+      "name": "International Narcotics Control Board",
+      "aliases": [],
+      "category": "Other Bodies and Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recAvkx0Bp6WUtbyA",
+      "code": "IOM",
+      "name": "International Organization for Migration",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Related Organizations"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recg12eacmmC2YzWg",
+      "code": "IRMCT",
+      "name": "International Residual Mechanism for Criminal Tribunals",
+      "aliases": [],
+      "category": "Subsidiary Organs",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recGpY4POIb9tjpcd",
+      "code": "ISA",
+      "name": "International Seabed Authority",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Related Organizations"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec8ByFQ1TpDgxGht",
+      "code": "ISAR",
+      "name": "Intergovernmental Working Group of Experts on International Standards of Accounting and Reporting",
+      "aliases": [],
+      "category": "Other Bodies and Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reclfZOhn467DV17Q",
+      "code": "ITC",
+      "name": "International Trade Centre",
+      "aliases": [],
+      "category": "Other Entities",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec0JYTIt0d2UirTG",
+      "code": "ITLOS",
+      "name": "International Tribunal for the Law of the Sea",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Related Organizations"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recXdCZaQNk8fN6pC",
+      "code": "ITU",
+      "name": "International Telecommunication Union",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Specialized Agencies"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recgHq9xnJDlplipG",
+      "code": "Investments Committee",
+      "name": "Investments Committee",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recKb8UBK0ppNGHMO",
+      "code": "JIU",
+      "name": "Joint Inspection Unit",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Standing Committees and other bodies",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:receNKXgqI5uPln2D",
+      "code": "KJSO",
+      "name": "Kuwait Joint Support Office",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recNkBvmVMaW1tqW3",
+      "code": "MINURSO",
+      "name": "United Nations Mission for the Referendum in Western Sahara",
+      "aliases": [],
+      "category": "Peacekeeping Operations",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recSGMvnraoKPlX7M",
+      "code": "MINUSCA",
+      "name": "United Nations Multidimensional Integrated Stabilization Mission in the Central African Republic",
+      "aliases": [],
+      "category": "Peacekeeping Operations",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recSMrnLUUB6SukYJ",
+      "code": "MINUSMA",
+      "name": "United Nations Multidimensional Integrated Stabilization Mission in Mali",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:recTi0QSF0WJyGvIT",
+      "code": "MONUSCO",
+      "name": "United Nations Organization Stabilization Mission in the Democratic Republic of the Congo",
+      "aliases": [],
+      "category": "Peacekeeping Operations",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recEonud8DHCCvCQH",
+      "code": "MSC",
+      "name": "Military Staff Committee",
+      "aliases": [],
+      "category": "Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recmYAFNKhOEH6fC7",
+      "code": "Minamata Convention",
+      "name": "Minamata Convention on Mercury",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Other"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec5SVGmazsf7H1JZ",
+      "code": "NGO Committee",
+      "name": "Committee on Non-Governmental Organizations",
+      "aliases": [],
+      "category": "Other Bodies and Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec9LNHf75uRnmHnM",
+      "code": "OAJ",
+      "name": "Office of Administration of Justice",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec74fnI62TBYdoqM",
+      "code": "OCHA",
+      "name": "Office for the Coordination of Humanitarian Affairs",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reckHDXweiNKELYAZ",
+      "code": "OCT",
+      "name": "Office of Counter-Terrorism",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec79p1gxr2WdZATe",
+      "code": "ODA",
+      "name": "Office for Disarmament Affairs",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recrho7nxX31PpMXf",
+      "code": "ODET",
+      "name": "Office for Digital and Emerging Technologies",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recsrLkP0BweOawh7",
+      "code": "ODPP",
+      "name": "Office of Data Protection and Privacy",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recxZqYNC0k2r1gRk",
+      "code": "OHCHR",
+      "name": "Office of the United Nations High Commissioner for Human Rights",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recgMjRpIumg9wRFt",
+      "code": "OICT",
+      "name": "Office of Information and Communications Technology",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recrMUBCbLx9uGl3Q",
+      "code": "OIOS",
+      "name": "Office of Internal Oversight Services",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recK6nxb3zyMzvwE8",
+      "code": "OLA",
+      "name": "Office of Legal Affairs",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recosEkpdpTaMyfPA",
+      "code": "OMBUD-RES1904",
+      "name": "Office of the Ombudsperson established pursuant to Security Council resolution 1904 (2009)",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec3b56aenxUD3sai",
+      "code": "OOSA",
+      "name": "Office for Outer Space Affairs",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recxthOEnic68zag0",
+      "code": "OPCW",
+      "name": "Organisation for the Prohibition of Chemical Weapons",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Related Organizations"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reck7IEYTtqoHBHCq",
+      "code": "OSAA",
+      "name": "Office of the Special Adviser on Africa",
+      "aliases": [],
+      "category": "Special Advisers, Representatives, Advocates and Envoys",
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reccoUuX20wq7286K",
+      "code": "OSACAJT",
+      "name": "Office of the Special Adviser on Climate Action and Just Transition",
+      "aliases": [],
+      "category": "Special Advisers, Representatives, Advocates and Envoys",
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": false,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:rec2KzmTAK9Usa6zB",
+      "code": "OSASG-Cyprus",
+      "name": "Office of the Special Adviser to the Secretary-General on Cyprus",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recWmjhBsoaoB4cv2",
+      "code": "OSC-SEA",
+      "name": "Office of the United Nations Special Coordinator on Improving the United Nations Response to Sexual Exploitation and Abuse",
+      "aliases": [],
+      "category": "Special Advisers, Representatives, Advocates and Envoys",
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recarBduCii0diPVg",
+      "code": "OSESG-SYRIA",
+      "name": "Office of the Special Envoy of the Secretary-General for Syria",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec86X5ivN9oChGqI",
+      "code": "OSESGY",
+      "name": "Office of the Special Envoy of the Secretary-General for Yemen",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec3CIlH9lUgRAdfw",
+      "code": "OVRA",
+      "name": "Office of the Victims' Rights Advocate",
+      "aliases": [],
+      "category": "Special Advisers, Representatives, Advocates and Envoys",
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recbIGb4uQ6Kkz2ee",
+      "code": "PAHO",
+      "name": "Pan American Health Organization",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Specialized Agencies"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recddpx9CyJZ7GWpm",
+      "code": "PBC",
+      "name": "Peacebuilding Commission",
+      "aliases": [],
+      "category": "Other Subsidiary Bodies",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly",
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recHhvjPLPh2kbGnG",
+      "code": "PBPSO",
+      "name": "Peacebuilding and Peace Support Office",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:rec6b5dgcABolgwoD",
+      "code": "PESG-Sudan",
+      "name": "Office of the Personal Envoy of the Secretary-General for the Sudan",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recWTP7Mqw8o4zP4T",
+      "code": "PESG-WS",
+      "name": "Personal Envoy of the Secretary-General for Western Sahara",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recpTdlAp9s5Ag6Ri",
+      "code": "PFII",
+      "name": "Permanent Forum on Indigenous Issues",
+      "aliases": [],
+      "category": "Other Bodies and Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recyg2xLyhGOwMigv",
+      "code": "PoE-CAR",
+      "name": "Panel of Experts on the Central African Republic",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recdrNefGS2UtJSIW",
+      "code": "PoE-Haiti",
+      "name": "Panel of Experts on Haiti",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recrhrAvNybRPGvmB",
+      "code": "PoE-Libya",
+      "name": "Panel of Experts on Libya",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec6sbobZJQgj0CJb",
+      "code": "PoE-RES2713",
+      "name": "Panel of Experts pursuant to resolution 2713 (2023)",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recwnIQzSBomHReZC",
+      "code": "PoE-RES2745",
+      "name": "Panel of Experts pursuant to resolution 2745 (2024)",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recI0vvX1SC9v9zJ7",
+      "code": "PoE-S.Sudan",
+      "name": "Panel of Experts on South Sudan",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recIkVEO23wDYT2Vu",
+      "code": "PoE-Sudan",
+      "name": "Panel of Experts on the Sudan",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recDVMzTvy4UMgY6j",
+      "code": "PoE-Yemen",
+      "name": "Panel of Experts on Yemen",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recPVYJ9vnq3t8ai2",
+      "code": "RSCE",
+      "name": "Regional Service Centre in Entebbe, Uganda",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:receK2JnmVGbZB8AA",
+      "code": "SASG-PGRP",
+      "name": "Office of the Special Advisers to the Secretary-General on the Prevention of Genocide and the Responsibility to Protect",
+      "aliases": [],
+      "category": "Special Advisers, Representatives, Advocates and Envoys",
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:recdi8mM0PoyEcyXr",
+      "code": "SASG-SID",
+      "name": "Office of the Special Adviser to the Secretary-General on Solutions to Internal Displacement",
+      "aliases": [],
+      "category": "Special Advisers, Representatives, Advocates and Envoys",
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": false,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:recjs5t6N4n57Xaca",
+      "code": "SC-RES1540",
+      "name": "Support to the Security Council Committee established pursuant to resolution 1540 (2004) on the non-proliferation of all weapons of mass destruction",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recyL2Lqkch7Gq8Bz",
+      "code": "SC-RES1718",
+      "name": "Support to the Security Council Committee established pursuant to resolution 1718 (2006)",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec3jqpdCJKl0SIS3",
+      "code": "SC-RES2231",
+      "name": "Implementation of Security Council resolution 2231 (2015)",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rechj1IFTcRUp2zH4",
+      "code": "SESG-GL",
+      "name": "Office of the Special Envoy of the Secretary-General for the Great Lakes Region",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reci5RMvEPI9ZfIKE",
+      "code": "SESG-Horn of Africa",
+      "name": "Office of the Special Envoy of the Secretary-General for the Horn of Africa",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recJPNSsC5a3qlvBL",
+      "code": "SESG-MYR",
+      "name": "Office of the Special Envoy of the Secretary-General on Myanmar",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:receIHZlzrc3NIg7a",
+      "code": "SRSG-CAAC",
+      "name": "Office of the Special Representative of the Secretary-General for Children and Armed Conflict",
+      "aliases": [],
+      "category": "Special Advisers, Representatives, Advocates and Envoys",
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recQNuaMZcSFpXPi9",
+      "code": "SRSG-SVC",
+      "name": "Office of the Special Representative of the Secretary-General on Sexual Violence in Conflict",
+      "aliases": [],
+      "category": "Special Advisers, Representatives, Advocates and Envoys",
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recTcGOgw0JgxvTQg",
+      "code": "SRSG-VAC",
+      "name": "Office of the Special Representative of the Secretary-General on Violence against Children",
+      "aliases": [],
+      "category": "Special Advisers, Representatives, Advocates and Envoys",
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec56BW3bX5ybNqUu",
+      "code": "SWEO",
+      "name": "United Nations Sustainable Development Group System-Wide Evaluation Office",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:recs0CPY9cyFVCAj3",
+      "code": "Sanctions WG",
+      "name": "Informal Working Group on General Security Council Sanctions Issues",
+      "aliases": [],
+      "category": "Sanctions Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recHFpnhzZSbUxmw5",
+      "code": "Second Committee",
+      "name": "Economic and Financial Committee",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Main Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec9qt58ggrQkxgjT",
+      "code": "Sixth Committee",
+      "name": "Legal",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Main Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reczuCvUlUsjGtsuo",
+      "code": "Special Committee on Peacekeeping Operations",
+      "name": "Special Committee on Peacekeeping Operations",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recKEwcGci6STSp4Q",
+      "code": "Special Committee on the Charter",
+      "name": "Special Committee on the Charter of the United Nations and on the Strengthening of the Role of the Organization",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec73KlTfWrCeSjsA",
+      "code": "Special Committee to Investigate Israeli Practices",
+      "name": "Special Committee to Investigate Israeli Practices Affecting the Human Rights of the Palestinian People and Other Arabs of the Occupied Territories",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recMfmpuLo0J0lLOi",
+      "code": "StatCom",
+      "name": "United Nations Statistical Commission",
+      "aliases": [],
+      "category": "Functional Commissions",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recIAqt7coUH7GEgj",
+      "code": "TDB",
+      "name": "Trade and Development Board",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Boards",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recCdZmXTZ6Z7MQgI",
+      "code": "Third Committee",
+      "name": "Social, Humanitarian & Cultural Issues",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Main Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recnvjNBmhubzvWIl",
+      "code": "UN Tourism",
+      "name": "World Tourism Organization",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Specialized Agencies"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recMF9tGtzMfwevGl",
+      "code": "UN Youth",
+      "name": "United Nations Youth Office",
+      "aliases": [],
+      "category": "Special Advisers, Representatives, Advocates and Envoys",
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recWVxWmeSLkY9pLq",
+      "code": "UN-GGIM",
+      "name": "Committee of Experts on Global Geospatial Information Management",
+      "aliases": [],
+      "category": "Other Bodies and Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recX6tEWXoIrfBpYt",
+      "code": "UN-Habitat",
+      "name": "United Nations Human Settlements Programme",
+      "aliases": [],
+      "category": "Funds and Programmes",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recIphQzX8ju7uXbW",
+      "code": "UN-Habitat Assembly",
+      "name": "United Nations Habitat Assembly of the United Nations Human Settlements Programme",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Assemblies and Councils",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recW3R0wN2gL8MqlT",
+      "code": "UN-OHRLLS",
+      "name": "Office of the High Representative for the Least Developed Countries, Landlocked Developing Countries and Small Island Developing States",
+      "aliases": [],
+      "category": "Special Advisers, Representatives, Advocates and Envoys",
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recdCxHMSx5Qq13dF",
+      "code": "UN-Oceans",
+      "name": "United Nations-Oceans",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec0erUWOFiUWydZt",
+      "code": "UN-Women",
+      "name": "United Nations Entity for Gender Equality and the Empowerment of Women",
+      "aliases": [],
+      "category": "Other Entities",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec7h7mAuF6fpgZUm",
+      "code": "UNAIDS",
+      "name": "Joint United Nations Programme on HIV and AIDS",
+      "aliases": [],
+      "category": "Other Bodies and Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec5fCpr9TUieTm2n",
+      "code": "UNAIDS PCB",
+      "name": "Joint United Nations Programme on HIV/AIDS Programme Coordinating Board",
+      "aliases": [],
+      "category": "Other Bodies and Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recAZ0pHMtrrXDjNH",
+      "code": "UNAMA",
+      "name": "United Nations Assistance Mission in Afghanistan",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recFM9lcLQKNpE7GL",
+      "code": "UNAMI",
+      "name": "United Nations Assistance Mission for Iraq",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recl1wBnKvoYenYOt",
+      "code": "UNAOC",
+      "name": "United Nations Alliance of Civilizations",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": false,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:rec3yNuGujvDv0B5y",
+      "code": "UNCCD",
+      "name": "United Nations Convention to Combat Desertification",
+      "aliases": [],
+      "category": "Other Entities",
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": false,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:rechT5Kq5PvgEg3ki",
+      "code": "UNCDF",
+      "name": "United Nations Capital Development Fund",
+      "aliases": [],
+      "category": "Funds and Programmes",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recG7vLH0wjxAtosm",
+      "code": "UNCITRAL",
+      "name": "United Nations Commission on International Trade Law",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Commissions",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec6ytSiz63IOwWaj",
+      "code": "UNCTAD",
+      "name": "United Nations Conference on Trade and Development",
+      "aliases": [],
+      "category": "Other Entities",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recguLpVcwvmCQhal",
+      "code": "UNDC",
+      "name": "Disarmament Commission",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Commissions",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recOALIF5xKjV3FsS",
+      "code": "UNDEF",
+      "name": "United Nations Democracy Fund",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": false,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:recl37Ls73tFqUFoW",
+      "code": "UNDOF",
+      "name": "United Nations Disengagement Observer Force",
+      "aliases": [],
+      "category": "Peacekeeping Operations",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reciqPKthtKwAt9ko",
+      "code": "UNDP",
+      "name": "United Nations Development Programme",
+      "aliases": [],
+      "category": "Funds and Programmes",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recbhXQduBLLUjOIS",
+      "code": "UNDP UNFPA UNOPS EB",
+      "name": "Executive Board of UNDP, UNFPA and UNOPS",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Boards",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recZT21ua2mIGNLxZ",
+      "code": "UNDRR",
+      "name": "United Nations Office for Disaster Risk Reduction",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec6wgojs0NF9CoTw",
+      "code": "UNEA",
+      "name": "United Nations Environment Assembly",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Assemblies and Councils",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec9LNcHiHps3azcb",
+      "code": "UNEP",
+      "name": "United Nations Environment Programme",
+      "aliases": [],
+      "category": "Funds and Programmes",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recPpfw0tYHgLyOeq",
+      "code": "UNESCO",
+      "name": "United Nations Educational, Scientific and Cultural Organization",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Specialized Agencies"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reczw1bFmYTxxZA9n",
+      "code": "UNFCCC",
+      "name": "United Nations Framework Convention on Climate Change Secretariat",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Related Organizations"
+      ],
+      "visible": false,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:recvcjFU8qzuxPqKU",
+      "code": "UNFF",
+      "name": "United Nations Forum on Forests",
+      "aliases": [],
+      "category": "Functional Commissions",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recJgMPLS2LeeUry0",
+      "code": "UNFICYP",
+      "name": "United Nations Peacekeeping Force in Cyprus",
+      "aliases": [],
+      "category": "Peacekeeping Operations",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recEUmuDCpJgwW6nX",
+      "code": "UNFPA",
+      "name": "United Nations Population Fund",
+      "aliases": [],
+      "category": "Funds and Programmes",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recBFnqMRXHR63qRB",
+      "code": "UNGC",
+      "name": "United Nations Global Compact",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:recYzCtvnl5ueVQRA",
+      "code": "UNGEGN",
+      "name": "United Nations Group of Experts on Geographical Names",
+      "aliases": [],
+      "category": "Other Bodies and Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec9SsCUYENfxKzXI",
+      "code": "UNGSC Brindisi",
+      "name": "United Nations Logistics Base at Brindisi, Italy",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recONyAkgZp8PtL2n",
+      "code": "UNHCR",
+      "name": "Office of the United Nations High Commissioner for Refugees",
+      "aliases": [],
+      "category": "Other Entities",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec3qAOneqtOm5vkf",
+      "code": "UNHCR Executive Committee",
+      "name": "Executive Committee of High Commissioner’s Programme (UNHCR)",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recCam4c3d132bEEz",
+      "code": "UNICC",
+      "name": "United Nations International Computing Centre",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Other"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recJHYfjKsCmaAsiv",
+      "code": "UNICEF",
+      "name": "United Nations Children's Fund",
+      "aliases": [],
+      "category": "Funds and Programmes",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recWoppNv5MfjuSgh",
+      "code": "UNICEF EB",
+      "name": "Executive Board of the United Nations Children's Fund",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Boards",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recd7sPvBpm8rMezZ",
+      "code": "UNICRI",
+      "name": "United Nations Interregional Crime and Justice Research Institute",
+      "aliases": [],
+      "category": "Research and Training",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recDcJPvmMUbIVM71",
+      "code": "UNIDIR",
+      "name": "United Nations Institute for Disarmament Research",
+      "aliases": [],
+      "category": "Research and Training",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recqvDvB4CrX1b91c",
+      "code": "UNIDO",
+      "name": "United Nations Industrial Development Organization",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Specialized Agencies"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recINYmYvywXyHJu5",
+      "code": "UNIFIL",
+      "name": "United Nations Interim Force in Lebanon",
+      "aliases": [],
+      "category": "Peacekeeping Operations",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recIBWjQCGzvMEnR2",
+      "code": "UNISFA",
+      "name": "United Nations Interim Security Force for Abyei",
+      "aliases": [],
+      "category": "Peacekeeping Operations",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recdEG6xaHV1SRCO7",
+      "code": "UNITAID",
+      "name": "Unitaid",
+      "aliases": [],
+      "category": "Other",
+      "subcategory": null,
+      "principal_organs": [],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reckpBKtUMGE1GoCX",
+      "code": "UNITAR",
+      "name": "United Nations Institute for Training and Research",
+      "aliases": [],
+      "category": "Research and Training",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recnd5LrmTAy4vrAM",
+      "code": "UNJSPB",
+      "name": "United Nations Joint Staff Pension Board",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Boards",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recK82y1Q9V2YulPg",
+      "code": "UNJSPF",
+      "name": "United Nations Joint Staff Pension Fund",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": false,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:recceiLlGz4XetoTk",
+      "code": "UNMHA",
+      "name": "United Nations Mission to Support the Hudaydah Agreement",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recTYrT0ED3nvKkm0",
+      "code": "UNMIK",
+      "name": "United Nations Interim Administration Mission in Kosovo",
+      "aliases": [],
+      "category": "Peacekeeping Operations",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec1iC0ulqpufwWld",
+      "code": "UNMISS",
+      "name": "United Nations Mission in South Sudan",
+      "aliases": [],
+      "category": "Peacekeeping Operations",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recIffj1OTiF3Tevr",
+      "code": "UNMOGIP",
+      "name": "United Nations Military Observer Group in India and Pakistan",
+      "aliases": [],
+      "category": "Peacekeeping Operations",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec1XtwC1aZhORQYy",
+      "code": "UNOAU",
+      "name": "United Nations Office to the African Union",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recQfGYFxHIaE8hHM",
+      "code": "UNOCA",
+      "name": "United Nations Regional Office for Central Africa",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recMy60x38xLtIpZz",
+      "code": "UNODC",
+      "name": "United Nations Office on Drugs and Crime",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recX6jnou30u0z6yL",
+      "code": "UNOG",
+      "name": "United Nations Office at Geneva",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recf5StOJVveEzaXx",
+      "code": "UNOMS",
+      "name": "Office of the United Nations Ombudsman and Mediation Services",
+      "aliases": [],
+      "category": "Special Advisers, Representatives, Advocates and Envoys",
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:recrebLDcJecDWgxd",
+      "code": "UNON",
+      "name": "United Nations Office at Nairobi",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recqzjkhO6V9P3eMo",
+      "code": "UNOP",
+      "name": "United Nations Office for Partnerships",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recZhS67PVtqOQSoF",
+      "code": "UNOPS",
+      "name": "United Nations Office for Project Services",
+      "aliases": [],
+      "category": "Other Entities",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec1NeAMfma8ZyECI",
+      "code": "UNOSSC",
+      "name": "United Nations Office for South-South Cooperation",
+      "aliases": [],
+      "category": "Funds and Programmes",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recJM3uGFcDnnweGg",
+      "code": "UNOV",
+      "name": "United Nations Office at Vienna",
+      "aliases": [],
+      "category": null,
+      "subcategory": "EntityCard",
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reckyRWzz3dnm0mTp",
+      "code": "UNOWAS",
+      "name": "United Nations Office for West Africa and the Sahel",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recaCElRcDsyGhlmQ",
+      "code": "UNRCCA",
+      "name": "United Nations Regional Centre for Preventive Diplomacy for Central Asia",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recOZJ5TWD7yxP5Ho",
+      "code": "UNRGID",
+      "name": "Office of the United Nations Representative to the Geneva International Discussions",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recR2RJnkj1FXqvRc",
+      "code": "UNRISD",
+      "name": "United Nations Research Institute for Social Development",
+      "aliases": [],
+      "category": "Research and Training",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recKgsxmdU1T4hpfd",
+      "code": "UNRWA",
+      "name": "United Nations Relief and Works Agency for Palestine Refugees in the Near East",
+      "aliases": [],
+      "category": "Other Entities",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recNQXkappAo5YKIQ",
+      "code": "UNRWA AdCom",
+      "name": "Advisory Commission on the United Nations Relief and Works Agency for Palestine Refugees in the Near East",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Commissions",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recKSJlcSGDVtfFp5",
+      "code": "UNRoD",
+      "name": "United Nations Register of Damage Caused by the Construction of the Wall in the Occupied Palestinian Territory",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:recgqIhMwjCeovZuv",
+      "code": "UNSCEAR",
+      "name": "United Nations Scientific Committee on the Effects of Atomic Radiation",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Committees",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recj1O39nAknJLfIE",
+      "code": "UNSCO",
+      "name": "Office of the United Nations Special Coordinator for the Middle East Peace Process",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:recH7Y3G9utGV0te7",
+      "code": "UNSCOL",
+      "name": "Office of the United Nations Special Coordinator for Lebanon",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recYivkQ6VOP09vr3",
+      "code": "UNSDG",
+      "name": "United Nations Sustainable Development Group",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Other"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recpQloobkwt3BPCM",
+      "code": "UNSMIL",
+      "name": "United Nations Support Mission in Libya",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recBse59rB5WiztPZ",
+      "code": "UNSOH",
+      "name": "United Nations Support Office in Haiti",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recxx0qzRVPAP7aC1",
+      "code": "UNSOM",
+      "name": "United Nations Assistance Mission in Somalia",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recbbv7PT5pCrle2a",
+      "code": "UNSOS",
+      "name": "United Nations Support Office in Somalia",
+      "aliases": [],
+      "category": "Peacekeeping Operations",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": false,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recazcd4SruQmAfvV",
+      "code": "UNSSC",
+      "name": "United Nations System Staff College",
+      "aliases": [],
+      "category": "Research and Training",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec1hjeJKGrlEmacY",
+      "code": "UNSU",
+      "name": "United Nations Staff Union",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Secretariat"
+      ],
+      "visible": false,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:recZJ21UVjYWUa8Ta",
+      "code": "UNTC",
+      "name": "Committee of Experts on International Cooperation in Tax Matters",
+      "aliases": [],
+      "category": "Other Bodies and Committees",
+      "subcategory": null,
+      "principal_organs": [
+        "Economic and Social Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:reci6RxD6wBoTMzpi",
+      "code": "UNTMIS",
+      "name": "United Nations Transitional Assistance Mission in Somalia",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:receOanKc4qg3gnVW",
+      "code": "UNTSO",
+      "name": "United Nations Truce Supervision Organization",
+      "aliases": [],
+      "category": "Peacekeeping Operations",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": true
+    },
+    {
+      "id": "systemchart:recG4RoIoiSORL27U",
+      "code": "UNU",
+      "name": "United Nations University",
+      "aliases": [],
+      "category": "Research and Training",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recicuhk1aQJvckyh",
+      "code": "UNU Council",
+      "name": "Council of the United Nations University",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Assemblies and Councils",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rect4lFOJ3JsQDYxJ",
+      "code": "UNV",
+      "name": "United Nations Volunteers",
+      "aliases": [],
+      "category": "Funds and Programmes",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recLdAFBv3eX1iuCw",
+      "code": "UNVMC",
+      "name": "United Nations Verification Mission in Colombia",
+      "aliases": [],
+      "category": "Special Political Missions and Other Political Presences",
+      "subcategory": null,
+      "principal_organs": [
+        "Security Council"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recm3IxFOyV8KwuGT",
+      "code": "UPU",
+      "name": "Universal Postal Union",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Specialized Agencies"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recCSIo9wPQRNDSGh",
+      "code": "WFP",
+      "name": "World Food Programme",
+      "aliases": [],
+      "category": "Funds and Programmes",
+      "subcategory": null,
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recnDKxtNdZNlDxTQ",
+      "code": "WFP EB",
+      "name": "Executive Board of the World Food Programme",
+      "aliases": [],
+      "category": "Intergovernmental and Expert Bodies",
+      "subcategory": "Boards",
+      "principal_organs": [
+        "General Assembly"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recmlYC8rd0jdC1O0",
+      "code": "WHO",
+      "name": "World Health Organization",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Specialized Agencies"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:rec3qLxtWnB24gTMn",
+      "code": "WIPO",
+      "name": "World Intellectual Property Organization",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Specialized Agencies"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recAWfKIp6i3drxo5",
+      "code": "WMO",
+      "name": "World Meteorological Organization",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Specialized Agencies"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recZyqVrECd08Bhyu",
+      "code": "WORLD BANK GROUP",
+      "name": "World Bank Group",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Specialized Agencies"
+      ],
+      "visible": true,
+      "review_needed": null
+    },
+    {
+      "id": "systemchart:recMLIDzbl1KFfbdP",
+      "code": "WTO",
+      "name": "World Trade Organization",
+      "aliases": [],
+      "category": null,
+      "subcategory": null,
+      "principal_organs": [
+        "Related Organizations"
+      ],
+      "visible": true,
+      "review_needed": null
+    }
+  ],
+  "excluded_count": 3
+}

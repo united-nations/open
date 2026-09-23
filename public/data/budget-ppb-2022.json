@@ -18778,6 +18778,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:rec2KzmTAK9Usa6zB",
+        "name": "Office of the Special Adviser to the Secretary-General on Cyprus",
+        "acronym": "OSASG-Cyprus",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 2523500
       }
@@ -18859,6 +18866,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "spm:SASG-PGENOCIDE",
+        "name": "Office of the Special Adviser to the Secretary-General on the Prevention of Genocide",
+        "acronym": "SASG-PGENOCIDE",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 2393600
       }
@@ -18940,6 +18954,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recWTP7Mqw8o4zP4T",
+        "name": "Personal Envoy of the Secretary-General for Western Sahara",
+        "acronym": "PESG-WS",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 267900
       }
@@ -19021,6 +19042,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "spm:OSESG-SCRES1559",
+        "name": "Office of the Special Envoy of the Secretary-General for the implementation of Security Council resolution 1559 (2004)",
+        "acronym": "OSESG-SCRES1559",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 393400
       }
@@ -19102,6 +19130,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recOZJ5TWD7yxP5Ho",
+        "name": "Office of the United Nations Representative to the Geneva International Discussions",
+        "acronym": "UNRGID",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 1745400
       }
@@ -19183,6 +19218,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recarBduCii0diPVg",
+        "name": "Office of the Special Envoy of the Secretary-General for Syria",
+        "acronym": "OSESG-SYRIA",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 12630300
       }
@@ -19264,6 +19306,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:reci5RMvEPI9ZfIKE",
+        "name": "Office of the Special Envoy of the Secretary-General for the Horn of Africa",
+        "acronym": "SESG-Horn of Africa",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 1586100
       }
@@ -19345,6 +19394,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:rechj1IFTcRUp2zH4",
+        "name": "Office of the Special Envoy of the Secretary-General for the Great Lakes Region",
+        "acronym": "SESG-GL",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 4406100
       }
@@ -19426,6 +19482,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:rec86X5ivN9oChGqI",
+        "name": "Office of the Special Envoy of the Secretary-General for Yemen",
+        "acronym": "OSESGY",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 16240600
       }
@@ -19507,6 +19570,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recJPNSsC5a3qlvBL",
+        "name": "Office of the Special Envoy of the Secretary-General on Myanmar",
+        "acronym": "SESG-MYR",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 1223800
       }
@@ -19855,6 +19925,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recBnzdRxwKlLAs7t",
+        "name": "Group of Experts on the Democratic Republic of the Congo",
+        "acronym": "GoE-DRC",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 1272400
       }
@@ -19936,6 +20013,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recIkVEO23wDYT2Vu",
+        "name": "Panel of Experts on the Sudan",
+        "acronym": "PoE-Sudan",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 956900
       }
@@ -20017,6 +20101,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "spm:POE-DPRK",
+        "name": "Panel of Experts on the Democratic People\u2019s Republic of Korea",
+        "acronym": "POE-DPRK",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 2943900
       }
@@ -20098,6 +20189,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recrhrAvNybRPGvmB",
+        "name": "Panel of Experts on Libya",
+        "acronym": "PoE-Libya",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 1223300
       }
@@ -20179,6 +20277,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recyg2xLyhGOwMigv",
+        "name": "Panel of Experts on the Central African Republic",
+        "acronym": "PoE-CAR",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 789200
       }
@@ -20260,6 +20365,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recDVMzTvy4UMgY6j",
+        "name": "Panel of Experts on Yemen",
+        "acronym": "PoE-Yemen",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 1926200
       }
@@ -20341,6 +20453,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recI0vvX1SC9v9zJ7",
+        "name": "Panel of Experts on South Sudan",
+        "acronym": "PoE-S.Sudan",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 1013000
       }
@@ -20422,6 +20541,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recb0GgyNrfaD4Oz2",
+        "name": "Analytical Support and Sanctions Monitoring Team pursuant to resolutions 1526 (2004) and 2253 (2015) concerning Islamic State in Iraq and the Levant (ISIL) (Da\u2019esh), Al-Qaida and the Taliban and associated individuals and entities",
+        "acronym": "ASMT",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 5827500
       }
@@ -20503,6 +20629,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recosEkpdpTaMyfPA",
+        "name": "Office of the Ombudsperson established pursuant to Security Council resolution 1904 (2009)",
+        "acronym": "OMBUD-RES1904",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 621300
       }
@@ -20584,6 +20717,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:rec3jqpdCJKl0SIS3",
+        "name": "Implementation of Security Council resolution 2231 (2015)",
+        "acronym": "SC-RES2231",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 1230600
       }
@@ -20665,6 +20805,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "spm:POE-MALI",
+        "name": "Panel of Experts on Mali",
+        "acronym": "POE-MALI",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 852600
       }
@@ -20746,6 +20893,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "spm:POE-SOMALIA",
+        "name": "Panel of Experts on Somalia",
+        "acronym": "POE-SOMALIA",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 1472200
       }
@@ -20827,6 +20981,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recdrNefGS2UtJSIW",
+        "name": "Panel of Experts on Haiti",
+        "acronym": "PoE-Haiti",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 1500
       }
@@ -20908,6 +21069,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recjs5t6N4n57Xaca",
+        "name": "Support to the Security Council Committee established pursuant to resolution 1540 (2004) on the non-proliferation of all weapons of mass destruction",
+        "acronym": "SC-RES1540",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 2598200
       }
@@ -20989,6 +21157,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:reccTK7EVU2sFp0uA",
+        "name": "Counter-Terrorism Committee Executive Directorate",
+        "acronym": "CTED",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 11250700
       }
@@ -21070,6 +21245,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "spm:UNITAD",
+        "name": "United Nations Investigative Team to Promote Accountability for Crimes Committed by Da\u2019esh/Islamic State in Iraq and the Levant",
+        "acronym": "UNITAD",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 24351000
       }
@@ -21358,6 +21540,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:reckyRWzz3dnm0mTp",
+        "name": "United Nations Office for West Africa and the Sahel",
+        "acronym": "UNOWAS",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 14526500
       }
@@ -21439,6 +21628,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recxx0qzRVPAP7aC1",
+        "name": "United Nations Assistance Mission in Somalia",
+        "acronym": "UNSOM",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 100000800
       }
@@ -21520,6 +21716,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recaCElRcDsyGhlmQ",
+        "name": "United Nations Regional Centre for Preventive Diplomacy for Central Asia",
+        "acronym": "UNRCCA",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 3011100
       }
@@ -21601,6 +21804,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recGudYcdfjhjBzPa",
+        "name": "United Nations Support for the Cameroon-Nigeria Mixed Commission",
+        "acronym": "CNMC",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 3686800
       }
@@ -21682,6 +21892,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recH7Y3G9utGV0te7",
+        "name": "Office of the United Nations Special Coordinator for Lebanon",
+        "acronym": "UNSCOL",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 10275700
       }
@@ -21763,6 +21980,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recQfGYFxHIaE8hHM",
+        "name": "United Nations Regional Office for Central Africa",
+        "acronym": "UNOCA",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 8044200
       }
@@ -21844,6 +22068,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recpQloobkwt3BPCM",
+        "name": "United Nations Support Mission in Libya",
+        "acronym": "UNSMIL",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 82340900
       }
@@ -21925,6 +22156,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recLdAFBv3eX1iuCw",
+        "name": "United Nations Verification Mission in Colombia",
+        "acronym": "UNVMC",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 61117600
       }
@@ -22006,6 +22244,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recceiLlGz4XetoTk",
+        "name": "United Nations Mission to Support the Hudaydah Agreement",
+        "acronym": "UNMHA",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 29531000
       }
@@ -22087,6 +22332,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recSZyZHOHKDbGhJL",
+        "name": "United Nations Integrated Office in Haiti",
+        "acronym": "BINUH",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 23017300
       }
@@ -22168,6 +22420,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "spm:UNITAMS",
+        "name": "United Nations Integrated Transition Assistance Mission in the Sudan",
+        "acronym": "UNITAMS",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 56649000
       }
@@ -22372,6 +22631,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recAZ0pHMtrrXDjNH",
+        "name": "United Nations Assistance Mission in Afghanistan",
+        "acronym": "UNAMA",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 134130300
       }
@@ -22453,6 +22719,13 @@
         }
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
+      "entity": {
+        "id": "systemchart:recFM9lcLQKNpE7GL",
+        "name": "United Nations Assistance Mission for Iraq",
+        "acronym": "UNAMI",
+        "relationship": "direct_financial_entity",
+        "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F78%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=docx"
+      },
       "metricAmounts": {
         "expenditure": 98214800
       }

@@ -33,6 +33,7 @@ from domain_taxonomies import load_secretariat_taxonomies
 from secretariat_entities import load_secretariat_entities
 from secretariat_expenses import load_secretariat_expenses
 from utils import normalize_entity
+from secretariat_ledger import resolve_records, build_overview
 
 
 OUT = Path("public/data")
@@ -149,64 +150,6 @@ def source_values(frame: pd.DataFrame) -> dict[str, float]:
 def amount_of(frame: pd.DataFrame) -> float:
     return round(float(frame["amount"].sum()), 2)
 
-
-def build_overview(year: int, frame: pd.DataFrame) -> dict:
-    """Keep the exact priority/funding intersections needed by the UI.
-
-    ``primary_priority`` is a placement hint only. No priority total is ever
-    derived from it; Staff Assessment is split again by the frontend.
-    """
-    entities = []
-    for entity, entity_frame in frame.groupby("entity", sort=True):
-        cells = []
-        grouped = entity_frame.groupby(
-            ["priority_area", "source_type"], dropna=False, sort=True
-        )["amount"].sum()
-        for (priority_area, source_type), amount in grouped.items():
-            cells.append(
-                {
-                    "priority_area": str(priority_area),
-                    "funding_source": SOURCE_KEYS[source_type],
-                    "amount": round(float(amount), 2),
-                }
-            )
-        priority_totals = (
-            entity_frame.groupby("priority_area", sort=True)["amount"].sum()
-        )
-        primary_priority = str(priority_totals.idxmax())
-        entity_total = amount_of(entity_frame)
-        assert abs(sum(cell["amount"] for cell in cells) - entity_total) < 1
-        entities.append(
-            {
-                "code": entity,
-                "total": entity_total,
-                "primary_priority": primary_priority,
-                "split_across_priorities": entity == "STA",
-                "group": SECRETARIAT_ENTITIES["entities"][entity]["group"],
-                "group_basis": SECRETARIAT_ENTITIES["entities"][entity]["basis"],
-                "cells": cells,
-            }
-        )
-
-    total = amount_of(frame)
-    assert abs(sum(entity["total"] for entity in entities) - total) < 1
-    return {
-        "meta": {
-            "year": year,
-            "currency": "USD",
-            "measure": "expenses",
-            "total": total,
-            "priorities": sorted(frame["priority_area"].dropna().unique()),
-            "funding_sources": list(SOURCE_KEYS.values()),
-            "groups": SECRETARIAT_ENTITIES["groups"],
-            "classification_note": SECRETARIAT_ENTITIES["classification_note"],
-            "source": OVERVIEW_SOURCE if year <= 2023 else {
-                "label": "Annual Report on the Work of the Organization — ARWO expenditure extract",
-                "url": "https://www.un.org/annualreport/",
-            },
-        },
-        "entities": entities,
-    }
 
 
 def entity_node(entity: str, parent_id: str, frame: pd.DataFrame) -> dict:
@@ -420,6 +363,7 @@ def build_peacekeeping(year: int, frame: pd.DataFrame) -> dict:
 
 def export() -> None:
     df = load()
+    records, taxonomy, snapshots = resolve_records()
     years = sorted(int(year) for year in df["year"].unique())
     print(f"Loaded {len(df)} rows, years {years[0]}-{years[-1]}")
 
@@ -437,7 +381,7 @@ def export() -> None:
             f"{year}: split {split_total} != raw {raw_total}"
         )
 
-        overview = build_overview(year, year_frame)
+        overview = build_overview(year, [r for r in records if r['year'] == year], taxonomy, snapshots)
 
         ppb_path = OUT / f"budget-audited-ppb-{year}.json"
         pko_path = OUT / f"budget-audited-pko-{year}.json"

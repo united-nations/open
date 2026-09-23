@@ -335,6 +335,19 @@ def clean_label(label: str, code: str) -> str:
 # The entity dimension
 # --------------------------------------------------------------------------
 
+
+
+SPM_CATALOGUE = json.loads(Path("data/references/spm-catalogue.json").read_text())
+SPM_IDENTITIES = {
+    r["nodeId"]: {"id": r["entityId"], "name": r["canonicalName"], "acronym": r["shortLabel"],
+                  "relationship": "direct_financial_entity", "evidenceUrl": r["source"]["sourceDocumentUrl"]}
+    for r in SPM_CATALOGUE["records"] if r["disposition"] == "named_member"
+}
+
+
+def spm_node_identity(node_id: str) -> dict | None:
+    return SPM_IDENTITIES.get(node_id)
+
 def entity_index(view: dict) -> tuple[dict[str, dict], dict[str, dict], dict | None]:
     """Relationships and section verdicts of the release's entity dimension.
 
@@ -792,6 +805,9 @@ def build_ppb(view: dict, financial: dict | None = None) -> dict:
         explanation = totals.get("explanation")
         if explanation:
             entry["note"] = explanation
+        spm_identity = spm_node_identity(n["treeNodeId"])
+        if spm_identity:
+            entry["entity"] = spm_identity
         nodes.append(entry)
 
     # A generated wrapper or roll-up may not own a physical source row.  Fill
