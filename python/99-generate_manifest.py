@@ -9,7 +9,7 @@ OUT = Path("public/data")
 def detect_years(pattern: str) -> list[int]:
     """Find all years available for a given file pattern."""
     files = sorted(OUT.glob(f"{pattern}-*.json"))
-    return sorted({int(f.stem.split("-")[-1]) for f in files})
+    return sorted({int(f.stem.removeprefix(pattern + "-")) for f in files if f.stem.removeprefix(pattern + "-").isdigit()})
 
 def generate_manifest():
     # Years with secretariat sub-entity breakdown (fused with CEB).
@@ -35,7 +35,13 @@ def generate_manifest():
         # PKO is keyed by the first year and starts at 2022, which is its
         # 2022/23 cycle and matches audited PKO file 2023 (keyed by ending year).
         "budgetPpb": {"years": detect_years("budget-ppb"), "default": "latest"},
-        "budgetPko": {"years": detect_years("budget-pko"), "default": "latest"},
+        "budgetPpbApproved": {"years": detect_years("budget-ppb-approved"), "default": "latest"},
+        "budgetPpbProposed": {"years": detect_years("budget-ppb-proposed"), "default": "latest"},
+        "uninfoCountries": {"years": [2024], "default": 2024},
+        "uninfoSdgs": {"years": [2024], "default": 2024},
+        "budgetPko": {"years": detect_years("budget-pko"), "default": 2024},
+        "budgetPkoApproved": {"years": detect_years("budget-pko-approved"), "default": "latest"},
+        "budgetPkoProposed": {"years": detect_years("budget-pko-proposed"), "default": "latest"},
     }
     
     # Add min/max for convenience

@@ -96,7 +96,7 @@
       "values": {
         "regular_budget": 3224058800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3224058800
@@ -879,6 +879,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 3224058800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 3224058800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -920,6 +928,14 @@
       "note": "This parent is the exact sum of the source-bound immediate children currently displayed.",
       "metricAmounts": {
         "proposed": 124540400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 124540400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -934,7 +950,7 @@
       "values": {
         "regular_budget": 124540400
       },
-      "completeness": "incomplete",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 124540400
@@ -970,6 +986,14 @@
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 124540400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 124540400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -984,7 +1008,7 @@
       "values": {
         "regular_budget": 124540400
       },
-      "completeness": "incomplete",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 124540400
@@ -1044,6 +1068,14 @@
       "note": "Orthogonal sum of the generated wrapper's complete RB, OA and XB values.",
       "metricAmounts": {
         "proposed": 124540400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 124540400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -1058,7 +1090,7 @@
       "values": {
         "regular_budget": 118392100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 118392100
@@ -1085,6 +1117,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 118392100
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 118392100,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -1099,7 +1139,7 @@
       "values": {
         "regular_budget": 91827600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 91827600
@@ -1140,7 +1180,7 @@
       "values": {
         "regular_budget": 23246000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 23246000
@@ -1181,7 +1221,7 @@
       "values": {
         "regular_budget": 3318500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3318500
@@ -1222,7 +1262,7 @@
       "values": {
         "regular_budget": 3068400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3068400
@@ -1263,7 +1303,7 @@
       "values": {
         "regular_budget": 3079900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3079900
@@ -1331,6 +1371,14 @@
       "note": "This parent is the exact sum of the source-bound immediate children currently displayed.",
       "metricAmounts": {
         "proposed": 100999600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 100999600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -1345,7 +1393,7 @@
       "values": {
         "regular_budget": 100999600
       },
-      "completeness": "incomplete",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 100999600
@@ -1381,6 +1429,14 @@
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 100999600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 100999600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -1455,6 +1511,14 @@
       "note": "Orthogonal sum of the generated wrapper's complete RB, OA and XB values.",
       "metricAmounts": {
         "proposed": 100999600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 100999600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -1496,6 +1560,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 94469300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 94469300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -1510,7 +1582,7 @@
       "values": {
         "regular_budget": 33776500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 33776500
@@ -1551,7 +1623,7 @@
       "values": {
         "regular_budget": 40043400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 40043400
@@ -1592,7 +1664,7 @@
       "values": {
         "regular_budget": 20649400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 20649400
@@ -1633,7 +1705,7 @@
       "values": {
         "regular_budget": 3794400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3794400
@@ -1674,7 +1746,7 @@
       "values": {
         "regular_budget": 2735900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2735900
@@ -1742,6 +1814,14 @@
       "note": "This parent is the exact sum of the source-bound immediate children currently displayed.",
       "metricAmounts": {
         "proposed": 21356100
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 21356100,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -1756,7 +1836,7 @@
       "values": {
         "regular_budget": 21356100
       },
-      "completeness": "incomplete",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 21356100
@@ -1792,6 +1872,14 @@
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 21356100
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 21356100,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -1806,7 +1894,7 @@
       "values": {
         "regular_budget": 21356100
       },
-      "completeness": "incomplete",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 21356100
@@ -1866,6 +1954,14 @@
       "note": "Orthogonal sum of the generated wrapper's complete RB, OA and XB values.",
       "metricAmounts": {
         "proposed": 21356100
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 21356100,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -1907,6 +2003,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 18503100
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 18503100,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -1921,7 +2025,7 @@
       "values": {
         "regular_budget": 8413200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 8413200
@@ -1962,7 +2066,7 @@
       "values": {
         "regular_budget": 5866200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5866200
@@ -2003,7 +2107,7 @@
       "values": {
         "regular_budget": 4223700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4223700
@@ -2044,7 +2148,7 @@
       "values": {
         "regular_budget": 1485400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1485400
@@ -2085,7 +2189,7 @@
       "values": {
         "regular_budget": 1367600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1367600
@@ -2126,7 +2230,7 @@
       "values": {
         "regular_budget": 423866900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 423866900
@@ -2165,6 +2269,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 423866900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 423866900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -2179,7 +2291,7 @@
       "values": {
         "regular_budget": 80830200
       },
-      "completeness": "incomplete",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 80830200
@@ -2208,6 +2320,14 @@
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 80830200
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 80830200,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -2258,6 +2378,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 16869700
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 16869700,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -2272,7 +2400,7 @@
       "values": {
         "regular_budget": 16869700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 16869700
@@ -2349,6 +2477,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 3784800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 3784800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -2363,7 +2499,7 @@
       "values": {
         "regular_budget": 3784800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3784800
@@ -2440,6 +2576,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 9782600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 9782600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -2454,7 +2598,7 @@
       "values": {
         "regular_budget": 9782600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 9782600
@@ -2531,6 +2675,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 3898800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 3898800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -2545,7 +2697,7 @@
       "values": {
         "regular_budget": 3898800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3898800
@@ -2622,6 +2774,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 2174100
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 2174100,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -2636,7 +2796,7 @@
       "values": {
         "regular_budget": 2174100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2174100
@@ -2677,7 +2837,7 @@
       "values": {
         "regular_budget": 2782500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2782500
@@ -2737,6 +2897,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 2782500
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 2782500,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -2751,7 +2919,7 @@
       "values": {
         "regular_budget": 1336200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1336200
@@ -2792,7 +2960,7 @@
       "values": {
         "regular_budget": 218200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 218200
@@ -2833,7 +3001,7 @@
       "values": {
         "regular_budget": 1228100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1228100
@@ -2874,7 +3042,7 @@
       "values": {
         "regular_budget": 3336000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3336000
@@ -2910,6 +3078,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 3336000
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 3336000,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -2924,7 +3100,7 @@
       "values": {
         "regular_budget": 3336000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3336000
@@ -2965,7 +3141,7 @@
       "values": {
         "regular_budget": 865600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 865600
@@ -3001,6 +3177,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 865600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 865600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -3015,7 +3199,7 @@
       "values": {
         "regular_budget": 865600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 865600
@@ -3056,7 +3240,7 @@
       "values": {
         "regular_budget": 2304700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2304700
@@ -3092,6 +3276,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 2304700
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 2304700,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -3106,7 +3298,7 @@
       "values": {
         "regular_budget": 2304700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2304700
@@ -3147,7 +3339,7 @@
       "values": {
         "regular_budget": 1789400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1789400
@@ -3183,6 +3375,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 1789400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 1789400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -3197,7 +3397,7 @@
       "values": {
         "regular_budget": 1789400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1789400
@@ -3238,7 +3438,7 @@
       "values": {
         "regular_budget": 2331800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2331800
@@ -3274,6 +3474,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 2331800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 2331800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -3288,7 +3496,7 @@
       "values": {
         "regular_budget": 2331800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2331800
@@ -3329,7 +3537,7 @@
       "values": {
         "regular_budget": 936900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 936900
@@ -3365,6 +3573,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 936900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 936900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -3379,7 +3595,7 @@
       "values": {
         "regular_budget": 936900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 936900
@@ -3420,7 +3636,7 @@
       "values": {
         "regular_budget": 848100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 848100
@@ -3456,6 +3672,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 848100
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 848100,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -3470,7 +3694,7 @@
       "values": {
         "regular_budget": 848100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 848100
@@ -3511,7 +3735,7 @@
       "values": {
         "regular_budget": 5378400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5378400
@@ -3547,6 +3771,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 5378400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 5378400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -3561,7 +3793,7 @@
       "values": {
         "regular_budget": 5378400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5378400
@@ -3602,7 +3834,7 @@
       "values": {
         "regular_budget": 6633700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 6633700
@@ -3638,6 +3870,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 6633700
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 6633700,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -3652,7 +3892,7 @@
       "values": {
         "regular_budget": 6633700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 6633700
@@ -3693,7 +3933,7 @@
       "values": {
         "regular_budget": 544000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 544000
@@ -3743,7 +3983,7 @@
       "values": {
         "regular_budget": 341700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 341700
@@ -3793,7 +4033,7 @@
       "values": {
         "regular_budget": 511700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 511700
@@ -3843,7 +4083,7 @@
       "values": {
         "regular_budget": 0
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 0
@@ -3893,7 +4133,7 @@
       "values": {
         "regular_budget": 1346000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1346000
@@ -3943,7 +4183,7 @@
       "values": {
         "regular_budget": 13442500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 13442500
@@ -3993,7 +4233,7 @@
       "values": {
         "regular_budget": 927200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 927200
@@ -4036,7 +4276,7 @@
       "values": {
         "regular_budget": 343036700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 343036700
@@ -4072,6 +4312,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 343036700
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 343036700,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -4086,7 +4334,7 @@
       "values": {
         "regular_budget": 343036700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 343036700
@@ -4278,6 +4526,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 343036700
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 343036700,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -4292,7 +4548,7 @@
       "values": {
         "regular_budget": 349100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 349100
@@ -4333,7 +4589,7 @@
       "values": {
         "regular_budget": 4181000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4181000
@@ -4374,7 +4630,7 @@
       "values": {
         "regular_budget": 161777000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 161777000
@@ -4437,6 +4693,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 161777000
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 161777000,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -4451,7 +4715,7 @@
       "values": {
         "regular_budget": 6315400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 6315400
@@ -4492,7 +4756,7 @@
       "values": {
         "regular_budget": 15402500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 15402500
@@ -4533,7 +4797,7 @@
       "values": {
         "regular_budget": 90617000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 90617000
@@ -4574,7 +4838,7 @@
       "values": {
         "regular_budget": 49442100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 49442100
@@ -4615,7 +4879,7 @@
       "values": {
         "regular_budget": 121172800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 121172800
@@ -4666,6 +4930,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 121172800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 121172800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -4680,7 +4952,7 @@
       "values": {
         "regular_budget": 35294000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 35294000
@@ -4721,7 +4993,7 @@
       "values": {
         "regular_budget": 55610500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 55610500
@@ -4762,7 +5034,7 @@
       "values": {
         "regular_budget": 30268300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 30268300
@@ -4803,7 +5075,7 @@
       "values": {
         "regular_budget": 26961800
       },
-      "completeness": "not_published",
+      "completeness": "incomplete",
       "metricValues": {
         "proposed": {
           "regular_budget": 26961800
@@ -4830,6 +5102,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 26961800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 26961800,
+          "difference": 0,
+          "outcome": "unreconciled_difference",
+          "completeness": "incomplete"
+        }
       }
     },
     {
@@ -4901,7 +5181,7 @@
       "values": {
         "regular_budget": 26961800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 26961800
@@ -4942,7 +5222,7 @@
       "values": {
         "regular_budget": 11220000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 11220000
@@ -4993,6 +5273,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 11220000
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 11220000,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -5007,7 +5295,7 @@
       "values": {
         "regular_budget": 2597200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2597200
@@ -5048,7 +5336,7 @@
       "values": {
         "regular_budget": 4464300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4464300
@@ -5089,7 +5377,7 @@
       "values": {
         "regular_budget": 4158500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4158500
@@ -5130,7 +5418,7 @@
       "values": {
         "regular_budget": 17375000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 17375000
@@ -5171,7 +5459,7 @@
       "values": {
         "regular_budget": 907304200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 907304200
@@ -5318,6 +5606,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 907304200
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 907304200,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -5332,7 +5628,7 @@
       "values": {
         "regular_budget": 835382200
       },
-      "completeness": "incomplete",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 835382200
@@ -5421,6 +5717,14 @@
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 835382200
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 835382200,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -5471,6 +5775,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 950900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 950900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -5485,7 +5797,7 @@
       "values": {
         "regular_budget": 950900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 950900
@@ -5526,7 +5838,7 @@
       "values": {
         "regular_budget": 47587900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 47587900
@@ -5562,6 +5874,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 47587900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 47587900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -5576,7 +5896,7 @@
       "values": {
         "regular_budget": 108700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 108700
@@ -5617,7 +5937,7 @@
       "values": {
         "regular_budget": 1607800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1607800
@@ -5658,7 +5978,7 @@
       "values": {
         "regular_budget": 43034000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 43034000
@@ -5757,6 +6077,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 43034000
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 43034000,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -5771,7 +6099,7 @@
       "values": {
         "regular_budget": 24629100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 24629100
@@ -5812,7 +6140,7 @@
       "values": {
         "regular_budget": 3876900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3876900
@@ -5853,7 +6181,7 @@
       "values": {
         "regular_budget": 7134500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 7134500
@@ -5894,7 +6222,7 @@
       "values": {
         "regular_budget": 834300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 834300
@@ -5935,7 +6263,7 @@
       "values": {
         "regular_budget": 2722700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2722700
@@ -5976,7 +6304,7 @@
       "values": {
         "regular_budget": 3545100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3545100
@@ -6017,7 +6345,7 @@
       "values": {
         "regular_budget": 291400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 291400
@@ -6058,7 +6386,7 @@
       "values": {
         "regular_budget": 2837400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2837400
@@ -6099,7 +6427,7 @@
       "values": {
         "regular_budget": 5988200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5988200
@@ -6135,6 +6463,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 5988200
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 5988200,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -6149,7 +6485,7 @@
       "values": {
         "regular_budget": 5988200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5988200
@@ -6190,7 +6526,7 @@
       "values": {
         "regular_budget": 2892400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2892400
@@ -6226,6 +6562,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 2892400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 2892400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -6240,7 +6584,7 @@
       "values": {
         "regular_budget": 2892400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2892400
@@ -6281,7 +6625,7 @@
       "values": {
         "regular_budget": 10887500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 10887500
@@ -6331,7 +6675,7 @@
       "values": {
         "regular_budget": 767075300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 767075300
@@ -6360,6 +6704,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 767075300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 767075300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -6374,7 +6726,7 @@
       "values": {
         "regular_budget": 50779400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 50779400
@@ -6509,6 +6861,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 50779400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 50779400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -6523,7 +6883,7 @@
       "values": {
         "regular_budget": 3050700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3050700
@@ -6571,7 +6931,7 @@
       "values": {
         "regular_budget": 2820400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2820400
@@ -6619,7 +6979,7 @@
       "values": {
         "regular_budget": 477500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 477500
@@ -6667,7 +7027,7 @@
       "values": {
         "regular_budget": 376600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 376600
@@ -6715,7 +7075,7 @@
       "values": {
         "regular_budget": 1987900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1987900
@@ -6763,7 +7123,7 @@
       "values": {
         "regular_budget": 15565700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 15565700
@@ -6811,7 +7171,7 @@
       "values": {
         "regular_budget": 1921000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1921000
@@ -6859,7 +7219,7 @@
       "values": {
         "regular_budget": 5740400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5740400
@@ -6907,7 +7267,7 @@
       "values": {
         "regular_budget": 17430600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 17430600
@@ -6955,7 +7315,7 @@
       "values": {
         "regular_budget": 1408600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1408600
@@ -7003,7 +7363,7 @@
       "values": {
         "regular_budget": 63223800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 63223800
@@ -7198,6 +7558,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 63223800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 63223800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -7212,7 +7580,7 @@
       "values": {
         "regular_budget": 1524200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1524200
@@ -7260,7 +7628,7 @@
       "values": {
         "regular_budget": 1120400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1120400
@@ -7308,7 +7676,7 @@
       "values": {
         "regular_budget": 3110600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3110600
@@ -7356,7 +7724,7 @@
       "values": {
         "regular_budget": 1410400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1410400
@@ -7404,7 +7772,7 @@
       "values": {
         "regular_budget": 1193200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1193200
@@ -7452,7 +7820,7 @@
       "values": {
         "regular_budget": 2210000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2210000
@@ -7500,7 +7868,7 @@
       "values": {
         "regular_budget": 1257600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1257600
@@ -7548,7 +7916,7 @@
       "values": {
         "regular_budget": 5854900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5854900
@@ -7596,7 +7964,7 @@
       "values": {
         "regular_budget": 617300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 617300
@@ -7644,7 +8012,7 @@
       "values": {
         "regular_budget": 1533500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1533500
@@ -7692,7 +8060,7 @@
       "values": {
         "regular_budget": 1194100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1194100
@@ -7740,7 +8108,7 @@
       "values": {
         "regular_budget": 1858900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1858900
@@ -7788,7 +8156,7 @@
       "values": {
         "regular_budget": 3135500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3135500
@@ -7836,7 +8204,7 @@
       "values": {
         "regular_budget": 11570900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 11570900
@@ -7884,7 +8252,7 @@
       "values": {
         "regular_budget": 25632300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 25632300
@@ -7932,7 +8300,7 @@
       "values": {
         "regular_budget": 420213400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 420213400
@@ -8079,6 +8447,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 420213400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 420213400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -8093,7 +8469,7 @@
       "values": {
         "regular_budget": 14835200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 14835200
@@ -8141,7 +8517,7 @@
       "values": {
         "regular_budget": 97045500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 97045500
@@ -8189,7 +8565,7 @@
       "values": {
         "regular_budget": 3292700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3292700
@@ -8237,7 +8613,7 @@
       "values": {
         "regular_budget": 3781300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3781300
@@ -8285,7 +8661,7 @@
       "values": {
         "regular_budget": 10200100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 10200100
@@ -8333,7 +8709,7 @@
       "values": {
         "regular_budget": 9074100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 9074100
@@ -8381,7 +8757,7 @@
       "values": {
         "regular_budget": 88432200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 88432200
@@ -8429,7 +8805,7 @@
       "values": {
         "regular_budget": 67454700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 67454700
@@ -8477,7 +8853,7 @@
       "values": {
         "regular_budget": 37193000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 37193000
@@ -8525,7 +8901,7 @@
       "values": {
         "regular_budget": 22342500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 22342500
@@ -8573,7 +8949,7 @@
       "values": {
         "regular_budget": 66562100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 66562100
@@ -8621,7 +8997,7 @@
       "values": {
         "regular_budget": 230714400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 230714400
@@ -8660,6 +9036,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 230714400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 230714400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -8674,7 +9058,7 @@
       "values": {
         "regular_budget": 133609900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 133609900
@@ -8722,7 +9106,7 @@
       "values": {
         "regular_budget": 97104500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 97104500
@@ -8770,7 +9154,7 @@
       "values": {
         "regular_budget": 2144300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2144300
@@ -8821,6 +9205,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 2144300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 2144300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -8835,7 +9227,7 @@
       "values": {
         "regular_budget": 0
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 0
@@ -8883,7 +9275,7 @@
       "values": {
         "regular_budget": 0
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 0
@@ -8931,7 +9323,7 @@
       "values": {
         "regular_budget": 2144300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2144300
@@ -8972,7 +9364,7 @@
       "values": {
         "regular_budget": 54731800
       },
-      "completeness": "incomplete",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 54731800
@@ -9025,6 +9417,14 @@
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 54731800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 54731800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -9075,6 +9475,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 5867800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 5867800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -9116,6 +9524,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 4834600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 4834600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -9130,7 +9546,7 @@
       "values": {
         "regular_budget": 841000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 841000
@@ -9171,7 +9587,7 @@
       "values": {
         "regular_budget": 504600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 504600
@@ -9212,7 +9628,7 @@
       "values": {
         "regular_budget": 393700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 393700
@@ -9253,7 +9669,7 @@
       "values": {
         "regular_budget": 3095300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3095300
@@ -9294,7 +9710,7 @@
       "values": {
         "regular_budget": 710300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 710300
@@ -9335,7 +9751,7 @@
       "values": {
         "regular_budget": 322900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 322900
@@ -9376,7 +9792,7 @@
       "values": {
         "regular_budget": 9861000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 9861000
@@ -9426,7 +9842,7 @@
       "values": {
         "regular_budget": 39003000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 39003000
@@ -9476,7 +9892,7 @@
       "values": {
         "regular_budget": 12706200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 12706200
@@ -9512,6 +9928,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 12706200
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 12706200,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -9526,7 +9950,7 @@
       "values": {
         "regular_budget": 12706200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 12706200
@@ -9598,6 +10022,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 12706200
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 12706200,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -9612,7 +10044,7 @@
       "values": {
         "regular_budget": 8100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 8100
@@ -9653,7 +10085,7 @@
       "values": {
         "regular_budget": 2314900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2314900
@@ -9694,7 +10126,7 @@
       "values": {
         "regular_budget": 9735400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 9735400
@@ -9721,6 +10153,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 9735400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 9735400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -9735,7 +10175,7 @@
       "values": {
         "regular_budget": 3123300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3123300
@@ -9776,7 +10216,7 @@
       "values": {
         "regular_budget": 1669200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1669200
@@ -9817,7 +10257,7 @@
       "values": {
         "regular_budget": 1080400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1080400
@@ -9858,7 +10298,7 @@
       "values": {
         "regular_budget": 1394300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1394300
@@ -9899,7 +10339,7 @@
       "values": {
         "regular_budget": 2468200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2468200
@@ -9940,7 +10380,7 @@
       "values": {
         "regular_budget": 647800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 647800
@@ -9981,7 +10421,7 @@
       "values": {
         "regular_budget": 4484000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4484000
@@ -10017,6 +10457,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 4484000
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 4484000,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -10031,7 +10479,7 @@
       "values": {
         "regular_budget": 4484000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4484000
@@ -10067,6 +10515,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 4484000
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 4484000,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -10081,7 +10537,7 @@
       "values": {
         "regular_budget": 4484000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4484000
@@ -10122,7 +10578,7 @@
       "values": {
         "regular_budget": 87270900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 87270900
@@ -10185,6 +10641,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 87270900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 87270900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -10199,7 +10663,7 @@
       "values": {
         "regular_budget": 58807700
       },
-      "completeness": "incomplete",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 58807700
@@ -10252,6 +10716,14 @@
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 58807700
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 58807700,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -10302,6 +10774,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 28745100
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 28745100,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -10343,6 +10823,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 24365600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 24365600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -10357,7 +10845,7 @@
       "values": {
         "regular_budget": 3775200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3775200
@@ -10398,7 +10886,7 @@
       "values": {
         "regular_budget": 7450100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 7450100
@@ -10439,7 +10927,7 @@
       "values": {
         "regular_budget": 1953800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1953800
@@ -10480,7 +10968,7 @@
       "values": {
         "regular_budget": 3494900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3494900
@@ -10521,7 +11009,7 @@
       "values": {
         "regular_budget": 3419700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3419700
@@ -10562,7 +11050,7 @@
       "values": {
         "regular_budget": 4271900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4271900
@@ -10603,7 +11091,7 @@
       "values": {
         "regular_budget": 1560000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1560000
@@ -10644,7 +11132,7 @@
       "values": {
         "regular_budget": 1888900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1888900
@@ -10685,7 +11173,7 @@
       "values": {
         "regular_budget": 930600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 930600
@@ -10726,7 +11214,7 @@
       "values": {
         "regular_budget": 12933400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 12933400
@@ -10762,6 +11250,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 12933400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 12933400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -10776,7 +11272,7 @@
       "values": {
         "regular_budget": 12933400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 12933400
@@ -10817,7 +11313,7 @@
       "values": {
         "regular_budget": 17129200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 17129200
@@ -10853,6 +11349,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 17129200
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 17129200,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -10867,7 +11371,7 @@
       "values": {
         "regular_budget": 17129200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 17129200
@@ -10908,7 +11412,7 @@
       "values": {
         "regular_budget": 28463200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 28463200
@@ -10944,6 +11448,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 28463200
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 28463200,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -10958,7 +11470,7 @@
       "values": {
         "regular_budget": 28463200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 28463200
@@ -11018,6 +11530,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 28463200
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 28463200,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -11032,7 +11552,7 @@
       "values": {
         "regular_budget": 7592100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 7592100
@@ -11073,7 +11593,7 @@
       "values": {
         "regular_budget": 16755200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 16755200
@@ -11114,7 +11634,7 @@
       "values": {
         "regular_budget": 4115900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4115900
@@ -11155,7 +11675,7 @@
       "values": {
         "regular_budget": 263121700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 263121700
@@ -11278,6 +11798,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 263121700
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 263121700,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -11292,7 +11820,7 @@
       "values": {
         "regular_budget": 85814100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 85814100
@@ -11328,6 +11856,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 85814100
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 85814100,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -11342,7 +11878,7 @@
       "values": {
         "regular_budget": 85814100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 85814100
@@ -11414,6 +11950,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 85814100
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 85814100,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -11428,7 +11972,7 @@
       "values": {
         "regular_budget": 1750000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1750000
@@ -11469,7 +12013,7 @@
       "values": {
         "regular_budget": 4978000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4978000
@@ -11510,7 +12054,7 @@
       "values": {
         "regular_budget": 74348700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 74348700
@@ -11537,6 +12081,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 74348700
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 74348700,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -11551,7 +12103,7 @@
       "values": {
         "regular_budget": 7747600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 7747600
@@ -11592,7 +12144,7 @@
       "values": {
         "regular_budget": 9691100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 9691100
@@ -11633,7 +12185,7 @@
       "values": {
         "regular_budget": 9131300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 9131300
@@ -11674,7 +12226,7 @@
       "values": {
         "regular_budget": 18699200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 18699200
@@ -11715,7 +12267,7 @@
       "values": {
         "regular_budget": 7106000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 7106000
@@ -11756,7 +12308,7 @@
       "values": {
         "regular_budget": 6899700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 6899700
@@ -11797,7 +12349,7 @@
       "values": {
         "regular_budget": 6632400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 6632400
@@ -11838,7 +12390,7 @@
       "values": {
         "regular_budget": 2347900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2347900
@@ -11879,7 +12431,7 @@
       "values": {
         "regular_budget": 6093500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 6093500
@@ -11920,7 +12472,7 @@
       "values": {
         "regular_budget": 4737400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4737400
@@ -11961,7 +12513,7 @@
       "values": {
         "regular_budget": 7469900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 7469900
@@ -11997,6 +12549,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 7469900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 7469900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -12011,7 +12571,7 @@
       "values": {
         "regular_budget": 7469900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 7469900
@@ -12059,6 +12619,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 7469900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 7469900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -12073,7 +12641,7 @@
       "values": {
         "regular_budget": 1568300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1568300
@@ -12114,7 +12682,7 @@
       "values": {
         "regular_budget": 5901600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5901600
@@ -12141,6 +12709,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 5901600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 5901600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -12155,7 +12731,7 @@
       "values": {
         "regular_budget": 3695900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3695900
@@ -12196,7 +12772,7 @@
       "values": {
         "regular_budget": 1157000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1157000
@@ -12237,7 +12813,7 @@
       "values": {
         "regular_budget": 1048700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1048700
@@ -12278,7 +12854,7 @@
       "values": {
         "regular_budget": 8271700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 8271700
@@ -12314,6 +12890,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 8271700
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 8271700,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -12328,7 +12912,7 @@
       "values": {
         "regular_budget": 8271700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 8271700
@@ -12400,6 +12984,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 8271700
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 8271700,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -12414,7 +13006,7 @@
       "values": {
         "regular_budget": 1540000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1540000
@@ -12455,7 +13047,7 @@
       "values": {
         "regular_budget": 6731700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 6731700
@@ -12506,6 +13098,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 6731700
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 6731700,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -12520,7 +13120,7 @@
       "values": {
         "regular_budget": 4566400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4566400
@@ -12561,7 +13161,7 @@
       "values": {
         "regular_budget": 841900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 841900
@@ -12602,7 +13202,7 @@
       "values": {
         "regular_budget": 1323400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1323400
@@ -12643,7 +13243,7 @@
       "values": {
         "regular_budget": 72644800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 72644800
@@ -12679,6 +13279,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 72644800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 72644800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -12693,7 +13301,7 @@
       "values": {
         "regular_budget": 72644800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 72644800
@@ -12765,6 +13373,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 72644800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 72644800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -12779,7 +13395,7 @@
       "values": {
         "regular_budget": 192600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 192600
@@ -12820,7 +13436,7 @@
       "values": {
         "regular_budget": 8238700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 8238700
@@ -12861,7 +13477,7 @@
       "values": {
         "regular_budget": 51284800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 51284800
@@ -12888,6 +13504,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 51284800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 51284800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -12902,7 +13526,7 @@
       "values": {
         "regular_budget": 8683400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 8683400
@@ -12943,7 +13567,7 @@
       "values": {
         "regular_budget": 13324800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 13324800
@@ -12984,7 +13608,7 @@
       "values": {
         "regular_budget": 14796100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 14796100
@@ -13025,7 +13649,7 @@
       "values": {
         "regular_budget": 9405500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 9405500
@@ -13066,7 +13690,7 @@
       "values": {
         "regular_budget": 5075000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5075000
@@ -13107,7 +13731,7 @@
       "values": {
         "regular_budget": 12928700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 12928700
@@ -13148,7 +13772,7 @@
       "values": {
         "regular_budget": 20174900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 20174900
@@ -13184,6 +13808,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 20174900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 20174900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -13198,7 +13830,7 @@
       "values": {
         "regular_budget": 20174900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 20174900
@@ -13248,7 +13880,7 @@
       "values": {
         "regular_budget": 22826800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 22826800
@@ -13284,6 +13916,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 22826800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 22826800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -13298,7 +13938,7 @@
       "values": {
         "regular_budget": 22826800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 22826800
@@ -13454,6 +14094,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 22826800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 22826800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -13468,7 +14116,7 @@
       "values": {
         "regular_budget": 8100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 8100
@@ -13509,7 +14157,7 @@
       "values": {
         "regular_budget": 4129600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4129600
@@ -13536,6 +14184,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 4129600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 4129600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -13550,7 +14206,7 @@
       "values": {
         "regular_budget": 3304200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3304200
@@ -13591,7 +14247,7 @@
       "values": {
         "regular_budget": 825400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 825400
@@ -13632,7 +14288,7 @@
       "values": {
         "regular_budget": 0
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 0
@@ -13659,6 +14315,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 0
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 0,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -13673,7 +14337,7 @@
       "values": {
         "regular_budget": 0
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 0
@@ -13714,7 +14378,7 @@
       "values": {
         "regular_budget": 17551000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 17551000
@@ -13813,6 +14477,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 17551000
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 17551000,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -13827,7 +14499,7 @@
       "values": {
         "regular_budget": 2181300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2181300
@@ -13868,7 +14540,7 @@
       "values": {
         "regular_budget": 1205800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1205800
@@ -13909,7 +14581,7 @@
       "values": {
         "regular_budget": 2654500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2654500
@@ -13950,7 +14622,7 @@
       "values": {
         "regular_budget": 4580300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4580300
@@ -13991,7 +14663,7 @@
       "values": {
         "regular_budget": 1780000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1780000
@@ -14032,7 +14704,7 @@
       "values": {
         "regular_budget": 2002000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2002000
@@ -14073,7 +14745,7 @@
       "values": {
         "regular_budget": 3147100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3147100
@@ -14114,7 +14786,7 @@
       "values": {
         "regular_budget": 1138100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1138100
@@ -14155,7 +14827,7 @@
       "values": {
         "regular_budget": 14095300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 14095300
@@ -14191,6 +14863,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 14095300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 14095300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -14205,7 +14885,7 @@
       "values": {
         "regular_budget": 14095300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 14095300
@@ -14277,6 +14957,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 14095300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 14095300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -14291,7 +14979,7 @@
       "values": {
         "regular_budget": 772600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 772600
@@ -14332,7 +15020,7 @@
       "values": {
         "regular_budget": 1922800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1922800
@@ -14373,7 +15061,7 @@
       "values": {
         "regular_budget": 9970400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 9970400
@@ -14400,6 +15088,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 9970400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 9970400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -14414,7 +15110,7 @@
       "values": {
         "regular_budget": 2350000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2350000
@@ -14455,7 +15151,7 @@
       "values": {
         "regular_budget": 2579000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2579000
@@ -14496,7 +15192,7 @@
       "values": {
         "regular_budget": 2501200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2501200
@@ -14537,7 +15233,7 @@
       "values": {
         "regular_budget": 2540200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2540200
@@ -14578,7 +15274,7 @@
       "values": {
         "regular_budget": 1429500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1429500
@@ -14619,7 +15315,7 @@
       "values": {
         "regular_budget": 21866600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 21866600
@@ -14655,6 +15351,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 21866600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 21866600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -14669,7 +15373,7 @@
       "values": {
         "regular_budget": 21866600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 21866600
@@ -14741,6 +15445,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 21866600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 21866600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -14755,7 +15467,7 @@
       "values": {
         "regular_budget": 827100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 827100
@@ -14796,7 +15508,7 @@
       "values": {
         "regular_budget": 718900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 718900
@@ -14837,7 +15549,7 @@
       "values": {
         "regular_budget": 19876800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 19876800
@@ -14864,6 +15576,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 19876800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 19876800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -14878,7 +15598,7 @@
       "values": {
         "regular_budget": 3713900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3713900
@@ -14919,7 +15639,7 @@
       "values": {
         "regular_budget": 734700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 734700
@@ -14960,7 +15680,7 @@
       "values": {
         "regular_budget": 2773200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2773200
@@ -15001,7 +15721,7 @@
       "values": {
         "regular_budget": 1305100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1305100
@@ -15042,7 +15762,7 @@
       "values": {
         "regular_budget": 1317700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1317700
@@ -15083,7 +15803,7 @@
       "values": {
         "regular_budget": 2999000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2999000
@@ -15124,7 +15844,7 @@
       "values": {
         "regular_budget": 1030100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1030100
@@ -15165,7 +15885,7 @@
       "values": {
         "regular_budget": 579500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 579500
@@ -15206,7 +15926,7 @@
       "values": {
         "regular_budget": 5423600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5423600
@@ -15247,7 +15967,7 @@
       "values": {
         "regular_budget": 443800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 443800
@@ -15288,7 +16008,7 @@
       "values": {
         "regular_budget": 9957600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 9957600
@@ -15324,6 +16044,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 9957600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 9957600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -15338,7 +16066,7 @@
       "values": {
         "regular_budget": 9957600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 9957600
@@ -15410,6 +16138,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 9957600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 9957600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -15424,7 +16160,7 @@
       "values": {
         "regular_budget": 109700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 109700
@@ -15465,7 +16201,7 @@
       "values": {
         "regular_budget": 973400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 973400
@@ -15506,7 +16242,7 @@
       "values": {
         "regular_budget": 8190600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 8190600
@@ -15533,6 +16269,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 8190600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 8190600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -15547,7 +16291,7 @@
       "values": {
         "regular_budget": 4677400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4677400
@@ -15588,7 +16332,7 @@
       "values": {
         "regular_budget": 3513200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3513200
@@ -15629,7 +16373,7 @@
       "values": {
         "regular_budget": 683900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 683900
@@ -15670,7 +16414,7 @@
       "values": {
         "regular_budget": 311894500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 311894500
@@ -15889,6 +16633,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 311894500
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 311894500,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -15903,7 +16655,7 @@
       "values": {
         "regular_budget": 78311200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 78311200
@@ -15944,6 +16696,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 78311200
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 78311200,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -15958,7 +16718,7 @@
       "values": {
         "regular_budget": 77273700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 77273700
@@ -15994,6 +16754,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 77273700
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 77273700,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -16008,7 +16776,7 @@
       "values": {
         "regular_budget": 497300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 497300
@@ -16049,7 +16817,7 @@
       "values": {
         "regular_budget": 8451600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 8451600
@@ -16090,7 +16858,7 @@
       "values": {
         "regular_budget": 37750300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 37750300
@@ -16117,6 +16885,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 37750300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 37750300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -16131,7 +16907,7 @@
       "values": {
         "regular_budget": 3335600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3335600
@@ -16172,7 +16948,7 @@
       "values": {
         "regular_budget": 3016000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3016000
@@ -16213,7 +16989,7 @@
       "values": {
         "regular_budget": 2659100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2659100
@@ -16254,7 +17030,7 @@
       "values": {
         "regular_budget": 4476800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4476800
@@ -16295,7 +17071,7 @@
       "values": {
         "regular_budget": 3025800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3025800
@@ -16336,7 +17112,7 @@
       "values": {
         "regular_budget": 980300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 980300
@@ -16377,7 +17153,7 @@
       "values": {
         "regular_budget": 15900200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 15900200
@@ -16452,6 +17228,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 15900200
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 15900200,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -16466,7 +17250,7 @@
       "values": {
         "regular_budget": 3103700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3103700
@@ -16507,7 +17291,7 @@
       "values": {
         "regular_budget": 2898000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2898000
@@ -16548,7 +17332,7 @@
       "values": {
         "regular_budget": 3838200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3838200
@@ -16589,7 +17373,7 @@
       "values": {
         "regular_budget": 2981400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2981400
@@ -16630,7 +17414,7 @@
       "values": {
         "regular_budget": 3078900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3078900
@@ -16671,7 +17455,7 @@
       "values": {
         "regular_budget": 1401300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1401300
@@ -16712,7 +17496,7 @@
       "values": {
         "regular_budget": 2955200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2955200
@@ -16753,7 +17537,7 @@
       "values": {
         "regular_budget": 30574500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 30574500
@@ -16794,7 +17578,7 @@
       "values": {
         "regular_budget": 1037500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1037500
@@ -16844,7 +17628,7 @@
       "values": {
         "regular_budget": 54312300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 54312300
@@ -16880,6 +17664,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 54312300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 54312300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -16894,7 +17686,7 @@
       "values": {
         "regular_budget": 54312300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 54312300
@@ -16966,6 +17758,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 54312300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 54312300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -16980,7 +17780,7 @@
       "values": {
         "regular_budget": 447900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 447900
@@ -17021,7 +17821,7 @@
       "values": {
         "regular_budget": 4014700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4014700
@@ -17062,7 +17862,7 @@
       "values": {
         "regular_budget": 28591400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 28591400
@@ -17089,6 +17889,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 28591400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 28591400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -17103,7 +17911,7 @@
       "values": {
         "regular_budget": 2927900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2927900
@@ -17144,7 +17952,7 @@
       "values": {
         "regular_budget": 3292700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3292700
@@ -17185,7 +17993,7 @@
       "values": {
         "regular_budget": 3371600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3371600
@@ -17226,7 +18034,7 @@
       "values": {
         "regular_budget": 2932200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2932200
@@ -17267,7 +18075,7 @@
       "values": {
         "regular_budget": 2811700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2811700
@@ -17308,7 +18116,7 @@
       "values": {
         "regular_budget": 3962900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3962900
@@ -17349,7 +18157,7 @@
       "values": {
         "regular_budget": 3089300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3089300
@@ -17390,7 +18198,7 @@
       "values": {
         "regular_budget": 4405100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4405100
@@ -17431,7 +18239,7 @@
       "values": {
         "regular_budget": 1798000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1798000
@@ -17472,7 +18280,7 @@
       "values": {
         "regular_budget": 21258300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 21258300
@@ -17513,7 +18321,7 @@
       "values": {
         "regular_budget": 35545800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 35545800
@@ -17549,6 +18357,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 35545800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 35545800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -17563,7 +18379,7 @@
       "values": {
         "regular_budget": 35545800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 35545800
@@ -17623,6 +18439,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 35545800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 35545800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -17637,7 +18461,7 @@
       "values": {
         "regular_budget": 4683300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4683300
@@ -17678,7 +18502,7 @@
       "values": {
         "regular_budget": 27651700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 27651700
@@ -17705,6 +18529,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 27651700
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 27651700,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -17719,7 +18551,7 @@
       "values": {
         "regular_budget": 5629000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5629000
@@ -17760,7 +18592,7 @@
       "values": {
         "regular_budget": 6727200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 6727200
@@ -17801,7 +18633,7 @@
       "values": {
         "regular_budget": 4780200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4780200
@@ -17842,7 +18674,7 @@
       "values": {
         "regular_budget": 2074000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2074000
@@ -17883,7 +18715,7 @@
       "values": {
         "regular_budget": 2180200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2180200
@@ -17924,7 +18756,7 @@
       "values": {
         "regular_budget": 3588100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3588100
@@ -17965,7 +18797,7 @@
       "values": {
         "regular_budget": 1498300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1498300
@@ -18006,7 +18838,7 @@
       "values": {
         "regular_budget": 1174700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1174700
@@ -18047,7 +18879,7 @@
       "values": {
         "regular_budget": 3210800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3210800
@@ -18088,7 +18920,7 @@
       "values": {
         "regular_budget": 59354500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 59354500
@@ -18124,6 +18956,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 59354500
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 59354500,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -18138,7 +18978,7 @@
       "values": {
         "regular_budget": 59354500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 59354500
@@ -18210,6 +19050,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 59354500
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 59354500,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -18224,7 +19072,7 @@
       "values": {
         "regular_budget": 756700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 756700
@@ -18265,7 +19113,7 @@
       "values": {
         "regular_budget": 3901000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3901000
@@ -18306,7 +19154,7 @@
       "values": {
         "regular_budget": 35498000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 35498000
@@ -18333,6 +19181,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 35498000
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 35498000,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -18347,7 +19203,7 @@
       "values": {
         "regular_budget": 3264300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3264300
@@ -18388,7 +19244,7 @@
       "values": {
         "regular_budget": 2653200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2653200
@@ -18429,7 +19285,7 @@
       "values": {
         "regular_budget": 4601400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4601400
@@ -18470,7 +19326,7 @@
       "values": {
         "regular_budget": 1994600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1994600
@@ -18511,7 +19367,7 @@
       "values": {
         "regular_budget": 1250800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1250800
@@ -18552,7 +19408,7 @@
       "values": {
         "regular_budget": 1820200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1820200
@@ -18593,7 +19449,7 @@
       "values": {
         "regular_budget": 2825500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2825500
@@ -18634,7 +19490,7 @@
       "values": {
         "regular_budget": 2267200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2267200
@@ -18675,7 +19531,7 @@
       "values": {
         "regular_budget": 1248400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1248400
@@ -18716,7 +19572,7 @@
       "values": {
         "regular_budget": 2967500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2967500
@@ -18757,7 +19613,7 @@
       "values": {
         "regular_budget": 5255300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5255300
@@ -18798,7 +19654,7 @@
       "values": {
         "regular_budget": 4428400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4428400
@@ -18839,7 +19695,7 @@
       "values": {
         "regular_budget": 921200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 921200
@@ -18880,7 +19736,7 @@
       "values": {
         "regular_budget": 19198800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 19198800
@@ -18921,7 +19777,7 @@
       "values": {
         "regular_budget": 44105900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 44105900
@@ -18957,6 +19813,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 44105900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 44105900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -18971,7 +19835,7 @@
       "values": {
         "regular_budget": 44105900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 44105900
@@ -19043,6 +19907,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 44105900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 44105900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -19057,7 +19929,7 @@
       "values": {
         "regular_budget": 107500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 107500
@@ -19098,7 +19970,7 @@
       "values": {
         "regular_budget": 5456100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5456100
@@ -19139,7 +20011,7 @@
       "values": {
         "regular_budget": 22628300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 22628300
@@ -19166,6 +20038,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 22628300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 22628300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -19180,7 +20060,7 @@
       "values": {
         "regular_budget": 3911700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3911700
@@ -19221,7 +20101,7 @@
       "values": {
         "regular_budget": 5094200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5094200
@@ -19262,7 +20142,7 @@
       "values": {
         "regular_budget": 4300200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4300200
@@ -19303,7 +20183,7 @@
       "values": {
         "regular_budget": 4312800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4312800
@@ -19344,7 +20224,7 @@
       "values": {
         "regular_budget": 2008500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2008500
@@ -19385,7 +20265,7 @@
       "values": {
         "regular_budget": 3000900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3000900
@@ -19426,7 +20306,7 @@
       "values": {
         "regular_budget": 15914000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 15914000
@@ -19467,7 +20347,7 @@
       "values": {
         "regular_budget": 40264800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 40264800
@@ -19616,6 +20496,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 40264800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 40264800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -19630,7 +20518,7 @@
       "values": {
         "regular_budget": 40264800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 40264800
@@ -19671,6 +20559,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 40264800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 40264800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -19685,7 +20581,7 @@
       "values": {
         "regular_budget": 16528500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 16528500
@@ -19712,6 +20608,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 16528500
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 16528500,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -19726,7 +20630,7 @@
       "values": {
         "regular_budget": 9132400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 9132400
@@ -19767,7 +20671,7 @@
       "values": {
         "regular_budget": 1861400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1861400
@@ -19808,7 +20712,7 @@
       "values": {
         "regular_budget": 1252300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1252300
@@ -19849,7 +20753,7 @@
       "values": {
         "regular_budget": 1043800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1043800
@@ -19890,7 +20794,7 @@
       "values": {
         "regular_budget": 2524000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2524000
@@ -19931,7 +20835,7 @@
       "values": {
         "regular_budget": 714600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 714600
@@ -19972,7 +20876,7 @@
       "values": {
         "regular_budget": 23736300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 23736300
@@ -19999,6 +20903,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 23736300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 23736300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -20013,7 +20925,7 @@
       "values": {
         "regular_budget": 8531700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 8531700
@@ -20054,7 +20966,7 @@
       "values": {
         "regular_budget": 3443000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3443000
@@ -20095,7 +21007,7 @@
       "values": {
         "regular_budget": 2335000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2335000
@@ -20136,7 +21048,7 @@
       "values": {
         "regular_budget": 4669300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4669300
@@ -20177,7 +21089,7 @@
       "values": {
         "regular_budget": 4757300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4757300
@@ -20218,7 +21130,7 @@
       "values": {
         "regular_budget": 249685900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 249685900
@@ -20293,6 +21205,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 249685900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 249685900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -20307,7 +21227,7 @@
       "values": {
         "regular_budget": 144889800
       },
-      "completeness": "incomplete",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 144889800
@@ -20348,6 +21268,14 @@
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 144889800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 144889800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -20362,7 +21290,7 @@
       "values": {
         "regular_budget": 144268900
       },
-      "completeness": "incomplete",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 144268900
@@ -20398,6 +21326,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 144268900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 144268900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -20475,6 +21411,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 121114800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 121114800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -20489,7 +21433,7 @@
       "values": {
         "regular_budget": 62754400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 62754400
@@ -20530,7 +21474,7 @@
       "values": {
         "regular_budget": 24159100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 24159100
@@ -20571,7 +21515,7 @@
       "values": {
         "regular_budget": 17738800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 17738800
@@ -20612,7 +21556,7 @@
       "values": {
         "regular_budget": 16462500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 16462500
@@ -20653,7 +21597,7 @@
       "values": {
         "regular_budget": 4789800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4789800
@@ -20694,7 +21638,7 @@
       "values": {
         "regular_budget": 10369000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 10369000
@@ -20735,7 +21679,7 @@
       "values": {
         "regular_budget": 7995300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 7995300
@@ -20776,7 +21720,7 @@
       "values": {
         "regular_budget": 0
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 0
@@ -20901,7 +21845,7 @@
       "values": {
         "regular_budget": 620900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 620900
@@ -20951,7 +21895,7 @@
       "values": {
         "regular_budget": 42212300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 42212300
@@ -20987,6 +21931,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 42212300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 42212300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -21001,7 +21953,7 @@
       "values": {
         "regular_budget": 42212300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 42212300
@@ -21061,6 +22013,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 42212300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 42212300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -21075,7 +22035,7 @@
       "values": {
         "regular_budget": 677300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 677300
@@ -21116,7 +22076,7 @@
       "values": {
         "regular_budget": 0
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 0
@@ -21157,7 +22117,7 @@
       "values": {
         "regular_budget": 41535000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 41535000
@@ -21198,7 +22158,7 @@
       "values": {
         "regular_budget": 44039700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 44039700
@@ -21234,6 +22194,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 44039700
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 44039700,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -21248,7 +22216,7 @@
       "values": {
         "regular_budget": 44039700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 44039700
@@ -21284,6 +22252,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 44039700
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 44039700,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -21298,7 +22274,7 @@
       "values": {
         "regular_budget": 44039700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 44039700
@@ -21339,7 +22315,7 @@
       "values": {
         "regular_budget": 18544100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 18544100
@@ -21368,6 +22344,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 18544100
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 18544100,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -21382,7 +22366,7 @@
       "values": {
         "regular_budget": 18544100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 18544100
@@ -21435,6 +22419,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 18544100
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 18544100,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -21449,7 +22441,7 @@
       "values": {
         "regular_budget": 4018600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4018600
@@ -21476,6 +22468,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 4018600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 4018600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -21490,7 +22490,7 @@
       "values": {
         "regular_budget": 1901700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1901700
@@ -21531,7 +22531,7 @@
       "values": {
         "regular_budget": 2116900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2116900
@@ -21572,7 +22572,7 @@
       "values": {
         "regular_budget": 0
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 0
@@ -21637,7 +22637,7 @@
       "values": {
         "regular_budget": 12786100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 12786100
@@ -21664,6 +22664,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 12786100
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 12786100,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -21678,7 +22686,7 @@
       "values": {
         "regular_budget": 653500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 653500
@@ -21719,7 +22727,7 @@
       "values": {
         "regular_budget": 0
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 0
@@ -21820,7 +22828,7 @@
       "values": {
         "regular_budget": 1341400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1341400
@@ -21861,7 +22869,7 @@
       "values": {
         "regular_budget": 3286800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3286800
@@ -21902,7 +22910,7 @@
       "values": {
         "regular_budget": 5722000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5722000
@@ -21943,7 +22951,7 @@
       "values": {
         "regular_budget": 1782400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1782400
@@ -21984,7 +22992,7 @@
       "values": {
         "regular_budget": 1739400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1739400
@@ -22025,7 +23033,7 @@
       "values": {
         "regular_budget": 312721600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 312721600
@@ -22112,6 +23120,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 312721600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 312721600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -22126,7 +23142,7 @@
       "values": {
         "regular_budget": 91351300
       },
-      "completeness": "incomplete",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 91351300
@@ -22162,6 +23178,14 @@
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 91351300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 91351300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -22272,6 +23296,14 @@
       "note": "Orthogonal sum of the generated wrapper's complete RB, OA and XB values.",
       "metricAmounts": {
         "proposed": 91351300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 91351300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -22286,7 +23318,7 @@
       "values": {
         "regular_budget": 68533200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 68533200
@@ -22354,6 +23386,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 4674300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 4674300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -22368,7 +23408,7 @@
       "values": {
         "regular_budget": 4362200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4362200
@@ -22409,7 +23449,7 @@
       "values": {
         "regular_budget": 312100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 312100
@@ -22477,6 +23517,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 13681500
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 13681500,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -22491,7 +23539,7 @@
       "values": {
         "regular_budget": 4003100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4003100
@@ -22532,7 +23580,7 @@
       "values": {
         "regular_budget": 6322200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 6322200
@@ -22573,7 +23621,7 @@
       "values": {
         "regular_budget": 3356200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3356200
@@ -22614,7 +23662,7 @@
       "values": {
         "regular_budget": 1715700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1715700
@@ -22655,7 +23703,7 @@
       "values": {
         "regular_budget": 1060500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1060500
@@ -22696,7 +23744,7 @@
       "values": {
         "regular_budget": 1686100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1686100
@@ -22737,7 +23785,7 @@
       "values": {
         "regular_budget": 52728900
       },
-      "completeness": "incomplete",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 52728900
@@ -22773,6 +23821,14 @@
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 52728900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 52728900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -22835,6 +23891,14 @@
       "note": "Orthogonal sum of the generated wrapper's complete RB, OA and XB values.",
       "metricAmounts": {
         "proposed": 52728900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 52728900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -22876,6 +23940,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 49521900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 49521900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -22890,7 +23962,7 @@
       "values": {
         "regular_budget": 23879300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 23879300
@@ -22931,7 +24003,7 @@
       "values": {
         "regular_budget": 15338500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 15338500
@@ -22972,7 +24044,7 @@
       "values": {
         "regular_budget": 10304100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 10304100
@@ -23013,7 +24085,7 @@
       "values": {
         "regular_budget": 3207000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3207000
@@ -23054,7 +24126,7 @@
       "values": {
         "regular_budget": 58250000
       },
-      "completeness": "incomplete",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 58250000
@@ -23090,6 +24162,14 @@
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 58250000
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 58250000,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -23260,6 +24340,14 @@
       "note": "Orthogonal sum of the generated wrapper's complete RB, OA and XB values.",
       "metricAmounts": {
         "proposed": 58250000
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 58250000,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -23325,6 +24413,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 14104100
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 14104100,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -23339,7 +24435,7 @@
       "values": {
         "regular_budget": 5843700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5843700
@@ -23380,7 +24476,7 @@
       "values": {
         "regular_budget": 1547300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1547300
@@ -23421,7 +24517,7 @@
       "values": {
         "regular_budget": 6713100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 6713100
@@ -23501,6 +24597,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 22184800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 22184800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -23515,7 +24619,7 @@
       "values": {
         "regular_budget": 18439800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 18439800
@@ -23556,7 +24660,7 @@
       "values": {
         "regular_budget": 3745000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3745000
@@ -23648,6 +24752,14 @@
       "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
       "metricAmounts": {
         "proposed": 8030300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 8030300,
+          "difference": 0,
+          "outcome": "unreconciled_difference",
+          "completeness": "incomplete"
+        }
       }
     },
     {
@@ -23662,7 +24774,7 @@
       "values": {
         "regular_budget": 3902000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3902000
@@ -23703,7 +24815,7 @@
       "values": {
         "regular_budget": 1278700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1278700
@@ -23744,7 +24856,7 @@
       "values": {
         "regular_budget": 2849600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2849600
@@ -23842,7 +24954,7 @@
       "values": {
         "regular_budget": 5785100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5785100
@@ -23883,7 +24995,7 @@
       "values": {
         "regular_budget": 6289800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 6289800
@@ -23924,7 +25036,7 @@
       "values": {
         "regular_budget": 1855900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1855900
@@ -23965,7 +25077,7 @@
       "values": {
         "regular_budget": 75231600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 75231600
@@ -24001,6 +25113,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 75231600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 75231600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -24015,7 +25135,7 @@
       "values": {
         "regular_budget": 75231600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 75231600
@@ -24063,6 +25183,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 75231600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 75231600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -24077,7 +25205,7 @@
       "values": {
         "regular_budget": 979400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 979400
@@ -24118,7 +25246,7 @@
       "values": {
         "regular_budget": 74252200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 74252200
@@ -24145,6 +25273,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 74252200
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 74252200,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -24159,7 +25295,7 @@
       "values": {
         "regular_budget": 5131900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5131900
@@ -24200,7 +25336,7 @@
       "values": {
         "regular_budget": 9303300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 9303300
@@ -24241,7 +25377,7 @@
       "values": {
         "regular_budget": 40410900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 40410900
@@ -24282,7 +25418,7 @@
       "values": {
         "regular_budget": 11457800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 11457800
@@ -24323,7 +25459,7 @@
       "values": {
         "regular_budget": 7948300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 7948300
@@ -24364,7 +25500,7 @@
       "values": {
         "regular_budget": 18502600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 18502600
@@ -24400,6 +25536,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 18502600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 18502600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -24414,7 +25558,7 @@
       "values": {
         "regular_budget": 18502600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 18502600
@@ -24462,6 +25606,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 18502600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 18502600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -24476,7 +25628,7 @@
       "values": {
         "regular_budget": 383700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 383700
@@ -24517,7 +25669,7 @@
       "values": {
         "regular_budget": 18118900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 18118900
@@ -24544,6 +25696,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 18118900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 18118900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -24558,7 +25718,7 @@
       "values": {
         "regular_budget": 2276200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2276200
@@ -24599,7 +25759,7 @@
       "values": {
         "regular_budget": 2936000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2936000
@@ -24640,7 +25800,7 @@
       "values": {
         "regular_budget": 9871600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 9871600
@@ -24681,7 +25841,7 @@
       "values": {
         "regular_budget": 3035100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3035100
@@ -24722,7 +25882,7 @@
       "values": {
         "regular_budget": 16657200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 16657200
@@ -24758,6 +25918,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 16657200
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 16657200,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -24772,7 +25940,7 @@
       "values": {
         "regular_budget": 16657200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 16657200
@@ -24820,6 +25988,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 16657200
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 16657200,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -24834,7 +26010,7 @@
       "values": {
         "regular_budget": 918500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 918500
@@ -24875,7 +26051,7 @@
       "values": {
         "regular_budget": 15738700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 15738700
@@ -24902,6 +26078,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 15738700
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 15738700,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -24916,7 +26100,7 @@
       "values": {
         "regular_budget": 3151200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3151200
@@ -24957,7 +26141,7 @@
       "values": {
         "regular_budget": 2805600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2805600
@@ -24998,7 +26182,7 @@
       "values": {
         "regular_budget": 8046100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 8046100
@@ -25039,7 +26223,7 @@
       "values": {
         "regular_budget": 1735800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1735800
@@ -25080,7 +26264,7 @@
       "values": {
         "regular_budget": 92747700
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 92747700
@@ -25143,6 +26327,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 92747700
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 92747700,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -25157,7 +26349,7 @@
       "values": {
         "regular_budget": 84811400
       },
-      "completeness": "incomplete",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 84811400
@@ -25186,6 +26378,14 @@
       "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
       "metricAmounts": {
         "proposed": 84811400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 84811400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -25200,7 +26400,7 @@
       "values": {
         "regular_budget": 84811400
       },
-      "completeness": "incomplete",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 84811400
@@ -25277,6 +26477,14 @@
       "note": "Orthogonal sum of the generated wrapper's complete RB, OA and XB values.",
       "metricAmounts": {
         "proposed": 84811400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 84811400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -25291,7 +26499,7 @@
       "values": {
         "regular_budget": 79104500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 79104500
@@ -25332,7 +26540,7 @@
       "values": {
         "regular_budget": 1685500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1685500
@@ -25373,7 +26581,7 @@
       "values": {
         "regular_budget": 3384100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3384100
@@ -25414,7 +26622,7 @@
       "values": {
         "regular_budget": 228000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 228000
@@ -25455,7 +26663,7 @@
       "values": {
         "regular_budget": 409300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 409300
@@ -25496,7 +26704,7 @@
       "values": {
         "regular_budget": 7936300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 7936300
@@ -25549,6 +26757,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 7936300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 7936300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -25563,7 +26779,7 @@
       "values": {
         "regular_budget": 4361900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 4361900
@@ -25613,7 +26829,7 @@
       "values": {
         "regular_budget": 2313300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2313300
@@ -25663,7 +26879,7 @@
       "values": {
         "regular_budget": 1261100
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1261100
@@ -25713,7 +26929,7 @@
       "values": {
         "regular_budget": 29727000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 29727000
@@ -25740,6 +26956,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 29727000
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 29727000,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -25754,7 +26978,7 @@
       "values": {
         "regular_budget": 29727000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 29727000
@@ -25783,6 +27007,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 29727000
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 29727000,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -25797,7 +27029,7 @@
       "values": {
         "regular_budget": 29727000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 29727000
@@ -26174,6 +27406,14 @@
       "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
       "metricAmounts": {
         "proposed": 29727000
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 29727000,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -26188,7 +27428,7 @@
       "values": {
         "regular_budget": 13267600
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 13267600
@@ -26299,6 +27539,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 13267600
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 13267600,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -26313,7 +27561,7 @@
       "values": {
         "regular_budget": 2450000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2450000
@@ -26354,7 +27602,7 @@
       "values": {
         "regular_budget": 3934300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 3934300
@@ -26395,7 +27643,7 @@
       "values": {
         "regular_budget": 1290000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1290000
@@ -26436,7 +27684,7 @@
       "values": {
         "regular_budget": 1236800
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1236800
@@ -26477,7 +27725,7 @@
       "values": {
         "regular_budget": 1302000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1302000
@@ -26518,7 +27766,7 @@
       "values": {
         "regular_budget": 842000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 842000
@@ -26559,7 +27807,7 @@
       "values": {
         "regular_budget": 1019500
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1019500
@@ -26600,7 +27848,7 @@
       "values": {
         "regular_budget": 1193000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1193000
@@ -26641,7 +27889,7 @@
       "values": {
         "regular_budget": 5701400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 5701400
@@ -26740,6 +27988,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 5701400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 5701400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -26754,7 +28010,7 @@
       "values": {
         "regular_budget": 2965200
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2965200
@@ -26795,7 +28051,7 @@
       "values": {
         "regular_budget": 1766900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1766900
@@ -26836,7 +28092,7 @@
       "values": {
         "regular_budget": 44300
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 44300
@@ -26877,7 +28133,7 @@
       "values": {
         "regular_budget": 280000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 280000
@@ -26918,7 +28174,7 @@
       "values": {
         "regular_budget": 120000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 120000
@@ -26959,7 +28215,7 @@
       "values": {
         "regular_budget": 165000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 165000
@@ -27000,7 +28256,7 @@
       "values": {
         "regular_budget": 360000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 360000
@@ -27041,7 +28297,7 @@
       "values": {
         "regular_budget": 10758000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 10758000
@@ -27164,6 +28420,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 10758000
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 10758000,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -27178,7 +28442,7 @@
       "values": {
         "regular_budget": 2672000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 2672000
@@ -27219,7 +28483,7 @@
       "values": {
         "regular_budget": 1000000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1000000
@@ -27260,7 +28524,7 @@
       "values": {
         "regular_budget": 950000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 950000
@@ -27301,7 +28565,7 @@
       "values": {
         "regular_budget": 861000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 861000
@@ -27342,7 +28606,7 @@
       "values": {
         "regular_budget": 1828000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1828000
@@ -27383,7 +28647,7 @@
       "values": {
         "regular_budget": 930000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 930000
@@ -27424,7 +28688,7 @@
       "values": {
         "regular_budget": 490000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 490000
@@ -27465,7 +28729,7 @@
       "values": {
         "regular_budget": 1100000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 1100000
@@ -27506,7 +28770,7 @@
       "values": {
         "regular_budget": 927000
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 927000
@@ -27547,7 +28811,7 @@
       "values": {
         "regular_budget": 0
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 0
@@ -27634,6 +28898,14 @@
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
         "proposed": 0
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 0,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -27648,7 +28920,7 @@
       "values": {
         "regular_budget": 0
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 0
@@ -27689,7 +28961,7 @@
       "values": {
         "regular_budget": 0
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 0
@@ -27730,7 +29002,7 @@
       "values": {
         "regular_budget": 0
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 0
@@ -27771,7 +29043,7 @@
       "values": {
         "regular_budget": 0
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 0
@@ -27812,7 +29084,7 @@
       "values": {
         "regular_budget": 0
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 0
@@ -27853,7 +29125,7 @@
       "values": {
         "regular_budget": 0
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 0
@@ -27894,7 +29166,7 @@
       "values": {
         "regular_budget": 15199400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 15199400
@@ -27921,6 +29193,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 15199400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 15199400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -27935,7 +29215,7 @@
       "values": {
         "regular_budget": 15199400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 15199400
@@ -27964,6 +29244,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 15199400
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 15199400,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -27978,7 +29266,7 @@
       "values": {
         "regular_budget": 15199400
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 15199400
@@ -28021,7 +29309,7 @@
       "values": {
         "regular_budget": 283622900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 283622900
@@ -28048,6 +29336,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 283622900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 283622900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -28062,7 +29358,7 @@
       "values": {
         "regular_budget": 283622900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 283622900
@@ -28091,6 +29387,14 @@
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
         "proposed": 283622900
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 283622900,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
+        }
       }
     },
     {
@@ -28105,7 +29409,7 @@
       "values": {
         "regular_budget": 283622900
       },
-      "completeness": "not_published",
+      "completeness": "complete",
       "metricValues": {
         "proposed": {
           "regular_budget": 283622900

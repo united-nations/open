@@ -28,7 +28,7 @@ export default function PeacekeepingBudgetPage() {
       <PageHeading
         id="peacekeeping-spending"
         title="How do peacekeeping missions spend funds?"
-        description="Peacekeeping budget expenditure by mission, location and cost class."
+        description="Explore expenditure, approved budgets and proposals by mission, location and cost class. Financial years run from July to June."
       />
       <PageBody>
         <PeacekeepingBudgetView />

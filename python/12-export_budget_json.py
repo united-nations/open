@@ -75,8 +75,8 @@ producer explicitly flags the same signed source discrepancy.
 The USD expenditure view supplies the stable hierarchy. Approved/prior-year
 estimates and proposed/current-year estimates are projected onto the exact same
 source rows, with generated roll-ups filled from their mapped children. The CHF
-view of PPB 2027 and the peacekeeping appropriation/proposed views remain out of
-scope for this programme-budget page.
+view of PPB 2027 remains out of scope. Peacekeeping exports expenditure,
+appropriation (labelled approved) and proposed views separately.
 """
 import copy
 import csv
@@ -90,6 +90,7 @@ import sys
 from pathlib import Path
 
 from domain_taxonomies import load_secretariat_taxonomies
+from budget_source_exceptions import correct_ola_year, apply_annual_exceptions
 
 SRC = Path("data/references/programme-budget-data-financial-v1.8")
 OUT = Path("public/data")
@@ -385,6 +386,7 @@ def metric_value_resolver(financial: dict | None, view: dict):
     if not financial:
         return (lambda _node, _funding, _metric: None), (lambda _node, _funding, _metric: [])
 
+    correct_ola_year(financial)
     edition = int(view["lens"]["edition"])
     citations = {row["citationId"]: row for row in financial["citations"]}
     observations_by_row: dict[tuple[str, int], list[dict]] = {}
@@ -1189,16 +1191,18 @@ def build_pko(cycle: dict, view: dict) -> dict:
     root = next(n for n in nodes if n["parentId"] is None)
     coverage = view["coverage"]
     warning = view["scopeWarning"]
-    shown, referenced = coverage["missionsDisplayed"], coverage["missionsInCycleReference"]
-    if shown < referenced:
-        warning += (f" {referenced - shown} of the {referenced} missions in this "
-                    f"cycle have no per-mission breakdown and are not drawn.")
+    missing = coverage.get("missingCanonicalDetail", [])
+    unavailable = coverage.get("noPublishedValueForLens", [])
+    if missing:
+        warning += f" Mission detail is unavailable for {', '.join(missing)}; the total covers only displayed missions."
+    if unavailable:
+        warning += f" No amount is published for {', '.join(unavailable)} for this stage and financial year."
 
     return {
         "meta": {
             "stream": "pko",
             "title": "Peacekeeping operations",
-            "label": f"Peacekeeping expenditure {fiscal_year} (USD)",
+            "label": f"Peacekeeping {view['lens']['measure']} {fiscal_year} (USD)",
             "cycle": view["lens"]["cycle"],
             "measure": view["lens"]["measure"],
             "year": int(fiscal_year.split("/")[0]),
@@ -1207,7 +1211,7 @@ def build_pko(cycle: dict, view: dict) -> dict:
             "total": root["amount"],
             "costClasses": COST_CLASS_LABELS,
             "missionNames": MISSION_NAMES,
-            "partial": False,
+            "partial": coverage.get("completeness") == "incomplete",
             "scopeLabel": view["scopeLabel"],
             "scopeWarning": warning,
             "coverage": coverage,
@@ -1426,6 +1430,7 @@ def export() -> None:
         payload = build_ppb(view, financial)
         for metric in ("proposed", "approved", "expenditure"):
             annual = annual_metric_payload(payload, metric)
+            apply_annual_exceptions(annual, metric)
             year = annual["meta"]["year"]
             if metric == "expenditure" and year < 2019:
                 continue
@@ -1450,18 +1455,22 @@ def export() -> None:
             print(f"  - not drawn: {o['label']} — {o['reason']}"
                   f"{' It publishes ' + values + '.' if values else ''}")
 
-    for cycle in PKO_CYCLES:
+    # Later editions supersede earlier observations for the same fiscal lens.
+    for cycle in sorted(PKO_CYCLES):
         cycle_data = json.loads((SRC / "pko" / f"{cycle}.json").read_text())
-        views = [v for v in cycle_data["treemapViews"]
-                 if v["lens"]["measure"] == "expenditure"]
-        assert len(views) == 1, f"PKO {cycle}: expected 1 expenditure view"
-        payload = build_pko(cycle_data, views[0])
-        name = f"budget-pko-{payload['meta']['year']}"
-        check_tree(payload, name)
-        (OUT / f"{name}.json").write_text(json.dumps(payload, indent=2))
-        print(f"{name}.json ({payload['meta']['fiscalYear']}): "
-              f"{len(payload['nodes'])} nodes, "
-              f"${payload['meta']['total'] / 1e9:.2f}B ✓")
+        for view in cycle_data["treemapViews"]:
+            measure = view["lens"]["measure"]
+            if measure not in ("expenditure", "appropriation", "proposed"):
+                continue
+            payload = build_pko(cycle_data, view)
+            metric = "approved" if measure == "appropriation" else measure
+            name = f"budget-pko-{metric}-{payload['meta']['year']}"
+            check_tree(payload, name)
+            (OUT / f"{name}.json").write_text(json.dumps(payload, indent=2))
+            if metric == "expenditure":
+                (OUT / f"budget-pko-{payload['meta']['year']}.json").write_text(json.dumps(payload, indent=2))
+            print(f"{name}: {len(payload['nodes'])} nodes, ${payload['meta']['total'] / 1e9:.2f}B")
+
 
 
 if __name__ == "__main__":

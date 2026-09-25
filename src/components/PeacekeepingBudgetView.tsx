@@ -42,6 +42,11 @@ import type {
   SecretariatMissionLocation,
 } from "@/types";
 
+import {
+  PEACEKEEPING_METRICS,
+  type PeacekeepingMetric,
+} from "@/lib/peacekeepingBudget";
+
 type PointKind = "pko" | "support_office" | "support";
 
 const FIELD_COLOR = "#009edb";
@@ -83,7 +88,8 @@ function pointKind(
 ): PointKind {
   if (location?.budgetCategory === "field_mission") return "pko";
   if (location?.budgetCategory === "support_center") return "support";
-  if (location?.budgetCategory === "support_office" || code === "UNSOS") return "support_office";
+  if (location?.budgetCategory === "support_office" || code === "UNSOS")
+    return "support_office";
   if (location?.kind === "support") return "support";
   if (code === "RSCE" || code === "UNGSC" || code === "UNLB") {
     return "support";
@@ -98,6 +104,7 @@ interface CostItem {
 }
 
 interface MissionRow {
+  metricLabel: string;
   references: BudgetNodeSource[];
   classReferences: Record<CostClassKey, BudgetNodeSource[]>;
   code: string;
@@ -157,6 +164,12 @@ function buildRows(data: BudgetData, entities: SecretariatEntitiesData) {
     ) as Record<CostClassKey, CostItem[]>;
     return {
       code,
+      metricLabel:
+        data.meta.measure === "appropriation"
+          ? "Approved budget"
+          : data.meta.measure === "proposed"
+            ? "Proposed budget"
+            : "Expenditure",
       references: collectBudgetNodeSources(mission),
       classReferences,
       name: mission.label,
@@ -182,7 +195,12 @@ interface MapPoint {
 }
 
 function MissionTooltip({ mission }: { mission: MissionRow }) {
-  const color = mission.kind === "support_office" ? "var(--color-un-purple)" : mission.kind === "support" ? SUPPORT_COLOR : FIELD_COLOR;
+  const color =
+    mission.kind === "support_office"
+      ? "var(--color-un-purple)"
+      : mission.kind === "support"
+        ? SUPPORT_COLOR
+        : FIELD_COLOR;
   return (
     <FinancialTooltip
       title={mission.name}
@@ -191,7 +209,7 @@ function MissionTooltip({ mission }: { mission: MissionRow }) {
         { label: mission.code },
       ]}
       context={missionLocationLabel(mission.location)}
-      total={{ label: "Spending", value: formatBudget(mission.total) }}
+      total={{ label: mission.metricLabel, value: formatBudget(mission.total) }}
       rows={COST_CLASS_KEYS.map((key) => ({
         label: COST_CLASS_SHORT[key] ?? key,
         value:
@@ -236,7 +254,12 @@ function MissionCostClassTreemap({
           key: costClass,
           label: COST_CLASS_SHORT[costClass] ?? costClass,
           value: amount,
-          color: mission.kind === "support_office" ? "var(--color-un-purple)" : mission.kind === "support" ? SUPPORT_COLOR : FIELD_COLOR,
+          color:
+            mission.kind === "support_office"
+              ? "var(--color-un-purple)"
+              : mission.kind === "support"
+                ? SUPPORT_COLOR
+                : FIELD_COLOR,
           data: { mission, costClass },
           onActivate: () => onOpen(mission.code),
         },
@@ -247,7 +270,12 @@ function MissionCostClassTreemap({
         key: mission.code,
         label: mission.code,
         value: mission.total,
-        color: mission.kind === "support_office" ? "var(--color-un-purple)" : mission.kind === "support" ? SUPPORT_COLOR : FIELD_COLOR,
+        color:
+          mission.kind === "support_office"
+            ? "var(--color-un-purple)"
+            : mission.kind === "support"
+              ? SUPPORT_COLOR
+              : FIELD_COLOR,
         data: mission,
         leaves,
       } satisfies GroupedTreemapRow<
@@ -278,17 +306,44 @@ function MissionCostClassTreemap({
 }
 
 export function PeacekeepingBudgetView() {
-  const years = useYearRanges().budgetPko;
-  const [year, setYear] = useState(years.default);
+  const ranges = useYearRanges();
+  const [metric, setMetric] = useState<PeacekeepingMetric>("expenditure");
+  const years =
+    metric === "approved"
+      ? ranges.budgetPkoApproved
+      : metric === "proposed"
+        ? ranges.budgetPkoProposed
+        : ranges.budgetPko;
+  const [year, setYear] = useState(ranges.budgetPko.default);
+  const metricLabel = PEACEKEEPING_METRICS[metric];
+  const changeMetric = (next: PeacekeepingMetric) => {
+    const nextYears =
+      next === "approved"
+        ? ranges.budgetPkoApproved
+        : next === "proposed"
+          ? ranges.budgetPkoProposed
+          : ranges.budgetPko;
+    setMetric(next);
+    setYear(nextYears.years.includes(year) ? year : nextYears.default);
+    setMapTooltip(null);
+  };
   const [budget, setBudget] = useState<BudgetData | null>(null);
   const [entities, setEntities] = useState<SecretariatEntitiesData | null>(
     null,
   );
-  const [error, setError] = useState<string | null>(null);
+  const [failure, setFailure] = useState<{
+    key: string;
+    message: string;
+  } | null>(null);
+  const requestKey = `${metric}-${year}`;
+  const error =
+    failure?.key === requestKey || failure?.key === "locations"
+      ? failure.message
+      : null;
   const [showMap, setShowMap] = useState(true);
   const [query, setQuery] = useState("");
   const [hiddenKinds, setHiddenKinds] = useState<PointKind[]>([]);
-  const [selectedCode, setSelectedCode] = useState<string | null>(null);
+  const [openedCode, setSelectedCode] = useState<string | null>(null);
   const [mapTooltip, setMapTooltip] = useState<{
     mission: MissionRow;
     x: number;
@@ -304,11 +359,10 @@ export function PeacekeepingBudgetView() {
     tooltipCloseTimer.current = setTimeout(() => setMapTooltip(null), 180);
   };
   useEffect(() => {
-    setMapTooltip(null);
     return () => {
       if (tooltipCloseTimer.current) clearTimeout(tooltipCloseTimer.current);
     };
-  }, [year, showMap, selectedCode]);
+  }, []);
 
   const [pending, setPending] = useDeepLink({
     hashPrefix: "pko-mission",
@@ -316,10 +370,15 @@ export function PeacekeepingBudgetView() {
     onNavigateAway: () => setSelectedCode(null),
   });
 
-  const openMission = useCallback((code: string) => {
-    setSelectedCode(code);
-    replaceToSidebar("pko-mission", code);
-  }, []);
+  const openMission = useCallback(
+    (code: string) => {
+      setMapTooltip(null);
+      setPending(null);
+      setSelectedCode(code);
+      replaceToSidebar("pko-mission", code);
+    },
+    [setPending, setMapTooltip, setSelectedCode],
+  );
 
   useEffect(() => {
     let active = true;
@@ -328,7 +387,11 @@ export function PeacekeepingBudgetView() {
         if (active) setEntities(data);
       })
       .catch(() => {
-        if (active) setError("Failed to load mission locations.");
+        if (active)
+          setFailure({
+            key: "locations",
+            message: "Failed to load mission locations.",
+          });
       });
     return () => {
       active = false;
@@ -337,32 +400,36 @@ export function PeacekeepingBudgetView() {
 
   useEffect(() => {
     let active = true;
-    loadYearData<BudgetData>("budget-pko", year)
+    loadYearData<BudgetData>(`budget-pko-${metric}`, year)
       .then((data) => {
         if (active) {
-          setError(null);
+          setFailure(null);
           setBudget(data);
         }
       })
       .catch(() => {
-        if (active) setError(`Failed to load ${fiscalYearLabel(year)} data.`);
+        if (active)
+          setFailure({
+            key: requestKey,
+            message: `Failed to load ${PEACEKEEPING_METRICS[metric].toLowerCase()} for ${fiscalYearLabel(year)}.`,
+          });
       });
     return () => {
       active = false;
     };
-  }, [year]);
+  }, [year, metric, requestKey]);
 
-  const current = budget;
+  const current =
+    budget?.meta.year === year &&
+    budget.meta.measure === (metric === "approved" ? "appropriation" : metric)
+      ? budget
+      : null;
   const rows = useMemo(() => {
     if (!current || !entities) return [];
     return buildRows(current, entities);
   }, [current, entities]);
 
-  useEffect(() => {
-    if (!pending) return;
-    setSelectedCode(pending);
-    setPending(null);
-  }, [pending, setPending]);
+  const selectedCode = pending ?? openedCode;
 
   const visibleRows = useMemo(
     () =>
@@ -375,21 +442,29 @@ export function PeacekeepingBudgetView() {
       ),
     [rows, hiddenKinds, query],
   );
-  const missionFilters = (["pko", "support_office", "support"] as const).map((kind) => (
-    <LegendLabel
-      key={kind}
-      label={KIND_LABEL[kind]}
-      color={kind === "support_office" ? "var(--color-un-purple)" : kind === "pko" ? FIELD_COLOR : SUPPORT_COLOR}
-      selected={!hiddenKinds.includes(kind)}
-      onToggle={() =>
-        setHiddenKinds((current) =>
-          current.includes(kind)
-            ? current.filter((item) => item !== kind)
-            : [...current, kind],
-        )
-      }
-    />
-  ));
+  const missionFilters = (["pko", "support_office", "support"] as const).map(
+    (kind) => (
+      <LegendLabel
+        key={kind}
+        label={KIND_LABEL[kind]}
+        color={
+          kind === "support_office"
+            ? "var(--color-un-purple)"
+            : kind === "pko"
+              ? FIELD_COLOR
+              : SUPPORT_COLOR
+        }
+        selected={!hiddenKinds.includes(kind)}
+        onToggle={() =>
+          setHiddenKinds((current) =>
+            current.includes(kind)
+              ? current.filter((item) => item !== kind)
+              : [...current, kind],
+          )
+        }
+      />
+    ),
+  );
 
   const points = useMemo<MapPoint[]>(() => {
     return visibleRows
@@ -404,7 +479,7 @@ export function PeacekeepingBudgetView() {
       }));
   }, [visibleRows]);
 
-  if (!current || !entities) {
+  if (!entities) {
     return (
       <div className="flex h-[36rem] items-center justify-center bg-gray-50 text-gray-500">
         {error ?? "Loading peacekeeping budget…"}
@@ -421,8 +496,8 @@ export function PeacekeepingBudgetView() {
   return (
     <div className="relative flex w-full flex-col">
       <DelayedChartLoading
-        pending={budget?.meta.year !== year}
-        requestKey={year}
+        pending={!current && !error}
+        requestKey={`${metric}-${year}`}
       />
       <ChartFrame
         header={
@@ -431,12 +506,34 @@ export function PeacekeepingBudgetView() {
               <YearSlider
                 years={years.years}
                 selectedYear={year}
-                onChange={setYear}
+                onChange={(next) => {
+                  setYear(next);
+                  setMapTooltip(null);
+                }}
                 formatLabel={fiscalYearLabel}
               />
             }
             controls={
               <>
+                <label className="flex items-center gap-2 text-sm">
+                  Budget stage
+                  <select
+                    aria-label="Peacekeeping budget stage"
+                    value={metric}
+                    onChange={(event) =>
+                      changeMetric(event.target.value as PeacekeepingMetric)
+                    }
+                    className="rounded border border-gray-300 bg-white px-2 py-1"
+                  >
+                    {Object.entries(PEACEKEEPING_METRICS).map(
+                      ([value, label]) => (
+                        <option key={value} value={value}>
+                          {label}
+                        </option>
+                      ),
+                    )}
+                  </select>
+                </label>
                 <div
                   role="group"
                   aria-label="Mission types"
@@ -452,7 +549,10 @@ export function PeacekeepingBudgetView() {
                     { value: "map", label: "Map" },
                   ]}
                   value={showMap ? "map" : "treemap"}
-                  onValueChange={(value) => setShowMap(value === "map")}
+                  onValueChange={(value) => {
+                    setShowMap(value === "map");
+                    setMapTooltip(null);
+                  }}
                 />
               </>
             }
@@ -466,10 +566,17 @@ export function PeacekeepingBudgetView() {
             summaries={[
               {
                 key: "total",
-                label: query || hiddenKinds.length ? "Matching total" : "Total",
-                value: formatBudget(
-                  visibleRows.reduce((sum, row) => sum + row.total, 0),
-                ),
+                label:
+                  query || hiddenKinds.length
+                    ? `Matching ${metricLabel.toLowerCase()}`
+                    : metricLabel,
+                value: current
+                  ? formatBudget(
+                      query || hiddenKinds.length
+                        ? visibleRows.reduce((sum, row) => sum + row.total, 0)
+                        : current.meta.total,
+                    )
+                  : "Unavailable",
               },
             ]}
           />
@@ -496,6 +603,11 @@ export function PeacekeepingBudgetView() {
             hint="Click on a mission or service centre to explore details"
             details={
               <div className="space-y-2">
+                <p>{current?.meta.scopeWarning}</p>
+                <p>
+                  Approved budget means the appropriation printed in the source
+                  report. Fiscal years run from July to June.
+                </p>
                 <h4 className="font-medium">Map placement and boundaries</h4>
                 <p>{entities.map_notes.placement}</p>
                 <p>{entities.map_notes.boundary_disclaimer}</p>
@@ -504,6 +616,16 @@ export function PeacekeepingBudgetView() {
           />
         }
       >
+        {!current && (
+          <p role="status" className="p-6">
+            {error ?? "Loading peacekeeping budget…"}
+          </p>
+        )}
+        {current?.meta.scopeWarning && (
+          <p className="px-4 py-2 text-sm text-gray-600">
+            {current.meta.scopeWarning}
+          </p>
+        )}
         <section className="order-1" hidden={showMap}>
           <MissionCostClassTreemap rows={visibleRows} onOpen={openMission} />
         </section>
@@ -543,7 +665,7 @@ export function PeacekeepingBudgetView() {
                   (typeof point?.label === "string" ? point.label : undefined);
                 if (code) openMission(code);
               }}
-              ariaLabel={`Map of peacekeeping budget expenditure in ${current.meta.fiscalYear}`}
+              ariaLabel={`Map of peacekeeping ${metricLabel.toLowerCase()} in ${current?.meta.fiscalYear}`}
               onSeriesMouseOver={(point: MapPoint | undefined) => {
                 if (!point) {
                   closeMapTooltipSoon();
@@ -601,10 +723,11 @@ export function PeacekeepingBudgetView() {
           </div>,
           document.body,
         )}
-      {selectedCode && (
+      {selectedCode && current && (
         <div className="order-4">
           <PeacekeepingMissionSidebar
-            key={selectedCode}
+            key={`${selectedCode}-${metric}`}
+            metric={metric}
             code={selectedCode}
             name={selectedRow?.name ?? selectedLocation?.name ?? selectedCode}
             locationLabel={
@@ -621,6 +744,7 @@ export function PeacekeepingBudgetView() {
               .filter((node) => node.mission === selectedCode)
               .flatMap((node) => collectBudgetNodeSources(node))}
             onClose={() => {
+              setPending(null);
               setSelectedCode(null);
               clearSidebarHash();
             }}

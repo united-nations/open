@@ -32,6 +32,11 @@ import { formatBudget } from "@/lib/entities";
 import { useYearRanges } from "@/lib/useYearRanges";
 import type { BudgetData, BudgetNodeSource } from "@/types";
 
+import {
+  PEACEKEEPING_METRICS,
+  type PeacekeepingMetric,
+} from "@/lib/peacekeepingBudget";
+
 const COST_CLASS_TREND_SERIES: FinancingSeries[] = COST_CLASS_KEYS.map(
   (key) => ({
     key,
@@ -47,6 +52,7 @@ interface CostItem {
 }
 
 export interface PeacekeepingMissionSidebarProps {
+  metric: PeacekeepingMetric;
   code: string;
   name: string;
   locationLabel: string | null;
@@ -69,6 +75,7 @@ function emptyClasses(): Record<CostClassKey, number> {
 }
 
 function CostClassBreakdownRow({
+  metricLabel,
   label,
   amount,
   lines,
@@ -76,6 +83,7 @@ function CostClassBreakdownRow({
   color,
   references,
 }: {
+  metricLabel: string;
   references: BudgetNodeSource[];
   label: string;
   amount: number | null;
@@ -107,7 +115,9 @@ function CostClassBreakdownRow({
     <div className="space-y-2">
       <p className="text-xs text-gray-500">{kind}</p>
       <p className="text-sm font-medium">{title}</p>
-      <p>Expenditure: {value === null ? "Unavailable" : formatBudget(value)}</p>
+      <p>
+        {metricLabel}: {value === null ? "Unavailable" : formatBudget(value)}
+      </p>
       <SourceReferenceLinks references={sources} />
     </div>
   );
@@ -144,6 +154,7 @@ function CostClassBreakdownRow({
 }
 
 export function PeacekeepingMissionSidebar({
+  metric,
   code,
   name,
   locationLabel,
@@ -159,7 +170,15 @@ export function PeacekeepingMissionSidebar({
   const [visible, setVisible] = useState(false);
   const [closing, setClosing] = useState(false);
   const focusTrapRef = useFocusTrap(true);
-  const years = useYearRanges().budgetPko.years;
+  const ranges = useYearRanges();
+  const years = (
+    metric === "approved"
+      ? ranges.budgetPkoApproved
+      : metric === "proposed"
+        ? ranges.budgetPkoProposed
+        : ranges.budgetPko
+  ).years;
+  const metricLabel = PEACEKEEPING_METRICS[metric];
   const [trendSources, setTrendSources] = useState<
     Record<string, Partial<Record<CostClassKey, BudgetNodeSource[]>>>
   >({});
@@ -197,7 +216,7 @@ export function PeacekeepingMissionSidebar({
     let active = true;
     Promise.all(
       years.map((trendYear) =>
-        loadYearData<BudgetData>("budget-pko", trendYear)
+        loadYearData<BudgetData>(`budget-pko-${metric}`, trendYear)
           .then((data) => ({ year: trendYear, data }))
           .catch(() => ({ year: trendYear, data: null })),
       ),
@@ -224,28 +243,34 @@ export function PeacekeepingMissionSidebar({
         ),
       );
       setTrend(
-        rows.map(({ year: trendYear, data }) => {
-          const amounts = emptyClasses();
-          if (data) {
-            const classNodes = data.nodes.filter(
-              (node) => node.tier === "class" && node.mission === code,
-            );
-            for (const node of classNodes) {
-              const key = node.costClass as CostClassKey;
-              if (key in amounts) amounts[key] += node.amount;
+        rows
+          .filter(({ data }) =>
+            data?.nodes.some(
+              (node) => node.tier === "mission" && node.code === code,
+            ),
+          )
+          .map(({ year: trendYear, data }) => {
+            const amounts = emptyClasses();
+            if (data) {
+              const classNodes = data.nodes.filter(
+                (node) => node.tier === "class" && node.mission === code,
+              );
+              for (const node of classNodes) {
+                const key = node.costClass as CostClassKey;
+                if (key in amounts) amounts[key] += node.amount;
+              }
             }
-          }
-          return {
-            year: fiscalYearLabel(trendYear),
-            ...amounts,
-          };
-        }),
+            return {
+              year: fiscalYearLabel(trendYear),
+              ...amounts,
+            };
+          }),
       );
     });
     return () => {
       active = false;
     };
-  }, [code, years]);
+  }, [code, years, metric]);
 
   const classRows = COST_CLASS_KEYS.map((key) => {
     const amount = classes?.[key] ?? null;
@@ -289,7 +314,7 @@ export function PeacekeepingMissionSidebar({
           total={
             total !== null
               ? {
-                  label: "Total expenditure",
+                  label: metricLabel,
                   value: (
                     <Tooltip
                       interactive
@@ -316,17 +341,20 @@ export function PeacekeepingMissionSidebar({
             total === null
               ? {
                   tone: "empty",
-                  description: `No published expenditure for ${fiscalYear}.`,
+                  description: `No published ${metricLabel.toLowerCase()} for ${fiscalYear}.`,
                 }
               : undefined
           }
           className="bg-white sm:w-full"
         >
           {classRows.length > 0 && (
-            <FinancialPanelSection heading="Expenditure by budget group and class">
+            <FinancialPanelSection
+              heading={`${metricLabel} by budget group and class`}
+            >
               <ul className="mt-3 space-y-1">
                 {classRows.map(({ key, amount, lines }) => (
                   <CostClassBreakdownRow
+                    metricLabel={metricLabel}
                     key={`${code}-${fiscalYear}-${key}`}
                     label={COST_CLASS_LABELS[key] ?? key}
                     amount={amount}
@@ -384,7 +412,7 @@ export function PeacekeepingMissionSidebar({
                             {
                               ...source,
                               budgetItem: name,
-                              label: "Total expenditure",
+                              label: metricLabel,
                             },
                           ]
                         : []

@@ -217,13 +217,55 @@
       2022,
       2023,
       2024,
+      2025
+    ],
+    "default": 2025,
+    "min": 2019,
+    "max": 2025
+  },
+  "budgetPpbApproved": {
+    "years": [
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025,
+      2026
+    ],
+    "default": 2026,
+    "min": 2020,
+    "max": 2026
+  },
+  "budgetPpbProposed": {
+    "years": [
+      2021,
+      2022,
+      2023,
+      2024,
       2025,
       2026,
       2027
     ],
     "default": 2027,
-    "min": 2019,
+    "min": 2021,
     "max": 2027
+  },
+  "uninfoCountries": {
+    "years": [
+      2024
+    ],
+    "default": 2024,
+    "min": 2024,
+    "max": 2024
+  },
+  "uninfoSdgs": {
+    "years": [
+      2024
+    ],
+    "default": 2024,
+    "min": 2024,
+    "max": 2024
   },
   "budgetPko": {
     "years": [
@@ -234,5 +276,25 @@
     "default": 2024,
     "min": 2022,
     "max": 2024
+  },
+  "budgetPkoApproved": {
+    "years": [
+      2023,
+      2024,
+      2025
+    ],
+    "default": 2025,
+    "min": 2023,
+    "max": 2025
+  },
+  "budgetPkoProposed": {
+    "years": [
+      2024,
+      2025,
+      2026
+    ],
+    "default": 2026,
+    "min": 2024,
+    "max": 2026
   }
 }

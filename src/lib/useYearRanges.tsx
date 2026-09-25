@@ -29,6 +29,8 @@ interface YearRanges {
   // first year of the July-June cycle (2024 means 2024/25).
   budgetPpb: YearRange;
   budgetPko: YearRange;
+  budgetPkoApproved: YearRange;
+  budgetPkoProposed: YearRange;
 }
 
 const YEAR_RANGES = manifest as YearRanges;
