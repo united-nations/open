@@ -68,7 +68,7 @@ Fusion years show slightly lower totals than CEB aggregates. This is expected:
 
 - **CEB data**: Aggregates individual entity financial statements *without adjusting for inter-agency transfers*. When Entity A transfers funds to Entity B, both report the transaction, resulting in double-counting.
 
-- **Secretariat data**: Consolidated financial statements that *eliminate inter-entity transfers* (standard consolidated accounting). This produces lower but more accurate totals.
+- **Secretariat reconstruction**: combines programme-budget regular expense and financial-statement residuals on different bases. A lower total does not establish elimination of inter-entity transfers. See `docs/data-integrity-remediation.md` for the UNEP bridge.
 
 Per CEB documentation: "Revenue and expenses amounts reflect data as reported by organizations in their respective financial statements, without adjustments for revenue and/or expenses associated with transfers of funding between UN organizations."
 

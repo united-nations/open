@@ -92,9 +92,10 @@ export function OrganizationsMethodologyNotes() {
         entities. For years 2019–2023, UN Secretariat data breaks down the
         &ldquo;UN&rdquo; and &ldquo;UN-DPO&rdquo; aggregates into their
         constituent departments and peacekeeping missions (150+ sub-entities).
-        Secretariat data is consolidated and eliminates internal transfers,
-        resulting in slightly lower but more accurate totals than the CEB
-        aggregates they replace.
+        The Secretariat reconstruction combines budget-basis and
+        financial-statement amounts. Differences from CEB do not establish
+        elimination of internal transfers or a single consolidated accounting
+        basis.
       </p>
       <p>
         The number of entities reporting in each period has increased over the
@@ -161,10 +162,12 @@ export function LocationsMethodologyNotes() {
         </li>
       </ul>
       <p>
-        UNINFO covers approximately 120 countries with Cooperation Frameworks,
-        representing roughly 40% of total UN system spending. The remainder
-        includes headquarters operations, peacekeeping missions, and global
-        programs outside country frameworks.
+        The geographic view retains a frozen CEB source snapshot; current
+        downloads may contain revised historical allocations. UNINFO covers
+        approximately 120 countries with Cooperation Frameworks, representing
+        roughly 40% of total UN system spending. The remainder includes
+        headquarters operations, peacekeeping missions, and global programs
+        outside country frameworks.
       </p>
     </>
   );
@@ -174,7 +177,9 @@ export function GoalsMethodologyNotes() {
   return (
     <p>
       Spending by Sustainable Development Goal uses CEB financial statistics.
-      The Goals view does not use UNINFO country-programme data.
+      The goal sidebar also shows UNINFO Cooperation Framework resources, a
+      separate scope and measure. Its country breakdown excludes
+      shared-workspace totals and responses without a verified annual period.
     </p>
   );
 }
@@ -195,9 +200,13 @@ export function SecretariatOverviewMethodologyNotes() {
       <p>
         This overview is the only view that combines figures from the UN
         Secretariat Programme Budget and audited financial statements to provide
-        a simplified public view of expenses. Secretariat data is consolidated
-        and eliminates internal transfers, so totals run slightly lower than the
-        corresponding CEB aggregates.
+        a simplified public view of expenses on mixed accounting bases. It is
+        not a single consolidated IPSAS total. Extrabudgetary amounts are
+        non-regular-budget residuals, not necessarily pure voluntary funding.
+        For example, UNEP 2023 combines $671,941,000 of residual expense with
+        $20,859,739 of budget-basis regular expense: $692,800,739. Replacing
+        only that regular component with the audited $24,701,000 explains the
+        $3,841,261 difference to its $696,642,000 IPSAS total.
       </p>
       <p>
         Entity tiles use one primary priority area for placement, except Staff
@@ -260,16 +269,14 @@ export function PeacekeepingBudgetMethodologyNotes() {
     <>
       <p>
         The map and table use peacekeeping budget and performance-report
-        expenditure on the July–June financial cycle. Only missions in that
+        expenditure, approved appropriations and proposals on the July–June financial cycle. Only missions in that
         corpus are shown. Service centres (RSCE, UNGSC) are included and marked
         separately from field missions, including UNSOS.
       </p>
       <p>
         Observer missions paid from the regular budget (UNTSO, UNMOGIP) are not
         in this budget and are not on this map. The support account, enterprise
-        items and some closed-mission accounts sit outside this corpus. The
-        contributor source and its methodology will be documented when that
-        dataset is added.
+        items and some closed-mission accounts sit outside this corpus. The contributor view separately reports Member State assessments, not payments; its coverage differs from these mission budgets.
       </p>
     </>
   );

@@ -20,7 +20,7 @@ npm run format       # prettier --write on src/
 uv run python/NN-<script>.py   # Run a data pipeline step
 ```
 
-Package manager is **pnpm** (`pnpm-lock.yaml`, used in CI), though `npm run` works locally. Python uses **uv** (`uv.lock`, Python 3.13+). There is no test suite.
+Package manager is **pnpm** (`pnpm-lock.yaml`, used in CI), though `npm run` works locally. Python uses **uv** (`uv.lock`, Python 3.13+). Python regression tests run with `uv run python -m unittest discover -s python/tests`; source-citation tests run with `uv run python python/test_budget_source_citations.py`.
 
 ## Architecture
 
@@ -42,8 +42,8 @@ Loading goes through helpers in [src/lib/data.ts](src/lib/data.ts): `loadYearDat
 The portal combines **three non-equivalent financial datasets** — they use different methodologies, scopes, and granularity, and must not be naively summed:
 
 - **CEB Financial Statistics** (2011–2024, ~43–48 entities) — system-wide actuals from audited statements. The reconciled backbone for contributors, entity revenue/spending, countries, and SDG views. Annual-cycle, lagged. Critically, CEB does **not** net out inter-agency transfers, so totals are inflated by double-counting.
-- **UN Secretariat** (2019–2023, ~150 sub-entities) — granular breakdown of the CEB `UN` and `UN-DPO` aggregates into individual departments, offices, and peacekeeping/political missions (OCHA, DPPA, DSS, MONUSCO, etc.). Used to enrich CEB expenses in fusion years; consolidated accounting that _does_ eliminate inter-entity transfers, so its totals run slightly lower than CEB.
-- **UNINFO** (2022–2024, 127 programme countries) — Cooperation Framework data with per-project detail and the **SDG×country** cross-dimension the other two lack. Tracks three metrics that always satisfy Required ≥ Available ≥ Spent. Covers only ~40–45% of system spending (no HQ, peacekeeping, or donor countries). Powers per-country sidebars/projects/results-framework.
+- **UN Secretariat** (2019–2023, ~150 sub-entities) — granular breakdown of the CEB `UN` and `UN-DPO` aggregates into individual departments, offices, and peacekeeping/political missions (OCHA, DPPA, DSS, MONUSCO, etc.). Used to enrich CEB expenses in fusion years; mixed budget/financial-statement accounting bases; its reconstruction does not establish elimination of inter-entity transfers.
+- **UNINFO** (2022–2024, 127 programme countries) — Cooperation Framework data with per-project detail and the **SDG×country** cross-dimension the other two lack. Tracks Required, Available and Spent; source anomalies can violate their expected ordering and must be preserved and disclosed. Covers only ~40–45% of system spending (no HQ, peacekeeping, or donor countries). Powers per-country sidebars/projects/results-framework.
 
 Key fusion logic (see [docs/data-fusion-revenue.md](docs/data-fusion-revenue.md), [docs/data-fusion-expenses.md](docs/data-fusion-expenses.md)):
 
