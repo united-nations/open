@@ -1,8 +1,12 @@
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-export async function loadYearData<T>(dataset: string, year: number): Promise<T> {
+export async function loadYearData<T>(
+  dataset: string,
+  year: number,
+): Promise<T> {
   const res = await fetch(`${basePath}/data/${dataset}-${year}.json`);
-  if (!res.ok) throw new Error(`Failed to load ${dataset} data for year ${year}`);
+  if (!res.ok)
+    throw new Error(`Failed to load ${dataset} data for year ${year}`);
   return res.json();
 }
 
@@ -21,6 +25,7 @@ export interface UninfoMetrics {
 
 export interface UninfoProject {
   id: number;
+  row_key: string;
   agency: string;
   sdg: number | null;
   code: string;
@@ -34,8 +39,17 @@ export interface UninfoProject {
   spent: number;
 }
 
+export interface UninfoScope {
+  year: number | null;
+  period_status: "year_filtered" | "unverified";
+  geographic_scope: "workspace" | "country";
+  workspace_countries: string[];
+  projects_year: number | null;
+  framework_year: number | null;
+}
+
 // Full country data (loaded per-country)
-export interface UninfoCountryFull {
+export interface UninfoCountryFull extends UninfoScope {
   workspace_id: number;
   name: string;
   totals: UninfoMetrics;
@@ -45,7 +59,7 @@ export interface UninfoCountryFull {
 }
 
 // Index entry (for quick lookups)
-export interface UninfoCountryIndex {
+export interface UninfoCountryIndex extends UninfoScope {
   workspace_id: number;
   name: string;
   totals: UninfoMetrics;
@@ -53,6 +67,7 @@ export interface UninfoCountryIndex {
 }
 
 export interface UninfoSdgData {
+  year: number | null;
   name: string;
   totals: UninfoMetrics;
   countries: Record<string, UninfoMetrics>;
@@ -73,16 +88,24 @@ let uninfoCountryIndexCache: Record<string, UninfoCountryIndex> | null = null;
 const uninfoCountryCache: Record<string, UninfoCountryFull> = {};
 let uninfoSdgsCache: Record<string, UninfoSdgData> | null = null;
 
-export async function loadUninfoCountryIndex(): Promise<Record<string, UninfoCountryIndex>> {
+export async function loadUninfoCountryIndex(): Promise<
+  Record<string, UninfoCountryIndex>
+> {
   if (uninfoCountryIndexCache) return uninfoCountryIndexCache;
-  uninfoCountryIndexCache = await loadStaticData<Record<string, UninfoCountryIndex>>("uninfo-countries-index.json");
+  uninfoCountryIndexCache = await loadStaticData<
+    Record<string, UninfoCountryIndex>
+  >("uninfo-countries-index.json");
   return uninfoCountryIndexCache;
 }
 
-export async function loadUninfoCountry(iso3: string): Promise<UninfoCountryFull | null> {
+export async function loadUninfoCountry(
+  iso3: string,
+): Promise<UninfoCountryFull | null> {
   if (uninfoCountryCache[iso3]) return uninfoCountryCache[iso3];
   try {
-    const data = await loadStaticData<UninfoCountryFull>(`uninfo-countries/${iso3}.json`);
+    const data = await loadStaticData<UninfoCountryFull>(
+      `uninfo-countries/${iso3}.json`,
+    );
     uninfoCountryCache[iso3] = data;
     return data;
   } catch {
@@ -92,6 +115,7 @@ export async function loadUninfoCountry(iso3: string): Promise<UninfoCountryFull
 
 export async function loadUninfoSdgs(): Promise<Record<string, UninfoSdgData>> {
   if (uninfoSdgsCache) return uninfoSdgsCache;
-  uninfoSdgsCache = await loadStaticData<Record<string, UninfoSdgData>>("uninfo-sdgs.json");
+  uninfoSdgsCache =
+    await loadStaticData<Record<string, UninfoSdgData>>("uninfo-sdgs.json");
   return uninfoSdgsCache;
 }

@@ -37,13 +37,14 @@ def build_projects_by_country(data: dict) -> dict[str, list]:
     for country, agencies in data["projects"].items():
         iso3 = get_iso3(country)
         if not iso3 or not isinstance(agencies, list): continue
-        for agency in agencies:
+        for agency_index, agency in enumerate(agencies):
             abbr = agency.get("abbreviation", "")
-            for proj in agency.get("planEntities", []):
+            for project_index, proj in enumerate(agency.get("planEntities", [])):
                 m = extract_metrics(proj)
                 sdg = proj["sdgs"][0].get("id") if proj.get("sdgs") else None
                 by_country[iso3].append({
                     "id": proj.get("id"),
+                    "row_key": f"{proj.get('id')}:{agency.get('id', abbr)}:{agency_index}:{project_index}",
                     "agency": abbr,
                     "sdg": sdg,
                     "code": proj.get("code", ""),
@@ -140,6 +141,11 @@ def export_per_country(data: dict) -> dict:
     
     # Build country data with SDGs, projects, and framework
     countries_index = {}
+    workspace_countries = defaultdict(list)
+    for name, workspace in data["workspaces"].items():
+        workspace_countries[workspace].append(name)
+    provenance_path = RAW / "period-provenance.json"
+    provenance = json.loads(provenance_path.read_text()) if provenance_path.exists() else {}
     total_projects = 0
     framework_count = 0
     
@@ -164,7 +170,16 @@ def export_per_country(data: dict) -> dict:
         if totals["required"] <= 0 and not projects:
             continue
         
+        scope = {
+            "year": 2024 if info.get("has_year_data") else None,
+            "period_status": "year_filtered" if info.get("has_year_data") else "unverified",
+            "geographic_scope": "workspace" if len(workspace_countries[ws_id]) > 1 else "country",
+            "workspace_countries": sorted(workspace_countries[ws_id]),
+            "projects_year": provenance.get("projects_year"),
+            "framework_year": provenance.get("framework_year"),
+        }
         country_data = {
+            **scope,
             "workspace_id": ws_id,
             "name": country,
             "totals": {k: round(v, 2) for k, v in totals.items()},
@@ -180,10 +195,11 @@ def export_per_country(data: dict) -> dict:
         
         # Store in index (without projects/framework for smaller index file)
         countries_index[iso3] = {
+            **scope,
             "workspace_id": ws_id,
             "name": country,
             "totals": country_data["totals"],
-            "project_count": len(projects),
+            "project_count": len({p["id"] for p in projects}),
             "has_framework": framework is not None,
         }
         total_projects += len(projects)
@@ -212,14 +228,17 @@ def export_sdgs(data: dict, countries_index: dict) -> dict:
             country_file = COUNTRIES_DIR / f"{iso3}.json"
             if country_file.exists():
                 cdata = json.loads(country_file.read_text())
-                if sdg_id in cdata.get("sdgs", {}):
+                if cdata.get("year") == 2024 and cdata.get("geographic_scope") == "country" and sdg_id in cdata.get("sdgs", {}):
                     country_breakdown[iso3] = cdata["sdgs"][sdg_id]
         
         # Top underfunded = highest gap (required - available)
         gaps = [(iso3, c["required"] - c["available"]) for iso3, c in country_breakdown.items()]
         top_underfunded = [iso3 for iso3, _ in sorted(gaps, key=lambda x: -x[1])[:10]]
         
+        provenance_path = RAW / "period-provenance.json"
+        provenance = json.loads(provenance_path.read_text()) if provenance_path.exists() else {}
         result[sdg_id] = {
+            "year": provenance.get("global_sdgs_year"),
             "name": sdg.get("short", sdg.get("name", "")),
             "totals": m,
             "countries": country_breakdown,

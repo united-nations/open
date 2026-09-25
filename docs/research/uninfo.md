@@ -279,7 +279,7 @@ Each sub-output (project) includes:
 
 ## Financial Metric Relationships
 
-The three metrics always follow: **Required ≥ Available ≥ Spent**
+The expected ordering is **Required ≥ Available ≥ Spent**, but the source does not consistently satisfy it. Preserve the reported values and disclose anomalies.
 
 | SDG | Required | Available | Spent | Funding Rate | Delivery Rate |
 |-----|----------|-----------|-------|--------------|---------------|

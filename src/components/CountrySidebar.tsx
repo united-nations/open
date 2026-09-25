@@ -1,10 +1,11 @@
 "use client";
+import { useYearResource } from "@/hooks/useYearResource";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 
 import { ExternalLink } from "lucide-react";
 import { SidebarControls } from "@/components/SidebarControls";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { formatBudget } from "@/lib/entities";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { navigateToSidebar } from "@/hooks/useDeepLink";
@@ -93,11 +94,38 @@ export function CountrySidebar({
     yearRanges.countryExpenses.max,
   ).reverse();
   const [selectedYear, setSelectedYear] = useState(initialYear);
-  const [yearCountry, setYearCountry] = useState<CountryData>(country);
-  const [loadingYear, setLoadingYear] = useState(false);
+  const countryFallback = useMemo(
+    () => ({ ...country, total: 0, entities: {} }),
+    [country],
+  );
+  const loadYear = useCallback(async (): Promise<CountryData> => {
+    const data = await fetch(
+      `${basePath}/data/country-expenses-${selectedYear}.json`,
+    ).then((res) => {
+      if (!res.ok) throw new Error(String(res.status));
+      return res.json() as Promise<CountryData[]>;
+    });
+    return data.find((item) => item.iso3 === country.iso3) ?? countryFallback;
+  }, [selectedYear, country.iso3, countryFallback]);
+  const {
+    value: yearCountry,
+    loading: loadingYear,
+    error: yearError,
+  } = useYearResource<CountryData>(
+    `${country.iso3}-${selectedYear}`,
+    country,
+    selectedYear === initialYear,
+    loadYear,
+    countryFallback,
+  );
 
   // UNINFO Cooperation Framework data
-  const [uninfoData, setUninfoData] = useState<UninfoCountryFull | null>(null);
+  const [uninfoResult, setUninfoResult] = useState<{
+    iso3: string;
+    data: UninfoCountryFull | null;
+  } | null>(null);
+  const uninfoData =
+    uninfoResult?.iso3 === country.iso3 ? uninfoResult.data : null;
   const [uninfoSort, setUninfoSort] = useState("sdg_number");
 
   // Focus trap for accessibility
@@ -105,27 +133,18 @@ export function CountrySidebar({
 
   // Load UNINFO data (single file with SDGs + projects)
   useEffect(() => {
+    let cancelled = false;
     loadUninfoCountry(country.iso3)
-      .then(setUninfoData)
-      .catch(() => setUninfoData(null));
-  }, [country.iso3]);
-
-  // Fetch country data when year changes
-  useEffect(() => {
-    if (selectedYear === initialYear) {
-      setYearCountry(country);
-      return;
-    }
-    setLoadingYear(true);
-    fetch(`${basePath}/data/country-expenses-${selectedYear}.json`)
-      .then((res) => res.json())
-      .then((data: CountryData[]) => {
-        const found = data.find((c) => c.iso3 === country.iso3);
-        setYearCountry(found || { ...country, total: 0, entities: {} });
+      .then((data) => {
+        if (!cancelled) setUninfoResult({ iso3: country.iso3, data });
       })
-      .catch(() => setYearCountry({ ...country, total: 0, entities: {} }))
-      .finally(() => setLoadingYear(false));
-  }, [selectedYear, country, initialYear]);
+      .catch(() => {
+        if (!cancelled) setUninfoResult({ iso3: country.iso3, data: null });
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [country.iso3]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 10);
@@ -225,6 +244,11 @@ export function CountrySidebar({
               pending={loadingYear}
               requestKey={selectedYear}
             />
+            {yearError && (
+              <p role="status" className="text-sm text-gray-500">
+                Data could not be loaded for {selectedYear}.
+              </p>
+            )}
             {/* Summary stats */}
             <div>
               <FinancialPanelHeading className="mb-3">
@@ -233,11 +257,17 @@ export function CountrySidebar({
               <div className="space-y-3">
                 <FinancialPanelTotalRow
                   label="Total spending"
-                  value={formatBudget(yearCountry.total)}
+                  value={
+                    loadingYear
+                      ? "Loading…"
+                      : yearError
+                        ? "Unavailable"
+                        : formatBudget(yearCountry.total)
+                  }
                 />
                 <FinancialPanelTotalRow
                   label="Entities active"
-                  value={sortedEntities.length}
+                  value={loadingYear || yearError ? "—" : sortedEntities.length}
                 />
               </div>
               <FinancialPanelHeading subheading className="mt-4">
@@ -287,8 +317,12 @@ export function CountrySidebar({
               ) : (
                 <>
                   <p className="text-xs text-gray-500">
-                    Country-level programme data only, not representative of
-                    total spending.
+                    {uninfoData.geographic_scope === "workspace"
+                      ? `Shared workspace totals for ${uninfoData.workspace_countries.join(", ")}; these are not allocations to this country.`
+                      : "Country programme data only, not representative of total spending."}
+                    {uninfoData.year === null
+                      ? " The source response has no verified reporting period. Annual 2024 figures are unavailable."
+                      : ` Financial totals were queried for ${uninfoData.year}.`}
                   </p>
                   <div className="mt-2 mb-4 flex flex-wrap gap-x-4 gap-y-2">
                     <a
@@ -321,7 +355,9 @@ export function CountrySidebar({
                         {/* Overall */}
                         <div>
                           <FinancialPanelHeading subheading>
-                            Overall
+                            {uninfoData.year === null
+                              ? "Reported totals — period unverified"
+                              : "Overall"}
                           </FinancialPanelHeading>
                           <div className="mt-2">
                             <UninfoFundingBar
@@ -375,16 +411,22 @@ export function CountrySidebar({
                                 return parseInt(a[0]) - parseInt(b[0]);
                               });
                               const maxVal = Math.max(
-                                ...entries.map(([, m]) => m.required),
+                                1,
+                                ...entries.map(([, m]) =>
+                                  Math.max(m.required, m.available, m.spent),
+                                ),
                               );
                               return sorted.map(([sdgNum, metrics]) => {
                                 const sdg = parseInt(sdgNum);
                                 const barWidth =
-                                  (metrics.required / maxVal) * 100;
-                                const availPct =
-                                  (metrics.available / metrics.required) * 100;
-                                const spentPct =
-                                  (metrics.spent / metrics.required) * 100;
+                                  (Math.max(
+                                    0,
+                                    metrics.required,
+                                    metrics.available,
+                                    metrics.spent,
+                                  ) /
+                                    maxVal) *
+                                  100;
                                 return (
                                   <Tooltip key={sdgNum} delayDuration={200}>
                                     <TooltipTrigger asChild>
@@ -406,24 +448,14 @@ export function CountrySidebar({
                                         />
                                         <div className="flex flex-1 flex-col gap-px">
                                           <div
-                                            className="relative h-2 overflow-hidden rounded-sm bg-gray-200"
                                             style={{ width: `${barWidth}%` }}
                                           >
-                                            <div
-                                              className="absolute inset-y-0 left-0 opacity-30"
-                                              style={{
-                                                width: `${availPct}%`,
-                                                backgroundColor:
-                                                  SDG_COLORS[sdg],
-                                              }}
-                                            />
-                                            <div
-                                              className="absolute inset-y-0 left-0"
-                                              style={{
-                                                width: `${spentPct}%`,
-                                                backgroundColor:
-                                                  SDG_COLORS[sdg],
-                                              }}
+                                            <UninfoFundingBar
+                                              required={metrics.required}
+                                              available={metrics.available}
+                                              spent={metrics.spent}
+                                              showLabels={false}
+                                              color={SDG_COLORS[sdg]}
                                             />
                                           </div>
                                         </div>
@@ -462,6 +494,11 @@ export function CountrySidebar({
                           Results Framework
                         </FinancialPanelHeading>
                         <div className="mt-2">
+                          <p className="mb-2 text-xs text-gray-500">
+                            {uninfoData.framework_year
+                              ? `Framework financials: ${uninfoData.framework_year}.`
+                              : "Framework financials have no verified reporting period in this source snapshot."}
+                          </p>
                           <ResultsFramework framework={uninfoData.framework} />
                         </div>
                       </div>
@@ -473,9 +510,21 @@ export function CountrySidebar({
                     uninfoData.projects.length > 0 && (
                       <div className="mt-4">
                         <FinancialPanelHeading subheading>
-                          Top Projects
+                          Projects (
+                          {
+                            new Set(
+                              uninfoData.projects.map((project) => project.id),
+                            ).size
+                          }
+                          )
                         </FinancialPanelHeading>
                         <div className="mt-2">
+                          <p className="mb-2 text-xs text-gray-500">
+                            {uninfoData.projects_year
+                              ? `Project financials: ${uninfoData.projects_year}.`
+                              : "Project financials have no verified reporting period in this source snapshot."}{" "}
+                            Rows describe agency participation in projects.
+                          </p>
                           <UninfoProjectTable
                             projects={uninfoData.projects}
                             initialLimit={5}

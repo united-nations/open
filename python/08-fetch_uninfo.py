@@ -13,6 +13,7 @@ OUT.mkdir(parents=True, exist_ok=True)
 @memory.cache
 def get(url: str, params: dict = None) -> dict:
     res = requests.get(url, params=params, timeout=60)
+    res.raise_for_status()
     return res.json() if res.text else {}
 
 def fetch_workspaces() -> dict[str, int]:
@@ -33,9 +34,7 @@ def fetch_finance_by_sdg(workspace_id: int = None, year: int = 2024) -> tuple[li
     data = get(f"{BASE}/planEntity/finance/overview", {**params, "financeYears": year})
     if data:
         return data, True
-    # Fall back to all-time data
-    data = get(f"{BASE}/planEntity/finance/overview", params)
-    return data, False
+    return [], False
 
 def fetch_projects_for_workspace(workspace_id: int, year: int = 2024) -> list[dict]:
     """Fetch projects for a workspace with agency info."""
@@ -44,15 +43,11 @@ def fetch_projects_for_workspace(workspace_id: int, year: int = 2024) -> list[di
                        params=[("workspaceIds", workspace_id), ("financeYears", year), 
                                ("grouping", "agency"), ("grouping", "planEntity:SOU")],
                        timeout=60)
+    res.raise_for_status()
     data = res.json() if res.text and res.text != '[]' else []
     if data:
         return data
-    # Fall back to all-time
-    res = requests.get(f"{BASE}/planEntity/finance/overview", 
-                       params=[("workspaceIds", workspace_id),
-                               ("grouping", "agency"), ("grouping", "planEntity:SOU")],
-                       timeout=60)
-    return res.json() if res.text and res.text != '[]' else []
+    return []
 
 def fetch_framework_level(workspace_id: int, level: str, year: int = 2024) -> list[dict]:
     """Fetch SP/OC/OU for a workspace. Level is 'SP', 'OC', or 'OU'."""
@@ -60,9 +55,7 @@ def fetch_framework_level(workspace_id: int, level: str, year: int = 2024) -> li
     data = get(f"{BASE}/planEntity/finance/overview", params)
     if data:
         return data
-    # Fall back to all-time
-    params.pop("financeYears")
-    return get(f"{BASE}/planEntity/finance/overview", params) or []
+    return []
 
 def fetch_framework_for_workspace(workspace_id: int, year: int = 2024) -> dict:
     """Fetch full results framework (SP/OC/OU) for a workspace."""
@@ -122,4 +115,5 @@ if __name__ == "__main__":
     (OUT / "frameworks_by_country.json").write_text(json.dumps(all_frameworks, indent=2, ensure_ascii=False))
     print(f"  {len(all_frameworks)} countries with framework data")
 
+    (OUT / "period-provenance.json").write_text(json.dumps({"projects_year": 2024, "framework_year": 2024, "global_sdgs_year": 2024}))
     print("Done.")

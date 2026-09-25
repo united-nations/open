@@ -1,4 +1,5 @@
 "use client";
+import { useYearResource } from "@/hooks/useYearResource";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 
 import { useCallback, useEffect, useState } from "react";
@@ -74,10 +75,28 @@ export default function SDGModal({
     yearRanges.sdgExpenses.max,
   ).reverse();
   const [selectedYear, setSelectedYear] = useState(initialYear);
-  const [yearEntityExpenses, setYearEntityExpenses] = useState<
+  const loadYear = useCallback(async (): Promise<
     { [entity: string]: number } | undefined
-  >(entityExpenses);
-  const [loadingYear, setLoadingYear] = useState(false);
+  > => {
+    const data = await fetch(
+      `${basePath}/data/sdg-expenses-${selectedYear}.json`,
+    ).then((res) => {
+      if (!res.ok) throw new Error(String(res.status));
+      return res.json() as Promise<SDGExpensesData>;
+    });
+    return sdg ? data[sdg.number.toString()]?.entities : undefined;
+  }, [selectedYear, sdg]);
+  const {
+    value: yearEntityExpenses,
+    loading: loadingYear,
+    error: yearError,
+  } = useYearResource<{ [entity: string]: number } | undefined>(
+    `${sdg?.number}-${selectedYear}`,
+    entityExpenses,
+    !sdg || selectedYear === initialYear,
+    loadYear,
+    undefined,
+  );
 
   // UNINFO Cooperation Framework data
   const [uninfoData, setUninfoData] = useState<UninfoSdgData | null>(null);
@@ -100,23 +119,6 @@ export default function SDGModal({
       })
       .catch(() => setUninfoData(null));
   }, [sdg]);
-
-  // Fetch SDG expenses when year changes
-  useEffect(() => {
-    if (!sdg || selectedYear === initialYear) {
-      setYearEntityExpenses(entityExpenses);
-      return;
-    }
-    setLoadingYear(true);
-    fetch(`${basePath}/data/sdg-expenses-${selectedYear}.json`)
-      .then((res) => res.json())
-      .then((data: SDGExpensesData) => {
-        const sdgData = data[sdg.number.toString()];
-        setYearEntityExpenses(sdgData?.entities);
-      })
-      .catch(() => setYearEntityExpenses(undefined))
-      .finally(() => setLoadingYear(false));
-  }, [selectedYear, sdg, initialYear, entityExpenses]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 10);
@@ -241,6 +243,11 @@ export default function SDGModal({
               pending={loadingYear}
               requestKey={selectedYear}
             />
+            {yearError && (
+              <p role="status" className="text-sm text-gray-500">
+                Data could not be loaded for {selectedYear}.
+              </p>
+            )}
             {/* Entity Spending Breakdown */}
             {(sortedEntities.length > 0 || loadingYear) && (
               <div>
@@ -250,7 +257,7 @@ export default function SDGModal({
 
                 <FinancialPanelTotalRow
                   label="Total spending"
-                  value={formatBudget(totalExpenses)}
+                  value={loadingYear ? "Loading…" : formatBudget(totalExpenses)}
                 />
 
                 <div className="mt-4">
@@ -304,14 +311,21 @@ export default function SDGModal({
                 ) : (
                   <>
                     <p className="mb-4 text-xs text-gray-500">
-                      Country-level programme data only, not representative of
-                      total spending.
+                      Cooperation Framework programme data only, not
+                      representative of total spending.
+                      {uninfoData.year === null
+                        ? " The global source snapshot has no verified query period; country comparisons below include only verified 2024 country observations."
+                        : ` Global totals were queried for ${uninfoData.year}.`}
+                      Shared-workspace totals are excluded from country
+                      comparisons.
                     </p>
 
                     {/* Overall */}
                     <div>
                       <FinancialPanelHeading subheading>
-                        Overall
+                        {uninfoData.year === null
+                          ? "Reported totals — period unverified"
+                          : "Overall"}
                       </FinancialPanelHeading>
                       <div className="mt-2">
                         <UninfoFundingBar
@@ -367,15 +381,21 @@ export default function SDGModal({
                             });
                             const top10 = sorted.slice(0, 10);
                             const maxVal = Math.max(
-                              ...top10.map(([, m]) => m.required),
+                              1,
+                              ...top10.map(([, m]) =>
+                                Math.max(m.required, m.available, m.spent),
+                              ),
                             );
                             return top10.map(([iso3, metrics]) => {
                               const barWidth =
-                                (metrics.required / maxVal) * 100;
-                              const availPct =
-                                (metrics.available / metrics.required) * 100;
-                              const spentPct =
-                                (metrics.spent / metrics.required) * 100;
+                                (Math.max(
+                                  0,
+                                  metrics.required,
+                                  metrics.available,
+                                  metrics.spent,
+                                ) /
+                                  maxVal) *
+                                100;
                               const name = countryNames[iso3] || iso3;
                               return (
                                 <Tooltip key={iso3} delayDuration={200}>
@@ -393,17 +413,12 @@ export default function SDGModal({
                                         {name}
                                       </span>
                                       <div className="flex flex-1 flex-col gap-px">
-                                        <div
-                                          className="relative h-2 overflow-hidden rounded-sm bg-gray-200"
-                                          style={{ width: `${barWidth}%` }}
-                                        >
-                                          <div
-                                            className="absolute inset-y-0 left-0 bg-un-blue/30"
-                                            style={{ width: `${availPct}%` }}
-                                          />
-                                          <div
-                                            className="absolute inset-y-0 left-0 bg-un-blue"
-                                            style={{ width: `${spentPct}%` }}
+                                        <div style={{ width: `${barWidth}%` }}>
+                                          <UninfoFundingBar
+                                            required={metrics.required}
+                                            available={metrics.available}
+                                            spent={metrics.spent}
+                                            showLabels={false}
                                           />
                                         </div>
                                       </div>

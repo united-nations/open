@@ -26,11 +26,10 @@ function ProjectCard({
 }) {
   const [expanded, setExpanded] = useState(false);
 
-  const barWidth = (project.required / maxRequired) * 100;
-  const availPct =
-    project.required > 0 ? (project.available / project.required) * 100 : 0;
-  const spentPct =
-    project.required > 0 ? (project.spent / project.required) * 100 : 0;
+  const barWidth =
+    (Math.max(0, project.required, project.available, project.spent) /
+      maxRequired) *
+    100;
   const formatAmt = sharedFormatBudget;
 
   const hasDetails =
@@ -92,17 +91,12 @@ function ProjectCard({
         <Tooltip delayDuration={200}>
           <TooltipTrigger asChild>
             <div className="mt-2">
-              <div
-                className="relative h-2 overflow-hidden rounded-sm bg-gray-200"
-                style={{ width: `${barWidth}%` }}
-              >
-                <div
-                  className="absolute inset-y-0 left-0 bg-un-blue/30"
-                  style={{ width: `${availPct}%` }}
-                />
-                <div
-                  className="absolute inset-y-0 left-0 bg-un-blue"
-                  style={{ width: `${spentPct}%` }}
+              <div style={{ width: `${barWidth}%` }}>
+                <UninfoFundingBar
+                  required={project.required}
+                  available={project.available}
+                  spent={project.spent}
+                  showLabels={false}
                 />
               </div>
             </div>
@@ -157,7 +151,12 @@ export function UninfoProjectTable({
 
   const displayed = showAll ? projects : projects.slice(0, initialLimit);
   const maxRequired =
-    displayed.length > 0 ? Math.max(...displayed.map((p) => p.required)) : 1;
+    displayed.length > 0
+      ? Math.max(
+          1,
+          ...displayed.map((p) => Math.max(p.required, p.available, p.spent)),
+        )
+      : 1;
 
   if (projects.length === 0) {
     return <p className="text-xs text-gray-500">No projects found.</p>;
@@ -167,7 +166,7 @@ export function UninfoProjectTable({
     <div className="space-y-2">
       {displayed.map((project) => (
         <ProjectCard
-          key={project.id}
+          key={project.row_key}
           project={project}
           maxRequired={maxRequired}
         />
@@ -178,7 +177,7 @@ export function UninfoProjectTable({
           onClick={() => setShowAll(true)}
           className="text-xs text-gray-600 underline hover:text-gray-900"
         >
-          Show all {projects.length} projects
+          Show all {projects.length} agency-project rows
         </button>
       )}
     </div>

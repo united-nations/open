@@ -29,12 +29,10 @@ export function UninfoFundingBar({
   color,
   compact = false,
 }: UninfoFundingBarProps) {
-  if (required <= 0) return null;
-
-  const max = required;
-  const requiredPct = 100;
-  const availablePct = Math.min((available / max) * 100, 100);
-  const spentPct = Math.min((spent / max) * 100, 100);
+  const max = Math.max(1, required, available, spent);
+  const requiredPct = Math.max(0, (required / max) * 100);
+  const availablePct = Math.max(0, (available / max) * 100);
+  const spentPct = Math.max(0, (spent / max) * 100);
 
   const baseColor = color || UN_BLUE;
   const spentColor = baseColor;
@@ -58,10 +56,16 @@ export function UninfoFundingBar({
 
   if (!showLabels) {
     return (
-      <div className="flex items-center gap-1">
+      <div
+        className="flex items-center gap-1"
+        role="img"
+        aria-label={`Required ${formatAmount(required)}, available ${formatAmount(available)}, spent ${formatAmount(spent)}`}
+      >
         {bars.map((b) => (
           <div
             key={b.label}
+            data-resource={b.label}
+            data-value={b.value}
             className="h-2 flex-1 overflow-hidden rounded-sm bg-gray-100"
           >
             <div
@@ -104,6 +108,15 @@ export function UninfoFundingBar({
   // Full width mode for main display - aligned with entity bars (w-20 label, gap-2, w-20 amount)
   return (
     <div className="space-y-2">
+      {(available > required ||
+        spent > available ||
+        Math.min(required, available, spent) < 0) && (
+        <p className="text-xs text-gray-500">
+          Reported amounts include adjustments or exceed required or available
+          resources. Values are shown as reported; negative amounts have no
+          positive bar area.
+        </p>
+      )}
       {bars.map((b) => (
         <div key={b.label} className="flex items-center gap-2">
           <span className="w-20 flex-shrink-0 text-xs text-gray-600">
