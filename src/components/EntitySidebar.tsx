@@ -1,4 +1,5 @@
 "use client";
+import { useYearResource } from "@/hooks/useYearResource";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
@@ -6,7 +7,7 @@ import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ArrowRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { SidebarControls } from "@/components/SidebarControls";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   Entity,
   Impact,
@@ -15,10 +16,7 @@ import {
   EntitySpendingBreakdown,
 } from "@/types";
 import { formatBudget } from "@/lib/entities";
-import {
-  getContributionTypeBgColor,
-  getContributionTypeOrder,
-} from "@/lib/contributors";
+import { getContributionTypeOrder } from "@/lib/contributors";
 import { FinancingInstrumentLabel } from "@/components/FinancingInstrumentLabel";
 import { getFinancingInstrumentColor } from "@/lib/financingInstruments";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
@@ -81,15 +79,24 @@ export function EntitySidebar({
 }: EntitySidebarProps) {
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
-  const [impacts, setImpacts] = useState<Impact[]>([]);
-  const [loadingImpacts, setLoadingImpacts] = useState(true);
+  const [impactResult, setImpactResult] = useState<{
+    entity: string;
+    data: Impact[];
+  } | null>(null);
+  const impacts =
+    SHOW_ENTITY_IMPACTS && impactResult?.entity === entity?.entity
+      ? (impactResult?.data ?? [])
+      : [];
+  const loadingImpacts =
+    SHOW_ENTITY_IMPACTS && !!entity && impactResult?.entity !== entity.entity;
   const [showAllDonors, setShowAllDonors] = useState(false);
   const [showAllCountries, setShowAllCountries] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
-  const [spendingBreakdown, setSpendingBreakdown] =
-    useState<EntitySpendingBreakdown | null>(null);
-  const [loadingSpending, setLoadingSpending] = useState(false);
+  const [breakdownResult, setBreakdownResult] = useState<{
+    key: string;
+    data: EntitySpendingBreakdown;
+  } | null>(null);
 
   // Year selection
   const yearRanges = useYearRanges();
@@ -98,9 +105,53 @@ export function EntitySidebar({
     Math.max(yearRanges.entitySpending.max, yearRanges.entityRevenue.max),
   ).reverse();
   const [selectedYear, setSelectedYear] = useState(initialYear);
-  const [yearSpending, setYearSpending] = useState<number>(spending);
-  const [yearRevenue, setYearRevenue] = useState<EntityRevenue | null>(revenue);
-  const [loadingYear, setLoadingYear] = useState(false);
+  const initialYearData = useMemo(
+    () => ({ spending, revenue }),
+    [spending, revenue],
+  );
+  const emptyYearData = useMemo(
+    () => ({ spending: 0, revenue: null as EntityRevenue | null }),
+    [],
+  );
+  const loadYear = useCallback(async () => {
+    const [revenues, expenses] = await Promise.all([
+      fetch(`${basePath}/data/entity-revenue-${selectedYear}.json`).then(
+        (r) => {
+          if (!r.ok) throw new Error(String(r.status));
+          return r.json();
+        },
+      ),
+      fetch(`${basePath}/data/entity-spending-${selectedYear}.json`).then(
+        (r) => {
+          if (!r.ok) throw new Error(String(r.status));
+          return r.json();
+        },
+      ),
+    ]);
+    return {
+      revenue: (entity
+        ? revenues[entity.entity]
+        : null) as EntityRevenue | null,
+      spending:
+        expenses.find(
+          (row: { entity: string; amount: number }) =>
+            row.entity === entity?.entity,
+        )?.amount ?? 0,
+    };
+  }, [selectedYear, entity]);
+  const {
+    value: yearData,
+    loading: loadingYear,
+    error: yearError,
+  } = useYearResource(
+    `${entity?.entity}-${selectedYear}`,
+    initialYearData,
+    !entity || (selectedYear === initialYear && initialDataComplete),
+    loadYear,
+    emptyYearData,
+  );
+  const yearSpending = yearData.spending;
+  const yearRevenue = yearData.revenue;
 
   // Trend data for charts
   const [trendData, setTrendData] = useState<EntityTrendDataPoint[]>([]);
@@ -164,87 +215,39 @@ export function EntitySidebar({
     yearRanges.entityRevenue.max,
   ]);
 
-  // Fetch data when year changes
-  useEffect(() => {
-    if (
-      !entity?.entity ||
-      (selectedYear === initialYear && initialDataComplete)
-    ) {
-      setYearSpending(spending);
-      setYearRevenue(revenue);
-      return;
-    }
-    let cancelled = false;
-    setLoadingYear(true);
-    Promise.all([
-      fetch(`${basePath}/data/entity-revenue-${selectedYear}.json`)
-        .then((r) => r.json())
-        .catch(() => ({})),
-      fetch(`${basePath}/data/entity-spending-${selectedYear}.json`)
-        .then((r) => r.json())
-        .catch(() => []),
-    ])
-      .then(([revenueData, spendingData]) => {
-        if (cancelled) return;
-        const entityRevenue = revenueData[entity.entity] || null;
-        setYearRevenue(entityRevenue);
-        const spendingEntry = spendingData.find(
-          (e: { entity: string; amount: number }) => e.entity === entity.entity,
-        );
-        setYearSpending(spendingEntry?.amount || 0);
-      })
-      .finally(() => {
-        if (!cancelled) setLoadingYear(false);
-      });
-    return () => {
-      cancelled = true;
-    };
-  }, [
-    selectedYear,
-    entity?.entity,
-    initialYear,
-    initialDataComplete,
-    spending,
-    revenue,
-  ]);
-
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 10);
     return () => clearTimeout(timer);
   }, []);
 
   useEffect(() => {
-    if (!SHOW_ENTITY_IMPACTS || !entity?.entity) {
-      setImpacts([]);
-      setLoadingImpacts(false);
-      return;
-    }
-
-    setLoadingImpacts(true);
+    if (!SHOW_ENTITY_IMPACTS || !entity?.entity) return;
+    let active = true;
     fetch(`${basePath}/data/impact.json`)
       .then((res) => res.json())
       .then((data: Impact[]) => {
-        const entityImpacts = data.filter(
-          (impact) => impact.entity === entity.entity,
-        );
-        setImpacts(entityImpacts);
-        setLoadingImpacts(false);
+        if (active)
+          setImpactResult({
+            entity: entity.entity,
+            data: data.filter((impact) => impact.entity === entity.entity),
+          });
       })
-      .catch((err) => {
-        console.error("Failed to load impacts:", err);
-        setImpacts([]);
-        setLoadingImpacts(false);
+      .catch(() => {
+        if (active) setImpactResult({ entity: entity.entity, data: [] });
       });
+    return () => {
+      active = false;
+    };
   }, [entity?.entity]);
 
+  const breakdownKey = `${entity?.entity}-${selectedYear}`;
+  const spendingBreakdown =
+    breakdownResult?.key === breakdownKey ? breakdownResult.data : null;
+  const loadingSpending = !!entity && breakdownResult?.key !== breakdownKey;
   // Fetch spending breakdown by country and SDG
   useEffect(() => {
-    if (!entity?.entity) {
-      setSpendingBreakdown(null);
-      return;
-    }
-
-    setLoadingSpending(true);
+    if (!entity?.entity) return;
+    let active = true;
     Promise.all([
       fetch(`${basePath}/data/country-expenses-${selectedYear}.json`)
         .then((r) => r.json())
@@ -268,18 +271,31 @@ export function EntitySidebar({
             .sort((a, b) => b.amount - a.amount);
 
           const bySDG = Object.entries(sdgData)
-            .filter(([_, data]) => data.entities[entity.entity])
+            .filter(([, data]) => data.entities[entity.entity])
             .map(([sdg, data]) => ({
               sdg: parseInt(sdg),
               amount: data.entities[entity.entity],
             }))
             .sort((a, b) => a.sdg - b.sdg);
 
-          setSpendingBreakdown({ byCountry, bySDG });
+          if (active)
+            setBreakdownResult({
+              key: breakdownKey,
+              data: { byCountry, bySDG },
+            });
         },
       )
-      .finally(() => setLoadingSpending(false));
-  }, [entity?.entity, selectedYear]);
+      .catch(() => {
+        if (active)
+          setBreakdownResult({
+            key: breakdownKey,
+            data: { byCountry: [], bySDG: [] },
+          });
+      });
+    return () => {
+      active = false;
+    };
+  }, [entity?.entity, selectedYear, breakdownKey]);
 
   const handleClose = useCallback(() => {
     setIsClosing(true);
@@ -394,6 +410,11 @@ export function EntitySidebar({
               pending={loadingYear}
               requestKey={selectedYear}
             />
+            {yearError && (
+              <p role="status" className="text-sm text-gray-500">
+                Data could not be loaded for {selectedYear}.
+              </p>
+            )}
             {/* Overview Section */}
             <div>
               {description && (
@@ -430,7 +451,13 @@ export function EntitySidebar({
             <div>
               <FinancialPanelTotalRow
                 label="Total spending"
-                value={yearSpending > 0 ? formatBudget(yearSpending) : "N/A"}
+                value={
+                  loadingYear
+                    ? "Loading…"
+                    : yearError
+                      ? "Unavailable"
+                      : formatBudget(yearSpending)
+                }
               />
               <div className="mt-3">
                 <FinancialPanelTotalRow

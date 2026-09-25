@@ -17,7 +17,7 @@ export function RegularBudgetPaymentTimelineCard() {
     null,
   );
   const [failedYear, setFailedYear] = useState<number | null>(null);
-  const data = loaded;
+  const data = loaded?.meta.year === selectedYear ? loaded : null;
   const loading = data === null && failedYear !== selectedYear;
 
   useEffect(() => {
@@ -40,7 +40,7 @@ export function RegularBudgetPaymentTimelineCard() {
 
   return (
     <section className="relative min-w-0 lg:row-span-4 lg:grid lg:grid-rows-subgrid">
-      <DelayedChartLoading pending={loaded?.meta.year !== selectedYear} requestKey={selectedYear} />
+      <DelayedChartLoading pending={loading} requestKey={selectedYear} />
       <div className="contents">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
           <h3 className="text-lg font-medium text-gray-900">
@@ -58,16 +58,18 @@ export function RegularBudgetPaymentTimelineCard() {
           />
         </div>
         <div className="mb-3 flex items-start">
-          <BinaryToggle
-            variant="segmented"
-            label="Paid-in-full measure"
-            options={[
-              { value: "amount", label: "Assessments paid in full" },
-              { value: "count", label: "Member States paid in full" },
-            ]}
-            value={measure}
-            onValueChange={setMeasure}
-          />
+          {loaded && (
+            <BinaryToggle
+              variant="segmented"
+              label="Paid-in-full measure"
+              options={[
+                { value: "amount", label: "Assessments paid in full" },
+                { value: "count", label: "Member States paid in full" },
+              ]}
+              value={measure}
+              onValueChange={setMeasure}
+            />
+          )}
         </div>
       </div>
       <div>

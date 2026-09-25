@@ -14,7 +14,7 @@ import {
 import type { Entity } from "@/types";
 import { getSystemGroupingStyle } from "@/lib/systemGroupings";
 import { useMapBubbleZoom } from "@/hooks/useMapBubbleZoom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { DotDensityMap } from "@undp/data-viz/DotDensityMap";
 import { CountrySidebar } from "@/components/CountrySidebar";
 import {
@@ -56,14 +56,17 @@ export function CountryMap() {
   );
   useEffect(() => {
     fetch(`${basePath}/data/entities.json`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
       .then(setEntityMetadata)
       .catch(console.error);
   }, []);
   const yearRanges = useYearRanges();
   const COUNTRY_YEARS = yearRanges.geographicExpenses.years;
 
-  const [countryData, setCountryData] = useState<CountryExpense[]>([]);
+  const [loadedCountryData, setCountryData] = useState<CountryExpense[]>([]);
   const [selectedCountry, setSelectedCountry] = useState<{
     iso3: string;
     name: string;
@@ -72,10 +75,16 @@ export function CountryMap() {
   } | null>(null);
   const [loading, setLoading] = useState(true);
   const [loadedYear, setLoadedYear] = useState<number | null>(null);
+  const [errorYear, setErrorYear] = useState<number | null>(null);
   const [showMap, setShowMap] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedYear, setSelectedYear] = useState<number>(
     yearRanges.geographicExpenses.default,
+  );
+  const loadError = errorYear === selectedYear;
+  const countryData = useMemo(
+    () => (loadedYear === selectedYear ? loadedCountryData : []),
+    [loadedYear, selectedYear, loadedCountryData],
   );
   const [pendingDeepLink, setPendingDeepLink] = useDeepLink({
     hashPrefix: "country",
@@ -85,28 +94,33 @@ export function CountryMap() {
 
   // Open sidebar when data is loaded and there's a pending deep link
   useEffect(() => {
-    if (!loading && pendingDeepLink && countryData.length > 0) {
-      const requestedYear = Number(
-        new URLSearchParams(window.location.search).get("year"),
-      );
-      if (yearRanges.geographicExpenses.years.includes(requestedYear)) {
-        if (selectedYear !== requestedYear) {
-          setSelectedYear(requestedYear);
-          return;
+    const frame = requestAnimationFrame(() => {
+      if (pendingDeepLink) {
+        const requestedYear = Number(
+          new URLSearchParams(window.location.search).get("year"),
+        );
+        if (yearRanges.geographicExpenses.years.includes(requestedYear)) {
+          if (selectedYear !== requestedYear) {
+            setSelectedYear(requestedYear);
+            return;
+          }
+          if (loadedYear !== requestedYear) return;
         }
-        if (loadedYear !== requestedYear) return;
+        if (loading || loadedYear !== selectedYear || countryData.length === 0)
+          return;
+        const country = countryData.find((c) => c.iso3 === pendingDeepLink);
+        if (country) {
+          setSelectedCountry({
+            iso3: country.iso3,
+            name: country.name,
+            total: country.total,
+            entities: country.entities,
+          });
+        }
+        setPendingDeepLink(null);
       }
-      const country = countryData.find((c) => c.iso3 === pendingDeepLink);
-      if (country) {
-        setSelectedCountry({
-          iso3: country.iso3,
-          name: country.name,
-          total: country.total,
-          entities: country.entities,
-        });
-      }
-      setPendingDeepLink(null);
-    }
+    });
+    return () => cancelAnimationFrame(frame);
   }, [
     loading,
     pendingDeepLink,
@@ -120,9 +134,13 @@ export function CountryMap() {
   useEffect(() => {
     let cancelled = false;
     fetch(`${basePath}/data/geographic-expenses-${selectedYear}.json`)
-      .then((res) => res.json())
+      .then((res) => {
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        return res.json();
+      })
       .then((data: CountryExpense[]) => {
         if (cancelled) return;
+        setErrorYear(null);
         setCountryData(data);
         setLoadedYear(selectedYear);
         setLoading(false);
@@ -130,6 +148,9 @@ export function CountryMap() {
       .catch((err) => {
         if (cancelled) return;
         console.error("Failed to load country data:", err);
+        setErrorYear(selectedYear);
+        setCountryData([]);
+        setSelectedCountry(null);
         setLoading(false);
       });
     return () => {
@@ -209,8 +230,17 @@ export function CountryMap() {
 
   if (!countryData || countryData.length === 0) {
     return (
-      <div className="flex h-[650px] w-full items-center justify-center bg-gray-100">
-        <p className="text-lg text-gray-500">Failed to load country data</p>
+      <div className="flex h-[650px] w-full flex-col items-center justify-center gap-4 bg-gray-100">
+        <YearSlider
+          years={COUNTRY_YEARS}
+          selectedYear={selectedYear}
+          onChange={setSelectedYear}
+        />
+        <p className="text-lg text-gray-500">
+          {loadError
+            ? `Geographic data could not be loaded for ${selectedYear}.`
+            : `Loading geographic data for ${selectedYear}…`}
+        </p>
       </div>
     );
   }

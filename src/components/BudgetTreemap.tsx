@@ -1457,10 +1457,13 @@ export function BudgetTreemap({
   const hasSplitEntities = Object.values(entityPlacements).some(
     (placements) => placements.size > 1,
   );
-  const fundingLabel = (key: string) =>
-    meta?.fundingLabels?.[key] ??
-    FUNDING_SOURCES[key as BudgetFundingSource]?.label ??
-    key;
+  const fundingLabel = useCallback(
+    (key: string) =>
+      meta?.fundingLabels?.[key] ??
+      FUNDING_SOURCES[key as BudgetFundingSource]?.label ??
+      key,
+    [meta?.fundingLabels],
+  );
   const metricDefinition = meta?.metrics?.[metric];
 
   const usesSharedProgrammeBudget = !isPko && !isTrustFund;

@@ -1,4 +1,5 @@
 "use client";
+import { useYearResource } from "@/hooks/useYearResource";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 
@@ -97,10 +98,27 @@ export function ContributorSidebar({
     yearRanges.donors.max,
   ).reverse();
   const [selectedYear, setSelectedYear] = useState(initialYear);
-  const [yearContributor, setYearContributor] = useState<Contributor | null>(
+  const loadYear = useCallback(async (): Promise<Contributor | null> => {
+    const data = await fetch(
+      `${basePath}/data/donors-${selectedYear}.json`,
+    ).then((res) => {
+      if (!res.ok) throw new Error(String(res.status));
+      return res.json() as Promise<Record<string, Contributor>>;
+    });
+    const found = contributor ? data[contributor.name] : null;
+    return found && contributor ? { ...found, name: contributor.name } : null;
+  }, [selectedYear, contributor]);
+  const {
+    value: yearContributor,
+    loading: loadingYear,
+    error: yearError,
+  } = useYearResource<Contributor | null>(
+    `${contributor?.name}-${selectedYear}`,
     contributor,
+    !contributor?.name || selectedYear === initialYear,
+    loadYear,
+    null,
   );
-  const [loadingYear, setLoadingYear] = useState(false);
 
   // Trends data for chart
   const [trendsData, setTrendsData] = useState<FinancingInstrumentDataPoint[]>(
@@ -130,23 +148,6 @@ export function ContributorSidebar({
       })
       .catch(() => setTrendsData([]));
   }, [contributor?.name]);
-
-  // Fetch contributor data when year changes
-  useEffect(() => {
-    if (!contributor?.name || selectedYear === initialYear) {
-      setYearContributor(contributor);
-      return;
-    }
-    setLoadingYear(true);
-    fetch(`${basePath}/data/donors-${selectedYear}.json`)
-      .then((res) => res.json())
-      .then((data: Record<string, Contributor>) => {
-        const found = data[contributor.name];
-        setYearContributor(found ? { ...found, name: contributor.name } : null);
-      })
-      .catch(() => setYearContributor(null))
-      .finally(() => setLoadingYear(false));
-  }, [selectedYear, contributor?.name, initialYear, contributor]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 10);
@@ -260,12 +261,14 @@ export function ContributorSidebar({
               pending={loadingYear}
               requestKey={selectedYear}
             />
-            {!yearContributor &&
-            !loadingYear &&
-            selectedYear !== initialYear ? (
+            {!yearContributor && selectedYear !== initialYear ? (
               <>
                 <p className="text-sm text-gray-500 italic">
-                  No data available for {contributor.name} in {selectedYear}.
+                  {loadingYear
+                    ? "Loading…"
+                    : yearError
+                      ? `Data could not be loaded for ${selectedYear}.`
+                      : `No data available for ${contributor.name} in ${selectedYear}.`}
                 </p>
               </>
             ) : (

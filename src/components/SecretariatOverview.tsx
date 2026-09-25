@@ -119,10 +119,13 @@ export function SecretariatOverview() {
   );
 
   useEffect(() => {
-    if (!pending || !current) return;
-    const match = current.entities.find((entity) => entity.code === pending);
-    if (match) setSelectedCode(match.code);
-    setPending(null);
+    const frame = requestAnimationFrame(() => {
+      if (!pending || !current) return;
+      const match = current.entities.find((entity) => entity.code === pending);
+      if (match) setSelectedCode(match.code);
+      setPending(null);
+    });
+    return () => cancelAnimationFrame(frame);
   }, [current, pending, setPending]);
 
   const fundingSet = useMemo(() => new Set(activeFunding), [activeFunding]);
@@ -230,12 +233,17 @@ export function SecretariatOverview() {
         data: name,
       };
 
-      const subgroupOrder = (Object.keys(current.meta.groups) as SecretariatGroup[])
-        .sort((a, b) => current.meta.groups[a].order - current.meta.groups[b].order);
+      const subgroupOrder = (
+        Object.keys(current.meta.groups) as SecretariatGroup[]
+      ).sort(
+        (a, b) => current.meta.groups[a].order - current.meta.groups[b].order,
+      );
       builtRows.push({
         ...base,
         subgroups: subgroupOrder.flatMap((key) => {
-          const subgroupTiles = sortedTiles.filter(tile => tile.entity.group === key);
+          const subgroupTiles = sortedTiles.filter(
+            (tile) => tile.entity.group === key,
+          );
           return subgroupTiles.length > 0
             ? [
                 {
@@ -321,8 +329,13 @@ export function SecretariatOverview() {
           label: "Search entities",
           placeholder: "Search entities...",
           predicate: (leafLabel, _subgroupLabel, _rowLabel, needle) =>
-            ((entityCodeByLabel.get(leafLabel) ?? leafLabel) + " " +
-              (current.entities.find(e => e.code === entityCodeByLabel.get(leafLabel))?.name ?? ""))
+            (
+              (entityCodeByLabel.get(leafLabel) ?? leafLabel) +
+              " " +
+              (current.entities.find(
+                (e) => e.code === entityCodeByLabel.get(leafLabel),
+              )?.name ?? "")
+            )
               .toLocaleLowerCase()
               .includes(needle.trim().toLocaleLowerCase()),
         }}
@@ -341,7 +354,11 @@ export function SecretariatOverview() {
         formatAccessibleValue={formatBudget}
         renderTooltip={({ row, leaf }) => (
           <FinancialTooltip
-            title={leaf.data?.entity.name ?? entityNames[leaf.data?.entity.code ?? ""] ?? leaf.label}
+            title={
+              leaf.data?.entity.name ??
+              entityNames[leaf.data?.entity.code ?? ""] ??
+              leaf.label
+            }
             parents={[{ label: row.label, color: row.color }]}
             total={{ label: "Spending", value: formatBudget(leaf.value) }}
             rows={orderFundingTooltipRows(leaf.segments).map((segment) => ({
@@ -364,23 +381,57 @@ export function SecretariatOverview() {
       />
 
       <details className="mt-4 text-sm">
-        <summary className="cursor-pointer">All matching entities and signed adjustments</summary>
-        <ul className="mt-2 space-y-1">{current.entities.filter(entity =>
-          (entity.code + " " + entity.name).toLocaleLowerCase().includes(query.trim().toLocaleLowerCase())
-        ).map(entity => <li key={entity.code}>
-          <button className="underline underline-offset-2" onClick={() => openEntity(entity)}>{entity.name} ({entity.code})</button>
-          {" · "}{formatBudget(sumCells(entity.cells.filter(cell => fundingSet.has(cell.funding_source))))}
-        </li>)}</ul>
+        <summary className="cursor-pointer">
+          All matching entities and signed adjustments
+        </summary>
+        <ul className="mt-2 space-y-1">
+          {current.entities
+            .filter((entity) =>
+              (entity.code + " " + entity.name)
+                .toLocaleLowerCase()
+                .includes(query.trim().toLocaleLowerCase()),
+            )
+            .map((entity) => (
+              <li key={entity.code}>
+                <button
+                  className="underline underline-offset-2"
+                  onClick={() => openEntity(entity)}
+                >
+                  {entity.name} ({entity.code})
+                </button>
+                {" · "}
+                {formatBudget(
+                  sumCells(
+                    entity.cells.filter((cell) =>
+                      fundingSet.has(cell.funding_source),
+                    ),
+                  ),
+                )}
+              </li>
+            ))}
+        </ul>
       </details>
       <SecretariatOverviewTrends />
 
       {selectedEntity && (
         <SecretariatEntitySidebar
           key={`${selectedEntity.code}-${year}`}
-          entity={{ ...selectedEntity,
-            cells: selectedEntity.cells.filter(cell => fundingSet.has(cell.funding_source)),
-            total: sumCells(selectedEntity.cells.filter(cell => fundingSet.has(cell.funding_source))) }}
-          selectionScope={activeFunding.length < BUDGET_FUNDING_SOURCES.length ? "Treemap funding selection · " + year : undefined}
+          entity={{
+            ...selectedEntity,
+            cells: selectedEntity.cells.filter((cell) =>
+              fundingSet.has(cell.funding_source),
+            ),
+            total: sumCells(
+              selectedEntity.cells.filter((cell) =>
+                fundingSet.has(cell.funding_source),
+              ),
+            ),
+          }}
+          selectionScope={
+            activeFunding.length < BUDGET_FUNDING_SOURCES.length
+              ? "Treemap funding selection · " + year
+              : undefined
+          }
           year={year}
           source={current.meta.source}
           selectedPriority={null}

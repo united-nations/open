@@ -30,7 +30,7 @@ import {
   type FinancingInstrumentType,
 } from "@/lib/financingInstruments";
 import { getSystemGroupingStyle } from "@/lib/systemGroupings";
-import { generateYearRange, useYearRanges } from "@/lib/useYearRanges";
+import { useYearRanges } from "@/lib/useYearRanges";
 import type { BudgetEntry, Entity, EntityRevenue } from "@/types";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -99,14 +99,8 @@ function EntityTooltip({
 
 export function EntitiesTreemap() {
   const yearRanges = useYearRanges();
-  const spendingYears = generateYearRange(
-    yearRanges.entitySpending.min,
-    yearRanges.entitySpending.max,
-  );
-  const revenueYears = generateYearRange(
-    yearRanges.entityRevenue.min,
-    yearRanges.entityRevenue.max,
-  );
+  const spendingYears = yearRanges.entitySpending.years;
+  const revenueYears = yearRanges.entityRevenue.years;
 
   const [entities, setEntities] = useState<Entity[]>([]);
   const [spendingData, setSpendingData] = useState<Record<string, number>>({});
@@ -119,6 +113,11 @@ export function EntitiesTreemap() {
   );
   const [selectedEntity, setSelectedEntity] = useState<Entity | null>(null);
   const [loading, setLoading] = useState(true);
+  const [errorState, setErrorState] = useState<{
+    year: number;
+    revenue: boolean;
+    message: string;
+  } | null>(null);
   const [loadedSpendingYear, setLoadedSpendingYear] = useState<number | null>(
     null,
   );
@@ -141,26 +140,30 @@ export function EntitiesTreemap() {
 
   useEffect(() => {
     fetch(`${basePath}/data/entities.json`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
       .then((data: Entity[]) => setEntities(data))
       .catch((error) => console.error("Failed to load entities:", error));
   }, []);
 
   useEffect(() => {
     let cancelled = false;
-    if (
-      currentYear < yearRanges.entitySpending.min ||
-      currentYear > yearRanges.entitySpending.max
-    ) {
+    if (!spendingYears.includes(currentYear)) {
       setSpendingData({});
       setLoadedSpendingYear(currentYear);
       setLoading(false);
       return;
     }
     fetch(`${basePath}/data/entity-spending-${currentYear}.json`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
       .then((entries: BudgetEntry[]) => {
         if (cancelled) return;
+        if (!showRevenue) setErrorState(null);
         setLoadedSpendingYear(currentYear);
         setSpendingData(
           Object.fromEntries(
@@ -172,33 +175,36 @@ export function EntitiesTreemap() {
       .catch((error) => {
         if (cancelled) return;
         console.error("Failed to load expenses data:", error);
+        setSpendingData({});
+        if (!showRevenue)
+          setErrorState({
+            year: currentYear,
+            revenue: false,
+            message: `Spending data could not be loaded for ${currentYear}.`,
+          });
         if (!showRevenue) setLoading(false);
       });
     return () => {
       cancelled = true;
     };
-  }, [
-    showRevenue,
-    currentYear,
-    yearRanges.entitySpending.min,
-    yearRanges.entitySpending.max,
-  ]);
+  }, [showRevenue, currentYear, spendingYears]);
 
   useEffect(() => {
     let cancelled = false;
-    if (
-      currentYear < yearRanges.entityRevenue.min ||
-      currentYear > yearRanges.entityRevenue.max
-    ) {
+    if (!revenueYears.includes(currentYear)) {
       setRevenueData({});
       setLoadedRevenueYear(currentYear);
       setLoading(false);
       return;
     }
     fetch(`${basePath}/data/entity-revenue-${currentYear}.json`)
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        return response.json();
+      })
       .then((data: Record<string, EntityRevenue>) => {
         if (cancelled) return;
+        if (showRevenue) setErrorState(null);
         setRevenueData(data);
         setLoadedRevenueYear(currentYear);
         if (showRevenue) setLoading(false);
@@ -206,33 +212,57 @@ export function EntitiesTreemap() {
       .catch((error) => {
         if (cancelled) return;
         console.error("Failed to load revenue data:", error);
+        setRevenueData({});
+        if (showRevenue)
+          setErrorState({
+            year: currentYear,
+            revenue: true,
+            message: `Funding data could not be loaded for ${currentYear}.`,
+          });
         if (showRevenue) setLoading(false);
       });
     return () => {
       cancelled = true;
     };
-  }, [
+  }, [currentYear, showRevenue, revenueYears]);
+
+  const loadError =
+    errorState?.year === currentYear && errorState.revenue === showRevenue
+      ? errorState.message
+      : null;
+  const dataAvailable = (showRevenue ? revenueYears : spendingYears).includes(
     currentYear,
-    showRevenue,
-    yearRanges.entityRevenue.min,
-    yearRanges.entityRevenue.max,
-  ]);
+  );
+  const dataReady =
+    (showRevenue ? loadedRevenueYear : loadedSpendingYear) === currentYear;
 
   const budgetData = useMemo(
     () =>
-      showRevenue
-        ? Object.fromEntries(
-            Object.entries(revenueData).map(([entity, value]) => [
-              entity,
-              hiddenFunding.length === 0
-                ? value.total
-                : FINANCING_INSTRUMENT_ORDER.filter(
-                    (type) => !hiddenFunding.includes(type),
-                  ).reduce((sum, type) => sum + (value.by_type[type] ?? 0), 0),
-            ]),
-          )
-        : spendingData,
-    [revenueData, showRevenue, spendingData, hiddenFunding],
+      !dataReady || !dataAvailable
+        ? {}
+        : showRevenue
+          ? Object.fromEntries(
+              Object.entries(revenueData).map(([entity, value]) => [
+                entity,
+                hiddenFunding.length === 0
+                  ? value.total
+                  : FINANCING_INSTRUMENT_ORDER.filter(
+                      (type) => !hiddenFunding.includes(type),
+                    ).reduce(
+                      (sum, type) => sum + (value.by_type[type] ?? 0),
+                      0,
+                    ),
+              ]),
+            )
+          : spendingData,
+    [
+      revenueData,
+      showRevenue,
+      spendingData,
+      hiddenFunding,
+      dataReady,
+      dataAvailable,
+    ],
   );
 
   const signedEntries = Object.entries(budgetData).filter(([code]) => {
@@ -382,9 +412,7 @@ export function EntitiesTreemap() {
   return (
     <div className="relative w-full">
       <DelayedChartLoading
-        pending={
-          (showRevenue ? loadedRevenueYear : loadedSpendingYear) !== currentYear
-        }
+        pending={!loadError && dataAvailable && !dataReady}
         requestKey={`${showRevenue}-${currentYear}`}
       />
       <GroupedTreemap<string, never, Entity, string>
@@ -467,9 +495,18 @@ export function EntitiesTreemap() {
           {
             key: "net",
             label: searchQuery ? "Matching total" : "Total",
-            value: formatBudget(
-              signedEntries.reduce((sum, [, amount]) => sum + amount, 0),
-            ),
+            value: !dataAvailable
+              ? "Unavailable"
+              : loadError
+                ? "Unavailable"
+                : !dataReady
+                  ? "Loading…"
+                  : formatBudget(
+                      signedEntries.reduce(
+                        (sum, [, amount]) => sum + amount,
+                        0,
+                      ),
+                    ),
           },
         ]}
         totalLabel="Total"
@@ -482,12 +519,17 @@ export function EntitiesTreemap() {
         )}
         emptyContent={
           <div className="flex h-full items-center justify-center text-lg text-gray-500">
-            No entities match the selected filters
+            {loadError ||
+              (!dataAvailable
+                ? `No ${showRevenue ? "funding" : "spending"} data available for ${currentYear}.`
+                : !dataReady
+                  ? "Loading data…"
+                  : "No entities match the selected filters")}
           </div>
         }
       />
 
-      {selectedEntity && (
+      {selectedEntity && dataReady && dataAvailable && !loadError && (
         <EntitySidebar
           entity={selectedEntity}
           spending={

@@ -34,6 +34,7 @@ interface ContributorYearData {
   year: number;
   total: number;
   assessed: number;
+  other: number;
   voluntary_earmarked: number;
   voluntary_unearmarked: number;
 }
@@ -76,7 +77,9 @@ export function ContributorTrendsChart() {
   React.useEffect(() => {
     async function loadData() {
       try {
-        const response = await fetch("/data/contributor-trends.json");
+        const response = await fetch(
+          `${process.env.NEXT_PUBLIC_BASE_PATH || ""}/data/contributor-trends.json`,
+        );
         const json = await response.json();
         setData(json);
       } catch (error) {
@@ -103,13 +106,13 @@ export function ContributorTrendsChart() {
     return [
       {
         id: "gov",
-        label: "Government",
+        label: "Named governments",
         bgColor: "bg-un-blue",
         children: data.meta.governmentContributors,
       },
       {
         id: "non-gov",
-        label: "Non-Government",
+        label: "Named non-government contributors",
         bgColor: "bg-smoky",
         children: [],
         subgroups: nonGovSubgroups,
@@ -125,12 +128,12 @@ export function ContributorTrendsChart() {
       { id: "all", label: "All contributors", children: [] },
       {
         id: "gov",
-        label: "Government",
+        label: "Named governments",
         children: data.meta.governmentContributors,
       },
       {
         id: "non-gov",
-        label: "Non-Government",
+        label: "Named non-government contributors",
         children: data.meta.nonGovContributors,
       },
     ];
@@ -138,8 +141,8 @@ export function ContributorTrendsChart() {
 
   const getFinancingLabel = React.useCallback((id: string) => {
     if (id === "all") return "All contributors";
-    if (id === "gov") return "Government";
-    if (id === "non-gov") return "Non-Government";
+    if (id === "gov") return "Named governments";
+    if (id === "non-gov") return "Named non-government contributors";
     return id;
   }, []);
 
@@ -154,9 +157,10 @@ export function ContributorTrendsChart() {
       // Add data for each selected item
       Array.from(selected).forEach((id) => {
         if (id === "gov") {
-          point["Government"] = data.aggregates.gov[idx]?.total || 0;
+          point["Named governments"] = data.aggregates.gov[idx]?.total || 0;
         } else if (id === "non-gov") {
-          point["Non-Government"] = data.aggregates["non-gov"][idx]?.total || 0;
+          point["Named non-government contributors"] =
+            data.aggregates["non-gov"][idx]?.total || 0;
         } else if (id.startsWith("cat:") && data.aggregates[id]) {
           // Category aggregate - prefix to avoid collision with individual donors
           const catName = id.replace("cat:", "") + " (all)";
@@ -179,9 +183,9 @@ export function ContributorTrendsChart() {
     Array.from(selected).forEach((id) => {
       let name: string;
       if (id === "gov") {
-        name = "Government";
+        name = "Named governments";
       } else if (id === "non-gov") {
-        name = "Non-Government";
+        name = "Named non-government contributors";
       } else if (id.startsWith("cat:")) {
         name = id.replace("cat:", "") + " (all)";
       } else {
@@ -233,8 +237,23 @@ export function ContributorTrendsChart() {
         Assessed: item.assessed,
         "Voluntary un-earmarked": item.voluntary_unearmarked,
         "Voluntary earmarked": item.voluntary_earmarked,
+        Other: item.other,
       }));
     }, [data, financingContributor]);
+
+  // Controls depend on the asynchronously loaded contributor groups. Mount
+  // them with the data so their generated IDs are not hydrated across a
+  // changing sibling tree while the other contributor chart finishes loading.
+  if (loading) {
+    return (
+      <div
+        role="status"
+        className="mt-6 flex h-80 items-center justify-center text-gray-500"
+      >
+        Loading contributor trends…
+      </div>
+    );
+  }
 
   return (
     <>

@@ -20,7 +20,7 @@ const DATASET_DETAILS: Record<
   audited: {
     label: "Audited financial statements",
     description:
-      "Actual expenses from the Secretariat's consolidated financial statements, covering 2019–2023 and organized by budget part, section and entity.",
+      "Reported expenses reconstructed from Secretariat budget and financial-statement sources, organized by budget part, section and entity; accounting bases differ.",
   },
   ppb: {
     label: "Programme budget data (PPB + PKO)",

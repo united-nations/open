@@ -210,8 +210,6 @@ export default function SDGsGrid() {
   const [sdgs, setSdgs] = useState<SDG[]>([]);
   const [selectedSDG, setSelectedSDG] = useState<SDG | null>(null);
   const [showSpending, setShowSpending] = useState<boolean>(false);
-  const [showEntities, setShowEntities] = useState<boolean>(false); // Controls entity visibility
-  const [bgFaded, setBgFaded] = useState<boolean>(false); // Background fades to light when entities visible
   const [hasScrollRevealed, setHasScrollRevealed] = useState<boolean>(false);
   const gridRef = useRef<HTMLDivElement>(null);
   const [containerAspect, setContainerAspect] = useState(0);
@@ -224,19 +222,16 @@ export default function SDGsGrid() {
     yearRanges.sdgExpenses.default,
   );
 
-  // Sequence animations: entities and background fade in proper order
+  // Derive the immediate phase; only the delayed transition needs state.
+  const [settledSpending, setSettledSpending] = useState(false);
+  const showEntities = showSpending || settledSpending;
+  const bgFaded = showSpending && settledSpending;
   useEffect(() => {
-    if (showSpending) {
-      // Going to spending: entities fade in immediately, bg fades after
-      setShowEntities(true);
-      const timer = setTimeout(() => setBgFaded(true), 800);
-      return () => clearTimeout(timer);
-    } else {
-      // Going to grid: bg restores first (1400ms), then entities fade out
-      setBgFaded(false);
-      const timer = setTimeout(() => setShowEntities(false), 1400);
-      return () => clearTimeout(timer);
-    }
+    const timer = setTimeout(
+      () => setSettledSpending(showSpending),
+      showSpending ? 800 : 1400,
+    );
+    return () => clearTimeout(timer);
   }, [showSpending]);
 
   // Scroll-triggered reveal: transition when grid top reaches 40% from viewport top
@@ -275,21 +270,24 @@ export default function SDGsGrid() {
   });
 
   useEffect(() => {
-    if (pendingDeepLink && sdgs.length > 0) {
-      const requestedYear = Number(
-        new URLSearchParams(window.location.search).get("year"),
-      );
-      if (yearRanges.sdgExpenses.years.includes(requestedYear)) {
-        if (selectedYear !== requestedYear) {
-          setSelectedYear(requestedYear);
-          return;
+    const frame = requestAnimationFrame(() => {
+      if (pendingDeepLink && sdgs.length > 0) {
+        const requestedYear = Number(
+          new URLSearchParams(window.location.search).get("year"),
+        );
+        if (yearRanges.sdgExpenses.years.includes(requestedYear)) {
+          if (selectedYear !== requestedYear) {
+            setSelectedYear(requestedYear);
+            return;
+          }
+          if (loadedYear !== requestedYear) return;
         }
-        if (loadedYear !== requestedYear) return;
+        const sdg = sdgs.find((s) => s.number === pendingDeepLink);
+        if (sdg) setSelectedSDG(sdg);
+        setPendingDeepLink(null);
       }
-      const sdg = sdgs.find((s) => s.number === pendingDeepLink);
-      if (sdg) setSelectedSDG(sdg);
-      setPendingDeepLink(null);
-    }
+    });
+    return () => cancelAnimationFrame(frame);
   }, [
     pendingDeepLink,
     sdgs,
@@ -386,9 +384,6 @@ export default function SDGsGrid() {
       name: d.sdgNumber.toString(),
       value: d.total,
     }));
-  const dataLookup = Object.fromEntries(
-    filteredSDGData.map((d) => [d.sdgNumber.toString(), d]),
-  );
 
   useLayoutEffect(() => {
     const element = gridRef.current;
