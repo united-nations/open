@@ -57,23 +57,23 @@ export function UninfoFundingBar({
   if (!showLabels) {
     return (
       <div
-        className="flex items-center gap-1"
+        className="relative h-2 overflow-hidden rounded-sm bg-gray-100"
         role="img"
         aria-label={`Required ${formatAmount(required)}, available ${formatAmount(available)}, spent ${formatAmount(spent)}`}
       >
-        {bars.map((b) => (
-          <div
-            key={b.label}
-            data-resource={b.label}
-            data-value={b.value}
-            className="h-2 flex-1 overflow-hidden rounded-sm bg-gray-100"
-          >
+        {/* Share one origin and scale. Largest first keeps smaller reported
+            amounts visible even when the source violates the usual ordering. */}
+        {[...bars]
+          .sort((a, b) => b.pct - a.pct)
+          .map((b) => (
             <div
-              className="h-full"
+              key={b.label}
+              data-resource={b.label}
+              data-value={b.value}
+              className="absolute inset-y-0 start-0 rounded-sm"
               style={{ width: `${b.pct}%`, backgroundColor: b.bgColor }}
             />
-          </div>
-        ))}
+          ))}
       </div>
     );
   }

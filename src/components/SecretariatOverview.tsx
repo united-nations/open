@@ -380,37 +380,6 @@ export function SecretariatOverview() {
         }
       />
 
-      <details className="mt-4 text-sm">
-        <summary className="cursor-pointer">
-          All matching entities and signed adjustments
-        </summary>
-        <ul className="mt-2 space-y-1">
-          {current.entities
-            .filter((entity) =>
-              (entity.code + " " + entity.name)
-                .toLocaleLowerCase()
-                .includes(query.trim().toLocaleLowerCase()),
-            )
-            .map((entity) => (
-              <li key={entity.code}>
-                <button
-                  className="underline underline-offset-2"
-                  onClick={() => openEntity(entity)}
-                >
-                  {entity.name} ({entity.code})
-                </button>
-                {" · "}
-                {formatBudget(
-                  sumCells(
-                    entity.cells.filter((cell) =>
-                      fundingSet.has(cell.funding_source),
-                    ),
-                  ),
-                )}
-              </li>
-            ))}
-        </ul>
-      </details>
       <SecretariatOverviewTrends />
 
       {selectedEntity && (

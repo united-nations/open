@@ -1,5 +1,3 @@
-import { SectionLinkCards } from "@/components/SectionLinkCards";
-import { visibleSecretariatNav } from "@/lib/navigation";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import {
@@ -46,23 +44,7 @@ export default function SecretariatPage() {
             .
           </>
         }
-      >
-        <p className="mt-4 max-w-3xl text-sm leading-relaxed text-gray-700 lg:text-base">
-          You can also dive deeper into the three main funding sources of the UN
-          Secretariat: the programme budget, peacekeeping budget and trust
-          funds.
-        </p>
-        <SectionLinkCards
-          columns={3}
-          links={visibleSecretariatNav().filter((item) =>
-            [
-              "/secretariat/programme-budget",
-              "/secretariat/peacekeeping-budget",
-              "/secretariat/trust-funds",
-            ].includes(item.href),
-          )}
-        />
-      </PageHeading>
+      />
       <PageBody>
         <SecretariatOverview />
         <SecretariatFlows />

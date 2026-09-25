@@ -11,6 +11,8 @@
 @import "tailwindcss" source("../");
 @import "tw-animate-css";
 @import "@un-eosg/ui/theme.css";
+/* Track shared component utilities through the stable package path in dev too. */
+@source "../../node_modules/@un-eosg/ui/components";
 
 /**
  * Root-level CSS Variables (Application Theme Tokens)

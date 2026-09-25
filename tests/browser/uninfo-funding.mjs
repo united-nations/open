@@ -25,11 +25,19 @@ import fs from "fs";
     es.map((e) => ({
       metric: e.dataset.resource,
       value: Number(e.dataset.value),
-      width: parseFloat(e.firstElementChild.style.width),
+      left: e.getBoundingClientRect().left,
+      top: e.getBoundingClientRect().top,
+      width: parseFloat(e.style.width),
     })),
+  );
+  bars.sort(
+    (a, b) =>
+      ["Required", "Available", "Spent"].indexOf(a.metric) -
+      ["Required", "Available", "Spent"].indexOf(b.metric),
   );
   const pass =
     bars.length === 3 &&
+    bars.every((bar) => bar.left === bars[0].left && bar.top === bars[0].top) &&
     bars[0].value === 4570500 &&
     bars[0].width < 10 &&
     bars[1].value === 50262036 &&

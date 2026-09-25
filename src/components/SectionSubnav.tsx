@@ -31,17 +31,23 @@ export function SectionSubnav({
   const activeItem = items.find((item) => isActive(pathname, item));
   useEffect(() => {
     if (nested) return;
-    const nav = Array.from(document.querySelectorAll("nav"))
-      .find((element) => element.getAttribute("aria-label") === label);
+    const nav = Array.from(document.querySelectorAll("nav")).find(
+      (element) => element.getAttribute("aria-label") === label,
+    );
     const strip = nav?.parentElement;
     if (!strip) return;
-    const update = () => document.documentElement.style.setProperty(
-      "--section-nav-height", `${strip.getBoundingClientRect().height}px`,
-    );
+    const update = () =>
+      document.documentElement.style.setProperty(
+        "--section-nav-height",
+        `${strip.getBoundingClientRect().height}px`,
+      );
     update();
     const observer = new ResizeObserver(update);
     observer.observe(strip);
-    return () => observer.disconnect();
+    return () => {
+      observer.disconnect();
+      document.documentElement.style.removeProperty("--section-nav-height");
+    };
   }, [label, nested]);
 
   const renderLink = ({ href, ...props }: SecondaryHeaderLinkProps) => (
@@ -54,7 +60,11 @@ export function SectionSubnav({
       label={label}
       activeHref={activeItem?.href}
       renderLink={renderLink}
-      className={nested ? "top-[calc(65px+var(--section-nav-height,47px))] min-[1408px]:top-[calc(56px+var(--section-nav-height,47px))]" : undefined}
+      className={
+        nested
+          ? "top-[calc(var(--site-header-height,65px)+var(--section-nav-height,47px))] min-[1408px]:top-[calc(var(--site-header-height,65px)+var(--section-nav-height,47px))]"
+          : "top-[var(--site-header-height,65px)] min-[1408px]:top-[var(--site-header-height,65px)]"
+      }
     />
   );
 }

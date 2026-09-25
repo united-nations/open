@@ -422,7 +422,12 @@ export function ContributorsTreemap() {
       {contributors.length > 0 && (
         <>
           <GroupedTreemap<ContributorRow, string, Contributor, string>
-            layout={{ rowOrder: "input", consolidateSmallRows: false }}
+            layout={{
+              rowOrder: "input",
+              orderedBands: true,
+              minBandHeight: 28,
+              rowGap: 3,
+            }}
             footer={
               <ChartFooter
                 hint="Click on a contributor to explore details"

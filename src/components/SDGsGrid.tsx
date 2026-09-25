@@ -90,6 +90,7 @@ function gridLayout(
 function treemapLayout(
   items: TreemapItem[],
   containerAspect: number,
+  height = 100,
 ): (Rect & { data: TreemapItem })[] {
   if (items.length === 0) return [];
   const totalValue = items.reduce((sum, item) => sum + item.value, 0);
@@ -104,7 +105,7 @@ function treemapLayout(
   );
   const grandTotal = rowTotals.reduce((sum, t) => sum + t, 0);
   const totalRowGaps = (rows.length - 1) * SDG_GAP;
-  const availableHeight = 100 - totalRowGaps;
+  const availableHeight = height - totalRowGaps;
 
   const results: (Rect & { data: TreemapItem })[] = [];
   let currentY = 0;
@@ -404,14 +405,13 @@ export default function SDGsGrid() {
     ? (100 * unallocated.value) /
       items.reduce((sum, item) => sum + item.value, 0)
     : 0;
+  const allocatedItems = items.filter((item) => item.name !== "0");
+  const unallocatedGap = unallocated && allocatedItems.length ? SDG_GAP : 0;
   const treemapRects = treemapLayout(
-    items.filter((item) => item.name !== "0"),
+    allocatedItems,
     containerAspect,
-  ).map((rect) => ({
-    ...rect,
-    y: (rect.y * (100 - unallocatedHeight)) / 100,
-    height: (rect.height * (100 - unallocatedHeight)) / 100,
-  }));
+    100 - unallocatedHeight - unallocatedGap,
+  );
   if (unallocated)
     treemapRects.push({
       x: 0,

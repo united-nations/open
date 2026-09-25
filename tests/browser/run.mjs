@@ -2,10 +2,12 @@ import { spawn } from "node:child_process";
 import fs from "node:fs";
 import { portalUrl } from "./helpers.mjs";
 const checks = [
+  "header-layout",
   "data-disclosures",
   "routes-and-financials",
   "uninfo-funding",
   "peacekeeping-stages",
+  "secretariat-flows",
   "sidebar-years",
   "hydration",
 ];

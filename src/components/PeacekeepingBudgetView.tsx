@@ -7,6 +7,7 @@ import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { ChartFooter } from "@/components/ChartFooter";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
 import { ChartSearchInput } from "@/components/ui/chart-search-input";
+import { SegmentedControl } from "@un-eosg/ui/components/segmented-control";
 import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 
@@ -308,25 +309,16 @@ function MissionCostClassTreemap({
 export function PeacekeepingBudgetView() {
   const ranges = useYearRanges();
   const [metric, setMetric] = useState<PeacekeepingMetric>("expenditure");
-  const years =
-    metric === "approved"
-      ? ranges.budgetPkoApproved
-      : metric === "proposed"
-        ? ranges.budgetPkoProposed
-        : ranges.budgetPko;
-  const [year, setYear] = useState(ranges.budgetPko.default);
-  const metricLabel = PEACEKEEPING_METRICS[metric];
-  const changeMetric = (next: PeacekeepingMetric) => {
-    const nextYears =
-      next === "approved"
-        ? ranges.budgetPkoApproved
-        : next === "proposed"
-          ? ranges.budgetPkoProposed
-          : ranges.budgetPko;
-    setMetric(next);
-    setYear(nextYears.years.includes(year) ? year : nextYears.default);
-    setMapTooltip(null);
+  const metricYears = {
+    expenditure: ranges.budgetPko,
+    approved: ranges.budgetPkoApproved,
+    proposed: ranges.budgetPkoProposed,
   };
+  const allYears = [
+    ...new Set(Object.values(metricYears).flatMap((range) => range.years)),
+  ].sort((a, b) => a - b);
+  const [year, setYear] = useState(ranges.budgetPko.default);
+  const budgetCache = useRef(new Map<string, BudgetData>());
   const [budget, setBudget] = useState<BudgetData | null>(null);
   const [entities, setEntities] = useState<SecretariatEntitiesData | null>(
     null,
@@ -349,6 +341,24 @@ export function PeacekeepingBudgetView() {
     x: number;
     y: number;
   } | null>(null);
+  const changeMetric = (next: PeacekeepingMetric) => {
+    if (!metricYears[next].years.includes(year)) return;
+    setMetric(next);
+    setMapTooltip(null);
+  };
+  const changeYear = (next: number) => {
+    setYear(next);
+    if (!metricYears[metric].years.includes(next)) {
+      setMetric(
+        metricYears.expenditure.years.includes(next)
+          ? "expenditure"
+          : metricYears.approved.years.includes(next)
+            ? "approved"
+            : "proposed",
+      );
+    }
+    setMapTooltip(null);
+  };
   const mapPointer = useRef({ x: 0, y: 0 });
   const tooltipCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const keepMapTooltip = () => {
@@ -400,8 +410,13 @@ export function PeacekeepingBudgetView() {
 
   useEffect(() => {
     let active = true;
-    loadYearData<BudgetData>(`budget-pko-${metric}`, year)
+    const cached = budgetCache.current.get(requestKey);
+    (cached
+      ? Promise.resolve(cached)
+      : loadYearData<BudgetData>(`budget-pko-${metric}`, year)
+    )
       .then((data) => {
+        budgetCache.current.set(requestKey, data);
         if (active) {
           setFailure(null);
           setBudget(data);
@@ -419,11 +434,18 @@ export function PeacekeepingBudgetView() {
     };
   }, [year, metric, requestKey]);
 
-  const current =
-    budget?.meta.year === year &&
-    budget.meta.measure === (metric === "approved" ? "appropriation" : metric)
-      ? budget
-      : null;
+  const waitingForData =
+    budget?.meta.year !== year ||
+    budget?.meta.measure !== (metric === "approved" ? "appropriation" : metric);
+  // Keep the loaded measure attached to its data until the replacement arrives.
+  const current = error ? null : budget;
+  const displayedMetric =
+    current?.meta.measure === "appropriation"
+      ? "approved"
+      : current?.meta.measure === "proposed"
+        ? "proposed"
+        : "expenditure";
+  const metricLabel = PEACEKEEPING_METRICS[current ? displayedMetric : metric];
   const rows = useMemo(() => {
     if (!current || !entities) return [];
     return buildRows(current, entities);
@@ -455,13 +477,14 @@ export function PeacekeepingBudgetView() {
               : SUPPORT_COLOR
         }
         selected={!hiddenKinds.includes(kind)}
-        onToggle={() =>
+        onToggle={() => {
+          setMapTooltip(null);
           setHiddenKinds((current) =>
             current.includes(kind)
               ? current.filter((item) => item !== kind)
               : [...current, kind],
-          )
-        }
+          );
+        }}
       />
     ),
   );
@@ -495,52 +518,63 @@ export function PeacekeepingBudgetView() {
 
   return (
     <div className="relative flex w-full flex-col">
-      <DelayedChartLoading
-        pending={!current && !error}
-        requestKey={`${metric}-${year}`}
-      />
       <ChartFrame
         header={
-          <ChartHeader
-            yearControl={
-              <YearSlider
-                years={years.years}
-                selectedYear={year}
-                onChange={(next) => {
-                  setYear(next);
-                  setMapTooltip(null);
+          <div className="space-y-4">
+            <div
+              className="flex flex-wrap items-center gap-3"
+              data-testid="peacekeeping-primary-controls"
+            >
+              <SegmentedControl
+                label="Budget metric"
+                value={metric}
+                onValueChange={(value) => {
+                  if (
+                    value === "proposed" ||
+                    value === "approved" ||
+                    value === "expenditure"
+                  )
+                    changeMetric(value);
                 }}
-                formatLabel={fiscalYearLabel}
+                options={(
+                  [
+                    {
+                      value: "proposed",
+                      label: "Proposed",
+                      description:
+                        "Proposed resources for the selected July–June financial year.",
+                    },
+                    {
+                      value: "approved",
+                      label: "Approved",
+                      description:
+                        "Approved appropriations printed in the mission budget reports.",
+                    },
+                    {
+                      value: "expenditure",
+                      label: "Expenditure",
+                      description:
+                        "Actual expenditure for the selected July–June financial year.",
+                    },
+                  ] as const
+                ).map((option) => ({
+                  ...option,
+                  disabled: !metricYears[option.value].years.includes(year),
+                  description: metricYears[option.value].years.includes(year)
+                    ? option.description
+                    : `${option.label} data is not available for ${fiscalYearLabel(year)}.`,
+                }))}
               />
-            }
-            controls={
-              <>
-                <label className="flex items-center gap-2 text-sm">
-                  Budget stage
-                  <select
-                    aria-label="Peacekeeping budget stage"
-                    value={metric}
-                    onChange={(event) =>
-                      changeMetric(event.target.value as PeacekeepingMetric)
-                    }
-                    className="rounded border border-gray-300 bg-white px-2 py-1"
-                  >
-                    {Object.entries(PEACEKEEPING_METRICS).map(
-                      ([value, label]) => (
-                        <option key={value} value={value}>
-                          {label}
-                        </option>
-                      ),
-                    )}
-                  </select>
-                </label>
-                <div
-                  role="group"
-                  aria-label="Mission types"
-                  className="flex flex-wrap gap-2"
-                >
-                  {missionFilters}
-                </div>
+              <div
+                role="group"
+                aria-label="Mission types"
+                className="flex flex-wrap gap-2"
+              >
+                {missionFilters}
+              </div>
+            </div>
+            <ChartHeader
+              controls={
                 <BinaryToggle
                   variant="segmented"
                   label="Peacekeeping view"
@@ -554,32 +588,42 @@ export function PeacekeepingBudgetView() {
                     setMapTooltip(null);
                   }}
                 />
-              </>
-            }
-            search={
-              <ChartSearchInput
-                value={query}
-                onChange={setQuery}
-                placeholder="Search missions..."
-              />
-            }
-            summaries={[
-              {
-                key: "total",
-                label:
-                  query || hiddenKinds.length
-                    ? `Matching ${metricLabel.toLowerCase()}`
-                    : metricLabel,
-                value: current
-                  ? formatBudget(
-                      query || hiddenKinds.length
-                        ? visibleRows.reduce((sum, row) => sum + row.total, 0)
-                        : current.meta.total,
-                    )
-                  : "Unavailable",
-              },
-            ]}
-          />
+              }
+              yearControl={
+                <YearSlider
+                  years={allYears}
+                  selectedYear={year}
+                  onChange={changeYear}
+                  formatLabel={fiscalYearLabel}
+                />
+              }
+              search={
+                <ChartSearchInput
+                  value={query}
+                  onChange={setQuery}
+                  placeholder="Search missions..."
+                />
+              }
+              summaries={[
+                {
+                  key: "total",
+                  label:
+                    waitingForData && current
+                      ? `${metricLabel} · ${current.meta.fiscalYear}`
+                      : query || hiddenKinds.length
+                        ? `Matching ${metricLabel.toLowerCase()}`
+                        : metricLabel,
+                  value: current
+                    ? formatBudget(
+                        query || hiddenKinds.length
+                          ? visibleRows.reduce((sum, row) => sum + row.total, 0)
+                          : current.meta.total,
+                      )
+                    : "Unavailable",
+                },
+              ]}
+            />
+          </div>
         }
         footer={
           <ChartFooter
@@ -616,77 +660,95 @@ export function PeacekeepingBudgetView() {
           />
         }
       >
-        {!current && (
-          <p role="status" className="p-6">
-            {error ?? "Loading peacekeeping budget…"}
-          </p>
-        )}
-        {current?.meta.scopeWarning && (
-          <p className="px-4 py-2 text-sm text-gray-600">
-            {current.meta.scopeWarning}
-          </p>
-        )}
-        <section className="order-1" hidden={showMap}>
-          <MissionCostClassTreemap rows={visibleRows} onOpen={openMission} />
-        </section>
+        <div className="relative" aria-busy={waitingForData && !error}>
+          <DelayedChartLoading
+            pending={waitingForData && !error}
+            requestKey={requestKey}
+          />
+          {waitingForData && current && (
+            <p
+              role="status"
+              className="absolute end-0 top-0 z-10 bg-white px-2 text-xs text-gray-600"
+            >
+              Loading {PEACEKEEPING_METRICS[metric].toLowerCase()}{" "}
+              {fiscalYearLabel(year)}; showing {current.meta.fiscalYear} until
+              ready…
+            </p>
+          )}
+          {!current && (
+            <p role="status" className="p-6">
+              {error ?? "Loading peacekeeping budget…"}
+            </p>
+          )}
+          {current?.meta.scopeWarning && (
+            <p className="min-h-16 px-4 py-2 text-sm text-gray-600">
+              {current.meta.scopeWarning}
+            </p>
+          )}
+          <section className="order-1" hidden={showMap}>
+            <MissionCostClassTreemap rows={visibleRows} onOpen={openMission} />
+          </section>
 
-        <section className="order-3" hidden={!showMap}>
-          <div
-            className="pko-dot-map relative border border-gray-200 bg-white"
-            onPointerMoveCapture={(event) => {
-              mapPointer.current = { x: event.clientX, y: event.clientY };
-            }}
-          >
-            <DotDensityMap
-              data={points}
-              colorDomain={["pko", "support_office", "support"]}
-              colors={[FIELD_COLOR, "var(--color-un-purple)", SUPPORT_COLOR]}
-              radius={MAX_MISSION_RADIUS_PX}
-              maxRadiusValue={1}
-              mapProjection="equalEarth"
-              scale={1.15}
-              centerPoint={[0, 6]}
-              zoomInteraction="button"
-              mapBorderWidth={0.5}
-              mapBorderColor="#d1d5db"
-              mapNoDataColor="#f3f4f6"
-              height={520}
-              padding="0px"
-              showAntarctica={false}
-              isWorldMap
-              showColorScale={false}
-              showLabels={false}
-              footNote=""
-              resetSelectionOnDoubleClick={false}
-              highlightedDataPoints={selectedCode ? [selectedCode] : []}
-              onSeriesMouseClick={(point: MapPoint | undefined) => {
-                const code =
-                  point?.data?.code ??
-                  (typeof point?.label === "string" ? point.label : undefined);
-                if (code) openMission(code);
+          <section className="order-3" hidden={!showMap}>
+            <div
+              className="pko-dot-map relative border border-gray-200 bg-white"
+              onPointerMoveCapture={(event) => {
+                mapPointer.current = { x: event.clientX, y: event.clientY };
               }}
-              ariaLabel={`Map of peacekeeping ${metricLabel.toLowerCase()} in ${current?.meta.fiscalYear}`}
-              onSeriesMouseOver={(point: MapPoint | undefined) => {
-                if (!point) {
-                  closeMapTooltipSoon();
-                  return;
-                }
-                keepMapTooltip();
-                setMapTooltip({ mission: point.data, ...mapPointer.current });
-              }}
-              styles={{
-                tooltip: {
-                  backgroundColor: "white",
-                  border: "1px solid #e2e8f0",
-                  borderRadius: "6px",
-                  padding: "8px 12px",
-                  boxShadow:
-                    "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)",
-                },
-              }}
-            />
-          </div>
-        </section>
+            >
+              <DotDensityMap
+                data={points}
+                colorDomain={["pko", "support_office", "support"]}
+                colors={[FIELD_COLOR, "var(--color-un-purple)", SUPPORT_COLOR]}
+                radius={MAX_MISSION_RADIUS_PX}
+                maxRadiusValue={1}
+                mapProjection="equalEarth"
+                scale={1.15}
+                centerPoint={[0, 6]}
+                zoomInteraction="button"
+                mapBorderWidth={0.5}
+                mapBorderColor="#d1d5db"
+                mapNoDataColor="#f3f4f6"
+                height={520}
+                padding="0px"
+                showAntarctica={false}
+                isWorldMap
+                showColorScale={false}
+                showLabels={false}
+                footNote=""
+                resetSelectionOnDoubleClick={false}
+                highlightedDataPoints={selectedCode ? [selectedCode] : []}
+                onSeriesMouseClick={(point: MapPoint | undefined) => {
+                  const code =
+                    point?.data?.code ??
+                    (typeof point?.label === "string"
+                      ? point.label
+                      : undefined);
+                  if (code) openMission(code);
+                }}
+                ariaLabel={`Map of peacekeeping ${metricLabel.toLowerCase()} in ${current?.meta.fiscalYear}`}
+                onSeriesMouseOver={(point: MapPoint | undefined) => {
+                  if (!point) {
+                    closeMapTooltipSoon();
+                    return;
+                  }
+                  keepMapTooltip();
+                  setMapTooltip({ mission: point.data, ...mapPointer.current });
+                }}
+                styles={{
+                  tooltip: {
+                    backgroundColor: "white",
+                    border: "1px solid #e2e8f0",
+                    borderRadius: "6px",
+                    padding: "8px 12px",
+                    boxShadow:
+                      "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)",
+                  },
+                }}
+              />
+            </div>
+          </section>
+        </div>
       </ChartFrame>
 
       {mapTooltip &&
@@ -726,8 +788,8 @@ export function PeacekeepingBudgetView() {
       {selectedCode && current && (
         <div className="order-4">
           <PeacekeepingMissionSidebar
-            key={`${selectedCode}-${metric}`}
-            metric={metric}
+            key={`${selectedCode}-${displayedMetric}`}
+            metric={displayedMetric}
             code={selectedCode}
             name={selectedRow?.name ?? selectedLocation?.name ?? selectedCode}
             locationLabel={
