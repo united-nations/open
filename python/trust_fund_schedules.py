@@ -801,6 +801,18 @@ def extract_page_tables(
             ):
                 section_starts.append((0, "voluntary_contribution"))
 
+    # Some schedules omit the "Other transfers and allocations" heading but
+    # print the three-column Contributions / Refunds / Total header after the
+    # four-column voluntary table. Start a new physical table at that header.
+    for index, row in enumerate(rows):
+        text = row.text.lower()
+        if (("refunds/adjustments" in text and "contributions" in text and "monetary" not in text)
+                or ("internal transfers" in text and "total" in text)):
+            marker = index
+            if not any(start <= marker and kind == "other_transfer_allocation" for start, kind in section_starts):
+                section_starts.append((marker, "other_transfer_allocation"))
+    section_starts.sort()
+
     for section_position, (section_start, kind) in enumerate(section_starts):
         section_end = (
             section_starts[section_position + 1][0]
@@ -856,7 +868,7 @@ def extract_page_tables(
             )
         else:
             mode_markers: list[tuple[int, str]] = []
-            for index in range(section_start + 1, section_end):
+            for index in range(section_start, section_end):
                 words_right = [word[4] for word in rows[index].words if word[0] >= 150]
                 right_text = join_words(words_right).lower()
                 if "internal transfers" in right_text:
@@ -944,7 +956,7 @@ def extract_page_tables(
                 elif mode == "internal_transfers" and len(columns) == 4:
                     boundaries = dynamic_flow_boundaries(
                         rows,
-                        section_start + 1 if follows_contributions else marker,
+                        mode_markers[0][0] if follows_contributions else marker,
                         marker_end,
                         f"{kind}_contributions"
                         if follows_contributions

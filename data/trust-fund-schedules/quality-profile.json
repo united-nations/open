@@ -46,7 +46,7 @@
   "missing_2020_schedule_in_configured_sources": false,
   "docx_available_count": 1,
   "docx_unavailable_count": 7,
-  "literal_tables": 4511,
+  "literal_tables": 4516,
   "funds": 157,
   "fund_years": 1118,
   "statement_facts": 111477,
@@ -65,7 +65,7 @@
   "financial_performance_reconciliations": 1118,
   "financial_performance_reconciliation_failures": 0,
   "financial_performance_reconciliation_failure_examples": [],
-  "flow_component_reconciliations": 17369,
+  "flow_component_reconciliations": 17387,
   "flow_component_reconciliation_failures": 4,
   "flow_component_reconciliation_failure_examples": [
     {
@@ -256,13 +256,13 @@
       "pdf_pages": 450,
       "pages_with_text": 449,
       "pages_with_detected_tables": 396,
-      "tables": 531,
+      "tables": 533,
       "funds_detected": 140,
       "table_kinds": {
         "financial_performance": 140,
         "financial_position": 140,
-        "other_transfer_allocation_contributions": 43,
-        "other_transfer_allocation_internal_transfers": 23,
+        "other_transfer_allocation_contributions": 44,
+        "other_transfer_allocation_internal_transfers": 24,
         "voluntary_contribution": 110,
         "voluntary_contribution_receivable": 75
       }
@@ -289,18 +289,18 @@
       "pdf_pages": 472,
       "pages_with_text": 472,
       "pages_with_detected_tables": 418,
-      "tables": 717,
+      "tables": 720,
       "funds_detected": 145,
       "table_kinds": {
         "changes_in_net_assets": 145,
         "financial_performance": 145,
         "financial_position": 145,
-        "other_transfer_allocation_contributions": 49,
-        "other_transfer_allocation_internal_transfers": 31,
+        "other_transfer_allocation_contributions": 50,
+        "other_transfer_allocation_internal_transfers": 33,
         "voluntary_contribution": 122,
         "voluntary_contribution_receivable": 80
       }
     }
   ],
-  "stage1_table_index_rows": 4511
+  "stage1_table_index_rows": 4516
 }
