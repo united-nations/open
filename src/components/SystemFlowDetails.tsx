@@ -86,14 +86,14 @@ export function SystemFlowDetails({
         }))}
         notes={details.note}
       />
-      {details.sections.map((section) => {
+      {!compact && details.sections.map((section) => {
         const rows = section.rows.map((row) => ({
           label: row.label,
           value: formatBudget(row.amount),
           color: row.color,
           share: row.share,
         }));
-        const limit = section.canonical ? rows.length : compact ? 3 : 6;
+        const limit = section.canonical ? rows.length : 6;
         return (
           <div key={section.label} className="space-y-1">
             <p className="font-semibold">

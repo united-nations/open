@@ -22,13 +22,11 @@ export function SecretariatFlowDetails({ model, selection, compact, within, onEn
     <h4 className="font-semibold">{within ? "Selected portion: " : ""}{title}</h4>
     <p>Net expenditure: {formatBudget(sumRecords(rows))}</p>
     <p>Positive flows: {formatBudget(positiveRecords(rows))} · Adjustments: {formatBudget(sumRecords(rows) - positiveRecords(rows))}</p>
-    <ul className="space-y-1">{(compact ? ordered.slice(0, 5) : ordered).map(([code, members]) =>
+    {!compact && <ul className="space-y-1">{ordered.map(([code, members]) =>
       <li key={code} className="flex justify-between gap-4">
-        {compact ? <span>{members[0].name}</span> :
-          <button className="text-start underline underline-offset-2" onClick={() => onEntity(code, members)}>{members[0].name} ({code})</button>}
+        <button className="text-start underline underline-offset-2" onClick={() => onEntity(code, members)}>{members[0].name} ({code})</button>
         <span className="whitespace-nowrap">{formatBudget(sumRecords(members))}</span>
-      </li>)}</ul>
-    {compact && ordered.length > 5 && <p>{ordered.length - 5} further entities or accounting lines</p>}
+      </li>)}</ul>}
     {!compact && <details><summary className="cursor-pointer">All arrangements and source records ({rows.length})</summary>
       <div className="mt-3 space-y-3">{[...arrangements].map(([id, members]) =>
         <section key={id}><h5 className="font-medium">{members[0].arrangement.label}: {formatBudget(sumRecords(members))}</h5>
