@@ -54,6 +54,15 @@
         "Voluntary earmarked": 81825057.0,
         "Other": 47451.0
       },
+      "UN Tourism": {
+        "Voluntary earmarked": 649.28
+      },
+      "UN Women": {
+        "Voluntary earmarked": 45986509.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 20758735.0
+      },
       "UNCCD": {
         "Assessed": 205116.0,
         "Voluntary earmarked": 326703.0
@@ -79,9 +88,6 @@
       },
       "UNFPA": {
         "Voluntary earmarked": 54005929.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 20758735.0
       },
       "UNHCR": {
         "Voluntary earmarked": 235690614.0
@@ -113,9 +119,6 @@
       "UNU": {
         "Voluntary earmarked": 696090.0
       },
-      "UN Women": {
-        "Voluntary earmarked": 45986509.0
-      },
       "WFP": {
         "Voluntary earmarked": 499172780.0
       },
@@ -138,7 +141,8 @@
         "Voluntary earmarked": 22360.0
       },
       "FAO": {
-        "Voluntary earmarked": 1998298.0
+        "Voluntary earmarked": 1998298.0,
+        "Other": 79.0
       },
       "IARC": {
         "Voluntary earmarked": 2654778.029999999
@@ -165,13 +169,24 @@
       "PAHO": {
         "Voluntary earmarked": 4432335.0
       },
+      "Peacekeeping Operations": {
+        "Other": 10372.0
+      },
       "UN Secretariat": {
         "Voluntary un-earmarked": 98810.0,
         "Voluntary earmarked": 66217748.0,
         "Other": 1790505.0
       },
-      "Peacekeeping Operations": {
-        "Other": 10372.0
+      "UN Tourism": {
+        "Assessed": 48787.93000000001,
+        "Voluntary earmarked": 82371.79999999997,
+        "Other": 10932.29
+      },
+      "UN Women": {
+        "Voluntary earmarked": 4868978.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 1981444.0
       },
       "UNCDF": {
         "Voluntary earmarked": -838368.0
@@ -191,9 +206,6 @@
       },
       "UNFPA": {
         "Voluntary earmarked": 9205594.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 1981444.0
       },
       "UNHCR": {
         "Voluntary un-earmarked": 145413.0,
@@ -225,8 +237,8 @@
         "Voluntary earmarked": 2101015.0,
         "Other": 173541.0
       },
-      "UN Women": {
-        "Voluntary earmarked": 4868978.0
+      "UNV": {
+        "Other": -31.0
       },
       "WFP": {
         "Voluntary un-earmarked": 155787.0,
@@ -304,6 +316,10 @@
         "Assessed": 56590280.0,
         "Voluntary earmarked": 49896910.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1750362873.0,
+        "Other": 89690.0
+      },
       "UN Secretariat": {
         "Assessed": 707897586.0,
         "Voluntary un-earmarked": 25318791.0,
@@ -313,9 +329,13 @@
       "UN Tourism": {
         "Other": 6825.75
       },
-      "Peacekeeping Operations": {
-        "Assessed": 1750362873.0,
-        "Other": 89690.0
+      "UN Women": {
+        "Voluntary un-earmarked": 12000000.0,
+        "Voluntary earmarked": 5697509.0
+      },
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 600000.0,
+        "Voluntary earmarked": 2929435.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 50000000.0,
@@ -350,10 +370,6 @@
         "Voluntary earmarked": 163967053.0,
         "Other": 4180885.0
       },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 600000.0,
-        "Voluntary earmarked": 2929435.0
-      },
       "UNHCR": {
         "Voluntary earmarked": 1917853989.0
       },
@@ -386,10 +402,6 @@
       "UNU": {
         "Voluntary earmarked": 10917.0,
         "Other": 4962.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 12000000.0,
-        "Voluntary earmarked": 5697509.0
       },
       "UPU": {
         "Assessed": 3125748.5
@@ -477,6 +489,10 @@
         "Assessed": 11937973.36,
         "Voluntary earmarked": 221721.42
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1212355548.0,
+        "Other": 100761.0
+      },
       "UN Secretariat": {
         "Assessed": 490830444.0,
         "Voluntary un-earmarked": 5646.0,
@@ -488,9 +504,13 @@
         "Voluntary earmarked": 200824.64,
         "Other": 4345.17
       },
-      "Peacekeeping Operations": {
-        "Assessed": 1212355548.0,
-        "Other": 100761.0
+      "UN Women": {
+        "Voluntary un-earmarked": 2000000.0,
+        "Voluntary earmarked": 164692.0
+      },
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 350000.0,
+        "Voluntary earmarked": 1460958.0
       },
       "UNCCD": {
         "Assessed": 1220080.0,
@@ -520,10 +540,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 1478343.0,
         "Voluntary earmarked": 757529.0
-      },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 350000.0,
-        "Voluntary earmarked": 1460958.0
       },
       "UNHCR": {
         "Voluntary earmarked": 2740075.0
@@ -556,10 +572,6 @@
       "UNV": {
         "Voluntary earmarked": 3330173.0,
         "Other": 2449.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 2000000.0,
-        "Voluntary earmarked": 164692.0
       },
       "UPU": {
         "Assessed": 2005688.62
@@ -650,6 +662,9 @@
         "Voluntary earmarked": 138336.29,
         "Other": 166579.36
       },
+      "Peacekeeping Operations": {
+        "Assessed": 521823290.0
+      },
       "UN Secretariat": {
         "Assessed": 258479150.0,
         "Voluntary un-earmarked": 11694696.0,
@@ -660,8 +675,12 @@
         "Assessed": 403970.03,
         "Voluntary earmarked": 418508.32
       },
-      "Peacekeeping Operations": {
-        "Assessed": 521823290.0
+      "UN Women": {
+        "Voluntary un-earmarked": 4063895.0,
+        "Voluntary earmarked": 16977686.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 11015256.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 600000.0,
@@ -691,9 +710,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 16560000.0,
         "Voluntary earmarked": 23738301.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 11015256.0
       },
       "UNHCR": {
         "Voluntary un-earmarked": 6155661.0,
@@ -731,10 +747,6 @@
       "UNV": {
         "Voluntary earmarked": 3371450.0,
         "Other": 253755.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 4063895.0,
-        "Voluntary earmarked": 16977686.0
       },
       "UPU": {
         "Assessed": 2865269.46
@@ -832,6 +844,10 @@
       "PAHO": {
         "Voluntary earmarked": 231683.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 396837958.0,
+        "Other": 7568863.0
+      },
       "UN Secretariat": {
         "Assessed": 196634643.0,
         "Voluntary un-earmarked": 5346623.0,
@@ -842,9 +858,13 @@
         "Assessed": 398420.64,
         "Voluntary earmarked": 36579.36
       },
-      "Peacekeeping Operations": {
-        "Assessed": 396837958.0,
-        "Other": 7568863.0
+      "UN Women": {
+        "Voluntary un-earmarked": 28343371.0,
+        "Voluntary earmarked": 13163867.0
+      },
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 1093502.0,
+        "Voluntary earmarked": 15340468.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 5204517.0,
@@ -880,10 +900,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 51796846.0,
         "Voluntary earmarked": 13611563.0
-      },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 1093502.0,
-        "Voluntary earmarked": 15340468.0
       },
       "UNHCR": {
         "Voluntary un-earmarked": 1227321.0,
@@ -924,10 +940,6 @@
       "UNV": {
         "Voluntary earmarked": 3037096.0,
         "Other": 11482.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 28343371.0,
-        "Voluntary earmarked": 13163867.0
       },
       "UPU": {
         "Assessed": 2604790.42
@@ -1024,6 +1036,10 @@
         "Assessed": 42768.0,
         "Voluntary earmarked": 2012732.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 348159313.0,
+        "Other": 130084.0
+      },
       "UN Secretariat": {
         "Assessed": 140775088.0,
         "Voluntary un-earmarked": 10139504.0,
@@ -1033,9 +1049,12 @@
       "UN Tourism": {
         "Assessed": 2774.69
       },
-      "Peacekeeping Operations": {
-        "Assessed": 348159313.0,
-        "Other": 130084.0
+      "UN Women": {
+        "Voluntary un-earmarked": 7616320.0,
+        "Voluntary earmarked": 8865275.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": -15016.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 9864365.0
@@ -1068,9 +1087,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 19583843.0,
         "Voluntary earmarked": 118295461.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": -15016.0
       },
       "UNHCR": {
         "Voluntary un-earmarked": 97951017.0,
@@ -1105,10 +1121,6 @@
       },
       "UNU": {
         "Voluntary earmarked": 36407.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 7616320.0,
-        "Voluntary earmarked": 8865275.0
       },
       "UPU": {
         "Assessed": 2813173.65
@@ -1207,6 +1219,10 @@
         "Assessed": 106027.0,
         "Voluntary earmarked": 476.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 343591521.0,
+        "Other": 185288.0
+      },
       "UN Secretariat": {
         "Assessed": 138940990.0,
         "Voluntary un-earmarked": 4219517.0,
@@ -1217,9 +1233,13 @@
         "Assessed": 395645.95,
         "Other": 133.19
       },
-      "Peacekeeping Operations": {
-        "Assessed": 343591521.0,
-        "Other": 185288.0
+      "UN Women": {
+        "Voluntary un-earmarked": 4578313.0,
+        "Voluntary earmarked": 3415480.0
+      },
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 252193.0,
+        "Voluntary earmarked": 332963.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 657895.0,
@@ -1253,10 +1273,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 1149615.0,
         "Voluntary earmarked": 63140918.0
-      },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 252193.0,
-        "Voluntary earmarked": 332963.0
       },
       "UNHCR": {
         "Voluntary un-earmarked": 32087473.0,
@@ -1294,10 +1310,6 @@
       "UNV": {
         "Voluntary earmarked": 2317967.0,
         "Other": 184682.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 4578313.0,
-        "Voluntary earmarked": 3415480.0
       },
       "UPU": {
         "Assessed": 2604790.42
@@ -1391,6 +1403,11 @@
       "PAHO": {
         "Voluntary earmarked": 170961.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 207128395.0,
+        "Voluntary earmarked": 5767633.0,
+        "Other": 146781.0
+      },
       "UN Secretariat": {
         "Assessed": 102612973.0,
         "Voluntary un-earmarked": 3370751.0,
@@ -1401,10 +1418,12 @@
         "Assessed": 395645.95,
         "Voluntary earmarked": 2496.12
       },
-      "Peacekeeping Operations": {
-        "Assessed": 207128395.0,
-        "Voluntary earmarked": 5767633.0,
-        "Other": 146781.0
+      "UN Women": {
+        "Voluntary un-earmarked": 3285871.0,
+        "Voluntary earmarked": 16291896.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 1758621.0
       },
       "UNAIDS": {
         "Voluntary earmarked": 153083.0
@@ -1437,9 +1456,6 @@
         "Voluntary un-earmarked": 2744237.0,
         "Voluntary earmarked": 11431050.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": 1758621.0
-      },
       "UNHCR": {
         "Voluntary earmarked": 53077359.0
       },
@@ -1469,10 +1485,6 @@
       },
       "UNSSC": {
         "Voluntary un-earmarked": 1627596.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 3285871.0,
-        "Voluntary earmarked": 16291896.0
       },
       "UPU": {
         "Assessed": 1406586.83
@@ -1561,6 +1573,9 @@
         "Assessed": 11747740.0,
         "Voluntary earmarked": 30184981.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 170693673.0
+      },
       "UN Secretariat": {
         "Assessed": 84561584.0,
         "Voluntary un-earmarked": 1675634.0,
@@ -1570,8 +1585,9 @@
       "UN Tourism": {
         "Other": 4827.97
       },
-      "Peacekeeping Operations": {
-        "Assessed": 170693673.0
+      "UN Women": {
+        "Voluntary un-earmarked": 4720983.0,
+        "Voluntary earmarked": 16388369.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 3692762.0
@@ -1638,10 +1654,6 @@
       "UNU": {
         "Voluntary earmarked": 1452384.0,
         "Other": 65800.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 4720983.0,
-        "Voluntary earmarked": 16388369.0
       },
       "UPU": {
         "Assessed": 2083832.34
@@ -1734,6 +1746,10 @@
       "PAHO": {
         "Voluntary earmarked": 327846.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 167058358.0,
+        "Other": 78624.0
+      },
       "UN Secretariat": {
         "Assessed": 82824018.0,
         "Voluntary un-earmarked": 3081827.0,
@@ -1745,9 +1761,13 @@
         "Voluntary earmarked": 136229.75,
         "Other": 133.19
       },
-      "Peacekeeping Operations": {
-        "Assessed": 167058358.0,
-        "Other": 78624.0
+      "UN Women": {
+        "Voluntary un-earmarked": 3047807.0,
+        "Voluntary earmarked": 13010571.0
+      },
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 76405.0,
+        "Voluntary earmarked": 5080799.0
       },
       "UNCCD": {
         "Assessed": 205880.0,
@@ -1774,10 +1794,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 160933.0,
         "Voluntary earmarked": 20692017.0
-      },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 76405.0,
-        "Voluntary earmarked": 5080799.0
       },
       "UNHCR": {
         "Voluntary un-earmarked": 17883167.0,
@@ -1815,10 +1831,6 @@
       "UNV": {
         "Voluntary earmarked": 4173000.0,
         "Other": 367414.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 3047807.0,
-        "Voluntary earmarked": 13010571.0
       },
       "UPU": {
         "Assessed": 826347.31
@@ -1908,6 +1920,10 @@
       "PAHO": {
         "Voluntary earmarked": 2250031.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 138584355.0,
+        "Other": 12898.0
+      },
       "UN Secretariat": {
         "Assessed": 68666066.0,
         "Voluntary un-earmarked": 2285862.0,
@@ -1919,9 +1935,13 @@
         "Voluntary earmarked": 1632462.82,
         "Other": 2275.25
       },
-      "Peacekeeping Operations": {
-        "Assessed": 138584355.0,
-        "Other": 12898.0
+      "UN Women": {
+        "Voluntary un-earmarked": 1353718.0,
+        "Voluntary earmarked": 6253777.0
+      },
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 194229.0,
+        "Voluntary earmarked": 10703937.0
       },
       "UNCCD": {
         "Assessed": 170687.0,
@@ -1949,10 +1969,6 @@
         "Voluntary un-earmarked": 800427.0,
         "Voluntary earmarked": 15063221.0
       },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 194229.0,
-        "Voluntary earmarked": 10703937.0
-      },
       "UNHCR": {
         "Voluntary un-earmarked": 3303965.0,
         "Voluntary earmarked": 19715766.0
@@ -1974,10 +1990,6 @@
       "UNV": {
         "Voluntary earmarked": 1569160.0,
         "Other": 150056.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 1353718.0,
-        "Voluntary earmarked": 6253777.0
       },
       "UPU": {
         "Assessed": 1302395.21
@@ -2069,15 +2081,19 @@
       "PAHO": {
         "Voluntary earmarked": 10563.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 137117838.0,
+        "Other": 6219.0
+      },
       "UN Secretariat": {
         "Assessed": 67925991.0,
         "Voluntary un-earmarked": 5236011.0,
         "Voluntary earmarked": 41117078.0,
         "Other": 12353.0
       },
-      "Peacekeeping Operations": {
-        "Assessed": 137117838.0,
-        "Other": 6219.0
+      "UN Women": {
+        "Voluntary un-earmarked": 237566.0,
+        "Voluntary earmarked": 19333624.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 3331113.0,
@@ -2138,10 +2154,6 @@
       },
       "UNV": {
         "Other": 5370.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 237566.0,
-        "Voluntary earmarked": 19333624.0
       },
       "UPU": {
         "Assessed": 1041916.17
@@ -2227,6 +2239,9 @@
         "Voluntary earmarked": 93364971.0,
         "Other": 73208116.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 26202814.0
+      },
       "UN Secretariat": {
         "Assessed": 64772629.0,
         "Voluntary earmarked": 419485.0,
@@ -2236,8 +2251,11 @@
         "Assessed": 250053.27,
         "Voluntary earmarked": 18857.94
       },
-      "Peacekeeping Operations": {
-        "Assessed": 26202814.0
+      "UN Women": {
+        "Voluntary earmarked": -720414.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 5288555.0
       },
       "UNCCD": {
         "Assessed": 161008.0
@@ -2262,9 +2280,6 @@
       "UNFPA": {
         "Voluntary earmarked": 3857724.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": 5288555.0
-      },
       "UNHCR": {
         "Voluntary earmarked": 134022.0
       },
@@ -2286,9 +2301,6 @@
       },
       "UNRWA": {
         "Voluntary un-earmarked": 75000.0
-      },
-      "UN Women": {
-        "Voluntary earmarked": -720414.0
       },
       "UPU": {
         "Assessed": 550898.2
@@ -2359,6 +2371,10 @@
       "OPCW": {
         "Assessed": 1460355.16
       },
+      "Peacekeeping Operations": {
+        "Assessed": 148675350.0,
+        "Other": 1506.0
+      },
       "UN Secretariat": {
         "Assessed": 60042586.0,
         "Voluntary earmarked": 5520613.0,
@@ -2367,9 +2383,8 @@
       "UN Tourism": {
         "Assessed": 86819.09
       },
-      "Peacekeeping Operations": {
-        "Assessed": 148675350.0,
-        "Other": 1506.0
+      "UN-Habitat": {
+        "Voluntary earmarked": 177061.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 500000.0
@@ -2397,9 +2412,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 300000.0,
         "Voluntary earmarked": 250000.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 177061.0
       },
       "UNHCR": {
         "Voluntary un-earmarked": 800000.0,
@@ -2515,6 +2527,10 @@
       "PAHO": {
         "Assessed": 42768.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 89414969.0,
+        "Other": 7004.0
+      },
       "UN Secretariat": {
         "Assessed": 44307954.0,
         "Voluntary un-earmarked": 9473219.0,
@@ -2524,9 +2540,12 @@
       "UN Tourism": {
         "Assessed": 271546.06
       },
-      "Peacekeeping Operations": {
-        "Assessed": 89414969.0,
-        "Other": 7004.0
+      "UN Women": {
+        "Voluntary un-earmarked": 414465.0,
+        "Voluntary earmarked": 370698.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 2354099.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 24490405.0,
@@ -2560,9 +2579,6 @@
         "Voluntary un-earmarked": 115511551.0,
         "Voluntary earmarked": 49856951.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": 2354099.0
-      },
       "UNHCR": {
         "Voluntary un-earmarked": 6543075.0,
         "Voluntary earmarked": 162053507.0
@@ -2588,10 +2604,6 @@
       },
       "UNU": {
         "Voluntary un-earmarked": 404586.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 414465.0,
-        "Voluntary earmarked": 370698.0
       },
       "UPU": {
         "Assessed": 781437.13
@@ -2670,6 +2682,9 @@
       "PAHO": {
         "Assessed": 7728372.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 15862614.0
+      },
       "UN Secretariat": {
         "Assessed": 39288316.0,
         "Voluntary earmarked": 4337236.0,
@@ -2679,8 +2694,12 @@
         "Assessed": 255833.52,
         "Voluntary earmarked": 5519.42
       },
-      "Peacekeeping Operations": {
-        "Assessed": 15862614.0
+      "UN Women": {
+        "Voluntary un-earmarked": 57770.0,
+        "Voluntary earmarked": 1737881.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": -492381.0
       },
       "UNCCD": {
         "Assessed": 97660.0
@@ -2705,9 +2724,6 @@
         "Voluntary un-earmarked": 50864.0,
         "Voluntary earmarked": 573695.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": -492381.0
-      },
       "UNHCR": {
         "Voluntary earmarked": 53672.0
       },
@@ -2729,15 +2745,8 @@
       "UNRWA": {
         "Voluntary un-earmarked": 1000000.0
       },
-      "UN Women": {
-        "Voluntary un-earmarked": 57770.0,
-        "Voluntary earmarked": 1737881.0
-      },
       "UPU": {
         "Assessed": 550898.2
-      },
-      "WFP": {
-        "Voluntary earmarked": 0.0
       },
       "WHO": {
         "Assessed": 6051118.0,
@@ -2817,6 +2826,10 @@
       "PAHO": {
         "Voluntary earmarked": 404434.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 73646536.0,
+        "Other": 9702.0
+      },
       "UN Secretariat": {
         "Assessed": 36488903.0,
         "Voluntary un-earmarked": 9644910.0,
@@ -2826,9 +2839,12 @@
       "UN Tourism": {
         "Assessed": 366946.73
       },
-      "Peacekeeping Operations": {
-        "Assessed": 73646536.0,
-        "Other": 9702.0
+      "UN Women": {
+        "Voluntary un-earmarked": 1997591.0,
+        "Voluntary earmarked": 8270253.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 17140.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 11086475.0,
@@ -2863,9 +2879,6 @@
       },
       "UNFPA": {
         "Voluntary earmarked": 17392133.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 17140.0
       },
       "UNHCR": {
         "Voluntary un-earmarked": 19230769.0,
@@ -2902,10 +2915,6 @@
       "UNV": {
         "Voluntary earmarked": 3502434.0,
         "Other": 136264.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 1997591.0,
-        "Voluntary earmarked": 8270253.0
       },
       "UPU": {
         "Assessed": 781437.13
@@ -2990,6 +2999,10 @@
         "Assessed": 681655.94,
         "Voluntary earmarked": 474469.48
       },
+      "Peacekeeping Operations": {
+        "Assessed": 56573094.0,
+        "Other": 460596.0
+      },
       "UN Secretariat": {
         "Assessed": 28026309.0,
         "Voluntary un-earmarked": 6430862.0,
@@ -2999,9 +3012,12 @@
       "UN Tourism": {
         "Assessed": 2774.69
       },
-      "Peacekeeping Operations": {
-        "Assessed": 56573094.0,
-        "Other": 460596.0
+      "UN Women": {
+        "Voluntary un-earmarked": -7587103.0,
+        "Voluntary earmarked": 44665509.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 2501085.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 18630647.0,
@@ -3035,9 +3051,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 4818348.0,
         "Voluntary earmarked": 22935233.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 2501085.0
       },
       "UNHCR": {
         "Voluntary earmarked": 34609124.0
@@ -3076,10 +3089,6 @@
       "UNV": {
         "Voluntary earmarked": -143508.0,
         "Other": 183717.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": -7587103.0,
-        "Voluntary earmarked": 44665509.0
       },
       "UPU": {
         "Assessed": 781437.13
@@ -3149,6 +3158,9 @@
       "OPCW": {
         "Assessed": 661307.44
       },
+      "Peacekeeping Operations": {
+        "Assessed": 11007510.0
+      },
       "UN Secretariat": {
         "Assessed": 27189703.0,
         "Voluntary un-earmarked": 2475.0,
@@ -3158,8 +3170,11 @@
       "UN Tourism": {
         "Assessed": 250053.27
       },
-      "Peacekeeping Operations": {
-        "Assessed": 11007510.0
+      "UN Women": {
+        "Voluntary un-earmarked": 201800.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 647350.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 10000.0
@@ -3182,9 +3197,6 @@
       "UNFCCC": {
         "Assessed": 274592.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": 647350.0
-      },
       "UNHCR": {
         "Voluntary earmarked": 2526797.0
       },
@@ -3204,9 +3216,6 @@
       },
       "UNV": {
         "Voluntary earmarked": 10000.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 201800.0
       },
       "UPU": {
         "Assessed": 275449.1
@@ -3274,6 +3283,10 @@
       "OPCW": {
         "Assessed": 655046.61
       },
+      "Peacekeeping Operations": {
+        "Assessed": 16303006.0,
+        "Other": 45978.0
+      },
       "UN Secretariat": {
         "Assessed": 26932285.0,
         "Voluntary un-earmarked": 18265.0,
@@ -3283,9 +3296,12 @@
       "UN Tourism": {
         "Assessed": 185458.38
       },
-      "Peacekeeping Operations": {
-        "Assessed": 16303006.0,
-        "Other": 45978.0
+      "UN Women": {
+        "Voluntary un-earmarked": 50000.0,
+        "Voluntary earmarked": 57160.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 178218.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 45000.0
@@ -3309,9 +3325,6 @@
       "UNFPA": {
         "Voluntary earmarked": 34296.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": 178218.0
-      },
       "UNHCR": {
         "Voluntary earmarked": 788591.0
       },
@@ -3332,10 +3345,6 @@
       "UNRWA": {
         "Voluntary un-earmarked": 241546.0,
         "Voluntary earmarked": 767108.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 50000.0,
-        "Voluntary earmarked": 57160.0
       },
       "UPU": {
         "Assessed": 312574.85
@@ -3415,6 +3424,9 @@
       "OPCW": {
         "Assessed": 648003.33
       },
+      "Peacekeeping Operations": {
+        "Assessed": 53767617.0
+      },
       "UN Secretariat": {
         "Assessed": 26642691.0,
         "Voluntary un-earmarked": 354513.0,
@@ -3425,8 +3437,9 @@
         "Assessed": 66765.82,
         "Voluntary earmarked": 739.18
       },
-      "Peacekeeping Operations": {
-        "Assessed": 53767617.0
+      "UN Women": {
+        "Voluntary un-earmarked": 325096.0,
+        "Voluntary earmarked": 1633551.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 4333070.0,
@@ -3484,10 +3497,6 @@
       "UNU": {
         "Voluntary un-earmarked": 241104.0
       },
-      "UN Women": {
-        "Voluntary un-earmarked": 325096.0,
-        "Voluntary earmarked": 1633551.0
-      },
       "UPU": {
         "Assessed": 781437.13
       },
@@ -3524,8 +3533,7 @@
         "Voluntary earmarked": 688413.0
       },
       "IAEA": {
-        "Assessed": 3186415.09,
-        "Voluntary earmarked": 0.0
+        "Assessed": 3186415.09
       },
       "ICAO": {
         "Assessed": 459281.27,
@@ -3566,6 +3574,9 @@
         "Voluntary earmarked": 1459320.0,
         "Other": 70361513.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 9378970.0
+      },
       "UN Secretariat": {
         "Assessed": 23135380.0,
         "Voluntary un-earmarked": 6770.0,
@@ -3576,8 +3587,12 @@
         "Assessed": 191007.77,
         "Voluntary earmarked": 7012.21
       },
-      "Peacekeeping Operations": {
-        "Assessed": 9378970.0
+      "UN Women": {
+        "Voluntary un-earmarked": 63665.0,
+        "Voluntary earmarked": 804574.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 1339424.0
       },
       "UNCCD": {
         "Assessed": 57509.0
@@ -3600,9 +3615,6 @@
       "UNFPA": {
         "Voluntary earmarked": 99750.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": 1339424.0
-      },
       "UNHCR": {
         "Voluntary earmarked": 107100.0
       },
@@ -3611,10 +3623,6 @@
       },
       "UNOPS": {
         "Other": 51236258.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 63665.0,
-        "Voluntary earmarked": 804574.0
       },
       "UPU": {
         "Assessed": 165269.46
@@ -3698,15 +3706,22 @@
       "OPCW": {
         "Assessed": 531394.01
       },
+      "Peacekeeping Operations": {
+        "Assessed": 44117185.0,
+        "Other": 5060.0
+      },
       "UN Secretariat": {
         "Assessed": 21848294.0,
         "Voluntary un-earmarked": 10320220.0,
         "Voluntary earmarked": 138872290.0,
         "Other": 57460.0
       },
-      "Peacekeeping Operations": {
-        "Assessed": 44117185.0,
-        "Other": 5060.0
+      "UN Women": {
+        "Voluntary un-earmarked": 9657231.0,
+        "Voluntary earmarked": 24274018.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 175455.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 4233700.0
@@ -3739,9 +3754,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 56768728.0,
         "Voluntary earmarked": 41270219.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 175455.0
       },
       "UNHCR": {
         "Voluntary un-earmarked": 58900524.0,
@@ -3781,10 +3793,6 @@
       },
       "UNV": {
         "Other": 19898.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 9657231.0,
-        "Voluntary earmarked": 24274018.0
       },
       "UPU": {
         "Assessed": 520958.08
@@ -3872,6 +3880,10 @@
         "Assessed": 531394.01,
         "Voluntary earmarked": 22197.56
       },
+      "Peacekeeping Operations": {
+        "Assessed": 44093212.0,
+        "Other": 29975.0
+      },
       "UN Secretariat": {
         "Assessed": 21848294.0,
         "Voluntary un-earmarked": 487546.0,
@@ -3881,9 +3893,9 @@
       "UN Tourism": {
         "Assessed": 252827.97
       },
-      "Peacekeeping Operations": {
-        "Assessed": 44093212.0,
-        "Other": 29975.0
+      "UN Women": {
+        "Voluntary un-earmarked": 275330.0,
+        "Voluntary earmarked": 2205197.0
       },
       "UNCCD": {
         "Assessed": 54309.0
@@ -3939,10 +3951,6 @@
       "UNRWA": {
         "Voluntary un-earmarked": 3743043.0,
         "Voluntary earmarked": 1095290.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 275330.0,
-        "Voluntary earmarked": 2205197.0
       },
       "UPU": {
         "Assessed": 312574.85
@@ -4013,6 +4021,9 @@
       "OPCW": {
         "Assessed": 496958.93
       },
+      "Peacekeeping Operations": {
+        "Assessed": 38138293.0
+      },
       "UN Secretariat": {
         "Assessed": 20432499.0,
         "Voluntary un-earmarked": 144921.0,
@@ -4023,8 +4034,11 @@
         "Assessed": 237690.34,
         "Voluntary earmarked": 27900.11
       },
-      "Peacekeeping Operations": {
-        "Assessed": 38138293.0
+      "UN Women": {
+        "Voluntary un-earmarked": 136126.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 150290.0
       },
       "UNCCD": {
         "Assessed": 50790.0
@@ -4047,9 +4061,6 @@
       "UNFPA": {
         "Voluntary earmarked": -200000.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": 150290.0
-      },
       "UNHCR": {
         "Voluntary earmarked": 4164977.0
       },
@@ -4065,9 +4076,6 @@
       },
       "UNRWA": {
         "Voluntary earmarked": 15000000.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 136126.0
       },
       "UPU": {
         "Assessed": 55089.82
@@ -4127,6 +4135,9 @@
       "ITU": {
         "Assessed": 380838.32
       },
+      "Peacekeeping Operations": {
+        "Assessed": 36408877.0
+      },
       "UN Secretariat": {
         "Assessed": 18051388.0,
         "Voluntary earmarked": 1222494.0,
@@ -4136,8 +4147,9 @@
         "Assessed": 185458.38,
         "Voluntary earmarked": 10906.77
       },
-      "Peacekeeping Operations": {
-        "Assessed": 36408877.0
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 3426.0,
+        "Voluntary earmarked": 7002.0
       },
       "UNCCD": {
         "Assessed": 44871.0,
@@ -4151,10 +4163,6 @@
       },
       "UNFCCC": {
         "Assessed": 182302.0
-      },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 3426.0,
-        "Voluntary earmarked": 7002.0
       },
       "UNICEF": {
         "Voluntary earmarked": 3200.0
@@ -4243,14 +4251,18 @@
         "Assessed": 432784.68,
         "Voluntary earmarked": -834.63
       },
+      "Peacekeeping Operations": {
+        "Assessed": 35911783.0
+      },
       "UN Secretariat": {
         "Assessed": 17793971.0,
         "Voluntary un-earmarked": 431209.0,
         "Voluntary earmarked": 109666076.0,
         "Other": 32361.0
       },
-      "Peacekeeping Operations": {
-        "Assessed": 35911783.0
+      "UN Women": {
+        "Voluntary un-earmarked": 1175681.0,
+        "Voluntary earmarked": 13352351.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 5881488.0
@@ -4302,10 +4314,6 @@
       "UNRWA": {
         "Voluntary un-earmarked": 18898102.0,
         "Voluntary earmarked": 6139820.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 1175681.0,
-        "Voluntary earmarked": 13352351.0
       },
       "UPU": {
         "Assessed": 520958.08
@@ -4374,6 +4382,10 @@
       "OPCW": {
         "Assessed": 429654.83
       },
+      "Peacekeeping Operations": {
+        "Assessed": 7129971.0,
+        "Other": 2374.0
+      },
       "UN Secretariat": {
         "Assessed": 17665263.0,
         "Voluntary earmarked": 942615.0,
@@ -4384,9 +4396,8 @@
         "Voluntary earmarked": 27425.08,
         "Other": 2275.25
       },
-      "Peacekeeping Operations": {
-        "Assessed": 7129971.0,
-        "Other": 2374.0
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 50000.0
       },
       "UNCCD": {
         "Assessed": 43912.0
@@ -4410,9 +4421,6 @@
       },
       "UNFPA": {
         "Voluntary un-earmarked": 12677.0
-      },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 50000.0
       },
       "UNHCR": {
         "Voluntary un-earmarked": 120000.0
@@ -4494,6 +4502,9 @@
       "OPCW": {
         "Assessed": 394437.29
       },
+      "Peacekeeping Operations": {
+        "Assessed": 30269261.0
+      },
       "UN Secretariat": {
         "Assessed": 16217290.0,
         "Voluntary earmarked": 481061.0,
@@ -4502,8 +4513,11 @@
       "UN Tourism": {
         "Other": 133.19
       },
-      "Peacekeeping Operations": {
-        "Assessed": 30269261.0
+      "UN Women": {
+        "Voluntary un-earmarked": 50000.0
+      },
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 30000.0
       },
       "UNCCD": {
         "Assessed": 40312.0
@@ -4527,9 +4541,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 10000.0
       },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 30000.0
-      },
       "UNHCR": {
         "Voluntary un-earmarked": 60000.0
       },
@@ -4546,9 +4557,6 @@
       },
       "UNRWA": {
         "Voluntary earmarked": 50000.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 50000.0
       },
       "UPU": {
         "Assessed": 208383.23
@@ -4627,15 +4635,19 @@
         "Assessed": 343567.15,
         "Voluntary earmarked": 55493.9
       },
+      "Peacekeeping Operations": {
+        "Assessed": 28487213.0,
+        "Other": 63485.0
+      },
       "UN Secretariat": {
         "Assessed": 14125775.0,
         "Voluntary un-earmarked": 361204.0,
         "Voluntary earmarked": 65809459.0,
         "Other": 41045.0
       },
-      "Peacekeeping Operations": {
-        "Assessed": 28487213.0,
-        "Other": 63485.0
+      "UN Women": {
+        "Voluntary un-earmarked": 6192725.0,
+        "Voluntary earmarked": 3764916.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 2676660.0
@@ -4692,10 +4704,6 @@
       "UNV": {
         "Voluntary earmarked": 1369428.0,
         "Other": 103694.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 6192725.0,
-        "Voluntary earmarked": 3764916.0
       },
       "UPU": {
         "Assessed": 165269.46
@@ -4776,6 +4784,9 @@
         "Voluntary earmarked": 6516.0,
         "Other": 108701651.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 8181141.0
+      },
       "UN Secretariat": {
         "Assessed": 13514409.0,
         "Voluntary earmarked": 797061.0,
@@ -4785,8 +4796,8 @@
         "Assessed": 126413.98,
         "Voluntary earmarked": 11726.97
       },
-      "Peacekeeping Operations": {
-        "Assessed": 8181141.0
+      "UN Women": {
+        "Voluntary earmarked": 686418.0
       },
       "UNCCD": {
         "Assessed": 33593.0
@@ -4821,9 +4832,6 @@
       "UNRWA": {
         "Voluntary un-earmarked": 25000.0,
         "Voluntary earmarked": 200000.0
-      },
-      "UN Women": {
-        "Voluntary earmarked": 686418.0
       },
       "UPU": {
         "Assessed": 165269.46
@@ -4902,15 +4910,22 @@
         "Assessed": 326349.61,
         "Voluntary earmarked": 166481.69
       },
+      "Peacekeeping Operations": {
+        "Assessed": 27080959.0,
+        "Other": 30042.0
+      },
       "UN Secretariat": {
         "Assessed": 13417877.0,
         "Voluntary un-earmarked": 1187975.0,
         "Voluntary earmarked": 33771639.0,
         "Other": 29160.0
       },
-      "Peacekeeping Operations": {
-        "Assessed": 27080959.0,
-        "Other": 30042.0
+      "UN Women": {
+        "Voluntary un-earmarked": 19313305.0,
+        "Voluntary earmarked": 8337481.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 54344.0
       },
       "UNCCD": {
         "Assessed": 33353.0
@@ -4936,9 +4951,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 32497274.0,
         "Voluntary earmarked": 6944616.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 54344.0
       },
       "UNHCR": {
         "Voluntary un-earmarked": 22483940.0,
@@ -4976,10 +4988,6 @@
       "UNV": {
         "Voluntary earmarked": 1070500.0,
         "Other": 113466.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 19313305.0,
-        "Voluntary earmarked": 8337481.0
       },
       "UPU": {
         "Assessed": 520958.08
@@ -5041,6 +5049,9 @@
       "OPCW": {
         "Assessed": 290349.61
       },
+      "Peacekeeping Operations": {
+        "Assessed": 4820184.0
+      },
       "UN Secretariat": {
         "Assessed": 11937728.0,
         "Voluntary earmarked": 416068.0,
@@ -5048,9 +5059,6 @@
       },
       "UN Tourism": {
         "Assessed": 123639.29
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 4820184.0
       },
       "UNCCD": {
         "Assessed": 29674.0
@@ -5139,6 +5147,9 @@
       "OPCW": {
         "Assessed": 288001.11
       },
+      "Peacekeeping Operations": {
+        "Assessed": 4775743.0
+      },
       "UN Secretariat": {
         "Assessed": 11841196.0,
         "Voluntary earmarked": 1234434.0,
@@ -5147,8 +5158,11 @@
       "UN Tourism": {
         "Assessed": 247278.58
       },
-      "Peacekeeping Operations": {
-        "Assessed": 4775743.0
+      "UN Women": {
+        "Voluntary un-earmarked": 20000.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": -8938.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 94920.0
@@ -5179,9 +5193,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 142398.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": -8938.0
-      },
       "UNHCR": {
         "Voluntary un-earmarked": 20000.0
       },
@@ -5206,9 +5217,6 @@
       },
       "UNV": {
         "Voluntary earmarked": 1464.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 20000.0
       },
       "UPU": {
         "Assessed": 156287.43
@@ -5285,6 +5293,10 @@
       "OPCW": {
         "Assessed": 276261.93
       },
+      "Peacekeeping Operations": {
+        "Assessed": 22922669.0,
+        "Other": 32856.0
+      },
       "UN Secretariat": {
         "Assessed": 11358539.0,
         "Voluntary un-earmarked": 70119.0,
@@ -5295,9 +5307,11 @@
         "Assessed": 218826.86,
         "Voluntary earmarked": 404.0
       },
-      "Peacekeeping Operations": {
-        "Assessed": 22922669.0,
-        "Other": 32856.0
+      "UN Women": {
+        "Voluntary un-earmarked": 26969.0
+      },
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 125000.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 109769.0
@@ -5326,9 +5340,6 @@
         "Voluntary un-earmarked": 545690.0,
         "Voluntary earmarked": 336165.0
       },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 125000.0
-      },
       "UNHCR": {
         "Voluntary un-earmarked": 181812.0,
         "Voluntary earmarked": 377562.0
@@ -5350,9 +5361,6 @@
       },
       "UNU": {
         "Voluntary un-earmarked": 115560.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 26969.0
       },
       "UPU": {
         "Assessed": 156287.43
@@ -5421,6 +5429,10 @@
       "OPCW": {
         "Assessed": 272349.61
       },
+      "Peacekeeping Operations": {
+        "Assessed": 4519346.0,
+        "Other": 48163.0
+      },
       "UN Secretariat": {
         "Assessed": 11197653.0,
         "Voluntary earmarked": 236120.0,
@@ -5430,9 +5442,12 @@
         "Assessed": 239308.55,
         "Voluntary earmarked": 611.54
       },
-      "Peacekeeping Operations": {
-        "Assessed": 4519346.0,
-        "Other": 48163.0
+      "UN Women": {
+        "Voluntary un-earmarked": 50000.0
+      },
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 200000.0,
+        "Voluntary earmarked": 2595.0
       },
       "UNCCD": {
         "Assessed": 27835.0
@@ -5458,10 +5473,6 @@
         "Voluntary un-earmarked": 30000.0,
         "Voluntary earmarked": 1200000.0
       },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 200000.0,
-        "Voluntary earmarked": 2595.0
-      },
       "UNICEF": {
         "Voluntary un-earmarked": 568000.0,
         "Voluntary earmarked": 400000.0
@@ -5475,9 +5486,6 @@
       },
       "UNU": {
         "Voluntary un-earmarked": 70270.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 50000.0
       },
       "UPU": {
         "Assessed": 156287.43
@@ -5550,6 +5558,9 @@
         "Assessed": 266088.79,
         "Voluntary earmarked": 25334.07
       },
+      "Peacekeeping Operations": {
+        "Assessed": 13242213.0
+      },
       "UN Secretariat": {
         "Assessed": 10940235.0,
         "Voluntary un-earmarked": 39501.0,
@@ -5560,8 +5571,11 @@
         "Assessed": 148368.48,
         "Voluntary earmarked": 554.94
       },
-      "Peacekeeping Operations": {
-        "Assessed": 13242213.0
+      "UN Women": {
+        "Voluntary un-earmarked": 20328.0
+      },
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 6585.0
       },
       "UNCCD": {
         "Assessed": 27195.0
@@ -5586,9 +5600,6 @@
       "UNFPA": {
         "Voluntary earmarked": 346400.0
       },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 6585.0
-      },
       "UNHCR": {
         "Voluntary earmarked": 730429.0
       },
@@ -5601,9 +5612,6 @@
       "UNV": {
         "Voluntary earmarked": 469528.0,
         "Other": 34675.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 20328.0
       },
       "UPU": {
         "Assessed": 260479.04
@@ -5679,6 +5687,10 @@
       "OPCW": {
         "Assessed": 254349.61
       },
+      "Peacekeeping Operations": {
+        "Assessed": 16894449.0,
+        "Voluntary earmarked": 6500000.0
+      },
       "UN Secretariat": {
         "Assessed": 10457578.0,
         "Voluntary un-earmarked": 440.0,
@@ -5687,10 +5699,6 @@
       },
       "UN Tourism": {
         "Assessed": 206549.39
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 16894449.0,
-        "Voluntary earmarked": 6500000.0
       },
       "UNCCD": {
         "Assessed": 25995.0
@@ -5788,15 +5796,15 @@
       "OPCW": {
         "Assessed": 244175.36
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6067675.0
+      },
       "UN Secretariat": {
         "Assessed": 10039275.0,
         "Voluntary earmarked": 402154.0
       },
       "UN Tourism": {
         "Assessed": 84075.47
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 6067675.0
       },
       "UNCCD": {
         "Assessed": 24955.0
@@ -5914,13 +5922,17 @@
         "Assessed": 241826.86,
         "Voluntary earmarked": 178036.63
       },
+      "Peacekeeping Operations": {
+        "Assessed": 20060660.0
+      },
       "UN Secretariat": {
         "Assessed": 9942743.0,
         "Voluntary un-earmarked": 402058.0,
         "Voluntary earmarked": -887245.0
       },
-      "Peacekeeping Operations": {
-        "Assessed": 20060660.0
+      "UN Women": {
+        "Voluntary un-earmarked": -9267.0,
+        "Voluntary earmarked": 634.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 616903.0
@@ -5967,10 +5979,6 @@
       },
       "UNRWA": {
         "Voluntary un-earmarked": 602400.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": -9267.0,
-        "Voluntary earmarked": 634.0
       },
       "UPU": {
         "Assessed": 260479.04
@@ -6045,6 +6053,9 @@
         "Assessed": 210522.75,
         "Voluntary earmarked": 307579.36
       },
+      "Peacekeeping Operations": {
+        "Assessed": 16162284.0
+      },
       "UN Secretariat": {
         "Assessed": 8655657.0,
         "Voluntary earmarked": 15095142.0,
@@ -6053,9 +6064,6 @@
       "UN Tourism": {
         "Assessed": 234915.65,
         "Voluntary earmarked": 64703.66
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 16162284.0
       },
       "UNCCD": {
         "Assessed": 21515.0
@@ -6171,6 +6179,9 @@
         "Voluntary earmarked": 308989.0,
         "Other": 13355036.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 3197632.0
+      },
       "UN Secretariat": {
         "Assessed": 7915582.0,
         "Voluntary earmarked": 370517.0,
@@ -6180,8 +6191,11 @@
         "Assessed": 129188.67,
         "Voluntary earmarked": 89251.94
       },
-      "Peacekeeping Operations": {
-        "Assessed": 3197632.0
+      "UN Women": {
+        "Voluntary earmarked": 692565.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 23698.0
       },
       "UNCCD": {
         "Assessed": 19676.0
@@ -6205,9 +6219,6 @@
       "UNFPA": {
         "Voluntary earmarked": 166883.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": 23698.0
-      },
       "UNHCR": {
         "Voluntary earmarked": 75000.0
       },
@@ -6223,9 +6234,6 @@
       },
       "UNRWA": {
         "Voluntary earmarked": 160000.0
-      },
-      "UN Women": {
-        "Voluntary earmarked": 692565.0
       },
       "UPU": {
         "Assessed": 156287.43
@@ -6295,6 +6303,10 @@
       "OPCW": {
         "Assessed": 190957.82
       },
+      "Peacekeeping Operations": {
+        "Assessed": 3170789.0,
+        "Other": 20284.0
+      },
       "UN Secretariat": {
         "Assessed": 7851228.0,
         "Voluntary earmarked": 535041.0,
@@ -6304,9 +6316,11 @@
         "Assessed": 153917.87,
         "Voluntary earmarked": 11502.77
       },
-      "Peacekeeping Operations": {
-        "Assessed": 3170789.0,
-        "Other": 20284.0
+      "UN Women": {
+        "Voluntary un-earmarked": 61822.0
+      },
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 160000.0
       },
       "UNCCD": {
         "Assessed": 19517.0
@@ -6331,9 +6345,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 34690.0
       },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 160000.0
-      },
       "UNHCR": {
         "Voluntary earmarked": 160134.0
       },
@@ -6345,9 +6356,6 @@
       },
       "UNRWA": {
         "Voluntary earmarked": 160905.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 61822.0
       },
       "UPU": {
         "Assessed": 520958.08
@@ -6414,6 +6422,9 @@
         "Assessed": 183130.97,
         "Voluntary earmarked": 77691.45
       },
+      "Peacekeeping Operations": {
+        "Assessed": 14061310.0
+      },
       "UN Secretariat": {
         "Assessed": 7529456.0,
         "Voluntary earmarked": 1167640.0,
@@ -6422,8 +6433,11 @@
       "UN Tourism": {
         "Assessed": 148368.48
       },
-      "Peacekeeping Operations": {
-        "Assessed": 14061310.0
+      "UN Women": {
+        "Voluntary un-earmarked": 50000.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 389036.0
       },
       "UNCCD": {
         "Assessed": 18717.0
@@ -6446,9 +6460,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 10000.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": 389036.0
-      },
       "UNHCR": {
         "Voluntary un-earmarked": 1000000.0,
         "Voluntary earmarked": 18555777.0
@@ -6469,9 +6480,6 @@
       },
       "UNRWA": {
         "Voluntary un-earmarked": 2000000.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 50000.0
       },
       "UPU": {
         "Assessed": 260479.04
@@ -6543,6 +6551,9 @@
       "OPCW": {
         "Assessed": 178436.18
       },
+      "Peacekeeping Operations": {
+        "Assessed": 4439796.0
+      },
       "UN Secretariat": {
         "Assessed": 7336393.0,
         "Voluntary un-earmarked": 2757.0,
@@ -6553,8 +6564,8 @@
         "Assessed": 126413.98,
         "Voluntary earmarked": 1218.65
       },
-      "Peacekeeping Operations": {
-        "Assessed": 4439796.0
+      "UN Women": {
+        "Voluntary earmarked": 40000.0
       },
       "UNCCD": {
         "Assessed": 18236.0
@@ -6580,9 +6591,6 @@
       },
       "UNODC": {
         "Other": 41000.0
-      },
-      "UN Women": {
-        "Voluntary earmarked": 40000.0
       },
       "UPU": {
         "Assessed": 260479.04
@@ -6655,6 +6663,9 @@
       "OPCW": {
         "Assessed": 165913.43
       },
+      "Peacekeeping Operations": {
+        "Assessed": 2752999.0
+      },
       "UN Secretariat": {
         "Assessed": 6821559.0,
         "Voluntary un-earmarked": 10000.0,
@@ -6665,8 +6676,11 @@
         "Assessed": 84075.47,
         "Voluntary earmarked": 204.22
       },
-      "Peacekeeping Operations": {
-        "Assessed": 2752999.0
+      "UN Women": {
+        "Voluntary un-earmarked": 20000.0
+      },
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 50000.0
       },
       "UNCCD": {
         "Assessed": 16956.0
@@ -6686,9 +6700,6 @@
       },
       "UNFCCC": {
         "Assessed": 68892.0
-      },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 50000.0
       },
       "UNHCR": {
         "Voluntary un-earmarked": 150000.0,
@@ -6714,9 +6725,6 @@
       },
       "UNRWA": {
         "Voluntary un-earmarked": 50000.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 20000.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -6785,6 +6793,10 @@
       "OPCW": {
         "Assessed": 142435.07
       },
+      "Peacekeeping Operations": {
+        "Assessed": 2368027.0,
+        "Other": 1621.0
+      },
       "UN Secretariat": {
         "Assessed": 5856244.0,
         "Voluntary earmarked": 189045.0
@@ -6792,9 +6804,11 @@
       "UN Tourism": {
         "Assessed": 72331.85
       },
-      "Peacekeeping Operations": {
-        "Assessed": 2368027.0,
-        "Other": 1621.0
+      "UN Women": {
+        "Voluntary un-earmarked": 21372.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": -14691.0
       },
       "UNCCD": {
         "Assessed": 14557.0
@@ -6819,9 +6833,6 @@
         "Voluntary un-earmarked": 150000.0,
         "Voluntary earmarked": 103304.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": -14691.0
-      },
       "UNHCR": {
         "Voluntary earmarked": 66038.0
       },
@@ -6844,9 +6855,6 @@
       },
       "UNV": {
         "Voluntary earmarked": -100010.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 21372.0
       },
       "UPU": {
         "Assessed": 260479.04
@@ -6911,6 +6919,9 @@
         "Voluntary earmarked": 7793594.0,
         "Other": 36434316.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 2329979.0
+      },
       "UN Secretariat": {
         "Assessed": 5631004.0,
         "Voluntary earmarked": 3266169.0,
@@ -6918,9 +6929,6 @@
       },
       "UN Tourism": {
         "Assessed": 148368.48
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 2329979.0
       },
       "UNCCD": {
         "Assessed": 13997.0
@@ -7011,6 +7019,9 @@
         "Voluntary earmarked": 793694.0,
         "Other": 125204812.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 2116337.0
+      },
       "UN Secretariat": {
         "Assessed": 5244878.0,
         "Voluntary earmarked": 176330.0,
@@ -7019,8 +7030,8 @@
       "UN Tourism": {
         "Assessed": 86850.17
       },
-      "Peacekeeping Operations": {
-        "Assessed": 2116337.0
+      "UN Women": {
+        "Voluntary un-earmarked": 1448.0
       },
       "UNCCD": {
         "Assessed": 13037.0
@@ -7060,9 +7071,6 @@
       },
       "UNOPS": {
         "Other": 3189928.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 1448.0
       },
       "UPU": {
         "Assessed": 55089.82
@@ -7131,6 +7139,9 @@
         "Assessed": 121305.22,
         "Voluntary earmarked": 22197.56
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6038985.0
+      },
       "UN Secretariat": {
         "Assessed": 4987460.0,
         "Voluntary un-earmarked": 1627.0,
@@ -7140,8 +7151,12 @@
       "UN Tourism": {
         "Assessed": 105789.12
       },
-      "Peacekeeping Operations": {
-        "Assessed": 6038985.0
+      "UN Women": {
+        "Voluntary un-earmarked": 54765.0
+      },
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 53706.0,
+        "Voluntary earmarked": 214649.0
       },
       "UNCCD": {
         "Assessed": 12397.0
@@ -7165,10 +7180,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 5306.0
       },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 53706.0,
-        "Voluntary earmarked": 214649.0
-      },
       "UNHCR": {
         "Voluntary earmarked": 107296.0
       },
@@ -7183,9 +7194,6 @@
       },
       "UNRWA": {
         "Voluntary un-earmarked": 32362.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 54765.0
       },
       "UPU": {
         "Assessed": 156287.43
@@ -7250,6 +7258,10 @@
         "Assessed": 298068.26,
         "Voluntary earmarked": 7.19
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1808243.0,
+        "Other": 181218.0
+      },
       "UN Secretariat": {
         "Assessed": 4472626.0,
         "Voluntary earmarked": 101930.0,
@@ -7259,9 +7271,8 @@
         "Assessed": 93289.68,
         "Voluntary earmarked": 122.09
       },
-      "Peacekeeping Operations": {
-        "Assessed": 1808243.0,
-        "Other": 181218.0
+      "UN-Habitat": {
+        "Voluntary earmarked": 10269131.0
       },
       "UNCCD": {
         "Assessed": 11118.0
@@ -7285,9 +7296,6 @@
       },
       "UNFPA": {
         "Voluntary un-earmarked": 20674.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 10269131.0
       },
       "UNIDO": {
         "Assessed": 240887.9
@@ -7355,6 +7363,9 @@
       "OPCW": {
         "Assessed": 104087.68
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1730187.0
+      },
       "UN Secretariat": {
         "Assessed": 4279563.0,
         "Voluntary earmarked": 2572328.0,
@@ -7363,8 +7374,9 @@
       "UN Tourism": {
         "Assessed": 86850.17
       },
-      "Peacekeeping Operations": {
-        "Assessed": 1730187.0
+      "UN Women": {
+        "Voluntary un-earmarked": 37280.0,
+        "Voluntary earmarked": 640000.0
       },
       "UNAIDS": {
         "Voluntary earmarked": 50000.0
@@ -7413,10 +7425,6 @@
       "UNV": {
         "Voluntary earmarked": 1306245.0,
         "Other": 2142.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 37280.0,
-        "Voluntary earmarked": 640000.0
       },
       "UPU": {
         "Assessed": 55089.82
@@ -7478,6 +7486,9 @@
       "OPCW": {
         "Assessed": 100174.25
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1662508.0
+      },
       "UN Secretariat": {
         "Assessed": 4118677.0,
         "Voluntary earmarked": 10707954.0,
@@ -7486,8 +7497,8 @@
       "UN Tourism": {
         "Assessed": 69557.16
       },
-      "Peacekeeping Operations": {
-        "Assessed": 1662508.0
+      "UN-Habitat": {
+        "Voluntary earmarked": -76247.0
       },
       "UNCCD": {
         "Assessed": 10237.0
@@ -7506,9 +7517,6 @@
       },
       "UNFCCC": {
         "Assessed": 41595.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": -76247.0
       },
       "UNICEF": {
         "Voluntary un-earmarked": 48785.0
@@ -7578,6 +7586,9 @@
       "OPCW": {
         "Assessed": 86870.14
       },
+      "Peacekeeping Operations": {
+        "Assessed": 2890970.0
+      },
       "UN Secretariat": {
         "Assessed": 3571665.0,
         "Voluntary un-earmarked": 32643.0,
@@ -7587,9 +7598,6 @@
       "UN Tourism": {
         "Assessed": 84075.47,
         "Voluntary earmarked": 11481.69
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 2890970.0
       },
       "UNCCD": {
         "Assessed": 8879.0
@@ -7687,16 +7695,16 @@
       "OPCW": {
         "Assessed": 85305.22
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1417487.0,
+        "Voluntary earmarked": 260313.0
+      },
       "UN Secretariat": {
         "Assessed": 3507311.0,
         "Voluntary earmarked": 219426.0
       },
       "UN Tourism": {
         "Assessed": 61820.2
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 1417487.0,
-        "Voluntary earmarked": 260313.0
       },
       "UNCCD": {
         "Assessed": 8718.0
@@ -7790,6 +7798,9 @@
         "Assessed": 157479.0,
         "Other": 2321532.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1232913.0
+      },
       "UN Secretariat": {
         "Assessed": 3056831.0,
         "Voluntary earmarked": 8242.0,
@@ -7799,8 +7810,8 @@
         "Assessed": 74184.24,
         "Voluntary earmarked": 490.57
       },
-      "Peacekeeping Operations": {
-        "Assessed": 1232913.0
+      "UN-Habitat": {
+        "Voluntary earmarked": -214084.0
       },
       "UNCCD": {
         "Assessed": 7598.0
@@ -7822,9 +7833,6 @@
       },
       "UNFPA": {
         "Voluntary un-earmarked": 5050.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": -214084.0
       },
       "UNICEF": {
         "Voluntary earmarked": 250000.0
@@ -7891,6 +7899,9 @@
       "OPCW": {
         "Assessed": 72782.46
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1206878.0
+      },
       "UN Secretariat": {
         "Assessed": 2992476.0,
         "Voluntary earmarked": 128550.0,
@@ -7900,8 +7911,8 @@
         "Assessed": 80440.62,
         "Voluntary earmarked": 3497.23
       },
-      "Peacekeeping Operations": {
-        "Assessed": 1206878.0
+      "UN Women": {
+        "Voluntary un-earmarked": 109728.0
       },
       "UNCCD": {
         "Assessed": 7439.0
@@ -7929,9 +7940,6 @@
       },
       "UNIDO": {
         "Assessed": 99976.69
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 109728.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -8001,6 +8009,10 @@
         "Assessed": 355752.0,
         "Other": 8729499.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 2389148.0,
+        "Other": 3904.0
+      },
       "UN Secretariat": {
         "Assessed": 2960299.0,
         "Voluntary earmarked": 53304.0,
@@ -8010,9 +8022,9 @@
         "Assessed": 84075.47,
         "Voluntary earmarked": 578.25
       },
-      "Peacekeeping Operations": {
-        "Assessed": 2389148.0,
-        "Other": 3904.0
+      "UN Women": {
+        "Voluntary un-earmarked": 27000.0,
+        "Voluntary earmarked": 27000.0
       },
       "UNCCD": {
         "Assessed": 7359.0
@@ -8051,10 +8063,6 @@
       },
       "UNOPS": {
         "Other": 1403295.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 27000.0,
-        "Voluntary earmarked": 27000.0
       },
       "UPU": {
         "Assessed": 156287.43
@@ -8125,6 +8133,9 @@
         "Voluntary earmarked": 1211777.0,
         "Other": 30934366.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1747759.0
+      },
       "UN Secretariat": {
         "Assessed": 2895945.0,
         "Voluntary earmarked": 72608.0,
@@ -8134,8 +8145,8 @@
         "Assessed": 84075.47,
         "Voluntary earmarked": 50078.8
       },
-      "Peacekeeping Operations": {
-        "Assessed": 1747759.0
+      "UN Women": {
+        "Voluntary un-earmarked": 7500.0
       },
       "UNCCD": {
         "Assessed": 7198.0
@@ -8172,9 +8183,6 @@
       },
       "UNOPS": {
         "Other": 8096301.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 7500.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -8245,6 +8253,9 @@
         "Assessed": 71217.54,
         "Voluntary earmarked": 11098.78
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1771535.0
+      },
       "UN Secretariat": {
         "Assessed": 2928122.0,
         "Voluntary earmarked": 124277.0,
@@ -8253,9 +8264,6 @@
       "UN Tourism": {
         "Assessed": 140287.46,
         "Voluntary earmarked": 29688.12
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 1771535.0
       },
       "UNCCD": {
         "Assessed": 7279.0
@@ -8354,6 +8362,9 @@
       "OPCW": {
         "Assessed": 61826.86
       },
+      "Peacekeeping Operations": {
+        "Assessed": 5129281.0
+      },
       "UN Secretariat": {
         "Assessed": 2541996.0,
         "Voluntary earmarked": 1238192.0,
@@ -8363,8 +8374,9 @@
         "Assessed": 123639.29,
         "Voluntary earmarked": 427.3
       },
-      "Peacekeeping Operations": {
-        "Assessed": 5129281.0
+      "UN Women": {
+        "Voluntary un-earmarked": 21482.0,
+        "Voluntary earmarked": 21482.0
       },
       "UNCCD": {
         "Assessed": 6318.0
@@ -8404,10 +8416,6 @@
       "UNRWA": {
         "Voluntary un-earmarked": 324541.0,
         "Voluntary earmarked": 961722.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 21482.0,
-        "Voluntary earmarked": 21482.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -8483,6 +8491,9 @@
         "Voluntary earmarked": 1472984.0,
         "Other": 55560270.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1000255.0
+      },
       "UN Secretariat": {
         "Assessed": 2477642.0,
         "Voluntary earmarked": 33673.0,
@@ -8492,8 +8503,8 @@
         "Assessed": 74184.24,
         "Voluntary earmarked": 51229.74
       },
-      "Peacekeeping Operations": {
-        "Assessed": 1000255.0
+      "UN Women": {
+        "Voluntary earmarked": 1159126.0
       },
       "UNCCD": {
         "Assessed": 6159.0
@@ -8526,9 +8537,6 @@
       },
       "UNOPS": {
         "Other": 1706138.0
-      },
-      "UN Women": {
-        "Voluntary earmarked": 1159126.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -8594,6 +8602,9 @@
         "Assessed": 60260.82,
         "Voluntary earmarked": 11098.78
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1997176.0
+      },
       "UN Secretariat": {
         "Assessed": 2477642.0,
         "Voluntary earmarked": 658320.0,
@@ -8602,8 +8613,8 @@
       "UN Tourism": {
         "Assessed": 74184.24
       },
-      "Peacekeeping Operations": {
-        "Assessed": 1997176.0
+      "UN Women": {
+        "Voluntary un-earmarked": 10787.0
       },
       "UNCCD": {
         "Assessed": 6159.0
@@ -8631,9 +8642,6 @@
       "UNRWA": {
         "Voluntary un-earmarked": 33040.0,
         "Voluntary earmarked": 106724.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 10787.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -8708,6 +8716,9 @@
         "Voluntary earmarked": 554868.0,
         "Other": 26017531.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 895730.0
+      },
       "UN Secretariat": {
         "Assessed": 2220224.0,
         "Voluntary earmarked": 227378.0,
@@ -8717,8 +8728,8 @@
         "Assessed": 84075.47,
         "Voluntary earmarked": 651.5
       },
-      "Peacekeeping Operations": {
-        "Assessed": 895730.0
+      "UN Women": {
+        "Voluntary un-earmarked": 10000.0
       },
       "UNCCD": {
         "Assessed": 5519.0
@@ -8752,9 +8763,6 @@
       },
       "UNOPS": {
         "Other": 13600453.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 10000.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -8825,6 +8833,9 @@
       "OPCW": {
         "Assessed": 53217.54
       },
+      "Peacekeeping Operations": {
+        "Assessed": 4415569.0
+      },
       "UN Secretariat": {
         "Assessed": 2188047.0,
         "Voluntary un-earmarked": 413750.0,
@@ -8834,8 +8845,9 @@
       "UN Tourism": {
         "Voluntary earmarked": 305.22
       },
-      "Peacekeeping Operations": {
-        "Assessed": 4415569.0
+      "UN Women": {
+        "Voluntary un-earmarked": -803211.0,
+        "Voluntary earmarked": 5311847.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 5099050.0,
@@ -8897,10 +8909,6 @@
       },
       "UNV": {
         "Other": 8283.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": -803211.0,
-        "Voluntary earmarked": 5311847.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -8978,6 +8986,9 @@
         "Voluntary earmarked": 210047.0,
         "Other": 27908458.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 869310.0
+      },
       "UN Secretariat": {
         "Assessed": 2155870.0,
         "Voluntary earmarked": 106597.0,
@@ -8987,8 +8998,8 @@
         "Assessed": 84075.47,
         "Voluntary earmarked": 140460.6
       },
-      "Peacekeeping Operations": {
-        "Assessed": 869310.0
+      "UN Women": {
+        "Voluntary un-earmarked": 9870.0
       },
       "UNCCD": {
         "Assessed": 5359.0
@@ -9023,9 +9034,6 @@
       },
       "UNITAR": {
         "Other": 7475.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 9870.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -9093,6 +9101,9 @@
       "OPCW": {
         "Assessed": 43826.86
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1090053.0
+      },
       "UN Secretariat": {
         "Assessed": 1801921.0,
         "Voluntary earmarked": 183049.0,
@@ -9102,8 +9113,8 @@
         "Assessed": 76958.93,
         "Voluntary earmarked": 35337.4
       },
-      "Peacekeeping Operations": {
-        "Assessed": 1090053.0
+      "UN Women": {
+        "Voluntary un-earmarked": 15000.0
       },
       "UNCCD": {
         "Assessed": 4479.0
@@ -9135,9 +9146,6 @@
       },
       "UNRWA": {
         "Voluntary earmarked": 107875.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 15000.0
       },
       "UPU": {
         "Assessed": 156287.43
@@ -9200,6 +9208,9 @@
       "OPCW": {
         "Assessed": 43826.86
       },
+      "Peacekeeping Operations": {
+        "Assessed": 727386.0
+      },
       "UN Secretariat": {
         "Assessed": 1801921.0,
         "Voluntary earmarked": 55083.0,
@@ -9207,9 +9218,6 @@
       },
       "UN Tourism": {
         "Assessed": 61820.2
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 727386.0
       },
       "UNCCD": {
         "Assessed": 4479.0
@@ -9300,6 +9308,10 @@
       "OPCW": {
         "Assessed": 43043.29
       },
+      "Peacekeeping Operations": {
+        "Assessed": 714333.0,
+        "Voluntary earmarked": 2705596.0
+      },
       "UN Secretariat": {
         "Assessed": 1769744.0,
         "Voluntary un-earmarked": 100000.0,
@@ -9310,9 +9322,11 @@
         "Assessed": 86850.17,
         "Voluntary earmarked": 1320.75
       },
-      "Peacekeeping Operations": {
-        "Assessed": 714333.0,
-        "Voluntary earmarked": 2705596.0
+      "UN Women": {
+        "Voluntary earmarked": 30640.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 1367809.0
       },
       "UNCCD": {
         "Assessed": 4399.0,
@@ -9339,9 +9353,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 12000.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": 1367809.0
-      },
       "UNHCR": {
         "Voluntary earmarked": 173529.0
       },
@@ -9354,9 +9365,6 @@
       },
       "UNOPS": {
         "Other": -292602.0
-      },
-      "UN Women": {
-        "Voluntary earmarked": 30640.0
       },
       "UPU": {
         "Assessed": 260479.04
@@ -9415,6 +9423,9 @@
       "OPCW": {
         "Assessed": 42260.82
       },
+      "Peacekeeping Operations": {
+        "Assessed": 3242566.0
+      },
       "UN Secretariat": {
         "Assessed": 1737567.0,
         "Voluntary earmarked": 350780.0,
@@ -9424,8 +9435,8 @@
         "Assessed": 84075.47,
         "Voluntary earmarked": 111140.95
       },
-      "Peacekeeping Operations": {
-        "Assessed": 3242566.0
+      "UN-Habitat": {
+        "Voluntary earmarked": -1591.0
       },
       "UNCCD": {
         "Assessed": 4319.0
@@ -9444,9 +9455,6 @@
       },
       "UNFCCC": {
         "Assessed": 17548.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": -1591.0
       },
       "UNIDO": {
         "Assessed": 64551.61,
@@ -9522,13 +9530,16 @@
       "OPCW": {
         "Assessed": 39130.97
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1296948.0
+      },
       "UN Secretariat": {
         "Assessed": 1608858.0,
         "Voluntary earmarked": 250424.0,
         "Other": 3895.0
       },
-      "Peacekeeping Operations": {
-        "Assessed": 1296948.0
+      "UN Women": {
+        "Voluntary un-earmarked": 15907.0
       },
       "UNCCD": {
         "Assessed": 3999.0
@@ -9557,9 +9568,6 @@
       },
       "UNRWA": {
         "Voluntary un-earmarked": 124964.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 15907.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -9622,6 +9630,10 @@
       "OPCW": {
         "Assessed": 35217.54
       },
+      "Peacekeeping Operations": {
+        "Assessed": 584394.0,
+        "Other": 60762.0
+      },
       "UN Secretariat": {
         "Assessed": 1447972.0,
         "Voluntary un-earmarked": 4654.0,
@@ -9631,9 +9643,8 @@
         "Assessed": 55042.18,
         "Voluntary earmarked": 6273.03
       },
-      "Peacekeeping Operations": {
-        "Assessed": 584394.0,
-        "Other": 60762.0
+      "UN Women": {
+        "Voluntary un-earmarked": 3910.0
       },
       "UNCCD": {
         "Assessed": 3599.0
@@ -9664,9 +9675,6 @@
       },
       "UNOPS": {
         "Other": 9791.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 3910.0
       },
       "UPU": {
         "Assessed": 156287.43
@@ -9738,14 +9746,14 @@
       "OPCW": {
         "Assessed": 34435.07
       },
+      "Peacekeeping Operations": {
+        "Assessed": 2287046.0
+      },
       "UN Secretariat": {
         "Assessed": 1415795.0,
         "Voluntary un-earmarked": 1988.0,
         "Voluntary earmarked": 1913456.0,
         "Other": 11336.0
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 2287046.0
       },
       "UNCCD": {
         "Assessed": 3520.0
@@ -9798,8 +9806,7 @@
         "Assessed": 32519.76
       },
       "WTO": {
-        "Assessed": 208377.25,
-        "Voluntary earmarked": 0.0
+        "Assessed": 208377.25
       }
     }
   },
@@ -9817,8 +9824,7 @@
         "Other": 50455.0
       },
       "IAEA": {
-        "Assessed": 177504.99,
-        "Voluntary earmarked": 0.0
+        "Assessed": 177504.99
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -9855,6 +9861,9 @@
         "Assessed": 204120.0,
         "Other": 41384884.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 532191.0
+      },
       "UN Secretariat": {
         "Assessed": 1319264.0,
         "Voluntary earmarked": 43981.0,
@@ -9862,9 +9871,6 @@
       },
       "UN Tourism": {
         "Assessed": 61820.2
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 532191.0
       },
       "UNCCD": {
         "Assessed": 3279.0
@@ -9954,6 +9960,9 @@
       "OPCW": {
         "Assessed": 32086.57
       },
+      "Peacekeeping Operations": {
+        "Assessed": 533000.0
+      },
       "UN Secretariat": {
         "Assessed": 1319264.0,
         "Voluntary earmarked": 29226.0,
@@ -9961,9 +9970,6 @@
       },
       "UN Tourism": {
         "Assessed": 61820.2
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 533000.0
       },
       "UNCCD": {
         "Assessed": 3279.0
@@ -10052,6 +10058,9 @@
         "Assessed": 154548.0,
         "Other": 7849807.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 963965.0
+      },
       "UN Secretariat": {
         "Assessed": 1190555.0,
         "Voluntary earmarked": 244203.0,
@@ -10060,8 +10069,8 @@
       "UN Tourism": {
         "Assessed": 74184.24
       },
-      "Peacekeeping Operations": {
-        "Assessed": 963965.0
+      "UN Women": {
+        "Voluntary un-earmarked": 9410.0
       },
       "UNCCD": {
         "Assessed": 2960.0
@@ -10090,9 +10099,6 @@
       },
       "UNOPS": {
         "Other": -523.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 9410.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -10125,8 +10131,7 @@
         "Other": 60.0
       },
       "IAEA": {
-        "Assessed": 159299.67,
-        "Voluntary earmarked": 0.0
+        "Assessed": 159299.67
       },
       "ICAO": {
         "Assessed": 52993.93,
@@ -10151,6 +10156,10 @@
       "OPCW": {
         "Assessed": 28174.25
       },
+      "Peacekeeping Operations": {
+        "Assessed": 468249.0,
+        "Voluntary earmarked": 1235503.0
+      },
       "UN Secretariat": {
         "Assessed": 1158378.0,
         "Voluntary earmarked": 7318216.0,
@@ -10158,10 +10167,6 @@
       },
       "UN Tourism": {
         "Assessed": 84075.47
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 468249.0,
-        "Voluntary earmarked": 1235503.0
       },
       "UNCCD": {
         "Assessed": 2880.0
@@ -10193,7 +10198,6 @@
         "Assessed": 52095.81
       },
       "WFP": {
-        "Voluntary earmarked": 0.0,
         "Other": 4143245.0
       },
       "WHO": {
@@ -10224,8 +10228,7 @@
         "Other": 6.0
       },
       "IAEA": {
-        "Assessed": 161819.09,
-        "Voluntary earmarked": 0.0
+        "Assessed": 161819.09
       },
       "ICAO": {
         "Assessed": 52993.93,
@@ -10257,14 +10260,18 @@
       "OPCW": {
         "Assessed": 28174.25
       },
+      "Peacekeeping Operations": {
+        "Assessed": 2335330.0
+      },
       "UN Secretariat": {
         "Assessed": 1158378.0,
         "Voluntary un-earmarked": 295939.0,
         "Voluntary earmarked": 4945581.0,
         "Other": 4500.0
       },
-      "Peacekeeping Operations": {
-        "Assessed": 2335330.0
+      "UN Women": {
+        "Voluntary un-earmarked": 1279045.0,
+        "Voluntary earmarked": 1160323.0
       },
       "UNCCD": {
         "Assessed": 2880.0
@@ -10306,10 +10313,6 @@
       },
       "UNV": {
         "Voluntary earmarked": 62433.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 1279045.0,
-        "Voluntary earmarked": 1160323.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -10387,6 +10390,11 @@
       "PAHO": {
         "Voluntary earmarked": 20736.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 2337820.0,
+        "Voluntary earmarked": 19175762.0,
+        "Other": 138355.0
+      },
       "UN Secretariat": {
         "Assessed": 1158378.0,
         "Voluntary earmarked": 1071823.0,
@@ -10396,10 +10404,12 @@
         "Assessed": 74184.24,
         "Voluntary earmarked": 115.43
       },
-      "Peacekeeping Operations": {
-        "Assessed": 2337820.0,
-        "Voluntary earmarked": 19175762.0,
-        "Other": 138355.0
+      "UN Women": {
+        "Voluntary un-earmarked": 11000.0,
+        "Voluntary earmarked": 111000.0
+      },
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 105494.0
       },
       "UNCCD": {
         "Assessed": 2880.0
@@ -10423,9 +10433,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 16766.0
       },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 105494.0
-      },
       "UNHCR": {
         "Voluntary un-earmarked": 54732.0,
         "Voluntary earmarked": 330599.0
@@ -10446,10 +10453,6 @@
       "UNRWA": {
         "Voluntary un-earmarked": 107000.0,
         "Voluntary earmarked": 550000.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 11000.0,
-        "Voluntary earmarked": 111000.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -10485,8 +10488,7 @@
         "Voluntary un-earmarked": 2057.0
       },
       "IAEA": {
-        "Assessed": 151954.5,
-        "Voluntary earmarked": 0.0
+        "Assessed": 151954.5
       },
       "ICAO": {
         "Assessed": 52993.93,
@@ -10507,6 +10509,9 @@
       "OPCW": {
         "Assessed": 26609.32
       },
+      "Peacekeeping Operations": {
+        "Assessed": 441529.0
+      },
       "UN Secretariat": {
         "Assessed": 1094024.0,
         "Voluntary earmarked": 101399.0,
@@ -10514,9 +10519,6 @@
       },
       "UN Tourism": {
         "Assessed": 55637.07
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 441529.0
       },
       "UNCCD": {
         "Assessed": 2720.0
@@ -10611,6 +10613,10 @@
       "OPCW": {
         "Assessed": 25043.29
       },
+      "Peacekeeping Operations": {
+        "Assessed": 415363.0,
+        "Other": 78380.0
+      },
       "UN Secretariat": {
         "Assessed": 1029669.0,
         "Voluntary earmarked": 90949.0,
@@ -10619,9 +10625,8 @@
       "UN Tourism": {
         "Assessed": 61820.2
       },
-      "Peacekeeping Operations": {
-        "Assessed": 415363.0,
-        "Other": 78380.0
+      "UN Women": {
+        "Voluntary un-earmarked": 24000.0
       },
       "UNCCD": {
         "Assessed": 2559.0
@@ -10664,9 +10669,6 @@
       },
       "UNOPS": {
         "Other": 818688.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 24000.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -10734,6 +10736,9 @@
       "OPCW": {
         "Assessed": 23478.36
       },
+      "Peacekeeping Operations": {
+        "Assessed": 389261.0
+      },
       "UN Secretariat": {
         "Assessed": 965315.0,
         "Voluntary un-earmarked": 50000.0,
@@ -10743,8 +10748,9 @@
       "UN Tourism": {
         "Assessed": 39865.7
       },
-      "Peacekeeping Operations": {
-        "Assessed": 389261.0
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 100000.0,
+        "Voluntary earmarked": 4137205.0
       },
       "UNCCD": {
         "Assessed": 2399.0
@@ -10767,10 +10773,6 @@
       },
       "UNFPA": {
         "Voluntary un-earmarked": 10000.0
-      },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 100000.0,
-        "Voluntary earmarked": 4137205.0
       },
       "UNICEF": {
         "Voluntary un-earmarked": 150000.0
@@ -10842,6 +10844,9 @@
         "Assessed": 23478.36,
         "Voluntary earmarked": 11098.78
       },
+      "Peacekeeping Operations": {
+        "Assessed": 390817.0
+      },
       "UN Secretariat": {
         "Assessed": 965315.0,
         "Voluntary earmarked": 269536.0,
@@ -10851,8 +10856,9 @@
         "Assessed": 72331.85,
         "Voluntary earmarked": 1528.3
       },
-      "Peacekeeping Operations": {
-        "Assessed": 390817.0
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 500000.0,
+        "Voluntary earmarked": 900000.0
       },
       "UNCCD": {
         "Assessed": 2399.0
@@ -10871,10 +10877,6 @@
       },
       "UNFCCC": {
         "Assessed": 9749.0
-      },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 500000.0,
-        "Voluntary earmarked": 900000.0
       },
       "UNHCR": {
         "Voluntary earmarked": 43612.0
@@ -10936,6 +10938,9 @@
       "OPCW": {
         "Assessed": 21130.97
       },
+      "Peacekeeping Operations": {
+        "Assessed": 350981.0
+      },
       "UN Secretariat": {
         "Assessed": 868783.0,
         "Voluntary un-earmarked": 50000.0,
@@ -10945,9 +10950,6 @@
       "UN Tourism": {
         "Assessed": 37091.01,
         "Voluntary earmarked": 659790.23
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 350981.0
       },
       "UNCCD": {
         "Assessed": 2160.0,
@@ -11016,8 +11018,7 @@
         "Voluntary un-earmarked": 41933.0
       },
       "IAEA": {
-        "Assessed": 113785.79,
-        "Voluntary earmarked": 0.0
+        "Assessed": 113785.79
       },
       "ICAO": {
         "Assessed": 52993.93,
@@ -11054,6 +11055,9 @@
         "Voluntary earmarked": 2829.0,
         "Other": 31471169.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 337062.0
+      },
       "UN Secretariat": {
         "Assessed": 836606.0,
         "Voluntary earmarked": 101709.0
@@ -11061,9 +11065,6 @@
       "UN Tourism": {
         "Assessed": 55042.18,
         "Voluntary earmarked": 55851.28
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 337062.0
       },
       "UNCCD": {
         "Assessed": 2080.0
@@ -11160,6 +11161,10 @@
       "OPCW": {
         "Assessed": 18782.46
       },
+      "Peacekeeping Operations": {
+        "Assessed": 311148.0,
+        "Other": 49803.0
+      },
       "UN Secretariat": {
         "Assessed": 772252.0,
         "Voluntary earmarked": 88240.0,
@@ -11167,10 +11172,6 @@
       },
       "UN Tourism": {
         "Assessed": 39865.7
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 311148.0,
-        "Other": 49803.0
       },
       "UNCCD": {
         "Assessed": 1920.0
@@ -11270,6 +11271,10 @@
       "OPCW": {
         "Assessed": 17217.54
       },
+      "Peacekeeping Operations": {
+        "Assessed": 285168.0,
+        "Other": 30312.0
+      },
       "UN Secretariat": {
         "Assessed": 707898.0,
         "Voluntary earmarked": 158567.0,
@@ -11278,9 +11283,8 @@
       "UN Tourism": {
         "Assessed": 39865.7
       },
-      "Peacekeeping Operations": {
-        "Assessed": 285168.0,
-        "Other": 30312.0
+      "UN Women": {
+        "Voluntary un-earmarked": -6758.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 563141.0
@@ -11312,9 +11316,6 @@
       },
       "UNIDO": {
         "Assessed": 16531.63
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": -6758.0
       },
       "UPU": {
         "Assessed": 156287.43
@@ -11385,6 +11386,10 @@
       "OPCW": {
         "Assessed": 17217.54
       },
+      "Peacekeeping Operations": {
+        "Assessed": 285667.0,
+        "Other": 798.0
+      },
       "UN Secretariat": {
         "Assessed": 707898.0,
         "Voluntary earmarked": 161725.0,
@@ -11394,9 +11399,11 @@
         "Assessed": 79733.63,
         "Voluntary earmarked": 96014.43
       },
-      "Peacekeeping Operations": {
-        "Assessed": 285667.0,
-        "Other": 798.0
+      "UN Women": {
+        "Voluntary un-earmarked": 19972.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 8885.0
       },
       "UNCCD": {
         "Assessed": 1759.0
@@ -11420,9 +11427,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 99859.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": 8885.0
-      },
       "UNHCR": {
         "Voluntary earmarked": 110000.0
       },
@@ -11440,9 +11444,6 @@
       },
       "UNRWA": {
         "Voluntary earmarked": 11143340.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 19972.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -11473,8 +11474,7 @@
         "Voluntary un-earmarked": 270.0
       },
       "IAEA": {
-        "Assessed": 92093.23,
-        "Voluntary earmarked": 0.0
+        "Assessed": 92093.23
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -11497,15 +11497,15 @@
       "OPCW": {
         "Assessed": 16435.07
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1262598.0
+      },
       "UN Secretariat": {
         "Assessed": 675720.0,
         "Voluntary earmarked": 54063.0
       },
       "UN Tourism": {
         "Assessed": 61820.2
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 1262598.0
       },
       "UNCCD": {
         "Assessed": 1679.0
@@ -11592,15 +11592,15 @@
         "Assessed": 83592.0,
         "Other": 17279128.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 246583.0
+      },
       "UN Secretariat": {
         "Assessed": 611366.0,
         "Voluntary earmarked": 21080.0
       },
       "UN Tourism": {
         "Assessed": 49532.74
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 246583.0
       },
       "UNCCD": {
         "Assessed": 1520.0
@@ -11630,9 +11630,6 @@
       "UPU": {
         "Assessed": 52095.81
       },
-      "WFP": {
-        "Voluntary earmarked": 0.0
-      },
       "WHO": {
         "Assessed": 90910.0
       },
@@ -11659,8 +11656,7 @@
         "Voluntary un-earmarked": 195.0
       },
       "IAEA": {
-        "Assessed": 82883.46,
-        "Voluntary earmarked": 0.0
+        "Assessed": 82883.46
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -11691,6 +11687,9 @@
         "Assessed": 56376.0,
         "Other": 749398.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1141022.0
+      },
       "UN Secretariat": {
         "Assessed": 611366.0,
         "Voluntary earmarked": 786.0,
@@ -11698,9 +11697,6 @@
       },
       "UN Tourism": {
         "Assessed": 61820.2
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 1141022.0
       },
       "UNCCD": {
         "Assessed": 1520.0
@@ -11780,6 +11776,9 @@
       "OPCW": {
         "Assessed": 14870.14
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1233224.0
+      },
       "UN Secretariat": {
         "Assessed": 611366.0,
         "Voluntary earmarked": 350965.0,
@@ -11788,8 +11787,9 @@
       "UN Tourism": {
         "Assessed": 55637.07
       },
-      "Peacekeeping Operations": {
-        "Assessed": 1233224.0
+      "UN Women": {
+        "Voluntary un-earmarked": 3278.0,
+        "Voluntary earmarked": 25499.0
       },
       "UNCCD": {
         "Assessed": 1520.0
@@ -11829,10 +11829,6 @@
       "UNRWA": {
         "Voluntary un-earmarked": 53937.0,
         "Voluntary earmarked": 106300.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 3278.0,
-        "Voluntary earmarked": 25499.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -11902,6 +11898,10 @@
       "OPCW": {
         "Assessed": 14870.14
       },
+      "Peacekeeping Operations": {
+        "Assessed": 247144.0,
+        "Other": 78628.0
+      },
       "UN Secretariat": {
         "Assessed": 611366.0,
         "Voluntary earmarked": 53515.0,
@@ -11910,9 +11910,8 @@
       "UN Tourism": {
         "Assessed": 61820.2
       },
-      "Peacekeeping Operations": {
-        "Assessed": 247144.0,
-        "Other": 78628.0
+      "UN-Habitat": {
+        "Voluntary earmarked": 471500.0
       },
       "UNCCD": {
         "Assessed": 1520.0
@@ -11931,9 +11930,6 @@
       },
       "UNFCCC": {
         "Assessed": 6175.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 471500.0
       },
       "UNICEF": {
         "Voluntary un-earmarked": 37609.0
@@ -12000,15 +11996,15 @@
       "OPCW": {
         "Assessed": 14086.57
       },
+      "Peacekeeping Operations": {
+        "Assessed": 234531.0
+      },
       "UN Secretariat": {
         "Assessed": 579189.0,
         "Voluntary earmarked": 166382.0
       },
       "UN Tourism": {
         "Assessed": 55637.07
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 234531.0
       },
       "UNCCD": {
         "Assessed": 1440.0
@@ -12037,9 +12033,6 @@
       },
       "UNODC": {
         "Voluntary earmarked": 402000.0
-      },
-      "UNOPS": {
-        "Other": 0.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -12108,6 +12101,9 @@
       "OPCW": {
         "Assessed": 11739.18
       },
+      "Peacekeeping Operations": {
+        "Assessed": 194759.0
+      },
       "UN Secretariat": {
         "Assessed": 482658.0,
         "Voluntary earmarked": 98560.0,
@@ -12117,8 +12113,8 @@
         "Assessed": 61820.2,
         "Voluntary earmarked": 261162.04
       },
-      "Peacekeeping Operations": {
-        "Assessed": 194759.0
+      "UN-Habitat": {
+        "Voluntary earmarked": 4000.0
       },
       "UNCCD": {
         "Assessed": 1200.0
@@ -12137,9 +12133,6 @@
       },
       "UNFCCC": {
         "Assessed": 4874.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 4000.0
       },
       "UNIDO": {
         "Assessed": 18105.44
@@ -12213,6 +12206,10 @@
       "OPCW": {
         "Assessed": 10174.25
       },
+      "Peacekeeping Operations": {
+        "Assessed": 168846.0,
+        "Other": 34075.0
+      },
       "UN Secretariat": {
         "Assessed": 418303.0,
         "Voluntary earmarked": 197805.0,
@@ -12221,9 +12218,11 @@
       "UN Tourism": {
         "Assessed": 37091.01
       },
-      "Peacekeeping Operations": {
-        "Assessed": 168846.0,
-        "Other": 34075.0
+      "UN Women": {
+        "Voluntary earmarked": -112876.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 278483.0
       },
       "UNCCD": {
         "Assessed": 1039.0
@@ -12247,17 +12246,11 @@
       "UNFPA": {
         "Voluntary un-earmarked": 17299.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": 278483.0
-      },
       "UNICEF": {
         "Voluntary earmarked": 3481600.0
       },
       "UNIDO": {
         "Assessed": 16531.63
-      },
-      "UN Women": {
-        "Voluntary earmarked": -112876.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -12294,8 +12287,7 @@
         "Voluntary earmarked": 40737.0
       },
       "IAEA": {
-        "Assessed": 55255.27,
-        "Voluntary earmarked": 0.0
+        "Assessed": 55255.27
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -12324,6 +12316,9 @@
       "OPCW": {
         "Assessed": 10174.25
       },
+      "Peacekeeping Operations": {
+        "Assessed": 168971.0
+      },
       "UN Secretariat": {
         "Assessed": 418303.0,
         "Voluntary earmarked": 298429.0,
@@ -12331,9 +12326,6 @@
       },
       "UN Tourism": {
         "Assessed": 61820.2
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 168971.0
       },
       "UNCCD": {
         "Assessed": 1039.0
@@ -12397,8 +12389,7 @@
         "Voluntary un-earmarked": 130.0
       },
       "IAEA": {
-        "Assessed": 54617.09,
-        "Voluntary earmarked": 0.0
+        "Assessed": 54617.09
       },
       "ICAO": {
         "Assessed": 52993.93,
@@ -12427,16 +12418,16 @@
         "Assessed": 90396.0,
         "Other": 27622967.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 168784.0,
+        "Other": 16734.0
+      },
       "UN Secretariat": {
         "Assessed": 418303.0,
         "Voluntary earmarked": 8076.0
       },
       "UN Tourism": {
         "Assessed": 55637.07
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 168784.0,
-        "Other": 16734.0
       },
       "UNCCD": {
         "Assessed": 1039.0
@@ -12470,9 +12461,6 @@
       },
       "UPU": {
         "Assessed": 52095.81
-      },
-      "WFP": {
-        "Voluntary earmarked": 0.0
       },
       "WHO": {
         "Assessed": 62200.0
@@ -12523,15 +12511,15 @@
       "OPCW": {
         "Assessed": 9391.79
       },
+      "Peacekeeping Operations": {
+        "Assessed": 156100.0
+      },
       "UN Secretariat": {
         "Assessed": 386126.0,
         "Voluntary earmarked": 70682.0
       },
       "UN Tourism": {
         "Assessed": 57649.28
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 156100.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 1000000.0
@@ -12628,6 +12616,9 @@
       "OPCW": {
         "Assessed": 9391.79
       },
+      "Peacekeeping Operations": {
+        "Assessed": 155851.0
+      },
       "UN Secretariat": {
         "Assessed": 386126.0,
         "Voluntary earmarked": 87830.0,
@@ -12635,9 +12626,6 @@
       },
       "UN Tourism": {
         "Assessed": 55637.07
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 155851.0
       },
       "UNCCD": {
         "Assessed": 960.0
@@ -12722,6 +12710,9 @@
         "Assessed": 8608.21,
         "Voluntary earmarked": 11098.78
       },
+      "Peacekeeping Operations": {
+        "Assessed": 714333.0
+      },
       "UN Secretariat": {
         "Assessed": 353949.0,
         "Voluntary un-earmarked": 11568.0,
@@ -12732,8 +12723,12 @@
         "Assessed": 74884.57,
         "Voluntary earmarked": 614.87
       },
-      "Peacekeeping Operations": {
-        "Assessed": 714333.0
+      "UN Women": {
+        "Voluntary un-earmarked": 21413.0,
+        "Voluntary earmarked": 53362.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 243539.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 160600.0
@@ -12753,9 +12748,6 @@
       "UNFCCC": {
         "Assessed": 4913.0,
         "Voluntary earmarked": 53362.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 243539.0
       },
       "UNHCR": {
         "Voluntary un-earmarked": 54825.0,
@@ -12777,10 +12769,6 @@
       },
       "UNRWA": {
         "Voluntary earmarked": 150084.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 21413.0,
-        "Voluntary earmarked": 53362.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -12843,6 +12831,10 @@
       "OPCW": {
         "Assessed": 7825.75
       },
+      "Peacekeeping Operations": {
+        "Assessed": 64847.0,
+        "Other": 30324.0
+      },
       "UN Secretariat": {
         "Assessed": 321772.0,
         "Voluntary earmarked": 1859246.0
@@ -12851,9 +12843,8 @@
         "Assessed": 30910.1,
         "Voluntary earmarked": 15255.27
       },
-      "Peacekeeping Operations": {
-        "Assessed": 64847.0,
-        "Other": 30324.0
+      "UN Women": {
+        "Voluntary un-earmarked": 2000.0
       },
       "UNCCD": {
         "Assessed": 800.0
@@ -12881,9 +12872,6 @@
       },
       "UNODC": {
         "Other": 32000.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 2000.0
       },
       "UPU": {
         "Assessed": 26047.9
@@ -12949,6 +12937,9 @@
       "OPCW": {
         "Assessed": 7825.75
       },
+      "Peacekeeping Operations": {
+        "Assessed": 64940.0
+      },
       "UN Secretariat": {
         "Assessed": 321772.0,
         "Voluntary earmarked": 277931.0,
@@ -12956,9 +12947,6 @@
       },
       "UN Tourism": {
         "Assessed": 49532.74
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 64940.0
       },
       "UNCCD": {
         "Assessed": 800.0
@@ -13048,6 +13036,9 @@
       "OPCW": {
         "Assessed": 7825.75
       },
+      "Peacekeeping Operations": {
+        "Assessed": 64878.0
+      },
       "UN Secretariat": {
         "Assessed": 321772.0,
         "Voluntary earmarked": 85612.0,
@@ -13055,9 +13046,6 @@
       },
       "UN Tourism": {
         "Assessed": 37091.01
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 64878.0
       },
       "UNCCD": {
         "Assessed": 800.0
@@ -13157,6 +13145,10 @@
       "OPCW": {
         "Assessed": 7825.75
       },
+      "Peacekeeping Operations": {
+        "Assessed": 64940.0,
+        "Other": 130888.0
+      },
       "UN Secretariat": {
         "Assessed": 321772.0,
         "Voluntary earmarked": 3365217.0,
@@ -13164,10 +13156,6 @@
       },
       "UN Tourism": {
         "Assessed": 55042.18
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 64940.0,
-        "Other": 130888.0
       },
       "UNCCD": {
         "Assessed": 800.0
@@ -13270,6 +13258,10 @@
       "OPCW": {
         "Assessed": 7825.75
       },
+      "Peacekeeping Operations": {
+        "Assessed": 64940.0,
+        "Voluntary earmarked": 14971767.0
+      },
       "UN Secretariat": {
         "Assessed": 321772.0,
         "Voluntary earmarked": 617691.0,
@@ -13278,9 +13270,8 @@
       "UN Tourism": {
         "Assessed": 30910.1
       },
-      "Peacekeeping Operations": {
-        "Assessed": 64940.0,
-        "Voluntary earmarked": 14971767.0
+      "UN-Habitat": {
+        "Voluntary earmarked": 191547.0
       },
       "UNDP": {
         "Voluntary earmarked": 45556857.0,
@@ -13296,9 +13287,6 @@
       },
       "UNFCCC": {
         "Assessed": 3249.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 191547.0
       },
       "UNICEF": {
         "Voluntary un-earmarked": 755624.0,
@@ -13375,6 +13363,10 @@
       "OPCW": {
         "Assessed": 7825.75
       },
+      "Peacekeeping Operations": {
+        "Assessed": 64940.0,
+        "Other": 69985.0
+      },
       "UN Secretariat": {
         "Assessed": 321772.0,
         "Voluntary earmarked": 65012.0,
@@ -13382,10 +13374,6 @@
       },
       "UN Tourism": {
         "Assessed": 49532.74
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 64940.0,
-        "Other": 69985.0
       },
       "UNCCD": {
         "Assessed": 800.0
@@ -13476,6 +13464,9 @@
       "OPCW": {
         "Assessed": 7825.75
       },
+      "Peacekeeping Operations": {
+        "Assessed": 64940.0
+      },
       "UN Secretariat": {
         "Assessed": 321772.0,
         "Voluntary earmarked": 50166.0,
@@ -13483,9 +13474,6 @@
       },
       "UN Tourism": {
         "Assessed": 61820.2
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 64940.0
       },
       "UNCCD": {
         "Assessed": 800.0
@@ -13559,8 +13547,7 @@
         "Other": 8.0
       },
       "IAEA": {
-        "Assessed": 46045.5,
-        "Voluntary earmarked": 0.0
+        "Assessed": 46045.5
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -13587,6 +13574,9 @@
       "OPCW": {
         "Assessed": 7825.75
       },
+      "Peacekeeping Operations": {
+        "Assessed": 129880.0
+      },
       "UN Secretariat": {
         "Assessed": 321772.0,
         "Voluntary earmarked": 76226.0,
@@ -13594,9 +13584,6 @@
       },
       "UN Tourism": {
         "Assessed": 37091.01
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 129880.0
       },
       "UNCCD": {
         "Assessed": 800.0
@@ -13677,6 +13664,9 @@
       "OPCW": {
         "Assessed": 7825.75
       },
+      "Peacekeeping Operations": {
+        "Assessed": 64940.0
+      },
       "UN Secretariat": {
         "Assessed": 321772.0,
         "Voluntary un-earmarked": 794.0,
@@ -13684,9 +13674,6 @@
       },
       "UN Tourism": {
         "Assessed": 45867.92
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 64940.0
       },
       "UNCCD": {
         "Assessed": 800.0
@@ -13747,14 +13734,17 @@
       "OPCW": {
         "Assessed": 7825.75
       },
+      "Peacekeeping Operations": {
+        "Assessed": 649080.0
+      },
       "UN Secretariat": {
         "Assessed": 321772.0,
         "Voluntary un-earmarked": 26000.0,
         "Voluntary earmarked": 492557.0,
         "Other": 5329.0
       },
-      "Peacekeeping Operations": {
-        "Assessed": 649080.0
+      "UN Women": {
+        "Voluntary earmarked": 111818.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 57143.0
@@ -13776,18 +13766,12 @@
       "UNICEF": {
         "Voluntary earmarked": 110254.0
       },
-      "UNITAR": {
-        "Other": 0.0
-      },
       "UNODC": {
         "Voluntary un-earmarked": 56000.0,
         "Voluntary earmarked": 111000.0
       },
       "UNRWA": {
         "Voluntary un-earmarked": 110254.0
-      },
-      "UN Women": {
-        "Voluntary earmarked": 111818.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -13819,8 +13803,7 @@
         "Other": 27.0
       },
       "IAEA": {
-        "Assessed": 42788.01,
-        "Voluntary earmarked": 0.0
+        "Assessed": 42788.01
       },
       "ICAO": {
         "Assessed": 370958.3,
@@ -13846,6 +13829,10 @@
       "OPCW": {
         "Assessed": 7825.75
       },
+      "Peacekeeping Operations": {
+        "Assessed": 64940.0,
+        "Other": 6112.0
+      },
       "UN Secretariat": {
         "Assessed": 321772.0,
         "Voluntary earmarked": 999857.0,
@@ -13854,9 +13841,8 @@
       "UN Tourism": {
         "Assessed": 37091.01
       },
-      "Peacekeeping Operations": {
-        "Assessed": 64940.0,
-        "Other": 6112.0
+      "UN-Habitat": {
+        "Voluntary earmarked": -2247.0
       },
       "UNCCD": {
         "Assessed": 800.0
@@ -13880,9 +13866,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 1079.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": -2247.0
-      },
       "UNICEF": {
         "Voluntary un-earmarked": 248000.0,
         "Voluntary earmarked": 29731825.0
@@ -13896,9 +13879,6 @@
       },
       "UPU": {
         "Assessed": 26047.9
-      },
-      "WFP": {
-        "Voluntary earmarked": 0.0
       },
       "WHO": {
         "Assessed": 47840.0,
@@ -13929,8 +13909,7 @@
         "Voluntary earmarked": 1539564.0
       },
       "IAEA": {
-        "Assessed": 40962.26,
-        "Voluntary earmarked": 0.0
+        "Assessed": 40962.26
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -13966,6 +13945,9 @@
         "Voluntary earmarked": 152068.0,
         "Other": 16182695.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 116892.0
+      },
       "UN Secretariat": {
         "Assessed": 289594.0,
         "Voluntary earmarked": 10563.0,
@@ -13974,9 +13956,6 @@
       "UN Tourism": {
         "Assessed": 37091.01,
         "Voluntary earmarked": 1246.39
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 116892.0
       },
       "UNCCD": {
         "Assessed": 720.0
@@ -14071,6 +14050,9 @@
       "OPCW": {
         "Assessed": 7043.29
       },
+      "Peacekeeping Operations": {
+        "Assessed": 116892.0
+      },
       "UN Secretariat": {
         "Assessed": 289594.0,
         "Voluntary earmarked": 49235.0
@@ -14079,8 +14061,8 @@
         "Assessed": 55637.07,
         "Voluntary earmarked": 4752.5
       },
-      "Peacekeeping Operations": {
-        "Assessed": 116892.0
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 150000.0
       },
       "UNCCD": {
         "Assessed": 720.0
@@ -14099,9 +14081,6 @@
       },
       "UNFCCC": {
         "Assessed": 2924.0
-      },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 150000.0
       },
       "UNICEF": {
         "Voluntary un-earmarked": 120000.0
@@ -14183,6 +14162,9 @@
         "Assessed": 42768.0,
         "Other": 285412.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 207683.0
+      },
       "UN Secretariat": {
         "Assessed": 257417.0,
         "Voluntary earmarked": 328.0,
@@ -14191,8 +14173,8 @@
       "UN Tourism": {
         "Assessed": 37091.01
       },
-      "Peacekeeping Operations": {
-        "Assessed": 207683.0
+      "UN Women": {
+        "Voluntary un-earmarked": 131178.0
       },
       "UNCCD": {
         "Assessed": 640.0
@@ -14216,9 +14198,6 @@
       },
       "UNIDO": {
         "Assessed": 9446.17
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 131178.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -14251,8 +14230,7 @@
         "Other": 70092.0
       },
       "IAEA": {
-        "Assessed": 34230.85,
-        "Voluntary earmarked": 0.0
+        "Assessed": 34230.85
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -14278,15 +14256,15 @@
       "OPCW": {
         "Assessed": 6260.82
       },
+      "Peacekeeping Operations": {
+        "Assessed": 52007.0
+      },
       "UN Secretariat": {
         "Assessed": 257417.0,
         "Voluntary earmarked": 25705.0
       },
       "UN Tourism": {
         "Assessed": 37091.01
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 52007.0
       },
       "UNCCD": {
         "Assessed": 640.0
@@ -14332,8 +14310,7 @@
         "Voluntary un-earmarked": 27855.0
       },
       "IAEA": {
-        "Assessed": 36410.65,
-        "Voluntary earmarked": 0.0
+        "Assessed": 36410.65
       },
       "ICAO": {
         "Assessed": 52993.93,
@@ -14366,6 +14343,9 @@
         "Voluntary earmarked": 182277.0,
         "Other": 1055362.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 103904.0
+      },
       "UN Secretariat": {
         "Assessed": 257417.0,
         "Voluntary earmarked": 487684.0,
@@ -14373,9 +14353,6 @@
       },
       "UN Tourism": {
         "Assessed": 61820.2
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 103904.0
       },
       "UNCCD": {
         "Assessed": 640.0
@@ -14471,6 +14448,9 @@
       "OPCW": {
         "Assessed": 6260.82
       },
+      "Peacekeeping Operations": {
+        "Assessed": 103904.0
+      },
       "UN Secretariat": {
         "Assessed": 257417.0,
         "Voluntary earmarked": 36586.0
@@ -14479,8 +14459,8 @@
         "Assessed": 55042.18,
         "Voluntary earmarked": 1690.34
       },
-      "Peacekeeping Operations": {
-        "Assessed": 103904.0
+      "UN Women": {
+        "Voluntary un-earmarked": 10000.0
       },
       "UNCCD": {
         "Assessed": 640.0
@@ -14505,9 +14485,6 @@
       },
       "UNIDO": {
         "Assessed": 10234.18
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 10000.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -14570,6 +14547,9 @@
       "OPCW": {
         "Assessed": 6260.82
       },
+      "Peacekeeping Operations": {
+        "Assessed": 103904.0
+      },
       "UN Secretariat": {
         "Assessed": 257417.0,
         "Voluntary earmarked": 165409.0,
@@ -14578,9 +14558,6 @@
       "UN Tourism": {
         "Assessed": 61820.2,
         "Voluntary earmarked": 2126.53
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 103904.0
       },
       "UNCCD": {
         "Assessed": 640.0
@@ -14671,6 +14648,9 @@
       "OPCW": {
         "Assessed": 6260.82
       },
+      "Peacekeeping Operations": {
+        "Assessed": 51977.0
+      },
       "UN Secretariat": {
         "Assessed": 257417.0,
         "Voluntary earmarked": 64798.0,
@@ -14680,8 +14660,8 @@
         "Assessed": 37091.01,
         "Voluntary earmarked": 13823.53
       },
-      "Peacekeeping Operations": {
-        "Assessed": 51977.0
+      "UN-Habitat": {
+        "Voluntary earmarked": 20000.0
       },
       "UNCCD": {
         "Assessed": 640.0
@@ -14698,9 +14678,6 @@
       },
       "UNFCCC": {
         "Assessed": 2600.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 20000.0
       },
       "UNICEF": {
         "Voluntary un-earmarked": 279282.0,
@@ -14742,8 +14719,7 @@
       "FAO": {
         "Assessed": 24150.0,
         "Voluntary un-earmarked": 288054.0,
-        "Voluntary earmarked": 4138009.0,
-        "Other": 0.0
+        "Voluntary earmarked": 4138009.0
       },
       "IAEA": {
         "Assessed": 31860.16,
@@ -14774,6 +14750,9 @@
       "OPCW": {
         "Assessed": 5478.36
       },
+      "Peacekeeping Operations": {
+        "Assessed": 90789.0
+      },
       "UN Secretariat": {
         "Assessed": 225240.0,
         "Voluntary earmarked": 1729721.0,
@@ -14783,8 +14762,8 @@
         "Assessed": 30910.1,
         "Voluntary earmarked": 24361.82
       },
-      "Peacekeeping Operations": {
-        "Assessed": 90789.0
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 8002.0
       },
       "UNCCD": {
         "Assessed": 560.0
@@ -14806,9 +14785,6 @@
       },
       "UNFPA": {
         "Voluntary earmarked": 709388.0
-      },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 8002.0
       },
       "UNICEF": {
         "Voluntary earmarked": 5371997.0
@@ -14883,6 +14859,10 @@
       "OPCW": {
         "Assessed": 5478.36
       },
+      "Peacekeeping Operations": {
+        "Assessed": 45449.0,
+        "Other": 7927.0
+      },
       "UN Secretariat": {
         "Assessed": 225240.0,
         "Voluntary earmarked": 384592.0,
@@ -14891,9 +14871,11 @@
       "UN Tourism": {
         "Assessed": 37091.01
       },
-      "Peacekeeping Operations": {
-        "Assessed": 45449.0,
-        "Other": 7927.0
+      "UN Women": {
+        "Voluntary un-earmarked": 573654.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 128000.0
       },
       "UNCCD": {
         "Assessed": 560.0
@@ -14914,9 +14896,6 @@
       "UNFCCC": {
         "Assessed": 2275.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": 128000.0
-      },
       "UNICEF": {
         "Voluntary un-earmarked": 398500.0
       },
@@ -14933,9 +14912,6 @@
       },
       "UNU": {
         "Voluntary un-earmarked": 162578.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 573654.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -14999,6 +14975,9 @@
       "OPCW": {
         "Assessed": 5478.36
       },
+      "Peacekeeping Operations": {
+        "Assessed": 90914.0
+      },
       "UN Secretariat": {
         "Assessed": 225240.0,
         "Voluntary earmarked": 4275.0,
@@ -15006,9 +14985,6 @@
       },
       "UN Tourism": {
         "Assessed": 55637.07
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 90914.0
       },
       "UNCCD": {
         "Assessed": 560.0
@@ -15094,6 +15070,9 @@
       "OPCW": {
         "Assessed": 5478.36
       },
+      "Peacekeeping Operations": {
+        "Assessed": 45387.0
+      },
       "UN Secretariat": {
         "Assessed": 225240.0,
         "Voluntary earmarked": 45499.0
@@ -15101,8 +15080,8 @@
       "UN Tourism": {
         "Assessed": 37091.01
       },
-      "Peacekeeping Operations": {
-        "Assessed": 45387.0
+      "UN-Habitat": {
+        "Voluntary earmarked": 210502.0
       },
       "UNCCD": {
         "Assessed": 560.0
@@ -15119,9 +15098,6 @@
       },
       "UNFCCC": {
         "Assessed": 2275.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 210502.0
       },
       "UNIDO": {
         "Assessed": 6297.45
@@ -15187,6 +15163,10 @@
       "OPCW": {
         "Assessed": 5478.36
       },
+      "Peacekeeping Operations": {
+        "Assessed": 45418.0,
+        "Other": 1288.0
+      },
       "UN Secretariat": {
         "Assessed": 225240.0,
         "Voluntary earmarked": 49108.0,
@@ -15195,10 +15175,6 @@
       "UN Tourism": {
         "Assessed": 55042.18,
         "Voluntary earmarked": 40368.48
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 45418.0,
-        "Other": 1288.0
       },
       "UNCCD": {
         "Assessed": 560.0
@@ -15290,6 +15266,9 @@
       "OPCW": {
         "Assessed": 5478.36
       },
+      "Peacekeeping Operations": {
+        "Assessed": 90914.0
+      },
       "UN Secretariat": {
         "Assessed": 225240.0,
         "Voluntary earmarked": 142678.0,
@@ -15299,8 +15278,8 @@
         "Assessed": 56429.52,
         "Voluntary earmarked": 4591.56
       },
-      "Peacekeeping Operations": {
-        "Assessed": 90914.0
+      "UN Women": {
+        "Voluntary un-earmarked": 5000.0
       },
       "UNCCD": {
         "Assessed": 560.0
@@ -15331,9 +15310,6 @@
       "UNIDO": {
         "Assessed": 9446.17
       },
-      "UN Women": {
-        "Voluntary un-earmarked": 5000.0
-      },
       "UPU": {
         "Assessed": 52095.81
       },
@@ -15363,12 +15339,10 @@
       },
       "FAO": {
         "Assessed": 14134.0,
-        "Voluntary un-earmarked": 45788.0,
-        "Voluntary earmarked": 0.0
+        "Voluntary un-earmarked": 45788.0
       },
       "IAEA": {
-        "Assessed": 25672.59,
-        "Voluntary earmarked": 0.0
+        "Assessed": 25672.59
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -15402,6 +15376,9 @@
         "Voluntary earmarked": -749.0,
         "Other": 8598447.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 38871.0
+      },
       "UN Secretariat": {
         "Assessed": 193063.0,
         "Voluntary earmarked": 4428.0,
@@ -15410,9 +15387,6 @@
       "UN Tourism": {
         "Assessed": 30910.1,
         "Voluntary earmarked": -54.38
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 38871.0
       },
       "UNCCD": {
         "Assessed": 480.0
@@ -15475,8 +15449,7 @@
         "Other": 10.0
       },
       "IAEA": {
-        "Assessed": 25672.59,
-        "Voluntary earmarked": 0.0
+        "Assessed": 25672.59
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -15496,6 +15469,9 @@
       "OPCW": {
         "Assessed": 4695.89
       },
+      "Peacekeeping Operations": {
+        "Assessed": 38995.0
+      },
       "UN Secretariat": {
         "Assessed": 193063.0,
         "Voluntary earmarked": 3913026.0,
@@ -15503,9 +15479,6 @@
       },
       "UN Tourism": {
         "Assessed": 30910.1
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 38995.0
       },
       "UNCCD": {
         "Assessed": 480.0
@@ -15561,8 +15534,7 @@
         "Voluntary earmarked": 8113.0
       },
       "IAEA": {
-        "Assessed": 23023.31,
-        "Voluntary earmarked": 0.0
+        "Assessed": 23023.31
       },
       "ICAO": {
         "Assessed": 52993.93,
@@ -15591,15 +15563,15 @@
       "OPCW": {
         "Assessed": 3913.43
       },
+      "Peacekeeping Operations": {
+        "Assessed": 65003.0
+      },
       "UN Secretariat": {
         "Assessed": 160886.0,
         "Voluntary earmarked": 207251.0
       },
       "UN Tourism": {
         "Assessed": 37091.01
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 65003.0
       },
       "UNCCD": {
         "Assessed": 1200.0
@@ -15685,6 +15657,10 @@
       "OPCW": {
         "Assessed": 3913.43
       },
+      "Peacekeeping Operations": {
+        "Assessed": 32434.0,
+        "Voluntary earmarked": 39615555.0
+      },
       "UN Secretariat": {
         "Assessed": 160886.0,
         "Voluntary earmarked": 15189.0,
@@ -15692,10 +15668,6 @@
       },
       "UN Tourism": {
         "Assessed": 30910.1
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 32434.0,
-        "Voluntary earmarked": 39615555.0
       },
       "UNCCD": {
         "Assessed": 400.0
@@ -15759,8 +15731,7 @@
         "Other": 1.0
       },
       "IAEA": {
-        "Assessed": 21394.01,
-        "Voluntary earmarked": 0.0
+        "Assessed": 21394.01
       },
       "ICAO": {
         "Assessed": 52993.93,
@@ -15796,6 +15767,10 @@
       "OPCW": {
         "Assessed": 3913.43
       },
+      "Peacekeeping Operations": {
+        "Assessed": 32403.0,
+        "Other": 8628.0
+      },
       "UN Secretariat": {
         "Assessed": 160886.0,
         "Voluntary earmarked": 15362.0
@@ -15804,9 +15779,8 @@
         "Assessed": 30910.1,
         "Voluntary earmarked": 93133.19
       },
-      "Peacekeeping Operations": {
-        "Assessed": 32403.0,
-        "Other": 8628.0
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 47993.0
       },
       "UNCCD": {
         "Assessed": 400.0
@@ -15826,9 +15800,6 @@
       },
       "UNFCCC": {
         "Assessed": 1625.0
-      },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 47993.0
       },
       "UNICEF": {
         "Voluntary un-earmarked": 24124.0
@@ -15906,6 +15877,9 @@
       "OPCW": {
         "Assessed": 3913.43
       },
+      "Peacekeeping Operations": {
+        "Assessed": 64816.0
+      },
       "UN Secretariat": {
         "Assessed": 160886.0,
         "Voluntary earmarked": 30695.0,
@@ -15913,9 +15887,6 @@
       },
       "UN Tourism": {
         "Assessed": 39865.7
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 64816.0
       },
       "UNCCD": {
         "Assessed": 400.0
@@ -15982,6 +15953,9 @@
         "Assessed": 3913.43,
         "Voluntary earmarked": 11098.78
       },
+      "Peacekeeping Operations": {
+        "Assessed": 324697.0
+      },
       "UN Secretariat": {
         "Assessed": 160886.0,
         "Voluntary earmarked": 70173.0,
@@ -15990,8 +15964,8 @@
       "UN Tourism": {
         "Assessed": 55637.07
       },
-      "Peacekeeping Operations": {
-        "Assessed": 324697.0
+      "UN Women": {
+        "Voluntary un-earmarked": 43753.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 32017.0
@@ -16024,9 +15998,6 @@
       },
       "UNRWA": {
         "Voluntary earmarked": 49308.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 43753.0
       },
       "WFP": {
         "Voluntary earmarked": 17776.0
@@ -16095,6 +16066,9 @@
         "Voluntary earmarked": 111781.0,
         "Other": 10566781.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 64940.0
+      },
       "UN Secretariat": {
         "Assessed": 160886.0,
         "Voluntary earmarked": 30166.0
@@ -16102,8 +16076,8 @@
       "UN Tourism": {
         "Assessed": 37091.01
       },
-      "Peacekeeping Operations": {
-        "Assessed": 64940.0
+      "UN Women": {
+        "Voluntary un-earmarked": 5000.0
       },
       "UNCCD": {
         "Assessed": 400.0
@@ -16129,9 +16103,6 @@
       },
       "UNOPS": {
         "Other": 3608417.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 5000.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -16163,8 +16134,7 @@
       "FAO": {
         "Assessed": 14408.0,
         "Voluntary un-earmarked": 34457.0,
-        "Voluntary earmarked": -6.0,
-        "Other": 0.0
+        "Voluntary earmarked": -6.0
       },
       "IAEA": {
         "Assessed": 18417.31,
@@ -16198,6 +16168,9 @@
       "OPCW": {
         "Assessed": 3130.97
       },
+      "Peacekeeping Operations": {
+        "Assessed": 51886.0
+      },
       "UN Secretariat": {
         "Assessed": 128709.0,
         "Voluntary earmarked": 130008.0,
@@ -16206,8 +16179,8 @@
       "UN Tourism": {
         "Assessed": 37091.01
       },
-      "Peacekeeping Operations": {
-        "Assessed": 51886.0
+      "UN Women": {
+        "Voluntary un-earmarked": 23702.0
       },
       "UNCCD": {
         "Assessed": 319.0
@@ -16237,14 +16210,8 @@
       "UNOPS": {
         "Other": -175.0
       },
-      "UN Women": {
-        "Voluntary un-earmarked": 23702.0
-      },
       "UPU": {
         "Assessed": 52095.81
-      },
-      "WFP": {
-        "Voluntary earmarked": 0.0
       },
       "WHO": {
         "Assessed": 19140.0
@@ -16304,6 +16271,9 @@
       "OPCW": {
         "Assessed": 3130.97
       },
+      "Peacekeeping Operations": {
+        "Assessed": 25970.0
+      },
       "UN Secretariat": {
         "Assessed": 128709.0,
         "Voluntary earmarked": 81953.0
@@ -16312,8 +16282,8 @@
         "Assessed": 30910.1,
         "Voluntary earmarked": 9996.67
       },
-      "Peacekeeping Operations": {
-        "Assessed": 25970.0
+      "UN-Habitat": {
+        "Voluntary earmarked": -36000.0
       },
       "UNCCD": {
         "Assessed": 319.0
@@ -16329,9 +16299,6 @@
       },
       "UNFCCC": {
         "Assessed": 1300.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": -36000.0
       },
       "UNICEF": {
         "Voluntary un-earmarked": 6000.0,
@@ -16373,8 +16340,7 @@
       },
       "FAO": {
         "Assessed": 9423.0,
-        "Voluntary un-earmarked": 22956.0,
-        "Voluntary earmarked": 0.0
+        "Voluntary un-earmarked": 22956.0
       },
       "IAEA": {
         "Assessed": 18417.31,
@@ -16416,13 +16382,16 @@
         "Voluntary earmarked": 463667.0,
         "Other": 600062.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 51824.0
+      },
       "UN Secretariat": {
         "Assessed": 128709.0,
         "Voluntary earmarked": 3487.0,
         "Other": 938.0
       },
-      "Peacekeeping Operations": {
-        "Assessed": 51824.0
+      "UN Women": {
+        "Voluntary un-earmarked": 9710.0
       },
       "UNCCD": {
         "Assessed": 319.0
@@ -16455,9 +16424,6 @@
       },
       "UNITAR": {
         "Other": 5036.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 9710.0
       },
       "UPU": {
         "Assessed": 52095.81
@@ -16518,6 +16484,9 @@
       "OPCW": {
         "Assessed": 3130.97
       },
+      "Peacekeeping Operations": {
+        "Assessed": 25970.0
+      },
       "UN Secretariat": {
         "Assessed": 128709.0,
         "Voluntary earmarked": 88681.0
@@ -16526,8 +16495,8 @@
         "Assessed": 30910.1,
         "Voluntary earmarked": 6254.16
       },
-      "Peacekeeping Operations": {
-        "Assessed": 25970.0
+      "UN-Habitat": {
+        "Voluntary earmarked": 37077.0
       },
       "UNCCD": {
         "Assessed": 319.0
@@ -16546,9 +16515,6 @@
       },
       "UNFCCC": {
         "Assessed": 1300.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 37077.0
       },
       "UNICEF": {
         "Voluntary un-earmarked": 7500.0,
@@ -16621,6 +16587,9 @@
       "OPCW": {
         "Assessed": 3130.97
       },
+      "Peacekeeping Operations": {
+        "Assessed": 51948.0
+      },
       "UN Secretariat": {
         "Assessed": 128709.0,
         "Voluntary earmarked": 2225.0,
@@ -16628,9 +16597,6 @@
       },
       "UN Tourism": {
         "Assessed": 37091.01
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 51948.0
       },
       "UNCCD": {
         "Assessed": 319.0
@@ -16719,15 +16685,15 @@
       "OPCW": {
         "Assessed": 3130.97
       },
+      "Peacekeeping Operations": {
+        "Assessed": 51948.0
+      },
       "UN Secretariat": {
         "Assessed": 128709.0,
         "Voluntary earmarked": 3724.0
       },
       "UN Tourism": {
         "Assessed": 37091.01
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 51948.0
       },
       "UNCCD": {
         "Assessed": 319.0
@@ -16828,6 +16794,10 @@
       "OPCW": {
         "Assessed": 3130.97
       },
+      "Peacekeeping Operations": {
+        "Assessed": 52010.0,
+        "Other": 38519.0
+      },
       "UN Secretariat": {
         "Assessed": 128709.0,
         "Voluntary earmarked": 80401.0,
@@ -16835,10 +16805,6 @@
       },
       "UN Tourism": {
         "Assessed": 37091.01
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 52010.0,
-        "Other": 38519.0
       },
       "UNCCD": {
         "Assessed": 319.0
@@ -16930,6 +16896,10 @@
       "OPCW": {
         "Assessed": 3130.97
       },
+      "Peacekeeping Operations": {
+        "Assessed": 25939.0,
+        "Other": 2991.0
+      },
       "UN Secretariat": {
         "Assessed": 128709.0,
         "Voluntary earmarked": 69598.0,
@@ -16938,9 +16908,8 @@
       "UN Tourism": {
         "Assessed": 30910.1
       },
-      "Peacekeeping Operations": {
-        "Assessed": 25939.0,
-        "Other": 2991.0
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 48702.0
       },
       "UNCCD": {
         "Assessed": 319.0
@@ -16959,9 +16928,6 @@
       },
       "UNFCCC": {
         "Assessed": 1300.0
-      },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 48702.0
       },
       "UNICEF": {
         "Voluntary earmarked": 527738.0
@@ -17037,12 +17003,12 @@
         "Assessed": 42768.0,
         "Other": 311502.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 39090.0
+      },
       "UN Secretariat": {
         "Assessed": 96531.0,
         "Voluntary earmarked": 5194.0
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 39090.0
       },
       "UNCCD": {
         "Assessed": 240.0
@@ -17118,6 +17084,10 @@
       "OPCW": {
         "Assessed": 2347.39
       },
+      "Peacekeeping Operations": {
+        "Assessed": 19478.0,
+        "Other": 70769.0
+      },
       "UN Secretariat": {
         "Assessed": 96531.0,
         "Voluntary earmarked": 123973.0
@@ -17125,10 +17095,6 @@
       "UN Tourism": {
         "Assessed": 30910.1,
         "Voluntary earmarked": 841.29
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 19478.0,
-        "Other": 70769.0
       },
       "UNCCD": {
         "Assessed": 240.0
@@ -17213,6 +17179,10 @@
       "OPCW": {
         "Assessed": 2347.39
       },
+      "Peacekeeping Operations": {
+        "Assessed": 19509.0,
+        "Other": 61198.0
+      },
       "UN Secretariat": {
         "Assessed": 96531.0,
         "Voluntary earmarked": 67472.0,
@@ -17220,10 +17190,6 @@
       },
       "UN Tourism": {
         "Assessed": 30910.1
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 19509.0,
-        "Other": 61198.0
       },
       "UNCCD": {
         "Assessed": 240.0
@@ -17286,8 +17252,7 @@
         "Voluntary un-earmarked": 32.0
       },
       "IAEA": {
-        "Assessed": 12840.18,
-        "Voluntary earmarked": 0.0
+        "Assessed": 12840.18
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -17316,6 +17281,10 @@
       "OPCW": {
         "Assessed": 2347.39
       },
+      "Peacekeeping Operations": {
+        "Assessed": 19478.0,
+        "Other": 26280.0
+      },
       "UN Secretariat": {
         "Assessed": 96531.0,
         "Voluntary earmarked": 84877.0,
@@ -17323,10 +17292,6 @@
       },
       "UN Tourism": {
         "Assessed": 30910.1
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 19478.0,
-        "Other": 26280.0
       },
       "UNCCD": {
         "Assessed": 240.0
@@ -17419,16 +17384,16 @@
       "OPCW": {
         "Assessed": 2347.39
       },
+      "Peacekeeping Operations": {
+        "Assessed": 19446.0,
+        "Other": 128.0
+      },
       "UN Secretariat": {
         "Assessed": 96531.0,
         "Voluntary earmarked": 124785.0
       },
       "UN Tourism": {
         "Assessed": 30910.1
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 19446.0,
-        "Other": 128.0
       },
       "UNCCD": {
         "Assessed": 240.0
@@ -17508,6 +17473,9 @@
       "OPCW": {
         "Assessed": 2347.39
       },
+      "Peacekeeping Operations": {
+        "Assessed": 39028.0
+      },
       "UN Secretariat": {
         "Assessed": 96531.0,
         "Voluntary earmarked": 110001.0,
@@ -17516,9 +17484,6 @@
       "UN Tourism": {
         "Assessed": 30910.1,
         "Voluntary earmarked": 29661.49
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 39028.0
       },
       "UNCCD": {
         "Assessed": 240.0
@@ -17580,8 +17545,7 @@
         "Voluntary un-earmarked": 22.0
       },
       "IAEA": {
-        "Assessed": 9209.77,
-        "Voluntary earmarked": 0.0
+        "Assessed": 9209.77
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -17614,6 +17578,9 @@
         "Assessed": 42768.0,
         "Other": 181959.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 38904.0
+      },
       "UN Secretariat": {
         "Assessed": 64354.0,
         "Voluntary earmarked": 142.0,
@@ -17621,9 +17588,6 @@
       },
       "UN Tourism": {
         "Voluntary un-earmarked": 18546.06
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 38904.0
       },
       "UNCCD": {
         "Assessed": 160.0
@@ -17700,6 +17664,10 @@
       "OPCW": {
         "Assessed": 1564.93
       },
+      "Peacekeeping Operations": {
+        "Assessed": 12987.0,
+        "Other": 16386.0
+      },
       "UN Secretariat": {
         "Assessed": 64354.0,
         "Voluntary earmarked": 287277.0,
@@ -17707,10 +17675,6 @@
       },
       "UN Tourism": {
         "Assessed": 30910.1
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 12987.0,
-        "Other": 16386.0
       },
       "UNCCD": {
         "Assessed": 160.0
@@ -17768,8 +17732,7 @@
         "Voluntary un-earmarked": 1273.0
       },
       "IAEA": {
-        "Assessed": 9208.66,
-        "Voluntary earmarked": 0.0
+        "Assessed": 9208.66
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -17792,15 +17755,15 @@
       "OPCW": {
         "Assessed": 1564.93
       },
+      "Peacekeeping Operations": {
+        "Assessed": 25970.0
+      },
       "UN Secretariat": {
         "Assessed": 64354.0,
         "Voluntary earmarked": 25993.0
       },
       "UN Tourism": {
         "Assessed": 37091.01
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 25970.0
       },
       "UNCCD": {
         "Assessed": 160.0
@@ -17889,13 +17852,13 @@
         "Assessed": 42768.0,
         "Other": 67350.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 77679.0
+      },
       "UN Secretariat": {
         "Assessed": 64354.0,
         "Voluntary earmarked": 152.0,
         "Other": 3879.0
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 77679.0
       },
       "UNCCD": {
         "Assessed": 160.0
@@ -17958,6 +17921,9 @@
       "OPCW": {
         "Assessed": 1564.93
       },
+      "Peacekeeping Operations": {
+        "Assessed": 25970.0
+      },
       "UN Secretariat": {
         "Assessed": 64354.0,
         "Voluntary earmarked": 587.0,
@@ -17965,9 +17931,6 @@
       },
       "UN Tourism": {
         "Assessed": 30910.1
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 25970.0
       },
       "UNCCD": {
         "Assessed": 160.0
@@ -18059,6 +18022,9 @@
       "OPCW": {
         "Assessed": 1564.93
       },
+      "Peacekeeping Operations": {
+        "Assessed": 38966.0
+      },
       "UN Secretariat": {
         "Assessed": 64354.0,
         "Voluntary earmarked": 11832.0
@@ -18066,9 +18032,6 @@
       "UN Tourism": {
         "Assessed": 18546.06,
         "Voluntary earmarked": -8768.04
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 38966.0
       },
       "UNCCD": {
         "Assessed": 160.0
@@ -18149,6 +18112,9 @@
         "Assessed": 1564.93,
         "Voluntary earmarked": 1109.88
       },
+      "Peacekeeping Operations": {
+        "Assessed": 129880.0
+      },
       "UN Secretariat": {
         "Assessed": 64354.0,
         "Voluntary earmarked": 82739.0,
@@ -18157,9 +18123,6 @@
       "UN Tourism": {
         "Assessed": 55637.07,
         "Voluntary earmarked": 11987.79
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 129880.0
       },
       "UNCCD": {
         "Assessed": 160.0
@@ -18227,15 +18190,15 @@
       "OPCW": {
         "Assessed": 1564.93
       },
+      "Peacekeeping Operations": {
+        "Assessed": 12987.0
+      },
       "UN Secretariat": {
         "Assessed": 64354.0,
         "Voluntary earmarked": 686139.0
       },
       "UN Tourism": {
         "Assessed": 30910.1
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 12987.0
       },
       "UNCCD": {
         "Assessed": 160.0
@@ -18328,18 +18291,20 @@
       "OPCW": {
         "Assessed": 1564.93
       },
+      "Peacekeeping Operations": {
+        "Assessed": 12987.0,
+        "Other": 3336.0
+      },
       "UN Secretariat": {
         "Assessed": 64354.0,
         "Voluntary earmarked": 50962.0,
         "Other": 1604.0
       },
       "UN Tourism": {
-        "Assessed": 30910.1,
-        "Voluntary earmarked": 0.0
+        "Assessed": 30910.1
       },
-      "Peacekeeping Operations": {
-        "Assessed": 12987.0,
-        "Other": 3336.0
+      "UN Women": {
+        "Voluntary earmarked": -100000.0
       },
       "UNCCD": {
         "Assessed": 160.0
@@ -18366,9 +18331,6 @@
       },
       "UNOPS": {
         "Other": 45454.0
-      },
-      "UN Women": {
-        "Voluntary earmarked": -100000.0
       },
       "UPU": {
         "Assessed": 26047.9
@@ -18440,13 +18402,13 @@
         "Assessed": 42768.0,
         "Other": 193786.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 25907.0
+      },
       "UN Secretariat": {
         "Assessed": 64354.0,
         "Voluntary earmarked": 2388.0,
         "Other": 1484.0
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 25907.0
       },
       "UNCCD": {
         "Assessed": 160.0
@@ -18496,8 +18458,7 @@
         "Voluntary un-earmarked": 19004.0
       },
       "IAEA": {
-        "Assessed": 4596.0,
-        "Voluntary earmarked": 0.0
+        "Assessed": 4596.0
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -18529,6 +18490,9 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 12987.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 818304.0
@@ -18536,9 +18500,6 @@
       "UN Tourism": {
         "Assessed": 30910.1,
         "Voluntary earmarked": 3911.21
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 12987.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -18592,8 +18553,7 @@
         "Voluntary un-earmarked": 11.0
       },
       "IAEA": {
-        "Assessed": 4604.88,
-        "Voluntary earmarked": 0.0
+        "Assessed": 4604.88
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -18616,6 +18576,9 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 22664.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 74.0,
@@ -18623,9 +18586,6 @@
       },
       "UN Tourism": {
         "Assessed": 18546.06
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 22664.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -18732,15 +18692,15 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6499.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 35714.0
       },
       "UN Tourism": {
         "Assessed": 18546.06
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 6499.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -18777,9 +18737,6 @@
       },
       "WMO": {
         "Assessed": 16259.88
-      },
-      "WTO": {
-        "Assessed": 0.0
       }
     }
   },
@@ -18833,6 +18790,9 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6499.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 36554.0
@@ -18841,8 +18801,8 @@
         "Assessed": 27819.09,
         "Voluntary earmarked": 88.79
       },
-      "Peacekeeping Operations": {
-        "Assessed": 6499.0
+      "UN-Habitat": {
+        "Voluntary earmarked": 48.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -18860,9 +18820,6 @@
       },
       "UNFCCC": {
         "Assessed": 322.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 48.0
       },
       "UNICEF": {
         "Voluntary un-earmarked": 70000.0,
@@ -18933,6 +18890,9 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6499.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": -24499.0,
@@ -18940,9 +18900,6 @@
       },
       "UN Tourism": {
         "Assessed": 27819.09
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 6499.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -18999,8 +18956,7 @@
       "FAO": {
         "Assessed": 5014.0,
         "Voluntary un-earmarked": 45561.0,
-        "Voluntary earmarked": -6.0,
-        "Other": 0.0
+        "Voluntary earmarked": -6.0
       },
       "IAEA": {
         "Assessed": 4277.47,
@@ -19031,6 +18987,9 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6499.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 16316.0,
@@ -19039,9 +18998,6 @@
       "UN Tourism": {
         "Assessed": 30910.1,
         "Voluntary earmarked": 38.85
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 6499.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -19095,8 +19051,7 @@
         "Voluntary un-earmarked": 11.0
       },
       "IAEA": {
-        "Assessed": 4277.47,
-        "Voluntary earmarked": 0.0
+        "Assessed": 4277.47
       },
       "ICAO": {
         "Assessed": 52993.93,
@@ -19126,6 +19081,10 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6499.0,
+        "Other": 477.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 252064.0,
@@ -19133,10 +19092,6 @@
       },
       "UN Tourism": {
         "Assessed": 30910.1
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 6499.0,
-        "Other": 477.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -19223,12 +19178,12 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 12987.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 65.0
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 12987.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -19314,13 +19269,13 @@
         "Voluntary earmarked": 157001.0,
         "Other": 668641.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 12987.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 74.0,
         "Other": 727.0
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 12987.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -19391,12 +19346,15 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 12987.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 5024.0
       },
-      "Peacekeeping Operations": {
-        "Assessed": 12987.0
+      "UN Women": {
+        "Voluntary un-earmarked": 1000.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -19416,12 +19374,6 @@
       },
       "UNIDO": {
         "Assessed": 786.9
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 1000.0
-      },
-      "WFP": {
-        "Voluntary earmarked": 0.0
       },
       "WHO": {
         "Assessed": 4780.0
@@ -19446,8 +19398,7 @@
         "Voluntary un-earmarked": 11.0
       },
       "IAEA": {
-        "Assessed": 4604.88,
-        "Voluntary earmarked": 0.0
+        "Assessed": 4604.88
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -19480,13 +19431,16 @@
         "Assessed": 42768.0,
         "Other": 143222.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 12987.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 2236689.0,
         "Other": 1185.0
       },
-      "Peacekeeping Operations": {
-        "Assessed": 12987.0
+      "UN Women": {
+        "Voluntary un-earmarked": 13130.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -19503,9 +19457,6 @@
       },
       "UNIDO": {
         "Assessed": 786.9
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 13130.0
       },
       "UPU": {
         "Assessed": 5209.58
@@ -19556,15 +19507,15 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6499.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 34120.0
       },
       "UN Tourism": {
         "Assessed": 30910.1
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 6499.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -19653,13 +19604,13 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6499.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 52.0,
         "Other": 2852.0
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 6499.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -19707,8 +19658,7 @@
         "Other": 29634.0
       },
       "IAEA": {
-        "Assessed": 4277.47,
-        "Voluntary earmarked": 0.0
+        "Assessed": 4277.47
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -19738,6 +19688,9 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6499.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 23358.0,
@@ -19745,9 +19698,6 @@
       },
       "UN Tourism": {
         "Assessed": 30910.1
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 6499.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -19830,13 +19780,13 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6499.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 75857.0,
         "Other": 506.0
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 6499.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -19906,6 +19856,10 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6499.0,
+        "Other": 11164.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary un-earmarked": 192000.0,
@@ -19914,9 +19868,8 @@
       "UN Tourism": {
         "Assessed": 30910.1
       },
-      "Peacekeeping Operations": {
-        "Assessed": 6499.0,
-        "Other": 11164.0
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 10000.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -19938,9 +19891,6 @@
       },
       "UNFPA": {
         "Voluntary un-earmarked": 1433.0
-      },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 10000.0
       },
       "UNICEF": {
         "Voluntary earmarked": 23852564.0
@@ -19981,8 +19931,7 @@
         "Voluntary earmarked": 7123530.0
       },
       "IAEA": {
-        "Assessed": 4277.47,
-        "Voluntary earmarked": 0.0
+        "Assessed": 4277.47
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -20002,16 +19951,16 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6499.0,
+        "Voluntary earmarked": 63739951.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 53402.0
       },
       "UN Tourism": {
         "Assessed": 30910.1
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 6499.0,
-        "Voluntary earmarked": 63739951.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -20037,9 +19986,6 @@
       },
       "UPU": {
         "Assessed": 26047.9
-      },
-      "WFP": {
-        "Voluntary earmarked": 0.0
       },
       "WHO": {
         "Assessed": 4780.0,
@@ -20100,6 +20046,9 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 12956.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary un-earmarked": 13047.0,
@@ -20108,9 +20057,6 @@
       },
       "UN Tourism": {
         "Assessed": 30910.1
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 12956.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -20176,12 +20122,12 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 17827.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 71.0
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 17827.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -20260,12 +20206,15 @@
         "Assessed": 42768.0,
         "Other": 126024.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 12987.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 84.0
       },
-      "Peacekeeping Operations": {
-        "Assessed": 12987.0
+      "UN Women": {
+        "Voluntary un-earmarked": 6184.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -20281,9 +20230,6 @@
       },
       "UNIDO": {
         "Assessed": 786.9
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 6184.0
       },
       "UPU": {
         "Assessed": 5209.58
@@ -20309,8 +20255,7 @@
       "FAO": {
         "Assessed": 9490.0,
         "Voluntary un-earmarked": 36022.0,
-        "Voluntary earmarked": -101905.0,
-        "Other": 0.0
+        "Voluntary earmarked": -101905.0
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -20339,6 +20284,9 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6530.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 10074.0,
@@ -20347,8 +20295,9 @@
       "UN Tourism": {
         "Assessed": 37091.01
       },
-      "Peacekeeping Operations": {
-        "Assessed": 6530.0
+      "UN Women": {
+        "Voluntary un-earmarked": 64800.0,
+        "Voluntary earmarked": 300000.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -20378,10 +20327,6 @@
       },
       "UNOPS": {
         "Other": 8941.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 64800.0,
-        "Voluntary earmarked": 300000.0
       },
       "UPU": {
         "Assessed": 26047.9
@@ -20414,8 +20359,7 @@
         "Voluntary un-earmarked": 11.0
       },
       "IAEA": {
-        "Assessed": 4603.77,
-        "Voluntary earmarked": 0.0
+        "Assessed": 4603.77
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -20448,13 +20392,16 @@
         "Assessed": 42768.0,
         "Other": 66210.0
       },
+      "Peacekeeping Operations": {
+        "Assessed": 12987.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 74.0,
         "Other": 3321.0
       },
-      "Peacekeeping Operations": {
-        "Assessed": 12987.0
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 5000.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -20471,9 +20418,6 @@
       },
       "UNFCCC": {
         "Assessed": 322.0
-      },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 5000.0
       },
       "UNIDO": {
         "Assessed": 786.9
@@ -20505,8 +20449,7 @@
       "FAO": {
         "Assessed": 4859.0,
         "Voluntary un-earmarked": 11.0,
-        "Voluntary earmarked": -3.0,
-        "Other": 0.0
+        "Voluntary earmarked": -3.0
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -20569,8 +20512,7 @@
       "FAO": {
         "Assessed": 4810.0,
         "Voluntary un-earmarked": 11.0,
-        "Voluntary earmarked": -2.0,
-        "Other": 0.0
+        "Voluntary earmarked": -2.0
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -20596,12 +20538,12 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6499.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 2483.0
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 6499.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -20691,8 +20633,7 @@
         "Other": 4.0
       },
       "IAEA": {
-        "Assessed": 4604.88,
-        "Voluntary earmarked": 0.0
+        "Assessed": 4604.88
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -20724,15 +20665,15 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 12987.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 79894.0
       },
       "UN Tourism": {
         "Assessed": 18546.06
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 12987.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -20788,8 +20729,7 @@
         "Other": 3.0
       },
       "IAEA": {
-        "Assessed": 4284.13,
-        "Voluntary earmarked": 0.0
+        "Assessed": 4284.13
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -20818,6 +20758,9 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6499.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 11272.0,
@@ -20825,9 +20768,6 @@
       },
       "UN Tourism": {
         "Assessed": 30910.1
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 6499.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -20914,6 +20854,9 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6499.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 58558.0,
@@ -20921,9 +20864,6 @@
       },
       "UN Tourism": {
         "Assessed": 30910.1
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 6499.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -20998,20 +20938,26 @@
       "ITLOS": {
         "Other": 1164994.45
       },
-      "ITU": {
-        "Other": 14717177.25
-      },
       "OPCW": {
         "Other": 451319.64
       },
       "PAHO": {
         "Other": 61281000.0
       },
+      "Peacekeeping Operations": {
+        "Other": 70270147.0
+      },
       "UN Secretariat": {
         "Other": 922937825.0
       },
-      "Peacekeeping Operations": {
-        "Other": 70270147.0
+      "UN Tourism": {
+        "Other": 4253486.13
+      },
+      "UN Women": {
+        "Other": 23609128.0
+      },
+      "UN-Habitat": {
+        "Other": 23210907.0
       },
       "UNAIDS": {
         "Other": 8125204.0
@@ -21036,9 +20982,6 @@
       },
       "UNFPA": {
         "Other": 217389310.0
-      },
-      "UN-Habitat": {
-        "Other": 23210907.0
       },
       "UNHCR": {
         "Other": 93911806.0
@@ -21073,9 +21016,6 @@
       "UNV": {
         "Other": 1818366.0
       },
-      "UN Women": {
-        "Other": 23609128.0
-      },
       "WFP": {
         "Other": 304433762.0
       },
@@ -21090,6 +21030,179 @@
       },
       "WTO": {
         "Other": 3483511.38
+      }
+    },
+    "is_other": true
+  },
+  "Unattributed": {
+    "status": "organization",
+    "category": "Unattributed",
+    "contributions": {
+      "CTBTO": {
+        "Assessed": 4.0
+      },
+      "FAO": {
+        "Assessed": 12.0,
+        "Voluntary un-earmarked": -12.0,
+        "Voluntary earmarked": -3.0,
+        "Other": 7.0
+      },
+      "IAEA": {
+        "Assessed": 6.759999990463257,
+        "Voluntary earmarked": 1.0899999737739563
+      },
+      "IARC": {
+        "Assessed": -0.0099999979138374,
+        "Voluntary un-earmarked": 0.0100000000093132
+      },
+      "ICAO": {
+        "Assessed": 1368991.5600000024,
+        "Voluntary earmarked": -3.739999994635582,
+        "Other": 1.5099999979138374
+      },
+      "ICC": {
+        "Assessed": 0.0099999904632568
+      },
+      "IFAD": {
+        "Voluntary un-earmarked": 3.0,
+        "Voluntary earmarked": -4.0
+      },
+      "ILO": {
+        "Assessed": 5199529.0,
+        "Voluntary earmarked": -3.0
+      },
+      "IMO": {
+        "Assessed": -0.2000000029802322,
+        "Voluntary un-earmarked": 0.0199999995529651
+      },
+      "IOM": {
+        "Assessed": 34.0,
+        "Voluntary earmarked": 10.0,
+        "Other": 1.0
+      },
+      "IRMCT": {
+        "Assessed": 68979999.0,
+        "Other": 7259000.0
+      },
+      "ITC": {
+        "Assessed": -1.0,
+        "Voluntary earmarked": 1.0
+      },
+      "ITLOS": {
+        "Assessed": 37.71000000089407,
+        "Voluntary earmarked": -0.0100000000093132
+      },
+      "ITU": {
+        "Assessed": 839.4900000095367,
+        "Voluntary earmarked": 2.3799999989569187
+      },
+      "OPCW": {
+        "Assessed": 0.1099999994039535,
+        "Voluntary earmarked": -2.260000001639128,
+        "Other": 2.2199999997392297
+      },
+      "PAHO": {
+        "Voluntary earmarked": -147.0,
+        "Other": 425.0
+      },
+      "Peacekeeping Operations": {
+        "Other": 5.0
+      },
+      "UN Secretariat": {
+        "Voluntary un-earmarked": -5.0,
+        "Voluntary earmarked": 2.0,
+        "Other": 8.0
+      },
+      "UN Tourism": {
+        "Assessed": 6.969999998807907,
+        "Voluntary earmarked": 2.199999999254942,
+        "Other": -1.1799999997019768
+      },
+      "UN Women": {
+        "Voluntary un-earmarked": -4.0,
+        "Voluntary earmarked": -1.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": -1.0
+      },
+      "UNCDF": {
+        "Voluntary un-earmarked": -1.0,
+        "Voluntary earmarked": 2.0
+      },
+      "UNDP": {
+        "Voluntary un-earmarked": 4.0,
+        "Voluntary earmarked": 3.0,
+        "Other": 3.0
+      },
+      "UNEP": {
+        "Assessed": 10.0,
+        "Voluntary un-earmarked": -1.0,
+        "Voluntary earmarked": -8.0
+      },
+      "UNFCCC": {
+        "Assessed": -9.0,
+        "Voluntary earmarked": 2.0
+      },
+      "UNFPA": {
+        "Voluntary un-earmarked": 1.0,
+        "Voluntary earmarked": -1.0,
+        "Other": 2.0
+      },
+      "UNHCR": {
+        "Voluntary un-earmarked": -2.0,
+        "Voluntary earmarked": 2.0
+      },
+      "UNICEF": {
+        "Voluntary un-earmarked": 2.0,
+        "Voluntary earmarked": 4.0,
+        "Other": -2.0
+      },
+      "UNIDO": {
+        "Assessed": 0.2000000029802322,
+        "Voluntary earmarked": 1.1299999952316284
+      },
+      "UNITAR": {
+        "Voluntary earmarked": 31917384.0,
+        "Other": -31917385.0
+      },
+      "UNOPS": {
+        "Other": 3.0
+      },
+      "UNRWA": {
+        "Assessed": -0.380000002682209,
+        "Voluntary un-earmarked": -3.600000023841858,
+        "Voluntary earmarked": -3.0,
+        "Other": -1.0
+      },
+      "UNSSC": {
+        "Voluntary un-earmarked": 2.0
+      },
+      "UNV": {
+        "Voluntary earmarked": -2.0,
+        "Other": 1.0
+      },
+      "UPU": {
+        "Assessed": 0.0199999958276748,
+        "Other": -1.1900000013411045
+      },
+      "WFP": {
+        "Voluntary un-earmarked": 2.0,
+        "Voluntary earmarked": -4.0,
+        "Other": -6.0
+      },
+      "WHO": {
+        "Assessed": 2.0,
+        "Voluntary earmarked": 4.0
+      },
+      "WIPO": {
+        "Assessed": -0.3500000014901161
+      },
+      "WMO": {
+        "Assessed": 29.90999999642372
+      },
+      "WTO": {
+        "Assessed": 0.0099999904632568,
+        "Voluntary earmarked": 1.2200000025331974
       }
     },
     "is_other": true
@@ -21125,6 +21238,17 @@
         "Voluntary earmarked": 652883.0,
         "Other": 354332.0
       },
+      "UN Tourism": {
+        "Assessed": 294000.68,
+        "Voluntary earmarked": 58160.93,
+        "Other": 184502.82
+      },
+      "UN Women": {
+        "Voluntary earmarked": 163577.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 3875482.0
+      },
       "UNDP": {
         "Voluntary un-earmarked": -3713.0,
         "Voluntary earmarked": -690460.0,
@@ -21135,9 +21259,6 @@
       },
       "UNESCO": {
         "Voluntary earmarked": 3076566.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 3875482.0
       },
       "UNICRI": {
         "Voluntary earmarked": 201000.0,
@@ -21164,9 +21285,6 @@
       "UNV": {
         "Voluntary earmarked": 174628.0,
         "Other": 2562.0
-      },
-      "UN Women": {
-        "Voluntary earmarked": 163577.0
       },
       "WHO": {
         "Voluntary earmarked": 9358474.0
@@ -21210,7 +21328,7 @@
       },
       "ITU": {
         "Assessed": 19812585.63,
-        "Other": 40892215.57,
+        "Other": 55609392.82,
         "Voluntary earmarked": 2015294.61
       },
       "PAHO": {
@@ -21220,6 +21338,13 @@
         "Voluntary un-earmarked": 18622249.0,
         "Voluntary earmarked": 263284631.0,
         "Other": 19001440.0
+      },
+      "UN Tourism": {
+        "Voluntary earmarked": 208.66,
+        "Other": 3052.16
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 1417016.0
       },
       "UNCDF": {
         "Voluntary earmarked": 81323.0
@@ -21240,9 +21365,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 2351383.0,
         "Voluntary earmarked": 3628636.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 1417016.0
       },
       "UNHCR": {
         "Voluntary un-earmarked": 105750952.0,
@@ -21306,6 +21428,12 @@
         "Voluntary un-earmarked": 400716.0,
         "Voluntary earmarked": 22526.0
       },
+      "UN Women": {
+        "Voluntary earmarked": 3292106.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 2074108.0
+      },
       "UNAIDS": {
         "Voluntary earmarked": 3031335.0
       },
@@ -21322,9 +21450,6 @@
       "UNFPA": {
         "Voluntary earmarked": 7554452.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": 2074108.0
-      },
       "UNHCR": {
         "Voluntary earmarked": 1742644.0
       },
@@ -21336,9 +21461,6 @@
       },
       "UNOPS": {
         "Other": 1042392.0
-      },
-      "UN Women": {
-        "Voluntary earmarked": 3292106.0
       },
       "WFP": {
         "Voluntary earmarked": 8291541.0,
@@ -21399,6 +21521,9 @@
         "Assessed": 926613.76,
         "Voluntary earmarked": -7428.41
       },
+      "Peacekeeping Operations": {
+        "Assessed": 71118144.0
+      },
       "UN Secretariat": {
         "Assessed": 38097761.0,
         "Voluntary earmarked": 17587476.0,
@@ -21408,8 +21533,8 @@
         "Assessed": 240465.04,
         "Voluntary earmarked": 5292627.08
       },
-      "Peacekeeping Operations": {
-        "Assessed": 71118144.0
+      "UN Women": {
+        "Voluntary earmarked": 156282.0
       },
       "UNCCD": {
         "Assessed": 94702.0,
@@ -21461,9 +21586,6 @@
       "UNV": {
         "Voluntary earmarked": 1029414.0,
         "Other": 2217.0
-      },
-      "UN Women": {
-        "Voluntary earmarked": 156282.0
       },
       "UPU": {
         "Assessed": 1041916.17
@@ -21537,6 +21659,10 @@
       "OPCW": {
         "Assessed": 817047.72
       },
+      "Peacekeeping Operations": {
+        "Assessed": 13546263.0,
+        "Other": 8708681.0
+      },
       "UN Secretariat": {
         "Assessed": 33592958.0,
         "Voluntary un-earmarked": 6654.0,
@@ -21547,9 +21673,12 @@
         "Assessed": 234915.65,
         "Voluntary earmarked": 96875.69
       },
-      "Peacekeeping Operations": {
-        "Assessed": 13546263.0,
-        "Other": 8708681.0
+      "UN Women": {
+        "Voluntary un-earmarked": 500000.0
+      },
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 100000.0,
+        "Voluntary earmarked": 64428.0
       },
       "UNCCD": {
         "Assessed": 83504.0
@@ -21575,10 +21704,6 @@
       "UNFPA": {
         "Voluntary un-earmarked": 493511.0
       },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 100000.0,
-        "Voluntary earmarked": 64428.0
-      },
       "UNICEF": {
         "Voluntary un-earmarked": 101500.0,
         "Voluntary earmarked": -17489.0
@@ -21595,9 +21720,6 @@
       },
       "UNRWA": {
         "Voluntary un-earmarked": 5000000.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 500000.0
       },
       "UPU": {
         "Assessed": 1041916.17
@@ -21663,6 +21785,10 @@
       "OPCW": {
         "Assessed": 89217.54
       },
+      "Peacekeeping Operations": {
+        "Assessed": 1480680.0,
+        "Other": 109332.0
+      },
       "UN Secretariat": {
         "Assessed": 3668197.0,
         "Voluntary earmarked": 3054052.0,
@@ -21671,9 +21797,11 @@
       "UN Tourism": {
         "Assessed": 55637.07
       },
-      "Peacekeeping Operations": {
-        "Assessed": 1480680.0,
-        "Other": 109332.0
+      "UN Women": {
+        "Voluntary un-earmarked": 10017.0
+      },
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 5824.0
       },
       "UNCCD": {
         "Assessed": 9118.0
@@ -21695,9 +21823,6 @@
       "UNFCCC": {
         "Assessed": 37046.0
       },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 5824.0
-      },
       "UNICEF": {
         "Voluntary un-earmarked": 7931.0,
         "Voluntary earmarked": 47412.0
@@ -21715,9 +21840,6 @@
       },
       "UNOPS": {
         "Other": 604100.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 10017.0
       },
       "UPU": {
         "Assessed": 520958.08
@@ -21780,6 +21902,9 @@
       "OPCW": {
         "Assessed": 14870.14
       },
+      "Peacekeeping Operations": {
+        "Assessed": 246272.0
+      },
       "UN Secretariat": {
         "Assessed": 611366.0,
         "Voluntary earmarked": 61350.0
@@ -21788,8 +21913,8 @@
         "Assessed": 74184.24,
         "Voluntary earmarked": 131453.94
       },
-      "Peacekeeping Operations": {
-        "Assessed": 246272.0
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 75000.0
       },
       "UNCCD": {
         "Assessed": 1520.0
@@ -21809,9 +21934,6 @@
       },
       "UNFCCC": {
         "Assessed": 6175.0
-      },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 75000.0
       },
       "UNIDO": {
         "Assessed": 14169.81,
@@ -21867,16 +21989,16 @@
       "OPCW": {
         "Assessed": 7043.29
       },
+      "Peacekeeping Operations": {
+        "Assessed": 117017.0,
+        "Voluntary earmarked": 1025200.0
+      },
       "UN Secretariat": {
         "Assessed": 289594.0,
         "Voluntary earmarked": 428.0
       },
       "UN Tourism": {
         "Assessed": 44680.36
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 117017.0,
-        "Voluntary earmarked": 1025200.0
       },
       "UNCCD": {
         "Assessed": 720.0
@@ -21902,9 +22024,6 @@
       "UPU": {
         "Assessed": 52095.81
       },
-      "WFP": {
-        "Voluntary earmarked": 0.0
-      },
       "WHO": {
         "Assessed": 43060.0,
         "Voluntary earmarked": 216000.0
@@ -21914,9 +22033,6 @@
       },
       "WMO": {
         "Assessed": 16259.88
-      },
-      "WTO": {
-        "Assessed": 0.0
       }
     }
   },
@@ -21942,15 +22058,15 @@
       "ITU": {
         "Assessed": 47604.79
       },
+      "Peacekeeping Operations": {
+        "Assessed": 65003.0
+      },
       "UN Secretariat": {
         "Assessed": 160886.0,
         "Voluntary earmarked": 108.0
       },
       "UN Tourism": {
         "Assessed": 30910.1
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 65003.0
       },
       "UNCCD": {
         "Assessed": 400.0
@@ -21980,8 +22096,7 @@
         "Assessed": 52095.81
       },
       "WFP": {
-        "Voluntary un-earmarked": 62484.0,
-        "Voluntary earmarked": 0.0
+        "Voluntary un-earmarked": 62484.0
       },
       "WHO": {
         "Assessed": 23920.0
@@ -22030,6 +22145,11 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6499.0,
+        "Voluntary earmarked": 117086082.0,
+        "Other": 774217.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 7458007.0,
@@ -22038,10 +22158,8 @@
       "UN Tourism": {
         "Assessed": 30910.1
       },
-      "Peacekeeping Operations": {
-        "Assessed": 6499.0,
-        "Voluntary earmarked": 117086082.0,
-        "Other": 774217.0
+      "UN-Habitat": {
+        "Voluntary un-earmarked": 2500.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -22054,9 +22172,6 @@
       },
       "UNFCCC": {
         "Assessed": 322.0
-      },
-      "UN-Habitat": {
-        "Voluntary un-earmarked": 2500.0
       },
       "UNICEF": {
         "Voluntary un-earmarked": 435700.0
@@ -22082,9 +22197,6 @@
       },
       "WMO": {
         "Assessed": 16259.88
-      },
-      "WTO": {
-        "Assessed": 0.0
       }
     }
   },
@@ -22110,15 +22222,18 @@
       "ITU": {
         "Assessed": 23802.4
       },
+      "Peacekeeping Operations": {
+        "Assessed": 13112.0,
+        "Voluntary earmarked": 62493269.0,
+        "Other": 4002.0
+      },
       "UN Secretariat": {
         "Assessed": 64354.0,
         "Voluntary earmarked": 24.0,
         "Other": 714.0
       },
-      "Peacekeeping Operations": {
-        "Assessed": 13112.0,
-        "Voluntary earmarked": 62493269.0,
-        "Other": 4002.0
+      "UN Women": {
+        "Voluntary earmarked": 61000000.0
       },
       "UNCCD": {
         "Assessed": 160.0
@@ -22135,9 +22250,6 @@
       "UNICEF": {
         "Voluntary un-earmarked": 257911.0,
         "Voluntary earmarked": 1000000.0
-      },
-      "UN Women": {
-        "Voluntary earmarked": 61000000.0
       },
       "UPU": {
         "Assessed": 26047.9
@@ -22196,15 +22308,15 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 6499.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 46.0
       },
       "UN Tourism": {
         "Assessed": 30910.1
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 6499.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -22264,8 +22376,7 @@
         "Voluntary un-earmarked": 152907.0
       },
       "IAEA": {
-        "Assessed": 4604.88,
-        "Voluntary earmarked": 0.0
+        "Assessed": 4604.88
       },
       "ICAO": {
         "Assessed": 52993.93
@@ -22292,13 +22403,13 @@
       "OPCW": {
         "Assessed": 775.8
       },
+      "Peacekeeping Operations": {
+        "Assessed": 12987.0
+      },
       "UN Secretariat": {
         "Assessed": 32177.0,
         "Voluntary earmarked": 46.0,
         "Other": 222.0
-      },
-      "Peacekeeping Operations": {
-        "Assessed": 12987.0
       },
       "UNCCD": {
         "Assessed": 82.0
@@ -22390,6 +22501,9 @@
       "UN Secretariat": {
         "Other": 5400.0
       },
+      "UN-Habitat": {
+        "Voluntary earmarked": 31436987.0
+      },
       "UNDP": {
         "Voluntary earmarked": 64303031.0,
         "Other": 13057164.0
@@ -22399,9 +22513,6 @@
       },
       "UNESCO": {
         "Voluntary earmarked": 1555059.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 31436987.0
       },
       "UNHCR": {
         "Voluntary earmarked": 25830489.0
@@ -22451,6 +22562,9 @@
         "Voluntary earmarked": 3139045.0,
         "Other": 614260.0
       },
+      "UN-Habitat": {
+        "Voluntary earmarked": 162622.0
+      },
       "UNDP": {
         "Voluntary earmarked": 107072730.0,
         "Other": 2924973.0
@@ -22460,9 +22574,6 @@
       },
       "UNESCO": {
         "Voluntary earmarked": 25491320.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 162622.0
       },
       "UNICEF": {
         "Voluntary earmarked": 633450697.0
@@ -22492,7 +22603,8 @@
     "category": "Multilateral - IFIs",
     "contributions": {
       "FAO": {
-        "Voluntary earmarked": 70331218.0
+        "Voluntary earmarked": 70331218.0,
+        "Other": 92.0
       },
       "ILO": {
         "Voluntary earmarked": 4827013.0
@@ -22506,12 +22618,21 @@
       "PAHO": {
         "Voluntary earmarked": 1092792.0
       },
+      "Peacekeeping Operations": {
+        "Other": 314552.0
+      },
       "UN Secretariat": {
         "Voluntary earmarked": 1586799.0,
         "Other": 261345.0
       },
-      "Peacekeeping Operations": {
-        "Other": 314552.0
+      "UN Tourism": {
+        "Voluntary earmarked": 396597.12
+      },
+      "UN Women": {
+        "Voluntary earmarked": -496506.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 90294.0
       },
       "UNDP": {
         "Voluntary earmarked": 2515911.0,
@@ -22525,9 +22646,6 @@
       },
       "UNFPA": {
         "Voluntary earmarked": 918192.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 90294.0
       },
       "UNHCR": {
         "Voluntary earmarked": 11906801.0
@@ -22550,9 +22668,6 @@
       "UNU": {
         "Other": 38250.0
       },
-      "UN Women": {
-        "Voluntary earmarked": -496506.0
-      },
       "WFP": {
         "Voluntary earmarked": 3721985.0,
         "Other": 208372.0
@@ -22561,7 +22676,7 @@
         "Voluntary earmarked": 584226.0
       },
       "WMO": {
-        "Voluntary earmarked": 40319.759999999995
+        "Voluntary earmarked": 40319.76000000071
       }
     },
     "is_other": true
@@ -22590,15 +22705,25 @@
       "IOM": {
         "Voluntary earmarked": 114076.0
       },
+      "ITC": {
+        "Voluntary earmarked": -534.0
+      },
       "PAHO": {
         "Voluntary earmarked": 397559.0
+      },
+      "Peacekeeping Operations": {
+        "Other": 982304.0
       },
       "UN Secretariat": {
         "Voluntary earmarked": 2415378.0,
         "Other": 189726.0
       },
-      "Peacekeeping Operations": {
-        "Other": 982304.0
+      "UN Tourism": {
+        "Assessed": 5549.38,
+        "Voluntary earmarked": 18563.81
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 2956879.0
       },
       "UNAIDS": {
         "Voluntary earmarked": 22312.0
@@ -22615,9 +22740,6 @@
       },
       "UNESCO": {
         "Voluntary earmarked": 642040.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 2956879.0
       },
       "UNHCR": {
         "Voluntary earmarked": 21036.0
@@ -22668,15 +22790,18 @@
       "UN Secretariat": {
         "Voluntary earmarked": 1059814.0
       },
+      "UN Women": {
+        "Voluntary earmarked": 1805406.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 663754.0
+      },
       "UNDP": {
         "Voluntary earmarked": 23256500.0,
         "Other": 2358038.0
       },
       "UNFPA": {
         "Voluntary earmarked": 60853897.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 663754.0
       },
       "UNHCR": {
         "Voluntary earmarked": 96631658.0,
@@ -22700,9 +22825,6 @@
       },
       "UNU": {
         "Other": 436.0
-      },
-      "UN Women": {
-        "Voluntary earmarked": 1805406.0
       },
       "WFP": {
         "Voluntary earmarked": 166333123.0,
@@ -22737,10 +22859,10 @@
         "Voluntary earmarked": 12745091.0
       },
       "IMO": {
-        "Voluntary un-earmarked": 4034647.499999999
+        "Voluntary un-earmarked": 4034647.5
       },
       "IOM": {
-        "Voluntary earmarked": 34096941.0,
+        "Voluntary earmarked": -76772705.0,
         "Other": 358953.0
       },
       "ITC": {
@@ -22749,7 +22871,7 @@
         "Other": 2102388.0
       },
       "ITU": {
-        "Voluntary earmarked": 2265785.6399999997
+        "Voluntary earmarked": 2265785.64
       },
       "OPCW": {
         "Other": 317672.59
@@ -22757,13 +22879,25 @@
       "PAHO": {
         "Voluntary earmarked": 7062749.0
       },
+      "Peacekeeping Operations": {
+        "Other": 19433672.0
+      },
       "UN Secretariat": {
         "Voluntary un-earmarked": 77082671.0,
         "Voluntary earmarked": 234161017.0,
         "Other": 106940614.0
       },
-      "Peacekeeping Operations": {
-        "Other": 19433672.0
+      "UN Tourism": {
+        "Voluntary earmarked": 196785.8
+      },
+      "UN Women": {
+        "Assessed": 10473712.0,
+        "Voluntary earmarked": 16147219.0
+      },
+      "UN-Habitat": {
+        "Assessed": 16578377.0,
+        "Voluntary earmarked": -1780304.0,
+        "Other": 102286.0
       },
       "UNAIDS": {
         "Voluntary un-earmarked": 16461.0,
@@ -22774,7 +22908,7 @@
       },
       "UNDP": {
         "Voluntary un-earmarked": 37987.0,
-        "Voluntary earmarked": 43854249.0,
+        "Voluntary earmarked": 33311214.0,
         "Other": 48942847.0
       },
       "UNEP": {
@@ -22788,21 +22922,17 @@
         "Other": 3849947.0
       },
       "UNFPA": {
-        "Voluntary earmarked": 31694867.0,
+        "Voluntary earmarked": -29149305.0,
         "Other": 441008.0
-      },
-      "UN-Habitat": {
-        "Assessed": 16578377.0,
-        "Voluntary earmarked": -1116550.0,
-        "Other": 102286.0
       },
       "UNHCR": {
         "Assessed": 49592477.0,
-        "Voluntary earmarked": 9978047.0,
+        "Voluntary earmarked": -86653611.0,
         "Other": 253979.0
       },
       "UNICEF": {
-        "Voluntary earmarked": 71687435.0,
+        "Voluntary un-earmarked": 223.0,
+        "Voluntary earmarked": -112694173.0,
         "Other": 24239796.0
       },
       "UNICRI": {
@@ -22836,21 +22966,17 @@
       "UNU": {
         "Voluntary un-earmarked": 139327.0,
         "Voluntary earmarked": 5656040.0,
-        "Other": 1729187.0
+        "Other": 1729404.0
       },
       "UNV": {
         "Other": 3153163.0
       },
-      "UN Women": {
-        "Assessed": 10473712.0,
-        "Voluntary earmarked": 17952625.0
-      },
       "WFP": {
-        "Voluntary earmarked": 96887227.0,
+        "Voluntary earmarked": -69246006.0,
         "Other": 33122819.0
       },
       "WHO": {
-        "Voluntary earmarked": 65566888.0,
+        "Voluntary earmarked": -18342689.0,
         "Other": 7583354.0
       },
       "WMO": {
@@ -22877,6 +23003,9 @@
       },
       "PAHO": {
         "Voluntary earmarked": 2988092.0
+      },
+      "UN Women": {
+        "Voluntary earmarked": 80918205.0
       },
       "UNAIDS": {
         "Voluntary earmarked": 386996.0
@@ -22914,9 +23043,6 @@
       "UNOPS": {
         "Other": 320276.0
       },
-      "UN Women": {
-        "Voluntary earmarked": 80918205.0
-      },
       "WFP": {
         "Voluntary earmarked": 60126129.0
       },
@@ -22937,28 +23063,37 @@
         "Voluntary earmarked": 39553223.0
       },
       "IOM": {
-        "Voluntary earmarked": 3046652.0
+        "Voluntary earmarked": 113916298.0
       },
       "ITC": {
         "Voluntary earmarked": 224491.0
+      },
+      "UN Women": {
+        "Voluntary earmarked": 13781798.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 26245637.0
+      },
+      "UNDP": {
+        "Voluntary earmarked": 10543035.0
       },
       "UNEP": {
         "Voluntary earmarked": 48323.0
       },
       "UNFPA": {
-        "Voluntary earmarked": 52635267.0
+        "Voluntary earmarked": 113479439.0
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": 25581883.0
+      "UNHCR": {
+        "Voluntary earmarked": 96631658.0
       },
       "UNICEF": {
-        "Voluntary earmarked": 95870372.0
+        "Voluntary earmarked": 280251980.0
       },
-      "UN Women": {
-        "Voluntary earmarked": 11976392.0
+      "WFP": {
+        "Voluntary earmarked": 166133233.0
       },
       "WHO": {
-        "Voluntary earmarked": 5913023.0
+        "Voluntary earmarked": 89822600.0
       }
     },
     "is_other": true
@@ -22968,7 +23103,8 @@
     "category": "NGOs",
     "contributions": {
       "FAO": {
-        "Voluntary earmarked": 482026.0
+        "Voluntary earmarked": 482026.0,
+        "Other": 136.0
       },
       "IARC": {
         "Voluntary earmarked": 372419.54
@@ -22991,13 +23127,23 @@
       "PAHO": {
         "Voluntary earmarked": 2364467.0
       },
+      "Peacekeeping Operations": {
+        "Other": 647728.0
+      },
       "UN Secretariat": {
         "Voluntary un-earmarked": 6622.0,
         "Voluntary earmarked": 9502948.0,
         "Other": 289455.0
       },
-      "Peacekeeping Operations": {
-        "Other": 647728.0
+      "UN Tourism": {
+        "Assessed": 209988.58,
+        "Voluntary earmarked": 158391.78
+      },
+      "UN Women": {
+        "Voluntary earmarked": 914836.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 218772.0
       },
       "UNAIDS": {
         "Voluntary earmarked": 998091.0
@@ -23017,9 +23163,6 @@
       },
       "UNFPA": {
         "Voluntary earmarked": 3376002.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 218772.0
       },
       "UNHCR": {
         "Voluntary un-earmarked": 172443035.0,
@@ -23049,9 +23192,6 @@
       "UNV": {
         "Voluntary earmarked": 844500.0,
         "Other": 20354.0
-      },
-      "UN Women": {
-        "Voluntary earmarked": 914836.0
       },
       "WFP": {
         "Voluntary un-earmarked": 2218714.0,
@@ -23083,7 +23223,7 @@
         "Voluntary earmarked": 147527.19
       },
       "ICAO": {
-        "Voluntary earmarked": 24717.21000000002
+        "Voluntary earmarked": 24717.209999999992
       },
       "ILO": {
         "Voluntary earmarked": 20374810.0,
@@ -23097,18 +23237,30 @@
         "Assessed": -9199404.0,
         "Voluntary earmarked": 444214.21
       },
+      "Peacekeeping Operations": {
+        "Voluntary earmarked": 1606460.0,
+        "Other": 18406447.0
+      },
       "UN Secretariat": {
         "Assessed": 60334064.0,
         "Voluntary earmarked": 25167.0,
         "Other": 11140.0
       },
-      "Peacekeeping Operations": {
-        "Voluntary earmarked": 1606460.0,
-        "Other": 18406447.0
+      "UN Tourism": {
+        "Assessed": 1387.35,
+        "Voluntary earmarked": 14845.73,
+        "Other": 136833.52000000002
+      },
+      "UN Women": {
+        "Other": 139507.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 2570157.0,
+        "Other": 13190173.0
       },
       "UNAIDS": {
-        "Voluntary un-earmarked": 496530.0,
-        "Voluntary earmarked": 194770.0
+        "Voluntary un-earmarked": 601429.0,
+        "Voluntary earmarked": 6872890.0
       },
       "UNCDF": {
         "Other": -3306425.0
@@ -23133,10 +23285,6 @@
         "Voluntary un-earmarked": 773584.0,
         "Voluntary earmarked": 4152074.0,
         "Other": 640904.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 2570157.0,
-        "Other": 13190173.0
       },
       "UNHCR": {
         "Voluntary earmarked": 62876.0,
@@ -23166,9 +23314,6 @@
         "Voluntary earmarked": 10939973.0,
         "Other": 863515.0
       },
-      "UN Women": {
-        "Other": 139507.0
-      },
       "UPU": {
         "Voluntary earmarked": 41262725.75,
         "Other": 30070583.23
@@ -23184,6 +23329,9 @@
       },
       "WMO": {
         "Voluntary earmarked": 302592.81
+      },
+      "WTO": {
+        "Voluntary earmarked": 91.02
       }
     },
     "is_other": true
@@ -23197,7 +23345,7 @@
         "Other": 691570.0
       },
       "IARC": {
-        "Voluntary earmarked": 26359.6
+        "Voluntary earmarked": 26359.60000000001
       },
       "ICAO": {
         "Voluntary earmarked": 275635.33,
@@ -23215,19 +23363,31 @@
       "PAHO": {
         "Voluntary earmarked": 63804.0
       },
+      "Peacekeeping Operations": {
+        "Other": 12988311.0
+      },
       "UN Secretariat": {
         "Voluntary earmarked": 1619299.0,
         "Other": 1054379.0
       },
-      "Peacekeeping Operations": {
-        "Other": 12988311.0
+      "UN Tourism": {
+        "Assessed": 399820.7599999999,
+        "Voluntary earmarked": 184970.05,
+        "Other": 176943.42
+      },
+      "UN Women": {
+        "Voluntary un-earmarked": 2516518.0,
+        "Voluntary earmarked": 9428485.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 918342.0
       },
       "UNCDF": {
         "Voluntary earmarked": 1123038.0
       },
       "UNDP": {
         "Voluntary un-earmarked": 8937.0,
-        "Voluntary earmarked": 45193787.0,
+        "Voluntary earmarked": 45193661.0,
         "Other": 2928735.0
       },
       "UNEP": {
@@ -23241,9 +23401,6 @@
       },
       "UNFPA": {
         "Voluntary earmarked": 5733998.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 918342.0
       },
       "UNICEF": {
         "Voluntary un-earmarked": 823836658.0,
@@ -23269,10 +23426,6 @@
       "UNU": {
         "Voluntary earmarked": 13718.0,
         "Other": 633905.0
-      },
-      "UN Women": {
-        "Voluntary un-earmarked": 2516518.0,
-        "Voluntary earmarked": 9428485.0
       },
       "WFP": {
         "Voluntary un-earmarked": 14796408.0,
@@ -23324,6 +23477,23 @@
       },
       "WIPO": {
         "Voluntary earmarked": 56782.04
+      }
+    },
+    "is_other": true
+  },
+  "Other Government": {
+    "status": "nonmember",
+    "category": "Government",
+    "contributions": {
+      "ICAO": {
+        "Assessed": -1368971.950000003
+      },
+      "ILO": {
+        "Assessed": -5199525.0
+      },
+      "UNAIDS": {
+        "Voluntary un-earmarked": -104899.0,
+        "Voluntary earmarked": -6678120.0
       }
     },
     "is_other": true
@@ -23494,11 +23664,11 @@
       "IOM": {
         "Voluntary earmarked": 603433.0
       },
-      "UN Secretariat": {
-        "Voluntary earmarked": 489148.0
-      },
       "Peacekeeping Operations": {
         "Voluntary earmarked": 74512.0
+      },
+      "UN Secretariat": {
+        "Voluntary earmarked": 489148.0
       },
       "UNDP": {
         "Voluntary earmarked": 997720.0,
@@ -23586,15 +23756,21 @@
         "Voluntary earmarked": 235404.0,
         "Other": 37043.0
       },
+      "UN Tourism": {
+        "Voluntary earmarked": 6876.8
+      },
+      "UN Women": {
+        "Voluntary earmarked": -238929.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": -15576.0
+      },
       "UNDP": {
         "Voluntary earmarked": 39329.0,
         "Other": 154559.0
       },
       "UNESCO": {
         "Voluntary earmarked": 652939.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": -15576.0
       },
       "UNICEF": {
         "Voluntary earmarked": 204927674.0
@@ -23605,9 +23781,6 @@
       "UNU": {
         "Voluntary earmarked": 83713.0,
         "Other": 4000.0
-      },
-      "UN Women": {
-        "Voluntary earmarked": -238929.0
       },
       "WFP": {
         "Voluntary earmarked": 119068391.0
@@ -23760,6 +23933,16 @@
       }
     }
   },
+  "Other European Union": {
+    "status": "organization",
+    "category": "European Union",
+    "contributions": {
+      "Peacekeeping Operations": {
+        "Other": 16594928.0
+      }
+    },
+    "is_other": true
+  },
   "Jersey": {
     "status": "nonmember",
     "category": "Government",
@@ -23796,16 +23979,6 @@
         "Voluntary earmarked": 14967.66
       }
     }
-  },
-  "Other European Union": {
-    "status": "organization",
-    "category": "European Union",
-    "contributions": {
-      "Peacekeeping Operations": {
-        "Other": 16594928.0
-      }
-    },
-    "is_other": true
   },
   "Isle of Man": {
     "status": "nonmember",

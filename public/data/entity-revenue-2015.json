@@ -3,10 +3,10 @@
     "total": 1250558813.2999997,
     "year": 2015,
     "by_type": {
-      "Assessed": 496568548.33,
-      "Other": 152693173.15999994,
-      "Voluntary earmarked": 574954566.8199999,
-      "Voluntary un-earmarked": 26342524.99
+      "Assessed": 496622670.7,
+      "Other": 10288000.0,
+      "Voluntary earmarked": 743648142.5999999,
+      "Voluntary un-earmarked": 0.0
     },
     "by_donor": [
       {
@@ -1098,12 +1098,12 @@
     ]
   },
   "IAEA": {
-    "total": 617904279.0400002,
+    "total": 617904279.0400001,
     "year": 2015,
     "by_type": {
-      "Assessed": 377457248.16,
-      "Other": 24026161.15000011,
-      "Voluntary earmarked": 216420869.73000002
+      "Assessed": 377494582.1,
+      "Other": 4661955.14,
+      "Voluntary earmarked": 235747741.8
     },
     "by_donor": [
       {
@@ -2078,10 +2078,10 @@
     "total": 196571600.76,
     "year": 2015,
     "by_type": {
-      "Assessed": 67605746.37,
-      "Other": -2841827.6300000143,
-      "Voluntary earmarked": 131571745.56,
-      "Voluntary un-earmarked": 235936.46
+      "Assessed": 67646342.96,
+      "Other": 22635285.2,
+      "Voluntary earmarked": 106289972.6,
+      "Voluntary un-earmarked": 0.0
     },
     "by_donor": [
       {
@@ -3165,8 +3165,7 @@
     "total": 315098000.0,
     "year": 2015,
     "by_type": {
-      "Other": 22572000.0,
-      "Voluntary earmarked": 70850000.0,
+      "Voluntary earmarked": 93422000.0,
       "Voluntary un-earmarked": 221676000.0
     },
     "by_donor": [
@@ -3510,10 +3509,10 @@
     "total": 638970782.0,
     "year": 2015,
     "by_type": {
-      "Assessed": 384012748.96999997,
-      "Other": 62885566.02999997,
-      "Voluntary earmarked": 179470423.0,
-      "Voluntary un-earmarked": 12602044.0
+      "Assessed": 400630000.0,
+      "Other": 13300000.0,
+      "Voluntary earmarked": 225040782.0,
+      "Voluntary un-earmarked": 0.0
     },
     "by_donor": [
       {
@@ -4498,9 +4497,9 @@
     "total": 72040878.51,
     "year": 2015,
     "by_type": {
-      "Assessed": 44617606.47,
-      "Other": 21553574.860000007,
-      "Voluntary earmarked": 5869697.18
+      "Assessed": 44625254.81,
+      "Other": 18963259.26,
+      "Voluntary earmarked": 8452364.44
     },
     "by_donor": [
       {
@@ -5405,10 +5404,10 @@
     "total": 1603411749.0,
     "year": 2015,
     "by_type": {
-      "Assessed": 43142991.0,
-      "Other": 254484390.0,
-      "Voluntary earmarked": 1272419944.0,
-      "Voluntary un-earmarked": 33364424.0
+      "Assessed": 43148345.0,
+      "Other": 156663262.0,
+      "Voluntary earmarked": 1396868852.0,
+      "Voluntary un-earmarked": 6731290.0
     },
     "by_donor": [
       {
@@ -6279,9 +6278,10 @@
     "total": 70627000.0,
     "year": 2015,
     "by_type": {
-      "Other": 44794000.0,
-      "Voluntary earmarked": 18310000.0,
-      "Voluntary un-earmarked": 7523000.0
+      "Assessed": 37156000.0,
+      "Other": 1663000.0,
+      "Voluntary earmarked": 25023000.0,
+      "Voluntary un-earmarked": 6785000.0
     },
     "by_donor": [
       {
@@ -6398,12 +6398,13 @@
     ]
   },
   "ITU": {
-    "total": 175890533.79000002,
+    "total": 175890533.79,
     "year": 2015,
     "by_type": {
-      "Assessed": 110666246.42999999,
-      "Other": 44546693.430000015,
-      "Voluntary earmarked": 20677593.93
+      "Assessed": 127595358.20000002,
+      "Other": 42623419.78,
+      "Voluntary earmarked": 5612357.219999999,
+      "Voluntary un-earmarked": 59398.59
     },
     "by_donor": [
       {
@@ -7387,10 +7388,10 @@
     "total": 1370476350.0,
     "year": 2015,
     "by_type": {
-      "Assessed": 105603646.0,
-      "Other": 634917663.0,
-      "Voluntary earmarked": 623088437.0,
-      "Voluntary un-earmarked": 6866604.0
+      "Assessed": 105620000.0,
+      "Other": 613857226.0,
+      "Voluntary earmarked": 650999124.0,
+      "Voluntary un-earmarked": 0.0
     },
     "by_donor": [
       {
@@ -7664,13 +7665,986 @@
       }
     ]
   },
+  "Peacekeeping Operations": {
+    "total": 8770847000.0,
+    "year": 2015,
+    "by_type": {
+      "Assessed": 8503612000.0,
+      "Other": 71850000.0,
+      "Voluntary earmarked": 195385000.0
+    },
+    "by_donor": [
+      {
+        "donor": "United States of America",
+        "total": 2446696000.0,
+        "Assessed": 2446696000.0
+      },
+      {
+        "donor": "Japan",
+        "total": 915926000.0,
+        "Assessed": 915926000.0
+      },
+      {
+        "donor": "France",
+        "total": 609649000.0,
+        "Assessed": 609649000.0
+      },
+      {
+        "donor": "Germany",
+        "total": 603769000.0,
+        "Assessed": 603769000.0
+      },
+      {
+        "donor": "United Kingdom of Great Britain and Northern Ireland",
+        "total": 564522000.0,
+        "Assessed": 564522000.0
+      },
+      {
+        "donor": "China",
+        "total": 561143000.0,
+        "Assessed": 561143000.0
+      },
+      {
+        "donor": "Italy",
+        "total": 376077000.0,
+        "Assessed": 376077000.0
+      },
+      {
+        "donor": "Russian Federation",
+        "total": 265747000.0,
+        "Assessed": 265747000.0
+      },
+      {
+        "donor": "Canada",
+        "total": 252296000.0,
+        "Assessed": 252296000.0
+      },
+      {
+        "donor": "Spain",
+        "total": 251366000.0,
+        "Assessed": 251366000.0
+      },
+      {
+        "donor": "Australia",
+        "total": 175356000.0,
+        "Assessed": 175356000.0
+      },
+      {
+        "donor": "Republic of Korea",
+        "total": 168592000.0,
+        "Assessed": 168592000.0
+      },
+      {
+        "donor": "Netherlands",
+        "total": 139845000.0,
+        "Assessed": 139845000.0
+      },
+      {
+        "donor": "Switzerland",
+        "total": 88523000.0,
+        "Assessed": 88523000.0
+      },
+      {
+        "donor": "Belgium",
+        "total": 84381000.0,
+        "Assessed": 84381000.0
+      },
+      {
+        "donor": "Sweden",
+        "total": 81168000.0,
+        "Assessed": 81168000.0
+      },
+      {
+        "donor": "Norway",
+        "total": 71952000.0,
+        "Assessed": 71952000.0
+      },
+      {
+        "donor": "Austria",
+        "total": 67471000.0,
+        "Assessed": 67471000.0
+      },
+      {
+        "donor": "Greece",
+        "total": 60443000.0,
+        "Assessed": 53943000.0,
+        "Voluntary earmarked": 6500000.0
+      },
+      {
+        "donor": "Denmark",
+        "total": 57071000.0,
+        "Assessed": 57071000.0
+      },
+      {
+        "donor": "Brazil",
+        "total": 49614000.0,
+        "Assessed": 49614000.0
+      },
+      {
+        "donor": "United Arab Emirates",
+        "total": 46534000.0,
+        "Assessed": 46534000.0
+      },
+      {
+        "donor": "Finland",
+        "total": 43881000.0,
+        "Assessed": 43881000.0
+      },
+      {
+        "donor": "Saudi Arabia",
+        "total": 43831000.0,
+        "Assessed": 43831000.0
+      },
+      {
+        "donor": "Portugal",
+        "total": 40077000.0,
+        "Assessed": 40077000.0
+      },
+      {
+        "donor": "Ireland",
+        "total": 35342000.0,
+        "Assessed": 35342000.0
+      },
+      {
+        "donor": "Israel",
+        "total": 33482000.0,
+        "Assessed": 33482000.0
+      },
+      {
+        "donor": "Mexico",
+        "total": 31148000.0,
+        "Assessed": 31148000.0
+      },
+      {
+        "donor": "Singapore",
+        "total": 30032000.0,
+        "Assessed": 30032000.0
+      },
+      {
+        "donor": "Czechia",
+        "total": 26109000.0,
+        "Assessed": 26109000.0
+      },
+      {
+        "donor": "Cyprus",
+        "total": 23923000.0,
+        "Assessed": 3974000.0,
+        "Voluntary earmarked": 19949000.0
+      },
+      {
+        "donor": "Poland",
+        "total": 23361000.0,
+        "Assessed": 23361000.0
+      },
+      {
+        "donor": "T\u00fcrkiye",
+        "total": 22456000.0,
+        "Assessed": 22456000.0
+      },
+      {
+        "donor": "New Zealand",
+        "total": 21391000.0,
+        "Assessed": 21391000.0
+      },
+      {
+        "donor": "Kuwait",
+        "total": 21351000.0,
+        "Assessed": 21351000.0
+      },
+      {
+        "donor": "Qatar",
+        "total": 16346000.0,
+        "Assessed": 16346000.0
+      },
+      {
+        "donor": "India",
+        "total": 11262000.0,
+        "Assessed": 11262000.0
+      },
+      {
+        "donor": "Venezuela, Bolivarian Republic of",
+        "total": 10603000.0,
+        "Assessed": 10603000.0
+      },
+      {
+        "donor": "Hungary",
+        "total": 8996000.0,
+        "Assessed": 8996000.0
+      },
+      {
+        "donor": "Slovakia",
+        "total": 8675000.0,
+        "Assessed": 8675000.0
+      },
+      {
+        "donor": "Slovenia",
+        "total": 8455000.0,
+        "Assessed": 8455000.0
+      },
+      {
+        "donor": "Oman",
+        "total": 7977000.0,
+        "Assessed": 7977000.0
+      },
+      {
+        "donor": "Argentina",
+        "total": 7305000.0,
+        "Assessed": 7305000.0
+      },
+      {
+        "donor": "Luxembourg",
+        "total": 6849000.0,
+        "Assessed": 6849000.0
+      },
+      {
+        "donor": "South Africa",
+        "total": 6290000.0,
+        "Assessed": 6290000.0
+      },
+      {
+        "donor": "Iran, Islamic Republic of",
+        "total": 6020000.0,
+        "Assessed": 6020000.0
+      },
+      {
+        "donor": "Indonesia",
+        "total": 5851000.0,
+        "Assessed": 5851000.0
+      },
+      {
+        "donor": "Romania",
+        "total": 5732000.0,
+        "Assessed": 5732000.0
+      },
+      {
+        "donor": "Chile",
+        "total": 5648000.0,
+        "Assessed": 5648000.0
+      },
+      {
+        "donor": "Malaysia",
+        "total": 4752000.0,
+        "Assessed": 4752000.0
+      },
+      {
+        "donor": "Colombia",
+        "total": 4380000.0,
+        "Assessed": 4380000.0
+      },
+      {
+        "donor": "Croatia",
+        "total": 4261000.0,
+        "Assessed": 4261000.0
+      },
+      {
+        "donor": "Thailand",
+        "total": 4041000.0,
+        "Assessed": 4041000.0
+      },
+      {
+        "donor": "Libya",
+        "total": 3602000.0,
+        "Assessed": 3602000.0
+      },
+      {
+        "donor": "Estonia",
+        "total": 3382000.0,
+        "Assessed": 3382000.0
+      },
+      {
+        "donor": "Bahrain",
+        "total": 3050000.0,
+        "Assessed": 3050000.0
+      },
+      {
+        "donor": "Philippines",
+        "total": 2604000.0,
+        "Assessed": 2604000.0
+      },
+      {
+        "donor": "Algeria",
+        "total": 2317000.0,
+        "Assessed": 2317000.0
+      },
+      {
+        "donor": "Iceland",
+        "total": 2283000.0,
+        "Assessed": 2283000.0
+      },
+      {
+        "donor": "Egypt",
+        "total": 2266000.0,
+        "Assessed": 2266000.0
+      },
+      {
+        "donor": "Trinidad and Tobago",
+        "total": 2232000.0,
+        "Assessed": 2232000.0
+      },
+      {
+        "donor": "Kazakhstan",
+        "total": 2046000.0,
+        "Assessed": 2046000.0
+      },
+      {
+        "donor": "Brunei Darussalam",
+        "total": 2033000.0,
+        "Assessed": 2033000.0
+      },
+      {
+        "donor": "Peru",
+        "total": 1978000.0,
+        "Assessed": 1978000.0
+      },
+      {
+        "donor": "Lithuania",
+        "total": 1852000.0,
+        "Assessed": 1852000.0
+      },
+      {
+        "donor": "Ukraine",
+        "total": 1674000.0,
+        "Assessed": 1674000.0
+      },
+      {
+        "donor": "Nigeria",
+        "total": 1522000.0,
+        "Assessed": 1522000.0
+      },
+      {
+        "donor": "Pakistan",
+        "total": 1437000.0,
+        "Assessed": 1437000.0
+      },
+      {
+        "donor": "Malta",
+        "total": 1353000.0,
+        "Assessed": 1353000.0
+      },
+      {
+        "donor": "Bahamas",
+        "total": 1330000.0,
+        "Assessed": 1330000.0
+      },
+      {
+        "donor": "Bulgaria",
+        "total": 1192000.0,
+        "Assessed": 1192000.0
+      },
+      {
+        "donor": "Latvia",
+        "total": 1192000.0,
+        "Assessed": 1192000.0
+      },
+      {
+        "donor": "Cuba",
+        "total": 1167000.0,
+        "Assessed": 1167000.0
+      },
+      {
+        "donor": "Iraq",
+        "total": 1150000.0,
+        "Assessed": 1150000.0
+      },
+      {
+        "donor": "Morocco",
+        "total": 1048000.0,
+        "Assessed": 1048000.0
+      },
+      {
+        "donor": "Monaco",
+        "total": 1015000.0,
+        "Assessed": 1015000.0
+      },
+      {
+        "donor": "Belarus",
+        "total": 947000.0,
+        "Assessed": 947000.0
+      },
+      {
+        "donor": "Uruguay",
+        "total": 879000.0,
+        "Assessed": 879000.0
+      },
+      {
+        "donor": "Dominican Republic",
+        "total": 761000.0,
+        "Assessed": 761000.0
+      },
+      {
+        "donor": "Liechtenstein",
+        "total": 761000.0,
+        "Assessed": 761000.0
+      },
+      {
+        "donor": "Ecuador",
+        "total": 744000.0,
+        "Assessed": 744000.0
+      },
+      {
+        "donor": "Lebanon",
+        "total": 710000.0,
+        "Assessed": 710000.0
+      },
+      {
+        "donor": "Viet Nam",
+        "total": 710000.0,
+        "Assessed": 710000.0
+      },
+      {
+        "donor": "Andorra",
+        "total": 676000.0,
+        "Assessed": 676000.0
+      },
+      {
+        "donor": "Azerbaijan",
+        "total": 676000.0,
+        "Assessed": 676000.0
+      },
+      {
+        "donor": "Serbia",
+        "total": 676000.0,
+        "Assessed": 676000.0
+      },
+      {
+        "donor": "Costa Rica",
+        "total": 643000.0,
+        "Assessed": 643000.0
+      },
+      {
+        "donor": "Syrian Arab Republic",
+        "total": 609000.0,
+        "Assessed": 609000.0
+      },
+      {
+        "donor": "Tunisia",
+        "total": 609000.0,
+        "Assessed": 609000.0
+      },
+      {
+        "donor": "Guatemala",
+        "total": 457000.0,
+        "Assessed": 457000.0
+      },
+      {
+        "donor": "Panama",
+        "total": 440000.0,
+        "Assessed": 440000.0
+      },
+      {
+        "donor": "Sri Lanka",
+        "total": 423000.0,
+        "Assessed": 423000.0
+      },
+      {
+        "donor": "Jordan",
+        "total": 372000.0,
+        "Assessed": 372000.0
+      },
+      {
+        "donor": "Gabon",
+        "total": 338000.0,
+        "Assessed": 338000.0
+      },
+      {
+        "donor": "Turkmenistan",
+        "total": 321000.0,
+        "Assessed": 321000.0
+      },
+      {
+        "donor": "Bosnia and Herzegovina",
+        "total": 287000.0,
+        "Assessed": 287000.0
+      },
+      {
+        "donor": "Botswana",
+        "total": 287000.0,
+        "Assessed": 287000.0
+      },
+      {
+        "donor": "Barbados",
+        "total": 271000.0,
+        "Assessed": 271000.0
+      },
+      {
+        "donor": "El Salvador",
+        "total": 271000.0,
+        "Assessed": 271000.0
+      },
+      {
+        "donor": "San Marino",
+        "total": 254000.0,
+        "Assessed": 254000.0
+      },
+      {
+        "donor": "Uzbekistan",
+        "total": 254000.0,
+        "Assessed": 254000.0
+      },
+      {
+        "donor": "Ghana",
+        "total": 237000.0,
+        "Assessed": 237000.0
+      },
+      {
+        "donor": "Kenya",
+        "total": 220000.0,
+        "Assessed": 220000.0
+      },
+      {
+        "donor": "Mauritius",
+        "total": 220000.0,
+        "Assessed": 220000.0
+      },
+      {
+        "donor": "Cameroon",
+        "total": 203000.0,
+        "Assessed": 203000.0
+      },
+      {
+        "donor": "Jamaica",
+        "total": 186000.0,
+        "Assessed": 186000.0
+      },
+      {
+        "donor": "Albania",
+        "total": 169000.0,
+        "Assessed": 169000.0
+      },
+      {
+        "donor": "Namibia",
+        "total": 169000.0,
+        "Assessed": 169000.0
+      },
+      {
+        "donor": "Paraguay",
+        "total": 169000.0,
+        "Assessed": 169000.0
+      },
+      {
+        "donor": "Bolivia, Plurinational State of",
+        "total": 152000.0,
+        "Assessed": 152000.0
+      },
+      {
+        "donor": "Honduras",
+        "total": 135000.0,
+        "Assessed": 135000.0
+      },
+      {
+        "donor": "North Macedonia",
+        "total": 135000.0,
+        "Assessed": 135000.0
+      },
+      {
+        "donor": "Armenia",
+        "total": 118000.0,
+        "Assessed": 118000.0
+      },
+      {
+        "donor": "Georgia",
+        "total": 118000.0,
+        "Assessed": 118000.0
+      },
+      {
+        "donor": "Democratic People's Republic of Korea",
+        "total": 101000.0,
+        "Assessed": 101000.0
+      },
+      {
+        "donor": "Angola",
+        "total": 85000.0,
+        "Assessed": 85000.0
+      },
+      {
+        "donor": "Bangladesh",
+        "total": 85000.0,
+        "Assessed": 85000.0
+      },
+      {
+        "donor": "Congo",
+        "total": 85000.0,
+        "Assessed": 85000.0
+      },
+      {
+        "donor": "Equatorial Guinea",
+        "total": 85000.0,
+        "Assessed": 85000.0
+      },
+      {
+        "donor": "Ethiopia",
+        "total": 85000.0,
+        "Assessed": 85000.0
+      },
+      {
+        "donor": "Montenegro",
+        "total": 85000.0,
+        "Assessed": 85000.0
+      },
+      {
+        "donor": "Myanmar",
+        "total": 85000.0,
+        "Assessed": 85000.0
+      },
+      {
+        "donor": "Sudan",
+        "total": 85000.0,
+        "Assessed": 85000.0
+      },
+      {
+        "donor": "Yemen",
+        "total": 85000.0,
+        "Assessed": 85000.0
+      },
+      {
+        "donor": "United Republic of Tanzania",
+        "total": 76000.0,
+        "Assessed": 76000.0
+      },
+      {
+        "donor": "Antigua and Barbuda",
+        "total": 68000.0,
+        "Assessed": 68000.0
+      },
+      {
+        "donor": "Papua New Guinea",
+        "total": 68000.0,
+        "Assessed": 68000.0
+      },
+      {
+        "donor": "Suriname",
+        "total": 68000.0,
+        "Assessed": 68000.0
+      },
+      {
+        "donor": "Fiji",
+        "total": 51000.0,
+        "Assessed": 51000.0
+      },
+      {
+        "donor": "Mongolia",
+        "total": 51000.0,
+        "Assessed": 51000.0
+      },
+      {
+        "donor": "Nepal",
+        "total": 51000.0,
+        "Assessed": 51000.0
+      },
+      {
+        "donor": "Nicaragua",
+        "total": 51000.0,
+        "Assessed": 51000.0
+      },
+      {
+        "donor": "Republic of Moldova",
+        "total": 51000.0,
+        "Assessed": 51000.0
+      },
+      {
+        "donor": "Senegal",
+        "total": 51000.0,
+        "Assessed": 51000.0
+      },
+      {
+        "donor": "Eswatini",
+        "total": 51000.0,
+        "Assessed": 51000.0
+      },
+      {
+        "donor": "Tajikistan",
+        "total": 51000.0,
+        "Assessed": 51000.0
+      },
+      {
+        "donor": "Uganda",
+        "total": 51000.0,
+        "Assessed": 51000.0
+      },
+      {
+        "donor": "Zambia",
+        "total": 51000.0,
+        "Assessed": 51000.0
+      },
+      {
+        "donor": "Afghanistan",
+        "total": 42000.0,
+        "Assessed": 42000.0
+      },
+      {
+        "donor": "Cambodia",
+        "total": 34000.0,
+        "Assessed": 34000.0
+      },
+      {
+        "donor": "Kyrgyzstan",
+        "total": 34000.0,
+        "Assessed": 34000.0
+      },
+      {
+        "donor": "Mali",
+        "total": 34000.0,
+        "Assessed": 34000.0
+      },
+      {
+        "donor": "Saint Kitts and Nevis",
+        "total": 34000.0,
+        "Assessed": 34000.0
+      },
+      {
+        "donor": "South Sudan",
+        "total": 34000.0,
+        "Assessed": 34000.0
+      },
+      {
+        "donor": "Zimbabwe",
+        "total": 34000.0,
+        "Assessed": 34000.0
+      },
+      {
+        "donor": "Benin",
+        "total": 25000.0,
+        "Assessed": 25000.0
+      },
+      {
+        "donor": "Burkina Faso",
+        "total": 25000.0,
+        "Assessed": 25000.0
+      },
+      {
+        "donor": "Democratic Republic of the Congo",
+        "total": 25000.0,
+        "Assessed": 25000.0
+      },
+      {
+        "donor": "Haiti",
+        "total": 25000.0,
+        "Assessed": 25000.0
+      },
+      {
+        "donor": "Madagascar",
+        "total": 25000.0,
+        "Assessed": 25000.0
+      },
+      {
+        "donor": "Mozambique",
+        "total": 25000.0,
+        "Assessed": 25000.0
+      },
+      {
+        "donor": "Seychelles",
+        "total": 25000.0,
+        "Assessed": 25000.0
+      },
+      {
+        "donor": "Belize",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Chad",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Cabo Verde",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Dominica",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Grenada",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Guyana",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Lao People's Democratic Republic",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Malawi",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Maldives",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Marshall Islands",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Mauritania",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Micronesia, Federated States of",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Nauru",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Niger",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Palau",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Rwanda",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Saint Lucia",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Saint Vincent and the Grenadines",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Timor-Leste",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Tonga",
+        "total": 17000.0,
+        "Assessed": 17000.0
+      },
+      {
+        "donor": "Burundi",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Bhutan",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Central African Republic",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Comoros",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Djibouti",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Eritrea",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Gambia",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Guinea-Bissau",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Guinea",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Kiribati",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Liberia",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Lesotho",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Samoa",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Sao Tome and Principe",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Sierra Leone",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Solomon Islands",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Somalia",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Togo",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Tuvalu",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      },
+      {
+        "donor": "Vanuatu",
+        "total": 8000.0,
+        "Assessed": 8000.0
+      }
+    ]
+  },
   "UN Secretariat": {
     "total": 5547797666.0,
     "year": 2015,
     "by_type": {
-      "Assessed": 2771060834.0,
-      "Other": 1126091464.64,
-      "Voluntary earmarked": 1650645367.3600001
+      "Assessed": 2771359326.0,
+      "Other": 682560364.0,
+      "Voluntary earmarked": 2093877976.0
     },
     "by_donor": [
       {
@@ -8859,9 +9833,9 @@
     "total": 23725356.5,
     "year": 2015,
     "by_type": {
-      "Assessed": 13479937.56,
-      "Other": 8522010.440000001,
-      "Voluntary earmarked": 1723408.5
+      "Assessed": 14647529.27,
+      "Other": 6147505.23,
+      "Voluntary earmarked": 2930322.0
     },
     "by_donor": [
       {
@@ -9685,976 +10659,1019 @@
       }
     ]
   },
-  "Peacekeeping Operations": {
-    "total": 8770847000.0,
+  "UN Women": {
+    "total": 318987801.0,
     "year": 2015,
     "by_type": {
-      "Assessed": 8503428000.0,
-      "Other": 240970000.0,
-      "Voluntary earmarked": 26449000.0
+      "Assessed": 7505355.0,
+      "Other": 4503000.0,
+      "Voluntary earmarked": 170925798.7,
+      "Voluntary un-earmarked": 136053647.3
     },
     "by_donor": [
       {
-        "donor": "United States of America",
-        "total": 2446696000.0,
-        "Assessed": 2446696000.0
-      },
-      {
-        "donor": "Japan",
-        "total": 915926000.0,
-        "Assessed": 915926000.0
-      },
-      {
-        "donor": "France",
-        "total": 609649000.0,
-        "Assessed": 609649000.0
-      },
-      {
-        "donor": "Germany",
-        "total": 603769000.0,
-        "Assessed": 603769000.0
-      },
-      {
-        "donor": "United Kingdom of Great Britain and Northern Ireland",
-        "total": 564522000.0,
-        "Assessed": 564522000.0
-      },
-      {
-        "donor": "China",
-        "total": 561143000.0,
-        "Assessed": 561143000.0
-      },
-      {
-        "donor": "Italy",
-        "total": 376077000.0,
-        "Assessed": 376077000.0
-      },
-      {
-        "donor": "Russian Federation",
-        "total": 265747000.0,
-        "Assessed": 265747000.0
-      },
-      {
-        "donor": "Canada",
-        "total": 252296000.0,
-        "Assessed": 252296000.0
-      },
-      {
-        "donor": "Spain",
-        "total": 251366000.0,
-        "Assessed": 251366000.0
-      },
-      {
-        "donor": "Australia",
-        "total": 175356000.0,
-        "Assessed": 175356000.0
-      },
-      {
-        "donor": "Republic of Korea",
-        "total": 168592000.0,
-        "Assessed": 168592000.0
-      },
-      {
-        "donor": "Netherlands",
-        "total": 139845000.0,
-        "Assessed": 139845000.0
+        "donor": "Sweden",
+        "total": 33083699.02,
+        "Voluntary un-earmarked": 8285004.0,
+        "Voluntary earmarked": 24798695.02
       },
       {
         "donor": "Switzerland",
-        "total": 88523000.0,
-        "Assessed": 88523000.0
-      },
-      {
-        "donor": "Belgium",
-        "total": 84381000.0,
-        "Assessed": 84381000.0
-      },
-      {
-        "donor": "Sweden",
-        "total": 81168000.0,
-        "Assessed": 81168000.0
+        "total": 26593417.15,
+        "Voluntary un-earmarked": 16311551.0,
+        "Voluntary earmarked": 10281866.15
       },
       {
         "donor": "Norway",
-        "total": 71952000.0,
-        "Assessed": 71952000.0
+        "total": 25129945.0,
+        "Voluntary un-earmarked": 12562814.0,
+        "Voluntary earmarked": 12567131.0
       },
       {
-        "donor": "Austria",
-        "total": 67471000.0,
-        "Assessed": 67471000.0
+        "donor": "United Kingdom of Great Britain and Northern Ireland",
+        "total": 22547824.29,
+        "Voluntary un-earmarked": 18860947.0,
+        "Voluntary earmarked": 3686877.29
       },
       {
-        "donor": "Greece",
-        "total": 60443000.0,
-        "Assessed": 53943000.0,
-        "Voluntary earmarked": 6500000.0
+        "donor": "Japan",
+        "total": 20182624.0,
+        "Voluntary un-earmarked": 4713474.0,
+        "Voluntary earmarked": 15469150.0
       },
       {
-        "donor": "Denmark",
-        "total": 57071000.0,
-        "Assessed": 57071000.0
-      },
-      {
-        "donor": "Brazil",
-        "total": 49614000.0,
-        "Assessed": 49614000.0
-      },
-      {
-        "donor": "United Arab Emirates",
-        "total": 46534000.0,
-        "Assessed": 46534000.0
+        "donor": "Australia",
+        "total": 20083075.0,
+        "Voluntary un-earmarked": 6218033.0,
+        "Voluntary earmarked": 13865042.0
       },
       {
         "donor": "Finland",
-        "total": 43881000.0,
-        "Assessed": 43881000.0
+        "total": 19409154.0,
+        "Voluntary un-earmarked": 15167931.0,
+        "Voluntary earmarked": 4241223.0
       },
       {
-        "donor": "Saudi Arabia",
-        "total": 43831000.0,
-        "Assessed": 43831000.0
+        "donor": "Netherlands",
+        "total": 11587026.0,
+        "Voluntary un-earmarked": 4538523.0,
+        "Voluntary earmarked": 7048503.0
       },
       {
-        "donor": "Portugal",
-        "total": 40077000.0,
-        "Assessed": 40077000.0
+        "donor": "Denmark",
+        "total": 10896050.0,
+        "Voluntary un-earmarked": 8812776.0,
+        "Voluntary earmarked": 2083274.0
       },
       {
-        "donor": "Ireland",
-        "total": 35342000.0,
-        "Assessed": 35342000.0
+        "donor": "United States of America",
+        "total": 9333858.07,
+        "Voluntary un-earmarked": 7500000.0,
+        "Voluntary earmarked": 1833858.07
       },
       {
-        "donor": "Israel",
-        "total": 33482000.0,
-        "Assessed": 33482000.0
+        "donor": "Canada",
+        "total": 8294594.0,
+        "Voluntary un-earmarked": 5215856.0,
+        "Voluntary earmarked": 3078738.0
       },
       {
-        "donor": "Mexico",
-        "total": 31148000.0,
-        "Assessed": 31148000.0
+        "donor": "Belgium",
+        "total": 8280407.0,
+        "Voluntary un-earmarked": 4489338.0,
+        "Voluntary earmarked": 3791069.0
       },
       {
-        "donor": "Singapore",
-        "total": 30032000.0,
-        "Assessed": 30032000.0
+        "donor": "European Union",
+        "total": 6327038.63,
+        "Voluntary earmarked": 6327038.63
       },
       {
-        "donor": "Czechia",
-        "total": 26109000.0,
-        "Assessed": 26109000.0
+        "donor": "Spain",
+        "total": 4893750.93,
+        "Voluntary un-earmarked": 756567.0,
+        "Voluntary earmarked": 4137183.93
       },
       {
-        "donor": "Cyprus",
-        "total": 23923000.0,
-        "Assessed": 3974000.0,
-        "Voluntary earmarked": 19949000.0
+        "donor": "Republic of Korea",
+        "total": 4708090.0,
+        "Voluntary un-earmarked": 3900000.0,
+        "Voluntary earmarked": 808090.0
       },
       {
-        "donor": "Poland",
-        "total": 23361000.0,
-        "Assessed": 23361000.0
+        "donor": "United Arab Emirates",
+        "total": 3903560.05,
+        "Voluntary un-earmarked": 3609204.0,
+        "Voluntary earmarked": 294356.05
+      },
+      {
+        "donor": "Germany",
+        "total": 3551192.0,
+        "Voluntary un-earmarked": 2294311.0,
+        "Voluntary earmarked": 1256881.0
+      },
+      {
+        "donor": "UNDP (as donor)",
+        "total": 3489229.99,
+        "Voluntary earmarked": 3489229.99
       },
       {
         "donor": "T\u00fcrkiye",
-        "total": 22456000.0,
-        "Assessed": 22456000.0
+        "total": 3090620.0,
+        "Voluntary un-earmarked": 1090620.0,
+        "Voluntary earmarked": 2000000.0
       },
       {
-        "donor": "New Zealand",
-        "total": 21391000.0,
-        "Assessed": 21391000.0
+        "donor": "Italy",
+        "total": 3050489.0,
+        "Voluntary un-earmarked": 1307190.0,
+        "Voluntary earmarked": 1743299.0
       },
       {
-        "donor": "Kuwait",
-        "total": 21351000.0,
-        "Assessed": 21351000.0
-      },
-      {
-        "donor": "Qatar",
-        "total": 16346000.0,
-        "Assessed": 16346000.0
-      },
-      {
-        "donor": "India",
-        "total": 11262000.0,
-        "Assessed": 11262000.0
-      },
-      {
-        "donor": "Venezuela, Bolivarian Republic of",
-        "total": 10603000.0,
-        "Assessed": 10603000.0
-      },
-      {
-        "donor": "Hungary",
-        "total": 8996000.0,
-        "Assessed": 8996000.0
-      },
-      {
-        "donor": "Slovakia",
-        "total": 8675000.0,
-        "Assessed": 8675000.0
-      },
-      {
-        "donor": "Slovenia",
-        "total": 8455000.0,
-        "Assessed": 8455000.0
-      },
-      {
-        "donor": "Oman",
-        "total": 7977000.0,
-        "Assessed": 7977000.0
-      },
-      {
-        "donor": "Argentina",
-        "total": 7305000.0,
-        "Assessed": 7305000.0
+        "donor": "Ireland",
+        "total": 2733273.0,
+        "Voluntary un-earmarked": 1659292.0,
+        "Voluntary earmarked": 1073981.0
       },
       {
         "donor": "Luxembourg",
-        "total": 6849000.0,
-        "Assessed": 6849000.0
+        "total": 2508785.0,
+        "Voluntary un-earmarked": 1294118.0,
+        "Voluntary earmarked": 1214667.0
       },
       {
-        "donor": "South Africa",
-        "total": 6290000.0,
-        "Assessed": 6290000.0
+        "donor": "New Zealand",
+        "total": 2220050.0,
+        "Voluntary un-earmarked": 1872250.0,
+        "Voluntary earmarked": 347800.0
       },
       {
-        "donor": "Iran, Islamic Republic of",
-        "total": 6020000.0,
-        "Assessed": 6020000.0
-      },
-      {
-        "donor": "Indonesia",
-        "total": 5851000.0,
-        "Assessed": 5851000.0
-      },
-      {
-        "donor": "Romania",
-        "total": 5732000.0,
-        "Assessed": 5732000.0
-      },
-      {
-        "donor": "Chile",
-        "total": 5648000.0,
-        "Assessed": 5648000.0
-      },
-      {
-        "donor": "Malaysia",
-        "total": 4752000.0,
-        "Assessed": 4752000.0
-      },
-      {
-        "donor": "Colombia",
-        "total": 4380000.0,
-        "Assessed": 4380000.0
-      },
-      {
-        "donor": "Croatia",
-        "total": 4261000.0,
-        "Assessed": 4261000.0
-      },
-      {
-        "donor": "Thailand",
-        "total": 4041000.0,
-        "Assessed": 4041000.0
-      },
-      {
-        "donor": "Libya",
-        "total": 3602000.0,
-        "Assessed": 3602000.0
-      },
-      {
-        "donor": "Estonia",
-        "total": 3382000.0,
-        "Assessed": 3382000.0
-      },
-      {
-        "donor": "Bahrain",
-        "total": 3050000.0,
-        "Assessed": 3050000.0
-      },
-      {
-        "donor": "Philippines",
-        "total": 2604000.0,
-        "Assessed": 2604000.0
-      },
-      {
-        "donor": "Algeria",
-        "total": 2317000.0,
-        "Assessed": 2317000.0
+        "donor": "France",
+        "total": 1126954.0,
+        "Voluntary un-earmarked": 462477.0,
+        "Voluntary earmarked": 664477.0
       },
       {
         "donor": "Iceland",
-        "total": 2283000.0,
-        "Assessed": 2283000.0
+        "total": 1039444.0,
+        "Voluntary un-earmarked": 739824.0,
+        "Voluntary earmarked": 299620.0
       },
       {
-        "donor": "Egypt",
-        "total": 2266000.0,
-        "Assessed": 2266000.0
+        "donor": "UN OCHA",
+        "total": 1020118.2,
+        "Voluntary earmarked": 1020118.2
       },
       {
-        "donor": "Trinidad and Tobago",
-        "total": 2232000.0,
-        "Assessed": 2232000.0
+        "donor": "Bill & Melinda Gates Foundation",
+        "total": 1000026.0,
+        "Voluntary earmarked": 1000026.0
       },
       {
-        "donor": "Kazakhstan",
-        "total": 2046000.0,
-        "Assessed": 2046000.0
+        "donor": "Austria",
+        "total": 905092.0,
+        "Voluntary un-earmarked": 270856.0,
+        "Voluntary earmarked": 634236.0
       },
       {
-        "donor": "Brunei Darussalam",
-        "total": 2033000.0,
-        "Assessed": 2033000.0
-      },
-      {
-        "donor": "Peru",
-        "total": 1978000.0,
-        "Assessed": 1978000.0
-      },
-      {
-        "donor": "Lithuania",
-        "total": 1852000.0,
-        "Assessed": 1852000.0
-      },
-      {
-        "donor": "Ukraine",
-        "total": 1674000.0,
-        "Assessed": 1674000.0
-      },
-      {
-        "donor": "Nigeria",
-        "total": 1522000.0,
-        "Assessed": 1522000.0
-      },
-      {
-        "donor": "Pakistan",
-        "total": 1437000.0,
-        "Assessed": 1437000.0
-      },
-      {
-        "donor": "Malta",
-        "total": 1353000.0,
-        "Assessed": 1353000.0
-      },
-      {
-        "donor": "Bahamas",
-        "total": 1330000.0,
-        "Assessed": 1330000.0
-      },
-      {
-        "donor": "Bulgaria",
-        "total": 1192000.0,
-        "Assessed": 1192000.0
-      },
-      {
-        "donor": "Latvia",
-        "total": 1192000.0,
-        "Assessed": 1192000.0
-      },
-      {
-        "donor": "Cuba",
-        "total": 1167000.0,
-        "Assessed": 1167000.0
-      },
-      {
-        "donor": "Iraq",
-        "total": 1150000.0,
-        "Assessed": 1150000.0
+        "donor": "Brazil",
+        "total": 702799.0,
+        "Voluntary earmarked": 702799.0
       },
       {
         "donor": "Morocco",
-        "total": 1048000.0,
-        "Assessed": 1048000.0
-      },
-      {
-        "donor": "Monaco",
-        "total": 1015000.0,
-        "Assessed": 1015000.0
-      },
-      {
-        "donor": "Belarus",
-        "total": 947000.0,
-        "Assessed": 947000.0
-      },
-      {
-        "donor": "Uruguay",
-        "total": 879000.0,
-        "Assessed": 879000.0
-      },
-      {
-        "donor": "Dominican Republic",
-        "total": 761000.0,
-        "Assessed": 761000.0
-      },
-      {
-        "donor": "Liechtenstein",
-        "total": 761000.0,
-        "Assessed": 761000.0
-      },
-      {
-        "donor": "Ecuador",
-        "total": 744000.0,
-        "Assessed": 744000.0
-      },
-      {
-        "donor": "Lebanon",
-        "total": 710000.0,
-        "Assessed": 710000.0
-      },
-      {
-        "donor": "Viet Nam",
-        "total": 710000.0,
-        "Assessed": 710000.0
-      },
-      {
-        "donor": "Andorra",
-        "total": 676000.0,
-        "Assessed": 676000.0
-      },
-      {
-        "donor": "Azerbaijan",
-        "total": 676000.0,
-        "Assessed": 676000.0
-      },
-      {
-        "donor": "Serbia",
-        "total": 676000.0,
-        "Assessed": 676000.0
-      },
-      {
-        "donor": "Costa Rica",
-        "total": 643000.0,
-        "Assessed": 643000.0
-      },
-      {
-        "donor": "Syrian Arab Republic",
-        "total": 609000.0,
-        "Assessed": 609000.0
-      },
-      {
-        "donor": "Tunisia",
-        "total": 609000.0,
-        "Assessed": 609000.0
-      },
-      {
-        "donor": "Guatemala",
-        "total": 457000.0,
-        "Assessed": 457000.0
-      },
-      {
-        "donor": "Panama",
-        "total": 440000.0,
-        "Assessed": 440000.0
-      },
-      {
-        "donor": "Sri Lanka",
-        "total": 423000.0,
-        "Assessed": 423000.0
-      },
-      {
-        "donor": "Jordan",
-        "total": 372000.0,
-        "Assessed": 372000.0
-      },
-      {
-        "donor": "Gabon",
-        "total": 338000.0,
-        "Assessed": 338000.0
-      },
-      {
-        "donor": "Turkmenistan",
-        "total": 321000.0,
-        "Assessed": 321000.0
-      },
-      {
-        "donor": "Bosnia and Herzegovina",
-        "total": 287000.0,
-        "Assessed": 287000.0
-      },
-      {
-        "donor": "Botswana",
-        "total": 287000.0,
-        "Assessed": 287000.0
-      },
-      {
-        "donor": "Barbados",
-        "total": 271000.0,
-        "Assessed": 271000.0
-      },
-      {
-        "donor": "El Salvador",
-        "total": 271000.0,
-        "Assessed": 271000.0
-      },
-      {
-        "donor": "San Marino",
-        "total": 254000.0,
-        "Assessed": 254000.0
-      },
-      {
-        "donor": "Uzbekistan",
-        "total": 254000.0,
-        "Assessed": 254000.0
-      },
-      {
-        "donor": "Ghana",
-        "total": 237000.0,
-        "Assessed": 237000.0
-      },
-      {
-        "donor": "Kenya",
-        "total": 220000.0,
-        "Assessed": 220000.0
-      },
-      {
-        "donor": "Mauritius",
-        "total": 220000.0,
-        "Assessed": 220000.0
-      },
-      {
-        "donor": "Cameroon",
-        "total": 203000.0,
-        "Assessed": 203000.0
-      },
-      {
-        "donor": "Jamaica",
-        "total": 186000.0,
-        "Assessed": 186000.0
-      },
-      {
-        "donor": "Albania",
-        "total": 169000.0,
-        "Assessed": 169000.0
-      },
-      {
-        "donor": "Namibia",
-        "total": 169000.0,
-        "Assessed": 169000.0
-      },
-      {
-        "donor": "Paraguay",
-        "total": 169000.0,
-        "Assessed": 169000.0
-      },
-      {
-        "donor": "Bolivia, Plurinational State of",
-        "total": 152000.0,
-        "Assessed": 152000.0
-      },
-      {
-        "donor": "Honduras",
-        "total": 135000.0,
-        "Assessed": 135000.0
-      },
-      {
-        "donor": "North Macedonia",
-        "total": 135000.0,
-        "Assessed": 135000.0
-      },
-      {
-        "donor": "Armenia",
-        "total": 118000.0,
-        "Assessed": 118000.0
-      },
-      {
-        "donor": "Georgia",
-        "total": 118000.0,
-        "Assessed": 118000.0
-      },
-      {
-        "donor": "Democratic People's Republic of Korea",
-        "total": 101000.0,
-        "Assessed": 101000.0
-      },
-      {
-        "donor": "Angola",
-        "total": 85000.0,
-        "Assessed": 85000.0
-      },
-      {
-        "donor": "Bangladesh",
-        "total": 85000.0,
-        "Assessed": 85000.0
-      },
-      {
-        "donor": "Congo",
-        "total": 85000.0,
-        "Assessed": 85000.0
-      },
-      {
-        "donor": "Equatorial Guinea",
-        "total": 85000.0,
-        "Assessed": 85000.0
-      },
-      {
-        "donor": "Ethiopia",
-        "total": 85000.0,
-        "Assessed": 85000.0
-      },
-      {
-        "donor": "Montenegro",
-        "total": 85000.0,
-        "Assessed": 85000.0
-      },
-      {
-        "donor": "Myanmar",
-        "total": 85000.0,
-        "Assessed": 85000.0
-      },
-      {
-        "donor": "Sudan",
-        "total": 85000.0,
-        "Assessed": 85000.0
-      },
-      {
-        "donor": "Yemen",
-        "total": 85000.0,
-        "Assessed": 85000.0
-      },
-      {
-        "donor": "United Republic of Tanzania",
-        "total": 76000.0,
-        "Assessed": 76000.0
-      },
-      {
-        "donor": "Antigua and Barbuda",
-        "total": 68000.0,
-        "Assessed": 68000.0
-      },
-      {
-        "donor": "Papua New Guinea",
-        "total": 68000.0,
-        "Assessed": 68000.0
-      },
-      {
-        "donor": "Suriname",
-        "total": 68000.0,
-        "Assessed": 68000.0
-      },
-      {
-        "donor": "Fiji",
-        "total": 51000.0,
-        "Assessed": 51000.0
-      },
-      {
-        "donor": "Mongolia",
-        "total": 51000.0,
-        "Assessed": 51000.0
-      },
-      {
-        "donor": "Nepal",
-        "total": 51000.0,
-        "Assessed": 51000.0
-      },
-      {
-        "donor": "Nicaragua",
-        "total": 51000.0,
-        "Assessed": 51000.0
-      },
-      {
-        "donor": "Republic of Moldova",
-        "total": 51000.0,
-        "Assessed": 51000.0
+        "total": 692040.0,
+        "Voluntary un-earmarked": 20000.0,
+        "Voluntary earmarked": 672040.0
       },
       {
         "donor": "Senegal",
-        "total": 51000.0,
-        "Assessed": 51000.0
+        "total": 485000.0,
+        "Voluntary un-earmarked": 485000.0
       },
       {
-        "donor": "Eswatini",
-        "total": 51000.0,
-        "Assessed": 51000.0
+        "donor": "China",
+        "total": 440301.0,
+        "Voluntary un-earmarked": 60000.0,
+        "Voluntary earmarked": 380301.0
       },
       {
-        "donor": "Tajikistan",
-        "total": 51000.0,
-        "Assessed": 51000.0
+        "donor": "Mexico",
+        "total": 334201.0,
+        "Voluntary un-earmarked": 89718.0,
+        "Voluntary earmarked": 244483.0
       },
       {
-        "donor": "Uganda",
-        "total": 51000.0,
-        "Assessed": 51000.0
+        "donor": "Israel",
+        "total": 280000.0,
+        "Voluntary un-earmarked": 250000.0,
+        "Voluntary earmarked": 30000.0
       },
       {
-        "donor": "Zambia",
-        "total": 51000.0,
-        "Assessed": 51000.0
+        "donor": "Chile",
+        "total": 150000.0,
+        "Voluntary un-earmarked": 150000.0
       },
       {
-        "donor": "Afghanistan",
-        "total": 42000.0,
-        "Assessed": 42000.0
+        "donor": "Indonesia",
+        "total": 147000.0,
+        "Voluntary un-earmarked": 147000.0
       },
       {
-        "donor": "Cambodia",
-        "total": 34000.0,
-        "Assessed": 34000.0
+        "donor": "Barbados",
+        "total": 121640.0,
+        "Voluntary un-earmarked": 121640.0
       },
       {
-        "donor": "Kyrgyzstan",
-        "total": 34000.0,
-        "Assessed": 34000.0
+        "donor": "Estonia",
+        "total": 100125.0,
+        "Voluntary un-earmarked": 100125.0
       },
       {
-        "donor": "Mali",
-        "total": 34000.0,
-        "Assessed": 34000.0
+        "donor": "Qatar",
+        "total": 100000.0,
+        "Voluntary earmarked": 100000.0
       },
       {
-        "donor": "Saint Kitts and Nevis",
-        "total": 34000.0,
-        "Assessed": 34000.0
+        "donor": "Kazakhstan",
+        "total": 91600.0,
+        "Voluntary un-earmarked": 91600.0
       },
       {
-        "donor": "South Sudan",
-        "total": 34000.0,
-        "Assessed": 34000.0
+        "donor": "Nigeria",
+        "total": 90000.0,
+        "Voluntary un-earmarked": 90000.0
       },
       {
-        "donor": "Zimbabwe",
-        "total": 34000.0,
-        "Assessed": 34000.0
+        "donor": "Liechtenstein",
+        "total": 79657.0,
+        "Voluntary un-earmarked": 69700.0,
+        "Voluntary earmarked": 9957.0
       },
       {
-        "donor": "Benin",
-        "total": 25000.0,
-        "Assessed": 25000.0
+        "donor": "Singapore",
+        "total": 60000.0,
+        "Voluntary un-earmarked": 50000.0,
+        "Voluntary earmarked": 10000.0
       },
       {
-        "donor": "Burkina Faso",
-        "total": 25000.0,
-        "Assessed": 25000.0
+        "donor": "Hungary",
+        "total": 55000.0,
+        "Voluntary un-earmarked": 5000.0,
+        "Voluntary earmarked": 50000.0
       },
       {
-        "donor": "Democratic Republic of the Congo",
-        "total": 25000.0,
-        "Assessed": 25000.0
+        "donor": "Brunei Darussalam",
+        "total": 50000.0,
+        "Voluntary un-earmarked": 50000.0
       },
       {
-        "donor": "Haiti",
-        "total": 25000.0,
-        "Assessed": 25000.0
+        "donor": "Malaysia",
+        "total": 50000.0,
+        "Voluntary un-earmarked": 50000.0
       },
       {
-        "donor": "Madagascar",
-        "total": 25000.0,
-        "Assessed": 25000.0
+        "donor": "Kuwait",
+        "total": 50000.0,
+        "Voluntary un-earmarked": 50000.0
       },
       {
-        "donor": "Mozambique",
-        "total": 25000.0,
-        "Assessed": 25000.0
+        "donor": "Dominican Republic",
+        "total": 46138.0,
+        "Voluntary un-earmarked": 46138.0
       },
       {
-        "donor": "Seychelles",
-        "total": 25000.0,
-        "Assessed": 25000.0
+        "donor": "Andorra",
+        "total": 44802.0,
+        "Voluntary un-earmarked": 44802.0
       },
       {
-        "donor": "Belize",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "Poland",
+        "total": 39982.0,
+        "Voluntary un-earmarked": 10565.0,
+        "Voluntary earmarked": 29417.0
       },
       {
-        "donor": "Chad",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "South Africa",
+        "total": 37000.0,
+        "Voluntary un-earmarked": 37000.0
       },
       {
-        "donor": "Cabo Verde",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "Bangladesh",
+        "total": 21000.0,
+        "Voluntary un-earmarked": 21000.0
       },
       {
-        "donor": "Dominica",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "Argentina",
+        "total": 20000.0,
+        "Voluntary un-earmarked": 20000.0
       },
       {
-        "donor": "Grenada",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "Bahrain",
+        "total": 20000.0,
+        "Voluntary un-earmarked": 20000.0
       },
       {
-        "donor": "Guyana",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "Equatorial Guinea",
+        "total": 19997.0,
+        "Voluntary un-earmarked": 19997.0
       },
       {
-        "donor": "Lao People's Democratic Republic",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "Monaco",
+        "total": 16251.0,
+        "Voluntary un-earmarked": 16251.0
       },
       {
-        "donor": "Malawi",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "Czechia",
+        "total": 16199.0,
+        "Voluntary un-earmarked": 16199.0
       },
       {
-        "donor": "Maldives",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "Bulgaria",
+        "total": 15000.0,
+        "Voluntary un-earmarked": 15000.0
       },
       {
-        "donor": "Marshall Islands",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "Panama",
+        "total": 15000.0,
+        "Voluntary un-earmarked": 15000.0
       },
       {
-        "donor": "Mauritania",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "Thailand",
+        "total": 13000.0,
+        "Voluntary un-earmarked": 13000.0
       },
       {
-        "donor": "Micronesia, Federated States of",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "Republic of Moldova",
+        "total": 12308.0,
+        "Voluntary un-earmarked": 12308.0
       },
       {
-        "donor": "Nauru",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "Congo",
+        "total": 11106.0,
+        "Voluntary un-earmarked": 11106.0
       },
       {
-        "donor": "Niger",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "Viet Nam",
+        "total": 11063.0,
+        "Voluntary un-earmarked": 11063.0
       },
       {
-        "donor": "Palau",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "Lithuania",
+        "total": 10582.0,
+        "Voluntary un-earmarked": 10582.0
+      },
+      {
+        "donor": "Angola",
+        "total": 10000.0,
+        "Voluntary un-earmarked": 10000.0
+      },
+      {
+        "donor": "Botswana",
+        "total": 10000.0,
+        "Voluntary un-earmarked": 10000.0
+      },
+      {
+        "donor": "Costa Rica",
+        "total": 10000.0,
+        "Voluntary un-earmarked": 10000.0
+      },
+      {
+        "donor": "Ecuador",
+        "total": 10000.0,
+        "Voluntary un-earmarked": 10000.0
+      },
+      {
+        "donor": "Georgia",
+        "total": 10000.0,
+        "Voluntary un-earmarked": 10000.0
+      },
+      {
+        "donor": "Latvia",
+        "total": 10000.0,
+        "Voluntary un-earmarked": 10000.0
+      },
+      {
+        "donor": "Oman",
+        "total": 10000.0,
+        "Voluntary un-earmarked": 10000.0
+      },
+      {
+        "donor": "Pakistan",
+        "total": 10000.0,
+        "Voluntary un-earmarked": 10000.0
+      },
+      {
+        "donor": "Philippines",
+        "total": 10000.0,
+        "Voluntary un-earmarked": 10000.0
       },
       {
         "donor": "Rwanda",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "total": 10000.0,
+        "Voluntary un-earmarked": 10000.0
       },
       {
-        "donor": "Saint Lucia",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "South Sudan",
+        "total": 10000.0,
+        "Voluntary un-earmarked": 10000.0
       },
       {
-        "donor": "Saint Vincent and the Grenadines",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "India",
+        "total": 10000.0,
+        "Voluntary earmarked": 10000.0
       },
       {
-        "donor": "Timor-Leste",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "Uzbekistan",
+        "total": 8619.0,
+        "Voluntary un-earmarked": 8619.0
       },
       {
-        "donor": "Tonga",
-        "total": 17000.0,
-        "Assessed": 17000.0
+        "donor": "Fiji",
+        "total": 8065.0,
+        "Voluntary un-earmarked": 8065.0
       },
       {
-        "donor": "Burundi",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "donor": "Burkina Faso",
+        "total": 7980.0,
+        "Voluntary un-earmarked": 7980.0
       },
       {
-        "donor": "Bhutan",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "donor": "Mongolia",
+        "total": 7000.0,
+        "Voluntary un-earmarked": 7000.0
       },
       {
-        "donor": "Central African Republic",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "donor": "Serbia",
+        "total": 6000.0,
+        "Voluntary un-earmarked": 6000.0
       },
       {
-        "donor": "Comoros",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "donor": "Uruguay",
+        "total": 6000.0,
+        "Voluntary un-earmarked": 6000.0
       },
       {
-        "donor": "Djibouti",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "donor": "Mozambique",
+        "total": 5280.0,
+        "Voluntary un-earmarked": 5280.0
       },
       {
-        "donor": "Eritrea",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "donor": "Azerbaijan",
+        "total": 5000.0,
+        "Voluntary un-earmarked": 5000.0
       },
       {
-        "donor": "Gambia",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "donor": "Bahamas",
+        "total": 5000.0,
+        "Voluntary un-earmarked": 5000.0
       },
       {
-        "donor": "Guinea-Bissau",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "donor": "Cambodia",
+        "total": 5000.0,
+        "Voluntary un-earmarked": 5000.0
       },
       {
-        "donor": "Guinea",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "donor": "Croatia",
+        "total": 5000.0,
+        "Voluntary un-earmarked": 5000.0
       },
       {
-        "donor": "Kiribati",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "donor": "Ethiopia",
+        "total": 5000.0,
+        "Voluntary un-earmarked": 5000.0
+      },
+      {
+        "donor": "Iran, Islamic Republic of",
+        "total": 5000.0,
+        "Voluntary un-earmarked": 5000.0
+      },
+      {
+        "donor": "Sri Lanka",
+        "total": 5000.0,
+        "Voluntary un-earmarked": 5000.0
+      },
+      {
+        "donor": "Myanmar",
+        "total": 5000.0,
+        "Voluntary un-earmarked": 5000.0
+      },
+      {
+        "donor": "Montenegro",
+        "total": 5000.0,
+        "Voluntary un-earmarked": 5000.0
+      },
+      {
+        "donor": "Namibia",
+        "total": 5000.0,
+        "Voluntary un-earmarked": 5000.0
+      },
+      {
+        "donor": "Nicaragua",
+        "total": 5000.0,
+        "Voluntary un-earmarked": 5000.0
+      },
+      {
+        "donor": "Trinidad and Tobago",
+        "total": 5000.0,
+        "Voluntary un-earmarked": 5000.0
+      },
+      {
+        "donor": "United Republic of Tanzania",
+        "total": 5000.0,
+        "Voluntary un-earmarked": 5000.0
+      },
+      {
+        "donor": "Venezuela, Bolivarian Republic of",
+        "total": 5000.0,
+        "Voluntary un-earmarked": 5000.0
+      },
+      {
+        "donor": "Jamaica",
+        "total": 4603.0,
+        "Voluntary un-earmarked": 4603.0
       },
       {
         "donor": "Liberia",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "total": 3000.0,
+        "Voluntary un-earmarked": 3000.0
       },
       {
-        "donor": "Lesotho",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "donor": "Armenia",
+        "total": 2500.0,
+        "Voluntary un-earmarked": 2500.0
+      },
+      {
+        "donor": "Ghana",
+        "total": 2500.0,
+        "Voluntary un-earmarked": 2500.0
+      },
+      {
+        "donor": "Lebanon",
+        "total": 2500.0,
+        "Voluntary un-earmarked": 2500.0
+      },
+      {
+        "donor": "Cuba",
+        "total": 2000.0,
+        "Voluntary un-earmarked": 2000.0
+      },
+      {
+        "donor": "Bosnia and Herzegovina",
+        "total": 2000.0,
+        "Voluntary un-earmarked": 2000.0
+      },
+      {
+        "donor": "Guatemala",
+        "total": 2000.0,
+        "Voluntary un-earmarked": 2000.0
+      },
+      {
+        "donor": "Kiribati",
+        "total": 2000.0,
+        "Voluntary un-earmarked": 2000.0
+      },
+      {
+        "donor": "Libya",
+        "total": 2000.0,
+        "Voluntary un-earmarked": 2000.0
       },
       {
         "donor": "Samoa",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "total": 2000.0,
+        "Voluntary un-earmarked": 2000.0
       },
       {
-        "donor": "Sao Tome and Principe",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "donor": "Suriname",
+        "total": 1750.0,
+        "Voluntary un-earmarked": 1750.0
       },
       {
-        "donor": "Sierra Leone",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "donor": "Peru",
+        "total": 1667.0,
+        "Voluntary un-earmarked": 1667.0
+      },
+      {
+        "donor": "Guyana",
+        "total": 1471.0,
+        "Voluntary un-earmarked": 1471.0
+      },
+      {
+        "donor": "Colombia",
+        "total": 1000.0,
+        "Voluntary un-earmarked": 1000.0
+      },
+      {
+        "donor": "Belize",
+        "total": 1000.0,
+        "Voluntary un-earmarked": 1000.0
+      },
+      {
+        "donor": "Grenada",
+        "total": 1000.0,
+        "Voluntary un-earmarked": 1000.0
+      },
+      {
+        "donor": "Saint Kitts and Nevis",
+        "total": 1000.0,
+        "Voluntary un-earmarked": 1000.0
+      },
+      {
+        "donor": "Lao People's Democratic Republic",
+        "total": 1000.0,
+        "Voluntary un-earmarked": 1000.0
+      },
+      {
+        "donor": "Malawi",
+        "total": 1000.0,
+        "Voluntary un-earmarked": 1000.0
+      },
+      {
+        "donor": "Seychelles",
+        "total": 1000.0,
+        "Voluntary un-earmarked": 1000.0
+      },
+      {
+        "donor": "Saint Vincent and the Grenadines",
+        "total": 1000.0,
+        "Voluntary un-earmarked": 1000.0
       },
       {
         "donor": "Solomon Islands",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "total": 800.0,
+        "Voluntary un-earmarked": 800.0
       },
       {
-        "donor": "Somalia",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "donor": "Antigua and Barbuda",
+        "total": 500.0,
+        "Voluntary un-earmarked": 500.0
       },
       {
-        "donor": "Togo",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "donor": "Afghanistan",
+        "total": 500.0,
+        "Voluntary un-earmarked": 500.0
       },
       {
-        "donor": "Tuvalu",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "donor": "Benin",
+        "total": 500.0,
+        "Voluntary un-earmarked": 500.0
+      },
+      {
+        "donor": "Bhutan",
+        "total": 500.0,
+        "Voluntary un-earmarked": 500.0
+      },
+      {
+        "donor": "Cyprus",
+        "total": 500.0,
+        "Voluntary un-earmarked": 500.0
+      },
+      {
+        "donor": "Chad",
+        "total": 500.0,
+        "Voluntary un-earmarked": 500.0
+      },
+      {
+        "donor": "El Salvador",
+        "total": 500.0,
+        "Voluntary un-earmarked": 500.0
+      },
+      {
+        "donor": "Guinea",
+        "total": 500.0,
+        "Voluntary un-earmarked": 500.0
+      },
+      {
+        "donor": "Lesotho",
+        "total": 500.0,
+        "Voluntary un-earmarked": 500.0
+      },
+      {
+        "donor": "Mauritius",
+        "total": 500.0,
+        "Voluntary un-earmarked": 500.0
+      },
+      {
+        "donor": "Niger",
+        "total": 500.0,
+        "Voluntary un-earmarked": 500.0
+      },
+      {
+        "donor": "State of Palestine",
+        "total": 500.0,
+        "Voluntary un-earmarked": 500.0
+      },
+      {
+        "donor": "Zambia",
+        "total": 500.0,
+        "Voluntary un-earmarked": 500.0
+      },
+      {
+        "donor": "Marshall Islands",
+        "total": 333.0,
+        "Voluntary un-earmarked": 333.0
+      },
+      {
+        "donor": "Madagascar",
+        "total": 300.0,
+        "Voluntary un-earmarked": 300.0
+      },
+      {
+        "donor": "Comoros",
+        "total": 250.0,
+        "Voluntary un-earmarked": 250.0
+      },
+      {
+        "donor": "Central African Republic",
+        "total": 250.0,
+        "Voluntary un-earmarked": 250.0
+      },
+      {
+        "donor": "Democratic People's Republic of Korea",
+        "total": 250.0,
+        "Voluntary un-earmarked": 250.0
+      },
+      {
+        "donor": "Malta",
+        "total": 249.0,
+        "Voluntary un-earmarked": 249.0
+      },
+      {
+        "donor": "Eritrea",
+        "total": 200.0,
+        "Voluntary un-earmarked": 200.0
+      },
+      {
+        "donor": "Eswatini",
+        "total": 200.0,
+        "Voluntary un-earmarked": 200.0
       },
       {
         "donor": "Vanuatu",
-        "total": 8000.0,
-        "Assessed": 8000.0
+        "total": 200.0,
+        "Voluntary un-earmarked": 200.0
+      },
+      {
+        "donor": "Guinea-Bissau",
+        "total": 150.0,
+        "Voluntary un-earmarked": 150.0
+      },
+      {
+        "donor": "Honduras",
+        "total": 150.0,
+        "Voluntary un-earmarked": 150.0
+      },
+      {
+        "donor": "Mauritania",
+        "total": 150.0,
+        "Voluntary un-earmarked": 150.0
+      },
+      {
+        "donor": "Somalia",
+        "total": 150.0,
+        "Voluntary un-earmarked": 150.0
+      },
+      {
+        "donor": "Micronesia, Federated States of",
+        "total": 100.0,
+        "Voluntary un-earmarked": 100.0
+      },
+      {
+        "donor": "Saint Lucia",
+        "total": 100.0,
+        "Voluntary un-earmarked": 100.0
+      },
+      {
+        "donor": "Palau",
+        "total": 100.0,
+        "Voluntary un-earmarked": 100.0
+      },
+      {
+        "donor": "Sierra Leone",
+        "total": 100.0,
+        "Voluntary un-earmarked": 100.0
+      },
+      {
+        "donor": "San Marino",
+        "total": 100.0,
+        "Voluntary un-earmarked": 100.0
+      },
+      {
+        "donor": "Ukraine",
+        "total": 100.0,
+        "Voluntary un-earmarked": 100.0
+      },
+      {
+        "donor": "Tuvalu",
+        "total": 50.0,
+        "Voluntary un-earmarked": 50.0
+      }
+    ]
+  },
+  "UN-Habitat": {
+    "total": 177458529.06,
+    "year": 2015,
+    "by_type": {
+      "Assessed": 16935000.0,
+      "Other": 1990000.0,
+      "Voluntary earmarked": 156362701.9,
+      "Voluntary un-earmarked": 2170827.16
+    },
+    "by_donor": [
+      {
+        "donor": "Japan",
+        "total": 52130591.54,
+        "Voluntary earmarked": 52130591.54
+      },
+      {
+        "donor": "European Union",
+        "total": 25025018.35,
+        "Voluntary earmarked": 25025018.35
+      },
+      {
+        "donor": "Switzerland",
+        "total": 10704994.01,
+        "Voluntary earmarked": 10704994.01
+      },
+      {
+        "donor": "Netherlands",
+        "total": 6756756.0,
+        "Voluntary earmarked": 6756756.0
+      },
+      {
+        "donor": "United Kingdom of Great Britain and Northern Ireland",
+        "total": 6067734.35,
+        "Voluntary earmarked": 6067734.35
+      },
+      {
+        "donor": "Norway",
+        "total": 5524652.86,
+        "Voluntary earmarked": 5524652.86
+      },
+      {
+        "donor": "United States of America",
+        "total": 5366828.0,
+        "Voluntary earmarked": 5366828.0
+      },
+      {
+        "donor": "Libya",
+        "total": 3976000.0,
+        "Voluntary earmarked": 3976000.0
+      },
+      {
+        "donor": "China",
+        "total": 975000.0,
+        "Voluntary earmarked": 975000.0
+      },
+      {
+        "donor": "Germany",
+        "total": 737572.34,
+        "Voluntary earmarked": 737572.34
+      },
+      {
+        "donor": "Italy",
+        "total": 707533.11,
+        "Voluntary earmarked": 707533.11
+      },
+      {
+        "donor": "Spain",
+        "total": 578721.84,
+        "Voluntary earmarked": 578721.84
+      },
+      {
+        "donor": "France",
+        "total": 550057.5,
+        "Voluntary earmarked": 550057.5
+      },
+      {
+        "donor": "Finland",
+        "total": 517188.0,
+        "Voluntary earmarked": 517188.0
+      },
+      {
+        "donor": "Mexico",
+        "total": 500000.0,
+        "Voluntary earmarked": 500000.0
+      },
+      {
+        "donor": "Ghana",
+        "total": 500000.0,
+        "Voluntary earmarked": 500000.0
+      },
+      {
+        "donor": "Kenya",
+        "total": 400000.0,
+        "Voluntary earmarked": 400000.0
+      },
+      {
+        "donor": "Australia",
+        "total": 354358.61,
+        "Voluntary earmarked": 354358.61
+      },
+      {
+        "donor": "Indonesia",
+        "total": 306614.1,
+        "Voluntary earmarked": 306614.1
+      },
+      {
+        "donor": "Djibouti",
+        "total": 120000.0,
+        "Voluntary earmarked": 120000.0
+      },
+      {
+        "donor": "South Africa",
+        "total": 120000.0,
+        "Voluntary earmarked": 120000.0
+      },
+      {
+        "donor": "Republic of Korea",
+        "total": 90415.91,
+        "Voluntary earmarked": 90415.91
+      },
+      {
+        "donor": "Egypt",
+        "total": 70423.8,
+        "Voluntary earmarked": 70423.8
+      },
+      {
+        "donor": "India",
+        "total": 60245.74,
+        "Voluntary earmarked": 60245.74
+      },
+      {
+        "donor": "Iran, Islamic Republic of",
+        "total": 58611.2,
+        "Voluntary earmarked": 58611.2
+      },
+      {
+        "donor": "Cameroon",
+        "total": 50000.0,
+        "Voluntary earmarked": 50000.0
+      },
+      {
+        "donor": "Burkina Faso",
+        "total": 34430.37,
+        "Voluntary earmarked": 34430.37
+      },
+      {
+        "donor": "Sri Lanka",
+        "total": 25000.0,
+        "Voluntary earmarked": 25000.0
+      },
+      {
+        "donor": "El Salvador",
+        "total": 16393.44,
+        "Voluntary earmarked": 16393.44
+      },
+      {
+        "donor": "Brazil",
+        "total": 14257.64,
+        "Voluntary earmarked": 14257.64
+      },
+      {
+        "donor": "Israel",
+        "total": 10000.0,
+        "Voluntary earmarked": 10000.0
+      },
+      {
+        "donor": "Barbados",
+        "total": 6074.07,
+        "Voluntary earmarked": 6074.07
+      },
+      {
+        "donor": "Pakistan",
+        "total": 5994.33,
+        "Voluntary earmarked": 5994.33
+      },
+      {
+        "donor": "Argentina",
+        "total": 5000.0,
+        "Voluntary earmarked": 5000.0
+      },
+      {
+        "donor": "Chile",
+        "total": 5000.0,
+        "Voluntary earmarked": 5000.0
+      },
+      {
+        "donor": "Tunisia",
+        "total": 601.61,
+        "Voluntary earmarked": 601.61
+      },
+      {
+        "donor": "Burundi",
+        "total": -50000.0,
+        "Voluntary earmarked": -50000.0
+      },
+      {
+        "donor": "Sweden",
+        "total": -403893.11,
+        "Voluntary earmarked": -403893.11
+      },
+      {
+        "donor": "Rwanda",
+        "total": -3105737.0,
+        "Voluntary earmarked": -3105737.0
       }
     ]
   },
@@ -10662,9 +11679,9 @@
     "total": 225906603.0,
     "year": 2015,
     "by_type": {
-      "Other": 11907808.0,
-      "Voluntary earmarked": 17970834.0,
-      "Voluntary un-earmarked": 196027961.0
+      "Other": 6365170.0,
+      "Voluntary earmarked": 23291335.0,
+      "Voluntary un-earmarked": 196250098.0
     },
     "by_donor": [
       {
@@ -10850,9 +11867,9 @@
     "total": 4820159550.0,
     "year": 2015,
     "by_type": {
-      "Other": 495621326.0,
-      "Voluntary earmarked": 2443434154.0,
-      "Voluntary un-earmarked": 1881104070.0
+      "Other": 348265392.0,
+      "Voluntary earmarked": 3726179691.0,
+      "Voluntary un-earmarked": 745714467.0
     },
     "by_donor": [
       {
@@ -11902,10 +12919,10 @@
     "total": 655985438.1000001,
     "year": 2015,
     "by_type": {
-      "Assessed": 222809894.91,
-      "Other": 80001201.92000005,
-      "Voluntary earmarked": 316114013.94,
-      "Voluntary un-earmarked": 37060327.33
+      "Assessed": 222817431.0,
+      "Other": 871000.0,
+      "Voluntary earmarked": 432297007.1,
+      "Voluntary un-earmarked": 0.0
     },
     "by_donor": [
       {
@@ -11988,8 +13005,8 @@
       {
         "donor": "UNDP (as donor)",
         "total": 10537091.600000001,
-        "Voluntary earmarked": 1594990.28,
-        "Voluntary un-earmarked": 8942101.32
+        "Voluntary un-earmarked": 8942101.32,
+        "Voluntary earmarked": 1594990.28
       },
       {
         "donor": "Sweden",
@@ -12997,10 +14014,10 @@
     "total": 742457448.0,
     "year": 2015,
     "by_type": {
-      "Assessed": 341334723.0,
-      "Other": 138053731.0,
-      "Voluntary earmarked": 248289169.0,
-      "Voluntary un-earmarked": 14779825.0
+      "Assessed": 341374604.0,
+      "Other": 49528579.0,
+      "Voluntary earmarked": 351554265.0,
+      "Voluntary un-earmarked": 0.0
     },
     "by_donor": [
       {
@@ -14132,12 +15149,12 @@
     ]
   },
   "UNFPA": {
-    "total": 1036736917.7000002,
+    "total": 1036736917.7,
     "year": 2015,
     "by_type": {
-      "Other": 150178993.6700002,
-      "Voluntary earmarked": 445638438.46,
-      "Voluntary un-earmarked": 440919485.57
+      "Other": 57280000.0,
+      "Voluntary earmarked": 581259701.0,
+      "Voluntary un-earmarked": 398197216.7
     },
     "by_donor": [
       {
@@ -14833,213 +15850,14 @@
       }
     ]
   },
-  "UN-Habitat": {
-    "total": 177458529.06,
-    "year": 2015,
-    "by_type": {
-      "Other": 83671108.8,
-      "Voluntary earmarked": 93787420.26
-    },
-    "by_donor": [
-      {
-        "donor": "Japan",
-        "total": 52130591.54,
-        "Voluntary earmarked": 52130591.54
-      },
-      {
-        "donor": "Switzerland",
-        "total": 10704994.01,
-        "Voluntary earmarked": 10704994.01
-      },
-      {
-        "donor": "Netherlands",
-        "total": 6756756.0,
-        "Voluntary earmarked": 6756756.0
-      },
-      {
-        "donor": "United Kingdom of Great Britain and Northern Ireland",
-        "total": 6067734.35,
-        "Voluntary earmarked": 6067734.35
-      },
-      {
-        "donor": "Norway",
-        "total": 5524652.86,
-        "Voluntary earmarked": 5524652.86
-      },
-      {
-        "donor": "United States of America",
-        "total": 5366828.0,
-        "Voluntary earmarked": 5366828.0
-      },
-      {
-        "donor": "Libya",
-        "total": 3976000.0,
-        "Voluntary earmarked": 3976000.0
-      },
-      {
-        "donor": "China",
-        "total": 975000.0,
-        "Voluntary earmarked": 975000.0
-      },
-      {
-        "donor": "Germany",
-        "total": 737572.34,
-        "Voluntary earmarked": 737572.34
-      },
-      {
-        "donor": "Italy",
-        "total": 707533.11,
-        "Voluntary earmarked": 707533.11
-      },
-      {
-        "donor": "Spain",
-        "total": 578721.84,
-        "Voluntary earmarked": 578721.84
-      },
-      {
-        "donor": "France",
-        "total": 550057.5,
-        "Voluntary earmarked": 550057.5
-      },
-      {
-        "donor": "Finland",
-        "total": 517188.0,
-        "Voluntary earmarked": 517188.0
-      },
-      {
-        "donor": "Mexico",
-        "total": 500000.0,
-        "Voluntary earmarked": 500000.0
-      },
-      {
-        "donor": "Ghana",
-        "total": 500000.0,
-        "Voluntary earmarked": 500000.0
-      },
-      {
-        "donor": "Kenya",
-        "total": 400000.0,
-        "Voluntary earmarked": 400000.0
-      },
-      {
-        "donor": "Australia",
-        "total": 354358.61,
-        "Voluntary earmarked": 354358.61
-      },
-      {
-        "donor": "Indonesia",
-        "total": 306614.1,
-        "Voluntary earmarked": 306614.1
-      },
-      {
-        "donor": "Djibouti",
-        "total": 120000.0,
-        "Voluntary earmarked": 120000.0
-      },
-      {
-        "donor": "South Africa",
-        "total": 120000.0,
-        "Voluntary earmarked": 120000.0
-      },
-      {
-        "donor": "Republic of Korea",
-        "total": 90415.91,
-        "Voluntary earmarked": 90415.91
-      },
-      {
-        "donor": "Egypt",
-        "total": 70423.8,
-        "Voluntary earmarked": 70423.8
-      },
-      {
-        "donor": "India",
-        "total": 60245.74,
-        "Voluntary earmarked": 60245.74
-      },
-      {
-        "donor": "Iran, Islamic Republic of",
-        "total": 58611.2,
-        "Voluntary earmarked": 58611.2
-      },
-      {
-        "donor": "Cameroon",
-        "total": 50000.0,
-        "Voluntary earmarked": 50000.0
-      },
-      {
-        "donor": "Burkina Faso",
-        "total": 34430.37,
-        "Voluntary earmarked": 34430.37
-      },
-      {
-        "donor": "Sri Lanka",
-        "total": 25000.0,
-        "Voluntary earmarked": 25000.0
-      },
-      {
-        "donor": "El Salvador",
-        "total": 16393.44,
-        "Voluntary earmarked": 16393.44
-      },
-      {
-        "donor": "Brazil",
-        "total": 14257.64,
-        "Voluntary earmarked": 14257.64
-      },
-      {
-        "donor": "Israel",
-        "total": 10000.0,
-        "Voluntary earmarked": 10000.0
-      },
-      {
-        "donor": "Barbados",
-        "total": 6074.07,
-        "Voluntary earmarked": 6074.07
-      },
-      {
-        "donor": "Pakistan",
-        "total": 5994.33,
-        "Voluntary earmarked": 5994.33
-      },
-      {
-        "donor": "Argentina",
-        "total": 5000.0,
-        "Voluntary earmarked": 5000.0
-      },
-      {
-        "donor": "Chile",
-        "total": 5000.0,
-        "Voluntary earmarked": 5000.0
-      },
-      {
-        "donor": "Tunisia",
-        "total": 601.61,
-        "Voluntary earmarked": 601.61
-      },
-      {
-        "donor": "Burundi",
-        "total": -50000.0,
-        "Voluntary earmarked": -50000.0
-      },
-      {
-        "donor": "Sweden",
-        "total": -403893.11,
-        "Voluntary earmarked": -403893.11
-      },
-      {
-        "donor": "Rwanda",
-        "total": -3105737.0,
-        "Voluntary earmarked": -3105737.0
-      }
-    ]
-  },
   "UNHCR": {
-    "total": 3582340388.550001,
+    "total": 3582340388.55,
     "year": 2015,
     "by_type": {
-      "Other": 423021100.80000067,
-      "Voluntary earmarked": 2495311241.79,
-      "Voluntary un-earmarked": 664008045.96
+      "Assessed": 48643700.0,
+      "Other": 19380183.75,
+      "Voluntary earmarked": 2778623534.0,
+      "Voluntary un-earmarked": 735692970.8
     },
     "by_donor": [
       {
@@ -15490,12 +16308,12 @@
     ]
   },
   "UNICEF": {
-    "total": 5009557471.299999,
+    "total": 5009557471.3,
     "year": 2015,
     "by_type": {
-      "Other": 428631296.34999967,
-      "Voluntary earmarked": 4004009717.9100003,
-      "Voluntary un-earmarked": 576916457.04
+      "Other": 106205809.3,
+      "Voluntary earmarked": 3835891146.0000005,
+      "Voluntary un-earmarked": 1067460516.0
     },
     "by_donor": [
       {
@@ -16229,10 +17047,10 @@
     "total": 333823001.77000004,
     "year": 2015,
     "by_type": {
-      "Assessed": 77885076.94,
-      "Other": 59995310.30000004,
-      "Voluntary earmarked": 86801451.27,
-      "Voluntary un-earmarked": 109141163.25999999
+      "Assessed": 77899231.23,
+      "Other": 5618983.24,
+      "Voluntary earmarked": 250304787.3,
+      "Voluntary un-earmarked": -1.4901161193847656e-08
     },
     "by_donor": [
       {
@@ -17145,12 +17963,12 @@
     ]
   },
   "UNITAR": {
-    "total": 25421255.72,
+    "total": 25421255.719999995,
     "year": 2015,
     "by_type": {
-      "Other": 10334877.96,
-      "Voluntary earmarked": 14570507.37,
-      "Voluntary un-earmarked": 515870.39
+      "Other": 15575.0,
+      "Voluntary earmarked": 24244069.72,
+      "Voluntary un-earmarked": 1161611.0
     },
     "by_donor": [
       {
@@ -17277,9 +18095,10 @@
     "total": 275156424.0,
     "year": 2015,
     "by_type": {
-      "Other": 47888733.0,
-      "Voluntary earmarked": 220936319.0,
-      "Voluntary un-earmarked": 6331372.0
+      "Assessed": 29003000.0,
+      "Other": 7460000.0,
+      "Voluntary earmarked": 234387804.0,
+      "Voluntary un-earmarked": 4305620.0
     },
     "by_donor": [
       {
@@ -17597,12 +18416,13 @@
     ]
   },
   "UNRWA": {
-    "total": 1212729770.96,
+    "total": 1212729770.9599996,
     "year": 2015,
     "by_type": {
-      "Other": 104103377.76000024,
-      "Voluntary earmarked": 652549181.59,
-      "Voluntary un-earmarked": 456077211.61
+      "Assessed": 27879716.86,
+      "Other": 23689000.0,
+      "Voluntary earmarked": 611448924.0,
+      "Voluntary un-earmarked": 549712130.1
     },
     "by_donor": [
       {
@@ -17870,8 +18690,8 @@
     "total": 63266400.0,
     "year": 2015,
     "by_type": {
-      "Other": 8073917.0,
-      "Voluntary earmarked": 55192483.0
+      "Other": 2439000.0,
+      "Voluntary earmarked": 60827400.0
     },
     "by_donor": [
       {
@@ -17981,820 +18801,13 @@
       }
     ]
   },
-  "UN Women": {
-    "total": 318987801.0,
-    "year": 2015,
-    "by_type": {
-      "Other": 27534050.110000007,
-      "Voluntary earmarked": 131295427.33,
-      "Voluntary un-earmarked": 160158323.56
-    },
-    "by_donor": [
-      {
-        "donor": "Sweden",
-        "total": 33083699.02,
-        "Voluntary un-earmarked": 8285004.0,
-        "Voluntary earmarked": 24798695.02
-      },
-      {
-        "donor": "Switzerland",
-        "total": 26593417.15,
-        "Voluntary un-earmarked": 16311551.0,
-        "Voluntary earmarked": 10281866.15
-      },
-      {
-        "donor": "Norway",
-        "total": 25129945.0,
-        "Voluntary un-earmarked": 12562814.0,
-        "Voluntary earmarked": 12567131.0
-      },
-      {
-        "donor": "United Kingdom of Great Britain and Northern Ireland",
-        "total": 22547824.29,
-        "Voluntary un-earmarked": 18860947.0,
-        "Voluntary earmarked": 3686877.29
-      },
-      {
-        "donor": "Japan",
-        "total": 20182624.0,
-        "Voluntary un-earmarked": 4713474.0,
-        "Voluntary earmarked": 15469150.0
-      },
-      {
-        "donor": "Australia",
-        "total": 20083075.0,
-        "Voluntary un-earmarked": 6218033.0,
-        "Voluntary earmarked": 13865042.0
-      },
-      {
-        "donor": "Finland",
-        "total": 19409154.0,
-        "Voluntary un-earmarked": 15167931.0,
-        "Voluntary earmarked": 4241223.0
-      },
-      {
-        "donor": "Netherlands",
-        "total": 11587026.0,
-        "Voluntary un-earmarked": 4538523.0,
-        "Voluntary earmarked": 7048503.0
-      },
-      {
-        "donor": "Denmark",
-        "total": 10896050.0,
-        "Voluntary un-earmarked": 8812776.0,
-        "Voluntary earmarked": 2083274.0
-      },
-      {
-        "donor": "United States of America",
-        "total": 9333858.07,
-        "Voluntary un-earmarked": 7500000.0,
-        "Voluntary earmarked": 1833858.07
-      },
-      {
-        "donor": "Canada",
-        "total": 8294594.0,
-        "Voluntary un-earmarked": 5215856.0,
-        "Voluntary earmarked": 3078738.0
-      },
-      {
-        "donor": "Belgium",
-        "total": 8280407.0,
-        "Voluntary un-earmarked": 4489338.0,
-        "Voluntary earmarked": 3791069.0
-      },
-      {
-        "donor": "European Union",
-        "total": 6327038.63,
-        "Voluntary earmarked": 6327038.63
-      },
-      {
-        "donor": "Spain",
-        "total": 4893750.93,
-        "Voluntary un-earmarked": 756567.0,
-        "Voluntary earmarked": 4137183.93
-      },
-      {
-        "donor": "Republic of Korea",
-        "total": 4708090.0,
-        "Voluntary un-earmarked": 3900000.0,
-        "Voluntary earmarked": 808090.0
-      },
-      {
-        "donor": "United Arab Emirates",
-        "total": 3903560.05,
-        "Voluntary un-earmarked": 3609204.0,
-        "Voluntary earmarked": 294356.05
-      },
-      {
-        "donor": "Germany",
-        "total": 3551192.0,
-        "Voluntary un-earmarked": 2294311.0,
-        "Voluntary earmarked": 1256881.0
-      },
-      {
-        "donor": "UNDP (as donor)",
-        "total": 3489229.99,
-        "Voluntary earmarked": 3489229.99
-      },
-      {
-        "donor": "T\u00fcrkiye",
-        "total": 3090620.0,
-        "Voluntary un-earmarked": 1090620.0,
-        "Voluntary earmarked": 2000000.0
-      },
-      {
-        "donor": "Italy",
-        "total": 3050489.0,
-        "Voluntary un-earmarked": 1307190.0,
-        "Voluntary earmarked": 1743299.0
-      },
-      {
-        "donor": "Ireland",
-        "total": 2733273.0,
-        "Voluntary un-earmarked": 1659292.0,
-        "Voluntary earmarked": 1073981.0
-      },
-      {
-        "donor": "Luxembourg",
-        "total": 2508785.0,
-        "Voluntary un-earmarked": 1294118.0,
-        "Voluntary earmarked": 1214667.0
-      },
-      {
-        "donor": "New Zealand",
-        "total": 2220050.0,
-        "Voluntary un-earmarked": 1872250.0,
-        "Voluntary earmarked": 347800.0
-      },
-      {
-        "donor": "France",
-        "total": 1126954.0,
-        "Voluntary un-earmarked": 462477.0,
-        "Voluntary earmarked": 664477.0
-      },
-      {
-        "donor": "Iceland",
-        "total": 1039444.0,
-        "Voluntary un-earmarked": 739824.0,
-        "Voluntary earmarked": 299620.0
-      },
-      {
-        "donor": "UN OCHA",
-        "total": 1020118.2,
-        "Voluntary earmarked": 1020118.2
-      },
-      {
-        "donor": "Bill & Melinda Gates Foundation",
-        "total": 1000026.0,
-        "Voluntary earmarked": 1000026.0
-      },
-      {
-        "donor": "Austria",
-        "total": 905092.0,
-        "Voluntary un-earmarked": 270856.0,
-        "Voluntary earmarked": 634236.0
-      },
-      {
-        "donor": "Brazil",
-        "total": 702799.0,
-        "Voluntary earmarked": 702799.0
-      },
-      {
-        "donor": "Morocco",
-        "total": 692040.0,
-        "Voluntary un-earmarked": 20000.0,
-        "Voluntary earmarked": 672040.0
-      },
-      {
-        "donor": "Senegal",
-        "total": 485000.0,
-        "Voluntary un-earmarked": 485000.0
-      },
-      {
-        "donor": "China",
-        "total": 440301.0,
-        "Voluntary un-earmarked": 60000.0,
-        "Voluntary earmarked": 380301.0
-      },
-      {
-        "donor": "Mexico",
-        "total": 334201.0,
-        "Voluntary un-earmarked": 89718.0,
-        "Voluntary earmarked": 244483.0
-      },
-      {
-        "donor": "Israel",
-        "total": 280000.0,
-        "Voluntary un-earmarked": 250000.0,
-        "Voluntary earmarked": 30000.0
-      },
-      {
-        "donor": "Chile",
-        "total": 150000.0,
-        "Voluntary un-earmarked": 150000.0
-      },
-      {
-        "donor": "Indonesia",
-        "total": 147000.0,
-        "Voluntary un-earmarked": 147000.0
-      },
-      {
-        "donor": "Barbados",
-        "total": 121640.0,
-        "Voluntary un-earmarked": 121640.0
-      },
-      {
-        "donor": "Estonia",
-        "total": 100125.0,
-        "Voluntary un-earmarked": 100125.0
-      },
-      {
-        "donor": "Qatar",
-        "total": 100000.0,
-        "Voluntary earmarked": 100000.0
-      },
-      {
-        "donor": "Kazakhstan",
-        "total": 91600.0,
-        "Voluntary un-earmarked": 91600.0
-      },
-      {
-        "donor": "Nigeria",
-        "total": 90000.0,
-        "Voluntary un-earmarked": 90000.0
-      },
-      {
-        "donor": "Liechtenstein",
-        "total": 79657.0,
-        "Voluntary un-earmarked": 69700.0,
-        "Voluntary earmarked": 9957.0
-      },
-      {
-        "donor": "Singapore",
-        "total": 60000.0,
-        "Voluntary un-earmarked": 50000.0,
-        "Voluntary earmarked": 10000.0
-      },
-      {
-        "donor": "Hungary",
-        "total": 55000.0,
-        "Voluntary un-earmarked": 5000.0,
-        "Voluntary earmarked": 50000.0
-      },
-      {
-        "donor": "Brunei Darussalam",
-        "total": 50000.0,
-        "Voluntary un-earmarked": 50000.0
-      },
-      {
-        "donor": "Malaysia",
-        "total": 50000.0,
-        "Voluntary un-earmarked": 50000.0
-      },
-      {
-        "donor": "Kuwait",
-        "total": 50000.0,
-        "Voluntary un-earmarked": 50000.0
-      },
-      {
-        "donor": "Dominican Republic",
-        "total": 46138.0,
-        "Voluntary un-earmarked": 46138.0
-      },
-      {
-        "donor": "Andorra",
-        "total": 44802.0,
-        "Voluntary un-earmarked": 44802.0
-      },
-      {
-        "donor": "Poland",
-        "total": 39982.0,
-        "Voluntary un-earmarked": 10565.0,
-        "Voluntary earmarked": 29417.0
-      },
-      {
-        "donor": "South Africa",
-        "total": 37000.0,
-        "Voluntary un-earmarked": 37000.0
-      },
-      {
-        "donor": "Bangladesh",
-        "total": 21000.0,
-        "Voluntary un-earmarked": 21000.0
-      },
-      {
-        "donor": "Argentina",
-        "total": 20000.0,
-        "Voluntary un-earmarked": 20000.0
-      },
-      {
-        "donor": "Bahrain",
-        "total": 20000.0,
-        "Voluntary un-earmarked": 20000.0
-      },
-      {
-        "donor": "Equatorial Guinea",
-        "total": 19997.0,
-        "Voluntary un-earmarked": 19997.0
-      },
-      {
-        "donor": "Monaco",
-        "total": 16251.0,
-        "Voluntary un-earmarked": 16251.0
-      },
-      {
-        "donor": "Czechia",
-        "total": 16199.0,
-        "Voluntary un-earmarked": 16199.0
-      },
-      {
-        "donor": "Bulgaria",
-        "total": 15000.0,
-        "Voluntary un-earmarked": 15000.0
-      },
-      {
-        "donor": "Panama",
-        "total": 15000.0,
-        "Voluntary un-earmarked": 15000.0
-      },
-      {
-        "donor": "Thailand",
-        "total": 13000.0,
-        "Voluntary un-earmarked": 13000.0
-      },
-      {
-        "donor": "Republic of Moldova",
-        "total": 12308.0,
-        "Voluntary un-earmarked": 12308.0
-      },
-      {
-        "donor": "Congo",
-        "total": 11106.0,
-        "Voluntary un-earmarked": 11106.0
-      },
-      {
-        "donor": "Viet Nam",
-        "total": 11063.0,
-        "Voluntary un-earmarked": 11063.0
-      },
-      {
-        "donor": "Lithuania",
-        "total": 10582.0,
-        "Voluntary un-earmarked": 10582.0
-      },
-      {
-        "donor": "Angola",
-        "total": 10000.0,
-        "Voluntary un-earmarked": 10000.0
-      },
-      {
-        "donor": "Botswana",
-        "total": 10000.0,
-        "Voluntary un-earmarked": 10000.0
-      },
-      {
-        "donor": "Costa Rica",
-        "total": 10000.0,
-        "Voluntary un-earmarked": 10000.0
-      },
-      {
-        "donor": "Ecuador",
-        "total": 10000.0,
-        "Voluntary un-earmarked": 10000.0
-      },
-      {
-        "donor": "Georgia",
-        "total": 10000.0,
-        "Voluntary un-earmarked": 10000.0
-      },
-      {
-        "donor": "Latvia",
-        "total": 10000.0,
-        "Voluntary un-earmarked": 10000.0
-      },
-      {
-        "donor": "Oman",
-        "total": 10000.0,
-        "Voluntary un-earmarked": 10000.0
-      },
-      {
-        "donor": "Pakistan",
-        "total": 10000.0,
-        "Voluntary un-earmarked": 10000.0
-      },
-      {
-        "donor": "Philippines",
-        "total": 10000.0,
-        "Voluntary un-earmarked": 10000.0
-      },
-      {
-        "donor": "Rwanda",
-        "total": 10000.0,
-        "Voluntary un-earmarked": 10000.0
-      },
-      {
-        "donor": "South Sudan",
-        "total": 10000.0,
-        "Voluntary un-earmarked": 10000.0
-      },
-      {
-        "donor": "India",
-        "total": 10000.0,
-        "Voluntary earmarked": 10000.0
-      },
-      {
-        "donor": "Uzbekistan",
-        "total": 8619.0,
-        "Voluntary un-earmarked": 8619.0
-      },
-      {
-        "donor": "Fiji",
-        "total": 8065.0,
-        "Voluntary un-earmarked": 8065.0
-      },
-      {
-        "donor": "Burkina Faso",
-        "total": 7980.0,
-        "Voluntary un-earmarked": 7980.0
-      },
-      {
-        "donor": "Mongolia",
-        "total": 7000.0,
-        "Voluntary un-earmarked": 7000.0
-      },
-      {
-        "donor": "Serbia",
-        "total": 6000.0,
-        "Voluntary un-earmarked": 6000.0
-      },
-      {
-        "donor": "Uruguay",
-        "total": 6000.0,
-        "Voluntary un-earmarked": 6000.0
-      },
-      {
-        "donor": "Mozambique",
-        "total": 5280.0,
-        "Voluntary un-earmarked": 5280.0
-      },
-      {
-        "donor": "Azerbaijan",
-        "total": 5000.0,
-        "Voluntary un-earmarked": 5000.0
-      },
-      {
-        "donor": "Bahamas",
-        "total": 5000.0,
-        "Voluntary un-earmarked": 5000.0
-      },
-      {
-        "donor": "Cambodia",
-        "total": 5000.0,
-        "Voluntary un-earmarked": 5000.0
-      },
-      {
-        "donor": "Croatia",
-        "total": 5000.0,
-        "Voluntary un-earmarked": 5000.0
-      },
-      {
-        "donor": "Ethiopia",
-        "total": 5000.0,
-        "Voluntary un-earmarked": 5000.0
-      },
-      {
-        "donor": "Iran, Islamic Republic of",
-        "total": 5000.0,
-        "Voluntary un-earmarked": 5000.0
-      },
-      {
-        "donor": "Sri Lanka",
-        "total": 5000.0,
-        "Voluntary un-earmarked": 5000.0
-      },
-      {
-        "donor": "Myanmar",
-        "total": 5000.0,
-        "Voluntary un-earmarked": 5000.0
-      },
-      {
-        "donor": "Montenegro",
-        "total": 5000.0,
-        "Voluntary un-earmarked": 5000.0
-      },
-      {
-        "donor": "Namibia",
-        "total": 5000.0,
-        "Voluntary un-earmarked": 5000.0
-      },
-      {
-        "donor": "Nicaragua",
-        "total": 5000.0,
-        "Voluntary un-earmarked": 5000.0
-      },
-      {
-        "donor": "Trinidad and Tobago",
-        "total": 5000.0,
-        "Voluntary un-earmarked": 5000.0
-      },
-      {
-        "donor": "United Republic of Tanzania",
-        "total": 5000.0,
-        "Voluntary un-earmarked": 5000.0
-      },
-      {
-        "donor": "Venezuela, Bolivarian Republic of",
-        "total": 5000.0,
-        "Voluntary un-earmarked": 5000.0
-      },
-      {
-        "donor": "Jamaica",
-        "total": 4603.0,
-        "Voluntary un-earmarked": 4603.0
-      },
-      {
-        "donor": "Liberia",
-        "total": 3000.0,
-        "Voluntary un-earmarked": 3000.0
-      },
-      {
-        "donor": "Armenia",
-        "total": 2500.0,
-        "Voluntary un-earmarked": 2500.0
-      },
-      {
-        "donor": "Ghana",
-        "total": 2500.0,
-        "Voluntary un-earmarked": 2500.0
-      },
-      {
-        "donor": "Lebanon",
-        "total": 2500.0,
-        "Voluntary un-earmarked": 2500.0
-      },
-      {
-        "donor": "Cuba",
-        "total": 2000.0,
-        "Voluntary un-earmarked": 2000.0
-      },
-      {
-        "donor": "Bosnia and Herzegovina",
-        "total": 2000.0,
-        "Voluntary un-earmarked": 2000.0
-      },
-      {
-        "donor": "Guatemala",
-        "total": 2000.0,
-        "Voluntary un-earmarked": 2000.0
-      },
-      {
-        "donor": "Kiribati",
-        "total": 2000.0,
-        "Voluntary un-earmarked": 2000.0
-      },
-      {
-        "donor": "Libya",
-        "total": 2000.0,
-        "Voluntary un-earmarked": 2000.0
-      },
-      {
-        "donor": "Samoa",
-        "total": 2000.0,
-        "Voluntary un-earmarked": 2000.0
-      },
-      {
-        "donor": "Suriname",
-        "total": 1750.0,
-        "Voluntary un-earmarked": 1750.0
-      },
-      {
-        "donor": "Peru",
-        "total": 1667.0,
-        "Voluntary un-earmarked": 1667.0
-      },
-      {
-        "donor": "Guyana",
-        "total": 1471.0,
-        "Voluntary un-earmarked": 1471.0
-      },
-      {
-        "donor": "Colombia",
-        "total": 1000.0,
-        "Voluntary un-earmarked": 1000.0
-      },
-      {
-        "donor": "Belize",
-        "total": 1000.0,
-        "Voluntary un-earmarked": 1000.0
-      },
-      {
-        "donor": "Grenada",
-        "total": 1000.0,
-        "Voluntary un-earmarked": 1000.0
-      },
-      {
-        "donor": "Saint Kitts and Nevis",
-        "total": 1000.0,
-        "Voluntary un-earmarked": 1000.0
-      },
-      {
-        "donor": "Lao People's Democratic Republic",
-        "total": 1000.0,
-        "Voluntary un-earmarked": 1000.0
-      },
-      {
-        "donor": "Malawi",
-        "total": 1000.0,
-        "Voluntary un-earmarked": 1000.0
-      },
-      {
-        "donor": "Seychelles",
-        "total": 1000.0,
-        "Voluntary un-earmarked": 1000.0
-      },
-      {
-        "donor": "Saint Vincent and the Grenadines",
-        "total": 1000.0,
-        "Voluntary un-earmarked": 1000.0
-      },
-      {
-        "donor": "Solomon Islands",
-        "total": 800.0,
-        "Voluntary un-earmarked": 800.0
-      },
-      {
-        "donor": "Antigua and Barbuda",
-        "total": 500.0,
-        "Voluntary un-earmarked": 500.0
-      },
-      {
-        "donor": "Afghanistan",
-        "total": 500.0,
-        "Voluntary un-earmarked": 500.0
-      },
-      {
-        "donor": "Benin",
-        "total": 500.0,
-        "Voluntary un-earmarked": 500.0
-      },
-      {
-        "donor": "Bhutan",
-        "total": 500.0,
-        "Voluntary un-earmarked": 500.0
-      },
-      {
-        "donor": "Cyprus",
-        "total": 500.0,
-        "Voluntary un-earmarked": 500.0
-      },
-      {
-        "donor": "Chad",
-        "total": 500.0,
-        "Voluntary un-earmarked": 500.0
-      },
-      {
-        "donor": "El Salvador",
-        "total": 500.0,
-        "Voluntary un-earmarked": 500.0
-      },
-      {
-        "donor": "Guinea",
-        "total": 500.0,
-        "Voluntary un-earmarked": 500.0
-      },
-      {
-        "donor": "Lesotho",
-        "total": 500.0,
-        "Voluntary un-earmarked": 500.0
-      },
-      {
-        "donor": "Mauritius",
-        "total": 500.0,
-        "Voluntary un-earmarked": 500.0
-      },
-      {
-        "donor": "Niger",
-        "total": 500.0,
-        "Voluntary un-earmarked": 500.0
-      },
-      {
-        "donor": "State of Palestine",
-        "total": 500.0,
-        "Voluntary un-earmarked": 500.0
-      },
-      {
-        "donor": "Zambia",
-        "total": 500.0,
-        "Voluntary un-earmarked": 500.0
-      },
-      {
-        "donor": "Marshall Islands",
-        "total": 333.0,
-        "Voluntary un-earmarked": 333.0
-      },
-      {
-        "donor": "Madagascar",
-        "total": 300.0,
-        "Voluntary un-earmarked": 300.0
-      },
-      {
-        "donor": "Comoros",
-        "total": 250.0,
-        "Voluntary un-earmarked": 250.0
-      },
-      {
-        "donor": "Central African Republic",
-        "total": 250.0,
-        "Voluntary un-earmarked": 250.0
-      },
-      {
-        "donor": "Democratic People's Republic of Korea",
-        "total": 250.0,
-        "Voluntary un-earmarked": 250.0
-      },
-      {
-        "donor": "Malta",
-        "total": 249.0,
-        "Voluntary un-earmarked": 249.0
-      },
-      {
-        "donor": "Eritrea",
-        "total": 200.0,
-        "Voluntary un-earmarked": 200.0
-      },
-      {
-        "donor": "Eswatini",
-        "total": 200.0,
-        "Voluntary un-earmarked": 200.0
-      },
-      {
-        "donor": "Vanuatu",
-        "total": 200.0,
-        "Voluntary un-earmarked": 200.0
-      },
-      {
-        "donor": "Guinea-Bissau",
-        "total": 150.0,
-        "Voluntary un-earmarked": 150.0
-      },
-      {
-        "donor": "Honduras",
-        "total": 150.0,
-        "Voluntary un-earmarked": 150.0
-      },
-      {
-        "donor": "Mauritania",
-        "total": 150.0,
-        "Voluntary un-earmarked": 150.0
-      },
-      {
-        "donor": "Somalia",
-        "total": 150.0,
-        "Voluntary un-earmarked": 150.0
-      },
-      {
-        "donor": "Micronesia, Federated States of",
-        "total": 100.0,
-        "Voluntary un-earmarked": 100.0
-      },
-      {
-        "donor": "Saint Lucia",
-        "total": 100.0,
-        "Voluntary un-earmarked": 100.0
-      },
-      {
-        "donor": "Palau",
-        "total": 100.0,
-        "Voluntary un-earmarked": 100.0
-      },
-      {
-        "donor": "Sierra Leone",
-        "total": 100.0,
-        "Voluntary un-earmarked": 100.0
-      },
-      {
-        "donor": "San Marino",
-        "total": 100.0,
-        "Voluntary un-earmarked": 100.0
-      },
-      {
-        "donor": "Ukraine",
-        "total": 100.0,
-        "Voluntary un-earmarked": 100.0
-      },
-      {
-        "donor": "Tuvalu",
-        "total": 50.0,
-        "Voluntary un-earmarked": 50.0
-      }
-    ]
-  },
   "UPU": {
     "total": 69942194.75,
     "year": 2015,
     "by_type": {
-      "Assessed": 35848016.64,
-      "Other": 34094178.11
+      "Assessed": 35911241.17,
+      "Other": 13128961.65,
+      "Voluntary earmarked": 20901991.93
     },
     "by_donor": [
       {
@@ -19768,9 +19781,9 @@
     "total": 4910873536.0,
     "year": 2015,
     "by_type": {
-      "Other": 214787950.5199995,
-      "Voluntary earmarked": 4206931978.76,
-      "Voluntary un-earmarked": 489153606.71999997
+      "Other": 103162433.9,
+      "Voluntary earmarked": 4468563183.0,
+      "Voluntary un-earmarked": 339147919.1
     },
     "by_donor": [
       {
@@ -20290,11 +20303,6 @@
         "Voluntary earmarked": 5000.0
       },
       {
-        "donor": "Cuba",
-        "total": 0.0,
-        "Voluntary earmarked": 0.0
-      },
-      {
         "donor": "Oman",
         "total": -1000000.0,
         "Voluntary earmarked": -1000000.0
@@ -20310,10 +20318,10 @@
     "total": 2475141407.0,
     "year": 2015,
     "by_type": {
-      "Assessed": 467448056.0,
-      "Other": 504754668.0,
-      "Voluntary earmarked": 1178333285.0,
-      "Voluntary un-earmarked": 324605398.0
+      "Assessed": 467499153.0,
+      "Other": 39286690.0,
+      "Voluntary earmarked": 1856625919.0,
+      "Voluntary un-earmarked": 111729645.0
     },
     "by_donor": [
       {
@@ -21457,12 +21465,12 @@
     ]
   },
   "WIPO": {
-    "total": 385411391.81000006,
+    "total": 385411391.81,
     "year": 2015,
     "by_type": {
-      "Assessed": 17513238.009999998,
-      "Other": 358471207.8,
-      "Voluntary earmarked": 9426946.0
+      "Assessed": 17962325.93,
+      "Other": 357101347.9,
+      "Voluntary earmarked": 10347717.98
     },
     "by_donor": [
       {
@@ -22418,10 +22426,10 @@
     "total": 79504090.82,
     "year": 2015,
     "by_type": {
-      "Assessed": 65829415.03,
-      "Other": 3963023.920000002,
-      "Voluntary earmarked": 3259963.33,
-      "Voluntary un-earmarked": 6451688.54
+      "Assessed": 65842583.25,
+      "Other": 3085771.95,
+      "Voluntary earmarked": 5087404.640000001,
+      "Voluntary un-earmarked": 5488330.98
     },
     "by_donor": [
       {
@@ -23414,9 +23422,9 @@
     "total": 241546861.70999998,
     "year": 2015,
     "by_type": {
-      "Assessed": 197906765.81,
-      "Other": 24020564.760000005,
-      "Voluntary earmarked": 19619531.14
+      "Assessed": 198009349.1,
+      "Other": 22834141.27,
+      "Voluntary earmarked": 20703371.34
     },
     "by_donor": [
       {

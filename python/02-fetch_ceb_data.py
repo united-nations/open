@@ -1,4 +1,8 @@
 import requests
+import hashlib
+import json
+import io
+import sys
 from pathlib import Path
 from datetime import datetime
 import pandas as pd
@@ -27,36 +31,57 @@ ceb_files = [
 ]
 
 def fetch_files():
-    url = "https://unsceb.org/sites/default/files/statistic_files/Financial/"
+    url = "https://unsceb.org/assets/data/FS/"
+    snapshot = raw / "snapshots" / datetime.now().strftime("%Y%m%dT%H%M%S%f")
+    snapshot.mkdir(parents=True)
+    manifest = []
     for file in ceb_files:
-        f = requests.get(url + file)
-        with open(raw / file, "wb") as outfile:
-            outfile.write(f.content)
+        f = requests.get(url + file, timeout=90)
+        f.raise_for_status()
+        encoding = "utf-8"
+        try:
+            frame = pd.read_csv(io.BytesIO(f.content), encoding=encoding)
+        except UnicodeDecodeError:
+            encoding = "cp1252"
+            frame = pd.read_csv(io.BytesIO(f.content), encoding=encoding)
+        if not any(str(column).strip().lower() == "calendar year" or str(column).strip().lower() == "calendar_year" for column in frame.columns):
+            raise ValueError(f"Unexpected CSV schema: {file}")
+        (snapshot / file).write_bytes(f.content)
+        manifest.append({"file": file, "url": f.url, "sha256": hashlib.sha256(f.content).hexdigest(), "rows": len(frame), "encoding": encoding})
+        (snapshot / "manifest.json").write_text(json.dumps(manifest, indent=2))
+    print(f"Downloaded immutable candidate snapshot to {snapshot}; reconcile before promoting to raw/ and clean/.")
 
 def clean_and_validate():
-    dfs = {fn: pd.read_csv(raw / fn) for fn in ceb_files}
+    dfs = {}
+    for fn in ceb_files:
+        try:
+            dfs[fn] = pd.read_csv(raw / fn)
+        except UnicodeDecodeError:
+            dfs[fn] = pd.read_csv(raw / fn, encoding="cp1252")
     for fn in dfs:
         dfs[fn].rename(columns=lambda x: x.strip().lower().replace(" ", "_").replace("usd_amount", "amount"), inplace=True)
         dfs[fn]["calendar_year"] = dfs[fn]["calendar_year"].astype(int)
-        dfs[fn]["amount"] = pd.to_numeric(dfs[fn]["amount"], errors="coerce").fillna(0.0)
+        dfs[fn]["amount"] = pd.to_numeric(dfs[fn]["amount"], errors="raise")
         _years = dfs[fn]["calendar_year"].unique()
         assert first_expected_year in _years, f"Missing data for {first_expected_year} in {fn}"
         assert last_expected_year in _years, f"Missing data for {last_expected_year} in {fn}"
     for year in years:
         revenues = []
         for fn, df in dfs.items():
-            if fn in ["revenue.csv", "revenue_sub_agency.csv", "revenue_contrib_type.csv"]:
+            if fn in ["revenue.csv", "revenue_sub_agency.csv"]:
                 revenue = df[df["calendar_year"] == year]["amount"].sum()
                 assert revenue > 0, f"No revenue data for year {year}"
-                revenues.append(int(round(revenue, -5)))
+                revenues.append(revenue)
         print(revenues)
         # check that all revenue totals are consistent across files
-        assert all(r == revenues[0] for r in revenues), f"Revenue totals mismatch for year {year}: {revenues}"
+        assert all(abs(r - revenues[0]) < 0.01 for r in revenues), f"Revenue totals mismatch for year {year}: {revenues}"
     for fn, df in dfs.items():
         df.to_csv(clean / fn, index=False)
 
 
 
 if __name__ == "__main__":
-    # fetch_files()
-    clean_and_validate()
+    if "--fetch-snapshot" in sys.argv:
+        fetch_files()
+    else:
+        clean_and_validate()

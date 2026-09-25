@@ -132,3 +132,10 @@ def include_ceb_aggregate_entities(entities: list[dict]) -> list[dict]:
         row.update(reference)
         row["entity"] = name
     return list(by_name.values())
+
+
+# Observed encoding variants in the frozen CEB geographic source.
+COUNTRY_NAME_OVERRIDES = {"Cura├ºao": "Curaçao"}
+
+def normalize_country_name(name: str) -> str:
+    return COUNTRY_NAME_OVERRIDES.get(name, name)

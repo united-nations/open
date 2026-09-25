@@ -7,7 +7,7 @@ import importlib.util
 import json
 from pathlib import Path
 import pandas as pd
-from utils import normalize_entity
+from utils import normalize_entity, normalize_country_name
 
 spec = importlib.util.spec_from_file_location('expenses_export', Path(__file__).with_name('07-export_expenses_json.py'))
 expenses = importlib.util.module_from_spec(spec)
@@ -44,7 +44,7 @@ def build_geography(frame):
     for year, yearly in frame.groupby('calendar_year'):
         records = {}
         for (kind, source_name, parent), rows in yearly.groupby(['location_type', 'country/territory', 'region'], dropna=False):
-            name = source_name.strip()
+            name = normalize_country_name(source_name.strip())
             level = {'COU': 'country', 'SUB': 'subregion', 'REG': 'region'}[kind]
             notes = []
             region = parent or name

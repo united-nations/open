@@ -27,7 +27,7 @@ export function FunctionsMethodology() {
         separate datasets.
       </p>
       <a
-        href="https://unsceb.org/sites/default/files/statistic_files/Financial/expenses_sub_agency.csv"
+        href="https://unsceb.org/assets/data/FS/expenses_sub_agency.csv"
         target="_blank"
         rel="noopener noreferrer"
         className="inline-block underline"

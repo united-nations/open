@@ -35,7 +35,7 @@ def build_export(frame: pd.DataFrame) -> dict:
     return {'meta': {
         'source': 'CEB Financial Statistics — Standard II: UN system function',
         'sourceUrl': 'https://unsceb.org/statistics/expenses-by-function/',
-        'downloadUrl': 'https://unsceb.org/sites/default/files/statistic_files/Financial/expenses_sub_agency.csv',
+        'downloadUrl': 'https://unsceb.org/assets/data/FS/expenses_sub_agency.csv',
         'years': [row['year'] for row in years],
         'classificationStartYear': 2018,
     }, 'data': years}

@@ -19,7 +19,7 @@ For each entity and year:
 
 1. **Government donors**: Specific country names from `revenue_government_donors.csv`
 2. **Non-government donors**: Specific donors from `revenue_non_gov_donors.csv` with category when available
-3. **Other (Unattributed)**: `Total Revenue - Government - NonGov` (single bucket, 10-20% of total)
+3. **Unattributed per financing instrument**: `Entity/instrument control - Government - NonGov` within each of the four financing instruments. Unknown donor identity is independent of financing class.
 
 ### Tier 2: Full Category Breakdown (2021-2024)
 
@@ -27,7 +27,8 @@ For years where `contrib_type.csv` exists, the "Other" is broken down by contrib
 
 1. **Government donors**: Specific country names (same as Tier 1)
 2. **Non-government donors**: Specific donors grouped by C-code category
-3. **"Other {Category}"**: For each category, calculated as `Category Total - Specific Donors in Category`
+3. **"Other {Category}"**: For each category and financing instrument, calculated as `Category Total - Specific Donors in Category`
+4. **Unattributed control residual**: signed difference to the authoritative entity/instrument control, including entities with no contributor detail.
 
 | Code | Category | Description |
 |------|----------|-------------|
@@ -88,23 +89,11 @@ File: `data/ceb/fused/revenue_by_contributor.csv`
 
 ## Validation
 
-**Tier 1 (2013-2020):** Fused total matches `revenue.csv` within 0.1%. "Other" is 10-20% of total.
-
-**Tier 2 (2021-2024):** "Other" is broken into 13 categories:
-
-```
-2023 "Other" breakdown:
-  No Contributor:           3.94B  (revenue from activities)
-  Private Sector:           2.50B
-  Multilateral - UN Orgs:   1.62B
-  Multilateral - Global Funds: 0.74B
-  NGOs:                     0.66B
-  Foundations:              0.43B
-  ...
-  TOTAL Other:             10.74B
-```
-
-**Note:** 2024 `contrib_type.csv` is incomplete (~1.75% gap vs `revenue.csv`).
+Both tiers reconcile each entity × year × financing instrument to `revenue.csv`
+within one cent. Independent tests classify the original textual instrument
+labels and compare them to the final exports. Contributor trends preserve Other
+and include all attribution statuses in All contributors. Unknown financing codes
+fail validation. See [the remediation notes](data-integrity-remediation.md).
 
 ## Data Sources
 

@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 import pandas as pd
-from utils import normalize_entity
+from utils import normalize_entity, normalize_country_name
 
 SOURCE = Path('data/ceb/clean')
 OUT = Path('public/data/system-flow-spending.json')
@@ -23,6 +23,7 @@ def build_export(totals: pd.DataFrame, geography: pd.DataFrame, goals: pd.DataFr
         entity_column = 'entity_code' if 'entity_code' in frame else 'agency'
         frame['entity'] = frame[entity_column].map(normalize_entity)
     totals, geography, goals = frames
+    geography['country/territory'] = geography['country/territory'].map(lambda name: normalize_country_name(name) if isinstance(name, str) else name)
     # SDG reporting occasionally uses an alternative code or a sub-agency.
     # Canonicalize DPO through the shared map; infer parentage only from the
     # same year's expense source, and only when no agency with that code exists.
@@ -86,12 +87,13 @@ def build_export(totals: pd.DataFrame, geography: pd.DataFrame, goals: pd.DataFr
         'meta': {
             'source': 'CEB Financial Statistics', 'years': years, 'geographicAnomalyCount': anomaly_count,
             'sourceUrls': {
-                'total': 'https://unsceb.org/sites/default/files/statistic_files/Financial/expenses_sub_agency.csv',
-                'geography': 'https://unsceb.org/sites/default/files/statistic_files/Financial/expenses_by_country_region_sub_agency.csv',
-                'goals': 'https://unsceb.org/sites/default/files/statistic_files/Financial/expenses_sdgs.csv',
+                'total': 'https://unsceb.org/assets/data/FS/expenses_sub_agency.csv',
+                'geography': 'https://unsceb.org/assets/data/FS/expenses_by_country_region_sub_agency.csv',
+                'goals': 'https://unsceb.org/assets/data/FS/expenses_sdgs.csv',
             },
             'notes': [
                 'Independent reported spending dimensions; not traced allocations of contributor funding.',
+                'Published geography retains the cached source vintage; current CEB downloads contain revisions and may differ. New snapshots require reconciliation before adoption.',
                 'SDG DPO is normalized to UN-DPO; separately reported sub-agencies are rolled into the same-year CEB expense-source parent where uniquely identified.',
                 'Country, region and subregion entries are retained with their source labels and classifications.',
                 'X00/x00 is retained as not allocated to a goal; signed reporting differences are not allocated to goals.',

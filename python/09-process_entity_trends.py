@@ -50,6 +50,8 @@ def main():
     # of silently omitting them from the trends UI.
     groups.extend(group for group in entities_by_group if group not in groups)
 
+    groups = [group for group in groups if entities_by_group[group]]
+
     grouped_entities = {
         entity
         for group in groups

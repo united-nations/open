@@ -8,18 +8,7 @@ from utils import normalize_entity
 YEARS = list(range(2013, 2025))
 OUT = Path("public/data")
 
-# R-code to display category mapping
-REV_CATEGORY = {
-    "R01": "Assessed", "R02A": "Voluntary un-earmarked", "R02B": "Voluntary un-earmarked",
-    "R03A": "Voluntary earmarked", "R03B": "Voluntary earmarked", "R03C": "Voluntary earmarked",
-    "R03D": "Voluntary earmarked", "R03E": "Voluntary earmarked", "R03F": "Voluntary earmarked",
-    "R04A": "Other", "R04B": "Other", "R04C": "Other", "R05": "Other",
-    "R07": "Voluntary earmarked", "R08": "Voluntary un-earmarked", "R08B": "Voluntary un-earmarked",
-    "R09": "Voluntary earmarked", "R10": "Voluntary earmarked", "R11": "Voluntary earmarked", "R12": "Voluntary earmarked",
-}
-
-def rev_category(code: str) -> str:
-    return REV_CATEGORY.get(code, "Voluntary earmarked")
+from revenue_categories import rev_category
 
 def load_data():
     fused = pd.read_csv("data/ceb/fused/revenue_by_contributor.csv")
@@ -93,7 +82,7 @@ def export_entity_revenue_json(df: pd.DataFrame):
 
 def export_contributor_trends_json(df: pd.DataFrame):
     """Generate contributor-trends.json with time series data."""
-    gov_donors = set(df[df["donor_type"] == "Government"]["donor_name"].unique())
+    gov_donors = set(df[(df["donor_type"] == "Government") & (~df["is_other"])]["donor_name"].unique())
     nongov_df = df[(df["donor_type"] != "Government") & (~df["is_other"])]
     nongov_donors = set(nongov_df["donor_name"].unique())
     
@@ -103,9 +92,9 @@ def export_contributor_trends_json(df: pd.DataFrame):
     cat_to_donors = {cat: sorted([d for d, c in donor_to_cat.items() if c == cat]) for cat in categories}
     
     # Build contributor time series
-    data = defaultdict(lambda: defaultdict(lambda: {"assessed": 0, "voluntary_earmarked": 0, "voluntary_unearmarked": 0, "total": 0}))
+    data = defaultdict(lambda: defaultdict(lambda: {"assessed": 0, "voluntary_earmarked": 0, "voluntary_unearmarked": 0, "other": 0, "total": 0}))
     
-    for _, row in df[~df["is_other"]].iterrows():
+    for _, row in df.iterrows():
         year, donor, cat, amt = int(row["year"]), row["donor_name"], row["rev_cat"], row["amount"]
         if year not in YEARS or pd.isna(amt): continue
         
@@ -113,8 +102,10 @@ def export_contributor_trends_json(df: pd.DataFrame):
             data[donor][year]["assessed"] += amt
         elif cat == "Voluntary un-earmarked":
             data[donor][year]["voluntary_unearmarked"] += amt
-        else:
+        elif cat == "Voluntary earmarked":
             data[donor][year]["voluntary_earmarked"] += amt
+        else:
+            data[donor][year]["other"] += amt
         data[donor][year]["total"] += amt
     
     # Build aggregates (gov, non-gov, all, and per-category)
@@ -123,23 +114,28 @@ def export_contributor_trends_json(df: pd.DataFrame):
         aggregates[f"cat:{cat}"] = []
     
     for year in YEARS:
-        gov_t = {"year": year, "assessed": 0, "voluntary_earmarked": 0, "voluntary_unearmarked": 0, "total": 0}
-        nongov_t = {"year": year, "assessed": 0, "voluntary_earmarked": 0, "voluntary_unearmarked": 0, "total": 0}
-        cat_totals = {cat: {"year": year, "assessed": 0, "voluntary_earmarked": 0, "voluntary_unearmarked": 0, "total": 0} for cat in categories}
+        gov_t = {"year": year, "assessed": 0, "voluntary_earmarked": 0, "voluntary_unearmarked": 0, "other": 0, "total": 0}
+        nongov_t = {"year": year, "assessed": 0, "voluntary_earmarked": 0, "voluntary_unearmarked": 0, "other": 0, "total": 0}
+        cat_totals = {cat: {"year": year, "assessed": 0, "voluntary_earmarked": 0, "voluntary_unearmarked": 0, "other": 0, "total": 0} for cat in categories}
         
         for d in gov_donors:
-            for k in ["assessed", "voluntary_earmarked", "voluntary_unearmarked", "total"]:
+            for k in ["assessed", "voluntary_earmarked", "voluntary_unearmarked", "other", "total"]:
                 gov_t[k] += data[d][year][k]
         for d in nongov_donors:
             cat = donor_to_cat.get(d, "Other")
-            for k in ["assessed", "voluntary_earmarked", "voluntary_unearmarked", "total"]:
+            for k in ["assessed", "voluntary_earmarked", "voluntary_unearmarked", "other", "total"]:
                 nongov_t[k] += data[d][year][k]
                 if cat in cat_totals:
                     cat_totals[cat][k] += data[d][year][k]
         
         aggregates["gov"].append(gov_t)
         aggregates["non-gov"].append(nongov_t)
-        aggregates["all"].append({"year": year, **{k: gov_t[k] + nongov_t[k] for k in gov_t if k != "year"}})
+        all_year = {"year": year, "assessed": 0, "voluntary_unearmarked": 0, "voluntary_earmarked": 0, "other": 0, "total": 0}
+        keys = {"Assessed": "assessed", "Voluntary un-earmarked": "voluntary_unearmarked", "Voluntary earmarked": "voluntary_earmarked", "Other": "other"}
+        for category, amount in df[df["year"] == year].groupby("rev_cat")["amount"].sum().items():
+            all_year[keys[category]] += amount
+            all_year["total"] += amount
+        aggregates["all"].append(all_year)
         for cat in categories:
             aggregates[f"cat:{cat}"].append(cat_totals[cat])
     

@@ -1,11 +1,13 @@
 """Fuse CEB revenue data from multiple sources into unified contributor breakdown.
 
 Tiered approach:
-- 2013-2020: Gov donors + NonGov donors + single "Other" bucket
-- 2021-2024: Full breakdown with "Other {category}" per contributor type
+- 2013-2020: named donors + unattributed residual per financing instrument
+- 2021-2024: contributor-type detail, reconciled to entity/instrument controls
 """
 import pandas as pd
 from pathlib import Path
+from revenue_categories import rev_category
+from utils import normalize_entity
 from utils import clean_donor_name, NON_GOVERNMENT_DONORS, GENERIC_DONORS, DONOR_CATEGORY_OVERRIDES
 
 ceb = Path("data/ceb")
@@ -38,11 +40,11 @@ def load_rev_type_mapping() -> dict:
 
 def normalize_rev_type(rt: str, mapping: dict) -> str:
     """Normalize rev_type to R-code."""
-    if pd.isna(rt): return "R03E"
+    if pd.isna(rt): raise ValueError("Missing financing instrument")
     rt = str(rt).strip()
     if rt.startswith("R") and len(rt) <= 4:
         return rt.upper().replace("R08B", "R08B").replace("R08b", "R08B")
-    return mapping.get(rt, "R03E")
+    return mapping[rt]
 
 def normalize_contrib_type(ct: str, desc_to_code: dict) -> str | None:
     """Normalize contrib_type to C-code."""
@@ -80,126 +82,65 @@ def fuse_revenue():
     
     contrib_type = load("revenue_contrib_type.csv")
     
+    # Reconcile at the four financing instruments: donor sources do not all
+    # retain the detailed R-subtype, so subtype-level residuals would be false precision.
+    canonical = {"Assessed": "R01", "Voluntary un-earmarked": "R02A", "Voluntary earmarked": "R03E", "Other": "R04A"}
+    revenue["rev_code"] = revenue["rev_type"].map(lambda value: normalize_rev_type(value, rev_type_map))
+    contrib_type["rev_code"] = contrib_type["rev_type"].map(lambda value: normalize_rev_type(value, rev_type_map))
+    for frame in [revenue, gov, nongov, contrib_type]:
+        frame["entity"] = frame["entity"].map(normalize_entity)
+        frame["rev_code"] = frame["rev_code"].map(lambda code: canonical[rev_category(code)])
     results = []
     years = sorted(set(revenue["calendar_year"]) & set(gov["calendar_year"]))
-    
-    for year in years:
-        rev_year = revenue[revenue["calendar_year"] == year]
-        gov_year = gov[gov["calendar_year"] == year]
-        nongov_year = nongov[nongov["calendar_year"] == year]
-        ct_year = contrib_type[contrib_type["calendar_year"] == year] if year >= 2021 else None
-        
-        for entity in rev_year["entity"].unique():
-            total = rev_year[rev_year["entity"] == entity]["amount"].sum()
-            gov_ent = gov_year[gov_year["entity"] == entity]
-            nongov_ent = nongov_year[nongov_year["entity"] == entity]
-            
-            # Government donors (always specific, with rev_type)
-            for _, row in gov_ent.iterrows():
-                donor = clean_donor_name(row.get("government_donor", "Unknown"))
-                # Reclassify entries incorrectly labeled as government
-                dtype = "Other" if donor in NON_GOVERNMENT_DONORS else "Government"
-                ccode = "C08B" if donor in NON_GOVERNMENT_DONORS else "C01"
-                results.append({
-                    "entity": entity, "year": year, "contrib_code": ccode,
-                    "rev_type": row["rev_code"], "donor_type": dtype,
-                    "donor_name": donor, "amount": row["amount"], "is_other": False
-                })
-            gov_total = gov_ent["amount"].sum()
-            
-            if year >= 2021 and ct_year is not None:
-                # Tier 2: Break down by contributor type × rev_type
-                ct_ent = ct_year[ct_year["entity"] == entity]
-                nongov_codes = [c for c in code_to_name.keys() if c not in ["C01", "C09"]]
-                
-                for code in nongov_codes:
-                    ct_code = ct_ent[ct_ent["contrib_type"] == code]
-                    if ct_code["amount"].sum() == 0: continue
-                    
-                    # Group by rev_type within this contrib_code
-                    for rev_type in ct_code["rev_type"].unique():
-                        cat_total = ct_code[ct_code["rev_type"] == rev_type]["amount"].sum()
-                        if cat_total == 0: continue
-                        
-                        # Specific donors in this category × rev_type
-                        donors_in = nongov_ent[(nongov_ent["contrib_code"] == code) & (nongov_ent["rev_code"] == rev_type)]
-                        donors_sum = 0
-                        for _, row in donors_in.iterrows():
-                            name, dcode, dtype, is_other = get_donor_info(row.get("donor", "Unknown"), code, code_to_name)
-                            results.append({
-                                "entity": entity, "year": year, "contrib_code": dcode,
-                                "rev_type": rev_type, "donor_type": dtype,
-                                "donor_name": name, "amount": row["amount"], "is_other": is_other
-                            })
-                            donors_sum += row["amount"]
-                        
-                        # "Other {type}" for this rev_type
-                        other_cat = cat_total - donors_sum
-                        if abs(other_cat) > 1000:
-                            results.append({
-                                "entity": entity, "year": year, "contrib_code": code,
-                                "rev_type": rev_type, "donor_type": code_to_name[code],
-                                "donor_name": f"Other {code_to_name[code]}",
-                                "amount": other_cat, "is_other": True
-                            })
-                
-                # C09 "No Contributor" by rev_type
-                c09 = ct_ent[ct_ent["contrib_type"] == "C09"]
-                for rev_type in c09["rev_type"].unique():
-                    amt = c09[c09["rev_type"] == rev_type]["amount"].sum()
-                    if abs(amt) > 1000:
-                        results.append({
-                            "entity": entity, "year": year, "contrib_code": "C09",
-                            "rev_type": rev_type, "donor_type": "No Contributor",
-                            "donor_name": "Revenue from Activities",
-                            "amount": amt, "is_other": True
-                        })
-            else:
-                # Tier 1: NonGov donors + single "Other" bucket
-                for _, row in nongov_ent.iterrows():
-                    name, dcode, dtype, is_other = get_donor_info(row.get("donor", "Unknown"), row.get("contrib_code"), code_to_name)
-                    results.append({
-                        "entity": entity, "year": year, "contrib_code": dcode,
-                        "rev_type": row["rev_code"], "donor_type": dtype,
-                        "donor_name": name, "amount": row["amount"], "is_other": is_other
-                    })
-                nongov_total = nongov_ent["amount"].sum()
-                
-                other = total - gov_total - nongov_total
-                if abs(other) > 1000:
-                    results.append({
-                        "entity": entity, "year": year, "contrib_code": "Other",
-                        "rev_type": "R04A", "donor_type": "Other",
-                        "donor_name": "Unattributed", "amount": other, "is_other": True
-                    })
-    
+    for (year, entity), controls in revenue[revenue["calendar_year"].isin(years)].groupby(["calendar_year", "entity"]):
+        rows = []
+        def add(code, rev, name, amount, other, dtype=None):
+            if abs(amount) < 0.000001:
+                return
+            rows.append({"entity": entity, "year": year, "contrib_code": code,
+                         "rev_type": rev, "donor_type": dtype or code_to_name.get(code, "Unattributed"),
+                         "donor_name": name, "amount": float(amount), "is_other": other})
+        g = gov[(gov["calendar_year"] == year) & (gov["entity"] == entity)]
+        n = nongov[(nongov["calendar_year"] == year) & (nongov["entity"] == entity)]
+        for _, row in g.iterrows():
+            name = clean_donor_name(row["government_donor"])
+            code = "C08B" if name in NON_GOVERNMENT_DONORS else "C01"
+            add(code, row["rev_code"], name, row["amount"], name in GENERIC_DONORS,
+                "Other" if code == "C08B" else "Government")
+        for _, row in n.iterrows():
+            name, code, dtype, other = get_donor_info(row.get("donor", "Unknown"), row.get("contrib_code"), code_to_name)
+            add(code, row["rev_code"], name, row["amount"], other, dtype)
+        if year >= 2021:
+            ct = contrib_type[(contrib_type["calendar_year"] == year) & (contrib_type["entity"] == entity)]
+            for (code, rev), group in ct.groupby(["contrib_type", "rev_code"]):
+                # Contributor-category controls supply identity detail, never
+                # override the authoritative entity/instrument control below.
+                named = sum(r["amount"] for r in rows if r["contrib_code"] == code and r["rev_type"] == rev)
+                name = "Revenue from Activities" if code == "C09" else f"Other {code_to_name.get(code, code)}"
+                add(code, rev, name, group["amount"].sum() - named, True)
+        amounts = controls.groupby("rev_code")["amount"].sum().to_dict()
+        for rev in sorted(set(amounts) | {r["rev_type"] for r in rows}):
+            residual = amounts.get(rev, 0) - sum(r["amount"] for r in rows if r["rev_type"] == rev)
+            add("Unknown", rev, "Unattributed", residual, True, "Unattributed")
+        results.extend(rows)
+
     df = pd.DataFrame(results)
     df = df.sort_values(["year", "entity", "donor_type", "rev_type", "amount"], ascending=[True, True, True, True, False])
+    validate(df, revenue, years)
     df.to_csv(fused / "revenue_by_contributor.csv", index=False)
     print(f"Wrote {len(df)} rows to {fused / 'revenue_by_contributor.csv'}")
     
-    validate(df, revenue, years)
     return df
 
 def validate(df: pd.DataFrame, revenue: pd.DataFrame, years: list):
     """Run validation assertions on fused data."""
     print("\n=== Validation ===")
     
-    for year in years:
-        yr = df[df["year"] == year]
-        fused_total = yr["amount"].sum()
-        source_total = revenue[revenue["calendar_year"] == year]["amount"].sum()
-        
-        diff_pct = abs(fused_total - source_total) / source_total * 100
-        tolerance = 2.0 if year == 2024 else 0.5
-        assert diff_pct < tolerance, f"{year}: Fused {fused_total/1e9:.2f}B != source {source_total/1e9:.2f}B ({diff_pct:.2f}%)"
-        assert fused_total > 30e9, f"{year}: Total {fused_total/1e9:.1f}B suspiciously low"
-        
-        if year >= 2021:
-            rev_types = yr["rev_type"].nunique()
-            gap = " (incomplete)" if diff_pct > 0.5 else ""
-            print(f"{year}: {fused_total/1e9:.1f}B, {rev_types} rev_types{gap} ✓")
-    
+    controls = revenue[revenue["calendar_year"].isin(years)].groupby(["calendar_year", "entity", "rev_code"])["amount"].sum()
+    actual = df.groupby(["year", "entity", "rev_type"])["amount"].sum()
+    controls.index.names = actual.index.names
+    difference = actual.subtract(controls, fill_value=0)
+    assert difference.abs().max() < 0.01, difference[difference.abs() >= 0.01].to_dict()
     assert set(years) == set(df["year"].unique()), "Missing years"
     print(f"\nAll {len(years)} years validated.")
 

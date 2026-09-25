@@ -3,7 +3,7 @@ import json
 import pandas as pd
 from pathlib import Path
 import country_converter as coco
-from utils import normalize_entity
+from utils import normalize_entity, normalize_country_name
 
 OUT = Path("public/data")
 
@@ -104,7 +104,7 @@ def load_sdg_expenses() -> pd.DataFrame:
     return df
 
 def get_iso3(country: str) -> str | None:
-    result = cc.convert(country, to="ISO3", not_found=None)
+    result = cc.convert(normalize_country_name(country), to="ISO3", not_found=None)
     if isinstance(result, list): return result[0] if result else None
     return result if result else None
 
