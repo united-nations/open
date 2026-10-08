@@ -1,8 +1,12 @@
 import type { NextConfig } from 'next'
 import path from 'node:path'
+import { realpathSync } from 'node:fs'
 
-// The UI package is versioned inside node_modules; keep resolution in this app.
+// Local shared UI edits are resolved from the sibling checkout during iteration.
 const projectRoot = path.resolve(__dirname)
+const workspaceRoot = path.dirname(projectRoot)
+const sharedUiRoot = realpathSync(path.join(projectRoot, 'node_modules/@un-eosg/ui'))
+const linkedSharedUi = !sharedUiRoot.startsWith(`${projectRoot}${path.sep}`)
 
 // Set to your repository name for GitHub Pages, or '' for custom domain
 const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASE_PATH || '') : ''
@@ -13,7 +17,11 @@ const basePath = process.env.NODE_ENV === 'production' ? (process.env.BASE_PATH 
 const nextConfig: NextConfig = {
     transpilePackages: ['@un-eosg/ui'],
     turbopack: {
-        root: projectRoot,
+        root: linkedSharedUi ? workspaceRoot : projectRoot,
+        resolveAlias: linkedSharedUi ? {
+            react: path.join(projectRoot, 'node_modules/react'),
+            'react-dom': path.join(projectRoot, 'node_modules/react-dom'),
+        } : undefined,
     },
     output: 'export',
     trailingSlash: true,
