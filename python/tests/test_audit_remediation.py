@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'python'))
 from utils import normalize_entity, normalize_country_name
 from revenue_categories import rev_category
+from ceb_data import select_geographic_totals
 
 
 def read(name):
@@ -29,9 +30,10 @@ class AuditRemediationTests(unittest.TestCase):
                 year = int(row['calendar_year'])
                 if year < 2013:
                     continue
-                controls[year, normalize_entity(row['agency']), labels[row['rev_type']]] += float(row['amount'])
+                if row['amount']:
+                    controls[year, normalize_entity(row['agency']), labels[row['rev_type']]] += float(row['amount'])
         actual = {}
-        for year in range(2013, 2025):
+        for year in read('manifest.json')['entityRevenue']['years']:
             for entity, data in read(f'entity-revenue-{year}.json').items():
                 for label, amount in data['by_type'].items():
                     actual[year, entity, label] = amount
@@ -50,7 +52,7 @@ class AuditRemediationTests(unittest.TestCase):
         trends = read('contributor-trends.json')
         fields = {'Assessed': 'assessed', 'Voluntary un-earmarked': 'voluntary_unearmarked',
                   'Voluntary earmarked': 'voluntary_earmarked', 'Other': 'other'}
-        for year in range(2013, 2025):
+        for year in read('manifest.json')['entityRevenue']['years']:
             donors = read(f'donors-{year}.json')
             totals = defaultdict(float)
             for name, donor in donors.items():
@@ -152,7 +154,8 @@ class AuditRemediationTests(unittest.TestCase):
             controls = defaultdict(float)
             for row in csv.DictReader(stream):
                 if normalize_country_name(row['country/territory']) in ('Curaçao', 'Curacao') and row['location_type']=='COU':
-                    controls[int(row['calendar_year'])] += float(row['amount'])
+                    if row.get('expenses_type', 'E06') == 'E06':
+                        controls[int(row['calendar_year'])] += float(row['amount'])
         for year, expected in controls.items():
             actual = next(n['total'] for n in read(f'country-expenses-{year}.json') if n['iso3']=='CUW')
             self.assertAlmostEqual(actual,expected,places=2)

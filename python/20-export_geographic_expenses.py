@@ -7,6 +7,7 @@ import importlib.util
 import json
 from pathlib import Path
 import pandas as pd
+from ceb_data import select_geographic_totals, select_sdg_expenses
 from utils import normalize_entity, normalize_country_name
 
 spec = importlib.util.spec_from_file_location('expenses_export', Path(__file__).with_name('07-export_expenses_json.py'))
@@ -34,7 +35,7 @@ AMBIGUOUS = {'Middle East', 'Middle East and North Africa', 'Eastern mediterrane
              'Asia and the Pacific', 'Asia excluding Japan'}
 
 def build_geography(frame):
-    frame = frame.copy().fillna({'region': '', 'country/territory': ''})
+    frame = select_geographic_totals(frame).fillna({'region': '', 'country/territory': ''})
     frame['entity'] = frame.agency.map(normalize_entity)
     result = {}
     country_info = {}
@@ -55,6 +56,8 @@ def build_geography(frame):
             elif level == 'country':
                 iso, point = country_info[source_name]
                 key = iso if isinstance(iso, str) and len(iso) == 3 and iso.isalpha() else f'country:{name}'
+                if key.startswith('country:'):
+                    notes.append('Source reports this label at country level, but it does not resolve to a single country. Retained as reported without allocating it to an inferred country.')
                 if iso in {'PSE', 'ESH', 'XKX', 'TWN'}:
                     notes.append('Country/area label follows source reporting; marker placement does not imply a position on territorial status or boundaries.')
             else:

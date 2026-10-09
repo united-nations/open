@@ -1,6 +1,7 @@
 """Export expenses data to JSON for frontend consumption."""
 import json
 import pandas as pd
+from ceb_data import select_geographic_totals, select_sdg_expenses, resolve_reporting_entities
 from pathlib import Path
 import country_converter as coco
 from utils import normalize_entity, normalize_country_name
@@ -98,23 +99,28 @@ def load_fused_expenses() -> pd.DataFrame:
     return df
 
 def load_sdg_expenses() -> pd.DataFrame:
-    df = pd.read_csv("data/ceb/clean/expenses_sdgs.csv")
+    df = select_sdg_expenses(pd.read_csv("data/ceb/clean/expenses_sdgs.csv"))
+    controls = pd.read_csv("data/ceb/clean/expenses_sub_agency.csv")
+    df = resolve_reporting_entities(df, "entity_code", controls, [(controls, "agency", "sub_agency")])
     df = df.rename(columns={"calendar_year": "year", "entity_code": "entity", "sdg_goal": "sdg"})
     df["entity"] = df["entity"].apply(normalize_entity)
     return df
 
 def get_iso3(country: str) -> str | None:
     result = cc.convert(normalize_country_name(country), to="ISO3", not_found=None)
-    if isinstance(result, list): return result[0] if result else None
+    if isinstance(result, list): return result[0] if len(result) == 1 else None
     return result if result else None
 
 def load_country_expenses() -> pd.DataFrame:
-    df = pd.read_csv("data/ceb/clean/expenses_by_country_region_sub_agency.csv")
+    df = select_geographic_totals(pd.read_csv("data/ceb/clean/expenses_by_country_region_sub_agency.csv"))
     df = df.rename(columns={"calendar_year": "year", "agency": "entity", "country/territory": "country"})
     df["entity"] = df["entity"].apply(normalize_entity)
     df = df[df["location_type"] == "COU"]
-    df["iso3"] = df["country"].apply(get_iso3)
-    return df[df["iso3"].notna()]
+    # Resolve each source label once. Preserve unrecognized country-level rows
+    # rather than silently dropping their money; map positions are illustrative.
+    codes = {name: get_iso3(name) for name in df["country"].unique()}
+    df["iso3"] = df["country"].map(lambda name: codes[name] if isinstance(codes[name], str) and len(codes[name]) == 3 else f"country:{normalize_country_name(name)}")
+    return df
 
 def export_entity_spending(expenses: pd.DataFrame):
     years = sorted(expenses["year"].unique())
@@ -146,11 +152,10 @@ def export_country_expenses(country: pd.DataFrame):
         df = country[country["year"] == year]
         data = []
         for iso3, group in df.groupby("iso3"):
-            coords = COUNTRY_CENTROIDS.get(iso3)
-            if not coords: continue
+            coords = COUNTRY_CENTROIDS.get(iso3, (-52, -135))
             entities = group.groupby("entity")["amount"].sum().to_dict()
             entities = dict(sorted(entities.items(), key=lambda x: -x[1]))
-            name = cc.convert(iso3, to="name_short", not_found=iso3)
+            name = cc.convert(iso3, to="name_short", not_found=iso3) if len(iso3) == 3 else normalize_country_name(group["country"].iloc[0])
             region = group["region"].mode().iloc[0] if len(group["region"].mode()) else "Unknown"
             data.append({
                 "iso3": iso3, "name": name, "region": region,

@@ -14089,6 +14089,13 @@
         "Voluntary earmarked": 13291981.399999999
       },
       {
+        "donor": "European Union",
+        "total": 67266191.77000001,
+        "Voluntary un-earmarked": 33745.99,
+        "Voluntary earmarked": 67146972.15000002,
+        "Other": 85473.63
+      },
+      {
         "donor": "Denmark",
         "total": 57354245.2,
         "Assessed": 17595365.0,
@@ -14217,12 +14224,6 @@
         "Voluntary earmarked": 190537.28
       },
       {
-        "donor": "European Union",
-        "total": 14642179.290000001,
-        "Voluntary earmarked": 14605232.290000001,
-        "Other": 36947.0
-      },
-      {
         "donor": "Chile",
         "total": 13141559.889999999,
         "Assessed": 12926558.0,
@@ -14330,6 +14331,12 @@
         "Voluntary earmarked": 87287.62999999999
       },
       {
+        "donor": "Bill & Melinda Gates Foundation",
+        "total": 5745023.35,
+        "Voluntary un-earmarked": 525772.45,
+        "Voluntary earmarked": 5219250.9
+      },
+      {
         "donor": "Slovakia",
         "total": 5376051.790000001,
         "Assessed": 4859370.0,
@@ -14367,6 +14374,12 @@
         "Assessed": 889296.0,
         "Voluntary un-earmarked": 200000.0,
         "Voluntary earmarked": 1920655.72
+      },
+      {
+        "donor": "World Bank",
+        "total": 3002730.4099999997,
+        "Voluntary earmarked": 2671519.6599999997,
+        "Other": 331210.75
       },
       {
         "donor": "Zimbabwe",
@@ -14731,11 +14744,6 @@
         "Assessed": 349366.0,
         "Voluntary earmarked": -17237.52,
         "Other": 1398.52
-      },
-      {
-        "donor": "World Bank",
-        "total": 331210.75,
-        "Other": 331210.75
       },
       {
         "donor": "United Republic of Tanzania",
@@ -15248,6 +15256,11 @@
         "Assessed": 95282.0,
         "Voluntary un-earmarked": 9679.91,
         "Voluntary earmarked": -231948.04
+      },
+      {
+        "donor": "UN OCHA",
+        "total": -179752.42,
+        "Voluntary earmarked": -179752.42
       }
     ]
   },
@@ -16304,7 +16317,7 @@
         "Voluntary earmarked": 2485228.51
       },
       {
-        "donor": "United States of America National commission",
+        "donor": "USA National Committee",
         "total": 822826.6,
         "Voluntary un-earmarked": 150000.0,
         "Voluntary earmarked": 672826.6
@@ -32675,7 +32688,7 @@
         "Assessed": 3724114.754
       },
       {
-        "donor": "Taiwan, Province of China",
+        "donor": "Taiwan (Province of China)",
         "total": 3459174.863,
         "Assessed": 3459174.863
       },

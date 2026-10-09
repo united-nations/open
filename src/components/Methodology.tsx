@@ -1,3 +1,4 @@
+import cebSource from "../../public/data/ceb-source.json";
 import { ExpandableCard } from "@/components/ExpandableCard";
 
 export function Methodology({ children }: { children: React.ReactNode }) {
@@ -33,8 +34,9 @@ export function CebMethodology() {
         >
           UN Chief Executives Board (CEB) financial statistics
         </a>{" "}
-        database, covering 48 UN System organizations. CEB data comes from
-        audited financial statements aligned with the{" "}
+        database. Reporting coverage varies by year; 47 agency codes report in
+        2025, and ITC did not submit 2025 data. CEB data comes from audited
+        financial statements aligned with the{" "}
         <a
           href="https://unsceb.org/data-standards-united-nations-system-wide-reporting-financial-data"
           className="underline hover:text-un-blue"
@@ -44,6 +46,11 @@ export function CebMethodology() {
           Data Standards for UN System-Wide Reporting of Financial Data
         </a>
         .
+      </p>
+      <p>
+        All available years use the CEB release downloaded on{" "}
+        {cebSource.retrievedAt}, including revised historical figures. Goals
+        data currently ends in 2024.
       </p>
       <p>
         CEB figures aggregate individual entity statements without adjusting for
@@ -74,6 +81,15 @@ export function ContributorsMethodologyNotes() {
         aggregated totals (e.g., &ldquo;Other Foundations&rdquo;).
       </p>
       <p>
+        Where a reported total exceeds identified contributions, the remainder
+        is shown as Other within the known contributor category, or Unattributed
+        when the category is unknown. Blank amounts do not establish zero
+        contributions. Signed reconciliation adjustments are retained when
+        breakdowns exceed reported totals. The 2025 source names fewer
+        non-government contributors than the updated 2024 source; category
+        totals remain available.
+      </p>
+      <p>
         The classification of UN Grant revenue instruments has changed over
         time. For comparability purposes, &ldquo;voluntary contributions pending
         earmarking&rdquo; grants have been categorized as &ldquo;voluntary
@@ -88,18 +104,15 @@ export function OrganizationsMethodologyNotes() {
     <>
       <h4 className="font-medium text-gray-900">Expenses data</h4>
       <p>
-        Expenses figures use CEB data as the primary source, covering 48+ UN
-        entities. For years 2019–2023, UN Secretariat data breaks down the
-        &ldquo;UN&rdquo; and &ldquo;UN-DPO&rdquo; aggregates into their
-        constituent departments and peacekeeping missions (150+ sub-entities).
-        The Secretariat reconstruction combines budget-basis and
-        financial-statement amounts. Differences from CEB do not establish
-        elimination of internal transfers or a single consolidated accounting
-        basis.
+        Expenses figures use CEB organization totals. The current System view
+        retains the UN Secretariat and peacekeeping aggregates; detailed
+        Secretariat budgets are available in the separate Secretariat section
+        and have different accounting bases.
       </p>
       <p>
-        The number of entities reporting in each period has increased over the
-        past years, and thus the total reported revenue has increased too.
+        Changes in reporting coverage and source revisions affect comparisons
+        between years. ITC&apos;s absence in 2025 represents missing reporting,
+        not zero spending.
       </p>
       <p>
         The classification of UN System Functions has changed over time. For
@@ -116,18 +129,10 @@ export function LocationsMethodologyNotes() {
   return (
     <>
       <p>
-        The allocation rules for headquarters expenditure to geographies has
-        been applied inconsistently. For comparability purposes, headquarters
-        expenses are assigned under the &ldquo;global and interregional&rdquo;
-        category rather than the country in which the expense occurred.
-      </p>
-      <p>
-        The CEB data set classified all Department of Peacekeeping Operations
-        (DPO) mission expenditure under the &ldquo;global and
-        interregional&rdquo; category. These expenses are approximately
-        allocated, to the extent possible, to the country in which each mission
-        occurred using the percentage of the budget allocated to each mission as
-        per the DPO.
+        Geographic records follow CEB&apos;s reported country, regional and
+        global allocations. Total expense records are selected once; their
+        component breakdowns are not added again. Regional and global amounts
+        are not distributed among countries.
       </p>
       <p>
         The boundaries and names shown and the designations used on any map
@@ -162,8 +167,8 @@ export function LocationsMethodologyNotes() {
         </li>
       </ul>
       <p>
-        The geographic view retains a frozen CEB source snapshot; current
-        downloads may contain revised historical allocations. UNINFO covers
+        The geographic view includes CEB&apos;s updated historical allocations.
+        UNINFO is a separate dataset with its own reporting periods and covers
         approximately 120 countries with Cooperation Frameworks, representing
         roughly 40% of total UN system spending. The remainder includes
         headquarters operations, peacekeeping missions, and global programs
@@ -177,9 +182,12 @@ export function GoalsMethodologyNotes() {
   return (
     <p>
       Spending by Sustainable Development Goal uses CEB financial statistics.
-      The goal sidebar also shows UNINFO Cooperation Framework resources, a
-      separate scope and measure. Its country breakdown excludes
-      shared-workspace totals and responses without a verified annual period.
+      Only actual expense records are included; source budget records are
+      excluded. Reporting by goal is incomplete, so its total can differ from
+      organization spending. Available years end in 2024. The goal sidebar also
+      shows UNINFO Cooperation Framework resources, a separate scope and
+      measure. Its country breakdown excludes shared-workspace totals and
+      responses without a verified annual period.
     </p>
   );
 }
@@ -269,14 +277,17 @@ export function PeacekeepingBudgetMethodologyNotes() {
     <>
       <p>
         The map and table use peacekeeping budget and performance-report
-        expenditure, approved appropriations and proposals on the July–June financial cycle. Only missions in that
-        corpus are shown. Service centres (RSCE, UNGSC) are included and marked
-        separately from field missions, including UNSOS.
+        expenditure, approved appropriations and proposals on the July–June
+        financial cycle. Only missions in that corpus are shown. Service centres
+        (RSCE, UNGSC) are included and marked separately from field missions,
+        including UNSOS.
       </p>
       <p>
         Observer missions paid from the regular budget (UNTSO, UNMOGIP) are not
         in this budget and are not on this map. The support account, enterprise
-        items and some closed-mission accounts sit outside this corpus. The contributor view separately reports Member State assessments, not payments; its coverage differs from these mission budgets.
+        items and some closed-mission accounts sit outside this corpus. The
+        contributor view separately reports Member State assessments, not
+        payments; its coverage differs from these mission budgets.
       </p>
     </>
   );

@@ -2,14 +2,30 @@
 
 This document describes how UN CEB revenue data from multiple source files is fused into a unified contributor breakdown.
 
+## Current source handling (9 October 2026)
+
+All years use the current CEB release, including revised historical attribution.
+Step 02 accepts an immutable download with `--snapshot <directory>`, preserves
+blank amounts in raw and clean data, and exports file hashes, coverage, missing
+cells and differences between source presentations to `public/data/ceb-source.json`.
+Step 03 sums known donor amounts and reconciles the remainder as Other within a
+known contributor category or Unattributed within the original financing instrument.
+Blank donor amounts are not asserted to be zero. Missing authoritative summary
+controls use the matching complete entity-revenue group; otherwise the published
+summary financing classifications remain authoritative. Secretariat sub-entities
+resolve through source parent records and the shared Standard I reporting-unit
+map only when that year has no standalone control. Unknown parentage fails.
+Export and trend years are derived from validated data, and signed adjustments
+remain included. ITC has no 2025 report; its absent observation remains unavailable.
+
 ## Source Files
 
 | File | Coverage | Description |
 |------|----------|-------------|
-| `revenue.csv` | 2011-2024 | Total revenue by entity × year × financing instrument |
-| `revenue_government_donors.csv` | 2013-2024 | Government donor breakdown with specific country names |
-| `revenue_non_gov_donors.csv` | 2009-2024 | Non-government donor breakdown (partial coverage) |
-| `revenue_contrib_type.csv` | 2021-2024 | Revenue by contributor type (Government, EU, Foundations, etc.) |
+| `revenue.csv` | 2011-2025 | Total revenue by entity × year × financing instrument |
+| `revenue_government_donors.csv` | 2013-2025 | Government donor breakdown with specific country names |
+| `revenue_non_gov_donors.csv` | 2009-2025 | Non-government donor breakdown (partial coverage) |
+| `revenue_contrib_type.csv` | 2021-2025 | Revenue by contributor type (Government, EU, Foundations, etc.) |
 
 ## Fusion Methodology
 
@@ -21,7 +37,7 @@ For each entity and year:
 2. **Non-government donors**: Specific donors from `revenue_non_gov_donors.csv` with category when available
 3. **Unattributed per financing instrument**: `Entity/instrument control - Government - NonGov` within each of the four financing instruments. Unknown donor identity is independent of financing class.
 
-### Tier 2: Full Category Breakdown (2021-2024)
+### Tier 2: Full Category Breakdown (2021-2025)
 
 For years where `contrib_type.csv` exists, the "Other" is broken down by contributor type:
 

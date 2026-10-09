@@ -1,0 +1,695 @@
+{
+  "retrievedAt": "2026-10-09",
+  "files": [
+    {
+      "file": "revenue.csv",
+      "url": "https://unsceb.org/assets/data/FS/revenue.csv",
+      "sha256": "fbb5954e5145c135a496c5cea468a0c66a8053e9944c69bdbdb499bf6d1f7210",
+      "rows": 68199,
+      "years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "missingAmounts": [
+        {
+          "csvRow": 51630,
+          "agency": "UNRWA",
+          "calendar_year": 2024,
+          "sub_type_name": "Project/ programme specific contributions",
+          "rev_type": "Voluntary non-core (earmarked) contributions",
+          "sub_type": "R03E"
+        }
+      ]
+    },
+    {
+      "file": "revenue_sub_agency.csv",
+      "url": "https://unsceb.org/assets/data/FS/revenue_sub_agency.csv",
+      "sha256": "3231d3a3f4854514aebbc71fca291e3e9757baf3815ca2af60ca2741ee5df883",
+      "rows": 52416,
+      "years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "missingAmounts": []
+    },
+    {
+      "file": "revenue_by_financing_instruments_and_government_contributors.csv",
+      "url": "https://unsceb.org/assets/data/FS/revenue_by_financing_instruments_and_government_contributors.csv",
+      "sha256": "fe1393942131ea36b93ca594db2006782cd0ad49295abf587845b0b6df70de70",
+      "rows": 81146,
+      "years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "missingAmounts": [
+        {
+          "csvRow": 28833,
+          "contributor_type": "C01",
+          "contributor_name": "Austria",
+          "calendar_year": 2019,
+          "entity": "UNDP",
+          "sub_entity": "UNDP",
+          "rev_type": "Voluntary non-core (earmarked) contributions",
+          "rev_sub_type": "Project/ Programme specific contributions",
+          "revenue_code": "R03E"
+        }
+      ]
+    },
+    {
+      "file": "revenue_government_donors.csv",
+      "url": "https://unsceb.org/assets/data/FS/revenue_government_donors.csv",
+      "sha256": "b2ffc351b922186098d2a8cc9caa729ee46464d70d9c3c1487078fccb8bd245f",
+      "rows": 110325,
+      "years": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "missingAmounts": [
+        {
+          "csvRow": 39020,
+          "entity": "UNDP",
+          "calendar_year": 2019,
+          "_currency_amount": "USD",
+          "government_donor": "Austria",
+          "rev_type": "Voluntary non-core (earmarked) contributions",
+          "contrib_type": "Government"
+        }
+      ]
+    },
+    {
+      "file": "revenue_non_gov_donors.csv",
+      "url": "https://unsceb.org/assets/data/FS/revenue_non_gov_donors.csv",
+      "sha256": "1f5a76044e12f223a3187c01b1ea9e6904e5fe86dc598ee8b1c1985b519e38f0",
+      "rows": 7151,
+      "years": [
+        2009,
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "missingAmounts": []
+    },
+    {
+      "file": "revenue_contrib_type.csv",
+      "url": "https://unsceb.org/assets/data/FS/revenue_contrib_type.csv",
+      "sha256": "42bc290d438c8d1f9b11e424d843df9f17393f1f6d165738651fccd841973c58",
+      "rows": 80987,
+      "years": [
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "missingAmounts": [
+        {
+          "csvRow": 45398,
+          "entity": "WFP",
+          "sub_entity": "WFP",
+          "calendar_year": 2023,
+          "contrib_type": "C05",
+          "rev_type": "R03E",
+          "contributor_type": "Foundations",
+          "sub_type_name": "Project/ programme specific contributions",
+          "rev_type_name": "Voluntary non-core (earmarked) contributions"
+        },
+        {
+          "csvRow": 65331,
+          "entity": "UNRWA",
+          "sub_entity": "UNRWA",
+          "calendar_year": 2024,
+          "contrib_type": "C05",
+          "rev_type": "R03E",
+          "contributor_type": "Foundations",
+          "sub_type_name": "Project/ programme specific contributions",
+          "rev_type_name": "Voluntary non-core (earmarked) contributions"
+        }
+      ]
+    },
+    {
+      "file": "expenses_sub_agency.csv",
+      "url": "https://unsceb.org/assets/data/FS/expenses_sub_agency.csv",
+      "sha256": "75a71ac2fc005f12001c8f654b7ecc08f308880acded6e1883071ab698636eb3",
+      "rows": 36459,
+      "years": [
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "missingAmounts": []
+    },
+    {
+      "file": "expenses_by_country_region_sub_agency.csv",
+      "url": "https://unsceb.org/assets/data/FS/expenses_by_country_region_sub_agency.csv",
+      "sha256": "c074f7fb27eec99aeaf651d34a3aa092d5033e0e25ca5720709ec1786b828cf2",
+      "rows": 147069,
+      "years": [
+        2010,
+        2011,
+        2012,
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024,
+        2025
+      ],
+      "missingAmounts": []
+    },
+    {
+      "file": "expenses_sdgs.csv",
+      "url": "https://unsceb.org/assets/data/FS/expenses_sdgs.csv",
+      "sha256": "4e1f7274bd65282bfd4b1264afa0566a0cad27a5f08a86642a0f7ec66c6221e0",
+      "rows": 6509,
+      "years": [
+        2018,
+        2019,
+        2020,
+        2021,
+        2022,
+        2023,
+        2024
+      ],
+      "missingAmounts": []
+    }
+  ],
+  "notes": [
+    "Missing donor amounts are unknown, not zero. Known amounts are reconciled to entity/instrument controls; differences remain Unattributed.",
+    "Geographic totals select E06, excluding overlapping E06A/B/C components.",
+    "SDG expenses select EXP; BUD/BUG budget observations are excluded."
+  ],
+  "nonReporting": {
+    "2025": [
+      "ITC"
+    ]
+  },
+  "revenuePresentationDifferences": [
+    {
+      "year": 2015,
+      "entity": "UNRWA",
+      "instrument": "Voluntary core (un-earmarked) contributions",
+      "difference": 0.10000002384185791
+    },
+    {
+      "year": 2018,
+      "entity": "WTO",
+      "instrument": "Assessed contributions",
+      "difference": -0.030000030994415283
+    },
+    {
+      "year": 2019,
+      "entity": "UNEP",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": 0.04999995231628418
+    },
+    {
+      "year": 2019,
+      "entity": "WTO",
+      "instrument": "Assessed contributions",
+      "difference": -0.02000001072883606
+    },
+    {
+      "year": 2021,
+      "entity": "FAO",
+      "instrument": "Assessed contributions",
+      "difference": 0.06000000238418579
+    },
+    {
+      "year": 2021,
+      "entity": "FAO",
+      "instrument": "Voluntary core (un-earmarked) contributions",
+      "difference": -0.05000000447034836
+    },
+    {
+      "year": 2021,
+      "entity": "FAO",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": -0.4100000858306885
+    },
+    {
+      "year": 2021,
+      "entity": "IAEA",
+      "instrument": "Assessed contributions",
+      "difference": -2.2300000190734863
+    },
+    {
+      "year": 2021,
+      "entity": "IARC",
+      "instrument": "Assessed contributions",
+      "difference": -0.010000001639127731
+    },
+    {
+      "year": 2021,
+      "entity": "ICAO",
+      "instrument": "Assessed contributions",
+      "difference": 0.07000000774860382
+    },
+    {
+      "year": 2021,
+      "entity": "ICAO",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": -0.030000001192092896
+    },
+    {
+      "year": 2021,
+      "entity": "ICC",
+      "instrument": "Assessed contributions",
+      "difference": 0.06000000238418579
+    },
+    {
+      "year": 2021,
+      "entity": "ILO",
+      "instrument": "Assessed contributions",
+      "difference": 0.3500000238418579
+    },
+    {
+      "year": 2021,
+      "entity": "ILO",
+      "instrument": "Revenue from other activities",
+      "difference": -0.3200000002980232
+    },
+    {
+      "year": 2021,
+      "entity": "ILO",
+      "instrument": "Voluntary core (un-earmarked) contributions",
+      "difference": 0.03999999910593033
+    },
+    {
+      "year": 2021,
+      "entity": "ILO",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": -1.1399999856948853
+    },
+    {
+      "year": 2021,
+      "entity": "IMO",
+      "instrument": "Assessed contributions",
+      "difference": 0.08999999612569809
+    },
+    {
+      "year": 2021,
+      "entity": "ISA",
+      "instrument": "Assessed contributions",
+      "difference": 0.25
+    },
+    {
+      "year": 2021,
+      "entity": "ISA",
+      "instrument": "Voluntary core (un-earmarked) contributions",
+      "difference": -0.39000000001396984
+    },
+    {
+      "year": 2021,
+      "entity": "ITC",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": -1.0
+    },
+    {
+      "year": 2021,
+      "entity": "ITLOS",
+      "instrument": "Assessed contributions",
+      "difference": 16.84999999962747
+    },
+    {
+      "year": 2021,
+      "entity": "ITU",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": 1.1199999991804361
+    },
+    {
+      "year": 2021,
+      "entity": "OPCW",
+      "instrument": "Assessed contributions",
+      "difference": -0.040000006556510925
+    },
+    {
+      "year": 2021,
+      "entity": "OPCW",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": 0.1600000001490116
+    },
+    {
+      "year": 2021,
+      "entity": "PAHO",
+      "instrument": "Revenue from other activities",
+      "difference": -1076.0
+    },
+    {
+      "year": 2021,
+      "entity": "PAHO",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": 10.0
+    },
+    {
+      "year": 2021,
+      "entity": "Peacekeeping Operations",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": 0.029999971389770508
+    },
+    {
+      "year": 2021,
+      "entity": "UN Secretariat",
+      "instrument": "Revenue from other activities",
+      "difference": -0.03000009059906006
+    },
+    {
+      "year": 2021,
+      "entity": "UN Secretariat",
+      "instrument": "Voluntary core (un-earmarked) contributions",
+      "difference": -0.030000001192092896
+    },
+    {
+      "year": 2021,
+      "entity": "UN Secretariat",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": -0.07999992370605469
+    },
+    {
+      "year": 2021,
+      "entity": "UN Tourism",
+      "instrument": "Assessed contributions",
+      "difference": -0.26999999955296516
+    },
+    {
+      "year": 2021,
+      "entity": "UN Tourism",
+      "instrument": "Revenue from other activities",
+      "difference": -0.02000000001862645
+    },
+    {
+      "year": 2021,
+      "entity": "UN Women",
+      "instrument": "Voluntary core (un-earmarked) contributions",
+      "difference": 0.030000001192092896
+    },
+    {
+      "year": 2021,
+      "entity": "UN Women",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": 0.07999998331069946
+    },
+    {
+      "year": 2021,
+      "entity": "UN-Habitat",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": 0.030000001192092896
+    },
+    {
+      "year": 2021,
+      "entity": "UNCCD",
+      "instrument": "Assessed contributions",
+      "difference": -0.4900000002235174
+    },
+    {
+      "year": 2021,
+      "entity": "UNCDF",
+      "instrument": "Voluntary core (un-earmarked) contributions",
+      "difference": 0.4500000011175871
+    },
+    {
+      "year": 2021,
+      "entity": "UNCDF",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": 0.09999999403953552
+    },
+    {
+      "year": 2021,
+      "entity": "UNDP",
+      "instrument": "Revenue from other activities",
+      "difference": -10.0
+    },
+    {
+      "year": 2021,
+      "entity": "UNDP",
+      "instrument": "Voluntary core (un-earmarked) contributions",
+      "difference": -1.0
+    },
+    {
+      "year": 2021,
+      "entity": "UNDP",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": -2.0
+    },
+    {
+      "year": 2021,
+      "entity": "UNEP",
+      "instrument": "Revenue from other activities",
+      "difference": -4132384.0
+    },
+    {
+      "year": 2021,
+      "entity": "UNEP",
+      "instrument": "Voluntary core (un-earmarked) contributions",
+      "difference": 93613513.0
+    },
+    {
+      "year": 2021,
+      "entity": "UNEP",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": -89481127.0
+    },
+    {
+      "year": 2021,
+      "entity": "UNFPA",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": -0.040000081062316895
+    },
+    {
+      "year": 2021,
+      "entity": "UNHCR",
+      "instrument": "Voluntary core (un-earmarked) contributions",
+      "difference": -0.41999995708465576
+    },
+    {
+      "year": 2021,
+      "entity": "UNHCR",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": -0.2999997138977051
+    },
+    {
+      "year": 2021,
+      "entity": "UNICEF",
+      "instrument": "Voluntary core (un-earmarked) contributions",
+      "difference": -0.5
+    },
+    {
+      "year": 2021,
+      "entity": "UNICEF",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": 0.07000064849853516
+    },
+    {
+      "year": 2021,
+      "entity": "UNIDO",
+      "instrument": "Assessed contributions",
+      "difference": -0.03999999165534973
+    },
+    {
+      "year": 2021,
+      "entity": "UNIDO",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": -0.030000001192092896
+    },
+    {
+      "year": 2021,
+      "entity": "UNITAR",
+      "instrument": "Revenue from other activities",
+      "difference": -95.90000000002328
+    },
+    {
+      "year": 2021,
+      "entity": "UNITAR",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": 95.90000000596046
+    },
+    {
+      "year": 2021,
+      "entity": "UNOPS",
+      "instrument": "Revenue from other activities",
+      "difference": 3.0
+    },
+    {
+      "year": 2021,
+      "entity": "UNRWA",
+      "instrument": "Voluntary core (un-earmarked) contributions",
+      "difference": -0.019999980926513672
+    },
+    {
+      "year": 2021,
+      "entity": "UNRWA",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": -0.15999996662139893
+    },
+    {
+      "year": 2021,
+      "entity": "UNSSC",
+      "instrument": "Voluntary core (un-earmarked) contributions",
+      "difference": -0.14999999944120646
+    },
+    {
+      "year": 2021,
+      "entity": "UNSSC",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": -0.11999999918043613
+    },
+    {
+      "year": 2021,
+      "entity": "UNV",
+      "instrument": "Revenue from other activities",
+      "difference": -2.0
+    },
+    {
+      "year": 2021,
+      "entity": "UNV",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": 2.0
+    },
+    {
+      "year": 2021,
+      "entity": "UPU",
+      "instrument": "Assessed contributions",
+      "difference": -0.5099999979138374
+    },
+    {
+      "year": 2021,
+      "entity": "WFP",
+      "instrument": "Voluntary core (un-earmarked) contributions",
+      "difference": 0.029999971389770508
+    },
+    {
+      "year": 2021,
+      "entity": "WFP",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": -0.7999992370605469
+    },
+    {
+      "year": 2021,
+      "entity": "WHO",
+      "instrument": "Assessed contributions",
+      "difference": 0.039999961853027344
+    },
+    {
+      "year": 2021,
+      "entity": "WHO",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": -0.5699996948242188
+    },
+    {
+      "year": 2021,
+      "entity": "WIPO",
+      "instrument": "Assessed contributions",
+      "difference": -0.35999999940395355
+    },
+    {
+      "year": 2021,
+      "entity": "WMO",
+      "instrument": "Assessed contributions",
+      "difference": -0.12999999523162842
+    },
+    {
+      "year": 2021,
+      "entity": "WMO",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": 2.150000002235174
+    },
+    {
+      "year": 2021,
+      "entity": "WTO",
+      "instrument": "Assessed contributions",
+      "difference": -0.04999998211860657
+    },
+    {
+      "year": 2021,
+      "entity": "WTO",
+      "instrument": "Voluntary core (un-earmarked) contributions",
+      "difference": -1.0199999995529652
+    },
+    {
+      "year": 2023,
+      "entity": "UNITAR",
+      "instrument": "Revenue from other activities",
+      "difference": -31917384.0
+    },
+    {
+      "year": 2023,
+      "entity": "UNITAR",
+      "instrument": "Voluntary non-core (earmarked) contributions",
+      "difference": 31917384.0
+    }
+  ]
+}

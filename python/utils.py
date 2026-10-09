@@ -6,11 +6,20 @@ from pathlib import Path
 # aggregates, drops the ~150 Secretariat sub-entities). Re-run python/06, 07, 99.
 FUSE_SECRETARIAT = False
 
+# CEB Standard I, March 2024, printed pp.6–7, footnote 6: these units
+# report through UN. Use only when that year's source has no standalone control.
+CEB_SECRETARIAT_REPORTING_UNITS = {
+    "DCO", "DESA", "DGACM", "DGC", "DMSPC", "DOS", "DPPA", "DSS",
+    "ECA", "ECE", "ECLAC", "ESCAP", "ESCWA", "OCHA", "OCT", "OHCHR",
+    "UNCTAD", "UNDRR", "UNISDR", "UNIDIR", "UNRISD", "Tech Bank",
+}
+
 ENTITY_MAPPING = {
     "UN": "UN Secretariat",
     "UN-DPO": "Peacekeeping Operations",
     "UN-HABITAT": "UN-Habitat", "UNHABITAT": "UN-Habitat",
     "UNWOMEN": "UN Women", "UN-Women": "UN Women", "UNWTO": "UN Tourism",
+    "DPKO": "Peacekeeping Operations",  # Former CEB peacekeeping aggregate code.
     "OHRLLS": "UN-OHRLLS", "POE-CAR": "PoE-CAR", "POE-HAITI": "PoE-Haiti",
     "POE-LIBYA": "PoE-Libya", "POE-SUDAN": "PoE-Sudan", "POE-YEMEN": "PoE-Yemen",
     "POS-SSUDAN": "PoE-S.Sudan", "SRSG-CAAC": "OSRSG-CAAC", "SRSG-SVC": "OSRSG-SVC",
@@ -63,6 +72,7 @@ DONOR_MAPPING = {
 
 # Generic bucket donors - mark as is_other=True (aggregated, not specific donors)
 GENERIC_DONORS = {
+    "MISC",  # CEB government correction bucket; retain source category and sign.
     "Other Private",  # Consolidated from Private Donors/donor/Sector
     "Multi Donor Trust Funds",
     "Multi Partner Trust Fund Office",

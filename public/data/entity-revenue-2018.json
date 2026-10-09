@@ -11877,7 +11877,7 @@
     ]
   },
   "UN Secretariat": {
-    "total": 6026818217.250001,
+    "total": 6026818217.25,
     "year": 2018,
     "by_type": {
       "Assessed": 2487339605.0,
@@ -11900,14 +11900,15 @@
       },
       {
         "donor": "Germany",
-        "total": 489446067.3600001,
+        "total": 489500334.3600001,
         "Assessed": 155297872.0,
-        "Voluntary earmarked": 334148195.3600001
+        "Voluntary earmarked": 334202462.3600001
       },
       {
         "donor": "Sweden",
-        "total": 488210314.1499999,
+        "total": 489368110.1499999,
         "Assessed": 23237560.0,
+        "Voluntary un-earmarked": 1157796.0,
         "Voluntary earmarked": 464972754.1499999
       },
       {
@@ -11960,8 +11961,9 @@
       },
       {
         "donor": "Switzerland",
-        "total": 110752504.70999998,
+        "total": 111312627.70999998,
         "Assessed": 27710060.0,
+        "Voluntary un-earmarked": 560123.0,
         "Voluntary earmarked": 83042444.71
       },
       {
@@ -12007,6 +12009,11 @@
         "Voluntary earmarked": 59407338.769999996
       },
       {
+        "donor": "European Union",
+        "total": 66949591.18999999,
+        "Voluntary earmarked": 66949591.18999999
+      },
+      {
         "donor": "Republic of Korea",
         "total": 64422279.91,
         "Assessed": 49562117.0,
@@ -12038,8 +12045,9 @@
       },
       {
         "donor": "Finland",
-        "total": 34319994.57,
+        "total": 34519994.57,
         "Assessed": 11084024.0,
+        "Voluntary un-earmarked": 200000.0,
         "Voluntary earmarked": 23235970.57
       },
       {
@@ -12065,11 +12073,6 @@
         "total": 22005715.96,
         "Assessed": 21681907.0,
         "Voluntary earmarked": 323808.95999999996
-      },
-      {
-        "donor": "European Union",
-        "total": 19979201.71,
-        "Voluntary earmarked": 19979201.71
       },
       {
         "donor": "Kuwait",
@@ -12187,9 +12190,9 @@
       },
       {
         "donor": "Luxembourg",
-        "total": 7481850.630000001,
+        "total": 7541587.630000001,
         "Assessed": 1555653.0,
-        "Voluntary earmarked": 5926197.630000001
+        "Voluntary earmarked": 5985934.630000001
       },
       {
         "donor": "Kazakhstan",
@@ -12376,6 +12379,11 @@
         "total": 1310832.8800000001,
         "Assessed": 243071.0,
         "Voluntary earmarked": 1067761.88
+      },
+      {
+        "donor": "World Bank",
+        "total": 1307020.86,
+        "Voluntary earmarked": 1307020.86
       },
       {
         "donor": "Latvia",
@@ -12827,11 +12835,6 @@
         "Voluntary earmarked": 87278.58
       },
       {
-        "donor": "World Bank",
-        "total": 110780.75,
-        "Voluntary earmarked": 110780.75
-      },
-      {
         "donor": "Madagascar",
         "total": 109364.59,
         "Assessed": 72921.0,
@@ -12925,6 +12928,11 @@
         "total": 49662.16,
         "Assessed": 48615.0,
         "Voluntary earmarked": 1047.16
+      },
+      {
+        "donor": "Bill & Melinda Gates Foundation",
+        "total": 46100.38,
+        "Voluntary earmarked": 46100.38
       },
       {
         "donor": "Macao SAR",
@@ -28236,7 +28244,7 @@
         "Assessed": 3660425.53
       },
       {
-        "donor": "Taiwan, Province of China",
+        "donor": "Taiwan (Province of China)",
         "total": 3422735.56,
         "Assessed": 3422735.56
       },

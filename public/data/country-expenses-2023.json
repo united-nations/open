@@ -376,8 +376,7 @@
       "UN-Habitat": 6806559.0,
       "ILO": 3555638.0,
       "UNIDO": 650893.45,
-      "UNODC": 23754.0,
-      "UN Women": 0.0
+      "UNODC": 23754.0
     }
   },
   {
@@ -876,6 +875,29 @@
     }
   },
   {
+    "iso3": "country:Western Asia",
+    "name": "Western Asia",
+    "region": "Asia",
+    "lat": -52,
+    "long": -135,
+    "total": 353407652.51,
+    "entities": {
+      "UNICEF": 120620635.0,
+      "Peacekeeping Operations": 68212961.0,
+      "UNHCR": 54979542.0,
+      "IOM": 33138538.0,
+      "UNDP": 29157810.0,
+      "FAO": 28724696.0,
+      "UN Secretariat": 7204107.0,
+      "ILO": 3797523.0,
+      "UNODC": 3467520.0,
+      "IMO": 2547975.73,
+      "UN-Habitat": 1072437.0,
+      "UPU": 299907.78,
+      "ITU": 184000.0
+    }
+  },
+  {
     "iso3": "BRA",
     "name": "Brazil",
     "region": "Americas",
@@ -1200,6 +1222,28 @@
     }
   },
   {
+    "iso3": "country:Latin America and the Caribbean",
+    "name": "Latin America and the Caribbean",
+    "region": "Americas",
+    "lat": -52,
+    "long": -135,
+    "total": 237196789.01,
+    "entities": {
+      "IOM": 128762082.0,
+      "UNICEF": 26817037.0,
+      "WFP": 20263914.0,
+      "UNDP": 20041385.0,
+      "ILO": 13305917.0,
+      "UNFPA": 9786456.0,
+      "FAO": 8235706.0,
+      "UN Secretariat": 5654965.0,
+      "UN-Habitat": 3593173.0,
+      "UNIDO": 572795.78,
+      "ITC": 119366.0,
+      "UN Tourism": 43992.23
+    }
+  },
+  {
     "iso3": "BDI",
     "name": "Burundi",
     "region": "Africa",
@@ -1411,7 +1455,7 @@
     "region": "Asia",
     "lat": 35.8617,
     "long": 104.1954,
-    "total": 156293833.54,
+    "total": 156127254.18,
     "entities": {
       "UNICEF": 63859619.0,
       "UNDP": 31978300.0,
@@ -1431,7 +1475,6 @@
       "ITU": 778217.96,
       "IOM": 596655.0,
       "UNOPS": 287633.0,
-      "OPCW": 166579.36,
       "UN Tourism": 120783.57,
       "ITC": 38146.0,
       "UNV": 3671.0,
@@ -1490,6 +1533,18 @@
       "UNEP": 1186278.0,
       "UNODC": 986751.0,
       "UNAIDS": 619438.0
+    }
+  },
+  {
+    "iso3": "country:Sub-Saharan Africa",
+    "name": "Sub-Saharan Africa",
+    "region": "Africa",
+    "lat": -52,
+    "long": -135,
+    "total": 144752641.0,
+    "entities": {
+      "IOM": 112423509.0,
+      "UNDP": 32329132.0
     }
   },
   {
@@ -1666,6 +1721,37 @@
       "UNOPS": 196433.0,
       "UNCDF": 15200.0,
       "ITU": 6026.35
+    }
+  },
+  {
+    "iso3": "ZAF",
+    "name": "South Africa",
+    "region": "Africa",
+    "lat": -30.5595,
+    "long": 22.9375,
+    "total": 132600457.23,
+    "entities": {
+      "UNICEF": 26550559.0,
+      "UNHCR": 24899545.0,
+      "WFP": 19290145.0,
+      "ILO": 12594680.0,
+      "UNDP": 9835083.0,
+      "WHO": 7198025.0,
+      "UNEP": 5090187.0,
+      "UNAIDS": 4726813.0,
+      "FAO": 4650314.0,
+      "UN Secretariat": 4481341.0,
+      "UNIDO": 4362557.16,
+      "UN Women": 2911781.0,
+      "UNFPA": 2806793.0,
+      "UNODC": 1941098.0,
+      "IOM": 815211.0,
+      "UNOPS": 187522.0,
+      "ITC": 145798.0,
+      "UN-Habitat": 59136.0,
+      "ITU": 40564.07,
+      "UNCDF": 12895.0,
+      "UNV": 410.0
     }
   },
   {
@@ -1999,6 +2085,25 @@
     }
   },
   {
+    "iso3": "country:Western Africa",
+    "name": "Western Africa",
+    "region": "Africa",
+    "lat": -52,
+    "long": -135,
+    "total": 103267517.0,
+    "entities": {
+      "WFP": 27617001.0,
+      "UN Secretariat": 24586749.0,
+      "IOM": 22005131.0,
+      "UNHCR": 20495095.0,
+      "UNODC": 5229110.0,
+      "FAO": 2791485.0,
+      "UN-Habitat": 301024.0,
+      "UNICRI": 134301.0,
+      "ILO": 107621.0
+    }
+  },
+  {
     "iso3": "THA",
     "name": "Thailand",
     "region": "Asia",
@@ -2030,24 +2135,6 @@
     }
   },
   {
-    "iso3": "USA",
-    "name": "United States",
-    "region": "Americas",
-    "lat": 37.0902,
-    "long": -95.7129,
-    "total": 99435223.22,
-    "entities": {
-      "IOM": 52689956.0,
-      "UN Secretariat": 24740427.0,
-      "UNHCR": 14022290.0,
-      "UNU": 4540947.0,
-      "OPCW": 1871792.45,
-      "WMO": 832335.32,
-      "UNICEF": 660000.0,
-      "ITU": 77475.45
-    }
-  },
-  {
     "iso3": "TJK",
     "name": "Tajikistan",
     "region": "Asia",
@@ -2073,6 +2160,23 @@
       "UNEP": 123511.0,
       "UNIDO": 102031.08,
       "UN Tourism": 30551.61
+    }
+  },
+  {
+    "iso3": "USA",
+    "name": "United States",
+    "region": "Americas",
+    "lat": 37.0902,
+    "long": -95.7129,
+    "total": 97563430.77,
+    "entities": {
+      "IOM": 52689956.0,
+      "UN Secretariat": 24740427.0,
+      "UNHCR": 14022290.0,
+      "UNU": 4540947.0,
+      "WMO": 832335.32,
+      "UNICEF": 660000.0,
+      "ITU": 77475.45
     }
   },
   {
@@ -2261,32 +2365,21 @@
     }
   },
   {
-    "iso3": "ZAF",
-    "name": "South Africa",
-    "region": "Africa",
-    "lat": -30.5595,
-    "long": 22.9375,
-    "total": 85820172.23,
+    "iso3": "country:Eastern Europe",
+    "name": "Eastern Europe",
+    "region": "Europe",
+    "lat": -52,
+    "long": -135,
+    "total": 85969073.58,
     "entities": {
-      "UNICEF": 26550559.0,
-      "UNHCR": 10021804.0,
-      "UNDP": 9674442.0,
-      "ILO": 8567197.0,
-      "WHO": 7198025.0,
-      "UNEP": 5090187.0,
-      "UNAIDS": 4726813.0,
-      "UNIDO": 4362557.16,
-      "UN Women": 2911781.0,
-      "UNFPA": 2806793.0,
-      "FAO": 1847186.0,
-      "UN Secretariat": 859535.0,
-      "IOM": 808107.0,
-      "UNOPS": 187522.0,
-      "ITC": 145798.0,
-      "ITU": 40564.07,
-      "UNCDF": 12895.0,
-      "UNODC": 7997.0,
-      "UNV": 410.0
+      "IOM": 70998543.0,
+      "UNFPA": 9959271.0,
+      "UN Secretariat": 2806023.0,
+      "ILO": 1717856.0,
+      "UNICRI": 382066.0,
+      "ITC": 91769.0,
+      "IMO": 13274.58,
+      "UN-Habitat": 271.0
     }
   },
   {
@@ -2628,6 +2721,24 @@
     }
   },
   {
+    "iso3": "country:Eastern Africa",
+    "name": "Eastern Africa",
+    "region": "Africa",
+    "lat": -52,
+    "long": -135,
+    "total": 73132590.0,
+    "entities": {
+      "UNHCR": 24548926.0,
+      "WFP": 23972144.0,
+      "IOM": 7723467.0,
+      "UNODC": 6430919.0,
+      "UN Secretariat": 5942802.0,
+      "FAO": 3603666.0,
+      "ILO": 745054.0,
+      "UN-Habitat": 165612.0
+    }
+  },
+  {
     "iso3": "GNB",
     "name": "Guinea-Bissau",
     "region": "Africa",
@@ -2762,6 +2873,23 @@
     }
   },
   {
+    "iso3": "country:South-eastern Asia",
+    "name": "South-eastern Asia",
+    "region": "Asia",
+    "lat": -52,
+    "long": -135,
+    "total": 66946500.0,
+    "entities": {
+      "WFP": 22159685.0,
+      "UNODC": 19929814.0,
+      "UN Secretariat": 17644709.0,
+      "IOM": 6729113.0,
+      "UNICRI": 197664.0,
+      "ILO": 157449.0,
+      "UN-Habitat": 128066.0
+    }
+  },
+  {
     "iso3": "ESH",
     "name": "Western Sahara",
     "region": "Africa",
@@ -2850,6 +2978,25 @@
       "UNOPS": 243723.0,
       "UN-Habitat": 195918.0,
       "IOM": 100149.0
+    }
+  },
+  {
+    "iso3": "country:Northern Africa",
+    "name": "Northern Africa",
+    "region": "Africa",
+    "lat": -52,
+    "long": -135,
+    "total": 63947151.0,
+    "entities": {
+      "WFP": 22259482.0,
+      "IOM": 20526543.0,
+      "UNODC": 10542623.0,
+      "UNFPA": 8469674.0,
+      "UN Secretariat": 1180681.0,
+      "UNICRI": 447602.0,
+      "ITC": 314335.0,
+      "FAO": 181523.0,
+      "ILO": 24688.0
     }
   },
   {
@@ -3126,6 +3273,24 @@
     }
   },
   {
+    "iso3": "country:Caribbean",
+    "name": "Caribbean",
+    "region": "Americas",
+    "lat": -52,
+    "long": -135,
+    "total": 41781321.0,
+    "entities": {
+      "UN Secretariat": 16434767.0,
+      "UNFPA": 9349246.0,
+      "PAHO": 5635914.0,
+      "FAO": 5261038.0,
+      "ILO": 2603061.0,
+      "UNODC": 1769226.0,
+      "IOM": 710636.0,
+      "UN-Habitat": 17433.0
+    }
+  },
+  {
     "iso3": "LSO",
     "name": "Lesotho",
     "region": "Africa",
@@ -3216,6 +3381,23 @@
     }
   },
   {
+    "iso3": "country:Central America",
+    "name": "Central America",
+    "region": "Americas",
+    "lat": -52,
+    "long": -135,
+    "total": 34607403.0,
+    "entities": {
+      "IOM": 18743274.0,
+      "FAO": 8311365.0,
+      "UN Secretariat": 3725536.0,
+      "ILO": 1814110.0,
+      "UN-Habitat": 1053479.0,
+      "PAHO": 504302.0,
+      "UNODC": 455337.0
+    }
+  },
+  {
     "iso3": "MKD",
     "name": "North Macedonia",
     "region": "Europe",
@@ -3236,8 +3418,7 @@
       "UNIDO": 1178048.83,
       "FAO": 892531.0,
       "UNEP": 135519.0,
-      "ITC": 39876.0,
-      "UN-Habitat": 0.0
+      "ITC": 39876.0
     }
   },
   {
@@ -3283,8 +3464,7 @@
       "UNIDO": 50168.7,
       "UNEP": 50000.0,
       "ITU": 48294.61,
-      "UN Tourism": 42680.36,
-      "UNDP": 0.0
+      "UN Tourism": 42680.36
     }
   },
   {
@@ -3565,6 +3745,20 @@
     }
   },
   {
+    "iso3": "country:Central Asia",
+    "name": "Central Asia",
+    "region": "Asia",
+    "lat": -52,
+    "long": -135,
+    "total": 23272563.0,
+    "entities": {
+      "UNODC": 11301372.0,
+      "UN Secretariat": 9399882.0,
+      "IOM": 2117733.0,
+      "ILO": 453576.0
+    }
+  },
+  {
     "iso3": "SVK",
     "name": "Slovakia",
     "region": "Europe",
@@ -3591,6 +3785,26 @@
       "UNU": 1638581.0,
       "UN Secretariat": 1132827.0,
       "UNICEF": 1069881.0
+    }
+  },
+  {
+    "iso3": "FSM",
+    "name": "Micronesia, Fed. Sts.",
+    "region": "Oceania",
+    "lat": 7.4256,
+    "long": 150.5508,
+    "total": 21649889.55,
+    "entities": {
+      "IOM": 15043768.0,
+      "UNODC": 2630545.0,
+      "UN Secretariat": 1746283.0,
+      "UNDP": 874563.0,
+      "WHO": 606066.0,
+      "UNOPS": 349271.0,
+      "ITU": 193524.55,
+      "ITC": 99011.0,
+      "FAO": 57265.0,
+      "UNEP": 49593.0
     }
   },
   {
@@ -3947,6 +4161,20 @@
     }
   },
   {
+    "iso3": "country:Southern Europe",
+    "name": "Southern Europe",
+    "region": "Europe",
+    "lat": -52,
+    "long": -135,
+    "total": 14270480.0,
+    "entities": {
+      "IOM": 10092045.0,
+      "UNODC": 2603493.0,
+      "ILO": 1155510.0,
+      "UN Secretariat": 419432.0
+    }
+  },
+  {
     "iso3": "MUS",
     "name": "Mauritius",
     "region": "Africa",
@@ -3965,6 +4193,20 @@
       "UNOPS": 134608.0,
       "IOM": 72322.0,
       "UN Tourism": 55957.82
+    }
+  },
+  {
+    "iso3": "country:Middle Africa",
+    "name": "Middle Africa",
+    "region": "Africa",
+    "lat": -52,
+    "long": -135,
+    "total": 11963955.0,
+    "entities": {
+      "UN Secretariat": 10050924.0,
+      "IOM": 1058596.0,
+      "FAO": 792869.0,
+      "ILO": 61566.0
     }
   },
   {
@@ -4062,6 +4304,22 @@
       "UNCDF": 36510.0,
       "UN Secretariat": 18215.0,
       "ITC": 6215.0
+    }
+  },
+  {
+    "iso3": "country:South America",
+    "name": "South America",
+    "region": "Americas",
+    "lat": -52,
+    "long": -135,
+    "total": 10116090.74,
+    "entities": {
+      "IOM": 6500183.0,
+      "IMO": 1384176.25,
+      "PAHO": 1140855.0,
+      "UN Secretariat": 564709.0,
+      "ILO": 491413.0,
+      "ITU": 34754.49
     }
   },
   {
@@ -4229,6 +4487,30 @@
     }
   },
   {
+    "iso3": "country:Melanesia",
+    "name": "Melanesia",
+    "region": "Oceania",
+    "lat": -52,
+    "long": -135,
+    "total": 4441418.0,
+    "entities": {
+      "UNODC": 2630545.0,
+      "UN Secretariat": 1810873.0
+    }
+  },
+  {
+    "iso3": "country:Polynesia",
+    "name": "Polynesia",
+    "region": "Oceania",
+    "lat": -52,
+    "long": -135,
+    "total": 4264916.0,
+    "entities": {
+      "UNODC": 2630545.0,
+      "UN Secretariat": 1634371.0
+    }
+  },
+  {
     "iso3": "LCA",
     "name": "St. Lucia",
     "region": "Americas",
@@ -4270,22 +4552,15 @@
     }
   },
   {
-    "iso3": "FSM",
-    "name": "Micronesia, Fed. Sts.",
-    "region": "Oceania",
-    "lat": 7.4256,
-    "long": 150.5508,
-    "total": 3775031.55,
+    "iso3": "country:Western Europe",
+    "name": "Western Europe",
+    "region": "Europe",
+    "lat": -52,
+    "long": -135,
+    "total": 3500541.0,
     "entities": {
-      "IOM": 920456.0,
-      "UNDP": 874563.0,
-      "UN Secretariat": 625282.0,
-      "WHO": 606066.0,
-      "UNOPS": 349271.0,
-      "ITU": 193524.55,
-      "ITC": 99011.0,
-      "FAO": 57265.0,
-      "UNEP": 49593.0
+      "UN Secretariat": 3078123.0,
+      "IOM": 422418.0
     }
   },
   {
@@ -4607,6 +4882,33 @@
     }
   },
   {
+    "iso3": "country:Eastern Asia",
+    "name": "Eastern Asia",
+    "region": "Asia",
+    "lat": -52,
+    "long": -135,
+    "total": 1104310.71,
+    "entities": {
+      "UN Secretariat": 611833.0,
+      "UN-Habitat": 330809.0,
+      "UN Tourism": 127663.71,
+      "UNODC": 34254.0,
+      "ILO": -249.0
+    }
+  },
+  {
+    "iso3": "country:Northern America",
+    "name": "Northern America",
+    "region": "Americas",
+    "lat": -52,
+    "long": -135,
+    "total": 1097420.0,
+    "entities": {
+      "UN Secretariat": 980180.0,
+      "ILO": 117240.0
+    }
+  },
+  {
     "iso3": "LVA",
     "name": "Latvia",
     "region": "Europe",
@@ -4846,6 +5148,17 @@
     "total": 32744.0,
     "entities": {
       "WHO": 32744.0
+    }
+  },
+  {
+    "iso3": "country:Australia and New Zealand",
+    "name": "Australia and New Zealand",
+    "region": "Oceania",
+    "lat": -52,
+    "long": -135,
+    "total": 27902.0,
+    "entities": {
+      "UN Secretariat": 27902.0
     }
   },
   {

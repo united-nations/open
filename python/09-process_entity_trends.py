@@ -6,7 +6,6 @@ from collections import defaultdict
 from utils import normalize_entity
 
 DATA = Path("public/data")
-YEARS = list(range(2011, 2025))
 UNCATEGORIZED = "Uncategorized"
 
 def load_revenue() -> dict[str, dict[int, float]]:
@@ -39,6 +38,7 @@ def main():
     groups = list(dict.fromkeys(e.get("system_grouping") for e in entities if e.get("system_grouping")))
     
     rev, exp = load_revenue(), load_expenses()
+    YEARS = sorted({int(y) for values in [*rev.values(), *exp.values()] for y in values})
     all_entities = sorted(set(rev) | set(exp))
     
     entities_by_group = defaultdict(list)

@@ -13558,7 +13558,599 @@
       "Voluntary earmarked": 199628065.0,
       "Voluntary un-earmarked": 11126817.0
     },
-    "by_donor": []
+    "by_donor": [
+      {
+        "donor": "Brazil",
+        "total": 230944956.0,
+        "Assessed": 12168468.0,
+        "Voluntary un-earmarked": 72202.0,
+        "Voluntary earmarked": 95603289.0,
+        "Other": 123100997.0
+      },
+      {
+        "donor": "Peru",
+        "total": 129836251.0,
+        "Assessed": 1500768.0,
+        "Voluntary earmarked": 1224217.0,
+        "Other": 127111266.0
+      },
+      {
+        "donor": "Colombia",
+        "total": 125447061.0,
+        "Assessed": 2137428.0,
+        "Voluntary earmarked": 143663.0,
+        "Other": 123165970.0
+      },
+      {
+        "donor": "United States of America",
+        "total": 89794895.0,
+        "Assessed": 55590280.0,
+        "Voluntary earmarked": 34204615.0
+      },
+      {
+        "donor": "Guatemala",
+        "total": 63849580.0,
+        "Assessed": 254664.0,
+        "Voluntary un-earmarked": 237500.0,
+        "Other": 63357416.0
+      },
+      {
+        "donor": "Ecuador",
+        "total": 62854453.0,
+        "Assessed": 599724.0,
+        "Voluntary un-earmarked": 230485.0,
+        "Voluntary earmarked": 1602949.0,
+        "Other": 60421295.0
+      },
+      {
+        "donor": "Argentina",
+        "total": 42379761.0,
+        "Assessed": 3297024.0,
+        "Voluntary un-earmarked": 114317.0,
+        "Voluntary earmarked": 567479.0,
+        "Other": 38400941.0
+      },
+      {
+        "donor": "Paraguay",
+        "total": 39405136.0,
+        "Assessed": 130248.0,
+        "Voluntary un-earmarked": 170585.0,
+        "Voluntary earmarked": 36553.0,
+        "Other": 39067750.0
+      },
+      {
+        "donor": "El Salvador",
+        "total": 38413377.0,
+        "Assessed": 99144.0,
+        "Voluntary un-earmarked": 228000.0,
+        "Voluntary earmarked": 4975.0,
+        "Other": 38081258.0
+      },
+      {
+        "donor": "Canada",
+        "total": 37264936.0,
+        "Assessed": 13296696.0,
+        "Voluntary earmarked": 23968240.0
+      },
+      {
+        "donor": "Panama",
+        "total": 37137832.0,
+        "Assessed": 284796.0,
+        "Voluntary un-earmarked": 806000.0,
+        "Voluntary earmarked": 1275890.0,
+        "Other": 34771146.0
+      },
+      {
+        "donor": "Honduras",
+        "total": 31478473.0,
+        "Assessed": 42768.0,
+        "Voluntary un-earmarked": 667500.0,
+        "Voluntary earmarked": 319798.0,
+        "Other": 30448407.0
+      },
+      {
+        "donor": "Bolivia, Plurinational State of",
+        "total": 26998868.0,
+        "Assessed": 104004.0,
+        "Voluntary un-earmarked": 412000.0,
+        "Other": 26482864.0
+      },
+      {
+        "donor": "Dominican Republic",
+        "total": 23917266.0,
+        "Assessed": 399492.0,
+        "Voluntary un-earmarked": 712125.0,
+        "Voluntary earmarked": 629578.0,
+        "Other": 22176071.0
+      },
+      {
+        "donor": "Costa Rica",
+        "total": 22550568.0,
+        "Assessed": 381996.0,
+        "Voluntary un-earmarked": 202357.0,
+        "Voluntary earmarked": 223806.0,
+        "Other": 21742409.0
+      },
+      {
+        "donor": "Nicaragua",
+        "total": 19614880.0,
+        "Assessed": 42768.0,
+        "Voluntary un-earmarked": 972534.0,
+        "Voluntary earmarked": 4960388.0,
+        "Other": 13639190.0
+      },
+      {
+        "donor": "Chile",
+        "total": 16100166.0,
+        "Assessed": 2036340.0,
+        "Voluntary un-earmarked": 344650.0,
+        "Other": 13719176.0
+      },
+      {
+        "donor": "European Union",
+        "total": 13047941.0,
+        "Voluntary earmarked": 13047941.0
+      },
+      {
+        "donor": "Uruguay",
+        "total": 9378279.0,
+        "Assessed": 422820.0,
+        "Voluntary un-earmarked": 579843.0,
+        "Other": 8375616.0
+      },
+      {
+        "donor": "Mexico",
+        "total": 9066294.0,
+        "Assessed": 8336844.0,
+        "Other": 729450.0
+      },
+      {
+        "donor": "Cuba",
+        "total": 8823878.0,
+        "Assessed": 197316.0,
+        "Voluntary un-earmarked": 696000.0,
+        "Other": 7930562.0
+      },
+      {
+        "donor": "Venezuela, Bolivarian Republic of",
+        "total": 7656266.0,
+        "Assessed": 1772936.0,
+        "Other": 5883330.0
+      },
+      {
+        "donor": "Trinidad and Tobago",
+        "total": 5942389.0,
+        "Assessed": 168156.0,
+        "Voluntary un-earmarked": 900435.0,
+        "Voluntary earmarked": 31588.0,
+        "Other": 4842210.0
+      },
+      {
+        "donor": "GAVI Alliance",
+        "total": 4346600.0,
+        "Voluntary earmarked": 4346600.0
+      },
+      {
+        "donor": "Haiti",
+        "total": 3380198.0,
+        "Assessed": 42768.0,
+        "Other": 3337430.0
+      },
+      {
+        "donor": "Spain",
+        "total": 2608977.0,
+        "Voluntary earmarked": 2608977.0
+      },
+      {
+        "donor": "Guyana",
+        "total": 2534200.0,
+        "Assessed": 42768.0,
+        "Voluntary un-earmarked": 390028.0,
+        "Voluntary earmarked": 449391.0,
+        "Other": 1652013.0
+      },
+      {
+        "donor": "Barbados",
+        "total": 1822659.0,
+        "Assessed": 42768.0,
+        "Voluntary un-earmarked": 1370375.0,
+        "Other": 409516.0
+      },
+      {
+        "donor": "Jamaica",
+        "total": 1656966.0,
+        "Assessed": 47628.0,
+        "Voluntary un-earmarked": 299121.0,
+        "Voluntary earmarked": 202783.0,
+        "Other": 1107434.0
+      },
+      {
+        "donor": "Bahamas",
+        "total": 1650381.0,
+        "Assessed": 42768.0,
+        "Voluntary un-earmarked": 587500.0,
+        "Other": 1020113.0
+      },
+      {
+        "donor": "Resolve to Save Lives",
+        "total": 1540037.0,
+        "Voluntary earmarked": 1540037.0
+      },
+      {
+        "donor": "Ford Foundation",
+        "total": 1212000.0,
+        "Voluntary earmarked": 1212000.0
+      },
+      {
+        "donor": "UNOSSC",
+        "total": 1129361.0,
+        "Voluntary earmarked": 1129361.0
+      },
+      {
+        "donor": "Belize",
+        "total": 944259.0,
+        "Assessed": 42768.0,
+        "Voluntary un-earmarked": 352766.0,
+        "Other": 548725.0
+      },
+      {
+        "donor": "Inter-American Development Bank",
+        "total": 941331.0,
+        "Voluntary earmarked": 941331.0
+      },
+      {
+        "donor": "UNITAID",
+        "total": 904715.0,
+        "Voluntary earmarked": 904715.0
+      },
+      {
+        "donor": "UNICEF",
+        "total": 890750.0,
+        "Voluntary earmarked": 890750.0
+      },
+      {
+        "donor": "THE TASK FORCE FOR GLOBAL HEALTH (TFGH)",
+        "total": 819101.0,
+        "Voluntary earmarked": 819101.0
+      },
+      {
+        "donor": "Bill & Melinda Gates Foundation",
+        "total": 700917.0,
+        "Voluntary earmarked": 700917.0
+      },
+      {
+        "donor": "UMANE Association",
+        "total": 619289.0,
+        "Voluntary earmarked": 619289.0
+      },
+      {
+        "donor": "Suriname",
+        "total": 571398.0,
+        "Assessed": 42768.0,
+        "Voluntary un-earmarked": 197864.0,
+        "Other": 330766.0
+      },
+      {
+        "donor": "Germany",
+        "total": 533795.0,
+        "Voluntary earmarked": 533795.0
+      },
+      {
+        "donor": "Republic of Korea",
+        "total": 529068.0,
+        "Voluntary earmarked": 529068.0
+      },
+      {
+        "donor": "Instituto Todos pela Saude/All for Health Institute",
+        "total": 448176.0,
+        "Voluntary earmarked": 448176.0
+      },
+      {
+        "donor": "Grenada",
+        "total": 401909.0,
+        "Assessed": 42768.0,
+        "Voluntary un-earmarked": 68500.0,
+        "Other": 290641.0
+      },
+      {
+        "donor": "Project Hope",
+        "total": 307424.0,
+        "Voluntary earmarked": 307424.0
+      },
+      {
+        "donor": "Bermuda",
+        "total": 271339.0,
+        "Other": 271339.0
+      },
+      {
+        "donor": "Aruba",
+        "total": 265697.0,
+        "Assessed": 42768.0,
+        "Other": 222929.0
+      },
+      {
+        "donor": "Saint Vincent and the Grenadines",
+        "total": 256149.0,
+        "Assessed": 42768.0,
+        "Voluntary un-earmarked": 68500.0,
+        "Other": 144881.0
+      },
+      {
+        "donor": "Bernard Van Leer Foundation",
+        "total": 247879.0,
+        "Voluntary earmarked": 247879.0
+      },
+      {
+        "donor": "Dominica",
+        "total": 239809.0,
+        "Assessed": 42768.0,
+        "Voluntary un-earmarked": 82900.0,
+        "Other": 114141.0
+      },
+      {
+        "donor": "UNDP (as donor)",
+        "total": 236614.0,
+        "Voluntary earmarked": 236614.0
+      },
+      {
+        "donor": "UN Foundation",
+        "total": 227308.0,
+        "Voluntary earmarked": 227308.0
+      },
+      {
+        "donor": "THE END FUND",
+        "total": 220679.0,
+        "Voluntary earmarked": 220679.0
+      },
+      {
+        "donor": "Saint Lucia",
+        "total": 209991.0,
+        "Assessed": 42768.0,
+        "Voluntary un-earmarked": 82900.0,
+        "Other": 84323.0
+      },
+      {
+        "donor": "Antigua and Barbuda",
+        "total": 209678.0,
+        "Assessed": 42768.0,
+        "Voluntary un-earmarked": 82900.0,
+        "Other": 84010.0
+      },
+      {
+        "donor": "Bloomberg Philanthropies",
+        "total": 179764.0,
+        "Voluntary earmarked": 179764.0
+      },
+      {
+        "donor": "CDC Foundation",
+        "total": 167955.0,
+        "Voluntary earmarked": 167955.0
+      },
+      {
+        "donor": "France",
+        "total": 167184.0,
+        "Assessed": 167184.0
+      },
+      {
+        "donor": "Cayman Islands",
+        "total": 164535.0,
+        "Other": 164535.0
+      },
+      {
+        "donor": "Saint Kitts and Nevis",
+        "total": 164023.0,
+        "Assessed": 42768.0,
+        "Other": 121255.0
+      },
+      {
+        "donor": "Cura\u00e7ao",
+        "total": 158765.0,
+        "Assessed": 42768.0,
+        "Other": 115997.0
+      },
+      {
+        "donor": "Direct Relief",
+        "total": 154634.0,
+        "Voluntary earmarked": 154634.0
+      },
+      {
+        "donor": "Vital Strategies",
+        "total": 121907.0,
+        "Voluntary earmarked": 121907.0
+      },
+      {
+        "donor": "UNDRR",
+        "total": 112923.0,
+        "Voluntary earmarked": 112923.0
+      },
+      {
+        "donor": "The Global Fund to Fight AIDS, Tuberculosis and Malaria",
+        "total": 108555.0,
+        "Voluntary earmarked": 108555.0
+      },
+      {
+        "donor": "Sint Maarten (Dutch part)",
+        "total": 105113.0,
+        "Assessed": 42768.0,
+        "Other": 62345.0
+      },
+      {
+        "donor": "Centros de Diagn\u00f3sticos y Medicina Avanzada y de Conferencias M\u00e9dicas y Telemedicina",
+        "total": 90000.0,
+        "Voluntary un-earmarked": 90000.0
+      },
+      {
+        "donor": "Hospital General Materno Infantil y sus Pabellones de Geriatr\u00eda y Traumatolog\u00eda de la Plaza de la Salud",
+        "total": 90000.0,
+        "Voluntary un-earmarked": 90000.0
+      },
+      {
+        "donor": "Puerto Rico",
+        "total": 88452.0,
+        "Assessed": 88452.0
+      },
+      {
+        "donor": "Sony Music Entertainment",
+        "total": 82943.0,
+        "Voluntary earmarked": 82943.0
+      },
+      {
+        "donor": "Turks and Caicos Islands",
+        "total": 76838.0,
+        "Voluntary earmarked": 2136.0,
+        "Other": 74702.0
+      },
+      {
+        "donor": "British Virgin Islands",
+        "total": 76653.0,
+        "Other": 76653.0
+      },
+      {
+        "donor": "St Jude Childrens Research Hospital (USA)",
+        "total": 72111.0,
+        "Voluntary earmarked": 72111.0
+      },
+      {
+        "donor": "American Heart Association",
+        "total": 69773.0,
+        "Voluntary earmarked": 69773.0
+      },
+      {
+        "donor": "Vaccine Ambassadors",
+        "total": 62117.0,
+        "Voluntary earmarked": 62117.0
+      },
+      {
+        "donor": "The Church of Jesus Christ of Latter-day Saints",
+        "total": 60391.0,
+        "Voluntary earmarked": 60391.0
+      },
+      {
+        "donor": "TFK",
+        "total": 60270.0,
+        "Voluntary earmarked": 60270.0
+      },
+      {
+        "donor": "United Nations Partnership to Promote the Rights of Persons with Disabilities\u00a0(UNPRPD",
+        "total": 56020.0,
+        "Voluntary earmarked": 56020.0
+      },
+      {
+        "donor": "ORAS-CONHU",
+        "total": 55367.0,
+        "Voluntary earmarked": 55367.0
+      },
+      {
+        "donor": "Clean Air Fund",
+        "total": 50000.0,
+        "Voluntary earmarked": 50000.0
+      },
+      {
+        "donor": "Latin American Federation of the Pharmaceutical Industry (FIFARMA)",
+        "total": 49951.0,
+        "Voluntary earmarked": 49951.0
+      },
+      {
+        "donor": "Global Support and Development",
+        "total": 47650.0,
+        "Voluntary earmarked": 47650.0
+      },
+      {
+        "donor": "Netherlands",
+        "total": 42768.0,
+        "Assessed": 42768.0
+      },
+      {
+        "donor": "United Kingdom of Great Britain and Northern Ireland",
+        "total": 42768.0,
+        "Assessed": 42768.0
+      },
+      {
+        "donor": "Malta",
+        "total": 40846.0,
+        "Voluntary earmarked": 40846.0
+      },
+      {
+        "donor": "UNOPS",
+        "total": 38940.0,
+        "Voluntary earmarked": 38940.0
+      },
+      {
+        "donor": "Italy",
+        "total": 35822.0,
+        "Voluntary earmarked": 35822.0
+      },
+      {
+        "donor": "Anguilla",
+        "total": 31558.0,
+        "Other": 31558.0
+      },
+      {
+        "donor": "Robert Wood Johnson Foundation",
+        "total": 30302.0,
+        "Voluntary earmarked": 30302.0
+      },
+      {
+        "donor": "The Rockefeller Foundation",
+        "total": 30000.0,
+        "Voluntary earmarked": 30000.0
+      },
+      {
+        "donor": "University of Geneva",
+        "total": 27285.0,
+        "Voluntary earmarked": 27285.0
+      },
+      {
+        "donor": "The Caribbean Public Health Agency/(CARPHA)",
+        "total": 20000.0,
+        "Voluntary earmarked": 20000.0
+      },
+      {
+        "donor": "Childhood Cancer International",
+        "total": 16422.0,
+        "Voluntary earmarked": 16422.0
+      },
+      {
+        "donor": "University (College) of the West Indies",
+        "total": 15000.0,
+        "Voluntary earmarked": 15000.0
+      },
+      {
+        "donor": "CEPI",
+        "total": 11161.0,
+        "Voluntary earmarked": 11161.0
+      },
+      {
+        "donor": "Montserrat",
+        "total": 7108.0,
+        "Other": 7108.0
+      },
+      {
+        "donor": "IOM",
+        "total": 4905.0,
+        "Voluntary earmarked": 4905.0
+      },
+      {
+        "donor": "UN RESIDENT COORDINATOR'S OFFICE",
+        "total": 3154.0,
+        "Voluntary earmarked": 3154.0
+      },
+      {
+        "donor": "Australia",
+        "total": 2761.0,
+        "Voluntary earmarked": 2761.0
+      },
+      {
+        "donor": "International Agency for Research on Cancer",
+        "total": 2320.0,
+        "Voluntary earmarked": 2320.0
+      },
+      {
+        "donor": "Fred Hollows Foundation (FHF)",
+        "total": -19.0,
+        "Voluntary earmarked": -19.0
+      }
+    ]
   },
   "Peacekeeping Operations": {
     "total": 6799165959.0,
@@ -14765,8 +15357,8 @@
       },
       {
         "donor": "European Union",
-        "total": 79488434.0,
-        "Voluntary earmarked": 79441036.0,
+        "total": 81965842.0,
+        "Voluntary earmarked": 81918444.0,
         "Other": 47398.0
       },
       {
@@ -15000,6 +15592,11 @@
         "Assessed": 10812705.0,
         "Voluntary earmarked": 74219.0,
         "Other": 2963.0
+      },
+      {
+        "donor": "World Bank",
+        "total": 9713363.0,
+        "Voluntary earmarked": 9713363.0
       },
       {
         "donor": "Colombia",
@@ -15779,11 +16376,6 @@
         "total": 179506.0,
         "Assessed": 138624.0,
         "Voluntary earmarked": 40882.0
-      },
-      {
-        "donor": "World Bank",
-        "total": 178166.0,
-        "Voluntary earmarked": 178166.0
       },
       {
         "donor": "Burkina Faso",
@@ -23872,17 +24464,17 @@
     },
     "by_donor": [
       {
+        "donor": "United States of America",
+        "total": 233416238.7,
+        "Voluntary un-earmarked": 30520964.0,
+        "Voluntary earmarked": 195926198.7,
+        "Other": 6969076.0
+      },
+      {
         "donor": "Canada",
         "total": 191950629.0,
         "Voluntary un-earmarked": 33121019.0,
         "Voluntary earmarked": 158829610.0
-      },
-      {
-        "donor": "United States of America",
-        "total": 155837117.0,
-        "Voluntary un-earmarked": 30520964.0,
-        "Voluntary earmarked": 118347077.0,
-        "Other": 6969076.0
       },
       {
         "donor": "United Kingdom of Great Britain and Northern Ireland",

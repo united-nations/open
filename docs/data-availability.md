@@ -4,7 +4,12 @@
 
 https://unsceb.org/financial-statistics
 
-2011 - 2024
+Organization revenue and expenses: 2011–2025; contributor exports: 2013–2025.
+Geography: 2010–2025 (early geographic coverage differs from organization totals).
+SDG actual expense records: 2018–2024; source budget observations are excluded.
+All available historical observations now use the current CEB release, captured
+9 October 2026. ITC did not report for 2025. Source hashes, missing amount cells
+and coverage are recorded in `public/data/ceb-source.json`.
 
 - **Revenue by Entity**
   - Total Revenue

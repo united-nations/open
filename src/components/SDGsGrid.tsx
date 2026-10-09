@@ -539,9 +539,11 @@ export default function SDGsGrid() {
             details={
               showSpending ? (
                 <p>
-                  Unallocated expenditure is reported without an SDG assignment.
-                  Differences between the SDG dataset and organization
-                  expenditure totals are not treated as unallocated spending.
+                  Only reported actual expenses are included; budget figures are
+                  excluded. Unallocated expenditure is reported without an SDG
+                  assignment. Differences between the SDG dataset and
+                  organization expenditure totals are not treated as unallocated
+                  spending.
                 </p>
               ) : undefined
             }

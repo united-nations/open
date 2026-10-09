@@ -14996,6 +14996,11 @@
         "Voluntary earmarked": 82768487.0
       },
       {
+        "donor": "European Union",
+        "total": 96665906.0,
+        "Voluntary earmarked": 96665906.0
+      },
+      {
         "donor": "Spain",
         "total": 89345607.0,
         "Assessed": 67261457.0,
@@ -15192,11 +15197,6 @@
         "Voluntary earmarked": 54232.0
       },
       {
-        "donor": "European Union",
-        "total": 10293936.0,
-        "Voluntary earmarked": 10293936.0
-      },
-      {
         "donor": "Romania",
         "total": 10034503.0,
         "Assessed": 9833915.0,
@@ -15251,6 +15251,12 @@
         "total": 6267659.0,
         "Assessed": 3593161.0,
         "Voluntary earmarked": 2674498.0
+      },
+      {
+        "donor": "World Bank",
+        "total": 5637236.0,
+        "Voluntary earmarked": 5625329.0,
+        "Other": 11907.0
       },
       {
         "donor": "Peru",
@@ -15443,6 +15449,12 @@
         "Assessed": 1134683.0,
         "Voluntary un-earmarked": 1000.0,
         "Voluntary earmarked": 357063.0
+      },
+      {
+        "donor": "Bill & Melinda Gates Foundation",
+        "total": 1472183.0,
+        "Voluntary un-earmarked": 1468634.0,
+        "Voluntary earmarked": 3549.0
       },
       {
         "donor": "Sri Lanka",
@@ -16099,11 +16111,6 @@
         "Assessed": 14363.0
       },
       {
-        "donor": "World Bank",
-        "total": 11907.0,
-        "Other": 11907.0
-      },
-      {
         "donor": "Liberia",
         "total": 9258.0,
         "Assessed": 31519.0,
@@ -16124,6 +16131,11 @@
         "donor": "Niue",
         "total": -5.0,
         "Voluntary earmarked": -5.0
+      },
+      {
+        "donor": "UN OCHA",
+        "total": -37219.0,
+        "Voluntary earmarked": -37219.0
       },
       {
         "donor": "Sierra Leone",
@@ -32330,7 +32342,7 @@
     ]
   },
   "WMO": {
-    "total": 102902816.65,
+    "total": 102902816.65000002,
     "year": 2022,
     "by_type": {
       "Assessed": 73549376.76,
@@ -33332,11 +33344,6 @@
       },
       {
         "donor": "Zimbabwe",
-        "total": 14709.64247,
-        "Assessed": 14709.64247
-      },
-      {
-        "donor": "Planethood Foundation",
         "total": 14709.64247,
         "Assessed": 14709.64247
       }

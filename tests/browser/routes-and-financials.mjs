@@ -43,6 +43,12 @@ import assert from "assert";
   await page.goto(base + "/system/organizations/", {
     waitUntil: "networkidle",
   });
+  const fundingYear = page.getByRole("slider").first();
+  await fundingYear.focus();
+  await fundingYear.press("End");
+  while (Number(await fundingYear.getAttribute("aria-valuenow")) > 2024)
+    await fundingYear.press("ArrowLeft");
+  await page.waitForTimeout(500);
   await page
     .getByRole("radio", { name: "Funding", exact: true })
     .check({ force: true });
@@ -90,6 +96,8 @@ import assert from "assert";
   const s = page.getByRole("slider").first();
   await s.focus();
   await s.press("End");
+  while (Number(await s.getAttribute("aria-valuenow")) > 2024)
+    await s.press("ArrowLeft");
   await s.press("ArrowLeft");
   await s.press("ArrowRight");
   await page.waitForTimeout(1300);

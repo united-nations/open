@@ -5,6 +5,7 @@ import unittest
 from pathlib import Path
 
 import pandas as pd
+from ceb_data import select_geographic_totals, select_sdg_expenses
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'python'))
@@ -34,9 +35,11 @@ class FlowTests(unittest.TestCase):
     def test_all_source_years_reconcile_independently(self):
         sources = [pd.read_csv(ROOT / 'data/ceb/clean' / name) for name in (
             'expenses_sub_agency.csv', 'expenses_by_country_region_sub_agency.csv', 'expenses_sdgs.csv')]
+        sources[1] = select_geographic_totals(sources[1])
+        sources[2] = select_sdg_expenses(sources[2])
         result = module.build_export(*sources)
         self.assertEqual(result['meta']['years'], list(range(2018, 2025)))
-        self.assertEqual(result['meta']['geographicAnomalyCount'], 2)
+        self.assertEqual(result['meta']['geographicAnomalyCount'], 0)
         for year in result['data']:
             for dimension, source in [('geography', sources[1]), ('goals', sources[2])]:
                 expected = source[source.calendar_year == year['year']].amount.sum()
@@ -48,14 +51,17 @@ class FlowTests(unittest.TestCase):
         # DPO is the 2023 SDG alias of UN-DPO. UNRISD is a 2018 UN
         # sub-agency, not a separate organization in the spending backbone.
         self.assertNotIn('DPO', result['data'][-2]['entities'])
-        self.assertNotIn('UNRISD', result['data'][0]['entities'])
+        # Geography now reports UNRISD separately, while its SDGs still roll
+        # into the expense-source parent. Preserve that source distinction.
+        self.assertIsNone(result['data'][0]['entities']['UNRISD']['total'])
         self.assertAlmostEqual(sum(g['amount'] for g in result['data'][0]['entities']['UN Secretariat']['goals']), 2207230)
-        self.assertTrue(all(e['total'] is not None for y in result['data'] for e in y['entities'].values()))
+        # Source-only reporters may have no backbone control; retain them explicitly.
+        self.assertTrue(all(e['geographyDifference'] is None for y in result['data'] for e in y['entities'].values() if e['total'] is None))
         self.assertTrue(all(r['label'] for y in result['data'] for e in y['entities'].values() for r in e['geography']))
         women = result['data'][-1]['entities']['UN Women']
         anomalies = [r for r in women['geography'] if r['note']]
-        self.assertEqual(len(anomalies), 2)
-        self.assertTrue(all(r['sourceRegion'] == 'Africa' and r['region'] != 'Africa' for r in anomalies))
+        # The new source no longer reports these two records as subregions of Africa.
+        self.assertEqual(anomalies, [])
 
 
 if __name__ == '__main__':

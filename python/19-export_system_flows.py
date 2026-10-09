@@ -8,6 +8,7 @@ import json
 from pathlib import Path
 
 import pandas as pd
+from ceb_data import select_geographic_totals, select_sdg_expenses
 from utils import normalize_entity, normalize_country_name
 
 SOURCE = Path('data/ceb/clean')
@@ -16,7 +17,7 @@ KINDS = {'COU': 'country', 'REG': 'region', 'SUB': 'subregion'}
 
 
 def build_export(totals: pd.DataFrame, geography: pd.DataFrame, goals: pd.DataFrame) -> dict:
-    frames = [frame.copy() for frame in (totals, geography, goals)]
+    frames = [totals.copy(), select_geographic_totals(geography), select_sdg_expenses(goals)]
     for frame in frames:
         if frame.amount.isna().any():
             raise ValueError('Missing spending amount')
@@ -93,7 +94,7 @@ def build_export(totals: pd.DataFrame, geography: pd.DataFrame, goals: pd.DataFr
             },
             'notes': [
                 'Independent reported spending dimensions; not traced allocations of contributor funding.',
-                'Published geography retains the cached source vintage; current CEB downloads contain revisions and may differ. New snapshots require reconciliation before adoption.',
+                'All available years use the current CEB release; source vintage and hashes are recorded in ceb-source.json. Geography selects E06 total expense records.',
                 'SDG DPO is normalized to UN-DPO; separately reported sub-agencies are rolled into the same-year CEB expense-source parent where uniquely identified.',
                 'Country, region and subregion entries are retained with their source labels and classifications.',
                 'X00/x00 is retained as not allocated to a goal; signed reporting differences are not allocated to goals.',

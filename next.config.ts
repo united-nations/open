@@ -19,8 +19,8 @@ const nextConfig: NextConfig = {
     turbopack: {
         root: linkedSharedUi ? workspaceRoot : projectRoot,
         resolveAlias: linkedSharedUi ? {
-            react: path.join(projectRoot, 'node_modules/react'),
-            'react-dom': path.join(projectRoot, 'node_modules/react-dom'),
+            react: './' + path.relative(workspaceRoot, path.join(projectRoot, 'node_modules/react')),
+            'react-dom': './' + path.relative(workspaceRoot, path.join(projectRoot, 'node_modules/react-dom')),
         } : undefined,
     },
     output: 'export',

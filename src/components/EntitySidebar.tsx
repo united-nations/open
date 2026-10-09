@@ -38,6 +38,8 @@ import {
   FinancingInstrumentChart,
   FinancingInstrumentDataPoint,
 } from "@/components/charts/FinancingInstrumentChart";
+import cebSource from "../../public/data/ceb-source.json";
+import { loadYearData } from "@/lib/data";
 import { EntityFunctions } from "@/components/EntityFunctions";
 import { SDG_COLORS, SDG_SHORT_TITLES } from "@/lib/sdgs";
 import {
@@ -105,6 +107,11 @@ export function EntitySidebar({
     Math.max(yearRanges.entitySpending.max, yearRanges.entityRevenue.max),
   ).reverse();
   const [selectedYear, setSelectedYear] = useState(initialYear);
+  const nonReporting: Record<string, string[]> = cebSource.nonReporting;
+  const didNotReport =
+    !!entity &&
+    (nonReporting[String(selectedYear)] ?? []).includes(entity.entity);
+  const sdgYearAvailable = yearRanges.sdgExpenses.years.includes(selectedYear);
   const initialYearData = useMemo(
     () => ({ spending, revenue }),
     [spending, revenue],
@@ -249,12 +256,17 @@ export function EntitySidebar({
     if (!entity?.entity) return;
     let active = true;
     Promise.all([
-      fetch(`${basePath}/data/country-expenses-${selectedYear}.json`)
-        .then((r) => r.json())
-        .catch(() => []),
-      fetch(`${basePath}/data/sdg-expenses-${selectedYear}.json`)
-        .then((r) => r.json())
-        .catch(() => ({})),
+      yearRanges.countryExpenses.years.includes(selectedYear)
+        ? loadYearData<CountryExpense[]>(
+            "country-expenses",
+            selectedYear,
+          ).catch(() => [])
+        : Promise.resolve([]),
+      sdgYearAvailable
+        ? loadYearData<
+            Record<string, { total: number; entities: Record<string, number> }>
+          >("sdg-expenses", selectedYear).catch(() => ({}))
+        : Promise.resolve({}),
     ])
       .then(
         ([countryData, sdgData]: [
@@ -273,7 +285,7 @@ export function EntitySidebar({
           const bySDG = Object.entries(sdgData)
             .filter(([, data]) => data.entities[entity.entity])
             .map(([sdg, data]) => ({
-              sdg: parseInt(sdg),
+              sdg: sdg === "unallocated" ? 0 : parseInt(sdg),
               amount: data.entities[entity.entity],
             }))
             .sort((a, b) => a.sdg - b.sdg);
@@ -295,7 +307,13 @@ export function EntitySidebar({
     return () => {
       active = false;
     };
-  }, [entity?.entity, selectedYear, breakdownKey]);
+  }, [
+    entity?.entity,
+    selectedYear,
+    breakdownKey,
+    sdgYearAvailable,
+    yearRanges.countryExpenses.years,
+  ]);
 
   const handleClose = useCallback(() => {
     setIsClosing(true);
@@ -454,7 +472,7 @@ export function EntitySidebar({
                 value={
                   loadingYear
                     ? "Loading…"
-                    : yearError
+                    : yearError || didNotReport
                       ? "Unavailable"
                       : formatBudget(yearSpending)
                 }
@@ -466,7 +484,9 @@ export function EntitySidebar({
                 />
                 {!yearRevenue && (
                   <p className="mt-1 text-sm text-gray-500">
-                    Funding data not available at sub-entity level
+                    {didNotReport
+                      ? `CEB reports that ${entity.entity} did not submit data for ${selectedYear}.`
+                      : "Funding data unavailable for this entity and year."}
                   </p>
                 )}
               </div>
@@ -678,6 +698,12 @@ export function EntitySidebar({
             <EntityFunctions entity={entity.entity} year={selectedYear} />
 
             {/* Spending by SDG Section */}
+            {!sdgYearAvailable && (
+              <p className="text-sm text-gray-500">
+                SDG spending breakdown unavailable for {selectedYear}. Latest
+                CEB SDG data: {yearRanges.sdgExpenses.max}.
+              </p>
+            )}
             {spendingBreakdown && spendingBreakdown.bySDG.length > 0 && (
               <div className="mt-4">
                 <FinancialPanelHeading subheading>
@@ -698,19 +724,27 @@ export function EntitySidebar({
                       return (
                         <FinancialPanelRankedRow
                           key={item.sdg}
-                          label={SDG_SHORT_TITLES[item.sdg]}
+                          label={
+                            item.sdg === 0
+                              ? "Unallocated"
+                              : SDG_SHORT_TITLES[item.sdg]
+                          }
                           value={formatBudgetFixed(item.amount)}
-                          onClick={() => navigateToSidebar("sdg", item.sdg)}
+                          onClick={
+                            item.sdg === 0
+                              ? undefined
+                              : () => navigateToSidebar("sdg", item.sdg)
+                          }
                           badge={
                             <FinancialPanelGoalBadge
-                              label={String(item.sdg)}
-                              color={SDG_COLORS[item.sdg]}
+                              label={item.sdg === 0 ? "—" : String(item.sdg)}
+                              color={SDG_COLORS[item.sdg] ?? "#777777"}
                             />
                           }
                         >
                           <FinancialPanelBar
                             percent={normalizedWidth}
-                            color={SDG_COLORS[item.sdg]}
+                            color={SDG_COLORS[item.sdg] ?? "#777777"}
                           />
                         </FinancialPanelRankedRow>
                       );

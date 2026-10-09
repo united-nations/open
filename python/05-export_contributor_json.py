@@ -5,13 +5,15 @@ from pathlib import Path
 from collections import defaultdict
 from utils import normalize_entity
 
-YEARS = list(range(2013, 2025))
+YEARS = []  # Populated from validated fused coverage in load_data().
 OUT = Path("public/data")
 
 from revenue_categories import rev_category
 
 def load_data():
+    global YEARS
     fused = pd.read_csv("data/ceb/fused/revenue_by_contributor.csv")
+    YEARS = sorted(int(year) for year in fused["year"].unique())
     fused["entity"] = fused["entity"].apply(normalize_entity)
     fused["rev_cat"] = fused["rev_type"].apply(rev_category)
     

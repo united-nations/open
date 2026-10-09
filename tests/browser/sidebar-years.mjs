@@ -19,11 +19,13 @@ import fs from "node:fs";
     });
     const d = p.getByRole("dialog").first();
     await d.waitFor();
-    const before = await d.innerText();
     const choose = async (year) => {
       await d.getByRole("button", { name: "Select year", exact: true }).click();
       await p.getByRole("button", { name: String(year), exact: true }).click();
     };
+    await choose(2024);
+    await p.waitForTimeout(300);
+    const before = await d.innerText();
     await p.route(`**/${file}-2023.json`, async (r) => {
       await new Promise((resolve) => setTimeout(resolve, 600));
       await r.continue();

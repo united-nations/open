@@ -28,7 +28,9 @@ import fs from "fs";
     const slider = page.getByRole("slider").first();
     await slider.focus();
     await slider.press("End");
-    await slider.press("ArrowLeft");
+    while (Number(await slider.getAttribute("aria-valuenow")) > 2023) {
+      await slider.press("ArrowLeft");
+    }
     await page.waitForTimeout(1200);
     const body = await page.locator("body").innerText();
     results.push({

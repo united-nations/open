@@ -305,15 +305,20 @@ export function EntitiesTreemap() {
         }
         if (loadedSpendingYear !== requestedYear) return;
       }
-      const entity = activeEntities.find(
-        (candidate) => candidate.entity === pendingDeepLink,
-      );
+      const entity =
+        activeEntities.find(
+          (candidate) => candidate.entity === pendingDeepLink,
+        ) ??
+        entities
+          .filter((candidate) => candidate.entity === pendingDeepLink)
+          .map(normalizeEntityForDisplay)[0];
       if (entity) setSelectedEntity(entity);
       setPendingDeepLink(null);
     }, 0);
     return () => window.clearTimeout(timer);
   }, [
     activeEntities,
+    entities,
     loading,
     pendingDeepLink,
     setPendingDeepLink,

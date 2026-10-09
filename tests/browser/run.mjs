@@ -4,6 +4,7 @@ import { portalUrl } from "./helpers.mjs";
 const checks = [
   "header-layout",
   "data-disclosures",
+  "ceb-refresh",
   "routes-and-financials",
   "uninfo-funding",
   "peacekeeping-stages",

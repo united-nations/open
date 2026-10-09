@@ -39,6 +39,8 @@ All 21 audit findings have a disposition below. Source limitations are explicitl
 
 The newer CEB geographic vintage is not silently adopted: its grain and historical allocations differ. The old snapshot remains explicitly identified pending version reconciliation. UNINFO unfiltered periods and within-workspace country allocations remain unknown and are no longer claimed as verified country-year observations. The Secretariat reconstruction remains mixed-basis, with a documented UNEP bridge. Original-source sampling gaps (including the inaccessible 2025/26 peacekeeping sample, honour-roll dates and unverified fund/entity identities) remain limits of assurance, not passed checks.
 
+**9 October 2026 update:** The CEB 2025 integration supersedes the frozen-geography limitation above and in SYS-07. The portal now uses the complete current CEB historical vintage, selects E06 geographic totals to avoid overlapping components, and preserves revised source allocations. See the [integration review](ceb-2025-review.md) for reconciliation and validation. The separate UNINFO and Secretariat limitations remain applicable.
+
 See [implementation notes](../data-integrity-remediation.md), [Python regressions](../../python/tests/test_audit_remediation.py), and [reproducible validation](validation.md). Detailed original evidence remains in the ignored local archive `audits/2026-09-16/`.
 
 ## Follow-up: peacekeeping stages and React checks (2026-09-24)

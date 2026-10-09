@@ -6,6 +6,7 @@ import unittest
 from pathlib import Path
 from unittest.mock import patch
 import pandas as pd
+from ceb_data import select_geographic_totals, select_sdg_expenses
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / 'python'))
 spec = importlib.util.spec_from_file_location('geographic_export', ROOT / 'python/20-export_geographic_expenses.py')
@@ -14,7 +15,7 @@ spec.loader.exec_module(module)
 
 class GeographicTests(unittest.TestCase):
     def test_every_year_preserves_source_totals_and_levels(self):
-        source = pd.read_csv(ROOT / 'data/ceb/clean/expenses_by_country_region_sub_agency.csv')
+        source = select_geographic_totals(pd.read_csv(ROOT / 'data/ceb/clean/expenses_by_country_region_sub_agency.csv'))
         for year, frame in source.groupby('calendar_year'):
             rows = json.loads((ROOT / f'public/data/geographic-expenses-{year}.json').read_text())
             self.assertEqual(len(rows), len({r['iso3'] for r in rows}))
@@ -41,7 +42,7 @@ class GeographicTests(unittest.TestCase):
                 self.assertTrue(any('conflict' in note for note in row['notes']))
 
     def test_unallocated_sdgs_match_source(self):
-        source = pd.read_csv(ROOT / 'data/ceb/clean/expenses_sdgs.csv')
+        source = select_sdg_expenses(pd.read_csv(ROOT / 'data/ceb/clean/expenses_sdgs.csv'))
         for year, frame in source.groupby('calendar_year'):
             exported = json.loads((ROOT / f'public/data/sdg-expenses-{year}.json').read_text())
             self.assertAlmostEqual(exported['unallocated']['total'], frame.loc[frame.sdg_goal.str.lower() == 'x00', 'amount'].sum(), places=3)

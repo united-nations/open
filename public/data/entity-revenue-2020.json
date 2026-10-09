@@ -12810,7 +12810,7 @@
     ]
   },
   "UN Secretariat": {
-    "total": 6514058434.720001,
+    "total": 6514058434.72,
     "year": 2020,
     "by_type": {
       "Assessed": 2953043728.92,
@@ -12918,10 +12918,10 @@
       },
       {
         "donor": "Norway",
-        "total": 101715899.71000002,
+        "total": 101710194.60000002,
         "Assessed": 23257947.0,
         "Voluntary un-earmarked": 9609195.15,
-        "Voluntary earmarked": 68848757.56000002
+        "Voluntary earmarked": 68843052.45000002
       },
       {
         "donor": "Australia",
@@ -12951,6 +12951,12 @@
         "Voluntary earmarked": 14947258.220000003
       },
       {
+        "donor": "European Union",
+        "total": 78228893.69999994,
+        "Voluntary un-earmarked": 21279937.19,
+        "Voluntary earmarked": 56948956.51000001
+      },
+      {
         "donor": "Finland",
         "total": 46750436.32000002,
         "Assessed": 12986201.0,
@@ -12959,10 +12965,10 @@
       },
       {
         "donor": "T\u00fcrkiye",
-        "total": 43851845.9,
+        "total": 44705169.050000004,
         "Assessed": 42289980.0,
         "Voluntary un-earmarked": 9900.99,
-        "Voluntary earmarked": 1551964.9100000001
+        "Voluntary earmarked": 2405288.0599999996
       },
       {
         "donor": "Saudi Arabia",
@@ -13118,11 +13124,6 @@
         "Voluntary earmarked": 185236.86
       },
       {
-        "donor": "European Union",
-        "total": 10575379.22,
-        "Voluntary earmarked": 10575379.22
-      },
-      {
         "donor": "Iraq",
         "total": 10249051.590000002,
         "Assessed": 3979145.0,
@@ -13168,10 +13169,10 @@
       },
       {
         "donor": "Philippines",
-        "total": 6536897.55,
+        "total": 6531897.55,
         "Assessed": 6323447.0,
         "Voluntary un-earmarked": 10000.0,
-        "Voluntary earmarked": 203450.55
+        "Voluntary earmarked": 198450.55
       },
       {
         "donor": "Romania",
@@ -13230,6 +13231,11 @@
         "Assessed": 4256760.0,
         "Voluntary un-earmarked": 100000.0,
         "Voluntary earmarked": 204598.34
+      },
+      {
+        "donor": "World Bank",
+        "total": 3896629.81,
+        "Voluntary earmarked": 3896629.81
       },
       {
         "donor": "Morocco",
@@ -13342,6 +13348,11 @@
         "total": 1564517.32,
         "Assessed": 1542304.0,
         "Voluntary earmarked": 22213.32
+      },
+      {
+        "donor": "Bill & Melinda Gates Foundation",
+        "total": 1543384.22,
+        "Voluntary un-earmarked": 1543384.22
       },
       {
         "donor": "Belarus",
@@ -14078,6 +14089,11 @@
         "donor": "Montserrat",
         "total": -12727.06,
         "Voluntary earmarked": -12727.06
+      },
+      {
+        "donor": "UN OCHA",
+        "total": -54525.78,
+        "Voluntary earmarked": -54525.78
       }
     ]
   },
@@ -29430,7 +29446,7 @@
         "Assessed": 4142474.52
       },
       {
-        "donor": "Taiwan, Province of China",
+        "donor": "Taiwan (Province of China)",
         "total": 3851019.25,
         "Assessed": 3721806.34,
         "Voluntary un-earmarked": 129212.91

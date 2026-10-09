@@ -49,6 +49,9 @@
       "PAHO": {
         "Voluntary earmarked": 15984051.0
       },
+      "Peacekeeping Operations": {
+        "Other": 16594928.0
+      },
       "UN Secretariat": {
         "Voluntary un-earmarked": 18869614.0,
         "Voluntary earmarked": 81825057.0,
@@ -21334,6 +21337,9 @@
       "PAHO": {
         "Voluntary earmarked": 668.0
       },
+      "Peacekeeping Operations": {
+        "Other": 12988311.0
+      },
       "UN Secretariat": {
         "Voluntary un-earmarked": 18622249.0,
         "Voluntary earmarked": 263284631.0,
@@ -22558,6 +22564,9 @@
       "PAHO": {
         "Voluntary earmarked": 99997.0
       },
+      "Peacekeeping Operations": {
+        "Other": 291227.0
+      },
       "UN Secretariat": {
         "Voluntary earmarked": 3139045.0,
         "Other": 614260.0
@@ -22619,7 +22628,7 @@
         "Voluntary earmarked": 1092792.0
       },
       "Peacekeeping Operations": {
-        "Other": 314552.0
+        "Other": 23325.0
       },
       "UN Secretariat": {
         "Voluntary earmarked": 1586799.0,
@@ -23363,9 +23372,6 @@
       "PAHO": {
         "Voluntary earmarked": 63804.0
       },
-      "Peacekeeping Operations": {
-        "Other": 12988311.0
-      },
       "UN Secretariat": {
         "Voluntary earmarked": 1619299.0,
         "Other": 1054379.0
@@ -23932,16 +23938,6 @@
         "Assessed": 3430.0
       }
     }
-  },
-  "Other European Union": {
-    "status": "organization",
-    "category": "European Union",
-    "contributions": {
-      "Peacekeeping Operations": {
-        "Other": 16594928.0
-      }
-    },
-    "is_other": true
   },
   "Jersey": {
     "status": "nonmember",

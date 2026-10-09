@@ -95,10 +95,10 @@ def validate(df: pd.DataFrame, ceb: pd.DataFrame, sec: pd.DataFrame):
     print("✓ No duplicate entity/year combinations")
     
     # 2. Year coverage
-    expected_years = set(range(2011, 2025))
+    expected_years = set(ceb["year"].unique())
     actual_years = set(df["year"].unique())
     assert expected_years == actual_years, f"Missing years: {expected_years - actual_years}"
-    print(f"✓ All {len(expected_years)} years present (2011-2024)")
+    print(f"✓ All {len(expected_years)} source years present")
     
     # 3. Per-year validation
     print("\nPer-year totals:")

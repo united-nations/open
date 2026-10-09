@@ -50,7 +50,7 @@
         "Voluntary earmarked": 37593.96
       },
       "UN Secretariat": {
-        "Voluntary earmarked": 19979201.71
+        "Voluntary earmarked": 66949591.18999999
       },
       "UN Women": {
         "Voluntary earmarked": 6373111.27
@@ -608,7 +608,7 @@
       },
       "UN Secretariat": {
         "Assessed": 155297872.0,
-        "Voluntary earmarked": 334148195.3600001
+        "Voluntary earmarked": 334202462.3600001
       },
       "UN Tourism": {
         "Assessed": 391285.39
@@ -2252,6 +2252,7 @@
       },
       "UN Secretariat": {
         "Assessed": 27710060.0,
+        "Voluntary un-earmarked": 560123.0,
         "Voluntary earmarked": 83042444.71
       },
       "UN Tourism": {
@@ -2524,6 +2525,7 @@
       },
       "UN Secretariat": {
         "Assessed": 23237560.0,
+        "Voluntary un-earmarked": 1157796.0,
         "Voluntary earmarked": 464972754.1499999
       },
       "UN Women": {
@@ -3922,6 +3924,7 @@
       },
       "UN Secretariat": {
         "Assessed": 11084024.0,
+        "Voluntary un-earmarked": 200000.0,
         "Voluntary earmarked": 23235970.57
       },
       "UN Women": {
@@ -7191,7 +7194,7 @@
       },
       "UN Secretariat": {
         "Assessed": 1555653.0,
-        "Voluntary earmarked": 5926197.630000001
+        "Voluntary earmarked": 5985934.630000001
       },
       "UN Women": {
         "Voluntary un-earmarked": 1504629.63,
@@ -17815,8 +17818,7 @@
         "Other": 96051000.0
       },
       "UN Secretariat": {
-        "Voluntary un-earmarked": 1917919.0,
-        "Voluntary earmarked": 131347635.24000023,
+        "Voluntary earmarked": 77049197.70000029,
         "Other": 639385319.2
       },
       "UN Tourism": {
@@ -17967,6 +17969,9 @@
       },
       "PAHO": {
         "Voluntary earmarked": 841852.0
+      },
+      "UN Secretariat": {
+        "Voluntary earmarked": 46100.38
       },
       "UN Women": {
         "Voluntary earmarked": 4000728.0
@@ -19051,7 +19056,7 @@
         "Voluntary earmarked": 157620.0
       },
       "UN Secretariat": {
-        "Voluntary earmarked": 110780.75
+        "Voluntary earmarked": 1307020.86
       },
       "UN Tourism": {
         "Voluntary earmarked": 49499.59
@@ -19103,7 +19108,7 @@
         "Voluntary earmarked": 3204602.84
       },
       "UN Secretariat": {
-        "Voluntary earmarked": 475401.0
+        "Voluntary earmarked": 5161255.63
       },
       "UNAIDS": {
         "Voluntary earmarked": 1378812.0
@@ -19198,7 +19203,7 @@
         "Assessed": 16449331.22
       },
       "UN Secretariat": {
-        "Voluntary earmarked": 204132.61
+        "Voluntary earmarked": 1489981.55
       },
       "UN-Habitat": {
         "Voluntary earmarked": 13029379.27
@@ -19616,7 +19621,7 @@
       }
     }
   },
-  "Taiwan, Province of China": {
+  "Taiwan (Province of China)": {
     "status": "nonmember",
     "category": "Government",
     "contributions": {

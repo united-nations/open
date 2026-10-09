@@ -2,10 +2,22 @@
 
 This document explains how CEB and Secretariat expenses data are combined to provide granular breakdowns.
 
+## Current configuration (9 October 2026)
+
+`FUSE_SECRETARIAT = False`: the System view uses CEB-only organization totals for
+all years through 2025. The fusion algorithm below is retained as an optional
+configuration, not the current published accounting basis. All historical CEB
+observations use the updated release. Geographic exports select E06 totals and
+exclude E06A/B/C components; they preserve source labels, signed amounts and
+unknown country-level labels. Geography begins in 2010, before the organization
+expense series, so its early coverage differs. SDG expenses select EXP actuals,
+exclude BUD/BUG budgets, and end in 2024; a blank year is not a zero allocation.
+File provenance and coverage are published in `public/data/ceb-source.json`.
+
 ## Data Sources
 
 ### CEB Expenses (Primary)
-`data/ceb/clean/expenses_sub_agency.csv` - 49 entities, 2011-2024
+`data/ceb/clean/expenses_sub_agency.csv` - 49 entities, 2011-2025
 
 The CEB reports aggregate figures where:
 - "UN" includes 70+ secretariat sub-entities
@@ -49,7 +61,7 @@ For years without secretariat data, use CEB entities as-is.
 
 | Column | Description |
 |--------|-------------|
-| year | Calendar year (2011-2024) |
+| year | Calendar year (2011-2025) |
 | entity | Entity code |
 | amount | Expenses in USD |
 | source | "ceb", "secretariat", or "secretariat_assessed" |
