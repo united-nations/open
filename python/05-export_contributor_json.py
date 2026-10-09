@@ -84,14 +84,17 @@ def export_entity_revenue_json(df: pd.DataFrame):
 
 def export_contributor_trends_json(df: pd.DataFrame):
     """Generate contributor-trends.json with time series data."""
-    gov_donors = set(df[(df["donor_type"] == "Government") & (~df["is_other"])]["donor_name"].unique())
-    nongov_df = df[(df["donor_type"] != "Government") & (~df["is_other"])]
+    # Match the treemap: known contributor types include their aggregate Other
+    # entries; the instrument-level reconciliation balance stays Unattributed.
+    attributed = df[df["donor_name"] != "Unattributed"]
+    gov_donors = set(attributed[attributed["donor_type"] == "Government"]["donor_name"].unique())
+    nongov_df = attributed[attributed["donor_type"] != "Government"]
     nongov_donors = set(nongov_df["donor_name"].unique())
+    unattributed_donors = set(df[df["donor_name"] == "Unattributed"]["donor_name"].unique())
     
     # Group non-gov donors by category
-    donor_to_cat = nongov_df.groupby("donor_name")["donor_type"].first().to_dict()
-    categories = sorted(set(donor_to_cat.values()))
-    cat_to_donors = {cat: sorted([d for d, c in donor_to_cat.items() if c == cat]) for cat in categories}
+    categories = sorted(nongov_df["donor_type"].unique())
+    cat_to_donors = {cat: sorted(nongov_df[nongov_df["donor_type"] == cat]["donor_name"].unique()) for cat in categories}
     
     # Build contributor time series
     data = defaultdict(lambda: defaultdict(lambda: {"assessed": 0, "voluntary_earmarked": 0, "voluntary_unearmarked": 0, "other": 0, "total": 0}))
@@ -111,37 +114,28 @@ def export_contributor_trends_json(df: pd.DataFrame):
         data[donor][year]["total"] += amt
     
     # Build aggregates (gov, non-gov, all, and per-category)
-    aggregates = {"gov": [], "non-gov": [], "all": []}
+    aggregates = {"gov": [], "non-gov": [], "unattributed": [], "all": []}
     for cat in categories:
         aggregates[f"cat:{cat}"] = []
     
     for year in YEARS:
-        gov_t = {"year": year, "assessed": 0, "voluntary_earmarked": 0, "voluntary_unearmarked": 0, "other": 0, "total": 0}
-        nongov_t = {"year": year, "assessed": 0, "voluntary_earmarked": 0, "voluntary_unearmarked": 0, "other": 0, "total": 0}
-        cat_totals = {cat: {"year": year, "assessed": 0, "voluntary_earmarked": 0, "voluntary_unearmarked": 0, "other": 0, "total": 0} for cat in categories}
-        
-        for d in gov_donors:
-            for k in ["assessed", "voluntary_earmarked", "voluntary_unearmarked", "other", "total"]:
-                gov_t[k] += data[d][year][k]
-        for d in nongov_donors:
-            cat = donor_to_cat.get(d, "Other")
-            for k in ["assessed", "voluntary_earmarked", "voluntary_unearmarked", "other", "total"]:
-                nongov_t[k] += data[d][year][k]
-                if cat in cat_totals:
-                    cat_totals[cat][k] += data[d][year][k]
-        
-        aggregates["gov"].append(gov_t)
-        aggregates["non-gov"].append(nongov_t)
-        all_year = {"year": year, "assessed": 0, "voluntary_unearmarked": 0, "voluntary_earmarked": 0, "other": 0, "total": 0}
-        keys = {"Assessed": "assessed", "Voluntary un-earmarked": "voluntary_unearmarked", "Voluntary earmarked": "voluntary_earmarked", "Other": "other"}
-        for category, amount in df[df["year"] == year].groupby("rev_cat")["amount"].sum().items():
-            all_year[keys[category]] += amount
-            all_year["total"] += amount
-        aggregates["all"].append(all_year)
+        year_rows = df[df["year"] == year]
+        balance = year_rows["donor_name"] == "Unattributed"
+        government = (year_rows["donor_type"] == "Government") & ~balance
+        groups = {"gov": year_rows[government],
+                  "non-gov": year_rows[~government & ~balance],
+                  "unattributed": year_rows[balance], "all": year_rows}
         for cat in categories:
-            aggregates[f"cat:{cat}"].append(cat_totals[cat])
+            groups[f"cat:{cat}"] = groups["non-gov"][groups["non-gov"]["donor_type"] == cat]
+        keys = {"Assessed": "assessed", "Voluntary un-earmarked": "voluntary_unearmarked", "Voluntary earmarked": "voluntary_earmarked", "Other": "other"}
+        for group, rows in groups.items():
+            totals = {"year": year, **dict.fromkeys([*keys.values(), "total"], 0)}
+            for category, amount in rows.groupby("rev_cat")["amount"].sum().items():
+                totals[keys[category]] += float(amount)
+                totals["total"] += float(amount)
+            aggregates[group].append(totals)
     
-    contributors = {d: [{"year": y, **data[d][y]} for y in YEARS] for d in sorted(gov_donors | nongov_donors)}
+    contributors = {d: [{"year": y, **data[d][y]} for y in YEARS] for d in sorted(gov_donors | nongov_donors | unattributed_donors)}
     
     output = {
         "meta": {

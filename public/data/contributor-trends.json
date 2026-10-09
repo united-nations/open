@@ -136,6 +136,7 @@
       "Liechtenstein",
       "Lithuania",
       "Luxembourg",
+      "MISC",
       "Macao SAR",
       "Madagascar",
       "Malawi",
@@ -168,6 +169,7 @@
       "North Macedonia",
       "Norway",
       "Oman",
+      "Other Government",
       "Pakistan",
       "Palau",
       "Panama",
@@ -271,10 +273,26 @@
       "JUNIOR PROFESSIONAL OFFICERS PROGRAMME",
       "Latin American Federation of the Pharmaceutical Industry (FIFARMA)",
       "Miscellaneous",
+      "Multi Donor Trust Funds",
+      "Multi Partner Trust Fund Office",
       "ORAS-CONHU",
+      "Other Academic",
+      "Other European Union",
+      "Other Foundations",
+      "Other Multilateral - Global Funds",
+      "Other Multilateral - IFIs",
+      "Other Multilateral - Other",
+      "Other Multilateral - UN Orgs",
+      "Other Multilateral - UN Pooled Funds",
+      "Other NGOs",
+      "Other Other Contributors",
+      "Other Private",
+      "Other Private Sector",
+      "Other Public Private Partnership",
       "Project Hope",
       "Refunds to donors/Miscellaneous",
       "Resolve to Save Lives",
+      "Revenue from Activities",
       "Robert Wood Johnson Foundation",
       "Sony Music Entertainment",
       "St Jude Childrens Research Hospital (USA)",
@@ -291,6 +309,7 @@
       "UN OCHA",
       "UN RESIDENT COORDINATOR'S OFFICE",
       "UNDP (as donor)",
+      "UNDP Administered Trust Funds",
       "UNDRR",
       "UNICEF",
       "UNITAID",
@@ -309,12 +328,15 @@
     "nonGovCategories": {
       "Academic": [
         "Instituto Todos pela Saude/All for Health Institute",
+        "Other Academic",
+        "Other Private",
         "St Jude Childrens Research Hospital (USA)",
         "University (College) of the West Indies",
         "University of Geneva"
       ],
       "European Union": [
-        "European Union"
+        "European Union",
+        "Other European Union"
       ],
       "Foundations": [
         "Bernard Van Leer Foundation",
@@ -324,6 +346,8 @@
         "Clean Air Fund",
         "Ford Foundation",
         "Fred Hollows Foundation (FHF)",
+        "Other Foundations",
+        "Other Private",
         "Project Hope",
         "Robert Wood Johnson Foundation",
         "THE END FUND",
@@ -335,24 +359,36 @@
         "Global Environment Facility",
         "Global Environment Facility (thru UNDP or UNEP)",
         "Global Partnership for Education",
-        "Green Climate Fund"
+        "Green Climate Fund",
+        "Other Multilateral - Global Funds",
+        "Other Private",
+        "The Global Fund to Fight AIDS, Tuberculosis and Malaria"
       ],
       "Multilateral - IFIs": [
         "Asian Development Bank",
         "Inter-American Development Bank",
+        "Other Multilateral - IFIs",
         "World Bank"
       ],
       "Multilateral - Other": [
+        "Multi Donor Trust Funds",
         "ORAS-CONHU",
+        "Other Multilateral - Other",
+        "Other Private",
         "The Caribbean Public Health Agency/(CARPHA)"
       ],
       "Multilateral - UN Orgs": [
         "IOM",
         "International Agency for Research on Cancer",
+        "Multi Donor Trust Funds",
+        "Multi Partner Trust Fund Office",
+        "Other Multilateral - UN Orgs",
+        "Other Private",
         "The Joint United Nations Programme on HIV/AIDS",
         "UN OCHA",
         "UN RESIDENT COORDINATOR'S OFFICE",
         "UNDP (as donor)",
+        "UNDP Administered Trust Funds",
         "UNDRR",
         "UNICEF",
         "UNITAID",
@@ -360,6 +396,12 @@
         "UNOSSC",
         "United Nations",
         "United Nations Partnership to Promote the Rights of Persons with Disabilities\u00a0(UNPRPD"
+      ],
+      "Multilateral - UN Pooled Funds": [
+        "Multi Donor Trust Funds",
+        "Multi Partner Trust Fund Office",
+        "Other Multilateral - UN Pooled Funds",
+        "UNDP Administered Trust Funds"
       ],
       "NGOs": [
         "American Heart Association",
@@ -369,16 +411,26 @@
         "Global Support and Development",
         "Hospital General Materno Infantil y sus Pabellones de Geriatr\u00eda y Traumatolog\u00eda de la Plaza de la Salud",
         "Latin American Federation of the Pharmaceutical Industry (FIFARMA)",
+        "Multi Donor Trust Funds",
+        "Other NGOs",
+        "Other Private",
         "Resolve to Save Lives",
         "TFK",
         "THE TASK FORCE FOR GLOBAL HEALTH (TFGH)",
+        "The Global Fund to Fight AIDS, Tuberculosis and Malaria",
         "UMANE Association",
         "USA National Committee",
         "United States Fund for UNICEF",
         "Vaccine Ambassadors",
         "Vital Strategies"
       ],
+      "No Contributor": [
+        "Other Private",
+        "Revenue from Activities"
+      ],
       "Non-Government": [
+        "Multi Donor Trust Funds",
+        "Other Private",
         "The Global Fund to Fight AIDS, Tuberculosis and Malaria"
       ],
       "Other": [
@@ -386,12 +438,21 @@
         "Miscellaneous",
         "Refunds to donors/Miscellaneous"
       ],
+      "Other Contributors": [
+        "Multi Partner Trust Fund Office",
+        "Other Other Contributors",
+        "Other Private"
+      ],
       "Private Sector": [
+        "Other Private",
+        "Other Private Sector",
         "Sony Music Entertainment",
         "The Church of Jesus Christ of Latter-day Saints"
       ],
       "Public Private Partnership": [
-        "CEPI"
+        "CEPI",
+        "Other Public Private Partnership",
+        "The Global Fund to Fight AIDS, Tuberculosis and Malaria"
       ]
     }
   },
@@ -400,212 +461,318 @@
       {
         "year": 2013,
         "assessed": 13155828210.49,
-        "voluntary_earmarked": 15187563694.31001,
-        "voluntary_unearmarked": 4348809605.620001,
+        "voluntary_unearmarked": 4348809605.62,
+        "voluntary_earmarked": 15187563694.31,
         "other": 0,
-        "total": 32692201510.420006
+        "total": 32692201510.42
       },
       {
         "year": 2014,
         "assessed": 13575233302.57,
-        "voluntary_earmarked": 18671930991.129993,
-        "voluntary_unearmarked": 4763879649.950001,
+        "voluntary_unearmarked": 4763879649.95,
+        "voluntary_earmarked": 18671930991.13,
         "other": 0,
-        "total": 37011043943.65003
+        "total": 37011043943.65
       },
       {
         "year": 2015,
-        "assessed": 14344048786.890001,
-        "voluntary_earmarked": 17734921252.23999,
-        "voluntary_unearmarked": 3752542908.0400004,
+        "assessed": 14344048786.89,
+        "voluntary_unearmarked": 3752542908.04,
+        "voluntary_earmarked": 17734921252.24,
         "other": 0,
-        "total": 35831512947.170006
+        "total": 35831512947.17
       },
       {
         "year": 2016,
-        "assessed": 13802496407.590002,
-        "voluntary_earmarked": 18950807891.24001,
-        "voluntary_unearmarked": 4078157272.830001,
+        "assessed": 13802496407.59,
+        "voluntary_unearmarked": 4078157272.83,
+        "voluntary_earmarked": 18950807891.24,
         "other": 0,
-        "total": 36831461571.66002
+        "total": 36831461571.66
       },
       {
         "year": 2017,
-        "assessed": 13615813916.599995,
-        "voluntary_earmarked": 20723188598.769993,
-        "voluntary_unearmarked": 3577747941.4299994,
+        "assessed": 13615813916.6,
+        "voluntary_unearmarked": 3577747941.43,
+        "voluntary_earmarked": 20723188598.77,
         "other": 0,
-        "total": 37916750456.79998
+        "total": 37916750456.8
       },
       {
         "year": 2018,
-        "assessed": 13344410935.619997,
+        "assessed": 13344410935.62,
+        "voluntary_unearmarked": 4594657908.16,
         "voluntary_earmarked": 22189306200.69,
-        "voluntary_unearmarked": 4594657908.160002,
         "other": 0,
-        "total": 40128375044.470024
+        "total": 40128375044.47
       },
       {
         "year": 2019,
-        "assessed": 13568868463.770002,
-        "voluntary_earmarked": 23234448346.989986,
-        "voluntary_unearmarked": 4216198149.470002,
+        "assessed": 13568868463.77,
+        "voluntary_unearmarked": 4216198149.47,
+        "voluntary_earmarked": 23234448346.99,
         "other": 0,
-        "total": 41019514960.229996
+        "total": 41019514960.23
       },
       {
         "year": 2020,
-        "assessed": 13640782625.359997,
+        "assessed": 13640782625.36,
+        "voluntary_unearmarked": 3751035659.95,
         "voluntary_earmarked": 24905492346.98,
-        "voluntary_unearmarked": 3751035659.9500003,
         "other": 0,
-        "total": 42297310632.289986
+        "total": 42297310632.28999
       },
       {
         "year": 2021,
-        "assessed": 13689942023.774288,
-        "voluntary_earmarked": 27249487447.90957,
-        "voluntary_unearmarked": 5464316633.342553,
-        "other": 2080261301.3366807,
+        "assessed": 13689942023.774294,
+        "voluntary_unearmarked": 5464316633.342555,
+        "voluntary_earmarked": 27249487447.909554,
+        "other": 2080261301.3366811,
         "total": 48484007406.36308
       },
       {
         "year": 2022,
-        "assessed": 13139159380.52671,
-        "voluntary_earmarked": 34098130602.16014,
-        "voluntary_unearmarked": 4724235988.823291,
-        "other": 1813578599.4357936,
-        "total": 53775104570.94591
+        "assessed": 13139174089.81,
+        "voluntary_unearmarked": 4724235988.82,
+        "voluntary_earmarked": 34098130602.1,
+        "other": 1813578599.43,
+        "total": 53775119280.159996
       },
       {
         "year": 2023,
-        "assessed": 13526889634.929996,
-        "voluntary_earmarked": 27206747140.569996,
-        "voluntary_unearmarked": 4318758963.440001,
-        "other": 1316959033.9999998,
-        "total": 46369354772.93998
+        "assessed": 13520321137.98,
+        "voluntary_unearmarked": 4318654064.44,
+        "voluntary_earmarked": 27200069020.57,
+        "other": 1316959034.0,
+        "total": 46356003256.990005
       },
       {
         "year": 2024,
-        "assessed": 13832227088.320002,
-        "voluntary_earmarked": 28647030058.469994,
-        "voluntary_unearmarked": 3918237060.7800007,
-        "other": 1456017964.6600003,
-        "total": 47853512172.229996
+        "assessed": 13832130702.75,
+        "voluntary_unearmarked": 3918237060.78,
+        "voluntary_earmarked": 28564339126.4,
+        "other": 1456017964.66,
+        "total": 47770724854.59
       },
       {
         "year": 2025,
-        "assessed": 13527317776.29199,
-        "voluntary_earmarked": 21171033410.45419,
-        "voluntary_unearmarked": 3934125175.0785027,
-        "other": 2131256088.8805563,
-        "total": 40763732450.705246
+        "assessed": 13522841949.713453,
+        "voluntary_unearmarked": 3934125175.074035,
+        "voluntary_earmarked": 21162668771.17129,
+        "other": 2131256088.880518,
+        "total": 40750891984.839294
       }
     ],
     "non-gov": [
       {
         "year": 2013,
         "assessed": 0,
-        "voluntary_earmarked": 2586378439.7300005,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 2676857472.34,
         "other": 0,
-        "total": 2586378439.7300005
+        "total": 2676857472.34
       },
       {
         "year": 2014,
         "assessed": 21742648.36,
-        "voluntary_earmarked": 4742127597.809999,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 5472035346.79,
         "other": 0,
-        "total": 4763870246.17
+        "total": 5493777995.15
       },
       {
         "year": 2015,
         "assessed": 169952.74,
-        "voluntary_earmarked": 2543541645.18,
-        "voluntary_unearmarked": 1528866188.4699998,
+        "voluntary_unearmarked": 1925293571.96,
+        "voluntary_earmarked": 3725790894.38,
         "other": 0,
-        "total": 4072577786.39
+        "total": 5651254419.08
       },
       {
         "year": 2016,
         "assessed": 0,
-        "voluntary_earmarked": 3799920866.3300004,
-        "voluntary_unearmarked": 1731808925.66,
-        "other": 0,
-        "total": 5531729791.99
+        "voluntary_unearmarked": 2084181134.48,
+        "voluntary_earmarked": 4383591048.04,
+        "other": 865979.0,
+        "total": 6468638161.52
       },
       {
         "year": 2017,
         "assessed": 178020.45,
-        "voluntary_earmarked": 4352768536.24,
-        "voluntary_unearmarked": 1891684035.3600001,
-        "other": 3466100.0,
-        "total": 6248096692.049999
+        "voluntary_unearmarked": 2390245282.0099998,
+        "voluntary_earmarked": 4544844856.28,
+        "other": 3870324.0,
+        "total": 6939138482.74
       },
       {
         "year": 2018,
-        "assessed": 2284831.6500000004,
-        "voluntary_earmarked": 7227700315.83,
-        "voluntary_unearmarked": 179027524.2,
+        "assessed": 18734162.87,
+        "voluntary_unearmarked": 409788022.21999997,
+        "voluntary_earmarked": 7910958386.47,
         "other": 0,
-        "total": 7409012671.679999
+        "total": 8339480571.56
       },
       {
         "year": 2019,
         "assessed": 2307974.09,
-        "voluntary_earmarked": 6138863731.12,
-        "voluntary_unearmarked": 145782788.43,
+        "voluntary_unearmarked": 388171943.19,
+        "voluntary_earmarked": 6992572028.54,
         "other": 0,
-        "total": 6286954493.639999
+        "total": 7383051945.82
       },
       {
         "year": 2020,
-        "assessed": 2353465.25,
-        "voluntary_earmarked": 8320347417.250001,
-        "voluntary_unearmarked": 130326375.61,
+        "assessed": 20980992.99,
+        "voluntary_unearmarked": 396360422.64,
+        "voluntary_earmarked": 10044790911.86,
         "other": 0,
-        "total": 8453027258.110001
+        "total": 10462132327.49
       },
       {
         "year": 2021,
-        "assessed": 2625027.0,
-        "voluntary_earmarked": 7377587189.610001,
-        "voluntary_unearmarked": 152717118.88,
-        "other": 323181788.43,
-        "total": 7856111123.920002
+        "assessed": -25232058.452287003,
+        "voluntary_unearmarked": 1380875915.4008002,
+        "voluntary_earmarked": 12896128012.123962,
+        "other": 3314522088.0773177,
+        "total": 17566293957.14979
       },
       {
         "year": 2022,
-        "assessed": 2503670.0,
-        "voluntary_earmarked": 8259738957.559999,
-        "voluntary_unearmarked": 142245808.95,
-        "other": 320172457.0,
-        "total": 8724660893.51
+        "assessed": 235345272.99,
+        "voluntary_unearmarked": 1376298047.92,
+        "voluntary_earmarked": 15552814723.48,
+        "other": 3404117367.44,
+        "total": 20568575411.83
       },
       {
         "year": 2023,
-        "assessed": -4027234.95,
-        "voluntary_earmarked": 8116637528.9,
-        "voluntary_unearmarked": 147881293.94,
-        "other": 573723441.53,
-        "total": 8834215029.42
+        "assessed": 252149932.35999998,
+        "voluntary_unearmarked": 1418096424.78,
+        "voluntary_earmarked": 13779487039.07,
+        "other": 5732322372.33,
+        "total": 21182055768.539997
       },
       {
         "year": 2024,
-        "assessed": 2695330.43,
-        "voluntary_earmarked": 7729293949.21,
-        "voluntary_unearmarked": 98942608.33,
-        "other": 670110800.6800001,
-        "total": 8501042688.650001
+        "assessed": -34393147.99000001,
+        "voluntary_unearmarked": 1425293856.98,
+        "voluntary_earmarked": 12844117604.83,
+        "other": 6300684530.14,
+        "total": 20535702843.96
       },
       {
         "year": 2025,
-        "assessed": 2762954.58,
-        "voluntary_earmarked": 7701904292.677848,
-        "voluntary_unearmarked": 155696302.171764,
-        "other": 975542414.076264,
-        "total": 8835905963.505875
+        "assessed": -305757647.300637,
+        "voluntary_unearmarked": 1552827215.90872,
+        "voluntary_earmarked": 13631879450.252804,
+        "other": 7346762630.337301,
+        "total": 22225711649.19819
+      }
+    ],
+    "unattributed": [
+      {
+        "year": 2013,
+        "assessed": 99049484.61000001,
+        "voluntary_unearmarked": 734825816.26,
+        "voluntary_earmarked": 5865042238.179999,
+        "other": 2570886509.95,
+        "total": 9269804049.0
+      },
+      {
+        "year": 2014,
+        "assessed": 129892062.07999998,
+        "voluntary_unearmarked": 125099697.78999995,
+        "voluntary_earmarked": 2283109758.1900005,
+        "other": 3036914924.49,
+        "total": 5575016442.55
+      },
+      {
+        "year": 2015,
+        "assessed": 203221359.95000005,
+        "voluntary_unearmarked": -1149103792.27,
+        "voluntary_earmarked": 3942413240.65,
+        "other": 3500304315.57,
+        "total": 6496835123.9
+      },
+      {
+        "year": 2016,
+        "assessed": 198417624.43,
+        "voluntary_unearmarked": -1130059973.7900004,
+        "voluntary_earmarked": 3350100444.57,
+        "other": 3614669991.82,
+        "total": 6033128087.029999
+      },
+      {
+        "year": 2017,
+        "assessed": 367755033.92,
+        "voluntary_unearmarked": -1222118660.6000001,
+        "voluntary_earmarked": 4767103837.11,
+        "other": 4431073291.5,
+        "total": 8343813501.929998
+      },
+      {
+        "year": 2018,
+        "assessed": 187426254.17,
+        "voluntary_unearmarked": 718990197.3700001,
+        "voluntary_earmarked": 2673504354.7500005,
+        "other": 3996326944.68,
+        "total": 7576247750.97
+      },
+      {
+        "year": 2019,
+        "assessed": 127455068.6,
+        "voluntary_unearmarked": 699112293.4100001,
+        "voluntary_earmarked": 2690768631.6700006,
+        "other": 5005068776.87,
+        "total": 8522404770.550001
+      },
+      {
+        "year": 2020,
+        "assessed": 17280700.680000037,
+        "voluntary_unearmarked": 669415182.4900001,
+        "voluntary_earmarked": 3845396570.8400006,
+        "other": 5307751290.46,
+        "total": 9839843744.470001
+      },
+      {
+        "year": 2021,
+        "assessed": -1.4920066036283972,
+        "voluntary_unearmarked": -34808450.62335532,
+        "voluntary_earmarked": -124782916.19351614,
+        "other": -0.0339988999767226,
+        "total": -159591368.34287697
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_unearmarked": -38679357.0,
+        "voluntary_earmarked": -2861525.0,
+        "other": 0,
+        "total": -41540882.0
+      },
+      {
+        "year": 2023,
+        "assessed": 75549491.80999996,
+        "voluntary_unearmarked": -14.57000002427958,
+        "voluntary_earmarked": 31917239.00999997,
+        "other": -24657937.640000004,
+        "total": 82808778.60999991
+      },
+      {
+        "year": 2024,
+        "assessed": 96385.57000000763,
+        "voluntary_unearmarked": 1.0,
+        "voluntary_earmarked": 0,
+        "other": 3.0,
+        "total": 96389.57000000763
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_unearmarked": 943566973.86,
+        "voluntary_earmarked": -949187680.6899998,
+        "other": 0,
+        "total": -5620706.8299998045
       }
     ],
     "all": [
@@ -718,952 +885,1164 @@
       {
         "year": 2013,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2014,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2015,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2016,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2017,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2018,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 59136.0,
         "other": 0,
-        "total": 0
+        "total": 59136.0
       },
       {
         "year": 2019,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2020,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
+        "assessed": 450919.59,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
-        "total": 0
+        "total": 450919.59
       },
       {
         "year": 2021,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "assessed": 756153.684224,
+        "voluntary_unearmarked": 6432784.05,
+        "voluntary_earmarked": 24424955.0149846,
+        "other": 1284683.47475,
+        "total": 32898576.2239586
       },
       {
         "year": 2022,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "assessed": 775555.75,
+        "voluntary_unearmarked": 349468.0,
+        "voluntary_earmarked": 34939737.19,
+        "other": 36073302.7,
+        "total": 72138063.64
       },
       {
         "year": 2023,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "assessed": 788098.88,
+        "voluntary_unearmarked": -4075.0,
+        "voluntary_earmarked": 27349702.62,
+        "other": 52570423.44,
+        "total": 80704149.94
       },
       {
         "year": 2024,
-        "assessed": 0,
-        "voluntary_earmarked": 562572.0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 562572.0
+        "assessed": 303810.52,
+        "voluntary_unearmarked": 230784.0,
+        "voluntary_earmarked": 32801265.41,
+        "other": 13160473.22,
+        "total": 46496333.15
       },
       {
         "year": 2025,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "assessed": 392009.8234430002,
+        "voluntary_unearmarked": 268709.0,
+        "voluntary_earmarked": 22585108.964305,
+        "other": 9602487.480085,
+        "total": 32848315.267833
       }
     ],
     "cat:European Union": [
       {
         "year": 2013,
         "assessed": 0,
-        "voluntary_earmarked": 1632058587.9700003,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 1632058587.97,
         "other": 0,
-        "total": 1632058587.9700003
+        "total": 1632058587.97
       },
       {
         "year": 2014,
         "assessed": 1324213.92,
-        "voluntary_earmarked": 2045017370.9699998,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 2045017370.97,
         "other": 0,
-        "total": 2046341584.8899999
+        "total": 2046341584.89
       },
       {
         "year": 2015,
         "assessed": 0,
-        "voluntary_earmarked": 1706748530.1899998,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 1706748530.19,
         "other": 0,
-        "total": 1706748530.1899998
+        "total": 1706748530.19
       },
       {
         "year": 2016,
         "assessed": 0,
-        "voluntary_earmarked": 2685989659.5800004,
         "voluntary_unearmarked": 113663539.0,
+        "voluntary_earmarked": 2685989659.58,
         "other": 0,
-        "total": 2799653198.5800004
+        "total": 2799653198.58
       },
       {
         "year": 2017,
         "assessed": 0,
-        "voluntary_earmarked": 2722100608.3700004,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 2722100608.37,
         "other": 0,
-        "total": 2722100608.3700004
+        "total": 2722100608.37
       },
       {
         "year": 2018,
         "assessed": 2284831.6500000004,
-        "voluntary_earmarked": 3556682474.29,
         "voluntary_unearmarked": 135742339.2,
+        "voluntary_earmarked": 3556682474.29,
         "other": 0,
-        "total": 3694709645.1399994
+        "total": 3694709645.14
       },
       {
         "year": 2019,
         "assessed": 2307974.09,
-        "voluntary_earmarked": 2815414682.15,
         "voluntary_unearmarked": 123217745.16000001,
+        "voluntary_earmarked": 2815414682.15,
         "other": 0,
-        "total": 2940940401.3999996
+        "total": 2940940401.4
       },
       {
         "year": 2020,
         "assessed": 2353465.25,
-        "voluntary_earmarked": 4179350887.350001,
         "voluntary_unearmarked": 118782991.39,
+        "voluntary_earmarked": 4179350887.35,
         "other": 0,
         "total": 4300487343.99
       },
       {
         "year": 2021,
         "assessed": 2625027.0,
-        "voluntary_earmarked": 3296224146.4500003,
-        "voluntary_unearmarked": 106495624.42999999,
+        "voluntary_unearmarked": 106495624.42179999,
+        "voluntary_earmarked": 3296224146.4533,
         "other": 95388278.83,
-        "total": 3500733076.7100015
+        "total": 3500733076.7051
       },
       {
         "year": 2022,
         "assessed": 2503670.0,
-        "voluntary_earmarked": 3258541562.3199997,
         "voluntary_unearmarked": 102959967.95,
+        "voluntary_earmarked": 3258541562.32,
         "other": 104111570.0,
         "total": 3468116770.27
       },
       {
         "year": 2023,
         "assessed": 2541262.0,
-        "voluntary_earmarked": 3223935417.0899997,
         "voluntary_unearmarked": 117521466.94,
+        "voluntary_earmarked": 3223935417.09,
         "other": 113913851.53,
-        "total": 3457911997.56
+        "total": 3457911997.5600004
       },
       {
         "year": 2024,
         "assessed": 2791716.0,
-        "voluntary_earmarked": 3409297384.2000003,
         "voluntary_unearmarked": 94255317.33,
+        "voluntary_earmarked": 3453134983.48,
         "other": 108454484.68,
-        "total": 3614798902.2100005
+        "total": 3658636501.49
       },
       {
         "year": 2025,
         "assessed": 2762954.58,
-        "voluntary_earmarked": 3613758008.794829,
-        "voluntary_unearmarked": 147367675.511764,
+        "voluntary_unearmarked": 112857269.671764,
+        "voluntary_earmarked": 3648313380.6648297,
         "other": 149499634.725764,
-        "total": 3913388273.612356
+        "total": 3913433239.642358
       }
     ],
     "cat:Foundations": [
       {
         "year": 2013,
         "assessed": 0,
-        "voluntary_earmarked": 76843883.3,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 76843883.3,
         "other": 0,
         "total": 76843883.3
       },
       {
         "year": 2014,
         "assessed": 0,
-        "voluntary_earmarked": 284685422.48,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 284685422.48,
         "other": 0,
         "total": 284685422.48
       },
       {
         "year": 2015,
         "assessed": 0,
-        "voluntary_earmarked": 214995100.91,
         "voluntary_unearmarked": 700000.0,
+        "voluntary_earmarked": 214995100.91,
         "other": 0,
         "total": 215695100.91
       },
       {
         "year": 2016,
         "assessed": 0,
-        "voluntary_earmarked": 291578387.57,
         "voluntary_unearmarked": 8317821.0,
+        "voluntary_earmarked": 291578387.57,
         "other": 0,
         "total": 299896208.57
       },
       {
         "year": 2017,
         "assessed": 0,
-        "voluntary_earmarked": 339534376.6,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 339534376.6,
         "other": 0,
         "total": 339534376.6
       },
       {
         "year": 2018,
         "assessed": 0,
-        "voluntary_earmarked": 271724258.13,
-        "voluntary_unearmarked": 10000000.0,
+        "voluntary_unearmarked": 10906389.02,
+        "voluntary_earmarked": 272995599.91,
         "other": 0,
-        "total": 281724258.13
+        "total": 283901988.93
       },
       {
         "year": 2019,
         "assessed": 0,
-        "voluntary_earmarked": 261896775.29,
         "voluntary_unearmarked": 10000000.0,
+        "voluntary_earmarked": 261896775.29,
         "other": 0,
         "total": 271896775.28999996
       },
       {
         "year": 2020,
         "assessed": 0,
-        "voluntary_earmarked": 431619318.81,
         "voluntary_unearmarked": 11543384.22,
+        "voluntary_earmarked": 431619318.81,
         "other": 0,
-        "total": 443162703.03
+        "total": 443162703.03000003
       },
       {
         "year": 2021,
-        "assessed": 0,
-        "voluntary_earmarked": 446345802.35,
-        "voluntary_unearmarked": 10525772.45,
-        "other": 1071018.88,
-        "total": 457942593.68
+        "assessed": 48240.63564,
+        "voluntary_unearmarked": 175218150.75,
+        "voluntary_earmarked": 1121639107.3949142,
+        "other": 8660617.683965,
+        "total": 1305566116.4645193
       },
       {
         "year": 2022,
-        "assessed": 0,
-        "voluntary_earmarked": 507991833.7,
-        "voluntary_unearmarked": 1468634.0,
-        "other": 1205548.0,
-        "total": 510666015.7
+        "assessed": 288243.15,
+        "voluntary_unearmarked": 195233243.0,
+        "voluntary_earmarked": 1417566536.6599998,
+        "other": 6533361.65,
+        "total": 1619621384.4599998
       },
       {
         "year": 2023,
-        "assessed": 0,
-        "voluntary_earmarked": 426948999.11,
-        "voluntary_unearmarked": 30400716.0,
-        "other": 1725188.0,
-        "total": 459074903.11
+        "assessed": 48787.93000000001,
+        "voluntary_unearmarked": 34292441.96,
+        "voluntary_earmarked": 842238334.47,
+        "other": 10635403.29,
+        "total": 887214967.6500001
       },
       {
         "year": 2024,
-        "assessed": 0,
-        "voluntary_earmarked": 524669657.19,
-        "voluntary_unearmarked": 4373272.0,
-        "other": 2771111.0,
-        "total": 531814040.19
+        "assessed": 99843.75,
+        "voluntary_unearmarked": 8601311.7,
+        "voluntary_earmarked": 909943282.71,
+        "other": 7775987.13,
+        "total": 926420425.2900001
       },
       {
         "year": 2025,
-        "assessed": 0,
-        "voluntary_earmarked": 440477547.853529,
-        "voluntary_unearmarked": 7893971.82,
-        "other": 2605533.35,
-        "total": 450977053.02352893
+        "assessed": 64823.529395000005,
+        "voluntary_unearmarked": 95270089.749898,
+        "voluntary_earmarked": 1342452247.447208,
+        "other": 17949261.789999,
+        "total": 1455736422.5165
       }
     ],
     "cat:Multilateral - Global Funds": [
       {
         "year": 2013,
         "assessed": 0,
-        "voluntary_earmarked": 151055270.32999998,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 151055270.32999998,
         "other": 0,
         "total": 151055270.32999998
       },
       {
         "year": 2014,
         "assessed": 0,
-        "voluntary_earmarked": 581385318.77,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 581385318.77,
         "other": 0,
         "total": 581385318.77
       },
       {
         "year": 2015,
         "assessed": 0,
+        "voluntary_unearmarked": 699714978.3000001,
         "voluntary_earmarked": 65377573.77,
-        "voluntary_unearmarked": 699714978.3,
         "other": 0,
-        "total": 765092552.0699999
+        "total": 765092552.07
       },
       {
         "year": 2016,
         "assessed": 0,
-        "voluntary_earmarked": 29899170.0,
         "voluntary_unearmarked": 522890023.55,
+        "voluntary_earmarked": 29899170.0,
         "other": 0,
-        "total": 552789193.5500001
+        "total": 552789193.55
       },
       {
         "year": 2017,
         "assessed": 0,
-        "voluntary_earmarked": 110559162.0,
         "voluntary_unearmarked": 854779955.25,
+        "voluntary_earmarked": 110559162.0,
         "other": 0,
         "total": 965339117.25
       },
       {
         "year": 2018,
         "assessed": 0,
-        "voluntary_earmarked": 827445136.6600001,
         "voluntary_unearmarked": 7947.0,
+        "voluntary_earmarked": 1196022514.66,
         "other": 0,
-        "total": 827453083.6600001
+        "total": 1196030461.66
       },
       {
         "year": 2019,
         "assessed": 0,
-        "voluntary_earmarked": 665745285.0899999,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 665745285.09,
         "other": 0,
-        "total": 665745285.0899999
+        "total": 665745285.09
       },
       {
         "year": 2020,
         "assessed": 0,
-        "voluntary_earmarked": 849351985.31,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 1947613738.74,
         "other": 0,
-        "total": 849351985.31
+        "total": 1947613738.74
       },
       {
         "year": 2021,
         "assessed": 0,
-        "voluntary_earmarked": 1070949473.55,
-        "voluntary_unearmarked": 884311.0,
-        "other": 43599620.0,
-        "total": 1115433404.55
+        "voluntary_unearmarked": 1354114.0,
+        "voluntary_earmarked": 2405141357.27487,
+        "other": 109460200.17,
+        "total": 2515955671.44487
       },
       {
         "year": 2022,
         "assessed": 0,
-        "voluntary_earmarked": 1305551539.1599998,
-        "voluntary_unearmarked": -862096.0,
-        "other": 42576774.0,
-        "total": 1347266217.1599998
+        "voluntary_unearmarked": -1331899.0,
+        "voluntary_earmarked": 1989266431.7,
+        "other": 127297542.0,
+        "total": 2115232074.7
       },
       {
         "year": 2023,
         "assessed": 0,
-        "voluntary_earmarked": 1030014315.95,
-        "voluntary_unearmarked": 60635.0,
-        "other": 41796891.0,
-        "total": 1071871841.95
+        "voluntary_unearmarked": 64010.0,
+        "voluntary_earmarked": 2839076220.15,
+        "other": 170070258.0,
+        "total": 3009210488.15
       },
       {
         "year": 2024,
         "assessed": 0,
-        "voluntary_earmarked": 1448475018.67,
-        "voluntary_unearmarked": 107508.0,
-        "other": 46722936.0,
-        "total": 1495305462.67
+        "voluntary_unearmarked": 134270.0,
+        "voluntary_earmarked": 2493373664.47,
+        "other": 144690346.0,
+        "total": 2638198280.47
       },
       {
         "year": 2025,
         "assessed": 0,
-        "voluntary_earmarked": 1603616318.0323522,
-        "voluntary_unearmarked": -17115.39,
-        "other": 75136359.30000001,
-        "total": 1678735561.9423523
+        "voluntary_unearmarked": -42519.55,
+        "voluntary_earmarked": 2129683122.689515,
+        "other": 397565145.19,
+        "total": 2527205748.329515
       }
     ],
     "cat:Multilateral - IFIs": [
       {
         "year": 2013,
         "assessed": 0,
-        "voluntary_earmarked": 120829848.42,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 120829848.42,
         "other": 0,
         "total": 120829848.42
       },
       {
         "year": 2014,
         "assessed": 0,
-        "voluntary_earmarked": 216814975.13000003,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 216814975.13,
         "other": 0,
-        "total": 216814975.13000003
+        "total": 216814975.13
       },
       {
         "year": 2015,
         "assessed": 0,
-        "voluntary_earmarked": 194464815.96,
         "voluntary_unearmarked": 38785811.010000005,
+        "voluntary_earmarked": 194464815.95999998,
         "other": 0,
-        "total": 233250626.97
+        "total": 233250626.96999997
       },
       {
         "year": 2016,
         "assessed": 0,
-        "voluntary_earmarked": 68931706.11000001,
         "voluntary_unearmarked": 221616790.0,
+        "voluntary_earmarked": 68931706.11,
         "other": 0,
-        "total": 290548496.10999995
+        "total": 290548496.11
       },
       {
         "year": 2017,
         "assessed": 0,
-        "voluntary_earmarked": 760037469.51,
         "voluntary_unearmarked": 165924335.0,
+        "voluntary_earmarked": 760037469.51,
         "other": 0,
         "total": 925961804.51
       },
       {
         "year": 2018,
         "assessed": 0,
-        "voluntary_earmarked": 533570748.24,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 533570748.24,
         "other": 0,
         "total": 533570748.24
       },
       {
         "year": 2019,
         "assessed": 0,
-        "voluntary_earmarked": 731194938.9499999,
         "voluntary_unearmarked": 145000.0,
+        "voluntary_earmarked": 731194938.95,
         "other": 0,
-        "total": 731339938.9499999
+        "total": 731339938.95
       },
       {
         "year": 2020,
         "assessed": 0,
-        "voluntary_earmarked": 757510157.9900002,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 757510157.99,
         "other": 0,
-        "total": 757510157.9900002
+        "total": 757510157.99
       },
       {
         "year": 2021,
         "assessed": 0,
-        "voluntary_earmarked": 828667952.8800002,
         "voluntary_unearmarked": 282.41999999999996,
-        "other": 117031075.09,
-        "total": 945699310.3900002
+        "voluntary_earmarked": 887902297.95668,
+        "other": 186880001.39095348,
+        "total": 1074782581.7676337
       },
       {
         "year": 2022,
         "assessed": 0,
-        "voluntary_earmarked": 1688599337.38,
         "voluntary_unearmarked": -54.0,
-        "other": 165487478.0,
-        "total": 1854086761.38
+        "voluntary_earmarked": 2245280582.88,
+        "other": 223886467.0,
+        "total": 2469166995.88
       },
       {
         "year": 2023,
         "assessed": 0,
-        "voluntary_earmarked": 1524940263.75,
         "voluntary_unearmarked": 0,
-        "other": 320039834.0,
-        "total": 1844980097.75
+        "voluntary_earmarked": 1780049277.65,
+        "other": 356505756.0,
+        "total": 2136555033.65
       },
       {
         "year": 2024,
-        "assessed": 0,
-        "voluntary_earmarked": 1190558023.5200002,
-        "voluntary_unearmarked": 0,
-        "other": 437948928.0,
-        "total": 1628506951.5200002
+        "assessed": 2812.5,
+        "voluntary_unearmarked": 213.0,
+        "voluntary_earmarked": 1714887938.95,
+        "other": 466201512.0,
+        "total": 2181092476.45
       },
       {
         "year": 2025,
-        "assessed": 0,
-        "voluntary_earmarked": 1631052335.717138,
-        "voluntary_unearmarked": 451770.23000000004,
-        "other": 735715183.5,
-        "total": 2367219289.447138
+        "assessed": 6823.52941,
+        "voluntary_unearmarked": 452310.17,
+        "voluntary_earmarked": 1970670628.2192671,
+        "other": 765956481.1199999,
+        "total": 2737086243.038677
       }
     ],
     "cat:Multilateral - Other": [
       {
         "year": 2013,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2014,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2015,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2016,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2017,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2018,
         "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
+        "voluntary_unearmarked": 912632.24,
+        "voluntary_earmarked": 73483523.06,
         "other": 0,
-        "total": 0
+        "total": 74396155.3
       },
       {
         "year": 2019,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2020,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2021,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "voluntary_earmarked": 35660202.30103,
+        "other": 47401542.97,
+        "total": 83061745.27103001
       },
       {
         "year": 2022,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
+        "assessed": 2662.41,
         "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "voluntary_earmarked": 162944972.32,
+        "other": 41072620.0,
+        "total": 204020254.73
       },
       {
         "year": 2023,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
+        "assessed": 5549.38,
         "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "voluntary_earmarked": 43480366.95,
+        "other": 33478960.4,
+        "total": 76964876.73
       },
       {
         "year": 2024,
-        "assessed": 0,
-        "voluntary_earmarked": 75367.0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 75367.0
+        "assessed": 4218.75,
+        "voluntary_unearmarked": 1357.0,
+        "voluntary_earmarked": 91921118.15,
+        "other": 31795751.27,
+        "total": 123722445.17
       },
       {
         "year": 2025,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "assessed": 3411.764705,
+        "voluntary_unearmarked": 46368.34,
+        "voluntary_earmarked": 46889591.445056,
+        "other": 128628033.251272,
+        "total": 175567404.801033
       }
     ],
     "cat:Multilateral - UN Orgs": [
       {
         "year": 2013,
         "assessed": 0,
-        "voluntary_earmarked": 605590849.71,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 605590849.71,
         "other": 0,
         "total": 605590849.71
       },
       {
         "year": 2014,
         "assessed": 20249154.0,
-        "voluntary_earmarked": 1145173526.8600001,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 1145173526.86,
         "other": 0,
-        "total": 1165422680.8600001
+        "total": 1165422680.86
       },
       {
         "year": 2015,
         "assessed": 0,
-        "voluntary_earmarked": 356611105.16999996,
-        "voluntary_unearmarked": 389309348.16999996,
+        "voluntary_unearmarked": 389309348.17,
+        "voluntary_earmarked": 356611105.17,
         "other": 0,
         "total": 745920453.34
       },
       {
         "year": 2016,
         "assessed": 0,
-        "voluntary_earmarked": 462990730.33000004,
         "voluntary_unearmarked": 434395171.96000004,
+        "voluntary_earmarked": 462990730.33,
         "other": 0,
         "total": 897385902.29
       },
       {
         "year": 2017,
         "assessed": 0,
-        "voluntary_earmarked": 78865043.4,
         "voluntary_unearmarked": 439981600.75,
+        "voluntary_earmarked": 78865043.4,
         "other": 0,
         "total": 518846644.15
       },
       {
         "year": 2018,
         "assessed": 0,
-        "voluntary_earmarked": 1405068201.82,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 1405864097.27,
         "other": 0,
-        "total": 1405068201.82
+        "total": 1405864097.27
       },
       {
         "year": 2019,
         "assessed": 0,
-        "voluntary_earmarked": 1371609867.8400002,
         "voluntary_unearmarked": 1163347.45,
+        "voluntary_earmarked": 1371609867.84,
         "other": 0,
         "total": 1372773215.29
       },
       {
         "year": 2020,
         "assessed": 0,
-        "voluntary_earmarked": 985944043.2099999,
-        "voluntary_unearmarked": 0,
+        "voluntary_unearmarked": 8044310.46,
+        "voluntary_earmarked": 1214299181.08,
         "other": 0,
-        "total": 985944043.2099999
+        "total": 1222343491.54
+      },
+      {
+        "year": 2021,
+        "assessed": 174639592.41,
+        "voluntary_unearmarked": 69166785.482,
+        "voluntary_earmarked": 1131452709.0521424,
+        "other": 550499088.8162254,
+        "total": 1925758175.7603679
+      },
+      {
+        "year": 2022,
+        "assessed": 217107117.0,
+        "voluntary_unearmarked": 21452236.729999997,
+        "voluntary_earmarked": 1409979035.17,
+        "other": 572509627.44,
+        "total": 2221048016.34
+      },
+      {
+        "year": 2023,
+        "assessed": 189719100.0,
+        "voluntary_unearmarked": 84151693.5,
+        "voluntary_earmarked": 881879656.91,
+        "other": 562731324.6800001,
+        "total": 1718481775.0900002
+      },
+      {
+        "year": 2024,
+        "assessed": 228647789.0,
+        "voluntary_unearmarked": 81451379.0,
+        "voluntary_earmarked": 794995122.79,
+        "other": 606790331.75,
+        "total": 1711884622.54
+      },
+      {
+        "year": 2025,
+        "assessed": 190489773.85999998,
+        "voluntary_unearmarked": 133944626.54,
+        "voluntary_earmarked": 614302264.717326,
+        "other": 887046482.26703,
+        "total": 1825783147.384356
+      }
+    ],
+    "cat:Multilateral - UN Pooled Funds": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 422268921.85999995,
+        "other": 0,
+        "total": 422268921.85999995
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_unearmarked": -72.53,
+        "voluntary_earmarked": 660232038.71,
+        "other": 0,
+        "total": 660231966.1800001
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 1185723396.25,
+        "other": 0,
+        "total": 1185723396.25
       },
       {
         "year": 2021,
         "assessed": 0,
-        "voluntary_earmarked": 665502997.5600001,
         "voluntary_unearmarked": 0,
-        "other": 11715434.629999999,
-        "total": 677218432.19
+        "voluntary_earmarked": 1823158291.17346,
+        "other": 0,
+        "total": 1823158291.17346
       },
       {
         "year": 2022,
         "assessed": 0,
-        "voluntary_earmarked": 834718220.0,
         "voluntary_unearmarked": 0,
-        "other": 6791087.0,
-        "total": 841509307.0
+        "voluntary_earmarked": 1923534094.1399999,
+        "other": 0,
+        "total": 1923534094.1399999
       },
       {
         "year": 2023,
         "assessed": 0,
-        "voluntary_earmarked": 806057599.0,
         "voluntary_unearmarked": 0,
-        "other": 6243628.0,
-        "total": 812301227.0
+        "voluntary_earmarked": 1809283966.59,
+        "other": 0,
+        "total": 1809283966.59
       },
       {
         "year": 2024,
         "assessed": 0,
-        "voluntary_earmarked": 570997731.0,
-        "voluntary_unearmarked": 45.0,
-        "other": 14867314.0,
-        "total": 585865090.0
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 1537986544.3,
+        "other": 0,
+        "total": 1537986544.3
       },
       {
         "year": 2025,
         "assessed": 0,
-        "voluntary_earmarked": 413000082.28000003,
-        "voluntary_unearmarked": 0,
-        "other": 12585703.2005,
-        "total": 425585785.48050004
+        "voluntary_unearmarked": 5168936.63,
+        "voluntary_earmarked": 1357885990.533529,
+        "other": 0,
+        "total": 1363054927.1635292
       }
     ],
     "cat:NGOs": [
       {
         "year": 2013,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2014,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2015,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2016,
         "assessed": 0,
-        "voluntary_earmarked": 256526922.04,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 256526922.04,
         "other": 0,
         "total": 256526922.04
       },
       {
         "year": 2017,
         "assessed": 0,
-        "voluntary_earmarked": 336844876.36,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 336844876.36,
         "other": 3466100.0,
         "total": 340310976.36
       },
       {
         "year": 2018,
         "assessed": 0,
-        "voluntary_earmarked": 237362979.61,
-        "voluntary_unearmarked": 33277238.0,
+        "voluntary_unearmarked": 33754318.06,
+        "voluntary_earmarked": 278205485.31,
         "other": 0,
-        "total": 270640217.61
+        "total": 311959803.37
       },
       {
         "year": 2019,
         "assessed": 0,
-        "voluntary_earmarked": 286161412.09,
         "voluntary_unearmarked": 11256695.82,
+        "voluntary_earmarked": 286161412.09,
         "other": 0,
         "total": 297418107.90999997
       },
       {
         "year": 2020,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 2046049.12,
         "other": 0,
-        "total": 0
+        "total": 2046049.12
       },
       {
         "year": 2021,
         "assessed": 0,
-        "voluntary_earmarked": 449696743.46000004,
-        "voluntary_unearmarked": 34808450.58,
-        "other": 0,
-        "total": 484505194.04
+        "voluntary_unearmarked": 37309951.809999995,
+        "voluntary_earmarked": 231727897.24316278,
+        "other": 5088995.8595,
+        "total": 274126844.91266274
       },
       {
         "year": 2022,
-        "assessed": 0,
-        "voluntary_earmarked": 664336465.0,
-        "voluntary_unearmarked": 38679357.0,
-        "other": 0,
-        "total": 703015822.0
+        "assessed": 7987.23,
+        "voluntary_unearmarked": 43880622.0,
+        "voluntary_earmarked": 192515564.01999998,
+        "other": 2905963.8,
+        "total": 239310137.04999998
       },
       {
         "year": 2023,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "assessed": 209988.58,
+        "voluntary_unearmarked": 177318921.0,
+        "voluntary_earmarked": 455862706.05,
+        "other": 23209619.52,
+        "total": 656601235.1500001
       },
       {
         "year": 2024,
-        "assessed": 0,
-        "voluntary_earmarked": 3561151.0,
-        "voluntary_unearmarked": 180000.0,
-        "other": 0,
-        "total": 3741151.0
+        "assessed": 173541.66999999998,
+        "voluntary_unearmarked": 1006142676.84,
+        "voluntary_earmarked": 1424819152.52,
+        "other": 50910823.04,
+        "total": 2482046194.07
       },
       {
         "year": 2025,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "assessed": 318558.8469870001,
+        "voluntary_unearmarked": 910499660.7300001,
+        "voluntary_earmarked": 1501133387.315934,
+        "other": 85881348.45719801,
+        "total": 2497832955.350119
       }
     ],
-    "cat:Non-Government": [
+    "cat:No Contributor": [
       {
         "year": 2013,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2014,
         "assessed": 0,
-        "voluntary_earmarked": 464950988.26,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
-        "total": 464950988.26
+        "total": 0
       },
       {
         "year": 2015,
         "assessed": 0,
-        "voluntary_earmarked": 61406.0,
-        "voluntary_unearmarked": 400356050.99,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
-        "total": 400417456.99
+        "total": 0
       },
       {
         "year": 2016,
         "assessed": 0,
+        "voluntary_unearmarked": 0,
         "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 430925580.15,
         "other": 0,
-        "total": 430925580.15
+        "total": 0
       },
       {
         "year": 2017,
         "assessed": 0,
+        "voluntary_unearmarked": 0,
         "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 430998144.36,
         "other": 0,
-        "total": 430998144.36
+        "total": 0
       },
       {
         "year": 2018,
         "assessed": 0,
-        "voluntary_earmarked": 391116394.08,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
-        "total": 391116394.08
+        "total": 0
       },
       {
         "year": 2019,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2020,
         "assessed": 0,
-        "voluntary_earmarked": 1110112753.43,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
-        "total": 1110112753.43
+        "total": 0
       },
       {
         "year": 2021,
-        "assessed": 0,
-        "voluntary_earmarked": 620200073.36,
-        "voluntary_unearmarked": 2678.0,
-        "other": 54376361.0,
-        "total": 674579112.3600001
+        "assessed": -2195118.361,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": -728653.5674800001,
+        "other": 1659364034.3862,
+        "total": 1656440262.4577198
       },
       {
         "year": 2022,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 1791135663.86,
+        "total": 1791135663.86
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 3948092506.0,
+        "total": 3948092506.0
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 4332058006.61,
+        "total": 4332058006.61
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 4469555762.631978,
+        "total": 4469555762.631978
+      }
+    ],
+    "cat:Non-Government": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 90479032.61,
+        "other": 0,
+        "total": 90479032.61
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 1194858737.24,
+        "other": 0,
+        "total": 1194858737.24
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_unearmarked": 796783434.48,
+        "voluntary_earmarked": 1182310655.2,
+        "other": 0,
+        "total": 1979094089.68
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_unearmarked": 783297788.97,
+        "voluntary_earmarked": 583670181.71,
+        "other": 865979.0,
+        "total": 1367833949.68
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_unearmarked": 929559391.01,
+        "voluntary_earmarked": 192076320.04000002,
+        "other": 404224.0,
+        "total": 1122039935.05
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2023,
         "assessed": 0,
-        "voluntary_earmarked": 1111419054.0,
-        "voluntary_unearmarked": 3375.0,
-        "other": 90004049.0,
-        "total": 1201426478.0
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 0,
+        "total": 0
       },
       {
         "year": 2024,
         "assessed": 0,
-        "voluntary_earmarked": 586054360.0,
-        "voluntary_unearmarked": 26466.0,
-        "other": 59346027.0,
-        "total": 645426853.0
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 0,
+        "total": 0
       },
       {
         "year": 2025,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       }
@@ -1672,318 +2051,424 @@
       {
         "year": 2013,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2014,
         "assessed": 169280.44,
-        "voluntary_earmarked": 4099995.34,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 4099995.34,
         "other": 0,
         "total": 4269275.78
       },
       {
         "year": 2015,
         "assessed": 169952.74,
-        "voluntary_earmarked": 5283113.18,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 5283113.18,
         "other": 0,
         "total": 5453065.92
       },
       {
         "year": 2016,
         "assessed": 0,
-        "voluntary_earmarked": 4004290.7,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 4004290.7,
         "other": 0,
         "total": 4004290.7
       },
       {
         "year": 2017,
         "assessed": 178020.45,
-        "voluntary_earmarked": 4827000.0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 4827000.0,
         "other": 0,
         "total": 5005020.45
       },
       {
         "year": 2018,
         "assessed": 0,
-        "voluntary_earmarked": 4730123.0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 4730123.0,
         "other": 0,
         "total": 4730123.0
       },
       {
         "year": 2019,
         "assessed": 0,
-        "voluntary_earmarked": 6840769.71,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 6840769.71,
         "other": 0,
         "total": 6840769.71
       },
       {
         "year": 2020,
         "assessed": 0,
-        "voluntary_earmarked": 6458271.15,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 6458271.15,
         "other": 0,
         "total": 6458271.15
       },
       {
         "year": 2021,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2022,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2023,
         "assessed": -6568496.95,
-        "voluntary_earmarked": -6678120.0,
         "voluntary_unearmarked": -104899.0,
+        "voluntary_earmarked": -6678120.0,
         "other": 0,
         "total": -13351515.95
       },
       {
         "year": 2024,
         "assessed": -96385.56999999995,
-        "voluntary_earmarked": -5111810.37,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": -5111810.37,
         "other": 0,
         "total": -5208195.94
       },
       {
         "year": 2025,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
+      }
+    ],
+    "cat:Other Contributors": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_unearmarked": 56890.0,
+        "voluntary_earmarked": 0,
+        "other": 0,
+        "total": 56890.0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 90154.0,
+        "other": 0,
+        "total": 90154.0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_unearmarked": 517555.15,
+        "voluntary_earmarked": 3114641.8599999994,
+        "other": 0,
+        "total": 3632197.0099999993
+      },
+      {
+        "year": 2021,
+        "assessed": -218640609.8667,
+        "voluntary_unearmarked": 3739982.967,
+        "voluntary_earmarked": -51647425.609368995,
+        "other": 492183578.278449,
+        "total": 225635525.76938003
+      },
+      {
+        "year": 2022,
+        "assessed": -5339680.120000001,
+        "voluntary_unearmarked": 52179968.29000001,
+        "voluntary_earmarked": -97408217.03,
+        "other": 267294851.01000002,
+        "total": 216726922.15000004
+      },
+      {
+        "year": 2023,
+        "assessed": 45687334.35,
+        "voluntary_unearmarked": 14286865.0,
+        "voluntary_earmarked": -172732615.05999997,
+        "other": 308783293.75,
+        "total": 196024878.04000005
+      },
+      {
+        "year": 2024,
+        "assessed": -286451265.96000004,
+        "voluntary_unearmarked": 16521633.0,
+        "voluntary_earmarked": -172165348.9,
+        "other": 241904511.89000002,
+        "total": -200190469.97000003
+      },
+      {
+        "year": 2025,
+        "assessed": -522152633.811764,
+        "voluntary_unearmarked": -16797051.94,
+        "voluntary_earmarked": 211842175.886356,
+        "other": 63862024.463653,
+        "total": -263245485.40175503
       }
     ],
     "cat:Private Sector": [
       {
         "year": 2013,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2014,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2015,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2016,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2017,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2018,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
+        "assessed": 16449331.22,
+        "voluntary_unearmarked": 228407506.70000002,
+        "voluntary_earmarked": 164649762.87,
         "other": 0,
-        "total": 0
+        "total": 409506600.79
       },
       {
         "year": 2019,
         "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
+        "voluntary_unearmarked": 242389227.29000002,
+        "voluntary_earmarked": 193386104.71,
         "other": 0,
-        "total": 0
+        "total": 435775332.0
       },
       {
         "year": 2020,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
+        "assessed": 18176608.15,
+        "voluntary_unearmarked": 257472181.42,
+        "voluntary_earmarked": 305204269.51,
         "other": 0,
-        "total": 0
+        "total": 580853059.0799999
       },
       {
         "year": 2021,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "assessed": 17534656.045548998,
+        "voluntary_unearmarked": 981158239.5000001,
+        "voluntary_earmarked": 1989426797.313328,
+        "other": 151546834.1872749,
+        "total": 3139666527.046152
       },
       {
         "year": 2022,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "assessed": 19999717.57,
+        "voluntary_unearmarked": 961574494.95,
+        "voluntary_earmarked": 3005778041.65,
+        "other": 222257749.98,
+        "total": 4209610004.1500006
       },
       {
         "year": 2023,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "assessed": 19718308.19,
+        "voluntary_unearmarked": 990570000.38,
+        "voluntary_earmarked": 2055345050.79,
+        "other": 143388378.72,
+        "total": 3209021738.08
       },
       {
         "year": 2024,
-        "assessed": 0,
-        "voluntary_earmarked": 143334.0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 143334.0
+        "assessed": 20130771.349999998,
+        "voluntary_unearmarked": 217954915.11,
+        "voluntary_earmarked": 561702375.0699999,
+        "other": 275463131.55,
+        "total": 1075251193.08
       },
       {
         "year": 2025,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "assessed": 22356630.577187,
+        "voluntary_unearmarked": 311158816.56705797,
+        "voluntary_earmarked": 779712252.449683,
+        "other": 347544141.990322,
+        "total": 1460771841.58425
       }
     ],
     "cat:Public Private Partnership": [
       {
         "year": 2013,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2014,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2015,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2016,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2017,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2018,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 2426000.0,
         "other": 0,
-        "total": 0
+        "total": 2426000.0
       },
       {
         "year": 2019,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 0,
         "other": 0,
         "total": 0
       },
       {
         "year": 2020,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
+        "voluntary_earmarked": 11851000.0,
         "other": 0,
-        "total": 0
+        "total": 11851000.0
       },
       {
         "year": 2021,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "voluntary_earmarked": 1746330.12294,
+        "other": 6764232.03,
+        "total": 8510562.15294
       },
       {
         "year": 2022,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "voluntary_earmarked": 9876382.46,
+        "other": 9038648.0,
+        "total": 18915030.46
       },
       {
         "year": 2023,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "voluntary_earmarked": 397074.8599999998,
+        "other": 8942597.0,
+        "total": 9339671.86
       },
       {
         "year": 2024,
         "assessed": 0,
-        "voluntary_earmarked": 11161.0,
         "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 11161.0
+        "voluntary_earmarked": 5829316.25,
+        "other": 21479171.0,
+        "total": 27308487.25
       },
       {
         "year": 2025,
         "assessed": 0,
-        "voluntary_earmarked": 0,
         "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
+        "voluntary_earmarked": 6409299.919795,
+        "other": 23671826.970000003,
+        "total": 30081126.889795
       }
     ]
   },
@@ -17570,6 +18055,112 @@
         "total": 214821044.64980045
       }
     ],
+    "MISC": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2025,
+        "assessed": -4475826.577337235,
+        "voluntary_earmarked": -8364639.277980981,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": -12840465.855318217
+      }
+    ],
     "Macao SAR": [
       {
         "year": 2013,
@@ -19584,6 +20175,218 @@
         "total": 51144274.903169625
       }
     ],
+    "Multi Donor Trust Funds": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 90479032.61,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 90479032.61
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 729907748.98,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 729907748.98
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 104673389.76,
+        "voluntary_unearmarked": 375263789.04,
+        "other": 0,
+        "total": 479937178.8
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 79623458.19,
+        "voluntary_unearmarked": 352372208.82,
+        "other": 0,
+        "total": 431995667.01
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 474216762.65,
+        "other": 0,
+        "total": 474216762.65
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 496041850.21999997,
+        "voluntary_unearmarked": 912632.24,
+        "other": 0,
+        "total": 496954482.46
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 660232038.71,
+        "voluntary_unearmarked": -72.53,
+        "other": 0,
+        "total": 660231966.1800001
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 911318259.36,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 911318259.36
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 907630514.5700003,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 907630514.5700003
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 498704105.0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 498704105.0
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      }
+    ],
+    "Multi Partner Trust Fund Office": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 1019958976.14,
+        "voluntary_unearmarked": 2707.0,
+        "other": 1305422.0,
+        "total": 1021267105.14
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": 859315555.59,
+        "voluntary_unearmarked": 0,
+        "other": 320276.0,
+        "total": 859635831.59
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 672555793.46,
+        "voluntary_unearmarked": 0,
+        "other": 62000.0,
+        "total": 672617793.46
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": 696214718.9403349,
+        "voluntary_unearmarked": 5168936.63,
+        "other": 0,
+        "total": 701383655.5703349
+      }
+    ],
     "Myanmar": [
       {
         "year": 2013,
@@ -21172,6 +21975,1490 @@
         "voluntary_unearmarked": 1208909.62,
         "other": 1962596.7128383322,
         "total": 20735971.311170097
+      }
+    ],
+    "Other Academic": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 756153.684224,
+        "voluntary_earmarked": 24424955.0149846,
+        "voluntary_unearmarked": 6432784.05,
+        "other": 1284683.47475,
+        "total": 32898576.2239586
+      },
+      {
+        "year": 2022,
+        "assessed": 333590.42,
+        "voluntary_earmarked": 34758993.97,
+        "voluntary_unearmarked": 349468.0,
+        "other": 1233190.02,
+        "total": 36675242.41
+      },
+      {
+        "year": 2023,
+        "assessed": 294000.68,
+        "voluntary_earmarked": 27355828.619999997,
+        "voluntary_unearmarked": -4075.0,
+        "other": 11678207.870000001,
+        "total": 39323962.17
+      },
+      {
+        "year": 2024,
+        "assessed": 303810.52,
+        "voluntary_earmarked": 32238693.410000004,
+        "voluntary_unearmarked": 230784.0,
+        "other": 13160473.219999999,
+        "total": 45933761.150000006
+      },
+      {
+        "year": 2025,
+        "assessed": 392009.8234430002,
+        "voluntary_earmarked": 22585108.964305002,
+        "voluntary_unearmarked": 268709.0,
+        "other": 9602487.480085,
+        "total": 32848315.267833006
+      }
+    ],
+    "Other European Union": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 0.0032999918330461,
+        "voluntary_unearmarked": -0.0081999999529215,
+        "other": 0,
+        "total": -0.0049000081198754
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 43837599.28,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 43837599.28
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": 34555371.870000005,
+        "voluntary_unearmarked": -34510405.84,
+        "other": 0,
+        "total": 44966.03000000119
+      }
+    ],
+    "Other Foundations": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 48240.63564,
+        "voluntary_earmarked": 675293305.0449142,
+        "voluntary_unearmarked": 164692378.3,
+        "other": 7589598.8039649995,
+        "total": 847623522.7845193
+      },
+      {
+        "year": 2022,
+        "assessed": 288243.15,
+        "voluntary_earmarked": 909574702.96,
+        "voluntary_unearmarked": 193764609.0,
+        "other": 5327813.65,
+        "total": 1108955368.76
+      },
+      {
+        "year": 2023,
+        "assessed": 48787.93000000001,
+        "voluntary_earmarked": 415289335.36,
+        "voluntary_unearmarked": 3891725.96,
+        "other": 8910215.29,
+        "total": 428140064.53999996
+      },
+      {
+        "year": 2024,
+        "assessed": 99843.75,
+        "voluntary_earmarked": 383990026.52000004,
+        "voluntary_unearmarked": 4228039.7,
+        "other": 5004267.13,
+        "total": 393322177.1
+      },
+      {
+        "year": 2025,
+        "assessed": 64823.529395000005,
+        "voluntary_earmarked": 901974699.593679,
+        "voluntary_unearmarked": 87376117.929898,
+        "other": 15343728.439999003,
+        "total": 1004759369.4929711
+      }
+    ],
+    "Other Government": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2022,
+        "assessed": 14709.283296139909,
+        "voluntary_earmarked": -0.060143937589600585,
+        "voluntary_unearmarked": -0.0032901832491915983,
+        "other": -0.005793600274046199,
+        "total": 14709.214068418796
+      },
+      {
+        "year": 2023,
+        "assessed": -6568496.950000003,
+        "voluntary_earmarked": -6678120.0,
+        "voluntary_unearmarked": -104899.0,
+        "other": 0,
+        "total": -13351515.950000003
+      },
+      {
+        "year": 2024,
+        "assessed": -96385.57000000763,
+        "voluntary_earmarked": -82690932.07000005,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": -82787317.64000006
+      },
+      {
+        "year": 2025,
+        "assessed": -0.001195533201098253,
+        "voluntary_earmarked": -0.004922699241433148,
+        "voluntary_unearmarked": -0.00446790084242816,
+        "other": -3.839179771603085e-05,
+        "total": -0.010624525082675591
+      }
+    ],
+    "Other Multilateral - Global Funds": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 713991810.3648701,
+        "voluntary_unearmarked": 467125.0,
+        "other": 11484219.17,
+        "total": 725943154.53487
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 683714892.5400001,
+        "voluntary_unearmarked": -469803.0,
+        "other": 84720768.0,
+        "total": 767965857.5400001
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": 697642850.2,
+        "voluntary_unearmarked": 0,
+        "other": 38269318.0,
+        "total": 735912168.2
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 458844285.8,
+        "voluntary_unearmarked": 296.0,
+        "other": 38621383.0,
+        "total": 497465964.8
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": 526066804.65716296,
+        "voluntary_unearmarked": -25404.160000000003,
+        "other": 322428785.89000005,
+        "total": 848470186.3871632
+      }
+    ],
+    "Other Multilateral - IFIs": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 59234345.076679975,
+        "voluntary_unearmarked": 0,
+        "other": 69848926.3009535,
+        "total": 129083271.37763348
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 556681245.5,
+        "voluntary_unearmarked": 0,
+        "other": 58398989.0,
+        "total": 615080234.5
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": 255109013.9,
+        "voluntary_unearmarked": 0,
+        "other": 36465922.0,
+        "total": 291574935.9
+      },
+      {
+        "year": 2024,
+        "assessed": 2812.5,
+        "voluntary_earmarked": 524329915.42999995,
+        "voluntary_unearmarked": 213.0,
+        "other": 28252584.0,
+        "total": 552585524.9300001
+      },
+      {
+        "year": 2025,
+        "assessed": 6823.52941,
+        "voluntary_earmarked": 339618292.50212896,
+        "voluntary_unearmarked": 539.94,
+        "other": 30241297.61999996,
+        "total": 369866953.59153897
+      }
+    ],
+    "Other Multilateral - Other": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 35660202.301029995,
+        "voluntary_unearmarked": 0,
+        "other": 47401542.97,
+        "total": 83061745.27103
+      },
+      {
+        "year": 2022,
+        "assessed": 2662.41,
+        "voluntary_earmarked": 162944972.32,
+        "voluntary_unearmarked": 0,
+        "other": 41072620.0,
+        "total": 204020254.73
+      },
+      {
+        "year": 2023,
+        "assessed": 5549.38,
+        "voluntary_earmarked": 43543231.95,
+        "voluntary_unearmarked": 0,
+        "other": 33478960.4,
+        "total": 77027741.73
+      },
+      {
+        "year": 2024,
+        "assessed": 4218.75,
+        "voluntary_earmarked": 91845751.15,
+        "voluntary_unearmarked": 1357.0,
+        "other": 31795751.27,
+        "total": 123647078.17
+      },
+      {
+        "year": 2025,
+        "assessed": 3411.764705,
+        "voluntary_earmarked": 46889591.44505599,
+        "voluntary_unearmarked": 46368.34,
+        "other": 128628033.251272,
+        "total": 175567404.80103296
+      }
+    ],
+    "Other Multilateral - UN Orgs": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 174639592.41,
+        "voluntary_earmarked": 465480981.37214243,
+        "voluntary_unearmarked": 69166785.482,
+        "other": 538783654.1862254,
+        "total": 1248071013.450368
+      },
+      {
+        "year": 2022,
+        "assessed": 217107117.0,
+        "voluntary_earmarked": 76029521.17,
+        "voluntary_unearmarked": 21452236.729999997,
+        "other": 564413118.44,
+        "total": 879001993.34
+      },
+      {
+        "year": 2023,
+        "assessed": 189719100.0,
+        "voluntary_earmarked": 74626935.91000003,
+        "voluntary_unearmarked": 84151693.5,
+        "other": 556167420.6800001,
+        "total": 904665150.09
+      },
+      {
+        "year": 2024,
+        "assessed": 228647789.0,
+        "voluntary_earmarked": 223997391.79,
+        "voluntary_unearmarked": 81451334.0,
+        "other": 591861017.75,
+        "total": 1125957532.5400002
+      },
+      {
+        "year": 2025,
+        "assessed": 190489773.86,
+        "voluntary_earmarked": 197752565.63052002,
+        "voluntary_unearmarked": 133944626.54,
+        "other": 874460779.0665299,
+        "total": 1396647745.0970502
+      }
+    ],
+    "Other Multilateral - UN Pooled Funds": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 915996506.7234601,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 915996506.7234601
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 904102307.0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 904102307.0
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": 951163533.0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 951163533.0
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 865430750.84,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 865430750.84
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": 665220888.4000001,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 665220888.4000001
+      }
+    ],
+    "Other NGOs": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": -218114822.7668372,
+        "voluntary_unearmarked": 2501501.23,
+        "other": 5088995.8595,
+        "total": -210524325.67733717
+      },
+      {
+        "year": 2022,
+        "assessed": 7987.23,
+        "voluntary_earmarked": -471820900.98,
+        "voluntary_unearmarked": 5201265.0,
+        "other": 2905963.8,
+        "total": -463705684.95000005
+      },
+      {
+        "year": 2023,
+        "assessed": 209988.58,
+        "voluntary_earmarked": 455862706.05,
+        "voluntary_unearmarked": 177318921.0,
+        "other": 23209619.52,
+        "total": 656601235.1500001
+      },
+      {
+        "year": 2024,
+        "assessed": 173541.66999999998,
+        "voluntary_earmarked": 1416801201.52,
+        "voluntary_unearmarked": 1005962676.84,
+        "other": 50909172.04,
+        "total": 2473846592.07
+      },
+      {
+        "year": 2025,
+        "assessed": 318558.8469870001,
+        "voluntary_earmarked": 1501133387.3159342,
+        "voluntary_unearmarked": 910499660.73,
+        "other": 85881348.457198,
+        "total": 2497832955.350119
+      }
+    ],
+    "Other Other Contributors": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": -218640609.8667,
+        "voluntary_earmarked": -51846707.60936899,
+        "voluntary_unearmarked": 3739982.967,
+        "other": 492063881.27844906,
+        "total": 225316546.76938
+      },
+      {
+        "year": 2022,
+        "assessed": -5339680.120000001,
+        "voluntary_earmarked": -97408217.03,
+        "voluntary_unearmarked": 52177261.29000001,
+        "other": 267294851.01000002,
+        "total": 216724215.15
+      },
+      {
+        "year": 2023,
+        "assessed": 45687334.35,
+        "voluntary_earmarked": -172732615.05999997,
+        "voluntary_unearmarked": 14286865.0,
+        "other": 308783325.75,
+        "total": 196024910.04000002
+      },
+      {
+        "year": 2024,
+        "assessed": -286451265.96000004,
+        "voluntary_earmarked": -172165348.89999995,
+        "voluntary_unearmarked": 16521633.0,
+        "other": 241904511.89,
+        "total": -200190469.96999997
+      },
+      {
+        "year": 2025,
+        "assessed": -522152633.811764,
+        "voluntary_earmarked": 211842175.886356,
+        "voluntary_unearmarked": -16797051.94,
+        "other": 63862024.463653,
+        "total": -263245485.40175498
+      }
+    ],
+    "Other Private": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 1077575859.4399998,
+        "voluntary_unearmarked": 21163594.45,
+        "other": 0,
+        "total": 1098739453.8899999
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 504046723.52000016,
+        "voluntary_unearmarked": 0,
+        "other": 865979.0,
+        "total": 504912702.52000016
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 192076320.04,
+        "voluntary_unearmarked": 24344484.0,
+        "other": 404224.0,
+        "total": 216825028.04
+      },
+      {
+        "year": 2018,
+        "assessed": 16449331.22,
+        "voluntary_earmarked": 187216220.42000002,
+        "voluntary_unearmarked": 229847865.78,
+        "other": 0,
+        "total": 433513417.4200001
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 193476258.71,
+        "voluntary_unearmarked": 242389227.29000002,
+        "other": 0,
+        "total": 435865486.0
+      },
+      {
+        "year": 2020,
+        "assessed": 18627527.74,
+        "voluntary_earmarked": 310364960.48999983,
+        "voluntary_unearmarked": 257989736.57000002,
+        "other": 0,
+        "total": 586982224.7999998
+      },
+      {
+        "year": 2021,
+        "assessed": 17531818.36,
+        "voluntary_earmarked": 408117608.62000006,
+        "voluntary_unearmarked": 123334955.00000004,
+        "other": 69679168.21000001,
+        "total": 618663550.1899997
+      },
+      {
+        "year": 2022,
+        "assessed": 19849039.0,
+        "voluntary_earmarked": 794702336.1,
+        "voluntary_unearmarked": 147803415.95,
+        "other": 171671752.68,
+        "total": 1134026543.73
+      },
+      {
+        "year": 2023,
+        "assessed": 19812585.63,
+        "voluntary_earmarked": 498893902.8,
+        "voluntary_unearmarked": 149411479.38,
+        "other": 107858786.06,
+        "total": 775976753.8700001
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 247039605.20999998,
+        "voluntary_unearmarked": 203161418.11,
+        "other": 124528373.15,
+        "total": 574729396.47
+      },
+      {
+        "year": 2025,
+        "assessed": 21784537.3891,
+        "voluntary_earmarked": 355092114.6159259,
+        "voluntary_unearmarked": 155009426.287058,
+        "other": 307888017.303864,
+        "total": 839774095.5959477
+      }
+    ],
+    "Other Private Sector": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 2837.6855490000016,
+        "voluntary_earmarked": 1581654447.243328,
+        "voluntary_unearmarked": 857823284.5000001,
+        "other": 81987362.9772749,
+        "total": 2521467932.4061522
+      },
+      {
+        "year": 2022,
+        "assessed": 592643.8999999999,
+        "voluntary_earmarked": 2211256448.77,
+        "voluntary_unearmarked": 813771079.0,
+        "other": 85426109.98,
+        "total": 3111046281.65
+      },
+      {
+        "year": 2023,
+        "assessed": 399820.7599999999,
+        "voluntary_earmarked": 1556382156.99,
+        "voluntary_unearmarked": 841158521.0,
+        "other": 91138953.48,
+        "total": 2489079452.2300005
+      },
+      {
+        "year": 2024,
+        "assessed": 20130771.349999998,
+        "voluntary_earmarked": 320259834.86,
+        "voluntary_unearmarked": 14793497.0,
+        "other": 150937018.4,
+        "total": 506121121.60999995
+      },
+      {
+        "year": 2025,
+        "assessed": 572093.188087,
+        "voluntary_earmarked": 424620137.833757,
+        "voluntary_unearmarked": 156149390.28,
+        "other": 39656124.686458,
+        "total": 620997745.9883019
+      }
+    ],
+    "Other Public Private Partnership": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 1746330.12294,
+        "voluntary_unearmarked": 0,
+        "other": 6764232.03,
+        "total": 8510562.15294
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 9876382.46,
+        "voluntary_unearmarked": 0,
+        "other": 9038648.0,
+        "total": 18915030.46
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": 397074.8600000003,
+        "voluntary_unearmarked": 0,
+        "other": 8942597.0,
+        "total": 9339671.86
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 5818155.25,
+        "voluntary_unearmarked": 0,
+        "other": 21479171.0,
+        "total": 27297326.25
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": 6409299.919795,
+        "voluntary_unearmarked": 0,
+        "other": 23671826.970000003,
+        "total": 30081126.889795
       }
     ],
     "Pakistan": [
@@ -22868,6 +25155,112 @@
         "voluntary_unearmarked": 0,
         "other": 0,
         "total": 0
+      }
+    ],
+    "Revenue from Activities": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": -2195118.361,
+        "voluntary_earmarked": -728653.5674800001,
+        "voluntary_unearmarked": 0,
+        "other": 1659364034.3862002,
+        "total": 1656440262.45772
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 1791135663.8600004,
+        "total": 1791135663.8600004
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 3933375328.7500005,
+        "total": 3933375328.7500005
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 4332058006.61,
+        "total": 4332058006.61
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 4469555762.631977,
+        "total": 4469555762.631977
       }
     ],
     "Robert Wood Johnson Foundation": [
@@ -29336,6 +31729,112 @@
         "total": 0
       }
     ],
+    "UNDP Administered Trust Funds": [
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 502760274.75999993,
+        "voluntary_unearmarked": 8044310.46,
+        "other": 0,
+        "total": 510804585.2199999
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      }
+    ],
     "UNDRR": [
       {
         "year": 2013,
@@ -30182,6 +32681,112 @@
         "voluntary_unearmarked": 739388.08,
         "other": 8412.52,
         "total": 14018335.618730871
+      }
+    ],
+    "Unattributed": [
+      {
+        "year": 2013,
+        "assessed": 99049484.61000001,
+        "voluntary_earmarked": 5865042238.18,
+        "voluntary_unearmarked": 734825816.26,
+        "other": 2570886509.95,
+        "total": 9269804049.0
+      },
+      {
+        "year": 2014,
+        "assessed": 129892062.07999998,
+        "voluntary_earmarked": 2283109758.1900005,
+        "voluntary_unearmarked": 125099697.78999995,
+        "other": 3036914924.49,
+        "total": 5575016442.549999
+      },
+      {
+        "year": 2015,
+        "assessed": 203221359.95000005,
+        "voluntary_earmarked": 3942413240.6499996,
+        "voluntary_unearmarked": -1149103792.2699997,
+        "other": 3500304315.57,
+        "total": 6496835123.899999
+      },
+      {
+        "year": 2016,
+        "assessed": 198417624.43000004,
+        "voluntary_earmarked": 3350100444.5699997,
+        "voluntary_unearmarked": -1130059973.7900007,
+        "other": 3614669991.82,
+        "total": 6033128087.030001
+      },
+      {
+        "year": 2017,
+        "assessed": 367755033.92,
+        "voluntary_earmarked": 4767103837.11,
+        "voluntary_unearmarked": -1222118660.6,
+        "other": 4431073291.500001,
+        "total": 8343813501.929997
+      },
+      {
+        "year": 2018,
+        "assessed": 187426254.17000002,
+        "voluntary_earmarked": 2673504354.7500005,
+        "voluntary_unearmarked": 718990197.37,
+        "other": 3996326944.6800003,
+        "total": 7576247750.970002
+      },
+      {
+        "year": 2019,
+        "assessed": 127455068.6,
+        "voluntary_earmarked": 2690768631.6700006,
+        "voluntary_unearmarked": 699112293.4100001,
+        "other": 5005068776.87,
+        "total": 8522404770.550002
+      },
+      {
+        "year": 2020,
+        "assessed": 17280700.680000037,
+        "voluntary_earmarked": 3845396570.8400016,
+        "voluntary_unearmarked": 669415182.4900002,
+        "other": 5307751290.459998,
+        "total": 9839843744.470001
+      },
+      {
+        "year": 2021,
+        "assessed": -1.4920066036283972,
+        "voluntary_earmarked": -124782916.19351614,
+        "voluntary_unearmarked": -34808450.62335532,
+        "other": -0.0339988999767226,
+        "total": -159591368.34287697
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": -2861525.0,
+        "voluntary_unearmarked": -38679357.0,
+        "other": 0,
+        "total": -41540882.0
+      },
+      {
+        "year": 2023,
+        "assessed": 75549491.80999997,
+        "voluntary_earmarked": 31917239.00999997,
+        "voluntary_unearmarked": -14.57000002427958,
+        "other": -24657937.640000004,
+        "total": 82808778.6099999
+      },
+      {
+        "year": 2024,
+        "assessed": 96385.57000000763,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 1.0,
+        "other": 3.0,
+        "total": 96389.57000000763
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": -949187680.6899998,
+        "voluntary_unearmarked": 943566973.86,
+        "other": 0,
+        "total": -5620706.8299998045
       }
     ],
     "United Arab Emirates": [

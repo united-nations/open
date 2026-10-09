@@ -107,8 +107,11 @@ File: `data/ceb/fused/revenue_by_contributor.csv`
 
 Both tiers reconcile each entity × year × financing instrument to `revenue.csv`
 within one cent. Independent tests classify the original textual instrument
-labels and compare them to the final exports. Contributor trends preserve Other
-and include all attribution statuses in All contributors. Unknown financing codes
+labels and compare them to the final exports. Contributor trends include aggregate
+Other entries within their known government/non-government types and categories.
+A separate Unattributed series preserves the signed reconciliation balance;
+Government + Non-Government + Unattributed equals All contributors in every year.
+Unknown financing codes
 fail validation. See [the remediation notes](data-integrity-remediation.md).
 
 ## Data Sources

@@ -68,7 +68,7 @@ export function ContributorTrendsChart() {
   const [data, setData] = React.useState<ContributorTrendsData | null>(null);
   const [loading, setLoading] = React.useState(true);
   const [selected, setSelected] = React.useState<Set<string>>(
-    new Set(["gov", "non-gov"]),
+    new Set(["gov", "non-gov", "unattributed"]),
   );
   const [financingContributor, setFinancingContributor] =
     React.useState<string>("all");
@@ -106,16 +106,28 @@ export function ContributorTrendsChart() {
     return [
       {
         id: "gov",
-        label: "Named governments",
+        label: "Government",
         bgColor: "bg-un-blue",
         children: data.meta.governmentContributors,
       },
       {
         id: "non-gov",
-        label: "Named non-government contributors",
+        label: "Non-Government",
         bgColor: "bg-smoky",
         children: [],
         subgroups: nonGovSubgroups,
+      },
+      {
+        id: "unattributed",
+        label: "Unattributed",
+        bgColor: "bg-dusty-gray",
+        children: [],
+      },
+      {
+        id: "all",
+        label: "All contributors",
+        bgColor: "bg-un-blue",
+        children: [],
       },
     ];
   }, [data]);
@@ -128,21 +140,23 @@ export function ContributorTrendsChart() {
       { id: "all", label: "All contributors", children: [] },
       {
         id: "gov",
-        label: "Named governments",
+        label: "Government",
         children: data.meta.governmentContributors,
       },
       {
         id: "non-gov",
-        label: "Named non-government contributors",
+        label: "Non-Government",
         children: data.meta.nonGovContributors,
       },
+      { id: "unattributed", label: "Unattributed", children: [] },
     ];
   }, [data]);
 
   const getFinancingLabel = React.useCallback((id: string) => {
     if (id === "all") return "All contributors";
-    if (id === "gov") return "Named governments";
-    if (id === "non-gov") return "Named non-government contributors";
+    if (id === "gov") return "Government";
+    if (id === "non-gov") return "Non-Government";
+    if (id === "unattributed") return "Unattributed";
     return id;
   }, []);
 
@@ -157,10 +171,13 @@ export function ContributorTrendsChart() {
       // Add data for each selected item
       Array.from(selected).forEach((id) => {
         if (id === "gov") {
-          point["Named governments"] = data.aggregates.gov[idx]?.total || 0;
+          point["Government"] = data.aggregates.gov[idx]?.total || 0;
         } else if (id === "non-gov") {
-          point["Named non-government contributors"] =
+          point["Non-Government"] =
             data.aggregates["non-gov"][idx]?.total || 0;
+        } else if (id === "unattributed" || id === "all") {
+          point[id === "all" ? "All contributors" : "Unattributed"] =
+            data.aggregates[id][idx]?.total || 0;
         } else if (id.startsWith("cat:") && data.aggregates[id]) {
           // Category aggregate - prefix to avoid collision with individual donors
           const catName = id.replace("cat:", "") + " (all)";
@@ -183,16 +200,23 @@ export function ContributorTrendsChart() {
     Array.from(selected).forEach((id) => {
       let name: string;
       if (id === "gov") {
-        name = "Named governments";
+        name = "Government";
       } else if (id === "non-gov") {
-        name = "Named non-government contributors";
+        name = "Non-Government";
+      } else if (id === "unattributed") {
+        name = "Unattributed";
+      } else if (id === "all") {
+        name = "All contributors";
       } else if (id.startsWith("cat:")) {
         name = id.replace("cat:", "") + " (all)";
       } else {
         name = id;
       }
 
-      const color = LINE_COLORS[colorIdx % LINE_COLORS.length];
+      const color =
+        id === "unattributed"
+          ? "#777777"
+          : LINE_COLORS[colorIdx % LINE_COLORS.length];
       colors[id] = color;
 
       result.push({
@@ -223,7 +247,8 @@ export function ContributorTrendsChart() {
         sourceData = data.aggregates.all;
       } else if (
         financingContributor === "gov" ||
-        financingContributor === "non-gov"
+        financingContributor === "non-gov" ||
+        financingContributor === "unattributed"
       ) {
         sourceData = data.aggregates[financingContributor];
       } else {
@@ -304,7 +329,7 @@ export function ContributorTrendsChart() {
                     tick={{ fontSize: 11, fill: "#6b7280", dx: -5, dy: -8 }}
                     tickLine={false}
                     axisLine={false}
-                    domain={[0, "auto"]}
+                    domain={["auto", "auto"]}
                     tickFormatter={sharedFormatBudget}
                     mirror
                   />
