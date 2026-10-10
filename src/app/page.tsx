@@ -1,4 +1,4 @@
-import { SectionLinkCards } from "@/components/SectionLinkCards";
+import { HomeChartCards } from "@/components/HomeChartCards";
 import {
   Building2,
   FileText,
@@ -19,6 +19,22 @@ export const metadata: Metadata = {
 };
 
 export default function HomePage() {
+  const sections = [
+    {
+      href: "/system",
+      title: "UN System",
+      description:
+        "The UN System comprises the UN Secretariat, funds and programmes, specialized agencies, related organizations, research and training institutes, and other entities.",
+      links: SYSTEM_NAV,
+    },
+    {
+      href: "/secretariat",
+      title: "UN Secretariat",
+      description:
+        "The UN Secretariat is part of the UN System. Next to its departments and offices it comprises peacekeeping operations and special political missions.",
+      links: visibleSecretariatNav(),
+    },
+  ];
   return (
     <>
       <section className="mx-auto max-w-6xl px-6 pt-8 pb-6 md:px-12 lg:px-16">
@@ -29,19 +45,14 @@ export default function HomePage() {
           Explore contributions and spending across the UN System, and drill
           down into the budget of the UN Secretariat.
         </p>
-        <div className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
-          <HomeSectionCard
-            href="/system"
-            title="UN System"
-            description="The UN System comprises the UN Secretariat, funds and programmes, specialized agencies, related organizations, research and training institutes, and other entities."
-            links={SYSTEM_NAV}
+        <div className="relative mt-6 grid grid-cols-1 gap-y-8 md:grid-cols-2 md:gap-x-10 md:gap-y-0 lg:gap-x-12">
+          <span
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px bg-gray-200 md:block"
           />
-          <HomeSectionCard
-            href="/secretariat"
-            title="UN Secretariat"
-            description="The UN Secretariat is part of the UN System. Next to its departments and offices it comprises peacekeeping operations and special political missions."
-            links={visibleSecretariatNav()}
-          />
+          {sections.map((section) => (
+            <HomeSectionCard key={section.href} {...section} />
+          ))}
         </div>
       </section>
 
@@ -104,14 +115,18 @@ function HomeSectionCard({
   description: string;
 }) {
   return (
-    <section className="min-w-0 rounded-lg border border-gray-200 bg-white p-4 sm:p-6">
-      <h2 className="text-xl font-bold text-gray-900">
-        <Link href={href} className="hover:underline">
-          {title}
-        </Link>
-      </h2>
-      <p className="mt-2 text-sm text-black">{description}</p>
-      <SectionLinkCards links={links} />
+    <section
+      className={`min-w-0 md:row-span-5 md:grid md:grid-rows-subgrid lg:row-span-3 ${href === "/secretariat" ? "border-t border-gray-200 pt-6 md:border-t-0 md:pt-0" : ""}`}
+    >
+      <div>
+        <h2 className="text-xl font-bold text-gray-900">
+          <Link href={href} className="hover:underline">
+            {title}
+          </Link>
+        </h2>
+        <p className="mt-2 text-sm text-black">{description}</p>
+      </div>
+      <HomeChartCards links={links} />
     </section>
   );
 }

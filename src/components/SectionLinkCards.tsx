@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
-const LINK_DESCRIPTIONS: Record<string, string> = {
+export const LINK_DESCRIPTIONS: Record<string, string> = {
   "/system/organizations": "Funding and spending across UN organizations.",
   "/system/contributors": "Who funds the UN System, and how.",
   "/system/locations": "Where funds are spent, by country and region.",
