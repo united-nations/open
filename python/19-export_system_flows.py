@@ -2,7 +2,7 @@
 
 Revenue is loaded separately by the frontend. Geography/SDGs describe organization
 spending, not the destinations of any particular contributor's funding. Preserve
-signed amounts, source geographic classifications, and reporting discrepancies.
+signed amounts, original geographic codes, and reporting discrepancies.
 """
 import json
 from pathlib import Path
@@ -64,10 +64,16 @@ def build_export(totals: pd.DataFrame, geography: pd.DataFrame, goals: pd.DataFr
                 label = name.strip()
                 anomaly = kind == 'SUB' and label in {'Eastern Europe', 'Türkiye'} and region == 'Africa'
                 anomaly_count += int(anomaly)
+                source_types = sorted(set(rows.source_location_type))
+                notes = []
+                if any(source_type != kind for source_type in source_types):
+                    notes.append(f'Source location type {", ".join(source_types)} corrected to {kind} using the reviewed geographic-area crosswalk.')
+                if anomaly:
+                    notes.append('Source reports this location under Africa; geographic classification is inconsistent.')
                 geos.append({'key': f'{kind}:{label}:{region}', 'label': label,
                              'region': 'Unresolved geographic classification' if anomaly else region,
                              'sourceRegion': region, 'sourceLabel': name,
-                             'note': 'Source reports this location under Africa; geographic classification is inconsistent.' if anomaly else None,
+                             'sourceLocationTypes': source_types, 'note': ' '.join(notes) or None,
                              'kind': KINDS[kind], 'amount': float(rows.amount.sum())})
             sdgs = []
             goal_rows = s[s.entity == entity].copy()
@@ -96,7 +102,7 @@ def build_export(totals: pd.DataFrame, geography: pd.DataFrame, goals: pd.DataFr
                 'Independent reported spending dimensions; not traced allocations of contributor funding.',
                 'All available years use the current CEB release; source vintage and hashes are recorded in ceb-source.json. Geography selects E06 total expense records.',
                 'SDG DPO is normalized to UN-DPO; separately reported sub-agencies are rolled into the same-year CEB expense-source parent where uniquely identified.',
-                'Country, region and subregion entries are retained with their source labels and classifications.',
+                'Source labels and original location codes are retained. Known geographic areas reported as COU use the reviewed region/subregion crosswalk; correction notes disclose the change.',
                 'X00/x00 is retained as not allocated to a goal; signed reporting differences are not allocated to goals.',
                 'Net amounts include negative adjustments. Inter-agency transfers are not eliminated.',
             ],

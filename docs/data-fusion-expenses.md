@@ -14,6 +14,32 @@ expense series, so its early coverage differs. SDG expenses select EXP actuals,
 exclude BUD/BUG budgets, and end in 2024; a blank year is not a zero allocation.
 File provenance and coverage are published in `public/data/ceb-source.json`.
 
+### Geographic classification corrections
+
+The current CEB release reports 29 known regions/subregions as `COU` in some
+records. The reviewed `GEOGRAPHIC_AREA_TYPES` crosswalk in `python/utils.py`
+restores their regional level during preparation, across all available geography
+years (2010–2025). Matching ignores case and repeated whitespace but uses only
+explicit names; unknown labels are not guessed into a region or country.
+Existing `REG`/`SUB` classifications and parent-region labels remain as reported.
+
+Raw CSV bytes are unchanged. Clean records retain the original code in
+`source_location_type`; map and flow exports expose `sourceLocationTypes` and
+correction notes. All 147,069 rows, labels, entities, years and signed amounts are
+preserved. The correction affects 10,650 rows across 29 labels, including 9,607
+E06 total records. Geography totals remain unchanged; country-only exports exclude
+the corrected regional amounts. This also removes previously misassigned
+Southern Africa and Micronesia amounts from South Africa and the Federated States
+of Micronesia country totals. Actual country records remain unchanged.
+
+The map uses existing regional coordinates. Unresolved coordinates remain
+explicitly disclosed: Channel Islands (2012/2017) and Antarctica (2021) retain
+their existing fallback markers. Neither label is added to the crosswalk.
+Regression checks run with `uv run python -m unittest discover -s python/tests`.
+After preparation, regenerate geographic exports with script 20, country exports
+with `export_country_expenses(load_country_expenses())` from script 07, and the
+independent flow dimensions with script 19. Available years do not change.
+
 ## Data Sources
 
 ### CEB Expenses (Primary)

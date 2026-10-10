@@ -149,3 +149,27 @@ COUNTRY_NAME_OVERRIDES = {"Cura├ºao": "Curaçao"}
 
 def normalize_country_name(name: str) -> str:
     return COUNTRY_NAME_OVERRIDES.get(name, name)
+
+
+# Reviewed geography names: REG = M49 macroregions; SUB = named subregions
+# (including intermediate regions used by CEB). The pre-refresh CEB snapshot
+# also reports the diagnosed names as SUB. Never infer a level from the parent
+# column or fuzzy-match a country: South Africa and Türkiye remain countries.
+GEOGRAPHIC_AREA_TYPES = {
+    **dict.fromkeys(("Africa", "Americas", "Asia", "Europe", "Oceania"), "REG"),
+    **dict.fromkeys((
+        "Australia and New Zealand", "Caribbean", "Central America", "Central Asia",
+        "Eastern Africa", "Eastern Asia", "Eastern Europe",
+        "Latin America and the Caribbean", "Melanesia", "Micronesia", "Middle Africa",
+        "Northern Africa", "Northern America", "Northern Europe", "Polynesia",
+        "South America", "South-eastern Asia", "Southern Africa", "Southern Asia",
+        "Southern Europe", "Sub-Saharan Africa", "Western Africa", "Western Asia",
+        "Western Europe",
+    ), "SUB"),
+}
+_GEOGRAPHIC_AREA_NAMES = {name.casefold(): name for name in GEOGRAPHIC_AREA_TYPES}
+
+
+def canonical_geographic_area(name: str) -> str | None:
+    """Conservative whitelist lookup; whitespace/case variants only."""
+    return _GEOGRAPHIC_AREA_NAMES.get(" ".join(name.split()).casefold())

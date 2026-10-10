@@ -15,6 +15,24 @@ spec.loader.exec_module(module)
 
 
 class FlowTests(unittest.TestCase):
+    def test_corrected_geography_retains_source_codes_and_discloses_change(self):
+        totals = pd.DataFrame([dict(calendar_year=2024, agency='UN', amount=100)])
+        geography = pd.DataFrame([
+            {'calendar_year': 2024, 'agency': 'UN', 'amount': 70, 'location_type': 'COU', 'country/territory': 'Southern Africa', 'region': 'Africa'},
+            {'calendar_year': 2024, 'agency': 'UN', 'amount': 30, 'location_type': 'COU', 'country/territory': 'South Africa', 'region': 'Africa'},
+        ])
+        goals = pd.DataFrame([dict(calendar_year=2024, entity_code='UN', amount=100, sdg_goal='1')])
+        rows = module.build_export(totals, geography, goals)['data'][0]['entities']['UN Secretariat']['geography']
+        corrected = next(row for row in rows if row['label'] == 'Southern Africa')
+        country = next(row for row in rows if row['label'] == 'South Africa')
+        self.assertEqual(corrected['kind'], 'subregion')
+        self.assertEqual(corrected['sourceLocationTypes'], ['COU'])
+        self.assertIn('corrected to SUB', corrected['note'])
+        self.assertEqual(country['kind'], 'country')
+        self.assertEqual(country['sourceLocationTypes'], ['COU'])
+        self.assertIsNone(country['note'])
+        self.assertEqual(sum(row['amount'] for row in rows), 100)
+
     def test_signed_amounts_unallocated_and_missing_reports(self):
         totals = pd.DataFrame([dict(calendar_year=2024, agency='UN', amount=100)])
         geography = pd.DataFrame([
@@ -59,7 +77,7 @@ class FlowTests(unittest.TestCase):
         self.assertTrue(all(e['geographyDifference'] is None for y in result['data'] for e in y['entities'].values() if e['total'] is None))
         self.assertTrue(all(r['label'] for y in result['data'] for e in y['entities'].values() for r in e['geography']))
         women = result['data'][-1]['entities']['UN Women']
-        anomalies = [r for r in women['geography'] if r['note']]
+        anomalies = [r for r in women['geography'] if r['note'] and 'classification is inconsistent' in r['note']]
         # The new source no longer reports these two records as subregions of Africa.
         self.assertEqual(anomalies, [])
 

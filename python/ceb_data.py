@@ -1,6 +1,25 @@
 """Shared CEB source validation and selection of independent expense totals."""
 import numpy as np
 import pandas as pd
+from utils import GEOGRAPHIC_AREA_TYPES, canonical_geographic_area
+
+
+def normalize_geographic_locations(frame: pd.DataFrame) -> pd.DataFrame:
+    """Repair known area names coded COU without changing rows or amounts.
+
+    Preserve the downloaded code independently of the corrected display type.
+    Other source classifications (including REG/SUB disagreements) are retained.
+    Unknown country labels remain unresolved downstream; no country is guessed.
+    """
+    frame = frame.copy()
+    if 'source_location_type' not in frame:
+        frame['source_location_type'] = frame['location_type']
+    areas = frame['country/territory'].map(
+        lambda name: canonical_geographic_area(name) if isinstance(name, str) else None
+    )
+    corrected = (frame.location_type == 'COU') & areas.notna()
+    frame.loc[corrected, 'location_type'] = areas[corrected].map(GEOGRAPHIC_AREA_TYPES)
+    return frame
 
 
 def normalize_frame(frame: pd.DataFrame) -> pd.DataFrame:
@@ -11,6 +30,8 @@ def normalize_frame(frame: pd.DataFrame) -> pd.DataFrame:
     frame['amount'] = pd.to_numeric(frame.amount, errors='raise')
     if np.isinf(frame.amount).any():
         raise ValueError('Non-finite CEB amount')
+    if {'location_type', 'country/territory'}.issubset(frame.columns):
+        frame = normalize_geographic_locations(frame)
     return frame
 
 
@@ -23,14 +44,14 @@ def select_geographic_totals(frame: pd.DataFrame) -> pd.DataFrame:
     if frame.amount.isna().any():
         raise ValueError('Missing geographic expense amount')
     if 'expenses_type' not in frame:
-        return frame.copy()
+        return normalize_geographic_locations(frame) if {'location_type', 'country/territory'}.issubset(frame.columns) else frame.copy()
     unknown = set(frame.expenses_type) - {'E06', 'E06A', 'E06B', 'E06C'}
     if unknown:
         raise ValueError(f'Unknown or missing CEB expense types: {unknown}')
     totals = frame[frame.expenses_type == 'E06'].copy()
     if set(totals.calendar_year) != set(frame.calendar_year):
         raise ValueError('Geographic expense year has no E06 total records')
-    return totals
+    return normalize_geographic_locations(totals) if {'location_type', 'country/territory'}.issubset(totals.columns) else totals
 
 
 def select_sdg_expenses(frame: pd.DataFrame) -> pd.DataFrame:

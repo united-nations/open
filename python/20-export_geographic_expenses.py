@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 import pandas as pd
 from ceb_data import select_geographic_totals, select_sdg_expenses
-from utils import normalize_entity, normalize_country_name
+from utils import normalize_entity, normalize_country_name, canonical_geographic_area
 
 spec = importlib.util.spec_from_file_location('expenses_export', Path(__file__).with_name('07-export_expenses_json.py'))
 expenses = importlib.util.module_from_spec(spec)
@@ -45,9 +45,12 @@ def build_geography(frame):
     for year, yearly in frame.groupby('calendar_year'):
         records = {}
         for (kind, source_name, parent), rows in yearly.groupby(['location_type', 'country/territory', 'region'], dropna=False):
-            name = normalize_country_name(source_name.strip())
+            name = canonical_geographic_area(source_name) or normalize_country_name(source_name.strip())
             level = {'COU': 'country', 'SUB': 'subregion', 'REG': 'region'}[kind]
             notes = []
+            source_types = sorted(set(rows.source_location_type))
+            if source_types != [kind]:
+                notes.append(f'Source classification conflict: reported as {", ".join(source_types)}; displayed as {level} using the reviewed geographic-name crosswalk. Original source amounts and labels are preserved.')
             region = parent or name
             if name.startswith('Global'):
                 level, name, region = 'global', 'Global', 'Global and Interregional'
@@ -77,9 +80,10 @@ def build_geography(frame):
                 point = (-52, -135)
                 notes.append('No verified display coordinate available; shown in the ocean reference area, not at an inferred location.')
             row = records.setdefault(key, dict(iso3=key, name=name, region=region, level=level,
-                 lat=point[0], long=point[1], entities={}, notes=[], sourceLabels=[]))
+                 lat=point[0], long=point[1], entities={}, notes=[], sourceLabels=[], sourceLocationTypes=[]))
             row['notes'] = sorted(set(row['notes'] + notes))
             row['sourceLabels'] = sorted(set(row['sourceLabels'] + [source_name.strip()]))
+            row['sourceLocationTypes'] = sorted(set(row['sourceLocationTypes'] + source_types))
             for entity, amount in rows.groupby('entity').amount.sum().items():
                 row['entities'][entity] = row['entities'].get(entity, 0) + float(amount)
         for row in records.values():
