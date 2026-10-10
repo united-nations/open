@@ -2,7 +2,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { cache } from "react";
 import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { LINK_DESCRIPTIONS } from "@/components/SectionLinkCards";
 import { getSystemGroupingStyle } from "@/lib/systemGroupings";
 import { layoutGroups, squarifyDense } from "@/lib/treemapLayout";
@@ -498,7 +498,7 @@ export async function HomeChartCards({
                   <span className="text-sm font-semibold text-gray-900 group-hover:text-un-blue-dark">
                     {link.label}
                   </span>
-                  <ArrowUpRight
+                  <ArrowRight
                     className="mt-0.5 size-4 shrink-0 text-gray-400 group-hover:text-un-blue"
                     aria-hidden="true"
                   />

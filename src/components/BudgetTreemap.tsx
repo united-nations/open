@@ -2,6 +2,13 @@
 import { orderFundingTooltipRows } from "@/lib/financingInstruments";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
+import {
+  TreemapTileInteractionCue,
+  activateTreemapTileOnKeyDown,
+  treemapTileBaseBorderClassName,
+  treemapTileFillInteractionClassName,
+  treemapTileInteractionClassName,
+} from "@un-eosg/ui/components/treemap-tile-interaction";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { NegativeAmounts } from "./NegativeAmounts";
 import { ChartFooter } from "@/components/ChartFooter";
@@ -2570,22 +2577,38 @@ export function BudgetTreemap({
                           <div
                             key={tile.node.id}
                             data-node={tile.node.id}
-                            className="absolute cursor-pointer overflow-hidden transition-[filter] duration-150"
+                            className={`absolute overflow-hidden ${treemapTileInteractionClassName}`}
+                            role="button"
+                            tabIndex={0}
+                            aria-label={`${caption}: ${formatBudget(tile.node.amount)}`}
                             style={{
                               left: `${rect.x}%`,
                               top: `${rect.y}%`,
                               width: `${rect.width}%`,
                               height: `${rect.height}%`,
-                              backgroundColor: usesOverviewGroupLayout
-                                ? groupColors.bg
-                                : fundingTotal > 0
-                                  ? "#ffffff"
-                                  : groupColors.bg,
-                              filter: isHovered
-                                ? "brightness(0.82)"
-                                : undefined,
                             }}
                             onClick={() => handleTileClick(tile)}
+                            onKeyDown={(event) =>
+                              activateTreemapTileOnKeyDown(event, () =>
+                                openSidebar(tile.node.id),
+                              )
+                            }
+                            onFocus={(event) => {
+                              if (isMobile) return;
+                              const bounds =
+                                event.currentTarget.getBoundingClientRect();
+                              setHovered(tile.node.id);
+                              setTooltip({
+                                x: bounds.left + bounds.width / 2,
+                                y: bounds.top,
+                                tile,
+                              });
+                            }}
+                            onBlur={() => {
+                              if (isMobile) return;
+                              setHovered(null);
+                              setTooltip(null);
+                            }}
                             onMouseEnter={() =>
                               !isMobile && setHovered(tile.node.id)
                             }
@@ -2599,30 +2622,45 @@ export function BudgetTreemap({
                               setTooltip(null);
                             }}
                           >
-                            {!usesOverviewGroupLayout && fundingTotal > 0 && (
-                              <div className="absolute inset-0 flex flex-col">
-                                {fundingValues.map(([key, amount]) => (
-                                  <div
-                                    key={key}
-                                    style={{
-                                      height: `${(amount / fundingTotal) * 100}%`,
-                                      backgroundColor: groupColors.bg,
-                                      opacity:
-                                        FUNDING_SHADE_OPACITY[key] ?? 0.35,
-                                    }}
-                                  />
-                                ))}
-                              </div>
-                            )}
-                            {tile.node.isRemainder && (
-                              <div
-                                className="pointer-events-none absolute inset-0"
-                                style={{
-                                  backgroundImage:
-                                    "repeating-linear-gradient(45deg, rgba(255,255,255,0.16) 0 4px, transparent 4px 8px)",
-                                }}
-                              />
-                            )}
+                            <div
+                              aria-hidden="true"
+                              className={`pointer-events-none absolute inset-0 ${treemapTileFillInteractionClassName}`}
+                              style={{
+                                backgroundColor: usesOverviewGroupLayout
+                                  ? groupColors.bg
+                                  : fundingTotal > 0
+                                    ? "#ffffff"
+                                    : groupColors.bg,
+                                filter: isHovered
+                                  ? "brightness(0.9)"
+                                  : undefined,
+                              }}
+                            >
+                              {!usesOverviewGroupLayout && fundingTotal > 0 && (
+                                <div className="absolute inset-0 flex flex-col">
+                                  {fundingValues.map(([key, amount]) => (
+                                    <div
+                                      key={key}
+                                      style={{
+                                        height: `${(amount / fundingTotal) * 100}%`,
+                                        backgroundColor: groupColors.bg,
+                                        opacity:
+                                          FUNDING_SHADE_OPACITY[key] ?? 0.35,
+                                      }}
+                                    />
+                                  ))}
+                                </div>
+                              )}
+                              {tile.node.isRemainder && (
+                                <div
+                                  className="pointer-events-none absolute inset-0"
+                                  style={{
+                                    backgroundImage:
+                                      "repeating-linear-gradient(45deg, rgba(255,255,255,0.16) 0 4px, transparent 4px 8px)",
+                                  }}
+                                />
+                              )}
+                            </div>
                             <div
                               className={
                                 usesOverviewGroupLayout
@@ -2660,13 +2698,14 @@ export function BudgetTreemap({
                             </div>
                             <div
                               aria-hidden="true"
-                              className="pointer-events-none absolute inset-0"
+                              className={`pointer-events-none absolute inset-0 ${treemapTileBaseBorderClassName}`}
                               style={{
                                 boxShadow: usesOverviewGroupLayout
                                   ? "inset 0 0 0 0.5px rgba(255, 255, 255, 0.8)"
                                   : "inset 0 0 0 0.5px rgba(255, 255, 255, 0.6)",
                               }}
                             />
+                            <TreemapTileInteractionCue />
                           </div>
                         );
                       })}

@@ -62,7 +62,7 @@ export function SiteHeader() {
         mobileMenuLabel="Open navigation menu"
         emblemPlacement="outboard"
         transparency="low"
-        containerClassName="min-h-10 max-w-6xl px-6 md:px-12 lg:px-16"
+        containerClassName="max-w-6xl px-6 md:px-12 lg:px-16"
       />
     </div>
   );

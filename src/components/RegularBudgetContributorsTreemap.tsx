@@ -174,6 +174,7 @@ export function RegularBudgetContributorsTreemap() {
           label: contributor.name,
           value: contributor.assessment_amount,
           color: STATUS_STYLES[contributor.payment_status].color,
+          paleFill: contributor.payment_status === "not_paid_in_full",
           textColor: STATUS_STYLES[contributor.payment_status].textColor,
           borderColor:
             contributor.payment_status === "not_paid_in_full"

@@ -371,6 +371,7 @@ export function EntitiesTreemap() {
               label: entity.entity,
               value: budgetData[entity.entity] ?? 0,
               color: style.hexColor,
+              paleFill: style.textColor === "text-black",
               textColor:
                 style.textColor === "text-black"
                   ? "var(--color-un-black)"

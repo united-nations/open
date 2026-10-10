@@ -4,6 +4,13 @@ import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { ChartFooter } from "@/components/ChartFooter";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
+import {
+  TreemapTileInteractionCue,
+  activateTreemapTileOnKeyDown,
+  treemapTileFillInteractionClassName,
+  treemapTileInteractionClassName,
+  treemapTileLayoutTransitionClassName,
+} from "@un-eosg/ui/components/treemap-tile-interaction";
 
 import React, {
   useEffect,
@@ -566,6 +573,12 @@ export default function SDGsGrid() {
               sdgNumber === 0 ? "Unallocated" : SDG_SHORT_TITLES[sdgNumber];
             const pos = positionLookup[sdgNumber.toString()];
             if (!pos) return null;
+            const activate = sdg
+              ? () => {
+                  setSelectedSDG(sdg);
+                  replaceToSidebar("sdg", sdg.number);
+                }
+              : undefined;
 
             // Entity sub-treemap (render while visible OR fading out)
             const entityRects =
@@ -586,22 +599,35 @@ export default function SDGsGrid() {
               <Tooltip key={sdgNumber} delayDuration={50}>
                 <TooltipTrigger asChild>
                   <div
-                    className="absolute cursor-pointer overflow-hidden text-white transition-all ease-in-out hover:ring-2 hover:ring-white/60 hover:brightness-110"
+                    className={`absolute overflow-hidden text-white ${treemapTileLayoutTransitionClassName} ${activate ? treemapTileInteractionClassName : "focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset"}`}
+                    role={activate ? "button" : undefined}
+                    tabIndex={0}
+                    aria-label={
+                      sdg ? `SDG ${sdgNumber}: ${shortTitle}` : shortTitle
+                    }
                     style={{
                       left: `${pos.x}%`,
                       top: `${pos.y}%`,
                       width: `${pos.width}%`,
                       height: `${pos.height}%`,
-                      backgroundColor: bgFaded ? "#e5e7eb" : color,
-                      transitionDuration: "1400ms",
+                      transitionDuration: "1400ms,1400ms,1400ms,1400ms,1400ms",
                     }}
-                    onClick={() => {
-                      if (sdg) {
-                        setSelectedSDG(sdg);
-                        replaceToSidebar("sdg", sdg.number);
-                      }
-                    }}
+                    onClick={activate}
+                    onKeyDown={
+                      activate
+                        ? (event) =>
+                            activateTreemapTileOnKeyDown(event, activate)
+                        : undefined
+                    }
                   >
+                    <span
+                      aria-hidden="true"
+                      className={`pointer-events-none absolute inset-0 ${activate ? treemapTileFillInteractionClassName : "motion-safe:transition-[background-color] motion-reduce:transition-none"}`}
+                      style={{
+                        backgroundColor: bgFaded ? "#e5e7eb" : color,
+                        transitionDuration: "1400ms,150ms",
+                      }}
+                    />
                     {/* Entity sub-treemap with fade */}
                     <div
                       className="absolute inset-0 transition-opacity"
@@ -619,11 +645,15 @@ export default function SDGsGrid() {
                             top: `${rect.y}%`,
                             width: `${rect.width}%`,
                             height: `${rect.height}%`,
-                            backgroundColor: color,
                           }}
                         >
+                          <span
+                            aria-hidden="true"
+                            className={`pointer-events-none absolute inset-0 ${activate ? treemapTileFillInteractionClassName : ""}`}
+                            style={{ backgroundColor: color }}
+                          />
                           {rect.width > 3 && rect.height > 2 && (
-                            <div className="flex h-full items-end overflow-hidden p-1">
+                            <div className="relative flex h-full items-end overflow-hidden p-1">
                               <div className="truncate text-xs leading-tight font-medium">
                                 {rect.data.name}
                               </div>
@@ -640,10 +670,16 @@ export default function SDGsGrid() {
                         left: 0,
                         top: 0,
                         padding: showSpending ? "0.5rem" : "1rem",
-                        backgroundColor: showSpending ? color : "transparent",
                         transitionDuration: "1400ms",
                       }}
                     >
+                      <span
+                        aria-hidden="true"
+                        className={`pointer-events-none absolute inset-0 -z-10 ${activate ? treemapTileFillInteractionClassName : ""}`}
+                        style={{
+                          backgroundColor: showSpending ? color : "transparent",
+                        }}
+                      />
                       <span className="mr-2 flex-shrink-0 text-2xl leading-none font-bold sm:text-3xl">
                         {sdgNumber || ""}
                       </span>
@@ -662,6 +698,7 @@ export default function SDGsGrid() {
                         </span>
                       </div>
                     </div>
+                    {activate && <TreemapTileInteractionCue />}
                   </div>
                 </TooltipTrigger>
                 <TooltipContent
