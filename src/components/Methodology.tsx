@@ -1,3 +1,4 @@
+import { SHOW_UNINFO } from "@/lib/featureFlags";
 import cebSource from "../../public/data/ceb-source.json";
 import { ExpandableCard } from "@/components/ExpandableCard";
 
@@ -139,41 +140,46 @@ export function LocationsMethodologyNotes() {
         shown do not imply official endorsement or acceptance by the United
         Nations.
       </p>
-      <h4 className="font-medium text-gray-900">
-        UN Cooperation Framework data
-      </h4>
-      <p>
-        Country sidebars also display data from the{" "}
-        <a
-          href="https://uninfo.org"
-          className="underline hover:text-un-blue"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          UN Sustainable Development Cooperation Framework system (UNINFO)
-        </a>
-        , which tracks planned activities at the country level.
-      </p>
-      <p>
-        <strong>Key differences from CEB data:</strong>
-      </p>
-      <ul className="list-inside list-disc space-y-1">
-        <li>
-          CEB: Historical actual expenditure from audited financial statements
-        </li>
-        <li>
-          UNINFO: Planned resources and partial actuals for Cooperation
-          Framework activities
-        </li>
-      </ul>
-      <p>
-        The geographic view includes CEB&apos;s updated historical allocations.
-        UNINFO is a separate dataset with its own reporting periods and covers
-        approximately 120 countries with Cooperation Frameworks, representing
-        roughly 40% of total UN system spending. The remainder includes
-        headquarters operations, peacekeeping missions, and global programs
-        outside country frameworks.
-      </p>
+      {SHOW_UNINFO && (
+        <>
+          <h4 className="font-medium text-gray-900">
+            UN Cooperation Framework data
+          </h4>
+          <p>
+            Country sidebars also display data from the{" "}
+            <a
+              href="https://uninfo.org"
+              className="underline hover:text-un-blue"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              UN Sustainable Development Cooperation Framework system (UNINFO)
+            </a>
+            , which tracks planned activities at the country level.
+          </p>
+          <p>
+            <strong>Key differences from CEB data:</strong>
+          </p>
+          <ul className="list-inside list-disc space-y-1">
+            <li>
+              CEB: Historical actual expenditure from audited financial
+              statements
+            </li>
+            <li>
+              UNINFO: Planned resources and partial actuals for Cooperation
+              Framework activities
+            </li>
+          </ul>
+          <p>
+            The geographic view includes CEB&apos;s updated historical
+            allocations. UNINFO is a separate dataset with its own reporting
+            periods and covers approximately 120 countries with Cooperation
+            Frameworks, representing roughly 40% of total UN system spending.
+            The remainder includes headquarters operations, peacekeeping
+            missions, and global programs outside country frameworks.
+          </p>
+        </>
+      )}
     </>
   );
 }
@@ -184,10 +190,16 @@ export function GoalsMethodologyNotes() {
       Spending by Sustainable Development Goal uses CEB financial statistics.
       Only actual expense records are included; source budget records are
       excluded. Reporting by goal is incomplete, so its total can differ from
-      organization spending. Available years end in 2024. The goal sidebar also
-      shows UNINFO Cooperation Framework resources, a separate scope and
-      measure. Its country breakdown excludes shared-workspace totals and
-      responses without a verified annual period.
+      organization spending. Available years end in 2024.
+      {SHOW_UNINFO && (
+        <>
+          {" "}
+          The goal sidebar also shows UNINFO Cooperation Framework resources, a
+          separate scope and measure. Its country breakdown excludes
+          shared-workspace totals and responses without a verified annual
+          period.
+        </>
+      )}
     </p>
   );
 }

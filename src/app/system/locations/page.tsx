@@ -1,3 +1,4 @@
+import { SHOW_UNINFO } from "@/lib/featureFlags";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { CountryMap } from "@/components/CountryMap";
@@ -17,7 +18,11 @@ export const metadata: Metadata = {
 export default function SystemLocationsPage() {
   return (
     <ChartSourceProvider
-      label="CEB financial statistics and UNINFO"
+      label={
+        SHOW_UNINFO
+          ? "CEB financial statistics and UNINFO"
+          : "CEB financial statistics"
+      }
       details={
         <>
           <CebMethodology />

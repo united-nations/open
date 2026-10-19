@@ -40,7 +40,7 @@ import { BAND_PALETTE } from "@/lib/secretariatGroupings";
 import { TrustFundSidebar } from "@/components/TrustFundSidebar";
 import { ProgrammeBudgetNodeTrend } from "@/components/ProgrammeBudgetNodeTrend";
 
-const SHOW_SIDEBAR_MINI_TREEMAP = false;
+import { SHOW_SIDEBAR_MINI_TREEMAP } from "@/lib/featureFlags";
 
 interface BudgetSidebarProps {
   node: BudgetNode;

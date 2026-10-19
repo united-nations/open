@@ -1,3 +1,5 @@
+import { notFound } from "next/navigation";
+import { isRouteEnabled } from "@/lib/navigation";
 import { BudgetSubviewNavigation } from "@/components/BudgetSubviewNavigation";
 
 export default function BudgetLayout({
@@ -5,6 +7,8 @@ export default function BudgetLayout({
 }: {
   children: React.ReactNode;
 }) {
+  if (!isRouteEnabled("/secretariat/trust-funds")) notFound();
+
   return (
     <>
       <BudgetSubviewNavigation

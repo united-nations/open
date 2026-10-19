@@ -1,18 +1,18 @@
 import { SectionChrome } from "@/components/SectionChrome";
-import { SHOW_FIELD_MISSIONS, SHOW_TRUST_FUNDS } from "@/lib/featureFlags";
 import { visibleSecretariatNav } from "@/lib/navigation";
 
 function secretariatIntro() {
-  if (SHOW_FIELD_MISSIONS && SHOW_TRUST_FUNDS) {
-    return "Get an overview of entities and priority areas, and open programme and peacekeeping budgets, field missions, and trust funds.";
-  }
-  if (SHOW_FIELD_MISSIONS) {
-    return "Get an overview of entities and priority areas, and open programme and peacekeeping budgets, and field missions.";
-  }
-  if (SHOW_TRUST_FUNDS) {
-    return "Get an overview of entities and priority areas, and open programme and peacekeeping budgets, and trust funds.";
-  }
-  return "Get an overview of entities and priority areas, and open programme and peacekeeping budgets.";
+  const sections = visibleSecretariatNav().filter(
+    (item) => item.href !== "/secretariat",
+  );
+  const overview = "Get an overview of entities and priority areas";
+  if (!sections.length) return `${overview}.`;
+  const labels = sections.map((item) => item.label.toLowerCase());
+  const list =
+    labels.length > 1
+      ? `${labels.slice(0, -1).join(", ")} and ${labels.at(-1)}`
+      : labels[0];
+  return `${overview}, and explore ${list}.`;
 }
 
 export default function SecretariatLayout({

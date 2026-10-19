@@ -1,3 +1,4 @@
+import { FEATURES } from "@/lib/featureFlags";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { cache } from "react";
@@ -79,10 +80,20 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
     readData<SecretariatOverviewData>(
       `secretariat-overview-${year("secretariatOverview")}.json`,
     ),
-    readData<BudgetData>(`budget-ppb-${year("budgetPpb")}.json`),
-    readData<BudgetData>(`budget-pko-${year("budgetPko")}.json`),
-    readData<BudgetData>(`budget-trust-funds-${year("budgetTrustFunds")}.json`),
-    readData<SecretariatEntitiesData>("secretariat-entities.json"),
+    FEATURES.programmeBudget
+      ? readData<BudgetData>(`budget-ppb-${year("budgetPpb")}.json`)
+      : null,
+    FEATURES.peacekeepingBudget
+      ? readData<BudgetData>(`budget-pko-${year("budgetPko")}.json`)
+      : null,
+    FEATURES.trustFunds
+      ? readData<BudgetData>(
+          `budget-trust-funds-${year("budgetTrustFunds")}.json`,
+        )
+      : null,
+    FEATURES.peacekeepingBudget
+      ? readData<SecretariatEntitiesData>("secretariat-entities.json")
+      : null,
   ]);
   const entityGroups = new Map(
     entities.map((entity) => [entity.entity, entity.system_grouping]),
@@ -122,14 +133,17 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
     }
   }
   const missionLocations = new Map(
-    missionMetadata.locations.map((location) => [location.code, location]),
+    (missionMetadata?.locations ?? []).map((location) => [
+      location.code,
+      location,
+    ]),
   );
-  const peacekeepingPoints = peacekeeping.nodes
+  const peacekeepingPoints = (peacekeeping?.nodes ?? [])
     .filter((node) => node.tier === "mission")
     .flatMap((node): Country[] => {
       const code = node.code ?? node.id;
       const location = missionLocations.get(
-        missionMetadata.aliases[code] ?? code,
+        missionMetadata?.aliases[code] ?? code,
       );
       return location
         ? [{ lat: location.lat, long: location.long, total: node.amount }]
@@ -163,14 +177,14 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
     },
     "/secretariat/programme-budget": {
       bands: "programme",
-      tiles: budgetTiles(programme, "part"),
+      tiles: programme ? budgetTiles(programme, "part") : [],
     },
     "/secretariat/peacekeeping-budget": {
       countries: peacekeepingPoints,
     },
     "/secretariat/trust-funds": {
       bands: "entities",
-      tiles: funds.nodes
+      tiles: (funds?.nodes ?? [])
         .filter((node) => node.tier === "budget_unit")
         .map((node) => ({
           label: node.entity?.acronym ?? node.code ?? node.label,

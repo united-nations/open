@@ -28,7 +28,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { SHOW_UNINFO_SORT_CONTROLS } from "@/lib/featureFlags";
+import { SHOW_UNINFO, SHOW_UNINFO_SORT_CONTROLS } from "@/lib/featureFlags";
 import { SortSelector, SortOption } from "@/components/ui/sort-selector";
 
 const UNINFO_SORT_OPTIONS: SortOption[] = [
@@ -133,6 +133,7 @@ export function CountrySidebar({
 
   // Load UNINFO data (single file with SDGs + projects)
   useEffect(() => {
+    if (!SHOW_UNINFO) return;
     let cancelled = false;
     loadUninfoCountry(country.iso3)
       .then((data) => {
@@ -303,238 +304,244 @@ export function CountrySidebar({
             </div>
 
             {/* UN Cooperation Framework Section */}
-            <div className="border-t border-gray-200 pt-6">
-              <FinancialPanelHeading className="mb-1">
-                UNSDG Cooperation Framework financials
-              </FinancialPanelHeading>
+            {SHOW_UNINFO && (
+              <div className="border-t border-gray-200 pt-6">
+                <FinancialPanelHeading className="mb-1">
+                  UNSDG Cooperation Framework financials
+                </FinancialPanelHeading>
 
-              {!uninfoData ? (
-                <p className="text-xs text-gray-500 italic">
-                  No Cooperation Framework data available. Frameworks are
-                  agreements between the UN and programme countries — developed
-                  countries and some others are not included.
-                </p>
-              ) : (
-                <>
-                  <p className="text-xs text-gray-500">
-                    {uninfoData.geographic_scope === "workspace"
-                      ? `Shared workspace totals for ${uninfoData.workspace_countries.join(", ")}; these are not allocations to this country.`
-                      : "Country programme data only, not representative of total spending."}
-                    {uninfoData.year === null
-                      ? " The source response has no verified reporting period. Annual 2024 figures are unavailable."
-                      : ` Financial totals were queried for ${uninfoData.year}.`}
+                {!uninfoData ? (
+                  <p className="text-xs text-gray-500 italic">
+                    No Cooperation Framework data available. Frameworks are
+                    agreements between the UN and programme countries —
+                    developed countries and some others are not included.
                   </p>
-                  <div className="mt-2 mb-4 flex flex-wrap gap-x-4 gap-y-2">
-                    <a
-                      href={`https://uninfo.org/v2/location/${uninfoData.workspace_id}/programming/analysis/sdgs`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs text-un-blue hover:underline"
-                    >
-                      View on UNINFO <ExternalLink className="h-3 w-3" />
-                    </a>
-                    <a
-                      href={`https://unsdg.un.org/un-in-action/${country.name.toLowerCase().replace(/\s+/g, "-")}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs text-un-blue hover:underline"
-                    >
-                      UNSDG country page <ExternalLink className="h-3 w-3" />
-                    </a>
-                  </div>
+                ) : (
+                  <>
+                    <p className="text-xs text-gray-500">
+                      {uninfoData.geographic_scope === "workspace"
+                        ? `Shared workspace totals for ${uninfoData.workspace_countries.join(", ")}; these are not allocations to this country.`
+                        : "Country programme data only, not representative of total spending."}
+                      {uninfoData.year === null
+                        ? " The source response has no verified reporting period. Annual 2024 figures are unavailable."
+                        : ` Financial totals were queried for ${uninfoData.year}.`}
+                    </p>
+                    <div className="mt-2 mb-4 flex flex-wrap gap-x-4 gap-y-2">
+                      <a
+                        href={`https://uninfo.org/v2/location/${uninfoData.workspace_id}/programming/analysis/sdgs`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs text-un-blue hover:underline"
+                      >
+                        View on UNINFO <ExternalLink className="h-3 w-3" />
+                      </a>
+                      <a
+                        href={`https://unsdg.un.org/un-in-action/${country.name.toLowerCase().replace(/\s+/g, "-")}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 text-xs text-un-blue hover:underline"
+                      >
+                        UNSDG country page <ExternalLink className="h-3 w-3" />
+                      </a>
+                    </div>
 
-                  {selectedYear !== 2024 &&
-                    cooperationFrameworkVisibility.financials && (
-                      <p className="text-xs text-gray-500 italic">
-                        Data only available for 2024.
-                      </p>
-                    )}
-                  {selectedYear === 2024 &&
-                    cooperationFrameworkVisibility.financials && (
-                      <>
-                        {/* Overall */}
-                        <div>
+                    {selectedYear !== 2024 &&
+                      cooperationFrameworkVisibility.financials && (
+                        <p className="text-xs text-gray-500 italic">
+                          Data only available for 2024.
+                        </p>
+                      )}
+                    {selectedYear === 2024 &&
+                      cooperationFrameworkVisibility.financials && (
+                        <>
+                          {/* Overall */}
+                          <div>
+                            <FinancialPanelHeading subheading>
+                              {uninfoData.year === null
+                                ? "Reported totals — period unverified"
+                                : "Overall"}
+                            </FinancialPanelHeading>
+                            <div className="mt-2">
+                              <UninfoFundingBar
+                                required={uninfoData.totals.required}
+                                available={uninfoData.totals.available}
+                                spent={uninfoData.totals.spent}
+                              />
+                            </div>
+                          </div>
+
+                          {/* By SDG */}
+                          <div className="mt-4">
+                            <div className="flex items-center justify-between">
+                              <FinancialPanelHeading subheading>
+                                By SDG
+                              </FinancialPanelHeading>
+                              {SHOW_UNINFO_SORT_CONTROLS && (
+                                <SortSelector
+                                  options={UNINFO_SORT_OPTIONS}
+                                  selected={uninfoSort}
+                                  onChange={setUninfoSort}
+                                />
+                              )}
+                            </div>
+                            <div className="mt-2 space-y-1.5">
+                              {(() => {
+                                const entries = Object.entries(uninfoData.sdgs);
+                                const sorted = entries.sort((a, b) => {
+                                  const [, ma] = a,
+                                    [, mb] = b;
+                                  if (uninfoSort === "sdg_number")
+                                    return parseInt(a[0]) - parseInt(b[0]);
+                                  if (uninfoSort === "required")
+                                    return mb.required - ma.required;
+                                  if (uninfoSort === "available")
+                                    return mb.available - ma.available;
+                                  if (uninfoSort === "spent")
+                                    return mb.spent - ma.spent;
+                                  if (uninfoSort === "funding_gap")
+                                    return (
+                                      mb.required -
+                                      mb.available -
+                                      (ma.required - ma.available)
+                                    );
+                                  if (uninfoSort === "spending_gap")
+                                    return (
+                                      mb.available -
+                                      mb.spent -
+                                      (ma.available - ma.spent)
+                                    );
+                                  return parseInt(a[0]) - parseInt(b[0]);
+                                });
+                                const maxVal = Math.max(
+                                  1,
+                                  ...entries.map(([, m]) =>
+                                    Math.max(m.required, m.available, m.spent),
+                                  ),
+                                );
+                                return sorted.map(([sdgNum, metrics]) => {
+                                  const sdg = parseInt(sdgNum);
+                                  const barWidth =
+                                    (Math.max(
+                                      0,
+                                      metrics.required,
+                                      metrics.available,
+                                      metrics.spent,
+                                    ) /
+                                      maxVal) *
+                                    100;
+                                  return (
+                                    <Tooltip key={sdgNum} delayDuration={200}>
+                                      <TooltipTrigger asChild>
+                                        <button
+                                          onClick={() =>
+                                            navigateToSidebar("sdg", sdg)
+                                          }
+                                          className="group flex w-full items-center gap-2 rounded hover:bg-gray-50"
+                                        >
+                                          <span
+                                            className="w-20 flex-shrink-0 truncate text-left text-xs text-gray-700 group-hover:text-un-blue group-hover:underline"
+                                            title={SDG_SHORT_TITLES[sdg]}
+                                          >
+                                            {SDG_SHORT_TITLES[sdg]}
+                                          </span>
+                                          <FinancialPanelGoalBadge
+                                            label={String(sdg)}
+                                            color={SDG_COLORS[sdg]}
+                                          />
+                                          <div className="flex flex-1 flex-col gap-px">
+                                            <div
+                                              style={{ width: `${barWidth}%` }}
+                                            >
+                                              <UninfoFundingBar
+                                                required={metrics.required}
+                                                available={metrics.available}
+                                                spent={metrics.spent}
+                                                showLabels={false}
+                                                color={SDG_COLORS[sdg]}
+                                              />
+                                            </div>
+                                          </div>
+                                        </button>
+                                      </TooltipTrigger>
+                                      <TooltipContent
+                                        side="top"
+                                        className="border border-slate-200 bg-white p-3 text-slate-800 shadow-lg"
+                                      >
+                                        <p className="mb-2 text-xs font-medium">
+                                          SDG {sdg}: {SDG_SHORT_TITLES[sdg]}
+                                        </p>
+                                        <UninfoFundingBar
+                                          required={metrics.required}
+                                          available={metrics.available}
+                                          spent={metrics.spent}
+                                          color={SDG_COLORS[sdg]}
+                                          compact
+                                        />
+                                      </TooltipContent>
+                                    </Tooltip>
+                                  );
+                                });
+                              })()}
+                            </div>
+                          </div>
+                        </>
+                      )}
+                    {/* Results Framework */}
+                    {selectedYear === 2024 &&
+                      cooperationFrameworkVisibility.results &&
+                      uninfoData.framework &&
+                      uninfoData.framework.length > 0 && (
+                        <div className="mt-4">
                           <FinancialPanelHeading subheading>
-                            {uninfoData.year === null
-                              ? "Reported totals — period unverified"
-                              : "Overall"}
+                            Results Framework
                           </FinancialPanelHeading>
                           <div className="mt-2">
-                            <UninfoFundingBar
-                              required={uninfoData.totals.required}
-                              available={uninfoData.totals.available}
-                              spent={uninfoData.totals.spent}
+                            <p className="mb-2 text-xs text-gray-500">
+                              {uninfoData.framework_year
+                                ? `Framework financials: ${uninfoData.framework_year}.`
+                                : "Framework financials have no verified reporting period in this source snapshot."}
+                            </p>
+                            <ResultsFramework
+                              framework={uninfoData.framework}
                             />
                           </div>
                         </div>
+                      )}
 
-                        {/* By SDG */}
+                    {/* Top Projects */}
+                    {selectedYear === 2024 &&
+                      cooperationFrameworkVisibility.projects &&
+                      uninfoData.projects.length > 0 && (
                         <div className="mt-4">
-                          <div className="flex items-center justify-between">
-                            <FinancialPanelHeading subheading>
-                              By SDG
-                            </FinancialPanelHeading>
-                            {SHOW_UNINFO_SORT_CONTROLS && (
-                              <SortSelector
-                                options={UNINFO_SORT_OPTIONS}
-                                selected={uninfoSort}
-                                onChange={setUninfoSort}
-                              />
-                            )}
-                          </div>
-                          <div className="mt-2 space-y-1.5">
-                            {(() => {
-                              const entries = Object.entries(uninfoData.sdgs);
-                              const sorted = entries.sort((a, b) => {
-                                const [, ma] = a,
-                                  [, mb] = b;
-                                if (uninfoSort === "sdg_number")
-                                  return parseInt(a[0]) - parseInt(b[0]);
-                                if (uninfoSort === "required")
-                                  return mb.required - ma.required;
-                                if (uninfoSort === "available")
-                                  return mb.available - ma.available;
-                                if (uninfoSort === "spent")
-                                  return mb.spent - ma.spent;
-                                if (uninfoSort === "funding_gap")
-                                  return (
-                                    mb.required -
-                                    mb.available -
-                                    (ma.required - ma.available)
-                                  );
-                                if (uninfoSort === "spending_gap")
-                                  return (
-                                    mb.available -
-                                    mb.spent -
-                                    (ma.available - ma.spent)
-                                  );
-                                return parseInt(a[0]) - parseInt(b[0]);
-                              });
-                              const maxVal = Math.max(
-                                1,
-                                ...entries.map(([, m]) =>
-                                  Math.max(m.required, m.available, m.spent),
+                          <FinancialPanelHeading subheading>
+                            Projects (
+                            {
+                              new Set(
+                                uninfoData.projects.map(
+                                  (project) => project.id,
                                 ),
-                              );
-                              return sorted.map(([sdgNum, metrics]) => {
-                                const sdg = parseInt(sdgNum);
-                                const barWidth =
-                                  (Math.max(
-                                    0,
-                                    metrics.required,
-                                    metrics.available,
-                                    metrics.spent,
-                                  ) /
-                                    maxVal) *
-                                  100;
-                                return (
-                                  <Tooltip key={sdgNum} delayDuration={200}>
-                                    <TooltipTrigger asChild>
-                                      <button
-                                        onClick={() =>
-                                          navigateToSidebar("sdg", sdg)
-                                        }
-                                        className="group flex w-full items-center gap-2 rounded hover:bg-gray-50"
-                                      >
-                                        <span
-                                          className="w-20 flex-shrink-0 truncate text-left text-xs text-gray-700 group-hover:text-un-blue group-hover:underline"
-                                          title={SDG_SHORT_TITLES[sdg]}
-                                        >
-                                          {SDG_SHORT_TITLES[sdg]}
-                                        </span>
-                                        <FinancialPanelGoalBadge
-                                          label={String(sdg)}
-                                          color={SDG_COLORS[sdg]}
-                                        />
-                                        <div className="flex flex-1 flex-col gap-px">
-                                          <div
-                                            style={{ width: `${barWidth}%` }}
-                                          >
-                                            <UninfoFundingBar
-                                              required={metrics.required}
-                                              available={metrics.available}
-                                              spent={metrics.spent}
-                                              showLabels={false}
-                                              color={SDG_COLORS[sdg]}
-                                            />
-                                          </div>
-                                        </div>
-                                      </button>
-                                    </TooltipTrigger>
-                                    <TooltipContent
-                                      side="top"
-                                      className="border border-slate-200 bg-white p-3 text-slate-800 shadow-lg"
-                                    >
-                                      <p className="mb-2 text-xs font-medium">
-                                        SDG {sdg}: {SDG_SHORT_TITLES[sdg]}
-                                      </p>
-                                      <UninfoFundingBar
-                                        required={metrics.required}
-                                        available={metrics.available}
-                                        spent={metrics.spent}
-                                        color={SDG_COLORS[sdg]}
-                                        compact
-                                      />
-                                    </TooltipContent>
-                                  </Tooltip>
-                                );
-                              });
-                            })()}
+                              ).size
+                            }
+                            )
+                          </FinancialPanelHeading>
+                          <div className="mt-2">
+                            <p className="mb-2 text-xs text-gray-500">
+                              {uninfoData.projects_year
+                                ? `Project financials: ${uninfoData.projects_year}.`
+                                : "Project financials have no verified reporting period in this source snapshot."}{" "}
+                              Rows describe agency participation in projects.
+                            </p>
+                            <UninfoProjectTable
+                              projects={uninfoData.projects}
+                              initialLimit={5}
+                            />
                           </div>
                         </div>
-                      </>
-                    )}
-                  {/* Results Framework */}
-                  {selectedYear === 2024 &&
-                    cooperationFrameworkVisibility.results &&
-                    uninfoData.framework &&
-                    uninfoData.framework.length > 0 && (
-                      <div className="mt-4">
-                        <FinancialPanelHeading subheading>
-                          Results Framework
-                        </FinancialPanelHeading>
-                        <div className="mt-2">
-                          <p className="mb-2 text-xs text-gray-500">
-                            {uninfoData.framework_year
-                              ? `Framework financials: ${uninfoData.framework_year}.`
-                              : "Framework financials have no verified reporting period in this source snapshot."}
-                          </p>
-                          <ResultsFramework framework={uninfoData.framework} />
-                        </div>
-                      </div>
-                    )}
-
-                  {/* Top Projects */}
-                  {selectedYear === 2024 &&
-                    cooperationFrameworkVisibility.projects &&
-                    uninfoData.projects.length > 0 && (
-                      <div className="mt-4">
-                        <FinancialPanelHeading subheading>
-                          Projects (
-                          {
-                            new Set(
-                              uninfoData.projects.map((project) => project.id),
-                            ).size
-                          }
-                          )
-                        </FinancialPanelHeading>
-                        <div className="mt-2">
-                          <p className="mb-2 text-xs text-gray-500">
-                            {uninfoData.projects_year
-                              ? `Project financials: ${uninfoData.projects_year}.`
-                              : "Project financials have no verified reporting period in this source snapshot."}{" "}
-                            Rows describe agency participation in projects.
-                          </p>
-                          <UninfoProjectTable
-                            projects={uninfoData.projects}
-                            initialLimit={5}
-                          />
-                        </div>
-                      </div>
-                    )}
-                </>
-              )}
-            </div>
+                      )}
+                  </>
+                )}
+              </div>
+            )}
           </div>
         </FinancialDetailPanel>
       </div>

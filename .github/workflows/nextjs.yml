@@ -31,6 +31,11 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        variant: [public, preview]
+    env:
+      SITE_VARIANT: ${{ matrix.variant }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -49,15 +54,26 @@ jobs:
           path: |
             .next/cache
           # Generate a new cache whenever packages or source files change.
-          key: ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx') }}
+          key: ${{ runner.os }}-nextjs-${{ matrix.variant }}-${{ hashFiles('**/pnpm-lock.yaml') }}-${{ hashFiles('**.[jt]s', '**.[jt]sx', 'config/features.json') }}
           # If source files changed but packages didn't, rebuild from a prior cache.
           restore-keys: |
-            ${{ runner.os }}-nextjs-${{ hashFiles('**/pnpm-lock.yaml') }}-
+            ${{ runner.os }}-nextjs-${{ matrix.variant }}-${{ hashFiles('**/pnpm-lock.yaml') }}-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
       - name: Build with Next.js
-        run: pnpm exec next build
+        run: pnpm build
+      - name: Verify feature availability
+        run: node scripts/check-feature-export.mjs
+      - name: Install browser
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Verify routes and UNINFO in browser
+        run: |
+          python3 -m http.server 8766 --bind 127.0.0.1 --directory out > /tmp/portal-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          node tests/browser/feature-profiles.mjs
       - name: Upload artifact
+        if: matrix.variant == 'public'
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./out

@@ -1,4 +1,5 @@
-import { SHOW_FIELD_MISSIONS, SHOW_TRUST_FUNDS } from "@/lib/featureFlags";
+import profiles from "../../config/features.json";
+import { FEATURES, type Feature } from "@/lib/featureFlags";
 
 export type SectionNavItem = {
   href: string;
@@ -19,16 +20,37 @@ export const SYSTEM_NAV = [
 
 export const SECRETARIAT_NAV = [
   { href: "/secretariat", label: "Overview" },
-  { href: "/secretariat/programme-budget", label: "Programme Budget", aliases: ["/secretariat/programme-budget/contributors"] },
-  { href: "/secretariat/peacekeeping-budget", label: "Peacekeeping Budget", aliases: ["/secretariat/peacekeeping-budget/contributors"] },
-  { href: "/secretariat/field-missions", label: "Field Missions" },
-  { href: "/secretariat/trust-funds", label: "Trust Funds", aliases: ["/secretariat/trust-funds/contributors"] },
+  {
+    href: "/secretariat/programme-budget",
+    label: "Programme Budget",
+    aliases: ["/secretariat/programme-budget/contributors"],
+  },
+  {
+    href: "/secretariat/peacekeeping-budget",
+    label: "Peacekeeping Budget",
+    aliases: ["/secretariat/peacekeeping-budget/contributors"],
+  },
+  {
+    href: "/secretariat/field-missions",
+    label: "Field Missions",
+  },
+  {
+    href: "/secretariat/trust-funds",
+    label: "Trust Funds",
+    aliases: ["/secretariat/trust-funds/contributors"],
+  },
 ] as const satisfies readonly SectionNavItem[];
 
+/** Parent availability applies to every descendant route, including future subpages. */
+export function isRouteEnabled(pathname: string): boolean {
+  const path = pathname.replace(/\/+$/, "");
+  const routes = profiles.routes as Readonly<Record<string, Feature>>;
+  return Object.entries(routes).every(
+    ([route, feature]) =>
+      !(path === route || path.startsWith(`${route}/`)) || FEATURES[feature],
+  );
+}
+
 export function visibleSecretariatNav(): SectionNavItem[] {
-  return SECRETARIAT_NAV.filter((item) => {
-    if (item.href === "/secretariat/trust-funds") return SHOW_TRUST_FUNDS;
-    if (item.href === "/secretariat/field-missions") return SHOW_FIELD_MISSIONS;
-    return true;
-  });
+  return SECRETARIAT_NAV.filter((item) => isRouteEnabled(item.href));
 }

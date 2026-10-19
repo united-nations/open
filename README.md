@@ -15,6 +15,44 @@ The UN Transparency Portal makes financial data from across the UN System access
   - **Regular-budget contributors** — Member State assessments and paid-in-full status
   - Switch between audited-statement expenses and PPB + PKO budget-document expenditure
 
+## Site variants
+
+The same branch builds two versions. Set `SITE_VARIANT=public` for open.un.org
+(GitHub Pages), or `SITE_VARIANT=preview` for the future-feature preview on Vercel.
+An unset variable defaults to `public`; an invalid value fails the build.
+
+```bash
+SITE_VARIANT=public pnpm build
+SITE_VARIANT=preview pnpm dev
+SITE_VARIANT=preview pnpm build
+SITE_VARIANT=preview node scripts/check-feature-export.mjs
+```
+
+`config/features.json` defines both profiles. To release a feature, enable it in
+`public` and rebuild. The `routes` map associates route prefixes with their flags.
+Page flags govern the entire route subtree, Secretariat navigation, and homepage
+shortcuts. Disabled routes return 404. Use `pnpm build` so the post-export pruning
+step removes disabled route files (Next.js otherwise exports 404 HTML at those
+URLs). The `uninfo` flag
+controls data loading, sidebar sections, and source disclosures in both Locations
+and Goals. Public JSON data remains available in both versions.
+
+Previously hidden Field Missions, UNINFO sorting, entity impacts, and the budget
+sidebar mini treemap remain disabled in both profiles until explicitly enabled.
+
+GitHub Actions builds both profiles and checks exported routes, links, and UNINFO
+browser requests, then uploads only the public export for deployment. For Vercel, configure `SITE_VARIANT=preview` in every
+Vercel environment that should show future features (including Production if the
+project's main URL is the preview). Use `pnpm build` and the static `out` output.
+The profile is selected at build time; changing it requires a rebuild and restart
+of a running development server.
+
+`node scripts/check-feature-export.mjs` checks the current export against the
+selected profile. With a static server running, use
+`SITE_VARIANT=public PORTAL_URL=http://localhost:8766 node tests/browser/feature-profiles.mjs`
+(or `preview`) to check direct URLs and UNINFO requests in the browser. Existing
+full-feature browser suites should run against a preview build.
+
 ## Data Sources
 
 | Source                                                                           | Coverage                                               | Description                                             |

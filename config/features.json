@@ -1,0 +1,28 @@
+{
+  "public": {
+    "programmeBudget": false,
+    "peacekeepingBudget": false,
+    "trustFunds": false,
+    "fieldMissions": false,
+    "uninfo": false,
+    "uninfoSortControls": false,
+    "entityImpacts": false,
+    "budgetSidebarMiniTreemap": false
+  },
+  "preview": {
+    "programmeBudget": true,
+    "peacekeepingBudget": true,
+    "trustFunds": true,
+    "fieldMissions": false,
+    "uninfo": true,
+    "uninfoSortControls": false,
+    "entityImpacts": false,
+    "budgetSidebarMiniTreemap": false
+  },
+  "routes": {
+    "/secretariat/programme-budget": "programmeBudget",
+    "/secretariat/peacekeeping-budget": "peacekeepingBudget",
+    "/secretariat/trust-funds": "trustFunds",
+    "/secretariat/field-missions": "fieldMissions"
+  }
+}

@@ -27,7 +27,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { SHOW_UNINFO_SORT_CONTROLS } from "@/lib/featureFlags";
+import { SHOW_UNINFO, SHOW_UNINFO_SORT_CONTROLS } from "@/lib/featureFlags";
 import { SortSelector, SortOption } from "@/components/ui/sort-selector";
 
 const UNINFO_SORT_OPTIONS: SortOption[] = [
@@ -108,7 +108,7 @@ export default function SDGModal({
 
   // Load UNINFO data and country names
   useEffect(() => {
-    if (!sdg) return;
+    if (!SHOW_UNINFO || !sdg) return;
     Promise.all([loadUninfoSdgs(), loadUninfoCountryIndex()])
       .then(([sdgData, indexData]) => {
         setUninfoData(sdgData[sdg.number.toString()] || null);
@@ -298,7 +298,7 @@ export default function SDGModal({
             )}
 
             {/* UNSDG Cooperation Framework Section */}
-            {uninfoData && (
+            {SHOW_UNINFO && uninfoData && (
               <div className="border-t border-gray-200 pt-4">
                 <FinancialPanelHeading className="mb-1">
                   UNSDG Cooperation Framework financials

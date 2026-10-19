@@ -65,7 +65,7 @@ interface EntitySidebarProps {
   onClose: () => void;
 }
 
-const SHOW_ENTITY_IMPACTS = false;
+import { SHOW_ENTITY_IMPACTS } from "@/lib/featureFlags";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
