@@ -57,6 +57,12 @@ for (const route of ["locations", "goals"]) {
     `${variant}: ${route} source disclosure`,
   );
 }
+const locations = fs.readFileSync("out/system/locations/index.html", "utf8");
+assert.equal(
+  locations.includes('id="function-geography"'),
+  FEATURES.functionGeography,
+  `${variant}: function/geography plot`,
+);
 assert.ok(
   secretariat.includes('id="secretariat-funding-flows"'),
   "Direct funding chart is always available",

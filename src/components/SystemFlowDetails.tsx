@@ -15,7 +15,7 @@ function DetailLink({ node, year }: { node: FlowNode; year: number }) {
     donor: "contributors",
     country: "locations",
     sdg: "goals",
-    function: "goals",
+    function: "functions",
   }[kind];
   const noun = {
     entity: "organization",
@@ -86,32 +86,33 @@ export function SystemFlowDetails({
         }))}
         notes={details.note}
       />
-      {!compact && details.sections.map((section) => {
-        const rows = section.rows.map((row) => ({
-          label: row.label,
-          value: formatBudget(row.amount),
-          color: row.color,
-          share: row.share,
-        }));
-        const limit = section.canonical ? rows.length : 6;
-        return (
-          <div key={section.label} className="space-y-1">
-            <p className="font-semibold">
-              {section.label}
-              {rows.length > limit ? " · largest connections" : ""}
-            </p>
-            <FinancialTooltip rows={rows.slice(0, limit)} />
-            {!compact && rows.length > limit && (
-              <details>
-                <summary className="cursor-pointer py-2">
-                  Show all {rows.length} connections
-                </summary>
-                <FinancialTooltip rows={rows.slice(limit)} />
-              </details>
-            )}
-          </div>
-        );
-      })}
+      {!compact &&
+        details.sections.map((section) => {
+          const rows = section.rows.map((row) => ({
+            label: row.label,
+            value: formatBudget(row.amount),
+            color: row.color,
+            share: row.share,
+          }));
+          const limit = section.canonical ? rows.length : 6;
+          return (
+            <div key={section.label} className="space-y-1">
+              <p className="font-semibold">
+                {section.label}
+                {rows.length > limit ? " · largest connections" : ""}
+              </p>
+              <FinancialTooltip rows={rows.slice(0, limit)} />
+              {!compact && rows.length > limit && (
+                <details>
+                  <summary className="cursor-pointer py-2">
+                    Show all {rows.length} connections
+                  </summary>
+                  <FinancialTooltip rows={rows.slice(limit)} />
+                </details>
+              )}
+            </div>
+          );
+        })}
       {details.adjustments.length > 0 && (
         <FinancialTooltip
           rows={details.adjustments.map((row) => ({

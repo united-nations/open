@@ -5,6 +5,7 @@ export const LINK_DESCRIPTIONS: Record<string, string> = {
   "/system/organizations": "Funding and spending across UN organizations.",
   "/system/contributors": "Who funds the UN System, and how.",
   "/system/locations": "Where funds are spent, by country and region.",
+  "/system/functions": "Expenditure across the four UN System functions.",
   "/system/goals": "Spending across the 17 Sustainable Development Goals.",
   "/secretariat": "Overview of Secretariat spending across funding sources.",
   "/secretariat/programme-budget":

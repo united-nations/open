@@ -116,7 +116,7 @@ function HomeSectionCard({
 }) {
   return (
     <section
-      className={`min-w-0 md:row-span-5 md:grid md:grid-rows-subgrid lg:row-span-3 ${href === "/secretariat" ? "border-t border-gray-200 pt-6 md:border-t-0 md:pt-0" : ""}`}
+      className={`min-w-0 md:row-span-6 md:grid md:grid-rows-subgrid lg:row-span-4 ${href === "/secretariat" ? "border-t border-gray-200 pt-6 md:border-t-0 md:pt-0" : ""}`}
     >
       <div>
         <h2 className="text-xl font-bold text-gray-900">

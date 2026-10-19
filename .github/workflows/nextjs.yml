@@ -72,6 +72,8 @@ jobs:
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
           node tests/browser/feature-profiles.mjs
+          node tests/browser/system-functions.mjs
+          node tests/browser/function-geography.mjs
       - name: Upload artifact
         if: matrix.variant == 'public'
         uses: actions/upload-pages-artifact@v3

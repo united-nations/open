@@ -4,6 +4,16 @@ import pandas as pd
 from utils import GEOGRAPHIC_AREA_TYPES, canonical_geographic_area
 
 
+# CEB Standard II function names shared by the independent and geographic exports.
+CEB_FUNCTIONS = {
+    'Development Assistance': 'development',
+    'Humanitarian Assistance': 'humanitarian',
+    'Peace Operations': 'peace',
+    'Global Agenda and Specialised Assistance': 'global',
+    'Global Agenda and Specialized Assistance': 'global',
+}
+
+
 def normalize_geographic_locations(frame: pd.DataFrame) -> pd.DataFrame:
     """Repair known area names coded COU without changing rows or amounts.
 

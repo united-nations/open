@@ -10,10 +10,17 @@ The UN Transparency Portal makes financial data from across the UN System access
   - **Contributors** — Treemaps and trends showing government and donor contributions by financing instrument
   - **Entities** — Spending breakdowns for 48+ UN organizations
   - **Countries** — Interactive world map with geographic spending data
-  - **SDGs** — Grid visualization of spending by Sustainable Development Goal
+  - **Functions** — Expenditure treemap and compact trends across the four CEB functions
+  - **Goals** — SDG expenditure treemap; annual snapshots are not directly comparable
 - UN Secretariat
   - **Regular-budget contributors** — Member State assessments and paid-in-full status
   - Switch between audited-statement expenses and PPB + PKO budget-document expenditure
+
+The Functions and Goals tabs use separate routes (`/system/functions/` and
+`/system/goals/`). Function deep links shared on the former combined Goals page
+continue to open on Functions. A function-by-financing-mechanism chart is deferred:
+the current CEB function expenditure export does not report that cross-dimension,
+and organization revenue proportions are not treated as function financing.
 
 ## Site variants
 
@@ -39,7 +46,8 @@ and Goals. Public JSON data remains available in both versions.
 
 The two-column Secretariat funding-mechanism Sankey appears in both profiles.
 `secretariatDetailedFlows` enables the additional three-column funding-arrangement
-Sankey only in preview.
+Sankey only in preview. The `functionGeography` flag enables the Locations
+function/geography plot only in preview.
 
 Previously hidden Field Missions, UNINFO sorting, entity impacts, and the budget
 sidebar mini treemap remain disabled in both profiles until explicitly enabled.

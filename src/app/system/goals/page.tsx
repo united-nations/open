@@ -1,3 +1,4 @@
+import { FunctionDeepLinkRedirect } from "@/components/FunctionDeepLinkRedirect";
 import { SystemPageSources } from "@/components/PageSources";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
@@ -7,16 +8,12 @@ import {
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
-import {
-  FunctionsChart,
-  FunctionsTrendsChart,
-} from "@/components/FunctionsChart";
 import SDGsGrid from "@/components/SDGsGrid";
 
 export const metadata: Metadata = {
-  title: "UN System Goals and Functions",
+  title: "UN System Goals",
   description:
-    "Explore UN System spending by function and Sustainable Development Goal.",
+    "Explore reported UN System expenditure by Sustainable Development Goal.",
 };
 
 export default function SystemGoalsPage() {
@@ -30,31 +27,15 @@ export default function SystemGoalsPage() {
         </>
       }
     >
+      <FunctionDeepLinkRedirect />
       <PageHeading
         sources={<SystemPageSources uninfo />}
-        id="functions-and-goals"
-        title="Which goals and functions do funds support?"
-        description="Explore spending across the UN’s four main functions and the Sustainable Development Goals. These are separate views of expenditure, not amounts to add together."
+        id="sdgs"
+        title="Which Sustainable Development Goals do funds support?"
+        description="Explore reported expenditure by Sustainable Development Goal. Annual snapshots are not directly comparable because reporting coverage and allocations can change."
       />
       <PageBody>
-        <section id="sdgs">
-          <h2 className="mb-5 text-2xl font-bold">
-            Sustainable Development Goals
-          </h2>
-          <SDGsGrid />
-        </section>
-        <div className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-2">
-          <section id="functions" className="min-w-0">
-            <h2 className="mb-4 text-xl font-bold">Spending by function</h2>
-            <ChartSourceProvider
-              label="CEB financial statistics"
-              details={<CebMethodology />}
-            >
-              <FunctionsChart />
-            </ChartSourceProvider>
-          </section>
-          <FunctionsTrendsChart />
-        </div>
+        <SDGsGrid treemapOnly />
       </PageBody>
     </ChartSourceProvider>
   );

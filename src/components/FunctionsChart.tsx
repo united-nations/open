@@ -46,8 +46,8 @@ export function FunctionsChart() {
     return (
       <div role="status" className="py-12 text-sm">
         {error
-          ? "Function spending could not be loaded. Please reload to try again."
-          : "Loading spending by function…"}
+          ? "Function expenditure could not be loaded. Please reload to try again."
+          : "Loading expenditure by function…"}
       </div>
     );
   const requestedYear = pending
@@ -83,13 +83,13 @@ export function FunctionsChart() {
         })).filter((group) => group.leaves.length > 0)}
         showRowLabels
         showLeafValues
-        plotClassName="h-[280px]"
+        plotClassName="h-[480px]"
         plotStyle={{ marginTop: 10 }}
-        totalLabel="Total spending"
+        totalLabel="Total expenditure"
         summaries={[
           {
             key: "total",
-            label: "Total spending",
+            label: "Total expenditure",
             value: formatBudget(row.total),
           },
         ]}
@@ -121,7 +121,7 @@ export function FunctionsChart() {
           <FinancialTooltip
             title={leaf.label}
             parents={[{ label: group.label, color: group.color }]}
-            total={{ label: "Spending", value: formatBudget(leaf.value) }}
+            total={{ label: "Expenditure", value: formatBudget(leaf.value) }}
             actionHint="Click to explore details"
           />
         )}
@@ -145,16 +145,16 @@ export function FunctionsTrendsChart() {
     return (
       <p role="status" className="text-sm">
         {error
-          ? "Function spending could not be loaded."
-          : "Loading spending by function…"}
+          ? "Function expenditure could not be loaded."
+          : "Loading expenditure by function…"}
       </p>
     );
   return (
     <section className="min-w-0 space-y-4">
-      <h3 className="text-xl font-bold">Spending by function over time</h3>
+      <h3 className="text-xl font-bold">Expenditure by function over time</h3>
       <FinancingInstrumentChart
-        height={325}
-        legendClassName="min-h-24 content-end items-start"
+        height={240}
+        legendClassName="content-end items-start"
         data={data.data.map((item) => ({
           year: String(item.year),
           ...item.functions,
@@ -248,11 +248,13 @@ function FunctionSidebar({
           <div className="space-y-6">
             <p className="text-sm">{definition.description}</p>
             <FinancialPanelTotalRow
-              label="Total spending"
+              label="Total expenditure"
               value={formatBudget(row.functions[functionKey] ?? 0)}
             />
             <section className="space-y-3">
-              <FinancialPanelHeading>Spending by entity</FinancialPanelHeading>
+              <FinancialPanelHeading>
+                Expenditure by entity
+              </FinancialPanelHeading>
               {(showAll ? entities : entities.slice(0, 10)).map((item) => (
                 <FinancialPanelRankedRow
                   key={item.name}
@@ -282,7 +284,9 @@ function FunctionSidebar({
               )}
             </section>
             <section className="space-y-3">
-              <FinancialPanelHeading>Spending over time</FinancialPanelHeading>
+              <FinancialPanelHeading>
+                Expenditure over time
+              </FinancialPanelHeading>
               <FinancingInstrumentChart
                 data={trends}
                 series={FUNCTION_SERIES.filter(

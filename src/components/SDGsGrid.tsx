@@ -208,7 +208,11 @@ function slice(
   }
 }
 
-export default function SDGsGrid() {
+export default function SDGsGrid({
+  treemapOnly = false,
+}: {
+  treemapOnly?: boolean;
+}) {
   const yearRanges = useYearRanges();
   const SDG_YEARS = generateYearRange(
     yearRanges.sdgExpenses.min,
@@ -217,7 +221,7 @@ export default function SDGsGrid() {
 
   const [sdgs, setSdgs] = useState<SDG[]>([]);
   const [selectedSDG, setSelectedSDG] = useState<SDG | null>(null);
-  const [showSpending, setShowSpending] = useState<boolean>(false);
+  const [showSpending, setShowSpending] = useState<boolean>(treemapOnly);
   const [hasScrollRevealed, setHasScrollRevealed] = useState<boolean>(false);
   const gridRef = useRef<HTMLDivElement>(null);
   const [containerAspect, setContainerAspect] = useState(0);
@@ -231,7 +235,7 @@ export default function SDGsGrid() {
   );
 
   // Derive the immediate phase; only the delayed transition needs state.
-  const [settledSpending, setSettledSpending] = useState(false);
+  const [settledSpending, setSettledSpending] = useState(treemapOnly);
   const showEntities = showSpending || settledSpending;
   const bgFaded = showSpending && settledSpending;
   useEffect(() => {
@@ -244,7 +248,7 @@ export default function SDGsGrid() {
 
   // Scroll-triggered reveal: transition when grid top reaches 40% from viewport top
   useEffect(() => {
-    if (hasScrollRevealed) return;
+    if (treemapOnly || hasScrollRevealed) return;
     let ticking = false;
     const handleScroll = () => {
       if (ticking || !gridRef.current) return;
@@ -263,7 +267,7 @@ export default function SDGsGrid() {
     window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
-  }, [hasScrollRevealed]);
+  }, [hasScrollRevealed, treemapOnly]);
 
   const parseSDGNumber = useCallback((value: string) => {
     const num = parseInt(value, 10);
@@ -448,16 +452,20 @@ export default function SDGsGrid() {
               />
             }
             controls={
-              <BinaryToggle
-                variant="segmented"
-                label="Goals view"
-                options={[
-                  { value: "goals", label: "Goals" },
-                  { value: "spending", label: "Spending" },
-                ]}
-                value={showSpending ? "spending" : "goals"}
-                onValueChange={(value) => setShowSpending(value === "spending")}
-              />
+              !treemapOnly && (
+                <BinaryToggle
+                  variant="segmented"
+                  label="Goals view"
+                  options={[
+                    { value: "goals", label: "Goals" },
+                    { value: "spending", label: "Spending" },
+                  ]}
+                  value={showSpending ? "spending" : "goals"}
+                  onValueChange={(value) =>
+                    setShowSpending(value === "spending")
+                  }
+                />
+              )
             }
             search={
               <ChartSearchInput
@@ -503,16 +511,20 @@ export default function SDGsGrid() {
               />
             }
             controls={
-              <BinaryToggle
-                variant="segmented"
-                label="Goals view"
-                options={[
-                  { value: "goals", label: "Goals" },
-                  { value: "spending", label: "Spending" },
-                ]}
-                value={showSpending ? "spending" : "goals"}
-                onValueChange={(value) => setShowSpending(value === "spending")}
-              />
+              !treemapOnly && (
+                <BinaryToggle
+                  variant="segmented"
+                  label="Goals view"
+                  options={[
+                    { value: "goals", label: "Goals" },
+                    { value: "spending", label: "Spending" },
+                  ]}
+                  value={showSpending ? "spending" : "goals"}
+                  onValueChange={(value) =>
+                    setShowSpending(value === "spending")
+                  }
+                />
+              )
             }
             search={
               <ChartSearchInput

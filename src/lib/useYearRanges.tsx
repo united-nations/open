@@ -17,6 +17,7 @@ interface YearRanges {
   entitySpending: YearRange & { fusionYears?: number[] };
   countryExpenses: YearRange;
   geographicExpenses: YearRange;
+  functionGeography: YearRange;
   sdgExpenses: YearRange;
   regularBudgetContributors: YearRange;
   peacekeepingContributors: YearRange;

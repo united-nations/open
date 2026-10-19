@@ -1,0 +1,102 @@
+{
+  "meta": {
+    "year": 2021,
+    "source": "CEB Financial Statistics",
+    "sourceUrl": "https://unsceb.org/statistics/financial-statistics/",
+    "downloadUrl": "https://unsceb.org/assets/data/FS/expenses_by_country_region_sub_agency.csv",
+    "measure": "expenditure",
+    "currency": "USD",
+    "firstCompleteYear": 2020,
+    "inputFile": "data/ceb/clean/expenses_by_country_region_sub_agency.csv",
+    "expenseType": "E06",
+    "sourceRows": 8557,
+    "sourceSha256": "d75b29e050fd742a93968e34f867278d08034a5196f3116ff87276dab5eef771"
+  },
+  "total": 60479440593.92286,
+  "functions": [
+    {
+      "key": "development",
+      "total": 19883820859.293102,
+      "geography": [
+        {
+          "level": "global",
+          "amount": 5010428707.758341,
+          "negativeAdjustments": -435839611.25
+        },
+        {
+          "level": "regional",
+          "amount": 1337437177.9909,
+          "negativeAdjustments": -3885503.0
+        },
+        {
+          "level": "country",
+          "amount": 13535954973.543863,
+          "negativeAdjustments": -3841690.006489
+        }
+      ]
+    },
+    {
+      "key": "global",
+      "total": 6582735356.489187,
+      "geography": [
+        {
+          "level": "global",
+          "amount": 5358065351.4869995,
+          "negativeAdjustments": -1648617129.2
+        },
+        {
+          "level": "regional",
+          "amount": 666197051.965454,
+          "negativeAdjustments": 0.0
+        },
+        {
+          "level": "country",
+          "amount": 558472953.0367332,
+          "negativeAdjustments": -1012446.6786444581
+        }
+      ]
+    },
+    {
+      "key": "humanitarian",
+      "total": 25228955670.14056,
+      "geography": [
+        {
+          "level": "global",
+          "amount": 3052156460.5848794,
+          "negativeAdjustments": -475940.03
+        },
+        {
+          "level": "regional",
+          "amount": 496341791.05108994,
+          "negativeAdjustments": -3730.16
+        },
+        {
+          "level": "country",
+          "amount": 21680457418.504593,
+          "negativeAdjustments": -5858728.446400001
+        }
+      ]
+    },
+    {
+      "key": "peace",
+      "total": 8783928708.0,
+      "geography": [
+        {
+          "level": "global",
+          "amount": 598875857.1,
+          "negativeAdjustments": 0.0
+        },
+        {
+          "level": "regional",
+          "amount": 366353690.77000004,
+          "negativeAdjustments": -45122.54
+        },
+        {
+          "level": "country",
+          "amount": 7818699160.13,
+          "negativeAdjustments": -1685645.8600000006
+        }
+      ]
+    }
+  ]
+}

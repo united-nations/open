@@ -4,16 +4,11 @@ from pathlib import Path
 
 import pandas as pd
 from utils import normalize_entity
+from ceb_data import CEB_FUNCTIONS as FUNCTIONS
 
 SOURCE = Path('data/ceb/clean/expenses_sub_agency.csv')
 OUT = Path('public/data/function-expenses.json')
-FUNCTIONS = {
-    'Development Assistance': 'development',
-    'Humanitarian Assistance': 'humanitarian',
-    'Peace Operations': 'peace',
-    'Global Agenda and Specialised Assistance': 'global',
-    'Global Agenda and Specialized Assistance': 'global',
-}
+
 
 
 def build_export(frame: pd.DataFrame) -> dict:

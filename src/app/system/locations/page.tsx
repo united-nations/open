@@ -1,5 +1,6 @@
+import { FunctionGeographyChart } from "@/components/FunctionGeographyChart";
 import { SystemPageSources } from "@/components/PageSources";
-import { SHOW_UNINFO } from "@/lib/featureFlags";
+import { FEATURES, SHOW_UNINFO } from "@/lib/featureFlags";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { CountryMap } from "@/components/CountryMap";
@@ -39,6 +40,7 @@ export default function SystemLocationsPage() {
       />
       <PageBody>
         <CountryMap />
+        {FEATURES.functionGeography && <FunctionGeographyChart />}
       </PageBody>
     </ChartSourceProvider>
   );

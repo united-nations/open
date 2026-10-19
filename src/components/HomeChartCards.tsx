@@ -1,3 +1,4 @@
+import { UN_FUNCTIONS, type FunctionExpenses } from "@/lib/functions";
 import { FEATURES } from "@/lib/featureFlags";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
@@ -70,6 +71,7 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
     peacekeeping,
     funds,
     missionMetadata,
+    functions,
   ] = await Promise.all([
     readData<Entity[]>("entities.json"),
     readData<{ entity: string; amount: number }[]>(
@@ -94,6 +96,7 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
     FEATURES.peacekeepingBudget
       ? readData<SecretariatEntitiesData>("secretariat-entities.json")
       : null,
+    readData<FunctionExpenses>("function-expenses.json"),
   ]);
   const entityGroups = new Map(
     entities.map((entity) => [entity.entity, entity.system_grouping]),
@@ -164,6 +167,13 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
       ),
     },
     "/system/locations": { countries },
+    "/system/functions": {
+      tiles: UN_FUNCTIONS.map((item) => ({
+        label: item.label,
+        value: functions.data.at(-1)?.functions[item.key] ?? 0,
+        color: item.color,
+      })),
+    },
     "/system/goals": {
       goals: true,
     },
@@ -479,7 +489,7 @@ export async function HomeChartCards({
 }) {
   const previews = await loadPreviews();
   return (
-    <ul className="mt-5 grid grid-cols-1 gap-3 min-[440px]:grid-cols-2 md:row-span-4 md:grid-cols-1 md:grid-rows-subgrid lg:row-span-2 lg:grid-cols-2">
+    <ul className="mt-5 grid grid-cols-1 gap-3 min-[440px]:grid-cols-2 md:row-span-5 md:grid-cols-1 md:grid-rows-subgrid lg:row-span-3 lg:grid-cols-2">
       {links.map((link) => {
         const preview = previews[link.href];
         return (

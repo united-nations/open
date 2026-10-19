@@ -117,3 +117,34 @@ python/02-fetch_ceb_data.py    → data/ceb/clean/*.csv
 python/06-fuse_ceb_expenses.py → data/ceb/fused/expenses.csv
 python/07-export_expenses_json.py → public/data/*.json
 ```
+
+## Function × geographic-level chart
+
+The Locations mosaic uses the function and geography reported together in CEB
+`expenses_by_country_region_sub_agency.csv`, selecting E06 totals only. It does
+not join independent function and location totals or estimate their intersection.
+The four categories use CEB Standard II; a separate Human Rights pillar is not
+inferred from those categories. Function attribution is incomplete before 2020,
+so the chart covers 2020 onward. Unknown functions, geographic codes, missing
+attributions and non-finite amounts fail export rather than being dropped.
+
+`python/21-export_function_geography.py` exports `function-geography-YEAR.json`.
+The geographic name corrections in `ceb_data.select_geographic_totals` also apply
+here. Regional and subregional records are combined for display. Global and
+interregional source records, including enabling functions, stay global and are
+not allocated to countries. Reported country/area labels retain their source
+scope, including unresolved labels.
+
+Column width represents each function's expenditure; stacked height represents
+geographic allocation within that function. Area therefore represents a share
+of total geographic expenditure. Negative source amounts remain in net cell totals
+and are separately disclosed in tooltips. All current cell totals are positive;
+a future negative cell would have no area and would remain in the total and
+source table with an explicit notice. A source hash and contributing E06 row
+count are retained in each export. The independent function dataset can differ
+slightly in its reported totals; this chart never forces those sources to agree.
+
+Regenerate with `uv run python python/21-export_function_geography.py`, followed
+by `uv run python python/99-generate_manifest.py`. Regression checks are in
+`python/tests/test_function_geography.py` and
+`src/lib/tests/functionGeography.test.mjs`.

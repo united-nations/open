@@ -3,69 +3,69 @@ src/app/page.tsx,45,"Explore contributions and spending across the UN System, an
 src/app/secretariat/field-missions/page.tsx,38,How are field missions spending?,How do field missions use their resources?,For review; wording not changed.
 src/app/secretariat/page.tsx,32,How are Secretariat entities spending?,How do Secretariat entities use their resources?,For review; wording not changed.
 src/app/secretariat/trust-funds/page.tsx,36,How are the trust funds spending?,How are trust-fund resources used?,For review; wording not changed.
-src/app/system/goals/page.tsx,19,Explore UN System spending by function and Sustainable Development Goal.,Explore UN System expenditure by function and Sustainable Development Goal.,For review; wording not changed.
-src/app/system/goals/page.tsx,37,"Explore spending across the UN’s four main functions and the Sustainable Development Goals. These are separate views of expenditure, not amounts to add together.","Explore expenditure across the UN’s four main functions and the Sustainable Development Goals. These are separate views of expenditure, not amounts to add together.",For review; wording not changed.
-src/app/system/goals/page.tsx,48,Spending by function,Spending by function,For review; wording not changed.
+src/app/system/goals/page.tsx,19,Explore UN System spending by function and Sustainable Development Goal.,Explore UN System expenditure by function and Sustainable Development Goal.,Superseded by the separate Functions and Goals pages.
+src/app/system/goals/page.tsx,37,"Explore spending across the UN’s four main functions and the Sustainable Development Goals. These are separate views of expenditure, not amounts to add together.","Explore expenditure across the UN’s four main functions and the Sustainable Development Goals. These are separate views of expenditure, not amounts to add together.",Superseded by the separate Functions and Goals pages.
+src/app/system/goals/page.tsx,48,Spending by function,Expenditure by function,Superseded by the separate Functions and Goals pages.
 src/components/CountryMap.tsx,417,No positive spending matches the selected filters,No positive expenditure matches the selected filters,For review; wording not changed.
 src/components/CountrySidebar.tsx,40,Spending Gap,Available resources less expenditure,For review; wording not changed. Retains the signed available-minus-spent measure; may be negative.
 src/components/CountrySidebar.tsx,260,Total spending,Total expenditure,For review; wording not changed.
-src/components/CountrySidebar.tsx,275,Spending by entity,Spending by entity,For review; wording not changed.
+src/components/CountrySidebar.tsx,275,Spending by entity,Expenditure by entity,For review; wording not changed.
 src/components/CountrySidebar.tsx,324,"Country programme data only, not representative of total spending.","Country programme data only, not representative of total expenditure.",For review; wording not changed.
-src/components/CountryTreemap.tsx,83,Spending,Spending,For review; wording not changed.
-src/components/EntitiesTreemap.tsx,183,Spending data could not be loaded for,Spending data could not be loaded for,For review; wording not changed.
-src/components/EntitiesTreemap.tsx,473,Spending,Spending,For review; wording not changed.
-src/components/EntityFunctions.tsx,24,Spending by function,Spending by function,For review; wording not changed.
-src/components/EntityFunctions.tsx,41,Spending by function,Spending by function,For review; wording not changed.
+src/components/CountryTreemap.tsx,83,Spending,Expenditure,For review; wording not changed.
+src/components/EntitiesTreemap.tsx,183,Spending data could not be loaded for,Expenditure data could not be loaded for,For review; wording not changed.
+src/components/EntitiesTreemap.tsx,473,Spending,Expenditure,For review; wording not changed.
+src/components/EntityFunctions.tsx,24,Spending by function,Expenditure by function,For review; wording not changed.
+src/components/EntityFunctions.tsx,41,Spending by function,Expenditure by function,For review; wording not changed.
 src/components/EntitySidebar.tsx,471,Total spending,Total expenditure,For review; wording not changed.
-src/components/EntitySidebar.tsx,649,Spending by Country,Spending by Country,For review; wording not changed.
+src/components/EntitySidebar.tsx,649,Spending by Country,Expenditure by Country,For review; wording not changed.
 src/components/EntitySidebar.tsx,653,Loading spending data...,Loading expenditure data...,For review; wording not changed.
 src/components/EntitySidebar.tsx,703,SDG spending breakdown unavailable for,SDG expenditure breakdown unavailable for,For review; wording not changed.
-src/components/EntitySidebar.tsx,710,Spending by SDG,Spending by SDG,For review; wording not changed.
+src/components/EntitySidebar.tsx,710,Spending by SDG,Expenditure by SDG,For review; wording not changed.
 src/components/EntitySidebar.tsx,714,Loading spending data...,Loading expenditure data...,For review; wording not changed.
-src/components/FieldMissionsMap.tsx,300,Spending,Spending,For review; wording not changed.
-src/components/FunctionsChart.tsx,49,Function spending could not be loaded. Please reload to try again.,Function expenditure could not be loaded. Please reload to try again.,For review; wording not changed.
-src/components/FunctionsChart.tsx,50,Loading spending by function…,Loading expenditure by function…,For review; wording not changed.
-src/components/FunctionsChart.tsx,88,Total spending,Total expenditure,For review; wording not changed.
-src/components/FunctionsChart.tsx,92,Total spending,Total expenditure,For review; wording not changed.
-src/components/FunctionsChart.tsx,124,Spending,Spending,For review; wording not changed.
-src/components/FunctionsChart.tsx,148,Function spending could not be loaded.,Function expenditure could not be loaded.,For review; wording not changed.
-src/components/FunctionsChart.tsx,149,Loading spending by function…,Loading expenditure by function…,For review; wording not changed.
-src/components/FunctionsChart.tsx,154,Spending by function over time,Spending by function over time,For review; wording not changed.
-src/components/FunctionsChart.tsx,251,Total spending,Total expenditure,For review; wording not changed.
-src/components/FunctionsChart.tsx,255,Spending by entity,Spending by entity,For review; wording not changed.
-src/components/FunctionsChart.tsx,285,Spending over time,Spending over time,For review; wording not changed.
+src/components/FieldMissionsMap.tsx,300,Spending,Expenditure,For review; wording not changed.
+src/components/FunctionsChart.tsx,49,Function spending could not be loaded. Please reload to try again.,Function expenditure could not be loaded. Please reload to try again.,Applied when moving the chart to the separate Functions tab.
+src/components/FunctionsChart.tsx,50,Loading spending by function…,Loading expenditure by function…,Applied when moving the chart to the separate Functions tab.
+src/components/FunctionsChart.tsx,88,Total spending,Total expenditure,Applied when moving the chart to the separate Functions tab.
+src/components/FunctionsChart.tsx,92,Total spending,Total expenditure,Applied when moving the chart to the separate Functions tab.
+src/components/FunctionsChart.tsx,124,Spending,Expenditure,Applied when moving the chart to the separate Functions tab.
+src/components/FunctionsChart.tsx,148,Function spending could not be loaded.,Function expenditure could not be loaded.,Applied when moving the chart to the separate Functions tab.
+src/components/FunctionsChart.tsx,149,Loading spending by function…,Loading expenditure by function…,Applied when moving the chart to the separate Functions tab.
+src/components/FunctionsChart.tsx,154,Spending by function over time,Expenditure by function over time,Applied when moving the chart to the separate Functions tab.
+src/components/FunctionsChart.tsx,251,Total spending,Total expenditure,Applied when moving the chart to the separate Functions tab.
+src/components/FunctionsChart.tsx,255,Spending by entity,Expenditure by entity,Applied when moving the chart to the separate Functions tab.
+src/components/FunctionsChart.tsx,285,Spending over time,Expenditure over time,Applied when moving the chart to the separate Functions tab.
 src/components/FunctionsMethodology.tsx,14,". These are a separate view of the same expenditure, not amounts to add to SDG spending.",". These are a separate view of the same expenditure, not amounts to add to SDG expenditure.",For review; wording not changed.
 src/components/GeographicSidebar.tsx,64,Total spending,Total expenditure,For review; wording not changed.
-src/components/GeographicSidebar.tsx,74,Spending by entity,Spending by entity,For review; wording not changed.
+src/components/GeographicSidebar.tsx,74,Spending by entity,Expenditure by entity,For review; wording not changed.
 src/components/Methodology.tsx,114,"Changes in reporting coverage and source revisions affect comparisons between years. ITC's absence in 2025 represents missing reporting, not zero spending.","Changes in reporting coverage and source revisions affect comparisons between years. ITC's absence in 2025 represents missing reporting, not zero expenditure.",For review; wording not changed.
 src/components/Methodology.tsx,174,"The geographic view includes CEB's updated historical allocations. UNINFO is a separate dataset with its own reporting periods and covers approximately 120 countries with Cooperation Frameworks, representing roughly 40% of total UN system spending. The remainder includes headquarters operations, peacekeeping missions, and global programs outside country frameworks.","The geographic view includes CEB's updated historical allocations. UNINFO is a separate dataset with its own reporting periods and covers approximately 120 countries with Cooperation Frameworks, representing roughly 40% of total UN system expenditure. The remainder includes headquarters operations, peacekeeping missions, and global programs outside country frameworks.",For review; wording not changed.
-src/components/Methodology.tsx,190,"Spending by Sustainable Development Goal uses CEB financial statistics. Only actual expense records are included; source budget records are excluded. Reporting by goal is incomplete, so its total can differ from organization spending. Available years end in 2024.","Spending by Sustainable Development Goal uses CEB financial statistics. Only actual expense records are included; source budget records are excluded. Reporting by goal is incomplete, so its total can differ from organization expenditure. Available years end in 2024.",For review; wording not changed.
-src/components/Methodology.tsx,279,Spending data comes from Proposed Programme Budget documents and their published actual expenditure tables. Other assessed and extrabudgetary expenditure are not part of the programme budget itself and are displayed for informational purposes.,Spending data comes from Proposed Programme Budget documents and their published actual expenditure tables. Other assessed and extrabudgetary expenditure are not part of the programme budget itself and are displayed for informational purposes.,For review; wording not changed.
+src/components/Methodology.tsx,190,"Spending by Sustainable Development Goal uses CEB financial statistics. Only actual expense records are included; source budget records are excluded. Reporting by goal is incomplete, so its total can differ from organization spending. Available years end in 2024.","Expenditure by Sustainable Development Goal uses CEB financial statistics. Only actual expense records are included; source budget records are excluded. Reporting by goal is incomplete, so its total can differ from organization expenditure. Available years end in 2024.",For review; wording not changed.
+src/components/Methodology.tsx,279,Spending data comes from Proposed Programme Budget documents and their published actual expenditure tables. Other assessed and extrabudgetary expenditure are not part of the programme budget itself and are displayed for informational purposes.,Expenditure data comes from Proposed Programme Budget documents and their published actual expenditure tables. Other assessed and extrabudgetary expenditure are not part of the programme budget itself and are displayed for informational purposes.,For review; wording not changed.
 src/components/PeacekeepingBudgetView.tsx,760,spending and sources,expenditure and sources,For review; wording not changed.
 src/components/SDGModal.tsx,38,Spending Gap,Available resources less expenditure,For review; wording not changed. Retains the signed available-minus-spent measure; may be negative.
 src/components/SDGModal.tsx,259,Total spending,Total expenditure,For review; wording not changed.
-src/components/SDGModal.tsx,265,Spending by entity,Spending by entity,For review; wording not changed.
+src/components/SDGModal.tsx,265,Spending by entity,Expenditure by entity,For review; wording not changed.
 src/components/SDGModal.tsx,314,"Cooperation Framework programme data only, not representative of total spending.","Cooperation Framework programme data only, not representative of total expenditure.",For review; wording not changed.
-src/components/SDGsGrid.tsx,456,Spending,Spending,For review; wording not changed.
-src/components/SDGsGrid.tsx,511,Spending,Spending,For review; wording not changed.
+src/components/SDGsGrid.tsx,456,Spending,Expenditure,For review; wording not changed.
+src/components/SDGsGrid.tsx,511,Spending,Expenditure,For review; wording not changed.
 src/components/SDGsGrid.tsx,549,Only reported actual expenses are included; budget figures are excluded. Unallocated expenditure is reported without an SDG assignment. Differences between the SDG dataset and organization expenditure totals are not treated as unallocated spending.,Only reported actual expenses are included; budget figures are excluded. Unallocated expenditure is reported without an SDG assignment. Differences between the SDG dataset and organization expenditure totals are not treated as unallocated expenditure.,For review; wording not changed.
-src/components/SDGsGrid.tsx,721,Spending,Spending,For review; wording not changed.
-src/components/SecretariatOverview.tsx,363,Spending,Spending,For review; wording not changed.
-src/components/SecretariatOverviewTrends.tsx,122,Spending by priority area,Spending by priority area,For review; wording not changed.
-src/components/SecretariatOverviewTrends.tsx,168,Spending by funding source,Spending by funding source,For review; wording not changed.
+src/components/SDGsGrid.tsx,721,Spending,Expenditure,For review; wording not changed.
+src/components/SecretariatOverview.tsx,363,Spending,Expenditure,For review; wording not changed.
+src/components/SecretariatOverviewTrends.tsx,122,Spending by priority area,Expenditure by priority area,For review; wording not changed.
+src/components/SecretariatOverviewTrends.tsx,168,Spending by funding source,Expenditure by funding source,For review; wording not changed.
 src/components/SectionLinkCards.tsx,5,Funding and spending across UN organizations.,Funding and expenditure across UN organizations.,For review; wording not changed.
-src/components/SectionLinkCards.tsx,8,Spending across the 17 Sustainable Development Goals.,Spending across the 17 Sustainable Development Goals.,For review; wording not changed.
+src/components/SectionLinkCards.tsx,8,Spending across the 17 Sustainable Development Goals.,Expenditure across the 17 Sustainable Development Goals.,For review; wording not changed.
 src/components/SectionLinkCards.tsx,9,Overview of Secretariat spending across funding sources.,Overview of Secretariat expenditure across funding sources.,For review; wording not changed.
 src/components/SectionLinkCards.tsx,14,How are field missions spending?,How do field missions use their resources?,For review; wording not changed.
 src/components/SystemCategoryTreemap.tsx,141,UN System spending by category in,UN System expenditure by category in,For review; wording not changed.
 src/components/SystemFlows.tsx,220,Funding and spending flows,Funding and expenditure flows,For review; wording not changed.
-src/components/SystemFlows.tsx,302,Spending by,Spending by,For review; wording not changed.
+src/components/SystemFlows.tsx,302,Spending by,Expenditure by,For review; wording not changed.
 src/components/SystemFlows.tsx,394,"Detailed columns show the largest 12 items and combine the rest into an “other” group. Regional, subregional and unallocated spending remain included.","Detailed columns show the largest 12 items and combine the rest into an “other” group. Regional, subregional and unallocated expenditure remain included.",For review; wording not changed.
 src/components/SystemFlows.tsx,399,"CEB annual revenue and expenditure, including inter-agency transfers, which are not eliminated. Geography includes country, regional and subregional records. SDG spending includes amounts not allocated to a goal. These dimensions are alternative breakdowns, not additive totals.","CEB annual revenue and expenditure, including inter-agency transfers, which are not eliminated. Geography includes country, regional and subregional records. SDG expenditure includes amounts not allocated to a goal. These dimensions are alternative breakdowns, not additive totals.",For review; wording not changed.
-src/lib/systemFlowDetails.ts,73,Spending by,Spending by,For review; wording not changed.
+src/lib/systemFlowDetails.ts,73,Spending by,Expenditure by,For review; wording not changed.
 src/lib/systemFlowDetails.ts,79,Spending organizations,Organizations reporting expenditure,For review; wording not changed.
 src/lib/systemFlows.ts,188,"Calculated reporting difference, not an assigned spending destination.","Calculated reporting difference, not an allocation of expenditure.",For review; wording not changed.
-src/lib/systemFlows.ts,190,Spending reported without allocation to a Sustainable Development Goal.,Spending reported without allocation to a Sustainable Development Goal.,For review; wording not changed.
+src/lib/systemFlows.ts,190,Spending reported without allocation to a Sustainable Development Goal.,Expenditure reported without allocation to a Sustainable Development Goal.,For review; wording not changed.
 src/components/EntitiesTreemap.tsx,83,Spending,Expenditure,For review; wording not changed.
 src/components/EntitiesTreemap.tsx,530,No spending data available for {year}.,No expenditure data available for {year}.,For review; wording not changed.
 src/app/system/locations/page.tsx,37,Where are funds spent?,Where are resources used?,For review; wording not changed.
