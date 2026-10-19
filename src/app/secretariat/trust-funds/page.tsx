@@ -1,3 +1,4 @@
+import { PageSourceLink } from "@/components/PageSources";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { BudgetTreemap } from "@/components/BudgetTreemap";
@@ -26,6 +27,11 @@ export default function TrustFundsPage() {
       }
     >
       <PageHeading
+        sources={
+          <>
+            Figures come from <PageSourceLink source="trustFunds" />.
+          </>
+        }
         id="trust-fund-spending"
         title="How are the trust funds spending?"
         description="Explore individual trust-fund expenses grouped by Secretariat entity, with unmatched funds shown under Unmapped Trust Funds."

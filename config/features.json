@@ -7,7 +7,8 @@
     "uninfo": false,
     "uninfoSortControls": false,
     "entityImpacts": false,
-    "budgetSidebarMiniTreemap": false
+    "budgetSidebarMiniTreemap": false,
+    "secretariatDetailedFlows": false
   },
   "preview": {
     "programmeBudget": true,
@@ -17,7 +18,8 @@
     "uninfo": true,
     "uninfoSortControls": false,
     "entityImpacts": false,
-    "budgetSidebarMiniTreemap": false
+    "budgetSidebarMiniTreemap": false,
+    "secretariatDetailedFlows": true
   },
   "routes": {
     "/secretariat/programme-budget": "programmeBudget",

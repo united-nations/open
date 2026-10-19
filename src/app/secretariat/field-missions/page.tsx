@@ -1,3 +1,4 @@
+import { PageSourceLink } from "@/components/PageSources";
 import { ChartFooter } from "@/components/ChartFooter";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
@@ -27,6 +28,12 @@ export default function FieldMissionsPage() {
       }
     >
       <PageHeading
+        sources={
+          <>
+            Financial figures come from the{" "}
+            <PageSourceLink source="annualReport" />.
+          </>
+        }
         id="field-missions"
         title="How are field missions spending?"
         description="Explore the geographic footprint of special political missions and peacekeeping missions, together with the resources assigned to them."

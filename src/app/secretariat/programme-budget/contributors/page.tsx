@@ -1,3 +1,4 @@
+import { PageSourceLink } from "@/components/PageSources";
 import { PageHeading } from "@/components/PageHeading";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
@@ -24,6 +25,13 @@ export default function ContributorsPage() {
       }
     >
       <PageHeading
+        sources={
+          <>
+            Assessment amounts come from{" "}
+            <PageSourceLink source="regularAssessments" />; paid-in-full status
+            and dates come from the <PageSourceLink source="honourRoll" />.
+          </>
+        }
         title="Who funds the regular budget?"
         description="Explore Member States’ assessed contributions to the UN regular budget, their paid-in-full status, and payment trends over time."
       />

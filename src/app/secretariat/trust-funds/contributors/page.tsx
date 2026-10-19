@@ -1,3 +1,4 @@
+import { PageSourceLink } from "@/components/PageSources";
 import { PageHeading } from "@/components/PageHeading";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
@@ -22,6 +23,11 @@ export default function ContributorsPage() {
       }
     >
       <PageHeading
+        sources={
+          <>
+            Figures come from <PageSourceLink source="trustFunds" />.
+          </>
+        }
         title="Who contributes to UN trust funds?"
         description="Explore contributions and transfers to UN Secretariat trust funds, by contributor and the entities responsible for the funds."
       />

@@ -1,3 +1,4 @@
+import { PageSourceLink } from "@/components/PageSources";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { PeacekeepingBudgetView } from "@/components/PeacekeepingBudgetView";
@@ -26,6 +27,13 @@ export default function PeacekeepingBudgetPage() {
       }
     >
       <PageHeading
+        sources={
+          <>
+            Figures are extracted from the Secretary-General’s{" "}
+            <PageSourceLink source="peacekeepingDocuments" />. Learn{" "}
+            <PageSourceLink source="peacekeepingFunding" />.
+          </>
+        }
         id="peacekeeping-spending"
         title="How do peacekeeping missions spend funds?"
         description="Explore expenditure, approved budgets and proposals by mission, location and cost class. Financial years run from July to June."

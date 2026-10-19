@@ -1,6 +1,18 @@
 # Secretariat expenditure flows
 
-The overview treemap and Sankey have separate controls and consume the same `secretariat-overview-YEAR.json`. The ledger retains every annual-report occurrence, exact amount, original code/type/reference/note, classification evidence, priority and funding arrangement. Source hashes plus row ordinal preserve historical duplicates. Display rounding differences are explicit.
+The overview treemap and Sankey charts have separate controls and consume the same `secretariat-overview-YEAR.json`. The ledger retains every annual-report occurrence, exact amount, original code/type/reference/note, classification evidence, priority and funding arrangement. Source hashes plus row ordinal preserve historical duplicates. Display rounding differences are explicit.
+
+The public two-column chart, “Funding mechanisms and priority areas,” groups each
+ledger record by `funding_source` (Regular budget, Other assessed, Extrabudgetary)
+and directly by priority area. Funding nodes use the shared UI
+funding-source colors. The Secretariat has three dedicated tokens: Regular budget
+uses rgb(0, 73, 135), Other assessed uses rgb(0, 158, 219), and Extrabudgetary
+uses rgb(197, 223, 239). Priority nodes match the overview treemap colors; ribbons follow their funding mechanism. Funding mechanisms and priority areas are ordered by descending net expenditure for the selected year.
+Ribbons are fully opaque with gaps before both bars, and priority labels have
+extra space and wrap without truncation. Every record belongs
+to exactly one link, preserving signed expenditure and gross positive flows.
+The existing three-column chart is controlled by `secretariatDetailedFlows` in
+`config/features.json` and is enabled only in preview.
 
 `python python/11-export_secretariat_json.py` exports audited budgets and the ledger-backed overview together. `python python/secretariat_ledger.py` regenerates only the overview. Money comes exclusively from the three annual-report CSV inputs. System Chart and PPB references supply names and classifications; fund schedules supply exact-name membership only.
 

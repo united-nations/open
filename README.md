@@ -37,6 +37,10 @@ URLs). The `uninfo` flag
 controls data loading, sidebar sections, and source disclosures in both Locations
 and Goals. Public JSON data remains available in both versions.
 
+The two-column Secretariat funding-mechanism Sankey appears in both profiles.
+`secretariatDetailedFlows` enables the additional three-column funding-arrangement
+Sankey only in preview.
+
 Previously hidden Field Missions, UNINFO sorting, entity impacts, and the budget
 sidebar mini treemap remain disabled in both profiles until explicitly enabled.
 

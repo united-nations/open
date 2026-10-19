@@ -1,3 +1,4 @@
+import { PageSourceLink } from "@/components/PageSources";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import {
@@ -28,19 +29,11 @@ export default function ProgrammeBudgetPage() {
       <PageHeading
         id="regular-budget-spending"
         title="How is the programme budget allocated?"
-        description={
+        description="Compare expenditure, approved resources and proposals by budget part, section and entity."
+        sources={
           <>
-            Compare expenditure, approved resources and proposals by budget
-            part, section and entity. This data is based on the{" "}
-            <a
-              href="https://www.un.org/en/ga/fifth/81/ppb2027.shtml"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-2"
-            >
-              proposed programme budget of the UN
-            </a>
-            .
+            Figures are extracted from the{" "}
+            <PageSourceLink source="programmeBudget" />.
           </>
         }
       />

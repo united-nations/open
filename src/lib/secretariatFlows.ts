@@ -1,3 +1,4 @@
+import { fundingSources } from "@un-eosg/ui/funding-sources";
 import type {
   SankeyGraph,
   SankeyNode,
@@ -146,6 +147,70 @@ export function buildSecretariatFlows(
   return { graph, nodeRows, edgeRows, rows };
 }
 export type SecretariatFlowModel = ReturnType<typeof buildSecretariatFlows>;
+/** Direct funding-source to priority-area flows, preserving signed source records. */
+export function buildSecretariatFundingFlows(
+  data: SecretariatOverviewData,
+  rows: SecretariatRecord[] = data.records,
+): SecretariatFlowModel {
+  const nodes = new Map<string, SankeyNode>();
+  const nodeRows = new Map<string, SecretariatRecord[]>();
+  const edgeRows = new Map<string, SecretariatRecord[]>();
+  for (const row of rows) {
+    const funding = fundingSources[row.funding_source];
+    const source: SankeyNode = {
+      id: "source:" + row.funding_source,
+      column: 0,
+      label: funding.label,
+      color: funding.color,
+      order: data.meta.funding_sources.indexOf(row.funding_source),
+    };
+    const priority: SankeyNode = {
+      id: "priority:" + row.priority_area,
+      column: 1,
+      label: row.priority_area,
+      color: priorityAreaColor(row.priority_area),
+      order: data.meta.priorities.indexOf(row.priority_area),
+    };
+    for (const node of [source, priority]) {
+      nodes.set(node.id, node);
+      const members = nodeRows.get(node.id) ?? [];
+      members.push(row);
+      nodeRows.set(node.id, members);
+    }
+    const key = edgeKey(source.id, priority.id);
+    const members = edgeRows.get(key) ?? [];
+    members.push(row);
+    edgeRows.set(key, members);
+  }
+  for (const column of [0, 1]) {
+    const ranked = [...nodes.values()]
+      .filter((node) => node.column === column)
+      .sort(
+        (a, b) =>
+          sumRecords(nodeRows.get(b.id) ?? []) -
+            sumRecords(nodeRows.get(a.id) ?? []) ||
+          a.label.localeCompare(b.label),
+      );
+    ranked.forEach((node, order) => {
+      node.order = order;
+    });
+  }
+  const graph: SankeyGraph = {
+    nodes: [...nodes.values()],
+    links: [...edgeRows].map(([key, members]) => {
+      const [source, target] = JSON.parse(key) as [string, string];
+      return {
+        source,
+        target,
+        color: nodes.get(source)!.color,
+        value: sumRecords(members),
+        positiveValue: positiveRecords(members),
+      };
+    }),
+  };
+  return { graph, nodeRows, edgeRows, rows };
+}
+
 export function selectionRows(
   model: SecretariatFlowModel,
   selection: SankeySelection,

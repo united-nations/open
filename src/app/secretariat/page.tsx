@@ -1,3 +1,4 @@
+import { FEATURES } from "@/lib/featureFlags";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import {
@@ -34,7 +35,7 @@ export default function SecretariatPage() {
             Explore UN Secretariat expenses by priority area and entity. This
             simplified overview is based on data from the{" "}
             <a
-              href="https://www.un.org/sites/un2.un.org/files/sg_annual_report_2025_en.pdf"
+              href="https://www.un.org/en/annualreport"
               target="_blank"
               rel="noopener noreferrer"
               className="underline underline-offset-2"
@@ -47,7 +48,8 @@ export default function SecretariatPage() {
       />
       <PageBody>
         <SecretariatOverview />
-        <SecretariatFlows />
+        <SecretariatFlows view="mechanisms" />
+        {FEATURES.secretariatDetailedFlows && <SecretariatFlows />}
       </PageBody>
     </ChartSourceProvider>
   );

@@ -1,3 +1,4 @@
+import { SystemPageSources } from "@/components/PageSources";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import {
@@ -30,6 +31,7 @@ export default function SystemGoalsPage() {
       }
     >
       <PageHeading
+        sources={<SystemPageSources uninfo />}
         id="functions-and-goals"
         title="Which goals and functions do funds support?"
         description="Explore spending across the UN’s four main functions and the Sustainable Development Goals. These are separate views of expenditure, not amounts to add together."

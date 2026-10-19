@@ -57,4 +57,13 @@ for (const route of ["locations", "goals"]) {
     `${variant}: ${route} source disclosure`,
   );
 }
+assert.ok(
+  secretariat.includes('id="secretariat-funding-flows"'),
+  "Direct funding chart is always available",
+);
+assert.equal(
+  secretariat.includes('id="secretariat-flows"'),
+  FEATURES.secretariatDetailedFlows,
+  `${variant}: detailed Secretariat flows`,
+);
 console.log(`Feature export checks passed (${variant}).`);

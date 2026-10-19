@@ -12,6 +12,7 @@ import { DelayedChartLoading } from "./DelayedChartLoading";
 import { useYearRanges } from "@/lib/useYearRanges";
 import {
   buildSecretariatFlows,
+  buildSecretariatFundingFlows,
   selectedLinkValue,
   selectionRows,
   sumRecords,
@@ -25,7 +26,12 @@ import type {
 } from "@/types";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-export function SecretariatFlows() {
+export function SecretariatFlows({
+  view = "arrangements",
+}: {
+  view?: "arrangements" | "mechanisms";
+}) {
+  const mechanisms = view === "mechanisms";
   const years = useYearRanges().secretariatOverview;
   const [year, setYear] = useState(years.default);
   const [data, setData] = useState<SecretariatOverviewData | null>(null);
@@ -60,14 +66,16 @@ export function SecretariatFlows() {
   const model = useMemo(
     () =>
       current
-        ? buildSecretariatFlows(
-            current,
-            current.records,
-            new Set(["unitemized"]),
-            Infinity,
-          )
+        ? mechanisms
+          ? buildSecretariatFundingFlows(current)
+          : buildSecretariatFlows(
+              current,
+              current.records,
+              new Set(["unitemized"]),
+              Infinity,
+            )
         : null,
-    [current],
+    [current, mechanisms],
   );
   const total = current ? sumRecords(current.records) : 0;
   const positive = current ? positiveRecords(current.records) : 0;
@@ -87,8 +95,13 @@ export function SecretariatFlows() {
     setSelected({ ...entity, cells, total: sumRecords(members) });
   };
   return (
-    <section id="secretariat-flows" className="mt-12 space-y-4">
-      <h2 className="text-2xl font-bold">Funding flows</h2>
+    <section
+      id={mechanisms ? "secretariat-funding-flows" : "secretariat-flows"}
+      className="mt-12 space-y-4"
+    >
+      <h2 className="text-2xl font-bold">
+        {mechanisms ? "Funding mechanisms and priority areas" : "Funding flows"}
+      </h2>
       <ChartFrame
         header={
           <ChartHeader
@@ -131,17 +144,21 @@ export function SecretariatFlows() {
                   </p>
                 )}
                 <p>
-                  Annual-report expenditure by funding arrangement, entity
-                  category and priority area. All funding sources are included.
-                  Ribbons show gross positive expenditure; signed corrections
-                  remain in net totals and source details.
+                  {mechanisms
+                    ? "Annual-report expenditure by funding mechanism and priority area."
+                    : "Annual-report expenditure by funding arrangement, entity category and priority area."}{" "}
+                  All funding sources are included. Ribbons show gross positive
+                  expenditure; signed corrections remain in net totals and
+                  source details.
                 </p>
-                <p>
-                  Unitemized extrabudgetary resources are shown by
-                  reporting entity. These remain unitemized amounts, not
-                  identified trust funds. Expansion preserves every source
-                  record and the total. Trust funds are shown together.
-                </p>
+                {!mechanisms && (
+                  <p>
+                    Unitemized extrabudgetary resources are shown by reporting
+                    entity. These remain unitemized amounts, not identified
+                    trust funds. Expansion preserves every source record and the
+                    total. Trust funds are shown together.
+                  </p>
+                )}
                 <p>
                   Calendar and peacekeeping periods differ. IRMCT includes
                   source-labelled budget substitutes. Staff Assessment follows
@@ -188,12 +205,19 @@ export function SecretariatFlows() {
           ) : current && model ? (
             <SankeyDiagram
               graph={model.graph}
-              columnControls={[
-                "Funding arrangement",
-                "Entity category",
-                "Priority area",
-              ]}
-              ariaLabel="Annual-report expenditure from funding arrangements through entity categories to priority areas"
+              linkOpacity={mechanisms ? 1 : undefined}
+              linkGap={mechanisms ? 12 : undefined}
+              endLabelWidth={mechanisms ? 480 : undefined}
+              columnControls={
+                mechanisms
+                  ? ["Funding mechanisms", "Priority areas"]
+                  : ["Funding arrangement", "Entity category", "Priority area"]
+              }
+              ariaLabel={
+                mechanisms
+                  ? "Annual-report expenditure from funding mechanisms to priority areas"
+                  : "Annual-report expenditure from funding arrangements through entity categories to priority areas"
+              }
               selectionLabel="Selected flow"
               clearLabel="Clear selection"
               formatValue={formatBudget}
