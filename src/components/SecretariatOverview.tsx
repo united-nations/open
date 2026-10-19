@@ -360,7 +360,7 @@ export function SecretariatOverview() {
               leaf.label
             }
             parents={[{ label: row.label, color: row.color }]}
-            total={{ label: "Spending", value: formatBudget(leaf.value) }}
+            total={{ label: "Expenditure", value: formatBudget(leaf.value) }}
             rows={orderFundingTooltipRows(leaf.segments).map((segment) => ({
               label: segment.label,
               value: formatBudget(segment.value),

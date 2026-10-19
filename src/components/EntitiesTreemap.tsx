@@ -80,7 +80,7 @@ function EntityTooltip({
       title={entity.entity_long || entity.entity}
       parents={[{ label: context.row.label, color: context.row.color }]}
       total={{
-        label: showRevenue ? "Funding" : "Spending",
+        label: showRevenue ? "Funding" : "Expenditure",
         value: accessibleBudget(context.leaf.value),
       }}
       rows={orderFundingTooltipRows(context.leaf.segments).map((segment) => ({
@@ -180,7 +180,7 @@ export function EntitiesTreemap() {
           setErrorState({
             year: currentYear,
             revenue: false,
-            message: `Spending data could not be loaded for ${currentYear}.`,
+            message: `Expenditure data could not be loaded for ${currentYear}.`,
           });
         if (!showRevenue) setLoading(false);
       });
@@ -470,7 +470,7 @@ export function EntitiesTreemap() {
               label="Financial measure"
               options={[
                 { value: "funding", label: "Funding" },
-                { value: "spending", label: "Spending" },
+                { value: "spending", label: "Expenditure" },
               ]}
               value={showRevenue ? "funding" : "spending"}
               onValueChange={(value) => setShowRevenue(value === "funding")}
@@ -527,7 +527,7 @@ export function EntitiesTreemap() {
           <div className="flex h-full items-center justify-center text-lg text-gray-500">
             {loadError ||
               (!dataAvailable
-                ? `No ${showRevenue ? "funding" : "spending"} data available for ${currentYear}.`
+                ? `No ${showRevenue ? "funding" : "expenditure"} data available for ${currentYear}.`
                 : !dataReady
                   ? "Loading data…"
                   : "No entities match the selected filters")}

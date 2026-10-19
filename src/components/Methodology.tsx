@@ -113,7 +113,7 @@ export function OrganizationsMethodologyNotes() {
       <p>
         Changes in reporting coverage and source revisions affect comparisons
         between years. ITC&apos;s absence in 2025 represents missing reporting,
-        not zero spending.
+        not zero expenditure.
       </p>
       <p>
         The classification of UN System Functions has changed over time. For
@@ -174,7 +174,7 @@ export function LocationsMethodologyNotes() {
             The geographic view includes CEB&apos;s updated historical
             allocations. UNINFO is a separate dataset with its own reporting
             periods and covers approximately 120 countries with Cooperation
-            Frameworks, representing roughly 40% of total UN system spending.
+            Frameworks, representing roughly 40% of total UN system expenditure.
             The remainder includes headquarters operations, peacekeeping
             missions, and global programs outside country frameworks.
           </p>
@@ -187,10 +187,10 @@ export function LocationsMethodologyNotes() {
 export function GoalsMethodologyNotes() {
   return (
     <p>
-      Spending by Sustainable Development Goal uses CEB financial statistics.
+      Expenditure by Sustainable Development Goal uses CEB financial statistics.
       Only actual expense records are included; source budget records are
       excluded. Reporting by goal is incomplete, so its total can differ from
-      organization spending. Available years end in 2024.
+      organization expenditure. Available years end in 2024.
       {SHOW_UNINFO && (
         <>
           {" "}
@@ -276,7 +276,7 @@ export function TrustFundContributorsMethodologyNotes() {
 export function ProgrammeBudgetMethodologyNotes() {
   return (
     <p>
-      Spending data comes from Proposed Programme Budget documents and their
+      Expenditure data comes from Proposed Programme Budget documents and their
       published actual expenditure tables. Other assessed and extrabudgetary
       expenditure are not part of the programme budget itself and are displayed
       for informational purposes.

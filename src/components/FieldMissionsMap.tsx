@@ -297,7 +297,7 @@ export function FieldMissionsMap({
               parents={[{ label: entitiesData.groups[point.data.group].label }]}
               context={missionLocationLabel(point.data.location)}
               total={{
-                label: "Spending",
+                label: "Expenditure",
                 value: formatBudget(point.data.amount),
               }}
             />

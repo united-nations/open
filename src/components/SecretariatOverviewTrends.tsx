@@ -119,7 +119,7 @@ export function SecretariatOverviewTrends() {
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-6">
         <div className="flex flex-col">
           <h4 className="mb-3 text-sm font-medium text-gray-700">
-            Spending by priority area
+            Expenditure by priority area
           </h4>
           <HierarchicalMultiSelect
             className="mb-3"
@@ -165,7 +165,7 @@ export function SecretariatOverviewTrends() {
         </div>
         <div className="flex flex-col">
           <h4 className="mb-3 text-sm font-medium text-gray-700">
-            Spending by funding source
+            Expenditure by funding source
           </h4>
           <FinancingInstrumentChart
             data={fundingData}

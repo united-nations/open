@@ -35,7 +35,7 @@ export default function FieldMissionsPage() {
           </>
         }
         id="field-missions"
-        title="How are field missions spending?"
+        title="How do field missions use their resources?"
         description="Explore the geographic footprint of special political missions and peacekeeping missions, together with the resources assigned to them."
       />
       <PageBody>

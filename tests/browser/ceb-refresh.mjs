@@ -30,7 +30,7 @@ try {
   await page.waitForTimeout(300);
   assert.match(
     await dialog.innerText(),
-    /SDG spending breakdown unavailable for 2025/,
+    /SDG expenditure breakdown unavailable for 2025/,
   );
   results.push(
     "2025 entity: SDGs unavailable without requesting nonexistent file",
@@ -41,7 +41,7 @@ try {
   await dialog.waitFor();
   await page.waitForTimeout(300);
   assert.match(await dialog.innerText(), /did not submit data for 2025/);
-  assert.match(await dialog.innerText(), /Total spending\s+Unavailable/);
+  assert.match(await dialog.innerText(), /Total expenditure\s+Unavailable/);
   results.push("ITC: non-reporting disclosed as unavailable");
   await page.goto(`${portalUrl}/system/goals/`, { waitUntil: "networkidle" });
   assert.equal(

@@ -55,7 +55,7 @@ def build_geography(frame):
             if name.startswith('Global'):
                 level, name, region = 'global', 'Global', 'Global and Interregional'
                 point, key = (-43, -135), 'global'
-                notes.append('Global and interregional spending, including enabling functions. The ocean marker is a display position only.')
+                notes.append('Global and interregional expenditure, including enabling functions. The ocean marker is a display position only.')
             elif level == 'country':
                 iso, point = country_info[source_name]
                 key = iso if isinstance(iso, str) and len(iso) == 3 and iso.isalpha() else f'country:{name}'
@@ -66,7 +66,7 @@ def build_geography(frame):
             else:
                 point = POINTS.get(name)
                 key = f'{level}:{name}:{parent}'
-                notes.append('Illustrative regional marker; spending is not assigned to this point or distributed among countries.')
+                notes.append('Illustrative regional marker; expenditure is not assigned to this point or distributed among countries.')
                 if name in AMBIGUOUS:
                     notes.append('Source-defined area with potentially differing geographic coverage; the marker does not define its boundaries.')
                 if name in {'Eastern Europe', 'Türkiye'} and parent == 'Africa':

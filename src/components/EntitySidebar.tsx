@@ -468,7 +468,7 @@ export function EntitySidebar({
             {/* Financials Section */}
             <div>
               <FinancialPanelTotalRow
-                label="Total spending"
+                label="Total expenditure"
                 value={
                   loadingYear
                     ? "Loading…"
@@ -646,11 +646,11 @@ export function EntitySidebar({
             {spendingBreakdown && spendingBreakdown.byCountry.length > 0 && (
               <div className="mt-4">
                 <FinancialPanelHeading subheading>
-                  Spending by Country
+                  Expenditure by Country
                 </FinancialPanelHeading>
                 {loadingSpending ? (
                   <p className="mt-2 text-sm text-gray-500">
-                    Loading spending data...
+                    Loading expenditure data...
                   </p>
                 ) : (
                   <div className="mt-2 space-y-1.5">
@@ -700,18 +700,18 @@ export function EntitySidebar({
             {/* Spending by SDG Section */}
             {!sdgYearAvailable && (
               <p className="text-sm text-gray-500">
-                SDG spending breakdown unavailable for {selectedYear}. Latest
+                SDG expenditure breakdown unavailable for {selectedYear}. Latest
                 CEB SDG data: {yearRanges.sdgExpenses.max}.
               </p>
             )}
             {spendingBreakdown && spendingBreakdown.bySDG.length > 0 && (
               <div className="mt-4">
                 <FinancialPanelHeading subheading>
-                  Spending by SDG
+                  Expenditure by SDG
                 </FinancialPanelHeading>
                 {loadingSpending ? (
                   <p className="mt-2 text-sm text-gray-500">
-                    Loading spending data...
+                    Loading expenditure data...
                   </p>
                 ) : (
                   <div className="mt-2 space-y-1.5">

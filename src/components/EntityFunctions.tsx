@@ -21,7 +21,7 @@ export function EntityFunctions({
     return (
       <section className="mt-4 space-y-2">
         <FinancialPanelHeading subheading>
-          Spending by function
+          Expenditure by function
         </FinancialPanelHeading>
         <p className="text-sm text-slate-600">
           {error
@@ -38,7 +38,7 @@ export function EntityFunctions({
   return (
     <section className="mt-4 space-y-2">
       <FinancialPanelHeading subheading>
-        Spending by function
+        Expenditure by function
       </FinancialPanelHeading>
       {UN_FUNCTIONS.map((item) => (
         <FinancialPanelRankedRow

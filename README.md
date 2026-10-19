@@ -8,8 +8,8 @@ The UN Transparency Portal makes financial data from across the UN System access
 
 - UN System
   - **Contributors** — Treemaps and trends showing government and donor contributions by financing instrument
-  - **Entities** — Spending breakdowns for 48+ UN organizations
-  - **Countries** — Interactive world map with geographic spending data
+  - **Entities** — Expenditure breakdowns for 48+ UN organizations
+  - **Countries** — Interactive world map with geographic expenditure data
   - **Functions** — Expenditure treemap and compact trends across the four CEB functions
   - **Goals** — SDG expenditure treemap; annual snapshots are not directly comparable
 - UN Secretariat
@@ -70,7 +70,7 @@ full-feature browser suites should run against a preview build.
 | Source                                                                           | Coverage                                               | Description                                             |
 | -------------------------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------- |
 | [CEB Financial Statistics](https://unsceb.org/financial-statistics)              | 2011–2024                                              | Audited financial data from 48+ UN System organizations |
-| UN Secretariat Spending                                                          | 2019–2023                                              | Granular breakdown into 150+ departments and missions   |
+| UN Secretariat Expenditure                                                          | 2019–2023                                              | Granular breakdown into 150+ departments and missions   |
 | [Programme Budget Data](https://github.com/united-nations/programme-budget-data) | PPB expenditure 2019–2025; PKO cycles 2022/23–2024/25  | PPB hierarchy plus separately assessed mission budgets  |
 | [Committee on Contributions](https://www.un.org/en/ga/contributions/)            | Regular-budget assessments and honour rolls, 2019–2026 | Member State assessments and paid-in-full status        |
 | [Schedule of Individual Trust Funds](https://digitallibrary.un.org/record/4060617) | 2017–2024                                             | Audited fund statements and contributor schedules       |

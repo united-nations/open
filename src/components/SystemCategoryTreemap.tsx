@@ -138,7 +138,7 @@ export function SystemCategoryTreemap({
           <div
             className="relative h-90 w-full overflow-hidden rounded-sm bg-white"
             role="group"
-            aria-label={`UN System spending by category in ${year}. Blue highlights the UN Secretariat within the System.`}
+            aria-label={`UN System expenditure by category in ${year}. Blue highlights the UN Secretariat within the System.`}
           >
             {error ? (
               <p className="flex h-full items-center justify-center p-4 text-sm text-gray-500" role="status">{error}</p>

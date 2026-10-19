@@ -37,7 +37,7 @@ const UNINFO_SORT_OPTIONS: SortOption[] = [
   { value: "required", label: "Required" },
   { value: "spent", label: "Spent" },
   { value: "funding_gap", label: "Funding Gap" },
-  { value: "spending_gap", label: "Spending Gap" },
+  { value: "spending_gap", label: "Available resources less expenditure" },
 ];
 
 // Cumulative display levels; retain all existing content for now.
@@ -257,7 +257,7 @@ export function CountrySidebar({
               </FinancialPanelHeading>
               <div className="space-y-3">
                 <FinancialPanelTotalRow
-                  label="Total spending"
+                  label="Total expenditure"
                   value={
                     loadingYear
                       ? "Loading…"
@@ -272,7 +272,7 @@ export function CountrySidebar({
                 />
               </div>
               <FinancialPanelHeading subheading className="mt-4">
-                Spending by entity
+                Expenditure by entity
               </FinancialPanelHeading>
               <div className="mt-2 space-y-2">
                 {displayedEntities.map(([entity, amount]) => {
@@ -321,7 +321,7 @@ export function CountrySidebar({
                     <p className="text-xs text-gray-500">
                       {uninfoData.geographic_scope === "workspace"
                         ? `Shared workspace totals for ${uninfoData.workspace_countries.join(", ")}; these are not allocations to this country.`
-                        : "Country programme data only, not representative of total spending."}
+                        : "Country programme data only, not representative of total expenditure."}
                       {uninfoData.year === null
                         ? " The source response has no verified reporting period. Annual 2024 figures are unavailable."
                         : ` Financial totals were queried for ${uninfoData.year}.`}

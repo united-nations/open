@@ -2,17 +2,17 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export const LINK_DESCRIPTIONS: Record<string, string> = {
-  "/system/organizations": "Funding and spending across UN organizations.",
+  "/system/organizations": "Funding and expenditure across UN organizations.",
   "/system/contributors": "Who funds the UN System, and how.",
   "/system/locations": "Where funds are spent, by country and region.",
   "/system/functions": "Expenditure across the four UN System functions.",
-  "/system/goals": "Spending across the 17 Sustainable Development Goals.",
-  "/secretariat": "Overview of Secretariat spending across funding sources.",
+  "/system/goals": "Expenditure across the 17 Sustainable Development Goals.",
+  "/secretariat": "Overview of Secretariat expenditure across funding sources.",
   "/secretariat/programme-budget":
     "Detailed breakdown of the regular budget and its contributors.",
   "/secretariat/peacekeeping-budget":
     "Detailed breakdown of the peacekeeping budget.",
-  "/secretariat/field-missions": "How are field missions spending?",
+  "/secretariat/field-missions": "How do field missions use their resources?",
   "/secretariat/trust-funds":
     "Detailed breakdown of voluntary funding via trust funds.",
 };

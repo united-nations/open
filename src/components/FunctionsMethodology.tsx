@@ -12,7 +12,7 @@ export function FunctionsMethodology() {
           CEB Standard II
         </a>
         . These are a separate view of the same expenditure, not amounts to add
-        to SDG spending.
+        to SDG expenditure.
       </p>
       <p>
         Trends start in 2018, when the current four-function classification

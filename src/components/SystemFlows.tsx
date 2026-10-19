@@ -217,7 +217,7 @@ export function SystemFlows() {
   const adjustments = graph?.links.filter((link) => link.value < -0.005) ?? [];
   return (
     <section id="system-flows" className="mt-12 space-y-4">
-      <h2 className="text-2xl font-bold">Funding and spending flows</h2>
+      <h2 className="text-2xl font-bold">Funding and expenditure flows</h2>
       <ChartHeader
         yearControl={
           sources && year !== null ? (
@@ -299,13 +299,15 @@ export function SystemFlows() {
                         ? "Funding from"
                         : dimension === "organization"
                           ? "Through"
-                          : "Spending by"
+                          : "Expenditure by"
                     }
-                    className="inline-flex w-max cursor-pointer items-center gap-1.5 rounded-full border border-border bg-secondary px-2 py-1 text-xs font-medium text-black transition-colors hover:bg-gray-200 data-[state=open]:bg-gray-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-un-blue"
+                    className="inline-flex w-max cursor-pointer items-center gap-1.5 rounded-full border border-border bg-secondary px-2 py-1 text-xs font-medium text-black transition-colors hover:bg-gray-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-un-blue data-[state=open]:bg-gray-200"
                   >
-                    {options[dimension].find(
-                      ([value]) => value === choices[dimension],
-                    )?.[1]}
+                    {
+                      options[dimension].find(
+                        ([value]) => value === choices[dimension],
+                      )?.[1]
+                    }
                     <ChevronDown aria-hidden="true" className="size-3.5" />
                   </button>
                 </DropdownMenuTrigger>
@@ -393,12 +395,12 @@ export function SystemFlows() {
             <p>
               Detailed columns show the largest 12 items and combine the rest
               into an “other” group. Regional, subregional and unallocated
-              spending remain included.
+              expenditure remain included.
             </p>
             <p>
               CEB annual revenue and expenditure, including inter-agency
               transfers, which are not eliminated. Geography includes country,
-              regional and subregional records. SDG spending includes amounts
+              regional and subregional records. SDG expenditure includes amounts
               not allocated to a goal. These dimensions are alternative
               breakdowns, not additive totals.
             </p>

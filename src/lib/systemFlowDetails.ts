@@ -70,13 +70,13 @@ export function getFlowDetails(graph: FlowGraph, selection: FlowSelection) {
       node.column === 1
         ? [
             breakdown("Funding from", before, "source"),
-            breakdown("Spending by", after, "target"),
+            breakdown("Expenditure by", after, "target"),
           ]
         : [
             breakdown(
               node.column === 0
                 ? "Recipient organizations"
-                : "Spending organizations",
+                : "Organizations reporting expenditure",
               node.column === 0 ? after : before,
               node.column === 0 ? "target" : "source",
             ),

@@ -19,6 +19,7 @@ import {
 } from "@/lib/secretariatGroupings";
 import type {
   BudgetData,
+  BudgetFundingSource,
   Entity,
   SecretariatEntitiesData,
   SecretariatOverviewData,
@@ -39,11 +40,15 @@ const FUNDING_SERIES = [
   { key: "voluntary_earmarked", label: "Voluntary earmarked" },
   { key: "other", label: "Other" },
 ] as const;
+type Trend = {
+  years: { year: number; values: number[] }[];
+  series: { label: string; color: string }[];
+};
 type Preview = {
   tiles?: Tile[];
   countries?: Country[];
   goals?: boolean;
-  funding?: FundingYear[];
+  trend?: Trend;
   bands?: "categories" | "programme" | "entities";
 };
 type Rect = Tile & { x: number; y: number; width: number; height: number };
@@ -106,7 +111,11 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
     const category = entityGroups.get(row.entity) ?? "Uncategorized";
     categories.set(category, (categories.get(category) ?? 0) + row.amount);
   }
-  const budgetTiles = (data: BudgetData, tier: string) =>
+  const budgetTiles = (
+    data: BudgetData,
+    tier: string,
+    source?: BudgetFundingSource,
+  ) =>
     data.nodes
       .filter((node) => node.tier === tier)
       .sort((a, b) =>
@@ -118,7 +127,7 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
       .map(
         (node, index): Tile => ({
           label: node.entity?.acronym ?? node.code ?? node.label,
-          value: node.amount,
+          value: source ? (node.values?.[source] ?? 0) : node.amount,
           color:
             (tier === "part"
               ? PART_BAND_COLORS[node.code ?? ""]?.bg
@@ -162,17 +171,34 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
       })),
     },
     "/system/contributors": {
-      funding: [...contributorTrends.aggregates.all].sort(
-        (a, b) => a.year - b.year,
-      ),
+      trend: {
+        years: [...contributorTrends.aggregates.all]
+          .sort((a, b) => a.year - b.year)
+          .map((row) => ({
+            year: row.year,
+            values: FUNDING_SERIES.map((series) => row[series.key]),
+          })),
+        series: FUNDING_SERIES.map((series) => ({
+          label: series.label,
+          color: getFinancingInstrumentColor(series.label),
+        })),
+      },
     },
     "/system/locations": { countries },
     "/system/functions": {
-      tiles: UN_FUNCTIONS.map((item) => ({
-        label: item.label,
-        value: functions.data.at(-1)?.functions[item.key] ?? 0,
-        color: item.color,
-      })),
+      trend: {
+        years: functions.data
+          .filter((row) => row.year >= functions.meta.classificationStartYear)
+          .sort((a, b) => a.year - b.year)
+          .map((row) => ({
+            year: row.year,
+            values: UN_FUNCTIONS.map((item) => row.functions[item.key] ?? 0),
+          })),
+        series: UN_FUNCTIONS.map((item) => ({
+          label: item.label,
+          color: item.color,
+        })),
+      },
     },
     "/system/goals": {
       goals: true,
@@ -187,7 +213,7 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
     },
     "/secretariat/programme-budget": {
       bands: "programme",
-      tiles: programme ? budgetTiles(programme, "part") : [],
+      tiles: programme ? budgetTiles(programme, "part", "regular_budget") : [],
     },
     "/secretariat/peacekeeping-budget": {
       countries: peacekeepingPoints,
@@ -399,10 +425,10 @@ function MiniMap({ countries }: { countries: Country[] }) {
   );
 }
 
-function MiniFundingTrend({ years }: { years: FundingYear[] }) {
+function MiniTrend({ years, series }: Trend) {
   if (years.length < 2) return null;
   const totals = years.map((row) =>
-    FUNDING_SERIES.reduce((sum, series) => sum + row[series.key], 0),
+    row.values.reduce((sum, value) => sum + value, 0),
   );
   const max = Math.max(...totals);
   if (max <= 0) return null;
@@ -413,13 +439,13 @@ function MiniFundingTrend({ years }: { years: FundingYear[] }) {
   const x = (year: number) => 1 + ((year - firstYear) / span) * 318;
   const y = (amount: number) => 167 - (amount / max) * 166;
   const baseline = years.map(() => 0);
-  const paths = FUNDING_SERIES.map((series) => {
+  const paths = series.map((item, seriesIndex) => {
     const lower = baseline.map((amount, index) => [
       x(years[index].year),
       y(amount),
     ]);
     years.forEach((row, index) => {
-      baseline[index] += row[series.key];
+      baseline[index] += row.values[seriesIndex];
     });
     const upper = baseline.map((amount, index) => [
       x(years[index].year),
@@ -427,8 +453,8 @@ function MiniFundingTrend({ years }: { years: FundingYear[] }) {
     ]);
     const points = [...upper, ...lower.reverse()];
     return {
-      label: series.label,
-      color: getFinancingInstrumentColor(series.label),
+      label: item.label,
+      color: item.color,
       d: `M${points.map((point) => point.map((value) => value.toFixed(2)).join(",")).join("L")}Z`,
     };
   });
@@ -489,7 +515,7 @@ export async function HomeChartCards({
 }) {
   const previews = await loadPreviews();
   return (
-    <ul className="mt-5 grid grid-cols-1 gap-3 min-[440px]:grid-cols-2 md:row-span-5 md:grid-cols-1 md:grid-rows-subgrid lg:row-span-3 lg:grid-cols-2">
+    <ul className="mt-5 grid grid-cols-1 gap-3 min-[440px]:grid-cols-2 lg:grid-cols-3">
       {links.map((link) => {
         const preview = previews[link.href];
         return (
@@ -500,11 +526,11 @@ export async function HomeChartCards({
             >
               {preview && (
                 <div
-                  className={`relative aspect-[320/184] overflow-hidden bg-[#f6fafb] p-2 ${preview.countries ? "" : "border-b border-gray-100"}`}
+                  className={`relative aspect-[320/184] overflow-hidden bg-[#f6fafb] p-2 [&>svg]:opacity-60 [&>svg]:saturate-50 [&>svg]:transition-[opacity,filter] [&>svg]:duration-200 group-hover:[&>svg]:opacity-100 group-hover:[&>svg]:saturate-100 group-focus-visible:[&>svg]:opacity-100 group-focus-visible:[&>svg]:saturate-100 ${preview.countries ? "" : "border-b border-gray-100"}`}
                   aria-hidden="true"
                 >
-                  {preview.funding ? (
-                    <MiniFundingTrend years={preview.funding} />
+                  {preview.trend ? (
+                    <MiniTrend {...preview.trend} />
                   ) : preview.goals ? (
                     <MiniGoals />
                   ) : preview.countries ? (
@@ -519,7 +545,7 @@ export async function HomeChartCards({
               )}
               <div className="flex flex-1 flex-col p-3">
                 <div className="flex items-start justify-between gap-2">
-                  <span className="text-sm font-semibold text-gray-900 group-hover:text-un-blue-dark">
+                  <span className="text-lg font-semibold text-gray-900 group-hover:text-un-blue-dark">
                     {link.label}
                   </span>
                   <ArrowRight

@@ -757,7 +757,7 @@ export function PeacekeepingBudgetView() {
         createPortal(
           <div
             role="dialog"
-            aria-label={`${mapTooltip.mission.code} spending and sources`}
+            aria-label={`${mapTooltip.mission.code} expenditure and sources`}
             className="fixed z-[100] max-h-[min(32rem,80vh)] w-80 overflow-y-auto rounded-md border border-gray-200 bg-white p-3 shadow-lg"
             style={{
               left: Math.max(

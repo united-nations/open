@@ -185,9 +185,9 @@ export function buildSystemFlows(
               : undefined,
         note:
           key === "coverage-difference"
-            ? "Calculated reporting difference, not an assigned spending destination."
+            ? "Calculated reporting difference, not an allocation of expenditure."
             : key === "unallocated"
-              ? "Spending reported without allocation to a Sustainable Development Goal."
+              ? "Expenditure reported without allocation to a Sustainable Development Goal."
               : undefined,
       });
       add(middle, target, value);

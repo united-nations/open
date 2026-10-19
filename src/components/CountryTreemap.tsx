@@ -80,7 +80,7 @@ export function CountryFinancialTooltip({
       ]}
       notes={country.notes?.join(" ")}
       total={{
-        label: "Spending",
+        label: "Expenditure",
         value: formatAccessibleBudget(country.total),
       }}
       actionHint="Click to explore details"

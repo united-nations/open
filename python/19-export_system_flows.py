@@ -99,7 +99,7 @@ def build_export(totals: pd.DataFrame, geography: pd.DataFrame, goals: pd.DataFr
                 'goals': 'https://unsceb.org/assets/data/FS/expenses_sdgs.csv',
             },
             'notes': [
-                'Independent reported spending dimensions; not traced allocations of contributor funding.',
+                'Independent reported expenditure dimensions; not traced allocations of contributor funding.',
                 'All available years use the current CEB release; source vintage and hashes are recorded in ceb-source.json. Geography selects E06 total expense records.',
                 'SDG DPO is normalized to UN-DPO; separately reported sub-agencies are rolled into the same-year CEB expense-source parent where uniquely identified.',
                 'Source labels and original location codes are retained. Known geographic areas reported as COU use the reviewed region/subregion crosswalk; correction notes disclose the change.',

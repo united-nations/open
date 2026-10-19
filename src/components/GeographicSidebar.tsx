@@ -61,7 +61,7 @@ export function GeographicSidebar({
           >
             <div className="space-y-5">
               <FinancialPanelTotalRow
-                label="Total spending"
+                label="Total expenditure"
                 value={formatBudget(row.total)}
               />
               {row.notes.map((note) => (
@@ -71,7 +71,7 @@ export function GeographicSidebar({
               ))}
               <div>
                 <FinancialPanelHeading>
-                  Spending by entity
+                  Expenditure by entity
                 </FinancialPanelHeading>
                 {entries.map(([entity, amount]) => (
                   <FinancialPanelRankedRow

@@ -35,7 +35,7 @@ const UNINFO_SORT_OPTIONS: SortOption[] = [
   { value: "required", label: "Required" },
   { value: "spent", label: "Spent" },
   { value: "funding_gap", label: "Funding Gap" },
-  { value: "spending_gap", label: "Spending Gap" },
+  { value: "spending_gap", label: "Available resources less expenditure" },
 ];
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -256,13 +256,13 @@ export default function SDGModal({
                 </FinancialPanelHeading>
 
                 <FinancialPanelTotalRow
-                  label="Total spending"
+                  label="Total expenditure"
                   value={loadingYear ? "Loading…" : formatBudget(totalExpenses)}
                 />
 
                 <div className="mt-4">
                   <FinancialPanelHeading subheading>
-                    Spending by entity
+                    Expenditure by entity
                   </FinancialPanelHeading>
                   <div className="mt-2 space-y-1.5">
                     {displayedEntities.map((entity) => {
@@ -312,7 +312,7 @@ export default function SDGModal({
                   <>
                     <p className="mb-4 text-xs text-gray-500">
                       Cooperation Framework programme data only, not
-                      representative of total spending.
+                      representative of total expenditure.
                       {uninfoData.year === null
                         ? " The global source snapshot has no verified query period; country comparisons below include only verified 2024 country observations."
                         : ` Global totals were queried for ${uninfoData.year}.`}

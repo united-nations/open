@@ -458,7 +458,7 @@ export default function SDGsGrid({
                   label="Goals view"
                   options={[
                     { value: "goals", label: "Goals" },
-                    { value: "spending", label: "Spending" },
+                    { value: "spending", label: "Expenditure" },
                   ]}
                   value={showSpending ? "spending" : "goals"}
                   onValueChange={(value) =>
@@ -517,7 +517,7 @@ export default function SDGsGrid({
                   label="Goals view"
                   options={[
                     { value: "goals", label: "Goals" },
-                    { value: "spending", label: "Spending" },
+                    { value: "spending", label: "Expenditure" },
                   ]}
                   value={showSpending ? "spending" : "goals"}
                   onValueChange={(value) =>
@@ -562,7 +562,7 @@ export default function SDGsGrid({
                   excluded. Unallocated expenditure is reported without an SDG
                   assignment. Differences between the SDG dataset and
                   organization expenditure totals are not treated as unallocated
-                  spending.
+                  expenditure.
                 </p>
               ) : undefined
             }
@@ -730,7 +730,7 @@ export default function SDGsGrid({
                         : sdg?.title
                     }
                     total={{
-                      label: "Spending",
+                      label: "Expenditure",
                       value: formatBudget(sdgData.total),
                     }}
                     actionHint={

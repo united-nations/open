@@ -42,14 +42,10 @@ export default function HomePage() {
           Understand the financing of the UN.
         </h1>
         <p className="text-base leading-7 text-gray-700 md:text-lg">
-          Explore contributions and spending across the UN System, and drill
+          Explore contributions and expenditure across the UN System, and drill
           down into the budget of the UN Secretariat.
         </p>
-        <div className="relative mt-6 grid grid-cols-1 gap-y-8 md:grid-cols-2 md:gap-x-10 md:gap-y-0 lg:gap-x-12">
-          <span
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-y-0 left-1/2 hidden w-px bg-gray-200 md:block"
-          />
+        <div className="mt-6 grid grid-cols-1 gap-y-8">
           {sections.map((section) => (
             <HomeSectionCard key={section.href} {...section} />
           ))}
@@ -116,10 +112,10 @@ function HomeSectionCard({
 }) {
   return (
     <section
-      className={`min-w-0 md:row-span-6 md:grid md:grid-rows-subgrid lg:row-span-4 ${href === "/secretariat" ? "border-t border-gray-200 pt-6 md:border-t-0 md:pt-0" : ""}`}
+      className={`min-w-0 ${href === "/secretariat" ? "border-t border-gray-200 pt-8" : ""}`}
     >
       <div>
-        <h2 className="text-xl font-bold text-gray-900">
+        <h2 className="text-2xl font-bold text-gray-900">
           <Link href={href} className="hover:underline">
             {title}
           </Link>

@@ -414,7 +414,7 @@ export function CountryMap() {
         {showMap && mapData.length === 0 ? (
           <div className="flex h-[650px] w-full items-center justify-center bg-gray-100">
             <p className="text-lg text-gray-500">
-              No positive spending matches the selected filters
+              No positive expenditure matches the selected filters
             </p>
           </div>
         ) : showMap ? (
