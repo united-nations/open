@@ -1,6 +1,7 @@
 import type { NextConfig } from "next";
 import path from "node:path";
 import { realpathSync } from "node:fs";
+import { writeFile } from "node:fs/promises";
 
 import featureProfiles from "./config/features.json";
 
@@ -54,6 +55,15 @@ const basePath =
 // https://nextjs.org/docs/app/api-reference/config/next-config-js/basePath#images
 
 const nextConfig: NextConfig = {
+  compiler: {
+    async runAfterProductionCompile({ distDir }) {
+      // Keep pruning metadata independent of Next.js's internal manifests.
+      await writeFile(
+        path.join(distDir, "site-variant.json"),
+        JSON.stringify({ siteVariant }),
+      );
+    },
+  },
   transpilePackages: ["@un-eosg/ui"],
   turbopack: {
     root: linkedSharedUi ? workspaceRoot : projectRoot,

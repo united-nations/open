@@ -8,8 +8,8 @@ if (!["public", "preview"].includes(variant)) {
 }
 // Use the profile embedded in the build, even if this script is called separately.
 const builtVariant = JSON.parse(
-  fs.readFileSync(".next/required-server-files.json", "utf8"),
-).config.env.NEXT_PUBLIC_SITE_VARIANT;
+  fs.readFileSync(".next/site-variant.json", "utf8"),
+).siteVariant;
 if (variant !== builtVariant)
   throw new Error(`Export was built as ${builtVariant}, not ${variant}`);
 const out = path.resolve("out");
