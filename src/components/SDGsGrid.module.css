@@ -1,0 +1,18 @@
+.entityTile {
+  position: absolute;
+  left: var(--tile-left);
+  top: var(--tile-top);
+  right: calc(100% - var(--tile-right));
+  bottom: calc(100% - var(--tile-bottom));
+}
+
+/* Round shared endpoints, rather than rounding each tile's size independently.
+   CSS resolves these against the live parent size throughout the animation. */
+@supports (left: round(nearest, 1%, 1px)) {
+  .entityTile {
+    left: round(nearest, var(--tile-left), 1px);
+    top: round(nearest, var(--tile-top), 1px);
+    right: calc(100% - round(nearest, var(--tile-right), 1px));
+    bottom: calc(100% - round(nearest, var(--tile-bottom), 1px));
+  }
+}

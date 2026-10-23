@@ -1,4 +1,5 @@
 "use client";
+import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
@@ -511,7 +512,7 @@ export function ContributorsTreemap() {
                 ? "Total"
                 : "Selected funding total"
             }
-            plotClassName="h-[560px] sm:h-[680px] lg:h-[780px]"
+            plotClassName={SYSTEM_TREEMAP_HEIGHT_CLASS}
             showLeafValues
             formatValue={formatBudget}
             formatAccessibleValue={formatBudget}
@@ -530,13 +531,17 @@ export function ContributorsTreemap() {
       )}
 
       {loading && contributors.length === 0 && (
-        <div className="flex h-[780px] w-full items-center justify-center bg-gray-100">
+        <div
+          className={`flex w-full items-center justify-center bg-gray-100 ${SYSTEM_TREEMAP_HEIGHT_CLASS}`}
+        >
           <p className="text-lg text-gray-500">Loading contributors...</p>
         </div>
       )}
 
       {!loading && contributors.length === 0 && (
-        <div className="flex h-[780px] w-full items-center justify-center bg-gray-100">
+        <div
+          className={`flex w-full items-center justify-center bg-gray-100 ${SYSTEM_TREEMAP_HEIGHT_CLASS}`}
+        >
           <p className="text-lg text-gray-500">
             No contribution data available
           </p>

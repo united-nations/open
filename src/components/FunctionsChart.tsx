@@ -1,4 +1,5 @@
 "use client";
+import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 import { useCallback, useEffect, useState } from "react";
 import { ChevronRight } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -44,7 +45,10 @@ export function FunctionsChart() {
   }, [setSelected]);
   if (!data)
     return (
-      <div role="status" className="py-12 text-sm">
+      <div
+        role="status"
+        className={`flex items-center justify-center text-sm ${SYSTEM_TREEMAP_HEIGHT_CLASS}`}
+      >
         {error
           ? "Function expenditure could not be loaded. Please reload to try again."
           : "Loading expenditure by function…"}
@@ -83,7 +87,7 @@ export function FunctionsChart() {
         })).filter((group) => group.leaves.length > 0)}
         showRowLabels
         showLeafValues
-        plotClassName="h-[480px]"
+        plotClassName={SYSTEM_TREEMAP_HEIGHT_CLASS}
         plotStyle={{ marginTop: 10 }}
         totalLabel="Total expenditure"
         summaries={[

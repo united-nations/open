@@ -3,6 +3,7 @@ import { orderFundingTooltipRows } from "@/lib/financingInstruments";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
+import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 import { ChartFooter } from "@/components/ChartFooter";
 import { FinancingInstrumentLabel } from "./FinancingInstrumentLabel";
 
@@ -427,7 +428,9 @@ export function EntitiesTreemap() {
 
   if (loading) {
     return (
-      <div className="flex h-[650px] w-full items-center justify-center bg-gray-100">
+      <div
+        className={`flex w-full items-center justify-center bg-gray-100 ${SYSTEM_TREEMAP_HEIGHT_CLASS}`}
+      >
         <p className="text-lg text-gray-500">Loading entities...</p>
       </div>
     );
@@ -535,7 +538,7 @@ export function EntitiesTreemap() {
         ]}
         totalLabel="Total"
         showLeafValues
-        plotClassName="h-[650px]"
+        plotClassName={SYSTEM_TREEMAP_HEIGHT_CLASS}
         formatValue={formatBudget}
         formatAccessibleValue={accessibleBudget}
         renderTooltip={(context) => (

@@ -1,4 +1,7 @@
 "use client";
+import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
+import { TreemapLabel } from "@/components/charts/TreemapLabel";
+import styles from "./SDGsGrid.module.css";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
@@ -10,7 +13,9 @@ import {
   treemapTileFillInteractionClassName,
   treemapTileInteractionClassName,
   treemapTileLayoutTransitionClassName,
+  treemapTileBaseBorderClassName,
 } from "@un-eosg/ui/components/treemap-tile-interaction";
+import { squarifyDense } from "@/lib/treemapLayout";
 
 import React, {
   useEffect,
@@ -50,8 +55,11 @@ interface TreemapItem {
   name: string;
 }
 
-const GAP = 0.4; // Gap between entity cells (percentage)
-const SDG_GAP = 0.8;
+// Match the shared treemap's group gutter: 0.4% of plot height.
+// Convert horizontal gaps by the aspect ratio to keep both axes equal in pixels.
+const SDG_GAP = 0.4;
+const SDG_LABEL_INSET = 1;
+const SDG_TRANSITION_MS = 1400;
 const ITEMS_PER_ROW = 6;
 
 // Grid layout: equal square sizes, 6 per row.
@@ -62,12 +70,13 @@ function gridLayout(
   containerAspect: number,
 ): (Rect & { data: TreemapItem })[] {
   if (items.length === 0 || !(containerAspect > 0)) return [];
+  const columnGap = SDG_GAP / containerAspect;
   const numRows = Math.ceil(items.length / ITEMS_PER_ROW);
   const cols = Math.min(ITEMS_PER_ROW, items.length);
-  const totalColGaps = (cols - 1) * SDG_GAP;
+  const totalColGaps = (cols - 1) * columnGap;
   const totalRowGaps = (numRows - 1) * SDG_GAP;
 
-  let cellWidth = (100 - (ITEMS_PER_ROW - 1) * SDG_GAP) / ITEMS_PER_ROW;
+  let cellWidth = (100 - (ITEMS_PER_ROW - 1) * columnGap) / ITEMS_PER_ROW;
   let cellHeight = cellWidth * containerAspect;
   const unscaledHeight = numRows * cellHeight + totalRowGaps;
   if (unscaledHeight > 100) {
@@ -76,16 +85,14 @@ function gridLayout(
   }
 
   const gridWidth = cols * cellWidth + totalColGaps;
-  const gridHeight = numRows * cellHeight + totalRowGaps;
   const xOffset = (100 - gridWidth) / 2;
-  const yOffset = (100 - gridHeight) / 2;
 
   return items.map((item, i) => {
     const row = Math.floor(i / ITEMS_PER_ROW);
     const col = i % ITEMS_PER_ROW;
     return {
-      x: xOffset + col * (cellWidth + SDG_GAP),
-      y: yOffset + row * (cellHeight + SDG_GAP),
+      x: xOffset + col * (cellWidth + columnGap),
+      y: row * (cellHeight + SDG_GAP),
       width: cellWidth,
       height: cellHeight,
       data: item,
@@ -99,7 +106,8 @@ function treemapLayout(
   containerAspect: number,
   height = 100,
 ): (Rect & { data: TreemapItem })[] {
-  if (items.length === 0) return [];
+  if (items.length === 0 || !(containerAspect > 0)) return [];
+  const columnGap = SDG_GAP / containerAspect;
   const totalValue = items.reduce((sum, item) => sum + item.value, 0);
   if (totalValue === 0) return gridLayout(items, containerAspect);
 
@@ -120,7 +128,7 @@ function treemapLayout(
   rows.forEach((row, rowIndex) => {
     const rowTotal = rowTotals[rowIndex];
     const rowHeight = (rowTotal / grandTotal) * availableHeight;
-    const totalItemGaps = (row.length - 1) * SDG_GAP;
+    const totalItemGaps = (row.length - 1) * columnGap;
     const availableWidth = 100 - totalItemGaps;
     let currentX = 0;
 
@@ -133,79 +141,11 @@ function treemapLayout(
         height: rowHeight,
         data: item,
       });
-      currentX += itemWidth + SDG_GAP;
+      currentX += itemWidth + columnGap;
     });
     currentY += rowHeight + SDG_GAP;
   });
   return results;
-}
-
-// Squarify for entity sub-treemaps
-function squarify(
-  items: TreemapItem[],
-  x: number,
-  y: number,
-  width: number,
-  height: number,
-): (Rect & { data: TreemapItem })[] {
-  const total = items.reduce((sum, item) => sum + item.value, 0);
-  if (total === 0 || items.length === 0) return [];
-  const normalized = items.map((item) => ({
-    ...item,
-    normalizedValue: (item.value / total) * width * height,
-  }));
-  return slice(normalized, x, y, width, height);
-}
-
-function slice(
-  items: (TreemapItem & { normalizedValue: number })[],
-  x: number,
-  y: number,
-  width: number,
-  height: number,
-): (Rect & { data: TreemapItem })[] {
-  if (items.length === 0) return [];
-  if (items.length === 1) return [{ x, y, width, height, data: items[0] }];
-  const total = items.reduce((sum, item) => sum + item.normalizedValue, 0);
-  let sum = 0,
-    splitIndex = 0;
-  for (let i = 0; i < items.length; i++) {
-    sum += items[i].normalizedValue;
-    if (sum >= total / 2) {
-      splitIndex = i + 1;
-      break;
-    }
-  }
-  splitIndex = Math.max(1, Math.min(splitIndex, items.length - 1));
-  const leftItems = items.slice(0, splitIndex);
-  const rightItems = items.slice(splitIndex);
-  const leftSum = leftItems.reduce((s, item) => s + item.normalizedValue, 0);
-
-  if (width >= height) {
-    const leftWidth = width * (leftSum / total) - GAP / 2;
-    return [
-      ...slice(leftItems, x, y, leftWidth, height),
-      ...slice(
-        rightItems,
-        x + leftWidth + GAP,
-        y,
-        width - leftWidth - GAP,
-        height,
-      ),
-    ];
-  } else {
-    const leftHeight = height * (leftSum / total) - GAP / 2;
-    return [
-      ...slice(leftItems, x, y, width, leftHeight),
-      ...slice(
-        rightItems,
-        x,
-        y + leftHeight + GAP,
-        width,
-        height - leftHeight - GAP,
-      ),
-    ];
-  }
 }
 
 export default function SDGsGrid({
@@ -224,7 +164,9 @@ export default function SDGsGrid({
   const [showSpending, setShowSpending] = useState<boolean>(treemapOnly);
   const [hasScrollRevealed, setHasScrollRevealed] = useState<boolean>(false);
   const gridRef = useRef<HTMLDivElement>(null);
-  const [containerAspect, setContainerAspect] = useState(0);
+  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+  const containerAspect =
+    containerSize.height > 0 ? containerSize.width / containerSize.height : 0;
   const [expensesData, setExpensesData] = useState<SDGExpensesData | null>(
     null,
   );
@@ -237,11 +179,10 @@ export default function SDGsGrid({
   // Derive the immediate phase; only the delayed transition needs state.
   const [settledSpending, setSettledSpending] = useState(treemapOnly);
   const showEntities = showSpending || settledSpending;
-  const bgFaded = showSpending && settledSpending;
   useEffect(() => {
     const timer = setTimeout(
       () => setSettledSpending(showSpending),
-      showSpending ? 800 : 1400,
+      showSpending ? 800 : SDG_TRANSITION_MS,
     );
     return () => clearTimeout(timer);
   }, [showSpending]);
@@ -357,10 +298,7 @@ export default function SDGsGrid({
     entities: { [entity: string]: number };
   }[] = [];
   if (expensesData) {
-    for (const i of [
-      ...Array.from({ length: 17 }, (_, n) => n + 1),
-      ...(showSpending ? [0] : []),
-    ]) {
+    for (const i of [...Array.from({ length: 17 }, (_, n) => n + 1), 0]) {
       const data = expensesData[i === 0 ? "unallocated" : i.toString()];
       if (!data) continue;
       const sdgMatches =
@@ -390,6 +328,10 @@ export default function SDGsGrid({
     }
   }
 
+  // Both totals include unallocated expenditure; only the money view draws it.
+  const visibleSDGData = filteredSDGData.filter(
+    (row) => showSpending || row.sdgNumber !== 0,
+  );
   const items: TreemapItem[] = filteredSDGData
     .filter((d) => d.total > 0)
     .map((d) => ({
@@ -402,15 +344,23 @@ export default function SDGsGrid({
     if (!element) return;
     const update = () => {
       const { width, height } = element.getBoundingClientRect();
-      if (width > 0 && height > 0) setContainerAspect(width / height);
+      if (width > 0 && height > 0)
+        setContainerSize((current) =>
+          current.width === width && current.height === height
+            ? current
+            : { width, height },
+        );
     };
     update();
     const observer = new ResizeObserver(update);
     observer.observe(element);
     return () => observer.disconnect();
-  }, [filteredSDGData.length]);
+  }, [visibleSDGData.length]);
 
-  const gridRects = gridLayout(items, containerAspect);
+  const gridRects = gridLayout(
+    items.filter((item) => item.name !== "0"),
+    containerAspect,
+  );
   const unallocated = items.find((item) => item.name === "0");
   const unallocatedHeight = unallocated
     ? (100 * unallocated.value) /
@@ -438,8 +388,13 @@ export default function SDGsGrid({
   rects.forEach((r) => {
     positionLookup[r.data.name] = r;
   });
+  // Keep Unallocated mounted at the bottom so it can grow/shrink throughout
+  // the same CSS transition as the SDGs, in either direction or mid-toggle.
+  if (unallocated && !showSpending) {
+    positionLookup["0"] = { x: 0, y: 100, width: 100, height: 0 };
+  }
 
-  if (filteredSDGData.length === 0) {
+  if (visibleSDGData.length === 0) {
     return (
       <>
         <div className="mb-3">
@@ -487,7 +442,7 @@ export default function SDGsGrid({
         </div>
         <div
           ref={gridRef}
-          className="flex h-[calc(100vh-320px)] min-h-[600px] w-full items-center justify-center bg-gray-100"
+          className={`flex w-full items-center justify-center bg-gray-100 ${SYSTEM_TREEMAP_HEIGHT_CLASS}`}
         >
           <p className="text-lg text-gray-500">
             No SDGs match the search criteria
@@ -575,7 +530,7 @@ export default function SDGsGrid({
         />
         <div
           ref={gridRef}
-          className="relative h-[calc(100vh-320px)] min-h-[600px] w-full"
+          className={`relative w-full ${SYSTEM_TREEMAP_HEIGHT_CLASS}`}
         >
           {filteredSDGData.map((sdgData) => {
             const sdgNumber = sdgData.sdgNumber;
@@ -595,10 +550,10 @@ export default function SDGsGrid({
             // Entity sub-treemap (render while visible OR fading out)
             const entityRects =
               showSpending || showEntities
-                ? squarify(
+                ? squarifyDense(
                     Object.entries(sdgData.entities)
                       .filter(([, value]) => value > 0)
-                      .map(([name, value]) => ({ name, value }))
+                      .map(([name, value]) => ({ value, data: { name } }))
                       .sort((a, b) => b.value - a.value),
                     0,
                     0,
@@ -613,7 +568,10 @@ export default function SDGsGrid({
                   <div
                     className={`absolute overflow-hidden text-white ${treemapTileLayoutTransitionClassName} ${activate ? treemapTileInteractionClassName : "focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset"}`}
                     role={activate ? "button" : undefined}
-                    tabIndex={0}
+                    tabIndex={sdgNumber === 0 && !showSpending ? -1 : 0}
+                    aria-hidden={
+                      sdgNumber === 0 && !showSpending ? true : undefined
+                    }
                     aria-label={
                       sdg ? `SDG ${sdgNumber}: ${shortTitle}` : shortTitle
                     }
@@ -622,7 +580,9 @@ export default function SDGsGrid({
                       top: `${pos.y}%`,
                       width: `${pos.width}%`,
                       height: `${pos.height}%`,
-                      transitionDuration: "1400ms,1400ms,1400ms,1400ms,1400ms",
+                      transitionDuration: `${SDG_TRANSITION_MS}ms`,
+                      pointerEvents:
+                        sdgNumber === 0 && !showSpending ? "none" : undefined,
                     }}
                     onClick={activate}
                     onKeyDown={
@@ -636,8 +596,8 @@ export default function SDGsGrid({
                       aria-hidden="true"
                       className={`pointer-events-none absolute inset-0 ${activate ? treemapTileFillInteractionClassName : "motion-safe:transition-[background-color] motion-reduce:transition-none"}`}
                       style={{
-                        backgroundColor: bgFaded ? "#e5e7eb" : color,
-                        transitionDuration: "1400ms,150ms",
+                        backgroundColor: color,
+                        transitionDuration: `${SDG_TRANSITION_MS}ms,150ms`,
                       }}
                     />
                     {/* Entity sub-treemap with fade */}
@@ -651,38 +611,57 @@ export default function SDGsGrid({
                       {entityRects.map((rect, i) => (
                         <div
                           key={`${sdgNumber}-entity-${i}`}
-                          className="absolute"
-                          style={{
-                            left: `${rect.x}%`,
-                            top: `${rect.y}%`,
-                            width: `${rect.width}%`,
-                            height: `${rect.height}%`,
-                          }}
+                          className={styles.entityTile}
+                          style={
+                            {
+                              "--tile-left": `${rect.x}%`,
+                              "--tile-top": `${rect.y}%`,
+                              "--tile-right": `${rect.x + rect.width}%`,
+                              "--tile-bottom": `${rect.y + rect.height}%`,
+                            } as React.CSSProperties
+                          }
                         >
                           <span
                             aria-hidden="true"
                             className={`pointer-events-none absolute inset-0 ${activate ? treemapTileFillInteractionClassName : ""}`}
                             style={{ backgroundColor: color }}
                           />
-                          {rect.width > 3 && rect.height > 2 && (
-                            <div className="relative flex h-full items-end overflow-hidden p-1">
-                              <div className="truncate text-xs leading-tight font-medium">
-                                {rect.data.name}
-                              </div>
+                          <span
+                            aria-hidden="true"
+                            className="pointer-events-none absolute inset-0 z-[1] shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.8)]"
+                          />
+                          <TreemapLabel
+                            data-entity-label
+                            minWidth={Math.max(40, containerSize.width * 0.04)}
+                            minHeight={Math.max(
+                              28,
+                              containerSize.height * 0.03,
+                            )}
+                            className="relative z-[2] flex h-full items-end overflow-hidden p-1.5"
+                          >
+                            <div className="text-xs leading-tight font-medium whitespace-nowrap">
+                              {rect.data.name}
                             </div>
-                          )}
+                          </TreemapLabel>
                         </div>
                       ))}
                     </div>
 
                     {/* SDG label - full cell in grid mode, corner overlay in spending mode */}
-                    <div
-                      className="absolute z-10 flex transition-all"
+                    <TreemapLabel
+                      data-sdg-heading
+                      fit={false}
+                      className="absolute z-10 overflow-hidden transition-all"
                       style={{
-                        left: 0,
-                        top: 0,
-                        padding: showSpending ? "0.5rem" : "1rem",
-                        transitionDuration: "1400ms",
+                        left: showSpending ? SDG_LABEL_INSET : 0,
+                        top: showSpending ? SDG_LABEL_INSET : 0,
+                        maxWidth: showSpending
+                          ? `max(0px, calc(100% - ${2 * SDG_LABEL_INSET}px))`
+                          : undefined,
+                        maxHeight: showSpending
+                          ? `max(0px, calc(100% - ${2 * SDG_LABEL_INSET}px))`
+                          : undefined,
+                        transitionDuration: `${SDG_TRANSITION_MS}ms`,
                       }}
                     >
                       <span
@@ -692,24 +671,33 @@ export default function SDGsGrid({
                           backgroundColor: showSpending ? color : "transparent",
                         }}
                       />
-                      <span className="mr-2 flex-shrink-0 text-2xl leading-none font-bold sm:text-3xl">
-                        {sdgNumber || ""}
-                      </span>
-                      <div className="flex flex-col pt-0.5">
-                        <span className="text-left text-xs leading-tight font-semibold sm:text-sm">
-                          {shortTitle}
+                      <div
+                        className="flex"
+                        style={{ padding: showSpending ? "0.5rem" : "1rem" }}
+                      >
+                        <span className="mr-2 flex-shrink-0 text-2xl leading-none font-bold sm:text-3xl">
+                          {sdgNumber || ""}
                         </span>
-                        <span
-                          className="mt-0.5 text-xs opacity-90 transition-opacity sm:text-sm"
-                          style={{
-                            opacity: showSpending ? 1 : 0,
-                            transitionDuration: "600ms",
-                          }}
-                        >
-                          {formatBudget(sdgData.total)}
-                        </span>
+                        <div className="flex flex-col pt-0.5">
+                          <span className="text-left text-xs leading-tight font-semibold sm:text-sm">
+                            {shortTitle}
+                          </span>
+                          <span
+                            className="mt-0.5 text-xs opacity-90 transition-opacity sm:text-sm"
+                            style={{
+                              opacity: showSpending ? 1 : 0,
+                              transitionDuration: "600ms",
+                            }}
+                          >
+                            {formatBudget(sdgData.total)}
+                          </span>
+                        </div>
                       </div>
-                    </div>
+                    </TreemapLabel>
+                    <span
+                      aria-hidden="true"
+                      className={`pointer-events-none absolute inset-0 z-[1] shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.8)] ${activate ? treemapTileBaseBorderClassName : ""}`}
+                    />
                     {activate && <TreemapTileInteractionCue />}
                   </div>
                 </TooltipTrigger>

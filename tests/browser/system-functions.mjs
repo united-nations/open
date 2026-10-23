@@ -76,8 +76,159 @@ try {
   await page.getByRole("button", { name: /^SDG 1:/ }).waitFor();
   assert.equal(
     await page.getByRole("group", { name: "Goals view", exact: true }).count(),
-    0,
+    1,
   );
+  const goalsToggle = page.getByRole("radio", { name: "Goals", exact: true });
+  const expenditureToggle = page.getByRole("radio", {
+    name: "Expenditure",
+    exact: true,
+  });
+  for (const width of [1440, 390]) {
+    await page.setViewportSize({ width, height: 1100 });
+    await goalsToggle.locator("..").click();
+    await page.waitForTimeout(100);
+    const squares = await page
+      .getByRole("button", { name: /^SDG \d+:/ })
+      .evaluateAll((tiles) =>
+        tiles.map((tile) => {
+          const rect = tile.getBoundingClientRect();
+          const plot = tile.parentElement.getBoundingClientRect();
+          return {
+            top: rect.top - plot.top,
+            width: rect.width,
+            height: rect.height,
+          };
+        }),
+      );
+    assert.equal(squares.length, 17);
+    assert.ok(
+      Math.abs(squares[0].top) < 1,
+      "Goals grid must align to plot top",
+    );
+    assert.ok(
+      squares.every((tile) => Math.abs(tile.width - tile.height) < 1),
+      "Goal tiles must stay square",
+    );
+    assert.equal(
+      await page.locator('[aria-label="Unallocated"]').isVisible(),
+      false,
+    );
+    const goalsTotal = await page
+      .getByText("Total", { exact: true })
+      .first()
+      .locator("..")
+      .innerText();
+    await expenditureToggle.locator("..").click();
+    await page.waitForTimeout(100);
+    const unallocated = page.locator('[aria-label="Unallocated"]');
+    await unallocated.waitFor();
+    const sharedEdges = await unallocated
+      .locator("[data-entity-label]")
+      .evaluateAll((labels) => {
+        const edge = (name) =>
+          labels
+            .find((label) => label.textContent.trim() === name)
+            .parentElement.getBoundingClientRect();
+        return {
+          iaea: edge("IAEA").bottom,
+          paho: edge("PAHO").bottom,
+          unesco: edge("UNESCO").top,
+        };
+      });
+    assert.equal(
+      sharedEdges.iaea,
+      sharedEdges.paho,
+      "Stacked tiles must share PAHO's lower edge",
+    );
+    assert.equal(
+      sharedEdges.iaea,
+      sharedEdges.unesco,
+      "Adjacent entity rows must have no seam",
+    );
+    assert.equal(
+      await page
+        .getByText("Total", { exact: true })
+        .first()
+        .locator("..")
+        .innerText(),
+      goalsTotal,
+      "Goals and Expenditure must include the same unallocated amount in their totals",
+    );
+    const allocatedBottom = await page
+      .getByRole("button", { name: /^SDG \d+:/ })
+      .evaluateAll((tiles) =>
+        Math.max(...tiles.map((tile) => tile.getBoundingClientRect().bottom)),
+      );
+    const extra = await unallocated.boundingBox();
+    assert.ok(
+      extra.y >= allocatedBottom,
+      "Unallocated must remain below the SDGs",
+    );
+    assert.ok(
+      await page
+        .locator("[data-sdg-heading]")
+        .evaluateAll((labels) =>
+          labels.every(
+            (label) => getComputedStyle(label).visibility === "visible",
+          ),
+        ),
+      "SDG group labels must always remain visible",
+    );
+    const insetViolations = await page
+      .locator("[data-sdg-heading]")
+      .evaluateAll((labels) =>
+        labels
+          .filter((label) => {
+            const box = label.getBoundingClientRect();
+            const tile = label.parentElement.getBoundingClientRect();
+            if (tile.width < 2 || tile.height < 2) return false;
+            return (
+              box.left < tile.left + 0.95 ||
+              box.top < tile.top + 0.95 ||
+              box.right > tile.right - 0.95 ||
+              box.bottom > tile.bottom - 0.95
+            );
+          })
+          .map((label) => label.textContent),
+      );
+    assert.deepEqual(
+      insetViolations,
+      [],
+      "SDG labels must preserve their inset on every edge",
+    );
+    const labelFit = await page
+      .locator("[data-entity-label]")
+      .evaluateAll((labels) => {
+        const visible = labels.filter(
+          (label) => getComputedStyle(label).visibility === "visible",
+        );
+        return {
+          hidden: labels.length - visible.length,
+          visible: visible.length,
+          clipped: visible
+            .filter((label) => {
+              const box = label.getBoundingClientRect();
+              const tile = label.parentElement.getBoundingClientRect();
+              return (
+                box.right > tile.right + 0.5 ||
+                box.bottom > tile.bottom + 0.5 ||
+                label.scrollWidth > label.clientWidth ||
+                label.scrollHeight > label.clientHeight
+              );
+            })
+            .map((label) => label.textContent),
+        };
+      });
+    assert.ok(labelFit.hidden > 0, "Tiny labels should be hidden");
+    assert.ok(labelFit.visible > 0, "Readable labels should remain visible");
+    assert.deepEqual(
+      labelFit.clipped,
+      [],
+      "Visible labels must fit their tiles",
+    );
+  }
+  await page.setViewportSize({ width: 1440, height: 1100 });
+  await page.waitForTimeout(1100);
   assert.equal(
     await page
       .getByRole("heading", {
@@ -104,6 +255,45 @@ try {
   await page
     .getByRole("button", { name: "Close modal", exact: true })
     .waitFor();
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await page.goto(portalUrl + "/system/goals/", { waitUntil: "networkidle" });
+  await goalsToggle.locator("..").click();
+  await page.waitForTimeout(1500);
+  const animatedUnallocated = page.locator('[aria-label="Unallocated"]');
+  const retainedNode = await animatedUnallocated.elementHandle();
+  await expenditureToggle.locator("..").click();
+  await page.waitForTimeout(350);
+  const entering = await animatedUnallocated.evaluate((tile) => ({
+    height: tile.getBoundingClientRect().height,
+    target:
+      (parseFloat(tile.style.height) *
+        tile.parentElement.getBoundingClientRect().height) /
+      100,
+    duration: getComputedStyle(tile).transitionDuration,
+  }));
+  assert.ok(
+    entering.height > 0 && entering.height < entering.target - 1,
+    "Unallocated must grow into view",
+  );
+  assert.equal(
+    entering.duration,
+    await page
+      .getByRole("button", { name: /^SDG 1:/ })
+      .evaluate((tile) => getComputedStyle(tile).transitionDuration),
+  );
+  await page.waitForTimeout(1150);
+  await goalsToggle.locator("..").click();
+  await page.waitForTimeout(350);
+  const exitingHeight = await animatedUnallocated.evaluate(
+    (tile) => tile.getBoundingClientRect().height,
+  );
+  assert.ok(
+    exitingHeight > 0 && exitingHeight < entering.target - 1,
+    "Unallocated must shrink out of view",
+  );
+  await page.waitForTimeout(1150);
+  assert.equal(await animatedUnallocated.isVisible(), false);
+  assert.equal(await retainedNode.evaluate((tile) => tile.isConnected), true);
   assert.deepEqual(errors, []);
   console.log(
     "Functions and Goals: tab order, separate charts, annual selection, current/legacy deep links, and SDG sidebar passed.",

@@ -35,7 +35,7 @@ export default function SystemGoalsPage() {
         description="Explore reported expenditure by Sustainable Development Goal. Annual snapshots are not directly comparable because reporting coverage and allocations can change."
       />
       <PageBody>
-        <SDGsGrid treemapOnly />
+        <SDGsGrid />
       </PageBody>
     </ChartSourceProvider>
   );

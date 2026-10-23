@@ -1,4 +1,5 @@
 "use client";
+import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
@@ -212,7 +213,7 @@ export function CountryTreemap({
         rowOrder: "value-desc",
         consolidateSmallRows: true,
       }}
-      plotClassName="h-[650px]"
+      plotClassName={SYSTEM_TREEMAP_HEIGHT_CLASS}
       formatValue={formatBudget}
       formatAccessibleValue={formatAccessibleBudget}
       renderTooltip={(context) => <CountryTooltip context={context} />}
