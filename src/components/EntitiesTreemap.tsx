@@ -32,6 +32,7 @@ import {
 import { getSystemGroupingStyle } from "@/lib/systemGroupings";
 import { useYearRanges } from "@/lib/useYearRanges";
 import type { BudgetEntry, Entity, EntityRevenue } from "@/types";
+import cebSource from "../../public/data/ceb-source.json";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -293,7 +294,14 @@ export function EntitiesTreemap() {
   }, [budgetData, entities]);
 
   useEffect(() => {
-    if (loading || !pendingDeepLink) return;
+    if (
+      loading ||
+      !pendingDeepLink ||
+      !dataReady ||
+      !dataAvailable ||
+      loadError
+    )
+      return;
     const timer = window.setTimeout(() => {
       const requestedYear = Number(
         new URLSearchParams(window.location.search).get("year"),
@@ -305,19 +313,29 @@ export function EntitiesTreemap() {
         }
         if (loadedSpendingYear !== requestedYear) return;
       }
-      const entity =
-        activeEntities.find(
-          (candidate) => candidate.entity === pendingDeepLink,
-        ) ??
-        entities
-          .filter((candidate) => candidate.entity === pendingDeepLink)
-          .map(normalizeEntityForDisplay)[0];
-      if (entity) setSelectedEntity(entity);
+      // A directory entry alone is not evidence of CEB financial coverage.
+      // Keep CEB's explicit non-reporting disclosures reachable as well.
+      const nonReporting: Record<string, string[]> = cebSource.nonReporting;
+      const hasFinancialRecord =
+        Object.hasOwn(budgetData, pendingDeepLink) ||
+        nonReporting[currentYear]?.includes(pendingDeepLink);
+      const entity = hasFinancialRecord
+        ? normalizeEntityForDisplay(
+            entities.find(
+              (candidate) => candidate.entity === pendingDeepLink,
+            ) ?? createUncategorizedEntity(pendingDeepLink),
+          )
+        : null;
+      setSelectedEntity(entity);
+      if (!entity) clearSidebarHash();
       setPendingDeepLink(null);
     }, 0);
     return () => window.clearTimeout(timer);
   }, [
-    activeEntities,
+    budgetData,
+    dataReady,
+    dataAvailable,
+    loadError,
     entities,
     loading,
     pendingDeepLink,

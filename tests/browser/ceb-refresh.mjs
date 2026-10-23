@@ -22,6 +22,36 @@ try {
     assert.equal(await slider.getAttribute("aria-valuenow"), "2025");
     results.push(`${route}: defaults to 2025`);
   }
+  await page.getByRole("button", { name: "All entities", exact: true }).click();
+  const entitySearch = page.getByPlaceholder("Search...", { exact: true });
+  await entitySearch.fill("OOSA");
+  await page.getByText("No results found", { exact: true }).waitFor();
+  await entitySearch.fill("UNICEF");
+  await page.getByText("UNICEF", { exact: true }).waitFor();
+  await page.keyboard.press("Escape");
+  results.push(
+    "Locations: directory-only entities excluded; CEB entities retained",
+  );
+
+  const metadataRoute = "**/data/entities.json";
+  await page.route(metadataRoute, async (route) => {
+    const response = await route.fetch();
+    const entities = await response.json();
+    await route.fulfill({
+      response,
+      json: entities.filter((entity) => entity.entity !== "UNICEF"),
+    });
+  });
+  await page.reload({ waitUntil: "networkidle" });
+  await page.getByRole("button", { name: "All entities", exact: true }).click();
+  await entitySearch.fill("UNICEF");
+  await page.getByText("UNICEF", { exact: true }).waitFor();
+  await page.getByText("Uncategorized", { exact: true }).waitFor();
+  await page.keyboard.press("Escape");
+  await page.unroute(metadataRoute);
+  results.push(
+    "Locations: CEB entities without Airtable metadata remain selectable",
+  );
   await page.goto(`${portalUrl}/system/organizations/#entity=UNICEF`, {
     waitUntil: "networkidle",
   });
@@ -43,6 +73,12 @@ try {
   assert.match(await dialog.innerText(), /did not submit data for 2025/);
   assert.match(await dialog.innerText(), /Total expenditure\s+Unavailable/);
   results.push("ITC: non-reporting disclosed as unavailable");
+  await page.goto(`${portalUrl}/system/organizations/#entity=OOSA`, {
+    waitUntil: "networkidle",
+  });
+  await page.waitForFunction(() => window.location.hash === "");
+  assert.equal(await page.getByRole("dialog").count(), 0);
+  results.push("Organizations: directory-only deep links rejected");
   await page.goto(`${portalUrl}/system/goals/`, { waitUntil: "networkidle" });
   assert.equal(
     await page.getByRole("slider").first().getAttribute("aria-valuenow"),

@@ -29,7 +29,7 @@ import {
 } from "@/hooks/useDeepLink";
 import { ChartSearchInput } from "@/components/ui/chart-search-input";
 import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
-import { formatBudget } from "@/lib/entities";
+import { formatBudget, UNCATEGORIZED_SYSTEM_GROUP } from "@/lib/entities";
 import { useYearRanges } from "@/lib/useYearRanges";
 
 type CountryExpense = GeographicExpense;
@@ -158,28 +158,52 @@ export function CountryMap() {
     };
   }, [selectedYear]);
 
-  const entityGroups = [
-    ...new Set(
-      entityMetadata.map((item) => item.system_grouping || "Uncategorized"),
-    ),
-  ].map((group) => ({
-    id: `group:${group}`,
-    label: group,
-    color: getSystemGroupingStyle(group).hexColor,
-    children: entityMetadata
-      .filter((item) => (item.system_grouping || "Uncategorized") === group)
-      .map((item) => item.entity)
-      .filter((code): code is string => !!code),
-  }));
+  const entityGroups = useMemo(() => {
+    const metadata = new Map(
+      entityMetadata.map((entity) => [entity.entity, entity]),
+    );
+    // CEB records define membership; Airtable only supplies categories.
+    const codes = new Set(
+      countryData.flatMap((row) => Object.keys(row.entities)),
+    );
+    const groups = new Map<string, string[]>();
+    for (const code of codes) {
+      if (!code) continue;
+      const group =
+        metadata.get(code)?.system_grouping || UNCATEGORIZED_SYSTEM_GROUP;
+      const members = groups.get(group) ?? [];
+      members.push(code);
+      groups.set(group, members);
+    }
+    return [...groups]
+      .map(([group, members]) => ({
+        id: `group:${group}`,
+        label: group,
+        color: getSystemGroupingStyle(group).hexColor,
+        children: members.sort((a, b) => a.localeCompare(b)),
+      }))
+      .sort(
+        (a, b) =>
+          getSystemGroupingStyle(a.label).order -
+            getSystemGroupingStyle(b.label).order ||
+          a.label.localeCompare(b.label),
+      );
+  }, [countryData, entityMetadata]);
+  const appliedEntityFilter = entityGroups.some(
+    (group) =>
+      group.id === entityFilter || group.children.includes(entityFilter),
+  )
+    ? entityFilter
+    : "all";
   const scopedData = countryData
     .map((row) => {
       const entities = Object.fromEntries(
         Object.entries(row.entities).filter(
           ([entity]) =>
-            entityFilter === "all" ||
-            entity === entityFilter ||
+            appliedEntityFilter === "all" ||
+            entity === appliedEntityFilter ||
             entityGroups
-              .find((group) => group.id === entityFilter)
+              .find((group) => group.id === appliedEntityFilter)
               ?.children.includes(entity),
         ),
       );
@@ -374,7 +398,7 @@ export function CountryMap() {
               { id: "all", label: "All entities", children: [] },
               ...entityGroups,
             ]}
-            selected={entityFilter}
+            selected={appliedEntityFilter}
             onChange={setEntityFilter}
             getLabel={(id) =>
               id === "all"
@@ -429,7 +453,7 @@ export function CountryMap() {
               centerPoint={[0, 6]}
               colors={GEOGRAPHIC_LEVELS.map((item) => item.color)}
               colorDomain={GEOGRAPHIC_LEVELS.map((item) => item.key)}
-              radius={15}
+              radius={30}
               zoomInteraction="button"
               mapBorderWidth={0.5}
               mapBorderColor="#e5e7eb"
