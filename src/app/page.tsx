@@ -8,6 +8,7 @@ import {
   Target,
 } from "lucide-react";
 import type { Metadata } from "next";
+import type { CSSProperties } from "react";
 import Link from "next/link";
 import { PageBody } from "@/components/PageBody";
 import { ResourceLink } from "@/components/ResourceLink";
@@ -35,6 +36,9 @@ export default function HomePage() {
       links: visibleSecretariatNav(),
     },
   ];
+  const columnStyle = {
+    "--card-rows": Math.max(...sections.map((section) => section.links.length)),
+  } as CSSProperties;
   return (
     <>
       <section className="mx-auto max-w-6xl px-6 pt-8 pb-6 md:px-12 lg:px-16">
@@ -45,9 +49,31 @@ export default function HomePage() {
           Explore contributions and expenditure across the UN System, and drill
           down into the budget of the UN Secretariat.
         </p>
-        <div className="mt-6 grid grid-cols-1 gap-y-8">
+        <div
+          className="mt-8 grid grid-cols-1 gap-y-8 md:grid-cols-2 md:gap-y-3"
+          style={columnStyle}
+        >
           {sections.map((section) => (
-            <HomeSectionCard key={section.href} {...section} />
+            <section
+              key={section.href}
+              aria-labelledby={`column-${section.href.slice(1)}`}
+              className="grid min-w-0 grid-cols-1 gap-y-3 md:row-span-[calc(var(--card-rows)+1)] md:grid-rows-subgrid md:first:pr-6 md:last:border-l md:last:border-gray-200 md:last:pl-6"
+            >
+              <div className="pb-5">
+                <h2
+                  id={`column-${section.href.slice(1)}`}
+                  className="text-2xl font-bold text-gray-900"
+                >
+                  <Link href={section.href} className="hover:underline">
+                    {section.title}
+                  </Link>
+                </h2>
+                <p className="mt-3 text-sm leading-6 text-gray-700">
+                  {section.description}
+                </p>
+              </div>
+              <HomeChartCards links={section.links} />
+            </section>
           ))}
         </div>
       </section>
@@ -96,33 +122,5 @@ export default function HomePage() {
         </div>
       </PageBody>
     </>
-  );
-}
-
-function HomeSectionCard({
-  href,
-  title,
-  links,
-  description,
-}: {
-  href: string;
-  title: string;
-  links: readonly { href: string; label: string }[];
-  description: string;
-}) {
-  return (
-    <section
-      className={`min-w-0 ${href === "/secretariat" ? "border-t border-gray-200 pt-8" : ""}`}
-    >
-      <div>
-        <h2 className="text-2xl font-bold text-gray-900">
-          <Link href={href} className="hover:underline">
-            {title}
-          </Link>
-        </h2>
-        <p className="mt-2 text-sm text-black">{description}</p>
-      </div>
-      <HomeChartCards links={links} />
-    </section>
   );
 }

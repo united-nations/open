@@ -25,7 +25,12 @@ import type {
   SecretariatOverviewData,
 } from "@/types";
 
-type Tile = { label: string; value: number; color?: string };
+type Tile = {
+  label: string;
+  value: number;
+  color?: string;
+  children?: Tile[];
+};
 type Country = { lat: number; long: number; total: number };
 type FundingYear = {
   year: number;
@@ -168,6 +173,15 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
         label: getSystemGroupingStyle(category).label,
         value,
         color: getSystemGroupingStyle(category).hexColor,
+        children: spending
+          .filter(
+            (row) =>
+              (entityGroups.get(row.entity) ?? "Uncategorized") === category &&
+              Number.isFinite(row.amount) &&
+              row.amount > 0,
+          )
+          .map((row) => ({ label: row.entity, value: row.amount }))
+          .sort((a, b) => b.value - a.value),
       })),
     },
     "/system/contributors": {
@@ -385,6 +399,29 @@ function MiniTreemap({
             rx="1.5"
             fill={tile.color}
           />
+          {tile.children &&
+            squarifyDense(
+              tile.children.map((child) => ({
+                value: child.value,
+                data: child.label,
+              })),
+              tile.x + 1,
+              tile.y + 1,
+              Math.max(0, tile.width - 2),
+              Math.max(0, tile.height - 2),
+            ).map((organization) => (
+              <rect
+                key={organization.data}
+                x={organization.x}
+                y={organization.y}
+                width={organization.width}
+                height={organization.height}
+                fill="none"
+                stroke="white"
+                strokeWidth="0.75"
+                strokeOpacity="0.5"
+              />
+            ))}
         </g>
       ))}
     </svg>
@@ -515,18 +552,18 @@ export async function HomeChartCards({
 }) {
   const previews = await loadPreviews();
   return (
-    <ul className="mt-5 grid grid-cols-1 gap-3 min-[440px]:grid-cols-2 lg:grid-cols-3">
+    <ul className="grid grid-cols-1 gap-3 md:row-span-[var(--card-rows)] md:grid-rows-subgrid">
       {links.map((link) => {
         const preview = previews[link.href];
         return (
           <li key={link.href} className="min-w-0">
             <Link
               href={link.href}
-              className="group flex h-full flex-col overflow-hidden rounded-md border border-gray-200 bg-white transition-colors hover:border-un-blue focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-un-blue"
+              className="group flex h-full flex-row overflow-hidden border border-gray-200 bg-white transition-colors hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-un-blue"
             >
               {preview && (
                 <div
-                  className={`relative aspect-[320/184] overflow-hidden bg-[#f6fafb] p-2 [&>svg]:opacity-60 [&>svg]:saturate-50 [&>svg]:transition-[opacity,filter] [&>svg]:duration-200 group-hover:[&>svg]:opacity-100 group-hover:[&>svg]:saturate-100 group-focus-visible:[&>svg]:opacity-100 group-focus-visible:[&>svg]:saturate-100 ${preview.countries ? "" : "border-b border-gray-100"}`}
+                  className="relative w-1/3 shrink-0 overflow-hidden border-r border-gray-100 bg-[#f6fafb] p-2 [&>svg]:opacity-60 [&>svg]:saturate-50 [&>svg]:transition-[opacity,filter] [&>svg]:duration-200 group-hover:[&>svg]:opacity-100 group-hover:[&>svg]:saturate-100 group-focus-visible:[&>svg]:opacity-100 group-focus-visible:[&>svg]:saturate-100"
                   aria-hidden="true"
                 >
                   {preview.trend ? (
@@ -543,7 +580,7 @@ export async function HomeChartCards({
                   )}
                 </div>
               )}
-              <div className="flex flex-1 flex-col p-3">
+              <div className="flex min-w-0 flex-1 flex-col p-3">
                 <div className="flex items-start justify-between gap-2">
                   <span className="text-lg font-semibold text-gray-900 group-hover:text-un-blue-dark">
                     {link.label}
