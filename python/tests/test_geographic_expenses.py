@@ -110,8 +110,10 @@ class GeographicTests(unittest.TestCase):
         source = select_sdg_expenses(pd.read_csv(ROOT / 'data/ceb/clean/expenses_sdgs.csv'))
         for year, frame in source.groupby('calendar_year'):
             exported = json.loads((ROOT / f'public/data/sdg-expenses-{year}.json').read_text())
-            self.assertAlmostEqual(exported['unallocated']['total'], frame.loc[frame.sdg_goal.str.lower() == 'x00', 'amount'].sum(), places=3)
-            self.assertAlmostEqual(sum(r['total'] for r in exported.values()), frame.amount.sum(), places=3)
+            self.assertAlmostEqual(exported['non_sdg']['total'], frame.loc[frame.sdg_goal.str.lower() == 'x00', 'amount'].sum(), places=3)
+            control = json.loads((ROOT / f'public/data/entity-spending-{year}.json').read_text())
+            self.assertAlmostEqual(sum(r['total'] for r in exported.values()), sum(row['amount'] for row in control), places=3)
+            self.assertNotIn('unallocated', exported)
 
 if __name__ == '__main__':
     unittest.main()

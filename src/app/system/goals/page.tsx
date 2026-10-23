@@ -9,6 +9,7 @@ import {
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
 import SDGsGrid from "@/components/SDGsGrid";
+import { SDGsTrendsChart } from "@/components/SDGsTrendsChart";
 
 export const metadata: Metadata = {
   title: "UN System Goals",
@@ -36,6 +37,7 @@ export default function SystemGoalsPage() {
       />
       <PageBody>
         <SDGsGrid />
+        <SDGsTrendsChart />
       </PageBody>
     </ChartSourceProvider>
   );

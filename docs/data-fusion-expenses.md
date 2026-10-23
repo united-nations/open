@@ -14,6 +14,30 @@ expense series, so its early coverage differs. SDG expenses select EXP actuals,
 exclude BUD/BUG budgets, and end in 2024; a blank year is not a zero allocation.
 File provenance and coverage are published in `public/data/ceb-source.json`.
 
+### SDG reconciliation (23 October 2026)
+
+For each entity-year with CEB SDG actuals available, the Goals export uses the
+CEB-only expense backbone as its control. Reported allocations to SDGs 1–17 are
+unchanged. Two separate non-goal categories preserve the source/derived distinction:
+
+- `non_sdg`: CEB's reported `x00` actual expenditure (official category Non-SDG).
+- `sdg_not_specified`: entity expenditure minus SDGs 1–17 minus reported Non-SDG.
+  This calculated balance includes missing SDG reporting and signed reconciliation
+  differences. It does not establish that expenditure is unrelated to the SDGs.
+
+No combined Unallocated category is exported, and `x00` is never added twice.
+Negative balances are retained. In the current 2024 source, the 19 entities with
+nonzero explicit `x00` amounts leave calculated differences within $8 each.
+UN Tourism instead reports zero across the SDG dataset, including `x00`, against
+$33.36 million of CEB expenditure; that discrepancy remains in Not specified.
+
+The two categories are separate bands below the 17 SDGs in the expenditure view,
+with the same transition timing. Neither appears in the square Goals view, but
+both are included in its total. Entity sidebars also distinguish both categories.
+Exports still cover 2018–2024; no synthetic 2025 SDG dataset is created. The
+independent System Flows export retains its reported SDG dimension and discrepancy
+fields; it does not use this calculated Goals-view remainder.
+
 ### Geographic classification corrections
 
 The current CEB release reports 29 known regions/subregions as `COU` in some

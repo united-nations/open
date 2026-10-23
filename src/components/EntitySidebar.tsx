@@ -41,7 +41,7 @@ import {
 import cebSource from "../../public/data/ceb-source.json";
 import { loadYearData } from "@/lib/data";
 import { EntityFunctions } from "@/components/EntityFunctions";
-import { SDG_COLORS, SDG_SHORT_TITLES } from "@/lib/sdgs";
+import { getSDGNumber, getSDGLabel, getSDGColor } from "@/lib/sdgs";
 import {
   Tooltip,
   TooltipContent,
@@ -285,10 +285,14 @@ export function EntitySidebar({
           const bySDG = Object.entries(sdgData)
             .filter(([, data]) => data.entities[entity.entity])
             .map(([sdg, data]) => ({
-              sdg: sdg === "unallocated" ? 0 : parseInt(sdg),
+              sdg: getSDGNumber(sdg),
               amount: data.entities[entity.entity],
             }))
-            .sort((a, b) => a.sdg - b.sdg);
+            .sort(
+              (a, b) =>
+                (a.sdg > 0 ? a.sdg : 18 - a.sdg) -
+                (b.sdg > 0 ? b.sdg : 18 - b.sdg),
+            );
 
           if (active)
             setBreakdownResult({
@@ -709,6 +713,10 @@ export function EntitySidebar({
                 <FinancialPanelHeading subheading>
                   Expenditure by SDG
                 </FinancialPanelHeading>
+                <p className="mt-1 text-xs text-gray-500">
+                  Non-SDG is reported by CEB. Not specified is a calculated
+                  remainder for missing SDG reporting and signed differences.
+                </p>
                 {loadingSpending ? (
                   <p className="mt-2 text-sm text-gray-500">
                     Loading expenditure data...
@@ -724,27 +732,23 @@ export function EntitySidebar({
                       return (
                         <FinancialPanelRankedRow
                           key={item.sdg}
-                          label={
-                            item.sdg === 0
-                              ? "Unallocated"
-                              : SDG_SHORT_TITLES[item.sdg]
-                          }
+                          label={getSDGLabel(item.sdg)}
                           value={formatBudgetFixed(item.amount)}
                           onClick={
-                            item.sdg === 0
+                            item.sdg <= 0
                               ? undefined
                               : () => navigateToSidebar("sdg", item.sdg)
                           }
                           badge={
                             <FinancialPanelGoalBadge
-                              label={item.sdg === 0 ? "—" : String(item.sdg)}
-                              color={SDG_COLORS[item.sdg] ?? "#777777"}
+                              label={item.sdg <= 0 ? "—" : String(item.sdg)}
+                              color={getSDGColor(item.sdg) ?? "#777777"}
                             />
                           }
                         >
                           <FinancialPanelBar
                             percent={normalizedWidth}
-                            color={SDG_COLORS[item.sdg] ?? "#777777"}
+                            color={getSDGColor(item.sdg) ?? "#777777"}
                           />
                         </FinancialPanelRankedRow>
                       );

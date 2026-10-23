@@ -218,8 +218,59 @@
       "WTO": 289073673.8
     }
   },
-  "unallocated": {
+  "non_sdg": {
     "total": 0,
-    "entities": {}
+    "entities": {},
+    "basis": "Reported CEB x00 actual expenditure (Non-SDG)."
+  },
+  "sdg_not_specified": {
+    "total": 30643186954.446907,
+    "entities": {
+      "CTBTO": 0.0,
+      "FAO": 1550512909.6361659,
+      "IAEA": 671034355.8,
+      "IARC": 0.0,
+      "ICAO": 168394389.04850945,
+      "ICC": -1.2642000019550323,
+      "IFAD": 0.0,
+      "ILO": 644063591.521254,
+      "IMO": 68551673.3873,
+      "IOM": 2178037649.0214305,
+      "ITC": 131295000.0,
+      "ITLOS": 11919957.06,
+      "ITU": 246469593.47799236,
+      "OPCW": 0.0,
+      "PAHO": 1182006000.0,
+      "Peacekeeping Operations": -0.029999732971191406,
+      "UN Secretariat": 6478738801.84,
+      "UN Tourism": 23811839.053427905,
+      "UN Women": -34.87900000810623,
+      "UN-Habitat": 149389094.86,
+      "UNAIDS": 191535514.0,
+      "UNCDF": -0.01000000536441803,
+      "UNDP": 806368726.4899998,
+      "UNEP": 491138909.76,
+      "UNESCO": 319006798.0,
+      "UNFCCC": 0.0,
+      "UNFPA": -0.08390140533447266,
+      "UNHCR": 4432455082.893,
+      "UNICEF": 550505385.1900005,
+      "UNIDO": -0.05378901958465576,
+      "UNITAID": 0.0,
+      "UNITAR": 7557987.0299999975,
+      "UNODC": 333101185.38,
+      "UNOPS": -0.10058975219726562,
+      "UNRWA": 1127619220.4,
+      "UNSSC": 11610875.0,
+      "UNU": 70736556.0,
+      "UNV": 28952238.139999997,
+      "UPU": 95597653.449233,
+      "WFP": 8199933387.918462,
+      "WHO": -13.0,
+      "WIPO": 377934362.23,
+      "WMO": 94908267.27161081,
+      "WTO": 0.009999990463256836
+    },
+    "basis": "CEB entity expenses minus reported actual expenditure for SDGs 1-17 and reported Non-SDG (x00); includes missing SDG reporting and signed reconciliation differences."
   }
 }

@@ -74,6 +74,24 @@ try {
   page.on("request", (request) => requests.push(request.url()));
   await page.goto(portalUrl + "/system/goals/", { waitUntil: "networkidle" });
   await page.getByRole("button", { name: /^SDG 1:/ }).waitFor();
+  const sdgTrends = page.getByRole("region", {
+    name: "Expenditure by SDG classification over time",
+  });
+  await sdgTrends.getByRole("table").waitFor({ state: "attached" });
+  assert.equal(await sdgTrends.locator("tbody tr").count(), 7);
+  assert.deepEqual(
+    await sdgTrends
+      .locator("tbody tr")
+      .last()
+      .locator("th, td")
+      .allTextContents(),
+    ["2024", "$41.3B", "$10.2B", "$14.5B", "$66B"],
+  );
+  await sdgTrends
+    .locator(".recharts-area")
+    .nth(2)
+    .waitFor({ state: "attached" });
+  assert.equal(await sdgTrends.getByRole("button").count(), 3);
   assert.equal(
     await page.getByRole("group", { name: "Goals view", exact: true }).count(),
     1,
@@ -110,7 +128,11 @@ try {
       "Goal tiles must stay square",
     );
     assert.equal(
-      await page.locator('[aria-label="Unallocated"]').isVisible(),
+      await page.locator('[aria-label="Non-SDG"]').isVisible(),
+      false,
+    );
+    assert.equal(
+      await page.locator('[aria-label="Not specified"]').isVisible(),
       false,
     );
     const goalsTotal = await page
@@ -120,30 +142,28 @@ try {
       .innerText();
     await expenditureToggle.locator("..").click();
     await page.waitForTimeout(100);
-    const unallocated = page.locator('[aria-label="Unallocated"]');
+    const unallocated = page.locator('[aria-label="Non-SDG"]');
     await unallocated.waitFor();
-    const sharedEdges = await unallocated
+    await page.locator('[aria-label="Not specified"]').waitFor();
+    assert.equal(await page.locator('[aria-label="Unallocated"]').count(), 0);
+    const snappedEdges = await unallocated
       .locator("[data-entity-label]")
-      .evaluateAll((labels) => {
-        const edge = (name) =>
-          labels
-            .find((label) => label.textContent.trim() === name)
-            .parentElement.getBoundingClientRect();
-        return {
-          iaea: edge("IAEA").bottom,
-          paho: edge("PAHO").bottom,
-          unesco: edge("UNESCO").top,
-        };
-      });
-    assert.equal(
-      sharedEdges.iaea,
-      sharedEdges.paho,
-      "Stacked tiles must share PAHO's lower edge",
-    );
-    assert.equal(
-      sharedEdges.iaea,
-      sharedEdges.unesco,
-      "Adjacent entity rows must have no seam",
+      .evaluateAll((labels) =>
+        labels.flatMap((label) => {
+          const tile = label.parentElement;
+          const box = tile.getBoundingClientRect();
+          const parent = tile.parentElement.getBoundingClientRect();
+          return [
+            box.left - parent.left,
+            box.right - parent.left,
+            box.top - parent.top,
+            box.bottom - parent.top,
+          ];
+        }),
+      );
+    assert.ok(
+      snappedEdges.every((edge) => Math.abs(edge - Math.round(edge)) <= 0.02),
+      "Entity edges must snap to common pixel coordinates regardless of the data layout",
     );
     assert.equal(
       await page
@@ -160,10 +180,7 @@ try {
         Math.max(...tiles.map((tile) => tile.getBoundingClientRect().bottom)),
       );
     const extra = await unallocated.boundingBox();
-    assert.ok(
-      extra.y >= allocatedBottom,
-      "Unallocated must remain below the SDGs",
-    );
+    assert.ok(extra.y >= allocatedBottom, "Non-SDG must remain below the SDGs");
     assert.ok(
       await page
         .locator("[data-sdg-heading]")
@@ -259,11 +276,11 @@ try {
   await page.goto(portalUrl + "/system/goals/", { waitUntil: "networkidle" });
   await goalsToggle.locator("..").click();
   await page.waitForTimeout(1500);
-  const animatedUnallocated = page.locator('[aria-label="Unallocated"]');
-  const retainedNode = await animatedUnallocated.elementHandle();
+  const animatedNonSdg = page.locator('[aria-label="Non-SDG"]');
+  const retainedNode = await animatedNonSdg.elementHandle();
   await expenditureToggle.locator("..").click();
   await page.waitForTimeout(350);
-  const entering = await animatedUnallocated.evaluate((tile) => ({
+  const entering = await animatedNonSdg.evaluate((tile) => ({
     height: tile.getBoundingClientRect().height,
     target:
       (parseFloat(tile.style.height) *
@@ -273,7 +290,7 @@ try {
   }));
   assert.ok(
     entering.height > 0 && entering.height < entering.target - 1,
-    "Unallocated must grow into view",
+    "Non-SDG must grow into view",
   );
   assert.equal(
     entering.duration,
@@ -284,15 +301,15 @@ try {
   await page.waitForTimeout(1150);
   await goalsToggle.locator("..").click();
   await page.waitForTimeout(350);
-  const exitingHeight = await animatedUnallocated.evaluate(
+  const exitingHeight = await animatedNonSdg.evaluate(
     (tile) => tile.getBoundingClientRect().height,
   );
   assert.ok(
     exitingHeight > 0 && exitingHeight < entering.target - 1,
-    "Unallocated must shrink out of view",
+    "Non-SDG must shrink out of view",
   );
   await page.waitForTimeout(1150);
-  assert.equal(await animatedUnallocated.isVisible(), false);
+  assert.equal(await animatedNonSdg.isVisible(), false);
   assert.equal(await retainedNode.evaluate((tile) => tile.isConnected), true);
   assert.deepEqual(errors, []);
   console.log(

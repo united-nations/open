@@ -24,8 +24,42 @@ export interface SDGExpensesData {
   [sdg: string]: {
     total: number;
     entities: { [entity: string]: number };
+    basis?: string;
   };
 }
+
+// Non-goal groups stay separate: reported classification versus calculated coverage.
+export const SDG_EXTRA_GROUPS: Record<
+  number,
+  { key: string; label: string; color: string; description: string }
+> = {
+  0: {
+    key: "non_sdg",
+    label: "Non-SDG",
+    color: "#6b7280",
+    description:
+      "Expenditure reported by CEB under its Non-SDG code (x00), for activities not aligned to the SDGs.",
+  },
+  [-1]: {
+    key: "sdg_not_specified",
+    label: "Not specified",
+    color: "#9ca3af",
+    description:
+      "Calculated per entity as total CEB expenditure minus reported allocations to SDGs 1–17 and Non-SDG. Includes missing SDG reporting and signed reconciliation differences; SDG relevance is unknown.",
+  },
+};
+export const getSDGKey = (number: number) =>
+  SDG_EXTRA_GROUPS[number]?.key ?? String(number);
+export const getSDGLabel = (number: number) =>
+  SDG_EXTRA_GROUPS[number]?.label ?? SDG_SHORT_TITLES[number];
+export const getSDGColor = (number: number) =>
+  SDG_EXTRA_GROUPS[number]?.color ?? SDG_COLORS[number];
+export const getSDGNumber = (key: string) =>
+  Number(
+    Object.entries(SDG_EXTRA_GROUPS).find(
+      ([, group]) => group.key === key,
+    )?.[0] ?? key,
+  );
 
 // SDG Colors (official UN SDG colors)
 export const SDG_COLORS: Record<number, string> = {

@@ -203,8 +203,13 @@ export function GoalsMethodologyNotes() {
     <p>
       Expenditure by Sustainable Development Goal uses CEB financial statistics.
       Only actual expense records are included; source budget records are
-      excluded. Reporting by goal is incomplete, so its total can differ from
-      organization expenditure. Available years end in 2024.
+      excluded. Non-SDG preserves expenditure reported under CEB&apos;s x00
+      code. Not specified is calculated per entity as CEB expenditure minus
+      reported allocations to SDGs 1–17 and Non-SDG, so the total reconciles to
+      organization expenditure. This separate remainder includes missing SDG
+      reporting and signed reconciliation differences; it does not establish
+      that the expenditure is unrelated to the SDGs. Available years end in
+      2024.
       {SHOW_UNINFO && (
         <>
           {" "}

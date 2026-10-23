@@ -18,6 +18,16 @@ Nine files from [CEB Financial Statistics](https://www.unsceb.org/statistics/fin
 
 Historical donor attribution and geographic allocation can change even when the revenue headline is unchanged. We adopt the current publication across all available years rather than retaining a mixture of source vintages. Country/geographic coverage now includes 2010–2025; revenue exports retain their established 2013 start.
 
+## Subsequent SDG reconciliation (23 October 2026)
+
+The Goals export now calculates per-entity Not specified balances against CEB
+expense controls. Reported SDG allocations and explicit `x00` (Non-SDG) values
+are preserved as separate categories; no combined Unallocated amount is exported. This replaces the original
+integration decision below to show only the reported SDG scope. See
+[SDG reconciliation](../data-fusion-expenses.md#sdg-reconciliation-23-october-2026).
+Totals now reconcile to the CEB-only organization expense series for 2018–2024.
+Missing SDG reporting is not evidence of expenditure unrelated to the SDGs.
+
 ## Missing amounts and unallocated balances
 
 A blank amount means the source does not give a number. It is not treated as zero, and the pipeline does not guess the donor's contribution. If an organization has a known total of 100 and named contributions of 70, the remaining 30 appears in Other/Unattributed. This preserves the known total without claiming to know who provided the balance.
@@ -31,7 +41,7 @@ Balances can be negative where reported detail exceeds its control. These signed
 ## Other consequential changes
 
 - Geographic data now includes E06 totals and E06A/B/C components. Only E06 totals enter geographic exports; summing components together with totals would double-count expenses. The geographic source differs from the expense backbone by about $1.14 in 2025; its published allocations are preserved.
-- SDG data contains both actual expenses (`EXP`) and budget records (`BUD`/`BUG`). Only actual expenses now feed Goals. Reported 2024 actuals total $51.51 billion. This is a meaningful correction to the previous mixed total, and SDG coverage remains incomplete. We do not create a remainder from a comparison of datasets with different scopes.
+- SDG data contains both actual expenses (`EXP`) and budget records (`BUD`/`BUG`). Only actual expenses feed Goals. Reported 2024 actuals total $51.51 billion. At integration, no calculated remainder was added. The subsequent reconciliation described above preserves those actuals and adds a separately identified residual against CEB entity expense controls.
 - `rev_name` describes the financing instrument, not donor identity. Fewer named non-government donors mean less attribution detail; contributor-type amounts remain available. No missing names are reconstructed.
 - Unmatched or multi-country geographic labels retain their money and source label rather than being dropped or assigned to an arbitrary country. They do not imply a known single-country allocation.
 - ITC's 2025 sidebar explicitly reports unavailable data. Entity links can open known organizations absent from the current treemap. SDG and UNINFO sidebars use their independent available years and avoid requests for nonexistent 2025 files.

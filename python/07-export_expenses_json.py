@@ -131,18 +131,60 @@ def export_entity_spending(expenses: pd.DataFrame):
             json.dump(data, f, indent=2)
         print(f"entity-spending-{year}.json: {len(data)} entities")
 
-def export_sdg_expenses(sdg: pd.DataFrame):
+def load_ceb_expense_controls() -> pd.DataFrame:
+    controls = pd.read_csv("data/ceb/clean/expenses_sub_agency.csv")
+    controls = controls.rename(columns={"calendar_year": "year", "agency": "entity"})
+    controls["entity"] = controls["entity"].map(normalize_entity)
+    return controls
+
+
+def build_sdg_expenses(sdg: pd.DataFrame, controls: pd.DataFrame) -> dict:
+    """Preserve reported SDG actuals and reconcile each entity to CEB expenses.
+
+    Non-SDG preserves reported x00. Not specified is the remaining
+    balance after SDGs 1-17 and Non-SDG; neither is added twice.
+    Only years with SDG observations are exported. Negative residuals remain
+    signed discrepancies, not inferred negative allocations to any SDG.
+    """
+    if sdg.amount.isna().any() or controls.amount.isna().any():
+        raise ValueError("Missing SDG expense or CEB control amount")
+    unknown = set(sdg.sdg.astype(str).str.lower()) - {*map(str, range(1, 18)), "x00"}
+    if unknown:
+        raise ValueError(f"Unknown SDG classifications: {sorted(unknown)}")
+    output = {}
     years = sorted(sdg["year"].unique())
     for year in years:
         df = sdg[sdg["year"] == year]
+        totals = controls[controls.year == year].groupby("entity").amount.sum().to_dict()
+        missing_controls = set(df.entity) - set(totals)
+        if not totals or missing_controls:
+            raise ValueError(f"Missing CEB expense controls for {year}: {sorted(missing_controls)}")
         data = {}
-        for sdg_num in [*range(1, 18), "unallocated"]:
-            key = "x00" if sdg_num == "unallocated" else str(sdg_num)
+        for sdg_num in [*range(1, 18), "non_sdg"]:
+            key = "x00" if sdg_num == "non_sdg" else str(sdg_num)
             sdg_df = df[df["sdg"].astype(str).str.lower() == key]
             entities = sdg_df.groupby("entity")["amount"].sum().to_dict()
             data[str(sdg_num)] = {"total": sum(entities.values()), "entities": entities}
+        reported = data["non_sdg"]["entities"]
+        residuals = {
+            entity: amount - sum(data[str(goal)]["entities"].get(entity, 0) for goal in range(1, 18))
+            for entity, amount in sorted(totals.items())
+        }
+        adjustments = {entity: amount - reported.get(entity, 0) for entity, amount in residuals.items()}
+        data["non_sdg"]["basis"] = "Reported CEB x00 actual expenditure (Non-SDG)."
+        data["sdg_not_specified"] = {
+            "total": sum(adjustments.values()),
+            "entities": adjustments,
+            "basis": "CEB entity expenses minus reported actual expenditure for SDGs 1-17 and reported Non-SDG (x00); includes missing SDG reporting and signed reconciliation differences.",
+        }
+        output[int(year)] = data
+    return output
+
+
+def export_sdg_expenses(sdg: pd.DataFrame):
+    for year, data in build_sdg_expenses(sdg, load_ceb_expense_controls()).items():
         with open(OUT / f"sdg-expenses-{year}.json", "w") as f:
-            json.dump(data, f, indent=2)
+            json.dump(data, f, indent=2, allow_nan=False)
         total = sum(d["total"] for d in data.values())
         print(f"sdg-expenses-{year}.json: ${total/1e9:.1f}B")
 

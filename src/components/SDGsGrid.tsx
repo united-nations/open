@@ -40,7 +40,15 @@ import {
 import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
 import { formatBudget } from "@/lib/entities";
 import { useYearRanges, generateYearRange } from "@/lib/useYearRanges";
-import { SDG, SDGExpensesData, SDG_COLORS, SDG_SHORT_TITLES } from "@/lib/sdgs";
+import {
+  SDG,
+  SDGExpensesData,
+  SDG_COLORS,
+  SDG_EXTRA_GROUPS,
+  getSDGKey,
+  getSDGLabel,
+  getSDGColor,
+} from "@/lib/sdgs";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -275,8 +283,7 @@ export default function SDGsGrid({
   const matchesSDG = (sdgNumber: number): boolean => {
     if (!searchTerm) return true;
     if (sdgNumber.toString().includes(searchTerm)) return true;
-    const shortTitle =
-      sdgNumber === 0 ? "Unallocated" : SDG_SHORT_TITLES[sdgNumber];
+    const shortTitle = getSDGLabel(sdgNumber);
     return shortTitle?.toLowerCase().includes(searchTerm) ?? false;
   };
 
@@ -298,13 +305,10 @@ export default function SDGsGrid({
     entities: { [entity: string]: number };
   }[] = [];
   if (expensesData) {
-    for (const i of [...Array.from({ length: 17 }, (_, n) => n + 1), 0]) {
-      const data = expensesData[i === 0 ? "unallocated" : i.toString()];
+    for (const i of [...Array.from({ length: 17 }, (_, n) => n + 1), 0, -1]) {
+      const data = expensesData[getSDGKey(i)];
       if (!data) continue;
-      const sdgMatches =
-        i === 0
-          ? !searchTerm || "unallocated".includes(searchTerm)
-          : matchesSDG(i);
+      const sdgMatches = matchesSDG(i);
       if (sdgMatches) {
         filteredSDGData.push({
           sdgNumber: i,
@@ -328,9 +332,9 @@ export default function SDGsGrid({
     }
   }
 
-  // Both totals include unallocated expenditure; only the money view draws it.
+  // Both totals include Non-SDG and Not specified; only the money view draws them.
   const visibleSDGData = filteredSDGData.filter(
-    (row) => showSpending || row.sdgNumber !== 0,
+    (row) => showSpending || row.sdgNumber > 0,
   );
   const items: TreemapItem[] = filteredSDGData
     .filter((d) => d.total > 0)
@@ -357,30 +361,32 @@ export default function SDGsGrid({
     return () => observer.disconnect();
   }, [visibleSDGData.length]);
 
-  const gridRects = gridLayout(
-    items.filter((item) => item.name !== "0"),
-    containerAspect,
-  );
-  const unallocated = items.find((item) => item.name === "0");
-  const unallocatedHeight = unallocated
-    ? (100 * unallocated.value) /
-      items.reduce((sum, item) => sum + item.value, 0)
+  const allocatedItems = items.filter((item) => Number(item.name) > 0);
+  const remainderItems = items.filter((item) => Number(item.name) <= 0);
+  const gridRects = gridLayout(allocatedItems, containerAspect);
+  const total = items.reduce((sum, item) => sum + item.value, 0);
+  const gapCount =
+    Math.max(0, remainderItems.length - 1) +
+    (allocatedItems.length && remainderItems.length ? 1 : 0);
+  const availableHeight = 100 - gapCount * SDG_GAP;
+  const allocatedHeight = total
+    ? (availableHeight *
+        allocatedItems.reduce((sum, item) => sum + item.value, 0)) /
+      total
     : 0;
-  const allocatedItems = items.filter((item) => item.name !== "0");
-  const unallocatedGap = unallocated && allocatedItems.length ? SDG_GAP : 0;
   const treemapRects = treemapLayout(
     allocatedItems,
     containerAspect,
-    100 - unallocatedHeight - unallocatedGap,
+    allocatedHeight,
   );
-  if (unallocated)
-    treemapRects.push({
-      x: 0,
-      y: 100 - unallocatedHeight,
-      width: 100,
-      height: unallocatedHeight,
-      data: unallocated,
-    });
+  let nextY =
+    allocatedHeight +
+    (allocatedItems.length && remainderItems.length ? SDG_GAP : 0);
+  for (const item of remainderItems) {
+    const height = (availableHeight * item.value) / total;
+    treemapRects.push({ x: 0, y: nextY, width: 100, height, data: item });
+    nextY += height + SDG_GAP;
+  }
   const rects = showSpending ? treemapRects : gridRects;
 
   // Create lookup by SDG number for positions
@@ -388,10 +394,11 @@ export default function SDGsGrid({
   rects.forEach((r) => {
     positionLookup[r.data.name] = r;
   });
-  // Keep Unallocated mounted at the bottom so it can grow/shrink throughout
-  // the same CSS transition as the SDGs, in either direction or mid-toggle.
-  if (unallocated && !showSpending) {
-    positionLookup["0"] = { x: 0, y: 100, width: 100, height: 0 };
+  // Keep both non-goal groups mounted for the full bidirectional transition.
+  if (!showSpending) {
+    for (const item of remainderItems) {
+      positionLookup[item.name] = { x: 0, y: 100, width: 100, height: 0 };
+    }
   }
 
   if (visibleSDGData.length === 0) {
@@ -505,7 +512,9 @@ export default function SDGsGrid({
             signedAmounts={filteredSDGData.flatMap((row) =>
               Object.entries(row.entities).map(([label, amount]) => ({
                 group:
-                  row.sdgNumber === 0 ? "Unallocated" : `SDG ${row.sdgNumber}`,
+                  row.sdgNumber <= 0
+                    ? getSDGLabel(row.sdgNumber)
+                    : `SDG ${row.sdgNumber}`,
                 label,
                 amount,
               })),
@@ -514,10 +523,12 @@ export default function SDGsGrid({
               showSpending ? (
                 <p>
                   Only reported actual expenses are included; budget figures are
-                  excluded. Unallocated expenditure is reported without an SDG
-                  assignment. Differences between the SDG dataset and
-                  organization expenditure totals are not treated as unallocated
-                  expenditure.
+                  excluded. Non-SDG preserves CEB&apos;s reported x00 amounts.
+                  Not specified is the remaining entity expenditure after
+                  reported allocations to SDGs 1–17 and Non-SDG. It includes
+                  missing SDG reporting and signed reconciliation differences,
+                  and does not establish that the expenditure is unrelated to
+                  the SDGs.
                 </p>
               ) : undefined
             }
@@ -535,9 +546,8 @@ export default function SDGsGrid({
           {filteredSDGData.map((sdgData) => {
             const sdgNumber = sdgData.sdgNumber;
             const sdg = sdgs.find((s) => s.number === sdgNumber);
-            const color = sdgNumber === 0 ? "#6b7280" : SDG_COLORS[sdgNumber];
-            const shortTitle =
-              sdgNumber === 0 ? "Unallocated" : SDG_SHORT_TITLES[sdgNumber];
+            const color = getSDGColor(sdgNumber);
+            const shortTitle = getSDGLabel(sdgNumber);
             const pos = positionLookup[sdgNumber.toString()];
             if (!pos) return null;
             const activate = sdg
@@ -568,9 +578,9 @@ export default function SDGsGrid({
                   <div
                     className={`absolute overflow-hidden text-white ${treemapTileLayoutTransitionClassName} ${activate ? treemapTileInteractionClassName : "focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset"}`}
                     role={activate ? "button" : undefined}
-                    tabIndex={sdgNumber === 0 && !showSpending ? -1 : 0}
+                    tabIndex={sdgNumber <= 0 && !showSpending ? -1 : 0}
                     aria-hidden={
-                      sdgNumber === 0 && !showSpending ? true : undefined
+                      sdgNumber <= 0 && !showSpending ? true : undefined
                     }
                     aria-label={
                       sdg ? `SDG ${sdgNumber}: ${shortTitle}` : shortTitle
@@ -582,7 +592,7 @@ export default function SDGsGrid({
                       height: `${pos.height}%`,
                       transitionDuration: `${SDG_TRANSITION_MS}ms`,
                       pointerEvents:
-                        sdgNumber === 0 && !showSpending ? "none" : undefined,
+                        sdgNumber <= 0 && !showSpending ? "none" : undefined,
                     }}
                     onClick={activate}
                     onKeyDown={
@@ -676,7 +686,7 @@ export default function SDGsGrid({
                         style={{ padding: showSpending ? "0.5rem" : "1rem" }}
                       >
                         <span className="mr-2 flex-shrink-0 text-2xl leading-none font-bold sm:text-3xl">
-                          {sdgNumber || ""}
+                          {sdgNumber > 0 ? sdgNumber : ""}
                         </span>
                         <div className="flex flex-col pt-0.5">
                           <span className="text-left text-xs leading-tight font-semibold sm:text-sm">
@@ -708,13 +718,13 @@ export default function SDGsGrid({
                 >
                   <FinancialTooltip
                     title={
-                      sdgNumber === 0
-                        ? "Unallocated expenditure"
+                      sdgNumber <= 0
+                        ? getSDGLabel(sdgNumber)
                         : `SDG ${sdgNumber}: ${shortTitle}`
                     }
                     context={
-                      sdgNumber === 0
-                        ? "Reported without allocation to a Sustainable Development Goal."
+                      sdgNumber <= 0
+                        ? SDG_EXTRA_GROUPS[sdgNumber].description
                         : sdg?.title
                     }
                     total={{
@@ -722,7 +732,7 @@ export default function SDGsGrid({
                       value: formatBudget(sdgData.total),
                     }}
                     actionHint={
-                      sdgNumber === 0 ? undefined : "Click to explore details"
+                      sdgNumber <= 0 ? undefined : "Click to explore details"
                     }
                   />
                 </TooltipContent>
