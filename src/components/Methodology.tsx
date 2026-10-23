@@ -136,6 +136,20 @@ export function LocationsMethodologyNotes() {
         are not distributed among countries.
       </p>
       <p>
+        The budget chart nests countries using{" "}
+        <a
+          href="https://unstats.un.org/unsd/methodology/m49/overview/"
+          className="underline hover:text-un-blue"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          UN M49 geographic groupings
+        </a>
+        , using intermediate regions where available. This display grouping
+        preserves CEB&apos;s reported regions and amounts. Countries without a
+        matching classification remain under Other countries and areas.
+      </p>
+      <p>
         The boundaries and names shown and the designations used on any map
         shown do not imply official endorsement or acceptance by the United
         Nations.

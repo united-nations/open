@@ -17,7 +17,8 @@ import {
 } from "@un-eosg/ui/components/grouped-treemap";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { DotDensityMap } from "@undp/data-viz/DotDensityMap";
+import { FinancialBubbleMap } from "@/components/FinancialBubbleMap";
+import { bubbleRadiusInput } from "@/lib/map-bubbles";
 import { PeacekeepingMissionSidebar } from "@/components/PeacekeepingMissionSidebar";
 import { YearSlider } from "@/components/YearSlider";
 import {
@@ -59,15 +60,14 @@ const KIND_LABEL: Record<PointKind, string> = {
 };
 
 const MAX_MISSION_RADIUS_PX = 28;
-const UNDP_MIN_RADIUS_PX = 0.25;
 const DOLLARS_PER_RADIUS_PIXEL_SQUARED = 1_500_000;
 
 function proportionalAreaRadiusInput(amount: number) {
-  const renderedRadius = Math.sqrt(amount / DOLLARS_PER_RADIUS_PIXEL_SQUARED);
-  const scalePosition =
-    (renderedRadius - UNDP_MIN_RADIUS_PX) /
-    (MAX_MISSION_RADIUS_PX - UNDP_MIN_RADIUS_PX);
-  return Math.sign(scalePosition) * scalePosition ** 2;
+  return bubbleRadiusInput(
+    amount,
+    DOLLARS_PER_RADIUS_PIXEL_SQUARED * MAX_MISSION_RADIUS_PX ** 2,
+    MAX_MISSION_RADIUS_PX,
+  );
 }
 
 function resolveLocation(
@@ -690,63 +690,33 @@ export function PeacekeepingBudgetView() {
           </section>
 
           <section className="order-3" hidden={!showMap}>
-            <div
+            <FinancialBubbleMap
               className="pko-dot-map relative border border-gray-200 bg-white"
               onPointerMoveCapture={(event) => {
                 mapPointer.current = { x: event.clientX, y: event.clientY };
               }}
-            >
-              <DotDensityMap
-                data={points}
-                colorDomain={["pko", "support_office", "support"]}
-                colors={[FIELD_COLOR, "var(--color-un-purple)", SUPPORT_COLOR]}
-                radius={MAX_MISSION_RADIUS_PX}
-                maxRadiusValue={1}
-                mapProjection="equalEarth"
-                scale={1.15}
-                centerPoint={[0, 6]}
-                zoomInteraction="button"
-                mapBorderWidth={0.5}
-                mapBorderColor="#d1d5db"
-                mapNoDataColor="#f3f4f6"
-                height={520}
-                padding="0px"
-                showAntarctica={false}
-                isWorldMap
-                showColorScale={false}
-                showLabels={false}
-                footNote=""
-                resetSelectionOnDoubleClick={false}
-                highlightedDataPoints={selectedCode ? [selectedCode] : []}
-                onSeriesMouseClick={(point: MapPoint | undefined) => {
-                  const code =
-                    point?.data?.code ??
-                    (typeof point?.label === "string"
-                      ? point.label
-                      : undefined);
-                  if (code) openMission(code);
-                }}
-                ariaLabel={`Map of peacekeeping ${metricLabel.toLowerCase()} in ${current?.meta.fiscalYear}`}
-                onSeriesMouseOver={(point: MapPoint | undefined) => {
-                  if (!point) {
-                    closeMapTooltipSoon();
-                    return;
-                  }
-                  keepMapTooltip();
-                  setMapTooltip({ mission: point.data, ...mapPointer.current });
-                }}
-                styles={{
-                  tooltip: {
-                    backgroundColor: "white",
-                    border: "1px solid #e2e8f0",
-                    borderRadius: "6px",
-                    padding: "8px 12px",
-                    boxShadow:
-                      "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)",
-                  },
-                }}
-              />
-            </div>
+              data={points}
+              colorDomain={["pko", "support_office", "support"]}
+              colors={[FIELD_COLOR, "var(--color-un-purple)", SUPPORT_COLOR]}
+              radius={MAX_MISSION_RADIUS_PX}
+              height={520}
+              highlightedDataPoints={selectedCode ? [selectedCode] : []}
+              onSeriesMouseClick={(point: MapPoint | undefined) => {
+                const code =
+                  point?.data?.code ??
+                  (typeof point?.label === "string" ? point.label : undefined);
+                if (code) openMission(code);
+              }}
+              ariaLabel={`Map of peacekeeping ${metricLabel.toLowerCase()} in ${current?.meta.fiscalYear}`}
+              onSeriesMouseOver={(point: MapPoint | undefined) => {
+                if (!point) {
+                  closeMapTooltipSoon();
+                  return;
+                }
+                keepMapTooltip();
+                setMapTooltip({ mission: point.data, ...mapPointer.current });
+              }}
+            />
           </section>
         </div>
       </ChartFrame>

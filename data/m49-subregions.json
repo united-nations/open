@@ -1,0 +1,299 @@
+{
+  "source": "https://unstats.un.org/unsd/methodology/m49/overview/",
+  "retrievedAt": "2026-10-23",
+  "grouping": "Intermediate region where available; otherwise subregion. Display grouping only; CEB reported regions and amounts are preserved.",
+  "subregions": {
+    "Australia and New Zealand": {
+      "region": "Oceania",
+      "countries": ["AUS", "CCK", "CXR", "HMD", "NFK", "NZL"]
+    },
+    "Caribbean": {
+      "region": "Americas",
+      "countries": [
+        "ABW",
+        "AIA",
+        "ATG",
+        "BES",
+        "BHS",
+        "BLM",
+        "BRB",
+        "CUB",
+        "CUW",
+        "CYM",
+        "DMA",
+        "DOM",
+        "GLP",
+        "GRD",
+        "HTI",
+        "JAM",
+        "KNA",
+        "LCA",
+        "MAF",
+        "MSR",
+        "MTQ",
+        "PRI",
+        "SXM",
+        "TCA",
+        "TTO",
+        "VCT",
+        "VGB",
+        "VIR"
+      ]
+    },
+    "Central America": {
+      "region": "Americas",
+      "countries": ["BLZ", "CRI", "GTM", "HND", "MEX", "NIC", "PAN", "SLV"]
+    },
+    "Central Asia": {
+      "region": "Asia",
+      "countries": ["KAZ", "KGZ", "TJK", "TKM", "UZB"]
+    },
+    "Eastern Africa": {
+      "region": "Africa",
+      "countries": [
+        "ATF",
+        "BDI",
+        "COM",
+        "DJI",
+        "ERI",
+        "ETH",
+        "IOT",
+        "KEN",
+        "MDG",
+        "MOZ",
+        "MUS",
+        "MWI",
+        "MYT",
+        "REU",
+        "RWA",
+        "SOM",
+        "SSD",
+        "SYC",
+        "TZA",
+        "UGA",
+        "ZMB",
+        "ZWE"
+      ]
+    },
+    "Eastern Asia": {
+      "region": "Asia",
+      "countries": ["CHN", "HKG", "JPN", "KOR", "MAC", "MNG", "PRK"]
+    },
+    "Eastern Europe": {
+      "region": "Europe",
+      "countries": [
+        "BGR",
+        "BLR",
+        "CZE",
+        "HUN",
+        "MDA",
+        "POL",
+        "ROU",
+        "RUS",
+        "SVK",
+        "UKR"
+      ]
+    },
+    "Melanesia": {
+      "region": "Oceania",
+      "countries": ["FJI", "NCL", "PNG", "SLB", "VUT"]
+    },
+    "Micronesia": {
+      "region": "Oceania",
+      "countries": ["FSM", "GUM", "KIR", "MHL", "MNP", "NRU", "PLW", "UMI"]
+    },
+    "Middle Africa": {
+      "region": "Africa",
+      "countries": [
+        "AGO",
+        "CAF",
+        "CMR",
+        "COD",
+        "COG",
+        "GAB",
+        "GNQ",
+        "STP",
+        "TCD"
+      ]
+    },
+    "Northern Africa": {
+      "region": "Africa",
+      "countries": ["DZA", "EGY", "ESH", "LBY", "MAR", "SDN", "TUN"]
+    },
+    "Northern America": {
+      "region": "Americas",
+      "countries": ["BMU", "CAN", "GRL", "SPM", "USA"]
+    },
+    "Northern Europe": {
+      "region": "Europe",
+      "countries": [
+        "ALA",
+        "DNK",
+        "EST",
+        "FIN",
+        "FRO",
+        "GBR",
+        "GGY",
+        "IMN",
+        "IRL",
+        "ISL",
+        "JEY",
+        "LTU",
+        "LVA",
+        "NOR",
+        "SJM",
+        "SWE"
+      ]
+    },
+    "Polynesia": {
+      "region": "Oceania",
+      "countries": [
+        "ASM",
+        "COK",
+        "NIU",
+        "PCN",
+        "PYF",
+        "TKL",
+        "TON",
+        "TUV",
+        "WLF",
+        "WSM"
+      ]
+    },
+    "South America": {
+      "region": "Americas",
+      "countries": [
+        "ARG",
+        "BOL",
+        "BRA",
+        "BVT",
+        "CHL",
+        "COL",
+        "ECU",
+        "FLK",
+        "GUF",
+        "GUY",
+        "PER",
+        "PRY",
+        "SGS",
+        "SUR",
+        "URY",
+        "VEN"
+      ]
+    },
+    "South-eastern Asia": {
+      "region": "Asia",
+      "countries": [
+        "BRN",
+        "IDN",
+        "KHM",
+        "LAO",
+        "MMR",
+        "MYS",
+        "PHL",
+        "SGP",
+        "THA",
+        "TLS",
+        "VNM"
+      ]
+    },
+    "Southern Africa": {
+      "region": "Africa",
+      "countries": ["BWA", "LSO", "NAM", "SWZ", "ZAF"]
+    },
+    "Southern Asia": {
+      "region": "Asia",
+      "countries": [
+        "AFG",
+        "BGD",
+        "BTN",
+        "IND",
+        "IRN",
+        "LKA",
+        "MDV",
+        "NPL",
+        "PAK"
+      ]
+    },
+    "Southern Europe": {
+      "region": "Europe",
+      "countries": [
+        "ALB",
+        "AND",
+        "BIH",
+        "ESP",
+        "GIB",
+        "GRC",
+        "HRV",
+        "ITA",
+        "MKD",
+        "MLT",
+        "MNE",
+        "PRT",
+        "SMR",
+        "SRB",
+        "SVN",
+        "VAT"
+      ]
+    },
+    "Western Africa": {
+      "region": "Africa",
+      "countries": [
+        "BEN",
+        "BFA",
+        "CIV",
+        "CPV",
+        "GHA",
+        "GIN",
+        "GMB",
+        "GNB",
+        "LBR",
+        "MLI",
+        "MRT",
+        "NER",
+        "NGA",
+        "SEN",
+        "SHN",
+        "SLE",
+        "TGO"
+      ]
+    },
+    "Western Asia": {
+      "region": "Asia",
+      "countries": [
+        "ARE",
+        "ARM",
+        "AZE",
+        "BHR",
+        "CYP",
+        "GEO",
+        "IRQ",
+        "ISR",
+        "JOR",
+        "KWT",
+        "LBN",
+        "OMN",
+        "PSE",
+        "QAT",
+        "SAU",
+        "SYR",
+        "TUR",
+        "YEM"
+      ]
+    },
+    "Western Europe": {
+      "region": "Europe",
+      "countries": [
+        "AUT",
+        "BEL",
+        "CHE",
+        "DEU",
+        "FRA",
+        "LIE",
+        "LUX",
+        "MCO",
+        "NLD"
+      ]
+    }
+  }
+}

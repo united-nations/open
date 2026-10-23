@@ -24,6 +24,22 @@ try {
   );
   assert.match(await page.locator("body").innerText(), /2024\/25/);
   assert.match(await page.locator("body").innerText(), /\$4.9B/);
+  const map = page.locator(".pko-dot-map");
+  await map.locator("svg circle").first().waitFor({ state: "attached" });
+  assert.equal(
+    await map
+      .locator('svg path[style*="fill"]')
+      .first()
+      .evaluate((path) => getComputedStyle(path).fill),
+    "rgb(243, 244, 246)",
+  );
+  assert.equal(
+    await map
+      .locator("svg circle")
+      .first()
+      .evaluate((circle) => getComputedStyle(circle).fillOpacity),
+    "0.28",
+  );
   const primary = await page
     .getByTestId("peacekeeping-primary-controls")
     .boundingBox();

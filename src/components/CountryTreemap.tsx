@@ -8,7 +8,7 @@ import {
   type GroupedTreemapTooltipContext,
 } from "@un-eosg/ui/components/grouped-treemap";
 import { formatBudget } from "@/lib/entities";
-import { geographicStyle } from "@/lib/geographicExpenses";
+import { geographicStyle, geographicSubregion } from "@/lib/geographicExpenses";
 import { getRegionStyle } from "@/lib/regionGroupings";
 
 interface CountryExpense {
@@ -37,6 +37,8 @@ function matchesCountry(country: CountryExpense, query: string): boolean {
     !term ||
     country.name.toLocaleLowerCase().includes(term) ||
     country.region.toLocaleLowerCase().includes(term) ||
+    (geographicSubregion(country)?.toLocaleLowerCase().includes(term) ??
+      false) ||
     country.iso3.toLocaleLowerCase().includes(term)
   );
 }
@@ -46,18 +48,21 @@ const formatAccessibleBudget = sharedFormatBudget;
 function CountryTooltip({
   context,
 }: {
-  context: GroupedTreemapTooltipContext<string, never, CountryExpense, never>;
+  context: GroupedTreemapTooltipContext<string, string, CountryExpense, never>;
 }) {
   const country = context.leaf.data;
   if (!country) return null;
-  return <CountryFinancialTooltip country={country} />;
+  return <CountryFinancialTooltip country={country} colorBy="region" />;
 }
 
 export function CountryFinancialTooltip({
   country,
+  colorBy = "level",
 }: {
+  colorBy?: "level" | "region";
   country: {
     name: string;
+    iso3?: string;
     region?: string;
     total: number;
     level?: import("@/lib/geographicExpenses").GeographicLevel;
@@ -70,14 +75,25 @@ export function CountryFinancialTooltip({
       title={country.name}
       parents={[
         {
-          label: country.level
-            ? geographicStyle(country.level).label
-            : region.label,
-          color: country.level
-            ? geographicStyle(country.level).color
-            : region.color,
+          label:
+            country.level && colorBy === "level"
+              ? geographicStyle(country.level).label
+              : region.label,
+          color:
+            country.level && colorBy === "level"
+              ? geographicStyle(country.level).color
+              : region.color,
         },
       ]}
+      context={
+        colorBy === "region" && country.iso3 && country.region
+          ? geographicSubregion({
+              ...country,
+              iso3: country.iso3,
+              region: country.region,
+            })
+          : undefined
+      }
       notes={country.notes?.join(" ")}
       total={{
         label: "Expenditure",
@@ -116,12 +132,15 @@ export function CountryTreemap({
     })
     .map(([region, countries]) => {
       const style = getRegionStyle(region);
-      return {
-        key: region,
-        label: style.label,
-        color: style.color,
-        data: region,
-        leaves: countries
+      const subregions = new Map<string, CountryExpense[]>();
+      for (const country of countries) {
+        const subgroup = geographicSubregion(country) ?? "";
+        const members = subregions.get(subgroup) ?? [];
+        members.push(country);
+        subregions.set(subgroup, members);
+      }
+      const leaves = (members: CountryExpense[]) =>
+        members
           .sort((a, b) => b.total - a.total || a.name.localeCompare(b.name))
           .map((country) => ({
             key: country.iso3,
@@ -130,15 +149,36 @@ export function CountryTreemap({
             color: style.color,
             data: country,
             onActivate: () => onCountryClick(country),
+          }));
+      return {
+        key: region,
+        label: style.label,
+        color: style.color,
+        data: region,
+        leaves: leaves(subregions.get("") ?? []),
+        subgroups: [...subregions]
+          .filter(([name]) => name !== "")
+          .sort(
+            ([a, membersA], [b, membersB]) =>
+              membersB.reduce((sum, item) => sum + item.total, 0) -
+                membersA.reduce((sum, item) => sum + item.total, 0) ||
+              a.localeCompare(b),
+          )
+          .map(([name, members]) => ({
+            key: name,
+            label: name,
+            data: name,
+            labelVisibility: "tooltip-only" as const,
+            leaves: leaves(members),
           })),
-      } satisfies GroupedTreemapRow<string, never, CountryExpense, never>;
+      } satisfies GroupedTreemapRow<string, string, CountryExpense, never>;
     });
   const visibleTotal = data
     .filter((country) => matchesCountry(country, searchQuery))
     .reduce((sum, country) => sum + country.total, 0);
 
   return (
-    <GroupedTreemap<string, never, CountryExpense, never>
+    <GroupedTreemap<string, string, CountryExpense, never>
       rows={rows.map((row) => ({
         ...row,
         value: data
@@ -168,7 +208,10 @@ export function CountryTreemap({
         },
       ]}
       totalLabel="Total"
-      layout={{ rowOrder: "value-desc", consolidateSmallRows: true }}
+      layout={{
+        rowOrder: "value-desc",
+        consolidateSmallRows: true,
+      }}
       plotClassName="h-[650px]"
       formatValue={formatBudget}
       formatAccessibleValue={formatAccessibleBudget}

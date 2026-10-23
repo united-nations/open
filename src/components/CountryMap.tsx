@@ -8,14 +8,15 @@ import { GeographicSidebar } from "./GeographicSidebar";
 import { HierarchicalSingleSelect } from "./ui/hierarchical-single-select";
 import {
   GEOGRAPHIC_LEVELS,
+  geographicSubregion,
   type GeographicExpense,
   type GeographicLevel,
 } from "@/lib/geographicExpenses";
 import type { Entity } from "@/types";
 import { getSystemGroupingStyle } from "@/lib/systemGroupings";
-import { useMapBubbleZoom } from "@/hooks/useMapBubbleZoom";
 import { useEffect, useState, useMemo } from "react";
-import { DotDensityMap } from "@undp/data-viz/DotDensityMap";
+import { FinancialBubbleMap } from "@/components/FinancialBubbleMap";
+import { bubbleRadiusInput } from "@/lib/map-bubbles";
 import { CountrySidebar } from "@/components/CountrySidebar";
 import {
   CountryTreemap,
@@ -44,6 +45,8 @@ interface GeographicMapPoint {
 }
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const BUBBLE_REFERENCE_AMOUNT = 1_000_000_000;
+const BUBBLE_REFERENCE_RADIUS = 12;
 
 export function CountryMap() {
   const [entityMetadata, setEntityMetadata] = useState<Entity[]>([]);
@@ -195,39 +198,57 @@ export function CountryMap() {
   )
     ? entityFilter
     : "all";
-  const scopedData = countryData
-    .map((row) => {
-      const entities = Object.fromEntries(
-        Object.entries(row.entities).filter(
-          ([entity]) =>
-            appliedEntityFilter === "all" ||
-            entity === appliedEntityFilter ||
-            entityGroups
-              .find((group) => group.id === appliedEntityFilter)
-              ?.children.includes(entity),
-        ),
-      );
-      return {
-        ...row,
-        entities,
-        total: Object.values(entities).reduce((sum, amount) => sum + amount, 0),
-      };
-    })
-    .filter((row) => levels.includes(row.level));
+  const entityScopedData = countryData.map((row) => {
+    const entities = Object.fromEntries(
+      Object.entries(row.entities).filter(
+        ([entity]) =>
+          appliedEntityFilter === "all" ||
+          entity === appliedEntityFilter ||
+          entityGroups
+            .find((group) => group.id === appliedEntityFilter)
+            ?.children.includes(entity),
+      ),
+    );
+    return {
+      ...row,
+      entities,
+      total: Object.values(entities).reduce((sum, amount) => sum + amount, 0),
+    };
+  });
+  const scopedData = entityScopedData.filter((row) =>
+    levels.includes(row.level),
+  );
   const filteredData = searchQuery.trim()
     ? scopedData.filter((country) => {
         const term = searchQuery.toLowerCase();
         return (
           country.name.toLowerCase().includes(term) ||
           country.region.toLowerCase().includes(term) ||
+          (!showMap &&
+            geographicSubregion(country)?.toLowerCase().includes(term)) ||
           country.iso3.toLowerCase().includes(term)
         );
       })
     : scopedData;
 
-  // Calculate radius scale based on spending (linear - area proportional to value)
-  const maxSpending = Math.max(1, ...filteredData.map((d) => d.total));
-  const maxRadius = 30;
+  // Scale up a selected entity's geographic distribution using its share of
+  // all positive expenditure. Search and level toggles never change this base.
+  // Signed amounts remain unchanged in the data and financial summaries.
+  const allPositiveTotal = countryData.reduce(
+    (sum, row) => sum + Math.max(0, row.total),
+    0,
+  );
+  const entityPositiveTotal = entityScopedData.reduce(
+    (sum, row) => sum + Math.max(0, row.total),
+    0,
+  );
+  const bubbleReferenceAmount =
+    appliedEntityFilter === "all" ||
+    allPositiveTotal <= 0 ||
+    entityPositiveTotal <= 0
+      ? BUBBLE_REFERENCE_AMOUNT
+      : BUBBLE_REFERENCE_AMOUNT *
+        Math.min(1, entityPositiveTotal / allPositiveTotal);
 
   // Keep marker keys unique even when source classifications repeat a name.
   const mapData: GeographicMapPoint[] = filteredData
@@ -237,12 +258,14 @@ export function CountryMap() {
       color: country.level,
       lat: country.lat,
       long: country.long,
-      radius: (country.total / maxSpending) * maxRadius,
+      radius: bubbleRadiusInput(
+        country.total,
+        bubbleReferenceAmount,
+        BUBBLE_REFERENCE_RADIUS,
+      ),
       label: country.iso3,
       data: country,
     }));
-
-  const mapBubbleContainer = useMapBubbleZoom();
 
   if (loading) {
     return (
@@ -269,7 +292,7 @@ export function CountryMap() {
     );
   }
 
-  const handleClick = (d: GeographicMapPoint) => {
+  const handleClick = (d: GeographicMapPoint | undefined) => {
     if (d && d.data) {
       if (d.data.level !== "country" || !/^[A-Z]{3}$/.test(d.data.iso3)) {
         setSelectedGeography(d.data.iso3);
@@ -367,6 +390,12 @@ export function CountryMap() {
                   or territorial boundaries. The global marker is placed in the
                   south Pacific for readability.
                 </p>
+                <p>
+                  Circle areas are proportional to expenditure. Selecting an
+                  entity adjusts the size scale to its share of total
+                  expenditure; reporting-level filters and location searches
+                  preserve that scale.
+                </p>
                 <details>
                   <summary className="cursor-pointer">
                     Placement notes and source classification issues
@@ -392,7 +421,7 @@ export function CountryMap() {
           />
         }
       >
-        <div className="mb-4 flex flex-wrap items-center gap-2">
+        <div className="mb-4 flex flex-wrap items-center gap-3">
           <HierarchicalSingleSelect
             groups={[
               { id: "all", label: "All entities", children: [] },
@@ -408,31 +437,67 @@ export function CountryMap() {
           />
           <div
             role="group"
-            aria-label="Geographic levels"
-            className="flex flex-wrap gap-2"
+            aria-label="Reporting level"
+            className={
+              showMap
+                ? ""
+                : "flex min-w-0 flex-wrap items-center gap-2 border-l border-gray-200 pl-3"
+            }
           >
-            {GEOGRAPHIC_LEVELS.map((level) => (
-              <button
-                key={level.key}
-                type="button"
-                aria-pressed={levels.includes(level.key)}
-                onClick={() =>
-                  setLevels((current) =>
-                    current.includes(level.key)
-                      ? current.filter((key) => key !== level.key)
-                      : [...current, level.key],
-                  )
-                }
-                className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-1 text-xs text-black ${levels.includes(level.key) ? "border-gray-300 bg-gray-100" : "border-gray-200 bg-white opacity-50"}`}
-              >
-                <span
-                  className="size-2.5 rounded-full"
-                  style={{ backgroundColor: level.color }}
-                />
-                {level.label}
-              </button>
-            ))}
+            {!showMap && (
+              <span className="text-xs whitespace-nowrap text-gray-600">
+                Reporting level
+              </span>
+            )}
+            <div className="flex flex-wrap items-center gap-2">
+              {GEOGRAPHIC_LEVELS.map((level) => (
+                <button
+                  key={level.key}
+                  type="button"
+                  aria-pressed={levels.includes(level.key)}
+                  onClick={() =>
+                    setLevels((current) =>
+                      current.includes(level.key)
+                        ? current.filter((key) => key !== level.key)
+                        : [...current, level.key],
+                    )
+                  }
+                  className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-1 text-xs text-black ${levels.includes(level.key) ? "border-gray-300 bg-gray-100" : "border-gray-200 bg-white opacity-50"}`}
+                >
+                  {showMap && (
+                    <span
+                      className="size-2.5 rounded-full"
+                      style={{ backgroundColor: level.color }}
+                    />
+                  )}
+                  {level.label}
+                </button>
+              ))}
+            </div>
           </div>
+          {showMap && (
+            <span
+              aria-label="Circle size reference"
+              className="ml-auto inline-flex items-center gap-1.5 text-xs text-gray-600"
+            >
+              <svg
+                width="28"
+                height="28"
+                viewBox="0 0 28 28"
+                aria-hidden="true"
+              >
+                <circle
+                  cx="14"
+                  cy="14"
+                  r={BUBBLE_REFERENCE_RADIUS}
+                  fill="#6b7280"
+                  fillOpacity="0.28"
+                  stroke="#6b7280"
+                />
+              </svg>
+              {formatBudget(bubbleReferenceAmount)}
+            </span>
+          )}
         </div>
         {/* Map or Treemap View */}
         {showMap && mapData.length === 0 ? (
@@ -442,44 +507,18 @@ export function CountryMap() {
             </p>
           </div>
         ) : showMap ? (
-          <div
-            ref={mapBubbleContainer}
-            className="h-[650px] w-full [&_svg_circle]:stroke-[1.5px] [&_svg_circle]:[fill-opacity:0.4]"
-          >
-            <DotDensityMap
-              data={mapData}
-              mapProjection="equalEarth"
-              scale={1.15}
-              centerPoint={[0, 6]}
-              colors={GEOGRAPHIC_LEVELS.map((item) => item.color)}
-              colorDomain={GEOGRAPHIC_LEVELS.map((item) => item.key)}
-              radius={30}
-              zoomInteraction="button"
-              mapBorderWidth={0.5}
-              mapBorderColor="#e5e7eb"
-              height={650}
-              padding={"0px"}
-              showAntarctica={false}
-              isWorldMap={true}
-              footNote=""
-              showColorScale={false}
-              tooltip={(d: GeographicMapPoint) => (
-                <CountryFinancialTooltip country={d.data} />
-              )}
-              onSeriesMouseClick={handleClick}
-              styles={{
-                tooltip: {
-                  backgroundColor: "white",
-                  border: "1px solid #e2e8f0",
-                  borderRadius: "6px",
-                  padding: "8px 12px",
-                  boxShadow:
-                    "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)",
-                  maxWidth: "200px",
-                },
-              }}
-            />
-          </div>
+          <FinancialBubbleMap
+            testId="locations-map"
+            ariaLabel={`Map of UN System geographic expenditure in ${selectedYear}`}
+            data={mapData}
+            colors={GEOGRAPHIC_LEVELS.map((item) => item.color)}
+            colorDomain={GEOGRAPHIC_LEVELS.map((item) => item.key)}
+            radius={BUBBLE_REFERENCE_RADIUS}
+            tooltip={(d: GeographicMapPoint) => (
+              <CountryFinancialTooltip country={d.data} />
+            )}
+            onSeriesMouseClick={handleClick}
+          />
         ) : (
           <>
             <CountryTreemap

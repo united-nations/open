@@ -247,9 +247,9 @@ html {
   transform: translateX(-60px) rotate(-360deg) scale(0.3);
 }
 
-/* DotDensityMap hard-codes circle fillOpacity. Override so overlapping
-   PKO mission circles remain readable: light fill, solid outline. */
-.pko-dot-map svg circle {
+/* DotDensityMap hard-codes circle fillOpacity. Keep overlapping geographic
+   and PKO mission circles readable: light fill, solid outline. */
+.financial-bubble-map svg circle {
   fill-opacity: 0.28 !important;
   stroke-opacity: 1;
   stroke-width: 1.5px;
