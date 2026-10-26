@@ -16,14 +16,15 @@ spec.loader.exec_module(module)
 class FunctionExpenseTests(unittest.TestCase):
     def test_classification_boundary_and_signed_adjustments(self):
         data = pd.DataFrame([
-            {'calendar_year': 2017, 'agency': 'UN', 'transaction_type': 'Old category', 'amount': 999},
+            {'calendar_year': 2017, 'agency': 'UN', 'transaction_type': 'Other (combined Normative and Technical Cooperation)', 'amount': 999},
             {'calendar_year': 2018, 'agency': 'UN', 'transaction_type': 'Development Assistance', 'amount': 100},
             {'calendar_year': 2018, 'agency': 'UN', 'transaction_type': 'Development Assistance', 'amount': -10},
             {'calendar_year': 2018, 'agency': 'UN', 'transaction_type': 'Peace Operations', 'amount': 20},
         ])
         output = module.build_export(data)
-        self.assertEqual(output['meta']['years'], [2018])
-        row = output['data'][0]
+        self.assertEqual(output['meta']['years'], [2017, 2018])
+        self.assertEqual(output['data'][0]['functions'], {'legacy-other': 999})
+        row = output['data'][1]
         self.assertEqual(row['total'], 110)
         self.assertEqual(row['functions'], {'development': 90, 'peace': 20})
         self.assertEqual(next(iter(row['entities'].values())), {'development': 90, 'peace': 20})

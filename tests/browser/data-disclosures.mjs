@@ -75,8 +75,9 @@ import fs from "fs";
   results.push({
     case: "funding-2011",
     pass:
-      body.includes("No funding data available for 2011") &&
-      body.includes("Unavailable"),
+      !body.includes("No funding data available for 2011") &&
+      body.includes("$39.6B") &&
+      body.includes("UNDP"),
     text: body,
   });
   fs.writeFileSync(

@@ -4,6 +4,13 @@
     "sourceUrl": "https://unsceb.org/statistics/expenses-by-function/",
     "downloadUrl": "https://unsceb.org/assets/data/FS/expenses_sub_agency.csv",
     "years": [
+      2011,
+      2012,
+      2013,
+      2014,
+      2015,
+      2016,
+      2017,
       2018,
       2019,
       2020,
@@ -16,6 +23,965 @@
     "classificationStartYear": 2018
   },
   "data": [
+    {
+      "year": 2011,
+      "total": 41544201681.0,
+      "functions": {
+        "development": 18266734816.0,
+        "global": 3213157021.0,
+        "humanitarian": 8869422045.0,
+        "legacy-other": 3526385997.0,
+        "peace": 7668501802.0
+      },
+      "entities": {
+        "FAO": {
+          "development": 702255180.0,
+          "global": 340867598.0,
+          "humanitarian": 457219568.0,
+          "peace": 0.0
+        },
+        "IAEA": {
+          "global": 522306338.0
+        },
+        "ICAO": {
+          "global": 212854153.0
+        },
+        "IFAD": {
+          "development": 935562000.0
+        },
+        "ILO": {
+          "development": 385429207.0,
+          "global": 249187824.0
+        },
+        "IMO": {
+          "global": 70976929.0
+        },
+        "IOM": {
+          "development": 647620147.0,
+          "global": 153145540.0,
+          "humanitarian": 508944202.0
+        },
+        "ITC": {
+          "development": 86996000.0
+        },
+        "ITU": {
+          "global": 207808258.0
+        },
+        "PAHO": {
+          "development": 836321196.0
+        },
+        "Peacekeeping Operations": {
+          "peace": 7573730000.0
+        },
+        "UN Secretariat": {
+          "development": 434364000.0,
+          "humanitarian": 301324201.0,
+          "legacy-other": 3526385997.0,
+          "peace": 94771802.0
+        },
+        "UN Tourism": {
+          "global": 23254811.0
+        },
+        "UN Women": {
+          "development": 198315000.0
+        },
+        "UN-Habitat": {
+          "development": 191211844.0,
+          "global": 28635188.0,
+          "humanitarian": 6493232.0
+        },
+        "UNAIDS": {
+          "development": 320801000.0
+        },
+        "UNDP": {
+          "development": 5516013890.0
+        },
+        "UNEP": {
+          "development": 89096133.0,
+          "global": 522276836.0
+        },
+        "UNESCO": {
+          "development": 750273745.0,
+          "global": 187568436.0
+        },
+        "UNFPA": {
+          "development": 824500000.0
+        },
+        "UNHCR": {
+          "humanitarian": 2181099628.0
+        },
+        "UNICEF": {
+          "development": 2794719000.0,
+          "humanitarian": 999018000.0
+        },
+        "UNIDO": {
+          "development": 245597643.0
+        },
+        "UNITAR": {
+          "global": 22351310.0
+        },
+        "UNODC": {
+          "development": 239197187.0
+        },
+        "UNOPS": {
+          "development": 76042471.0
+        },
+        "UNRWA": {
+          "humanitarian": 617275000.0
+        },
+        "UNU": {
+          "global": 55155000.0
+        },
+        "UPU": {
+          "global": 56837037.0
+        },
+        "WFP": {
+          "development": 382974416.0,
+          "humanitarian": 3798048214.0
+        },
+        "WHO": {
+          "development": 2514503652.0
+        },
+        "WIPO": {
+          "development": 69677179.0,
+          "global": 271274861.0
+        },
+        "WMO": {
+          "global": 83419459.0
+        },
+        "WTO": {
+          "development": 25263926.0,
+          "global": 205237443.0
+        }
+      }
+    },
+    {
+      "year": 2012,
+      "total": 40527567043.0,
+      "functions": {
+        "development": 15176893568.0,
+        "global": 4772014381.0,
+        "humanitarian": 9917080584.0,
+        "legacy-other": 2748510346.0,
+        "peace": 7913068164.0
+      },
+      "entities": {
+        "FAO": {
+          "development": 565074494.0,
+          "global": 339645848.0,
+          "humanitarian": 438677230.0
+        },
+        "IAEA": {
+          "global": 591755992.0
+        },
+        "ICAO": {
+          "global": 220499361.0
+        },
+        "IFAD": {
+          "development": 186158000.0
+        },
+        "ILO": {
+          "development": 388977373.0,
+          "global": 240277921.0
+        },
+        "IMO": {
+          "global": 80008589.0
+        },
+        "IOM": {
+          "development": 569235940.0,
+          "global": 161329313.0,
+          "humanitarian": 500078610.0
+        },
+        "ITC": {
+          "development": 76227000.0
+        },
+        "ITU": {
+          "global": 215242739.0
+        },
+        "PAHO": {
+          "development": 908104309.0
+        },
+        "Peacekeeping Operations": {
+          "peace": 7544235000.0
+        },
+        "UN Secretariat": {
+          "development": 450649163.0,
+          "humanitarian": 921913207.0,
+          "legacy-other": 2748510346.0,
+          "peace": 83648164.0
+        },
+        "UN Tourism": {
+          "global": 23898875.0
+        },
+        "UN Women": {
+          "development": 235880070.0
+        },
+        "UN-Habitat": {
+          "development": 147607680.0,
+          "global": 21662926.0,
+          "humanitarian": 11170394.0
+        },
+        "UNAIDS": {
+          "development": 279913491.0
+        },
+        "UNDP": {
+          "development": 5244435060.0
+        },
+        "UNEP": {
+          "development": 91777722.0,
+          "global": 387264305.0
+        },
+        "UNESCO": {
+          "development": 644933191.0,
+          "global": 161233298.0
+        },
+        "UNFPA": {
+          "development": 810710695.0
+        },
+        "UNHCR": {
+          "humanitarian": 2305929272.0
+        },
+        "UNICEF": {
+          "development": 2790076616.0,
+          "humanitarian": 823148884.0
+        },
+        "UNIDO": {
+          "development": 315344389.0
+        },
+        "UNITAR": {
+          "global": 21032470.0
+        },
+        "UNODC": {
+          "development": 265618288.0
+        },
+        "UNOPS": {
+          "development": 335384000.0,
+          "humanitarian": 56046000.0,
+          "peace": 285185000.0
+        },
+        "UNRWA": {
+          "humanitarian": 664041435.0
+        },
+        "UNU": {
+          "global": 62403000.0
+        },
+        "UPU": {
+          "global": 74012429.0
+        },
+        "WFP": {
+          "development": 424628919.0,
+          "humanitarian": 4025383858.0
+        },
+        "WHO": {
+          "development": 353821108.0,
+          "global": 1555450604.0,
+          "humanitarian": 170691694.0
+        },
+        "WIPO": {
+          "development": 70992003.0,
+          "global": 281680426.0
+        },
+        "WMO": {
+          "global": 92718581.0
+        },
+        "WTO": {
+          "development": 21344057.0,
+          "global": 241897704.0
+        }
+      }
+    },
+    {
+      "year": 2013,
+      "total": 42494351110.25,
+      "functions": {
+        "development": 16422023512.65,
+        "global": 5160222201.6,
+        "humanitarian": 10761229256.0,
+        "legacy-other": 2801482084.0,
+        "peace": 7349394056.0
+      },
+      "entities": {
+        "FAO": {
+          "development": 647733798.0,
+          "global": 341295331.0,
+          "humanitarian": 390965032.0
+        },
+        "IAEA": {
+          "global": 630242601.0
+        },
+        "ICAO": {
+          "global": 231416933.0
+        },
+        "IFAD": {
+          "development": 186908000.0
+        },
+        "ILO": {
+          "development": 470672112.0,
+          "global": 253148175.0
+        },
+        "IMO": {
+          "global": 78688695.0
+        },
+        "IOM": {
+          "development": 604185973.0,
+          "global": 180313628.0,
+          "humanitarian": 448154667.0
+        },
+        "ITC": {
+          "development": 79353000.0
+        },
+        "ITU": {
+          "global": 218892602.0
+        },
+        "PAHO": {
+          "development": 1070222402.0
+        },
+        "Peacekeeping Operations": {
+          "peace": 7273147000.0
+        },
+        "UN Secretariat": {
+          "development": 445731557.0,
+          "humanitarian": 986928923.0,
+          "legacy-other": 2801482084.0,
+          "peace": 76247056.0
+        },
+        "UN Tourism": {
+          "global": 25115563.0
+        },
+        "UN Women": {
+          "development": 264104992.0
+        },
+        "UN-Habitat": {
+          "development": 128355877.0,
+          "global": 24214807.0,
+          "humanitarian": 15630316.0
+        },
+        "UNAIDS": {
+          "development": 295195415.0
+        },
+        "UNDP": {
+          "development": 5244451435.0
+        },
+        "UNEP": {
+          "development": 85848479.0,
+          "global": 516116574.0
+        },
+        "UNESCO": {
+          "development": 651097261.0,
+          "global": 162774315.0
+        },
+        "UNFPA": {
+          "development": 913340299.0
+        },
+        "UNHCR": {
+          "humanitarian": 2704187100.0
+        },
+        "UNICEF": {
+          "development": 3077650674.0,
+          "humanitarian": 1004450790.0
+        },
+        "UNIDO": {
+          "development": 330774686.0
+        },
+        "UNITAR": {
+          "global": 21129527.0
+        },
+        "UNODC": {
+          "development": 257637712.0
+        },
+        "UNOPS": {
+          "development": 703639000.0
+        },
+        "UNRWA": {
+          "humanitarian": 710501246.0
+        },
+        "UNU": {
+          "global": 66854000.0
+        },
+        "UPU": {
+          "global": 76015020.0
+        },
+        "WFP": {
+          "development": 453336448.0,
+          "humanitarian": 4314356670.0
+        },
+        "WHO": {
+          "development": 402040058.0,
+          "global": 1672903759.0,
+          "humanitarian": 186054512.0
+        },
+        "WIPO": {
+          "development": 80367836.0,
+          "global": 298978588.0
+        },
+        "WMO": {
+          "global": 86004836.0
+        },
+        "WTO": {
+          "development": 29376498.65,
+          "global": 276117247.6
+        }
+      }
+    },
+    {
+      "year": 2014,
+      "total": 46367431294.0,
+      "functions": {
+        "development": 15704040110.0,
+        "global": 5012486796.0,
+        "humanitarian": 14175716631.0,
+        "legacy-other": 3281148840.0,
+        "peace": 8194038917.0
+      },
+      "entities": {
+        "FAO": {
+          "development": 424040648.0,
+          "global": 417297697.0,
+          "humanitarian": 404174786.0
+        },
+        "IAEA": {
+          "global": 580516029.0
+        },
+        "ICAO": {
+          "global": 222196722.0
+        },
+        "IFAD": {
+          "development": 183085000.0
+        },
+        "ILO": {
+          "development": 365367148.0,
+          "global": 245959254.0
+        },
+        "IMO": {
+          "global": 69895725.0
+        },
+        "IOM": {
+          "development": 703238212.0,
+          "global": 184800824.0,
+          "humanitarian": 576867798.0
+        },
+        "ITC": {
+          "development": 88418000.0
+        },
+        "ITU": {
+          "development": 13491423.0,
+          "global": 174599534.0
+        },
+        "PAHO": {
+          "development": 1645688652.0
+        },
+        "Peacekeeping Operations": {
+          "peace": 7862742000.0
+        },
+        "UN Secretariat": {
+          "development": 7449715.0,
+          "humanitarian": 1830394628.0,
+          "legacy-other": 3281148840.0,
+          "peace": 25657917.0
+        },
+        "UN Tourism": {
+          "global": 24764456.0
+        },
+        "UN Women": {
+          "development": 270537896.0
+        },
+        "UN-Habitat": {
+          "development": 133308702.0,
+          "global": 45376086.0,
+          "humanitarian": 17398212.0
+        },
+        "UNAIDS": {
+          "development": 295725197.0
+        },
+        "UNDP": {
+          "development": 5314299948.0
+        },
+        "UNEP": {
+          "development": 88894852.0,
+          "global": 474407008.0
+        },
+        "UNESCO": {
+          "development": 641732524.0,
+          "global": 160433131.0
+        },
+        "UNFPA": {
+          "development": 1002115396.0
+        },
+        "UNHCR": {
+          "humanitarian": 3360740751.0
+        },
+        "UNICEF": {
+          "development": 2821350833.0,
+          "humanitarian": 1719047476.0
+        },
+        "UNIDO": {
+          "development": 232720432.0
+        },
+        "UNITAR": {
+          "global": 23737000.0
+        },
+        "UNODC": {
+          "development": 325421373.0
+        },
+        "UNOPS": {
+          "development": 302209000.0,
+          "humanitarian": 58827000.0,
+          "peace": 305639000.0
+        },
+        "UNRWA": {
+          "humanitarian": 1298494000.0
+        },
+        "UNU": {
+          "global": 75608000.0
+        },
+        "UPU": {
+          "global": 63245715.0
+        },
+        "WFP": {
+          "development": 383659586.0,
+          "humanitarian": 4613118728.0
+        },
+        "WHO": {
+          "development": 350400309.0,
+          "global": 1669537252.0,
+          "humanitarian": 296653252.0
+        },
+        "WIPO": {
+          "development": 89565334.0,
+          "global": 248029404.0
+        },
+        "WMO": {
+          "global": 98226832.0
+        },
+        "WTO": {
+          "development": 21319930.0,
+          "global": 233856127.0
+        }
+      }
+    },
+    {
+      "year": 2015,
+      "total": 48075647540.0,
+      "functions": {
+        "development": 15694378461.0,
+        "global": 5282916445.0,
+        "humanitarian": 14741769620.0,
+        "legacy-other": 3337485890.0,
+        "peace": 9019097124.0
+      },
+      "entities": {
+        "FAO": {
+          "development": 453401243.0,
+          "global": 414580192.0,
+          "humanitarian": 351253953.0
+        },
+        "IAEA": {
+          "global": 570543764.0
+        },
+        "ICAO": {
+          "global": 194803847.0
+        },
+        "IFAD": {
+          "development": 168226000.0
+        },
+        "ILO": {
+          "development": 423460274.0,
+          "global": 235448643.0
+        },
+        "IMO": {
+          "global": 68054803.0
+        },
+        "IOM": {
+          "development": 754564422.0,
+          "global": 173681855.0,
+          "humanitarian": 665875391.0
+        },
+        "ITC": {
+          "development": 102654000.0
+        },
+        "ITU": {
+          "development": 10575729.0,
+          "global": 181257316.0
+        },
+        "PAHO": {
+          "development": 1379321927.0
+        },
+        "Peacekeeping Operations": {
+          "peace": 8759159000.0
+        },
+        "UN Secretariat": {
+          "development": 582924374.0,
+          "humanitarian": 1660844517.0,
+          "legacy-other": 3337485890.0,
+          "peace": 31885124.0
+        },
+        "UN Tourism": {
+          "global": 27013663.0
+        },
+        "UN Women": {
+          "development": 314974000.0
+        },
+        "UN-Habitat": {
+          "development": 80454035.0,
+          "global": 69666063.0,
+          "humanitarian": 16941918.0
+        },
+        "UNAIDS": {
+          "development": 293936807.0
+        },
+        "UNDP": {
+          "development": 5057413898.0
+        },
+        "UNEP": {
+          "global": 559703000.0
+        },
+        "UNESCO": {
+          "development": 609992833.0,
+          "global": 152498208.0
+        },
+        "UNFPA": {
+          "development": 924276000.0,
+          "humanitarian": 53099687.0
+        },
+        "UNHCR": {
+          "humanitarian": 3278871762.0
+        },
+        "UNICEF": {
+          "development": 2782751274.0,
+          "humanitarian": 2294850382.0
+        },
+        "UNIDO": {
+          "development": 244140762.0
+        },
+        "UNITAR": {
+          "global": 23473000.0
+        },
+        "UNODC": {
+          "development": 278919255.0
+        },
+        "UNOPS": {
+          "development": 396665000.0,
+          "humanitarian": 46808000.0,
+          "peace": 228053000.0
+        },
+        "UNRWA": {
+          "humanitarian": 1333774841.0
+        },
+        "UNU": {
+          "global": 74632000.0
+        },
+        "UPU": {
+          "global": 79265758.0
+        },
+        "WFP": {
+          "development": 334399615.0,
+          "humanitarian": 4559072778.0
+        },
+        "WHO": {
+          "development": 405642642.0,
+          "global": 1852641282.0,
+          "humanitarian": 480376391.0
+        },
+        "WIPO": {
+          "development": 74981000.0,
+          "global": 276858000.0
+        },
+        "WMO": {
+          "global": 102471241.0
+        },
+        "WTO": {
+          "development": 20703371.0,
+          "global": 226323810.0
+        }
+      }
+    },
+    {
+      "year": 2016,
+      "total": 48764755112.0,
+      "functions": {
+        "development": 15139547834.0,
+        "global": 5161676754.0,
+        "humanitarian": 16234736524.0,
+        "legacy-other": 3040705000.0,
+        "peace": 9188089000.0
+      },
+      "entities": {
+        "FAO": {
+          "development": 460742988.0,
+          "global": 426273315.0,
+          "humanitarian": 314801837.0
+        },
+        "IAEA": {
+          "global": 549644351.0
+        },
+        "ICAO": {
+          "global": 192346640.0
+        },
+        "IFAD": {
+          "development": 169727000.0
+        },
+        "ILO": {
+          "development": 475664289.0,
+          "global": 199272711.0
+        },
+        "IMO": {
+          "global": 57821457.0
+        },
+        "IOM": {
+          "development": 567317842.0,
+          "global": 233471042.0,
+          "humanitarian": 801518533.0
+        },
+        "ITC": {
+          "development": 91197000.0
+        },
+        "ITU": {
+          "development": 12862507.0,
+          "global": 170742371.0
+        },
+        "PAHO": {
+          "development": 1363470773.0
+        },
+        "Peacekeeping Operations": {
+          "peace": 8876176000.0
+        },
+        "UN Secretariat": {
+          "development": 709197000.0,
+          "humanitarian": 1925690000.0,
+          "legacy-other": 3040705000.0,
+          "peace": 37442000.0
+        },
+        "UN Tourism": {
+          "global": 23171332.0
+        },
+        "UN Women": {
+          "development": 339801000.0
+        },
+        "UN-Habitat": {
+          "development": 122084474.0,
+          "global": 51875314.0,
+          "humanitarian": 12473530.0
+        },
+        "UNAIDS": {
+          "development": 181750055.0
+        },
+        "UNDP": {
+          "development": 4659525828.0
+        },
+        "UNEP": {
+          "global": 561342000.0
+        },
+        "UNESCO": {
+          "development": 530946971.0,
+          "global": 132736743.0
+        },
+        "UNFPA": {
+          "development": 844803603.0,
+          "humanitarian": 77714189.0
+        },
+        "UNHCR": {
+          "humanitarian": 3846924119.0
+        },
+        "UNICEF": {
+          "development": 2899073124.0,
+          "humanitarian": 2528181910.0
+        },
+        "UNIDO": {
+          "development": 235511425.0
+        },
+        "UNITAR": {
+          "global": 23854000.0
+        },
+        "UNODC": {
+          "development": 241906000.0
+        },
+        "UNOPS": {
+          "development": 443239000.0,
+          "humanitarian": 52163000.0,
+          "peace": 274471000.0
+        },
+        "UNRWA": {
+          "humanitarian": 1316762306.0
+        },
+        "UNU": {
+          "global": 89986553.0
+        },
+        "UPU": {
+          "global": 77403536.0
+        },
+        "WFP": {
+          "development": 337209860.0,
+          "humanitarian": 5018199183.0
+        },
+        "WHO": {
+          "development": 361079940.0,
+          "global": 1769674421.0,
+          "humanitarian": 340307917.0
+        },
+        "WIPO": {
+          "development": 73133740.0,
+          "global": 273903334.0
+        },
+        "WMO": {
+          "global": 98226341.0
+        },
+        "WTO": {
+          "development": 19303415.0,
+          "global": 229931293.0
+        }
+      }
+    },
+    {
+      "year": 2017,
+      "total": 51578005359.130005,
+      "functions": {
+        "development": 16407655097.13,
+        "global": 6014246018.0,
+        "humanitarian": 17529683782.0,
+        "legacy-other": 2219351981.0,
+        "peace": 9407068481.0
+      },
+      "entities": {
+        "CTBTO": {
+          "global": 124931880.0
+        },
+        "FAO": {
+          "development": 701453486.0,
+          "global": 385849102.0,
+          "humanitarian": 444450718.0
+        },
+        "IAEA": {
+          "global": 642585424.0
+        },
+        "ICAO": {
+          "global": 215225968.0
+        },
+        "ICC": {
+          "global": 186698415.0
+        },
+        "IFAD": {
+          "development": 188817000.0
+        },
+        "ILO": {
+          "development": 416062784.0,
+          "global": 224731951.0
+        },
+        "IMO": {
+          "global": 71238649.0
+        },
+        "IOM": {
+          "development": 595104080.0,
+          "global": 270090238.0,
+          "humanitarian": 740158591.0
+        },
+        "ITC": {
+          "development": 88210000.0
+        },
+        "ITU": {
+          "development": 40942740.13,
+          "global": 159072597.0
+        },
+        "PAHO": {
+          "development": 1435096541.0
+        },
+        "Peacekeeping Operations": {
+          "peace": 8263932000.0
+        },
+        "UN Secretariat": {
+          "development": 946539551.0,
+          "humanitarian": 1767165761.0,
+          "legacy-other": 2219351981.0,
+          "peace": 857861235.0
+        },
+        "UN Tourism": {
+          "global": 27201861.0
+        },
+        "UN Women": {
+          "development": 338615000.0
+        },
+        "UN-Habitat": {
+          "development": 109348127.0,
+          "global": 62390530.0,
+          "humanitarian": 25744519.0
+        },
+        "UNAIDS": {
+          "development": 173371100.0
+        },
+        "UNCDF": {
+          "development": 64585908.0
+        },
+        "UNDP": {
+          "development": 5094775419.0
+        },
+        "UNEP": {
+          "global": 562234566.0
+        },
+        "UNESCO": {
+          "development": 550535896.0,
+          "global": 137633974.0
+        },
+        "UNFCCC": {
+          "global": 95353834.0
+        },
+        "UNFPA": {
+          "development": 796263180.0,
+          "humanitarian": 130606137.0
+        },
+        "UNHCR": {
+          "humanitarian": 3942839988.0
+        },
+        "UNICEF": {
+          "development": 2953629238.0,
+          "humanitarian": 2890183075.0
+        },
+        "UNIDO": {
+          "development": 299180198.0
+        },
+        "UNITAR": {
+          "global": 28129041.0
+        },
+        "UNODC": {
+          "development": 308703000.0
+        },
+        "UNOPS": {
+          "development": 500800750.0,
+          "humanitarian": 29779400.0,
+          "peace": 285275246.0
+        },
+        "UNRWA": {
+          "humanitarian": 1310443631.0
+        },
+        "UNSSC": {
+          "development": 10027597.0
+        },
+        "UNU": {
+          "global": 107838582.0
+        },
+        "UPU": {
+          "global": 82854834.0
+        },
+        "WFP": {
+          "development": 331952764.0,
+          "humanitarian": 5892058119.0
+        },
+        "WHO": {
+          "development": 361530308.0,
+          "global": 1962960645.0,
+          "humanitarian": 356253843.0
+        },
+        "WIPO": {
+          "development": 80745399.0,
+          "global": 322983640.0
+        },
+        "WMO": {
+          "global": 107891616.0
+        },
+        "WTO": {
+          "development": 21365031.0,
+          "global": 236348671.0
+        }
+      }
+    },
     {
       "year": 2018,
       "total": 52775828711.575,

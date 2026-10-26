@@ -1,0 +1,571 @@
+{
+  "FAO": {
+    "total": 1333269456.0,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 511619509.0,
+      "Other": 47142000.0,
+      "Voluntary earmarked": 774507947.0
+    },
+    "by_donor": []
+  },
+  "IAEA": {
+    "total": 641426481.84,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 428923951.9,
+      "Other": 3972652.94,
+      "Voluntary earmarked": 208529877.0
+    },
+    "by_donor": [
+      {
+        "donor": "European Union",
+        "total": 481399.22,
+        "Voluntary earmarked": 481399.22
+      },
+      {
+        "donor": "UNDP (as donor)",
+        "total": 55810.35,
+        "Voluntary earmarked": 55810.35
+      },
+      {
+        "donor": "United Nations",
+        "total": 19449.6,
+        "Voluntary earmarked": 19449.6
+      }
+    ]
+  },
+  "ICAO": {
+    "total": 212940722.54,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 84495928.03,
+      "Other": 15769547.01,
+      "Voluntary earmarked": 112675247.5
+    },
+    "by_donor": [
+      {
+        "donor": "United Nations",
+        "total": 5582026.79,
+        "Voluntary earmarked": 5582026.79
+      },
+      {
+        "donor": "European Union",
+        "total": 619826.18,
+        "Voluntary earmarked": 619826.18
+      }
+    ]
+  },
+  "IFAD": {
+    "total": 721842000.0,
+    "year": 2012,
+    "by_type": {
+      "Other": 66462000.0,
+      "Voluntary earmarked": 75222000.0,
+      "Voluntary un-earmarked": 580158000.0
+    },
+    "by_donor": []
+  },
+  "ILO": {
+    "total": 721458100.0,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 430810000.0,
+      "Other": 19300000.0,
+      "Voluntary earmarked": 271348100.0
+    },
+    "by_donor": [
+      {
+        "donor": "European Union",
+        "total": 24256502.0,
+        "Voluntary earmarked": 24256502.0
+      },
+      {
+        "donor": "UNDP (as donor)",
+        "total": 21563627.0,
+        "Voluntary earmarked": 21563627.0
+      },
+      {
+        "donor": "Bill & Melinda Gates Foundation",
+        "total": 5375029.0,
+        "Voluntary earmarked": 5375029.0
+      }
+    ]
+  },
+  "IMO": {
+    "total": 78856115.80000001,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 46861421.67,
+      "Other": 19109032.57,
+      "Voluntary earmarked": 12885661.56
+    },
+    "by_donor": []
+  },
+  "IOM": {
+    "total": 1235852108.0,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 41693506.0,
+      "Other": 95606670.0,
+      "Voluntary earmarked": 1089320567.0,
+      "Voluntary un-earmarked": 9231365.0
+    },
+    "by_donor": []
+  },
+  "ITC": {
+    "total": 74826000.0,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 40490000.0,
+      "Other": 1123000.0,
+      "Voluntary earmarked": 19861000.0,
+      "Voluntary un-earmarked": 13352000.0
+    },
+    "by_donor": [
+      {
+        "donor": "United Nations",
+        "total": 20238000.0,
+        "Assessed": 20238000.0
+      }
+    ]
+  },
+  "ITU": {
+    "total": 195673797.85,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 120165770.8,
+      "Other": 64483362.17,
+      "Voluntary earmarked": 11024664.88
+    },
+    "by_donor": []
+  },
+  "PAHO": {
+    "total": 916979556.0,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 106245000.0,
+      "Other": 31879400.0,
+      "Voluntary earmarked": 778855156.0
+    },
+    "by_donor": [
+      {
+        "donor": "European Union",
+        "total": 3843821.0,
+        "Voluntary earmarked": 3843821.0
+      },
+      {
+        "donor": "Bill & Melinda Gates Foundation",
+        "total": 1288500.0,
+        "Voluntary earmarked": 1288500.0
+      },
+      {
+        "donor": "GAVI Alliance",
+        "total": 793614.0,
+        "Voluntary earmarked": 793614.0
+      },
+      {
+        "donor": "UN OCHA",
+        "total": 374700.0,
+        "Voluntary earmarked": 374700.0
+      },
+      {
+        "donor": "UNDP (as donor)",
+        "total": 81377.0,
+        "Voluntary earmarked": 81377.0
+      }
+    ]
+  },
+  "Peacekeeping Operations": {
+    "total": 8023457000.0,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 7923213000.0,
+      "Other": 32351000.0,
+      "Voluntary earmarked": 67893000.0
+    },
+    "by_donor": []
+  },
+  "UN Secretariat": {
+    "total": 3964877618.0,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 2412019632.0,
+      "Other": 165142929.0,
+      "Voluntary earmarked": 1387715057.0
+    },
+    "by_donor": [
+      {
+        "donor": "UNDP (as donor)",
+        "total": 82029532.0,
+        "Voluntary earmarked": 82029532.0
+      },
+      {
+        "donor": "European Union",
+        "total": 77860681.0,
+        "Voluntary earmarked": 77860681.0
+      },
+      {
+        "donor": "Bill & Melinda Gates Foundation",
+        "total": 1877546.0,
+        "Voluntary earmarked": 1877546.0
+      }
+    ]
+  },
+  "UN Tourism": {
+    "total": 23267304.62,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 14630626.35,
+      "Other": 2559290.27,
+      "Voluntary earmarked": 5380726.17,
+      "Voluntary un-earmarked": 696661.83
+    },
+    "by_donor": []
+  },
+  "UN Women": {
+    "total": 220141000.0,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 7235000.0,
+      "Other": 5144000.0,
+      "Voluntary earmarked": 93676000.0,
+      "Voluntary un-earmarked": 114086000.0
+    },
+    "by_donor": []
+  },
+  "UN-Habitat": {
+    "total": 171506000.0,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 12227000.0,
+      "Other": 12649095.0,
+      "Voluntary earmarked": 135680168.0,
+      "Voluntary un-earmarked": 10949737.0
+    },
+    "by_donor": [
+      {
+        "donor": "European Union",
+        "total": 26580946.0,
+        "Voluntary earmarked": 26580946.0
+      }
+    ]
+  },
+  "UNAIDS": {
+    "total": 253544025.0,
+    "year": 2012,
+    "by_type": {
+      "Other": 5670510.0,
+      "Voluntary earmarked": 30454003.0,
+      "Voluntary un-earmarked": 217419512.0
+    },
+    "by_donor": [
+      {
+        "donor": "European Union",
+        "total": 1509177.0,
+        "Voluntary earmarked": 1509177.0
+      },
+      {
+        "donor": "UN OCHA",
+        "total": 634501.0,
+        "Voluntary earmarked": 634501.0
+      },
+      {
+        "donor": "UNDP (as donor)",
+        "total": 143798.0,
+        "Voluntary earmarked": 143798.0
+      },
+      {
+        "donor": "Bill & Melinda Gates Foundation",
+        "total": 120000.0,
+        "Voluntary earmarked": 120000.0
+      },
+      {
+        "donor": "The Global Fund to Fight AIDS, Tuberculosis and Malaria",
+        "total": 30000.0,
+        "Voluntary earmarked": 30000.0
+      }
+    ]
+  },
+  "UNDP": {
+    "total": 5089353236.0,
+    "year": 2012,
+    "by_type": {
+      "Other": 348174484.0,
+      "Voluntary earmarked": 3856822208.0,
+      "Voluntary un-earmarked": 884356544.0
+    },
+    "by_donor": [
+      {
+        "donor": "The Global Fund to Fight AIDS, Tuberculosis and Malaria",
+        "total": 524126225.0,
+        "Voluntary earmarked": 524126225.0
+      },
+      {
+        "donor": "Global Environment Facility (thru UNDP or UNEP)",
+        "total": 348783644.0,
+        "Voluntary earmarked": 348783644.0
+      },
+      {
+        "donor": "European Union",
+        "total": 252667152.0,
+        "Voluntary earmarked": 252667152.0
+      },
+      {
+        "donor": "UN OCHA",
+        "total": 12005906.0,
+        "Voluntary earmarked": 12005906.0
+      },
+      {
+        "donor": "Bill & Melinda Gates Foundation",
+        "total": 10013917.0,
+        "Voluntary earmarked": 10013917.0
+      },
+      {
+        "donor": "United Nations",
+        "total": 8919691.0,
+        "Voluntary earmarked": 8919691.0
+      }
+    ]
+  },
+  "UNEP": {
+    "total": 561360103.0,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 181791079.0,
+      "Other": 8240929.0,
+      "Voluntary earmarked": 371328095.0
+    },
+    "by_donor": []
+  },
+  "UNESCO": {
+    "total": 792200538.0,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 352970673.0,
+      "Other": 48190574.0,
+      "Voluntary earmarked": 391039291.0
+    },
+    "by_donor": [
+      {
+        "donor": "European Union",
+        "total": 10500047.0,
+        "Voluntary earmarked": 10500047.0
+      },
+      {
+        "donor": "Bill & Melinda Gates Foundation",
+        "total": 2288889.0,
+        "Voluntary earmarked": 2288889.0
+      },
+      {
+        "donor": "UNDP (as donor)",
+        "total": 1890134.0,
+        "Voluntary earmarked": 1890134.0
+      }
+    ]
+  },
+  "UNFPA": {
+    "total": 980100000.0,
+    "year": 2012,
+    "by_type": {
+      "Other": 9000000.0,
+      "Voluntary earmarked": 533600000.0,
+      "Voluntary un-earmarked": 437500000.0
+    },
+    "by_donor": []
+  },
+  "UNHCR": {
+    "total": 2436864836.2,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 11855800.0,
+      "Other": 13572840.7,
+      "Voluntary earmarked": 1712425313.0,
+      "Voluntary un-earmarked": 699010882.5
+    },
+    "by_donor": []
+  },
+  "UNICEF": {
+    "total": 3987417000.0,
+    "year": 2012,
+    "by_type": {
+      "Other": 76443000.0,
+      "Voluntary earmarked": 2702678000.0,
+      "Voluntary un-earmarked": 1208296000.0
+    },
+    "by_donor": []
+  },
+  "UNIDO": {
+    "total": 293028550.19,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 101561632.7,
+      "Other": 1911641.99,
+      "Voluntary earmarked": 189555275.5
+    },
+    "by_donor": []
+  },
+  "UNITAR": {
+    "total": 21329081.599999998,
+    "year": 2012,
+    "by_type": {
+      "Other": 1309302.98,
+      "Voluntary earmarked": 19710700.99,
+      "Voluntary un-earmarked": 309077.63
+    },
+    "by_donor": [
+      {
+        "donor": "UNDP (as donor)",
+        "total": 758653.0,
+        "Voluntary earmarked": 758653.0
+      }
+    ]
+  },
+  "UNODC": {
+    "total": 362885889.0,
+    "year": 2012,
+    "by_type": {
+      "Other": 10335169.0,
+      "Voluntary earmarked": 320964713.0,
+      "Voluntary un-earmarked": 31586007.0
+    },
+    "by_donor": []
+  },
+  "UNOPS": {
+    "total": 683160000.0,
+    "year": 2012,
+    "by_type": {
+      "Other": 683160000.0
+    },
+    "by_donor": []
+  },
+  "UNRWA": {
+    "total": 966105195.0,
+    "year": 2012,
+    "by_type": {
+      "Other": 46183176.0,
+      "Voluntary earmarked": 375847094.0,
+      "Voluntary un-earmarked": 544074925.0
+    },
+    "by_donor": [
+      {
+        "donor": "European Union",
+        "total": 191394637.0,
+        "Voluntary un-earmarked": 116443280.0,
+        "Voluntary earmarked": 74951357.0
+      },
+      {
+        "donor": "United Nations",
+        "total": 25454100.0,
+        "Voluntary un-earmarked": 25454100.0
+      }
+    ]
+  },
+  "UNU": {
+    "total": 69203000.0,
+    "year": 2012,
+    "by_type": {
+      "Other": 17965000.0,
+      "Voluntary earmarked": 51238000.0
+    },
+    "by_donor": []
+  },
+  "UPU": {
+    "total": 68517702.62,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 38463101.0,
+      "Other": 9126650.0,
+      "Voluntary earmarked": 20927951.62
+    },
+    "by_donor": []
+  },
+  "WFP": {
+    "total": 4211407189.9,
+    "year": 2012,
+    "by_type": {
+      "Other": 162164685.6,
+      "Voluntary earmarked": 3551627160.0,
+      "Voluntary un-earmarked": 497615344.3
+    },
+    "by_donor": []
+  },
+  "WHO": {
+    "total": 2293866794.0,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 474609150.0,
+      "Other": 116236390.0,
+      "Voluntary earmarked": 1572821240.0,
+      "Voluntary un-earmarked": 130200014.0
+    },
+    "by_donor": [
+      {
+        "donor": "Bill & Melinda Gates Foundation",
+        "total": 271186801.0,
+        "Voluntary earmarked": 271186801.0
+      },
+      {
+        "donor": "GAVI Alliance",
+        "total": 92582495.0,
+        "Voluntary earmarked": 92582495.0
+      },
+      {
+        "donor": "European Union",
+        "total": 65708564.0,
+        "Voluntary earmarked": 65708564.0
+      },
+      {
+        "donor": "UN OCHA",
+        "total": 54937681.0,
+        "Voluntary earmarked": 54937681.0
+      },
+      {
+        "donor": "Rotary International",
+        "total": 42937124.0,
+        "Voluntary earmarked": 42937124.0
+      },
+      {
+        "donor": "UNDP (as donor)",
+        "total": 42637235.0,
+        "Voluntary earmarked": 42637235.0
+      }
+    ]
+  },
+  "WIPO": {
+    "total": 372793720.27000004,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 19263724.05,
+      "Other": 342114124.6,
+      "Voluntary earmarked": 11415871.62
+    },
+    "by_donor": []
+  },
+  "WMO": {
+    "total": 102773611.16,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 71628942.8,
+      "Other": 3769982.28,
+      "Voluntary earmarked": 27374686.08
+    },
+    "by_donor": []
+  },
+  "WTO": {
+    "total": 241401242.76999998,
+    "year": 2012,
+    "by_type": {
+      "Assessed": 214890545.2,
+      "Other": 2429785.11,
+      "Voluntary earmarked": 24080912.46
+    },
+    "by_donor": [
+      {
+        "donor": "European Union",
+        "total": 1873940.14,
+        "Voluntary earmarked": 1873940.14
+      }
+    ]
+  }
+}

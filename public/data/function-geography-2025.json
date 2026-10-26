@@ -10,6 +10,8 @@
     "inputFile": "data/ceb/clean/expenses_by_country_region_sub_agency.csv",
     "expenseType": "E06",
     "sourceRows": 11828,
+    "functionAttributionComplete": true,
+    "unreportedFunctionAmount": 0.0,
     "sourceSha256": "d75b29e050fd742a93968e34f867278d08034a5196f3116ff87276dab5eef771"
   },
   "total": 64396743594.12447,

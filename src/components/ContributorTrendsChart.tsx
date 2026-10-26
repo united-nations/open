@@ -1,4 +1,5 @@
 "use client";
+import { contributorYearAvailable } from "@/lib/revenueCoverage";
 import {
   TREND_CHART_HEIGHT,
   TREND_CHART_MARGIN,
@@ -32,6 +33,7 @@ import {
 // Type for the contributor trends data
 interface ContributorYearData {
   year: number;
+  available?: boolean;
   total: number;
   assessed: number;
   other: number;
@@ -166,24 +168,46 @@ export function ContributorTrendsChart() {
 
     const years = data.meta.years;
     return years.map((year, idx) => {
-      const point: Record<string, number | string> = { year: year.toString() };
+      const point: Record<string, number | string | null> = {
+        year: year.toString(),
+      };
 
       // Add data for each selected item
       Array.from(selected).forEach((id) => {
         if (id === "gov") {
-          point["Government"] = data.aggregates.gov[idx]?.total || 0;
+          point["Government"] = contributorYearAvailable(
+            id,
+            year,
+            data.meta.governmentContributors,
+          )
+            ? (data.aggregates.gov[idx]?.total ?? 0)
+            : null;
         } else if (id === "non-gov") {
-          point["Non-Government"] =
-            data.aggregates["non-gov"][idx]?.total || 0;
+          point["Non-Government"] = data.aggregates["non-gov"][idx]?.total || 0;
         } else if (id === "unattributed" || id === "all") {
           point[id === "all" ? "All contributors" : "Unattributed"] =
-            data.aggregates[id][idx]?.total || 0;
+            contributorYearAvailable(id, year, data.meta.governmentContributors)
+              ? (data.aggregates[id][idx]?.total ?? 0)
+              : null;
         } else if (id.startsWith("cat:") && data.aggregates[id]) {
           // Category aggregate - prefix to avoid collision with individual donors
           const catName = id.replace("cat:", "") + " (all)";
-          point[catName] = data.aggregates[id][idx]?.total || 0;
+          point[catName] = contributorYearAvailable(
+            id,
+            year,
+            data.meta.governmentContributors,
+          )
+            ? (data.aggregates[id][idx]?.total ?? 0)
+            : null;
         } else if (data.contributors[id]) {
-          point[id] = data.contributors[id][idx]?.total || 0;
+          point[id] =
+            contributorYearAvailable(
+              id,
+              year,
+              data.meta.governmentContributors,
+            ) && data.contributors[id][idx]?.available !== false
+              ? (data.contributors[id][idx]?.total ?? 0)
+              : null;
         }
       });
 
@@ -257,13 +281,22 @@ export function ContributorTrendsChart() {
 
       if (!sourceData) return [];
 
-      return sourceData.map((item) => ({
-        year: item.year.toString(),
-        Assessed: item.assessed,
-        "Voluntary un-earmarked": item.voluntary_unearmarked,
-        "Voluntary earmarked": item.voluntary_earmarked,
-        Other: item.other,
-      }));
+      return sourceData
+        .filter(
+          (item) =>
+            contributorYearAvailable(
+              financingContributor,
+              item.year,
+              data.meta.governmentContributors,
+            ) && item.available !== false,
+        )
+        .map((item) => ({
+          year: item.year.toString(),
+          Assessed: item.assessed,
+          "Voluntary un-earmarked": item.voluntary_unearmarked,
+          "Voluntary earmarked": item.voluntary_earmarked,
+          Other: item.other,
+        }));
     }, [data, financingContributor]);
 
   // Controls depend on the asynchronously loaded contributor groups. Mount
@@ -282,6 +315,12 @@ export function ContributorTrendsChart() {
 
   return (
     <>
+      <p className="mt-4 text-sm text-gray-600">
+        2009–2010 contain partial non-government donor records only, without
+        system-wide revenue controls. Government detail starts in 2013;
+        remaining controlled revenue in 2011–2012 is Unattributed. Missing
+        government years are not zero contributions.
+      </p>
       {/* Charts container - grid for aligned columns */}
       <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-6">
         {/* Chart A: Compare contributors (line chart) */}

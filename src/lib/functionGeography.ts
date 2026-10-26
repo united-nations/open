@@ -29,11 +29,13 @@ export interface FunctionGeographyData {
     sourceUrl: string;
     downloadUrl: string;
     firstCompleteYear: number;
+    functionAttributionComplete: boolean;
+    unreportedFunctionAmount: number;
     sourceRows: number;
   };
   total: number;
   functions: {
-    key: UnFunctionKey;
+    key: UnFunctionKey | "unreported";
     total: number;
     geography: {
       level: FunctionGeographicLevel;
@@ -56,7 +58,9 @@ export function functionGeographyColumns(data: FunctionGeographyData) {
   );
   return data.functions
     .map((item) => {
-      const definition = UN_FUNCTIONS.find((fn) => fn.key === item.key)!;
+      const definition = UN_FUNCTIONS.find((fn) => fn.key === item.key) ?? {
+        label: "Function not reported",
+      };
       const area = item.geography.reduce(
         (sum, cell) => sum + Math.max(0, cell.amount),
         0,

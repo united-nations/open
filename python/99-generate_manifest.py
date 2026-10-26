@@ -45,6 +45,13 @@ def generate_manifest():
         "budgetPkoProposed": {"years": detect_years("budget-pko-proposed"), "default": "latest"},
     }
     
+    # Funding-stream availability is independent of year availability (PPB 2018
+    # publishes regular-budget expenditure only).
+    manifest["budgetPpb"]["fundingSourcesByYear"] = {
+        str(year): json.loads((OUT / f"budget-ppb-{year}.json").read_text())["meta"]["fundingSources"]
+        for year in manifest["budgetPpb"]["years"]
+    }
+
     # Add min/max for convenience
     for key, val in manifest.items():
         if val["years"]:

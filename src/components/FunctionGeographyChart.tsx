@@ -60,6 +60,13 @@ export function FunctionGeographyChart() {
         Column widths show each function’s share of reported expenditure. Within
         each column, the stacked areas show where that expenditure is reported.
       </p>
+      {data && !data.meta.functionAttributionComplete && (
+        <p role="note" className="text-sm text-gray-600">
+          Function attribution is incomplete for {year}.{" "}
+          {formatBudget(data.meta.unreportedFunctionAmount)} remains under
+          “Function not reported”; no function is inferred from separate totals.
+        </p>
+      )}
       <ChartSourceProvider
         label="CEB financial statistics — function and geographic location"
         details={<CebMethodology />}
@@ -216,12 +223,16 @@ export function FunctionGeographyChart() {
                       >
                         <div className="h-28 border-l border-gray-200 pl-2">
                           <h3 className="text-sm leading-5 font-semibold">
-                            <Link
-                              href={`/system/functions/?year=${year}#function=${column.key}`}
-                              className="hover:text-un-blue hover:underline"
-                            >
-                              {column.label}
-                            </Link>
+                            {column.key === "unreported" ? (
+                              column.label
+                            ) : (
+                              <Link
+                                href={`/system/functions/?year=${year}#function=${column.key}`}
+                                className="hover:text-un-blue hover:underline"
+                              >
+                                {column.label}
+                              </Link>
+                            )}
                           </h3>
                           <p className="mt-1 text-sm tabular-nums">
                             {percent(column.share)} of total

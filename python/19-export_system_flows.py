@@ -47,8 +47,7 @@ def build_export(totals: pd.DataFrame, geography: pd.DataFrame, goals: pd.DataFr
     unknown = set(geography.location_type) - set(KINDS)
     if unknown:
         raise ValueError(f'Unknown geography types: {unknown}')
-    years = sorted(set(totals.calendar_year) & set(geography.calendar_year) & set(goals.calendar_year))
-    years = [int(year) for year in years if year >= 2018]
+    years = sorted(int(year) for year in set(totals.calendar_year) | set(geography.calendar_year) | set(goals.calendar_year))
     result = []
     anomaly_count = 0
     for year in years:
@@ -86,10 +85,14 @@ def build_export(totals: pd.DataFrame, geography: pd.DataFrame, goals: pd.DataFr
                              'amount': float(rows.amount.sum())})
             entities[entity] = {
                 'total': total, 'geography': geos, 'goals': sdgs,
-                'geographyDifference': None if total is None else total - sum(row['amount'] for row in geos),
-                'goalsDifference': None if total is None else total - sum(row['amount'] for row in sdgs),
+                'geographyDifference': None if total is None or year not in set(geography.calendar_year) else total - sum(row['amount'] for row in geos),
+                'goalsDifference': None if total is None or year not in set(goals.calendar_year) else total - sum(row['amount'] for row in sdgs),
             }
-        result.append({'year': year, 'entities': entities})
+        result.append({'year': year, 'availability': {
+            'total': year in set(totals.calendar_year),
+            'geography': year in set(geography.calendar_year),
+            'goals': year in set(goals.calendar_year),
+        }, 'entities': entities})
     return {
         'meta': {
             'source': 'CEB Financial Statistics', 'years': years, 'geographicAnomalyCount': anomaly_count,

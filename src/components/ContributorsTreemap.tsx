@@ -1,4 +1,5 @@
 "use client";
+import { revenueCoverage } from "@/lib/revenueCoverage";
 import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
@@ -419,6 +420,11 @@ export function ContributorsTreemap() {
 
   return (
     <div className="relative w-full" aria-busy={loading}>
+      {revenueCoverage(selectedYear)?.note && (
+        <p role="note" className="mb-3 text-sm text-gray-600">
+          {revenueCoverage(selectedYear)?.note}
+        </p>
+      )}
       <DelayedChartLoading pending={loading} requestKey={selectedYear} />
       {contributors.length > 0 && (
         <>
@@ -497,7 +503,11 @@ export function ContributorsTreemap() {
             summaries={[
               {
                 key: "net",
-                label: searchQuery ? "Matching total" : "Total",
+                label: searchQuery
+                  ? "Matching total"
+                  : revenueCoverage(selectedYear)?.controls === false
+                    ? "Partial reported total"
+                    : "Total",
                 value: formatBudget(
                   visibleContributors.reduce(
                     (sum, item) =>

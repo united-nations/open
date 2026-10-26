@@ -1,4 +1,5 @@
 "use client";
+import { revenueCoverage } from "@/lib/revenueCoverage";
 import { useYearResource } from "@/hooks/useYearResource";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
@@ -44,6 +45,7 @@ interface ContributorTrendsData {
     string,
     {
       year: number;
+      available?: boolean;
       assessed: number;
       voluntary_earmarked: number;
       voluntary_unearmarked: number;
@@ -53,6 +55,7 @@ interface ContributorTrendsData {
     string,
     {
       year: number;
+      available?: boolean;
       assessed: number;
       voluntary_earmarked: number;
       voluntary_unearmarked: number;
@@ -137,17 +140,26 @@ export function ContributorSidebar({
         const contributorData = data.contributors[contributor.name];
         if (contributorData) {
           setTrendsData(
-            contributorData.map((item) => ({
-              year: item.year.toString(),
-              Assessed: item.assessed,
-              "Voluntary un-earmarked": item.voluntary_unearmarked,
-              "Voluntary earmarked": item.voluntary_earmarked,
-            })),
+            contributorData
+              .filter(
+                (item) =>
+                  item.available !== false &&
+                  !(
+                    revenueCoverage(item.year)?.government === false &&
+                    contributor.category === "Government"
+                  ),
+              )
+              .map((item) => ({
+                year: item.year.toString(),
+                Assessed: item.assessed,
+                "Voluntary un-earmarked": item.voluntary_unearmarked,
+                "Voluntary earmarked": item.voluntary_earmarked,
+              })),
           );
         }
       })
       .catch(() => setTrendsData([]));
-  }, [contributor?.name]);
+  }, [contributor?.name, contributor?.category]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 10);
@@ -257,6 +269,11 @@ export function ContributorSidebar({
           }
         >
           <div className="relative space-y-6">
+            {revenueCoverage(selectedYear)?.note && (
+              <p className="text-sm text-gray-600">
+                {revenueCoverage(selectedYear)?.note}
+              </p>
+            )}
             <DelayedChartLoading
               pending={loadingYear}
               requestKey={selectedYear}

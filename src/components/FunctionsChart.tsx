@@ -62,6 +62,12 @@ export function FunctionsChart() {
     data.data[data.data.length - 1];
   return (
     <>
+      {row.year < data.meta.classificationStartYear && (
+        <p className="mb-3 text-sm text-gray-600">
+          Before 2018, CEB used a different classification. The legacy Other
+          category is retained separately; comparisons across 2018 are limited.
+        </p>
+      )}
       <GroupedTreemap
         className="[&>div:first-child]:flex [&>div:first-child]:min-h-24 [&>div:first-child]:items-end [&>div:first-child>div]:w-full [&>div:nth-child(2)]:flow-root"
         rows={UN_FUNCTIONS.map((item) => ({
@@ -168,8 +174,9 @@ export function FunctionsTrendsChart() {
         showTooltipTotal
       />
       <p className="text-sm text-slate-600">
-        Current CEB classification, from 2018. Values are nominal US dollars;
-        reporting coverage can change between years.
+        Classification changes in 2018; earlier years retain legacy Other.
+        Values are nominal US dollars; reporting coverage can change between
+        years.
       </p>
     </section>
   );

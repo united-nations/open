@@ -1,4 +1,4 @@
-"""Export CEB Standard II functions, using the comparable 2018+ classification."""
+"""Export CEB Standard II functions, preserving the separate pre-2018 legacy category."""
 import json
 from pathlib import Path
 
@@ -12,7 +12,7 @@ OUT = Path('public/data/function-expenses.json')
 
 
 def build_export(frame: pd.DataFrame) -> dict:
-    frame = frame[frame.calendar_year >= 2018].copy()
+    frame = frame.copy()
     unknown = set(frame.transaction_type) - set(FUNCTIONS)
     if unknown:
         raise ValueError(f'Unrecognized CEB functions: {sorted(unknown)}')

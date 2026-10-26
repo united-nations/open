@@ -5,6 +5,7 @@ const checks = [
   "header-layout",
   "data-disclosures",
   "ceb-refresh",
+  "historical-coverage",
   "locations-grouping",
   "locations-bubbles",
   "system-functions",

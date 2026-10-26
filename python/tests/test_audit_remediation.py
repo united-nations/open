@@ -28,8 +28,6 @@ class AuditRemediationTests(unittest.TestCase):
         with (ROOT / 'data/ceb/clean/revenue.csv').open() as stream:
             for row in csv.DictReader(stream):
                 year = int(row['calendar_year'])
-                if year < 2013:
-                    continue
                 if row['amount']:
                     controls[year, normalize_entity(row['agency']), labels[row['rev_type']]] += float(row['amount'])
         actual = {}

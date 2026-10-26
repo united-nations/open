@@ -25,7 +25,7 @@ const DATASET_DETAILS: Record<
   ppb: {
     label: "Programme budget data (PPB + PKO)",
     description:
-      "Expenditure reported in the Proposed Programme Budget editions, covering 2019–2025, paired with separately assessed peacekeeping mission budgets on their July–June cycles.",
+      "Expenditure reported in the Proposed Programme Budget editions, covering 2018–2025 (2018 is regular-budget-only), paired with separately assessed peacekeeping mission budgets on their July–June cycles.",
   },
   trust_funds: {
     label: "Individual trust-fund schedules",

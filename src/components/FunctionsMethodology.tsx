@@ -15,11 +15,11 @@ export function FunctionsMethodology() {
         to SDG expenditure.
       </p>
       <p>
-        Trends start in 2018, when the current four-function classification
-        began. Earlier categories are not joined to this series. Amounts are
-        nominal US dollars; changes in reporting coverage and entities’
-        allocations can affect comparisons. Inter-agency transfers are not
-        eliminated.
+        The current four-function classification began in 2018. Earlier years
+        retain the separate legacy Other category, so comparisons across 2018
+        involve a classification change. Amounts are nominal US dollars; changes
+        in reporting coverage and entities’ allocations can affect comparisons.
+        Inter-agency transfers are not eliminated.
       </p>
       <p>
         Function totals use CEB entities without Secretariat sub-entity fusion.

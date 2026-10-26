@@ -1,0 +1,41 @@
+{
+  "meta": {
+    "year": 2014,
+    "source": "CEB Financial Statistics",
+    "sourceUrl": "https://unsceb.org/statistics/financial-statistics/",
+    "downloadUrl": "https://unsceb.org/assets/data/FS/expenses_by_country_region_sub_agency.csv",
+    "measure": "expenditure",
+    "currency": "USD",
+    "firstCompleteYear": 2020,
+    "inputFile": "data/ceb/clean/expenses_by_country_region_sub_agency.csv",
+    "expenseType": "E06",
+    "sourceRows": 1611,
+    "functionAttributionComplete": false,
+    "unreportedFunctionAmount": 46367510515.15001,
+    "sourceSha256": "d75b29e050fd742a93968e34f867278d08034a5196f3116ff87276dab5eef771"
+  },
+  "total": 46367510515.15001,
+  "functions": [
+    {
+      "key": "unreported",
+      "total": 46367510515.15001,
+      "geography": [
+        {
+          "level": "global",
+          "amount": 19706095665.480003,
+          "negativeAdjustments": 0.0
+        },
+        {
+          "level": "regional",
+          "amount": 4453083549.639999,
+          "negativeAdjustments": 0.0
+        },
+        {
+          "level": "country",
+          "amount": 22208331300.030003,
+          "negativeAdjustments": -34411.149999999994
+        }
+      ]
+    }
+  ]
+}

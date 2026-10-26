@@ -56,7 +56,7 @@ class FlowTests(unittest.TestCase):
         sources[1] = select_geographic_totals(sources[1])
         sources[2] = select_sdg_expenses(sources[2])
         result = module.build_export(*sources)
-        self.assertEqual(result['meta']['years'], list(range(2018, 2025)))
+        self.assertEqual(result['meta']['years'], list(range(2010, 2026)))
         self.assertEqual(result['meta']['geographicAnomalyCount'], 0)
         for year in result['data']:
             for dimension, source in [('geography', sources[1]), ('goals', sources[2])]:
@@ -64,15 +64,15 @@ class FlowTests(unittest.TestCase):
                 actual = sum(sum(r['amount'] for r in e[dimension]) for e in year['entities'].values())
                 self.assertAlmostEqual(actual, expected, places=3)
                 for e in year['entities'].values():
-                    if e['total'] is not None:
+                    if e[dimension + 'Difference'] is not None:
                         self.assertAlmostEqual(sum(r['amount'] for r in e[dimension]) + e[dimension + 'Difference'], e['total'], places=4)
         # DPO is the 2023 SDG alias of UN-DPO. UNRISD is a 2018 UN
         # sub-agency, not a separate organization in the spending backbone.
-        self.assertNotIn('DPO', result['data'][-2]['entities'])
+        self.assertNotIn('DPO', next(y for y in result['data'] if y['year'] == 2023)['entities'])
         # Geography now reports UNRISD separately, while its SDGs still roll
         # into the expense-source parent. Preserve that source distinction.
-        self.assertIsNone(result['data'][0]['entities']['UNRISD']['total'])
-        self.assertAlmostEqual(sum(g['amount'] for g in result['data'][0]['entities']['UN Secretariat']['goals']), 2207230)
+        self.assertIsNone(next(y for y in result['data'] if y['year'] == 2018)['entities']['UNRISD']['total'])
+        self.assertAlmostEqual(sum(g['amount'] for g in next(y for y in result['data'] if y['year'] == 2018)['entities']['UN Secretariat']['goals']), 2207230)
         # Source-only reporters may have no backbone control; retain them explicitly.
         self.assertTrue(all(e['geographyDifference'] is None for y in result['data'] for e in y['entities'].values() if e['total'] is None))
         self.assertTrue(all(r['label'] for y in result['data'] for e in y['entities'].values() for r in e['geography']))

@@ -1,4 +1,5 @@
 "use client";
+import manifest from "../../public/data/manifest.json";
 
 import { useState } from "react";
 import { SegmentedControl } from "@un-eosg/ui/components/segmented-control";
@@ -41,12 +42,13 @@ const METRICS: Array<{
 ];
 
 const METRIC_YEARS: Record<BudgetMetricKey, number[]> = {
-  proposed: [2021, 2022, 2023, 2024, 2025, 2026, 2027],
-  approved: [2020, 2021, 2022, 2023, 2024, 2025, 2026],
-  expenditure: [2019, 2020, 2021, 2022, 2023, 2024, 2025],
+  proposed: manifest.budgetPpbProposed.years,
+  approved: manifest.budgetPpbApproved.years,
+  expenditure: manifest.budgetPpb.years,
 };
-
-const ALL_YEARS = [2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026, 2027];
+const ALL_YEARS = [...new Set(Object.values(METRIC_YEARS).flat())].sort(
+  (a, b) => a - b,
+);
 
 const DATASETS: Record<
   BudgetMetricKey,
@@ -56,6 +58,14 @@ const DATASETS: Record<
   approved: "budget-ppb-approved",
   expenditure: "budget-ppb-expenditure",
 };
+
+const fundingSourcesForYear = (year: number) =>
+  BUDGET_FUNDING_SOURCES.filter(
+    (source) =>
+      (manifest.budgetPpb.fundingSourcesByYear as Record<string, string[]>)[
+        String(year)
+      ]?.includes(source) ?? true,
+  );
 
 export function RegularBudgetView() {
   const [active, setActive] = useState<BudgetFundingSource[]>([
@@ -79,11 +89,25 @@ export function RegularBudgetView() {
           : "proposed";
     setMetric(nextMetric);
     if (nextMetric !== "expenditure") setActive(["regular_budget"]);
+    else
+      setActive((current) => {
+        const available = current.filter((source) =>
+          fundingSourcesForYear(nextYear).includes(source),
+        );
+        return available.length ? available : ["regular_budget"];
+      });
   };
 
   const selectMetric = (nextMetric: BudgetMetricKey) => {
     setMetric(nextMetric);
     if (nextMetric !== "expenditure") setActive(["regular_budget"]);
+    else
+      setActive((current) => {
+        const available = current.filter((source) =>
+          fundingSourcesForYear(year).includes(source),
+        );
+        return available.length ? available : ["regular_budget"];
+      });
   };
 
   return (
@@ -112,7 +136,11 @@ export function RegularBudgetView() {
         <FundingSourcePills
           neutral
           selected={active}
-          sources={BUDGET_FUNDING_SOURCES}
+          sources={
+            metric === "expenditure"
+              ? fundingSourcesForYear(year)
+              : BUDGET_FUNDING_SOURCES
+          }
           disabled={metric !== "expenditure"}
           explanations={
             metric !== "expenditure"

@@ -2017,6 +2017,14 @@ export function BudgetTreemap({
           pending={loadedRequest !== `${dataset}-${year}`}
           requestKey={`${dataset}-${year}`}
         />
+        {usesSharedProgrammeBudget && meta.partial && (
+          <p
+            role="note"
+            className="mb-3 border-l-4 border-amber-400 bg-amber-50 px-4 py-3 text-sm text-amber-950"
+          >
+            Partial coverage: {meta.scopeWarning}
+          </p>
+        )}
         {!usesSharedProgrammeBudget && !usesSharedTrustFundExpenses && (
           <>
             {meta.sourceNote && (

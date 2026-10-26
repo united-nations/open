@@ -27,6 +27,13 @@ export const UN_FUNCTIONS = [
     description:
       "Global and regional activities outside the other functions, and support for sustainable development in non-programme countries.",
   },
+  {
+    key: "legacy-other",
+    label: "Other (legacy classification)",
+    color: "#8b8b8b",
+    description:
+      "Combined normative and technical cooperation in the pre-2018 classification. This category is not reassigned to the current four functions.",
+  },
 ] as const;
 export type UnFunctionKey = (typeof UN_FUNCTIONS)[number]["key"];
 export type FunctionAmounts = Partial<Record<UnFunctionKey, number>>;

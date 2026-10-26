@@ -7,6 +7,7 @@ export interface FlowSpendingData {
   meta: { years: number[]; sourceUrls: unknown };
   data: {
     year: number;
+    availability?: { total: boolean; geography: boolean; goals: boolean };
     entities: Record<
       string,
       {
@@ -27,6 +28,7 @@ export interface FlowSpendingData {
 }
 export interface SystemFlowInput {
   countries?: Record<string, string>;
+  revenueAvailable?: boolean;
   revenue: Record<string, { total: number; by_type: Record<string, number> }>;
   contributors: Record<
     string,
@@ -149,10 +151,11 @@ export function buildSystemFlows(
           );
       }
     }
-    addFunding(
-      "Revenue reconciliation difference",
-      (input.revenue[entity]?.total ?? 0) - funding,
-    );
+    if (input.revenueAvailable !== false)
+      addFunding(
+        "Revenue reconciliation difference",
+        (input.revenue[entity]?.total ?? 0) - funding,
+      );
     const expense = input.spending.entities[entity];
     let spent = 0;
     const addSpending = (
@@ -180,15 +183,19 @@ export function buildSystemFlows(
           ? { kind: "country", value: country }
           : choices.spending === "goal" && /^([1-9]|1[0-7])$/.test(key)
             ? { kind: "sdg", value: key }
-            : choices.spending === "function" && key !== "coverage-difference"
+            : choices.spending === "function" &&
+                key !== "coverage-difference" &&
+                key !== "unavailable"
               ? { kind: "function", value: key }
               : undefined,
         note:
-          key === "coverage-difference"
-            ? "Calculated reporting difference, not an allocation of expenditure."
-            : key === "unallocated"
-              ? "Expenditure reported without allocation to a Sustainable Development Goal."
-              : undefined,
+          key === "unavailable"
+            ? "This dimension is unavailable for the selected year; the total is retained without an inferred allocation."
+            : key === "coverage-difference"
+              ? "Calculated reporting difference, not an allocation of expenditure."
+              : key === "unallocated"
+                ? "Expenditure reported without allocation to a Sustainable Development Goal."
+                : undefined,
       });
       add(middle, target, value);
       spent += value;
@@ -225,10 +232,18 @@ export function buildSystemFlows(
         );
       }
     }
-    if (expense?.total !== null)
+    if (expense?.total != null)
       addSpending(
-        "coverage-difference",
-        "Breakdown / total difference",
+        (choices.spending === "goal" &&
+          input.spending.availability?.goals === false) ||
+          ((choices.spending === "country" || choices.spending === "region") &&
+            input.spending.availability?.geography === false)
+          ? "unavailable"
+          : "coverage-difference",
+        choices.spending === "goal" &&
+          input.spending.availability?.goals === false
+          ? "Goal breakdown unavailable"
+          : "Breakdown / total difference",
         (expense?.total ?? 0) - spent,
       );
   }

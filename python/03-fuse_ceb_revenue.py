@@ -1,7 +1,8 @@
 """Fuse CEB revenue data from multiple sources into unified contributor breakdown.
 
 Tiered approach:
-- 2013-2020: named donors + unattributed residual per financing instrument
+- 2009-2010: partial non-government donor observations without system controls
+- 2011-2020: available named donors + unattributed residual per financing instrument
 - 2021 onwards: contributor-type detail, reconciled to entity/instrument controls
 """
 import pandas as pd
@@ -57,8 +58,9 @@ def normalize_contrib_type(ct: str, desc_to_code: dict) -> str | None:
 
 def get_donor_info(donor_name: str, contrib_code: str | None, code_to_name: dict) -> tuple[str, str, str, bool]:
     """Get normalized donor info: (name, contrib_code, donor_type, is_other)."""
-    name = clean_donor_name(donor_name)
-    is_other = name in GENERIC_DONORS
+    missing_name = pd.isna(donor_name)
+    name = "Unidentified non-government contributors" if missing_name else clean_donor_name(donor_name)
+    is_other = missing_name or name in GENERIC_DONORS
     
     # Apply category override if exists
     if name in DONOR_CATEGORY_OVERRIDES:
@@ -95,15 +97,21 @@ def fuse_revenue():
     for frame in [revenue, gov, nongov, contrib_type]:
         frame["entity"] = frame["entity"].map(normalize_entity)
         frame["rev_code"] = frame["rev_code"].map(lambda code: canonical[rev_category(code)])
-    years = sorted(set(revenue["calendar_year"]) & set(gov["calendar_year"]))
+    control_years = set(revenue["calendar_year"])
+    years = sorted(control_years | set(nongov["calendar_year"]))
     reporting_controls = revenue.rename(columns={"entity": "agency"})
     breakdowns = [(load("revenue_by_financing_instruments_and_government_contributors.csv"), "entity", "sub_entity"),
                   (load("expenses_sub_agency.csv"), "agency", "sub_agency")]
+    early_nongov = nongov[~nongov.calendar_year.isin(control_years)].copy()
     gov, nongov, contrib_type = [resolve_reporting_entities(
-        frame[frame.calendar_year.isin(years)], "entity", reporting_controls, breakdowns)
+        frame[frame.calendar_year.isin(control_years)], "entity", reporting_controls, breakdowns)
         for frame in (gov, nongov, contrib_type)]
+    nongov = pd.concat([nongov, early_nongov], ignore_index=True)
     results = []
-    for (year, entity), controls in revenue[revenue["calendar_year"].isin(years)].groupby(["calendar_year", "entity"]):
+    keys = set(map(tuple, revenue[["calendar_year", "entity"]].to_numpy()))
+    keys.update(map(tuple, early_nongov[["calendar_year", "entity"]].to_numpy()))
+    for year, entity in sorted(keys):
+        controls = revenue[(revenue.calendar_year == year) & (revenue.entity == entity)]
         rows = []
         def add(code, rev, name, amount, other, dtype=None):
             if pd.isna(amount) or abs(amount) < 0.000001:
@@ -130,7 +138,7 @@ def fuse_revenue():
                 name = "Revenue from Activities" if code == "C09" else f"Other {code_to_name.get(code, code)}"
                 add(code, rev, name, group["amount"].sum(min_count=1) - named, True)
         amounts = controls.groupby("rev_code")["amount"].sum().to_dict()
-        for rev in sorted(set(amounts) | {r["rev_type"] for r in rows}):
+        for rev in sorted(set(amounts) | {r["rev_type"] for r in rows}) if year in control_years else []:
             residual = amounts.get(rev, 0) - sum(r["amount"] for r in rows if r["rev_type"] == rev)
             add("Unknown", rev, "Unattributed", residual, True, "Unattributed")
         results.extend(rows)
@@ -148,7 +156,7 @@ def validate(df: pd.DataFrame, revenue: pd.DataFrame, years: list):
     print("\n=== Validation ===")
     
     controls = revenue[revenue["calendar_year"].isin(years)].groupby(["calendar_year", "entity", "rev_code"])["amount"].sum()
-    actual = df.groupby(["year", "entity", "rev_type"])["amount"].sum()
+    actual = df[df.year.isin(revenue.calendar_year.unique())].groupby(["year", "entity", "rev_type"])["amount"].sum()
     controls.index.names = actual.index.names
     difference = actual.subtract(controls, fill_value=0)
     assert difference.abs().max() < 0.01, difference[difference.abs() >= 0.01].to_dict()

@@ -40,22 +40,30 @@ export function EntityFunctions({
       <FinancialPanelHeading subheading>
         Expenditure by function
       </FinancialPanelHeading>
-      {UN_FUNCTIONS.map((item) => (
-        <FinancialPanelRankedRow
-          key={item.key}
-          label={item.label}
-          value={
-            amounts[item.key] === undefined
-              ? "—"
-              : formatBudget(amounts[item.key]!)
-          }
-        >
-          <FinancialPanelBar
-            color={item.color}
-            percent={(Math.max(0, amounts[item.key] ?? 0) / maximum) * 100}
-          />
-        </FinancialPanelRankedRow>
-      ))}
+      {year < 2018 && (
+        <p className="text-sm text-slate-600">
+          Legacy classification; Other is not reassigned to the current
+          functions.
+        </p>
+      )}
+      {UN_FUNCTIONS.filter((item) => amounts[item.key] !== undefined).map(
+        (item) => (
+          <FinancialPanelRankedRow
+            key={item.key}
+            label={item.label}
+            value={
+              amounts[item.key] === undefined
+                ? "—"
+                : formatBudget(amounts[item.key]!)
+            }
+          >
+            <FinancialPanelBar
+              color={item.color}
+              percent={(Math.max(0, amounts[item.key] ?? 0) / maximum) * 100}
+            />
+          </FinancialPanelRankedRow>
+        ),
+      )}
     </section>
   );
 }

@@ -4,18 +4,21 @@ import pandas as pd
 from pathlib import Path
 from collections import defaultdict
 from utils import normalize_entity
+from ceb_data import revenue_controls
 
 DATA = Path("public/data")
 UNCATEGORIZED = "Uncategorized"
 
 def load_revenue() -> dict[str, dict[int, float]]:
-    """Load revenue from fused CSV, aggregated by entity."""
-    df = pd.read_csv("data/ceb/fused/revenue_by_contributor.csv")
-    df["entity"] = df["entity"].apply(normalize_entity)
-    agg = df.groupby(["entity", "year"])["amount"].sum().reset_index()
+    """Load authoritative totals independently of contributor-detail coverage."""
+    df = revenue_controls(
+        pd.read_csv("data/ceb/clean/revenue.csv"),
+        pd.read_csv("data/ceb/clean/revenue_sub_agency.csv"),
+    )
+    agg = df.groupby(["agency", "calendar_year"])["amount"].sum().reset_index()
     data = defaultdict(dict)
     for _, row in agg.iterrows():
-        data[row["entity"]][row["year"]] = row["amount"]
+        data[row["agency"]][row["calendar_year"]] = row["amount"]
     return dict(data)
 
 def load_expenses() -> dict[str, dict[int, float]]:

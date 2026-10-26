@@ -1,4 +1,5 @@
 "use client";
+import manifest from "../../public/data/manifest.json";
 import {
   TREND_CHART_HEIGHT,
   TREND_CHART_MARGIN,
@@ -33,19 +34,19 @@ const METRICS: Array<{
     key: "proposed",
     label: "Proposed",
     color: "var(--color-un-green)",
-    years: [2021, 2022, 2023, 2024, 2025, 2026, 2027],
+    years: manifest.budgetPpbProposed.years,
   },
   {
     key: "approved",
     label: "Approved",
     color: "var(--color-un-orange)",
-    years: [2021, 2022, 2023, 2024, 2025, 2026],
+    years: manifest.budgetPpbApproved.years,
   },
   {
     key: "expenditure",
     label: "Expenditure",
     color: "var(--color-un-purple)",
-    years: [2021, 2022, 2023, 2024, 2025],
+    years: manifest.budgetPpb.years,
   },
 ];
 

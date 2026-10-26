@@ -6,6 +6,7 @@ from utils import GEOGRAPHIC_AREA_TYPES, canonical_geographic_area
 
 # CEB Standard II function names shared by the independent and geographic exports.
 CEB_FUNCTIONS = {
+    'Other (combined Normative and Technical Cooperation)': 'legacy-other',
     'Development Assistance': 'development',
     'Humanitarian Assistance': 'humanitarian',
     'Peace Operations': 'peace',

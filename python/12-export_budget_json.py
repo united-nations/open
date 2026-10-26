@@ -112,10 +112,10 @@ PKO_RELEASE = RELEASE
 PPB_EDITIONS = range(2020, 2028)
 PKO_CYCLES = (2024, 2025, 2026)
 
-# Which PPB editions the portal draws. PPB 2020's lower hierarchy is too sparse
-# for the portal's programme/subprogramme view, and its expenditure is RB-only.
-# Editions 2021–2027 provide the complete aligned series used here.
-PPB_EDITIONS_DRAWN = range(2021, 2028)
+# PPB 2020 is retained as a partial regular-budget-only view; its source
+# hierarchy and unavailable funding streams remain explicit. Editions 2021+
+# have the complete funding-stream coverage used for comparable expenditure.
+PPB_EDITIONS_DRAWN = range(2020, 2028)
 
 SECRETARIAT_TAXONOMIES = load_secretariat_taxonomies()
 PART_DESCRIPTIONS = {
@@ -1030,7 +1030,8 @@ def annual_metric_payload(payload: dict, metric: str) -> dict:
     target_year = int(payload["meta"]["metrics"][metric]["dataYear"])
     document_symbol = payload["meta"].get("documentSymbol") or f"A/{source_edition + 54}/6"
     allowed_funding = (
-        FUNDING_SOURCES if metric == "expenditure" else ["regular_budget"]
+        [funding for funding in FUNDING_SOURCES if payload["meta"]["fundingStates"][funding] == "available"]
+        if metric == "expenditure" else ["regular_budget"]
     )
 
     for node in result["nodes"]:
@@ -1104,11 +1105,11 @@ def annual_metric_payload(payload: dict, metric: str) -> dict:
             "byMetric": {metric: covered_units},
         },
         "fundingSources": allowed_funding,
-        "fundingStates": {funding: "available" for funding in allowed_funding},
-        "partial": False,
-        "scopeLabel": scope_label,
-        "scopeWarning": source_note,
-        "sourceNote": source_note,
+        "fundingStates": payload["meta"]["fundingStates"] if metric == "expenditure" else {funding: "available" for funding in allowed_funding},
+        "partial": payload["meta"]["partial"] if metric == "expenditure" else False,
+        "scopeLabel": payload["meta"]["scopeLabel"] if metric == "expenditure" and payload["meta"]["partial"] else scope_label,
+        "scopeWarning": payload["meta"]["scopeWarning"] if metric == "expenditure" and payload["meta"]["partial"] else source_note,
+        "sourceNote": payload["meta"]["scopeWarning"] if metric == "expenditure" and payload["meta"]["partial"] else source_note,
         "sourceEdition": source_edition,
         "sourcePublicationYear": source_edition - 1,
         "sourceDocument": document_symbol,
@@ -1405,11 +1406,11 @@ def export() -> None:
         f"budget-ppb-{metric}-{edition + definition['yearOffset']}.json"
         for edition in PPB_EDITIONS_DRAWN
         for metric, definition in PPB_METRICS.items()
-        if metric != "expenditure" or edition + definition["yearOffset"] >= 2019
+        if metric != "expenditure" or edition + definition["yearOffset"] >= 2018
     } | {
         f"budget-ppb-{edition - 2}.json"
         for edition in PPB_EDITIONS_DRAWN
-        if edition - 2 >= 2019
+        if edition - 2 >= 2018
     }
     stale = sorted(
         path for path in OUT.glob("budget-ppb-*.json")
@@ -1432,7 +1433,7 @@ def export() -> None:
             annual = annual_metric_payload(payload, metric)
             apply_annual_exceptions(annual, metric)
             year = annual["meta"]["year"]
-            if metric == "expenditure" and year < 2019:
+            if metric == "expenditure" and year < 2018:
                 continue
             name = f"budget-ppb-{metric}-{year}"
             if metric == "expenditure":

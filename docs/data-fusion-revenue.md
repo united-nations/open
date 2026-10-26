@@ -29,9 +29,14 @@ remain included. ITC has no 2025 report; its absent observation remains unavaila
 
 ## Fusion Methodology
 
-### Tier 1: Basic Fusion (2013-2020)
+### Historical coverage and basic fusion (2009–2020)
 
-For each entity and year:
+Before 2011, retain the source’s partial non-government donor observations without
+creating revenue controls or reconciliation remainders. Their sums must be labelled
+as partial records. From 2011 onward, use every revenue-control year independently
+of donor-source coverage; government detail is unavailable until 2013.
+
+For each controlled entity and year:
 
 1. **Government donors**: Specific country names from `revenue_government_donors.csv`
 2. **Non-government donors**: Specific donors from `revenue_non_gov_donors.csv` with category when available
@@ -105,8 +110,9 @@ File: `data/ceb/fused/revenue_by_contributor.csv`
 
 ## Validation
 
-Both tiers reconcile each entity × year × financing instrument to `revenue.csv`
-within one cent. Independent tests classify the original textual instrument
+Controlled years (2011 onward) reconcile each entity × year × financing instrument to `revenue.csv`
+within one cent. The 2009–2010 source-only records have no revenue controls and
+are explicitly disclosed as partial. Independent tests classify the original textual instrument
 labels and compare them to the final exports. Contributor trends include aggregate
 Other entries within their known government/non-government types and categories.
 A separate Unattributed series preserves the signed reconciliation balance;

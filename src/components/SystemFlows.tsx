@@ -1,4 +1,6 @@
 "use client";
+import { useYearRanges } from "@/lib/useYearRanges";
+import { revenueCoverage } from "@/lib/revenueCoverage";
 
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -55,6 +57,7 @@ const options = {
 } as const;
 
 export function SystemFlows() {
+  const yearRanges = useYearRanges();
   const [sources, setSources] = useState<{
     spending: FlowSpendingData;
     functions: FunctionExpenses;
@@ -99,8 +102,12 @@ export function SystemFlows() {
       if (!cancelled) setSlow(true);
     }, 2000);
     Promise.all([
-      loadYearData<SystemFlowInput["revenue"]>("entity-revenue", year),
-      loadYearData<Record<string, ContributorData>>("donors", year),
+      yearRanges.entityRevenue.years.includes(year)
+        ? loadYearData<SystemFlowInput["revenue"]>("entity-revenue", year)
+        : Promise.resolve({}),
+      yearRanges.donors.years.includes(year)
+        ? loadYearData<Record<string, ContributorData>>("donors", year)
+        : Promise.resolve({} as Record<string, ContributorData>),
       loadYearData<CountryExpense[]>("country-expenses", year),
     ])
       .then(([revenue, contributors, countries]) => {
@@ -108,9 +115,9 @@ export function SystemFlows() {
         const spending = sources.spending.data.find(
           (row) => row.year === year,
         )!;
-        const functions = sources.functions.data.find(
-          (row) => row.year === year,
-        )!.entities;
+        const functions =
+          sources.functions.data.find((row) => row.year === year)?.entities ??
+          {};
         const entities = Object.fromEntries(
           sources.entities.map((entity) => {
             const category = entity.system_grouping || "Uncategorized";
@@ -128,6 +135,7 @@ export function SystemFlows() {
           year,
           input: {
             revenue,
+            revenueAvailable: yearRanges.entityRevenue.years.includes(year),
             countries: Object.fromEntries(
               countries.map((country) => [
                 country.name.toLowerCase(),
@@ -167,7 +175,7 @@ export function SystemFlows() {
       cancelled = true;
       window.clearTimeout(timer);
     };
-  }, [sources, year, retry]);
+  }, [sources, year, retry, yearRanges]);
   const graph = useMemo(
     () =>
       loaded
@@ -238,27 +246,48 @@ export function SystemFlows() {
                 {
                   key: "revenue",
                   label: "Total revenue",
-                  value: formatBudget(
-                    Object.values(loaded.input.revenue).reduce(
-                      (sum, row) => sum + row.total,
-                      0,
-                    ),
-                  ),
+                  value:
+                    loaded.input.revenueAvailable === false
+                      ? "Unavailable"
+                      : formatBudget(
+                          Object.values(loaded.input.revenue).reduce(
+                            (sum, row) => sum + row.total,
+                            0,
+                          ),
+                        ),
                 },
                 {
                   key: "expenditure",
                   label: "Total expenditure",
-                  value: formatBudget(
-                    Object.values(loaded.input.spending.entities).reduce(
-                      (sum, row) => sum + (row.total ?? 0),
-                      0,
-                    ),
-                  ),
+                  value:
+                    loaded.input.spending.availability?.total === false
+                      ? "Unavailable"
+                      : formatBudget(
+                          Object.values(loaded.input.spending.entities).reduce(
+                            (sum, row) => sum + (row.total ?? 0),
+                            0,
+                          ),
+                        ),
                 },
               ]
             : []
         }
       />
+      {loaded && !pending && (
+        <p role="note" className="text-sm text-gray-600">
+          {revenueCoverage(loaded.year)?.note}
+          {loaded.input.spending.availability?.total === false &&
+            " Organization expense totals are unavailable; geography is a separate reported series."}
+          {loaded.input.spending.availability?.goals === false &&
+            " Goal breakdown unavailable for this year; no SDG allocation is inferred."}
+          {sources &&
+            !sources.functions.meta.years.includes(loaded.year) &&
+            " Function breakdown unavailable for this year."}
+          {loaded.year >= 2011 &&
+            loaded.year < 2018 &&
+            " Function data uses the legacy classification before 2018."}
+        </p>
+      )}
       {error ? (
         <p role="alert">
           The flows could not be loaded.{" "}

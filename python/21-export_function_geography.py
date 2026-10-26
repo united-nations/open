@@ -1,8 +1,8 @@
 """Export the reported CEB function × geographic-level cross-dimension.
 
 E06 alone supplies independent totals. 2020 is the first year with complete
-function attribution in the geographic source; earlier partial years are not
-filled from separate function totals or allocated proportionally.
+function attribution in the geographic source; earlier partial years retain
+missing attribution explicitly without allocations from separate totals.
 """
 import hashlib
 import json
@@ -19,15 +19,15 @@ LEVELS = ('global', 'regional', 'country')
 
 def build_export(frame: pd.DataFrame) -> dict[int, dict]:
     rows = select_geographic_totals(frame)
-    rows = rows[rows.calendar_year >= 2020].copy()
+    rows = rows.copy()
     if not rows.amount.map(math.isfinite).all():
         raise ValueError('Non-finite geographic expenditure')
-    if rows['function'].isna().any():
+    if rows.loc[rows.calendar_year >= 2020, 'function'].isna().any():
         raise ValueError('Missing function attribution in geographic source')
-    unknown = set(rows['function']) - set(CEB_FUNCTIONS)
+    unknown = set(rows['function'].dropna()) - set(CEB_FUNCTIONS)
     if unknown:
         raise ValueError(f'Unknown geographic functions: {sorted(unknown)}')
-    rows['function_key'] = rows['function'].map(CEB_FUNCTIONS)
+    rows['function_key'] = rows['function'].map(CEB_FUNCTIONS).fillna('unreported')
     rows['level'] = rows.location_type.map({'COU': 'country', 'REG': 'regional', 'SUB': 'regional'})
     if rows.level.isna().any():
         raise ValueError('Unknown geographic level')
@@ -48,7 +48,9 @@ def build_export(frame: pd.DataFrame) -> dict[int, dict]:
                      'downloadUrl': 'https://unsceb.org/assets/data/FS/expenses_by_country_region_sub_agency.csv',
                      'measure': 'expenditure', 'currency': 'USD', 'firstCompleteYear': 2020,
                      'inputFile': str(SOURCE),
-                     'expenseType': 'E06', 'sourceRows': len(yearly)},
+                     'expenseType': 'E06', 'sourceRows': len(yearly),
+                     'functionAttributionComplete': not yearly['function'].isna().any(),
+                     'unreportedFunctionAmount': float(yearly.loc[yearly['function'].isna(), 'amount'].sum())},
             'total': float(yearly.amount.sum()), 'functions': functions,
         }
     return result

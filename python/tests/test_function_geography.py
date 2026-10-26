@@ -41,7 +41,10 @@ class FunctionGeographyTests(unittest.TestCase):
 
     def test_incomplete_old_years_are_not_inferred(self):
         data = module.build_export(pd.DataFrame([record(calendar_year=2019, function=None), record()]))
-        self.assertEqual(list(data), [2024])
+        self.assertEqual(list(data), [2019, 2024])
+        self.assertEqual(data[2019]['functions'][0]['key'], 'unreported')
+        self.assertEqual(data[2019]['functions'][0]['total'], 100)
+        self.assertFalse(data[2019]['meta']['functionAttributionComplete'])
 
     def test_unresolved_current_dimensions_and_nonfinite_amounts_fail(self):
         for row in [record(function=None), record(function='Unknown'), record(location_type='UNKNOWN'), record(float('inf'))]:
@@ -51,16 +54,15 @@ class FunctionGeographyTests(unittest.TestCase):
     def test_actual_source_reconciles_at_every_intersection(self):
         source = pd.read_csv(module.SOURCE)
         selected = module.select_geographic_totals(source)
-        selected = selected[selected.calendar_year >= 2020]
         exported = module.build_export(source)
-        self.assertEqual(list(exported), list(range(2020, 2026)))
+        self.assertEqual(list(exported), list(range(2010, 2026)))
         for year, data in exported.items():
             rows = selected[selected.calendar_year == year]
             self.assertAlmostEqual(data['total'], rows.amount.sum(), places=3)
             self.assertEqual(data['meta']['sourceRows'], len(rows))
             self.assertAlmostEqual(data['total'], sum(item['total'] for item in data['functions']), places=3)
             for item in data['functions']:
-                members = rows[rows['function'].map(module.CEB_FUNCTIONS) == item['key']]
+                members = rows[rows['function'].map(module.CEB_FUNCTIONS).fillna('unreported') == item['key']]
                 self.assertAlmostEqual(item['total'], members.amount.sum(), places=3)
                 self.assertAlmostEqual(item['total'], sum(cell['amount'] for cell in item['geography']), places=3)
                 self.assertAlmostEqual(sum(cell['negativeAdjustments'] for cell in item['geography']), members.loc[members.amount < 0, 'amount'].sum(), places=3)

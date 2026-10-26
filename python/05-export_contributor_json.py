@@ -54,7 +54,8 @@ def export_donors_json(df: pd.DataFrame, state_info: dict):
 
 def export_entity_revenue_json(df: pd.DataFrame):
     """Generate entity-revenue-{year}.json with revenue by entity."""
-    for year in YEARS:
+    control_years = set(pd.read_csv("data/ceb/clean/revenue.csv").calendar_year)
+    for year in sorted(control_years):
         ydf = df[df["year"] == year]
         entities = {}
         
@@ -81,6 +82,22 @@ def export_entity_revenue_json(df: pd.DataFrame):
         with open(OUT / f"entity-revenue-{year}.json", "w") as f:
             json.dump(entities, f, indent=2)
         print(f"entity-revenue-{year}.json: {len(entities)} entities, ${sum(e['total'] for e in entities.values())/1e9:.1f}B")
+
+def export_coverage_json():
+    """Disclose which year totals are controlled and which donor detail exists."""
+    sources = {key: set(pd.read_csv(f"data/ceb/clean/{name}.csv").calendar_year)
+               for key, name in {"controls": "revenue", "government": "revenue_government_donors",
+                                 "nonGovernment": "revenue_non_gov_donors"}.items()}
+    coverage = {}
+    for year in YEARS:
+        note = None
+        if year not in sources["controls"]:
+            note = "Partial non-government donor records only. System-wide revenue totals and government donor detail are unavailable; this is not total UN funding."
+        elif year not in sources["government"]:
+            note = "Government donor detail is unavailable. Reported non-government contributors are shown; the remaining revenue is Unattributed, not non-government funding."
+        coverage[year] = {key: year in values for key, values in sources.items()} | {"note": note}
+    (OUT / "revenue-coverage.json").write_text(json.dumps(coverage, indent=2) + "\n")
+
 
 def export_contributor_trends_json(df: pd.DataFrame):
     """Generate contributor-trends.json with time series data."""
@@ -135,7 +152,17 @@ def export_contributor_trends_json(df: pd.DataFrame):
                 totals["total"] += float(amount)
             aggregates[group].append(totals)
     
-    contributors = {d: [{"year": y, **data[d][y]} for y in YEARS] for d in sorted(gov_donors | nongov_donors | unattributed_donors)}
+    observed = set(zip(df.donor_name, df.year))
+    contributors = {}
+    for donor in sorted(gov_donors | nongov_donors | unattributed_donors):
+        series = []
+        for year in YEARS:
+            point = {"year": year, **data[donor][year]}
+            # Early donor coverage is partial: no record does not establish zero.
+            if year < 2013 and (donor, year) not in observed:
+                point["available"] = False
+            series.append(point)
+        contributors[donor] = series
     
     output = {
         "meta": {
@@ -157,6 +184,7 @@ if __name__ == "__main__":
     df, state_info = load_data()
     print(f"Loaded {len(df)} rows, {len(state_info)} states")
     
+    export_coverage_json()
     export_donors_json(df, state_info)
     export_entity_revenue_json(df)
     export_contributor_trends_json(df)

@@ -4,12 +4,44 @@
 
 https://unsceb.org/financial-statistics
 
-Organization revenue and expenses: 2011–2025; contributor exports: 2013–2025.
+Organization revenue and expenses: 2011–2025; contributor records: 2009–2025
+(partial before 2011; government detail starts in 2013).
 Geography: 2010–2025 (early geographic coverage differs from organization totals).
 SDG actual expense records: 2018–2024; source budget observations are excluded.
 All available historical observations now use the current CEB release, captured
 9 October 2026. ITC did not report for 2025. Source hashes, missing amount cells
 and coverage are recorded in `public/data/ceb-source.json`.
+
+### Historical coverage (26 October 2026)
+
+- Organization revenue, financing timelines and revenue/expense trends retain
+  2011–2025. Government donor coverage no longer truncates organization totals.
+- Contributor records cover 2009–2025. Before 2011 only partial non-government
+  donor observations exist; their displayed sum is not total UN funding.
+  Revenue controls cover 2011 onward, with the balance after known donors
+  retained as Unattributed. Government donor detail starts in 2013. The shared
+  `revenue-coverage.json` register discloses these differences. Unobserved early
+  donor years are marked unavailable rather than asserted to be zero.
+- System Flows retains the union of imported spending years, 2010–2025.
+  Organization expense controls are unavailable in 2010, and SDGs are unavailable
+  before 2018 and in 2025. The view loads only available files, labels missing
+  dimensions, and never infers SDG allocations from other totals.
+- Functions retain 2011–2025. Before 2018 the source's legacy Other category
+  (combined normative and technical cooperation) remains separate. A visible
+  classification warning qualifies comparisons across 2018.
+- Function/geography retains 2010–2025. Earlier missing function attribution is
+  shown under Function not reported, retaining its geographic amounts. Complete
+  attribution begins in 2020; unknown current classifications still fail checks.
+- PPB includes the 2020 edition as a partial view: expenditure 2018, approved
+  regular budget 2019 and proposed regular budget 2020. Its expenditure covers
+  regular budget only, with sparse lower hierarchy and explicit omissions.
+  Other assessed and extrabudgetary amounts remain unavailable. It is not
+  comparable to the combined funding-stream totals of later editions.
+- Organization expenses, geography, SDGs, imported Secretariat expenses and
+  trust-fund exports otherwise retain their available imported source years.
+
+UNINFO remains unchanged as a 2024 snapshot. This change does not re-query its
+API or expand its coverage.
 
 - **Revenue by Entity**
   - Total Revenue
@@ -69,19 +101,19 @@ What would be nice and what is lacking is:
 
 The Secretariat treemap can also read the standalone expenditure view supplied
 by [`united-nations/programme-budget-data`](https://github.com/united-nations/programme-budget-data).
-The current portal payload covers expenditure for 2019–2025, as reported two
-years later in the 2021–2027 PPB editions, with this hierarchy:
+The current portal payload covers expenditure for 2018–2025, as reported two
+years later in the 2020–2027 PPB editions, with this hierarchy:
 
 - Budget part x section x budget unit x detail row
 - Regular-budget, other-assessed and extrabudgetary values, kept distinct in the
   data even when the treemap shows their published combined total
 - Source-document links and an explicit basis for each displayed value
 
-All seven years publish regular-budget, other-assessed and extrabudgetary
-expenditure. The 2020 PPB edition also provides expenditure for 2018, but the
-portal excludes it because that edition publishes regular-budget expenditure
-only. A source-evidenced entity overlay covers every displayed edition. It
-adds the canonical organization name and known abbreviation without changing
+The seven years 2019–2025 publish regular-budget, other-assessed and
+extrabudgetary expenditure. The 2020 PPB edition provides expenditure for 2018 as a separately
+disclosed partial view because it publishes regular-budget expenditure only.
+Its sparse hierarchy is retained as printed. A source-evidenced entity overlay
+covers the 2021–2027 editions. It adds the canonical organization name and known abbreviation without changing
 the financial hierarchy or any amount. Three older section 1 budget headings
 (`Policymaking organs`, `Executive direction and management`, and
 `Secretary-General`) remain as printed because they are not organizations.
