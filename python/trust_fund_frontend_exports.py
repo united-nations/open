@@ -644,6 +644,7 @@ def export_all(
     manifest_path: Path = DEFAULT_MANIFEST,
     entities_path: Path = DEFAULT_ENTITIES,
     output: Path = DEFAULT_OUTPUT,
+    xb_stage2: Path | None = None,
 ) -> None:
     required = [
         stage2 / "funds.csv",
@@ -671,10 +672,11 @@ def export_all(
     years = sorted(int(year) for year in facts["calendar_year"].unique())
     for year in years:
         source = source_for_year(manifest, year)
-        json_dump(
-            output / f"budget-trust-funds-{year}.json",
-            build_entity_export(year, facts, crosswalk, source, entity_names, funds),
-        )
+        spending = build_entity_export(year, facts, crosswalk, source, entity_names, funds)
+        if xb_stage2 is not None:
+            from secretariat_xb_frontend import extend_spending
+            spending = extend_spending(spending, year, xb_stage2)
+        json_dump(output / f"budget-trust-funds-{year}.json", spending)
         json_dump(
             output / f"trust-fund-contributors-{year}.json",
             build_contributor_export(

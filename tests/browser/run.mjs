@@ -15,6 +15,8 @@ const checks = [
   "peacekeeping-stages",
   "secretariat-flows",
   "sidebar-years",
+  "trust-fund-sources",
+  "trust-fund-contributor-sources",
   "hydration",
 ];
 function runCheck(name) {

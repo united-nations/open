@@ -1,0 +1,6 @@
+# Preserve original source bytes and hashes, including text-like PDF streams.
+data/trust-fund-source-candidates/**/*.pdf binary
+data/trust-fund-source-candidates/**/*.html binary
+
+# Canonical generated tables use consistent repository line endings.
+data/trust-fund-source-candidates/**/*.csv text eol=lf

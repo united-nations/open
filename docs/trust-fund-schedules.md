@@ -214,6 +214,29 @@ Organizational attribution is not proof that a contributor funded a specific
 entity expense or activity. This source still covers the **Schedule of Individual
 Trust Funds**, not every trust fund elsewhere in the UN system or MPTF portfolio.
 
+For the separate UNEP, UNODC, UN-Habitat and ITC accounts, see
+[Secretariat membership and separately reported extrabudgetary funds](research/data-sources-overview/secretariat-separate-xb-funds.md).
+That investigation identifies additional fund and segment sources and the
+accounting boundaries needed before expanding coverage.
+
+The [four-entity integration plan](trust-fund-source-integration-plan.md)
+documents the source-aware schema, contributor coverage, adapters, validation
+gates and remaining retrieval needs. The spending export now adds a separately
+labelled group while retaining the original schedule amounts and identifiers.
+
+The broad XB extraction is now runnable with
+`uv run python python/22-extract_secretariat_xb.py`. Its
+[source-attributed tables and quality profile](../data/trust-fund-source-candidates/README.md)
+retain the four entities' available XB detail without deciding the legal
+trust-fund boundary. Run `uv run python python/16-export_trust_fund_json.py`
+after extraction to rebuild the website JSON. The separate reports use entity
+totals as entity areas, with gross UNEP fund-group and Habitat segment shares
+subdividing those areas. Their sidebars retain account detail and reconciliations.
+The combined expenditure headline is explicitly unconsolidated. Years without
+directly extracted report figures remain unavailable; ARWO does not supply
+fallback amounts. Contributor sources use separate selectable views because
+their measures differ.
+
 ## Suggested manual checks
 
 - DDN, 2023: total expenses should be **$1,482,068,475**; the contribution

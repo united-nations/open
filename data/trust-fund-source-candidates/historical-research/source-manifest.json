@@ -1,0 +1,814 @@
+[
+  {
+    "source_id": "unep-accounts-2019",
+    "reporting_entity": "UNEP",
+    "reporting_year": 2019,
+    "document_symbol": "A/75/5/Add.7",
+    "url": "https://digitallibrary.un.org/record/3877557/files/A_75_5_Add.7-EN.pdf",
+    "source_role": "audited_accounts",
+    "local_path": "data/trust-fund-source-candidates/historical-research/raw/UNEP-2019.pdf",
+    "sha256": "608a097c6c2122a531f9508de87c75aedbbd1dbc39fb638ad3feef881c3c3bac",
+    "bytes": 2762570,
+    "pdf_pages": 167,
+    "cover_text": "A/75/5/Add.7 United Nations Fund of the United Nations Environment Programme Financial report and audited financial statements for the year ended 31 December 2019 and Report of the Board of Auditors General Assembly Official Records Seventy-fifth Session Supplement No. 5G",
+    "status": "retrieved_cover_verified",
+    "inspected_tables": {
+      "statement": 100,
+      "segment": 125,
+      "annexes": [
+        [
+          159,
+          163,
+          "I",
+          "POW"
+        ],
+        [
+          164,
+          167,
+          "II",
+          "CONV"
+        ]
+      ]
+    },
+    "current_period_control": {
+      "amount_usd": "592782000",
+      "measure": "audited_expenses_less_regular_budget",
+      "supporting_sources": [
+        {
+          "url": "https://digitallibrary.un.org/record/3877557/files/A_75_5_Add.7-EN.pdf",
+          "pdf_page": 100,
+          "page_url": "https://digitallibrary.un.org/record/3877557/files/A_75_5_Add.7-EN.pdf#page=100",
+          "row": "Total expenses 619 018 558 532",
+          "column": "2019",
+          "reported_text": "619 018",
+          "source_y": 433.35870361328125
+        },
+        {
+          "url": "https://digitallibrary.un.org/record/3877557/files/A_75_5_Add.7-EN.pdf",
+          "pdf_page": 125,
+          "page_url": "https://digitallibrary.un.org/record/3877557/files/A_75_5_Add.7-EN.pdf#page=125",
+          "row": "Total segment expenses 68 877 26 236 330 015 104 006 102 861 27 088 12 335 (52 400) 619 018 558 532",
+          "column": "Regular budget 2019",
+          "reported_text": "26 236",
+          "source_y": 453.2786865234375
+        }
+      ]
+    },
+    "fund_detail_status": "Programme-of-work and conventions accounts only",
+    "retrieved_on": "2026-10-27",
+    "catalogue_source": "https://www.un.org/en/united-nations-board-auditors/board-auditors-reports"
+  },
+  {
+    "source_id": "unep-accounts-2020",
+    "reporting_entity": "UNEP",
+    "reporting_year": 2020,
+    "document_symbol": "A/76/5/Add.7",
+    "url": "https://digitallibrary.un.org/record/3937518/files/A_76_5_Add.7-EN.pdf",
+    "source_role": "audited_accounts",
+    "local_path": "data/trust-fund-source-candidates/historical-research/raw/UNEP-2020.pdf",
+    "sha256": "e8ab0df06ea69d6b2f7636a397f8b4b7d1737f4889cb191e3e17790291b6d273",
+    "bytes": 2950016,
+    "pdf_pages": 153,
+    "cover_text": "A/76/5/Add.7 United Nations Fund of the United Nations Environment Programme Financial report and audited financial statements for the year ended 31 December 2020 and Report of the Board of Auditors General Assembly Official Records Seventy-sixth Session Supplement No. 5G",
+    "status": "retrieved_cover_verified",
+    "inspected_tables": {
+      "statement": 80,
+      "segment": 105,
+      "annexes": [
+        [
+          141,
+          141,
+          "I",
+          "ENV"
+        ],
+        [
+          142,
+          146,
+          "II",
+          "POW"
+        ],
+        [
+          147,
+          150,
+          "III",
+          "CONV"
+        ],
+        [
+          151,
+          151,
+          "IV",
+          "MLF"
+        ],
+        [
+          152,
+          152,
+          "V",
+          "PSC"
+        ],
+        [
+          153,
+          153,
+          "VI",
+          "BEN"
+        ]
+      ]
+    },
+    "current_period_control": {
+      "amount_usd": "491139000",
+      "measure": "audited_expenses_less_regular_budget",
+      "supporting_sources": [
+        {
+          "url": "https://digitallibrary.un.org/record/3937518/files/A_76_5_Add.7-EN.pdf",
+          "pdf_page": 80,
+          "page_url": "https://digitallibrary.un.org/record/3937518/files/A_76_5_Add.7-EN.pdf#page=80",
+          "row": "Total expenses 516 609 619 018",
+          "column": "2020",
+          "reported_text": "516 609",
+          "source_y": 439.35870361328125
+        },
+        {
+          "url": "https://digitallibrary.un.org/record/3937518/files/A_76_5_Add.7-EN.pdf",
+          "pdf_page": 105,
+          "page_url": "https://digitallibrary.un.org/record/3937518/files/A_76_5_Add.7-EN.pdf#page=105",
+          "row": "Total segment expenses 68 428 25 470 268 248 81 470 93 490 28 294 13 428 (62 219) 516 609 619 018",
+          "column": "Regular budget 2020",
+          "reported_text": "25 470",
+          "source_y": 467.34869384765625
+        }
+      ]
+    },
+    "fund_detail_status": "Six annexes of individual account rows and printed rollups",
+    "retrieved_on": "2026-10-27",
+    "catalogue_source": "https://www.un.org/en/united-nations-board-auditors/board-auditors-reports"
+  },
+  {
+    "source_id": "unep-accounts-2021",
+    "reporting_entity": "UNEP",
+    "reporting_year": 2021,
+    "document_symbol": "A/77/5/Add.7",
+    "url": "https://digitallibrary.un.org/record/3986079/files/A_77_5_Add.7-EN.pdf",
+    "source_role": "audited_accounts",
+    "local_path": "data/trust-fund-source-candidates/historical-research/raw/UNEP-2021.pdf",
+    "sha256": "6d43599e7d52325c1af113726483b759c7ce9175321ea809a36c0123c65f4897",
+    "bytes": 2889977,
+    "pdf_pages": 151,
+    "cover_text": "A/77/5/Add.7 United Nations Fund of the United Nations Environment Programme Financial report and audited financial statements for the year ended 31 December 2021 and Report of the Board of Auditors General Assembly Official Records Seventy-seventh Session Supplement No. 5G",
+    "status": "retrieved_cover_verified",
+    "inspected_tables": {
+      "statement": 78,
+      "segment": 103,
+      "annexes": [
+        [
+          139,
+          139,
+          "I",
+          "ENV"
+        ],
+        [
+          140,
+          144,
+          "II",
+          "POW"
+        ],
+        [
+          145,
+          148,
+          "III",
+          "CONV"
+        ],
+        [
+          149,
+          149,
+          "IV",
+          "MLF"
+        ],
+        [
+          150,
+          150,
+          "V",
+          "PSC"
+        ],
+        [
+          151,
+          151,
+          "VI",
+          "BEN"
+        ]
+      ]
+    },
+    "current_period_control": {
+      "amount_usd": "566964000",
+      "measure": "audited_expenses_less_regular_budget",
+      "supporting_sources": [
+        {
+          "url": "https://digitallibrary.un.org/record/3986079/files/A_77_5_Add.7-EN.pdf",
+          "pdf_page": 78,
+          "page_url": "https://digitallibrary.un.org/record/3986079/files/A_77_5_Add.7-EN.pdf#page=78",
+          "row": "Total expenses 592 373 516 609",
+          "column": "2021",
+          "reported_text": "592 373",
+          "source_y": 440.4386901855469
+        },
+        {
+          "url": "https://digitallibrary.un.org/record/3986079/files/A_77_5_Add.7-EN.pdf",
+          "pdf_page": 103,
+          "page_url": "https://digitallibrary.un.org/record/3986079/files/A_77_5_Add.7-EN.pdf#page=103",
+          "row": "Total segment expenses 74 577 25 409 328 753 96 519 86 365 27 302 15 091 (61 643) 592 373 516 609",
+          "column": "Regular budget 2021",
+          "reported_text": "25 409",
+          "source_y": 419.7987060546875
+        }
+      ]
+    },
+    "fund_detail_status": "Six annexes of individual account rows and printed rollups",
+    "retrieved_on": "2026-10-27",
+    "catalogue_source": "https://www.un.org/en/united-nations-board-auditors/board-auditors-reports"
+  },
+  {
+    "source_id": "unep-accounts-2022",
+    "reporting_entity": "UNEP",
+    "reporting_year": 2022,
+    "document_symbol": "A/78/5/Add.7",
+    "url": "https://digitallibrary.un.org/record/4023202/files/A_78_5_Add.7-EN.pdf",
+    "source_role": "audited_accounts",
+    "local_path": "data/trust-fund-source-candidates/historical-research/raw/UNEP-2022.pdf",
+    "sha256": "b620333fc71cf901adb4f5c7d4fe9412d72a1f98106006163fc964bd1e36cf23",
+    "bytes": 2740432,
+    "pdf_pages": 147,
+    "cover_text": "A/78/5/Add.7 United Nations Fund of the United Nations Environment Programme Financial report and audited financial statements for the year ended 31 December 2022 and Report of the Board of Auditors General Assembly Official Records Seventy-eighth Session Supplement No. 5G",
+    "status": "retrieved_cover_verified",
+    "inspected_tables": {
+      "statement": 72,
+      "segment": 98,
+      "annexes": [
+        [
+          134,
+          134,
+          "I",
+          "ENV"
+        ],
+        [
+          135,
+          139,
+          "II",
+          "POW"
+        ],
+        [
+          140,
+          144,
+          "III",
+          "CONV"
+        ],
+        [
+          145,
+          145,
+          "IV",
+          "MLF"
+        ],
+        [
+          146,
+          146,
+          "V",
+          "PSC"
+        ],
+        [
+          147,
+          147,
+          "VI",
+          "BEN"
+        ]
+      ]
+    },
+    "current_period_control": {
+      "amount_usd": "626632000",
+      "measure": "audited_expenses_less_regular_budget",
+      "supporting_sources": [
+        {
+          "url": "https://digitallibrary.un.org/record/4023202/files/A_78_5_Add.7-EN.pdf",
+          "pdf_page": 72,
+          "page_url": "https://digitallibrary.un.org/record/4023202/files/A_78_5_Add.7-EN.pdf#page=72",
+          "row": "Total expenses 651 319 592 373",
+          "column": "2022",
+          "reported_text": "651 319",
+          "source_y": 440.4386901855469
+        },
+        {
+          "url": "https://digitallibrary.un.org/record/4023202/files/A_78_5_Add.7-EN.pdf",
+          "pdf_page": 98,
+          "page_url": "https://digitallibrary.un.org/record/4023202/files/A_78_5_Add.7-EN.pdf#page=98",
+          "row": "Total segment expenses 75 890 24 687 350 702 131 064 100 319 29 326 13 730 (74 399) 651 319 592 373",
+          "column": "Regular budget 2022",
+          "reported_text": "24 687",
+          "source_y": 438.2786865234375
+        }
+      ]
+    },
+    "fund_detail_status": "Six annexes of individual account rows and printed rollups",
+    "retrieved_on": "2026-10-27",
+    "catalogue_source": "https://www.un.org/en/united-nations-board-auditors/board-auditors-reports"
+  },
+  {
+    "source_id": "unodc-accounts-2019",
+    "reporting_entity": "UNODC",
+    "reporting_year": 2019,
+    "document_symbol": "A/75/5/Add.10",
+    "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F5%2FAdd.10&l=en&t=pdf",
+    "source_role": "audited_accounts",
+    "local_path": "data/trust-fund-source-candidates/historical-research/raw/UNODC-2019.pdf",
+    "sha256": "60e070f9da931d42f60b5bfe68b7cef7f45a186bf07d4c97bfc155e1e9bc5a20",
+    "bytes": 1871991,
+    "pdf_pages": 113,
+    "cover_text": "A/75/5/Add.10 United Nations United Nations Office on Drugs and Crime Financial report and audited financial statements for the year ended 31 December 2019 and Report of the Board of Auditors General Assembly Official Records Seventy-fifth Session Supplement No. 5J",
+    "status": "retrieved_cover_verified",
+    "inspected_tables": {
+      "statement": 66,
+      "pillar": 85,
+      "rb": 101
+    },
+    "current_period_control": {
+      "amount_usd": "342837000",
+      "measure": "audited_expenses_less_regular_budget",
+      "supporting_sources": [
+        {
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F5%2FAdd.10&l=en&t=pdf",
+          "pdf_page": 66,
+          "page_url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F5%2FAdd.10&l=en&t=pdf#page=66",
+          "row": "Total expenses 374 841 332 270",
+          "column": "2019",
+          "reported_text": "374 841",
+          "source_y": 408.3786926269531
+        },
+        {
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F5%2FAdd.10&l=en&t=pdf",
+          "pdf_page": 101,
+          "page_url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F5%2FAdd.10&l=en&t=pdf#page=101",
+          "row": "Total expenditure (statement II) 32 004 34 294",
+          "column": "2019",
+          "reported_text": "32 004",
+          "source_y": 625.628662109375
+        }
+      ]
+    },
+    "fund_detail_status": "Pillars include RB; pure-XB fund breakdown not established",
+    "retrieved_on": "2026-10-27",
+    "catalogue_source": "https://www.un.org/en/united-nations-board-auditors/board-auditors-reports"
+  },
+  {
+    "source_id": "unodc-accounts-2020",
+    "reporting_entity": "UNODC",
+    "reporting_year": 2020,
+    "document_symbol": "A/76/5/Add.10",
+    "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F5%2FAdd.10&l=en&t=pdf",
+    "source_role": "audited_accounts",
+    "local_path": "data/trust-fund-source-candidates/historical-research/raw/UNODC-2020.pdf",
+    "sha256": "2b704652e485cb65d393c5a51961f2c16d94e473724336ba005662d3882e10e4",
+    "bytes": 1952684,
+    "pdf_pages": 118,
+    "cover_text": "A/76/5/Add.10 United Nations United Nations Office on Drugs and Crime Financial report and audited financial statements for the year ended 31 December 2020 and Report of the Board of Auditors General Assembly Official Records Seventy-sixth Session Supplement No. 5J",
+    "status": "retrieved_cover_verified",
+    "inspected_tables": {
+      "statement": 68,
+      "pillar": 88,
+      "rb": 104
+    },
+    "current_period_control": {
+      "amount_usd": "299274000",
+      "measure": "audited_expenses_less_regular_budget",
+      "supporting_sources": [
+        {
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F5%2FAdd.10&l=en&t=pdf",
+          "pdf_page": 68,
+          "page_url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F5%2FAdd.10&l=en&t=pdf#page=68",
+          "row": "Total expenses 333 101 374 841",
+          "column": "2020",
+          "reported_text": "333 101",
+          "source_y": 414.398681640625
+        },
+        {
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F5%2FAdd.10&l=en&t=pdf",
+          "pdf_page": 104,
+          "page_url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F5%2FAdd.10&l=en&t=pdf#page=104",
+          "row": "Total expenditure (statement II) 33 827 32 004",
+          "column": "2020",
+          "reported_text": "33 827",
+          "source_y": 318.7386779785156
+        }
+      ]
+    },
+    "fund_detail_status": "Pillars include RB; pure-XB fund breakdown not established",
+    "retrieved_on": "2026-10-27",
+    "catalogue_source": "https://www.un.org/en/united-nations-board-auditors/board-auditors-reports"
+  },
+  {
+    "source_id": "unodc-accounts-2021",
+    "reporting_entity": "UNODC",
+    "reporting_year": 2021,
+    "document_symbol": "A/77/5/Add.10",
+    "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F5%2FAdd.10&l=en&t=pdf",
+    "source_role": "audited_accounts",
+    "local_path": "data/trust-fund-source-candidates/historical-research/raw/UNODC-2021.pdf",
+    "sha256": "f2d358105b0e1acd9a8749f86a99550249eb6b8b2e53803877df42a136356f88",
+    "bytes": 2695149,
+    "pdf_pages": 120,
+    "cover_text": "A/77/5/Add.10 United Nations United Nations Office on Drugs and Crime Financial report and audited financial statements for the year ended 31 December 2021 and Report of the Board of Auditors General Assembly Official Records Seventy-seventh Session Supplement No. 5J",
+    "status": "retrieved_cover_verified",
+    "inspected_tables": {
+      "statement": 68,
+      "pillar": 88,
+      "rb": 104
+    },
+    "current_period_control": {
+      "amount_usd": "322002000",
+      "measure": "audited_expenses_less_regular_budget",
+      "supporting_sources": [
+        {
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F5%2FAdd.10&l=en&t=pdf",
+          "pdf_page": 68,
+          "page_url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F5%2FAdd.10&l=en&t=pdf#page=68",
+          "row": "Total expenses 356 520 333 101",
+          "column": "2021",
+          "reported_text": "356 520",
+          "source_y": 414.398681640625
+        },
+        {
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F5%2FAdd.10&l=en&t=pdf",
+          "pdf_page": 104,
+          "page_url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F5%2FAdd.10&l=en&t=pdf#page=104",
+          "row": "Total expenditure (statement II) 34 518 33 827",
+          "column": "2021",
+          "reported_text": "34 518",
+          "source_y": 499.59869384765625
+        }
+      ]
+    },
+    "fund_detail_status": "Pillars include RB; pure-XB fund breakdown not established",
+    "retrieved_on": "2026-10-27",
+    "catalogue_source": "https://www.un.org/en/united-nations-board-auditors/board-auditors-reports"
+  },
+  {
+    "source_id": "unodc-accounts-2022",
+    "reporting_entity": "UNODC",
+    "reporting_year": 2022,
+    "document_symbol": "A/78/5/Add.10",
+    "url": "https://digitallibrary.un.org/record/4023527/files/A_78_5_Add.10-EN.pdf",
+    "source_role": "audited_accounts",
+    "local_path": "data/trust-fund-source-candidates/historical-research/raw/UNODC-2022.pdf",
+    "sha256": "96d8102957943c36e10c49c58db0473ccba4e29bb2321560ba5086d843b1b608",
+    "bytes": 2629245,
+    "pdf_pages": 118,
+    "cover_text": "A/78/5/Add.10 United Nations United Nations Office on Drugs and Crime Financial report and audited financial statements for the year ended 31 December 2022 and Report of the Board of Auditors General Assembly Official Records Seventy-eighth Session Supplement No. 5J",
+    "status": "retrieved_cover_verified",
+    "inspected_tables": {
+      "statement": 64,
+      "pillar": 86,
+      "rb": 102
+    },
+    "current_period_control": {
+      "amount_usd": "371599000",
+      "measure": "audited_expenses_less_regular_budget",
+      "supporting_sources": [
+        {
+          "url": "https://digitallibrary.un.org/record/4023527/files/A_78_5_Add.10-EN.pdf",
+          "pdf_page": 64,
+          "page_url": "https://digitallibrary.un.org/record/4023527/files/A_78_5_Add.10-EN.pdf#page=64",
+          "row": "Total expenses 405 585 356 520",
+          "column": "2022",
+          "reported_text": "405 585",
+          "source_y": 414.3786926269531
+        },
+        {
+          "url": "https://digitallibrary.un.org/record/4023527/files/A_78_5_Add.10-EN.pdf",
+          "pdf_page": 102,
+          "page_url": "https://digitallibrary.un.org/record/4023527/files/A_78_5_Add.10-EN.pdf#page=102",
+          "row": "Total expenditure (statement II) 33 986 34 518",
+          "column": "2022",
+          "reported_text": "33 986",
+          "source_y": 629.9486694335938
+        }
+      ]
+    },
+    "fund_detail_status": "Pillars include RB; pure-XB fund breakdown not established",
+    "retrieved_on": "2026-10-27",
+    "catalogue_source": "https://www.un.org/en/united-nations-board-auditors/board-auditors-reports"
+  },
+  {
+    "source_id": "un-habitat-accounts-2019",
+    "reporting_entity": "UN-HABITAT",
+    "reporting_year": 2019,
+    "document_symbol": "A/75/5/Add.9",
+    "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F5%2FAdd.9&l=en&t=pdf",
+    "source_role": "audited_accounts",
+    "local_path": "data/trust-fund-source-candidates/historical-research/raw/UN-HABITAT-2019.pdf",
+    "sha256": "7e457a0abfce7b6e8ce4bf13979ab648951d07942e194eb420b5de79fbe890d0",
+    "bytes": 2287763,
+    "pdf_pages": 133,
+    "cover_text": "A/75/5/Add.9 United Nations United Nations Human Settlements Programme Financial report and audited financial statements for the year ended 31 December 2019 and Report of the Board of Auditors General Assembly Official Records Seventy-fifth Session Supplement No. 5I",
+    "status": "retrieved_cover_verified",
+    "inspected_tables": {
+      "statement": 77,
+      "segment": 103
+    },
+    "current_period_control": {
+      "amount_usd": "163117000",
+      "measure": "audited_expenses_less_regular_budget",
+      "supporting_sources": [
+        {
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F5%2FAdd.9&l=en&t=pdf",
+          "pdf_page": 77,
+          "page_url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F5%2FAdd.9&l=en&t=pdf#page=77",
+          "row": "Total expenses 178 412 185 748",
+          "column": "2019",
+          "reported_text": "178 412",
+          "source_y": 408.3786926269531
+        },
+        {
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F5%2FAdd.9&l=en&t=pdf",
+          "pdf_page": 103,
+          "page_url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F5%2FAdd.9&l=en&t=pdf#page=103",
+          "row": "Total expenses 5 518 15 295 39 020 115 262 12 700 2 548 (11 931) 178 412 185 748",
+          "column": "Regular budget 2019",
+          "reported_text": "15 295",
+          "source_y": 391.35870361328125
+        }
+      ]
+    },
+    "fund_detail_status": "Funding segments, not an individual-fund inventory",
+    "retrieved_on": "2026-10-27",
+    "catalogue_source": "https://www.un.org/en/united-nations-board-auditors/board-auditors-reports"
+  },
+  {
+    "source_id": "un-habitat-accounts-2020",
+    "reporting_entity": "UN-HABITAT",
+    "reporting_year": 2020,
+    "document_symbol": "A/76/5/Add.9",
+    "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F5%2FAdd.9&l=en&t=pdf",
+    "source_role": "audited_accounts",
+    "local_path": "data/trust-fund-source-candidates/historical-research/raw/UN-HABITAT-2020.pdf",
+    "sha256": "eac97bfede8a9e859cfaa9d4b379f31878110deca8b32346df78368fe5a6f5bf",
+    "bytes": 2196959,
+    "pdf_pages": 124,
+    "cover_text": "A/76/5/Add.9 United Nations United Nations Human Settlements Programme Financial report and audited financial statements for the year ended 31 December 2020 and Report of the Board of Auditors General Assembly Official Records Seventy-sixth Session Supplement No. 5I",
+    "status": "retrieved_cover_verified",
+    "inspected_tables": {
+      "statement": 68,
+      "segment": 94
+    },
+    "current_period_control": {
+      "amount_usd": "135318000",
+      "measure": "audited_expenses_less_regular_budget",
+      "supporting_sources": [
+        {
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F5%2FAdd.9&l=en&t=pdf",
+          "pdf_page": 68,
+          "page_url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F5%2FAdd.9&l=en&t=pdf#page=68",
+          "row": "Total expenses 150 858 178 412",
+          "column": "2020",
+          "reported_text": "150 858",
+          "source_y": 414.3786926269531
+        },
+        {
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F5%2FAdd.9&l=en&t=pdf",
+          "pdf_page": 94,
+          "page_url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F5%2FAdd.9&l=en&t=pdf#page=94",
+          "row": "Total expenses 6 396 15 540 36 303 91 737 12 966 1 987 (14 071) 150 858 178 412",
+          "column": "Regular budget 2020",
+          "reported_text": "15 540",
+          "source_y": 389.3186950683594
+        }
+      ]
+    },
+    "fund_detail_status": "Funding segments, not an individual-fund inventory",
+    "retrieved_on": "2026-10-27",
+    "catalogue_source": "https://www.un.org/en/united-nations-board-auditors/board-auditors-reports"
+  },
+  {
+    "source_id": "un-habitat-accounts-2021",
+    "reporting_entity": "UN-HABITAT",
+    "reporting_year": 2021,
+    "document_symbol": "A/77/5/Add.9",
+    "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F5%2FAdd.9&l=en&t=pdf",
+    "source_role": "audited_accounts",
+    "local_path": "data/trust-fund-source-candidates/historical-research/raw/UN-HABITAT-2021.pdf",
+    "sha256": "221a266fd73344f9f3e7e5ae9cfb45862e46ca42ca4bb5d7b1bcd66dc94bb00a",
+    "bytes": 2495832,
+    "pdf_pages": 148,
+    "cover_text": "A/77/5/Add.9 United Nations United Nations Human Settlements Programme Financial report and audited financial statements for the year ended 31 December 2021 and Report of the Board of Auditors General Assembly Official Records Seventy-seventh Session Supplement No. 5I",
+    "status": "retrieved_cover_verified",
+    "inspected_tables": {
+      "statement": 92,
+      "segment": 117
+    },
+    "current_period_control": {
+      "amount_usd": "156893000",
+      "measure": "audited_expenses_less_regular_budget",
+      "supporting_sources": [
+        {
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F5%2FAdd.9&l=en&t=pdf",
+          "pdf_page": 92,
+          "page_url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F5%2FAdd.9&l=en&t=pdf#page=92",
+          "row": "Total expenses 172 797 150 858",
+          "column": "2021",
+          "reported_text": "172 797",
+          "source_y": 414.3686828613281
+        },
+        {
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F5%2FAdd.9&l=en&t=pdf",
+          "pdf_page": 117,
+          "page_url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F5%2FAdd.9&l=en&t=pdf#page=117",
+          "row": "Total expenses 3 185 15 904 46 321 105 982 12 270 2 346 (13 211) 172 797 150 858",
+          "column": "Regular budget 2021",
+          "reported_text": "15 904",
+          "source_y": 405.3086853027344
+        }
+      ]
+    },
+    "fund_detail_status": "Funding segments, not an individual-fund inventory",
+    "retrieved_on": "2026-10-27",
+    "catalogue_source": "https://www.un.org/en/united-nations-board-auditors/board-auditors-reports"
+  },
+  {
+    "source_id": "un-habitat-accounts-2022",
+    "reporting_entity": "UN-HABITAT",
+    "reporting_year": 2022,
+    "document_symbol": "A/78/5/Add.9",
+    "url": "https://digitallibrary.un.org/record/4023347/files/A_78_5_Add.9-EN.pdf",
+    "source_role": "audited_accounts",
+    "local_path": "data/trust-fund-source-candidates/historical-research/raw/UN-HABITAT-2022.pdf",
+    "sha256": "d5dda5d450a29e5b538e4434b6eba926814fe7934c2491b8cbf6de09f89bcc24",
+    "bytes": 1802751,
+    "pdf_pages": 138,
+    "cover_text": "A/78/5/Add.9 United Nations United Nations Human Settlements Programme Financial report and audited financial statements for the year ended 31 December 2022 and Report of the Board of Auditors General Assembly Official Records Seventy-eighth Session Supplement No. 5I",
+    "status": "retrieved_cover_verified",
+    "inspected_tables": {
+      "statement": 81,
+      "segment": 107
+    },
+    "current_period_control": {
+      "amount_usd": "186678000",
+      "measure": "audited_expenses_less_regular_budget",
+      "supporting_sources": [
+        {
+          "url": "https://digitallibrary.un.org/record/4023347/files/A_78_5_Add.9-EN.pdf",
+          "pdf_page": 81,
+          "page_url": "https://digitallibrary.un.org/record/4023347/files/A_78_5_Add.9-EN.pdf#page=81",
+          "row": "Total expenses 203 478 172 797",
+          "column": "2022",
+          "reported_text": "203 478",
+          "source_y": 414.398681640625
+        },
+        {
+          "url": "https://digitallibrary.un.org/record/4023347/files/A_78_5_Add.9-EN.pdf",
+          "pdf_page": 107,
+          "page_url": "https://digitallibrary.un.org/record/4023347/files/A_78_5_Add.9-EN.pdf#page=107",
+          "row": "Total expenses 1 662 16 800 58 256 129 115 10 363 1 926 (14 644) 203 478 172 797",
+          "column": "Regular budget 2022",
+          "reported_text": "16 800",
+          "source_y": 397.35870361328125
+        }
+      ]
+    },
+    "fund_detail_status": "Funding segments, not an individual-fund inventory",
+    "retrieved_on": "2026-10-27",
+    "catalogue_source": "https://www.un.org/en/united-nations-board-auditors/board-auditors-reports"
+  },
+  {
+    "source_id": "itc-accounts-2019",
+    "reporting_entity": "ITC",
+    "reporting_year": 2019,
+    "document_symbol": "A/75/5 (Vol. III)",
+    "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F5%20%28Vol.%20III%29&l=en&t=pdf",
+    "source_role": "audited_accounts",
+    "local_path": "data/trust-fund-source-candidates/historical-research/raw/ITC-2019.pdf",
+    "sha256": "4581dca791b02e78b06a0de38183fcc1cb31e1d45ae997121f5d425f53310082",
+    "bytes": 1742001,
+    "pdf_pages": 99,
+    "cover_text": "A/75/5 (Vol. III) United Nations Financial report and audited financial statements for the year ended 31 December 2019 and Report of the Board of Auditors Volume III International Trade Centre General Assembly Official Records Seventy-fifth Session Supplement No. 5",
+    "status": "retrieved_cover_verified",
+    "inspected_tables": {
+      "statement": 52,
+      "gross": 40
+    },
+    "current_period_control": {
+      "amount_usd": "91780000.00",
+      "measure": "reported_gross_xb_programme_delivery",
+      "supporting_sources": [
+        {
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F5%20%28Vol.%20III%29&l=en&t=pdf",
+          "pdf_page": 40,
+          "page_url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F5%20%28Vol.%20III%29&l=en&t=pdf#page=40",
+          "row": "Gross extrabudgetary expenditure paragraph",
+          "column": "2019",
+          "reported_text": "gross extrabudgetary expenditure of $91.78 million"
+        }
+      ]
+    },
+    "fund_detail_status": "None: entity-only gross XB delivery",
+    "retrieved_on": "2026-10-27",
+    "catalogue_source": "https://www.un.org/en/united-nations-board-auditors/board-auditors-reports"
+  },
+  {
+    "source_id": "itc-accounts-2020",
+    "reporting_entity": "ITC",
+    "reporting_year": 2020,
+    "document_symbol": "A/76/5 (Vol. III)",
+    "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F5%20%28Vol.%20III%29&l=en&t=pdf",
+    "source_role": "audited_accounts",
+    "local_path": "data/trust-fund-source-candidates/historical-research/raw/ITC-2020.pdf",
+    "sha256": "bd87d821ce06d41498c265cec88faecbdaec53b7f1cfd31ce677598d1786944c",
+    "bytes": 1767669,
+    "pdf_pages": 94,
+    "cover_text": "A/76/5 (Vol. III) United Nations Financial report and audited financial statements for the year ended 31 December 2020 and Report of the Board of Auditors Volume III International Trade Centre General Assembly Official Records Seventy-sixth Session Supplement No. 5",
+    "status": "retrieved_cover_verified",
+    "inspected_tables": {
+      "statement": 46,
+      "gross": 32
+    },
+    "current_period_control": {
+      "amount_usd": "91880000.00",
+      "measure": "reported_gross_xb_programme_delivery",
+      "supporting_sources": [
+        {
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F5%20%28Vol.%20III%29&l=en&t=pdf",
+          "pdf_page": 32,
+          "page_url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F5%20%28Vol.%20III%29&l=en&t=pdf#page=32",
+          "row": "Gross extrabudgetary expenditure paragraph",
+          "column": "2020",
+          "reported_text": "gross extrabudgetary expenditures of $91.88 million"
+        }
+      ]
+    },
+    "fund_detail_status": "None: entity-only gross XB delivery",
+    "retrieved_on": "2026-10-27",
+    "catalogue_source": "https://www.un.org/en/united-nations-board-auditors/board-auditors-reports"
+  },
+  {
+    "source_id": "itc-accounts-2021",
+    "reporting_entity": "ITC",
+    "reporting_year": 2021,
+    "document_symbol": "A/77/5 (Vol. III)",
+    "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F5%20%28Vol.%20III%29&l=en&t=pdf",
+    "source_role": "audited_accounts",
+    "local_path": "data/trust-fund-source-candidates/historical-research/raw/ITC-2021.pdf",
+    "sha256": "e30c3f029413fb76444f5aa8f345413c1aeed7987414a08a822202ed7d9c2b3c",
+    "bytes": 1841348,
+    "pdf_pages": 93,
+    "cover_text": "A/77/5 (Vol. III) United Nations Financial report and audited financial statements for the year ended 31 December 2021 and Report of the Board of Auditors Volume III International Trade Centre General Assembly Official Records Seventy-seventh Session Supplement No. 5",
+    "status": "retrieved_cover_verified",
+    "inspected_tables": {
+      "statement": 45,
+      "gross": 30
+    },
+    "current_period_control": {
+      "amount_usd": "107120000.00",
+      "measure": "reported_gross_xb_programme_delivery",
+      "supporting_sources": [
+        {
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F5%20%28Vol.%20III%29&l=en&t=pdf",
+          "pdf_page": 30,
+          "page_url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F5%20%28Vol.%20III%29&l=en&t=pdf#page=30",
+          "row": "Gross extrabudgetary expenditure paragraph",
+          "column": "2021",
+          "reported_text": "gross extrabudgetary expenditures of $107.12 million"
+        }
+      ]
+    },
+    "fund_detail_status": "None: entity-only gross XB delivery",
+    "retrieved_on": "2026-10-27",
+    "catalogue_source": "https://www.un.org/en/united-nations-board-auditors/board-auditors-reports"
+  },
+  {
+    "source_id": "itc-accounts-2022",
+    "reporting_entity": "ITC",
+    "reporting_year": 2022,
+    "document_symbol": "A/78/5 (Vol. III)",
+    "url": "https://digitallibrary.un.org/record/4020023/files/A_78_5_%28Vol._III%29-EN.pdf",
+    "source_role": "audited_accounts",
+    "local_path": "data/trust-fund-source-candidates/historical-research/raw/ITC-2022.pdf",
+    "sha256": "8e859b29efdc160492df77081e6c0e6a77134bebbbc52d7e191809a26b5b48c4",
+    "bytes": 1377025,
+    "pdf_pages": 93,
+    "cover_text": "A/78/5 (Vol. III) United Nations Financial report and audited financial statements for the year ended 31 December 2022 and Report of the Board of Auditors Volume III International Trade Centre General Assembly Official Records Seventy-eighth Session Supplement No. 5",
+    "status": "retrieved_cover_verified",
+    "inspected_tables": {
+      "statement": 43,
+      "gross": 29
+    },
+    "current_period_control": {
+      "amount_usd": "114630000.00",
+      "measure": "reported_gross_xb_programme_delivery",
+      "supporting_sources": [
+        {
+          "url": "https://digitallibrary.un.org/record/4020023/files/A_78_5_%28Vol._III%29-EN.pdf",
+          "pdf_page": 29,
+          "page_url": "https://digitallibrary.un.org/record/4020023/files/A_78_5_%28Vol._III%29-EN.pdf#page=29",
+          "row": "Gross extrabudgetary expenditure paragraph",
+          "column": "2022",
+          "reported_text": "gross extrabudgetary expenditures of $114.63 million"
+        }
+      ]
+    },
+    "fund_detail_status": "None: entity-only gross XB delivery",
+    "retrieved_on": "2026-10-27",
+    "catalogue_source": "https://www.un.org/en/united-nations-board-auditors/board-auditors-reports"
+  }
+]

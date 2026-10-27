@@ -1,0 +1,45 @@
+{
+  "status": "passed_with_explicit_source_differences",
+  "contributor_observations": 250,
+  "observations_by_year": {
+    "2024": 92,
+    "2023": 158
+  },
+  "total_2024_usd": 519320861,
+  "total_2023_usd": "453853084.35",
+  "reported_counterparty_labels_2024": 80,
+  "dashboard_headline_donors_2024": 82,
+  "reported_counterparty_labels_2023": 115,
+  "named_donor_counts_not_established": "Some reported labels are grouped/anonymous; the label counts are not underlying distinct donors.",
+  "source_differences": [
+    {
+      "source": "2024 dashboard donor count",
+      "reason": "The headline says 82 donors; complete GP/SP rows contain 80 distinct reported labels. Labels include grouped and anonymous buckets."
+    },
+    {
+      "year": 2023,
+      "difference_usd": "-16382.65",
+      "reason": "Live 2025-refresh pledge data differs from later ACABQ documentary vintage."
+    },
+    {
+      "source": "UNVTF 2024 partner table",
+      "difference_usd": -45,
+      "reason": "Twelve named rows sum to 1,019,738; standalone printed TOTAL is 1,019,783. Summary elsewhere on the same page uses 1,019,738."
+    },
+    {
+      "source": "UNVTF 2024 bases",
+      "reason": "2024 deposits summary 1,028,327 includes 8,589 private donors; certified voluntary contributions pledged are 1,016,847; 46,943 interest produces the separate 1,063,790 total-funding figure. No forced reconciliation."
+    }
+  ],
+  "ready_for_separately_labelled_pledge_view": true,
+  "ready_for_recognized_revenue_or_cash_receipts_view": false,
+  "complete_donor_by_legal_fund_revenue": false,
+  "checks": [
+    "All 2024 published GP/SP table records decoded; 92 rows, 80 reported labels (headline count 82 differs).",
+    "All 2023 public donor/family/purpose records decoded; 158 rows, 115 labels.",
+    "No duplicate source/category/counterparty keys.",
+    "2024 GP+SP sum matches independent official document exactly.",
+    "2023 source difference retained without invented residual contributor.",
+    "All observations have retained public response hashes and original source URLs."
+  ]
+}

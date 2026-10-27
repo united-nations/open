@@ -1,5 +1,4 @@
 "use client";
-import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
@@ -93,7 +92,6 @@ function ContributorTooltip({
             The sidebar combines this contributor’s contributions and transfers
             across all categories.
           </p>
-          <SourceReferenceLinks references={flow.supportingSources ?? []} />
         </>
       }
       actionHint="Click to explore details"
@@ -101,9 +99,17 @@ function ContributorTooltip({
   );
 }
 
-export function TrustFundContributorsTreemap() {
+export function TrustFundContributorsTreemap({
+  selectedYear,
+  onYearChange,
+}: {
+  selectedYear?: number;
+  onYearChange?: (year: number) => void;
+}) {
   const years = useYearRanges().trustFundContributors;
-  const [year, setYear] = useState(years.default);
+  const [localYear, setLocalYear] = useState(years.default);
+  const year = selectedYear ?? localYear;
+  const setYear = onYearChange ?? setLocalYear;
   const [hiddenGroups, setHiddenGroups] = useState<string[]>([]);
   const [query, setQuery] = useState("");
   const [data, setData] = useState<TrustFundContributorsData | null>(null);

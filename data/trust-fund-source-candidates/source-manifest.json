@@ -1,0 +1,440 @@
+[
+  {
+    "source_id": "unep-accounts-2023",
+    "publisher": "UNEP",
+    "reporting_entity": "UNEP",
+    "reporting_year": 2023,
+    "document_symbol": "A/79/5/Add.7",
+    "source_role": "audited_accounts",
+    "url": "https://digitallibrary.un.org/record/4061466/files/A_79_5_Add.7-EN.pdf",
+    "local_path": "data/trust-fund-source-candidates/raw/UNEP-2023.pdf",
+    "sha256": "91763ab724d0eea01548c211fb49aef0696103908adcf6b612bf167c5ddca7e0",
+    "bytes": 1999100,
+    "pdf_pages": 142,
+    "retrieved_on": "2026-10-26",
+    "status": "retrieved_inspected",
+    "notes": "Selected XB source tables extracted; no frontend import or scope classification.",
+    "contributor_status": "not_a_complete_named_contributor_schedule",
+    "tables": [
+      {
+        "title": "Statement of financial performance by segment",
+        "pdf_pages": [
+          92
+        ],
+        "measure": "IPSAS expenses/revenue",
+        "grain": "segment and elimination",
+        "role": "control"
+      },
+      {
+        "title": "Annexes I\u2013VI",
+        "pdf_pages": [
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142
+        ],
+        "measure": "net assets, revenue, expense and movements",
+        "grain": "fund account and rollup",
+        "role": "fund_detail"
+      }
+    ],
+    "extraction_status": "selected_tables_extracted"
+  },
+  {
+    "source_id": "unep-accounts-2024",
+    "publisher": "UNEP",
+    "reporting_entity": "UNEP",
+    "reporting_year": 2024,
+    "document_symbol": "A/80/5/Add.7",
+    "source_role": "audited_accounts",
+    "url": "https://digitallibrary.un.org/record/4090384/files/A_80_5_Add.7-EN.pdf",
+    "local_path": "data/trust-fund-source-candidates/raw/UNEP-2024.pdf",
+    "sha256": "4a0e94bef747f05fc7e496bafe7feb2f3655e100d04ffd7eda6a0b6dbbb5b3db",
+    "bytes": 1639084,
+    "pdf_pages": 142,
+    "retrieved_on": "2026-10-26",
+    "status": "retrieved_inspected",
+    "notes": "Selected XB source tables extracted; no frontend import or scope classification.",
+    "contributor_status": "not_a_complete_named_contributor_schedule",
+    "tables": [
+      {
+        "title": "Statement of financial performance by segment",
+        "pdf_pages": [
+          87
+        ],
+        "measure": "IPSAS expenses/revenue",
+        "grain": "segment and elimination",
+        "role": "control"
+      },
+      {
+        "title": "Annexes I\u2013VI",
+        "pdf_pages": [
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140,
+          141,
+          142
+        ],
+        "measure": "net assets, revenue, expense and movements",
+        "grain": "fund account and rollup",
+        "role": "fund_detail"
+      }
+    ],
+    "extraction_status": "selected_tables_extracted"
+  },
+  {
+    "source_id": "un-habitat-accounts-2023",
+    "publisher": "UN-HABITAT",
+    "reporting_entity": "UN-HABITAT",
+    "reporting_year": 2023,
+    "document_symbol": "A/79/5/Add.9",
+    "source_role": "audited_accounts",
+    "url": "https://digitallibrary.un.org/record/4061097/files/A_79_5_Add.9-EN.pdf",
+    "local_path": "data/trust-fund-source-candidates/raw/UN-HABITAT-2023.pdf",
+    "sha256": "1b7381771df237ee05b8ceebc0e0d374e86454f2d0a6886630bec9fdfc637084",
+    "bytes": 1932050,
+    "pdf_pages": 134,
+    "retrieved_on": "2026-10-26",
+    "status": "retrieved_inspected",
+    "notes": "Selected XB source tables extracted; no frontend import or scope classification.",
+    "contributor_status": "not_a_complete_named_contributor_schedule",
+    "tables": [
+      {
+        "title": "Note 4 segment financial performance",
+        "pdf_pages": [
+          102
+        ],
+        "measure": "IPSAS expenses/revenue",
+        "grain": "segment and elimination",
+        "role": "segment_detail"
+      }
+    ],
+    "extraction_status": "selected_tables_extracted"
+  },
+  {
+    "source_id": "un-habitat-accounts-2024",
+    "publisher": "UN-HABITAT",
+    "reporting_entity": "UN-HABITAT",
+    "reporting_year": 2024,
+    "document_symbol": "A/80/5/Add.9",
+    "source_role": "audited_accounts",
+    "url": "https://digitallibrary.un.org/record/4090387/files/A_80_5_Add.9-EN.pdf",
+    "local_path": "data/trust-fund-source-candidates/raw/UN-HABITAT-2024.pdf",
+    "sha256": "c762a5431814525922747f15eaad67bd2109fb299f3bfa984a48a67b7015542f",
+    "bytes": 1338742,
+    "pdf_pages": 115,
+    "retrieved_on": "2026-10-26",
+    "status": "retrieved_inspected",
+    "notes": "Selected XB source tables extracted; no frontend import or scope classification.",
+    "contributor_status": "not_a_complete_named_contributor_schedule",
+    "tables": [
+      {
+        "title": "Note 4 segment financial performance",
+        "pdf_pages": [
+          83
+        ],
+        "measure": "IPSAS expenses/revenue",
+        "grain": "segment and elimination",
+        "role": "segment_detail"
+      }
+    ],
+    "extraction_status": "selected_tables_extracted"
+  },
+  {
+    "source_id": "unodc-accounts-2023",
+    "publisher": "UNODC",
+    "reporting_entity": "UNODC",
+    "reporting_year": 2023,
+    "document_symbol": "A/79/5/Add.10",
+    "source_role": "audited_accounts",
+    "url": "https://digitallibrary.un.org/record/4059190/files/A_79_5_Add.10-EN.pdf",
+    "local_path": "data/trust-fund-source-candidates/raw/UNODC-2023.pdf",
+    "sha256": "3d84df586a9433864457e9db61a2f1fac81aaa2e44738aee8799106c8f526445",
+    "bytes": 2030405,
+    "pdf_pages": 114,
+    "retrieved_on": "2026-10-26",
+    "status": "retrieved_inspected",
+    "notes": "Selected XB source tables extracted; no frontend import or scope classification.",
+    "contributor_status": "not_a_complete_named_contributor_schedule",
+    "tables": [
+      {
+        "title": "Note 18 regular budget expenditure",
+        "pdf_pages": [
+          98
+        ],
+        "measure": "IPSAS RB expenditure",
+        "grain": "entity direct/support",
+        "role": "control"
+      },
+      {
+        "title": "Statement II and drug/crime pillars",
+        "pdf_pages": [
+          57,
+          80
+        ],
+        "measure": "IPSAS expenses/revenue including RB",
+        "grain": "entity and pillar",
+        "role": "control_not_pure_fund_detail"
+      }
+    ],
+    "extraction_status": "selected_tables_extracted"
+  },
+  {
+    "source_id": "unodc-accounts-2024",
+    "publisher": "UNODC",
+    "reporting_entity": "UNODC",
+    "reporting_year": 2024,
+    "document_symbol": "A/80/5/Add.10",
+    "source_role": "audited_accounts",
+    "url": "https://digitallibrary.un.org/record/4090388/files/A_80_5_Add.10-EN.pdf",
+    "local_path": "data/trust-fund-source-candidates/raw/UNODC-2024.pdf",
+    "sha256": "2914f0ecbcc11cf22aaffb14e96514cc5d68efd89c2790ef219d022eb7764653",
+    "bytes": 1169269,
+    "pdf_pages": 97,
+    "retrieved_on": "2026-10-26",
+    "status": "retrieved_inspected",
+    "notes": "Selected XB source tables extracted; no frontend import or scope classification.",
+    "contributor_status": "not_a_complete_named_contributor_schedule",
+    "tables": [
+      {
+        "title": "Note 18 regular budget expenditure",
+        "pdf_pages": [
+          82
+        ],
+        "measure": "IPSAS RB expenditure",
+        "grain": "entity direct/support",
+        "role": "control"
+      },
+      {
+        "title": "Statement II and drug/crime pillars",
+        "pdf_pages": [
+          45,
+          66
+        ],
+        "measure": "IPSAS expenses/revenue including RB",
+        "grain": "entity and pillar",
+        "role": "control_not_pure_fund_detail"
+      }
+    ],
+    "extraction_status": "selected_tables_extracted"
+  },
+  {
+    "source_id": "itc-accounts-2023",
+    "publisher": "ITC",
+    "reporting_entity": "ITC",
+    "reporting_year": 2023,
+    "document_symbol": "A/79/5(Vol.III)",
+    "source_role": "audited_accounts",
+    "url": "https://digitallibrary.un.org/record/4060838/files/A_79_5_%28Vol._III%29-EN.pdf",
+    "local_path": "data/trust-fund-source-candidates/raw/ITC-2023.pdf",
+    "sha256": "c7dd8d208c5d22edb42062014dbdc768ad7c32863409da3057f73f349a89b13f",
+    "bytes": 1269557,
+    "pdf_pages": 94,
+    "retrieved_on": "2026-10-26",
+    "status": "retrieved_inspected",
+    "notes": "Selected XB source tables extracted; no frontend import or scope classification.",
+    "contributor_status": "not_a_complete_named_contributor_schedule",
+    "tables": [
+      {
+        "title": "Audited financial statements",
+        "measure": "entity IPSAS accounts",
+        "grain": "entity",
+        "role": "control_not_window_expense_detail"
+      }
+    ],
+    "extraction_status": "selected_tables_extracted"
+  },
+  {
+    "source_id": "itc-accounts-2024",
+    "publisher": "ITC",
+    "reporting_entity": "ITC",
+    "reporting_year": 2024,
+    "document_symbol": "A/80/5(Vol.III)",
+    "source_role": "audited_accounts",
+    "url": "https://digitallibrary.un.org/record/4090394/files/A_80_5_%28Vol._III%29-EN.pdf",
+    "local_path": "data/trust-fund-source-candidates/raw/ITC-2024.pdf",
+    "sha256": "6f4cfac3051ae778ba57bbecc72af31f459af57adb7068c439ff75c7ca2944f8",
+    "bytes": 1061846,
+    "pdf_pages": 84,
+    "retrieved_on": "2026-10-26",
+    "status": "retrieved_inspected",
+    "notes": "Selected XB source tables extracted; no frontend import or scope classification.",
+    "contributor_status": "not_a_complete_named_contributor_schedule",
+    "tables": [
+      {
+        "title": "Audited financial statements",
+        "measure": "entity IPSAS accounts",
+        "grain": "entity",
+        "role": "control_not_window_expense_detail"
+      }
+    ],
+    "extraction_status": "selected_tables_extracted"
+  },
+  {
+    "source_id": "itc-appendix-2023",
+    "publisher": "ITC",
+    "reporting_entity": "ITC",
+    "reporting_year": 2023,
+    "document_symbol": "ITC/AG(LVIII)/294",
+    "source_role": "contributor_schedule",
+    "url": "https://www.intracen.org/sites/default/files/inline-files/ITC_Appendices-AR23_20240529_webpages.pdf",
+    "local_path": "data/trust-fund-source-candidates/raw/itc-appendix-2023.pdf",
+    "sha256": "b31aa406ecfbcb5648f3fe4c45a188bf5c9609acfaae0530667f5f3a4a07838a",
+    "bytes": 764508,
+    "pdf_pages": 58,
+    "retrieved_on": "2026-10-26",
+    "status": "retrieved_inspected",
+    "notes": "Contributor basis/coverage differs from Volume I; see integration plan.",
+    "contributor_status": "retrieved_rows_basis_to_qualify",
+    "tables": [
+      {
+        "title": "Appendix IV schedule of voluntary contributions to ITC Trust Fund",
+        "pdf_pages": [
+          51,
+          52,
+          53
+        ],
+        "measure": "Total XB funding received",
+        "grain": "contributor \u00d7 window \u00d7 year",
+        "printed_unit": "USD thousands",
+        "observation_years": [
+          2022,
+          2023
+        ],
+        "role": "contributor_detail_basis_to_qualify"
+      }
+    ],
+    "extraction_status": "selected_tables_extracted"
+  },
+  {
+    "source_id": "habitat-2024-donors",
+    "publisher": "UN-HABITAT",
+    "reporting_entity": "UN-HABITAT",
+    "reporting_year": 2024,
+    "document_symbol": "HSP/EB.2025/2",
+    "source_role": "interim_financial_and_contributor_report",
+    "url": "https://unhabitat.org/sites/default/files/2025/02/2501145e.pdf",
+    "local_path": "data/trust-fund-source-candidates/raw/habitat-2024-donors.pdf",
+    "sha256": "79c1dc91fa99cbfa95afb1d55b4095cb3670bd93d72402baa401e74245be2386",
+    "bytes": 299606,
+    "pdf_pages": 10,
+    "retrieved_on": "2026-10-26",
+    "status": "retrieved_inspected",
+    "notes": "Contributor basis/coverage differs from Volume I; see integration plan.",
+    "contributor_status": "retrieved_interim_partial_counterparty_detail",
+    "tables": [
+      {
+        "title": "Annex II Foundation non-earmarked contributions",
+        "pdf_pages": [
+          7,
+          8
+        ],
+        "measure": "interim annual contribution status",
+        "grain": "contributor \u00d7 year",
+        "printed_unit": "USD",
+        "role": "contributor_detail"
+      },
+      {
+        "title": "Annex III earmarked voluntary contributions",
+        "pdf_pages": [
+          9,
+          10
+        ],
+        "measure": "interim contribution status including transfers, before separately reported refunds",
+        "grain": "contributor \u00d7 segment",
+        "printed_unit": "USD thousands",
+        "role": "contributor_detail"
+      }
+    ],
+    "extraction_status": "selected_tables_extracted"
+  },
+  {
+    "source_id": "habitat-2023-donors",
+    "publisher": "UN-HABITAT",
+    "reporting_entity": "UN-HABITAT",
+    "reporting_year": 2023,
+    "document_symbol": "HSP/EB.2024/2",
+    "source_role": "interim_financial_and_contributor_report",
+    "url": "https://unhabitat.org/sites/default/files/2024/02/hsp-eb-2024-2_financial_status_of_the_united_nations_human_settlements_programme_as_at_31_december_2023.pdf",
+    "local_path": "data/trust-fund-source-candidates/raw/habitat-2023-donors.pdf",
+    "sha256": "a575a611221677c335c7638056ba95a3ce47967034b895c716b893980bf06e1e",
+    "bytes": 273975,
+    "pdf_pages": 8,
+    "retrieved_on": "2026-10-26",
+    "status": "retrieved_inspected",
+    "notes": "Contributor basis/coverage differs from Volume I; see integration plan.",
+    "contributor_status": "retrieved_interim_partial_counterparty_detail",
+    "tables": [
+      {
+        "title": "Annex II Foundation non-earmarked contributions",
+        "pdf_pages": [
+          6
+        ],
+        "measure": "interim annual contribution status",
+        "grain": "contributor \u00d7 year",
+        "printed_unit": "USD",
+        "role": "contributor_detail"
+      },
+      {
+        "title": "Annex III earmarked voluntary contributions",
+        "pdf_pages": [
+          7,
+          8
+        ],
+        "measure": "interim contribution status including transfers, before separately reported refunds",
+        "grain": "contributor \u00d7 segment",
+        "printed_unit": "USD thousands",
+        "role": "contributor_detail"
+      }
+    ],
+    "extraction_status": "selected_tables_extracted"
+  },
+  {
+    "source_id": "itc-financial-report-2024",
+    "publisher": "ITC",
+    "reporting_entity": "ITC",
+    "reporting_year": 2024,
+    "document_symbol": "A/80/5 (Vol. III)",
+    "source_role": "financial_report",
+    "url": "https://digitallibrary.un.org/record/4090394/files/A_80_5_Vol-III-ch-IV.pdf?version=1",
+    "local_path": "data/trust-fund-source-candidates/raw/ITC-2024-financial-report.pdf",
+    "sha256": "64ee7b9be55a2b167a52380df079ced0c798ddf1ad0038f6af4232a323a4991d",
+    "bytes": 323358,
+    "pdf_pages": 14,
+    "retrieved_on": "2026-10-26",
+    "status": "retrieved_inspected",
+    "notes": "Separate chapter IV; reported gross XB expenditure is distinct from IPSAS entity expense.",
+    "tables": [
+      {
+        "title": "Chapter IV, paragraph 12",
+        "pdf_pages": [
+          2
+        ],
+        "measure": "gross XB delivery",
+        "grain": "entity"
+      }
+    ],
+    "extraction_status": "selected_tables_extracted"
+  }
+]

@@ -1,0 +1,45 @@
+{
+  "status": "passed_partial_source_coverage",
+  "checks": [
+    "two years \u00d7 two source-labelled tables \u00d7 fifteen unique counterparties",
+    "source PDFs and physical pages retained; SHA-256 pinned",
+    "printed decimal million amounts converted exactly to USD",
+    "grouped counterparty categories distinguished from named donors",
+    "no invented Other contributor or annual denominator",
+    "Environment Fund family not allocated to FEL/FPL/RAL"
+  ],
+  "series": [
+    {
+      "period_year": 2023,
+      "object_label": "Environment Fund",
+      "rows": 15,
+      "listed_amount_usd": 81600000,
+      "coverage": "partial_top15",
+      "complete_annual_total_usd": null
+    },
+    {
+      "period_year": 2023,
+      "object_label": "Earmarked funds",
+      "rows": 15,
+      "listed_amount_usd": 251200000,
+      "coverage": "partial_top15",
+      "complete_annual_total_usd": null
+    },
+    {
+      "period_year": 2024,
+      "object_label": "Environment Fund",
+      "rows": 15,
+      "listed_amount_usd": 80600000,
+      "coverage": "partial_top15",
+      "complete_annual_total_usd": null
+    },
+    {
+      "period_year": 2024,
+      "object_label": "Earmarked funds",
+      "rows": 15,
+      "listed_amount_usd": 269200000,
+      "coverage": "partial_top15",
+      "complete_annual_total_usd": null
+    }
+  ]
+}

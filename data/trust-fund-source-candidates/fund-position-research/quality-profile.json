@@ -1,0 +1,810 @@
+{
+  "status": "passed",
+  "observations": 424,
+  "fund_groups_per_year": 5,
+  "checks": [
+    {
+      "report_year": 2023,
+      "check": "fund_assets_less_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:FNDN"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_current_plus_noncurrent_assets",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:FNDN"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_current_plus_noncurrent_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:FNDN"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_surplus_plus_reserves",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:FNDN"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_assets_less_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:FNDE"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_current_plus_noncurrent_assets",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:FNDE"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_current_plus_noncurrent_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:FNDE"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_surplus_plus_reserves",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:FNDE"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_assets_less_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:TECH"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_current_plus_noncurrent_assets",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:TECH"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_current_plus_noncurrent_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:TECH"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_surplus_plus_reserves",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:TECH"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_assets_less_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:PSC"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_current_plus_noncurrent_assets",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:PSC"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_current_plus_noncurrent_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:PSC"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_surplus_plus_reserves",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:PSC"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_assets_less_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:BEN"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_current_plus_noncurrent_assets",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:BEN"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_current_plus_noncurrent_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:BEN"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_surplus_plus_reserves",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:BEN"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Current assets",
+      "label": "Cash and cash equivalents"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Current assets",
+      "label": "Investments"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Current assets",
+      "label": "Voluntary contributions receivable"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Current assets",
+      "label": "Other receivables"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Current assets",
+      "label": "Advance transfers"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Current assets",
+      "label": "Other assets"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Current assets",
+      "label": "Total current assets"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current assets",
+      "label": "Investments"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current assets",
+      "label": "Voluntary contributions receivable"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current assets",
+      "label": "Property, plant and equipment"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current assets",
+      "label": "Intangible assets"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current assets",
+      "label": "Total non-current assets"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current assets",
+      "label": "Total assets"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Liabilities",
+      "label": "Accounts payable and accrued liabilities"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Liabilities",
+      "label": "Funds received in advance and deferred revenue"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Liabilities",
+      "label": "Employee benefits liabilities"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Liabilities",
+      "label": "Liabilities for conditional arrangements"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Liabilities",
+      "label": "Provisions"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Liabilities",
+      "label": "Other liabilities"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Liabilities",
+      "label": "Total current liabilities"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current liabilities",
+      "label": "Employee benefits liabilities"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current liabilities",
+      "label": "Total non-current liabilities"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current liabilities",
+      "label": "Total liabilities"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current liabilities",
+      "label": "Net of total assets and liabilities"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Net assets",
+      "label": "Accumulated surplus/(deficit)"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Net assets",
+      "label": "Reserves"
+    },
+    {
+      "report_year": 2023,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Net assets",
+      "label": "Total net assets"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_assets_less_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:FNDN"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_current_plus_noncurrent_assets",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:FNDN"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_current_plus_noncurrent_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:FNDN"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_surplus_plus_reserves",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:FNDN"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_assets_less_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:FNDE"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_current_plus_noncurrent_assets",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:FNDE"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_current_plus_noncurrent_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:FNDE"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_surplus_plus_reserves",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:FNDE"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_assets_less_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:TECH"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_current_plus_noncurrent_assets",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:TECH"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_current_plus_noncurrent_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:TECH"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_surplus_plus_reserves",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:TECH"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_assets_less_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:PSC"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_current_plus_noncurrent_assets",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:PSC"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_current_plus_noncurrent_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:PSC"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_surplus_plus_reserves",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:PSC"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_assets_less_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:BEN"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_current_plus_noncurrent_assets",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:BEN"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_current_plus_noncurrent_liabilities",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:BEN"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_surplus_plus_reserves",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "object_id": "UN-HABITAT:segment:BEN"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Current assets",
+      "label": "Cash and cash equivalents"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Current assets",
+      "label": "Investments"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Current assets",
+      "label": "Voluntary contributions receivable"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Current assets",
+      "label": "Other receivables"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Current assets",
+      "label": "Advance transfers"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Current assets",
+      "label": "Other assets"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Current assets",
+      "label": "Total current assets"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current assets",
+      "label": "Investments"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current assets",
+      "label": "Voluntary contributions receivable"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current assets",
+      "label": "Property, plant and equipment"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current assets",
+      "label": "Intangible assets"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current assets",
+      "label": "Total non-current assets"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current assets",
+      "label": "Total assets"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Liabilities",
+      "label": "Accounts payable and accrued liabilities"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Liabilities",
+      "label": "Funds received in advance and deferred revenue"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Liabilities",
+      "label": "Employee benefits liabilities"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Liabilities",
+      "label": "Liabilities for conditional arrangements"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Liabilities",
+      "label": "Other liabilities"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Liabilities",
+      "label": "Total current liabilities"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current liabilities",
+      "label": "Employee benefits liabilities"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current liabilities",
+      "label": "Total non-current liabilities"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current liabilities",
+      "label": "Total liabilities"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Non-current liabilities",
+      "label": "Net of total assets and liabilities"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Net assets",
+      "label": "Accumulated surplus/(deficit)"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Net assets",
+      "label": "Reserves"
+    },
+    {
+      "report_year": 2024,
+      "check": "fund_columns_plus_elimination_to_reported_total",
+      "difference_usd": "0",
+      "tolerance_usd": 2000,
+      "passed": true,
+      "section": "Net assets",
+      "label": "Total net assets"
+    }
+  ],
+  "publication_scope": "Only explicit Habitat funding-segment columns; validation entity totals never returned",
+  "unavailable": {
+    "UNODC": "Drug/crime pillar positions include RB; no explicit GP/SP or pure-XB fund position schedule verified.",
+    "ITC": "Note14 reports fund operating reserves only, not complete fund positions; retained separately as limited research facts.",
+    "UNEP": "Existing source-specific account/group closing net assets remain in the main extraction; not replaced by whole-entity statements."
+  }
+}

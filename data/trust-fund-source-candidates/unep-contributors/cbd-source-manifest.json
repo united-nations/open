@@ -1,0 +1,26 @@
+[
+  {
+    "source_id": "cbd-contribution-status-2023",
+    "year": 2023,
+    "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2023",
+    "publisher": "Secretariat of the Convention on Biological Diversity",
+    "local_path": "data/trust-fund-source-candidates/unep-contributors/raw/cbd-contributions-2023.html",
+    "sha256": "f0d7c6e8c8c5fe1935896b0da19b8e6eaf7dd1cb6356c84dfe3525c589de87c6",
+    "retrieved_on": "2026-10-27",
+    "tables": 9,
+    "source_type": "historical_HTML_ledger",
+    "pdf_pages": null
+  },
+  {
+    "source_id": "cbd-contribution-status-2024",
+    "year": 2024,
+    "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2024",
+    "publisher": "Secretariat of the Convention on Biological Diversity",
+    "local_path": "data/trust-fund-source-candidates/unep-contributors/raw/cbd-contributions-2024.html",
+    "sha256": "4f0172270cab55a7315d668ed8b28ef860281092ce2f0d2947d313034e8f8055",
+    "retrieved_on": "2026-10-27",
+    "tables": 9,
+    "source_type": "historical_HTML_ledger",
+    "pdf_pages": null
+  }
+]

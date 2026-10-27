@@ -1,0 +1,222 @@
+object_id,entity,original_code,object_kind,name,parent_id,classification_status
+UNEP:segment:ENV,UNEP,ENV,segment,Environment Fund,UNEP,scope_not_decided
+UNEP:segment:RB,UNEP,RB,segment,Regular budget,UNEP,scope_not_decided
+UNEP:segment:POW,UNEP,POW,segment,Other support to programme of work,UNEP,scope_not_decided
+UNEP:segment:CONV,UNEP,CONV,segment,Conventions and protocols,UNEP,scope_not_decided
+UNEP:segment:MLF,UNEP,MLF,segment,Multilateral Fund,UNEP,scope_not_decided
+UNEP:segment:PSC,UNEP,PSC,segment,Programme support,UNEP,scope_not_decided
+UNEP:segment:BEN,UNEP,BEN,segment,End-of-service and post-retirement benefits,UNEP,scope_not_decided
+UNEP:adjustment:ELIM,UNEP,ELIM,adjustment,Intersegment eliminations,UNEP,scope_not_decided
+UNEP:entity_total:TOTAL,UNEP,TOTAL,entity_total,All funds comparative,UNEP,scope_not_decided
+UNEP:account:FEL,UNEP,FEL,fund_account,UNEP Environment support budget,UNEP:annex:I,scope_not_decided
+UNEP:account:FPL,UNEP,FPL,fund_account,Environment Fund programme activities,UNEP:annex:I,scope_not_decided
+UNEP:account:RAL,UNEP,RAL,fund_account,Environment Fund programme reserve activities,UNEP:annex:I,scope_not_decided
+unep-accounts-2023:annex:I:row:130:3,UNEP,,reported_rollup,Net total,UNEP:annex:I,scope_not_decided
+UNEP:account:CBL,UNEP,CBL,fund_account,Trust fund for the capacity-building initiatives for transparency of the Global Environment Facility,UNEP:annex:II,scope_not_decided
+UNEP:account:CCL,UNEP,CCL,fund_account,Technical cooperation trust fund for the management of the United Nations Environment Programme (UNEP)/Global Environment Facility special climate change fund programme,UNEP:annex:II,scope_not_decided
+UNEP:account:FBL,UNEP,FBL,fund_account,Technical cooperation trust fund for the implementation of the Global Environment Facility fee-based system for funding project implementation,UNEP:annex:II,scope_not_decided
+UNEP:account:GFL,UNEP,GFL,fund_account,Technical cooperation trust fund for UNEP implementation of the activities funded by the Global Environment Facility,UNEP:annex:II,scope_not_decided
+UNEP:account:LDL,UNEP,LDL,fund_account,Technical cooperation Trust Fund for the management of the UNEP/Global Environment Facility national adaptation programme of action for leas t developed countries,UNEP:annex:II,scope_not_decided
+UNEP:account:NPL,UNEP,NPL,fund_account,Technical Cooperation Trust Fund for the Management of UNEP/GEF Nagoya Protocol implementation fund,UNEP:annex:II,scope_not_decided
+unep-accounts-2023:annex:II:row:131:6,UNEP,,reported_rollup,Global Environment Facility trust fund: totals,UNEP:annex:II,scope_not_decided
+UNEP:account:AEL,UNEP,AEL,fund_account,General trust fund for the purpose of post-conflict environmental assessment,UNEP:annex:II,scope_not_decided
+UNEP:account:AFB,UNEP,AFB,fund_account,Technical cooperation trust fund for UNEP activities as multilateral implementing entity of the Adaptation Fund Board,UNEP:annex:II,scope_not_decided
+UNEP:account:AML,UNEP,AML,fund_account,General trust fund for the African Ministerial Conference on the Environment,UNEP:annex:II,scope_not_decided
+UNEP:account:BPL,UNEP,BPL,fund_account,Technical cooperation trust fund for the implementation of the agreement with Belgium,UNEP:annex:II,scope_not_decided
+UNEP:account:CFL,UNEP,CFL,fund_account,Technical cooperation trust fund for the implementation of the framework agreement on strategic cooperation between the Ministry of Environmental Protection of China and UNEP,UNEP:annex:II,scope_not_decided
+UNEP:account:CLL,UNEP,CLL,fund_account,Trust fund to support the activities of the Climate Technology Centre and Network,UNEP:annex:II,scope_not_decided
+UNEP:account:CML,UNEP,CML,fund_account,"Trust fund for the special programme in support of institutional strengthening at the national level to enhance implementation of the Basel, Rotterdam and Stockholm Conventions, the Minamata Convention on mercury and the Strategic Approach to International Chemicals Management",UNEP:annex:II,scope_not_decided
+UNEP:account:CNL,UNEP,CNL,fund_account,Technical cooperation trust fund for the UNEP climate-neutral fund,UNEP:annex:II,scope_not_decided
+UNEP:account:CPL,UNEP,CPL,fund_account,Counterpart contributions in support of Environment Fund activities,UNEP:annex:II,scope_not_decided
+UNEP:account:CSS,UNEP,CSS,fund_account,UNEP general trust fund for climate stability,UNEP:annex:II,scope_not_decided
+UNEP:account:DPL,UNEP,DPL,fund_account,Technical cooperation trust fund for the partnership agreement between the Government of the Kingdom of the Netherlands and UNEP,UNEP:annex:II,scope_not_decided
+UNEP:account:ECL,UNEP,ECL,fund_account,Technical cooperation trust fund to support achievement of contribution agreement No. 21 (0401/2011/608174/SUB/E2) – strategic cooperation agreement between the European Commission Directorate-General for the Environment and UNEP,UNEP:annex:II,scope_not_decided
+UNEP:account:ESS,UNEP,ESS,fund_account,Technical cooperation trust fund for UNEP implementation of ecosystem-based adaptation,UNEP:annex:II,scope_not_decided
+UNEP:account:ETL,UNEP,ETL,fund_account,Trust fund for the environmental training network in Latin America and the Caribbean,UNEP:annex:II,scope_not_decided
+UNEP:account:EUL,UNEP,EUL,fund_account,Technical cooperation trust fund to support achievement of contribution agreement No. DCI- ENV/2010/258-800 – strategic cooperation agreement between the European Commission Directorate-General for the Environment and UNEP,UNEP:annex:II,scope_not_decided
+UNEP:account:FIL,UNEP,FIL,fund_account,General trust fund to support the activities of the UNEP financial services initiative on the environment,UNEP:annex:II,scope_not_decided
+UNEP:account:FRL,UNEP,FRL,fund_account,UNEP Environment Fund holding fund for cash transactions of UNEP Economy Division – Environment Fund support budget – counterpart contributions,UNEP:annex:II,scope_not_decided
+UNEP:account:FSL,UNEP,FSL,fund_account,Technical cooperation trust fund to support implementation of the Seed Capital Assistance Facility,UNEP:annex:II,scope_not_decided
+UNEP:account:FTL,UNEP,FTL,fund_account,Trust fund for revolving fund activities,UNEP:annex:II,scope_not_decided
+UNEP:account:GCF,UNEP,GCF,fund_account,General trust fund to support the activities of the Green Climate Fund operating under the accreditation master agreement,UNEP:annex:II,scope_not_decided
+UNEP:account:GCL,UNEP,GCL,fund_account,General trust fund to support the activities of the Green Climate Fund operating under the framework readiness and preparatory support grant agreement,UNEP:annex:II,scope_not_decided
+UNEP:account:GPL,UNEP,GPL,fund_account,"General trust fund in support of the implementation of the Global Programme of Action for the Protection of the Marine Environment from Land- based Activities, and related information exchange and technical assistance",UNEP:annex:II,scope_not_decided
+UNEP:account:GPP,UNEP,GPP,fund_account,"Trust fund to assist delegates from developing countries, least developed countries, landlocked developing countries and small island developing States in attending the sessions of the ad hoc open- ended working group",UNEP:annex:II,scope_not_decided
+UNEP:account:GPS,UNEP,GPS,fund_account,Trust fund for activities and functions of the Secretariat and organization of meetings and consultations in respect of the Global Pact for the Environment,UNEP:annex:II,scope_not_decided
+UNEP:account:GRL,UNEP,GRL,fund_account,Technical cooperation trust fund for the implementation of the greening economies in the Eastern neighbourhood and Central Asia programme,UNEP:annex:II,scope_not_decided
+UNEP:account:IAL,UNEP,IAL,fund_account,Technical cooperation trust fund for Irish Aid multilateral environment fund for Africa,UNEP:annex:II,scope_not_decided
+UNEP:account:IEL,UNEP,IEL,fund_account,Technical cooperation trust fund for priority projects to improve the environment in the Democratic People’s Republic of Korea,UNEP:annex:II,scope_not_decided
+UNEP:account:IML,UNEP,IML,fund_account,Technical cooperation trust fund for UNEP implementation of the Multilateral Fund activities,UNEP:annex:II,scope_not_decided
+UNEP:account:JCL,UNEP,JCL,fund_account,Technical cooperation trust fund for the establishment of the International Environmental Technology Centre in Japan,UNEP:annex:II,scope_not_decided
+UNEP:account:LHN,UNEP,LHN,fund_account,General trust fund for living in harmony with nature,UNEP:annex:II,scope_not_decided
+UNEP:account:MCL,UNEP,MCL,fund_account,General trust fund in support of the preparation of a global assessment of mercury and its compounds,UNEP:annex:II,scope_not_decided
+UNEP:account:MDL,UNEP,MDL,fund_account,Technical cooperation trust fund for UNEP implementation of the Millennium Development Goals achievement fund,UNEP:annex:II,scope_not_decided
+UNEP:account:MOL,UNEP,MOL,fund_account,General trust fund to support the activities of the Montevideo programme V,UNEP:annex:II,scope_not_decided
+UNEP:account:NFL,UNEP,NFL,fund_account,Technical cooperation trust fund for the implementation of the framework agreement between UNEP and the Government of Norway,UNEP:annex:II,scope_not_decided
+UNEP:account:PFP,UNEP,PFP,fund_account,General trust fund for a pollution free planet,UNEP:annex:II,scope_not_decided
+UNEP:account:PGL,UNEP,PGL,fund_account,Technical cooperation trust fund for the implementation of the Partnership for Action on Green Economy,UNEP:annex:II,scope_not_decided
+UNEP:account:POL,UNEP,POL,fund_account,"General trust fund in support of the preparation for and negotiation of an internationally legally binding instrument for international action on persistent organic pollutants, and related information exchange and technical assistance activities",UNEP:annex:II,scope_not_decided
+UNEP:account:QGL,UNEP,QGL,fund_account,Support of the Global Environment Facility,UNEP:annex:II,scope_not_decided
+UNEP:account:RED,UNEP,RED,fund_account,Technical cooperation trust fund to support the UNEP programme of work and responsibilities of the United Nations Collaborative Programme on Reducing Emissions from Deforestation and Forest Degradation in Developing Countries,UNEP:annex:II,scope_not_decided
+UNEP:account:REL,UNEP,REL,fund_account,Technical cooperation trust fund for the promotion of renewable energy in the Mediterranean region,UNEP:annex:II,scope_not_decided
+UNEP:account:RPL,UNEP,RPL,fund_account,General trust fund to support participation of developing countries in a regular process for reporting and assessment of the state of the marine environment,UNEP:annex:II,scope_not_decided
+UNEP:account:SCP,UNEP,SCP,fund_account,Technical cooperation trust fund for the 10-Year Framework of Programmes on Sustainable Consumption and Production Patterns,UNEP:annex:II,scope_not_decided
+UNEP:account:SEL,UNEP,SEL,fund_account,Technical cooperation trust fund for the implementation of the agreement with Sweden,UNEP:annex:II,scope_not_decided
+UNEP:account:SFL,UNEP,SFL,fund_account,Technical cooperation trust fund for implementation of the framework agreement between Spain and UNEP,UNEP:annex:II,scope_not_decided
+UNEP:account:SLP,UNEP,SLP,fund_account,Trust fund to support the activities of the Climate and Clean Air Coalition to Reduce Short-lived Climate Pollutants,UNEP:annex:II,scope_not_decided
+UNEP:account:SML,UNEP,SML,fund_account,General trust fund for the Strategic Approach to International Chemicals Management: quick start programme,UNEP:annex:II,scope_not_decided
+UNEP:account:UTL,UNEP,UTL,fund_account,"Technical cooperation trust fund for the implementation of the UNEP/United Nations Conference on Trade and Development capacity- building task force on trade, environment and development",UNEP:annex:II,scope_not_decided
+UNEP:account:WPL,UNEP,WPL,fund_account,General trust fund to provide support to the Global Environment Monitoring System/Water Programme office and to promote its activities,UNEP:annex:II,scope_not_decided
+UNEP:account:FEC,UNEP,FEC,fund_account,General trust fund for the core activities of the “Faith for Earth Coalition” of UNEP,UNEP:annex:II,scope_not_decided
+unep-accounts-2023:annex:II:row:134:10,UNEP,,reported_rollup,Other support to UNEP programme of work (non-Global Environment Facility trust fund non-Junior Professional Officer): total,UNEP:annex:II,scope_not_decided
+UNEP:account:TBL,UNEP,TBL,fund_account,Technical cooperation trust fund for provision of Junior Professional Officers (financed by the Government of Belgium),UNEP:annex:II,scope_not_decided
+UNEP:account:CEL,UNEP,CEL,fund_account,Technical cooperation trust fund for financing of Junior Professional Officers (financed by the Government of Finland),UNEP:annex:II,scope_not_decided
+UNEP:account:SNL,UNEP,SNL,fund_account,Technical cooperation trust fund for provision of Junior Professional Officers (financed by the Government of Switzerland),UNEP:annex:II,scope_not_decided
+UNEP:account:TCL,UNEP,TCL,fund_account,Technical cooperation trust fund for the provision of Junior Professional Officers (financed by the Nordic Governments through the Government of Sweden),UNEP:annex:II,scope_not_decided
+UNEP:account:TDL,UNEP,TDL,fund_account,Special purpose trust fund for the Government of Denmark agreement with UNEP for the provision of Junior Professional Officers,UNEP:annex:II,scope_not_decided
+UNEP:account:TGL,UNEP,TGL,fund_account,Special purpose trust fund for the provision of Junior Professional Officers (financed by the Government of Germany),UNEP:annex:II,scope_not_decided
+UNEP:account:THL,UNEP,THL,fund_account,Technical cooperation trust fund for the provision of Junior Professional Officers (financed by the Government of the Kingdom of the Netherlands),UNEP:annex:II,scope_not_decided
+UNEP:account:TIL,UNEP,TIL,fund_account,Technical cooperation trust fund for the provision of Junior Professional Officers (financed by the Government of Italy),UNEP:annex:II,scope_not_decided
+UNEP:account:TJL,UNEP,TJL,fund_account,Technical cooperation trust fund for the provision of Junior Professional Officers (financed by the Government of Japan),UNEP:annex:II,scope_not_decided
+UNEP:account:TKL,UNEP,TKL,fund_account,Technical cooperation trust fund for the provision of Junior Professional Officers (financed by the Government of the Republic of Korea),UNEP:annex:II,scope_not_decided
+UNEP:account:TNL,UNEP,TNL,fund_account,Special purpose trust fund for the Government of Norway agreement with UNEP for the provision of Junior Professional Officers,UNEP:annex:II,scope_not_decided
+UNEP:account:TPL,UNEP,TPL,fund_account,Technical cooperation trust fund for the provision of Junior Professional Officers (financed by the Spanish Agency for International Development Cooperation),UNEP:annex:II,scope_not_decided
+UNEP:account:TRL,UNEP,TRL,fund_account,Technical cooperation trust fund for the provision of Junior Professional Officers (financed by the Government of France),UNEP:annex:II,scope_not_decided
+UNEP:account:TSL,UNEP,TSL,fund_account,Technical cooperation trust fund for the provision of Junior Professional Officers (financed by the Government of Sweden),UNEP:annex:II,scope_not_decided
+unep-accounts-2023:annex:II:row:135:10,UNEP,,reported_rollup,Trust funds for Junior Professional Officers: total,UNEP:annex:II,scope_not_decided
+unep-accounts-2023:annex:II:row:135:11,UNEP,,reported_rollup,Other support to UNEP programme of work: total,UNEP:annex:II,scope_not_decided
+unep-accounts-2023:annex:II:row:135:12,UNEP,,adjustment,Fund IML financial statement elimination,UNEP:annex:II,scope_not_decided
+unep-accounts-2023:annex:II:row:135:13,UNEP,,reported_rollup,Net total,UNEP:annex:II,scope_not_decided
+UNEP:account:BDL,UNEP,BDL,fund_account,Trust fund to assist developing countries and other countries in need of technical assistance in the implementation of the Basel Convention on the Control of Transboundary Movements of Hazardous Wastes and Their Disposal,UNEP:annex:III,scope_not_decided
+UNEP:account:BCL,UNEP,BCL,fund_account,Trust Fund for the Basel Convention on the Control of Transboundary Movements of Hazardous Wastes and their Disposal,UNEP:annex:III,scope_not_decided
+UNEP:account:ROL,UNEP,ROL,fund_account,General trust fund for the operational budget of the Rotterdam Convention on the Prior Informed Consent Procedure for Certain Hazardous Chemicals and Pesticides in International Trade,UNEP:annex:III,scope_not_decided
+UNEP:account:SCL,UNEP,SCL,fund_account,"General trust fund for the Stockholm Convention on Persistent Organic Pollutants, its subsidiary bodies, and the Convention secretariat",UNEP:annex:III,scope_not_decided
+UNEP:account:RSL,UNEP,RSL,fund_account,Technical cooperation trust fund to support implementation of the Rotterdam and Stockholm Conventions in developing countries,UNEP:annex:III,scope_not_decided
+UNEP:account:RVL,UNEP,RVL,fund_account,Special Trust Fund for the Rotterdam Convention on the Prior Informed Consent Procedure for Certain Hazardous Chemicals and Pesticides in International Trade,UNEP:annex:III,scope_not_decided
+UNEP:account:SVL,UNEP,SVL,fund_account,Special trust fund for the Stockholm Convention its subsidiary bodies and the Convention secretariat,UNEP:annex:III,scope_not_decided
+unep-accounts-2023:annex:III:row:136:7,UNEP,,reported_rollup,"Basel, Rotterdam and Stockholm Conventions: total",UNEP:annex:III,scope_not_decided
+UNEP:account:QCL,UNEP,QCL,fund_account,Support of the Cartagena Convention Action Plan for the Caribbean Environment Programme,UNEP:annex:III,scope_not_decided
+UNEP:account:CRL,UNEP,CRL,fund_account,Regional trust fund for implementation of the Action Plan for the Caribbean Environment Programme,UNEP:annex:III,scope_not_decided
+unep-accounts-2023:annex:III:row:136:10,UNEP,,reported_rollup,Caribbean Environment Programme: total,UNEP:annex:III,scope_not_decided
+UNEP:account:CAP,UNEP,CAP,fund_account,Trust fund for the core budget of the Framework Convention on the Protection and Sustainable Development of the Carpathians and related protocols,UNEP:annex:III,scope_not_decided
+UNEP:account:CAR,UNEP,CAR,fund_account,Trust fund for the core budget of the Carpathian Convention,UNEP:annex:III,scope_not_decided
+unep-accounts-2023:annex:III:row:137:1,UNEP,,reported_rollup,Carpathian Convention: total,UNEP:annex:III,scope_not_decided
+UNEP:account:BEL,UNEP,BEL,fund_account,General trust fund for additional voluntary contributions in support of approved activities under the Convention on Biological Diversity,UNEP:annex:III,scope_not_decided
+UNEP:account:BBL,UNEP,BBL,fund_account,Trust fund for the core programme budget for the Nagoya Protocol,UNEP:annex:III,scope_not_decided
+UNEP:account:BGL,UNEP,BGL,fund_account,General trust fund for the core programme budget for the Biosafety Protocol,UNEP:annex:III,scope_not_decided
+UNEP:account:BYL,UNEP,BYL,fund_account,General trust fund for the Convention on Biological Diversity,UNEP:annex:III,scope_not_decided
+UNEP:account:BZL,UNEP,BZL,fund_account,General trust fund for voluntary contributions to facilitate the participation of parties in the process of the Convention on Biological Diversity,UNEP:annex:III,scope_not_decided
+UNEP:account:VBL,UNEP,VBL,fund_account,General trust fund for voluntary contributions to facilitate the participation of Indigenous and local communities in the work of the Convention on Biological Diversity,UNEP:annex:III,scope_not_decided
+unep-accounts-2023:annex:III:row:137:8,UNEP,,reported_rollup,Convention on Biological Diversity: total,UNEP:annex:III,scope_not_decided
+UNEP:account:EAP,UNEP,EAP,fund_account,Multi-donor technical cooperation trust fund for the implementation of the African Elephant Action Plan,UNEP:annex:III,scope_not_decided
+UNEP:account:QTL,UNEP,QTL,fund_account,Support of activities related to the Convention on International Trade in Endangered Species of Wild Fauna and Flora,UNEP:annex:III,scope_not_decided
+UNEP:account:CTL,UNEP,CTL,fund_account,Trust fund for the Convention on International Trade in Endangered Species of Wild Fauna and Flora,UNEP:annex:III,scope_not_decided
+unep-accounts-2023:annex:III:row:137:12,UNEP,,reported_rollup,Convention on International Trade in Endangered Species of Wild Fauna and Flora: total,UNEP:annex:III,scope_not_decided
+UNEP:account:AVL,UNEP,AVL,fund_account,General trust fund for voluntary contributions in respect of the Agreement on the Conservation of African-Eurasian Migratory Waterbirds,UNEP:annex:III,scope_not_decided
+UNEP:account:MRL,UNEP,MRL,fund_account,Technical cooperation trust fund on the Conservation and Management of Marine Turtles and their Habitats of the Indian Ocean and South- East Asia,UNEP:annex:III,scope_not_decided
+UNEP:account:MVL,UNEP,MVL,fund_account,General trust fund for voluntary contributions in support of the Convention on the Conservation of Migratory Species of Wild Animals,UNEP:annex:III,scope_not_decided
+UNEP:account:QFL,UNEP,QFL,fund_account,General trust fund for voluntary contributions in support of the secretariat of the Agreement on the Conservation of Populations of European Bats,UNEP:annex:III,scope_not_decided
+UNEP:account:AWL,UNEP,AWL,fund_account,General trust fund for the African-Eurasian Waterbirds Agreement,UNEP:annex:III,scope_not_decided
+UNEP:account:BAL,UNEP,BAL,fund_account,"General trust fund for the conservation of small cetaceans of the Baltic, North-East Atlantic, Irish and North Seas",UNEP:annex:III,scope_not_decided
+UNEP:account:BTL,UNEP,BTL,fund_account,General trust fund for the conservation of European bats,UNEP:annex:III,scope_not_decided
+UNEP:account:MSL,UNEP,MSL,fund_account,Trust fund for the Convention on the Conservation of Migratory Species of Wild Animals,UNEP:annex:III,scope_not_decided
+UNEP:account:QVL,UNEP,QVL,fund_account,"General trust fund in support of the secretariat of the Agreement on the Conservation of Small Cetaceans of the Baltic, North-East Atlantic, Irish and North Seas",UNEP:annex:III,scope_not_decided
+UNEP:account:QWL,UNEP,QWL,fund_account,Support of the Convention on the Conservation of Migratory Species of Wild Animals,UNEP:annex:III,scope_not_decided
+UNEP:account:SMU,UNEP,SMU,fund_account,Trust fund to support the activities of the secretariat of the memorandum of understanding on the conservation of migratory sharks,UNEP:annex:III,scope_not_decided
+unep-accounts-2023:annex:III:row:138:5,UNEP,,reported_rollup,Convention on the Conservation of Migratory Species of Wild Animals: total,UNEP:annex:III,scope_not_decided
+UNEP:account:CAL,UNEP,CAL,fund_account,Support of the Mediterranean Action Plan (financed by the Government of Greece),UNEP:annex:III,scope_not_decided
+UNEP:account:QML,UNEP,QML,fund_account,Support of the Mediterranean Action Plan,UNEP:annex:III,scope_not_decided
+UNEP:account:MEL,UNEP,MEL,fund_account,Trust fund for the protection of the Mediterranean Sea against pollution,UNEP:annex:III,scope_not_decided
+unep-accounts-2023:annex:III:row:138:9,UNEP,,reported_rollup,Mediterranean Action Plan: total,UNEP:annex:III,scope_not_decided
+UNEP:account:QNL,UNEP,QNL,fund_account,Support of the North-West Pacific Action Plan,UNEP:annex:III,scope_not_decided
+UNEP:account:PNL,UNEP,PNL,fund_account,"General trust fund for the protection, management and development of the coastal and marine environment and the resources of the north-west Pacific region",UNEP:annex:III,scope_not_decided
+unep-accounts-2023:annex:III:row:138:12,UNEP,,reported_rollup,Northwest Pacific Action Plan: total,UNEP:annex:III,scope_not_decided
+UNEP:account:QOL,UNEP,QOL,fund_account,Support of the activities of the Ozone Secretariat,UNEP:annex:III,scope_not_decided
+UNEP:account:MPL,UNEP,MPL,fund_account,Trust fund for the Montreal Protocol on Substances that Deplete the Ozone Layer,UNEP:annex:III,scope_not_decided
+UNEP:account:VCL,UNEP,VCL,fund_account,Trust fund for the Vienna Convention for the Protection of the Ozone Layer,UNEP:annex:III,scope_not_decided
+UNEP:account:SOL,UNEP,SOL,fund_account,General trust fund for financing activities on research and systematic observation for the Vienna Convention,UNEP:annex:III,scope_not_decided
+unep-accounts-2023:annex:III:row:138:17,UNEP,,reported_rollup,Ozone: total,UNEP:annex:III,scope_not_decided
+UNEP:account:QAC,UNEP,QAC,fund_account,"Support for the Convention for Cooperation in the Protection, Management and Development of the Marine and Coastal Environment of the Atlantic Coast of the West, Central and Southern Africa Region",UNEP:annex:III,scope_not_decided
+UNEP:account:QAW,UNEP,QAW,fund_account,"Support of the Action Plan for the Protection, Management and Development of the Marine and Coastal Environment of the Eastern African Region",UNEP:annex:III,scope_not_decided
+UNEP:account:QEL,UNEP,QEL,fund_account,Support of the Action Plan for the Protection and Development of the Marine Environment and Coastal Areas of the East Asian Seas,UNEP:annex:III,scope_not_decided
+UNEP:account:EAL,UNEP,EAL,fund_account,Regional seas trust fund for the Eastern African region,UNEP:annex:III,scope_not_decided
+UNEP:account:ESL,UNEP,ESL,fund_account,Regional trust fund for implementation of the Action Plan for the Protection and Development of the Marine Environment and Coastal Areas of the East Asian Seas,UNEP:annex:III,scope_not_decided
+UNEP:account:WAL,UNEP,WAL,fund_account,"Trust fund for the Convention for Cooperation in the Protection, Management and Development of the Marine and Coastal Environment of the Atlantic Coast of the West, Central and Southern African Region",UNEP:annex:III,scope_not_decided
+unep-accounts-2023:annex:III:row:139:4,UNEP,,reported_rollup,Regional seas total,UNEP:annex:III,scope_not_decided
+UNEP:account:MCC,UNEP,MCC,fund_account,Trust fund for core activities under the Minamata Convention,UNEP:annex:III,scope_not_decided
+UNEP:account:MCP,UNEP,MCP,fund_account,Trust fund for activities relating to the Specific International Programme of the Minamata Convention on Mercury,UNEP:annex:III,scope_not_decided
+UNEP:account:MCV,UNEP,MCV,fund_account,Trust fund for voluntary activities relating to the Minamata Convention,UNEP:annex:III,scope_not_decided
+unep-accounts-2023:annex:III:row:139:8,UNEP,,reported_rollup,Minamata Convention: total,UNEP:annex:III,scope_not_decided
+UNEP:account:BML,UNEP,BML,fund_account,"Trust fund for the Bamako Convention core programme budget, United Nations Environment Programme",UNEP:annex:III,scope_not_decided
+UNEP:account:BRL,UNEP,BRL,fund_account,Trust fund for the revolving fund activities of the Bamako Convention,UNEP:annex:III,scope_not_decided
+UNEP:account:BWL,UNEP,BWL,fund_account,Special Trust Fund for Voluntary Contribution in support of the Bamako Convention,UNEP:annex:III,scope_not_decided
+unep-accounts-2023:annex:III:row:139:12,UNEP,,reported_rollup,Bamako Convention: total,UNEP:annex:III,scope_not_decided
+UNEP:account:PES,UNEP,PES,fund_account,Trust fund for the Intergovernmental Science- Policy Platform on Biodiversity and Ecosystem Services,UNEP:annex:III,scope_not_decided
+unep-accounts-2023:annex:III:row:139:14,UNEP,,reported_rollup,Intergovernmental Science-Policy Platform on Biodiversity and Ecosystem Services: total,UNEP:annex:III,scope_not_decided
+UNEP:account:SRL,UNEP,SRL,fund_account,General trust fund for voluntary contributions in respect of the United Nations Scientific Committee on the Effects of Atomic Radiation,UNEP:annex:III,scope_not_decided
+unep-accounts-2023:annex:III:row:139:16,UNEP,,reported_rollup,United Nations Scientific Committee on the Effects of Atomic Radiation: total,UNEP:annex:III,scope_not_decided
+unep-accounts-2023:annex:III:row:139:17,UNEP,,reported_rollup,Conventions and protocols total,UNEP:annex:III,scope_not_decided
+UNEP:account:MFL,UNEP,MFL,fund_account,Trust fund for the Multilateral Fund under the Montreal Protocol on Substances that Deplete the Ozone Layer,UNEP:annex:IV,scope_not_decided
+unep-accounts-2023:annex:IV:row:140:1,UNEP,,reported_rollup,Net totals,UNEP:annex:IV,scope_not_decided
+UNEP:account:ECR,UNEP,ECR,fund_account,Cost recovery,UNEP:annex:V,scope_not_decided
+UNEP:account:OTA,UNEP,OTA,fund_account,UNEP trust fund programme support cost,UNEP:annex:V,scope_not_decided
+unep-accounts-2023:annex:V:row:141:2,UNEP,,reported_rollup,Net totals,UNEP:annex:V,scope_not_decided
+UNEP:account:AAL,UNEP,AAL,fund_account,After-service health insurance,UNEP:annex:VI,scope_not_decided
+UNEP:account:ALL,UNEP,ALL,fund_account,Annual leave,UNEP:annex:VI,scope_not_decided
+UNEP:account:RGL,UNEP,RGL,fund_account,Repatriation benefits,UNEP:annex:VI,scope_not_decided
+unep-accounts-2023:annex:VI:row:142:3,UNEP,,reported_rollup,Net totals,UNEP:annex:VI,scope_not_decided
+unep-accounts-2024:annex:I:row:126:3,UNEP,,reported_rollup,Net total,UNEP:annex:I,scope_not_decided
+unep-accounts-2024:annex:II:row:127:6,UNEP,,reported_rollup,Global Environment Facility trust fund: total,UNEP:annex:II,scope_not_decided
+unep-accounts-2024:annex:II:row:131:10,UNEP,,reported_rollup,Other support to UNEP programme of work (non-Global Environment Facility trust fund non-Junior Professional Officer): total,UNEP:annex:II,scope_not_decided
+unep-accounts-2024:annex:II:row:133:2,UNEP,,reported_rollup,Trust funds for Junior Professional Officers: total,UNEP:annex:II,scope_not_decided
+unep-accounts-2024:annex:II:row:133:3,UNEP,,reported_rollup,Other support to UNEP programme of work: total,UNEP:annex:II,scope_not_decided
+unep-accounts-2024:annex:II:row:133:4,UNEP,,adjustment,Fund IML financial statement elimination,UNEP:annex:II,scope_not_decided
+unep-accounts-2024:annex:II:row:133:5,UNEP,,reported_rollup,Net total,UNEP:annex:II,scope_not_decided
+unep-accounts-2024:annex:III:row:134:7,UNEP,,reported_rollup,"Basel, Rotterdam and Stockholm Conventions: total",UNEP:annex:III,scope_not_decided
+unep-accounts-2024:annex:III:row:135:2,UNEP,,reported_rollup,Caribbean Environment Programme: total,UNEP:annex:III,scope_not_decided
+unep-accounts-2024:annex:III:row:135:5,UNEP,,reported_rollup,Carpathian Convention: total,UNEP:annex:III,scope_not_decided
+unep-accounts-2024:annex:III:row:135:12,UNEP,,reported_rollup,Convention on Biological Diversity: total,UNEP:annex:III,scope_not_decided
+unep-accounts-2024:annex:III:row:136:3,UNEP,,reported_rollup,Convention on International Trade in Endangered Species of Wild Fauna and Flora: total,UNEP:annex:III,scope_not_decided
+unep-accounts-2024:annex:III:row:137:2,UNEP,,reported_rollup,Convention on the Conservation of Migratory Species of Wild Animals: total,UNEP:annex:III,scope_not_decided
+unep-accounts-2024:annex:III:row:137:6,UNEP,,reported_rollup,Mediterranean Action Plan: total,UNEP:annex:III,scope_not_decided
+unep-accounts-2024:annex:III:row:137:9,UNEP,,reported_rollup,Northwest Pacific Action Plan: total,UNEP:annex:III,scope_not_decided
+unep-accounts-2024:annex:III:row:137:14,UNEP,,reported_rollup,Ozone: total,UNEP:annex:III,scope_not_decided
+unep-accounts-2024:annex:III:row:138:6,UNEP,,reported_rollup,Regional seas: total,UNEP:annex:III,scope_not_decided
+unep-accounts-2024:annex:III:row:138:10,UNEP,,reported_rollup,Minamata Convention: total,UNEP:annex:III,scope_not_decided
+unep-accounts-2024:annex:III:row:139:2,UNEP,,reported_rollup,Bamako Convention: total,UNEP:annex:III,scope_not_decided
+unep-accounts-2024:annex:III:row:139:4,UNEP,,reported_rollup,Intergovernmental Science-Policy Platform on Biodiversity and Ecosystem Services: total,UNEP:annex:III,scope_not_decided
+unep-accounts-2024:annex:III:row:139:6,UNEP,,reported_rollup,United Nations Scientific Committee on the Effects of Atomic Radiation: total,UNEP:annex:III,scope_not_decided
+UNEP:account:PCL,UNEP,PCL,fund_account,General trust fund to support the activities of the Framework Convention for the Protection of the Marine Environment of the Caspian Sea,UNEP:annex:III,scope_not_decided
+unep-accounts-2024:annex:III:row:139:8,UNEP,,reported_rollup,Conventions and protocols: total,UNEP:annex:III,scope_not_decided
+unep-accounts-2024:annex:IV:row:140:1,UNEP,,reported_rollup,Net total,UNEP:annex:IV,scope_not_decided
+unep-accounts-2024:annex:V:row:141:2,UNEP,,reported_rollup,Net total,UNEP:annex:V,scope_not_decided
+unep-accounts-2024:annex:VI:row:142:3,UNEP,,reported_rollup,Net total,UNEP:annex:VI,scope_not_decided
+UN-HABITAT:segment:FNDN,UN-HABITAT,FNDN,segment,Foundation non-earmarked,UN-HABITAT,scope_not_decided
+UN-HABITAT:segment:RB,UN-HABITAT,RB,segment,Regular budget,UN-HABITAT,scope_not_decided
+UN-HABITAT:segment:FNDE,UN-HABITAT,FNDE,segment,Foundation earmarked,UN-HABITAT,scope_not_decided
+UN-HABITAT:segment:TECH,UN-HABITAT,TECH,segment,Technical cooperation,UN-HABITAT,scope_not_decided
+UN-HABITAT:segment:PSC,UN-HABITAT,PSC,segment,Programme support,UN-HABITAT,scope_not_decided
+UN-HABITAT:segment:BEN,UN-HABITAT,BEN,segment,End-of-service and post-retirement benefits,UN-HABITAT,scope_not_decided
+UN-HABITAT:adjustment:ELIM,UN-HABITAT,ELIM,adjustment,Intersegment eliminations,UN-HABITAT,scope_not_decided
+UN-HABITAT:entity_total:TOTAL,UN-HABITAT,TOTAL,entity_total,All funds comparative,UN-HABITAT,scope_not_decided
+UNODC:pillar:DRUG,UNODC,DRUG,pillar,Drug programme,UNODC,scope_not_decided
+UNODC:pillar:CRIME,UNODC,CRIME,pillar,Crime programme (includes UNICRI),UNODC,scope_not_decided
+UNODC:entity_total:TOTAL,UNODC,TOTAL,entity_total,All funds,UNODC,scope_not_decided
+UNODC:segment:RB,UNODC,RB,segment,Regular budget,UNODC,scope_not_decided
+ITC:entity_total:TOTAL,ITC,TOTAL,entity_total,All funds,ITC,scope_not_decided
+ITC:window:WI,ITC,WI,window,Window I,ITC:fund_family:ITF,scope_not_decided
+ITC:window:WII,ITC,WII,window,Window II,ITC:fund_family:ITF,scope_not_decided
+ITC:window:ITF,ITC,ITF,window,ITC Trust Fund,ITC:fund_family:ITF,scope_not_decided
+UN-HABITAT:segment:EARMARKED,UN-HABITAT,EARMARKED,segment,Earmarked total,UN-HABITAT,scope_not_decided
+UN-HABITAT:cross_year_total:FNDN,UN-HABITAT,FNDN,cross_year_total,Comparative-column total,UN-HABITAT,scope_not_decided
+ITC,ITC,ITC,entity,ITC,,scope_not_decided
+UN-HABITAT,UN-HABITAT,UN-HABITAT,entity,UN-HABITAT,,scope_not_decided
+UNEP,UNEP,UNEP,entity,UNEP,,scope_not_decided
+UNODC,UNODC,UNODC,entity,UNODC,,scope_not_decided
+UNEP:annex:I,UNEP,I,source_group,Annex I,UNEP,scope_not_decided
+UNEP:annex:II,UNEP,II,source_group,Annex II,UNEP,scope_not_decided
+UNEP:annex:III,UNEP,III,source_group,Annex III,UNEP,scope_not_decided
+UNEP:annex:IV,UNEP,IV,source_group,Annex IV,UNEP,scope_not_decided
+UNEP:annex:V,UNEP,V,source_group,Annex V,UNEP,scope_not_decided
+UNEP:annex:VI,UNEP,VI,source_group,Annex VI,UNEP,scope_not_decided
+ITC:fund_family:ITF,ITC,ITF,source_group,Annex ITF,ITC,scope_not_decided

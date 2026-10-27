@@ -1,0 +1,2267 @@
+{
+  "status": "passed",
+  "source_id": "unep-accounts-2022",
+  "facts": 1158,
+  "fund_accounts": 138,
+  "literal_tables": 15,
+  "layout_repairs": [
+    {
+      "pdf_page": 140,
+      "fund_code": "SVL",
+      "column": "revenue",
+      "reported_text": "3 858",
+      "source_y": 359.079,
+      "source_physical_row": 16
+    }
+  ],
+  "checks": [
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TRL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TRL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:GPL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:GPL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BPL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BPL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CEL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CEL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:GPP"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:GPP"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MCL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MCL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BXL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BXL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SLP"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SLP"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:NFL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:NFL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TCL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TCL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MVL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MVL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MPL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MPL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:ESL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:ESL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:ECR"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:ECR"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:VBL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:VBL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QGL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QGL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CFL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CFL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TSL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TSL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:ROL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:ROL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CAL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CAL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SEL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SEL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:EAL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:EAL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:IAL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:IAL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:VCL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:VCL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:RGL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:RGL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QTL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QTL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SOL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SOL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:RVL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:RVL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:GCF"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:GCF"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BML"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BML"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MDL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MDL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:JCL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:JCL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CLL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CLL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:GCL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:GCL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QRL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QRL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:GFL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:GFL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BAL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BAL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:FIL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:FIL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TNL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TNL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:AVL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:AVL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:THL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:THL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:PFP"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:PFP"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:LHN"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:LHN"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QWL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QWL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CML"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CML"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CSS"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CSS"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:PES"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:PES"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:POL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:POL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:FEL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:FEL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SCP"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SCP"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CAP"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CAP"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:UTL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:UTL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SNL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SNL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:IML"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:IML"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:DPL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:DPL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:NPL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:NPL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BWL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BWL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MEL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MEL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:OTA"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:OTA"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:FRL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:FRL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BCL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BCL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:EUL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:EUL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:AEL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:AEL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BEL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BEL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QEL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QEL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:RSL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:RSL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:FTL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:FTL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CBL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CBL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BGL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BGL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CPL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CPL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:FPL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:FPL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:AWL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:AWL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:LDL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:LDL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CNL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CNL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:EAP"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:EAP"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:FBL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:FBL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:RAL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:RAL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:FEC"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:FEC"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SRL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SRL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SMU"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SMU"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TBL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TBL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:ALL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:ALL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TDL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TDL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:WPL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:WPL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:PNL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:PNL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SVL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SVL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:ECL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:ECL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BZL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BZL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:FSL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:FSL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MRL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MRL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TIL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TIL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BDL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BDL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TKL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TKL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TJL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TJL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MCV"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MCV"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:ETL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:ETL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:PPL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:PPL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MSL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MSL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QFL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QFL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QAW"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QAW"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SFL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SFL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:AFB"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:AFB"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QCL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QCL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MCC"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MCC"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:GPS"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:GPS"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QVL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QVL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MOL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MOL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BTL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BTL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BYL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BYL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:REL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:REL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:WAL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:WAL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BIL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BIL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CAR"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CAR"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BHL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BHL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:AAL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:AAL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QNL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QNL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:IEL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:IEL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SCL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SCL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QOL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QOL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BRL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BRL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:GRL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:GRL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:RED"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:RED"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:EBL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:EBL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MCP"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MCP"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QAC"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QAC"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:AML"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:AML"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MFL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:MFL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TGL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TGL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QML"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:QML"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:RPL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:RPL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CTL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CTL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BBL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:BBL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CCL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CCL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TPL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:TPL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:PGL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:PGL"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SML"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:SML"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:ESS"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:ESS"
+    },
+    {
+      "check": "opening_stock_components",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CRL"
+    },
+    {
+      "check": "net_asset_flow_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "object_id": "UNEP:account:CRL"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "I",
+      "metric": "revenue"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "I",
+      "metric": "expenses"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "I",
+      "metric": "closing_net_assets"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "II",
+      "metric": "revenue"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "II",
+      "metric": "expenses"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "II",
+      "metric": "closing_net_assets"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "2000",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "III",
+      "metric": "revenue"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "1000",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "III",
+      "metric": "expenses"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "1000",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "III",
+      "metric": "closing_net_assets"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "IV",
+      "metric": "revenue"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "IV",
+      "metric": "expenses"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "IV",
+      "metric": "closing_net_assets"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "V",
+      "metric": "revenue"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "V",
+      "metric": "expenses"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "V",
+      "metric": "closing_net_assets"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "VI",
+      "metric": "revenue"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "VI",
+      "metric": "expenses"
+    },
+    {
+      "check": "accounts_plus_annex_adjustments_to_net_total",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "VI",
+      "metric": "closing_net_assets"
+    },
+    {
+      "check": "segments_and_elimination_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "metric": "expenses"
+    },
+    {
+      "check": "segments_and_elimination_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "metric": "revenue"
+    },
+    {
+      "check": "entity_to_statement_II_expenses",
+      "difference_usd": "0",
+      "tolerance_usd": "0",
+      "status": "passed",
+      "pdf_page": 72
+    },
+    {
+      "check": "annex_to_segment_expenses",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "I"
+    },
+    {
+      "check": "annex_to_segment_expenses",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "II"
+    },
+    {
+      "check": "annex_to_segment_expenses",
+      "difference_usd": "1000",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "III"
+    },
+    {
+      "check": "annex_to_segment_expenses",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "IV"
+    },
+    {
+      "check": "annex_to_segment_expenses",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "V"
+    },
+    {
+      "check": "annex_to_segment_expenses",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "status": "passed",
+      "annex": "VI"
+    },
+    {
+      "check": "gross_accounts_plus_elimination_to_net_non_RB",
+      "difference_usd": "1000",
+      "tolerance_usd": "2000",
+      "status": "passed"
+    }
+  ],
+  "annexes": [
+    {
+      "annex": "I",
+      "first_pdf_page": 134,
+      "last_pdf_page": 134,
+      "accounts": 3,
+      "revenue_annex_adjustment_usd": "0",
+      "revenue_reported_net_usd": "105979000",
+      "revenue_usd": "105979000",
+      "expenses_annex_adjustment_usd": "0",
+      "expenses_reported_net_usd": "75890000",
+      "expenses_usd": "75890000",
+      "closing_net_assets_annex_adjustment_usd": "0",
+      "closing_net_assets_reported_net_usd": "112093000",
+      "closing_net_assets_usd": "112093000"
+    },
+    {
+      "annex": "II",
+      "first_pdf_page": 135,
+      "last_pdf_page": 139,
+      "accounts": 71,
+      "revenue_annex_adjustment_usd": "0",
+      "revenue_reported_net_usd": "566806000",
+      "revenue_usd": "566806000",
+      "expenses_annex_adjustment_usd": "0",
+      "expenses_reported_net_usd": "350702000",
+      "expenses_usd": "350702000",
+      "closing_net_assets_annex_adjustment_usd": "-51158000",
+      "closing_net_assets_reported_net_usd": "1709587000",
+      "closing_net_assets_usd": "1760745000"
+    },
+    {
+      "annex": "III",
+      "first_pdf_page": 140,
+      "last_pdf_page": 144,
+      "accounts": 58,
+      "revenue_annex_adjustment_usd": "0",
+      "revenue_reported_net_usd": "119039000",
+      "revenue_usd": "119041000",
+      "expenses_annex_adjustment_usd": "0",
+      "expenses_reported_net_usd": "131064000",
+      "expenses_usd": "131065000",
+      "closing_net_assets_annex_adjustment_usd": "0",
+      "closing_net_assets_reported_net_usd": "218180000",
+      "closing_net_assets_usd": "218181000"
+    },
+    {
+      "annex": "IV",
+      "first_pdf_page": 145,
+      "last_pdf_page": 145,
+      "accounts": 1,
+      "revenue_annex_adjustment_usd": "0",
+      "revenue_reported_net_usd": "160236000",
+      "revenue_usd": "160236000",
+      "expenses_annex_adjustment_usd": "0",
+      "expenses_reported_net_usd": "100319000",
+      "expenses_usd": "100319000",
+      "closing_net_assets_annex_adjustment_usd": "0",
+      "closing_net_assets_reported_net_usd": "704667000",
+      "closing_net_assets_usd": "704667000"
+    },
+    {
+      "annex": "V",
+      "first_pdf_page": 146,
+      "last_pdf_page": 146,
+      "accounts": 2,
+      "revenue_annex_adjustment_usd": "0",
+      "revenue_reported_net_usd": "37738000",
+      "revenue_usd": "37738000",
+      "expenses_annex_adjustment_usd": "0",
+      "expenses_reported_net_usd": "29326000",
+      "expenses_usd": "29326000",
+      "closing_net_assets_annex_adjustment_usd": "0",
+      "closing_net_assets_reported_net_usd": "32355000",
+      "closing_net_assets_usd": "32355000"
+    },
+    {
+      "annex": "VI",
+      "first_pdf_page": 147,
+      "last_pdf_page": 147,
+      "accounts": 3,
+      "revenue_annex_adjustment_usd": "0",
+      "revenue_reported_net_usd": "14074000",
+      "revenue_usd": "14074000",
+      "expenses_annex_adjustment_usd": "0",
+      "expenses_reported_net_usd": "13730000",
+      "expenses_usd": "13730000",
+      "closing_net_assets_annex_adjustment_usd": "0",
+      "closing_net_assets_reported_net_usd": "-118148000",
+      "closing_net_assets_usd": "-118148000"
+    }
+  ],
+  "entity_expenses_usd": "651319000",
+  "regular_budget_expenses_usd": "24687000",
+  "gross_account_expenses_usd": "701032000",
+  "elimination_usd": "-74399000",
+  "net_non_RB_expenses_usd": "626632000",
+  "notes": [
+    "Six numeric fund columns, not eight: pre-2023 source has no separate surplus/reserve movement columns.",
+    "Only current2022 account/segment rows enter2022 controls.2021 entity comparative is retained separately.",
+    "AnnexII has a signed IML net-asset elimination of USD51,158,000; it is a stock adjustment, not expense.",
+    "This pilot is source research only, not a published frontend dataset."
+  ]
+}

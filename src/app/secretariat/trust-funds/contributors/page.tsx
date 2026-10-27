@@ -3,18 +3,20 @@ import { PageHeading } from "@/components/PageHeading";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { PageBody } from "@/components/PageBody";
-import { TrustFundContributorsTreemap } from "@/components/TrustFundContributorsTreemap";
+import { TrustFundContributorsView } from "@/components/TrustFundContributorsView";
 import {
   SecretariatMethodology,
   TrustFundContributorsMethodologyNotes,
 } from "@/components/Methodology";
 
-export const metadata: Metadata = { title: "UN Trust Funds — Contributors" };
+export const metadata: Metadata = {
+  title: "UN Secretariat Trust Funds — Contributors",
+};
 
 export default function ContributorsPage() {
   return (
     <ChartSourceProvider
-      label="Audited Schedules of Individual Trust Funds"
+      label="UN Secretariat trust-fund schedules and separate contributor reports"
       details={
         <>
           <SecretariatMethodology />
@@ -25,15 +27,16 @@ export default function ContributorsPage() {
       <PageHeading
         sources={
           <>
-            Figures come from <PageSourceLink source="trustFunds" />.
+            The schedule view uses <PageSourceLink source="trustFunds" />.
+            Separate entity views link their own source pages.
           </>
         }
-        title="Who contributes to UN trust funds?"
-        description="Explore contributions and transfers to UN Secretariat trust funds, by contributor and the entities responsible for the funds."
+        title="Who contributes to UN Secretariat trust funds?"
+        description="Explore contributions and transfers from the UN Secretariat trust-fund schedules, or select separately reported entity data. Source measures and partial coverage are shown within each view."
       />
       <section id="trust-fund-contributors" aria-label="Contributors">
         <PageBody>
-          <TrustFundContributorsTreemap />
+          <TrustFundContributorsView />
         </PageBody>
       </section>
     </ChartSourceProvider>

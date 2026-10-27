@@ -12,13 +12,13 @@ import { PageHeading } from "@/components/PageHeading";
 export const metadata: Metadata = {
   title: "UN Secretariat Trust Funds",
   description:
-    "Explore individual UN Secretariat trust funds, their expenditure, contributions and transfers.",
+    "Explore UN Secretariat trust-fund accounts and separately reported extrabudgetary expenditure.",
 };
 
 export default function TrustFundsPage() {
   return (
     <ChartSourceProvider
-      label="Audited Schedules of Individual Trust Funds"
+      label="UN Secretariat trust-fund schedules and separate entity reports"
       details={
         <>
           <SecretariatMethodology />
@@ -29,12 +29,13 @@ export default function TrustFundsPage() {
       <PageHeading
         sources={
           <>
-            Figures come from <PageSourceLink source="trustFunds" />.
+            The fund schedules come from <PageSourceLink source="trustFunds" />.
+            Separate entity reports are linked on their figures.
           </>
         }
         id="trust-fund-spending"
-        title="How are trust-fund resources used?"
-        description="Explore individual trust-fund expenditure grouped by Secretariat entity, with unmatched funds shown under Unmapped Trust Funds."
+        title="How are trust funds and other extrabudgetary resources used?"
+        description="Explore UN Secretariat trust-fund schedules and separately reported resources of UNEP, UNODC, UN-Habitat and ITC."
       />
       <PageBody>
         <BudgetTreemap

@@ -294,12 +294,25 @@ export function PeacekeepingContributorsMethodologyNotes() {
 
 export function TrustFundContributorsMethodologyNotes() {
   return (
-    <p>
-      Recognized contributions come from audited Schedules of Individual Trust
-      Funds. Entity grouping uses a reconstructed historical crosswalk; it
-      identifies the entity responsible for a fund, not a direct link between a
-      contributor and a particular expense.
-    </p>
+    <div className="space-y-3">
+      <p>
+        The UN Secretariat trust-fund schedules view uses audited contributions
+        and transfers. Entity grouping identifies the entity responsible for a
+        fund, not a direct link between a contributor and an expense.
+      </p>
+      <p>
+        Separate source views retain their own measures: Habitat interim
+        contribution status, ITC XB funding received, and UNODC indicative
+        annual pledges. They are not summed across sources or compared as if all
+        were audited revenue. Partial coverage, missing periods, grouped
+        counterparties and source differences are shown with each series.
+      </p>
+      <p>
+        UNEP contributor subsets are excluded from the charts. Its annual
+        reports and CBD ledgers remain linked for reference. Source links use
+        physical PDF pages or the original HTML fund sections, as applicable.
+      </p>
+    </div>
   );
 }
 
@@ -353,13 +366,45 @@ export function FieldMissionsMethodologyNotes() {
 
 export function TrustFundsMethodologyNotes() {
   return (
-    <p>
-      Expenditure comes from audited Schedules of Individual Trust Funds. Entity
-      grouping uses a reconstructed historical crosswalk, supplemented by exact
-      fund-name matches in newer ARWO workbooks. Funds with missing mappings
-      appear under “Unmapped Trust Funds”, a display group rather than a UN
-      entity. The grouping identifies the entity responsible for a fund, not a
-      direct link between a contributor and a particular expense.
-    </p>
+    <div className="space-y-3">
+      <p>
+        “UN Secretariat trust-fund schedules” uses audited Schedules of
+        Individual Trust Funds accompanying the UN Volume I accounts. Entity
+        grouping uses a reconstructed historical crosswalk, supplemented by
+        exact fund-name matches in newer ARWO workbooks. Unmatched funds appear
+        under “Unmapped Trust Funds”, a display group rather than a UN entity.
+        Grouping identifies responsibility for a fund, not a direct
+        contributor-to-expense link.
+      </p>
+      <p>
+        “Separately reported entities” covers UNEP, UNODC, UN-Habitat and ITC.
+        For 2023–2024, entity amounts use audited expenditure excluding
+        regular-budget expenses where available; ITC uses reported gross XB
+        programme delivery. Years without extracted report figures remain
+        unavailable. The combined headline is reported expenditure, not a
+        consolidated total: cross-source transfers have not been reconciled or
+        eliminated, and accounting boundaries differ. Inclusion does not
+        establish that every resource is legally a trust fund.
+      </p>
+      <p>
+        Entity areas use the reported separate-entity totals. UNEP fund groups
+        and UN-Habitat funding segments subdivide those areas using relative
+        shares of expenses before eliminations; tile amounts retain the gross
+        source figures. Their sidebars retain further detail and reconciliation.
+        Detail amounts must not be added to their parent total. A pure XB
+        expense breakdown is unavailable for UNODC and ITC. Missing years are
+        gaps. Figures link to the original PDF pages. ARWO is not used to fill
+        missing expenditure amounts.
+      </p>
+      <p>
+        The contributor view separates UN Secretariat trust-fund schedules from
+        entity-specific reports. Habitat uses interim contributions and
+        transfers and ITC uses XB funding received. UNEP contributor subsets are
+        excluded; their source documents remain linked for reference. Source
+        periods, measures and coverage are shown in each view; these amounts are
+        not added to expenditure. UNEP accounts are grouped under the annex
+        segments and subtotals printed in its reports.
+      </p>
+    </div>
   );
 }

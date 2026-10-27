@@ -1,0 +1,24 @@
+[
+  {
+    "source_id": "ozone-financial-report-2024",
+    "source_url": "https://ozone.unep.org/system/files/documents/MOP-37-5E.pdf",
+    "local_path": "data/trust-fund-source-candidates/unep-contributors/raw/ozone-financial-report-2024.pdf",
+    "sha256": "e6c00b4226b738ecfef3e1b18a3a35635f11680c097b1a99fa80a5463ee7d357",
+    "pdf_pages": 24,
+    "status": "retrieved_for_followup_not_in_contributor_export",
+    "contribution_annex_start_pdf_pages": [
+      19
+    ]
+  },
+  {
+    "source_id": "ozone-financial-report-2023",
+    "source_url": "https://ozone.unep.org/system/files/documents/COP-13-5_MOP-36-5E.pdf",
+    "local_path": "data/trust-fund-source-candidates/unep-contributors/raw/ozone-financial-report-2023.pdf",
+    "sha256": "2b17e7246054ca3669c1d4b693997698f984949b8699873e986c83f3df3cb547",
+    "pdf_pages": 21,
+    "status": "retrieved_for_followup_not_in_contributor_export",
+    "contribution_annex_start_pdf_pages": [
+      16
+    ]
+  }
+]

@@ -33,6 +33,7 @@ import { ChartFooter } from "@/components/ChartFooter";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   GroupedTreemap,
+  type GroupedTreemapLeaf,
   type GroupedTreemapRow,
   type GroupedTreemapTooltipContext,
 } from "@un-eosg/ui/components/grouped-treemap";
@@ -41,7 +42,12 @@ import {
   SplitSquareHorizontal,
   TriangleAlert,
 } from "lucide-react";
-import type { BudgetData, BudgetMetricKey, BudgetNode } from "@/types";
+import type {
+  BudgetData,
+  BudgetMetricKey,
+  BudgetNode,
+  TrustFundSourceGroup,
+} from "@/types";
 import {
   useDeepLink,
   replaceToSidebar,
@@ -54,6 +60,7 @@ import {
 } from "@/lib/budgetSourceCollection";
 import { BudgetSidebar } from "@/components/BudgetSidebar";
 import { ChartSearchInput } from "@/components/ui/chart-search-input";
+import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
 import { YearSlider } from "@/components/YearSlider";
 import { useYearRanges } from "@/lib/useYearRanges";
@@ -165,6 +172,11 @@ type SharedBudgetRow = GroupedTreemapRow<
   SharedBudgetLeafData,
   BudgetFundingSource
 >;
+
+const TRUST_FUND_SOURCE_COLORS: Record<TrustFundSourceGroup, string> = {
+  volume_i: "var(--color-un-blue)",
+  separate_entities: "#31566e",
+};
 
 const EMPTY_ENTITY_PROJECTION: EntityProjection = {
   nodes: [],
@@ -770,6 +782,9 @@ export function BudgetTreemap({
   const [hovered, setHovered] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [trustFundSources, setTrustFundSources] = useState<
+    TrustFundSourceGroup[]
+  >(["volume_i", "separate_entities"]);
   const [loading, setLoading] = useState(true);
   const [loadedRequest, setLoadedRequest] = useState("");
   // A measure switch loads a different annual file. Keep the old measure with
@@ -1091,17 +1106,33 @@ export function BudgetTreemap({
     return placements;
   }, [filteredData]);
 
-  // Resolve a pending deep link once the data is there.
+  // Resolve only a still-current deep link once its data is there. A closed
+  // sidebar must not be reopened by a pending request when the year changes.
   useEffect(() => {
+    if (!pendingDeepLink) return;
+    const prefix = `#${hashPrefix}=`;
     if (
-      pendingDeepLink &&
+      !window.location.hash.startsWith(prefix) ||
+      decodeURIComponent(window.location.hash.slice(prefix.length)) !==
+        pendingDeepLink
+    ) {
+      setPendingDeepLink(null);
+      return;
+    }
+    if (
       sidebarById[pendingDeepLink] &&
       (isTrustFund || sidebarById[pendingDeepLink].amount > 0)
     ) {
       setSelectedId(pendingDeepLink);
       setPendingDeepLink(null);
     }
-  }, [pendingDeepLink, setPendingDeepLink, sidebarById, isTrustFund]);
+  }, [
+    pendingDeepLink,
+    setPendingDeepLink,
+    sidebarById,
+    isTrustFund,
+    hashPrefix,
+  ]);
 
   // A section, mission or component that the chosen year does not print has no
   // node: close the sidebar rather than leave the year before on screen.
@@ -1458,7 +1489,11 @@ export function BudgetTreemap({
   };
 
   const meta = filteredData?.meta;
-  const selected = selectedId ? sidebarById[selectedId] : null;
+  let selected = selectedId ? sidebarById[selectedId] : null;
+  // UNEP printed groups expand within their entity panel, including when an
+  // older group hash is encountered; they do not open standalone sidebars.
+  while (selected?.detailGrouping && selected.parentId)
+    selected = sidebarById[selected.parentId];
   const hasCostClassDetail =
     filteredData?.nodes.some((node) => node.kind === "item") ?? !isAudited;
   const hasSplitEntities = Object.values(entityPlacements).some(
@@ -1488,7 +1523,9 @@ export function BudgetTreemap({
       sidebarNodeId = node.id,
       key = node.id,
       note?: string,
-    ) => ({
+    ): GroupedTreemapLeaf<SharedBudgetLeafData, BudgetFundingSource> & {
+      layoutValue: number;
+    } => ({
       key,
       label,
       value: node.amount,
@@ -1506,52 +1543,106 @@ export function BudgetTreemap({
     });
 
     if (usesSharedTrustFundExpenses) {
-      return filteredData.nodes
-        .filter((node) => node.tier === "budget_unit")
-        .map((entity) => {
-          const color = "var(--color-un-blue)";
-          const funds = (childrenOf[entity.id] ?? []).filter(
-            (node) => node.tier === "detail" && node.amount > 0,
+      return (
+        filteredData.meta.sourceGroups ?? [
+          {
+            id: "volume_i",
+            label: "UN Secretariat trust-fund schedules",
+            amount: filteredData.meta.total,
+          },
+        ]
+      )
+        .filter((group) =>
+          trustFundSources.includes(group.id as TrustFundSourceGroup),
+        )
+        .map((group) => {
+          const color =
+            TRUST_FUND_SOURCE_COLORS[group.id as TrustFundSourceGroup];
+          const entities = filteredData.nodes.filter(
+            (node) =>
+              node.tier === "budget_unit" &&
+              (node.sourceGroup ?? "volume_i") === group.id,
           );
-          const childrenTotal = funds.reduce(
-            (sum, fund) => sum + fund.amount,
-            0,
-          );
-          const leaves = funds.map((fund) => leaf(fund, fund.label, color));
-          if (childrenTotal < entity.amount) {
-            const remainder = remainderNode(
-              entity,
-              funds,
-              `${entity.id}::unassigned-funds`,
-              "Not assigned to an individual trust fund",
+          const subgroups = entities
+            .map((entity) => {
+              const funds = (childrenOf[entity.id] ?? []).filter(
+                (node) => node.tier === "detail" && node.amount > 0,
+              );
+              const showsFundGroups =
+                entity.xbEntity === "UNEP" || entity.xbEntity === "UN-HABITAT";
+              const gross = funds.reduce((sum, fund) => sum + fund.amount, 0);
+              const leaves = entity.chartAsAggregate
+                ? showsFundGroups && gross > 0
+                  ? funds.map((fund) => ({
+                      ...leaf(
+                        fund,
+                        fund.label,
+                        color,
+                        entity.id,
+                        fund.id,
+                        "Expenses before eliminations. The tile’s relative share divides the entity total.",
+                      ),
+                      layoutValue: (fund.amount / gross) * entity.amount,
+                    }))
+                  : [
+                      {
+                        ...leaf(
+                          entity,
+                          entity.entity?.acronym ?? entity.label,
+                          color,
+                        ),
+                        textColor: "transparent",
+                      },
+                    ]
+                : funds.map((fund) => leaf(fund, fund.label, color));
+              if (
+                !entity.chartAsAggregate &&
+                funds.reduce((sum, fund) => sum + fund.amount, 0) <
+                  entity.amount
+              ) {
+                const remainder = remainderNode(
+                  entity,
+                  funds,
+                  `${entity.id}::unassigned-funds`,
+                  "Not assigned to an individual trust fund",
+                );
+                leaves.push(
+                  leaf(
+                    remainder,
+                    remainder.label,
+                    color,
+                    entity.id,
+                    remainder.id,
+                    remainder.note,
+                  ),
+                );
+              }
+              return {
+                key: entity.id,
+                label: entity.chartAsAggregate
+                  ? `${entity.entity?.acronym ?? entity.code ?? entity.label} ${formatBudget(entity.amount)}`
+                  : (entity.entity?.acronym ?? entity.code ?? entity.label),
+                data: entity,
+                labelVisibility: "auto" as const,
+                leaves,
+              };
+            })
+            .filter((subgroup) => subgroup.leaves.length > 0)
+            .sort(
+              (a, b) =>
+                b.leaves.reduce((sum, item) => sum + item.value, 0) -
+                  a.leaves.reduce((sum, item) => sum + item.value, 0) ||
+                a.label.localeCompare(b.label),
             );
-            leaves.push(
-              leaf(
-                remainder,
-                remainder.label,
-                color,
-                entity.id,
-                remainder.id,
-                remainder.note,
-              ),
-            );
-          }
           return {
-            key: entity.id,
-            label: entity.entity?.acronym ?? entity.code ?? entity.label,
-            value: entity.amount,
+            key: group.id,
+            label: group.label,
+            value: group.amount ?? 0,
             color,
-            data: entity,
-            leaves,
+            subgroups,
           } satisfies SharedBudgetRow;
         })
-        .filter((row) => (row.leaves?.length ?? 0) > 0)
-        .sort(
-          (a, b) =>
-            (b.leaves ?? []).reduce((sum, item) => sum + item.value, 0) -
-              (a.leaves ?? []).reduce((sum, item) => sum + item.value, 0) ||
-            a.label.localeCompare(b.label),
-        );
+        .filter((row) => row.subgroups.length > 0);
     }
 
     const root = filteredData.nodes.find((node) => node.parentId === null);
@@ -1719,6 +1810,7 @@ export function BudgetTreemap({
     ppbGrouping,
     usesSharedTreemap,
     usesSharedTrustFundExpenses,
+    trustFundSources,
   ]);
 
   const sharedSearchMatches = useCallback(
@@ -1727,23 +1819,74 @@ export function BudgetTreemap({
       subgroupLabel: string,
       rowLabel: string,
       query: string,
-    ) =>
-      `${leafLabel} ${subgroupLabel} ${rowLabel}`
-        .toLocaleLowerCase()
-        .includes(query.trim().toLocaleLowerCase()),
-    [],
+    ) => {
+      const normalized = query.trim().toLocaleLowerCase();
+      if (
+        `${leafLabel} ${subgroupLabel} ${rowLabel}`
+          .toLocaleLowerCase()
+          .includes(normalized)
+      )
+        return true;
+      if (!usesSharedTrustFundExpenses) return false;
+      const entity = filteredData?.nodes.find((node) => {
+        const label = node.entity?.acronym ?? node.code ?? node.label;
+        return (
+          node.chartAsAggregate &&
+          (subgroupLabel === label ||
+            subgroupLabel === `${label} ${formatBudget(node.amount)}`)
+        );
+      });
+      if (!entity) return false;
+      const pending = [entity];
+      const visited = new Set<string>();
+      while (pending.length) {
+        const node = pending.pop()!;
+        if (visited.has(node.id)) continue;
+        visited.add(node.id);
+        if (
+          `${node.code ?? ""} ${node.label}`
+            .toLocaleLowerCase()
+            .includes(normalized)
+        )
+          return true;
+        pending.push(...(childrenOf[node.id] ?? []));
+      }
+      return false;
+    },
+    [childrenOf, filteredData, usesSharedTrustFundExpenses],
   );
 
-  // One accounting frontier: never sum a parent and its descendants together.
+  // One accounting frontier: a net entity total or its additive fund rows.
+  const isTrustFundAccountingNode = (node: BudgetNode) =>
+    node.chartAsAggregate ||
+    (node.tier === "detail" && node.sourceGroup !== "separate_entities");
   const accountingNodes = (filteredData?.nodes ?? []).filter((node) =>
     usesSharedTrustFundExpenses
-      ? node.tier === "detail"
+      ? isTrustFundAccountingNode(node) &&
+        trustFundSources.includes(node.sourceGroup ?? "volume_i")
       : usesSharedProgrammeBudget
         ? node.tier === "section"
         : node.kind === "mission",
   );
   const matchesAccountingNode = (node: BudgetNode) => {
-    const labels = [node.label, node.entity?.acronym ?? ""];
+    const labels = [node.label, node.code ?? "", node.entity?.acronym ?? ""];
+    if (usesSharedTrustFundExpenses) {
+      labels.push(
+        meta?.sourceGroups?.find(
+          (group) => group.id === (node.sourceGroup ?? "volume_i"),
+        )?.label ?? "",
+      );
+      if (
+        node.chartAsAggregate &&
+        sharedSearchMatches(
+          node.label,
+          node.entity?.acronym ?? node.label,
+          "",
+          searchQuery,
+        )
+      )
+        return true;
+    }
     let parent = node.parentId ? byId[node.parentId] : undefined;
     const visited = new Set<string>();
     while (parent && !visited.has(parent.id)) {
@@ -1758,7 +1901,10 @@ export function BudgetTreemap({
   };
   const signedBudgetAmounts = (filteredData?.nodes ?? [])
     .filter(
-      (node) => !childrenOf[node.id]?.length && matchesAccountingNode(node),
+      (node) =>
+        (usesSharedTrustFundExpenses
+          ? accountingNodes.includes(node)
+          : !childrenOf[node.id]?.length) && matchesAccountingNode(node),
     )
     .flatMap((node) =>
       node.values && Object.keys(node.values).length
@@ -1779,21 +1925,44 @@ export function BudgetTreemap({
             },
           ],
     );
-  const signedBudgetTotal = !searchQuery.trim()
-    ? (filteredData?.meta.total ?? 0)
-    : accountingNodes
-        .filter(matchesAccountingNode)
-        .reduce((sum, node) => sum + node.amount, 0);
+  const signedBudgetTotal =
+    !usesSharedTrustFundExpenses && !searchQuery.trim()
+      ? (filteredData?.meta.total ?? 0)
+      : accountingNodes
+          .filter(matchesAccountingNode)
+          .reduce((sum, node) => sum + node.amount, 0);
 
   const sharedProgrammeSummaries = (() => {
-    if (usesSharedTrustFundExpenses)
+    if (usesSharedTrustFundExpenses) {
+      const groups = (
+        meta?.sourceGroups ?? [
+          {
+            id: "volume_i",
+            label: "UN Secretariat trust-fund schedules",
+            amount: meta?.total ?? null,
+          },
+        ]
+      ).filter((group) =>
+        trustFundSources.includes(group.id as TrustFundSourceGroup),
+      );
+      const total = searchQuery.trim()
+        ? accountingNodes
+            .filter(matchesAccountingNode)
+            .reduce((sum, node) => sum + node.amount, 0)
+        : groups.reduce((sum, group) => sum + (group.amount ?? 0), 0);
       return [
         {
-          key: "net",
-          label: searchQuery ? "Matching total" : "Total",
-          value: formatBudget(signedBudgetTotal),
+          key: "total",
+          label: searchQuery.trim()
+            ? "Matching expenditure (unconsolidated)"
+            : "Reported expenditure (unconsolidated)",
+          value:
+            groups.length > 0 && groups.every((group) => group.amount === null)
+              ? "Not available"
+              : formatBudget(total),
         },
       ];
+    }
     if (!usesSharedProgrammeBudget) return undefined;
     const query = searchQuery.trim().toLocaleLowerCase();
     return activeFundingSources.map((source) => {
@@ -1995,21 +2164,45 @@ export function BudgetTreemap({
             },
           ]
         : [];
-    const searchAccessory =
-      isAlignedPpb && onPpbGroupingChange ? (
-        <BinaryToggle
-          variant="segmented"
-          label="Budget grouping"
-          options={[
-            { value: "section", label: "Sections" },
-            { value: "entity", label: "Entities" },
-          ]}
-          value={ppbGrouping}
-          onValueChange={(value) =>
-            onPpbGroupingChange(value === "section" ? "section" : "entity")
-          }
-        />
-      ) : undefined;
+    const searchAccessory = usesSharedTrustFundExpenses ? (
+      <div
+        role="group"
+        aria-label="Reporting source"
+        className="flex flex-wrap items-center gap-2"
+      >
+        {meta.sourceGroups?.map((group) => (
+          <LegendLabel
+            key={group.id}
+            label={group.label}
+            color={sharedTreemapColor(
+              TRUST_FUND_SOURCE_COLORS[group.id],
+              "extrabudgetary",
+            )}
+            selected={trustFundSources.includes(group.id)}
+            onToggle={() =>
+              setTrustFundSources((current) =>
+                current.includes(group.id)
+                  ? current.filter((source) => source !== group.id)
+                  : [...current, group.id],
+              )
+            }
+          />
+        ))}
+      </div>
+    ) : isAlignedPpb && onPpbGroupingChange ? (
+      <BinaryToggle
+        variant="segmented"
+        label="Budget grouping"
+        options={[
+          { value: "section", label: "Sections" },
+          { value: "entity", label: "Entities" },
+        ]}
+        value={ppbGrouping}
+        onValueChange={(value) =>
+          onPpbGroupingChange(value === "section" ? "section" : "entity")
+        }
+      />
+    ) : undefined;
 
     return (
       <div className="relative w-full">
@@ -2062,6 +2255,21 @@ export function BudgetTreemap({
           </>
         )}
 
+        {usesSharedTrustFundExpenses && (
+          <div className="mb-3 space-y-1 text-sm text-gray-600">
+            {meta.sourceGroups
+              ?.filter(
+                (group) =>
+                  group.amount === null &&
+                  trustFundSources.includes(group.id as TrustFundSourceGroup),
+              )
+              .map((group) => (
+                <p key={group.id}>
+                  {group.label}: data is unavailable for {year}.
+                </p>
+              ))}
+          </div>
+        )}
         <GroupedTreemap<
           BudgetNode,
           BudgetNode,
@@ -2094,14 +2302,15 @@ export function BudgetTreemap({
                     {meta.sourceNote && <p>{meta.sourceNote}</p>}
                     {meta.scopeWarning && <p>{meta.scopeWarning}</p>}
                     {usesSharedTrustFundExpenses &&
-                      filteredData.nodes.some(
-                        (node) => node.tier === "detail" && node.amount <= 0,
+                      accountingNodes.some(
+                        (node) =>
+                          node.amount <= 0 && matchesAccountingNode(node),
                       ) && (
                         <p className="text-sm">
                           {
-                            filteredData.nodes.filter(
+                            accountingNodes.filter(
                               (node) =>
-                                node.tier === "detail" && node.amount <= 0,
+                                node.amount <= 0 && matchesAccountingNode(node),
                             ).length
                           }{" "}
                           trust funds with zero or negative annual expenditure
@@ -2122,7 +2331,7 @@ export function BudgetTreemap({
               }
               hint={
                 isTrustFund
-                  ? "Click on a trust fund to explore details"
+                  ? "Select a fund or entity to explore details"
                   : ppbGrouping === "section"
                     ? "Click on a budget section to explore details"
                     : "Click on an entity to explore details"
@@ -2130,8 +2339,9 @@ export function BudgetTreemap({
             />
           }
           rows={sharedRows}
+          showRowLabels={!usesSharedTrustFundExpenses}
           layout={
-            usesSharedProgrammeBudget
+            usesSharedProgrammeBudget || usesSharedTrustFundExpenses
               ? {
                   rowOrder: "input",
                   orderedBands: true,
@@ -2170,8 +2380,10 @@ export function BudgetTreemap({
           summaries={sharedProgrammeSummaries}
           totalLabel="Total"
           plotClassName={
+            // The shared heading sums gross leaf values; separate-entity labels
+            // already include the net total, so hide only that generated sum.
             usesSharedTrustFundExpenses
-              ? "h-[620px] sm:h-[720px] lg:h-[820px]"
+              ? "h-[620px] sm:h-[720px] lg:h-[820px] [&_section[aria-label='Separately_reported_entities']_.z-20>span]:hidden"
               : "h-[720px] sm:h-[900px] lg:h-[1200px]"
           }
           showLeafValues
@@ -2192,7 +2404,11 @@ export function BudgetTreemap({
                 .filter(
                   (label) =>
                     label !== context.leaf.label &&
-                    !(isTrustFund && label === "Individual trust funds"),
+                    !(
+                      isTrustFund &&
+                      (label === "Individual trust funds" ||
+                        label === context.row.label)
+                    ),
                 )
                 .map((label, index) => ({
                   label,
@@ -2221,16 +2437,18 @@ export function BudgetTreemap({
               notes={
                 <>
                   {context.leaf.data?.note}
-                  <SourceReferenceLinks
-                    references={
-                      context.leaf.data?.node
-                        ? collectBudgetNodeSources(
-                            context.leaf.data.node,
-                            metric,
-                          )
-                        : []
-                    }
-                  />
+                  {!isTrustFund && (
+                    <SourceReferenceLinks
+                      references={
+                        context.leaf.data?.node
+                          ? collectBudgetNodeSources(
+                              context.leaf.data.node,
+                              metric,
+                            )
+                          : []
+                      }
+                    />
+                  )}
                 </>
               }
               actionHint="Click to explore details"
@@ -2238,11 +2456,13 @@ export function BudgetTreemap({
           )}
           emptyContent={
             <div className="flex h-full items-center justify-center text-sm text-gray-500">
-              {activeFundingSources.length === 0
-                ? "Select at least one funding source."
-                : searchQuery.trim()
-                  ? `Nothing matches “${searchQuery}”.`
-                  : "No budget value is available for the selected controls."}
+              {usesSharedTrustFundExpenses && trustFundSources.length === 0
+                ? "Select at least one reporting source."
+                : activeFundingSources.length === 0
+                  ? "Select at least one funding source."
+                  : searchQuery.trim()
+                    ? `Nothing matches “${searchQuery}”.`
+                    : "No budget value is available for the selected controls."}
             </div>
           }
           sources={
@@ -2254,8 +2474,8 @@ export function BudgetTreemap({
         />
 
         {usesSharedTrustFundExpenses &&
-          filteredData.nodes.some(
-            (item) => item.tier === "detail" && item.amount <= 0,
+          accountingNodes.some(
+            (item) => item.amount <= 0 && matchesAccountingNode(item),
           ) && (
             <section
               className="mt-4"
@@ -2269,14 +2489,9 @@ export function BudgetTreemap({
                 to explore its details.
               </p>
               <div className="divide-y">
-                {filteredData.nodes
+                {accountingNodes
                   .filter(
-                    (item) =>
-                      item.tier === "detail" &&
-                      item.amount <= 0 &&
-                      `${item.label} ${item.code}`
-                        .toLowerCase()
-                        .includes(searchQuery.trim().toLowerCase()),
+                    (item) => item.amount <= 0 && matchesAccountingNode(item),
                   )
                   .map((item) => (
                     <button
@@ -2320,6 +2535,7 @@ export function BudgetTreemap({
             years={years}
             onClose={() => {
               setSelectedId(null);
+              setPendingDeepLink(null);
               clearSidebarHash();
             }}
           />

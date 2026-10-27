@@ -1,0 +1,36 @@
+{
+  "status": "passed_limited_metric_only",
+  "observations": 14,
+  "checks": [
+    {
+      "report_year": 2023,
+      "period_year": 2022,
+      "check": "fund_reserves_plus_unallocated_fair_value_to_printed_total",
+      "difference_usd": 0,
+      "passed": true
+    },
+    {
+      "report_year": 2023,
+      "period_year": 2023,
+      "check": "fund_reserves_plus_unallocated_fair_value_to_printed_total",
+      "difference_usd": 0,
+      "passed": true
+    },
+    {
+      "report_year": 2024,
+      "period_year": 2023,
+      "check": "fund_reserves_plus_unallocated_fair_value_to_printed_total",
+      "difference_usd": 0,
+      "passed": true
+    },
+    {
+      "report_year": 2024,
+      "period_year": 2024,
+      "check": "fund_reserves_plus_unallocated_fair_value_to_printed_total",
+      "difference_usd": 0,
+      "passed": true
+    }
+  ],
+  "publish_as_financial_position": false,
+  "note": "Exact Trust Fund/Programme Support Fund operating reserves are known, but full fund cash/assets/liabilities/netassets are not provided. Fair-value reserve remains unallocated; no invented fund assignment."
+}

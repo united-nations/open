@@ -1,0 +1,549 @@
+[
+  {
+    "page": 98,
+    "title": "Financial performance by segment",
+    "kind": "segment_performance",
+    "columns": [
+      {
+        "name": "Environment Fund",
+        "object_code": "ENV",
+        "period_year": 2022,
+        "object_kind": "segment",
+        "regular_budget": false
+      },
+      {
+        "name": "Regular budget",
+        "object_code": "RB",
+        "period_year": 2022,
+        "object_kind": "segment",
+        "regular_budget": true
+      },
+      {
+        "name": "Other support to programme of work",
+        "object_code": "POW",
+        "period_year": 2022,
+        "object_kind": "segment",
+        "regular_budget": false
+      },
+      {
+        "name": "Conventions and protocols",
+        "object_code": "CONV",
+        "period_year": 2022,
+        "object_kind": "segment",
+        "regular_budget": false
+      },
+      {
+        "name": "Multilateral Fund",
+        "object_code": "MLF",
+        "period_year": 2022,
+        "object_kind": "segment",
+        "regular_budget": false
+      },
+      {
+        "name": "Programme support",
+        "object_code": "PSC",
+        "period_year": 2022,
+        "object_kind": "segment",
+        "regular_budget": false
+      },
+      {
+        "name": "End-of-service and post-retirement benefits",
+        "object_code": "BEN",
+        "period_year": 2022,
+        "object_kind": "segment",
+        "regular_budget": false
+      },
+      {
+        "name": "Intersegment eliminations",
+        "object_code": "ELIM",
+        "period_year": 2022,
+        "object_kind": "adjustment",
+        "regular_budget": false
+      },
+      {
+        "name": "All funds",
+        "object_code": "TOTAL",
+        "period_year": 2022,
+        "object_kind": "entity_total",
+        "regular_budget": false
+      },
+      {
+        "name": "All funds comparative",
+        "object_code": "TOTAL",
+        "period_year": 2021,
+        "object_kind": "entity_total",
+        "regular_budget": false
+      }
+    ],
+    "start_y": 150,
+    "end_y": null,
+    "label_right": null,
+    "dot_grouping": false,
+    "unit": 1000,
+    "sectioned": true,
+    "block_labels": false,
+    "annex": null
+  },
+  {
+    "page": 134,
+    "title": "Annex I: fund accounts",
+    "kind": "fund_accounts",
+    "columns": [
+      {
+        "name": "opening_accumulated_surplus"
+      },
+      {
+        "name": "opening_reserve"
+      },
+      {
+        "name": "opening_net_assets"
+      },
+      {
+        "name": "revenue"
+      },
+      {
+        "name": "expenses"
+      },
+      {
+        "name": "closing_net_assets"
+      }
+    ],
+    "start_y": 0,
+    "end_y": null,
+    "label_right": null,
+    "dot_grouping": false,
+    "unit": 1000,
+    "sectioned": false,
+    "block_labels": false,
+    "annex": "I"
+  },
+  {
+    "page": 135,
+    "title": "Annex II: fund accounts",
+    "kind": "fund_accounts",
+    "columns": [
+      {
+        "name": "opening_accumulated_surplus"
+      },
+      {
+        "name": "opening_reserve"
+      },
+      {
+        "name": "opening_net_assets"
+      },
+      {
+        "name": "revenue"
+      },
+      {
+        "name": "expenses"
+      },
+      {
+        "name": "closing_net_assets"
+      }
+    ],
+    "start_y": 0,
+    "end_y": null,
+    "label_right": null,
+    "dot_grouping": false,
+    "unit": 1000,
+    "sectioned": false,
+    "block_labels": false,
+    "annex": "II"
+  },
+  {
+    "page": 136,
+    "title": "Annex II: fund accounts",
+    "kind": "fund_accounts",
+    "columns": [
+      {
+        "name": "opening_accumulated_surplus"
+      },
+      {
+        "name": "opening_reserve"
+      },
+      {
+        "name": "opening_net_assets"
+      },
+      {
+        "name": "revenue"
+      },
+      {
+        "name": "expenses"
+      },
+      {
+        "name": "closing_net_assets"
+      }
+    ],
+    "start_y": 0,
+    "end_y": null,
+    "label_right": null,
+    "dot_grouping": false,
+    "unit": 1000,
+    "sectioned": false,
+    "block_labels": false,
+    "annex": "II"
+  },
+  {
+    "page": 137,
+    "title": "Annex II: fund accounts",
+    "kind": "fund_accounts",
+    "columns": [
+      {
+        "name": "opening_accumulated_surplus"
+      },
+      {
+        "name": "opening_reserve"
+      },
+      {
+        "name": "opening_net_assets"
+      },
+      {
+        "name": "revenue"
+      },
+      {
+        "name": "expenses"
+      },
+      {
+        "name": "closing_net_assets"
+      }
+    ],
+    "start_y": 0,
+    "end_y": null,
+    "label_right": null,
+    "dot_grouping": false,
+    "unit": 1000,
+    "sectioned": false,
+    "block_labels": false,
+    "annex": "II"
+  },
+  {
+    "page": 138,
+    "title": "Annex II: fund accounts",
+    "kind": "fund_accounts",
+    "columns": [
+      {
+        "name": "opening_accumulated_surplus"
+      },
+      {
+        "name": "opening_reserve"
+      },
+      {
+        "name": "opening_net_assets"
+      },
+      {
+        "name": "revenue"
+      },
+      {
+        "name": "expenses"
+      },
+      {
+        "name": "closing_net_assets"
+      }
+    ],
+    "start_y": 0,
+    "end_y": null,
+    "label_right": null,
+    "dot_grouping": false,
+    "unit": 1000,
+    "sectioned": false,
+    "block_labels": false,
+    "annex": "II"
+  },
+  {
+    "page": 139,
+    "title": "Annex II: fund accounts",
+    "kind": "fund_accounts",
+    "columns": [
+      {
+        "name": "opening_accumulated_surplus"
+      },
+      {
+        "name": "opening_reserve"
+      },
+      {
+        "name": "opening_net_assets"
+      },
+      {
+        "name": "revenue"
+      },
+      {
+        "name": "expenses"
+      },
+      {
+        "name": "closing_net_assets"
+      }
+    ],
+    "start_y": 0,
+    "end_y": null,
+    "label_right": null,
+    "dot_grouping": false,
+    "unit": 1000,
+    "sectioned": false,
+    "block_labels": false,
+    "annex": "II"
+  },
+  {
+    "page": 140,
+    "title": "Annex III: fund accounts",
+    "kind": "fund_accounts",
+    "columns": [
+      {
+        "name": "opening_accumulated_surplus"
+      },
+      {
+        "name": "opening_reserve"
+      },
+      {
+        "name": "opening_net_assets"
+      },
+      {
+        "name": "revenue"
+      },
+      {
+        "name": "expenses"
+      },
+      {
+        "name": "closing_net_assets"
+      }
+    ],
+    "start_y": 0,
+    "end_y": null,
+    "label_right": null,
+    "dot_grouping": false,
+    "unit": 1000,
+    "sectioned": false,
+    "block_labels": false,
+    "annex": "III"
+  },
+  {
+    "page": 141,
+    "title": "Annex III: fund accounts",
+    "kind": "fund_accounts",
+    "columns": [
+      {
+        "name": "opening_accumulated_surplus"
+      },
+      {
+        "name": "opening_reserve"
+      },
+      {
+        "name": "opening_net_assets"
+      },
+      {
+        "name": "revenue"
+      },
+      {
+        "name": "expenses"
+      },
+      {
+        "name": "closing_net_assets"
+      }
+    ],
+    "start_y": 0,
+    "end_y": null,
+    "label_right": null,
+    "dot_grouping": false,
+    "unit": 1000,
+    "sectioned": false,
+    "block_labels": false,
+    "annex": "III"
+  },
+  {
+    "page": 142,
+    "title": "Annex III: fund accounts",
+    "kind": "fund_accounts",
+    "columns": [
+      {
+        "name": "opening_accumulated_surplus"
+      },
+      {
+        "name": "opening_reserve"
+      },
+      {
+        "name": "opening_net_assets"
+      },
+      {
+        "name": "revenue"
+      },
+      {
+        "name": "expenses"
+      },
+      {
+        "name": "closing_net_assets"
+      }
+    ],
+    "start_y": 0,
+    "end_y": null,
+    "label_right": null,
+    "dot_grouping": false,
+    "unit": 1000,
+    "sectioned": false,
+    "block_labels": false,
+    "annex": "III"
+  },
+  {
+    "page": 143,
+    "title": "Annex III: fund accounts",
+    "kind": "fund_accounts",
+    "columns": [
+      {
+        "name": "opening_accumulated_surplus"
+      },
+      {
+        "name": "opening_reserve"
+      },
+      {
+        "name": "opening_net_assets"
+      },
+      {
+        "name": "revenue"
+      },
+      {
+        "name": "expenses"
+      },
+      {
+        "name": "closing_net_assets"
+      }
+    ],
+    "start_y": 0,
+    "end_y": null,
+    "label_right": null,
+    "dot_grouping": false,
+    "unit": 1000,
+    "sectioned": false,
+    "block_labels": false,
+    "annex": "III"
+  },
+  {
+    "page": 144,
+    "title": "Annex III: fund accounts",
+    "kind": "fund_accounts",
+    "columns": [
+      {
+        "name": "opening_accumulated_surplus"
+      },
+      {
+        "name": "opening_reserve"
+      },
+      {
+        "name": "opening_net_assets"
+      },
+      {
+        "name": "revenue"
+      },
+      {
+        "name": "expenses"
+      },
+      {
+        "name": "closing_net_assets"
+      }
+    ],
+    "start_y": 0,
+    "end_y": null,
+    "label_right": null,
+    "dot_grouping": false,
+    "unit": 1000,
+    "sectioned": false,
+    "block_labels": false,
+    "annex": "III"
+  },
+  {
+    "page": 145,
+    "title": "Annex IV: fund accounts",
+    "kind": "fund_accounts",
+    "columns": [
+      {
+        "name": "opening_accumulated_surplus"
+      },
+      {
+        "name": "opening_reserve"
+      },
+      {
+        "name": "opening_net_assets"
+      },
+      {
+        "name": "revenue"
+      },
+      {
+        "name": "expenses"
+      },
+      {
+        "name": "closing_net_assets"
+      }
+    ],
+    "start_y": 0,
+    "end_y": null,
+    "label_right": null,
+    "dot_grouping": false,
+    "unit": 1000,
+    "sectioned": false,
+    "block_labels": false,
+    "annex": "IV"
+  },
+  {
+    "page": 146,
+    "title": "Annex V: fund accounts",
+    "kind": "fund_accounts",
+    "columns": [
+      {
+        "name": "opening_accumulated_surplus"
+      },
+      {
+        "name": "opening_reserve"
+      },
+      {
+        "name": "opening_net_assets"
+      },
+      {
+        "name": "revenue"
+      },
+      {
+        "name": "expenses"
+      },
+      {
+        "name": "closing_net_assets"
+      }
+    ],
+    "start_y": 0,
+    "end_y": null,
+    "label_right": null,
+    "dot_grouping": false,
+    "unit": 1000,
+    "sectioned": false,
+    "block_labels": false,
+    "annex": "V"
+  },
+  {
+    "page": 147,
+    "title": "Annex VI: fund accounts",
+    "kind": "fund_accounts",
+    "columns": [
+      {
+        "name": "opening_accumulated_surplus"
+      },
+      {
+        "name": "opening_reserve"
+      },
+      {
+        "name": "opening_net_assets"
+      },
+      {
+        "name": "revenue"
+      },
+      {
+        "name": "expenses"
+      },
+      {
+        "name": "closing_net_assets"
+      }
+    ],
+    "start_y": 0,
+    "end_y": null,
+    "label_right": null,
+    "dot_grouping": false,
+    "unit": 1000,
+    "sectioned": false,
+    "block_labels": false,
+    "annex": "VI"
+  }
+]

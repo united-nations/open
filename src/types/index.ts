@@ -244,7 +244,14 @@ export type SecretariatFundingSource =
   | "other_assessed"
   | "extrabudgetary";
 
-export type SecretariatGroup = "secretariat" | "regional" | "spm" | "pko" | "other" | "common" | "unallocated";
+export type SecretariatGroup =
+  | "secretariat"
+  | "regional"
+  | "spm"
+  | "pko"
+  | "other"
+  | "common"
+  | "unallocated";
 
 export interface SecretariatGroupDefinition {
   label: string;
@@ -431,6 +438,8 @@ export interface BudgetNodeSource {
   tableTitle?: string | null;
 }
 
+export type TrustFundSourceGroup = "volume_i" | "separate_entities";
+
 export type BudgetFundingSource =
   | "regular_budget"
   | "other_assessed"
@@ -528,6 +537,7 @@ export interface BudgetNode {
   financialPosition?: {
     asOf: string;
     fundCount: number;
+    scopeNote?: string;
     metrics: Array<{
       key: string;
       label: string;
@@ -539,6 +549,25 @@ export interface BudgetNode {
   };
   /** Supporting references for totals derived from several source records. */
   supportingSources?: BudgetNodeSource[];
+  /** Contextual documents, distinct from evidence for the selected amount. */
+  referenceSources?: BudgetNodeSource[];
+  sourceGroup?: TrustFundSourceGroup;
+  xbEntity?: string;
+  contributorScope?: string;
+  detailGrouping?: boolean;
+  detailRoundingDifference?: number;
+  /** Net entity totals must not be drawn as a sum of gross account children. */
+  chartAsAggregate?: boolean;
+  sourceMeasure?: string;
+  detailLabel?: string;
+  contributorsAvailable?: boolean;
+  expenseReconciliation?: {
+    detailTotal: number;
+    eliminations: number;
+    roundingDifference: number;
+    entityTotal: number;
+    supportingSources: BudgetNodeSource[];
+  };
 }
 
 export interface BudgetCoverage {
@@ -578,7 +607,17 @@ export interface BudgetOmission {
 export interface BudgetMeta {
   stream: "ppb" | "pko" | "trust_funds";
   /** Whether the tree comes from audited actuals or budget documents. */
-  sourceKind?: "audited" | "budget_document" | "trust_fund_schedule";
+  sourceKind?:
+    | "audited"
+    | "budget_document"
+    | "trust_fund_schedule"
+    | "mixed_trust_fund_sources";
+  sourceGroups?: Array<{
+    id: TrustFundSourceGroup;
+    label: string;
+    description: string;
+    amount: number | null;
+  }>;
   title: string;
   label: string;
   measure: string;
@@ -622,4 +661,39 @@ export interface BudgetMeta {
 export interface BudgetData {
   meta: BudgetMeta;
   nodes: BudgetNode[];
+}
+
+/** Separately reported donor measures are never added to Volume I revenue. */
+export interface XBContributorRow {
+  name: string;
+  amount: number;
+  sources: BudgetNodeSource[];
+  grouped?: boolean;
+  needsReview?: boolean;
+  components: Array<{
+    id: string;
+    label: string;
+    amount: number;
+    sources: BudgetNodeSource[];
+  }>;
+}
+export interface XBContributorSeries {
+  entity: string;
+  year: number;
+  scope: string;
+  scopeLabel: string;
+  measure: string;
+  coverage: string;
+  rows: XBContributorRow[];
+  otherCategories: XBContributorRow[];
+  contributorTotal: number;
+  reportedTotal: number | null;
+  rowTotal: number;
+  difference: number | null;
+  notes: string[];
+  sources: BudgetNodeSource[];
+}
+export interface XBContributorsData {
+  schemaVersion: number;
+  series: XBContributorSeries[];
 }

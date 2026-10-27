@@ -1,0 +1,5664 @@
+{
+  "status": "passed_with_disclosed_source_gaps",
+  "source_documents": 12,
+  "facts": 3445,
+  "contributor_observations": 1421,
+  "fund_accounts_by_source": {
+    "unep-accounts-2023": 132,
+    "unep-accounts-2024": 133
+  },
+  "blank_observations": [
+    {
+      "source_id": "unep-accounts-2024",
+      "pdf_page": 127,
+      "object_id": "UNEP:account:AEL",
+      "column": "surplus_movements"
+    },
+    {
+      "source_id": "unep-accounts-2024",
+      "pdf_page": 139,
+      "object_id": "unep-accounts-2024:annex:III:row:139:2",
+      "column": "opening_reserve"
+    }
+  ],
+  "checks": [
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:AAL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:AEL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:AFB"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:ALL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:AML"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:AVL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:AWL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:BAL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:BBL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:BCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:BDL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:BEL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:BGL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:BML"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:BPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:BRL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:BTL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:BWL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:BYL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:BZL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:CAL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:CAP"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:CAR"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:CBL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:CCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:CEL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:CFL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:CLL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:CML"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:CNL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:CPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:CRL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:CSS"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:CTL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:DPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:EAL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:EAP"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:ECL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:ECR"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:ESL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:ESS"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:ETL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:EUL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:FBL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:FEC"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:FEL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:FIL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:FPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:FRL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:FSL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:FTL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:GCF"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:GCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:GFL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:GPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:GPP"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:GPS"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:GRL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:IAL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:IEL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:IML"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:JCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:LDL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:LHN"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:MCC"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:MCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:MCP"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:MCV"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:MDL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:MEL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:MFL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:MOL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:MPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:MRL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:MSL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:MVL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:NFL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:NPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:OTA"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:PES"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:PFP"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:PGL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:PNL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:POL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:QAC"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:QAW"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:QCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:QEL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:QFL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:QGL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:QML"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:QNL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:QOL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:QTL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:QVL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:QWL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:RAL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:RED"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:REL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:RGL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:ROL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:RPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:RSL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:RVL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:SCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:SCP"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:SEL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:SFL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:SLP"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:SML"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:SMU"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:SNL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:SOL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:SRL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:SVL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:TBL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:TCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:TDL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:TGL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:THL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:TIL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:TJL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:TKL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:TNL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:TPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:TRL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:TSL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:UTL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:VBL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:VCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:WAL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "object_id": "UNEP:account:WPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:AAL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:AFB"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:ALL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:AML"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:AVL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:AWL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:BAL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:BBL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:BCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:BDL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:BEL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:BGL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:BML"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:BPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:BRL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:BTL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:BWL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:BYL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:BZL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:CAL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:CAP"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:CAR"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:CBL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:CCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:CEL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:CFL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:CLL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:CML"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:CNL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:CPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:CRL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:CSS"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:CTL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:DPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:EAL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:EAP"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:ECL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:ECR"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:ESL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:ESS"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:ETL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:EUL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:FBL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:FEC"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:FEL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:FIL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "-1000",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:FPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:FRL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:FSL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:FTL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:GCF"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:GCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:GFL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:GPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:GPP"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:GPS"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:GRL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:IAL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:IEL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:IML"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:JCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:LDL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:LHN"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:MCC"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:MCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:MCP"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:MCV"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:MDL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:MEL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:MFL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:MOL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:MPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:MRL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:MSL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:MVL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:NFL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:NPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:OTA"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:PCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:PES"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:PFP"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:PGL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:PNL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:POL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:QAC"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:QAW"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:QCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:QEL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:QFL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:QGL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:QML"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:QNL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:QOL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:QTL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:QVL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:QWL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "1000",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:RAL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:RED"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:REL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:RGL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:ROL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:RPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:RSL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:RVL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:SCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:SCP"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:SEL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:SFL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:SLP"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:SML"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:SMU"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:SNL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:SOL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:SRL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:SVL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:TBL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:TCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:TDL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:TGL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:THL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:TIL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:TJL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:TKL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:TNL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:TPL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:TRL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:TSL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:UTL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:VBL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:VCL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:WAL"
+    },
+    {
+      "check": "fund_net_asset_equation",
+      "difference_usd": "0",
+      "tolerance_usd": "3000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:WPL"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "annex": "I",
+      "metric": "revenue"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "annex": "I",
+      "metric": "expenses"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "annex": "II",
+      "metric": "revenue"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "annex": "II",
+      "metric": "expenses"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "annex": "III",
+      "metric": "revenue"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "annex": "III",
+      "metric": "expenses"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "annex": "IV",
+      "metric": "revenue"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "annex": "IV",
+      "metric": "expenses"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "annex": "V",
+      "metric": "revenue"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "annex": "V",
+      "metric": "expenses"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "annex": "VI",
+      "metric": "revenue"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "annex": "VI",
+      "metric": "expenses"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "annex": "I",
+      "metric": "revenue"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "annex": "I",
+      "metric": "expenses"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "annex": "II",
+      "metric": "revenue"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "annex": "II",
+      "metric": "expenses"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "annex": "III",
+      "metric": "revenue"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "-1000",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "annex": "III",
+      "metric": "expenses"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "annex": "IV",
+      "metric": "revenue"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "annex": "IV",
+      "metric": "expenses"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "annex": "V",
+      "metric": "revenue"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "annex": "V",
+      "metric": "expenses"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "annex": "VI",
+      "metric": "revenue"
+    },
+    {
+      "check": "funds_to_annex",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "annex": "VI",
+      "metric": "expenses"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "un-habitat-accounts-2023",
+      "period_year": 2023,
+      "metric": "revenue"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "un-habitat-accounts-2023",
+      "period_year": 2023,
+      "metric": "expenses"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "un-habitat-accounts-2023",
+      "period_year": 2023,
+      "metric": "surplus_deficit"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "un-habitat-accounts-2024",
+      "period_year": 2024,
+      "metric": "revenue"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "un-habitat-accounts-2024",
+      "period_year": 2024,
+      "metric": "expenses"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "un-habitat-accounts-2024",
+      "period_year": 2024,
+      "metric": "surplus_deficit"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "period_year": 2023,
+      "metric": "revenue"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "period_year": 2023,
+      "metric": "expenses"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2023",
+      "period_year": 2023,
+      "metric": "surplus_deficit"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "period_year": 2024,
+      "metric": "revenue"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "period_year": 2024,
+      "metric": "expenses"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unep-accounts-2024",
+      "period_year": 2024,
+      "metric": "surplus_deficit"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unodc-accounts-2023",
+      "period_year": 2022,
+      "metric": "revenue"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unodc-accounts-2023",
+      "period_year": 2022,
+      "metric": "expenses"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unodc-accounts-2023",
+      "period_year": 2022,
+      "metric": "surplus_deficit"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unodc-accounts-2023",
+      "period_year": 2023,
+      "metric": "revenue"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unodc-accounts-2023",
+      "period_year": 2023,
+      "metric": "expenses"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unodc-accounts-2023",
+      "period_year": 2023,
+      "metric": "surplus_deficit"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unodc-accounts-2024",
+      "period_year": 2023,
+      "metric": "revenue"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unodc-accounts-2024",
+      "period_year": 2023,
+      "metric": "expenses"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unodc-accounts-2024",
+      "period_year": 2023,
+      "metric": "surplus_deficit"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unodc-accounts-2024",
+      "period_year": 2024,
+      "metric": "revenue"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unodc-accounts-2024",
+      "period_year": 2024,
+      "metric": "expenses"
+    },
+    {
+      "check": "segments_to_entity",
+      "difference_usd": "0",
+      "tolerance_usd": "2000",
+      "passed": true,
+      "source_id": "unodc-accounts-2024",
+      "period_year": 2024,
+      "metric": "surplus_deficit"
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 0
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 1
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 2
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 3
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 4
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 5
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 6
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 7
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 8
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 9
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 10
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 11
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 12
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 13
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 14
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 15
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 16
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 17
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 18
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 19
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 20
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 21
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 22
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 23
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 24
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 25
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 26
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 27
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 28
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 29
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 30
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 31
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 32
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 33
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 34
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 35
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 36
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 37
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 38
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 39
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 40
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 41
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 42
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 43
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 44
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 45
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 46
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 7,
+      "source_row": 47
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 0
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 1
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 2
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 3
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 4
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 5
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 6
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 7
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 8
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 9
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 10
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 11
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 12
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 13
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 14
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 15
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 16
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 17
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 18
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "pdf_page": 8,
+      "source_row": 19
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 0
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 1
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 2
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 3
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 4
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 5
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 6
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 7
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 8
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 9
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 10
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 11
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 12
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 13
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 14
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 15
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 16
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 17
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 18
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 19
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 20
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 21
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 22
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 23
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 24
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 25
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 26
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 27
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 28
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 29
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 30
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 31
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 32
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 33
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 34
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 35
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 9,
+      "source_row": 36
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 0
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 1
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 2
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 3
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 4
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 5
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 6
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 7
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 8
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 9
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 10
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 11
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 12
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 13
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 14
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 15
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 16
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 17
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 18
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 19
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 20
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 21
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 22
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 23
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 24
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 25
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 26
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 27
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 28
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 29
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 30
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 31
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 32
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 33
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 34
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 35
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "pdf_page": 10,
+      "source_row": 36
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "1000",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 0,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 0,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 1,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 1,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 2,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 2,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 3,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 3,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 4,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 4,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 5,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 5,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 6,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 6,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 7,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 7,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 8,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 8,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 9,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "1000",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 9,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 10,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 10,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 11,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 11,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 12,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 12,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 13,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 13,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 14,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 14,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 15,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 15,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 16,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 16,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 17,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 17,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 18,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 18,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 19,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 19,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 20,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "-1000",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 20,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 21,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 21,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 22,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 22,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 23,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 23,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 24,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 24,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 25,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 25,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 26,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 26,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 27,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 27,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 28,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 28,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 29,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 51,
+      "source_row": 29,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 0,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 0,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 1,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 1,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 2,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 2,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 3,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 3,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 4,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 4,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 5,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 5,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 6,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 6,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 7,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 7,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 8,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 8,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 9,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 9,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 10,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 10,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 11,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 11,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 12,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 12,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 13,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 13,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 14,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 14,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 15,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 15,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 16,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 16,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 17,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 17,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 18,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 18,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 19,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 19,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 20,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 20,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 21,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 21,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 22,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 22,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 23,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 23,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 24,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 24,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 25,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 25,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 26,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 26,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 27,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 27,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 28,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 28,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 29,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 29,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 30,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 30,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 31,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 52,
+      "source_row": 31,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 0,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 0,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 1,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 1,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 2,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 2,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 3,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 3,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 4,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 4,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 5,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 5,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 6,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 6,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 7,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 7,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 8,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 8,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 9,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 9,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 10,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 10,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 11,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 11,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 12,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 12,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 13,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 13,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 14,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 14,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 15,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 15,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 16,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 16,
+      "period_year": 2023
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "1000",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 17,
+      "period_year": 2022
+    },
+    {
+      "check": "contribution_row_components",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "pdf_page": 53,
+      "source_row": 17,
+      "period_year": 2023
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "period_year": 2020,
+      "column": "Foundation non-earmarked"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "period_year": 2021,
+      "column": "Foundation non-earmarked"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "period_year": 2022,
+      "column": "Foundation non-earmarked"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "period_year": 2023,
+      "column": "Foundation earmarked"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2023-donors",
+      "period_year": 2023,
+      "column": "Foundation non-earmarked"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "period_year": 2020,
+      "column": "Foundation non-earmarked"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "period_year": 2021,
+      "column": "Foundation non-earmarked"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "period_year": 2022,
+      "column": "Foundation non-earmarked"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "period_year": 2023,
+      "column": "Foundation non-earmarked"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "period_year": 2024,
+      "column": "Earmarked total"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "period_year": 2024,
+      "column": "Foundation earmarked"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "period_year": 2024,
+      "column": "Foundation non-earmarked"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0.0",
+      "tolerance_usd": "100",
+      "passed": true,
+      "source_id": "habitat-2024-donors",
+      "period_year": 2024,
+      "column": "Technical cooperation"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "1000",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "period_year": 2022,
+      "column": "ITC Trust Fund"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "period_year": 2022,
+      "column": "Window I"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "period_year": 2022,
+      "column": "Window II"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "period_year": 2023,
+      "column": "ITC Trust Fund"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "period_year": 2023,
+      "column": "Window I"
+    },
+    {
+      "check": "contributors_to_printed_total",
+      "difference_usd": "0",
+      "tolerance_usd": "1000",
+      "passed": true,
+      "source_id": "itc-appendix-2023",
+      "period_year": 2023,
+      "column": "Window II"
+    }
+  ],
+  "warnings": [
+    {
+      "type": "source_blank_cell",
+      "source_id": "unep-accounts-2024",
+      "object_id": "UNEP:account:AEL",
+      "missing": [
+        "surplus_movements"
+      ],
+      "policy": "Blank remains null; no balancing value is invented."
+    },
+    {
+      "type": "source_contributor_total_difference",
+      "source_id": "habitat-2023-donors",
+      "period_year": 2023,
+      "column": "Earmarked total",
+      "difference_usd": "-68100.0",
+      "policy": "Preserve printed rows and total; do not assign the residual to a donor."
+    },
+    {
+      "type": "source_contributor_total_difference",
+      "source_id": "habitat-2023-donors",
+      "period_year": 2023,
+      "column": "Technical cooperation",
+      "difference_usd": "-68100.0",
+      "policy": "Preserve printed rows and total; do not assign the residual to a donor."
+    },
+    {
+      "type": "coverage_gap",
+      "entity": "UNEP",
+      "detail": "Complete named donor-to-coded-fund observations not retrieved."
+    },
+    {
+      "type": "coverage_gap",
+      "entity": "UNODC",
+      "detail": "The main audited-source extraction has no named donor rows. Separate pledge tables are handled by the supplementary contributor extraction; pillar expenses include RB."
+    },
+    {
+      "type": "coverage_gap",
+      "entity": "ITC",
+      "detail": "Contributor appendix inspected for 2022/2023 only; no 2024/2025 appendix retrieved."
+    }
+  ],
+  "scope_policy": "No trust-fund-versus-XB exclusions decided; separate measures and aggregation levels are not additive.",
+  "arwo_control_observations": 28,
+  "derived_non_rb_observations": 8
+}

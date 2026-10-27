@@ -1,0 +1,302 @@
+{
+  "status": "passed_with_display_rounding_differences",
+  "observations": 7896,
+  "contributor_collection_rows": 521,
+  "unique_accounts": [
+    "BBL",
+    "BEL",
+    "BGL",
+    "BYL",
+    "BZL",
+    "VBL"
+  ],
+  "checks": [
+    {
+      "source_id": "cbd-contribution-status-2023",
+      "source_fund_code": "BY",
+      "metric": "collections_on_prior_pledges",
+      "rows_sum_usd": 1395735,
+      "printed_total_usd": 1395735,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2023#ctl15_W5951_ctl24_W5952_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2023",
+      "source_fund_code": "BY",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 11673104,
+      "printed_total_usd": 11673104,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2023#ctl15_W5951_ctl24_W5952_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2023",
+      "source_fund_code": "BY+",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 1122653,
+      "printed_total_usd": 1122653,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2023#ctl15_W5951_ctl25_W5953_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2023",
+      "source_fund_code": "BE",
+      "metric": "collections_on_prior_pledges",
+      "rows_sum_usd": 355835,
+      "printed_total_usd": 355835,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2023#ctl15_W5951_ctl26_W5954_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2023",
+      "source_fund_code": "BE",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 6863282,
+      "printed_total_usd": 6863282,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2023#ctl15_W5951_ctl26_W5954_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2023",
+      "source_fund_code": "BZ",
+      "metric": "collections_on_prior_pledges",
+      "rows_sum_usd": 267675,
+      "printed_total_usd": 267675,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2023#ctl15_W5951_ctl31_W5955_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2023",
+      "source_fund_code": "BZ",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 1401295,
+      "printed_total_usd": 1401295,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2023#ctl15_W5951_ctl31_W5955_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2023",
+      "source_fund_code": "VB",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 304559,
+      "printed_total_usd": 304559,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2023#ctl15_W5951_ctl28_W6395_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2023",
+      "source_fund_code": "BG",
+      "metric": "collections_on_prior_pledges",
+      "rows_sum_usd": 575820,
+      "printed_total_usd": 575820,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2023#ctl15_W5951_ctl32_W5958_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2023",
+      "source_fund_code": "BG",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 2576773,
+      "printed_total_usd": 2576773,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2023#ctl15_W5951_ctl32_W5958_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2023",
+      "source_fund_code": "BG+",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 233885,
+      "printed_total_usd": 233885,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2023#ctl15_W5951_ctl27_W5959_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2023",
+      "source_fund_code": "BB",
+      "metric": "collections_on_prior_pledges",
+      "rows_sum_usd": 681576,
+      "printed_total_usd": 681576,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2023#ctl15_W5951_ctl30_W6397_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2023",
+      "source_fund_code": "BB",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 2013410,
+      "printed_total_usd": 2013410,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2023#ctl15_W5951_ctl30_W6397_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2023",
+      "source_fund_code": "BB+",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 202700,
+      "printed_total_usd": 202700,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2023#ctl15_W5951_ctl29_W16990_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2024",
+      "source_fund_code": "BY",
+      "metric": "collections_on_prior_pledges",
+      "rows_sum_usd": 1261945,
+      "printed_total_usd": 1261945,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2024#ctl15_W5951_ctl24_W5952_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2024",
+      "source_fund_code": "BY",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 11743940,
+      "printed_total_usd": 11743940,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2024#ctl15_W5951_ctl24_W5952_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2024",
+      "source_fund_code": "BY+",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 1128014,
+      "printed_total_usd": 1128014,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2024#ctl15_W5951_ctl25_W5953_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2024",
+      "source_fund_code": "BE",
+      "metric": "collections_on_prior_pledges",
+      "rows_sum_usd": 1484277,
+      "printed_total_usd": 1484277,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2024#ctl15_W5951_ctl26_W5954_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2024",
+      "source_fund_code": "BE",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 3367784,
+      "printed_total_usd": 3367784,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2024#ctl15_W5951_ctl26_W5954_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2024",
+      "source_fund_code": "BZ",
+      "metric": "collections_on_prior_pledges",
+      "rows_sum_usd": 54515,
+      "printed_total_usd": 54515,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2024#ctl15_W5951_ctl31_W5955_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2024",
+      "source_fund_code": "BZ",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 995158,
+      "printed_total_usd": 995158,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2024#ctl15_W5951_ctl31_W5955_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2024",
+      "source_fund_code": "VB",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 116111,
+      "printed_total_usd": 116111,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2024#ctl15_W5951_ctl28_W6395_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2024",
+      "source_fund_code": "BG",
+      "metric": "collections_on_prior_pledges",
+      "rows_sum_usd": 93481,
+      "printed_total_usd": 93481,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2024#ctl15_W5951_ctl32_W5958_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2024",
+      "source_fund_code": "BG",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 2514349,
+      "printed_total_usd": 2514349,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2024#ctl15_W5951_ctl32_W5958_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2024",
+      "source_fund_code": "BG+",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 235003,
+      "printed_total_usd": 235003,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2024#ctl15_W5951_ctl27_W5959_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2024",
+      "source_fund_code": "BB",
+      "metric": "collections_on_prior_pledges",
+      "rows_sum_usd": 255940,
+      "printed_total_usd": 255940,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2024#ctl15_W5951_ctl30_W6397_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2024",
+      "source_fund_code": "BB",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 2161870,
+      "printed_total_usd": 2161870,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2024#ctl15_W5951_ctl30_W6397_CTrustFundName"
+    },
+    {
+      "source_id": "cbd-contribution-status-2024",
+      "source_fund_code": "BB+",
+      "metric": "collections_on_current_pledges",
+      "rows_sum_usd": 203669,
+      "printed_total_usd": 203669,
+      "difference_usd": 0,
+      "status": "passed",
+      "source_url": "https://www.cbd.int/convention/parties/contributions.shtml?tab=3&yr=2024#ctl15_W5951_ctl29_W16990_CTrustFundName"
+    }
+  ],
+  "limitations": [
+    "Historical contribution-status collections, not recognized IPSAS contribution revenue.",
+    "Source summary donor-type tables and detailed fund ledgers differ by a few dollars; detailed ledgers are retained and checked independently.",
+    "Distinct contribution lines from the same donor, including additional core contributions, remain separate source rows; aggregate only within this measure.",
+    "HTML tables have document anchors rather than invented PDF pages.",
+    "Coverage is complete for these nine source ledgers/six accounts; partial across all UNEP accounts."
+  ]
+}

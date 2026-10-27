@@ -1,16 +1,16 @@
 {
   "meta": {
     "stream": "trust_funds",
-    "sourceKind": "trust_fund_schedule",
-    "title": "Schedule of Individual Trust Funds",
+    "sourceKind": "mixed_trust_fund_sources",
+    "title": "Trust funds and separately reported XB expenditure",
     "label": "Individual trust-fund expenses 2022 (USD)",
     "measure": "IPSAS expenses",
     "year": 2022,
     "fiscalYear": "2022",
     "currency": "USD",
     "total": 3330854614,
-    "scopeLabel": "Current-period expenses of all funds in the Schedule of Individual Trust Funds",
-    "scopeWarning": "This is gross fund-level accounting and is not additive to PPB or consolidated Secretariat expenditure. Funds without a verified entity assignment are shown under Unmapped Trust Funds; this is a display group, not a UN entity.",
+    "scopeLabel": "UN Secretariat trust-fund schedules and separately reported entity XB expenditure",
+    "scopeWarning": "This is gross fund-level accounting and is not additive to PPB or consolidated Secretariat expenditure. Funds without a verified entity assignment are shown under Unmapped Trust Funds; this is a display group, not a UN entity. Separate entity totals use audited non-RB expenditure where available; ITC uses reported gross XB programme delivery. Gross account/segment details must not be added to their parent total.",
     "fundingSources": [
       "extrabudgetary"
     ],
@@ -30,7 +30,22 @@
       "repo": "transparency",
       "release": "trust-fund schedule extraction",
       "url": "https://github.com/united-nations/transparency"
-    }
+    },
+    "sourceGroups": [
+      {
+        "id": "volume_i",
+        "label": "UN Secretariat trust-fund schedules",
+        "description": "Individual fund accounts accompanying the United Nations Volume I accounts.",
+        "amount": 3330854614
+      },
+      {
+        "id": "separate_entities",
+        "label": "Separately reported entities",
+        "description": "UNEP, UNODC, UN-Habitat and ITC. XB expenditure from their separately published reports.",
+        "amount": null
+      }
+    ],
+    "sourceNote": "The displayed sum is reported expenditure, not consolidated Secretariat expenditure. Source measures have different accounting boundaries, and cross-source transfers have not been reconciled or eliminated. Years without extracted report data remain unavailable. Contributor measures remain separate."
   },
   "nodes": [
     {
@@ -50,7 +65,8 @@
         "url": "https://digitallibrary.un.org/record/4017052",
         "rowLabel": "Total expenses",
         "columnHeader": "2022"
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-funds~xb",
@@ -69,7 +85,8 @@
         "url": "https://digitallibrary.un.org/record/4017052",
         "rowLabel": "Total expenses",
         "columnHeader": "2022"
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-funds~entities",
@@ -88,7 +105,8 @@
         "url": "https://digitallibrary.un.org/record/4017052",
         "rowLabel": "Total expenses",
         "columnHeader": "2022"
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:AMISOM",
@@ -320,7 +338,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:AMISOM:fund:SAU",
@@ -559,7 +578,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:BINUH",
@@ -791,7 +811,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:BINUH:fund:HKA",
@@ -1030,7 +1051,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:CEB",
@@ -1262,7 +1284,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:CEB:fund:HBP",
@@ -1501,7 +1524,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:CNMC",
@@ -1733,7 +1757,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:CNMC:fund:CNM",
@@ -1972,7 +1997,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:CTED",
@@ -2204,7 +2230,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:CTED:fund:CTD",
@@ -2443,7 +2470,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DCO",
@@ -2785,7 +2813,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DCO:fund:DSA",
@@ -3024,7 +3053,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DCO:fund:LMR",
@@ -3263,7 +3293,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA",
@@ -5255,7 +5286,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA:fund:PDF",
@@ -5494,7 +5526,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA:fund:XES",
@@ -5733,7 +5766,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA:fund:HIA",
@@ -5972,7 +6006,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA:fund:WKA",
@@ -6211,7 +6246,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA:fund:OTB",
@@ -6450,7 +6486,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA:fund:HCB",
@@ -6689,7 +6726,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA:fund:GBA",
@@ -6928,7 +6966,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA:fund:PGA",
@@ -7167,7 +7206,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA:fund:KSA",
@@ -7406,7 +7446,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA:fund:AMR",
@@ -7645,7 +7686,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA:fund:FII",
@@ -7884,7 +7926,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA:fund:WOA",
@@ -8123,7 +8166,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA:fund:IDA",
@@ -8362,7 +8406,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA:fund:CSA",
@@ -8601,7 +8646,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA:fund:WAA",
@@ -8840,7 +8886,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA:fund:FYA",
@@ -9079,7 +9126,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DESA:fund:IEA",
@@ -9318,7 +9366,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DGACM",
@@ -9660,7 +9709,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DGACM:fund:GTA",
@@ -9899,7 +9949,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DGACM:fund:ACM",
@@ -10138,7 +10189,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DGC",
@@ -10700,7 +10752,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DGC:fund:ESA",
@@ -10939,7 +10992,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DGC:fund:GCU",
@@ -11178,7 +11232,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DGC:fund:ERA",
@@ -11417,7 +11472,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DGC:fund:SNA",
@@ -11656,7 +11712,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DMSPC",
@@ -11888,7 +11945,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DMSPC:fund:ESW",
@@ -12127,7 +12185,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DOS",
@@ -12359,7 +12418,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DOS:fund:LLB",
@@ -12598,7 +12658,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DPO",
@@ -12940,7 +13001,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DPO:fund:LLA",
@@ -13179,7 +13241,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DPO:fund:CPK",
@@ -13418,7 +13481,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DPPA",
@@ -13870,7 +13934,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DPPA:fund:SZA",
@@ -14109,7 +14174,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DPPA:fund:PSO",
@@ -14348,7 +14414,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DPPA:fund:PYA",
@@ -14587,7 +14654,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DSS",
@@ -14819,7 +14887,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:DSS:fund:UGA",
@@ -15058,7 +15127,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ECA",
@@ -15510,7 +15580,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ECA:fund:HDM",
@@ -15749,7 +15820,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ECA:fund:CFE",
@@ -15988,7 +16060,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ECA:fund:IDP",
@@ -16227,7 +16300,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ECE",
@@ -16569,7 +16643,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ECE:fund:ECE",
@@ -16808,7 +16883,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ECE:fund:LRA",
@@ -17047,7 +17123,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ECLAC",
@@ -17389,7 +17466,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ECLAC:fund:BTS",
@@ -17628,7 +17706,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ECLAC:fund:LAC",
@@ -17867,7 +17946,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:EOSG",
@@ -18539,7 +18619,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:EOSG:fund:LJA",
@@ -18778,7 +18859,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:EOSG:fund:CCS",
@@ -19017,7 +19099,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:EOSG:fund:GIV",
@@ -19256,7 +19339,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:EOSG:fund:CCR",
@@ -19495,7 +19579,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:EOSG:fund:COC",
@@ -19734,7 +19819,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ESCAP",
@@ -20076,7 +20162,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ESCAP:fund:BKT",
@@ -20315,7 +20402,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ESCAP:fund:BTF",
@@ -20554,7 +20642,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ESCWA",
@@ -20786,7 +20875,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ESCWA:fund:WVZ",
@@ -21025,7 +21115,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:HSU",
@@ -21257,7 +21348,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:HSU:fund:HYA",
@@ -21496,7 +21588,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ICJ",
@@ -21838,7 +21931,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ICJ:fund:ICJ",
@@ -22077,7 +22171,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ICJ:fund:TJA",
@@ -22316,7 +22411,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:IIIM",
@@ -22548,7 +22644,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:IIIM:fund:SIM",
@@ -22787,7 +22884,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:IIMM",
@@ -23019,7 +23117,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:IIMM:fund:IIM",
@@ -23258,7 +23357,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:JPO",
@@ -23490,7 +23590,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:JPO:fund:JPO",
@@ -23729,7 +23830,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:MICT",
@@ -23961,7 +24063,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:MICT:fund:RMB",
@@ -24200,7 +24303,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:MINUSCA",
@@ -24542,7 +24646,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:MINUSCA:fund:CAF",
@@ -24781,7 +24886,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:MINUSCA:fund:MIS",
@@ -25020,7 +25126,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:MINUSMA",
@@ -25362,7 +25469,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:MINUSMA:fund:PSM",
@@ -25601,7 +25709,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:MINUSMA:fund:MSM",
@@ -25840,7 +25949,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:MONUSCO",
@@ -26072,7 +26182,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:MONUSCO:fund:NGA",
@@ -26311,7 +26422,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OCHA",
@@ -26763,7 +26875,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OCHA:fund:DDN",
@@ -27002,7 +27115,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OCHA:fund:CER",
@@ -27241,7 +27355,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OCHA:fund:CLR",
@@ -27480,7 +27595,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OCT",
@@ -27712,7 +27828,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OCT:fund:CTI",
@@ -27951,7 +28068,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ODA",
@@ -28953,7 +29071,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ODA:fund:DGA",
@@ -29192,7 +29311,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ODA:fund:DBA",
@@ -29431,7 +29551,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ODA:fund:DGT",
@@ -29670,7 +29791,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ODA:fund:DFA",
@@ -29909,7 +30031,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ODA:fund:PIA",
@@ -30148,7 +30271,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ODA:fund:DAA",
@@ -30387,7 +30511,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ODA:fund:DWA",
@@ -30626,7 +30751,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ODA:fund:DJA",
@@ -30865,7 +30991,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ODET",
@@ -31097,7 +31224,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:ODET:fund:DUN",
@@ -31336,7 +31464,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OHCHR",
@@ -32448,7 +32577,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OHCHR:fund:HCA",
@@ -32687,7 +32817,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OHCHR:fund:AHA",
@@ -32926,7 +33057,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OHCHR:fund:CHA",
@@ -33165,7 +33297,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OHCHR:fund:UPR",
@@ -33404,7 +33537,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OHCHR:fund:SHA",
@@ -33643,7 +33777,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OHCHR:fund:IHA",
@@ -33882,7 +34017,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OHCHR:fund:CIA",
@@ -34121,7 +34257,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OHCHR:fund:VTA",
@@ -34360,7 +34497,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OHCHR:fund:VPU",
@@ -34599,7 +34737,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OIOS",
@@ -34831,7 +34970,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OIOS:fund:QOA",
@@ -35070,7 +35210,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OJSRS",
@@ -35302,7 +35443,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OJSRS:fund:SCC",
@@ -35541,7 +35683,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OLA",
@@ -36323,7 +36466,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OLA:fund:PIL",
@@ -36562,7 +36706,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OLA:fund:TTA",
@@ -36801,7 +36946,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OLA:fund:CLA",
@@ -37040,7 +37186,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OLA:fund:KJA",
@@ -37279,7 +37426,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OLA:fund:KUA",
@@ -37518,7 +37666,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OLA:fund:TLA",
@@ -37757,7 +37906,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OOSA",
@@ -37989,7 +38139,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OOSA:fund:SBA",
@@ -38228,7 +38379,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OPGA",
@@ -38460,7 +38612,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OPGA:fund:GAC",
@@ -38699,7 +38852,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OSAA",
@@ -38931,7 +39085,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OSAA:fund:NAA",
@@ -39170,7 +39325,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OSCS",
@@ -39402,7 +39558,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OSCS:fund:SCS",
@@ -39641,7 +39798,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OSESG-GL",
@@ -39873,7 +40031,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OSESG-GL:fund:GLA",
@@ -40112,7 +40271,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OSESG-Myanmar",
@@ -40344,7 +40504,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OSESG-Myanmar:fund:MYM",
@@ -40583,7 +40744,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OSRSG-CAAC",
@@ -40815,7 +40977,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OSRSG-CAAC:fund:NNA",
@@ -41054,7 +41217,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OSRSG-SVC",
@@ -41286,7 +41450,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OSRSG-SVC:fund:SVC",
@@ -41525,7 +41690,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OSRSG-VAC",
@@ -41757,7 +41923,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OSRSG-VAC:fund:SVD",
@@ -41996,7 +42163,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OTHER",
@@ -42558,7 +42726,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OTHER:fund:YRA",
@@ -42797,7 +42966,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OTHER:fund:JTA",
@@ -43036,7 +43206,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OTHER:fund:CLO",
@@ -43275,7 +43446,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:OTHER:fund:UIC",
@@ -43514,7 +43686,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UN-OHRLLS",
@@ -43746,7 +43919,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UN-OHRLLS:fund:LLS",
@@ -43985,7 +44159,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNAKRT",
@@ -44217,7 +44392,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNAKRT:fund:KRT",
@@ -44456,7 +44632,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNAMI",
@@ -44688,7 +44865,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNAMI:fund:CIB",
@@ -44927,7 +45105,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNAMID",
@@ -45269,7 +45448,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNAMID:fund:JMS",
@@ -45508,7 +45688,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNAMID:fund:LPD",
@@ -45747,7 +45928,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNAOC",
@@ -45979,7 +46161,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNAOC:fund:YJA",
@@ -46218,7 +46401,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNCTAD",
@@ -46560,7 +46744,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNCTAD:fund:TXB",
@@ -46799,7 +46984,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNCTAD:fund:OUN",
@@ -47038,7 +47224,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNDRR",
@@ -47380,7 +47567,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNDRR:fund:DXA",
@@ -47619,7 +47807,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNDRR:fund:DLA",
@@ -47858,7 +48047,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNFICYP",
@@ -48090,7 +48280,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNFICYP:fund:CYP",
@@ -48329,7 +48520,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNGC",
@@ -48561,7 +48753,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNGC:fund:GKA",
@@ -48800,7 +48993,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNIDIR",
@@ -49032,7 +49226,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNIDIR:fund:DRA",
@@ -49271,7 +49466,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNIOGBIS",
@@ -49503,7 +49699,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNIOGBIS:fund:GYA",
@@ -49742,7 +49939,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNITAD",
@@ -49974,7 +50172,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNITAD:fund:IIT",
@@ -50213,7 +50412,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNITAMS",
@@ -50445,7 +50645,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNITAMS:fund:AMS",
@@ -50684,7 +50885,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNMAPPED",
@@ -51026,7 +51228,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNMAPPED:fund:ANC",
@@ -51265,7 +51468,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNMAPPED:fund:SWE",
@@ -51504,7 +51708,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNMAS",
@@ -51736,7 +51941,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNMAS:fund:MNA",
@@ -51975,7 +52181,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNMIK",
@@ -52207,7 +52414,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNMIK:fund:KDB",
@@ -52446,7 +52654,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNMISS",
@@ -52678,7 +52887,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNMISS:fund:RSS",
@@ -52917,7 +53127,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNOAU",
@@ -53149,7 +53360,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNOAU:fund:OAU",
@@ -53388,7 +53600,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNOG",
@@ -53730,7 +53943,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNOG:fund:LSS",
@@ -53969,7 +54183,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNOG:fund:LEA",
@@ -54208,7 +54423,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNON",
@@ -54440,7 +54656,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNON:fund:UNN",
@@ -54679,7 +54896,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNOP",
@@ -55131,7 +55349,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNOP:fund:QGA",
@@ -55370,7 +55589,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNOP:fund:UDF",
@@ -55609,7 +55829,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNOP:fund:QGB",
@@ -55848,7 +56069,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNRISD",
@@ -56080,7 +56302,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNRISD:fund:RIA",
@@ -56319,7 +56542,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNRoD",
@@ -56551,7 +56775,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNRoD:fund:ROD",
@@ -56790,7 +57015,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNSOM",
@@ -57022,7 +57248,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:UNSOM:fund:SOP",
@@ -57261,7 +57488,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:VRA",
@@ -57493,7 +57721,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     },
     {
       "id": "trust-fund-entity:VRA:fund:SVB",
@@ -57732,7 +57961,8 @@
             "components": []
           }
         ]
-      }
+      },
+      "sourceGroup": "volume_i"
     }
   ]
 }
