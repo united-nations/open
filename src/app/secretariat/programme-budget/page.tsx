@@ -12,7 +12,7 @@ import { RegularBudgetView } from "@/components/RegularBudgetView";
 export const metadata: Metadata = {
   title: "UN Programme Budget",
   description:
-    "Compare programme-budget expenditure, approved resources and proposals, and explore Member State assessments and payment status.",
+    "Compare programme-budget expenditure, approved and proposed budgets, and explore Member State assessments and payment status.",
 };
 
 export default function ProgrammeBudgetPage() {
@@ -29,7 +29,7 @@ export default function ProgrammeBudgetPage() {
       <PageHeading
         id="regular-budget-spending"
         title="How is the programme budget allocated?"
-        description="Compare expenditure, approved resources and proposals by budget part, section and entity."
+        description="Compare expenditure, approved and proposed budgets by budget part, section and entity."
         sources={
           <>
             Figures are extracted from the{" "}

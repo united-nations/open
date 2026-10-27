@@ -556,9 +556,9 @@ function BudgetDetailSidebar({
   const focusTrapRef = useFocusTrap(true);
   const metricLabel =
     meta.measure === "approved"
-      ? "Approved resources"
+      ? "Approved budget"
       : meta.measure === "proposed"
-        ? "Proposed resources"
+        ? "Proposed budget"
         : (meta.metrics?.[meta.measure as BudgetMetricKey]?.label ??
           "Expenditure");
 

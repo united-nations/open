@@ -7,7 +7,7 @@ export default function SystemLayout({
   return (
     <SectionChrome
       title="Understand the financing of the UN System."
-      intro="Explore which organizations are funded, who contributes, where resources are deployed, and which functions and goals they support."
+      intro="Explore organizations’ revenue and expenditure, who contributes, and how expenditure is reported across locations, functions and goals."
       navLabel="UN System financials"
       items={SYSTEM_NAV}
     >

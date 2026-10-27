@@ -15,6 +15,17 @@ export const FINANCING_SOURCE_KEYS: Record<string, FundingSource> = {
   "Other assessed": "other_assessed",
   Extrabudgetary: "extrabudgetary",
 };
+/** Display copy only; source keys remain unchanged for data lookups. */
+export const FINANCING_INSTRUMENT_LABELS: Record<string, string> = {
+  Assessed: "Assessed contributions",
+  "Voluntary un-earmarked": "Voluntary contributions (unearmarked)",
+  "Voluntary earmarked": "Voluntary contributions (earmarked)",
+  Other: "Other revenue",
+};
+
+export const getFinancingInstrumentLabel = (type: string): string =>
+  FINANCING_INSTRUMENT_LABELS[type] ?? type;
+
 export const FINANCING_INSTRUMENT_COLORS = {
   assessed: fundingSources.assessed.color,
   voluntary_unearmarked: fundingSources["voluntary-unearmarked"].color,
@@ -27,13 +38,22 @@ export const FINANCING_INSTRUMENT_BG_CLASSES: Record<string, string> = {
   "Voluntary earmarked": "bg-open-funding-voluntary-earmarked",
   Other: "bg-open-funding-other",
 };
-export const FINANCING_INSTRUMENT_TOOLTIPS: Record<string, string> =
-  Object.fromEntries(
+export const FINANCING_INSTRUMENT_TOOLTIPS: Record<string, string> = {
+  ...Object.fromEntries(
     Object.entries(FINANCING_SOURCE_KEYS).map(([label, key]) => [
       label,
       fundingSources[key].explanation,
     ]),
-  );
+  ),
+  Assessed:
+    "Mandatory contributions from Member States, calculated using an agreed scale of assessments.",
+  "Voluntary un-earmarked":
+    "Voluntary contributions without restrictions on use (core contributions).",
+  "Voluntary earmarked":
+    "Voluntary contributions designated for specific purposes or programmes (non-core contributions).",
+  Other:
+    "Revenue classified by CEB as other revenue. This financing instrument is distinct from aggregated contributor categories such as Other Foundations and from revenue with an unidentified contributor.",
+};
 
 export type FinancingInstrumentType =
   | "Assessed"

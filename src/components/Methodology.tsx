@@ -54,6 +54,12 @@ export function CebMethodology() {
         data currently ends in 2024.
       </p>
       <p>
+        Revenue includes contributions and other revenue recognized in financial
+        statements; it does not necessarily represent cash received. Expenditure
+        is the portal’s display term for reported expenses. Source accounting
+        bases remain as documented for each dataset.
+      </p>
+      <p>
         CEB figures aggregate individual entity statements without adjusting for
         inter-agency transfers, so system-wide totals are inflated by
         double-counting.
@@ -74,7 +80,12 @@ export function ContributorsMethodologyNotes() {
       <h4 className="font-medium text-gray-900">Revenue data</h4>
       <p>
         Revenue figures combine CEB data on government and non-government
-        contributors. For 2021 onwards, contributors are categorized by type
+        contributors and other revenue, including revenue from activities.
+        Contributor-view totals include signed adjustments; they do not
+        eliminate inter-agency transfers. Other revenue is a financing
+        instrument, while Other contributor categories are aggregates or
+        calculated remainders. Unattributed means the contributor is
+        unidentified. For 2021 onwards, contributors are categorized by type
         (Governments, Foundations, Private Sector, Multilateral Organizations,
         etc.) using the CEB&apos;s contributor classification system. For
         earlier years, contributor categories are partially available. Where
@@ -91,8 +102,8 @@ export function ContributorsMethodologyNotes() {
         totals remain available.
       </p>
       <p>
-        The classification of UN Grant revenue instruments has changed over
-        time. For comparability purposes, &ldquo;voluntary contributions pending
+        The classification of CEB financing instruments has changed over time.
+        For comparability purposes, &ldquo;voluntary contributions pending
         earmarking&rdquo; grants have been categorized as &ldquo;voluntary
         non-core (earmarked) contributions&rdquo;.
       </p>
@@ -103,9 +114,9 @@ export function ContributorsMethodologyNotes() {
 export function OrganizationsMethodologyNotes() {
   return (
     <>
-      <h4 className="font-medium text-gray-900">Expenses data</h4>
+      <h4 className="font-medium text-gray-900">Expenditure data</h4>
       <p>
-        Expenses figures use CEB organization totals. The current System view
+        Expenditure figures use CEB organization totals. The current System view
         retains the UN Secretariat and peacekeeping aggregates; detailed
         Secretariat budgets are available in the separate Secretariat section
         and have different accounting bases.
@@ -136,7 +147,7 @@ export function LocationsMethodologyNotes() {
         are not distributed among countries.
       </p>
       <p>
-        The budget chart nests countries using{" "}
+        The chart nests countries using{" "}
         <a
           href="https://unstats.un.org/unsd/methodology/m49/overview/"
           className="underline hover:text-un-blue"
@@ -202,7 +213,7 @@ export function GoalsMethodologyNotes() {
   return (
     <p>
       Expenditure by Sustainable Development Goal uses CEB financial statistics.
-      Only actual expense records are included; source budget records are
+      Only actual expenditure records are included; source budget records are
       excluded. Non-SDG preserves expenditure reported under CEB&apos;s x00
       code. Not specified is calculated per entity as CEB expenditure minus
       reported allocations to SDGs 1–17 and Non-SDG, so the total reconciles to
@@ -239,7 +250,7 @@ export function SecretariatOverviewMethodologyNotes() {
       <p>
         This overview is the only view that combines figures from the UN
         Secretariat Programme Budget and audited financial statements to provide
-        a simplified public view of expenses on mixed accounting bases. It is
+        a simplified public view of expenditure on mixed accounting bases. It is
         not a single consolidated IPSAS total. Extrabudgetary amounts are
         non-regular-budget residuals, not necessarily pure voluntary funding.
         For example, UNEP 2023 combines $671,941,000 of residual expense with
@@ -343,7 +354,7 @@ export function FieldMissionsMethodologyNotes() {
 export function TrustFundsMethodologyNotes() {
   return (
     <p>
-      Expenses come from audited Schedules of Individual Trust Funds. Entity
+      Expenditure comes from audited Schedules of Individual Trust Funds. Entity
       grouping uses a reconstructed historical crosswalk, supplemented by exact
       fund-name matches in newer ARWO workbooks. Funds with missing mappings
       appear under “Unmapped Trust Funds”, a display group rather than a UN

@@ -41,17 +41,25 @@ export function UninfoFundingBar({
   const bars = [
     {
       label: "Required",
+      fullLabel: "Required resources",
       pct: requiredPct,
       value: required,
       bgColor: "#e5e7eb",
     },
     {
       label: "Available",
+      fullLabel: "Available resources",
       pct: availablePct,
       value: available,
       bgColor: availColor,
     },
-    { label: "Spent", pct: spentPct, value: spent, bgColor: spentColor },
+    {
+      label: "Spent",
+      fullLabel: "Expenditure",
+      pct: spentPct,
+      value: spent,
+      bgColor: spentColor,
+    },
   ];
 
   if (!showLabels) {
@@ -59,7 +67,7 @@ export function UninfoFundingBar({
       <div
         className="relative h-2 overflow-hidden rounded-sm bg-gray-100"
         role="img"
-        aria-label={`Required ${formatAmount(required)}, available ${formatAmount(available)}, spent ${formatAmount(spent)}`}
+        aria-label={`Required resources ${formatAmount(required)}, available resources ${formatAmount(available)}, expenditure ${formatAmount(spent)}`}
       >
         {/* Share one origin and scale. Largest first keeps smaller reported
             amounts visible even when the source violates the usual ordering. */}
@@ -108,6 +116,10 @@ export function UninfoFundingBar({
   // Full width mode for main display - aligned with entity bars (w-20 label, gap-2, w-20 amount)
   return (
     <div className="space-y-2">
+      <p className="text-xs text-gray-500">
+        Funding gap is required resources less available resources. Available
+        resources less expenditure is a reported difference, not a cash balance.
+      </p>
       {(available > required ||
         spent > available ||
         Math.min(required, available, spent) < 0) && (
@@ -119,8 +131,8 @@ export function UninfoFundingBar({
       )}
       {bars.map((b) => (
         <div key={b.label} className="flex items-center gap-2">
-          <span className="w-20 flex-shrink-0 text-xs text-gray-600">
-            {b.label}
+          <span className="w-24 flex-shrink-0 text-xs text-gray-600">
+            {b.fullLabel}
           </span>
           <div className="h-2 flex-1 overflow-hidden rounded-sm bg-gray-100">
             <div

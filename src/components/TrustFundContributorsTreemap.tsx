@@ -90,8 +90,8 @@ function ContributorTooltip({
       notes={
         <>
           <p>
-            The sidebar combines this contributor’s funding across all
-            categories.
+            The sidebar combines this contributor’s contributions and transfers
+            across all categories.
           </p>
           <SourceReferenceLinks references={flow.supportingSources ?? []} />
         </>

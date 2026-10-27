@@ -97,7 +97,7 @@ export function FieldMissionsMap({
       })
       .catch(() => {
         if (active)
-          setOverviewError(`Failed to load ${year} mission expenses.`);
+          setOverviewError(`Failed to load ${year} mission expenditure.`);
       });
     return () => {
       active = false;
@@ -286,10 +286,10 @@ export function FieldMissionsMap({
           footNote=""
           ariaLabel={
             kinds.includes("spm") && kinds.includes("pko")
-              ? `Map of special political mission and peacekeeping operation expenses in ${year}`
+              ? `Map of special political mission and peacekeeping operation expenditure in ${year}`
               : kinds.includes("pko")
-                ? `Map of peacekeeping operation expenses in ${year}`
-                : `Map of special political mission expenses in ${year}`
+                ? `Map of peacekeeping operation expenditure in ${year}`
+                : `Map of special political mission expenditure in ${year}`
           }
           tooltip={(point: MissionPoint) => (
             <FinancialTooltip

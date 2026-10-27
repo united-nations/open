@@ -50,7 +50,7 @@ import assert from "assert";
     await fundingYear.press("ArrowLeft");
   await page.waitForTimeout(500);
   await page
-    .getByRole("radio", { name: "Funding", exact: true })
+    .getByRole("radio", { name: "Revenue", exact: true })
     .check({ force: true });
   await page.getByRole("searchbox", { name: "Search entities" }).fill("PAHO");
   await page.waitForTimeout(500);

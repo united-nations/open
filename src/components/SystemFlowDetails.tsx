@@ -151,9 +151,7 @@ export function SystemFlowDetails({
                       <tr>
                         <th className="py-2 pr-3">Item</th>
                         {node.column !== 2 && (
-                          <th className="p-2 text-right">
-                            {node.column === 1 ? "Revenue" : "Funding"}
-                          </th>
+                          <th className="p-2 text-right">Revenue</th>
                         )}
                         {node.column !== 0 && (
                           <th className="p-2 text-right">Expenditure</th>

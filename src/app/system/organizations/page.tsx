@@ -14,7 +14,7 @@ import { PageHeading } from "@/components/PageHeading";
 export const metadata: Metadata = {
   title: "UN System Organizations",
   description:
-    "Explore how funding flows to UN System organizations, their revenue sources, and how they allocate expenses.",
+    "Explore UN System organizations’ revenue and expenditure, including revenue sources and expenditure breakdowns.",
 };
 
 export default function SystemOrganizationsPage() {
@@ -32,7 +32,7 @@ export default function SystemOrganizationsPage() {
         sources={<SystemPageSources />}
         id="entities"
         title="Which organizations are funded?"
-        description="The UN System comprises specialized agencies, funds, programmes, and the UN Secretariat with its departments, offices, and peacekeeping missions. Explore how funding flows to each organization, their revenue sources, and how they allocate expenses."
+        description="The UN System comprises specialized agencies, funds, programmes, and the UN Secretariat with its departments, offices, and peacekeeping missions. Explore each organization’s revenue and expenditure, including revenue sources and expenditure breakdowns."
       />
       <PageBody>
         <EntitiesTreemap />

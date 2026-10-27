@@ -445,8 +445,9 @@ export function TrustFundSidebar({
             )}
             <p className="mt-3 text-sm text-gray-500">
               These are contributions and transfers, not expenditure.
-              Contributor amounts may not cover all receipts; negative
-              adjustments are included in the amounts but have no bar.
+              Contributor amounts may not cover all recognized contributions and
+              transfers; negative adjustments are included in the amounts but
+              have no bar.
             </p>
           </FinancialPanelSection>
           <details className="group/sources mt-4">

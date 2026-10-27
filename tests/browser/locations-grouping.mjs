@@ -16,7 +16,7 @@ try {
   const levels = page.getByRole("group", { name: "Reporting level" });
   assert.equal(await levels.locator('[style*="background-color"]').count(), 4);
   await page
-    .getByRole("radio", { name: "Budget chart", exact: true })
+    .getByRole("radio", { name: "Chart", exact: true })
     .locator("..")
     .click();
   assert.equal(await levels.getByRole("button").count(), 4);
@@ -85,7 +85,7 @@ try {
   );
   await levels.getByRole("button", { name: "Global", exact: true }).click();
   await page
-    .getByRole("radio", { name: "Budget chart", exact: true })
+    .getByRole("radio", { name: "Chart", exact: true })
     .locator("..")
     .click();
   assert.equal(await global.getAttribute("aria-pressed"), "true");

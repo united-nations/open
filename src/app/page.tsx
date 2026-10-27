@@ -46,8 +46,8 @@ export default function HomePage() {
           Understand the financing of the UN.
         </h1>
         <p className="text-base leading-7 text-gray-700 md:text-lg">
-          Explore contributions and expenditure across the UN System, and drill
-          down into the budget of the UN Secretariat.
+          Explore revenue and expenditure across the UN System, and drill down
+          into the budget of the UN Secretariat.
         </p>
         <div
           className="mt-8 grid grid-cols-1 gap-y-8 md:grid-cols-2 md:gap-y-3"

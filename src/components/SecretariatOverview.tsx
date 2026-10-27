@@ -274,7 +274,7 @@ export function SecretariatOverview() {
   if (!current && !error) {
     return (
       <div className="flex h-[720px] items-center justify-center bg-gray-50 text-gray-500">
-        Loading Secretariat expenses…
+        Loading Secretariat expenditure…
       </div>
     );
   }
@@ -398,7 +398,7 @@ export function SecretariatOverview() {
           }}
           selectionScope={
             activeFunding.length < BUDGET_FUNDING_SOURCES.length
-              ? "Treemap funding selection · " + year
+              ? "Treemap expenditure selection · " + year
               : undefined
           }
           year={year}

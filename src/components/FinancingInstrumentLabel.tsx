@@ -1,6 +1,10 @@
 "use client";
 import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label";
-import { FINANCING_SOURCE_KEYS } from "@/lib/financingInstruments";
+import {
+  FINANCING_SOURCE_KEYS,
+  getFinancingInstrumentLabel,
+  FINANCING_INSTRUMENT_TOOLTIPS,
+} from "@/lib/financingInstruments";
 
 export function FinancingInstrumentLabel({
   type,
@@ -25,6 +29,8 @@ export function FinancingInstrumentLabel({
       {source ? (
         <FundingSourceLabel
           source={source}
+          label={getFinancingInstrumentLabel(type)}
+          explanation={FINANCING_INSTRUMENT_TOOLTIPS[type]}
           showMarker={showMarker}
           palette={neutral ? "gray" : "blue"}
           variant={variant}

@@ -25,6 +25,7 @@ import {
 import { getSystemGroupingStyle } from "@/lib/systemGroupings";
 import { getRegionStyle } from "@/lib/regionGroupings";
 import {
+  getFinancingInstrumentLabel,
   FINANCING_INSTRUMENT_ORDER,
   getFinancingInstrumentColor,
 } from "@/lib/financingInstruments";
@@ -182,7 +183,10 @@ export function SystemFlows() {
         ? buildSystemFlows(loaded.input, choices, (column, key) => {
             if (column === 0)
               return {
-                label: key,
+                label:
+                  choices.funding === "instrument"
+                    ? getFinancingInstrumentLabel(key)
+                    : key,
                 order:
                   choices.funding === "instrument"
                     ? (() => {
@@ -225,7 +229,7 @@ export function SystemFlows() {
   const adjustments = graph?.links.filter((link) => link.value < -0.005) ?? [];
   return (
     <section id="system-flows" className="mt-12 space-y-4">
-      <h2 className="text-2xl font-bold">Funding and expenditure flows</h2>
+      <h2 className="text-2xl font-bold">Financial flows</h2>
       <ChartHeader
         yearControl={
           sources && year !== null ? (
@@ -279,7 +283,7 @@ export function SystemFlows() {
         <p role="note" className="text-sm text-gray-600">
           {revenueCoverage(loaded.year)?.note}
           {loaded.input.spending.availability?.total === false &&
-            " Organization expense totals are unavailable; geography is a separate reported series."}
+            " Organization expenditure totals are unavailable; geography is a separate reported series."}
           {loaded.input.spending.availability?.goals === false &&
             " Goal breakdown unavailable for this year; no SDG allocation is inferred."}
           {sources &&
@@ -327,7 +331,7 @@ export function SystemFlows() {
                     type="button"
                     aria-label={
                       dimension === "funding"
-                        ? "Funding from"
+                        ? "Revenue by"
                         : dimension === "organization"
                           ? "Through"
                           : "Expenditure by"

@@ -483,23 +483,23 @@ export function EntitySidebar({
               />
               <div className="mt-3">
                 <FinancialPanelTotalRow
-                  label="Total funding"
+                  label="Total revenue"
                   value={yearRevenue ? formatBudget(yearRevenue.total) : "—"}
                 />
                 {!yearRevenue && (
                   <p className="mt-1 text-sm text-gray-500">
                     {didNotReport
                       ? `CEB reports that ${entity.entity} did not submit data for ${selectedYear}.`
-                      : "Funding data unavailable for this entity and year."}
+                      : "Revenue data unavailable for this entity and year."}
                   </p>
                 )}
               </div>
-              {/* Funding by Financing Instrument */}
+              {/* Revenue by financing instrument */}
               {(yearRevenue && revenueByType.length > 0) ||
               financingTrendData.length > 0 ? (
                 <div className="mt-4">
                   <FinancialPanelHeading subheading>
-                    Funding by Financing Instrument
+                    Revenue by financing instrument
                   </FinancialPanelHeading>
                   {yearRevenue && revenueByType.length > 0 && (
                     <div className="mt-2 space-y-2">
@@ -540,11 +540,11 @@ export function EntitySidebar({
                 </div>
               ) : null}
 
-              {/* Revenue vs Expenses Trend */}
+              {/* Revenue and expenditure Trend */}
               {trendData.length > 0 && (
                 <div className="mt-4">
                   <FinancialPanelHeading subheading>
-                    Revenue vs Expenses
+                    Revenue and expenditure
                   </FinancialPanelHeading>
                   <div className="mt-2">
                     <EntityTrendChart data={trendData} compact />
@@ -552,11 +552,11 @@ export function EntitySidebar({
                 </div>
               )}
 
-              {/* Funding by contributor */}
+              {/* Revenue by contributor */}
               {yearRevenue && donorContributions.length > 0 && (
                 <div className="mt-4">
                   <FinancialPanelHeading subheading>
-                    Funding by contributor
+                    Revenue by contributor
                   </FinancialPanelHeading>
                   <div className="mt-2 space-y-1.5">
                     {displayedDonors.map((contrib) => {
@@ -650,7 +650,7 @@ export function EntitySidebar({
             {spendingBreakdown && spendingBreakdown.byCountry.length > 0 && (
               <div className="mt-4">
                 <FinancialPanelHeading subheading>
-                  Expenditure by Country
+                  Expenditure by country
                 </FinancialPanelHeading>
                 {loadingSpending ? (
                   <p className="mt-2 text-sm text-gray-500">

@@ -118,7 +118,7 @@ export function RegularBudgetContributorSidebar({
         <FinancialDetailPanel
           title={name}
           titleId="regular-budget-contributor-title"
-          subtitle="Regular budget contributions"
+          subtitle="Regular budget assessed contributions"
           controls={
             <SidebarControls
               shareHash={`regular-budget-contributor=${encodeURIComponent(name)}`}
@@ -136,7 +136,7 @@ export function RegularBudgetContributorSidebar({
           total={
             member
               ? {
-                  label: "Assessed amount",
+                  label: "Assessed contributions",
                   value: formatAssessmentCurrency(member.assessment_amount),
                 }
               : undefined
@@ -198,7 +198,7 @@ export function RegularBudgetContributorSidebar({
                   series={[
                     {
                       key: "assessed",
-                      label: "Assessed amount",
+                      label: "Assessed contributions",
                       color: "var(--color-un-blue)",
                     },
                   ]}
@@ -216,7 +216,7 @@ export function RegularBudgetContributorSidebar({
               each year, not the payments actually received.
             </p>
           </FinancialPanelSection>
-          <FinancialPanelSection heading="Payment history">
+          <FinancialPanelSection heading="Payment status history">
             <div className="space-y-3">
               {[...history].reverse().map((item) => (
                 <div

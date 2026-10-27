@@ -252,7 +252,7 @@ export function EntityTrendsChart() {
     return entityData.map((item) => ({
       year: item.year.toString(),
       Revenue: item.revenue,
-      Expenses: item.expenses,
+      Expenditure: item.expenses,
     }));
   }, [availableSystemGroups, data, selectedEntity]);
 
@@ -319,7 +319,7 @@ export function EntityTrendsChart() {
           {/* Title and selector */}
           <div className="space-y-2 pb-3">
             <h2 className="text-2xl font-bold">
-              Revenue vs expenses over time
+              Revenue and expenditure over time
             </h2>
             <div className="flex flex-wrap items-center gap-2">
               <HierarchicalSingleSelect
@@ -336,7 +336,7 @@ export function EntityTrendsChart() {
                 onToggle={() => setShowRevenue((current) => !current)}
               />
               <LegendLabel
-                label="Expenses"
+                label="Expenditure"
                 color={METRIC_COLORS.expenses}
                 selected={showExpenses}
                 onToggle={() => setShowExpenses((current) => !current)}
@@ -358,7 +358,7 @@ export function EntityTrendsChart() {
                 className="flex h-full items-center justify-center text-gray-500"
                 role="status"
               >
-                Select Revenue or Expenses to show the trend.
+                Select Revenue or Expenditure to show the trend.
               </div>
             ) : revenueExpensesData.length === 0 ? (
               <div className="flex h-full items-center justify-center text-gray-500">
@@ -404,7 +404,7 @@ export function EntityTrendsChart() {
                   {showExpenses && (
                     <Line
                       type="monotone"
-                      dataKey="Expenses"
+                      dataKey="Expenditure"
                       stroke={METRIC_COLORS.expenses}
                       strokeWidth={2}
                       dot={false}
@@ -422,7 +422,9 @@ export function EntityTrendsChart() {
         <div className="flex flex-col">
           {/* Title and chips */}
           <div className="space-y-2 pb-3">
-            <h2 className="text-2xl font-bold">Compare expenses over time</h2>
+            <h2 className="text-2xl font-bold">
+              Compare expenditure over time
+            </h2>
             <HierarchicalMultiSelect
               groups={compareGroups}
               selected={compareSelected}

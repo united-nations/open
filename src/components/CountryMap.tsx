@@ -348,7 +348,7 @@ export function CountryMap() {
                 variant="segmented"
                 label="Geographic view"
                 options={[
-                  { value: "chart", label: "Budget chart" },
+                  { value: "chart", label: "Chart" },
                   { value: "map", label: "Map" },
                 ]}
                 value={showMap ? "map" : "chart"}

@@ -522,13 +522,13 @@ export default function SDGsGrid({
             details={
               showSpending ? (
                 <p>
-                  Only reported actual expenses are included; budget figures are
-                  excluded. Non-SDG preserves CEB&apos;s reported x00 amounts.
-                  Not specified is the remaining entity expenditure after
-                  reported allocations to SDGs 1–17 and Non-SDG. It includes
-                  missing SDG reporting and signed reconciliation differences,
-                  and does not establish that the expenditure is unrelated to
-                  the SDGs.
+                  Only reported actual expenditure is included; budget figures
+                  are excluded. Non-SDG preserves CEB&apos;s reported x00
+                  amounts. Not specified is the remaining entity expenditure
+                  after reported allocations to SDGs 1–17 and Non-SDG. It
+                  includes missing SDG reporting and signed reconciliation
+                  differences, and does not establish that the expenditure is
+                  unrelated to the SDGs.
                 </p>
               ) : undefined
             }

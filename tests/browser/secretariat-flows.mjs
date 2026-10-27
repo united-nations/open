@@ -9,7 +9,10 @@ try {
   await page.goto(portalUrl + "/secretariat/", { waitUntil: "networkidle" });
   const section = page.locator("#secretariat-flows");
   await section
-    .getByRole("heading", { name: "Funding flows", exact: true })
+    .getByRole("heading", {
+      name: "Financial flows",
+      exact: true,
+    })
     .waitFor();
   assert.doesNotMatch(
     await page.locator("body").innerText(),

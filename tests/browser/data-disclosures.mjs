@@ -65,7 +65,7 @@ import fs from "fs";
     waitUntil: "networkidle",
   });
   await page
-    .getByRole("radio", { name: "Funding", exact: true })
+    .getByRole("radio", { name: "Revenue", exact: true })
     .check({ force: true });
   const slider = page.getByRole("slider").first();
   await slider.focus();
@@ -75,7 +75,7 @@ import fs from "fs";
   results.push({
     case: "funding-2011",
     pass:
-      !body.includes("No funding data available for 2011") &&
+      !body.includes("No revenue data available for 2011") &&
       body.includes("$39.6B") &&
       body.includes("UNDP"),
     text: body,

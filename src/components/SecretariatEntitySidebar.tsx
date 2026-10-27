@@ -241,7 +241,7 @@ export function SecretariatEntitySidebar({
     );
 
   const fundingBreakdown: FinancialDetailPanelFundingBreakdown = {
-    heading: "Funding sources",
+    heading: "Expenditure by funding source",
     state:
       displayed.entity.cells.length === 0
         ? "empty"
@@ -274,7 +274,9 @@ export function SecretariatEntitySidebar({
           )) *
         100,
     })),
-    content: selectionScope ? <p>{selectionScope}</p> : (
+    content: selectionScope ? (
+      <p>{selectionScope}</p>
+    ) : (
       <div aria-busy={fundingTrend === null || undefined}>
         {hasTrend && fundingTrend && (
           <FinancingInstrumentChart
@@ -334,13 +336,19 @@ export function SecretariatEntitySidebar({
           titleId={titleId}
           controls={
             <SidebarControls
-              shareHash={selectionScope ? undefined : `secretariat-entity=${encodeURIComponent(displayed.entity.code)}`}
+              shareHash={
+                selectionScope
+                  ? undefined
+                  : `secretariat-entity=${encodeURIComponent(displayed.entity.code)}`
+              }
               onClose={close}
               closeLabel="Close entity details"
             />
           }
           total={{
-            label: selectionScope ? "Selected expenses" : "Total expenses",
+            label: selectionScope
+              ? "Selected expenditure"
+              : "Total expenditure",
             value: formatBudget(displayed.entity.total),
             details:
               selectedPriority && selectedAmount !== null ? (
@@ -356,20 +364,26 @@ export function SecretariatEntitySidebar({
               ) : undefined,
           }}
           yearSelectorPlacement="header"
-          yearSelector={selectionScope ? undefined : {
-            years: [...years].sort((a, b) => b - a),
-            selected: displayed.year,
-            label: "Select year",
-            onChange: (nextYear) => {
-              if (nextYear !== displayed.year) {
-                setYearError(null);
-                setRequestedYear(nextYear);
-              }
-            },
-            pending: requestedYear !== null,
-            pendingLabel:
-              requestedYear === null ? undefined : `Loading ${requestedYear}…`,
-          }}
+          yearSelector={
+            selectionScope
+              ? undefined
+              : {
+                  years: [...years].sort((a, b) => b - a),
+                  selected: displayed.year,
+                  label: "Select year",
+                  onChange: (nextYear) => {
+                    if (nextYear !== displayed.year) {
+                      setYearError(null);
+                      setRequestedYear(nextYear);
+                    }
+                  },
+                  pending: requestedYear !== null,
+                  pendingLabel:
+                    requestedYear === null
+                      ? undefined
+                      : `Loading ${requestedYear}…`,
+                }
+          }
           fundingBreakdown={fundingBreakdown}
           busy={requestedYear !== null}
           statusMessage={

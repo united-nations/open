@@ -31,10 +31,10 @@ import { SHOW_UNINFO, SHOW_UNINFO_SORT_CONTROLS } from "@/lib/featureFlags";
 import { SortSelector, SortOption } from "@/components/ui/sort-selector";
 
 const UNINFO_SORT_OPTIONS: SortOption[] = [
-  { value: "available", label: "Available" },
-  { value: "required", label: "Required" },
-  { value: "spent", label: "Spent" },
-  { value: "funding_gap", label: "Funding Gap" },
+  { value: "available", label: "Available resources" },
+  { value: "required", label: "Required resources" },
+  { value: "spent", label: "Expenditure" },
+  { value: "funding_gap", label: "Funding gap" },
   { value: "spending_gap", label: "Available resources less expenditure" },
 ];
 

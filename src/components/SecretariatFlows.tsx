@@ -100,7 +100,9 @@ export function SecretariatFlows({
       className="mt-12 space-y-4"
     >
       <h2 className="text-2xl font-bold">
-        {mechanisms ? "Funding mechanisms and priority areas" : "Funding flows"}
+        {mechanisms
+          ? "Funding mechanisms and priority areas"
+          : "Financial flows"}
       </h2>
       <ChartFrame
         header={

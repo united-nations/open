@@ -32,7 +32,7 @@ export default function SystemGoalsPage() {
       <PageHeading
         sources={<SystemPageSources uninfo />}
         id="sdgs"
-        title="Which Sustainable Development Goals do funds support?"
+        title="Reported expenditure by Sustainable Development Goal"
         description="Explore reported expenditure by Sustainable Development Goal. Annual snapshots are not directly comparable because reporting coverage and allocations can change."
       />
       <PageBody>

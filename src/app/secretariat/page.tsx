@@ -32,7 +32,7 @@ export default function SecretariatPage() {
         title="How do Secretariat entities use their resources?"
         description={
           <>
-            Explore UN Secretariat expenses by priority area and entity. This
+            Explore UN Secretariat expenditure by priority area and entity. This
             simplified overview is based on data from the{" "}
             <a
               href="https://www.un.org/en/annualreport"

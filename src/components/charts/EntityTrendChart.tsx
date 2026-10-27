@@ -49,12 +49,12 @@ export function EntityTrendChart({
       <div
         className="mb-2 flex flex-wrap gap-2"
         role="group"
-        aria-label="Revenue and expenses"
+        aria-label="Revenue and expenditure"
       >
         {(
           [
             { key: "revenue", label: "Revenue", color: "#009edb" },
-            { key: "expenses", label: "Expenses", color: "#4a7c7e" },
+            { key: "expenses", label: "Expenditure", color: "#4a7c7e" },
           ] as const
         ).map(({ key, label, color }) => (
           <LegendLabel
@@ -111,7 +111,7 @@ export function EntityTrendChart({
               type="monotone"
               hide={!visible.expenses}
               dataKey="expenses"
-              name="Expenses"
+              name="Expenditure"
               stroke="#4a7c7e"
               strokeWidth={2}
               dot={false}

@@ -20,7 +20,7 @@ const DATASET_DETAILS: Record<
   audited: {
     label: "Audited financial statements",
     description:
-      "Reported expenses reconstructed from Secretariat budget and financial-statement sources, organized by budget part, section and entity; accounting bases differ.",
+      "Reported expenditure reconstructed from Secretariat budget and financial-statement sources, organized by budget part, section and entity; accounting bases differ.",
   },
   ppb: {
     label: "Programme budget data (PPB + PKO)",
@@ -30,7 +30,7 @@ const DATASET_DETAILS: Record<
   trust_funds: {
     label: "Individual trust-fund schedules",
     description:
-      "Current-period expenses from the audited Schedule of Individual Trust Funds, mapped to Secretariat entities through a reconstructed historical crosswalk. This source is extrabudgetary only.",
+      "Current-period expenditure from the audited Schedule of Individual Trust Funds, mapped to Secretariat entities through a reconstructed historical crosswalk. This source is extrabudgetary only.",
   },
 };
 

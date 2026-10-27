@@ -2,7 +2,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 
 export const LINK_DESCRIPTIONS: Record<string, string> = {
-  "/system/organizations": "Funding and expenditure across UN organizations.",
+  "/system/organizations": "Revenue and expenditure across UN organizations.",
   "/system/contributors": "Who funds the UN System, and how.",
   "/system/locations": "Where funds are spent, by country and region.",
   "/system/functions": "Expenditure across the four UN System functions.",
@@ -13,8 +13,7 @@ export const LINK_DESCRIPTIONS: Record<string, string> = {
   "/secretariat/peacekeeping-budget":
     "Detailed breakdown of the peacekeeping budget.",
   "/secretariat/field-missions": "How do field missions use their resources?",
-  "/secretariat/trust-funds":
-    "Detailed breakdown of voluntary funding via trust funds.",
+  "/secretariat/trust-funds": "Trust-fund expenditure and contributions.",
 };
 
 export function SectionLinkCards({

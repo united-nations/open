@@ -28,6 +28,7 @@ import {
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 import {
+  getFinancingInstrumentLabel,
   FINANCING_SOURCE_KEYS,
   FINANCING_INSTRUMENT_COLORS,
   FINANCING_INSTRUMENT_TOOLTIPS,
@@ -184,7 +185,7 @@ export function FinancingInstrumentChart({
             filterable ? (
               <LegendLabel
                 key={s.key}
-                label={s.label}
+                label={getFinancingInstrumentLabel(s.label)}
                 color={s.color}
                 explanation={
                   s.tooltip ??
@@ -281,7 +282,7 @@ export function FinancingInstrumentChart({
                   <Bar
                     key={s.key}
                     dataKey={s.key}
-                    name={s.label}
+                    name={getFinancingInstrumentLabel(s.label)}
                     fill={s.color}
                     stackId="1"
                     maxBarSize={32}
@@ -292,7 +293,7 @@ export function FinancingInstrumentChart({
                     key={s.key}
                     type="monotone"
                     dataKey={s.key}
-                    name={s.label}
+                    name={getFinancingInstrumentLabel(s.label)}
                     stackId="1"
                     stroke="white"
                     strokeWidth={2}

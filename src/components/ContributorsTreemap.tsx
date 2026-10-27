@@ -33,6 +33,8 @@ import {
   isUnattributed,
 } from "@/lib/contributors";
 import {
+  getFinancingInstrumentLabel,
+  FINANCING_INSTRUMENT_TOOLTIPS,
   FINANCING_SOURCE_KEYS,
   getFinancingInstrumentColor,
 } from "@/lib/financingInstruments";
@@ -86,10 +88,10 @@ function describeSignedBreakdown(
   const instruments = breakdown
     .map(
       ([type, value]) =>
-        `${type}: ${formatBudget(value)}${value < 0 ? " (negative adjustment)" : ""}`,
+        `${getFinancingInstrumentLabel(type)}: ${formatBudget(value)}${value < 0 ? " (negative adjustment)" : ""}`,
     )
     .join("; ");
-  return `Net total: ${formatBudget(netTotal)}. Financing instruments: ${instruments}.`;
+  return `Revenue including signed adjustments: ${formatBudget(netTotal)}. Financing instruments: ${instruments}.`;
 }
 
 function ContributorTooltip({
@@ -127,11 +129,13 @@ function ContributorTooltip({
       title={contributor.name}
       parents={[{ label: category, color: context.row.color }]}
       total={{
-        label: "Net contributions",
+        label: "Revenue",
         value: formatBudget(context.leaf.value),
       }}
       rows={breakdown.map(([type, value]) => ({
-        label: type + (value < 0 ? " (negative adjustment)" : ""),
+        label:
+          getFinancingInstrumentLabel(type) +
+          (value < 0 ? " (negative adjustment)" : ""),
         value: formatBudget(value),
         color: context.leaf.segments?.find((segment) => segment.label === type)
           ?.color,
@@ -452,12 +456,14 @@ export function ContributorsTreemap() {
               <div
                 className="flex flex-wrap gap-2"
                 role="group"
-                aria-label="Funding sources"
+                aria-label="Financing instruments"
               >
                 {CONTRIBUTION_TYPES.map(({ type }) => (
                   <FundingSourceLabel
                     key={type}
                     source={FINANCING_SOURCE_KEYS[type]}
+                    label={getFinancingInstrumentLabel(type)}
+                    explanation={FINANCING_INSTRUMENT_TOOLTIPS[type]}
                     palette="gray"
                     selected={selectedFunding.includes(type)}
                     onToggle={() =>
@@ -504,10 +510,10 @@ export function ContributorsTreemap() {
               {
                 key: "net",
                 label: searchQuery
-                  ? "Matching total"
+                  ? "Matching revenue"
                   : revenueCoverage(selectedYear)?.controls === false
-                    ? "Partial reported total"
-                    : "Total",
+                    ? "Partial reported revenue"
+                    : "Total revenue",
                 value: formatBudget(
                   visibleContributors.reduce(
                     (sum, item) =>
@@ -519,8 +525,8 @@ export function ContributorsTreemap() {
             ]}
             totalLabel={
               selectedFunding.length === CONTRIBUTION_TYPES.length
-                ? "Total"
-                : "Selected funding total"
+                ? "Total revenue"
+                : "Selected revenue"
             }
             plotClassName={SYSTEM_TREEMAP_HEIGHT_CLASS}
             showLeafValues
@@ -532,8 +538,8 @@ export function ContributorsTreemap() {
             emptyContent={
               <div className="flex h-full items-center justify-center text-sm text-gray-500">
                 {selectedFunding.length === 0
-                  ? "Select a funding source to show contributions."
-                  : "No contributors match the selected funding sources and search."}
+                  ? "Select a financing instrument to show revenue."
+                  : "No contributors match the selected financing instruments and search."}
               </div>
             }
           />
@@ -552,9 +558,7 @@ export function ContributorsTreemap() {
         <div
           className={`flex w-full items-center justify-center bg-gray-100 ${SYSTEM_TREEMAP_HEIGHT_CLASS}`}
         >
-          <p className="text-lg text-gray-500">
-            No contribution data available
-          </p>
+          <p className="text-lg text-gray-500">No revenue data available</p>
         </div>
       )}
 

@@ -34,7 +34,7 @@ export default function TrustFundsPage() {
         }
         id="trust-fund-spending"
         title="How are trust-fund resources used?"
-        description="Explore individual trust-fund expenses grouped by Secretariat entity, with unmatched funds shown under Unmapped Trust Funds."
+        description="Explore individual trust-fund expenditure grouped by Secretariat entity, with unmatched funds shown under Unmapped Trust Funds."
       />
       <PageBody>
         <BudgetTreemap

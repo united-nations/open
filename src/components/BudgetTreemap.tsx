@@ -2104,10 +2104,10 @@ export function BudgetTreemap({
                                 node.tier === "detail" && node.amount <= 0,
                             ).length
                           }{" "}
-                          trust funds with zero or negative annual expenses are
-                          listed below the chart because they cannot be drawn as
-                          areas. The displayed total includes both positive and
-                          negative amounts.
+                          trust funds with zero or negative annual expenditure
+                          are listed below the chart because they cannot be
+                          drawn as areas. The displayed total includes both
+                          positive and negative amounts.
                         </p>
                       )}
                     {usesSharedTrustFundExpenses && meta.partial && (
@@ -2436,7 +2436,7 @@ export function BudgetTreemap({
         <div className="mb-3 flex flex-wrap items-center justify-between gap-2 text-xs text-gray-600">
           <span>
             {drawnTileCount} tile{drawnTileCount === 1 ? "" : "s"} · tile area
-            uses individual trust-fund expenses
+            uses individual trust-fund expenditure
           </span>
         </div>
       )}
@@ -2456,7 +2456,7 @@ export function BudgetTreemap({
                   ? "Cost classes"
                   : "Missions"
                 : isTrustFund
-                  ? "Trust-fund expenses"
+                  ? "Trust-fund expenditure"
                   : "Budget parts"}
             </div>
           </div>

@@ -31,7 +31,7 @@ export default function SystemContributorsPage() {
         sources={<SystemPageSources />}
         id="donors"
         title="Who is contributing?"
-        description="The work of the UN System is financially supported by many contributors. Explore who is contributing to the UN System, which organizations they fund, and what type of contributions they make — from assessed and voluntary core contributions to earmarked funding."
+        description="The work of the UN System is financially supported by many contributors. Explore who is contributing to the UN System, which organizations they fund, and what type of contributions they make — including assessed contributions, voluntary contributions (unearmarked), and voluntary contributions (earmarked)."
       />
       <PageBody>
         <ContributorsTreemap />

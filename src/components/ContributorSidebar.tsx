@@ -308,13 +308,13 @@ export function ContributorSidebar({
 
                 <div>
                   <FinancialPanelTotalRow
-                    label="Total"
+                    label="Revenue"
                     value={formatBudget(totalContributions)}
                   />
 
                   <div className="mt-4">
                     <FinancialPanelHeading subheading>
-                      By Financing Instrument
+                      By financing instrument
                     </FinancialPanelHeading>
                     <div className="mt-2 space-y-2">
                       {breakdownEntries.map(([type, amount]) => (
@@ -354,7 +354,7 @@ export function ContributorSidebar({
 
                   <div className="mt-4">
                     <FinancialPanelHeading subheading>
-                      By Entity
+                      By entity
                     </FinancialPanelHeading>
                     <div className="mt-2 space-y-1.5">
                       {(() => {

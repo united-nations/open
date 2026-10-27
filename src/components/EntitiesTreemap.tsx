@@ -27,6 +27,7 @@ import {
   normalizeEntityForDisplay,
 } from "@/lib/entities";
 import {
+  getFinancingInstrumentLabel,
   FINANCING_INSTRUMENT_ORDER,
   type FinancingInstrumentType,
 } from "@/lib/financingInstruments";
@@ -82,11 +83,11 @@ function EntityTooltip({
       title={entity.entity_long || entity.entity}
       parents={[{ label: context.row.label, color: context.row.color }]}
       total={{
-        label: showRevenue ? "Funding" : "Expenditure",
+        label: showRevenue ? "Revenue" : "Expenditure",
         value: accessibleBudget(context.leaf.value),
       }}
       rows={orderFundingTooltipRows(context.leaf.segments).map((segment) => ({
-        label: segment.label,
+        label: getFinancingInstrumentLabel(segment.label),
         value: accessibleBudget(segment.value),
         color: segment.color,
         share:
@@ -219,7 +220,7 @@ export function EntitiesTreemap() {
           setErrorState({
             year: currentYear,
             revenue: true,
-            message: `Funding data could not be loaded for ${currentYear}.`,
+            message: `Revenue data could not be loaded for ${currentYear}.`,
           });
         if (showRevenue) setLoading(false);
       });
@@ -490,7 +491,7 @@ export function EntitiesTreemap() {
               variant="segmented"
               label="Financial measure"
               options={[
-                { value: "funding", label: "Funding" },
+                { value: "funding", label: "Revenue" },
                 { value: "spending", label: "Expenditure" },
               ]}
               value={showRevenue ? "funding" : "spending"}
@@ -548,7 +549,7 @@ export function EntitiesTreemap() {
           <div className="flex h-full items-center justify-center text-lg text-gray-500">
             {loadError ||
               (!dataAvailable
-                ? `No ${showRevenue ? "funding" : "expenditure"} data available for ${currentYear}.`
+                ? `No ${showRevenue ? "revenue" : "expenditure"} data available for ${currentYear}.`
                 : !dataReady
                   ? "Loading data…"
                   : "No entities match the selected filters")}
