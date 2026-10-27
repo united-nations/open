@@ -316,8 +316,7 @@ export function ContributorTrendsChart() {
   return (
     <>
       <p className="mt-4 text-sm text-gray-600">
-        2009–2010 contain partial non-government donor records only, without
-        system-wide revenue controls. Government detail starts in 2013;
+        Contributor data starts in 2011. Government detail starts in 2013;
         remaining controlled revenue in 2011–2012 is Unattributed. Missing
         government years are not zero contributions.
       </p>

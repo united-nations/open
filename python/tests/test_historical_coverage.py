@@ -13,16 +13,18 @@ def read(name):
 
 
 class HistoricalCoverageTests(unittest.TestCase):
-    def test_early_donor_records_are_preserved_without_invented_controls(self):
+    def test_incomplete_years_are_excluded_from_all_contributor_exports(self):
         source = pd.read_csv(ROOT / 'data/ceb/clean/revenue_non_gov_donors.csv')
+        self.assertTrue({2009, 2010}.issubset(set(source.calendar_year)))
         coverage = read('revenue-coverage.json')
+        trends = read('contributor-trends.json')
+        self.assertEqual(min(trends['meta']['years']), 2011)
+        self.assertEqual(read('manifest.json')['donors']['min'], 2011)
+        for series in [*trends['aggregates'].values(), *trends['contributors'].values()]:
+            self.assertTrue(all(row['year'] >= 2011 for row in series))
         for year in (2009, 2010):
-            rows = read(f'donors-{year}.json')
-            total = sum(sum(sum(amounts.values()) for amounts in donor['contributions'].values()) for donor in rows.values())
-            self.assertAlmostEqual(total, source.loc[source.calendar_year == year, 'amount'].sum(), delta=0.01)
-            self.assertFalse(coverage[str(year)]['controls'])
-            self.assertFalse(coverage[str(year)]['government'])
-            self.assertNotIn('Unattributed', rows)
+            self.assertNotIn(str(year), coverage)
+            self.assertFalse((ROOT / f'public/data/donors-{year}.json').exists())
             self.assertFalse((ROOT / f'public/data/entity-revenue-{year}.json').exists())
         for year in (2011, 2012):
             donors = read(f'donors-{year}.json')

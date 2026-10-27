@@ -33,7 +33,8 @@ remain included. ITC has no 2025 report; its absent observation remains unavaila
 
 Before 2011, retain the source’s partial non-government donor observations without
 creating revenue controls or reconciliation remainders. Their sums must be labelled
-as partial records. From 2011 onward, use every revenue-control year independently
+as partial records internally; they are excluded from all frontend contributor
+exports and views. From 2011 onward, use every revenue-control year independently
 of donor-source coverage; government detail is unavailable until 2013.
 
 For each controlled entity and year:

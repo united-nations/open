@@ -4,8 +4,8 @@
 
 https://unsceb.org/financial-statistics
 
-Organization revenue and expenses: 2011–2025; contributor records: 2009–2025
-(partial before 2011; government detail starts in 2013).
+Organization revenue and expenses: 2011–2025; contributor exports: 2011–2025
+(government detail starts in 2013).
 Geography: 2010–2025 (early geographic coverage differs from organization totals).
 SDG actual expense records: 2018–2024; source budget observations are excluded.
 All available historical observations now use the current CEB release, captured
@@ -16,8 +16,9 @@ and coverage are recorded in `public/data/ceb-source.json`.
 
 - Organization revenue, financing timelines and revenue/expense trends retain
   2011–2025. Government donor coverage no longer truncates organization totals.
-- Contributor records cover 2009–2025. Before 2011 only partial non-government
-  donor observations exist; their displayed sum is not total UN funding.
+- Contributor exports and all contributor views cover 2011–2025. The incomplete
+  2009–2010 non-government records remain in source/fused data for audit and are
+  excluded from annual exports, trends, coverage metadata and selectors.
   Revenue controls cover 2011 onward, with the balance after known donors
   retained as Unattributed. Government donor detail starts in 2013. The shared
   `revenue-coverage.json` register discloses these differences. Unobserved early

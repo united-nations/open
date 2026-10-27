@@ -1,8 +1,6 @@
 {
   "meta": {
     "years": [
-      2009,
-      2010,
       2011,
       2012,
       2013,
@@ -277,7 +275,6 @@
       "JUNIOR PROFESSIONAL OFFICERS PROGRAMME",
       "Latin American Federation of the Pharmaceutical Industry (FIFARMA)",
       "Miscellaneous",
-      "Mitsui Engineering & Shipbuilding Co. Ltd",
       "Multi Donor Trust Funds",
       "Multi Partner Trust Fund Office",
       "Multilateral Fund Secretariat in Montreal",
@@ -323,9 +320,7 @@
       "UNOPS",
       "UNOSSC",
       "USA National Committee",
-      "Unidentified non-government contributors",
       "United Nations",
-      "United Nations Environment Programme",
       "United Nations Partnership to Promote the Rights of Persons with Disabilities\u00a0(UNPRPD",
       "United States Fund for UNICEF",
       "University (College) of the West Indies",
@@ -438,15 +433,11 @@
         "Revenue from Activities"
       ],
       "Non-Government": [
-        "Mitsui Engineering & Shipbuilding Co. Ltd",
         "Multi Donor Trust Funds",
         "Multilateral Fund Secretariat in Montreal",
         "Other Private",
         "Rotary International",
-        "The Global Fund to Fight AIDS, Tuberculosis and Malaria",
-        "UNOPS",
-        "Unidentified non-government contributors",
-        "United Nations Environment Programme"
+        "The Global Fund to Fight AIDS, Tuberculosis and Malaria"
       ],
       "Other": [
         "JUNIOR PROFESSIONAL OFFICERS PROGRAMME",
@@ -473,22 +464,6 @@
   },
   "aggregates": {
     "gov": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -612,22 +587,6 @@
     ],
     "non-gov": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 7521197.0,
-        "other": 0,
-        "total": 7521197.0
-      },
-      {
-        "year": 2010,
-        "assessed": 56964800.0,
-        "voluntary_unearmarked": 150163800.0,
-        "voluntary_earmarked": 2054392448.68,
-        "other": 0,
-        "total": 2261521048.6800003
-      },
-      {
         "year": 2011,
         "assessed": 62992600.0,
         "voluntary_unearmarked": 141360577.0,
@@ -749,22 +708,6 @@
       }
     ],
     "unattributed": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
       {
         "year": 2011,
         "assessed": 13230152989.0,
@@ -888,22 +831,6 @@
     ],
     "all": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 7521197.0,
-        "other": 0,
-        "total": 7521197.0
-      },
-      {
-        "year": 2010,
-        "assessed": 56964800.0,
-        "voluntary_unearmarked": 150163800.0,
-        "voluntary_earmarked": 2054392448.68,
-        "other": 0,
-        "total": 2261521048.6800003
-      },
-      {
         "year": 2011,
         "assessed": 13293145589.0,
         "voluntary_unearmarked": 4193761598.23,
@@ -1025,22 +952,6 @@
       }
     ],
     "cat:Academic": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -1164,22 +1075,6 @@
     ],
     "cat:European Union": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_unearmarked": 122515538.0,
-        "voluntary_earmarked": 540031917.65,
-        "other": 0,
-        "total": 662547455.65
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_unearmarked": 116764302.0,
@@ -1301,22 +1196,6 @@
       }
     ],
     "cat:Foundations": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 325025013.07,
-        "other": 0,
-        "total": 325025013.07
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -1440,22 +1319,6 @@
     ],
     "cat:Multilateral - Global Funds": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_unearmarked": 0,
@@ -1577,22 +1440,6 @@
       }
     ],
     "cat:Multilateral - IFIs": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 770933.0,
-        "other": 0,
-        "total": 770933.0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_unearmarked": 4000000.0,
-        "voluntary_earmarked": 70680234.03,
-        "other": 0,
-        "total": 74680234.03
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -1716,22 +1563,6 @@
     ],
     "cat:Multilateral - Other": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_unearmarked": 0,
@@ -1853,22 +1684,6 @@
       }
     ],
     "cat:Multilateral - UN Orgs": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2010,
-        "assessed": 56964800.0,
-        "voluntary_unearmarked": 23648262.0,
-        "voluntary_earmarked": 906839158.03,
-        "other": 0,
-        "total": 987452220.03
-      },
       {
         "year": 2011,
         "assessed": 62992600.0,
@@ -1992,22 +1807,6 @@
     ],
     "cat:Multilateral - UN Pooled Funds": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_unearmarked": 0,
@@ -2129,22 +1928,6 @@
       }
     ],
     "cat:NGOs": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -2268,22 +2051,6 @@
     ],
     "cat:No Contributor": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_unearmarked": 0,
@@ -2405,22 +2172,6 @@
       }
     ],
     "cat:Non-Government": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 6750264.0,
-        "other": 0,
-        "total": 6750264.0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 211816125.9,
-        "other": 0,
-        "total": 211816125.9
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -2544,22 +2295,6 @@
     ],
     "cat:Other": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_unearmarked": 0,
@@ -2681,22 +2416,6 @@
       }
     ],
     "cat:Other Contributors": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -2820,22 +2539,6 @@
     ],
     "cat:Private Sector": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_unearmarked": 0,
@@ -2957,22 +2660,6 @@
       }
     ],
     "cat:Public Private Partnership": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_unearmarked": 0,
-        "voluntary_earmarked": 0,
-        "other": 0,
-        "total": 0
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -3098,24 +2785,6 @@
   "contributors": {
     "Afghanistan": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -3239,24 +2908,6 @@
       }
     ],
     "Albania": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -3382,24 +3033,6 @@
     ],
     "Algeria": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -3523,24 +3156,6 @@
       }
     ],
     "American Heart Association": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -3666,24 +3281,6 @@
     ],
     "American Samoa": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -3807,24 +3404,6 @@
       }
     ],
     "Andorra": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -3950,24 +3529,6 @@
     ],
     "Angola": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -4091,24 +3652,6 @@
       }
     ],
     "Anguilla": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -4234,24 +3777,6 @@
     ],
     "Antigua and Barbuda": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -4375,24 +3900,6 @@
       }
     ],
     "Argentina": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -4518,24 +4025,6 @@
     ],
     "Armenia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -4659,24 +4148,6 @@
       }
     ],
     "Aruba": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -4802,24 +4273,6 @@
     ],
     "Asian Development Bank": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -4943,24 +4396,6 @@
       }
     ],
     "Australia": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -5086,24 +4521,6 @@
     ],
     "Austria": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -5227,24 +4644,6 @@
       }
     ],
     "Azerbaijan": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -5370,24 +4769,6 @@
     ],
     "Bahamas": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -5511,24 +4892,6 @@
       }
     ],
     "Bahrain": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -5654,24 +5017,6 @@
     ],
     "Bangladesh": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -5795,24 +5140,6 @@
       }
     ],
     "Barbados": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -5938,24 +5265,6 @@
     ],
     "Belarus": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -6079,24 +5388,6 @@
       }
     ],
     "Belgium": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -6222,24 +5513,6 @@
     ],
     "Belize": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -6363,24 +5636,6 @@
       }
     ],
     "Benin": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -6506,24 +5761,6 @@
     ],
     "Bermuda": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -6647,24 +5884,6 @@
       }
     ],
     "Bernard Van Leer Foundation": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -6790,24 +6009,6 @@
     ],
     "Bhutan": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -6932,23 +6133,6 @@
     ],
     "Bill & Melinda Gates Foundation": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 283112859.13,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 283112859.13
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 244205420.04,
@@ -7070,24 +6254,6 @@
       }
     ],
     "Bloomberg Philanthropies": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -7213,24 +6379,6 @@
     ],
     "Bolivia, Plurinational State of": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -7354,24 +6502,6 @@
       }
     ],
     "Bosnia and Herzegovina": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -7497,24 +6627,6 @@
     ],
     "Botswana": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -7638,24 +6750,6 @@
       }
     ],
     "Brazil": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -7781,24 +6875,6 @@
     ],
     "British Virgin Islands": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -7922,24 +6998,6 @@
       }
     ],
     "Brunei Darussalam": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -8065,24 +7123,6 @@
     ],
     "Bulgaria": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -8206,24 +7246,6 @@
       }
     ],
     "Burkina Faso": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -8349,24 +7371,6 @@
     ],
     "Burundi": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -8490,24 +7494,6 @@
       }
     ],
     "CDC Foundation": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -8633,24 +7619,6 @@
     ],
     "CEPI": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -8774,24 +7742,6 @@
       }
     ],
     "Cabo Verde": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -8917,24 +7867,6 @@
     ],
     "Cambodia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -9058,24 +7990,6 @@
       }
     ],
     "Cameroon": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -9201,24 +8115,6 @@
     ],
     "Canada": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -9342,24 +8238,6 @@
       }
     ],
     "Cayman Islands": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -9485,24 +8363,6 @@
     ],
     "Central African Republic": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -9626,24 +8486,6 @@
       }
     ],
     "Centros de Diagn\u00f3sticos y Medicina Avanzada y de Conferencias M\u00e9dicas y Telemedicina": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -9769,24 +8611,6 @@
     ],
     "Chad": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -9910,24 +8734,6 @@
       }
     ],
     "Childhood Cancer International": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -10053,24 +8859,6 @@
     ],
     "Chile": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -10194,24 +8982,6 @@
       }
     ],
     "China": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -10337,24 +9107,6 @@
     ],
     "Clean Air Fund": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -10478,24 +9230,6 @@
       }
     ],
     "Colombia": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -10621,24 +9355,6 @@
     ],
     "Comoros": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -10762,24 +9478,6 @@
       }
     ],
     "Congo": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -10905,24 +9603,6 @@
     ],
     "Cook Islands": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -11046,24 +9726,6 @@
       }
     ],
     "Costa Rica": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -11189,24 +9851,6 @@
     ],
     "Croatia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -11330,24 +9974,6 @@
       }
     ],
     "Cuba": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -11473,24 +10099,6 @@
     ],
     "Cura\u00e7ao": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -11614,24 +10222,6 @@
       }
     ],
     "Cyprus": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -11757,24 +10347,6 @@
     ],
     "Czechia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -11898,24 +10470,6 @@
       }
     ],
     "C\u00f4te D'Ivoire": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -12041,24 +10595,6 @@
     ],
     "Democratic People's Republic of Korea": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -12182,24 +10718,6 @@
       }
     ],
     "Democratic Republic of the Congo": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -12325,24 +10843,6 @@
     ],
     "Denmark": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -12466,24 +10966,6 @@
       }
     ],
     "Direct Relief": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -12609,24 +11091,6 @@
     ],
     "Djibouti": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -12750,24 +11214,6 @@
       }
     ],
     "Dominica": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -12893,24 +11339,6 @@
     ],
     "Dominican Republic": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -13034,24 +11462,6 @@
       }
     ],
     "Ecuador": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -13177,24 +11587,6 @@
     ],
     "Egypt": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -13318,24 +11710,6 @@
       }
     ],
     "El Salvador": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -13461,24 +11835,6 @@
     ],
     "Equatorial Guinea": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -13602,24 +11958,6 @@
       }
     ],
     "Eritrea": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -13745,24 +12083,6 @@
     ],
     "Estonia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -13886,24 +12206,6 @@
       }
     ],
     "Eswatini": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -14029,24 +12331,6 @@
     ],
     "Ethiopia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -14171,23 +12455,6 @@
     ],
     "European Union": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 540031917.6500001,
-        "voluntary_unearmarked": 122515538.0,
-        "other": 0,
-        "total": 662547455.6500001
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 897206881.57,
@@ -14309,24 +12576,6 @@
       }
     ],
     "Falkland Islands (Malvinas)": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -14452,24 +12701,6 @@
     ],
     "Faroe Islands": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -14593,24 +12824,6 @@
       }
     ],
     "Fiji": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -14736,24 +12949,6 @@
     ],
     "Finland": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -14877,24 +13072,6 @@
       }
     ],
     "Ford Foundation": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -15020,24 +13197,6 @@
     ],
     "France": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -15161,24 +13320,6 @@
       }
     ],
     "Fred Hollows Foundation (FHF)": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -15304,24 +13445,6 @@
     ],
     "French Polynesia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -15446,24 +13569,6 @@
     ],
     "GAVI Alliance": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 72385399.0,
@@ -15585,24 +13690,6 @@
       }
     ],
     "Gabon": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -15728,24 +13815,6 @@
     ],
     "Gambia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -15869,24 +13938,6 @@
       }
     ],
     "Georgia": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -16012,24 +14063,6 @@
     ],
     "Germany": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -16153,24 +14186,6 @@
       }
     ],
     "Ghana": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -16296,24 +14311,6 @@
     ],
     "Gibraltar": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -16437,24 +14434,6 @@
       }
     ],
     "Global Environment Facility": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -16580,24 +14559,6 @@
     ],
     "Global Environment Facility (thru UNDP or UNEP)": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 232109765.79000002,
@@ -16719,24 +14680,6 @@
       }
     ],
     "Global Partnership for Education": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -16862,24 +14805,6 @@
     ],
     "Global Support and Development": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -17003,24 +14928,6 @@
       }
     ],
     "Greece": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -17146,24 +15053,6 @@
     ],
     "Green Climate Fund": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -17287,24 +15176,6 @@
       }
     ],
     "Grenada": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -17430,24 +15301,6 @@
     ],
     "Guadeloupe": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -17571,24 +15424,6 @@
       }
     ],
     "Guatemala": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -17714,24 +15549,6 @@
     ],
     "Guernsey": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -17855,24 +15672,6 @@
       }
     ],
     "Guinea": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -17998,24 +15797,6 @@
     ],
     "Guinea-Bissau": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -18139,24 +15920,6 @@
       }
     ],
     "Guyana": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -18282,24 +16045,6 @@
     ],
     "Haiti": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -18423,24 +16168,6 @@
       }
     ],
     "Holy See": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -18566,24 +16293,6 @@
     ],
     "Honduras": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -18707,24 +16416,6 @@
       }
     ],
     "Hong Kong SAR": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -18850,24 +16541,6 @@
     ],
     "Hospital General Materno Infantil y sus Pabellones de Geriatr\u00eda y Traumatolog\u00eda de la Plaza de la Salud": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -18991,24 +16664,6 @@
       }
     ],
     "Hungary": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -19134,24 +16789,6 @@
     ],
     "IOM": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -19275,24 +16912,6 @@
       }
     ],
     "Iceland": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -19418,24 +17037,6 @@
     ],
     "India": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -19559,24 +17160,6 @@
       }
     ],
     "Indonesia": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -19702,24 +17285,6 @@
     ],
     "Instituto Todos pela Saude/All for Health Institute": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -19843,24 +17408,6 @@
       }
     ],
     "Inter-American Development Bank": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -19986,24 +17533,6 @@
     ],
     "International Agency for Research on Cancer": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -20127,24 +17656,6 @@
       }
     ],
     "Iran, Islamic Republic of": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -20270,24 +17781,6 @@
     ],
     "Iraq": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -20411,24 +17904,6 @@
       }
     ],
     "Ireland": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -20554,24 +18029,6 @@
     ],
     "Isle of Man": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -20695,24 +18152,6 @@
       }
     ],
     "Israel": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -20838,24 +18277,6 @@
     ],
     "Italy": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -20979,24 +18400,6 @@
       }
     ],
     "JUNIOR PROFESSIONAL OFFICERS PROGRAMME": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -21122,24 +18525,6 @@
     ],
     "Jamaica": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -21263,24 +18648,6 @@
       }
     ],
     "Japan": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -21406,24 +18773,6 @@
     ],
     "Jersey": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -21547,24 +18896,6 @@
       }
     ],
     "Jordan": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -21690,24 +19021,6 @@
     ],
     "Kazakhstan": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -21831,24 +19144,6 @@
       }
     ],
     "Kenya": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -21974,24 +19269,6 @@
     ],
     "Kiribati": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -22115,24 +19392,6 @@
       }
     ],
     "Kosovo": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -22258,24 +19517,6 @@
     ],
     "Kuwait": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -22399,24 +19640,6 @@
       }
     ],
     "Kyrgyzstan": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -22542,24 +19765,6 @@
     ],
     "Lao People's Democratic Republic": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -22683,24 +19888,6 @@
       }
     ],
     "Latin American Federation of the Pharmaceutical Industry (FIFARMA)": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -22826,24 +20013,6 @@
     ],
     "Latvia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -22967,24 +20136,6 @@
       }
     ],
     "Lebanon": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -23110,24 +20261,6 @@
     ],
     "Lesotho": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -23251,24 +20384,6 @@
       }
     ],
     "Liberia": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -23394,24 +20509,6 @@
     ],
     "Libya": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -23535,24 +20632,6 @@
       }
     ],
     "Liechtenstein": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -23678,24 +20757,6 @@
     ],
     "Lithuania": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -23819,24 +20880,6 @@
       }
     ],
     "Luxembourg": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -23962,24 +21005,6 @@
     ],
     "MISC": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -24103,24 +21128,6 @@
       }
     ],
     "Macao SAR": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -24246,24 +21253,6 @@
     ],
     "Madagascar": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -24387,24 +21376,6 @@
       }
     ],
     "Malawi": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -24530,24 +21501,6 @@
     ],
     "Malaysia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -24671,24 +21624,6 @@
       }
     ],
     "Maldives": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -24814,24 +21749,6 @@
     ],
     "Mali": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -24955,24 +21872,6 @@
       }
     ],
     "Malta": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -25098,24 +21997,6 @@
     ],
     "Marshall Islands": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -25239,24 +22120,6 @@
       }
     ],
     "Mauritania": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -25382,24 +22245,6 @@
     ],
     "Mauritius": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -25523,24 +22368,6 @@
       }
     ],
     "Mexico": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -25666,24 +22493,6 @@
     ],
     "Micronesia, Federated States of": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -25808,24 +22617,6 @@
     ],
     "Miscellaneous": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -25948,166 +22739,7 @@
         "total": 0
       }
     ],
-    "Mitsui Engineering & Shipbuilding Co. Ltd": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 197822.0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 197822.0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2011,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2012,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2013,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2014,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2015,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2016,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2017,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2018,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2019,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2020,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2021,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2022,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2023,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2024,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2025,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      }
-    ],
     "Monaco": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -26233,24 +22865,6 @@
     ],
     "Mongolia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -26374,24 +22988,6 @@
       }
     ],
     "Montenegro": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -26517,24 +23113,6 @@
     ],
     "Montserrat": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -26658,24 +23236,6 @@
       }
     ],
     "Morocco": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -26801,24 +23361,6 @@
     ],
     "Mozambique": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -26943,23 +23485,6 @@
     ],
     "Multi Donor Trust Funds": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 109452557.9,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 109452557.9
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 566678913.73,
@@ -27081,24 +23606,6 @@
       }
     ],
     "Multi Partner Trust Fund Office": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -27224,24 +23731,6 @@
     ],
     "Multilateral Fund Secretariat in Montreal": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 74106441.46,
@@ -27364,24 +23853,6 @@
       }
     ],
     "Myanmar": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -27507,24 +23978,6 @@
     ],
     "Namibia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -27648,24 +24101,6 @@
       }
     ],
     "Nauru": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -27791,24 +24226,6 @@
     ],
     "Nepal": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -27932,24 +24349,6 @@
       }
     ],
     "Netherlands": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -28075,24 +24474,6 @@
     ],
     "New Caledonia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -28216,24 +24597,6 @@
       }
     ],
     "New Zealand": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -28359,24 +24722,6 @@
     ],
     "Nicaragua": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -28500,24 +24845,6 @@
       }
     ],
     "Niger": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -28643,24 +24970,6 @@
     ],
     "Nigeria": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -28784,24 +25093,6 @@
       }
     ],
     "Niue": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -28927,24 +25218,6 @@
     ],
     "North Macedonia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -29068,24 +25341,6 @@
       }
     ],
     "Norway": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -29211,24 +25466,6 @@
     ],
     "ORAS-CONHU": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -29352,24 +25589,6 @@
       }
     ],
     "Oman": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -29495,24 +25714,6 @@
     ],
     "Other Academic": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -29636,24 +25837,6 @@
       }
     ],
     "Other European Union": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -29779,24 +25962,6 @@
     ],
     "Other Foundations": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -29920,24 +26085,6 @@
       }
     ],
     "Other Government": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -30063,24 +26210,6 @@
     ],
     "Other Multilateral - Global Funds": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -30204,24 +26333,6 @@
       }
     ],
     "Other Multilateral - IFIs": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -30347,24 +26458,6 @@
     ],
     "Other Multilateral - Other": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -30488,24 +26581,6 @@
       }
     ],
     "Other Multilateral - UN Orgs": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -30631,24 +26706,6 @@
     ],
     "Other Multilateral - UN Pooled Funds": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -30772,24 +26829,6 @@
       }
     ],
     "Other NGOs": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -30915,24 +26954,6 @@
     ],
     "Other Other Contributors": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -31056,24 +27077,6 @@
       }
     ],
     "Other Private": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -31199,24 +27202,6 @@
     ],
     "Other Private Sector": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -31340,24 +27325,6 @@
       }
     ],
     "Other Public Private Partnership": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -31483,24 +27450,6 @@
     ],
     "Pakistan": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -31624,24 +27573,6 @@
       }
     ],
     "Palau": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -31767,24 +27698,6 @@
     ],
     "Panama": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -31908,24 +27821,6 @@
       }
     ],
     "Papua New Guinea": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -32051,24 +27946,6 @@
     ],
     "Paraguay": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -32192,24 +28069,6 @@
       }
     ],
     "Peru": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -32335,24 +28194,6 @@
     ],
     "Philippines": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -32476,24 +28317,6 @@
       }
     ],
     "Poland": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -32619,24 +28442,6 @@
     ],
     "Portugal": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -32760,24 +28565,6 @@
       }
     ],
     "Project Hope": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -32903,24 +28690,6 @@
     ],
     "Puerto Rico": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -33044,24 +28813,6 @@
       }
     ],
     "Qatar": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -33187,24 +28938,6 @@
     ],
     "Refunds to donors/Miscellaneous": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -33328,24 +29061,6 @@
       }
     ],
     "Republic of Korea": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -33471,24 +29186,6 @@
     ],
     "Republic of Moldova": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -33612,24 +29309,6 @@
       }
     ],
     "Resolve to Save Lives": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -33755,24 +29434,6 @@
     ],
     "Revenue from Activities": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -33896,24 +29557,6 @@
       }
     ],
     "Robert Wood Johnson Foundation": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -34039,24 +29682,6 @@
     ],
     "Romania": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -34181,23 +29806,6 @@
     ],
     "Rotary International": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 102363568.0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 102363568.0
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -34320,24 +29928,6 @@
       }
     ],
     "Russian Federation": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -34463,24 +30053,6 @@
     ],
     "Rwanda": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -34604,24 +30176,6 @@
       }
     ],
     "Saint Kitts and Nevis": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -34747,24 +30301,6 @@
     ],
     "Saint Lucia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -34888,24 +30424,6 @@
       }
     ],
     "Saint Martin (French part)": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -35031,24 +30549,6 @@
     ],
     "Saint Vincent and the Grenadines": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -35172,24 +30672,6 @@
       }
     ],
     "Samoa": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -35315,24 +30797,6 @@
     ],
     "San Marino": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -35456,24 +30920,6 @@
       }
     ],
     "Sao Tome and Principe": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -35599,24 +31045,6 @@
     ],
     "Saudi Arabia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -35740,24 +31168,6 @@
       }
     ],
     "Senegal": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -35883,24 +31293,6 @@
     ],
     "Serbia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -36024,24 +31416,6 @@
       }
     ],
     "Seychelles": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -36167,24 +31541,6 @@
     ],
     "Sierra Leone": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -36308,24 +31664,6 @@
       }
     ],
     "Singapore": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -36451,24 +31789,6 @@
     ],
     "Sint Maarten (Dutch part)": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -36592,24 +31912,6 @@
       }
     ],
     "Slovakia": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -36735,24 +32037,6 @@
     ],
     "Slovenia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -36876,24 +32160,6 @@
       }
     ],
     "Solomon Islands": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -37019,24 +32285,6 @@
     ],
     "Somalia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -37160,24 +32408,6 @@
       }
     ],
     "Sony Music Entertainment": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -37303,24 +32533,6 @@
     ],
     "South Africa": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -37444,24 +32656,6 @@
       }
     ],
     "South Sudan": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -37587,24 +32781,6 @@
     ],
     "Spain": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -37728,24 +32904,6 @@
       }
     ],
     "Sri Lanka": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -37871,24 +33029,6 @@
     ],
     "St Jude Childrens Research Hospital (USA)": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -38012,24 +33152,6 @@
       }
     ],
     "State of Palestine": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -38155,24 +33277,6 @@
     ],
     "Sudan": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -38296,24 +33400,6 @@
       }
     ],
     "Suriname": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -38439,24 +33525,6 @@
     ],
     "Sweden": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -38580,24 +33648,6 @@
       }
     ],
     "Switzerland": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -38723,24 +33773,6 @@
     ],
     "Syrian Arab Republic": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -38864,24 +33896,6 @@
       }
     ],
     "TFK": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -39007,24 +34021,6 @@
     ],
     "THE END FUND": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -39148,24 +34144,6 @@
       }
     ],
     "THE TASK FORCE FOR GLOBAL HEALTH (TFGH)": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -39291,24 +34269,6 @@
     ],
     "Taiwan (Province of China)": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -39432,24 +34392,6 @@
       }
     ],
     "Tajikistan": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -39575,24 +34517,6 @@
     ],
     "Thailand": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -39716,24 +34640,6 @@
       }
     ],
     "The Caribbean Public Health Agency/(CARPHA)": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -39859,24 +34765,6 @@
     ],
     "The Chinese Academy of Engineering": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -40000,24 +34888,6 @@
       }
     ],
     "The Church of Jesus Christ of Latter-day Saints": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -40143,24 +35013,6 @@
     ],
     "The Global Fund to Fight AIDS, Tuberculosis and Malaria": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 351975029.0,
@@ -40282,23 +35134,6 @@
       }
     ],
     "The Joint United Nations Programme on HIV/AIDS": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 55673557.0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 55673557.0
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -40424,24 +35259,6 @@
     ],
     "The Rockefeller Foundation": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -40565,24 +35382,6 @@
       }
     ],
     "Timor-Leste": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -40708,24 +35507,6 @@
     ],
     "Togo": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -40849,24 +35630,6 @@
       }
     ],
     "Tokelau": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -40992,24 +35755,6 @@
     ],
     "Tonga": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -41133,24 +35878,6 @@
       }
     ],
     "Trinidad and Tobago": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -41276,24 +36003,6 @@
     ],
     "Tunisia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -41417,24 +36126,6 @@
       }
     ],
     "Turkmenistan": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -41560,24 +36251,6 @@
     ],
     "Turks and Caicos Islands": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -41701,24 +36374,6 @@
       }
     ],
     "Tuvalu": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -41844,24 +36499,6 @@
     ],
     "T\u00fcrkiye": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -41985,24 +36622,6 @@
       }
     ],
     "UMANE Association": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -42128,23 +36747,6 @@
     ],
     "UN Foundation": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 41912153.94,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 41912153.94
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -42269,23 +36871,6 @@
     ],
     "UN OCHA": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 389568274.61,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 389568274.61
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 393115133.15999997,
@@ -42407,24 +36992,6 @@
       }
     ],
     "UN RESIDENT COORDINATOR'S OFFICE": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -42550,23 +37117,6 @@
     ],
     "UNDP (as donor)": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 355889800.48999995,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 355889800.48999995
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 215908368.52,
@@ -42688,24 +37238,6 @@
       }
     ],
     "UNDP Administered Trust Funds": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -42831,24 +37363,6 @@
     ],
     "UNDRR": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -42972,24 +37486,6 @@
       }
     ],
     "UNICEF": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -43115,24 +37611,6 @@
     ],
     "UNITAID": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -43256,23 +37734,6 @@
       }
     ],
     "UNOPS": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 183200.0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 183200.0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -43398,24 +37859,6 @@
     ],
     "UNOSSC": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -43539,24 +37982,6 @@
       }
     ],
     "USA National Committee": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -43682,24 +38107,6 @@
     ],
     "Uganda": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -43823,24 +38230,6 @@
       }
     ],
     "Ukraine": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -43966,24 +38355,6 @@
     ],
     "Unattributed": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 13230152989.0,
         "voluntary_earmarked": 16501552578.529999,
@@ -44104,166 +38475,7 @@
         "total": -5620706.8299998045
       }
     ],
-    "Unidentified non-government contributors": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 5374109.0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 5374109.0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2011,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2012,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2013,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2014,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2015,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2016,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2017,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2018,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2019,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2020,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2021,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2022,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2023,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2024,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2025,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      }
-    ],
     "United Arab Emirates": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -44389,24 +38601,6 @@
     ],
     "United Kingdom of Great Britain and Northern Ireland": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -44531,23 +38725,6 @@
     ],
     "United Nations": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 56964800.0,
-        "voluntary_earmarked": 105707525.93,
-        "voluntary_unearmarked": 23648262.0,
-        "other": 0,
-        "total": 186320587.93
-      },
-      {
         "year": 2011,
         "assessed": 62992600.0,
         "voluntary_earmarked": 117932055.21000001,
@@ -44668,166 +38845,7 @@
         "total": 0
       }
     ],
-    "United Nations Environment Programme": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 995133.0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 995133.0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2011,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2012,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2013,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2014,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2015,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2016,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2017,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2018,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2019,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2020,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2021,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2022,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2023,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2024,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2025,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      }
-    ],
     "United Nations Partnership to Promote the Rights of Persons with Disabilities\u00a0(UNPRPD": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -44953,24 +38971,6 @@
     ],
     "United Republic of Tanzania": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -45094,24 +39094,6 @@
       }
     ],
     "United States Fund for UNICEF": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -45237,24 +39219,6 @@
     ],
     "United States of America": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -45378,24 +39342,6 @@
       }
     ],
     "University (College) of the West Indies": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -45521,24 +39467,6 @@
     ],
     "University of Geneva": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -45662,24 +39590,6 @@
       }
     ],
     "Uruguay": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -45805,24 +39715,6 @@
     ],
     "Uzbekistan": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -45946,24 +39838,6 @@
       }
     ],
     "Vaccine Ambassadors": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -46089,24 +39963,6 @@
     ],
     "Vanuatu": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -46230,24 +40086,6 @@
       }
     ],
     "Venezuela, Bolivarian Republic of": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -46373,24 +40211,6 @@
     ],
     "Viet Nam": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -46514,24 +40334,6 @@
       }
     ],
     "Vital Strategies": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -46657,22 +40459,6 @@
     ],
     "World Bank": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 770933.0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 770933.0
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 70680234.03,
-        "voluntary_unearmarked": 4000000.0,
-        "other": 0,
-        "total": 74680234.03
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -46796,24 +40582,6 @@
       }
     ],
     "Yemen": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,
@@ -46939,24 +40707,6 @@
     ],
     "Zambia": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -47081,24 +40831,6 @@
     ],
     "Zimbabwe": [
       {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
         "year": 2011,
         "assessed": 0,
         "voluntary_earmarked": 0,
@@ -47222,24 +40954,6 @@
       }
     ],
     "\u00c5land Islands": [
-      {
-        "year": 2009,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2010,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
       {
         "year": 2011,
         "assessed": 0,

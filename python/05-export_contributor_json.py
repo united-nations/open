@@ -13,6 +13,10 @@ from revenue_categories import rev_category
 def load_data():
     global YEARS
     fused = pd.read_csv("data/ceb/fused/revenue_by_contributor.csv")
+    # Publish contributor views only for years with system-wide revenue controls.
+    # Earlier partial observations remain in the source/fused data for audit.
+    control_years = set(pd.read_csv("data/ceb/clean/revenue.csv").calendar_year)
+    fused = fused[fused.year.isin(control_years)].copy()
     YEARS = sorted(int(year) for year in fused["year"].unique())
     fused["entity"] = fused["entity"].apply(normalize_entity)
     fused["rev_cat"] = fused["rev_type"].apply(rev_category)
@@ -24,6 +28,11 @@ def load_data():
 
 def export_donors_json(df: pd.DataFrame, state_info: dict):
     """Generate donors-{year}.json with contributions by donor."""
+    # Remove obsolete exports so manifest detection cannot reintroduce them.
+    for path in OUT.glob("donors-*.json"):
+        suffix = path.stem.removeprefix("donors-")
+        if suffix.isdigit() and int(suffix) not in YEARS:
+            path.unlink()
     for year in YEARS:
         ydf = df[df["year"] == year]
         donors = defaultdict(lambda: {"status": "organization", "category": "Non-Government", "contributions": {}})

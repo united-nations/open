@@ -53,8 +53,32 @@ try {
   });
   const donors = page;
   await donors.getByRole("slider").press("Home");
-  await donors.getByText(/Partial non-government donor records only/).waitFor();
-  await donors.getByText("Partial reported total", { exact: true }).waitFor();
+  await donors
+    .getByText(/Government donor detail is unavailable/)
+    .first()
+    .waitFor();
+  assert.equal(
+    await donors.getByRole("slider").getAttribute("aria-valuenow"),
+    "2011",
+  );
+  assert.equal(
+    await donors.getByRole("slider").getAttribute("aria-valuemin"),
+    "2011",
+  );
+  await donors.getByRole("slider").press("ArrowLeft");
+  assert.equal(
+    await donors.getByRole("slider").getAttribute("aria-valuenow"),
+    "2011",
+  );
+  const contributorTrends = await page.evaluate(async () =>
+    (await fetch("/data/contributor-trends.json")).json(),
+  );
+  assert.equal(contributorTrends.meta.years[0], 2011);
+  for (const rows of Object.values({
+    ...contributorTrends.aggregates,
+    ...contributorTrends.contributors,
+  }))
+    assert.ok(rows.every((row) => row.year >= 2011));
   await page.screenshot({
     path: "audits/browser/historical-contributors.png",
     fullPage: true,
