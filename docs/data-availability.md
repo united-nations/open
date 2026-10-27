@@ -22,7 +22,8 @@ and coverage are recorded in `public/data/ceb-source.json`.
   retained as Unattributed. Government donor detail starts in 2013. The shared
   `revenue-coverage.json` register discloses these differences. Unobserved early
   donor years are marked unavailable rather than asserted to be zero.
-- System Flows retains the union of imported spending years, 2010–2025.
+- System Flows retains the union of imported spending years, 2010–2025,
+  but its year selector starts in 2011.
   Organization expense controls are unavailable in 2010, and SDGs are unavailable
   before 2018 and in 2025. The view loads only available files, labels missing
   dimensions, and never infers SDG allocations from other totals.

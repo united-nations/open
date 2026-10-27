@@ -35,13 +35,14 @@ try {
     () =>
       document
         .querySelector("#system-flows [role=slider]")
-        ?.getAttribute("aria-valuenow") === "2010",
+        ?.getAttribute("aria-valuenow") === "2011",
   );
-  await flows
-    .getByText(/Organization expense totals are unavailable/)
-    .waitFor();
-  assert.match(await flows.innerText(), /Total revenue\s+Unavailable/);
-  assert.match(await flows.innerText(), /Total expenditure\s+Unavailable/);
+  await flows.getByText(/Government donor detail is unavailable/).waitFor();
+  assert.equal(await slider.getAttribute("aria-valuemin"), "2011");
+  await slider.press("ArrowLeft");
+  assert.equal(await slider.getAttribute("aria-valuenow"), "2011");
+  assert.match(await flows.innerText(), /Total revenue\s+\$39\.6B/);
+  assert.match(await flows.innerText(), /Total expenditure\s+\$41\.5B/);
   await page.screenshot({
     path: "audits/browser/historical-flows.png",
     fullPage: true,

@@ -230,7 +230,9 @@ export function SystemFlows() {
         yearControl={
           sources && year !== null ? (
             <YearSlider
-              years={sources.spending.meta.years}
+              years={sources.spending.meta.years.filter(
+                (year) => year !== 2010,
+              )}
               selectedYear={year}
               onChange={(value) => {
                 setSlow(false);
