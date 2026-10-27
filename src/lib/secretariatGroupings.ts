@@ -1,12 +1,18 @@
-// Visual styling for the two grouping lenses on the /secretariat page:
+// Visual styling for Secretariat reporting sources and grouping lenses:
 // - Priority Area (9 thematic areas)
 // - Budget Part (formal budget structure, Parts I-XIV, keyed by part_id)
 // Reuses the SystemGroupingStyle shape from systemGroupings.ts.
 
 import type { SystemGroupingStyle } from "@/lib/systemGroupings";
+import type { TrustFundSourceGroup } from "@/types";
 import secretariatTaxonomies from "../../data/secretariat-taxonomies.json";
 
 export type GroupingLens = "priorityArea" | "budgetPart";
+
+export const TRUST_FUND_SOURCE_COLORS: Record<TrustFundSourceGroup, string> = {
+  volume_i: "var(--color-un-blue)",
+  separate_entities: "#31566e",
+};
 
 // Shared palette of theme bg classes (UN palette) with readable text colors.
 // Also used by budgetGroupings.ts, so that every treemap on /secretariat draws

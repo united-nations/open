@@ -758,7 +758,7 @@ export function PeacekeepingBudgetView() {
       {selectedCode && current && (
         <div className="order-4">
           <PeacekeepingMissionSidebar
-            key={`${selectedCode}-${displayedMetric}`}
+            key={`${selectedCode}-${displayedMetric}-${current.meta.fiscalYear}`}
             metric={displayedMetric}
             code={selectedCode}
             name={selectedRow?.name ?? selectedLocation?.name ?? selectedCode}

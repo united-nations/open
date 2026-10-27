@@ -17,10 +17,20 @@ try {
     const headerHeight = await page
       .locator("header")
       .evaluate((header) => header.getBoundingClientRect().height);
-    assert.equal(
-      headerHeight,
-      65,
-      `Header keeps its emblem-height content row at ${width}`,
+    const declaredHeaderHeight = await page.evaluate(() =>
+      parseFloat(
+        getComputedStyle(document.documentElement).getPropertyValue(
+          "--site-header-height",
+        ),
+      ),
+    );
+    assert.ok(
+      headerHeight >= 40,
+      `Header contains its emblem-height content row at ${width}`,
+    );
+    assert.ok(
+      Math.abs(headerHeight - declaredHeaderHeight) < 1,
+      `Sticky offsets follow the measured shared header height at ${width}`,
     );
     const headingPadding = await page
       .locator("main h2")

@@ -10,7 +10,7 @@ export function PageBody({
   return (
     <section
       className={cn(
-        "mx-auto max-w-6xl px-6 py-12 md:px-12 lg:px-16",
+        "mx-auto max-w-6xl px-6 pt-5 pb-12 md:px-12 lg:px-16",
         className,
       )}
     >

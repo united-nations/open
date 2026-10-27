@@ -12,12 +12,14 @@ import {
 import { FinancialBreakdownRow } from "@un-eosg/ui/components/financial-breakdown-row";
 import { SourceReferenceList } from "@/components/SourceReferenceList";
 import { SidebarControls } from "@/components/SidebarControls";
+import { FiscalYearSelector } from "@/components/FiscalYearSelector";
 import {
   SidebarStackedTrend,
   type FinancingInstrumentDataPoint,
   type FinancingSeries,
 } from "@/components/SidebarStackedTrend";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { useContributorSidebarYear } from "@/hooks/useContributorSidebarYear";
 import {
   COST_CLASS_BAND_COLORS,
   COST_CLASS_KEYS,
@@ -158,13 +160,13 @@ export function PeacekeepingMissionSidebar({
   code,
   name,
   locationLabel,
-  fiscalYear,
-  total,
-  classes,
-  classReferences,
-  items,
-  source,
-  references,
+  fiscalYear: initialFiscalYear,
+  total: initialTotal,
+  classes: initialClasses,
+  classReferences: initialClassReferences,
+  items: initialItems,
+  source: initialSource,
+  references: initialReferences,
   onClose,
 }: PeacekeepingMissionSidebarProps) {
   const [visible, setVisible] = useState(false);
@@ -179,6 +181,71 @@ export function PeacekeepingMissionSidebar({
         : ranges.budgetPko
   ).years;
   const metricLabel = PEACEKEEPING_METRICS[metric];
+  const selection = useContributorSidebarYear<BudgetData>(
+    `budget-pko-${metric}`,
+    Number.parseInt(initialFiscalYear, 10),
+  );
+  const missionNodes =
+    selection.data?.nodes.filter((node) => node.mission === code) ?? [];
+  const mission = selection.data?.nodes.find(
+    (node) =>
+      node.tier === "mission" &&
+      (node.code === code || node.mission === code) &&
+      node.costClass === "total",
+  );
+  const ready =
+    !selection.loading &&
+    !selection.error &&
+    (selection.isInitialYear || !!mission);
+  const fiscalYear = selection.isInitialYear
+    ? initialFiscalYear
+    : (selection.data?.meta.fiscalYear ?? fiscalYearLabel(selection.year));
+  const total = ready
+    ? selection.isInitialYear
+      ? initialTotal
+      : (mission?.amount ?? null)
+    : null;
+  const classes = selection.isInitialYear
+    ? initialClasses
+    : (Object.fromEntries(
+        COST_CLASS_KEYS.map((key) => [
+          key,
+          missionNodes.find(
+            (node) => node.tier === "class" && node.costClass === key,
+          )?.amount ?? null,
+        ]),
+      ) as Record<CostClassKey, number | null>);
+  const classReferences = selection.isInitialYear
+    ? initialClassReferences
+    : (Object.fromEntries(
+        COST_CLASS_KEYS.map((key) => [
+          key,
+          missionNodes
+            .filter((node) => node.tier === "class" && node.costClass === key)
+            .flatMap((node) => collectBudgetNodeSources(node)),
+        ]),
+      ) as Partial<Record<CostClassKey, BudgetNodeSource[]>>);
+  const items = selection.isInitialYear
+    ? initialItems
+    : (Object.fromEntries(
+        COST_CLASS_KEYS.map((key) => [
+          key,
+          missionNodes
+            .filter((node) => node.tier === "item" && node.costClass === key)
+            .map((node) => ({
+              label: node.label,
+              amount: node.amount,
+              references: collectBudgetNodeSources(node),
+            }))
+            .sort(
+              (a, b) => b.amount - a.amount || a.label.localeCompare(b.label),
+            ),
+        ]),
+      ) as Record<CostClassKey, CostItem[]>);
+  const source = selection.isInitialYear ? initialSource : mission?.source;
+  const references = selection.isInitialYear
+    ? initialReferences
+    : missionNodes.flatMap((node) => collectBudgetNodeSources(node));
   const [trendSources, setTrendSources] = useState<
     Record<string, Partial<Record<CostClassKey, BudgetNodeSource[]>>>
   >({});
@@ -296,6 +363,7 @@ export function PeacekeepingMissionSidebar({
         <FinancialDetailPanel
           title={code}
           titleId={titleId}
+          busy={selection.loading}
           subtitle={
             <>
               {name}
@@ -305,11 +373,21 @@ export function PeacekeepingMissionSidebar({
             </>
           }
           controls={
-            <SidebarControls
-              shareHash={`pko-mission=${encodeURIComponent(code)}`}
-              onClose={close}
-              closeLabel="Close mission details"
-            />
+            <>
+              <FiscalYearSelector
+                years={years}
+                selected={selection.year}
+                onChange={selection.setYear}
+                label="Select fiscal year"
+                pending={selection.loading}
+                pendingLabel="Loading…"
+              />
+              <SidebarControls
+                shareHash={`pko-mission=${encodeURIComponent(code)}`}
+                onClose={close}
+                closeLabel="Close mission details"
+              />
+            </>
           }
           total={
             total !== null
@@ -338,88 +416,100 @@ export function PeacekeepingMissionSidebar({
               : undefined
           }
           notice={
-            total === null
+            !ready || total === null
               ? {
-                  tone: "empty",
-                  description: `No published ${metricLabel.toLowerCase()} for ${fiscalYear}.`,
+                  tone: selection.error ? "error" : "empty",
+                  description:
+                    selection.error ??
+                    (selection.loading
+                      ? "Loading mission details…"
+                      : `No published ${metricLabel.toLowerCase()} for ${fiscalYear}.`),
                 }
               : undefined
           }
           className="bg-white sm:w-full"
         >
-          {classRows.length > 0 && (
-            <FinancialPanelSection
-              heading={`${metricLabel} by budget group and class`}
-            >
-              <ul className="mt-3 space-y-1">
-                {classRows.map(({ key, amount, lines }) => (
-                  <CostClassBreakdownRow
-                    metricLabel={metricLabel}
-                    key={`${code}-${fiscalYear}-${key}`}
-                    label={COST_CLASS_LABELS[key] ?? key}
-                    amount={amount}
-                    references={classReferences?.[key] ?? []}
-                    color={
-                      COST_CLASS_BAND_COLORS[key]?.bg ?? "var(--color-un-blue)"
-                    }
-                    lines={lines}
-                    maximum={Math.max(
-                      0,
-                      ...classRows.flatMap((row) => [
-                        row.amount ?? 0,
-                        ...row.lines.map((line) => line.amount),
-                      ]),
-                    )}
-                  />
-                ))}
-              </ul>
-              <div className="mt-4">
-                <SidebarStackedTrend
-                  tooltipSources={(year, visibleKeys) =>
-                    visibleKeys.flatMap(
-                      (key) => trendSources[year]?.[key as CostClassKey] ?? [],
-                    )
-                  }
-                  showLegend={false}
-                  data={trend}
-                  series={COST_CLASS_TREND_SERIES}
-                />
-              </div>
-            </FinancialPanelSection>
-          )}
+          {ready && (
+            <>
+              {classRows.length > 0 && (
+                <FinancialPanelSection
+                  heading={`${metricLabel} by budget group and class`}
+                >
+                  <ul className="mt-3 space-y-1">
+                    {classRows.map(({ key, amount, lines }) => (
+                      <CostClassBreakdownRow
+                        metricLabel={metricLabel}
+                        key={`${code}-${fiscalYear}-${key}`}
+                        label={COST_CLASS_LABELS[key] ?? key}
+                        amount={amount}
+                        references={classReferences?.[key] ?? []}
+                        color={
+                          COST_CLASS_BAND_COLORS[key]?.bg ??
+                          "var(--color-un-blue)"
+                        }
+                        lines={lines}
+                        maximum={Math.max(
+                          0,
+                          ...classRows.flatMap((row) => [
+                            row.amount ?? 0,
+                            ...row.lines.map((line) => line.amount),
+                          ]),
+                        )}
+                      />
+                    ))}
+                  </ul>
+                  <div className="mt-4">
+                    <SidebarStackedTrend
+                      tooltipSources={(year, visibleKeys) =>
+                        visibleKeys.flatMap(
+                          (key) =>
+                            trendSources[year]?.[key as CostClassKey] ?? [],
+                        )
+                      }
+                      showLegend={false}
+                      data={trend}
+                      series={COST_CLASS_TREND_SERIES}
+                    />
+                  </div>
+                </FinancialPanelSection>
+              )}
 
-          {Boolean(references?.length || (source?.url && source.symbol)) && (
-            <details
-              key={`${code}-${fiscalYear}`}
-              className="group/sources mt-4"
-            >
-              <summary className="flex w-fit cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden">
-                <FinancialPanelHeading subheading>
-                  Source references
-                </FinancialPanelHeading>
-                <ChevronRight
-                  aria-hidden="true"
-                  className="size-3 transition-transform group-open/sources:rotate-90"
-                />
-              </summary>
-              <div className="mt-3">
-                <SourceReferenceList
-                  references={
-                    references?.length
-                      ? references
-                      : source
-                        ? [
-                            {
-                              ...source,
-                              budgetItem: name,
-                              label: metricLabel,
-                            },
-                          ]
-                        : []
-                  }
-                />
-              </div>
-            </details>
+              {Boolean(
+                references?.length || (source?.url && source.symbol),
+              ) && (
+                <details
+                  key={`${code}-${fiscalYear}`}
+                  className="group/sources mt-4"
+                >
+                  <summary className="flex w-fit cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden">
+                    <FinancialPanelHeading subheading>
+                      Source references
+                    </FinancialPanelHeading>
+                    <ChevronRight
+                      aria-hidden="true"
+                      className="size-3 transition-transform group-open/sources:rotate-90"
+                    />
+                  </summary>
+                  <div className="mt-3">
+                    <SourceReferenceList
+                      references={
+                        references?.length
+                          ? references
+                          : source
+                            ? [
+                                {
+                                  ...source,
+                                  budgetItem: name,
+                                  label: metricLabel,
+                                },
+                              ]
+                            : []
+                      }
+                    />
+                  </div>
+                </details>
+              )}
+            </>
           )}
         </FinancialDetailPanel>
       </aside>

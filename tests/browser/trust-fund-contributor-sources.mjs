@@ -131,7 +131,7 @@ try {
     legacy.contributors[0];
   await assertCleanTooltip(
     page.getByRole("button", { name: legacyDonor.name, exact: true }).first(),
-    "Net amount in this category",
+    "Contributions and transfers",
   );
   await selectSource("UN-Habitat");
   let panel = page.locator('[data-xb-contributor-panel="UN-HABITAT"]');

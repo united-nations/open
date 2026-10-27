@@ -141,14 +141,26 @@ function ContributorDetails({ row }: { row: XBContributorRow }) {
 }
 
 function ContributorDialog({
-  row,
-  series,
+  row: initialRow,
+  series: initialSeries,
+  data,
+  years,
   onClose,
 }: {
   row: XBContributorRow;
   series: XBContributorSeries;
+  data: XBContributorsData;
+  years: number[];
   onClose: () => void;
 }) {
+  const [year, setYear] = useState(initialSeries.year);
+  const series = data.series.find(
+    (item) =>
+      item.entity === initialSeries.entity &&
+      item.scope === initialSeries.scope &&
+      item.year === year,
+  );
+  const row = series?.rows.find((item) => item.name === initialRow.name);
   const ref = useFocusTrap(true);
   useEffect(() => {
     const overflow = document.documentElement.style.overflow;
@@ -177,30 +189,54 @@ function ContributorDialog({
         className="h-full w-full bg-white shadow-2xl sm:w-[32rem]"
       >
         <FinancialDetailPanel
-          title={row.name}
+          title={initialRow.name}
           titleId="xb-contributor-title"
-          subtitle={`${series.entity} · ${series.scopeLabel} · ${series.year}`}
+          subtitle={`${initialSeries.entity} · ${year}`}
+          yearSelectorPlacement="header"
+          yearSelector={{
+            years,
+            selected: year,
+            onChange: setYear,
+            label: "Select year",
+          }}
+          notice={
+            !row
+              ? {
+                  tone: "empty",
+                  description:
+                    "No contributor data is published for this year.",
+                }
+              : undefined
+          }
           controls={
             <SidebarControls
               onClose={onClose}
               closeLabel="Close contributor details"
             />
           }
-          total={{ label: series.measure, value: formatBudget(row.amount) }}
+          total={
+            series && row
+              ? { label: series.measure, value: formatBudget(row.amount) }
+              : undefined
+          }
         >
-          <p className="mb-3 text-sm">{measureNote(series)}</p>
-          {series.entity === "UNODC" ? (
-            row.grouped && (
-              <p className="mb-3 text-sm">
-                This is a grouped counterparty as reported by the source.
-              </p>
-            )
-          ) : (
-            <FinancialPanelSection heading="Reported destinations">
-              <ContributorDetails row={row} />
-            </FinancialPanelSection>
+          {series && row && (
+            <>
+              <p className="mb-3 text-sm">{measureNote(series)}</p>
+              {series.entity === "UNODC" ? (
+                row.grouped && (
+                  <p className="mb-3 text-sm">
+                    This is a grouped counterparty as reported by the source.
+                  </p>
+                )
+              ) : (
+                <FinancialPanelSection heading="Reported destinations">
+                  <ContributorDetails row={row} />
+                </FinancialPanelSection>
+              )}
+              <ContributorSourceReferences series={series} row={row} />
+            </>
           )}
-          <ContributorSourceReferences series={series} row={row} />
         </FinancialDetailPanel>
       </aside>
     </div>
@@ -513,6 +549,8 @@ export function XBContributorPanel({
             <ContributorDialog
               row={chosen}
               series={series}
+              data={data}
+              years={years}
               onClose={() => setSelected(null)}
             />
           )}

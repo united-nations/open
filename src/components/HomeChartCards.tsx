@@ -10,12 +10,14 @@ import { getSystemGroupingStyle } from "@/lib/systemGroupings";
 import { layoutGroups, squarifyDense } from "@/lib/treemapLayout";
 import { HOME_MAP_LAND_PATH, projectHomeMapPoint } from "@/lib/home-map";
 import { getFinancingInstrumentColor } from "@/lib/financingInstruments";
+import { FUNDING_SHADE_OPACITY } from "@/lib/budgetGroupings";
 import { SDG_COLORS } from "@/lib/sdgs";
 import {
   PALETTE,
   PART_BAND_COLORS,
   budgetPartStyles,
   priorityAreaColor,
+  TRUST_FUND_SOURCE_COLORS,
 } from "@/lib/secretariatGroupings";
 import type {
   BudgetData,
@@ -54,7 +56,7 @@ type Preview = {
   countries?: Country[];
   goals?: boolean;
   trend?: Trend;
-  bands?: "categories" | "programme" | "entities";
+  bands?: "categories" | "programme" | "entities" | "trust-funds";
 };
 type Rect = Tile & { x: number; y: number; width: number; height: number };
 
@@ -233,17 +235,88 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
       countries: peacekeepingPoints,
     },
     "/secretariat/trust-funds": {
-      bands: "entities",
-      tiles: (funds?.nodes ?? [])
-        .filter((node) => node.tier === "budget_unit")
-        .map((node) => ({
-          label: node.entity?.acronym ?? node.code ?? node.label,
-          color: "var(--color-un-blue)",
-          value: node.amount,
-        })),
+      bands: "trust-funds",
+      tiles: trustFundTiles(funds),
     },
   };
 });
+
+function trustFundTiles(data: BudgetData | null): Tile[] {
+  if (!data) return [];
+  const shade = Math.round(FUNDING_SHADE_OPACITY.extrabudgetary * 100);
+  const children = new Map<string, BudgetData["nodes"]>();
+  for (const node of data.nodes) {
+    if (node.parentId) {
+      const siblings = children.get(node.parentId) ?? [];
+      siblings.push(node);
+      children.set(node.parentId, siblings);
+    }
+  }
+  const groups = data.meta.sourceGroups ?? [
+    {
+      id: "volume_i" as const,
+      label: "UN Secretariat trust-fund schedules",
+      amount: data.meta.total,
+    },
+  ];
+  return groups.flatMap((group) => {
+    if (group.amount === null || group.amount <= 0) return [];
+    const color = `color-mix(in srgb, ${TRUST_FUND_SOURCE_COLORS[group.id]} ${shade}%, white)`;
+    return [
+      {
+        label: group.label,
+        value: group.amount,
+        color,
+        children: data.nodes
+          .filter(
+            (node) =>
+              node.tier === "budget_unit" &&
+              (node.sourceGroup ?? "volume_i") === group.id &&
+              node.amount > 0,
+          )
+          .map((node) => ({
+            label: node.entity?.acronym ?? node.code ?? node.label,
+            value: node.amount,
+            color,
+            // Gross detail shares subdivide the net entity area; they are never
+            // added to the entity/source amounts used by the preview layout.
+            children: (children.get(node.id) ?? [])
+              .filter((child) => child.tier === "detail" && child.amount > 0)
+              .sort((a, b) => b.amount - a.amount)
+              .map((child) => ({ label: child.label, value: child.amount })),
+          })),
+      },
+    ];
+  });
+}
+
+function layoutTrustFundBands(groups: Tile[]): Rect[] {
+  const total = groups.reduce((sum, group) => sum + group.value, 0);
+  if (total <= 0) return [];
+  let y = 0;
+  return groups.flatMap((group) => {
+    const height = (group.value / total) * 168;
+    const rects = squarifyDense(
+      [...(group.children ?? [])]
+        .sort((a, b) => b.value - a.value)
+        .map((tile) => ({ value: tile.value, data: tile })),
+      0,
+      y,
+      320,
+      height,
+    ).map(
+      (rect): Rect => ({
+        ...rect.data,
+        x: rect.x,
+        y: rect.y,
+        width: rect.width,
+        height: rect.height,
+      }),
+    );
+    y += height;
+    return rects;
+  });
+}
 
 // A balanced binary treemap keeps small previews readable without a client-side
 // layout engine. Areas reflect positive amounts; signed corrections stay in the
@@ -340,48 +413,50 @@ function MiniTreemap({
   // corner for small groups; programme parts preserve their semantic order.
   // Reuse the existing percentage-coordinate band layout for these silhouettes.
   const orderedTiles =
-    bands === "programme"
+    bands === "programme" || bands === "trust-funds"
       ? positiveTiles
       : positiveTiles.sort((a, b) => b.value - a.value);
   const rects =
-    bands === "entities"
-      ? squarifyDense(
-          orderedTiles.map((tile) => ({ value: tile.value, data: tile })),
-          0,
-          0,
-          100,
-          100,
-        ).map(
-          (rect): Rect => ({
-            ...rect.data,
-            x: rect.x * 3.2,
-            y: rect.y * 1.68,
-            width: rect.width * 3.2,
-            height: rect.height * 1.68,
-          }),
-        )
-      : bands === "programme"
-        ? layoutProgrammeBands(orderedTiles)
-        : bands
-          ? layoutGroups(
-              orderedTiles.map((tile) => ({
-                key: tile.label,
-                total: tile.value,
-              })),
-              100,
-              100,
-              0,
-              5,
-            ).map(
-              (rect): Rect => ({
-                ...orderedTiles.find((tile) => tile.label === rect.key)!,
-                x: rect.x * 3.2,
-                y: rect.y * 1.68,
-                width: rect.width * 3.2,
-                height: rect.height * 1.68,
-              }),
-            )
-          : layoutTiles(orderedTiles);
+    bands === "trust-funds"
+      ? layoutTrustFundBands(orderedTiles)
+      : bands === "entities"
+        ? squarifyDense(
+            orderedTiles.map((tile) => ({ value: tile.value, data: tile })),
+            0,
+            0,
+            100,
+            100,
+          ).map(
+            (rect): Rect => ({
+              ...rect.data,
+              x: rect.x * 3.2,
+              y: rect.y * 1.68,
+              width: rect.width * 3.2,
+              height: rect.height * 1.68,
+            }),
+          )
+        : bands === "programme"
+          ? layoutProgrammeBands(orderedTiles)
+          : bands
+            ? layoutGroups(
+                orderedTiles.map((tile) => ({
+                  key: tile.label,
+                  total: tile.value,
+                })),
+                100,
+                100,
+                0,
+                5,
+              ).map(
+                (rect): Rect => ({
+                  ...orderedTiles.find((tile) => tile.label === rect.key)!,
+                  x: rect.x * 3.2,
+                  y: rect.y * 1.68,
+                  width: rect.width * 3.2,
+                  height: rect.height * 1.68,
+                }),
+              )
+            : layoutTiles(orderedTiles);
   return (
     <svg
       viewBox="0 0 320 168"

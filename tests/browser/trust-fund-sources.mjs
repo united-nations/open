@@ -169,6 +169,19 @@ try {
     }
   };
   await source.waitFor();
+  const signedFunds = page.locator(
+    'details[aria-label="Funds with zero or negative expenditure"]',
+  );
+  assert.equal(await signedFunds.count(), 1);
+  assert.equal(
+    await signedFunds.getAttribute("open"),
+    null,
+    "Zero and negative fund details must be collapsed by default",
+  );
+  assert.equal(
+    await signedFunds.getByRole("button").first().isVisible(),
+    false,
+  );
   assert.equal(
     await source
       .getByRole("button", { name: "All sources", exact: true })
@@ -203,6 +216,16 @@ try {
   };
   await assertTotal(
     data.meta.sourceGroups.reduce((sum, group) => sum + group.amount, 0),
+  );
+  const scheduleChart = page.getByRole("region", {
+    name: "UN Secretariat trust-fund schedules",
+    exact: true,
+  });
+  assert.ok(
+    (await scheduleChart
+      .locator('div.pointer-events-none.absolute[class*="z-20"]')
+      .count()) >= 8,
+    "Desktop chart must label additional significant Secretariat entities beyond the three largest",
   );
   const chartSourceFooter = page.getByRole("button", {
     name: /^Source: UN Secretariat trust-fund schedules/,
@@ -273,7 +296,7 @@ try {
   );
   assert.equal(
     await page
-      .getByRole("region", { name: "Funds with zero or negative expenditure" })
+      .locator('details[aria-label="Funds with zero or negative expenditure"]')
       .count(),
     0,
   );
@@ -361,7 +384,7 @@ try {
   await assertSidebarReferences(dialog);
   await dialog
     .getByText(
-      "Fund-account amounts are shown before consolidation and therefore do not add up to the entity total.",
+      "Detail amounts are before eliminations and may exceed the entity total.",
       { exact: true },
     )
     .waitFor();
@@ -606,10 +629,64 @@ try {
       await foundation.press("Enter");
       const position = dialog.locator("[data-fund-position]");
       await position
-        .getByText("Financial position · 31 December 2024", { exact: true })
+        .getByRole("heading", { name: "Financial position", exact: true })
         .waitFor();
-      await position.getByText("Total assets", { exact: true }).waitFor();
+      await position.getByText("31 December 2024", { exact: true }).waitFor();
       await position.getByText("Net assets", { exact: true }).waitFor();
+      assert.equal(
+        await position
+          .getByText("Assets − liabilities = net assets", { exact: true })
+          .count(),
+        0,
+      );
+      assert.equal(
+        await position.getByText("Asset details", { exact: true }).count(),
+        0,
+      );
+      assert.equal(
+        await position.getByText("Liability details", { exact: true }).count(),
+        0,
+      );
+      const assetsToggle = position.getByRole("button", {
+        name: "Total assets",
+        exact: true,
+      });
+      const liabilitiesToggle = position.getByRole("button", {
+        name: "Total liabilities",
+        exact: true,
+      });
+      assert.equal(await assetsToggle.getAttribute("aria-expanded"), "false");
+      assert.equal(
+        await liabilitiesToggle.getAttribute("aria-expanded"),
+        "false",
+      );
+      assert.equal(
+        await position
+          .getByText("Cash and cash equivalents", { exact: true })
+          .count(),
+        0,
+      );
+      await assetsToggle.click();
+      assert.equal(await assetsToggle.getAttribute("aria-expanded"), "true");
+      await position
+        .getByText("Cash and cash equivalents", { exact: true })
+        .waitFor();
+      await assetsToggle.click();
+      assert.equal(
+        await position
+          .getByText("Cash and cash equivalents", { exact: true })
+          .count(),
+        0,
+      );
+      const positionStyle = await position.evaluate((element) => {
+        const style = getComputedStyle(element);
+        return [style.backgroundColor, style.borderTopWidth, style.paddingTop];
+      });
+      assert.deepEqual(
+        positionStyle,
+        ["rgba(0, 0, 0, 0)", "0px", "0px"],
+        "Fund balances remain an unboxed sidebar section",
+      );
       assert.equal(
         await dialog.locator("#trust-fund-title").innerText(),
         "UN-HABITAT",
@@ -626,8 +703,14 @@ try {
   await (await spending2023).finished();
   await page.getByRole("button", { name: "ITC", exact: true }).click();
   await dialog
-    .getByText("International Trade Centre · 2023", { exact: true })
+    .getByText("International Trade Centre", { exact: true })
     .waitFor();
+  assert.equal(
+    await dialog
+      .getByRole("button", { name: "Select year", exact: true })
+      .innerText(),
+    "2023",
+  );
   const itc2023 = dialog.locator('[data-xb-contributor-panel="ITC"]');
   await itc2023
     .getByText(

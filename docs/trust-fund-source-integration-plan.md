@@ -53,8 +53,12 @@ Habitat describes funding segments
 
 ## Sidebar contract
 
-Each sidebar describes exactly one year, selected by the page control. The four
-new entity sidebars follow this order, omitting unavailable sections:
+Each sidebar describes exactly one year. Its header selector starts with the
+page year and then changes the sidebar independently, using the same pattern
+as System sidebars. Unavailable years show a notice instead of prior-year
+figures. Peacekeeping selectors show fiscal cycles such as 2024/25; calendar-year
+sources retain calendar labels. The four new entity sidebars follow this order,
+omitting unavailable sections:
 
 1. Expenditure and trend.
 2. Inline expandable fund groups/accounts or funding segments, using the shared
@@ -74,7 +78,13 @@ levels. Habitat retains qualified positions for its five reported funding
 segments in 2023–2024, before intersegment eliminations. UNODC pillar balances
 include regular-budget resources; ITC operating reserves alone are not a full
 fund financial position. Neither is replaced with whole-entity balances.
-Existing Volume I sidebar behavior remains intact.
+Existing Volume I fund identities and source amounts remain unchanged.
+
+Financial-position sections group asset, liability and net-asset balances in
+compact rows. Inline chevrons next to the total labels expand their components;
+source references remain available on each amount.
+The non-positive expenditure list is collapsed by default. Entity headings are
+shown for meaningful schedule groups while tiny groups remain tooltip-only.
 
 ## Contributor views
 
@@ -155,4 +165,5 @@ uv run python -m unittest discover -s python/tests
 uv run python python/test_budget_source_citations.py
 node tests/browser/trust-fund-sources.mjs
 node tests/browser/trust-fund-contributor-sources.mjs
+node tests/browser/secretariat-sidebar-years.mjs
 ```

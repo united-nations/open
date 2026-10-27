@@ -83,17 +83,9 @@ function ContributorTooltip({
       title={contributor.name}
       parents={[{ label: context.row.label, color: context.row.color }]}
       total={{
-        label: "Net amount in this category",
+        label: "Contributions and transfers",
         value: currency(flow.amount_usd),
       }}
-      notes={
-        <>
-          <p>
-            The sidebar combines this contributor’s contributions and transfers
-            across all categories.
-          </p>
-        </>
-      }
       actionHint="Click to explore details"
     />
   );

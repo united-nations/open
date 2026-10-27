@@ -15,6 +15,7 @@ import { Tooltip } from "@un-eosg/ui/components/tooltip";
 import { SourceReferenceList } from "@/components/SourceReferenceList";
 import { peacekeepingContributorSources } from "@/lib/peacekeepingSources";
 import { SidebarControls } from "@/components/SidebarControls";
+import { FiscalYearSelector } from "@/components/FiscalYearSelector";
 import { useContributorSidebarYear } from "@/hooks/useContributorSidebarYear";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import type {
@@ -116,15 +117,6 @@ export function PeacekeepingContributorSidebar({
           title={contributor.name}
           titleId="peacekeeping-contributor-title"
           subtitle={`Peacekeeping assessments · ${selection.year}/${String(selection.year + 1).slice(-2)}`}
-          yearSelectorPlacement="header"
-          yearSelector={{
-            years,
-            selected: selection.year,
-            onChange: selection.setYear,
-            label: "Select assessment cycle",
-            pending: selection.loading,
-            pendingLabel: "Loading…",
-          }}
           busy={selection.loading}
           notice={
             !ready
@@ -139,11 +131,21 @@ export function PeacekeepingContributorSidebar({
               : undefined
           }
           controls={
-            <SidebarControls
-              shareHash={`peacekeeping-contributor=${encodeURIComponent(contributor.name)}`}
-              onClose={close}
-              closeLabel="Close sidebar"
-            />
+            <>
+              <FiscalYearSelector
+                years={years}
+                selected={selection.year}
+                onChange={selection.setYear}
+                label="Select assessment cycle"
+                pending={selection.loading}
+                pendingLabel="Loading…"
+              />
+              <SidebarControls
+                shareHash={`peacekeeping-contributor=${encodeURIComponent(contributor.name)}`}
+                onClose={close}
+                closeLabel="Close sidebar"
+              />
+            </>
           }
           total={
             ready

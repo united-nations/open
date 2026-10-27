@@ -15,6 +15,7 @@ const checks = [
   "peacekeeping-stages",
   "secretariat-flows",
   "sidebar-years",
+  "secretariat-sidebar-years",
   "trust-fund-sources",
   "trust-fund-contributor-sources",
   "hydration",

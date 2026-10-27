@@ -89,6 +89,7 @@ import {
   budgetPartStyles,
   PART_BAND_COLORS,
   PART_SHORT_NAMES,
+  TRUST_FUND_SOURCE_COLORS,
 } from "@/lib/secretariatGroupings";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -172,11 +173,6 @@ type SharedBudgetRow = GroupedTreemapRow<
   SharedBudgetLeafData,
   BudgetFundingSource
 >;
-
-const TRUST_FUND_SOURCE_COLORS: Record<TrustFundSourceGroup, string> = {
-  volume_i: "var(--color-un-blue)",
-  separate_entities: "#31566e",
-};
 
 const EMPTY_ENTITY_PROJECTION: EntityProjection = {
   nodes: [],
@@ -1064,8 +1060,12 @@ export function BudgetTreemap({
         ? { ...node, values: { other_assessed: node.amount } }
         : node;
     });
-    return [...sourceNodes, ...entityProjection.sidebarNodes];
-  }, [data, dataset, entityProjection.sidebarNodes, isPko, metric]);
+    const fullSourceProjection =
+      data && isAlignedPpb && ppbGrouping === "entity"
+        ? buildEntityProjection({ ...data, nodes: sourceNodes })
+        : EMPTY_ENTITY_PROJECTION;
+    return [...sourceNodes, ...fullSourceProjection.sidebarNodes];
+  }, [data, dataset, isAlignedPpb, isPko, metric, ppbGrouping]);
   const sidebarById = useMemo(
     () =>
       Object.fromEntries(sidebarNodes.map((node) => [node.id, node])) as Record<
@@ -1623,7 +1623,14 @@ export function BudgetTreemap({
                   ? `${entity.entity?.acronym ?? entity.code ?? entity.label} ${formatBudget(entity.amount)}`
                   : (entity.entity?.acronym ?? entity.code ?? entity.label),
                 data: entity,
-                labelVisibility: "auto" as const,
+                // Keep small entities quiet, but label meaningful groups even
+                // when their treemap shape is too short for the default rule.
+                labelVisibility:
+                  entity.amount >= (group.amount ?? 0) * 0.0125
+                    ? isMobile
+                      ? ("auto" as const)
+                      : ("visible" as const)
+                    : ("tooltip-only" as const),
                 leaves,
               };
             })
@@ -1811,6 +1818,7 @@ export function BudgetTreemap({
     usesSharedTreemap,
     usesSharedTrustFundExpenses,
     trustFundSources,
+    isMobile,
   ]);
 
   const sharedSearchMatches = useCallback(
@@ -2477,13 +2485,13 @@ export function BudgetTreemap({
           accountingNodes.some(
             (item) => item.amount <= 0 && matchesAccountingNode(item),
           ) && (
-            <section
+            <details
               className="mt-4"
               aria-label="Funds with zero or negative expenditure"
             >
-              <h3 className="text-base font-semibold">
+              <summary className="w-fit cursor-pointer text-sm font-semibold">
                 Funds with zero or negative expenditure
-              </h3>
+              </summary>
               <p className="mt-1 mb-2 text-sm">
                 These funds have no positive area in the treemap. Select a fund
                 to explore its details.
@@ -2514,7 +2522,7 @@ export function BudgetTreemap({
                     </button>
                   ))}
               </div>
-            </section>
+            </details>
           )}
 
         {meta.scopeWarning &&
@@ -2533,6 +2541,14 @@ export function BudgetTreemap({
             hashPrefix={hashPrefix}
             dataset={dataset}
             years={years}
+            resolveYearNodes={
+              usesSharedProgrammeBudget && ppbGrouping === "entity"
+                ? (yearData) => [
+                    ...yearData.nodes,
+                    ...buildEntityProjection(yearData).sidebarNodes,
+                  ]
+                : undefined
+            }
             onClose={() => {
               setSelectedId(null);
               setPendingDeepLink(null);
