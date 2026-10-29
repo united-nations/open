@@ -194,6 +194,7 @@ export function RegularBudgetPaymentStatusTrends() {
           </div>
         ) : (
           <FinancingInstrumentChart
+            monetary={measure === "amount"}
             data={chartData}
             series={STATUS_SERIES.filter((item) => !hidden.includes(item.key))}
             showLegend={false}

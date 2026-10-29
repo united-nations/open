@@ -1,4 +1,6 @@
 "use client";
+import { useMoneyBasis } from "@/hooks/useMoneyBasis";
+import { MoneyBasisControl } from "@/components/charts/MoneyBasisControl";
 import { contributorYearAvailable } from "@/lib/revenueCoverage";
 import {
   TREND_CHART_HEIGHT,
@@ -299,6 +301,11 @@ export function ContributorTrendsChart() {
         }));
     }, [data, financingContributor]);
 
+  const compareMoney = useMoneyBasis(
+    chartData,
+    lines.map((line) => line.dataKey),
+  );
+
   // Controls depend on the asynchronously loaded contributor groups. Mount
   // them with the data so their generated IDs are not hydrated across a
   // changing sibling tree while the other contributor chart finishes loading.
@@ -323,7 +330,7 @@ export function ContributorTrendsChart() {
       {/* Charts container - grid for aligned columns */}
       <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-6">
         {/* Chart A: Compare contributors (line chart) */}
-        <div className="flex flex-col">
+        <div className="flex flex-col" data-money-chart>
           {/* Title and chips */}
           <div className="space-y-2 pb-3">
             <h4 className="text-sm font-medium text-gray-700">
@@ -338,6 +345,11 @@ export function ContributorTrendsChart() {
             />
           </div>
 
+          <MoneyBasisControl
+            basis={compareMoney.basis}
+            onChange={compareMoney.setBasis}
+            missingPeriods={compareMoney.missingPeriods}
+          />
           {/* Chart - mt-auto pushes to bottom of grid cell */}
           <div
             className="mt-auto w-full shrink-0"
@@ -353,7 +365,7 @@ export function ContributorTrendsChart() {
               </div>
             ) : (
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={chartData} margin={TREND_CHART_MARGIN}>
+                <LineChart data={compareMoney.data} margin={TREND_CHART_MARGIN}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                   <XAxis
                     dataKey="year"
@@ -372,7 +384,12 @@ export function ContributorTrendsChart() {
                     mirror
                   />
                   <Tooltip
-                    content={(props) => <FinancialChartTooltip {...props} />}
+                    content={(props) => (
+                      <FinancialChartTooltip
+                        {...props}
+                        unitLabel={compareMoney.unitLabel}
+                      />
+                    )}
                   />
                   {lines.map((line) => (
                     <Line
@@ -392,7 +409,7 @@ export function ContributorTrendsChart() {
         </div>
 
         {/* Chart B: Financing instruments (stacked area chart) */}
-        <div className="flex flex-col">
+        <div className="flex flex-col" data-money-chart>
           <div className="space-y-2 pb-3">
             <h4 className="text-sm font-medium text-gray-700">
               Revenue by financing instrument

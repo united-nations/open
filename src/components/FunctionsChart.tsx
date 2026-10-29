@@ -175,8 +175,8 @@ export function FunctionsTrendsChart() {
       />
       <p className="text-sm text-slate-600">
         Classification changes in 2018; earlier years retain legacy Other.
-        Values are nominal US dollars; reporting coverage can change between
-        years.
+        Nominal USD is the default; adjusted values use US CPI. Reporting
+        coverage can change between years.
       </p>
     </section>
   );

@@ -1,4 +1,7 @@
 "use client";
+import { useMoneyBasis } from "@/hooks/useMoneyBasis";
+import { MoneyBasisControl } from "@/components/charts/MoneyBasisControl";
+import { moneyAdjustmentFactor } from "@/lib/moneyBasis";
 import {
   TREND_CHART_HEIGHT,
   TREND_CHART_MARGIN,
@@ -109,11 +112,23 @@ export function RegularBudgetPaymentTimeline({
     };
   }, [data]);
 
+  const money = useMoneyBasis(
+    points.map((point) => ({ year: String(data.meta.year), ...point })),
+    ["amount"],
+    measure === "amount",
+  );
+  const factor =
+    money.basis === "adjusted" ? moneyAdjustmentFactor(data.meta.year) : 1;
   const sharedScale = usePaymentChartScale();
   const target =
-    measure === "count" ? data.contributors.length : data.meta.assessment_total;
+    measure === "count"
+      ? data.contributors.length
+      : factor === null
+        ? null
+        : data.meta.assessment_total * factor;
   const yAxisMax =
-    sharedScale?.scales?.[measure] ?? paymentScaleMaximum(target);
+    (money.basis === "nominal" ? sharedScale?.scales?.[measure] : undefined) ??
+    paymentScaleMaximum(target ?? 0);
   const finalPoint = points.at(-1);
   const gradientId = useId().replace(/:/g, "");
   const firstDate = points[0]?.date ?? dueDate;
@@ -124,7 +139,14 @@ export function RegularBudgetPaymentTimeline({
       : 1;
 
   return (
-    <div id="regular-budget-payment-timing">
+    <div id="regular-budget-payment-timing" data-money-chart>
+      {measure === "amount" && (
+        <MoneyBasisControl
+          basis={money.basis}
+          onChange={money.setBasis}
+          missingPeriods={money.missingPeriods}
+        />
+      )}
       <div
         className="w-full"
         style={{ height: TREND_CHART_HEIGHT }}
@@ -136,7 +158,7 @@ export function RegularBudgetPaymentTimeline({
         }
       >
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={points} margin={TREND_CHART_MARGIN}>
+          <AreaChart data={money.data} margin={TREND_CHART_MARGIN}>
             <defs>
               <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="0">
                 <stop
@@ -192,7 +214,7 @@ export function RegularBudgetPaymentTimeline({
               formatter={(value) => [
                 measure === "count"
                   ? `${Number(value)} Member States`
-                  : currency(Number(value)),
+                  : `${currency(Number(value))}${money.unitLabel ? ` (${money.unitLabel})` : ""}`,
                 "Listed as paid in full",
               ]}
             />
@@ -202,21 +224,23 @@ export function RegularBudgetPaymentTimeline({
               strokeDasharray="5 4"
               label={{ content: PaymentDeadlineLabel }}
             />
-            <ReferenceLine
-              y={target}
-              stroke="#374151"
-              strokeDasharray="5 4"
-              label={{
-                value:
-                  measure === "count"
-                    ? `All Member States: ${target}`
-                    : `Total assessed: ${currency(target)}`,
-                position: "insideTopRight",
-                dx: -55,
-                fill: "#374151",
-                fontSize: 11,
-              }}
-            />
+            {target !== null && (
+              <ReferenceLine
+                y={target}
+                stroke="#374151"
+                strokeDasharray="5 4"
+                label={{
+                  value:
+                    measure === "count"
+                      ? `All Member States: ${target}`
+                      : `Total assessed: ${currency(target)}`,
+                  position: "insideTopRight",
+                  dx: -55,
+                  fill: "#374151",
+                  fontSize: 11,
+                }}
+              />
+            )}
             <Area
               type="stepAfter"
               dataKey={measure === "count" ? "countries" : "amount"}

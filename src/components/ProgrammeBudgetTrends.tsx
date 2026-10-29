@@ -1,4 +1,6 @@
 "use client";
+import { useMoneyBasis } from "@/hooks/useMoneyBasis";
+import { MoneyBasisControl } from "@/components/charts/MoneyBasisControl";
 import manifest from "../../public/data/manifest.json";
 import {
   TREND_CHART_HEIGHT,
@@ -150,6 +152,11 @@ export function ProgrammeBudgetTrends() {
       .map(([, point]) => point);
   }, [datasets, selectedNode]);
 
+  const money = useMoneyBasis(
+    points ?? [],
+    METRICS.map((metric) => metric.key),
+  );
+
   const hasData = useMemo(
     () =>
       (points ?? []).some((point) =>
@@ -171,7 +178,7 @@ export function ProgrammeBudgetTrends() {
   if (datasets?.length === 0) return null;
 
   return (
-    <div className="mt-10 w-full lg:w-1/2 lg:pe-3">
+    <div className="mt-10 w-full lg:w-1/2 lg:pe-3" data-money-chart>
       <h3 className="mb-3 text-lg font-medium text-gray-900">
         Programme budget over time
       </h3>
@@ -201,6 +208,11 @@ export function ProgrammeBudgetTrends() {
           />
         ))}
       </div>
+      <MoneyBasisControl
+        basis={money.basis}
+        onChange={money.setBasis}
+        missingPeriods={money.missingPeriods}
+      />
       <div className="w-full" style={{ height: TREND_CHART_HEIGHT }}>
         {!hasData ? (
           <div className="flex h-full items-center justify-center text-sm text-gray-500">
@@ -215,7 +227,7 @@ export function ProgrammeBudgetTrends() {
           </div>
         ) : (
           <ResponsiveContainer width="100%" height="100%">
-            <LineChart data={points} margin={TREND_CHART_MARGIN}>
+            <LineChart data={money.data} margin={TREND_CHART_MARGIN}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
               <XAxis
                 dataKey="year"
@@ -234,11 +246,12 @@ export function ProgrammeBudgetTrends() {
                 mirror
               />
               <SourceAwareTrendTooltip
-                key={`${selectedNode}-${hiddenMetrics.join("|")}`}
+                key={`${money.basis}-${selectedNode}-${hiddenMetrics.join("|")}`}
                 interactive
                 content={(props) => (
                   <FinancialChartTooltip
                     {...props}
+                    unitLabel={money.unitLabel}
                     sources={(datasets ?? [])
                       .filter(
                         (row) =>

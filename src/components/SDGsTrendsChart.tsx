@@ -5,7 +5,6 @@ import {
   type FinancingSeries,
 } from "@/components/charts/FinancingInstrumentChart";
 import { SDG_EXTRA_GROUPS, type SDGExpensesData } from "@/lib/sdgs";
-import { formatBudget } from "@/lib/entities";
 import manifest from "../../public/data/manifest.json";
 
 const series: FinancingSeries[] = [
@@ -59,6 +58,7 @@ export async function SDGsTrendsChart() {
         Expenditure by SDG classification over time
       </h2>
       <FinancingInstrumentChart
+        accessibleTableLabel="Annual expenditure by SDG classification"
         data={data}
         series={series}
         height={240}
@@ -66,31 +66,6 @@ export async function SDGsTrendsChart() {
         showTooltipTotal
         allowNegative
       />
-      <table className="sr-only">
-        <caption>Annual expenditure by SDG classification, US dollars</caption>
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>SDG</th>
-            <th>Non-SDG</th>
-            <th>Not specified</th>
-            <th>Total</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((row) => (
-            <tr key={row.year}>
-              <th scope="row">{row.year}</th>
-              <td>{formatBudget(row.sdg)}</td>
-              <td>{formatBudget(row.non_sdg)}</td>
-              <td>{formatBudget(row.sdg_not_specified)}</td>
-              <td>
-                {formatBudget(row.sdg + row.non_sdg + row.sdg_not_specified)}
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
     </section>
   );
 }

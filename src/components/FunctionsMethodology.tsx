@@ -17,9 +17,10 @@ export function FunctionsMethodology() {
       <p>
         The current four-function classification began in 2018. Earlier years
         retain the separate legacy Other category, so comparisons across 2018
-        involve a classification change. Amounts are nominal US dollars; changes
-        in reporting coverage and entities’ allocations can affect comparisons.
-        Inter-agency transfers are not eliminated.
+        involve a classification change. Amounts default to nominal US dollars;
+        the adjusted view uses a US consumer-price proxy, not a UN cost index.
+        Changes in reporting coverage and entities’ allocations can affect
+        comparisons. Inter-agency transfers are not eliminated.
       </p>
       <p>
         Function totals use CEB entities without Secretariat sub-entity fusion.

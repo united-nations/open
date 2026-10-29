@@ -1,4 +1,7 @@
 "use client";
+import { useMoneyBasis } from "@/hooks/useMoneyBasis";
+import { MoneyBasisControl } from "@/components/charts/MoneyBasisControl";
+import type { MonetaryPoint } from "@/lib/moneyBasis";
 import { useState } from "react";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 import { TREND_CHART_MARGIN } from "@/components/charts/trendLayout";
@@ -15,7 +18,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-export interface EntityTrendDataPoint {
+export interface EntityTrendDataPoint extends MonetaryPoint {
   year: string;
   revenue: number | null;
   expenses: number | null;
@@ -34,6 +37,7 @@ export function EntityTrendChart({
   height = 180,
   compact = true,
 }: EntityTrendChartProps) {
+  const money = useMoneyBasis(data, ["revenue", "expenses"]);
   const [visible, setVisible] = useState({ revenue: true, expenses: true });
 
   if (data.length === 0) return null;
@@ -45,7 +49,12 @@ export function EntityTrendChart({
   if (validData.length === 0) return null;
 
   return (
-    <div className="w-full">
+    <div className="w-full" data-money-chart>
+      <MoneyBasisControl
+        basis={money.basis}
+        onChange={money.setBasis}
+        missingPeriods={money.missingPeriods}
+      />
       <div
         className="mb-2 flex flex-wrap gap-2"
         role="group"
@@ -70,7 +79,7 @@ export function EntityTrendChart({
       </div>
       <div style={{ height }}>
         <ResponsiveContainer width="100%" height="100%">
-          <LineChart data={validData} margin={TREND_CHART_MARGIN}>
+          <LineChart data={money.data} margin={TREND_CHART_MARGIN}>
             <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
             <XAxis
               dataKey="year"
@@ -94,7 +103,9 @@ export function EntityTrendChart({
               mirror
             />
             <RechartsTooltip
-              content={(props) => <FinancialChartTooltip {...props} />}
+              content={(props) => (
+                <FinancialChartTooltip {...props} unitLabel={money.unitLabel} />
+              )}
             />
             <Line
               type="monotone"
@@ -105,7 +116,7 @@ export function EntityTrendChart({
               strokeWidth={2}
               dot={false}
               activeDot={{ r: 3, strokeWidth: 0 }}
-              connectNulls
+              connectNulls={false}
             />
             <Line
               type="monotone"
@@ -116,7 +127,7 @@ export function EntityTrendChart({
               strokeWidth={2}
               dot={false}
               activeDot={{ r: 3, strokeWidth: 0 }}
-              connectNulls
+              connectNulls={false}
             />
           </LineChart>
         </ResponsiveContainer>
