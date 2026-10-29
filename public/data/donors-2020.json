@@ -19989,7 +19989,7 @@
     },
     "is_other": true
   },
-  "Other Private": {
+  "Private Donors / Private Sector": {
     "status": "organization",
     "category": "Private Sector",
     "contributions": {
@@ -20006,7 +20006,7 @@
         "Voluntary earmarked": 10265679.219999999
       },
       "ITU": {
-        "Assessed": 18627527.74
+        "Assessed": 18176608.15
       },
       "PAHO": {
         "Voluntary earmarked": 3000.0
@@ -20015,14 +20015,8 @@
         "Voluntary un-earmarked": 984457.8300000001,
         "Voluntary earmarked": 162912.85999999975
       },
-      "UN-Habitat": {
-        "Voluntary earmarked": -18049.699999999983
-      },
       "UNESCO": {
         "Voluntary earmarked": 7294751.0
-      },
-      "UNFPA": {
-        "Voluntary un-earmarked": 517555.15
       },
       "UNHCR": {
         "Voluntary un-earmarked": 256400581.26000002,
@@ -20030,12 +20024,6 @@
       },
       "UNODC": {
         "Voluntary earmarked": 463.0
-      },
-      "UNRWA": {
-        "Voluntary earmarked": 5125051.68
-      },
-      "UNU": {
-        "Voluntary earmarked": 53689.0
       },
       "WFP": {
         "Voluntary earmarked": 160776.88
@@ -20264,6 +20252,16 @@
       }
     }
   },
+  "Private Donors / Private Sector \u2014 Academic": {
+    "status": "organization",
+    "category": "Academic",
+    "contributions": {
+      "ITU": {
+        "Assessed": 450919.59
+      }
+    },
+    "is_other": true
+  },
   "Puerto Rico": {
     "status": "nonmember",
     "category": "Government",
@@ -20396,6 +20394,25 @@
       }
     }
   },
+  "Private Donors / Private Sector \u2014 Other Contributors": {
+    "status": "organization",
+    "category": "Other Contributors",
+    "contributions": {
+      "UN-Habitat": {
+        "Voluntary earmarked": -18049.699999999983
+      },
+      "UNFPA": {
+        "Voluntary un-earmarked": 517555.15
+      },
+      "UNRWA": {
+        "Voluntary earmarked": 3079002.5599999996
+      },
+      "UNU": {
+        "Voluntary earmarked": 53689.0
+      }
+    },
+    "is_other": true
+  },
   "American Samoa": {
     "status": "nonmember",
     "category": "Government",
@@ -20467,6 +20484,16 @@
         "Voluntary earmarked": 431467596.9
       }
     }
+  },
+  "Private Donors / Private Sector \u2014 NGOs": {
+    "status": "organization",
+    "category": "NGOs",
+    "contributions": {
+      "UNRWA": {
+        "Voluntary earmarked": 2046049.12
+      }
+    },
+    "is_other": true
   },
   "French Polynesia": {
     "status": "nonmember",

@@ -23449,7 +23449,7 @@
     },
     "is_other": true
   },
-  "Other Private": {
+  "Private Donors / Private Sector": {
     "status": "organization",
     "category": "Private Sector",
     "contributions": {
@@ -23474,9 +23474,8 @@
         "Voluntary un-earmarked": 6000.0
       },
       "ITU": {
-        "Assessed": 19849039.0,
-        "Voluntary earmarked": 4998687.909999999,
-        "Other": 34840112.68
+        "Assessed": 19407073.67,
+        "Voluntary earmarked": 4817944.6899999995
       },
       "PAHO": {
         "Voluntary earmarked": 42201.0
@@ -23791,6 +23790,18 @@
         "Assessed": 31771.39762
       }
     }
+  },
+  "Private Donors / Private Sector \u2014 Academic": {
+    "status": "organization",
+    "category": "Academic",
+    "contributions": {
+      "ITU": {
+        "Assessed": 441965.33,
+        "Voluntary earmarked": 180743.22,
+        "Other": 34840112.68
+      }
+    },
+    "is_other": true
   },
   "Puerto Rico": {
     "status": "nonmember",

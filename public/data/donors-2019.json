@@ -19889,9 +19889,9 @@
       }
     }
   },
-  "Other Private": {
+  "Private Donors / Private Sector": {
     "status": "organization",
-    "category": "Other Contributors",
+    "category": "Private Sector",
     "contributions": {
       "IAEA": {
         "Voluntary earmarked": 956470.87
@@ -19917,9 +19917,6 @@
       "UNHCR": {
         "Voluntary un-earmarked": 242159611.3,
         "Voluntary earmarked": 183241531.78
-      },
-      "UNU": {
-        "Voluntary earmarked": 90154.0
       }
     },
     "is_other": true
@@ -20338,6 +20335,16 @@
         "Voluntary earmarked": 1382452.0
       }
     }
+  },
+  "Private Donors / Private Sector \u2014 Other Contributors": {
+    "status": "organization",
+    "category": "Other Contributors",
+    "contributions": {
+      "UNU": {
+        "Voluntary earmarked": 90154.0
+      }
+    },
+    "is_other": true
   },
   "Taiwan (Province of China)": {
     "status": "nonmember",

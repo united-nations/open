@@ -289,9 +289,18 @@
       "Other Multilateral - UN Pooled Funds",
       "Other NGOs",
       "Other Other Contributors",
-      "Other Private",
       "Other Private Sector",
       "Other Public Private Partnership",
+      "Private Donors / Private Sector",
+      "Private Donors / Private Sector \u2014 Academic",
+      "Private Donors / Private Sector \u2014 Foundations",
+      "Private Donors / Private Sector \u2014 Multilateral - Global Funds",
+      "Private Donors / Private Sector \u2014 Multilateral - Other",
+      "Private Donors / Private Sector \u2014 Multilateral - UN Orgs",
+      "Private Donors / Private Sector \u2014 NGOs",
+      "Private Donors / Private Sector \u2014 No Contributor",
+      "Private Donors / Private Sector \u2014 Non-Government",
+      "Private Donors / Private Sector \u2014 Other Contributors",
       "Project Hope",
       "Refunds to donors/Miscellaneous",
       "Resolve to Save Lives",
@@ -333,7 +342,7 @@
       "Academic": [
         "Instituto Todos pela Saude/All for Health Institute",
         "Other Academic",
-        "Other Private",
+        "Private Donors / Private Sector \u2014 Academic",
         "St Jude Childrens Research Hospital (USA)",
         "University (College) of the West Indies",
         "University of Geneva"
@@ -351,7 +360,7 @@
         "Ford Foundation",
         "Fred Hollows Foundation (FHF)",
         "Other Foundations",
-        "Other Private",
+        "Private Donors / Private Sector \u2014 Foundations",
         "Project Hope",
         "Robert Wood Johnson Foundation",
         "THE END FUND",
@@ -365,7 +374,7 @@
         "Global Partnership for Education",
         "Green Climate Fund",
         "Other Multilateral - Global Funds",
-        "Other Private",
+        "Private Donors / Private Sector \u2014 Multilateral - Global Funds",
         "The Global Fund to Fight AIDS, Tuberculosis and Malaria"
       ],
       "Multilateral - IFIs": [
@@ -378,7 +387,7 @@
         "Multi Donor Trust Funds",
         "ORAS-CONHU",
         "Other Multilateral - Other",
-        "Other Private",
+        "Private Donors / Private Sector \u2014 Multilateral - Other",
         "The Caribbean Public Health Agency/(CARPHA)"
       ],
       "Multilateral - UN Orgs": [
@@ -387,7 +396,7 @@
         "Multi Donor Trust Funds",
         "Multi Partner Trust Fund Office",
         "Other Multilateral - UN Orgs",
-        "Other Private",
+        "Private Donors / Private Sector \u2014 Multilateral - UN Orgs",
         "The Joint United Nations Programme on HIV/AIDS",
         "UN OCHA",
         "UN RESIDENT COORDINATOR'S OFFICE",
@@ -417,7 +426,7 @@
         "Latin American Federation of the Pharmaceutical Industry (FIFARMA)",
         "Multi Donor Trust Funds",
         "Other NGOs",
-        "Other Private",
+        "Private Donors / Private Sector \u2014 NGOs",
         "Resolve to Save Lives",
         "TFK",
         "THE TASK FORCE FOR GLOBAL HEALTH (TFGH)",
@@ -429,13 +438,13 @@
         "Vital Strategies"
       ],
       "No Contributor": [
-        "Other Private",
+        "Private Donors / Private Sector \u2014 No Contributor",
         "Revenue from Activities"
       ],
       "Non-Government": [
         "Multi Donor Trust Funds",
         "Multilateral Fund Secretariat in Montreal",
-        "Other Private",
+        "Private Donors / Private Sector \u2014 Non-Government",
         "Rotary International",
         "The Global Fund to Fight AIDS, Tuberculosis and Malaria"
       ],
@@ -447,11 +456,11 @@
       "Other Contributors": [
         "Multi Partner Trust Fund Office",
         "Other Other Contributors",
-        "Other Private"
+        "Private Donors / Private Sector \u2014 Other Contributors"
       ],
       "Private Sector": [
-        "Other Private",
         "Other Private Sector",
+        "Private Donors / Private Sector",
         "Sony Music Entertainment",
         "The Church of Jesus Christ of Latter-day Saints"
       ],
@@ -27076,130 +27085,6 @@
         "total": -263245485.40175498
       }
     ],
-    "Other Private": [
-      {
-        "year": 2011,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2012,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0,
-        "available": false
-      },
-      {
-        "year": 2013,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2014,
-        "assessed": 0,
-        "voluntary_earmarked": 0,
-        "voluntary_unearmarked": 0,
-        "other": 0,
-        "total": 0
-      },
-      {
-        "year": 2015,
-        "assessed": 0,
-        "voluntary_earmarked": 1077575859.4399998,
-        "voluntary_unearmarked": 21163594.45,
-        "other": 0,
-        "total": 1098739453.8899999
-      },
-      {
-        "year": 2016,
-        "assessed": 0,
-        "voluntary_earmarked": 504046723.52000016,
-        "voluntary_unearmarked": 0,
-        "other": 865979.0,
-        "total": 504912702.52000016
-      },
-      {
-        "year": 2017,
-        "assessed": 0,
-        "voluntary_earmarked": 192076320.04,
-        "voluntary_unearmarked": 24344484.0,
-        "other": 404224.0,
-        "total": 216825028.04
-      },
-      {
-        "year": 2018,
-        "assessed": 16449331.22,
-        "voluntary_earmarked": 187216220.42000002,
-        "voluntary_unearmarked": 229847865.78,
-        "other": 0,
-        "total": 433513417.4200001
-      },
-      {
-        "year": 2019,
-        "assessed": 0,
-        "voluntary_earmarked": 193476258.71,
-        "voluntary_unearmarked": 242389227.29000002,
-        "other": 0,
-        "total": 435865486.0
-      },
-      {
-        "year": 2020,
-        "assessed": 18627527.74,
-        "voluntary_earmarked": 310364960.48999983,
-        "voluntary_unearmarked": 257989736.57000002,
-        "other": 0,
-        "total": 586982224.7999998
-      },
-      {
-        "year": 2021,
-        "assessed": 17531818.36,
-        "voluntary_earmarked": 408117608.62000006,
-        "voluntary_unearmarked": 123334955.00000004,
-        "other": 69679168.21000001,
-        "total": 618663550.1899997
-      },
-      {
-        "year": 2022,
-        "assessed": 19849039.0,
-        "voluntary_earmarked": 794702336.1,
-        "voluntary_unearmarked": 147803415.95,
-        "other": 171671752.68,
-        "total": 1134026543.73
-      },
-      {
-        "year": 2023,
-        "assessed": 19812585.63,
-        "voluntary_earmarked": 498893902.8,
-        "voluntary_unearmarked": 149411479.38,
-        "other": 107858786.06,
-        "total": 775976753.8700001
-      },
-      {
-        "year": 2024,
-        "assessed": 0,
-        "voluntary_earmarked": 247039605.20999998,
-        "voluntary_unearmarked": 203161418.11,
-        "other": 124528373.15,
-        "total": 574729396.47
-      },
-      {
-        "year": 2025,
-        "assessed": 21784537.3891,
-        "voluntary_earmarked": 355092114.6159259,
-        "voluntary_unearmarked": 155009426.287058,
-        "other": 307888017.303864,
-        "total": 839774095.5959477
-      }
-    ],
     "Other Private Sector": [
       {
         "year": 2011,
@@ -28562,6 +28447,1246 @@
         "voluntary_unearmarked": 5616161.35,
         "other": 575838.45,
         "total": 67763538.82391183
+      }
+    ],
+    "Private Donors / Private Sector": [
+      {
+        "year": 2011,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2012,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 16449331.22,
+        "voluntary_earmarked": 164649762.86999997,
+        "voluntary_unearmarked": 228407506.70000002,
+        "other": 0,
+        "total": 409506600.79
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 193386104.71,
+        "voluntary_unearmarked": 242389227.29000002,
+        "other": 0,
+        "total": 435775332.0
+      },
+      {
+        "year": 2020,
+        "assessed": 18176608.15,
+        "voluntary_earmarked": 305204269.5099999,
+        "voluntary_unearmarked": 257472181.42000002,
+        "other": 0,
+        "total": 580853059.0799999
+      },
+      {
+        "year": 2021,
+        "assessed": 17531818.36,
+        "voluntary_earmarked": 407772350.07000005,
+        "voluntary_unearmarked": 123334955.00000004,
+        "other": 69559471.21000001,
+        "total": 618198594.6399997
+      },
+      {
+        "year": 2022,
+        "assessed": 19407073.67,
+        "voluntary_earmarked": 794521592.88,
+        "voluntary_unearmarked": 147803415.95,
+        "other": 136831640.0,
+        "total": 1098563722.5
+      },
+      {
+        "year": 2023,
+        "assessed": 19318487.43,
+        "voluntary_earmarked": 498962893.8,
+        "voluntary_unearmarked": 149411479.38,
+        "other": 52249425.239999995,
+        "total": 719942285.85
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 241299206.20999998,
+        "voluntary_unearmarked": 203161418.11,
+        "other": 124526113.15,
+        "total": 568986737.47
+      },
+      {
+        "year": 2025,
+        "assessed": 21784537.3891,
+        "voluntary_earmarked": 355092114.6159259,
+        "voluntary_unearmarked": 155009426.287058,
+        "other": 307888017.303864,
+        "total": 839774095.5959477
+      }
+    ],
+    "Private Donors / Private Sector \u2014 Academic": [
+      {
+        "year": 2011,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2012,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 59136.0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 59136.0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 450919.59,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 450919.59
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2022,
+        "assessed": 441965.33,
+        "voluntary_earmarked": 180743.22,
+        "voluntary_unearmarked": 0,
+        "other": 34840112.68,
+        "total": 35462821.23
+      },
+      {
+        "year": 2023,
+        "assessed": 494098.2,
+        "voluntary_earmarked": -6126.0,
+        "voluntary_unearmarked": 0,
+        "other": 40892215.57,
+        "total": 41380187.77
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      }
+    ],
+    "Private Donors / Private Sector \u2014 Foundations": [
+      {
+        "year": 2011,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2012,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 1271341.78,
+        "voluntary_unearmarked": 906389.0199999999,
+        "other": 0,
+        "total": 2177730.8
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 1283599.0,
+        "voluntary_unearmarked": 0,
+        "other": 609.0,
+        "total": 1284208.0
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      }
+    ],
+    "Private Donors / Private Sector \u2014 Multilateral - Global Funds": [
+      {
+        "year": 2011,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2012,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 1200000.0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 1200000.0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      }
+    ],
+    "Private Donors / Private Sector \u2014 Multilateral - Other": [
+      {
+        "year": 2011,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2012,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 495382.0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 495382.0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": -62865.0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": -62865.0
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      }
+    ],
+    "Private Donors / Private Sector \u2014 Multilateral - UN Orgs": [
+      {
+        "year": 2011,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2012,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 51108.15,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 51108.15
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      }
+    ],
+    "Private Donors / Private Sector \u2014 NGOs": [
+      {
+        "year": 2011,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2012,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 19489489.619999997,
+        "voluntary_unearmarked": 477080.06,
+        "other": 0,
+        "total": 19966569.679999996
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 2046049.12,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 2046049.12
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 145976.55,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 145976.55
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 4456800.0,
+        "voluntary_unearmarked": 0,
+        "other": 1651.0,
+        "total": 4458451.0
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      }
+    ],
+    "Private Donors / Private Sector \u2014 No Contributor": [
+      {
+        "year": 2011,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2012,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 14717177.25,
+        "total": 14717177.25
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      }
+    ],
+    "Private Donors / Private Sector \u2014 Non-Government": [
+      {
+        "year": 2011,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2012,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 1077575859.4399998,
+        "voluntary_unearmarked": 21163594.45,
+        "other": 0,
+        "total": 1098739453.8899999
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 504046723.52000016,
+        "voluntary_unearmarked": 0,
+        "other": 865979.0,
+        "total": 504912702.52000016
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 192076320.04,
+        "voluntary_unearmarked": 24344484.0,
+        "other": 404224.0,
+        "total": 216825028.04
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      }
+    ],
+    "Private Donors / Private Sector \u2014 Other Contributors": [
+      {
+        "year": 2011,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2012,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0,
+        "available": false
+      },
+      {
+        "year": 2013,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2014,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2015,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2016,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2017,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2018,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 56890.0,
+        "other": 0,
+        "total": 56890.0
+      },
+      {
+        "year": 2019,
+        "assessed": 0,
+        "voluntary_earmarked": 90154.0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 90154.0
+      },
+      {
+        "year": 2020,
+        "assessed": 0,
+        "voluntary_earmarked": 3114641.8599999994,
+        "voluntary_unearmarked": 517555.15,
+        "other": 0,
+        "total": 3632197.01
+      },
+      {
+        "year": 2021,
+        "assessed": 0,
+        "voluntary_earmarked": 199282.0,
+        "voluntary_unearmarked": 0,
+        "other": 119697.0,
+        "total": 318979.0
+      },
+      {
+        "year": 2022,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2023,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": -32.0,
+        "total": -32.0
+      },
+      {
+        "year": 2024,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
+      },
+      {
+        "year": 2025,
+        "assessed": 0,
+        "voluntary_earmarked": 0,
+        "voluntary_unearmarked": 0,
+        "other": 0,
+        "total": 0
       }
     ],
     "Project Hope": [

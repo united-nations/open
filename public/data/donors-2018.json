@@ -19176,7 +19176,7 @@
       }
     }
   },
-  "Other Private": {
+  "Private Donors / Private Sector": {
     "status": "organization",
     "category": "Private Sector",
     "contributions": {
@@ -19193,9 +19193,6 @@
       "ICC": {
         "Voluntary earmarked": 92.47
       },
-      "IFAD": {
-        "Voluntary earmarked": 1200000.0
-      },
       "IOM": {
         "Voluntary earmarked": 126939.09
       },
@@ -19203,34 +19200,25 @@
         "Assessed": 16449331.22
       },
       "UN Secretariat": {
-        "Voluntary earmarked": 1489981.55
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 13029379.27
+        "Voluntary earmarked": 1157764.55
       },
       "UNDP": {
         "Voluntary un-earmarked": 427580.43,
         "Voluntary earmarked": 56.0
       },
       "UNEP": {
-        "Voluntary earmarked": 5847938.3
-      },
-      "UNFPA": {
-        "Voluntary un-earmarked": 56890.0
+        "Voluntary earmarked": 2879831.6699999995
       },
       "UNHCR": {
         "Voluntary un-earmarked": 225729931.47000003,
         "Voluntary earmarked": 158988301.02999997
       },
-      "UNODC": {
-        "Voluntary earmarked": 51108.15
-      },
       "UNU": {
         "Voluntary earmarked": 103266.0
       },
       "WFP": {
-        "Voluntary un-earmarked": 3362554.1399999997,
-        "Voluntary earmarked": 6278720.430000001
+        "Voluntary un-earmarked": 1979085.06,
+        "Voluntary earmarked": 1293073.93
       }
     },
     "is_other": true
@@ -19345,6 +19333,16 @@
         "Voluntary earmarked": 677625.0
       }
     }
+  },
+  "Private Donors / Private Sector \u2014 Multilateral - Global Funds": {
+    "status": "organization",
+    "category": "Multilateral - Global Funds",
+    "contributions": {
+      "IFAD": {
+        "Voluntary earmarked": 1200000.0
+      }
+    },
+    "is_other": true
   },
   "Kosovo": {
     "status": "nonmember",
@@ -19475,6 +19473,16 @@
       }
     }
   },
+  "Private Donors / Private Sector \u2014 Academic": {
+    "status": "organization",
+    "category": "Academic",
+    "contributions": {
+      "UN Secretariat": {
+        "Voluntary earmarked": 59136.0
+      }
+    },
+    "is_other": true
+  },
   "Montserrat": {
     "status": "nonmember",
     "category": "Government",
@@ -19507,6 +19515,26 @@
         "Assessed": 13137.04
       }
     }
+  },
+  "Private Donors / Private Sector \u2014 NGOs": {
+    "status": "organization",
+    "category": "NGOs",
+    "contributions": {
+      "UN Secretariat": {
+        "Voluntary earmarked": 273081.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 13029379.27
+      },
+      "UNEP": {
+        "Voluntary earmarked": 2478124.63
+      },
+      "WFP": {
+        "Voluntary un-earmarked": 477080.06,
+        "Voluntary earmarked": 3708904.72
+      }
+    },
+    "is_other": true
   },
   "USA National Committee": {
     "status": "organization",
@@ -19549,6 +19577,20 @@
       }
     }
   },
+  "Private Donors / Private Sector \u2014 Foundations": {
+    "status": "organization",
+    "category": "Foundations",
+    "contributions": {
+      "UNEP": {
+        "Voluntary earmarked": -5400.0
+      },
+      "WFP": {
+        "Voluntary un-earmarked": 906389.0199999999,
+        "Voluntary earmarked": 1276741.78
+      }
+    },
+    "is_other": true
+  },
   "Anguilla": {
     "status": "nonmember",
     "category": "Government",
@@ -19582,6 +19624,16 @@
       }
     }
   },
+  "Private Donors / Private Sector \u2014 Multilateral - Other": {
+    "status": "organization",
+    "category": "Multilateral - Other",
+    "contributions": {
+      "UNEP": {
+        "Voluntary earmarked": 495382.0
+      }
+    },
+    "is_other": true
+  },
   "Sint Maarten (Dutch part)": {
     "status": "nonmember",
     "category": "Government",
@@ -19603,6 +19655,16 @@
       }
     }
   },
+  "Private Donors / Private Sector \u2014 Other Contributors": {
+    "status": "organization",
+    "category": "Other Contributors",
+    "contributions": {
+      "UNFPA": {
+        "Voluntary un-earmarked": 56890.0
+      }
+    },
+    "is_other": true
+  },
   "American Samoa": {
     "status": "nonmember",
     "category": "Government",
@@ -19611,6 +19673,16 @@
         "Voluntary un-earmarked": 3000.0
       }
     }
+  },
+  "Private Donors / Private Sector \u2014 Multilateral - UN Orgs": {
+    "status": "organization",
+    "category": "Multilateral - UN Orgs",
+    "contributions": {
+      "UNODC": {
+        "Voluntary earmarked": 51108.15
+      }
+    },
+    "is_other": true
   },
   "French Polynesia": {
     "status": "nonmember",

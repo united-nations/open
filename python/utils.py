@@ -31,6 +31,9 @@ ENTITY_MAPPING = {
     "UNROD": "UNRoD",
 }
 
+# Reported generic donor bucket; distinct from calculated Other Private Sector.
+PRIVATE_DONOR_LABEL = "Private Donors / Private Sector"
+
 # Donor name normalization - map variants to canonical names
 DONOR_MAPPING = {
     # Country accent/case/format variations
@@ -63,9 +66,9 @@ DONOR_MAPPING = {
     "The World Bank Group": "World Bank",
     "World Bank Group": "World Bank",
     "Multi Donor trust funds": "Multi Donor Trust Funds",
-    "Private Donors": "Other Private",
-    "Private donor": "Other Private",
-    "Private Sector": "Other Private",
+    "Private Donors": PRIVATE_DONOR_LABEL,
+    "Private donor": PRIVATE_DONOR_LABEL,
+    "Private Sector": PRIVATE_DONOR_LABEL,
     "United Nations Development Programme": "UNDP (as donor)",
     "United Nations Secretariat Office for the Coordination of Humanitarian Affairs": "UN OCHA",
 }
@@ -73,7 +76,7 @@ DONOR_MAPPING = {
 # Generic bucket donors - mark as is_other=True (aggregated, not specific donors)
 GENERIC_DONORS = {
     "MISC",  # CEB government correction bucket; retain source category and sign.
-    "Other Private",  # Consolidated from Private Donors/donor/Sector
+    PRIVATE_DONOR_LABEL,  # Reported aggregate, not a calculated remainder.
     "Multi Donor Trust Funds",
     "Multi Partner Trust Fund Office",
     "UNDP Administered Trust Funds",

@@ -22930,7 +22930,7 @@
     },
     "is_other": true
   },
-  "Other Private": {
+  "Private Donors / Private Sector": {
     "status": "organization",
     "category": "Private Sector",
     "contributions": {
@@ -23011,13 +23011,9 @@
         "Other": 60535.0
       },
       "UNRWA": {
-        "Voluntary earmarked": 4568482.840000001,
         "Voluntary un-earmarked": 2545820.06,
+        "Voluntary earmarked": 4422506.29,
         "Other": 22992469.0
-      },
-      "UNU": {
-        "Voluntary earmarked": 199282.0,
-        "Other": 119697.0
       },
       "WFP": {
         "Voluntary un-earmarked": 1984326.9199999997,
@@ -23546,6 +23542,27 @@
         "Voluntary earmarked": 449023916.86
       }
     }
+  },
+  "Private Donors / Private Sector \u2014 NGOs": {
+    "status": "organization",
+    "category": "NGOs",
+    "contributions": {
+      "UNRWA": {
+        "Voluntary earmarked": 145976.55
+      }
+    },
+    "is_other": true
+  },
+  "Private Donors / Private Sector \u2014 Other Contributors": {
+    "status": "organization",
+    "category": "Other Contributors",
+    "contributions": {
+      "UNU": {
+        "Voluntary earmarked": 199282.0,
+        "Other": 119697.0
+      }
+    },
+    "is_other": true
   },
   "French Polynesia": {
     "status": "nonmember",

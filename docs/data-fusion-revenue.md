@@ -85,7 +85,7 @@ File: `data/ceb/fused/revenue_by_contributor.csv`
 | `donor_type` | Category name (Government, Foundations, etc.) |
 | `donor_name` | Specific donor name or "Other {Category}" |
 | `amount` | Amount in USD |
-| `is_other` | True if calculated remainder (not a specific named donor) |
+| `is_other` | True for calculated remainders and reported generic aggregates (not specific named donors) |
 
 ## Known Limitations
 
@@ -101,7 +101,7 @@ File: `data/ceb/fused/revenue_by_contributor.csv`
 
 5. **Category misclassifications**: Some donors appear with incorrect C-codes in the source data. `DONOR_CATEGORY_OVERRIDES` in `utils.py` fixes known cases (e.g., Bill & Melinda Gates Foundation → Foundations, European Union → EU).
 
-6. **Generic bucket donors**: Entries like "Private Sector", "Private Donors" are aggregated catch-all buckets, not specific donors. These are marked as `is_other=True` via `GENERIC_DONORS` in `utils.py`.
+6. **Generic bucket donors**: CEB uses "Private Donors" (2015–2021, 2023–2024), "Private donor" (2022), and "Private Sector" (2025) for reported generic donor records. Normalize these to **Private Donors / Private Sector**, preserving the original labels in the raw/clean source files. These records remain `is_other=True` (aggregated, not named donors), independently of their display wording. The common label alone does not establish contributor type: CEB also uses it for NGOs, Foundations, and other categories. For non-C06 records, append ` — {reported category}` (or ` — Non-Government` where the source type is unknown), so name-keyed donor exports and trends retain separate identities and categories. Do not reclassify these records as C06. **Other Private Sector** remains the separate calculated C06 balance after subtracting all reported C06 donor amounts, including the reported generic bucket.
 
 ### Coverage Gaps
 

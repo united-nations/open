@@ -10,7 +10,7 @@ from pathlib import Path
 from revenue_categories import rev_category
 from ceb_data import revenue_controls, resolve_reporting_entities
 from utils import normalize_entity
-from utils import clean_donor_name, NON_GOVERNMENT_DONORS, GENERIC_DONORS, DONOR_CATEGORY_OVERRIDES
+from utils import clean_donor_name, NON_GOVERNMENT_DONORS, GENERIC_DONORS, DONOR_CATEGORY_OVERRIDES, PRIVATE_DONOR_LABEL
 
 ceb = Path("data/ceb")
 clean, fused = ceb / "clean", ceb / "fused"
@@ -69,6 +69,11 @@ def get_donor_info(donor_name: str, contrib_code: str | None, code_to_name: dict
         code = contrib_code
     
     dtype = code_to_name.get(code, "Non-Government") if code else "Non-Government"
+    # CEB also uses these generic labels outside C06. Exports are keyed by
+    # donor name, so keep those source categories separate from the C06 bucket.
+    # Use a visible qualifier: the frontend strips parenthetical display text.
+    if name == PRIVATE_DONOR_LABEL and code != "C06":
+        name = f"{name} — {dtype}"
     return name, code or "Unknown", dtype, is_other
 
 def fuse_revenue():
