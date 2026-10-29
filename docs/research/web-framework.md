@@ -1,5 +1,7 @@
 # UN Transparency Portal (open.un.org) - Technical Analysis
 
+> **Historical document — current CEB policy:** This document retains the findings, source vintage or design proposals of its original investigation. It is not the current CEB transformation contract. See [CEB methodology](../ceb-methodology.md) and the current source register/manifest for active rules and coverage.
+
 ## Executive Summary
 
 The UN Transparency Portal at **open.un.org** is a specialized data visualization gateway that presents financial transparency information for the UN System and UN Secretariat. It is built on Drupal CMS and integrates with the main UN website (un.org) through standardized header/footer components while maintaining its own custom page content and data dashboards.

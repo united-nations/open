@@ -1,21 +1,5 @@
 code,name,category,description
-R01,Assessed contributions,Assessed,Fixed contributions based on agreed formula
-R02A,Voluntary untied,Voluntary un-earmarked,Voluntary core contributions without restrictions
-R02B,In-kind untied,Voluntary un-earmarked,In-kind core contributions without restrictions
-R03A,UN pooled funds,Voluntary earmarked,UN inter-agency pooled funds
-R03B,Thematic funds,Voluntary earmarked,Single-agency thematic funds
-R03C,Global vertical funds,Voluntary earmarked,Revenue from global vertical funds (GEF/GAVI/etc)
-R03D,Local resources,Voluntary earmarked,Programme country government contributions
-R03E,Project specific,Voluntary earmarked,Project/programme specific contributions
-R03F,In-kind earmarked,Voluntary earmarked,In-kind earmarked contributions
-R04A,Other - internal,Other,Other revenue specific to UN entity
-R04B,Other - UN,Other,Other revenue from other UN entities
-R04C,Other - external,Other,Other revenue external to UN
-R05,Other revenue,Other,Unspecified other revenue
-R07,Voluntary contributions,Voluntary earmarked,Legacy code - voluntary contributions
-R08,Voluntary core,Voluntary un-earmarked,Legacy code - voluntary core
-R08B,Voluntary core,Voluntary un-earmarked,Legacy code - voluntary core variant
-R09,Multilateral,Voluntary earmarked,Legacy code - multilateral contributions
-R10,Private sector,Voluntary earmarked,Legacy code - private sector
-R11,Foundations,Voluntary earmarked,Legacy code - foundations
-R12,NGOs,Voluntary earmarked,Legacy code - NGOs
+R01,Assessed contributions,Assessed,Reported CEB assessed contributions
+R02,Voluntary core (un-earmarked) contributions,Voluntary un-earmarked,Reported CEB voluntary core contributions
+R03,Voluntary non-core (earmarked) contributions,Voluntary earmarked,Reported CEB voluntary non-core contributions
+R04,Revenue from other activities,Other,Reported CEB revenue from other activities

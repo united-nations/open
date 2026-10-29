@@ -1,128 +1,143 @@
-# CEB Revenue Data Fusion
+# CEB revenue processing
 
-This document describes how UN CEB revenue data from multiple source files is fused into a unified contributor breakdown.
+The shared user-facing methodology is maintained in
+[data/ceb-methodology.json](../data/ceb-methodology.json). See the
+[central methodology contract](ceb-methodology.md) for source scope and the
+original CEB notes. This document describes the current implementation; dated
+investigations under `docs/research/` and `docs/data-quality/` describe their own
+historical snapshots.
 
-## Current source handling (9 October 2026)
+## Inputs and authoritative totals
 
-All years use the current CEB release, including revised historical attribution.
-Step 02 accepts an immutable download with `--snapshot <directory>`, preserves
-blank amounts in raw and clean data, and exports file hashes, coverage, missing
-cells and differences between source presentations to `public/data/ceb-source.json`.
-Step 03 sums known donor amounts and reconciles the remainder as Other within a
-known contributor category or Unattributed within the original financing instrument.
-Blank donor amounts are not asserted to be zero. Missing authoritative summary
-controls use the matching complete entity-revenue group; otherwise the published
-summary financing classifications remain authoritative. Secretariat sub-entities
-resolve through source parent records and the shared Standard I reporting-unit
-map only when that year has no standalone control. Unknown parentage fails.
-Export and trend years are derived from validated data, and signed adjustments
-remain included. ITC has no 2025 report; its absent observation remains unavailable.
+All available historical years use the current CEB release. The source register
+`public/data/ceb-source.json` records the actual retrieval information, hashes,
+coverage, missing amount cells and differences between source presentations.
+Available export years come from validated inputs and the manifest, not fixed
+year constants.
 
-## Source Files
+| File | Use |
+| --- | --- |
+| `revenue.csv` | Entity × year × main-financing-type controls |
+| `revenue_sub_agency.csv` | Complete matching control only when the summary control is incomplete |
+| `revenue_government_donors.csv` | Reported government donor detail |
+| `revenue_non_gov_donors.csv` | Reported non-government detail, with partial historical coverage |
+| `revenue_contrib_type.csv` | Reported contributor-category controls where available |
+| `revenue_by_financing_instruments_and_government_contributors.csv` | Source reporting-unit relationships and independent detail checks |
 
-| File | Coverage | Description |
-|------|----------|-------------|
-| `revenue.csv` | 2011-2025 | Total revenue by entity × year × financing instrument |
-| `revenue_government_donors.csv` | 2013-2025 | Government donor breakdown with specific country names |
-| `revenue_non_gov_donors.csv` | 2009-2025 | Non-government donor breakdown (partial coverage) |
-| `revenue_contrib_type.csv` | 2021-2025 | Revenue by contributor type (Government, EU, Foundations, etc.) |
+A complete `revenue.csv` control retains precedence when another complete CEB
+presentation disagrees about financing classification. The other presentation
+fills missing controls only; it does not replace the whole series. Blanks remain
+unknown, signed adjustments remain signed, and missing donor observations are
+not fabricated as zeros. Source-only observations before system-wide revenue
+controls remain partial records and are not published as complete system totals.
 
-## Fusion Methodology
+## Organization identity and reporting scope
 
-### Historical coverage and basic fusion (2009–2020)
+The shared organization map uses adjusted labels consistently: `UN` → **UN
+Secretariat**; `UN-DPO`/`DPKO` → **Peacekeeping Operations**; `UNHABITAT`/
+`UN-HABITAT` → **UN-Habitat**; `UNWOMEN`/`UN-Women` → **UN Women**;
+`UNWTO` → **UN Tourism**. Raw source codes remain available.
 
-Before 2011, retain the source’s partial non-government donor observations without
-creating revenue controls or reconciliation remainders. Their sums must be labelled
-as partial records internally; they are excluded from all frontend contributor
-exports and views. From 2011 onward, use every revenue-control year independently
-of donor-source coverage; government detail is unavailable until 2013.
+CEB's `DPO` alias resolves to the peacekeeping aggregate only in the relevant
+CEB paths. The Secretariat department code `DPO` has a different scope and is
+not globally renamed. A unit's contributor records are included under its
+same-year CEB reporting parent only where it lacks a standalone control and
+source parentage or the explicit Standard I reporting-unit list establishes a
+unique relationship. Unknown or ambiguous parentage fails validation. Adding
+child detail fills out the parent's total; it does not add a second child total.
 
-For each controlled entity and year:
+## Contributor identities and categories
 
-1. **Government donors**: Specific country names from `revenue_government_donors.csv`
-2. **Non-government donors**: Specific donors from `revenue_non_gov_donors.csv` with category when available
-3. **Unattributed per financing instrument**: `Entity/instrument control - Government - NonGov` within each of the four financing instruments. Unknown donor identity is independent of financing class.
+Consolidation is limited to confirmed name aliases and the user-approved generic
+private label:
 
-### Tier 2: Full Category Breakdown (2021-2025)
+| Source labels | Common label |
+| --- | --- |
+| World Bank Group; The World Bank Group | World Bank Group |
+| Gavi Alliance; GAVI, The Vaccine Alliance | GAVI, The Vaccine Alliance |
+| Global Fund to Fight; The Global Fund | The Global Fund |
+| Multi Donor Trust Funds; Multi Donor trust funds | Multi Donor Trust Funds |
+| Private Donors; Private donor; Private Sector | Private Donors / Private Sector |
+| UNDP; United Nations Development Programme | United Nations Development Programme |
+| BLOOMBERG PHILANTHROPIES; Bloomberg Philanthropies | Bloomberg Philanthropies |
 
-For years where `contrib_type.csv` exists, the "Other" is broken down by contributor type:
+**USA National Committee** remains one contributor across recipients. Qualifiers
+such as **Global Environment Facility (thru UNDP or UNEP)** are retained; that
+label is not silently merged with **Global Environment Facility**. Other source
+names are retained when no consolidation is needed. Parentheses are preserved.
+Known Taiwan aliases use **Taiwan Province of China**. The known `Kosovo**`
+marker is removed from the contributor name, with CEB's Kosovo note reproduced
+in the shared methodology; unfamiliar asterisks are not removed indiscriminately.
+Contributor and location wording are not otherwise forced to match.
 
-1. **Government donors**: Specific country names (same as Tier 1)
-2. **Non-government donors**: Specific donors grouped by C-code category
-3. **"Other {Category}"**: For each category and financing instrument, calculated as `Category Total - Specific Donors in Category`
-4. **Unattributed control residual**: signed difference to the authoritative entity/instrument control, including entities with no contributor detail.
+Every explicit contributor category stays attached to its source observation.
+There are no donor-name-based category overrides or historical category
+inferences. Missing detailed categories remain unspecified, while the broad
+source government/non-government scope is retained. One contributor may span
+several categories, and the export must preserve those separate category amounts
+instead of overwriting a donor-level category field. Category display labels use
+CEB wording rather than portal-created abbreviations.
 
-| Code | Category | Description |
-|------|----------|-------------|
-| C01 | Government | Government contributions |
-| C02 | NGOs | Non-governmental organizations |
-| C04A | Multilateral - IFIs | International Financial Institutions |
-| C04B | Multilateral - Global Funds | GEF, Global Fund, GAVI |
-| C04C | Multilateral - UN Orgs | UN organizations excluding pooled funds |
-| C04D | Multilateral - UN Pooled Funds | UN inter-agency pooled funds |
-| C04E | Multilateral - Other | Other multilateral institutions |
-| C05 | Foundations | Philanthropic foundations (e.g., Gates Foundation) |
-| C06 | Private Sector | Corporate donors |
-| C07 | Academic | Academic, training and research institutions |
-| C08A | European Union | EU and European Commission |
-| C08B | Other Contributors | Unclassified (correction bucket, use with caution) |
-| C09 | No Contributor | Revenue from activities (interest, FX gains) |
+## Four financing types and historical code limits
 
-**Example (2023 Foundations):**
-- Category total from `contrib_type.csv`: $890M
-- Gates Foundation from `nongov_donors.csv`: $460M
-- "Other Foundations": $430M (calculated remainder)
+The portal uses the four main financing types reported by CEB: **Assessed
+contributions**, **Voluntary core (un-earmarked) contributions**, **Voluntary
+non-core (earmarked) contributions**, and **Revenue from other activities**.
+Subtype detail remains in downloaded sources rather than forming additional
+portal financing types.
 
-## Output Schema
+The [legacy-code investigation](research/ceb-legacy-revenue-codes/README.md)
+found no authoritative crosswalk for R05/R07–R12 in the 2015–2017 non-government
+records. The previous blanket assignments are unsupported, especially
+R08/R08B/R08b → unearmarked. Preserve the original code and donor amount as an
+unresolved financing observation. Do not infer financing from contributor name,
+category, numerical prefix, or an aggregate reconciliation that happens to balance.
+Known donor totals remain inspectable separately from their unavailable financing
+split. Unresolved amounts must not be added on top of already-balanced four-type
+controls, which would count them twice.
 
-File: `data/ceb/fused/revenue_by_contributor.csv`
+## Signed reconciliation
 
-| Column | Description |
-|--------|-------------|
-| `entity` | UN entity (e.g., UNICEF, WHO, UNDP) |
-| `year` | Calendar year |
-| `contrib_code` | C-code (C01-C09) or "Other"/"Unknown" for Tier 1 years |
-| `donor_type` | Category name (Government, Foundations, etc.) |
-| `donor_name` | Specific donor name or "Other {Category}" |
-| `amount` | Amount in USD |
-| `is_other` | True for calculated remainders and reported generic aggregates (not specific named donors) |
+Within each controlled entity × year × main financing type:
 
-## Known Limitations
+1. Retain known reported government and non-government detail.
+2. Where a CEB contributor-category control exists, calculate **Other {category}**
+   as the category control minus all resolved reported detail in that category,
+   including reported generic aggregates.
+3. Calculate **Unattributed** as the remaining signed difference to the main
+   entity/financing control.
 
-### Data Quality Issues
+The approach preserves reported totals, not a claim that every source
+presentation agrees. A negative balance is a reconciliation difference and is
+not clipped or asserted to be negative missing funding. **Private Donors /
+Private Sector** contains reported records; **Other Private Sector** is the
+calculated C06 balance. Do not infer category or financing allocations to erase a
+source discrepancy.
 
-1. **C08B "Other Contributors"**: Has 85% negative-to-positive ratio across years. This category appears to be used as a correction/adjustment bucket. Use with caution.
+Reported named contributors, reported aggregate buckets, and calculated balances
+are represented distinctly. Aggregate records remain visible and explorable by
+recipient and year. Calculated balances remain visible with an explanation and
+are not presented as named institutions. Per-category contributor amounts and
+unresolved-financing observations are retained in exports so that a shared donor
+identity cannot overwrite source classification.
 
-2. **Entity naming inconsistencies**: Some entities have different names across files (e.g., "UN Tourism" vs "UNWTO"). IRMCT is missing from some files.
+## Validation and exports
 
-3. **Negative amounts**: Legitimate accounting entries from audited statements including FX losses, refunds, and prior-period corrections. Approximately 1-2B/year in negative entries across all categories.
+The pipeline validates controlled totals, signed balances, source categories,
+financing coverage, reporting-unit relationships and observed years. The donor
+contract preserves `categories` and `categoryContributions` per source category,
+`record_kind` for reported named/aggregate/calculated entries, and separate
+`unresolvedContributions`, `unresolvedTotal`, `financingIncomplete` and
+`unresolvedFinancingRecords` where a known donor amount has no supported main
+financing allocation. Unresolved records retain source code, source entity,
+amount, category and source-row reference. Category-specific trend series remain
+separate from whole-contributor series. Donor,
+entity-revenue and contributor-trend exports derive from the same validated
+records. Finite known records remain included; source missingness and unavailable
+reports are disclosed. Independent source tests must test classifications as well
+as numerical reconciliation: a balancing residual alone cannot prove attribution.
 
-4. **Donor name variations**: Multiple variants of the same donor (e.g., "GAVI Alliance" / "GAVI The Vaccine Alliance") are normalized via `DONOR_MAPPING` in `utils.py`.
-
-5. **Category misclassifications**: Some donors appear with incorrect C-codes in the source data. `DONOR_CATEGORY_OVERRIDES` in `utils.py` fixes known cases (e.g., Bill & Melinda Gates Foundation → Foundations, European Union → EU).
-
-6. **Generic bucket donors**: CEB uses "Private Donors" (2015–2021, 2023–2024), "Private donor" (2022), and "Private Sector" (2025) for reported generic donor records. Normalize these to **Private Donors / Private Sector**, preserving the original labels in the raw/clean source files. These records remain `is_other=True` (aggregated, not named donors), independently of their display wording. The common label alone does not establish contributor type: CEB also uses it for NGOs, Foundations, and other categories. For non-C06 records, append ` — {reported category}` (or ` — Non-Government` where the source type is unknown), so name-keyed donor exports and trends retain separate identities and categories. Do not reclassify these records as C06. **Other Private Sector** remains the separate calculated C06 balance after subtracting all reported C06 donor amounts, including the reported generic bucket.
-
-### Coverage Gaps
-
-- Pre-2013: No government donor breakdown available
-- Pre-2021: No contributor type breakdown (C-codes) available
-- Non-gov donors file only covers major institutional donors, not all private/foundation contributions
-
-## Validation
-
-Controlled years (2011 onward) reconcile each entity × year × financing instrument to `revenue.csv`
-within one cent. The 2009–2010 source-only records have no revenue controls and
-are explicitly disclosed as partial. Independent tests classify the original textual instrument
-labels and compare them to the final exports. Contributor trends include aggregate
-Other entries within their known government/non-government types and categories.
-A separate Unattributed series preserves the signed reconciliation balance;
-Government + Non-Government + Unattributed equals All contributors in every year.
-Unknown financing codes
-fail validation. See [the remediation notes](data-integrity-remediation.md).
-
-## Data Sources
-
-All source data comes from the [UN CEB Financial Statistics](https://unsceb.org/financial-statistics) database, which collects data from 43 UN entities annually. Figures are validated against audited financial statements.
-
-The data standards are documented in the [UN Data Cube](https://unsceb.org/data-standards-united-nations-system-wide-reporting-financial-data) initiative.
+Rebuild CEB inputs and dependent exports through steps 02, 03, 05 and the relevant
+expense/flow stages, followed by 99 when coverage changes. Run
+`uv run python -m unittest discover -s python/tests` and the applicable frontend
+checks after changing the export contract.

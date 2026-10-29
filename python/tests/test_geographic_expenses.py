@@ -59,7 +59,12 @@ class GeographicTests(unittest.TestCase):
                     self.assertNotEqual(row['level'], 'country')
                     self.assertNotEqual((row['lat'], row['long']), (-52, -135))
             raw_year = raw[(raw.calendar_year == year) & (raw.expenses_type == 'E06')]
-            expected = raw_year.groupby(raw_year.agency.map(normalize_entity)).amount.sum()
+            # Two published same-year expense parent relationships establish
+            # these geographic reporting aliases. 2017 UNRISD stays separate:
+            # that year's source does not establish a parent.
+            parent_rollups = {(2018, 'UNRISD'): 'UN Secretariat', (2020, 'Tech Bank'): 'UN Secretariat'}
+            identities = raw_year.agency.map(lambda name: parent_rollups.get((year, name), normalize_entity(name)))
+            expected = raw_year.groupby(identities).amount.sum()
             actual = {}
             for row in rows:
                 for entity, amount in row['entities'].items():

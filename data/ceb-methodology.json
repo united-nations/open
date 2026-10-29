@@ -1,0 +1,84 @@
+{
+  "title": "CEB methodology and source notes",
+  "source": {
+    "label": "CEB Financial Statistics",
+    "url": "https://unsceb.org/statistics/financial-statistics/?tab=revenue"
+  },
+  "officialNotes": [
+    {
+      "text": "The revenue and expenses amounts reflect data as reported by organizations in their respective financial statements, without adjustments for revenue and/or expenses associated with transfers of funding between UN organizations."
+    },
+    {
+      "text": "Data and charts are updated annually, on conclusion of individual management survey reporting cycles, figures are quality assured and validated with the organizations’ audited financial statements wherever possible."
+    },
+    {
+      "text": "The data presented include additional six entities (CTBTO, ICC, UNCDF, UNFCCC, UNRISD, UNSSC) from 2017, three more entities (OPCW, UNITAID, IARC) from 2018, from 2019, (ITLOS) and two more from 2021 (UNCCD, ISA)."
+    },
+    {
+      "text": "2023 revenue by contributor data does not include contributions to IRMCT."
+    },
+    {
+      "text": "ITC did not submit data for 2025."
+    },
+    {
+      "text": "Chinese Taipei is WTO terminology for the territory referred to by the United Nations as Taiwan Province of China. Please also refer to the official announcement by WTO at",
+      "links": [
+        {
+          "label": "https://www.wto.org/english/news_e/pres01_e/pr253_e.htm",
+          "url": "https://www.wto.org/english/news_e/pres01_e/pr253_e.htm"
+        }
+      ],
+      "portalAddition": "[Terminology has already been made consistent with United Nations terminology on this website: Taiwan Province of China.]"
+    },
+    {
+      "text": "References to Kosovo shall be understood to be in the context of Security Council resolution 1244 (1999)."
+    }
+  ],
+  "transformations": [
+    {
+      "id": "names-and-reporting-units",
+      "title": "Names and reporting organizations",
+      "text": "CEB sometimes uses different names for the same contributor or organization. We combine confirmed variants so that World Bank Group and The World Bank Group appear as one contributor. Organization codes use readable labels: UN is shown as UN Secretariat, and UN-DPO as Peacekeeping Operations.\n\nWhere CEB identifies a parent organization and reports an annual revenue total for the parent but no separate revenue total for a department, we show the department’s contributor records under the parent. These records explain part of the parent’s existing total; they are not added on top of it."
+    },
+    {
+      "id": "revenue-balances",
+      "title": "How contributor breakdowns add up to revenue",
+      "text": "Revenue is grouped in two ways. Contributor categories describe who supplied it, such as governments, foundations or private companies. Financing types describe the kind of income and restrictions on its use. These are separate classifications: the same contributor can provide more than one financing type.\n\nCEB publishes organization revenue totals alongside separate contributor records. Those records do not always explain the whole total. We use CEB’s summary as the total. When a blank amount makes a summary total incomplete, we use a complete total from another CEB table for that same organization, year and financing type.\n\nWithin a reported contributor category, the calculated difference is labelled Other followed by the category name. For example, if private-sector revenue is $100 and donor records account for $70, Other Private Sector is $30. If the records instead add up to $110, that balance is −$10. These are illustrations. The negative balance records a difference between sources; it does not identify another donor or a separate activity.\n\nFor each financing type, any difference still left after the contributor records and category balances is Unattributed. This means the amount cannot be matched to the available contributor breakdown for that financing type. Unattributed does not identify which donor accounts for the difference. Some historical records name a donor but cannot be assigned reliably to a financing type; those records are shown separately as explained below. Unattributed is included within the four financing types; it is not a fifth type.\n\nCEB also reports group entries called Private Donors and Private Sector. We display those entries together as Private Donors / Private Sector. They are source-reported amounts; Other Private Sector is our calculated difference. Open either entry to see its recipient organizations and available financing breakdown. Opening a calculated balance does not reveal the missing donors. Each reported contribution retains CEB’s category, so one contributor can appear in several categories."
+    },
+    {
+      "id": "historical-financing",
+      "title": "Why some historical donor records appear separately",
+      "text": "The four financing types are assessed contributions, voluntary core contributions, voluntary non-core contributions, and revenue from other activities. Assessed contributions are amounts set for members under an agreed assessment scale. Voluntary core contributions are not reserved by the donor for a particular purpose; voluntary non-core contributions are earmarked for particular uses.\n\nSome 2015–2017 donor records use older codes whose meaning cannot be verified against these types. The contributor, recipient and amount can be shown, but the financing type cannot reliably be assigned. Find these records under Historical contributor records with unresolved financing below the contributor chart, and in the contributor’s detail panel.\n\nThese records must not be added to the chart totals, which already cover the organizations’ reported revenue. Overall revenue totals remain available. For these affected historical records, a gap in a contributor’s financing trend reflects an incomplete breakdown; it does not establish that the contributor provided nothing."
+    },
+    {
+      "id": "expense-scope",
+      "title": "What expenditure and flow charts show",
+      "text": "The geographic source reports both spending totals and smaller components already included in those totals. We use each total once rather than adding its components again. Sustainable Development Goal (SDG) charts use reported actual expenditure and exclude budget figures.\n\nA contributor’s revenue to an organization and that organization’s spending by location, function or goal are separate observations. A flow chart brings these views together, but cannot show which donor financed a particular country or goal. The Secretariat and UNINFO datasets cover different activities and measure finances differently, so their amounts are shown separately from CEB figures."
+    },
+    {
+      "id": "geography",
+      "title": "Corrections to geographic reporting levels",
+      "text": "Some CEB records identify a region but mark it as a country. Known cases are corrected so that Southern Africa is treated as a subregion rather than South Africa, and regional Micronesia is not assigned to the Federated States of Micronesia. This changes where the record appears in the geographic grouping, not its reported amount.\n\nAmbiguous places and inconsistent information about their larger region remain identified as source issues; we do not guess a country. Geographic chart details retain the source labels and correction notes. Regional and global expenditure is not distributed among individual countries."
+    },
+    {
+      "id": "sdg-balances",
+      "title": "Non-SDG and Not specified expenditure",
+      "text": "Non-SDG contains expenditure that CEB explicitly reports outside the Sustainable Development Goals. Not specified is calculated separately: total organization expenditure minus reported expenditure for Goals 1–17 and Non-SDG. It includes missing reporting and differences between source breakdowns and totals; it does not mean the spending was unrelated to the goals.\n\nFor example, if total expenditure is $100 but the goal and Non-SDG amounts add up to $110, Not specified is −$10. That calculated balance shows the mismatch; it is not spending on a separate activity. Reported spending by goal is left unchanged."
+    },
+    {
+      "id": "historical-functions",
+      "title": "Comparing functions across the 2018 classification change",
+      "text": "Functions describe broad purposes of UN work, such as development assistance, humanitarian assistance and peace operations. CEB changed the classification in 2018. Some earlier spending appears under Other (combined Normative and Technical Cooperation), combining older groups for technical assistance and work on standards, treaties and knowledge creation. Technical assistance includes sharing skills, advice and training.\n\nWe retain that source label and its amounts as a separate historical series within expenditure totals. The source does not provide a reliable split among today’s functions. A rise or fall in a particular function around 2018 may therefore reflect changed classification as well as changed activity."
+    }
+  ],
+  "coverageNotes": [
+    {
+      "text": "CEB’s note above says that 2023 contributor data excludes IRMCT, the International Residual Mechanism for Criminal Tribunals. The current files provide its overall revenue total but do not provide a complete contributor breakdown. The overall total can therefore be shown without implying that all its contributors are identified."
+    }
+  ],
+  "introduction": "The UN System Chief Executives Board for Coordination (CEB) compiles financial information reported by UN organizations. This portal shows revenue—the income recorded in their accounts—and expenditure, or reported expenses. Revenue can differ from cash received during the year. We use the current CEB release, including revisions to earlier years. Amounts are US dollars for the year reported, without adjustment for inflation.",
+  "readingNotes": [
+    "The system totals add together organizations’ reported figures. Money transferred from one UN organization to another can appear in both organizations’ accounts, so the combined total can count the same funding more than once. It is not a measure of distinct money entering the UN from outside.",
+    "Year-to-year changes can reflect changes in which organizations reported, as well as changes in their finances. For example, the International Trade Centre (ITC) did not submit data for 2025. Missing reports, blank amounts and gaps in a trend do not mean zero activity. Negative amounts reported by CEB are retained; calculated negative balances are explained below."
+  ]
+}

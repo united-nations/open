@@ -34,88 +34,55 @@ ENTITY_MAPPING = {
 # Reported generic donor bucket; distinct from calculated Other Private Sector.
 PRIVATE_DONOR_LABEL = "Private Donors / Private Sector"
 
-# Donor name normalization - map variants to canonical names
+# UN/CEB terminology, shared by donor identities and geographic labels.
+TAIWAN_NAME = "Taiwan Province of China"
+TAIWAN_NAME_ALIASES = dict.fromkeys((
+    "Taiwan", "Chinese Taipei", "Taiwan (Chinese Taipei)",
+    "Taiwan (Province of China)", "Taiwan (Province of China)***",
+    "Taiwan, Province of China", "China, Taiwan Province of China",
+), TAIWAN_NAME)
+
+# Explicit CEB contributor aliases; classification is preserved independently.
 DONOR_MAPPING = {
-    # Country accent/case/format variations
+    "Kosovo**": "Kosovo",
+    **TAIWAN_NAME_ALIASES,
+    "GAVI The Vaccine Alliance": "GAVI, The Vaccine Alliance",
+    "GAVI, The Vaccine Alliance": "GAVI, The Vaccine Alliance",
+    "Gavi Alliance": "GAVI, The Vaccine Alliance",
+    "The Global Fund": "The Global Fund",
+    "Global Fund to Fight": "The Global Fund",
+    "The World Bank Group": "World Bank Group",
+    "Multi Donor trust funds": "Multi Donor Trust Funds",
+    "Private Donors": PRIVATE_DONOR_LABEL,
+    "Private donor": PRIVATE_DONOR_LABEL,
+    "Private Sector": PRIVATE_DONOR_LABEL,
+    "UNDP": "United Nations Development Programme",
+    "BLOOMBERG PHILANTHROPIES": "Bloomberg Philanthropies",
+}
+
+# These are source-reported aggregates, distinct from calculated balances.
+GENERIC_DONORS = {
+    "MISC", PRIVATE_DONOR_LABEL, "Multi Donor Trust Funds",
+    "Multi Partner Trust Fund Office", "UNDP Administered Trust Funds",
+    "Miscellaneous", "Refunds to donors/Miscellaneous",
+}
+
+# Used only to match UN membership metadata, never to relabel CEB contributors.
+MEMBERSHIP_NAME_ALIASES = {
     "Côte d'Ivoire": "Côte D'Ivoire",
-    "Cote D'Ivoire": "Côte D'Ivoire",
-    "Cote d'Ivoire": "Côte D'Ivoire",
     "Venezuela (Bolivarian Republic of)": "Venezuela, Bolivarian Republic of",
     "Bolivia (Plurinational State of)": "Bolivia, Plurinational State of",
     "Iran (Islamic Republic of)": "Iran, Islamic Republic of",
     "Micronesia (Federated States of)": "Micronesia, Federated States of",
     "Moldova (Republic of)": "Moldova, Republic of",
     "Tanzania (United Republic of)": "Tanzania, United Republic of",
-    "Kosovo**": "Kosovo",
-    "Taiwan (Province of China)***": "Taiwan, Province of China",
-    "Taiwan (Chinese Taipei)": "Taiwan, Province of China",
-    "Turkiye": "Türkiye",
-    "Turkey": "Türkiye",
-    "China, Hong Kong Special Administrative Region": "Hong Kong SAR",
-    "China, Macao Special Administrative Region": "Macao SAR",
-    # Non-gov donor consolidation
-    "GAVI The Vaccine Alliance": "GAVI Alliance",
-    "GAVI, The Vaccine Alliance": "GAVI Alliance",
-    "Gavi Alliance": "GAVI Alliance",
-    "The Global Fund": "The Global Fund to Fight AIDS, Tuberculosis and Malaria",
-    "The Global Fund to Fight AIDS Tuberculosis and Malaria - The Global  Fund": "The Global Fund to Fight AIDS, Tuberculosis and Malaria",
-    "The Global Fund to Fight AIDS, Tuberculosis and Malaria - The Global  Fund": "The Global Fund to Fight AIDS, Tuberculosis and Malaria",
-    "Global Fund to Fight": "The Global Fund to Fight AIDS, Tuberculosis and Malaria",
-    "Global Fund": "The Global Fund to Fight AIDS, Tuberculosis and Malaria",
-    "The Green Climate Fund": "Green Climate Fund",
-    "The World Bank Group": "World Bank",
-    "World Bank Group": "World Bank",
-    "Multi Donor trust funds": "Multi Donor Trust Funds",
-    "Private Donors": PRIVATE_DONOR_LABEL,
-    "Private donor": PRIVATE_DONOR_LABEL,
-    "Private Sector": PRIVATE_DONOR_LABEL,
-    "United Nations Development Programme": "UNDP (as donor)",
-    "United Nations Secretariat Office for the Coordination of Humanitarian Affairs": "UN OCHA",
-}
-
-# Generic bucket donors - mark as is_other=True (aggregated, not specific donors)
-GENERIC_DONORS = {
-    "MISC",  # CEB government correction bucket; retain source category and sign.
-    PRIVATE_DONOR_LABEL,  # Reported aggregate, not a calculated remainder.
-    "Multi Donor Trust Funds",
-    "Multi Partner Trust Fund Office",
-    "UNDP Administered Trust Funds",
-}
-
-# Category overrides for known misclassifications (donor -> C-code)
-DONOR_CATEGORY_OVERRIDES = {
-    "Bill & Melinda Gates Foundation": "C05",  # Foundations
-    "European Union": "C08A",  # EU
-    "GAVI Alliance": "C04B",  # Multilateral - Global Funds
-    "Global Fund": "C04B",  # Multilateral - Global Funds
-    "Green Climate Fund": "C04B",  # Multilateral - Global Funds
-    "Global Environment Facility": "C04B",  # Multilateral - Global Funds
-    "Global Environment Facility (thru UNDP or UNEP)": "C04B",
-    "Global Partnership for Education": "C04B",  # Multilateral - Global Funds
-    "World Bank": "C04A",  # Multilateral - IFIs
-    "Asian Development Bank": "C04A",  # Multilateral - IFIs
-    "UN Foundation": "C05",  # Foundations
-    "USA National Committee": "C02",  # NGOs (national committees)
-    "United States Fund for UNICEF": "C02",  # NGOs
-    "United States of America National commission": "C02",  # NGOs
-    "The Joint United Nations Programme on HIV/AIDS": "C04C",  # UN Orgs
-    "UNDP (as donor)": "C04C",  # UN Orgs
-    "UN OCHA": "C04C",  # UN Orgs
-    "United Nations": "C04C",  # UN Orgs
-}
-
-# Entries incorrectly classified as Government in CEB data
-NON_GOVERNMENT_DONORS = {
-    "JUNIOR PROFESSIONAL OFFICERS PROGRAMME",
-    "Miscellaneous",
-    "Refunds to donors/Miscellaneous", 
-    "Planethood Foundation",
 }
 
 def clean_donor_name(name: str) -> str:
     """Clean and normalize donor name."""
-    # Remove asterisks
-    cleaned = name.replace("*", "").strip()
+    # Known source footnote markers are handled by explicit aliases above.
+    # Preserve unfamiliar markers and meaningful parenthetical wording.
+    cleaned = name.strip()
     # Apply mapping
     return DONOR_MAPPING.get(cleaned, cleaned)
 
@@ -147,8 +114,8 @@ def include_ceb_aggregate_entities(entities: list[dict]) -> list[dict]:
     return list(by_name.values())
 
 
-# Observed encoding variants in the frozen CEB geographic source.
-COUNTRY_NAME_OVERRIDES = {"Cura├ºao": "Curaçao"}
+# Observed encoding variants and the shared UN terminology aliases.
+COUNTRY_NAME_OVERRIDES = {"Cura├ºao": "Curaçao", **TAIWAN_NAME_ALIASES}
 
 def normalize_country_name(name: str) -> str:
     return COUNTRY_NAME_OVERRIDES.get(name, name)

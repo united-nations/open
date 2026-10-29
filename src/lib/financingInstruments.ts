@@ -18,9 +18,9 @@ export const FINANCING_SOURCE_KEYS: Record<string, FundingSource> = {
 /** Display copy only; source keys remain unchanged for data lookups. */
 export const FINANCING_INSTRUMENT_LABELS: Record<string, string> = {
   Assessed: "Assessed contributions",
-  "Voluntary un-earmarked": "Voluntary contributions (unearmarked)",
-  "Voluntary earmarked": "Voluntary contributions (earmarked)",
-  Other: "Other revenue",
+  "Voluntary un-earmarked": "Voluntary core (un-earmarked) contributions",
+  "Voluntary earmarked": "Voluntary non-core (earmarked) contributions",
+  Other: "Revenue from other activities",
 };
 
 export const getFinancingInstrumentLabel = (type: string): string =>

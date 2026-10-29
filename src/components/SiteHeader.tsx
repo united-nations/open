@@ -9,6 +9,7 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const navItems = [
   { href: "/system", label: "UN System Financials" },
   { href: "/secretariat", label: "UN Secretariat Financials" },
+  { href: "/about", label: "About" },
 ];
 
 function withBase(path: string) {

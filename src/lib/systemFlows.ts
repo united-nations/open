@@ -34,6 +34,14 @@ export interface SystemFlowInput {
     string,
     {
       is_other?: boolean;
+      record_kind?:
+        | "reported_named"
+        | "reported_aggregate"
+        | "calculated_balance";
+      categoryContributions?: Record<
+        string,
+        Record<string, Record<string, number>>
+      >;
       group: "Government" | "Non-Government" | "Unattributed";
       contributions: Record<string, Record<string, number>>;
     }
@@ -94,6 +102,13 @@ export function buildSystemFlows(
       color: metadata.color,
       category: category ? "Organization category" : metadata.category,
       detail: category ? undefined : { kind: "entity", value: entity },
+      note:
+        !category &&
+        input.spending.entities[entity]?.total == null &&
+        ((input.spending.entities[entity]?.geography.length ?? 0) > 0 ||
+          (input.spending.entities[entity]?.goals.length ?? 0) > 0)
+          ? "This source provides a partial expenditure breakdown without a matching organization total for this year."
+          : undefined,
     });
     let funding = 0;
     const addFunding = (
@@ -112,10 +127,7 @@ export function buildSystemFlows(
               ? "Contributor category"
               : contributor?.group,
         detail:
-          choices.funding === "contributor" &&
-          contributor &&
-          !contributor.is_other &&
-          key !== "Unattributed"
+          choices.funding === "contributor" && contributor
             ? { kind: "donor", value: key }
             : undefined,
         note:
@@ -124,10 +136,14 @@ export function buildSystemFlows(
             : key === "Revenue reconciliation difference"
               ? "Calculated difference between reported revenue and its contributor breakdown."
               : key === "Unattributed"
-                ? "Revenue for which the source does not identify the contributor."
-                : choices.funding === "contributor" && contributor?.is_other
-                  ? "Source aggregate or calculated category remainder; individual contributors are not identified here."
-                  : undefined,
+                ? "Revenue not assigned within this financing breakdown, including missing attribution and unresolved financing."
+                : choices.funding === "contributor" &&
+                    contributor?.record_kind === "calculated_balance"
+                  ? "Calculated balance between a reported control total and the available contributor detail."
+                  : choices.funding === "contributor" &&
+                      contributor?.record_kind === "reported_aggregate"
+                    ? "Aggregate explicitly reported by CEB; individual contributors are not identified."
+                    : undefined,
       });
       add(source, middle, value);
       funding += value;
@@ -139,6 +155,18 @@ export function buildSystemFlows(
         addFunding(instrument, amount);
     } else {
       for (const [name, item] of Object.entries(input.contributors)) {
+        if (choices.funding === "category" && item.categoryContributions) {
+          for (const [category, contributions] of Object.entries(
+            item.categoryContributions,
+          )) {
+            const amount = Object.values(contributions[entity] ?? {}).reduce(
+              (sum, value) => sum + value,
+              0,
+            );
+            if (amount) addFunding(category, amount, item);
+          }
+          continue;
+        }
         const value = Object.values(item.contributions[entity] ?? {}).reduce(
           (sum, amount) => sum + amount,
           0,
@@ -194,7 +222,7 @@ export function buildSystemFlows(
             : key === "coverage-difference"
               ? "Calculated reporting difference, not an allocation of expenditure."
               : key === "unallocated"
-                ? "Expenditure reported without allocation to a Sustainable Development Goal."
+                ? "CEB-reported Non-SDG expenditure (x00)."
                 : undefined,
       });
       add(middle, target, value);

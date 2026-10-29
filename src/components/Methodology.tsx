@@ -1,6 +1,11 @@
 import { SHOW_UNINFO } from "@/lib/featureFlags";
 import cebSource from "../../public/data/ceb-source.json";
+import cebMethodology from "../../data/ceb-methodology.json";
+import manifest from "../../public/data/manifest.json";
 import { ExpandableCard } from "@/components/ExpandableCard";
+import { ChartDataDisclaimer } from "@/components/ChartDataDisclaimer";
+import { ChartSourceProvider } from "@/components/ChartSource";
+import { PageSourceLink } from "@/components/PageSources";
 
 export function Methodology({ children }: { children: React.ReactNode }) {
   return (
@@ -23,54 +28,114 @@ function PageMethodologyShell({ children }: { children: React.ReactNode }) {
 }
 
 export function CebMethodology() {
+  const officialNotes: {
+    text: string;
+    links?: { label: string; url: string }[];
+    portalAddition?: string;
+  }[] = cebMethodology.officialNotes;
   return (
-    <>
+    <div className="space-y-6" data-ceb-methodology>
+      <p>{cebMethodology.introduction}</p>
+      {cebMethodology.readingNotes.map((note, index) => (
+        <p key={index}>{note}</p>
+      ))}
       <p>
-        Data is sourced from the{" "}
+        Source:{" "}
         <a
-          href="https://unsceb.org/financial-statistics"
-          className="underline hover:text-un-blue"
+          className="underline underline-offset-2"
+          href={cebMethodology.source.url}
           target="_blank"
           rel="noopener noreferrer"
         >
-          UN Chief Executives Board (CEB) financial statistics
-        </a>{" "}
-        database. Reporting coverage varies by year; 47 agency codes report in
-        2025, and ITC did not submit 2025 data. CEB data comes from audited
-        financial statements aligned with the{" "}
-        <a
-          href="https://unsceb.org/data-standards-united-nations-system-wide-reporting-financial-data"
-          className="underline hover:text-un-blue"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Data Standards for UN System-Wide Reporting of Financial Data
+          {cebMethodology.source.label}
         </a>
-        .
+        . Retrieved on {cebSource.retrievedAt}.
       </p>
-      <p>
-        All available years use the CEB release downloaded on{" "}
-        {cebSource.retrievedAt}, including revised historical figures. Goals
-        data currently ends in 2024.
-      </p>
-      <p>
-        Revenue includes contributions and other revenue recognized in financial
-        statements; it does not necessarily represent cash received. Expenditure
-        is the portal’s display term for reported expenses. Source accounting
-        bases remain as documented for each dataset.
-      </p>
-      <p>
-        CEB figures aggregate individual entity statements without adjusting for
-        inter-agency transfers, so system-wide totals are inflated by
-        double-counting.
-      </p>
-      <p>
-        Under the leadership of the Chief Executives Board for Coordination
-        (CEB), the UN has made significant improvements to financial data
-        standardization and reporting over the past few years. For this reason,
-        results are not perfectly comparable year-to-year.
-      </p>
-    </>
+      <section aria-label="Notes published by CEB" className="space-y-3">
+        <h3 className="text-lg font-semibold text-gray-900">
+          Notes to the Financial Statistics pages
+        </h3>
+        <ol className="list-decimal space-y-3 pl-6 marker:font-semibold marker:text-un-blue">
+          {officialNotes.map((note, index) => (
+            <li key={index}>
+              {note.text}
+              {note.links?.map((link) => (
+                <span key={link.url}>
+                  {" "}
+                  <a
+                    href={link.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="break-words underline underline-offset-2"
+                  >
+                    {link.label}
+                  </a>
+                </span>
+              ))}
+              {note.portalAddition && <> {note.portalAddition}</>}
+            </li>
+          ))}
+        </ol>
+      </section>
+      <section aria-label="Portal data processing" className="space-y-4">
+        <h3 className="text-lg font-semibold text-gray-900">
+          How the portal presents CEB data
+        </h3>
+        {cebMethodology.transformations.map((item) => (
+          <div key={item.id} className="space-y-3">
+            <h4 className="font-semibold text-gray-900">{item.title}</h4>
+            {item.text.split("\n\n").map((paragraph, index) => (
+              <p key={index}>{paragraph}</p>
+            ))}
+          </div>
+        ))}
+      </section>
+      <section aria-label="Current data coverage" className="space-y-3">
+        <h3 className="text-lg font-semibold text-gray-900">
+          Current data coverage
+        </h3>
+        <p>
+          Revenue: {manifest.entityRevenue.min}–{manifest.entityRevenue.max}.
+          Organization expenditure: {manifest.entitySpending.min}–
+          {manifest.entitySpending.max}. Geography:{" "}
+          {manifest.geographicExpenses.min}–{manifest.geographicExpenses.max}.
+          SDG expenditure: {manifest.sdgExpenses.min}–{manifest.sdgExpenses.max}
+          .
+        </p>
+        {cebMethodology.coverageNotes.map((note, index) => (
+          <p key={index}>{note.text}</p>
+        ))}
+      </section>
+    </div>
+  );
+}
+
+export function CebPageMethodology({
+  children,
+}: {
+  children?: React.ReactNode;
+}) {
+  return (
+    <section
+      className="mx-auto max-w-6xl px-6 pb-12 md:px-12 lg:px-16"
+      aria-label="Sources and methodology"
+      data-page-methodology
+    >
+      <ExpandableCard id="methodology" title="Sources and methodology">
+        <CebMethodology />
+        {children && (
+          <section
+            className="mt-8 space-y-4 border-t border-gray-200 pt-6"
+            aria-label="Additional notes for this page"
+          >
+            <h3 className="text-lg font-semibold text-gray-900">
+              Additional notes for this page
+            </h3>
+            {children}
+          </section>
+        )}
+      </ExpandableCard>
+    </section>
   );
 }
 
@@ -84,8 +149,9 @@ export function ContributorsMethodologyNotes() {
         Contributor-view totals include signed adjustments; they do not
         eliminate inter-agency transfers. Other revenue is a financing
         instrument, while Other contributor categories are aggregates or
-        calculated remainders. Unattributed means the contributor is
-        unidentified. For 2021 onwards, contributors are categorized by type
+        calculated remainders. Unattributed is revenue not assigned within the
+        financing breakdown; it includes missing attribution and unresolved
+        financing. For 2021 onwards, contributors are categorized by type
         (Governments, Foundations, Private Sector, Multilateral Organizations,
         etc.) using the CEB&apos;s contributor classification system. For
         earlier years, contributor categories are partially available. Where
@@ -100,12 +166,6 @@ export function ContributorsMethodologyNotes() {
         breakdowns exceed reported totals. The 2025 source names fewer
         non-government contributors than the updated 2024 source; category
         totals remain available.
-      </p>
-      <p>
-        The classification of CEB financing instruments has changed over time.
-        For comparability purposes, &ldquo;voluntary contributions pending
-        earmarking&rdquo; grants have been categorized as &ldquo;voluntary
-        non-core (earmarked) contributions&rdquo;.
       </p>
     </>
   );
@@ -126,12 +186,21 @@ export function OrganizationsMethodologyNotes() {
         between years. ITC&apos;s absence in 2025 represents missing reporting,
         not zero expenditure.
       </p>
+      <h4 className="font-medium text-gray-900">
+        Revenue and expenditure flow diagram
+      </h4>
       <p>
-        The classification of UN System Functions has changed over time. For
-        comparability purposes, the previous &ldquo;normative, treaty-related
-        and knowledge creation activities&rdquo; and &ldquo;technical
-        cooperation&rdquo; functions have been aggregated under the new
-        &ldquo;global agenda and specialised assistance&rdquo; function.
+        Revenue and expenditure are independent reported dimensions. The diagram
+        does not trace a contributor&apos;s funding to a destination. Detailed
+        columns show the largest 12 items and combine the remainder into an
+        expandable display group; these groups are separate from source
+        aggregates and calculated balances.
+      </p>
+      <p>
+        Breakdown / total difference is a signed reconciliation amount, not an
+        assigned destination. Geography includes regional and global records.
+        Source classification conflicts remain disclosed. The diagram retains
+        CEB organization totals without Secretariat substitution.
       </p>
     </>
   );
@@ -164,6 +233,41 @@ export function LocationsMethodologyNotes() {
         The boundaries and names shown and the designations used on any map
         shown do not imply official endorsement or acceptance by the United
         Nations.
+      </p>
+      <h4 className="font-medium text-gray-900">
+        Map and geographic reporting levels
+      </h4>
+      <p>
+        Country, subregional, regional and global amounts are separate reported
+        records. Regional markers are illustrative positions, not operational
+        locations or territorial boundaries; the global marker is placed in the
+        south Pacific for readability. Circle areas represent expenditure.
+        Organization filters retain the selected scale. Placement and
+        source-classification notes are available on the relevant location
+        tooltips.
+      </p>
+      <h4 className="font-medium text-gray-900">
+        Function and geographic-level chart
+      </h4>
+      <p>
+        This chart uses the function and location recorded together on CEB
+        geographic expense records (E06); overlapping E06A/B/C components are
+        excluded. Regional and subregional records are combined, while global
+        amounts remain unallocated to countries. Negative amounts remain in net
+        totals. Function attribution is complete from 2020; earlier incomplete
+        attribution remains explicitly unreported. Geographic function totals
+        may differ from the independently reported function totals.
+      </p>
+      <p>
+        <a
+          href="https://unsceb.org/assets/data/FS/expenses_by_country_region_sub_agency.csv"
+          className="underline"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download CEB geographic expenditure records
+        </a>
+        .
       </p>
       {SHOW_UNINFO && (
         <>
@@ -219,8 +323,8 @@ export function GoalsMethodologyNotes() {
       reported allocations to SDGs 1–17 and Non-SDG, so the total reconciles to
       organization expenditure. This separate remainder includes missing SDG
       reporting and signed reconciliation differences; it does not establish
-      that the expenditure is unrelated to the SDGs. Available years end in
-      2024.
+      that the expenditure is unrelated to the SDGs. Available years run from{" "}
+      {manifest.sdgExpenses.min} to {manifest.sdgExpenses.max}.
       {SHOW_UNINFO && (
         <>
           {" "}
@@ -241,6 +345,326 @@ export function SecretariatMethodology() {
       departments, offices, commissions and missions. They are not the same as
       the CEB system-wide aggregates shown under UN System Financials.
     </p>
+  );
+}
+
+export const SECRETARIAT_METHODOLOGY_PAGES = [
+  {
+    id: "overview",
+    title: "Overview",
+    source: "UN Secretariat programme budget and financial statements",
+  },
+  {
+    id: "programme-budget",
+    title: "Programme Budget",
+    source: "Proposed Programme Budget documents",
+  },
+  {
+    id: "programme-budget-contributors",
+    title: "Programme Budget — Contributors",
+    source: "UN assessment circulars and regular-budget honour roll",
+  },
+  {
+    id: "peacekeeping-budget",
+    title: "Peacekeeping Budget",
+    source: "Peacekeeping budget and performance reports",
+  },
+  {
+    id: "peacekeeping-contributors",
+    title: "Peacekeeping Budget — Contributors",
+    source: "UN peacekeeping assessment circulars",
+  },
+  {
+    id: "trust-funds",
+    title: "Trust Funds",
+    source: "UN Secretariat trust-fund schedules and separate entity reports",
+  },
+  {
+    id: "trust-fund-contributors",
+    title: "Trust Funds — Contributors",
+    source:
+      "UN Secretariat trust-fund schedules and separate contributor reports",
+  },
+  {
+    id: "field-missions",
+    title: "Field Missions",
+    source: "UN Secretariat field-mission data",
+  },
+] as const;
+
+export type SecretariatMethodologyPage =
+  (typeof SECRETARIAT_METHODOLOGY_PAGES)[number]["id"];
+
+function SecretariatPageSourceNotes({
+  page,
+}: {
+  page: SecretariatMethodologyPage;
+}) {
+  switch (page) {
+    case "overview":
+      return (
+        <p>
+          This simplified overview is based on data from the{" "}
+          <PageSourceLink source="annualReport" />.
+        </p>
+      );
+    case "programme-budget":
+      return (
+        <p>
+          Figures are extracted from the{" "}
+          <PageSourceLink source="programmeBudget" />.
+        </p>
+      );
+    case "programme-budget-contributors":
+      return (
+        <p>
+          Assessment amounts come from{" "}
+          <PageSourceLink source="regularAssessments" />; paid-in-full status
+          and dates come from the <PageSourceLink source="honourRoll" />.
+        </p>
+      );
+    case "peacekeeping-budget":
+      return (
+        <p>
+          Figures are extracted from the Secretary-General’s{" "}
+          <PageSourceLink source="peacekeepingDocuments" />. Learn{" "}
+          <PageSourceLink source="peacekeepingFunding" />.
+        </p>
+      );
+    case "peacekeeping-contributors":
+      return (
+        <p>
+          Figures come from <PageSourceLink source="peacekeepingAssessments" />.
+        </p>
+      );
+    case "trust-funds":
+      return (
+        <p>
+          The fund schedules come from <PageSourceLink source="trustFunds" />.
+          Separate entity reports are linked on their figures.
+        </p>
+      );
+    case "trust-fund-contributors":
+      return (
+        <p>
+          The schedule view uses <PageSourceLink source="trustFunds" />.
+          Separate entity views link their own source pages.
+        </p>
+      );
+    case "field-missions":
+      return (
+        <p>
+          Financial figures come from the{" "}
+          <PageSourceLink source="annualReport" />.
+        </p>
+      );
+  }
+}
+
+export function SecretariatPageMethodologyContent({
+  page,
+  includeGeneral = true,
+  includeChartNotes = false,
+}: {
+  page: SecretariatMethodologyPage;
+  includeGeneral?: boolean;
+  includeChartNotes?: boolean;
+}) {
+  const metadata = SECRETARIAT_METHODOLOGY_PAGES.find(
+    (item) => item.id === page,
+  )!;
+  return (
+    <div className="space-y-4" data-secretariat-methodology={page}>
+      <p>Source: {metadata.source}</p>
+      {includeGeneral && <SecretariatMethodology />}
+      <SecretariatPageSourceNotes page={page} />
+      {page === "overview" && (
+        <>
+          <SecretariatOverviewMethodologyNotes />
+          {includeChartNotes && (
+            <>
+              <SecretariatFlowsMethodologyNotes mechanisms />
+              <SecretariatFlowsMethodologyNotes />
+            </>
+          )}
+        </>
+      )}
+      {page === "programme-budget" && <ProgrammeBudgetMethodologyNotes />}
+      {page === "programme-budget-contributors" && (
+        <>
+          <ProgrammeBudgetContributorsMethodologyNotes />
+          {includeChartNotes && <ProgrammeBudgetContributorChartNotes />}
+        </>
+      )}
+      {page === "peacekeeping-budget" && (
+        <>
+          <PeacekeepingBudgetMethodologyNotes />
+          {includeChartNotes && <PeacekeepingBudgetChartNotes />}
+        </>
+      )}
+      {page === "peacekeeping-contributors" && (
+        <>
+          <PeacekeepingContributorsMethodologyNotes />
+          {includeChartNotes && <PeacekeepingContributorChartNotes />}
+        </>
+      )}
+      {page === "trust-funds" && <TrustFundsMethodologyNotes />}
+      {page === "trust-fund-contributors" && (
+        <>
+          <TrustFundContributorsMethodologyNotes />
+          {includeChartNotes && <TrustFundContributorChartNotes />}
+        </>
+      )}
+      {page === "field-missions" && <FieldMissionsMethodologyNotes />}
+    </div>
+  );
+}
+
+export function SecretariatPageMethodology({
+  page,
+}: {
+  page: SecretariatMethodologyPage;
+}) {
+  return (
+    <>
+      <ChartDataDisclaimer />
+      <section
+        className="mx-auto max-w-6xl px-6 pb-12 md:px-12 lg:px-16"
+        aria-label="Sources and methodology"
+        data-page-methodology
+      >
+        <details className="border-t border-gray-200">
+          <summary
+            id="methodology"
+            className="cursor-pointer py-4 text-lg font-medium text-gray-900"
+          >
+            Sources and methodology
+          </summary>
+          <div className="space-y-6 py-4 text-sm leading-relaxed text-gray-600">
+            <SecretariatPageMethodologyContent page={page} />
+            <div
+              id="secretariat-chart-source-notes"
+              className="space-y-4 empty:hidden"
+            />
+          </div>
+        </details>
+      </section>
+    </>
+  );
+}
+
+export function SecretariatPageSourceProvider({
+  page,
+  children,
+}: {
+  page: SecretariatMethodologyPage;
+  children: React.ReactNode;
+}) {
+  const metadata = SECRETARIAT_METHODOLOGY_PAGES.find(
+    (item) => item.id === page,
+  )!;
+  return (
+    <ChartSourceProvider
+      label={metadata.source}
+      details={null}
+      placement="page"
+      pageDetailsTargetId="secretariat-chart-source-notes"
+    >
+      {children}
+    </ChartSourceProvider>
+  );
+}
+
+export function SecretariatFlowsMethodologyNotes({
+  mechanisms = false,
+}: {
+  mechanisms?: boolean;
+}) {
+  return (
+    <>
+      <p>
+        {mechanisms
+          ? "Annual-report expenditure by funding mechanism and priority area."
+          : "Annual-report expenditure by funding arrangement, entity category and priority area."}{" "}
+        All funding sources are included. Ribbons show gross positive
+        expenditure; signed corrections remain in net totals and source details.
+      </p>
+      {!mechanisms && (
+        <p>
+          Unitemized extrabudgetary resources are shown by reporting entity.
+          These remain unitemized amounts, not identified trust funds. Expansion
+          preserves every source record and the total. Trust funds are shown
+          together.
+        </p>
+      )}
+      {!mechanisms && (
+        <p>
+          Calendar and peacekeeping periods differ. IRMCT includes
+          source-labelled budget substitutes. Staff Assessment follows the
+          source allocation. Treaty financing retains the original Voluntary
+          tag; unresolved convention rows retain their original wording.
+        </p>
+      )}
+    </>
+  );
+}
+
+export function ProgrammeBudgetContributorChartNotes() {
+  return (
+    <>
+      <p>
+        “Not listed as paid in full” may include Member States that made a
+        partial payment. It does not mean that no payment was made.
+      </p>
+      <p>
+        From 2025, the circular&apos;s total includes the Peacebuilding Fund
+        portion assessed in the regular-budget circular. Other assessed and
+        extrabudgetary contributions are excluded from this view.
+      </p>
+    </>
+  );
+}
+
+export function PeacekeepingContributorChartNotes() {
+  return (
+    <>
+      <p>
+        The displayed total sums signed net assessments represented by tiles.
+        Zero and negative amounts are excluded from the treemap.
+      </p>
+      <p>
+        Net assessments add assessment sections and subtract prior-period
+        credits. They do not show payments received, arrears or voluntary
+        contributions. Click a Member State to see its mission breakdown and
+        source circulars.
+      </p>
+    </>
+  );
+}
+
+export function PeacekeepingBudgetChartNotes() {
+  return (
+    <p>
+      Approved budget means the appropriation printed in the source report.
+      Fiscal years run from July to June.
+    </p>
+  );
+}
+
+export function TrustFundContributorChartNotes() {
+  return (
+    <>
+      <p>
+        Tile area is the signed net of extracted contribution and transfer rows;
+        click a contributor to see its funds and reconstructed entity
+        destinations.
+      </p>
+      <p>
+        Entity attribution describes which Secretariat entity owns the
+        destination fund; it does not prove that a contributor financed a
+        particular expense.
+      </p>
+    </>
   );
 }
 

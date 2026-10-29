@@ -1,10 +1,9 @@
-import { SystemPageSources } from "@/components/PageSources";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { ContributorTrendsChart } from "@/components/ContributorTrendsChart";
 import { ContributorsTreemap } from "@/components/ContributorsTreemap";
 import {
-  CebMethodology,
+  CebPageMethodology,
   ContributorsMethodologyNotes,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
@@ -20,15 +19,10 @@ export default function SystemContributorsPage() {
   return (
     <ChartSourceProvider
       label="CEB financial statistics"
-      details={
-        <>
-          <CebMethodology />
-          <ContributorsMethodologyNotes />
-        </>
-      }
+      details={null}
+      placement="page"
     >
       <PageHeading
-        sources={<SystemPageSources />}
         id="donors"
         title="Who is contributing?"
         description="The work of the UN System is financially supported by many contributors. Explore who is contributing to the UN System, which organizations they fund, and what type of contributions they make — including assessed contributions, voluntary contributions (unearmarked), and voluntary contributions (earmarked)."
@@ -42,6 +36,9 @@ export default function SystemContributorsPage() {
           <ContributorTrendsChart />
         </div>
       </PageBody>
+      <CebPageMethodology>
+        <ContributorsMethodologyNotes />
+      </CebPageMethodology>
     </ChartSourceProvider>
   );
 }

@@ -2,14 +2,14 @@ code,name,description,alt_descriptors
 C01,Government,Government contributions,
 C02,NGOs,Non-governmental organizations,NGO
 C03,Public Private Partnership,Public-private partnerships,
-C04A,Multilateral - IFIs,"International Financial Institutions (World Bank, IMF, etc.)",Multilateral - International Financial Institutions
-C04B,Multilateral - Global Funds,"Global vertical funds (GEF, Global Fund, GAVI)",Multilateral - Global vertical funds
-C04C,Multilateral - UN Orgs,UN organizations excluding pooled funds,Multilateral - UN organizations excluding pooled funds
-C04D,Multilateral - UN Pooled Funds,UN inter-agency pooled funds,Multilateral - UN Inter-agency pooled funds
-C04E,Multilateral - Other,Other multilateral institutions,
+C04A,Multilateral - International Financial Institutions,"International Financial Institutions (World Bank, IMF, etc.)",Multilateral - IFIs|Multilateral - International Financial Institutions
+C04B,Multilateral - Global vertical funds,"Global vertical funds (GEF, Global Fund, GAVI)",Multilateral - Global Funds|Multilateral - Global vertical funds
+C04C,Multilateral - UN organizations excluding pooled funds,UN organizations excluding pooled funds,Multilateral - UN Orgs|Multilateral - UN organizations excluding pooled funds
+C04D,Multilateral - UN Inter-agency pooled funds,UN inter-agency pooled funds,Multilateral - UN Inter-agency pooled funds|Multilateral - UN Pooled Funds
+C04E,Multilateral - Others,Other multilateral institutions,Multilateral - Other
 C05,Foundations,Philanthropic foundations,Foundation
 C06,Private Sector,Private sector/corporate,Private Sector
-C07,Academic,"Academic, training and research institutions",
-C08A,European Union,EU and European Commission,Other - European Commission
-C08B,Other Contributors,Other contributors not classified elsewhere,Other - Excluding European Commission
-C09,No Contributor,Revenue from activities (not from contributors),
+C07,"Academic, Training and Research","Academic, training and research institutions",Academic
+C08A,Other - European Union,EU and European Commission,European Union|Other - European Commission
+C08B,Other - Other Contributor,Other contributors not classified elsewhere,Other - Excluding European Commission|Other Contributors
+C09,No contributor,Revenue from activities (not from contributors),No Contributor

@@ -1,5 +1,7 @@
 # Secretariat membership and separately reported extrabudgetary funds
 
+> **Historical document — current CEB policy:** This document retains the findings, source vintage or design proposals of its original investigation. It is not the current CEB transformation contract. See [CEB methodology](../../ceb-methodology.md) and the current source register/manifest for active rules and coverage.
+
 Research checked 26 October 2026. The source investigation initially used 2023;
 the reconciliation below extends the check to 2024 and inspects the 2025 ARWO
 workbook. The supplied chart matches the 2025 ARWO XB amounts. This is a source

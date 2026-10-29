@@ -51,6 +51,9 @@ export interface BudgetEntry {
 export interface DonorContribution {
   donor: string;
   total: number;
+  record_kind?: "reported_named" | "reported_aggregate" | "calculated_balance";
+  unresolvedTotal?: number;
+  financingIncomplete?: boolean;
   Assessed?: number;
   "Voluntary earmarked"?: number;
   "Voluntary un-earmarked"?: number;

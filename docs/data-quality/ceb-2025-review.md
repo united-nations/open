@@ -1,5 +1,7 @@
 # CEB 2025 integration review
 
+> **Historical document — current CEB policy:** This document retains the findings, source vintage or design proposals of its original investigation. It is not the current CEB transformation contract. See [CEB methodology](../ceb-methodology.md) and the current source register/manifest for active rules and coverage.
+
 The portal now uses the complete CEB publication downloaded on 9 October 2026, including its revised historical records. Organizations, Contributors and Locations offer 2025. Goals remain at 2024 because CEB has not published 2025 SDG records in this download. The changes are prepared locally; they have not been deployed.
 
 ## Source and reconciliation
@@ -24,7 +26,7 @@ The Goals export now calculates per-entity Not specified balances against CEB
 expense controls. Reported SDG allocations and explicit `x00` (Non-SDG) values
 are preserved as separate categories; no combined Unallocated amount is exported. This replaces the original
 integration decision below to show only the reported SDG scope. See
-[SDG reconciliation](../data-fusion-expenses.md#sdg-reconciliation-23-october-2026).
+[SDG reconciliation](../data-fusion-expenses.md#sdg-reconciliation).
 Totals now reconcile to the CEB-only organization expense series for 2018–2024.
 Missing SDG reporting is not evidence of expenditure unrelated to the SDGs.
 

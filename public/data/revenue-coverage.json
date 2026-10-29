@@ -3,90 +3,120 @@
     "controls": true,
     "government": false,
     "nonGovernment": true,
-    "note": "Government donor detail is unavailable. Reported non-government contributors are shown; the remaining revenue is Unattributed, not non-government funding."
+    "note": "Government donor detail is unavailable. Remaining revenue is Unattributed, not non-government funding.",
+    "unresolvedFinancingRows": 0,
+    "unresolvedFinancingAmount": 0.0
   },
   "2012": {
     "controls": true,
     "government": false,
     "nonGovernment": true,
-    "note": "Government donor detail is unavailable. Reported non-government contributors are shown; the remaining revenue is Unattributed, not non-government funding."
+    "note": "Government donor detail is unavailable. Remaining revenue is Unattributed, not non-government funding.",
+    "unresolvedFinancingRows": 0,
+    "unresolvedFinancingAmount": 0.0
   },
   "2013": {
     "controls": true,
     "government": true,
     "nonGovernment": true,
-    "note": null
+    "note": null,
+    "unresolvedFinancingRows": 0,
+    "unresolvedFinancingAmount": 0.0
   },
   "2014": {
     "controls": true,
     "government": true,
     "nonGovernment": true,
-    "note": null
+    "note": null,
+    "unresolvedFinancingRows": 0,
+    "unresolvedFinancingAmount": 0.0
   },
   "2015": {
     "controls": true,
     "government": true,
     "nonGovernment": true,
-    "note": null
+    "note": "Some historical non-government source records have unresolved financing codes. They are available separately and excluded from additive four-type contributor totals; their financing allocation is not inferred.",
+    "unresolvedFinancingRows": 268,
+    "unresolvedFinancingAmount": 5633922511.879999
   },
   "2016": {
     "controls": true,
     "government": true,
     "nonGovernment": true,
-    "note": null
+    "note": "Some historical non-government source records have unresolved financing codes. They are available separately and excluded from additive four-type contributor totals; their financing allocation is not inferred.",
+    "unresolvedFinancingRows": 339,
+    "unresolvedFinancingAmount": 6295536189.610001
   },
   "2017": {
     "controls": true,
     "government": true,
     "nonGovernment": true,
-    "note": null
+    "note": "Some historical non-government source records have unresolved financing codes. They are available separately and excluded from additive four-type contributor totals; their financing allocation is not inferred.",
+    "unresolvedFinancingRows": 194,
+    "unresolvedFinancingAmount": 6934133462.290001
   },
   "2018": {
     "controls": true,
     "government": true,
     "nonGovernment": true,
-    "note": null
+    "note": null,
+    "unresolvedFinancingRows": 0,
+    "unresolvedFinancingAmount": 0.0
   },
   "2019": {
     "controls": true,
     "government": true,
     "nonGovernment": true,
-    "note": null
+    "note": null,
+    "unresolvedFinancingRows": 0,
+    "unresolvedFinancingAmount": 0.0
   },
   "2020": {
     "controls": true,
     "government": true,
     "nonGovernment": true,
-    "note": null
+    "note": null,
+    "unresolvedFinancingRows": 0,
+    "unresolvedFinancingAmount": 0.0
   },
   "2021": {
     "controls": true,
     "government": true,
     "nonGovernment": true,
-    "note": null
+    "note": null,
+    "unresolvedFinancingRows": 0,
+    "unresolvedFinancingAmount": 0.0
   },
   "2022": {
     "controls": true,
     "government": true,
     "nonGovernment": true,
-    "note": null
+    "note": null,
+    "unresolvedFinancingRows": 0,
+    "unresolvedFinancingAmount": 0.0
   },
   "2023": {
     "controls": true,
     "government": true,
     "nonGovernment": true,
-    "note": null
+    "note": null,
+    "unresolvedFinancingRows": 0,
+    "unresolvedFinancingAmount": 0.0
   },
   "2024": {
     "controls": true,
     "government": true,
     "nonGovernment": true,
-    "note": null
+    "note": null,
+    "unresolvedFinancingRows": 0,
+    "unresolvedFinancingAmount": 0.0
   },
   "2025": {
     "controls": true,
     "government": true,
     "nonGovernment": true,
-    "note": null
+    "note": null,
+    "unresolvedFinancingRows": 0,
+    "unresolvedFinancingAmount": 0.0
   }
 }

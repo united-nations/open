@@ -69,9 +69,14 @@ class FlowTests(unittest.TestCase):
         # DPO is the 2023 SDG alias of UN-DPO. UNRISD is a 2018 UN
         # sub-agency, not a separate organization in the spending backbone.
         self.assertNotIn('DPO', next(y for y in result['data'] if y['year'] == 2023)['entities'])
-        # Geography now reports UNRISD separately, while its SDGs still roll
-        # into the expense-source parent. Preserve that source distinction.
-        self.assertIsNone(next(y for y in result['data'] if y['year'] == 2018)['entities']['UNRISD']['total'])
+        # Same-year source establishes the parent in 2018; geographic source
+        # aliases roll into it while retaining their original agency metadata.
+        entities_2018 = next(y for y in result['data'] if y['year'] == 2018)['entities']
+        self.assertNotIn('UNRISD', entities_2018)
+        self.assertTrue(any('UNRISD' in row['sourceEntities'] for row in entities_2018['UN Secretariat']['geography']))
+        # No 2017 source relationship establishes a parent, so retain that
+        # observation as partial coverage rather than guessing a historical parent.
+        self.assertIsNone(next(y for y in result['data'] if y['year'] == 2017)['entities']['UNRISD']['total'])
         self.assertAlmostEqual(sum(g['amount'] for g in next(y for y in result['data'] if y['year'] == 2018)['entities']['UN Secretariat']['goals']), 2207230)
         # Source-only reporters may have no backbone control; retain them explicitly.
         self.assertTrue(all(e['geographyDifference'] is None for y in result['data'] for e in y['entities'].values() if e['total'] is None))

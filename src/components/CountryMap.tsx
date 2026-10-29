@@ -381,43 +381,6 @@ export function CountryMap() {
               label: `${row.name} (${row.level})`,
               amount: row.total,
             }))}
-            details={
-              <div className="space-y-2">
-                <p>
-                  Country, subregional, regional and global amounts are separate
-                  reported records, not allocations of the same amount. Regional
-                  markers are illustrative positions, not operational locations
-                  or territorial boundaries. The global marker is placed in the
-                  south Pacific for readability.
-                </p>
-                <p>
-                  Circle areas are proportional to expenditure. Selecting an
-                  entity adjusts the size scale to its share of total
-                  expenditure; reporting-level filters and location searches
-                  preserve that scale.
-                </p>
-                <details>
-                  <summary className="cursor-pointer">
-                    Placement notes and source classification issues
-                  </summary>
-                  <ul className="list-disc pl-5">
-                    {filteredData
-                      .filter((row) =>
-                        row.notes.some((note) =>
-                          /conflict|potentially|No verified|Source labels|territorial/.test(
-                            note,
-                          ),
-                        ),
-                      )
-                      .map((row) => (
-                        <li key={row.iso3}>
-                          {row.name}: {row.notes.join(" ")}
-                        </li>
-                      ))}
-                  </ul>
-                </details>
-              </div>
-            }
           />
         }
       >

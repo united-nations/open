@@ -1,7 +1,6 @@
 "use client";
-import { useMoneyBasis } from "@/hooks/useMoneyBasis";
-import { MoneyBasisControl } from "@/components/charts/MoneyBasisControl";
 import { contributorYearAvailable } from "@/lib/revenueCoverage";
+import { contributorFinancingPoint } from "@/lib/contributors";
 import {
   TREND_CHART_HEIGHT,
   TREND_CHART_MARGIN,
@@ -36,6 +35,7 @@ import {
 interface ContributorYearData {
   year: number;
   available?: boolean;
+  financingIncomplete?: boolean;
   total: number;
   assessed: number;
   other: number;
@@ -52,6 +52,7 @@ interface ContributorTrendsData {
   };
   aggregates: Record<string, ContributorYearData[]>; // includes gov, non-gov, all, cat:X
   contributors: Record<string, ContributorYearData[]>;
+  categoryContributors?: Record<string, Record<string, ContributorYearData[]>>;
 }
 
 // Color palette for lines - designed for good contrast
@@ -103,7 +104,7 @@ export function ContributorTrendsChart() {
       ? Object.entries(data.meta.nonGovCategories).map(([cat, donors]) => ({
           id: `cat:${cat}`,
           label: cat,
-          children: donors,
+          children: donors.map((donor) => `${donor} — ${cat}`),
         }))
       : [];
 
@@ -185,7 +186,10 @@ export function ContributorTrendsChart() {
             ? (data.aggregates.gov[idx]?.total ?? 0)
             : null;
         } else if (id === "non-gov") {
-          point["Non-Government"] = data.aggregates["non-gov"][idx]?.total || 0;
+          const value = data.aggregates["non-gov"][idx];
+          point["Non-Government"] = value?.financingIncomplete
+            ? null
+            : (value?.total ?? null);
         } else if (id === "unattributed" || id === "all") {
           point[id === "all" ? "All contributors" : "Unattributed"] =
             contributorYearAvailable(id, year, data.meta.governmentContributors)
@@ -194,20 +198,43 @@ export function ContributorTrendsChart() {
         } else if (id.startsWith("cat:") && data.aggregates[id]) {
           // Category aggregate - prefix to avoid collision with individual donors
           const catName = id.replace("cat:", "") + " (all)";
-          point[catName] = contributorYearAvailable(
-            id,
-            year,
-            data.meta.governmentContributors,
+          point[catName] =
+            contributorYearAvailable(
+              id,
+              year,
+              data.meta.governmentContributors,
+            ) && !data.aggregates[id][idx]?.financingIncomplete
+              ? (data.aggregates[id][idx]?.total ?? 0)
+              : null;
+        } else if (
+          data.categoryContributors &&
+          Object.entries(data.categoryContributors).some(([category, donors]) =>
+            Object.keys(donors).some(
+              (donor) => `${donor} — ${category}` === id,
+            ),
           )
-            ? (data.aggregates[id][idx]?.total ?? 0)
-            : null;
+        ) {
+          for (const [category, donors] of Object.entries(
+            data.categoryContributors,
+          )) {
+            for (const [donor, series] of Object.entries(donors)) {
+              if (`${donor} — ${category}` === id)
+                point[id] =
+                  series[idx]?.available === false ||
+                  series[idx]?.financingIncomplete
+                    ? null
+                    : (series[idx]?.total ?? null);
+            }
+          }
         } else if (data.contributors[id]) {
           point[id] =
             contributorYearAvailable(
               id,
               year,
               data.meta.governmentContributors,
-            ) && data.contributors[id][idx]?.available !== false
+            ) &&
+            data.contributors[id][idx]?.available !== false &&
+            !data.contributors[id][idx]?.financingIncomplete
               ? (data.contributors[id][idx]?.total ?? 0)
               : null;
         }
@@ -283,28 +310,17 @@ export function ContributorTrendsChart() {
 
       if (!sourceData) return [];
 
-      return sourceData
-        .filter(
-          (item) =>
-            contributorYearAvailable(
-              financingContributor,
-              item.year,
-              data.meta.governmentContributors,
-            ) && item.available !== false,
-        )
-        .map((item) => ({
-          year: item.year.toString(),
-          Assessed: item.assessed,
-          "Voluntary un-earmarked": item.voluntary_unearmarked,
-          "Voluntary earmarked": item.voluntary_earmarked,
-          Other: item.other,
-        }));
+      return sourceData.map((item) =>
+        contributorFinancingPoint(
+          item,
+          contributorYearAvailable(
+            financingContributor,
+            item.year,
+            data.meta.governmentContributors,
+          ),
+        ),
+      );
     }, [data, financingContributor]);
-
-  const compareMoney = useMoneyBasis(
-    chartData,
-    lines.map((line) => line.dataKey),
-  );
 
   // Controls depend on the asynchronously loaded contributor groups. Mount
   // them with the data so their generated IDs are not hydrated across a
@@ -325,7 +341,9 @@ export function ContributorTrendsChart() {
       <p className="mt-4 text-sm text-gray-600">
         Contributor data starts in 2011. Government detail starts in 2013;
         remaining controlled revenue in 2011–2012 is Unattributed. Missing
-        government years are not zero contributions.
+        government years are not zero contributions. Historical donor records
+        with unresolved financing are available below the contributor chart;
+        their incomplete financing trends are shown as gaps.
       </p>
       {/* Charts container - grid for aligned columns */}
       <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-6">
@@ -345,11 +363,6 @@ export function ContributorTrendsChart() {
             />
           </div>
 
-          <MoneyBasisControl
-            basis={compareMoney.basis}
-            onChange={compareMoney.setBasis}
-            missingPeriods={compareMoney.missingPeriods}
-          />
           {/* Chart - mt-auto pushes to bottom of grid cell */}
           <div
             className="mt-auto w-full shrink-0"
@@ -365,7 +378,7 @@ export function ContributorTrendsChart() {
               </div>
             ) : (
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={compareMoney.data} margin={TREND_CHART_MARGIN}>
+                <LineChart data={chartData} margin={TREND_CHART_MARGIN}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                   <XAxis
                     dataKey="year"
@@ -384,12 +397,7 @@ export function ContributorTrendsChart() {
                     mirror
                   />
                   <Tooltip
-                    content={(props) => (
-                      <FinancialChartTooltip
-                        {...props}
-                        unitLabel={compareMoney.unitLabel}
-                      />
-                    )}
+                    content={(props) => <FinancialChartTooltip {...props} />}
                   />
                   {lines.map((line) => (
                     <Line
@@ -434,6 +442,8 @@ export function ContributorTrendsChart() {
             ) : (
               <FinancingInstrumentChart
                 data={financingInstrumentData}
+                accessibleTableLabel="Revenue by financing instrument"
+                allowNegative
                 height={TREND_CHART_HEIGHT}
                 filterable
               />

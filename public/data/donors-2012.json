@@ -1,7 +1,366 @@
 {
+  "Bill & Melinda Gates Foundation": {
+    "status": "organization",
+    "category": "Non-Government",
+    "categories": [
+      "Non-Government"
+    ],
+    "record_kind": "reported_named",
+    "is_other": false,
+    "contributions": {
+      "ILO": {
+        "Voluntary earmarked": 5375029.0
+      },
+      "PAHO": {
+        "Voluntary earmarked": 1288500.0
+      },
+      "UN Secretariat": {
+        "Voluntary earmarked": 1877546.0
+      },
+      "UNAIDS": {
+        "Voluntary earmarked": 120000.0
+      },
+      "UNDP": {
+        "Voluntary earmarked": 10013917.0
+      },
+      "UNESCO": {
+        "Voluntary earmarked": 2288889.0
+      },
+      "WHO": {
+        "Voluntary earmarked": 271186801.0
+      }
+    },
+    "categoryContributions": {
+      "Non-Government": {
+        "ILO": {
+          "Voluntary earmarked": 5375029.0
+        },
+        "PAHO": {
+          "Voluntary earmarked": 1288500.0
+        },
+        "UN Secretariat": {
+          "Voluntary earmarked": 1877546.0
+        },
+        "UNAIDS": {
+          "Voluntary earmarked": 120000.0
+        },
+        "UNDP": {
+          "Voluntary earmarked": 10013917.0
+        },
+        "UNESCO": {
+          "Voluntary earmarked": 2288889.0
+        },
+        "WHO": {
+          "Voluntary earmarked": 271186801.0
+        }
+      }
+    },
+    "unresolvedContributions": {},
+    "unresolvedFinancingRecords": [],
+    "total": 292150682.0,
+    "unresolvedTotal": 0,
+    "financingIncomplete": false
+  },
+  "European Union": {
+    "status": "organization",
+    "category": "Non-Government",
+    "categories": [
+      "Non-Government"
+    ],
+    "record_kind": "reported_named",
+    "is_other": false,
+    "contributions": {
+      "IAEA": {
+        "Voluntary earmarked": 481399.22
+      },
+      "ICAO": {
+        "Voluntary earmarked": 619826.18
+      },
+      "ILO": {
+        "Voluntary earmarked": 24256502.0
+      },
+      "PAHO": {
+        "Voluntary earmarked": 3843821.0
+      },
+      "UN Secretariat": {
+        "Voluntary earmarked": 77860681.0
+      },
+      "UN-Habitat": {
+        "Voluntary earmarked": 26580946.0
+      },
+      "UNAIDS": {
+        "Voluntary earmarked": 1509177.0
+      },
+      "UNDP": {
+        "Voluntary earmarked": 252667152.0
+      },
+      "UNESCO": {
+        "Voluntary earmarked": 10500047.0
+      },
+      "UNRWA": {
+        "Voluntary un-earmarked": 116443280.0,
+        "Voluntary earmarked": 74951357.0
+      },
+      "WHO": {
+        "Voluntary earmarked": 65708564.0
+      },
+      "WTO": {
+        "Voluntary earmarked": 1873940.14
+      }
+    },
+    "categoryContributions": {
+      "Non-Government": {
+        "IAEA": {
+          "Voluntary earmarked": 481399.22
+        },
+        "ICAO": {
+          "Voluntary earmarked": 619826.18
+        },
+        "ILO": {
+          "Voluntary earmarked": 24256502.0
+        },
+        "PAHO": {
+          "Voluntary earmarked": 3843821.0
+        },
+        "UN Secretariat": {
+          "Voluntary earmarked": 77860681.0
+        },
+        "UN-Habitat": {
+          "Voluntary earmarked": 26580946.0
+        },
+        "UNAIDS": {
+          "Voluntary earmarked": 1509177.0
+        },
+        "UNDP": {
+          "Voluntary earmarked": 252667152.0
+        },
+        "UNESCO": {
+          "Voluntary earmarked": 10500047.0
+        },
+        "UNRWA": {
+          "Voluntary un-earmarked": 116443280.0,
+          "Voluntary earmarked": 74951357.0
+        },
+        "WHO": {
+          "Voluntary earmarked": 65708564.0
+        },
+        "WTO": {
+          "Voluntary earmarked": 1873940.14
+        }
+      }
+    },
+    "unresolvedContributions": {},
+    "unresolvedFinancingRecords": [],
+    "total": 657296692.54,
+    "unresolvedTotal": 0,
+    "financingIncomplete": false
+  },
+  "GAVI, The Vaccine Alliance": {
+    "status": "organization",
+    "category": "Non-Government",
+    "categories": [
+      "Non-Government"
+    ],
+    "record_kind": "reported_named",
+    "is_other": false,
+    "contributions": {
+      "PAHO": {
+        "Voluntary earmarked": 793614.0
+      },
+      "WHO": {
+        "Voluntary earmarked": 92582495.0
+      }
+    },
+    "categoryContributions": {
+      "Non-Government": {
+        "PAHO": {
+          "Voluntary earmarked": 793614.0
+        },
+        "WHO": {
+          "Voluntary earmarked": 92582495.0
+        }
+      }
+    },
+    "unresolvedContributions": {},
+    "unresolvedFinancingRecords": [],
+    "total": 93376109.0,
+    "unresolvedTotal": 0,
+    "financingIncomplete": false
+  },
+  "Global Environment Facility (thru UNDP or UNEP)": {
+    "status": "organization",
+    "category": "Non-Government",
+    "categories": [
+      "Non-Government"
+    ],
+    "record_kind": "reported_named",
+    "is_other": false,
+    "contributions": {
+      "UNDP": {
+        "Voluntary earmarked": 348783644.0
+      }
+    },
+    "categoryContributions": {
+      "Non-Government": {
+        "UNDP": {
+          "Voluntary earmarked": 348783644.0
+        }
+      }
+    },
+    "unresolvedContributions": {},
+    "unresolvedFinancingRecords": [],
+    "total": 348783644.0,
+    "unresolvedTotal": 0,
+    "financingIncomplete": false
+  },
+  "Multi Donor Trust Funds": {
+    "status": "organization",
+    "category": "Non-Government",
+    "categories": [
+      "Non-Government"
+    ],
+    "record_kind": "reported_aggregate",
+    "is_other": false,
+    "contributions": {
+      "UNAIDS": {
+        "Voluntary earmarked": 4233908.0
+      },
+      "UNDP": {
+        "Voluntary earmarked": 240372568.0
+      },
+      "UNESCO": {
+        "Voluntary earmarked": 8288598.0
+      }
+    },
+    "categoryContributions": {
+      "Non-Government": {
+        "UNAIDS": {
+          "Voluntary earmarked": 4233908.0
+        },
+        "UNDP": {
+          "Voluntary earmarked": 240372568.0
+        },
+        "UNESCO": {
+          "Voluntary earmarked": 8288598.0
+        }
+      }
+    },
+    "unresolvedContributions": {},
+    "unresolvedFinancingRecords": [],
+    "total": 252895074.0,
+    "unresolvedTotal": 0,
+    "financingIncomplete": false
+  },
+  "Rotary International": {
+    "status": "organization",
+    "category": "Non-Government",
+    "categories": [
+      "Non-Government"
+    ],
+    "record_kind": "reported_named",
+    "is_other": false,
+    "contributions": {
+      "WHO": {
+        "Voluntary earmarked": 42937124.0
+      }
+    },
+    "categoryContributions": {
+      "Non-Government": {
+        "WHO": {
+          "Voluntary earmarked": 42937124.0
+        }
+      }
+    },
+    "unresolvedContributions": {},
+    "unresolvedFinancingRecords": [],
+    "total": 42937124.0,
+    "unresolvedTotal": 0,
+    "financingIncomplete": false
+  },
+  "The Global Fund": {
+    "status": "organization",
+    "category": "Non-Government",
+    "categories": [
+      "Non-Government"
+    ],
+    "record_kind": "reported_named",
+    "is_other": false,
+    "contributions": {
+      "UNAIDS": {
+        "Voluntary earmarked": 30000.0
+      },
+      "UNDP": {
+        "Voluntary earmarked": 524126225.0
+      }
+    },
+    "categoryContributions": {
+      "Non-Government": {
+        "UNAIDS": {
+          "Voluntary earmarked": 30000.0
+        },
+        "UNDP": {
+          "Voluntary earmarked": 524126225.0
+        }
+      }
+    },
+    "unresolvedContributions": {},
+    "unresolvedFinancingRecords": [],
+    "total": 524156225.0,
+    "unresolvedTotal": 0,
+    "financingIncomplete": false
+  },
+  "UN OCHA": {
+    "status": "organization",
+    "category": "Non-Government",
+    "categories": [
+      "Non-Government"
+    ],
+    "record_kind": "reported_named",
+    "is_other": false,
+    "contributions": {
+      "PAHO": {
+        "Voluntary earmarked": 374700.0
+      },
+      "UNAIDS": {
+        "Voluntary earmarked": 634501.0
+      },
+      "UNDP": {
+        "Voluntary earmarked": 12005906.0
+      },
+      "WHO": {
+        "Voluntary earmarked": 54937681.0
+      }
+    },
+    "categoryContributions": {
+      "Non-Government": {
+        "PAHO": {
+          "Voluntary earmarked": 374700.0
+        },
+        "UNAIDS": {
+          "Voluntary earmarked": 634501.0
+        },
+        "UNDP": {
+          "Voluntary earmarked": 12005906.0
+        },
+        "WHO": {
+          "Voluntary earmarked": 54937681.0
+        }
+      }
+    },
+    "unresolvedContributions": {},
+    "unresolvedFinancingRecords": [],
+    "total": 67952788.0,
+    "unresolvedTotal": 0,
+    "financingIncomplete": false
+  },
   "Unattributed": {
     "status": "organization",
     "category": "Unattributed",
+    "categories": [
+      "Unattributed"
+    ],
+    "record_kind": "calculated_balance",
+    "is_other": true,
     "contributions": {
       "FAO": {
         "Assessed": 511619509.0,
@@ -178,54 +537,248 @@
         "Other": 2429785.11
       }
     },
-    "is_other": true
+    "categoryContributions": {
+      "Unattributed": {
+        "FAO": {
+          "Assessed": 511619509.0,
+          "Voluntary earmarked": 774507947.0,
+          "Other": 47142000.0
+        },
+        "IAEA": {
+          "Assessed": 428923951.9,
+          "Voluntary earmarked": 207973217.83,
+          "Other": 3972652.94
+        },
+        "ICAO": {
+          "Assessed": 84495928.03,
+          "Voluntary earmarked": 106473394.53,
+          "Other": 15769547.01
+        },
+        "IFAD": {
+          "Voluntary un-earmarked": 580158000.0,
+          "Voluntary earmarked": 75222000.0,
+          "Other": 66462000.0
+        },
+        "ILO": {
+          "Assessed": 430810000.0,
+          "Voluntary earmarked": 220152942.0,
+          "Other": 19300000.0
+        },
+        "IMO": {
+          "Assessed": 46861421.67,
+          "Voluntary earmarked": 12885661.56,
+          "Other": 19109032.57
+        },
+        "IOM": {
+          "Assessed": 41693506.0,
+          "Voluntary un-earmarked": 9231365.0,
+          "Voluntary earmarked": 1089320567.0,
+          "Other": 95606670.0
+        },
+        "ITC": {
+          "Assessed": 20252000.0,
+          "Voluntary un-earmarked": 13352000.0,
+          "Voluntary earmarked": 19861000.0,
+          "Other": 1123000.0
+        },
+        "ITU": {
+          "Assessed": 120165770.8,
+          "Voluntary earmarked": 11024664.88,
+          "Other": 64483362.17
+        },
+        "PAHO": {
+          "Assessed": 106245000.0,
+          "Voluntary earmarked": 772473144.0,
+          "Other": 31879400.0
+        },
+        "Peacekeeping Operations": {
+          "Assessed": 7923213000.0,
+          "Voluntary earmarked": 67893000.0,
+          "Other": 32351000.0
+        },
+        "UN Secretariat": {
+          "Assessed": 2412019632.0,
+          "Voluntary earmarked": 1225947298.0,
+          "Other": 165142929.0
+        },
+        "UN Tourism": {
+          "Assessed": 14630626.35,
+          "Voluntary un-earmarked": 696661.83,
+          "Voluntary earmarked": 5380726.17,
+          "Other": 2559290.27
+        },
+        "UN Women": {
+          "Assessed": 7235000.0,
+          "Voluntary un-earmarked": 114086000.0,
+          "Voluntary earmarked": 93676000.0,
+          "Other": 5144000.0
+        },
+        "UN-Habitat": {
+          "Assessed": 12227000.0,
+          "Voluntary un-earmarked": 10949737.0,
+          "Voluntary earmarked": 109099222.0,
+          "Other": 12649095.0
+        },
+        "UNAIDS": {
+          "Voluntary un-earmarked": 217419512.0,
+          "Voluntary earmarked": 23782619.0,
+          "Other": 5670510.0
+        },
+        "UNDP": {
+          "Voluntary un-earmarked": 884356544.0,
+          "Voluntary earmarked": 2459933105.0,
+          "Other": 348174484.0
+        },
+        "UNEP": {
+          "Assessed": 181791079.0,
+          "Voluntary earmarked": 371328095.0,
+          "Other": 8240929.0
+        },
+        "UNESCO": {
+          "Assessed": 352970673.0,
+          "Voluntary earmarked": 368071623.0,
+          "Other": 48190574.0
+        },
+        "UNFPA": {
+          "Voluntary un-earmarked": 437500000.0,
+          "Voluntary earmarked": 533600000.0,
+          "Other": 9000000.0
+        },
+        "UNHCR": {
+          "Assessed": 11855800.0,
+          "Voluntary un-earmarked": 699010882.5,
+          "Voluntary earmarked": 1712425313.0,
+          "Other": 13572840.7
+        },
+        "UNICEF": {
+          "Voluntary un-earmarked": 1208296000.0,
+          "Voluntary earmarked": 2702678000.0,
+          "Other": 76443000.0
+        },
+        "UNIDO": {
+          "Assessed": 101561632.7,
+          "Voluntary earmarked": 189555275.5,
+          "Other": 1911641.99
+        },
+        "UNITAR": {
+          "Voluntary un-earmarked": 309077.63,
+          "Voluntary earmarked": 18952047.99,
+          "Other": 1309302.98
+        },
+        "UNODC": {
+          "Voluntary un-earmarked": 31586007.0,
+          "Voluntary earmarked": 320964713.0,
+          "Other": 10335169.0
+        },
+        "UNOPS": {
+          "Other": 683160000.0
+        },
+        "UNRWA": {
+          "Voluntary un-earmarked": 402177545.0,
+          "Voluntary earmarked": 300895737.0,
+          "Other": 46183176.0
+        },
+        "UNU": {
+          "Voluntary earmarked": 51238000.0,
+          "Other": 17965000.0
+        },
+        "UPU": {
+          "Assessed": 38463101.0,
+          "Voluntary earmarked": 20927951.62,
+          "Other": 9126650.0
+        },
+        "WFP": {
+          "Voluntary un-earmarked": 497615344.3,
+          "Voluntary earmarked": 3551627160.0,
+          "Other": 162164685.6
+        },
+        "WHO": {
+          "Assessed": 474609150.0,
+          "Voluntary un-earmarked": 130200014.0,
+          "Voluntary earmarked": 1002831340.0,
+          "Other": 116236390.0
+        },
+        "WIPO": {
+          "Assessed": 19263724.05,
+          "Voluntary earmarked": 11415871.62,
+          "Other": 342114124.6
+        },
+        "WMO": {
+          "Assessed": 71628942.8,
+          "Voluntary earmarked": 27374686.08,
+          "Other": 3769982.28
+        },
+        "WTO": {
+          "Assessed": 214890545.2,
+          "Voluntary earmarked": 22206972.32,
+          "Other": 2429785.11
+        }
+      }
+    },
+    "unresolvedContributions": {},
+    "unresolvedFinancingRecords": [],
+    "total": 39834763203.08,
+    "unresolvedTotal": 0,
+    "financingIncomplete": false
   },
-  "European Union": {
+  "United Nations": {
     "status": "organization",
-    "category": "European Union",
+    "category": "Non-Government",
+    "categories": [
+      "Non-Government"
+    ],
+    "record_kind": "reported_named",
+    "is_other": false,
     "contributions": {
       "IAEA": {
-        "Voluntary earmarked": 481399.22
+        "Voluntary earmarked": 19449.6
       },
       "ICAO": {
-        "Voluntary earmarked": 619826.18
+        "Voluntary earmarked": 5582026.79
       },
-      "ILO": {
-        "Voluntary earmarked": 24256502.0
-      },
-      "PAHO": {
-        "Voluntary earmarked": 3843821.0
-      },
-      "UN Secretariat": {
-        "Voluntary earmarked": 77860681.0
-      },
-      "UN-Habitat": {
-        "Voluntary earmarked": 26580946.0
-      },
-      "UNAIDS": {
-        "Voluntary earmarked": 1509177.0
+      "ITC": {
+        "Assessed": 20238000.0
       },
       "UNDP": {
-        "Voluntary earmarked": 252667152.0
-      },
-      "UNESCO": {
-        "Voluntary earmarked": 10500047.0
+        "Voluntary earmarked": 8919691.0
       },
       "UNRWA": {
-        "Voluntary un-earmarked": 116443280.0,
-        "Voluntary earmarked": 74951357.0
-      },
-      "WHO": {
-        "Voluntary earmarked": 65708564.0
-      },
-      "WTO": {
-        "Voluntary earmarked": 1873940.14
+        "Voluntary un-earmarked": 25454100.0
       }
-    }
+    },
+    "categoryContributions": {
+      "Non-Government": {
+        "IAEA": {
+          "Voluntary earmarked": 19449.6
+        },
+        "ICAO": {
+          "Voluntary earmarked": 5582026.79
+        },
+        "ITC": {
+          "Assessed": 20238000.0
+        },
+        "UNDP": {
+          "Voluntary earmarked": 8919691.0
+        },
+        "UNRWA": {
+          "Voluntary un-earmarked": 25454100.0
+        }
+      }
+    },
+    "unresolvedContributions": {},
+    "unresolvedFinancingRecords": [],
+    "total": 60213267.39,
+    "unresolvedTotal": 0,
+    "financingIncomplete": false
   },
-  "UNDP (as donor)": {
+  "United Nations Development Programme": {
     "status": "organization",
-    "category": "Multilateral - UN Orgs",
+    "category": "Non-Government",
+    "categories": [
+      "Non-Government"
+    ],
+    "record_kind": "reported_named",
+    "is_other": false,
     "contributions": {
       "IAEA": {
         "Voluntary earmarked": 55810.35
@@ -251,130 +804,39 @@
       "WHO": {
         "Voluntary earmarked": 42637235.0
       }
-    }
-  },
-  "United Nations": {
-    "status": "organization",
-    "category": "Multilateral - UN Orgs",
-    "contributions": {
-      "IAEA": {
-        "Voluntary earmarked": 19449.6
-      },
-      "ICAO": {
-        "Voluntary earmarked": 5582026.79
-      },
-      "ITC": {
-        "Assessed": 20238000.0
-      },
-      "UNDP": {
-        "Voluntary earmarked": 8919691.0
-      },
-      "UNRWA": {
-        "Voluntary un-earmarked": 25454100.0
-      }
-    }
-  },
-  "Bill & Melinda Gates Foundation": {
-    "status": "organization",
-    "category": "Foundations",
-    "contributions": {
-      "ILO": {
-        "Voluntary earmarked": 5375029.0
-      },
-      "PAHO": {
-        "Voluntary earmarked": 1288500.0
-      },
-      "UN Secretariat": {
-        "Voluntary earmarked": 1877546.0
-      },
-      "UNAIDS": {
-        "Voluntary earmarked": 120000.0
-      },
-      "UNDP": {
-        "Voluntary earmarked": 10013917.0
-      },
-      "UNESCO": {
-        "Voluntary earmarked": 2288889.0
-      },
-      "WHO": {
-        "Voluntary earmarked": 271186801.0
-      }
-    }
-  },
-  "GAVI Alliance": {
-    "status": "organization",
-    "category": "Multilateral - Global Funds",
-    "contributions": {
-      "PAHO": {
-        "Voluntary earmarked": 793614.0
-      },
-      "WHO": {
-        "Voluntary earmarked": 92582495.0
-      }
-    }
-  },
-  "UN OCHA": {
-    "status": "organization",
-    "category": "Multilateral - UN Orgs",
-    "contributions": {
-      "PAHO": {
-        "Voluntary earmarked": 374700.0
-      },
-      "UNAIDS": {
-        "Voluntary earmarked": 634501.0
-      },
-      "UNDP": {
-        "Voluntary earmarked": 12005906.0
-      },
-      "WHO": {
-        "Voluntary earmarked": 54937681.0
-      }
-    }
-  },
-  "Multi Donor Trust Funds": {
-    "status": "organization",
-    "category": "Non-Government",
-    "contributions": {
-      "UNAIDS": {
-        "Voluntary earmarked": 4233908.0
-      },
-      "UNDP": {
-        "Voluntary earmarked": 240372568.0
-      },
-      "UNESCO": {
-        "Voluntary earmarked": 8288598.0
+    },
+    "categoryContributions": {
+      "Non-Government": {
+        "IAEA": {
+          "Voluntary earmarked": 55810.35
+        },
+        "ILO": {
+          "Voluntary earmarked": 21563627.0
+        },
+        "PAHO": {
+          "Voluntary earmarked": 81377.0
+        },
+        "UN Secretariat": {
+          "Voluntary earmarked": 82029532.0
+        },
+        "UNAIDS": {
+          "Voluntary earmarked": 143798.0
+        },
+        "UNESCO": {
+          "Voluntary earmarked": 1890134.0
+        },
+        "UNITAR": {
+          "Voluntary earmarked": 758653.0
+        },
+        "WHO": {
+          "Voluntary earmarked": 42637235.0
+        }
       }
     },
-    "is_other": true
-  },
-  "The Global Fund to Fight AIDS, Tuberculosis and Malaria": {
-    "status": "organization",
-    "category": "Non-Government",
-    "contributions": {
-      "UNAIDS": {
-        "Voluntary earmarked": 30000.0
-      },
-      "UNDP": {
-        "Voluntary earmarked": 524126225.0
-      }
-    }
-  },
-  "Global Environment Facility (thru UNDP or UNEP)": {
-    "status": "organization",
-    "category": "Multilateral - Global Funds",
-    "contributions": {
-      "UNDP": {
-        "Voluntary earmarked": 348783644.0
-      }
-    }
-  },
-  "Rotary International": {
-    "status": "organization",
-    "category": "Non-Government",
-    "contributions": {
-      "WHO": {
-        "Voluntary earmarked": 42937124.0
-      }
-    }
+    "unresolvedContributions": {},
+    "unresolvedFinancingRecords": [],
+    "total": 149160166.35,
+    "unresolvedTotal": 0,
+    "financingIncomplete": false
   }
 }

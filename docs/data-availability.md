@@ -7,12 +7,14 @@ https://unsceb.org/financial-statistics
 Organization revenue and expenses: 2011–2025; contributor exports: 2011–2025
 (government detail starts in 2013).
 Geography: 2010–2025 (early geographic coverage differs from organization totals).
-SDG actual expense records: 2018–2024; source budget observations are excluded.
+SDG actual expense records: 2018–2025; source budget observations are excluded.
 All available historical observations now use the current CEB release, captured
-9 October 2026. ITC did not report for 2025. Source hashes, missing amount cells
-and coverage are recorded in `public/data/ceb-source.json`.
+29 October 2026. ITC did not report for 2025. Source hashes, missing amount cells
+and coverage are recorded in `public/data/ceb-source.json`. The shared processing
+contract is [CEB methodology](ceb-methodology.md), rendered from
+[`data/ceb-methodology.json`](../data/ceb-methodology.json).
 
-### Historical coverage (26 October 2026)
+### Coverage policy
 
 - Organization revenue, financing timelines and revenue/expense trends retain
   2011–2025. Government donor coverage no longer truncates organization totals.
@@ -26,7 +28,7 @@ and coverage are recorded in `public/data/ceb-source.json`.
 - System Flows retains the union of imported spending years, 2010–2025,
   but its year selector starts in 2011.
   Organization expense controls are unavailable in 2010, and SDGs are unavailable
-  before 2018 and in 2025. The view loads only available files, labels missing
+  before 2018. The view loads only available files, labels missing
   dimensions, and never infers SDG allocations from other totals.
 - Functions retain 2011–2025. Before 2018 the source's legacy Other category
   (combined normative and technical cooperation) remains separate. A visible
@@ -42,8 +44,8 @@ and coverage are recorded in `public/data/ceb-source.json`.
 - Organization expenses, geography, SDGs, imported Secretariat expenses and
   trust-fund exports otherwise retain their available imported source years.
 
-UNINFO remains unchanged as a 2024 snapshot. This change does not re-query its
-API or expand its coverage.
+UNINFO remains a separate 2024 snapshot. Refreshing CEB does not re-query the
+UNINFO API or expand its coverage.
 
 - **Revenue by Entity**
   - Total Revenue

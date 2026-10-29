@@ -69,7 +69,7 @@ full-feature browser suites should run against a preview build.
 
 | Source                                                                           | Coverage                                               | Description                                             |
 | -------------------------------------------------------------------------------- | ------------------------------------------------------ | ------------------------------------------------------- |
-| [CEB Financial Statistics](https://unsceb.org/financial-statistics)              | 2011–2024                                              | Audited financial data from 48+ UN System organizations |
+| [CEB Financial Statistics](https://unsceb.org/financial-statistics)              | Dataset-specific coverage through 2025                 | Current CEB release; audited-statement-based UN System data |
 | UN Secretariat Expenditure                                                          | 2019–2023                                              | Granular breakdown into 150+ departments and missions   |
 | [Programme Budget Data](https://github.com/united-nations/programme-budget-data) | PPB expenditure 2019–2025; PKO cycles 2022/23–2024/25  | PPB hierarchy plus separately assessed mission budgets  |
 | [Committee on Contributions](https://www.un.org/en/ga/contributions/)            | Regular-budget assessments and honour rolls, 2019–2026 | Member State assessments and paid-in-full status        |
@@ -84,6 +84,21 @@ accounting bases and peacekeeping follows a July–June fiscal cycle.
 Funding-source shades remain orthogonal to that hierarchy: support-account
 expenditure is shown as other assessed funding in the responsible
 programme-budget section, not as a mission.
+
+## CEB methodology and nominal values
+
+[data/ceb-methodology.json](data/ceb-methodology.json) is the single content source
+for CEB source notes and portal transformations. Every CEB-relevant page renders
+it in a page-end methodology section. Secretariat pages retain their existing
+source-specific notes in matching page-end sections, with extraction disclaimers
+immediately above them. About reproduces the shared CEB note and collects all
+Secretariat page methodologies. Additional page-specific notes remain separate. Treemaps do not duplicate page-level source/methodology panels.
+
+System financial totals remain CEB-only. Contributor classifications follow the
+source, reported aggregates stay distinct from calculated balances, and
+unresolved historical financing records are disclosed without guessed main types.
+The portal uses nominal source USD; CPI adjustment is disabled. See
+[the current methodology contract](docs/ceb-methodology.md).
 
 ## Tech Stack
 
@@ -113,7 +128,7 @@ public/data/             # Processed JSON served to frontend
 ├── uninfo-countries/    #   Per-country UNINFO data (127 files)
 └── manifest.json        #   Data availability metadata
 
-data/                    # Raw/intermediate data (gitignored)
+data/                    # Source/intermediate data; caches selectively ignored
 ├── ceb/{raw,clean,fused}/ # CEB data processing stages
 └── uninfo/raw/          #   Cached UNINFO API responses
 
@@ -139,8 +154,9 @@ Python scripts in `python/` fetch and process raw data into JSON. Run them in nu
 See [`docs/`](docs/) for detailed documentation:
 
 - [Data Availability](docs/data-availability.md) — What data exists for which years
-- [Data Fusion: Revenue](docs/data-fusion-revenue.md) — How revenue sources are combined
-- [Data Fusion: Expenses](docs/data-fusion-expenses.md) — How expense data is merged
+- [CEB Methodology](docs/ceb-methodology.md) — Shared source notes and agreed transformation contract
+- [Revenue Processing](docs/data-fusion-revenue.md) — Source classifications, controls and signed reconciliation
+- [Expense Processing](docs/data-fusion-expenses.md) — CEB-only system expenses, geographic levels, functions and SDGs
 - [Regular-budget Contributors](docs/regular-budget-contributors.md) — Assessment and payment-status methodology
 - [Trust-fund Schedules](docs/trust-fund-schedules.md) — PDF extraction, schema, validation gates, and entity crosswalk
 - [Research Notes](docs/research/) — Background research and data source analysis

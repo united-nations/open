@@ -127,6 +127,8 @@ def resolve_reporting_entities(frame, entity_column, controls, breakdowns):
         for child in CEB_SECRETARIAT_REPORTING_UNITS:
             for alias in (child, 'UN-' + child):
                 parents.setdefault(normalize_entity(alias), set()).add(normalize_entity('UN'))
+        # CEB uses DPO for the peacekeeping aggregate in some detail files.
+        # Elsewhere DPO identifies the Secretariat department, so scope it here.
         parents['DPO'] = {normalize_entity('UN-DPO')}
         for entity in rows[entity_column].unique():
             candidates = parents.get(entity, set()) & reporting
@@ -134,4 +136,40 @@ def resolve_reporting_entities(frame, entity_column, controls, breakdowns):
                 if len(candidates) != 1:
                     raise ValueError(f'Unresolved CEB reporting entity: {year} {entity}')
                 frame.loc[(frame.calendar_year == year) & (frame[entity_column] == entity), entity_column] = next(iter(candidates))
+    return frame
+
+
+def resolve_geographic_reporting_entities(frame: pd.DataFrame, controls: pd.DataFrame) -> pd.DataFrame:
+    """Use explicit same-year expense-source parents, retaining partial records.
+
+    Geographic coverage starts earlier than expense controls. A source-only
+    reporting unit without a published same-year relationship remains separate;
+    no historical parent is inferred from the current reporting-unit standard.
+    """
+    from utils import normalize_entity
+    frame = frame.copy()
+    if 'source_agency' not in frame:
+        frame['source_agency'] = frame.agency
+    frame['agency'] = frame.agency.map(normalize_entity)
+    for year, rows in frame.groupby('calendar_year'):
+        source = controls[controls.calendar_year == year]
+        reporting = set(source.agency.map(normalize_entity))
+        parents = {}
+        if 'sub_agency' in source:
+            for _, row in source.dropna(subset=['sub_agency']).iterrows():
+                child = str(row.sub_agency)
+                aliases = {child}
+                prefix = str(row.agency) + '-'
+                if child.startswith(prefix):
+                    aliases.add(child[len(prefix):])
+                for alias in aliases:
+                    parents.setdefault(normalize_entity(alias), set()).add(normalize_entity(row.agency))
+        for entity in rows.agency.unique():
+            if entity in reporting:
+                continue
+            candidates = parents.get(entity, set()) & reporting
+            if len(candidates) > 1:
+                raise ValueError(f'Ambiguous geographic reporting parent: {year} {entity}')
+            if candidates:
+                frame.loc[(frame.calendar_year == year) & (frame.agency == entity), 'agency'] = next(iter(candidates))
     return frame

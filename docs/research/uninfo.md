@@ -1,5 +1,7 @@
 # UNINFO API Research Report
 
+> **Historical document — current CEB policy:** This document retains the findings, source vintage or design proposals of its original investigation. It is not the current CEB transformation contract. See [CEB methodology](../ceb-methodology.md) and the current source register/manifest for active rules and coverage.
+
 ## Overview
 
 UNINFO (api.uninfo.org) is the UN's platform for Cooperation Framework data management. It provides public API endpoints for accessing structured financial and programmatic data from UN Country Teams.

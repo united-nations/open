@@ -20,7 +20,8 @@ import {
   useDeepLink,
 } from "@/hooks/useDeepLink";
 import {
-  CATEGORY_LABELS,
+  contributorCategoryViews,
+  contributorOriginLabel,
   CONTRIBUTION_TYPES,
   type Contributor,
   type ContributorData,
@@ -112,9 +113,7 @@ function ContributorTooltip({
     ? "Unattributed"
     : isGovernmentDonor(contributor.status)
       ? styles.label
-      : CATEGORY_LABELS[contributor.category] ||
-        contributor.category ||
-        "Non-Government";
+      : contributor.category || "Non-Government";
   const breakdown = Object.entries(
     getContributionBreakdown(contributor.contributions),
   )
@@ -144,6 +143,7 @@ function ContributorTooltip({
             ? value / context.leaf.value
             : undefined,
       }))}
+      notes={contributorOriginLabel(contributor.record_kind)}
       actionHint="Click to explore details"
     />
   );
@@ -211,6 +211,7 @@ export function ContributorsTreemap() {
         if (controller.signal.aborted) return;
         setContributors(
           Object.entries(data).map(([name, info]) => ({
+            ...info,
             name,
             status: info.status,
             category:
@@ -248,7 +249,7 @@ export function ContributorsTreemap() {
 
   const signedContributors = useMemo(
     () =>
-      contributors.map((contributor) => ({
+      contributors.flatMap(contributorCategoryViews).map((contributor) => ({
         ...contributor,
         contributions: Object.fromEntries(
           Object.entries(contributor.contributions).map(([entity, amounts]) => [
@@ -303,7 +304,7 @@ export function ContributorsTreemap() {
       );
       const netTotal = getTotalContributions(contributor.contributions);
       return {
-        key: contributor.name,
+        key: `${contributor.name}:${contributor.category}`,
         label: getDisplayName(contributor.name),
         value: netTotal,
         color: row.color,
@@ -365,7 +366,7 @@ export function ContributorsTreemap() {
     const categories = Object.entries(groupedCategories)
       .map(([category, members]) => ({
         key: category,
-        label: CATEGORY_LABELS[category] || category,
+        label: category,
         data: category,
         labelVisibility: "tooltip-only" as const,
         leaves: members
@@ -562,6 +563,61 @@ export function ContributorsTreemap() {
         </div>
       )}
 
+      {contributors.some((item) => item.financingIncomplete) && (
+        <details
+          className="my-6 rounded border border-gray-200 p-4 text-sm"
+          data-unresolved-financing
+        >
+          <summary className="cursor-pointer font-medium">
+            Historical contributor records with unresolved financing ·{" "}
+            {selectedYear}
+          </summary>
+          <p className="my-3 text-gray-600">
+            CEB reports these contributor amounts, but their historical codes
+            cannot be verified against the four financing types. These source
+            observations are shown separately and must not be added to the
+            reconciled chart total.
+          </p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left">
+              <thead>
+                <tr>
+                  <th className="p-2">Contributor</th>
+                  <th className="p-2">Recipient organization</th>
+                  <th className="p-2">CEB code</th>
+                  <th className="p-2 text-right">Source amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                {contributors
+                  .filter((item) => matchesQuery(item.name, searchQuery))
+                  .flatMap((item) =>
+                    (item.unresolvedFinancingRecords ?? []).map(
+                      (record, index) => (
+                        <tr key={`${item.name}:${index}`} className="border-t">
+                          <td className="p-2">
+                            <button
+                              type="button"
+                              className="text-left underline"
+                              onClick={() => open(item)}
+                            >
+                              {item.name}
+                            </button>
+                          </td>
+                          <td className="p-2">{record.entity}</td>
+                          <td className="p-2">{record.sourceCode}</td>
+                          <td className="p-2 text-right tabular-nums">
+                            {formatBudget(record.amount)}
+                          </td>
+                        </tr>
+                      ),
+                    ),
+                  )}
+              </tbody>
+            </table>
+          </div>
+        </details>
+      )}
       {selectedContributor && (
         <ContributorSidebar
           contributor={selectedContributor}

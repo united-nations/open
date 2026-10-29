@@ -7,7 +7,7 @@ import importlib.util
 import json
 from pathlib import Path
 import pandas as pd
-from ceb_data import select_geographic_totals, select_sdg_expenses
+from ceb_data import select_geographic_totals, select_sdg_expenses, resolve_geographic_reporting_entities
 from utils import normalize_entity, normalize_country_name, canonical_geographic_area
 
 spec = importlib.util.spec_from_file_location('expenses_export', Path(__file__).with_name('07-export_expenses_json.py'))
@@ -61,8 +61,6 @@ def build_geography(frame):
                 key = iso if isinstance(iso, str) and len(iso) == 3 and iso.isalpha() else f'country:{name}'
                 if key.startswith('country:'):
                     notes.append('Source reports this label at country level, but it does not resolve to a single country. Retained as reported without allocating it to an inferred country.')
-                if iso in {'PSE', 'ESH', 'XKX', 'TWN'}:
-                    notes.append('Country/area label follows source reporting; marker placement does not imply a position on territorial status or boundaries.')
             else:
                 point = POINTS.get(name)
                 key = f'{level}:{name}:{parent}'
@@ -70,8 +68,8 @@ def build_geography(frame):
                 if name in AMBIGUOUS:
                     notes.append('Source-defined area with potentially differing geographic coverage; the marker does not define its boundaries.')
                 if name in {'Eastern Europe', 'Türkiye'} and parent == 'Africa':
-                    region = 'Europe' if name == 'Eastern Europe' else 'Asia'
-                    notes.append(f'Source classification conflict: reported as a subregion of Africa. Plotted by the named location; source level retained pending clarification.')
+                    region = 'Unresolved geographic classification'
+                    notes.append('Source classification conflict: reported under Africa. Source parent retained separately; display grouping remains unresolved pending clarification.')
                 if name == 'South Africa':
                     notes.append('Source labels this record as subregional “South Africa”; it is not merged with country-level South Africa.')
                 if name == 'Antarctica':
@@ -79,11 +77,12 @@ def build_geography(frame):
             if point is None:
                 point = (-52, -135)
                 notes.append('No verified display coordinate available; shown in the ocean reference area, not at an inferred location.')
-            row = records.setdefault(key, dict(iso3=key, name=name, region=region, level=level,
-                 lat=point[0], long=point[1], entities={}, notes=[], sourceLabels=[], sourceLocationTypes=[]))
+            row = records.setdefault(key, dict(iso3=key, name=name, region=region, sourceRegion=parent, level=level,
+                 lat=point[0], long=point[1], entities={}, notes=[], sourceLabels=[], sourceLocationTypes=[], sourceEntities=[]))
             row['notes'] = sorted(set(row['notes'] + notes))
             row['sourceLabels'] = sorted(set(row['sourceLabels'] + [source_name.strip()]))
             row['sourceLocationTypes'] = sorted(set(row['sourceLocationTypes'] + source_types))
+            row['sourceEntities'] = sorted(set(row['sourceEntities'] + rows.get('source_agency', rows.agency).tolist()))
             for entity, amount in rows.groupby('entity').amount.sum().items():
                 row['entities'][entity] = row['entities'].get(entity, 0) + float(amount)
         for row in records.values():
@@ -93,6 +92,7 @@ def build_geography(frame):
 
 if __name__ == '__main__':
     frame = pd.read_csv('data/ceb/clean/expenses_by_country_region_sub_agency.csv')
+    frame = resolve_geographic_reporting_entities(frame, pd.read_csv('data/ceb/clean/expenses_sub_agency.csv'))
     for year, rows in build_geography(frame).items():
         Path(f'public/data/geographic-expenses-{year}.json').write_text(json.dumps(rows, ensure_ascii=False, separators=(',', ':'), allow_nan=False) + '\n')
         print(year, len(rows), sum(row['total'] for row in rows))

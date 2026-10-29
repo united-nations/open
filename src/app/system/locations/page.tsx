@@ -1,11 +1,10 @@
 import { FunctionGeographyChart } from "@/components/FunctionGeographyChart";
-import { SystemPageSources } from "@/components/PageSources";
-import { FEATURES, SHOW_UNINFO } from "@/lib/featureFlags";
+import { FEATURES } from "@/lib/featureFlags";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { CountryMap } from "@/components/CountryMap";
 import {
-  CebMethodology,
+  CebPageMethodology,
   LocationsMethodologyNotes,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
@@ -20,20 +19,11 @@ export const metadata: Metadata = {
 export default function SystemLocationsPage() {
   return (
     <ChartSourceProvider
-      label={
-        SHOW_UNINFO
-          ? "CEB financial statistics and UNINFO"
-          : "CEB financial statistics"
-      }
-      details={
-        <>
-          <CebMethodology />
-          <LocationsMethodologyNotes />
-        </>
-      }
+      label="CEB financial statistics"
+      details={null}
+      placement="page"
     >
       <PageHeading
-        sources={<SystemPageSources uninfo />}
         id="countries"
         title="Where are funds spent?"
         description="UN System organizations implement activities across the world. Explore where funds are spent geographically, from global programmes to country-level operations."
@@ -42,6 +32,9 @@ export default function SystemLocationsPage() {
         <CountryMap />
         {FEATURES.functionGeography && <FunctionGeographyChart />}
       </PageBody>
+      <CebPageMethodology>
+        <LocationsMethodologyNotes />
+      </CebPageMethodology>
     </ChartSourceProvider>
   );
 }

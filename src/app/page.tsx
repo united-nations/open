@@ -1,3 +1,4 @@
+import { CebPageMethodology } from "@/components/Methodology";
 import { HomeChartCards } from "@/components/HomeChartCards";
 import {
   Building2,
@@ -121,6 +122,7 @@ export default function HomePage() {
           />
         </div>
       </PageBody>
+      <CebPageMethodology />
     </>
   );
 }

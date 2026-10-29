@@ -1,7 +1,7 @@
 """Export expenses data to JSON for frontend consumption."""
 import json
 import pandas as pd
-from ceb_data import select_geographic_totals, select_sdg_expenses, resolve_reporting_entities
+from ceb_data import select_geographic_totals, select_sdg_expenses, resolve_reporting_entities, resolve_geographic_reporting_entities
 from pathlib import Path
 import country_converter as coco
 from utils import normalize_entity, normalize_country_name
@@ -113,6 +113,7 @@ def get_iso3(country: str) -> str | None:
 
 def load_country_expenses() -> pd.DataFrame:
     df = select_geographic_totals(pd.read_csv("data/ceb/clean/expenses_by_country_region_sub_agency.csv"))
+    df = resolve_geographic_reporting_entities(df, pd.read_csv("data/ceb/clean/expenses_sub_agency.csv"))
     df = df.rename(columns={"calendar_year": "year", "agency": "entity", "country/territory": "country"})
     df["entity"] = df["entity"].apply(normalize_entity)
     df = df[df["location_type"] == "COU"]
@@ -198,6 +199,7 @@ def export_country_expenses(country: pd.DataFrame):
             entities = group.groupby("entity")["amount"].sum().to_dict()
             entities = dict(sorted(entities.items(), key=lambda x: -x[1]))
             name = cc.convert(iso3, to="name_short", not_found=iso3) if len(iso3) == 3 else normalize_country_name(group["country"].iloc[0])
+            name = normalize_country_name(name)
             region = group["region"].mode().iloc[0] if len(group["region"].mode()) else "Unknown"
             data.append({
                 "iso3": iso3, "name": name, "region": region,

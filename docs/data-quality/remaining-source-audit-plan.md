@@ -1,5 +1,7 @@
 # Remaining source verification plan
 
+> **Historical document — current CEB policy:** This document retains the findings, source vintage or design proposals of its original investigation. It is not the current CEB transformation contract. See [CEB methodology](../ceb-methodology.md) and the current source register/manifest for active rules and coverage.
+
 Updated 2026-09-24. This plan separates extraction accuracy from source coverage and accounting methodology.
 
 ## Peacekeeping assessments (2025/26)

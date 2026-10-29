@@ -10,6 +10,7 @@ export default function SystemLayout({
       intro="Explore organizations’ revenue and expenditure, who contributes, and how expenditure is reported across locations, functions and goals."
       navLabel="UN System financials"
       items={SYSTEM_NAV}
+      showDisclaimer={false}
     >
       {children}
     </SectionChrome>

@@ -30,8 +30,11 @@ uv run python python/test_budget_source_citations.py
 
 `prepare` verifies the imported files against the release's SHA256SUMS and fills
 `data/references/programme-budget-data-financial-v1.8/` without regenerating the
-published JSON. Do not replace the frozen CEB inputs with current downloads to
-make tests pass: a changed source vintage requires its own reconciliation.
+published JSON. CEB views use the current official release. Refresh through the validated CEB
+pipeline, record current file hashes and coverage, regenerate dependent exports,
+and investigate source changes before updating numerical regression expectations.
+Do not hand-edit source amounts or fabricate a legacy-code crosswalk to make
+tests pass. See [current CEB methodology](../ceb-methodology.md).
 
 ## Application checks
 

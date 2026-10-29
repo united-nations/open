@@ -65,28 +65,23 @@ class PrivateDonorTests(unittest.TestCase):
                 export.export_contributor_trends_json(fused)
             donors = json.loads((out / "donors-2024.json").read_text())
             trends = json.loads((out / "contributor-trends.json").read_text())
-        expected = {
-            PRIVATE_DONOR_LABEL: ("Private Sector", 35),
-            f"{PRIVATE_DONOR_LABEL} — NGOs": ("NGOs", 7),
-            f"{PRIVATE_DONOR_LABEL} — Foundations": ("Foundations", -2),
-            f"{PRIVATE_DONOR_LABEL} — Non-Government": ("Non-Government", 3),
-            "Other Private Sector": ("Private Sector", 35),
-        }
+        reported = donors[PRIVATE_DONOR_LABEL]
+        self.assertEqual(reported["record_kind"], "reported_aggregate")
+        self.assertFalse(reported["is_other"])
+        self.assertEqual(reported["category"], "Multiple categories")
+        self.assertEqual(reported["total"], 43)
+        expected = {"Private Sector": 35, "NGOs": 7, "Foundations": -2, "Non-Government": 3}
         self.assertNotIn("Other Private", donors)
-        for name, (category, amount) in expected.items():
-            with self.subTest(name=name):
-                self.assertEqual(donors[name]["category"], category)
-                self.assertTrue(donors[name]["is_other"])
-                self.assertEqual(donors[name]["contributions"]["UNDP"]["Voluntary earmarked"], amount)
-                self.assertEqual(trends["contributors"][name][0]["total"], amount)
-                self.assertIn(name, trends["meta"]["nonGovCategories"][category])
+        for category, amount in expected.items():
+            with self.subTest(category=category):
+                self.assertEqual(reported["categoryContributions"][category]["UNDP"]["Voluntary earmarked"], amount)
+                self.assertEqual(trends["categoryContributors"][category][PRIVATE_DONOR_LABEL][0]["total"], amount)
+        self.assertEqual(donors["Other Private Sector"]["record_kind"], "calculated_balance")
+        self.assertTrue(donors["Other Private Sector"]["is_other"])
+        self.assertEqual(donors["Other Private Sector"]["total"], 35)
         for category, amount in [("Private Sector", 70), ("NGOs", 10), ("Foundations", 5)]:
-            actual = sum(
-                sum(sum(instruments.values()) for instruments in donor["contributions"].values())
-                for donor in donors.values() if donor["category"] == category
-            )
-            self.assertEqual(actual, amount)
             self.assertEqual(trends["aggregates"][f"cat:{category}"][0]["total"], amount)
+
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
 {
-  "retrievedAt": "2026-10-09",
+  "retrievedAt": "2026-10-29",
   "files": [
     {
       "file": "revenue.csv",
@@ -122,8 +122,8 @@
     {
       "file": "revenue_non_gov_donors.csv",
       "url": "https://unsceb.org/assets/data/FS/revenue_non_gov_donors.csv",
-      "sha256": "1f5a76044e12f223a3187c01b1ea9e6904e5fe86dc598ee8b1c1985b519e38f0",
-      "rows": 7151,
+      "sha256": "0dd69e3c0bc0ccf564135bd6f7aeb990a6aba6bd79107832e932a2510b068657",
+      "rows": 7161,
       "years": [
         2009,
         2010,
@@ -234,8 +234,8 @@
     {
       "file": "expenses_sdgs.csv",
       "url": "https://unsceb.org/assets/data/FS/expenses_sdgs.csv",
-      "sha256": "4e1f7274bd65282bfd4b1264afa0566a0cad27a5f08a86642a0f7ec66c6221e0",
-      "rows": 6509,
+      "sha256": "2488a24208f13a1a0a9b999302cafb5c20c02e5d9affc7003f0f588010d98051",
+      "rows": 7727,
       "years": [
         2018,
         2019,
@@ -243,7 +243,8 @@
         2021,
         2022,
         2023,
-        2024
+        2024,
+        2025
       ],
       "missingAmounts": []
     }

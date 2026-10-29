@@ -1,5 +1,7 @@
 # Tracking Member State Contributions Across the UN System
 
+> **Historical document — current CEB policy:** This document retains the findings, source vintage or design proposals of its original investigation. It is not the current CEB transformation contract. See [CEB methodology](../../ceb-methodology.md) and the current source register/manifest for active rules and coverage.
+
 _ChatGPT DeepResearch report, Jan 31, 2025_
 
 ## Core concepts and why the data is fragmented

@@ -1,7 +1,6 @@
 "use client";
 import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 import { useCallback, useEffect, useState } from "react";
-import { ChevronRight } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { GroupedTreemap } from "@un-eosg/ui/components/grouped-treemap";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
@@ -15,7 +14,6 @@ import {
 import { ChartFooter } from "@/components/ChartFooter";
 import { YearSlider } from "@/components/YearSlider";
 import { SidebarControls } from "@/components/SidebarControls";
-import { FunctionsMethodology } from "@/components/FunctionsMethodology";
 import { FinancingInstrumentChart } from "@/components/charts/FinancingInstrumentChart";
 import { useFunctionExpenses } from "@/hooks/useFunctionExpenses";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
@@ -124,7 +122,6 @@ export function FunctionsChart() {
                 })),
             )}
             hint="Click on an organization to explore details."
-            details={<FunctionsMethodology />}
           />
         }
         renderTooltip={({ row: group, leaf }) => (
@@ -175,8 +172,8 @@ export function FunctionsTrendsChart() {
       />
       <p className="text-sm text-slate-600">
         Classification changes in 2018; earlier years retain legacy Other.
-        Nominal USD is the default; adjusted values use US CPI. Reporting
-        coverage can change between years.
+        Amounts are nominal US dollars. Reporting coverage can change between
+        years.
       </p>
     </section>
   );
@@ -306,20 +303,6 @@ function FunctionSidebar({
                 showLegend={false}
               />
             </section>
-            <details className="group/sources">
-              <summary className="flex w-fit cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden">
-                <FinancialPanelHeading subheading>
-                  Source and methodology
-                </FinancialPanelHeading>
-                <ChevronRight
-                  aria-hidden="true"
-                  className="size-3 group-open/sources:rotate-90"
-                />
-              </summary>
-              <div className="mt-3">
-                <FunctionsMethodology />
-              </div>
-            </details>
           </div>
         </FinancialDetailPanel>
       </div>

@@ -26,7 +26,7 @@ Package manager is **pnpm** (`pnpm-lock.yaml`, used in CI), though `npm run` wor
 
 ### Two-stage data flow
 
-1. **Python pipeline** (`python/`) — numbered scripts run **in order** (`01-` … `10-`, then `99-`). They fetch from Airtable, CEB Financial Statistics, member-state scrapes, and the UNINFO API, fuse the sources (CEB + Secretariat breakdowns), and export to `public/data/`. Raw/intermediate data lives in `data/` (gitignored), keyed by stage: `data/ceb/{raw,clean,fused}/`, `data/uninfo/raw/`. `python/utils.py` holds canonical name normalization maps (`ENTITY_MAPPING`, `DONOR_MAPPING`) — reuse these rather than reinventing name matching.
+1. **Python pipeline** (`python/`) — numbered scripts run **in order** (`01-` … `10-`, then `99-`). They fetch from Airtable, CEB Financial Statistics, member-state scrapes, and the UNINFO API, process each source according to its own scope, and export to `public/data/`. Raw/intermediate data lives in `data/` (source CSVs are tracked; caches and downloaded snapshots are ignored where configured), keyed by stage: `data/ceb/{raw,clean,fused}/`, `data/uninfo/raw/`. `python/utils.py` holds canonical name normalization maps (`ENTITY_MAPPING`, `DONOR_MAPPING`) — reuse these rather than reinventing name matching.
 2. **Frontend** reads `public/data/` at runtime via `fetch`. Data is served as static files, never via API routes (the app is a static export).
 
 ### Data file conventions (`public/data/`)
@@ -41,22 +41,32 @@ Loading goes through helpers in [src/lib/data.ts](src/lib/data.ts): `loadYearDat
 
 The portal combines **three non-equivalent financial datasets** — they use different methodologies, scopes, and granularity, and must not be naively summed:
 
-- **CEB Financial Statistics** (2011–2024, ~43–48 entities) — system-wide actuals from audited statements. The reconciled backbone for contributors, entity revenue/spending, countries, and SDG views. Annual-cycle, lagged. Critically, CEB does **not** net out inter-agency transfers, so totals are inflated by double-counting.
-- **UN Secretariat** (2019–2023, ~150 sub-entities) — granular breakdown of the CEB `UN` and `UN-DPO` aggregates into individual departments, offices, and peacekeeping/political missions (OCHA, DPPA, DSS, MONUSCO, etc.). Used to enrich CEB expenses in fusion years; mixed budget/financial-statement accounting bases; its reconstruction does not establish elimination of inter-entity transfers.
+- **CEB Financial Statistics** (coverage varies by dataset; the current release extends through 2025) — system-wide actuals from audited statements. The reconciled backbone for contributors, entity revenue/spending, countries, and SDG views. Annual-cycle, lagged. Critically, CEB does **not** net out inter-agency transfers, so totals are inflated by double-counting.
+- **UN Secretariat** (2019–2023, ~150 sub-entities) — granular breakdown of the CEB `UN` and `UN-DPO` aggregates into individual departments, offices, and peacekeeping/political missions (OCHA, DPPA, DSS, MONUSCO, etc.). Displayed separately from CEB System totals; mixed budget/financial-statement accounting bases; its reconstruction does not establish elimination of inter-entity transfers.
 - **UNINFO** (2022–2024, 127 programme countries) — Cooperation Framework data with per-project detail and the **SDG×country** cross-dimension the other two lack. Tracks Required, Available and Spent; source anomalies can violate their expected ordering and must be preserved and disclosed. Covers only ~40–45% of system spending (no HQ, peacekeeping, or donor countries). Powers per-country sidebars/projects/results-framework.
 
-Key fusion logic (see [docs/data-fusion-revenue.md](docs/data-fusion-revenue.md), [docs/data-fusion-expenses.md](docs/data-fusion-expenses.md)):
+Current CEB processing is defined by [data/ceb-methodology.json](data/ceb-methodology.json),
+[docs/ceb-methodology.md](docs/ceb-methodology.md),
+[docs/data-fusion-revenue.md](docs/data-fusion-revenue.md), and
+[docs/data-fusion-expenses.md](docs/data-fusion-expenses.md):
 
-- **Revenue fusion is tiered** (CEB only): 2013–2020 = government + non-gov donors + a single "Other" remainder; 2021–2024 = "Other" broken into contributor-type categories (C-codes C01–C09). Named donors vs. calculated remainders are flagged via `is_other`.
-- **Expenses fusion is tiered** (CEB + Secretariat): 2019–2023 removes the CEB `UN`/`UN-DPO` aggregates and substitutes the ~150 Secretariat sub-entities (plus additive assessed amounts for UNEP/UNODC); other years use CEB as-is. This is why entity counts jump from ~40 to ~180 in fusion years. The `source` column tags each row as `ceb`, `secretariat`, or `secretariat_assessed`.
-- **CEB `UN` vs `UN-DPO`**: `UN` = Secretariat incl. Special Political Missions; `UN-DPO` = peacekeeping operations (aggregate only, no per-mission breakdown — the per-mission detail comes from the Secretariat dataset). UNEP/UNODC/UN-Habitat/ITC have separate CEB entries despite being administratively Secretariat.
-- **Data-quality gotchas** handled in `python/utils.py`: negative amounts are legitimate (FX losses, corrections); C08B is an unreliable correction bucket; donor name/category variants are normalized via `DONOR_MAPPING`/`DONOR_CATEGORY_OVERRIDES`; generic catch-all donors marked via `GENERIC_DONORS`.
+- Use the current CEB release for all available historical years. View years come from validated source coverage and `manifest.json`, not hardcoded limits.
+- `revenue.csv` supplies entity/year/main-financing-type controls. Complete matching entity-revenue controls fill incomplete summary groups only. Reported donor detail and category totals produce signed **Other {category}** and **Unattributed** reconciliation balances.
+- Preserve explicit source contributor categories. Do not infer or override categories from donor names. One contributor may span several categories; the export must preserve those observation-level amounts.
+- Historical R05/R07–R12 financing codes are unresolved unless primary evidence establishes their meaning. Keep their donor records inspectable separately from already-reconciled four-type totals; do not guess or double-count them.
+- System expenses are CEB-only (`FUSE_SECRETARIAT = False`). Do not substitute Secretariat sub-entities or add Secretariat-assessed amounts to CEB totals.
+- Adjusted organization labels use `ENTITY_MAPPING`; same-year CEB-supported parent rollups apply only without standalone controls. CEB's contextual `DPO` aggregate alias must not rename the Secretariat department globally.
+- Geographic exports use E06 totals only; SDG exports use EXP actuals only. Preserve reported x00 **Non-SDG** separately from the signed calculated **Not specified** balance. Correct only the reviewed geographic reporting-level names; do not allocate regional/global amounts to countries.
+- Keep reported named contributors, reported aggregate buckets, and calculated balances distinct. Source aggregates remain visible and explorable. Do not use one `is_other` flag as a substitute for provenance or source classification.
+- Negative amounts and blanks remain signed/unknown. Missing observations and years are unavailable, not zeros. Financial views use nominal USD; CPI adjustment is disabled.
+- CEB's `UN` includes the Secretariat and Special Political Missions; `UN-DPO` is the peacekeeping aggregate. Independently reported entities such as UNEP/UNODC/UN-Habitat/ITC retain their own CEB scope. Separate source dimensions do not establish donor-to-country/SDG funding flows.
+- Every CEB-relevant page and About render the shared CEB source notes and transformations at page end. Keep page-specific notes separate and avoid duplicating source/methodology inside treemaps.
 
 ### Frontend structure
 
 - `/` is a directory (no charts): two boxes linking to System and Secretariat sub-pages, plus Further Resources.
 - `/system` and `/secretariat` share the same chrome (`SectionChrome`: title, intro, tab row). Each tab is its own route. `/system/` re-exports `/system/organizations`.
-- System tabs: Organizations, Contributors, Locations, Goals. Secretariat tabs: Overview, Contributors, Programme Budget, Peacekeeping Budget, Field Missions, Trust Funds.
+- System tabs: Organizations, Contributors, Locations, Functions, Goals. About is also linked from the main navigation. Secretariat tabs: Overview, Contributors, Programme Budget, Peacekeeping Budget, Field Missions, Trust Funds.
 - Per-view components follow naming families that sort together: `*Treemap`, `*Sidebar`, `*TrendsChart`. Reusable chart primitives in `src/components/charts/`; shadcn primitives in `src/components/ui/` (do not edit these — compose on top of them). Shared page chrome: `SectionChrome`, `SectionSubnav`, `PageHeading`, `Methodology`.
 - `src/lib/` holds domain mappings consumed by components: `entities.ts`, `contributors.ts`, `sdgs.ts`, `financingInstruments.ts`, `regionGroupings.ts`, `systemGroupings.ts`, `navigation.ts`. Shared TS interfaces in `src/types/index.ts`.
 

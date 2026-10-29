@@ -1,5 +1,7 @@
 # Money and the United Nations Secretariat: sources, reconciliation, and data model
 
+> **Historical document — current CEB policy:** This document retains the findings, source vintage or design proposals of its original investigation. It is not the current CEB transformation contract. See [CEB methodology](../../ceb-methodology.md) and the current source register/manifest for active rules and coverage.
+
 **Status:** research report, 18 August 2026
 
 **Scope:** actual revenue, contributions, expenditure, and expense. Proposed budgets,

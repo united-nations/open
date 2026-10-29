@@ -24,6 +24,7 @@ export default function SecretariatLayout({
       intro={secretariatIntro()}
       navLabel="UN Secretariat financials"
       items={visibleSecretariatNav()}
+      showDisclaimer={false}
     >
       {children}
     </SectionChrome>

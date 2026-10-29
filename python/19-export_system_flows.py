@@ -8,7 +8,7 @@ import json
 from pathlib import Path
 
 import pandas as pd
-from ceb_data import select_geographic_totals, select_sdg_expenses
+from ceb_data import select_geographic_totals, select_sdg_expenses, resolve_geographic_reporting_entities
 from utils import normalize_entity, normalize_country_name
 
 SOURCE = Path('data/ceb/clean')
@@ -18,16 +18,17 @@ KINDS = {'COU': 'country', 'REG': 'region', 'SUB': 'subregion'}
 
 def build_export(totals: pd.DataFrame, geography: pd.DataFrame, goals: pd.DataFrame) -> dict:
     frames = [totals.copy(), select_geographic_totals(geography), select_sdg_expenses(goals)]
+    frames[1] = resolve_geographic_reporting_entities(frames[1], frames[0])
     for frame in frames:
         if frame.amount.isna().any():
             raise ValueError('Missing spending amount')
         entity_column = 'entity_code' if 'entity_code' in frame else 'agency'
         frame['entity'] = frame[entity_column].map(normalize_entity)
     totals, geography, goals = frames
-    geography['country/territory'] = geography['country/territory'].map(lambda name: normalize_country_name(name) if isinstance(name, str) else name)
     # SDG reporting occasionally uses an alternative code or a sub-agency.
-    # Canonicalize DPO through the shared map; infer parentage only from the
-    # same year's expense source, and only when no agency with that code exists.
+    # CEB's DPO alias denotes UN-DPO here, not the Secretariat department.
+    # Infer parentage only from the same year's expense source, and only when
+    # no agency with that code exists.
     goals.loc[goals.entity_code == 'DPO', 'entity'] = normalize_entity('UN-DPO')
     if 'sub_agency' in totals:
         for year, rows in totals.groupby('calendar_year'):
@@ -60,7 +61,7 @@ def build_export(totals: pd.DataFrame, geography: pd.DataFrame, goals: pd.DataFr
             geographic_rows = g[g.entity == entity].fillna('')
             for (kind, name, region), rows in geographic_rows.groupby(['location_type', 'country/territory', 'region']):
                 # Keep parent regions exactly as reported, including source anomalies.
-                label = name.strip()
+                label = normalize_country_name(name.strip())
                 anomaly = kind == 'SUB' and label in {'Eastern Europe', 'Türkiye'} and region == 'Africa'
                 anomaly_count += int(anomaly)
                 source_types = sorted(set(rows.source_location_type))
@@ -72,6 +73,7 @@ def build_export(totals: pd.DataFrame, geography: pd.DataFrame, goals: pd.DataFr
                 geos.append({'key': f'{kind}:{label}:{region}', 'label': label,
                              'region': 'Unresolved geographic classification' if anomaly else region,
                              'sourceRegion': region, 'sourceLabel': name,
+                             'sourceEntities': sorted(set(rows.source_agency)),
                              'sourceLocationTypes': source_types, 'note': ' '.join(notes) or None,
                              'kind': KINDS[kind], 'amount': float(rows.amount.sum())})
             sdgs = []
@@ -81,7 +83,7 @@ def build_export(totals: pd.DataFrame, geography: pd.DataFrame, goals: pd.DataFr
                 if key != 'x00' and key not in {str(n) for n in range(1, 18)}:
                     raise ValueError(f'Unknown SDG classification: {key}')
                 sdgs.append({'key': 'unallocated' if key == 'x00' else key,
-                             'label': 'Not allocated to a goal' if key == 'x00' else f'SDG {key}',
+                             'label': 'Non-SDG' if key == 'x00' else f'SDG {key}',
                              'amount': float(rows.amount.sum())})
             entities[entity] = {
                 'total': total, 'geography': geos, 'goals': sdgs,

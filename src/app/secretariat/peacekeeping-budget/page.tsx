@@ -1,13 +1,11 @@
-import { PageSourceLink } from "@/components/PageSources";
-import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
-import { PeacekeepingBudgetView } from "@/components/PeacekeepingBudgetView";
 import {
-  PeacekeepingBudgetMethodologyNotes,
-  SecretariatMethodology,
+  SecretariatPageMethodology,
+  SecretariatPageSourceProvider,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
+import { PeacekeepingBudgetView } from "@/components/PeacekeepingBudgetView";
 
 export const metadata: Metadata = {
   title: "UN Peacekeeping Budget",
@@ -17,23 +15,8 @@ export const metadata: Metadata = {
 
 export default function PeacekeepingBudgetPage() {
   return (
-    <ChartSourceProvider
-      label="Peacekeeping budget and performance reports"
-      details={
-        <>
-          <SecretariatMethodology />
-          <PeacekeepingBudgetMethodologyNotes />
-        </>
-      }
-    >
+    <SecretariatPageSourceProvider page="peacekeeping-budget">
       <PageHeading
-        sources={
-          <>
-            Figures are extracted from the Secretary-General’s{" "}
-            <PageSourceLink source="peacekeepingDocuments" />. Learn{" "}
-            <PageSourceLink source="peacekeepingFunding" />.
-          </>
-        }
         id="peacekeeping-spending"
         title="How do peacekeeping missions spend funds?"
         description="Explore expenditure, approved budgets and proposals by mission, location and cost class. Financial years run from July to June."
@@ -41,6 +24,7 @@ export default function PeacekeepingBudgetPage() {
       <PageBody>
         <PeacekeepingBudgetView />
       </PageBody>
-    </ChartSourceProvider>
+      <SecretariatPageMethodology page="peacekeeping-budget" />
+    </SecretariatPageSourceProvider>
   );
 }

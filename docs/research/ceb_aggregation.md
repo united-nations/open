@@ -1,11 +1,13 @@
 # CEB Data Aggregation: UN vs UN-DPO Entity Codes
 
+> **Historical document — current CEB policy:** This document retains the findings, source vintage or design proposals of its original investigation. It is not the current CEB transformation contract. See [CEB methodology](../ceb-methodology.md) and the current source register/manifest for active rules and coverage.
+
 ## Summary
 
 The UN System Chief Executives Board (CEB) uses two separate entity codes for Secretariat-related operations:
 
 - **`UN`** — UN Secretariat (including Special Political Missions)
-- **`UN-DPO`** — Department of Peace Operations (Peacekeeping only)
+- **`UN-DPO`** — Peacekeeping Operations aggregate (distinct from the Secretariat Department of Peace Operations)
 
 This separation reflects the fundamentally different funding mechanisms for peacekeeping vs political missions.
 

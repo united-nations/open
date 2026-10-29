@@ -1,13 +1,11 @@
-import { PageSourceLink } from "@/components/PageSources";
-import { PageHeading } from "@/components/PageHeading";
-import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
-import { PageBody } from "@/components/PageBody";
-import { TrustFundContributorsView } from "@/components/TrustFundContributorsView";
 import {
-  SecretariatMethodology,
-  TrustFundContributorsMethodologyNotes,
+  SecretariatPageMethodology,
+  SecretariatPageSourceProvider,
 } from "@/components/Methodology";
+import { PageBody } from "@/components/PageBody";
+import { PageHeading } from "@/components/PageHeading";
+import { TrustFundContributorsView } from "@/components/TrustFundContributorsView";
 
 export const metadata: Metadata = {
   title: "UN Secretariat Trust Funds — Contributors",
@@ -15,22 +13,8 @@ export const metadata: Metadata = {
 
 export default function ContributorsPage() {
   return (
-    <ChartSourceProvider
-      label="UN Secretariat trust-fund schedules and separate contributor reports"
-      details={
-        <>
-          <SecretariatMethodology />
-          <TrustFundContributorsMethodologyNotes />
-        </>
-      }
-    >
+    <SecretariatPageSourceProvider page="trust-fund-contributors">
       <PageHeading
-        sources={
-          <>
-            The schedule view uses <PageSourceLink source="trustFunds" />.
-            Separate entity views link their own source pages.
-          </>
-        }
         title="Who contributes to UN Secretariat trust funds?"
         description="Explore contributions and transfers from the UN Secretariat trust-fund schedules, or select separately reported entity data. Source measures and partial coverage are shown within each view."
       />
@@ -39,6 +23,7 @@ export default function ContributorsPage() {
           <TrustFundContributorsView />
         </PageBody>
       </section>
-    </ChartSourceProvider>
+      <SecretariatPageMethodology page="trust-fund-contributors" />
+    </SecretariatPageSourceProvider>
   );
 }

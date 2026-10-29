@@ -1,5 +1,7 @@
 # CEB 2025 compatibility investigation and integration plan
 
+> **Historical document — current CEB policy:** This document retains the findings, source vintage or design proposals of its original investigation. It is not the current CEB transformation contract. See [CEB methodology](../ceb-methodology.md) and the current source register/manifest for active rules and coverage.
+
 Investigated 9 October 2026. Implementation is now complete locally; see [the integration review](../data-quality/ceb-2025-review.md). The findings below preserve the investigation and implementation plan; pre-fix failures are historical observations, not the final validation status.
 
 ## Recommendation

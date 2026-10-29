@@ -37,9 +37,10 @@ class HistoricalCoverageTests(unittest.TestCase):
     def test_flow_year_union_does_not_turn_missing_goals_into_zero(self):
         flows = {row['year']: row for row in read('system-flow-spending.json')['data']}
         self.assertEqual(sorted(flows), list(range(2010, 2026)))
-        for year in (2010, 2011, 2017, 2025):
+        for year in (2010, 2011, 2017):
             self.assertFalse(flows[year]['availability']['goals'])
             self.assertTrue(all(not row['goals'] and row['goalsDifference'] is None for row in flows[year]['entities'].values()))
+        self.assertTrue(flows[2025]['availability']['goals'])
         self.assertFalse(flows[2010]['availability']['total'])
         self.assertTrue(all(row['total'] is None for row in flows[2010]['entities'].values()))
 

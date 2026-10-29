@@ -1,5 +1,7 @@
 # UN Financial Data: A Complete Guide to open.un.org
 
+> **Historical document — current CEB policy:** This document retains the findings, source vintage or design proposals of its original investigation. It is not the current CEB transformation contract. See [CEB methodology](../../ceb-methodology.md) and the current source register/manifest for active rules and coverage.
+
 ## Executive Summary
 
 The UN Transparency Portal at **open.un.org** presents financial data from two fundamentally different sources:

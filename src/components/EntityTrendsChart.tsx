@@ -1,6 +1,4 @@
 "use client";
-import { useMoneyBasis } from "@/hooks/useMoneyBasis";
-import { MoneyBasisControl } from "@/components/charts/MoneyBasisControl";
 import {
   TREND_CHART_HEIGHT,
   TREND_CHART_MARGIN,
@@ -285,15 +283,6 @@ export function EntityTrendsChart() {
     });
   }, [availableSystemGroups, data, compareSelected, getSelectedLabel]);
 
-  const revenueMoney = useMoneyBasis(revenueExpensesData, [
-    "Revenue",
-    "Expenditure",
-  ]);
-  const compareMoney = useMoneyBasis(
-    compareData,
-    Object.keys(compareData[0] ?? {}).filter((key) => key !== "year"),
-  );
-
   // Get line configurations for compare chart
   const { compareLines, colorMap } = React.useMemo(() => {
     const result: { dataKey: string; color: string }[] = [];
@@ -355,11 +344,6 @@ export function EntityTrendsChart() {
             </div>
           </div>
 
-          <MoneyBasisControl
-            basis={revenueMoney.basis}
-            onChange={revenueMoney.setBasis}
-            missingPeriods={revenueMoney.missingPeriods}
-          />
           {/* Chart - mt-auto pushes to bottom of grid cell */}
           <div
             className="mt-auto w-full shrink-0"
@@ -382,7 +366,10 @@ export function EntityTrendsChart() {
               </div>
             ) : (
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={revenueMoney.data} margin={TREND_CHART_MARGIN}>
+                <LineChart
+                  data={revenueExpensesData}
+                  margin={TREND_CHART_MARGIN}
+                >
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                   <XAxis
                     dataKey="year"
@@ -401,12 +388,7 @@ export function EntityTrendsChart() {
                     mirror
                   />
                   <Tooltip
-                    content={(props) => (
-                      <FinancialChartTooltip
-                        {...props}
-                        unitLabel={revenueMoney.unitLabel}
-                      />
-                    )}
+                    content={(props) => <FinancialChartTooltip {...props} />}
                   />
                   {showRevenue && (
                     <Line
@@ -452,11 +434,6 @@ export function EntityTrendsChart() {
             />
           </div>
 
-          <MoneyBasisControl
-            basis={compareMoney.basis}
-            onChange={compareMoney.setBasis}
-            missingPeriods={compareMoney.missingPeriods}
-          />
           {/* Chart - mt-auto pushes to bottom of grid cell */}
           <div
             className="mt-auto w-full shrink-0"
@@ -472,7 +449,7 @@ export function EntityTrendsChart() {
               </div>
             ) : (
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={compareMoney.data} margin={TREND_CHART_MARGIN}>
+                <LineChart data={compareData} margin={TREND_CHART_MARGIN}>
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                   <XAxis
                     dataKey="year"
@@ -491,12 +468,7 @@ export function EntityTrendsChart() {
                     mirror
                   />
                   <Tooltip
-                    content={(props) => (
-                      <FinancialChartTooltip
-                        {...props}
-                        unitLabel={compareMoney.unitLabel}
-                      />
-                    )}
+                    content={(props) => <FinancialChartTooltip {...props} />}
                   />
                   {compareLines.map((line) => (
                     <Line

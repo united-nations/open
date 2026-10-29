@@ -1,6 +1,4 @@
 "use client";
-import { useMoneyBasis } from "@/hooks/useMoneyBasis";
-import { MoneyBasisControl } from "./MoneyBasisControl";
 import {
   TREND_CHART_HEIGHT,
   TREND_CHART_MARGIN,
@@ -93,8 +91,6 @@ interface FinancingInstrumentChartProps {
   showTooltipTotal?: boolean;
   valueFormatter?: (value: number) => string;
   tooltipSources?: (year: string, visibleKeys: string[]) => BudgetNodeSource[];
-  /** Counts and percentages must opt out of monetary conversion. */
-  monetary?: boolean;
   accessibleTableLabel?: string;
 }
 
@@ -152,15 +148,9 @@ export function FinancingInstrumentChart({
   allowNegative = false,
   variant = "area",
   tooltipSources,
-  monetary = true,
   accessibleTableLabel,
 }: FinancingInstrumentChartProps) {
-  const money = useMoneyBasis(
-    data,
-    series.map((item) => item.key),
-    monetary,
-  );
-  const displayMax = money.basis === "adjusted" ? undefined : yAxisMax;
+  const displayMax = yAxisMax;
   const [hiddenKeys, setHiddenKeys] = useState<string[]>([]);
   // Include signed net series when requested; otherwise require a positive value.
   const activeSeries = series.filter((s) =>
@@ -188,13 +178,6 @@ export function FinancingInstrumentChart({
 
   return (
     <div className="flex flex-col" data-money-chart>
-      {monetary && (
-        <MoneyBasisControl
-          basis={money.basis}
-          onChange={money.setBasis}
-          missingPeriods={money.missingPeriods}
-        />
-      )}
       {showLegend && (
         <div
           className={`mb-3 flex flex-wrap gap-2 ${legendClassName}`}
@@ -241,7 +224,7 @@ export function FinancingInstrumentChart({
           </div>
         ) : (
           <ResponsiveContainer width="100%" height="100%">
-            <Chart data={money.data} margin={TREND_CHART_MARGIN}>
+            <Chart data={data} margin={TREND_CHART_MARGIN}>
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
               <XAxis
                 dataKey="year"
@@ -273,12 +256,11 @@ export function FinancingInstrumentChart({
                 mirror
               />
               <SourceAwareTrendTooltip
-                key={`${money.basis}-${visibleSeries.map((series) => series.key).join("|")}`}
+                key={`${visibleSeries.map((series) => series.key).join("|")}`}
                 interactive={Boolean(tooltipSources)}
                 content={(props) => (
                   <FinancialChartTooltip
                     {...props}
-                    unitLabel={money.unitLabel}
                     payload={props.payload?.map((entry) => ({
                       ...entry,
                       color:
@@ -329,9 +311,7 @@ export function FinancingInstrumentChart({
       </div>
       {accessibleTableLabel && (
         <table className="sr-only">
-          <caption>
-            {accessibleTableLabel}, {money.unitLabel ?? "nominal US dollars"}
-          </caption>
+          <caption>{accessibleTableLabel}, nominal US dollars</caption>
           <thead>
             <tr>
               <th>Year</th>
@@ -342,7 +322,7 @@ export function FinancingInstrumentChart({
             </tr>
           </thead>
           <tbody>
-            {money.data.map((row) => (
+            {data.map((row) => (
               <tr key={row.year}>
                 <th scope="row">{row.year}</th>
                 {visibleSeries.map((item) => (

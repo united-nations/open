@@ -6,7 +6,8 @@ import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 
 import { useCallback, useEffect, useState } from "react";
 import {
-  CATEGORY_LABELS,
+  contributorOriginLabel,
+  contributorFinancingPoint,
   Contributor,
   formatBudget,
   getContributionTypeOrder,
@@ -46,6 +47,7 @@ interface ContributorTrendsData {
     {
       year: number;
       available?: boolean;
+      financingIncomplete?: boolean;
       assessed: number;
       voluntary_earmarked: number;
       voluntary_unearmarked: number;
@@ -56,6 +58,8 @@ interface ContributorTrendsData {
     {
       year: number;
       available?: boolean;
+      financingIncomplete?: boolean;
+      other: number;
       assessed: number;
       voluntary_earmarked: number;
       voluntary_unearmarked: number;
@@ -140,21 +144,15 @@ export function ContributorSidebar({
         const contributorData = data.contributors[contributor.name];
         if (contributorData) {
           setTrendsData(
-            contributorData
-              .filter(
-                (item) =>
-                  item.available !== false &&
-                  !(
-                    revenueCoverage(item.year)?.government === false &&
-                    contributor.category === "Government"
-                  ),
-              )
-              .map((item) => ({
-                year: item.year.toString(),
-                Assessed: item.assessed,
-                "Voluntary un-earmarked": item.voluntary_unearmarked,
-                "Voluntary earmarked": item.voluntary_earmarked,
-              })),
+            contributorData.map((item) =>
+              contributorFinancingPoint(
+                item,
+                !(
+                  revenueCoverage(item.year)?.government === false &&
+                  contributor.category === "Government"
+                ),
+              ),
+            ),
           );
         }
       })
@@ -269,6 +267,76 @@ export function ContributorSidebar({
           }
         >
           <div className="relative space-y-6">
+            {yearContributor && (
+              <p className="text-sm text-gray-600">
+                {contributorOriginLabel(displayContributor.record_kind)}
+                {displayContributor.record_kind === "calculated_balance" &&
+                  ". Calculated from reported control totals minus the available contributor detail; signed differences are retained."}
+              </p>
+            )}
+            {yearContributor &&
+              displayContributor.categories &&
+              displayContributor.categories.length > 1 && (
+                <div className="space-y-2 text-sm">
+                  <FinancialPanelHeading subheading>
+                    CEB contributor categories
+                  </FinancialPanelHeading>
+                  {displayContributor.categories.map((category) => (
+                    <FinancialPanelTotalRow
+                      key={category}
+                      label={category}
+                      value={formatBudget(
+                        getTotalContributions(
+                          displayContributor.categoryContributions?.[
+                            category
+                          ] ?? {},
+                        ),
+                      )}
+                    />
+                  ))}
+                </div>
+              )}
+            {yearContributor && displayContributor.financingIncomplete && (
+              <section
+                className="space-y-3 rounded border border-gray-200 p-3 text-sm"
+                data-unresolved-financing
+              >
+                <h3 className="font-semibold">
+                  Source records with unresolved financing
+                </h3>
+                <p>
+                  These reported amounts have historical financing codes whose
+                  meaning cannot be verified. They are separate from the
+                  reconciled four-type amounts below and must not be added to
+                  system totals. Gaps in the financing trend indicate this
+                  incomplete breakdown.
+                </p>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left">
+                    <thead>
+                      <tr>
+                        <th className="p-1">Recipient</th>
+                        <th className="p-1">CEB code</th>
+                        <th className="p-1 text-right">Source amount</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {displayContributor.unresolvedFinancingRecords?.map(
+                        (record, index) => (
+                          <tr key={index} className="border-t">
+                            <td className="p-1">{record.entity}</td>
+                            <td className="p-1">{record.sourceCode}</td>
+                            <td className="p-1 text-right tabular-nums">
+                              {formatBudget(record.amount)}
+                            </td>
+                          </tr>
+                        ),
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            )}
             {revenueCoverage(selectedYear)?.note && (
               <p className="text-sm text-gray-600">
                 {revenueCoverage(selectedYear)?.note}
@@ -292,15 +360,15 @@ export function ContributorSidebar({
               <>
                 {!isGovernmentDonor(displayContributor.status) &&
                   displayContributor.category &&
-                  displayContributor.category !== "Non-Government" && (
+                  displayContributor.category !== "Non-Government" &&
+                  displayContributor.category !== "Multiple categories" && (
                     <div>
                       <span className="text-base font-semibold text-gray-900">
                         Category
                       </span>
                       <div className="mt-0.5">
                         <span className="inline-block rounded-full bg-slate-200 px-3 py-1 text-sm font-medium text-slate-700">
-                          {CATEGORY_LABELS[displayContributor.category] ||
-                            displayContributor.category}
+                          {displayContributor.category}
                         </span>
                       </div>
                     </div>
@@ -308,7 +376,11 @@ export function ContributorSidebar({
 
                 <div>
                   <FinancialPanelTotalRow
-                    label="Revenue"
+                    label={
+                      displayContributor.financingIncomplete
+                        ? "Revenue with identified financing"
+                        : "Revenue"
+                    }
                     value={formatBudget(totalContributions)}
                   />
 
@@ -345,6 +417,7 @@ export function ContributorSidebar({
                       <div className="mt-3">
                         <FinancingInstrumentChart
                           data={trendsData}
+                          allowNegative
                           compact
                           showLegend={false}
                         />

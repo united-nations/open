@@ -1,13 +1,11 @@
-import { PageSourceLink } from "@/components/PageSources";
-import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
-import { BudgetTreemap } from "@/components/BudgetTreemap";
 import {
-  SecretariatMethodology,
-  TrustFundsMethodologyNotes,
+  SecretariatPageMethodology,
+  SecretariatPageSourceProvider,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
+import { BudgetTreemap } from "@/components/BudgetTreemap";
 
 export const metadata: Metadata = {
   title: "UN Secretariat Trust Funds",
@@ -17,22 +15,8 @@ export const metadata: Metadata = {
 
 export default function TrustFundsPage() {
   return (
-    <ChartSourceProvider
-      label="UN Secretariat trust-fund schedules and separate entity reports"
-      details={
-        <>
-          <SecretariatMethodology />
-          <TrustFundsMethodologyNotes />
-        </>
-      }
-    >
+    <SecretariatPageSourceProvider page="trust-funds">
       <PageHeading
-        sources={
-          <>
-            The fund schedules come from <PageSourceLink source="trustFunds" />.
-            Separate entity reports are linked on their figures.
-          </>
-        }
         id="trust-fund-spending"
         title="How are trust funds and other extrabudgetary resources used?"
         description="Explore UN Secretariat trust-fund schedules and separately reported resources of UNEP, UNODC, UN-Habitat and ITC."
@@ -46,6 +30,7 @@ export default function TrustFundsPage() {
           trustFundLevel="fund"
         />
       </PageBody>
-    </ChartSourceProvider>
+      <SecretariatPageMethodology page="trust-funds" />
+    </SecretariatPageSourceProvider>
   );
 }

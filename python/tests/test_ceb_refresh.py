@@ -44,7 +44,7 @@ class CebRefreshTests(unittest.TestCase):
         self.assertNotIn('Austria', set(result.donor_name))
         residual = result[result.donor_name == 'Unattributed'].iloc[0]
         self.assertEqual(residual.amount, 30)
-        self.assertEqual(residual.rev_type, 'R03E')
+        self.assertEqual(residual.rev_type, 'R03')
         self.assertEqual(result.amount.sum(), 100)
         self.assertTrue(result.amount.notna().all())
         # A signed discrepancy must not be clipped or reassigned to Other financing.
@@ -99,14 +99,15 @@ class CebRefreshTests(unittest.TestCase):
         manifest = read('manifest.json')
         for key in ['donors','entityRevenue','entitySpending','geographicExpenses','countryExpenses']:
             self.assertEqual(manifest[key]['default'],2025)
-        self.assertEqual(manifest['sdgExpenses']['max'],2024)
-        self.assertFalse((ROOT/'public/data/sdg-expenses-2025.json').exists())
+        self.assertEqual(manifest['sdgExpenses']['max'],2025)
+        self.assertTrue((ROOT/'public/data/sdg-expenses-2025.json').exists())
         entities = read('entity-revenue-2025.json')
         self.assertNotIn('ITC',entities)
         self.assertAlmostEqual(sum(e['total'] for e in entities.values()),62970982927.20749,places=2)
         self.assertAlmostEqual(sum(e['amount'] for e in read('entity-spending-2025.json')),64396743592.987045,places=2)
         self.assertAlmostEqual(sum(e['total'] for e in read('geographic-expenses-2025.json')),64396743594.12447,places=2)
-        self.assertTrue(read('donors-2025.json')['MISC']['is_other'])
+        self.assertEqual(read('donors-2025.json')['MISC']['record_kind'], 'reported_aggregate')
+        self.assertFalse(read('donors-2025.json')['MISC']['is_other'])
         # Austria/UNDP is blank in both government-detail presentations.
         self.assertEqual(sum(len(f['missingAmounts']) for f in read('ceb-source.json')['files']),5)
         # Raw source unknowns remain unknown, rather than ad hoc zero replacements.

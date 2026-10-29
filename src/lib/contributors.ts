@@ -7,24 +7,90 @@ export type ContributorStatus =
   | "nonmember"
   | "organization";
 
-export interface Contributor {
+export type ContributorRecordKind =
+  | "reported_named"
+  | "reported_aggregate"
+  | "calculated_balance";
+export type ContributorAmounts = Record<string, Record<string, number>>;
+
+export interface UnresolvedFinancingRecord {
+  entity: string;
+  amount: number;
+  sourceCode: string;
+  category: string;
+  sourceCategory?: string;
+  sourceRow?: number;
+}
+
+export interface Contributor extends ContributorData {
   name: string;
-  status: ContributorStatus;
-  category: string; // Donor category (Government, Foundations, Private Sector, etc.)
-  contributions: Record<string, Record<string, number>>;
-  is_other?: boolean; // Aggregated "Other X" entries (not clickable)
+}
+
+export interface ContributorYearAmounts {
+  year: number;
+  available?: boolean;
+  financingIncomplete?: boolean;
+  assessed: number;
+  voluntary_unearmarked: number;
+  voluntary_earmarked: number;
+  other: number;
+}
+
+/** Preserve missing periods as gaps, while keeping complete control series visible. */
+export function contributorFinancingPoint(
+  point: ContributorYearAmounts,
+  scopeAvailable = true,
+) {
+  const known =
+    scopeAvailable && point.available !== false && !point.financingIncomplete;
+  return {
+    year: String(point.year),
+    Assessed: known ? point.assessed : null,
+    "Voluntary un-earmarked": known ? point.voluntary_unearmarked : null,
+    "Voluntary earmarked": known ? point.voluntary_earmarked : null,
+    Other: known ? point.other : null,
+  };
 }
 
 export interface ContributorData {
   status: ContributorStatus;
-  category: string; // Donor category (Government, Foundations, Private Sector, etc.)
-  contributions: Record<string, Record<string, number>>;
-  is_other?: boolean; // Aggregated "Other X" entries (not clickable)
+  category: string;
+  contributions: ContributorAmounts;
+  categories?: string[];
+  categoryContributions?: Record<string, ContributorAmounts>;
+  record_kind?: ContributorRecordKind;
+  is_other?: boolean;
+  unresolvedContributions?: Record<string, number>;
+  unresolvedFinancingRecords?: UnresolvedFinancingRecord[];
+  unresolvedTotal?: number;
+  financingIncomplete?: boolean;
 }
 
-// Short display labels for contributor categories
-export const CATEGORY_LABELS: Record<string, string> =
-  organizationTaxonomies.contributor_categories;
+export const contributorOriginLabel = (kind?: ContributorRecordKind): string =>
+  kind === "reported_aggregate"
+    ? "Reported aggregate"
+    : kind === "calculated_balance"
+      ? "Calculated balance"
+      : "Reported contributor";
+
+/** A contributor keeps one identity while its observations retain their categories. */
+export function contributorCategoryViews(
+  contributor: Contributor,
+): Contributor[] {
+  const categories = Object.entries(contributor.categoryContributions ?? {});
+  if (!categories.length) return [contributor];
+  return categories.map(([category, contributions]) => ({
+    ...contributor,
+    category,
+    contributions,
+    status:
+      category === "Government"
+        ? isGovernmentDonor(contributor.status)
+          ? contributor.status
+          : "nonmember"
+        : "organization",
+  }));
+}
 
 const contributorStatusMetadata = Object.fromEntries(
   organizationTaxonomies.contributor_statuses.map(({ key, label, order }) => [
@@ -43,7 +109,7 @@ const contributorStatusVisuals: Record<
   organization: { bgColor: "bg-smoky", textColor: "text-white" },
 };
 
-// Unattributed is a special category for revenue where we don't know the source
+// Financing-control balance not assigned to the available contributor detail.
 export const isUnattributed = (contributor: Contributor): boolean => {
   return contributor.name === "Unattributed";
 };
@@ -82,11 +148,7 @@ export const getTotalContributions = (
 export const formatBudget = sharedFormatBudget;
 
 export const getDisplayName = (name: string): string => {
-  return name
-    .replace(/\([^)]*\)/g, "")
-    .replace(/\*/g, "")
-    .replace(/Special Administrative Region/gi, "SAR")
-    .trim();
+  return name.trim();
 };
 
 export const getContributionTypeOrder = (type: string): number => {

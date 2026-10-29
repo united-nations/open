@@ -1,0 +1,88 @@
+{
+  "definitions_2017": {
+    "requested_url": "https://web.archive.org/web/20170710195326id_/http://www.unsceb.org/content/financial-statistics-definition-terms",
+    "resolved_url": "https://web.archive.org/web/20170710195326id_/http://www.unsceb.org/content/financial-statistics-definition-terms",
+    "sha256": "2b93e8ab8a59e587160587320c6988f7a7889b107e56ab8d6c84dcc4ae85a904",
+    "bytes": 110273
+  },
+  "filter_2017": {
+    "requested_url": "https://web.archive.org/web/20170625134917id_/http://www.unsceb.org/content/FS-A00-01",
+    "resolved_url": "https://web.archive.org/web/20170625134917id_/http://www.unsceb.org/content/FS-A00-01",
+    "sha256": "4a7bf360b6276cb64d859920e672285d09d609925522ade0db36576b41b31d63",
+    "bytes": 211584,
+    "revenue_filter": [
+      {
+        "code": "R01",
+        "label": "Assessed Contributions"
+      },
+      {
+        "code": "R02",
+        "label": "Voluntary Contributions - Non-specified"
+      },
+      {
+        "code": "R03",
+        "label": "Voluntary Contributions - Specified"
+      },
+      {
+        "code": "R04",
+        "label": "Revenue from other activities"
+      }
+    ]
+  },
+  "filter_2019": {
+    "requested_url": "https://web.archive.org/web/20190719055908id_/http://unsceb.org/content/FS-A00-01",
+    "resolved_url": "https://web.archive.org/web/20190719055908id_/http://unsceb.org/content/FS-A00-01",
+    "sha256": "06f806daddfe293fad7204c21b795b27b9697fb710922f40eb3085bd5d4c2900",
+    "bytes": 189540,
+    "revenue_filter": [
+      {
+        "code": "R01",
+        "label": "Assessed Contributions"
+      },
+      {
+        "code": "R02",
+        "label": "Voluntary Contributions - Non-specified"
+      },
+      {
+        "code": "R03",
+        "label": "Voluntary Contributions - Specified"
+      },
+      {
+        "code": "R04",
+        "label": "Revenue from other activities"
+      },
+      {
+        "code": "R03A",
+        "label": "Voluntary Contributions pending earmarking"
+      }
+    ]
+  },
+  "donors_2023": {
+    "requested_url": "https://web.archive.org/web/20230801175257id_/https://unsceb.org/sites/default/files/statistic_files/Financial/revenue_non_gov_donors.csv",
+    "resolved_url": "https://web.archive.org/web/20230801175257id_/https://unsceb.org/sites/default/files/statistic_files/Financial/revenue_non_gov_donors.csv",
+    "sha256": "babcb241514ae8669a47f56737dcc757427f98c24b9072cb990962b04186c5a0",
+    "bytes": 247172,
+    "legacy_rows": 801,
+    "legacy_code_values": [
+      "R05",
+      "R07",
+      "R08",
+      "R08B",
+      "R08b",
+      "R09",
+      "R10",
+      "R11",
+      "R12"
+    ],
+    "columns": [
+      "amount",
+      "_currency",
+      "entity",
+      "calendar_year",
+      "rev_type",
+      "donor",
+      "contrib_type"
+    ],
+    "matches_frozen_legacy_financial_observations_after_entity_alias_normalization": true
+  }
+}

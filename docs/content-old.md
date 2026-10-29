@@ -1,5 +1,7 @@
 # Content
 
+> **Historical document — current CEB policy:** This document retains the findings, source vintage or design proposals of its original investigation. It is not the current CEB transformation contract. See [CEB methodology](ceb-methodology.md) and the current source register/manifest for active rules and coverage.
+
 Current content of open.un.org:
 
 - Welcome text: "Welcome to the Transparency Gateway – The gateway at open.un.org is designed to facilitate access to transparency information from across the UN System and the UN Secretariat."

@@ -1,5 +1,7 @@
 # Data integrity remediation — September 2026
 
+> **Historical document — current CEB policy:** This document retains the findings, source vintage or design proposals of its original investigation. It is not the current CEB transformation contract. See [CEB methodology](ceb-methodology.md) and the current source register/manifest for active rules and coverage.
+
 The September 16–17 audit contained 21 findings. Its original report and evidence
 are summarized in [the audit report](data-quality/audit-2026-09-16.md) and [remediation register](data-quality/remediation-status.md), with raw evidence retained locally under `audits/2026-09-16/`; they describe that historical baseline. Corrections
 were implemented against `b126147` plus the existing local changes. The current

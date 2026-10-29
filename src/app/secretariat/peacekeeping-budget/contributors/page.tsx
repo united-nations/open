@@ -1,13 +1,11 @@
-import { PageSourceLink } from "@/components/PageSources";
-import { PageHeading } from "@/components/PageHeading";
-import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
-import { PageBody } from "@/components/PageBody";
-import { PeacekeepingContributorsTreemap } from "@/components/PeacekeepingContributorsTreemap";
 import {
-  SecretariatMethodology,
-  PeacekeepingContributorsMethodologyNotes,
+  SecretariatPageMethodology,
+  SecretariatPageSourceProvider,
 } from "@/components/Methodology";
+import { PageBody } from "@/components/PageBody";
+import { PageHeading } from "@/components/PageHeading";
+import { PeacekeepingContributorsTreemap } from "@/components/PeacekeepingContributorsTreemap";
 
 export const metadata: Metadata = {
   title: "UN Peacekeeping Budget — Contributors",
@@ -15,22 +13,8 @@ export const metadata: Metadata = {
 
 export default function ContributorsPage() {
   return (
-    <ChartSourceProvider
-      label="UN peacekeeping assessment circulars"
-      details={
-        <>
-          <SecretariatMethodology />
-          <PeacekeepingContributorsMethodologyNotes />
-        </>
-      }
-    >
+    <SecretariatPageSourceProvider page="peacekeeping-contributors">
       <PageHeading
-        sources={
-          <>
-            Figures come from{" "}
-            <PageSourceLink source="peacekeepingAssessments" />.
-          </>
-        }
         title="Who funds UN peacekeeping?"
         description="Explore the contributions assessed to Member States for peacekeeping budgets, by contributor and mission. These figures show assessments, not payments received."
       />
@@ -39,6 +23,7 @@ export default function ContributorsPage() {
           <PeacekeepingContributorsTreemap />
         </PageBody>
       </section>
-    </ChartSourceProvider>
+      <SecretariatPageMethodology page="peacekeeping-contributors" />
+    </SecretariatPageSourceProvider>
   );
 }

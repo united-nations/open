@@ -8,12 +8,14 @@ export function SectionChrome({
   navLabel,
   items,
   children,
+  showDisclaimer = true,
 }: {
   title: string;
   intro: string;
   navLabel: string;
   items: readonly SectionNavItem[];
   children: React.ReactNode;
+  showDisclaimer?: boolean;
 }) {
   return (
     <>
@@ -25,7 +27,7 @@ export function SectionChrome({
       </section>
       <SectionSubnav items={items} label={navLabel} />
       {children}
-      <ChartDataDisclaimer />
+      {showDisclaimer && <ChartDataDisclaimer />}
     </>
   );
 }

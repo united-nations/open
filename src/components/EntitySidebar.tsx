@@ -561,7 +561,15 @@ export function EntitySidebar({
                   <div className="mt-2 space-y-1.5">
                     {displayedDonors.map((contrib) => {
                       const typeEntries = Object.entries(contrib)
-                        .filter(([key]) => key !== "donor" && key !== "total")
+                        .filter(
+                          ([key, value]) =>
+                            [
+                              "Assessed",
+                              "Voluntary un-earmarked",
+                              "Voluntary earmarked",
+                              "Other",
+                            ].includes(key) && typeof value === "number",
+                        )
                         .sort(
                           (a, b) =>
                             getContributionTypeOrder(a[0]) -
@@ -574,13 +582,12 @@ export function EntitySidebar({
                         <FinancialPanelRankedRow
                           key={contrib.donor}
                           title={contrib.donor}
-                          label={contrib.donor
-                            .replace(
-                              "United Kingdom of Great Britain and Northern Ireland",
-                              "UK",
-                            )
-                            .replace("United States of America", "USA")}
-                          value={formatBudgetFixed(contrib.total)}
+                          label={contrib.donor}
+                          value={
+                            contrib.financingIncomplete && contrib.total === 0
+                              ? "Financing unresolved"
+                              : formatBudgetFixed(contrib.total)
+                          }
                           onClick={() =>
                             navigateToSidebar("donor", contrib.donor)
                           }

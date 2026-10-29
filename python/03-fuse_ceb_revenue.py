@@ -7,10 +7,10 @@ Tiered approach:
 """
 import pandas as pd
 from pathlib import Path
-from revenue_categories import rev_category
+from revenue_categories import rev_category, UNRESOLVED_FINANCING_CODES
 from ceb_data import revenue_controls, resolve_reporting_entities
 from utils import normalize_entity
-from utils import clean_donor_name, NON_GOVERNMENT_DONORS, GENERIC_DONORS, DONOR_CATEGORY_OVERRIDES, PRIVATE_DONOR_LABEL
+from utils import clean_donor_name, GENERIC_DONORS
 
 ceb = Path("data/ceb")
 clean, fused = ceb / "clean", ceb / "fused"
@@ -23,7 +23,7 @@ def load_contrib_mapping() -> tuple[dict, dict]:
     """Load C-code mapping including alt_descriptors for normalization."""
     df = pd.read_csv(ceb / "contrib_types_mapping.csv")
     code_to_name = dict(zip(df["code"], df["name"]))
-    desc_to_code = {}
+    desc_to_code = dict(zip(df["name"], df["code"]))
     for _, row in df.iterrows():
         if pd.notna(row.get("alt_descriptors")) and row["alt_descriptors"]:
             for desc in str(row["alt_descriptors"]).split("|"):
@@ -35,9 +35,9 @@ def load_rev_type_mapping() -> dict:
     # Text descriptions to R-codes
     return {
         "Assessed Contributions": "R01", "Assessed contributions": "R01",
-        "Voluntary core (un-earmarked) contributions": "R02A",
-        "Voluntary non-core (earmarked) contributions": "R03E",  # Default to project-specific
-        "Revenue from other activities": "R04A",
+        "Voluntary core (un-earmarked) contributions": "R02",
+        "Voluntary non-core (earmarked) contributions": "R03",
+        "Revenue from other activities": "R04",
     }
 
 def normalize_rev_type(rt: str, mapping: dict) -> str:
@@ -45,7 +45,7 @@ def normalize_rev_type(rt: str, mapping: dict) -> str:
     if pd.isna(rt): raise ValueError("Missing financing instrument")
     rt = str(rt).strip()
     if rt.startswith("R") and len(rt) <= 4:
-        return rt.upper().replace("R08B", "R08B").replace("R08b", "R08B")
+        return rt.upper()
     return mapping[rt]
 
 def normalize_contrib_type(ct: str, desc_to_code: dict) -> str | None:
@@ -54,7 +54,9 @@ def normalize_contrib_type(ct: str, desc_to_code: dict) -> str | None:
     ct = str(ct).strip()
     if ct.startswith("C") and len(ct) <= 4: return ct
     if ct in ["1", "2"]: return None
-    return desc_to_code.get(ct)
+    if ct not in desc_to_code:
+        raise ValueError(f"Unknown source contributor category: {ct}")
+    return desc_to_code[ct]
 
 def get_donor_info(donor_name: str, contrib_code: str | None, code_to_name: dict) -> tuple[str, str, str, bool]:
     """Get normalized donor info: (name, contrib_code, donor_type, is_other)."""
@@ -62,19 +64,10 @@ def get_donor_info(donor_name: str, contrib_code: str | None, code_to_name: dict
     name = "Unidentified non-government contributors" if missing_name else clean_donor_name(donor_name)
     is_other = missing_name or name in GENERIC_DONORS
     
-    # Apply category override if exists
-    if name in DONOR_CATEGORY_OVERRIDES:
-        code = DONOR_CATEGORY_OVERRIDES[name]
-    else:
-        code = contrib_code
-    
+    code = contrib_code
     dtype = code_to_name.get(code, "Non-Government") if code else "Non-Government"
-    # CEB also uses these generic labels outside C06. Exports are keyed by
-    # donor name, so keep those source categories separate from the C06 bucket.
-    # Use a visible qualifier: the frontend strips parenthetical display text.
-    if name == PRIVATE_DONOR_LABEL and code != "C06":
-        name = f"{name} — {dtype}"
     return name, code or "Unknown", dtype, is_other
+
 
 def fuse_revenue():
     code_to_name, desc_to_code = load_contrib_mapping()
@@ -85,6 +78,8 @@ def fuse_revenue():
     gov["rev_code"] = gov["rev_type"].apply(lambda x: normalize_rev_type(x, rev_type_map))
     
     nongov = load("revenue_non_gov_donors.csv")
+    nongov["source_row"] = nongov.index + 2
+    gov["source_row"] = gov.index + 2
     nongov["contrib_code"] = nongov["contrib_type"].apply(lambda x: normalize_contrib_type(x, desc_to_code))
     nongov["rev_code"] = nongov["rev_type"].apply(lambda x: normalize_rev_type(x, rev_type_map))
     
@@ -96,12 +91,12 @@ def fuse_revenue():
     
     # Reconcile at the four financing instruments: donor sources do not all
     # retain the detailed R-subtype, so subtype-level residuals would be false precision.
-    canonical = {"Assessed": "R01", "Voluntary un-earmarked": "R02A", "Voluntary earmarked": "R03E", "Other": "R04A"}
+    canonical = {"Assessed": "R01", "Voluntary un-earmarked": "R02", "Voluntary earmarked": "R03", "Other": "R04"}
     revenue["rev_code"] = revenue["rev_type"].map(lambda value: normalize_rev_type(value, rev_type_map))
     contrib_type["rev_code"] = contrib_type["rev_type"].map(lambda value: normalize_rev_type(value, rev_type_map))
     for frame in [revenue, gov, nongov, contrib_type]:
         frame["entity"] = frame["entity"].map(normalize_entity)
-        frame["rev_code"] = frame["rev_code"].map(lambda code: canonical[rev_category(code)])
+        frame["rev_code"] = frame["rev_code"].map(lambda code: "" if code in UNRESOLVED_FINANCING_CODES else canonical[rev_category(code)])
     control_years = set(revenue["calendar_year"])
     years = sorted(control_years | set(nongov["calendar_year"]))
     reporting_controls = revenue.rename(columns={"entity": "agency"})
@@ -118,34 +113,49 @@ def fuse_revenue():
     for year, entity in sorted(keys):
         controls = revenue[(revenue.calendar_year == year) & (revenue.entity == entity)]
         rows = []
-        def add(code, rev, name, amount, other, dtype=None):
-            if pd.isna(amount) or abs(amount) < 0.000001:
+        def add(code, rev, name, amount, kind, dtype=None, source=None, source_file=None):
+            if pd.isna(amount):
                 return
+            # A reported zero is an observation, not missing coverage. Suppress
+            # only floating-point-zero calculated balances.
+            if kind == "calculated_balance" and abs(amount) < 0.000001:
+                return
+            source = source if source is not None else {}
             rows.append({"entity": entity, "year": year, "contrib_code": code,
                          "rev_type": rev, "donor_type": dtype or code_to_name.get(code, "Unattributed"),
-                         "donor_name": name, "amount": float(amount), "is_other": other})
+                         "donor_name": name, "amount": float(amount), "record_kind": kind,
+                         "is_other": kind == "calculated_balance", "financing_resolved": bool(rev),
+                         "source_donor_name": source.get("government_donor", source.get("donor")),
+                         "source_contrib_type": source.get("contrib_type"),
+                         "source_rev_type": source.get("rev_type"),
+                         "source_row": source.get("source_row"), "source_file": source_file})
         g = gov[(gov["calendar_year"] == year) & (gov["entity"] == entity)]
         n = nongov[(nongov["calendar_year"] == year) & (nongov["entity"] == entity)]
         for _, row in g.dropna(subset=["amount"]).iterrows():
             name = clean_donor_name(row["government_donor"])
-            code = "C08B" if name in NON_GOVERNMENT_DONORS else "C01"
-            add(code, row["rev_code"], name, row["amount"], name in GENERIC_DONORS,
-                "Other" if code == "C08B" else "Government")
+            code = normalize_contrib_type(row.get("contrib_type", "Government"), desc_to_code)
+            if code is None:
+                raise ValueError(f"Unknown government source category: {row.get('contrib_type')}")
+            kind = "reported_aggregate" if name in GENERIC_DONORS else "reported_named"
+            add(code, row["rev_code"], name, row["amount"], kind, source=row,
+                source_file="revenue_government_donors.csv")
         for _, row in n.dropna(subset=["amount"]).iterrows():
-            name, code, dtype, other = get_donor_info(row.get("donor", "Unknown"), row.get("contrib_code"), code_to_name)
-            add(code, row["rev_code"], name, row["amount"], other, dtype)
+            name, code, dtype, aggregate = get_donor_info(row.get("donor"), row.get("contrib_code"), code_to_name)
+            add(code, row["rev_code"], name, row["amount"],
+                "reported_aggregate" if aggregate else "reported_named", dtype, row,
+                "revenue_non_gov_donors.csv")
         if year >= 2021:
             ct = contrib_type[(contrib_type["calendar_year"] == year) & (contrib_type["entity"] == entity)]
             for (code, rev), group in ct.groupby(["contrib_type", "rev_code"]):
                 # Contributor-category controls supply identity detail, never
                 # override the authoritative entity/instrument control below.
                 named = sum(r["amount"] for r in rows if r["contrib_code"] == code and r["rev_type"] == rev)
-                name = "Revenue from Activities" if code == "C09" else f"Other {code_to_name.get(code, code)}"
-                add(code, rev, name, group["amount"].sum(min_count=1) - named, True)
+                name = f"Other {code_to_name.get(code, code)}"
+                add(code, rev, name, group["amount"].sum(min_count=1) - named, "calculated_balance")
         amounts = controls.groupby("rev_code")["amount"].sum().to_dict()
-        for rev in sorted(set(amounts) | {r["rev_type"] for r in rows}) if year in control_years else []:
+        for rev in sorted(set(amounts) | {r["rev_type"] for r in rows if r["financing_resolved"]}) if year in control_years else []:
             residual = amounts.get(rev, 0) - sum(r["amount"] for r in rows if r["rev_type"] == rev)
-            add("Unknown", rev, "Unattributed", residual, True, "Unattributed")
+            add("Unknown", rev, "Unattributed", residual, "calculated_balance", "Unattributed")
         results.extend(rows)
 
     df = pd.DataFrame(results)
@@ -161,7 +171,7 @@ def validate(df: pd.DataFrame, revenue: pd.DataFrame, years: list):
     print("\n=== Validation ===")
     
     controls = revenue[revenue["calendar_year"].isin(years)].groupby(["calendar_year", "entity", "rev_code"])["amount"].sum()
-    actual = df[df.year.isin(revenue.calendar_year.unique())].groupby(["year", "entity", "rev_type"])["amount"].sum()
+    actual = df[df.year.isin(revenue.calendar_year.unique()) & df.financing_resolved].groupby(["year", "entity", "rev_type"])["amount"].sum()
     controls.index.names = actual.index.names
     difference = actual.subtract(controls, fill_value=0)
     assert difference.abs().max() < 0.01, difference[difference.abs() >= 0.01].to_dict()

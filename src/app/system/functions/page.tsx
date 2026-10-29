@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
-import { SystemPageSources } from "@/components/PageSources";
-import { CebMethodology } from "@/components/Methodology";
+import { CebPageMethodology } from "@/components/Methodology";
 import { FunctionsMethodology } from "@/components/FunctionsMethodology";
 import {
   FunctionsChart,
@@ -20,18 +19,13 @@ export default function SystemFunctionsPage() {
   return (
     <ChartSourceProvider
       label="CEB financial statistics"
-      details={
-        <>
-          <CebMethodology />
-          <FunctionsMethodology />
-        </>
-      }
+      details={null}
+      placement="page"
     >
       <PageHeading
         id="functions"
         title="Which functions do funds support?"
         description="Explore expenditure across development assistance, humanitarian assistance, peace operations, and the global agenda and specialized assistance. Trends use the current CEB classification from 2018 onward."
-        sources={<SystemPageSources />}
       />
       <PageBody>
         <FunctionsChart />
@@ -39,6 +33,9 @@ export default function SystemFunctionsPage() {
           <FunctionsTrendsChart />
         </div>
       </PageBody>
+      <CebPageMethodology>
+        <FunctionsMethodology />
+      </CebPageMethodology>
     </ChartSourceProvider>
   );
 }

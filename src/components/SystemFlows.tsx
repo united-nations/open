@@ -423,42 +423,7 @@ export function SystemFlows() {
           </div>
         </details>
       )}
-      <ChartFooter
-        hint="Hover for amounts; click a bar or connection to pin details."
-        details={
-          <div className="space-y-2">
-            <p>
-              Detailed columns show the largest 12 items and combine the rest
-              into an “other” group. Regional, subregional and unallocated
-              expenditure remain included.
-            </p>
-            <p>
-              CEB annual revenue and expenditure, including inter-agency
-              transfers, which are not eliminated. Geography includes country,
-              regional and subregional records. SDG expenditure includes amounts
-              not allocated to a goal. These dimensions are alternative
-              breakdowns, not additive totals.
-            </p>
-            <p>
-              “Breakdown / total difference” is a calculated reconciliation
-              amount, not an assigned destination. Known inconsistent geographic
-              labels retain their source names under “Unresolved geographic
-              classification.” The diagram uses CEB organization totals
-              throughout, without substituting Secretariat sub-entities.
-            </p>
-            <p>
-              <a
-                href="https://unsceb.org/financial-statistics"
-                target="_blank"
-                rel="noreferrer"
-                className="underline"
-              >
-                CEB financial statistics
-              </a>
-            </p>
-          </div>
-        }
-      />
+      <ChartFooter hint="Hover for amounts; click a bar or connection to pin details." />
     </section>
   );
 }

@@ -60,7 +60,7 @@ class SdgReconciliationTests(unittest.TestCase):
         source = module.load_sdg_expenses()
         controls = module.load_ceb_expense_controls()
         output = module.build_sdg_expenses(source, controls)
-        self.assertEqual(sorted(output), list(range(2018, 2025)))
+        self.assertEqual(sorted(output), list(range(2018, 2026)))
         for year, result in output.items():
             with self.subTest(year=year):
                 exported = json.loads((ROOT / f'public/data/sdg-expenses-{year}.json').read_text())

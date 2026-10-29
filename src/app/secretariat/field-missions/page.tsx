@@ -1,14 +1,12 @@
-import { PageSourceLink } from "@/components/PageSources";
-import { ChartFooter } from "@/components/ChartFooter";
-import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
-import { FieldMissionsMap } from "@/components/FieldMissionsMap";
 import {
-  FieldMissionsMethodologyNotes,
-  SecretariatMethodology,
+  SecretariatPageMethodology,
+  SecretariatPageSourceProvider,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
+import { ChartFooter } from "@/components/ChartFooter";
+import { FieldMissionsMap } from "@/components/FieldMissionsMap";
 
 export const metadata: Metadata = {
   title: "UN Secretariat Field Missions",
@@ -18,22 +16,8 @@ export const metadata: Metadata = {
 
 export default function FieldMissionsPage() {
   return (
-    <ChartSourceProvider
-      label="UN Secretariat field-mission data"
-      details={
-        <>
-          <SecretariatMethodology />
-          <FieldMissionsMethodologyNotes />
-        </>
-      }
-    >
+    <SecretariatPageSourceProvider page="field-missions">
       <PageHeading
-        sources={
-          <>
-            Financial figures come from the{" "}
-            <PageSourceLink source="annualReport" />.
-          </>
-        }
         id="field-missions"
         title="How do field missions use their resources?"
         description="Explore the geographic footprint of special political missions and peacekeeping missions, together with the resources assigned to them."
@@ -42,6 +26,7 @@ export default function FieldMissionsPage() {
         <FieldMissionsMap />
         <ChartFooter hint="Click on a mission to explore details" />
       </PageBody>
-    </ChartSourceProvider>
+      <SecretariatPageMethodology page="field-missions" />
+    </SecretariatPageSourceProvider>
   );
 }

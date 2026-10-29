@@ -1,5 +1,7 @@
 # Remediation status — 24 September 2026
 
+> **Historical document — current CEB policy:** This document retains the findings, source vintage or design proposals of its original investigation. It is not the current CEB transformation contract. See [CEB methodology](../ceb-methodology.md) and the current source register/manifest for active rules and coverage.
+
 All 21 audit findings have a disposition below. Source limitations are explicitly distinguished from corrected implementation defects. This is a local implementation and verification result, not a deployed-site or comprehensive source certification.
 
 | Finding | Disposition | Evidence |

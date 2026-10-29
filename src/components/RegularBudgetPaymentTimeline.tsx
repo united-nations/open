@@ -1,7 +1,4 @@
 "use client";
-import { useMoneyBasis } from "@/hooks/useMoneyBasis";
-import { MoneyBasisControl } from "@/components/charts/MoneyBasisControl";
-import { moneyAdjustmentFactor } from "@/lib/moneyBasis";
 import {
   TREND_CHART_HEIGHT,
   TREND_CHART_MARGIN,
@@ -112,23 +109,11 @@ export function RegularBudgetPaymentTimeline({
     };
   }, [data]);
 
-  const money = useMoneyBasis(
-    points.map((point) => ({ year: String(data.meta.year), ...point })),
-    ["amount"],
-    measure === "amount",
-  );
-  const factor =
-    money.basis === "adjusted" ? moneyAdjustmentFactor(data.meta.year) : 1;
   const sharedScale = usePaymentChartScale();
   const target =
-    measure === "count"
-      ? data.contributors.length
-      : factor === null
-        ? null
-        : data.meta.assessment_total * factor;
+    measure === "count" ? data.contributors.length : data.meta.assessment_total;
   const yAxisMax =
-    (money.basis === "nominal" ? sharedScale?.scales?.[measure] : undefined) ??
-    paymentScaleMaximum(target ?? 0);
+    sharedScale?.scales?.[measure] ?? paymentScaleMaximum(target ?? 0);
   const finalPoint = points.at(-1);
   const gradientId = useId().replace(/:/g, "");
   const firstDate = points[0]?.date ?? dueDate;
@@ -140,13 +125,6 @@ export function RegularBudgetPaymentTimeline({
 
   return (
     <div id="regular-budget-payment-timing" data-money-chart>
-      {measure === "amount" && (
-        <MoneyBasisControl
-          basis={money.basis}
-          onChange={money.setBasis}
-          missingPeriods={money.missingPeriods}
-        />
-      )}
       <div
         className="w-full"
         style={{ height: TREND_CHART_HEIGHT }}
@@ -158,7 +136,7 @@ export function RegularBudgetPaymentTimeline({
         }
       >
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={money.data} margin={TREND_CHART_MARGIN}>
+          <AreaChart data={points} margin={TREND_CHART_MARGIN}>
             <defs>
               <linearGradient id={gradientId} x1="0" y1="0" x2="1" y2="0">
                 <stop
@@ -214,7 +192,7 @@ export function RegularBudgetPaymentTimeline({
               formatter={(value) => [
                 measure === "count"
                   ? `${Number(value)} Member States`
-                  : `${currency(Number(value))}${money.unitLabel ? ` (${money.unitLabel})` : ""}`,
+                  : `${currency(Number(value))}`,
                 "Listed as paid in full",
               ]}
             />

@@ -3,6 +3,7 @@ import fs from "node:fs";
 import { portalUrl } from "./helpers.mjs";
 const checks = [
   "header-layout",
+  "ceb-methodology",
   "data-disclosures",
   "ceb-refresh",
   "historical-coverage",
