@@ -51,7 +51,7 @@ Current CEB processing is defined by [data/ceb-methodology.json](data/ceb-method
 [docs/data-fusion-expenses.md](docs/data-fusion-expenses.md):
 
 - Use the current CEB release for all available historical years. View years come from validated source coverage and `manifest.json`, not hardcoded limits.
-- `revenue.csv` supplies entity/year/main-financing-type controls. Complete matching entity-revenue controls fill incomplete summary groups only. Reported donor detail and category totals produce signed **Other {category}** and **Unattributed** reconciliation balances.
+- `revenue.csv` supplies entity/year/main-financing-type controls. Reported donor detail and category totals produce signed **Other {category}** and **Unattributed** reconciliation balances.
 - Preserve explicit source contributor categories. Do not infer or override categories from donor names. One contributor may span several categories; the export must preserve those observation-level amounts.
 - Historical R05/R07–R12 financing codes are unresolved unless primary evidence establishes their meaning. Keep their donor records inspectable separately from already-reconciled four-type totals; do not guess or double-count them.
 - System expenses are CEB-only (`FUSE_SECRETARIAT = False`). Do not substitute Secretariat sub-entities or add Secretariat-assessed amounts to CEB totals.

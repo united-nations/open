@@ -47,7 +47,7 @@ class SourceAttributionTests(unittest.TestCase):
             dict(calendar_year=2025, entity="UN", rev_type="R03E", contrib_type=code, amount=amount)
             for code, amount in [("C01", 40), ("C08A", 60)]
         ])
-        sources = {"revenue.csv": controls, "revenue_sub_agency.csv": controls,
+        sources = {"revenue.csv": controls,
                    "revenue_government_donors.csv": gov, "revenue_non_gov_donors.csv": nongov,
                    "revenue_contrib_type.csv": categories}
         with patch.object(fusion, "load", side_effect=lambda name: sources[name].copy()), \
@@ -83,7 +83,7 @@ class SourceAttributionTests(unittest.TestCase):
             ]
         ])
         sources = {
-            "revenue.csv": controls, "revenue_sub_agency.csv": controls,
+            "revenue.csv": controls,
             "revenue_government_donors.csv": pd.DataFrame(columns=[
                 "calendar_year", "entity", "rev_type", "contrib_type", "government_donor", "amount"]),
             "revenue_non_gov_donors.csv": nongov, "revenue_contrib_type.csv": categories,
@@ -138,7 +138,7 @@ class SourceAttributionTests(unittest.TestCase):
                                  government_donor="Miscellaneous", amount=70)])
         nongov = pd.DataFrame([dict(calendar_year=2016, entity="UNDP", rev_type="R09", contrib_type="2",
                                     donor="European Union", amount=30)])
-        sources = {"revenue.csv": controls, "revenue_sub_agency.csv": controls,
+        sources = {"revenue.csv": controls,
                    "revenue_government_donors.csv": gov, "revenue_non_gov_donors.csv": nongov,
                    "revenue_contrib_type.csv": pd.DataFrame(columns=["calendar_year", "entity", "contrib_type", "rev_type", "amount"]),
                    "revenue_by_financing_instruments_and_government_contributors.csv": pd.DataFrame(columns=["calendar_year", "entity", "sub_entity"]),

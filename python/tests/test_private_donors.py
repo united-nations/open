@@ -45,7 +45,6 @@ class PrivateDonorTests(unittest.TestCase):
         ])
         sources = {
             "revenue.csv": controls,
-            "revenue_sub_agency.csv": controls,
             "revenue_government_donors.csv": pd.DataFrame(columns=["calendar_year", "entity", "rev_type", "government_donor", "amount"]),
             "revenue_non_gov_donors.csv": nongov,
             "revenue_contrib_type.csv": categories,

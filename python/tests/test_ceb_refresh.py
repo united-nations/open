@@ -2,6 +2,7 @@
 import importlib.util
 import json
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 from unittest.mock import patch
@@ -15,9 +16,43 @@ from ceb_data import normalize_frame, revenue_controls, resolve_reporting_entiti
 spec = importlib.util.spec_from_file_location('revenue_refresh', ROOT / 'python/03-fuse_ceb_revenue.py')
 revenue = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(revenue)
+spec = importlib.util.spec_from_file_location('ceb_refresh_source', ROOT / 'python/02-fetch_ceb_data.py')
+source = importlib.util.module_from_spec(spec)
+spec.loader.exec_module(source)
 
 
 class CebRefreshTests(unittest.TestCase):
+    def test_source_comparison_keeps_unknown_secondary_amounts_unknown(self):
+        main = pd.DataFrame({
+            'calendar_year': [2025, 2025], 'agency': ['UNDP', 'WHO'],
+            'rev_type': ['Revenue from other activities'] * 2, 'amount': [100.0, 90.0],
+        })
+        detail = main.copy()
+        detail['amount'] = [None, 80.0]
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            raw = base / 'raw'
+            clean = base / 'clean'
+            raw.mkdir()
+            clean.mkdir()
+            for filename in source.ceb_files:
+                frame = main if filename == 'revenue.csv' else detail if filename == 'revenue_sub_agency.csv' else main.assign(amount=0.0)
+                frame.to_csv(raw / filename, index=False)
+            register = base / 'ceb-source.json'
+            with patch.object(source, 'raw', raw), patch.object(source, 'clean', clean), \
+                    patch.object(source, 'FIRST_YEARS', dict.fromkeys(source.ceb_files, 2025)), \
+                    patch.object(source, 'Path', return_value=register):
+                source.clean_and_validate(raw)
+            provenance = json.loads(register.read_text())
+            controls = revenue_controls(pd.read_csv(clean / 'revenue.csv')).set_index('agency')
+        self.assertEqual(provenance['revenuePresentationDifferences'], [
+            {'year': 2025, 'entity': 'WHO', 'instrument': 'Revenue from other activities', 'difference': 10.0},
+        ])
+        missing = next(item for item in provenance['files'] if item['file'] == 'revenue_sub_agency.csv')['missingAmounts']
+        self.assertEqual(len(missing), 1)
+        self.assertEqual(controls.loc['UNDP', 'amount'], 100)
+        self.assertEqual(controls.loc['WHO', 'amount'], 90)
+
     def test_blank_stays_unknown_and_infinity_fails(self):
         frame = normalize_frame(pd.DataFrame({'Calendar Year': [2025], 'USD Amount': [None]}))
         self.assertTrue(frame.amount.isna().all())
@@ -34,7 +69,7 @@ class CebRefreshTests(unittest.TestCase):
         ct = pd.DataFrame(columns=['calendar_year', 'entity', 'contrib_type', 'rev_type', 'amount'])
         breakdown = pd.DataFrame(columns=['calendar_year', 'entity', 'sub_entity'])
         expenses = pd.DataFrame(columns=['calendar_year', 'agency', 'sub_agency'])
-        sources = {'revenue.csv': controls, 'revenue_sub_agency.csv': controls,
+        sources = {'revenue.csv': controls,
                    'revenue_government_donors.csv': gov, 'revenue_non_gov_donors.csv': nongov,
                    'revenue_contrib_type.csv': ct,
                    'revenue_by_financing_instruments_and_government_contributors.csv': breakdown,
@@ -53,21 +88,18 @@ class CebRefreshTests(unittest.TestCase):
             result = revenue.fuse_revenue()
         self.assertEqual(result.loc[result.donor_name == 'Unattributed', 'amount'].iloc[0], -20)
 
-    def test_independent_controls_only_replace_groups_with_missing_amounts(self):
+    def test_revenue_controls_use_main_file_amounts_without_imputing_blanks(self):
         summary = pd.DataFrame([
             dict(calendar_year=2024, agency='UNRWA', rev_type='R03E', amount=None),
             dict(calendar_year=2024, agency='UNRWA', rev_type='R03E', amount=70),
             dict(calendar_year=2024, agency='UNRWA', rev_type='R02A', amount=20),
         ])
-        detail = pd.DataFrame([
-            dict(calendar_year=2024, agency='UNRWA', rev_type='R03E', amount=100),
-            dict(calendar_year=2024, agency='UNRWA', rev_type='R02A', amount=25),
-        ])
-        controls = revenue_controls(summary, detail).set_index('rev_type')
-        self.assertEqual(controls.loc['R03E', 'amount'], 100)
+        controls = revenue_controls(summary).set_index('rev_type')
+        self.assertEqual(controls.loc['R03E', 'amount'], 70)
         self.assertEqual(controls.loc['R02A', 'amount'], 20)
+        self.assertTrue(pd.isna(summary.amount.iloc[0]))
         with self.assertRaises(ValueError):
-            revenue_controls(summary, detail[detail.rev_type != 'R03E'])
+            revenue_controls(summary.iloc[:1])
 
     def test_total_plus_component_geography_is_not_double_counted(self):
         frame = pd.DataFrame([dict(calendar_year=2025, expenses_type=t, amount=a) for t,a in

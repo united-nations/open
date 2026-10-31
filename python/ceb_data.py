@@ -78,28 +78,13 @@ def select_sdg_expenses(frame: pd.DataFrame) -> pd.DataFrame:
     return actuals
 
 
-def revenue_controls(summary: pd.DataFrame, detail: pd.DataFrame) -> pd.DataFrame:
-    """Keep the published revenue series; use complete detail for blank controls.
-
-    Historical financing classifications differ between CEB's two presentations.
-    Do not substitute the entire series just because the detailed file is complete.
-    Only groups containing unknown amounts use the independent complete control.
-    """
+def revenue_controls(revenue: pd.DataFrame) -> pd.DataFrame:
+    """Sum reported amounts from CEB's main revenue file."""
     from utils import normalize_entity
-    frames = [summary.copy(), detail.copy()]
-    for frame in frames:
-        frame['agency'] = frame.agency.map(normalize_entity)
-    summary, detail = frames
+    revenue = revenue.copy()
+    revenue['agency'] = revenue.agency.map(normalize_entity)
     keys = ['calendar_year', 'agency', 'rev_type']
-    values = summary.groupby(keys).amount.sum(min_count=1)
-    complete = detail.groupby(keys).amount.sum(min_count=1)
-    missing_keys = summary[summary.amount.isna()].set_index(keys).index.unique()
-    if detail.amount.isna().any():
-        raise ValueError('Missing independent revenue control amount')
-    for key in missing_keys:
-        if key not in complete:
-            raise ValueError(f'No independent revenue control for missing amount: {key}')
-        values.loc[key] = complete.loc[key]
+    values = revenue.groupby(keys).amount.sum(min_count=1)
     if values.isna().any():
         raise ValueError('Unresolved missing revenue control')
     return values.rename('amount').reset_index()

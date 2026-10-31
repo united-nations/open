@@ -18,18 +18,16 @@ year constants.
 | File | Use |
 | --- | --- |
 | `revenue.csv` | Entity × year × main-financing-type controls |
-| `revenue_sub_agency.csv` | Complete matching control only when the summary control is incomplete |
 | `revenue_government_donors.csv` | Reported government donor detail |
 | `revenue_non_gov_donors.csv` | Reported non-government detail, with partial historical coverage |
 | `revenue_contrib_type.csv` | Reported contributor-category controls where available |
 | `revenue_by_financing_instruments_and_government_contributors.csv` | Source detail retained for independent checks |
 
-A complete `revenue.csv` control retains precedence when another complete CEB
-presentation disagrees about financing classification. The other presentation
-fills missing controls only; it does not replace the whole series. Blanks remain
-unknown, signed adjustments remain signed, and missing donor observations are
-not fabricated as zeros. Source-only observations before system-wide revenue
-controls remain partial records and are not published as complete system totals.
+Revenue controls are the sums of reported amounts in `revenue.csv`, grouped by
+organization, year and main financing type. Source blanks remain unchanged;
+a group with no reported amount fails validation. Signed adjustments retain
+their signs. Source-only observations before system-wide revenue controls remain
+partial records and are not published as complete system totals.
 
 ## Organization identity and reporting scope
 

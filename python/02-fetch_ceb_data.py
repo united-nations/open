@@ -79,7 +79,7 @@ def clean_and_validate(source=raw):
         required = set(range(FIRST_YEARS[fn], 2025)) | previous_years.get(fn, set())
         if not required.issubset(coverage):
             raise ValueError(f"Lost historical coverage in {fn}: {required - set(coverage)}")
-        if fn in {"revenue_sub_agency.csv", "expenses_sub_agency.csv"} and frame.amount.isna().any():
+        if fn == "expenses_sub_agency.csv" and frame.amount.isna().any():
             raise ValueError(f"Missing authoritative control amount in {fn}")
         missing = frame[frame.amount.isna()]
         provenance["files"].append({"file": fn, "url": "https://unsceb.org/assets/data/FS/" + fn,
@@ -87,23 +87,22 @@ def clean_and_validate(source=raw):
             "missingAmounts": [{"csvRow": int(i) + 2, **row.drop(labels="amount").dropna().to_dict()}
                                for i, row in missing.iterrows()]})
         dfs[fn] = frame
-    # Total-revenue and entity-revenue files are independent presentations.
-    # Complete entity/instrument controls remain authoritative when detail is blank.
-    controls = dfs["revenue_sub_agency.csv"]
+    controls = dfs["revenue.csv"]
+    detail = dfs["revenue_sub_agency.csv"]
     # CEB's published 2025 non-submission note applies only while the release
     # actually omits ITC; a later completed report must clear the UI disclosure.
     if 2025 in set(controls.calendar_year) and 'ITC' not in set(controls.loc[controls.calendar_year == 2025, 'agency']):
         provenance["nonReporting"]["2025"] = ["ITC"]
-    for frame in (dfs["revenue.csv"], controls):
+    for frame in (controls, detail):
         frame["agency"] = frame.agency.map(normalize_entity)
     keys = ["calendar_year", "agency", "rev_type"]
-    expected = controls.groupby(keys).amount.sum()
-    reported = dfs["revenue.csv"].groupby(keys).amount.sum(min_count=1)
-    differences = reported.subtract(expected, fill_value=0)
+    expected = detail.groupby(keys).amount.sum(min_count=1)
+    reported = controls.groupby(keys).amount.sum(min_count=1)
+    differences = reported.subtract(expected).dropna()
     provenance["revenuePresentationDifferences"] = [
         {"year": int(year), "entity": entity, "instrument": instrument, "difference": float(amount)}
         for (year, entity, instrument), amount in differences.items() if abs(amount) > 0.01]
-    revenue_controls(dfs["revenue.csv"], controls)
+    revenue_controls(controls)
     select_geographic_totals(dfs["expenses_by_country_region_sub_agency.csv"])
     select_sdg_expenses(dfs["expenses_sdgs.csv"])
     for fn, frame in dfs.items():

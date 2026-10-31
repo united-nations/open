@@ -20,22 +20,17 @@ class EntityTrendCoverageTests(unittest.TestCase):
         summary = pd.DataFrame([
             dict(calendar_year=2011, agency="UNDP", rev_type="R01", amount=100),
             dict(calendar_year=2011, agency="UNDP", rev_type="R04A", amount=-5),
-            dict(calendar_year=2012, agency="UNDP", rev_type="R01", amount=None),
+            dict(calendar_year=2012, agency="UNDP", rev_type="R01", amount=120),
         ])
-        detail = summary.copy()
-        detail.loc[2, "amount"] = 120
-        with patch.object(pd, "read_csv", side_effect=[summary, detail]) as read:
+        with patch.object(pd, "read_csv", return_value=summary) as read:
             result = trends.load_revenue()
         self.assertEqual(result, {"UNDP": {2011: 95, 2012: 120}})
-        self.assertEqual([call.args[0] for call in read.call_args_list], [
-            "data/ceb/clean/revenue.csv", "data/ceb/clean/revenue_sub_agency.csv",
-        ])
+        read.assert_called_once_with("data/ceb/clean/revenue.csv")
 
     def test_published_trends_cover_all_control_years_and_match_annual_exports(self):
         data = json.loads((ROOT / "public/data/entity-trends.json").read_text())
         controls = trends.revenue_controls(
             pd.read_csv(ROOT / "data/ceb/clean/revenue.csv"),
-            pd.read_csv(ROOT / "data/ceb/clean/revenue_sub_agency.csv"),
         )
         expected = controls.groupby(["agency", "calendar_year"]).amount.sum()
         actual = {(entity, row["year"]): row["revenue"]

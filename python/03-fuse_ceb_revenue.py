@@ -73,7 +73,7 @@ def fuse_revenue():
     code_to_name, desc_to_code = load_contrib_mapping()
     rev_type_map = load_rev_type_mapping()
     
-    revenue = revenue_controls(load("revenue.csv"), load("revenue_sub_agency.csv")).rename(columns={"agency": "entity"})
+    revenue = revenue_controls(load("revenue.csv")).rename(columns={"agency": "entity"})
     gov = load("revenue_government_donors.csv")
     gov["rev_code"] = gov["rev_type"].apply(lambda x: normalize_rev_type(x, rev_type_map))
     

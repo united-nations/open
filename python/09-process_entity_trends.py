@@ -11,10 +11,7 @@ UNCATEGORIZED = "Uncategorized"
 
 def load_revenue() -> dict[str, dict[int, float]]:
     """Load authoritative totals independently of contributor-detail coverage."""
-    df = revenue_controls(
-        pd.read_csv("data/ceb/clean/revenue.csv"),
-        pd.read_csv("data/ceb/clean/revenue_sub_agency.csv"),
-    )
+    df = revenue_controls(pd.read_csv("data/ceb/clean/revenue.csv"))
     agg = df.groupby(["agency", "calendar_year"])["amount"].sum().reset_index()
     data = defaultdict(dict)
     for _, row in agg.iterrows():
