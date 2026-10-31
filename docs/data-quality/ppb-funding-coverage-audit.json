@@ -1,0 +1,144 @@
+{
+  "scope": "PPB expenditure 2019\u20132025, financial-data-v1.8; direct section budget-unit matches by normalized full source entity name; positive printed financial_by_component controls only",
+  "limitations": [
+    "Exact-name matching is a targeted check, not proof of complete financial coverage.",
+    "Object schedules, unmatched entity names, other currencies, estimates, printed zeros and negative source controls are outside the missing-control scan.",
+    "USD-labelled historical ITC observations need separate currency/scope review; they are not counted as confirmed losses."
+  ],
+  "scan": [
+    {
+      "edition": 2021,
+      "expenditure_year": 2019,
+      "matched_missing_source_controls": 0
+    },
+    {
+      "edition": 2022,
+      "expenditure_year": 2020,
+      "matched_missing_source_controls": 0
+    },
+    {
+      "edition": 2023,
+      "expenditure_year": 2021,
+      "matched_missing_source_controls": 0
+    },
+    {
+      "edition": 2024,
+      "expenditure_year": 2022,
+      "matched_missing_source_controls": 0
+    },
+    {
+      "edition": 2025,
+      "expenditure_year": 2023,
+      "matched_missing_source_controls": 0
+    },
+    {
+      "edition": 2026,
+      "expenditure_year": 2024,
+      "matched_missing_source_controls": 0
+    },
+    {
+      "edition": 2027,
+      "expenditure_year": 2025,
+      "matched_missing_source_controls": 26
+    }
+  ],
+  "missing_controls": 26,
+  "affected_entities": 19,
+  "missing_usd_by_funding_source": {
+    "extrabudgetary": 72979100,
+    "other_assessed": 9800700
+  },
+  "signed_funding_cells_hidden_by_positive_only_sidebar": [
+    {
+      "year": 2020,
+      "node": "section-10~section-wide-allocations~programme-of-work~landlocked-developing-countries",
+      "funding_source": "extrabudgetary",
+      "amount_usd": -21900
+    },
+    {
+      "year": 2020,
+      "node": "section-10~section-wide-allocations~programme-of-work~small-island-developing-states",
+      "funding_source": "extrabudgetary",
+      "amount_usd": -13700
+    },
+    {
+      "year": 2020,
+      "node": "section-18~economic-commission-for-africa~programme-of-work~subregional-activities-for-developmenta~d-subregional-activities-in-east-africa",
+      "funding_source": "extrabudgetary",
+      "amount_usd": -6200
+    },
+    {
+      "year": 2020,
+      "node": "section-18~economic-commission-for-africa~programme-of-work~subregional-activities-for-developmenta~e-subregional-activities-in-southern-africa",
+      "funding_source": "extrabudgetary",
+      "amount_usd": -1600
+    },
+    {
+      "year": 2022,
+      "node": "section-3~special-political-missions~unama-and-unami~discontinued-missionsa",
+      "funding_source": "regular_budget",
+      "amount_usd": -9800
+    },
+    {
+      "year": 2022,
+      "node": "section-29A~section-wide-allocations~subprogramme-2-programme-planning-finance-and-budget~component-3-programme-planning-and-budgeting",
+      "funding_source": "other_assessed",
+      "amount_usd": -400
+    },
+    {
+      "year": 2023,
+      "node": "section-32~section-special-purpose-allocations~bank-charges",
+      "funding_source": "regular_budget",
+      "amount_usd": -399500
+    },
+    {
+      "year": 2025,
+      "node": "section-32~section-special-purpose-allocations~bank-charges",
+      "funding_source": "regular_budget",
+      "amount_usd": -476500
+    }
+  ],
+  "source_sha256": {
+    "data/references/programme-budget-data-financial-v1.8/financial/2021.json": "60077ad77e62b3368a4355a26922379c769a02136bc38a81428d04250c4f2f4e",
+    "data/references/programme-budget-data-financial-v1.8/ppb/2021.json": "b62d15b1e06fce61d9c8e050855c778b0f623eff0997c0054e178c3469694d7b",
+    "public/data/budget-ppb-expenditure-2019.json": "3b1f7396aa06da9dfc4450b67b77d81212a7b82e7a75c1eceb35576d406878c0",
+    "data/references/programme-budget-data-financial-v1.8/financial/2022.json": "49c78a2b889c15f5310aa461199c58405f07f7f5274050edb1928b35cc05aa8c",
+    "data/references/programme-budget-data-financial-v1.8/ppb/2022.json": "dd496d8221c3b0e64d1cb3824b01448e31f1d32fb9537d21dcb8e0c97aa22475",
+    "public/data/budget-ppb-expenditure-2020.json": "9c5a1316962e7a339ed0c3f557eb8080c0f7abbe4073a8eedeb8c21dcf3bc289",
+    "data/references/programme-budget-data-financial-v1.8/financial/2023.json": "733d3ae90b4a77fdc968b386e73d5227b5b1a795cf8d8332b4bc711fb11dfeac",
+    "data/references/programme-budget-data-financial-v1.8/ppb/2023.json": "b04555fa6083c61ea97af1c37e41d3a65ec5d3a0be861d33b2ea7c3406a9ccbc",
+    "public/data/budget-ppb-expenditure-2021.json": "8ab8813ade5c79dadf5f89407109bb9bcaec61118e36ad6e03306c7caed01955",
+    "data/references/programme-budget-data-financial-v1.8/financial/2024.json": "0198a5a5b335c34257f3259d4b415d6a46f565dbccc44c23120bca672319a5bb",
+    "data/references/programme-budget-data-financial-v1.8/ppb/2024.json": "3f8d6164603ae19569662730bc38595461a4ac9d7e532c416f95b8c6682fa977",
+    "public/data/budget-ppb-expenditure-2022.json": "5dbcbf459d59ed825a7fb07f6d793aad518b225902342483fdf76386d3fe171b",
+    "data/references/programme-budget-data-financial-v1.8/financial/2025.json": "9fbea5d08425deef3afb869b6d69a68bedc2bc89878d3105c4355b94825f5e5a",
+    "data/references/programme-budget-data-financial-v1.8/ppb/2025.json": "d973a19f43ae73091ee1369b94f9ef1e7a15851eb1af64c65c0bdb9fd7b96df1",
+    "public/data/budget-ppb-expenditure-2023.json": "47b944328f7e345ba808f6955d4aed99282155aa20ef05b6741320001dcaa3c4",
+    "data/references/programme-budget-data-financial-v1.8/financial/2026.json": "283ad820d73e0a614bce17971346d606d80448c9c21880503da2d0ca04d34def",
+    "data/references/programme-budget-data-financial-v1.8/ppb/2026.json": "fd8ea6ae80e12f845f73ad45828b0dc279683284ca21627a14fa4a13f9962bcc",
+    "public/data/budget-ppb-expenditure-2024.json": "30621877f9386b788bd36600b46a34687a40ef918110866b93b753a0c5ce1709",
+    "data/references/programme-budget-data-financial-v1.8/financial/2027.json": "b0df3d6320d26dfd38000a94fa3d52660782cb7f99ec71a3221c4e180c6ac4ec",
+    "data/references/programme-budget-data-financial-v1.8/ppb/2027.json": "658500e6673e091df680a23174fc2343c6c2c0dc4910bc1d34fc0af535957786",
+    "public/data/budget-ppb-expenditure-2025.json": "62b486942b530fadc335c38ab418f3cba2b3e44eafea84ae7c32f0dad872339a"
+  },
+  "in_memory_rebuild_with_source_observations_present_and_old_derivations_removed": {
+    "Proposed programme budget 2027": {
+      "regular_budget": "3484745600",
+      "other_assessed": "387841100",
+      "extrabudgetary": "8212484500",
+      "total_all_sources": "12085071200"
+    },
+    "1. Overall policymaking, direction and coordination": {
+      "regular_budget": "141940000",
+      "other_assessed": "9800700",
+      "extrabudgetary": "72979100",
+      "total_all_sources": "224719800"
+    },
+    "Executive Office of the Secretary-General": {
+      "regular_budget": "17602100",
+      "other_assessed": "1195900",
+      "extrabudgetary": "34180200",
+      "total_all_sources": null
+    }
+  }
+}

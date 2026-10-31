@@ -30,6 +30,7 @@ import type {
   BudgetNode,
 } from "@/types";
 import { formatBudget } from "@/lib/entities";
+import { budgetFundingEntries } from "@/lib/budgetFunding";
 import {
   collectBudgetNodeSources,
   collectBudgetHierarchySources,
@@ -709,7 +710,7 @@ function BudgetDetailSidebar({
       Math.abs(breakdownNodes[0].amount - node.amount) < 0.5 &&
       (childrenByParent[breakdownNodes[0].id] ?? []).length === 0
     );
-  const fundingEntries = positiveFundingValues(node);
+  const fundingEntries = budgetFundingEntries(node);
   const childSum = childNodes.reduce((sum, child) => sum + child.amount, 0);
   const childGap = node.amount - childSum;
   const sourceMetric =
@@ -888,6 +889,16 @@ function BudgetDetailSidebar({
                       );
                     })}
                   </div>
+                  {BUDGET_FUNDING_SOURCES.some(
+                    (source) =>
+                      meta.fundingSources?.includes(source) &&
+                      node.values?.[source] === undefined,
+                  ) && (
+                    <p className="mt-2 text-xs text-gray-500">
+                      Some funding-source amounts are unavailable for this item;
+                      missing amounts are not zero.
+                    </p>
+                  )}
                   <div className="mt-4">
                     {meta.stream === "ppb" &&
                       dataset?.startsWith("budget-ppb-") &&

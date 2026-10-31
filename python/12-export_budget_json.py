@@ -91,6 +91,7 @@ from pathlib import Path
 
 from domain_taxonomies import load_secretariat_taxonomies
 from budget_source_exceptions import correct_ola_year, apply_annual_exceptions
+from ppb_funding_coverage import validate_section1_funding
 
 SRC = Path("data/references/programme-budget-data-financial-v1.8")
 OUT = Path("public/data")
@@ -508,6 +509,7 @@ def stream_states(view: dict) -> dict[str, str]:
 
 
 def build_ppb(view: dict, financial: dict | None = None) -> dict:
+    validate_section1_funding(view, financial)
     lens = view["lens"]
     year = lens["dataYear"]
     edition = lens["edition"]
@@ -825,6 +827,10 @@ def build_ppb(view: dict, financial: dict | None = None) -> dict:
             children = children_by_parent.get(node["id"], [])
             metric_values = node["metricValues"]
             for metric in PPB_METRICS:
+                # Expenditure availability is owned by the source hierarchy.
+                # A subset of priced children cannot establish a missing stream.
+                if metric == "expenditure":
+                    continue
                 values = metric_values.setdefault(metric, {})
                 for funding in FUNDING_SOURCES:
                     if funding in values:
@@ -856,6 +862,9 @@ def build_ppb(view: dict, financial: dict | None = None) -> dict:
     for node in nodes:
         children = children_by_parent.get(node["id"], [])
         for metric in PPB_METRICS:
+            # Even a zero remainder is not evidence of reported expenditure.
+            if metric == "expenditure":
+                continue
             parent_values = node["metricValues"].get(metric, {})
             for funding, parent_amount in parent_values.items():
                 missing = [

@@ -18,6 +18,7 @@ const checks = [
   "sidebar-years",
   "secretariat-sidebar-years",
   "budget-sources",
+  "budget-funding",
   "trust-fund-sources",
   "trust-fund-contributor-sources",
   "hydration",

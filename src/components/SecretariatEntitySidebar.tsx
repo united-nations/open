@@ -177,7 +177,13 @@ export function SecretariatEntitySidebar({
       ),
     ).then((rows) => {
       if (!active) return;
-      setTrendIncomplete(rows.some((row) => row.failed));
+      setTrendIncomplete(
+        rows.some(
+          (row) =>
+            row.failed ||
+            !row.data?.entities.some((item) => item.code === entity.code),
+        ),
+      );
       setFundingTrend(
         rows.map(({ year: trendYear, data }) => {
           const match = data?.entities.find(
@@ -185,13 +191,13 @@ export function SecretariatEntitySidebar({
           );
           return {
             year: String(trendYear),
-            ...fundingAmounts(
-              match ?? {
-                ...entity,
-                total: 0,
-                cells: [],
-              },
-            ),
+            ...(match
+              ? fundingAmounts(match)
+              : {
+                  regular_budget: null,
+                  other_assessed: null,
+                  extrabudgetary: null,
+                }),
           };
         }),
       );
@@ -236,7 +242,7 @@ export function SecretariatEntitySidebar({
       fundingTrend.some(
         (point) =>
           typeof point[series.key] === "number" &&
-          Number(point[series.key]) > 0,
+          Number(point[series.key]) !== 0,
       ),
     );
 
@@ -283,6 +289,7 @@ export function SecretariatEntitySidebar({
             data={fundingTrend}
             series={FUNDING_SOURCE_TREND_SERIES}
             compact
+            allowNegative
             showLegend={false}
           />
         )}
@@ -299,7 +306,7 @@ export function SecretariatEntitySidebar({
             : !hasTrend
               ? "No multi-year funding-source trend is available."
               : trendIncomplete
-                ? "The trend is shown with one or more unavailable years."
+                ? "Some years are unavailable; gaps do not represent zero spending."
                 : "Funding-source trend is ready."}
         </p>
       </div>

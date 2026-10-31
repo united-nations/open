@@ -36,6 +36,30 @@ and investigate source changes before updating numerical regression expectations
 Do not hand-edit source amounts or fabricate a legacy-code crosswalk to make
 tests pass. See [current CEB methodology](../ceb-methodology.md).
 
+## PPB 2027 Section 1 funding coverage
+
+The original `financial-data-v1.8` chart hierarchy omits Section 1 OA/XB even
+though its normalized observations contain the controls. The producer must load
+the preliminary Section 1 supplement before building section/Part/whole totals,
+and recompute existing derivations when rebuilding. Use a corrected producer
+build with `--local-financial` until a corrected release is available. The
+importer rejects the known loss rather than silently regenerating incomplete
+exports from the original release. Regenerate the matching hash-bound PDF page
+sidecar when rebuilding source files; never bypass the citation hash check.
+
+The 26 affected controls across 19 entities are recorded in
+`ppb-funding-coverage-audit.csv`. Corrected 2025 section expenditure is
+$224,719,800 and the programme-wide total is $12,085,071,200. EOSG includes
+$34,180,200 XB, $1,195,900 OA and $17,602,100 RB, supported by PDF page 34.
+Expenditure fields absent from the canonical hierarchy remain unavailable;
+arithmetic remainders must not create numeric expenditure observations.
+
+Run `node tests/budget-funding.mjs` and
+`uv run python -m unittest discover -s python/tests -p 'test_ppb_funding_coverage.py'`
+for the focused data checks. `tests/browser/budget-funding.mjs` checks restored
+EOSG funding, a failed trend year remaining unavailable, and signed amounts.
+The budget routes require a `SITE_VARIANT=preview pnpm build` for browser tests.
+
 ## Application checks
 
 ```bash

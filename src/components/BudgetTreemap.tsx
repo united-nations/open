@@ -1119,34 +1119,22 @@ export function BudgetTreemap({
       setPendingDeepLink(null);
       return;
     }
-    if (
-      sidebarById[pendingDeepLink] &&
-      (isTrustFund || sidebarById[pendingDeepLink].amount > 0)
-    ) {
+    // Signed adjustments and printed zeros have inspectable source evidence,
+    // even though they cannot occupy positive treemap area.
+    if (sidebarById[pendingDeepLink]) {
       setSelectedId(pendingDeepLink);
       setPendingDeepLink(null);
     }
-  }, [
-    pendingDeepLink,
-    setPendingDeepLink,
-    sidebarById,
-    isTrustFund,
-    hashPrefix,
-  ]);
+  }, [pendingDeepLink, setPendingDeepLink, sidebarById, hashPrefix]);
 
   // A section, mission or component that the chosen year does not print has no
   // node: close the sidebar rather than leave the year before on screen.
   useEffect(() => {
-    if (
-      selectedId &&
-      filteredData &&
-      (!sidebarById[selectedId] ||
-        (!isTrustFund && sidebarById[selectedId].amount <= 0))
-    ) {
+    if (selectedId && filteredData && !sidebarById[selectedId]) {
       setSelectedId(null);
       clearSidebarHash();
     }
-  }, [selectedId, filteredData, sidebarById, isTrustFund]);
+  }, [selectedId, filteredData, sidebarById]);
 
   const { bands } = useMemo(() => {
     const empty = { bands: [] as Band[], drawnTotal: 0 };

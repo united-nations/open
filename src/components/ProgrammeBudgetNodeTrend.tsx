@@ -6,6 +6,7 @@ import {
   SidebarStackedTrend,
   type FinancingInstrumentDataPoint,
 } from "@/components/SidebarStackedTrend";
+import { budgetFundingPoint } from "@/lib/budgetFunding";
 import { budgetTrendSources } from "@/lib/budgetTrendSources";
 import { loadYearData } from "@/lib/data";
 import type { BudgetData, BudgetNode } from "@/types";
@@ -57,18 +58,6 @@ function matchBudgetNode(
   return undefined;
 }
 
-function fundingPoint(
-  year: number,
-  node: BudgetNode,
-): FinancingInstrumentDataPoint {
-  return {
-    year: String(year),
-    regular_budget: node.values?.regular_budget ?? 0,
-    other_assessed: node.values?.other_assessed ?? 0,
-    extrabudgetary: node.values?.extrabudgetary ?? 0,
-  };
-}
-
 export function ProgrammeBudgetNodeTrend({
   node,
   dataset,
@@ -98,11 +87,11 @@ export function ProgrammeBudgetNodeTrend({
         {};
       setData(
         rows.flatMap(({ year, file }) => {
-          if (!file) return [];
+          if (!file) return [budgetFundingPoint(year)];
           const match = matchBudgetNode(file.nodes, node);
-          if (!match) return [];
+          if (!match) return [budgetFundingPoint(year)];
           sources[String(year)] = { file, node: match };
-          return [fundingPoint(year, match)];
+          return [budgetFundingPoint(year, match)];
         }),
       );
       setSourceFiles(sources);
@@ -135,6 +124,7 @@ export function ProgrammeBudgetNodeTrend({
             : "expenditure";
         return budgetTrendSources(row.file.nodes, row.node, metric, keys);
       }}
+      allowNegative
       showLegend={false}
       data={data}
       series={FUNDING_SOURCE_TREND_SERIES}

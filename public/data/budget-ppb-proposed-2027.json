@@ -35,7 +35,7 @@
     "partial": false,
     "scopeLabel": "Proposed regular budget",
     "scopeWarning": "2027 proposed regular budget from PPB 2027 (A/81/6), published in 2026.",
-    "hierarchyProjection": "USD whole/Part/section hierarchy with RB, OA and XB side by side, followed by a stable budget-unit tier. Printed entities remain entities; section-wide, programme, special-purpose and unitemized scopes use explicit neutral wrappers. Deeper rows preserve each selected source schedule instead of claiming one universal entity/component/subprogramme order. Independently printed parents remain authoritative; a source-control difference is retained only as normalized reconciliation metadata, never as treemap expenditure. Selected lower outline: 161 source tables, 1024 printed observations and 520 materialized lower nodes; 116 parallel tables and 2 other-currency tables remain outside additive arithmetic.",
+    "hierarchyProjection": "USD whole/Part/section hierarchy with RB, OA and XB side by side, followed by a stable budget-unit tier. Printed entities remain entities; section-wide, programme, special-purpose and unitemized scopes use explicit neutral wrappers. Deeper rows preserve each selected source schedule instead of claiming one universal entity/component/subprogramme order. Independently printed parents remain authoritative; a source-control difference is retained only as normalized reconciliation metadata, never as treemap expenditure. Selected lower outline: 161 source tables, 1024 printed observations and 520 materialized lower nodes; 116 parallel tables and 2 CHF tables remain outside additive arithmetic.",
     "entityDimension": {
       "entities": 76,
       "printedFinancialEntities": 50,
@@ -2699,7 +2699,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2025%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 51653200
       },
@@ -2962,7 +2962,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2026%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 85091500
       },
@@ -3881,7 +3881,7 @@
       },
       "entityStatus": "multiple_entities",
       "entityNote": "OCHA and UNDRR are separately evidenced.",
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 18053500
       },
@@ -4972,7 +4972,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2014%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 21795400
       },
@@ -5709,7 +5709,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2017%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 12436000
       },
@@ -6151,7 +6151,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2016%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 26690700
       },
@@ -6964,7 +6964,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2015%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 12552300
       },
@@ -7857,7 +7857,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%209%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 94160000
       },
@@ -8586,7 +8586,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2012%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 80735400
       },
@@ -9115,7 +9115,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2013%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation.",
       "metricAmounts": {
         "proposed": 22276300
       },
@@ -9235,7 +9235,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2010%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 10530200
       },
@@ -9629,7 +9629,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2011%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 10864900
       },
@@ -14594,7 +14594,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%204%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 18444600
       },
@@ -15218,7 +15218,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%206%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 5344200
       },
@@ -17686,7 +17686,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2029E%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 84722800
       },
@@ -18546,7 +18546,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2029D%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 16351000
       },
@@ -18940,7 +18940,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2029F%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 22534600
       },
@@ -19887,7 +19887,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%202%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 356405300
       },
@@ -21424,7 +21424,7 @@
       },
       "entityStatus": "multiple_entities",
       "entityNote": "The section publishes several organizational units; no single section owner is asserted.",
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 97003500
       },
@@ -24132,7 +24132,7 @@
       },
       "entityStatus": "multiple_entities",
       "entityNote": "ECA and the Regional Commissions New York Office are separately evidenced.",
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 84763000
       },
@@ -25237,7 +25237,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2019%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 52261300
       },
@@ -25966,7 +25966,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2021%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 59006500
       },
@@ -26847,7 +26847,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2020%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 37845100
       },
@@ -27482,7 +27482,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2022%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 43458100
       },
@@ -28057,7 +28057,7 @@
       },
       "entityStatus": "implementing_entities",
       "entityNote": "The technical-cooperation programme has implementing entities rather than one section owner.",
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 53127900
       },
@@ -28769,7 +28769,7 @@
       },
       "entityStatus": "non_entity_budget_category",
       "entityNote": "Staff assessment is an accounting consolidation, not one organizational entity.",
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 288683000
       },
@@ -29914,7 +29914,7 @@
       },
       "entityStatus": "multiple_entities",
       "entityNote": "ICSC, JIU and CEB are separately evidenced.",
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 9013500
       },
@@ -31071,7 +31071,7 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%207%29&l=en&t=docx"
       },
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 41719200
       },
@@ -32910,7 +32910,7 @@
       },
       "entityStatus": "shared_project_responsibility",
       "entityNote": "Capital-project responsibility varies by project type and duty station.",
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 37827500
       },
@@ -35054,7 +35054,7 @@
       },
       "entityStatus": "funding_mechanism",
       "entityNote": "The Development Account is a funding mechanism rather than one organizational entity.",
-      "note": "The chart projection conserves the section total through explicit entities, neutral section scopes and coverage remainders.",
+      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
       "metricAmounts": {
         "proposed": 20011900
       },

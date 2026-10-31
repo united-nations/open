@@ -2598,15 +2598,13 @@
       "basis": "derived_available_funding_sum",
       "values": {
         "regular_budget": 23848800,
-        "other_assessed": 3443400,
-        "extrabudgetary": 0
+        "other_assessed": 3443400
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
           "regular_budget": 23848800,
-          "other_assessed": 3443400,
-          "extrabudgetary": 0
+          "other_assessed": 3443400
         }
       },
       "metricSources": {
@@ -2637,44 +2635,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "(2) Other assessed",
               "label": "other assessed"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/77/6 (Sect. 34)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2034%29&l=en&t=pdf#page=25",
-              "pdfPage": 25,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, A",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 34)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2034%29&l=en&t=pdf#page=25",
-              "pdfPage": 25,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "1. Security and safety services",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 34)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2034%29&l=en&t=pdf#page=25",
-              "pdfPage": 25,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "3. Specialized operational support",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -5751,14 +5711,12 @@
       "amount": 1350700,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 1350700,
-        "other_assessed": 0
+        "regular_budget": 1350700
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 1350700,
-          "other_assessed": 0
+          "regular_budget": 1350700
         }
       },
       "metricSources": {
@@ -5775,32 +5733,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "(1) Regular budget",
               "label": "regular budget"
-            }
-          ],
-          "other_assessed": [
-            {
-              "symbol": "A/77/6 (Sect. 30)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2030%29&l=en&t=pdf#page=23",
-              "pdfPage": 23,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, A",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 30)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2030%29&l=en&t=pdf#page=23",
-              "pdfPage": 23,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "B. Programme support",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -11517,15 +11449,13 @@
       "basis": "derived_available_funding_sum",
       "values": {
         "regular_budget": 307202100,
-        "extrabudgetary": 15767300,
-        "other_assessed": 0
+        "extrabudgetary": 15767300
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
           "regular_budget": 307202100,
-          "extrabudgetary": 15767300,
-          "other_assessed": 0
+          "extrabudgetary": 15767300
         }
       },
       "metricSources": {
@@ -11556,80 +11486,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "(2) Extrabudgetary",
               "label": "extrabudgetary \u2014 supporting row for calculated total"
-            }
-          ],
-          "other_assessed": [
-            {
-              "symbol": "A/77/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=pdf#page=14",
-              "pdfPage": 14,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=pdf#page=19",
-              "pdfPage": 19,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=pdf#page=37",
-              "pdfPage": 37,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=pdf#page=131",
-              "pdfPage": 131,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=pdf#page=143",
-              "pdfPage": 143,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=pdf#page=156",
-              "pdfPage": 156,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -11716,15 +11572,13 @@
       "basis": "derived_available_funding_sum",
       "values": {
         "regular_budget": 307202100,
-        "extrabudgetary": 15767400,
-        "other_assessed": 0
+        "extrabudgetary": 15767400
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
           "regular_budget": 307202100,
-          "extrabudgetary": 15767400,
-          "other_assessed": 0
+          "extrabudgetary": 15767400
         }
       },
       "metricSources": {
@@ -12091,80 +11945,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "(2) Extrabudgetary",
               "label": "extrabudgetary \u2014 supporting row for calculated total"
-            }
-          ],
-          "other_assessed": [
-            {
-              "symbol": "A/77/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=pdf#page=14",
-              "pdfPage": 14,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=pdf#page=19",
-              "pdfPage": 19,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=pdf#page=37",
-              "pdfPage": 37,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=pdf#page=131",
-              "pdfPage": 131,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=pdf#page=143",
-              "pdfPage": 143,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%201%29&l=en&t=pdf#page=156",
-              "pdfPage": 156,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -13951,14 +13731,12 @@
       "amount": 26590300,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 26590300,
-        "extrabudgetary": 0
+        "regular_budget": 26590300
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 26590300,
-          "extrabudgetary": 0
+          "regular_budget": 26590300
         }
       },
       "metricSources": {
@@ -13975,44 +13753,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "(1) Regular budget",
               "label": "regular budget \u2014 supporting row for calculated total"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/77/6 (Sect. 2)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%202%29&l=en&t=pdf#page=70",
-              "pdfPage": 70,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "2. Planning and coordination of conference services",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 2)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%202%29&l=en&t=pdf#page=70",
-              "pdfPage": 70,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "3. Documentation services",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 2)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%202%29&l=en&t=pdf#page=70",
-              "pdfPage": 70,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "4. Meetings and publishing services",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -28127,16 +27867,12 @@
       "amount": 27626500,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 27626500,
-        "other_assessed": 0,
-        "extrabudgetary": 0
+        "regular_budget": 27626500
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 27626500,
-          "other_assessed": 0,
-          "extrabudgetary": 0
+          "regular_budget": 27626500
         }
       },
       "metricSources": {
@@ -28153,58 +27889,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "Overall: evolution of financial resources by object of expenditure",
               "label": "regular budget"
-            }
-          ],
-          "other_assessed": [
-            {
-              "symbol": "A/77/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%208%29&l=en&t=pdf#page=44",
-              "pdfPage": 44,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/77/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%208%29&l=en&t=pdf#page=44",
-              "pdfPage": 44,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 3",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%208%29&l=en&t=pdf#page=74",
-              "pdfPage": 74,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%208%29&l=en&t=pdf#page=88",
-              "pdfPage": 88,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -28279,16 +27963,12 @@
       "amount": 27626400,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 27626400,
-        "other_assessed": 0,
-        "extrabudgetary": 0
+        "regular_budget": 27626400
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 27626400,
-          "other_assessed": 0,
-          "extrabudgetary": 0
+          "regular_budget": 27626400
         }
       },
       "metricSources": {
@@ -28329,58 +28009,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "Overall: evolution of financial resources by component",
               "label": "regular budget \u2014 supporting row for calculated total"
-            }
-          ],
-          "other_assessed": [
-            {
-              "symbol": "A/77/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%208%29&l=en&t=pdf#page=44",
-              "pdfPage": 44,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/77/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%208%29&l=en&t=pdf#page=44",
-              "pdfPage": 44,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 3",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%208%29&l=en&t=pdf#page=74",
-              "pdfPage": 74,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%208%29&l=en&t=pdf#page=88",
-              "pdfPage": 88,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -33936,14 +33564,12 @@
       "amount": 20100200,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 20100200,
-        "extrabudgetary": 0
+        "regular_budget": 20100200
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 20100200,
-          "extrabudgetary": 0
+          "regular_budget": 20100200
         }
       },
       "metricSources": {
@@ -33960,104 +33586,6 @@
               "columnHeader": "2021 expenditurea",
               "tableTitle": "Overall: evolution of financial resources by object of expenditure",
               "label": "regular budget"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/77/6 (Sect. 10)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2010%29&l=en&t=pdf#page=26",
-              "pdfPage": 26,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 11)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2011%29&l=en&t=pdf#page=27",
-              "pdfPage": 27,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 12)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2012%29&l=en&t=pdf#page=47",
-              "pdfPage": 47,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 14)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2014%29&l=en&t=pdf#page=48",
-              "pdfPage": 48,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 15)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2015%29&l=en&t=pdf#page=36",
-              "pdfPage": 36,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 16)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2016%29&l=en&t=pdf#page=80",
-              "pdfPage": 80,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 17)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2017%29&l=en&t=pdf#page=22",
-              "pdfPage": 22,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 9)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%209%29&l=en&t=pdf#page=76",
-              "pdfPage": 76,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -34132,14 +33660,12 @@
       "amount": 20100200,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 20100200,
-        "extrabudgetary": 0
+        "regular_budget": 20100200
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 20100200,
-          "extrabudgetary": 0
+          "regular_budget": 20100200
         }
       },
       "metricSources": {
@@ -34156,104 +33682,6 @@
               "columnHeader": "2021 expenditurea",
               "tableTitle": "Overall: evolution of financial resources by object of expenditure",
               "label": "regular budget"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/77/6 (Sect. 10)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2010%29&l=en&t=pdf#page=26",
-              "pdfPage": 26,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 11)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2011%29&l=en&t=pdf#page=27",
-              "pdfPage": 27,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 12)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2012%29&l=en&t=pdf#page=47",
-              "pdfPage": 47,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 14)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2014%29&l=en&t=pdf#page=48",
-              "pdfPage": 48,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 15)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2015%29&l=en&t=pdf#page=36",
-              "pdfPage": 36,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 16)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2016%29&l=en&t=pdf#page=80",
-              "pdfPage": 80,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 17)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2017%29&l=en&t=pdf#page=22",
-              "pdfPage": 22,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 9)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%209%29&l=en&t=pdf#page=76",
-              "pdfPage": 76,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -38192,14 +37620,12 @@
       "amount": 541100,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 541100,
-        "extrabudgetary": 0
+        "regular_budget": 541100
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 541100,
-          "extrabudgetary": 0
+          "regular_budget": 541100
         }
       },
       "metricSources": {
@@ -38216,44 +37642,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "(1) Regular budget",
               "label": "regular budget"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/77/6 (Sect. 16)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2016%29&l=en&t=pdf#page=80",
-              "pdfPage": 80,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "A. Executive direction and management",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 16)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2016%29&l=en&t=pdf#page=80",
-              "pdfPage": 80,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, B",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 16)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2016%29&l=en&t=pdf#page=80",
-              "pdfPage": 80,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "C. Programme support",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -43088,14 +42476,12 @@
       "amount": 1091400,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 1091400,
-        "extrabudgetary": 0
+        "regular_budget": 1091400
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 1091400,
-          "extrabudgetary": 0
+          "regular_budget": 1091400
         }
       },
       "metricSources": {
@@ -43112,20 +42498,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "Overall: evolution of financial resources by object of expenditure",
               "label": "regular budget"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/77/6 (Sect. 18)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2018%29&l=en&t=pdf#page=94",
-              "pdfPage": 94,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -49974,14 +49346,12 @@
       "amount": 35678300,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 35678300,
-        "extrabudgetary": 0
+        "regular_budget": 35678300
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 35678300,
-          "extrabudgetary": 0
+          "regular_budget": 35678300
         }
       },
       "metricSources": {
@@ -50119,68 +49489,6 @@
               "tableTitle": "Table 23.44 \u2013 Financial resources by object of expenditure",
               "label": "regular budget \u2014 supporting row for calculated total"
             }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/77/6 (Sect. 18)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2018%29&l=en&t=pdf#page=94",
-              "pdfPage": 94,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 19)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2019%29&l=en&t=pdf#page=89",
-              "pdfPage": 89,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 20)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2020%29&l=en&t=pdf#page=62",
-              "pdfPage": 62,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 21)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2021%29&l=en&t=pdf#page=81",
-              "pdfPage": 81,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 22)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2022%29&l=en&t=pdf#page=47",
-              "pdfPage": 47,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            }
           ]
         }
       },
@@ -50247,14 +49555,12 @@
       "amount": 35678300,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 35678300,
-        "extrabudgetary": 0
+        "regular_budget": 35678300
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 35678300,
-          "extrabudgetary": 0
+          "regular_budget": 35678300
         }
       },
       "metricSources": {
@@ -50283,68 +49589,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "Evolution of financial resources by component, programme and main category of expenditure",
               "label": "regular budget \u2014 supporting row for calculated total"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/77/6 (Sect. 18)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2018%29&l=en&t=pdf#page=94",
-              "pdfPage": 94,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 19)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2019%29&l=en&t=pdf#page=89",
-              "pdfPage": 89,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 20)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2020%29&l=en&t=pdf#page=62",
-              "pdfPage": 62,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 21)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2021%29&l=en&t=pdf#page=81",
-              "pdfPage": 81,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 22)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2022%29&l=en&t=pdf#page=47",
-              "pdfPage": 47,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -53211,15 +52455,13 @@
       "basis": "derived_available_funding_sum",
       "values": {
         "regular_budget": 7745200,
-        "extrabudgetary": 24246100,
-        "other_assessed": 0
+        "extrabudgetary": 24246100
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
           "regular_budget": 7745200,
-          "extrabudgetary": 24246100,
-          "other_assessed": 0
+          "extrabudgetary": 24246100
         }
       },
       "metricSources": {
@@ -53250,68 +52492,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "(3) Extrabudgetary",
               "label": "extrabudgetary"
-            }
-          ],
-          "other_assessed": [
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=52",
-              "pdfPage": 52,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=52",
-              "pdfPage": 52,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, C",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=52",
-              "pdfPage": 52,
-              "pageStatus": "located",
-              "pdfPageScope": "table",
-              "pageLocatedBy": "verified_financial_table_row",
-              "rowLabel": "D. Programme support",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=52",
-              "pdfPage": 52,
-              "pageStatus": "located",
-              "pdfPageScope": "table",
-              "pageLocatedBy": "verified_financial_table_row",
-              "rowLabel": "A. Policymaking organs",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=52",
-              "pdfPage": 52,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "B. Executive management and direction",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -53382,16 +52562,12 @@
       "amount": 0,
       "basis": "derived_available_funding_sum",
       "values": {
-        "other_assessed": 0,
-        "regular_budget": 100,
-        "extrabudgetary": 0
+        "other_assessed": 0
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "other_assessed": 0,
-          "regular_budget": 100,
-          "extrabudgetary": 0
+          "other_assessed": 0
         }
       },
       "metricSources": {
@@ -53408,166 +52584,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "(2) Other assessed",
               "label": "other assessed"
-            }
-          ],
-          "regular_budget": [
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=50",
-              "pdfPage": 50,
-              "pageStatus": "located",
-              "pdfPageScope": "table",
-              "pageLocatedBy": "verified_financial_table_row",
-              "rowLabel": "Total",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "Overall: evolution of financial resources by object of expenditure",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=52",
-              "pdfPage": 52,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "1. Human rights mainstreaming, right to development, and research and analysis",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=52",
-              "pdfPage": 52,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "2. Supporting human rights treaty bodies",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=52",
-              "pdfPage": 52,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "3. Advisory services, technical cooperation and field activities",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=52",
-              "pdfPage": 52,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "4. Supporting the Human Rights Council, its subsidiary bodies and mechanisms",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=52",
-              "pdfPage": 52,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "D. Programme support",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=52",
-              "pdfPage": 52,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "A. Policymaking organs",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=52",
-              "pdfPage": 52,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "B. Executive direction and management",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=53",
-              "pdfPage": 53,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 3",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=53",
-              "pdfPage": 53,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, C",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=53",
-              "pdfPage": 53,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "D. Programme support",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=53",
-              "pdfPage": 53,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "A. Policymaking organs",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=53",
-              "pdfPage": 53,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "B. Executive direction and management",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -53614,7 +52630,7 @@
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
-        "expenditure": 100
+        "expenditure": 0
       }
     },
     {
@@ -53627,16 +52643,12 @@
       "amount": 461000,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 461000,
-        "other_assessed": 0,
-        "extrabudgetary": 0
+        "regular_budget": 461000
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 461000,
-          "other_assessed": 0,
-          "extrabudgetary": 0
+          "regular_budget": 461000
         }
       },
       "metricSources": {
@@ -53653,34 +52665,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "Committee on Missing Persons in Cyprus: evolution of financial resources",
               "label": "regular budget"
-            }
-          ],
-          "other_assessed": [
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=52",
-              "pdfPage": 52,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/77/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=53",
-              "pdfPage": 53,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 3",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -55277,14 +54261,12 @@
       "amount": 2474900,
       "basis": "derived_available_funding_sum",
       "values": {
-        "extrabudgetary": 2474900,
-        "regular_budget": 0
+        "extrabudgetary": 2474900
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "extrabudgetary": 2474900,
-          "regular_budget": 0
+          "extrabudgetary": 2474900
         }
       },
       "metricSources": {
@@ -55301,44 +54283,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "(2) Extrabudgetary",
               "label": "extrabudgetary \u2014 supporting row for calculated total"
-            }
-          ],
-          "regular_budget": [
-            {
-              "symbol": "A/77/6 (Sect. 27)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2027%29&l=en&t=pdf#page=36",
-              "pdfPage": 36,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, A",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 27)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2027%29&l=en&t=pdf#page=36",
-              "pdfPage": 36,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "1. Executive direction and management",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 27)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2027%29&l=en&t=pdf#page=36",
-              "pdfPage": 36,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "2. United Nations Monitoring Mechanism for the Syrian Arab Republic",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -55620,14 +54564,12 @@
       "amount": 226230600,
       "basis": "derived_available_funding_sum",
       "values": {
-        "extrabudgetary": 226230600,
-        "regular_budget": 0
+        "extrabudgetary": 226230600
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "extrabudgetary": 226230600,
-          "regular_budget": 0
+          "extrabudgetary": 226230600
         }
       },
       "metricSources": {
@@ -55644,80 +54586,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "(2) Extrabudgetary",
               "label": "extrabudgetary"
-            }
-          ],
-          "regular_budget": [
-            {
-              "symbol": "A/77/6 (Sect. 27)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2027%29&l=en&t=pdf#page=36",
-              "pdfPage": 36,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, B",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 27)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2027%29&l=en&t=pdf#page=36",
-              "pdfPage": 36,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "1. Policy and analysis",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 27)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2027%29&l=en&t=pdf#page=36",
-              "pdfPage": 36,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "3. Disaster risk reduction",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 27)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2027%29&l=en&t=pdf#page=36",
-              "pdfPage": 36,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "4. Emergency support services",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 27)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2027%29&l=en&t=pdf#page=36",
-              "pdfPage": 36,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "2. Coordination of humanitarian action and emergency response",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 27)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2027%29&l=en&t=pdf#page=36",
-              "pdfPage": 36,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "5. Humanitarian emergency information and advocacy",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -55993,14 +54861,12 @@
       "amount": 5561600,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 5561600,
-        "extrabudgetary": 0
+        "regular_budget": 5561600
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 5561600,
-          "extrabudgetary": 0
+          "regular_budget": 5561600
         }
       },
       "metricSources": {
@@ -56017,80 +54883,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "(1) Regular budget",
               "label": "regular budget"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/77/6 (Sect. 27)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2027%29&l=en&t=pdf#page=37",
-              "pdfPage": 37,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, B",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 27)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2027%29&l=en&t=pdf#page=36",
-              "pdfPage": 36,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "1. Policy and analysis",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 27)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2027%29&l=en&t=pdf#page=36",
-              "pdfPage": 36,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "2. Coordination of humanitarian action and emergency responsea",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 27)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2027%29&l=en&t=pdf#page=36",
-              "pdfPage": 36,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "3. Disaster risk reduction",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 27)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2027%29&l=en&t=pdf#page=36",
-              "pdfPage": 36,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "4. Emergency support services",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 27)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2027%29&l=en&t=pdf#page=37",
-              "pdfPage": 37,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "5. Humanitarian emergency information and advocacy",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -62658,15 +61450,13 @@
       "basis": "derived_available_funding_sum",
       "values": {
         "regular_budget": 2201900,
-        "extrabudgetary": 0,
-        "other_assessed": 0
+        "extrabudgetary": 0
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
           "regular_budget": 2201900,
-          "extrabudgetary": 0,
-          "other_assessed": 0
+          "extrabudgetary": 0
         }
       },
       "metricSources": {
@@ -62697,68 +61487,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "(3) Extrabudgetary",
               "label": "extrabudgetary"
-            }
-          ],
-          "other_assessed": [
-            {
-              "symbol": "A/77/6 (Sect. 29A)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029A%29&l=en&t=pdf#page=49",
-              "pdfPage": 49,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Component 1: Enterprise resource planning solution",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 29A)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029A%29&l=en&t=pdf#page=49",
-              "pdfPage": 49,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Component 2: Services to the Fifth Committee of the General Assembly and to the Committee for Programme and Coordination",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 29A)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029A%29&l=en&t=pdf#page=49",
-              "pdfPage": 49,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Component 3 (old): Secretariat of the Headquarters Committee on Contracts and the Headquarters Property Survey Board",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 29A)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029A%29&l=en&t=pdf#page=49",
-              "pdfPage": 49,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Component 4 (old): Management evaluation component for the administration of justice",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 29A)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029A%29&l=en&t=pdf#page=49",
-              "pdfPage": 49,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Component 3 (new): Management advisory services",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -63549,14 +62277,12 @@
       "amount": 75607800,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 75607800,
-        "extrabudgetary": 0
+        "regular_budget": 75607800
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 75607800,
-          "extrabudgetary": 0
+          "regular_budget": 75607800
         }
       },
       "metricSources": {
@@ -63573,68 +62299,6 @@
               "columnHeader": "2021 expenditurea",
               "tableTitle": "Overall: evolution of financial resources by object of expenditure",
               "label": "regular budget"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/77/6 (Sect. 29A)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029A%29&l=en&t=pdf#page=50",
-              "pdfPage": 50,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 3",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 29B)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029B%29&l=en&t=pdf#page=42",
-              "pdfPage": 42,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 3",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 29C)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029C%29&l=en&t=pdf#page=22",
-              "pdfPage": 22,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 3",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 29F)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029F%29&l=en&t=pdf#page=23",
-              "pdfPage": 23,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 29G)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029G%29&l=en&t=pdf#page=23",
-              "pdfPage": 23,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -63709,14 +62373,12 @@
       "amount": 75607900,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 75607900,
-        "extrabudgetary": 0
+        "regular_budget": 75607900
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 75607900,
-          "extrabudgetary": 0
+          "regular_budget": 75607900
         }
       },
       "metricSources": {
@@ -63745,68 +62407,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "(1) Regular budget",
               "label": "regular budget \u2014 supporting row for calculated total"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/77/6 (Sect. 29A)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029A%29&l=en&t=pdf#page=50",
-              "pdfPage": 50,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 3",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 29B)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029B%29&l=en&t=pdf#page=42",
-              "pdfPage": 42,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 3",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 29C)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029C%29&l=en&t=pdf#page=22",
-              "pdfPage": 22,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 3",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 29F)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029F%29&l=en&t=pdf#page=23",
-              "pdfPage": 23,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/77/6 (Sect. 29G)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2029G%29&l=en&t=pdf#page=23",
-              "pdfPage": 23,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -67344,16 +65944,12 @@
       "amount": 7741800,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 7741800,
-        "other_assessed": 0,
-        "extrabudgetary": 0
+        "regular_budget": 7741800
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 7741800,
-          "other_assessed": 0,
-          "extrabudgetary": 0
+          "regular_budget": 7741800
         }
       },
       "metricSources": {
@@ -67394,34 +65990,6 @@
               "columnHeader": "2021 expenditure",
               "tableTitle": "Evolution of financial resources (United Nations share)",
               "label": "regular budget \u2014 supporting row for calculated total"
-            }
-          ],
-          "other_assessed": [
-            {
-              "symbol": "A/77/6 (Sect. 32)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2032%29&l=en&t=pdf#page=3",
-              "pdfPage": 3,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/77/6 (Sect. 32)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F77%2F6%20%28Sect.%2032%29&l=en&t=pdf#page=3",
-              "pdfPage": 3,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 3",
-              "columnHeader": "2021 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }

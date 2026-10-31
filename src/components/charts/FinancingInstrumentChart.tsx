@@ -224,7 +224,11 @@ export function FinancingInstrumentChart({
           </div>
         ) : (
           <ResponsiveContainer width="100%" height="100%">
-            <Chart data={data} margin={TREND_CHART_MARGIN}>
+            <Chart
+              data={data}
+              margin={TREND_CHART_MARGIN}
+              stackOffset={allowNegative ? "sign" : "none"}
+            >
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
               <XAxis
                 dataKey="year"
@@ -295,6 +299,7 @@ export function FinancingInstrumentChart({
                   <Area
                     key={s.key}
                     type="monotone"
+                    connectNulls={false}
                     dataKey={s.key}
                     name={getFinancingInstrumentLabel(s.label)}
                     stackId="1"
@@ -333,7 +338,7 @@ export function FinancingInstrumentChart({
                   </td>
                 ))}
                 <td>
-                  {visibleSeries.some(
+                  {visibleSeries.every(
                     (item) => typeof row[item.key] === "number",
                   )
                     ? (valueFormatter ?? formatYAxis)(

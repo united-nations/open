@@ -27,6 +27,7 @@ export function SidebarStackedTrend({
   data,
   series,
   showLegend = true,
+  allowNegative = false,
   tooltipSources,
 }: {
   heading?: string;
@@ -34,6 +35,7 @@ export function SidebarStackedTrend({
   data: FinancingInstrumentDataPoint[] | null;
   series: FinancingSeries[];
   showLegend?: boolean;
+  allowNegative?: boolean;
   tooltipSources?: (year: string, visibleKeys: string[]) => BudgetNodeSource[];
 }) {
   if (data === null) {
@@ -50,7 +52,10 @@ export function SidebarStackedTrend({
     series.some((item) =>
       data.some(
         (point) =>
-          typeof point[item.key] === "number" && Number(point[item.key]) > 0,
+          typeof point[item.key] === "number" &&
+          (allowNegative
+            ? Number(point[item.key]) !== 0
+            : Number(point[item.key]) > 0),
       ),
     );
   if (!hasTrend) return null;
@@ -64,9 +69,19 @@ export function SidebarStackedTrend({
           series={series}
           showLegend={showLegend}
           compact
+          allowNegative={allowNegative}
           tooltipSources={tooltipSources}
+          accessibleTableLabel="Funding-source trend"
         />
       </div>
+      {data.some((point) =>
+        series.some((item) => point[item.key] === null),
+      ) && (
+        <p className="mt-2 text-xs text-gray-500" role="status">
+          Some funding-source observations are unavailable. Gaps do not
+          represent zero spending.
+        </p>
+      )}
     </section>
   );
 }

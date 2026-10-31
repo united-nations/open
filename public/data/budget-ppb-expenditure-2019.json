@@ -2666,14 +2666,12 @@
       "amount": 2921100,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 2921100,
-        "extrabudgetary": 0
+        "regular_budget": 2921100
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 2921100,
-          "extrabudgetary": 0
+          "regular_budget": 2921100
         }
       },
       "metricSources": {
@@ -2690,32 +2688,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "(1) Regular budget",
               "label": "regular budget"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/75/6 (Sect. 34)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2034%29&l=en&t=pdf#page=27",
-              "pdfPage": 27,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "1. Security and safety services",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 34)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2034%29&l=en&t=pdf#page=27",
-              "pdfPage": 27,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "B. Programme support",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -11267,15 +11239,13 @@
       "basis": "derived_available_funding_sum",
       "values": {
         "regular_budget": 325284500,
-        "extrabudgetary": 21918100,
-        "other_assessed": 0
+        "extrabudgetary": 21918100
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
           "regular_budget": 325284500,
-          "extrabudgetary": 21918100,
-          "other_assessed": 0
+          "extrabudgetary": 21918100
         }
       },
       "metricSources": {
@@ -11306,80 +11276,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "(2) Extrabudgetary",
               "label": "extrabudgetary \u2014 supporting row for calculated total"
-            }
-          ],
-          "other_assessed": [
-            {
-              "symbol": "A/75/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%201%29&l=en&t=pdf#page=14",
-              "pdfPage": 14,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%201%29&l=en&t=pdf#page=19",
-              "pdfPage": 19,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%201%29&l=en&t=pdf#page=35",
-              "pdfPage": 35,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%201%29&l=en&t=pdf#page=113",
-              "pdfPage": 113,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%201%29&l=en&t=pdf#page=125",
-              "pdfPage": 125,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%201%29&l=en&t=pdf#page=137",
-              "pdfPage": 137,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -11466,15 +11362,13 @@
       "basis": "derived_available_funding_sum",
       "values": {
         "regular_budget": 325284500,
-        "extrabudgetary": 21918300,
-        "other_assessed": 0
+        "extrabudgetary": 21918300
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
           "regular_budget": 325284500,
-          "extrabudgetary": 21918300,
-          "other_assessed": 0
+          "extrabudgetary": 21918300
         }
       },
       "metricSources": {
@@ -11817,80 +11711,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "(2) Extrabudgetary",
               "label": "extrabudgetary \u2014 supporting row for calculated total"
-            }
-          ],
-          "other_assessed": [
-            {
-              "symbol": "A/75/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%201%29&l=en&t=pdf#page=14",
-              "pdfPage": 14,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%201%29&l=en&t=pdf#page=19",
-              "pdfPage": 19,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%201%29&l=en&t=pdf#page=35",
-              "pdfPage": 35,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%201%29&l=en&t=pdf#page=113",
-              "pdfPage": 113,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%201%29&l=en&t=pdf#page=125",
-              "pdfPage": 125,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 1)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%201%29&l=en&t=pdf#page=137",
-              "pdfPage": 137,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -15959,14 +15779,12 @@
       "amount": 25456000,
       "basis": "derived_available_funding_sum",
       "values": {
-        "extrabudgetary": 25456000,
-        "regular_budget": 0
+        "extrabudgetary": 25456000
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "extrabudgetary": 25456000,
-          "regular_budget": 0
+          "extrabudgetary": 25456000
         }
       },
       "metricSources": {
@@ -15983,104 +15801,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "(2) Extrabudgetary",
               "label": "extrabudgetary \u2014 supporting row for calculated total"
-            }
-          ],
-          "regular_budget": [
-            {
-              "symbol": "A/75/6 (Sect. 3)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%203%29&l=en&t=pdf#page=51",
-              "pdfPage": 51,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, C",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 3)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%203%29&l=en&t=pdf#page=51",
-              "pdfPage": 51,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "1. Prevention, management and resolution of conflicts",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 3)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%203%29&l=en&t=pdf#page=51",
-              "pdfPage": 51,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "2. Electoral assistance",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 3)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%203%29&l=en&t=pdf#page=51",
-              "pdfPage": 51,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "3. Security Council affairs",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 3)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%203%29&l=en&t=pdf#page=51",
-              "pdfPage": 51,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "4. Decolonization",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 3)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%203%29&l=en&t=pdf#page=51",
-              "pdfPage": 51,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "5. Question of Palestine",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 3)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%203%29&l=en&t=pdf#page=51",
-              "pdfPage": 51,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "6. Peacebuilding Support Office",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 3)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%203%29&l=en&t=pdf#page=51",
-              "pdfPage": 51,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "7. Cooperation between the United Nations and the League of Arab States",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -24929,15 +24649,13 @@
       "basis": "derived_available_funding_sum",
       "values": {
         "other_assessed": 2741300,
-        "extrabudgetary": 6881700,
-        "regular_budget": 0
+        "extrabudgetary": 6881700
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
           "other_assessed": 2741300,
-          "extrabudgetary": 6881700,
-          "regular_budget": 0
+          "extrabudgetary": 6881700
         }
       },
       "metricSources": {
@@ -24968,92 +24686,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "(3) Extrabudgetary",
               "label": "extrabudgetary \u2014 supporting row for calculated total"
-            }
-          ],
-          "regular_budget": [
-            {
-              "symbol": "A/75/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%208%29&l=en&t=pdf#page=49",
-              "pdfPage": 49,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, C",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%208%29&l=en&t=pdf#page=49",
-              "pdfPage": 49,
-              "pageStatus": "located",
-              "pdfPageScope": "table",
-              "pageLocatedBy": "verified_financial_table_row",
-              "rowLabel": "1. Provision of legal services to the United Nations system as a whole",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%208%29&l=en&t=pdf#page=49",
-              "pdfPage": 49,
-              "pageStatus": "located",
-              "pdfPageScope": "table",
-              "pageLocatedBy": "verified_financial_table_row",
-              "rowLabel": "2. General legal services provided to United Nations organs and programmes",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%208%29&l=en&t=pdf#page=49",
-              "pdfPage": 49,
-              "pageStatus": "located",
-              "pdfPageScope": "table",
-              "pageLocatedBy": "verified_financial_table_row",
-              "rowLabel": "3. Progressive development and codification of international law",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%208%29&l=en&t=pdf#page=49",
-              "pdfPage": 49,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "4. Law of the sea and ocean affairs",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%208%29&l=en&t=pdf#page=49",
-              "pdfPage": 49,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "5. Progressive harmonization, modernization and unification of the law of international trade",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%208%29&l=en&t=pdf#page=49",
-              "pdfPage": 49,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "6. Custody, registration and publication of treaties",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -25832,14 +25464,12 @@
       "amount": 5123600,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 5123600,
-        "extrabudgetary": 0
+        "regular_budget": 5123600
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 5123600,
-          "extrabudgetary": 0
+          "regular_budget": 5123600
         }
       },
       "metricSources": {
@@ -25856,32 +25486,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "Table 8.43 \u2013 Financial resources",
               "label": "regular budget"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/75/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%208%29&l=en&t=pdf#page=49",
-              "pdfPage": 49,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 3",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%208%29&l=en&t=pdf#page=90",
-              "pdfPage": 90,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -25950,16 +25554,12 @@
       "amount": 26397800,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 26397800,
-        "other_assessed": 0,
-        "extrabudgetary": 0
+        "regular_budget": 26397800
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 26397800,
-          "other_assessed": 0,
-          "extrabudgetary": 0
+          "regular_budget": 26397800
         }
       },
       "metricSources": {
@@ -25976,46 +25576,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "Table 7.3 Financial resources",
               "label": "regular budget"
-            }
-          ],
-          "other_assessed": [
-            {
-              "symbol": "A/75/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%208%29&l=en&t=pdf#page=49",
-              "pdfPage": 49,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/75/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%208%29&l=en&t=pdf#page=49",
-              "pdfPage": 49,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 3",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%208%29&l=en&t=pdf#page=90",
-              "pdfPage": 90,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -26090,16 +25650,12 @@
       "amount": 26397800,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 26397800,
-        "other_assessed": 0,
-        "extrabudgetary": 0
+        "regular_budget": 26397800
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 26397800,
-          "other_assessed": 0,
-          "extrabudgetary": 0
+          "regular_budget": 26397800
         }
       },
       "metricSources": {
@@ -26140,46 +25696,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "Evolution of financial resources by component",
               "label": "regular budget \u2014 supporting row for calculated total"
-            }
-          ],
-          "other_assessed": [
-            {
-              "symbol": "A/75/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%208%29&l=en&t=pdf#page=49",
-              "pdfPage": 49,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/75/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%208%29&l=en&t=pdf#page=49",
-              "pdfPage": 49,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 3",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 8)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%208%29&l=en&t=pdf#page=90",
-              "pdfPage": 90,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -29395,14 +28911,12 @@
       "amount": 0,
       "basis": "derived_available_funding_sum",
       "values": {
-        "extrabudgetary": 0,
-        "regular_budget": 0
+        "extrabudgetary": 0
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "extrabudgetary": 0,
-          "regular_budget": 0
+          "extrabudgetary": 0
         }
       },
       "metricSources": {
@@ -29419,32 +28933,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "(2) Extrabudgetary",
               "label": "extrabudgetary"
-            }
-          ],
-          "regular_budget": [
-            {
-              "symbol": "A/75/6 (Sect. 10)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2010%29&l=en&t=pdf#page=29",
-              "pdfPage": 29,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "A. Executive direction and management",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 10)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2010%29&l=en&t=pdf#page=29",
-              "pdfPage": 29,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, B",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -31478,14 +30966,12 @@
       "amount": 18567900,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 18567900,
-        "extrabudgetary": 0
+        "regular_budget": 18567900
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 18567900,
-          "extrabudgetary": 0
+          "regular_budget": 18567900
         }
       },
       "metricSources": {
@@ -31502,104 +30988,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "Financial resources",
               "label": "regular budget"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/75/6 (Sect. 10)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2010%29&l=en&t=pdf#page=30",
-              "pdfPage": 30,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 11)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2011%29&l=en&t=pdf#page=30",
-              "pdfPage": 30,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 12)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2012%29&l=en&t=pdf#page=53",
-              "pdfPage": 53,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 14)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2014%29&l=en&t=pdf#page=55",
-              "pdfPage": 55,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 15)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2015%29&l=en&t=pdf#page=52",
-              "pdfPage": 52,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 16)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2016%29&l=en&t=pdf#page=90",
-              "pdfPage": 90,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 17)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2017%29&l=en&t=pdf#page=21",
-              "pdfPage": 21,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 9)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%209%29&l=en&t=pdf#page=79",
-              "pdfPage": 79,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -31674,14 +31062,12 @@
       "amount": 18567900,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 18567900,
-        "extrabudgetary": 0
+        "regular_budget": 18567900
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 18567900,
-          "extrabudgetary": 0
+          "regular_budget": 18567900
         }
       },
       "metricSources": {
@@ -31698,104 +31084,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "Financial resources",
               "label": "regular budget"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/75/6 (Sect. 10)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2010%29&l=en&t=pdf#page=30",
-              "pdfPage": 30,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 11)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2011%29&l=en&t=pdf#page=30",
-              "pdfPage": 30,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 12)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2012%29&l=en&t=pdf#page=53",
-              "pdfPage": 53,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 14)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2014%29&l=en&t=pdf#page=55",
-              "pdfPage": 55,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 15)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2015%29&l=en&t=pdf#page=52",
-              "pdfPage": 52,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 16)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2016%29&l=en&t=pdf#page=90",
-              "pdfPage": 90,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 17)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2017%29&l=en&t=pdf#page=21",
-              "pdfPage": 21,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 9)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%209%29&l=en&t=pdf#page=79",
-              "pdfPage": 79,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -40485,14 +39773,12 @@
       "amount": 875500,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 875500,
-        "extrabudgetary": 0
+        "regular_budget": 875500
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 875500,
-          "extrabudgetary": 0
+          "regular_budget": 875500
         }
       },
       "metricSources": {
@@ -40509,20 +39795,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "Financial resources",
               "label": "regular budget"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/75/6 (Sect. 18)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2018%29&l=en&t=pdf#page=104",
-              "pdfPage": 104,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -48325,14 +47597,12 @@
       "amount": 33026100,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 33026100,
-        "extrabudgetary": 0
+        "regular_budget": 33026100
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 33026100,
-          "extrabudgetary": 0
+          "regular_budget": 33026100
         }
       },
       "metricSources": {
@@ -48349,68 +47619,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "Evolution of financial resources by component and main category of expenditure",
               "label": "regular budget"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/75/6 (Sect. 18)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2018%29&l=en&t=pdf#page=104",
-              "pdfPage": 104,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 19)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2019%29&l=en&t=pdf#page=96",
-              "pdfPage": 96,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 20)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2020%29&l=en&t=pdf#page=69",
-              "pdfPage": 69,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 21)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2021%29&l=en&t=pdf#page=95",
-              "pdfPage": 95,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 22)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2022%29&l=en&t=pdf#page=60",
-              "pdfPage": 60,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -48478,14 +47686,12 @@
       "amount": 33026100,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 33026100,
-        "extrabudgetary": 0
+        "regular_budget": 33026100
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 33026100,
-          "extrabudgetary": 0
+          "regular_budget": 33026100
         }
       },
       "metricSources": {
@@ -48514,68 +47720,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "Evolution of financial resources by component and main category of expenditure",
               "label": "regular budget \u2014 supporting row for calculated total"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/75/6 (Sect. 18)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2018%29&l=en&t=pdf#page=104",
-              "pdfPage": 104,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 19)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2019%29&l=en&t=pdf#page=96",
-              "pdfPage": 96,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 20)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2020%29&l=en&t=pdf#page=69",
-              "pdfPage": 69,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 21)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2021%29&l=en&t=pdf#page=95",
-              "pdfPage": 95,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 22)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2022%29&l=en&t=pdf#page=60",
-              "pdfPage": 60,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -50442,16 +49586,12 @@
       "amount": 483400,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 483400,
-        "other_assessed": 0,
-        "extrabudgetary": 0
+        "regular_budget": 483400
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 483400,
-          "other_assessed": 0,
-          "extrabudgetary": 0
+          "regular_budget": 483400
         }
       },
       "metricSources": {
@@ -50468,34 +49608,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "Committee on Missing Persons in Cyprus: evolution of financial resources",
               "label": "regular budget"
-            }
-          ],
-          "other_assessed": [
-            {
-              "symbol": "A/75/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=54",
-              "pdfPage": 54,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/75/6 (Sect. 24)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2024%29&l=en&t=pdf#page=55",
-              "pdfPage": 55,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -51074,14 +50186,12 @@
       "amount": 833230600,
       "basis": "derived_available_funding_sum",
       "values": {
-        "extrabudgetary": 833230600,
-        "regular_budget": 0
+        "extrabudgetary": 833230600
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "extrabudgetary": 833230600,
-          "regular_budget": 0
+          "extrabudgetary": 833230600
         }
       },
       "metricSources": {
@@ -51098,44 +50208,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "(2) Extrabudgetary",
               "label": "extrabudgetary"
-            }
-          ],
-          "regular_budget": [
-            {
-              "symbol": "A/75/6 (Sect. 25)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2025%29&l=en&t=pdf#page=17",
-              "pdfPage": 17,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "A. Executive direction and management",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 25)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2025%29&l=en&t=pdf#page=17",
-              "pdfPage": 17,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "B. Programme of work",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 25)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2025%29&l=en&t=pdf#page=17",
-              "pdfPage": 17,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "C Programme support",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -51195,14 +50267,12 @@
       "amount": 42665900,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 42665900,
-        "extrabudgetary": 0
+        "regular_budget": 42665900
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 42665900,
-          "extrabudgetary": 0
+          "regular_budget": 42665900
         }
       },
       "metricSources": {
@@ -51219,44 +50289,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "(1) Regular budget",
               "label": "regular budget"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/75/6 (Sect. 25)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2025%29&l=en&t=pdf#page=17",
-              "pdfPage": 17,
-              "pageStatus": "located",
-              "pdfPageScope": "table",
-              "pageLocatedBy": "verified_financial_table_row",
-              "rowLabel": "A. Executive direction and management",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 25)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2025%29&l=en&t=pdf#page=17",
-              "pdfPage": 17,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "B. Programme of work",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
-            },
-            {
-              "symbol": "A/75/6 (Sect. 25)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2025%29&l=en&t=pdf#page=17",
-              "pdfPage": 17,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "C. Programme support",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(2) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
@@ -64212,16 +63244,12 @@
       "amount": 6290000,
       "basis": "derived_available_funding_sum",
       "values": {
-        "regular_budget": 6290000,
-        "other_assessed": 0,
-        "extrabudgetary": 0
+        "regular_budget": 6290000
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 6290000,
-          "other_assessed": 0,
-          "extrabudgetary": 0
+          "regular_budget": 6290000
         }
       },
       "metricSources": {
@@ -64262,34 +63290,6 @@
               "columnHeader": "2019 expenditure",
               "tableTitle": "Table 31.26 Evolution of financial and post resources by category (United Nations share)",
               "label": "regular budget \u2014 supporting row for calculated total"
-            }
-          ],
-          "other_assessed": [
-            {
-              "symbol": "A/75/6 (Sect. 32)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2032%29&l=en&t=pdf#page=3",
-              "pdfPage": 3,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 2",
-              "columnHeader": "2019 expenditureb",
-              "tableTitle": "(2) Other assessed",
-              "label": "other assessed \u2014 supporting reference for calculated remainder"
-            }
-          ],
-          "extrabudgetary": [
-            {
-              "symbol": "A/75/6 (Sect. 32)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2032%29&l=en&t=pdf#page=3",
-              "pdfPage": 3,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, 3",
-              "columnHeader": "2019 expenditure",
-              "tableTitle": "(3) Extrabudgetary",
-              "label": "extrabudgetary \u2014 supporting reference for calculated remainder"
             }
           ]
         }
