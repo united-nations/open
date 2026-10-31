@@ -33,6 +33,7 @@ import { formatBudget } from "@/lib/entities";
 import {
   collectBudgetNodeSources,
   collectBudgetHierarchySources,
+  uniqueBudgetSources,
 } from "@/lib/budgetSourceCollection";
 import { SourceReferenceList } from "@/components/SourceReferenceList";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
@@ -715,11 +716,16 @@ function BudgetDetailSidebar({
     meta.measure === "approved" || meta.measure === "proposed"
       ? meta.measure
       : "expenditure";
-  const sourceReferences = collectBudgetHierarchySources(
-    node,
-    childrenByParent,
-    sourceMetric,
-  );
+  // Match the hierarchy rendered below: hidden duplicate children and skipped
+  // wrappers do not need their own rows in the citation table.
+  const sourceReferences = uniqueBudgetSources([
+    ...collectBudgetNodeSources(node, sourceMetric),
+    ...(hasBreakdown
+      ? breakdownNodes.flatMap((child) =>
+          collectBudgetHierarchySources(child, childrenByParent, sourceMetric),
+        )
+      : []),
+  ]);
   const titleId = "budget-sidebar-title";
 
   // What the row is, and where it sits. The rows below a budget unit keep the
@@ -957,8 +963,12 @@ function BudgetDetailSidebar({
                     {sourceReferences.length > 0 && (
                       <>
                         <p className="text-sm text-gray-600">
-                          References support this total and its breakdown.
-                          Calculated totals may combine multiple published rows.
+                          {hasBreakdown
+                            ? "References support this total and its breakdown."
+                            : "References support the funding-source figures above."}{" "}
+                          A calculated figure may combine several published
+                          rows; repeated citations are shown once per budget
+                          item.
                         </p>
                         <SourceReferenceList references={sourceReferences} />
                       </>

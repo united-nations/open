@@ -17,6 +17,7 @@ const checks = [
   "secretariat-flows",
   "sidebar-years",
   "secretariat-sidebar-years",
+  "budget-sources",
   "trust-fund-sources",
   "trust-fund-contributor-sources",
   "hydration",

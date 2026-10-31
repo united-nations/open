@@ -21,32 +21,75 @@ export function collectBudgetNodeSources(
           ? `${node.code} · ${node.label}`
           : node.label),
     }));
+  const metricSources = node.metricSources?.[metric] ?? {};
+  const fundingReferences = Object.entries(metricSources).flatMap(
+    ([funding, sources]) =>
+      (sources ?? []).map((source) => ({
+        ...source,
+        label:
+          source.label ??
+          FUNDING_SOURCES[funding as BudgetFundingSource]?.label,
+      })),
+  );
   if (metric !== "expenditure") {
-    return uniqueBudgetSources(
-      contextualize(Object.values(node.metricSources?.[metric] ?? {}).flat()),
-    );
+    return uniqueBudgetSources(contextualize(fundingReferences));
   }
-  const metricSources = node.metricSources?.expenditure ?? {};
-  const sources = [
-    ...Object.values(metricSources).flat(),
+
+  // Legacy exports also carry an all-source and a generic citation. These
+  // sometimes point to just the first funding subtotal of a derived sum.
+  // Prefer the precise funding context instead of relabelling that row as a total.
+  const sources = contextualize([
+    ...fundingReferences,
     ...Object.entries(node.sources ?? {})
       .filter(
-        ([funding]) => !metricSources[funding as BudgetFundingSource]?.length,
+        ([funding]) =>
+          funding !== "total_all_sources" &&
+          !metricSources[funding as BudgetFundingSource]?.length,
       )
-      .map(
-        ([funding, source]) =>
-          source && {
-            ...source,
-            label:
-              funding === "total_all_sources"
-                ? "All funding sources"
-                : FUNDING_SOURCES[funding as BudgetFundingSource]?.label,
-          },
+      .flatMap(([funding, source]) =>
+        source
+          ? [
+              {
+                ...source,
+                label:
+                  source.label ??
+                  FUNDING_SOURCES[funding as BudgetFundingSource]?.label,
+              },
+            ]
+          : [],
       ),
-    node.source,
-    ...(node.supportingSources ?? []),
-  ].filter((source): source is BudgetNodeSource => Boolean(source));
-  return uniqueBudgetSources(contextualize(sources));
+  ]);
+  const evidence = new Set(sources.map(budgetSourceEvidenceKey));
+  const appendEvidence = (references: BudgetNodeSource[]) => {
+    for (const source of contextualize(references)) {
+      const key = budgetSourceEvidenceKey(source);
+      if (evidence.has(key)) continue;
+      evidence.add(key);
+      sources.push(source);
+    }
+  };
+  appendEvidence(node.supportingSources ?? []);
+  const totalSource = node.sources?.total_all_sources;
+  if (totalSource) {
+    appendEvidence([
+      { ...totalSource, label: totalSource.label ?? "All funding sources" },
+    ]);
+  }
+  if (node.source) appendEvidence([node.source]);
+  return uniqueBudgetSources(sources);
+}
+
+/** Same published evidence within one budget item, independently of UI labels. */
+function budgetSourceEvidenceKey(source: BudgetNodeSource): string {
+  return JSON.stringify([
+    source.url.split("#")[0],
+    sourcePages(source),
+    source.symbol,
+    source.tableTitle,
+    source.rowLabel,
+    source.columnHeader,
+    source.budgetItem,
+  ]);
 }
 
 export function uniqueBudgetSources(
@@ -54,15 +97,7 @@ export function uniqueBudgetSources(
 ): BudgetNodeSource[] {
   const seen = new Set<string>();
   return sources.filter((source) => {
-    const key = JSON.stringify([
-      source.url,
-      sourcePages(source),
-      source.tableTitle,
-      source.rowLabel,
-      source.columnHeader,
-      source.budgetItem,
-      source.label,
-    ]);
+    const key = JSON.stringify([budgetSourceEvidenceKey(source), source.label]);
     if (seen.has(key)) return false;
     seen.add(key);
     return true;
