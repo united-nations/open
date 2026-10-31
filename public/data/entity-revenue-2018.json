@@ -18694,20 +18694,21 @@
     },
     "by_donor": [
       {
+        "donor": "Unattributed",
+        "total": 772650873.4400003,
+        "record_kind": "calculated_balance",
+        "Other": 639385319.2,
+        "Voluntary earmarked": 131347635.24000023,
+        "Voluntary un-earmarked": 1917919.0,
+        "unresolvedTotal": 0.0,
+        "financingIncomplete": false
+      },
+      {
         "donor": "United States of America",
         "total": 717817492.3700001,
         "record_kind": "reported_named",
         "Assessed": 591388114.0,
         "Voluntary earmarked": 126429378.37,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
-        "donor": "Unattributed",
-        "total": 716434516.9000003,
-        "record_kind": "calculated_balance",
-        "Other": 639385319.2,
-        "Voluntary earmarked": 77049197.70000029,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -18722,20 +18723,19 @@
       },
       {
         "donor": "Germany",
-        "total": 489500334.36,
+        "total": 489446067.36,
         "record_kind": "reported_named",
         "Assessed": 155297872.0,
-        "Voluntary earmarked": 334202462.36,
+        "Voluntary earmarked": 334148195.36,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
         "donor": "Sweden",
-        "total": 489368110.15,
+        "total": 488210314.15,
         "record_kind": "reported_named",
         "Assessed": 23237560.0,
         "Voluntary earmarked": 464972754.15,
-        "Voluntary un-earmarked": 1157796.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -18813,11 +18813,10 @@
       },
       {
         "donor": "Switzerland",
-        "total": 111312627.71,
+        "total": 110752504.70999998,
         "record_kind": "reported_named",
         "Assessed": 27710060.0,
         "Voluntary earmarked": 83042444.71,
-        "Voluntary un-earmarked": 560123.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -18885,14 +18884,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "European Union",
-        "total": 66949591.18999999,
-        "record_kind": "reported_named",
-        "Voluntary earmarked": 66949591.190000005,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
         "donor": "Republic of Korea",
         "total": 64422279.91,
         "record_kind": "reported_named",
@@ -18939,11 +18930,10 @@
       },
       {
         "donor": "Finland",
-        "total": 34519994.57000001,
+        "total": 34319994.57,
         "record_kind": "reported_named",
         "Assessed": 11084024.0,
         "Voluntary earmarked": 23235970.57,
-        "Voluntary un-earmarked": 200000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -18980,6 +18970,14 @@
         "record_kind": "reported_named",
         "Assessed": 21681907.0,
         "Voluntary earmarked": 323808.96,
+        "unresolvedTotal": 0.0,
+        "financingIncomplete": false
+      },
+      {
+        "donor": "European Union",
+        "total": 19979201.71,
+        "record_kind": "reported_named",
+        "Voluntary earmarked": 19979201.71,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -19156,10 +19154,10 @@
       },
       {
         "donor": "Luxembourg",
-        "total": 7541587.630000001,
+        "total": 7481850.630000001,
         "record_kind": "reported_named",
         "Assessed": 1555653.0,
-        "Voluntary earmarked": 5985934.63,
+        "Voluntary earmarked": 5926197.63,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -19178,14 +19176,6 @@
         "record_kind": "reported_named",
         "Assessed": 5080178.0,
         "Voluntary earmarked": 1642418.99,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
-        "donor": "Multi Donor Trust Funds",
-        "total": 5161255.63,
-        "record_kind": "reported_aggregate",
-        "Voluntary earmarked": 5161255.63,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -19397,14 +19387,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Private Donors / Private Sector",
-        "total": 1489981.55,
-        "record_kind": "reported_aggregate",
-        "Voluntary earmarked": 1489981.55,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
         "donor": "Bahrain",
         "total": 1485625.48,
         "record_kind": "reported_named",
@@ -19455,14 +19437,6 @@
         "record_kind": "reported_named",
         "Assessed": 243071.0,
         "Voluntary earmarked": 1067761.88,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
-        "donor": "World Bank Group",
-        "total": 1307020.86,
-        "record_kind": "reported_named",
-        "Voluntary earmarked": 1307020.8599999999,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -19736,6 +19710,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "Multi Donor Trust Funds",
+        "total": 475401.0,
+        "record_kind": "reported_aggregate",
+        "Voluntary earmarked": 475401.0,
+        "unresolvedTotal": 0.0,
+        "financingIncomplete": false
+      },
+      {
         "donor": "C\u00f4te d'Ivoire",
         "total": 453461.48,
         "record_kind": "reported_named",
@@ -19970,6 +19952,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "Private Donors / Private Sector",
+        "total": 204132.61,
+        "record_kind": "reported_aggregate",
+        "Voluntary earmarked": 204132.61,
+        "unresolvedTotal": 0.0,
+        "financingIncomplete": false
+      },
+      {
         "donor": "Armenia",
         "total": 193362.53,
         "record_kind": "reported_named",
@@ -20141,6 +20131,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "World Bank Group",
+        "total": 110780.75,
+        "record_kind": "reported_named",
+        "Voluntary earmarked": 110780.75,
+        "unresolvedTotal": 0.0,
+        "financingIncomplete": false
+      },
+      {
         "donor": "Madagascar",
         "total": 109364.59,
         "record_kind": "reported_named",
@@ -20280,14 +20278,6 @@
         "record_kind": "reported_named",
         "Assessed": 48615.0,
         "Voluntary earmarked": 1047.16,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
-        "donor": "Bill & Melinda Gates Foundation",
-        "total": 46100.38,
-        "record_kind": "reported_named",
-        "Voluntary earmarked": 46100.38,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },

@@ -105,6 +105,18 @@ def revenue_controls(summary: pd.DataFrame, detail: pd.DataFrame) -> pd.DataFram
     return values.rename('amount').reset_index()
 
 
+def select_contributor_reporting_entities(frame, entity_column, controls):
+    """Match contributor recipients to the same reported entity/year controls."""
+    from utils import normalize_entity
+    frame = frame.copy()
+    # This alias belongs to CEB detail, not the shared Secretariat entity map.
+    frame[entity_column] = frame[entity_column].map(normalize_entity).replace({'DPO': normalize_entity('UN-DPO')})
+    keys = controls[['calendar_year', 'agency']].copy()
+    keys['agency'] = keys.agency.map(normalize_entity)
+    keys = keys.rename(columns={'agency': entity_column}).drop_duplicates()
+    return frame.merge(keys, on=['calendar_year', entity_column], how='inner', validate='many_to_one')
+
+
 def resolve_reporting_entities(frame, entity_column, controls, breakdowns):
     """Resolve sub-entities through published parent rows, only without own controls."""
     from utils import normalize_entity, CEB_SECRETARIAT_REPORTING_UNITS

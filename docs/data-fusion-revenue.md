@@ -22,7 +22,7 @@ year constants.
 | `revenue_government_donors.csv` | Reported government donor detail |
 | `revenue_non_gov_donors.csv` | Reported non-government detail, with partial historical coverage |
 | `revenue_contrib_type.csv` | Reported contributor-category controls where available |
-| `revenue_by_financing_instruments_and_government_contributors.csv` | Source reporting-unit relationships and independent detail checks |
+| `revenue_by_financing_instruments_and_government_contributors.csv` | Source detail retained for independent checks |
 
 A complete `revenue.csv` control retains precedence when another complete CEB
 presentation disagrees about financing classification. The other presentation
@@ -40,11 +40,21 @@ Secretariat**; `UN-DPO`/`DPKO` → **Peacekeeping Operations**; `UNHABITAT`/
 
 CEB's `DPO` alias resolves to the peacekeeping aggregate only in the relevant
 CEB paths. The Secretariat department code `DPO` has a different scope and is
-not globally renamed. A unit's contributor records are included under its
-same-year CEB reporting parent only where it lacks a standalone control and
-source parentage or the explicit Standard I reporting-unit list establishes a
-unique relationship. Unknown or ambiguous parentage fails validation. Adding
-child detail fills out the parent's total; it does not add a second child total.
+not globally renamed. Contributor detail is joined to the explicitly reported
+recipient and same-year revenue controls. For the UN Secretariat, the donor
+source recipient is `UN`. Independently reported units retain their own identity.
+Source category totals explicitly reported under `UN` supply the category
+controls, and missing contributor detail is reconciled through signed balances.
+Full reporting-unit detail remains available in the tracked raw files.
+
+The source includes department-level contributor records. In 2025 these total
+**$10,430,932.67**, compared with **$6,520,304,634.20** explicitly labelled `UN`
+(0.16% of their combined reported amount), excluding calculated balances. The
+small latest-year amount and unverified overlap between recipient presentations
+favour the simpler explicit-recipient scope. Historical coverage varies: the
+separately labelled records total $831,915,130 in 2022, or 13.0% of the combined
+reported contributor amount. These source-label shares describe available
+records rather than the units' full income. The same scope is used across years.
 
 ## Contributor identities and categories
 
@@ -101,10 +111,15 @@ controls, which would count them twice.
 Within each controlled entity × year × main financing type:
 
 1. Retain known reported government and non-government detail.
-2. Where a CEB contributor-category control exists, calculate **Other {category}**
-   as the category control minus all resolved reported detail in that category,
-   including reported generic aggregates.
-3. Calculate **Unattributed** as the remaining signed difference to the main
+2. Where a CEB contributor-category control exists but no contributor records
+   identify that category for the organization/year, retain the source total
+   under its category name as a reported aggregate, e.g. **No contributor**.
+   Check presence of detail across financing types, including zero, blank and
+   unresolved records; a net-zero breakdown is still a breakdown.
+3. Where category detail exists, calculate **Other {category}** as the category
+   control minus all resolved reported detail in that category, including
+   reported generic aggregates.
+4. Calculate **Unattributed** as the remaining signed difference to the main
    entity/financing control.
 
 The approach preserves reported totals, not a claim that every source
@@ -133,8 +148,8 @@ financing allocation. Unresolved records retain source code, source entity,
 amount, category and source-row reference. Category-specific trend series remain
 separate from whole-contributor series. Donor,
 entity-revenue and contributor-trend exports derive from the same validated
-records. Finite known records remain included; source missingness and unavailable
-reports are disclosed. Independent source tests must test classifications as well
+records. Finite known records for eligible reporting units remain included;
+source missingness and unavailable reports are disclosed. Independent source tests must test classifications as well
 as numerical reconciliation: a balancing residual alone cannot prove attribution.
 
 Rebuild CEB inputs and dependent exports through steps 02, 03, 05 and the relevant

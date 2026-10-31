@@ -12,6 +12,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "python"))
 from revenue_categories import UNRESOLVED_FINANCING_CODES, rev_category
+from utils import normalize_entity
 
 
 def module(name, filename):
@@ -26,6 +27,101 @@ export = module("source_export", "05-export_contributor_json.py")
 
 
 class SourceAttributionTests(unittest.TestCase):
+    def test_un_contributors_use_only_explicit_un_donor_records(self):
+        controls = pd.DataFrame([dict(calendar_year=2025, agency="UN", rev_type="R03E", amount=100)])
+        gov = pd.DataFrame([
+            dict(calendar_year=2025, entity=entity, rev_type="R03E", contrib_type="Government",
+                 government_donor="Germany", amount=amount)
+            for entity, amount in [("UN", 40), ("UN-OCHA", 25)]
+        ])
+        nongov = pd.DataFrame([
+            dict(calendar_year=2025, entity=entity, rev_type="R03E", contrib_type=category,
+                 donor=name, amount=amount)
+            for entity, name, category, amount in [
+                ("UN", "European Union", "C08A", 30),
+                ("UN-UNDRR", "European Union", "C08A", 10),
+                ("UN-OCHA", "Department-only Foundation", "C05", 5),
+            ]
+        ])
+        categories = pd.DataFrame([
+            dict(calendar_year=2025, entity="UN", rev_type="R03E", contrib_type=code, amount=amount)
+            for code, amount in [("C01", 40), ("C08A", 60)]
+        ])
+        sources = {"revenue.csv": controls, "revenue_sub_agency.csv": controls,
+                   "revenue_government_donors.csv": gov, "revenue_non_gov_donors.csv": nongov,
+                   "revenue_contrib_type.csv": categories}
+        with patch.object(fusion, "load", side_effect=lambda name: sources[name].copy()), \
+                patch.object(pd.DataFrame, "to_csv"):
+            frame = fusion.fuse_revenue()
+        self.assertEqual(set(frame.entity), {"UN Secretariat"})
+        self.assertEqual(frame.amount.sum(), 100)
+        self.assertEqual(frame.loc[frame.donor_name == "Germany", "amount"].sum(), 40)
+        self.assertEqual(frame.loc[frame.donor_name == "European Union", "amount"].sum(), 30)
+        self.assertNotIn("Department-only Foundation", set(frame.donor_name))
+        self.assertEqual(frame.loc[frame.donor_name == "Other Other - European Union", "amount"].sum(), 30)
+
+    def test_whole_categories_use_source_names_but_real_breakdowns_keep_balances(self):
+        controls = pd.DataFrame([
+            dict(calendar_year=2024, agency=entity, rev_type=rev, amount=amount)
+            for entity, rev, amount in [
+                ("UNDP", "R03E", 100), ("UNDP", "R02A", 50), ("UNDP", "R04A", 25),
+                ("UNICEF", "R03E", 100), ("UNICEF", "R04A", -10), ("UNICEF", "R02A", 0),
+            ]
+        ])
+        # These contributors cancel out, but still constitute a breakdown.
+        nongov = pd.DataFrame([
+            dict(calendar_year=2024, entity="UNDP", rev_type="R03E", contrib_type="C05",
+                 donor=name, amount=amount)
+            for name, amount in [("Foundation A", 20), ("Foundation B", -20)]
+        ])
+        categories = pd.DataFrame([
+            dict(calendar_year=2024, entity=entity, rev_type=rev, contrib_type=code, amount=amount)
+            for entity, rev, code, amount in [
+                ("UNDP", "R03E", "C05", 100), ("UNDP", "R02A", "C05", 50),
+                ("UNDP", "R04A", "C09", 25), ("UNICEF", "R03E", "C02", 100),
+                ("UNICEF", "R04A", "C09", -10), ("UNICEF", "R02A", "C03", 0),
+            ]
+        ])
+        sources = {
+            "revenue.csv": controls, "revenue_sub_agency.csv": controls,
+            "revenue_government_donors.csv": pd.DataFrame(columns=[
+                "calendar_year", "entity", "rev_type", "contrib_type", "government_donor", "amount"]),
+            "revenue_non_gov_donors.csv": nongov, "revenue_contrib_type.csv": categories,
+            "revenue_by_financing_instruments_and_government_contributors.csv": pd.DataFrame(
+                columns=["calendar_year", "entity", "sub_entity"]),
+            "expenses_sub_agency.csv": pd.DataFrame(columns=["calendar_year", "agency", "sub_agency"]),
+        }
+        with patch.object(fusion, "load", side_effect=lambda name: sources[name].copy()), \
+                patch.object(pd.DataFrame, "to_csv"):
+            frame = fusion.fuse_revenue()
+        self.assertEqual(frame.amount.sum(), 265)
+        totals = frame[frame.source_file == "revenue_contrib_type.csv"]
+        self.assertEqual(set(totals.donor_name), {"No contributor", "NGOs", "Public Private Partnership"})
+        self.assertTrue((totals.record_kind == "reported_aggregate").all())
+        self.assertFalse(totals.is_other.any())
+        self.assertEqual(totals.loc[totals.donor_name == "No contributor", "amount"].tolist(), [25, -10])
+        self.assertEqual(totals.loc[totals.donor_name == "Public Private Partnership", "amount"].iloc[0], 0)
+        balances = frame[frame.donor_name == "Other Foundations"]
+        self.assertEqual(set(balances.rev_type), {"R02", "R03"})
+        self.assertEqual(balances.amount.sum(), 150)
+        self.assertTrue((balances.record_kind == "calculated_balance").all())
+        frame["rev_cat"] = frame.rev_type.map(rev_category)
+        with tempfile.TemporaryDirectory() as directory:
+            out = Path(directory)
+            with patch.object(export, "OUT", out), patch.object(export, "YEARS", [2024]), \
+                    patch.object(pd, "read_csv", return_value=controls):
+                export.export_donors_json(frame, {})
+                export.export_entity_revenue_json(frame)
+                export.export_contributor_trends_json(frame)
+            donors = json.loads((out / "donors-2024.json").read_text())
+            entities = json.loads((out / "entity-revenue-2024.json").read_text())
+            trends = json.loads((out / "contributor-trends.json").read_text())
+        self.assertNotIn("Other No contributor", donors)
+        self.assertEqual(donors["No contributor"]["record_kind"], "reported_aggregate")
+        self.assertEqual(donors["No contributor"]["contributions"]["UNICEF"]["Other"], -10)
+        self.assertEqual(entities["UNICEF"]["total"], 90)
+        self.assertEqual(trends["categoryContributors"]["NGOs"]["NGOs"][0]["total"], 100)
+
     def test_named_contributors_do_not_override_or_fill_source_categories(self):
         names, _ = fusion.load_contrib_mapping()
         for donor, code in [("UN OCHA", "C04D"), ("Bill & Melinda Gates Foundation", "C06"),
@@ -100,13 +196,22 @@ class SourceAttributionTests(unittest.TestCase):
                 for key, amount in expected.items():
                     self.assertAlmostEqual(aggregate[key], amount, delta=0.01, msg=f"{path.name} {name} {key}")
 
-    def test_all_known_source_observations_and_provenance_are_preserved(self):
+    def test_eligible_source_observations_and_provenance_are_preserved(self):
         fused = pd.read_csv(ROOT / "data/ceb/fused/revenue_by_contributor.csv")
+        controls = pd.read_csv(ROOT / "data/ceb/clean/revenue.csv")
+        reporting = set(zip(controls.calendar_year, controls.agency.map(normalize_entity)))
+        control_years = set(controls.calendar_year)
         for filename, donor_column in [("revenue_government_donors.csv", "government_donor"),
                                        ("revenue_non_gov_donors.csv", "donor")]:
             raw = pd.read_csv(ROOT / "data/ceb/raw" / filename)
             raw["source_row"] = raw.index + 2
-            expected = raw.dropna(subset=["amount"]).reset_index(drop=True)
+            source_entities = raw.entity.map(normalize_entity).replace({"DPO": normalize_entity("UN-DPO")})
+            eligible = pd.Series([
+                (year, entity) in reporting or
+                (filename == "revenue_non_gov_donors.csv" and year not in control_years)
+                for year, entity in zip(raw.calendar_year, source_entities)
+            ], index=raw.index)
+            expected = raw[eligible].dropna(subset=["amount"]).reset_index(drop=True)
             actual = fused[fused.source_file == filename].sort_values("source_row").reset_index(drop=True)
             self.assertEqual(len(actual), len(expected), filename)
             pd.testing.assert_series_equal(actual.source_row.astype(int), expected.source_row, check_names=False)
@@ -116,6 +221,8 @@ class SourceAttributionTests(unittest.TestCase):
                                                  ("source_rev_type", "rev_type")]:
                 self.assertEqual(actual[actual_column].fillna("").astype(str).tolist(),
                                  expected[source_column].fillna("").astype(str).tolist())
+            un_records = actual[actual.entity == "UN Secretariat"]
+            self.assertTrue(raw.loc[un_records.source_row.astype(int) - 2, "entity"].eq("UN").all())
 
 
 if __name__ == "__main__":

@@ -14,7 +14,7 @@ The central note has two explicitly separate parts:
    that terminology on this website has been standardized to **Taiwan Province of China**.
 2. A concise **Portal processing and transformations** summary for readers of the
    financial views. It covers the transformations that change interpretation:
-   consolidated names and reporting parents, revenue reconciliation, unresolved
+   consolidated names, revenue reconciliation, unresolved
    historical financing, expense scope, geographic corrections, SDG coverage and
    historical functions. Implementation details and the complete processing
    contract remain in this document and the detailed references below.
@@ -38,9 +38,14 @@ separate from the source quotation.
 - Use CEB classifications without donor-name overrides or inferred categories.
   A contributor may have records in multiple source categories. Keep contributor
   identity, observation category and financing type as separate attributes.
+- Match contributor detail to the explicitly reported recipient and the same
+  year's revenue controls. Full downloaded observations remain in raw sources.
 - Reconcile known detail against reported revenue controls, with signed category
   and financing balances. Keep reported named contributors, reported aggregates
-  and calculated balances distinguishable and inspectable.
+  and calculated balances distinguishable and inspectable. Where a category has
+  no contributor breakdown for the organization/year, show its reported total
+  under the source category name; reserve **Other {category}** for balances
+  alongside reported detail.
 - Preserve unresolved historical financing records without assigning one of the
   four main types by guesswork. Keep their known donor amounts separate from
   already-reconciled instrument totals to avoid counting them twice.

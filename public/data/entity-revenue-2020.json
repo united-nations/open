@@ -20211,7 +20211,7 @@
     ]
   },
   "UN Secretariat": {
-    "total": 6514058434.72,
+    "total": 6514058434.719999,
     "year": 2020,
     "by_type": {
       "Assessed": 2953043728.92,
@@ -20222,12 +20222,12 @@
     "by_donor": [
       {
         "donor": "Unattributed",
-        "total": 823560220.7900002,
+        "total": 1214094192.5900002,
         "record_kind": "calculated_balance",
         "Assessed": -131564571.07999992,
         "Other": 834500524.3,
-        "Voluntary earmarked": 252907823.84000012,
-        "Voluntary un-earmarked": -132283556.27,
+        "Voluntary earmarked": 609342654.4000001,
+        "Voluntary un-earmarked": -98184415.03,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -20267,14 +20267,6 @@
         "record_kind": "reported_named",
         "Assessed": 370307226.0,
         "Voluntary earmarked": 14750137.41,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
-        "donor": "Multi Donor Trust Funds",
-        "total": 311202076.48,
-        "record_kind": "reported_aggregate",
-        "Voluntary earmarked": 311202076.48,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -20424,15 +20416,6 @@
         "Assessed": 66195694.0,
         "Voluntary earmarked": 14947258.22,
         "Voluntary un-earmarked": 102587.36,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
-        "donor": "European Union",
-        "total": 78228893.7,
-        "record_kind": "reported_named",
-        "Voluntary earmarked": 56948956.51,
-        "Voluntary un-earmarked": 21279937.19,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -20599,15 +20582,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "UNDP Administered Trust Funds",
-        "total": 14585748.899999999,
-        "record_kind": "reported_aggregate",
-        "Voluntary earmarked": 4294386.9,
-        "Voluntary un-earmarked": 10291362.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
         "donor": "Kuwait",
         "total": 14233863.0,
         "record_kind": "reported_named",
@@ -20691,6 +20665,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "European Union",
+        "total": 10575379.22,
+        "record_kind": "reported_named",
+        "Voluntary earmarked": 10575379.219999999,
+        "unresolvedTotal": 0.0,
+        "financingIncomplete": false
+      },
+      {
         "donor": "Iraq",
         "total": 10249051.590000002,
         "record_kind": "reported_named",
@@ -20705,6 +20687,14 @@
         "record_kind": "reported_named",
         "Assessed": 8883672.0,
         "Voluntary earmarked": 412222.57999999996,
+        "unresolvedTotal": 0.0,
+        "financingIncomplete": false
+      },
+      {
+        "donor": "Multi Donor Trust Funds",
+        "total": 9289372.92,
+        "record_kind": "reported_aggregate",
+        "Voluntary earmarked": 9289372.92,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -20847,14 +20837,6 @@
         "Assessed": 4256760.0,
         "Voluntary earmarked": 204598.34,
         "Voluntary un-earmarked": 100000.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
-        "donor": "World Bank Group",
-        "total": 3896629.81,
-        "record_kind": "reported_named",
-        "Voluntary earmarked": 3896629.81,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -21025,14 +21007,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Bill & Melinda Gates Foundation",
-        "total": 1543384.22,
-        "record_kind": "reported_named",
-        "Voluntary un-earmarked": 1543384.22,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
         "donor": "Belarus",
         "total": 1526431.75,
         "record_kind": "reported_named",
@@ -21141,11 +21115,10 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Private Donors / Private Sector",
-        "total": 1147370.6900000009,
+        "donor": "UNDP Administered Trust Funds",
+        "total": 1093613.0,
         "record_kind": "reported_aggregate",
-        "Voluntary earmarked": 162912.8600000001,
-        "Voluntary un-earmarked": 984457.8300000001,
+        "Voluntary earmarked": 1093613.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -22151,10 +22124,10 @@
         "financingIncomplete": false
       },
       {
-        "donor": "UN OCHA",
-        "total": -54525.78,
-        "record_kind": "reported_named",
-        "Voluntary earmarked": -54525.78,
+        "donor": "Private Donors / Private Sector",
+        "total": -942758.92,
+        "record_kind": "reported_aggregate",
+        "Voluntary earmarked": -942758.92,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       }

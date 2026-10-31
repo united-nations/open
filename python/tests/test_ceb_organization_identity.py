@@ -8,11 +8,28 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "python"))
-from ceb_data import resolve_reporting_entities, resolve_geographic_reporting_entities
+from ceb_data import resolve_reporting_entities, resolve_geographic_reporting_entities, select_contributor_reporting_entities
 from utils import normalize_entity
 
 
 class OrganizationIdentityTests(unittest.TestCase):
+    def test_contributor_scope_excludes_uncontrolled_departments_without_rolling_up(self):
+        controls = pd.DataFrame({
+            "calendar_year": [2024, 2024, 2024, 2025],
+            "agency": ["UN", "UNRISD", "UN-DPO", "UN"],
+        })
+        detail = pd.DataFrame({
+            "calendar_year": [2024, 2024, 2024, 2025, 2024],
+            "entity": ["UN", "UN-OCHA", "UNRISD", "UNRISD", "DPO"],
+            "amount": [100.0, 25.0, 5.0, 6.0, 10.0],
+        })
+        result = select_contributor_reporting_entities(detail, "entity", controls)
+        self.assertEqual(result.entity.tolist(), ["UN Secretariat", "UNRISD", "Peacekeeping Operations"])
+        self.assertEqual(result.amount.tolist(), [100.0, 5.0, 10.0])
+        detail.loc[1, "entity"] = "Unrecognized source unit"
+        self.assertEqual(select_contributor_reporting_entities(detail, "entity", controls).entity.tolist(),
+                         ["UN Secretariat", "UNRISD", "Peacekeeping Operations"])
+
     def test_adjusted_labels_are_shared_and_idempotent(self):
         aliases = {
             "UN": "UN Secretariat",

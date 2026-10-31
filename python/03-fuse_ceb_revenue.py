@@ -8,7 +8,7 @@ Tiered approach:
 import pandas as pd
 from pathlib import Path
 from revenue_categories import rev_category, UNRESOLVED_FINANCING_CODES
-from ceb_data import revenue_controls, resolve_reporting_entities
+from ceb_data import revenue_controls, select_contributor_reporting_entities
 from utils import normalize_entity
 from utils import clean_donor_name, GENERIC_DONORS
 
@@ -100,11 +100,9 @@ def fuse_revenue():
     control_years = set(revenue["calendar_year"])
     years = sorted(control_years | set(nongov["calendar_year"]))
     reporting_controls = revenue.rename(columns={"entity": "agency"})
-    breakdowns = [(load("revenue_by_financing_instruments_and_government_contributors.csv"), "entity", "sub_entity"),
-                  (load("expenses_sub_agency.csv"), "agency", "sub_agency")]
     early_nongov = nongov[~nongov.calendar_year.isin(control_years)].copy()
-    gov, nongov, contrib_type = [resolve_reporting_entities(
-        frame[frame.calendar_year.isin(control_years)], "entity", reporting_controls, breakdowns)
+    gov, nongov, contrib_type = [select_contributor_reporting_entities(
+        frame[frame.calendar_year.isin(control_years)], "entity", reporting_controls)
         for frame in (gov, nongov, contrib_type)]
     nongov = pd.concat([nongov, early_nongov], ignore_index=True)
     results = []
@@ -146,12 +144,28 @@ def fuse_revenue():
                 "revenue_non_gov_donors.csv")
         if year >= 2021:
             ct = contrib_type[(contrib_type["calendar_year"] == year) & (contrib_type["entity"] == entity)]
+            # Presence of detail is checked across financing types for this
+            # organization/year, including zero, blank and unresolved records.
+            # A net-zero breakdown is still a breakdown.
+            detailed_categories = set(n["contrib_code"].dropna())
+            detailed_categories.update(
+                normalize_contrib_type(value, desc_to_code)
+                for value in g.get("contrib_type", pd.Series("Government", index=g.index))
+            )
             for (code, rev), group in ct.groupby(["contrib_type", "rev_code"]):
                 # Contributor-category controls supply identity detail, never
                 # override the authoritative entity/instrument control below.
                 named = sum(r["amount"] for r in rows if r["contrib_code"] == code and r["rev_type"] == rev)
-                name = f"Other {code_to_name.get(code, code)}"
-                add(code, rev, name, group["amount"].sum(min_count=1) - named, "calculated_balance")
+                category = code_to_name.get(code, code)
+                total = group["amount"].sum(min_count=1)
+                if code in detailed_categories:
+                    add(code, rev, f"Other {category}", total - named, "calculated_balance")
+                else:
+                    # Without contributor detail this is the reported category
+                    # total itself, rather than a remainder within the category.
+                    add(code, rev, category, total, "reported_aggregate",
+                        source={"contrib_type": code, "rev_type": rev},
+                        source_file="revenue_contrib_type.csv")
         amounts = controls.groupby("rev_code")["amount"].sum().to_dict()
         for rev in sorted(set(amounts) | {r["rev_type"] for r in rows if r["financing_resolved"]}) if year in control_years else []:
             residual = amounts.get(rev, 0) - sum(r["amount"] for r in rows if r["rev_type"] == rev)

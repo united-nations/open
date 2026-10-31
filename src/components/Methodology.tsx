@@ -53,8 +53,20 @@ export function CebMethodology() {
       </p>
       <section aria-label="Notes published by CEB" className="space-y-3">
         <h3 className="text-lg font-semibold text-gray-900">
-          Notes to the Financial Statistics pages
+          Notes on CEB Financial Statistics
         </h3>
+        <p>
+          See the{" "}
+          <a
+            className="underline underline-offset-2"
+            href={cebMethodology.source.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            CEB Financial Statistics page
+          </a>
+          .
+        </p>
         <ol className="list-decimal space-y-3 pl-6 marker:font-semibold marker:text-un-blue">
           {officialNotes.map((note, index) => (
             <li key={index}>

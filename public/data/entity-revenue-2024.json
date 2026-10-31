@@ -27,9 +27,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 12314408.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 12314408.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -1527,9 +1527,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Foundations",
+        "donor": "Foundations",
         "total": 907.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 907.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -1575,9 +1575,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 163101210.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 3465247.0,
         "Voluntary earmarked": 159635963.0,
         "unresolvedTotal": 0.0,
@@ -1687,9 +1687,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 41187515.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 8832.0,
         "Voluntary earmarked": 41178683.0,
         "unresolvedTotal": 0.0,
@@ -2009,9 +2009,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 3196985.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 56197.0,
         "Voluntary earmarked": 3140788.0,
         "unresolvedTotal": 0.0,
@@ -2294,9 +2294,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Public Private Partnership",
+        "donor": "Public Private Partnership",
         "total": 1220497.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 14815.0,
         "Voluntary earmarked": 1205682.0,
         "unresolvedTotal": 0.0,
@@ -2323,9 +2323,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 1184283.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 1184283.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -3605,9 +3605,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 43956250.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 43956250.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -4196,9 +4196,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 458333.33,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 458333.33,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -4357,9 +4357,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 189761.46,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 189761.46,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -4446,9 +4446,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 149270.83,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 149270.83,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -4580,9 +4580,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 71166.67,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 71166.67,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -5292,9 +5292,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 3851275.01,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 3235337.5,
         "Voluntary earmarked": 615937.51,
         "unresolvedTotal": 0.0,
@@ -5317,9 +5317,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 2186154.17,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 2186154.17,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -5379,9 +5379,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 993414.58,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 993414.58,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -5534,25 +5534,25 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 646650.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 646650.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 512315.63,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 512315.63,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - International Financial Institutions",
+        "donor": "Multilateral - International Financial Institutions",
         "total": 291801.04,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 291801.04,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -5611,9 +5611,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 22907965.33,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 22907965.33,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -5677,17 +5677,17 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 7242373.79,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 7242373.79,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 6978497.22,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 60800.27,
         "Voluntary earmarked": 6917696.95,
         "unresolvedTotal": 0.0,
@@ -5909,9 +5909,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 937831.49,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 937831.49,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -5975,9 +5975,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 606559.64,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 606559.64,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -6466,9 +6466,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 80432.04000000001,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 80432.04000000001,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -7380,9 +7380,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Foundations",
+        "donor": "Foundations",
         "total": 35373.79,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 35373.79,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -7561,9 +7561,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 4089177.08,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 4089177.08,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -7876,9 +7876,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 132245.83000000002,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 132245.83000000002,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -8334,9 +8334,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 4847.92,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 4847.92,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -8494,9 +8494,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 1523.95,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 1523.95,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -8513,9 +8513,9 @@
     },
     "by_donor": [
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 230619000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 230619000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -8618,9 +8618,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 22042778.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 22042778.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -8968,17 +8968,17 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - International Financial Institutions",
+        "donor": "Multilateral - International Financial Institutions",
         "total": 125000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 125000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 121071.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 121071.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -9190,9 +9190,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 79697961.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 79697961.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -9244,9 +9244,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 33568732.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 14479304.0,
         "Voluntary earmarked": 19089428.0,
         "unresolvedTotal": 0.0,
@@ -9262,9 +9262,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Private Sector",
+        "donor": "Private Sector",
         "total": 27354539.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 23134432.0,
         "Voluntary earmarked": 4220107.0,
         "unresolvedTotal": 0.0,
@@ -9335,9 +9335,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Global vertical funds",
+        "donor": "Multilateral - Global vertical funds",
         "total": 18852887.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 18852887.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -9554,9 +9554,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Public Private Partnership",
+        "donor": "Public Private Partnership",
         "total": 2859669.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 2859669.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -9699,9 +9699,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 1557759.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 1557759.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -9715,9 +9715,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 1412105.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 1412105.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -10078,9 +10078,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 143969.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 143969.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -10894,9 +10894,9 @@
     },
     "by_donor": [
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 25702469.85,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 25702469.85,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -10911,9 +10911,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 6488304.01,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 6488304.01,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -11334,9 +11334,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 63775.13,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 63775.13,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -12353,9 +12353,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Public Private Partnership",
+        "donor": "Public Private Partnership",
         "total": 5290.2,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 5290.2,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -12436,9 +12436,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 120238436.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 141814293.0,
         "Voluntary earmarked": -21575857.0,
         "unresolvedTotal": 0.0,
@@ -12463,9 +12463,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 79476852.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 79476852.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -12638,9 +12638,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 12705090.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 12705090.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -12780,9 +12780,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 2986277.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 2986277.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -12893,9 +12893,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 1651819.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 1651819.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -14077,9 +14077,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 8049799.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 8049799.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -14125,9 +14125,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 1668004.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Assessed": 1453416.0,
         "Other": 214588.0,
         "unresolvedTotal": 0.0,
@@ -15634,9 +15634,9 @@
     },
     "by_donor": [
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 3020544.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 3020544.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -17023,9 +17023,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 45361960.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Assessed": 43254400.0,
         "Other": 1352285.0,
         "Voluntary earmarked": 755275.0,
@@ -17057,9 +17057,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 6684863.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 6684863.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -17130,9 +17130,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - International Financial Institutions",
+        "donor": "Multilateral - International Financial Institutions",
         "total": 838360.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 838360.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -17146,9 +17146,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Foundations",
+        "donor": "Foundations",
         "total": 509446.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 509446.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -17170,9 +17170,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Private Sector",
+        "donor": "Private Sector",
         "total": 203575.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 203575.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -17321,9 +17321,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 337378.11999999994,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 337378.11999999994,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -17345,9 +17345,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Foundations",
+        "donor": "Foundations",
         "total": 293479.17,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 293479.17,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -18621,9 +18621,9 @@
     },
     "by_donor": [
       {
-        "donor": "Other Private Sector",
+        "donor": "Private Sector",
         "total": 67513055.5,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Assessed": 19669533.86,
         "Other": 46551609.32,
         "Voluntary earmarked": 1291912.32,
@@ -18783,9 +18783,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 3013102.1,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 3013102.1,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -20338,9 +20338,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 2040150.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Assessed": 1651051.04,
         "Voluntary earmarked": 389098.96,
         "unresolvedTotal": 0.0,
@@ -20642,9 +20642,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 171822.91999999998,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 171822.91999999998,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -21837,9 +21837,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": -96127.08,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": -96127.08,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -21897,9 +21897,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 66263691.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 66263691.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -22916,9 +22916,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 117629495.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 117629495.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -23108,9 +23108,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 17870683.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 17870683.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -23447,9 +23447,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 1396406.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 1396406.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -23813,9 +23813,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 144072.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 144072.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -24043,9 +24043,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Foundations",
+        "donor": "Foundations",
         "total": 52625.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 52625.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -24520,9 +24520,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 838502435.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 838502435.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -24682,10 +24682,10 @@
       },
       {
         "donor": "Private Donors / Private Sector",
-        "total": 132905159.0,
+        "total": 131248889.0,
         "record_kind": "reported_aggregate",
-        "Other": 105537050.0,
-        "Voluntary earmarked": 18030053.0,
+        "Other": 105525309.0,
+        "Voluntary earmarked": 16385524.0,
         "Voluntary un-earmarked": 9338056.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -24725,10 +24725,10 @@
       },
       {
         "donor": "European Union",
-        "total": 81965842.0,
+        "total": 79488434.0,
         "record_kind": "reported_named",
         "Other": 47398.0,
-        "Voluntary earmarked": 81918444.0,
+        "Voluntary earmarked": 79441036.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -24994,6 +24994,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "Other Multilateral - International Financial Institutions",
+        "total": 13098076.0,
+        "record_kind": "calculated_balance",
+        "Voluntary earmarked": 13098076.0,
+        "unresolvedTotal": 0.0,
+        "financingIncomplete": false
+      },
+      {
         "donor": "Greece",
         "total": 12994516.0,
         "record_kind": "reported_named",
@@ -25067,18 +25075,20 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
-        "total": 9962020.0,
+        "donor": "Other Private Sector",
+        "total": 10642000.0,
         "record_kind": "calculated_balance",
-        "Voluntary earmarked": 9962020.0,
+        "Other": 11741.0,
+        "Voluntary earmarked": 10576774.0,
+        "Voluntary un-earmarked": 53485.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
-        "donor": "World Bank Group",
-        "total": 9713363.0,
-        "record_kind": "reported_named",
-        "Voluntary earmarked": 9713363.0,
+        "donor": "Multilateral - Others",
+        "total": 9962020.0,
+        "record_kind": "reported_aggregate",
+        "Voluntary earmarked": 9962020.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -25090,15 +25100,6 @@
         "Other": 44488.0,
         "Voluntary earmarked": 861263.0,
         "Voluntary un-earmarked": 7778.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
-        "donor": "Other Private Sector",
-        "total": 8985730.0,
-        "record_kind": "calculated_balance",
-        "Voluntary earmarked": 8932245.0,
-        "Voluntary un-earmarked": 53485.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -25265,9 +25266,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 4205251.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 4202866.0,
         "Voluntary un-earmarked": 2385.0,
         "unresolvedTotal": 0.0,
@@ -25291,14 +25292,6 @@
         "Assessed": 3777516.0,
         "Other": 2263.0,
         "Voluntary earmarked": 207684.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
-        "donor": "Other Multilateral - International Financial Institutions",
-        "total": 3562879.0,
-        "record_kind": "calculated_balance",
-        "Voluntary earmarked": 3562879.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -25390,6 +25383,14 @@
         "Assessed": 277249.0,
         "Other": 4372.0,
         "Voluntary earmarked": 2354936.0,
+        "unresolvedTotal": 0.0,
+        "financingIncomplete": false
+      },
+      {
+        "donor": "Other Other - European Union",
+        "total": 2477408.0,
+        "record_kind": "calculated_balance",
+        "Voluntary earmarked": 2477408.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -25949,9 +25950,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 344151.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 344151.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -26231,6 +26232,14 @@
         "record_kind": "reported_named",
         "Assessed": 138624.0,
         "Voluntary earmarked": 40882.0,
+        "unresolvedTotal": 0.0,
+        "financingIncomplete": false
+      },
+      {
+        "donor": "World Bank Group",
+        "total": 178166.0,
+        "record_kind": "reported_named",
+        "Voluntary earmarked": 178166.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -26630,9 +26639,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Public Private Partnership",
+        "donor": "Public Private Partnership",
         "total": 2000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 2000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -26663,9 +26672,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": -160743034.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Assessed": -160795240.0,
         "Voluntary earmarked": 52206.0,
         "unresolvedTotal": 0.0,
@@ -26693,9 +26702,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 3282682.29,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 3282682.29,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -26758,9 +26767,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 518918.86,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Assessed": 303810.52,
         "Other": 160547.92999999996,
         "Voluntary earmarked": 54560.41000000002,
@@ -26830,9 +26839,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 375511.46,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Assessed": 173541.66999999998,
         "Voluntary earmarked": 201969.79000000004,
         "unresolvedTotal": 0.0,
@@ -26856,9 +26865,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Foundations",
+        "donor": "Foundations",
         "total": 359234.37,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Assessed": 99843.75,
         "Other": 8328.130000000001,
         "Voluntary earmarked": 251062.49,
@@ -27008,9 +27017,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - International Financial Institutions",
+        "donor": "Multilateral - International Financial Institutions",
         "total": 187983.34,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Assessed": 2812.5,
         "Voluntary earmarked": 185170.84,
         "unresolvedTotal": 0.0,
@@ -27193,9 +27202,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 100264.57,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 100264.57,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -28112,9 +28121,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 23334.37,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 6178.13,
         "Voluntary earmarked": 17156.239999999998,
         "unresolvedTotal": 0.0,
@@ -28154,9 +28163,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 13672.91,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Assessed": 4218.75,
         "Voluntary earmarked": 9454.16,
         "unresolvedTotal": 0.0,
@@ -28250,17 +28259,17 @@
     },
     "by_donor": [
       {
-        "donor": "Other Multilateral - UN Inter-agency pooled funds",
+        "donor": "Multilateral - UN Inter-agency pooled funds",
         "total": 95441027.84,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 95441027.84,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - European Union",
+        "donor": "Other - European Union",
         "total": 43837599.28,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 43837599.28,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -28293,18 +28302,18 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 34224585.85,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Assessed": 10788000.0,
         "Voluntary earmarked": 23436585.85,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 30598476.58,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 30598476.58,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -28427,9 +28436,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 5453853.0600000005,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 3772709.2200000007,
         "Voluntary un-earmarked": 1681143.8400000003,
         "unresolvedTotal": 0.0,
@@ -28521,9 +28530,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - International Financial Institutions",
+        "donor": "Multilateral - International Financial Institutions",
         "total": 1205032.38,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 1205032.38,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -28571,9 +28580,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 463642.25,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 463642.25,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -28596,9 +28605,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 425934.57,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 425934.57,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -28884,9 +28893,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 16330.55,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 16330.55,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -29097,9 +29106,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 19911154.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Assessed": 15619000.0,
         "Voluntary earmarked": 4292154.0,
         "unresolvedTotal": 0.0,
@@ -29114,9 +29123,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 15023573.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 15023573.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -29131,17 +29140,17 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Global vertical funds",
+        "donor": "Multilateral - Global vertical funds",
         "total": 14576582.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 14576582.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 10370676.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 9856588.0,
         "Voluntary earmarked": 514088.0,
         "unresolvedTotal": 0.0,
@@ -29249,17 +29258,17 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 1883242.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 1883242.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 1696939.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 1696939.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -29348,9 +29357,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 339012.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 339012.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -29710,9 +29719,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Foundations",
+        "donor": "Foundations",
         "total": -485798.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": -485798.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -29823,9 +29832,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 4564907.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 4564907.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -29857,9 +29866,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 3071505.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 3055663.0,
         "Voluntary un-earmarked": 15842.0,
         "unresolvedTotal": 0.0,
@@ -29948,9 +29957,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 502951.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": -46355.0,
         "Voluntary un-earmarked": 549306.0,
         "unresolvedTotal": 0.0,
@@ -29973,9 +29982,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 411433.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 411433.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -30085,9 +30094,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Private Sector",
+        "donor": "Private Sector",
         "total": 1668.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 1668.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -30148,9 +30157,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - International Financial Institutions",
+        "donor": "Multilateral - International Financial Institutions",
         "total": 3032200.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 3032200.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -30165,17 +30174,17 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 2247936.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 2247936.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 2200000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 2200000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -30232,9 +30241,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 269997.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 269997.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -31722,9 +31731,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Private Sector",
+        "donor": "Private Sector",
         "total": -147912.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": -147912.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -31757,9 +31766,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 11702596.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 11702596.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -31797,9 +31806,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 6997458.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 6997458.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -31821,9 +31830,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 2041943.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 2041943.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -31885,9 +31894,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Public Private Partnership",
+        "donor": "Public Private Partnership",
         "total": 299183.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 299183.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -31974,9 +31983,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": -1597.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": -1597.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -31990,9 +31999,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": -48168.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": -48168.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -32050,9 +32059,9 @@
     },
     "by_donor": [
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 465188502.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 465188502.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -32925,9 +32934,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 3078149.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 430142.0,
         "Voluntary earmarked": 2646650.0,
         "Voluntary un-earmarked": 1357.0,
@@ -33032,9 +33041,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 1985280.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 72782.0,
         "Voluntary earmarked": 1912498.0,
         "unresolvedTotal": 0.0,
@@ -33894,9 +33903,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": -84211430.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": -124409924.0,
         "Voluntary earmarked": 25751646.0,
         "Voluntary un-earmarked": 14446848.0,
@@ -33924,9 +33933,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 122175744.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 122175744.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -33942,9 +33951,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Global vertical funds",
+        "donor": "Multilateral - Global vertical funds",
         "total": 80089129.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 80089129.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -33997,9 +34006,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 26327526.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 26327526.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -34187,9 +34196,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 3807047.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 3807047.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -34222,9 +34231,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Foundations",
+        "donor": "Foundations",
         "total": 2644584.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 2644584.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -34398,9 +34407,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Public Private Partnership",
+        "donor": "Public Private Partnership",
         "total": 645276.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 645276.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -34814,9 +34823,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 64152.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 64152.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -35871,17 +35880,17 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": -578304.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": -578304.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": -6065450.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": -6065450.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -35908,9 +35917,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 64569339.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 64569339.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -35980,9 +35989,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 31941962.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 31858485.0,
         "Voluntary earmarked": 83477.0,
         "unresolvedTotal": 0.0,
@@ -35999,9 +36008,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 30961114.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 27447677.0,
         "Voluntary un-earmarked": 3513437.0,
         "unresolvedTotal": 0.0,
@@ -36038,9 +36047,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN Inter-agency pooled funds",
+        "donor": "Multilateral - UN Inter-agency pooled funds",
         "total": 23139536.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 23139536.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -36228,9 +36237,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 2852036.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 2852036.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -36264,9 +36273,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 2582820.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 2582820.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -36539,9 +36548,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 628043.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 628043.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -36738,9 +36747,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Public Private Partnership",
+        "donor": "Public Private Partnership",
         "total": 213290.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 213290.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -37783,9 +37792,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 11473957.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 11473957.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -37809,9 +37818,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Foundations",
+        "donor": "Foundations",
         "total": 7216157.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 7216157.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -37853,9 +37862,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 3424217.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 3424217.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -37906,9 +37915,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 1859522.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 242309.0,
         "Voluntary earmarked": 1617213.0,
         "unresolvedTotal": 0.0,
@@ -37942,9 +37951,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Private Sector",
+        "donor": "Private Sector",
         "total": 1471644.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 1471644.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -38070,9 +38079,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 325027.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 325027.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -39457,9 +39466,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 184157452.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 184157452.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -39618,9 +39627,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 15000000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 15000000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -39775,9 +39784,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 3084539.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 676315.0,
         "Voluntary earmarked": 882745.0,
         "Voluntary un-earmarked": 1525479.0,
@@ -39893,9 +39902,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 734372.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 734372.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -39996,9 +40005,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 166520.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 166520.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -40399,9 +40408,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 354346896.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 190573760.0,
         "Voluntary un-earmarked": 163773136.0,
         "unresolvedTotal": 0.0,
@@ -40461,9 +40470,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 113060987.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 113060987.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -40550,9 +40559,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 47550511.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 47550511.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -40654,9 +40663,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Global vertical funds",
+        "donor": "Multilateral - Global vertical funds",
         "total": 16152425.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 16152425.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -40762,9 +40771,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 1319880.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 1319880.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -40932,9 +40941,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - International Financial Institutions",
+        "donor": "Multilateral - International Financial Institutions",
         "total": 106000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 106000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -41087,9 +41096,9 @@
     },
     "by_donor": [
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 1784155440.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 2039888.0,
         "Voluntary earmarked": 955682442.0,
         "Voluntary un-earmarked": 826433110.0,
@@ -41149,9 +41158,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 362396061.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 362396061.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -41316,9 +41325,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 53648445.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 58444032.0,
         "Voluntary earmarked": -4795587.0,
         "unresolvedTotal": 0.0,
@@ -42459,9 +42468,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 1282000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 1282000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -42491,9 +42500,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 640000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 621000.0,
         "Voluntary earmarked": 19000.0,
         "unresolvedTotal": 0.0,
@@ -42508,9 +42517,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Foundations",
+        "donor": "Foundations",
         "total": 429000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 429000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -42524,9 +42533,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 329000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 329000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -42566,9 +42575,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 22000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 22000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -42582,9 +42591,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": -21000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": -21000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -42625,9 +42634,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 32333927.08,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 29539268.75,
         "Voluntary earmarked": 2794658.33,
         "unresolvedTotal": 0.0,
@@ -42740,9 +42749,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 3455452.08,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 3455452.08,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -42854,9 +42863,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Private Sector",
+        "donor": "Private Sector",
         "total": 1334776.0299999998,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 1334776.0299999998,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -42887,9 +42896,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 1126982.29,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 1126982.29,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -43116,17 +43125,17 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Public Private Partnership",
+        "donor": "Public Private Partnership",
         "total": 209036.45,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 209036.45,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - International Financial Institutions",
+        "donor": "Multilateral - International Financial Institutions",
         "total": 190698.96,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 190698.96,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -43159,9 +43168,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Foundations",
+        "donor": "Foundations",
         "total": 170696.87,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 170696.87,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -44175,6 +44184,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "NGOs",
+        "total": 0.0,
+        "record_kind": "reported_aggregate",
+        "Voluntary earmarked": 0.0,
+        "unresolvedTotal": 0.0,
+        "financingIncomplete": false
+      },
+      {
         "donor": "Solomon Islands",
         "total": 0.0,
         "record_kind": "reported_named",
@@ -44226,9 +44243,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": -888.54,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": -888.54,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -44278,9 +44295,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 26709000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 26709000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -44381,9 +44398,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 7660561.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 7594078.0,
         "Voluntary un-earmarked": 66483.0,
         "unresolvedTotal": 0.0,
@@ -44399,9 +44416,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 6674667.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 982438.0,
         "Voluntary earmarked": 5692229.0,
         "unresolvedTotal": 0.0,
@@ -44424,9 +44441,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Foundations",
+        "donor": "Foundations",
         "total": 2502383.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 2502383.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -44441,9 +44458,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 2128000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 2128000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -44489,9 +44506,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 997834.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 997834.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -44570,17 +44587,17 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 172105.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 172105.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
-        "donor": "Other Public Private Partnership",
+        "donor": "Public Private Partnership",
         "total": 112457.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 112457.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -44786,9 +44803,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 51054000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 51054000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -44936,9 +44953,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 3023000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 3023000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -45024,17 +45041,17 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Foundations",
+        "donor": "Foundations",
         "total": 890000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 890000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 602000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 602000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -45118,9 +45135,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 293000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 293000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -45222,9 +45239,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - International Financial Institutions",
+        "donor": "Multilateral - International Financial Institutions",
         "total": 158000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 158000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -45735,9 +45752,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 121671979.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 121671979.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -45767,9 +45784,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 41343815.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 41343815.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -45791,9 +45808,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 30792068.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 30792068.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -45831,9 +45848,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 24437188.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 24437188.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -45847,9 +45864,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Public Private Partnership",
+        "donor": "Public Private Partnership",
         "total": 21464356.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 21464356.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -46183,9 +46200,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 388810.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 388810.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -46533,9 +46550,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 102413063.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Assessed": 71308898.0,
         "Other": 78148.0,
         "Voluntary earmarked": 31026017.0,
@@ -46543,9 +46560,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 74272818.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 69060080.0,
         "Voluntary un-earmarked": 5212738.0,
         "unresolvedTotal": 0.0,
@@ -46588,9 +46605,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 43872676.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 43872676.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -46773,9 +46790,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Global vertical funds",
+        "donor": "Multilateral - Global vertical funds",
         "total": 8500000.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 8500000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -46858,9 +46875,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - International Financial Institutions",
+        "donor": "Multilateral - International Financial Institutions",
         "total": 2266467.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 2266467.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -46898,9 +46915,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Foundations",
+        "donor": "Foundations",
         "total": 1490503.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 873168.0,
         "Voluntary un-earmarked": 617335.0,
         "unresolvedTotal": 0.0,
@@ -47087,9 +47104,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 56949.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 56949.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -47213,9 +47230,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 1624803.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 1624803.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -47229,17 +47246,17 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 301663.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 301663.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 238187.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 238187.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -47261,9 +47278,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Foundations",
+        "donor": "Foundations",
         "total": 109659.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary un-earmarked": 109659.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -47325,9 +47342,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 1801.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 1801.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -47344,9 +47361,9 @@
     },
     "by_donor": [
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 39945916.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 39945916.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -47397,9 +47414,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 2209507.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 379445.0,
         "Voluntary earmarked": 1599278.0,
         "Voluntary un-earmarked": 230784.0,
@@ -47425,9 +47442,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 829686.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 120706.0,
         "Voluntary earmarked": 708980.0,
         "unresolvedTotal": 0.0,
@@ -47459,9 +47476,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Foundations",
+        "donor": "Foundations",
         "total": 482855.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 133191.0,
         "Voluntary earmarked": 349664.0,
         "unresolvedTotal": 0.0,
@@ -47484,17 +47501,17 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Public Private Partnership",
+        "donor": "Public Private Partnership",
         "total": 244609.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 244609.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - International Financial Institutions",
+        "donor": "Multilateral - International Financial Institutions",
         "total": 230733.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 5394.0,
         "Voluntary earmarked": 225339.0,
         "unresolvedTotal": 0.0,
@@ -47518,9 +47535,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 177857.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 177857.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -47574,9 +47591,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 32528.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 32528.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -47642,9 +47659,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 3424470.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 449910.0,
         "Voluntary earmarked": 2974560.0,
         "unresolvedTotal": 0.0,
@@ -47669,9 +47686,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 2795716.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 2795716.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -47722,9 +47739,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 529981.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 21542.0,
         "Voluntary earmarked": 508439.0,
         "unresolvedTotal": 0.0,
@@ -47749,9 +47766,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 343816.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 343816.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -47800,9 +47817,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 29913.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 29913.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -47865,9 +47882,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": -364096.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": -326441.0,
         "Voluntary earmarked": -37655.0,
         "unresolvedTotal": 0.0,
@@ -47885,9 +47902,9 @@
     },
     "by_donor": [
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 48718507.21,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 22994628.19,
         "Voluntary earmarked": 25723879.02,
         "unresolvedTotal": 0.0,
@@ -49502,9 +49519,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 564025648.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 564025648.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -49651,9 +49668,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - International Financial Institutions",
+        "donor": "Multilateral - International Financial Institutions",
         "total": 75470078.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 264599.0,
         "Voluntary earmarked": 75205479.0,
         "unresolvedTotal": 0.0,
@@ -49720,9 +49737,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 49668572.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 6084110.0,
         "Voluntary earmarked": 34723693.0,
         "Voluntary un-earmarked": 8860769.0,
@@ -50001,9 +50018,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 2684294.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 58565.0,
         "Voluntary earmarked": 2625729.0,
         "unresolvedTotal": 0.0,
@@ -50084,9 +50101,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 1476330.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 1476330.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -50328,9 +50345,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 91030.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 91030.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -50497,6 +50514,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "Public Private Partnership",
+        "total": 0.0,
+        "record_kind": "reported_aggregate",
+        "Voluntary earmarked": 0.0,
+        "unresolvedTotal": 0.0,
+        "financingIncomplete": false
+      },
+      {
         "donor": "Russian Federation",
         "total": 0.0,
         "record_kind": "reported_named",
@@ -50635,9 +50660,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 115660094.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 115660094.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -50669,9 +50694,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 92949852.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 7945662.0,
         "Voluntary earmarked": 85004190.0,
         "unresolvedTotal": 0.0,
@@ -50930,9 +50955,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 9676862.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 9676862.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -50956,9 +50981,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 6817427.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 6817427.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -51377,9 +51402,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Others",
+        "donor": "Multilateral - Others",
         "total": 773238.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 69000.0,
         "Voluntary earmarked": 704238.0,
         "unresolvedTotal": 0.0,
@@ -52511,9 +52536,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": -514739097.0,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Assessed": -128760493.0,
         "Other": 2520887.0,
         "Voluntary earmarked": -388499491.0,
@@ -52532,9 +52557,9 @@
     },
     "by_donor": [
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 519387438.4,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 519387438.4,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -52948,9 +52973,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Public Private Partnership",
+        "donor": "Public Private Partnership",
         "total": 21662.6,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 21662.6,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -54138,9 +54163,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 8329633.74,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 8329633.74,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -54172,9 +54197,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - Global vertical funds",
+        "donor": "Multilateral - Global vertical funds",
         "total": 4477538.29,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 4477538.29,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -54189,9 +54214,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 3379062.1499999994,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 3379062.1499999994,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -54206,9 +54231,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Foundations",
+        "donor": "Foundations",
         "total": 2857766.92,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 782295.22,
         "Voluntary un-earmarked": 2075471.7,
         "unresolvedTotal": 0.0,
@@ -54411,9 +54436,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other NGOs",
+        "donor": "NGOs",
         "total": 517859.05,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 517859.05,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -54453,9 +54478,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Academic, Training and Research",
+        "donor": "Academic, Training and Research",
         "total": 390025.53,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 390025.53,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -54552,9 +54577,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 234170.93,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 234170.93,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -55875,9 +55900,9 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other No contributor",
+        "donor": "No contributor",
         "total": 5721556.05,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Other": 5721556.05,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
@@ -55977,17 +56002,17 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Other Other - Other Contributor",
+        "donor": "Other - Other Contributor",
         "total": 3752779.13,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 3752779.13,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
       {
-        "donor": "Other Multilateral - UN organizations excluding pooled funds",
+        "donor": "Multilateral - UN organizations excluding pooled funds",
         "total": 3732714.76,
-        "record_kind": "calculated_balance",
+        "record_kind": "reported_aggregate",
         "Voluntary earmarked": 3732714.76,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
