@@ -104,6 +104,6 @@
       "tooltip": "Voluntary contributions tied to specific purposes or programmes (non-core)"
     },
     { "key": "Other", "label": "Other", "order": 4, "tooltip": "Other revenue" },
-    { "key": "Unresolved", "label": "Other financing instrument", "order": 5, "tooltip": "Revenue that cannot be assigned to one of the four main financing instruments in the contributor data." }
+    { "key": "Unresolved", "label": "Other financing instruments", "order": 5, "tooltip": "Revenue that cannot be assigned to one of the four main financing instruments in the contributor data." }
   ]
 }

@@ -9,7 +9,7 @@ web searches or change application data.
 
 | Investigation | Main finding | Status and next step |
 |---|---|---|
-| [Historical CEB financing codes](ceb-historical-financing-codes.md) | Neither official reports nor numerical reconciliation establish a complete mapping of the 2015–2017 legacy codes to the four main instruments. | The portal uses **Other financing instrument** for contributor amounts without a supported allocation. An authoritative historical schema would be needed to replace it. |
+| [Historical CEB financing codes](ceb-historical-financing-codes.md) | Neither official reports nor numerical reconciliation establish a complete mapping of the 2015–2017 legacy codes to the four main instruments. | The portal uses **Other financing instruments** for contributor amounts without a supported allocation. An authoritative historical schema would be needed to replace it. |
 | [Trust-fund source options](trust-fund-source-options.md) | UN-Habitat, ITC and UNODC expose different levels of accounting detail. Some useful candidate breakdowns exist, but none establishes a complete public individual-fund ledger across all three. | Research candidates only. Obtain the missing fund/grant schedules and reconcile accounting scope before integrating new amounts. |
 | [Entity identity and reporting scope](entity-identity-audit.md) | Several apparent aliases describe successor bodies, changing mandates or different reporting scopes. | Dated audit findings and recommendations, not a record of implemented fixes. Validate each proposed change against its dataset and period. |
 

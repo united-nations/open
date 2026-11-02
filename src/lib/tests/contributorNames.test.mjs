@@ -11,14 +11,14 @@ const {
   availableContributionTypes,
 } = await moduleAt("src/lib/contributors.ts");
 
-test("other financing instrument is a visible fifth series only where present", async () => {
+test("other financing instruments appear as a fifth series only where present", async () => {
   const modern = { contributions: { UNDP: { Other: 10 } } };
   assert.equal(availableContributionTypes([modern]).length, 4);
   const { getFinancingInstrumentLabel, FINANCING_INSTRUMENT_TOOLTIPS } =
     await moduleAt("src/lib/financingInstruments.ts");
   assert.equal(
     getFinancingInstrumentLabel("Unresolved"),
-    "Other financing instrument",
+    "Other financing instruments",
   );
   assert.match(FINANCING_INSTRUMENT_TOOLTIPS.Unresolved, /cannot be assigned/);
   const historical = { contributions: { UNDP: { Unresolved: 217257807 } } };

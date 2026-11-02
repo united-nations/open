@@ -21,7 +21,7 @@ export const FINANCING_INSTRUMENT_LABELS: Record<string, string> = {
   "Voluntary un-earmarked": "Voluntary core (un-earmarked) contributions",
   "Voluntary earmarked": "Voluntary non-core (earmarked) contributions",
   Other: "Revenue from other activities",
-  Unresolved: "Other financing instrument",
+  Unresolved: "Other financing instruments",
 };
 
 export const getFinancingInstrumentLabel = (type: string): string =>

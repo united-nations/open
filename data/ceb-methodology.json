@@ -47,8 +47,8 @@
     },
     {
       "id": "historical-financing",
-      "title": "Other financing instrument",
-      "text": "Some 2015–2017 contributor records use older financing codes that cannot be reliably matched to CEB’s four main financing instruments. We show these amounts in gray as Other financing instrument, with the additional filter appearing only where this category is present.\n\nFor affected organization-years, the remaining Unattributed revenue also appears under Other financing instrument, so the contributor breakdown adds up to the reported revenue total without guessing how to allocate it across financing instruments.\n\nCEB reports the overall revenue split across the four main financing instruments for every available revenue year. The overall financing trend uses these reported totals. A trend filtered to a contributor or contributor group uses the contributor records and can therefore include Other financing instrument."
+      "title": "Other financing instruments",
+      "text": "Some 2015–2017 contributor records use older financing codes that cannot be reliably matched to CEB’s four main financing instruments. We group these amounts in a gray category labelled “Other financing instruments”. Its filter appears only where this category is present.\n\nFor affected organization-years, the remaining revenue recorded as Unattributed also goes into this category. This keeps the contributor breakdown consistent with the reported revenue total without guessing how to allocate it across financing instruments.\n\nCEB reports the overall revenue split across the four main financing instruments for every available revenue year. The overall financing trend uses these reported totals. A trend filtered to a contributor or contributor group uses the contributor records and can therefore include amounts in this additional category."
     },
     {
       "id": "expense-scope",

@@ -27,14 +27,44 @@ function PageMethodologyShell({ children }: { children: React.ReactNode }) {
   );
 }
 
-export function CebMethodology() {
+function CebMethodologyTopic({
+  title,
+  expandable,
+  children,
+}: {
+  title: string;
+  expandable: boolean;
+  children: React.ReactNode;
+}) {
+  if (expandable) {
+    return (
+      <ExpandableCard title={title}>
+        <div className="space-y-4">{children}</div>
+      </ExpandableCard>
+    );
+  }
+  return (
+    <>
+      <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
+      {children}
+    </>
+  );
+}
+
+export function CebMethodology({
+  expandable = false,
+  showCoverage = true,
+}: {
+  expandable?: boolean;
+  showCoverage?: boolean;
+}) {
   const officialNotes: {
     text: string;
     links?: { label: string; url: string }[];
     portalAddition?: string;
   }[] = cebMethodology.officialNotes;
-  return (
-    <div className="space-y-6" data-ceb-methodology>
+  const overview = (
+    <>
       <p>{cebMethodology.introduction}</p>
       {cebMethodology.readingNotes.map((note, index) => (
         <p key={index}>{note}</p>
@@ -51,73 +81,95 @@ export function CebMethodology() {
         </a>
         . Retrieved on {cebSource.retrievedAt}.
       </p>
+    </>
+  );
+  return (
+    <div
+      className={expandable ? "space-y-2" : "space-y-6"}
+      data-ceb-methodology
+    >
+      {expandable ? (
+        <ExpandableCard title="Understanding CEB data">
+          <div className="space-y-4">{overview}</div>
+        </ExpandableCard>
+      ) : (
+        overview
+      )}
       <section aria-label="Notes published by CEB" className="space-y-3">
-        <h3 className="text-lg font-semibold text-gray-900">
-          Notes on CEB Financial Statistics
-        </h3>
-        <p>
-          See the{" "}
-          <a
-            className="underline underline-offset-2"
-            href={cebMethodology.source.url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            CEB Financial Statistics page
-          </a>
-          .
-        </p>
-        <ol className="list-decimal space-y-3 pl-6 marker:font-semibold marker:text-un-blue">
-          {officialNotes.map((note, index) => (
-            <li key={index}>
-              {note.text}
-              {note.links?.map((link) => (
-                <span key={link.url}>
-                  {" "}
-                  <a
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="break-words underline underline-offset-2"
-                  >
-                    {link.label}
-                  </a>
-                </span>
-              ))}
-              {note.portalAddition && <> {note.portalAddition}</>}
-            </li>
-          ))}
-        </ol>
+        <CebMethodologyTopic
+          title="Notes on CEB Financial Statistics"
+          expandable={expandable}
+        >
+          <p>
+            See the{" "}
+            <a
+              className="underline underline-offset-2"
+              href={cebMethodology.source.url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              CEB Financial Statistics page
+            </a>
+            .
+          </p>
+          <ol className="list-decimal space-y-3 pl-6 marker:font-semibold marker:text-un-blue">
+            {officialNotes.map((note, index) => (
+              <li key={index}>
+                {note.text}
+                {note.links?.map((link) => (
+                  <span key={link.url}>
+                    {" "}
+                    <a
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="break-words underline underline-offset-2"
+                    >
+                      {link.label}
+                    </a>
+                  </span>
+                ))}
+                {note.portalAddition && <> {note.portalAddition}</>}
+              </li>
+            ))}
+          </ol>
+        </CebMethodologyTopic>
       </section>
       <section aria-label="Portal data processing" className="space-y-4">
-        <h3 className="text-lg font-semibold text-gray-900">
-          How the portal presents CEB data
-        </h3>
-        {cebMethodology.transformations.map((item) => (
-          <div key={item.id} className="space-y-3">
-            <h4 className="font-semibold text-gray-900">{item.title}</h4>
-            {item.text.split("\n\n").map((paragraph, index) => (
-              <p key={index}>{paragraph}</p>
+        <CebMethodologyTopic
+          title="How the portal presents CEB data"
+          expandable={expandable}
+        >
+          {cebMethodology.transformations.map((item) => (
+            <div key={item.id} className="space-y-3">
+              <h4 className="font-semibold text-gray-900">{item.title}</h4>
+              {item.text.split("\n\n").map((paragraph, index) => (
+                <p key={index}>{paragraph}</p>
+              ))}
+            </div>
+          ))}
+        </CebMethodologyTopic>
+      </section>
+      {showCoverage && (
+        <section aria-label="Current data coverage" className="space-y-3">
+          <CebMethodologyTopic
+            title="Current data coverage"
+            expandable={expandable}
+          >
+            <p>
+              Revenue: {manifest.entityRevenue.min}–{manifest.entityRevenue.max}
+              . Organization expenditure: {manifest.entitySpending.min}–
+              {manifest.entitySpending.max}. Geography:{" "}
+              {manifest.geographicExpenses.min}–
+              {manifest.geographicExpenses.max}. SDG expenditure:{" "}
+              {manifest.sdgExpenses.min}–{manifest.sdgExpenses.max}.
+            </p>
+            {cebMethodology.coverageNotes.map((note, index) => (
+              <p key={index}>{note.text}</p>
             ))}
-          </div>
-        ))}
-      </section>
-      <section aria-label="Current data coverage" className="space-y-3">
-        <h3 className="text-lg font-semibold text-gray-900">
-          Current data coverage
-        </h3>
-        <p>
-          Revenue: {manifest.entityRevenue.min}–{manifest.entityRevenue.max}.
-          Organization expenditure: {manifest.entitySpending.min}–
-          {manifest.entitySpending.max}. Geography:{" "}
-          {manifest.geographicExpenses.min}–{manifest.geographicExpenses.max}.
-          SDG expenditure: {manifest.sdgExpenses.min}–{manifest.sdgExpenses.max}
-          .
-        </p>
-        {cebMethodology.coverageNotes.map((note, index) => (
-          <p key={index}>{note.text}</p>
-        ))}
-      </section>
+          </CebMethodologyTopic>
+        </section>
+      )}
     </div>
   );
 }
@@ -374,42 +426,50 @@ export function SecretariatMethodology() {
 export const SECRETARIAT_METHODOLOGY_PAGES = [
   {
     id: "overview",
+    href: "/secretariat",
     title: "Overview",
     source: "UN Secretariat programme budget and financial statements",
   },
   {
     id: "programme-budget",
+    href: "/secretariat/programme-budget",
     title: "Programme Budget",
     source: "Proposed Programme Budget documents",
   },
   {
     id: "programme-budget-contributors",
+    href: "/secretariat/programme-budget/contributors",
     title: "Programme Budget — Contributors",
     source: "UN assessment circulars and regular-budget honour roll",
   },
   {
     id: "peacekeeping-budget",
+    href: "/secretariat/peacekeeping-budget",
     title: "Peacekeeping Budget",
     source: "Peacekeeping budget and performance reports",
   },
   {
     id: "peacekeeping-contributors",
+    href: "/secretariat/peacekeeping-budget/contributors",
     title: "Peacekeeping Budget — Contributors",
     source: "UN peacekeeping assessment circulars",
   },
   {
     id: "trust-funds",
+    href: "/secretariat/trust-funds",
     title: "Trust Funds",
     source: "UN Secretariat trust-fund schedules and separate entity reports",
   },
   {
     id: "trust-fund-contributors",
+    href: "/secretariat/trust-funds/contributors",
     title: "Trust Funds — Contributors",
     source:
       "UN Secretariat trust-fund schedules and separate contributor reports",
   },
   {
     id: "field-missions",
+    href: "/secretariat/field-missions",
     title: "Field Missions",
     source: "UN Secretariat field-mission data",
   },
@@ -493,12 +553,8 @@ export function SecretariatPageMethodologyContent({
   includeGeneral?: boolean;
   includeChartNotes?: boolean;
 }) {
-  const metadata = SECRETARIAT_METHODOLOGY_PAGES.find(
-    (item) => item.id === page,
-  )!;
   return (
     <div className="space-y-4" data-secretariat-methodology={page}>
-      <p>Source: {metadata.source}</p>
       {includeGeneral && <SecretariatMethodology />}
       <SecretariatPageSourceNotes page={page} />
       {page === "overview" && (

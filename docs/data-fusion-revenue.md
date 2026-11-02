@@ -101,21 +101,21 @@ portal financing types.
 
 The [legacy-code investigation](research/ceb-legacy-revenue-codes/README.md)
 found no authoritative crosswalk for historical R05/R07–R12 contributor codes.
-Their original amounts and codes remain intact and are displayed as a fifth
-**Other financing instrument** financing category in contributor views, using consistent gray.
+Their original amounts and codes remain intact. Contributor views group these
+amounts in a fifth category, **Other financing instruments**, shown in gray.
 Filters and legend entries appear only when the displayed data contains it.
 
 For affected organization-years, the additive contributor ledger comprises
 classified donor amounts, unresolved donor amounts, and a signed Unattributed
-balance also marked Other financing instrument. That balance is organization revenue minus all
-reported contributor amounts. No financing type is guessed for these amounts.
+balance assigned to that category. The balance is organization revenue minus
+all reported contributor amounts. No financing type is guessed for these amounts.
 The entity revenue export's `by_type` comes independently from CEB's main revenue
 file and retains its four reported types; donor rows include the fifth display
 category. Both presentations retain the same organization revenue total. The
 All contributors financing trend uses the four main revenue controls directly;
 filtered contributor/group financing trends use the additive contributor ledger.
 The internal `Unresolved` key remains stable; its user-facing label is
-**Other financing instrument**. Source-code records remain in the exports and
+**Other financing instruments**. Source-code records remain in the exports and
 raw data, but are not displayed in separate explanatory tables.
 
 ## Signed reconciliation

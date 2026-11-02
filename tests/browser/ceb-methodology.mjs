@@ -49,6 +49,20 @@ try {
         );
       }
     }
+    if (route === "/about/") {
+      const sourceNotes = page.getByRole("button", {
+        name: "Notes on CEB Financial Statistics",
+        exact: true,
+      });
+      assert.equal(await sourceNotes.getAttribute("aria-expanded"), "false");
+      await sourceNotes.click();
+      assert.equal(
+        await page
+          .getByRole("heading", { name: "Field Missions", exact: true })
+          .count(),
+        0,
+      );
+    }
     const notes = page.getByRole("region", {
       name: "Notes published by CEB",
       exact: true,
@@ -99,7 +113,7 @@ try {
   assert.equal(await page.locator("[data-unresolved-financing]").count(), 0);
   await page
     .getByRole("dialog")
-    .getByText("Other financing instrument", { exact: true })
+    .getByText("Other financing instruments", { exact: true })
     .first()
     .waitFor();
   assert.doesNotMatch(
@@ -160,7 +174,7 @@ try {
   assert.ok(!(await total2015.innerText()).includes("Unavailable"));
   assert.doesNotMatch(
     await financingTable.innerText(),
-    /Other financing instrument/,
+    /Other financing instruments/,
   );
   assert.equal(await page.locator("[data-unresolved-financing]").count(), 0);
   assert.equal(

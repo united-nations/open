@@ -46,9 +46,10 @@ separate from the source quotation.
   no contributor breakdown for the organization/year, show its reported total
   under the source category name; reserve **Other {category}** for balances
   alongside reported detail.
-- Display unresolved historical contributor amounts in gray under **Other financing instrument**,
-  without guessing a main financing type. In affected organization-years the
-  remaining unattributed balance also has unresolved financing, keeping the
+- Display historical contributor amounts without a supported financing allocation
+  in the gray **Other financing instruments** category, without guessing a main
+  financing type. In affected organization-years, the remaining unattributed
+  balance also has unresolved financing, keeping the
   contributor ledger additive. Reported organization financing totals retain
   CEB's four types. Show the additional filter only where unresolved data exists.
 - Keep system expenses CEB-only; Secretariat and UNINFO remain separately sourced.

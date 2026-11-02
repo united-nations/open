@@ -13,9 +13,9 @@ print these codes or establish their meaning across all records. Numerical
 reconciliation also fails to yield a consistent universal mapping.
 
 The portal therefore retains the reported contributor amounts without guessing
-an instrument. Since commit `f635b96`, they appear in gray as **Other financing
-instrument**. In affected organization-years, the remaining Unattributed balance
-uses that category too, keeping contributor totals additive. Organization-level
+an instrument. They appear in the gray **Other financing instruments** category,
+introduced in commit `f635b96`. In affected organization-years, the remaining
+Unattributed balance uses that category too, keeping contributor totals additive. Organization-level
 financing totals and the overall financing trend retain the four main types
 reported in CEB's main revenue file. Contributor-filtered trends can include the
 additional category. Original source codes remain in the data, without separate
