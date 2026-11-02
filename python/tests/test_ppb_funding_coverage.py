@@ -56,7 +56,7 @@ class PPBFundingCoverageTest(unittest.TestCase):
             self.assertEqual(Decimal(str(node["values"][row["funding_source"]])), Decimal(row["amount_usd"]))
         section = next(n for n in data["nodes"] if n["id"] == "section-1")
         self.assertEqual(section["amount"], 224719800)
-        self.assertEqual(data["meta"]["total"], 12085071200)
+        self.assertEqual(data["meta"]["publishedUsdTotal"], 12085071200)
 
     def test_unreported_section_stream_stays_unavailable(self):
         data = json.loads((ROOT / "public/data/budget-ppb-expenditure-2025.json").read_text())

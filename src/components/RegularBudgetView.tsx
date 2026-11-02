@@ -46,9 +46,6 @@ const METRIC_YEARS: Record<BudgetMetricKey, number[]> = {
   approved: manifest.budgetPpbApproved.years,
   expenditure: manifest.budgetPpb.years,
 };
-const ALL_YEARS = [...new Set(Object.values(METRIC_YEARS).flat())].sort(
-  (a, b) => a - b,
-);
 
 const DATASETS: Record<
   BudgetMetricKey,
@@ -72,7 +69,7 @@ export function RegularBudgetView() {
     "regular_budget",
   ]);
   const [metric, setMetric] = useState<BudgetMetricKey>("expenditure");
-  const [year, setYear] = useState(2025);
+  const [year, setYear] = useState(manifest.budgetPpb.default);
   const [grouping, setGrouping] = useState<PpbGrouping>("section");
   const showContextNote =
     metric === "expenditure" &&
@@ -80,14 +77,7 @@ export function RegularBudgetView() {
 
   const selectYear = (nextYear: number) => {
     setYear(nextYear);
-    const nextMetric = METRIC_YEARS[metric].includes(nextYear)
-      ? metric
-      : METRIC_YEARS.expenditure.includes(nextYear)
-        ? "expenditure"
-        : METRIC_YEARS.approved.includes(nextYear)
-          ? "approved"
-          : "proposed";
-    setMetric(nextMetric);
+    const nextMetric = metric;
     if (nextMetric !== "expenditure") setActive(["regular_budget"]);
     else
       setActive((current) => {
@@ -100,6 +90,16 @@ export function RegularBudgetView() {
 
   const selectMetric = (nextMetric: BudgetMetricKey) => {
     setMetric(nextMetric);
+    const availableYears = METRIC_YEARS[nextMetric];
+    if (!availableYears.includes(year)) {
+      setYear(
+        availableYears.reduce((closest, candidate) =>
+          Math.abs(candidate - year) < Math.abs(closest - year)
+            ? candidate
+            : closest,
+        ),
+      );
+    }
     if (nextMetric !== "expenditure") setActive(["regular_budget"]);
     else
       setActive((current) => {
@@ -118,20 +118,13 @@ export function RegularBudgetView() {
           value={metric}
           onValueChange={(value) => {
             const nextMetric = METRICS.find((item) => item.key === value)?.key;
-            if (nextMetric && METRIC_YEARS[nextMetric].includes(year))
-              selectMetric(nextMetric);
+            if (nextMetric) selectMetric(nextMetric);
           }}
-          options={METRICS.map((item) => {
-            const unavailable = !METRIC_YEARS[item.key].includes(year);
-            return {
-              value: item.key,
-              label: item.label,
-              disabled: unavailable,
-              description: unavailable
-                ? `${item.label} data is not available for ${year} in the current dataset. ${item.description}`
-                : item.description,
-            };
-          })}
+          options={METRICS.map((item) => ({
+            value: item.key,
+            label: item.label,
+            description: item.description,
+          }))}
         />
         <FundingSourcePills
           neutral
@@ -178,7 +171,7 @@ export function RegularBudgetView() {
       <BudgetTreemap
         yearControl={
           <YearSlider
-            years={ALL_YEARS}
+            years={METRIC_YEARS[metric]}
             selectedYear={year}
             onChange={selectYear}
           />

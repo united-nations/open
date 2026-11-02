@@ -30,7 +30,11 @@ import type {
   BudgetNode,
 } from "@/types";
 import { formatBudget } from "@/lib/entities";
-import { budgetFundingEntries } from "@/lib/budgetFunding";
+import {
+  budgetFundingEntries,
+  formatBudgetNode,
+  formatBudgetFunding,
+} from "@/lib/budgetFunding";
 import {
   collectBudgetNodeSources,
   collectBudgetHierarchySources,
@@ -100,6 +104,7 @@ function positiveFundingValues(
 interface MiniBudgetLeafData {
   node?: BudgetNode;
   parentAmount: number;
+  fundingSource?: BudgetFundingSource;
   isGap?: boolean;
 }
 
@@ -122,6 +127,7 @@ function miniFundingSegments(
     label: FUNDING_SOURCES[source]?.label ?? source,
     value,
     color: fundingSources[source].color,
+    valueLabel: formatBudgetFunding(node, source),
     data: source,
   }));
 }
@@ -135,6 +141,7 @@ function miniNodeLeaf(
     key: node.id,
     label: miniLeafLabel(node),
     value: node.amount,
+    valueLabel: formatBudgetNode(node),
     color,
     data: { node, parentAmount },
     segments: miniFundingSegments(node),
@@ -207,10 +214,19 @@ function miniFundingRows(node: BudgetNode, meta: BudgetMeta): MiniBudgetRow[] {
     value,
     color: FUNDING_TREEMAP_COLORS[source],
     textColor: source === "regular_budget" ? undefined : "#1f2937",
-    data: { parentAmount: node.amount },
+    valueLabel: formatBudgetFunding(node, source),
+    data: { node, fundingSource: source, parentAmount: node.amount },
   }));
   return leaves.length > 0
-    ? [{ key: node.id, label: miniLeafLabel(node), data: node, leaves }]
+    ? [
+        {
+          key: node.id,
+          label: miniLeafLabel(node),
+          valueLabel: formatBudgetNode(node),
+          data: node,
+          leaves,
+        },
+      ]
     : [];
 }
 
@@ -314,11 +330,18 @@ function MiniBudgetTooltip({
         .filter((label) => label !== leaf.label)
         .map((label) => ({ label }))}
       context={kind}
-      total={{ label: "Total", value: formatBudget(leaf.value) }}
+      total={{
+        label: "Total",
+        value: node
+          ? leaf.data?.fundingSource
+            ? formatBudgetFunding(node, leaf.data.fundingSource)
+            : formatBudgetNode(node)
+          : formatBudget(leaf.value),
+      }}
       rows={segments.map(([source, amount]) => ({
         label:
           fundingLabels?.[source] ?? FUNDING_SOURCES[source]?.label ?? source,
-        value: formatBudget(amount),
+        value: node ? formatBudgetFunding(node, source) : formatBudget(amount),
         color: FUNDING_TREEMAP_COLORS[source],
         share: leaf.value > 0 && amount >= 0 ? amount / leaf.value : undefined,
       }))}
@@ -488,10 +511,10 @@ function BudgetHierarchy({
           <FinancialTooltip
             title={fullName}
             context={kindLabel}
-            total={{ label: "Total", value: formatBudget(child.amount) }}
+            total={{ label: "Total", value: formatBudgetNode(child) }}
             rows={fundingValues.map(([source, amount]) => ({
               label: FUNDING_SOURCES[source].label,
-              value: formatBudget(amount),
+              value: formatBudgetFunding(child, source),
               color: FUNDING_TREEMAP_COLORS[source],
               share:
                 fundingTotal > 0 && amount >= 0
@@ -515,7 +538,7 @@ function BudgetHierarchy({
             key={child.id}
             label={fullName}
             badge={badge}
-            value={formatBudget(child.amount)}
+            value={formatBudgetNode(child)}
             bar={bar}
             interactiveTooltip
             tooltip={tooltipContent}
@@ -870,7 +893,7 @@ function BudgetDetailSidebar({
                               }
                             >
                               <span tabIndex={0} className="text-gray-900">
-                                {formatBudget(amount)}
+                                {formatBudgetFunding(node, key)}
                               </span>
                             </Tooltip>
                           }
@@ -897,6 +920,21 @@ function BudgetDetailSidebar({
                     <p className="mt-2 text-xs text-gray-500">
                       Some funding-source amounts are unavailable for this item;
                       missing amounts are not zero.
+                    </p>
+                  )}
+                  {node.chf && (
+                    <p className="mt-2 text-xs text-gray-500">
+                      CHF amounts are printed in the PPB. Tile areas use the{" "}
+                      {node.chf.year} time-weighted{" "}
+                      <a
+                        className="text-un-blue underline"
+                        href={node.chf.rateSourceUrl}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        UN Treasury operational rates
+                      </a>{" "}
+                      for comparison on the USD scale.
                     </p>
                   )}
                   <div className="mt-4">

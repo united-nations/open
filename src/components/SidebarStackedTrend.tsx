@@ -29,6 +29,8 @@ export function SidebarStackedTrend({
   showLegend = true,
   allowNegative = false,
   tooltipSources,
+  valueFormatter,
+  currencyLabel,
 }: {
   heading?: string;
   headingClassName?: string;
@@ -36,6 +38,8 @@ export function SidebarStackedTrend({
   series: FinancingSeries[];
   showLegend?: boolean;
   allowNegative?: boolean;
+  valueFormatter?: (value: number) => string;
+  currencyLabel?: string;
   tooltipSources?: (year: string, visibleKeys: string[]) => BudgetNodeSource[];
 }) {
   if (data === null) {
@@ -71,6 +75,8 @@ export function SidebarStackedTrend({
           compact
           allowNegative={allowNegative}
           tooltipSources={tooltipSources}
+          valueFormatter={valueFormatter}
+          currencyLabel={currencyLabel}
           accessibleTableLabel="Funding-source trend"
         />
       </div>

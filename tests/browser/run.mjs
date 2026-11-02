@@ -19,6 +19,7 @@ const checks = [
   "secretariat-sidebar-years",
   "budget-sources",
   "budget-funding",
+  "ppb-ranges-currency",
   "trust-fund-sources",
   "trust-fund-contributor-sources",
   "hydration",

@@ -1,0 +1,835 @@
+{
+  "source": "United Nations Treasury \u2014 Operational Rates of Exchange",
+  "url": "https://treasury.un.org/operationalrates/OperationalRates.php",
+  "historyRequest": {
+    "url": "https://treasury.un.org/operationalrates/xsqlHistory.php",
+    "method": "POST",
+    "parameters": {
+      "INdtmFROM": "",
+      "INstrRATECODE": "CHF"
+    }
+  },
+  "retrievedAt": "2026-10-31T02:18:01.031664+00:00",
+  "responseSha256": "905f37daf85155ea990230cda6c2d37e6ccf550e2e50d7a48cf4df49231bdc1f",
+  "sourceUnits": "CHF per USD",
+  "method": "Calendar-day-weighted mean of USD per CHF (reciprocal of each effective UN operational rate). Visualization only; not a UN-published annual average.",
+  "rates": [
+    {
+      "effectiveDate": "2026-11-01",
+      "chfPerUsd": "0.828"
+    },
+    {
+      "effectiveDate": "2026-10-15",
+      "chfPerUsd": "0.832"
+    },
+    {
+      "effectiveDate": "2026-10-01",
+      "chfPerUsd": "0.834"
+    },
+    {
+      "effectiveDate": "2026-09-15",
+      "chfPerUsd": "0.815"
+    },
+    {
+      "effectiveDate": "2026-09-01",
+      "chfPerUsd": "0.804"
+    },
+    {
+      "effectiveDate": "2026-08-15",
+      "chfPerUsd": "0.812"
+    },
+    {
+      "effectiveDate": "2026-08-01",
+      "chfPerUsd": "0.808"
+    },
+    {
+      "effectiveDate": "2026-07-15",
+      "chfPerUsd": "0.81"
+    },
+    {
+      "effectiveDate": "2026-06-30",
+      "chfPerUsd": "0.807"
+    },
+    {
+      "effectiveDate": "2026-06-15",
+      "chfPerUsd": "0.8"
+    },
+    {
+      "effectiveDate": "2026-06-01",
+      "chfPerUsd": "0.787"
+    },
+    {
+      "effectiveDate": "2026-05-15",
+      "chfPerUsd": "0.782"
+    },
+    {
+      "effectiveDate": "2026-05-01",
+      "chfPerUsd": "0.79"
+    },
+    {
+      "effectiveDate": "2026-04-15",
+      "chfPerUsd": "0.788"
+    },
+    {
+      "effectiveDate": "2026-04-01",
+      "chfPerUsd": "0.801"
+    },
+    {
+      "effectiveDate": "2026-03-15",
+      "chfPerUsd": "0.783"
+    },
+    {
+      "effectiveDate": "2026-03-01",
+      "chfPerUsd": "0.774"
+    },
+    {
+      "effectiveDate": "2026-02-15",
+      "chfPerUsd": "0.768"
+    },
+    {
+      "effectiveDate": "2026-02-01",
+      "chfPerUsd": "0.766"
+    },
+    {
+      "effectiveDate": "2026-01-15",
+      "chfPerUsd": "0.8"
+    },
+    {
+      "effectiveDate": "2025-12-31",
+      "chfPerUsd": "0.789"
+    },
+    {
+      "effectiveDate": "2025-12-15",
+      "chfPerUsd": "0.794"
+    },
+    {
+      "effectiveDate": "2025-12-01",
+      "chfPerUsd": "0.806"
+    },
+    {
+      "effectiveDate": "2025-11-14",
+      "chfPerUsd": "0.799"
+    },
+    {
+      "effectiveDate": "2025-11-01",
+      "chfPerUsd": "0.801"
+    },
+    {
+      "effectiveDate": "2025-10-15",
+      "chfPerUsd": "0.805"
+    },
+    {
+      "effectiveDate": "2025-10-01",
+      "chfPerUsd": "0.797"
+    },
+    {
+      "effectiveDate": "2025-09-15",
+      "chfPerUsd": "0.797"
+    },
+    {
+      "effectiveDate": "2025-09-01",
+      "chfPerUsd": "0.802"
+    },
+    {
+      "effectiveDate": "2025-08-15",
+      "chfPerUsd": "0.805"
+    },
+    {
+      "effectiveDate": "2025-08-01",
+      "chfPerUsd": "0.812"
+    },
+    {
+      "effectiveDate": "2025-07-15",
+      "chfPerUsd": "0.796"
+    },
+    {
+      "effectiveDate": "2025-06-30",
+      "chfPerUsd": "0.799"
+    },
+    {
+      "effectiveDate": "2025-06-13",
+      "chfPerUsd": "0.82"
+    },
+    {
+      "effectiveDate": "2025-06-01",
+      "chfPerUsd": "0.824"
+    },
+    {
+      "effectiveDate": "2025-05-15",
+      "chfPerUsd": "0.841"
+    },
+    {
+      "effectiveDate": "2025-05-01",
+      "chfPerUsd": "0.823"
+    },
+    {
+      "effectiveDate": "2025-04-15",
+      "chfPerUsd": "0.814"
+    },
+    {
+      "effectiveDate": "2025-04-01",
+      "chfPerUsd": "0.883"
+    },
+    {
+      "effectiveDate": "2025-03-14",
+      "chfPerUsd": "0.883"
+    },
+    {
+      "effectiveDate": "2025-03-01",
+      "chfPerUsd": "0.9"
+    },
+    {
+      "effectiveDate": "2025-02-14",
+      "chfPerUsd": "0.915"
+    },
+    {
+      "effectiveDate": "2025-02-01",
+      "chfPerUsd": "0.906"
+    },
+    {
+      "effectiveDate": "2025-01-15",
+      "chfPerUsd": "0.918"
+    },
+    {
+      "effectiveDate": "2024-12-31",
+      "chfPerUsd": "0.901"
+    },
+    {
+      "effectiveDate": "2024-12-13",
+      "chfPerUsd": "0.884"
+    },
+    {
+      "effectiveDate": "2024-12-01",
+      "chfPerUsd": "0.882"
+    },
+    {
+      "effectiveDate": "2024-11-15",
+      "chfPerUsd": "0.883"
+    },
+    {
+      "effectiveDate": "2024-11-01",
+      "chfPerUsd": "0.866"
+    },
+    {
+      "effectiveDate": "2024-10-15",
+      "chfPerUsd": "0.857"
+    },
+    {
+      "effectiveDate": "2024-10-01",
+      "chfPerUsd": "0.841"
+    },
+    {
+      "effectiveDate": "2024-09-13",
+      "chfPerUsd": "0.85"
+    },
+    {
+      "effectiveDate": "2024-09-01",
+      "chfPerUsd": "0.847"
+    },
+    {
+      "effectiveDate": "2024-08-15",
+      "chfPerUsd": "0.866"
+    },
+    {
+      "effectiveDate": "2024-08-01",
+      "chfPerUsd": "0.885"
+    },
+    {
+      "effectiveDate": "2024-07-15",
+      "chfPerUsd": "0.892"
+    },
+    {
+      "effectiveDate": "2024-06-30",
+      "chfPerUsd": "0.897"
+    },
+    {
+      "effectiveDate": "2024-06-14",
+      "chfPerUsd": "0.891"
+    },
+    {
+      "effectiveDate": "2024-06-01",
+      "chfPerUsd": "0.904"
+    },
+    {
+      "effectiveDate": "2024-05-15",
+      "chfPerUsd": "0.905"
+    },
+    {
+      "effectiveDate": "2024-05-01",
+      "chfPerUsd": "0.913"
+    },
+    {
+      "effectiveDate": "2024-04-15",
+      "chfPerUsd": "0.911"
+    },
+    {
+      "effectiveDate": "2024-04-01",
+      "chfPerUsd": "0.906"
+    },
+    {
+      "effectiveDate": "2024-03-15",
+      "chfPerUsd": "0.877"
+    },
+    {
+      "effectiveDate": "2024-03-01",
+      "chfPerUsd": "0.88"
+    },
+    {
+      "effectiveDate": "2024-02-15",
+      "chfPerUsd": "0.885"
+    },
+    {
+      "effectiveDate": "2024-02-01",
+      "chfPerUsd": "0.861"
+    },
+    {
+      "effectiveDate": "2024-01-15",
+      "chfPerUsd": "0.853"
+    },
+    {
+      "effectiveDate": "2023-12-31",
+      "chfPerUsd": "0.835"
+    },
+    {
+      "effectiveDate": "2023-12-15",
+      "chfPerUsd": "0.877"
+    },
+    {
+      "effectiveDate": "2023-12-01",
+      "chfPerUsd": "0.876"
+    },
+    {
+      "effectiveDate": "2023-11-15",
+      "chfPerUsd": "0.904"
+    },
+    {
+      "effectiveDate": "2023-11-01",
+      "chfPerUsd": "0.902"
+    },
+    {
+      "effectiveDate": "2023-10-13",
+      "chfPerUsd": "0.901"
+    },
+    {
+      "effectiveDate": "2023-10-01",
+      "chfPerUsd": "0.917"
+    },
+    {
+      "effectiveDate": "2023-09-15",
+      "chfPerUsd": "0.893"
+    },
+    {
+      "effectiveDate": "2023-09-01",
+      "chfPerUsd": "0.875"
+    },
+    {
+      "effectiveDate": "2023-08-15",
+      "chfPerUsd": "0.878"
+    },
+    {
+      "effectiveDate": "2023-08-01",
+      "chfPerUsd": "0.869"
+    },
+    {
+      "effectiveDate": "2023-07-14",
+      "chfPerUsd": "0.87"
+    },
+    {
+      "effectiveDate": "2023-06-30",
+      "chfPerUsd": "0.895"
+    },
+    {
+      "effectiveDate": "2023-06-15",
+      "chfPerUsd": "0.907"
+    },
+    {
+      "effectiveDate": "2023-06-01",
+      "chfPerUsd": "0.904"
+    },
+    {
+      "effectiveDate": "2023-05-15",
+      "chfPerUsd": "0.895"
+    },
+    {
+      "effectiveDate": "2023-05-01",
+      "chfPerUsd": "0.896"
+    },
+    {
+      "effectiveDate": "2023-04-14",
+      "chfPerUsd": "0.897"
+    },
+    {
+      "effectiveDate": "2023-04-01",
+      "chfPerUsd": "0.914"
+    },
+    {
+      "effectiveDate": "2023-03-15",
+      "chfPerUsd": "0.909"
+    },
+    {
+      "effectiveDate": "2023-03-01",
+      "chfPerUsd": "0.936"
+    },
+    {
+      "effectiveDate": "2023-02-15",
+      "chfPerUsd": "0.921"
+    },
+    {
+      "effectiveDate": "2023-02-01",
+      "chfPerUsd": "0.923"
+    },
+    {
+      "effectiveDate": "2023-01-13",
+      "chfPerUsd": "0.929"
+    },
+    {
+      "effectiveDate": "2022-12-31",
+      "chfPerUsd": "0.923"
+    },
+    {
+      "effectiveDate": "2022-12-15",
+      "chfPerUsd": "0.924"
+    },
+    {
+      "effectiveDate": "2022-12-01",
+      "chfPerUsd": "0.953"
+    },
+    {
+      "effectiveDate": "2022-11-15",
+      "chfPerUsd": "0.95"
+    },
+    {
+      "effectiveDate": "2022-11-01",
+      "chfPerUsd": "0.995"
+    },
+    {
+      "effectiveDate": "2022-10-14",
+      "chfPerUsd": "0.997"
+    },
+    {
+      "effectiveDate": "2022-10-01",
+      "chfPerUsd": "0.981"
+    },
+    {
+      "effectiveDate": "2022-09-15",
+      "chfPerUsd": "0.96"
+    },
+    {
+      "effectiveDate": "2022-09-01",
+      "chfPerUsd": "0.972"
+    },
+    {
+      "effectiveDate": "2022-08-15",
+      "chfPerUsd": "0.938"
+    },
+    {
+      "effectiveDate": "2022-08-01",
+      "chfPerUsd": "0.958"
+    },
+    {
+      "effectiveDate": "2022-07-15",
+      "chfPerUsd": "0.981"
+    },
+    {
+      "effectiveDate": "2022-06-30",
+      "chfPerUsd": "0.958"
+    },
+    {
+      "effectiveDate": "2022-06-15",
+      "chfPerUsd": "0.994"
+    },
+    {
+      "effectiveDate": "2022-06-01",
+      "chfPerUsd": "0.956"
+    },
+    {
+      "effectiveDate": "2022-05-13",
+      "chfPerUsd": "0.989"
+    },
+    {
+      "effectiveDate": "2022-05-01",
+      "chfPerUsd": "0.973"
+    },
+    {
+      "effectiveDate": "2022-04-14",
+      "chfPerUsd": "0.931"
+    },
+    {
+      "effectiveDate": "2022-04-01",
+      "chfPerUsd": "0.924"
+    },
+    {
+      "effectiveDate": "2022-03-15",
+      "chfPerUsd": "0.932"
+    },
+    {
+      "effectiveDate": "2022-03-01",
+      "chfPerUsd": "0.928"
+    },
+    {
+      "effectiveDate": "2022-02-15",
+      "chfPerUsd": "0.926"
+    },
+    {
+      "effectiveDate": "2022-02-01",
+      "chfPerUsd": "0.931"
+    },
+    {
+      "effectiveDate": "2022-01-14",
+      "chfPerUsd": "0.918"
+    },
+    {
+      "effectiveDate": "2021-12-31",
+      "chfPerUsd": "0.915"
+    },
+    {
+      "effectiveDate": "2021-12-01",
+      "chfPerUsd": "0.925"
+    },
+    {
+      "effectiveDate": "2021-11-15",
+      "chfPerUsd": "0.922"
+    },
+    {
+      "effectiveDate": "2021-11-01",
+      "chfPerUsd": "0.915"
+    },
+    {
+      "effectiveDate": "2021-10-01",
+      "chfPerUsd": "0.931"
+    },
+    {
+      "effectiveDate": "2021-09-15",
+      "chfPerUsd": "0.921"
+    },
+    {
+      "effectiveDate": "2021-09-01",
+      "chfPerUsd": "0.917"
+    },
+    {
+      "effectiveDate": "2021-08-01",
+      "chfPerUsd": "0.907"
+    },
+    {
+      "effectiveDate": "2021-06-30",
+      "chfPerUsd": "0.919"
+    },
+    {
+      "effectiveDate": "2021-06-01",
+      "chfPerUsd": "0.899"
+    },
+    {
+      "effectiveDate": "2021-05-01",
+      "chfPerUsd": "0.911"
+    },
+    {
+      "effectiveDate": "2021-04-01",
+      "chfPerUsd": "0.943"
+    },
+    {
+      "effectiveDate": "2021-03-15",
+      "chfPerUsd": "0.926"
+    },
+    {
+      "effectiveDate": "2021-03-01",
+      "chfPerUsd": "0.904"
+    },
+    {
+      "effectiveDate": "2021-02-15",
+      "chfPerUsd": "0.89"
+    },
+    {
+      "effectiveDate": "2021-02-01",
+      "chfPerUsd": "0.888"
+    },
+    {
+      "effectiveDate": "2021-01-15",
+      "chfPerUsd": "0.888"
+    },
+    {
+      "effectiveDate": "2020-12-31",
+      "chfPerUsd": "0.883"
+    },
+    {
+      "effectiveDate": "2020-12-01",
+      "chfPerUsd": "0.906"
+    },
+    {
+      "effectiveDate": "2020-11-13",
+      "chfPerUsd": "0.919"
+    },
+    {
+      "effectiveDate": "2020-11-01",
+      "chfPerUsd": "0.914"
+    },
+    {
+      "effectiveDate": "2020-10-01",
+      "chfPerUsd": "0.92"
+    },
+    {
+      "effectiveDate": "2020-09-15",
+      "chfPerUsd": "0.91"
+    },
+    {
+      "effectiveDate": "2020-09-01",
+      "chfPerUsd": "0.906"
+    },
+    {
+      "effectiveDate": "2020-08-14",
+      "chfPerUsd": "0.911"
+    },
+    {
+      "effectiveDate": "2020-08-01",
+      "chfPerUsd": "0.916"
+    },
+    {
+      "effectiveDate": "2020-07-15",
+      "chfPerUsd": "0.941"
+    },
+    {
+      "effectiveDate": "2020-06-30",
+      "chfPerUsd": "0.949"
+    },
+    {
+      "effectiveDate": "2020-06-15",
+      "chfPerUsd": "0.941"
+    },
+    {
+      "effectiveDate": "2020-06-01",
+      "chfPerUsd": "0.968"
+    },
+    {
+      "effectiveDate": "2020-05-01",
+      "chfPerUsd": "0.973"
+    },
+    {
+      "effectiveDate": "2020-04-15",
+      "chfPerUsd": "0.967"
+    },
+    {
+      "effectiveDate": "2020-04-01",
+      "chfPerUsd": "0.957"
+    },
+    {
+      "effectiveDate": "2020-03-13",
+      "chfPerUsd": "0.936"
+    },
+    {
+      "effectiveDate": "2020-03-01",
+      "chfPerUsd": "0.969"
+    },
+    {
+      "effectiveDate": "2020-02-01",
+      "chfPerUsd": "0.97"
+    },
+    {
+      "effectiveDate": "2019-12-31",
+      "chfPerUsd": "0.975"
+    },
+    {
+      "effectiveDate": "2019-12-01",
+      "chfPerUsd": "0.999"
+    },
+    {
+      "effectiveDate": "2019-11-01",
+      "chfPerUsd": "0.992"
+    },
+    {
+      "effectiveDate": "2019-10-01",
+      "chfPerUsd": "0.992"
+    },
+    {
+      "effectiveDate": "2019-09-13",
+      "chfPerUsd": "0.994"
+    },
+    {
+      "effectiveDate": "2019-09-01",
+      "chfPerUsd": "0.984"
+    },
+    {
+      "effectiveDate": "2019-08-15",
+      "chfPerUsd": "0.972"
+    },
+    {
+      "effectiveDate": "2019-08-01",
+      "chfPerUsd": "0.992"
+    },
+    {
+      "effectiveDate": "2019-06-30",
+      "chfPerUsd": "0.977"
+    },
+    {
+      "effectiveDate": "2019-06-01",
+      "chfPerUsd": "1.009"
+    },
+    {
+      "effectiveDate": "2019-05-01",
+      "chfPerUsd": "1.021"
+    },
+    {
+      "effectiveDate": "2019-04-15",
+      "chfPerUsd": "1.003"
+    },
+    {
+      "effectiveDate": "2019-04-01",
+      "chfPerUsd": "0.997"
+    },
+    {
+      "effectiveDate": "2019-03-01",
+      "chfPerUsd": "0.999"
+    },
+    {
+      "effectiveDate": "2019-02-01",
+      "chfPerUsd": "0.998"
+    },
+    {
+      "effectiveDate": "2019-01-15",
+      "chfPerUsd": "0.983"
+    },
+    {
+      "effectiveDate": "2018-12-31",
+      "chfPerUsd": "0.987"
+    },
+    {
+      "effectiveDate": "2018-12-01",
+      "chfPerUsd": "0.996"
+    },
+    {
+      "effectiveDate": "2018-11-01",
+      "chfPerUsd": "1.003"
+    },
+    {
+      "effectiveDate": "2018-10-15",
+      "chfPerUsd": "0.989"
+    },
+    {
+      "effectiveDate": "2018-10-01",
+      "chfPerUsd": "0.974"
+    },
+    {
+      "effectiveDate": "2018-09-01",
+      "chfPerUsd": "0.971"
+    },
+    {
+      "effectiveDate": "2018-08-15",
+      "chfPerUsd": "0.994"
+    },
+    {
+      "effectiveDate": "2018-08-01",
+      "chfPerUsd": "0.991"
+    },
+    {
+      "effectiveDate": "2018-06-30",
+      "chfPerUsd": "0.997"
+    },
+    {
+      "effectiveDate": "2018-06-14",
+      "chfPerUsd": "0.985"
+    },
+    {
+      "effectiveDate": "2018-06-01",
+      "chfPerUsd": "0.988"
+    },
+    {
+      "effectiveDate": "2018-05-01",
+      "chfPerUsd": "0.99"
+    },
+    {
+      "effectiveDate": "2018-04-01",
+      "chfPerUsd": "0.955"
+    },
+    {
+      "effectiveDate": "2018-03-01",
+      "chfPerUsd": "0.939"
+    },
+    {
+      "effectiveDate": "2018-02-01",
+      "chfPerUsd": "0.933"
+    },
+    {
+      "effectiveDate": "2017-12-31",
+      "chfPerUsd": "0.978"
+    },
+    {
+      "effectiveDate": "2017-12-01",
+      "chfPerUsd": "0.984"
+    },
+    {
+      "effectiveDate": "2017-11-01",
+      "chfPerUsd": "0.999"
+    },
+    {
+      "effectiveDate": "2017-10-01",
+      "chfPerUsd": "0.972"
+    },
+    {
+      "effectiveDate": "2017-09-01",
+      "chfPerUsd": "0.946"
+    },
+    {
+      "effectiveDate": "2017-08-15",
+      "chfPerUsd": "0.962"
+    },
+    {
+      "effectiveDate": "2017-08-01",
+      "chfPerUsd": "0.968"
+    },
+    {
+      "effectiveDate": "2017-06-30",
+      "chfPerUsd": "0.959"
+    },
+    {
+      "effectiveDate": "2017-06-01",
+      "chfPerUsd": "0.974"
+    },
+    {
+      "effectiveDate": "2017-05-01",
+      "chfPerUsd": "0.996"
+    },
+    {
+      "effectiveDate": "2017-04-13",
+      "chfPerUsd": "1.007"
+    },
+    {
+      "effectiveDate": "2017-04-01",
+      "chfPerUsd": "0.996"
+    },
+    {
+      "effectiveDate": "2017-03-15",
+      "chfPerUsd": "1.007"
+    },
+    {
+      "effectiveDate": "2017-03-01",
+      "chfPerUsd": "1.006"
+    },
+    {
+      "effectiveDate": "2017-02-01",
+      "chfPerUsd": "0.999"
+    },
+    {
+      "effectiveDate": "2016-12-31",
+      "chfPerUsd": "1.025"
+    },
+    {
+      "effectiveDate": "2016-12-01",
+      "chfPerUsd": "1.014"
+    },
+    {
+      "effectiveDate": "2016-11-15",
+      "chfPerUsd": "0.986"
+    },
+    {
+      "effectiveDate": "2016-11-01",
+      "chfPerUsd": "0.993"
+    }
+  ],
+  "annualUsdPerChf": {
+    "2019": "1.005125611687229165377897018",
+    "2020": "1.063735977241998753602321046",
+    "2021": "1.094674406157654183554109588",
+    "2022": "1.049340860772623204470707798",
+    "2023": "1.111889916627200482300111587",
+    "2024": "1.139597201110530139875608312",
+    "2025": "1.201805856839721201154220340"
+  }
+}

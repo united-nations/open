@@ -250,7 +250,6 @@
   },
   "budgetPpb": {
     "years": [
-      2018,
       2019,
       2020,
       2021,
@@ -260,6 +259,9 @@
       2025
     ],
     "default": 2025,
+    "earlierPartialYears": [
+      2018
+    ],
     "fundingSourcesByYear": {
       "2018": [
         "regular_budget"
@@ -300,12 +302,11 @@
         "extrabudgetary"
       ]
     },
-    "min": 2018,
+    "min": 2019,
     "max": 2025
   },
   "budgetPpbApproved": {
     "years": [
-      2019,
       2020,
       2021,
       2022,
@@ -315,12 +316,14 @@
       2026
     ],
     "default": 2026,
-    "min": 2019,
+    "earlierPartialYears": [
+      2019
+    ],
+    "min": 2020,
     "max": 2026
   },
   "budgetPpbProposed": {
     "years": [
-      2020,
       2021,
       2022,
       2023,
@@ -330,7 +333,10 @@
       2027
     ],
     "default": 2027,
-    "min": 2020,
+    "earlierPartialYears": [
+      2020
+    ],
+    "min": 2021,
     "max": 2027
   },
   "uninfoCountries": {

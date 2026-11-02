@@ -8,14 +8,14 @@
     "year": 2020,
     "fiscalYear": "2020",
     "currency": "USD",
-    "total": 11466043100,
+    "total": 11557656510.05,
     "metrics": {
       "expenditure": {
         "label": "Expenditure",
         "yearOffset": -2,
         "description": "Actual expenditure reported in this budget edition.",
         "dataYear": 2020,
-        "total": 11466043100,
+        "total": 11557656510.05,
         "sourceEdition": 2022,
         "sourceDocument": "A/76/6"
       }
@@ -85,7 +85,10 @@
     "sourceNote": "2020 expenditure, reported in PPB 2022 (A/76/6), published in 2021. Regular budget is shown by default; other assessed and extrabudgetary expenditure can be added. OA/XB estimates are not used for the proposed or approved categories.",
     "sourceEdition": 2022,
     "sourcePublicationYear": 2021,
-    "sourceDocument": "A/76/6"
+    "sourceDocument": "A/76/6",
+    "publishedUsdTotal": 11466043100,
+    "publishedChfTotal": 86124200,
+    "currencyNote": "Amounts are displayed in their printed currencies. CHF tile areas and shares use calendar-day-weighted UN Treasury operational rates for the expenditure year, solely for comparison on the USD area scale. These conversions are not PPB-reported USD expenditure."
   },
   "nodes": [
     {
@@ -95,19 +98,19 @@
       "kind": "whole",
       "code": null,
       "label": "Programme budget",
-      "amount": 11466043100,
-      "basis": "derived_available_funding_sum",
+      "amount": 11557656510.05,
+      "basis": "visualization_weight_with_chf_conversion",
       "values": {
         "regular_budget": 3007508300,
         "other_assessed": 408548200,
-        "extrabudgetary": 8049986600
+        "extrabudgetary": 8141600010.05
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
           "regular_budget": 3007508300,
           "other_assessed": 408548200,
-          "extrabudgetary": 8049986600
+          "extrabudgetary": 8141600010.05
         }
       },
       "metricSources": {
@@ -1688,11 +1691,23 @@
               "columnHeader": "2020 expenditure",
               "tableTitle": "(2) Extrabudgetary",
               "label": "extrabudgetary \u2014 supporting row for calculated total"
+            },
+            {
+              "symbol": "A/76/6 (Sect. 13)",
+              "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=17",
+              "pdfPage": 17,
+              "pageStatus": "located",
+              "pdfPageScope": "row",
+              "pageLocatedBy": "financial_row_unique",
+              "rowLabel": "Subtotal, 2",
+              "columnHeader": "2020 expenditure",
+              "tableTitle": "(2) Extrabudgetary",
+              "label": "Extrabudgetary \u2014 printed in CHF"
             }
           ]
         }
       },
-      "fundingBreakdownTotal": 11466043100,
+      "fundingBreakdownTotal": 11557656510.05,
       "breakdowns": {
         "regular_budget": {
           "childAmount": 3007508300,
@@ -1707,7 +1722,7 @@
           "completeness": "incomplete"
         },
         "extrabudgetary": {
-          "childAmount": 8049986600,
+          "childAmount": 8141600010.05,
           "difference": 0,
           "outcome": "exact",
           "completeness": "incomplete"
@@ -1719,7 +1734,7 @@
           "completeness": "not_published"
         },
         "selected_funding_sources": {
-          "childAmount": 11466043100,
+          "childAmount": 11557656510.05,
           "difference": 0,
           "outcome": "exact",
           "completeness": "incomplete"
@@ -1762,8 +1777,30 @@
       },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
-        "expenditure": 11466043100
-      }
+        "expenditure": 11557656510.05
+      },
+      "chf": {
+        "amount": 86124200,
+        "usdForLayout": 91613410.05,
+        "usdPerChf": "1.063735977241998753602321046",
+        "rateSourceUrl": "https://treasury.un.org/operationalrates/OperationalRates.php",
+        "rateMethod": "Calendar-day-weighted mean of USD per CHF (reciprocal of each effective UN operational rate). Visualization only; not a UN-published annual average.",
+        "year": 2020,
+        "sourceCell": "ppb2022:A_76_6 (SECT. 13)|word/document.xml|t0009|r0004|c0001",
+        "source": {
+          "symbol": "A/76/6 (Sect. 13)",
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=17",
+          "pdfPage": 17,
+          "pageStatus": "located",
+          "pdfPageScope": "row",
+          "pageLocatedBy": "financial_row_unique",
+          "rowLabel": "Subtotal, 2",
+          "columnHeader": "2020 expenditure",
+          "tableTitle": "(2) Extrabudgetary",
+          "label": "Extrabudgetary \u2014 printed in CHF"
+        }
+      },
+      "publishedUsdAmount": 11466043100
     },
     {
       "id": "part-XII",
@@ -28173,17 +28210,17 @@
       "kind": "part",
       "code": "IV",
       "label": "International cooperation for development",
-      "amount": 1655856000,
-      "basis": "derived_available_funding_sum",
+      "amount": 1747469410.05,
+      "basis": "visualization_weight_with_chf_conversion",
       "values": {
         "regular_budget": 247138500,
-        "extrabudgetary": 1408717500
+        "extrabudgetary": 1500330910.05
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
           "regular_budget": 247138500,
-          "extrabudgetary": 1408717500
+          "extrabudgetary": 1500330910.05
         }
       },
       "metricSources": {
@@ -28394,11 +28431,23 @@
               "columnHeader": "2020 expenditure",
               "tableTitle": "(2) Extrabudgetary",
               "label": "extrabudgetary \u2014 supporting row for calculated total"
+            },
+            {
+              "symbol": "A/76/6 (Sect. 13)",
+              "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=17",
+              "pdfPage": 17,
+              "pageStatus": "located",
+              "pdfPageScope": "row",
+              "pageLocatedBy": "financial_row_unique",
+              "rowLabel": "Subtotal, 2",
+              "columnHeader": "2020 expenditure",
+              "tableTitle": "(2) Extrabudgetary",
+              "label": "Extrabudgetary \u2014 printed in CHF"
             }
           ]
         }
       },
-      "fundingBreakdownTotal": 1655856000,
+      "fundingBreakdownTotal": 1747469410.05,
       "breakdowns": {
         "regular_budget": {
           "childAmount": 247138500,
@@ -28413,7 +28462,7 @@
           "completeness": "not_published"
         },
         "extrabudgetary": {
-          "childAmount": 1408717500,
+          "childAmount": 1500330910.05,
           "difference": 0,
           "outcome": "exact",
           "completeness": "incomplete"
@@ -28425,7 +28474,7 @@
           "completeness": "not_published"
         },
         "selected_funding_sources": {
-          "childAmount": 1655856000,
+          "childAmount": 1747469410.05,
           "difference": 0,
           "outcome": "exact",
           "completeness": "incomplete"
@@ -28457,8 +28506,30 @@
       },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
-        "expenditure": 1655856000
-      }
+        "expenditure": 1747469410.05
+      },
+      "chf": {
+        "amount": 86124200,
+        "usdForLayout": 91613410.05,
+        "usdPerChf": "1.063735977241998753602321046",
+        "rateSourceUrl": "https://treasury.un.org/operationalrates/OperationalRates.php",
+        "rateMethod": "Calendar-day-weighted mean of USD per CHF (reciprocal of each effective UN operational rate). Visualization only; not a UN-published annual average.",
+        "year": 2020,
+        "sourceCell": "ppb2022:A_76_6 (SECT. 13)|word/document.xml|t0009|r0004|c0001",
+        "source": {
+          "symbol": "A/76/6 (Sect. 13)",
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=17",
+          "pdfPage": 17,
+          "pageStatus": "located",
+          "pdfPageScope": "row",
+          "pageLocatedBy": "financial_row_unique",
+          "rowLabel": "Subtotal, 2",
+          "columnHeader": "2020 expenditure",
+          "tableTitle": "(2) Extrabudgetary",
+          "label": "Extrabudgetary \u2014 printed in CHF"
+        }
+      },
+      "publishedUsdAmount": 1655856000
     },
     {
       "id": "section-9",
@@ -33219,15 +33290,17 @@
       "kind": "section",
       "code": "13",
       "label": "International Trade Centre",
-      "amount": 18861800,
-      "basis": "derived_available_funding_sum",
+      "amount": 110475210.05,
+      "basis": "visualization_weight_with_chf_conversion",
       "values": {
-        "regular_budget": 18861800
+        "regular_budget": 18861800,
+        "extrabudgetary": 91613410.05
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 18861800
+          "regular_budget": 18861800,
+          "extrabudgetary": 91613410.05
         }
       },
       "metricSources": {
@@ -33245,10 +33318,24 @@
               "tableTitle": "Overall: evolution of financial resources by object of expenditure",
               "label": "regular budget"
             }
+          ],
+          "extrabudgetary": [
+            {
+              "symbol": "A/76/6 (Sect. 13)",
+              "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=17",
+              "pdfPage": 17,
+              "pageStatus": "located",
+              "pdfPageScope": "row",
+              "pageLocatedBy": "financial_row_unique",
+              "rowLabel": "Subtotal, 2",
+              "columnHeader": "2020 expenditure",
+              "tableTitle": "(2) Extrabudgetary",
+              "label": "Extrabudgetary \u2014 printed in CHF"
+            }
           ]
         }
       },
-      "fundingBreakdownTotal": 18861800,
+      "fundingBreakdownTotal": 110475210.05,
       "breakdowns": {
         "regular_budget": {
           "childAmount": 18861800,
@@ -33263,10 +33350,10 @@
           "completeness": "not_published"
         },
         "extrabudgetary": {
-          "childAmount": null,
-          "difference": null,
-          "outcome": "not_testable",
-          "completeness": "not_published"
+          "childAmount": 91613410.05,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
         },
         "total_all_sources": {
           "childAmount": null,
@@ -33275,7 +33362,7 @@
           "completeness": "not_published"
         },
         "selected_funding_sources": {
-          "childAmount": 18861800,
+          "childAmount": 110475210.05,
           "difference": 0,
           "outcome": "exact",
           "completeness": "incomplete"
@@ -33292,6 +33379,18 @@
           "rowLabel": "Total",
           "columnHeader": "2020 expenditurea",
           "tableTitle": "Overall: evolution of financial resources by object of expenditure"
+        },
+        "extrabudgetary": {
+          "symbol": "A/76/6 (Sect. 13)",
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=17",
+          "pdfPage": 17,
+          "pageStatus": "located",
+          "pdfPageScope": "row",
+          "pageLocatedBy": "financial_row_unique",
+          "rowLabel": "Subtotal, 2",
+          "columnHeader": "2020 expenditure",
+          "tableTitle": "(2) Extrabudgetary",
+          "label": "Extrabudgetary \u2014 printed in CHF"
         }
       },
       "entityStatus": "single_owner",
@@ -33305,8 +33404,30 @@
       },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
-        "expenditure": 18861800
-      }
+        "expenditure": 110475210.05
+      },
+      "chf": {
+        "amount": 86124200,
+        "usdForLayout": 91613410.05,
+        "usdPerChf": "1.063735977241998753602321046",
+        "rateSourceUrl": "https://treasury.un.org/operationalrates/OperationalRates.php",
+        "rateMethod": "Calendar-day-weighted mean of USD per CHF (reciprocal of each effective UN operational rate). Visualization only; not a UN-published annual average.",
+        "year": 2020,
+        "sourceCell": "ppb2022:A_76_6 (SECT. 13)|word/document.xml|t0009|r0004|c0001",
+        "source": {
+          "symbol": "A/76/6 (Sect. 13)",
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=17",
+          "pdfPage": 17,
+          "pageStatus": "located",
+          "pdfPageScope": "row",
+          "pageLocatedBy": "financial_row_unique",
+          "rowLabel": "Subtotal, 2",
+          "columnHeader": "2020 expenditure",
+          "tableTitle": "(2) Extrabudgetary",
+          "label": "Extrabudgetary \u2014 printed in CHF"
+        }
+      },
+      "publishedUsdAmount": 18861800
     },
     {
       "id": "section-13~international-trade-centre",
@@ -33315,15 +33436,17 @@
       "kind": "entity",
       "code": null,
       "label": "International Trade Centre",
-      "amount": 18861800,
-      "basis": "derived_available_funding_sum",
+      "amount": 110475210.05,
+      "basis": "visualization_weight_with_chf_conversion",
       "values": {
-        "regular_budget": 18861800
+        "regular_budget": 18861800,
+        "extrabudgetary": 91613410.05
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 18861800
+          "regular_budget": 18861800,
+          "extrabudgetary": 91613410.05
         }
       },
       "metricSources": {
@@ -33341,10 +33464,24 @@
               "tableTitle": "Overall: evolution of financial resources by object of expenditure",
               "label": "regular budget"
             }
+          ],
+          "extrabudgetary": [
+            {
+              "symbol": "A/76/6 (Sect. 13)",
+              "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=17",
+              "pdfPage": 17,
+              "pageStatus": "located",
+              "pdfPageScope": "row",
+              "pageLocatedBy": "financial_row_unique",
+              "rowLabel": "Subtotal, 2",
+              "columnHeader": "2020 expenditure",
+              "tableTitle": "(2) Extrabudgetary",
+              "label": "Extrabudgetary \u2014 printed in CHF"
+            }
           ]
         }
       },
-      "fundingBreakdownTotal": 18861800,
+      "fundingBreakdownTotal": 110475210.05,
       "breakdowns": {
         "regular_budget": {
           "childAmount": null,
@@ -33382,6 +33519,18 @@
           "rowLabel": "Total",
           "columnHeader": "2020 expenditurea",
           "tableTitle": "Overall: evolution of financial resources by object of expenditure"
+        },
+        "extrabudgetary": {
+          "symbol": "A/76/6 (Sect. 13)",
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=17",
+          "pdfPage": 17,
+          "pageStatus": "located",
+          "pdfPageScope": "row",
+          "pageLocatedBy": "financial_row_unique",
+          "rowLabel": "Subtotal, 2",
+          "columnHeader": "2020 expenditure",
+          "tableTitle": "(2) Extrabudgetary",
+          "label": "Extrabudgetary \u2014 printed in CHF"
         }
       },
       "unitType": "entity",
@@ -33395,8 +33544,30 @@
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
-        "expenditure": 18861800
-      }
+        "expenditure": 110475210.05
+      },
+      "chf": {
+        "amount": 86124200,
+        "usdForLayout": 91613410.05,
+        "usdPerChf": "1.063735977241998753602321046",
+        "rateSourceUrl": "https://treasury.un.org/operationalrates/OperationalRates.php",
+        "rateMethod": "Calendar-day-weighted mean of USD per CHF (reciprocal of each effective UN operational rate). Visualization only; not a UN-published annual average.",
+        "year": 2020,
+        "sourceCell": "ppb2022:A_76_6 (SECT. 13)|word/document.xml|t0009|r0004|c0001",
+        "source": {
+          "symbol": "A/76/6 (Sect. 13)",
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F76%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=17",
+          "pdfPage": 17,
+          "pageStatus": "located",
+          "pdfPageScope": "row",
+          "pageLocatedBy": "financial_row_unique",
+          "rowLabel": "Subtotal, 2",
+          "columnHeader": "2020 expenditure",
+          "tableTitle": "(2) Extrabudgetary",
+          "label": "Extrabudgetary \u2014 printed in CHF"
+        }
+      },
+      "publishedUsdAmount": 18861800
     },
     {
       "id": "section-14",

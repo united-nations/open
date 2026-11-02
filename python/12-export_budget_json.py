@@ -92,6 +92,7 @@ from pathlib import Path
 from domain_taxonomies import load_secretariat_taxonomies
 from budget_source_exceptions import correct_ola_year, apply_annual_exceptions
 from ppb_funding_coverage import validate_section1_funding
+from ppb_chf_layout import add_chf_layout
 
 SRC = Path("data/references/programme-budget-data-financial-v1.8")
 OUT = Path("public/data")
@@ -1441,6 +1442,8 @@ def export() -> None:
         for metric in ("proposed", "approved", "expenditure"):
             annual = annual_metric_payload(payload, metric)
             apply_annual_exceptions(annual, metric)
+            if edition >= 2021:
+                add_chf_layout(annual, financial, citation_source)
             year = annual["meta"]["year"]
             if metric == "expenditure" and year < 2018:
                 continue

@@ -92,6 +92,7 @@ interface FinancingInstrumentChartProps {
   valueFormatter?: (value: number) => string;
   tooltipSources?: (year: string, visibleKeys: string[]) => BudgetNodeSource[];
   accessibleTableLabel?: string;
+  currencyLabel?: string;
 }
 
 const formatYAxis = sharedFormatBudget;
@@ -149,6 +150,7 @@ export function FinancingInstrumentChart({
   variant = "area",
   tooltipSources,
   accessibleTableLabel,
+  currencyLabel = "nominal US dollars",
 }: FinancingInstrumentChartProps) {
   const displayMax = yAxisMax;
   const [hiddenKeys, setHiddenKeys] = useState<string[]>([]);
@@ -256,7 +258,12 @@ export function FinancingInstrumentChart({
                       )
                     : undefined
                 }
-                tickFormatter={valueFormatter ?? formatYAxis}
+                tickFormatter={(value: number) =>
+                  (valueFormatter ?? formatYAxis)(value).replaceAll(
+                    " ",
+                    "\u00a0",
+                  )
+                }
                 mirror
               />
               <SourceAwareTrendTooltip
@@ -316,7 +323,9 @@ export function FinancingInstrumentChart({
       </div>
       {accessibleTableLabel && (
         <table className="sr-only">
-          <caption>{accessibleTableLabel}, nominal US dollars</caption>
+          <caption>
+            {accessibleTableLabel}, {currencyLabel}
+          </caption>
           <thead>
             <tr>
               <th>Year</th>

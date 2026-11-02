@@ -113,6 +113,27 @@ years later in the 2020–2027 PPB editions, with this hierarchy:
   data even when the treemap shows their published combined total
 - Source-document links and an explicit basis for each displayed value
 
+The main website selectors use expenditure **2019–2025**, approved regular
+budget **2020–2026**, and proposed regular budget **2021–2027**. The earlier
+2018 expenditure, 2019 approved and 2020 proposed files remain inspectable but
+are excluded from main selectors and trends: the 2020 pilot edition has a
+sparse expenditure hierarchy that also limits its projected budget measures.
+The manifest retains these years separately as `earlierPartialYears`.
+
+ITC's extrabudgetary expenditure remains displayed in the **CHF amounts printed
+in PPB section 13**. Its UN regular-budget grant remains in printed USD; the
+full CHF regular budget includes the WTO share and is not added. For the shared
+area scale only, the portal calculates a calendar-day-weighted mean of USD per
+CHF from the effective-dated [UN Treasury operational rates](https://treasury.un.org/operationalrates/OperationalRates.php)
+for each expenditure year. These are portal-derived annual area rates, not
+UN-published annual averages or PPB-reported USD expenditure. Source-currency
+labels, separate CHF trends and citations preserve the printed figures; mixed
+totals show USD and CHF separately. Source controls and PDF hashes live in
+`data/ppb-chf-source-controls.json`; the rate history and method live in
+`data/un-chf-operational-rates.json`. USD-equivalent weights are explicitly
+identified in `chf.usdForLayout`, while `publishedUsdAmount` and the meta
+`publishedUsdTotal` retain the pre-conversion USD amounts.
+
 The seven years 2019–2025 publish regular-budget, other-assessed and
 extrabudgetary expenditure. The 2020 PPB edition provides expenditure for 2018 as a separately
 disclosed partial view because it publishes regular-budget expenditure only.

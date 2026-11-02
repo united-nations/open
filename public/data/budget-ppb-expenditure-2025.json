@@ -8,14 +8,14 @@
     "year": 2025,
     "fiscalYear": "2025",
     "currency": "USD",
-    "total": 12085071200,
+    "total": 12216560898.98,
     "metrics": {
       "expenditure": {
         "label": "Expenditure",
         "yearOffset": -2,
         "description": "Actual expenditure reported in this budget edition.",
         "dataYear": 2025,
-        "total": 12085071200,
+        "total": 12216560898.98,
         "sourceEdition": 2027,
         "sourceDocument": "A/81/6"
       }
@@ -100,7 +100,10 @@
     "sourceNote": "2025 expenditure, reported in PPB 2027 (A/81/6), published in 2026. Regular budget is shown by default; other assessed and extrabudgetary expenditure can be added. OA/XB estimates are not used for the proposed or approved categories.",
     "sourceEdition": 2027,
     "sourcePublicationYear": 2026,
-    "sourceDocument": "A/81/6"
+    "sourceDocument": "A/81/6",
+    "publishedUsdTotal": 12085071200,
+    "publishedChfTotal": 109410100,
+    "currencyNote": "Amounts are displayed in their printed currencies. CHF tile areas and shares use calendar-day-weighted UN Treasury operational rates for the expenditure year, solely for comparison on the USD area scale. These conversions are not PPB-reported USD expenditure."
   },
   "nodes": [
     {
@@ -110,19 +113,19 @@
       "kind": "whole",
       "code": null,
       "label": "Programme budget",
-      "amount": 12085071200,
-      "basis": "derived",
+      "amount": 12216560898.98,
+      "basis": "visualization_weight_with_chf_conversion",
       "values": {
         "regular_budget": 3484745600,
         "other_assessed": 387841100,
-        "extrabudgetary": 8212484500
+        "extrabudgetary": 8343974198.98
       },
       "completeness": "incomplete",
       "metricValues": {
         "expenditure": {
           "regular_budget": 3484745600,
           "other_assessed": 387841100,
-          "extrabudgetary": 8212484500
+          "extrabudgetary": 8343974198.98
         }
       },
       "metricSources": {
@@ -1067,12 +1070,24 @@
               "columnHeader": "2025 expenditure",
               "tableTitle": "(2) Extrabudgetary",
               "label": "extrabudgetary \u2014 supporting row for calculated total"
+            },
+            {
+              "symbol": "A/81/6 (Sect. 13)",
+              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=12",
+              "pdfPage": 12,
+              "pageStatus": "located",
+              "pdfPageScope": "row",
+              "pageLocatedBy": "financial_row_unique",
+              "rowLabel": "Subtotal, 2",
+              "columnHeader": "2025 expenditure",
+              "tableTitle": "(2) Extrabudgetary",
+              "label": "Extrabudgetary \u2014 printed in CHF"
             }
           ]
         }
       },
-      "allSourcesAmount": 12085071200,
-      "fundingBreakdownTotal": 12085071200,
+      "allSourcesAmount": 12216560898.98,
+      "fundingBreakdownTotal": 12216560898.98,
       "fundingDifference": 0,
       "breakdowns": {
         "regular_budget": {
@@ -1088,19 +1103,19 @@
           "completeness": "incomplete"
         },
         "extrabudgetary": {
-          "childAmount": 8212484500,
+          "childAmount": 8343974198.98,
           "difference": 0,
           "outcome": "exact",
           "completeness": "incomplete"
         },
         "total_all_sources": {
-          "childAmount": 12085071100,
+          "childAmount": 12216560798.98,
           "difference": 100,
           "outcome": "rounding_difference",
           "completeness": "incomplete"
         },
         "selected_funding_sources": {
-          "childAmount": 12085071100,
+          "childAmount": 12216560798.98,
           "difference": 100,
           "outcome": "exact",
           "completeness": "incomplete"
@@ -1165,8 +1180,30 @@
       },
       "note": "Derived USD sum of displayed Part coverage; Section 13 CHF and every incomplete child remain explicit residue.",
       "metricAmounts": {
-        "expenditure": 12085071200
-      }
+        "expenditure": 12216560898.98
+      },
+      "chf": {
+        "amount": 109410100,
+        "usdForLayout": 131489698.98,
+        "usdPerChf": "1.201805856839721201154220340",
+        "rateSourceUrl": "https://treasury.un.org/operationalrates/OperationalRates.php",
+        "rateMethod": "Calendar-day-weighted mean of USD per CHF (reciprocal of each effective UN operational rate). Visualization only; not a UN-published annual average.",
+        "year": 2025,
+        "sourceCell": "ppb2027:A_81_6 (SECT. 13)|word/document.xml|t0010|r0004|c0001",
+        "source": {
+          "symbol": "A/81/6 (Sect. 13)",
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=12",
+          "pdfPage": 12,
+          "pageStatus": "located",
+          "pdfPageScope": "row",
+          "pageLocatedBy": "financial_row_unique",
+          "rowLabel": "Subtotal, 2",
+          "columnHeader": "2025 expenditure",
+          "tableTitle": "(2) Extrabudgetary",
+          "label": "Extrabudgetary \u2014 printed in CHF"
+        }
+      },
+      "publishedUsdAmount": 12085071200
     },
     {
       "id": "part-VI",
@@ -6045,17 +6082,17 @@
       "kind": "part",
       "code": "IV",
       "label": "International cooperation for development",
-      "amount": 2463135200,
-      "basis": "derived",
+      "amount": 2594624898.98,
+      "basis": "visualization_weight_with_chf_conversion",
       "values": {
         "regular_budget": 280213000,
-        "extrabudgetary": 2182922200
+        "extrabudgetary": 2314411898.98
       },
       "completeness": "incomplete",
       "metricValues": {
         "expenditure": {
           "regular_budget": 280213000,
-          "extrabudgetary": 2182922200
+          "extrabudgetary": 2314411898.98
         }
       },
       "metricSources": {
@@ -6170,12 +6207,24 @@
               "columnHeader": "2025 expenditure",
               "tableTitle": "(2) Extrabudgetary",
               "label": "extrabudgetary \u2014 supporting row for calculated total"
+            },
+            {
+              "symbol": "A/81/6 (Sect. 13)",
+              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=12",
+              "pdfPage": 12,
+              "pageStatus": "located",
+              "pdfPageScope": "row",
+              "pageLocatedBy": "financial_row_unique",
+              "rowLabel": "Subtotal, 2",
+              "columnHeader": "2025 expenditure",
+              "tableTitle": "(2) Extrabudgetary",
+              "label": "Extrabudgetary \u2014 printed in CHF"
             }
           ]
         }
       },
-      "allSourcesAmount": 2463135200,
-      "fundingBreakdownTotal": 2463135200,
+      "allSourcesAmount": 2594624898.98,
+      "fundingBreakdownTotal": 2594624898.98,
       "fundingDifference": 0,
       "breakdowns": {
         "regular_budget": {
@@ -6191,19 +6240,19 @@
           "completeness": "not_published"
         },
         "extrabudgetary": {
-          "childAmount": 2182922200,
+          "childAmount": 2314411898.98,
           "difference": 0,
           "outcome": "exact",
           "completeness": "incomplete"
         },
         "total_all_sources": {
-          "childAmount": 2463135100,
+          "childAmount": 2594624798.98,
           "difference": 100,
           "outcome": "rounding_difference",
           "completeness": "incomplete"
         },
         "selected_funding_sources": {
-          "childAmount": 2463135100,
+          "childAmount": 2594624798.98,
           "difference": 100,
           "outcome": "exact",
           "completeness": "incomplete"
@@ -6257,8 +6306,30 @@
       },
       "note": "Derived USD sum of the displayed section coverage; no printed all-source Part parent is claimed.",
       "metricAmounts": {
-        "expenditure": 2463135200
-      }
+        "expenditure": 2594624898.98
+      },
+      "chf": {
+        "amount": 109410100,
+        "usdForLayout": 131489698.98,
+        "usdPerChf": "1.201805856839721201154220340",
+        "rateSourceUrl": "https://treasury.un.org/operationalrates/OperationalRates.php",
+        "rateMethod": "Calendar-day-weighted mean of USD per CHF (reciprocal of each effective UN operational rate). Visualization only; not a UN-published annual average.",
+        "year": 2025,
+        "sourceCell": "ppb2027:A_81_6 (SECT. 13)|word/document.xml|t0010|r0004|c0001",
+        "source": {
+          "symbol": "A/81/6 (Sect. 13)",
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=12",
+          "pdfPage": 12,
+          "pageStatus": "located",
+          "pdfPageScope": "row",
+          "pageLocatedBy": "financial_row_unique",
+          "rowLabel": "Subtotal, 2",
+          "columnHeader": "2025 expenditure",
+          "tableTitle": "(2) Extrabudgetary",
+          "label": "Extrabudgetary \u2014 printed in CHF"
+        }
+      },
+      "publishedUsdAmount": 2463135200
     },
     {
       "id": "section-14",
@@ -15915,15 +15986,17 @@
       "kind": "section",
       "code": "13",
       "label": "International Trade Centre",
-      "amount": 22500100,
-      "basis": "derived",
+      "amount": 153989798.98,
+      "basis": "visualization_weight_with_chf_conversion",
       "values": {
-        "regular_budget": 22500100
+        "regular_budget": 22500100,
+        "extrabudgetary": 131489698.98
       },
       "completeness": "incomplete",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 22500100
+          "regular_budget": 22500100,
+          "extrabudgetary": 131489698.98
         }
       },
       "metricSources": {
@@ -15941,11 +16014,25 @@
               "tableTitle": "Evolution of financial resources, by factor and budget part and section",
               "label": "regular budget"
             }
+          ],
+          "extrabudgetary": [
+            {
+              "symbol": "A/81/6 (Sect. 13)",
+              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=12",
+              "pdfPage": 12,
+              "pageStatus": "located",
+              "pdfPageScope": "row",
+              "pageLocatedBy": "financial_row_unique",
+              "rowLabel": "Subtotal, 2",
+              "columnHeader": "2025 expenditure",
+              "tableTitle": "(2) Extrabudgetary",
+              "label": "Extrabudgetary \u2014 printed in CHF"
+            }
           ]
         }
       },
-      "allSourcesAmount": 22500100,
-      "fundingBreakdownTotal": 22500100,
+      "allSourcesAmount": 153989798.98,
+      "fundingBreakdownTotal": 153989798.98,
       "fundingDifference": 0,
       "breakdowns": {
         "regular_budget": {
@@ -15961,10 +16048,10 @@
           "completeness": "not_published"
         },
         "extrabudgetary": {
-          "childAmount": null,
-          "difference": null,
-          "outcome": "not_testable",
-          "completeness": "not_published"
+          "childAmount": 131489698.98,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
         },
         "total_all_sources": {
           "childAmount": null,
@@ -15973,7 +16060,7 @@
           "completeness": "incomplete"
         },
         "selected_funding_sources": {
-          "childAmount": 22500100,
+          "childAmount": 153989798.98,
           "difference": 0,
           "outcome": "exact",
           "completeness": "incomplete"
@@ -16001,6 +16088,18 @@
           "rowLabel": "13. International Trade Centre",
           "columnHeader": "2025 expenditures",
           "tableTitle": "Evolution of financial resources, by factor and budget part and section"
+        },
+        "extrabudgetary": {
+          "symbol": "A/81/6 (Sect. 13)",
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=12",
+          "pdfPage": 12,
+          "pageStatus": "located",
+          "pdfPageScope": "row",
+          "pageLocatedBy": "financial_row_unique",
+          "rowLabel": "Subtotal, 2",
+          "columnHeader": "2025 expenditure",
+          "tableTitle": "(2) Extrabudgetary",
+          "label": "Extrabudgetary \u2014 printed in CHF"
         }
       },
       "source": {
@@ -16025,8 +16124,30 @@
       },
       "note": "The value is source-bound, but this gate does not certify a complete lower allocation.",
       "metricAmounts": {
-        "expenditure": 22500100
-      }
+        "expenditure": 153989798.98
+      },
+      "chf": {
+        "amount": 109410100,
+        "usdForLayout": 131489698.98,
+        "usdPerChf": "1.201805856839721201154220340",
+        "rateSourceUrl": "https://treasury.un.org/operationalrates/OperationalRates.php",
+        "rateMethod": "Calendar-day-weighted mean of USD per CHF (reciprocal of each effective UN operational rate). Visualization only; not a UN-published annual average.",
+        "year": 2025,
+        "sourceCell": "ppb2027:A_81_6 (SECT. 13)|word/document.xml|t0010|r0004|c0001",
+        "source": {
+          "symbol": "A/81/6 (Sect. 13)",
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=12",
+          "pdfPage": 12,
+          "pageStatus": "located",
+          "pdfPageScope": "row",
+          "pageLocatedBy": "financial_row_unique",
+          "rowLabel": "Subtotal, 2",
+          "columnHeader": "2025 expenditure",
+          "tableTitle": "(2) Extrabudgetary",
+          "label": "Extrabudgetary \u2014 printed in CHF"
+        }
+      },
+      "publishedUsdAmount": 22500100
     },
     {
       "id": "section-13~international-trade-centre",
@@ -16035,15 +16156,17 @@
       "kind": "entity",
       "code": null,
       "label": "International Trade Centre",
-      "amount": 22500100,
-      "basis": "derived_available_funding_sum",
+      "amount": 153989798.98,
+      "basis": "visualization_weight_with_chf_conversion",
       "values": {
-        "regular_budget": 22500100
+        "regular_budget": 22500100,
+        "extrabudgetary": 131489698.98
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
-          "regular_budget": 22500100
+          "regular_budget": 22500100,
+          "extrabudgetary": 131489698.98
         }
       },
       "metricSources": {
@@ -16061,10 +16184,24 @@
               "tableTitle": "Overall United Nations grant to ITC: evolution of financial resources by object of expenditure",
               "label": "regular budget"
             }
+          ],
+          "extrabudgetary": [
+            {
+              "symbol": "A/81/6 (Sect. 13)",
+              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=12",
+              "pdfPage": 12,
+              "pageStatus": "located",
+              "pdfPageScope": "row",
+              "pageLocatedBy": "financial_row_unique",
+              "rowLabel": "Subtotal, 2",
+              "columnHeader": "2025 expenditure",
+              "tableTitle": "(2) Extrabudgetary",
+              "label": "Extrabudgetary \u2014 printed in CHF"
+            }
           ]
         }
       },
-      "fundingBreakdownTotal": 22500100,
+      "fundingBreakdownTotal": 153989798.98,
       "breakdowns": {
         "regular_budget": {
           "childAmount": null,
@@ -16102,6 +16239,18 @@
           "rowLabel": "Total",
           "columnHeader": "2025 expenditurea",
           "tableTitle": "Overall United Nations grant to ITC: evolution of financial resources by object of expenditure"
+        },
+        "extrabudgetary": {
+          "symbol": "A/81/6 (Sect. 13)",
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=12",
+          "pdfPage": 12,
+          "pageStatus": "located",
+          "pdfPageScope": "row",
+          "pageLocatedBy": "financial_row_unique",
+          "rowLabel": "Subtotal, 2",
+          "columnHeader": "2025 expenditure",
+          "tableTitle": "(2) Extrabudgetary",
+          "label": "Extrabudgetary \u2014 printed in CHF"
         }
       },
       "unitType": "entity",
@@ -16115,8 +16264,30 @@
       },
       "note": "This selected source outline does not publish a value for this funding stream.",
       "metricAmounts": {
-        "expenditure": 22500100
-      }
+        "expenditure": 153989798.98
+      },
+      "chf": {
+        "amount": 109410100,
+        "usdForLayout": 131489698.98,
+        "usdPerChf": "1.201805856839721201154220340",
+        "rateSourceUrl": "https://treasury.un.org/operationalrates/OperationalRates.php",
+        "rateMethod": "Calendar-day-weighted mean of USD per CHF (reciprocal of each effective UN operational rate). Visualization only; not a UN-published annual average.",
+        "year": 2025,
+        "sourceCell": "ppb2027:A_81_6 (SECT. 13)|word/document.xml|t0010|r0004|c0001",
+        "source": {
+          "symbol": "A/81/6 (Sect. 13)",
+          "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2013%29&l=en&t=pdf#page=12",
+          "pdfPage": 12,
+          "pageStatus": "located",
+          "pdfPageScope": "row",
+          "pageLocatedBy": "financial_row_unique",
+          "rowLabel": "Subtotal, 2",
+          "columnHeader": "2025 expenditure",
+          "tableTitle": "(2) Extrabudgetary",
+          "label": "Extrabudgetary \u2014 printed in CHF"
+        }
+      },
+      "publishedUsdAmount": 22500100
     },
     {
       "id": "section-10",

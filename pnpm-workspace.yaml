@@ -10,3 +10,5 @@ overrides:
   # Open does not use. Its direct CDN tarball is blocked by pnpm 11's default
   # blockExoticSubdeps protection, so omit only this unused optional edge.
   '@undp/data-viz@2.2.3>xlsx': '-'
+patchedDependencies:
+  '@un-eosg/ui@0.1.5': patches/@un-eosg__ui@0.1.5.patch

@@ -45,11 +45,20 @@ def generate_manifest():
         "budgetPkoProposed": {"years": detect_years("budget-pko-proposed"), "default": "latest"},
     }
     
+    # The pilot 2020 edition's sparse expenditure hierarchy also limits its
+    # 2019 approved and 2020 proposed projections. Keep files inspectable, but
+    # do not offer these partial years as comparable main-view coverage.
+    policy = json.loads(Path("data/ppb-display-policy.json").read_text())
+    for key, rule in policy.items():
+        available = manifest[key]["years"]
+        manifest[key]["earlierPartialYears"] = [y for y in available if y < rule["minimumYear"]]
+        manifest[key]["years"] = [y for y in available if y >= rule["minimumYear"]]
+
     # Funding-stream availability is independent of year availability (PPB 2018
     # publishes regular-budget expenditure only).
     manifest["budgetPpb"]["fundingSourcesByYear"] = {
         str(year): json.loads((OUT / f"budget-ppb-{year}.json").read_text())["meta"]["fundingSources"]
-        for year in manifest["budgetPpb"]["years"]
+        for year in [*manifest["budgetPpb"]["earlierPartialYears"], *manifest["budgetPpb"]["years"]]
     }
 
     # Add min/max for convenience

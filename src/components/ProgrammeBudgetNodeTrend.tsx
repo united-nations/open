@@ -6,7 +6,7 @@ import {
   SidebarStackedTrend,
   type FinancingInstrumentDataPoint,
 } from "@/components/SidebarStackedTrend";
-import { budgetFundingPoint } from "@/lib/budgetFunding";
+import { budgetFundingPoint, formatChf } from "@/lib/budgetFunding";
 import { budgetTrendSources } from "@/lib/budgetTrendSources";
 import { loadYearData } from "@/lib/data";
 import type { BudgetData, BudgetNode } from "@/types";
@@ -111,23 +111,75 @@ export function ProgrammeBudgetNodeTrend({
     yearKey,
   ]);
 
+  const hasChf = Object.values(sourceFiles).some((row) => row.node.chf);
+  const usdData = hasChf
+    ? (data?.map((point) => {
+        const chf = sourceFiles[point.year]?.node.chf;
+        const value = point.extrabudgetary;
+        return chf && typeof value === "number"
+          ? {
+              ...point,
+              extrabudgetary:
+                Math.abs(value - chf.usdForLayout) < 0.005
+                  ? null
+                  : value - chf.usdForLayout,
+            }
+          : point;
+      }) ?? null)
+    : data;
   return (
-    <SidebarStackedTrend
-      key={`${dataset}-${node.id}`}
-      tooltipSources={(year, keys) => {
-        const row = sourceFiles[year];
-        if (!row) return [];
-        const metric =
-          row.file.meta.measure === "approved" ||
-          row.file.meta.measure === "proposed"
-            ? row.file.meta.measure
-            : "expenditure";
-        return budgetTrendSources(row.file.nodes, row.node, metric, keys);
-      }}
-      allowNegative
-      showLegend={false}
-      data={data}
-      series={FUNDING_SOURCE_TREND_SERIES}
-    />
+    <>
+      <SidebarStackedTrend
+        key={`${dataset}-${node.id}`}
+        tooltipSources={(year, keys) => {
+          const row = sourceFiles[year];
+          if (!row) return [];
+          const metric =
+            row.file.meta.measure === "approved" ||
+            row.file.meta.measure === "proposed"
+              ? row.file.meta.measure
+              : "expenditure";
+          return budgetTrendSources(
+            row.file.nodes,
+            row.node,
+            metric,
+            keys,
+          ).filter((source) => !source.label?.includes("printed in CHF"));
+        }}
+        allowNegative
+        showLegend={false}
+        heading={hasChf ? "Funding reported in USD" : undefined}
+        data={usdData}
+        series={
+          hasChf
+            ? FUNDING_SOURCE_TREND_SERIES.filter((series) =>
+                usdData?.some((point) => typeof point[series.key] === "number"),
+              )
+            : FUNDING_SOURCE_TREND_SERIES
+        }
+      />
+      {hasChf && (
+        <SidebarStackedTrend
+          heading="Extrabudgetary resources (CHF)"
+          data={
+            data?.map((point) => ({
+              year: point.year,
+              extrabudgetary: sourceFiles[point.year]?.node.chf?.amount ?? null,
+            })) ?? null
+          }
+          series={FUNDING_SOURCE_TREND_SERIES.filter(
+            (series) => series.key === "extrabudgetary",
+          )}
+          valueFormatter={formatChf}
+          currencyLabel="nominal Swiss francs"
+          showLegend={false}
+          allowNegative
+          tooltipSources={(year) => {
+            const source = sourceFiles[year]?.node.chf?.source;
+            return source ? [source] : [];
+          }}
+        />
+      )}
+    </>
   );
 }

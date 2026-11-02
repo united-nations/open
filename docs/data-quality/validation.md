@@ -60,6 +60,32 @@ for the focused data checks. `tests/browser/budget-funding.mjs` checks restored
 EOSG funding, a failed trend year remaining unavailable, and signed amounts.
 The budget routes require a `SITE_VARIANT=preview pnpm build` for browser tests.
 
+## PPB year ranges and CHF layout
+
+`data/ppb-display-policy.json` defines the reviewed starting year for each
+measure; `python/99-generate_manifest.py` applies it without deleting archival
+files. Main year selectors are metric-specific and retain the selected measure.
+
+To refresh the UN Treasury rate snapshot, run
+`uv run python python/fetch_un_chf_rates.py`. The annual visualization rate is
+the calendar-day-weighted mean of each effective rate's reciprocal (the source
+quotes CHF per USD), with complete-year coverage required. The rate history,
+request parameters, retrieval timestamp and response hash are retained. No
+future-year rate is invented for approved/proposed views, which stay RB-only.
+
+`python/ppb_chf_layout.py` binds only the reviewed Section 13 XB Subtotal 2
+controls. The later CHF Total and the full regular budget are excluded to avoid
+adding the WTO share. Review changed source cells/amounts against the original
+PDF before changing `data/ppb-chf-source-controls.json`. All converted values
+are area weights; CHF amounts and source USD amounts remain separate in labels,
+accessible descriptions, tables and trends. The small shared-treemap patch
+adds optional source-value labels without changing its geometry algorithm.
+
+Run `uv run python -m unittest discover -s python/tests -p 'test_ppb_chf_layout.py'`
+and `node tests/budget-funding.mjs`. The preview browser check
+`tests/browser/ppb-ranges-currency.mjs` verifies all three ranges, keeping the
+metric when moving years, CHF sidebar/trend/source labels, and treemap tooltips.
+
 ## Application checks
 
 ```bash

@@ -1,0 +1,97 @@
+diff --git a/components/grouped-treemap.tsx b/components/grouped-treemap.tsx
+index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..1b0ba770091fcfd09dc4d82b91212609bb7f3701 100644
+--- a/components/grouped-treemap.tsx
++++ b/components/grouped-treemap.tsx
+@@ -44,6 +44,8 @@ export interface GroupedTreemapSegment<TSegment = unknown> {
+   key: string;
+   label: string;
+   value: number;
++  /** Printed value label when layout uses a common converted area scale. */
++  valueLabel?: string;
+   color: string;
+   data?: TSegment;
+ }
+@@ -52,6 +54,8 @@ export interface GroupedTreemapLeaf<TLeaf = unknown, TSegment = unknown> {
+   key: string;
+   label: string;
+   value: number;
++  /** Printed value label when layout uses a common converted area scale. */
++  valueLabel?: string;
+   /** Optional area weight; displayed values remain the published value. */
+   layoutValue?: number;
+   color?: string;
+@@ -75,6 +79,8 @@ export interface GroupedTreemapSubgroup<
+ > {
+   key: string;
+   label: string;
++  /** Printed value label when layout uses a common converted area scale. */
++  valueLabel?: string;
+   data?: TSubgroup;
+   labelVisibility?: TreemapSubgroupLabelVisibility;
+   leaves: readonly GroupedTreemapLeaf<TLeaf, TSegment>[];
+@@ -88,6 +94,8 @@ export interface GroupedTreemapRow<
+ > {
+   key: string;
+   label: string;
++  /** Printed value label when layout uses a common converted area scale. */
++  valueLabel?: string;
+   labelColor?: string;
+   /** Published group total when it differs from the sum of displayed leaves. */
+   value?: number;
+@@ -340,12 +348,12 @@ function DefaultTooltip<TRow, TSubgroup, TLeaf, TSegment>({
+           label,
+           color: index === 0 ? context.row.color : undefined,
+         }))}
+-      total={{ label: "Total", value: formatValue(context.leaf.value) }}
++      total={{ label: "Total", value: context.leaf.valueLabel ?? formatValue(context.leaf.value) }}
+       rows={context.leaf.segments
+         ?.filter((segment) => Number.isFinite(segment.value))
+         .map((segment) => ({
+           label: segment.label,
+-          value: formatValue(segment.value),
++          value: segment.valueLabel ?? formatValue(segment.value),
+           color: segment.color,
+           share:
+             segment.value >= 0 && context.leaf.value > 0
+@@ -610,7 +618,7 @@ export function GroupedTreemap<
+                       />
+                       {row.label}{" "}
+                       <span className="font-normal tabular-nums">
+-                        {formatValue(
++                        {row.valueLabel ?? formatValue(
+                           row.value ??
+                             row.subgroups.reduce(
+                               (sum, subgroup) =>
+@@ -650,7 +658,7 @@ export function GroupedTreemap<
+                           >
+                             {subgroup.label}{" "}
+                             <span className="font-normal tabular-nums">
+-                              {formatValue(
++                              {subgroup.valueLabel ?? formatValue(
+                                 subgroup.leaves.reduce(
+                                   (sum, leaf) => sum + leaf.value,
+                                   0,
+@@ -686,12 +694,12 @@ export function GroupedTreemap<
+                           const accessibleSegments = visibleSegments
+                             .map(
+                               (segment) =>
+-                                `${segment.label}: ${formatAccessibleValue(segment.value)}`,
++                                `${segment.label}: ${segment.valueLabel ?? formatAccessibleValue(segment.value)}`,
+                             )
+                             .join(", ");
+                           const description = [
+                             breadcrumb.join(" › "),
+-                            `${leaf.label}: ${formatAccessibleValue(leaf.value)}`,
++                            `${leaf.label}: ${leaf.valueLabel ?? formatAccessibleValue(leaf.value)}`,
+                             accessibleSegments || null,
+                             leaf.accessibleDescription?.trim() || null,
+                           ]
+@@ -850,7 +858,7 @@ export function GroupedTreemap<
+                                             : "truncate",
+                                         )}
+                                       >
+-                                        {formatValue(leaf.value)}
++                                        {leaf.valueLabel ?? formatValue(leaf.value)}
+                                       </span>
+                                     ) : null}
+                                   </span>

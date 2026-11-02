@@ -471,6 +471,18 @@ export interface BudgetNodeBreakdown {
   completeness?: string;
 }
 
+export interface BudgetChfLayout {
+  /** Printed PPB amount, in CHF; the USD weight must never be a value label. */
+  amount: number;
+  usdForLayout: number;
+  usdPerChf: string;
+  rateSourceUrl: string;
+  rateMethod: string;
+  year: number;
+  sourceCell: string;
+  source: BudgetNodeSource;
+}
+
 export interface BudgetNode {
   id: string;
   parentId: string | null;
@@ -480,11 +492,14 @@ export interface BudgetNode {
   kind: BudgetNodeKind;
   code: string | null;
   label: string;
-  /** Full dollars. */
+  /** USD area weight; CHF source amounts, when present, are retained separately. */
   amount: number;
+  chf?: BudgetChfLayout;
+  /** Source USD amount before adding the explicitly identified CHF area weight. */
+  publishedUsdAmount?: number;
   /** "printed"/"directly_printed" = in the source document; otherwise derived. */
   basis: string;
-  /** Producer's authoritative all-source amount, before UI funding filters. */
+  /** All-source area control before UI funding filters; CHF conversion is explicit in chf. */
   allSourcesAmount?: number;
   /** Sum of the separately published RB/OA/XB values. */
   fundingBreakdownTotal?: number;
@@ -629,6 +644,9 @@ export interface BudgetMeta {
   /** How the year is written: "2023", or "2024/25" for peacekeeping. */
   fiscalYear: string;
   currency: string;
+  currencyNote?: string;
+  publishedUsdTotal?: number;
+  publishedChfTotal?: number;
   total: number;
   metrics?: Partial<Record<BudgetMetricKey, BudgetMetricDefinition>>;
   metricCoverage?: {

@@ -55,6 +55,12 @@ import {
 } from "@/hooks/useDeepLink";
 import { formatBudget } from "@/lib/entities";
 import {
+  formatBudgetNode,
+  formatBudgetFunding,
+  formatCurrencyParts,
+  addChf,
+} from "@/lib/budgetFunding";
+import {
   collectBudgetNodeSources,
   uniqueBudgetSources,
 } from "@/lib/budgetSourceCollection";
@@ -323,6 +329,7 @@ export function buildEntityProjection(
     entity?: BudgetNode["entity"];
     amount: number;
     values: Partial<Record<BudgetFundingSource, number>>;
+    chf?: BudgetNode["chf"];
     sourceRoots: Map<string, BudgetNode>;
     evidenceNodes: Map<string, BudgetNode>;
     sections: Map<
@@ -348,7 +355,7 @@ export function buildEntityProjection(
   ) => {
     if (amount <= 0) return;
     const key = aggregateKey(part, entity);
-    const aggregate = aggregates.get(key) ?? {
+    const aggregate: Aggregate = aggregates.get(key) ?? {
       part,
       entity,
       amount: 0,
@@ -364,6 +371,8 @@ export function buildEntityProjection(
     aggregate.evidenceNodes.set(evidenceNode.id, evidenceNode);
     if (sourceRoot) aggregate.evidenceNodes.set(sourceRoot.id, sourceRoot);
     aggregate.amount += amount;
+    if (amount === evidenceNode.amount)
+      aggregate.chf = addChf(aggregate.chf, evidenceNode.chf);
     addFundingValues(aggregate.values, values);
     if (entity && sourceRoot) {
       aggregate.sourceRoots.set(sourceRoot.id, sourceRoot);
@@ -569,6 +578,7 @@ export function buildEntityProjection(
       amount: aggregate.amount,
       basis: "derived_entity_projection",
       values: aggregate.values,
+      chf: aggregate.chf,
       ...supportingEvidence([...aggregate.evidenceNodes.values()]),
       completeness: named ? "complete" : "incomplete",
       entity: aggregate.entity
@@ -944,6 +954,7 @@ export function BudgetTreemap({
           : undefined;
       return {
         ...node,
+        chf: activeFundingSet.has("extrabudgetary") ? node.chf : undefined,
         // With every PPB funding source selected, keep the producer's parent
         // total.  A subset is a new UI lens and is necessarily the sum of the
         // selected RB/OA/XB values.
@@ -1148,7 +1159,9 @@ export function BudgetTreemap({
     const tileOf = (node: BudgetNode, caption: string): Tile => ({
       node,
       caption,
-      variance: percentChange(node.amount, previousAmounts[node.id]),
+      variance: node.chf
+        ? null
+        : percentChange(node.amount, previousAmounts[node.id]),
       appearsInMultipleLocations: node.entity
         ? (entityPlacements[node.entity.acronym ?? node.entity.name]?.size ??
             1) > 1
@@ -1209,7 +1222,9 @@ export function BudgetTreemap({
             caption: code,
             name: PART_SHORT_NAMES[code] ?? part.label,
             total,
-            variance: percentChange(part.amount, previousAmounts[part.id]),
+            variance: part.chf
+              ? null
+              : percentChange(part.amount, previousAmounts[part.id]),
             groups,
             colors:
               PART_BAND_COLORS[code] ??
@@ -1316,7 +1331,9 @@ export function BudgetTreemap({
           caption: code,
           name: PART_SHORT_NAMES[code] ?? part.label,
           total,
-          variance: percentChange(part.amount, previousAmounts[part.id]),
+          variance: part.chf
+            ? null
+            : percentChange(part.amount, previousAmounts[part.id]),
           groups: groups.sort((a, b) => b.total - a.total),
           colors:
             PART_BAND_COLORS[code] ?? BAND_PALETTE[index % BAND_PALETTE.length],
@@ -1517,12 +1534,14 @@ export function BudgetTreemap({
       key,
       label,
       value: node.amount,
+      valueLabel: formatBudgetNode(node),
       layoutValue: node.amount,
       color,
       data: { node, sidebarNodeId, note },
       segments: positiveFundingValues(node).map(([source, value]) => ({
         key: source,
         label: fundingLabel(source),
+        valueLabel: formatBudgetFunding(node, source),
         value,
         color: sharedTreemapColor(color, source),
         data: source,
@@ -1962,6 +1981,8 @@ export function BudgetTreemap({
     if (!usesSharedProgrammeBudget) return undefined;
     const query = searchQuery.trim().toLocaleLowerCase();
     return activeFundingSources.map((source) => {
+      let drawnChf = 0;
+      let drawnChfUsd = 0;
       const drawnSourceTotal = sharedRows.reduce(
         (rowSum, row) =>
           rowSum +
@@ -1988,6 +2009,10 @@ export function BudgetTreemap({
                 ) {
                   return leafSum;
                 }
+                if (source === "extrabudgetary" && item.data?.node.chf) {
+                  drawnChf += item.data.node.chf.amount;
+                  drawnChfUsd += item.data.node.chf.usdForLayout;
+                }
                 return (
                   leafSum +
                   (item.data?.node.values?.[source] ??
@@ -2003,17 +2028,31 @@ export function BudgetTreemap({
       return {
         key: source,
         label: fundingLabel(source),
-        value: formatBudget(
-          !query
-            ? (filteredData?.nodes.find((node) => node.parentId === null)
-                ?.values?.[source] ?? drawnSourceTotal)
-            : drawnSourceTotal +
-                accountingNodes
-                  .filter(
-                    (node) => node.amount <= 0 && matchesAccountingNode(node),
-                  )
-                  .reduce((sum, node) => sum + (node.values?.[source] ?? 0), 0),
-        ),
+        value:
+          !query &&
+          filteredData?.nodes.find((node) => node.parentId === null)?.chf
+            ? formatBudgetFunding(
+                filteredData.nodes.find((node) => node.parentId === null)!,
+                source,
+              )
+            : query && drawnChf !== 0
+              ? formatCurrencyParts(drawnSourceTotal - drawnChfUsd, drawnChf)
+              : formatBudget(
+                  !query
+                    ? (filteredData?.nodes.find(
+                        (node) => node.parentId === null,
+                      )?.values?.[source] ?? drawnSourceTotal)
+                    : drawnSourceTotal +
+                        accountingNodes
+                          .filter(
+                            (node) =>
+                              node.amount <= 0 && matchesAccountingNode(node),
+                          )
+                          .reduce(
+                            (sum, node) => sum + (node.values?.[source] ?? 0),
+                            0,
+                          ),
+                ),
       };
     });
   })();
@@ -2297,6 +2336,7 @@ export function BudgetTreemap({
                     ))}
                     {meta.sourceNote && <p>{meta.sourceNote}</p>}
                     {meta.scopeWarning && <p>{meta.scopeWarning}</p>}
+                    {meta.currencyNote && <p>{meta.currencyNote}</p>}
                     {usesSharedTrustFundExpenses &&
                       accountingNodes.some(
                         (node) =>
@@ -2334,7 +2374,14 @@ export function BudgetTreemap({
               }
             />
           }
-          rows={sharedRows}
+          rows={sharedRows.map((row) => ({
+            ...row,
+            valueLabel: row.data ? formatBudgetNode(row.data) : undefined,
+            subgroups: row.subgroups?.map((group) => ({
+              ...group,
+              valueLabel: group.data ? formatBudgetNode(group.data) : undefined,
+            })),
+          }))}
           showRowLabels={!usesSharedTrustFundExpenses}
           layout={
             usesSharedProgrammeBudget || usesSharedTrustFundExpenses
@@ -2417,13 +2464,20 @@ export function BudgetTreemap({
                     : metric === "approved"
                       ? "Approved budget"
                       : "Proposed budget",
-                value: formatBudget(context.leaf.value),
+                value: context.leaf.data?.node
+                  ? formatBudgetNode(context.leaf.data.node)
+                  : formatBudget(context.leaf.value),
               }}
               rows={orderFundingTooltipRows(context.leaf.segments)
                 .filter(() => !isTrustFund)
                 .map((segment) => ({
                   label: segment.label,
-                  value: formatBudget(segment.value),
+                  value: context.leaf.data?.node
+                    ? formatBudgetFunding(
+                        context.leaf.data.node,
+                        segment.key as BudgetFundingSource,
+                      )
+                    : formatBudget(segment.value),
                   color: segment.color,
                   share:
                     context.leaf.value > 0 && segment.value >= 0
@@ -2620,11 +2674,20 @@ export function BudgetTreemap({
         ppbGrouping === "entity" &&
         entityProjection.unassignedAmount > 0 && (
           <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
-            {formatBudget(entityProjection.namedAmount)} is assigned to named
-            entities. {formatBudget(entityProjection.unassignedAmount)} remains
-            “Not assigned to a single entity” because the source identifies a
-            shared programme, accounting category, or unreconciled lower
-            breakdown rather than one owner.
+            {filteredData?.nodes.find((node) => node.parentId === null)?.chf
+              ? formatCurrencyParts(
+                  entityProjection.namedAmount -
+                    filteredData.nodes.find((node) => node.parentId === null)!
+                      .chf!.usdForLayout,
+                  filteredData.nodes.find((node) => node.parentId === null)!
+                    .chf!.amount,
+                )
+              : formatBudget(entityProjection.namedAmount)}{" "}
+            is assigned to named entities.{" "}
+            {formatBudget(entityProjection.unassignedAmount)} remains “Not
+            assigned to a single entity” because the source identifies a shared
+            programme, accounting category, or unreconciled lower breakdown
+            rather than one owner.
           </p>
         )}
 
@@ -2808,7 +2871,7 @@ export function BudgetTreemap({
                             className={`absolute overflow-hidden ${treemapTileInteractionClassName}`}
                             role="button"
                             tabIndex={0}
-                            aria-label={`${caption}: ${formatBudget(tile.node.amount)}`}
+                            aria-label={`${caption}: ${formatBudgetNode(tile.node)}`}
                             style={{
                               left: `${rect.x}%`,
                               top: `${rect.y}%`,
@@ -2919,7 +2982,7 @@ export function BudgetTreemap({
                               )}
                               {showAmount && (
                                 <div className="-mt-0.5 w-full truncate text-left text-[10px] leading-tight text-white/95">
-                                  {formatBudget(tile.node.amount)}{" "}
+                                  {formatBudgetNode(tile.node)}{" "}
                                   {formatVariance(tile.variance)}
                                 </div>
                               )}
@@ -2963,14 +3026,20 @@ export function BudgetTreemap({
                 <>
                   <span className="font-medium">{band.name}</span>
                   <span className="ml-3">
-                    {formatBudget(band.total)} {formatVariance(band.variance)}
+                    {byId[band.key]
+                      ? formatBudgetNode(byId[band.key])
+                      : formatBudget(band.total)}{" "}
+                    {formatVariance(band.variance)}
                   </span>
                 </>
               ) : (
                 <div className="leading-tight">
                   <div className="font-medium">{band.name}</div>
                   <div className="mt-0.5">
-                    {formatBudget(band.total)} {formatVariance(band.variance)}
+                    {byId[band.key]
+                      ? formatBudgetNode(byId[band.key])
+                      : formatBudget(band.total)}{" "}
+                    {formatVariance(band.variance)}
                   </div>
                 </div>
               )}
@@ -2999,6 +3068,9 @@ export function BudgetTreemap({
         </p>
       )}
 
+      {headlineFundingSource && meta?.currencyNote && (
+        <p className="mt-3 text-xs text-gray-500">{meta.currencyNote}</p>
+      )}
       {/* Total, scope caveat and source */}
       {!headlineFundingSource && (
         <div className="mt-3 space-y-1 text-xs text-gray-500">
@@ -3011,6 +3083,7 @@ export function BudgetTreemap({
             {filteredPrevious && " · the change is against the year before"}
           </p>
           <p>{meta.scopeWarning}</p>
+          {meta.currencyNote && <p>{meta.currencyNote}</p>}
           <details>
             <summary className="cursor-pointer">Source details</summary>
             <NegativeAmounts entries={signedBudgetAmounts} />
@@ -3096,13 +3169,13 @@ export function BudgetTreemap({
                     : metric === "approved"
                       ? "Approved budget"
                       : "Proposed budget",
-                value: formatBudget(tooltip.tile.node.amount),
+                value: formatBudgetNode(tooltip.tile.node),
               }}
               rows={positiveFundingValues(tooltip.tile.node)
                 .filter(() => !isTrustFund)
                 .map(([key, amount]) => ({
                   label: fundingLabel(key),
-                  value: formatBudget(amount),
+                  value: formatBudgetFunding(tooltip.tile.node, key),
                   color: FUNDING_SOURCES[key].color,
                   share:
                     tooltip.tile.node.amount > 0
@@ -3169,13 +3242,13 @@ export function BudgetTreemap({
                   : metric === "approved"
                     ? "Approved budget"
                     : "Proposed budget",
-              value: formatBudget(tooltip.tile.node.amount),
+              value: formatBudgetNode(tooltip.tile.node),
             }}
             rows={positiveFundingValues(tooltip.tile.node)
               .filter(() => !isTrustFund)
               .map(([key, amount]) => ({
                 label: fundingLabel(key),
-                value: formatBudget(amount),
+                value: formatBudgetFunding(tooltip.tile.node, key),
                 color: FUNDING_SOURCES[key].color,
                 share:
                   tooltip.tile.node.amount > 0
