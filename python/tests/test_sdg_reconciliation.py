@@ -47,6 +47,24 @@ class SdgReconciliationTests(unittest.TestCase):
         self.assertEqual(result['sdg_not_specified']['total'], -25)
         self.assertEqual(sum(row['total'] for row in result.values()), 100)
 
+    def test_mixed_accounting_bases_preserve_goal_and_entity_amounts(self):
+        goals = pd.DataFrame([
+            dict(year=2021, entity='A', sdg='1', amount=20, type_of_financial_information='EXP'),
+            dict(year=2021, entity='A', sdg='1', amount=70, type_of_financial_information='BUD'),
+            dict(year=2021, entity='B', sdg='1', amount=-5, type_of_financial_information='BUG'),
+            dict(year=2021, entity='B', sdg='x00', amount=15, type_of_financial_information='BUG'),
+        ])
+        controls = pd.DataFrame([
+            dict(year=2021, entity='A', amount=90),
+            dict(year=2021, entity='B', amount=10),
+        ])
+        result = module.build_sdg_expenses(goals, controls)[2021]
+        self.assertEqual(result['1']['total'], 85)
+        self.assertEqual(result['1']['financialInformationTypes']['BUD'],
+                         {'total': 70, 'entities': {'A': 70}})
+        self.assertEqual(result['non_sdg']['total'], 15)
+        self.assertEqual(result['sdg_not_specified']['entities'], {'A': 0, 'B': 0})
+
     def test_unmatched_entities_and_unknown_goals_fail_instead_of_losing_money(self):
         goals = pd.DataFrame([dict(year=2024, entity='Missing', sdg='1', amount=60)])
         controls = pd.DataFrame([dict(year=2024, entity='A', amount=100)])
@@ -69,15 +87,20 @@ class SdgReconciliationTests(unittest.TestCase):
                 for entity, control in totals.items():
                     total = sum(row['entities'].get(entity, 0) for row in result.values())
                     self.assertAlmostEqual(total, control, places=4)
-                for goal in range(1, 18):
-                    frame = source[(source.year == year) & (source.sdg.astype(str) == str(goal))]
-                    self.assertEqual(result[str(goal)]['entities'], frame.groupby('entity').amount.sum().to_dict())
+                for goal in [*map(str, range(1, 18)), 'non_sdg']:
+                    code = 'x00' if goal == 'non_sdg' else goal
+                    frame = source[(source.year == year) & (source.sdg.astype(str).str.lower() == code)]
+                    self.assertEqual(result[goal]['entities'], frame.groupby('entity').amount.sum().to_dict())
+                    for basis, rows in frame.groupby('type_of_financial_information'):
+                        detail = result[goal]['financialInformationTypes'][basis]
+                        self.assertEqual(detail['entities'], rows.groupby('entity').amount.sum().to_dict())
+                        self.assertAlmostEqual(detail['total'], rows.amount.sum(), places=4)
         explicit = output[2024]['non_sdg']['entities']
         unspecified = output[2024]['sdg_not_specified']['entities']
-        self.assertEqual(sum(amount != 0 for amount in explicit.values()), 19)
-        for entity, reported in explicit.items():
-            if reported != 0:
-                self.assertAlmostEqual(unspecified[entity], 0, delta=10)
+        self.assertEqual(sum(amount != 0 for amount in explicit.values()), 23)
+        self.assertAlmostEqual(unspecified['WFP'], -13, places=2)
+        self.assertAlmostEqual(unspecified['IOM'], -33082365, places=2)
+        self.assertAlmostEqual(unspecified['ITU'], 64690033.36, places=2)
         self.assertEqual(explicit['UN Tourism'], 0)
         self.assertAlmostEqual(unspecified['UN Tourism'], 33355633.33, places=2)
 

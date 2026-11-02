@@ -66,7 +66,7 @@ def clean_and_validate(source=raw):
     provenance = {"retrievedAt": datetime.now().date().isoformat(), "files": [],
                   "notes": ["Missing donor amounts are unknown, not zero. Known amounts are reconciled to entity/instrument controls; differences remain Unattributed.",
                             "Geographic totals select E06, excluding overlapping E06A/B/C components.",
-                            "SDG expenses select EXP; BUD/BUG budget observations are excluded."],
+                            "SDG expenses include EXP accrual expenses and BUD/legacy BUG budgetary-basis expenditure; original financial-information codes are retained."],
                   "nonReporting": {}}
     for fn in ceb_files:
         payload = (source / fn).read_bytes()

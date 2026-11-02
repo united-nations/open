@@ -25,6 +25,10 @@ export interface SDGExpensesData {
     total: number;
     entities: { [entity: string]: number };
     basis?: string;
+    financialInformationTypes?: Record<
+      string,
+      { total: number; entities: Record<string, number> }
+    >;
   };
 }
 
@@ -38,7 +42,7 @@ export const SDG_EXTRA_GROUPS: Record<
     label: "Non-SDG",
     color: "#6b7280",
     description:
-      "Expenditure reported by CEB under its Non-SDG code (x00), for activities not aligned to the SDGs.",
+      "Expenditure reported by CEB under its Non-SDG code (x00).",
   },
   [-1]: {
     key: "sdg_not_specified",

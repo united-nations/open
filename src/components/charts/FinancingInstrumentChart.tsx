@@ -42,6 +42,8 @@ export interface FinancingInstrumentDataPoint {
 export interface FinancingSeries {
   key: string;
   label: string;
+  /** Compact legend text; tooltips and accessible tables retain the full label. */
+  legendLabel?: string;
   color: string;
   tooltip?: string;
 }
@@ -92,6 +94,8 @@ interface FinancingInstrumentChartProps {
   yAxisMax?: number;
   /** Allow signed net series, such as contribution adjustments. */
   allowNegative?: boolean;
+  /** Cumulative stacking lets reconciliation balances subtract from the total. */
+  stackOffset?: "none" | "sign";
   variant?: "area" | "bar";
   tooltipValueFormatter?: (value: number) => string;
   showTooltipTotal?: boolean;
@@ -153,6 +157,7 @@ export function FinancingInstrumentChart({
   tooltipValueFormatter,
   showTooltipTotal = false,
   allowNegative = false,
+  stackOffset,
   variant = "area",
   tooltipSources,
   accessibleTableLabel,
@@ -172,6 +177,33 @@ export function FinancingInstrumentChart({
   const visibleSeries = activeSeries.filter(
     (s) => !filterable || !hiddenKeys.includes(s.key),
   );
+  const offset = stackOffset ?? (allowNegative ? "sign" : "none");
+  // Pin signed domains to the actual stack extent. An automatic domain can
+  // round a tiny negative balance down to a full, misleading negative tick.
+  const stackExtents = data.map((row) => {
+    let positive = 0;
+    let negative = 0;
+    let cumulative = 0;
+    let minimum = 0;
+    let maximum = 0;
+    for (const series of visibleSeries) {
+      const value = row[series.key];
+      if (typeof value !== "number") continue;
+      if (offset === "sign") {
+        positive += Math.max(0, value);
+        negative += Math.min(0, value);
+        minimum = negative;
+        maximum = positive;
+      } else {
+        cumulative += value;
+        minimum = Math.min(minimum, cumulative);
+        maximum = Math.max(maximum, cumulative);
+      }
+    }
+    return { minimum, maximum };
+  });
+  const signedMinimum = Math.min(0, ...stackExtents.map((row) => row.minimum));
+  const signedMaximum = Math.max(0, ...stackExtents.map((row) => row.maximum));
 
   if (data.length === 0) {
     return (
@@ -196,7 +228,7 @@ export function FinancingInstrumentChart({
             filterable ? (
               <LegendLabel
                 key={s.key}
-                label={getFinancingInstrumentLabel(s.label)}
+                label={s.legendLabel ?? getFinancingInstrumentLabel(s.label)}
                 color={s.color}
                 explanation={
                   s.tooltip ??
@@ -233,9 +265,12 @@ export function FinancingInstrumentChart({
         ) : (
           <ResponsiveContainer width="100%" height="100%">
             <Chart
+              // Re-register areas in series order when filters change; restored
+              // series otherwise append to Recharts' internal stack registry.
+              key={visibleSeries.map((series) => series.key).join("|")}
               data={data}
               margin={TREND_CHART_MARGIN}
-              stackOffset={allowNegative ? "sign" : "none"}
+              stackOffset={offset}
             >
               <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
               <XAxis
@@ -251,11 +286,15 @@ export function FinancingInstrumentChart({
                   fontSize: compact ? 9 : 11,
                   fill: "#6b7280",
                   dx: -5,
-                  dy: -8,
+                  dy: allowNegative ? -2 : -8,
                 }}
                 tickLine={false}
                 axisLine={false}
-                domain={[allowNegative ? "auto" : 0, displayMax ?? "auto"]}
+                domain={
+                  allowNegative
+                    ? [signedMinimum, displayMax ?? (signedMaximum || 1)]
+                    : [0, displayMax ?? "auto"]
+                }
                 ticks={
                   displayMax
                     ? Array.from(
@@ -275,6 +314,7 @@ export function FinancingInstrumentChart({
               <SourceAwareTrendTooltip
                 key={`${visibleSeries.map((series) => series.key).join("|")}`}
                 interactive={Boolean(tooltipSources)}
+                constrainToViewport={visibleSeries.length > 10}
                 content={(props) => (
                   <FinancialChartTooltip
                     {...props}

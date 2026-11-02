@@ -166,17 +166,23 @@ def build_sdg_expenses(sdg: pd.DataFrame, controls: pd.DataFrame) -> dict:
             sdg_df = df[df["sdg"].astype(str).str.lower() == key]
             entities = sdg_df.groupby("entity")["amount"].sum().to_dict()
             data[str(sdg_num)] = {"total": sum(entities.values()), "entities": entities}
+            if "type_of_financial_information" in sdg_df:
+                data[str(sdg_num)]["financialInformationTypes"] = {
+                    code: {"total": float(rows.amount.sum()),
+                           "entities": rows.groupby("entity").amount.sum().to_dict()}
+                    for code, rows in sdg_df.groupby("type_of_financial_information")
+                }
         reported = data["non_sdg"]["entities"]
         residuals = {
             entity: amount - sum(data[str(goal)]["entities"].get(entity, 0) for goal in range(1, 18))
             for entity, amount in sorted(totals.items())
         }
         adjustments = {entity: amount - reported.get(entity, 0) for entity, amount in residuals.items()}
-        data["non_sdg"]["basis"] = "Reported CEB x00 actual expenditure (Non-SDG)."
+        data["non_sdg"]["basis"] = "Reported CEB x00 expenditure (Non-SDG), including accrual and budgetary accounting bases."
         data["sdg_not_specified"] = {
             "total": sum(adjustments.values()),
             "entities": adjustments,
-            "basis": "CEB entity expenses minus reported actual expenditure for SDGs 1-17 and reported Non-SDG (x00); includes missing SDG reporting and signed reconciliation differences.",
+            "basis": "CEB entity expenses minus reported accrual and budgetary-basis expenditure for SDGs 1-17 and reported Non-SDG (x00); includes missing SDG reporting and signed reconciliation differences.",
         }
         output[int(year)] = data
     return output

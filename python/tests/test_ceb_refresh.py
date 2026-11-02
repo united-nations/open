@@ -110,11 +110,16 @@ class CebRefreshTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 select_geographic_totals(frame)
 
-    def test_sdg_budgets_do_not_inflate_actual_spending(self):
-        frame = pd.DataFrame({'calendar_year': [2024,2024], 'type_of_financial_information': ['EXP','BUD'], 'amount': [50,100]})
+    def test_sdg_includes_accrual_and_budgetary_expenditure_with_source_codes(self):
+        frame = pd.DataFrame({'calendar_year': [2024,2024,2024], 'type_of_financial_information': ['EXP','BUD','BUG'], 'amount': [50,100,-10]})
         actuals = select_sdg_expenses(frame)
-        self.assertEqual(actuals.amount.sum(),50)
+        self.assertEqual(actuals.amount.sum(),140)
+        pd.testing.assert_frame_equal(actuals, frame)
         self.assertNotIn(2025,set(actuals.calendar_year))
+        for code, amount in [('BUD', None), ('BUG', None), ('UNKNOWN', 10)]:
+            invalid = pd.DataFrame({'type_of_financial_information': [code], 'amount': [amount]})
+            with self.assertRaises(ValueError):
+                select_sdg_expenses(invalid)
 
     def test_parent_resolution_keeps_standalone_reporting_and_rejects_unknowns(self):
         controls = pd.DataFrame({'calendar_year': [2024,2024], 'agency': ['UN', 'UNRISD']})

@@ -19,7 +19,12 @@ export interface FlowSpendingData {
           kind: string;
           amount: number;
         }[];
-        goals: { key: string; label: string; amount: number }[];
+        goals: {
+          key: string;
+          label: string;
+          amount: number;
+          financialInformationTypes?: Record<string, number>;
+        }[];
         geographyDifference: number | null;
         goalsDifference: number | null;
       }

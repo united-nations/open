@@ -53,7 +53,7 @@
     {
       "id": "expense-scope",
       "title": "What expenditure and flow charts show",
-      "text": "The geographic source reports both spending totals and smaller components already included in those totals. We use each total once rather than adding its components again. Sustainable Development Goal (SDG) charts use reported actual expenditure and exclude budget figures.\n\nA contributor’s revenue to an organization and that organization’s spending by location, function or goal are separate observations. A flow chart brings these views together, but cannot show which donor financed a particular country or goal. The Secretariat and UNINFO datasets cover different activities and measure finances differently, so their amounts are shown separately from CEB figures."
+      "text": "The geographic source reports both spending totals and smaller components already included in those totals. We use each total once rather than adding its components again. Sustainable Development Goal (SDG) charts include reported accrual expenses (EXP) and expenditure on a budgetary accounting basis (BUD, historically BUG). CEB permits both accounting bases; budgetary-basis expenditure records spending rather than a planned budget.\n\nA contributor’s revenue to an organization and that organization’s spending by location, function or goal are separate observations. A flow chart brings these views together, but cannot show which donor financed a particular country or goal. The Secretariat and UNINFO datasets cover different activities and measure finances differently, so their amounts are shown separately from CEB figures."
     },
     {
       "id": "geography",
@@ -63,7 +63,7 @@
     {
       "id": "sdg-balances",
       "title": "Non-SDG and Not specified expenditure",
-      "text": "Non-SDG contains expenditure that CEB explicitly reports outside the Sustainable Development Goals. Not specified is calculated separately: total organization expenditure minus reported expenditure for Goals 1–17 and Non-SDG. It includes missing reporting and differences between source breakdowns and totals; it does not mean the spending was unrelated to the goals.\n\nFor example, if total expenditure is $100 but the goal and Non-SDG amounts add up to $110, Not specified is −$10. That calculated balance shows the mismatch; it is not spending on a separate activity. Reported spending by goal is left unchanged."
+      "text": "Non-SDG contains expenditure reported by CEB under its Non-SDG code (x00). Not specified is calculated separately: total organization expenditure minus reported expenditure for Goals 1–17 and Non-SDG. It includes missing reporting and differences between source breakdowns and totals; it does not mean the spending was unrelated to the goals.\n\nFor example, if total expenditure is $100 but the goal and Non-SDG amounts add up to $110, Not specified is −$10. That calculated balance shows the mismatch; it is not spending on a separate activity. Reported spending by goal is left unchanged."
     },
     {
       "id": "historical-functions",

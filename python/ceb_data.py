@@ -66,13 +66,18 @@ def select_geographic_totals(frame: pd.DataFrame) -> pd.DataFrame:
 
 
 def select_sdg_expenses(frame: pd.DataFrame) -> pd.DataFrame:
-    """Budget observations must not be added to reported actual expenditure."""
+    """Keep accrual (EXP) and budgetary-basis (BUD/legacy BUG) expenditure.
+
+    Standard V permits budgetary-basis expenditure, not planned budgets. Keep
+    the original financial-information code for provenance, including mixed
+    reporting within an entity/year; do not infer an allocation or drop a basis.
+    """
     if 'type_of_financial_information' not in frame:
         return frame.copy()
     unknown = set(frame.type_of_financial_information) - {'EXP', 'BUD', 'BUG'}
     if unknown:
         raise ValueError(f'Unknown SDG financial information types: {unknown}')
-    actuals = frame[frame.type_of_financial_information == 'EXP'].copy()
+    actuals = frame.copy()
     if actuals.amount.isna().any():
         raise ValueError('Missing SDG expense amount')
     return actuals

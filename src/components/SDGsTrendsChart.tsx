@@ -4,16 +4,26 @@ import {
   FinancingInstrumentChart,
   type FinancingSeries,
 } from "@/components/charts/FinancingInstrumentChart";
-import { SDG_EXTRA_GROUPS, type SDGExpensesData } from "@/lib/sdgs";
+import {
+  SDG_COLORS,
+  SDG_EXTRA_GROUPS,
+  SDG_SHORT_TITLES,
+  SDG_TITLES,
+  type SDGExpensesData,
+} from "@/lib/sdgs";
 import manifest from "../../public/data/manifest.json";
 
 const series: FinancingSeries[] = [
-  {
-    key: "sdg",
-    label: "SDG",
-    color: "var(--color-un-blue)",
-    tooltip: "Reported actual expenditure allocated to SDGs 1–17.",
-  },
+  ...Array.from({ length: 17 }, (_, index) => {
+    const number = index + 1;
+    return {
+      key: String(number),
+      label: `SDG ${number}: ${SDG_SHORT_TITLES[number]}`,
+      legendLabel: String(number),
+      color: SDG_COLORS[number],
+      tooltip: `SDG ${number}: ${SDG_SHORT_TITLES[number]}. ${SDG_TITLES[number]}.`,
+    };
+  }),
   ...[0, -1].map((number) => {
     const group = SDG_EXTRA_GROUPS[number];
     return {
@@ -39,10 +49,12 @@ export async function SDGsTrendsChart() {
       ) as SDGExpensesData;
       return {
         year: String(year),
-        sdg: Array.from(
-          { length: 17 },
-          (_, index) => expenses[String(index + 1)].total,
-        ).reduce((sum, value) => sum + value, 0),
+        ...Object.fromEntries(
+          Array.from({ length: 17 }, (_, index) => [
+            String(index + 1),
+            expenses[String(index + 1)].total,
+          ]),
+        ),
         non_sdg: expenses.non_sdg.total,
         sdg_not_specified: expenses.sdg_not_specified.total,
       };
@@ -65,6 +77,7 @@ export async function SDGsTrendsChart() {
         filterable
         showTooltipTotal
         allowNegative
+        stackOffset="none"
       />
     </section>
   );

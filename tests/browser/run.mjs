@@ -6,6 +6,7 @@ const checks = [
   "ceb-methodology",
   "data-disclosures",
   "ceb-refresh",
+  "sdg-trends",
   "historical-coverage",
   "locations-grouping",
   "locations-bubbles",

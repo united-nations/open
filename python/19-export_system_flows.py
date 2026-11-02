@@ -85,6 +85,11 @@ def build_export(totals: pd.DataFrame, geography: pd.DataFrame, goals: pd.DataFr
                 sdgs.append({'key': 'unallocated' if key == 'x00' else key,
                              'label': 'Non-SDG' if key == 'x00' else f'SDG {key}',
                              'amount': float(rows.amount.sum())})
+                if 'type_of_financial_information' in rows:
+                    sdgs[-1]['financialInformationTypes'] = {
+                        code: float(group.amount.sum())
+                        for code, group in rows.groupby('type_of_financial_information')
+                    }
             entities[entity] = {
                 'total': total, 'geography': geos, 'goals': sdgs,
                 'geographyDifference': None if total is None or year not in set(geography.calendar_year) else total - sum(row['amount'] for row in geos),
@@ -107,6 +112,7 @@ def build_export(totals: pd.DataFrame, geography: pd.DataFrame, goals: pd.DataFr
                 'Independent reported expenditure dimensions; not traced allocations of contributor funding.',
                 'All available years use the current CEB release; source vintage and hashes are recorded in ceb-source.json. Geography selects E06 total expense records.',
                 'SDG DPO is normalized to UN-DPO; separately reported sub-agencies are rolled into the same-year CEB expense-source parent where uniquely identified.',
+                'SDGs include EXP accrual expenses and BUD/legacy BUG budgetary-basis expenditure. Original financial-information codes and signed differences are retained.',
                 'Source labels and original location codes are retained. Known geographic areas reported as COU use the reviewed region/subregion crosswalk; correction notes disclose the change.',
                 'X00/x00 is retained as not allocated to a goal; signed reporting differences are not allocated to goals.',
                 'Net amounts include negative adjustments. Inter-agency transfers are not eliminated.',

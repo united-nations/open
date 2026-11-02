@@ -1,21 +1,51 @@
 {
   "1": {
-    "total": 1456075030.8799999,
+    "total": 2396266215.13,
     "entities": {
+      "ILO": 40307289.050000004,
       "UN Women": 10300231.64,
       "UNAIDS": 0.0,
       "UNCDF": 38411428.05,
       "UNDP": 1049961743.0,
       "UNESCO": 151593.0,
+      "UNHCR": 899883895.2,
       "UNICEF": 332753704.4,
       "UNIDO": 24444776.16,
       "UNITAR": 51554.63
+    },
+    "financialInformationTypes": {
+      "BUD": {
+        "total": 899883895.2,
+        "entities": {
+          "UNHCR": 899883895.2
+        }
+      },
+      "BUG": {
+        "total": 40307289.05,
+        "entities": {
+          "ILO": 40307289.050000004
+        }
+      },
+      "EXP": {
+        "total": 1456075030.88,
+        "entities": {
+          "UN Women": 10300231.64,
+          "UNAIDS": 0.0,
+          "UNCDF": 38411428.05,
+          "UNDP": 1049961743.0,
+          "UNESCO": 151593.0,
+          "UNICEF": 332753704.4,
+          "UNIDO": 24444776.16,
+          "UNITAR": 51554.63
+        }
+      }
     }
   },
   "2": {
-    "total": 810963504.21,
+    "total": 8054832917.0,
     "entities": {
       "IFAD": 190620000.0,
+      "ILO": 687123.58,
       "UNCDF": 918016.08,
       "UNDP": 57594679.0,
       "UNESCO": 360169.0,
@@ -23,62 +53,210 @@
       "UNIDO": 16748403.58,
       "UNITAR": 80223.77,
       "UNOPS": 34961521.78,
+      "WFP": 7243182289.21,
       "WHO": 14923689.0
+    },
+    "financialInformationTypes": {
+      "BUD": {
+        "total": 7243182289.21,
+        "entities": {
+          "WFP": 7243182289.21
+        }
+      },
+      "BUG": {
+        "total": 687123.58,
+        "entities": {
+          "ILO": 687123.58
+        }
+      },
+      "EXP": {
+        "total": 810963504.2099999,
+        "entities": {
+          "IFAD": 190620000.0,
+          "UNCDF": 918016.08,
+          "UNDP": 57594679.0,
+          "UNESCO": 360169.0,
+          "UNICEF": 494756802.0,
+          "UNIDO": 16748403.58,
+          "UNITAR": 80223.77,
+          "UNOPS": 34961521.78,
+          "WHO": 14923689.0
+        }
+      }
     }
   },
   "3": {
-    "total": 6502625677.08,
+    "total": 6934616668.07,
     "entities": {
       "IARC": 53895347.24,
+      "ILO": 14153661.59,
       "UN Women": 5762348.97,
       "UNDP": 450684635.0,
       "UNESCO": 2554487.0,
       "UNFPA": 793065407.11,
+      "UNHCR": 417837329.4,
       "UNICEF": 1294458172.0,
       "UNIDO": 5836109.67,
       "UNITAID": 257250000.0,
       "UNITAR": 1620094.39,
       "UNOPS": 191489954.7,
       "WHO": 3446009121.0
+    },
+    "financialInformationTypes": {
+      "BUD": {
+        "total": 417837329.4,
+        "entities": {
+          "UNHCR": 417837329.4
+        }
+      },
+      "BUG": {
+        "total": 14153661.59,
+        "entities": {
+          "ILO": 14153661.59
+        }
+      },
+      "EXP": {
+        "total": 6502625677.08,
+        "entities": {
+          "IARC": 53895347.24,
+          "UN Women": 5762348.97,
+          "UNDP": 450684635.0,
+          "UNESCO": 2554487.0,
+          "UNFPA": 793065407.11,
+          "UNICEF": 1294458172.0,
+          "UNIDO": 5836109.67,
+          "UNITAID": 257250000.0,
+          "UNITAR": 1620094.39,
+          "UNOPS": 191489954.7,
+          "WHO": 3446009121.0
+        }
+      }
     }
   },
   "4": {
-    "total": 1289443670.12,
+    "total": 1521617300.3,
     "entities": {
+      "ILO": 38803528.18,
       "UN Women": 6019165.75,
       "UNDP": 77585654.0,
       "UNESCO": 150247782.0,
+      "UNHCR": 193370102.0,
       "UNICEF": 1036807474.0,
       "UNIDO": 636558.53,
       "UNITAR": 1281340.75,
       "UNOPS": 16865695.09
+    },
+    "financialInformationTypes": {
+      "BUD": {
+        "total": 193370102.0,
+        "entities": {
+          "UNHCR": 193370102.0
+        }
+      },
+      "BUG": {
+        "total": 38803528.18,
+        "entities": {
+          "ILO": 38803528.18
+        }
+      },
+      "EXP": {
+        "total": 1289443670.12,
+        "entities": {
+          "UN Women": 6019165.75,
+          "UNDP": 77585654.0,
+          "UNESCO": 150247782.0,
+          "UNICEF": 1036807474.0,
+          "UNIDO": 636558.53,
+          "UNITAR": 1281340.75,
+          "UNOPS": 16865695.09
+        }
+      }
     }
   },
   "5": {
-    "total": 685456030.26,
+    "total": 836293954.64,
     "entities": {
+      "ILO": 43329575.68,
       "UN Women": 309063677.8,
       "UNCDF": 2020214.22,
       "UNDP": 71476586.0,
       "UNESCO": 13581084.0,
       "UNFPA": 263003882.85,
+      "UNHCR": 107508348.7,
       "UNICEF": 8064734.41,
       "UNIDO": 10624799.0,
       "UNITAR": 1369329.76,
       "UNOPS": 1626949.22,
       "WHO": 4624773.0
+    },
+    "financialInformationTypes": {
+      "BUD": {
+        "total": 107508348.7,
+        "entities": {
+          "UNHCR": 107508348.7
+        }
+      },
+      "BUG": {
+        "total": 43329575.68000001,
+        "entities": {
+          "ILO": 43329575.68
+        }
+      },
+      "EXP": {
+        "total": 685456030.2600001,
+        "entities": {
+          "UN Women": 309063677.8,
+          "UNCDF": 2020214.22,
+          "UNDP": 71476586.0,
+          "UNESCO": 13581084.0,
+          "UNFPA": 263003882.85,
+          "UNICEF": 8064734.41,
+          "UNIDO": 10624799.0,
+          "UNITAR": 1369329.76,
+          "UNOPS": 1626949.22,
+          "WHO": 4624773.0
+        }
+      }
     }
   },
   "6": {
-    "total": 969187806.37,
+    "total": 1101235548.89,
     "entities": {
+      "ILO": 1367204.52,
       "UNCDF": 461289.01,
       "UNDP": 30269897.0,
       "UNESCO": 4619968.0,
+      "UNHCR": 130680538.0,
       "UNICEF": 901172244.2,
       "UNIDO": 101492.03,
       "UNITAR": 83891.18,
       "UNOPS": 32479024.95
+    },
+    "financialInformationTypes": {
+      "BUD": {
+        "total": 130680538.0,
+        "entities": {
+          "UNHCR": 130680538.0
+        }
+      },
+      "BUG": {
+        "total": 1367204.52,
+        "entities": {
+          "ILO": 1367204.52
+        }
+      },
+      "EXP": {
+        "total": 969187806.37,
+        "entities": {
+          "UNCDF": 461289.01,
+          "UNDP": 30269897.0,
+          "UNESCO": 4619968.0,
+          "UNICEF": 901172244.2,
+          "UNIDO": 101492.03,
+          "UNITAR": 83891.18,
+          "UNOPS": 32479024.95
+        }
+      }
     }
   },
   "7": {
@@ -90,23 +268,65 @@
       "UNIDO": 25109554.67,
       "UNITAR": 391185.5,
       "UNOPS": 35314728.54
+    },
+    "financialInformationTypes": {
+      "EXP": {
+        "total": 122800148.27000001,
+        "entities": {
+          "UNCDF": 3997325.56,
+          "UNDP": 57751714.0,
+          "UNESCO": 235640.0,
+          "UNIDO": 25109554.67,
+          "UNITAR": 391185.5,
+          "UNOPS": 35314728.54
+        }
+      }
     }
   },
   "8": {
-    "total": 146205612.94,
+    "total": 654515994.5400001,
     "entities": {
+      "ILO": 396120624.6,
       "UN Women": 19681440.24,
       "UNCDF": 12988371.52,
       "UNDP": 92527468.0,
       "UNESCO": 6966796.0,
+      "UNHCR": 112189757.0,
       "UNIDO": 1825834.1,
       "UNITAR": 991610.51,
       "UNOPS": 11224092.57
+    },
+    "financialInformationTypes": {
+      "BUD": {
+        "total": 112189757.0,
+        "entities": {
+          "UNHCR": 112189757.0
+        }
+      },
+      "BUG": {
+        "total": 396120624.6,
+        "entities": {
+          "ILO": 396120624.6
+        }
+      },
+      "EXP": {
+        "total": 146205612.94,
+        "entities": {
+          "UN Women": 19681440.24,
+          "UNCDF": 12988371.52,
+          "UNDP": 92527468.0,
+          "UNESCO": 6966796.0,
+          "UNIDO": 1825834.1,
+          "UNITAR": 991610.51,
+          "UNOPS": 11224092.57
+        }
+      }
     }
   },
   "9": {
-    "total": 387643806.87,
+    "total": 392535488.73,
     "entities": {
+      "ILO": 4891681.859999999,
       "OPCW": 88600299.39,
       "UNDP": 83541850.0,
       "UNESCO": 2515046.0,
@@ -115,46 +335,144 @@
       "UNITAR": 277611.01,
       "UNOPS": 96795194.5,
       "WHO": 5185.0
+    },
+    "financialInformationTypes": {
+      "BUG": {
+        "total": 4891681.859999999,
+        "entities": {
+          "ILO": 4891681.859999999
+        }
+      },
+      "EXP": {
+        "total": 387643806.87,
+        "entities": {
+          "OPCW": 88600299.39,
+          "UNDP": 83541850.0,
+          "UNESCO": 2515046.0,
+          "UNICEF": 674916.67,
+          "UNIDO": 115233704.3,
+          "UNITAR": 277611.01,
+          "UNOPS": 96795194.5,
+          "WHO": 5185.0
+        }
+      }
     }
   },
   "10": {
-    "total": 200021342.16,
+    "total": 359029723.28000003,
     "entities": {
+      "ILO": 37632155.620000005,
       "UNDP": 80141810.0,
       "UNESCO": 3138472.0,
       "UNFPA": 25654094.89,
+      "UNHCR": 121376225.5,
       "UNICEF": 27110254.16,
       "UNIDO": 339852.5,
       "UNITAR": 131401.2,
       "UNOPS": 63101368.41,
       "WHO": 404089.0
+    },
+    "financialInformationTypes": {
+      "BUD": {
+        "total": 121376225.5,
+        "entities": {
+          "UNHCR": 121376225.5
+        }
+      },
+      "BUG": {
+        "total": 37632155.620000005,
+        "entities": {
+          "ILO": 37632155.620000005
+        }
+      },
+      "EXP": {
+        "total": 200021342.16,
+        "entities": {
+          "UNDP": 80141810.0,
+          "UNESCO": 3138472.0,
+          "UNFPA": 25654094.89,
+          "UNICEF": 27110254.16,
+          "UNIDO": 339852.5,
+          "UNITAR": 131401.2,
+          "UNOPS": 63101368.41,
+          "WHO": 404089.0
+        }
+      }
     }
   },
   "11": {
-    "total": 259500485.78,
+    "total": 694852234.39,
     "entities": {
+      "ILO": 100012.61,
       "UN Women": 8271271.01,
       "UNCDF": 1422622.18,
       "UNDP": 88084295.0,
       "UNESCO": 29068006.0,
       "UNFPA": 12357264.62,
+      "UNHCR": 435251736.0,
       "UNIDO": 4666957.69,
       "UNITAR": 1581232.78,
       "UNOPS": 114048836.5
+    },
+    "financialInformationTypes": {
+      "BUD": {
+        "total": 435251736.0,
+        "entities": {
+          "UNHCR": 435251736.0
+        }
+      },
+      "BUG": {
+        "total": 100012.61,
+        "entities": {
+          "ILO": 100012.61
+        }
+      },
+      "EXP": {
+        "total": 259500485.78,
+        "entities": {
+          "UN Women": 8271271.01,
+          "UNCDF": 1422622.18,
+          "UNDP": 88084295.0,
+          "UNESCO": 29068006.0,
+          "UNFPA": 12357264.62,
+          "UNIDO": 4666957.69,
+          "UNITAR": 1581232.78,
+          "UNOPS": 114048836.5
+        }
+      }
     }
   },
   "12": {
-    "total": 92476319.99,
+    "total": 93088218.69,
     "entities": {
+      "ILO": 611898.7,
       "UNDP": 77197918.0,
       "UNESCO": 1173328.0,
       "UNIDO": 12371069.37,
       "UNITAR": 1734004.62
+    },
+    "financialInformationTypes": {
+      "BUG": {
+        "total": 611898.7,
+        "entities": {
+          "ILO": 611898.7
+        }
+      },
+      "EXP": {
+        "total": 92476319.99000001,
+        "entities": {
+          "UNDP": 77197918.0,
+          "UNESCO": 1173328.0,
+          "UNIDO": 12371069.37,
+          "UNITAR": 1734004.62
+        }
+      }
     }
   },
   "13": {
-    "total": 502974052.02,
+    "total": 505853828.7,
     "entities": {
+      "ILO": 2879776.68,
       "UN Women": 7389581.8,
       "UNCDF": 13209702.52,
       "UNDP": 294084690.0,
@@ -164,67 +482,196 @@
       "UNIDO": 54568869.33,
       "UNITAR": 3211657.92,
       "UNOPS": 51467426.74
+    },
+    "financialInformationTypes": {
+      "BUG": {
+        "total": 2879776.68,
+        "entities": {
+          "ILO": 2879776.68
+        }
+      },
+      "EXP": {
+        "total": 502974052.02000004,
+        "entities": {
+          "UN Women": 7389581.8,
+          "UNCDF": 13209702.52,
+          "UNDP": 294084690.0,
+          "UNESCO": 4985960.0,
+          "UNFCCC": 73229083.0,
+          "UNICEF": 827080.71,
+          "UNIDO": 54568869.33,
+          "UNITAR": 3211657.92,
+          "UNOPS": 51467426.74
+        }
+      }
     }
   },
   "14": {
-    "total": 37552331.93,
+    "total": 37678971.96,
     "entities": {
+      "ILO": 126640.03,
       "UNDP": 32727465.0,
       "UNESCO": 4031155.0,
       "UNIDO": 306770.71,
       "UNITAR": 20353.89,
       "UNOPS": 466587.33
+    },
+    "financialInformationTypes": {
+      "BUG": {
+        "total": 126640.03,
+        "entities": {
+          "ILO": 126640.03
+        }
+      },
+      "EXP": {
+        "total": 37552331.93,
+        "entities": {
+          "UNDP": 32727465.0,
+          "UNESCO": 4031155.0,
+          "UNIDO": 306770.71,
+          "UNITAR": 20353.89,
+          "UNOPS": 466587.33
+        }
+      }
     }
   },
   "15": {
-    "total": 173870943.52,
+    "total": 174343188.14,
     "entities": {
+      "ILO": 472244.62,
       "UNDP": 170239273.0,
       "UNESCO": 2663395.0,
       "UNIDO": 306771.59,
       "UNITAR": 33283.41,
       "UNOPS": 628220.52
+    },
+    "financialInformationTypes": {
+      "BUG": {
+        "total": 472244.62,
+        "entities": {
+          "ILO": 472244.62
+        }
+      },
+      "EXP": {
+        "total": 173870943.52,
+        "entities": {
+          "UNDP": 170239273.0,
+          "UNESCO": 2663395.0,
+          "UNIDO": 306771.59,
+          "UNITAR": 33283.41,
+          "UNOPS": 628220.52
+        }
+      }
     }
   },
   "16": {
-    "total": 10005022187.39,
+    "total": 10404328047.95,
     "entities": {
       "CTBTO": 113298823.0,
       "ICC": 191354717.8,
+      "ILO": 39690864.46,
+      "ITLOS": 0.0,
       "Peacekeeping Operations": 7336866636.0,
       "UN Women": 69393287.98,
       "UNDP": 1271308041.0,
       "UNESCO": 17644316.0,
       "UNFPA": 24240885.9,
+      "UNHCR": 359614996.1,
       "UNICEF": 606504135.9,
       "UNIDO": 412445.72,
       "UNITAR": 12620901.39,
       "UNOPS": 361377996.7
+    },
+    "financialInformationTypes": {
+      "BUD": {
+        "total": 359614996.1,
+        "entities": {
+          "ITLOS": 0.0,
+          "UNHCR": 359614996.1
+        }
+      },
+      "BUG": {
+        "total": 39690864.45999999,
+        "entities": {
+          "ILO": 39690864.46
+        }
+      },
+      "EXP": {
+        "total": 10005022187.39,
+        "entities": {
+          "CTBTO": 113298823.0,
+          "ICC": 191354717.8,
+          "Peacekeeping Operations": 7336866636.0,
+          "UN Women": 69393287.98,
+          "UNDP": 1271308041.0,
+          "UNESCO": 17644316.0,
+          "UNFPA": 24240885.9,
+          "UNICEF": 606504135.9,
+          "UNIDO": 412445.72,
+          "UNITAR": 12620901.39,
+          "UNOPS": 361377996.7
+        }
+      }
     }
   },
   "17": {
-    "total": 1922917087.56,
+    "total": 3394730021.38,
     "entities": {
+      "ILO": 22889309.8,
       "UN Women": 3628994.78,
       "UNCDF": 8240598.58,
       "UNDP": 230347215.0,
       "UNESCO": 15356622.0,
       "UNFPA": 109780085.13,
+      "UNHCR": 492172525.5,
       "UNICEF": 1029617368.0,
       "UNIDO": 11015937.93,
       "UNITAR": 1641369.74,
       "UNOPS": 128877294.6,
+      "WFP": 956751098.5200001,
       "WHO": 95337928.0,
       "WTO": 289073673.8
+    },
+    "financialInformationTypes": {
+      "BUD": {
+        "total": 1448923624.02,
+        "entities": {
+          "UNHCR": 492172525.5,
+          "WFP": 956751098.5200001
+        }
+      },
+      "BUG": {
+        "total": 22889309.8,
+        "entities": {
+          "ILO": 22889309.8
+        }
+      },
+      "EXP": {
+        "total": 1922917087.56,
+        "entities": {
+          "UN Women": 3628994.78,
+          "UNCDF": 8240598.58,
+          "UNDP": 230347215.0,
+          "UNESCO": 15356622.0,
+          "UNFPA": 109780085.13,
+          "UNICEF": 1029617368.0,
+          "UNIDO": 11015937.93,
+          "UNITAR": 1641369.74,
+          "UNOPS": 128877294.6,
+          "WHO": 95337928.0,
+          "WTO": 289073673.8
+        }
+      }
     }
   },
   "non_sdg": {
     "total": 0,
     "entities": {},
-    "basis": "Reported CEB x00 actual expenditure (Non-SDG)."
+    "financialInformationTypes": {},
+    "basis": "Reported CEB x00 expenditure (Non-SDG), including accrual and budgetary accounting bases."
   },
   "sdg_not_specified": {
-    "total": 30643186954.446907,
+    "total": 18529304521.736904,
     "entities": {
       "CTBTO": 0.0,
       "FAO": 1550512909.6361659,
@@ -233,7 +680,7 @@
       "ICAO": 168394389.04850945,
       "ICC": -1.2642000019550323,
       "IFAD": 0.0,
-      "ILO": 644063591.521254,
+      "ILO": -0.0587460994720459,
       "IMO": 68551673.3873,
       "IOM": 2178037649.0214305,
       "ITC": 131295000.0,
@@ -253,7 +700,7 @@
       "UNESCO": 319006798.0,
       "UNFCCC": 0.0,
       "UNFPA": -0.08390140533447266,
-      "UNHCR": 4432455082.893,
+      "UNHCR": 1162569629.4929996,
       "UNICEF": 550505385.1900005,
       "UNIDO": -0.05378901958465576,
       "UNITAID": 0.0,
@@ -265,12 +712,12 @@
       "UNU": 70736556.0,
       "UNV": 28952238.139999997,
       "UPU": 95597653.449233,
-      "WFP": 8199933387.918462,
+      "WFP": 0.1884613037109375,
       "WHO": -13.0,
       "WIPO": 377934362.23,
       "WMO": 94908267.27161081,
       "WTO": 0.009999990463256836
     },
-    "basis": "CEB entity expenses minus reported actual expenditure for SDGs 1-17 and reported Non-SDG (x00); includes missing SDG reporting and signed reconciliation differences."
+    "basis": "CEB entity expenses minus reported accrual and budgetary-basis expenditure for SDGs 1-17 and reported Non-SDG (x00); includes missing SDG reporting and signed reconciliation differences."
   }
 }

@@ -24,8 +24,10 @@ inter-agency transfers or infer an alternative consolidated accounting basis.
 
 - Geography uses **E06** total-expense records. E06A/B/C are overlapping components
   and are excluded from the geographic total.
-- Goals uses **EXP** actual expense observations. **BUD** and **BUG** budget records
-  are excluded from actual expenditure.
+- Goals includes **EXP** accrual expenses and **BUD** / historical **BUG**
+  budgetary-basis expenditure. These represent reported spending under different
+  accounting bases, not planned budgets. Preserve the original codes in goal
+  exports (`financialInformationTypes`), including mixed-basis entity-years.
 - Function totals use the CEB function classification on organization expenses.
 - The function × geography chart uses the dimensions jointly reported in the
   geographic source. It does not estimate the intersection from separate totals.
@@ -49,6 +51,24 @@ reconciliation differences. It does not establish whether expenditure is relevan
 to an SDG and is not distributed among individual goals. Source-provided x00 is
 never added twice. A blank SDG year is unavailable; do not create an empty year
 to match the organization dataset's selector.
+
+CEB Standard V (March 2024 edition, printed p. 38) permits a budgetary-basis
+exception to accrual reporting, subject to reconciliation with financial
+statements, full operational coverage, donor-reporting consistency and consistent
+use over time. The February 2026 code list's Miscellaneous sheet defines EXP as
+"Expense (IPSAS/IFRS)" and BUG as "Budgetary expenditure"; the SDG CSV uses BUD
+as well as historical BUG. BUD is treated as the source's budgetary-expenditure
+variant. An entity may have both bases in one year (IMO in 2021); retain all
+reported amounts rather than assuming the two codes duplicate each other.
+
+Sources: [CEB Standard V](https://unsceb.org/assets/media/pages/UN-Data-Standards-for-system-wide-reporting-of-financial-data.pdf#page=39)
+and [CEB code lists](https://unsceb.org/data-standards-united-nations-system-wide-reporting-financial-data/).
+Small net system balances can conceal offsetting entity discrepancies. Keep
+signed Not specified balances; do not discard or redistribute them as rounding.
+Run `uv run python python/sdg_reconciliation.py` for all available SDG years:
+it reports separate revenue and expenditure gaps and the gross entity differences
+before positive and negative balances offset. Revenue sums known source amounts
+using the portal's financing controls and reports missing source cells separately.
 
 ## Historical functions
 

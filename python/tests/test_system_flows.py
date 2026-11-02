@@ -15,6 +15,22 @@ spec.loader.exec_module(module)
 
 
 class FlowTests(unittest.TestCase):
+    def test_goal_flows_include_budgetary_expenditure_and_retain_basis(self):
+        totals = pd.DataFrame([dict(calendar_year=2024, agency='UN', amount=100)])
+        geography = pd.DataFrame([
+            {'calendar_year': 2024, 'agency': 'UN', 'amount': 100, 'location_type': 'COU', 'country/territory': 'France', 'region': 'Europe'},
+        ])
+        goals = pd.DataFrame([
+            dict(calendar_year=2024, entity_code='UN', amount=20, sdg_goal='1', type_of_financial_information='EXP'),
+            dict(calendar_year=2024, entity_code='UN', amount=70, sdg_goal='1', type_of_financial_information='BUD'),
+            dict(calendar_year=2024, entity_code='UN', amount=10, sdg_goal='x00', type_of_financial_information='BUG'),
+        ])
+        entity = module.build_export(totals, geography, goals)['data'][0]['entities']['UN Secretariat']
+        self.assertEqual(entity['goalsDifference'], 0)
+        goal = next(row for row in entity['goals'] if row['key'] == '1')
+        self.assertEqual(goal['amount'], 90)
+        self.assertEqual(goal['financialInformationTypes'], {'BUD': 70, 'EXP': 20})
+
     def test_corrected_geography_retains_source_codes_and_discloses_change(self):
         totals = pd.DataFrame([dict(calendar_year=2024, agency='UN', amount=100)])
         geography = pd.DataFrame([

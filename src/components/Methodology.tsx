@@ -392,8 +392,9 @@ export function GoalsMethodologyNotes() {
   return (
     <p>
       Expenditure by Sustainable Development Goal uses CEB financial statistics.
-      Only actual expenditure records are included; source budget records are
-      excluded. Non-SDG preserves expenditure reported under CEB&apos;s x00
+      Reported expenditure includes accrual expenses (EXP) and expenditure on a
+      budgetary accounting basis (BUD, historically BUG), as permitted by CEB&apos;s
+      reporting standard. Non-SDG preserves expenditure reported under CEB&apos;s x00
       code. Not specified is calculated per entity as CEB expenditure minus
       reported allocations to SDGs 1–17 and Non-SDG, so the total reconciles to
       organization expenditure. This separate remainder includes missing SDG
