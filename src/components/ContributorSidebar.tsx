@@ -31,7 +31,10 @@ import {
   FinancingInstrumentDataPoint,
 } from "@/components/charts/FinancingInstrumentChart";
 import { FinancingInstrumentLabel } from "@/components/FinancingInstrumentLabel";
-import { getFinancingInstrumentColor } from "@/lib/financingInstruments";
+import {
+  getFinancingInstrumentColor,
+  getFinancingInstrumentLabel,
+} from "@/lib/financingInstruments";
 import {
   Tooltip,
   TooltipContent,
@@ -48,6 +51,7 @@ interface ContributorTrendsData {
       year: number;
       available?: boolean;
       financingIncomplete?: boolean;
+      unresolved?: number;
       assessed: number;
       voluntary_earmarked: number;
       voluntary_unearmarked: number;
@@ -59,6 +63,7 @@ interface ContributorTrendsData {
       year: number;
       available?: boolean;
       financingIncomplete?: boolean;
+      unresolved?: number;
       other: number;
       assessed: number;
       voluntary_earmarked: number;
@@ -267,13 +272,15 @@ export function ContributorSidebar({
           }
         >
           <div className="relative space-y-6">
-            {yearContributor && (
-              <p className="text-sm text-gray-600">
-                {contributorOriginLabel(displayContributor.record_kind)}
-                {displayContributor.record_kind === "calculated_balance" &&
-                  ". Calculated from reported control totals minus the available contributor detail; signed differences are retained."}
-              </p>
-            )}
+            {yearContributor &&
+              (displayContributor.record_kind === "reported_aggregate" ||
+                displayContributor.record_kind === "calculated_balance") && (
+                <p className="text-sm text-gray-600">
+                  {contributorOriginLabel(displayContributor.record_kind)}
+                  {displayContributor.record_kind === "calculated_balance" &&
+                    ". Calculated from reported control totals minus the available contributor detail; signed differences are retained."}
+                </p>
+              )}
             {yearContributor &&
               displayContributor.categories &&
               displayContributor.categories.length > 1 && (
@@ -296,52 +303,6 @@ export function ContributorSidebar({
                   ))}
                 </div>
               )}
-            {yearContributor && displayContributor.financingIncomplete && (
-              <section
-                className="space-y-3 rounded border border-gray-200 p-3 text-sm"
-                data-unresolved-financing
-              >
-                <h3 className="font-semibold">
-                  Source records with unresolved financing
-                </h3>
-                <p>
-                  These reported amounts have historical financing codes whose
-                  meaning cannot be verified. They are separate from the
-                  reconciled four-type amounts below and must not be added to
-                  system totals. Gaps in the financing trend indicate this
-                  incomplete breakdown.
-                </p>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left">
-                    <thead>
-                      <tr>
-                        <th className="p-1">Recipient</th>
-                        <th className="p-1">CEB code</th>
-                        <th className="p-1 text-right">Source amount</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {displayContributor.unresolvedFinancingRecords?.map(
-                        (record, index) => (
-                          <tr key={index} className="border-t">
-                            <td className="p-1">{record.entity}</td>
-                            <td className="p-1">{record.sourceCode}</td>
-                            <td className="p-1 text-right tabular-nums">
-                              {formatBudget(record.amount)}
-                            </td>
-                          </tr>
-                        ),
-                      )}
-                    </tbody>
-                  </table>
-                </div>
-              </section>
-            )}
-            {revenueCoverage(selectedYear)?.note && (
-              <p className="text-sm text-gray-600">
-                {revenueCoverage(selectedYear)?.note}
-              </p>
-            )}
             <DelayedChartLoading
               pending={loadingYear}
               requestKey={selectedYear}
@@ -376,11 +337,7 @@ export function ContributorSidebar({
 
                 <div>
                   <FinancialPanelTotalRow
-                    label={
-                      displayContributor.financingIncomplete
-                        ? "Revenue with identified financing"
-                        : "Revenue"
-                    }
+                    label="Revenue"
                     value={formatBudget(totalContributions)}
                   />
 
@@ -502,7 +459,9 @@ export function ContributorSidebar({
                                                     ),
                                                 }}
                                               />
-                                              {type}
+                                              {getFinancingInstrumentLabel(
+                                                type,
+                                              )}
                                             </span>
                                             <span className="font-medium">
                                               {formatBudgetFixed(amount)}

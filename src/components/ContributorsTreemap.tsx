@@ -4,7 +4,7 @@ import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
-import { FundingSourceLabel } from "@un-eosg/ui/components/funding-source-label";
+import { FinancingInstrumentLabel } from "@/components/FinancingInstrumentLabel";
 
 import {
   GroupedTreemap,
@@ -21,6 +21,7 @@ import {
 } from "@/hooks/useDeepLink";
 import {
   contributorCategoryViews,
+  availableContributionTypes,
   contributorOriginLabel,
   CONTRIBUTION_TYPES,
   type Contributor,
@@ -35,8 +36,6 @@ import {
 } from "@/lib/contributors";
 import {
   getFinancingInstrumentLabel,
-  FINANCING_INSTRUMENT_TOOLTIPS,
-  FINANCING_SOURCE_KEYS,
   getFinancingInstrumentColor,
 } from "@/lib/financingInstruments";
 import { generateYearRange, useYearRanges } from "@/lib/useYearRanges";
@@ -136,7 +135,7 @@ function ContributorTooltip({
           getFinancingInstrumentLabel(type) +
           (value < 0 ? " (negative adjustment)" : ""),
         value: formatBudget(value),
-        color: context.leaf.segments?.find((segment) => segment.label === type)
+        color: context.leaf.segments?.find((segment) => segment.key === type)
           ?.color,
         share:
           value >= 0 && context.leaf.value > 0
@@ -272,18 +271,10 @@ export function ContributorsTreemap() {
       ),
     [signedContributors],
   );
+  const availableFunding = availableContributionTypes(contributors);
   const visibleContributors = signedContributors.filter((item) =>
     matchesQuery(item.name, searchQuery),
   );
-  const signedAmounts = visibleContributors.map((item) => ({
-    group: isUnattributed(item)
-      ? "Unattributed"
-      : isGovernmentDonor(item.status)
-        ? "Government"
-        : "Non-Government",
-    label: item.name,
-    amount: getTotalContributions(item.contributions),
-  }));
 
   const toLeaf = useCallback(
     (contributor: Contributor) => {
@@ -317,11 +308,12 @@ export function ContributorsTreemap() {
           !isUnattributed(contributor) && !hasNegativeAdjustment
             ? [...breakdownEntries].reverse().map(([type, value]) => ({
                 key: type,
-                label: type,
+                label: getFinancingInstrumentLabel(type),
                 value,
-                color: isGovernmentDonor(contributor.status)
-                  ? getFinancingInstrumentColor(type)
-                  : `color-mix(in srgb, ${row.color} ${type === "Assessed" ? 64 : type === "Voluntary un-earmarked" ? 76 : type === "Voluntary earmarked" ? 88 : 100}%, black)`,
+                color:
+                  isGovernmentDonor(contributor.status) || type === "Unresolved"
+                    ? getFinancingInstrumentColor(type)
+                    : `color-mix(in srgb, ${row.color} ${type === "Assessed" ? 64 : type === "Voluntary un-earmarked" ? 76 : type === "Voluntary earmarked" ? 88 : 100}%, black)`,
                 data: type,
               }))
             : undefined,
@@ -425,11 +417,6 @@ export function ContributorsTreemap() {
 
   return (
     <div className="relative w-full" aria-busy={loading}>
-      {revenueCoverage(selectedYear)?.note && (
-        <p role="note" className="mb-3 text-sm text-gray-600">
-          {revenueCoverage(selectedYear)?.note}
-        </p>
-      )}
       <DelayedChartLoading pending={loading} requestKey={selectedYear} />
       {contributors.length > 0 && (
         <>
@@ -441,10 +428,7 @@ export function ContributorsTreemap() {
               rowGap: 3,
             }}
             footer={
-              <ChartFooter
-                hint="Click on a contributor to explore details"
-                signedAmounts={signedAmounts}
-              />
+              <ChartFooter hint="Click on a contributor to explore details" />
             }
             yearControl={
               <YearSlider
@@ -459,13 +443,12 @@ export function ContributorsTreemap() {
                 role="group"
                 aria-label="Financing instruments"
               >
-                {CONTRIBUTION_TYPES.map(({ type }) => (
-                  <FundingSourceLabel
+                {availableFunding.map(({ type }) => (
+                  <FinancingInstrumentLabel
                     key={type}
-                    source={FINANCING_SOURCE_KEYS[type]}
-                    label={getFinancingInstrumentLabel(type)}
-                    explanation={FINANCING_INSTRUMENT_TOOLTIPS[type]}
-                    palette="gray"
+                    type={type}
+                    neutral
+                    variant="pill"
                     selected={selectedFunding.includes(type)}
                     onToggle={() =>
                       setSelectedFunding((current) =>
@@ -525,7 +508,9 @@ export function ContributorsTreemap() {
               },
             ]}
             totalLabel={
-              selectedFunding.length === CONTRIBUTION_TYPES.length
+              availableFunding.every(({ type }) =>
+                selectedFunding.includes(type),
+              )
                 ? "Total revenue"
                 : "Selected revenue"
             }
@@ -538,7 +523,9 @@ export function ContributorsTreemap() {
             )}
             emptyContent={
               <div className="flex h-full items-center justify-center text-sm text-gray-500">
-                {selectedFunding.length === 0
+                {!availableFunding.some(({ type }) =>
+                  selectedFunding.includes(type),
+                )
                   ? "Select a financing instrument to show revenue."
                   : "No contributors match the selected financing instruments and search."}
               </div>
@@ -563,61 +550,6 @@ export function ContributorsTreemap() {
         </div>
       )}
 
-      {contributors.some((item) => item.financingIncomplete) && (
-        <details
-          className="my-6 rounded border border-gray-200 p-4 text-sm"
-          data-unresolved-financing
-        >
-          <summary className="cursor-pointer font-medium">
-            Historical contributor records with unresolved financing ·{" "}
-            {selectedYear}
-          </summary>
-          <p className="my-3 text-gray-600">
-            CEB reports these contributor amounts, but their historical codes
-            cannot be verified against the four financing types. These source
-            observations are shown separately and must not be added to the
-            reconciled chart total.
-          </p>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left">
-              <thead>
-                <tr>
-                  <th className="p-2">Contributor</th>
-                  <th className="p-2">Recipient organization</th>
-                  <th className="p-2">CEB code</th>
-                  <th className="p-2 text-right">Source amount</th>
-                </tr>
-              </thead>
-              <tbody>
-                {contributors
-                  .filter((item) => matchesQuery(item.name, searchQuery))
-                  .flatMap((item) =>
-                    (item.unresolvedFinancingRecords ?? []).map(
-                      (record, index) => (
-                        <tr key={`${item.name}:${index}`} className="border-t">
-                          <td className="p-2">
-                            <button
-                              type="button"
-                              className="text-left underline"
-                              onClick={() => open(item)}
-                            >
-                              {item.name}
-                            </button>
-                          </td>
-                          <td className="p-2">{record.entity}</td>
-                          <td className="p-2">{record.sourceCode}</td>
-                          <td className="p-2 text-right tabular-nums">
-                            {formatBudget(record.amount)}
-                          </td>
-                        </tr>
-                      ),
-                    ),
-                  )}
-              </tbody>
-            </table>
-          </div>
-        </details>
-      )}
       {selectedContributor && (
         <ContributorSidebar
           contributor={selectedContributor}

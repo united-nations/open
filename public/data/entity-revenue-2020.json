@@ -14913,7 +14913,7 @@
     "total": 192948168.72,
     "year": 2020,
     "by_type": {
-      "Assessed": 142401736.10000002,
+      "Assessed": 142401736.1,
       "Other": 38288092.87,
       "Voluntary earmarked": 12258339.75
     },
@@ -20216,8 +20216,7 @@
     "by_type": {
       "Assessed": 2953043728.92,
       "Other": 834500524.3,
-      "Voluntary earmarked": 2726514181.5,
-      "Voluntary un-earmarked": 0.0
+      "Voluntary earmarked": 2726514181.5
     },
     "by_donor": [
       {
@@ -22138,7 +22137,7 @@
     "year": 2020,
     "by_type": {
       "Assessed": 17910234.37,
-      "Other": 930831.32,
+      "Other": 930831.3200000001,
       "Voluntary earmarked": 3194667.5
     },
     "by_donor": [
@@ -24324,7 +24323,7 @@
     "year": 2020,
     "by_type": {
       "Assessed": 15540469.83,
-      "Other": 29722487.92,
+      "Other": 29722487.919999998,
       "Voluntary earmarked": 157645234.34,
       "Voluntary un-earmarked": 5270731.9399999995
     },
@@ -27038,7 +27037,7 @@
     "year": 2020,
     "by_type": {
       "Assessed": 241624848.34,
-      "Other": 34358531.7,
+      "Other": 34358531.699999996,
       "Voluntary earmarked": 438035533.09,
       "Voluntary un-earmarked": 81810335.77
     },
@@ -33408,7 +33407,7 @@
     "year": 2020,
     "by_type": {
       "Assessed": 40092883.35,
-      "Other": 23782698.4,
+      "Other": 23782698.400000002,
       "Voluntary earmarked": 4295634490.99,
       "Voluntary un-earmarked": 532138455.4
     },
@@ -34076,6 +34075,7 @@
     "total": 7548350694.28,
     "year": 2020,
     "by_type": {
+      "Assessed": 0.0,
       "Other": 246046799.78,
       "Voluntary earmarked": 6120921701.5,
       "Voluntary un-earmarked": 1181382193.0
@@ -35381,7 +35381,7 @@
     "year": 2020,
     "by_type": {
       "Assessed": 85229781.6,
-      "Other": 29903409.96,
+      "Other": 29903409.959999997,
       "Voluntary earmarked": 151709282.22
     },
     "by_donor": [
@@ -36974,7 +36974,7 @@
     "year": 2020,
     "by_type": {
       "Other": 431140.93,
-      "Voluntary earmarked": 33219498.730000004,
+      "Voluntary earmarked": 33219498.73,
       "Voluntary un-earmarked": 424943.33999999997
     },
     "by_donor": [
@@ -38666,7 +38666,8 @@
     "year": 2020,
     "by_type": {
       "Other": 8311992.73,
-      "Voluntary earmarked": 35377506.07
+      "Voluntary earmarked": 35377506.07,
+      "Voluntary un-earmarked": 0.0
     },
     "by_donor": [
       {
@@ -43191,7 +43192,7 @@
     "by_type": {
       "Assessed": 19876848.24,
       "Other": 503908738.7,
-      "Voluntary earmarked": 6533560.280000001
+      "Voluntary earmarked": 6533560.28
     },
     "by_donor": [
       {

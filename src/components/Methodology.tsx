@@ -156,19 +156,30 @@ export function ContributorsMethodologyNotes() {
     <>
       <h4 className="font-medium text-gray-900">Revenue data</h4>
       <p>
+        Contributor data starts in 2011; government contributor detail starts in
+        2013. Remaining revenue in 2011–2012 is shown as Unattributed. Missing
+        contributor observations do not mean zero contributions.
+      </p>
+      <p>
+        Revenue totals include negative reported amounts and calculated
+        balances. Treemap areas show positive amounts only, so their combined
+        area can exceed the net revenue total. Negative amounts remain included
+        in totals and contributor details.
+      </p>
+      <p>
         Revenue figures combine CEB data on government and non-government
         contributors and other revenue, including revenue from activities.
         Contributor-view totals include signed adjustments; they do not
         eliminate inter-agency transfers. Other revenue is a financing
         instrument, while Other contributor categories are aggregates or
         calculated remainders. Unattributed is revenue not assigned within the
-        financing breakdown; it includes missing attribution and unresolved
-        financing. For 2021 onwards, contributors are categorized by type
-        (Governments, Foundations, Private Sector, Multilateral Organizations,
-        etc.) using the CEB&apos;s contributor classification system. For
-        earlier years, contributor categories are partially available. Where
-        specific contributors are not identified, contributions are shown as
-        aggregated totals (e.g., &ldquo;Other Foundations&rdquo;).
+        contributor breakdown; the financing instrument may still be known. For
+        2021 onwards, contributors are categorized by type (Governments,
+        Foundations, Private Sector, Multilateral Organizations, etc.) using the
+        CEB&apos;s contributor classification system. For earlier years,
+        contributor categories are partially available. Where specific
+        contributors are not identified, contributions are shown as aggregated
+        totals (e.g., &ldquo;Other Foundations&rdquo;).
       </p>
       <p>
         Where a reported total exceeds identified contributions, the remainder

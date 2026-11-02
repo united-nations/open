@@ -8,7 +8,46 @@ const {
   getTotalContributions,
   contributorOriginLabel,
   contributorFinancingPoint,
+  availableContributionTypes,
 } = await moduleAt("src/lib/contributors.ts");
+
+test("other financing instrument is a visible fifth series only where present", async () => {
+  const modern = { contributions: { UNDP: { Other: 10 } } };
+  assert.equal(availableContributionTypes([modern]).length, 4);
+  const { getFinancingInstrumentLabel, FINANCING_INSTRUMENT_TOOLTIPS } =
+    await moduleAt("src/lib/financingInstruments.ts");
+  assert.equal(
+    getFinancingInstrumentLabel("Unresolved"),
+    "Other financing instrument",
+  );
+  assert.match(FINANCING_INSTRUMENT_TOOLTIPS.Unresolved, /cannot be assigned/);
+  const historical = { contributions: { UNDP: { Unresolved: 217257807 } } };
+  assert.equal(
+    availableContributionTypes([historical]).at(-1).type,
+    "Unresolved",
+  );
+  assert.equal(
+    availableContributionTypes([{ contributions: { UNDP: { Unresolved: 0 } } }])
+      .length,
+    5,
+  );
+  const point = contributorFinancingPoint({
+    year: 2015,
+    assessed: 0,
+    voluntary_unearmarked: 0,
+    voluntary_earmarked: 0,
+    other: 0,
+    unresolved: 217257807,
+    financingIncomplete: true,
+  });
+  assert.equal(point.Unresolved, 217257807);
+  assert.equal(point.Assessed, 0);
+  assert.equal(
+    contributorFinancingPoint({ ...point, year: 2015, available: false })
+      .Unresolved,
+    null,
+  );
+});
 
 test("contributor displays preserve meaningful parentheses and unfamiliar markers", () => {
   for (const name of [

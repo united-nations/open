@@ -96,14 +96,18 @@ try {
     { waitUntil: "networkidle" },
   );
   await page.getByRole("dialog").waitFor();
-  assert.ok(
-    (await page.getByRole("dialog").innerText()).includes(
-      "Source records with unresolved financing",
-    ),
+  assert.equal(await page.locator("[data-unresolved-financing]").count(), 0);
+  await page
+    .getByRole("dialog")
+    .getByText("Other financing instrument", { exact: true })
+    .first()
+    .waitFor();
+  assert.doesNotMatch(
+    await page.getByRole("dialog").innerText(),
+    /Source records with unresolved financing/,
   );
-  assert.ok((await page.getByRole("dialog").innerText()).includes("R08"));
   results.push(
-    "2015 UNDP: unresolved financing preserved in an explorable source-record disclosure",
+    "2015 UNDP: fifth financing category integrated into sidebar without a source-record table",
   );
   await page.goto(
     portalUrl +
@@ -149,13 +153,23 @@ try {
     name: "Revenue by financing instrument, nominal US dollars",
     exact: true,
   });
-  const total2015 = financingTable
-    .getByRole("row")
-    .filter({
-      has: page.getByRole("rowheader", { name: "2015", exact: true }),
-    });
+  const total2015 = financingTable.getByRole("row").filter({
+    has: page.getByRole("rowheader", { name: "2015", exact: true }),
+  });
   assert.equal(await total2015.count(), 1);
   assert.ok(!(await total2015.innerText()).includes("Unavailable"));
+  assert.doesNotMatch(
+    await financingTable.innerText(),
+    /Other financing instrument/,
+  );
+  assert.equal(await page.locator("[data-unresolved-financing]").count(), 0);
+  assert.equal(
+    await page
+      .locator("[data-chart-hint]")
+      .getByText(/Negative amounts included/)
+      .count(),
+    0,
+  );
   results.push(
     "Overall 2015 financing totals remain available despite unresolved donor attribution",
   );

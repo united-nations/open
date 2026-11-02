@@ -136,7 +136,7 @@ export function buildSystemFlows(
             : key === "Revenue reconciliation difference"
               ? "Calculated difference between reported revenue and its contributor breakdown."
               : key === "Unattributed"
-                ? "Revenue not assigned within this financing breakdown, including missing attribution and unresolved financing."
+                ? "Revenue not assigned to a contributor in the available CEB breakdown."
                 : choices.funding === "contributor" &&
                     contributor?.record_kind === "calculated_balance"
                   ? "Calculated balance between a reported control total and the available contributor detail."

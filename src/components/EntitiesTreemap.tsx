@@ -28,6 +28,7 @@ import {
 } from "@/lib/entities";
 import {
   getFinancingInstrumentLabel,
+  getFinancingInstrumentColor,
   FINANCING_INSTRUMENT_ORDER,
   type FinancingInstrumentType,
 } from "@/lib/financingInstruments";
@@ -44,6 +45,7 @@ const FUNDING_SHADE_STRENGTH: Record<FinancingInstrumentType, number> = {
   "Voluntary un-earmarked": 1,
   "Voluntary earmarked": 2,
   Other: 3,
+  Unresolved: 0,
 };
 
 function fundingSegmentColor(
@@ -51,6 +53,7 @@ function fundingSegmentColor(
   type: FinancingInstrumentType,
   darkText: boolean,
 ): string {
+  if (type === "Unresolved") return getFinancingInstrumentColor(type);
   const shade = FUNDING_SHADE_STRENGTH[type];
   // Light groups keep dark labels; dark groups keep light labels.
   const percentage = darkText ? 100 - shade * 20 : 64 + shade * 12;
@@ -452,7 +455,13 @@ export function EntitiesTreemap() {
           >
             <div className="min-h-0 overflow-hidden">
               <div className="flex flex-wrap gap-2 pt-3">
-                {FINANCING_INSTRUMENT_ORDER.map((type) => (
+                {FINANCING_INSTRUMENT_ORDER.filter(
+                  (type) =>
+                    type !== "Unresolved" ||
+                    Object.values(revenueData).some(
+                      (value) => "Unresolved" in value.by_type,
+                    ),
+                ).map((type) => (
                   <FinancingInstrumentLabel
                     neutral
                     key={type}

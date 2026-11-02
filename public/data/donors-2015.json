@@ -3417,8 +3417,78 @@
     ],
     "record_kind": "reported_named",
     "is_other": false,
-    "contributions": {},
-    "categoryContributions": {},
+    "contributions": {
+      "FAO": {
+        "Unresolved": 3603709.83
+      },
+      "IFAD": {
+        "Unresolved": 516000.0
+      },
+      "ITU": {
+        "Unresolved": 649345.11
+      },
+      "PAHO": {
+        "Unresolved": 2344026.0
+      },
+      "UN Women": {
+        "Unresolved": 1000026.0
+      },
+      "UNAIDS": {
+        "Unresolved": 1631023.0
+      },
+      "UNDP": {
+        "Unresolved": 12356281.0
+      },
+      "UNESCO": {
+        "Unresolved": 1001002.0
+      },
+      "UNHCR": {
+        "Unresolved": 3345560.97
+      },
+      "WFP": {
+        "Unresolved": 700000.0
+      },
+      "WHO": {
+        "Unresolved": 188548127.0
+      }
+    },
+    "categoryContributions": {
+      "Non-Government": {
+        "FAO": {
+          "Unresolved": 3603709.83
+        },
+        "IFAD": {
+          "Unresolved": 516000.0
+        },
+        "ITU": {
+          "Unresolved": 649345.11
+        },
+        "PAHO": {
+          "Unresolved": 2344026.0
+        },
+        "UN Women": {
+          "Unresolved": 1000026.0
+        },
+        "UNAIDS": {
+          "Unresolved": 1631023.0
+        },
+        "UNDP": {
+          "Unresolved": 12356281.0
+        },
+        "UNESCO": {
+          "Unresolved": 1001002.0
+        },
+        "UNHCR": {
+          "Unresolved": 3345560.97
+        },
+        "WFP": {
+          "Unresolved": 700000.0
+        },
+        "WHO": {
+          "Unresolved": 188548127.0
+        }
+      }
+    },
     "unresolvedContributions": {
       "FAO": 3603709.83,
       "IFAD": 516000.0,
@@ -3566,7 +3636,7 @@
         "sourceRow": 67
       }
     ],
-    "total": 0,
+    "total": 215695100.91,
     "unresolvedTotal": 215695100.91,
     "financingIncomplete": true
   },
@@ -10364,8 +10434,162 @@
     ],
     "record_kind": "reported_named",
     "is_other": false,
-    "contributions": {},
-    "categoryContributions": {},
+    "contributions": {
+      "FAO": {
+        "Unresolved": 124199812.1
+      },
+      "IAEA": {
+        "Unresolved": 21307031.73
+      },
+      "ICAO": {
+        "Unresolved": 554772.56
+      },
+      "IFAD": {
+        "Unresolved": 46468000.0
+      },
+      "ILO": {
+        "Unresolved": 16178868.0
+      },
+      "IMO": {
+        "Unresolved": 353031.11
+      },
+      "IOM": {
+        "Unresolved": 129615323.0
+      },
+      "ITC": {
+        "Unresolved": 7607000.0
+      },
+      "UN Secretariat": {
+        "Unresolved": 76414533.16999999
+      },
+      "UN Women": {
+        "Unresolved": 6327038.63
+      },
+      "UN-Habitat": {
+        "Unresolved": 25025018.35
+      },
+      "UNAIDS": {
+        "Unresolved": 11392.0
+      },
+      "UNDP": {
+        "Unresolved": 217257807.0
+      },
+      "UNEP": {
+        "Unresolved": 15326106.51
+      },
+      "UNESCO": {
+        "Unresolved": 17607920.0
+      },
+      "UNFPA": {
+        "Unresolved": 17988639.38
+      },
+      "UNHCR": {
+        "Unresolved": 172436583.5
+      },
+      "UNICEF": {
+        "Unresolved": 283384058.43
+      },
+      "UNIDO": {
+        "Unresolved": 24417072.950000003
+      },
+      "UNODC": {
+        "Unresolved": 30241610.0
+      },
+      "UNRWA": {
+        "Unresolved": 181847533.0
+      },
+      "UNU": {
+        "Unresolved": 157757.0
+      },
+      "WFP": {
+        "Unresolved": 242046301.63000003
+      },
+      "WHO": {
+        "Unresolved": 47648305.0
+      },
+      "WTO": {
+        "Unresolved": 2327015.14
+      }
+    },
+    "categoryContributions": {
+      "Non-Government": {
+        "FAO": {
+          "Unresolved": 124199812.1
+        },
+        "IAEA": {
+          "Unresolved": 21307031.73
+        },
+        "ICAO": {
+          "Unresolved": 554772.56
+        },
+        "IFAD": {
+          "Unresolved": 46468000.0
+        },
+        "ILO": {
+          "Unresolved": 16178868.0
+        },
+        "IMO": {
+          "Unresolved": 353031.11
+        },
+        "IOM": {
+          "Unresolved": 129615323.0
+        },
+        "ITC": {
+          "Unresolved": 7607000.0
+        },
+        "UN Secretariat": {
+          "Unresolved": 76414533.16999999
+        },
+        "UN Women": {
+          "Unresolved": 6327038.63
+        },
+        "UN-Habitat": {
+          "Unresolved": 25025018.35
+        },
+        "UNAIDS": {
+          "Unresolved": 11392.0
+        },
+        "UNDP": {
+          "Unresolved": 217257807.0
+        },
+        "UNEP": {
+          "Unresolved": 15326106.51
+        },
+        "UNESCO": {
+          "Unresolved": 17607920.0
+        },
+        "UNFPA": {
+          "Unresolved": 17988639.38
+        },
+        "UNHCR": {
+          "Unresolved": 172436583.5
+        },
+        "UNICEF": {
+          "Unresolved": 283384058.43
+        },
+        "UNIDO": {
+          "Unresolved": 24417072.950000003
+        },
+        "UNODC": {
+          "Unresolved": 30241610.0
+        },
+        "UNRWA": {
+          "Unresolved": 181847533.0
+        },
+        "UNU": {
+          "Unresolved": 157757.0
+        },
+        "WFP": {
+          "Unresolved": 242046301.63000003
+        },
+        "WHO": {
+          "Unresolved": 47648305.0
+        },
+        "WTO": {
+          "Unresolved": 2327015.14
+        }
+      }
+    },
     "unresolvedContributions": {
       "FAO": 124199812.1,
       "IAEA": 21307031.73,
@@ -10879,7 +11103,7 @@
         "sourceRow": 710
       }
     ],
-    "total": 0,
+    "total": 1706748530.19,
     "unresolvedTotal": 1706748530.19,
     "financingIncomplete": true
   },
@@ -11617,8 +11841,36 @@
     ],
     "record_kind": "reported_named",
     "is_other": false,
-    "contributions": {},
-    "categoryContributions": {},
+    "contributions": {
+      "PAHO": {
+        "Unresolved": 5843466.0
+      },
+      "UNDP": {
+        "Unresolved": -20.0
+      },
+      "UNICEF": {
+        "Unresolved": 61385430.77
+      },
+      "WHO": {
+        "Unresolved": 126421673.0
+      }
+    },
+    "categoryContributions": {
+      "Non-Government": {
+        "PAHO": {
+          "Unresolved": 5843466.0
+        },
+        "UNDP": {
+          "Unresolved": -20.0
+        },
+        "UNICEF": {
+          "Unresolved": 61385430.77
+        },
+        "WHO": {
+          "Unresolved": 126421673.0
+        }
+      }
+    },
     "unresolvedContributions": {
       "PAHO": 5843466.0,
       "UNDP": -20.0,
@@ -11682,7 +11934,7 @@
         "sourceRow": 102
       }
     ],
-    "total": 0,
+    "total": 193650549.77,
     "unresolvedTotal": 193650549.77,
     "financingIncomplete": true
   },
@@ -12603,14 +12855,46 @@
     "record_kind": "reported_named",
     "is_other": false,
     "contributions": {
+      "FAO": {
+        "Unresolved": 1357413.45
+      },
+      "ICAO": {
+        "Unresolved": 235936.46
+      },
+      "UNDP": {
+        "Unresolved": 460622633.0
+      },
       "UNEP": {
+        "Unresolved": 10000.0,
         "Voluntary earmarked": 30000.0
+      },
+      "UNIDO": {
+        "Unresolved": 109156019.39
+      },
+      "UNODC": {
+        "Unresolved": 30000.0
       }
     },
     "categoryContributions": {
       "Non-Government": {
+        "FAO": {
+          "Unresolved": 1357413.45
+        },
+        "ICAO": {
+          "Unresolved": 235936.46
+        },
+        "UNDP": {
+          "Unresolved": 460622633.0
+        },
         "UNEP": {
+          "Unresolved": 10000.0,
           "Voluntary earmarked": 30000.0
+        },
+        "UNIDO": {
+          "Unresolved": 109156019.39
+        },
+        "UNODC": {
+          "Unresolved": 30000.0
         }
       }
     },
@@ -12723,7 +13007,7 @@
         "sourceRow": 1349
       }
     ],
-    "total": 30000.0,
+    "total": 571442002.3,
     "unresolvedTotal": 571412002.3,
     "financingIncomplete": true
   },
@@ -21396,14 +21680,76 @@
     "record_kind": "reported_aggregate",
     "is_other": false,
     "contributions": {
+      "ILO": {
+        "Unresolved": 12602044.0
+      },
+      "ITC": {
+        "Unresolved": 688000.0
+      },
+      "ITU": {
+        "Unresolved": 16849646.82
+      },
+      "UN Women": {
+        "Unresolved": 25725856.56
+      },
+      "UN-Habitat": {
+        "Unresolved": 5343152.61
+      },
+      "UNAIDS": {
+        "Unresolved": 1427863.0
+      },
+      "UNDP": {
+        "Unresolved": 283313659.0
+      },
+      "UNESCO": {
+        "Unresolved": 4112240.0
+      },
       "UNFPA": {
+        "Unresolved": 77011766.43,
         "Voluntary earmarked": 10811976.51
+      },
+      "UNIDO": {
+        "Unresolved": -14856.13
+      },
+      "WHO": {
+        "Unresolved": 42065830.0
       }
     },
     "categoryContributions": {
       "Non-Government": {
+        "ILO": {
+          "Unresolved": 12602044.0
+        },
+        "ITC": {
+          "Unresolved": 688000.0
+        },
+        "ITU": {
+          "Unresolved": 16849646.82
+        },
+        "UN Women": {
+          "Unresolved": 25725856.56
+        },
+        "UN-Habitat": {
+          "Unresolved": 5343152.61
+        },
+        "UNAIDS": {
+          "Unresolved": 1427863.0
+        },
+        "UNDP": {
+          "Unresolved": 283313659.0
+        },
+        "UNESCO": {
+          "Unresolved": 4112240.0
+        },
         "UNFPA": {
+          "Unresolved": 77011766.43,
           "Voluntary earmarked": 10811976.51
+        },
+        "UNIDO": {
+          "Unresolved": -14856.13
+        },
+        "WHO": {
+          "Unresolved": 42065830.0
         }
       }
     },
@@ -21543,7 +21889,7 @@
         "sourceRow": 227
       }
     ],
-    "total": 10811976.51,
+    "total": 479937178.8,
     "unresolvedTotal": 469125202.29,
     "financingIncomplete": true
   },
@@ -25358,14 +25704,38 @@
     "record_kind": "reported_aggregate",
     "is_other": false,
     "contributions": {
+      "UNDP": {
+        "Unresolved": 20925727.0
+      },
       "UNFPA": {
         "Voluntary un-earmarked": 235987.96
+      },
+      "UNHCR": {
+        "Unresolved": 11323749.23
+      },
+      "UNICEF": {
+        "Unresolved": 1058782214.4599998
+      },
+      "WFP": {
+        "Unresolved": 7471775.24
       }
     },
     "categoryContributions": {
       "Non-Government": {
+        "UNDP": {
+          "Unresolved": 20925727.0
+        },
         "UNFPA": {
           "Voluntary un-earmarked": 235987.96
+        },
+        "UNHCR": {
+          "Unresolved": 11323749.23
+        },
+        "UNICEF": {
+          "Unresolved": 1058782214.4599998
+        },
+        "WFP": {
+          "Unresolved": 7471775.24
         }
       }
     },
@@ -26477,7 +26847,7 @@
         "sourceRow": 1540
       }
     ],
-    "total": 235987.96,
+    "total": 1098739453.8899999,
     "unresolvedTotal": 1098503465.9299998,
     "financingIncomplete": true
   },
@@ -32111,8 +32481,36 @@
     ],
     "record_kind": "reported_named",
     "is_other": false,
-    "contributions": {},
-    "categoryContributions": {},
+    "contributions": {
+      "PAHO": {
+        "Unresolved": 402452.0
+      },
+      "UNDP": {
+        "Unresolved": 368476217.0
+      },
+      "UNICEF": {
+        "Unresolved": 30156297.99
+      },
+      "WHO": {
+        "Unresolved": 1382490.0
+      }
+    },
+    "categoryContributions": {
+      "Non-Government": {
+        "PAHO": {
+          "Unresolved": 402452.0
+        },
+        "UNDP": {
+          "Unresolved": 368476217.0
+        },
+        "UNICEF": {
+          "Unresolved": 30156297.99
+        },
+        "WHO": {
+          "Unresolved": 1382490.0
+        }
+      }
+    },
     "unresolvedContributions": {
       "PAHO": 402452.0,
       "UNDP": 368476217.0,
@@ -32176,7 +32574,7 @@
         "sourceRow": 817
       }
     ],
-    "total": 0,
+    "total": 400417456.99,
     "unresolvedTotal": 400417456.99,
     "financingIncomplete": true
   },
@@ -33440,8 +33838,78 @@
     ],
     "record_kind": "reported_named",
     "is_other": false,
-    "contributions": {},
-    "categoryContributions": {},
+    "contributions": {
+      "FAO": {
+        "Unresolved": 32239227.17
+      },
+      "IOM": {
+        "Unresolved": 41311942.0
+      },
+      "PAHO": {
+        "Unresolved": 253594.0
+      },
+      "UN Women": {
+        "Unresolved": 1020118.2
+      },
+      "UNDP": {
+        "Unresolved": 7818418.0
+      },
+      "UNFPA": {
+        "Unresolved": 16086989.0
+      },
+      "UNHCR": {
+        "Unresolved": 69409676.0
+      },
+      "UNICEF": {
+        "Unresolved": 125940996.3
+      },
+      "UNITAR": {
+        "Unresolved": 187397.6
+      },
+      "WFP": {
+        "Unresolved": 161788609.26
+      },
+      "WHO": {
+        "Unresolved": 47729603.0
+      }
+    },
+    "categoryContributions": {
+      "Non-Government": {
+        "FAO": {
+          "Unresolved": 32239227.17
+        },
+        "IOM": {
+          "Unresolved": 41311942.0
+        },
+        "PAHO": {
+          "Unresolved": 253594.0
+        },
+        "UN Women": {
+          "Unresolved": 1020118.2
+        },
+        "UNDP": {
+          "Unresolved": 7818418.0
+        },
+        "UNFPA": {
+          "Unresolved": 16086989.0
+        },
+        "UNHCR": {
+          "Unresolved": 69409676.0
+        },
+        "UNICEF": {
+          "Unresolved": 125940996.3
+        },
+        "UNITAR": {
+          "Unresolved": 187397.6
+        },
+        "WFP": {
+          "Unresolved": 161788609.26
+        },
+        "WHO": {
+          "Unresolved": 47729603.0
+        }
+      }
+    },
     "unresolvedContributions": {
       "FAO": 32239227.17,
       "IOM": 41311942.0,
@@ -33677,7 +34145,7 @@
         "sourceRow": 563
       }
     ],
-    "total": 0,
+    "total": 503786570.53,
     "unresolvedTotal": 503786570.53,
     "financingIncomplete": true
   },
@@ -33993,55 +34461,34 @@
     "is_other": true,
     "contributions": {
       "FAO": {
-        "Assessed": 54122.37000000477,
-        "Voluntary earmarked": 356676311.97,
-        "Other": 10288000.0
+        "Unresolved": 152693173.1600001
       },
       "IAEA": {
-        "Assessed": 37333.939999997616,
-        "Voluntary earmarked": 40633903.80000001,
-        "Other": 4661955.14
+        "Unresolved": 24026161.15000009
       },
       "ICAO": {
-        "Assessed": 40596.58999998868,
-        "Voluntary earmarked": -24727000.40000001,
-        "Other": 22635285.2
+        "Unresolved": -2841827.630000025
       },
       "IFAD": {
-        "Voluntary earmarked": 70526000.0
+        "Unresolved": 22572000.0
       },
       "ILO": {
-        "Assessed": 16617251.030000033,
-        "Voluntary earmarked": 65749215.0,
-        "Other": 13300000.0
+        "Unresolved": 62885566.02999997
       },
       "IMO": {
-        "Assessed": 7648.340000003576,
-        "Voluntary earmarked": 4402252.44,
-        "Other": 18963259.26
+        "Unresolved": 21553574.860000007
       },
       "IOM": {
-        "Assessed": 5354.0,
-        "Voluntary un-earmarked": 3413350.0,
-        "Voluntary earmarked": 269106056.0,
-        "Other": 156663262.0
+        "Unresolved": 254484390.0
       },
       "ITC": {
-        "Assessed": 37156000.0,
-        "Voluntary un-earmarked": 100000.0,
-        "Voluntary earmarked": 14320000.0,
-        "Other": 1663000.0
+        "Unresolved": 44794000.0
       },
       "ITU": {
-        "Assessed": 16929111.77000001,
-        "Voluntary un-earmarked": 59398.59,
-        "Voluntary earmarked": 2433755.22,
-        "Other": 42623419.78
+        "Unresolved": 44546693.42999999
       },
       "PAHO": {
-        "Assessed": 16354.0,
-        "Voluntary earmarked": 30692525.0,
-        "Other": 613857226.0
+        "Unresolved": 634917663.0
       },
       "Peacekeeping Operations": {
         "Assessed": 184000.0,
@@ -34049,91 +34496,55 @@
         "Other": 71850000.0
       },
       "UN Secretariat": {
-        "Assessed": 298492.0,
-        "Voluntary earmarked": 539271615.2,
-        "Other": 682560364.0
+        "Unresolved": 1126091464.6400003
       },
       "UN Tourism": {
-        "Assessed": 1167591.709999999,
-        "Voluntary earmarked": 1562618.57,
-        "Other": 6147505.23
+        "Unresolved": 8522010.44
       },
       "UN Women": {
-        "Assessed": 7505355.0,
-        "Voluntary un-earmarked": 1621180.300000012,
-        "Voluntary earmarked": 51466784.18999998,
-        "Other": 4503000.0
+        "Unresolved": 27534050.11000001
       },
       "UN-Habitat": {
-        "Assessed": 16935000.0,
-        "Voluntary un-earmarked": 2170827.16,
-        "Voluntary earmarked": 62575281.64,
-        "Other": 1990000.0
+        "Unresolved": 53302937.84
       },
       "UNAIDS": {
-        "Voluntary un-earmarked": 1650000.0,
-        "Voluntary earmarked": 7203465.0,
-        "Other": 6365170.0
+        "Unresolved": 11907808.0
       },
       "UNDP": {
-        "Voluntary un-earmarked": 109395.0,
-        "Voluntary earmarked": 1531403916.0,
-        "Other": 348265392.0
+        "Unresolved": 495621326.0
       },
       "UNEP": {
-        "Assessed": 7536.090000003576,
-        "Voluntary earmarked": 258495963.44000003,
-        "Other": 871000.0
+        "Unresolved": 80001201.92000008
       },
       "UNESCO": {
-        "Assessed": 39881.0,
-        "Voluntary earmarked": 129955640.0,
-        "Other": 49528579.0
+        "Unresolved": 138053731.0
       },
       "UNFPA": {
-        "Voluntary un-earmarked": 48618.49000000954,
-        "Voluntary earmarked": 256967156.59,
-        "Other": 57280000.0
+        "Unresolved": 150178993.67000008
       },
       "UNHCR": {
-        "Assessed": 48643700.0,
-        "Voluntary un-earmarked": 141094600.8399999,
-        "Voluntary earmarked": 471141437.71,
-        "Other": 19380183.75
+        "Unresolved": 423021100.8000002
       },
       "UNICEF": {
-        "Voluntary un-earmarked": 521665095.55,
-        "Voluntary earmarked": 1468375564.35,
-        "Other": 106205809.3
+        "Unresolved": 428631296.3500004
       },
       "UNIDO": {
-        "Assessed": 14154.290000006557,
-        "Voluntary earmarked": 187920408.98,
-        "Other": 5618983.24
+        "Unresolved": 59995310.30000007
       },
       "UNITAR": {
-        "Voluntary un-earmarked": 645740.61,
-        "Voluntary earmarked": 12606443.25,
-        "Other": 15575.0
+        "Unresolved": 10334877.96
       },
       "UNODC": {
-        "Assessed": 29003000.0,
-        "Voluntary un-earmarked": 99206.0,
-        "Voluntary earmarked": 45003519.0,
-        "Other": 7460000.0
+        "Unresolved": 47888733.0
       },
       "UNOPS": {
         "Other": 682880000.0
       },
       "UNRWA": {
-        "Assessed": 27879716.86,
-        "Voluntary un-earmarked": 93634918.49,
-        "Voluntary earmarked": 140747275.41000003,
-        "Other": 23689000.0
+        "Unresolved": 104103377.76
       },
       "UNU": {
-        "Voluntary earmarked": 7266678.0,
-        "Other": 2439000.0
+        "Unresolved": 8073917.0
       },
       "UPU": {
         "Assessed": 63224.53000000119,
@@ -34141,15 +34552,10 @@
         "Other": 13128961.65
       },
       "WFP": {
-        "Voluntary un-earmarked": 11390624.26000005,
-        "Voluntary earmarked": 524249912.6100001,
-        "Other": 103162433.9
+        "Unresolved": 214787950.5200005
       },
       "WHO": {
-        "Assessed": 51097.0,
-        "Voluntary un-earmarked": -785806.0,
-        "Voluntary earmarked": 929254409.0,
-        "Other": 39286690.0
+        "Unresolved": 504754668.0
       },
       "WIPO": {
         "Assessed": 449087.9200000018,
@@ -34163,63 +34569,40 @@
         "Other": 3085771.95
       },
       "WTO": {
-        "Assessed": 102583.28999999166,
-        "Voluntary earmarked": 3410855.34,
-        "Other": 22834141.27
+        "Unresolved": 24020564.75999999
       }
     },
     "categoryContributions": {
       "Unattributed": {
         "FAO": {
-          "Assessed": 54122.37000000477,
-          "Voluntary earmarked": 356676311.97,
-          "Other": 10288000.0
+          "Unresolved": 152693173.1600001
         },
         "IAEA": {
-          "Assessed": 37333.939999997616,
-          "Voluntary earmarked": 40633903.80000001,
-          "Other": 4661955.14
+          "Unresolved": 24026161.15000009
         },
         "ICAO": {
-          "Assessed": 40596.58999998868,
-          "Voluntary earmarked": -24727000.40000001,
-          "Other": 22635285.2
+          "Unresolved": -2841827.630000025
         },
         "IFAD": {
-          "Voluntary earmarked": 70526000.0
+          "Unresolved": 22572000.0
         },
         "ILO": {
-          "Assessed": 16617251.030000033,
-          "Voluntary earmarked": 65749215.0,
-          "Other": 13300000.0
+          "Unresolved": 62885566.02999997
         },
         "IMO": {
-          "Assessed": 7648.340000003576,
-          "Voluntary earmarked": 4402252.44,
-          "Other": 18963259.26
+          "Unresolved": 21553574.860000007
         },
         "IOM": {
-          "Assessed": 5354.0,
-          "Voluntary un-earmarked": 3413350.0,
-          "Voluntary earmarked": 269106056.0,
-          "Other": 156663262.0
+          "Unresolved": 254484390.0
         },
         "ITC": {
-          "Assessed": 37156000.0,
-          "Voluntary un-earmarked": 100000.0,
-          "Voluntary earmarked": 14320000.0,
-          "Other": 1663000.0
+          "Unresolved": 44794000.0
         },
         "ITU": {
-          "Assessed": 16929111.77000001,
-          "Voluntary un-earmarked": 59398.59,
-          "Voluntary earmarked": 2433755.22,
-          "Other": 42623419.78
+          "Unresolved": 44546693.42999999
         },
         "PAHO": {
-          "Assessed": 16354.0,
-          "Voluntary earmarked": 30692525.0,
-          "Other": 613857226.0
+          "Unresolved": 634917663.0
         },
         "Peacekeeping Operations": {
           "Assessed": 184000.0,
@@ -34227,91 +34610,55 @@
           "Other": 71850000.0
         },
         "UN Secretariat": {
-          "Assessed": 298492.0,
-          "Voluntary earmarked": 539271615.2,
-          "Other": 682560364.0
+          "Unresolved": 1126091464.6400003
         },
         "UN Tourism": {
-          "Assessed": 1167591.709999999,
-          "Voluntary earmarked": 1562618.57,
-          "Other": 6147505.23
+          "Unresolved": 8522010.44
         },
         "UN Women": {
-          "Assessed": 7505355.0,
-          "Voluntary un-earmarked": 1621180.300000012,
-          "Voluntary earmarked": 51466784.18999998,
-          "Other": 4503000.0
+          "Unresolved": 27534050.11000001
         },
         "UN-Habitat": {
-          "Assessed": 16935000.0,
-          "Voluntary un-earmarked": 2170827.16,
-          "Voluntary earmarked": 62575281.64,
-          "Other": 1990000.0
+          "Unresolved": 53302937.84
         },
         "UNAIDS": {
-          "Voluntary un-earmarked": 1650000.0,
-          "Voluntary earmarked": 7203465.0,
-          "Other": 6365170.0
+          "Unresolved": 11907808.0
         },
         "UNDP": {
-          "Voluntary un-earmarked": 109395.0,
-          "Voluntary earmarked": 1531403916.0,
-          "Other": 348265392.0
+          "Unresolved": 495621326.0
         },
         "UNEP": {
-          "Assessed": 7536.090000003576,
-          "Voluntary earmarked": 258495963.44000003,
-          "Other": 871000.0
+          "Unresolved": 80001201.92000008
         },
         "UNESCO": {
-          "Assessed": 39881.0,
-          "Voluntary earmarked": 129955640.0,
-          "Other": 49528579.0
+          "Unresolved": 138053731.0
         },
         "UNFPA": {
-          "Voluntary un-earmarked": 48618.49000000954,
-          "Voluntary earmarked": 256967156.59,
-          "Other": 57280000.0
+          "Unresolved": 150178993.67000008
         },
         "UNHCR": {
-          "Assessed": 48643700.0,
-          "Voluntary un-earmarked": 141094600.8399999,
-          "Voluntary earmarked": 471141437.71,
-          "Other": 19380183.75
+          "Unresolved": 423021100.8000002
         },
         "UNICEF": {
-          "Voluntary un-earmarked": 521665095.55,
-          "Voluntary earmarked": 1468375564.35,
-          "Other": 106205809.3
+          "Unresolved": 428631296.3500004
         },
         "UNIDO": {
-          "Assessed": 14154.290000006557,
-          "Voluntary earmarked": 187920408.98,
-          "Other": 5618983.24
+          "Unresolved": 59995310.30000007
         },
         "UNITAR": {
-          "Voluntary un-earmarked": 645740.61,
-          "Voluntary earmarked": 12606443.25,
-          "Other": 15575.0
+          "Unresolved": 10334877.96
         },
         "UNODC": {
-          "Assessed": 29003000.0,
-          "Voluntary un-earmarked": 99206.0,
-          "Voluntary earmarked": 45003519.0,
-          "Other": 7460000.0
+          "Unresolved": 47888733.0
         },
         "UNOPS": {
           "Other": 682880000.0
         },
         "UNRWA": {
-          "Assessed": 27879716.86,
-          "Voluntary un-earmarked": 93634918.49,
-          "Voluntary earmarked": 140747275.41000003,
-          "Other": 23689000.0
+          "Unresolved": 104103377.76
         },
         "UNU": {
-          "Voluntary earmarked": 7266678.0,
-          "Other": 2439000.0
+          "Unresolved": 8073917.0
         },
         "UPU": {
           "Assessed": 63224.53000000119,
@@ -34319,15 +34666,10 @@
           "Other": 13128961.65
         },
         "WFP": {
-          "Voluntary un-earmarked": 11390624.26000005,
-          "Voluntary earmarked": 524249912.6100001,
-          "Other": 103162433.9
+          "Unresolved": 214787950.5200005
         },
         "WHO": {
-          "Assessed": 51097.0,
-          "Voluntary un-earmarked": -785806.0,
-          "Voluntary earmarked": 929254409.0,
-          "Other": 39286690.0
+          "Unresolved": 504754668.0
         },
         "WIPO": {
           "Assessed": 449087.9200000018,
@@ -34341,17 +34683,45 @@
           "Other": 3085771.95
         },
         "WTO": {
-          "Assessed": 102583.28999999166,
-          "Voluntary earmarked": 3410855.34,
-          "Other": 22834141.27
+          "Unresolved": 24020564.75999999
         }
       }
     },
-    "unresolvedContributions": {},
+    "unresolvedContributions": {
+      "FAO": 152693173.1600001,
+      "IAEA": 24026161.15000009,
+      "ICAO": -2841827.630000025,
+      "IFAD": 22572000.0,
+      "ILO": 62885566.02999997,
+      "IMO": 21553574.860000007,
+      "IOM": 254484390.0,
+      "ITC": 44794000.0,
+      "ITU": 44546693.42999999,
+      "PAHO": 634917663.0,
+      "UN Secretariat": 1126091464.6400003,
+      "UN Tourism": 8522010.44,
+      "UN Women": 27534050.11000001,
+      "UN-Habitat": 53302937.84,
+      "UNAIDS": 11907808.0,
+      "UNDP": 495621326.0,
+      "UNEP": 80001201.92000008,
+      "UNESCO": 138053731.0,
+      "UNFPA": 150178993.67000008,
+      "UNHCR": 423021100.8000002,
+      "UNICEF": 428631296.3500004,
+      "UNIDO": 59995310.30000007,
+      "UNITAR": 10334877.96,
+      "UNODC": 47888733.0,
+      "UNRWA": 104103377.76,
+      "UNU": 8073917.0,
+      "WFP": 214787950.5200005,
+      "WHO": 504754668.0,
+      "WTO": 24020564.75999999
+    },
     "unresolvedFinancingRecords": [],
-    "total": 12130757635.78,
-    "unresolvedTotal": 0,
-    "financingIncomplete": false
+    "total": 6496835123.900002,
+    "unresolvedTotal": 5176456714.070002,
+    "financingIncomplete": true
   },
   "United Arab Emirates": {
     "status": "member",
@@ -34806,14 +35176,142 @@
     "record_kind": "reported_named",
     "is_other": false,
     "contributions": {
+      "FAO": {
+        "Unresolved": 25063949.939999998
+      },
+      "IFAD": {
+        "Unresolved": 970000.0
+      },
+      "ILO": {
+        "Unresolved": 1382679.0
+      },
+      "IMO": {
+        "Unresolved": 1466554.07
+      },
+      "IOM": {
+        "Unresolved": 3776367.0
+      },
+      "ITC": {
+        "Unresolved": 150000.0
+      },
+      "PAHO": {
+        "Unresolved": 804904.0
+      },
+      "UN Secretariat": {
+        "Unresolved": 19430408.7
+      },
+      "UN Tourism": {
+        "Unresolved": 355705.07
+      },
+      "UN Women": {
+        "Unresolved": 3489229.99
+      },
+      "UNAIDS": {
+        "Unresolved": 240549.0
+      },
+      "UNDP": {
+        "Unresolved": 13223150.0
+      },
       "UNEP": {
+        "Unresolved": 9736214.790000001,
         "Voluntary earmarked": 800876.81
+      },
+      "UNESCO": {
+        "Unresolved": 4251877.0
+      },
+      "UNFPA": {
+        "Unresolved": 26919886.32
+      },
+      "UNHCR": {
+        "Unresolved": 723251.8
+      },
+      "UNICEF": {
+        "Unresolved": 107298514.89999999
+      },
+      "UNITAR": {
+        "Unresolved": 2745483.3
+      },
+      "UNODC": {
+        "Unresolved": 3405382.0
+      },
+      "UNU": {
+        "Unresolved": 884871.0
+      },
+      "WFP": {
+        "Unresolved": 9858334.12
+      },
+      "WHO": {
+        "Unresolved": 5155694.0
       }
     },
     "categoryContributions": {
       "Non-Government": {
+        "FAO": {
+          "Unresolved": 25063949.939999998
+        },
+        "IFAD": {
+          "Unresolved": 970000.0
+        },
+        "ILO": {
+          "Unresolved": 1382679.0
+        },
+        "IMO": {
+          "Unresolved": 1466554.07
+        },
+        "IOM": {
+          "Unresolved": 3776367.0
+        },
+        "ITC": {
+          "Unresolved": 150000.0
+        },
+        "PAHO": {
+          "Unresolved": 804904.0
+        },
+        "UN Secretariat": {
+          "Unresolved": 19430408.7
+        },
+        "UN Tourism": {
+          "Unresolved": 355705.07
+        },
+        "UN Women": {
+          "Unresolved": 3489229.99
+        },
+        "UNAIDS": {
+          "Unresolved": 240549.0
+        },
+        "UNDP": {
+          "Unresolved": 13223150.0
+        },
         "UNEP": {
+          "Unresolved": 9736214.790000001,
           "Voluntary earmarked": 800876.81
+        },
+        "UNESCO": {
+          "Unresolved": 4251877.0
+        },
+        "UNFPA": {
+          "Unresolved": 26919886.32
+        },
+        "UNHCR": {
+          "Unresolved": 723251.8
+        },
+        "UNICEF": {
+          "Unresolved": 107298514.89999999
+        },
+        "UNITAR": {
+          "Unresolved": 2745483.3
+        },
+        "UNODC": {
+          "Unresolved": 3405382.0
+        },
+        "UNU": {
+          "Unresolved": 884871.0
+        },
+        "WFP": {
+          "Unresolved": 9858334.12
+        },
+        "WHO": {
+          "Unresolved": 5155694.0
         }
       }
     },
@@ -35283,7 +35781,7 @@
         "sourceRow": 573
       }
     ],
-    "total": 800876.81,
+    "total": 242133882.81,
     "unresolvedTotal": 241333006.0,
     "financingIncomplete": true
   },
@@ -36519,8 +37017,78 @@
     ],
     "record_kind": "reported_named",
     "is_other": false,
-    "contributions": {},
-    "categoryContributions": {},
+    "contributions": {
+      "FAO": {
+        "Unresolved": 27861148.69
+      },
+      "ILO": {
+        "Unresolved": 2617309.0
+      },
+      "UN Secretariat": {
+        "Unresolved": 194064.69
+      },
+      "UNDP": {
+        "Unresolved": 163505.0
+      },
+      "UNEP": {
+        "Unresolved": 154300976.31
+      },
+      "UNESCO": {
+        "Unresolved": 14497330.0
+      },
+      "UNFPA": {
+        "Unresolved": 26109500.28
+      },
+      "UNICEF": {
+        "Unresolved": 667660.0
+      },
+      "UNU": {
+        "Unresolved": 589133.0
+      },
+      "WFP": {
+        "Unresolved": 2150000.0
+      },
+      "WHO": {
+        "Unresolved": 4100000.0
+      }
+    },
+    "categoryContributions": {
+      "Non-Government": {
+        "FAO": {
+          "Unresolved": 27861148.69
+        },
+        "ILO": {
+          "Unresolved": 2617309.0
+        },
+        "UN Secretariat": {
+          "Unresolved": 194064.69
+        },
+        "UNDP": {
+          "Unresolved": 163505.0
+        },
+        "UNEP": {
+          "Unresolved": 154300976.31
+        },
+        "UNESCO": {
+          "Unresolved": 14497330.0
+        },
+        "UNFPA": {
+          "Unresolved": 26109500.28
+        },
+        "UNICEF": {
+          "Unresolved": 667660.0
+        },
+        "UNU": {
+          "Unresolved": 589133.0
+        },
+        "WFP": {
+          "Unresolved": 2150000.0
+        },
+        "WHO": {
+          "Unresolved": 4100000.0
+        }
+      }
+    },
     "unresolvedContributions": {
       "FAO": 27861148.69,
       "ILO": 2617309.0,
@@ -36778,7 +37346,7 @@
         "sourceRow": 612
       }
     ],
-    "total": 0,
+    "total": 233250626.97,
     "unresolvedTotal": 233250626.97,
     "financingIncomplete": true
   },

@@ -43,16 +43,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Unattributed",
-        "total": 6037608.0,
-        "record_kind": "calculated_balance",
-        "Assessed": 11303.0,
-        "Other": 2113268.0,
-        "Voluntary earmarked": 3913037.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
         "donor": "France",
         "total": 5766633.0,
         "record_kind": "reported_named",
@@ -84,6 +74,14 @@
         "Assessed": 4447110.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "European Union",
+        "total": 4336826.0,
+        "record_kind": "reported_named",
+        "Unresolved": 4336826.0,
+        "unresolvedTotal": 4336826.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Russian Federation",
@@ -140,6 +138,14 @@
         "Assessed": 1734797.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Unattributed",
+        "total": 1700782.0,
+        "record_kind": "calculated_balance",
+        "Unresolved": 1700782.0,
+        "unresolvedTotal": 1700782.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Switzerland",
@@ -1480,18 +1486,11 @@
         "Assessed": 1146.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 4336826.0,
-        "financingIncomplete": true
       }
     ]
   },
   "FAO": {
-    "total": 1263544765.7,
+    "total": 1263544765.7000003,
     "year": 2017,
     "by_type": {
       "Assessed": 473949640.3,
@@ -1500,16 +1499,6 @@
     },
     "by_donor": [
       {
-        "donor": "Unattributed",
-        "total": 340108756.05,
-        "record_kind": "calculated_balance",
-        "Assessed": -13421179.20999998,
-        "Other": 38500213.0,
-        "Voluntary earmarked": 315029722.26,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
         "donor": "United States of America",
         "total": 251924709.1,
         "record_kind": "reported_named",
@@ -1517,6 +1506,22 @@
         "Voluntary earmarked": 141377098.1,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "European Union",
+        "total": 134922837.7,
+        "record_kind": "reported_named",
+        "Unresolved": 134922837.7,
+        "unresolvedTotal": 134922837.7,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "Unattributed",
+        "total": 108066646.59000015,
+        "record_kind": "calculated_balance",
+        "Unresolved": 108066646.59000015,
+        "unresolvedTotal": 108066646.59000015,
+        "financingIncomplete": true
       },
       {
         "donor": "United Kingdom of Great Britain and Northern Ireland",
@@ -1544,6 +1549,22 @@
         "Voluntary earmarked": 24898730.67,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Global Environment Facility (thru UNDP or UNEP)",
+        "total": 45634078.05,
+        "record_kind": "reported_named",
+        "Unresolved": 45634078.05,
+        "unresolvedTotal": 45634078.05,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "UN OCHA",
+        "total": 32061624.1,
+        "record_kind": "reported_named",
+        "Unresolved": 32061624.1,
+        "unresolvedTotal": 32061624.1,
+        "financingIncomplete": true
       },
       {
         "donor": "Italy",
@@ -1616,6 +1637,14 @@
         "Voluntary earmarked": 12056008.15,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "World Bank Group",
+        "total": 19423569.61,
+        "record_kind": "reported_named",
+        "Unresolved": 19423569.61,
+        "unresolvedTotal": 19423569.61,
+        "financingIncomplete": true
       },
       {
         "donor": "Belgium",
@@ -3137,34 +3166,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 134922837.7,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Global Environment Facility (thru UNDP or UNEP)",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 45634078.05,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "UN OCHA",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 32061624.1,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "World Bank Group",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 19423569.61,
-        "financingIncomplete": true
-      },
-      {
         "donor": "Liberia",
         "total": -34887.79,
         "record_kind": "reported_named",
@@ -3275,16 +3276,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Unattributed",
-        "total": 16326458.629999992,
-        "record_kind": "calculated_balance",
-        "Assessed": 35990.80000001192,
-        "Other": 7912684.59,
-        "Voluntary earmarked": 8377783.23999998,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
         "donor": "Republic of Korea",
         "total": 14866085.39,
         "record_kind": "reported_named",
@@ -3330,6 +3321,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "Unattributed",
+        "total": 8673474.159999967,
+        "record_kind": "calculated_balance",
+        "Unresolved": 8673474.159999967,
+        "unresolvedTotal": 8673474.159999967,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Netherlands",
         "total": 8315620.24,
         "record_kind": "reported_named",
@@ -3337,6 +3336,14 @@
         "Voluntary earmarked": 1991246.12,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "European Union",
+        "total": 7652984.47,
+        "record_kind": "reported_named",
+        "Unresolved": 7652984.47,
+        "unresolvedTotal": 7652984.47,
+        "financingIncomplete": true
       },
       {
         "donor": "Mexico",
@@ -4673,13 +4680,6 @@
         "Assessed": 3840.68,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 7652984.47,
-        "financingIncomplete": true
       }
     ]
   },
@@ -4693,16 +4693,6 @@
     },
     "by_donor": [
       {
-        "donor": "Unattributed",
-        "total": 39985126.91,
-        "record_kind": "calculated_balance",
-        "Assessed": 45387.42999999225,
-        "Other": 22266023.17,
-        "Voluntary earmarked": 17673716.310000002,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
         "donor": "Argentina",
         "total": 34208633.39,
         "record_kind": "reported_named",
@@ -4710,6 +4700,14 @@
         "Voluntary earmarked": 33629506.43,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Unattributed",
+        "total": 33269558.669999987,
+        "record_kind": "calculated_balance",
+        "Unresolved": 33269558.669999987,
+        "unresolvedTotal": 33269558.669999987,
+        "financingIncomplete": true
       },
       {
         "donor": "Panama",
@@ -4773,6 +4771,14 @@
         "Voluntary earmarked": 4369051.59,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "European Union",
+        "total": 4556631.74,
+        "record_kind": "reported_named",
+        "Unresolved": 4556631.74,
+        "unresolvedTotal": 4556631.74,
+        "financingIncomplete": true
       },
       {
         "donor": "Germany",
@@ -4845,6 +4851,14 @@
         "Voluntary earmarked": 177778.56,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Global Environment Facility (thru UNDP or UNEP)",
+        "total": 2158936.5,
+        "record_kind": "reported_named",
+        "Unresolved": 2158936.5,
+        "unresolvedTotal": 2158936.5,
+        "financingIncomplete": true
       },
       {
         "donor": "Italy",
@@ -6356,20 +6370,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 4556631.74,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Global Environment Facility (thru UNDP or UNEP)",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 2158936.5,
-        "financingIncomplete": true
-      },
-      {
         "donor": "Costa Rica",
         "total": -2983861.62,
         "record_kind": "reported_named",
@@ -6381,7 +6381,7 @@
     ]
   },
   "ICC": {
-    "total": 169774635.55,
+    "total": 169774635.54999998,
     "year": 2017,
     "by_type": {
       "Assessed": 167335329.7,
@@ -6539,20 +6539,18 @@
         "financingIncomplete": false
       },
       {
+        "donor": "European Union",
+        "total": 2287491.04,
+        "record_kind": "reported_named",
+        "Unresolved": 2287491.04,
+        "unresolvedTotal": 2287491.04,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Austria",
         "total": 2120917.56,
         "record_kind": "reported_named",
         "Assessed": 2120917.56,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
-        "donor": "Unattributed",
-        "total": 1732777.7599999954,
-        "record_kind": "calculated_balance",
-        "Assessed": 26618.87999999523,
-        "Other": 453912.78,
-        "Voluntary earmarked": 1252246.1,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -7393,17 +7391,19 @@
         "financingIncomplete": false
       },
       {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 2287491.04,
+        "donor": "Private Donors / Private Sector",
+        "total": 716.84,
+        "record_kind": "reported_aggregate",
+        "Unresolved": 716.84,
+        "unresolvedTotal": 716.84,
         "financingIncomplete": true
       },
       {
-        "donor": "Private Donors / Private Sector",
-        "total": 0.0,
-        "record_kind": "reported_aggregate",
-        "unresolvedTotal": 716.84,
+        "donor": "Unattributed",
+        "total": -555430.1200000346,
+        "record_kind": "calculated_balance",
+        "Unresolved": -555430.1200000346,
+        "unresolvedTotal": -555430.1200000346,
         "financingIncomplete": true
       }
     ]
@@ -7417,15 +7417,6 @@
       "Voluntary un-earmarked": 306323000.0
     },
     "by_donor": [
-      {
-        "donor": "Unattributed",
-        "total": 83342000.0,
-        "record_kind": "calculated_balance",
-        "Other": 8512000.0,
-        "Voluntary earmarked": 74830000.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
       {
         "donor": "Italy",
         "total": 68528000.0,
@@ -7444,6 +7435,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "European Union",
+        "total": 36290000.0,
+        "record_kind": "reported_named",
+        "Unresolved": 36290000.0,
+        "unresolvedTotal": 36290000.0,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Netherlands",
         "total": 32202000.0,
         "record_kind": "reported_named",
@@ -7451,6 +7450,14 @@
         "Voluntary un-earmarked": 23347000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Unattributed",
+        "total": 29350000.0,
+        "record_kind": "calculated_balance",
+        "Unresolved": 29350000.0,
+        "unresolvedTotal": 29350000.0,
+        "financingIncomplete": true
       },
       {
         "donor": "United Kingdom of Great Britain and Northern Ireland",
@@ -7485,6 +7492,14 @@
         "Voluntary un-earmarked": 20000000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Global Environment Facility (thru UNDP or UNEP)",
+        "total": 17702000.0,
+        "record_kind": "reported_named",
+        "Unresolved": 17702000.0,
+        "unresolvedTotal": 17702000.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Norway",
@@ -7963,20 +7978,6 @@
         "Voluntary un-earmarked": 1000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 36290000.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Global Environment Facility (thru UNDP or UNEP)",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 17702000.0,
-        "financingIncomplete": true
       }
     ]
   },
@@ -7999,14 +8000,12 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Unattributed",
-        "total": 101436464.5,
-        "record_kind": "calculated_balance",
-        "Assessed": -17723369.5,
-        "Other": 20684803.0,
-        "Voluntary earmarked": 98475031.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "donor": "European Union",
+        "total": 47150349.0,
+        "record_kind": "reported_named",
+        "Unresolved": 47150349.0,
+        "unresolvedTotal": 47150349.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Japan",
@@ -8025,6 +8024,14 @@
         "Voluntary earmarked": 18180041.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Unattributed",
+        "total": 42393515.5,
+        "record_kind": "calculated_balance",
+        "Unresolved": 42393515.5,
+        "unresolvedTotal": 42393515.5,
+        "financingIncomplete": true
       },
       {
         "donor": "China",
@@ -8180,6 +8187,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "Multi Donor Trust Funds",
+        "total": 7759472.0,
+        "record_kind": "reported_aggregate",
+        "Unresolved": 7759472.0,
+        "unresolvedTotal": 7759472.0,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Mexico",
         "total": 5577028.63,
         "record_kind": "reported_named",
@@ -8204,6 +8219,14 @@
         "Assessed": 4442106.34,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "World Bank Group",
+        "total": 4133128.0,
+        "record_kind": "reported_named",
+        "Unresolved": 4133128.0,
+        "unresolvedTotal": 4133128.0,
+        "financingIncomplete": true
       },
       {
         "donor": "T\u00fcrkiye",
@@ -9534,32 +9557,11 @@
         "Assessed": 3873.21,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 47150349.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Multi Donor Trust Funds",
-        "total": 0.0,
-        "record_kind": "reported_aggregate",
-        "unresolvedTotal": 7759472.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "World Bank Group",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 4133128.0,
-        "financingIncomplete": true
       }
     ]
   },
   "IMO": {
-    "total": 66841934.059999995,
+    "total": 66841934.05999999,
     "year": 2017,
     "by_type": {
       "Assessed": 40553794.08,
@@ -9569,13 +9571,11 @@
     "by_donor": [
       {
         "donor": "Unattributed",
-        "total": 21148129.099999994,
+        "total": 18571892.21999999,
         "record_kind": "calculated_balance",
-        "Assessed": 6908.379999995232,
-        "Other": 18802636.61,
-        "Voluntary earmarked": 2338584.1100000003,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 18571892.21999999,
+        "unresolvedTotal": 18571892.21999999,
+        "financingIncomplete": true
       },
       {
         "donor": "Panama",
@@ -9609,6 +9609,14 @@
         "Voluntary earmarked": 2406864.07,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "European Union",
+        "total": 2576236.88,
+        "record_kind": "reported_named",
+        "Unresolved": 2576236.88,
+        "unresolvedTotal": 2576236.88,
+        "financingIncomplete": true
       },
       {
         "donor": "Singapore",
@@ -10981,13 +10989,6 @@
         "Assessed": 3453.57,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 2576236.88,
-        "financingIncomplete": true
       }
     ]
   },
@@ -11012,15 +11013,12 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Unattributed",
-        "total": 360257873.0,
-        "record_kind": "calculated_balance",
-        "Assessed": 4886.0,
-        "Other": 100289705.0,
-        "Voluntary earmarked": 259963281.0,
-        "Voluntary un-earmarked": 1.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "donor": "European Union",
+        "total": 259157937.0,
+        "record_kind": "reported_named",
+        "Unresolved": 259157937.0,
+        "unresolvedTotal": 259157937.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Germany",
@@ -11058,6 +11056,14 @@
         "Voluntary earmarked": 66792380.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "UN OCHA",
+        "total": 59044311.0,
+        "record_kind": "reported_named",
+        "Unresolved": 59044311.0,
+        "unresolvedTotal": 59044311.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Italy",
@@ -11151,6 +11157,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "Unattributed",
+        "total": 14717515.0,
+        "record_kind": "calculated_balance",
+        "Unresolved": 14717515.0,
+        "unresolvedTotal": 14717515.0,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Peru",
         "total": 14421859.0,
         "record_kind": "reported_named",
@@ -11158,6 +11172,14 @@
         "Voluntary earmarked": 14349410.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "The Global Fund",
+        "total": 12840957.0,
+        "record_kind": "reported_named",
+        "Unresolved": 12840957.0,
+        "unresolvedTotal": 12840957.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Belgium",
@@ -11188,6 +11210,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "Private Donors / Private Sector",
+        "total": 8534386.0,
+        "record_kind": "reported_aggregate",
+        "Unresolved": 8534386.0,
+        "unresolvedTotal": 8534386.0,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Republic of Korea",
         "total": 7435084.0,
         "record_kind": "reported_named",
@@ -11214,6 +11244,14 @@
         "Voluntary earmarked": 5603825.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Multi Donor Trust Funds",
+        "total": 5962767.0,
+        "record_kind": "reported_aggregate",
+        "Unresolved": 5962767.0,
+        "unresolvedTotal": 5962767.0,
+        "financingIncomplete": true
       },
       {
         "donor": "China",
@@ -12439,41 +12477,6 @@
         "Assessed": 544.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 259157937.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Multi Donor Trust Funds",
-        "total": 0.0,
-        "record_kind": "reported_aggregate",
-        "unresolvedTotal": 5962767.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Private Donors / Private Sector",
-        "total": 0.0,
-        "record_kind": "reported_aggregate",
-        "unresolvedTotal": 8534386.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "The Global Fund",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 12840957.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "UN OCHA",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 59044311.0,
-        "financingIncomplete": true
       }
     ]
   },
@@ -12489,14 +12492,11 @@
     "by_donor": [
       {
         "donor": "Unattributed",
-        "total": 55991532.0,
+        "total": 44226502.0,
         "record_kind": "calculated_balance",
-        "Assessed": 35452560.0,
-        "Other": 1240858.0,
-        "Voluntary earmarked": 19298113.0,
-        "Voluntary un-earmarked": 1.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 44226502.0,
+        "unresolvedTotal": 44226502.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Sweden",
@@ -12513,6 +12513,14 @@
         "Voluntary earmarked": 12886598.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "European Union",
+        "total": 11765030.0,
+        "record_kind": "reported_named",
+        "Unresolved": 11765030.0,
+        "unresolvedTotal": 11765030.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Netherlands",
@@ -12699,13 +12707,6 @@
         "Voluntary earmarked": 8000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 11765030.0,
-        "financingIncomplete": true
       }
     ]
   },
@@ -14299,13 +14300,11 @@
     "by_donor": [
       {
         "donor": "Unattributed",
-        "total": 729496320.0,
+        "total": 718532758.0,
         "record_kind": "calculated_balance",
-        "Assessed": 21201.0,
-        "Other": 716469705.0,
-        "Voluntary earmarked": 13005414.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 718532758.0,
+        "unresolvedTotal": 718532758.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Brazil",
@@ -14333,6 +14332,14 @@
         "Voluntary earmarked": 7079137.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "GAVI, The Vaccine Alliance",
+        "total": 9466808.0,
+        "record_kind": "reported_named",
+        "Unresolved": 9466808.0,
+        "unresolvedTotal": 9466808.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Mexico",
@@ -14403,6 +14410,14 @@
         "Voluntary earmarked": 358045.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Bill & Melinda Gates Foundation",
+        "total": 1496754.0,
+        "record_kind": "reported_named",
+        "Unresolved": 1496754.0,
+        "unresolvedTotal": 1496754.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Spain",
@@ -14702,20 +14717,6 @@
         "Voluntary earmarked": 13699.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "Bill & Melinda Gates Foundation",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 1496754.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "GAVI, The Vaccine Alliance",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 9466808.0,
-        "financingIncomplete": true
       }
     ]
   },
@@ -16310,17 +16311,6 @@
     },
     "by_donor": [
       {
-        "donor": "Unattributed",
-        "total": 865733966.5,
-        "record_kind": "calculated_balance",
-        "Assessed": 227006.0,
-        "Other": 623014141.5,
-        "Voluntary earmarked": 240588910.0,
-        "Voluntary un-earmarked": 1903909.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
         "donor": "United States of America",
         "total": 738958317.0,
         "record_kind": "reported_named",
@@ -16328,6 +16318,14 @@
         "Voluntary earmarked": 128121739.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Unattributed",
+        "total": 716107595.6099997,
+        "record_kind": "calculated_balance",
+        "Unresolved": 716107595.6099997,
+        "unresolvedTotal": 716107595.6099997,
+        "financingIncomplete": true
       },
       {
         "donor": "Germany",
@@ -16447,6 +16445,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "Multi Donor Trust Funds",
+        "total": 94106268.66,
+        "record_kind": "reported_aggregate",
+        "Unresolved": 94106268.66,
+        "unresolvedTotal": 94106268.66,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Denmark",
         "total": 87180288.0,
         "record_kind": "reported_named",
@@ -16508,6 +16514,14 @@
         "Voluntary earmarked": 45902702.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "European Union",
+        "total": 51516624.73,
+        "record_kind": "reported_named",
+        "Unresolved": 51516624.730000004,
+        "unresolvedTotal": 51516624.73,
+        "financingIncomplete": true
       },
       {
         "donor": "Saudi Arabia",
@@ -16805,6 +16819,14 @@
         "Voluntary earmarked": 278273.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "World Bank Group",
+        "total": 4382117.42,
+        "record_kind": "reported_named",
+        "Unresolved": 4382117.42,
+        "unresolvedTotal": 4382117.42,
+        "financingIncomplete": true
       },
       {
         "donor": "Egypt",
@@ -18080,31 +18102,11 @@
         "financingIncomplete": false
       },
       {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 51516624.73,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Multi Donor Trust Funds",
-        "total": 0.0,
-        "record_kind": "reported_aggregate",
-        "unresolvedTotal": 94106268.66,
-        "financingIncomplete": true
-      },
-      {
         "donor": "UN OCHA",
-        "total": 0.0,
+        "total": -378639.92,
         "record_kind": "reported_named",
+        "Unresolved": -378639.92,
         "unresolvedTotal": -378639.92,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "World Bank Group",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 4382117.42,
         "financingIncomplete": true
       },
       {
@@ -19431,14 +19433,11 @@
     "by_donor": [
       {
         "donor": "Unattributed",
-        "total": 103680956.97,
+        "total": 50822606.19999999,
         "record_kind": "calculated_balance",
-        "Assessed": 8314200.0,
-        "Other": 9553000.0,
-        "Voluntary earmarked": 82295289.22,
-        "Voluntary un-earmarked": 3518467.75,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 50822606.19999999,
+        "unresolvedTotal": 50822606.19999999,
+        "financingIncomplete": true
       },
       {
         "donor": "Sweden",
@@ -19448,6 +19447,14 @@
         "Voluntary un-earmarked": 17115865.83,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Multi Donor Trust Funds",
+        "total": 25647529.99,
+        "record_kind": "reported_aggregate",
+        "Unresolved": 25647529.99,
+        "unresolvedTotal": 25647529.99,
+        "financingIncomplete": true
       },
       {
         "donor": "United Kingdom of Great Britain and Northern Ireland",
@@ -19475,6 +19482,14 @@
         "Voluntary un-earmarked": 5483320.06,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "European Union",
+        "total": 21963027.14,
+        "record_kind": "reported_named",
+        "Unresolved": 21963027.14,
+        "unresolvedTotal": 21963027.14,
+        "financingIncomplete": true
       },
       {
         "donor": "Finland",
@@ -19585,6 +19600,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "USA National Committee",
+        "total": 3915755.36,
+        "record_kind": "reported_named",
+        "Unresolved": 3915755.36,
+        "unresolvedTotal": 3915755.36,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Ireland",
         "total": 3148182.01,
         "record_kind": "reported_named",
@@ -19645,6 +19668,14 @@
         "Voluntary un-earmarked": 1359832.64,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "UN OCHA",
+        "total": 1332038.2799999998,
+        "record_kind": "reported_named",
+        "Unresolved": 1332038.28,
+        "unresolvedTotal": 1332038.2799999998,
+        "financingIncomplete": true
       },
       {
         "donor": "Austria",
@@ -20352,39 +20383,11 @@
         "Voluntary un-earmarked": 100.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 21963027.14,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Multi Donor Trust Funds",
-        "total": 0.0,
-        "record_kind": "reported_aggregate",
-        "unresolvedTotal": 25647529.99,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "UN OCHA",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 1332038.2799999998,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "USA National Committee",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 3915755.36,
-        "financingIncomplete": true
       }
     ]
   },
   "UN-Habitat": {
-    "total": 168809745.69000003,
+    "total": 168809745.69,
     "year": 2017,
     "by_type": {
       "Assessed": 13563771.7,
@@ -20395,14 +20398,19 @@
     "by_donor": [
       {
         "donor": "Unattributed",
-        "total": 75825504.00000001,
+        "total": 56147602.19,
         "record_kind": "calculated_balance",
-        "Assessed": 13563771.7,
-        "Other": 10673734.49,
-        "Voluntary earmarked": 51511493.81000002,
-        "Voluntary un-earmarked": 76504.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 56147602.19,
+        "unresolvedTotal": 56147602.19,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "European Union",
+        "total": 19677901.81,
+        "record_kind": "reported_named",
+        "Unresolved": 19677901.81,
+        "unresolvedTotal": 19677901.81,
+        "financingIncomplete": true
       },
       {
         "donor": "Germany",
@@ -20772,13 +20780,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 19677901.81,
-        "financingIncomplete": true
-      },
-      {
         "donor": "Canada",
         "total": -8163.3,
         "record_kind": "reported_named",
@@ -20841,13 +20842,11 @@
       },
       {
         "donor": "Unattributed",
-        "total": 18390463.0,
+        "total": 17724677.0,
         "record_kind": "calculated_balance",
-        "Other": 8040694.0,
-        "Voluntary earmarked": 8784269.0,
-        "Voluntary un-earmarked": 1565500.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 17724677.0,
+        "unresolvedTotal": 17724677.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Norway",
@@ -20975,6 +20974,22 @@
         "financingIncomplete": false
       },
       {
+        "donor": "Multi Donor Trust Funds",
+        "total": 449886.0,
+        "record_kind": "reported_aggregate",
+        "Unresolved": 449886.0,
+        "unresolvedTotal": 449886.0,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "The Global Fund",
+        "total": 215900.0,
+        "record_kind": "reported_named",
+        "Unresolved": 215900.0,
+        "unresolvedTotal": 215900.0,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Ghana",
         "total": 200000.0,
         "record_kind": "reported_named",
@@ -21045,20 +21060,6 @@
         "Voluntary un-earmarked": 10000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "Multi Donor Trust Funds",
-        "total": 0.0,
-        "record_kind": "reported_aggregate",
-        "unresolvedTotal": 449886.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "The Global Fund",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 215900.0,
-        "financingIncomplete": true
       }
     ]
   },
@@ -21072,15 +21073,6 @@
     },
     "by_donor": [
       {
-        "donor": "Unattributed",
-        "total": 30203286.0,
-        "record_kind": "calculated_balance",
-        "Other": 3294563.0,
-        "Voluntary earmarked": 26908723.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
         "donor": "Sweden",
         "total": 12448543.0,
         "record_kind": "reported_named",
@@ -21088,6 +21080,30 @@
         "Voluntary un-earmarked": 3382187.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Multi Donor Trust Funds",
+        "total": 12099963.0,
+        "record_kind": "reported_aggregate",
+        "Unresolved": 12099963.0,
+        "unresolvedTotal": 12099963.0,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "Unattributed",
+        "total": 10903327.0,
+        "record_kind": "calculated_balance",
+        "Unresolved": 10903327.0,
+        "unresolvedTotal": 10903327.0,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "European Union",
+        "total": 7199996.0,
+        "record_kind": "reported_named",
+        "Unresolved": 7199996.0,
+        "unresolvedTotal": 7199996.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Switzerland",
@@ -21256,20 +21272,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 7199996.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Multi Donor Trust Funds",
-        "total": 0.0,
-        "record_kind": "reported_aggregate",
-        "unresolvedTotal": 12099963.0,
-        "financingIncomplete": true
-      },
-      {
         "donor": "Denmark",
         "total": -57532.0,
         "record_kind": "reported_named",
@@ -21290,13 +21292,27 @@
     "by_donor": [
       {
         "donor": "Unattributed",
-        "total": 2080076992.0,
+        "total": 608472748.0,
         "record_kind": "calculated_balance",
-        "Other": 344324601.0,
-        "Voluntary earmarked": 1733510074.0,
-        "Voluntary un-earmarked": 2242317.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 608472748.0,
+        "unresolvedTotal": 608472748.0,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "Global Environment Facility (thru UNDP or UNEP)",
+        "total": 480509106.0,
+        "record_kind": "reported_named",
+        "Unresolved": 480509106.0,
+        "unresolvedTotal": 480509106.0,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "The Global Fund",
+        "total": 360812429.0,
+        "record_kind": "reported_named",
+        "Unresolved": 360812429.0,
+        "unresolvedTotal": 360812429.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Germany",
@@ -21306,6 +21322,14 @@
         "Voluntary un-earmarked": 29624665.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Multi Donor Trust Funds",
+        "total": 327830044.0,
+        "record_kind": "reported_aggregate",
+        "Unresolved": 327830044.0,
+        "unresolvedTotal": 327830044.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Japan",
@@ -21324,6 +21348,14 @@
         "Voluntary un-earmarked": 79804287.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "European Union",
+        "total": 255110501.0,
+        "record_kind": "reported_named",
+        "Unresolved": 255110501.0,
+        "unresolvedTotal": 255110501.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Argentina",
@@ -21521,6 +21553,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "Private Donors / Private Sector",
+        "total": 24344484.0,
+        "record_kind": "reported_aggregate",
+        "Unresolved": 24344484.0,
+        "unresolvedTotal": 24344484.0,
+        "financingIncomplete": true
+      },
+      {
         "donor": "T\u00fcrkiye",
         "total": 22952472.0,
         "record_kind": "reported_named",
@@ -21616,6 +21656,14 @@
         "Voluntary un-earmarked": 5551700.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "UN OCHA",
+        "total": 13263700.0,
+        "record_kind": "reported_named",
+        "Unresolved": 13263700.0,
+        "unresolvedTotal": 13263700.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Lebanon",
@@ -21720,6 +21768,14 @@
         "Voluntary earmarked": 10523251.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "GAVI, The Vaccine Alliance",
+        "total": 9733980.0,
+        "record_kind": "reported_named",
+        "Unresolved": 9733980.0,
+        "unresolvedTotal": 9733980.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Armenia",
@@ -22695,55 +22751,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 255110501.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "GAVI, The Vaccine Alliance",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 9733980.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Global Environment Facility (thru UNDP or UNEP)",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 480509106.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Multi Donor Trust Funds",
-        "total": 0.0,
-        "record_kind": "reported_aggregate",
-        "unresolvedTotal": 327830044.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Private Donors / Private Sector",
-        "total": 0.0,
-        "record_kind": "reported_aggregate",
-        "unresolvedTotal": 24344484.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "The Global Fund",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 360812429.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "UN OCHA",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 13263700.0,
-        "financingIncomplete": true
-      },
-      {
         "donor": "South Sudan",
         "total": -253.0,
         "record_kind": "reported_named",
@@ -22879,13 +22886,27 @@
     "by_donor": [
       {
         "donor": "Unattributed",
-        "total": 454030853.0,
+        "total": 240590809.0,
         "record_kind": "calculated_balance",
-        "Assessed": 146099421.0,
-        "Other": 25261000.0,
-        "Voluntary earmarked": 282670432.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 240590809.0,
+        "unresolvedTotal": 240590809.0,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "World Bank Group",
+        "total": 173999841.0,
+        "record_kind": "reported_named",
+        "Unresolved": 173999841.0,
+        "unresolvedTotal": 173999841.0,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "European Union",
+        "total": 39440203.0,
+        "record_kind": "reported_named",
+        "Unresolved": 39440203.0,
+        "unresolvedTotal": 39440203.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Germany",
@@ -24562,20 +24583,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 39440203.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "World Bank Group",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 173999841.0,
-        "financingIncomplete": true
-      },
-      {
         "donor": "Georgia",
         "total": -1895.0,
         "record_kind": "reported_named",
@@ -24615,13 +24622,11 @@
     "by_donor": [
       {
         "donor": "Unattributed",
-        "total": 157025356.0,
+        "total": 134884675.0,
         "record_kind": "calculated_balance",
-        "Assessed": 30591.0,
-        "Other": 70816887.0,
-        "Voluntary earmarked": 86177878.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 134884675.0,
+        "unresolvedTotal": 134884675.0,
+        "financingIncomplete": true
       },
       {
         "donor": "United States of America",
@@ -24714,6 +24719,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "European Union",
+        "total": 14956633.0,
+        "record_kind": "reported_named",
+        "Unresolved": 14956633.0,
+        "unresolvedTotal": 14956633.0,
+        "financingIncomplete": true
+      },
+      {
         "donor": "United Kingdom of Great Britain and Northern Ireland",
         "total": 14922676.0,
         "record_kind": "reported_named",
@@ -24775,6 +24788,14 @@
         "Voluntary earmarked": 2100624.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "World Bank Group",
+        "total": 6823216.0,
+        "record_kind": "reported_named",
+        "Unresolved": 6823216.0,
+        "unresolvedTotal": 6823216.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Netherlands",
@@ -25172,6 +25193,14 @@
         "Voluntary earmarked": 9742.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Multi Donor Trust Funds",
+        "total": 360832.0,
+        "record_kind": "reported_aggregate",
+        "Unresolved": 360832.0,
+        "unresolvedTotal": 360832.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Ukraine",
@@ -26374,27 +26403,6 @@
         "Voluntary earmarked": 33.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 14956633.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Multi Donor Trust Funds",
-        "total": 0.0,
-        "record_kind": "reported_aggregate",
-        "unresolvedTotal": 360832.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "World Bank Group",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 6823216.0,
-        "financingIncomplete": true
       }
     ]
   },
@@ -26420,14 +26428,19 @@
       },
       {
         "donor": "Unattributed",
-        "total": 18343435.739999995,
+        "total": 12533148.559999987,
         "record_kind": "calculated_balance",
-        "Assessed": 2672.730000000447,
-        "Other": 14949449.0,
-        "Voluntary earmarked": 3458297.809999995,
-        "Voluntary un-earmarked": -66983.79999999981,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 12533148.559999987,
+        "unresolvedTotal": 12533148.559999987,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "European Union",
+        "total": 5810287.18,
+        "record_kind": "reported_named",
+        "Unresolved": 5810287.18,
+        "unresolvedTotal": 5810287.18,
+        "financingIncomplete": true
       },
       {
         "donor": "Italy",
@@ -28002,13 +28015,6 @@
         "Assessed": 278.24,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 5810287.18,
-        "financingIncomplete": true
       }
     ]
   },
@@ -28016,6 +28022,7 @@
     "total": 1160197000.0,
     "year": 2017,
     "by_type": {
+      "Assessed": 0.0,
       "Other": 92694000.0,
       "Voluntary earmarked": 717589000.0,
       "Voluntary un-earmarked": 349914000.0
@@ -28023,13 +28030,11 @@
     "by_donor": [
       {
         "donor": "Unattributed",
-        "total": 433353372.03,
+        "total": 349468353.78,
         "record_kind": "calculated_balance",
-        "Other": 92694000.0,
-        "Voluntary earmarked": 340254372.03,
-        "Voluntary un-earmarked": 405000.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 349468353.78,
+        "unresolvedTotal": 349468353.78,
+        "financingIncomplete": true
       },
       {
         "donor": "Sweden",
@@ -28077,6 +28082,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "European Union",
+        "total": 43415136.31,
+        "record_kind": "reported_named",
+        "Unresolved": 43415136.31,
+        "unresolvedTotal": 43415136.31,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Guatemala",
         "total": 40749658.54,
         "record_kind": "reported_named",
@@ -28093,6 +28106,14 @@
         "Voluntary un-earmarked": 12131000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "UN OCHA",
+        "total": 33272625.939999998,
+        "record_kind": "reported_named",
+        "Unresolved": 33272625.939999998,
+        "unresolvedTotal": 33272625.939999998,
+        "financingIncomplete": true
       },
       {
         "donor": "Japan",
@@ -28174,6 +28195,14 @@
         "Voluntary un-earmarked": 1568000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Bill & Melinda Gates Foundation",
+        "total": 7197256.0,
+        "record_kind": "reported_named",
+        "Unresolved": 7197256.0,
+        "unresolvedTotal": 7197256.0,
+        "financingIncomplete": true
       },
       {
         "donor": "United States of America",
@@ -29048,27 +29077,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Bill & Melinda Gates Foundation",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 7197256.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 43415136.31,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "UN OCHA",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 33272625.939999998,
-        "financingIncomplete": true
-      },
-      {
         "donor": "Congo",
         "total": -345144.76,
         "record_kind": "reported_named",
@@ -29087,7 +29095,7 @@
     ]
   },
   "UNHCR": {
-    "total": 4226519587.46,
+    "total": 4226519587.4599996,
     "year": 2017,
     "by_type": {
       "Assessed": 47754500.0,
@@ -29105,17 +29113,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Unattributed",
-        "total": 996756270.02,
-        "record_kind": "calculated_balance",
-        "Assessed": 47754500.0,
-        "Other": 30662433.36,
-        "Voluntary earmarked": 711631212.31,
-        "Voluntary un-earmarked": 206708124.35,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
         "donor": "Germany",
         "total": 571456508.38,
         "record_kind": "reported_named",
@@ -29123,6 +29120,22 @@
         "Voluntary un-earmarked": 12273212.38,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Unattributed",
+        "total": 448561994.92999935,
+        "record_kind": "calculated_balance",
+        "Unresolved": 448561994.92999935,
+        "unresolvedTotal": 448561994.92999935,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "European Union",
+        "total": 446903978.89000005,
+        "record_kind": "reported_named",
+        "Unresolved": 446903978.89,
+        "unresolvedTotal": 446903978.89000005,
+        "financingIncomplete": true
       },
       {
         "donor": "United Kingdom of Great Britain and Northern Ireland",
@@ -29179,6 +29192,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "Private Donors / Private Sector",
+        "total": 65273095.2,
+        "record_kind": "reported_aggregate",
+        "Unresolved": 65273095.2,
+        "unresolvedTotal": 65273095.2,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Canada",
         "total": 61723580.01,
         "record_kind": "reported_named",
@@ -29213,6 +29234,14 @@
         "Voluntary un-earmarked": 14000000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "UN OCHA",
+        "total": 36017201.0,
+        "record_kind": "reported_named",
+        "Unresolved": 36017201.0,
+        "unresolvedTotal": 36017201.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Republic of Korea",
@@ -29614,27 +29643,6 @@
         "Voluntary un-earmarked": 3000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 446903978.89000005,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Private Donors / Private Sector",
-        "total": 0.0,
-        "record_kind": "reported_aggregate",
-        "unresolvedTotal": 65273095.2,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "UN OCHA",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 36017201.0,
-        "financingIncomplete": true
       }
     ]
   },
@@ -29642,6 +29650,7 @@
     "total": 6576743605.0,
     "year": 2017,
     "by_type": {
+      "Assessed": 0.0,
       "Other": 145744994.0,
       "Voluntary earmarked": 5152898225.0,
       "Voluntary un-earmarked": 1278100386.0
@@ -29649,13 +29658,11 @@
     "by_donor": [
       {
         "donor": "Unattributed",
-        "total": 3358809182.0,
+        "total": 1455649383.0,
         "record_kind": "calculated_balance",
-        "Other": 145744994.0,
-        "Voluntary earmarked": 2493364130.0,
-        "Voluntary un-earmarked": 719700058.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 1455649383.0,
+        "unresolvedTotal": 1455649383.0,
+        "financingIncomplete": true
       },
       {
         "donor": "United States of America",
@@ -29665,6 +29672,22 @@
         "Voluntary un-earmarked": 132500000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "European Union",
+        "total": 567062473.0,
+        "record_kind": "reported_named",
+        "Unresolved": 567062473.0,
+        "unresolvedTotal": 567062473.0,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "World Bank Group",
+        "total": 559423264.0,
+        "record_kind": "reported_named",
+        "Unresolved": 559423264.0,
+        "unresolvedTotal": 559423264.0,
+        "financingIncomplete": true
       },
       {
         "donor": "United Kingdom of Great Britain and Northern Ireland",
@@ -29683,6 +29706,14 @@
         "Voluntary un-earmarked": 16912264.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "USA National Committee",
+        "total": 336395221.0,
+        "record_kind": "reported_named",
+        "Unresolved": 336395221.0,
+        "unresolvedTotal": 336395221.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Norway",
@@ -29712,6 +29743,22 @@
         "financingIncomplete": false
       },
       {
+        "donor": "GAVI, The Vaccine Alliance",
+        "total": 154720187.0,
+        "record_kind": "reported_named",
+        "Unresolved": 154720187.0,
+        "unresolvedTotal": 154720187.0,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "UN OCHA",
+        "total": 139898066.0,
+        "record_kind": "reported_named",
+        "Unresolved": 139898066.0,
+        "unresolvedTotal": 139898066.0,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Canada",
         "total": 134304232.0,
         "record_kind": "reported_named",
@@ -29719,6 +29766,14 @@
         "Voluntary un-earmarked": 12597201.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Private Donors / Private Sector",
+        "total": 104739344.0,
+        "record_kind": "reported_aggregate",
+        "Unresolved": 104739344.0,
+        "unresolvedTotal": 104739344.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Belgium",
@@ -29773,6 +29828,14 @@
         "Voluntary un-earmarked": 5312869.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "The Global Fund",
+        "total": 40921244.0,
+        "record_kind": "reported_named",
+        "Unresolved": 40921244.0,
+        "unresolvedTotal": 40921244.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Switzerland",
@@ -30795,55 +30858,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 567062473.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "GAVI, The Vaccine Alliance",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 154720187.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Private Donors / Private Sector",
-        "total": 0.0,
-        "record_kind": "reported_aggregate",
-        "unresolvedTotal": 104739344.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "The Global Fund",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 40921244.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "UN OCHA",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 139898066.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "USA National Committee",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 336395221.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "World Bank Group",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 559423264.0,
-        "financingIncomplete": true
-      },
-      {
         "donor": "Greece",
         "total": -227.0,
         "record_kind": "reported_named",
@@ -30879,14 +30893,28 @@
     },
     "by_donor": [
       {
+        "donor": "Global Environment Facility (thru UNDP or UNEP)",
+        "total": 112048971.1,
+        "record_kind": "reported_named",
+        "Unresolved": 112048971.1,
+        "unresolvedTotal": 112048971.1,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Unattributed",
-        "total": 197601280.73000002,
+        "total": 57739877.51999998,
         "record_kind": "calculated_balance",
-        "Assessed": 14668.140000000596,
-        "Other": 3286767.55,
-        "Voluntary earmarked": 194299845.04,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 57739877.51999998,
+        "unresolvedTotal": 57739877.51999998,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "European Union",
+        "total": 27812432.110000007,
+        "record_kind": "reported_named",
+        "Unresolved": 27812432.11,
+        "unresolvedTotal": 27812432.110000007,
+        "financingIncomplete": true
       },
       {
         "donor": "Japan",
@@ -32310,20 +32338,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 27812432.110000007,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Global Environment Facility (thru UNDP or UNEP)",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 112048971.1,
-        "financingIncomplete": true
-      },
-      {
         "donor": "Belgium",
         "total": -949.84,
         "record_kind": "reported_named",
@@ -32353,13 +32367,11 @@
     "by_donor": [
       {
         "donor": "Unattributed",
-        "total": 9009534.72,
+        "total": 8972574.720000003,
         "record_kind": "calculated_balance",
-        "Other": 487674.28,
-        "Voluntary earmarked": 8524710.620000001,
-        "Voluntary un-earmarked": -2850.179999999993,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 8972574.720000003,
+        "unresolvedTotal": 8972574.720000003,
+        "financingIncomplete": true
       },
       {
         "donor": "Switzerland",
@@ -32516,6 +32528,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "The Global Fund",
+        "total": 36960.0,
+        "record_kind": "reported_named",
+        "Unresolved": 36960.0,
+        "unresolvedTotal": 36960.0,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Qatar",
         "total": 34775.0,
         "record_kind": "reported_named",
@@ -32611,18 +32631,11 @@
         "Voluntary un-earmarked": 1000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "The Global Fund",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 36960.0,
-        "financingIncomplete": true
       }
     ]
   },
   "UNODC": {
-    "total": 391255999.99999994,
+    "total": 391256000.00000006,
     "year": 2017,
     "by_type": {
       "Assessed": 30638000.0,
@@ -32640,17 +32653,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "Unattributed",
-        "total": 96825198.97999997,
-        "record_kind": "calculated_balance",
-        "Assessed": 30638000.0,
-        "Other": 14510000.0,
-        "Voluntary earmarked": 51677545.149999976,
-        "Voluntary un-earmarked": -346.1699999999255,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
         "donor": "United States of America",
         "total": 72959207.26,
         "record_kind": "reported_named",
@@ -32658,6 +32660,22 @@
         "Voluntary un-earmarked": 600280.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Unattributed",
+        "total": 54848264.98000002,
+        "record_kind": "calculated_balance",
+        "Unresolved": 54848264.98000002,
+        "unresolvedTotal": 54848264.98000002,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "European Union",
+        "total": 40824052.0,
+        "record_kind": "reported_named",
+        "Unresolved": 40824052.0,
+        "unresolvedTotal": 40824052.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Japan",
@@ -32795,6 +32813,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "World Bank Group",
+        "total": 1100000.0,
+        "record_kind": "reported_named",
+        "Unresolved": 1100000.0,
+        "unresolvedTotal": 1100000.0,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Luxembourg",
         "total": 1008432.59,
         "record_kind": "reported_named",
@@ -32892,6 +32918,14 @@
         "Voluntary earmarked": 53885.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Private Donors / Private Sector",
+        "total": 52882.0,
+        "record_kind": "reported_aggregate",
+        "Unresolved": 52882.0,
+        "unresolvedTotal": 52882.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Belarus",
@@ -33071,27 +33105,6 @@
         "Voluntary un-earmarked": 1300.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 40824052.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Private Donors / Private Sector",
-        "total": 0.0,
-        "record_kind": "reported_aggregate",
-        "unresolvedTotal": 52882.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "World Bank Group",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 1100000.0,
-        "financingIncomplete": true
       }
     ]
   },
@@ -33132,15 +33145,20 @@
         "financingIncomplete": false
       },
       {
+        "donor": "European Union",
+        "total": 189235109.0,
+        "record_kind": "reported_named",
+        "Unresolved": 189235109.0,
+        "unresolvedTotal": 189235109.0,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Unattributed",
-        "total": 308480605.28,
+        "total": 119245496.27999996,
         "record_kind": "calculated_balance",
-        "Assessed": 30429897.53,
-        "Other": 54753966.0,
-        "Voluntary earmarked": 102604706.0,
-        "Voluntary un-earmarked": 120692035.75,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 119245496.27999996,
+        "unresolvedTotal": 119245496.27999996,
+        "financingIncomplete": true
       },
       {
         "donor": "Germany",
@@ -33549,13 +33567,6 @@
         "Voluntary un-earmarked": 10000.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 189235109.0,
-        "financingIncomplete": true
       }
     ]
   },
@@ -33570,13 +33581,11 @@
     "by_donor": [
       {
         "donor": "Unattributed",
-        "total": 7576633.82,
+        "total": 7411149.159999999,
         "record_kind": "calculated_balance",
-        "Other": 451540.94,
-        "Voluntary earmarked": 6246395.49,
-        "Voluntary un-earmarked": 878697.3899999997,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 7411149.159999999,
+        "unresolvedTotal": 7411149.159999999,
+        "financingIncomplete": true
       },
       {
         "donor": "Italy",
@@ -33613,6 +33622,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "UN OCHA",
+        "total": 150460.0,
+        "record_kind": "reported_named",
+        "Unresolved": 150460.0,
+        "unresolvedTotal": 150460.0,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Switzerland",
         "total": 33442.0,
         "record_kind": "reported_named",
@@ -33621,26 +33638,20 @@
         "financingIncomplete": false
       },
       {
+        "donor": "World Bank Group",
+        "total": 15024.66,
+        "record_kind": "reported_named",
+        "Unresolved": 15024.66,
+        "unresolvedTotal": 15024.66,
+        "financingIncomplete": true
+      },
+      {
         "donor": "United Kingdom of Great Britain and Northern Ireland",
         "total": 14463.0,
         "record_kind": "reported_named",
         "Voluntary earmarked": 14463.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "UN OCHA",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 150460.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "World Bank Group",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 15024.66,
-        "financingIncomplete": true
       }
     ]
   },
@@ -33654,12 +33665,11 @@
     "by_donor": [
       {
         "donor": "Unattributed",
-        "total": 64529497.0,
+        "total": 64236655.0,
         "record_kind": "calculated_balance",
-        "Other": 58090868.0,
-        "Voluntary earmarked": 6438629.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 64236655.0,
+        "unresolvedTotal": 64236655.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Japan",
@@ -33758,6 +33768,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "European Union",
+        "total": 178606.0,
+        "record_kind": "reported_named",
+        "Unresolved": 178606.0,
+        "unresolvedTotal": 178606.0,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Ghana",
         "total": 156078.0,
         "record_kind": "reported_named",
@@ -33772,6 +33790,14 @@
         "Voluntary earmarked": 141976.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "World Bank Group",
+        "total": 114236.0,
+        "record_kind": "reported_named",
+        "Unresolved": 114236.0,
+        "unresolvedTotal": 114236.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Malaysia",
@@ -33804,20 +33830,6 @@
         "Voluntary earmarked": 16501.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 178606.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "World Bank Group",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 114236.0,
-        "financingIncomplete": true
       },
       {
         "donor": "Belgium",
@@ -35395,7 +35407,7 @@
     ]
   },
   "WFP": {
-    "total": 6430837829.0,
+    "total": 6430837829.000001,
     "year": 2017,
     "by_type": {
       "Other": 430959733.0,
@@ -35414,13 +35426,11 @@
       },
       {
         "donor": "Unattributed",
-        "total": 1469691796.23,
+        "total": 911205499.2300004,
         "record_kind": "calculated_balance",
-        "Other": 430959733.0,
-        "Voluntary earmarked": 926833622.29,
-        "Voluntary un-earmarked": 111898440.94,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 911205499.2300004,
+        "unresolvedTotal": 911205499.2300004,
+        "financingIncomplete": true
       },
       {
         "donor": "Germany",
@@ -35441,6 +35451,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "European Union",
+        "total": 387727491.0,
+        "record_kind": "reported_named",
+        "Unresolved": 387727491.0,
+        "unresolvedTotal": 387727491.0,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Japan",
         "total": 180326620.15,
         "record_kind": "reported_named",
@@ -35448,6 +35466,14 @@
         "Voluntary un-earmarked": 3441029.65,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "UN OCHA",
+        "total": 146591010.0,
+        "record_kind": "reported_named",
+        "Unresolved": 146591010.0,
+        "unresolvedTotal": 146591010.0,
+        "financingIncomplete": true
       },
       {
         "donor": "Canada",
@@ -35575,6 +35601,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "Private Donors / Private Sector",
+        "total": 13880120.0,
+        "record_kind": "reported_aggregate",
+        "Unresolved": 13880120.0,
+        "unresolvedTotal": 13880120.0,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Russian Federation",
         "total": 13700000.0,
         "record_kind": "reported_named",
@@ -35609,6 +35643,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "World Bank Group",
+        "total": 6300000.0,
+        "record_kind": "reported_named",
+        "Unresolved": 6300000.0,
+        "unresolvedTotal": 6300000.0,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Nigeria",
         "total": 5622496.15,
         "record_kind": "reported_named",
@@ -35640,6 +35682,14 @@
         "Voluntary earmarked": 4703247.47,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Bill & Melinda Gates Foundation",
+        "total": 3987676.0,
+        "record_kind": "reported_named",
+        "Unresolved": 3987676.0,
+        "unresolvedTotal": 3987676.0,
+        "financingIncomplete": true
       },
       {
         "donor": "South Africa",
@@ -35895,41 +35945,6 @@
         "Voluntary un-earmarked": 4269.31,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "Bill & Melinda Gates Foundation",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 3987676.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 387727491.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "Private Donors / Private Sector",
-        "total": 0.0,
-        "record_kind": "reported_aggregate",
-        "unresolvedTotal": 13880120.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "UN OCHA",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 146591010.0,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "World Bank Group",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 6300000.0,
-        "financingIncomplete": true
       }
     ]
   },
@@ -35944,17 +35959,6 @@
     },
     "by_donor": [
       {
-        "donor": "Unattributed",
-        "total": 1254255390.0,
-        "record_kind": "calculated_balance",
-        "Assessed": -3423030.0,
-        "Other": 179279352.0,
-        "Voluntary earmarked": 1078353399.0,
-        "Voluntary un-earmarked": 45669.0,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
         "donor": "United States of America",
         "total": 511197425.0,
         "record_kind": "reported_named",
@@ -35962,6 +35966,22 @@
         "Voluntary earmarked": 401943279.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "Unattributed",
+        "total": 487638844.1199999,
+        "record_kind": "calculated_balance",
+        "Unresolved": 487638844.1199999,
+        "unresolvedTotal": 487638844.1199999,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "Bill & Melinda Gates Foundation",
+        "total": 326852690.6,
+        "record_kind": "reported_named",
+        "Unresolved": 326852690.6,
+        "unresolvedTotal": 326852690.6,
+        "financingIncomplete": true
       },
       {
         "donor": "United Kingdom of Great Britain and Northern Ireland",
@@ -35972,6 +35992,22 @@
         "Voluntary un-earmarked": 25149981.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "World Bank Group",
+        "total": 148462051.8,
+        "record_kind": "reported_named",
+        "Unresolved": 148462051.8,
+        "unresolvedTotal": 148462051.8,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "GAVI, The Vaccine Alliance",
+        "total": 133365050.6,
+        "record_kind": "reported_named",
+        "Unresolved": 133365050.6,
+        "unresolvedTotal": 133365050.6,
+        "financingIncomplete": true
       },
       {
         "donor": "Germany",
@@ -35991,6 +36027,22 @@
         "Voluntary earmarked": 46726068.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "European Union",
+        "total": 84171850.77,
+        "record_kind": "reported_named",
+        "Unresolved": 84171850.77,
+        "unresolvedTotal": 84171850.77,
+        "financingIncomplete": true
+      },
+      {
+        "donor": "UN OCHA",
+        "total": 57594247.75,
+        "record_kind": "reported_named",
+        "Unresolved": 57594247.75,
+        "unresolvedTotal": 57594247.75,
+        "financingIncomplete": true
       },
       {
         "donor": "Canada",
@@ -36124,6 +36176,14 @@
         "Voluntary un-earmarked": 2540650.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "The Global Fund",
+        "total": 16170654.36,
+        "record_kind": "reported_named",
+        "Unresolved": 16170654.36,
+        "unresolvedTotal": 16170654.36,
+        "financingIncomplete": true
       },
       {
         "donor": "Spain",
@@ -37521,48 +37581,6 @@
         "Assessed": 4650.0,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
-      },
-      {
-        "donor": "Bill & Melinda Gates Foundation",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 326852690.6,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 84171850.77,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "GAVI, The Vaccine Alliance",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 133365050.6,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "The Global Fund",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 16170654.36,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "UN OCHA",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 57594247.75,
-        "financingIncomplete": true
-      },
-      {
-        "donor": "World Bank Group",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 148462051.8,
-        "financingIncomplete": true
       }
     ]
   },
@@ -39124,7 +39142,7 @@
     ]
   },
   "WMO": {
-    "total": 93885061.35,
+    "total": 93885061.35000001,
     "year": 2017,
     "by_type": {
       "Assessed": 69814621.68,
@@ -39135,14 +39153,11 @@
     "by_donor": [
       {
         "donor": "Unattributed",
-        "total": 75701930.62,
+        "total": 73916574.60000001,
         "record_kind": "calculated_balance",
-        "Assessed": 69814621.68,
-        "Other": 2013292.43,
-        "Voluntary earmarked": 3416311.299999999,
-        "Voluntary un-earmarked": 457705.21,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
+        "Unresolved": 73916574.60000001,
+        "unresolvedTotal": 73916574.60000001,
+        "financingIncomplete": true
       },
       {
         "donor": "United States of America",
@@ -39170,6 +39185,14 @@
         "Voluntary un-earmarked": 419222.9,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
+      },
+      {
+        "donor": "World Bank Group",
+        "total": 1785356.02,
+        "record_kind": "reported_named",
+        "Unresolved": 1785356.02,
+        "unresolvedTotal": 1785356.02,
+        "financingIncomplete": true
       },
       {
         "donor": "Republic of Korea",
@@ -39403,13 +39426,6 @@
         "financingIncomplete": false
       },
       {
-        "donor": "World Bank Group",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 1785356.02,
-        "financingIncomplete": true
-      },
-      {
         "donor": "Greece",
         "total": -97090.17,
         "record_kind": "reported_named",
@@ -39420,7 +39436,7 @@
     ]
   },
   "WTO": {
-    "total": 223812032.17999995,
+    "total": 223812032.18,
     "year": 2017,
     "by_type": {
       "Assessed": 200499005.1,
@@ -39474,6 +39490,14 @@
         "financingIncomplete": false
       },
       {
+        "donor": "European Union",
+        "total": 8397981.6,
+        "record_kind": "reported_named",
+        "Unresolved": 8397981.6,
+        "unresolvedTotal": 8397981.6,
+        "financingIncomplete": true
+      },
+      {
         "donor": "Netherlands",
         "total": 8137143.15,
         "record_kind": "reported_named",
@@ -39487,16 +39511,6 @@
         "total": 7532147.24,
         "record_kind": "reported_named",
         "Assessed": 7532147.24,
-        "unresolvedTotal": 0.0,
-        "financingIncomplete": false
-      },
-      {
-        "donor": "Unattributed",
-        "total": 7400401.389999995,
-        "record_kind": "calculated_balance",
-        "Assessed": 107944.87999999525,
-        "Other": 1948210.4,
-        "Voluntary earmarked": 5344246.109999999,
         "unresolvedTotal": 0.0,
         "financingIncomplete": false
       },
@@ -40921,10 +40935,11 @@
         "financingIncomplete": false
       },
       {
-        "donor": "European Union",
-        "total": 0.0,
-        "record_kind": "reported_named",
-        "unresolvedTotal": 8397981.6,
+        "donor": "Unattributed",
+        "total": -997580.2099999784,
+        "record_kind": "calculated_balance",
+        "Unresolved": -997580.2099999784,
+        "unresolvedTotal": -997580.2099999784,
         "financingIncomplete": true
       }
     ]

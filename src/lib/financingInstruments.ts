@@ -21,6 +21,7 @@ export const FINANCING_INSTRUMENT_LABELS: Record<string, string> = {
   "Voluntary un-earmarked": "Voluntary core (un-earmarked) contributions",
   "Voluntary earmarked": "Voluntary non-core (earmarked) contributions",
   Other: "Revenue from other activities",
+  Unresolved: "Other financing instrument",
 };
 
 export const getFinancingInstrumentLabel = (type: string): string =>
@@ -31,12 +32,14 @@ export const FINANCING_INSTRUMENT_COLORS = {
   voluntary_unearmarked: fundingSources["voluntary-unearmarked"].color,
   voluntary_earmarked: fundingSources["voluntary-earmarked"].color,
   other: fundingSources.other.color,
+  unresolved: "var(--color-gray-500)",
 };
 export const FINANCING_INSTRUMENT_BG_CLASSES: Record<string, string> = {
   Assessed: "bg-open-funding-assessed",
   "Voluntary un-earmarked": "bg-open-funding-voluntary-unearmarked",
   "Voluntary earmarked": "bg-open-funding-voluntary-earmarked",
   Other: "bg-open-funding-other",
+  Unresolved: "bg-gray-500",
 };
 export const FINANCING_INSTRUMENT_TOOLTIPS: Record<string, string> = {
   ...Object.fromEntries(
@@ -53,13 +56,16 @@ export const FINANCING_INSTRUMENT_TOOLTIPS: Record<string, string> = {
     "Voluntary contributions designated for specific purposes or programmes (non-core contributions).",
   Other:
     "Revenue classified by CEB as other revenue. This financing instrument is distinct from aggregated contributor categories such as Other Foundations and from revenue with an unidentified contributor.",
+  Unresolved:
+    "Revenue that cannot be assigned to one of the four main financing instruments in the contributor data.",
 };
 
 export type FinancingInstrumentType =
   | "Assessed"
   | "Voluntary un-earmarked"
   | "Voluntary earmarked"
-  | "Other";
+  | "Other"
+  | "Unresolved";
 
 export const FINANCING_INSTRUMENT_ORDER =
   organizationTaxonomies.financing_instruments
@@ -67,6 +73,7 @@ export const FINANCING_INSTRUMENT_ORDER =
     .map(({ key }) => key) as FinancingInstrumentType[];
 
 export const getFinancingInstrumentColor = (type: string): string => {
+  if (type === "Unresolved") return FINANCING_INSTRUMENT_COLORS.unresolved;
   if (type === "Assessed") return FINANCING_INSTRUMENT_COLORS.assessed;
   if (type === "Voluntary un-earmarked")
     return FINANCING_INSTRUMENT_COLORS.voluntary_unearmarked;

@@ -53,9 +53,15 @@ try {
   });
   const donors = page;
   await donors.getByRole("slider").press("Home");
+  assert.equal(
+    await donors.getByText(/Government donor detail is unavailable/).count(),
+    0,
+  );
   await donors
-    .getByText(/Government donor detail is unavailable/)
-    .first()
+    .getByRole("button", { name: "Sources and methodology", exact: true })
+    .click();
+  await donors
+    .getByText(/Remaining revenue in 2011–2012 is shown as Unattributed/)
     .waitFor();
   assert.equal(
     await donors.getByRole("slider").getAttribute("aria-valuenow"),

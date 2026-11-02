@@ -46,7 +46,7 @@ export interface FinancingSeries {
   tooltip?: string;
 }
 
-// Default series = the CEB revenue financing instruments (4 categories).
+// Four reported financing types plus a conditional unresolved display series.
 const DEFAULT_SERIES: FinancingSeries[] = [
   {
     key: "Assessed",
@@ -72,11 +72,17 @@ const DEFAULT_SERIES: FinancingSeries[] = [
     color: FINANCING_INSTRUMENT_COLORS.other,
     tooltip: FINANCING_INSTRUMENT_TOOLTIPS["Other"],
   },
+  {
+    key: "Unresolved",
+    label: "Unresolved",
+    color: FINANCING_INSTRUMENT_COLORS.unresolved,
+    tooltip: FINANCING_INSTRUMENT_TOOLTIPS.Unresolved,
+  },
 ];
 
 interface FinancingInstrumentChartProps {
   data: FinancingInstrumentDataPoint[];
-  /** Stacked series to render. Defaults to the CEB 4-category revenue scheme. */
+  /** Stacked series to render. Defaults to reported financing types plus unresolved amounts when present. */
   series?: FinancingSeries[];
   height?: number;
   showLegend?: boolean;
@@ -106,7 +112,7 @@ function LegendChip({
   color: string;
   tooltip?: string;
 }) {
-  if (FINANCING_SOURCE_KEYS[type])
+  if (FINANCING_SOURCE_KEYS[type] || type === "Unresolved")
     return <FinancingInstrumentLabel type={type} variant="pill" />;
   const chip = (
     <div className="flex items-center gap-1.5 rounded-full bg-gray-100 px-2 py-1 text-xs text-gray-700">
@@ -330,7 +336,11 @@ export function FinancingInstrumentChart({
             <tr>
               <th>Year</th>
               {visibleSeries.map((item) => (
-                <th key={item.key}>{item.label}</th>
+                <th key={item.key}>
+                  {item.key === "Unresolved"
+                    ? getFinancingInstrumentLabel(item.key)
+                    : item.label}
+                </th>
               ))}
               <th>Total</th>
             </tr>

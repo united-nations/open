@@ -69,6 +69,11 @@ private label:
 | UNDP; United Nations Development Programme | United Nations Development Programme |
 | BLOOMBERG PHILANTHROPIES; Bloomberg Philanthropies | Bloomberg Philanthropies |
 
+In the current CEB contributor file, the generic private donor label is
+**Private Donors** in 2015–2021 and 2023–2024, **Private donor** in 2022, and
+**Private Sector** in 2025. These labels share the display name above while
+reported amounts and observation-level contributor categories are preserved.
+
 **USA National Committee** remains one contributor across recipients. Qualifiers
 such as **Global Environment Facility (thru UNDP or UNEP)** are retained; that
 label is not silently merged with **Global Environment Facility**. Other source
@@ -95,18 +100,28 @@ Subtype detail remains in downloaded sources rather than forming additional
 portal financing types.
 
 The [legacy-code investigation](research/ceb-legacy-revenue-codes/README.md)
-found no authoritative crosswalk for R05/R07–R12 in the 2015–2017 non-government
-records. The previous blanket assignments are unsupported, especially
-R08/R08B/R08b → unearmarked. Preserve the original code and donor amount as an
-unresolved financing observation. Do not infer financing from contributor name,
-category, numerical prefix, or an aggregate reconciliation that happens to balance.
-Known donor totals remain inspectable separately from their unavailable financing
-split. Unresolved amounts must not be added on top of already-balanced four-type
-controls, which would count them twice.
+found no authoritative crosswalk for historical R05/R07–R12 contributor codes.
+Their original amounts and codes remain intact and are displayed as a fifth
+**Other financing instrument** financing category in contributor views, using consistent gray.
+Filters and legend entries appear only when the displayed data contains it.
+
+For affected organization-years, the additive contributor ledger comprises
+classified donor amounts, unresolved donor amounts, and a signed Unattributed
+balance also marked Other financing instrument. That balance is organization revenue minus all
+reported contributor amounts. No financing type is guessed for these amounts.
+The entity revenue export's `by_type` comes independently from CEB's main revenue
+file and retains its four reported types; donor rows include the fifth display
+category. Both presentations retain the same organization revenue total. The
+All contributors financing trend uses the four main revenue controls directly;
+filtered contributor/group financing trends use the additive contributor ledger.
+The internal `Unresolved` key remains stable; its user-facing label is
+**Other financing instrument**. Source-code records remain in the exports and
+raw data, but are not displayed in separate explanatory tables.
 
 ## Signed reconciliation
 
-Within each controlled entity × year × main financing type:
+For organization-years without unresolved contributor financing, within each
+controlled entity × year × main financing type:
 
 1. Retain known reported government and non-government detail.
 2. Where a CEB contributor-category control exists but no contributor records

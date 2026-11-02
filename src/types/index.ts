@@ -58,6 +58,7 @@ export interface DonorContribution {
   "Voluntary earmarked"?: number;
   "Voluntary un-earmarked"?: number;
   Other?: number;
+  Unresolved?: number;
 }
 
 export type RegularBudgetPaymentStatus =

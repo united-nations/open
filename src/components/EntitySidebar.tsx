@@ -18,7 +18,10 @@ import {
 import { formatBudget } from "@/lib/entities";
 import { getContributionTypeOrder } from "@/lib/contributors";
 import { FinancingInstrumentLabel } from "@/components/FinancingInstrumentLabel";
-import { getFinancingInstrumentColor } from "@/lib/financingInstruments";
+import {
+  getFinancingInstrumentColor,
+  getFinancingInstrumentLabel,
+} from "@/lib/financingInstruments";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { navigateToSidebar } from "@/hooks/useDeepLink";
 import {
@@ -568,6 +571,7 @@ export function EntitySidebar({
                               "Voluntary un-earmarked",
                               "Voluntary earmarked",
                               "Other",
+                              "Unresolved",
                             ].includes(key) && typeof value === "number",
                         )
                         .sort(
@@ -583,11 +587,7 @@ export function EntitySidebar({
                           key={contrib.donor}
                           title={contrib.donor}
                           label={contrib.donor}
-                          value={
-                            contrib.financingIncomplete && contrib.total === 0
-                              ? "Financing unresolved"
-                              : formatBudgetFixed(contrib.total)
-                          }
+                          value={formatBudgetFixed(contrib.total)}
                           onClick={() =>
                             navigateToSidebar("donor", contrib.donor)
                           }
@@ -626,7 +626,7 @@ export function EntitySidebar({
                                             getFinancingInstrumentColor(type),
                                         }}
                                       />
-                                      {type}
+                                      {getFinancingInstrumentLabel(type)}
                                     </span>
                                     <span className="font-medium">
                                       {formatBudgetFixed(amount)}

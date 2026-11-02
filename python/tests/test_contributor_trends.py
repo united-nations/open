@@ -30,7 +30,12 @@ class ContributorTrendsTests(unittest.TestCase):
         frame = pd.DataFrame(rows, columns=["year", "donor_name", "donor_type", "amount", "is_other"])
         frame["rev_cat"] = "Voluntary earmarked"
         with tempfile.TemporaryDirectory() as directory:
-            with patch.object(export, "OUT", Path(directory)), patch.object(export, "YEARS", [2024, 2025]):
+            controls = pd.DataFrame([
+                {"calendar_year": 2024, "rev_cat": "Voluntary earmarked", "amount": 125},
+                {"calendar_year": 2025, "rev_cat": "Voluntary earmarked", "amount": 15},
+            ])
+            with patch.object(export, "OUT", Path(directory)), patch.object(export, "YEARS", [2024, 2025]), \
+                    patch.object(export, "load_financing_controls", return_value=controls):
                 export.export_contributor_trends_json(frame)
             data = json.loads((Path(directory) / "contributor-trends.json").read_text())
         totals = {key: values[0]["total"] for key, values in data["aggregates"].items()}

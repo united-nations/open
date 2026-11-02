@@ -49,7 +49,7 @@ class AuditRemediationTests(unittest.TestCase):
     def test_annual_and_trends_same_instruments_and_scope(self):
         trends = read('contributor-trends.json')
         fields = {'Assessed': 'assessed', 'Voluntary un-earmarked': 'voluntary_unearmarked',
-                  'Voluntary earmarked': 'voluntary_earmarked', 'Other': 'other'}
+                  'Voluntary earmarked': 'voluntary_earmarked', 'Other': 'other', 'Unresolved': 'unresolved'}
         for year in read('manifest.json')['entityRevenue']['years']:
             donors = read(f'donors-{year}.json')
             totals = defaultdict(float)
@@ -64,8 +64,13 @@ class AuditRemediationTests(unittest.TestCase):
                     for key in fields.values():
                         self.assertAlmostEqual(point[key], by_type[key], places=2, msg=(year, name, key))
             point = next(p for p in trends['aggregates']['all'] if p['year'] == year)
+            source_totals = defaultdict(float)
+            for entity in read(f'entity-revenue-{year}.json').values():
+                for label, amount in entity['by_type'].items():
+                    source_totals[fields[label]] += amount
             for key in fields.values():
-                self.assertAlmostEqual(point[key], totals[key], places=2)
+                self.assertAlmostEqual(point[key], source_totals[key], places=2, msg=(year, key))
+            self.assertEqual(point['unresolved'], 0)
             self.assertAlmostEqual(point['total'], sum(totals.values()), places=2)
 
     def test_uninfo_scope_and_grain(self):

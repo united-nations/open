@@ -46,9 +46,11 @@ separate from the source quotation.
   no contributor breakdown for the organization/year, show its reported total
   under the source category name; reserve **Other {category}** for balances
   alongside reported detail.
-- Preserve unresolved historical financing records without assigning one of the
-  four main types by guesswork. Keep their known donor amounts separate from
-  already-reconciled instrument totals to avoid counting them twice.
+- Display unresolved historical contributor amounts in gray under **Other financing instrument**,
+  without guessing a main financing type. In affected organization-years the
+  remaining unattributed balance also has unresolved financing, keeping the
+  contributor ledger additive. Reported organization financing totals retain
+  CEB's four types. Show the additional filter only where unresolved data exists.
 - Keep system expenses CEB-only; Secretariat and UNINFO remain separately sourced.
   Only use cross-dimensions actually reported together by a source.
 - Display nominal source USD. CPI adjustment is disabled.

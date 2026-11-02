@@ -36,6 +36,7 @@ interface ContributorYearData {
   year: number;
   available?: boolean;
   financingIncomplete?: boolean;
+  unresolved?: number;
   total: number;
   assessed: number;
   other: number;
@@ -170,7 +171,7 @@ export function ContributorTrendsChart() {
     if (!data) return [];
 
     const years = data.meta.years;
-    return years.map((year, idx) => {
+    const points = years.map((year, idx) => {
       const point: Record<string, number | string | null> = {
         year: year.toString(),
       };
@@ -187,9 +188,7 @@ export function ContributorTrendsChart() {
             : null;
         } else if (id === "non-gov") {
           const value = data.aggregates["non-gov"][idx];
-          point["Non-Government"] = value?.financingIncomplete
-            ? null
-            : (value?.total ?? null);
+          point["Non-Government"] = value?.total ?? null;
         } else if (id === "unattributed" || id === "all") {
           point[id === "all" ? "All contributors" : "Unattributed"] =
             contributorYearAvailable(id, year, data.meta.governmentContributors)
@@ -198,14 +197,13 @@ export function ContributorTrendsChart() {
         } else if (id.startsWith("cat:") && data.aggregates[id]) {
           // Category aggregate - prefix to avoid collision with individual donors
           const catName = id.replace("cat:", "") + " (all)";
-          point[catName] =
-            contributorYearAvailable(
-              id,
-              year,
-              data.meta.governmentContributors,
-            ) && !data.aggregates[id][idx]?.financingIncomplete
-              ? (data.aggregates[id][idx]?.total ?? 0)
-              : null;
+          point[catName] = contributorYearAvailable(
+            id,
+            year,
+            data.meta.governmentContributors,
+          )
+            ? (data.aggregates[id][idx]?.total ?? 0)
+            : null;
         } else if (
           data.categoryContributors &&
           Object.entries(data.categoryContributors).some(([category, donors]) =>
@@ -220,8 +218,7 @@ export function ContributorTrendsChart() {
             for (const [donor, series] of Object.entries(donors)) {
               if (`${donor} — ${category}` === id)
                 point[id] =
-                  series[idx]?.available === false ||
-                  series[idx]?.financingIncomplete
+                  series[idx]?.available === false
                     ? null
                     : (series[idx]?.total ?? null);
             }
@@ -232,9 +229,7 @@ export function ContributorTrendsChart() {
               id,
               year,
               data.meta.governmentContributors,
-            ) &&
-            data.contributors[id][idx]?.available !== false &&
-            !data.contributors[id][idx]?.financingIncomplete
+            ) && data.contributors[id][idx]?.available !== false
               ? (data.contributors[id][idx]?.total ?? 0)
               : null;
         }
@@ -242,6 +237,7 @@ export function ContributorTrendsChart() {
 
       return point;
     });
+    return points.filter((point) => Number(point.year) >= 2013);
   }, [data, selected]);
 
   // Get line configurations and color map based on selection
@@ -338,13 +334,6 @@ export function ContributorTrendsChart() {
 
   return (
     <>
-      <p className="mt-4 text-sm text-gray-600">
-        Contributor data starts in 2011. Government detail starts in 2013;
-        remaining controlled revenue in 2011–2012 is Unattributed. Missing
-        government years are not zero contributions. Historical donor records
-        with unresolved financing are available below the contributor chart;
-        their incomplete financing trends are shown as gaps.
-      </p>
       {/* Charts container - grid for aligned columns */}
       <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-6">
         {/* Chart A: Compare contributors (line chart) */}
@@ -382,6 +371,7 @@ export function ContributorTrendsChart() {
                   <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
                   <XAxis
                     dataKey="year"
+                    interval="preserveStartEnd"
                     tick={{ fontSize: 12 }}
                     tickLine={false}
                     axisLine={{ stroke: "#e5e7eb" }}

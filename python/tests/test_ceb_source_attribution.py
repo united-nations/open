@@ -135,7 +135,7 @@ class SourceAttributionTests(unittest.TestCase):
     def test_unresolved_records_are_inspectable_without_double_counting_controls(self):
         controls = pd.DataFrame([dict(calendar_year=2016, agency="UNDP", rev_type="R03E", amount=100)])
         gov = pd.DataFrame([dict(calendar_year=2016, entity="UNDP", rev_type="R03E", contrib_type="Government",
-                                 government_donor="Miscellaneous", amount=70)])
+                                 government_donor="Miscellaneous", amount=50)])
         nongov = pd.DataFrame([dict(calendar_year=2016, entity="UNDP", rev_type="R09", contrib_type="2",
                                     donor="European Union", amount=30)])
         sources = {"revenue.csv": controls,
@@ -145,8 +145,8 @@ class SourceAttributionTests(unittest.TestCase):
                    "expenses_sub_agency.csv": pd.DataFrame(columns=["calendar_year", "agency", "sub_agency"])}
         with patch.object(fusion, "load", side_effect=lambda name: sources[name].copy()), patch.object(pd.DataFrame, "to_csv"):
             frame = fusion.fuse_revenue()
-        self.assertEqual(frame.loc[frame.financing_resolved, "amount"].sum(), 100)
-        self.assertEqual(frame.loc[~frame.financing_resolved, "amount"].sum(), 30)
+        self.assertEqual(frame.loc[frame.financing_resolved, "amount"].sum(), 50)
+        self.assertEqual(frame.loc[~frame.financing_resolved, "amount"].sum(), 50)
         # Preserve the government file's category even for a generic source label.
         self.assertEqual(frame.loc[frame.donor_name == "Miscellaneous", "donor_type"].iloc[0], "Government")
         frame["rev_cat"] = frame.rev_type.map(lambda code: rev_category(code) if code else None)
@@ -164,7 +164,7 @@ class SourceAttributionTests(unittest.TestCase):
         self.assertEqual(donors["Miscellaneous"]["record_kind"], "reported_aggregate")
         self.assertEqual(donors["Miscellaneous"]["category"], "Government")
         donor = donors["European Union"]
-        self.assertEqual(donor["contributions"], {})
+        self.assertEqual(donor["contributions"], {"UNDP": {"Unresolved": 30}})
         self.assertEqual(donor["categories"], ["Non-Government"])
         self.assertEqual(donor["unresolvedTotal"], 30)
         self.assertTrue(donor["financingIncomplete"])
@@ -175,6 +175,9 @@ class SourceAttributionTests(unittest.TestCase):
         self.assertEqual(trends["aggregates"]["all"][0]["total"], 100)
         self.assertFalse(trends["aggregates"]["all"][0]["financingIncomplete"])
         self.assertTrue(trends["aggregates"]["all"][0]["attributionIncomplete"])
+        self.assertEqual(trends["aggregates"]["all"][0]["voluntary_earmarked"], 100)
+        self.assertEqual(trends["aggregates"]["all"][0]["unresolved"], 0)
+        self.assertEqual(trends["contributors"]["European Union"][0]["unresolved"], 30)
         self.assertEqual(trends["contributors"]["European Union"][0]["unresolvedTotal"], 30)
         for code in UNRESOLVED_FINANCING_CODES:
             with self.subTest(code=code), self.assertRaises(KeyError):

@@ -713,7 +713,9 @@
     "year": 2011,
     "by_type": {
       "Assessed": 226843565.0,
-      "Voluntary earmarked": 159437395.0
+      "Other": 0.0,
+      "Voluntary earmarked": 159437395.0,
+      "Voluntary un-earmarked": 0.0
     },
     "by_donor": [
       {
@@ -914,7 +916,7 @@
     "by_type": {
       "Assessed": 101168752.4,
       "Other": 2913105.41,
-      "Voluntary earmarked": 249416515.79999998
+      "Voluntary earmarked": 249416515.8
     },
     "by_donor": [
       {
@@ -949,6 +951,7 @@
     "total": 21121432.75,
     "year": 2011,
     "by_type": {
+      "Assessed": 0.0,
       "Other": 1376042.83,
       "Voluntary earmarked": 19300905.39,
       "Voluntary un-earmarked": 444484.53

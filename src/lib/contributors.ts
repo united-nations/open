@@ -34,6 +34,7 @@ export interface ContributorYearAmounts {
   voluntary_unearmarked: number;
   voluntary_earmarked: number;
   other: number;
+  unresolved?: number;
 }
 
 /** Preserve missing periods as gaps, while keeping complete control series visible. */
@@ -42,13 +43,16 @@ export function contributorFinancingPoint(
   scopeAvailable = true,
 ) {
   const known =
-    scopeAvailable && point.available !== false && !point.financingIncomplete;
+    scopeAvailable &&
+    point.available !== false &&
+    (point.unresolved !== undefined || !point.financingIncomplete);
   return {
     year: String(point.year),
     Assessed: known ? point.assessed : null,
     "Voluntary un-earmarked": known ? point.voluntary_unearmarked : null,
     "Voluntary earmarked": known ? point.voluntary_earmarked : null,
     Other: known ? point.other : null,
+    Unresolved: known ? (point.unresolved ?? 0) : null,
   };
 }
 
@@ -185,3 +189,17 @@ export const CONTRIBUTION_TYPES = organizationTaxonomies.financing_instruments
     opacity: getContributionTypeColor(key),
     bgColor: getContributionTypeBgColor(key),
   }));
+
+export function availableContributionTypes(
+  contributors: readonly ContributorData[],
+) {
+  return CONTRIBUTION_TYPES.filter(
+    ({ type }) =>
+      type !== "Unresolved" ||
+      contributors.some((item) =>
+        Object.values(item.contributions).some(
+          (amounts) => "Unresolved" in amounts,
+        ),
+      ),
+  );
+}

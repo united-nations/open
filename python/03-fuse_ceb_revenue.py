@@ -167,9 +167,17 @@ def fuse_revenue():
                         source={"contrib_type": code, "rev_type": rev},
                         source_file="revenue_contrib_type.csv")
         amounts = controls.groupby("rev_code")["amount"].sum().to_dict()
-        for rev in sorted(set(amounts) | {r["rev_type"] for r in rows if r["financing_resolved"]}) if year in control_years else []:
-            residual = amounts.get(rev, 0) - sum(r["amount"] for r in rows if r["rev_type"] == rev)
-            add("Unknown", rev, "Unattributed", residual, "calculated_balance", "Unattributed")
+        if year in control_years:
+            if any(not r["financing_resolved"] for r in rows):
+                # Preserve known donor amounts without guessing their financing
+                # allocation. The remaining unattributed balance is unresolved
+                # too; organization-level financing controls remain separate.
+                residual = sum(amounts.values()) - sum(r["amount"] for r in rows)
+                add("Unknown", "", "Unattributed", residual, "calculated_balance", "Unattributed")
+            else:
+                for rev in sorted(set(amounts) | {r["rev_type"] for r in rows}):
+                    residual = amounts.get(rev, 0) - sum(r["amount"] for r in rows if r["rev_type"] == rev)
+                    add("Unknown", rev, "Unattributed", residual, "calculated_balance", "Unattributed")
         results.extend(rows)
 
     df = pd.DataFrame(results)
@@ -184,11 +192,19 @@ def validate(df: pd.DataFrame, revenue: pd.DataFrame, years: list):
     """Run validation assertions on fused data."""
     print("\n=== Validation ===")
     
+    controlled = df[df.year.isin(revenue.calendar_year.unique())]
+    totals = revenue.groupby(["calendar_year", "entity"]).amount.sum()
+    actual_totals = controlled.groupby(["year", "entity"]).amount.sum()
+    totals.index.names = actual_totals.index.names
+    assert actual_totals.subtract(totals, fill_value=0).abs().max() < 0.01
+    unresolved = set(map(tuple, controlled.loc[~controlled.financing_resolved, ["year", "entity"]].to_numpy()))
     controls = revenue[revenue["calendar_year"].isin(years)].groupby(["calendar_year", "entity", "rev_code"])["amount"].sum()
-    actual = df[df.year.isin(revenue.calendar_year.unique()) & df.financing_resolved].groupby(["year", "entity", "rev_type"])["amount"].sum()
+    actual = controlled[controlled.financing_resolved].groupby(["year", "entity", "rev_type"])["amount"].sum()
+    controls = controls[[key[:2] not in unresolved for key in controls.index]]
+    actual = actual[[key[:2] not in unresolved for key in actual.index]]
     controls.index.names = actual.index.names
     difference = actual.subtract(controls, fill_value=0)
-    assert difference.abs().max() < 0.01, difference[difference.abs() >= 0.01].to_dict()
+    assert difference.empty or difference.abs().max() < 0.01, difference[difference.abs() >= 0.01].to_dict()
     assert df["amount"].notna().all(), "Missing fused amounts"
     assert set(years) == set(df["year"].unique()), "Missing years"
     print(f"\nAll {len(years)} years validated.")

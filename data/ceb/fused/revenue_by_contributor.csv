@@ -12580,9 +12580,7 @@ FAO,2015,Unknown,,Non-Government,United Nations Development Programme,1528823.7,
 FAO,2015,Unknown,,Non-Government,Global Environment Facility (thru UNDP or UNEP),939193.5,reported_named,False,False,Global Environment Facility (thru UNDP or UNEP),2,R08B,887.0,revenue_non_gov_donors.csv
 FAO,2015,Unknown,,Non-Government,Global Environment Facility (thru UNDP or UNEP),418219.95,reported_named,False,False,Global Environment Facility (thru UNDP or UNEP),2,R08B,1027.0,revenue_non_gov_donors.csv
 FAO,2015,Unknown,,Non-Government,United Nations Development Programme,78838.4,reported_named,False,False,United Nations Development Programme,2,R10,1251.0,revenue_non_gov_donors.csv
-FAO,2015,Unknown,R01,Unattributed,Unattributed,54122.37000000477,calculated_balance,True,True,,,,,
-FAO,2015,Unknown,R03,Unattributed,Unattributed,356676311.97,calculated_balance,True,True,,,,,
-FAO,2015,Unknown,R04,Unattributed,Unattributed,10288000.0,calculated_balance,True,True,,,,,
+FAO,2015,Unknown,,Unattributed,Unattributed,152693173.1600001,calculated_balance,True,False,,,,,
 IAEA,2015,C01,R01,Government,United States of America,96485181.36,reported_named,False,True,United States of America,Government,Assessed contributions,14482.0,revenue_government_donors.csv
 IAEA,2015,C01,R01,Government,Japan,40245902.63,reported_named,False,True,Japan,Government,Assessed contributions,12032.0,revenue_government_donors.csv
 IAEA,2015,C01,R01,Government,Germany,26529574.44,reported_named,False,True,Germany,Government,Assessed contributions,12050.0,revenue_government_donors.csv
@@ -12881,9 +12879,7 @@ IAEA,2015,C01,R03,Government,Palau,1390.0,reported_named,False,True,Palau,Govern
 IAEA,2015,C01,R03,Government,Lesotho,700.0,reported_named,False,True,Lesotho,Government,Voluntary non-core (earmarked) contributions,16884.0,revenue_government_donors.csv
 IAEA,2015,C01,R03,Government,Eritrea,698.0,reported_named,False,True,Eritrea,Government,Voluntary non-core (earmarked) contributions,16608.0,revenue_government_donors.csv
 IAEA,2015,Unknown,,Non-Government,European Union,21307031.73,reported_named,False,False,European Union,2,R09,338.0,revenue_non_gov_donors.csv
-IAEA,2015,Unknown,R01,Unattributed,Unattributed,37333.939999997616,calculated_balance,True,True,,,,,
-IAEA,2015,Unknown,R03,Unattributed,Unattributed,40633903.80000001,calculated_balance,True,True,,,,,
-IAEA,2015,Unknown,R04,Unattributed,Unattributed,4661955.14,calculated_balance,True,True,,,,,
+IAEA,2015,Unknown,,Unattributed,Unattributed,24026161.150000095,calculated_balance,True,False,,,,,
 ICAO,2015,C01,R01,Government,United States of America,14929548.01,reported_named,False,True,United States of America,Government,Assessed contributions,14483.0,revenue_government_donors.csv
 ICAO,2015,C01,R01,Government,Japan,5459060.65,reported_named,False,True,Japan,Government,Assessed contributions,12033.0,revenue_government_donors.csv
 ICAO,2015,C01,R01,Government,Germany,4099368.23,reported_named,False,True,Germany,Government,Assessed contributions,12051.0,revenue_government_donors.csv
@@ -13183,9 +13179,7 @@ ICAO,2015,C01,R03,Government,Democratic Republic of the Congo,-10525.0,reported_
 ICAO,2015,C01,R03,Government,Nepal,-435696.0,reported_named,False,True,Nepal,Government,Voluntary non-core (earmarked) contributions,15820.0,revenue_government_donors.csv
 ICAO,2015,Unknown,,Non-Government,European Union,554772.56,reported_named,False,False,European Union,2,R09,980.0,revenue_non_gov_donors.csv
 ICAO,2015,Unknown,,Non-Government,Global Environment Facility (thru UNDP or UNEP),235936.46,reported_named,False,False,Global Environment Facility (thru UNDP or UNEP),2,R08B,1116.0,revenue_non_gov_donors.csv
-ICAO,2015,Unknown,R01,Unattributed,Unattributed,40596.589999988675,calculated_balance,True,True,,,,,
-ICAO,2015,Unknown,R03,Unattributed,Unattributed,-24727000.400000006,calculated_balance,True,True,,,,,
-ICAO,2015,Unknown,R04,Unattributed,Unattributed,22635285.2,calculated_balance,True,True,,,,,
+ICAO,2015,Unknown,,Unattributed,Unattributed,-2841827.630000025,calculated_balance,True,False,,,,,
 IFAD,2015,C01,R02,Government,United States of America,30000000.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,15004.0,revenue_government_donors.csv
 IFAD,2015,C01,R02,Government,Japan,24756000.0,reported_named,False,True,Japan,Government,Voluntary core (un-earmarked) contributions,15065.0,revenue_government_donors.csv
 IFAD,2015,C01,R02,Government,Saudi Arabia,23000000.0,reported_named,False,True,Saudi Arabia,Government,Voluntary core (un-earmarked) contributions,15543.0,revenue_government_donors.csv
@@ -13271,7 +13265,7 @@ IFAD,2015,C01,R03,Government,Estonia,49000.0,reported_named,False,True,Estonia,G
 IFAD,2015,Unknown,,Non-Government,European Union,46468000.0,reported_named,False,False,European Union,2,R09,207.0,revenue_non_gov_donors.csv
 IFAD,2015,Unknown,,Non-Government,United Nations Development Programme,970000.0,reported_named,False,False,United Nations Development Programme,2,R10,883.0,revenue_non_gov_donors.csv
 IFAD,2015,Unknown,,Non-Government,Bill & Melinda Gates Foundation,516000.0,reported_named,False,False,Bill & Melinda Gates Foundation,2,R12,993.0,revenue_non_gov_donors.csv
-IFAD,2015,Unknown,R03,Unattributed,Unattributed,70526000.0,calculated_balance,True,True,,,,,
+IFAD,2015,Unknown,,Unattributed,Unattributed,22572000.0,calculated_balance,True,False,,,,,
 ILO,2015,C01,R01,Government,United States of America,84492098.89,reported_named,False,True,United States of America,Government,Assessed contributions,14484.0,revenue_government_donors.csv
 ILO,2015,C01,R01,Government,Japan,41627720.48,reported_named,False,True,Japan,Government,Assessed contributions,12034.0,revenue_government_donors.csv
 ILO,2015,C01,R01,Government,Germany,27440729.57,reported_named,False,True,Germany,Government,Assessed contributions,14685.0,revenue_government_donors.csv
@@ -13502,9 +13496,7 @@ ILO,2015,Unknown,,Non-Government,Multi Donor Trust Funds,12602044.0,reported_agg
 ILO,2015,Unknown,,Non-Government,World Bank Group,1954370.0,reported_named,False,False,World Bank Group,2,R11,750.0,revenue_non_gov_donors.csv
 ILO,2015,Unknown,,Non-Government,United Nations Development Programme,1382679.0,reported_named,False,False,United Nations Development Programme,2,R10,816.0,revenue_non_gov_donors.csv
 ILO,2015,Unknown,,Non-Government,World Bank Group,662939.0,reported_named,False,False,World Bank Group,2,R11,955.0,revenue_non_gov_donors.csv
-ILO,2015,Unknown,R01,Unattributed,Unattributed,16617251.030000031,calculated_balance,True,True,,,,,
-ILO,2015,Unknown,R03,Unattributed,Unattributed,65749215.0,calculated_balance,True,True,,,,,
-ILO,2015,Unknown,R04,Unattributed,Unattributed,13300000.0,calculated_balance,True,True,,,,,
+ILO,2015,Unknown,,Unattributed,Unattributed,62885566.02999997,calculated_balance,True,False,,,,,
 IMO,2015,C01,R01,Government,Panama,7732748.15,reported_named,False,True,Panama,Government,Assessed contributions,13594.0,revenue_government_donors.csv
 IMO,2015,C01,R01,Government,Liberia,4452074.07,reported_named,False,True,Liberia,Government,Assessed contributions,13042.0,revenue_government_donors.csv
 IMO,2015,C01,R01,Government,Marshall Islands,3573506.67,reported_named,False,True,Marshall Islands,Government,Assessed contributions,13242.0,revenue_government_donors.csv
@@ -13701,9 +13693,7 @@ IMO,2015,C01,R03,Government,Papua New Guinea,264.0,reported_named,False,True,Pap
 IMO,2015,C01,R03,Government,Iraq,80.0,reported_named,False,True,Iraq,Government,Voluntary non-core (earmarked) contributions,16748.0,revenue_government_donors.csv
 IMO,2015,Unknown,,Non-Government,United Nations Development Programme,1466554.07,reported_named,False,False,United Nations Development Programme,2,R10,807.0,revenue_non_gov_donors.csv
 IMO,2015,Unknown,,Non-Government,European Union,353031.11,reported_named,False,False,European Union,2,R09,1048.0,revenue_non_gov_donors.csv
-IMO,2015,Unknown,R01,Unattributed,Unattributed,7648.340000003576,calculated_balance,True,True,,,,,
-IMO,2015,Unknown,R03,Unattributed,Unattributed,4402252.4399999995,calculated_balance,True,True,,,,,
-IMO,2015,Unknown,R04,Unattributed,Unattributed,18963259.26,calculated_balance,True,True,,,,,
+IMO,2015,Unknown,,Unattributed,Unattributed,21553574.860000007,calculated_balance,True,False,,,,,
 IOM,2015,C01,R01,Government,United States of America,10666536.0,reported_named,False,True,United States of America,Government,Assessed contributions,14486.0,revenue_government_donors.csv
 IOM,2015,C01,R01,Government,Japan,5252308.0,reported_named,False,True,Japan,Government,Assessed contributions,12036.0,revenue_government_donors.csv
 IOM,2015,C01,R01,Government,Germany,3462221.0,reported_named,False,True,Germany,Government,Assessed contributions,12053.0,revenue_government_donors.csv
@@ -13930,10 +13920,7 @@ IOM,2015,Unknown,,Non-Government,European Union,129615323.0,reported_named,False
 IOM,2015,Unknown,,Non-Government,UN OCHA,30046484.0,reported_named,False,False,UN OCHA,2,R08,277.0,revenue_non_gov_donors.csv
 IOM,2015,Unknown,,Non-Government,UN OCHA,11265458.0,reported_named,False,False,UN OCHA,2,R10,448.0,revenue_non_gov_donors.csv
 IOM,2015,Unknown,,Non-Government,United Nations Development Programme,3776367.0,reported_named,False,False,United Nations Development Programme,2,R10,629.0,revenue_non_gov_donors.csv
-IOM,2015,Unknown,R01,Unattributed,Unattributed,5354.0,calculated_balance,True,True,,,,,
-IOM,2015,Unknown,R02,Unattributed,Unattributed,3413350.0,calculated_balance,True,True,,,,,
-IOM,2015,Unknown,R03,Unattributed,Unattributed,269106056.0,calculated_balance,True,True,,,,,
-IOM,2015,Unknown,R04,Unattributed,Unattributed,156663262.0,calculated_balance,True,True,,,,,
+IOM,2015,Unknown,,Unattributed,Unattributed,254484390.0,calculated_balance,True,False,,,,,
 ITC,2015,C01,R02,Government,Germany,2193000.0,reported_named,False,True,Germany,Government,Voluntary core (un-earmarked) contributions,15114.0,revenue_government_donors.csv
 ITC,2015,C01,R02,Government,Finland,2193000.0,reported_named,False,True,Finland,Government,Voluntary core (un-earmarked) contributions,15178.0,revenue_government_donors.csv
 ITC,2015,C01,R02,Government,Ireland,900000.0,reported_named,False,True,Ireland,Government,Voluntary core (un-earmarked) contributions,15280.0,revenue_government_donors.csv
@@ -13962,10 +13949,7 @@ ITC,2015,C01,R03,Government,Ireland,7000.0,reported_named,False,True,Ireland,Gov
 ITC,2015,Unknown,,Non-Government,European Union,7607000.0,reported_named,False,False,European Union,2,R09,511.0,revenue_non_gov_donors.csv
 ITC,2015,Unknown,,Non-Government,Multi Donor Trust Funds,688000.0,reported_aggregate,False,False,Multi Donor Trust Funds,2,R08,950.0,revenue_non_gov_donors.csv
 ITC,2015,Unknown,,Non-Government,United Nations Development Programme,150000.0,reported_named,False,False,United Nations Development Programme,2,R08,1185.0,revenue_non_gov_donors.csv
-ITC,2015,Unknown,R01,Unattributed,Unattributed,37156000.0,calculated_balance,True,True,,,,,
-ITC,2015,Unknown,R02,Unattributed,Unattributed,100000.0,calculated_balance,True,True,,,,,
-ITC,2015,Unknown,R03,Unattributed,Unattributed,14320000.0,calculated_balance,True,True,,,,,
-ITC,2015,Unknown,R04,Unattributed,Unattributed,1663000.0,calculated_balance,True,True,,,,,
+ITC,2015,Unknown,,Unattributed,Unattributed,44794000.0,calculated_balance,True,False,,,,,
 ITU,2015,C01,R01,Government,Japan,9626639.76,reported_named,False,True,Japan,Government,Assessed contributions,12037.0,revenue_government_donors.csv
 ITU,2015,C01,R01,Government,United States of America,9626639.76,reported_named,False,True,United States of America,Government,Assessed contributions,14487.0,revenue_government_donors.csv
 ITU,2015,C01,R01,Government,France,8022199.8,reported_named,False,True,France,Government,Assessed contributions,12001.0,revenue_government_donors.csv
@@ -14170,10 +14154,7 @@ ITU,2015,C01,R03,Government,Mexico,41282.0,reported_named,False,True,Mexico,Gove
 ITU,2015,C01,R03,Government,Singapore,36000.0,reported_named,False,True,Singapore,Government,Voluntary non-core (earmarked) contributions,17126.0,revenue_government_donors.csv
 ITU,2015,Unknown,,Non-Government,Multi Donor Trust Funds,16849646.82,reported_aggregate,False,False,Multi Donor Trust Funds,2,R12,387.0,revenue_non_gov_donors.csv
 ITU,2015,Unknown,,Non-Government,Bill & Melinda Gates Foundation,649345.11,reported_named,False,False,Bill & Melinda Gates Foundation,2,R12,960.0,revenue_non_gov_donors.csv
-ITU,2015,Unknown,R01,Unattributed,Unattributed,16929111.77000001,calculated_balance,True,True,,,,,
-ITU,2015,Unknown,R02,Unattributed,Unattributed,59398.59,calculated_balance,True,True,,,,,
-ITU,2015,Unknown,R03,Unattributed,Unattributed,2433755.2199999997,calculated_balance,True,True,,,,,
-ITU,2015,Unknown,R04,Unattributed,Unattributed,42623419.78,calculated_balance,True,True,,,,,
+ITU,2015,Unknown,,Unattributed,Unattributed,44546693.42999999,calculated_balance,True,False,,,,,
 PAHO,2015,C01,R01,Government,United States of America,66486090.0,reported_named,False,True,United States of America,Government,Assessed contributions,14488.0,revenue_government_donors.csv
 PAHO,2015,C01,R01,Government,Canada,11607064.0,reported_named,False,True,Canada,Government,Assessed contributions,11968.0,revenue_government_donors.csv
 PAHO,2015,C01,R01,Government,Brazil,9563242.0,reported_named,False,True,Brazil,Government,Assessed contributions,11933.0,revenue_government_donors.csv
@@ -14248,9 +14229,7 @@ PAHO,2015,Unknown,,Non-Government,UN OCHA,126797.0,reported_named,False,False,UN
 PAHO,2015,Unknown,,Non-Government,The Global Fund,61406.0,reported_named,False,False,Global Fund to Fight,2,R10,1280.0,revenue_non_gov_donors.csv
 PAHO,2015,Unknown,,Non-Government,United Nations Development Programme,61406.0,reported_named,False,False,United Nations Development Programme,2,R10,1281.0,revenue_non_gov_donors.csv
 PAHO,2015,Unknown,,Non-Government,United Nations Development Programme,61406.0,reported_named,False,False,United Nations Development Programme,2,R10,1282.0,revenue_non_gov_donors.csv
-PAHO,2015,Unknown,R01,Unattributed,Unattributed,16354.0,calculated_balance,True,True,,,,,
-PAHO,2015,Unknown,R03,Unattributed,Unattributed,30692525.0,calculated_balance,True,True,,,,,
-PAHO,2015,Unknown,R04,Unattributed,Unattributed,613857226.0,calculated_balance,True,True,,,,,
+PAHO,2015,Unknown,,Unattributed,Unattributed,634917663.0,calculated_balance,True,False,,,,,
 Peacekeeping Operations,2015,C01,R01,Government,United States of America,2446696000.0,reported_named,False,True,United States of America,Government,Assessed contributions,14480.0,revenue_government_donors.csv
 Peacekeeping Operations,2015,C01,R01,Government,Japan,915926000.0,reported_named,False,True,Japan,Government,Assessed contributions,12030.0,revenue_government_donors.csv
 Peacekeeping Operations,2015,C01,R01,Government,France,609649000.0,reported_named,False,True,France,Government,Assessed contributions,11994.0,revenue_government_donors.csv
@@ -14838,9 +14817,7 @@ UN Secretariat,2015,Unknown,,Non-Government,European Union,18482863.39,reported_
 UN Secretariat,2015,Unknown,,Non-Government,European Union,1374828.85,reported_named,False,False,European Union,2,R09,819.0,revenue_non_gov_donors.csv
 UN Secretariat,2015,Unknown,,Non-Government,World Bank Group,124064.69,reported_named,False,False,World Bank Group,2,R11,1205.0,revenue_non_gov_donors.csv
 UN Secretariat,2015,Unknown,,Non-Government,World Bank Group,70000.0,reported_named,False,False,World Bank Group,2,R11,1267.0,revenue_non_gov_donors.csv
-UN Secretariat,2015,Unknown,R01,Unattributed,Unattributed,298492.0,calculated_balance,True,True,,,,,
-UN Secretariat,2015,Unknown,R03,Unattributed,Unattributed,539271615.2,calculated_balance,True,True,,,,,
-UN Secretariat,2015,Unknown,R04,Unattributed,Unattributed,682560364.0,calculated_balance,True,True,,,,,
+UN Secretariat,2015,Unknown,,Unattributed,Unattributed,1126091464.6400003,calculated_balance,True,False,,,,,
 UN Tourism,2015,C01,R01,Government,France,375017.51,reported_named,False,True,France,Government,Assessed contributions,12005.0,revenue_government_donors.csv
 UN Tourism,2015,C01,R01,Government,Italy,375017.51,reported_named,False,True,Italy,Government,Assessed contributions,12023.0,revenue_government_donors.csv
 UN Tourism,2015,C01,R01,Government,Japan,375017.51,reported_named,False,True,Japan,Government,Assessed contributions,12041.0,revenue_government_donors.csv
@@ -15017,9 +14994,7 @@ UN Tourism,2015,C01,R03,Government,Burundi,-705.6,reported_named,False,True,Buru
 UN Tourism,2015,C01,R03,Government,Mozambique,-1270.9,reported_named,False,True,Mozambique,Government,Voluntary non-core (earmarked) contributions,15902.0,revenue_government_donors.csv
 UN Tourism,2015,C01,R03,Government,Ethiopia,-7630.94,reported_named,False,True,Ethiopia,Government,Voluntary non-core (earmarked) contributions,16616.0,revenue_government_donors.csv
 UN Tourism,2015,Unknown,,Non-Government,United Nations Development Programme,355705.07,reported_named,False,False,United Nations Development Programme,2,R10,1046.0,revenue_non_gov_donors.csv
-UN Tourism,2015,Unknown,R01,Unattributed,Unattributed,1167591.709999999,calculated_balance,True,True,,,,,
-UN Tourism,2015,Unknown,R03,Unattributed,Unattributed,1562618.57,calculated_balance,True,True,,,,,
-UN Tourism,2015,Unknown,R04,Unattributed,Unattributed,6147505.23,calculated_balance,True,True,,,,,
+UN Tourism,2015,Unknown,,Unattributed,Unattributed,8522010.44,calculated_balance,True,False,,,,,
 UN Women,2015,C01,R02,Government,United Kingdom of Great Britain and Northern Ireland,18860947.0,reported_named,False,True,United Kingdom of Great Britain and Northern Ireland,Government,Voluntary core (un-earmarked) contributions,15108.0,revenue_government_donors.csv
 UN Women,2015,C01,R02,Government,Switzerland,16311551.0,reported_named,False,True,Switzerland,Government,Voluntary core (un-earmarked) contributions,14940.0,revenue_government_donors.csv
 UN Women,2015,C01,R02,Government,Finland,15167931.0,reported_named,False,True,Finland,Government,Voluntary core (un-earmarked) contributions,15186.0,revenue_government_donors.csv
@@ -15207,10 +15182,7 @@ UN Women,2015,Unknown,,Non-Government,United Nations Development Programme,34892
 UN Women,2015,Unknown,,Non-Government,Bill & Melinda Gates Foundation,1000026.0,reported_named,False,False,Bill & Melinda Gates Foundation,2,R12,873.0,revenue_non_gov_donors.csv
 UN Women,2015,Unknown,,Non-Government,UN OCHA,719908.2,reported_named,False,False,UN OCHA,2,R10,939.0,revenue_non_gov_donors.csv
 UN Women,2015,Unknown,,Non-Government,UN OCHA,300210.0,reported_named,False,False,UN OCHA,2,R10,1074.0,revenue_non_gov_donors.csv
-UN Women,2015,Unknown,R01,Unattributed,Unattributed,7505355.0,calculated_balance,True,True,,,,,
-UN Women,2015,Unknown,R02,Unattributed,Unattributed,1621180.300000012,calculated_balance,True,True,,,,,
-UN Women,2015,Unknown,R03,Unattributed,Unattributed,51466784.18999998,calculated_balance,True,True,,,,,
-UN Women,2015,Unknown,R04,Unattributed,Unattributed,4503000.0,calculated_balance,True,True,,,,,
+UN Women,2015,Unknown,,Unattributed,Unattributed,27534050.110000014,calculated_balance,True,False,,,,,
 UN-Habitat,2015,C01,R03,Government,Japan,52130591.54,reported_named,False,True,Japan,Government,Voluntary non-core (earmarked) contributions,16194.0,revenue_government_donors.csv
 UN-Habitat,2015,C01,R03,Government,Switzerland,10704994.01,reported_named,False,True,Switzerland,Government,Voluntary non-core (earmarked) contributions,16358.0,revenue_government_donors.csv
 UN-Habitat,2015,C01,R03,Government,Netherlands,6756756.0,reported_named,False,True,Netherlands,Government,Voluntary non-core (earmarked) contributions,15862.0,revenue_government_donors.csv
@@ -15251,10 +15223,7 @@ UN-Habitat,2015,C01,R03,Government,Sweden,-403893.11,reported_named,False,True,S
 UN-Habitat,2015,C01,R03,Government,Rwanda,-3105737.0,reported_named,False,True,Rwanda,Government,Voluntary non-core (earmarked) contributions,17090.0,revenue_government_donors.csv
 UN-Habitat,2015,Unknown,,Non-Government,European Union,25025018.35,reported_named,False,False,European Union,2,R09,306.0,revenue_non_gov_donors.csv
 UN-Habitat,2015,Unknown,,Non-Government,Multi Donor Trust Funds,5343152.61,reported_aggregate,False,False,Multi Donor Trust Funds,2,R08,567.0,revenue_non_gov_donors.csv
-UN-Habitat,2015,Unknown,R01,Unattributed,Unattributed,16935000.0,calculated_balance,True,True,,,,,
-UN-Habitat,2015,Unknown,R02,Unattributed,Unattributed,2170827.16,calculated_balance,True,True,,,,,
-UN-Habitat,2015,Unknown,R03,Unattributed,Unattributed,62575281.64,calculated_balance,True,True,,,,,
-UN-Habitat,2015,Unknown,R04,Unattributed,Unattributed,1990000.0,calculated_balance,True,True,,,,,
+UN-Habitat,2015,Unknown,,Unattributed,Unattributed,53302937.84,calculated_balance,True,False,,,,,
 UNAIDS,2015,C01,R02,Government,United States of America,45000000.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,15006.0,revenue_government_donors.csv
 UNAIDS,2015,C01,R02,Government,Sweden,24978785.0,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,15094.0,revenue_government_donors.csv
 UNAIDS,2015,C01,R02,Government,Netherlands,22675737.0,reported_named,False,True,Netherlands,Government,Voluntary core (un-earmarked) contributions,15080.0,revenue_government_donors.csv
@@ -15302,9 +15271,7 @@ UNAIDS,2015,Unknown,,Non-Government,Bill & Melinda Gates Foundation,1631023.0,re
 UNAIDS,2015,Unknown,,Non-Government,Multi Donor Trust Funds,1427863.0,reported_aggregate,False,False,Multi Donor Trust Funds,2,R08,808.0,revenue_non_gov_donors.csv
 UNAIDS,2015,Unknown,,Non-Government,United Nations Development Programme,240549.0,reported_named,False,False,United Nations Development Programme,2,R10,1111.0,revenue_non_gov_donors.csv
 UNAIDS,2015,Unknown,,Non-Government,European Union,11392.0,reported_named,False,False,European Union,2,R09,1431.0,revenue_non_gov_donors.csv
-UNAIDS,2015,Unknown,R02,Unattributed,Unattributed,1650000.0,calculated_balance,True,True,,,,,
-UNAIDS,2015,Unknown,R03,Unattributed,Unattributed,7203465.0,calculated_balance,True,True,,,,,
-UNAIDS,2015,Unknown,R04,Unattributed,Unattributed,6365170.0,calculated_balance,True,True,,,,,
+UNAIDS,2015,Unknown,,Unattributed,Unattributed,11907808.0,calculated_balance,True,False,,,,,
 UNDP,2015,C01,R02,Government,United Kingdom of Great Britain and Northern Ireland,82988166.0,reported_named,False,True,United Kingdom of Great Britain and Northern Ireland,Government,Voluntary core (un-earmarked) contributions,15104.0,revenue_government_donors.csv
 UNDP,2015,C01,R02,Government,Norway,81279835.0,reported_named,False,True,Norway,Government,Voluntary core (un-earmarked) contributions,15452.0,revenue_government_donors.csv
 UNDP,2015,C01,R02,Government,United States of America,74500000.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,15007.0,revenue_government_donors.csv
@@ -15597,9 +15564,7 @@ UNDP,2015,Unknown,,Non-Government,United Nations Development Programme,90717.0,r
 UNDP,2015,Unknown,,Non-Government,"GAVI, The Vaccine Alliance",-20.0,reported_named,False,False,Gavi Alliance,2,R12,1559.0,revenue_non_gov_donors.csv
 UNDP,2015,Unknown,,Non-Government,United Nations Development Programme,-3837853.0,reported_named,False,False,United Nations Development Programme,2,R10,1601.0,revenue_non_gov_donors.csv
 UNDP,2015,Unknown,,Non-Government,United Nations Development Programme,-12420520.0,reported_named,False,False,United Nations Development Programme,2,R12,1603.0,revenue_non_gov_donors.csv
-UNDP,2015,Unknown,R02,Unattributed,Unattributed,109395.0,calculated_balance,True,True,,,,,
-UNDP,2015,Unknown,R03,Unattributed,Unattributed,1531403916.0,calculated_balance,True,True,,,,,
-UNDP,2015,Unknown,R04,Unattributed,Unattributed,348265392.0,calculated_balance,True,True,,,,,
+UNDP,2015,Unknown,,Unattributed,Unattributed,495621326.0,calculated_balance,True,False,,,,,
 UNEP,2015,C01,R01,Government,United States of America,36293207.0,reported_named,False,True,United States of America,Government,Assessed contributions,14489.0,revenue_government_donors.csv
 UNEP,2015,C01,R01,Government,Japan,29413075.0,reported_named,False,True,Japan,Government,Assessed contributions,12038.0,revenue_government_donors.csv
 UNEP,2015,C01,R01,Government,Germany,20164486.66,reported_named,False,True,Germany,Government,Assessed contributions,12055.0,revenue_government_donors.csv
@@ -15890,9 +15855,7 @@ UNEP,2015,Unknown,,Non-Government,United Nations Development Programme,794113.47
 UNEP,2015,Unknown,,Non-Government,Global Environment Facility (thru UNDP or UNEP),10000.0,reported_named,False,False,Global Environment Facility (thru UNDP or UNEP),2,R10,1448.0,revenue_non_gov_donors.csv
 UNEP,2015,Unknown,R03,Non-Government,United Nations Development Programme,800876.81,reported_named,False,True,United Nations Development Programme,2,R03,916.0,revenue_non_gov_donors.csv
 UNEP,2015,Unknown,R03,Non-Government,Global Environment Facility (thru UNDP or UNEP),30000.0,reported_named,False,True,Global Environment Facility (thru UNDP or UNEP),2,R03,1348.0,revenue_non_gov_donors.csv
-UNEP,2015,Unknown,R01,Unattributed,Unattributed,7536.090000003576,calculated_balance,True,True,,,,,
-UNEP,2015,Unknown,R03,Unattributed,Unattributed,258495963.44000003,calculated_balance,True,True,,,,,
-UNEP,2015,Unknown,R04,Unattributed,Unattributed,871000.0,calculated_balance,True,True,,,,,
+UNEP,2015,Unknown,,Unattributed,Unattributed,80001201.92000008,calculated_balance,True,False,,,,,
 UNESCO,2015,C01,R01,Government,United States of America,74276600.0,reported_named,False,True,United States of America,Government,Assessed contributions,14490.0,revenue_government_donors.csv
 UNESCO,2015,C01,R01,Government,Japan,37285309.0,reported_named,False,True,Japan,Government,Assessed contributions,12039.0,revenue_government_donors.csv
 UNESCO,2015,C01,R01,Government,Germany,24112885.0,reported_named,False,True,Germany,Government,Assessed contributions,14686.0,revenue_government_donors.csv
@@ -16192,9 +16155,7 @@ UNESCO,2015,Unknown,,Non-Government,United Nations Development Programme,4251877
 UNESCO,2015,Unknown,,Non-Government,Multi Donor Trust Funds,4112240.0,reported_aggregate,False,False,Multi Donor Trust Funds,2,R08,608.0,revenue_non_gov_donors.csv
 UNESCO,2015,Unknown,,Non-Government,World Bank Group,3829745.0,reported_named,False,False,World Bank Group,2,R11,625.0,revenue_non_gov_donors.csv
 UNESCO,2015,Unknown,,Non-Government,Bill & Melinda Gates Foundation,1001002.0,reported_named,False,False,Bill & Melinda Gates Foundation,2,R12,871.0,revenue_non_gov_donors.csv
-UNESCO,2015,Unknown,R01,Unattributed,Unattributed,39881.0,calculated_balance,True,True,,,,,
-UNESCO,2015,Unknown,R03,Unattributed,Unattributed,129955640.0,calculated_balance,True,True,,,,,
-UNESCO,2015,Unknown,R04,Unattributed,Unattributed,49528579.0,calculated_balance,True,True,,,,,
+UNESCO,2015,Unknown,,Unattributed,Unattributed,138053731.0,calculated_balance,True,False,,,,,
 UNFPA,2015,C01,R02,Government,Sweden,57403242.99,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,15096.0,revenue_government_donors.csv
 UNFPA,2015,C01,R02,Government,Norway,55605728.29,reported_named,False,True,Norway,Government,Voluntary core (un-earmarked) contributions,15453.0,revenue_government_donors.csv
 UNFPA,2015,C01,R02,Government,Netherlands,39682539.68,reported_named,False,True,Netherlands,Government,Voluntary core (un-earmarked) contributions,15082.0,revenue_government_donors.csv
@@ -16369,9 +16330,7 @@ UNFPA,2015,Unknown,,Non-Government,World Bank Group,1683500.0,reported_named,Fal
 UNFPA,2015,Unknown,,Non-Government,World Bank Group,0.28,reported_named,False,False,World Bank Group,2,R11,1556.0,revenue_non_gov_donors.csv
 UNFPA,2015,Unknown,R02,Non-Government,Private Donors / Private Sector,235987.96,reported_aggregate,False,True,Private Donors,2,R02,1115.0,revenue_non_gov_donors.csv
 UNFPA,2015,Unknown,R03,Non-Government,Multi Donor Trust Funds,10811976.51,reported_aggregate,False,True,Multi Donor Trust Funds,2,R03,455.0,revenue_non_gov_donors.csv
-UNFPA,2015,Unknown,R02,Unattributed,Unattributed,48618.49000000954,calculated_balance,True,True,,,,,
-UNFPA,2015,Unknown,R03,Unattributed,Unattributed,256967156.58999997,calculated_balance,True,True,,,,,
-UNFPA,2015,Unknown,R04,Unattributed,Unattributed,57280000.0,calculated_balance,True,True,,,,,
+UNFPA,2015,Unknown,,Unattributed,Unattributed,150178993.67000008,calculated_balance,True,False,,,,,
 UNHCR,2015,C01,R02,Government,United States of America,150300000.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,15009.0,revenue_government_donors.csv
 UNHCR,2015,C01,R02,Government,Sweden,84266982.59,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,15097.0,revenue_government_donors.csv
 UNHCR,2015,C01,R02,Government,United Kingdom of Great Britain and Northern Ireland,53389484.18,reported_named,False,True,United Kingdom of Great Britain and Northern Ireland,Government,Voluntary core (un-earmarked) contributions,15106.0,revenue_government_donors.csv
@@ -16494,10 +16453,7 @@ UNHCR,2015,Unknown,,Non-Government,UN OCHA,69409676.0,reported_named,False,False
 UNHCR,2015,Unknown,,Non-Government,Private Donors / Private Sector,11323749.23,reported_aggregate,False,False,Private Donors,2,R12,447.0,revenue_non_gov_donors.csv
 UNHCR,2015,Unknown,,Non-Government,Bill & Melinda Gates Foundation,3345560.97,reported_named,False,False,Bill & Melinda Gates Foundation,2,R12,643.0,revenue_non_gov_donors.csv
 UNHCR,2015,Unknown,,Non-Government,United Nations Development Programme,723251.8,reported_named,False,False,United Nations Development Programme,2,R10,938.0,revenue_non_gov_donors.csv
-UNHCR,2015,Unknown,R01,Unattributed,Unattributed,48643700.0,calculated_balance,True,True,,,,,
-UNHCR,2015,Unknown,R02,Unattributed,Unattributed,141094600.8399999,calculated_balance,True,True,,,,,
-UNHCR,2015,Unknown,R03,Unattributed,Unattributed,471141437.71000004,calculated_balance,True,True,,,,,
-UNHCR,2015,Unknown,R04,Unattributed,Unattributed,19380183.75,calculated_balance,True,True,,,,,
+UNHCR,2015,Unknown,,Unattributed,Unattributed,423021100.8000002,calculated_balance,True,False,,,,,
 UNICEF,2015,C01,R02,Government,United States of America,132000000.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,15010.0,revenue_government_donors.csv
 UNICEF,2015,C01,R02,Government,Sweden,62396006.4,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,15098.0,revenue_government_donors.csv
 UNICEF,2015,C01,R02,Government,United Kingdom of Great Britain and Northern Ireland,60355029.58,reported_named,False,True,United Kingdom of Great Britain and Northern Ireland,Government,Voluntary core (un-earmarked) contributions,15107.0,revenue_government_donors.csv
@@ -16775,9 +16731,7 @@ UNICEF,2015,Unknown,,Non-Government,Private Donors / Private Sector,-4145644.25,
 UNICEF,2015,Unknown,,Non-Government,Private Donors / Private Sector,-43636317.52,reported_aggregate,False,False,Private Donors,2,R12,1604.0,revenue_non_gov_donors.csv
 UNICEF,2015,Unknown,,Non-Government,Private Donors / Private Sector,-44440167.37,reported_aggregate,False,False,Private Donors,2,R12,1605.0,revenue_non_gov_donors.csv
 UNICEF,2015,Unknown,,Non-Government,Private Donors / Private Sector,-55154542.46,reported_aggregate,False,False,Private Donors,2,R12,1606.0,revenue_non_gov_donors.csv
-UNICEF,2015,Unknown,R02,Unattributed,Unattributed,521665095.54999995,calculated_balance,True,True,,,,,
-UNICEF,2015,Unknown,R03,Unattributed,Unattributed,1468375564.35,calculated_balance,True,True,,,,,
-UNICEF,2015,Unknown,R04,Unattributed,Unattributed,106205809.3,calculated_balance,True,True,,,,,
+UNICEF,2015,Unknown,,Unattributed,Unattributed,428631296.3500004,calculated_balance,True,False,,,,,
 UNIDO,2015,C01,R01,Government,Japan,13908834.79,reported_named,False,True,Japan,Government,Assessed contributions,12040.0,revenue_government_donors.csv
 UNIDO,2015,C01,R01,Government,Germany,9168759.3,reported_named,False,True,Germany,Government,Assessed contributions,12056.0,revenue_government_donors.csv
 UNIDO,2015,C01,R01,Government,China,6609212.25,reported_named,False,True,China,Government,Assessed contributions,12140.0,revenue_government_donors.csv
@@ -17005,9 +16959,7 @@ UNIDO,2015,Unknown,,Non-Government,European Union,65645.51,reported_named,False,
 UNIDO,2015,Unknown,,Non-Government,European Union,12422.07,reported_named,False,False,European Union,2,R09,1426.0,revenue_non_gov_donors.csv
 UNIDO,2015,Unknown,,Non-Government,European Union,3381.23,reported_named,False,False,European Union,2,R09,1507.0,revenue_non_gov_donors.csv
 UNIDO,2015,Unknown,,Non-Government,Multi Donor Trust Funds,-14856.13,reported_aggregate,False,False,Multi Donor Trust Funds,2,R08,1573.0,revenue_non_gov_donors.csv
-UNIDO,2015,Unknown,R01,Unattributed,Unattributed,14154.290000006557,calculated_balance,True,True,,,,,
-UNIDO,2015,Unknown,R03,Unattributed,Unattributed,187920408.98000002,calculated_balance,True,True,,,,,
-UNIDO,2015,Unknown,R04,Unattributed,Unattributed,5618983.24,calculated_balance,True,True,,,,,
+UNIDO,2015,Unknown,,Unattributed,Unattributed,59995310.30000007,calculated_balance,True,False,,,,,
 UNITAR,2015,C01,R02,Government,Germany,327177.0,reported_named,False,True,Germany,Government,Voluntary core (un-earmarked) contributions,15124.0,revenue_government_donors.csv
 UNITAR,2015,C01,R02,Government,Switzerland,103368.0,reported_named,False,True,Switzerland,Government,Voluntary core (un-earmarked) contributions,14945.0,revenue_government_donors.csv
 UNITAR,2015,C01,R02,Government,Kuwait,20000.0,reported_named,False,True,Kuwait,Government,Voluntary core (un-earmarked) contributions,15326.0,revenue_government_donors.csv
@@ -17036,9 +16988,7 @@ UNITAR,2015,C01,R03,Government,Algeria,18897.51,reported_named,False,True,Algeri
 UNITAR,2015,C01,R03,Government,Chile,1000.0,reported_named,False,True,Chile,Government,Voluntary non-core (earmarked) contributions,16427.0,revenue_government_donors.csv
 UNITAR,2015,Unknown,,Non-Government,United Nations Development Programme,2745483.3,reported_named,False,False,United Nations Development Programme,2,R10,682.0,revenue_non_gov_donors.csv
 UNITAR,2015,Unknown,,Non-Government,UN OCHA,187397.6,reported_named,False,False,UN OCHA,2,R10,1147.0,revenue_non_gov_donors.csv
-UNITAR,2015,Unknown,R02,Unattributed,Unattributed,645740.61,calculated_balance,True,True,,,,,
-UNITAR,2015,Unknown,R03,Unattributed,Unattributed,12606443.25,calculated_balance,True,True,,,,,
-UNITAR,2015,Unknown,R04,Unattributed,Unattributed,15575.0,calculated_balance,True,True,,,,,
+UNITAR,2015,Unknown,,Unattributed,Unattributed,10334877.959999999,calculated_balance,True,False,,,,,
 UNODC,2015,C01,R02,Government,Finland,871460.0,reported_named,False,True,Finland,Government,Voluntary core (un-earmarked) contributions,15184.0,revenue_government_donors.csv
 UNODC,2015,C01,R02,Government,United States of America,850000.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,15011.0,revenue_government_donors.csv
 UNODC,2015,C01,R02,Government,Germany,776944.0,reported_named,False,True,Germany,Government,Voluntary core (un-earmarked) contributions,15119.0,revenue_government_donors.csv
@@ -17107,10 +17057,7 @@ UNODC,2015,Unknown,,Non-Government,European Union,30241610.0,reported_named,Fals
 UNODC,2015,Unknown,,Non-Government,United Nations Development Programme,2124958.0,reported_named,False,False,United Nations Development Programme,2,R08,730.0,revenue_non_gov_donors.csv
 UNODC,2015,Unknown,,Non-Government,United Nations Development Programme,1280424.0,reported_named,False,False,United Nations Development Programme,2,R10,830.0,revenue_non_gov_donors.csv
 UNODC,2015,Unknown,,Non-Government,Global Environment Facility (thru UNDP or UNEP),30000.0,reported_named,False,False,Global Environment Facility (thru UNDP or UNEP),2,R11,1349.0,revenue_non_gov_donors.csv
-UNODC,2015,Unknown,R01,Unattributed,Unattributed,29003000.0,calculated_balance,True,True,,,,,
-UNODC,2015,Unknown,R02,Unattributed,Unattributed,99206.0,calculated_balance,True,True,,,,,
-UNODC,2015,Unknown,R03,Unattributed,Unattributed,45003519.0,calculated_balance,True,True,,,,,
-UNODC,2015,Unknown,R04,Unattributed,Unattributed,7460000.0,calculated_balance,True,True,,,,,
+UNODC,2015,Unknown,,Unattributed,Unattributed,47888733.0,calculated_balance,True,False,,,,,
 UNOPS,2015,C01,R02,Government,Netherlands,386000.0,reported_named,False,True,Netherlands,Government,Voluntary core (un-earmarked) contributions,15085.0,revenue_government_donors.csv
 UNOPS,2015,C01,R02,Government,Norway,10000.0,reported_named,False,True,Norway,Government,Voluntary core (un-earmarked) contributions,15456.0,revenue_government_donors.csv
 UNOPS,2015,Unknown,R04,Unattributed,Unattributed,682880000.0,calculated_balance,True,True,,,,,
@@ -17186,10 +17133,7 @@ UNRWA,2015,C01,R03,Government,Denmark,45418.94,reported_named,False,True,Denmark
 UNRWA,2015,C01,R03,Government,Malta,27654.87,reported_named,False,True,Malta,Government,Voluntary non-core (earmarked) contributions,16935.0,revenue_government_donors.csv
 UNRWA,2015,C01,R03,Government,Türkiye,19360.52,reported_named,False,True,Türkiye,Government,Voluntary non-core (earmarked) contributions,17231.0,revenue_government_donors.csv
 UNRWA,2015,Unknown,,Non-Government,European Union,181847533.0,reported_named,False,False,European Union,2,R09,68.0,revenue_non_gov_donors.csv
-UNRWA,2015,Unknown,R01,Unattributed,Unattributed,27879716.86,calculated_balance,True,True,,,,,
-UNRWA,2015,Unknown,R02,Unattributed,Unattributed,93634918.49000001,calculated_balance,True,True,,,,,
-UNRWA,2015,Unknown,R03,Unattributed,Unattributed,140747275.41000003,calculated_balance,True,True,,,,,
-UNRWA,2015,Unknown,R04,Unattributed,Unattributed,23689000.0,calculated_balance,True,True,,,,,
+UNRWA,2015,Unknown,,Unattributed,Unattributed,104103377.75999999,calculated_balance,True,False,,,,,
 UNU,2015,C01,R03,Government,Japan,23454196.0,reported_named,False,True,Japan,Government,Voluntary non-core (earmarked) contributions,16206.0,revenue_government_donors.csv
 UNU,2015,C01,R03,Government,Canada,7444230.0,reported_named,False,True,Canada,Government,Voluntary non-core (earmarked) contributions,16107.0,revenue_government_donors.csv
 UNU,2015,C01,R03,Government,Cameroon,6000000.0,reported_named,False,True,Cameroon,Government,Voluntary non-core (earmarked) contributions,16461.0,revenue_government_donors.csv
@@ -17213,8 +17157,7 @@ UNU,2015,Unknown,,Non-Government,United Nations Development Programme,445298.0,r
 UNU,2015,Unknown,,Non-Government,United Nations Development Programme,439573.0,reported_named,False,False,United Nations Development Programme,2,R12,1023.0,revenue_non_gov_donors.csv
 UNU,2015,Unknown,,Non-Government,European Union,98262.0,reported_named,False,False,European Union,2,R12,1231.0,revenue_non_gov_donors.csv
 UNU,2015,Unknown,,Non-Government,European Union,59495.0,reported_named,False,False,European Union,2,R12,1292.0,revenue_non_gov_donors.csv
-UNU,2015,Unknown,R03,Unattributed,Unattributed,7266678.0,calculated_balance,True,True,,,,,
-UNU,2015,Unknown,R04,Unattributed,Unattributed,2439000.0,calculated_balance,True,True,,,,,
+UNU,2015,Unknown,,Unattributed,Unattributed,8073917.0,calculated_balance,True,False,,,,,
 UPU,2015,C01,R01,Government,France,2107467.21,reported_named,False,True,France,Government,Assessed contributions,12007.0,revenue_government_donors.csv
 UPU,2015,C01,R01,Government,Japan,2107467.21,reported_named,False,True,Japan,Government,Assessed contributions,12043.0,revenue_government_donors.csv
 UPU,2015,C01,R01,Government,United Kingdom of Great Britain and Northern Ireland,2107467.21,reported_named,False,True,United Kingdom of Great Britain and Northern Ireland,Government,Assessed contributions,14458.0,revenue_government_donors.csv
@@ -17564,9 +17507,7 @@ WFP,2015,Unknown,,Non-Government,Private Donors / Private Sector,12015.54,report
 WFP,2015,Unknown,,Non-Government,Private Donors / Private Sector,8643.58,reported_aggregate,False,False,Private Donors,2,R12,1457.0,revenue_non_gov_donors.csv
 WFP,2015,Unknown,,Non-Government,Private Donors / Private Sector,1879.49,reported_aggregate,False,False,Private Donors,2,R08B,1522.0,revenue_non_gov_donors.csv
 WFP,2015,Unknown,,Non-Government,Private Donors / Private Sector,700.78,reported_aggregate,False,False,Private Donors,2,R12,1540.0,revenue_non_gov_donors.csv
-WFP,2015,Unknown,R02,Unattributed,Unattributed,11390624.26000005,calculated_balance,True,True,,,,,
-WFP,2015,Unknown,R03,Unattributed,Unattributed,524249912.61000013,calculated_balance,True,True,,,,,
-WFP,2015,Unknown,R04,Unattributed,Unattributed,103162433.9,calculated_balance,True,True,,,,,
+WFP,2015,Unknown,,Unattributed,Unattributed,214787950.52000046,calculated_balance,True,False,,,,,
 WHO,2015,C01,R01,Government,United States of America,112282890.0,reported_named,False,True,United States of America,Government,Assessed contributions,14493.0,revenue_government_donors.csv
 WHO,2015,C01,R01,Government,Japan,49073702.0,reported_named,False,True,Japan,Government,Assessed contributions,12044.0,revenue_government_donors.csv
 WHO,2015,C01,R01,Government,Germany,32349195.0,reported_named,False,True,Germany,Government,Assessed contributions,12060.0,revenue_government_donors.csv
@@ -17898,10 +17839,7 @@ WHO,2015,Unknown,,Non-Government,UN OCHA,5509649.0,reported_named,False,False,UN
 WHO,2015,Unknown,,Non-Government,United Nations Development Programme,5155694.0,reported_named,False,False,United Nations Development Programme,2,R10,573.0,revenue_non_gov_donors.csv
 WHO,2015,Unknown,,Non-Government,World Bank Group,4100000.0,reported_named,False,False,World Bank Group,2,R11,612.0,revenue_non_gov_donors.csv
 WHO,2015,Unknown,,Non-Government,The Global Fund,1382490.0,reported_named,False,False,Global Fund to Fight,2,R08B,817.0,revenue_non_gov_donors.csv
-WHO,2015,Unknown,R01,Unattributed,Unattributed,51097.0,calculated_balance,True,True,,,,,
-WHO,2015,Unknown,R02,Unattributed,Unattributed,-785806.0,calculated_balance,True,True,,,,,
-WHO,2015,Unknown,R03,Unattributed,Unattributed,929254409.0,calculated_balance,True,True,,,,,
-WHO,2015,Unknown,R04,Unattributed,Unattributed,39286690.0,calculated_balance,True,True,,,,,
+WHO,2015,Unknown,,Unattributed,Unattributed,504754668.0,calculated_balance,True,False,,,,,
 WIPO,2015,C01,R01,Government,France,1149823.41,reported_named,False,True,France,Government,Assessed contributions,12009.0,revenue_government_donors.csv
 WIPO,2015,C01,R01,Government,Japan,1149823.41,reported_named,False,True,Japan,Government,Assessed contributions,12045.0,revenue_government_donors.csv
 WIPO,2015,C01,R01,Government,Germany,1149823.41,reported_named,False,True,Germany,Government,Assessed contributions,12061.0,revenue_government_donors.csv
@@ -18535,9 +18473,7 @@ WTO,2015,C01,R03,Government,Liechtenstein,40000.0,reported_named,False,True,Liec
 WTO,2015,C01,R03,Government,Canada,37211.0,reported_named,False,True,Canada,Government,Voluntary non-core (earmarked) contributions,16113.0,revenue_government_donors.csv
 WTO,2015,C01,R03,Government,Estonia,24120.0,reported_named,False,True,Estonia,Government,Voluntary non-core (earmarked) contributions,16599.0,revenue_government_donors.csv
 WTO,2015,Unknown,,Non-Government,European Union,2327015.14,reported_named,False,False,European Union,2,R09,710.0,revenue_non_gov_donors.csv
-WTO,2015,Unknown,R01,Unattributed,Unattributed,102583.28999999166,calculated_balance,True,True,,,,,
-WTO,2015,Unknown,R03,Unattributed,Unattributed,3410855.34,calculated_balance,True,True,,,,,
-WTO,2015,Unknown,R04,Unattributed,Unattributed,22834141.27,calculated_balance,True,True,,,,,
+WTO,2015,Unknown,,Unattributed,Unattributed,24020564.75999999,calculated_balance,True,False,,,,,
 FAO,2016,C01,R01,Government,United States of America,110547611.0,reported_named,False,True,United States of America,Government,Assessed contributions,18817.0,revenue_government_donors.csv
 FAO,2016,C01,R01,Government,Japan,52347742.72,reported_named,False,True,Japan,Government,Assessed contributions,17640.0,revenue_government_donors.csv
 FAO,2016,C01,R01,Government,Germany,34508069.91,reported_named,False,True,Germany,Government,Assessed contributions,17650.0,revenue_government_donors.csv
@@ -18837,9 +18773,7 @@ FAO,2016,Unknown,,Non-Government,Multi Donor Trust Funds,265421.23,reported_aggr
 FAO,2016,Unknown,,Non-Government,Global Environment Facility (thru UNDP or UNEP),257523.14,reported_named,False,False,Global Environment Facility (thru UNDP or UNEP),2,R08B,1102.0,revenue_non_gov_donors.csv
 FAO,2016,Unknown,,Non-Government,World Bank Group,58773.97,reported_named,False,False,World Bank Group,2,R12,1294.0,revenue_non_gov_donors.csv
 FAO,2016,Unknown,,Non-Government,United Nations Development Programme,-369607.41,reported_named,False,False,United Nations Development Programme,2,R08,1593.0,revenue_non_gov_donors.csv
-FAO,2016,Unknown,R01,Unattributed,Unattributed,53148.84000003338,calculated_balance,True,True,,,,,
-FAO,2016,Unknown,R03,Unattributed,Unattributed,278507927.13,calculated_balance,True,True,,,,,
-FAO,2016,Unknown,R04,Unattributed,Unattributed,38613000.0,calculated_balance,True,True,,,,,
+FAO,2016,Unknown,,Unattributed,Unattributed,31601631.309999943,calculated_balance,True,False,,,,,
 IAEA,2016,C01,R01,Government,United States of America,94541187.66,reported_named,False,True,United States of America,Government,Assessed contributions,18818.0,revenue_government_donors.csv
 IAEA,2016,C01,R01,Government,Japan,39431233.49,reported_named,False,True,Japan,Government,Assessed contributions,17641.0,revenue_government_donors.csv
 IAEA,2016,C01,R01,Government,Germany,25995046.1,reported_named,False,True,Germany,Government,Assessed contributions,17651.0,revenue_government_donors.csv
@@ -19463,9 +19397,7 @@ ICAO,2016,C01,R03,Government,Brazil,-263077.55,reported_named,False,True,Brazil,
 ICAO,2016,Unknown,,Non-Government,European Union,4428986.71,reported_named,False,False,European Union,2,R09,599.0,revenue_non_gov_donors.csv
 ICAO,2016,Unknown,,Non-Government,Global Environment Facility (thru UNDP or UNEP),283825.7,reported_named,False,False,Global Environment Facility (thru UNDP or UNEP),2,R08B,1084.0,revenue_non_gov_donors.csv
 ICAO,2016,Unknown,,Non-Government,United Nations Development Programme,15736.34,reported_named,False,False,United Nations Development Programme,2,R10,1403.0,revenue_non_gov_donors.csv
-ICAO,2016,Unknown,R01,Unattributed,Unattributed,46787.48000000417,calculated_balance,True,True,,,,,
-ICAO,2016,Unknown,R03,Unattributed,Unattributed,21964593.040000007,calculated_balance,True,True,,,,,
-ICAO,2016,Unknown,R04,Unattributed,Unattributed,19126535.45,calculated_balance,True,True,,,,,
+ICAO,2016,Unknown,,Unattributed,Unattributed,36409367.22000003,calculated_balance,True,False,,,,,
 IFAD,2016,C01,R02,Government,Netherlands,75221000.0,reported_named,False,True,Netherlands,Government,Voluntary core (un-earmarked) contributions,20913.0,revenue_government_donors.csv
 IFAD,2016,C01,R02,Government,Germany,36742000.0,reported_named,False,True,Germany,Government,Voluntary core (un-earmarked) contributions,20809.0,revenue_government_donors.csv
 IFAD,2016,C01,R02,Government,Sweden,31584000.0,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,20965.0,revenue_government_donors.csv
@@ -19547,7 +19479,7 @@ IFAD,2016,C01,R03,Government,Estonia,47000.0,reported_named,False,True,Estonia,G
 IFAD,2016,Unknown,,Non-Government,European Union,47342000.0,reported_named,False,False,European Union,2,R09,201.0,revenue_non_gov_donors.csv
 IFAD,2016,Unknown,,Non-Government,World Bank Group,15085000.0,reported_named,False,False,World Bank Group,2,R11,407.0,revenue_non_gov_donors.csv
 IFAD,2016,Unknown,,Non-Government,United Nations Development Programme,318000.0,reported_named,False,False,United Nations Development Programme,2,R10,1066.0,revenue_non_gov_donors.csv
-IFAD,2016,Unknown,R03,Unattributed,Unattributed,72468000.0,calculated_balance,True,True,,,,,
+IFAD,2016,Unknown,,Unattributed,Unattributed,9723000.0,calculated_balance,True,False,,,,,
 ILO,2016,C01,R01,Government,United States of America,81294882.93,reported_named,False,True,United States of America,Government,Assessed contributions,18820.0,revenue_government_donors.csv
 ILO,2016,C01,R01,Government,Japan,40052510.24,reported_named,False,True,Japan,Government,Assessed contributions,17643.0,revenue_government_donors.csv
 ILO,2016,C01,R01,Government,Germany,26402360.98,reported_named,False,True,Germany,Government,Assessed contributions,18912.0,revenue_government_donors.csv
@@ -19780,9 +19712,7 @@ ILO,2016,Unknown,,Non-Government,Multi Donor Trust Funds,6784903.0,reported_aggr
 ILO,2016,Unknown,,Non-Government,United Nations Development Programme,2376670.0,reported_named,False,False,United Nations Development Programme,2,R10,702.0,revenue_non_gov_donors.csv
 ILO,2016,Unknown,,Non-Government,World Bank Group,2027016.0,reported_named,False,False,World Bank Group,2,R11,737.0,revenue_non_gov_donors.csv
 ILO,2016,Unknown,,Non-Government,World Bank Group,70000.0,reported_named,False,False,World Bank Group,2,R11,1268.0,revenue_non_gov_donors.csv
-ILO,2016,Unknown,R01,Unattributed,Unattributed,29204541.449999988,calculated_balance,True,True,,,,,
-ILO,2016,Unknown,R03,Unattributed,Unattributed,67678695.0,calculated_balance,True,True,,,,,
-ILO,2016,Unknown,R04,Unattributed,Unattributed,18800000.0,calculated_balance,True,True,,,,,
+ILO,2016,Unknown,,Unattributed,Unattributed,78986196.44999993,calculated_balance,True,False,,,,,
 IMO,2016,C01,R01,Government,Panama,6054221.54,reported_named,False,True,Panama,Government,Assessed contributions,18408.0,revenue_government_donors.csv
 IMO,2016,C01,R01,Government,Liberia,3582763.77,reported_named,False,True,Liberia,Government,Assessed contributions,18178.0,revenue_government_donors.csv
 IMO,2016,C01,R01,Government,Marshall Islands,3227707.47,reported_named,False,True,Marshall Islands,Government,Assessed contributions,18223.0,revenue_government_donors.csv
@@ -19980,9 +19910,7 @@ IMO,2016,C01,R03,Government,Papua New Guinea,36.72,reported_named,False,True,Pap
 IMO,2016,C01,R03,Government,Myanmar,22.03,reported_named,False,True,Myanmar,Government,Voluntary non-core (earmarked) contributions,21972.0,revenue_government_donors.csv
 IMO,2016,C01,R03,Government,Sudan,3.67,reported_named,False,True,Sudan,Government,Voluntary non-core (earmarked) contributions,22165.0,revenue_government_donors.csv
 IMO,2016,Unknown,,Non-Government,United Nations Development Programme,675678.09,reported_named,False,False,United Nations Development Programme,2,R10,951.0,revenue_non_gov_donors.csv
-IMO,2016,Unknown,R01,Unattributed,Unattributed,6282.829999998212,calculated_balance,True,True,,,,,
-IMO,2016,Unknown,R03,Unattributed,Unattributed,1722908.2100000004,calculated_balance,True,True,,,,,
-IMO,2016,Unknown,R04,Unattributed,Unattributed,16808714.81,calculated_balance,True,True,,,,,
+IMO,2016,Unknown,,Unattributed,Unattributed,17862227.759999998,calculated_balance,True,False,,,,,
 IOM,2016,C01,R01,Government,United States of America,11017035.0,reported_named,False,True,United States of America,Government,Assessed contributions,18822.0,revenue_government_donors.csv
 IOM,2016,C01,R01,Government,Japan,5424868.0,reported_named,False,True,Japan,Government,Assessed contributions,17645.0,revenue_government_donors.csv
 IOM,2016,C01,R01,Government,Germany,3575965.0,reported_named,False,True,Germany,Government,Assessed contributions,17654.0,revenue_government_donors.csv
@@ -20227,9 +20155,7 @@ IOM,2016,Unknown,,Non-Government,The Global Fund,7289025.0,reported_named,False,
 IOM,2016,Unknown,,Non-Government,United Nations Development Programme,2148270.0,reported_named,False,False,United Nations Development Programme,2,R08,728.0,revenue_non_gov_donors.csv
 IOM,2016,Unknown,,Non-Government,Private Donors / Private Sector,865979.0,reported_aggregate,False,False,Private Donors,2,R05,904.0,revenue_non_gov_donors.csv
 IOM,2016,Unknown,,Non-Government,UN OCHA,120000.0,reported_named,False,False,UN OCHA,2,R08,1209.0,revenue_non_gov_donors.csv
-IOM,2016,Unknown,R01,Unattributed,Unattributed,5526.0,calculated_balance,True,True,,,,,
-IOM,2016,Unknown,R03,Unattributed,Unattributed,289449247.0,calculated_balance,True,True,,,,,
-IOM,2016,Unknown,R04,Unattributed,Unattributed,104739271.0,calculated_balance,True,True,,,,,
+IOM,2016,Unknown,,Unattributed,Unattributed,105593931.0,calculated_balance,True,False,,,,,
 ITC,2016,C01,R02,Government,Finland,3451087.0,reported_named,False,True,Finland,Government,Voluntary core (un-earmarked) contributions,20847.0,revenue_government_donors.csv
 ITC,2016,C01,R02,Government,Canada,2129607.0,reported_named,False,True,Canada,Government,Voluntary core (un-earmarked) contributions,20796.0,revenue_government_donors.csv
 ITC,2016,C01,R02,Government,Germany,2086957.0,reported_named,False,True,Germany,Government,Voluntary core (un-earmarked) contributions,20810.0,revenue_government_donors.csv
@@ -20253,10 +20179,7 @@ ITC,2016,C01,R03,Government,France,44183.0,reported_named,False,True,France,Gove
 ITC,2016,C01,R03,Government,Canada,19547.0,reported_named,False,True,Canada,Government,Voluntary non-core (earmarked) contributions,21584.0,revenue_government_donors.csv
 ITC,2016,Unknown,,Non-Government,European Union,6026128.0,reported_named,False,False,European Union,2,R09,547.0,revenue_non_gov_donors.csv
 ITC,2016,Unknown,,Non-Government,Multi Donor Trust Funds,155634.0,reported_aggregate,False,False,Multi Donor Trust Funds,2,R08,1181.0,revenue_non_gov_donors.csv
-ITC,2016,Unknown,R01,Unattributed,Unattributed,37394000.0,calculated_balance,True,True,,,,,
-ITC,2016,Unknown,R02,Unattributed,Unattributed,152736.0,calculated_balance,True,True,,,,,
-ITC,2016,Unknown,R03,Unattributed,Unattributed,10265415.0,calculated_balance,True,True,,,,,
-ITC,2016,Unknown,R04,Unattributed,Unattributed,2516000.0,calculated_balance,True,True,,,,,
+ITC,2016,Unknown,,Unattributed,Unattributed,44146389.0,calculated_balance,True,False,,,,,
 ITU,2016,C01,R01,Government,Japan,9307317.07,reported_named,False,True,Japan,Government,Assessed contributions,17646.0,revenue_government_donors.csv
 ITU,2016,C01,R01,Government,United States of America,9307317.07,reported_named,False,True,United States of America,Government,Assessed contributions,18823.0,revenue_government_donors.csv
 ITU,2016,C01,R01,Government,Germany,7756097.56,reported_named,False,True,Germany,Government,Assessed contributions,17655.0,revenue_government_donors.csv
@@ -20528,9 +20451,7 @@ PAHO,2016,Unknown,,Non-Government,Bill & Melinda Gates Foundation,906492.0,repor
 PAHO,2016,Unknown,,Non-Government,United Nations Development Programme,751705.0,reported_named,False,False,United Nations Development Programme,2,R10,930.0,revenue_non_gov_donors.csv
 PAHO,2016,Unknown,,Non-Government,United Nations Development Programme,107617.0,reported_named,False,False,United Nations Development Programme,2,R08B,1220.0,revenue_non_gov_donors.csv
 PAHO,2016,Unknown,,Non-Government,United Nations Development Programme,35127.0,reported_named,False,False,United Nations Development Programme,2,R10,1340.0,revenue_non_gov_donors.csv
-PAHO,2016,Unknown,R01,Unattributed,Unattributed,-3732949.0,calculated_balance,True,True,,,,,
-PAHO,2016,Unknown,R03,Unattributed,Unattributed,39532187.0,calculated_balance,True,True,,,,,
-PAHO,2016,Unknown,R04,Unattributed,Unattributed,682895704.0,calculated_balance,True,True,,,,,
+PAHO,2016,Unknown,,Unattributed,Unattributed,715468287.0,calculated_balance,True,False,,,,,
 Peacekeeping Operations,2016,C01,R01,Government,United States of America,2357722000.0,reported_named,False,True,United States of America,Government,Assessed contributions,18816.0,revenue_government_donors.csv
 Peacekeeping Operations,2016,C01,R01,Government,Japan,849743000.0,reported_named,False,True,Japan,Government,Assessed contributions,17639.0,revenue_government_donors.csv
 Peacekeeping Operations,2016,C01,R01,Government,China,699960000.0,reported_named,False,True,China,Government,Assessed contributions,17691.0,revenue_government_donors.csv
@@ -21195,9 +21116,7 @@ UN Secretariat,2016,Unknown,,Non-Government,Private Donors / Private Sector,1637
 UN Secretariat,2016,Unknown,,Non-Government,World Bank Group,38326.0,reported_named,False,False,World Bank Group,2,R11,1336.0,revenue_non_gov_donors.csv
 UN Secretariat,2016,Unknown,,Non-Government,UN OCHA,-166534.0,reported_named,False,False,UN OCHA,2,R12,1583.0,revenue_non_gov_donors.csv
 UN Secretariat,2016,Unknown,,Non-Government,European Union,-210870.0,reported_named,False,False,European Union,2,R09,1586.0,revenue_non_gov_donors.csv
-UN Secretariat,2016,Unknown,R01,Unattributed,Unattributed,225283.0,calculated_balance,True,True,,,,,
-UN Secretariat,2016,Unknown,R03,Unattributed,Unattributed,135911041.95000005,calculated_balance,True,True,,,,,
-UN Secretariat,2016,Unknown,R04,Unattributed,Unattributed,535372286.6,calculated_balance,True,True,,,,,
+UN Secretariat,2016,Unknown,,Unattributed,Unattributed,609480347.8800001,calculated_balance,True,False,,,,,
 UN Tourism,2016,C01,R01,Government,China,358541.84,reported_named,False,True,China,Government,Assessed contributions,19486.0,revenue_government_donors.csv
 UN Tourism,2016,C01,R01,Government,France,358541.84,reported_named,False,True,France,Government,Assessed contributions,19503.0,revenue_government_donors.csv
 UN Tourism,2016,C01,R01,Government,Germany,358541.84,reported_named,False,True,Germany,Government,Assessed contributions,19508.0,revenue_government_donors.csv
@@ -21378,9 +21297,7 @@ UN Tourism,2016,C01,R03,Government,Saudi Arabia,-4048.7,reported_named,False,Tru
 UN Tourism,2016,C01,R03,Government,Burundi,-10463.71,reported_named,False,True,Burundi,Government,Voluntary non-core (earmarked) contributions,23011.0,revenue_government_donors.csv
 UN Tourism,2016,C01,R03,Government,Rwanda,-63964.07,reported_named,False,True,Rwanda,Government,Voluntary non-core (earmarked) contributions,23022.0,revenue_government_donors.csv
 UN Tourism,2016,Unknown,,Non-Government,United Nations Development Programme,564420.62,reported_named,False,False,United Nations Development Programme,2,R10,978.0,revenue_non_gov_donors.csv
-UN Tourism,2016,Unknown,R01,Unattributed,Unattributed,1257838.790000001,calculated_balance,True,True,,,,,
-UN Tourism,2016,Unknown,R03,Unattributed,Unattributed,3547027.8099999996,calculated_balance,True,True,,,,,
-UN Tourism,2016,Unknown,R04,Unattributed,Unattributed,4184240.68,calculated_balance,True,True,,,,,
+UN Tourism,2016,Unknown,,Unattributed,Unattributed,8424686.660000002,calculated_balance,True,False,,,,,
 UN Women,2016,C01,R02,Government,Switzerland,16343207.35,reported_named,False,True,Switzerland,Government,Voluntary core (un-earmarked) contributions,21322.0,revenue_government_donors.csv
 UN Women,2016,C01,R02,Government,United Kingdom of Great Britain and Northern Ireland,15625000.0,reported_named,False,True,United Kingdom of Great Britain and Northern Ireland,Government,Voluntary core (un-earmarked) contributions,21336.0,revenue_government_donors.csv
 UN Women,2016,C01,R02,Government,Sweden,12724673.25,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,21389.0,revenue_government_donors.csv
@@ -21528,10 +21445,7 @@ UN Women,2016,Unknown,,Non-Government,European Union,8609160.8,reported_named,Fa
 UN Women,2016,Unknown,,Non-Government,United Nations Development Programme,5035618.1,reported_named,False,False,United Nations Development Programme,2,R10,577.0,revenue_non_gov_donors.csv
 UN Women,2016,Unknown,,Non-Government,USA National Committee,2566998.94,reported_named,False,False,USA National Committee,2,R12,693.0,revenue_non_gov_donors.csv
 UN Women,2016,Unknown,,Non-Government,UN OCHA,1867639.0,reported_named,False,False,UN OCHA,2,R10,761.0,revenue_non_gov_donors.csv
-UN Women,2016,Unknown,R01,Unattributed,Unattributed,7615100.0,calculated_balance,True,True,,,,,
-UN Women,2016,Unknown,R02,Unattributed,Unattributed,3449444.9799999893,calculated_balance,True,True,,,,,
-UN Women,2016,Unknown,R03,Unattributed,Unattributed,48683865.41,calculated_balance,True,True,,,,,
-UN Women,2016,Unknown,R04,Unattributed,Unattributed,7216000.0,calculated_balance,True,True,,,,,
+UN Women,2016,Unknown,,Unattributed,Unattributed,33954886.95999998,calculated_balance,True,False,,,,,
 UN-Habitat,2016,C01,R02,Government,United States of America,766838.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,20993.0,revenue_government_donors.csv
 UN-Habitat,2016,C01,R02,Government,Norway,598981.73,reported_named,False,True,Norway,Government,Voluntary core (un-earmarked) contributions,20925.0,revenue_government_donors.csv
 UN-Habitat,2016,C01,R02,Government,China,350000.0,reported_named,False,True,China,Government,Voluntary core (un-earmarked) contributions,20818.0,revenue_government_donors.csv
@@ -21585,9 +21499,7 @@ UN-Habitat,2016,C01,R03,Government,Germany,-235497.0,reported_named,False,True,G
 UN-Habitat,2016,C01,R03,Government,Afghanistan,-349673.81,reported_named,False,True,Afghanistan,Government,Voluntary non-core (earmarked) contributions,21461.0,revenue_government_donors.csv
 UN-Habitat,2016,C01,R03,Government,Colombia,-588306.41,reported_named,False,True,Colombia,Government,Voluntary non-core (earmarked) contributions,21703.0,revenue_government_donors.csv
 UN-Habitat,2016,Unknown,,Non-Government,European Union,16576872.23,reported_named,False,False,European Union,2,R09,390.0,revenue_non_gov_donors.csv
-UN-Habitat,2016,Unknown,R01,Unattributed,Unattributed,14100000.0,calculated_balance,True,True,,,,,
-UN-Habitat,2016,Unknown,R03,Unattributed,Unattributed,70641967.03,calculated_balance,True,True,,,,,
-UN-Habitat,2016,Unknown,R04,Unattributed,Unattributed,1978219.65,calculated_balance,True,True,,,,,
+UN-Habitat,2016,Unknown,,Unattributed,Unattributed,70143314.44999999,calculated_balance,True,False,,,,,
 UNAIDS,2016,C01,R02,Government,United States of America,45000000.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,20994.0,revenue_government_donors.csv
 UNAIDS,2016,C01,R02,Government,Sweden,31645525.0,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,20966.0,revenue_government_donors.csv
 UNAIDS,2016,C01,R02,Government,Netherlands,22346368.0,reported_named,False,True,Netherlands,Government,Voluntary core (un-earmarked) contributions,20915.0,revenue_government_donors.csv
@@ -21638,9 +21550,7 @@ UNAIDS,2016,C01,R03,Government,Denmark,15152.0,reported_named,False,True,Denmark
 UNAIDS,2016,Unknown,,Non-Government,United Nations Development Programme,2041057.0,reported_named,False,False,United Nations Development Programme,2,R08,734.0,revenue_non_gov_donors.csv
 UNAIDS,2016,Unknown,,Non-Government,United Nations Development Programme,132628.0,reported_named,False,False,United Nations Development Programme,2,R10,1200.0,revenue_non_gov_donors.csv
 UNAIDS,2016,Unknown,,Non-Government,The Global Fund,61370.0,reported_named,False,False,Global Fund to Fight,2,R08B,1283.0,revenue_non_gov_donors.csv
-UNAIDS,2016,Unknown,R02,Unattributed,Unattributed,445244.0,calculated_balance,True,True,,,,,
-UNAIDS,2016,Unknown,R03,Unattributed,Unattributed,5360223.0,calculated_balance,True,True,,,,,
-UNAIDS,2016,Unknown,R04,Unattributed,Unattributed,6667158.0,calculated_balance,True,True,,,,,
+UNAIDS,2016,Unknown,,Unattributed,Unattributed,10237570.0,calculated_balance,True,False,,,,,
 UNDP,2016,C01,R02,Government,United States of America,83062473.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,20995.0,revenue_government_donors.csv
 UNDP,2016,C01,R02,Government,Sweden,71899075.0,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,20967.0,revenue_government_donors.csv
 UNDP,2016,C01,R02,Government,United Kingdom of Great Britain and Northern Ireland,68750000.0,reported_named,False,True,United Kingdom of Great Britain and Northern Ireland,Government,Voluntary core (un-earmarked) contributions,20988.0,revenue_government_donors.csv
@@ -21950,9 +21860,7 @@ UNDP,2016,Unknown,,Non-Government,Private Donors / Private Sector,494102.0,repor
 UNDP,2016,Unknown,,Non-Government,United Nations Development Programme,195768.0,reported_named,False,False,United Nations Development Programme,2,R10,1142.0,revenue_non_gov_donors.csv
 UNDP,2016,Unknown,,Non-Government,Global Environment Facility (thru UNDP or UNEP),120582.0,reported_named,False,False,Global Environment Facility (thru UNDP or UNEP),2,R11,1207.0,revenue_non_gov_donors.csv
 UNDP,2016,Unknown,,Non-Government,European Union,992.0,reported_named,False,False,European Union,2,R12,1533.0,revenue_non_gov_donors.csv
-UNDP,2016,Unknown,R02,Unattributed,Unattributed,4350757.0,calculated_balance,True,True,,,,,
-UNDP,2016,Unknown,R03,Unattributed,Unattributed,1751348192.0,calculated_balance,True,True,,,,,
-UNDP,2016,Unknown,R04,Unattributed,Unattributed,317451513.0,calculated_balance,True,True,,,,,
+UNDP,2016,Unknown,,Unattributed,Unattributed,473923927.0,calculated_balance,True,False,,,,,
 UNEP,2016,C01,R01,Government,United States of America,32083333.0,reported_named,False,True,United States of America,Government,Assessed contributions,19070.0,revenue_government_donors.csv
 UNEP,2016,C01,R01,Government,Japan,21753838.06,reported_named,False,True,Japan,Government,Assessed contributions,17648.0,revenue_government_donors.csv
 UNEP,2016,C01,R01,Government,France,11086599.0,reported_named,False,True,France,Government,Assessed contributions,17628.0,revenue_government_donors.csv
@@ -22336,9 +22244,7 @@ UNEP,2016,Unknown,,Non-Government,European Union,2006688.96,reported_named,False
 UNEP,2016,Unknown,,Non-Government,United Nations Development Programme,0.0,reported_named,False,False,United Nations Development Programme,2,R08,1557.0,revenue_non_gov_donors.csv
 UNEP,2016,Unknown,,Non-Government,United Nations Development Programme,-306.0,reported_named,False,False,United Nations Development Programme,2,R10,1561.0,revenue_non_gov_donors.csv
 UNEP,2016,Unknown,,Non-Government,United Nations Development Programme,-73450.0,reported_named,False,False,United Nations Development Programme,2,R08B,1579.0,revenue_non_gov_donors.csv
-UNEP,2016,Unknown,R01,Unattributed,Unattributed,44801.68000000715,calculated_balance,True,True,,,,,
-UNEP,2016,Unknown,R03,Unattributed,Unattributed,298941815.71000004,calculated_balance,True,True,,,,,
-UNEP,2016,Unknown,R04,Unattributed,Unattributed,32195000.0,calculated_balance,True,True,,,,,
+UNEP,2016,Unknown,,Unattributed,Unattributed,42829343.27999997,calculated_balance,True,False,,,,,
 UNESCO,2016,C01,R01,Government,United States of America,70167847.0,reported_named,False,True,United States of America,Government,Assessed contributions,19279.0,revenue_government_donors.csv
 UNESCO,2016,C01,R01,Government,Japan,31502701.0,reported_named,False,True,Japan,Government,Assessed contributions,19178.0,revenue_government_donors.csv
 UNESCO,2016,C01,R01,Government,China,25777601.0,reported_named,False,True,China,Government,Assessed contributions,19122.0,revenue_government_donors.csv
@@ -22656,9 +22562,7 @@ UNESCO,2016,Unknown,,Non-Government,United Nations Development Programme,1580157
 UNESCO,2016,Unknown,,Non-Government,Multi Donor Trust Funds,1425689.0,reported_aggregate,False,False,Multi Donor Trust Funds,2,R08,810.0,revenue_non_gov_donors.csv
 UNESCO,2016,Unknown,,Non-Government,World Bank Group,928401.0,reported_named,False,False,World Bank Group,2,R11,889.0,revenue_non_gov_donors.csv
 UNESCO,2016,Unknown,,Non-Government,World Bank Group,530229.0,reported_named,False,False,World Bank Group,2,R08B,989.0,revenue_non_gov_donors.csv
-UNESCO,2016,Unknown,R01,Unattributed,Unattributed,31206.0,calculated_balance,True,True,,,,,
-UNESCO,2016,Unknown,R03,Unattributed,Unattributed,77623032.0,calculated_balance,True,True,,,,,
-UNESCO,2016,Unknown,R04,Unattributed,Unattributed,45969646.0,calculated_balance,True,True,,,,,
+UNESCO,2016,Unknown,,Unattributed,Unattributed,106799305.0,calculated_balance,True,False,,,,,
 UNFPA,2016,C01,R02,Government,Sweden,59044048.73,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,21096.0,revenue_government_donors.csv
 UNFPA,2016,C01,R02,Government,Norway,46845794.39,reported_named,False,True,Norway,Government,Voluntary core (un-earmarked) contributions,21078.0,revenue_government_donors.csv
 UNFPA,2016,C01,R02,Government,Netherlands,39106145.25,reported_named,False,True,Netherlands,Government,Voluntary core (un-earmarked) contributions,21075.0,revenue_government_donors.csv
@@ -22821,9 +22725,7 @@ UNFPA,2016,Unknown,,Non-Government,World Bank Group,3300000.0,reported_named,Fal
 UNFPA,2016,Unknown,,Non-Government,World Bank Group,427611.0,reported_named,False,False,World Bank Group,2,R11,1025.0,revenue_non_gov_donors.csv
 UNFPA,2016,Unknown,,Non-Government,World Bank Group,327600.0,reported_named,False,False,World Bank Group,2,R11,1061.0,revenue_non_gov_donors.csv
 UNFPA,2016,Unknown,,Non-Government,World Bank Group,167001.96,reported_named,False,False,World Bank Group,2,R11,1164.0,revenue_non_gov_donors.csv
-UNFPA,2016,Unknown,R02,Unattributed,Unattributed,327231.9499999881,calculated_balance,True,True,,,,,
-UNFPA,2016,Unknown,R03,Unattributed,Unattributed,232368677.31,calculated_balance,True,True,,,,,
-UNFPA,2016,Unknown,R04,Unattributed,Unattributed,56722000.0,calculated_balance,True,True,,,,,
+UNFPA,2016,Unknown,,Unattributed,Unattributed,117450137.97000003,calculated_balance,True,False,,,,,
 UNHCR,2016,C01,R02,Government,United States of America,125000000.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,21163.0,revenue_government_donors.csv
 UNHCR,2016,C01,R02,Government,Sweden,98061864.04,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,21159.0,revenue_government_donors.csv
 UNHCR,2016,C01,R02,Government,Netherlands,52154195.01,reported_named,False,True,Netherlands,Government,Voluntary core (un-earmarked) contributions,21148.0,revenue_government_donors.csv
@@ -23063,10 +22965,7 @@ UNHCR,2016,Unknown,,Non-Government,Private Donors / Private Sector,210.0,reporte
 UNHCR,2016,Unknown,,Non-Government,Private Donors / Private Sector,139.0,reported_aggregate,False,False,Private Donors,2,R12,1548.0,revenue_non_gov_donors.csv
 UNHCR,2016,Unknown,,Non-Government,Private Donors / Private Sector,101.0,reported_aggregate,False,False,Private Donors,2,R12,1549.0,revenue_non_gov_donors.csv
 UNHCR,2016,Unknown,,Non-Government,Private Donors / Private Sector,55.0,reported_aggregate,False,False,Private Donors,2,R12,1552.0,revenue_non_gov_donors.csv
-UNHCR,2016,Unknown,R01,Unattributed,Unattributed,36660700.0,calculated_balance,True,True,,,,,
-UNHCR,2016,Unknown,R02,Unattributed,Unattributed,172474881.82999992,calculated_balance,True,True,,,,,
-UNHCR,2016,Unknown,R03,Unattributed,Unattributed,687161967.3299999,calculated_balance,True,True,,,,,
-UNHCR,2016,Unknown,R04,Unattributed,Unattributed,15239211.64,calculated_balance,True,True,,,,,
+UNHCR,2016,Unknown,,Unattributed,Unattributed,71463011.79999971,calculated_balance,True,False,,,,,
 UNICEF,2016,C01,R02,Government,United States of America,132500000.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,21229.0,revenue_government_donors.csv
 UNICEF,2016,C01,R02,Government,Sweden,116968663.9,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,21221.0,revenue_government_donors.csv
 UNICEF,2016,C01,R02,Government,Norway,52218021.4,reported_named,False,True,Norway,Government,Voluntary core (un-earmarked) contributions,21210.0,revenue_government_donors.csv
@@ -23351,9 +23250,7 @@ UNICEF,2016,Unknown,,Non-Government,Private Donors / Private Sector,4079.82,repo
 UNICEF,2016,Unknown,,Non-Government,Private Donors / Private Sector,1275.92,reported_aggregate,False,False,Private Donors,2,R12,1529.0,revenue_non_gov_donors.csv
 UNICEF,2016,Unknown,,Non-Government,Private Donors / Private Sector,706.4,reported_aggregate,False,False,Private Donors,2,R12,1539.0,revenue_non_gov_donors.csv
 UNICEF,2016,Unknown,,Non-Government,Private Donors / Private Sector,665.03,reported_aggregate,False,False,Private Donors,2,R12,1541.0,revenue_non_gov_donors.csv
-UNICEF,2016,Unknown,R02,Unattributed,Unattributed,643885838.4,calculated_balance,True,True,,,,,
-UNICEF,2016,Unknown,R03,Unattributed,Unattributed,1447372165.41,calculated_balance,True,True,,,,,
-UNICEF,2016,Unknown,R04,Unattributed,Unattributed,126396849.6,calculated_balance,True,True,,,,,
+UNICEF,2016,Unknown,,Unattributed,Unattributed,1271599006.1900005,calculated_balance,True,False,,,,,
 UNIDO,2016,C01,R01,Government,Japan,12930319.04,reported_named,False,True,Japan,Government,Assessed contributions,19361.0,revenue_government_donors.csv
 UNIDO,2016,C01,R01,Government,Germany,8523894.35,reported_named,False,True,Germany,Government,Assessed contributions,19324.0,revenue_government_donors.csv
 UNIDO,2016,C01,R01,Government,China,6145166.32,reported_named,False,True,China,Government,Assessed contributions,19313.0,revenue_government_donors.csv
@@ -23586,9 +23483,7 @@ UNIDO,2016,Unknown,,Non-Government,United Nations Development Programme,13010.46
 UNIDO,2016,Unknown,,Non-Government,European Union,5241.63,reported_named,False,False,European Union,2,R09,1478.0,revenue_non_gov_donors.csv
 UNIDO,2016,Unknown,,Non-Government,United Nations Development Programme,-431413.18,reported_named,False,False,United Nations Development Programme,2,R08,1595.0,revenue_non_gov_donors.csv
 UNIDO,2016,Unknown,,Non-Government,Global Environment Facility (thru UNDP or UNEP),-577312.76,reported_named,False,False,Global Environment Facility (thru UNDP or UNEP),2,R08B,1597.0,revenue_non_gov_donors.csv
-UNIDO,2016,Unknown,R01,Unattributed,Unattributed,12841.920000001788,calculated_balance,True,True,,,,,
-UNIDO,2016,Unknown,R03,Unattributed,Unattributed,149712320.86,calculated_balance,True,True,,,,,
-UNIDO,2016,Unknown,R04,Unattributed,Unattributed,5394368.38,calculated_balance,True,True,,,,,
+UNIDO,2016,Unknown,,Unattributed,Unattributed,67306738.25000003,calculated_balance,True,False,,,,,
 UNITAR,2016,C01,R03,Government,Norway,2798375.27,reported_named,False,True,Norway,Government,Voluntary non-core (earmarked) contributions,22796.0,revenue_government_donors.csv
 UNITAR,2016,C01,R03,Government,Germany,1862760.74,reported_named,False,True,Germany,Government,Voluntary non-core (earmarked) contributions,22797.0,revenue_government_donors.csv
 UNITAR,2016,C01,R03,Government,Japan,1469953.0,reported_named,False,True,Japan,Government,Voluntary non-core (earmarked) contributions,22794.0,revenue_government_donors.csv
@@ -23616,9 +23511,7 @@ UNITAR,2016,Unknown,,Non-Government,United Nations Development Programme,521614.
 UNITAR,2016,Unknown,,Non-Government,United Nations Development Programme,150000.0,reported_named,False,False,United Nations Development Programme,2,R10,1186.0,revenue_non_gov_donors.csv
 UNITAR,2016,Unknown,,Non-Government,The Global Fund,110980.0,reported_named,False,False,Global Fund to Fight,2,R08B,1214.0,revenue_non_gov_donors.csv
 UNITAR,2016,Unknown,,Non-Government,European Union,42386.63,reported_named,False,False,European Union,2,R09,1323.0,revenue_non_gov_donors.csv
-UNITAR,2016,Unknown,R02,Unattributed,Unattributed,300788.0,calculated_balance,True,True,,,,,
-UNITAR,2016,Unknown,R03,Unattributed,Unattributed,12472475.63,calculated_balance,True,True,,,,,
-UNITAR,2016,Unknown,R04,Unattributed,Unattributed,114000.0,calculated_balance,True,True,,,,,
+UNITAR,2016,Unknown,,Unattributed,Unattributed,12062283.0,calculated_balance,True,False,,,,,
 UNODC,2016,C01,R02,Government,Germany,1161399.5,reported_named,False,True,Germany,Government,Voluntary core (un-earmarked) contributions,21237.0,revenue_government_donors.csv
 UNODC,2016,C01,R02,Government,Sweden,724868.36,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,21247.0,revenue_government_donors.csv
 UNODC,2016,C01,R02,Government,United States of America,600000.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,21251.0,revenue_government_donors.csv
@@ -23688,10 +23581,7 @@ UNODC,2016,Unknown,,Non-Government,United Nations Development Programme,1014000.
 UNODC,2016,Unknown,,Non-Government,United Nations Development Programme,650000.0,reported_named,False,False,United Nations Development Programme,2,R10,959.0,revenue_non_gov_donors.csv
 UNODC,2016,Unknown,,Non-Government,Private Donors / Private Sector,42000.0,reported_aggregate,False,False,Private Donors,2,R12,1324.0,revenue_non_gov_donors.csv
 UNODC,2016,Unknown,,Non-Government,World Bank Group,17000.0,reported_named,False,False,World Bank Group,2,R11,1398.0,revenue_non_gov_donors.csv
-UNODC,2016,Unknown,R01,Unattributed,Unattributed,30142000.0,calculated_balance,True,True,,,,,
-UNODC,2016,Unknown,R02,Unattributed,Unattributed,-1231.1499999999069,calculated_balance,True,True,,,,,
-UNODC,2016,Unknown,R03,Unattributed,Unattributed,54481772.53999999,calculated_balance,True,True,,,,,
-UNODC,2016,Unknown,R04,Unattributed,Unattributed,11199000.0,calculated_balance,True,True,,,,,
+UNODC,2016,Unknown,,Unattributed,Unattributed,51119541.389999986,calculated_balance,True,False,,,,,
 UNOPS,2016,Unknown,R04,Unattributed,Unattributed,789934000.0,calculated_balance,True,True,,,,,
 UNRWA,2016,C01,R02,Government,United States of America,152271964.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,21303.0,revenue_government_donors.csv
 UNRWA,2016,C01,R02,Government,Sweden,48959224.55,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,21299.0,revenue_government_donors.csv
@@ -23859,8 +23749,7 @@ UNU,2016,Unknown,,Non-Government,European Union,320760.0,reported_named,False,Fa
 UNU,2016,Unknown,,Non-Government,European Union,95823.0,reported_named,False,False,European Union,2,R12,1236.0,revenue_non_gov_donors.csv
 UNU,2016,Unknown,,Non-Government,World Bank Group,7443.0,reported_named,False,False,World Bank Group,2,R12,1467.0,revenue_non_gov_donors.csv
 UNU,2016,Unknown,,Non-Government,United Nations Development Programme,-28446.0,reported_named,False,False,United Nations Development Programme,2,R10,1578.0,revenue_non_gov_donors.csv
-UNU,2016,Unknown,R03,Unattributed,Unattributed,4293349.0,calculated_balance,True,True,,,,,
-UNU,2016,Unknown,R04,Unattributed,Unattributed,16653156.0,calculated_balance,True,True,,,,,
+UNU,2016,Unknown,,Unattributed,Unattributed,20550925.0,calculated_balance,True,False,,,,,
 UPU,2016,C01,R01,Government,United States of America,2037560.98,reported_named,False,True,United States of America,Government,Assessed contributions,19814.0,revenue_government_donors.csv
 UPU,2016,C01,R01,Government,France,2037560.98,reported_named,False,True,France,Government,Assessed contributions,19857.0,revenue_government_donors.csv
 UPU,2016,C01,R01,Government,United Kingdom of Great Britain and Northern Ireland,2037560.98,reported_named,False,True,United Kingdom of Great Britain and Northern Ireland,Government,Assessed contributions,19861.0,revenue_government_donors.csv
@@ -24158,9 +24047,7 @@ WFP,2016,Unknown,,Non-Government,Private Donors / Private Sector,10000.0,reporte
 WFP,2016,Unknown,,Non-Government,Private Donors / Private Sector,874.0,reported_aggregate,False,False,Private Donors,2,R12,1535.0,revenue_non_gov_donors.csv
 WFP,2016,Unknown,,Non-Government,Private Donors / Private Sector,745.0,reported_aggregate,False,False,Private Donors,2,R12,1538.0,revenue_non_gov_donors.csv
 WFP,2016,Unknown,,Non-Government,Private Donors / Private Sector,-345895.0,reported_aggregate,False,False,Private Donors,2,R12,1592.0,revenue_non_gov_donors.csv
-WFP,2016,Unknown,R02,Unattributed,Unattributed,10713357.74999988,calculated_balance,True,True,,,,,
-WFP,2016,Unknown,R03,Unattributed,Unattributed,899296263.06,calculated_balance,True,True,,,,,
-WFP,2016,Unknown,R04,Unattributed,Unattributed,137861865.9,calculated_balance,True,True,,,,,
+WFP,2016,Unknown,,Unattributed,Unattributed,-21412442.28999996,calculated_balance,True,False,,,,,
 WHO,2016,C01,R01,Government,United States of America,111050463.0,reported_named,False,True,United States of America,Government,Assessed contributions,20002.0,revenue_government_donors.csv
 WHO,2016,C01,R01,Government,Japan,49231083.0,reported_named,False,True,Japan,Government,Assessed contributions,20003.0,revenue_government_donors.csv
 WHO,2016,C01,R01,Government,Germany,32452942.0,reported_named,False,True,Germany,Government,Assessed contributions,20004.0,revenue_government_donors.csv
@@ -24484,10 +24371,7 @@ WHO,2016,Unknown,,Non-Government,United Nations Development Programme,11627692.0
 WHO,2016,Unknown,,Non-Government,United Nations Development Programme,9135067.0,reported_named,False,False,United Nations Development Programme,2,R10,484.0,revenue_non_gov_donors.csv
 WHO,2016,Unknown,,Non-Government,The Global Fund,2469931.0,reported_named,False,False,Global Fund to Fight,2,R08B,698.0,revenue_non_gov_donors.csv
 WHO,2016,Unknown,,Non-Government,World Bank Group,1000000.0,reported_named,False,False,World Bank Group,2,R11,875.0,revenue_non_gov_donors.csv
-WHO,2016,Unknown,R01,Unattributed,Unattributed,51096.0,calculated_balance,True,True,,,,,
-WHO,2016,Unknown,R02,Unattributed,Unattributed,13995.0,calculated_balance,True,True,,,,,
-WHO,2016,Unknown,R03,Unattributed,Unattributed,901652420.0,calculated_balance,True,True,,,,,
-WHO,2016,Unknown,R04,Unattributed,Unattributed,56793602.0,calculated_balance,True,True,,,,,
+WHO,2016,Unknown,,Unattributed,Unattributed,531336338.0,calculated_balance,True,False,,,,,
 WIPO,2016,C01,R01,Government,France,1111682.93,reported_named,False,True,France,Government,Assessed contributions,20256.0,revenue_government_donors.csv
 WIPO,2016,C01,R01,Government,Germany,1111682.93,reported_named,False,True,Germany,Government,Assessed contributions,20260.0,revenue_government_donors.csv
 WIPO,2016,C01,R01,Government,Japan,1111682.93,reported_named,False,True,Japan,Government,Assessed contributions,20281.0,revenue_government_donors.csv
@@ -25316,9 +25200,7 @@ CTBTO,2017,C01,R03,Government,Kazakhstan,10000.0,reported_named,False,True,Kazak
 CTBTO,2017,C01,R03,Government,Türkiye,6000.0,reported_named,False,True,Türkiye,Government,Voluntary non-core (earmarked) contributions,29484.0,revenue_government_donors.csv
 CTBTO,2017,Unknown,,Non-Government,European Union,2168413.0,reported_named,False,False,European Union,2,R09,725.0,revenue_non_gov_donors.csv
 CTBTO,2017,Unknown,,Non-Government,European Union,2168413.0,reported_named,False,False,European Union,2,R09,726.0,revenue_non_gov_donors.csv
-CTBTO,2017,Unknown,R01,Unattributed,Unattributed,11303.0,calculated_balance,True,True,,,,,
-CTBTO,2017,Unknown,R03,Unattributed,Unattributed,3913037.0,calculated_balance,True,True,,,,,
-CTBTO,2017,Unknown,R04,Unattributed,Unattributed,2113268.0,calculated_balance,True,True,,,,,
+CTBTO,2017,Unknown,,Unattributed,Unattributed,1700782.0,calculated_balance,True,False,,,,,
 FAO,2017,C01,R01,Government,United States of America,110547611.0,reported_named,False,True,United States of America,Government,Assessed contributions,26864.0,revenue_government_donors.csv
 FAO,2017,C01,R01,Government,Japan,52347742.72,reported_named,False,True,Japan,Government,Assessed contributions,26856.0,revenue_government_donors.csv
 FAO,2017,C01,R01,Government,Germany,34508069.91,reported_named,False,True,Germany,Government,Assessed contributions,26855.0,revenue_government_donors.csv
@@ -25601,9 +25483,7 @@ FAO,2017,Unknown,,Non-Government,European Union,134922837.7,reported_named,False
 FAO,2017,Unknown,,Non-Government,Global Environment Facility (thru UNDP or UNEP),45634078.05,reported_named,False,False,Global Environment Facility (thru UNDP or UNEP),2,R08B,209.0,revenue_non_gov_donors.csv
 FAO,2017,Unknown,,Non-Government,UN OCHA,32061624.1,reported_named,False,False,UN OCHA,2,R10,264.0,revenue_non_gov_donors.csv
 FAO,2017,Unknown,,Non-Government,World Bank Group,19423569.61,reported_named,False,False,World Bank Group,2,R11,360.0,revenue_non_gov_donors.csv
-FAO,2017,Unknown,R01,Unattributed,Unattributed,-13421179.209999979,calculated_balance,True,True,,,,,
-FAO,2017,Unknown,R03,Unattributed,Unattributed,315029722.26,calculated_balance,True,True,,,,,
-FAO,2017,Unknown,R04,Unattributed,Unattributed,38500213.0,calculated_balance,True,True,,,,,
+FAO,2017,Unknown,,Unattributed,Unattributed,108066646.59000015,calculated_balance,True,False,,,,,
 IAEA,2017,C01,R01,Government,United States of America,110876188.3,reported_named,False,True,United States of America,Government,Assessed contributions,25209.0,revenue_government_donors.csv
 IAEA,2017,C01,R01,Government,Japan,41308043.18,reported_named,False,True,Japan,Government,Assessed contributions,25187.0,revenue_government_donors.csv
 IAEA,2017,C01,R01,Government,China,30476473.12,reported_named,False,True,China,Government,Assessed contributions,25137.0,revenue_government_donors.csv
@@ -25909,9 +25789,7 @@ IAEA,2017,C01,R03,Government,Belize,1014.34,reported_named,False,True,Belize,Gov
 IAEA,2017,C01,R03,Government,Palau,1014.34,reported_named,False,True,Palau,Government,Voluntary non-core (earmarked) contributions,29212.0,revenue_government_donors.csv
 IAEA,2017,C01,R03,Government,Djibouti,1014.34,reported_named,False,True,Djibouti,Government,Voluntary non-core (earmarked) contributions,29256.0,revenue_government_donors.csv
 IAEA,2017,Unknown,,Non-Government,European Union,7652984.47,reported_named,False,False,European Union,2,R09,510.0,revenue_non_gov_donors.csv
-IAEA,2017,Unknown,R01,Unattributed,Unattributed,35990.80000001192,calculated_balance,True,True,,,,,
-IAEA,2017,Unknown,R03,Unattributed,Unattributed,8377783.23999998,calculated_balance,True,True,,,,,
-IAEA,2017,Unknown,R04,Unattributed,Unattributed,7912684.59,calculated_balance,True,True,,,,,
+IAEA,2017,Unknown,,Unattributed,Unattributed,8673474.159999967,calculated_balance,True,False,,,,,
 ICAO,2017,C01,R01,Government,United States of America,16023433.78,reported_named,False,True,United States of America,Government,Assessed contributions,23667.0,revenue_government_donors.csv
 ICAO,2017,C01,R01,Government,China,6537837.77,reported_named,False,True,China,Government,Assessed contributions,23512.0,revenue_government_donors.csv
 ICAO,2017,C01,R01,Government,Japan,5946833.25,reported_named,False,True,Japan,Government,Assessed contributions,23556.0,revenue_government_donors.csv
@@ -26227,9 +26105,7 @@ ICAO,2017,Unknown,,Non-Government,European Union,2278315.87,reported_named,False
 ICAO,2017,Unknown,,Non-Government,European Union,2278315.87,reported_named,False,False,European Union,2,R09,715.0,revenue_non_gov_donors.csv
 ICAO,2017,Unknown,,Non-Government,Global Environment Facility (thru UNDP or UNEP),1079468.25,reported_named,False,False,Global Environment Facility (thru UNDP or UNEP),2,R08B,859.0,revenue_non_gov_donors.csv
 ICAO,2017,Unknown,,Non-Government,Global Environment Facility (thru UNDP or UNEP),1079468.25,reported_named,False,False,Global Environment Facility (thru UNDP or UNEP),2,R08B,860.0,revenue_non_gov_donors.csv
-ICAO,2017,Unknown,R01,Unattributed,Unattributed,45387.42999999225,calculated_balance,True,True,,,,,
-ICAO,2017,Unknown,R03,Unattributed,Unattributed,17673716.310000002,calculated_balance,True,True,,,,,
-ICAO,2017,Unknown,R04,Unattributed,Unattributed,22266023.17,calculated_balance,True,True,,,,,
+ICAO,2017,Unknown,,Unattributed,Unattributed,33269558.669999987,calculated_balance,True,False,,,,,
 ICC,2017,C01,R01,Government,Japan,28529359.62,reported_named,False,True,Japan,Government,Assessed contributions,24343.0,revenue_government_donors.csv
 ICC,2017,C01,R01,Government,Germany,17820876.94,reported_named,False,True,Germany,Government,Assessed contributions,24282.0,revenue_government_donors.csv
 ICC,2017,C01,R01,Government,France,14342798.09,reported_named,False,True,France,Government,Assessed contributions,24279.0,revenue_government_donors.csv
@@ -26366,9 +26242,7 @@ ICC,2017,Unknown,,Non-Government,European Union,1143745.52,reported_named,False,
 ICC,2017,Unknown,,Non-Government,European Union,1143745.52,reported_named,False,False,European Union,2,R09,850.0,revenue_non_gov_donors.csv
 ICC,2017,Unknown,,Non-Government,Private Donors / Private Sector,358.42,reported_aggregate,False,False,Private Donors,2,R12,1544.0,revenue_non_gov_donors.csv
 ICC,2017,Unknown,,Non-Government,Private Donors / Private Sector,358.42,reported_aggregate,False,False,Private Donors,2,R12,1545.0,revenue_non_gov_donors.csv
-ICC,2017,Unknown,R01,Unattributed,Unattributed,26618.87999999523,calculated_balance,True,True,,,,,
-ICC,2017,Unknown,R03,Unattributed,Unattributed,1252246.1,calculated_balance,True,True,,,,,
-ICC,2017,Unknown,R04,Unattributed,Unattributed,453912.78,calculated_balance,True,True,,,,,
+ICC,2017,Unknown,,Unattributed,Unattributed,-555430.1200000346,calculated_balance,True,False,,,,,
 IFAD,2017,C01,R02,Government,Italy,68086000.0,reported_named,False,True,Italy,Government,Voluntary core (un-earmarked) contributions,27924.0,revenue_government_donors.csv
 IFAD,2017,C01,R02,Government,United States of America,30000000.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,27931.0,revenue_government_donors.csv
 IFAD,2017,C01,R02,Government,United Kingdom of Great Britain and Northern Ireland,25415000.0,reported_named,False,True,United Kingdom of Great Britain and Northern Ireland,Government,Voluntary core (un-earmarked) contributions,27883.0,revenue_government_donors.csv
@@ -26449,8 +26323,7 @@ IFAD,2017,C01,R03,Government,Japan,182000.0,reported_named,False,True,Japan,Gove
 IFAD,2017,C01,R03,Government,Hungary,100000.0,reported_named,False,True,Hungary,Government,Voluntary non-core (earmarked) contributions,29605.0,revenue_government_donors.csv
 IFAD,2017,Unknown,,Non-Government,European Union,36290000.0,reported_named,False,False,European Union,2,R09,251.0,revenue_non_gov_donors.csv
 IFAD,2017,Unknown,,Non-Government,Global Environment Facility (thru UNDP or UNEP),17702000.0,reported_named,False,False,Global Environment Facility (thru UNDP or UNEP),2,R08B,376.0,revenue_non_gov_donors.csv
-IFAD,2017,Unknown,R03,Unattributed,Unattributed,74830000.0,calculated_balance,True,True,,,,,
-IFAD,2017,Unknown,R04,Unattributed,Unattributed,8512000.0,calculated_balance,True,True,,,,,
+IFAD,2017,Unknown,,Unattributed,Unattributed,29350000.0,calculated_balance,True,False,,,,,
 ILO,2017,C01,R01,Government,United States of America,85201692.23,reported_named,False,True,United States of America,Government,Assessed contributions,25723.0,revenue_government_donors.csv
 ILO,2017,C01,R01,Government,Japan,37504236.2,reported_named,False,True,Japan,Government,Assessed contributions,25713.0,revenue_government_donors.csv
 ILO,2017,C01,R01,Government,China,30688100.2,reported_named,False,True,China,Government,Assessed contributions,25745.0,revenue_government_donors.csv
@@ -26691,9 +26564,7 @@ ILO,2017,Unknown,,Non-Government,World Bank Group,1730000.0,reported_named,False
 ILO,2017,Unknown,,Non-Government,World Bank Group,1730000.0,reported_named,False,False,World Bank Group,2,R11,775.0,revenue_non_gov_donors.csv
 ILO,2017,Unknown,,Non-Government,World Bank Group,336564.0,reported_named,False,False,World Bank Group,2,R11,1057.0,revenue_non_gov_donors.csv
 ILO,2017,Unknown,,Non-Government,World Bank Group,336564.0,reported_named,False,False,World Bank Group,2,R11,1058.0,revenue_non_gov_donors.csv
-ILO,2017,Unknown,R01,Unattributed,Unattributed,-17723369.5,calculated_balance,True,True,,,,,
-ILO,2017,Unknown,R03,Unattributed,Unattributed,98475031.0,calculated_balance,True,True,,,,,
-ILO,2017,Unknown,R04,Unattributed,Unattributed,20684803.0,calculated_balance,True,True,,,,,
+ILO,2017,Unknown,,Unattributed,Unattributed,42393515.5,calculated_balance,True,False,,,,,
 IMO,2017,C01,R01,Government,Panama,6589580.08,reported_named,False,True,Panama,Government,Assessed contributions,23815.0,revenue_government_donors.csv
 IMO,2017,C01,R01,Government,Liberia,3961970.39,reported_named,False,True,Liberia,Government,Assessed contributions,23675.0,revenue_government_donors.csv
 IMO,2017,C01,R01,Government,Marshall Islands,3773266.49,reported_named,False,True,Marshall Islands,Government,Assessed contributions,23676.0,revenue_government_donors.csv
@@ -26883,9 +26754,7 @@ IMO,2017,C01,R03,Government,Canada,18220.73,reported_named,False,True,Canada,Gov
 IMO,2017,C01,R03,Government,Philippines,15566.62,reported_named,False,True,Philippines,Government,Voluntary non-core (earmarked) contributions,28082.0,revenue_government_donors.csv
 IMO,2017,Unknown,,Non-Government,European Union,1288118.44,reported_named,False,False,European Union,2,R09,827.0,revenue_non_gov_donors.csv
 IMO,2017,Unknown,,Non-Government,European Union,1288118.44,reported_named,False,False,European Union,2,R09,828.0,revenue_non_gov_donors.csv
-IMO,2017,Unknown,R01,Unattributed,Unattributed,6908.379999995232,calculated_balance,True,True,,,,,
-IMO,2017,Unknown,R03,Unattributed,Unattributed,2338584.1100000003,calculated_balance,True,True,,,,,
-IMO,2017,Unknown,R04,Unattributed,Unattributed,18802636.61,calculated_balance,True,True,,,,,
+IMO,2017,Unknown,,Unattributed,Unattributed,18571892.21999999,calculated_balance,True,False,,,,,
 IOM,2017,C01,R01,Government,United States of America,11722587.0,reported_named,False,True,United States of America,Government,Assessed contributions,24442.0,revenue_government_donors.csv
 IOM,2017,C01,R01,Government,Japan,5157942.0,reported_named,False,True,Japan,Government,Assessed contributions,24448.0,revenue_government_donors.csv
 IOM,2017,C01,R01,Government,China,4220800.0,reported_named,False,True,China,Government,Assessed contributions,24441.0,revenue_government_donors.csv
@@ -27133,10 +27002,7 @@ IOM,2017,Unknown,,Non-Government,Private Donors / Private Sector,4103256.0,repor
 IOM,2017,Unknown,,Non-Government,Private Donors / Private Sector,4103256.0,reported_aggregate,False,False,Private Donors,2,R12,610.0,revenue_non_gov_donors.csv
 IOM,2017,Unknown,,Non-Government,Private Donors / Private Sector,163937.0,reported_aggregate,False,False,Private Donors,2,R05,1167.0,revenue_non_gov_donors.csv
 IOM,2017,Unknown,,Non-Government,Private Donors / Private Sector,163937.0,reported_aggregate,False,False,Private Donors,2,R05,1168.0,revenue_non_gov_donors.csv
-IOM,2017,Unknown,R01,Unattributed,Unattributed,4886.0,calculated_balance,True,True,,,,,
-IOM,2017,Unknown,R02,Unattributed,Unattributed,1.0,calculated_balance,True,True,,,,,
-IOM,2017,Unknown,R03,Unattributed,Unattributed,259963281.0,calculated_balance,True,True,,,,,
-IOM,2017,Unknown,R04,Unattributed,Unattributed,100289705.0,calculated_balance,True,True,,,,,
+IOM,2017,Unknown,,Unattributed,Unattributed,14717515.0,calculated_balance,True,False,,,,,
 ITC,2017,C01,R02,Government,Sweden,21853670.0,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,27940.0,revenue_government_donors.csv
 ITC,2017,C01,R02,Government,Norway,3303156.0,reported_named,False,True,Norway,Government,Voluntary core (un-earmarked) contributions,27938.0,revenue_government_donors.csv
 ITC,2017,C01,R02,Government,Germany,2206736.0,reported_named,False,True,Germany,Government,Voluntary core (un-earmarked) contributions,27934.0,revenue_government_donors.csv
@@ -27165,10 +27031,7 @@ ITC,2017,C01,R03,Government,Cuba,17773.0,reported_named,False,True,Cuba,Governme
 ITC,2017,C01,R03,Government,Malta,11848.0,reported_named,False,True,Malta,Government,Voluntary non-core (earmarked) contributions,29627.0,revenue_government_donors.csv
 ITC,2017,C01,R03,Government,Costa Rica,8000.0,reported_named,False,True,Costa Rica,Government,Voluntary non-core (earmarked) contributions,29619.0,revenue_government_donors.csv
 ITC,2017,Unknown,,Non-Government,European Union,11765030.0,reported_named,False,False,European Union,2,R09,443.0,revenue_non_gov_donors.csv
-ITC,2017,Unknown,R01,Unattributed,Unattributed,35452560.0,calculated_balance,True,True,,,,,
-ITC,2017,Unknown,R02,Unattributed,Unattributed,1.0,calculated_balance,True,True,,,,,
-ITC,2017,Unknown,R03,Unattributed,Unattributed,19298113.0,calculated_balance,True,True,,,,,
-ITC,2017,Unknown,R04,Unattributed,Unattributed,1240858.0,calculated_balance,True,True,,,,,
+ITC,2017,Unknown,,Unattributed,Unattributed,44226502.0,calculated_balance,True,False,,,,,
 ITU,2017,C01,R01,Government,Japan,9754601.23,reported_named,False,True,Japan,Government,Assessed contributions,25518.0,revenue_government_donors.csv
 ITU,2017,C01,R01,Government,United States of America,9754601.23,reported_named,False,True,United States of America,Government,Assessed contributions,25580.0,revenue_government_donors.csv
 ITU,2017,C01,R01,Government,Germany,8128834.36,reported_named,False,True,Germany,Government,Assessed contributions,25612.0,revenue_government_donors.csv
@@ -27456,9 +27319,7 @@ PAHO,2017,Unknown,,Non-Government,"GAVI, The Vaccine Alliance",4733404.0,reporte
 PAHO,2017,Unknown,,Non-Government,"GAVI, The Vaccine Alliance",4733404.0,reported_named,False,False,Gavi Alliance,2,R08B,585.0,revenue_non_gov_donors.csv
 PAHO,2017,Unknown,,Non-Government,Bill & Melinda Gates Foundation,748377.0,reported_named,False,False,Bill & Melinda Gates Foundation,2,R12,933.0,revenue_non_gov_donors.csv
 PAHO,2017,Unknown,,Non-Government,Bill & Melinda Gates Foundation,748377.0,reported_named,False,False,Bill & Melinda Gates Foundation,2,R12,934.0,revenue_non_gov_donors.csv
-PAHO,2017,Unknown,R01,Unattributed,Unattributed,21201.0,calculated_balance,True,True,,,,,
-PAHO,2017,Unknown,R03,Unattributed,Unattributed,13005414.0,calculated_balance,True,True,,,,,
-PAHO,2017,Unknown,R04,Unattributed,Unattributed,716469705.0,calculated_balance,True,True,,,,,
+PAHO,2017,Unknown,,Unattributed,Unattributed,718532758.0,calculated_balance,True,False,,,,,
 Peacekeeping Operations,2017,C01,R01,Government,United States of America,2239997512.0,reported_named,False,True,United States of America,Government,Assessed contributions,26768.0,revenue_government_donors.csv
 Peacekeeping Operations,2017,C01,R01,Government,China,806500920.0,reported_named,False,True,China,Government,Assessed contributions,26669.0,revenue_government_donors.csv
 Peacekeeping Operations,2017,C01,R01,Government,Japan,760217308.0,reported_named,False,True,Japan,Government,Assessed contributions,26728.0,revenue_government_donors.csv
@@ -28804,10 +28665,7 @@ UN Secretariat,2017,Unknown,,Non-Government,European Union,60240.97,reported_nam
 UN Secretariat,2017,Unknown,,Non-Government,European Union,60240.97,reported_named,False,False,European Union,2,R09,1285.0,revenue_non_gov_donors.csv
 UN Secretariat,2017,Unknown,,Non-Government,UN OCHA,-189319.96,reported_named,False,False,UN OCHA,2,R12,1584.0,revenue_non_gov_donors.csv
 UN Secretariat,2017,Unknown,,Non-Government,UN OCHA,-189319.96,reported_named,False,False,UN OCHA,2,R12,1585.0,revenue_non_gov_donors.csv
-UN Secretariat,2017,Unknown,R01,Unattributed,Unattributed,227006.0,calculated_balance,True,True,,,,,
-UN Secretariat,2017,Unknown,R02,Unattributed,Unattributed,1903909.0,calculated_balance,True,True,,,,,
-UN Secretariat,2017,Unknown,R03,Unattributed,Unattributed,240588910.0,calculated_balance,True,True,,,,,
-UN Secretariat,2017,Unknown,R04,Unattributed,Unattributed,623014141.5,calculated_balance,True,True,,,,,
+UN Secretariat,2017,Unknown,,Unattributed,Unattributed,716107595.6099997,calculated_balance,True,False,,,,,
 UN Tourism,2017,C01,R01,Government,China,409517.32,reported_named,False,True,China,Government,Assessed contributions,24800.0,revenue_government_donors.csv
 UN Tourism,2017,C01,R01,Government,France,409517.32,reported_named,False,True,France,Government,Assessed contributions,24816.0,revenue_government_donors.csv
 UN Tourism,2017,C01,R01,Government,Italy,409517.32,reported_named,False,True,Italy,Government,Assessed contributions,24830.0,revenue_government_donors.csv
@@ -29130,10 +28988,7 @@ UN Women,2017,Unknown,,Non-Government,UN OCHA,600487.0,reported_named,False,Fals
 UN Women,2017,Unknown,,Non-Government,UN OCHA,600487.0,reported_named,False,False,UN OCHA,2,R10,971.0,revenue_non_gov_donors.csv
 UN Women,2017,Unknown,,Non-Government,UN OCHA,65532.14,reported_named,False,False,UN OCHA,2,R10,1274.0,revenue_non_gov_donors.csv
 UN Women,2017,Unknown,,Non-Government,UN OCHA,65532.14,reported_named,False,False,UN OCHA,2,R10,1275.0,revenue_non_gov_donors.csv
-UN Women,2017,Unknown,R01,Unattributed,Unattributed,8314200.0,calculated_balance,True,True,,,,,
-UN Women,2017,Unknown,R02,Unattributed,Unattributed,3518467.75,calculated_balance,True,True,,,,,
-UN Women,2017,Unknown,R03,Unattributed,Unattributed,82295289.22,calculated_balance,True,True,,,,,
-UN Women,2017,Unknown,R04,Unattributed,Unattributed,9553000.0,calculated_balance,True,True,,,,,
+UN Women,2017,Unknown,,Unattributed,Unattributed,50822606.19999999,calculated_balance,True,False,,,,,
 UN-Habitat,2017,C01,R02,Government,United States of America,692000.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,27320.0,revenue_government_donors.csv
 UN-Habitat,2017,C01,R02,Government,Norway,593014.29,reported_named,False,True,Norway,Government,Voluntary core (un-earmarked) contributions,27333.0,revenue_government_donors.csv
 UN-Habitat,2017,C01,R02,Government,China,350000.0,reported_named,False,True,China,Government,Voluntary core (un-earmarked) contributions,27325.0,revenue_government_donors.csv
@@ -29191,10 +29046,7 @@ UN-Habitat,2017,C01,R03,Government,Nigeria,9886.17,reported_named,False,True,Nig
 UN-Habitat,2017,C01,R03,Government,Canada,-8163.3,reported_named,False,True,Canada,Government,Voluntary non-core (earmarked) contributions,28406.0,revenue_government_donors.csv
 UN-Habitat,2017,C01,R03,Government,United Kingdom of Great Britain and Northern Ireland,-26255.07,reported_named,False,True,United Kingdom of Great Britain and Northern Ireland,Government,Voluntary non-core (earmarked) contributions,28415.0,revenue_government_donors.csv
 UN-Habitat,2017,Unknown,,Non-Government,European Union,19677901.81,reported_named,False,False,European Union,2,R09,357.0,revenue_non_gov_donors.csv
-UN-Habitat,2017,Unknown,R01,Unattributed,Unattributed,13563771.7,calculated_balance,True,True,,,,,
-UN-Habitat,2017,Unknown,R02,Unattributed,Unattributed,76504.0,calculated_balance,True,True,,,,,
-UN-Habitat,2017,Unknown,R03,Unattributed,Unattributed,51511493.81000002,calculated_balance,True,True,,,,,
-UN-Habitat,2017,Unknown,R04,Unattributed,Unattributed,10673734.49,calculated_balance,True,True,,,,,
+UN-Habitat,2017,Unknown,,Unattributed,Unattributed,56147602.19,calculated_balance,True,False,,,,,
 UNAIDS,2017,C01,R02,Government,United States of America,45000000.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,27779.0,revenue_government_donors.csv
 UNAIDS,2017,C01,R02,Government,Sweden,30524258.0,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,27774.0,revenue_government_donors.csv
 UNAIDS,2017,C01,R02,Government,Netherlands,19210245.0,reported_named,False,True,Netherlands,Government,Voluntary core (un-earmarked) contributions,27770.0,revenue_government_donors.csv
@@ -29238,9 +29090,7 @@ UNAIDS,2017,Unknown,,Non-Government,Multi Donor Trust Funds,224943.0,reported_ag
 UNAIDS,2017,Unknown,,Non-Government,Multi Donor Trust Funds,224943.0,reported_aggregate,False,False,Multi Donor Trust Funds,2,R08,1126.0,revenue_non_gov_donors.csv
 UNAIDS,2017,Unknown,,Non-Government,The Global Fund,107950.0,reported_named,False,False,Global Fund to Fight,2,R08B,1217.0,revenue_non_gov_donors.csv
 UNAIDS,2017,Unknown,,Non-Government,The Global Fund,107950.0,reported_named,False,False,Global Fund to Fight,2,R08B,1218.0,revenue_non_gov_donors.csv
-UNAIDS,2017,Unknown,R02,Unattributed,Unattributed,1565500.0,calculated_balance,True,True,,,,,
-UNAIDS,2017,Unknown,R03,Unattributed,Unattributed,8784269.0,calculated_balance,True,True,,,,,
-UNAIDS,2017,Unknown,R04,Unattributed,Unattributed,8040694.0,calculated_balance,True,True,,,,,
+UNAIDS,2017,Unknown,,Unattributed,Unattributed,17724677.0,calculated_balance,True,False,,,,,
 UNCDF,2017,C01,R02,Government,Sweden,3382187.0,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,27752.0,revenue_government_donors.csv
 UNCDF,2017,C01,R02,Government,Switzerland,2982107.0,reported_named,False,True,Switzerland,Government,Voluntary core (un-earmarked) contributions,27754.0,revenue_government_donors.csv
 UNCDF,2017,C01,R02,Government,Australia,767460.0,reported_named,False,True,Australia,Government,Voluntary core (un-earmarked) contributions,27742.0,revenue_government_donors.csv
@@ -29280,8 +29130,7 @@ UNCDF,2017,Unknown,,Non-Government,European Union,1633111.0,reported_named,False
 UNCDF,2017,Unknown,,Non-Government,European Union,1633111.0,reported_named,False,False,European Union,2,R09,788.0,revenue_non_gov_donors.csv
 UNCDF,2017,Unknown,,Non-Government,Multi Donor Trust Funds,713540.0,reported_aggregate,False,False,Multi Donor Trust Funds,2,R08,942.0,revenue_non_gov_donors.csv
 UNCDF,2017,Unknown,,Non-Government,Multi Donor Trust Funds,713540.0,reported_aggregate,False,False,Multi Donor Trust Funds,2,R08,943.0,revenue_non_gov_donors.csv
-UNCDF,2017,Unknown,R03,Unattributed,Unattributed,26908723.0,calculated_balance,True,True,,,,,
-UNCDF,2017,Unknown,R04,Unattributed,Unattributed,3294563.0,calculated_balance,True,True,,,,,
+UNCDF,2017,Unknown,,Unattributed,Unattributed,10903327.0,calculated_balance,True,False,,,,,
 UNDP,2017,C01,R02,Government,United States of America,79804287.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,27566.0,revenue_government_donors.csv
 UNDP,2017,C01,R02,Government,United Kingdom of Great Britain and Northern Ireland,72559367.0,reported_named,False,True,United Kingdom of Great Britain and Northern Ireland,Government,Voluntary core (un-earmarked) contributions,27681.0,revenue_government_donors.csv
 UNDP,2017,C01,R02,Government,Sweden,70525392.0,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,27664.0,revenue_government_donors.csv
@@ -29572,9 +29421,7 @@ UNDP,2017,Unknown,,Non-Government,Private Donors / Private Sector,24344484.0,rep
 UNDP,2017,Unknown,,Non-Government,"GAVI, The Vaccine Alliance",9733980.0,reported_named,False,False,Gavi Alliance,2,R08B,475.0,revenue_non_gov_donors.csv
 UNDP,2017,Unknown,,Non-Government,UN OCHA,7843891.0,reported_named,False,False,UN OCHA,2,R08,507.0,revenue_non_gov_donors.csv
 UNDP,2017,Unknown,,Non-Government,UN OCHA,5419809.0,reported_named,False,False,UN OCHA,2,R10,564.0,revenue_non_gov_donors.csv
-UNDP,2017,Unknown,R02,Unattributed,Unattributed,2242317.0,calculated_balance,True,True,,,,,
-UNDP,2017,Unknown,R03,Unattributed,Unattributed,1733510074.0,calculated_balance,True,True,,,,,
-UNDP,2017,Unknown,R04,Unattributed,Unattributed,344324601.0,calculated_balance,True,True,,,,,
+UNDP,2017,Unknown,,Unattributed,Unattributed,608472748.0,calculated_balance,True,False,,,,,
 UNEP,2017,C01,R01,Government,France,5498653.0,reported_named,False,True,France,Government,Assessed contributions,24037.0,revenue_government_donors.csv
 UNEP,2017,C01,R01,Government,Japan,4957368.0,reported_named,False,True,Japan,Government,Assessed contributions,23926.0,revenue_government_donors.csv
 UNEP,2017,C01,R01,Government,Germany,4041945.0,reported_named,False,True,Germany,Government,Assessed contributions,23879.0,revenue_government_donors.csv
@@ -29888,9 +29735,7 @@ UNEP,2017,Unknown,,Non-Government,World Bank Group,164593841.0,reported_named,Fa
 UNEP,2017,Unknown,,Non-Government,European Union,39440203.0,reported_named,False,False,European Union,2,R09,235.0,revenue_non_gov_donors.csv
 UNEP,2017,Unknown,,Non-Government,World Bank Group,4703000.0,reported_named,False,False,World Bank Group,2,R11,588.0,revenue_non_gov_donors.csv
 UNEP,2017,Unknown,,Non-Government,World Bank Group,4703000.0,reported_named,False,False,World Bank Group,2,R11,589.0,revenue_non_gov_donors.csv
-UNEP,2017,Unknown,R01,Unattributed,Unattributed,146099421.0,calculated_balance,True,True,,,,,
-UNEP,2017,Unknown,R03,Unattributed,Unattributed,282670432.0,calculated_balance,True,True,,,,,
-UNEP,2017,Unknown,R04,Unattributed,Unattributed,25261000.0,calculated_balance,True,True,,,,,
+UNEP,2017,Unknown,,Unattributed,Unattributed,240590809.0,calculated_balance,True,False,,,,,
 UNESCO,2017,C01,R01,Government,United States of America,68757698.0,reported_named,False,True,United States of America,Government,Assessed contributions,24045.0,revenue_government_donors.csv
 UNESCO,2017,C01,R01,Government,Japan,30882299.0,reported_named,False,True,Japan,Government,Assessed contributions,24222.0,revenue_government_donors.csv
 UNESCO,2017,C01,R01,Government,China,25269948.0,reported_named,False,True,China,Government,Assessed contributions,24081.0,revenue_government_donors.csv
@@ -30215,9 +30060,7 @@ UNESCO,2017,Unknown,,Non-Government,World Bank Group,665247.0,reported_named,Fal
 UNESCO,2017,Unknown,,Non-Government,World Bank Group,665247.0,reported_named,False,False,World Bank Group,2,R08B,954.0,revenue_non_gov_donors.csv
 UNESCO,2017,Unknown,,Non-Government,Multi Donor Trust Funds,180416.0,reported_aggregate,False,False,Multi Donor Trust Funds,2,R08,1153.0,revenue_non_gov_donors.csv
 UNESCO,2017,Unknown,,Non-Government,Multi Donor Trust Funds,180416.0,reported_aggregate,False,False,Multi Donor Trust Funds,2,R08,1154.0,revenue_non_gov_donors.csv
-UNESCO,2017,Unknown,R01,Unattributed,Unattributed,30591.0,calculated_balance,True,True,,,,,
-UNESCO,2017,Unknown,R03,Unattributed,Unattributed,86177878.0,calculated_balance,True,True,,,,,
-UNESCO,2017,Unknown,R04,Unattributed,Unattributed,70816887.0,calculated_balance,True,True,,,,,
+UNESCO,2017,Unknown,,Unattributed,Unattributed,134884675.0,calculated_balance,True,False,,,,,
 UNFCCC,2017,C01,R01,Government,United States of America,4245244.77,reported_named,False,True,United States of America,Government,Assessed contributions,24691.0,revenue_government_donors.csv
 UNFCCC,2017,C01,R01,Government,Japan,3292669.46,reported_named,False,True,Japan,Government,Assessed contributions,24609.0,revenue_government_donors.csv
 UNFCCC,2017,C01,R01,Government,China,2352202.93,reported_named,False,True,China,Government,Assessed contributions,24563.0,revenue_government_donors.csv
@@ -30440,10 +30283,7 @@ UNFCCC,2017,C01,R03,Government,Belgium,22938.08,reported_named,False,True,Belgiu
 UNFCCC,2017,C01,R03,Government,New Zealand,7034.16,reported_named,False,True,New Zealand,Government,Voluntary non-core (earmarked) contributions,28755.0,revenue_government_donors.csv
 UNFCCC,2017,Unknown,,Non-Government,European Union,2905143.59,reported_named,False,False,European Union,2,R09,669.0,revenue_non_gov_donors.csv
 UNFCCC,2017,Unknown,,Non-Government,European Union,2905143.59,reported_named,False,False,European Union,2,R09,670.0,revenue_non_gov_donors.csv
-UNFCCC,2017,Unknown,R01,Unattributed,Unattributed,2672.730000000447,calculated_balance,True,True,,,,,
-UNFCCC,2017,Unknown,R02,Unattributed,Unattributed,-66983.79999999981,calculated_balance,True,True,,,,,
-UNFCCC,2017,Unknown,R03,Unattributed,Unattributed,3458297.809999995,calculated_balance,True,True,,,,,
-UNFCCC,2017,Unknown,R04,Unattributed,Unattributed,14949449.0,calculated_balance,True,True,,,,,
+UNFCCC,2017,Unknown,,Unattributed,Unattributed,12533148.559999987,calculated_balance,True,False,,,,,
 UNFPA,2017,C01,R02,Government,Sweden,63802000.0,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,27548.0,revenue_government_donors.csv
 UNFPA,2017,C01,R02,Government,Norway,50784000.0,reported_named,False,True,Norway,Government,Voluntary core (un-earmarked) contributions,27562.0,revenue_government_donors.csv
 UNFPA,2017,C01,R02,Government,Denmark,43157000.0,reported_named,False,True,Denmark,Government,Voluntary core (un-earmarked) contributions,27561.0,revenue_government_donors.csv
@@ -30606,9 +30446,7 @@ UNFPA,2017,Unknown,,Non-Government,European Union,43415136.31,reported_named,Fal
 UNFPA,2017,Unknown,,Non-Government,UN OCHA,20370130.0,reported_named,False,False,UN OCHA,2,R08,350.0,revenue_non_gov_donors.csv
 UNFPA,2017,Unknown,,Non-Government,UN OCHA,12902495.94,reported_named,False,False,UN OCHA,2,R10,422.0,revenue_non_gov_donors.csv
 UNFPA,2017,Unknown,,Non-Government,Bill & Melinda Gates Foundation,7197256.0,reported_named,False,False,Bill & Melinda Gates Foundation,2,R12,516.0,revenue_non_gov_donors.csv
-UNFPA,2017,Unknown,R02,Unattributed,Unattributed,405000.0,calculated_balance,True,True,,,,,
-UNFPA,2017,Unknown,R03,Unattributed,Unattributed,340254372.03,calculated_balance,True,True,,,,,
-UNFPA,2017,Unknown,R04,Unattributed,Unattributed,92694000.0,calculated_balance,True,True,,,,,
+UNFPA,2017,Unknown,,Unattributed,Unattributed,349468353.78,calculated_balance,True,False,,,,,
 UNHCR,2017,C01,R02,Government,United Kingdom of Great Britain and Northern Ireland,140362225.1,reported_named,False,True,United Kingdom of Great Britain and Northern Ireland,Government,Voluntary core (un-earmarked) contributions,27316.0,revenue_government_donors.csv
 UNHCR,2017,C01,R02,Government,Sweden,98191833.31,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,27311.0,revenue_government_donors.csv
 UNHCR,2017,C01,R02,Government,Norway,42522172.28,reported_named,False,True,Norway,Government,Voluntary core (un-earmarked) contributions,27301.0,revenue_government_donors.csv
@@ -30722,10 +30560,7 @@ UNHCR,2017,Unknown,,Non-Government,UN OCHA,16896126.0,reported_named,False,False
 UNHCR,2017,Unknown,,Non-Government,European Union,15299021.48,reported_named,False,False,European Union,2,R09,405.0,revenue_non_gov_donors.csv
 UNHCR,2017,Unknown,,Non-Government,European Union,13271655.91,reported_named,False,False,European Union,2,R09,420.0,revenue_non_gov_donors.csv
 UNHCR,2017,Unknown,,Non-Government,Private Donors / Private Sector,12058303.04,reported_aggregate,False,False,Private Donors,2,R12,437.0,revenue_non_gov_donors.csv
-UNHCR,2017,Unknown,R01,Unattributed,Unattributed,47754500.0,calculated_balance,True,True,,,,,
-UNHCR,2017,Unknown,R02,Unattributed,Unattributed,206708124.34999996,calculated_balance,True,True,,,,,
-UNHCR,2017,Unknown,R03,Unattributed,Unattributed,711631212.31,calculated_balance,True,True,,,,,
-UNHCR,2017,Unknown,R04,Unattributed,Unattributed,30662433.36,calculated_balance,True,True,,,,,
+UNHCR,2017,Unknown,,Unattributed,Unattributed,448561994.92999935,calculated_balance,True,False,,,,,
 UNICEF,2017,C01,R02,Government,United States of America,132500000.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,27361.0,revenue_government_donors.csv
 UNICEF,2017,C01,R02,Government,Sweden,84527727.0,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,27355.0,revenue_government_donors.csv
 UNICEF,2017,C01,R02,Government,Belgium,71871949.0,reported_named,False,True,Belgium,Government,Voluntary core (un-earmarked) contributions,27379.0,revenue_government_donors.csv
@@ -30984,9 +30819,7 @@ UNICEF,2017,Unknown,,Non-Government,Private Donors / Private Sector,52101.0,repo
 UNICEF,2017,Unknown,,Non-Government,Private Donors / Private Sector,7995.0,reported_aggregate,False,False,Private Donors,2,R07,1461.0,revenue_non_gov_donors.csv
 UNICEF,2017,Unknown,,Non-Government,UN OCHA,-259314.0,reported_named,False,False,UN OCHA,2,R10,1589.0,revenue_non_gov_donors.csv
 UNICEF,2017,Unknown,,Non-Government,UN OCHA,-259314.0,reported_named,False,False,UN OCHA,2,R10,1590.0,revenue_non_gov_donors.csv
-UNICEF,2017,Unknown,R02,Unattributed,Unattributed,719700058.0,calculated_balance,True,True,,,,,
-UNICEF,2017,Unknown,R03,Unattributed,Unattributed,2493364130.0,calculated_balance,True,True,,,,,
-UNICEF,2017,Unknown,R04,Unattributed,Unattributed,145744994.0,calculated_balance,True,True,,,,,
+UNICEF,2017,Unknown,,Unattributed,Unattributed,1455649383.0,calculated_balance,True,False,,,,,
 UNIDO,2017,C01,R01,Government,Japan,14768679.81,reported_named,False,True,Japan,Government,Assessed contributions,24991.0,revenue_government_donors.csv
 UNIDO,2017,C01,R01,Government,Germany,9735774.19,reported_named,False,True,Germany,Government,Assessed contributions,24960.0,revenue_government_donors.csv
 UNIDO,2017,C01,R01,Government,China,7018851.85,reported_named,False,True,China,Government,Assessed contributions,24951.0,revenue_government_donors.csv
@@ -31215,9 +31048,7 @@ UNIDO,2017,Unknown,,Non-Government,European Union,1044906.01,reported_named,Fals
 UNIDO,2017,Unknown,,Non-Government,European Union,1044906.01,reported_named,False,False,European Union,2,R09,866.0,revenue_non_gov_donors.csv
 UNIDO,2017,Unknown,,Non-Government,European Union,65122.21,reported_named,False,False,European Union,2,R09,1276.0,revenue_non_gov_donors.csv
 UNIDO,2017,Unknown,,Non-Government,European Union,65122.21,reported_named,False,False,European Union,2,R09,1277.0,revenue_non_gov_donors.csv
-UNIDO,2017,Unknown,R01,Unattributed,Unattributed,14668.140000000596,calculated_balance,True,True,,,,,
-UNIDO,2017,Unknown,R03,Unattributed,Unattributed,194299845.04,calculated_balance,True,True,,,,,
-UNIDO,2017,Unknown,R04,Unattributed,Unattributed,3286767.55,calculated_balance,True,True,,,,,
+UNIDO,2017,Unknown,,Unattributed,Unattributed,57739877.51999998,calculated_balance,True,False,,,,,
 UNITAR,2017,C01,R02,Government,China,100000.0,reported_named,False,True,China,Government,Voluntary core (un-earmarked) contributions,27948.0,revenue_government_donors.csv
 UNITAR,2017,C01,R02,Government,Japan,16881.0,reported_named,False,True,Japan,Government,Voluntary core (un-earmarked) contributions,27941.0,revenue_government_donors.csv
 UNITAR,2017,C01,R02,Government,Liechtenstein,10273.27,reported_named,False,True,Liechtenstein,Government,Voluntary core (un-earmarked) contributions,27947.0,revenue_government_donors.csv
@@ -31267,9 +31098,7 @@ UNITAR,2017,C01,R03,Government,Türkiye,10000.0,reported_named,False,True,Türki
 UNITAR,2017,C01,R03,Government,Singapore,6527.0,reported_named,False,True,Singapore,Government,Voluntary non-core (earmarked) contributions,30580.0,revenue_government_donors.csv
 UNITAR,2017,Unknown,,Non-Government,The Global Fund,18480.0,reported_named,False,False,Global Fund to Fight,2,R08B,1395.0,revenue_non_gov_donors.csv
 UNITAR,2017,Unknown,,Non-Government,The Global Fund,18480.0,reported_named,False,False,Global Fund to Fight,2,R08B,1396.0,revenue_non_gov_donors.csv
-UNITAR,2017,Unknown,R02,Unattributed,Unattributed,-2850.179999999993,calculated_balance,True,True,,,,,
-UNITAR,2017,Unknown,R03,Unattributed,Unattributed,8524710.620000001,calculated_balance,True,True,,,,,
-UNITAR,2017,Unknown,R04,Unattributed,Unattributed,487674.28,calculated_balance,True,True,,,,,
+UNITAR,2017,Unknown,,Unattributed,Unattributed,8972574.720000003,calculated_balance,True,False,,,,,
 UNODC,2017,C01,R02,Government,Germany,1185764.84,reported_named,False,True,Germany,Government,Voluntary core (un-earmarked) contributions,27785.0,revenue_government_donors.csv
 UNODC,2017,C01,R02,Government,Sweden,979833.41,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,27799.0,revenue_government_donors.csv
 UNODC,2017,C01,R02,Government,United States of America,600280.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,27801.0,revenue_government_donors.csv
@@ -31341,10 +31170,7 @@ UNODC,2017,Unknown,,Non-Government,World Bank Group,550000.0,reported_named,Fals
 UNODC,2017,Unknown,,Non-Government,World Bank Group,550000.0,reported_named,False,False,World Bank Group,2,R11,983.0,revenue_non_gov_donors.csv
 UNODC,2017,Unknown,,Non-Government,Private Donors / Private Sector,26441.0,reported_aggregate,False,False,Private Donors,2,R12,1358.0,revenue_non_gov_donors.csv
 UNODC,2017,Unknown,,Non-Government,Private Donors / Private Sector,26441.0,reported_aggregate,False,False,Private Donors,2,R12,1359.0,revenue_non_gov_donors.csv
-UNODC,2017,Unknown,R01,Unattributed,Unattributed,30638000.0,calculated_balance,True,True,,,,,
-UNODC,2017,Unknown,R02,Unattributed,Unattributed,-346.1699999999255,calculated_balance,True,True,,,,,
-UNODC,2017,Unknown,R03,Unattributed,Unattributed,51677545.149999976,calculated_balance,True,True,,,,,
-UNODC,2017,Unknown,R04,Unattributed,Unattributed,14510000.0,calculated_balance,True,True,,,,,
+UNODC,2017,Unknown,,Unattributed,Unattributed,54848264.98000002,calculated_balance,True,False,,,,,
 UNOPS,2017,Unknown,R04,Unattributed,Unattributed,834003966.0,calculated_balance,True,True,,,,,
 UNRWA,2017,C01,R02,Government,United States of America,157476322.0,reported_named,False,True,United States of America,Government,Voluntary core (un-earmarked) contributions,27721.0,revenue_government_donors.csv
 UNRWA,2017,C01,R02,Government,Sweden,53925633.95,reported_named,False,True,Sweden,Government,Voluntary core (un-earmarked) contributions,27722.0,revenue_government_donors.csv
@@ -31422,10 +31248,7 @@ UNRWA,2017,C01,R03,Government,Slovenia,53362.0,reported_named,False,True,Sloveni
 UNRWA,2017,C01,R03,Government,Netherlands,16246.0,reported_named,False,True,Netherlands,Government,Voluntary non-core (earmarked) contributions,29018.0,revenue_government_donors.csv
 UNRWA,2017,Unknown,,Non-Government,European Union,112754495.0,reported_named,False,False,European Union,2,R09,119.0,revenue_non_gov_donors.csv
 UNRWA,2017,Unknown,,Non-Government,European Union,76480614.0,reported_named,False,False,European Union,2,R09,144.0,revenue_non_gov_donors.csv
-UNRWA,2017,Unknown,R01,Unattributed,Unattributed,30429897.53,calculated_balance,True,True,,,,,
-UNRWA,2017,Unknown,R02,Unattributed,Unattributed,120692035.75,calculated_balance,True,True,,,,,
-UNRWA,2017,Unknown,R03,Unattributed,Unattributed,102604706.0,calculated_balance,True,True,,,,,
-UNRWA,2017,Unknown,R04,Unattributed,Unattributed,54753966.0,calculated_balance,True,True,,,,,
+UNRWA,2017,Unknown,,Unattributed,Unattributed,119245496.27999997,calculated_balance,True,False,,,,,
 UNSSC,2017,C01,R02,Government,Italy,1137656.43,reported_named,False,True,Italy,Government,Voluntary core (un-earmarked) contributions,27341.0,revenue_government_donors.csv
 UNSSC,2017,C01,R02,Government,Germany,1003033.07,reported_named,False,True,Germany,Government,Voluntary core (un-earmarked) contributions,27340.0,revenue_government_donors.csv
 UNSSC,2017,C01,R02,Government,Italy,533617.93,reported_named,False,True,Italy,Government,Voluntary core (un-earmarked) contributions,27342.0,revenue_government_donors.csv
@@ -31439,9 +31262,7 @@ UNSSC,2017,Unknown,,Non-Government,UN OCHA,75230.0,reported_named,False,False,UN
 UNSSC,2017,Unknown,,Non-Government,UN OCHA,75230.0,reported_named,False,False,UN OCHA,2,R10,1259.0,revenue_non_gov_donors.csv
 UNSSC,2017,Unknown,,Non-Government,World Bank Group,7512.33,reported_named,False,False,World Bank Group,2,R11,1465.0,revenue_non_gov_donors.csv
 UNSSC,2017,Unknown,,Non-Government,World Bank Group,7512.33,reported_named,False,False,World Bank Group,2,R11,1466.0,revenue_non_gov_donors.csv
-UNSSC,2017,Unknown,R02,Unattributed,Unattributed,878697.3899999997,calculated_balance,True,True,,,,,
-UNSSC,2017,Unknown,R03,Unattributed,Unattributed,6246395.49,calculated_balance,True,True,,,,,
-UNSSC,2017,Unknown,R04,Unattributed,Unattributed,451540.94,calculated_balance,True,True,,,,,
+UNSSC,2017,Unknown,,Unattributed,Unattributed,7411149.159999999,calculated_balance,True,False,,,,,
 UNU,2017,C01,R03,Government,Japan,24941204.0,reported_named,False,True,Japan,Government,Voluntary non-core (earmarked) contributions,28817.0,revenue_government_donors.csv
 UNU,2017,C01,R03,Government,Germany,5090365.0,reported_named,False,True,Germany,Government,Voluntary non-core (earmarked) contributions,28815.0,revenue_government_donors.csv
 UNU,2017,C01,R03,Government,Finland,3020878.0,reported_named,False,True,Finland,Government,Voluntary non-core (earmarked) contributions,28814.0,revenue_government_donors.csv
@@ -31465,8 +31286,7 @@ UNU,2017,Unknown,,Non-Government,European Union,89303.0,reported_named,False,Fal
 UNU,2017,Unknown,,Non-Government,European Union,89303.0,reported_named,False,False,European Union,2,R12,1242.0,revenue_non_gov_donors.csv
 UNU,2017,Unknown,,Non-Government,World Bank Group,57118.0,reported_named,False,False,World Bank Group,2,R12,1298.0,revenue_non_gov_donors.csv
 UNU,2017,Unknown,,Non-Government,World Bank Group,57118.0,reported_named,False,False,World Bank Group,2,R12,1299.0,revenue_non_gov_donors.csv
-UNU,2017,Unknown,R03,Unattributed,Unattributed,6438629.0,calculated_balance,True,True,,,,,
-UNU,2017,Unknown,R04,Unattributed,Unattributed,58090868.0,calculated_balance,True,True,,,,,
+UNU,2017,Unknown,,Unattributed,Unattributed,64236655.0,calculated_balance,True,False,,,,,
 UPU,2017,C01,R01,Government,France,2225255.62,reported_named,False,True,France,Government,Assessed contributions,25828.0,revenue_government_donors.csv
 UPU,2017,C01,R01,Government,United States of America,2225255.62,reported_named,False,True,United States of America,Government,Assessed contributions,25829.0,revenue_government_donors.csv
 UPU,2017,C01,R01,Government,Japan,2225255.62,reported_named,False,True,Japan,Government,Assessed contributions,25935.0,revenue_government_donors.csv
@@ -31777,9 +31597,7 @@ WFP,2017,Unknown,,Non-Government,Private Donors / Private Sector,11766.0,reporte
 WFP,2017,Unknown,,Non-Government,Private Donors / Private Sector,11766.0,reported_aggregate,False,False,Private Donors,2,R12,1430.0,revenue_non_gov_donors.csv
 WFP,2017,Unknown,,Non-Government,Private Donors / Private Sector,4869.0,reported_aggregate,False,False,Private Donors,2,R12,1487.0,revenue_non_gov_donors.csv
 WFP,2017,Unknown,,Non-Government,Private Donors / Private Sector,4869.0,reported_aggregate,False,False,Private Donors,2,R12,1488.0,revenue_non_gov_donors.csv
-WFP,2017,Unknown,R02,Unattributed,Unattributed,111898440.94,calculated_balance,True,True,,,,,
-WFP,2017,Unknown,R03,Unattributed,Unattributed,926833622.29,calculated_balance,True,True,,,,,
-WFP,2017,Unknown,R04,Unattributed,Unattributed,430959733.0,calculated_balance,True,True,,,,,
+WFP,2017,Unknown,,Unattributed,Unattributed,911205499.2300005,calculated_balance,True,False,,,,,
 WHO,2017,C01,R01,Government,United States of America,109249496.0,reported_named,False,True,United States of America,Government,Assessed contributions,26179.0,revenue_government_donors.csv
 WHO,2017,C01,R01,Government,Japan,43275532.0,reported_named,False,True,Japan,Government,Assessed contributions,26100.0,revenue_government_donors.csv
 WHO,2017,C01,R01,Government,China,35411951.0,reported_named,False,True,China,Government,Assessed contributions,26058.0,revenue_government_donors.csv
@@ -32077,10 +31895,7 @@ WHO,2017,Unknown,,Non-Government,European Union,84171850.77,reported_named,False
 WHO,2017,Unknown,,Non-Government,UN OCHA,29278342.75,reported_named,False,False,UN OCHA,2,R08,279.0,revenue_non_gov_donors.csv
 WHO,2017,Unknown,,Non-Government,UN OCHA,28315905.0,reported_named,False,False,UN OCHA,2,R08,281.0,revenue_non_gov_donors.csv
 WHO,2017,Unknown,,Non-Government,The Global Fund,16170654.36,reported_named,False,False,Global Fund to Fight,2,R08B,396.0,revenue_non_gov_donors.csv
-WHO,2017,Unknown,R01,Unattributed,Unattributed,-3423030.0,calculated_balance,True,True,,,,,
-WHO,2017,Unknown,R02,Unattributed,Unattributed,45669.0,calculated_balance,True,True,,,,,
-WHO,2017,Unknown,R03,Unattributed,Unattributed,1078353399.0,calculated_balance,True,True,,,,,
-WHO,2017,Unknown,R04,Unattributed,Unattributed,179279352.0,calculated_balance,True,True,,,,,
+WHO,2017,Unknown,,Unattributed,Unattributed,487638844.1199999,calculated_balance,True,False,,,,,
 WIPO,2017,C01,R01,Government,Japan,1165107.36,reported_named,False,True,Japan,Government,Assessed contributions,26423.0,revenue_government_donors.csv
 WIPO,2017,C01,R01,Government,France,1165107.36,reported_named,False,True,France,Government,Assessed contributions,26485.0,revenue_government_donors.csv
 WIPO,2017,C01,R01,Government,Germany,1165107.36,reported_named,False,True,Germany,Government,Assessed contributions,26489.0,revenue_government_donors.csv
@@ -32355,10 +32170,7 @@ WMO,2017,C01,R03,Government,Portugal,5489.37,reported_named,False,True,Portugal,
 WMO,2017,C01,R03,Government,Greece,-97090.17,reported_named,False,True,Greece,Government,Voluntary non-core (earmarked) contributions,29341.0,revenue_government_donors.csv
 WMO,2017,Unknown,,Non-Government,World Bank Group,892678.01,reported_named,False,False,World Bank Group,2,R11,898.0,revenue_non_gov_donors.csv
 WMO,2017,Unknown,,Non-Government,World Bank Group,892678.01,reported_named,False,False,World Bank Group,2,R11,899.0,revenue_non_gov_donors.csv
-WMO,2017,Unknown,R01,Unattributed,Unattributed,69814621.68,calculated_balance,True,True,,,,,
-WMO,2017,Unknown,R02,Unattributed,Unattributed,457705.20999999996,calculated_balance,True,True,,,,,
-WMO,2017,Unknown,R03,Unattributed,Unattributed,3416311.299999999,calculated_balance,True,True,,,,,
-WMO,2017,Unknown,R04,Unattributed,Unattributed,2013292.43,calculated_balance,True,True,,,,,
+WMO,2017,Unknown,,Unattributed,Unattributed,73916574.60000001,calculated_balance,True,False,,,,,
 WTO,2017,C01,R01,Government,United States of America,22462510.22,reported_named,False,True,United States of America,Government,Assessed contributions,25411.0,revenue_government_donors.csv
 WTO,2017,C01,R01,Government,China,19178190.18,reported_named,False,True,China,Government,Assessed contributions,25291.0,revenue_government_donors.csv
 WTO,2017,C01,R01,Government,Germany,14616523.52,reported_named,False,True,Germany,Government,Assessed contributions,25313.0,revenue_government_donors.csv
@@ -32562,9 +32374,7 @@ WTO,2017,C01,R03,Government,New Zealand,23497.96,reported_named,False,True,New Z
 WTO,2017,C01,R03,Government,Lithuania,22818.0,reported_named,False,True,Lithuania,Government,Voluntary non-core (earmarked) contributions,29309.0,revenue_government_donors.csv
 WTO,2017,Unknown,,Non-Government,European Union,4198990.8,reported_named,False,False,European Union,2,R09,605.0,revenue_non_gov_donors.csv
 WTO,2017,Unknown,,Non-Government,European Union,4198990.8,reported_named,False,False,European Union,2,R09,606.0,revenue_non_gov_donors.csv
-WTO,2017,Unknown,R01,Unattributed,Unattributed,107944.87999999523,calculated_balance,True,True,,,,,
-WTO,2017,Unknown,R03,Unattributed,Unattributed,5344246.109999999,calculated_balance,True,True,,,,,
-WTO,2017,Unknown,R04,Unattributed,Unattributed,1948210.4,calculated_balance,True,True,,,,,
+WTO,2017,Unknown,,Unattributed,Unattributed,-997580.2099999785,calculated_balance,True,False,,,,,
 CTBTO,2018,C01,R01,Government,United States of America,15661096.0,reported_named,False,True,United States of America,Government,Assessed contributions,53018.0,revenue_government_donors.csv
 CTBTO,2018,C01,R01,Government,United States of America,12701398.4,reported_named,False,True,United States of America,Government,Assessed contributions,53302.0,revenue_government_donors.csv
 CTBTO,2018,C01,R01,Government,Japan,6891021.0,reported_named,False,True,Japan,Government,Assessed contributions,53105.0,revenue_government_donors.csv

@@ -1,8 +1,8 @@
 """Export current CEB contributor observations and reconciled four-type totals.
 
-Unresolved historical financing records remain inspectable, but are not added
-on top of already reconciled financing controls. Source category is an
-observation dimension, independently of the contributor's canonical identity.
+Unresolved historical amounts form a fifth contributor display category.
+Organization financing controls remain source-reported; donor attribution uses
+a signed unresolved remainder where individual financing cannot be identified.
 """
 import json
 from collections import defaultdict
@@ -12,11 +12,12 @@ import pandas as pd
 
 from revenue_categories import rev_category
 from utils import MEMBERSHIP_NAME_ALIASES, normalize_entity
+from ceb_data import revenue_controls
 
 YEARS = []
 OUT = Path("public/data")
 FINANCING_KEYS = {"Assessed": "assessed", "Voluntary un-earmarked": "voluntary_unearmarked",
-                  "Voluntary earmarked": "voluntary_earmarked", "Other": "other"}
+                  "Voluntary earmarked": "voluntary_earmarked", "Other": "other", "Unresolved": "unresolved"}
 
 
 def load_data():
@@ -26,7 +27,7 @@ def load_data():
     fused = fused[fused.year.isin(control_years)].copy()
     YEARS = sorted(int(year) for year in fused.year.unique())
     fused["entity"] = fused.entity.map(normalize_entity)
-    fused["rev_cat"] = fused.rev_type.map(lambda value: rev_category(value) if pd.notna(value) else None)
+    fused["rev_cat"] = fused.rev_type.map(lambda value: rev_category(value) if pd.notna(value) else "Unresolved")
     states = pd.read_csv("data/ceb/member_states.csv")
     state_info = {row.country: {"status": row.status} for _, row in states.iterrows()}
     return fused, state_info
@@ -38,7 +39,7 @@ def _kind(row):
 
 
 def _resolved(row):
-    return pd.notna(row.get("rev_cat"))
+    return pd.notna(row.get("rev_cat")) and row.get("rev_cat") != "Unresolved"
 
 
 def _add_contribution(target, entity, instrument, amount):
@@ -81,37 +82,53 @@ def export_donors_json(df, state_info):
                      "unresolvedContributions": {}, "unresolvedFinancingRecords": []}
             for _, row in rows.iterrows():
                 amount, entity, category = float(row.amount), row.entity, row.donor_type
-                if _resolved(row):
-                    _add_contribution(donor["contributions"], entity, row.rev_cat, amount)
-                    _add_contribution(donor["categoryContributions"].setdefault(category, {}), entity, row.rev_cat, amount)
-                else:
+                instrument = row.rev_cat if _resolved(row) else "Unresolved"
+                _add_contribution(donor["contributions"], entity, instrument, amount)
+                _add_contribution(donor["categoryContributions"].setdefault(category, {}), entity, instrument, amount)
+                if not _resolved(row):
                     donor["unresolvedContributions"][entity] = donor["unresolvedContributions"].get(entity, 0) + amount
-                    donor["unresolvedFinancingRecords"].append(_unresolved_record(row))
+                    if _kind(row) != "calculated_balance":
+                        donor["unresolvedFinancingRecords"].append(_unresolved_record(row))
             donor["total"] = _sum_contributions(donor["contributions"])
             donor["unresolvedTotal"] = sum(donor["unresolvedContributions"].values())
-            donor["financingIncomplete"] = bool(donor["unresolvedFinancingRecords"])
+            donor["financingIncomplete"] = bool(donor["unresolvedContributions"])
             donors[name] = donor
         (OUT / f"donors-{year}.json").write_text(json.dumps(donors, indent=2, allow_nan=False) + "\n")
         print(f"donors-{year}.json: {len(donors)} contributors")
 
 
+def load_financing_controls():
+    controls = revenue_controls(pd.read_csv("data/ceb/clean/revenue.csv"))
+    control_labels = {
+        "Assessed contributions": "Assessed", "Assessed Contributions": "Assessed",
+        "Voluntary core (un-earmarked) contributions": "Voluntary un-earmarked",
+        "Voluntary non-core (earmarked) contributions": "Voluntary earmarked",
+        "Revenue from other activities": "Other",
+    }
+    controls["rev_cat"] = controls.rev_type.map(
+        lambda value: control_labels[value] if value in control_labels else rev_category(value))
+    return controls
+
+
 def export_entity_revenue_json(df):
     control_years = set(pd.read_csv("data/ceb/clean/revenue.csv").calendar_year)
+    controls = load_financing_controls()
     for year in sorted(control_years):
         entities = {}
         for entity, rows in df[df.year == year].groupby("entity", sort=True):
-            resolved = rows[rows.rev_cat.notna()]
-            by_type = resolved.groupby("rev_cat").amount.sum().to_dict()
+            entity_controls = controls[(controls.agency == entity) & (controls.calendar_year == year)]
+            by_type = entity_controls.groupby("rev_cat").amount.sum().to_dict()
             by_donor = []
             for name, observations in rows.groupby("donor_name", sort=True):
-                known = observations[observations.rev_cat.notna()]
-                unresolved = observations[observations.rev_cat.isna()]
-                entry = {"donor": name, "total": float(known.amount.sum()),
+                observed = observations.copy()
+                observed["rev_cat"] = observed.rev_cat.fillna("Unresolved")
+                unresolved = observed[observed.rev_cat == "Unresolved"]
+                entry = {"donor": name, "total": float(observed.amount.sum()),
                          "record_kind": _kind(observations.iloc[0]),
-                         **{key: float(value) for key, value in known.groupby("rev_cat").amount.sum().items()},
+                         **{key: float(value) for key, value in observed.groupby("rev_cat").amount.sum().items()},
                          "unresolvedTotal": float(unresolved.amount.sum()), "financingIncomplete": not unresolved.empty}
                 by_donor.append(entry)
-            entities[entity] = {"total": float(resolved.amount.sum()), "year": int(year),
+            entities[entity] = {"total": float(rows.amount.sum()), "year": int(year),
                                 "by_type": by_type, "by_donor": sorted(by_donor, key=lambda row: (-row["total"], row["donor"]))}
         (OUT / f"entity-revenue-{year}.json").write_text(json.dumps(entities, indent=2, allow_nan=False) + "\n")
         print(f"entity-revenue-{year}.json: {len(entities)} organizations")
@@ -124,12 +141,10 @@ def export_coverage_json():
     fused = pd.read_csv("data/ceb/fused/revenue_by_contributor.csv")
     coverage = {}
     for year in YEARS:
-        unresolved = fused[(fused.year == year) & fused.rev_type.isna()]
+        unresolved = fused[(fused.year == year) & fused.rev_type.isna() & (fused.record_kind != "calculated_balance")]
         notes = []
         if year not in sources["government"]:
             notes.append("Government donor detail is unavailable. Remaining revenue is Unattributed, not non-government funding.")
-        if not unresolved.empty:
-            notes.append("Some historical non-government source records have unresolved financing codes. They are available separately and excluded from additive four-type contributor totals; their financing allocation is not inferred.")
         coverage[year] = {key: year in values for key, values in sources.items()} | {
             "note": " ".join(notes) or None, "unresolvedFinancingRows": len(unresolved),
             "unresolvedFinancingAmount": float(unresolved.amount.sum()),
@@ -138,11 +153,12 @@ def export_coverage_json():
 
 
 def _point(rows, year):
-    known = rows[rows.rev_cat.notna()]
-    point = {"year": int(year), **dict.fromkeys(FINANCING_KEYS.values(), 0), "total": float(known.amount.sum())}
-    for category, amount in known.groupby("rev_cat").amount.sum().items():
+    observed = rows.copy()
+    observed["rev_cat"] = observed.rev_cat.fillna("Unresolved")
+    point = {"year": int(year), **dict.fromkeys(FINANCING_KEYS.values(), 0), "total": float(observed.amount.sum())}
+    for category, amount in observed.groupby("rev_cat").amount.sum().items():
         point[FINANCING_KEYS[category]] = float(amount)
-    unresolved = rows[rows.rev_cat.isna()]
+    unresolved = observed[observed.rev_cat == "Unresolved"]
     point["unresolvedTotal"] = float(unresolved.amount.sum())
     point["financingIncomplete"] = not unresolved.empty
     return point
@@ -156,6 +172,7 @@ def _observed_point(rows, year):
 
 
 def export_contributor_trends_json(df):
+    controls = load_financing_controls()
     balance = (df.donor_name == "Unattributed") & (df.apply(_kind, axis=1) == "calculated_balance")
     attributed = df[~balance]
     nongov = attributed[attributed.donor_type != "Government"]
@@ -171,10 +188,11 @@ def export_contributor_trends_json(df):
         for key, group in groups.items():
             point = _point(group, year)
             if key == "all":
-                # All financing totals are the reconciled controls. Missing
-                # attribution does not make these four control values unknown.
-                point["attributionIncomplete"] = point["financingIncomplete"]
-                point["financingIncomplete"] = False
+                # Overall instrument totals come directly from the main revenue
+                # file, independent of missing contributor financing attribution.
+                attribution_incomplete = point["financingIncomplete"]
+                point = _point(controls[controls.calendar_year == year], year)
+                point["attributionIncomplete"] = attribution_incomplete
             aggregates[key].append(point)
     contributors = {}
     for name, rows in df.groupby("donor_name", sort=True):
