@@ -1,3 +1,4 @@
+import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
 import {
   SecretariatPageMethodology,
@@ -15,6 +16,12 @@ export default function ContributorsPage() {
   return (
     <SecretariatPageSourceProvider page="trust-fund-contributors">
       <PageHeading
+        sources={
+          <>
+            The schedule view uses <PageSourceLink source="trustFunds" />.
+            Separate entity views link their own source pages.
+          </>
+        }
         title="Who contributes to UN Secretariat trust funds?"
         description="Explore contributions and transfers from the UN Secretariat trust-fund schedules, or select separately reported entity data. Source measures and partial coverage are shown within each view."
       />

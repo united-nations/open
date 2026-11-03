@@ -1,3 +1,4 @@
+import { SystemPageSources } from "@/components/PageSources";
 import { FunctionGeographyChart } from "@/components/FunctionGeographyChart";
 import { FEATURES } from "@/lib/featureFlags";
 import { ChartSourceProvider } from "@/components/ChartSource";
@@ -24,6 +25,7 @@ export default function SystemLocationsPage() {
       placement="page"
     >
       <PageHeading
+        sources={<SystemPageSources uninfo />}
         id="countries"
         title="Where are funds spent?"
         description="UN System organizations implement activities across the world. Explore where funds are spent geographically, from global programmes to country-level operations."

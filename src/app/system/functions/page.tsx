@@ -1,3 +1,4 @@
+import { SystemPageSources } from "@/components/PageSources";
 import type { Metadata } from "next";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import { PageBody } from "@/components/PageBody";
@@ -23,6 +24,7 @@ export default function SystemFunctionsPage() {
       placement="page"
     >
       <PageHeading
+        sources={<SystemPageSources />}
         id="functions"
         title="Which functions do funds support?"
         description="Explore expenditure across development assistance, humanitarian assistance, peace operations, and the global agenda and specialized assistance. Trends use the current CEB classification from 2018 onward."

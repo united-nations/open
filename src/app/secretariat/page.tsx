@@ -21,7 +21,21 @@ export default function SecretariatPage() {
       <PageHeading
         id="priorities"
         title="How do Secretariat entities use their resources?"
-        description="Explore UN Secretariat expenditure by priority area and entity."
+        description={
+          <>
+            Explore UN Secretariat expenditure by priority area and entity. This
+            simplified overview is based on data from the{" "}
+            <a
+              href="https://www.un.org/en/annualreport"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2"
+            >
+              UN Secretariat annual report
+            </a>
+            .
+          </>
+        }
       />
       <PageBody>
         <SecretariatOverview />

@@ -1,3 +1,4 @@
+import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
 import {
   SecretariatPageMethodology,
@@ -17,6 +18,12 @@ export default function TrustFundsPage() {
   return (
     <SecretariatPageSourceProvider page="trust-funds">
       <PageHeading
+        sources={
+          <>
+            The fund schedules come from <PageSourceLink source="trustFunds" />.
+            Separate entity reports are linked on their figures.
+          </>
+        }
         id="trust-fund-spending"
         title="How are trust funds and other extrabudgetary resources used?"
         description="Explore UN Secretariat trust-fund schedules and separately reported resources of UNEP, UNODC, UN-Habitat and ITC."

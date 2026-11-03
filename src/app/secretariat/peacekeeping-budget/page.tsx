@@ -1,3 +1,4 @@
+import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
 import {
   SecretariatPageMethodology,
@@ -17,6 +18,13 @@ export default function PeacekeepingBudgetPage() {
   return (
     <SecretariatPageSourceProvider page="peacekeeping-budget">
       <PageHeading
+        sources={
+          <>
+            Figures are extracted from the Secretary-General’s{" "}
+            <PageSourceLink source="peacekeepingDocuments" />. Learn{" "}
+            <PageSourceLink source="peacekeepingFunding" />.
+          </>
+        }
         id="peacekeeping-spending"
         title="How do peacekeeping missions spend funds?"
         description="Explore expenditure, approved budgets and proposals by mission, location and cost class. Financial years run from July to June."

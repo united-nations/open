@@ -1,3 +1,4 @@
+import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
 import {
   SecretariatPageMethodology,
@@ -17,6 +18,12 @@ export default function ProgrammeBudgetPage() {
   return (
     <SecretariatPageSourceProvider page="programme-budget">
       <PageHeading
+        sources={
+          <>
+            Figures are extracted from the{" "}
+            <PageSourceLink source="programmeBudget" />.
+          </>
+        }
         id="regular-budget-spending"
         title="How is the programme budget allocated?"
         description="Compare expenditure, approved and proposed budgets by budget part, section and entity."

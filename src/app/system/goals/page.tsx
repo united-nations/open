@@ -1,3 +1,4 @@
+import { SystemPageSources } from "@/components/PageSources";
 import { FunctionDeepLinkRedirect } from "@/components/FunctionDeepLinkRedirect";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
@@ -25,6 +26,7 @@ export default function SystemGoalsPage() {
     >
       <FunctionDeepLinkRedirect />
       <PageHeading
+        sources={<SystemPageSources uninfo />}
         id="sdgs"
         title="Reported expenditure by Sustainable Development Goal"
         description="Explore reported expenditure by Sustainable Development Goal. Annual snapshots are not directly comparable because reporting coverage and allocations can change."

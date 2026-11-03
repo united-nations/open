@@ -1,3 +1,4 @@
+import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
 import {
   SecretariatPageMethodology,
@@ -18,6 +19,12 @@ export default function FieldMissionsPage() {
   return (
     <SecretariatPageSourceProvider page="field-missions">
       <PageHeading
+        sources={
+          <>
+            Financial figures come from the{" "}
+            <PageSourceLink source="annualReport" />.
+          </>
+        }
         id="field-missions"
         title="How do field missions use their resources?"
         description="Explore the geographic footprint of special political missions and peacekeeping missions, together with the resources assigned to them."

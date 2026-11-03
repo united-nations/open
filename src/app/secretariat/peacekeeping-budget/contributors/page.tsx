@@ -1,3 +1,4 @@
+import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
 import {
   SecretariatPageMethodology,
@@ -15,6 +16,12 @@ export default function ContributorsPage() {
   return (
     <SecretariatPageSourceProvider page="peacekeeping-contributors">
       <PageHeading
+        sources={
+          <>
+            Figures come from{" "}
+            <PageSourceLink source="peacekeepingAssessments" />.
+          </>
+        }
         title="Who funds UN peacekeeping?"
         description="Explore the contributions assessed to Member States for peacekeeping budgets, by contributor and mission. These figures show assessments, not payments received."
       />

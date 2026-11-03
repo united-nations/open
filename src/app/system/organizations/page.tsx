@@ -1,3 +1,4 @@
+import { SystemPageSources } from "@/components/PageSources";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { EntitiesTreemap } from "@/components/EntitiesTreemap";
@@ -24,6 +25,7 @@ export default function SystemOrganizationsPage() {
       placement="page"
     >
       <PageHeading
+        sources={<SystemPageSources />}
         id="entities"
         title="Which organizations are funded?"
         description="The UN System comprises specialized agencies, funds, programmes, and the UN Secretariat with its departments, offices, and peacekeeping missions. Explore each organization’s revenue and expenditure, including revenue sources and expenditure breakdowns."
