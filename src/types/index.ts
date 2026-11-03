@@ -565,6 +565,13 @@ export interface BudgetNode {
   isRemainder?: boolean;
   /** What the release says about how this figure was arrived at. */
   note?: string;
+  /** Fund purpose and authority, as printed in the selected year's schedule annex. */
+  description?: string;
+  descriptionBlocks?: (
+    | { type: "paragraph"; text: string }
+    | { type: "list"; items: { label: string; text: string }[] }
+  )[];
+  descriptionSources?: BudgetNodeSource[];
   /** Budget units only. */
   unitType?: BudgetUnitType;
   role?: BudgetUnitRole;

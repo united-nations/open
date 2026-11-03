@@ -5,6 +5,7 @@ import {
 } from "@/components/XBContributorPanel";
 import { TrustFundFlowBreakdown } from "@/components/TrustFundFlowBreakdown";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
+import { UNDocumentText } from "@/components/UNDocumentText";
 
 import { useEffect, useId, useMemo, useState } from "react";
 import { FinancialBreakdownRow } from "@un-eosg/ui/components/financial-breakdown-row";
@@ -529,9 +530,11 @@ export function TrustFundSidebar({
         className="h-full w-full bg-white shadow-2xl sm:w-[32rem]"
       >
         <FinancialDetailPanel
-          title={node.code ?? node.label}
+          title={node.label}
           titleId="trust-fund-title"
-          subtitle={node.label}
+          subtitle={
+            node.code && node.code !== node.label ? node.code : undefined
+          }
           yearSelectorPlacement="header"
           yearSelector={{
             years: sidebarYears,
@@ -560,6 +563,43 @@ export function TrustFundSidebar({
               onClose={onClose}
               closeLabel="Close fund details"
             />
+          }
+          metadata={
+            ready && node.description ? (
+              <div
+                className="space-y-3 text-sm leading-relaxed"
+                data-fund-description
+              >
+                {node.descriptionBlocks?.length ? (
+                  node.descriptionBlocks.map((block, index) =>
+                    block.type === "paragraph" ? (
+                      <p key={index}>
+                        <UNDocumentText text={block.text} />{" "}
+                      </p>
+                    ) : (
+                      <ol
+                        key={index}
+                        className="space-y-2 pl-2"
+                        aria-label="Fund description items"
+                      >
+                        {block.items.map((item) => (
+                          <li key={item.label} className="flex gap-2">
+                            <span className="shrink-0">({item.label}) </span>
+                            <span>
+                              <UNDocumentText text={item.text} />{" "}
+                            </span>
+                          </li>
+                        ))}
+                      </ol>
+                    ),
+                  )
+                ) : (
+                  <p>
+                    <UNDocumentText text={node.description} />
+                  </p>
+                )}
+              </div>
+            ) : undefined
           }
           total={
             ready
@@ -865,6 +905,16 @@ export function TrustFundSidebar({
                   />
                 </summary>
                 <div className="mt-3 space-y-3 text-sm">
+                  {!!node.descriptionSources?.length && (
+                    <>
+                      <FinancialPanelHeading subheading>
+                        Fund description
+                      </FinancialPanelHeading>
+                      <SourceReferenceList
+                        references={node.descriptionSources}
+                      />
+                    </>
+                  )}
                   {isSeparate && node.sourceMeasure && (
                     <p>{node.sourceMeasure}.</p>
                   )}

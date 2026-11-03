@@ -15,6 +15,7 @@ from pathlib import Path
 from typing import Any
 
 import pandas as pd
+from trust_fund_descriptions import extract_descriptions
 
 DEFAULT_STAGE2 = Path("data/trust-fund-schedules/stage2")
 DEFAULT_CROSSWALK = Path(
@@ -199,6 +200,7 @@ def build_entity_export(
     source: dict[str, Any],
     entity_names: dict[str, str],
     funds: pd.DataFrame | None = None,
+    descriptions: dict[str, dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     expenses = facts.loc[
         facts["calendar_year"].eq(year)
@@ -322,6 +324,22 @@ def build_entity_export(
 
     for node in nodes:
         if node["tier"] == "detail":
+            if descriptions is not None:
+                annotation = descriptions[node["code"]]
+                node["description"] = annotation["description"]
+                node["descriptionBlocks"] = annotation["description_blocks"]
+                node["descriptionSources"] = [
+                    {
+                        "symbol": source["symbol"],
+                        "url": source.get("pdf_final_url") or source.get("source_pdf_url") or source["landing_page_url"],
+                        "label": f"{node['code']} — Fund description",
+                        "tableTitle": "Annex — authority, goals and objectives",
+                        "pdfPage": page,
+                        "pdfPageScope": "section",
+                        "pageStatus": "extracted_annex_text",
+                    }
+                    for page in annotation["pdf_pages"]
+                ]
             position_codes = [node["code"]]
         elif node["tier"] == "budget_unit":
             position_codes = joined.loc[joined["audited_entity_code"].eq(node["code"]), "fund_code"].tolist()
@@ -648,6 +666,7 @@ def export_all(
 ) -> None:
     required = [
         stage2 / "funds.csv",
+        stage2 / "fund-years.csv",
         stage2 / "statement-facts.csv",
         stage2 / "counterparty-flows.csv",
         crosswalk_path,
@@ -658,6 +677,7 @@ def export_all(
     if missing:
         raise FileNotFoundError(f"Missing trust-fund pipeline inputs: {missing}")
     funds = pd.read_csv(stage2 / "funds.csv")
+    fund_years = pd.read_csv(stage2 / "fund-years.csv", dtype={"base_schedule_number": str})
     facts = pd.read_csv(stage2 / "statement-facts.csv")
     flows = pd.read_csv(stage2 / "counterparty-flows.csv")
     crosswalk = pd.read_csv(crosswalk_path)
@@ -670,9 +690,20 @@ def export_all(
     }
     output.mkdir(parents=True, exist_ok=True)
     years = sorted(int(year) for year in facts["calendar_year"].unique())
+    description_rows = []
     for year in years:
         source = source_for_year(manifest, year)
-        spending = build_entity_export(year, facts, crosswalk, source, entity_names, funds)
+        annual_funds = fund_years.loc[fund_years.calendar_year.eq(year)]
+        schedules = dict(zip(annual_funds.fund_code, annual_funds.base_schedule_number))
+        descriptions = extract_descriptions(Path(source["pdf_path"]), schedules)
+        for code, annotation in descriptions.items():
+            description_rows.append({
+                "calendar_year": year, "fund_code": code,
+                "base_schedule_number": schedules[code],
+                "description": annotation["description"],
+                "pdf_pages": ";".join(map(str, annotation["pdf_pages"])),
+            })
+        spending = build_entity_export(year, facts, crosswalk, source, entity_names, funds, descriptions)
         if xb_stage2 is not None:
             from secretariat_xb_frontend import extend_spending
             spending = extend_spending(spending, year, xb_stage2)
@@ -683,4 +714,5 @@ def export_all(
                 year, flows, facts, funds, crosswalk, source, entity_names
             ),
         )
-    print(f"Exported {len(years)} trust-fund entity and contributor datasets")
+    pd.DataFrame(description_rows).to_csv(stage2 / "fund-descriptions.csv", index=False)
+    print(f"Exported {len(years)} trust-fund entity and contributor datasets; {len(description_rows)} annual fund descriptions")

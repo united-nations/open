@@ -54,6 +54,9 @@ remain gitignored; see that directory's README for the retention policy.
   bands, and source row coordinates.
 - `stage2/funds.csv`: one row per three-character trust-fund code.
 - `stage2/fund-years.csv`: one row per calendar year and trust-fund code.
+- `stage2/fund-descriptions.csv`: annual annex descriptions, matched by the
+  source year's base schedule number to its fund code, with physical PDF pages.
+  This metadata file is refreshed by the frontend export step (`16-`).
 - `stage2/statement-facts.csv`: long-form statement facts by fund, period,
   statement, section, and line item.
 - `stage2/counterparty-flows.csv`: contributor, receivable, transfer, adjustment,
@@ -78,6 +81,27 @@ All monetary values are integer United States dollars. A printed dash is stored
 as zero with a separate `*_reported_as_dash` flag. Negative parenthesized values
 remain negative. Source page, table, row, and reported text are retained for
 audit and manual comparison.
+
+### Fund descriptions and sidebar names
+
+The frontend export reads each annual PDF's annex describing the authority,
+goals and objectives of the funds. It joins exact schedule numbers to that
+year's fund-code registry; missing or duplicate descriptions fail the export.
+Descriptions are not borrowed from another year. The additional MPTF overview
+in Schedule 8.1 is not assigned to individual funds without a matching source
+identity.
+
+Extraction removes the paragraph number, page footers and line wrapping while
+retaining the source wording. Fund nodes export `description` and
+`descriptionBlocks` and `descriptionSources`, including every physical PDF page containing the text.
+Consecutive lettered items at the start of source lines are displayed as lists,
+with wrapped lines joined within each item. Inline references such as “(a) … and
+(b) …” remain prose. Complete UN document symbols and explicit General Assembly
+or Security Council resolution references link to docs.un.org, preserving the
+source wording. Other references remain plain text.
+These citations remain separate from the financial statement evidence and are
+shown in the sidebar's existing Source references section. The sidebar displays
+the full fund name as its title and its code as the subtitle.
 
 ## Validation policy
 
