@@ -242,12 +242,12 @@ export function RegularBudgetOutstandingView({
         <h2 id="outstanding-heading" className="group text-2xl font-medium">
           <a
             href="#regular-budget-outstanding"
-            className="underline decoration-gray-300 underline-offset-4 hover:decoration-un-blue focus-visible:decoration-un-blue"
+            className="underline-offset-4 hover:underline focus-visible:underline"
           >
             Outstanding contributions
             <LinkIcon
               aria-hidden="true"
-              className="ml-2 inline size-5 align-baseline text-gray-400 transition-colors group-focus-within:text-un-blue group-hover:text-un-blue"
+              className="ml-2 inline size-5 align-baseline text-gray-400 opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100"
             />
           </a>
         </h2>
