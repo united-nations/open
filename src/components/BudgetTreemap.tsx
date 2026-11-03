@@ -1635,14 +1635,13 @@ export function BudgetTreemap({
                   ? `${entity.entity?.acronym ?? entity.code ?? entity.label} ${formatBudget(entity.amount)}`
                   : (entity.entity?.acronym ?? entity.code ?? entity.label),
                 data: entity,
-                // Keep small entities quiet, but label meaningful groups even
-                // when their treemap shape is too short for the default rule.
+                // Let small entity headings appear when their displayed group
+                // has room (including after search). Keep meaningful groups
+                // labelled on desktop even when their shape is short.
                 labelVisibility:
-                  entity.amount >= (group.amount ?? 0) * 0.0125
-                    ? isMobile
-                      ? ("auto" as const)
-                      : ("visible" as const)
-                    : ("tooltip-only" as const),
+                  !isMobile && entity.amount >= (group.amount ?? 0) * 0.0125
+                    ? ("visible" as const)
+                    : ("auto" as const),
                 leaves,
               };
             })

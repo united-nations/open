@@ -4,6 +4,7 @@ import profiles from "../../config/features.json" with { type: "json" };
 import { portalUrl } from "./helpers.mjs";
 const checks = [
   "header-layout",
+  "treemap-search-labels",
   "ceb-methodology",
   "data-disclosures",
   "ceb-refresh",
