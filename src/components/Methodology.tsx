@@ -1,4 +1,4 @@
-import { SHOW_UNINFO } from "@/lib/featureFlags";
+import { SHOW_UNINFO, SHOW_ADDITIONAL_TRUST_FUNDS } from "@/lib/featureFlags";
 import cebSource from "../../public/data/ceb-source.json";
 import cebMethodology from "../../data/ceb-methodology.json";
 import manifest from "../../public/data/manifest.json";
@@ -397,14 +397,15 @@ export function GoalsMethodologyNotes() {
     <p>
       Expenditure by Sustainable Development Goal uses CEB financial statistics.
       Reported expenditure includes accrual expenses (EXP) and expenditure on a
-      budgetary accounting basis (BUD, historically BUG), as permitted by CEB&apos;s
-      reporting standard. Non-SDG preserves expenditure reported under CEB&apos;s x00
-      code. Not specified is calculated per entity as CEB expenditure minus
-      reported allocations to SDGs 1–17 and Non-SDG, so the total reconciles to
-      organization expenditure. This separate remainder includes missing SDG
-      reporting and signed reconciliation differences; it does not establish
-      that the expenditure is unrelated to the SDGs. Available years run from{" "}
-      {manifest.sdgExpenses.min} to {manifest.sdgExpenses.max}.
+      budgetary accounting basis (BUD, historically BUG), as permitted by
+      CEB&apos;s reporting standard. Non-SDG preserves expenditure reported
+      under CEB&apos;s x00 code. Not specified is calculated per entity as CEB
+      expenditure minus reported allocations to SDGs 1–17 and Non-SDG, so the
+      total reconciles to organization expenditure. This separate remainder
+      includes missing SDG reporting and signed reconciliation differences; it
+      does not establish that the expenditure is unrelated to the SDGs.
+      Available years run from {manifest.sdgExpenses.min} to{" "}
+      {manifest.sdgExpenses.max}.
       {SHOW_UNINFO && (
         <>
           {" "}
@@ -464,14 +465,17 @@ export const SECRETARIAT_METHODOLOGY_PAGES = [
     id: "trust-funds",
     href: "/secretariat/trust-funds",
     title: "Trust Funds",
-    source: "UN Secretariat trust-fund schedules and separate entity reports",
+    source: SHOW_ADDITIONAL_TRUST_FUNDS
+      ? "UN Secretariat trust-fund schedules and separate entity reports"
+      : "UN Secretariat trust-fund schedules",
   },
   {
     id: "trust-fund-contributors",
     href: "/secretariat/trust-funds/contributors",
     title: "Trust Funds — Contributors",
-    source:
-      "UN Secretariat trust-fund schedules and separate contributor reports",
+    source: SHOW_ADDITIONAL_TRUST_FUNDS
+      ? "UN Secretariat trust-fund schedules and separate contributor reports"
+      : "UN Secretariat trust-fund schedules",
   },
   {
     id: "field-missions",
@@ -532,14 +536,16 @@ function SecretariatPageSourceNotes({
       return (
         <p>
           The fund schedules come from <PageSourceLink source="trustFunds" />.
-          Separate entity reports are linked on their figures.
+          {SHOW_ADDITIONAL_TRUST_FUNDS &&
+            " Separate entity reports are linked on their figures."}
         </p>
       );
     case "trust-fund-contributors":
       return (
         <p>
           The schedule view uses <PageSourceLink source="trustFunds" />.
-          Separate entity views link their own source pages.
+          {SHOW_ADDITIONAL_TRUST_FUNDS &&
+            " Separate entity views link their own source pages."}
         </p>
       );
     case "field-missions":
@@ -838,18 +844,23 @@ export function TrustFundContributorsMethodologyNotes() {
         and transfers. Entity grouping identifies the entity responsible for a
         fund, not a direct link between a contributor and an expense.
       </p>
-      <p>
-        Separate source views retain their own measures: Habitat interim
-        contribution status, ITC XB funding received, and UNODC indicative
-        annual pledges. They are not summed across sources or compared as if all
-        were audited revenue. Partial coverage, missing periods, grouped
-        counterparties and source differences are shown with each series.
-      </p>
-      <p>
-        UNEP contributor subsets are excluded from the charts. Its annual
-        reports and CBD ledgers remain linked for reference. Source links use
-        physical PDF pages or the original HTML fund sections, as applicable.
-      </p>
+      {SHOW_ADDITIONAL_TRUST_FUNDS && (
+        <>
+          <p>
+            Separate source views retain their own measures: Habitat interim
+            contribution status, ITC XB funding received, and UNODC indicative
+            annual pledges. They are not summed across sources or compared as if
+            all were audited revenue. Partial coverage, missing periods, grouped
+            counterparties and source differences are shown with each series.
+          </p>
+          <p>
+            UNEP contributor subsets are excluded from the charts. Its annual
+            reports and CBD ledgers remain linked for reference. Source links
+            use physical PDF pages or the original HTML fund sections, as
+            applicable.
+          </p>
+        </>
+      )}
     </div>
   );
 }
@@ -920,35 +931,39 @@ export function TrustFundsMethodologyNotes() {
         Grouping identifies responsibility for a fund, not a direct
         contributor-to-expense link.
       </p>
-      <p>
-        “Separately reported entities” covers UNEP, UNODC, UN-Habitat and ITC.
-        For 2023–2024, entity amounts use audited expenditure excluding
-        regular-budget expenses where available; ITC uses reported gross XB
-        programme delivery. Years without extracted report figures remain
-        unavailable. The combined headline is reported expenditure, not a
-        consolidated total: cross-source transfers have not been reconciled or
-        eliminated, and accounting boundaries differ. Inclusion does not
-        establish that every resource is legally a trust fund.
-      </p>
-      <p>
-        Entity areas use the reported separate-entity totals. UNEP fund groups
-        and UN-Habitat funding segments subdivide those areas using relative
-        shares of expenses before eliminations; tile amounts retain the gross
-        source figures. Their sidebars retain further detail and reconciliation.
-        Detail amounts must not be added to their parent total. A pure XB
-        expense breakdown is unavailable for UNODC and ITC. Missing years are
-        gaps. Figures link to the original PDF pages. ARWO is not used to fill
-        missing expenditure amounts.
-      </p>
-      <p>
-        The contributor view separates UN Secretariat trust-fund schedules from
-        entity-specific reports. Habitat uses interim contributions and
-        transfers and ITC uses XB funding received. UNEP contributor subsets are
-        excluded; their source documents remain linked for reference. Source
-        periods, measures and coverage are shown in each view; these amounts are
-        not added to expenditure. UNEP accounts are grouped under the annex
-        segments and subtotals printed in its reports.
-      </p>
+      {SHOW_ADDITIONAL_TRUST_FUNDS && (
+        <>
+          <p>
+            “Separately reported entities” covers UNEP, UNODC, UN-Habitat and
+            ITC. For 2023–2024, entity amounts use audited expenditure excluding
+            regular-budget expenses where available; ITC uses reported gross XB
+            programme delivery. Years without extracted report figures remain
+            unavailable. The combined headline is reported expenditure, not a
+            consolidated total: cross-source transfers have not been reconciled
+            or eliminated, and accounting boundaries differ. Inclusion does not
+            establish that every resource is legally a trust fund.
+          </p>
+          <p>
+            Entity areas use the reported separate-entity totals. UNEP fund
+            groups and UN-Habitat funding segments subdivide those areas using
+            relative shares of expenses before eliminations; tile amounts retain
+            the gross source figures. Their sidebars retain further detail and
+            reconciliation. Detail amounts must not be added to their parent
+            total. A pure XB expense breakdown is unavailable for UNODC and ITC.
+            Missing years are gaps. Figures link to the original PDF pages. ARWO
+            is not used to fill missing expenditure amounts.
+          </p>
+          <p>
+            The contributor view separates UN Secretariat trust-fund schedules
+            from entity-specific reports. Habitat uses interim contributions and
+            transfers and ITC uses XB funding received. UNEP contributor subsets
+            are excluded; their source documents remain linked for reference.
+            Source periods, measures and coverage are shown in each view; these
+            amounts are not added to expenditure. UNEP accounts are grouped
+            under the annex segments and subtotals printed in its reports.
+          </p>
+        </>
+      )}
     </div>
   );
 }

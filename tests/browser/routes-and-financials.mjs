@@ -1,3 +1,4 @@
+import profiles from "../../config/features.json" with { type: "json" };
 import { browserOptions, portalUrl } from "./helpers.mjs";
 import { chromium } from "playwright";
 import fs from "fs";
@@ -57,11 +58,16 @@ import assert from "assert";
           ]);
         assert.equal(
           fills.length,
-          2,
-          "Trust-fund preview retains the two reporting-source colors",
+          profiles[process.env.SITE_VARIANT ?? "public"].additionalTrustFunds
+            ? 2
+            : 1,
+          "Trust-fund preview follows the enabled reporting sources",
         );
         assert.ok(fills.some((fill) => fill.includes("--color-un-blue")));
-        assert.ok(fills.some((fill) => fill.includes("#31566e")));
+        assert.equal(
+          fills.some((fill) => fill.includes("#31566e")),
+          profiles[process.env.SITE_VARIANT ?? "public"].additionalTrustFunds,
+        );
         assert.ok(
           (await thumbnail
             .locator('rect[fill="none"][stroke="white"]')
@@ -79,8 +85,10 @@ import assert from "assert";
           );
         assert.deepEqual(
           separateEntityOutlines,
-          [0, 0, 5, 6],
-          "UNEP and Habitat have six/five segments; UNODC and ITC retain aggregate tiles",
+          profiles[process.env.SITE_VARIANT ?? "public"].additionalTrustFunds
+            ? [0, 0, 5, 6]
+            : [],
+          "Separate entity preview segments follow the additional-trust-funds flag",
         );
         await fundCard.screenshot({
           path: "audits/browser/home-trust-funds-desktop.png",

@@ -1,5 +1,6 @@
 import { spawn } from "node:child_process";
 import fs from "node:fs";
+import profiles from "../../config/features.json" with { type: "json" };
 import { portalUrl } from "./helpers.mjs";
 const checks = [
   "header-layout",
@@ -23,8 +24,10 @@ const checks = [
   "budget-sources",
   "budget-funding",
   "ppb-ranges-currency",
-  "trust-fund-sources",
-  "trust-fund-contributor-sources",
+  "trust-fund-visibility",
+  ...(profiles[process.env.SITE_VARIANT ?? "public"].additionalTrustFunds
+    ? ["trust-fund-sources", "trust-fund-contributor-sources"]
+    : []),
   "hydration",
 ];
 function runCheck(name) {

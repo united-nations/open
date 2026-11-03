@@ -1,4 +1,6 @@
 "use client";
+import { SHOW_ADDITIONAL_TRUST_FUNDS } from "@/lib/featureFlags";
+import { trustFundReportingData } from "@/lib/trustFundReporting";
 import { orderFundingTooltipRows } from "@/lib/financingInstruments";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
@@ -789,7 +791,11 @@ export function BudgetTreemap({
   const [searchQuery, setSearchQuery] = useState("");
   const [trustFundSources, setTrustFundSources] = useState<
     TrustFundSourceGroup[]
-  >(["volume_i", "separate_entities"]);
+  >(
+    SHOW_ADDITIONAL_TRUST_FUNDS
+      ? ["volume_i", "separate_entities"]
+      : ["volume_i"],
+  );
   const [loading, setLoading] = useState(true);
   const [loadedRequest, setLoadedRequest] = useState("");
   // A measure switch loads a different annual file. Keep the old measure with
@@ -832,7 +838,7 @@ export function BudgetTreemap({
       })
       .then((d: BudgetData) => {
         if (current) {
-          setData(d);
+          setData(trustFundReportingData(d));
           setLoadedRequest(`${dataset}-${year}`);
         }
       })
@@ -856,7 +862,7 @@ export function BudgetTreemap({
     fetch(`${basePath}/data/${dataset}-${year - 1}.json`)
       .then((res) => res.json())
       .then((d: BudgetData) => {
-        if (current) setPrevious(d);
+        if (current) setPrevious(trustFundReportingData(d));
       })
       .catch(() => {
         if (current) setPrevious(null);
@@ -2198,45 +2204,46 @@ export function BudgetTreemap({
             },
           ]
         : [];
-    const searchAccessory = usesSharedTrustFundExpenses ? (
-      <div
-        role="group"
-        aria-label="Reporting source"
-        className="flex flex-wrap items-center gap-2"
-      >
-        {meta.sourceGroups?.map((group) => (
-          <LegendLabel
-            key={group.id}
-            label={group.label}
-            color={sharedTreemapColor(
-              TRUST_FUND_SOURCE_COLORS[group.id],
-              "extrabudgetary",
-            )}
-            selected={trustFundSources.includes(group.id)}
-            onToggle={() =>
-              setTrustFundSources((current) =>
-                current.includes(group.id)
-                  ? current.filter((source) => source !== group.id)
-                  : [...current, group.id],
-              )
-            }
-          />
-        ))}
-      </div>
-    ) : isAlignedPpb && onPpbGroupingChange ? (
-      <BinaryToggle
-        variant="segmented"
-        label="Budget grouping"
-        options={[
-          { value: "section", label: "Sections" },
-          { value: "entity", label: "Entities" },
-        ]}
-        value={ppbGrouping}
-        onValueChange={(value) =>
-          onPpbGroupingChange(value === "section" ? "section" : "entity")
-        }
-      />
-    ) : undefined;
+    const searchAccessory =
+      usesSharedTrustFundExpenses && SHOW_ADDITIONAL_TRUST_FUNDS ? (
+        <div
+          role="group"
+          aria-label="Reporting source"
+          className="flex flex-wrap items-center gap-2"
+        >
+          {meta.sourceGroups?.map((group) => (
+            <LegendLabel
+              key={group.id}
+              label={group.label}
+              color={sharedTreemapColor(
+                TRUST_FUND_SOURCE_COLORS[group.id],
+                "extrabudgetary",
+              )}
+              selected={trustFundSources.includes(group.id)}
+              onToggle={() =>
+                setTrustFundSources((current) =>
+                  current.includes(group.id)
+                    ? current.filter((source) => source !== group.id)
+                    : [...current, group.id],
+                )
+              }
+            />
+          ))}
+        </div>
+      ) : isAlignedPpb && onPpbGroupingChange ? (
+        <BinaryToggle
+          variant="segmented"
+          label="Budget grouping"
+          options={[
+            { value: "section", label: "Sections" },
+            { value: "entity", label: "Entities" },
+          ]}
+          value={ppbGrouping}
+          onValueChange={(value) =>
+            onPpbGroupingChange(value === "section" ? "section" : "entity")
+          }
+        />
+      ) : undefined;
 
     return (
       <div className="relative w-full">

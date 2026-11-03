@@ -42,6 +42,22 @@ const PAGE_SOURCES = {
     href: "https://www.un.org/en/ga/contributions/peacekeeping.shtml",
     label: "UN peacekeeping assessment circulars",
   },
+  unepFinancialStatements: {
+    href: "https://digitallibrary.un.org/record/4090384/files/A_80_5_Add.7-EN.pdf#page=87",
+    label: "UNEP",
+  },
+  unodcFinancialStatements: {
+    href: "https://digitallibrary.un.org/record/4090388/files/A_80_5_Add.10-EN.pdf#page=66",
+    label: "UNODC",
+  },
+  habitatFinancialStatements: {
+    href: "https://digitallibrary.un.org/record/4090387/files/A_80_5_Add.9-EN.pdf#page=83",
+    label: "UN-Habitat",
+  },
+  itcFinancialReport: {
+    href: "https://digitallibrary.un.org/record/4090394/files/A_80_5_Vol-III-ch-IV.pdf?version=1#page=2",
+    label: "ITC",
+  },
 } as const;
 
 export function PageSourceLink({
@@ -73,6 +89,19 @@ export function SystemPageSources({ uninfo = false }: { uninfo?: boolean }) {
           <PageSourceLink source="uninfo" />.
         </>
       )}
+    </>
+  );
+}
+
+export function SeparateEntityFinancialSources() {
+  return (
+    <>
+      Next to these trust funds, the Secretariat manages the trust funds for{" "}
+      <PageSourceLink source="unepFinancialStatements" />,{" "}
+      <PageSourceLink source="unodcFinancialStatements" />,{" "}
+      <PageSourceLink source="habitatFinancialStatements" /> and{" "}
+      <PageSourceLink source="itcFinancialReport" />; their financials are
+      reported separately and not included here.
     </>
   );
 }

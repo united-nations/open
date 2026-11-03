@@ -1,4 +1,5 @@
 "use client";
+import { SHOW_ADDITIONAL_TRUST_FUNDS } from "@/lib/featureFlags";
 import { useState } from "react";
 import { SegmentedControl } from "@un-eosg/ui/components/segmented-control";
 import { TrustFundContributorsTreemap } from "@/components/TrustFundContributorsTreemap";
@@ -17,21 +18,26 @@ export function TrustFundContributorsView() {
         : "https://www.unep.org/annualreport/";
   return (
     <div className="space-y-4">
-      <div className="flex flex-wrap items-center">
-        <SegmentedControl
-          label="Contributor reporting source"
-          options={[
-            { value: "volume_i", label: "UN Secretariat trust-fund schedules" },
-            { value: "UNODC", label: "UNODC" },
-            { value: "UN-HABITAT", label: "UN-Habitat" },
-            { value: "ITC", label: "ITC" },
-            { value: "UNEP", label: "UNEP" },
-          ]}
-          value={source}
-          onValueChange={setSource}
-        />
-      </div>
-      {source === "volume_i" ? (
+      {SHOW_ADDITIONAL_TRUST_FUNDS && (
+        <div className="flex flex-wrap items-center">
+          <SegmentedControl
+            label="Contributor reporting source"
+            options={[
+              {
+                value: "volume_i",
+                label: "UN Secretariat trust-fund schedules",
+              },
+              { value: "UNODC", label: "UNODC" },
+              { value: "UN-HABITAT", label: "UN-Habitat" },
+              { value: "ITC", label: "ITC" },
+              { value: "UNEP", label: "UNEP" },
+            ]}
+            value={source}
+            onValueChange={setSource}
+          />
+        </div>
+      )}
+      {!SHOW_ADDITIONAL_TRUST_FUNDS || source === "volume_i" ? (
         <TrustFundContributorsTreemap
           selectedYear={year}
           onYearChange={setYear}

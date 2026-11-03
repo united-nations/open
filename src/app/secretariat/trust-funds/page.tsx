@@ -1,4 +1,8 @@
-import { PageSourceLink } from "@/components/PageSources";
+import { SHOW_ADDITIONAL_TRUST_FUNDS } from "@/lib/featureFlags";
+import {
+  PageSourceLink,
+  SeparateEntityFinancialSources,
+} from "@/components/PageSources";
 import type { Metadata } from "next";
 import {
   SecretariatPageMethodology,
@@ -10,8 +14,9 @@ import { BudgetTreemap } from "@/components/BudgetTreemap";
 
 export const metadata: Metadata = {
   title: "UN Secretariat Trust Funds",
-  description:
-    "Explore UN Secretariat trust-fund accounts and separately reported extrabudgetary expenditure.",
+  description: SHOW_ADDITIONAL_TRUST_FUNDS
+    ? "Explore UN Secretariat trust-fund accounts and separately reported extrabudgetary expenditure."
+    : "Explore UN Secretariat trust-fund accounts and expenditure.",
 };
 
 export default function TrustFundsPage() {
@@ -21,12 +26,27 @@ export default function TrustFundsPage() {
         sources={
           <>
             The fund schedules come from <PageSourceLink source="trustFunds" />.
-            Separate entity reports are linked on their figures.
+            {SHOW_ADDITIONAL_TRUST_FUNDS ? (
+              " Separate entity reports are linked on their figures."
+            ) : (
+              <>
+                {" "}
+                <SeparateEntityFinancialSources />
+              </>
+            )}
           </>
         }
         id="trust-fund-spending"
-        title="How are trust funds and other extrabudgetary resources used?"
-        description="Explore UN Secretariat trust-fund schedules and separately reported resources of UNEP, UNODC, UN-Habitat and ITC."
+        title={
+          SHOW_ADDITIONAL_TRUST_FUNDS
+            ? "How are trust funds and other extrabudgetary resources used?"
+            : "How are UN Secretariat trust funds used?"
+        }
+        description={
+          SHOW_ADDITIONAL_TRUST_FUNDS
+            ? "Explore UN Secretariat trust-fund schedules and separately reported resources of UNEP, UNODC, UN-Habitat and ITC."
+            : "Explore expenditure reported in the UN Secretariat’s audited trust-fund schedules."
+        }
       />
       <PageBody>
         <BudgetTreemap

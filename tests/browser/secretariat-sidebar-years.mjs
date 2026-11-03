@@ -1,3 +1,4 @@
+import profiles from "../../config/features.json" with { type: "json" };
 import { browserOptions, portalUrl } from "./helpers.mjs";
 import { chromium } from "playwright";
 import assert from "node:assert/strict";
@@ -63,130 +64,136 @@ const total = (dialog, label) =>
     .locator(":scope > span")
     .last();
 try {
-  await page.goto(
-    `${portalUrl}/secretariat/trust-funds/#trust-fund=${encodeURIComponent("xb-entity:UNODC")}`,
-    { waitUntil: "networkidle" },
-  );
-  let dialog = page.locator('aside[role="dialog"]');
-  await dialog.waitFor();
-  const expense = (year) =>
-    data("budget-trust-funds", year).nodes.find(
-      (node) => node.id === "xb-entity:UNODC",
-    ).amount;
-  assert.equal(
-    await total(dialog, "Expenditure").innerText(),
-    money(expense(2024)),
-  );
-  await choose(dialog, 2023);
-  await total(dialog, "Expenditure")
-    .filter({ hasText: money(expense(2023)) })
-    .waitFor();
-  assert.equal(
-    await total(dialog, "Expenditure").innerText(),
-    money(expense(2023)),
-  );
-  assert.equal(
-    await page.getByRole("slider").first().getAttribute("aria-valuenow"),
-    "2024",
-  );
-  await choose(dialog, 2022);
-  await dialog
-    .getByText("No fund data is published for this year.", { exact: true })
-    .waitFor();
-  assert.equal(
-    await dialog.getByText("Expenditure", { exact: true }).count(),
-    0,
-  );
-  assert.equal(await dialog.locator("[data-xb-contributor-panel]").count(), 0);
-  await choose(dialog, 2024);
-  await total(dialog, "Expenditure")
-    .filter({ hasText: money(expense(2024)) })
-    .waitFor();
-  assert.equal(
-    await total(dialog, "Expenditure").innerText(),
-    money(expense(2024)),
-  );
-  results.push(
-    "Trust-fund expense sidebar changes year independently and hides unavailable-year figures",
-  );
+  let dialog;
+  if (profiles[process.env.SITE_VARIANT ?? "public"].additionalTrustFunds) {
+    await page.goto(
+      `${portalUrl}/secretariat/trust-funds/#trust-fund=${encodeURIComponent("xb-entity:UNODC")}`,
+      { waitUntil: "networkidle" },
+    );
+    dialog = page.locator('aside[role="dialog"]');
+    await dialog.waitFor();
+    const expense = (year) =>
+      data("budget-trust-funds", year).nodes.find(
+        (node) => node.id === "xb-entity:UNODC",
+      ).amount;
+    assert.equal(
+      await total(dialog, "Expenditure").innerText(),
+      money(expense(2024)),
+    );
+    await choose(dialog, 2023);
+    await total(dialog, "Expenditure")
+      .filter({ hasText: money(expense(2023)) })
+      .waitFor();
+    assert.equal(
+      await total(dialog, "Expenditure").innerText(),
+      money(expense(2023)),
+    );
+    assert.equal(
+      await page.getByRole("slider").first().getAttribute("aria-valuenow"),
+      "2024",
+    );
+    await choose(dialog, 2022);
+    await dialog
+      .getByText("No fund data is published for this year.", { exact: true })
+      .waitFor();
+    assert.equal(
+      await dialog.getByText("Expenditure", { exact: true }).count(),
+      0,
+    );
+    assert.equal(
+      await dialog.locator("[data-xb-contributor-panel]").count(),
+      0,
+    );
+    await choose(dialog, 2024);
+    await total(dialog, "Expenditure")
+      .filter({ hasText: money(expense(2024)) })
+      .waitFor();
+    assert.equal(
+      await total(dialog, "Expenditure").innerText(),
+      money(expense(2024)),
+    );
+    results.push(
+      "Trust-fund expense sidebar changes year independently and hides unavailable-year figures",
+    );
 
-  await page.goto(`${portalUrl}/secretariat/trust-funds/contributors/`, {
-    waitUntil: "networkidle",
-  });
-  const source = page.getByRole("group", {
-    name: "Contributor reporting source",
-  });
-  await source.getByText("ITC", { exact: true }).click();
-  await chartYear(2023);
-  const bundle = JSON.parse(
-    fs.readFileSync("public/data/secretariat-xb-contributors.json"),
-  );
-  const series2023 = bundle.series.find(
-    (series) =>
-      series.entity === "ITC" &&
-      series.scope === "entity" &&
-      series.year === 2023,
-  );
-  const series2022 = bundle.series.find(
-    (series) =>
-      series.entity === "ITC" &&
-      series.scope === "entity" &&
-      series.year === 2022,
-  );
-  const donor = series2023.rows.find(
-    (row) =>
-      row.amount > 0 &&
-      series2022.rows.some(
-        (other) => other.name === row.name && other.amount > 0,
-      ),
-  );
-  await page
-    .locator('[data-xb-contributor-panel="ITC"]')
-    .getByRole("button", { name: donor.name, exact: true })
-    .click();
-  dialog = page.locator('aside[role="dialog"]');
-  await dialog.waitFor();
-  assert.equal(
-    await total(dialog, series2023.measure).innerText(),
-    money(donor.amount),
-  );
-  await choose(dialog, 2022);
-  await total(dialog, series2022.measure)
-    .filter({
-      hasText: money(
-        series2022.rows.find((row) => row.name === donor.name).amount,
-      ),
-    })
-    .waitFor();
-  assert.equal(
-    await total(dialog, series2022.measure).innerText(),
-    money(series2022.rows.find((row) => row.name === donor.name).amount),
-  );
-  assert.equal(
-    await page.getByRole("slider").getAttribute("aria-valuenow"),
-    "2023",
-  );
-  await choose(dialog, 2024);
-  await dialog
-    .getByText("No contributor data is published for this year.", {
-      exact: true,
-    })
-    .waitFor();
-  assert.equal(
-    await dialog.getByText(series2023.measure, { exact: true }).count(),
-    0,
-  );
-  await choose(dialog, 2023);
-  await total(dialog, series2023.measure)
-    .filter({ hasText: money(donor.amount) })
-    .waitFor();
-  assert.equal(
-    await total(dialog, series2023.measure).innerText(),
-    money(donor.amount),
-  );
-  results.push(
-    "Contributor modal switches available years and removes stale totals for a missing year",
-  );
+    await page.goto(`${portalUrl}/secretariat/trust-funds/contributors/`, {
+      waitUntil: "networkidle",
+    });
+    const source = page.getByRole("group", {
+      name: "Contributor reporting source",
+    });
+    await source.getByText("ITC", { exact: true }).click();
+    await chartYear(2023);
+    const bundle = JSON.parse(
+      fs.readFileSync("public/data/secretariat-xb-contributors.json"),
+    );
+    const series2023 = bundle.series.find(
+      (series) =>
+        series.entity === "ITC" &&
+        series.scope === "entity" &&
+        series.year === 2023,
+    );
+    const series2022 = bundle.series.find(
+      (series) =>
+        series.entity === "ITC" &&
+        series.scope === "entity" &&
+        series.year === 2022,
+    );
+    const donor = series2023.rows.find(
+      (row) =>
+        row.amount > 0 &&
+        series2022.rows.some(
+          (other) => other.name === row.name && other.amount > 0,
+        ),
+    );
+    await page
+      .locator('[data-xb-contributor-panel="ITC"]')
+      .getByRole("button", { name: donor.name, exact: true })
+      .click();
+    dialog = page.locator('aside[role="dialog"]');
+    await dialog.waitFor();
+    assert.equal(
+      await total(dialog, series2023.measure).innerText(),
+      money(donor.amount),
+    );
+    await choose(dialog, 2022);
+    await total(dialog, series2022.measure)
+      .filter({
+        hasText: money(
+          series2022.rows.find((row) => row.name === donor.name).amount,
+        ),
+      })
+      .waitFor();
+    assert.equal(
+      await total(dialog, series2022.measure).innerText(),
+      money(series2022.rows.find((row) => row.name === donor.name).amount),
+    );
+    assert.equal(
+      await page.getByRole("slider").getAttribute("aria-valuenow"),
+      "2023",
+    );
+    await choose(dialog, 2024);
+    await dialog
+      .getByText("No contributor data is published for this year.", {
+        exact: true,
+      })
+      .waitFor();
+    assert.equal(
+      await dialog.getByText(series2023.measure, { exact: true }).count(),
+      0,
+    );
+    await choose(dialog, 2023);
+    await total(dialog, series2023.measure)
+      .filter({ hasText: money(donor.amount) })
+      .waitFor();
+    assert.equal(
+      await total(dialog, series2023.measure).innerText(),
+      money(donor.amount),
+    );
+    results.push(
+      "Contributor modal switches available years and removes stale totals for a missing year",
+    );
+  }
 
   await page.goto(`${portalUrl}/secretariat/programme-budget/`, {
     waitUntil: "networkidle",

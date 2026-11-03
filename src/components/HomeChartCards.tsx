@@ -1,4 +1,5 @@
 import { UN_FUNCTIONS, type FunctionExpenses } from "@/lib/functions";
+import { trustFundReportingData } from "@/lib/trustFundReporting";
 import { FEATURES } from "@/lib/featureFlags";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
@@ -103,7 +104,7 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
     FEATURES.trustFunds
       ? readData<BudgetData>(
           `budget-trust-funds-${year("budgetTrustFunds")}.json`,
-        )
+        ).then((data) => trustFundReportingData(data))
       : null,
     FEATURES.peacekeepingBudget
       ? readData<SecretariatEntitiesData>("secretariat-entities.json")

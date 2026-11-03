@@ -35,6 +35,14 @@ SITE_VARIANT=preview pnpm build
 SITE_VARIANT=preview node scripts/check-feature-export.mjs
 ```
 
+`additionalTrustFunds` controls the separately reported UNEP, UNODC, UN-Habitat
+and ITC expenditure and contributor views within Trust Funds. It is off in both
+profiles. With it off, charts, totals and sidebars use only the UN Secretariat
+Volume I schedules; introductions link to the four separate entity reports.
+The source data is retained so these views can be enabled later. The parent
+`trustFunds` flag still controls availability of the whole route.
+
+
 `config/features.json` defines both profiles. To release a feature, enable it in
 `public` and rebuild. The `routes` map associates route prefixes with their flags.
 Page flags govern the entire route subtree, Secretariat navigation, and homepage

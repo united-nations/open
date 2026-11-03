@@ -28,6 +28,7 @@ import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { useContributorSidebarYear } from "@/hooks/useContributorSidebarYear";
 import { collectBudgetHierarchySources } from "@/lib/budgetSourceCollection";
 import { sourcePageUrl } from "@/lib/sourceReferences";
+import { trustFundReportingData } from "@/lib/trustFundReporting";
 import { loadYearData } from "@/lib/data";
 import { formatBudget } from "@un-eosg/ui/format-budget";
 import type {
@@ -337,11 +338,15 @@ export function TrustFundSidebar({
     "budget-trust-funds",
     Number(initialMeta.fiscalYear),
   );
+  const visibleData = useMemo(
+    () => (selection.data ? trustFundReportingData(selection.data) : null),
+    [selection.data],
+  );
   const currentNode = selection.isInitialYear
     ? initialNode
-    : (selection.data?.nodes.find((item) => item.id === initialNode.id) ??
+    : (visibleData?.nodes.find((item) => item.id === initialNode.id) ??
       (initialNode.tier === "detail" && initialNode.code
-        ? selection.data?.nodes.find(
+        ? visibleData?.nodes.find(
             (item) =>
               item.tier === "detail" &&
               item.code === initialNode.code &&
@@ -352,10 +357,10 @@ export function TrustFundSidebar({
   const childrenByParent = useMemo(() => {
     if (selection.isInitialYear) return initialChildrenByParent;
     const children: Record<string, BudgetNode[]> = {};
-    for (const item of selection.data?.nodes ?? [])
+    for (const item of visibleData?.nodes ?? [])
       if (item.parentId) (children[item.parentId] ??= []).push(item);
     return children;
-  }, [selection.isInitialYear, selection.data, initialChildrenByParent]);
+  }, [selection.isInitialYear, visibleData, initialChildrenByParent]);
   const ready = !selection.loading && !selection.error && !!currentNode;
   const isSeparate = node.sourceGroup === "separate_entities";
   const showFinancialPosition =
@@ -398,9 +403,8 @@ export function TrustFundSidebar({
         .map(Number)
         .map(async (value) => {
           try {
-            const file = await loadYearData<BudgetData>(
-              "budget-trust-funds",
-              value,
+            const file = trustFundReportingData(
+              await loadYearData<BudgetData>("budget-trust-funds", value),
             );
             const matched =
               file.nodes.find((item) => item.id === node.id) ??
