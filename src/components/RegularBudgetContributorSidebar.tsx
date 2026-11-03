@@ -10,6 +10,7 @@ import {
 } from "@un-eosg/ui/components/financial-panel-parts";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 import { SidebarControls } from "@/components/SidebarControls";
+import { RegularBudgetOutstandingSidebarHistory } from "@/components/RegularBudgetOutstandingSidebarHistory";
 import { FinancingInstrumentChart } from "@/components/charts/FinancingInstrumentChart";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { loadYearData } from "@/lib/data";
@@ -23,15 +24,17 @@ import {
 export function RegularBudgetContributorSidebar({
   name,
   initialData,
+  initialYear,
   years,
   onClose,
 }: {
   name: string;
   initialData: RegularBudgetContributorsData;
+  initialYear?: number;
   years: number[];
   onClose: () => void;
 }) {
-  const [year, setYear] = useState(initialData.meta.year);
+  const [year, setYear] = useState(initialYear ?? initialData.meta.year);
   const [files, setFiles] = useState<
     Record<number, RegularBudgetContributorsData | null>
   >({ [initialData.meta.year]: initialData });
@@ -173,12 +176,18 @@ export function RegularBudgetContributorSidebar({
                   </dd>
                 </dl>
                 <p className="mt-2 text-sm text-gray-500">
-                  Partial payments are not tracked here. Not listed as paid in
-                  full does not mean no payment was made.
+                  The honour roll records full settlement, not individual
+                  partial payments. Outstanding balances below show the amount
+                  still owed at a separate autumn reporting date.
                 </p>
               </FinancialPanelSection>
             </>
           )}
+          <RegularBudgetOutstandingSidebarHistory
+            name={name}
+            year={year}
+            assessments={files}
+          />
           <FinancialPanelSection heading="Assessment history">
             {loading ? (
               <p role="status" className="text-sm text-gray-500">

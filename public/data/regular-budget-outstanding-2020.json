@@ -1,0 +1,986 @@
+{
+  "meta": {
+    "year": 2020,
+    "as_of": "2020-09-30",
+    "currency": "USD",
+    "total_outstanding": 1496578500,
+    "reported_total": 1496578501,
+    "reported_total_tolerance": 1,
+    "debtor_count": 69,
+    "member_state_count": 193,
+    "source": {
+      "url": "https://www.un.org/en/ga/contributions/Presentation%20October%202020.pdf",
+      "page": 6,
+      "format": "pdf",
+      "sha256": "03682ad21b5dbf4327077b80740365a4f8a8d0cda21ff12c0f932ca3e072a8cb"
+    },
+    "reconciliation_note": null
+  },
+  "contributors": [
+    {
+      "name": "Afghanistan",
+      "outstanding_amount": 196374,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Albania",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Algeria",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Andorra",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Angola",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Antigua and Barbuda",
+      "outstanding_amount": 56107,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Argentina",
+      "outstanding_amount": 58777241,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Armenia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Australia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Austria",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Azerbaijan",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Bahamas",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Bahrain",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Bangladesh",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Barbados",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Belarus",
+      "outstanding_amount": 236114,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Belgium",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Belize",
+      "outstanding_amount": 28053,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Benin",
+      "outstanding_amount": 83442,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Bhutan",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Bolivia (Plurinational State of)",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Bosnia and Herzegovina",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Botswana",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Brazil",
+      "outstanding_amount": 118768319,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Brunei Darussalam",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Bulgaria",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Burkina Faso",
+      "outstanding_amount": 85109,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Burundi",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Cabo Verde",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Cambodia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Cameroon",
+      "outstanding_amount": 364694,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Canada",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Central African Republic",
+      "outstanding_amount": 25192,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Chad",
+      "outstanding_amount": 110713,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Chile",
+      "outstanding_amount": 180000,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "China",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Colombia",
+      "outstanding_amount": 8028366,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Comoros",
+      "outstanding_amount": 653705,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Congo",
+      "outstanding_amount": 290472,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Costa Rica",
+      "outstanding_amount": 814929,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Croatia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Cuba",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Cyprus",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Czechia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Côte d'Ivoire",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Democratic People's Republic of Korea",
+      "outstanding_amount": 169820,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Democratic Republic of the Congo",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Denmark",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Djibouti",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Dominica",
+      "outstanding_amount": 28053,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Dominican Republic",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Ecuador",
+      "outstanding_amount": 4474850,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Egypt",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "El Salvador",
+      "outstanding_amount": 333640,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Equatorial Guinea",
+      "outstanding_amount": 448853,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Eritrea",
+      "outstanding_amount": 28053,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Estonia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Eswatini",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Ethiopia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Fiji",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Finland",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "France",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Gabon",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Gambia",
+      "outstanding_amount": 28053,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Georgia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Germany",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Ghana",
+      "outstanding_amount": 419300,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Greece",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Grenada",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Guatemala",
+      "outstanding_amount": 1022079,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Guinea",
+      "outstanding_amount": 84160,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Guinea-Bissau",
+      "outstanding_amount": 55936,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Guyana",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Haiti",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Honduras",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Hungary",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Iceland",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "India",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Indonesia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Iran (Islamic Republic of)",
+      "outstanding_amount": 21968414,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Iraq",
+      "outstanding_amount": 3618883,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Ireland",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Israel",
+      "outstanding_amount": 8828831,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Italy",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Jamaica",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Japan",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Jordan",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Kazakhstan",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Kenya",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Kiribati",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Kuwait",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Kyrgyzstan",
+      "outstanding_amount": 56107,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Lao People's Democratic Republic",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Latvia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Lebanon",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Lesotho",
+      "outstanding_amount": 28053,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Liberia",
+      "outstanding_amount": 32257,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Libya",
+      "outstanding_amount": 699101,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Liechtenstein",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Lithuania",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Luxembourg",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Madagascar",
+      "outstanding_amount": 113638,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Malawi",
+      "outstanding_amount": 20307,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Malaysia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Maldives",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Mali",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Malta",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Marshall Islands",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Mauritania",
+      "outstanding_amount": 87806,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Mauritius",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Mexico",
+      "outstanding_amount": 36030432,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Micronesia (Federated States of)",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Monaco",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Mongolia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Montenegro",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Morocco",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Mozambique",
+      "outstanding_amount": 112213,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Myanmar",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Namibia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Nauru",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Nepal",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Netherlands",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "New Zealand",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Nicaragua",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Niger",
+      "outstanding_amount": 114352,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Nigeria",
+      "outstanding_amount": 7415801,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "North Macedonia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Norway",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Oman",
+      "outstanding_amount": 807284,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Pakistan",
+      "outstanding_amount": 1314351,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Palau",
+      "outstanding_amount": 28053,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Panama",
+      "outstanding_amount": 1278901,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Papua New Guinea",
+      "outstanding_amount": 280534,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Paraguay",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Peru",
+      "outstanding_amount": 2209228,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Philippines",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Poland",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Portugal",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Qatar",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Republic of Korea",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Republic of Moldova",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Romania",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Russian Federation",
+      "outstanding_amount": 66443814,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Rwanda",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Saint Kitts and Nevis",
+      "outstanding_amount": 28053,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Saint Lucia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Saint Vincent and the Grenadines",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Samoa",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "San Marino",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Sao Tome and Principe",
+      "outstanding_amount": 618695,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Saudi Arabia",
+      "outstanding_amount": 15251970,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Senegal",
+      "outstanding_amount": 214664,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Serbia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Seychelles",
+      "outstanding_amount": 56107,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Sierra Leone",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Singapore",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Slovakia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Slovenia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Solomon Islands",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Somalia",
+      "outstanding_amount": 1221991,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "South Africa",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "South Sudan",
+      "outstanding_amount": 328189,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Spain",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Sri Lanka",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Sudan",
+      "outstanding_amount": 358596,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Suriname",
+      "outstanding_amount": 279678,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Sweden",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Switzerland",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Syrian Arab Republic",
+      "outstanding_amount": 289087,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Tajikistan",
+      "outstanding_amount": 12213,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Thailand",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Timor-Leste",
+      "outstanding_amount": 54607,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Togo",
+      "outstanding_amount": 57284,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Tonga",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Trinidad and Tobago",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Tunisia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Turkmenistan",
+      "outstanding_amount": 16042,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Tuvalu",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Türkiye",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Uganda",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Ukraine",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "United Arab Emirates",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "United Kingdom of Great Britain and Northern Ireland",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "United Republic of Tanzania",
+      "outstanding_amount": 280534,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "United States of America",
+      "outstanding_amount": 1089625403,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Uruguay",
+      "outstanding_amount": 2440641,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Uzbekistan",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Vanuatu",
+      "outstanding_amount": 28053,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Venezuela (Bolivarian Republic of)",
+      "outstanding_amount": 37715906,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Viet Nam",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Yemen",
+      "outstanding_amount": 280534,
+      "basis": "reported_balance"
+    },
+    {
+      "name": "Zambia",
+      "outstanding_amount": 0,
+      "basis": "complete_list_complement"
+    },
+    {
+      "name": "Zimbabwe",
+      "outstanding_amount": 140266,
+      "basis": "reported_balance"
+    }
+  ]
+}

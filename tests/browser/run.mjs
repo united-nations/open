@@ -19,6 +19,7 @@ const checks = [
   "secretariat-flows",
   "sidebar-years",
   "secretariat-sidebar-years",
+  "regular-budget-outstanding",
   "budget-sources",
   "budget-funding",
   "ppb-ranges-currency",

@@ -66,6 +66,33 @@ export type RegularBudgetPaymentStatus =
   | "paid_late"
   | "not_paid_in_full";
 
+export interface RegularBudgetOutstandingContributor {
+  name: string;
+  outstanding_amount: number;
+  basis: "reported_balance" | "complete_list_complement";
+}
+
+export interface RegularBudgetOutstandingData {
+  meta: {
+    year: number;
+    as_of: string;
+    currency: "USD";
+    total_outstanding: number;
+    reported_total: number;
+    reported_total_tolerance: number;
+    debtor_count: number;
+    member_state_count: number;
+    reconciliation_note: string | null;
+    source: {
+      url: string;
+      page: number;
+      format: "pdf" | "pptx";
+      sha256: string;
+    };
+  };
+  contributors: RegularBudgetOutstandingContributor[];
+}
+
 export interface RegularBudgetContributor {
   name: string;
   assessment_rate: number;

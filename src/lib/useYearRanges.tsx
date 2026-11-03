@@ -20,6 +20,7 @@ interface YearRanges {
   functionGeography: YearRange;
   sdgExpenses: YearRange;
   regularBudgetContributors: YearRange;
+  regularBudgetOutstanding: YearRange;
   peacekeepingContributors: YearRange;
   trustFundContributors: YearRange;
   secretariatOverview: YearRange;

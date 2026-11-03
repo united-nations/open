@@ -62,7 +62,82 @@ historical research but does not provide a comparable current machine-readable
 series. The annual circulars and honour rolls are therefore the strongest
 reproducible public sources for this view.
 
-## Validation
+## Outstanding contributions (autumn snapshots)
+
+`python/24-export_regular_budget_outstanding.py` runs after step 13 and produces
+`regular-budget-outstanding-{year}.json` for 2019–2026. Regenerate the manifest
+after adding coverage. `data/regular-budget-outstanding/observations.csv` retains
+the normalized observations and source locations; each JSON retains the source
+SHA-256. Download caches in that directory's `raw/` subdirectory are ignored.
+
+The sources are the October financial situation presentations linked from
+https://www.un.org/en/ga/contributions/financial.shtml. Cutoffs are 4 October 2019,
+8 October 2021, and 30 September otherwise. The 2019 PowerPoint's embedded
+`Microsoft_Excel_Worksheet2.xlsx`, `Table4`, backs slide 6. Other sheets contain
+stale April 2018 observations: they must not be attributed to October 2019.
+Workbook amounts are rounded to whole dollars to match the published tables.
+Later PDFs are parsed from the complete debtor slide (PDF page 6 in 2020,
+page 8 in 2021–2026). Footnotes recording payments after the cutoff do not alter
+the snapshot balance.
+
+The exporter validates all country identities against the same-year assessment
+roster, the complete debtor count, positive listed balances, and the headline
+total at its published precision. The 2021 source has a reviewed discrepancy:
+63 printed country balances total $1,254,267,798, versus the $1,255m headline.
+Both amounts and the discrepancy are retained; visual totals use the country
+sum without allocating a reconciliation balance to countries. The 2019 and
+2020 country sums differ from their precise headlines by one dollar.
+
+All 193 States are exported. A zero outstanding amount is the complement of
+the validated complete debtor list at that same cutoff, with explicit
+`complete_list_complement` provenance. It is not inferred from a later honour
+roll, and does not assert the absence of an account credit. A missing snapshot
+or country is unavailable, not zero.
+
+The page adds an outstanding-balance treemap and sortable table, country-filtered
+annual line comparison (one line per selected country, defaulting to all Member
+States), and a shared sidebar history. The sidebar retains its compact bar history.
+The total can remain selected alongside individual countries. Each is an independent
+series; the total and country balances are never added together.
+Share of total always uses all Member States' balances in the snapshot, including
+when the treemap/table is searched. Balance / annual assessment uses the same-year
+circular amount, including the Peacebuilding Fund portion from 2025. It may exceed
+100% and is not a current-year payment-completion measure. Changes compare the
+immediately preceding calendar year's snapshot; percentage changes from zero are
+undefined (a positive balance is labelled new). No balance is treated as a flow,
+summed across years, or interpreted as cash paid.
+
+### Earlier historical coverage investigated
+
+The [October 2018 presentation](https://www.un.org/en/ga/contributions/Presentation%20October%202018.pptx)
+contains a complete 52-country debtor table at 30 September 2018 (Chart 6).
+Slide 7 links `ppt/embeddings/oleObject3.bin`; its OLE `Package` is an XLSX
+whose `Table4` sums to $1,087,671,794.26, matching the rounded published total.
+Other sheets contain stale April 2018 data. This is a viable next extension,
+but is not included in the current 2019–2026 export or assessment rosters.
+
+The inspected 2011–2017 autumn presentations do not contain complete country
+debt tables: leading debtors are shown alongside aggregated other countries.
+Do not infer individual balances from those aggregates.
+
+Separate complete 30 September country ledgers were verified for 2003–2010,
+in Annex II of [ST/ADM/SER.B/610](https://docs.un.org/en/ST/ADM/SER.B/610),
+[/635](https://docs.un.org/en/ST/ADM/SER.B/635),
+[/666](https://docs.un.org/en/ST/ADM/SER.B/666),
+[/699](https://docs.un.org/en/ST/ADM/SER.B/699),
+[/717](https://docs.un.org/en/ST/ADM/SER.B/717),
+[/754](https://docs.un.org/en/ST/ADM/SER.B/754),
+[/788](https://docs.un.org/en/ST/ADM/SER.B/788), and
+[/821](https://docs.un.org/en/ST/ADM/SER.B/821), respectively.
+These require a separate extraction and reconciliation before publication.
+Use the current-Member-State subtotal, keeping former Yugoslavia liabilities
+separate; respect historical membership rather than manufacturing 193 rows.
+Preserve signed account credits, and distinguish collections/adjustments from
+cash payments. A scanned country ledger also exists for 30 September 1990 in
+[A/C.5/45/17, Annex III](https://digitallibrary.un.org/record/99792/files/A_C.5_45_17-EN.pdf)
+(pages 16–19), but does not establish continuous coverage back to that year.
+
+## Assessment validation
 
 `python/13-export_regular_budget_contributors.py` fails rather than publishing
 partial data unless all of the following hold:

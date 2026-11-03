@@ -445,7 +445,8 @@ export const SECRETARIAT_METHODOLOGY_PAGES = [
     id: "programme-budget-contributors",
     href: "/secretariat/programme-budget/contributors",
     title: "Programme Budget — Contributors",
-    source: "UN assessment circulars and regular-budget honour roll",
+    source:
+      "UN assessment circulars, regular-budget honour roll and financial situation presentations",
   },
   {
     id: "peacekeeping-budget",
@@ -509,6 +510,8 @@ function SecretariatPageSourceNotes({
           Assessment amounts come from{" "}
           <PageSourceLink source="regularAssessments" />; paid-in-full status
           and dates come from the <PageSourceLink source="honourRoll" />.
+          Outstanding balances come from the{" "}
+          <PageSourceLink source="financialSituation" />.
         </p>
       );
     case "peacekeeping-budget":
@@ -776,14 +779,39 @@ export function SecretariatOverviewMethodologyNotes() {
 
 export function ProgrammeBudgetContributorsMethodologyNotes() {
   return (
-    <p>
-      Contribution amounts come from annual assessment circulars; paid-in-full
-      status and dates come from the UN regular-budget honour roll, with
-      assessment rates checked against the historical scale of assessments. The
-      payment timeline adds a Member State&apos;s full assessment on the date it
-      appears as paid in full. Partial payments are not available from the
-      honour roll and are therefore not estimated.
-    </p>
+    <div className="space-y-3">
+      <p>
+        Contribution amounts come from annual assessment circulars; paid-in-full
+        status and dates come from the UN regular-budget honour roll, with
+        assessment rates checked against the historical scale of assessments.
+        The payment timeline adds a Member State&apos;s full assessment on the
+        date it appears as paid in full. Partial payments are not available from
+        the honour roll and are therefore not estimated.
+      </p>
+      <p>
+        Outstanding balances are extracted from complete autumn debtor lists in
+        the UN financial situation presentations. They include previous years’
+        arrears and reflect partial payments and credits; they do not measure
+        cash received. The reporting dates are 4 October 2019, 8 October 2021,
+        and 30 September in the other available years. Honour-roll status has
+        its own reporting date.
+      </p>
+      <p>
+        Zero balances are inferred only from absence from a validated complete
+        debtor list for the same snapshot. Totals sum country balances. Share of
+        total uses the full snapshot total; balance / annual assessment compares
+        accumulated debt with the annual assessment circular amount (including
+        the Peacebuilding Fund portion from 2025). It can exceed 100% and is not
+        a payment-completion percentage.
+      </p>
+      <p>
+        Changes compare consecutive annual snapshots, including their stated
+        cutoff differences, and reflect assessments, settlements and credits.
+        Percentage change is unavailable when the prior balance is zero; a new
+        positive balance is labelled accordingly. Missing observations are
+        unavailable, not zero.
+      </p>
+    </div>
   );
 }
 

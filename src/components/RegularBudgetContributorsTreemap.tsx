@@ -28,6 +28,7 @@ import {
   formatAssessmentDate as formatDate,
 } from "@/lib/regularBudgetContributors";
 import { RegularBudgetContributorSidebar } from "@/components/RegularBudgetContributorSidebar";
+import { RegularBudgetOutstandingView } from "@/components/RegularBudgetOutstandingView";
 import {
   useDeepLink,
   replaceToSidebar,
@@ -108,10 +109,14 @@ export function RegularBudgetContributorsTreemap() {
     message: string;
   } | null>(null);
   const [selectedName, setSelectedName] = useState<string | null>(null);
+  const [sidebarYear, setSidebarYear] = useState<number | undefined>();
   const [pending, setPending] = useDeepLink({
     hashPrefix: "regular-budget-contributor",
     sectionId: "regular-budget-contributors",
-    onNavigateAway: () => setSelectedName(null),
+    onNavigateAway: () => {
+      setSelectedName(null);
+      setSidebarYear(undefined);
+    },
   });
   const activeName =
     pending && loadedData?.contributors.some((item) => item.name === pending)
@@ -182,6 +187,7 @@ export function RegularBudgetContributorsTreemap() {
               : undefined,
           data: contributor,
           onActivate: () => {
+            setSidebarYear(data.meta.year);
             setPending(null);
             setSelectedName(contributor.name);
             replaceToSidebar("regular-budget-contributor", contributor.name);
@@ -197,6 +203,7 @@ export function RegularBudgetContributorsTreemap() {
 
   return (
     <div id="regular-budget-contributors" className="relative w-full">
+      <h2 className="mb-5 text-2xl font-medium">Assessed contributions</h2>
       <DelayedChartLoading
         pending={loadedData?.meta.year !== selectedYear}
         requestKey={selectedYear}
@@ -396,12 +403,14 @@ export function RegularBudgetContributorsTreemap() {
       )}
       {activeName && data && (
         <RegularBudgetContributorSidebar
-          key={activeName}
+          key={`${activeName}-${pending ? selectedYear : (sidebarYear ?? selectedYear)}`}
           name={activeName}
           initialData={data}
+          initialYear={pending ? selectedYear : sidebarYear}
           years={years.years}
           onClose={() => {
             setSelectedName(null);
+            setSidebarYear(undefined);
             setPending(null);
             clearSidebarHash();
           }}
@@ -413,6 +422,14 @@ export function RegularBudgetContributorsTreemap() {
           <RegularBudgetPaymentTimelineCard />
         </div>
       </PaymentChartScaleProvider>
+      <RegularBudgetOutstandingView
+        onSelect={(name, year) => {
+          setPending(null);
+          setSidebarYear(year);
+          setSelectedName(name);
+          replaceToSidebar("regular-budget-contributor", name);
+        }}
+      />
     </div>
   );
 }

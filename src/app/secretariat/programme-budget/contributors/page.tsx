@@ -21,10 +21,12 @@ export default function ContributorsPage() {
             Assessment amounts come from{" "}
             <PageSourceLink source="regularAssessments" />; paid-in-full status
             and dates come from the <PageSourceLink source="honourRoll" />.
+            Outstanding balances come from the{" "}
+            <PageSourceLink source="financialSituation" />.
           </>
         }
         title="Who funds the regular budget?"
-        description="Explore Member States’ assessed contributions to the UN regular budget, their paid-in-full status, and payment trends over time."
+        description="Explore Member States’ assessed contributions to the UN regular budget, their payment status, and outstanding balances over time."
       />
       <section id="programme-budget-contributors" aria-label="Contributors">
         <PageBody>

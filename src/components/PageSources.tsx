@@ -34,6 +34,10 @@ const PAGE_SOURCES = {
     href: "https://www.un.org/en/ga/contributions/honourroll.shtml",
     label: "regular-budget honour roll",
   },
+  financialSituation: {
+    href: "https://www.un.org/en/ga/contributions/financial.shtml",
+    label: "UN financial situation presentations",
+  },
   peacekeepingAssessments: {
     href: "https://www.un.org/en/ga/contributions/peacekeeping.shtml",
     label: "UN peacekeeping assessment circulars",
