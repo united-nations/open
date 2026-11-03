@@ -802,7 +802,9 @@ export function ProgrammeBudgetContributorsMethodologyNotes() {
         total uses the full snapshot total; balance / annual assessment compares
         accumulated debt with the annual assessment circular amount (including
         the Peacebuilding Fund portion from 2025). It can exceed 100% and is not
-        a payment-completion percentage.
+        a payment-completion percentage. Assessment and honour-roll coverage
+        begins in 2019, so those fields and the assessment ratio are unavailable
+        for the 2018 outstanding-balance snapshot.
       </p>
       <p>
         Changes compare consecutive annual snapshots, including their stated

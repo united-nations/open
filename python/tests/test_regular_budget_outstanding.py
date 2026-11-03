@@ -27,6 +27,7 @@ class OutstandingTests(unittest.TestCase):
 
     def test_published_country_examples_and_cutoffs(self):
         expected = {
+            2018: ("2018-09-30", "United States of America", 842_136_277),
             2019: ("2019-10-04", "United States of America", 1_055_324_418),
             2020: ("2020-09-30", "United States of America", 1_089_625_403),
             2021: ("2021-10-08", "United States of America", 1_001_804_450),
@@ -71,9 +72,10 @@ class OutstandingTests(unittest.TestCase):
             with self.subTest(year=year):
                 if not source.exists():
                     self.skipTest(f"Download cache absent for {year}; rerun exporter to check original-source parsing")
-                roster = [row["name"] for row in json.loads((ROOT / f"public/data/regular-budget-contributors-{year}.json").read_text())["contributors"]]
+                roster_year = MODULE.ROSTER_YEARS.get(year, year)
+                roster = [row["name"] for row in json.loads((ROOT / f"public/data/regular-budget-contributors-{roster_year}.json").read_text())["contributors"]]
                 aliases = MODULE.country_aliases(roster)
-                parsed = MODULE.pptx_debtors(source.read_bytes(), aliases) if filename.endswith("pptx") else MODULE.pdf_debtors(source.read_bytes(), page, year, aliases)
+                parsed = MODULE.pptx_debtors(source.read_bytes(), aliases, year) if filename.endswith("pptx") else MODULE.pdf_debtors(source.read_bytes(), page, year, aliases)
                 self.assertEqual(len(parsed), count)
                 actual = json.loads((ROOT / f"public/data/regular-budget-outstanding-{year}.json").read_text())
                 self.assertEqual(parsed, {row["name"]: row["outstanding_amount"] for row in actual["contributors"] if row["outstanding_amount"]})

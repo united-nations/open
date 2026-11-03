@@ -19,6 +19,7 @@ from pathlib import Path
 from urllib.parse import quote
 
 import openpyxl
+import olefile
 import pymupdf
 import requests
 
@@ -34,6 +35,7 @@ spec.loader.exec_module(assessments)
 # year, actual observation date, source filename, PDF page/PowerPoint slide,
 # number of debtors, published overall balance (rounded unless noted).
 SOURCES = [
+    (2018, "2018-09-30", "Presentation October 2018.pptx", 7, 52, 1_087_671_794, 2),
     (2019, "2019-10-04", "Presentation October 2019.pptx", 6, 65, 1_386_694_835, 1),
     (2020, "2020-09-30", "Presentation October 2020.pdf", 6, 69, 1_496_578_501, 1),
     (2021, "2021-10-08", "Presentation October 2021.pdf", 8, 63, 1_255_000_000, 500_000),
@@ -47,6 +49,10 @@ SOURCES = [
 # Reviewed against all 63 printed country entries: the 2021 slide's $1,255m
 # headline does not round from its detailed list. Preserve both, without scaling.
 REVIEWED_LIST_TOTALS = {2021: 1_254_267_798}
+
+# Membership was unchanged in 2018–2019. Reuse only the later country roster;
+# do not infer 2018 assessments or payment status from 2019 observations.
+ROSTER_YEARS = {2018: 2019}
 
 
 def normalize(value: str) -> str:
@@ -93,14 +99,19 @@ def pdf_debtors(content: bytes, page_number: int, year: int, aliases: dict[str, 
     return rows
 
 
-def pptx_debtors(content: bytes, aliases: dict[str, str]) -> dict[str, int]:
+def pptx_debtors(content: bytes, aliases: dict[str, str], year: int = 2019) -> dict[str, int]:
     with zipfile.ZipFile(io.BytesIO(content)) as archive:
-        workbook = openpyxl.load_workbook(io.BytesIO(archive.read("ppt/embeddings/Microsoft_Excel_Worksheet2.xlsx")), data_only=True)
+        if year == 2018:
+            with olefile.OleFileIO(io.BytesIO(archive.read("ppt/embeddings/oleObject3.bin"))) as embedded:
+                workbook_bytes = embedded.openstream("Package").read()
+        else:
+            workbook_bytes = archive.read("ppt/embeddings/Microsoft_Excel_Worksheet2.xlsx")
+        workbook = openpyxl.load_workbook(io.BytesIO(workbook_bytes), data_only=True)
     rows = {}
-    # Table4 backs the published October 2019 debtor slide. Other sheets retain
-    # stale April 2018 observations and must NOT be treated as October 2019 data.
+    # Table4 backs each published autumn debtor slide. Other sheets retain
+    # stale April 2018 observations and must not supply an autumn snapshot.
     for row in workbook["Table4"].values:
-        for index in (0, 3, 6):
+        for index in ((0, 3) if year == 2018 else (0, 3, 6)):
             name, amount = row[index:index + 2]
             if not isinstance(name, str) or not isinstance(amount, (int, float)):
                 continue
@@ -126,7 +137,8 @@ def export() -> None:
     RAW.mkdir(parents=True, exist_ok=True)
     evidence = []
     for year, as_of, filename, page, count, control, tolerance in SOURCES:
-        assessment_data = json.loads((OUT / f"regular-budget-contributors-{year}.json").read_text())
+        roster_year = ROSTER_YEARS.get(year, year)
+        assessment_data = json.loads((OUT / f"regular-budget-contributors-{roster_year}.json").read_text())
         roster = [row['name'] for row in assessment_data['contributors']]
         aliases = country_aliases(roster)
         cache = RAW / filename
@@ -136,7 +148,7 @@ def export() -> None:
             response.raise_for_status()
             cache.write_bytes(response.content)
         content = cache.read_bytes()
-        rows = pptx_debtors(content, aliases) if filename.endswith('.pptx') else pdf_debtors(content, page, year, aliases)
+        rows = pptx_debtors(content, aliases, year) if filename.endswith('.pptx') else pdf_debtors(content, page, year, aliases)
         validate_debtors(rows, roster, count, REVIEWED_LIST_TOTALS.get(year, control), 0 if year in REVIEWED_LIST_TOTALS else tolerance)
         total = sum(rows.values())
         contributors = [

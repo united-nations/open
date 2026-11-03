@@ -242,37 +242,68 @@ export function RegularBudgetOutstandingTrendsChart({
                     <p className="mb-2 text-sm font-semibold">
                       {year} · {date(snapshot.meta.as_of)}
                     </p>
-                    <div className="space-y-3 divide-y divide-gray-200">
-                      {series.map((item) => (
-                        <div
-                          key={item.key}
-                          className="pt-2 first:pt-0"
-                          data-outstanding-tooltip-series
-                        >
-                          <FinancialTooltip
-                            title={item.label}
-                            total={{
-                              label: "Outstanding contributions",
-                              value: displayAmount(
+                    {variant === "line" ? (
+                      <div className="space-y-1.5">
+                        {series.map((item) => (
+                          <div
+                            key={item.key}
+                            data-outstanding-tooltip-series
+                            className="flex items-center gap-2 text-sm whitespace-nowrap"
+                          >
+                            <span
+                              className="size-2 shrink-0 rounded-full"
+                              style={{ backgroundColor: item.color }}
+                              aria-hidden="true"
+                            />
+                            <span
+                              className="min-w-0 flex-1 truncate"
+                              title={item.label}
+                            >
+                              {item.label}
+                            </span>
+                            <span className="shrink-0 font-medium tabular-nums">
+                              {displayAmount(
                                 outstandingAmount(snapshot, item.names),
-                              ),
-                            }}
-                            rows={outstandingMetricRows(
-                              snapshot,
-                              previous,
-                              item.names,
-                              assessments,
-                              showShareOfTotal,
-                              true,
-                            )}
-                          />
+                              )}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    ) : (
+                      <>
+                        <div className="space-y-3 divide-y divide-gray-200">
+                          {series.map((item) => (
+                            <div
+                              key={item.key}
+                              className="pt-2 first:pt-0"
+                              data-outstanding-tooltip-series
+                            >
+                              <FinancialTooltip
+                                title={item.label}
+                                total={{
+                                  label: "Outstanding contributions",
+                                  value: displayAmount(
+                                    outstandingAmount(snapshot, item.names),
+                                  ),
+                                }}
+                                rows={outstandingMetricRows(
+                                  snapshot,
+                                  previous,
+                                  item.names,
+                                  assessments,
+                                  showShareOfTotal,
+                                  true,
+                                )}
+                              />
+                            </div>
+                          ))}
                         </div>
-                      ))}
-                    </div>
-                    <p className="mt-3 text-xs text-gray-600">
-                      Includes previous years’ arrears. Changes reflect
-                      payments, credits and new assessments.
-                    </p>
+                        <p className="mt-3 text-xs text-gray-600">
+                          Includes previous years’ arrears. Changes reflect
+                          payments, credits and new assessments.
+                        </p>
+                      </>
+                    )}
                   </div>
                 );
               }}

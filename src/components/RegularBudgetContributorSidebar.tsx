@@ -14,6 +14,7 @@ import { RegularBudgetOutstandingSidebarHistory } from "@/components/RegularBudg
 import { FinancingInstrumentChart } from "@/components/charts/FinancingInstrumentChart";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { loadYearData } from "@/lib/data";
+import { useYearRanges } from "@/lib/useYearRanges";
 import type { RegularBudgetContributorsData } from "@/types";
 import {
   REGULAR_BUDGET_STATUS_STYLES,
@@ -34,6 +35,7 @@ export function RegularBudgetContributorSidebar({
   years: number[];
   onClose: () => void;
 }) {
+  const outstandingYears = useYearRanges().regularBudgetOutstanding.years;
   const [year, setYear] = useState(initialYear ?? initialData.meta.year);
   const [files, setFiles] = useState<
     Record<number, RegularBudgetContributorsData | null>
@@ -97,10 +99,12 @@ export function RegularBudgetContributorSidebar({
       file: files[value],
       member: files[value]?.contributors.find((item) => item.name === name),
     }));
-  const availableYears = history
-    .filter((item) => item.member)
-    .map((item) => item.year)
-    .reverse();
+  const availableYears = [
+    ...new Set([
+      ...history.filter((item) => item.member).map((item) => item.year),
+      ...outstandingYears,
+    ]),
+  ].sort((a, b) => b - a);
   const status = member
     ? REGULAR_BUDGET_STATUS_STYLES[member.payment_status]
     : null;
@@ -146,6 +150,11 @@ export function RegularBudgetContributorSidebar({
           }
           className="bg-white sm:w-full"
         >
+          {!member && !loading && (
+            <p className="mt-3 text-sm text-gray-600">
+              Assessment and honour-roll status unavailable for {year}.
+            </p>
+          )}
           {member && file && status && (
             <>
               <dl className="mt-3 grid grid-cols-[1fr_auto] gap-2 text-sm">

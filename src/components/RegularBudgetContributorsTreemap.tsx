@@ -1,4 +1,5 @@
 "use client";
+import { Link as LinkIcon } from "lucide-react";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { formatAssessmentRate } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
@@ -202,8 +203,22 @@ export function RegularBudgetContributorsTreemap() {
   }, [data, setPending]);
 
   return (
-    <div id="regular-budget-contributors" className="relative w-full">
-      <h2 className="mb-5 text-2xl font-medium">Assessed contributions</h2>
+    <div
+      id="regular-budget-contributors"
+      className="relative w-full scroll-mt-40"
+    >
+      <h2 className="group mb-5 text-2xl font-medium">
+        <a
+          href="#regular-budget-contributors"
+          className="underline decoration-gray-300 underline-offset-4 hover:decoration-un-blue focus-visible:decoration-un-blue"
+        >
+          Assessed contributions
+          <LinkIcon
+            aria-hidden="true"
+            className="ml-2 inline size-5 align-baseline text-gray-400 transition-colors group-focus-within:text-un-blue group-hover:text-un-blue"
+          />
+        </a>
+      </h2>
       <DelayedChartLoading
         pending={loadedData?.meta.year !== selectedYear}
         requestKey={selectedYear}

@@ -9,7 +9,7 @@ import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
 import { SearchInput } from "@un-eosg/ui/components/search-input";
 import { TableHead } from "@un-eosg/ui/components/data-table";
-import { ChevronDown, ChevronUp } from "lucide-react";
+import { ChevronDown, ChevronUp, Link as LinkIcon } from "lucide-react";
 import { ChartFooter } from "@/components/ChartFooter";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { HierarchicalMultiSelect } from "@/components/ui/hierarchical-multi-select";
@@ -234,13 +234,22 @@ export function RegularBudgetOutstandingView({
   );
   return (
     <section
-      className="mt-12 space-y-5 border-t border-gray-200 pt-8"
+      className="mt-12 scroll-mt-40 space-y-5 border-t border-gray-200 pt-8"
       aria-labelledby="outstanding-heading"
       id="regular-budget-outstanding"
     >
       <div>
-        <h2 id="outstanding-heading" className="text-2xl font-medium">
-          Outstanding contributions
+        <h2 id="outstanding-heading" className="group text-2xl font-medium">
+          <a
+            href="#regular-budget-outstanding"
+            className="underline decoration-gray-300 underline-offset-4 hover:decoration-un-blue focus-visible:decoration-un-blue"
+          >
+            Outstanding contributions
+            <LinkIcon
+              aria-hidden="true"
+              className="ml-2 inline size-5 align-baseline text-gray-400 transition-colors group-focus-within:text-un-blue group-hover:text-un-blue"
+            />
+          </a>
         </h2>
         <p className="mt-2 text-gray-600">
           Amounts still owed to the regular budget, including previous years’

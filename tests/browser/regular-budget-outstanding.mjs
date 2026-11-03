@@ -7,6 +7,12 @@ const browser = await chromium.launch(browserOptions);
 const page = await browser.newPage({ viewport: { width: 1440, height: 1100 } });
 const errors = [];
 page.on("pageerror", (error) => errors.push(error.message));
+const outstandingYears = JSON.parse(
+  fs.readFileSync("public/data/manifest.json", "utf8"),
+).regularBudgetOutstanding.years;
+const hoverFraction =
+  (2025 - Math.min(...outstandingYears)) /
+  (Math.max(...outstandingYears) - Math.min(...outstandingYears));
 const url = `${portalUrl}/secretariat/programme-budget/contributors/`;
 try {
   await page.goto(url, { waitUntil: "networkidle" });
@@ -98,6 +104,28 @@ try {
     .click();
 
   await section.getByRole("slider").press("Home");
+  await section.getByText("Sep 30", { exact: true }).waitFor();
+  await section
+    .getByRole("button", { name: "United States of America", exact: true })
+    .click();
+  await dialog.getByText("At 30 September 2018", { exact: true }).waitFor();
+  assert.match(
+    await dialog.locator("[data-country-outstanding]").innerText(),
+    /842/,
+  );
+  await dialog
+    .getByText("Assessment and honour-roll status unavailable for 2018.", {
+      exact: true,
+    })
+    .waitFor();
+  await dialog
+    .getByRole("button", { name: "Select year", exact: true })
+    .click();
+  await page.getByRole("button", { name: "2018", exact: true }).click();
+  await dialog
+    .getByRole("button", { name: "Close contributor details", exact: true })
+    .click();
+  await section.getByRole("slider").press("ArrowRight");
   await section.getByText("Oct 4", { exact: true }).waitFor();
   await section.getByRole("button", { name: "Mexico", exact: true }).click();
   await dialog.getByText("At 4 October 2019", { exact: true }).waitFor();
@@ -261,7 +289,9 @@ try {
       end: Number(line.getAttribute("x2")),
     }));
   await page.mouse.move(
-    chart.x + axisRange.start + ((axisRange.end - axisRange.start) * 6) / 7,
+    chart.x +
+      axisRange.start +
+      (axisRange.end - axisRange.start) * hoverFraction,
     chart.y + chart.height / 2,
   );
   const tooltip = section.locator(".recharts-tooltip-wrapper");
@@ -272,17 +302,11 @@ try {
   await tooltip.getByText("$1.9B", { exact: true }).waitFor();
   await tooltip.getByText("Mexico", { exact: true }).waitFor();
   await tooltip.getByText("China", { exact: true }).waitFor();
-  await tooltip
-    .locator("[data-outstanding-tooltip-series]")
-    .filter({ has: page.getByText("Mexico", { exact: true }) })
-    .getByText("Share of total outstanding", { exact: true })
-    .waitFor();
-  assert.match(
-    await section.locator(".recharts-tooltip-wrapper").innerText(),
-    /Balance \/ annual assessment/,
+  assert.doesNotMatch(
+    await tooltip.innerText(),
+    /Share of total outstanding|Balance \/ annual assessment|Change/,
   );
-  // The user's eight-series comparison remains within a normal viewport,
-  // and the tooltip can be scrolled with the pointer rather than clipping.
+  // The user's eight-series comparison fits compact country rows in the viewport.
   await page.mouse.move(0, 0);
   await comparison.getByRole("button", { name: /Select/ }).click();
   for (const country of [
@@ -305,7 +329,7 @@ try {
   await page.mouse.move(
     comparisonBounds.x +
       axisRange.start +
-      ((axisRange.end - axisRange.start) * 6) / 7,
+      (axisRange.end - axisRange.start) * hoverFraction,
     comparisonBounds.y + comparisonBounds.height / 2,
     { steps: 5 },
   );
@@ -323,19 +347,16 @@ try {
     "The complete tooltip scroll area must fit inside the viewport",
   );
   assert.ok(
-    await scrollableTooltip.evaluate(
-      (element) => element.scrollHeight > element.clientHeight,
-    ),
-    "Large comparisons should scroll inside the tooltip",
-  );
-  await scrollableTooltip.hover({ position: { x: 30, y: 30 } });
-  await page.mouse.wheel(0, 500);
-  await page.waitForFunction(
-    () => document.querySelector("[data-outstanding-tooltip]")?.scrollTop > 0,
-  );
-  assert.ok(
-    await scrollableTooltip.isVisible(),
-    "Tooltip stays open during pointer scrolling",
+    await scrollableTooltip
+      .locator("[data-outstanding-tooltip-series]")
+      .evaluateAll((elements) =>
+        elements.every(
+          (element) =>
+            getComputedStyle(element).whiteSpace === "nowrap" &&
+            element.clientHeight < 30,
+        ),
+      ),
+    "Each country should occupy one compact line",
   );
   await section.screenshot({
     path: "audits/browser/regular-budget-outstanding-desktop.png",
@@ -387,7 +408,7 @@ try {
   await missing.mouse.move(
     missingBounds.x +
       axisRange.start +
-      ((axisRange.end - axisRange.start) * 6) / 7,
+      (axisRange.end - axisRange.start) * hoverFraction,
     missingBounds.y + missingBounds.height / 2,
   );
   const missingGroup = missingComparison
@@ -429,7 +450,7 @@ try {
           "193-country sortable table with percentages and differences",
           "Zero balances",
           "Filtered and comparison trends",
-          "Eight-series tooltip viewport containment and pointer scrolling",
+          "Eight-series tooltip viewport containment and single-line country rows",
           "Sidebar year reset before hash navigation",
           "Desktop/mobile rendering",
           "Failed snapshot disclosure",

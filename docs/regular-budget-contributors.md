@@ -65,7 +65,7 @@ reproducible public sources for this view.
 ## Outstanding contributions (autumn snapshots)
 
 `python/24-export_regular_budget_outstanding.py` runs after step 13 and produces
-`regular-budget-outstanding-{year}.json` for 2019–2026. Regenerate the manifest
+`regular-budget-outstanding-{year}.json` for 2018–2026. Regenerate the manifest
 after adding coverage. `data/regular-budget-outstanding/observations.csv` retains
 the normalized observations and source locations; each JSON retains the source
 SHA-256. Download caches in that directory's `raw/` subdirectory are ignored.
@@ -85,8 +85,9 @@ roster, the complete debtor count, positive listed balances, and the headline
 total at its published precision. The 2021 source has a reviewed discrepancy:
 63 printed country balances total $1,254,267,798, versus the $1,255m headline.
 Both amounts and the discrepancy are retained; visual totals use the country
-sum without allocating a reconciliation balance to countries. The 2019 and
-2020 country sums differ from their precise headlines by one dollar.
+sum without allocating a reconciliation balance to countries. The 2018 country
+sum is $1,087,671,796, two dollars above the headline after rounding each country;
+the 2019 and 2020 sums differ from their precise headlines by one dollar.
 
 All 193 States are exported. A zero outstanding amount is the complement of
 the validated complete debtor list at that same cutoff, with explicit
@@ -113,8 +114,12 @@ The [October 2018 presentation](https://www.un.org/en/ga/contributions/Presentat
 contains a complete 52-country debtor table at 30 September 2018 (Chart 6).
 Slide 7 links `ppt/embeddings/oleObject3.bin`; its OLE `Package` is an XLSX
 whose `Table4` sums to $1,087,671,794.26, matching the rounded published total.
-Other sheets contain stale April 2018 data. This is a viable next extension,
-but is not included in the current 2019–2026 export or assessment rosters.
+Other sheets contain stale April 2018 data. This source is included in the
+2018–2026 export. Membership was unchanged between 2018 and 2019, so the exporter
+uses the 2019 assessment file only as a canonical country roster for 2018.
+Assessment amounts and honour-roll status remain unavailable for 2018; no later
+financial observations are substituted. Balance / assessment therefore shows as
+unavailable for 2018, while 2019 changes now compare with the 2018 snapshot.
 
 The inspected 2011–2017 autumn presentations do not contain complete country
 debt tables: leading debtors are shown alongside aggregated other countries.
