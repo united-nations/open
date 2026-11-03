@@ -173,6 +173,17 @@ try {
     'details[aria-label="Funds with zero or negative expenditure"]',
   );
   assert.equal(await signedFunds.count(), 1);
+  assert.ok(
+    await signedFunds.evaluate((node) =>
+      Boolean(node.closest("[data-page-methodology]")),
+    ),
+    "Zero and negative fund details belong to the page methodology",
+  );
+  assert.equal(
+    await page.getByText(/Negative amounts included in the total:/).count(),
+    0,
+    "The interactive fund list replaces the duplicate generic negative-amount report",
+  );
   assert.equal(
     await signedFunds.getAttribute("open"),
     null,

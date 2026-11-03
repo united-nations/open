@@ -198,6 +198,10 @@ export function CebPageMethodology({
             {children}
           </section>
         )}
+        <div
+          id="page-chart-source-notes"
+          className="mt-6 space-y-4 empty:hidden"
+        />
       </ExpandableCard>
     </section>
   );
@@ -871,6 +875,12 @@ export function FieldMissionsMethodologyNotes() {
 export function TrustFundsMethodologyNotes() {
   return (
     <div className="space-y-3">
+      <p>
+        Expenditure totals include positive and negative reported amounts.
+        Treemap areas show positive amounts only. Funds with zero or negative
+        expenditure can still be opened from the selected-year list in the Trust
+        Funds page’s methodology.
+      </p>
       <p>
         “UN Secretariat trust-fund schedules” uses audited Schedules of
         Individual Trust Funds accompanying the UN Volume I accounts. Entity

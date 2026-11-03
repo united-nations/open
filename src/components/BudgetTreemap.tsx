@@ -10,7 +10,6 @@ import {
   treemapTileInteractionClassName,
 } from "@un-eosg/ui/components/treemap-tile-interaction";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
-import { NegativeAmounts } from "./NegativeAmounts";
 import { ChartFooter } from "@/components/ChartFooter";
 
 // Budget-document treemap for /secretariat, in the layout of ../budget-explorer:
@@ -2313,7 +2312,9 @@ export function BudgetTreemap({
         >
           footer={
             <ChartFooter
-              signedAmounts={signedBudgetAmounts}
+              signedAmounts={
+                usesSharedTrustFundExpenses ? undefined : signedBudgetAmounts
+              }
               details={
                 usesSharedProgrammeBudget || usesSharedTrustFundExpenses ? (
                   <div className="space-y-3">
@@ -2339,22 +2340,47 @@ export function BudgetTreemap({
                     {meta.currencyNote && <p>{meta.currencyNote}</p>}
                     {usesSharedTrustFundExpenses &&
                       accountingNodes.some(
-                        (node) =>
-                          node.amount <= 0 && matchesAccountingNode(node),
+                        (item) =>
+                          item.amount <= 0 && matchesAccountingNode(item),
                       ) && (
-                        <p className="text-sm">
-                          {
-                            accountingNodes.filter(
-                              (node) =>
-                                node.amount <= 0 && matchesAccountingNode(node),
-                            ).length
-                          }{" "}
-                          trust funds with zero or negative annual expenditure
-                          are listed below the chart because they cannot be
-                          drawn as areas. The displayed total includes both
-                          positive and negative amounts.
-                        </p>
+                        <details
+                          className="mt-4"
+                          aria-label="Funds with zero or negative expenditure"
+                        >
+                          <summary className="w-fit cursor-pointer text-sm font-semibold">
+                            Funds with zero or negative expenditure
+                          </summary>
+                          <div className="divide-y">
+                            {accountingNodes
+                              .filter(
+                                (item) =>
+                                  item.amount <= 0 &&
+                                  matchesAccountingNode(item),
+                              )
+                              .map((item) => (
+                                <button
+                                  key={item.id}
+                                  type="button"
+                                  onClick={() => openSidebar(item.id)}
+                                  className="flex w-full items-start justify-between gap-4 py-2 text-left text-sm hover:bg-gray-50"
+                                >
+                                  <span>
+                                    {item.label}
+                                    <span className="block text-xs">
+                                      {item.parentId
+                                        ? sidebarById[item.parentId]?.label
+                                        : "Unmapped Trust Funds"}
+                                    </span>
+                                  </span>
+                                  <span className="shrink-0 tabular-nums">
+                                    {formatBudget(item.amount)}
+                                  </span>
+                                </button>
+                              ))}
+                          </div>
+                        </details>
                       )}
+
                     {usesSharedTrustFundExpenses && meta.partial && (
                       <p>
                         {meta.scopeLabel}. This year does not publish every
@@ -2522,50 +2548,6 @@ export function BudgetTreemap({
           }
           sourceHeading="Source:"
         />
-
-        {usesSharedTrustFundExpenses &&
-          accountingNodes.some(
-            (item) => item.amount <= 0 && matchesAccountingNode(item),
-          ) && (
-            <details
-              className="mt-4"
-              aria-label="Funds with zero or negative expenditure"
-            >
-              <summary className="w-fit cursor-pointer text-sm font-semibold">
-                Funds with zero or negative expenditure
-              </summary>
-              <p className="mt-1 mb-2 text-sm">
-                These funds have no positive area in the treemap. Select a fund
-                to explore its details.
-              </p>
-              <div className="divide-y">
-                {accountingNodes
-                  .filter(
-                    (item) => item.amount <= 0 && matchesAccountingNode(item),
-                  )
-                  .map((item) => (
-                    <button
-                      key={item.id}
-                      type="button"
-                      onClick={() => openSidebar(item.id)}
-                      className="flex w-full items-start justify-between gap-4 py-2 text-left text-sm hover:bg-gray-50"
-                    >
-                      <span>
-                        {item.label}
-                        <span className="block text-xs">
-                          {item.parentId
-                            ? sidebarById[item.parentId]?.label
-                            : "Unmapped Trust Funds"}
-                        </span>
-                      </span>
-                      <span className="shrink-0 tabular-nums">
-                        {formatBudget(item.amount)}
-                      </span>
-                    </button>
-                  ))}
-              </div>
-            </details>
-          )}
 
         {meta.scopeWarning &&
           !usesSharedProgrammeBudget &&
@@ -3084,10 +3066,10 @@ export function BudgetTreemap({
           </p>
           <p>{meta.scopeWarning}</p>
           {meta.currencyNote && <p>{meta.currencyNote}</p>}
-          <details>
-            <summary className="cursor-pointer">Source details</summary>
-            <NegativeAmounts entries={signedBudgetAmounts} />
-          </details>
+          <ChartFooter
+            hint="Click on an entity to explore details"
+            signedAmounts={signedBudgetAmounts}
+          />
           {(meta.omitted ?? []).length > 0 && (
             <p>
               Not drawn, because the budget prints no total for them:{" "}

@@ -12,7 +12,7 @@ export function ChartSourceProvider({
   label,
   details,
   placement = "chart",
-  pageDetailsTargetId,
+  pageDetailsTargetId = "page-chart-source-notes",
   children,
 }: ChartSource & { children: ReactNode }) {
   return (

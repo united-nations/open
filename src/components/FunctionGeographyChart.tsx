@@ -89,7 +89,17 @@ export function FunctionGeographyChart() {
           />
         }
         footer={
-          <ChartFooter hint="Hover or focus a segment for amounts and shares." />
+          <ChartFooter
+            hint="Hover or focus a segment for amounts and shares."
+            details={
+              hasNegativeCells && (
+                <p>
+                  Areas show positive cell totals only. Negative cell totals
+                  remain in the reported total and source table.
+                </p>
+              )
+            }
+          />
         }
       >
         <div
@@ -125,12 +135,6 @@ export function FunctionGeographyChart() {
           </div>
         ) : (
           <>
-            {hasNegativeCells && (
-              <p className="mb-3 text-sm">
-                Areas show positive cell totals only. Negative cell totals
-                remain in the reported total and source table.
-              </p>
-            )}
             <div className="overflow-x-auto pb-2">
               <div
                 className="flex min-w-[720px] gap-2"

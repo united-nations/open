@@ -40,21 +40,24 @@ export function ChartFooter({
     snapshot,
     serverTarget,
   );
+  const hasNegativeAmounts = signedAmounts?.some((item) => item.amount < 0);
   if (source?.placement === "page") {
     return (
       <>
         <div className="space-y-2 text-sm text-gray-600" data-chart-hint>
           <InteractionHint text={hint} />
-          {signedAmounts && <NegativeAmounts entries={signedAmounts} />}
         </div>
         {pageDetailsTarget &&
-          details &&
+          (details || hasNegativeAmounts) &&
           createPortal(
             <section className="mt-5 space-y-3" data-chart-source-notes>
               {sourceSuffix && (
                 <h4 className="font-medium text-gray-900">{sourceSuffix}</h4>
               )}
               {details}
+              {hasNegativeAmounts && signedAmounts && (
+                <NegativeAmounts entries={signedAmounts} />
+              )}
             </section>,
             pageDetailsTarget,
           )}

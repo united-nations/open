@@ -375,55 +375,59 @@ export function SystemFlows() {
           />
         </div>
       )}
-      {adjustments.length > 0 && (
-        <details className="text-sm">
-          <summary className="cursor-pointer font-semibold">
-            Signed adjustments ({adjustments.length})
-          </summary>
-          <p className="my-2">
-            Ribbons show positive net connections. Filled node edges show totals
-            after negative adjustments; dashed extensions show the difference.
-            Negative entries below are included in the totals, not drawn as
-            positive flows.
-          </p>
-          <div className="max-h-72 overflow-auto">
-            <table className="w-full text-left">
-              <thead>
-                <tr>
-                  <th className="p-2">From</th>
-                  <th className="p-2">To</th>
-                  <th className="p-2 text-right">Adjustment</th>
-                </tr>
-              </thead>
-              <tbody>
-                {adjustments.map((link) => (
-                  <tr
-                    key={`${link.source}/${link.target}`}
-                    className="border-t border-gray-200"
-                  >
-                    <td className="p-2">
-                      {
-                        graph?.nodes.find((node) => node.id === link.source)
-                          ?.label
-                      }
-                    </td>
-                    <td className="p-2">
-                      {
-                        graph?.nodes.find((node) => node.id === link.target)
-                          ?.label
-                      }
-                    </td>
-                    <td className="p-2 text-right">
-                      {formatBudget(link.value)}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </details>
-      )}
-      <ChartFooter hint="Hover for amounts; click a bar or connection to pin details." />
+      <ChartFooter
+        hint="Hover for amounts; click a bar or connection to pin details."
+        details={
+          adjustments.length > 0 && (
+            <details className="text-sm">
+              <summary className="cursor-pointer font-semibold">
+                Signed adjustments ({adjustments.length})
+              </summary>
+              <p className="my-2">
+                Ribbons show positive net connections. Filled node edges show
+                totals after negative adjustments; dashed extensions show the
+                difference. Negative entries below are included in the totals,
+                not drawn as positive flows.
+              </p>
+              <div className="max-h-72 overflow-auto">
+                <table className="w-full text-left">
+                  <thead>
+                    <tr>
+                      <th className="p-2">From</th>
+                      <th className="p-2">To</th>
+                      <th className="p-2 text-right">Adjustment</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {adjustments.map((link) => (
+                      <tr
+                        key={`${link.source}/${link.target}`}
+                        className="border-t border-gray-200"
+                      >
+                        <td className="p-2">
+                          {
+                            graph?.nodes.find((node) => node.id === link.source)
+                              ?.label
+                          }
+                        </td>
+                        <td className="p-2">
+                          {
+                            graph?.nodes.find((node) => node.id === link.target)
+                              ?.label
+                          }
+                        </td>
+                        <td className="p-2 text-right">
+                          {formatBudget(link.value)}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </details>
+          )
+        }
+      />
     </section>
   );
 }
