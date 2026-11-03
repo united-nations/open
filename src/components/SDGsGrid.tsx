@@ -43,11 +43,12 @@ import { useYearRanges, generateYearRange } from "@/lib/useYearRanges";
 import {
   SDG,
   SDGExpensesData,
-  SDG_COLORS,
   SDG_EXTRA_GROUPS,
   getSDGKey,
   getSDGLabel,
   getSDGColor,
+  getSDGDetail,
+  getSDGNumber,
 } from "@/lib/sdgs";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -219,8 +220,9 @@ export default function SDGsGrid({
   }, [hasScrollRevealed, treemapOnly]);
 
   const parseSDGNumber = useCallback((value: string) => {
-    const num = parseInt(value, 10);
-    return isNaN(num) ? null : num;
+    if (!value.trim()) return null;
+    const num = getSDGNumber(value);
+    return Number.isInteger(num) && num >= -1 && num <= 17 ? num : null;
   }, []);
 
   const [pendingDeepLink, setPendingDeepLink] = useDeepLink<number | null>({
@@ -232,7 +234,7 @@ export default function SDGsGrid({
 
   useEffect(() => {
     const frame = requestAnimationFrame(() => {
-      if (pendingDeepLink && sdgs.length > 0) {
+      if (pendingDeepLink !== null && sdgs.length > 0) {
         const requestedYear = Number(
           new URLSearchParams(window.location.search).get("year"),
         );
@@ -243,7 +245,7 @@ export default function SDGsGrid({
           }
           if (loadedYear !== requestedYear) return;
         }
-        const sdg = sdgs.find((s) => s.number === pendingDeepLink);
+        const sdg = getSDGDetail(pendingDeepLink, sdgs);
         if (sdg) setSelectedSDG(sdg);
         setPendingDeepLink(null);
       }
@@ -508,7 +510,7 @@ export default function SDGsGrid({
         }
         footer={
           <ChartFooter
-            hint="Click on an SDG to explore details"
+            hint="Click a goal or expenditure group to explore details"
             signedAmounts={filteredSDGData.flatMap((row) =>
               Object.entries(row.entities).map(([label, amount]) => ({
                 group:
@@ -532,7 +534,7 @@ export default function SDGsGrid({
         >
           {filteredSDGData.map((sdgData) => {
             const sdgNumber = sdgData.sdgNumber;
-            const sdg = sdgs.find((s) => s.number === sdgNumber);
+            const sdg = getSDGDetail(sdgNumber, sdgs);
             const color = getSDGColor(sdgNumber);
             const shortTitle = getSDGLabel(sdgNumber);
             const pos = positionLookup[sdgNumber.toString()];
@@ -570,7 +572,9 @@ export default function SDGsGrid({
                       sdgNumber <= 0 && !showSpending ? true : undefined
                     }
                     aria-label={
-                      sdg ? `SDG ${sdgNumber}: ${shortTitle}` : shortTitle
+                      sdgNumber > 0
+                        ? `SDG ${sdgNumber}: ${shortTitle}`
+                        : shortTitle
                     }
                     style={{
                       left: `${pos.x}%`,
@@ -718,9 +722,7 @@ export default function SDGsGrid({
                       label: "Expenditure",
                       value: formatBudget(sdgData.total),
                     }}
-                    actionHint={
-                      sdgNumber <= 0 ? undefined : "Click to explore details"
-                    }
+                    actionHint="Click to explore details"
                   />
                 </TooltipContent>
               </Tooltip>
@@ -731,14 +733,17 @@ export default function SDGsGrid({
 
       {selectedSDG && (
         <SDGModal
+          key={selectedSDG.number}
           sdg={selectedSDG}
           onClose={() => {
             setSelectedSDG(null);
             clearSidebarHash();
           }}
-          color={SDG_COLORS[selectedSDG.number]}
+          color={getSDGColor(selectedSDG.number)}
           entityExpenses={
-            expensesData?.[selectedSDG.number.toString()]?.entities
+            loadedYear === selectedYear
+              ? expensesData?.[getSDGKey(selectedSDG.number)]?.entities
+              : undefined
           }
           initialYear={selectedYear}
         />

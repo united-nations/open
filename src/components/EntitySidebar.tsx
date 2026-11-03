@@ -6,6 +6,7 @@ import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 
 import { ArrowRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { SidebarControls } from "@/components/SidebarControls";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
@@ -82,6 +83,7 @@ export function EntitySidebar({
   initialDataComplete = true,
   onClose,
 }: EntitySidebarProps) {
+  const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [impactResult, setImpactResult] = useState<{
@@ -589,7 +591,9 @@ export function EntitySidebar({
                           label={contrib.donor}
                           value={formatBudgetFixed(contrib.total)}
                           onClick={() =>
-                            navigateToSidebar("donor", contrib.donor)
+                            router.push(
+                              `/system/contributors/?year=${selectedYear}#donor=${encodeURIComponent(contrib.donor)}`,
+                            )
                           }
                         >
                           <Tooltip delayDuration={200}>
@@ -741,10 +745,10 @@ export function EntitySidebar({
                           key={item.sdg}
                           label={getSDGLabel(item.sdg)}
                           value={formatBudgetFixed(item.amount)}
-                          onClick={
-                            item.sdg <= 0
-                              ? undefined
-                              : () => navigateToSidebar("sdg", item.sdg)
+                          onClick={() =>
+                            router.push(
+                              `/system/goals/?year=${selectedYear}#sdg=${item.sdg}`,
+                            )
                           }
                           badge={
                             <FinancialPanelGoalBadge

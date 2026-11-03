@@ -4,7 +4,8 @@ import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 
 import { useCallback, useEffect, useState } from "react";
 import { formatBudget } from "@/lib/entities";
-import { SDG } from "@/lib/sdgs";
+import { SDG, SDGExpensesData, getSDGKey } from "@/lib/sdgs";
+import { useRouter } from "next/navigation";
 import { SidebarControls } from "@/components/SidebarControls";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { navigateToSidebar } from "@/hooks/useDeepLink";
@@ -40,13 +41,6 @@ const UNINFO_SORT_OPTIONS: SortOption[] = [
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-interface SDGExpensesData {
-  [sdgNumber: string]: {
-    total: number;
-    entities: { [entity: string]: number };
-  };
-}
-
 interface SDGModalProps {
   sdg: SDG | null;
   onClose: () => void;
@@ -62,6 +56,7 @@ export default function SDGModal({
   entityExpenses,
   initialYear,
 }: SDGModalProps) {
+  const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -84,7 +79,7 @@ export default function SDGModal({
       if (!res.ok) throw new Error(String(res.status));
       return res.json() as Promise<SDGExpensesData>;
     });
-    return sdg ? data[sdg.number.toString()]?.entities : undefined;
+    return sdg ? data[getSDGKey(sdg.number)]?.entities : undefined;
   }, [selectedYear, sdg]);
   const {
     value: yearEntityExpenses,
@@ -93,7 +88,7 @@ export default function SDGModal({
   } = useYearResource<{ [entity: string]: number } | undefined>(
     `${sdg?.number}-${selectedYear}`,
     entityExpenses,
-    !sdg || selectedYear === initialYear,
+    !sdg || (selectedYear === initialYear && entityExpenses !== undefined),
     loadYear,
     undefined,
   );
@@ -108,7 +103,7 @@ export default function SDGModal({
 
   // Load UNINFO data and country names
   useEffect(() => {
-    if (!SHOW_UNINFO || !sdg) return;
+    if (!SHOW_UNINFO || !sdg || sdg.number <= 0) return;
     Promise.all([loadUninfoSdgs(), loadUninfoCountryIndex()])
       .then(([sdgData, indexData]) => {
         setUninfoData(sdgData[sdg.number.toString()] || null);
@@ -174,7 +169,11 @@ export default function SDGModal({
   const sortedEntities = yearEntityExpenses
     ? Object.entries(yearEntityExpenses)
         .map(([name, amount]) => ({ name, amount }))
-        .sort((a, b) => b.amount - a.amount)
+        .sort((a, b) =>
+          sdg.number === -1
+            ? Math.abs(b.amount) - Math.abs(a.amount)
+            : b.amount - a.amount,
+        )
     : [];
 
   const displayedEntities = showAllEntities
@@ -183,7 +182,7 @@ export default function SDGModal({
 
   const maxAmount =
     sortedEntities.length > 0
-      ? Math.max(...sortedEntities.map((e) => e.amount))
+      ? Math.max(...sortedEntities.map((e) => Math.abs(e.amount)))
       : 0;
 
   const totalExpenses = sortedEntities.reduce((sum, e) => sum + e.amount, 0);
@@ -211,12 +210,14 @@ export default function SDGModal({
           className="sm:w-full"
           title={
             <span className="flex items-start gap-2">
-              <span
-                className="flex size-6 shrink-0 items-center justify-center font-bold text-white"
-                style={{ backgroundColor: color }}
-              >
-                {sdg.number}
-              </span>
+              {sdg.number > 0 && (
+                <span
+                  className="flex size-6 shrink-0 items-center justify-center font-bold text-white"
+                  style={{ backgroundColor: color }}
+                >
+                  {sdg.number}
+                </span>
+              )}
               <span className="min-w-0">{sdg.shortTitle}</span>
             </span>
           }
@@ -249,31 +250,48 @@ export default function SDGModal({
               </p>
             )}
             {/* Entity Spending Breakdown */}
-            {(sortedEntities.length > 0 || loadingYear) && (
+            {(yearEntityExpenses !== undefined || loadingYear) && (
               <div>
                 <FinancialPanelHeading className="mb-3">
                   System-wide financials
                 </FinancialPanelHeading>
 
                 <FinancialPanelTotalRow
-                  label="Total expenditure"
-                  value={loadingYear ? "Loading…" : formatBudget(totalExpenses)}
+                  label={
+                    sdg.number === -1
+                      ? "Calculated balance"
+                      : "Total expenditure"
+                  }
+                  value={
+                    loadingYear
+                      ? "Loading…"
+                      : sortedEntities.length
+                        ? formatBudget(totalExpenses)
+                        : "Unavailable"
+                  }
                 />
 
                 <div className="mt-4">
                   <FinancialPanelHeading subheading>
-                    Expenditure by entity
+                    {sdg.number === -1
+                      ? "Reconciliation by entity"
+                      : "Expenditure by entity"}
                   </FinancialPanelHeading>
                   <div className="mt-2 space-y-1.5">
                     {displayedEntities.map((entity) => {
-                      const normalizedWidth = (entity.amount / maxAmount) * 100;
+                      const normalizedWidth =
+                        maxAmount > 0
+                          ? (Math.abs(entity.amount) / maxAmount) * 100
+                          : 0;
                       return (
                         <FinancialPanelRankedRow
                           key={entity.name}
                           label={entity.name}
                           value={formatBudget(entity.amount)}
                           onClick={() =>
-                            navigateToSidebar("entity", entity.name)
+                            router.push(
+                              `/system/organizations/?year=${selectedYear}#entity=${encodeURIComponent(entity.name)}`,
+                            )
                           }
                         >
                           <FinancialPanelBar
@@ -293,12 +311,17 @@ export default function SDGModal({
                       </button>
                     )}
                   </div>
+                  {!loadingYear && sortedEntities.length === 0 && (
+                    <p className="mt-2 text-sm text-gray-500">
+                      No entity breakdown is available for {selectedYear}.
+                    </p>
+                  )}
                 </div>
               </div>
             )}
 
             {/* UNSDG Cooperation Framework Section */}
-            {SHOW_UNINFO && uninfoData && (
+            {SHOW_UNINFO && sdg.number > 0 && uninfoData && (
               <div className="border-t border-gray-200 pt-4">
                 <FinancialPanelHeading className="mb-1">
                   UNSDG Cooperation Framework financials
@@ -451,40 +474,42 @@ export default function SDGModal({
             )}
 
             {/* Targets and Indicators */}
-            <div className="border-t border-gray-200 pt-4">
-              <FinancialPanelHeading className="mb-3">
-                Targets and indicators
-              </FinancialPanelHeading>
-              <div className="space-y-4">
-                {sdg.targets.map((target) => (
-                  <div key={target.number}>
-                    <FinancialPanelHeading subheading className="mb-2">
-                      Target {target.number}
-                    </FinancialPanelHeading>
-                    <p className="mb-3 text-xs leading-relaxed text-gray-700 sm:text-sm">
-                      {target.description}
-                    </p>
-                    {target.indicators.length > 0 && (
-                      <div className="ml-3 space-y-2">
-                        {target.indicators.map((indicator) => (
-                          <div
-                            key={indicator.number}
-                            className="flex items-start gap-2 text-xs sm:text-sm"
-                          >
-                            <span className="font-semibold whitespace-nowrap text-gray-900">
-                              {indicator.number}
-                            </span>
-                            <span className="leading-relaxed text-gray-700">
-                              {indicator.description}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
+            {sdg.number > 0 && (
+              <div className="border-t border-gray-200 pt-4">
+                <FinancialPanelHeading className="mb-3">
+                  Targets and indicators
+                </FinancialPanelHeading>
+                <div className="space-y-4">
+                  {sdg.targets.map((target) => (
+                    <div key={target.number}>
+                      <FinancialPanelHeading subheading className="mb-2">
+                        Target {target.number}
+                      </FinancialPanelHeading>
+                      <p className="mb-3 text-xs leading-relaxed text-gray-700 sm:text-sm">
+                        {target.description}
+                      </p>
+                      {target.indicators.length > 0 && (
+                        <div className="ml-3 space-y-2">
+                          {target.indicators.map((indicator) => (
+                            <div
+                              key={indicator.number}
+                              className="flex items-start gap-2 text-xs sm:text-sm"
+                            >
+                              <span className="font-semibold whitespace-nowrap text-gray-900">
+                                {indicator.number}
+                              </span>
+                              <span className="leading-relaxed text-gray-700">
+                                {indicator.description}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </FinancialDetailPanel>
       </div>

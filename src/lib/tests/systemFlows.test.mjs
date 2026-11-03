@@ -45,6 +45,15 @@ const base = {
     B: { label: "B", category: "Funds", color: "#111" },
   },
 };
+test("Non-SDG and calculated goal balances link to their detail sidebars", () => {
+  const input = structuredClone(base);
+  input.spending.entities.A.goals.push({ key: "unallocated", label: "Non-SDG", amount: 10 });
+  const graph = buildSystemFlows(input, {
+    funding: "contributor", organization: "organization", spending: "goal", limit: 12,
+  }, describe);
+  assert.ok(graph.nodes.some(node => node.detail?.kind === "sdg" && node.detail.value === "0"));
+  assert.ok(graph.nodes.some(node => node.detail?.kind === "sdg" && node.detail.value === "-1"));
+});
 test("signed inflows and both signs of missing coverage reconcile without clipping", () => {
   const graph = buildSystemFlows(
     base,

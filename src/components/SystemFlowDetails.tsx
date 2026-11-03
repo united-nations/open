@@ -17,13 +17,16 @@ function DetailLink({ node, year }: { node: FlowNode; year: number }) {
     sdg: "goals",
     function: "functions",
   }[kind];
-  const noun = {
-    entity: "organization",
-    donor: "contributor",
-    country: "location",
-    sdg: "goal",
-    function: "function",
-  }[kind];
+  const noun =
+    kind === "sdg" && (value === "0" || value === "-1")
+      ? "expenditure group"
+      : {
+          entity: "organization",
+          donor: "contributor",
+          country: "location",
+          sdg: "goal",
+          function: "function",
+        }[kind];
   return (
     <Link
       className="text-sm underline underline-offset-2"

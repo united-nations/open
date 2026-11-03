@@ -41,8 +41,7 @@ export const SDG_EXTRA_GROUPS: Record<
     key: "non_sdg",
     label: "Non-SDG",
     color: "#6b7280",
-    description:
-      "Expenditure reported by CEB under its Non-SDG code (x00).",
+    description: "Expenditure reported by CEB under its Non-SDG code (x00).",
   },
   [-1]: {
     key: "sdg_not_specified",
@@ -64,6 +63,14 @@ export const getSDGNumber = (key: string) =>
       ([, group]) => group.key === key,
     )?.[0] ?? key,
   );
+
+/** Detail-panel entries include the two reported/calculated expenditure groups. */
+export function getSDGDetail(number: number, goals: SDG[]): SDG | undefined {
+  const group = SDG_EXTRA_GROUPS[number];
+  return group
+    ? { number, shortTitle: group.label, title: group.description, targets: [] }
+    : goals.find((goal) => goal.number === number);
+}
 
 // SDG Colors (official UN SDG colors)
 export const SDG_COLORS: Record<number, string> = {

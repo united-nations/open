@@ -214,8 +214,19 @@ export function buildSystemFlows(
                 : "Region",
         detail: country
           ? { kind: "country", value: country }
-          : choices.spending === "goal" && /^([1-9]|1[0-7])$/.test(key)
-            ? { kind: "sdg", value: key }
+          : choices.spending === "goal" &&
+              (/^([1-9]|1[0-7])$/.test(key) ||
+                key === "unallocated" ||
+                key === "coverage-difference")
+            ? {
+                kind: "sdg",
+                value:
+                  key === "unallocated"
+                    ? "0"
+                    : key === "coverage-difference"
+                      ? "-1"
+                      : key,
+              }
             : choices.spending === "function" &&
                 key !== "coverage-difference" &&
                 key !== "unavailable"
