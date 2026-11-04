@@ -1972,9 +1972,11 @@ export function BudgetTreemap({
       return [
         {
           key: "total",
-          label: searchQuery.trim()
-            ? "Matching expenditure (unconsolidated)"
-            : "Reported expenditure (unconsolidated)",
+          label:
+            (searchQuery.trim()
+              ? "Matching expenditure"
+              : "Reported expenditure") +
+            (SHOW_ADDITIONAL_TRUST_FUNDS ? " (unconsolidated)" : ""),
           value:
             groups.length > 0 && groups.every((group) => group.amount === null)
               ? "Not available"

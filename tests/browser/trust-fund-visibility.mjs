@@ -32,11 +32,9 @@ if (flags.trustFunds && !flags.additionalTrustFunds) {
         waitUntil: "networkidle",
       });
       for (const entity of ["UNEP", "UNODC", "UN-Habitat", "ITC"]) {
-        const link = page.getByRole("link", { name: entity, exact: true });
-        assert.equal(await link.count(), 1);
-        assert.match(
-          await link.getAttribute("href"),
-          /^https:\/\/digitallibrary\.un\.org\/record\/.*\.pdf/,
+        assert.equal(
+          await page.getByRole("link", { name: entity, exact: true }).count(),
+          0,
         );
       }
       assert.equal(
@@ -56,11 +54,9 @@ if (flags.trustFunds && !flags.additionalTrustFunds) {
       );
       if (!suffix) {
         const summary = page.locator("dl").filter({
-          has: page
-            .locator("dt")
-            .getByText("Reported expenditure (unconsolidated)", {
-              exact: true,
-            }),
+          has: page.locator("dt").getByText("Reported expenditure", {
+            exact: true,
+          }),
         });
         await summary
           .locator("dd")
@@ -185,7 +181,7 @@ if (flags.trustFunds && !flags.additionalTrustFunds) {
       .filter({
         has: page
           .locator("dt")
-          .getByText("Reported expenditure (unconsolidated)", { exact: true }),
+          .getByText("Reported expenditure", { exact: true }),
       })
       .locator("dd")
       .getByText(compactUSD.format(control), { exact: true })
@@ -219,7 +215,7 @@ if (flags.trustFunds && !flags.additionalTrustFunds) {
     );
     assert.deepEqual(errors, []);
     console.log(
-      "Trust Funds: Volume I total, hidden additional-source controls and deep links, four introductory report links, and contributor scope pass.",
+      "Trust Funds: Volume I total, hidden additional-source controls and deep links, plain-text additional-entity intro, and contributor scope pass.",
     );
   } finally {
     await browser.close();
