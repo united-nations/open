@@ -15,10 +15,14 @@ const views = [
           route: "/secretariat/programme-budget/contributors/",
           scope: "#regular-budget-contributors",
         },
-        {
-          route: "/secretariat/programme-budget/contributors/",
-          scope: "#regular-budget-outstanding",
-        },
+        ...(flags.regularBudgetOutstanding
+          ? [
+              {
+                route: "/secretariat/programme-budget/contributors/",
+                scope: "#regular-budget-outstanding",
+              },
+            ]
+          : []),
       ]
     : []),
   ...(flags.peacekeepingBudget

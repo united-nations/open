@@ -21,7 +21,9 @@ const checks = [
   "secretariat-flows",
   "sidebar-years",
   "secretariat-sidebar-years",
-  "regular-budget-outstanding",
+  ...(profiles[process.env.SITE_VARIANT ?? "public"].regularBudgetOutstanding
+    ? ["regular-budget-outstanding"]
+    : ["regular-budget-contributors-visibility"]),
   "budget-sources",
   "budget-funding",
   "ppb-ranges-currency",

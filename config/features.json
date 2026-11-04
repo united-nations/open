@@ -1,6 +1,7 @@
 {
   "public": {
     "programmeBudget": false,
+    "regularBudgetOutstanding": false,
     "peacekeepingBudget": false,
     "trustFunds": false,
     "additionalTrustFunds": false,
@@ -14,6 +15,7 @@
   },
   "preview": {
     "programmeBudget": true,
+    "regularBudgetOutstanding": false,
     "peacekeepingBudget": true,
     "trustFunds": true,
     "additionalTrustFunds": false,

@@ -64,6 +64,11 @@ reproducible public sources for this view.
 
 ## Outstanding contributions (autumn snapshots)
 
+The `regularBudgetOutstanding` feature flag controls the outstanding-balance
+section, its sidebar history and additional years, section headings, and related
+introductory/source/methodology text. It is disabled in both public and preview
+versions. The extraction and source data remain available for future use.
+
 `python/24-export_regular_budget_outstanding.py` runs after step 13 and produces
 `regular-budget-outstanding-{year}.json` for 2018–2026. Regenerate the manifest
 after adding coverage. `data/regular-budget-outstanding/observations.csv` retains

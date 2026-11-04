@@ -1,4 +1,5 @@
 "use client";
+import { SHOW_REGULAR_BUDGET_OUTSTANDING } from "@/lib/featureFlags";
 import { Link as LinkIcon } from "lucide-react";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { formatAssessmentRate } from "@un-eosg/ui/format-budget";
@@ -207,18 +208,20 @@ export function RegularBudgetContributorsTreemap() {
       id="regular-budget-contributors"
       className="relative w-full scroll-mt-40"
     >
-      <h2 className="group mb-5 text-2xl font-medium">
-        <a
-          href="#regular-budget-contributors"
-          className="underline-offset-4 hover:underline focus-visible:underline"
-        >
-          Assessed contributions
-          <LinkIcon
-            aria-hidden="true"
-            className="ml-2 inline size-5 align-baseline text-gray-400 opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100"
-          />
-        </a>
-      </h2>
+      {SHOW_REGULAR_BUDGET_OUTSTANDING && (
+        <h2 className="group mb-5 text-2xl font-medium">
+          <a
+            href="#regular-budget-contributors"
+            className="underline-offset-4 hover:underline focus-visible:underline"
+          >
+            Assessed contributions
+            <LinkIcon
+              aria-hidden="true"
+              className="ml-2 inline size-5 align-baseline text-gray-400 opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100"
+            />
+          </a>
+        </h2>
+      )}
       <DelayedChartLoading
         pending={loadedData?.meta.year !== selectedYear}
         requestKey={selectedYear}
@@ -437,14 +440,16 @@ export function RegularBudgetContributorsTreemap() {
           <RegularBudgetPaymentTimelineCard />
         </div>
       </PaymentChartScaleProvider>
-      <RegularBudgetOutstandingView
-        onSelect={(name, year) => {
-          setPending(null);
-          setSidebarYear(year);
-          setSelectedName(name);
-          replaceToSidebar("regular-budget-contributor", name);
-        }}
-      />
+      {SHOW_REGULAR_BUDGET_OUTSTANDING && (
+        <RegularBudgetOutstandingView
+          onSelect={(name, year) => {
+            setPending(null);
+            setSidebarYear(year);
+            setSelectedName(name);
+            replaceToSidebar("regular-budget-contributor", name);
+          }}
+        />
+      )}
     </div>
   );
 }

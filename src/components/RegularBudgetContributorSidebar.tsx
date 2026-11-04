@@ -1,4 +1,5 @@
 "use client";
+import { SHOW_REGULAR_BUDGET_OUTSTANDING } from "@/lib/featureFlags";
 import { formatAssessmentRate } from "@un-eosg/ui/format-budget";
 
 import { useEffect, useState } from "react";
@@ -102,7 +103,7 @@ export function RegularBudgetContributorSidebar({
   const availableYears = [
     ...new Set([
       ...history.filter((item) => item.member).map((item) => item.year),
-      ...outstandingYears,
+      ...(SHOW_REGULAR_BUDGET_OUTSTANDING ? outstandingYears : []),
     ]),
   ].sort((a, b) => b - a);
   const status = member
@@ -186,17 +187,20 @@ export function RegularBudgetContributorSidebar({
                 </dl>
                 <p className="mt-2 text-sm text-gray-500">
                   The honour roll records full settlement, not individual
-                  partial payments. Outstanding balances below show the amount
-                  still owed at a separate autumn reporting date.
+                  partial payments.
+                  {SHOW_REGULAR_BUDGET_OUTSTANDING &&
+                    " Outstanding balances below show the amount still owed at a separate autumn reporting date."}
                 </p>
               </FinancialPanelSection>
             </>
           )}
-          <RegularBudgetOutstandingSidebarHistory
-            name={name}
-            year={year}
-            assessments={files}
-          />
+          {SHOW_REGULAR_BUDGET_OUTSTANDING && (
+            <RegularBudgetOutstandingSidebarHistory
+              name={name}
+              year={year}
+              assessments={files}
+            />
+          )}
           <FinancialPanelSection heading="Assessment history">
             {loading ? (
               <p role="status" className="text-sm text-gray-500">
