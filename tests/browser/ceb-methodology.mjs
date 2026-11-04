@@ -88,7 +88,7 @@ try {
       assert.equal(
         await page
           .getByRole("heading", {
-            name: "UN Secretariat methodology",
+            name: "UN Secretariat Financials",
             exact: true,
           })
           .count(),

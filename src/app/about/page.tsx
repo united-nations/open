@@ -36,7 +36,7 @@ export default function AboutPage() {
             id="ceb-methodology-title"
             className="text-2xl font-bold text-gray-900"
           >
-            CEB sources and methodology
+            UN System Financials
           </h2>
           <CebMethodology expandable showCoverage={false} />
         </section>
@@ -49,7 +49,7 @@ export default function AboutPage() {
             id="secretariat-methodology-title"
             className="text-2xl font-bold text-gray-900"
           >
-            UN Secretariat methodology
+            UN Secretariat Financials
           </h2>
           <div className="space-y-2 text-sm leading-relaxed text-gray-600">
             <SecretariatMethodology />
