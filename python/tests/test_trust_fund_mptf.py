@@ -21,7 +21,7 @@ class TrustFundMptfTests(unittest.TestCase):
     def test_all_source_expense_totals_and_columns(self):
         controls = {2017: (4, 351465390), 2018: (4, 482326447), 2019: (4, 584791664),
                     2020: (5, 578584742), 2021: (5, 533653391), 2022: (5, 908038775),
-                    2023: (5, 270299994), 2024: (6, 163733038)}
+                    2023: (5, 270299994), 2024: (6, 163733038), 2025: (6, 152450936)}
         for year, (count, amount) in controls.items():
             facts, checks, tables = self.bundles[year]
             rows = [r for r in facts if r["period_year"] == year and r["line_item"] == "Total expenses"]
@@ -41,6 +41,20 @@ class TrustFundMptfTests(unittest.TestCase):
         self.assertEqual(rows["mptf:digital-cooperation-fund"]["amount_usd"], 2464365)
         self.assertEqual({r["page"] for r in rows.values()}, {431})
         self.assertEqual(rows["mptf:peacebuilding-fund"]["source_column"], "UN Peacebuilding Fund")
+
+    def test_2025_peacebuilding_transfer_keeps_the_printed_total(self):
+        payload = json.loads((ROOT / "public/data/trust-fund-contributors-2025.json").read_text())
+        aggregate = next(row for row in payload["contributors"]
+                         if row["name"] == "MPTF voluntary contributions")
+        self.assertEqual(aggregate["amount_usd"], 147_355_357)
+        self.assertEqual({f["group"]: f["amount_usd"] for f in aggregate["flows"]},
+                         {"unitemized": 141_355_357, "internal": 6_000_000})
+        peace = next(f for f in aggregate["destinations"] if f["fund_id"].endswith("peacebuilding-fund"))
+        self.assertEqual(peace["amount_usd"], 136_805_602)
+        transfer = next(f for f in peace["flows"] if f["group"] == "internal")
+        [ref] = transfer["supportingSources"]
+        self.assertEqual(ref["pdfPage"], 436)
+        self.assertIn("64PBA", ref["rowLabel"])
 
     def test_unitemized_contributions_match_current_columns_and_printed_totals(self):
         for year, (facts, controls, _) in self.bundles.items():
@@ -62,7 +76,8 @@ class TrustFundMptfTests(unittest.TestCase):
                     row = expected.pop(fund["fund_id"].split(":fund:", 1)[1])
                     self.assertIsNone(fund["fund_code"])
                     self.assertEqual(fund["amount_usd"], row["amount_usd"])
-                    [ref] = fund["supportingSources"]
+                    [ref] = [source for source in fund["supportingSources"]
+                             if source["rowLabel"] == "Voluntary contributions"]
                     self.assertEqual(ref["pdfPage"], row["page"])
                     self.assertEqual(ref["columnHeader"], row["source_column"])
                     self.assertEqual(ref["rowLabel"], "Voluntary contributions")

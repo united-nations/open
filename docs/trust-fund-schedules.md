@@ -134,7 +134,7 @@ Stage 2 is written only if all blocking gates pass:
 stage 2 but still exits non-zero. Normal downstream runs should never use it.
 
 The current full-corpus run finds 157 fund codes, 1,118 fund-years, and 4,511
-literal tables across 2017–2024. The exact-title Digital Library search does not
+literal tables across the retained annual schedules. The exact-title Digital Library search does not
 return the 2020 schedule, but the official Documents System serves its PDF. The
 pipeline records 2020 as a Documents-only source rather than synthesizing it or
 pretending it has a Digital Library record ID.
@@ -213,11 +213,11 @@ printed in that year's matrix. This does not represent the entire UNDP MPTF
 portfolio.
 
 The matrix extractor reads each statement's headers independently, including
-rotated pages and changed comparative column orders. Across 2017–2024 it exports
-38 current-year account records. Current expense columns reconcile exactly to
-each printed total; the 2024 signed total is $163,733,038 across six accounts.
-Negative Haiti and COVID-19 adjustments remain in the total and the nonpositive
-fund list. An absent annual column does not create a zero observation. Printed
+rotated pages and changed comparative column orders. Across 2017–2025 it exports
+44 current-year account records. Current expense columns reconcile exactly to
+each printed total. The 2025 signed total is $152,450,936 across six accounts.
+Negative adjustments remain in the total and the nonpositive fund list.
+An absent annual column does not create a zero observation. Printed
 blanks remain unknown, including Peacebuilding's 2019 other-liabilities cell;
 the 2023 publication's 2022 comparative revenue discrepancies are retained in
 the quality profile.
@@ -251,16 +251,22 @@ recognized contributions would require a reconciliation by fund and year.
 [MPTF Office 2024 financial report](https://mptf.undp.org/sites/default/files/documents/2025-05/pbf_2024_annual_financial_report.pdf)
 and [2024 Volume I, note 27](https://digitallibrary.un.org/record/4090309/files/A_80_5_%28Vol._I%29-EN.pdf#page=280).
 
-The 2025 audited accounts disclose $141.4 million in consolidated voluntary
-contributions to the controlled MPTFs. Extending the detailed chart beyond
-2024 requires the corresponding individual trust-fund schedules.
-[2025 Volume I, note 27](https://documents.un.org/doc/undoc/gen/n26/142/06/pdf/n2614206.pdf#page=260).
+The 2025 individual schedule prints $147,355,357 in voluntary contributions
+to controlled MPTFs. Its Peacebuilding Fund footnote identifies $6 million
+from the Peacebuilding Account (64PBA). The chart shows that amount under
+Internal transfers and $141,355,357 under Contributors unspecified. The two
+categories sum to the printed schedule total. The second amount rounds to
+the $141.4 million reported in the consolidated accounts. The matrix's
+separate Other transfers and allocations line is retained in the statement
+extract. The MPTF series uses the voluntary contributions line across years.
+[2025 Schedule 8.1](https://digitallibrary.un.org/record/4125943/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2025-EN.pdf#page=436)
+and [2025 Volume I, note 27](https://documents.un.org/doc/undoc/gen/n26/142/06/pdf/n2614206.pdf#page=260).
 
-The 2024 resident coordinator fund schedule separately prints $41,952,974
-of coordination levies within its $132,520,679 voluntary contribution total.
-That column could support a funding breakdown after the extractor's column
-mapping is corrected. The exported contribution rows already include the levy
-in their totals. [2024 Schedule 6.22.1](https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf#page=404).
+The resident coordinator fund prints the coordination levy as a separate
+column. The extractor retains $41,952,974 in 2024 and $41,985,269 in 2025
+as components of the respective voluntary contribution totals.
+[2024 Schedule 6.22.1](https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf#page=405)
+and [2025 Schedule 6.22.1](https://digitallibrary.un.org/record/4125943/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2025-EN.pdf#page=410).
 
 Both extraction (`14-`) and export (`16-`) refresh the heading metadata directly
 from each year's PDF. Heading recognition follows physical line order and the

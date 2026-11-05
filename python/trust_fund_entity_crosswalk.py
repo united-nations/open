@@ -250,7 +250,7 @@ def build_crosswalk(
     missing_review = required_review - set(review.columns)
     if missing_review:
         raise ValueError(f"Review file is missing columns: {sorted(missing_review)}")
-    unexpected_decisions = set(review["decision"]) - {"map", "unresolved"}
+    unexpected_decisions = set(review["decision"]) - {"map", "schedule_entity", "unresolved"}
     if unexpected_decisions:
         raise ValueError(f"Unexpected review decisions: {unexpected_decisions}")
     if funds["fund_code"].duplicated().any():
@@ -361,7 +361,20 @@ def build_crosswalk(
                     **empty_expense_fingerprint(),
                 }
             )
-            if decision is not None:
+            if decision is not None and decision["decision"] == "schedule_entity":
+                if pd.isna(decision["candidate_entity_code"]) or pd.isna(decision["reason"]):
+                    raise ValueError(f"Schedule entity review is incomplete for {fund.fund_code}")
+                code = normalize_entity(str(decision["candidate_entity_code"]))
+                base.update({
+                    "audited_entity_code": code,
+                    "mapping_status": "mapped",
+                    "approved_for_aggregation": True,
+                    "mapping_method": "reviewed_schedule_entity",
+                    "relation_type": "source_attribution",
+                    "confidence": str(decision["confidence"]),
+                    "mapping_reason": str(decision["reason"]),
+                })
+            elif decision is not None:
                 if decision["decision"] != "unresolved":
                     raise ValueError(f"Unexpected review decision for {fund.fund_code}")
                 base.update(
@@ -379,7 +392,7 @@ def build_crosswalk(
                 base["mapping_reason"] = (
                     "No matching old-open fund label or reviewed decision."
                 )
-            base.update(ppb_match(None, ppb_index))
+            base.update(ppb_match(base["audited_entity_code"], ppb_index))
         output.append(base)
 
     crosswalk = pd.DataFrame(output).sort_values("fund_code").reset_index(drop=True)

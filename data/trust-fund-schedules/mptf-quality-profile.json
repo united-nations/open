@@ -1,7 +1,7 @@
 {
   "status": "pass",
-  "tables": 32,
-  "statement_facts": 1144,
+  "tables": 36,
+  "statement_facts": 1337,
   "current_expense_controls": [
     {
       "calendar_year": 2017,
@@ -96,6 +96,18 @@
       "source_y": 217.42660522460938,
       "reported_total_usd": 163733038,
       "fund_sum_usd": 163733038,
+      "difference_usd": 0,
+      "missing_cells": 0
+    },
+    {
+      "calendar_year": 2025,
+      "period_year": 2025,
+      "statement_type": "financial_performance",
+      "line_item": "Total expenses",
+      "page": 436,
+      "source_y": 314.5800476074219,
+      "reported_total_usd": 152450936,
+      "fund_sum_usd": 152450936,
       "difference_usd": 0,
       "missing_cells": 0
     }

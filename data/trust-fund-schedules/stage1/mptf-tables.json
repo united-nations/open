@@ -3312,5 +3312,492 @@
         ]
       }
     ]
+  },
+  {
+    "calendar_year": 2025,
+    "period_year": 2025,
+    "page": 435,
+    "statement_type": "financial_position",
+    "columns": [
+      "Common Humanitarian Fund",
+      "UN Peacebuilding Fund",
+      "Spotlight Initiative 2.0 Fund",
+      "UN Haiti Cholera Response Fund",
+      "UN COVID-19 Response & Recovery Fund",
+      "Digital Cooperation Fund",
+      "Total"
+    ],
+    "rows": [
+      {
+        "line_item": "Voluntary contributions receivable",
+        "source_y": 199.66665649414062,
+        "cells": [
+          "( 597 232)",
+          "73 916 661",
+          "37 554 448",
+          "-",
+          "-",
+          "-",
+          "110 873 877"
+        ]
+      },
+      {
+        "line_item": "Other assets",
+        "source_y": 213.86044311523438,
+        "cells": [
+          "2 065 931",
+          "27 887 449",
+          "753 276",
+          "-",
+          "3 656 565",
+          "3 087 728",
+          "37 450 949"
+        ]
+      },
+      {
+        "line_item": "Accounts payable and accrued liabilities",
+        "source_y": 228.05422973632812,
+        "cells": [
+          "560 097",
+          "7 834 485",
+          "-",
+          "-",
+          "-",
+          "849 295",
+          "9 243 877"
+        ]
+      },
+      {
+        "line_item": "Other liabilities",
+        "source_y": 242.24801635742188,
+        "cells": [
+          "-",
+          "6 951 600",
+          "36 848 566",
+          "-",
+          "-",
+          "-",
+          "43 800 166"
+        ]
+      },
+      {
+        "line_item": "Net assets",
+        "source_y": 256.2770080566406,
+        "cells": [
+          "908 602",
+          "87 018 025",
+          "1 459 158",
+          "-",
+          "3 656 565",
+          "2 238 433",
+          "95 280 783"
+        ]
+      }
+    ]
+  },
+  {
+    "calendar_year": 2025,
+    "period_year": 2024,
+    "page": 435,
+    "statement_type": "financial_position",
+    "columns": [
+      "Common Humanitarian Fund",
+      "UN Peacebuilding Fund",
+      "Spotlight Initiative 2.0 Fund",
+      "UN Haiti Cholera Response Fund",
+      "UN COVID-19 Response & Recovery Fund",
+      "Digital Cooperation Fund",
+      "Total"
+    ],
+    "rows": [
+      {
+        "line_item": "Voluntary contributions receivable",
+        "source_y": 468.5680847167969,
+        "cells": [
+          "(3 620 952)",
+          "73 361 889",
+          "1 212 273",
+          "-",
+          "-",
+          "887 426",
+          "71 840 636"
+        ]
+      },
+      {
+        "line_item": "Other assets",
+        "source_y": 482.7618713378906,
+        "cells": [
+          "10 497 072",
+          "28 597 962",
+          "11 839 748",
+          "1 355 715",
+          "3 230 111",
+          "4 388 554",
+          "59 909 162"
+        ]
+      },
+      {
+        "line_item": "Accounts payable and accrued liabilities",
+        "source_y": 496.9556579589844,
+        "cells": [
+          "560 098",
+          "9 292 740",
+          "-",
+          "-",
+          "-",
+          "849 295",
+          "10 702 133"
+        ]
+      },
+      {
+        "line_item": "Other liabilities",
+        "source_y": 511.3252258300781,
+        "cells": [
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-",
+          "-"
+        ]
+      },
+      {
+        "line_item": "Net assets",
+        "source_y": 525.1784057617188,
+        "cells": [
+          "6 316 022",
+          "92 667 111",
+          "13 052 021",
+          "1 355 715",
+          "3 230 111",
+          "4 426 685",
+          "121 047 665"
+        ]
+      }
+    ]
+  },
+  {
+    "calendar_year": 2025,
+    "period_year": 2025,
+    "page": 436,
+    "statement_type": "financial_performance",
+    "columns": [
+      "Common Humanitarian Fund",
+      "UN Peacebuilding /a Fund",
+      "Spotlight Initiative 2.0 Fund",
+      "UN Haiti Cholera Response Fund",
+      "UN COVID-19 Response & Recovery Fund",
+      "Digital Cooperation Fund",
+      "Total"
+    ],
+    "rows": [
+      {
+        "line_item": "Voluntary contributions",
+        "source_y": 201.01876831054688,
+        "cells": [
+          "-",
+          "136 805 602",
+          "10 149 755",
+          "-",
+          "-",
+          "400 000",
+          "147 355 357"
+        ]
+      },
+      {
+        "line_item": "Other transfers and allocations",
+        "source_y": 215.21255493164062,
+        "cells": [
+          "(5 168 936)",
+          "(18 875 975)",
+          "-",
+          "-",
+          "-",
+          "195 250",
+          "(23 849 661)"
+        ]
+      },
+      {
+        "line_item": "Investment revenue",
+        "source_y": 229.40634155273438,
+        "cells": [
+          "359 522",
+          "2 416 846",
+          "139 020",
+          "-",
+          "143 377",
+          "119 593",
+          "3 178 358"
+        ]
+      },
+      {
+        "line_item": "Total revenue",
+        "source_y": 243.60012817382812,
+        "cells": [
+          "(4 809 414)",
+          "120 346 473",
+          "10 288 775",
+          "-",
+          "143 377",
+          "714 843",
+          "126 684 054"
+        ]
+      },
+      {
+        "line_item": "Grants and other transfers",
+        "source_y": 271.9986877441406,
+        "cells": [
+          "597 932",
+          "132 583 253",
+          "21 926 852",
+          "1 355 715",
+          "( 283 185)",
+          "2 888 829",
+          "159 069 396"
+        ]
+      },
+      {
+        "line_item": "Other operating expenses",
+        "source_y": 286.1924743652344,
+        "cells": [
+          "-",
+          "60 040",
+          "101 120",
+          "-",
+          "-",
+          "-",
+          "161 160"
+        ]
+      },
+      {
+        "line_item": "Other expenses",
+        "source_y": 300.3862609863281,
+        "cells": [
+          "74",
+          "(6 647 734)",
+          "( 146 334)",
+          "-",
+          "108",
+          "14 266",
+          "(6 779 620)"
+        ]
+      },
+      {
+        "line_item": "Total expenses",
+        "source_y": 314.5800476074219,
+        "cells": [
+          "598 006",
+          "125 995 559",
+          "21 881 638",
+          "1 355 715",
+          "( 283 077)",
+          "2 903 095",
+          "152 450 936"
+        ]
+      },
+      {
+        "line_item": "Surplus/(Deficit) for the year",
+        "source_y": 342.9786071777344,
+        "cells": [
+          "(5 407 420)",
+          "(5 649 086)",
+          "(11 592 863)",
+          "(1 355 715)",
+          "426 454",
+          "(2 188 252)",
+          "(25 766 882)"
+        ]
+      },
+      {
+        "line_item": "Net asset opening",
+        "source_y": 357.1723937988281,
+        "cells": [
+          "6 316 022",
+          "92 667 111",
+          "13 052 021",
+          "1 355 715",
+          "3 230 111",
+          "4 426 685",
+          "121 047 665"
+        ]
+      },
+      {
+        "line_item": "Net asset closing",
+        "source_y": 371.2013854980469,
+        "cells": [
+          "908 602",
+          "87 018 025",
+          "1 459 158",
+          "-",
+          "3 656 565",
+          "2 238 433",
+          "95 280 783"
+        ]
+      }
+    ],
+    "footnotes": [
+      "/a Including 6mUSD transfer from the \"Peacebuilding Account\" (64PBA)."
+    ]
+  },
+  {
+    "calendar_year": 2025,
+    "period_year": 2024,
+    "page": 436,
+    "statement_type": "financial_performance",
+    "columns": [
+      "Common Humanitarian Fund",
+      "UN Peacebuilding Fund",
+      "Spotlight Initiative 2.0 Fund",
+      "UN Haiti Cholera Response Fund",
+      "UN COVID-19 Response & Recovery Fund",
+      "Digital Cooperation Fund",
+      "Total"
+    ],
+    "rows": [
+      {
+        "line_item": "Voluntary contributions",
+        "source_y": 553.7511596679688,
+        "cells": [
+          "6 707 322",
+          "104 864 313",
+          "13 055 201",
+          "-",
+          "-",
+          "5 978 759",
+          "130 605 595"
+        ]
+      },
+      {
+        "line_item": "Other transfers and allocations",
+        "source_y": 567.9449462890625,
+        "cells": [
+          "(28 128 626)",
+          "(15 216 976)",
+          "-",
+          "-",
+          "-",
+          "( 782 183)",
+          "(44 127 785)"
+        ]
+      },
+      {
+        "line_item": "Investment revenue",
+        "source_y": 582.1387329101562,
+        "cells": [
+          "1 265 774",
+          "3 445 796",
+          "177 703",
+          "49 292",
+          "121 002",
+          "95 282",
+          "5 154 849"
+        ]
+      },
+      {
+        "line_item": "Total revenue",
+        "source_y": 596.33251953125,
+        "cells": [
+          "(20 155 530)",
+          "93 093 133",
+          "13,232,904",
+          "49 292",
+          "121 002",
+          "5 291 858",
+          "91 632 659"
+        ]
+      },
+      {
+        "line_item": "Grants and other transfers",
+        "source_y": 624.7310791015625,
+        "cells": [
+          "18 620 478",
+          "134 471 229",
+          "-",
+          "( 65 115)",
+          "( 404 008)",
+          "2 405 319",
+          "155 027 903"
+        ]
+      },
+      {
+        "line_item": "Other operating expenses",
+        "source_y": 638.9248657226562,
+        "cells": [
+          "503 987",
+          "7 930 015",
+          "180 883",
+          "31",
+          "75",
+          "59 046",
+          "8 674 037"
+        ]
+      },
+      {
+        "line_item": "Other expenses",
+        "source_y": 653.11865234375,
+        "cells": [
+          "-",
+          "31 098",
+          "-",
+          "-",
+          "-",
+          "-",
+          "31 098"
+        ]
+      },
+      {
+        "line_item": "Total expenses",
+        "source_y": 667.3124389648438,
+        "cells": [
+          "19 124 465",
+          "142 432 342",
+          "180,883",
+          "( 65 084)",
+          "( 403 933)",
+          "2 464 365",
+          "163 733 038"
+        ]
+      },
+      {
+        "line_item": "Surplus/(Deficit) for the year",
+        "source_y": 695.7109985351562,
+        "cells": [
+          "(39 279 995)",
+          "(49 339 209)",
+          "13 052 021",
+          "114 376",
+          "524 935",
+          "2 827 493",
+          "(72 100 379)"
+        ]
+      },
+      {
+        "line_item": "Net asset opening",
+        "source_y": 709.90478515625,
+        "cells": [
+          "45 596 017",
+          "142 006 320",
+          "-",
+          "1 241 339",
+          "2 705 176",
+          "1 599 192",
+          "193 148 044"
+        ]
+      },
+      {
+        "line_item": "Net asset closing",
+        "source_y": 723.9337768554688,
+        "cells": [
+          "6 316 022",
+          "92 667 111",
+          "13 052 021",
+          "1 355 715",
+          "3 230 111",
+          "4 426 685",
+          "121 047 665"
+        ]
+      }
+    ]
   }
 ]

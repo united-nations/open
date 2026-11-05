@@ -21,12 +21,15 @@ LINES = {
     name.casefold(): name for name in [
         "Voluntary contributions receivable", "Other assets",
         "Accounts payable and accrued liabilities", "Other liabilities", "Net assets",
-        "Voluntary contributions", "Other revenue", "Investment revenue", "Total revenue",
+        "Voluntary contributions", "Other revenue", "Other transfers and allocations",
+        "Investment revenue", "Total revenue",
         "Grants and other transfers", "Other operating expenses", "Other expenses", "Total expenses",
         "Surplus/(Deficit) for the year", "Net asset opening", "Net asset closing",
     ]
 }
 LINES.update({"net assets opening": "Net asset opening", "net assets closing": "Net asset closing"})
+PEACEBUILDING_TRANSFER_NOTE = 'Including 6mUSD transfer from the "Peacebuilding Account" (64PBA).'
+PEACEBUILDING_TRANSFER_LINE = "Internal transfer from Peacebuilding Account (64PBA)"
 
 # Portal identities, not invented source fund codes. Match reviewed printed
 # headers; preserve the source's own annual name alongside the stable identity.
@@ -96,9 +99,12 @@ def amount_cells(row: dict) -> list[dict]:
     return cells
 
 
+def fund_name(name: str) -> str:
+    return " ".join(word for word in name.split() if not re.fullmatch(r"/[a-z]", word))
+
+
 def fund_id(name: str) -> str:
-    cleaned = re.sub(r"\s*/[a-z]\s*$", "", name, flags=re.I).strip()
-    key = normalize_fund_name(cleaned)
+    key = normalize_fund_name(fund_name(name))
     return "mptf:" + FUND_NAMES.get(key, key.replace(" ", "-"))
 
 
@@ -144,7 +150,7 @@ def parse_table(rows: list[dict], year: int, page: int) -> tuple[list[dict], lis
         common = {"calendar_year": year, "period_year": period, "statement_type": statement,
                   "line_item": label, "page": page, "source_y": row["y"]}
         for index, (identifier, name, value) in enumerate(zip(ids, names, amounts)):
-            facts.append({**common, "fund_id": identifier, "fund_name": re.sub(r"\s*/[a-z]$", "", name),
+            facts.append({**common, "fund_id": identifier, "fund_name": fund_name(name),
                           "source_column": name, "amount_usd": value,
                           "reported_text": cells[index] or "", "reported_as_dash": parse_amount(cells[index] or "")[1]})
         complete = all(value is not None for value in amounts[:-1])
@@ -154,8 +160,21 @@ def parse_table(rows: list[dict], year: int, page: int) -> tuple[list[dict], lis
                          "difference_usd": total - child_sum if complete and total is not None else None,
                          "missing_cells": sum(value is None for value in amounts[:-1])})
         literal.append({"line_item": label, "source_y": row["y"], "cells": cells})
-    return facts, controls, {"calendar_year": year, "period_year": period, "page": page,
-                            "statement_type": statement, "columns": names, "rows": literal}
+    table = {"calendar_year": year, "period_year": period, "page": page,
+             "statement_type": statement, "columns": names, "rows": literal}
+    if year == period == 2025 and statement == "financial_performance":
+        footnotes = [row for row in rows if row["text"] == f"/a {PEACEBUILDING_TRANSFER_NOTE}"]
+        contributions = [row for row in facts if row["fund_id"] == "mptf:peacebuilding-fund"
+                         and row["line_item"] == "Voluntary contributions"]
+        if len(footnotes) != 1 or len(contributions) != 1 or "/a" not in contributions[0]["source_column"].split():
+            raise ValueError(f"Cannot locate the reviewed Peacebuilding transfer on PDF p. {page}")
+        facts.append({
+            **contributions[0], "line_item": PEACEBUILDING_TRANSFER_LINE,
+            "source_y": footnotes[0]["y"], "amount_usd": 6_000_000,
+            "reported_text": footnotes[0]["text"], "reported_as_dash": False,
+        })
+        table["footnotes"] = [footnotes[0]["text"]]
+    return facts, controls, table
 
 
 def extract_mptf(source: dict) -> tuple[list[dict], list[dict], list[dict]]:
@@ -277,6 +296,10 @@ def extend_contributors(payload: dict, facts: pd.DataFrame, source: dict, spendi
         & facts.statement_type.eq("financial_performance")
         & facts.line_item.eq("Voluntary contributions") & facts.amount_usd.notna()
     ]
+    transfer_rows = facts.loc[
+        facts.calendar_year.eq(year) & facts.period_year.eq(year)
+        & facts.line_item.eq(PEACEBUILDING_TRANSFER_LINE)
+    ].set_index("fund_id").to_dict("index")
     nodes = {node["id"]: node for node in spending["nodes"]}
     accounts = {node["id"].split(":fund:", 1)[1]: node for node in nodes.values()
                 if node.get("fundAccountType") == "mptf"}
@@ -288,17 +311,37 @@ def extend_contributors(payload: dict, facts: pd.DataFrame, source: dict, spendi
         entity = nodes[fund["parentId"]]
         amount = int(row["amount_usd"])
         refs = [reference(row, source)]
+        flows = [{**flow, "amount_usd": amount, "supportingSources": refs}]
+        if transfer := transfer_rows.get(row["fund_id"]):
+            transfer_amount = int(transfer["amount_usd"])
+            if not 0 < transfer_amount <= amount:
+                raise ValueError(f"Invalid transfer component for {row['fund_id']} in {year}")
+            transfer_ref = reference(transfer, source)
+            flows[0]["amount_usd"] -= transfer_amount
+            flows[0]["supportingSources"] = [*refs, transfer_ref]
+            flows.append({
+                "type": "other_transfer_allocation_internal_transfers", "label": "Internal transfers",
+                "group": "internal", "amount_usd": transfer_amount, "supportingSources": [transfer_ref],
+            })
+            refs = [*refs, transfer_ref]
         destinations.append({
             "fund_code": None, "fund_id": fund["id"], "fund_name": fund["label"],
             "entity_code": entity["code"], "entity_name": entity["label"], "entity_id": entity["id"],
             "mapping_status": "unresolved" if entity["code"] == "UNMAPPED" else "mapped",
             "amount_usd": amount, "supportingSources": refs,
-            "flows": [{**flow, "amount_usd": amount, "supportingSources": refs}],
+            "flows": flows,
         })
     destinations.sort(key=lambda fund: fund["amount_usd"], reverse=True)
     amounts = [fund["amount_usd"] for fund in destinations]
     total = sum(amounts)
-    total_refs = [ref for fund in destinations for ref in fund["supportingSources"]]
+    group_flows = {}
+    for fund in destinations:
+        for part in fund["flows"]:
+            group = group_flows.setdefault(part["group"], {
+                **part, "amount_usd": 0, "supportingSources": [],
+            })
+            group["amount_usd"] += part["amount_usd"]
+            group["supportingSources"].extend(part["supportingSources"])
     name = "MPTF voluntary contributions"
     if any(item["name"] == name for item in payload["contributors"]):
         raise ValueError(f"Duplicate MPTF contribution aggregate in {year}")
@@ -307,7 +350,10 @@ def extend_contributors(payload: dict, facts: pd.DataFrame, source: dict, spendi
         "positive_amount_usd": sum(amount for amount in amounts if amount > 0),
         "negative_amount_usd": sum(amount for amount in amounts if amount < 0),
         "reported_names": [], "destinations": destinations,
-        "flows": [{**flow, "amount_usd": total, "supportingSources": total_refs}],
+        "flows": list(group_flows.values()),
+        **({"note": "Schedule 8.1 includes a $6 million transfer from the Peacebuilding "
+                    "Account (64PBA) in its voluntary contribution total. The chart identifies "
+                    "that amount under Internal transfers."} if transfer_rows else {}),
     })
     payload["contributors"].sort(key=lambda item: item["amount_usd"], reverse=True)
     meta["mptf_voluntary_contributions_usd"] = total

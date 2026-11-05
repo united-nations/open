@@ -1,7 +1,7 @@
 # Trust-fund schedule evidence
 
 This directory retains the source evidence and canonical extraction snapshot
-for 2017–2024. Pipeline instructions and data definitions are in
+for 2017–2025. Pipeline instructions and data definitions are in
 [the extraction documentation](../../docs/trust-fund-schedules.md).
 
 ## Versioned files

@@ -15,8 +15,14 @@ if (flags.trustFunds && !flags.additionalTrustFunds) {
       requests = [];
     page.on("pageerror", (error) => errors.push(error.message));
     page.on("request", (request) => requests.push(request.url()));
+    const { budgetTrustFunds } = JSON.parse(
+      fs.readFileSync("public/data/manifest.json", "utf8"),
+    );
     const data = JSON.parse(
-      fs.readFileSync("public/data/budget-trust-funds-2024.json", "utf8"),
+      fs.readFileSync(
+        `public/data/budget-trust-funds-${budgetTrustFunds.default}.json`,
+        "utf8",
+      ),
     );
     const control = data.meta.sourceGroups.find(
       (group) => group.id === "volume_i",

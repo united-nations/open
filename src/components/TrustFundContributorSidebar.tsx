@@ -246,6 +246,9 @@ export function TrustFundContributorSidebar({
                   without listing contributors.
                 </p>
               )}
+              {contributor.note && (
+                <p className="text-sm text-gray-600">{contributor.note}</p>
+              )}
               {contributor.negative_amount_usd < 0 && (
                 <p className="mt-1 text-xs text-gray-500">
                   {isUnitemized

@@ -28,6 +28,18 @@ try {
     const grouped = page.getByRole("radio", { name: "By group", exact: true });
     const entity = page.getByRole("radio", { name: "By entity", exact: true });
     await grouped.waitFor();
+    const slider = page.getByRole("slider", { name: "Select year" });
+    await slider.press("ArrowLeft");
+    await page
+      .locator("dl dd")
+      .getByText(
+        formatBudget(
+          data.meta.sourceGroups.find((group) => group.id === "volume_i")
+            .amount,
+        ),
+        { exact: true },
+      )
+      .waitFor();
     assert.equal(await grouped.isChecked(), true);
     await page
       .getByRole("button", {
@@ -138,6 +150,12 @@ try {
     await commonPill.click();
     await entity.locator("..").click();
     assert.equal(await entity.isChecked(), true);
+    await page.waitForFunction(
+      () =>
+        document.querySelectorAll(
+          "section[aria-label] button[aria-describedby]",
+        ).length === 3,
+    );
     assert.equal(await sections().locator("button").count(), 3);
     await page
       .getByRole("button", { name: selectedFund.label, exact: true })
@@ -212,7 +230,6 @@ try {
     for (const pill of await pills.all()) await pill.click();
     // The annual heading follows the selected year, even for the same fund ID.
     await search.fill("SIM");
-    const slider = page.getByRole("slider", { name: "Select year" });
     await slider.press("Home");
     await page
       .locator(

@@ -36,22 +36,22 @@
     ]
   },
   "mapping": {
-    "total_funds": 157,
-    "mapped_funds": 152,
-    "mapped_share": 0.9681528662420382,
-    "exact_normalized_name": 134,
-    "curated_alias": 16,
-    "high_confidence": 151,
+    "total_funds": 159,
+    "mapped_funds": 154,
+    "mapped_share": 0.9685534591194969,
+    "exact_normalized_name": 131,
+    "curated_alias": 19,
+    "high_confidence": 153,
     "medium_confidence": 1,
     "unresolved_funds": 5,
-    "distinct_audited_entities": 75,
-    "ppb_entity_id_funds": 108,
-    "ppb_entity_id_share": 0.7105263157894737
+    "distinct_audited_entities": 77,
+    "ppb_entity_id_funds": 110,
+    "ppb_entity_id_share": 0.7142857142857143
   },
   "non_high_confidence_mappings": [
     {
       "fund_code": "CLR",
-      "fund_name": "Trust Fund Central Emergency Response Fund Loan component",
+      "fund_name": "Trust Fund Central Emergency Response Fund Loan Component",
       "audited_entity_code": "OCHA",
       "mapping_reason": "The loan component is part of the Central Emergency Response Fund administered by OCHA but the old extract does not itemize the zero-expense loan component separately."
     }
@@ -59,9 +59,9 @@
   "expense_fingerprint_diagnostic": {
     "purpose": "Independent diagnostic only; expense equality is not a join rule.",
     "comparable_mapped_funds": 151,
-    "within_one_percent": 103,
-    "within_five_percent": 132,
-    "weighted_absolute_difference_share": 0.024279206587880228,
+    "within_one_percent": 102,
+    "within_five_percent": 131,
+    "weighted_absolute_difference_share": 0.02428313074287936,
     "largest_absolute_differences": [
       {
         "fund_code": "DDN",
@@ -108,7 +108,7 @@
   "unresolved": [
     {
       "fund_code": "ANC",
-      "fund_name": "Trust Fund in Support of the United Nations Mission in Afghanistan UNAMA",
+      "fund_name": "Trust Fund in Support of the United Nations Mission in Afghanistan (UNAMA)",
       "candidate_entity_code": "UNAMA",
       "confidence": "medium",
       "mapping_reason": "The schedule title names UNAMA and the expense pattern is close but the only old-open UNAMA fund has a materially different title; an authoritative fund-code bridge is needed."
@@ -302,6 +302,26 @@
       "absolute_total_usd": 3047520529,
       "absolute_mapped_usd": 3045558570,
       "mapped_absolute_share": 0.9993562113917428
+    },
+    {
+      "calendar_year": 2025,
+      "measure": "expenses",
+      "total_usd": 2907674519,
+      "mapped_usd": 2906225200,
+      "unmapped_usd": 1449319,
+      "absolute_total_usd": 2909141297,
+      "absolute_mapped_usd": 2907691978,
+      "mapped_absolute_share": 0.9995018052229039
+    },
+    {
+      "calendar_year": 2025,
+      "measure": "voluntary_contributions",
+      "total_usd": 2430595967,
+      "mapped_usd": 2429095967,
+      "unmapped_usd": 1500000,
+      "absolute_total_usd": 2441030591,
+      "absolute_mapped_usd": 2439530591,
+      "mapped_absolute_share": 0.9993855054477685
     }
   ],
   "limitations": [

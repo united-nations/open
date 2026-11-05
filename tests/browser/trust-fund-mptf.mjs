@@ -18,9 +18,47 @@ try {
     const page = await browser.newPage({ viewport: { width, height: 1000 } });
     const errors = [];
     page.on("pageerror", (error) => errors.push(error.message));
+    await page.goto(`${portalUrl}/secretariat/trust-funds/contributors/`);
+    const unspecified = page.getByRole("region", {
+      name: "Contributors unspecified",
+      exact: true,
+    });
+    await unspecified
+      .getByRole("button", {
+        name: "MPTF voluntary contributions",
+        exact: true,
+      })
+      .press("Enter");
+    const contributions = page.getByRole("dialog", {
+      name: "MPTF voluntary contributions",
+      exact: true,
+    });
+    await contributions
+      .getByText(/\$6 million transfer from the Peacebuilding Account/)
+      .waitFor();
+    await contributions
+      .getByText(formatBudget(147355357), { exact: true })
+      .first()
+      .waitFor();
+    await contributions
+      .locator("summary")
+      .filter({ hasText: "Source references" })
+      .click();
+    assert.ok(await contributions.locator('a[href$="#page=436"]').count());
     await page.goto(`${portalUrl}/secretariat/trust-funds/`);
     const pill = page.getByRole("button", { name: heading, exact: true });
     await pill.waitFor();
+    await page.getByRole("slider", { name: "Select year" }).press("ArrowLeft");
+    await page
+      .locator("dl dd")
+      .getByText(
+        formatBudget(
+          data.meta.sourceGroups.find((group) => group.id === "volume_i")
+            .amount,
+        ),
+        { exact: true },
+      )
+      .waitFor();
     const group = page.locator(`section[aria-label="${heading}"]`);
     await group.locator("button").first().waitFor();
     assert.equal(await group.locator("button").count(), 4);

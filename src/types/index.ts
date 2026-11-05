@@ -243,6 +243,7 @@ export interface TrustFundDestination {
 export interface TrustFundContributor {
   flows?: TrustFundFlow[];
   name: string;
+  note?: string;
   counterparty_group: "Government" | "Others" | "Mixed" | "Unspecified";
   amount_usd: number;
   positive_amount_usd: number;

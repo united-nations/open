@@ -103,7 +103,13 @@ FLOW_HEADER_TERMS = (
 KNOWN_SOURCE_EXCEPTIONS = {
     (2022, "PDF", "financial_position_equation", -90_000): (
         "The source statement's printed totals differ by $90,000."
-    )
+    ),
+    (2025, "DDN", "financial_position_equation", -1): (
+        "PDF p. 310: printed assets less liabilities are $1 below printed net assets."
+    ),
+    (2025, "SVC", "financial_performance_equation", 1): (
+        "PDF p. 100: printed revenue less expenses is $1 above the printed deficit."
+    ),
 }
 
 
@@ -444,6 +450,12 @@ def fund_identity(
     schedule_idx = row_index(rows[:12], r"Schedule\s+\d+\.\d+")
     if schedule_idx is None:
         return None, None
+    inline = re.fullmatch(
+        r"(.+?)\s+([A-Z0-9]{3})\s+Schedule\s+\d+\.\d+(?:\.\d+)?",
+        rows[schedule_idx].text,
+    )
+    if inline:
+        return inline[2], inline[1]
     stop_patterns = (
         r"Statement of Financial",
         r"Voluntary Contributions",
@@ -521,7 +533,21 @@ def dynamic_flow_boundaries(
         return None
 
     if kind == "voluntary_contribution":
-        if any("1%" in word[4] for word in header_words):
+        if levy_replaces_in_kind(rows, start, end):
+            refund_words = next(
+                (row.words for row in rows[start:min(end, start + 8)]
+                 if any(word[4] == "Refunds/Transfers/" for word in row.words)),
+                [],
+            )
+            refund_parts = [word for word in refund_words
+                            if word[4] in {"Refunds/Transfers/", "Adjustments"}]
+            refund = ((refund_parts[0][0] + refund_parts[-1][2]) / 2
+                      if refund_parts else None)
+            centers = [center("Monetary"), center("1%"), refund, total_center()]
+            if any(value is None for value in centers):
+                raise ValueError("Missing headers in voluntary contribution levy layout")
+            fallback = centers
+        elif any("1%" in word[4] for word in header_words):
             centers = [
                 center("Monetary"),
                 center("1%"),
@@ -587,6 +613,21 @@ def dynamic_flow_boundaries(
         *[(left + right) / 2 for left, right in pairwise(resolved)],
         width + 1,
     ]
+
+
+def levy_replaces_in_kind(rows: Sequence[PhysicalRow], start: int, end: int) -> bool:
+    header = " ".join(row.text.lower() for row in rows[start:min(end, start + 8)])
+    return "1% levy" in header and "in-kind" not in header
+
+
+def voluntary_columns(rows: Sequence[PhysicalRow], start: int, end: int) -> list[str]:
+    header = " ".join(row.text for row in rows[start:min(end, start + 8)])
+    columns = ["counterparty", "monetary"]
+    if "1%" in header:
+        columns.append("levy")
+    if not levy_replaces_in_kind(rows, start, end):
+        columns.append("in_kind")
+    return [*columns, "refunds_transfers_adjustments", "total"]
 
 
 def make_table(
@@ -789,7 +830,7 @@ def extract_page_tables(
                 "voluntary contributions receivables",
             }:
                 section_starts.append((index, "voluntary_contribution_receivable"))
-            elif normalized == "voluntary contributions":
+            elif normalized in {"voluntary contributions", "voluntary contributions (continued)"}:
                 section_starts.append((index, "voluntary_contribution"))
             elif normalized == "other transfers and allocations":
                 section_starts.append((index, "other_transfer_allocation"))
@@ -841,15 +882,7 @@ def extract_page_tables(
             )
         elif kind == "voluntary_contribution":
             table_start = section_start + 1
-            has_levy = any(
-                "1%" in word[4]
-                for row in rows[table_start : min(section_end, table_start + 8)]
-                for word in row.words
-            )
-            columns = ["counterparty", "monetary"]
-            if has_levy:
-                columns.append("levy")
-            columns.extend(["in_kind", "refunds_transfers_adjustments", "total"])
+            columns = voluntary_columns(rows, table_start, section_end)
             tables.append(
                 make_table(
                     document,
@@ -867,6 +900,8 @@ def extract_page_tables(
                     section_end,
                 )
             )
+            if rows[section_start].text.lower() == "voluntary contributions (continued)":
+                tables[-1]["continues_flow"] = True
         else:
             mode_markers: list[tuple[int, str]] = []
             for index in range(section_start, section_end):
@@ -1002,11 +1037,7 @@ def extract_page_tables(
         boundaries = continuation["column_boundaries"]
         if "voluntary" in header_text and "monetary" in header_text:
             kind = "voluntary_contribution"
-            has_levy = "1%" in header_text
-            columns = ["counterparty", "monetary"]
-            if has_levy:
-                columns.append("levy")
-            columns.extend(["in_kind", "refunds_transfers_adjustments", "total"])
+            columns = voluntary_columns(rows, 0, len(rows))
             boundaries = dynamic_flow_boundaries(
                 rows, 0, len(rows), kind, page.rect.width
             )
@@ -1112,7 +1143,7 @@ def extract_literal_tables(
 
 
 def parse_amount(value: str) -> tuple[int | None, bool]:
-    value = value.strip()
+    value = re.sub(r"(?<=\s)(?:/[a-z]|ᐟ[ᵃᵇ])(?=\s|$)", "", value).strip()
     if not value:
         return None, False
     if value in {"-", "–", "—", "- -"}:
@@ -1224,12 +1255,11 @@ def normalize_statement_table(table: dict) -> list[dict]:
     return facts
 
 
-def normalize_flow_table(table: dict) -> list[dict]:
+def normalize_flow_table(table: dict, group: str | None = None) -> list[dict]:
     measure_columns = [
         column for column in table["columns"] if column != "counterparty"
     ]
     rows: list[dict] = []
-    group: str | None = None
     pending_label = ""
     last_data: dict | None = None
     amount_indexes = [
@@ -1288,6 +1318,20 @@ def normalize_flow_table(table: dict) -> list[dict]:
             continue
         label = join_words([pending_label, label])
         pending_label = ""
+        # A footnoted row can have its remaining cells on a nearby baseline.
+        if (
+            not label and last_data is not None and last_data.get("total_usd") is None
+            and amounts.get("total") is not None
+            and float(literal.get("y", 0)) - float(last_data["source_y"]) < 4
+            and all(last_data.get(f"{column}_usd") is None
+                    for column, amount in amounts.items() if amount is not None)
+        ):
+            for column, amount in amounts.items():
+                if amount is not None:
+                    last_data[f"{column}_usd"] = amount
+                    last_data[f"{column}_reported_text"] = literal[column]
+                    last_data[f"{column}_reported_as_dash"] = parse_amount(literal[column])[1]
+            continue
         # Split year headings are not unnamed contributors.
         if (not label and not rows and amounts.get("total") == table["calendar_year"]
             and all(amounts.get(column) is None for column in measure_columns if column != "total")):
@@ -1357,6 +1401,7 @@ def normalize_tables(
     statement_facts: list[dict] = []
     flow_rows: list[dict] = []
     fund_year_rows: dict[tuple[int, str], dict] = {}
+    flow_groups: dict[tuple[int, str | None, str], str | None] = {}
     for table in tables:
         code = table.get("fund_code")
         if code:
@@ -1384,7 +1429,12 @@ def normalize_tables(
         elif table["table_kind"].startswith(
             ("voluntary_contribution", "other_transfer_allocation")
         ):
-            flow_rows.extend(normalize_flow_table(table))
+            flow_key = (table["calendar_year"], code, table["table_kind"])
+            initial_group = flow_groups.get(flow_key) if table.get("continues_flow") else None
+            flow = normalize_flow_table(table, initial_group)
+            if flow:
+                flow_groups[flow_key] = flow[-1]["counterparty_group"]
+                flow_rows.extend(flow)
 
     fund_years = pd.DataFrame(fund_year_rows.values()).sort_values(
         ["calendar_year", "fund_code"], ignore_index=True
@@ -1658,25 +1708,25 @@ def quality_profile(
     )
 
     source_exceptions: list[dict] = []
-    unexpected_position_failures: list[dict] = []
-    for check in position_failures:
-        key = (
-            check["calendar_year"],
-            check["fund_code"],
-            "financial_position_equation",
-            check["difference_usd"],
-        )
-        if key in KNOWN_SOURCE_EXCEPTIONS:
-            source_exceptions.append(
-                {
+    unexpected_statement_failures: list[dict] = []
+    for equation, failures in (
+        ("financial_position_equation", position_failures),
+        ("financial_performance_equation", performance_failures),
+    ):
+        for check in failures:
+            key = (
+                check["calendar_year"], check["fund_code"],
+                equation, check["difference_usd"],
+            )
+            if key in KNOWN_SOURCE_EXCEPTIONS:
+                source_exceptions.append({
                     **check,
-                    "severity": "high",
+                    "severity": "low" if abs(check["difference_usd"]) == 1 else "high",
                     "confidence": "high",
                     "note": KNOWN_SOURCE_EXCEPTIONS[key],
-                }
-            )
-        else:
-            unexpected_position_failures.append(check)
+                })
+            else:
+                unexpected_statement_failures.append(check)
 
     flow_arithmetic_exceptions = []
     for check in failed:
@@ -1832,15 +1882,11 @@ def quality_profile(
             "name": "statement_fact_keys_and_equations",
             "status": "pass"
             if duplicate_statement_keys == 0
-            and not unexpected_position_failures
-            and not performance_failures
+            and not unexpected_statement_failures
             else "fail",
             "failure_count": duplicate_statement_keys
-            + len(unexpected_position_failures)
-            + len(performance_failures),
-            "failure_examples": (unexpected_position_failures + performance_failures)[
-                :20
-            ],
+            + len(unexpected_statement_failures),
+            "failure_examples": unexpected_statement_failures[:20],
         },
         {
             "name": "flow_component_arithmetic",
@@ -1930,7 +1976,7 @@ def write_stage1(tables: Sequence[dict], stage1_dir: Path) -> pd.DataFrame:
                 {
                     key: value
                     for key, value in table.items()
-                    if key not in {"columns", "rows"}
+                    if key not in {"columns", "rows", "continues_flow"}
                 }
                 | {"row_count": len(table["rows"]), "csv_path": str(csv_path)}
             )
