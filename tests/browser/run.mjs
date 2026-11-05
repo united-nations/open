@@ -32,6 +32,9 @@ const checks = [
   "budget-funding",
   "ppb-ranges-currency",
   "trust-fund-visibility",
+  ...(profiles[process.env.SITE_VARIANT ?? "public"].trustFunds
+    ? ["trust-fund-office-links"]
+    : []),
   ...(profiles[process.env.SITE_VARIANT ?? "public"].additionalTrustFunds
     ? ["trust-fund-sources", "trust-fund-contributor-sources"]
     : []),

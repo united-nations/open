@@ -5,10 +5,10 @@ import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
 import { ChevronRight } from "lucide-react";
+import Link from "next/link";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { SourceReferenceList } from "@/components/SourceReferenceList";
 import { SidebarControls } from "@/components/SidebarControls";
-import { navigateToSidebar } from "@/hooks/useDeepLink";
 import { useContributorSidebarYear } from "@/hooks/useContributorSidebarYear";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
@@ -352,18 +352,12 @@ export function TrustFundContributorSidebar({
                             ))}
                           {group.entity_id && (
                             <li className="ps-3 pt-1">
-                              <button
-                                type="button"
+                              <Link
                                 className="text-sm text-un-blue hover:underline"
-                                onClick={() =>
-                                  navigateToSidebar(
-                                    "trust-fund-entity",
-                                    group.entity_id!,
-                                  )
-                                }
+                                href={`/secretariat/trust-funds/#trust-fund=${encodeURIComponent(group.entity_id)}`}
                               >
                                 Open office details
-                              </button>
+                              </Link>
                             </li>
                           )}
                         </ul>
