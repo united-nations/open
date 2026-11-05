@@ -287,17 +287,7 @@ function SecretariatOverviewMethodologyNotes() {
         Assembly priority. It uses the financial compilation prepared for the
         Secretary-General’s <PageSourceLink source="annualReport" />.
       </p>
-      <p>
-        The audited{" "}
-        <SourceLink href="https://documents.un.org/doc/undoc/gen/n24/219/52/pdf/n2421952.pdf#page=241">
-          UN financial statements, Volume I (A/79/5 for 2023)
-        </SourceLink>
-        , present regular-budget expenditure in 14 broad budget parts, with
-        other financial breakdowns by fund group and activity. Peacekeeping
-        operations and several other entities have separate accounts. To provide
-        the department and priority breakdown, the annual-report compilation
-        brings together the following sources:
-      </p>
+      <p>The compilation brings together the following sources:</p>
       <ul className="list-disc space-y-3 pl-5">
         <li>
           <strong>Regular budget:</strong> expenditure reported in the{" "}
