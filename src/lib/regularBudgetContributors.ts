@@ -1,5 +1,29 @@
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
-import type { RegularBudgetPaymentStatus } from "@/types";
+import type {
+  BudgetNodeSource,
+  RegularBudgetContributor,
+  RegularBudgetContributorsData,
+  RegularBudgetPaymentStatus,
+} from "@/types";
+
+/** Physical circular page holding this Member State's rate and assessment. */
+export function regularBudgetAssessmentSources(
+  member: RegularBudgetContributor,
+  data: RegularBudgetContributorsData,
+): BudgetNodeSource[] {
+  if (!member.pdfPage) return [];
+  return [
+    {
+      ...data.meta.sources.assessment_document,
+      label: `${member.name} · ${data.meta.year} assessment`,
+      rowLabel: member.name,
+      columnHeader: `Assessment rate; ${data.meta.assessment_amount_column}`,
+      pdfPage: member.pdfPage,
+      pdfPageScope: "row",
+      pageStatus: "extracted_pdf_row",
+    },
+  ];
+}
 
 export const REGULAR_BUDGET_STATUS_STYLES: Record<
   RegularBudgetPaymentStatus,

@@ -4,6 +4,8 @@ import {
   FinancialPanelBar,
 } from "@un-eosg/ui/components/financial-panel-parts";
 import { formatBudget } from "@un-eosg/ui/format-budget";
+import { Tooltip } from "@un-eosg/ui/components/tooltip";
+import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import type { TrustFundFlow } from "@/types";
 
 export function TrustFundFlowBreakdown({ flows }: { flows: TrustFundFlow[] }) {
@@ -13,6 +15,10 @@ export function TrustFundFlowBreakdown({ flows }: { flows: TrustFundFlow[] }) {
     grouped.set(flow.group, {
       ...flow,
       amount_usd: flow.amount_usd + (existing?.amount_usd ?? 0),
+      supportingSources: [
+        ...(existing?.supportingSources ?? []),
+        ...(flow.supportingSources ?? []),
+      ],
     });
   }
   const rows = [...grouped.values()];
@@ -25,7 +31,30 @@ export function TrustFundFlowBreakdown({ flows }: { flows: TrustFundFlow[] }) {
           <FinancialPanelRankedRow
             key={row.group}
             label={row.label}
-            value={formatBudget(row.amount_usd)}
+            value={
+              <Tooltip
+                interactive
+                width={380}
+                content={
+                  <div className="space-y-2">
+                    <p>
+                      Calculated sum of the signed rows in this category. The
+                      source pages show the component amounts.
+                    </p>
+                    <SourceReferenceLinks
+                      references={row.supportingSources ?? []}
+                    />
+                  </div>
+                }
+              >
+                <span
+                  tabIndex={0}
+                  className="cursor-help underline decoration-dotted underline-offset-4"
+                >
+                  {formatBudget(row.amount_usd)}
+                </span>
+              </Tooltip>
+            }
           >
             <FinancialPanelBar
               percent={

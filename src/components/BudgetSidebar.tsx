@@ -892,7 +892,10 @@ function BudgetDetailSidebar({
                                 />
                               }
                             >
-                              <span tabIndex={0} className="text-gray-900">
+                              <span
+                                tabIndex={0}
+                                className="cursor-help text-gray-900 underline decoration-dotted underline-offset-4"
+                              >
                                 {formatBudgetFunding(node, key)}
                               </span>
                             </Tooltip>

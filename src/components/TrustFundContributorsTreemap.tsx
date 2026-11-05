@@ -1,5 +1,7 @@
 "use client";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
+import { Tooltip } from "@un-eosg/ui/components/tooltip";
+import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
@@ -86,7 +88,7 @@ function ContributorTooltip({
         label: "Contributions and transfers",
         value: currency(flow.amount_usd),
       }}
-      actionHint="Click to explore details"
+      actionHint="Click to explore all contributor categories"
     />
   );
 }
@@ -346,7 +348,35 @@ export function TrustFundContributorsTreemap({
                 key: "visible-total",
                 label:
                   query || hiddenGroups.length ? "Matching total" : "Total",
-                value: currency(visibleTotal),
+                value: signedTiles.length ? (
+                  <Tooltip
+                    interactive
+                    width={380}
+                    content={
+                      <div className="space-y-2 text-start font-normal">
+                        <p>
+                          Calculated sum of the signed contributor rows matching
+                          the selected categories and search. The source pages
+                          show the component amounts.
+                        </p>
+                        <SourceReferenceLinks
+                          references={signedTiles.flatMap(
+                            ({ flow }) => flow.supportingSources ?? [],
+                          )}
+                        />
+                      </div>
+                    }
+                  >
+                    <span
+                      tabIndex={0}
+                      className="cursor-help underline decoration-dotted underline-offset-4"
+                    >
+                      {currency(visibleTotal)}
+                    </span>
+                  </Tooltip>
+                ) : (
+                  "Not available"
+                ),
               },
             ]}
             totalLabel="Total"

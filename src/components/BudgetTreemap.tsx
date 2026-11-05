@@ -3,6 +3,8 @@ import { SHOW_ADDITIONAL_TRUST_FUNDS } from "@/lib/featureFlags";
 import { trustFundReportingData } from "@/lib/trustFundReporting";
 import { orderFundingTooltipRows } from "@/lib/financingInstruments";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
+import { Tooltip } from "@un-eosg/ui/components/tooltip";
+import { budgetTrendSources } from "@/lib/budgetTrendSources";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import {
   TreemapTileInteractionCue,
@@ -1978,9 +1980,38 @@ export function BudgetTreemap({
               : "Reported expenditure") +
             (SHOW_ADDITIONAL_TRUST_FUNDS ? " (unconsolidated)" : ""),
           value:
-            groups.length > 0 && groups.every((group) => group.amount === null)
-              ? "Not available"
-              : formatBudget(total),
+            groups.length > 0 &&
+            groups.every((group) => group.amount === null) ? (
+              "Not available"
+            ) : (
+              <Tooltip
+                interactive
+                width={380}
+                content={
+                  <div className="space-y-2 text-start font-normal">
+                    <p>
+                      Calculated sum of the fund expenses
+                      {searchQuery.trim()
+                        ? " matching the search"
+                        : " in this view"}
+                      . The source pages show the individual amounts.
+                    </p>
+                    <SourceReferenceLinks
+                      references={accountingNodes
+                        .filter(matchesAccountingNode)
+                        .flatMap((node) => collectBudgetNodeSources(node))}
+                    />
+                  </div>
+                }
+              >
+                <span
+                  tabIndex={0}
+                  className="cursor-help underline decoration-dotted underline-offset-4"
+                >
+                  {formatBudget(total)}
+                </span>
+              </Tooltip>
+            ),
         },
       ];
     }
@@ -2031,23 +2062,59 @@ export function BudgetTreemap({
           ),
         0,
       );
-      return {
-        key: source,
-        label: fundingLabel(source),
-        value:
-          !query &&
-          filteredData?.nodes.find((node) => node.parentId === null)?.chf
-            ? formatBudgetFunding(
-                filteredData.nodes.find((node) => node.parentId === null)!,
-                source,
-              )
+      const root = filteredData?.nodes.find((node) => node.parentId === null);
+      const evidence =
+        !query && root
+          ? budgetTrendSources(filteredData!.nodes, root, metric, [source])
+          : uniqueBudgetSources([
+              ...sharedRows.flatMap((row) =>
+                (
+                  row.subgroups ?? [
+                    {
+                      key: row.key,
+                      label: row.label,
+                      leaves: row.leaves ?? [],
+                    },
+                  ]
+                ).flatMap((subgroup) =>
+                  subgroup.leaves.flatMap((item) =>
+                    item.data?.node &&
+                    sharedSearchMatches(
+                      item.label,
+                      subgroup.label,
+                      row.label,
+                      query,
+                    )
+                      ? budgetTrendSources(
+                          filteredData?.nodes ?? [],
+                          item.data.node,
+                          metric,
+                          [source],
+                        )
+                      : [],
+                  ),
+                ),
+              ),
+              ...accountingNodes
+                .filter(
+                  (node) => node.amount <= 0 && matchesAccountingNode(node),
+                )
+                .flatMap((node) =>
+                  budgetTrendSources(filteredData?.nodes ?? [], node, metric, [
+                    source,
+                  ]),
+                ),
+            ]);
+      const value =
+        evidence.length === 0
+          ? "Not available"
+          : !query && root?.chf
+            ? formatBudgetFunding(root, source)
             : query && drawnChf !== 0
               ? formatCurrencyParts(drawnSourceTotal - drawnChfUsd, drawnChf)
               : formatBudget(
                   !query
-                    ? (filteredData?.nodes.find(
-                        (node) => node.parentId === null,
-                      )?.values?.[source] ?? drawnSourceTotal)
+                    ? (root?.values?.[source] ?? drawnSourceTotal)
                     : drawnSourceTotal +
                         accountingNodes
                           .filter(
@@ -2058,7 +2125,45 @@ export function BudgetTreemap({
                             (sum, node) => sum + (node.values?.[source] ?? 0),
                             0,
                           ),
-                ),
+                );
+      return {
+        key: source,
+        label: fundingLabel(source),
+        value: (
+          <Tooltip
+            interactive
+            width={380}
+            content={
+              <div className="space-y-2 text-start font-normal">
+                <p className="font-medium">
+                  {year} · {fundingLabel(source)}
+                </p>
+                {!evidence.length ? (
+                  <p>
+                    No page-specific evidence is available for this selection.
+                  </p>
+                ) : query ||
+                  evidence.some((reference) =>
+                    reference.label?.includes("calculated total"),
+                  ) ? (
+                  <p>
+                    Calculated sum
+                    {query ? " matching the search" : " of the reported rows"}.
+                    The source pages show the component amounts.
+                  </p>
+                ) : null}
+                <SourceReferenceLinks references={evidence} />
+              </div>
+            }
+          >
+            <span
+              tabIndex={0}
+              className="cursor-help underline decoration-dotted underline-offset-4"
+            >
+              {value}
+            </span>
+          </Tooltip>
+        ),
       };
     });
   })();

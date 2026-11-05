@@ -31,6 +31,7 @@ export function SidebarStackedTrend({
   tooltipSources,
   valueFormatter,
   currencyLabel,
+  accessibleTableLabel = "Funding-source trend",
 }: {
   heading?: string;
   headingClassName?: string;
@@ -40,6 +41,7 @@ export function SidebarStackedTrend({
   allowNegative?: boolean;
   valueFormatter?: (value: number) => string;
   currencyLabel?: string;
+  accessibleTableLabel?: string;
   tooltipSources?: (year: string, visibleKeys: string[]) => BudgetNodeSource[];
 }) {
   if (data === null) {
@@ -77,15 +79,15 @@ export function SidebarStackedTrend({
           tooltipSources={tooltipSources}
           valueFormatter={valueFormatter}
           currencyLabel={currencyLabel}
-          accessibleTableLabel="Funding-source trend"
+          accessibleTableLabel={accessibleTableLabel}
         />
       </div>
       {data.some((point) =>
         series.some((item) => point[item.key] === null),
       ) && (
         <p className="mt-2 text-xs text-gray-500" role="status">
-          Some funding-source observations are unavailable. Gaps do not
-          represent zero spending.
+          Some observations are unavailable. Gaps do not represent zero
+          spending.
         </p>
       )}
     </section>

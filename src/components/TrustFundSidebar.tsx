@@ -87,7 +87,12 @@ function PositionValue({ metric }: { metric: PositionMetric }) {
         </div>
       }
     >
-      <span tabIndex={0}>{formatBudget(metric.amount)}</span>
+      <span
+        tabIndex={0}
+        className="cursor-help underline decoration-dotted underline-offset-4"
+      >
+        {formatBudget(metric.amount)}
+      </span>
     </Tooltip>
   );
 }
@@ -623,7 +628,12 @@ export function TrustFundSidebar({
                         />
                       }
                     >
-                      <span tabIndex={0}>{formatBudget(node.amount)}</span>
+                      <span
+                        tabIndex={0}
+                        className="cursor-help underline decoration-dotted underline-offset-4"
+                      >
+                        {formatBudget(node.amount)}
+                      </span>
                     </Tooltip>
                   ),
                 }

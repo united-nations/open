@@ -49218,144 +49218,25 @@
       ]
     },
     {
-      "name": "Burkina Faso",
-      "flows": [
-        {
-          "type": "voluntary_contribution",
-          "group": "governments",
-          "label": "Government contributions",
-          "amount_usd": 387098,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-              "label": "IDP — Voluntary contributions",
-              "rowLabel": "Burkina Faso",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
-              "pdfPage": 282,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            },
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Burkina Faso",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 257,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ],
-      "counterparty_group": "Government",
-      "amount_usd": 387098,
-      "positive_amount_usd": 387098,
-      "negative_amount_usd": 0,
-      "reported_names": [
-        "Burkina Faso"
-      ],
-      "destinations": [
-        {
-          "fund_code": "TXB",
-          "fund_name": "Trust Fund for UNCTAD Technical Cooperation Projects",
-          "entity_code": "UNCTAD",
-          "entity_name": "United Nations Conference on Trade and Development",
-          "entity_id": "trust-fund-entity:UNCTAD",
-          "mapping_status": "mapped",
-          "flows": [
-            {
-              "type": "voluntary_contribution",
-              "group": "governments",
-              "label": "Government contributions",
-              "amount_usd": 372098,
-              "supportingSources": [
-                {
-                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-                  "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-                  "label": "TXB — Voluntary contributions",
-                  "rowLabel": "Burkina Faso",
-                  "columnHeader": "Total",
-                  "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-                  "pdfPage": 257,
-                  "pdfPageScope": "row",
-                  "pageStatus": "extracted_pdf_row"
-                }
-              ]
-            }
-          ],
-          "amount_usd": 372098,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-              "label": "TXB — Voluntary contributions",
-              "rowLabel": "Burkina Faso",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
-              "pdfPage": 257,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
-          "fund_code": "IDP",
-          "fund_name": "African Institute for Economic Development and Planning (IDEP)",
-          "entity_code": "ECA",
-          "entity_name": "Economic Commission for Africa",
-          "entity_id": "trust-fund-entity:ECA",
-          "mapping_status": "mapped",
-          "flows": [
-            {
-              "type": "voluntary_contribution",
-              "group": "governments",
-              "label": "Government contributions",
-              "amount_usd": 15000,
-              "supportingSources": [
-                {
-                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-                  "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-                  "label": "IDP — Voluntary contributions",
-                  "rowLabel": "Burkina Faso",
-                  "columnHeader": "Total",
-                  "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
-                  "pdfPage": 282,
-                  "pdfPageScope": "row",
-                  "pageStatus": "extracted_pdf_row"
-                }
-              ]
-            }
-          ],
-          "amount_usd": 15000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-              "label": "IDP — Voluntary contributions",
-              "rowLabel": "Burkina Faso",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
-              "pdfPage": 282,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ]
-    },
-    {
       "name": "Bulgaria",
       "flows": [
         {
           "type": "voluntary_contribution",
           "group": "governments",
           "label": "Government contributions",
-          "amount_usd": 386355,
+          "amount_usd": 406355,
           "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+              "label": "CER — Voluntary contributions",
+              "rowLabel": "Bulgaria",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
+              "pdfPage": 289,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
               "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
@@ -49415,8 +49296,8 @@
         }
       ],
       "counterparty_group": "Government",
-      "amount_usd": 386355,
-      "positive_amount_usd": 386355,
+      "amount_usd": 406355,
+      "positive_amount_usd": 406355,
       "negative_amount_usd": 0,
       "reported_names": [
         "Bulgaria"
@@ -49595,6 +49476,49 @@
           ]
         },
         {
+          "fund_code": "CER",
+          "fund_name": "Central Emergency Response Fund",
+          "entity_code": "OCHA",
+          "entity_name": "Office for the Coordination of Humanitarian Affairs",
+          "entity_id": "trust-fund-entity:OCHA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "governments",
+              "label": "Government contributions",
+              "amount_usd": 20000,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                  "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                  "label": "CER — Voluntary contributions",
+                  "rowLabel": "Bulgaria",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
+                  "pdfPage": 289,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 20000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+              "label": "CER — Voluntary contributions",
+              "rowLabel": "Bulgaria",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
+              "pdfPage": 289,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
           "fund_code": "LRA",
           "fund_name": "Trust Fund for the Financing of the Implementation of the Convention on Long-Range Transboundary Air Pollution",
           "entity_code": "ECE",
@@ -49632,6 +49556,136 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.25.1 — Voluntary contributions",
               "pdfPage": 229,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Burkina Faso",
+      "flows": [
+        {
+          "type": "voluntary_contribution",
+          "group": "governments",
+          "label": "Government contributions",
+          "amount_usd": 387098,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+              "label": "IDP — Voluntary contributions",
+              "rowLabel": "Burkina Faso",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+              "pdfPage": 282,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Burkina Faso",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 257,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        }
+      ],
+      "counterparty_group": "Government",
+      "amount_usd": 387098,
+      "positive_amount_usd": 387098,
+      "negative_amount_usd": 0,
+      "reported_names": [
+        "Burkina Faso"
+      ],
+      "destinations": [
+        {
+          "fund_code": "TXB",
+          "fund_name": "Trust Fund for UNCTAD Technical Cooperation Projects",
+          "entity_code": "UNCTAD",
+          "entity_name": "United Nations Conference on Trade and Development",
+          "entity_id": "trust-fund-entity:UNCTAD",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "governments",
+              "label": "Government contributions",
+              "amount_usd": 372098,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                  "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                  "label": "TXB — Voluntary contributions",
+                  "rowLabel": "Burkina Faso",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+                  "pdfPage": 257,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 372098,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+              "label": "TXB — Voluntary contributions",
+              "rowLabel": "Burkina Faso",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.34.1 — Voluntary contributions",
+              "pdfPage": 257,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "IDP",
+          "fund_name": "African Institute for Economic Development and Planning (IDEP)",
+          "entity_code": "ECA",
+          "entity_name": "Economic Commission for Africa",
+          "entity_id": "trust-fund-entity:ECA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "group": "governments",
+              "label": "Government contributions",
+              "amount_usd": 15000,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                  "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                  "label": "IDP — Voluntary contributions",
+                  "rowLabel": "Burkina Faso",
+                  "columnHeader": "Total",
+                  "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+                  "pdfPage": 282,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row"
+                }
+              ]
+            }
+          ],
+          "amount_usd": 15000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+              "label": "IDP — Voluntary contributions",
+              "rowLabel": "Burkina Faso",
+              "columnHeader": "Total",
+              "tableTitle": "Schedule 3.41.1 — Voluntary contributions",
+              "pdfPage": 282,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }
@@ -52380,7 +52434,7 @@
       ]
     },
     {
-      "name": "ACCD",
+      "name": "Catalan Agency of Cooperation to the Development - ACCD",
       "flows": [
         {
           "type": "voluntary_contribution",
@@ -52392,7 +52446,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
               "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
               "label": "CER — Voluntary contributions",
-              "rowLabel": "ACCD",
+              "rowLabel": "Catalan Agency of Cooperation to the Development - ACCD",
               "columnHeader": "Total",
               "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
               "pdfPage": 289,
@@ -52407,7 +52461,7 @@
       "positive_amount_usd": 291375,
       "negative_amount_usd": 0,
       "reported_names": [
-        "ACCD"
+        "Catalan Agency of Cooperation to the Development - ACCD"
       ],
       "destinations": [
         {
@@ -52428,7 +52482,7 @@
                   "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
                   "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
                   "label": "CER — Voluntary contributions",
-                  "rowLabel": "ACCD",
+                  "rowLabel": "Catalan Agency of Cooperation to the Development - ACCD",
                   "columnHeader": "Total",
                   "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
                   "pdfPage": 289,
@@ -52444,7 +52498,7 @@
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
               "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
               "label": "CER — Voluntary contributions",
-              "rowLabel": "ACCD",
+              "rowLabel": "Catalan Agency of Cooperation to the Development - ACCD",
               "columnHeader": "Total",
               "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
               "pdfPage": 289,
@@ -73814,82 +73868,6 @@
               "columnHeader": "Total",
               "tableTitle": "Schedule 3.25.1 — Voluntary contributions",
               "pdfPage": 229,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Bulgaria Catalan Agency of Cooperation to the Development -",
-      "flows": [
-        {
-          "type": "voluntary_contribution",
-          "group": "governments",
-          "label": "Government contributions",
-          "amount_usd": 20000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-              "label": "CER — Voluntary contributions",
-              "rowLabel": "Bulgaria Catalan Agency of Cooperation to the Development -",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
-              "pdfPage": 289,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        }
-      ],
-      "counterparty_group": "Government",
-      "amount_usd": 20000,
-      "positive_amount_usd": 20000,
-      "negative_amount_usd": 0,
-      "reported_names": [
-        "Bulgaria Catalan Agency of Cooperation to the Development -"
-      ],
-      "destinations": [
-        {
-          "fund_code": "CER",
-          "fund_name": "Central Emergency Response Fund",
-          "entity_code": "OCHA",
-          "entity_name": "Office for the Coordination of Humanitarian Affairs",
-          "entity_id": "trust-fund-entity:OCHA",
-          "mapping_status": "mapped",
-          "flows": [
-            {
-              "type": "voluntary_contribution",
-              "group": "governments",
-              "label": "Government contributions",
-              "amount_usd": 20000,
-              "supportingSources": [
-                {
-                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-                  "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-                  "label": "CER — Voluntary contributions",
-                  "rowLabel": "Bulgaria Catalan Agency of Cooperation to the Development -",
-                  "columnHeader": "Total",
-                  "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
-                  "pdfPage": 289,
-                  "pdfPageScope": "row",
-                  "pageStatus": "extracted_pdf_row"
-                }
-              ]
-            }
-          ],
-          "amount_usd": 20000,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
-              "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
-              "label": "CER — Voluntary contributions",
-              "rowLabel": "Bulgaria Catalan Agency of Cooperation to the Development -",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 4.2.1 — Voluntary contributions",
-              "pdfPage": 289,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
             }

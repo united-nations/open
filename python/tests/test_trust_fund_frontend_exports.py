@@ -13,6 +13,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from trust_fund_frontend_exports import (  # noqa: E402
     financial_position,
     canonical_counterparty,
+    reviewed_contributor_labels,
     is_adjustment,
     selected_funding_rows,
     build_entity_export,
@@ -23,6 +24,32 @@ from trust_fund_frontend_exports import (  # noqa: E402
 
 
 class TrustFundFrontendExportTests(unittest.TestCase):
+    def test_reviewed_2018_cer_wrapped_contributor_names_keep_amounts_and_pages(self) -> None:
+        common = {"fund_code": "CER", "page": 289,
+                  "flow_type": "voluntary_contribution", "schedule_number": "4.2.1",
+                  "counterparty_group": "Government"}
+        merged = "Bulgaria Catalan Agency of Cooperation to the Development -"
+        rows = pd.DataFrame([
+            {**common, "counterparty": merged, "effective_amount_usd": 20000, "total_usd": 20000},
+            {**common, "counterparty": "ACCD", "effective_amount_usd": 291375, "total_usd": 291375},
+            {**common, "fund_code": "OTHER", "counterparty": "ACCD", "effective_amount_usd": 7, "total_usd": 7},
+        ])
+        corrected = reviewed_contributor_labels(rows, 2018)
+        self.assertEqual(corrected.counterparty.tolist(), [
+            "Bulgaria", "Catalan Agency of Cooperation to the Development - ACCD", "ACCD"])
+        pd.testing.assert_frame_equal(corrected.drop(columns="counterparty"), rows.drop(columns="counterparty"))
+        self.assertEqual(rows.iloc[0].counterparty, merged)
+        pd.testing.assert_frame_equal(reviewed_contributor_labels(rows, 2019), rows)
+        references = row_references(corrected.iloc[:2],
+            {"symbol": "2018 schedules", "source_pdf_url": "https://example.org/schedule.pdf"},
+            2018, contributions=True)
+        self.assertEqual([item["rowLabel"] for item in references], corrected.counterparty[:2].tolist())
+        self.assertEqual([item["pdfPage"] for item in references], [289, 289])
+        changed_amount = rows.copy()
+        changed_amount.loc[0, "effective_amount_usd"] = 1
+        with self.assertRaises(ValueError):
+            reviewed_contributor_labels(changed_amount, 2018)
+
     def test_financial_position_uses_current_year_stocks_and_pdf_rows(self) -> None:
         rows = []
         for period, line, amount, page in [

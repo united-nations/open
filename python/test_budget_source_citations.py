@@ -10,6 +10,21 @@ spec.loader.exec_module(exporter)
 
 
 class MetricCitationTests(unittest.TestCase):
+    def test_reviewed_final_pdf_pages_do_not_shift_neighboring_rows(self):
+        prefix = 'ppb2027:A_81_6 (SECT. 1) PRELIMINARY|word/document.xml|'
+        citations = [
+            {'tableId': prefix + 't0054', 'tableTitle': '(2) Other assessed', 'rowLabel': 'Subtotal, 2', 'pdfPage': 34},
+            {'tableId': prefix + 't0055', 'tableTitle': '(3) Extrabudgetary', 'rowLabel': 'Subtotal, 3', 'pdfPage': 34},
+            {'tableId': prefix + 't0195', 'tableTitle': 'Evolution of financial resources by object of expenditure', 'rowLabel': 'Total', 'pdfPage': 139},
+            {'tableId': prefix + 't0053', 'tableTitle': '(1) Regular budget', 'rowLabel': 'Subtotal, 1', 'pdfPage': 34},
+            {'tableId': prefix + 't0195', 'tableTitle': 'Financial resources by object of expenditure (special purpose trust fund)', 'rowLabel': 'Total', 'pdfPage': 139},
+            {'tableId': prefix.replace('2027', '2026') + 't0054', 'tableTitle': '(2) Other assessed', 'rowLabel': 'Subtotal, 2', 'pdfPage': 31},
+        ]
+        exporter.correct_verified_pdf_pages(citations)
+        self.assertEqual([c['pdfPage'] for c in citations], [35, 35, 137, 34, 139, 31])
+        self.assertEqual(citations[0]['pdfPages'], [35])
+        self.assertEqual(citations[2]['pdfPageScope'], 'row')
+
     def setUp(self):
         self.view = {"lens": {"edition": 2027}}
         self.node = {"kind": "entity", "values": {"regular_budget": {"sourceCitationIds": ["expense"]}}}

@@ -173,7 +173,7 @@ export function TrustFundContributorSidebar({
         <FinancialDetailPanel
           title={contributor.name}
           titleId="trust-fund-contributor-title"
-          subtitle={`Contributions and transfers · ${selection.year}`}
+          subtitle={`Contributions and transfers · All contributor categories · ${selection.year}`}
           yearSelectorPlacement="header"
           yearSelector={{
             years,
@@ -219,7 +219,10 @@ export function TrustFundContributorSidebar({
                         />
                       }
                     >
-                      <span tabIndex={0}>
+                      <span
+                        tabIndex={0}
+                        className="cursor-help underline decoration-dotted underline-offset-4"
+                      >
                         {currency(contributor.amount_usd)}
                       </span>
                     </Tooltip>

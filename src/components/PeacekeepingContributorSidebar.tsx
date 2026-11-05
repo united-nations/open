@@ -100,6 +100,11 @@ export function PeacekeepingContributorSidebar({
         .filter((row) => row.contributor === contributor.name)
         .map((row) => ({ ...exception, row })),
     );
+  const references = peacekeepingContributorSources(
+    missions,
+    meta,
+    contributor.name,
+  );
 
   return (
     <div
@@ -156,13 +161,15 @@ export function PeacekeepingContributorSidebar({
                       interactive
                       width={380}
                       content={
-                        <SourceReferenceLinks
-                          references={peacekeepingContributorSources(
-                            missions,
-                            meta,
-                            contributor.name,
-                          )}
-                        />
+                        <div className="space-y-2">
+                          <p>
+                            Calculated across missions: assessment sections are
+                            added and credit sections subtracted. The linked
+                            pages show the component amounts, rather than this
+                            combined total.
+                          </p>
+                          <SourceReferenceLinks references={references} />
+                        </div>
                       }
                     >
                       <span tabIndex={0}>
@@ -180,11 +187,54 @@ export function PeacekeepingContributorSidebar({
               <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
                 <dt className="text-gray-600">Gross assessment</dt>
                 <dd className="text-right text-gray-900">
-                  {currency(contributor.gross_assessment)}
+                  <Tooltip
+                    interactive
+                    width={380}
+                    content={
+                      <div className="space-y-2">
+                        <p>
+                          Calculated from gross assessment sections, less gross
+                          credit sections, across the missions shown below.
+                        </p>
+                        <SourceReferenceLinks
+                          references={references.map((source) => ({
+                            ...source,
+                            columnHeader: "Gross assessment / credit",
+                          }))}
+                        />
+                      </div>
+                    }
+                  >
+                    <span tabIndex={0}>
+                      {currency(contributor.gross_assessment)}
+                    </span>
+                  </Tooltip>
                 </dd>
                 <dt className="text-gray-600">Tax equalization adjustment</dt>
                 <dd className="text-right text-gray-900">
-                  {currency(contributor.tax_equalization_adjustment)}
+                  <Tooltip
+                    interactive
+                    width={380}
+                    content={
+                      <div className="space-y-2">
+                        <p>
+                          Calculated as net assessed amount minus gross
+                          assessment. The linked rows show the gross and net
+                          amounts used in the calculation.
+                        </p>
+                        <SourceReferenceLinks
+                          references={references.map((source) => ({
+                            ...source,
+                            columnHeader: "Gross and net assessment / credit",
+                          }))}
+                        />
+                      </div>
+                    }
+                  >
+                    <span tabIndex={0}>
+                      {currency(contributor.tax_equalization_adjustment)}
+                    </span>
+                  </Tooltip>
                 </dd>
               </dl>
 
@@ -204,6 +254,11 @@ export function PeacekeepingContributorSidebar({
                           <p>
                             Gross assessment:{" "}
                             {currency(mission.gross_assessment)}
+                          </p>
+                          <p>
+                            Calculated for the cycle by adding assessment
+                            sections and subtracting credits. The linked pages
+                            show the component amounts.
                           </p>
                           <SourceReferenceLinks
                             references={peacekeepingContributorSources(
@@ -259,17 +314,13 @@ export function PeacekeepingContributorSidebar({
                     amounts paid or outstanding.
                   </p>
                   <p className="text-sm text-gray-600">
-                    These links locate the mission assessment and credit tables,
-                    not the exact Member State row. Some credit tables omit
-                    Member States with no credit.
+                    Row references open the page containing this Member State.
+                    Section references locate the table when a row is absent or
+                    unavailable. Some credit tables omit Member States with no
+                    credit. Cycle totals combine the linked sections and may not
+                    be printed in any single source.
                   </p>
-                  <SourceReferenceList
-                    references={peacekeepingContributorSources(
-                      missions,
-                      meta,
-                      contributor.name,
-                    )}
-                  />
+                  <SourceReferenceList references={references} />
                   {(rateExceptions.length > 0 || derivedRows.length > 0) && (
                     <div className="border-l-4 border-amber-500 bg-amber-50 p-4 text-sm text-amber-950">
                       <p className="font-semibold">Source-data exception</p>

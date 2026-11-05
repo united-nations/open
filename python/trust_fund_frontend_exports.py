@@ -63,6 +63,33 @@ def canonical_counterparty(value: str) -> str:
     return COUNTERPARTY_ALIASES.get(name.casefold(), name)
 
 
+def reviewed_contributor_labels(rows: pd.DataFrame, year: int) -> pd.DataFrame:
+    """Restore two printed names verified on the 2018 CER PDF, physical p. 289.
+
+    The wrapped Catalan name was appended to the preceding complete Bulgaria
+    row by the extractor, leaving only its final line (ACCD) on its own amount.
+    Keep the raw extraction intact and correct this exact reviewed layout in
+    the exported names and row locators, without changing amounts or groups.
+    """
+    if year != 2018:
+        return rows
+    corrected = rows.copy()
+    scope = (
+        corrected["fund_code"].eq("CER")
+        & corrected["page"].eq(289)
+        & corrected["flow_type"].eq("voluntary_contribution")
+    )
+    for extracted, printed, amount in [
+        ("Bulgaria Catalan Agency of Cooperation to the Development -", "Bulgaria", 20000),
+        ("ACCD", "Catalan Agency of Cooperation to the Development - ACCD", 291375),
+    ]:
+        match = scope & corrected["counterparty"].eq(extracted)
+        if not corrected.loc[match, "effective_amount_usd"].eq(amount).all():
+            raise ValueError(f"Reviewed 2018 CER contributor amount changed: {extracted}")
+        corrected.loc[match, "counterparty"] = printed
+    return corrected
+
+
 def is_adjustment(value: str) -> bool:
     return any(pattern.search(value) for pattern in ADJUSTMENT_PATTERNS)
 
@@ -526,6 +553,7 @@ def build_contributor_export(
     entity_names: dict[str, str],
 ) -> dict[str, Any]:
     rows, reconciliation = selected_funding_rows(year, flows, statements)
+    rows = reviewed_contributor_labels(rows, year)
     fund_lookup = funds.set_index("fund_code")["fund_name"].to_dict()
     crosswalk_lookup = crosswalk.set_index("fund_code")
     rows["is_adjustment"] = rows["counterparty"].str.contains("present value adjustment|discounting of non-current receivable", case=False, regex=True) | (

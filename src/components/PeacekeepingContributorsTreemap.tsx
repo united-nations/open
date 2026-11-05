@@ -1,6 +1,7 @@
 "use client";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
+import { Tooltip } from "@un-eosg/ui/components/tooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
@@ -60,13 +61,19 @@ function ContributorTooltip({
         value: currency(contributor.net_assessment),
       }}
       notes={
-        <SourceReferenceLinks
-          references={peacekeepingContributorSources(
-            contributor.missions,
-            meta,
-            contributor.name,
-          )}
-        />
+        <div className="space-y-2">
+          <p>
+            Calculated across missions by adding assessment sections and
+            subtracting credits. Source pages show the component amounts.
+          </p>
+          <SourceReferenceLinks
+            references={peacekeepingContributorSources(
+              contributor.missions,
+              meta,
+              contributor.name,
+            )}
+          />
+        </div>
       }
       actionHint="Click to explore details"
     />
@@ -275,7 +282,37 @@ export function PeacekeepingContributorsTreemap() {
               {
                 key: "visible-total",
                 label: query ? "Matching total" : "Displayed total",
-                value: currency(visibleTotal),
+                value: (
+                  <Tooltip
+                    interactive
+                    width={380}
+                    content={
+                      <div className="space-y-2 text-start font-normal">
+                        <p>
+                          Calculated sum of signed net assessments
+                          {query
+                            ? " matching the current search"
+                            : " in this view"}
+                          . Assessment sections are added and credits
+                          subtracted; source pages show the component amounts.
+                          Open a contributor for its specific rows.
+                        </p>
+                        <SourceReferenceLinks
+                          references={signedContributors.flatMap(
+                            (contributor) =>
+                              peacekeepingContributorSources(
+                                contributor.missions,
+                                current.meta,
+                                contributor.name,
+                              ),
+                          )}
+                        />
+                      </div>
+                    }
+                  >
+                    <span tabIndex={0}>{currency(visibleTotal)}</span>
+                  </Tooltip>
+                ),
               },
             ]}
             totalLabel="Total"

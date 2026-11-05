@@ -24,6 +24,9 @@ const checks = [
   ...(profiles[process.env.SITE_VARIANT ?? "public"].regularBudgetOutstanding
     ? ["regular-budget-outstanding"]
     : ["regular-budget-contributors-visibility"]),
+  ...(profiles[process.env.SITE_VARIANT ?? "public"].programmeBudget
+    ? ["regular-budget-source-links"]
+    : []),
   "budget-sources",
   "budget-funding",
   "ppb-ranges-currency",

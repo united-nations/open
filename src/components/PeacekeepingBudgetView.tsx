@@ -6,6 +6,7 @@ import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { ChartFooter } from "@/components/ChartFooter";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
+import { Tooltip } from "@un-eosg/ui/components/tooltip";
 import { ChartSearchInput } from "@/components/ui/chart-search-input";
 import { SegmentedControl } from "@un-eosg/ui/components/segmented-control";
 import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
@@ -613,13 +614,44 @@ export function PeacekeepingBudgetView() {
                       : query || hiddenKinds.length
                         ? `Matching ${metricLabel.toLowerCase()}`
                         : metricLabel,
-                  value: current
-                    ? formatBudget(
-                        query || hiddenKinds.length
-                          ? visibleRows.reduce((sum, row) => sum + row.total, 0)
-                          : current.meta.total,
-                      )
-                    : "Unavailable",
+                  value: current ? (
+                    <Tooltip
+                      interactive
+                      width={380}
+                      content={
+                        <div className="space-y-2 text-start font-normal">
+                          <p className="font-medium">
+                            {metricLabel} · {current.meta.fiscalYear}
+                          </p>
+                          <p>
+                            Calculated sum of the missions and service centres
+                            {query || hiddenKinds.length
+                              ? " matching the current filters"
+                              : " in this view"}
+                            . The source pages show the individual amounts.
+                          </p>
+                          <SourceReferenceLinks
+                            references={visibleRows.flatMap(
+                              (row) => row.references,
+                            )}
+                          />
+                        </div>
+                      }
+                    >
+                      <span tabIndex={0}>
+                        {formatBudget(
+                          query || hiddenKinds.length
+                            ? visibleRows.reduce(
+                                (sum, row) => sum + row.total,
+                                0,
+                              )
+                            : current.meta.total,
+                        )}
+                      </span>
+                    </Tooltip>
+                  ) : (
+                    "Unavailable"
+                  ),
                 },
               ]}
             />

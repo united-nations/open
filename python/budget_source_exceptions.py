@@ -6,6 +6,32 @@ only superseded controls and independently verified missing detail are repaired.
 from urllib.parse import quote
 
 
+def correct_verified_pdf_pages(citations):
+    """Reviewed physical pages in the final A/81/6 (Sect. 1) PDF.
+
+    Table 1.44 begins on p34, but its OA/XB rows continue on p35.
+    The resident coordinator regular-budget table 1.145 is on p137;
+    p139 instead contains the separate special-purpose trust-fund table.
+    Bind these corrections to released DOCX table identities and row labels,
+    never to an inferred offset or a similarly named table in another edition.
+    """
+    prefix = 'ppb2027:A_81_6 (SECT. 1) PRELIMINARY|word/document.xml|'
+    reviewed = {
+        prefix + 't0054': (35, '(2) Other assessed', {'Executive direction and management', 'Subtotal, 2'}),
+        prefix + 't0055': (35, '(3) Extrabudgetary', {'Executive direction and management', 'Subtotal, 3', 'Total (1+2+3)'}),
+        prefix + 't0195': (137, 'Evolution of financial resources by object of expenditure', {'Grants and contributions', 'Total'}),
+    }
+    for citation in citations:
+        match = reviewed.get(citation.get('tableId'))
+        if not match:
+            continue
+        page, title, rows = match
+        if citation.get('tableTitle') != title or citation.get('rowLabel') not in rows:
+            continue
+        citation.update(pdfPage=page, pdfPages=[page], pdfPageScope='row',
+                        pageStatus='located', pageLocatedBy='reviewed_final_pdf_row')
+
+
 def correct_ola_year(financial):
     """A/76/6 Sect.8 table 8.32 says 2021 in its 2022 estimate header.
 

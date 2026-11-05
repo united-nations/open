@@ -90,7 +90,7 @@ import sys
 from pathlib import Path
 
 from domain_taxonomies import load_secretariat_taxonomies
-from budget_source_exceptions import correct_ola_year, apply_annual_exceptions
+from budget_source_exceptions import correct_ola_year, apply_annual_exceptions, correct_verified_pdf_pages
 from ppb_funding_coverage import validate_section1_funding
 from ppb_chf_layout import add_chf_layout
 
@@ -295,6 +295,7 @@ def apply_pdf_page_index(view: dict, edition: int) -> tuple[int, int]:
         for citation in citations:
             if citation.get("citationId") in evidence:
                 citation.update(evidence[citation["citationId"]])
+    correct_verified_pdf_pages(citations)
     return sum(c.get("pdfPage") is not None for c in citations), len(citations)
 
 

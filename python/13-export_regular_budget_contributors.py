@@ -117,7 +117,7 @@ def parse_assessment_document(year: int, symbol: str) -> dict[str, dict]:
     """
     response = fetch(DOCUMENT_API_URL, params={"l": "en", "s": symbol, "t": "pdf"})
     document = pymupdf.open(stream=response.content, filetype="pdf")
-    rows: list[tuple[str, float, int]] = []
+    rows: list[tuple[str, float, int, int]] = []
     in_contribution_table = False
 
     for page in document:
@@ -167,6 +167,7 @@ def parse_assessment_document(year: int, symbol: str) -> dict[str, dict]:
                             canonical_country(name),
                             float(decimal_words[-1][4]),
                             int("".join(amount_words).replace(",", "")),
+                            page.number + 1,
                         )
                     )
             elif ready_for_rows and words:
@@ -188,18 +189,18 @@ def parse_assessment_document(year: int, symbol: str) -> dict[str, dict]:
         if reached_credit_table:
             break
 
-    names = [name for name, _, _ in rows]
+    names = [name for name, _, _, _ in rows]
     duplicates = sorted(name for name, count in Counter(names).items() if count > 1)
     if duplicates:
         raise ValueError(f"{year} assessment document has duplicate states: {duplicates}")
     if len(rows) != 193:
         raise ValueError(f"{year} assessment document: expected 193 states, found {len(rows)}")
-    if abs(sum(rate for _, rate, _ in rows) - 100) > 0.0001:
+    if abs(sum(rate for _, rate, _, _ in rows) - 100) > 0.0001:
         raise ValueError(f"{year} assessment rates do not total 100%")
 
     return {
-        name: {"assessment_rate": rate, "assessment_amount": amount}
-        for name, rate, amount in rows
+        name: {"assessment_rate": rate, "assessment_amount": amount, "pdfPage": page}
+        for name, rate, amount, page in rows
     }
 
 
@@ -345,6 +346,7 @@ def export_year(year: int, symbol: str, scale_rates: dict[str, float]) -> None:
                 "name": name,
                 "assessment_rate": assessment["assessment_rate"],
                 "assessment_amount": assessment["assessment_amount"],
+                "pdfPage": assessment["pdfPage"],
                 "payment_status": (
                     payment["payment_status"] if payment else "not_paid_in_full"
                 ),

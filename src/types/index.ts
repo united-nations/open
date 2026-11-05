@@ -97,6 +97,7 @@ export interface RegularBudgetContributor {
   name: string;
   assessment_rate: number;
   assessment_amount: number;
+  pdfPage?: number;
   payment_status: RegularBudgetPaymentStatus;
   payment_date: string | null;
 }

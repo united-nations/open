@@ -8,6 +8,7 @@ import { FinancialChartTooltip } from "./FinancialChartTooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 import type { BudgetNodeSource } from "@/types";
+import { sourcePages, sourcePageUrl } from "@/lib/sourceReferences";
 import { useState } from "react";
 import { fundingSources } from "@un-eosg/ui/funding-sources";
 import { FinancingInstrumentLabel } from "../FinancingInstrumentLabel";
@@ -215,6 +216,42 @@ export function FinancingInstrumentChart({
 
   const Chart = variant === "bar" ? BarChart : AreaChart;
   const chartHeight = compact ? 180 : height;
+  function tableAmount(
+    year: string,
+    keys: string[],
+    value: number,
+    label: string,
+  ) {
+    const amount = (valueFormatter ?? formatYAxis)(value);
+    if (!tooltipSources) return amount;
+    const pages = new Map<string, { symbol: string; page: number }>();
+    for (const source of tooltipSources(year, keys)) {
+      for (const page of sourcePages(source)) {
+        pages.set(sourcePageUrl(source.url, page), {
+          symbol: source.symbol || "Source document",
+          page,
+        });
+      }
+    }
+    if (!pages.size)
+      return (
+        <>
+          {amount} <span>Source page unavailable</span>
+        </>
+      );
+    return [...pages].map(([href, source], index) => (
+      <a
+        key={href}
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="me-2 text-un-blue underline"
+        aria-label={`${year} ${label}, ${amount}; supporting source: ${source.symbol}, PDF page ${source.page} (opens in a new tab)`}
+      >
+        {index === 0 ? amount : `${source.symbol}, PDF p. ${source.page}`}
+      </a>
+    ));
+  }
 
   return (
     <div className="flex flex-col" data-money-chart>
@@ -368,7 +405,7 @@ export function FinancingInstrumentChart({
         )}
       </div>
       {accessibleTableLabel && (
-        <table className="sr-only">
+        <table className="sr-only focus-within:not-sr-only focus-within:mt-3 focus-within:w-full focus-within:text-left focus-within:text-xs">
           <caption>
             {accessibleTableLabel}, {currencyLabel}
           </caption>
@@ -382,7 +419,7 @@ export function FinancingInstrumentChart({
                     : item.label}
                 </th>
               ))}
-              <th>Total</th>
+              <th>Total{tooltipSources && " (sum of displayed series)"}</th>
             </tr>
           </thead>
           <tbody>
@@ -392,7 +429,12 @@ export function FinancingInstrumentChart({
                 {visibleSeries.map((item) => (
                   <td key={item.key}>
                     {typeof row[item.key] === "number"
-                      ? (valueFormatter ?? formatYAxis)(Number(row[item.key]))
+                      ? tableAmount(
+                          row.year,
+                          [item.key],
+                          Number(row[item.key]),
+                          item.label,
+                        )
                       : "Unavailable"}
                   </td>
                 ))}
@@ -400,7 +442,9 @@ export function FinancingInstrumentChart({
                   {visibleSeries.every(
                     (item) => typeof row[item.key] === "number",
                   )
-                    ? (valueFormatter ?? formatYAxis)(
+                    ? tableAmount(
+                        row.year,
+                        visibleSeries.map((item) => item.key),
                         visibleSeries.reduce(
                           (sum, item) =>
                             sum +
@@ -409,6 +453,7 @@ export function FinancingInstrumentChart({
                               : 0),
                           0,
                         ),
+                        "Calculated total",
                       )
                     : "Unavailable"}
                 </td>

@@ -2,6 +2,8 @@
 import { SHOW_REGULAR_BUDGET_OUTSTANDING } from "@/lib/featureFlags";
 import { Link as LinkIcon } from "lucide-react";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
+import { Tooltip } from "@un-eosg/ui/components/tooltip";
+import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { formatAssessmentRate } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { PaymentChartScaleProvider } from "@/components/PaymentChartScale";
@@ -28,6 +30,7 @@ import {
   REGULAR_BUDGET_STATUS_STYLES as STATUS_STYLES,
   formatAssessmentCurrency as formatCurrency,
   formatAssessmentDate as formatDate,
+  regularBudgetAssessmentSources,
 } from "@/lib/regularBudgetContributors";
 import { RegularBudgetContributorSidebar } from "@/components/RegularBudgetContributorSidebar";
 import { RegularBudgetOutstandingView } from "@/components/RegularBudgetOutstandingView";
@@ -61,6 +64,7 @@ function matchesContributor(name: string, query: string): boolean {
 function ContributorTooltip({
   context,
   asOf,
+  data,
 }: {
   context: GroupedTreemapTooltipContext<
     RegularBudgetPaymentStatus,
@@ -69,6 +73,7 @@ function ContributorTooltip({
     never
   >;
   asOf: string;
+  data: RegularBudgetContributorsData;
 }) {
   const contributor = context.leaf.data;
   if (!contributor) return null;
@@ -93,7 +98,14 @@ function ContributorTooltip({
           value: formatAssessmentRate(contributor.assessment_rate),
         },
       ]}
-      notes={paymentDetail}
+      notes={
+        <>
+          <p>{paymentDetail}</p>
+          <SourceReferenceLinks
+            references={regularBudgetAssessmentSources(contributor, data)}
+          />
+        </>
+      }
       actionHint="Click to explore details"
     />
   );
@@ -234,6 +246,7 @@ export function RegularBudgetContributorsTreemap() {
             RegularBudgetContributor,
             never
           >
+            interactiveTooltip
             footer={
               <ChartFooter
                 signedAmounts={(data?.contributors ?? [])
@@ -372,14 +385,49 @@ export function RegularBudgetContributorsTreemap() {
               {
                 key: "net",
                 label: searchQuery ? "Matching total" : "Total",
-                value: formatCurrency(
-                  (data?.contributors ?? [])
-                    .filter(
-                      (item) =>
-                        !hiddenGroups.includes(item.payment_status) &&
-                        matchesContributor(item.name, searchQuery),
-                    )
-                    .reduce((sum, item) => sum + item.assessment_amount, 0),
+                value: (
+                  <Tooltip
+                    interactive
+                    width={380}
+                    content={
+                      <div>
+                        <p>
+                          Calculated sum of assessments for the selected Member
+                          States and payment statuses. The linked pages show the
+                          component assessments.
+                        </p>
+                        <SourceReferenceLinks
+                          references={data.contributors
+                            .filter(
+                              (item) =>
+                                !hiddenGroups.includes(item.payment_status) &&
+                                matchesContributor(item.name, searchQuery),
+                            )
+                            .flatMap((item) =>
+                              regularBudgetAssessmentSources(item, data),
+                            )}
+                        />
+                      </div>
+                    }
+                  >
+                    <span
+                      tabIndex={0}
+                      className="cursor-help underline decoration-dotted underline-offset-4"
+                    >
+                      {formatCurrency(
+                        (data?.contributors ?? [])
+                          .filter(
+                            (item) =>
+                              !hiddenGroups.includes(item.payment_status) &&
+                              matchesContributor(item.name, searchQuery),
+                          )
+                          .reduce(
+                            (sum, item) => sum + item.assessment_amount,
+                            0,
+                          ),
+                      )}
+                    </span>
+                  </Tooltip>
                 ),
               },
             ]}
@@ -394,7 +442,11 @@ export function RegularBudgetContributorsTreemap() {
             formatAccessibleValue={(value) => formatCurrency(value)}
             showLeafValues
             renderTooltip={(context) => (
-              <ContributorTooltip context={context} asOf={data.meta.as_of} />
+              <ContributorTooltip
+                context={context}
+                asOf={data.meta.as_of}
+                data={data}
+              />
             )}
             emptyContent={
               <div className="flex h-full items-center justify-center">

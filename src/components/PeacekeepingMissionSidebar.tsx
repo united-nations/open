@@ -460,6 +460,7 @@ export function PeacekeepingMissionSidebar({
                   </ul>
                   <div className="mt-4">
                     <SidebarStackedTrend
+                      accessibleTableLabel={`${metricLabel} by budget group`}
                       tooltipSources={(year, visibleKeys) =>
                         visibleKeys.flatMap(
                           (key) =>

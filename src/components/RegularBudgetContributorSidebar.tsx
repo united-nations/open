@@ -13,6 +13,8 @@ import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 import { SidebarControls } from "@/components/SidebarControls";
 import { RegularBudgetOutstandingSidebarHistory } from "@/components/RegularBudgetOutstandingSidebarHistory";
 import { FinancingInstrumentChart } from "@/components/charts/FinancingInstrumentChart";
+import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
+import { Tooltip } from "@un-eosg/ui/components/tooltip";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { loadYearData } from "@/lib/data";
 import { useYearRanges } from "@/lib/useYearRanges";
@@ -21,6 +23,7 @@ import {
   REGULAR_BUDGET_STATUS_STYLES,
   formatAssessmentDate,
   formatAssessmentCurrency,
+  regularBudgetAssessmentSources,
 } from "@/lib/regularBudgetContributors";
 
 export function RegularBudgetContributorSidebar({
@@ -142,10 +145,30 @@ export function RegularBudgetContributorSidebar({
             onChange: setYear,
           }}
           total={
-            member
+            member && file
               ? {
                   label: "Assessed contributions",
-                  value: formatAssessmentCurrency(member.assessment_amount),
+                  value: (
+                    <Tooltip
+                      interactive
+                      width={380}
+                      content={
+                        <SourceReferenceLinks
+                          references={regularBudgetAssessmentSources(
+                            member,
+                            file,
+                          )}
+                        />
+                      }
+                    >
+                      <span
+                        tabIndex={0}
+                        className="cursor-help underline decoration-dotted underline-offset-4"
+                      >
+                        {formatAssessmentCurrency(member.assessment_amount)}
+                      </span>
+                    </Tooltip>
+                  ),
                 }
               : undefined
           }
@@ -161,7 +184,25 @@ export function RegularBudgetContributorSidebar({
               <dl className="mt-3 grid grid-cols-[1fr_auto] gap-2 text-sm">
                 <dt>Assessment rate</dt>
                 <dd className="text-end">
-                  {formatAssessmentRate(member.assessment_rate)}
+                  <Tooltip
+                    interactive
+                    width={380}
+                    content={
+                      <SourceReferenceLinks
+                        references={regularBudgetAssessmentSources(
+                          member,
+                          file,
+                        )}
+                      />
+                    }
+                  >
+                    <span
+                      tabIndex={0}
+                      className="cursor-help underline decoration-dotted underline-offset-4"
+                    >
+                      {formatAssessmentRate(member.assessment_rate)}
+                    </span>
+                  </Tooltip>
                 </dd>
                 <dt>Payment status</dt>
                 <dd className="text-end">
@@ -225,6 +266,14 @@ export function RegularBudgetContributorSidebar({
                     },
                   ]}
                   tooltipValueFormatter={formatAssessmentCurrency}
+                  tooltipSources={(value) => {
+                    const item = history.find(
+                      (row) => row.year === Number(value),
+                    );
+                    return item?.member && item.file
+                      ? regularBudgetAssessmentSources(item.member, item.file)
+                      : [];
+                  }}
                 />
                 {history.some((item) => !item.member) && (
                   <p className="mt-2 text-sm text-gray-500">
@@ -248,18 +297,29 @@ export function RegularBudgetContributorSidebar({
                   <span>{item.year}</span>
                   {item.member && item.file ? (
                     <div>
-                      <LegendLabel
-                        label={
-                          REGULAR_BUDGET_STATUS_STYLES[
-                            item.member.payment_status
-                          ].label
+                      <a
+                        href={
+                          item.file.meta.sources.honour_roll.url ||
+                          item.file.meta.sources.honour_roll.archive_url
                         }
-                        color={
-                          REGULAR_BUDGET_STATUS_STYLES[
-                            item.member.payment_status
-                          ].color
-                        }
-                      />
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="hover:underline"
+                        aria-label={`${item.year} payment status: Honour Roll (opens in a new tab)`}
+                      >
+                        <LegendLabel
+                          label={
+                            REGULAR_BUDGET_STATUS_STYLES[
+                              item.member.payment_status
+                            ].label
+                          }
+                          color={
+                            REGULAR_BUDGET_STATUS_STYLES[
+                              item.member.payment_status
+                            ].color
+                          }
+                        />
+                      </a>
                       <p className="mt-1 text-xs text-gray-500">
                         {item.member.payment_date
                           ? `Paid in full ${formatAssessmentDate(item.member.payment_date)} · `
@@ -289,20 +349,16 @@ export function RegularBudgetContributorSidebar({
                 />
               </summary>
               <div className="mt-3 flex flex-col gap-2 text-sm">
-                <a
-                  className="text-un-blue hover:underline"
-                  href={file.meta.sources.assessment_document.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Assessment document:{" "}
-                  {file.meta.sources.assessment_document.symbol}
-                </a>
+                {member && (
+                  <SourceReferenceLinks
+                    references={regularBudgetAssessmentSources(member, file)}
+                  />
+                )}
                 <a
                   className="text-un-blue hover:underline"
                   href={
-                    file.meta.sources.honour_roll.archive_url ||
-                    file.meta.sources.honour_roll.url
+                    file.meta.sources.honour_roll.url ||
+                    file.meta.sources.honour_roll.archive_url
                   }
                   target="_blank"
                   rel="noopener noreferrer"

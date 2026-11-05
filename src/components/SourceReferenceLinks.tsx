@@ -1,7 +1,12 @@
 "use client";
 
 import type { BudgetNodeSource } from "@/types";
-import { sourcePages, sourcePageUrl } from "@/lib/sourceReferences";
+import {
+  sourcePages,
+  sourcePageUrl,
+  sourceDocumentUrl,
+  sourceDownloads,
+} from "@/lib/sourceReferences";
 
 /** Compact, page-specific evidence for financial tooltip content. */
 export function SourceReferenceLinks({
@@ -16,7 +21,7 @@ export function SourceReferenceLinks({
   for (const source of references) {
     const pages = sourcePages(source);
     if (!pages.length) continue;
-    const key = `${source.url.split("#")[0]}|${source.pdfPageScope ?? "table"}`;
+    const key = `${sourceDocumentUrl(source.url).split("#")[0]}|${source.pdfPageScope ?? "table"}`;
     const group = groups.get(key) ?? {
       source,
       pages: new Map<number, Set<string>>(),
@@ -33,6 +38,13 @@ export function SourceReferenceLinks({
     groups.set(key, group);
   }
   if (!groups.size) return null;
+  const symbolUrls = new Map<string, Set<string>>();
+  for (const { source } of groups.values()) {
+    const symbol = source.symbol ?? "";
+    const urls = symbolUrls.get(symbol) ?? new Set<string>();
+    urls.add(sourceDocumentUrl(source.url).split("#")[0]);
+    symbolUrls.set(symbol, urls);
+  }
   return (
     <div
       className="mt-2 max-h-40 space-y-1 overflow-y-auto border-t border-gray-200 pt-2 text-xs"
@@ -43,6 +55,13 @@ export function SourceReferenceLinks({
       {[...groups].map(([key, { source, pages }]) => (
         <div key={key} className="flex flex-wrap items-baseline gap-x-1">
           <span>{source.symbol || "Source document"}:</span>
+          {(symbolUrls.get(source.symbol ?? "")?.size ?? 0) > 1 && (
+            <span className="text-gray-600">
+              {source.label ||
+                source.tableTitle ||
+                source.url.split("/").pop()?.split("#")[0]}
+            </span>
+          )}
           {[...pages]
             .sort(([a], [b]) => a - b)
             .map(([page, labels]) => (
@@ -53,7 +72,7 @@ export function SourceReferenceLinks({
                 rel="noopener noreferrer"
                 className="text-un-blue underline"
                 title={[...labels].join("\n")}
-                aria-label={`${source.symbol}, PDF page ${page} (opens in a new tab)`}
+                aria-label={`${source.symbol}${(symbolUrls.get(source.symbol ?? "")?.size ?? 0) > 1 ? ` · ${source.label || source.tableTitle || source.url.split("/").pop()?.split("#")[0]}` : ""}, PDF page ${page} (opens in a new tab)`}
               >
                 p. {page}
               </a>
@@ -61,6 +80,11 @@ export function SourceReferenceLinks({
           {source.pdfPageScope !== "row" && (
             <span className="text-gray-600">
               ({source.pdfPageScope === "section" ? "section" : "table"})
+            </span>
+          )}
+          {sourceDownloads(source.url) && (
+            <span className="text-gray-600">
+              (downloads PDF; go to the page shown)
             </span>
           )}
         </div>
