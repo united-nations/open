@@ -95,6 +95,8 @@ interface FinancingInstrumentChartProps {
   yAxisMax?: number;
   /** Allow signed net series, such as contribution adjustments. */
   allowNegative?: boolean;
+  /** Omit negative values from the stack while retaining them in the tooltip and table. */
+  omitNegativeFromPlot?: boolean;
   /** Cumulative stacking lets reconciliation balances subtract from the total. */
   stackOffset?: "none" | "sign";
   variant?: "area" | "bar";
@@ -158,6 +160,7 @@ export function FinancingInstrumentChart({
   tooltipValueFormatter,
   showTooltipTotal = false,
   allowNegative = false,
+  omitNegativeFromPlot = false,
   stackOffset,
   variant = "area",
   tooltipSources,
@@ -178,10 +181,20 @@ export function FinancingInstrumentChart({
   const visibleSeries = activeSeries.filter(
     (s) => !filterable || !hiddenKeys.includes(s.key),
   );
+  const plotData = omitNegativeFromPlot
+    ? data.map((row) => {
+        const point = { ...row };
+        for (const { key } of visibleSeries) {
+          const value = row[key];
+          if (typeof value === "number" && value < 0) point[key] = 0;
+        }
+        return point;
+      })
+    : data;
   const offset = stackOffset ?? (allowNegative ? "sign" : "none");
   // Pin signed domains to the actual stack extent. An automatic domain can
   // round a tiny negative balance down to a full, misleading negative tick.
-  const stackExtents = data.map((row) => {
+  const stackExtents = plotData.map((row) => {
     let positive = 0;
     let negative = 0;
     let cumulative = 0;
@@ -305,7 +318,7 @@ export function FinancingInstrumentChart({
               // Re-register areas in series order when filters change; restored
               // series otherwise append to Recharts' internal stack registry.
               key={visibleSeries.map((series) => series.key).join("|")}
-              data={data}
+              data={plotData}
               margin={TREND_CHART_MARGIN}
               stackOffset={offset}
             >
@@ -352,27 +365,41 @@ export function FinancingInstrumentChart({
                 key={`${visibleSeries.map((series) => series.key).join("|")}`}
                 interactive={Boolean(tooltipSources)}
                 constrainToViewport={visibleSeries.length > 10}
-                content={(props) => (
-                  <FinancialChartTooltip
-                    {...props}
-                    payload={props.payload?.map((entry) => ({
-                      ...entry,
-                      color:
-                        visibleSeries.find(
+                content={(props) => {
+                  const year = String(props.label ?? "");
+                  const reported = omitNegativeFromPlot
+                    ? data.find((row) => row.year === year)
+                    : undefined;
+                  return (
+                    <FinancialChartTooltip
+                      {...props}
+                      payload={props.payload?.map((entry) => {
+                        const series = visibleSeries.find(
                           (series) => series.key === entry.dataKey,
-                        )?.color ?? entry.color,
-                    }))}
-                    formatValue={
-                      tooltipValueFormatter ?? valueFormatter ?? formatYAxis
-                    }
-                    totalLabel={showTooltipTotal ? "Selected total" : undefined}
-                    showBars
-                    sources={tooltipSources?.(
-                      String(props.label ?? ""),
-                      visibleSeries.map((series) => series.key),
-                    )}
-                  />
-                )}
+                        );
+                        return {
+                          ...entry,
+                          value:
+                            series && reported
+                              ? reported[series.key]
+                              : entry.value,
+                          color: series?.color ?? entry.color,
+                        };
+                      })}
+                      formatValue={
+                        tooltipValueFormatter ?? valueFormatter ?? formatYAxis
+                      }
+                      totalLabel={
+                        showTooltipTotal ? "Selected total" : undefined
+                      }
+                      showBars={!omitNegativeFromPlot}
+                      sources={tooltipSources?.(
+                        year,
+                        visibleSeries.map((series) => series.key),
+                      )}
+                    />
+                  );
+                }}
               />
               {visibleSeries.map((s) =>
                 variant === "bar" ? (

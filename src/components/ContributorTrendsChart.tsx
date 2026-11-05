@@ -1,5 +1,8 @@
 "use client";
-import { contributorYearAvailable } from "@/lib/revenueCoverage";
+import {
+  contributorYearAvailable,
+  revenueCoverage,
+} from "@/lib/revenueCoverage";
 import { contributorFinancingPoint } from "@/lib/contributors";
 import {
   TREND_CHART_HEIGHT,
@@ -29,6 +32,7 @@ import {
 import {
   FinancingInstrumentChart,
   FinancingInstrumentDataPoint,
+  type FinancingSeries,
 } from "@/components/charts/FinancingInstrumentChart";
 
 // Type for the contributor trends data
@@ -56,6 +60,16 @@ interface ContributorTrendsData {
   categoryContributors?: Record<string, Record<string, ContributorYearData[]>>;
 }
 
+const CONTRIBUTOR_TYPE_SERIES: FinancingSeries[] = [
+  { key: "gov", label: "Government", color: "var(--color-un-blue)" },
+  { key: "non-gov", label: "Non-Government", color: "var(--color-smoky)" },
+  {
+    key: "unattributed",
+    label: "Unattributed",
+    color: "var(--color-dusty-gray)",
+  },
+];
+
 // Color palette for lines - designed for good contrast
 const LINE_COLORS = [
   "#009edb", // UN blue
@@ -73,9 +87,7 @@ const LINE_COLORS = [
 export function ContributorTrendsChart() {
   const [data, setData] = React.useState<ContributorTrendsData | null>(null);
   const [loading, setLoading] = React.useState(true);
-  const [selected, setSelected] = React.useState<Set<string>>(
-    new Set(["gov", "non-gov", "unattributed"]),
-  );
+  const [selected, setSelected] = React.useState<Set<string>>(() => new Set());
   const [financingContributor, setFinancingContributor] =
     React.useState<string>("all");
 
@@ -96,6 +108,27 @@ export function ContributorTrendsChart() {
     }
     loadData();
   }, []);
+
+  const contributorTypeData = React.useMemo(() => {
+    if (!data) return [];
+
+    return data.meta.years.flatMap((year, index) => {
+      // Aggregate exports may have zero placeholders for unavailable sources.
+      const coverage = revenueCoverage(year);
+      if (
+        coverage &&
+        !(coverage.controls && coverage.government && coverage.nonGovernment)
+      )
+        return [];
+
+      const point: FinancingInstrumentDataPoint = { year: String(year) };
+      for (const { key } of CONTRIBUTOR_TYPE_SERIES) {
+        const row = data.aggregates[key]?.[index];
+        point[key] = row?.available === false ? null : (row?.total ?? null);
+      }
+      return [point];
+    });
+  }, [data]);
 
   // Build hierarchical groups for compare chart (multi-select)
   const groups: HierarchicalGroup[] = React.useMemo(() => {
@@ -333,114 +366,114 @@ export function ContributorTrendsChart() {
   }
 
   return (
-    <>
-      {/* Charts container - grid for aligned columns */}
-      <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-6">
-        {/* Chart A: Compare contributors (line chart) */}
-        <div className="flex flex-col" data-money-chart>
-          {/* Title and chips */}
-          <div className="space-y-2 pb-3">
-            <h4 className="text-sm font-medium text-gray-700">
-              Compare contributors
-            </h4>
-            <HierarchicalMultiSelect
-              groups={groups}
-              selected={selected}
-              onChange={setSelected}
-              getItemColor={getItemColor}
-              addLabel="Add"
-            />
-          </div>
-
-          {/* Chart - mt-auto pushes to bottom of grid cell */}
-          <div
-            className="mt-auto w-full shrink-0"
-            style={{ height: TREND_CHART_HEIGHT }}
-          >
-            {loading ? (
-              <div className="flex h-full items-center justify-center text-gray-500">
-                Loading trends...
-              </div>
-            ) : selected.size === 0 ? (
-              <div className="flex h-full items-center justify-center text-gray-500">
-                Select at least one contributor to view trends
-              </div>
-            ) : (
-              <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={chartData} margin={TREND_CHART_MARGIN}>
-                  <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                  <XAxis
-                    dataKey="year"
-                    interval="preserveStartEnd"
-                    tick={{ fontSize: 12 }}
-                    tickLine={false}
-                    axisLine={{ stroke: "#e5e7eb" }}
-                  />
-                  <YAxis
-                    orientation="right"
-                    width={1}
-                    tick={{ fontSize: 11, fill: "#6b7280", dx: -5, dy: -8 }}
-                    tickLine={false}
-                    axisLine={false}
-                    domain={["auto", "auto"]}
-                    tickFormatter={sharedFormatBudget}
-                    mirror
-                  />
-                  <Tooltip
-                    content={(props) => <FinancialChartTooltip {...props} />}
-                  />
-                  {lines.map((line) => (
-                    <Line
-                      key={line.dataKey}
-                      type="monotone"
-                      dataKey={line.dataKey}
-                      stroke={line.color}
-                      strokeWidth={2}
-                      dot={false}
-                      activeDot={{ r: 4, strokeWidth: 0 }}
-                    />
-                  ))}
-                </LineChart>
-              </ResponsiveContainer>
-            )}
-          </div>
-        </div>
-
-        {/* Chart B: Financing instruments (stacked area chart) */}
-        <div className="flex flex-col" data-money-chart>
-          <div className="space-y-2 pb-3">
-            <h4 className="text-sm font-medium text-gray-700">
-              Revenue by financing instrument
-            </h4>
-            <div className="flex flex-wrap items-center gap-2">
-              <HierarchicalSingleSelect
-                groups={financingSingleSelectGroups}
-                selected={financingContributor}
-                onChange={setFinancingContributor}
-                getLabel={getFinancingLabel}
-              />
-            </div>
-          </div>
-          <div className="mt-auto">
-            {loading ? (
-              <div
-                className="flex items-center justify-center text-gray-500"
-                style={{ height: TREND_CHART_HEIGHT }}
-              >
-                Loading trends...
-              </div>
-            ) : (
-              <FinancingInstrumentChart
-                data={financingInstrumentData}
-                accessibleTableLabel="Revenue by financing instrument"
-                allowNegative
-                height={TREND_CHART_HEIGHT}
-                filterable
-              />
-            )}
-          </div>
+    <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-6">
+      <div className="flex min-w-0 flex-col">
+        <h4 className="text-sm font-medium text-gray-700">
+          Revenue by contributor type
+        </h4>
+        <p className="mt-1 pb-3 text-xs text-gray-500">
+          Negative balances appear only in the tooltip and data table.
+        </p>
+        <div className="mt-auto">
+          <FinancingInstrumentChart
+            data={contributorTypeData}
+            series={CONTRIBUTOR_TYPE_SERIES}
+            accessibleTableLabel="Revenue by contributor type"
+            allowNegative
+            omitNegativeFromPlot
+          />
         </div>
       </div>
-    </>
+
+      <div className="flex min-w-0 flex-col">
+        <div className="space-y-2 pb-3">
+          <h4 className="text-sm font-medium text-gray-700">
+            Revenue by financing instrument
+          </h4>
+          <div className="flex flex-wrap items-center gap-2">
+            <HierarchicalSingleSelect
+              groups={financingSingleSelectGroups}
+              selected={financingContributor}
+              onChange={setFinancingContributor}
+              getLabel={getFinancingLabel}
+            />
+          </div>
+        </div>
+        <div className="mt-auto">
+          <FinancingInstrumentChart
+            data={financingInstrumentData}
+            accessibleTableLabel="Revenue by financing instrument"
+            allowNegative
+            height={TREND_CHART_HEIGHT}
+            filterable
+          />
+        </div>
+      </div>
+
+      <div className="flex min-w-0 flex-col" data-money-chart>
+        {/* Title and chips */}
+        <div className="space-y-2 pb-3">
+          <h4 className="text-sm font-medium text-gray-700">
+            Compare contributors
+          </h4>
+          <HierarchicalMultiSelect
+            groups={groups}
+            selected={selected}
+            onChange={setSelected}
+            getItemColor={getItemColor}
+            addLabel="Add"
+          />
+        </div>
+
+        {/* Chart - mt-auto pushes to bottom of grid cell */}
+        <div
+          className="mt-auto w-full shrink-0"
+          style={{ height: TREND_CHART_HEIGHT }}
+        >
+          {selected.size === 0 ? (
+            <div className="flex h-full items-center justify-center rounded-md border border-gray-200 px-4 text-center text-sm text-gray-500">
+              Select at least one contributor to view trends
+            </div>
+          ) : (
+            <ResponsiveContainer width="100%" height="100%">
+              <LineChart data={chartData} margin={TREND_CHART_MARGIN}>
+                <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                <XAxis
+                  dataKey="year"
+                  interval="preserveStartEnd"
+                  tick={{ fontSize: 12 }}
+                  tickLine={false}
+                  axisLine={{ stroke: "#e5e7eb" }}
+                />
+                <YAxis
+                  orientation="right"
+                  width={1}
+                  tick={{ fontSize: 11, fill: "#6b7280", dx: -5, dy: -8 }}
+                  tickLine={false}
+                  axisLine={false}
+                  domain={["auto", "auto"]}
+                  tickFormatter={sharedFormatBudget}
+                  mirror
+                />
+                <Tooltip
+                  content={(props) => <FinancialChartTooltip {...props} />}
+                />
+                {lines.map((line) => (
+                  <Line
+                    key={line.dataKey}
+                    type="monotone"
+                    dataKey={line.dataKey}
+                    stroke={line.color}
+                    strokeWidth={2}
+                    dot={false}
+                    activeDot={{ r: 4, strokeWidth: 0 }}
+                  />
+                ))}
+              </LineChart>
+            </ResponsiveContainer>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
