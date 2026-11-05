@@ -739,6 +739,20 @@ export function EntitySidebar({
                   Non-SDG is reported by CEB. Not specified is a calculated
                   remainder for missing SDG reporting and signed differences.
                 </p>
+                {selectedYear === 2025 &&
+                  (entity.entity === "WMO" || entity.entity === "IOM") && (
+                    <p className="mt-2 text-sm text-gray-600">
+                      {entity.entity === "WMO"
+                        ? "WMO’s Non-SDG amount closely matches its final regular budget. Its spending basis is unconfirmed."
+                        : "IOM’s reported SDG and Non-SDG amounts together exceed its organization expenditure by $106.30 million."}{" "}
+                      <Link
+                        href="/about/#ceb-presentation"
+                        className="text-un-blue underline underline-offset-2"
+                      >
+                        2025 source notes
+                      </Link>
+                    </p>
+                  )}
                 {loadingSpending ? (
                   <p className="mt-2 text-sm text-gray-500">
                     Loading expenditure data...

@@ -21,9 +21,9 @@
       }
     },
     "metricCoverage": {
-      "budgetUnits": 112,
+      "budgetUnits": 113,
       "byMetric": {
-        "approved": 112
+        "approved": 113
       }
     },
     "fundingSources": [
@@ -5303,7 +5303,7 @@
       "values": {
         "regular_budget": 773224100
       },
-      "completeness": "incomplete",
+      "completeness": "complete",
       "metricValues": {
         "approved": {
           "regular_budget": 773224100
@@ -5395,10 +5395,10 @@
       },
       "breakdowns": {
         "regular_budget": {
-          "childAmount": 771799700,
-          "difference": -1424400,
-          "outcome": "unreconciled_difference",
-          "completeness": "incomplete"
+          "childAmount": 773224100,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
         }
       }
     },
@@ -27239,6 +27239,48 @@
       "metricAmounts": {
         "approved": 267233000
       }
+    },
+    {
+      "id": "section-3~regional-service-centre-share",
+      "parentId": "section-3",
+      "tier": "budget_unit",
+      "kind": "allocation",
+      "code": null,
+      "label": "Regional Service Centre share for special political missions",
+      "basis": "printed",
+      "unitType": "programme",
+      "role": "source_node",
+      "amount": 1424400,
+      "values": {
+        "regular_budget": 1424400
+      },
+      "metricValues": {
+        "approved": {
+          "regular_budget": 1424400
+        }
+      },
+      "metricAmounts": {
+        "approved": 1424400
+      },
+      "metricSources": {
+        "approved": {
+          "regular_budget": [
+            {
+              "symbol": "A/75/6 (Sect. 3)/Add.1",
+              "url": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%203%29%2FAdd.1&l=en&t=pdf#page=32",
+              "pdfPage": 32,
+              "pageStatus": "located",
+              "pdfPageScope": "row",
+              "pageLocatedBy": "reviewed_final_pdf_row",
+              "rowLabel": "Provision for the share of special political missions for the Regional Service Centre",
+              "columnHeader": "2020 \u203a Appropriation \u203a (2)",
+              "tableTitle": "Table 7 \u2013 Summary of requirements by major component",
+              "label": "Regular budget"
+            }
+          ]
+        }
+      },
+      "completeness": "complete"
     }
   ]
 }

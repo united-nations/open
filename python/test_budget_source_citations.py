@@ -10,6 +10,65 @@ spec.loader.exec_module(exporter)
 
 
 class MetricCitationTests(unittest.TestCase):
+    def test_section_3_keeps_printed_support_as_its_own_budget_unit(self):
+        import json
+
+        for metric, year, amount, total in (
+            ('approved', 2020, 1424400, 773224100),
+            ('proposed', 2021, 1511000, 769777700),
+        ):
+            with self.subTest(metric=metric, year=year):
+                payload = json.loads((exporter.OUT / f'budget-ppb-{metric}-{year}.json').read_text())
+                nodes = {node['id']: node for node in payload['nodes']}
+                support = nodes['section-3~regional-service-centre-share']
+                self.assertEqual((support['tier'], support['basis'], support['amount']),
+                                 ('budget_unit', 'printed', amount))
+                source, = support['metricSources'][metric]['regular_budget']
+                self.assertEqual((source['symbol'], source['pdfPage']), ('A/75/6 (Sect. 3)/Add.1', 32))
+                self.assertIn(str(year), source['columnHeader'])
+                self.assertEqual(support['parentId'], 'section-3')
+                self.assertEqual(nodes['section-3']['amount'], total)
+                self.assertEqual(sum(node['amount'] for node in nodes.values()
+                                     if node['parentId'] == 'section-3'), total)
+
+    def test_proposed_2027_printed_controls_feed_rollups_and_keep_source_discrepancies(self):
+        import json
+
+        payload = json.loads((exporter.OUT / 'budget-ppb-proposed-2027.json').read_text())
+        nodes = {node['id']: node for node in payload['nodes']}
+        for section, amount, page, subtotal, section_gap, programme_gap in (
+            ('11', 11029000, 22, 7764000, 164100, -164100),
+            ('29E', 84903500, 25, 83618400, 180700, -181700),
+            ('30', 24088500, 18, 20815800, 347000, -347000),
+        ):
+            with self.subTest(section=section):
+                section_node = nodes[f'section-{section}']
+                part = nodes[section_node['parentId']]
+                wrapper = nodes[f'section-{section}~section-wide-allocations']
+                programme = nodes[f"{wrapper['id']}~programme-of-work"]
+                for node in (section_node, wrapper):
+                    self.assertEqual((node['basis'], node['amount']), ('printed', amount))
+                    source, = node['metricSources']['proposed']['regular_budget']
+                    self.assertEqual((source['symbol'], source['rowLabel'], source['pdfPage']),
+                                     (f'A/81/6 (Sect. {section})', 'Subtotal, 1', page))
+                    self.assertTrue(any(
+                        (ref['symbol'], ref['rowLabel'], ref['pdfPage'])
+                        == (source['symbol'], source['rowLabel'], source['pdfPage'])
+                        for ref in part['metricSources']['proposed']['regular_budget']
+                    ))
+                self.assertEqual(programme['amount'], subtotal)
+                for node, gap in ((wrapper, section_gap), (programme, programme_gap)):
+                    breakdown = node['breakdowns']['regular_budget']
+                    self.assertEqual(breakdown['outcome'], 'printed_source_discrepancy')
+                    self.assertEqual(breakdown['difference'], gap)
+                self.assertEqual(part['amount'], sum(node['amount'] for node in nodes.values()
+                                                     if node['parentId'] == part['id']))
+        root = nodes['whole']
+        self.assertEqual(payload['meta']['total'], root['amount'])
+        if root['basis'] == 'derived':
+            self.assertEqual(root['amount'], sum(node['amount'] for node in nodes.values()
+                                                 if node['parentId'] == 'whole'))
+
     def test_reviewed_final_pdf_pages_do_not_shift_neighboring_rows(self):
         prefix = 'ppb2027:A_81_6 (SECT. 1) PRELIMINARY|word/document.xml|'
         citations = [

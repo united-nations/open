@@ -35,6 +35,10 @@ class AssessmentSourcePageTests(unittest.TestCase):
                 page.insert_text((310, baseline), "4.000" if index == 192 else "0.500", fontsize=7)
                 page.insert_text((520, baseline), str(1000 + index), fontsize=7)
             page.insert_text((50, 1050), "Printed page 999", fontsize=8)
+            if stop == 193:
+                page.insert_text((50, 1025), "Total", fontsize=7)
+                page.insert_text((310, 1025), "100.000", fontsize=7)
+                page.insert_text((520, 1025), str(sum(range(1000, 1193))), fontsize=7)
         with patch.object(exporter, "fetch", return_value=SimpleNamespace(content=document.tobytes())):
             rows = exporter.parse_assessment_document(2026, "ST/ADM/SER.B/test")
         self.assertEqual(len(rows), 193)

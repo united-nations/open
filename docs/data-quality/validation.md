@@ -1,5 +1,7 @@
 # Reproducing the data-quality checks
 
+See the [financial reconciliation findings](parts-total-review.md) for reviewed source differences and fixes.
+
 Use Node 24, pnpm and uv from the repository's toolchain. Install dependencies with
 `pnpm install --frozen-lockfile` and `uv sync`.
 

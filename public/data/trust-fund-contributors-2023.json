@@ -4,11 +4,11 @@
     "currency": "USD",
     "measure": "Contributions and transfers",
     "statement_total_usd": 3357734801,
-    "named_rows_total_usd": 3152880451,
-    "contributor_total_usd": 3330564159,
+    "named_rows_total_usd": 3152837231,
+    "contributor_total_usd": 3330520939,
     "adjustment_total_usd": 27213862,
-    "unallocated_residual_usd": -43220,
-    "named_row_completeness": 0.999986,
+    "unallocated_residual_usd": 0,
+    "named_row_completeness": 1.0,
     "unresolved_entity_amount_usd": 288385,
     "source": {
       "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
@@ -30262,7 +30262,7 @@
           "type": "other_transfer_allocation_contributions",
           "group": "inter_organizational",
           "label": "Inter-organizational arrangements",
-          "amount_usd": 20364392,
+          "amount_usd": 20321172,
           "supportingSources": [
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
@@ -30355,13 +30355,17 @@
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
               "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
-              "label": "IDP — Inter-agency contributions and transfers",
-              "rowLabel": "United Nations Development Programme - UNDP",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.41.1 — Inter-agency contributions and transfers",
-              "pdfPage": 287,
+              "label": "IDP — statement sign used. Transfer schedule p. 287 prints +$21,610",
+              "rowLabel": "Other transfers and allocations",
+              "columnHeader": "2023",
+              "tableTitle": "Schedule 3.41 — Financial performance",
+              "pdfPage": 285,
               "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
+              "pageStatus": "reviewed_pdf_row",
+              "operand": {
+                "amount": -21610,
+                "currency": "USD"
+              }
             },
             {
               "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
@@ -30499,9 +30503,9 @@
         }
       ],
       "counterparty_group": "Mixed",
-      "amount_usd": 20364392,
-      "positive_amount_usd": 20374689,
-      "negative_amount_usd": -10297,
+      "amount_usd": 20321172,
+      "positive_amount_usd": 20353079,
+      "negative_amount_usd": -31907,
       "reported_names": [
         "United Nations Development Programme - UNDP"
       ],
@@ -31023,49 +31027,6 @@
           ]
         },
         {
-          "fund_code": "IDP",
-          "fund_name": "African Institute for Economic Development and Planning (IDEP)",
-          "entity_code": "ECA",
-          "entity_name": "Economic Commission for Africa",
-          "entity_id": "trust-fund-entity:ECA",
-          "mapping_status": "mapped",
-          "flows": [
-            {
-              "type": "other_transfer_allocation_contributions",
-              "group": "inter_organizational",
-              "label": "Inter-organizational arrangements",
-              "amount_usd": 21610,
-              "supportingSources": [
-                {
-                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
-                  "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
-                  "label": "IDP — Inter-agency contributions and transfers",
-                  "rowLabel": "United Nations Development Programme - UNDP",
-                  "columnHeader": "Total",
-                  "tableTitle": "Schedule 3.41.1 — Inter-agency contributions and transfers",
-                  "pdfPage": 287,
-                  "pdfPageScope": "row",
-                  "pageStatus": "extracted_pdf_row"
-                }
-              ]
-            }
-          ],
-          "amount_usd": 21610,
-          "supportingSources": [
-            {
-              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
-              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
-              "label": "IDP — Inter-agency contributions and transfers",
-              "rowLabel": "United Nations Development Programme - UNDP",
-              "columnHeader": "Total",
-              "tableTitle": "Schedule 3.41.1 — Inter-agency contributions and transfers",
-              "pdfPage": 287,
-              "pdfPageScope": "row",
-              "pageStatus": "extracted_pdf_row"
-            }
-          ]
-        },
-        {
           "fund_code": "ESW",
           "fund_name": "Trust Fund in Support of the System-Wide Evaluation",
           "entity_code": "DMSPC",
@@ -31406,6 +31367,57 @@
               "pdfPage": 119,
               "pdfPageScope": "row",
               "pageStatus": "extracted_pdf_row"
+            }
+          ]
+        },
+        {
+          "fund_code": "IDP",
+          "fund_name": "African Institute for Economic Development and Planning (IDEP)",
+          "entity_code": "ECA",
+          "entity_name": "Economic Commission for Africa",
+          "entity_id": "trust-fund-entity:ECA",
+          "mapping_status": "mapped",
+          "flows": [
+            {
+              "type": "other_transfer_allocation_contributions",
+              "group": "inter_organizational",
+              "label": "Inter-organizational arrangements",
+              "amount_usd": -21610,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                  "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                  "label": "IDP — statement sign used. Transfer schedule p. 287 prints +$21,610",
+                  "rowLabel": "Other transfers and allocations",
+                  "columnHeader": "2023",
+                  "tableTitle": "Schedule 3.41 — Financial performance",
+                  "pdfPage": 285,
+                  "pdfPageScope": "row",
+                  "pageStatus": "reviewed_pdf_row",
+                  "operand": {
+                    "amount": -21610,
+                    "currency": "USD"
+                  }
+                }
+              ]
+            }
+          ],
+          "amount_usd": -21610,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+              "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+              "label": "IDP — statement sign used. Transfer schedule p. 287 prints +$21,610",
+              "rowLabel": "Other transfers and allocations",
+              "columnHeader": "2023",
+              "tableTitle": "Schedule 3.41 — Financial performance",
+              "pdfPage": 285,
+              "pdfPageScope": "row",
+              "pageStatus": "reviewed_pdf_row",
+              "operand": {
+                "amount": -21610,
+                "currency": "USD"
+              }
             }
           ]
         }
@@ -93730,8 +93742,8 @@
     {
       "fund_code": "IDP",
       "statement_amount_usd": -21610,
-      "named_rows_amount_usd": 21610,
-      "residual_usd": -43220,
+      "named_rows_amount_usd": -21610,
+      "residual_usd": 0,
       "flow_type": "other_transfers_and_allocations"
     },
     {

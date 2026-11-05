@@ -174,6 +174,20 @@ def row_references(
             reference["pdfPage"] = int(row["page"])
             reference["pdfPageScope"] = "row"
             reference["pageStatus"] = "extracted_pdf_row"
+        if row.get("reviewed_idp_sign") is True:
+            reference.update(
+                label="IDP — statement sign used. Transfer schedule p. 287 prints +$21,610",
+                rowLabel="Other transfers and allocations",
+                columnHeader="2023",
+                tableTitle="Schedule 3.41 — Financial performance",
+                pdfPage=285,
+                pageStatus="reviewed_pdf_row",
+            )
+            references.append({
+                **reference,
+                "operand": {"amount": int(row["effective_amount_usd"]), "currency": "USD"},
+            })
+            continue
         key = json.dumps(reference, sort_keys=True)
         if key not in seen:
             references.append(reference)
@@ -529,6 +543,31 @@ def selected_funding_rows(
     ]
     if facts.duplicated("fund_code").any():
         raise ValueError(f"Duplicate transfer facts for {year}")
+    if year == 2023 and transfers["fund_code"].eq("IDP").any():
+        # The only named transfer prints positive on p. 287. Both the current
+        # performance statement and next year's comparative report it negative.
+        idp = transfers["fund_code"].eq("IDP")
+        if (idp.sum() != 1 or not (
+            transfers.loc[idp, "page"].eq(287)
+            & transfers.loc[idp, "counterparty"].eq("United Nations Development Programme - UNDP")
+            & transfers.loc[idp, "flow_type"].eq("other_transfer_allocation_contributions")
+            & transfers.loc[idp, "effective_amount_usd"].eq(21610)
+        ).all()):
+            raise ValueError("Reviewed 2023 IDP transfer schedule row changed")
+        current = facts.loc[facts["fund_code"].eq("IDP") & facts["page"].eq(285), "amount_usd"]
+        comparative = statements.loc[
+            statements["calendar_year"].eq(2024)
+            & statements["period_year"].eq(2023)
+            & statements["fund_code"].eq("IDP")
+            & statements["statement_type"].eq("financial_performance")
+            & statements["line_item"].eq("Other transfers and allocations")
+            & statements["page"].eq(288),
+            "amount_usd",
+        ]
+        if current.tolist() != [-21610] or comparative.tolist() != [-21610]:
+            raise ValueError("Reviewed 2023 IDP statement controls changed")
+        transfers.loc[idp, "effective_amount_usd"] = int(current.iloc[0])
+        transfers["reviewed_idp_sign"] = idp
     named = transfers.groupby("fund_code")["effective_amount_usd"].sum()
     if set(named.index) - set(facts["fund_code"]):
         raise ValueError(f"Transfers without a financial-performance statement for {year}")

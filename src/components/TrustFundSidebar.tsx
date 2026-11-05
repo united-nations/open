@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import {
   XBContributorPanel,
   ContributorSourceReferences,
@@ -765,6 +766,14 @@ export function TrustFundSidebar({
                       .flatMap((fund) => fund.flows ?? []),
                   )}
                 />
+              )}
+              {year === 2020 && node.code === "HDM" && (
+                <Link
+                  href="/about/#secretariat-trust-fund-contributors"
+                  className="text-sm text-un-blue underline underline-offset-2"
+                >
+                  2020 transfer schedule and statement reconciliation
+                </Link>
               )}
               {node.xbEntity !== "UNEP" && (
                 <FinancialPanelSection heading="By contributor">

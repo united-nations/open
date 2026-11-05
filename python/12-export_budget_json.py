@@ -1442,7 +1442,8 @@ def export() -> None:
         payload = build_ppb(view, financial)
         for metric in ("proposed", "approved", "expenditure"):
             annual = annual_metric_payload(payload, metric)
-            apply_annual_exceptions(annual, metric)
+            apply_annual_exceptions(annual, metric, financial, citation_source)
+            inherit_metric_sources(annual["nodes"])
             if edition >= 2021:
                 add_chf_layout(annual, financial, citation_source)
             year = annual["meta"]["year"]

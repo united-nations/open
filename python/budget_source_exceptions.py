@@ -57,11 +57,32 @@ def reference(symbol, page, row, year, table):
             'tableTitle': table, 'label': 'regular budget'}
 
 
-def apply_annual_exceptions(payload, metric):
+def reviewed_reference(financial, citation_source, identity, year, measure, row_label, page):
+    matches = [row for row in financial['observations'] if row['observationId'] == identity]
+    if len(matches) != 1:
+        raise ValueError(f'Expected one reviewed budget observation for {identity}, found {len(matches)}')
+    observation = matches[0]
+    lens = observation['lens']
+    if (lens['dataYear'], lens['measure'], lens['fundingSource'], lens['currency']) != (
+        year, measure, 'regular_budget', 'USD'
+    ):
+        raise ValueError(f'Unexpected budget lens for {identity}')
+    citation = next(row for row in financial['citations'] if row['citationId'] == observation['citationId'])
+    if citation['rowLabel'] != row_label:
+        raise ValueError(f'Unexpected budget row label for {identity}')
+    source = citation_source({
+        **citation, 'pdfPage': page, 'pdfPageScope': 'row', 'pageStatus': 'located',
+        'pageLocatedBy': 'reviewed_final_pdf_row',
+    })
+    return int(observation['money']['amountExact']), {**source, 'label': 'Regular budget'}
+
+
+def apply_annual_exceptions(payload, metric, financial, citation_source):
     if metric == 'expenditure':
         return
     year = payload['meta']['year']
     nodes = {n['id']: n for n in payload['nodes']}
+    source_discrepancies = {}
 
     def set_amount(node, amount, sources=None):
         node['amount'] = amount
@@ -70,6 +91,66 @@ def apply_annual_exceptions(payload, metric):
         node['metricAmounts'] = {metric: amount}
         if sources:
             node['metricSources'] = {metric: {'regular_budget': sources}}
+
+    if (metric, year) in (('approved', 2020), ('proposed', 2021)):
+        measure, column = ('appropriation', 2) if metric == 'approved' else ('requirements', 4)
+        amount, source = reviewed_reference(
+            financial, citation_source,
+            f'ppb2021:A_75_6 (SECT. 3)_ADD.1|word/document.xml|t0009|r0030|c{column:04d}',
+            year, measure, 'Provision for the share of special political missions for the Regional Service Centre', 32,
+        )
+        siblings = [n for n in nodes.values() if n['parentId'] == 'section-3']
+        if (any('regular_budget' not in n['values'] for n in siblings)
+                or sum(n['amount'] for n in siblings) + amount != nodes['section-3']['amount']):
+            raise ValueError(f'{year} Section 3 children do not reconcile with the printed support allocation')
+        support = {
+            'id': 'section-3~regional-service-centre-share', 'parentId': 'section-3',
+            'tier': 'budget_unit', 'kind': 'allocation', 'code': None,
+            'label': 'Regional Service Centre share for special political missions',
+            'basis': 'printed', 'unitType': 'programme', 'role': 'source_node',
+        }
+        set_amount(support, amount, [source])
+        payload['nodes'].append(support)
+        coverage = payload['meta']['metricCoverage']
+        coverage['budgetUnits'] += 1
+        coverage['byMetric'][metric] += 1
+
+    if metric == 'proposed' and year == 2027:
+        controls = (
+            ('11', 't0021|r0009', 22, 164100, -164100),
+            ('29E', 't0035|r0011', 25, 180700, -181700),
+            ('30', 't0018|r0010', 18, 347000, -347000),
+        )
+        rollups = set()
+        for section, cell, page, section_difference, programme_difference in controls:
+            amount, source = reviewed_reference(
+                financial, citation_source,
+                f'ppb2027:A_81_6 (SECT. {section})|word/document.xml|{cell}|c0008',
+                year, 'proposed', 'Subtotal, 1', page,
+            )
+            section_id = f'section-{section}'
+            wrapper_id = f'{section_id}~section-wide-allocations'
+            section_node, wrapper = nodes[section_id], nodes[wrapper_id]
+            if (wrapper['role'] != 'section_scope'
+                    or [n['id'] for n in nodes.values() if n['parentId'] == section_id] != [wrapper_id]):
+                raise ValueError(f'{section_id} no longer has a single section-wide allocation')
+            for node in (section_node, wrapper):
+                set_amount(node, amount, [source])
+                node['basis'] = 'printed'
+                node['note'] = 'Uses the printed regular-budget section total. The source programme-of-work subtotal differs from its itemized amounts.'
+            programme_id = f'{wrapper_id}~programme-of-work'
+            nodes[programme_id]['note'] = 'The printed programme-of-work subtotal differs from the sum of its itemized amounts.'
+            source_discrepancies[wrapper_id] = section_difference
+            source_discrepancies[programme_id] = programme_difference
+            parent = section_node['parentId']
+            while parent:
+                rollups.add(parent)
+                parent = nodes[parent]['parentId']
+        for node in reversed(payload['nodes']):
+            if node['id'] in rollups:
+                set_amount(node, sum(n['amount'] for n in nodes.values() if n['parentId'] == node['id']))
+                # Inherit citations again from the corrected section controls.
+                node.pop('metricSources', None)
 
     if metric == 'proposed' and year == 2025:
         node = nodes['section-24']
@@ -98,6 +179,7 @@ def apply_annual_exceptions(payload, metric):
             set_amount(parent, parent['amount'] + 3500000)
             set_amount(wrapper, wrapper['amount'] + 3500000)
         parent['note'] = 'Includes the new conferencing allocation printed in Table 33.1.'
+
     # Recompute reconciliation for the selected metric rather than inheriting
     # expenditure-only metadata or marking missing projected detail complete.
     children = {}
@@ -114,6 +196,11 @@ def apply_annual_exceptions(payload, metric):
         complete = len(published) == len(items) and difference == 0
         source_inconsistent = year == 2025 and metric == 'proposed' and node['id'].startswith('section-24~office-') and node['id'].endswith('~programme-of-work')
         outcome = 'exact' if complete else 'printed_source_discrepancy' if source_inconsistent else 'unreconciled_difference'
+        if node['id'] in source_discrepancies:
+            difference = node['amount'] - total
+            if len(published) != len(items) or difference != source_discrepancies[node['id']]:
+                raise ValueError(f"Source discrepancy changed for {node['id']}: {difference}")
+            outcome = 'printed_source_discrepancy'
         node['breakdowns'] = {'regular_budget': {'childAmount': total, 'difference': difference,
                               'outcome': outcome, 'completeness': 'complete' if complete else 'incomplete'}}
         node['completeness'] = 'complete' if complete else 'incomplete'

@@ -8,14 +8,14 @@
     "year": 2027,
     "fiscalYear": "2027",
     "currency": "USD",
-    "total": 3365750500,
+    "total": 3366442300,
     "metrics": {
       "proposed": {
         "label": "Proposed",
         "yearOffset": 0,
         "description": "Proposed regular-budget resources.",
         "dataYear": 2027,
-        "total": 3365750500,
+        "total": 3366442300,
         "sourceEdition": 2027,
         "sourceDocument": "A/81/6"
       }
@@ -91,15 +91,27 @@
       "kind": "whole",
       "code": null,
       "label": "Programme budget",
-      "amount": 3365750500,
+      "amount": 3366442300,
       "basis": "derived",
       "values": {
-        "regular_budget": 3365750500
+        "regular_budget": 3366442300
       },
       "completeness": "complete",
       "metricValues": {
         "proposed": {
-          "regular_budget": 3365750500
+          "regular_budget": 3366442300
+        }
+      },
+      "note": "Derived USD sum of displayed Part coverage; Section 13 CHF and every incomplete child remain explicit residue.",
+      "metricAmounts": {
+        "proposed": 3366442300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 3366442300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
         }
       },
       "metricSources": {
@@ -635,24 +647,12 @@
             },
             {
               "symbol": "A/81/6 (Sect. 11)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2011%29&l=en&t=pdf#page=21",
-              "pdfPage": 21,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "A. Executive direction and management",
-              "columnHeader": "2027 proposed",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
-            },
-            {
-              "symbol": "A/81/6 (Sect. 11)",
               "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2011%29&l=en&t=pdf#page=22",
               "pdfPage": 22,
               "pageStatus": "located",
               "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, B",
+              "pageLocatedBy": "reviewed_final_pdf_row",
+              "rowLabel": "Subtotal, 1",
               "columnHeader": "2027 proposed",
               "tableTitle": "(1) Regular budget",
               "label": "regular budget \u2014 supporting row for calculated total"
@@ -1083,20 +1083,8 @@
               "pdfPage": 25,
               "pageStatus": "located",
               "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "A. Executive direction and management",
-              "columnHeader": "2027 proposed",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
-            },
-            {
-              "symbol": "A/81/6 (Sect. 29E)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2029E%29&l=en&t=pdf#page=25",
-              "pdfPage": 25,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, B",
+              "pageLocatedBy": "reviewed_final_pdf_row",
+              "rowLabel": "Subtotal, 1",
               "columnHeader": "2027 proposed",
               "tableTitle": "(1) Regular budget",
               "label": "regular budget \u2014 supporting row for calculated total"
@@ -2127,32 +2115,8 @@
               "pdfPage": 18,
               "pageStatus": "located",
               "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "A. Executive direction and management",
-              "columnHeader": "2027 proposed",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
-            },
-            {
-              "symbol": "A/81/6 (Sect. 30)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2030%29&l=en&t=pdf#page=18",
-              "pdfPage": 18,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, B",
-              "columnHeader": "2027 proposed",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
-            },
-            {
-              "symbol": "A/81/6 (Sect. 30)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2030%29&l=en&t=pdf#page=18",
-              "pdfPage": 18,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "C. Programme support",
+              "pageLocatedBy": "reviewed_final_pdf_row",
+              "rowLabel": "Subtotal, 1",
               "columnHeader": "2027 proposed",
               "tableTitle": "(1) Regular budget",
               "label": "regular budget \u2014 supporting row for calculated total"
@@ -2458,18 +2422,6 @@
               "label": "regular budget \u2014 supporting row for calculated total"
             }
           ]
-        }
-      },
-      "note": "Derived USD sum of displayed Part coverage; Section 13 CHF and every incomplete child remain explicit residue.",
-      "metricAmounts": {
-        "proposed": 3365750500
-      },
-      "breakdowns": {
-        "regular_budget": {
-          "childAmount": 3365750500,
-          "difference": 0,
-          "outcome": "exact",
-          "completeness": "complete"
         }
       }
     },
@@ -4429,15 +4381,27 @@
       "kind": "part",
       "code": "IV",
       "label": "International cooperation for development",
-      "amount": 292041200,
+      "amount": 292205300,
       "basis": "derived",
       "values": {
-        "regular_budget": 292041200
+        "regular_budget": 292205300
       },
       "completeness": "complete",
       "metricValues": {
         "proposed": {
-          "regular_budget": 292041200
+          "regular_budget": 292205300
+        }
+      },
+      "note": "Derived USD sum of the displayed section coverage; no printed all-source Part parent is claimed.",
+      "metricAmounts": {
+        "proposed": 292205300
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 292205300,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
         }
       },
       "metricSources": {
@@ -4853,41 +4817,17 @@
             },
             {
               "symbol": "A/81/6 (Sect. 11)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2011%29&l=en&t=pdf#page=21",
-              "pdfPage": 21,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "A. Executive direction and management",
-              "columnHeader": "2027 proposed",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
-            },
-            {
-              "symbol": "A/81/6 (Sect. 11)",
               "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2011%29&l=en&t=pdf#page=22",
               "pdfPage": 22,
               "pageStatus": "located",
               "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, B",
+              "pageLocatedBy": "reviewed_final_pdf_row",
+              "rowLabel": "Subtotal, 1",
               "columnHeader": "2027 proposed",
               "tableTitle": "(1) Regular budget",
               "label": "regular budget \u2014 supporting row for calculated total"
             }
           ]
-        }
-      },
-      "note": "Derived USD sum of the displayed section coverage; no printed all-source Part parent is claimed.",
-      "metricAmounts": {
-        "proposed": 292041200
-      },
-      "breakdowns": {
-        "regular_budget": {
-          "childAmount": 292041200,
-          "difference": 0,
-          "outcome": "exact",
-          "completeness": "complete"
         }
       }
     },
@@ -9579,15 +9519,15 @@
       "kind": "section",
       "code": "11",
       "label": "United Nations system support for the African Union\u2019s Agenda 2063: The Africa We Want",
-      "amount": 10864900,
-      "basis": "derived",
+      "amount": 11029000,
+      "basis": "printed",
       "values": {
-        "regular_budget": 10864900
+        "regular_budget": 11029000
       },
       "completeness": "complete",
       "metricValues": {
         "proposed": {
-          "regular_budget": 10864900
+          "regular_budget": 11029000
         }
       },
       "metricSources": {
@@ -9595,27 +9535,15 @@
           "regular_budget": [
             {
               "symbol": "A/81/6 (Sect. 11)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2011%29&l=en&t=pdf#page=21",
-              "pdfPage": 21,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "A. Executive direction and management",
-              "columnHeader": "2027 proposed",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
-            },
-            {
-              "symbol": "A/81/6 (Sect. 11)",
               "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2011%29&l=en&t=pdf#page=22",
               "pdfPage": 22,
               "pageStatus": "located",
               "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, B",
+              "pageLocatedBy": "reviewed_final_pdf_row",
+              "rowLabel": "Subtotal, 1",
               "columnHeader": "2027 proposed",
               "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
+              "label": "Regular budget"
             }
           ]
         }
@@ -9629,13 +9557,13 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2011%29&l=en&t=docx"
       },
-      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
+      "note": "Uses the printed regular-budget section total. The source programme-of-work subtotal differs from its itemized amounts.",
       "metricAmounts": {
-        "proposed": 10864900
+        "proposed": 11029000
       },
       "breakdowns": {
         "regular_budget": {
-          "childAmount": 10864900,
+          "childAmount": 11029000,
           "difference": 0,
           "outcome": "exact",
           "completeness": "complete"
@@ -9649,15 +9577,15 @@
       "kind": "allocation",
       "code": null,
       "label": "Section-wide allocations",
-      "amount": 10864900,
-      "basis": "derived_available_funding_sum",
+      "amount": 11029000,
+      "basis": "printed",
       "values": {
-        "regular_budget": 10864900
+        "regular_budget": 11029000
       },
-      "completeness": "complete",
+      "completeness": "incomplete",
       "metricValues": {
         "proposed": {
-          "regular_budget": 10864900
+          "regular_budget": 11029000
         }
       },
       "metricSources": {
@@ -9665,27 +9593,15 @@
           "regular_budget": [
             {
               "symbol": "A/81/6 (Sect. 11)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2011%29&l=en&t=pdf#page=21",
-              "pdfPage": 21,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "A. Executive direction and management",
-              "columnHeader": "2027 proposed",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
-            },
-            {
-              "symbol": "A/81/6 (Sect. 11)",
               "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2011%29&l=en&t=pdf#page=22",
               "pdfPage": 22,
               "pageStatus": "located",
               "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, B",
+              "pageLocatedBy": "reviewed_final_pdf_row",
+              "rowLabel": "Subtotal, 1",
               "columnHeader": "2027 proposed",
               "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
+              "label": "Regular budget"
             }
           ]
         }
@@ -9699,16 +9615,16 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2011%29&l=en&t=docx"
       },
-      "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
+      "note": "Uses the printed regular-budget section total. The source programme-of-work subtotal differs from its itemized amounts.",
       "metricAmounts": {
-        "proposed": 10864900
+        "proposed": 11029000
       },
       "breakdowns": {
         "regular_budget": {
           "childAmount": 10864900,
-          "difference": 0,
-          "outcome": "exact",
-          "completeness": "complete"
+          "difference": 164100,
+          "outcome": "printed_source_discrepancy",
+          "completeness": "incomplete"
         }
       }
     },
@@ -9789,15 +9705,15 @@
           ]
         }
       },
-      "note": "This selected source outline does not publish a value for this funding stream.",
+      "note": "The printed programme-of-work subtotal differs from the sum of its itemized amounts.",
       "metricAmounts": {
         "proposed": 7764000
       },
       "breakdowns": {
         "regular_budget": {
           "childAmount": 7928100,
-          "difference": 164100,
-          "outcome": "unreconciled_difference",
+          "difference": -164100,
+          "outcome": "printed_source_discrepancy",
           "completeness": "incomplete"
         }
       }
@@ -15337,15 +15253,27 @@
       "kind": "part",
       "code": "VIII",
       "label": "Common support services",
-      "amount": 357720100,
+      "amount": 357900800,
       "basis": "derived",
       "values": {
-        "regular_budget": 357720100
+        "regular_budget": 357900800
       },
       "completeness": "complete",
       "metricValues": {
         "proposed": {
-          "regular_budget": 357720100
+          "regular_budget": 357900800
+        }
+      },
+      "note": "Derived USD sum of the displayed section coverage; no printed all-source Part parent is claimed.",
+      "metricAmounts": {
+        "proposed": 357900800
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 357900800,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
         }
       },
       "metricSources": {
@@ -15609,20 +15537,8 @@
               "pdfPage": 25,
               "pageStatus": "located",
               "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "A. Executive direction and management",
-              "columnHeader": "2027 proposed",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
-            },
-            {
-              "symbol": "A/81/6 (Sect. 29E)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2029E%29&l=en&t=pdf#page=25",
-              "pdfPage": 25,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, B",
+              "pageLocatedBy": "reviewed_final_pdf_row",
+              "rowLabel": "Subtotal, 1",
               "columnHeader": "2027 proposed",
               "tableTitle": "(1) Regular budget",
               "label": "regular budget \u2014 supporting row for calculated total"
@@ -15724,18 +15640,6 @@
               "label": "regular budget \u2014 supporting row for calculated total"
             }
           ]
-        }
-      },
-      "note": "Derived USD sum of the displayed section coverage; no printed all-source Part parent is claimed.",
-      "metricAmounts": {
-        "proposed": 357720100
-      },
-      "breakdowns": {
-        "regular_budget": {
-          "childAmount": 357720100,
-          "difference": 0,
-          "outcome": "exact",
-          "completeness": "complete"
         }
       }
     },
@@ -17636,15 +17540,15 @@
       "kind": "section",
       "code": "29E",
       "label": "Administration, Geneva",
-      "amount": 84722800,
-      "basis": "derived",
+      "amount": 84903500,
+      "basis": "printed",
       "values": {
-        "regular_budget": 84722800
+        "regular_budget": 84903500
       },
       "completeness": "complete",
       "metricValues": {
         "proposed": {
-          "regular_budget": 84722800
+          "regular_budget": 84903500
         }
       },
       "metricSources": {
@@ -17656,23 +17560,11 @@
               "pdfPage": 25,
               "pageStatus": "located",
               "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "A. Executive direction and management",
+              "pageLocatedBy": "reviewed_final_pdf_row",
+              "rowLabel": "Subtotal, 1",
               "columnHeader": "2027 proposed",
               "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
-            },
-            {
-              "symbol": "A/81/6 (Sect. 29E)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2029E%29&l=en&t=pdf#page=25",
-              "pdfPage": 25,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, B",
-              "columnHeader": "2027 proposed",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
+              "label": "Regular budget"
             }
           ]
         }
@@ -17686,13 +17578,13 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2029E%29&l=en&t=docx"
       },
-      "note": "The value is source-bound, but this gate does not certify a complete lower allocation. Its lineage may combine several printed source controls, but those are not the expandable lower rows shown on the page; the displayed-child sum is therefore left blank.",
+      "note": "Uses the printed regular-budget section total. The source programme-of-work subtotal differs from its itemized amounts.",
       "metricAmounts": {
-        "proposed": 84722800
+        "proposed": 84903500
       },
       "breakdowns": {
         "regular_budget": {
-          "childAmount": 84722800,
+          "childAmount": 84903500,
           "difference": 0,
           "outcome": "exact",
           "completeness": "complete"
@@ -17706,15 +17598,15 @@
       "kind": "allocation",
       "code": null,
       "label": "Section-wide allocations",
-      "amount": 84722800,
-      "basis": "derived_available_funding_sum",
+      "amount": 84903500,
+      "basis": "printed",
       "values": {
-        "regular_budget": 84722800
+        "regular_budget": 84903500
       },
-      "completeness": "complete",
+      "completeness": "incomplete",
       "metricValues": {
         "proposed": {
-          "regular_budget": 84722800
+          "regular_budget": 84903500
         }
       },
       "metricSources": {
@@ -17726,23 +17618,11 @@
               "pdfPage": 25,
               "pageStatus": "located",
               "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "A. Executive direction and management",
+              "pageLocatedBy": "reviewed_final_pdf_row",
+              "rowLabel": "Subtotal, 1",
               "columnHeader": "2027 proposed",
               "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
-            },
-            {
-              "symbol": "A/81/6 (Sect. 29E)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2029E%29&l=en&t=pdf#page=25",
-              "pdfPage": 25,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, B",
-              "columnHeader": "2027 proposed",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
+              "label": "Regular budget"
             }
           ]
         }
@@ -17756,16 +17636,16 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2029E%29&l=en&t=docx"
       },
-      "note": "The generated wrapper cannot publish an all-source value because at least one of RB, OA or XB is unavailable.",
+      "note": "Uses the printed regular-budget section total. The source programme-of-work subtotal differs from its itemized amounts.",
       "metricAmounts": {
-        "proposed": 84722800
+        "proposed": 84903500
       },
       "breakdowns": {
         "regular_budget": {
           "childAmount": 84722800,
-          "difference": 0,
-          "outcome": "exact",
-          "completeness": "complete"
+          "difference": 180700,
+          "outcome": "printed_source_discrepancy",
+          "completeness": "incomplete"
         }
       }
     },
@@ -17846,15 +17726,15 @@
           ]
         }
       },
-      "note": "This selected source outline does not publish a value for this funding stream.",
+      "note": "The printed programme-of-work subtotal differs from the sum of its itemized amounts.",
       "metricAmounts": {
         "proposed": 83618400
       },
       "breakdowns": {
         "regular_budget": {
           "childAmount": 83800100,
-          "difference": 181700,
-          "outcome": "unreconciled_difference",
+          "difference": -181700,
+          "outcome": "printed_source_discrepancy",
           "completeness": "incomplete"
         }
       }
@@ -31787,15 +31667,27 @@
       "kind": "part",
       "code": "IX",
       "label": "Internal oversight",
-      "amount": 23741500,
+      "amount": 24088500,
       "basis": "derived",
       "values": {
-        "regular_budget": 23741500
+        "regular_budget": 24088500
       },
       "completeness": "complete",
       "metricValues": {
         "proposed": {
-          "regular_budget": 23741500
+          "regular_budget": 24088500
+        }
+      },
+      "note": "Derived USD sum of the displayed section coverage; no printed all-source Part parent is claimed.",
+      "metricAmounts": {
+        "proposed": 24088500
+      },
+      "breakdowns": {
+        "regular_budget": {
+          "childAmount": 24088500,
+          "difference": 0,
+          "outcome": "exact",
+          "completeness": "complete"
         }
       },
       "metricSources": {
@@ -31807,49 +31699,13 @@
               "pdfPage": 18,
               "pageStatus": "located",
               "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "A. Executive direction and management",
-              "columnHeader": "2027 proposed",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
-            },
-            {
-              "symbol": "A/81/6 (Sect. 30)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2030%29&l=en&t=pdf#page=18",
-              "pdfPage": 18,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, B",
-              "columnHeader": "2027 proposed",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
-            },
-            {
-              "symbol": "A/81/6 (Sect. 30)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2030%29&l=en&t=pdf#page=18",
-              "pdfPage": 18,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "C. Programme support",
+              "pageLocatedBy": "reviewed_final_pdf_row",
+              "rowLabel": "Subtotal, 1",
               "columnHeader": "2027 proposed",
               "tableTitle": "(1) Regular budget",
               "label": "regular budget \u2014 supporting row for calculated total"
             }
           ]
-        }
-      },
-      "note": "Derived USD sum of the displayed section coverage; no printed all-source Part parent is claimed.",
-      "metricAmounts": {
-        "proposed": 23741500
-      },
-      "breakdowns": {
-        "regular_budget": {
-          "childAmount": 23741500,
-          "difference": 0,
-          "outcome": "exact",
-          "completeness": "complete"
         }
       }
     },
@@ -31860,15 +31716,15 @@
       "kind": "section",
       "code": "30",
       "label": "Internal oversight",
-      "amount": 23741500,
-      "basis": "derived",
+      "amount": 24088500,
+      "basis": "printed",
       "values": {
-        "regular_budget": 23741500
+        "regular_budget": 24088500
       },
       "completeness": "complete",
       "metricValues": {
         "proposed": {
-          "regular_budget": 23741500
+          "regular_budget": 24088500
         }
       },
       "metricSources": {
@@ -31880,35 +31736,11 @@
               "pdfPage": 18,
               "pageStatus": "located",
               "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "A. Executive direction and management",
+              "pageLocatedBy": "reviewed_final_pdf_row",
+              "rowLabel": "Subtotal, 1",
               "columnHeader": "2027 proposed",
               "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
-            },
-            {
-              "symbol": "A/81/6 (Sect. 30)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2030%29&l=en&t=pdf#page=18",
-              "pdfPage": 18,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, B",
-              "columnHeader": "2027 proposed",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
-            },
-            {
-              "symbol": "A/81/6 (Sect. 30)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2030%29&l=en&t=pdf#page=18",
-              "pdfPage": 18,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "C. Programme support",
-              "columnHeader": "2027 proposed",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
+              "label": "Regular budget"
             }
           ]
         }
@@ -31922,13 +31754,13 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2030%29&l=en&t=docx"
       },
-      "note": "The printed section total remains authoritative. Printed lower allocations are retained, while any source-control difference is exposed as reconciliation metadata and is not treated as expenditure.",
+      "note": "Uses the printed regular-budget section total. The source programme-of-work subtotal differs from its itemized amounts.",
       "metricAmounts": {
-        "proposed": 23741500
+        "proposed": 24088500
       },
       "breakdowns": {
         "regular_budget": {
-          "childAmount": 23741500,
+          "childAmount": 24088500,
           "difference": 0,
           "outcome": "exact",
           "completeness": "complete"
@@ -31942,15 +31774,15 @@
       "kind": "allocation",
       "code": null,
       "label": "Section-wide allocations",
-      "amount": 23741500,
-      "basis": "derived",
+      "amount": 24088500,
+      "basis": "printed",
       "values": {
-        "regular_budget": 23741500
+        "regular_budget": 24088500
       },
-      "completeness": "complete",
+      "completeness": "incomplete",
       "metricValues": {
         "proposed": {
-          "regular_budget": 23741500
+          "regular_budget": 24088500
         }
       },
       "metricSources": {
@@ -31962,35 +31794,11 @@
               "pdfPage": 18,
               "pageStatus": "located",
               "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "A. Executive direction and management",
+              "pageLocatedBy": "reviewed_final_pdf_row",
+              "rowLabel": "Subtotal, 1",
               "columnHeader": "2027 proposed",
               "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
-            },
-            {
-              "symbol": "A/81/6 (Sect. 30)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2030%29&l=en&t=pdf#page=18",
-              "pdfPage": 18,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "Subtotal, B",
-              "columnHeader": "2027 proposed",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
-            },
-            {
-              "symbol": "A/81/6 (Sect. 30)",
-              "url": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2030%29&l=en&t=pdf#page=18",
-              "pdfPage": 18,
-              "pageStatus": "located",
-              "pdfPageScope": "row",
-              "pageLocatedBy": "financial_row_unique",
-              "rowLabel": "C. Programme support",
-              "columnHeader": "2027 proposed",
-              "tableTitle": "(1) Regular budget",
-              "label": "regular budget \u2014 supporting row for calculated total"
+              "label": "Regular budget"
             }
           ]
         }
@@ -32004,16 +31812,16 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F81%2F6%20%28Sect.%2030%29&l=en&t=docx"
       },
-      "note": "Orthogonal sum of the generated wrapper's complete RB, OA and XB values.",
+      "note": "Uses the printed regular-budget section total. The source programme-of-work subtotal differs from its itemized amounts.",
       "metricAmounts": {
-        "proposed": 23741500
+        "proposed": 24088500
       },
       "breakdowns": {
         "regular_budget": {
           "childAmount": 23741500,
-          "difference": 0,
-          "outcome": "exact",
-          "completeness": "complete"
+          "difference": 347000,
+          "outcome": "printed_source_discrepancy",
+          "completeness": "incomplete"
         }
       }
     },
@@ -32053,15 +31861,15 @@
           ]
         }
       },
-      "note": "Printed source-table outline; derived grouping totals are labelled as derived and never treated as independent controls.",
+      "note": "The printed programme-of-work subtotal differs from the sum of its itemized amounts.",
       "metricAmounts": {
         "proposed": 20815800
       },
       "breakdowns": {
         "regular_budget": {
           "childAmount": 21162800,
-          "difference": 347000,
-          "outcome": "unreconciled_difference",
+          "difference": -347000,
+          "outcome": "printed_source_discrepancy",
           "completeness": "incomplete"
         }
       }

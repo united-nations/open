@@ -11,7 +11,9 @@ Committee on Contributions' current previous-honour-roll index.
 from __future__ import annotations
 
 import json
+import hashlib
 import re
+import sys
 from collections import Counter
 from datetime import datetime
 from io import BytesIO
@@ -23,6 +25,9 @@ import pandas as pd
 import pymupdf
 import requests
 from bs4 import BeautifulSoup
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from regular_budget_assessment_controls import printed_assessment_control, validate_assessment_dollars
 
 OUT = Path("public/data")
 USER_AGENT = {"User-Agent": "UN Transparency Portal data pipeline"}
@@ -107,7 +112,7 @@ def group_words_by_line(page: pymupdf.Page) -> list[list[tuple]]:
     return [sorted(words, key=lambda item: item[0]) for words in groups]
 
 
-def parse_assessment_document(year: int, symbol: str) -> dict[str, dict]:
+def _parse_assessment_document_with_control(year: int, symbol: str) -> tuple[dict[str, dict], dict]:
     """Read the annual circular's regular-budget contribution table.
 
     For 2019-2024 the rightmost value is ``Net contributions``. From 2025,
@@ -198,10 +203,19 @@ def parse_assessment_document(year: int, symbol: str) -> dict[str, dict]:
     if abs(sum(rate for _, rate, _, _ in rows) - 100) > 0.0001:
         raise ValueError(f"{year} assessment rates do not total 100%")
 
-    return {
+    assessments = {
         name: {"assessment_rate": rate, "assessment_amount": amount, "pdfPage": page}
         for name, rate, amount, page in rows
     }
+    control = printed_assessment_control(document, year)
+    control['source_sha256'] = hashlib.sha256(response.content).hexdigest()
+    validate_assessment_dollars(assessments, control, year)
+    return assessments, control
+
+
+def parse_assessment_document(year: int, symbol: str) -> dict[str, dict]:
+    assessments, _ = _parse_assessment_document_with_control(year, symbol)
+    return assessments
 
 
 def parse_scale_workbook() -> dict[int, dict[str, float]]:
@@ -322,7 +336,7 @@ def validate_scale_rates(
 
 
 def export_year(year: int, symbol: str, scale_rates: dict[str, float]) -> None:
-    assessments = parse_assessment_document(year, symbol)
+    assessments, assessment_control = _parse_assessment_document_with_control(year, symbol)
     validate_scale_rates(year, assessments, scale_rates)
     honour_meta, payments = parse_honour_roll(year)
     unknown_payments = sorted(payments.keys() - assessments.keys())
@@ -366,6 +380,7 @@ def export_year(year: int, symbol: str, scale_rates: dict[str, float]) -> None:
             "assessment_total": sum(
                 item["assessment_amount"] for item in contributors
             ),
+            "assessment_source_control": assessment_control,
             "assessment_amount_column": amount_label,
             "paid_in_full_count": len(payments),
             "paid_on_time_count": status_counts["paid_on_time"],

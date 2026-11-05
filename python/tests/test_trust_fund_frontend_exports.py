@@ -24,6 +24,24 @@ from trust_fund_frontend_exports import (  # noqa: E402
 
 
 class TrustFundFrontendExportTests(unittest.TestCase):
+    def test_idp_2023_undp_transfer_uses_statement_sign_and_citation(self) -> None:
+        stage = Path(__file__).resolve().parents[2] / "data/trust-fund-schedules/stage2"
+        flows = pd.read_csv(stage / "counterparty-flows.csv")
+        statements = pd.read_csv(stage / "statement-facts.csv")
+        rows, reconciliation = selected_funding_rows(2023, flows, statements)
+        transfer = rows.loc[rows["fund_code"].eq("IDP")
+                            & rows["flow_type"].eq("other_transfer_allocation_contributions")]
+        self.assertEqual(transfer["total_usd"].tolist(), [21610])
+        self.assertEqual(transfer["effective_amount_usd"].tolist(), [-21610])
+        control = reconciliation.loc[reconciliation["fund_code"].eq("IDP")
+                                     & reconciliation["flow_type"].eq("other_transfers_and_allocations")]
+        self.assertEqual(control["residual_usd"].tolist(), [0])
+        source = {"symbol": "2023 schedules", "source_pdf_url": "https://example.org/schedule.pdf"}
+        reference, = row_references(transfer, source, 2023, contributions=True)
+        self.assertEqual(reference["pdfPage"], 285)
+        self.assertEqual(reference["operand"]["amount"], -21610)
+        self.assertIn("p. 287 prints +$21,610", reference["label"])
+
     def test_reviewed_2018_cer_wrapped_contributor_names_keep_amounts_and_pages(self) -> None:
         common = {"fund_code": "CER", "page": 289,
                   "flow_type": "voluntary_contribution", "schedule_number": "4.2.1",

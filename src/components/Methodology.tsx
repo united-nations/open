@@ -74,6 +74,22 @@ export function CebMethodology() {
               <p>{item.text}</p>
             </div>
           ))}
+          <div className="space-y-2">
+            <h4 className="font-semibold text-gray-900">
+              2025 SDG reconciliation
+            </h4>
+            <p>
+              WMO’s $88.66 million Non-SDG record closely matches its final
+              regular budget. The underlying survey entry is needed to confirm
+              its basis. The portal retains the reported Non-SDG figure.
+            </p>
+            <p>
+              IOM’s reported SDG and Non-SDG amounts together exceed its
+              organization expenditure by $106.30 million. The bridge between budgetary and
+              accrual expenditure leaves the excess unexplained. The negative
+              Not specified balance shows the difference.
+            </p>
+          </div>
           <p>
             Function-by-geography figures use CEB’s E06 expenditure records.
             Function attribution is incomplete before 2020; amounts without a
@@ -81,6 +97,13 @@ export function CebMethodology() {
             functions from separate totals. Areas show positive totals; negative
             amounts remain in the reported totals. Flow ribbons show positive
             net connections, while node edges retain signed totals.
+          </p>
+          <p>
+            Geographic totals use E06. In 2025, UNHCR’s financing detail shifts
+            about $12.53 million between two global locations while their
+            combined amounts agree within cents. The IMO financing detail also
+            differs by location. The geographic view uses the reported location
+            totals for both organizations.
           </p>
           <p>
             <a
@@ -528,6 +551,13 @@ function TrustFundsMethodologyNotes() {
         are listed below the expenditure chart. Fund-level accounts can include
         transfers between funds and overlap with other Secretariat views.
       </p>
+      <p>
+        The Technology Bank trust fund’s 2024 current-asset lines sum to
+        $5,297,950 against a printed subtotal of $5,301,546. The UN Peace and
+        Development Trust Fund’s 2022 assets less liabilities are $90,000 below
+        its printed net assets. The financial position figures retain the
+        statement totals in both cases.
+      </p>
       {SHOW_ADDITIONAL_TRUST_FUNDS && (
         <>
           <p>
@@ -573,14 +603,41 @@ function TrustFundContributorsMethodologyNotes() {
         group those funds by the Secretariat entity responsible for them, using
         the same assignments as in the expenditure view.
       </p>
+      <p>
+        In 2020, the ECA miscellaneous technical cooperation funds (HDM)
+        transfer schedule totals $1,852,540. Deducting its separately printed
+        $3,331 present-value adjustment gives the $1,849,209 reported in
+        statement revenue.{" "}
+        <a
+          className="underline underline-offset-2"
+          href="https://documents.un.org/api/symbol/access?s=%28DMSPC%2FOPPFB%29%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020&l=en&t=pdf#page=227"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          2020 transfer schedule, PDF page 227
+        </a>
+      </p>
       {SHOW_ADDITIONAL_TRUST_FUNDS && (
-        <p>
-          Separate entity views keep each source’s own measure: UN-Habitat
-          interim contributions and transfers, ITC extrabudgetary funding
-          received, and UNODC indicative pledges. Source periods and coverage
-          are shown with the data. UNEP contributor documents are available as
-          references.
-        </p>
+        <>
+          <p>
+            Separate entity views keep each source’s own measure: UN-Habitat
+            interim contributions and transfers, ITC extrabudgetary funding
+            received, and UNODC indicative pledges. Source periods and coverage
+            are shown with the data. UNEP contributor documents are available as
+            references.
+          </p>
+          <p>
+            UN-Habitat’s 2023 Latin America and Caribbean technical cooperation
+            donor rows sum to $6,822,700. The region’s reported total is
+            $6,890,800. The $68,100 difference remains unallocated to donors.
+          </p>
+          <p>
+            UNODC’s March 2025 snapshot of 2023 pledges totals $453,853,084.35.
+            The November 2025 report gives $453,869,467 for 2023. The contributor
+            detail uses the March snapshot. The later report provides the
+            aggregate comparison.
+          </p>
+        </>
       )}
     </>
   );
