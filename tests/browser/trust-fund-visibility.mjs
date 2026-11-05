@@ -60,7 +60,7 @@ if (flags.trustFunds && !flags.additionalTrustFunds) {
       );
       if (!suffix) {
         const summary = page.locator("dl").filter({
-          has: page.locator("dt").getByText("Reported expenditure", {
+          has: page.locator("dt").getByText("Expenditure", {
             exact: true,
           }),
         });
@@ -187,7 +187,7 @@ if (flags.trustFunds && !flags.additionalTrustFunds) {
       .filter({
         has: page
           .locator("dt")
-          .getByText("Reported expenditure", { exact: true }),
+          .getByText("Expenditure", { exact: true }),
       })
       .locator("dd")
       .getByText(compactUSD.format(control), { exact: true })

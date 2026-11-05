@@ -46,8 +46,6 @@ try {
       .click();
     assert.ok(await contributions.locator('a[href$="#page=436"]').count());
     await page.goto(`${portalUrl}/secretariat/trust-funds/`);
-    const pill = page.getByRole("button", { name: heading, exact: true });
-    await pill.waitFor();
     await page.getByRole("slider", { name: "Select year" }).press("ArrowLeft");
     await page
       .locator("dl dd")
@@ -62,20 +60,13 @@ try {
     const group = page.locator(`section[aria-label="${heading}"]`);
     await group.locator("button").first().waitFor();
     assert.equal(await group.locator("button").count(), 4);
-    // Filter totals include both negative correction accounts.
-    for (const other of await page
-      .locator('[aria-label="Schedule groups"] button')
-      .all()) {
-      if (
-        (await other.getAttribute("aria-label")) !== heading &&
-        (await other.innerText()).trim() !== heading
-      )
-        await other.click();
-    }
-    assert.equal(
-      (await page.locator("dl dd").innerText()).trim(),
-      formatBudget(163733038),
-    );
+    // Group-name search includes the signed amounts from the entire group.
+    const search = page.getByRole("searchbox");
+    await search.fill(heading);
+    await page
+      .locator("dl dd")
+      .getByText(formatBudget(163733038), { exact: true })
+      .waitFor();
     const peace = funds.find((node) => node.label === "UN Peacebuilding Fund");
     await group.getByRole("button", { name: peace.label, exact: true }).click();
     const panel = page.locator('aside[aria-labelledby="trust-fund-title"]');
@@ -101,6 +92,7 @@ try {
     await disclosure.locator(":scope > summary").click();
     assert.ok(await disclosure.locator('a[href$="#page=431"]').count());
     await page.keyboard.press("Escape");
+    await search.fill("");
     await page
       .getByRole("radio", { name: "By entity", exact: true })
       .locator("..")
@@ -186,7 +178,7 @@ try {
       ),
     );
     console.log(
-      `PASS ${width}px: MPTF pill, signed totals, both grouping views, row citations, balance scope, contributor limits and negative accounts`,
+      `PASS ${width}px: MPTF group search, signed totals, both grouping views, row citations, balance scope, contributor limits and negative accounts`,
     );
     await page.close();
   }

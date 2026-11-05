@@ -125,29 +125,10 @@ try {
         .count(),
       2,
     );
-    const commonPill = page.getByRole("button", {
-      name: "Common support and miscellaneous",
-      exact: true,
-    });
-    assert.equal(await commonPill.getAttribute("aria-pressed"), "true");
-    await commonPill.click();
-    await page.waitForFunction(
-      () =>
-        document.querySelectorAll(
-          "section[aria-label] button[aria-describedby]",
-        ).length === 2,
-    );
-    assert.equal(await commonPill.getAttribute("aria-pressed"), "false");
-    const otherTotal = funds
-      .filter(
-        (fund) => fund.scheduleGroup.code === "3" && fund.id.includes(":ECA:"),
-      )
-      .reduce((sum, fund) => sum + fund.amount, 0);
     assert.equal(
-      (await page.locator("dl dd").innerText()).trim(),
-      formatBudget(otherTotal),
+      await page.locator('[aria-label="Schedule groups"]').count(),
+      0,
     );
-    await commonPill.click();
     await entity.locator("..").click();
     assert.equal(await entity.isChecked(), true);
     await page.waitForFunction(
@@ -221,13 +202,6 @@ try {
       nonpositive.id,
     );
     await page.keyboard.press("Escape");
-    const pills = page.locator('[aria-label="Schedule groups"] button');
-    for (const pill of await pills.all()) await pill.click();
-    await page
-      .getByText("Select at least one schedule group.", { exact: true })
-      .waitFor();
-    assert.equal((await page.locator("dl dd").innerText()).trim(), "$0");
-    for (const pill of await pills.all()) await pill.click();
     // The annual heading follows the selected year, even for the same fund ID.
     await search.fill("SIM");
     await slider.press("Home");

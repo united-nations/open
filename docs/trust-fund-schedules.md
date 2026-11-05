@@ -199,16 +199,16 @@ Totals include all signed source amounts. Positive tile totals can therefore
 differ from the signed schedule total. RB and OA are unavailable for this source.
 
 The spending page defaults to **By group**, using each fund's selected-year
-table-of-contents heading and stable colours keyed by schedule prefix. Filter
-pills select schedule groups, including their signed totals and nonpositive
-funds. The balanced treemap packs small categories into a shared bottom block.
+table-of-contents heading and stable colours keyed by schedule prefix. Search
+matches group names and includes signed amounts in the total. The balanced
+treemap packs small categories into a shared bottom block.
 **By entity** uses the existing organizational crosswalk. Funds keep the same sidebar
 identities, descriptions, amounts and source references under both lenses.
 Groups are independent of PPB parts and entity ownership: entities can span
 headings, and a fund can change headings across years (SIM moves from group 4
 to group 2 in 2020). Unmapped entities retain their reported schedule group;
 zero/negative funds remain accessible below the chart. Schedule 8.1 supplies the
-eighth group and filter pill, including all named UN-controlled MPTF accounts
+eighth group, including all named UN-controlled MPTF accounts
 printed in that year's matrix. This does not represent the entire UNDP MPTF
 portfolio.
 

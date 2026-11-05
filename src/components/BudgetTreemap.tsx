@@ -799,9 +799,6 @@ export function BudgetTreemap({
   const [searchQuery, setSearchQuery] = useState("");
   const [trustFundGrouping, setTrustFundGrouping] =
     useState<TrustFundGrouping>("group");
-  const [hiddenTrustFundGroups, setHiddenTrustFundGroups] = useState<
-    Set<string>
-  >(() => new Set());
   const [trustFundSources, setTrustFundSources] = useState<
     TrustFundSourceGroup[]
   >(
@@ -1614,31 +1611,28 @@ export function BudgetTreemap({
         )
         .flatMap((group): SharedBudgetRow[] => {
           if (group.id === "volume_i" && trustFundGrouping === "group") {
-            return scheduleGroups
-              .filter((heading) => !hiddenTrustFundGroups.has(heading.code))
-              .map((heading) => {
-                const color =
-                  TRUST_FUND_GROUP_COLORS[heading.code] ?? "#495057";
-                const query = searchQuery.trim().toLocaleLowerCase();
-                const amount = heading.funds
-                  .filter((fund) =>
-                    trustFundNodeSearchText(fund)
-                      .toLocaleLowerCase()
-                      .includes(query),
-                  )
-                  .reduce((sum, fund) => sum + fund.amount, 0);
-                return {
-                  key: `schedule-group:${heading.code}`,
-                  label: heading.label,
-                  value: amount,
-                  valueLabel: formatBudget(amount),
-                  color,
-                  leaves: heading.funds
-                    .filter((fund) => fund.amount > 0)
-                    .sort((a, b) => b.amount - a.amount)
-                    .map((fund) => leaf(fund, fund.label, color)),
-                };
-              });
+            return scheduleGroups.map((heading) => {
+              const color = TRUST_FUND_GROUP_COLORS[heading.code] ?? "#495057";
+              const query = searchQuery.trim().toLocaleLowerCase();
+              const amount = heading.funds
+                .filter((fund) =>
+                  trustFundNodeSearchText(fund)
+                    .toLocaleLowerCase()
+                    .includes(query),
+                )
+                .reduce((sum, fund) => sum + fund.amount, 0);
+              return {
+                key: `schedule-group:${heading.code}`,
+                label: heading.label,
+                value: amount,
+                valueLabel: formatBudget(amount),
+                color,
+                leaves: heading.funds
+                  .filter((fund) => fund.amount > 0)
+                  .sort((a, b) => b.amount - a.amount)
+                  .map((fund) => leaf(fund, fund.label, color)),
+              };
+            });
           }
           const color =
             TRUST_FUND_SOURCE_COLORS[group.id as TrustFundSourceGroup];
@@ -1904,7 +1898,6 @@ export function BudgetTreemap({
     usesSharedTrustFundExpenses,
     trustFundSources,
     trustFundGrouping,
-    hiddenTrustFundGroups,
     scheduleGroups,
     trustFundNodeSearchText,
     searchQuery,
@@ -1977,10 +1970,7 @@ export function BudgetTreemap({
   const accountingNodes = (filteredData?.nodes ?? []).filter((node) =>
     usesSharedTrustFundExpenses
       ? isTrustFundAccountingNode(node) &&
-        trustFundSources.includes(node.sourceGroup ?? "volume_i") &&
-        (trustFundGrouping !== "group" ||
-          node.sourceGroup === "separate_entities" ||
-          !hiddenTrustFundGroups.has(node.scheduleGroup?.code ?? ""))
+        trustFundSources.includes(node.sourceGroup ?? "volume_i")
       : usesSharedProgrammeBudget
         ? node.tier === "section"
         : node.kind === "mission",
@@ -2054,9 +2044,7 @@ export function BudgetTreemap({
         {
           key: "total",
           label:
-            (searchQuery.trim()
-              ? "Matching expenditure"
-              : "Reported expenditure") +
+            (searchQuery.trim() ? "Matching expenditure" : "Expenditure") +
             (SHOW_ADDITIONAL_TRUST_FUNDS ? " (unconsolidated)" : ""),
           value:
             groups.length > 0 &&
@@ -2518,31 +2506,6 @@ export function BudgetTreemap({
             ) : undefined)
           }
           searchAccessory={searchAccessory}
-          secondaryControls={
-            usesSharedTrustFundExpenses && trustFundGrouping === "group" ? (
-              <div
-                className="flex flex-wrap gap-x-4 gap-y-1"
-                aria-label="Schedule groups"
-              >
-                {scheduleGroups.map((group) => (
-                  <LegendLabel
-                    key={group.code}
-                    label={group.label}
-                    color={TRUST_FUND_GROUP_COLORS[group.code] ?? "#495057"}
-                    selected={!hiddenTrustFundGroups.has(group.code)}
-                    onToggle={() =>
-                      setHiddenTrustFundGroups((current) => {
-                        const next = new Set(current);
-                        if (next.has(group.code)) next.delete(group.code);
-                        else next.add(group.code);
-                        return next;
-                      })
-                    }
-                  />
-                ))}
-              </div>
-            ) : undefined
-          }
           summaries={sharedProgrammeSummaries}
           totalLabel="Total"
           plotClassName={
@@ -2632,18 +2595,11 @@ export function BudgetTreemap({
             <div className="flex h-full items-center justify-center text-sm text-gray-500">
               {usesSharedTrustFundExpenses && trustFundSources.length === 0
                 ? "Select at least one reporting source."
-                : usesSharedTrustFundExpenses &&
-                    trustFundGrouping === "group" &&
-                    scheduleGroups.every((group) =>
-                      hiddenTrustFundGroups.has(group.code),
-                    ) &&
-                    !trustFundSources.includes("separate_entities")
-                  ? "Select at least one schedule group."
-                  : activeFundingSources.length === 0
-                    ? "Select at least one funding source."
-                    : searchQuery.trim()
-                      ? `Nothing matches “${searchQuery}”.`
-                      : "No budget value is available for the selected controls."}
+                : activeFundingSources.length === 0
+                  ? "Select at least one funding source."
+                  : searchQuery.trim()
+                    ? `Nothing matches “${searchQuery}”.`
+                    : "No budget value is available for the selected controls."}
             </div>
           }
         />

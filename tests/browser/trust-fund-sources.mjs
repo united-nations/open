@@ -210,7 +210,7 @@ try {
   const totalSummary = page.locator("dl").filter({
     has: page
       .locator("dt")
-      .getByText("Reported expenditure (unconsolidated)", { exact: true }),
+      .getByText("Expenditure (unconsolidated)", { exact: true }),
   });
   const compactUSD = new Intl.NumberFormat("en-US", {
     style: "currency",
