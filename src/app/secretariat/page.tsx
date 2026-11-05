@@ -19,7 +19,7 @@ export default function SecretariatPage() {
     <SecretariatPageSourceProvider page="overview">
       <PageHeading
         id="priorities"
-        title="How do Secretariat entities use their resources?"
+        title="How do UN Secretariat entities use their resources?"
         description={
           <>
             Explore UN Secretariat expenditure by priority area and entity. This
