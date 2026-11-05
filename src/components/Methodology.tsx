@@ -309,8 +309,11 @@ export function LocationsMethodologyNotes() {
           UN M49 geographic groupings
         </a>
         , using intermediate regions where available. This display grouping
-        preserves CEB&apos;s reported regions and amounts. Countries without a
-        matching classification remain under Other countries and areas.
+        preserves CEB&apos;s reported amounts. A country reported under
+        competing source regions appears under Unresolved geographic
+        classification; its source regions and amounts are retained separately.
+        Countries without a matching subregional classification remain under
+        Other countries and areas.
       </p>
       <p>
         The boundaries and names shown and the designations used on any map
@@ -389,6 +392,13 @@ export function LocationsMethodologyNotes() {
             Frameworks, representing roughly 40% of total UN system expenditure.
             The remainder includes headquarters operations, peacekeeping
             missions, and global programs outside country frameworks.
+          </p>
+          <p>
+            UNINFO Overall resources include records without an SDG
+            classification. These remain visible as Not classified by SDG and
+            are not allocated to numbered goals. Results frameworks retain
+            distinct source identities even when their display codes repeat;
+            parent and child amounts must not be added together.
           </p>
         </>
       )}

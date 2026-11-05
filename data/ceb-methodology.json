@@ -58,7 +58,7 @@
     {
       "id": "geography",
       "title": "Corrections to geographic reporting levels",
-      "text": "Some CEB records identify a region but mark it as a country. Known cases are corrected so that Southern Africa is treated as a subregion rather than South Africa, and regional Micronesia is not assigned to the Federated States of Micronesia. This changes where the record appears in the geographic grouping, not its reported amount.\n\nAmbiguous places and inconsistent information about their larger region remain identified as source issues; we do not guess a country. Geographic chart details retain the source labels and correction notes. Regional and global expenditure is not distributed among individual countries."
+      "text": "Some CEB records identify a region but mark it as a country. Known cases are corrected so that Southern Africa is treated as a subregion rather than South Africa, and regional Micronesia is not assigned to the Federated States of Micronesia. This changes where the record appears in the geographic grouping, not its reported amount.\n\nAmbiguous places and inconsistent information about their larger region remain identified as source issues; we do not guess a country. When a country is reported under competing source regions, its combined amount appears under Unresolved geographic classification, with each source region and its signed amounts retained separately. Geographic chart details retain the source labels and correction notes. Regional and global expenditure is not distributed among individual countries."
     },
     {
       "id": "sdg-balances",

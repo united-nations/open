@@ -10,6 +10,10 @@ import { YearSlider } from "@/components/YearSlider";
 import { loadStaticData, loadYearData } from "@/lib/data";
 import { formatBudget } from "@/lib/entities";
 import { useYearRanges } from "@/lib/useYearRanges";
+import {
+  buildFieldMissionModel,
+  type MappedMissionGroup,
+} from "@/lib/fieldMissions";
 import type {
   SecretariatEntitiesData,
   SecretariatGroup,
@@ -17,7 +21,7 @@ import type {
   SecretariatOverviewData,
 } from "@/types";
 
-type MappedGroup = Extract<SecretariatGroup, "spm" | "pko">;
+type MappedGroup = MappedMissionGroup;
 const DEFAULT_MISSION_KINDS: readonly MappedGroup[] = ["spm", "pko"];
 
 interface MissionPoint {
@@ -36,6 +40,8 @@ interface MissionPoint {
 interface FieldMissionModel {
   totals: Record<SecretariatGroup, number>;
   points: MissionPoint[];
+  groups: SecretariatOverviewData["meta"]["groups"];
+  connectors: ReturnType<typeof buildFieldMissionModel>["connectors"];
 }
 
 const MAX_MISSION_RADIUS_PX = 28;
@@ -108,50 +114,19 @@ export function FieldMissionsMap({
   const model = useMemo<FieldMissionModel | null>(() => {
     if (!current || !entitiesData) return null;
 
-    const totals = Object.fromEntries(
-      (Object.keys(current.meta.groups) as SecretariatGroup[]).map((group) => [
-        group,
-        0,
-      ]),
-    ) as FieldMissionModel["totals"];
-    const amountsByCanonicalCode = new Map<string, number>();
+    const financial = buildFieldMissionModel(current, entitiesData, kinds);
+    const points = financial.locatedMissions.map(
+      ({ location, amount, group }) => ({
+        lat: location.lat,
+        long: location.long,
+        radius: proportionalAreaRadiusInput(amount),
+        color: group,
+        label: location.code,
+        data: { location, amount, group },
+      }),
+    );
 
-    for (const entity of current.entities) {
-      totals[entity.group] += entity.total;
-      const canonicalCode = entitiesData.aliases[entity.code] ?? entity.code;
-      amountsByCanonicalCode.set(
-        canonicalCode,
-        (amountsByCanonicalCode.get(canonicalCode) ?? 0) + entity.total,
-      );
-    }
-
-    const locatedMissions = entitiesData.locations
-      .filter(
-        (
-          location,
-        ): location is SecretariatMissionLocation & {
-          kind: MappedGroup;
-        } => kinds.includes(location.kind as MappedGroup),
-      )
-      .map((location) => ({
-        location,
-        amount: amountsByCanonicalCode.get(location.code) ?? 0,
-      }))
-      .filter(({ amount }) => amount > 0)
-      .sort(
-        (a, b) =>
-          b.amount - a.amount || a.location.code.localeCompare(b.location.code),
-      );
-    const points = locatedMissions.map(({ location, amount }) => ({
-      lat: location.lat,
-      long: location.long,
-      radius: proportionalAreaRadiusInput(amount),
-      color: location.kind,
-      label: location.code,
-      data: { location, amount, group: location.kind },
-    }));
-
-    return { totals, points };
+    return { ...financial, points };
   }, [current, entitiesData, kinds]);
 
   if (!model || !entitiesData) {
@@ -162,28 +137,8 @@ export function FieldMissionsMap({
     );
   }
 
-  const boxGroups = (
-    Object.entries(entitiesData.groups) as Array<
-      [SecretariatGroup, (typeof entitiesData.groups)[SecretariatGroup]]
-    >
-  )
-    .sort(([, a], [, b]) => a.order - b.order)
-    .map(([group]) => group);
-  const boxTotal = boxGroups.reduce(
-    (sum, group) => sum + model.totals[group],
-    0,
-  );
   const showComposition = kinds.includes("spm") && kinds.includes("pko");
-  const missionTotal = model.totals.spm + model.totals.pko;
-  const secretariatEnd = (model.totals.secretariat / boxTotal) * 100;
-  const spmEnd =
-    ((model.totals.secretariat + model.totals.spm) / boxTotal) * 100;
-  const pkoEnd =
-    ((model.totals.secretariat + model.totals.spm + model.totals.pko) /
-      boxTotal) *
-    100;
-  const expandedSpmEnd = (model.totals.spm / missionTotal) * 100;
-  const kindColors = kinds.map((group) => entitiesData.groups[group].color);
+  const kindColors = kinds.map((group) => model.groups[group].color);
 
   return (
     <div className="relative w-full">
@@ -203,10 +158,7 @@ export function FieldMissionsMap({
       </div>
 
       {showComposition && (
-        <SecretariatGroupBar
-          groups={entitiesData.groups}
-          amounts={model.totals}
-        />
+        <SecretariatGroupBar groups={model.groups} amounts={model.totals} />
       )}
 
       {showComposition && (
@@ -216,34 +168,33 @@ export function FieldMissionsMap({
             preserveAspectRatio="none"
             className="absolute inset-0 size-full"
           >
-            <polygon
-              points={`${secretariatEnd},0 ${spmEnd},0 ${expandedSpmEnd},56 0,56`}
-              fill={CONNECTOR_FILL}
-              fillOpacity="0.3"
-            />
-            <polygon
-              points={`${spmEnd},0 ${pkoEnd},0 100,56 ${expandedSpmEnd},56`}
-              fill={CONNECTOR_FILL}
-              fillOpacity="0.3"
-            />
-            <line
-              x1={secretariatEnd}
-              y1="0"
-              x2="0"
-              y2="56"
-              stroke={CONNECTOR_STROKE}
-              strokeOpacity="0.55"
-              vectorEffect="non-scaling-stroke"
-            />
-            <line
-              x1={pkoEnd}
-              y1="0"
-              x2="100"
-              y2="56"
-              stroke={CONNECTOR_STROKE}
-              strokeOpacity="0.55"
-              vectorEffect="non-scaling-stroke"
-            />
+            {model.connectors.map((connector) => (
+              <g key={connector.group}>
+                <polygon
+                  points={`${connector.start},0 ${connector.end},0 ${connector.expandedEnd},56 ${connector.expandedStart},56`}
+                  fill={CONNECTOR_FILL}
+                  fillOpacity="0.3"
+                />
+                <line
+                  x1={connector.start}
+                  y1="0"
+                  x2={connector.expandedStart}
+                  y2="56"
+                  stroke={CONNECTOR_STROKE}
+                  strokeOpacity="0.55"
+                  vectorEffect="non-scaling-stroke"
+                />
+                <line
+                  x1={connector.end}
+                  y1="0"
+                  x2={connector.expandedEnd}
+                  y2="56"
+                  stroke={CONNECTOR_STROKE}
+                  strokeOpacity="0.55"
+                  vectorEffect="non-scaling-stroke"
+                />
+              </g>
+            ))}
           </svg>
         </div>
       )}
@@ -257,10 +208,10 @@ export function FieldMissionsMap({
             <span key={group} className="flex items-center gap-1.5">
               <span
                 className="size-2.5 shrink-0 rounded-full"
-                style={{ backgroundColor: entitiesData.groups[group].color }}
+                style={{ backgroundColor: model.groups[group].color }}
                 aria-hidden="true"
               />
-              {entitiesData.groups[group].label}
+              {model.groups[group].label}
             </span>
           ))}
         </div>
@@ -294,7 +245,7 @@ export function FieldMissionsMap({
           tooltip={(point: MissionPoint) => (
             <FinancialTooltip
               title={`${point.data.location.code} · ${point.data.location.name}`}
-              parents={[{ label: entitiesData.groups[point.data.group].label }]}
+              parents={[{ label: model.groups[point.data.group].label }]}
               context={missionLocationLabel(point.data.location)}
               total={{
                 label: "Expenditure",
@@ -316,6 +267,11 @@ export function FieldMissionsMap({
       </div>
 
       <div className="mt-3 text-xs leading-relaxed text-gray-500">
+        <p className="mb-2 max-w-2xl">
+          Groups cover all Secretariat expenditure. The map shows positive
+          expenditure for mission entities with geographic locations. Support
+          offices and bodies without a geographic location are outside this map.
+        </p>
         <details className="max-w-2xl">
           <summary className="cursor-pointer text-un-blue">
             Map placement and boundary notes

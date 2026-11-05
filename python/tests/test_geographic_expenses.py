@@ -111,6 +111,71 @@ class GeographicTests(unittest.TestCase):
                 self.assertNotEqual(row['region'], 'Africa')
                 self.assertTrue(any('conflict' in note for note in row['notes']))
 
+    def test_conflicting_country_parents_preserve_signed_entity_amounts(self):
+        source = pd.DataFrame([
+            {'calendar_year': 2024, 'agency': entity, 'country/territory': label,
+             'region': parent, 'location_type': 'COU', 'amount': amount}
+            for label, parent, entity, amount in [
+                ('Country A', 'Europe', 'UN', 100),
+                ('Country A alias', 'Africa', 'UN', -5),
+                ('Country A', 'Africa', 'UNICEF', 5),
+            ]
+        ])
+        with patch.object(module.expenses, 'get_iso3', return_value='UKR'):
+            rows = module.build_geography(source)[2024]
+        self.assertEqual(len(rows), 1)
+        row = rows[0]
+        self.assertEqual(row['total'], 100)
+        self.assertEqual(row['entities'], {'UN Secretariat': 95, 'UNICEF': 5})
+        self.assertEqual(row['region'], 'Unresolved geographic classification')
+        self.assertIsNone(row['sourceRegion'])
+        # A net-zero parent is still a reported, conflicting classification.
+        self.assertEqual(row['sourceRegions'], [
+            {'region': 'Africa', 'total': 0, 'entities': {'UN Secretariat': -5, 'UNICEF': 5}},
+            {'region': 'Europe', 'total': 100, 'entities': {'UN Secretariat': 100}},
+        ])
+        self.assertTrue(any('multiple parent regions' in note for note in row['notes']))
+        self.assertEqual(row['sourceLabels'], ['Country A', 'Country A alias'])
+
+    def test_all_country_exports_preserve_each_source_parent_and_entity(self):
+        source = select_geographic_totals(pd.read_csv(ROOT / 'data/ceb/raw/expenses_by_country_region_sub_agency.csv'))
+        source = source[source.location_type == 'COU'].copy()
+        source['entity'] = source.agency.map(normalize_entity)
+        # These same-year reporting parents are explicitly established by the
+        # expense source (also checked independently above).
+        for year, child in [(2018, 'UNRISD'), (2020, 'Tech Bank')]:
+            source.loc[(source.calendar_year == year) & (source.agency == child), 'entity'] = 'UN Secretariat'
+        conflicts = []
+        for year, frame in source.groupby('calendar_year'):
+            rows = json.loads((ROOT / f'public/data/geographic-expenses-{year}.json').read_text())
+            for row in (row for row in rows if row['level'] == 'country'):
+                country = frame[frame['country/territory'].isin(row['sourceLabels'])]
+                expected = country.groupby(['region', 'entity']).amount.sum().to_dict()
+                actual = {
+                    (part['region'], entity): amount
+                    for part in row['sourceRegions']
+                    for entity, amount in part['entities'].items()
+                }
+                self.assertEqual(set(actual), set(expected), (year, row['name']))
+                for key, amount in expected.items():
+                    self.assertAlmostEqual(actual[key], amount, places=4, msg=f'{year} {row["name"]} {key}')
+                for part in row['sourceRegions']:
+                    self.assertAlmostEqual(part['total'], sum(part['entities'].values()), places=4)
+                self.assertAlmostEqual(sum(part['total'] for part in row['sourceRegions']), row['total'], places=4)
+                parents = set(country.region)
+                if len(parents) > 1:
+                    conflicts.append((int(year), row['iso3']))
+                    self.assertEqual(row['region'], 'Unresolved geographic classification')
+                    self.assertIsNone(row['sourceRegion'])
+                    self.assertTrue(any('multiple parent regions' in note for note in row['notes']))
+                else:
+                    self.assertEqual(row['sourceRegion'], next(iter(parents)))
+        for iso3 in ['UKR', 'BEL', 'CHN']:
+            self.assertIn((2022, iso3), conflicts)
+        ukraine = next(row for row in json.loads((ROOT / 'public/data/geographic-expenses-2022.json').read_text()) if row['iso3'] == 'UKR')
+        self.assertAlmostEqual(ukraine['total'], 2158286838.27, places=2)
+        self.assertAlmostEqual(next(part['total'] for part in ukraine['sourceRegions'] if part['region'] == 'Africa'), 267861, places=2)
+
     def test_unallocated_sdgs_match_source(self):
         source = select_sdg_expenses(pd.read_csv(ROOT / 'data/ceb/clean/expenses_sdgs.csv'))
         for year, frame in source.groupby('calendar_year'):

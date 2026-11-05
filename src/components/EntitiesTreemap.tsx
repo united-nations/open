@@ -571,8 +571,8 @@ export function EntitiesTreemap() {
           entity={selectedEntity}
           spending={
             loadedSpendingYear === currentYear
-              ? spendingData[selectedEntity.entity] || 0
-              : 0
+              ? (spendingData[selectedEntity.entity] ?? null)
+              : null
           }
           revenue={
             loadedRevenueYear === currentYear

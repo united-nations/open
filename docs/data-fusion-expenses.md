@@ -92,8 +92,12 @@ in `source_location_type`; geographic exports retain source labels/codes and
 correction information. The correction changes the reporting-level breakdown,
 not the signed total. Existing classifications outside the reviewed correction
 remain source observations. Conflicting parent-region labels are preserved with
-source-region metadata and a conflict note; unresolved display grouping does not
-silently reassign the record to another named region. Ambiguous and unresolved locations retain their
+source-region metadata and a conflict note. When country records merge by ISO3,
+`sourceRegions` retains every parent with its signed total and entity amounts.
+Competing parents leave `sourceRegion` null and place the country in
+**Unresolved geographic classification**, rather than assigning the combined
+amount to the first parent. Unresolved display grouping does not silently
+reassign the record to another named region. Ambiguous and unresolved locations retain their
 money without being guessed into a country. Regional and global amounts are
 not distributed among countries.
 

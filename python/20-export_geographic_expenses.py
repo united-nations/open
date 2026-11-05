@@ -78,15 +78,32 @@ def build_geography(frame):
                 point = (-52, -135)
                 notes.append('No verified display coordinate available; shown in the ocean reference area, not at an inferred location.')
             row = records.setdefault(key, dict(iso3=key, name=name, region=region, sourceRegion=parent, level=level,
-                 lat=point[0], long=point[1], entities={}, notes=[], sourceLabels=[], sourceLocationTypes=[], sourceEntities=[]))
+                 lat=point[0], long=point[1], entities={}, sourceRegions={}, notes=[], sourceLabels=[], sourceLocationTypes=[], sourceEntities=[]))
             row['notes'] = sorted(set(row['notes'] + notes))
             row['sourceLabels'] = sorted(set(row['sourceLabels'] + [source_name.strip()]))
             row['sourceLocationTypes'] = sorted(set(row['sourceLocationTypes'] + source_types))
             row['sourceEntities'] = sorted(set(row['sourceEntities'] + rows.get('source_agency', rows.agency).tolist()))
+            parent_entities = row['sourceRegions'].setdefault(parent, {})
             for entity, amount in rows.groupby('entity').amount.sum().items():
                 row['entities'][entity] = row['entities'].get(entity, 0) + float(amount)
+                parent_entities[entity] = parent_entities.get(entity, 0) + float(amount)
         for row in records.values():
             row['total'] = sum(row['entities'].values())
+            row['sourceRegions'] = [
+                {'region': parent, 'total': sum(entities.values()), 'entities': entities}
+                for parent, entities in sorted(row['sourceRegions'].items())
+            ]
+            if len(row['sourceRegions']) > 1:
+                # An ISO match establishes country identity, not which of its
+                # conflicting source parents should receive the combined total.
+                row['sourceRegion'] = None
+                if row['level'] == 'country':
+                    row['region'] = 'Unresolved geographic classification'
+                parents = ', '.join(part['region'] or '(blank)' for part in row['sourceRegions'])
+                row['notes'] = sorted(set(row['notes'] + [
+                    f'Source classification conflict: reported under multiple parent regions ({parents}). '
+                    'All signed amounts are retained by source region and entity; the combined record is not assigned to one source parent.'
+                ]))
         result[int(year)] = sorted(records.values(), key=lambda row: -row['total'])
     return result
 

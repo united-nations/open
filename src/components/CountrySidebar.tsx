@@ -5,7 +5,7 @@ import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 
 import { ExternalLink } from "lucide-react";
 import { SidebarControls } from "@/components/SidebarControls";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { formatBudget } from "@/lib/entities";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { navigateToSidebar } from "@/hooks/useDeepLink";
@@ -17,8 +17,8 @@ import {
   FinancialPanelBar,
   FinancialPanelGoalBadge,
 } from "@un-eosg/ui/components/financial-panel-parts";
-import { useYearRanges, generateYearRange } from "@/lib/useYearRanges";
-import { loadUninfoCountry, UninfoCountryFull } from "@/lib/data";
+import { useYearRanges } from "@/lib/useYearRanges";
+import { loadUninfoCountry, loadYearData, UninfoCountryFull } from "@/lib/data";
 import { UninfoFundingBar } from "@/components/UninfoFundingBar";
 import { UninfoProjectTable } from "@/components/UninfoProjectTable";
 import { ResultsFramework } from "@/components/ResultsFramework";
@@ -59,8 +59,6 @@ const COOPERATION_FRAMEWORK_VISIBILITY: Record<
 const cooperationFrameworkVisibility =
   COOPERATION_FRAMEWORK_VISIBILITY[COOPERATION_FRAMEWORK_LEVEL];
 
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-
 interface CountryData {
   iso3: string;
   name: string;
@@ -89,34 +87,27 @@ export function CountrySidebar({
 
   // Year selection
   const yearRanges = useYearRanges();
-  const availableYears = generateYearRange(
-    yearRanges.countryExpenses.min,
-    yearRanges.countryExpenses.max,
-  ).reverse();
-  const [selectedYear, setSelectedYear] = useState(initialYear);
-  const countryFallback = useMemo(
-    () => ({ ...country, total: 0, entities: {} }),
-    [country],
+  const availableYears = [...yearRanges.countryExpenses.years].sort(
+    (a, b) => b - a,
   );
-  const loadYear = useCallback(async (): Promise<CountryData> => {
-    const data = await fetch(
-      `${basePath}/data/country-expenses-${selectedYear}.json`,
-    ).then((res) => {
-      if (!res.ok) throw new Error(String(res.status));
-      return res.json() as Promise<CountryData[]>;
-    });
-    return data.find((item) => item.iso3 === country.iso3) ?? countryFallback;
-  }, [selectedYear, country.iso3, countryFallback]);
+  const [selectedYear, setSelectedYear] = useState(initialYear);
+  const loadYear = useCallback(async (): Promise<CountryData | null> => {
+    const data = await loadYearData<CountryData[]>(
+      "country-expenses",
+      selectedYear,
+    );
+    return data.find((item) => item.iso3 === country.iso3) ?? null;
+  }, [selectedYear, country.iso3]);
   const {
     value: yearCountry,
     loading: loadingYear,
     error: yearError,
-  } = useYearResource<CountryData>(
+  } = useYearResource<CountryData | null>(
     `${country.iso3}-${selectedYear}`,
     country,
     selectedYear === initialYear,
     loadYear,
-    countryFallback,
+    null,
   );
 
   // UNINFO Cooperation Framework data
@@ -194,7 +185,7 @@ export function CountrySidebar({
   };
 
   // Sort entities by amount descending (use year-specific data)
-  const sortedEntities = Object.entries(yearCountry.entities).sort(
+  const sortedEntities = Object.entries(yearCountry?.entities ?? {}).sort(
     (a, b) => b[1] - a[1],
   );
   const displayedEntities = showAllEntities
@@ -261,16 +252,25 @@ export function CountrySidebar({
                   value={
                     loadingYear
                       ? "Loading…"
-                      : yearError
+                      : yearError || yearCountry === null
                         ? "Unavailable"
                         : formatBudget(yearCountry.total)
                   }
                 />
                 <FinancialPanelTotalRow
                   label="Entities active"
-                  value={loadingYear || yearError ? "—" : sortedEntities.length}
+                  value={
+                    loadingYear || yearError || yearCountry === null
+                      ? "—"
+                      : sortedEntities.length
+                  }
                 />
               </div>
+              {!loadingYear && !yearError && yearCountry === null && (
+                <p className="mt-2 text-sm text-gray-500" role="status">
+                  Expenditure data unavailable for this country and year.
+                </p>
+              )}
               <FinancialPanelHeading subheading className="mt-4">
                 Expenditure by entity
               </FinancialPanelHeading>
@@ -390,8 +390,10 @@ export function CountrySidebar({
                                 const sorted = entries.sort((a, b) => {
                                   const [, ma] = a,
                                     [, mb] = b;
+                                  const goalOrder = (key: string) =>
+                                    key === "unclassified" ? 18 : Number(key);
                                   if (uninfoSort === "sdg_number")
-                                    return parseInt(a[0]) - parseInt(b[0]);
+                                    return goalOrder(a[0]) - goalOrder(b[0]);
                                   if (uninfoSort === "required")
                                     return mb.required - ma.required;
                                   if (uninfoSort === "available")
@@ -410,7 +412,7 @@ export function CountrySidebar({
                                       mb.spent -
                                       (ma.available - ma.spent)
                                     );
-                                  return parseInt(a[0]) - parseInt(b[0]);
+                                  return goalOrder(a[0]) - goalOrder(b[0]);
                                 });
                                 const maxVal = Math.max(
                                   1,
@@ -419,7 +421,16 @@ export function CountrySidebar({
                                   ),
                                 );
                                 return sorted.map(([sdgNum, metrics]) => {
-                                  const sdg = parseInt(sdgNum);
+                                  const unclassified =
+                                    sdgNum === "unclassified";
+                                  const sdg = Number(sdgNum);
+                                  const label = unclassified
+                                    ? "Not classified by SDG"
+                                    : SDG_SHORT_TITLES[sdg];
+                                  const color = unclassified
+                                    ? "#6b7280"
+                                    : SDG_COLORS[sdg];
+                                  const Row = unclassified ? "div" : "button";
                                   const barWidth =
                                     (Math.max(
                                       0,
@@ -432,22 +443,35 @@ export function CountrySidebar({
                                   return (
                                     <Tooltip key={sdgNum} delayDuration={200}>
                                       <TooltipTrigger asChild>
-                                        <button
-                                          onClick={() =>
-                                            navigateToSidebar("sdg", sdg)
+                                        <Row
+                                          data-uninfo-sdg={sdgNum}
+                                          tabIndex={
+                                            unclassified ? 0 : undefined
                                           }
-                                          className="group flex w-full items-center gap-2 rounded hover:bg-gray-50"
+                                          onClick={
+                                            unclassified
+                                              ? undefined
+                                              : () =>
+                                                  navigateToSidebar("sdg", sdg)
+                                          }
+                                          className={`group flex w-full items-center gap-2 rounded ${unclassified ? "" : "hover:bg-gray-50"}`}
                                         >
                                           <span
-                                            className="w-20 flex-shrink-0 truncate text-left text-xs text-gray-700 group-hover:text-un-blue group-hover:underline"
-                                            title={SDG_SHORT_TITLES[sdg]}
+                                            className={
+                                              unclassified
+                                                ? "w-28 flex-shrink-0 text-left text-xs text-gray-700"
+                                                : "w-20 flex-shrink-0 truncate text-left text-xs text-gray-700 group-hover:text-un-blue group-hover:underline"
+                                            }
+                                            title={label}
                                           >
-                                            {SDG_SHORT_TITLES[sdg]}
+                                            {label}
                                           </span>
-                                          <FinancialPanelGoalBadge
-                                            label={String(sdg)}
-                                            color={SDG_COLORS[sdg]}
-                                          />
+                                          {!unclassified && (
+                                            <FinancialPanelGoalBadge
+                                              label={String(sdg)}
+                                              color={color}
+                                            />
+                                          )}
                                           <div className="flex flex-1 flex-col gap-px">
                                             <div
                                               style={{ width: `${barWidth}%` }}
@@ -457,24 +481,26 @@ export function CountrySidebar({
                                                 available={metrics.available}
                                                 spent={metrics.spent}
                                                 showLabels={false}
-                                                color={SDG_COLORS[sdg]}
+                                                color={color}
                                               />
                                             </div>
                                           </div>
-                                        </button>
+                                        </Row>
                                       </TooltipTrigger>
                                       <TooltipContent
                                         side="top"
                                         className="border border-slate-200 bg-white p-3 text-slate-800 shadow-lg"
                                       >
                                         <p className="mb-2 text-xs font-medium">
-                                          SDG {sdg}: {SDG_SHORT_TITLES[sdg]}
+                                          {unclassified
+                                            ? label
+                                            : `SDG ${sdg}: ${label}`}
                                         </p>
                                         <UninfoFundingBar
                                           required={metrics.required}
                                           available={metrics.available}
                                           spent={metrics.spent}
-                                          color={SDG_COLORS[sdg]}
+                                          color={color}
                                           compact
                                         />
                                       </TooltipContent>

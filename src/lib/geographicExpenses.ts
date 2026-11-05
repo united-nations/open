@@ -11,6 +11,12 @@ export interface GeographicExpense {
   iso3: string;
   name: string;
   region: string;
+  sourceRegion: string | null;
+  sourceRegions: {
+    region: string;
+    total: number;
+    entities: Record<string, number>;
+  }[];
   level: GeographicLevel;
   lat: number;
   long: number;

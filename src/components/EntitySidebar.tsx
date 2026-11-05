@@ -15,6 +15,7 @@ import {
   EntityRevenue,
   CountryExpense,
   EntitySpendingBreakdown,
+  BudgetEntry,
 } from "@/types";
 import { formatBudget } from "@/lib/entities";
 import { getContributionTypeOrder } from "@/lib/contributors";
@@ -62,7 +63,7 @@ interface EntityTrendsData {
 
 interface EntitySidebarProps {
   entity: Entity | null;
-  spending: number;
+  spending: number | null;
   revenue: EntityRevenue | null;
   initialYear: number;
   initialDataComplete?: boolean;
@@ -107,10 +108,12 @@ export function EntitySidebar({
 
   // Year selection
   const yearRanges = useYearRanges();
-  const availableYears = generateYearRange(
-    Math.min(yearRanges.entitySpending.min, yearRanges.entityRevenue.min),
-    Math.max(yearRanges.entitySpending.max, yearRanges.entityRevenue.max),
-  ).reverse();
+  const availableYears = [
+    ...new Set([
+      ...yearRanges.entitySpending.years,
+      ...yearRanges.entityRevenue.years,
+    ]),
+  ].sort((a, b) => b - a);
   const [selectedYear, setSelectedYear] = useState(initialYear);
   const nonReporting: Record<string, string[]> = cebSource.nonReporting;
   const didNotReport =
@@ -122,35 +125,35 @@ export function EntitySidebar({
     [spending, revenue],
   );
   const emptyYearData = useMemo(
-    () => ({ spending: 0, revenue: null as EntityRevenue | null }),
+    () => ({
+      spending: null as number | null,
+      revenue: null as EntityRevenue | null,
+    }),
     [],
   );
   const loadYear = useCallback(async () => {
     const [revenues, expenses] = await Promise.all([
-      fetch(`${basePath}/data/entity-revenue-${selectedYear}.json`).then(
-        (r) => {
-          if (!r.ok) throw new Error(String(r.status));
-          return r.json();
-        },
-      ),
-      fetch(`${basePath}/data/entity-spending-${selectedYear}.json`).then(
-        (r) => {
-          if (!r.ok) throw new Error(String(r.status));
-          return r.json();
-        },
-      ),
+      yearRanges.entityRevenue.years.includes(selectedYear)
+        ? loadYearData<Record<string, EntityRevenue>>(
+            "entity-revenue",
+            selectedYear,
+          )
+        : Promise.resolve(null),
+      yearRanges.entitySpending.years.includes(selectedYear)
+        ? loadYearData<BudgetEntry[]>("entity-spending", selectedYear)
+        : Promise.resolve(null),
     ]);
     return {
-      revenue: (entity
-        ? revenues[entity.entity]
-        : null) as EntityRevenue | null,
+      revenue: (entity ? revenues?.[entity.entity] : null) ?? null,
       spending:
-        expenses.find(
-          (row: { entity: string; amount: number }) =>
-            row.entity === entity?.entity,
-        )?.amount ?? 0,
+        expenses?.find((row) => row.entity === entity?.entity)?.amount ?? null,
     };
-  }, [selectedYear, entity]);
+  }, [
+    selectedYear,
+    entity,
+    yearRanges.entityRevenue.years,
+    yearRanges.entitySpending.years,
+  ]);
   const {
     value: yearData,
     loading: loadingYear,
@@ -481,11 +484,19 @@ export function EntitySidebar({
                 value={
                   loadingYear
                     ? "Loading…"
-                    : yearError || didNotReport
+                    : yearError || didNotReport || yearSpending === null
                       ? "Unavailable"
                       : formatBudget(yearSpending)
                 }
               />
+              {!loadingYear &&
+                !yearError &&
+                !didNotReport &&
+                yearSpending === null && (
+                  <p className="mt-2 text-sm text-gray-500" role="status">
+                    Expenditure data unavailable for this entity and year.
+                  </p>
+                )}
               <div className="mt-3">
                 <FinancialPanelTotalRow
                   label="Total revenue"

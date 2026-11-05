@@ -20,6 +20,7 @@ const checks = [
   "peacekeeping-stages",
   "secretariat-flows",
   "sidebar-years",
+  "data-integrity-fixes",
   "secretariat-sidebar-years",
   ...(profiles[process.env.SITE_VARIANT ?? "public"].regularBudgetOutstanding
     ? ["regular-budget-outstanding"]

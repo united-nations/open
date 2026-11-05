@@ -8,6 +8,8 @@ RAW = Path("data/uninfo/raw")
 OUT = Path("public/data")
 COUNTRIES_DIR = OUT / "uninfo-countries"
 cc = coco.CountryConverter()
+UNCLASSIFIED_SDG = "unclassified"
+UNCLASSIFIED_SDG_LABEL = "Not classified by SDG"
 
 def get_iso3(country: str) -> str | None:
     result = cc.convert(country, to="ISO3", not_found=None)
@@ -20,6 +22,19 @@ def extract_metrics(item: dict) -> dict:
         "available": round(metrics.get("Total Available Resources", 0), 2),
         "spent": round(metrics.get("Total Expenditure", 0), 2),
     }
+
+def build_sdg_metrics(rows: list[dict]) -> dict[str, dict]:
+    """Retain every reported SDG group, including the source's null-ID group."""
+    groups = {}
+    for row in rows:
+        sdg = row.get("id")
+        if sdg is not None and (type(sdg) is not int or not 1 <= sdg <= 17):
+            raise ValueError(f"Unexpected UNINFO SDG ID: {sdg!r}")
+        key = UNCLASSIFIED_SDG if sdg is None else str(sdg)
+        if key in groups:
+            raise ValueError(f"Duplicate UNINFO SDG group: {key}")
+        groups[key] = extract_metrics(row)
+    return groups
 
 def load_raw():
     frameworks_path = RAW / "frameworks_by_country.json"
@@ -66,25 +81,40 @@ def build_framework_tree(fw: dict) -> list[dict] | None:
         return None
     
     sps, ocs, ous = fw.get("sp", []), fw.get("oc", []), fw.get("ou", [])
-    if not sps:
-        return None
-    
-    # Dedupe by keeping latest endDate per code
+    # Codes are display labels local to a parent, not node identities. The API
+    # can return several dated descriptions of one ID; count that ID once only
+    # when its financial observations and parent agree.
     def dedupe(items: list) -> list:
-        by_code = {}
+        by_id = {}
         for item in items:
-            code = item.get("code", "")
+            node_id = item.get("id")
+            if node_id is None:
+                raise ValueError("UNINFO framework node has no source ID")
+            existing = by_id.get(node_id)
+            if existing is not None:
+                for key in ("parentId", "code"):
+                    if existing.get(key) != item.get(key):
+                        raise ValueError(f"Conflicting {key} for UNINFO node {node_id}")
+                metrics = lambda row: {m["metricName"]: m["total"] for m in row.get("metrics", [])}
+                if metrics(existing) != metrics(item):
+                    raise ValueError(f"Conflicting financial observations for UNINFO node {node_id}")
             end = item.get("endDate") or ""
-            existing_end = by_code.get(code, {}).get("endDate") or ""
-            if code not in by_code or end > existing_end:
-                by_code[code] = item
-        return list(by_code.values())
+            existing_end = (existing or {}).get("endDate") or ""
+            if existing is None or end > existing_end:
+                by_id[node_id] = item
+        return list(by_id.values())
     
     sps, ocs, ous = dedupe(sps), dedupe(ocs), dedupe(ous)
     
-    # Build lookup by id
-    oc_by_id = {oc["id"]: oc for oc in ocs}
-    ou_by_id = {ou["id"]: ou for ou in ous}
+    levels = [sps, ocs, ous]
+    all_ids = [item["id"] for items in levels for item in items]
+    if len(all_ids) != len(set(all_ids)):
+        raise ValueError("UNINFO framework ID appears at multiple levels")
+    for children, parents in ((ocs, sps), (ous, ocs)):
+        parent_ids = {item["id"] for item in parents}
+        for item in children:
+            if item.get("parentId") not in parent_ids:
+                raise ValueError(f"Unreachable UNINFO framework node {item['id']}")
     
     # Build OC -> OU mapping
     ous_by_parent = defaultdict(list)
@@ -154,20 +184,15 @@ def export_per_country(data: dict) -> dict:
         if not iso3: continue
         
         ws_id = info["workspace_id"]
-        sdgs = {}
-        totals = {"required": 0, "available": 0, "spent": 0}
-        
-        for sdg in info.get("sdgs", []):
-            if not sdg.get("id"): continue
-            m = extract_metrics(sdg)
-            sdgs[str(sdg["id"])] = m
-            for k in totals: totals[k] += m[k]
+        sdgs = build_sdg_metrics(info.get("sdgs", []))
+        totals = {key: round(sum(metrics[key] for metrics in sdgs.values()), 2)
+                  for key in ("required", "available", "spent")}
         
         projects = projects_by_country.get(iso3, [])
         framework = frameworks_by_country.get(iso3)
         
         # Skip countries with no data
-        if totals["required"] <= 0 and not projects:
+        if not sdgs and not projects:
             continue
         
         scope = {
@@ -217,10 +242,10 @@ def export_sdgs(data: dict, countries_index: dict) -> dict:
     """Export per-SDG data with country breakdown."""
     # Need to load SDG data from country files
     result = {}
+    global_metrics = build_sdg_metrics(data["global_sdgs"])
     for sdg in data["global_sdgs"]:
-        if not sdg.get("id"): continue
-        sdg_id = str(sdg["id"])
-        m = extract_metrics(sdg)
+        sdg_id = UNCLASSIFIED_SDG if sdg.get("id") is None else str(sdg["id"])
+        m = global_metrics[sdg_id]
         
         # Build country breakdown by reading from country files
         country_breakdown = {}
@@ -239,7 +264,8 @@ def export_sdgs(data: dict, countries_index: dict) -> dict:
         provenance = json.loads(provenance_path.read_text()) if provenance_path.exists() else {}
         result[sdg_id] = {
             "year": provenance.get("global_sdgs_year"),
-            "name": sdg.get("short", sdg.get("name", "")),
+            "name": (UNCLASSIFIED_SDG_LABEL if sdg_id == UNCLASSIFIED_SDG
+                     else sdg.get("short", sdg.get("name", ""))),
             "totals": m,
             "countries": country_breakdown,
             "top_underfunded": top_underfunded,

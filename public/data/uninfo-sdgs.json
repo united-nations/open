@@ -1,4 +1,47 @@
 {
+  "unclassified": {
+    "year": null,
+    "name": "Not classified by SDG",
+    "totals": {
+      "required": 153773124,
+      "available": 3709717,
+      "spent": 1467190
+    },
+    "countries": {
+      "SLV": {
+        "required": 0,
+        "available": 0,
+        "spent": 0
+      },
+      "CHL": {
+        "required": 979862,
+        "available": 979862,
+        "spent": 812754
+      },
+      "EGY": {
+        "required": 673000,
+        "available": 673000,
+        "spent": 444436
+      },
+      "GNB": {
+        "required": 324220,
+        "available": 206855,
+        "spent": 0
+      },
+      "LBN": {
+        "required": 147216042,
+        "available": 0,
+        "spent": 0
+      }
+    },
+    "top_underfunded": [
+      "LBN",
+      "GNB",
+      "SLV",
+      "CHL",
+      "EGY"
+    ]
+  },
   "1": {
     "year": null,
     "name": "No Poverty",
