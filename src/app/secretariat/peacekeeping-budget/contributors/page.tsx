@@ -1,7 +1,7 @@
 import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
 import {
-  SecretariatPageMethodology,
+  SecretariatMethodologyLink,
   SecretariatPageSourceProvider,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
@@ -30,7 +30,7 @@ export default function ContributorsPage() {
           <PeacekeepingContributorsTreemap />
         </PageBody>
       </section>
-      <SecretariatPageMethodology page="peacekeeping-contributors" />
+      <SecretariatMethodologyLink page="peacekeeping-contributors" />
     </SecretariatPageSourceProvider>
   );
 }

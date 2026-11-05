@@ -2,10 +2,7 @@ import { SystemPageSources } from "@/components/PageSources";
 import { FunctionDeepLinkRedirect } from "@/components/FunctionDeepLinkRedirect";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
-import {
-  CebPageMethodology,
-  GoalsMethodologyNotes,
-} from "@/components/Methodology";
+import { CebMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
 import SDGsGrid from "@/components/SDGsGrid";
@@ -35,9 +32,7 @@ export default function SystemGoalsPage() {
         <SDGsGrid />
         <SDGsTrendsChart />
       </PageBody>
-      <CebPageMethodology>
-        <GoalsMethodologyNotes />
-      </CebPageMethodology>
+      <CebMethodologyLink />
     </ChartSourceProvider>
   );
 }

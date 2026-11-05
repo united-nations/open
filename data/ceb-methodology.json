@@ -36,49 +36,29 @@
   ],
   "transformations": [
     {
-      "id": "names-and-reporting-units",
-      "title": "Contributor and organization names",
-      "text": "CEB sometimes uses different names for the same contributor or organization. We combine confirmed variants so that World Bank Group and The World Bank Group appear as one contributor. Organization codes use readable labels: UN is shown as UN Secretariat, and UN-DPO as Peacekeeping Operations."
+      "id": "names-and-grouping",
+      "title": "Names and grouping",
+      "text": "We standardize contributor and organization names and use readable labels for organization codes. Geographic records are grouped for display using UN M49 regions, with reviewed corrections to location names and reporting levels."
     },
     {
-      "id": "revenue-balances",
-      "title": "How contributor breakdowns add up to revenue",
-      "text": "CEB’s contributor data is not always complete. Where the available contributor-category breakdown does not explain an organization’s full revenue, we show the remaining difference as Unattributed.\n\nWithin a known category, the individual contributor records may also be incomplete. We show the difference between the category total and its listed contributors as Other followed by the category name. These differences are calculated separately for each financing type and can be negative when a breakdown exceeds its reported total.\n\nCEB uses different donor labels in different years: Private Donors in 2015–2021 and 2023–2024, Private donor in 2022, and Private Sector in 2025. We show all three under the common name Private Donors / Private Sector so the reported amounts can be followed over time."
+      "id": "revenue-breakdowns",
+      "title": "Revenue and contributors",
+      "text": "We combine reported revenue totals with the available contributor and financing breakdowns. Differences between a total and its identified contributors appear as Other within a known contributor category, or Unattributed. These calculated balances can be positive or negative. Historical financing instruments not matched to the four main categories are grouped under Other financing instruments."
     },
     {
-      "id": "historical-financing",
-      "title": "Other financing instruments",
-      "text": "Some 2015–2017 contributor records use older financing codes that cannot be reliably matched to CEB’s four main financing instruments. We group these amounts in a gray category labelled “Other financing instruments”. Its filter appears only where this category is present.\n\nFor affected organization-years, the remaining revenue recorded as Unattributed also goes into this category. This keeps the contributor breakdown consistent with the reported revenue total without guessing how to allocate it across financing instruments.\n\nCEB reports the overall revenue split across the four main financing instruments for every available revenue year. The overall financing trend uses these reported totals. A trend filtered to a contributor or contributor group uses the contributor records and can therefore include amounts in this additional category."
+      "id": "expenditure-breakdowns",
+      "title": "Expenditure",
+      "text": "We use reported organization totals and their geographic, function and SDG breakdowns. SDG figures include expenditure reported on accrual and budgetary accounting bases. Non-SDG is a reported category; Not specified is the calculated difference between total expenditure and the reported SDG and Non-SDG amounts. Functions retain the earlier classification before the change in 2018."
     },
     {
-      "id": "expense-scope",
-      "title": "What expenditure and flow charts show",
-      "text": "The geographic source reports both spending totals and smaller components already included in those totals. We use each total once rather than adding its components again. Sustainable Development Goal (SDG) charts include reported accrual expenses (EXP) and expenditure on a budgetary accounting basis (BUD, historically BUG). CEB permits both accounting bases; budgetary-basis expenditure records spending rather than a planned budget.\n\nA contributor’s revenue to an organization and that organization’s spending by location, function or goal are separate observations. A flow chart brings these views together, but cannot show which donor financed a particular country or goal. The Secretariat and UNINFO datasets cover different activities and measure finances differently, so their amounts are shown separately from CEB figures."
-    },
-    {
-      "id": "geography",
-      "title": "Corrections to geographic reporting levels",
-      "text": "Some CEB records identify a region but mark it as a country. Known cases are corrected so that Southern Africa is treated as a subregion rather than South Africa, and regional Micronesia is not assigned to the Federated States of Micronesia. This changes where the record appears in the geographic grouping, not its reported amount.\n\nAmbiguous places and inconsistent information about their larger region remain identified as source issues; we do not guess a country. When a country is reported under competing source regions, its combined amount appears under Unresolved geographic classification, with each source region and its signed amounts retained separately. Geographic chart details retain the source labels and correction notes. Regional and global expenditure is not distributed among individual countries."
-    },
-    {
-      "id": "sdg-balances",
-      "title": "Non-SDG and Not specified expenditure",
-      "text": "Non-SDG contains expenditure reported by CEB under its Non-SDG code (x00). Not specified is calculated separately: total organization expenditure minus reported expenditure for Goals 1–17 and Non-SDG. It includes missing reporting and differences between source breakdowns and totals; it does not mean the spending was unrelated to the goals.\n\nFor example, if total expenditure is $100 but the goal and Non-SDG amounts add up to $110, Not specified is −$10. That calculated balance shows the mismatch; it is not spending on a separate activity. Reported spending by goal is left unchanged."
-    },
-    {
-      "id": "historical-functions",
-      "title": "Comparing functions across the 2018 classification change",
-      "text": "Functions describe broad purposes of UN work, such as development assistance, humanitarian assistance and peace operations. CEB changed the classification in 2018. Some earlier spending appears under Other (combined Normative and Technical Cooperation), combining older groups for technical assistance and work on standards, treaties and knowledge creation. Technical assistance includes sharing skills, advice and training.\n\nWe retain that source label and its amounts as a separate historical series within expenditure totals. The source does not provide a reliable split among today’s functions. A rise or fall in a particular function around 2018 may therefore reflect changed classification as well as changed activity."
+      "id": "charts",
+      "title": "Charts",
+      "text": "Negative amounts remain in totals and details; treemap areas show positive amounts. Flow diagrams place each organization’s contributor breakdown alongside its expenditure breakdowns."
     }
   ],
-  "coverageNotes": [
-    {
-      "text": "CEB’s note above says that 2023 contributor data excludes IRMCT, the International Residual Mechanism for Criminal Tribunals. The current files provide its overall revenue total but do not provide a complete contributor breakdown. The overall total can therefore be shown without implying that all its contributors are identified."
-    }
-  ],
-  "introduction": "The UN System Chief Executives Board for Coordination (CEB) compiles financial information reported by UN organizations. This portal shows revenue—the income recorded in their accounts—and expenditure, or reported expenses. Revenue can differ from cash received during the year. We use the current CEB release, including revisions to earlier years. Amounts are US dollars for the year reported, without adjustment for inflation.",
+  "coverageNotes": [],
+  "introduction": "The UN System pages use CEB Financial Statistics, compiled from financial information reported by UN organizations. We use the latest release, including revisions to earlier years. Amounts are in US dollars at the prices of the year reported.",
   "readingNotes": [
-    "The system totals add together organizations’ reported figures. Money transferred from one UN organization to another can appear in both organizations’ accounts, so the combined total can count the same funding more than once. It is not a measure of distinct money entering the UN from outside.",
-    "Year-to-year changes can reflect changes in which organizations reported, as well as changes in their finances. For example, the International Trade Centre (ITC) did not submit data for 2025. Missing reports, blank amounts and gaps in a trend do not mean zero activity. Negative amounts reported by CEB are retained; calculated negative balances are explained below."
+    "CEB totals include transfers between UN organizations, so combined amounts can count the same funding more than once. Reporting coverage and source revisions affect comparisons over time. Missing observations and blank amounts remain unavailable."
   ]
 }

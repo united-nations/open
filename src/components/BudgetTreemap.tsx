@@ -2448,9 +2448,14 @@ export function BudgetTreemap({
                         </a>
                       </p>
                     ))}
-                    {meta.sourceNote && <p>{meta.sourceNote}</p>}
-                    {meta.scopeWarning && <p>{meta.scopeWarning}</p>}
-                    {meta.currencyNote && <p>{meta.currencyNote}</p>}
+                    {usesSharedProgrammeBudget && meta.sourceNote && (
+                      <p>{meta.sourceNote}</p>
+                    )}
+                    {usesSharedProgrammeBudget &&
+                      meta.scopeWarning &&
+                      meta.scopeWarning !== meta.sourceNote && (
+                        <p>{meta.scopeWarning}</p>
+                      )}
                     {usesSharedTrustFundExpenses &&
                       accountingNodes.some(
                         (item) =>
@@ -3163,9 +3168,6 @@ export function BudgetTreemap({
         </p>
       )}
 
-      {headlineFundingSource && meta?.currencyNote && (
-        <p className="mt-3 text-xs text-gray-500">{meta.currencyNote}</p>
-      )}
       {/* Total, scope caveat and source */}
       {!headlineFundingSource && (
         <div className="mt-3 space-y-1 text-xs text-gray-500">
@@ -3178,7 +3180,6 @@ export function BudgetTreemap({
             {filteredPrevious && " · the change is against the year before"}
           </p>
           <p>{meta.scopeWarning}</p>
-          {meta.currencyNote && <p>{meta.currencyNote}</p>}
           <ChartFooter
             hint="Click on an entity to explore details"
             signedAmounts={signedBudgetAmounts}

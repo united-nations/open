@@ -1,7 +1,7 @@
 import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
 import {
-  SecretariatPageMethodology,
+  SecretariatMethodologyLink,
   SecretariatPageSourceProvider,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
@@ -31,7 +31,7 @@ export default function ProgrammeBudgetPage() {
       <PageBody>
         <RegularBudgetView />
       </PageBody>
-      <SecretariatPageMethodology page="programme-budget" />
+      <SecretariatMethodologyLink page="programme-budget" />
     </SecretariatPageSourceProvider>
   );
 }

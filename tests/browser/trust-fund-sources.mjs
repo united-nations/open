@@ -175,9 +175,9 @@ try {
   assert.equal(await signedFunds.count(), 1);
   assert.ok(
     await signedFunds.evaluate((node) =>
-      Boolean(node.closest("[data-page-methodology]")),
+      Boolean(node.closest("[data-page-references]")),
     ),
-    "Zero and negative fund details belong to the page methodology",
+    "Zero and negative fund details remain on the data page",
   );
   assert.equal(
     await page.getByText(/Negative amounts included in the total:/).count(),
@@ -238,23 +238,36 @@ try {
       .count()) >= 8,
     "Desktop chart must label additional significant Secretariat entities beyond the three largest",
   );
-  const chartSourceFooter = page.getByRole("button", {
-    name: /^Source: UN Secretariat trust-fund schedules/,
-  });
-  await chartSourceFooter.click();
-  const sourceMeasureNote = page.getByText(data.meta.sourceNote, {
-    exact: true,
-  });
-  await sourceMeasureNote.waitFor();
-  assert.match(
-    await sourceMeasureNote.innerText(),
-    /cross-source transfers have not been reconciled or eliminated/i,
+  const references = page.locator("[data-page-references]");
+  const selectedYearDetails = references
+    .locator("[data-chart-source-notes]")
+    .first();
+  await selectedYearDetails.locator(":scope > summary").click();
+  assert.ok((await selectedYearDetails.getByRole("link").count()) > 0);
+  assert.equal(
+    await selectedYearDetails
+      .getByText(data.meta.sourceNote, { exact: true })
+      .count(),
+    0,
   );
-  assert.match(
-    await sourceMeasureNote.innerText(),
-    /not consolidated Secretariat expenditure/i,
+  assert.equal(
+    await references.locator("[data-methodology-link]").getAttribute("href"),
+    "/about/#secretariat-trust-funds",
   );
-  await chartSourceFooter.click();
+  const methodologyPage = await browser.newPage();
+  await methodologyPage.goto(`${portalUrl}/about/#secretariat-trust-funds`, {
+    waitUntil: "networkidle",
+  });
+  const methodology = methodologyPage.locator(
+    '[data-secretariat-methodology="trust-funds"]',
+  );
+  await methodology.waitFor();
+  assert.match(
+    await methodology.innerText(),
+    /different accounting boundaries and unreconciled transfers/i,
+  );
+  await methodologyPage.close();
+  await selectedYearDetails.locator(":scope > summary").click();
   await selectSource("none");
   await assertTotal(0);
   await page

@@ -1,123 +1,43 @@
+import Link from "next/link";
+import { Fragment } from "react";
 import {
-  SHOW_UNINFO,
   SHOW_ADDITIONAL_TRUST_FUNDS,
   SHOW_REGULAR_BUDGET_OUTSTANDING,
 } from "@/lib/featureFlags";
 import cebSource from "../../public/data/ceb-source.json";
 import cebMethodology from "../../data/ceb-methodology.json";
-import manifest from "../../public/data/manifest.json";
 import { ExpandableCard } from "@/components/ExpandableCard";
-import { ChartDataDisclaimer } from "@/components/ChartDataDisclaimer";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import { PageSourceLink } from "@/components/PageSources";
 
-export function Methodology({ children }: { children: React.ReactNode }) {
-  return (
-    <PageMethodologyShell>
-      <ExpandableCard id="methodology" title="Methodology">
-        <div className="space-y-4">{children}</div>
-      </ExpandableCard>
-    </PageMethodologyShell>
+/** The complete CEB note is rendered only on About. */
+export function CebMethodology() {
+  const presentationNotes = cebMethodology.transformations.filter((item) =>
+    ["names-and-grouping", "charts"].includes(item.id),
   );
-}
-
-function PageMethodologyShell({ children }: { children: React.ReactNode }) {
-  return (
-    <section className="mx-auto max-w-6xl px-6 pb-12 md:px-12 lg:px-16">
-      <div className="divide-y divide-gray-200 border-t border-gray-200">
-        {children}
-      </div>
-    </section>
+  const financialNotes = cebMethodology.transformations.filter((item) =>
+    ["revenue-breakdowns", "expenditure-breakdowns"].includes(item.id),
   );
-}
-
-function CebMethodologyTopic({
-  title,
-  expandable,
-  children,
-}: {
-  title: string;
-  expandable: boolean;
-  children: React.ReactNode;
-}) {
-  if (expandable) {
-    return (
-      <ExpandableCard title={title}>
-        <div className="space-y-4">{children}</div>
-      </ExpandableCard>
-    );
-  }
   return (
-    <>
-      <h3 className="text-lg font-semibold text-gray-900">{title}</h3>
-      {children}
-    </>
-  );
-}
-
-export function CebMethodology({
-  expandable = false,
-  showCoverage = true,
-}: {
-  expandable?: boolean;
-  showCoverage?: boolean;
-}) {
-  const officialNotes: {
-    text: string;
-    links?: { label: string; url: string }[];
-    portalAddition?: string;
-  }[] = cebMethodology.officialNotes;
-  const overview = (
-    <>
-      <p>{cebMethodology.introduction}</p>
-      {cebMethodology.readingNotes.map((note, index) => (
-        <p key={index}>{note}</p>
-      ))}
+    <div className="space-y-2" data-ceb-methodology>
       <p>
-        Source:{" "}
-        <a
-          className="underline underline-offset-2"
-          href={cebMethodology.source.url}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {cebMethodology.source.label}
-        </a>
-        . Retrieved on {cebSource.retrievedAt}.
+        {cebMethodology.introduction
+          .split(cebMethodology.source.label)
+          .map((text, index) => (
+            <Fragment key={index}>
+              {index > 0 && <PageSourceLink source="ceb" />}
+              {text}
+            </Fragment>
+          ))}{" "}
+        Retrieved on {cebSource.retrievedAt}.
       </p>
-    </>
-  );
-  return (
-    <div
-      className={expandable ? "space-y-2" : "space-y-6"}
-      data-ceb-methodology
-    >
-      {expandable ? (
-        <ExpandableCard title="Understanding CEB data">
-          <div className="space-y-4">{overview}</div>
-        </ExpandableCard>
-      ) : (
-        overview
-      )}
-      <section aria-label="Notes published by CEB" className="space-y-3">
-        <CebMethodologyTopic
-          title="Notes on CEB Financial Statistics"
-          expandable={expandable}
-        >
-          <p>
-            See the{" "}
-            <a
-              className="underline underline-offset-2"
-              href={cebMethodology.source.url}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              CEB Financial Statistics page
-            </a>
-            .
+      <section aria-label="Notes published by CEB">
+        <ExpandableCard id="ceb-source-notes" title="Notes published by CEB">
+          <p className="mb-4">
+            From the <PageSourceLink source="ceb" />:
           </p>
-          <ol className="list-decimal space-y-3 pl-6 marker:font-semibold marker:text-un-blue">
-            {officialNotes.map((note, index) => (
+          <ol className="list-decimal space-y-3 pl-6">
+            {cebMethodology.officialNotes.map((note, index) => (
               <li key={index}>
                 {note.text}
                 {note.links?.map((link) => (
@@ -137,298 +57,76 @@ export function CebMethodology({
               </li>
             ))}
           </ol>
-        </CebMethodologyTopic>
+        </ExpandableCard>
       </section>
-      <section aria-label="Portal data processing" className="space-y-4">
-        <CebMethodologyTopic
-          title="How the portal presents CEB data"
-          expandable={expandable}
-        >
-          {cebMethodology.transformations.map((item) => (
-            <div key={item.id} className="space-y-3">
+      <ExpandableCard id="ceb-presentation" title="How we present CEB data">
+        <div className="space-y-6">
+          <div className="space-y-4">
+            {presentationNotes.map((item) => (
+              <p key={item.id}>{item.text}</p>
+            ))}
+            {cebMethodology.readingNotes.map((note, index) => (
+              <p key={index}>{note}</p>
+            ))}
+          </div>
+          {financialNotes.map((item) => (
+            <div key={item.id} className="space-y-2">
               <h4 className="font-semibold text-gray-900">{item.title}</h4>
-              {item.text.split("\n\n").map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
+              <p>{item.text}</p>
             </div>
           ))}
-        </CebMethodologyTopic>
-      </section>
-      {showCoverage && (
-        <section aria-label="Current data coverage" className="space-y-3">
-          <CebMethodologyTopic
-            title="Current data coverage"
-            expandable={expandable}
-          >
-            <p>
-              Revenue: {manifest.entityRevenue.min}–{manifest.entityRevenue.max}
-              . Organization expenditure: {manifest.entitySpending.min}–
-              {manifest.entitySpending.max}. Geography:{" "}
-              {manifest.geographicExpenses.min}–
-              {manifest.geographicExpenses.max}. SDG expenditure:{" "}
-              {manifest.sdgExpenses.min}–{manifest.sdgExpenses.max}.
-            </p>
-            {cebMethodology.coverageNotes.map((note, index) => (
-              <p key={index}>{note.text}</p>
-            ))}
-          </CebMethodologyTopic>
-        </section>
-      )}
+        </div>
+      </ExpandableCard>
     </div>
   );
 }
 
-export function CebPageMethodology({
-  children,
+/** Chart records stay on their data page; explanatory text lives on About. */
+function PageMethodologyLink({
+  href,
+  targetId,
 }: {
-  children?: React.ReactNode;
+  href: string;
+  targetId: string;
 }) {
   return (
     <section
       className="mx-auto max-w-6xl px-6 pb-12 md:px-12 lg:px-16"
-      aria-label="Sources and methodology"
-      data-page-methodology
+      aria-label="Data references"
+      data-page-references
     >
-      <ExpandableCard id="methodology" title="Sources and methodology">
-        <CebMethodology />
-        {children && (
-          <section
-            className="mt-8 space-y-4 border-t border-gray-200 pt-6"
-            aria-label="Additional notes for this page"
-          >
-            <h3 className="text-lg font-semibold text-gray-900">
-              Additional notes for this page
-            </h3>
-            {children}
-          </section>
-        )}
-        <div
-          id="page-chart-source-notes"
-          className="mt-6 space-y-4 empty:hidden"
-        />
-      </ExpandableCard>
+      <div className="border-t border-gray-200 pt-4">
+        <Link
+          href={href}
+          className="text-sm text-un-blue underline underline-offset-2"
+          data-methodology-link
+        >
+          Sources and methodology
+        </Link>
+        <div id={targetId} className="mt-4 space-y-4 empty:hidden" />
+      </div>
     </section>
   );
 }
 
-export function ContributorsMethodologyNotes() {
+export function CebMethodologyLink() {
   return (
-    <>
-      <h4 className="font-medium text-gray-900">Revenue data</h4>
-      <p>
-        Contributor data starts in 2011; government contributor detail starts in
-        2013. Remaining revenue in 2011–2012 is shown as Unattributed. Missing
-        contributor observations do not mean zero contributions.
-      </p>
-      <p>
-        Revenue totals include negative reported amounts and calculated
-        balances. Treemap areas show positive amounts only, so their combined
-        area can exceed the net revenue total. Negative amounts remain included
-        in totals and contributor details.
-      </p>
-      <p>
-        Revenue figures combine CEB data on government and non-government
-        contributors and other revenue, including revenue from activities.
-        Contributor-view totals include signed adjustments; they do not
-        eliminate inter-agency transfers. Other revenue is a financing
-        instrument, while Other contributor categories are aggregates or
-        calculated remainders. Unattributed is revenue not assigned within the
-        contributor breakdown; the financing instrument may still be known. For
-        2021 onwards, contributors are categorized by type (Governments,
-        Foundations, Private Sector, Multilateral Organizations, etc.) using the
-        CEB&apos;s contributor classification system. For earlier years,
-        contributor categories are partially available. Where specific
-        contributors are not identified, contributions are shown as aggregated
-        totals (e.g., &ldquo;Other Foundations&rdquo;).
-      </p>
-      <p>
-        Where a reported total exceeds identified contributions, the remainder
-        is shown as Other within the known contributor category, or Unattributed
-        when the category is unknown. Blank amounts do not establish zero
-        contributions. Signed reconciliation adjustments are retained when
-        breakdowns exceed reported totals. The 2025 source names fewer
-        non-government contributors than the updated 2024 source; category
-        totals remain available.
-      </p>
-    </>
+    <PageMethodologyLink
+      href="/about/#ceb-methodology"
+      targetId="page-chart-source-notes"
+    />
   );
 }
 
-export function OrganizationsMethodologyNotes() {
-  return (
-    <>
-      <h4 className="font-medium text-gray-900">Expenditure data</h4>
-      <p>
-        Expenditure figures use CEB organization totals. The current System view
-        retains the UN Secretariat and peacekeeping aggregates; detailed
-        Secretariat budgets are available in the separate Secretariat section
-        and have different accounting bases.
-      </p>
-      <p>
-        Changes in reporting coverage and source revisions affect comparisons
-        between years. ITC&apos;s absence in 2025 represents missing reporting,
-        not zero expenditure.
-      </p>
-      <h4 className="font-medium text-gray-900">
-        Revenue and expenditure flow diagram
-      </h4>
-      <p>
-        Revenue and expenditure are independent reported dimensions. The diagram
-        does not trace a contributor&apos;s funding to a destination. Detailed
-        columns show the largest 12 items and combine the remainder into an
-        expandable display group; these groups are separate from source
-        aggregates and calculated balances.
-      </p>
-      <p>
-        Breakdown / total difference is a signed reconciliation amount, not an
-        assigned destination. Geography includes regional and global records.
-        Source classification conflicts remain disclosed. The diagram retains
-        CEB organization totals without Secretariat substitution.
-      </p>
-    </>
-  );
-}
-
-export function LocationsMethodologyNotes() {
-  return (
-    <>
-      <p>
-        Geographic records follow CEB&apos;s reported country, regional and
-        global allocations. Total expense records are selected once; their
-        component breakdowns are not added again. Regional and global amounts
-        are not distributed among countries.
-      </p>
-      <p>
-        The chart nests countries using{" "}
-        <a
-          href="https://unstats.un.org/unsd/methodology/m49/overview/"
-          className="underline hover:text-un-blue"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          UN M49 geographic groupings
-        </a>
-        , using intermediate regions where available. This display grouping
-        preserves CEB&apos;s reported amounts. A country reported under
-        competing source regions appears under Unresolved geographic
-        classification; its source regions and amounts are retained separately.
-        Countries without a matching subregional classification remain under
-        Other countries and areas.
-      </p>
-      <p>
-        The boundaries and names shown and the designations used on any map
-        shown do not imply official endorsement or acceptance by the United
-        Nations.
-      </p>
-      <h4 className="font-medium text-gray-900">
-        Map and geographic reporting levels
-      </h4>
-      <p>
-        Country, subregional, regional and global amounts are separate reported
-        records. Regional markers are illustrative positions, not operational
-        locations or territorial boundaries; the global marker is placed in the
-        south Pacific for readability. Circle areas represent expenditure.
-        Organization filters retain the selected scale. Placement and
-        source-classification notes are available on the relevant location
-        tooltips.
-      </p>
-      <h4 className="font-medium text-gray-900">
-        Function and geographic-level chart
-      </h4>
-      <p>
-        This chart uses the function and location recorded together on CEB
-        geographic expense records (E06); overlapping E06A/B/C components are
-        excluded. Regional and subregional records are combined, while global
-        amounts remain unallocated to countries. Negative amounts remain in net
-        totals. Function attribution is complete from 2020; earlier incomplete
-        attribution remains explicitly unreported. Geographic function totals
-        may differ from the independently reported function totals.
-      </p>
-      <p>
-        <a
-          href="https://unsceb.org/assets/data/FS/expenses_by_country_region_sub_agency.csv"
-          className="underline"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Download CEB geographic expenditure records
-        </a>
-        .
-      </p>
-      {SHOW_UNINFO && (
-        <>
-          <h4 className="font-medium text-gray-900">
-            UN Cooperation Framework data
-          </h4>
-          <p>
-            Country sidebars also display data from the{" "}
-            <a
-              href="https://uninfo.org"
-              className="underline hover:text-un-blue"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              UN Sustainable Development Cooperation Framework system (UNINFO)
-            </a>
-            , which tracks planned activities at the country level.
-          </p>
-          <p>
-            <strong>Key differences from CEB data:</strong>
-          </p>
-          <ul className="list-inside list-disc space-y-1">
-            <li>
-              CEB: Historical actual expenditure from audited financial
-              statements
-            </li>
-            <li>
-              UNINFO: Planned resources and partial actuals for Cooperation
-              Framework activities
-            </li>
-          </ul>
-          <p>
-            The geographic view includes CEB&apos;s updated historical
-            allocations. UNINFO is a separate dataset with its own reporting
-            periods and covers approximately 120 countries with Cooperation
-            Frameworks, representing roughly 40% of total UN system expenditure.
-            The remainder includes headquarters operations, peacekeeping
-            missions, and global programs outside country frameworks.
-          </p>
-          <p>
-            UNINFO Overall resources include records without an SDG
-            classification. These remain visible as Not classified by SDG and
-            are not allocated to numbered goals. Results frameworks retain
-            distinct source identities even when their display codes repeat;
-            parent and child amounts must not be added together.
-          </p>
-        </>
-      )}
-    </>
-  );
-}
-
-export function GoalsMethodologyNotes() {
+export function UninfoMethodology() {
   return (
     <p>
-      Expenditure by Sustainable Development Goal uses CEB financial statistics.
-      Reported expenditure includes accrual expenses (EXP) and expenditure on a
-      budgetary accounting basis (BUD, historically BUG), as permitted by
-      CEB&apos;s reporting standard. Non-SDG preserves expenditure reported
-      under CEB&apos;s x00 code. Not specified is calculated per entity as CEB
-      expenditure minus reported allocations to SDGs 1–17 and Non-SDG, so the
-      total reconciles to organization expenditure. This separate remainder
-      includes missing SDG reporting and signed reconciliation differences; it
-      does not establish that the expenditure is unrelated to the SDGs.
-      Available years run from {manifest.sdgExpenses.min} to{" "}
-      {manifest.sdgExpenses.max}.
-      {SHOW_UNINFO && (
-        <>
-          {" "}
-          The goal sidebar also shows UNINFO Cooperation Framework resources, a
-          separate scope and measure. Its country breakdown excludes
-          shared-workspace totals and responses without a verified annual
-          period.
-        </>
-      )}
+      Country and goal sidebars use <PageSourceLink source="uninfo" /> data on
+      resources required, available and spent for UN Cooperation Framework
+      activities in programme countries. We group reported figures by country,
+      organization and goal. Shared workspace totals are labelled;
+      country-by-goal breakdowns use records with a verified country and annual
+      reporting period.
     </p>
   );
 }
@@ -436,9 +134,9 @@ export function GoalsMethodologyNotes() {
 export function SecretariatMethodology() {
   return (
     <p>
-      These pages describe the financing of the UN Secretariat — its
-      departments, offices, commissions and missions. They are not the same as
-      the CEB system-wide aggregates shown under UN System Financials.
+      The Secretariat pages bring together the annual-report compilation,
+      programme-budget tables, assessment circulars and individual trust-fund
+      accounts. Each view follows the scope of its source.
     </p>
   );
 }
@@ -502,161 +200,41 @@ export const SECRETARIAT_METHODOLOGY_PAGES = [
 export type SecretariatMethodologyPage =
   (typeof SECRETARIAT_METHODOLOGY_PAGES)[number]["id"];
 
-function SecretariatPageSourceNotes({
-  page,
-}: {
-  page: SecretariatMethodologyPage;
-}) {
-  switch (page) {
-    case "overview":
-      return (
-        <p>
-          This simplified overview is based on data from the{" "}
-          <PageSourceLink source="annualReport" />.
-        </p>
-      );
-    case "programme-budget":
-      return (
-        <p>
-          Figures are extracted from the{" "}
-          <PageSourceLink source="programmeBudget" />.
-        </p>
-      );
-    case "programme-budget-contributors":
-      return (
-        <p>
-          Assessment amounts come from{" "}
-          <PageSourceLink source="regularAssessments" />; paid-in-full status
-          and dates come from the <PageSourceLink source="honourRoll" />.
-          {SHOW_REGULAR_BUDGET_OUTSTANDING && (
-            <>
-              {" "}
-              Outstanding balances come from the{" "}
-              <PageSourceLink source="financialSituation" />.
-            </>
-          )}
-        </p>
-      );
-    case "peacekeeping-budget":
-      return (
-        <p>
-          Figures are extracted from the Secretary-General’s{" "}
-          <PageSourceLink source="peacekeepingDocuments" />. Learn{" "}
-          <PageSourceLink source="peacekeepingFunding" />.
-        </p>
-      );
-    case "peacekeeping-contributors":
-      return (
-        <p>
-          Figures come from <PageSourceLink source="peacekeepingAssessments" />.
-        </p>
-      );
-    case "trust-funds":
-      return (
-        <p>
-          The fund schedules come from <PageSourceLink source="trustFunds" />.
-          {SHOW_ADDITIONAL_TRUST_FUNDS &&
-            " Separate entity reports are linked on their figures."}
-        </p>
-      );
-    case "trust-fund-contributors":
-      return (
-        <p>
-          The schedule view uses <PageSourceLink source="trustFunds" />.
-          {SHOW_ADDITIONAL_TRUST_FUNDS &&
-            " Separate entity views link their own source pages."}
-        </p>
-      );
-    case "field-missions":
-      return (
-        <p>
-          Financial figures come from the{" "}
-          <PageSourceLink source="annualReport" />.
-        </p>
-      );
-  }
-}
-
 export function SecretariatPageMethodologyContent({
   page,
-  includeGeneral = true,
-  includeChartNotes = false,
 }: {
   page: SecretariatMethodologyPage;
-  includeGeneral?: boolean;
-  includeChartNotes?: boolean;
 }) {
   return (
     <div className="space-y-4" data-secretariat-methodology={page}>
-      {includeGeneral && <SecretariatMethodology />}
-      <SecretariatPageSourceNotes page={page} />
-      {page === "overview" && (
-        <>
-          <SecretariatOverviewMethodologyNotes />
-          {includeChartNotes && <SecretariatFlowsMethodologyNotes />}
-        </>
-      )}
+      {page === "overview" && <SecretariatOverviewMethodologyNotes />}
       {page === "programme-budget" && <ProgrammeBudgetMethodologyNotes />}
       {page === "programme-budget-contributors" && (
-        <>
-          <ProgrammeBudgetContributorsMethodologyNotes />
-          {includeChartNotes && <ProgrammeBudgetContributorChartNotes />}
-        </>
+        <ProgrammeBudgetContributorsMethodologyNotes />
       )}
-      {page === "peacekeeping-budget" && (
-        <>
-          <PeacekeepingBudgetMethodologyNotes />
-          {includeChartNotes && <PeacekeepingBudgetChartNotes />}
-        </>
-      )}
+      {page === "peacekeeping-budget" && <PeacekeepingBudgetMethodologyNotes />}
       {page === "peacekeeping-contributors" && (
-        <>
-          <PeacekeepingContributorsMethodologyNotes />
-          {includeChartNotes && <PeacekeepingContributorChartNotes />}
-        </>
+        <PeacekeepingContributorsMethodologyNotes />
       )}
       {page === "trust-funds" && <TrustFundsMethodologyNotes />}
       {page === "trust-fund-contributors" && (
-        <>
-          <TrustFundContributorsMethodologyNotes />
-          {includeChartNotes && <TrustFundContributorChartNotes />}
-        </>
+        <TrustFundContributorsMethodologyNotes />
       )}
       {page === "field-missions" && <FieldMissionsMethodologyNotes />}
     </div>
   );
 }
 
-export function SecretariatPageMethodology({
+export function SecretariatMethodologyLink({
   page,
 }: {
   page: SecretariatMethodologyPage;
 }) {
   return (
-    <>
-      <ChartDataDisclaimer />
-      <section
-        className="mx-auto max-w-6xl px-6 pb-12 md:px-12 lg:px-16"
-        aria-label="Sources and methodology"
-        data-page-methodology
-      >
-        <details className="border-t border-gray-200">
-          <summary
-            id="methodology"
-            className="cursor-pointer py-4 text-lg font-medium text-gray-900"
-          >
-            Sources and methodology
-          </summary>
-          <div className="space-y-6 py-4 text-sm leading-relaxed text-gray-600">
-            <SecretariatPageMethodologyContent page={page} />
-            <div
-              id="secretariat-chart-source-notes"
-              className="space-y-4 empty:hidden"
-            />
-          </div>
-        </details>
-      </section>
-    </>
+    <PageMethodologyLink
+      href={`/about/#secretariat-${page}`}
+      targetId="secretariat-chart-source-notes"
+    />
   );
 }
 
@@ -682,301 +260,328 @@ export function SecretariatPageSourceProvider({
   );
 }
 
-export function SecretariatFlowsMethodologyNotes() {
+function SourceLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="underline underline-offset-2"
+    >
+      {children}
+    </a>
+  );
+}
+
+function SecretariatOverviewMethodologyNotes() {
   return (
     <>
       <p>
-        Annual-report expenditure can be grouped by funding mechanism or funding
-        arrangement, entity category or entity, and priority area. Funding and
-        priority columns remain visible; the optional middle column adds an
-        entity breakdown of the same source records without changing the scope.
-        All funding sources are included. Ribbons show gross positive
-        expenditure; signed corrections remain in net totals and source details.
+        The Overview shows resources by department, office, mission and General
+        Assembly priority. It uses the financial compilation prepared for the
+        Secretary-General’s <PageSourceLink source="annualReport" />.
       </p>
       <p>
-        Unitemized extrabudgetary resources are shown by reporting entity. These
-        remain unitemized amounts, not identified trust funds. Trust funds are
-        shown together. Detailed columns always show the largest 12 entries;
-        smaller entries remain in inspectable groups without changing totals.
+        The audited{" "}
+        <SourceLink href="https://documents.un.org/doc/undoc/gen/n24/219/52/pdf/n2421952.pdf#page=241">
+          UN financial statements, Volume I (A/79/5 for 2023)
+        </SourceLink>
+        , present regular-budget expenditure in 14 broad budget parts, with
+        other financial breakdowns by fund group and activity. Peacekeeping
+        operations and several other entities have separate accounts. To provide
+        the department and priority breakdown, the annual-report compilation
+        brings together the following sources:
+      </p>
+      <ul className="list-disc space-y-3 pl-5">
+        <li>
+          <strong>Regular budget:</strong> expenditure reported in the{" "}
+          <PageSourceLink source="programmeBudget" />, with detail by department
+          and office.
+        </li>
+        <li>
+          <strong>Other assessed resources:</strong> peacekeeping mission and
+          support-account budget and performance reports, and reports on the
+          International Residual Mechanism for Criminal Tribunals.
+          Support-account resources are assigned to the departments using them.
+        </li>
+        <li>
+          <strong>Extrabudgetary resources:</strong> financial-statement data
+          prepared by fund for the annual report. The{" "}
+          <PageSourceLink source="trustFunds" /> provide related fund accounts;
+          the annual-report compilation has its own presentation, whose fund
+          amounts can differ from the schedules’ expense column.
+        </li>
+      </ul>
+      <p>
+        UNEP, UN-Habitat and UNODC publish separate financial statements. The
+        compilation includes their separately reported non-regular-budget
+        amounts alongside their programme-budget figures. ITC’s extrabudgetary
+        amount instead comes from programme-budget tables, converted from Swiss
+        francs in the source compilation. These amounts cover resources outside
+        the regular budget, including some assessed financing.
       </p>
       <p>
-        Calendar and peacekeeping periods differ. IRMCT includes source-labelled
-        budget substitutes. Staff Assessment follows the source allocation.
-        Treaty financing retains the original Voluntary tag; unresolved
-        convention rows retain their original wording.
+        The resulting total combines budget-basis expenditure and
+        financial-statement figures. Regular-budget years are calendar years;
+        peacekeeping periods run from July to June. The 2025 compilation uses
+        budget allocations (apportionments) for peacekeeping missions and the
+        support account, as shown in{" "}
+        <SourceLink href="https://documents.un.org/api/symbol/access?s=A%2F80%2F643&l=en&t=pdf#page=74">
+          A/80/643, table 25
+        </SourceLink>{" "}
+        and{" "}
+        <SourceLink href="https://documents.un.org/doc/undoc/gen/n26/024/72/pdf/n2602472.pdf#page=12">
+          A/80/631, table 2
+        </SourceLink>
+        . Some Residual Mechanism rows also use budget figures.
+      </p>
+      <p>
+        We retain the compilation’s amounts and funding categories, with
+        Voluntary labelled Extrabudgetary to reflect that wider scope. Entity
+        tiles follow the compilation’s priority allocations, so an entity can
+        appear under more than one priority. Sidebar breakdowns retain those
+        allocations. Flow ribbons show positive amounts; totals retain signed
+        adjustments. Unitemized amounts remain grouped by reporting entity.
       </p>
     </>
   );
 }
 
-export function ProgrammeBudgetContributorChartNotes() {
+function ProgrammeBudgetMethodologyNotes() {
   return (
     <>
       <p>
-        “Not listed as paid in full” may include Member States that made a
-        partial payment. It does not mean that no payment was made.
+        The <PageSourceLink source="programmeBudget" /> set out the
+        Secretary-General’s proposals by budget section and programme. They also
+        report approved budgets and expenditure for earlier years. We extract
+        these tables to show proposed and approved regular budgets, and reported
+        expenditure by funding source.
       </p>
       <p>
-        From 2025, the circular&apos;s total includes the Peacebuilding Fund
-        portion assessed in the regular-budget circular. Other assessed and
-        extrabudgetary contributions are excluded from this view.
+        Extrabudgetary expenditure on this page comes from those budget tables.
+        Some figures are published before the financial statements are final:
+        the 2026 documents for{" "}
+        <SourceLink href="https://docs.un.org/en/A/80/6(Sect.17)">
+          UN-Women
+        </SourceLink>{" "}
+        and{" "}
+        <SourceLink href="https://docs.un.org/en/A/80/6(Sect.25)">
+          UNHCR
+        </SourceLink>{" "}
+        explicitly identify their 2024 expenditure as provisional. Coverage and
+        accounting treatment differ from the fund accounts on the Trust Funds
+        page and the compilation used in the Overview.
+      </p>
+      <h4 className="font-semibold text-gray-900">
+        Entities with separate budgets
+      </h4>
+      <p>
+        The programme-budget documents also cover UNHCR, UNRWA, UN-Women, UNEP,
+        UN-Habitat and UNODC. These entities publish their own financial
+        statements and receive regular-budget allocations for specified work. In
+        the{" "}
+        <SourceLink href="https://documents.un.org/doc/undoc/gen/n24/219/52/pdf/n2421952.pdf#page=243">
+          UN accounts, Volume I, Note 1
+        </SourceLink>
+        , these allocations are recorded as grants. Their wider operations,
+        largely financed by voluntary contributions, are also described in the
+        programme-budget documents. The extrabudgetary columns therefore extend
+        beyond departments and offices financed through the regular budget.
+      </p>
+      <ul className="list-disc space-y-2 pl-5">
+        <li>
+          <SourceLink href="https://docs.un.org/en/A/80/6(Sect.25)">
+            UNHCR
+          </SourceLink>
+          : its 1950 statute provides for administrative expenses to be met from
+          the UN budget; its operational programme has its own budget approved
+          by the UNHCR Executive Committee.
+        </li>
+        <li>
+          <SourceLink href="https://www.un.org/unispal/document/auto-insert-184638/">
+            UNRWA
+          </SourceLink>
+          : regular-budget support began with the decision to fund
+          international-staff salaries from 1975. Its programme is financed
+          mainly through voluntary contributions.
+        </li>
+        <li>
+          <SourceLink href="https://docs.un.org/en/A/RES/64/289">
+            UN-Women
+          </SourceLink>
+          : the regular budget supports its normative intergovernmental work;
+          voluntary funding supports its operational work under its Executive
+          Board.
+        </li>
+        <li>
+          <SourceLink href="https://docs.un.org/en/A/80/6(Sect.13)">
+            ITC
+          </SourceLink>
+          : its regular budget is financed equally by the UN and WTO. Its tables
+          show the joint budget and extrabudgetary resources in Swiss francs.
+        </li>
+      </ul>
+      <p>
+        Amounts retain their printed currencies. For chart areas and shares,
+        Swiss-franc amounts are converted using UN Treasury operational rates,
+        weighted by calendar days in the expenditure year. The original amounts
+        and conversion rates are shown in the details.
       </p>
     </>
   );
 }
 
-export function PeacekeepingContributorChartNotes() {
+function ProgrammeBudgetContributorsMethodologyNotes() {
   return (
     <>
       <p>
-        The displayed total sums signed net assessments represented by tiles.
-        Zero and negative amounts are excluded from the treemap.
+        Assessments come from <PageSourceLink source="regularAssessments" />;
+        paid-in-full status and dates come from the{" "}
+        <PageSourceLink source="honourRoll" />. We match Member States across
+        the two sources and use the circular’s assessment amount. From 2025,
+        that amount includes the Peacebuilding Fund portion assessed in the
+        regular-budget circular.
       </p>
       <p>
-        Net assessments add assessment sections and subtract prior-period
-        credits. They do not show payments received, arrears or voluntary
-        contributions. Click a Member State to see its mission breakdown and
-        source circulars.
-      </p>
-    </>
-  );
-}
-
-export function PeacekeepingBudgetChartNotes() {
-  return (
-    <p>
-      Approved budget means the appropriation printed in the source report.
-      Fiscal years run from July to June.
-    </p>
-  );
-}
-
-export function TrustFundContributorChartNotes() {
-  return (
-    <>
-      <p>
-        Tile area is the signed net of extracted contribution and transfer rows;
-        click a contributor to see its funds and reconstructed entity
-        destinations.
-      </p>
-      <p>
-        Entity attribution describes which Secretariat entity owns the
-        destination fund; it does not prove that a contributor financed a
-        particular expense.
-      </p>
-    </>
-  );
-}
-
-export function SecretariatOverviewMethodologyNotes() {
-  return (
-    <>
-      <p>
-        This overview is the only view that combines figures from the UN
-        Secretariat Programme Budget and audited financial statements to provide
-        a simplified public view of expenditure on mixed accounting bases. It is
-        not a single consolidated IPSAS total. Extrabudgetary amounts are
-        non-regular-budget residuals, not necessarily pure voluntary funding.
-        For example, UNEP 2023 combines $671,941,000 of residual expense with
-        $20,859,739 of budget-basis regular expense: $692,800,739. Replacing
-        only that regular component with the audited $24,701,000 explains the
-        $3,841,261 difference to its $696,642,000 IPSAS total.
-      </p>
-      <p>
-        Entity tiles follow the compilation’s priority allocations, so an entity
-        can appear under more than one priority. Sidebar breakdowns retain those
-        allocations.
-      </p>
-    </>
-  );
-}
-
-export function ProgrammeBudgetContributorsMethodologyNotes() {
-  return (
-    <div className="space-y-3">
-      <p>
-        Contribution amounts come from annual assessment circulars; paid-in-full
-        status and dates come from the UN regular-budget honour roll, with
-        assessment rates checked against the historical scale of assessments.
-        The payment timeline adds a Member State&apos;s full assessment on the
-        date it appears as paid in full. Partial payments are not available from
-        the honour roll and are therefore not estimated.
+        The payment timeline records a State’s full assessment on the date it
+        appears as paid in full. The honour roll identifies full settlement;
+        States absent from it can have made partial payments. Its reporting date
+        is shown with the data.
       </p>
       {SHOW_REGULAR_BUDGET_OUTSTANDING && (
         <>
           <p>
-            Outstanding balances are extracted from complete autumn debtor lists
-            in the UN financial situation presentations. They include previous
-            years’ arrears and reflect partial payments and credits; they do not
-            measure cash received. The reporting dates are 4 October 2019, 8
-            October 2021, and 30 September in the other available years.
-            Honour-roll status has its own reporting date.
+            Outstanding balances come from complete autumn debtor lists in the{" "}
+            <PageSourceLink source="financialSituation" /> and include earlier
+            years’ arrears. A State absent from a validated complete list is
+            recorded with a zero balance for that snapshot. Other missing
+            observations remain unavailable.
           </p>
           <p>
-            Zero balances are inferred only from absence from a validated
-            complete debtor list for the same snapshot. Totals sum country
-            balances. Share of total uses the full snapshot total; balance /
-            annual assessment compares accumulated debt with the annual
-            assessment circular amount (including the Peacebuilding Fund portion
-            from 2025). It can exceed 100% and is not a payment-completion
-            percentage. Assessment and honour-roll coverage begins in 2019, so
-            those fields and the assessment ratio are unavailable for the 2018
-            outstanding-balance snapshot.
-          </p>
-          <p>
-            Changes compare consecutive annual snapshots, including their stated
-            cutoff differences, and reflect assessments, settlements and
-            credits. Percentage change is unavailable when the prior balance is
-            zero; a new positive balance is labelled accordingly. Missing
-            observations are unavailable, not zero.
+            Changes compare consecutive snapshots at their stated dates. Balance
+            divided by annual assessment compares accumulated debt with that
+            year’s assessment and can exceed 100%. Assessment and honour-roll
+            coverage begins in 2019; the 2018 balance has no corresponding
+            assessment ratio.
           </p>
         </>
       )}
-    </div>
+    </>
   );
 }
 
-export function PeacekeepingContributorsMethodologyNotes() {
-  return (
-    <p>
-      Assessed contributions come from the mission-by-mission assessment
-      circulars indexed by the UN Committee on Contributions. Assessment
-      sections are added and prior-period credit sections are subtracted. The
-      result shows amounts assessed, not payments received or outstanding
-      balances. Source-level exceptions identified during reconciliation are
-      disclosed with the chart and retained in the exported data.
-    </p>
-  );
-}
-
-export function TrustFundContributorsMethodologyNotes() {
-  return (
-    <div className="space-y-3">
-      <p>
-        The UN Secretariat trust-fund schedules view uses audited contributions
-        and transfers. Entity grouping identifies the entity responsible for a
-        fund, not a direct link between a contributor and an expense.
-      </p>
-      {SHOW_ADDITIONAL_TRUST_FUNDS && (
-        <>
-          <p>
-            Separate source views retain their own measures: Habitat interim
-            contribution status, ITC XB funding received, and UNODC indicative
-            annual pledges. They are not summed across sources or compared as if
-            all were audited revenue. Partial coverage, missing periods, grouped
-            counterparties and source differences are shown with each series.
-          </p>
-          <p>
-            UNEP contributor subsets are excluded from the charts. Its annual
-            reports and CBD ledgers remain linked for reference. Source links
-            use physical PDF pages or the original HTML fund sections, as
-            applicable.
-          </p>
-        </>
-      )}
-    </div>
-  );
-}
-
-export function ProgrammeBudgetMethodologyNotes() {
-  return (
-    <p>
-      Expenditure data comes from Proposed Programme Budget documents and their
-      published actual expenditure tables. Other assessed and extrabudgetary
-      expenditure are not part of the programme budget itself and are displayed
-      for informational purposes.
-    </p>
-  );
-}
-
-export function PeacekeepingBudgetMethodologyNotes() {
+function PeacekeepingBudgetMethodologyNotes() {
   return (
     <>
       <p>
-        The map and table use peacekeeping budget and performance-report
-        expenditure, approved appropriations and proposals on the July–June
-        financial cycle. Only missions in that corpus are shown. Service centres
-        (RSCE, UNGSC) are included and marked separately from field missions,
-        including UNSOS.
+        Figures come from <PageSourceLink source="peacekeepingDocuments" />. We
+        extract expenditure, approved appropriations and proposals for the
+        missions and service centres covered by these documents. Financial years
+        run from July to June.
       </p>
       <p>
-        Observer missions paid from the regular budget (UNTSO, UNMOGIP) are not
-        in this budget and are not on this map. The support account, enterprise
-        items and some closed-mission accounts sit outside this corpus. The
-        contributor view separately reports Member State assessments, not
-        payments; its coverage differs from these mission budgets.
+        Coverage includes RSCE, UNGSC and UNSOS. The support account, enterprise
+        items and some closed-mission accounts fall outside this collection.
+        UNTSO and UNMOGIP are financed from the regular budget. Member State
+        assessments are shown in the contributor view, whose coverage follows
+        the assessment circulars.
       </p>
     </>
   );
 }
 
-export function FieldMissionsMethodologyNotes() {
+function PeacekeepingContributorsMethodologyNotes() {
   return (
-    <>
-      <p>
-        The map shows the geographic footprint of special political missions and
-        peacekeeping missions, together with the resources assigned to them.
-      </p>
-      <p>
-        The boundaries and names shown and the designations used on any map
-        shown do not imply official endorsement or acceptance by the United
-        Nations.
-      </p>
-    </>
+    <p>
+      We combine mission-by-mission{" "}
+      <PageSourceLink source="peacekeepingAssessments" />, adding assessment
+      sections and subtracting credits for earlier periods. The result is the
+      net amount assessed to each Member State. Payments and arrears are
+      separate measures. Source exceptions are identified in the selected-year
+      details and the affected Member State’s sidebar.
+    </p>
   );
 }
 
-export function TrustFundsMethodologyNotes() {
+function TrustFundsMethodologyNotes() {
   return (
-    <div className="space-y-3">
+    <>
       <p>
-        Expenditure totals include positive and negative reported amounts.
-        Treemap areas show positive amounts only. Funds with zero or negative
-        expenditure can still be opened from the selected-year list in the Trust
-        Funds page’s methodology.
+        The <PageSourceLink source="trustFunds" /> accompany the UN’s Volume I
+        accounts and report finances for individual funds. We extract reported
+        expenses and group funds by the responsible entity. Funds without an
+        identified entity appear under Unmapped Trust Funds.
       </p>
       <p>
-        “UN Secretariat trust-fund schedules” uses audited Schedules of
-        Individual Trust Funds accompanying the UN Volume I accounts. Entity
-        grouping uses a reconstructed historical crosswalk, supplemented by
-        exact fund-name matches in newer ARWO workbooks. Unmatched funds appear
-        under “Unmapped Trust Funds”, a display group rather than a UN entity.
-        Grouping identifies responsibility for a fund, not a direct
-        contributor-to-expense link.
+        Totals retain negative amounts. Funds with zero or negative expenditure
+        are available in the selected-year data details. Fund-level accounts can
+        include transfers between funds and overlap with other Secretariat
+        views.
       </p>
       {SHOW_ADDITIONAL_TRUST_FUNDS && (
         <>
           <p>
-            “Separately reported entities” covers UNEP, UNODC, UN-Habitat and
-            ITC. For 2023–2024, entity amounts use audited expenditure excluding
-            regular-budget expenses where available; ITC uses reported gross XB
-            programme delivery. Years without extracted report figures remain
-            unavailable. The combined headline is reported expenditure, not a
-            consolidated total: cross-source transfers have not been reconciled
-            or eliminated, and accounting boundaries differ. Inclusion does not
-            establish that every resource is legally a trust fund.
+            Separately reported entities covers UNEP, UNODC, UN-Habitat and ITC.
+            Entity totals use reported expenditure excluding regular-budget
+            expenses where available; ITC uses gross extrabudgetary programme
+            delivery. Detail uses the source’s fund, account or programme
+            segments. Gross detail can differ from the entity total after
+            eliminations; both are identified in the sidebar.
           </p>
           <p>
-            Entity areas use the reported separate-entity totals. UNEP fund
-            groups and UN-Habitat funding segments subdivide those areas using
-            relative shares of expenses before eliminations; tile amounts retain
-            the gross source figures. Their sidebars retain further detail and
-            reconciliation. Detail amounts must not be added to their parent
-            total. A pure XB expense breakdown is unavailable for UNODC and ITC.
-            Missing years are gaps. Figures link to the original PDF pages. ARWO
-            is not used to fill missing expenditure amounts.
-          </p>
-          <p>
-            The contributor view separates UN Secretariat trust-fund schedules
-            from entity-specific reports. Habitat uses interim contributions and
-            transfers and ITC uses XB funding received. UNEP contributor subsets
-            are excluded; their source documents remain linked for reference.
-            Source periods, measures and coverage are shown in each view; these
-            amounts are not added to expenditure. UNEP accounts are grouped
-            under the annex segments and subtotals printed in its reports.
+            These sources have different accounting boundaries and unreconciled
+            transfers between them. Their sum is reported expenditure across the
+            selected sources. Each figure links to its report; missing years
+            remain unavailable.
           </p>
         </>
       )}
-    </div>
+    </>
+  );
+}
+
+function TrustFundContributorsMethodologyNotes() {
+  return (
+    <>
+      <p>
+        We extract contribution and transfer rows from the{" "}
+        <PageSourceLink source="trustFunds" />, retaining refunds and
+        adjustments. These are accounting flows, including inter-agency and
+        internal transfers, so the same funding can appear more than once.
+        Receivable balances are kept separate.
+      </p>
+      <p>
+        Each contributor is linked to the funds listed in the schedules. We
+        group those funds by the Secretariat entity responsible for them, using
+        the same assignments as in the expenditure view.
+      </p>
+      {SHOW_ADDITIONAL_TRUST_FUNDS && (
+        <p>
+          Separate entity views keep each source’s own measure: UN-Habitat
+          interim contributions and transfers, ITC extrabudgetary funding
+          received, and UNODC indicative pledges. Source periods and coverage
+          are shown with the data. UNEP contributor documents are available as
+          references.
+        </p>
+      )}
+    </>
+  );
+}
+
+function FieldMissionsMethodologyNotes() {
+  return (
+    <p>
+      The map uses the annual-report compilation described in the Overview,
+      showing political and peacekeeping missions with approximate geographic
+      positions. Mission grouping follows the portal’s field-placement
+      convention, including residual spending for historical missions. Non-field
+      sanctions panels and envoys are grouped with Secretariat entities.
+    </p>
   );
 }

@@ -5,9 +5,12 @@ import {
   SecretariatMethodology,
   SecretariatPageMethodologyContent,
   SECRETARIAT_METHODOLOGY_PAGES,
+  UninfoMethodology,
 } from "@/components/Methodology";
 import { ExpandableCard } from "@/components/ExpandableCard";
 import { PageBody } from "@/components/PageBody";
+import { SHOW_FIELD_MISSIONS, SHOW_UNINFO } from "@/lib/featureFlags";
+import { isRouteEnabled } from "@/lib/navigation";
 
 export const metadata: Metadata = {
   title: "About",
@@ -24,9 +27,16 @@ export default function AboutPage() {
         </h1>
         <p className="mb-10 max-w-3xl leading-7 text-gray-700">
           The UN Transparency Portal brings together financial information about
-          the UN System and the UN Secretariat. Each dataset retains its own
-          reporting scope and accounting basis.
+          the UN System and the UN Secretariat. The sources and preparation of
+          each dataset are described below.
         </p>
+        <nav
+          aria-label="Sources and methodology"
+          className="mb-10 flex flex-wrap gap-x-6 gap-y-2 text-sm text-un-blue underline underline-offset-2"
+        >
+          <a href="#ceb-methodology">UN System</a>
+          <a href="#secretariat-methodology">UN Secretariat</a>
+        </nav>
         <section
           id="ceb-methodology"
           className="space-y-6 text-sm leading-relaxed text-gray-600"
@@ -38,7 +48,19 @@ export default function AboutPage() {
           >
             UN System Financials
           </h2>
-          <CebMethodology expandable showCoverage={false} />
+          <div className="space-y-2">
+            <CebMethodology />
+            {SHOW_UNINFO && (
+              <section aria-labelledby="uninfo-methodology">
+                <ExpandableCard
+                  id="uninfo-methodology"
+                  title="Cooperation Frameworks — UNINFO"
+                >
+                  <UninfoMethodology />
+                </ExpandableCard>
+              </section>
+            )}
+          </div>
         </section>
         <section
           id="secretariat-methodology"
@@ -54,31 +76,29 @@ export default function AboutPage() {
           <div className="space-y-2 text-sm leading-relaxed text-gray-600">
             <SecretariatMethodology />
             {SECRETARIAT_METHODOLOGY_PAGES.filter(
-              (page) => page.id !== "field-missions",
+              (page) => page.id !== "field-missions" || SHOW_FIELD_MISSIONS,
             ).map((page) => (
               <section
                 key={page.id}
-                aria-labelledby={`secretariat-${page.id}-methodology-title`}
+                aria-labelledby={`secretariat-${page.id}`}
                 className="space-y-4"
               >
                 <ExpandableCard
-                  id={`secretariat-${page.id}-methodology-title`}
+                  id={`secretariat-${page.id}`}
                   title={page.title}
                 >
-                  <p className="mb-4">
-                    <Link
-                      href={page.href}
-                      className="underline underline-offset-2"
-                    >
-                      <span aria-hidden="true">→</span> View the {page.title}{" "}
-                      data page
-                    </Link>
-                  </p>
-                  <SecretariatPageMethodologyContent
-                    page={page.id}
-                    includeGeneral={false}
-                    includeChartNotes
-                  />
+                  {isRouteEnabled(page.href) && (
+                    <p className="mb-4">
+                      <span aria-hidden="true">→</span>{" "}
+                      <Link
+                        href={page.href}
+                        className="underline underline-offset-2"
+                      >
+                        View the {page.title} data page
+                      </Link>
+                    </p>
+                  )}
+                  <SecretariatPageMethodologyContent page={page.id} />
                 </ExpandableCard>
               </section>
             ))}

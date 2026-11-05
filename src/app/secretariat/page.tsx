@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import {
-  SecretariatPageMethodology,
+  SecretariatMethodologyLink,
   SecretariatPageSourceProvider,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
@@ -40,7 +40,7 @@ export default function SecretariatPage() {
         <SecretariatOverview />
         <SecretariatFlows />
       </PageBody>
-      <SecretariatPageMethodology page="overview" />
+      <SecretariatMethodologyLink page="overview" />
     </SecretariatPageSourceProvider>
   );
 }

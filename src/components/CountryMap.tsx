@@ -496,6 +496,12 @@ export function CountryMap() {
           </>
         )}
       </ChartFrame>
+      {showMap && (
+        <p className="mt-3 text-xs text-gray-500">
+          The boundaries and names shown and the designations used on this map
+          do not imply official endorsement or acceptance by the United Nations.
+        </p>
+      )}
 
       {selectedGeography &&
         scopedData.find((row) => row.iso3 === selectedGeography) && (

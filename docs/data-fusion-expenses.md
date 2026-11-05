@@ -119,8 +119,8 @@ SDG × country allocation is constructed through proportional splitting. UNINFO
 cross-dimensional information is separately identified as UNINFO.
 
 All displayed source amounts are nominal USD; CPI adjustment is disabled. Shared
-CEB source notes and transformations appear once at the end of each relevant
-page and on About. Additional page-specific notes remain separate. The general
+CEB source notes and the processing summary appear on About. Data pages link to
+that section and keep selected-year data details locally. The general
 CEB note includes the source's Kosovo qualification; there is no separate
 Kosovo-specific notice on individual records.
 

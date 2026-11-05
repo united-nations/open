@@ -4,10 +4,7 @@ import { FEATURES } from "@/lib/featureFlags";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { CountryMap } from "@/components/CountryMap";
-import {
-  CebPageMethodology,
-  LocationsMethodologyNotes,
-} from "@/components/Methodology";
+import { CebMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
 
@@ -34,9 +31,7 @@ export default function SystemLocationsPage() {
         <CountryMap />
         {FEATURES.functionGeography && <FunctionGeographyChart />}
       </PageBody>
-      <CebPageMethodology>
-        <LocationsMethodologyNotes />
-      </CebPageMethodology>
+      <CebMethodologyLink />
     </ChartSourceProvider>
   );
 }

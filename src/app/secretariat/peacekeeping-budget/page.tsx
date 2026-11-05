@@ -1,7 +1,7 @@
 import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
 import {
-  SecretariatPageMethodology,
+  SecretariatMethodologyLink,
   SecretariatPageSourceProvider,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
@@ -32,7 +32,7 @@ export default function PeacekeepingBudgetPage() {
       <PageBody>
         <PeacekeepingBudgetView />
       </PageBody>
-      <SecretariatPageMethodology page="peacekeeping-budget" />
+      <SecretariatMethodologyLink page="peacekeeping-budget" />
     </SecretariatPageSourceProvider>
   );
 }

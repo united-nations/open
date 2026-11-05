@@ -1,7 +1,7 @@
 import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
 import {
-  SecretariatPageMethodology,
+  SecretariatMethodologyLink,
   SecretariatPageSourceProvider,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
@@ -33,7 +33,7 @@ export default function FieldMissionsPage() {
         <FieldMissionsMap />
         <ChartFooter hint="Click on a mission to explore details" />
       </PageBody>
-      <SecretariatPageMethodology page="field-missions" />
+      <SecretariatMethodologyLink page="field-missions" />
     </SecretariatPageSourceProvider>
   );
 }

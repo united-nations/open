@@ -50,15 +50,19 @@ export function ChartFooter({
         {pageDetailsTarget &&
           (details || hasNegativeAmounts) &&
           createPortal(
-            <section className="mt-5 space-y-3" data-chart-source-notes>
-              {sourceSuffix && (
-                <h4 className="font-medium text-gray-900">{sourceSuffix}</h4>
-              )}
-              {details}
-              {hasNegativeAmounts && signedAmounts && (
-                <NegativeAmounts entries={signedAmounts} />
-              )}
-            </section>,
+            <details className="text-sm" data-chart-source-notes>
+              <summary className="w-fit cursor-pointer font-medium text-gray-900">
+                {sourceSuffix
+                  ? `${sourceSuffix} — data for selected year`
+                  : "Data for selected year"}
+              </summary>
+              <div className="mt-3 space-y-3">
+                {details}
+                {hasNegativeAmounts && signedAmounts && (
+                  <NegativeAmounts entries={signedAmounts} />
+                )}
+              </div>
+            </details>,
             pageDetailsTarget,
           )}
       </>

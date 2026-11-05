@@ -3,10 +3,7 @@ import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { ContributorTrendsChart } from "@/components/ContributorTrendsChart";
 import { ContributorsTreemap } from "@/components/ContributorsTreemap";
-import {
-  CebPageMethodology,
-  ContributorsMethodologyNotes,
-} from "@/components/Methodology";
+import { CebMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
 
@@ -38,9 +35,7 @@ export default function SystemContributorsPage() {
           <ContributorTrendsChart />
         </div>
       </PageBody>
-      <CebPageMethodology>
-        <ContributorsMethodologyNotes />
-      </CebPageMethodology>
+      <CebMethodologyLink />
     </ChartSourceProvider>
   );
 }

@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { chromium } from "playwright";
 import { browserOptions, portalUrl } from "./helpers.mjs";
 import profiles from "../../config/features.json" with { type: "json" };
+import manifest from "../../public/data/manifest.json" with { type: "json" };
 
 const browser = await chromium.launch(browserOptions);
 try {
@@ -26,10 +27,12 @@ try {
     .getByRole("button", { name: "Expenditure by", exact: true })
     .click();
   await page.getByRole("menuitemradio", { name: "Goal", exact: true }).click();
-  await flows
-    .getByText("Goal breakdown unavailable", { exact: true })
-    .first()
-    .waitFor();
+  if (!manifest.sdgExpenses.years.includes(manifest.entitySpending.default)) {
+    await flows
+      .getByText("Goal breakdown unavailable", { exact: true })
+      .first()
+      .waitFor();
+  }
   await slider.press("Home");
   await page.waitForFunction(
     () =>
@@ -57,12 +60,16 @@ try {
     await donors.getByText(/Government donor detail is unavailable/).count(),
     0,
   );
-  await donors
-    .getByRole("button", { name: "Sources and methodology", exact: true })
-    .click();
-  await donors
-    .getByText(/Remaining revenue in 2011–2012 is shown as Unattributed/)
-    .waitFor();
+  assert.equal(
+    await donors.locator("[data-methodology-link]").getAttribute("href"),
+    "/about/#ceb-methodology",
+  );
+  const about = await browser.newPage();
+  await about.goto(portalUrl + "/about/#ceb-methodology", {
+    waitUntil: "networkidle",
+  });
+  await about.locator("[data-ceb-methodology]").waitFor();
+  await about.close();
   assert.equal(
     await donors.getByRole("slider").getAttribute("aria-valuenow"),
     "2011",
@@ -98,7 +105,9 @@ try {
     .getByText(/Before 2018, CEB used a different classification/)
     .waitFor();
   await page
-    .getByText("Other (legacy classification)", { exact: true })
+    .getByText("Other (combined Normative and Technical Cooperation)", {
+      exact: true,
+    })
     .first()
     .waitFor();
 
@@ -130,15 +139,25 @@ try {
     });
     const year = page.getByRole("slider").first();
     await year.press("Home");
-    assert.equal(await year.getAttribute("aria-valuenow"), "2018");
-    await page
-      .getByText(/Partial coverage:/)
-      .first()
-      .waitFor();
-    await page
-      .getByText(/not comparable/)
-      .first()
-      .waitFor();
+    assert.equal(
+      await year.getAttribute("aria-valuenow"),
+      String(manifest.budgetPpb.min),
+    );
+    const firstYear = await page.evaluate(
+      async (value) =>
+        (await fetch(`/data/budget-ppb-expenditure-${value}.json`)).json(),
+      manifest.budgetPpb.min,
+    );
+    if (firstYear.meta.partial) {
+      await page
+        .getByText(/Partial coverage:/)
+        .first()
+        .waitFor();
+      await page
+        .getByText(/not comparable/)
+        .first()
+        .waitFor();
+    }
     await page.screenshot({
       path: "audits/browser/historical-ppb.png",
       fullPage: true,

@@ -226,11 +226,6 @@ export function PeacekeepingContributorsTreemap() {
                 details={
                   <div className="space-y-2">
                     <p>
-                      The displayed total sums signed net assessments
-                      represented by tiles. Zero and negative amounts are
-                      excluded from the treemap.
-                    </p>
-                    <p>
                       <a
                         href={current.meta.source_page}
                         target="_blank"
@@ -239,12 +234,6 @@ export function PeacekeepingContributorsTreemap() {
                       >
                         Committee on Contributions source index
                       </a>
-                    </p>
-                    <p>
-                      Net assessments add assessment sections and subtract
-                      prior-period credits. They do not show payments received,
-                      arrears or voluntary contributions. Click a Member State
-                      to see its mission breakdown and source circulars.
                     </p>
                     {exceptionCount > 0 && (
                       <p className="border-l-2 border-amber-500 pl-2 text-amber-800">

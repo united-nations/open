@@ -144,28 +144,6 @@ export function SecretariatFlows() {
                     adjustments: {formatBudget(total - positive)}.
                   </p>
                 )}
-                <p>
-                  Annual-report expenditure by the selected funding, entity and
-                  priority dimensions. All funding sources are included. Ribbons
-                  show gross positive expenditure; signed corrections remain in
-                  net totals and source details.
-                </p>
-                {choices.funding === "arrangement" && (
-                  <p>
-                    Unitemized extrabudgetary resources are shown by reporting
-                    entity. These remain unitemized amounts, not identified
-                    trust funds. Trust funds are shown together. Detailed
-                    columns show the largest 12 entries; smaller entries remain
-                    in inspectable groups without changing totals.
-                  </p>
-                )}
-                <p>
-                  Calendar and peacekeeping periods differ. IRMCT includes
-                  source-labelled budget substitutes. Staff Assessment follows
-                  the source allocation. Treaty financing retains the original
-                  Voluntary tag; unresolved convention rows retain their
-                  original wording.
-                </p>
               </div>
             }
           />

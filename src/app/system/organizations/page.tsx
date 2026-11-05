@@ -4,10 +4,7 @@ import type { Metadata } from "next";
 import { EntitiesTreemap } from "@/components/EntitiesTreemap";
 import { SystemFlows } from "@/components/SystemFlows";
 import { EntityTrendsChart } from "@/components/EntityTrendsChart";
-import {
-  CebPageMethodology,
-  OrganizationsMethodologyNotes,
-} from "@/components/Methodology";
+import { CebMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
 
@@ -37,9 +34,7 @@ export default function SystemOrganizationsPage() {
         </div>
         <SystemFlows />
       </PageBody>
-      <CebPageMethodology>
-        <OrganizationsMethodologyNotes />
-      </CebPageMethodology>
+      <CebMethodologyLink />
     </ChartSourceProvider>
   );
 }

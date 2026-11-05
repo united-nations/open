@@ -1,10 +1,10 @@
 # CEB methodology
 
 The canonical user-facing summary of CEB methodology is [data/ceb-methodology.json](../data/ceb-methodology.json).
-The frontend renders this one content source in the methodology section at the
-end of every CEB-relevant page and on [About](/about/). Page-specific notes remain
-separate from the shared CEB note. Source information and methodology belong to
-the page, rather than an individual treemap.
+The frontend renders this content on [About](/about/#ceb-methodology). The home
+and System pages link to that section, keeping basic source links in their
+introductions. Selected-year source references, signed adjustments and other
+data details remain on the relevant data page.
 
 The central note has two explicitly separate parts:
 
@@ -12,12 +12,11 @@ The central note has two explicitly separate parts:
    the IRMCT contributor-coverage caveat, ITC non-reporting note, Taiwan terminology
    note and Kosovo note. The Taiwan note has the requested bracketed statement
    that terminology on this website has been standardized to **Taiwan Province of China**.
-2. A concise **Portal processing and transformations** summary for readers of the
-   financial views. It covers the transformations that change interpretation:
-   consolidated names, revenue reconciliation, unresolved
-   historical financing, expense scope, geographic corrections, SDG coverage and
-   historical functions. Implementation details and the complete processing
-   contract remain in this document and the detailed references below.
+2. A concise **Portal processing** summary describing name and display grouping,
+   integration of totals with available breakdowns, calculated balances, and
+   expenditure classifications. It explains what the portal does with the
+   reported data. Specific alias examples, correction cases and implementation
+   detail remain in this document and the detailed references below.
 
 The quoted CEB notes are not silently rewritten to match one downloaded file.
 For example, the 2023 IRMCT entity revenue control is available while CEB's

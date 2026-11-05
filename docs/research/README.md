@@ -38,3 +38,12 @@ above records the later findings and display decision.
 Other existing research includes the [data-source overview](data-sources-overview/),
 [CEB aggregation](ceb_aggregation.md), and [UNINFO](uninfo.md). These documents
 have their own dates and scopes.
+
+## Methodology revision, November 2026
+
+- [ARWO source background](methodology-arwo-sources.md): reporting boundaries,
+  the annual-report compilation, fund accounts and 2025 budget substitutions.
+- [Programme-budget source evidence](methodology-ppb-sources.md): expenditure
+  published before final accounts and the financing of separately reporting entities.
+- [Independent review](methodology-adversarial-review.md): adversarial checks
+  of the revised public wording and its source-composition claims.

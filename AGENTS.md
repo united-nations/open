@@ -60,7 +60,7 @@ Current CEB processing is defined by [data/ceb-methodology.json](data/ceb-method
 - Keep reported named contributors, reported aggregate buckets, and calculated balances distinct. Source aggregates remain visible and explorable. Do not use one `is_other` flag as a substitute for provenance or source classification.
 - Negative amounts and blanks remain signed/unknown. Missing observations and years are unavailable, not zeros. Financial views use nominal USD; CPI adjustment is disabled.
 - CEB's `UN` includes the Secretariat and Special Political Missions; `UN-DPO` is the peacekeeping aggregate. Independently reported entities such as UNEP/UNODC/UN-Habitat/ITC retain their own CEB scope. Separate source dimensions do not establish donor-to-country/SDG funding flows.
-- Every CEB-relevant page and About render the shared CEB source notes and transformations at page end. Keep page-specific notes separate and avoid duplicating source/methodology inside treemaps.
+- About holds the CEB source notes and processing summary, plus a separate methodology subsection for each Secretariat view and UNINFO. Data pages retain basic source links in their intros and link to the relevant About section. Selected-year source references, signed adjustments and nonpositive-fund navigation remain on the data page, separate from methodology prose.
 
 ### Frontend structure
 

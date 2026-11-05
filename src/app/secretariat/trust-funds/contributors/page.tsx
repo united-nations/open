@@ -5,7 +5,7 @@ import {
 } from "@/components/PageSources";
 import type { Metadata } from "next";
 import {
-  SecretariatPageMethodology,
+  SecretariatMethodologyLink,
   SecretariatPageSourceProvider,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
@@ -45,7 +45,7 @@ export default function ContributorsPage() {
           <TrustFundContributorsView />
         </PageBody>
       </section>
-      <SecretariatPageMethodology page="trust-fund-contributors" />
+      <SecretariatMethodologyLink page="trust-fund-contributors" />
     </SecretariatPageSourceProvider>
   );
 }

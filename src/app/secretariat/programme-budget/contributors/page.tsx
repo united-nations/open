@@ -2,7 +2,7 @@ import { PageSourceLink } from "@/components/PageSources";
 import { SHOW_REGULAR_BUDGET_OUTSTANDING } from "@/lib/featureFlags";
 import type { Metadata } from "next";
 import {
-  SecretariatPageMethodology,
+  SecretariatMethodologyLink,
   SecretariatPageSourceProvider,
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
@@ -43,7 +43,7 @@ export default function ContributorsPage() {
           <RegularBudgetContributorsTreemap />
         </PageBody>
       </section>
-      <SecretariatPageMethodology page="programme-budget-contributors" />
+      <SecretariatMethodologyLink page="programme-budget-contributors" />
     </SecretariatPageSourceProvider>
   );
 }

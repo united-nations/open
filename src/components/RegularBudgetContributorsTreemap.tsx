@@ -294,20 +294,6 @@ export function RegularBudgetContributorsTreemap() {
                       </a>
                       .
                     </p>
-                    <p>
-                      “Not listed as paid in full” may include Member States
-                      that made a partial payment. It does not mean that no
-                      payment was made.
-                    </p>
-                    {data.meta.year >= 2025 && (
-                      <p>
-                        From 2025, the circular&apos;s total includes the
-                        Peacebuilding Fund portion assessed in the
-                        regular-budget circular. Other assessed and
-                        extrabudgetary contributions are excluded from this
-                        view.
-                      </p>
-                    )}
                     {data.meta.amount_reconciliation.discrepancies.length >
                       0 && (
                       <p>

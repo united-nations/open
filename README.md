@@ -96,11 +96,11 @@ programme-budget section, not as a mission.
 ## CEB methodology and nominal values
 
 [data/ceb-methodology.json](data/ceb-methodology.json) is the single content source
-for CEB source notes and portal transformations. Every CEB-relevant page renders
-it in a page-end methodology section. Secretariat pages retain their existing
-source-specific notes in matching page-end sections, with extraction disclaimers
-immediately above them. About reproduces the shared CEB note and collects all
-Secretariat page methodologies. Additional page-specific notes remain separate. Treemaps do not duplicate page-level source/methodology panels.
+for CEB source notes and the portal processing summary. About holds this note,
+separate methodology subsections for the Secretariat views, and the UNINFO note
+when that feature is enabled. Data pages link to the relevant About section and
+retain basic source links in their introductions. Selected-year references,
+signed adjustments and nonpositive-fund navigation remain in local data details.
 
 System financial totals remain CEB-only. Contributor classifications follow the
 source, reported aggregates stay distinct from calculated balances, and

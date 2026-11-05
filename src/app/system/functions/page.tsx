@@ -3,8 +3,7 @@ import type { Metadata } from "next";
 import { ChartSourceProvider } from "@/components/ChartSource";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
-import { CebPageMethodology } from "@/components/Methodology";
-import { FunctionsMethodology } from "@/components/FunctionsMethodology";
+import { CebMethodologyLink } from "@/components/Methodology";
 import {
   FunctionsChart,
   FunctionsTrendsChart,
@@ -35,9 +34,7 @@ export default function SystemFunctionsPage() {
           <FunctionsTrendsChart />
         </div>
       </PageBody>
-      <CebPageMethodology>
-        <FunctionsMethodology />
-      </CebPageMethodology>
+      <CebMethodologyLink />
     </ChartSourceProvider>
   );
 }

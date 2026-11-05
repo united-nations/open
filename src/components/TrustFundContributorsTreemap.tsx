@@ -228,9 +228,6 @@ export function TrustFundContributorsTreemap({
     (sum, { flow }) => sum + flow.amount_usd,
     0,
   );
-  const nonPositiveCount = tiles.filter(
-    (tile) => tile.flow.amount_usd <= 0,
-  ).length;
 
   return (
     <div className="relative w-full">
@@ -242,58 +239,7 @@ export function TrustFundContributorsTreemap({
         <>
           <GroupedTreemap<ContributorGroup, string, ContributorTile, never>
             footer={
-              <ChartFooter
-                signedAmounts={signedTiles.map(({ contributor, flow }) => ({
-                  group: GROUP_STYLES[flow.group].label,
-                  label: contributor.name,
-                  amount: flow.amount_usd,
-                }))}
-                details={
-                  <div className="space-y-2">
-                    <p>
-                      <a
-                        href={current.meta.source.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-un-blue underline"
-                      >
-                        {current.meta.source.symbol}
-                      </a>
-                    </p>
-                    <p>
-                      Tile area is the signed net of extracted contribution and
-                      transfer rows; click a contributor to see its funds and
-                      reconstructed entity destinations.
-                      {nonPositiveCount > 0 &&
-                        ` ${nonPositiveCount} contributor-category amounts with a zero or negative annual net are retained in the data but cannot be drawn as areas.`}
-                    </p>
-                    <p>
-                      Reconciliation compares extracted rows with reported
-                      totals for each fund and flow type. The match is{" "}
-                      {(current.meta.named_row_completeness * 100).toFixed(2)}%,
-                      calculated as 100% minus the sum of absolute differences
-                      divided by the sum of absolute reported totals. Unresolved
-                      differences may reflect extraction issues or rounding.
-                      Contributor rows, including explicitly unidentified
-                      aggregates, total{" "}
-                      {currency(current.meta.contributor_total_usd)} net. The
-                      unallocated net difference is{" "}
-                      {currency(current.meta.unallocated_residual_usd)}; it is
-                      not distributed across contributors. Accounting
-                      adjustments are retained separately in the export.
-                    </p>
-                    <p>{current.meta.method_note}</p>
-                    <p>
-                      Entity attribution describes which Secretariat entity owns
-                      the destination fund; it does not prove that a contributor
-                      financed a particular expense.
-                      {current.meta.unresolved_entity_amount_usd !== 0 &&
-                        ` ${currency(current.meta.unresolved_entity_amount_usd)} of named contributions goes to funds whose entity mapping remains unresolved.`}
-                    </p>
-                  </div>
-                }
-                hint="Click on a contributor to explore details"
-              />
+              <ChartFooter hint="Click on a contributor to explore details" />
             }
             yearControl={
               <YearSlider
