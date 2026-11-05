@@ -3,14 +3,7 @@ import { useYearRanges } from "@/lib/useYearRanges";
 import { revenueCoverage } from "@/lib/revenueCoverage";
 
 import { useEffect, useMemo, useState } from "react";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { ChevronDown } from "lucide-react";
+import { FinancialFlowColumnSelect } from "./FinancialFlowColumnSelect";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
 import { SystemFlowDiagram } from "./SystemFlowDiagram";
 import { YearSlider } from "./YearSlider";
@@ -325,58 +318,30 @@ export function SystemFlows() {
             columnControls={(
               ["funding", "organization", "spending"] as const
             ).map((dimension) => (
-              <DropdownMenu key={dimension} modal={false}>
-                <DropdownMenuTrigger asChild>
-                  <button
-                    type="button"
-                    aria-label={
-                      dimension === "funding"
-                        ? "Revenue by"
-                        : dimension === "organization"
-                          ? "Through"
-                          : "Expenditure by"
-                    }
-                    className="inline-flex w-max cursor-pointer items-center gap-1.5 rounded-full border border-border bg-secondary px-2 py-1 text-xs font-medium text-black transition-colors hover:bg-gray-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-un-blue data-[state=open]:bg-gray-200"
-                  >
-                    {
-                      options[dimension].find(
-                        ([value]) => value === choices[dimension],
-                      )?.[1]
-                    }
-                    <ChevronDown aria-hidden="true" className="size-3.5" />
-                  </button>
-                </DropdownMenuTrigger>
-                <DropdownMenuContent
-                  align="start"
-                  className="border-gray-300 bg-white text-black"
-                >
-                  <DropdownMenuRadioGroup
-                    value={choices[dimension]}
-                    onValueChange={(value) =>
-                      setChoices((current) => ({
-                        ...current,
-                        [dimension]: value,
-                      }))
-                    }
-                  >
-                    {options[dimension].map(([value, label]) => (
-                      <DropdownMenuRadioItem
-                        key={value}
-                        value={value}
-                        className="cursor-pointer py-2 focus:bg-gray-50 focus:text-black data-[state=checked]:bg-gray-100"
-                      >
-                        {label}
-                      </DropdownMenuRadioItem>
-                    ))}
-                  </DropdownMenuRadioGroup>
-                </DropdownMenuContent>
-              </DropdownMenu>
+              <FinancialFlowColumnSelect
+                key={dimension}
+                label={
+                  dimension === "funding"
+                    ? "Revenue by"
+                    : dimension === "organization"
+                      ? "Through"
+                      : "Expenditure by"
+                }
+                value={choices[dimension]}
+                options={options[dimension].map(([value, label]) => ({
+                  value,
+                  label,
+                }))}
+                onChange={(value) =>
+                  setChoices((current) => ({ ...current, [dimension]: value }))
+                }
+              />
             ))}
           />
         </div>
       )}
       <ChartFooter
-        hint="Hover for amounts; click a bar or connection to pin details."
+        hint="Hover for amounts; click a bar or connection to open details."
         details={
           adjustments.length > 0 && (
             <details className="text-sm">

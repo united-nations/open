@@ -583,12 +583,7 @@ export function SecretariatPageMethodologyContent({
       {page === "overview" && (
         <>
           <SecretariatOverviewMethodologyNotes />
-          {includeChartNotes && (
-            <>
-              <SecretariatFlowsMethodologyNotes mechanisms />
-              <SecretariatFlowsMethodologyNotes />
-            </>
-          )}
+          {includeChartNotes && <SecretariatFlowsMethodologyNotes />}
         </>
       )}
       {page === "programme-budget" && <ProgrammeBudgetMethodologyNotes />}
@@ -677,36 +672,29 @@ export function SecretariatPageSourceProvider({
   );
 }
 
-export function SecretariatFlowsMethodologyNotes({
-  mechanisms = false,
-}: {
-  mechanisms?: boolean;
-}) {
+export function SecretariatFlowsMethodologyNotes() {
   return (
     <>
       <p>
-        {mechanisms
-          ? "Annual-report expenditure by funding mechanism and priority area."
-          : "Annual-report expenditure by funding arrangement, entity category and priority area."}{" "}
+        Annual-report expenditure can be grouped by funding mechanism or funding
+        arrangement, entity category or entity, and priority area. Funding and
+        priority columns remain visible; the optional middle column adds an
+        entity breakdown of the same source records without changing the scope.
         All funding sources are included. Ribbons show gross positive
         expenditure; signed corrections remain in net totals and source details.
       </p>
-      {!mechanisms && (
-        <p>
-          Unitemized extrabudgetary resources are shown by reporting entity.
-          These remain unitemized amounts, not identified trust funds. Expansion
-          preserves every source record and the total. Trust funds are shown
-          together.
-        </p>
-      )}
-      {!mechanisms && (
-        <p>
-          Calendar and peacekeeping periods differ. IRMCT includes
-          source-labelled budget substitutes. Staff Assessment follows the
-          source allocation. Treaty financing retains the original Voluntary
-          tag; unresolved convention rows retain their original wording.
-        </p>
-      )}
+      <p>
+        Unitemized extrabudgetary resources are shown by reporting entity. These
+        remain unitemized amounts, not identified trust funds. Trust funds are
+        shown together. Detailed columns always show the largest 12 entries;
+        smaller entries remain in inspectable groups without changing totals.
+      </p>
+      <p>
+        Calendar and peacekeeping periods differ. IRMCT includes source-labelled
+        budget substitutes. Staff Assessment follows the source allocation.
+        Treaty financing retains the original Voluntary tag; unresolved
+        convention rows retain their original wording.
+      </p>
     </>
   );
 }

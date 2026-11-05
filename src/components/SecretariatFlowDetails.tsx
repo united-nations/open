@@ -1,10 +1,13 @@
 "use client";
+import { FinancialFlowBreakdown } from "./FinancialFlowBreakdown";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import type { SankeySelection } from "@un-eosg/ui/sankey";
 import {
+  SECRETARIAT_FLOW_DIMENSIONS,
   selectionRows,
   sumRecords,
   positiveRecords,
+  type SecretariatFlowDimension,
   type SecretariatFlowModel,
   type SecretariatRecord,
 } from "@/lib/secretariatFlows";
@@ -12,12 +15,14 @@ import { formatBudget } from "@/lib/entities";
 
 export function SecretariatFlowDetails({
   model,
+  dimensions,
   selection,
   compact,
   within,
   onEntity,
 }: {
   model: SecretariatFlowModel;
+  dimensions: readonly SecretariatFlowDimension[];
   selection: SankeySelection;
   compact: boolean;
   within?: SankeySelection;
@@ -25,25 +30,13 @@ export function SecretariatFlowDetails({
 }) {
   const rows = selectionRows(model, selection, within);
   const label = (id: string) =>
-    model.graph.nodes.find((n) => n.id === id)?.label;
+    model.graph.nodes.find((node) => node.id === id)?.label;
   const title =
     selection.kind === "node"
       ? label(selection.id)
       : label(selection.source) + " → " + label(selection.target);
-  const entities = new Map<string, SecretariatRecord[]>();
-  const arrangements = new Map<string, SecretariatRecord[]>();
-  for (const row of rows) {
-    entities.set(row.code, [...(entities.get(row.code) ?? []), row]);
-    arrangements.set(row.arrangement.id, [
-      ...(arrangements.get(row.arrangement.id) ?? []),
-      row,
-    ]);
-  }
-  const ordered = [...entities].sort(
-    (a, b) => Math.abs(sumRecords(b[1])) - Math.abs(sumRecords(a[1])),
-  );
-  return (
-    <div className="space-y-3 text-sm">
+  if (compact) {
+    return (
       <FinancialTooltip
         title={(within ? "Selected portion: " : "") + title}
         total={{
@@ -60,67 +53,67 @@ export function SecretariatFlowDetails({
             value: formatBudget(sumRecords(rows) - positiveRecords(rows)),
           },
         ]}
+        actionHint="Click to open details"
       />
-      {!compact && (
-        <ul className="space-y-1">
-          {ordered.map(([code, members]) => (
-            <li key={code} className="flex justify-between gap-4">
-              <button
-                className="text-start underline underline-offset-2"
-                onClick={() => onEntity(code, members)}
-              >
-                {members[0].name} ({code})
-              </button>
-              <span className="whitespace-nowrap">
-                {formatBudget(sumRecords(members))}
-              </span>
-            </li>
-          ))}
-        </ul>
+    );
+  }
+  const selectedIds = new Set(rows.map((row) => row.id));
+  return (
+    <div className="space-y-3 text-sm">
+      <FinancialFlowBreakdown
+        heading="Expenditure and adjustments"
+        limit={Infinity}
+        rows={[
+          {
+            id: "positive",
+            label: "Positive flows",
+            amount: positiveRecords(rows),
+          },
+          {
+            id: "adjustments",
+            label: "Signed adjustments",
+            amount: sumRecords(rows) - positiveRecords(rows),
+            color: "var(--color-dusty-gray)",
+          },
+        ]}
+      />
+      {dimensions.includes("category") && (
+        <p role="note" className="text-gray-600">
+          Entity categories are preliminary.
+        </p>
       )}
-      {!compact && (
-        <details>
-          <summary className="cursor-pointer">
-            All arrangements and source records ({rows.length})
-          </summary>
-          <div className="mt-3 space-y-3">
-            {[...arrangements].map(([id, members]) => (
-              <section key={id}>
-                <h5 className="font-medium">
-                  {members[0].arrangement.label}:{" "}
-                  {formatBudget(sumRecords(members))}
-                </h5>
-                <p>
-                  {members[0].arrangement.subtype.replaceAll("_", " ")} ·{" "}
-                  {members[0].arrangement.evidence}
-                </p>
-                <ul className="mt-1 space-y-1">
-                  {members.map((row) => (
-                    <li key={row.id}>
-                      {row.code} · {row.priority_area} · {row.financial_year} ·{" "}
-                      {row.reference} · {row.note || row.source_type}:{" "}
-                      {formatBudget(row.amount)}
-                      <span className="block text-gray-600">
-                        {row.group_basis}
-                        {row.budget_reporting_identity &&
-                          row.budget_reporting_identity.id !== row.entity_id &&
-                          " · PPB " +
-                            row.budget_reporting_identity.edition +
-                            " reporting label: " +
-                            row.budget_reporting_identity.name +
-                            ". " +
-                            row.budget_reporting_identity.qualification}
-                        {row.budgetary_spm === null &&
-                          " · Budgetary SPM membership has no named same-year evidence."}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            ))}
-          </div>
-        </details>
-      )}
+      {dimensions.map((dimension) => {
+        const { column, heading } = SECRETARIAT_FLOW_DIMENSIONS[dimension];
+        const breakdown = model.graph.nodes
+          .filter((node) => node.column === column)
+          .sort((a, b) => (a.order ?? Infinity) - (b.order ?? Infinity))
+          .flatMap((node) => {
+            const members = (model.nodeRows.get(node.id) ?? []).filter((row) =>
+              selectedIds.has(row.id),
+            );
+            if (!members.length) return [];
+            return [
+              {
+                id: node.id,
+                label: node.label,
+                amount: sumRecords(members),
+                color: node.color,
+                onClick:
+                  dimension === "entity" && !node.isAggregate
+                    ? () => onEntity(members[0].code, members)
+                    : undefined,
+              },
+            ];
+          });
+        return (
+          <FinancialFlowBreakdown
+            key={dimension}
+            heading={heading}
+            limit={Infinity}
+            rows={breakdown}
+          />
+        );
+      })}
     </div>
   );
 }

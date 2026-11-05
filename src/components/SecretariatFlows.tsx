@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { SankeyDiagram } from "@un-eosg/ui/components/sankey-diagram";
+import { FinancialFlowDiagram } from "./FinancialFlowDiagram";
+import { FinancialFlowColumnSelect } from "./FinancialFlowColumnSelect";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
 import { YearSlider } from "./YearSlider";
@@ -11,8 +12,10 @@ import { ChartFooter } from "./ChartFooter";
 import { DelayedChartLoading } from "./DelayedChartLoading";
 import { useYearRanges } from "@/lib/useYearRanges";
 import {
-  buildSecretariatFlows,
-  buildSecretariatFundingFlows,
+  buildSecretariatColumnFlows,
+  SECRETARIAT_FLOW_DIMENSIONS,
+  secretariatFlowDimensions,
+  type SecretariatFlowChoices,
   selectedLinkValue,
   selectionRows,
   sumRecords,
@@ -26,12 +29,25 @@ import type {
 } from "@/types";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-export function SecretariatFlows({
-  view = "arrangements",
-}: {
-  view?: "arrangements" | "mechanisms";
-}) {
-  const mechanisms = view === "mechanisms";
+const columnOptions = {
+  funding: [
+    { value: "mechanism", label: "Funding mechanism" },
+    { value: "arrangement", label: "Funding arrangement" },
+  ],
+  entity: [
+    { value: "category", label: "Entity category" },
+    { value: "entity", label: "Entity" },
+    { value: "none", label: "None" },
+  ],
+  priority: [{ value: "priority", label: "Priority area" }],
+} as const;
+export function SecretariatFlows() {
+  const [choices, setChoices] = useState<SecretariatFlowChoices>({
+    funding: "mechanism",
+    entity: "none",
+    priority: "priority",
+  });
+  const dimensions = secretariatFlowDimensions(choices);
   const years = useYearRanges().secretariatOverview;
   const [year, setYear] = useState(years.default);
   const [data, setData] = useState<SecretariatOverviewData | null>(null);
@@ -64,18 +80,8 @@ export function SecretariatFlows({
   const current = error ? null : data;
   const pending = !error && data?.meta.year !== year;
   const model = useMemo(
-    () =>
-      current
-        ? mechanisms
-          ? buildSecretariatFundingFlows(current)
-          : buildSecretariatFlows(
-              current,
-              current.records,
-              new Set(["unitemized"]),
-              Infinity,
-            )
-        : null,
-    [current, mechanisms],
+    () => (current ? buildSecretariatColumnFlows(current, choices, 12) : null),
+    [current, choices],
   );
   const total = current ? sumRecords(current.records) : 0;
   const positive = current ? positiveRecords(current.records) : 0;
@@ -95,15 +101,8 @@ export function SecretariatFlows({
     setSelected({ ...entity, cells, total: sumRecords(members) });
   };
   return (
-    <section
-      id={mechanisms ? "secretariat-funding-flows" : "secretariat-flows"}
-      className="mt-12 space-y-4"
-    >
-      <h2 className="text-2xl font-bold">
-        {mechanisms
-          ? "Funding mechanisms and priority areas"
-          : "Financial flows"}
-      </h2>
+    <section id="secretariat-flows" className="mt-12 space-y-4">
+      <h2 className="text-2xl font-bold">Financial flows</h2>
       <ChartFrame
         header={
           <ChartHeader
@@ -135,7 +134,7 @@ export function SecretariatFlows({
         }
         footer={
           <ChartFooter
-            hint="Hover for amounts; click a bar or connection to pin details."
+            hint="Hover for amounts; click a bar or connection to open details."
             details={
               <div className="space-y-2">
                 {current && (
@@ -146,19 +145,18 @@ export function SecretariatFlows({
                   </p>
                 )}
                 <p>
-                  {mechanisms
-                    ? "Annual-report expenditure by funding mechanism and priority area."
-                    : "Annual-report expenditure by funding arrangement, entity category and priority area."}{" "}
-                  All funding sources are included. Ribbons show gross positive
-                  expenditure; signed corrections remain in net totals and
-                  source details.
+                  Annual-report expenditure by the selected funding, entity and
+                  priority dimensions. All funding sources are included. Ribbons
+                  show gross positive expenditure; signed corrections remain in
+                  net totals and source details.
                 </p>
-                {!mechanisms && (
+                {choices.funding === "arrangement" && (
                   <p>
                     Unitemized extrabudgetary resources are shown by reporting
                     entity. These remain unitemized amounts, not identified
-                    trust funds. Expansion preserves every source record and the
-                    total. Trust funds are shown together.
+                    trust funds. Trust funds are shown together. Detailed
+                    columns show the largest 12 entries; smaller entries remain
+                    in inspectable groups without changing totals.
                   </p>
                 )}
                 <p>
@@ -205,21 +203,61 @@ export function SecretariatFlows({
               </button>
             </p>
           ) : current && model ? (
-            <SankeyDiagram
+            <FinancialFlowDiagram
               graph={model.graph}
-              linkOpacity={mechanisms ? 1 : undefined}
-              linkGap={mechanisms ? 12 : undefined}
-              endLabelWidth={mechanisms ? 480 : undefined}
-              columnControls={
-                mechanisms
-                  ? ["Funding mechanisms", "Priority areas"]
-                  : ["Funding arrangement", "Entity category", "Priority area"]
+              columnControls={(["funding", "entity", "priority"] as const).map(
+                (column, index) => (
+                  <FinancialFlowColumnSelect
+                    key={column}
+                    label={`${["Left", "Middle", "Right"][index]} column`}
+                    value={choices[column]}
+                    options={columnOptions[column]}
+                    onChange={(value) => {
+                      setChoices((previous) => ({
+                        ...previous,
+                        [column]: value,
+                      }));
+                      setSelected(null);
+                    }}
+                  />
+                ),
+              )}
+              columnNotes={
+                choices.entity === "category"
+                  ? [null, "Entity categories are preliminary.", null]
+                  : undefined
               }
-              ariaLabel={
-                mechanisms
-                  ? "Annual-report expenditure from funding mechanisms to priority areas"
-                  : "Annual-report expenditure from funding arrangements through entity categories to priority areas"
-              }
+              ariaLabel={`Annual-report expenditure by ${dimensions.map((dimension) => SECRETARIAT_FLOW_DIMENSIONS[dimension].label.toLowerCase()).join(" through ")}`}
+              sidebarDetails={(selection, onClose) => {
+                const rows = selectionRows(model, selection);
+                const label = (id: string) =>
+                  model.graph.nodes.find((node) => node.id === id)?.label ?? "";
+                return {
+                  title:
+                    selection.kind === "node"
+                      ? label(selection.id)
+                      : `${label(selection.source)} → ${label(selection.target)}`,
+                  year: current.meta.year,
+                  eyebrow: "Selected expenditure",
+                  subtitle: "All funding sources · selected source records",
+                  total: {
+                    label: "Net expenditure",
+                    value: formatBudget(sumRecords(rows)),
+                  },
+                  children: (
+                    <SecretariatFlowDetails
+                      model={model}
+                      dimensions={dimensions}
+                      selection={selection}
+                      compact={false}
+                      onEntity={(code, members) => {
+                        onClose();
+                        openEntity(code, members);
+                      }}
+                    />
+                  ),
+                };
+              }}
               selectionLabel="Selected flow"
               clearLabel="Clear selection"
               formatValue={formatBudget}
@@ -252,6 +290,7 @@ export function SecretariatFlows({
                 <SecretariatFlowDetails
                   within={within}
                   model={model}
+                  dimensions={dimensions}
                   selection={selection}
                   compact={compact}
                   onEntity={openEntity}
@@ -272,7 +311,8 @@ export function SecretariatFlows({
           year={current.meta.year}
           source={current.meta.source}
           selectedPriority={null}
-          selectionScope={`Sankey selection · ${current.meta.year} · all funding sources`}
+          selectionScope={`Sankey selection · ${current.meta.year} · ${dimensions.map((dimension) => SECRETARIAT_FLOW_DIMENSIONS[dimension].label).join(" → ")}`}
+          showFundingBreakdown={choices.funding === "mechanism"}
           onClose={() => setSelected(null)}
         />
       )}

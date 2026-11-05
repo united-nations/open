@@ -45,6 +45,7 @@ interface SecretariatEntitySidebarProps {
   source: SecretariatOverviewData["meta"]["source"];
   selectedPriority: string | null;
   selectionScope?: string;
+  showFundingBreakdown?: boolean;
   onClose: () => void;
 }
 
@@ -82,6 +83,7 @@ export function SecretariatEntitySidebar({
   source,
   selectedPriority,
   selectionScope,
+  showFundingBreakdown = true,
   onClose,
 }: SecretariatEntitySidebarProps) {
   const [visible, setVisible] = useState(false);
@@ -341,6 +343,7 @@ export function SecretariatEntitySidebar({
         <FinancialDetailPanel
           title={displayed.entity.name || displayed.entity.code}
           titleId={titleId}
+          subtitle={showFundingBreakdown ? undefined : selectionScope}
           controls={
             <SidebarControls
               shareHash={
@@ -391,7 +394,7 @@ export function SecretariatEntitySidebar({
                       : `Loading ${requestedYear}…`,
                 }
           }
-          fundingBreakdown={fundingBreakdown}
+          fundingBreakdown={showFundingBreakdown ? fundingBreakdown : undefined}
           busy={requestedYear !== null}
           statusMessage={
             requestedYear === null

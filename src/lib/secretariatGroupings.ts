@@ -117,6 +117,34 @@ export const BAND_PALETTE: Array<{ bg: string; hover: string }> = [
   { bg: "#9aa390", hover: "#7d8471" },
 ];
 
+// Fixed identities keep funding-arrangement colors stable across years and sorting.
+const FUNDING_ARRANGEMENT_COLOR_KEYS = [
+  "programme",
+  "peacekeeping",
+  "trust_funds",
+  "unitemized:UNEP",
+  "unitemized:UNODC",
+  "unitemized:UN-Habitat",
+  "unitemized:ITC",
+  "irmct",
+  "treaty",
+  "unresolved",
+  "unitemized",
+];
+
+export function fundingArrangementColor(family: string, code?: string): string {
+  const key = family === "unitemized" && code ? `${family}:${code}` : family;
+  const known = FUNDING_ARRANGEMENT_COLOR_KEYS.indexOf(key);
+  const index =
+    known >= 0
+      ? known
+      : [...key].reduce(
+          (hash, letter) => (hash * 31 + letter.charCodeAt(0)) >>> 0,
+          0,
+        );
+  return BAND_PALETTE[index % BAND_PALETTE.length].bg;
+}
+
 const PRIORITY_COLOR_OVERRIDES: Record<string, string> = {
   "Drug control, crime prevention and combating terrorism": "#9a6b2f",
 };

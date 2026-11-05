@@ -1,6 +1,6 @@
 "use client";
 import type { ReactNode } from "react";
-import { SankeyDiagram } from "@un-eosg/ui/components/sankey-diagram";
+import { FinancialFlowDiagram } from "./FinancialFlowDiagram";
 import { SystemFlowDetails } from "./SystemFlowDetails";
 import { getFlowDetails } from "@/lib/systemFlowDetails";
 import { formatBudget } from "@/lib/entities";
@@ -20,7 +20,7 @@ export function SystemFlowDiagram({
     return node.fullLabel || node.label;
   };
   return (
-    <SankeyDiagram
+    <FinancialFlowDiagram
       graph={graph}
       columnControls={columnControls}
       ariaLabel="Revenue into organizations and expenditure by destination. Organization left edges show revenue; right edges show expenditure."
@@ -40,6 +40,25 @@ export function SystemFlowDiagram({
       describeLink={(source, target, value) =>
         label(source) + " to " + label(target) + ": " + formatBudget(value)
       }
+      sidebarDetails={(selection, onClose) => {
+        const details = getFlowDetails(graph, selection)!;
+        return {
+          title: details.title,
+          eyebrow: details.category ?? "Selected flow",
+          year,
+          total: {
+            label: details.totals[0].label,
+            value: formatBudget(details.totals[0].amount),
+          },
+          children: (
+            <SystemFlowDetails
+              details={details}
+              year={year}
+              onNavigate={onClose}
+            />
+          ),
+        };
+      }}
       renderDetails={(selection, compact) => {
         const details = getFlowDetails(graph, selection);
         return details ? (

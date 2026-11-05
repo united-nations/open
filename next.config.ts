@@ -65,6 +65,14 @@ const nextConfig: NextConfig = {
     },
   },
   transpilePackages: ["@un-eosg/ui"],
+  webpack(config, { dev }) {
+    if (dev && config.cache && typeof config.cache === "object") {
+      // pnpm patches keep the package version but change its resolved path.
+      // Include that identity so restarts cannot reuse an older UI bundle.
+      config.cache.version = `${config.cache.version ?? ""}:${sharedUiRoot}`;
+    }
+    return config;
+  },
   turbopack: {
     root: linkedSharedUi ? workspaceRoot : projectRoot,
     resolveAlias: linkedSharedUi

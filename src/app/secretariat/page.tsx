@@ -5,7 +5,6 @@ import {
 } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
-import { FEATURES } from "@/lib/featureFlags";
 import { SecretariatFlows } from "@/components/SecretariatFlows";
 import { SecretariatOverview } from "@/components/SecretariatOverview";
 
@@ -39,8 +38,7 @@ export default function SecretariatPage() {
       />
       <PageBody>
         <SecretariatOverview />
-        <SecretariatFlows view="mechanisms" />
-        {FEATURES.secretariatDetailedFlows && <SecretariatFlows />}
+        <SecretariatFlows />
       </PageBody>
       <SecretariatPageMethodology page="overview" />
     </SecretariatPageSourceProvider>

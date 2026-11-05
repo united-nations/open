@@ -95,3 +95,342 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..1b0ba770091fcfd09dc4d82b91212609
                                        </span>
                                      ) : null}
                                    </span>
+diff --git a/components/sankey-diagram.tsx b/components/sankey-diagram.tsx
+index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9927cb919 100644
+--- a/components/sankey-diagram.tsx
++++ b/components/sankey-diagram.tsx
+@@ -1,29 +1,108 @@
+ "use client";
+-import { useEffect, useMemo, useState, type ReactNode } from "react";
++import { typography } from "../lib/typography";
++import { cn } from "../lib/utils";
++import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react";
+ import { layoutSankey, columnPosition, ribbon, selectionKey as flowSelectionKey,
+   type SankeySelection as FlowSelection, type SankeyGraph as FlowGraph } from "../lib/sankey";
+ export interface SankeyDiagramProps {
+   graph: FlowGraph; columnControls: readonly ReactNode[];
++  columnNotes?: readonly ReactNode[];
+   ariaLabel: string; selectionLabel: string; clearLabel: string;
+   formatValue: (value: number) => string;
+   describeNode: (id: string) => string;
+   describeLink: (source: string, target: string, value: number, within?: FlowSelection) => string;
+   renderDetails: (selection: FlowSelection, compact: boolean, within?: FlowSelection) => ReactNode;
++  /** Replace the inline pinned panel, for example with a product-owned sidebar. */
++  renderSelection?: (selection: FlowSelection, onClear: () => void) => ReactNode;
+   /** Idle ribbon opacity; matching ribbons retain this opacity during selection. */
+   linkOpacity?: number;
+   /** Horizontal space between ribbons and their source/destination bars. */
+   linkGap?: number;
++  /** Wrap node labels and fit the viewport to the chart and its controls. */
++  wrapLabels?: boolean;
+   /** Space for full, wrapped labels after the final column, in SVG units. */
+   endLabelWidth?: number;
+   highlightedValue?: (selection: FlowSelection, source: string, target: string) => number;
+ }
+ export function SankeyDiagram({
+-  graph, columnControls, ariaLabel, selectionLabel, clearLabel,
++  graph, columnControls, columnNotes, ariaLabel, selectionLabel, clearLabel,
+   formatValue: formatBudget, describeNode: nodeDescription, describeLink,
+-  renderDetails, highlightedValue, linkOpacity, linkGap = 0, endLabelWidth,
++  renderDetails, renderSelection, highlightedValue, linkOpacity, linkGap = 0, endLabelWidth, wrapLabels = false,
+ }: SankeyDiagramProps) {
+-  const chartWidth = Math.max(1200, columnPosition(columnControls.length - 1, columnControls.length) + 48 + (endLabelWidth ?? 0) + 24);
+-  const layout = useMemo(() => layoutSankey(graph, columnControls.length), [graph, columnControls.length]);
++  const firstColumn = Math.min(...graph.nodes.map(node => node.column));
++  const lastColumn = Math.max(...graph.nodes.map(node => node.column));
++  const defaultWidth = wrapLabels
++    ? columnPosition(0, columnControls.length) + columnPosition(columnControls.length - 1, columnControls.length) + 40
++    : Math.max(1200, columnPosition(columnControls.length - 1, columnControls.length) + 48 + (endLabelWidth ?? 0) + 24);
++  const svgRef = useRef<SVGSVGElement>(null);
++  const controlsRef = useRef<HTMLDivElement>(null);
++  const containerRef = useRef<HTMLDivElement>(null);
++  const [viewport, setViewport] = useState<{ graph: FlowGraph; x: number; width: number } | null>(null);
++  const currentViewport = wrapLabels && viewport?.graph === graph ? viewport : null;
++  const viewX = currentViewport?.x ?? 0;
++  const chartWidth = currentViewport?.width ?? defaultWidth;
++  const labels = useMemo(() => new Map(graph.nodes.map(node => {
++    // Bound label wrapping independently of the viewport and empty column slots.
++    const width = wrapLabels
++      ? columnPosition(0, columnControls.length) - 24
++      : node.column === lastColumn ? endLabelWidth : undefined;
++    return [node.id, width
++      ? wrapLabel(node.label, Math.max(1, Math.floor(width / 8)))
++      : [node.label.length > 26 ? `${node.label.slice(0, 24)}…` : node.label]];
++  })), [graph, columnControls.length, lastColumn, wrapLabels, endLabelWidth]);
++  const layout = useMemo(() => layoutSankey(
++    graph,
++    columnControls.length,
++    node => labels.get(node.id)!.length * 16 + 14,
++  ), [graph, columnControls.length, labels]);
++  useLayoutEffect(() => {
++    if (!wrapLabels) return;
++    const svg = svgRef.current;
++    const controls = controlsRef.current;
++    const container = containerRef.current;
++    if (!svg || !controls || !container) return;
++    let disposed = false;
++    let frame = 0;
++    const measure = () => {
++      if (disposed || !container.clientWidth) return;
++      const content = svg.getBBox();
++      let left = graph.nodes.length ? content.x : Infinity;
++      let right = graph.nodes.length ? content.x + content.width : -Infinity;
++      // Dropdowns use CSS pixels, while their anchors share the SVG's column slots.
++      Array.from(controls.children).forEach((control, index) => {
++        const center = columnPosition(index, columnControls.length) + 20;
++        const halfWidth = control.getBoundingClientRect().width * chartWidth / container.clientWidth / 2;
++        left = Math.min(left, center - halfWidth);
++        right = Math.max(right, center + halfWidth);
++      });
++      if (!Number.isFinite(left) || !Number.isFinite(right)) return;
++      const x = Math.floor(left) - 12;
++      const width = Math.ceil(right) + 12 - x;
++      setViewport(previous => {
++        if (previous?.graph === graph) {
++          const before = left - previous.x;
++          const after = previous.x + previous.width - right;
++          // Font hinting changes SVG text bounds slightly when its scale changes.
++          // Keep a small inset tolerance instead of chasing those rounding changes.
++          if (before >= 8 && after >= 8 && before <= 24 && after <= 24) return previous;
++          if (previous.x === x && previous.width === width) return previous;
++        }
++        return { graph, x, width };
++      });
++    };
++    measure();
++    const observer = new ResizeObserver(() => {
++      cancelAnimationFrame(frame);
++      frame = requestAnimationFrame(measure);
++    });
++    observer.observe(container);
++    void document.fonts.ready.then(measure);
++    return () => {
++      disposed = true;
++      cancelAnimationFrame(frame);
++      observer.disconnect();
++    };
++  }, [graph, layout, columnControls.length, chartWidth, wrapLabels]);
+   const [hoverState, setHover] = useState<{
+     graph: FlowGraph;
+     selection: FlowSelection;
+@@ -54,7 +133,12 @@ export function SankeyDiagram({
+     highlightState?.graph === graph ? highlightState.selection : null;
+   const active = pinned ?? highlight;
+   const tooltip = hover ? renderDetails(hover.selection, true, pinned ?? undefined) : null;
+-  const details = pinned ? renderDetails(pinned, false) : null;
++  const clear = () => {
++    setPinned(null);
++    setHighlight(null);
++    setHover(null);
++  };
++  const details = pinned && !renderSelection ? renderDetails(pinned, false) : null;
+   const pin = (selection: FlowSelection) => {
+     setPinned(
+       pinned && flowSelectionKey(pinned) === flowSelectionKey(selection)
+@@ -95,22 +179,29 @@ export function SankeyDiagram({
+       }}
+     >
+       <div className="overflow-x-auto rounded border border-border">
+-        <div className="min-w-[1000px]">
+-          <div className="relative h-10">
++        <div ref={containerRef} className="min-w-[1000px]">
++          <div ref={controlsRef} className={columnNotes?.some(Boolean) ? "relative h-16" : "relative h-10"}>
+             {columnControls?.map((control, index) => (
+               <div
+                 key={index}
+-                className="absolute bottom-0 w-max -translate-x-1/2"
++                data-sankey-column={index}
++                className="absolute top-0 flex w-max -translate-x-1/2 flex-col items-center"
+                 style={{
+-                  left: `${((columnPosition(index, columnControls.length) + 20) / chartWidth) * 100}%`,
++                  left: `${((columnPosition(index, columnControls.length) + 20 - viewX) / chartWidth) * 100}%`,
+                 }}
+               >
+-                {control}
++                <div className="flex h-10 items-end">{control}</div>
++                {columnNotes?.[index] && (
++                  <div role="note" className={cn(typography.caption, "mt-1 max-w-56 text-center text-muted-foreground")}>
++                    {columnNotes[index]}
++                  </div>
++                )}
+               </div>
+             ))}
+           </div>
+           <svg
+-            viewBox={`0 0 ${chartWidth} ${layout.height}`}
++            ref={svgRef}
++            viewBox={`${viewX} 0 ${chartWidth} ${layout.height}`}
+             className="w-full"
+             role="group"
+             aria-label={ariaLabel}
+@@ -142,7 +233,7 @@ export function SankeyDiagram({
+                   tabIndex={0}
+                   aria-pressed={isPinned}
+                   aria-label={describeLink(link.source, link.target, link.value, pinned ?? undefined)}
+-                  onClick={() => pin(selection)}
++                  onClick={(event) => { event.currentTarget.focus(); pin(selection); }}
+                   onKeyDown={(event) => {
+                     if (event.key === "Enter" || event.key === " ") {
+                       event.preventDefault();
+@@ -177,20 +268,15 @@ export function SankeyDiagram({
+             })}
+             {layout.nodes.map((node) => {
+               const leftNet =
+-                Math.max(0, node.column === columnControls.length - 1 ? node.spending : node.revenue) *
++                Math.max(0, node.column === lastColumn ? node.spending : node.revenue) *
+                 layout.scale;
+               const rightNet =
+-                Math.max(0, node.column === 0 ? node.revenue : node.spending) *
++                Math.max(0, node.column === firstColumn ? node.revenue : node.spending) *
+                 layout.scale;
+               const polygon = (left: number, right: number) =>
+                 `${node.x},${node.y} ${node.x + 40},${node.y} ${node.x + 40},${node.y + right} ${node.x},${node.y + left}`;
+-              const x = node.column === 0 ? node.x - 8 : node.x + 48;
+-              const label =
+-                node.label.length > 26
+-                  ? `${node.label.slice(0, 24)}…`
+-                  : node.label;
+-              const labelLines = endLabelWidth && node.column === columnControls.length - 1
+-                ? wrapLabel(node.label, Math.floor(endLabelWidth / 8)) : [label];
++              const x = node.column === firstColumn ? node.x - 8 : node.x + 48;
++              const labelLines = labels.get(node.id)!;
+               return (
+                 <g
+                   key={node.id}
+@@ -200,7 +286,7 @@ export function SankeyDiagram({
+                     pinned?.kind === "node" && pinned.id === node.id
+                   }
+                   opacity={relatedNode(node.id) ? 1 : 0.3}
+-                  onClick={() => pin({ kind: "node", id: node.id })}
++                  onClick={(event) => { event.currentTarget.focus(); pin({ kind: "node", id: node.id }); }}
+                   onKeyDown={(event) => {
+                     if (event.key === "Enter" || event.key === " ") {
+                       event.preventDefault();
+@@ -254,7 +340,7 @@ export function SankeyDiagram({
+                   <text
+                     x={x}
+                     y={node.y + 11}
+-                    textAnchor={node.column === 0 ? "end" : "start"}
++                    textAnchor={node.column === firstColumn ? "end" : "start"}
+                     fontSize={14}
+                     fill="currentColor"
+                     stroke="var(--background)"
+@@ -267,7 +353,7 @@ export function SankeyDiagram({
+                   <text
+                     x={x}
+                     y={node.y + 25 + (labelLines.length - 1) * 16}
+-                    textAnchor={node.column === 0 ? "end" : "start"}
++                    textAnchor={node.column === firstColumn ? "end" : "start"}
+                     fontSize={12}
+                     fill="currentColor"
+                     stroke="var(--background)"
+@@ -275,7 +361,7 @@ export function SankeyDiagram({
+                     paintOrder="stroke"
+                   >
+                     {formatBudget(
+-                      node.column === 0 ? node.revenue : node.spending,
++                      node.column === firstColumn ? node.revenue : node.spending,
+                     )}
+                   </text>
+                 </g>
+@@ -295,6 +381,7 @@ export function SankeyDiagram({
+           {tooltip}
+         </div>
+       )}
++      {pinned && renderSelection?.(pinned, clear)}
+       {details && (
+         <section
+           aria-label={selectionLabel}
+@@ -320,16 +407,22 @@ export function SankeyDiagram({
+     </div>
+   );
+ }
+-
++/** Wrap complete labels, including identifiers longer than the available line. */
+ function wrapLabel(label: string, maxLength: number): string[] {
+   const lines: string[] = [];
+-  for (const word of label.split(/\s+/)) {
++  for (const word of label.trim().split(/\s+/)) {
++    // A single long name or identifier must stay inside its label gutter too.
++    const characters = Array.from(word);
++    while (characters.length > maxLength) {
++      lines.push(characters.splice(0, maxLength).join(""));
++    }
++    const rest = characters.join("");
+     const last = lines.length - 1;
+-    if (last >= 0 && lines[last].length + word.length + 1 <= maxLength) {
+-      lines[last] += " " + word;
+-    } else {
+-      lines.push(word);
++    if (last >= 0 && lines[last].length + rest.length + 1 <= maxLength) {
++      lines[last] += " " + rest;
++    } else if (rest) {
++      lines.push(rest);
+     }
+   }
+-  return lines;
++  return lines.length ? lines : [""];
+ }
+diff --git a/lib/sankey.ts b/lib/sankey.ts
+index e464f4a5521b4201691e53190ff0a57b0d866d55..8940eb55016377f7783ce0634ba780ff07d6a5a2 100644
+--- a/lib/sankey.ts
++++ b/lib/sankey.ts
+@@ -5,7 +5,7 @@ export interface SankeyNode {
+ }
+ export interface SankeyLink {
+   source: string; target: string; value: number;
+-  /** Optional ribbon color; defaults to the existing intermediate-node palette. */
++  /** Optional ribbon color; defaults to the outer funding/destination palette. */
+   color?: string;
+   /** Gross positive activity before signed corrections. */
+   positiveValue?: number;
+@@ -21,8 +21,14 @@ export function ribbon(x: number, end: number, sy: number, ty: number, h: number
+   const c = (x + end) / 2;
+   return "M"+x+","+sy+" C"+c+","+sy+" "+c+","+ty+" "+end+","+ty+" L"+end+","+(ty+h)+" C"+c+","+(ty+h)+" "+c+","+(sy+h)+" "+x+","+(sy+h)+" Z";
+ }
+-
+-export function layoutSankey(graph: SankeyGraph, columnCount = 3) {
++// Empty slots keep their position; the first/last populated slots are terminals.
++export function layoutSankey(
++  graph: SankeyGraph,
++  columnCount = 3,
++  minimumNodeHeight: (node: SankeyNode) => number = () => 22,
++) {
++  const firstColumn = Math.min(...graph.nodes.map(node => node.column));
++  const lastColumn = Math.max(...graph.nodes.map(node => node.column));
+   const nodes = graph.nodes.map((node) => {
+     const incoming = graph.links.filter((link) => link.target === node.id);
+     const outgoing = graph.links.filter((link) => link.source === node.id);
+@@ -32,10 +38,10 @@ export function layoutSankey(graph: SankeyGraph, columnCount = 3) {
+           value + (positive ? (link.positiveValue ?? Math.max(0, link.value)) : link.value),
+         0,
+       );
+-    const revenue = node.column === 0 ? sum(outgoing) : sum(incoming);
+-    const spending = node.column === columnCount - 1 ? sum(incoming) : sum(outgoing);
+-    const left = node.column === 0 ? sum(outgoing, true) : sum(incoming, true);
+-    const right = node.column === columnCount - 1 ? sum(incoming, true) : sum(outgoing, true);
++    const revenue = node.column === firstColumn ? sum(outgoing) : sum(incoming);
++    const spending = node.column === lastColumn ? sum(incoming) : sum(outgoing);
++    const left = node.column === firstColumn ? sum(outgoing, true) : sum(incoming, true);
++    const right = node.column === lastColumn ? sum(incoming, true) : sum(outgoing, true);
+     return {
+       ...node,
+       revenue,
+@@ -74,7 +80,7 @@ export function layoutSankey(graph: SankeyGraph, columnCount = 3) {
+     let y = 24;
+     for (const node of column) {
+       node.y = y;
+-      y += Math.max(22, Math.max(node.left, node.right) * scale) + 12;
++      y += Math.max(22, minimumNodeHeight(node), Math.max(node.left, node.right) * scale) + 12;
+     }
+     height = Math.max(height, y + 12);
+   }
+@@ -104,7 +110,7 @@ export function layoutSankey(graph: SankeyGraph, columnCount = 3) {
+         control = (x + end) / 2;
+       return {
+         ...link, x, end, sy, ty, h,
+-        color: link.color ?? (source.column === 0 ? target.color : source.color),
++        color: link.color ?? (source.column === 0 ? source.color : target.color),
+         path: `M${x},${sy} C${control},${sy} ${control},${ty} ${end},${ty} L${end},${ty + h} C${control},${ty + h} ${control},${sy + h} ${x},${sy + h} Z`,
+       };
+     });

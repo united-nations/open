@@ -52,7 +52,11 @@ for (const item of SECRETARIAT_NAV) {
 for (const route of ["locations", "goals"]) {
   const html = fs.readFileSync(`out/system/${route}/index.html`, "utf8");
   assert.equal(
-    html.includes("UNINFO"),
+    html.includes(
+      route === "locations"
+        ? "Country sidebars also display data from"
+        : "The goal sidebar also shows UNINFO",
+    ),
     FEATURES.uninfo,
     `${variant}: ${route} source disclosure`,
   );
@@ -63,13 +67,14 @@ assert.equal(
   FEATURES.functionGeography,
   `${variant}: function/geography plot`,
 );
-assert.ok(
-  secretariat.includes('id="secretariat-funding-flows"'),
-  "Direct funding chart is always available",
-);
 assert.equal(
   secretariat.includes('id="secretariat-flows"'),
-  FEATURES.secretariatDetailedFlows,
-  `${variant}: detailed Secretariat flows`,
+  true,
+  "One configurable Secretariat Sankey is present",
+);
+assert.equal(
+  secretariat.includes('id="secretariat-funding-flows"'),
+  false,
+  "The duplicate funding Sankey is removed",
 );
 console.log(`Feature export checks passed (${variant}).`);

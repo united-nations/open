@@ -56,18 +56,15 @@ try {
     await page.goto(portalUrl, { waitUntil: "networkidle" });
   }
   await page.goto(portalUrl + "/secretariat/", { waitUntil: "networkidle" });
-  const fundingFlows = page.locator("#secretariat-funding-flows");
+  const fundingFlows = page.locator("#secretariat-flows");
   await fundingFlows
     .getByRole("heading", {
-      name: "Funding mechanisms and priority areas",
+      name: "Financial flows",
       exact: true,
     })
     .waitFor();
   await fundingFlows.locator("svg g[role=button]").first().waitFor();
-  assert.equal(
-    await page.locator("#secretariat-flows").count(),
-    flags.secretariatDetailedFlows ? 1 : 0,
-  );
+  assert.equal(await page.locator("#secretariat-flows").count(), 1);
   const columns = await fundingFlows
     .locator("svg g[role=button] > rect")
     .evaluateAll((rects) => [
@@ -140,10 +137,8 @@ try {
   await page.mouse.move(0, 0);
   await page.waitForFunction(() =>
     [
-      ...document.querySelectorAll(
-        "#secretariat-funding-flows svg path[role=button]",
-      ),
-    ].every((path) => getComputedStyle(path).opacity === "1"),
+      ...document.querySelectorAll("#secretariat-flows svg path[role=button]"),
+    ].every((path) => getComputedStyle(path).opacity === "0.3"),
   );
   const geometry = await fundingFlows
     .locator("svg[role=group]")
@@ -177,28 +172,35 @@ try {
         targetLeft,
         ribbons: ribbons.map((box) => ({ x: box.x, right: box.x + box.width })),
         labels,
+        left: svg.viewBox.baseVal.x,
         width: svg.viewBox.baseVal.width,
       };
     });
   for (const ribbon of geometry.ribbons) {
-    assert.ok(ribbon.x > geometry.sourceRight, "Gap after source bar");
-    assert.ok(ribbon.right < geometry.targetLeft, "Gap before priority bar");
+    assert.ok(
+      Math.abs(ribbon.x - geometry.sourceRight) < 0.01,
+      "Ribbon meets source bar",
+    );
+    assert.ok(
+      Math.abs(ribbon.right - geometry.targetLeft) < 0.01,
+      "Ribbon meets priority bar",
+    );
   }
   for (const label of geometry.labels) {
     assert.equal(label.shown, label.full, "Priority labels are not truncated");
-    assert.ok(label.right < geometry.width, "Priority label fits inside chart");
+    assert.ok(
+      label.right < geometry.left + geometry.width,
+      "Priority label fits inside chart",
+    );
   }
   await regularBudget.press("Enter");
-  await fundingFlows
-    .getByRole("button", { name: "Clear selection", exact: true })
-    .waitFor();
-  await fundingFlows
-    .getByRole("button", { name: "Clear selection", exact: true })
+  await page.getByRole("dialog").waitFor();
+  await page
+    .getByRole("button", { name: "Close flow details", exact: true })
     .click();
   await fundingFlows.getByRole("slider").press("ArrowLeft");
   await page.waitForFunction(
-    () =>
-      !document.querySelector("#secretariat-funding-flows [aria-busy=true]"),
+    () => !document.querySelector("#secretariat-flows [aria-busy=true]"),
   );
   await fundingFlows.locator("svg[role=group]").waitFor();
   await fundingFlows.screenshot({
