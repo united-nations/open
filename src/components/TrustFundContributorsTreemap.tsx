@@ -331,7 +331,7 @@ export function TrustFundContributorsTreemap({
                   >
                     <span
                       tabIndex={0}
-                      className="cursor-help underline decoration-dotted underline-offset-4"
+                      className="cursor-help"
                     >
                       {currency(visibleTotal)}
                     </span>

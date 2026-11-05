@@ -109,6 +109,11 @@ export interface RegularBudgetContributorsData {
     due_date: string;
     member_state_count: number;
     assessment_total: number;
+    assessment_source_control?: {
+      amount: number;
+      pdfPage: number;
+      column: "Net contributions" | "Total contributions";
+    };
     assessment_amount_column: "Net contributions" | "Total contributions";
     paid_in_full_count: number;
     paid_on_time_count: number;
@@ -175,6 +180,7 @@ export interface PeacekeepingContributorsData {
         pages: number[];
         source_url?: string;
         member_pages?: Record<string, number>;
+        member_amounts?: Record<string, { gross: number; net: number }>;
         sign: number;
       }[];
     }[];
@@ -462,6 +468,9 @@ export interface BudgetNodeEntity {
 export interface BudgetNodeSource {
   symbol: string;
   url: string;
+  sourceCellId?: string;
+  /** Signed input to the displayed calculation, in the source currency. */
+  operand?: { amount: number; currency: "USD" | "CHF"; rowSign?: number };
   /** Physical PDF page, when independently located by the producer. */
   pdfPage?: number | null;
   /** Physical pages for a multi-page table or supporting records. */

@@ -279,15 +279,21 @@ def entity_crosswalk() -> dict[str, dict]:
 
 
 def reference(row: dict, source: dict) -> dict:
-    return {"symbol": source["symbol"],
+    evidence = {"symbol": source["symbol"],
             "url": source.get("pdf_final_url") or source["source_pdf_url"],
             "pdfPage": int(row["page"]), "pdfPageScope": "row",
             "pageStatus": "extracted_pdf_row", "tableTitle": "Schedule 8.1 — " + row["statement_type"].replace("_", " "),
             "rowLabel": row["line_item"], "columnHeader": row["source_column"],
             "label": row["fund_name"] + " — " + str(row["period_year"])}
+    if pd.notna(row.get("amount_usd")):
+        evidence["operand"] = {"amount": int(row["amount_usd"]), "currency": "USD"}
+    return evidence
 
 
-def extend_contributors(payload: dict, facts: pd.DataFrame, source: dict, spending: dict) -> None:
+def extend_contributors(
+    payload: dict, facts: pd.DataFrame, source: dict, spending: dict,
+    controls: pd.DataFrame | None = None,
+) -> None:
     """Add the printed matrix amounts as one source-reported aggregate."""
     meta = payload["meta"]
     year = meta["year"]
@@ -318,12 +324,14 @@ def extend_contributors(payload: dict, facts: pd.DataFrame, source: dict, spendi
                 raise ValueError(f"Invalid transfer component for {row['fund_id']} in {year}")
             transfer_ref = reference(transfer, source)
             flows[0]["amount_usd"] -= transfer_amount
-            flows[0]["supportingSources"] = [*refs, transfer_ref]
+            flows[0]["supportingSources"] = [
+                *refs, {**transfer_ref, "operand": {"amount": -transfer_amount, "currency": "USD"}},
+            ]
             flows.append({
                 "type": "other_transfer_allocation_internal_transfers", "label": "Internal transfers",
                 "group": "internal", "amount_usd": transfer_amount, "supportingSources": [transfer_ref],
             })
-            refs = [*refs, transfer_ref]
+            refs = [*refs, {key: value for key, value in transfer_ref.items() if key != "operand"}]
         destinations.append({
             "fund_code": None, "fund_id": fund["id"], "fund_name": fund["label"],
             "entity_code": entity["code"], "entity_name": entity["label"], "entity_id": entity["id"],
@@ -342,6 +350,19 @@ def extend_contributors(payload: dict, facts: pd.DataFrame, source: dict, spendi
             })
             group["amount_usd"] += part["amount_usd"]
             group["supportingSources"].extend(part["supportingSources"])
+    if controls is not None:
+        reported = controls.loc[
+            controls.calendar_year.eq(year) & controls.period_year.eq(year)
+            & controls.statement_type.eq("financial_performance")
+            & controls.line_item.eq("Voluntary contributions")
+        ]
+        if len(reported) != 1 or int(reported.iloc[0].reported_total_usd) != total:
+            raise ValueError(f"MPTF contribution total differs from the printed control in {year}")
+        if not transfer_rows:
+            group_flows["unitemized"]["supportingSources"] = [reference({
+                **reported.iloc[0].to_dict(), "source_column": "Total",
+                "fund_name": "MPTF", "amount_usd": total,
+            }, source)]
     name = "MPTF voluntary contributions"
     if any(item["name"] == name for item in payload["contributors"]):
         raise ValueError(f"Duplicate MPTF contribution aggregate in {year}")

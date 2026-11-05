@@ -1,10 +1,14 @@
 import type { BudgetNodeSource } from "@/types";
 
-/** English ODS copies verified byte-for-byte against the cited PDFs.
+/** English ODS copies verified against the cited PDFs.
  * Keep unverified variants (including chapter-only supplements) on their source
  * host: changing editions can silently invalidate physical page numbers.
  */
 const ODS_PDF_URLS: Record<string, string> = {
+  // Both 2023 copies have 466 physical pages. Only p. 90 differs, and its
+  // cited SBA expense row agrees. The difference is in the other-revenue row.
+  "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf":
+    "https://documents.un.org/doc/undoc/gen/n24/259/18/pdf/n2425918.pdf",
   "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf":
     "https://documents.un.org/doc/undoc/gen/n18/278/50/pdf/n1827850.pdf",
   "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf":

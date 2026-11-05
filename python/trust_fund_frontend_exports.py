@@ -18,6 +18,7 @@ from typing import Any
 import pandas as pd
 from trust_fund_descriptions import extract_descriptions
 from trust_fund_groups import annotate_groups
+from utils import clean_donor_name
 
 DEFAULT_STAGE2 = Path("data/trust-fund-schedules/stage2")
 DEFAULT_CROSSWALK = Path(
@@ -36,6 +37,19 @@ FLOW_LABELS = {
     "other_transfer_allocation_contributions": "Inter-agency contributions and transfers",
     "other_transfer_allocation_internal_transfers": "Internal transfers",
 }
+
+# Reviewed titles on physical pages 115, 437, 444 and 470 of the 2024
+# schedule. Retain the extracted source title in the input tables.
+REVIEWED_FUND_TITLES = {
+    "IIT": "Trust Fund to Support the Iraq Investigative Team pursuant to UNSCR 2379 (2017)",
+    "DJA": "Trust Fund for the Establishment of a Joint Investigative Mechanism (JIM) Pursuant to UNSCR 2235 (2015)",
+    "OAU": "Trust Fund to Support the UNOAU Pursuant to Security Councils 2230 (2016), 2378 (2017) and 2457 (2019)",
+    "HCB": "Host Country Agreements - UNHQ (Volume 1)",
+}
+REVIEWED_SOURCE_ROW_LABELS = json.loads(
+    (Path(__file__).resolve().parents[1] / "data/trust-fund-reviewed-row-labels.json")
+    .read_text(encoding="utf-8")
+)
 
 COUNTERPARTY_ALIASES = {
     "other donors": "Other contributors (not individually identified)",
@@ -157,7 +171,10 @@ def row_references(
                 column = "Monetary + in-kind (calculated)"
         flow_label = FLOW_LABELS.get(row.get("flow_type"), "Contributions and transfers")
         label = flow_label if contributions else position_label or "Expenditure"
-        row_label = compact(row["counterparty"] if contributions else row["reported_line_item"])
+        row_label = compact(
+            row.get("source_counterparty", row["counterparty"])
+            if contributions else row["reported_line_item"]
+        )
         if position_label and pd.notna(row.get("section")):
             row_label = f"{row['section']} — {row_label}"
         table_title = flow_label if contributions else "Financial position" if position_label else "Financial performance"
@@ -188,6 +205,29 @@ def row_references(
                 "operand": {"amount": int(row["effective_amount_usd"]), "currency": "USD"},
             })
             continue
+        if contributions:
+            if column == "Monetary + in-kind (calculated)":
+                for key, label in [("monetary_usd", "Monetary"), ("in_kind_usd", "In-kind")]:
+                    if pd.notna(row.get(key)):
+                        references.append({
+                            **reference,
+                            "columnHeader": label,
+                            "operand": {
+                                "amount": as_int(row[key]), "currency": "USD",
+                                "rowSign": int(row["effective_amount_usd"] > 0) - int(row["effective_amount_usd"] < 0),
+                            },
+                        })
+            else:
+                references.append({
+                    **reference,
+                    "operand": {
+                        "amount": as_int(row["total_usd"] if column == "Total" else row["refunds_transfers_adjustments_usd"]),
+                        "currency": "USD",
+                    },
+                })
+            continue
+        if pd.notna(row.get("amount_usd")):
+            reference["operand"] = {"amount": as_int(row["amount_usd"]), "currency": "USD"}
         key = json.dumps(reference, sort_keys=True)
         if key not in seen:
             references.append(reference)
@@ -271,6 +311,7 @@ def build_entity_export(
     if funds is not None:
         joined["fund_name"] = joined["fund_name"].fillna(joined["fund_code"].map(funds.set_index("fund_code")["fund_name"]))
     joined["fund_name"] = joined["fund_name"].fillna(joined["fund_code"])
+    joined["fund_name"] = joined["fund_code"].map(REVIEWED_FUND_TITLES).fillna(joined["fund_name"])
 
     root_id = "trust-funds"
     part_id = "trust-funds~xb"
@@ -609,16 +650,50 @@ def build_contributor_export(
 ) -> dict[str, Any]:
     rows, reconciliation = selected_funding_rows(year, flows, statements)
     rows = reviewed_contributor_labels(rows, year)
-    fund_lookup = funds.set_index("fund_code")["fund_name"].to_dict()
+    fund_lookup = {**funds.set_index("fund_code")["fund_name"].to_dict(), **REVIEWED_FUND_TITLES}
     crosswalk_lookup = crosswalk.set_index("fund_code")
     rows["is_adjustment"] = rows["counterparty"].str.contains("present value adjustment|discounting of non-current receivable", case=False, regex=True) | (
         rows["flow_type"].eq("voluntary_contribution") & rows["counterparty"].map(is_adjustment)
     )
     contributor_rows = rows.loc[~rows["is_adjustment"]].copy()
     adjustment_rows = rows.loc[rows["is_adjustment"]].copy()
-    contributor_rows["name"] = contributor_rows["counterparty"].map(
+    # Correct reviewed wrapped labels after classifying the source rows.
+    # A printed transfer prefix must not change the retained flow category.
+    contributor_rows["source_counterparty"] = contributor_rows["counterparty"]
+    for review in REVIEWED_SOURCE_ROW_LABELS:
+        if review["year"] != year:
+            continue
+        match = (
+            contributor_rows["fund_code"].eq(review["fundCode"])
+            & contributor_rows["page"].eq(review["pdfPage"])
+            & contributor_rows["counterparty"].eq(review["extractedLabel"])
+            & contributor_rows["effective_amount_usd"].eq(review["amountUsd"])
+        )
+        if "sourceTableId" in review:
+            match &= contributor_rows["source_table_id"].eq(review["sourceTableId"])
+        if "sourceRowIndex" in review:
+            match &= contributor_rows["source_row_index"].eq(review["sourceRowIndex"])
+        if match.sum() > 1:
+            raise ValueError(f"Ambiguous reviewed contributor row: {review}")
+        if review["printedLabel"] is None:
+            if review["amountUsd"] != 0:
+                raise ValueError(f"A removed continuation line must have zero amount: {review}")
+            contributor_rows = contributor_rows.loc[~match].copy()
+        else:
+            contributor_rows.loc[match, "source_counterparty"] = review["printedLabel"]
+    contributor_rows["name"] = contributor_rows["source_counterparty"].map(
         canonical_counterparty
     )
+    # In the same WKA schedule, receivables prints Norway and the
+    # contribution row prints Noway. Keep that original spelling in evidence.
+    if year == 2024:
+        typo = (
+            contributor_rows["fund_code"].eq("WKA")
+            & contributor_rows["page"].eq(274)
+            & contributor_rows["counterparty"].eq("Noway")
+            & contributor_rows["effective_amount_usd"].eq(967660)
+        )
+        contributor_rows.loc[typo, "name"] = clean_donor_name("Noway")
 
     contributors: list[dict[str, Any]] = []
     for name, contributor in contributor_rows.groupby("name", sort=True):
@@ -666,7 +741,7 @@ def build_contributor_export(
                         "effective_amount_usd",
                     ].sum()
                 ),
-                "reported_names": sorted(set(contributor["counterparty"])),
+                "reported_names": sorted(set(contributor["source_counterparty"])),
                 "destinations": sorted(
                     destinations, key=lambda item: item["amount_usd"], reverse=True
                 ),
@@ -768,6 +843,7 @@ def export_all(
     fund_years, schedule_groups = annotate_groups(fund_years, manifest)
     from trust_fund_mptf import extract_bundle, entity_crosswalk, extend_contributors, extend_spending as extend_mptf
     mptf_facts = extract_bundle(manifest, stage2)
+    mptf_controls = pd.read_csv(stage2 / "mptf-source-controls.csv")
     mptf_crosswalk = entity_crosswalk()
     (crosswalk_path.parent / "mptf-entity-crosswalk.json").write_text(
         json.dumps(mptf_crosswalk, indent=2), encoding="utf-8")
@@ -800,7 +876,7 @@ def export_all(
         contributors = build_contributor_export(
             year, flows, facts, funds, crosswalk, source, entity_names
         )
-        extend_contributors(contributors, mptf_facts, source, spending)
+        extend_contributors(contributors, mptf_facts, source, spending, mptf_controls)
         if xb_stage2 is not None:
             from secretariat_xb_frontend import extend_spending
             spending = extend_spending(spending, year, xb_stage2)

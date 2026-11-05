@@ -624,6 +624,10 @@ def parse_statement_circular(circular: Circular) -> dict:
             {
                 **section,
                 "member_pages": {row["name"]: row["pdf_page"] for row in rows if row.get("pdf_page")},
+                "member_amounts": {
+                    row["name"]: {"gross": row["gross"], "net": row["net"]}
+                    for row in rows
+                },
                 "sign": sign,
                 "contributor_count": len(rows),
                 "omitted_zero_credit_rows": (
@@ -877,6 +881,10 @@ def parse_circular(circular: Circular) -> dict:
             {
                 **section,
                 "member_pages": {row["name"]: row["pdf_page"] for row in rows if row.get("pdf_page")},
+                "member_amounts": {
+                    row["name"]: {"gross": row["gross"], "net": row["net"]}
+                    for row in rows
+                },
                 "sign": sign,
                 "contributor_count": len(rows),
                 "omitted_zero_credit_rows": (

@@ -5,7 +5,7 @@ import {
 } from "@un-eosg/ui/components/financial-panel-parts";
 import { formatBudget } from "@un-eosg/ui/format-budget";
 import { Tooltip } from "@un-eosg/ui/components/tooltip";
-import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
+import { SourceCalculation } from "@/components/SourceCalculation";
 import type { TrustFundFlow } from "@/types";
 
 export function TrustFundFlowBreakdown({ flows }: { flows: TrustFundFlow[] }) {
@@ -41,7 +41,8 @@ export function TrustFundFlowBreakdown({ flows }: { flows: TrustFundFlow[] }) {
                       Calculated sum of the signed rows in this category. The
                       source pages show the component amounts.
                     </p>
-                    <SourceReferenceLinks
+                    <SourceCalculation
+                      amount={row.amount_usd}
                       references={row.supportingSources ?? []}
                     />
                   </div>

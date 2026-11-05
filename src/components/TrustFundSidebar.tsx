@@ -6,6 +6,7 @@ import {
 } from "@/components/XBContributorPanel";
 import { TrustFundFlowBreakdown } from "@/components/TrustFundFlowBreakdown";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
+import { SourceCalculation } from "@/components/SourceCalculation";
 import { UNDocumentText } from "@/components/UNDocumentText";
 
 import { useEffect, useId, useMemo, useState } from "react";
@@ -88,7 +89,10 @@ function PositionValue({ metric }: { metric: PositionMetric }) {
               <span>{formatBudget(component.amount)}</span>
             </p>
           ))}
-          <SourceReferenceLinks references={metric.supportingSources} />
+          <SourceCalculation
+            references={metric.supportingSources}
+            amount={metric.amount}
+          />
         </div>
       }
     >
@@ -497,6 +501,7 @@ export function TrustFundSidebar({
     node.tier === "detail" || node.sourceGroup === "separate_entities"
       ? (node.supportingSources ?? [])
       : collectBudgetHierarchySources(node, childrenByParent);
+  const expenseOperands = expenseReferences.filter((source) => source.operand);
   const contributionReferences =
     contributors?.contributors.flatMap((contributor) =>
       contributor.destinations
@@ -612,13 +617,21 @@ export function TrustFundSidebar({
                       interactive
                       width={380}
                       content={
-                        <SourceReferenceLinks
+                        <SourceCalculation
+                          amount={node.amount}
                           references={
-                            expenseReferences.length
-                              ? expenseReferences
-                              : node.source
-                                ? [node.source]
-                                : []
+                            expenseOperands.length &&
+                            expenseOperands.reduce(
+                              (sum, source) =>
+                                sum + (source.operand?.amount ?? 0),
+                              0,
+                            ) === node.amount
+                              ? expenseOperands
+                              : expenseReferences.length
+                                ? expenseReferences
+                                : node.source
+                                  ? [node.source]
+                                  : []
                           }
                         />
                       }

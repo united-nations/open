@@ -8,6 +8,7 @@ import {
 } from "@/lib/trustFundReporting";
 import { orderFundingTooltipRows } from "@/lib/financingInstruments";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
+import { SourceCalculation } from "@/components/SourceCalculation";
 import { Tooltip } from "@un-eosg/ui/components/tooltip";
 import { budgetTrendSources } from "@/lib/budgetTrendSources";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
@@ -2073,7 +2074,7 @@ export function BudgetTreemap({
               >
                 <span
                   tabIndex={0}
-                  className="cursor-help underline decoration-dotted underline-offset-4"
+                  className="cursor-help"
                 >
                   {formatBudget(total)}
                 </span>
@@ -2172,30 +2173,31 @@ export function BudgetTreemap({
                   ]),
                 ),
             ]);
-      const value =
-        evidence.length === 0
-          ? "Not available"
-          : !query && root?.chf
-            ? formatBudgetFunding(root, source)
-            : query && drawnChf !== 0
-              ? formatCurrencyParts(drawnSourceTotal - drawnChfUsd, drawnChf)
-              : formatBudget(
-                  !query
-                    ? (root?.values?.[source] ?? drawnSourceTotal)
-                    : drawnSourceTotal +
-                        accountingNodes
-                          .filter(
-                            (node) =>
-                              node.amount <= 0 && matchesAccountingNode(node),
-                          )
-                          .reduce(
-                            (sum, node) => sum + (node.values?.[source] ?? 0),
-                            0,
-                          ),
-                );
+      const amount = !query
+        ? (root?.values?.[source] ?? drawnSourceTotal)
+        : drawnSourceTotal +
+          accountingNodes
+            .filter((node) => node.amount <= 0 && matchesAccountingNode(node))
+            .reduce((sum, node) => sum + (node.values?.[source] ?? 0), 0);
+      const chf =
+        source === "extrabudgetary"
+          ? query
+            ? drawnChf
+            : (root?.chf?.amount ?? 0)
+          : 0;
+      const usd =
+        amount -
+        (chf ? (query ? drawnChfUsd : (root?.chf?.usdForLayout ?? 0)) : 0);
+      const value = !evidence.length
+        ? "Not available"
+        : chf
+          ? formatCurrencyParts(usd, chf)
+          : formatBudget(usd);
       return {
         key: source,
-        label: fundingLabel(source),
+        label: query
+          ? `Matching ${fundingLabel(source).toLocaleLowerCase()}`
+          : fundingLabel(source),
         value: (
           <Tooltip
             interactive
@@ -2219,13 +2221,31 @@ export function BudgetTreemap({
                     The source pages show the component amounts.
                   </p>
                 ) : null}
-                <SourceReferenceLinks references={evidence} />
+                <SourceCalculation
+                  references={
+                    chf
+                      ? evidence.filter(
+                          (source) => source.operand?.currency !== "CHF",
+                        )
+                      : evidence
+                  }
+                  amount={usd}
+                />
+                {chf !== 0 && (
+                  <SourceCalculation
+                    references={evidence.filter(
+                      (source) => source.operand?.currency === "CHF",
+                    )}
+                    amount={chf}
+                    currency="CHF"
+                  />
+                )}
               </div>
             }
           >
             <span
               tabIndex={0}
-              className="cursor-help underline decoration-dotted underline-offset-4"
+              className="cursor-help"
             >
               {value}
             </span>
@@ -2454,7 +2474,9 @@ export function BudgetTreemap({
           }
           rows={sharedRows.map((row) => ({
             ...row,
-            valueLabel: row.data ? formatBudgetNode(row.data) : row.valueLabel,
+            valueLabel: row.data
+              ? `${usesSharedProgrammeBudget && searchQuery.trim() ? "Entire part · " : ""}${formatBudgetNode(row.data)}`
+              : row.valueLabel,
             subgroups: row.subgroups?.map((group) => ({
               ...group,
               valueLabel: group.data ? formatBudgetNode(group.data) : undefined,

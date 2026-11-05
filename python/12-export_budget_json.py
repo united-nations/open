@@ -226,6 +226,7 @@ def citation_source(citation: dict | None) -> dict | None:
     return {
         "symbol": citation["symbol"].replace("_", "/"),
         "url": url,
+        **({"sourceCellId": citation["sourceCellId"]} if citation.get("sourceCellId") else {}),
         "pdfPage": page,
         "pageStatus": citation.get("pageStatus"),
         "pdfPageScope": citation.get("pdfPageScope") or citation.get("pagePrecision") or ("table" if page is not None else None),
@@ -260,7 +261,11 @@ def inherit_metric_sources(nodes: list[dict]) -> None:
             for reference in collect(child, metric, funding)
         ]
         unique = {
-            (ref["url"], ref.get("rowLabel"), ref.get("columnHeader")): {
+            (
+                ref.get("sourceCellId"),
+                ref["url"], ref.get("rowLabel"), ref.get("columnHeader"),
+                (ref.get("operand") or {}).get("amount"),
+            ): {
                 **ref,
                 "label": f"{FUNDING_NAMES[funding]} — supporting row for calculated total",
             }
@@ -485,6 +490,10 @@ def metric_value_resolver(financial: dict | None, view: dict):
         for observation in selected:
             source = citation_source(citations.get(observation.get("citationId")))
             if source:
+                source["operand"] = {
+                    "amount": int(observation["money"]["amountExact"]),
+                    "currency": observation["lens"]["currency"],
+                }
                 source["label"] = FUNDING_NAMES[funding]
                 if len(selected) > 1:
                     source["label"] += " — supporting row for calculated total"
@@ -517,6 +526,25 @@ def build_ppb(view: dict, financial: dict | None = None) -> dict:
     edition = lens["edition"]
     citations = view.get("citations") or []
     citations_by_id = {citation["citationId"]: citation for citation in citations}
+    observations_by_id = {
+        row["observationId"]: row for row in (financial or {}).get("observations", [])
+    }
+    financial_citations = {
+        row["citationId"]: row for row in (financial or {}).get("citations", [])
+    }
+    derivations = {
+        row["derivationId"]: row for row in (financial or {}).get("derivations", [])
+    }
+    expenditure_observations = {}
+    for observation in (financial or {}).get("observations", []):
+        lens_key = observation["lens"]
+        if lens_key.get("measure") == "expenditure" and lens_key.get("dataYear") == year:
+            key = (
+                observation["citationId"],
+                lens_key.get("fundingSource"),
+                lens_key.get("currency"),
+            )
+            expenditure_observations.setdefault(key, []).append(observation)
 
     def source_for(value: dict) -> dict | None:
         primary = value.get("primarySource")
@@ -527,7 +555,37 @@ def build_ppb(view: dict, financial: dict | None = None) -> dict:
         citation = citations_by_id.get(primary.get("citationId"), primary)
         return citation_source(citation)
 
+    def derivation_sources(fact_id: str, funding: str, sign: int = 1) -> list[dict] | None:
+        observation = observations_by_id.get(fact_id)
+        if observation:
+            citation_id = observation["citationId"]
+            source = citation_source(citations_by_id.get(citation_id) or financial_citations.get(citation_id))
+            if source is None:
+                return None
+            return [{
+                **source,
+                "label": f"{FUNDING_NAMES[funding]} — supporting row for calculated total",
+                "operand": {
+                    "amount": sign * int(observation["money"]["amountExact"]),
+                    "currency": observation["lens"]["currency"],
+                },
+            }]
+        derivation = derivations.get(fact_id)
+        if not derivation or derivation["operation"] not in {"sum", "difference"}:
+            return None
+        refs = []
+        for index, child_id in enumerate(derivation["inputFactIds"]):
+            child_sign = -sign if derivation["operation"] == "difference" and index else sign
+            inputs = derivation_sources(child_id, funding, child_sign)
+            if inputs is None:
+                return None
+            refs.extend(inputs)
+        return refs
+
     def expenditure_sources(value: dict, funding: str) -> list[dict]:
+        if fact_id := (value.get("total") or {}).get("derivationId"):
+            if refs := derivation_sources(fact_id, funding):
+                return refs
         # Derived totals often have several sourceCitationIds and no single
         # primarySource. Retain every input instead of losing their provenance.
         primary = value.get("primarySource") or {}
@@ -541,6 +599,12 @@ def build_ppb(view: dict, financial: dict | None = None) -> dict:
                 citation = primary
             source = citation_source(citation)
             if source:
+                observations = expenditure_observations.get((citation_id, funding, "USD"), [])
+                if len(observations) == 1:
+                    source["operand"] = {
+                        "amount": int(observations[0]["money"]["amountExact"]),
+                        "currency": "USD",
+                    }
                 source["label"] = FUNDING_NAMES[funding]
                 if len(source_ids) > 1 or (value.get("total") or {}).get("basis") != "printed":
                     source["label"] += " — supporting row for calculated total"
@@ -886,19 +950,18 @@ def build_ppb(view: dict, financial: dict | None = None) -> dict:
                     # missing child's row. Preserve its parent and sibling
                     # evidence and identify it explicitly as calculated.
                     supporting = metric_evidence(node, metric, funding) + [
-                        source
+                        {**source, **(
+                            {"operand": {**source["operand"], "amount": -source["operand"]["amount"]}}
+                            if "operand" in source else {}
+                        )}
                         for child in children if child not in missing
                         for source in metric_evidence(child, metric, funding)
                     ]
-                    unique = {
-                        (ref["url"], ref["rowLabel"], ref["columnHeader"]): {
-                            **ref,
-                            "label": f"{FUNDING_NAMES[funding]} — supporting reference for calculated remainder",
-                        }
-                        for ref in supporting
-                    }
-                    if unique:
-                        missing[0].setdefault("metricSources", {}).setdefault(metric, {})[funding] = list(unique.values())
+                    if supporting:
+                        missing[0].setdefault("metricSources", {}).setdefault(metric, {})[funding] = [
+                            {**ref, "label": f"{FUNDING_NAMES[funding]} — supporting reference for calculated remainder"}
+                            for ref in supporting
+                        ]
 
     roll_up_metrics()
     inherit_metric_sources(nodes)

@@ -1,5 +1,7 @@
 "use client";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
+import { SourceCalculation } from "@/components/SourceCalculation";
+import { sourcePageUrl, sourcePages } from "@/lib/sourceReferences";
 import { Tooltip } from "@un-eosg/ui/components/tooltip";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { fundingSources } from "@un-eosg/ui/funding-sources";
@@ -866,6 +868,33 @@ function BudgetDetailSidebar({
                       const style = FUNDING_SOURCES[key];
                       const label =
                         meta.fundingLabels?.[key] ?? style?.label ?? key;
+                      const references =
+                        node.metricSources?.[sourceMetric]?.[key] ??
+                        (sourceMetric === "expenditure" && node.sources?.[key]
+                          ? [node.sources[key]!]
+                          : []);
+                      const provisionalPages =
+                        node.entity?.acronym === "OCHA"
+                          ? { first: 26, last: 28 }
+                          : node.entity?.acronym === "UNDRR"
+                            ? { first: 47, last: 48 }
+                            : undefined;
+                      const provisionalSource =
+                        meta.year === 2025 &&
+                        sourceMetric === "expenditure" &&
+                        provisionalPages
+                          ? references.find(
+                              (source) =>
+                                source.symbol === "A/81/6 (Sect. 27)" &&
+                                sourcePages(source).some(
+                                  (page) =>
+                                    page >= provisionalPages.first &&
+                                    page <= provisionalPages.last,
+                                ),
+                            )
+                          : undefined;
+                      const chf =
+                        key === "extrabudgetary" ? node.chf : undefined;
                       return (
                         <FinancialPanelBreakdownRow
                           key={key}
@@ -878,27 +907,54 @@ function BudgetDetailSidebar({
                             />
                           }
                           value={
-                            <Tooltip
-                              interactive
-                              content={
-                                <SourceReferenceLinks
-                                  references={
-                                    node.metricSources?.[sourceMetric]?.[key] ??
-                                    (sourceMetric === "expenditure" &&
-                                    node.sources?.[key]
-                                      ? [node.sources[key]!]
-                                      : [])
-                                  }
-                                />
-                              }
-                            >
-                              <span
-                                tabIndex={0}
-                                className="cursor-help text-gray-900 underline decoration-dotted underline-offset-4"
+                            <div className="text-end">
+                              <Tooltip
+                                interactive
+                                content={
+                                  chf ? (
+                                    <>
+                                      <SourceCalculation
+                                        references={references.filter(
+                                          (source) =>
+                                            source.operand?.currency !== "CHF",
+                                        )}
+                                        amount={amount - chf.usdForLayout}
+                                      />
+                                      <SourceCalculation
+                                        references={[chf.source]}
+                                        amount={chf.amount}
+                                        currency="CHF"
+                                      />
+                                    </>
+                                  ) : (
+                                    <SourceCalculation
+                                      references={references}
+                                      amount={amount}
+                                    />
+                                  )
+                                }
                               >
-                                {formatBudgetFunding(node, key)}
-                              </span>
-                            </Tooltip>
+                                <span
+                                  tabIndex={0}
+                                  className="cursor-help text-gray-900 underline decoration-dotted underline-offset-4"
+                                >
+                                  {formatBudgetFunding(node, key)}
+                                </span>
+                              </Tooltip>
+                              {provisionalSource && provisionalPages && (
+                                <a
+                                  href={sourcePageUrl(
+                                    provisionalSource.url,
+                                    provisionalPages.first,
+                                  )}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="mt-1 block text-xs font-normal text-gray-600 underline"
+                                >
+                                  The source reports this figure as provisional
+                                </a>
+                              )}
+                            </div>
                           }
                           color={style?.color}
                           percent={

@@ -97,7 +97,12 @@ export function uniqueBudgetSources(
 ): BudgetNodeSource[] {
   const seen = new Set<string>();
   return sources.filter((source) => {
-    const key = JSON.stringify([budgetSourceEvidenceKey(source), source.label]);
+    const key = JSON.stringify([
+      budgetSourceEvidenceKey(source),
+      source.sourceCellId,
+      source.operand?.amount,
+      source.label,
+    ]);
     if (seen.has(key)) return false;
     seen.add(key);
     return true;

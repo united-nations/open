@@ -2,6 +2,7 @@
 import { TrustFundFlowBreakdown } from "@/components/TrustFundFlowBreakdown";
 import { Tooltip } from "@un-eosg/ui/components/tooltip";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
+import { SourceCalculation } from "@/components/SourceCalculation";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
 import { ChevronRight } from "lucide-react";
@@ -52,6 +53,9 @@ export function TrustFundContributorSidebar({
         (item) => item.name === initialContributor.name,
       );
   const contributor = currentContributor ?? initialContributor;
+  const contributorSources = contributor.destinations.flatMap(
+    (fund) => fund.supportingSources ?? [],
+  );
   const isUnitemized = contributor.counterparty_group === "Unspecified";
   const amountLabel = isUnitemized
     ? "Voluntary contributions"
@@ -218,10 +222,15 @@ export function TrustFundContributorSidebar({
                       interactive
                       width={380}
                       content={
-                        <SourceReferenceLinks
-                          references={contributor.destinations.flatMap(
-                            (fund) => fund.supportingSources ?? [],
-                          )}
+                        <SourceCalculation
+                          references={
+                            isUnitemized
+                              ? (contributor.flows?.flatMap(
+                                  (flow) => flow.supportingSources ?? [],
+                                ) ?? contributorSources)
+                              : contributorSources
+                          }
+                          amount={contributor.amount_usd}
                         />
                       }
                     >
@@ -250,16 +259,54 @@ export function TrustFundContributorSidebar({
                 <p className="text-sm text-gray-600">{contributor.note}</p>
               )}
               {contributor.negative_amount_usd < 0 && (
-                <p className="mt-1 text-xs text-gray-500">
-                  {isUnitemized
-                    ? "Positive fund amounts"
-                    : "Gross positive rows"}{" "}
-                  {currency(contributor.positive_amount_usd)}.{" "}
-                  {isUnitemized
-                    ? "Negative fund amounts"
-                    : "Refunds and transfers"}{" "}
-                  {currency(contributor.negative_amount_usd)}.
-                </p>
+                <dl className="mt-2 space-y-1 text-xs text-gray-600">
+                  {[
+                    {
+                      label: "Positive rows",
+                      amount: contributor.positive_amount_usd,
+                    },
+                    {
+                      label: "Negative rows",
+                      amount: contributor.negative_amount_usd,
+                    },
+                  ].map(({ label, amount }) => {
+                    const inputs = contributorSources.filter(
+                      (source) =>
+                        source.operand &&
+                        (source.operand.rowSign ??
+                          Math.sign(source.operand.amount)) ===
+                          Math.sign(amount),
+                    );
+                    return (
+                      <div key={label} className="flex justify-between">
+                        <dt>{label}</dt>
+                        <dd>
+                          {inputs.length ? (
+                            <Tooltip
+                              interactive
+                              width={380}
+                              content={
+                                <SourceCalculation
+                                  amount={amount}
+                                  references={inputs}
+                                />
+                              }
+                            >
+                              <span
+                                tabIndex={0}
+                                className="cursor-help underline decoration-dotted underline-offset-4"
+                              >
+                                {currency(amount)}
+                              </span>
+                            </Tooltip>
+                          ) : (
+                            currency(amount)
+                          )}
+                        </dd>
+                      </div>
+                    );
+                  })}
+                </dl>
               )}
               <TrustFundFlowBreakdown flows={contributor.flows ?? []} />
               <FinancialPanelSection heading="Contributions and transfers over time">

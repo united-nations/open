@@ -34,6 +34,7 @@ def add_chf_layout(payload, financial, citation_source):
     usd = (amount * rate).quantize(Decimal('0.01'))
     source = citation_source(citations[control['citationId']])
     source['label'] = 'Extrabudgetary — printed in CHF'
+    source['operand'] = {'amount': int(amount), 'currency': 'CHF'}
     source['pdfPage'] = evidence['pdfPage']
     source['pdfPageScope'] = 'row'
     source['pageStatus'] = 'located'

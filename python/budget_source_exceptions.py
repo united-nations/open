@@ -3,7 +3,16 @@
 The immutable release is never edited. Keep printed source inconsistencies;
 only superseded controls and independently verified missing detail are repaired.
 """
+import json
+from pathlib import Path
 from urllib.parse import quote
+
+
+PDF_REVIEWS = json.loads(
+    (Path(__file__).resolve().parents[1] / "data/ppb-reviewed-pdf-pages.json")
+    .read_text(encoding="utf-8")
+)
+PDF_PAGE_REVIEWS = {row["citationId"]: row for row in PDF_REVIEWS["corrections"]}
 
 
 def correct_verified_pdf_pages(citations):
@@ -22,6 +31,19 @@ def correct_verified_pdf_pages(citations):
         prefix + 't0195': (137, 'Evolution of financial resources by object of expenditure', {'Grants and contributions', 'Total'}),
     }
     for citation in citations:
+        review = PDF_PAGE_REVIEWS.get(citation.get("citationId"))
+        if (
+            review
+            and citation.get("rowLabel") == review["rowLabel"]
+            and (citation.get("pdfUrl") or "").split("#", 1)[0] == review["pdfUrl"]
+            and " › ".join(str(item) for item in citation.get("headerPath", [])) == review["columnHeader"]
+        ):
+            citation.update(
+                pdfPage=review["correctPage"], pdfPages=[review["correctPage"]],
+                pdfPageScope="row", pageStatus="located",
+                pageLocatedBy="reviewed_final_pdf_row",
+            )
+            continue
         match = reviewed.get(citation.get('tableId'))
         if not match:
             continue
@@ -74,7 +96,10 @@ def reviewed_reference(financial, citation_source, identity, year, measure, row_
         **citation, 'pdfPage': page, 'pdfPageScope': 'row', 'pageStatus': 'located',
         'pageLocatedBy': 'reviewed_final_pdf_row',
     })
-    return int(observation['money']['amountExact']), {**source, 'label': 'Regular budget'}
+    amount = int(observation['money']['amountExact'])
+    return amount, {
+        **source, 'label': 'Regular budget', 'operand': {'amount': amount, 'currency': 'USD'},
+    }
 
 
 def apply_annual_exceptions(payload, metric, financial, citation_source):
@@ -91,6 +116,8 @@ def apply_annual_exceptions(payload, metric, financial, citation_source):
         node['metricAmounts'] = {metric: amount}
         if sources:
             node['metricSources'] = {metric: {'regular_budget': sources}}
+        else:
+            node.pop('metricSources', None)
 
     if (metric, year) in (('approved', 2020), ('proposed', 2021)):
         measure, column = ('appropriation', 2) if metric == 'approved' else ('requirements', 4)
@@ -156,6 +183,7 @@ def apply_annual_exceptions(payload, metric, financial, citation_source):
         node = nodes['section-24']
         delta = 240210200 - node['amount']
         source = reference('A/79/6 (Sect. 24)/Corr.1', 9, 'Total', 2025, 'Annex III')
+        source['operand'] = {'amount': 240210200, 'currency': 'USD'}
         set_amount(node, 240210200, [source])
         node['note'] = 'Corrected explicit section control from corrigendum Annex III. The printed programme-of-work subtotal has a separate source inconsistency.'
         # Part/root are calculated rollups, not independent source controls.
@@ -170,6 +198,7 @@ def apply_annual_exceptions(payload, metric, financial, citation_source):
         parent = nodes[wrapper['id'] + '~information-and-communications-technology']
         identity = parent['id'] + '~conferencing-infrastructure-and-equipment'
         source = reference('A/78/6 (Sect. 33)', 4, 'Conferencing infrastructure and equipment', 2024, 'Table 33.1')
+        source['operand'] = {'amount': 3500000, 'currency': 'USD'}
         node = {'id': identity, 'parentId': parent['id'], 'tier': 'detail', 'kind': 'allocation',
                 'code': None, 'label': 'Conferencing infrastructure and equipment', 'basis': 'printed',
                 'completeness': 'complete', 'note': 'New proposed allocation; no historical expenditure is inferred.'}
@@ -179,6 +208,97 @@ def apply_annual_exceptions(payload, metric, financial, citation_source):
             set_amount(parent, parent['amount'] + 3500000)
             set_amount(wrapper, wrapper['amount'] + 3500000)
         parent['note'] = 'Includes the new conferencing allocation printed in Table 33.1.'
+
+    if (metric, year) in (('approved', 2026), ('proposed', 2027)) and 'section-8' in nodes:
+        # Section 8 Annex III p. 91 excludes the two courts from the
+        # non-expenditure columns. The projection matched their expenditure
+        # residual to the same three offices already included in the section.
+        courts_id = 'section-8~extraordinary-chambers-in-the-courts-of-cambodia-and-residua'
+        courts = nodes.pop(courts_id)
+        section = nodes['section-8']
+        section_total = 62281400 if metric == 'approved' else 64471200
+        siblings = [n for n in nodes.values() if n['parentId'] == section['id']]
+        if (
+            len(siblings) != 3
+            or any(n['parentId'] == courts_id for n in nodes.values())
+            or courts['amount'] != section_total
+            or sum(n['amount'] for n in siblings) != section_total
+        ):
+            raise ValueError(f'Unexpected Section 8 projection in {year}')
+        payload['nodes'].remove(courts)
+        coverage = payload['meta']['metricCoverage']
+        coverage['budgetUnits'] -= 1
+        coverage['byMetric'][metric] -= 1
+        source = reference('A/81/6 (Sect. 8)', 91, 'Total', year, 'Annex III')
+        source['columnHeader'] = f'{year} {metric}'
+        source['operand'] = {'amount': section_total, 'currency': 'USD'}
+        set_amount(section, section_total, [source])
+        section['basis'] = 'printed'
+        parts = {section['parentId']}
+
+        # Table 33.1 p. 4 has printed controls for both stages. In the approved
+        # column the safety subtotal exceeds its itemized rows by $19,600.
+        section_id = 'section-33'
+        wrapper_id = section_id + '~section-special-purpose-allocations'
+        safety_id = wrapper_id + '~safety-and-security'
+        column = 'c0002' if metric == 'approved' else 'c0008'
+        for row, label, ids in [
+            ('r0036', 'Subtotal', [safety_id]),
+            ('r0041', 'Total', [section_id, wrapper_id]),
+        ]:
+            amount, source = reviewed_reference(
+                financial, citation_source,
+                f'ppb2027:A_81_6 (SECT. 33)|word/document.xml|t0002|{row}|{column}',
+                year, 'appropriation' if metric == 'approved' else 'proposed', label, 4,
+            )
+            for node_id in ids:
+                if metric == 'proposed' and nodes[node_id]['amount'] != amount:
+                    raise ValueError(f'{node_id} proposed amount differs from the printed control')
+                set_amount(nodes[node_id], amount, [source])
+                nodes[node_id]['basis'] = 'printed'
+        if metric == 'approved':
+            source_discrepancies[safety_id] = 19600
+        parts.add(nodes[section_id]['parentId'])
+
+        for part in parts:
+            sections = [n for n in nodes.values() if n['parentId'] == part]
+            sources = (
+                sections[0].get('metricSources', {}).get(metric, {}).get('regular_budget')
+                if len(sections) == 1 else None
+            )
+            set_amount(nodes[part], sum(n['amount'] for n in sections), sources)
+        amount, source = reviewed_reference(
+            financial, citation_source,
+            f'ppb2027:A_81_6 (INTRODUCTION)|word/document.xml|t0023|r0020|{column}',
+            year, metric, 'Total', 53,
+        )
+        if sum(n['amount'] for n in nodes.values() if n['parentId'] == 'whole') != amount:
+            raise ValueError(f'Corrected {year} budget parts differ from the printed whole control')
+        set_amount(nodes['whole'], amount, [source])
+        nodes['whole']['basis'] = 'printed'
+
+        for control in PDF_REVIEWS["aggregateControls"]:
+            if (control["metric"], control["year"]) != (metric, year):
+                continue
+            node = nodes[control["nodeId"]]
+            if node["values"].get("regular_budget") != control["amountUsd"]:
+                raise ValueError(f'{node["id"]} differs from its reviewed {year} Table 2 control')
+            source = {
+                "symbol": "A/81/6 (INTRODUCTION)",
+                "url": f'{control["pdfUrl"]}#page={control["pdfPage"]}',
+                "pdfPage": control["pdfPage"],
+                "pdfPageScope": "row",
+                "pageStatus": "located",
+                "pageLocatedBy": "reviewed_final_pdf_row",
+                "sourceCellId": control["sourceCellId"],
+                "label": "Regular budget",
+                "rowLabel": control["rowLabel"],
+                "columnHeader": control["columnHeader"],
+                "tableTitle": control["tableTitle"],
+                "operand": {"amount": control["amountUsd"], "currency": "USD"},
+            }
+            set_amount(node, control["amountUsd"], [source])
+            node["basis"] = "printed"
 
     # Recompute reconciliation for the selected metric rather than inheriting
     # expenditure-only metadata or marking missing projected detail complete.

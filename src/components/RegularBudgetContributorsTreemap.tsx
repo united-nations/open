@@ -4,6 +4,7 @@ import { Link as LinkIcon } from "lucide-react";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { Tooltip } from "@un-eosg/ui/components/tooltip";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
+import { SourceCalculation } from "@/components/SourceCalculation";
 import { formatAssessmentRate } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { PaymentChartScaleProvider } from "@/components/PaymentChartScale";
@@ -137,6 +138,20 @@ export function RegularBudgetContributorsTreemap() {
       ? pending
       : selectedName;
   const data = loadedData;
+  const matchingAssessments = (data?.contributors ?? []).filter(
+    (item) =>
+      !hiddenGroups.includes(item.payment_status) &&
+      matchesContributor(item.name, searchQuery),
+  );
+  const matchingTotal = matchingAssessments.reduce(
+    (sum, item) => sum + item.assessment_amount,
+    0,
+  );
+  const printedTotal = data?.meta.assessment_source_control;
+  const hasPrintedTotal =
+    !searchQuery.trim() &&
+    !hiddenGroups.length &&
+    printedTotal?.amount === matchingTotal;
   const error = loadError?.year === selectedYear ? loadError.message : null;
   const loading = data === null && error === null;
 
@@ -313,42 +328,35 @@ export function RegularBudgetContributorsTreemap() {
                     interactive
                     width={380}
                     content={
-                      <div>
-                        <p>
-                          Calculated sum of assessments for the selected Member
-                          States and payment statuses. The linked pages show the
-                          component assessments.
-                        </p>
-                        <SourceReferenceLinks
-                          references={data.contributors
-                            .filter(
-                              (item) =>
-                                !hiddenGroups.includes(item.payment_status) &&
-                                matchesContributor(item.name, searchQuery),
-                            )
-                            .flatMap((item) =>
-                              regularBudgetAssessmentSources(item, data),
-                            )}
-                        />
-                      </div>
+                      <SourceCalculation
+                        amount={matchingTotal}
+                        references={
+                          hasPrintedTotal && printedTotal
+                            ? [
+                                {
+                                  ...data.meta.sources.assessment_document,
+                                  pdfPage: printedTotal.pdfPage,
+                                  pdfPageScope: "row",
+                                  rowLabel: "Total",
+                                  columnHeader: printedTotal.column,
+                                  operand: {
+                                    amount: printedTotal.amount,
+                                    currency: "USD",
+                                  },
+                                },
+                              ]
+                            : matchingAssessments.flatMap((item) =>
+                                regularBudgetAssessmentSources(item, data),
+                              )
+                        }
+                      />
                     }
                   >
                     <span
                       tabIndex={0}
-                      className="cursor-help underline decoration-dotted underline-offset-4"
+                      className="cursor-help"
                     >
-                      {formatCurrency(
-                        (data?.contributors ?? [])
-                          .filter(
-                            (item) =>
-                              !hiddenGroups.includes(item.payment_status) &&
-                              matchesContributor(item.name, searchQuery),
-                          )
-                          .reduce(
-                            (sum, item) => sum + item.assessment_amount,
-                            0,
-                          ),
-                      )}
+                      {formatCurrency(matchingTotal)}
                     </span>
                   </Tooltip>
                 ),

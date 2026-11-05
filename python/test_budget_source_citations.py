@@ -36,10 +36,10 @@ class MetricCitationTests(unittest.TestCase):
 
         payload = json.loads((exporter.OUT / 'budget-ppb-proposed-2027.json').read_text())
         nodes = {node['id']: node for node in payload['nodes']}
-        for section, amount, page, subtotal, section_gap, programme_gap in (
-            ('11', 11029000, 22, 7764000, 164100, -164100),
-            ('29E', 84903500, 25, 83618400, 180700, -181700),
-            ('30', 24088500, 18, 20815800, 347000, -347000),
+        for section, amount, page, subtotal, section_gap, programme_gap, part_control in (
+            ('11', 11029000, 22, 7764000, 164100, -164100, (292205300, 12)),
+            ('29E', 84903500, 25, 83618400, 180700, -181700, (357900800, 13)),
+            ('30', 24088500, 18, 20815800, 347000, -347000, None),
         ):
             with self.subTest(section=section):
                 section_node = nodes[f'section-{section}']
@@ -51,11 +51,17 @@ class MetricCitationTests(unittest.TestCase):
                     source, = node['metricSources']['proposed']['regular_budget']
                     self.assertEqual((source['symbol'], source['rowLabel'], source['pdfPage']),
                                      (f'A/81/6 (Sect. {section})', 'Subtotal, 1', page))
-                    self.assertTrue(any(
-                        (ref['symbol'], ref['rowLabel'], ref['pdfPage'])
-                        == (source['symbol'], source['rowLabel'], source['pdfPage'])
-                        for ref in part['metricSources']['proposed']['regular_budget']
-                    ))
+                part_source, = part['metricSources']['proposed']['regular_budget']
+                if part_control:
+                    total_amount, total_page = part_control
+                    self.assertEqual(part_source['symbol'], 'A/81/6 (INTRODUCTION)')
+                    self.assertEqual(part_source['pdfPage'], total_page)
+                    self.assertEqual(part_source['operand']['amount'], total_amount)
+                else:
+                    self.assertEqual(
+                        (part_source['symbol'], part_source['rowLabel'], part_source['pdfPage']),
+                        (source['symbol'], source['rowLabel'], source['pdfPage']),
+                    )
                 self.assertEqual(programme['amount'], subtotal)
                 for node, gap in ((wrapper, section_gap), (programme, programme_gap)):
                     breakdown = node['breakdowns']['regular_budget']
@@ -65,9 +71,11 @@ class MetricCitationTests(unittest.TestCase):
                                                      if node['parentId'] == part['id']))
         root = nodes['whole']
         self.assertEqual(payload['meta']['total'], root['amount'])
-        if root['basis'] == 'derived':
-            self.assertEqual(root['amount'], sum(node['amount'] for node in nodes.values()
-                                                 if node['parentId'] == 'whole'))
+        self.assertEqual(root['amount'], 3301971100)
+        root_source, = root['metricSources']['proposed']['regular_budget']
+        self.assertEqual((root_source['symbol'], root_source['pdfPage']), ('A/81/6 (INTRODUCTION)', 53))
+        self.assertEqual(root['amount'], sum(node['amount'] for node in nodes.values()
+                                             if node['parentId'] == 'whole'))
 
     def test_reviewed_final_pdf_pages_do_not_shift_neighboring_rows(self):
         prefix = 'ppb2027:A_81_6 (SECT. 1) PRELIMINARY|word/document.xml|'

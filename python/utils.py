@@ -44,6 +44,7 @@ TAIWAN_NAME_ALIASES = dict.fromkeys((
 
 # Explicit CEB contributor aliases; classification is preserved independently.
 DONOR_MAPPING = {
+    "Noway": "Norway",
     "Kosovo**": "Kosovo",
     **TAIWAN_NAME_ALIASES,
     "GAVI The Vaccine Alliance": "GAVI, The Vaccine Alliance",

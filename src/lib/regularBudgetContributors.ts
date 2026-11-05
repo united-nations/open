@@ -19,6 +19,7 @@ export function regularBudgetAssessmentSources(
       rowLabel: member.name,
       columnHeader: `Assessment rate; ${data.meta.assessment_amount_column}`,
       pdfPage: member.pdfPage,
+      operand: { amount: member.assessment_amount, currency: "USD" },
       pdfPageScope: "row",
       pageStatus: "extracted_pdf_row",
     },

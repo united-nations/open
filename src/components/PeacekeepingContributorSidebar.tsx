@@ -1,5 +1,5 @@
 "use client";
-import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
+import { SourceCalculation } from "@/components/SourceCalculation";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
 import { ChevronRight, ExternalLink } from "lucide-react";
@@ -105,6 +105,12 @@ export function PeacekeepingContributorSidebar({
     meta,
     contributor.name,
   );
+  const grossReferences = peacekeepingContributorSources(
+    missions,
+    meta,
+    contributor.name,
+    "gross",
+  );
 
   return (
     <div
@@ -168,7 +174,10 @@ export function PeacekeepingContributorSidebar({
                             pages show the component amounts, rather than this
                             combined total.
                           </p>
-                          <SourceReferenceLinks references={references} />
+                          <SourceCalculation
+                            references={references}
+                            amount={contributor.net_assessment}
+                          />
                         </div>
                       }
                     >
@@ -196,11 +205,9 @@ export function PeacekeepingContributorSidebar({
                           Calculated from gross assessment sections, less gross
                           credit sections, across the missions shown below.
                         </p>
-                        <SourceReferenceLinks
-                          references={references.map((source) => ({
-                            ...source,
-                            columnHeader: "Gross assessment / credit",
-                          }))}
+                        <SourceCalculation
+                          references={grossReferences}
+                          amount={contributor.gross_assessment}
                         />
                       </div>
                     }
@@ -222,11 +229,15 @@ export function PeacekeepingContributorSidebar({
                           assessment. The linked rows show the gross and net
                           amounts used in the calculation.
                         </p>
-                        <SourceReferenceLinks
-                          references={references.map((source) => ({
-                            ...source,
-                            columnHeader: "Gross and net assessment / credit",
-                          }))}
+                        <p>Net assessed amount</p>
+                        <SourceCalculation
+                          references={references}
+                          amount={contributor.net_assessment}
+                        />
+                        <p>Less gross assessment</p>
+                        <SourceCalculation
+                          references={grossReferences}
+                          amount={contributor.gross_assessment}
                         />
                       </div>
                     }
@@ -260,11 +271,21 @@ export function PeacekeepingContributorSidebar({
                             sections and subtracting credits. The linked pages
                             show the component amounts.
                           </p>
-                          <SourceReferenceLinks
+                          <SourceCalculation
+                            amount={mission.net_assessment}
                             references={peacekeepingContributorSources(
                               [mission],
                               meta,
                               contributor.name,
+                            )}
+                          />
+                          <SourceCalculation
+                            amount={mission.gross_assessment}
+                            references={peacekeepingContributorSources(
+                              [mission],
+                              meta,
+                              contributor.name,
+                              "gross",
                             )}
                           />
                         </div>
