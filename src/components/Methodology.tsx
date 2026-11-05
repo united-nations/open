@@ -783,8 +783,9 @@ export function SecretariatOverviewMethodologyNotes() {
         $3,841,261 difference to its $696,642,000 IPSAS total.
       </p>
       <p>
-        Entity tiles use one primary priority area for placement, except Staff
-        Assessment, which remains split across priorities.
+        Entity tiles follow the compilation’s priority allocations, so an entity
+        can appear under more than one priority. Sidebar breakdowns retain those
+        allocations.
       </p>
     </>
   );
