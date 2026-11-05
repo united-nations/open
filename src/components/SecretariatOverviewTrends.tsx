@@ -146,22 +146,15 @@ export function SecretariatOverviewTrends() {
             }
             getItemColor={priorityAreaColor}
           />
-          {priorities.every((name) => hiddenPriorities.includes(name)) ? (
-            <div
-              className="flex h-[280px] items-center justify-center text-sm text-gray-500"
-              role="status"
-            >
-              Select a priority area to show the trend.
-            </div>
-          ) : (
-            <FinancingInstrumentChart
-              data={priorityData}
-              series={prioritySeries.filter(
-                (item) => !hiddenPriorities.includes(item.key),
-              )}
-              showLegend={false}
-            />
-          )}
+          <FinancingInstrumentChart
+            data={priorityData}
+            series={prioritySeries}
+            hiddenSeriesKeys={hiddenPriorities}
+            emptySelectionMessage="Select a priority area to show the trend."
+            accessibleTableLabel="Expenditure by priority area"
+            showLegend={false}
+            showShareToggle
+          />
         </div>
         <div className="flex flex-col">
           <h4 className="mb-3 text-sm font-medium text-gray-700">
@@ -170,6 +163,8 @@ export function SecretariatOverviewTrends() {
           <FinancingInstrumentChart
             data={fundingData}
             filterable
+            accessibleTableLabel="Expenditure by funding source"
+            showShareToggle
             series={FUNDING_SOURCE_TREND_SERIES.map((item) =>
               item.key === "other_assessed"
                 ? { ...item, color: "var(--color-faded-jade)" }

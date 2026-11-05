@@ -145,10 +145,12 @@ function TrendTooltipContent({
 export function SourceAwareTrendTooltip({
   interactive = false,
   constrainToViewport = false,
+  filterNull,
   content,
 }: {
   interactive?: boolean;
   constrainToViewport?: boolean;
+  filterNull?: boolean;
   content: (props: ContentProps) => ReactNode;
 }) {
   const [held, setHeld] = useState<ContentProps | null>(null);
@@ -176,6 +178,7 @@ export function SourceAwareTrendTooltip({
   };
   return (
     <Tooltip
+      filterNull={filterNull}
       active={held ? true : undefined}
       position={constrainToViewport ? viewportPosition : held?.coordinate}
       isAnimationActive={constrainToViewport ? false : undefined}

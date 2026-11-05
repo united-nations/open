@@ -9,7 +9,7 @@ import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 import type { BudgetNodeSource } from "@/types";
 import { sourcePages, sourcePageUrl } from "@/lib/sourceReferences";
-import { useState } from "react";
+import { useId, useState } from "react";
 import { fundingSources } from "@un-eosg/ui/funding-sources";
 import { FinancingInstrumentLabel } from "../FinancingInstrumentLabel";
 
@@ -92,6 +92,11 @@ interface FinancingInstrumentChartProps {
   legendClassName?: string;
   compact?: boolean;
   filterable?: boolean;
+  /** Series hidden by controls outside the chart. */
+  hiddenSeriesKeys?: readonly string[];
+  emptySelectionMessage?: string;
+  showShareToggle?: boolean;
+  absoluteUnit?: "$" | "#";
   yAxisMax?: number;
   /** Allow signed net series, such as contribution adjustments. */
   allowNegative?: boolean;
@@ -109,6 +114,12 @@ interface FinancingInstrumentChartProps {
 }
 
 const formatYAxis = sharedFormatBudget;
+const NEGATIVE_NOTE_THRESHOLD = 0.01;
+const shareTicks = [0, 25, 50, 75, 100];
+const shareFormatter = new Intl.NumberFormat("en-GB", {
+  maximumFractionDigits: 1,
+});
+const formatShare = (value: number) => `${shareFormatter.format(value)}%`;
 
 function LegendChip({
   type,
@@ -155,6 +166,10 @@ export function FinancingInstrumentChart({
   compact = false,
   series = DEFAULT_SERIES,
   filterable = false,
+  hiddenSeriesKeys,
+  emptySelectionMessage = "Select a category to show the trend.",
+  showShareToggle = false,
+  absoluteUnit = "$",
   valueFormatter,
   yAxisMax,
   tooltipValueFormatter,
@@ -169,6 +184,9 @@ export function FinancingInstrumentChart({
 }: FinancingInstrumentChartProps) {
   const displayMax = yAxisMax;
   const [hiddenKeys, setHiddenKeys] = useState<string[]>([]);
+  const [displayMode, setDisplayMode] = useState("absolute");
+  const unitGroup = useId();
+  const showShare = showShareToggle && displayMode === "share";
   // Include signed net series when requested; otherwise require a positive value.
   const activeSeries = series.filter((s) =>
     data.some(
@@ -179,19 +197,61 @@ export function FinancingInstrumentChart({
   );
 
   const visibleSeries = activeSeries.filter(
-    (s) => !filterable || !hiddenKeys.includes(s.key),
+    (s) =>
+      !hiddenSeriesKeys?.includes(s.key) &&
+      (!filterable || !hiddenKeys.includes(s.key)),
   );
-  const plotData = omitNegativeFromPlot
-    ? data.map((row) => {
-        const point = { ...row };
-        for (const { key } of visibleSeries) {
-          const value = row[key];
-          if (typeof value === "number" && value < 0) point[key] = 0;
-        }
-        return point;
-      })
-    : data;
-  const offset = stackOffset ?? (allowNegative ? "sign" : "none");
+  const showNegativeNote =
+    showShareToggle &&
+    omitNegativeFromPlot &&
+    data.some((row) => {
+      let positive = 0;
+      let negative = 0;
+      for (const { key } of visibleSeries) {
+        const value = row[key];
+        if (typeof value !== "number" || !Number.isFinite(value)) continue;
+        positive += Math.max(0, value);
+        negative += Math.max(0, -value);
+      }
+      // Compare the omitted amount to the positive stack for the same year.
+      return negative > 0 && negative >= positive * NEGATIVE_NOTE_THRESHOLD;
+    });
+  const plotData =
+    showShare || omitNegativeFromPlot
+      ? data.map((row) => {
+          const point = { ...row };
+          // Use the full annual breakdown even when some categories are hidden.
+          const values = series.map(({ key }) => row[key]);
+          const total =
+            showShare &&
+            values.every(
+              (value) =>
+                typeof value === "number" &&
+                Number.isFinite(value) &&
+                (omitNegativeFromPlot || value >= 0),
+            )
+              ? values.reduce<number>(
+                  (sum, value) => sum + Math.max(0, Number(value)),
+                  0,
+                )
+              : 0;
+          for (const { key } of series) {
+            const value = row[key];
+            if (showShare) {
+              point[key] =
+                total > 0 && typeof value === "number"
+                  ? (Math.max(0, value) / total) * 100
+                  : null;
+            } else if (typeof value === "number" && value < 0) {
+              point[key] = 0;
+            }
+          }
+          return point;
+        })
+      : data;
+  const offset = showShare
+    ? "none"
+    : (stackOffset ?? (allowNegative ? "sign" : "none"));
   // Pin signed domains to the actual stack extent. An automatic domain can
   // round a tiny negative balance down to a full, misleading negative tick.
   const stackExtents = plotData.map((row) => {
@@ -229,13 +289,26 @@ export function FinancingInstrumentChart({
 
   const Chart = variant === "bar" ? BarChart : AreaChart;
   const chartHeight = compact ? 180 : height;
+  const formatTooltipValue =
+    tooltipValueFormatter ?? valueFormatter ?? formatYAxis;
+
+  function shareDetail(
+    amount: number,
+    share: FinancingInstrumentDataPoint[string] | undefined,
+  ) {
+    if (omitNegativeFromPlot && amount < 0) return "Excluded from share";
+    return typeof share === "number" ? formatShare(share) : "Share unavailable";
+  }
+
   function tableAmount(
     year: string,
     keys: string[],
     value: number,
     label: string,
+    detail?: string,
   ) {
-    const amount = (valueFormatter ?? formatYAxis)(value);
+    const formatted = (valueFormatter ?? formatYAxis)(value);
+    const amount = detail ? `${formatted} · ${detail}` : formatted;
     if (!tooltipSources) return amount;
     const pages = new Map<string, { symbol: string; page: number }>();
     for (const source of tooltipSources(year, keys)) {
@@ -304,20 +377,59 @@ export function FinancingInstrumentChart({
           )}
         </div>
       )}
-      <div style={{ height: chartHeight }} className="w-full">
+      <div style={{ height: chartHeight }} className="relative w-full">
+        {showShareToggle && (
+          <fieldset className="absolute start-3 top-3 z-10 flex w-fit overflow-hidden rounded-full border border-slate-300 bg-white">
+            <legend className="sr-only">
+              {accessibleTableLabel
+                ? `${accessibleTableLabel} units`
+                : "Trend units"}
+            </legend>
+            {[
+              {
+                mode: "absolute",
+                symbol: absoluteUnit,
+                label: "Absolute values",
+              },
+              {
+                mode: "share",
+                symbol: "%",
+                label: "Share of the annual total",
+              },
+            ].map(({ mode, symbol, label }) => (
+              <label
+                key={mode}
+                className="relative cursor-pointer last:border-s last:border-slate-300"
+                title={label}
+              >
+                <input
+                  type="radio"
+                  name={unitGroup}
+                  checked={displayMode === mode}
+                  onChange={() => setDisplayMode(mode)}
+                  aria-label={label}
+                  className="peer sr-only"
+                />
+                <span className="grid h-6 w-7 place-items-center text-xs text-slate-600 peer-checked:bg-slate-200 peer-checked:font-semibold peer-checked:text-slate-900 peer-focus-visible:outline-2 peer-focus-visible:-outline-offset-2 peer-focus-visible:outline-un-blue">
+                  {symbol}
+                </span>
+              </label>
+            ))}
+          </fieldset>
+        )}
         {visibleSeries.length === 0 ? (
           <div
             className="flex h-full items-center justify-center text-sm text-gray-500"
             role="status"
           >
-            Select a category to show the trend.
+            {emptySelectionMessage}
           </div>
         ) : (
           <ResponsiveContainer width="100%" height="100%">
             <Chart
               // Re-register areas in series order when filters change; restored
               // series otherwise append to Recharts' internal stack registry.
-              key={visibleSeries.map((series) => series.key).join("|")}
+              key={`${displayMode}:${visibleSeries.map((series) => series.key).join("|")}`}
               data={plotData}
               margin={TREND_CHART_MARGIN}
               stackOffset={offset}
@@ -336,28 +448,32 @@ export function FinancingInstrumentChart({
                   fontSize: compact ? 9 : 11,
                   fill: "#6b7280",
                   dx: -5,
-                  dy: allowNegative ? -2 : -8,
+                  dy: allowNegative && !showShare ? -2 : -8,
                 }}
                 tickLine={false}
                 axisLine={false}
                 domain={
-                  allowNegative
-                    ? [signedMinimum, displayMax ?? (signedMaximum || 1)]
-                    : [0, displayMax ?? "auto"]
+                  showShare
+                    ? [0, 100]
+                    : allowNegative
+                      ? [signedMinimum, displayMax ?? (signedMaximum || 1)]
+                      : [0, displayMax ?? "auto"]
                 }
+                allowDataOverflow={showShare}
                 ticks={
-                  displayMax
-                    ? Array.from(
-                        { length: 5 },
-                        (_, index) => (displayMax * index) / 4,
-                      )
-                    : undefined
+                  showShare
+                    ? shareTicks
+                    : displayMax
+                      ? Array.from(
+                          { length: 5 },
+                          (_, index) => (displayMax * index) / 4,
+                        )
+                      : undefined
                 }
                 tickFormatter={(value: number) =>
-                  (valueFormatter ?? formatYAxis)(value).replaceAll(
-                    " ",
-                    "\u00a0",
-                  )
+                  (showShare ? formatShare : (valueFormatter ?? formatYAxis))(
+                    value,
+                  ).replaceAll(" ", "\u00a0")
                 }
                 mirror
               />
@@ -365,11 +481,15 @@ export function FinancingInstrumentChart({
                 key={`${visibleSeries.map((series) => series.key).join("|")}`}
                 interactive={Boolean(tooltipSources)}
                 constrainToViewport={visibleSeries.length > 10}
+                filterNull={!showShare}
                 content={(props) => {
                   const year = String(props.label ?? "");
-                  const reported = omitNegativeFromPlot
-                    ? data.find((row) => row.year === year)
-                    : undefined;
+                  const index =
+                    showShare || omitNegativeFromPlot
+                      ? data.findIndex((row) => row.year === year)
+                      : -1;
+                  const reported = data[index];
+                  const plotted = plotData[index];
                   return (
                     <FinancialChartTooltip
                       {...props}
@@ -377,22 +497,25 @@ export function FinancingInstrumentChart({
                         const series = visibleSeries.find(
                           (series) => series.key === entry.dataKey,
                         );
+                        const value =
+                          series && reported
+                            ? reported[series.key]
+                            : entry.value;
                         return {
                           ...entry,
-                          value:
-                            series && reported
-                              ? reported[series.key]
-                              : entry.value,
+                          value,
                           color: series?.color ?? entry.color,
+                          formattedValue:
+                            showShare && series && typeof value === "number"
+                              ? `${formatTooltipValue(value)} · ${shareDetail(value, plotted?.[series.key])}`
+                              : undefined,
                         };
                       })}
-                      formatValue={
-                        tooltipValueFormatter ?? valueFormatter ?? formatYAxis
-                      }
+                      formatValue={formatTooltipValue}
                       totalLabel={
                         showTooltipTotal ? "Selected total" : undefined
                       }
-                      showBars={!omitNegativeFromPlot}
+                      showBars={!showShare && !omitNegativeFromPlot}
                       sources={tooltipSources?.(
                         year,
                         visibleSeries.map((series) => series.key),
@@ -431,10 +554,16 @@ export function FinancingInstrumentChart({
           </ResponsiveContainer>
         )}
       </div>
+      {showNegativeNote && (
+        <p className="mt-2 text-xs text-gray-500">
+          Negative amounts are not shown in the chart but included in tooltips.
+        </p>
+      )}
       {accessibleTableLabel && (
         <table className="sr-only focus-within:not-sr-only focus-within:mt-3 focus-within:w-full focus-within:text-left focus-within:text-xs">
           <caption>
             {accessibleTableLabel}, {currencyLabel}
+            {showShare && " and shares of the annual total"}
           </caption>
           <thead>
             <tr>
@@ -450,7 +579,7 @@ export function FinancingInstrumentChart({
             </tr>
           </thead>
           <tbody>
-            {data.map((row) => (
+            {data.map((row, index) => (
               <tr key={row.year}>
                 <th scope="row">{row.year}</th>
                 {visibleSeries.map((item) => (
@@ -461,6 +590,12 @@ export function FinancingInstrumentChart({
                           [item.key],
                           Number(row[item.key]),
                           item.label,
+                          showShare
+                            ? shareDetail(
+                                Number(row[item.key]),
+                                plotData[index][item.key],
+                              )
+                            : undefined,
                         )
                       : "Unavailable"}
                   </td>

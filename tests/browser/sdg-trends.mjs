@@ -42,6 +42,58 @@ try {
     /No Poverty/,
   );
 
+  const latest = chart.getByRole("row", { name: /^2025 / });
+  const units = chart.getByRole("group", {
+    name: "Annual expenditure by SDG classification units",
+  });
+  const unitBounds = await units.boundingBox();
+  const gridBounds = await chart
+    .locator(".recharts-cartesian-grid-horizontal")
+    .boundingBox();
+  assert.ok(
+    unitBounds &&
+      gridBounds &&
+      unitBounds.x >= gridBounds.x &&
+      unitBounds.y >= gridBounds.y &&
+      unitBounds.x + unitBounds.width <= gridBounds.x + gridBounds.width &&
+      unitBounds.y + unitBounds.height <= gridBounds.y + gridBounds.height,
+  );
+  assert.equal(
+    await chart
+      .getByText(
+        "Negative amounts are not shown in the chart but included in tooltips.",
+      )
+      .count(),
+    0,
+  );
+  await units.getByText("%", { exact: true }).click();
+  await chart
+    .locator(".recharts-yAxis-tick-labels")
+    .getByText("100%", { exact: true })
+    .waitFor();
+  const firstShare = await latest.getByRole("cell").first().innerText();
+  assert.match(firstShare, /\$.* · \d.*%/);
+  assert.match(await latest.innerText(), /-\$63\.8M · Excluded from share/);
+  await goal.click();
+  assert.equal(await latest.getByRole("cell").first().innerText(), firstShare);
+  await goal.click();
+
+  const plot = await chart.locator(".recharts-wrapper").boundingBox();
+  const yearTick = await chart
+    .locator(".recharts-xAxis-tick-labels")
+    .getByText("2025")
+    .boundingBox();
+  assert.ok(plot && yearTick);
+  await page.mouse.move(yearTick.x + yearTick.width / 2, plot.y + 60);
+  const shareDetails = chart.getByRole("region", {
+    name: "Annual expenditure details",
+  });
+  await shareDetails
+    .getByText("-$63.8M · Excluded from share", { exact: true })
+    .waitFor();
+  await units.getByText("$", { exact: true }).click();
+  assert.doesNotMatch(await latest.innerText(), /Excluded from share/);
+
   for (const viewport of [
     { width: 390, height: 844 },
     { width: 390, height: 667 },

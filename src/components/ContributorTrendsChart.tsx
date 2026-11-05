@@ -371,9 +371,6 @@ export function ContributorTrendsChart() {
         <h4 className="text-sm font-medium text-gray-700">
           Revenue by contributor type
         </h4>
-        <p className="mt-1 pb-3 text-xs text-gray-500">
-          Negative balances appear only in the tooltip and data table.
-        </p>
         <div className="mt-auto">
           <FinancingInstrumentChart
             data={contributorTypeData}
@@ -381,6 +378,7 @@ export function ContributorTrendsChart() {
             accessibleTableLabel="Revenue by contributor type"
             allowNegative
             omitNegativeFromPlot
+            showShareToggle
           />
         </div>
       </div>
@@ -404,6 +402,8 @@ export function ContributorTrendsChart() {
             data={financingInstrumentData}
             accessibleTableLabel="Revenue by financing instrument"
             allowNegative
+            omitNegativeFromPlot
+            showShareToggle
             height={TREND_CHART_HEIGHT}
             filterable
           />

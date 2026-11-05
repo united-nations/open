@@ -77,6 +77,8 @@ export async function SDGsTrendsChart() {
         filterable
         showTooltipTotal
         allowNegative
+        omitNegativeFromPlot
+        showShareToggle
         stackOffset="none"
       />
     </section>

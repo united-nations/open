@@ -185,36 +185,33 @@ export function RegularBudgetPaymentStatusTrends() {
         </div>
       </div>
       {chartData.length > 0 ? (
-        hidden.length === STATUS_SERIES.length ? (
-          <div
-            className="flex items-center justify-center text-sm text-gray-500"
-            style={{ height: TREND_CHART_HEIGHT }}
-          >
-            Select a payment status to show the trend.
-          </div>
-        ) : (
-          <FinancingInstrumentChart
-            data={chartData}
-            series={STATUS_SERIES.filter((item) => !hidden.includes(item.key))}
-            showLegend={false}
-            height={TREND_CHART_HEIGHT}
-            showTooltipTotal
-            tooltipValueFormatter={(value) =>
-              measure === "count"
-                ? `${value.toLocaleString("en-GB")} Member States`
-                : sharedFormatBudget(value)
-            }
-            yAxisMax={
-              sharedScale?.scales?.[measure === "count" ? "count" : "amount"]
-            }
-            valueFormatter={
-              measure === "count"
-                ? (value) =>
-                    value.toLocaleString("en-GB", { maximumFractionDigits: 0 })
-                : undefined
-            }
-          />
-        )
+        <FinancingInstrumentChart
+          data={chartData}
+          series={STATUS_SERIES}
+          hiddenSeriesKeys={hidden}
+          emptySelectionMessage="Select a payment status to show the trend."
+          accessibleTableLabel="Annual payment status"
+          currencyLabel={measure === "count" ? "Member States" : undefined}
+          showLegend={false}
+          showShareToggle
+          absoluteUnit={measure === "count" ? "#" : "$"}
+          height={TREND_CHART_HEIGHT}
+          showTooltipTotal
+          tooltipValueFormatter={(value) =>
+            measure === "count"
+              ? `${value.toLocaleString("en-GB")} Member States`
+              : sharedFormatBudget(value)
+          }
+          yAxisMax={
+            sharedScale?.scales?.[measure === "count" ? "count" : "amount"]
+          }
+          valueFormatter={
+            measure === "count"
+              ? (value) =>
+                  value.toLocaleString("en-GB", { maximumFractionDigits: 0 })
+              : undefined
+          }
+        />
       ) : (
         <div className="flex h-80 items-center justify-center text-center text-sm text-gray-500">
           No complete calendar years are available.

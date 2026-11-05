@@ -153,11 +153,17 @@ export function FunctionsTrendsChart() {
         legendClassName="content-end items-start"
         data={data.data.map((item) => ({
           year: String(item.year),
+          // The legacy category is inapplicable under the current classification.
+          ...(item.year >= data.meta.classificationStartYear
+            ? { "legacy-other": 0 }
+            : {}),
           ...item.functions,
         }))}
         series={FUNCTION_SERIES}
+        accessibleTableLabel="Expenditure by function"
         filterable
         showTooltipTotal
+        showShareToggle
       />
       <p className="text-sm text-slate-600">
         Classification changes in 2018; earlier years retain legacy Other.

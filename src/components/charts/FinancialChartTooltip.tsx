@@ -23,6 +23,7 @@ export function FinancialChartTooltip({
     value?: unknown;
     color?: string;
     dataKey?: unknown;
+    formattedValue?: string;
   }[];
   formatValue?: (value: number) => string;
   title?: string;
@@ -54,7 +55,7 @@ export function FinancialChartTooltip({
         }
         rows={entries.map((entry) => ({
           label: String(entry.name ?? entry.dataKey ?? "Amount"),
-          value: formatValue(Number(entry.value)),
+          value: entry.formattedValue ?? formatValue(Number(entry.value)),
           color: entry.color,
           share:
             showBars && total > 0 && Number(entry.value) >= 0
