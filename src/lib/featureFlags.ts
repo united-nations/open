@@ -1,11 +1,15 @@
 import profiles from "../../config/features.json";
 
 export type Feature = keyof typeof profiles.public;
-export type SiteVariant = "public" | "preview";
+export type SiteVariant = "public" | "preview" | "full";
 
 // next.config.ts validates SITE_VARIANT and embeds it for server and browser.
 export const SITE_VARIANT: SiteVariant =
-  process.env.NEXT_PUBLIC_SITE_VARIANT === "preview" ? "preview" : "public";
+  process.env.NEXT_PUBLIC_SITE_VARIANT === "full"
+    ? "full"
+    : process.env.NEXT_PUBLIC_SITE_VARIANT === "preview"
+      ? "preview"
+      : "public";
 export const FEATURES: Readonly<Record<Feature, boolean>> =
   profiles[SITE_VARIANT];
 

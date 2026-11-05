@@ -4,7 +4,7 @@ import path from "node:path";
 import { moduleAt } from "../src/lib/tests/moduleAt.mjs";
 
 const variant = process.env.SITE_VARIANT ?? "public";
-assert.ok(["public", "preview"].includes(variant), "Invalid SITE_VARIANT");
+assert.ok(["public", "preview", "full"].includes(variant), "Invalid SITE_VARIANT");
 process.env.NEXT_PUBLIC_SITE_VARIANT = variant;
 const { SECRETARIAT_NAV, isRouteEnabled, visibleSecretariatNav } =
   await moduleAt("src/lib/navigation.ts");
@@ -52,11 +52,7 @@ for (const item of SECRETARIAT_NAV) {
 for (const route of ["locations", "goals"]) {
   const html = fs.readFileSync(`out/system/${route}/index.html`, "utf8");
   assert.equal(
-    html.includes(
-      route === "locations"
-        ? "Country sidebars also display data from"
-        : "The goal sidebar also shows UNINFO",
-    ),
+    html.includes('href="https://uninfo.org/"'),
     FEATURES.uninfo,
     `${variant}: ${route} source disclosure`,
   );

@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        variant: [public, preview]
+        variant: [public, preview, full]
     env:
       SITE_VARIANT: ${{ matrix.variant }}
     steps:
@@ -63,7 +63,9 @@ jobs:
       - name: Build with Next.js
         run: pnpm build
       - name: Verify feature availability
-        run: node scripts/check-feature-export.mjs
+        run: |
+          node --test src/lib/tests/featureProfiles.test.mjs
+          node scripts/check-feature-export.mjs
       - name: Install browser
         run: pnpm exec playwright install --with-deps chromium
       - name: Verify routes and UNINFO in browser

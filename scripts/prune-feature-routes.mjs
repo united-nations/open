@@ -3,7 +3,7 @@ import path from "node:path";
 import config from "../config/features.json" with { type: "json" };
 
 const variant = process.env.SITE_VARIANT ?? "public";
-if (!["public", "preview"].includes(variant)) {
+if (!["public", "preview", "full"].includes(variant)) {
   throw new Error(`Invalid SITE_VARIANT: ${variant}`);
 }
 // Use the profile embedded in the build, even if this script is called separately.

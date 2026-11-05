@@ -24,54 +24,50 @@ and organization revenue proportions are not treated as function financing.
 
 ## Site variants
 
-The same branch builds two versions. Set `SITE_VARIANT=public` for open.un.org
-(GitHub Pages), or `SITE_VARIANT=preview` for the future-feature preview on Vercel.
-An unset variable defaults to `public`; an invalid value fails the build.
+The same branch supports three build profiles, configured centrally in
+`config/features.json`:
+
+- `public`: the production profile for open.un.org (GitHub Pages).
+- `preview`: selected future features for the Vercel preview; UNINFO is disabled.
+- `full`: every feature flag enabled, including UNINFO, outstanding regular-budget
+  assessments, additional trust funds, Field Missions, sorting controls, entity
+  impacts, the budget sidebar mini treemap, and the function/geography plot.
+
+Set `SITE_VARIANT` to select a profile. An unset variable defaults to `public`;
+an invalid value fails the build. Selection happens at build time, so changing
+profiles requires rebuilding or restarting the development server.
 
 ```bash
 SITE_VARIANT=public pnpm build
 SITE_VARIANT=preview pnpm dev
-SITE_VARIANT=preview pnpm build
-SITE_VARIANT=preview node scripts/check-feature-export.mjs
+SITE_VARIANT=full pnpm dev
+SITE_VARIANT=full pnpm build
+SITE_VARIANT=full node scripts/check-feature-export.mjs
 ```
 
-`additionalTrustFunds` controls the separately reported UNEP, UNODC, UN-Habitat
-and ITC expenditure and contributor views within Trust Funds. It is off in both
-profiles. With it off, charts, totals and sidebars use only the UN Secretariat
-Volume I schedules; introductions link to the four separate entity reports.
-The source data is retained so these views can be enabled later. The parent
-`trustFunds` flag still controls availability of the whole route.
+To release a feature, enable it in `public` and rebuild. The `routes` map associates
+route prefixes with their flags. Page flags govern the entire route subtree,
+Secretariat navigation, and homepage shortcuts. Disabled routes return 404. Use
+`pnpm build` so post-export pruning removes disabled route files (Next.js otherwise
+exports 404 HTML at those URLs).
 
+The `uninfo` flag controls data loading, sidebar sections, and source disclosures
+in Locations and Goals; it is enabled only in `full`. The `additionalTrustFunds`
+flag includes separately reported UNEP, UNODC, UN-Habitat and ITC data in Trust
+Funds. It is disabled in `public` and `preview`: those profiles use only the
+Secretariat Volume I schedules and mention the excluded entities in the intro.
+The parent `trustFunds` flag controls the whole route. Source JSON remains
+available regardless of the selected profile.
 
-`config/features.json` defines both profiles. To release a feature, enable it in
-`public` and rebuild. The `routes` map associates route prefixes with their flags.
-Page flags govern the entire route subtree, Secretariat navigation, and homepage
-shortcuts. Disabled routes return 404. Use `pnpm build` so the post-export pruning
-step removes disabled route files (Next.js otherwise exports 404 HTML at those
-URLs). The `uninfo` flag
-controls data loading, sidebar sections, and source disclosures in both Locations
-and Goals. Public JSON data remains available in both versions.
-
-The two-column Secretariat funding-mechanism Sankey appears in both profiles.
-`secretariatDetailedFlows` enables the additional three-column funding-arrangement
-Sankey only in preview. The `functionGeography` flag enables the Locations
-function/geography plot only in preview.
-
-Previously hidden Field Missions, UNINFO sorting, entity impacts, and the budget
-sidebar mini treemap remain disabled in both profiles until explicitly enabled.
-
-GitHub Actions builds both profiles and checks exported routes, links, and UNINFO
-browser requests, then uploads only the public export for deployment. For Vercel, configure `SITE_VARIANT=preview` in every
-Vercel environment that should show future features (including Production if the
-project's main URL is the preview). Use `pnpm build` and the static `out` output.
-The profile is selected at build time; changing it requires a rebuild and restart
-of a running development server.
+GitHub Actions builds and checks all three profiles, then uploads only the public
+export for deployment. Configure Vercel with `SITE_VARIANT=preview`, `pnpm build`,
+and the static `out` output for the selected-feature preview.
 
 `node scripts/check-feature-export.mjs` checks the current export against the
 selected profile. With a static server running, use
-`SITE_VARIANT=public PORTAL_URL=http://localhost:8766 node tests/browser/feature-profiles.mjs`
-(or `preview`) to check direct URLs and UNINFO requests in the browser. Existing
-full-feature browser suites should run against a preview build.
+`SITE_VARIANT=full PORTAL_URL=http://localhost:8766 node tests/browser/feature-profiles.mjs`
+(or `public` / `preview`) to check direct URLs and UNINFO requests. Run the full
+feature browser suite against a `full` build.
 
 ## Data Sources
 

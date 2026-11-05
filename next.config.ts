@@ -7,15 +7,20 @@ import featureProfiles from "./config/features.json";
 
 // Resolve once at build time so server and browser use the same profile.
 const siteVariant = process.env.SITE_VARIANT ?? "public";
-if (siteVariant !== "public" && siteVariant !== "preview") {
+if (
+  siteVariant !== "public" &&
+  siteVariant !== "preview" &&
+  siteVariant !== "full"
+) {
   throw new Error(
-    `Invalid SITE_VARIANT: ${siteVariant}. Expected public or preview.`,
+    `Invalid SITE_VARIANT: ${siteVariant}. Expected public, preview or full.`,
   );
 }
 const featureKeys = Object.keys(featureProfiles.public);
 for (const [name, flags] of Object.entries({
   public: featureProfiles.public,
   preview: featureProfiles.preview,
+  full: featureProfiles.full,
 })) {
   if (
     Object.keys(flags).length !== featureKeys.length ||
@@ -24,7 +29,7 @@ for (const [name, flags] of Object.entries({
     )
   ) {
     throw new Error(
-      `Invalid feature profile: ${name}. Both profiles must define the same boolean flags.`,
+      `Invalid feature profile: ${name}. All profiles must define the same boolean flags.`,
     );
   }
 }

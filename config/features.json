@@ -19,10 +19,23 @@
     "trustFunds": true,
     "additionalTrustFunds": false,
     "fieldMissions": false,
-    "uninfo": true,
+    "uninfo": false,
     "uninfoSortControls": false,
     "entityImpacts": false,
     "budgetSidebarMiniTreemap": false,
+    "functionGeography": true
+  },
+  "full": {
+    "programmeBudget": true,
+    "regularBudgetOutstanding": true,
+    "peacekeepingBudget": true,
+    "trustFunds": true,
+    "additionalTrustFunds": true,
+    "fieldMissions": true,
+    "uninfo": true,
+    "uninfoSortControls": true,
+    "entityImpacts": true,
+    "budgetSidebarMiniTreemap": true,
     "functionGeography": true
   },
   "routes": {
