@@ -3,9 +3,9 @@
     "year": 2021,
     "currency": "USD",
     "measure": "Contributions and transfers",
-    "statement_total_usd": 3278403679,
+    "statement_total_usd": 4110808307,
     "named_rows_total_usd": 3278403679,
-    "contributor_total_usd": 3296579279,
+    "contributor_total_usd": 4128983907,
     "adjustment_total_usd": -18175600,
     "unallocated_residual_usd": 0,
     "named_row_completeness": 1.0,
@@ -14,10 +14,306 @@
       "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
       "url": "https://digitallibrary.un.org/record/3984139"
     },
-    "method_note": "Includes recognized voluntary contributions, inter-agency contributions and transfers (including UNDP MPTF), and internal transfers, net of reported refunds and adjustments. Receivable balances are excluded. Present-value and voluntary-schedule internal adjustments are reported separately. These are gross fund-level flows, not cash receipts or new external funding: transfers between funds can count the same money again. Unallocated extraction residuals are not assigned to contributors.",
-    "mapping_note": "Entity destinations are reconstructed organizational assignments for the fund, not proof that a donor financed a particular expense."
+    "method_note": "Includes recognized voluntary contributions, inter-agency contributions and transfers (including UNDP MPTF), and internal transfers, net of reported refunds and adjustments. Receivable balances are excluded. Present-value and voluntary-schedule internal adjustments are reported separately. These are gross fund-level flows, not cash receipts or new external funding: transfers between funds can count the same money again. Unallocated extraction residuals are not assigned to contributors. Schedule 8.1 adds reported MPTF voluntary contributions by recipient fund, without a contributor breakdown. Named-row reconciliation covers the individually coded funds.",
+    "mapping_note": "Entity destinations are reconstructed organizational assignments for the fund, not proof that a donor financed a particular expense.",
+    "mptf_voluntary_contributions_usd": 832404628
   },
   "contributors": [
+    {
+      "name": "MPTF voluntary contributions",
+      "counterparty_group": "Unspecified",
+      "amount_usd": 832404628,
+      "positive_amount_usd": 832587799,
+      "negative_amount_usd": -183171,
+      "reported_names": [],
+      "destinations": [
+        {
+          "fund_code": null,
+          "fund_id": "trust-fund-entity:OCHA:fund:mptf:common-humanitarian-fund",
+          "fund_name": "Common Humanitarian Fund",
+          "entity_code": "OCHA",
+          "entity_name": "Office for the Coordination of Humanitarian Affairs",
+          "entity_id": "trust-fund-entity:OCHA",
+          "mapping_status": "mapped",
+          "amount_usd": 559743755,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "pdfPage": 408,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "Common Humanitarian Fund",
+              "label": "Common Humanitarian Fund — 2021"
+            }
+          ],
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "label": "Voluntary contributions",
+              "group": "unitemized",
+              "amount_usd": 559743755,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+                  "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+                  "pdfPage": 408,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row",
+                  "tableTitle": "Schedule 8.1 — financial performance",
+                  "rowLabel": "Voluntary contributions",
+                  "columnHeader": "Common Humanitarian Fund",
+                  "label": "Common Humanitarian Fund — 2021"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fund_code": null,
+          "fund_id": "trust-fund-entity:MPTF-PBF:fund:mptf:peacebuilding-fund",
+          "fund_name": "UN Peacebuilding Fund",
+          "entity_code": "MPTF-PBF",
+          "entity_name": "Peacebuilding Fund",
+          "entity_id": "trust-fund-entity:MPTF-PBF",
+          "mapping_status": "mapped",
+          "amount_usd": 261726185,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "pdfPage": 408,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "UN Peacebuilding Fund",
+              "label": "UN Peacebuilding Fund — 2021"
+            }
+          ],
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "label": "Voluntary contributions",
+              "group": "unitemized",
+              "amount_usd": 261726185,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+                  "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+                  "pdfPage": 408,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row",
+                  "tableTitle": "Schedule 8.1 — financial performance",
+                  "rowLabel": "Voluntary contributions",
+                  "columnHeader": "UN Peacebuilding Fund",
+                  "label": "UN Peacebuilding Fund — 2021"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fund_code": null,
+          "fund_id": "trust-fund-entity:MPTF-CVD:fund:mptf:covid-19-response-and-recovery-fund",
+          "fund_name": "UN COVID-19 Response & Recovery Fund",
+          "entity_code": "MPTF-CVD",
+          "entity_name": "COVID-19 Response and Recovery Fund",
+          "entity_id": "trust-fund-entity:MPTF-CVD",
+          "mapping_status": "mapped",
+          "amount_usd": 10117859,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "pdfPage": 408,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "UN COVID-19 Response & Recovery Fund",
+              "label": "UN COVID-19 Response & Recovery Fund — 2021"
+            }
+          ],
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "label": "Voluntary contributions",
+              "group": "unitemized",
+              "amount_usd": 10117859,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+                  "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+                  "pdfPage": 408,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row",
+                  "tableTitle": "Schedule 8.1 — financial performance",
+                  "rowLabel": "Voluntary contributions",
+                  "columnHeader": "UN COVID-19 Response & Recovery Fund",
+                  "label": "UN COVID-19 Response & Recovery Fund — 2021"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fund_code": null,
+          "fund_id": "trust-fund-entity:MPTF-HTI:fund:mptf:haiti-cholera-response-fund",
+          "fund_name": "UN Haiti Cholera Response Fund",
+          "entity_code": "MPTF-HTI",
+          "entity_name": "Haiti Cholera Response Fund",
+          "entity_id": "trust-fund-entity:MPTF-HTI",
+          "mapping_status": "mapped",
+          "amount_usd": 1000000,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "pdfPage": 408,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "UN Haiti Cholera Response Fund",
+              "label": "UN Haiti Cholera Response Fund — 2021"
+            }
+          ],
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "label": "Voluntary contributions",
+              "group": "unitemized",
+              "amount_usd": 1000000,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+                  "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+                  "pdfPage": 408,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row",
+                  "tableTitle": "Schedule 8.1 — financial performance",
+                  "rowLabel": "Voluntary contributions",
+                  "columnHeader": "UN Haiti Cholera Response Fund",
+                  "label": "UN Haiti Cholera Response Fund — 2021"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fund_code": null,
+          "fund_id": "trust-fund-entity:OSRSG Migration:fund:mptf:migration-fund",
+          "fund_name": "UN MPTF on Migration",
+          "entity_code": "OSRSG Migration",
+          "entity_name": "OSRSG Migration",
+          "entity_id": "trust-fund-entity:OSRSG Migration",
+          "mapping_status": "mapped",
+          "amount_usd": -183171,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "pdfPage": 408,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "UN MPTF on Migration",
+              "label": "UN MPTF on Migration — 2021"
+            }
+          ],
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "label": "Voluntary contributions",
+              "group": "unitemized",
+              "amount_usd": -183171,
+              "supportingSources": [
+                {
+                  "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+                  "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+                  "pdfPage": 408,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row",
+                  "tableTitle": "Schedule 8.1 — financial performance",
+                  "rowLabel": "Voluntary contributions",
+                  "columnHeader": "UN MPTF on Migration",
+                  "label": "UN MPTF on Migration — 2021"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "flows": [
+        {
+          "type": "voluntary_contribution",
+          "label": "Voluntary contributions",
+          "group": "unitemized",
+          "amount_usd": 832404628,
+          "supportingSources": [
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "pdfPage": 408,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "Common Humanitarian Fund",
+              "label": "Common Humanitarian Fund — 2021"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "pdfPage": 408,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "UN Peacebuilding Fund",
+              "label": "UN Peacebuilding Fund — 2021"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "pdfPage": 408,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "UN COVID-19 Response & Recovery Fund",
+              "label": "UN COVID-19 Response & Recovery Fund — 2021"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "pdfPage": 408,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "UN Haiti Cholera Response Fund",
+              "label": "UN Haiti Cholera Response Fund — 2021"
+            },
+            {
+              "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2021",
+              "url": "https://digitallibrary.un.org/record/3984139/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2021-EN.pdf",
+              "pdfPage": 408,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "UN MPTF on Migration",
+              "label": "UN MPTF on Migration — 2021"
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "Germany",
       "flows": [

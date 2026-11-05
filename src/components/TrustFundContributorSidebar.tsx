@@ -52,11 +52,17 @@ export function TrustFundContributorSidebar({
         (item) => item.name === initialContributor.name,
       );
   const contributor = currentContributor ?? initialContributor;
+  const isUnitemized = contributor.counterparty_group === "Unspecified";
+  const amountLabel = isUnitemized
+    ? "Voluntary contributions"
+    : "Net contributions and transfers";
   const meta = selection.isInitialYear
     ? initialMeta
     : (selection.data?.meta ?? initialMeta);
   const ready = !selection.loading && !selection.error && !!currentContributor;
-  const years = useYearRanges().trustFundContributors.years;
+  const yearRanges = useYearRanges();
+  const years = yearRanges.trustFundContributors.years;
+  const canLinkToFunds = selection.year === yearRanges.budgetTrustFunds.default;
   const yearKey = years.join(",");
   const [trendSources, setTrendSources] = useState<
     Record<string, BudgetNodeSource[]>
@@ -173,7 +179,7 @@ export function TrustFundContributorSidebar({
         <FinancialDetailPanel
           title={contributor.name}
           titleId="trust-fund-contributor-title"
-          subtitle={`Contributions and transfers · All contributor categories · ${selection.year}`}
+          subtitle={`${isUnitemized ? "Contributors unspecified" : "Contributions and transfers · All contributor categories"} · ${selection.year}`}
           yearSelectorPlacement="header"
           yearSelector={{
             years,
@@ -206,7 +212,7 @@ export function TrustFundContributorSidebar({
           total={
             ready
               ? {
-                  label: "Net contributions and transfers",
+                  label: amountLabel,
                   value: (
                     <Tooltip
                       interactive
@@ -234,10 +240,21 @@ export function TrustFundContributorSidebar({
         >
           {ready && (
             <>
+              {isUnitemized && (
+                <p className="text-sm text-gray-600">
+                  Schedule 8.1 reports voluntary contributions by recipient fund
+                  without listing contributors.
+                </p>
+              )}
               {contributor.negative_amount_usd < 0 && (
                 <p className="mt-1 text-xs text-gray-500">
-                  Gross positive rows{" "}
-                  {currency(contributor.positive_amount_usd)}; refunds/transfers{" "}
+                  {isUnitemized
+                    ? "Positive fund amounts"
+                    : "Gross positive rows"}{" "}
+                  {currency(contributor.positive_amount_usd)}.{" "}
+                  {isUnitemized
+                    ? "Negative fund amounts"
+                    : "Refunds and transfers"}{" "}
                   {currency(contributor.negative_amount_usd)}.
                 </p>
               )}
@@ -262,7 +279,7 @@ export function TrustFundContributorSidebar({
                     series={[
                       {
                         key: "contributions",
-                        label: "Net contributions and transfers",
+                        label: amountLabel,
                         color: "var(--color-un-blue)",
                       },
                     ]}
@@ -325,41 +342,57 @@ export function TrustFundContributorSidebar({
                         <ul className="mt-1 space-y-1">
                           {[...group.funds]
                             .sort((a, b) => b.amount_usd - a.amount_usd)
-                            .map((fund) => (
-                              <FinancialBreakdownRow
-                                interactiveTooltip
-                                key={fund.fund_code}
-                                label={`${fund.fund_code} · ${fund.fund_name}`}
-                                value={currency(fund.amount_usd)}
-                                bar={bar(fund.amount_usd)}
-                                depth={1}
-                                tooltip={
-                                  <div>
-                                    <p className="font-medium">
-                                      {fund.fund_code} · {fund.fund_name}
-                                    </p>
-                                    <p>{group.entity_name}</p>
-                                    <p>
-                                      Contributions and transfers:{" "}
-                                      {currency(fund.amount_usd)}
-                                    </p>
-                                    <SourceReferenceLinks
-                                      references={fund.supportingSources ?? []}
-                                    />
-                                  </div>
-                                }
-                              />
-                            ))}
-                          {group.entity_id && (
-                            <li className="ps-3 pt-1">
-                              <Link
-                                className="text-sm text-un-blue hover:underline"
-                                href={`/secretariat/trust-funds/#trust-fund=${encodeURIComponent(group.entity_id)}`}
-                              >
-                                Open office details
-                              </Link>
-                            </li>
-                          )}
+                            .map((fund) => {
+                              const label = fund.fund_code
+                                ? `${fund.fund_code} · ${fund.fund_name}`
+                                : fund.fund_name;
+                              return (
+                                <FinancialBreakdownRow
+                                  interactiveTooltip
+                                  key={fund.fund_id ?? fund.fund_code}
+                                  label={label}
+                                  value={currency(fund.amount_usd)}
+                                  bar={bar(fund.amount_usd)}
+                                  depth={1}
+                                  tooltip={
+                                    <div>
+                                      <p className="font-medium">{label}</p>
+                                      <p>{group.entity_name}</p>
+                                      <p>
+                                        Contributions and transfers:{" "}
+                                        {currency(fund.amount_usd)}
+                                      </p>
+                                      <SourceReferenceLinks
+                                        references={
+                                          fund.supportingSources ?? []
+                                        }
+                                      />
+                                      {fund.fund_id && canLinkToFunds && (
+                                        <Link
+                                          className="text-un-blue hover:underline"
+                                          href={`/secretariat/trust-funds/#trust-fund=${encodeURIComponent(fund.fund_id)}`}
+                                        >
+                                          Open fund details
+                                        </Link>
+                                      )}
+                                    </div>
+                                  }
+                                />
+                              );
+                            })}
+                          {group.entity_id &&
+                            (!isUnitemized || canLinkToFunds) && (
+                              <li className="ps-3 pt-1">
+                                <Link
+                                  className="text-sm text-un-blue hover:underline"
+                                  href={`/secretariat/trust-funds/#trust-fund=${encodeURIComponent(group.entity_id)}`}
+                                >
+                                  {isUnitemized
+                                    ? "Open spending details"
+                                    : "Open office details"}
+                                </Link>
+                              </li>
+                            )}
                         </ul>
                       </FinancialBreakdownRow>
                     );

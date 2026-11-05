@@ -3,9 +3,9 @@
     "year": 2017,
     "currency": "USD",
     "measure": "Contributions and transfers",
-    "statement_total_usd": 2185776333,
+    "statement_total_usd": 2629151291,
     "named_rows_total_usd": 2185776333,
-    "contributor_total_usd": 2188289887,
+    "contributor_total_usd": 2631664845,
     "adjustment_total_usd": -2513554,
     "unallocated_residual_usd": 0,
     "named_row_completeness": 1.0,
@@ -14,10 +14,251 @@
       "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
       "url": "https://digitallibrary.un.org/record/1644706"
     },
-    "method_note": "Includes recognized voluntary contributions, inter-agency contributions and transfers (including UNDP MPTF), and internal transfers, net of reported refunds and adjustments. Receivable balances are excluded. Present-value and voluntary-schedule internal adjustments are reported separately. These are gross fund-level flows, not cash receipts or new external funding: transfers between funds can count the same money again. Unallocated extraction residuals are not assigned to contributors.",
-    "mapping_note": "Entity destinations are reconstructed organizational assignments for the fund, not proof that a donor financed a particular expense."
+    "method_note": "Includes recognized voluntary contributions, inter-agency contributions and transfers (including UNDP MPTF), and internal transfers, net of reported refunds and adjustments. Receivable balances are excluded. Present-value and voluntary-schedule internal adjustments are reported separately. These are gross fund-level flows, not cash receipts or new external funding: transfers between funds can count the same money again. Unallocated extraction residuals are not assigned to contributors. Schedule 8.1 adds reported MPTF voluntary contributions by recipient fund, without a contributor breakdown. Named-row reconciliation covers the individually coded funds.",
+    "mapping_note": "Entity destinations are reconstructed organizational assignments for the fund, not proof that a donor financed a particular expense.",
+    "mptf_voluntary_contributions_usd": 443374958
   },
   "contributors": [
+    {
+      "name": "MPTF voluntary contributions",
+      "counterparty_group": "Unspecified",
+      "amount_usd": 443374958,
+      "positive_amount_usd": 443374958,
+      "negative_amount_usd": 0,
+      "reported_names": [],
+      "destinations": [
+        {
+          "fund_code": null,
+          "fund_id": "trust-fund-entity:OCHA:fund:mptf:common-humanitarian-fund",
+          "fund_name": "Common Humanitarian Fund",
+          "entity_code": "OCHA",
+          "entity_name": "Office for the Coordination of Humanitarian Affairs",
+          "entity_id": "trust-fund-entity:OCHA",
+          "mapping_status": "mapped",
+          "amount_usd": 348023515,
+          "supportingSources": [
+            {
+              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+              "pdfPage": 403,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "Common Humanitarian Fund",
+              "label": "Common Humanitarian Fund — 2017"
+            }
+          ],
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "label": "Voluntary contributions",
+              "group": "unitemized",
+              "amount_usd": 348023515,
+              "supportingSources": [
+                {
+                  "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+                  "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+                  "pdfPage": 403,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row",
+                  "tableTitle": "Schedule 8.1 — financial performance",
+                  "rowLabel": "Voluntary contributions",
+                  "columnHeader": "Common Humanitarian Fund",
+                  "label": "Common Humanitarian Fund — 2017"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fund_code": null,
+          "fund_id": "trust-fund-entity:MPTF-PBF:fund:mptf:peacebuilding-fund",
+          "fund_name": "UN Peacebuilding Fund",
+          "entity_code": "MPTF-PBF",
+          "entity_name": "Peacebuilding Fund",
+          "entity_id": "trust-fund-entity:MPTF-PBF",
+          "mapping_status": "mapped",
+          "amount_usd": 87959659,
+          "supportingSources": [
+            {
+              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+              "pdfPage": 403,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "UN Peacebuilding Fund",
+              "label": "UN Peacebuilding Fund — 2017"
+            }
+          ],
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "label": "Voluntary contributions",
+              "group": "unitemized",
+              "amount_usd": 87959659,
+              "supportingSources": [
+                {
+                  "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+                  "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+                  "pdfPage": 403,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row",
+                  "tableTitle": "Schedule 8.1 — financial performance",
+                  "rowLabel": "Voluntary contributions",
+                  "columnHeader": "UN Peacebuilding Fund",
+                  "label": "UN Peacebuilding Fund — 2017"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fund_code": null,
+          "fund_id": "trust-fund-entity:MPTF-HTI:fund:mptf:haiti-cholera-response-fund",
+          "fund_name": "UN Haiti Cholera Response Fund",
+          "entity_code": "MPTF-HTI",
+          "entity_name": "Haiti Cholera Response Fund",
+          "entity_id": "trust-fund-entity:MPTF-HTI",
+          "mapping_status": "mapped",
+          "amount_usd": 6944982,
+          "supportingSources": [
+            {
+              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+              "pdfPage": 403,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "UN Haiti Cholera Response Fund",
+              "label": "UN Haiti Cholera Response Fund — 2017"
+            }
+          ],
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "label": "Voluntary contributions",
+              "group": "unitemized",
+              "amount_usd": 6944982,
+              "supportingSources": [
+                {
+                  "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+                  "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+                  "pdfPage": 403,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row",
+                  "tableTitle": "Schedule 8.1 — financial performance",
+                  "rowLabel": "Voluntary contributions",
+                  "columnHeader": "UN Haiti Cholera Response Fund",
+                  "label": "UN Haiti Cholera Response Fund — 2017"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "fund_code": null,
+          "fund_id": "trust-fund-entity:OSRSG Migration:fund:mptf:migration-fund",
+          "fund_name": "UN MPTF on Migration",
+          "entity_code": "OSRSG Migration",
+          "entity_name": "OSRSG Migration",
+          "entity_id": "trust-fund-entity:OSRSG Migration",
+          "mapping_status": "mapped",
+          "amount_usd": 446802,
+          "supportingSources": [
+            {
+              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+              "pdfPage": 403,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "UN MPTF on Migration",
+              "label": "UN MPTF on Migration — 2017"
+            }
+          ],
+          "flows": [
+            {
+              "type": "voluntary_contribution",
+              "label": "Voluntary contributions",
+              "group": "unitemized",
+              "amount_usd": 446802,
+              "supportingSources": [
+                {
+                  "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+                  "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+                  "pdfPage": 403,
+                  "pdfPageScope": "row",
+                  "pageStatus": "extracted_pdf_row",
+                  "tableTitle": "Schedule 8.1 — financial performance",
+                  "rowLabel": "Voluntary contributions",
+                  "columnHeader": "UN MPTF on Migration",
+                  "label": "UN MPTF on Migration — 2017"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "flows": [
+        {
+          "type": "voluntary_contribution",
+          "label": "Voluntary contributions",
+          "group": "unitemized",
+          "amount_usd": 443374958,
+          "supportingSources": [
+            {
+              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+              "pdfPage": 403,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "Common Humanitarian Fund",
+              "label": "Common Humanitarian Fund — 2017"
+            },
+            {
+              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+              "pdfPage": 403,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "UN Peacebuilding Fund",
+              "label": "UN Peacebuilding Fund — 2017"
+            },
+            {
+              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+              "pdfPage": 403,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "UN Haiti Cholera Response Fund",
+              "label": "UN Haiti Cholera Response Fund — 2017"
+            },
+            {
+              "symbol": "(DM/OPPBA) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2017",
+              "url": "https://digitallibrary.un.org/record/1644706/files/%28DM_OPPBA%29FINANCIALSTATEMENTSFORTHEYEARENDED31DECEMBER2017-EN.pdf",
+              "pdfPage": 403,
+              "pdfPageScope": "row",
+              "pageStatus": "extracted_pdf_row",
+              "tableTitle": "Schedule 8.1 — financial performance",
+              "rowLabel": "Voluntary contributions",
+              "columnHeader": "UN MPTF on Migration",
+              "label": "UN MPTF on Migration — 2017"
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "United Kingdom of Great Britain and Northern Ireland",
       "flows": [

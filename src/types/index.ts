@@ -215,7 +215,12 @@ export interface PeacekeepingContributorsData {
 }
 
 export interface TrustFundFlow {
-  group: "governments" | "other" | "inter_organizational" | "internal";
+  group:
+    | "governments"
+    | "other"
+    | "inter_organizational"
+    | "internal"
+    | "unitemized";
   supportingSources?: BudgetNodeSource[];
   type: string;
   label: string;
@@ -226,7 +231,8 @@ export interface TrustFundDestination {
   flows?: TrustFundFlow[];
   mapping_status?: "mapped" | "unresolved";
   supportingSources?: BudgetNodeSource[];
-  fund_code: string;
+  fund_code: string | null;
+  fund_id?: string;
   fund_name: string;
   entity_code: string | null;
   entity_name: string | null;
@@ -237,7 +243,7 @@ export interface TrustFundDestination {
 export interface TrustFundContributor {
   flows?: TrustFundFlow[];
   name: string;
-  counterparty_group: "Government" | "Others" | "Mixed";
+  counterparty_group: "Government" | "Others" | "Mixed" | "Unspecified";
   amount_usd: number;
   positive_amount_usd: number;
   negative_amount_usd: number;
@@ -253,6 +259,7 @@ export interface TrustFundContributorsData {
     statement_total_usd: number;
     named_rows_total_usd: number;
     contributor_total_usd: number;
+    mptf_voluntary_contributions_usd?: number;
     adjustment_total_usd: number;
     unallocated_residual_usd: number;
     named_row_completeness: number;

@@ -42,6 +42,41 @@ class TrustFundMptfTests(unittest.TestCase):
         self.assertEqual({r["page"] for r in rows.values()}, {431})
         self.assertEqual(rows["mptf:peacebuilding-fund"]["source_column"], "UN Peacebuilding Fund")
 
+    def test_unitemized_contributions_match_current_columns_and_printed_totals(self):
+        for year, (facts, controls, _) in self.bundles.items():
+            with self.subTest(year=year):
+                contributions = json.loads(
+                    (ROOT / f"public/data/trust-fund-contributors-{year}.json").read_text()
+                )
+                [aggregate] = [c for c in contributions["contributors"]
+                               if c["counterparty_group"] == "Unspecified"]
+                self.assertEqual(aggregate["reported_names"], [])
+                self.assertEqual(aggregate["flows"][0]["group"], "unitemized")
+                [printed] = [r for r in controls if r["period_year"] == year
+                             and r["line_item"] == "Voluntary contributions"]
+                self.assertEqual(aggregate["amount_usd"], printed["reported_total_usd"])
+                expected = {r["fund_id"]: r for r in facts if r["period_year"] == year
+                            and r["line_item"] == "Voluntary contributions" and r["amount_usd"] is not None}
+                self.assertEqual(len(aggregate["destinations"]), len(expected))
+                for fund in aggregate["destinations"]:
+                    row = expected.pop(fund["fund_id"].split(":fund:", 1)[1])
+                    self.assertIsNone(fund["fund_code"])
+                    self.assertEqual(fund["amount_usd"], row["amount_usd"])
+                    [ref] = fund["supportingSources"]
+                    self.assertEqual(ref["pdfPage"], row["page"])
+                    self.assertEqual(ref["columnHeader"], row["source_column"])
+                    self.assertEqual(ref["rowLabel"], "Voluntary contributions")
+                self.assertFalse(expected)
+                meta = contributions["meta"]
+                self.assertEqual(meta["mptf_voluntary_contributions_usd"], aggregate["amount_usd"])
+                self.assertEqual(meta["contributor_total_usd"], sum(
+                    c["amount_usd"] for c in contributions["contributors"]
+                ))
+                self.assertEqual(meta["statement_total_usd"], (
+                    meta["named_rows_total_usd"] + meta["mptf_voluntary_contributions_usd"]
+                    + meta["unallocated_residual_usd"]
+                ))
+
     def test_comparatives_reorder_funds_without_inventing_history(self):
         rows = self.bundles[2023][0]
         current = {r["fund_id"] for r in rows if r["period_year"] == 2023}

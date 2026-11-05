@@ -59,6 +59,11 @@ const GROUP_STYLES: Record<
     color: "#806491",
     textColor: "#ffffff",
   },
+  unitemized: {
+    label: "Contributors unspecified",
+    color: "#596579",
+    textColor: "#ffffff",
+  },
 };
 
 const currency = sharedFormatBudget;
@@ -80,15 +85,22 @@ function ContributorTooltip({
   const tile = context.leaf.data;
   if (!tile) return null;
   const { contributor, flow } = tile;
+  const isUnitemized = flow.group === "unitemized";
   return (
     <FinancialTooltip
       title={contributor.name}
       parents={[{ label: context.row.label, color: context.row.color }]}
       total={{
-        label: "Contributions and transfers",
+        label: isUnitemized
+          ? "Voluntary contributions"
+          : "Contributions and transfers",
         value: currency(flow.amount_usd),
       }}
-      actionHint="Click to explore all contributor categories"
+      actionHint={
+        isUnitemized
+          ? "Click to explore recipient funds"
+          : "Click to explore all contributor categories"
+      }
     />
   );
 }
@@ -254,8 +266,13 @@ export function TrustFundContributorsTreemap({
                 role="group"
                 aria-label="Contributor groups"
               >
-                {(Object.keys(GROUP_STYLES) as ContributorGroup[]).map(
-                  (key) => (
+                {(Object.keys(GROUP_STYLES) as ContributorGroup[])
+                  .filter(
+                    (key) =>
+                      key !== "unitemized" ||
+                      tiles.some(({ flow }) => flow.group === key),
+                  )
+                  .map((key) => (
                     <LegendLabel
                       key={key}
                       label={GROUP_STYLES[key].label}
@@ -269,8 +286,7 @@ export function TrustFundContributorsTreemap({
                         )
                       }
                     />
-                  ),
-                )}
+                  ))}
               </div>
             }
             rows={rows

@@ -85,9 +85,9 @@ remain gitignored; see that directory's README for the retention policy.
 - `crosswalk/quality-profile.json`: mapping cardinality, value-weighted coverage,
   unresolved cases, section changes, and known limitations.
 - `public/data/budget-trust-funds-{year}.json`: current-period trust-fund expenses for every source fund, grouped by entity or Unmapped Trust Funds, with individual funds as children.
-- `public/data/trust-fund-contributors-{year}.json`: signed named contributor
-  amounts, destination funds and mapped entities, adjustments, and per-fund
-  reconciliation residuals.
+- `public/data/trust-fund-contributors-{year}.json`: signed contributor rows
+  and Schedule 8.1 voluntary contribution amounts, with recipient funds and
+  mapped entities, adjustments, and per-fund named-row reconciliation.
 
 All monetary values are integer United States dollars. A printed dash is stored
 as zero with a separate `*_reported_as_dash` flag. Negative parenthesized values
@@ -231,9 +231,36 @@ Secretariat or system totals. These accounts already appear in the ARWO-based
 Overview; this export changes only the Trust Funds view. Differences between
 Schedule 8.1, consolidated notes and ARWO are not overwritten.
 
-Schedule 8.1 reports aggregate contributions without named donors. Its accounts
-therefore have no named-contributor breakdown; mixed entity sidebars explain
-that contributor detail covers their individually coded funds only.
+Schedule 8.1 reports voluntary contributions by recipient account. The
+Contributors tab shows the printed amounts under **Contributors unspecified**,
+with fund-level destinations and source citations. This aggregate remains
+separate from rows that identify the UNDP MPTF Office as the counterparty.
+The export uses each publication's current-period columns, retains negative
+adjustments and printed zeros, and leaves blank cells unreported. The MPTF total
+is included in the exported statement and contributor totals and is identified
+by `mptf_voluntary_contributions_usd`. Named-row reconciliation continues to
+cover the individually coded funds.
+
+The MPTF Office publishes donor-level deposits. In 2024, Peacebuilding Fund
+deposits were $125.606 million, compared with $104.864 million in voluntary
+contributions recognized under Schedule 8.1. The audited accounts recognize
+binding agreements, including future instalments, and the consolidated fund
+totals already include controlled MPTF amounts. Deposits can be presented as
+a separate measure with their own source. Assigning them to the schedule's
+recognized contributions would require a reconciliation by fund and year.
+[MPTF Office 2024 financial report](https://mptf.undp.org/sites/default/files/documents/2025-05/pbf_2024_annual_financial_report.pdf)
+and [2024 Volume I, note 27](https://digitallibrary.un.org/record/4090309/files/A_80_5_%28Vol._I%29-EN.pdf#page=280).
+
+The 2025 audited accounts disclose $141.4 million in consolidated voluntary
+contributions to the controlled MPTFs. Extending the detailed chart beyond
+2024 requires the corresponding individual trust-fund schedules.
+[2025 Volume I, note 27](https://documents.un.org/doc/undoc/gen/n26/142/06/pdf/n2614206.pdf#page=260).
+
+The 2024 resident coordinator fund schedule separately prints $41,952,974
+of coordination levies within its $132,520,679 voluntary contribution total.
+That column could support a funding breakdown after the extractor's column
+mapping is corrected. The exported contribution rows already include the levy
+in their totals. [2024 Schedule 6.22.1](https://digitallibrary.un.org/record/4087012/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2024-EN.pdf#page=404).
 
 Both extraction (`14-`) and export (`16-`) refresh the heading metadata directly
 from each year's PDF. Heading recognition follows physical line order and the
@@ -249,11 +276,12 @@ The contributor view includes three disjoint flow categories:
 - Inter-agency contributions and transfers, including UNDP MPTF.
 - Internal transfers between accounts.
 
-The contributor treemap splits voluntary contributions into Government contributions
-and Other voluntary contributions, and displays Inter-organizational arrangements
-and Internal transfers as the other two groups. Classification follows each source
-row, so one contributor can appear in multiple groups. Tiles and their source links
-are category-specific; the sidebar retains the combined contributor.
+The contributor treemap groups voluntary contributions as Government, Others,
+or Contributors unspecified for Schedule 8.1. It also displays
+Inter-organizational arrangements and Internal transfers. Classification follows
+each source row, so one contributor can appear in multiple groups. Tiles and
+their source links follow the selected category, while the sidebar shows the
+contributor across categories.
 
 All use signed printed amounts, net of the row's refunds and adjustments.
 Receivable balances, printed subtotals and grand totals are excluded from named

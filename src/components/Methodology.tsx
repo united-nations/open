@@ -520,10 +520,8 @@ function TrustFundsMethodologyNotes() {
       <p>
         Schedule 8.1 expenses can differ from the consolidated
         financial-statement notes and from ARWO amounts in earlier years. We
-        preserve the schedule’s figures rather than replacing them with another
-        presentation. Its contribution totals do not identify individual
-        contributors, so those accounts are excluded from the named-contributor
-        view.
+        preserve the schedule’s figures. The Contributors tab includes its
+        voluntary contribution totals under Contributors unspecified.
       </p>
       <p>
         Totals retain negative amounts. Funds with zero or negative expenditure
@@ -563,10 +561,12 @@ function TrustFundContributorsMethodologyNotes() {
         Receivable balances are kept separate.
       </p>
       <p>
-        Schedule 8.1 reports aggregate contributions to MPTF-managed funds
-        without naming contributors. The contributor view covers the
-        individually coded funds; it does not include those MPTF contribution
-        totals.
+        Schedule 8.1 reports voluntary contributions to UN-controlled MPTF
+        accounts by recipient fund. They appear under Contributors unspecified
+        because the schedule gives no contributor breakdown. We retain signed
+        amounts and leave blank cells unreported. Transfers elsewhere in the
+        schedules that identify the UNDP MPTF Office keep that source
+        attribution.
       </p>
       <p>
         Each contributor is linked to the funds listed in the schedules. We

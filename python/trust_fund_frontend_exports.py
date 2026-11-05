@@ -5,6 +5,7 @@ uses named rows preceding the printed voluntary-contribution total that
 reconciles to the financial-performance statement.  Rows after that total can
 belong to a second transfer schedule on the same physical page and are not
 treated as voluntary contributions; they are exported separately as transfers.
+Schedule 8.1 contributes a separate aggregate without contributor names.
 """
 
 from __future__ import annotations
@@ -726,7 +727,7 @@ def export_all(
     crosswalk = pd.read_csv(crosswalk_path)
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     fund_years, schedule_groups = annotate_groups(fund_years, manifest)
-    from trust_fund_mptf import extract_bundle, entity_crosswalk, extend_spending as extend_mptf
+    from trust_fund_mptf import extract_bundle, entity_crosswalk, extend_contributors, extend_spending as extend_mptf
     mptf_facts = extract_bundle(manifest, stage2)
     mptf_crosswalk = entity_crosswalk()
     (crosswalk_path.parent / "mptf-entity-crosswalk.json").write_text(
@@ -757,16 +758,15 @@ def export_all(
         mptf_scope = extract_descriptions(Path(source["pdf_path"]), {"mptf": "8.1"})["mptf"]
         mptf_heading = schedule_groups.loc[schedule_groups.calendar_year.eq(year) & schedule_groups.schedule_group_code.eq("8")].iloc[0].to_dict()
         spending = extend_mptf(spending, year, mptf_facts, source, mptf_heading, entity_names, mptf_scope, mptf_crosswalk)
+        contributors = build_contributor_export(
+            year, flows, facts, funds, crosswalk, source, entity_names
+        )
+        extend_contributors(contributors, mptf_facts, source, spending)
         if xb_stage2 is not None:
             from secretariat_xb_frontend import extend_spending
             spending = extend_spending(spending, year, xb_stage2)
         json_dump(output / f"budget-trust-funds-{year}.json", spending)
-        json_dump(
-            output / f"trust-fund-contributors-{year}.json",
-            build_contributor_export(
-                year, flows, facts, funds, crosswalk, source, entity_names
-            ),
-        )
+        json_dump(output / f"trust-fund-contributors-{year}.json", contributors)
     pd.DataFrame(description_rows).to_csv(stage2 / "fund-descriptions.csv", index=False)
     fund_years.to_csv(stage2 / "fund-years.csv", index=False)
     schedule_groups.to_csv(stage2 / "schedule-groups.csv", index=False)

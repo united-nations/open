@@ -41,6 +41,7 @@ import type {
   BudgetNode,
   BudgetNodeSource,
   TrustFundContributorsData,
+  TrustFundDestination,
   XBContributorSeries,
 } from "@/types";
 
@@ -392,7 +393,6 @@ export function TrustFundSidebar({
   const yearKey = sidebarYears.join(",");
   const nodes = Object.values(childrenByParent).flat();
   const codes = fundCodes(node, nodes);
-  const codesKey = [...codes].sort().join(",");
   useEffect(() => {
     let active = true;
     setTrend(null);
@@ -477,16 +477,17 @@ export function TrustFundSidebar({
       document.removeEventListener("keydown", escape);
     };
   }, [onClose]);
-  const includedCodes = new Set(codesKey.split(","));
+  const includesFund = (fund: TrustFundDestination) =>
+    fund.fund_code !== null && codes.has(fund.fund_code);
   const donorRows =
     contributors?.contributors
       .map((donor) => ({
         name: donor.name,
         references: donor.destinations
-          .filter((destination) => includedCodes.has(destination.fund_code))
+          .filter(includesFund)
           .flatMap((destination) => destination.supportingSources ?? []),
         amount: donor.destinations
-          .filter((destination) => includedCodes.has(destination.fund_code))
+          .filter(includesFund)
           .reduce((sum, item) => sum + item.amount_usd, 0),
       }))
       .filter((donor) => donor.amount !== 0)
@@ -498,7 +499,7 @@ export function TrustFundSidebar({
   const contributionReferences =
     contributors?.contributors.flatMap((contributor) =>
       contributor.destinations
-        .filter((destination) => includedCodes.has(destination.fund_code))
+        .filter(includesFund)
         .flatMap((destination) => destination.supportingSources ?? []),
     ) ?? [];
   const maximum = Math.max(0, ...donorRows.map((donor) => donor.amount));
@@ -760,7 +761,7 @@ export function TrustFundSidebar({
                 <TrustFundFlowBreakdown
                   flows={(contributors?.contributors ?? []).flatMap((item) =>
                     item.destinations
-                      .filter((fund) => includedCodes.has(fund.fund_code))
+                      .filter(includesFund)
                       .flatMap((fund) => fund.flows ?? []),
                   )}
                 />

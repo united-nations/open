@@ -183,6 +183,15 @@ def extract_mptf(source: dict) -> tuple[list[dict], list[dict], list[dict]]:
                        and row["line_item"] == "Total expenses"]
     if len(expense_control) != 1 or expense_control[0]["difference_usd"] != 0:
         raise ValueError(f"MPTF current expense columns do not reconcile to their printed total in {year}")
+    contributions = [row for row in facts if row["period_year"] == year
+                     and row["line_item"] == "Voluntary contributions"]
+    contribution_total = [row["reported_total_usd"] for row in controls
+                          if row["period_year"] == year and row["line_item"] == "Voluntary contributions"]
+    if (len(contribution_total) != 1
+            or {row["fund_id"] for row in contributions} != {row["fund_id"] for row in selected}
+            or sum(row["amount_usd"] for row in contributions if row["amount_usd"] is not None)
+            != contribution_total[0]):
+        raise ValueError(f"MPTF current voluntary contributions do not reconcile in {year}")
     for expense in selected:
         values = {row["line_item"]: row["amount_usd"] for row in facts
                   if row["fund_id"] == expense["fund_id"] and row["period_year"] == year
@@ -257,6 +266,60 @@ def reference(row: dict, source: dict) -> dict:
             "pageStatus": "extracted_pdf_row", "tableTitle": "Schedule 8.1 — " + row["statement_type"].replace("_", " "),
             "rowLabel": row["line_item"], "columnHeader": row["source_column"],
             "label": row["fund_name"] + " — " + str(row["period_year"])}
+
+
+def extend_contributors(payload: dict, facts: pd.DataFrame, source: dict, spending: dict) -> None:
+    """Add the printed matrix amounts as one source-reported aggregate."""
+    meta = payload["meta"]
+    year = meta["year"]
+    rows = facts.loc[
+        facts.calendar_year.eq(year) & facts.period_year.eq(year)
+        & facts.statement_type.eq("financial_performance")
+        & facts.line_item.eq("Voluntary contributions") & facts.amount_usd.notna()
+    ]
+    nodes = {node["id"]: node for node in spending["nodes"]}
+    accounts = {node["id"].split(":fund:", 1)[1]: node for node in nodes.values()
+                if node.get("fundAccountType") == "mptf"}
+    flow = {"type": "voluntary_contribution", "label": "Voluntary contributions",
+            "group": "unitemized"}
+    destinations = []
+    for row in rows.to_dict("records"):
+        fund = accounts[row["fund_id"]]
+        entity = nodes[fund["parentId"]]
+        amount = int(row["amount_usd"])
+        refs = [reference(row, source)]
+        destinations.append({
+            "fund_code": None, "fund_id": fund["id"], "fund_name": fund["label"],
+            "entity_code": entity["code"], "entity_name": entity["label"], "entity_id": entity["id"],
+            "mapping_status": "unresolved" if entity["code"] == "UNMAPPED" else "mapped",
+            "amount_usd": amount, "supportingSources": refs,
+            "flows": [{**flow, "amount_usd": amount, "supportingSources": refs}],
+        })
+    destinations.sort(key=lambda fund: fund["amount_usd"], reverse=True)
+    amounts = [fund["amount_usd"] for fund in destinations]
+    total = sum(amounts)
+    total_refs = [ref for fund in destinations for ref in fund["supportingSources"]]
+    name = "MPTF voluntary contributions"
+    if any(item["name"] == name for item in payload["contributors"]):
+        raise ValueError(f"Duplicate MPTF contribution aggregate in {year}")
+    payload["contributors"].append({
+        "name": name, "counterparty_group": "Unspecified", "amount_usd": total,
+        "positive_amount_usd": sum(amount for amount in amounts if amount > 0),
+        "negative_amount_usd": sum(amount for amount in amounts if amount < 0),
+        "reported_names": [], "destinations": destinations,
+        "flows": [{**flow, "amount_usd": total, "supportingSources": total_refs}],
+    })
+    payload["contributors"].sort(key=lambda item: item["amount_usd"], reverse=True)
+    meta["mptf_voluntary_contributions_usd"] = total
+    meta["statement_total_usd"] += total
+    meta["contributor_total_usd"] += total
+    meta["unresolved_entity_amount_usd"] += sum(
+        fund["amount_usd"] for fund in destinations if fund["mapping_status"] == "unresolved"
+    )
+    meta["method_note"] += (
+        " Schedule 8.1 adds reported MPTF voluntary contributions by recipient fund, "
+        "without a contributor breakdown. Named-row reconciliation covers the individually coded funds."
+    )
 
 
 def fund_position(rows: list[dict], source: dict, year: int) -> dict:
