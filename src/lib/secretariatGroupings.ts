@@ -14,6 +14,18 @@ export const TRUST_FUND_SOURCE_COLORS: Record<TrustFundSourceGroup, string> = {
   separate_entities: "#31566e",
 };
 
+/** Stable identities follow the schedule numbering, independent of year or size. */
+export const TRUST_FUND_GROUP_COLORS: Record<string, string> = {
+  "1": "#009edb",
+  "2": "#7d8471",
+  "3": "#a0665c",
+  "4": "#6c5b7b",
+  "5": "#5a6c7d",
+  "6": "#4a7c7e",
+  "7": "#9b8b7a",
+  "8": "#495057",
+};
+
 // Shared palette of theme bg classes (UN palette) with readable text colors.
 // Also used by budgetGroupings.ts, so that every treemap on /secretariat draws
 // its groups from one palette.

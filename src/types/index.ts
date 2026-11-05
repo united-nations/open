@@ -573,6 +573,12 @@ export interface BudgetNode {
     | { type: "list"; items: { label: string; text: string }[] }
   )[];
   descriptionSources?: BudgetNodeSource[];
+  /** Selected-year heading from the trust-fund schedule's table of contents. */
+  scheduleGroup?: {
+    code: string;
+    label: string;
+    source: BudgetNodeSource;
+  };
   /** Budget units only. */
   unitType?: BudgetUnitType;
   role?: BudgetUnitRole;

@@ -915,6 +915,14 @@ export function TrustFundSidebar({
                   />
                 </summary>
                 <div className="mt-3 space-y-3 text-sm">
+                  {node.scheduleGroup && (
+                    <div>
+                      <p>Schedule group: {node.scheduleGroup.label}</p>
+                      <SourceReferenceList
+                        references={[node.scheduleGroup.source]}
+                      />
+                    </div>
+                  )}
                   {!!node.descriptionSources?.length && (
                     <>
                       <FinancialPanelHeading subheading>

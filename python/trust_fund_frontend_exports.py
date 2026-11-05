@@ -16,6 +16,7 @@ from typing import Any
 
 import pandas as pd
 from trust_fund_descriptions import extract_descriptions
+from trust_fund_groups import annotate_groups
 
 DEFAULT_STAGE2 = Path("data/trust-fund-schedules/stage2")
 DEFAULT_CROSSWALK = Path(
@@ -228,6 +229,7 @@ def build_entity_export(
     entity_names: dict[str, str],
     funds: pd.DataFrame | None = None,
     descriptions: dict[str, dict[str, Any]] | None = None,
+    schedule_groups: dict[str, dict[str, Any]] | None = None,
 ) -> dict[str, Any]:
     expenses = facts.loc[
         facts["calendar_year"].eq(year)
@@ -351,6 +353,19 @@ def build_entity_export(
 
     for node in nodes:
         if node["tier"] == "detail":
+            if schedule_groups is not None:
+                group = schedule_groups[node["code"]]
+                node["scheduleGroup"] = {
+                    "code": group["schedule_group_code"],
+                    "label": group["schedule_group_name"],
+                    "source": {
+                        "symbol": source["symbol"],
+                        "url": source.get("pdf_final_url") or source.get("source_pdf_url") or source["landing_page_url"],
+                        "pdfPage": int(group["heading_pdf_page"]),
+                        "tableTitle": "Contents — schedule groups",
+                        "rowLabel": group["schedule_group_name"],
+                    },
+                }
             if descriptions is not None:
                 annotation = descriptions[node["code"]]
                 node["description"] = annotation["description"]
@@ -710,6 +725,7 @@ def export_all(
     flows = pd.read_csv(stage2 / "counterparty-flows.csv")
     crosswalk = pd.read_csv(crosswalk_path)
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
+    fund_years, schedule_groups = annotate_groups(fund_years, manifest)
     entities = json.loads(entities_path.read_text(encoding="utf-8"))
     entity_names = {
         item["entity"]: compact(item["entity_long"])
@@ -731,7 +747,8 @@ def export_all(
                 "description": annotation["description"],
                 "pdf_pages": ";".join(map(str, annotation["pdf_pages"])),
             })
-        spending = build_entity_export(year, facts, crosswalk, source, entity_names, funds, descriptions)
+        groups_by_fund = annual_funds.set_index("fund_code").to_dict("index")
+        spending = build_entity_export(year, facts, crosswalk, source, entity_names, funds, descriptions, groups_by_fund)
         if xb_stage2 is not None:
             from secretariat_xb_frontend import extend_spending
             spending = extend_spending(spending, year, xb_stage2)
@@ -743,4 +760,6 @@ def export_all(
             ),
         )
     pd.DataFrame(description_rows).to_csv(stage2 / "fund-descriptions.csv", index=False)
+    fund_years.to_csv(stage2 / "fund-years.csv", index=False)
+    schedule_groups.to_csv(stage2 / "schedule-groups.csv", index=False)
     print(f"Exported {len(years)} trust-fund entity and contributor datasets; {len(description_rows)} annual fund descriptions")

@@ -3,9 +3,8 @@ import fs from "node:fs";
 import { test } from "node:test";
 import { moduleAt } from "./moduleAt.mjs";
 
-const { trustFundReportingData } = await moduleAt(
-  "src/lib/trustFundReporting.ts",
-);
+const { trustFundReportingData, trustFundScheduleGroups, trustFundSearchText } =
+  await moduleAt("src/lib/trustFundReporting.ts");
 const profiles = JSON.parse(fs.readFileSync("config/features.json", "utf8"));
 
 test("additional trust funds default to off in both site versions", () => {
@@ -72,4 +71,53 @@ test("other budgets and legacy schedule-only files are unaffected", () => {
     { meta: { stream: "trust_funds" }, nodes: [] },
   ])
     assert.equal(trustFundReportingData(data, false), data);
+});
+
+test("schedule grouping preserves every signed fund and its original sidebar identity across years", () => {
+  for (const year of [2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024]) {
+    const data = JSON.parse(
+      fs.readFileSync(`public/data/budget-trust-funds-${year}.json`),
+    );
+    const before = JSON.stringify(data);
+    const groups = trustFundScheduleGroups(data);
+    const funds = groups.flatMap((group) => group.funds);
+    const originals = data.nodes.filter(
+      (node) => node.tier === "detail" && node.sourceGroup === "volume_i",
+    );
+    assert.deepEqual(
+      funds.map((node) => node.id).sort(),
+      originals.map((node) => node.id).sort(),
+    );
+    assert.equal(new Set(funds.map((node) => node.id)).size, originals.length);
+    assert.equal(
+      groups.reduce((sum, group) => sum + group.amount, 0),
+      data.meta.sourceGroups.find((group) => group.id === "volume_i").amount,
+    );
+    assert.ok(funds.some((fund) => fund.amount <= 0));
+    assert.ok(funds.some((fund) => fund.id.includes("UNMAPPED")));
+    assert.equal(
+      funds.find((fund) => fund.code === "SIM").scheduleGroup.code,
+      year < 2020 ? "4" : "2",
+    );
+    assert.equal(JSON.stringify(data), before);
+    const byId = new Map(data.nodes.map((node) => [node.id, node]));
+    const sna = funds.find((fund) => fund.code === "SNA");
+    const parent = byId.get(sna.parentId);
+    assert.match(trustFundSearchText(sna, parent, "group"), /DGC/);
+    assert.match(
+      trustFundSearchText(sna, parent, "group"),
+      /Common support and miscellaneous/,
+    );
+    assert.match(trustFundSearchText(sna, parent, "entity"), /SNA/);
+    assert.equal(
+      groups
+        .find((group) => group.code === "5")
+        .funds.some((fund) => fund.code === "SNA"),
+      false,
+    );
+    assert.equal(
+      groups.find((group) => group.code === "6").funds.includes(sna),
+      true,
+    );
+  }
 });

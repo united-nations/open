@@ -1,6 +1,11 @@
 "use client";
 import { SHOW_ADDITIONAL_TRUST_FUNDS } from "@/lib/featureFlags";
-import { trustFundReportingData } from "@/lib/trustFundReporting";
+import {
+  trustFundReportingData,
+  trustFundScheduleGroups,
+  trustFundSearchText,
+  type TrustFundGrouping,
+} from "@/lib/trustFundReporting";
 import { orderFundingTooltipRows } from "@/lib/financingInstruments";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { Tooltip } from "@un-eosg/ui/components/tooltip";
@@ -99,6 +104,7 @@ import {
   PART_BAND_COLORS,
   PART_SHORT_NAMES,
   TRUST_FUND_SOURCE_COLORS,
+  TRUST_FUND_GROUP_COLORS,
 } from "@/lib/secretariatGroupings";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
@@ -791,6 +797,11 @@ export function BudgetTreemap({
   const [hovered, setHovered] = useState<string | null>(null);
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
+  const [trustFundGrouping, setTrustFundGrouping] =
+    useState<TrustFundGrouping>("group");
+  const [hiddenTrustFundGroups, setHiddenTrustFundGroups] = useState<
+    Set<string>
+  >(() => new Set());
   const [trustFundSources, setTrustFundSources] = useState<
     TrustFundSourceGroup[]
   >(
@@ -1524,6 +1535,38 @@ export function BudgetTreemap({
   const usesSharedTrustFundExpenses = isTrustFund && trustFundLevel === "fund";
   const usesSharedTreemap =
     usesSharedProgrammeBudget || usesSharedTrustFundExpenses;
+  const trustFundNodeSearchText = useCallback(
+    (node: BudgetNode) => {
+      const labels = [
+        trustFundSearchText(
+          node,
+          node.parentId ? byId[node.parentId] : undefined,
+          trustFundGrouping,
+        ),
+      ];
+      labels.push(
+        filteredData?.meta.sourceGroups?.find(
+          (group) => group.id === (node.sourceGroup ?? "volume_i"),
+        )?.label ?? "",
+      );
+      let parent = node.parentId ? byId[node.parentId] : undefined;
+      const visited = new Set<string>();
+      while (parent && !visited.has(parent.id)) {
+        visited.add(parent.id);
+        labels.push(parent.label);
+        parent = parent.parentId ? byId[parent.parentId] : undefined;
+      }
+      return labels.join(" ");
+    },
+    [byId, filteredData, trustFundGrouping],
+  );
+  const scheduleGroups = useMemo(
+    () =>
+      filteredData && usesSharedTrustFundExpenses
+        ? trustFundScheduleGroups(filteredData)
+        : [],
+    [filteredData, usesSharedTrustFundExpenses],
+  );
 
   const sharedRows = useMemo<SharedBudgetRow[]>(() => {
     if (!filteredData || !usesSharedTreemap) return [];
@@ -1569,7 +1612,34 @@ export function BudgetTreemap({
         .filter((group) =>
           trustFundSources.includes(group.id as TrustFundSourceGroup),
         )
-        .map((group) => {
+        .flatMap((group): SharedBudgetRow[] => {
+          if (group.id === "volume_i" && trustFundGrouping === "group") {
+            return scheduleGroups
+              .filter((heading) => !hiddenTrustFundGroups.has(heading.code))
+              .map((heading) => {
+                const color =
+                  TRUST_FUND_GROUP_COLORS[heading.code] ?? "#495057";
+                const query = searchQuery.trim().toLocaleLowerCase();
+                const amount = heading.funds
+                  .filter((fund) =>
+                    trustFundNodeSearchText(fund)
+                      .toLocaleLowerCase()
+                      .includes(query),
+                  )
+                  .reduce((sum, fund) => sum + fund.amount, 0);
+                return {
+                  key: `schedule-group:${heading.code}`,
+                  label: heading.label,
+                  value: amount,
+                  valueLabel: formatBudget(amount),
+                  color,
+                  leaves: heading.funds
+                    .filter((fund) => fund.amount > 0)
+                    .sort((a, b) => b.amount - a.amount)
+                    .map((fund) => leaf(fund, fund.label, color)),
+                };
+              });
+          }
           const color =
             TRUST_FUND_SOURCE_COLORS[group.id as TrustFundSourceGroup];
           const entities = filteredData.nodes.filter(
@@ -1654,15 +1724,17 @@ export function BudgetTreemap({
                   a.leaves.reduce((sum, item) => sum + item.value, 0) ||
                 a.label.localeCompare(b.label),
             );
-          return {
-            key: group.id,
-            label: group.label,
-            value: group.amount ?? 0,
-            color,
-            subgroups,
-          } satisfies SharedBudgetRow;
+          return [
+            {
+              key: group.id,
+              label: group.label,
+              value: group.amount ?? 0,
+              color,
+              subgroups,
+            } satisfies SharedBudgetRow,
+          ];
         })
-        .filter((row) => row.subgroups.length > 0);
+        .filter((row) => row.leaves?.length || row.subgroups?.length);
     }
 
     const root = filteredData.nodes.find((node) => node.parentId === null);
@@ -1831,6 +1903,11 @@ export function BudgetTreemap({
     usesSharedTreemap,
     usesSharedTrustFundExpenses,
     trustFundSources,
+    trustFundGrouping,
+    hiddenTrustFundGroups,
+    scheduleGroups,
+    trustFundNodeSearchText,
+    searchQuery,
     isMobile,
   ]);
 
@@ -1849,6 +1926,17 @@ export function BudgetTreemap({
       )
         return true;
       if (!usesSharedTrustFundExpenses) return false;
+      if (
+        filteredData?.nodes.some(
+          (node) =>
+            node.tier === "detail" &&
+            node.label === leafLabel &&
+            trustFundNodeSearchText(node)
+              .toLocaleLowerCase()
+              .includes(normalized),
+        )
+      )
+        return true;
       const entity = filteredData?.nodes.find((node) => {
         const label = node.entity?.acronym ?? node.code ?? node.label;
         return (
@@ -1874,7 +1962,12 @@ export function BudgetTreemap({
       }
       return false;
     },
-    [childrenOf, filteredData, usesSharedTrustFundExpenses],
+    [
+      trustFundNodeSearchText,
+      childrenOf,
+      filteredData,
+      usesSharedTrustFundExpenses,
+    ],
   );
 
   // One accounting frontier: a net entity total or its additive fund rows.
@@ -1884,7 +1977,10 @@ export function BudgetTreemap({
   const accountingNodes = (filteredData?.nodes ?? []).filter((node) =>
     usesSharedTrustFundExpenses
       ? isTrustFundAccountingNode(node) &&
-        trustFundSources.includes(node.sourceGroup ?? "volume_i")
+        trustFundSources.includes(node.sourceGroup ?? "volume_i") &&
+        (trustFundGrouping !== "group" ||
+          node.sourceGroup === "separate_entities" ||
+          !hiddenTrustFundGroups.has(node.scheduleGroup?.code ?? ""))
       : usesSharedProgrammeBudget
         ? node.tier === "section"
         : node.kind === "mission",
@@ -1892,6 +1988,17 @@ export function BudgetTreemap({
   const matchesAccountingNode = (node: BudgetNode) => {
     const labels = [node.label, node.code ?? "", node.entity?.acronym ?? ""];
     if (usesSharedTrustFundExpenses) {
+      if (!node.chartAsAggregate)
+        return trustFundNodeSearchText(node)
+          .toLocaleLowerCase()
+          .includes(searchQuery.trim().toLocaleLowerCase());
+      labels.push(
+        trustFundSearchText(
+          node,
+          node.parentId ? byId[node.parentId] : undefined,
+          trustFundGrouping,
+        ),
+      );
       labels.push(
         meta?.sourceGroups?.find(
           (group) => group.id === (node.sourceGroup ?? "volume_i"),
@@ -1966,11 +2073,9 @@ export function BudgetTreemap({
       ).filter((group) =>
         trustFundSources.includes(group.id as TrustFundSourceGroup),
       );
-      const total = searchQuery.trim()
-        ? accountingNodes
-            .filter(matchesAccountingNode)
-            .reduce((sum, node) => sum + node.amount, 0)
-        : groups.reduce((sum, group) => sum + (group.amount ?? 0), 0);
+      const total = accountingNodes
+        .filter(matchesAccountingNode)
+        .reduce((sum, node) => sum + node.amount, 0);
       return [
         {
           key: "total",
@@ -2310,7 +2415,7 @@ export function BudgetTreemap({
             },
           ]
         : [];
-    const searchAccessory =
+    const sourceControls =
       usesSharedTrustFundExpenses && SHOW_ADDITIONAL_TRUST_FUNDS ? (
         <div
           role="group"
@@ -2350,6 +2455,25 @@ export function BudgetTreemap({
           }
         />
       ) : undefined;
+    const searchAccessory = usesSharedTrustFundExpenses ? (
+      <div className="flex flex-wrap items-center gap-3">
+        <BinaryToggle
+          variant="segmented"
+          label="Trust fund grouping"
+          options={[
+            { value: "group", label: "By group" },
+            { value: "entity", label: "By entity" },
+          ]}
+          value={trustFundGrouping}
+          onValueChange={(value) =>
+            setTrustFundGrouping(value === "entity" ? "entity" : "group")
+          }
+        />
+        {sourceControls}
+      </div>
+    ) : (
+      sourceControls
+    );
 
     return (
       <div className="relative w-full">
@@ -2520,33 +2644,41 @@ export function BudgetTreemap({
           }
           rows={sharedRows.map((row) => ({
             ...row,
-            valueLabel: row.data ? formatBudgetNode(row.data) : undefined,
+            valueLabel: row.data ? formatBudgetNode(row.data) : row.valueLabel,
             subgroups: row.subgroups?.map((group) => ({
               ...group,
               valueLabel: group.data ? formatBudgetNode(group.data) : undefined,
             })),
           }))}
-          showRowLabels={!usesSharedTrustFundExpenses}
+          showRowLabels={
+            !usesSharedTrustFundExpenses || trustFundGrouping === "group"
+          }
           layout={
-            usesSharedProgrammeBudget || usesSharedTrustFundExpenses
+            usesSharedTrustFundExpenses && trustFundGrouping === "group"
               ? {
-                  rowOrder: "input",
-                  orderedBands: true,
-                  minBandHeight: 28,
+                  rowOrder: "value-desc",
+                  consolidateSmallRows: true,
                   rowGap: 3,
                 }
-              : undefined
+              : usesSharedProgrammeBudget || usesSharedTrustFundExpenses
+                ? {
+                    rowOrder: "input",
+                    orderedBands: true,
+                    minBandHeight: 28,
+                    rowGap: 3,
+                  }
+                : undefined
           }
           search={{
             value: searchQuery,
             onChange: setSearchQuery,
             label: usesSharedTrustFundExpenses
-              ? "Search entities and trust funds"
+              ? "Search groups, entities and trust funds"
               : ppbGrouping === "entity"
                 ? "Search entities"
                 : "Search budget sections",
             placeholder: usesSharedTrustFundExpenses
-              ? "Search entities and trust funds..."
+              ? "Search groups, entities and trust funds..."
               : ppbGrouping === "entity"
                 ? "Search entities..."
                 : "Search budget sections...",
@@ -2564,6 +2696,31 @@ export function BudgetTreemap({
             ) : undefined)
           }
           searchAccessory={searchAccessory}
+          secondaryControls={
+            usesSharedTrustFundExpenses && trustFundGrouping === "group" ? (
+              <div
+                className="flex flex-wrap gap-x-4 gap-y-1"
+                aria-label="Schedule groups"
+              >
+                {scheduleGroups.map((group) => (
+                  <LegendLabel
+                    key={group.code}
+                    label={group.label}
+                    color={TRUST_FUND_GROUP_COLORS[group.code] ?? "#495057"}
+                    selected={!hiddenTrustFundGroups.has(group.code)}
+                    onToggle={() =>
+                      setHiddenTrustFundGroups((current) => {
+                        const next = new Set(current);
+                        if (next.has(group.code)) next.delete(group.code);
+                        else next.add(group.code);
+                        return next;
+                      })
+                    }
+                  />
+                ))}
+              </div>
+            ) : undefined
+          }
           summaries={sharedProgrammeSummaries}
           totalLabel="Total"
           plotClassName={
@@ -2594,7 +2751,8 @@ export function BudgetTreemap({
                     !(
                       isTrustFund &&
                       (label === "Individual trust funds" ||
-                        label === context.row.label)
+                        (trustFundGrouping === "entity" &&
+                          label === context.row.label))
                     ),
                 )
                 .map((label, index) => ({
@@ -2652,11 +2810,18 @@ export function BudgetTreemap({
             <div className="flex h-full items-center justify-center text-sm text-gray-500">
               {usesSharedTrustFundExpenses && trustFundSources.length === 0
                 ? "Select at least one reporting source."
-                : activeFundingSources.length === 0
-                  ? "Select at least one funding source."
-                  : searchQuery.trim()
-                    ? `Nothing matches “${searchQuery}”.`
-                    : "No budget value is available for the selected controls."}
+                : usesSharedTrustFundExpenses &&
+                    trustFundGrouping === "group" &&
+                    scheduleGroups.every((group) =>
+                      hiddenTrustFundGroups.has(group.code),
+                    ) &&
+                    !trustFundSources.includes("separate_entities")
+                  ? "Select at least one schedule group."
+                  : activeFundingSources.length === 0
+                    ? "Select at least one funding source."
+                    : searchQuery.trim()
+                      ? `Nothing matches “${searchQuery}”.`
+                      : "No budget value is available for the selected controls."}
             </div>
           }
           sources={

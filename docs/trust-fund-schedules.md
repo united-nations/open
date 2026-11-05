@@ -54,6 +54,11 @@ remain gitignored; see that directory's README for the retention policy.
   bands, and source row coordinates.
 - `stage2/funds.csv`: one row per three-character trust-fund code.
 - `stage2/fund-years.csv`: one row per calendar year and trust-fund code.
+- `stage2/schedule-groups.csv`: all table-of-contents headings in each annual
+  PDF, including their schedule prefixes, original extracted text and physical
+  PDF pages. Fund-years retain their selected-year group code, name and heading
+  page. The MPTF heading is retained, but its separate matrix-format financial
+  statements are not yet extracted into fund-year records.
 - `stage2/fund-descriptions.csv`: annual annex descriptions, matched by the
   source year's base schedule number to its fund code, with physical PDF pages.
   This metadata file is refreshed by the frontend export step (`16-`).
@@ -87,9 +92,9 @@ audit and manual comparison.
 The frontend export reads each annual PDF's annex describing the authority,
 goals and objectives of the funds. It joins exact schedule numbers to that
 year's fund-code registry; missing or duplicate descriptions fail the export.
-Descriptions are not borrowed from another year. The additional MPTF overview
-in Schedule 8.1 is not assigned to individual funds without a matching source
-identity.
+Descriptions are not borrowed from another year. The MPTF financial statements
+in Schedule 8.1 use named fund columns rather than the individual three-character
+fund-code layout. Those financial rows remain outside the current extraction.
 
 Extraction removes the paragraph number, page footers and line wrapping while
 retaining the source wording. Fund nodes export `description` and
@@ -184,6 +189,27 @@ entity. Signed and zero expenses remain in the data; zero/negative funds appear
 in a clickable list below the treemap rather than receiving artificial area.
 Totals include all signed source amounts. Positive tile totals can therefore
 differ from the signed schedule total. RB and OA are unavailable for this source.
+
+The spending page defaults to **By group**, using each fund's selected-year
+table-of-contents heading and stable colours keyed by schedule prefix. Filter
+pills select schedule groups, including their signed totals and nonpositive
+funds. The balanced treemap packs small categories into a shared bottom block.
+**By entity** uses the existing organizational crosswalk. Funds keep the same sidebar
+identities, descriptions, amounts and source references under both lenses.
+Groups are independent of PPB parts and entity ownership: entities can span
+headings, and a fund can change headings across years (SIM moves from group 4
+to group 2 in 2020). Unmapped entities retain their reported schedule group;
+zero/negative funds remain accessible below the chart. Schedule 8.1 contains
+financial statements for named MPTF funds, but its matrix layout is not yet
+exported. The MPTF heading therefore has no chart area or filter pill; this is
+an extraction gap, not an absence of reported fund accounts.
+
+Both extraction (`14-`) and export (`16-`) refresh the heading metadata directly
+from each year's PDF. Heading recognition follows physical line order and the
+next schedule number; missing or duplicate groups fail instead of borrowing a
+heading from another year. Narrow reviewed repairs cover underline artifacts
+and the damaged font on the 2024 contents page. Fund source references include
+the selected-year heading's physical PDF page.
 
 The contributor view includes three disjoint flow categories:
 

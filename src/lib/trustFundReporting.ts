@@ -1,5 +1,52 @@
 import { SHOW_ADDITIONAL_TRUST_FUNDS } from "@/lib/featureFlags";
-import type { BudgetData } from "@/types";
+import type { BudgetData, BudgetNode } from "@/types";
+
+export type TrustFundGrouping = "group" | "entity";
+
+/** Use each fund's annual source heading, independently of its mapped entity. */
+export function trustFundScheduleGroups(data: BudgetData) {
+  const groups = new Map<
+    string,
+    { code: string; label: string; amount: number; funds: BudgetNode[] }
+  >();
+  for (const node of data.nodes) {
+    if (node.tier !== "detail" || node.sourceGroup === "separate_entities")
+      continue;
+    const heading = node.scheduleGroup;
+    if (!heading) throw new Error(`Missing schedule group for ${node.code}`);
+    let group = groups.get(heading.code);
+    if (!group) {
+      group = {
+        code: heading.code,
+        label: heading.label,
+        amount: 0,
+        funds: [],
+      };
+      groups.set(heading.code, group);
+    }
+    group.amount += node.amount;
+    group.funds.push(node);
+  }
+  return [...groups.values()].sort((a, b) => Number(a.code) - Number(b.code));
+}
+
+export function trustFundSearchText(
+  node: BudgetNode,
+  parent?: BudgetNode,
+  grouping: TrustFundGrouping = "entity",
+) {
+  return [
+    node.label,
+    node.code,
+    node.entity?.acronym,
+    parent?.label,
+    parent?.code,
+    parent?.entity?.acronym,
+    grouping === "group" ? node.scheduleGroup?.label : undefined,
+  ]
+    .filter(Boolean)
+    .join(" ");
+}
 
 /** Keep source scope consistent across tiles, totals, deep links and year changes. */
 export function trustFundReportingData(

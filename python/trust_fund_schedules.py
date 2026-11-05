@@ -31,6 +31,7 @@ from urllib.parse import quote
 import pandas as pd
 import pymupdf as fitz
 import requests
+from trust_fund_groups import annotate_groups
 
 DL_SEARCH_URL = "https://digitallibrary.un.org/search"
 DOCUMENT_ACCESS_URL = "https://documents.un.org/api/symbol/access"
@@ -2040,6 +2041,13 @@ def main() -> int:
         )
     table_index = write_stage1(all_tables, args.output_dir / "stage1")
     funds, fund_years, statements, flows, nested = normalize_tables(all_tables)
+    fund_years, schedule_groups = annotate_groups(fund_years, source_manifest)
+    group_fields = fund_years.set_index(["calendar_year", "fund_code"])[
+        ["schedule_group_code", "schedule_group_name", "heading_pdf_page"]
+    ].to_dict("index")
+    for fund in nested["funds"]:
+        for period in fund["periods"]:
+            period.update(group_fields[(period["calendar_year"], fund["fund_code"])])
     documents_frame = pd.DataFrame(source_manifest)
     profile = quality_profile(
         documents_frame, all_tables, funds, fund_years, statements, flows
@@ -2053,6 +2061,7 @@ def main() -> int:
         write_stage2(
             args.output_dir / "stage2", funds, fund_years, statements, flows, nested
         )
+        schedule_groups.to_csv(args.output_dir / "stage2" / "schedule-groups.csv", index=False)
     print(json.dumps(profile, indent=2, ensure_ascii=False))
     if profile["validation_status"] != "pass":
         print(
