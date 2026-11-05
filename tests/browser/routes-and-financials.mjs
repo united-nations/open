@@ -139,14 +139,12 @@ import assert from "assert";
     pass: (await page.locator("body").innerText()).includes("$1.2B"),
   });
   await page.goto(base + "/system/contributors/", { waitUntil: "networkidle" });
-  await page
-    .getByRole("button", { name: /^Source:/ })
-    .first()
-    .click();
   const body = await page.locator("body").innerText();
   results.push({
-    case: "signed-contributor-disclosure",
-    pass: body.includes("Negative amounts included in the total"),
+    case: "contributor-footer-simplified",
+    pass:
+      !body.includes("Negative amounts included in the total") &&
+      body.includes("Sources and methodology"),
   });
   await page.goto(base + "/secretariat/?year=2023", {
     waitUntil: "networkidle",
@@ -157,14 +155,12 @@ import assert from "assert";
   await slider.press("ArrowLeft");
   await slider.press("ArrowLeft");
   await page.waitForTimeout(500);
-  await page
-    .getByRole("button", { name: /^Source:/ })
-    .first()
-    .click();
   const text = await page.locator("body").innerText();
   results.push({
-    case: "signed-secretariat-disclosure",
-    pass: text.includes("Negative amounts included in the total"),
+    case: "secretariat-footer-simplified",
+    pass:
+      !text.includes("Negative amounts included in the total") &&
+      text.includes("Sources and methodology"),
   });
   await page.goto(base + "/system/organizations/", {
     waitUntil: "networkidle",

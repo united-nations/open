@@ -46,9 +46,6 @@ export function FunctionGeographyChart() {
     null,
   );
   const columns = data ? functionGeographyColumns(data) : [];
-  const hasNegativeCells = columns.some((column) =>
-    column.cells.some((cell) => cell.amount < 0),
-  );
   return (
     <section id="function-geography" className="mt-12 scroll-mt-28 space-y-4">
       <h2 className="text-2xl font-bold">
@@ -58,13 +55,7 @@ export function FunctionGeographyChart() {
         Column widths show each function’s share of reported expenditure. Within
         each column, the stacked areas show where that expenditure is reported.
       </p>
-      {data && !data.meta.functionAttributionComplete && (
-        <p role="note" className="text-sm text-gray-600">
-          Function attribution is incomplete for {year}.{" "}
-          {formatBudget(data.meta.unreportedFunctionAmount)} remains under
-          “Function not reported”; no function is inferred from separate totals.
-        </p>
-      )}
+
       <ChartFrame
         header={
           <ChartHeader
@@ -89,17 +80,7 @@ export function FunctionGeographyChart() {
           />
         }
         footer={
-          <ChartFooter
-            hint="Hover or focus a segment for amounts and shares."
-            details={
-              hasNegativeCells && (
-                <p>
-                  Areas show positive cell totals only. Negative cell totals
-                  remain in the reported total and source table.
-                </p>
-              )
-            }
-          />
+          <ChartFooter hint="Hover or focus a segment for amounts and shares." />
         }
       >
         <div
@@ -247,49 +228,6 @@ export function FunctionGeographyChart() {
           </>
         )}
       </ChartFrame>
-      {data && (
-        <details className="text-sm">
-          <summary className="cursor-pointer">Show reported amounts</summary>{" "}
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <caption className="mb-2 text-left font-semibold">
-                Reported expenditure · {data.meta.year}
-              </caption>
-              <thead>
-                <tr>
-                  <th className="p-2 text-left">Function</th>
-                  {FUNCTION_GEOGRAPHY_LEVELS.map((level) => (
-                    <th key={level.key} className="p-2 text-right">
-                      {level.label}
-                    </th>
-                  ))}
-                  <th className="p-2 text-right">Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                {columns.map((column) => (
-                  <tr key={column.key} className="border-t">
-                    <th className="p-2 text-left font-medium">
-                      {column.label}
-                    </th>
-                    {column.cells.map((cell) => (
-                      <td
-                        key={cell.level}
-                        className="p-2 text-right tabular-nums"
-                      >
-                        {formatBudget(cell.amount)}
-                      </td>
-                    ))}
-                    <td className="p-2 text-right tabular-nums">
-                      {formatBudget(column.total)}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-        </details>
-      )}
     </section>
   );
 }

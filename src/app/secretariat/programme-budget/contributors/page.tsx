@@ -1,10 +1,7 @@
 import { PageSourceLink } from "@/components/PageSources";
 import { SHOW_REGULAR_BUDGET_OUTSTANDING } from "@/lib/featureFlags";
 import type { Metadata } from "next";
-import {
-  SecretariatMethodologyLink,
-  SecretariatPageSourceProvider,
-} from "@/components/Methodology";
+import { SecretariatMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
 import { RegularBudgetContributorsTreemap } from "@/components/RegularBudgetContributorsTreemap";
@@ -15,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function ContributorsPage() {
   return (
-    <SecretariatPageSourceProvider page="programme-budget-contributors">
+    <>
       <PageHeading
         sources={
           <>
@@ -44,6 +41,6 @@ export default function ContributorsPage() {
         </PageBody>
       </section>
       <SecretariatMethodologyLink page="programme-budget-contributors" />
-    </SecretariatPageSourceProvider>
+    </>
   );
 }

@@ -376,11 +376,6 @@ export function CountryMap() {
         footer={
           <ChartFooter
             hint="Click on a location to explore details"
-            signedAmounts={filteredData.map((row) => ({
-              group: row.region,
-              label: `${row.name} (${row.level})`,
-              amount: row.total,
-            }))}
           />
         }
       >

@@ -60,14 +60,11 @@ try {
         .filter({ hasText: /^Source references$/ })
         .count(),
       0,
-      "Standalone source notes belong in the shared chart footer",
+      "Standalone source notes belong in About",
     );
-    assert.equal(
-      await sourceFooter(contributorPanel).getAttribute("aria-expanded"),
-      "false",
-    );
+    assert.equal(await sourceFooter(contributorPanel).count(), 0);
     await contributorPanel
-      .locator("footer")
+      .locator("[data-chart-hint]")
       .getByText("Click on a contributor to explore details", { exact: true })
       .waitFor();
   };
@@ -146,9 +143,6 @@ try {
   await assertConsistentControls(panel);
   await assertStandaloneSourceReferences(panel);
   assert.equal(await panel.getByText(/USD 68,100/).isVisible(), false);
-  await sourceFooter(panel).click();
-  await panel.getByText(/USD 68,100/).waitFor();
-  await sourceFooter(panel).click();
   await selectSource("ITC");
   panel = page.locator('[data-xb-contributor-panel="ITC"]');
   await panel
@@ -177,8 +171,8 @@ try {
   );
   assert.equal(
     await sourceFooter(panel).count(),
-    1,
-    "Unavailable-year charts retain the shared footer",
+    0,
+    "Unavailable-year charts do not add a source expander",
   );
   await panel.getByRole("slider").press("End");
   await panel.getByRole("slider").press("ArrowLeft");
@@ -203,25 +197,7 @@ try {
     0,
     "Non-donor funding categories must not have a standalone chart section",
   );
-  const revolvingNote = panel
-    .locator("footer")
-    .getByText(
-      "Revolving funds: $208K (a funding category, not a named contributor).",
-      { exact: true },
-    );
-  assert.equal(
-    await revolvingNote.isVisible(),
-    false,
-    "Revolving funds belong in the collapsed source notes",
-  );
-  await sourceFooter(panel).click();
-  await revolvingNote.waitFor();
-  assert.ok(
-    (await revolvingNote.locator("..").locator('a[href*="#page="]').count()) >
-      0,
-    "The non-donor category must retain its source-page links",
-  );
-  await sourceFooter(panel).click();
+  assert.equal(await panel.getByText(/Revolving funds: /).count(), 0);
   const itc = data.series.find(
     (s) => s.entity === "ITC" && s.year === 2023 && s.scope === "entity",
   );
@@ -342,10 +318,7 @@ try {
   );
   assert.equal(await panel.getByRole("table").count(), 0);
   assert.ok(!(await panel.innerText()).includes("pledged_contributions"));
-  await sourceFooter(panel).click();
-  await panel.getByText(/headline says 82 donors/).waitFor();
   assert.ok(!(await panel.innerText()).includes("pledged_contributions"));
-  await sourceFooter(panel).click();
   const unodc2024 = unodcSeries.find((series) => series.year === 2024);
   await panel
     .getByRole("button", { name: unodc2024.rows[0].name, exact: true })
@@ -378,9 +351,6 @@ try {
   await panel.getByRole("slider").press("End");
   await panel.getByRole("slider").press("ArrowLeft");
   assert.equal(await panel.getByText(/USD 16,382.65/).isVisible(), false);
-  await sourceFooter(panel).click();
-  await panel.getByText(/USD 16,382.65/).waitFor();
-  await sourceFooter(panel).click();
   await selectSource("UN-Habitat");
   panel = page.locator('[data-xb-contributor-panel="UN-HABITAT"]');
   await panel
@@ -409,10 +379,10 @@ try {
   );
   assert.deepEqual(errors, []);
   const results = [
-    "Habitat source difference preserved",
+    "Habitat chart retains the reporting scope note",
     "ITC funding windows and non-donor category separated",
     "UNEP availability view links the annual report without publishing contributor data",
-    "UNODC shows one pledge view; provenance and source caveats are collapsed",
+    "UNODC shows one pledge view with contributor citations in the sidebar",
     "Source segmented control, shared year slider, chart footer and source-free tooltips are consistent",
     "Contributor details and mobile layout pass",
   ];

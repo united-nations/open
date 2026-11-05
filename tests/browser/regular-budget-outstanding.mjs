@@ -87,7 +87,7 @@ try {
   );
   assert.doesNotMatch(
     await dialog.innerText(),
-    /Share of total outstanding|Historical balances and changes/,
+    /Share of reported total|Historical balances and changes/,
   );
   assert.match(await dialog.innerText(), /Change \(%\)/);
   await dialog
@@ -103,7 +103,15 @@ try {
     .getByRole("button", { name: "Close contributor details", exact: true })
     .click();
 
-  await section.getByRole("slider").press("Home");
+  const snapshotYear = section.getByRole("slider");
+  await snapshotYear.press("Home");
+  for (let i = 0; i < outstandingYears.indexOf(2021); i++)
+    await snapshotYear.press("ArrowRight");
+  await section
+    .locator("[data-outstanding-summary]")
+    .getByText("$1,255 million", { exact: true })
+    .waitFor();
+  await snapshotYear.press("Home");
   await section.getByText("Sep 30", { exact: true }).waitFor();
   await section
     .getByRole("button", { name: "United States of America", exact: true })
@@ -211,6 +219,10 @@ try {
   await search.fill("China");
   assert.equal(await table.locator("tbody tr").count(), 1);
   assert.match(await table.locator("tbody tr").innerText(), /0%/);
+  assert.equal(
+    await section.locator("[data-outstanding-summary] dd").last().innerText(),
+    "$0",
+  );
   await table.getByRole("button", { name: "China", exact: true }).click();
   await dialog.locator("[data-country-outstanding]").waitFor();
   assert.equal(
@@ -299,12 +311,12 @@ try {
     .getByText("2025 · 30 September 2025", { exact: true })
     .waitFor();
   await tooltip.getByText("All Member States", { exact: true }).waitFor();
-  await tooltip.getByText("$1.9B", { exact: true }).waitFor();
+  await tooltip.getByText("$1,870 million", { exact: true }).waitFor();
   await tooltip.getByText("Mexico", { exact: true }).waitFor();
   await tooltip.getByText("China", { exact: true }).waitFor();
   assert.doesNotMatch(
     await tooltip.innerText(),
-    /Share of total outstanding|Balance \/ annual assessment|Change/,
+    /Share of reported total|Balance \/ annual assessment|Change/,
   );
   // The user's eight-series comparison fits compact country rows in the viewport.
   await page.mouse.move(0, 0);

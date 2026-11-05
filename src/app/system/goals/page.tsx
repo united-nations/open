@@ -1,6 +1,5 @@
 import { SystemPageSources } from "@/components/PageSources";
 import { FunctionDeepLinkRedirect } from "@/components/FunctionDeepLinkRedirect";
-import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { CebMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
@@ -16,11 +15,7 @@ export const metadata: Metadata = {
 
 export default function SystemGoalsPage() {
   return (
-    <ChartSourceProvider
-      label="CEB financial statistics"
-      details={null}
-      placement="page"
-    >
+    <>
       <FunctionDeepLinkRedirect />
       <PageHeading
         sources={<SystemPageSources uninfo />}
@@ -33,6 +28,6 @@ export default function SystemGoalsPage() {
         <SDGsTrendsChart />
       </PageBody>
       <CebMethodologyLink />
-    </ChartSourceProvider>
+    </>
   );
 }

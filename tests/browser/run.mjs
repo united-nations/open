@@ -6,6 +6,7 @@ const checks = [
   "header-layout",
   "treemap-search-labels",
   "ceb-methodology",
+  "page-notes",
   "data-disclosures",
   "ceb-refresh",
   "sdg-trends",

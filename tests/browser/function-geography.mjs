@@ -97,17 +97,22 @@ try {
       })
       .waitFor();
     assert.equal(await section.locator("button[data-level]").count(), 12);
-    await section.getByRole("button", { name: /^Source:/ }).click();
-    await section.getByRole("table").waitFor();
-    assert.ok(
-      await section
+    assert.equal(await section.getByRole("table").count(), 0);
+    assert.equal(await section.locator("details").count(), 0);
+    const methodologyPage = await browser.newPage();
+    await methodologyPage.goto(portalUrl + "/about/#ceb-presentation", {
+      waitUntil: "networkidle",
+    });
+    assert.equal(
+      await methodologyPage
         .getByRole("link", {
           name: "Download the CEB geographic source data",
           exact: true,
         })
         .count(),
+      1,
     );
-    await section.getByRole("button", { name: /^Source:/ }).click();
+    await methodologyPage.close();
     await page.setViewportSize({ width: 390, height: 844 });
     await section.screenshot({
       path: "audits/browser/function-geography-mobile.png",
@@ -123,7 +128,7 @@ try {
     );
     assert.deepEqual(errors, []);
     console.log(
-      "Function/geography mosaic: reported values and area ratios, year selection, keyboard tooltip, source table, and mobile layout passed.",
+      "Function/geography mosaic: reported values and area ratios, year selection, keyboard tooltip, centralized source link, and mobile layout passed.",
     );
   }
 } finally {

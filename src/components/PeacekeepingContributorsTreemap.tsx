@@ -140,11 +140,6 @@ export function PeacekeepingContributorsTreemap() {
     return () => window.clearTimeout(id);
   }, [current, pending, setPending]);
 
-  const exceptionCount = current
-    ? current.meta.verification.source_rate_anomalies.length +
-      current.meta.verification.rows_derived_from_printed_totals.length
-    : 0;
-
   const open = useCallback((contributor: PeacekeepingContributor) => {
     setSelectedName(contributor.name);
     replaceToSidebar("peacekeeping-contributor", contributor.name);
@@ -217,36 +212,7 @@ export function PeacekeepingContributorsTreemap() {
             never
           >
             footer={
-              <ChartFooter
-                signedAmounts={signedContributors.map((item) => ({
-                  label: item.name,
-                  amount: item.net_assessment,
-                  group: "Net assessments",
-                }))}
-                details={
-                  <div className="space-y-2">
-                    <p>
-                      <a
-                        href={current.meta.source_page}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-un-blue underline"
-                      >
-                        Committee on Contributions source index
-                      </a>
-                    </p>
-                    {exceptionCount > 0 && (
-                      <p className="border-l-2 border-amber-500 pl-2 text-amber-800">
-                        This cycle contains {exceptionCount} disclosed
-                        source-data exception{exceptionCount === 1 ? "" : "s"}.
-                        The affected contributor sidebar and export explain how
-                        each was handled.
-                      </p>
-                    )}
-                  </div>
-                }
-                hint="Click on a contributor to explore details"
-              />
+              <ChartFooter hint="Click on a contributor to explore details" />
             }
             yearControl={
               <YearSlider

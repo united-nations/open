@@ -1,9 +1,6 @@
 import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
-import {
-  SecretariatMethodologyLink,
-  SecretariatPageSourceProvider,
-} from "@/components/Methodology";
+import { SecretariatMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
 import { PeacekeepingBudgetView } from "@/components/PeacekeepingBudgetView";
@@ -16,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function PeacekeepingBudgetPage() {
   return (
-    <SecretariatPageSourceProvider page="peacekeeping-budget">
+    <>
       <PageHeading
         sources={
           <>
@@ -33,6 +30,6 @@ export default function PeacekeepingBudgetPage() {
         <PeacekeepingBudgetView />
       </PageBody>
       <SecretariatMethodologyLink page="peacekeeping-budget" />
-    </SecretariatPageSourceProvider>
+    </>
   );
 }

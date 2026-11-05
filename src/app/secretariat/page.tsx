@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import {
-  SecretariatMethodologyLink,
-  SecretariatPageSourceProvider,
-} from "@/components/Methodology";
+import { SecretariatMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
 import { SecretariatFlows } from "@/components/SecretariatFlows";
@@ -16,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function SecretariatPage() {
   return (
-    <SecretariatPageSourceProvider page="overview">
+    <>
       <PageHeading
         id="priorities"
         title="How do UN Secretariat entities use their resources?"
@@ -41,6 +38,6 @@ export default function SecretariatPage() {
         <SecretariatFlows />
       </PageBody>
       <SecretariatMethodologyLink page="overview" />
-    </SecretariatPageSourceProvider>
+    </>
   );
 }

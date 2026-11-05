@@ -1,7 +1,6 @@
 import { SystemPageSources } from "@/components/PageSources";
 import { FunctionGeographyChart } from "@/components/FunctionGeographyChart";
 import { FEATURES } from "@/lib/featureFlags";
-import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { CountryMap } from "@/components/CountryMap";
 import { CebMethodologyLink } from "@/components/Methodology";
@@ -16,11 +15,7 @@ export const metadata: Metadata = {
 
 export default function SystemLocationsPage() {
   return (
-    <ChartSourceProvider
-      label="CEB financial statistics"
-      details={null}
-      placement="page"
-    >
+    <>
       <PageHeading
         sources={<SystemPageSources uninfo />}
         id="countries"
@@ -32,6 +27,6 @@ export default function SystemLocationsPage() {
         {FEATURES.functionGeography && <FunctionGeographyChart />}
       </PageBody>
       <CebMethodologyLink />
-    </ChartSourceProvider>
+    </>
   );
 }

@@ -161,7 +161,7 @@ def export() -> None:
         payload = {"meta": {"year": year, "as_of": as_of, "currency": "USD", "total_outstanding": total,
                               "reported_total": control, "reported_total_tolerance": tolerance,
                               "debtor_count": count, "member_state_count": 193, "source": source,
-                              "reconciliation_note": "The 63 published country balances sum to $1,254,267,798, while the source headline reports $1,255 million. Charts use the country sum without adjustment." if year in REVIEWED_LIST_TOTALS else None},
+                              "reconciliation_note": "The 63 published country balances sum to $1,254,267,798. The source reports $1,255 million, a difference of $732,202." if year in REVIEWED_LIST_TOTALS else None},
                    "contributors": contributors}
         (OUT / f"regular-budget-outstanding-{year}.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2) + '\n')
         evidence.extend({"year": year, "as_of": as_of, **row, "source_url": url, "source_page": page} for row in contributors)

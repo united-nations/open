@@ -7,6 +7,7 @@ const {
   outstandingChange,
   percentageOf,
   formatOutstandingPercent,
+  formatReportedOutstandingTotal,
   assignOutstandingCountryColors,
   OUTSTANDING_TOTAL_COLOR,
 } = await moduleAt("src/lib/regularBudgetOutstanding.ts");
@@ -38,6 +39,31 @@ test("unknown observations do not become zero or partial selected totals", () =>
   assert.equal(outstandingAmount(row, ["A", "unknown"]), null);
   assert.equal(outstandingAmount(row, ["B"]), 0);
   assert.equal(outstandingAmount(row), 100);
+});
+
+test("the reported headline retains its precision and country selections use their own balances", () => {
+  const snapshot = {
+    meta: {
+      reported_total: 1_255_000_000,
+      reported_total_tolerance: 500_000,
+      total_outstanding: 1_254_267_798,
+    },
+    contributors: [{ name: "A", outstanding_amount: 1_254_267_798 }],
+  };
+  assert.equal(outstandingAmount(snapshot), 1_255_000_000);
+  assert.equal(outstandingAmount(snapshot, ["A"]), 1_254_267_798);
+  assert.equal(formatReportedOutstandingTotal(snapshot), "$1,255 million");
+  assert.equal(
+    formatReportedOutstandingTotal({
+      ...snapshot,
+      meta: {
+        reported_total: 1_496_578_501,
+        reported_total_tolerance: 1,
+        total_outstanding: 1_496_578_500,
+      },
+    }),
+    "$1,496,578,501",
+  );
 });
 
 test("changes distinguish missing, zero, new and cleared balances", () => {

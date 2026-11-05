@@ -111,18 +111,7 @@ export function FunctionsChart() {
           />
         }
         footer={
-          <ChartFooter
-            signedAmounts={Object.entries(row.entities).flatMap(
-              ([entity, amounts]) =>
-                Object.entries(amounts).map(([key, amount]) => ({
-                  group:
-                    UN_FUNCTIONS.find((item) => item.key === key)?.label ?? key,
-                  label: entity,
-                  amount: amount ?? 0,
-                })),
-            )}
-            hint="Click on an organization to explore details."
-          />
+          <ChartFooter hint="Click on an organization to explore details." />
         }
         renderTooltip={({ row: group, leaf }) => (
           <FinancialTooltip

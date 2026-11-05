@@ -26,6 +26,12 @@ import {
   regularBudgetAssessmentSources,
 } from "@/lib/regularBudgetContributors";
 
+const discrepancyCurrency = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  maximumFractionDigits: 0,
+});
+
 export function RegularBudgetContributorSidebar({
   name,
   initialData,
@@ -181,6 +187,23 @@ export function RegularBudgetContributorSidebar({
           )}
           {member && file && status && (
             <>
+              {file.meta.amount_reconciliation.discrepancies
+                .filter((item) => item.name === member.name)
+                .map((item) => (
+                  <p
+                    key={item.name}
+                    className="mt-3 text-sm text-gray-500"
+                    data-assessment-discrepancy
+                  >
+                    The assessment circular reports{" "}
+                    {discrepancyCurrency.format(
+                      item.assessment_document_amount,
+                    )}
+                    ; the honour roll reports{" "}
+                    {discrepancyCurrency.format(item.honour_roll_amount)}. This
+                    view uses the assessment circular amount.
+                  </p>
+                ))}
               <dl className="mt-3 grid grid-cols-[1fr_auto] gap-2 text-sm">
                 <dt>Assessment rate</dt>
                 <dd className="text-end">

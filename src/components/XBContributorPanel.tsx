@@ -339,15 +339,7 @@ export function XBContributorPanel({
               },
             ]}
             footer={
-              <ChartFooter
-                hint="Select a reporting source and year to explore contributors"
-                details={
-                  <p>
-                    No contributor breakdown is available for this entity in{" "}
-                    {selectedYear}.
-                  </p>
-                }
-              />
+              <ChartFooter hint="Select a reporting source and year to explore contributors" />
             }
             search={{
               value: query,
@@ -440,43 +432,7 @@ export function XBContributorPanel({
                 />
               }
               footer={
-                <ChartFooter
-                  hint="Click on a contributor to explore details"
-                  details={
-                    <>
-                      <ContributorSourceReferences
-                        series={series}
-                        collapsible={false}
-                      />
-                      {!compact && rows.some((row) => row.amount < 0) && (
-                        <details>
-                          <summary className="cursor-pointer text-sm font-medium">
-                            Negative reported amounts
-                          </summary>
-                          <p className="my-2 text-sm text-gray-600">
-                            Negative amounts reduce the total but cannot be
-                            shown as treemap tiles.
-                          </p>
-                          <div className="space-y-2">
-                            {rows
-                              .filter((row) => row.amount < 0)
-                              .map((row) => (
-                                <button
-                                  type="button"
-                                  key={row.name}
-                                  className="flex w-full justify-between gap-4 text-left text-sm text-un-blue"
-                                  onClick={() => setSelected(row.name)}
-                                >
-                                  <span>{row.name}</span>
-                                  <span>{formatBudget(row.amount)}</span>
-                                </button>
-                              ))}
-                          </div>
-                        </details>
-                      )}
-                    </>
-                  }
-                />
+                <ChartFooter hint="Click on a contributor to explore details" />
               }
               totalLabel="Listed amounts"
               showRowLabels={false}

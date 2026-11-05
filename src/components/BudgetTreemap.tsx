@@ -2027,32 +2027,6 @@ export function BudgetTreemap({
       .toLocaleLowerCase()
       .includes(searchQuery.trim().toLocaleLowerCase());
   };
-  const signedBudgetAmounts = (filteredData?.nodes ?? [])
-    .filter(
-      (node) =>
-        (usesSharedTrustFundExpenses
-          ? accountingNodes.includes(node)
-          : !childrenOf[node.id]?.length) && matchesAccountingNode(node),
-    )
-    .flatMap((node) =>
-      node.values && Object.keys(node.values).length
-        ? Object.entries(node.values)
-            .filter(([key]) =>
-              activeFundingSources.some((source) => source === key),
-            )
-            .map(([key, amount]) => ({
-              group: node.label,
-              label: fundingLabel(key),
-              amount: amount ?? 0,
-            }))
-        : [
-            {
-              group: node.parentId ? byId[node.parentId]?.label : undefined,
-              label: node.label,
-              amount: node.amount,
-            },
-          ],
-    );
   const signedBudgetTotal =
     !usesSharedTrustFundExpenses && !searchQuery.trim()
       ? (filteredData?.meta.total ?? 0)
@@ -2391,30 +2365,6 @@ export function BudgetTreemap({
   );
 
   if (usesSharedTreemap) {
-    const sharedSources = meta.documentUrl
-      ? [
-          {
-            key: meta.documentSymbol ?? meta.documentUrl,
-            label:
-              meta.sourceEdition && meta.documentSymbol
-                ? `PPB ${meta.sourceEdition} · ${meta.documentSymbol}`
-                : (meta.documentSymbol ?? meta.title),
-            href: meta.documentUrl,
-            openInNewTab: true as const,
-            newTabLabel: "opens in a new tab",
-          },
-        ]
-      : meta.source.url
-        ? [
-            {
-              key: meta.source.url,
-              label: `${meta.source.repo} ${meta.source.release}`,
-              href: meta.source.url,
-              openInNewTab: true as const,
-              newTabLabel: "opens in a new tab",
-            },
-          ]
-        : [];
     const sourceControls =
       usesSharedTrustFundExpenses && SHOW_ADDITIONAL_TRUST_FUNDS ? (
         <div
@@ -2481,50 +2431,6 @@ export function BudgetTreemap({
           pending={loadedRequest !== `${dataset}-${year}`}
           requestKey={`${dataset}-${year}`}
         />
-        {usesSharedProgrammeBudget && meta.partial && (
-          <p
-            role="note"
-            className="mb-3 border-l-4 border-amber-400 bg-amber-50 px-4 py-3 text-sm text-amber-950"
-          >
-            Partial coverage: {meta.scopeWarning}
-          </p>
-        )}
-        {!usesSharedProgrammeBudget && !usesSharedTrustFundExpenses && (
-          <>
-            {meta.sourceNote && (
-              <p className="mb-3 border-l-4 border-amber-400 bg-amber-50 px-4 py-3 text-sm text-amber-950">
-                {meta.sourceNote}
-              </p>
-            )}
-
-            {isAlignedPpb &&
-              ppbGrouping === "entity" &&
-              entityProjection.unassignedAmount > 0 && (
-                <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
-                  Amounts without a source-evidenced entity placement remain
-                  explicit “Not assigned to a single entity” tiles inside their
-                  published budget section.
-                </p>
-              )}
-
-            {meta.partial && (
-              <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
-                {meta.scopeLabel}. This year does not publish every funding
-                source, so it is not directly comparable with years that do.
-              </p>
-            )}
-
-            {withheldBreakdowns > 0 && (
-              <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
-                {withheldBreakdowns} published parent total
-                {withheldBreakdowns === 1 ? " has" : "s have"} a lower-level
-                breakdown that does not reconcile. The chart preserves each
-                parent total and withholds its child geometry; open the flagged
-                tile to inspect the published lines and difference.
-              </p>
-            )}
-          </>
-        )}
 
         {usesSharedTrustFundExpenses && (
           <div className="mb-3 space-y-1 text-sm text-gray-600">
@@ -2549,90 +2455,6 @@ export function BudgetTreemap({
         >
           footer={
             <ChartFooter
-              signedAmounts={
-                usesSharedTrustFundExpenses ? undefined : signedBudgetAmounts
-              }
-              details={
-                usesSharedProgrammeBudget || usesSharedTrustFundExpenses ? (
-                  <div className="space-y-3">
-                    <p className="font-medium">
-                      Selected year: {year} ·{" "}
-                      {metricDefinition?.label ?? metric}
-                    </p>
-                    {sharedSources.map((source) => (
-                      <p key={source.key}>
-                        <a
-                          href={source.href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-un-blue underline"
-                        >
-                          {source.label}
-                          <span className="sr-only"> (opens in a new tab)</span>
-                        </a>
-                      </p>
-                    ))}
-                    {usesSharedProgrammeBudget && meta.sourceNote && (
-                      <p>{meta.sourceNote}</p>
-                    )}
-                    {usesSharedProgrammeBudget &&
-                      meta.scopeWarning &&
-                      meta.scopeWarning !== meta.sourceNote && (
-                        <p>{meta.scopeWarning}</p>
-                      )}
-                    {usesSharedTrustFundExpenses &&
-                      accountingNodes.some(
-                        (item) =>
-                          item.amount <= 0 && matchesAccountingNode(item),
-                      ) && (
-                        <details
-                          className="mt-4"
-                          aria-label="Funds with zero or negative expenditure"
-                        >
-                          <summary className="w-fit cursor-pointer text-sm font-semibold">
-                            Funds with zero or negative expenditure
-                          </summary>
-                          <div className="divide-y">
-                            {accountingNodes
-                              .filter(
-                                (item) =>
-                                  item.amount <= 0 &&
-                                  matchesAccountingNode(item),
-                              )
-                              .map((item) => (
-                                <button
-                                  key={item.id}
-                                  type="button"
-                                  onClick={() => openSidebar(item.id)}
-                                  className="flex w-full items-start justify-between gap-4 py-2 text-left text-sm hover:bg-gray-50"
-                                >
-                                  <span>
-                                    {item.label}
-                                    <span className="block text-xs">
-                                      {item.parentId
-                                        ? sidebarById[item.parentId]?.label
-                                        : "Unmapped Trust Funds"}
-                                    </span>
-                                  </span>
-                                  <span className="shrink-0 tabular-nums">
-                                    {formatBudget(item.amount)}
-                                  </span>
-                                </button>
-                              ))}
-                          </div>
-                        </details>
-                      )}
-
-                    {usesSharedTrustFundExpenses && meta.partial && (
-                      <p>
-                        {meta.scopeLabel}. This year does not publish every
-                        funding source, so it is not directly comparable with
-                        years that do.
-                      </p>
-                    )}
-                  </div>
-                ) : undefined
-              }
               hint={
                 isTrustFund
                   ? "Select a fund or entity to explore details"
@@ -2824,18 +2646,46 @@ export function BudgetTreemap({
                       : "No budget value is available for the selected controls."}
             </div>
           }
-          sources={
-            usesSharedProgrammeBudget || usesSharedTrustFundExpenses
-              ? undefined
-              : sharedSources
-          }
-          sourceHeading="Source:"
         />
 
-        {meta.scopeWarning &&
-          !usesSharedProgrammeBudget &&
-          !usesSharedTrustFundExpenses && (
-            <p className="mt-3 text-xs text-gray-500">{meta.scopeWarning}</p>
+        {usesSharedTrustFundExpenses &&
+          accountingNodes.some(
+            (item) => item.amount <= 0 && matchesAccountingNode(item),
+          ) && (
+            <details
+              className="mt-4"
+              aria-label="Funds with zero or negative expenditure"
+            >
+              <summary className="w-fit cursor-pointer text-sm font-semibold">
+                Funds with zero or negative expenditure
+              </summary>
+              <div className="divide-y">
+                {accountingNodes
+                  .filter(
+                    (item) => item.amount <= 0 && matchesAccountingNode(item),
+                  )
+                  .map((item) => (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => openSidebar(item.id)}
+                      className="flex w-full items-start justify-between gap-4 py-2 text-left text-sm hover:bg-gray-50"
+                    >
+                      <span>
+                        {item.label}
+                        <span className="block text-xs">
+                          {item.parentId
+                            ? sidebarById[item.parentId]?.label
+                            : "Unmapped Trust Funds"}
+                        </span>
+                      </span>
+                      <span className="shrink-0 tabular-nums">
+                        {formatBudget(item.amount)}
+                      </span>
+                    </button>
+                  ))}
+              </div>
+            </details>
           )}
 
         {selected && (
@@ -2918,23 +2768,6 @@ export function BudgetTreemap({
         </div>
       )}
 
-      {meta.sourceNote && (
-        <p className="mb-3 border-l-4 border-amber-400 bg-amber-50 px-4 py-3 text-sm text-amber-950">
-          {meta.sourceNote}{" "}
-          {meta.documentUrl && meta.sourceDocument && (
-            <a
-              href={meta.documentUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 font-medium text-un-blue hover:underline"
-            >
-              Open {meta.sourceDocument}
-              <ExternalLink className="h-3 w-3" />
-            </a>
-          )}
-        </p>
-      )}
-
       {isAlignedPpb &&
         ppbGrouping === "entity" &&
         entityProjection.unassignedAmount > 0 && (
@@ -2955,13 +2788,6 @@ export function BudgetTreemap({
             rather than one owner.
           </p>
         )}
-
-      {meta.partial && (
-        <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
-          {meta.scopeLabel}. This year does not publish every funding source, so
-          it is not directly comparable with years that do.
-        </p>
-      )}
 
       {withheldBreakdowns > 0 && (
         <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
@@ -3344,11 +3170,8 @@ export function BudgetTreemap({
               )}
             {filteredPrevious && " · the change is against the year before"}
           </p>
-          <p>{meta.scopeWarning}</p>
-          <ChartFooter
-            hint="Click on an entity to explore details"
-            signedAmounts={signedBudgetAmounts}
-          />
+
+          <ChartFooter hint="Click on an entity to explore details" />
           {(meta.omitted ?? []).length > 0 && (
             <p>
               Not drawn, because the budget prints no total for them:{" "}
@@ -3369,32 +3192,6 @@ export function BudgetTreemap({
               .
             </p>
           )}
-          <p>
-            Source:{" "}
-            {meta.documentUrl && meta.documentSymbol ? (
-              <a
-                href={meta.documentUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 text-un-blue hover:underline"
-              >
-                {meta.documentSymbol}
-                <ExternalLink className="h-3 w-3" />
-              </a>
-            ) : (
-              "budget fascicles"
-            )}
-            {" · extracted by "}
-            <a
-              href={meta.source.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1 text-un-blue hover:underline"
-            >
-              {meta.source.repo} {meta.source.release}
-              <ExternalLink className="h-3 w-3" />
-            </a>
-          </p>
         </div>
       )}
 

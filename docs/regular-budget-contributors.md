@@ -89,8 +89,9 @@ The exporter validates all country identities against the same-year assessment
 roster, the complete debtor count, positive listed balances, and the headline
 total at its published precision. The 2021 source has a reviewed discrepancy:
 63 printed country balances total $1,254,267,798, versus the $1,255m headline.
-Both amounts and the discrepancy are retained; visual totals use the country
-sum without allocating a reconciliation balance to countries. The 2018 country
+Both amounts and the discrepancy are retained. The overall headline and trend
+use the printed total at its published precision. The country figures and
+filtered totals use the published debtor list. The 2018 country
 sum is $1,087,671,796, two dollars above the headline after rounding each country;
 the 2019 and 2020 sums differ from their precise headlines by one dollar.
 
@@ -105,8 +106,9 @@ annual line comparison (one line per selected country, defaulting to all Member
 States), and a shared sidebar history. The sidebar retains its compact bar history.
 The total can remain selected alongside individual countries. Each is an independent
 series; the total and country balances are never added together.
-Share of total always uses all Member States' balances in the snapshot, including
-when the treemap/table is searched. Balance / annual assessment uses the same-year
+Share of reported total uses the printed total for the snapshot, including when
+the treemap or table is searched. Country shares may sum to slightly more or
+less than 100%. Balance / annual assessment uses the same-year
 circular amount, including the Peacebuilding Fund portion from 2025. It may exceed
 100% and is not a current-year payment-completion measure. Changes compare the
 immediately preceding calendar year's snapshot; percentage changes from zero are

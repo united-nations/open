@@ -1,5 +1,4 @@
 import { SystemPageSources } from "@/components/PageSources";
-import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { ContributorTrendsChart } from "@/components/ContributorTrendsChart";
 import { ContributorsTreemap } from "@/components/ContributorsTreemap";
@@ -15,11 +14,7 @@ export const metadata: Metadata = {
 
 export default function SystemContributorsPage() {
   return (
-    <ChartSourceProvider
-      label="CEB financial statistics"
-      details={null}
-      placement="page"
-    >
+    <>
       <PageHeading
         sources={<SystemPageSources />}
         id="donors"
@@ -36,6 +31,6 @@ export default function SystemContributorsPage() {
         </div>
       </PageBody>
       <CebMethodologyLink />
-    </ChartSourceProvider>
+    </>
   );
 }

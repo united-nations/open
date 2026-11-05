@@ -19,7 +19,6 @@ import {
   selectedLinkValue,
   selectionRows,
   sumRecords,
-  positiveRecords,
   type SecretariatRecord,
 } from "@/lib/secretariatFlows";
 import { formatBudget } from "@/lib/entities";
@@ -84,7 +83,6 @@ export function SecretariatFlows() {
     [current, choices],
   );
   const total = current ? sumRecords(current.records) : 0;
-  const positive = current ? positiveRecords(current.records) : 0;
   const openEntity = (code: string, members: SecretariatRecord[]) => {
     const entity = current?.entities.find((e) => e.code === code);
     if (!entity) return;
@@ -133,20 +131,7 @@ export function SecretariatFlows() {
           />
         }
         footer={
-          <ChartFooter
-            hint="Hover for amounts; click a bar or connection to open details."
-            details={
-              <div className="space-y-2">
-                {current && (
-                  <p>
-                    Net expenditure ({current.meta.year}): {formatBudget(total)}
-                    . Positive flows: {formatBudget(positive)}. Signed
-                    adjustments: {formatBudget(total - positive)}.
-                  </p>
-                )}
-              </div>
-            }
-          />
+          <ChartFooter hint="Hover for amounts; click a bar or connection to open details." />
         }
       >
         {/* The shared chart already sizes solid bars by net expenditure.

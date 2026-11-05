@@ -1,9 +1,6 @@
 import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
-import {
-  SecretariatMethodologyLink,
-  SecretariatPageSourceProvider,
-} from "@/components/Methodology";
+import { SecretariatMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
 import { RegularBudgetView } from "@/components/RegularBudgetView";
@@ -16,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function ProgrammeBudgetPage() {
   return (
-    <SecretariatPageSourceProvider page="programme-budget">
+    <>
       <PageHeading
         sources={
           <>
@@ -32,6 +29,6 @@ export default function ProgrammeBudgetPage() {
         <RegularBudgetView />
       </PageBody>
       <SecretariatMethodologyLink page="programme-budget" />
-    </SecretariatPageSourceProvider>
+    </>
   );
 }

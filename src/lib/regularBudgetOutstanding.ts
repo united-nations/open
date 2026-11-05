@@ -3,6 +3,10 @@ import { formatAssessmentRate } from "@un-eosg/ui/format-budget";
 
 export const OUTSTANDING_TOTAL_COLOR = "var(--color-au-chico)";
 
+const wholeDollars = new Intl.NumberFormat("en-US", {
+  maximumFractionDigits: 0,
+});
+
 const COUNTRY_COLORS = [
   "var(--color-un-blue-text)",
   "#7254a3",
@@ -40,7 +44,8 @@ export function outstandingAmount(
   names?: string[],
 ): number | null {
   if (!snapshot) return null;
-  if (!names?.length) return snapshot.meta.total_outstanding;
+  if (!names?.length)
+    return snapshot.meta.reported_total ?? snapshot.meta.total_outstanding;
   const amounts = names.map(
     (name) =>
       snapshot.contributors.find((row) => row.name === name)
@@ -48,6 +53,17 @@ export function outstandingAmount(
   );
   if (amounts.some((amount) => amount === undefined)) return null;
   return amounts.reduce<number>((sum, amount) => sum + (amount ?? 0), 0);
+}
+
+export function formatReportedOutstandingTotal(
+  snapshot: RegularBudgetOutstandingData,
+) {
+  const { reported_total, reported_total_tolerance, total_outstanding } =
+    snapshot.meta;
+  // A half-million tolerance denotes a headline printed in whole millions.
+  if (reported_total != null && reported_total_tolerance === 500_000)
+    return `$${wholeDollars.format(reported_total / 1_000_000)} million`;
+  return `$${wholeDollars.format(reported_total ?? total_outstanding)}`;
 }
 
 export function outstandingChange(

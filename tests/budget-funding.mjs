@@ -12,7 +12,7 @@ new Function(
   ).outputText,
 )(formatExports);
 
-const module = { exports: {} };
+const budgetModule = { exports: {} };
 const code = ts.transpileModule(
   fs.readFileSync("src/lib/budgetFunding.ts", "utf8"),
   { compilerOptions: { module: ts.ModuleKind.CommonJS } },
@@ -28,14 +28,14 @@ new Function("require", "exports", code)(
             "extrabudgetary",
           ],
         },
-  module.exports,
+  budgetModule.exports,
 );
 const {
   budgetFundingEntries,
   budgetFundingPoint,
   formatBudgetNode,
   formatBudgetFunding,
-} = module.exports;
+} = budgetModule.exports;
 const node = { values: { regular_budget: 0, extrabudgetary: -476500 } };
 assert.deepEqual(budgetFundingEntries(node), [
   ["regular_budget", 0],

@@ -7,7 +7,6 @@ import {
 import cebSource from "../../public/data/ceb-source.json";
 import cebMethodology from "../../data/ceb-methodology.json";
 import { ExpandableCard } from "@/components/ExpandableCard";
-import { ChartSourceProvider } from "@/components/ChartSource";
 import { PageSourceLink } from "@/components/PageSources";
 
 /** The complete CEB note is rendered only on About. */
@@ -75,20 +74,32 @@ export function CebMethodology() {
               <p>{item.text}</p>
             </div>
           ))}
+          <p>
+            Function-by-geography figures use CEB’s E06 expenditure records.
+            Function attribution is incomplete before 2020; amounts without a
+            reported function stay under Function not reported. We do not infer
+            functions from separate totals. Areas show positive totals; negative
+            amounts remain in the reported totals. Flow ribbons show positive
+            net connections, while node edges retain signed totals.
+          </p>
+          <p>
+            <a
+              href="https://unsceb.org/assets/data/FS/expenses_by_country_region_sub_agency.csv"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline underline-offset-2"
+            >
+              Download the CEB geographic source data
+            </a>
+          </p>
         </div>
       </ExpandableCard>
     </div>
   );
 }
 
-/** Chart records stay on their data page; explanatory text lives on About. */
-function PageMethodologyLink({
-  href,
-  targetId,
-}: {
-  href: string;
-  targetId: string;
-}) {
+/** Data pages link to the central source and scope notes on About. */
+function PageMethodologyLink({ href }: { href: string }) {
   return (
     <section
       className="mx-auto max-w-6xl px-6 pb-12 md:px-12 lg:px-16"
@@ -103,19 +114,13 @@ function PageMethodologyLink({
         >
           Sources and methodology
         </Link>
-        <div id={targetId} className="mt-4 space-y-4 empty:hidden" />
       </div>
     </section>
   );
 }
 
 export function CebMethodologyLink() {
-  return (
-    <PageMethodologyLink
-      href="/about/#ceb-methodology"
-      targetId="page-chart-source-notes"
-    />
-  );
+  return <PageMethodologyLink href="/about/#ceb-methodology" />;
 }
 
 export function UninfoMethodology() {
@@ -230,34 +235,7 @@ export function SecretariatMethodologyLink({
 }: {
   page: SecretariatMethodologyPage;
 }) {
-  return (
-    <PageMethodologyLink
-      href={`/about/#secretariat-${page}`}
-      targetId="secretariat-chart-source-notes"
-    />
-  );
-}
-
-export function SecretariatPageSourceProvider({
-  page,
-  children,
-}: {
-  page: SecretariatMethodologyPage;
-  children: React.ReactNode;
-}) {
-  const metadata = SECRETARIAT_METHODOLOGY_PAGES.find(
-    (item) => item.id === page,
-  )!;
-  return (
-    <ChartSourceProvider
-      label={metadata.source}
-      details={null}
-      placement="page"
-      pageDetailsTargetId="secretariat-chart-source-notes"
-    >
-      {children}
-    </ChartSourceProvider>
-  );
+  return <PageMethodologyLink href={`/about/#secretariat-${page}`} />;
 }
 
 function SourceLink({
@@ -352,6 +330,14 @@ function ProgrammeBudgetMethodologyNotes() {
         report approved budgets and expenditure for earlier years. We extract
         these tables to show proposed and approved regular budgets, and reported
         expenditure by funding source.
+      </p>
+      <p>
+        Other assessed and extrabudgetary resources are shown for context and
+        are outside the programme budget itself. Proposed figures use the
+        selected PPB edition; approved figures use the following edition;
+        expenditure uses the edition two years later. Amounts without a
+        source-evidenced entity placement remain under their published budget
+        section.
       </p>
       <p>
         Extrabudgetary expenditure on this page comes from those budget tables.
@@ -460,6 +446,20 @@ function ProgrammeBudgetContributorsMethodologyNotes() {
             coverage begins in 2019; the 2018 balance has no corresponding
             assessment ratio.
           </p>
+          <p>
+            The overall total and trend use the amounts printed in the UN
+            presentations, at their published precision. Filtered totals add the
+            matching country balances. Shares use the printed total and may add
+            up to slightly more or less than 100%. The autumn balance snapshot
+            is independent of the honour roll’s later reporting date.
+          </p>
+          <p>
+            In 2021, the 63 country balances add to $1,254,267,798. The{" "}
+            <SourceLink href="https://www.un.org/en/ga/contributions/Presentation%20October%202021.pdf#page=8">
+              UN presentation
+            </SourceLink>{" "}
+            reports $1,255 million, a difference of $732,202.
+          </p>
         </>
       )}
     </>
@@ -493,8 +493,8 @@ function PeacekeepingContributorsMethodologyNotes() {
       <PageSourceLink source="peacekeepingAssessments" />, adding assessment
       sections and subtracting credits for earlier periods. The result is the
       net amount assessed to each Member State. Payments and arrears are
-      separate measures. Source exceptions are identified in the selected-year
-      details and the affected Member State’s sidebar.
+      separate measures. Source exceptions are identified in the affected Member
+      State’s sidebar.
     </p>
   );
 }
@@ -527,9 +527,8 @@ function TrustFundsMethodologyNotes() {
       </p>
       <p>
         Totals retain negative amounts. Funds with zero or negative expenditure
-        are available in the selected-year data details. Fund-level accounts can
-        include transfers between funds and overlap with other Secretariat
-        views.
+        are listed below the expenditure chart. Fund-level accounts can include
+        transfers between funds and overlap with other Secretariat views.
       </p>
       {SHOW_ADDITIONAL_TRUST_FUNDS && (
         <>

@@ -272,18 +272,13 @@ export function FieldMissionsMap({
           expenditure for mission entities with geographic locations. Support
           offices and bodies without a geographic location are outside this map.
         </p>
-        <details className="max-w-2xl">
-          <summary className="cursor-pointer text-un-blue">
-            Map placement and boundary notes
-          </summary>
-          <div className="mt-2 space-y-2">
-            <p>{entitiesData.map_notes.placement}</p>
-            <p>{entitiesData.map_notes.boundary_disclaimer}</p>
-            {model.points.some(
-              (point) => point.data.location.code === "UNMOGIP",
-            ) && <p>{entitiesData.map_notes.kashmir_disclaimer}</p>}
-          </div>
-        </details>
+        <div className="max-w-2xl space-y-2" data-map-notes>
+          <p>{entitiesData.map_notes.placement}</p>
+          <p>{entitiesData.map_notes.boundary_disclaimer}</p>
+          {model.points.some(
+            (point) => point.data.location.code === "UNMOGIP",
+          ) && <p>{entitiesData.map_notes.kashmir_disclaimer}</p>}
+        </div>
       </div>
     </div>
   );

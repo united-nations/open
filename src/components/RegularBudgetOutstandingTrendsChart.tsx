@@ -20,6 +20,7 @@ import {
 } from "@/lib/regularBudgetContributors";
 import {
   formatOutstandingPercent as percent,
+  formatReportedOutstandingTotal,
   outstandingAmount,
   outstandingChange,
   outstandingSourceUrl,
@@ -68,10 +69,8 @@ export function outstandingMetricRows(
     ...(includeShareOfTotal
       ? [
           {
-            label: "Share of total outstanding",
-            value: percent(
-              percentageOf(amount, snapshot.meta.total_outstanding),
-            ),
+            label: "Share of reported total",
+            value: percent(percentageOf(amount, outstandingAmount(snapshot))),
           },
         ]
       : []),
@@ -149,11 +148,17 @@ export function RegularBudgetOutstandingTrendsChart({
         : { y, maxHeight },
     );
   };
-  const displayAmount = (amount: number | null) =>
-    amount === null ? "Unavailable" : money(amount);
+  const displayAmount = (
+    snapshot: RegularBudgetOutstandingData,
+    names: string[],
+  ) => {
+    if (!names.length) return formatReportedOutstandingTotal(snapshot);
+    const amount = outstandingAmount(snapshot, names);
+    return amount === null ? "Unavailable" : money(amount);
+  };
   const data = rows.map((row) => ({
     year: String(row.meta.year),
-    total: row.meta.total_outstanding,
+    total: outstandingAmount(row),
     ...Object.fromEntries(
       names.map((name, index) => [
         `country${index}`,
@@ -262,9 +267,7 @@ export function RegularBudgetOutstandingTrendsChart({
                               {item.label}
                             </span>
                             <span className="shrink-0 font-medium tabular-nums">
-                              {displayAmount(
-                                outstandingAmount(snapshot, item.names),
-                              )}
+                              {displayAmount(snapshot, item.names)}
                             </span>
                           </div>
                         ))}
@@ -282,9 +285,7 @@ export function RegularBudgetOutstandingTrendsChart({
                                 title={item.label}
                                 total={{
                                   label: "Outstanding contributions",
-                                  value: displayAmount(
-                                    outstandingAmount(snapshot, item.names),
-                                  ),
+                                  value: displayAmount(snapshot, item.names),
                                 }}
                                 rows={outstandingMetricRows(
                                   snapshot,
@@ -363,14 +364,9 @@ export function RegularBudgetOutstandingTrendsChart({
             <tr key={row.meta.year}>
               <th>{row.meta.year}</th>
               <td>{row.meta.as_of}</td>
-              {series.map((item) => {
-                const amount = outstandingAmount(row, item.names);
-                return (
-                  <td key={item.key}>
-                    {amount === null ? "Unavailable" : money(amount)}
-                  </td>
-                );
-              })}
+              {series.map((item) => (
+                <td key={item.key}>{displayAmount(row, item.names)}</td>
+              ))}
               <td>
                 <a href={outstandingSourceUrl(row)}>
                   Financial situation presentation

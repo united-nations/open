@@ -296,7 +296,6 @@ export function SecretariatOverview() {
         footer={
           <ChartFooter
             hint="Click on an entity to explore details"
-            signedAmounts={signedAmounts}
           />
         }
         yearControl={

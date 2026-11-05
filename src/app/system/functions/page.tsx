@@ -1,6 +1,5 @@
 import { SystemPageSources } from "@/components/PageSources";
 import type { Metadata } from "next";
-import { ChartSourceProvider } from "@/components/ChartSource";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
 import { CebMethodologyLink } from "@/components/Methodology";
@@ -17,11 +16,7 @@ export const metadata: Metadata = {
 
 export default function SystemFunctionsPage() {
   return (
-    <ChartSourceProvider
-      label="CEB financial statistics"
-      details={null}
-      placement="page"
-    >
+    <>
       <PageHeading
         sources={<SystemPageSources />}
         id="functions"
@@ -35,6 +30,6 @@ export default function SystemFunctionsPage() {
         </div>
       </PageBody>
       <CebMethodologyLink />
-    </ChartSourceProvider>
+    </>
   );
 }

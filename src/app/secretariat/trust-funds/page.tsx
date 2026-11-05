@@ -4,10 +4,7 @@ import {
   SeparateEntityFinancialSources,
 } from "@/components/PageSources";
 import type { Metadata } from "next";
-import {
-  SecretariatMethodologyLink,
-  SecretariatPageSourceProvider,
-} from "@/components/Methodology";
+import { SecretariatMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
 import { BudgetTreemap } from "@/components/BudgetTreemap";
@@ -21,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function TrustFundsPage() {
   return (
-    <SecretariatPageSourceProvider page="trust-funds">
+    <>
       <PageHeading
         sources={
           <>
@@ -58,6 +55,6 @@ export default function TrustFundsPage() {
         />
       </PageBody>
       <SecretariatMethodologyLink page="trust-funds" />
-    </SecretariatPageSourceProvider>
+    </>
   );
 }

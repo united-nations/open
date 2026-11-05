@@ -1,5 +1,4 @@
 import { SystemPageSources } from "@/components/PageSources";
-import { ChartSourceProvider } from "@/components/ChartSource";
 import type { Metadata } from "next";
 import { EntitiesTreemap } from "@/components/EntitiesTreemap";
 import { SystemFlows } from "@/components/SystemFlows";
@@ -16,11 +15,7 @@ export const metadata: Metadata = {
 
 export default function SystemOrganizationsPage() {
   return (
-    <ChartSourceProvider
-      label="CEB financial statistics"
-      details={null}
-      placement="page"
-    >
+    <>
       <PageHeading
         sources={<SystemPageSources />}
         id="entities"
@@ -35,6 +30,6 @@ export default function SystemOrganizationsPage() {
         <SystemFlows />
       </PageBody>
       <CebMethodologyLink />
-    </ChartSourceProvider>
+    </>
   );
 }

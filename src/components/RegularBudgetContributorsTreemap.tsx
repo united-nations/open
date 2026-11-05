@@ -248,70 +248,7 @@ export function RegularBudgetContributorsTreemap() {
           >
             interactiveTooltip
             footer={
-              <ChartFooter
-                signedAmounts={(data?.contributors ?? [])
-                  .filter(
-                    (item) =>
-                      !hiddenGroups.includes(item.payment_status) &&
-                      matchesContributor(item.name, searchQuery),
-                  )
-                  .map((item) => ({
-                    label: item.name,
-                    amount: item.assessment_amount,
-                    group: "Assessments",
-                  }))}
-                details={
-                  <div className="space-y-2">
-                    <p>
-                      Tile area uses each Member State&apos;s assessment in the
-                      official{" "}
-                      <a
-                        href={data.meta.sources.assessment_document.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline hover:text-gray-700"
-                      >
-                        {data.meta.sources.assessment_document.symbol}{" "}
-                        assessment circular
-                      </a>
-                      . Payment colour and date use the{" "}
-                      <a
-                        href={data.meta.sources.honour_roll.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline hover:text-gray-700"
-                      >
-                        UN regular-budget honour roll
-                      </a>
-                      . Assessment rates are checked against the{" "}
-                      <a
-                        href={data.meta.sources.scale.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="underline hover:text-gray-700"
-                      >
-                        historical scale of assessments
-                      </a>
-                      .
-                    </p>
-                    {data.meta.amount_reconciliation.discrepancies.length >
-                      0 && (
-                      <p>
-                        The honour roll and assessment circular differ for{" "}
-                        {data.meta.amount_reconciliation.discrepancies.length}{" "}
-                        Member State
-                        {data.meta.amount_reconciliation.discrepancies
-                          .length === 1
-                          ? ""
-                          : "s"}
-                        ; the treemap uses the assessment circular amount.
-                      </p>
-                    )}
-                  </div>
-                }
-                hint="Click on a contributor to explore details"
-                sourceSuffix={`Status as of ${formatDate(data.meta.as_of)}`}
-              />
+              <ChartFooter hint="Click on a contributor to explore details" />
             }
             yearControl={
               <YearSlider

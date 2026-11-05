@@ -98,11 +98,6 @@ export function RegularBudgetOutstandingSidebarHistory({
               </a>
             </p>
           )}
-          {snapshot?.meta.reconciliation_note && (
-            <p className="mt-2 text-sm text-gray-600">
-              {snapshot.meta.reconciliation_note}
-            </p>
-          )}
         </>
       )}
     </FinancialPanelSection>

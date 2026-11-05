@@ -658,38 +658,7 @@ export function PeacekeepingBudgetView() {
           </div>
         }
         footer={
-          <ChartFooter
-            signedAmounts={visibleRows.flatMap((row) =>
-              COST_CLASS_KEYS.flatMap((key) =>
-                row.items[key].length
-                  ? row.items[key].map((item) => ({
-                      group: row.code,
-                      label: item.label,
-                      amount: item.amount,
-                    }))
-                  : [
-                      {
-                        group: row.code,
-                        label: key,
-                        amount: row.classes[key] ?? 0,
-                      },
-                    ],
-              ),
-            )}
-            hint="Click on a mission or service centre to explore details"
-            details={
-              <div className="space-y-2">
-                <p>{current?.meta.scopeWarning}</p>
-                <p>
-                  Approved budget means the appropriation printed in the source
-                  report. Fiscal years run from July to June.
-                </p>
-                <h4 className="font-medium">Map placement and boundaries</h4>
-                <p>{entities.map_notes.placement}</p>
-                <p>{entities.map_notes.boundary_disclaimer}</p>
-              </div>
-            }
-          />
+          <ChartFooter hint="Click on a mission or service centre to explore details" />
         }
       >
         <div className="relative" aria-busy={waitingForData && !error}>
@@ -710,11 +679,6 @@ export function PeacekeepingBudgetView() {
           {!current && (
             <p role="status" className="p-6">
               {error ?? "Loading peacekeeping budget…"}
-            </p>
-          )}
-          {current?.meta.scopeWarning && (
-            <p className="min-h-16 px-4 py-2 text-sm text-gray-600">
-              {current.meta.scopeWarning}
             </p>
           )}
           <section className="order-1" hidden={showMap}>
@@ -749,6 +713,16 @@ export function PeacekeepingBudgetView() {
                 setMapTooltip({ mission: point.data, ...mapPointer.current });
               }}
             />
+            <div
+              className="mt-3 max-w-2xl space-y-2 text-xs leading-relaxed text-gray-500"
+              data-map-notes
+            >
+              <p>
+                Each dot marks a representative point in the area a mission
+                works in, rather than its office address.
+              </p>
+              <p>{entities.map_notes.boundary_disclaimer}</p>
+            </div>
           </section>
         </div>
       </ChartFrame>

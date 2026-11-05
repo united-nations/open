@@ -1,9 +1,6 @@
 import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
-import {
-  SecretariatMethodologyLink,
-  SecretariatPageSourceProvider,
-} from "@/components/Methodology";
+import { SecretariatMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
 import { ChartFooter } from "@/components/ChartFooter";
@@ -17,7 +14,7 @@ export const metadata: Metadata = {
 
 export default function FieldMissionsPage() {
   return (
-    <SecretariatPageSourceProvider page="field-missions">
+    <>
       <PageHeading
         sources={
           <>
@@ -34,6 +31,6 @@ export default function FieldMissionsPage() {
         <ChartFooter hint="Click on a mission to explore details" />
       </PageBody>
       <SecretariatMethodologyLink page="field-missions" />
-    </SecretariatPageSourceProvider>
+    </>
   );
 }

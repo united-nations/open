@@ -1,9 +1,6 @@
 import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
-import {
-  SecretariatMethodologyLink,
-  SecretariatPageSourceProvider,
-} from "@/components/Methodology";
+import { SecretariatMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
 import { PeacekeepingContributorsTreemap } from "@/components/PeacekeepingContributorsTreemap";
@@ -14,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function ContributorsPage() {
   return (
-    <SecretariatPageSourceProvider page="peacekeeping-contributors">
+    <>
       <PageHeading
         sources={
           <>
@@ -31,6 +28,6 @@ export default function ContributorsPage() {
         </PageBody>
       </section>
       <SecretariatMethodologyLink page="peacekeeping-contributors" />
-    </SecretariatPageSourceProvider>
+    </>
   );
 }

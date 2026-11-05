@@ -29,9 +29,9 @@ import {
 } from "@/lib/regularBudgetContributors";
 import {
   formatOutstandingPercent as percent,
+  formatReportedOutstandingTotal,
   outstandingAmount,
   outstandingChange,
-  outstandingSourceUrl,
   percentageOf,
   OUTSTANDING_TOTAL_COLOR,
   assignOutstandingCountryColors,
@@ -109,7 +109,7 @@ export function RegularBudgetOutstandingView({
           amount: row.outstanding_amount,
           share: percentageOf(
             row.outstanding_amount,
-            snapshot.meta.total_outstanding,
+            outstandingAmount(snapshot),
           ),
           relative: percentageOf(row.outstanding_amount, assessment),
           change: change.amount,
@@ -162,7 +162,7 @@ export function RegularBudgetOutstandingView({
           value: row.amount,
           color: "var(--color-au-chico)",
           data: row,
-          accessibleDescription: `${percent(row.share)} of total outstanding; autumn snapshot ${snapshot.meta.as_of}`,
+          accessibleDescription: `${percent(row.share)} of reported total. Autumn snapshot ${snapshot.meta.as_of}`,
           onActivate: () => onSelect(row.name, year),
         },
       ],
@@ -189,7 +189,7 @@ export function RegularBudgetOutstandingView({
             amount:
               "Remaining unpaid contributions, including prior-year arrears, at the displayed reporting date",
             share:
-              "Country balance divided by all Member States’ outstanding balances at this snapshot",
+              "Country balance divided by the reported total at this snapshot",
             relative:
               "Accumulated outstanding balance divided by the annual assessment; can exceed 100%",
             change:
@@ -219,18 +219,6 @@ export function RegularBudgetOutstandingView({
         )}
       </button>
     </TableHead>
-  );
-  const sourceLink = (
-    <a
-      href={outstandingSourceUrl(snapshot)}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="text-un-blue underline"
-    >
-      Financial situation presentation,{" "}
-      {snapshot.meta.source.format === "pdf" ? "page" : "slide"}{" "}
-      {snapshot.meta.source.page}
-    </a>
   );
   return (
     <section
@@ -312,44 +300,21 @@ export function RegularBudgetOutstandingView({
               </div>
               <div>
                 <dt className="text-sm text-gray-600">
-                  {query ? "Matching outstanding balance" : "Total outstanding"}
+                  {query.trim()
+                    ? "Matching outstanding balance"
+                    : "Reported total"}
                 </dt>
                 <dd className="text-2xl font-medium">
-                  {money(tableRows.reduce((sum, row) => sum + row.amount, 0))}
+                  {query.trim()
+                    ? money(tableRows.reduce((sum, row) => sum + row.amount, 0))
+                    : formatReportedOutstandingTotal(snapshot)}
                 </dd>
               </div>
             </dl>
           </div>
         }
         footer={
-          <ChartFooter
-            hint="Click a country in the treemap or table to open its assessment and outstanding-balance history"
-            sourceSuffix="Outstanding regular-budget contributions"
-            details={
-              <>
-                <p>
-                  Balances come from complete autumn debtor lists in the UN
-                  financial situation presentations. Countries absent from a
-                  validated complete list have a zero balance at that cutoff.
-                  This is independent of the honour roll’s later reporting date.
-                </p>
-                <p>
-                  {sourceLink} · Snapshot {date(snapshot.meta.as_of)}.
-                </p>
-                <p>
-                  Table totals sum country balances; no adjustment is made to
-                  match rounded headline totals.
-                </p>
-                {rows
-                  .filter((row) => row.meta.reconciliation_note)
-                  .map((row) => (
-                    <p key={row.meta.year}>
-                      {row.meta.year}: {row.meta.reconciliation_note}
-                    </p>
-                  ))}
-              </>
-            }
-          />
+          <ChartFooter hint="Click a country in the treemap or table to open its assessment and outstanding-balance history" />
         }
       >
         {view === "treemap" ? (
@@ -414,7 +379,7 @@ export function RegularBudgetOutstandingView({
                 >
                   {sortColumn("name", "Member State")}
                   {sortColumn("amount", "Outstanding")}
-                  {sortColumn("share", "Share of total (%)")}
+                  {sortColumn("share", "Share of reported total")}
                   {sortColumn("relative", "Balance / assessment (%)")}
                   {sortColumn("change", "Change ($)")}
                   {sortColumn("percent", "Change (%)")}

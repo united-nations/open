@@ -240,33 +240,24 @@ try {
       await link.getAttribute("href"),
       "/about/#secretariat-" + anchor,
     );
+    assert.equal(await page.locator("[data-chart-source-notes]").count(), 0);
     assert.equal(
-      await section.locator("#secretariat-chart-source-notes").count(),
-      1,
+      await page.getByText("Data for selected year", { exact: true }).count(),
+      0,
     );
-    if (route === "/secretariat/trust-funds/contributors/") {
-      assert.equal(
-        await section.locator("[data-chart-source-notes]").count(),
-        0,
-      );
-    } else {
-      await section
-        .locator("[data-chart-source-notes]")
-        .first()
-        .waitFor({ state: "attached" });
-      // Local data remains inspectable after methodology moves to About.
-      const details = section.locator("[data-chart-source-notes]").first();
-      await details.locator(":scope > summary").click();
-      assert.ok((await details.innerText()).length > 40);
-    }
     if (route === "/secretariat/trust-funds/") {
-      const funds = section.locator(
+      const funds = page.locator(
         'details[aria-label="Funds with zero or negative expenditure"]',
       );
       if (await funds.count()) {
+        assert.equal(
+          await funds.evaluate((node) =>
+            Boolean(node.parentElement.closest("details")),
+          ),
+          false,
+        );
         await funds.locator(":scope > summary").click();
-        const fund = funds.getByRole("button").first();
-        await fund.click();
+        await funds.getByRole("button").first().click();
         await page.getByRole("dialog").waitFor();
         await page
           .getByRole("button", { name: "Close fund details", exact: true })
@@ -292,8 +283,7 @@ try {
       .locator('[data-secretariat-methodology="' + anchor + '"]')
       .waitFor();
     results.push(
-      route +
-        ": local data retained; methodology link opens matching About section",
+      route + ": clean footer; methodology link opens matching About section",
     );
   }
   await page.goto(portalUrl + "/about/", { waitUntil: "networkidle" });

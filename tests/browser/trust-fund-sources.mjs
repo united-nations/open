@@ -151,6 +151,7 @@ try {
   await page.goto(`${portalUrl}/secretariat/trust-funds/`, {
     waitUntil: "networkidle",
   });
+  await page.getByText("By entity", { exact: true }).click();
   const source = page.getByRole("group", { name: "Reporting source" });
   const selectSource = async (key) => {
     for (const group of [...data.meta.sourceGroups].sort(
@@ -174,8 +175,8 @@ try {
   );
   assert.equal(await signedFunds.count(), 1);
   assert.ok(
-    await signedFunds.evaluate((node) =>
-      Boolean(node.closest("[data-page-references]")),
+    await signedFunds.evaluate(
+      (node) => !node.parentElement.closest("details"),
     ),
     "Zero and negative fund details remain on the data page",
   );
@@ -239,17 +240,7 @@ try {
     "Desktop chart must label additional significant Secretariat entities beyond the three largest",
   );
   const references = page.locator("[data-page-references]");
-  const selectedYearDetails = references
-    .locator("[data-chart-source-notes]")
-    .first();
-  await selectedYearDetails.locator(":scope > summary").click();
-  assert.ok((await selectedYearDetails.getByRole("link").count()) > 0);
-  assert.equal(
-    await selectedYearDetails
-      .getByText(data.meta.sourceNote, { exact: true })
-      .count(),
-    0,
-  );
+  assert.equal(await page.locator("[data-chart-source-notes]").count(), 0);
   assert.equal(
     await references.locator("[data-methodology-link]").getAttribute("href"),
     "/about/#secretariat-trust-funds",
@@ -267,7 +258,6 @@ try {
     /different accounting boundaries and unreconciled transfers/i,
   );
   await methodologyPage.close();
-  await selectedYearDetails.locator(":scope > summary").click();
   await selectSource("none");
   await assertTotal(0);
   await page
@@ -508,7 +498,10 @@ try {
     await dialog.getByText("Net assets", { exact: true }).count(),
     0,
   );
-  assert.equal(await dialog.locator("#trust-fund-title").innerText(), "UNEP");
+  assert.equal(
+    await dialog.locator("#trust-fund-title").innerText(),
+    data.nodes.find((node) => node.id === "xb-entity:UNEP").label,
+  );
   assert.equal(await page.evaluate(() => location.hash), entityHash);
   await page.goto(
     `${portalUrl}/secretariat/trust-funds/#trust-fund=${encodeURIComponent(detail.id)}`,
@@ -536,7 +529,9 @@ try {
     })
     .click();
   await page.waitForFunction(
-    () => document.getElementById("trust-fund-title")?.textContent === "UNEP",
+    (label) =>
+      document.getElementById("trust-fund-title")?.textContent === label,
+    data.nodes.find((node) => node.id === "xb-entity:UNEP").label,
   );
   await dialog.getByRole("button", { name: "Close fund details" }).click();
   await dialog.waitFor({ state: "detached" });
@@ -713,7 +708,7 @@ try {
       );
       assert.equal(
         await dialog.locator("#trust-fund-title").innerText(),
-        "UN-HABITAT",
+        data.nodes.find((node) => node.id === "xb-entity:UN-HABITAT").label,
       );
     }
     await assertSidebarReferences(dialog, { contributors: code !== "ITC" });

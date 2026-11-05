@@ -277,13 +277,6 @@ export function EntitiesTreemap() {
       createUncategorizedEntity(code);
     return matchesEntity(entity, searchQuery);
   });
-  const signedAmounts = signedEntries.map(([code, amount]) => ({
-    group:
-      entities.find((item) => item.entity === code)?.system_grouping ||
-      "Uncategorized",
-    label: code,
-    amount,
-  }));
 
   const activeEntities = useMemo(() => {
     const metadata = new Map(
@@ -482,10 +475,7 @@ export function EntitiesTreemap() {
           </div>
         }
         footer={
-          <ChartFooter
-            hint="Click on an organization to explore details"
-            signedAmounts={signedAmounts}
-          />
+          <ChartFooter hint="Click on an organization to explore details" />
         }
         yearControl={
           <YearSlider

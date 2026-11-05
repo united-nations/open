@@ -509,19 +509,7 @@ export default function SDGsGrid({
           />
         }
         footer={
-          <ChartFooter
-            hint="Click a goal or expenditure group to explore details"
-            signedAmounts={filteredSDGData.flatMap((row) =>
-              Object.entries(row.entities).map(([label, amount]) => ({
-                group:
-                  row.sdgNumber <= 0
-                    ? getSDGLabel(row.sdgNumber)
-                    : `SDG ${row.sdgNumber}`,
-                label,
-                amount,
-              })),
-            )}
-          />
+          <ChartFooter hint="Click a goal or expenditure group to explore details" />
         }
       >
         <DelayedChartLoading
