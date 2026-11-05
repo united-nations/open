@@ -3,6 +3,24 @@ import type { BudgetData, BudgetNode } from "@/types";
 
 export type TrustFundGrouping = "group" | "entity";
 
+/** Codeless matrix accounts match only their stable portal identity. */
+export function findTrustFundYearNode(
+  nodes: BudgetNode[],
+  selected: Pick<BudgetNode, "id" | "tier" | "code" | "sourceGroup">,
+) {
+  return (
+    nodes.find((node) => node.id === selected.id) ??
+    (selected.tier === "detail" && selected.code
+      ? nodes.find(
+          (node) =>
+            node.tier === "detail" &&
+            node.code === selected.code &&
+            node.sourceGroup === selected.sourceGroup,
+        )
+      : undefined)
+  );
+}
+
 /** Use each fund's annual source heading, independently of its mapped entity. */
 export function trustFundScheduleGroups(data: BudgetData) {
   const groups = new Map<

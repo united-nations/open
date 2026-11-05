@@ -57,8 +57,15 @@ remain gitignored; see that directory's README for the retention policy.
 - `stage2/schedule-groups.csv`: all table-of-contents headings in each annual
   PDF, including their schedule prefixes, original extracted text and physical
   PDF pages. Fund-years retain their selected-year group code, name and heading
-  page. The MPTF heading is retained, but its separate matrix-format financial
-  statements are not yet extracted into fund-year records.
+  page. The MPTF heading applies to the separately extracted Schedule 8.1 matrix.
+- `stage1/mptf-tables.json`: literal Schedule 8.1 matrix columns and cells,
+  including current and comparative periods and physical PDF pages.
+- `stage2/mptf-statement-facts.csv` and `mptf-source-controls.csv`: named MPTF
+  accounts and printed controls, kept separate from three-character coded funds.
+- `mptf-quality-profile.json`: current expense reconciliation and retained source
+  blanks and comparative discrepancies.
+- `crosswalk/mptf-entity-crosswalk.json`: reviewed ARWO note matches and source
+  CSV rows for organizational attribution; ARWO amounts are not copied.
 - `stage2/fund-descriptions.csv`: annual annex descriptions, matched by the
   source year's base schedule number to its fund code, with physical PDF pages.
   This metadata file is refreshed by the frontend export step (`16-`).
@@ -92,9 +99,10 @@ audit and manual comparison.
 The frontend export reads each annual PDF's annex describing the authority,
 goals and objectives of the funds. It joins exact schedule numbers to that
 year's fund-code registry; missing or duplicate descriptions fail the export.
-Descriptions are not borrowed from another year. The MPTF financial statements
-in Schedule 8.1 use named fund columns rather than the individual three-character
-fund-code layout. Those financial rows remain outside the current extraction.
+Descriptions are not borrowed from another year. Schedule 8.1 uses named fund
+columns rather than three-character fund codes. Its accounts receive stable
+portal identities without invented source codes. Their annual annex description
+is shared portfolio scope, explicitly labelled as such in the sidebar.
 
 Extraction removes the paragraph number, page footers and line wrapping while
 retaining the source wording. Fund nodes export `description` and
@@ -199,10 +207,33 @@ identities, descriptions, amounts and source references under both lenses.
 Groups are independent of PPB parts and entity ownership: entities can span
 headings, and a fund can change headings across years (SIM moves from group 4
 to group 2 in 2020). Unmapped entities retain their reported schedule group;
-zero/negative funds remain accessible below the chart. Schedule 8.1 contains
-financial statements for named MPTF funds, but its matrix layout is not yet
-exported. The MPTF heading therefore has no chart area or filter pill; this is
-an extraction gap, not an absence of reported fund accounts.
+zero/negative funds remain accessible below the chart. Schedule 8.1 supplies the
+eighth group and filter pill, including all named UN-controlled MPTF accounts
+printed in that year's matrix. This does not represent the entire UNDP MPTF
+portfolio.
+
+The matrix extractor reads each statement's headers independently, including
+rotated pages and changed comparative column orders. Across 2017–2024 it exports
+38 current-year account records. Current expense columns reconcile exactly to
+each printed total; the 2024 signed total is $163,733,038 across six accounts.
+Negative Haiti and COVID-19 adjustments remain in the total and the nonpositive
+fund list. An absent annual column does not create a zero observation. Printed
+blanks remain unknown, including Peacebuilding's 2019 other-liabilities cell;
+the 2023 publication's 2022 comparative revenue discrepancies are retained in
+the quality profile.
+
+ARWO supplies attribution evidence only. Its separately reported Peacebuilding,
+Haiti and COVID-19 groupings are labelled fund accounts rather than departments.
+Expenses and available balance categories come directly from Schedule 8.1;
+incomplete aggregated balance categories remain unavailable. Matrix expenses
+include grants and transfers and are not an elimination-adjusted addition to
+Secretariat or system totals. These accounts already appear in the ARWO-based
+Overview; this export changes only the Trust Funds view. Differences between
+Schedule 8.1, consolidated notes and ARWO are not overwritten.
+
+Schedule 8.1 reports aggregate contributions without named donors. Its accounts
+therefore have no named-contributor breakdown; mixed entity sidebars explain
+that contributor detail covers their individually coded funds only.
 
 Both extraction (`14-`) and export (`16-`) refresh the heading metadata directly
 from each year's PDF. Heading recognition follows physical line order and the

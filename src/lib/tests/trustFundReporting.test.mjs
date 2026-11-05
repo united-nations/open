@@ -3,9 +3,36 @@ import fs from "node:fs";
 import { test } from "node:test";
 import { moduleAt } from "./moduleAt.mjs";
 
-const { trustFundReportingData, trustFundScheduleGroups, trustFundSearchText } =
-  await moduleAt("src/lib/trustFundReporting.ts");
+const {
+  trustFundReportingData,
+  trustFundScheduleGroups,
+  trustFundSearchText,
+  findTrustFundYearNode,
+} = await moduleAt("src/lib/trustFundReporting.ts");
 const profiles = JSON.parse(fs.readFileSync("config/features.json", "utf8"));
+
+test("matrix accounts have no invented history before their first source column", () => {
+  const latest = JSON.parse(
+    fs.readFileSync("public/data/budget-trust-funds-2024.json"),
+  );
+  for (const [slug, firstYear] of [
+    ["spotlight-initiative-2-0-fund", 2024],
+    ["digital-cooperation-fund", 2023],
+  ]) {
+    const selected = latest.nodes.find((node) =>
+      node.id.endsWith(`:fund:mptf:${slug}`),
+    );
+    assert.ok(selected);
+    for (let year = 2017; year <= 2024; year++) {
+      const annual = JSON.parse(
+        fs.readFileSync(`public/data/budget-trust-funds-${year}.json`),
+      );
+      const matched = findTrustFundYearNode(annual.nodes, selected);
+      if (year < firstYear) assert.equal(matched, undefined, `${slug} ${year}`);
+      else assert.equal(matched.id, selected.id, `${slug} ${year}`);
+    }
+  }
+});
 
 test("additional trust funds default to off in both site versions", () => {
   assert.equal(profiles.public.additionalTrustFunds, false);

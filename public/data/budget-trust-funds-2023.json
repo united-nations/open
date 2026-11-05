@@ -8,7 +8,7 @@
     "year": 2023,
     "fiscalYear": "2023",
     "currency": "USD",
-    "total": 4728019352,
+    "total": 4998319346,
     "scopeLabel": "UN Secretariat trust-fund schedules and separately reported entity XB expenditure",
     "scopeWarning": "This is gross fund-level accounting and is not additive to PPB or consolidated Secretariat expenditure. Funds without a verified entity assignment are shown under Unmapped Trust Funds; this is a display group, not a UN entity. Separate entity totals use audited non-RB expenditure where available; ITC uses reported gross XB programme delivery. Gross account/segment details must not be added to their parent total.",
     "fundingSources": [
@@ -20,11 +20,14 @@
     "documentSymbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
     "documentUrl": "https://digitallibrary.un.org/record/4060617",
     "verification": {
-      "schedule_total_usd": "3381396352",
-      "mapped_total_usd": "3381285237",
-      "mapped_funds": "141",
+      "schedule_total_usd": "3651696346",
+      "mapped_total_usd": "3651585231",
+      "mapped_funds": "146",
       "unresolved_funds": "2",
-      "unresolved_fund_codes": "ANC, SWE"
+      "unresolved_fund_codes": "ANC, SWE",
+      "coded_fund_total_usd": "3381396352",
+      "mptf_total_usd": "270299994",
+      "mptf_funds": "5"
     },
     "source": {
       "repo": "transparency",
@@ -36,7 +39,7 @@
         "id": "volume_i",
         "label": "UN Secretariat trust-fund schedules",
         "description": "Individual fund accounts accompanying the United Nations Volume I accounts.",
-        "amount": 3381396352
+        "amount": 3651696346
       },
       {
         "id": "separate_entities",
@@ -55,10 +58,10 @@
       "kind": "whole",
       "code": null,
       "label": "Individual trust funds",
-      "amount": 3381396352,
+      "amount": 3651696346,
       "basis": "derived_from_printed_fund_totals",
       "values": {
-        "extrabudgetary": 3381396352
+        "extrabudgetary": 3651696346
       },
       "source": {
         "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
@@ -75,10 +78,10 @@
       "kind": "part",
       "code": "XB",
       "label": "Individual trust funds",
-      "amount": 3381396352,
+      "amount": 3651696346,
       "basis": "derived_from_printed_fund_totals",
       "values": {
-        "extrabudgetary": 3381396352
+        "extrabudgetary": 3651696346
       },
       "source": {
         "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
@@ -95,10 +98,10 @@
       "kind": "section",
       "code": "TF",
       "label": "Secretariat entities and unmapped funds",
-      "amount": 3381396352,
+      "amount": 3651696346,
       "basis": "derived_from_printed_fund_totals",
       "values": {
-        "extrabudgetary": 3381396352
+        "extrabudgetary": 3651696346
       },
       "source": {
         "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
@@ -28388,10 +28391,10 @@
       "kind": "entity",
       "code": "OCHA",
       "label": "Office for the Coordination of Humanitarian Affairs",
-      "amount": 2187468441,
+      "amount": 2301582623,
       "basis": "derived_from_printed_fund_totals",
       "values": {
-        "extrabudgetary": 2187468441
+        "extrabudgetary": 2301582623
       },
       "unitType": "entity",
       "role": "source_node",
@@ -28408,12 +28411,12 @@
       },
       "financialPosition": {
         "asOf": "2023-12-31",
-        "fundCount": 3,
+        "fundCount": 4,
         "metrics": [
           {
             "key": "cash",
             "label": "Cash and cash equivalents",
-            "amount": 187380451,
+            "amount": null,
             "fundsCovered": 3,
             "supportingSources": [
               {
@@ -28449,13 +28452,12 @@
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
               }
-            ],
-            "components": []
+            ]
           },
           {
             "key": "investments",
             "label": "Investments",
-            "amount": 1266206601,
+            "amount": null,
             "fundsCovered": 3,
             "supportingSources": [
               {
@@ -28523,24 +28525,14 @@
                 "pdfPage": 306,
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
-              }
-            ],
-            "components": [
-              {
-                "label": "Current",
-                "amount": 964501486
-              },
-              {
-                "label": "Non-current",
-                "amount": 301705115
               }
             ]
           },
           {
             "key": "contributionsReceivable",
             "label": "Contributions receivable",
-            "amount": 1020467231,
-            "fundsCovered": 3,
+            "amount": 1033788754,
+            "fundsCovered": 4,
             "supportingSources": [
               {
                 "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
@@ -28607,23 +28599,24 @@
                 "pdfPage": 306,
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
-              }
-            ],
-            "components": [
-              {
-                "label": "Current",
-                "amount": 592405468
               },
               {
-                "label": "Non-current",
-                "amount": 428061763
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2023"
               }
             ]
           },
           {
             "key": "otherReceivables",
             "label": "Other receivables",
-            "amount": 51602875,
+            "amount": null,
             "fundsCovered": 3,
             "supportingSources": [
               {
@@ -28692,22 +28685,12 @@
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
               }
-            ],
-            "components": [
-              {
-                "label": "Current",
-                "amount": 51602875
-              },
-              {
-                "label": "Non-current",
-                "amount": 0
-              }
             ]
           },
           {
             "key": "totalAssets",
             "label": "Total assets",
-            "amount": 2551620302,
+            "amount": null,
             "fundsCovered": 3,
             "supportingSources": [
               {
@@ -28743,13 +28726,12 @@
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
               }
-            ],
-            "components": []
+            ]
           },
           {
             "key": "totalLiabilities",
             "label": "Total liabilities",
-            "amount": 147388160,
+            "amount": null,
             "fundsCovered": 3,
             "supportingSources": [
               {
@@ -28785,14 +28767,13 @@
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
               }
-            ],
-            "components": []
+            ]
           },
           {
             "key": "netAssets",
             "label": "Net assets",
-            "amount": 2404232142,
-            "fundsCovered": 3,
+            "amount": 2449828158,
+            "fundsCovered": 4,
             "supportingSources": [
               {
                 "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
@@ -28826,12 +28807,81 @@
                 "pdfPage": 306,
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
+              },
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2023"
               }
-            ],
-            "components": []
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": null,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": null,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherLiabilities",
+            "label": "Other liabilities",
+            "amount": null,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other liabilities",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2023"
+              }
+            ]
           }
-        ]
+        ],
+        "scopeNote": "Fund-account balances before eliminations. Some balance categories are not itemized for every fund."
       },
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors. Contributor detail below covers the other funds only.",
       "sourceGroup": "volume_i"
     },
     {
@@ -33331,10 +33381,10 @@
       "kind": "entity",
       "code": "ODET",
       "label": "Office for Digital and Emerging Technologies",
-      "amount": 3758,
+      "amount": 197987,
       "basis": "derived_from_printed_fund_totals",
       "values": {
-        "extrabudgetary": 3758
+        "extrabudgetary": 197987
       },
       "unitType": "entity",
       "role": "source_node",
@@ -33351,12 +33401,12 @@
       },
       "financialPosition": {
         "asOf": "2023-12-31",
-        "fundCount": 2,
+        "fundCount": 3,
         "metrics": [
           {
             "key": "cash",
             "label": "Cash and cash equivalents",
-            "amount": 98836,
+            "amount": null,
             "fundsCovered": 2,
             "supportingSources": [
               {
@@ -33381,13 +33431,12 @@
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
               }
-            ],
-            "components": []
+            ]
           },
           {
             "key": "investments",
             "label": "Investments",
-            "amount": 669336,
+            "amount": null,
             "fundsCovered": 2,
             "supportingSources": [
               {
@@ -33433,24 +33482,14 @@
                 "pdfPage": 414,
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
-              }
-            ],
-            "components": [
-              {
-                "label": "Current",
-                "amount": 509850
-              },
-              {
-                "label": "Non-current",
-                "amount": 159486
               }
             ]
           },
           {
             "key": "contributionsReceivable",
             "label": "Contributions receivable",
-            "amount": 1931690,
-            "fundsCovered": 2,
+            "amount": 2127225,
+            "fundsCovered": 3,
             "supportingSources": [
               {
                 "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
@@ -33495,23 +33534,24 @@
                 "pdfPage": 414,
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
-              }
-            ],
-            "components": [
-              {
-                "label": "Current",
-                "amount": 1144116
               },
               {
-                "label": "Non-current",
-                "amount": 787574
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "Digital Cooperation Fund",
+                "label": "Digital Cooperation Fund — 2023"
               }
             ]
           },
           {
             "key": "otherReceivables",
             "label": "Other receivables",
-            "amount": 0,
+            "amount": null,
             "fundsCovered": 2,
             "supportingSources": [
               {
@@ -33558,22 +33598,12 @@
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
               }
-            ],
-            "components": [
-              {
-                "label": "Current",
-                "amount": 0
-              },
-              {
-                "label": "Non-current",
-                "amount": 0
-              }
             ]
           },
           {
             "key": "totalAssets",
             "label": "Total assets",
-            "amount": 2701028,
+            "amount": null,
             "fundsCovered": 2,
             "supportingSources": [
               {
@@ -33598,13 +33628,12 @@
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
               }
-            ],
-            "components": []
+            ]
           },
           {
             "key": "totalLiabilities",
             "label": "Total liabilities",
-            "amount": 1620449,
+            "amount": null,
             "fundsCovered": 2,
             "supportingSources": [
               {
@@ -33629,14 +33658,13 @@
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
               }
-            ],
-            "components": []
+            ]
           },
           {
             "key": "netAssets",
             "label": "Net assets",
-            "amount": 1080579,
-            "fundsCovered": 2,
+            "amount": 2679771,
+            "fundsCovered": 3,
             "supportingSources": [
               {
                 "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
@@ -33659,12 +33687,81 @@
                 "pdfPage": 414,
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
+              },
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "Digital Cooperation Fund",
+                "label": "Digital Cooperation Fund — 2023"
               }
-            ],
-            "components": []
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": null,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "Digital Cooperation Fund",
+                "label": "Digital Cooperation Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": null,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "Digital Cooperation Fund",
+                "label": "Digital Cooperation Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherLiabilities",
+            "label": "Other liabilities",
+            "amount": null,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other liabilities",
+                "columnHeader": "Digital Cooperation Fund",
+                "label": "Digital Cooperation Fund — 2023"
+              }
+            ]
           }
-        ]
+        ],
+        "scopeNote": "Fund-account balances before eliminations. Some balance categories are not itemized for every fund."
       },
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors. Contributor detail below covers the other funds only.",
       "sourceGroup": "volume_i"
     },
     {
@@ -63498,14 +63595,1242 @@
       "sourceGroup": "volume_i"
     },
     {
+      "id": "trust-fund-entity:OCHA:fund:mptf:common-humanitarian-fund",
+      "parentId": "trust-fund-entity:OCHA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": null,
+      "fundAccountType": "mptf",
+      "label": "Common Humanitarian Fund",
+      "amount": 114114182,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 114114182
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+        "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+        "pdfPage": 426,
+        "pdfPageScope": "row",
+        "pageStatus": "extracted_pdf_row",
+        "tableTitle": "Schedule 8.1 — financial performance",
+        "rowLabel": "Total expenses",
+        "columnHeader": "Common Humanitarian Fund",
+        "label": "Common Humanitarian Fund — 2023"
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "pdfPage": 426,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row",
+          "tableTitle": "Schedule 8.1 — financial performance",
+          "rowLabel": "Total expenses",
+          "columnHeader": "Common Humanitarian Fund",
+          "label": "Common Humanitarian Fund — 2023"
+        }
+      ],
+      "financialPosition": {
+        "asOf": "2023-12-31",
+        "fundCount": 1,
+        "metrics": [
+          {
+            "key": "contributionsReceivable",
+            "label": "Contributions receivable",
+            "amount": 13321523,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": 36236337,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": -2500756,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherLiabilities",
+            "label": "Other liabilities",
+            "amount": 6462600,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other liabilities",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "netAssets",
+            "label": "Net assets",
+            "amount": 45596016,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2023"
+              }
+            ]
+          }
+        ]
+      },
+      "contributorsAvailable": false,
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors.",
+      "note": "UN-controlled fund account administered by the UNDP Multi-Partner Trust Fund Office. Reported expenses include grants and transfers.",
+      "scheduleGroup": {
+        "code": "8",
+        "label": "United Nations trust funds managed by Multi-Partner Trust Fund",
+        "source": {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "pdfPage": 10,
+          "tableTitle": "Contents — schedule groups",
+          "rowLabel": "United Nations trust funds managed by Multi-Partner Trust Fund"
+        }
+      },
+      "description": "Multi-Partner Trust Funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The Multi-Partner Trust Funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The current five (5) funds managed under this Trust Fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Haiti Cholera Response Fund d) UN COVID-19 Response and Recovery Fund e) Digital Cooperation Fund",
+      "descriptionBlocks": [
+        {
+          "type": "paragraph",
+          "text": "Multi-Partner Trust Funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The Multi-Partner Trust Funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The current five (5) funds managed under this Trust Fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Haiti Cholera Response Fund d) UN COVID-19 Response and Recovery Fund e) Digital Cooperation Fund"
+        }
+      ],
+      "descriptionSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "pdfPage": 466,
+          "label": "Schedule 8.1 — Portfolio scope",
+          "pdfPageScope": "section"
+        }
+      ],
+      "sourceGroup": "volume_i"
+    },
+    {
+      "id": "trust-fund-entity:MPTF-PBF",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MPTF-PBF",
+      "label": "Peacebuilding Fund",
+      "amount": 157125600,
+      "values": {
+        "extrabudgetary": 157125600
+      },
+      "basis": "derived_from_printed_fund_totals",
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Peacebuilding Fund",
+        "acronym": null,
+        "relationship": "fund_account"
+      },
+      "contributorsAvailable": false,
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors.",
+      "note": "ARWO reports this fund-account grouping separately; it is not a Secretariat department.",
+      "financialPosition": {
+        "asOf": "2023-12-31",
+        "fundCount": 1,
+        "metrics": [
+          {
+            "key": "contributionsReceivable",
+            "label": "Contributions receivable",
+            "amount": 106899789,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": 41397753,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": 3181422,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherLiabilities",
+            "label": "Other liabilities",
+            "amount": 3109800,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other liabilities",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "netAssets",
+            "label": "Net assets",
+            "amount": 142006320,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2023"
+              }
+            ]
+          }
+        ],
+        "scopeNote": "Fund-account balances before eliminations. Some balance categories are not itemized for every fund."
+      },
+      "sourceGroup": "volume_i"
+    },
+    {
+      "id": "trust-fund-entity:MPTF-PBF:fund:mptf:peacebuilding-fund",
+      "parentId": "trust-fund-entity:MPTF-PBF",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": null,
+      "fundAccountType": "mptf",
+      "label": "UN Peacebuilding Fund",
+      "amount": 157125600,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 157125600
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+        "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+        "pdfPage": 426,
+        "pdfPageScope": "row",
+        "pageStatus": "extracted_pdf_row",
+        "tableTitle": "Schedule 8.1 — financial performance",
+        "rowLabel": "Total expenses",
+        "columnHeader": "UN Peacebuilding Fund",
+        "label": "UN Peacebuilding Fund — 2023"
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "pdfPage": 426,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row",
+          "tableTitle": "Schedule 8.1 — financial performance",
+          "rowLabel": "Total expenses",
+          "columnHeader": "UN Peacebuilding Fund",
+          "label": "UN Peacebuilding Fund — 2023"
+        }
+      ],
+      "financialPosition": {
+        "asOf": "2023-12-31",
+        "fundCount": 1,
+        "metrics": [
+          {
+            "key": "contributionsReceivable",
+            "label": "Contributions receivable",
+            "amount": 106899789,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": 41397753,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": 3181422,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherLiabilities",
+            "label": "Other liabilities",
+            "amount": 3109800,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other liabilities",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "netAssets",
+            "label": "Net assets",
+            "amount": 142006320,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2023"
+              }
+            ]
+          }
+        ]
+      },
+      "contributorsAvailable": false,
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors.",
+      "note": "UN-controlled fund account administered by the UNDP Multi-Partner Trust Fund Office. Reported expenses include grants and transfers.",
+      "scheduleGroup": {
+        "code": "8",
+        "label": "United Nations trust funds managed by Multi-Partner Trust Fund",
+        "source": {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "pdfPage": 10,
+          "tableTitle": "Contents — schedule groups",
+          "rowLabel": "United Nations trust funds managed by Multi-Partner Trust Fund"
+        }
+      },
+      "description": "Multi-Partner Trust Funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The Multi-Partner Trust Funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The current five (5) funds managed under this Trust Fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Haiti Cholera Response Fund d) UN COVID-19 Response and Recovery Fund e) Digital Cooperation Fund",
+      "descriptionBlocks": [
+        {
+          "type": "paragraph",
+          "text": "Multi-Partner Trust Funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The Multi-Partner Trust Funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The current five (5) funds managed under this Trust Fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Haiti Cholera Response Fund d) UN COVID-19 Response and Recovery Fund e) Digital Cooperation Fund"
+        }
+      ],
+      "descriptionSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "pdfPage": 466,
+          "label": "Schedule 8.1 — Portfolio scope",
+          "pdfPageScope": "section"
+        }
+      ],
+      "sourceGroup": "volume_i"
+    },
+    {
+      "id": "trust-fund-entity:MPTF-HTI",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MPTF-HTI",
+      "label": "Haiti Cholera Response Fund",
+      "amount": -21915,
+      "values": {
+        "extrabudgetary": -21915
+      },
+      "basis": "derived_from_printed_fund_totals",
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Haiti Cholera Response Fund",
+        "acronym": null,
+        "relationship": "fund_account"
+      },
+      "contributorsAvailable": false,
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors.",
+      "note": "ARWO reports this fund-account grouping separately; it is not a Secretariat department.",
+      "financialPosition": {
+        "asOf": "2023-12-31",
+        "fundCount": 1,
+        "metrics": [
+          {
+            "key": "contributionsReceivable",
+            "label": "Contributions receivable",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": 1241338,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherLiabilities",
+            "label": "Other liabilities",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other liabilities",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "netAssets",
+            "label": "Net assets",
+            "amount": 1241338,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2023"
+              }
+            ]
+          }
+        ],
+        "scopeNote": "Fund-account balances before eliminations. Some balance categories are not itemized for every fund."
+      },
+      "sourceGroup": "volume_i"
+    },
+    {
+      "id": "trust-fund-entity:MPTF-HTI:fund:mptf:haiti-cholera-response-fund",
+      "parentId": "trust-fund-entity:MPTF-HTI",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": null,
+      "fundAccountType": "mptf",
+      "label": "UN Haiti Cholera Response Fund",
+      "amount": -21915,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": -21915
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+        "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+        "pdfPage": 426,
+        "pdfPageScope": "row",
+        "pageStatus": "extracted_pdf_row",
+        "tableTitle": "Schedule 8.1 — financial performance",
+        "rowLabel": "Total expenses",
+        "columnHeader": "UN Haiti Cholera Response Fund",
+        "label": "UN Haiti Cholera Response Fund — 2023"
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "pdfPage": 426,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row",
+          "tableTitle": "Schedule 8.1 — financial performance",
+          "rowLabel": "Total expenses",
+          "columnHeader": "UN Haiti Cholera Response Fund",
+          "label": "UN Haiti Cholera Response Fund — 2023"
+        }
+      ],
+      "financialPosition": {
+        "asOf": "2023-12-31",
+        "fundCount": 1,
+        "metrics": [
+          {
+            "key": "contributionsReceivable",
+            "label": "Contributions receivable",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": 1241338,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherLiabilities",
+            "label": "Other liabilities",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other liabilities",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "netAssets",
+            "label": "Net assets",
+            "amount": 1241338,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2023"
+              }
+            ]
+          }
+        ]
+      },
+      "contributorsAvailable": false,
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors.",
+      "note": "UN-controlled fund account administered by the UNDP Multi-Partner Trust Fund Office. Reported expenses include grants and transfers.",
+      "scheduleGroup": {
+        "code": "8",
+        "label": "United Nations trust funds managed by Multi-Partner Trust Fund",
+        "source": {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "pdfPage": 10,
+          "tableTitle": "Contents — schedule groups",
+          "rowLabel": "United Nations trust funds managed by Multi-Partner Trust Fund"
+        }
+      },
+      "description": "Multi-Partner Trust Funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The Multi-Partner Trust Funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The current five (5) funds managed under this Trust Fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Haiti Cholera Response Fund d) UN COVID-19 Response and Recovery Fund e) Digital Cooperation Fund",
+      "descriptionBlocks": [
+        {
+          "type": "paragraph",
+          "text": "Multi-Partner Trust Funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The Multi-Partner Trust Funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The current five (5) funds managed under this Trust Fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Haiti Cholera Response Fund d) UN COVID-19 Response and Recovery Fund e) Digital Cooperation Fund"
+        }
+      ],
+      "descriptionSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "pdfPage": 466,
+          "label": "Schedule 8.1 — Portfolio scope",
+          "pdfPageScope": "section"
+        }
+      ],
+      "sourceGroup": "volume_i"
+    },
+    {
+      "id": "trust-fund-entity:MPTF-CVD",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MPTF-CVD",
+      "label": "COVID-19 Response and Recovery Fund",
+      "amount": -1112102,
+      "values": {
+        "extrabudgetary": -1112102
+      },
+      "basis": "derived_from_printed_fund_totals",
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "COVID-19 Response and Recovery Fund",
+        "acronym": null,
+        "relationship": "fund_account"
+      },
+      "contributorsAvailable": false,
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors.",
+      "note": "ARWO reports this fund-account grouping separately; it is not a Secretariat department.",
+      "financialPosition": {
+        "asOf": "2023-12-31",
+        "fundCount": 1,
+        "metrics": [
+          {
+            "key": "contributionsReceivable",
+            "label": "Contributions receivable",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "UN COVID-19 Response & Recovery Fund",
+                "label": "UN COVID-19 Response & Recovery Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": 2705175,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "UN COVID-19 Response & Recovery Fund",
+                "label": "UN COVID-19 Response & Recovery Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "UN COVID-19 Response & Recovery Fund",
+                "label": "UN COVID-19 Response & Recovery Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherLiabilities",
+            "label": "Other liabilities",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other liabilities",
+                "columnHeader": "UN COVID-19 Response & Recovery Fund",
+                "label": "UN COVID-19 Response & Recovery Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "netAssets",
+            "label": "Net assets",
+            "amount": 2705175,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "UN COVID-19 Response & Recovery Fund",
+                "label": "UN COVID-19 Response & Recovery Fund — 2023"
+              }
+            ]
+          }
+        ],
+        "scopeNote": "Fund-account balances before eliminations. Some balance categories are not itemized for every fund."
+      },
+      "sourceGroup": "volume_i"
+    },
+    {
+      "id": "trust-fund-entity:MPTF-CVD:fund:mptf:covid-19-response-and-recovery-fund",
+      "parentId": "trust-fund-entity:MPTF-CVD",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": null,
+      "fundAccountType": "mptf",
+      "label": "UN COVID-19 Response & Recovery Fund",
+      "amount": -1112102,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": -1112102
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+        "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+        "pdfPage": 426,
+        "pdfPageScope": "row",
+        "pageStatus": "extracted_pdf_row",
+        "tableTitle": "Schedule 8.1 — financial performance",
+        "rowLabel": "Total expenses",
+        "columnHeader": "UN COVID-19 Response & Recovery Fund",
+        "label": "UN COVID-19 Response & Recovery Fund — 2023"
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "pdfPage": 426,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row",
+          "tableTitle": "Schedule 8.1 — financial performance",
+          "rowLabel": "Total expenses",
+          "columnHeader": "UN COVID-19 Response & Recovery Fund",
+          "label": "UN COVID-19 Response & Recovery Fund — 2023"
+        }
+      ],
+      "financialPosition": {
+        "asOf": "2023-12-31",
+        "fundCount": 1,
+        "metrics": [
+          {
+            "key": "contributionsReceivable",
+            "label": "Contributions receivable",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "UN COVID-19 Response & Recovery Fund",
+                "label": "UN COVID-19 Response & Recovery Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": 2705175,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "UN COVID-19 Response & Recovery Fund",
+                "label": "UN COVID-19 Response & Recovery Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "UN COVID-19 Response & Recovery Fund",
+                "label": "UN COVID-19 Response & Recovery Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherLiabilities",
+            "label": "Other liabilities",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other liabilities",
+                "columnHeader": "UN COVID-19 Response & Recovery Fund",
+                "label": "UN COVID-19 Response & Recovery Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "netAssets",
+            "label": "Net assets",
+            "amount": 2705175,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "UN COVID-19 Response & Recovery Fund",
+                "label": "UN COVID-19 Response & Recovery Fund — 2023"
+              }
+            ]
+          }
+        ]
+      },
+      "contributorsAvailable": false,
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors.",
+      "note": "UN-controlled fund account administered by the UNDP Multi-Partner Trust Fund Office. Reported expenses include grants and transfers.",
+      "scheduleGroup": {
+        "code": "8",
+        "label": "United Nations trust funds managed by Multi-Partner Trust Fund",
+        "source": {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "pdfPage": 10,
+          "tableTitle": "Contents — schedule groups",
+          "rowLabel": "United Nations trust funds managed by Multi-Partner Trust Fund"
+        }
+      },
+      "description": "Multi-Partner Trust Funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The Multi-Partner Trust Funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The current five (5) funds managed under this Trust Fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Haiti Cholera Response Fund d) UN COVID-19 Response and Recovery Fund e) Digital Cooperation Fund",
+      "descriptionBlocks": [
+        {
+          "type": "paragraph",
+          "text": "Multi-Partner Trust Funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The Multi-Partner Trust Funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The current five (5) funds managed under this Trust Fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Haiti Cholera Response Fund d) UN COVID-19 Response and Recovery Fund e) Digital Cooperation Fund"
+        }
+      ],
+      "descriptionSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "pdfPage": 466,
+          "label": "Schedule 8.1 — Portfolio scope",
+          "pdfPageScope": "section"
+        }
+      ],
+      "sourceGroup": "volume_i"
+    },
+    {
+      "id": "trust-fund-entity:ODET:fund:mptf:digital-cooperation-fund",
+      "parentId": "trust-fund-entity:ODET",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": null,
+      "fundAccountType": "mptf",
+      "label": "Digital Cooperation Fund",
+      "amount": 194229,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 194229
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+        "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+        "pdfPage": 426,
+        "pdfPageScope": "row",
+        "pageStatus": "extracted_pdf_row",
+        "tableTitle": "Schedule 8.1 — financial performance",
+        "rowLabel": "Total expenses",
+        "columnHeader": "Digital Cooperation Fund",
+        "label": "Digital Cooperation Fund — 2023"
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "pdfPage": 426,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row",
+          "tableTitle": "Schedule 8.1 — financial performance",
+          "rowLabel": "Total expenses",
+          "columnHeader": "Digital Cooperation Fund",
+          "label": "Digital Cooperation Fund — 2023"
+        }
+      ],
+      "financialPosition": {
+        "asOf": "2023-12-31",
+        "fundCount": 1,
+        "metrics": [
+          {
+            "key": "contributionsReceivable",
+            "label": "Contributions receivable",
+            "amount": 195535,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "Digital Cooperation Fund",
+                "label": "Digital Cooperation Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": 1403657,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "Digital Cooperation Fund",
+                "label": "Digital Cooperation Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "Digital Cooperation Fund",
+                "label": "Digital Cooperation Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "otherLiabilities",
+            "label": "Other liabilities",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other liabilities",
+                "columnHeader": "Digital Cooperation Fund",
+                "label": "Digital Cooperation Fund — 2023"
+              }
+            ]
+          },
+          {
+            "key": "netAssets",
+            "label": "Net assets",
+            "amount": 1599192,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+                "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+                "pdfPage": 426,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "Digital Cooperation Fund",
+                "label": "Digital Cooperation Fund — 2023"
+              }
+            ]
+          }
+        ]
+      },
+      "contributorsAvailable": false,
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors.",
+      "note": "UN-controlled fund account administered by the UNDP Multi-Partner Trust Fund Office. Reported expenses include grants and transfers.",
+      "scheduleGroup": {
+        "code": "8",
+        "label": "United Nations trust funds managed by Multi-Partner Trust Fund",
+        "source": {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "pdfPage": 10,
+          "tableTitle": "Contents — schedule groups",
+          "rowLabel": "United Nations trust funds managed by Multi-Partner Trust Fund"
+        }
+      },
+      "description": "Multi-Partner Trust Funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The Multi-Partner Trust Funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The current five (5) funds managed under this Trust Fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Haiti Cholera Response Fund d) UN COVID-19 Response and Recovery Fund e) Digital Cooperation Fund",
+      "descriptionBlocks": [
+        {
+          "type": "paragraph",
+          "text": "Multi-Partner Trust Funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The Multi-Partner Trust Funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The current five (5) funds managed under this Trust Fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Haiti Cholera Response Fund d) UN COVID-19 Response and Recovery Fund e) Digital Cooperation Fund"
+        }
+      ],
+      "descriptionSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2023",
+          "url": "https://digitallibrary.un.org/record/4060617/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2023-EN.pdf",
+          "pdfPage": 466,
+          "label": "Schedule 8.1 — Portfolio scope",
+          "pdfPageScope": "section"
+        }
+      ],
+      "sourceGroup": "volume_i"
+    },
+    {
       "id": "trust-fund-reporting-sources",
       "parentId": null,
       "tier": "whole",
       "kind": "whole",
       "label": "Trust funds and separately reported XB expenditure",
-      "amount": 4728019352,
+      "amount": 4998319346,
       "values": {
-        "extrabudgetary": 4728019352
+        "extrabudgetary": 4998319346
       },
       "basis": "mixed_reporting_sources",
       "contributorsAvailable": false,

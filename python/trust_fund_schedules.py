@@ -2062,6 +2062,8 @@ def main() -> int:
             args.output_dir / "stage2", funds, fund_years, statements, flows, nested
         )
         schedule_groups.to_csv(args.output_dir / "stage2" / "schedule-groups.csv", index=False)
+        from trust_fund_mptf import extract_bundle
+        extract_bundle(source_manifest, args.output_dir / "stage2")
     print(json.dumps(profile, indent=2, ensure_ascii=False))
     if profile["validation_status"] != "pass":
         print(

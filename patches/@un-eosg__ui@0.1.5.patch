@@ -53,17 +53,18 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..050dcec0811aa02fc2b8ebb48f947b5a
            color: segment.color,
            share:
              segment.value >= 0 && context.leaf.value > 0
-@@ -593,6 +601,9 @@ export function GroupedTreemap<
+@@ -593,6 +601,10 @@ export function GroupedTreemap<
                        style={{
                          insetInlineStart: rowLayout.rect.x,
                          top: rowLayout.rect.y,
 +                        maxWidth: rowLabelSpace > 0
 +                          ? rowLayout.rect.width
 +                          : Math.min(rowLayout.rect.width, size.width * 0.6),
++                        paddingInline: Math.min(6, rowLayout.rect.width * 0.1),
                          minHeight: rowLabelSpace || undefined,
                          color:
                            row.labelColor ?? row.color ?? "var(--color-un-blue)",
-@@ -610,7 +621,7 @@ export function GroupedTreemap<
+@@ -610,7 +622,7 @@ export function GroupedTreemap<
                        />
                        {row.label}{" "}
                        <span className="font-normal tabular-nums">

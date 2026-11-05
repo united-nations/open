@@ -39,7 +39,7 @@ try {
       page
         .locator("section[aria-label]")
         .filter({ has: page.locator("button[aria-describedby]") });
-    assert.equal(await sections().count(), 7);
+    assert.equal(await sections().count(), 8);
     assert.equal(
       await sections().locator("button").count(),
       funds.filter((fund) => fund.amount > 0).length,
@@ -169,6 +169,12 @@ try {
     );
     await page.keyboard.press("Escape");
     await search.fill("CFE");
+    await page.waitForFunction(
+      () =>
+        document.querySelectorAll(
+          "section[aria-label] button[aria-describedby]",
+        ).length === 1,
+    );
     await common
       .getByRole("button", { name: selectedFund.label, exact: true })
       .waitFor();

@@ -8,7 +8,7 @@
     "year": 2018,
     "fiscalYear": "2018",
     "currency": "USD",
-    "total": 2132994935,
+    "total": 2615321382,
     "scopeLabel": "UN Secretariat trust-fund schedules and separately reported entity XB expenditure",
     "scopeWarning": "This is gross fund-level accounting and is not additive to PPB or consolidated Secretariat expenditure. Funds without a verified entity assignment are shown under Unmapped Trust Funds; this is a display group, not a UN entity. Separate entity totals use audited non-RB expenditure where available; ITC uses reported gross XB programme delivery. Gross account/segment details must not be added to their parent total.",
     "fundingSources": [
@@ -20,11 +20,14 @@
     "documentSymbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
     "documentUrl": "https://digitallibrary.un.org/record/3930166",
     "verification": {
-      "schedule_total_usd": "2132994935",
-      "mapped_total_usd": "2132857623",
-      "mapped_funds": "131",
+      "schedule_total_usd": "2615321382",
+      "mapped_total_usd": "2615184070",
+      "mapped_funds": "135",
       "unresolved_funds": "5",
-      "unresolved_fund_codes": "ANC, DVA, EER, GNA, SWE"
+      "unresolved_fund_codes": "ANC, DVA, EER, GNA, SWE",
+      "coded_fund_total_usd": "2132994935",
+      "mptf_total_usd": "482326447",
+      "mptf_funds": "4"
     },
     "source": {
       "repo": "transparency",
@@ -36,7 +39,7 @@
         "id": "volume_i",
         "label": "UN Secretariat trust-fund schedules",
         "description": "Individual fund accounts accompanying the United Nations Volume I accounts.",
-        "amount": 2132994935
+        "amount": 2615321382
       },
       {
         "id": "separate_entities",
@@ -55,10 +58,10 @@
       "kind": "whole",
       "code": null,
       "label": "Individual trust funds",
-      "amount": 2132994935,
+      "amount": 2615321382,
       "basis": "derived_from_printed_fund_totals",
       "values": {
-        "extrabudgetary": 2132994935
+        "extrabudgetary": 2615321382
       },
       "source": {
         "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
@@ -75,10 +78,10 @@
       "kind": "part",
       "code": "XB",
       "label": "Individual trust funds",
-      "amount": 2132994935,
+      "amount": 2615321382,
       "basis": "derived_from_printed_fund_totals",
       "values": {
-        "extrabudgetary": 2132994935
+        "extrabudgetary": 2615321382
       },
       "source": {
         "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
@@ -95,10 +98,10 @@
       "kind": "section",
       "code": "TF",
       "label": "Secretariat entities and unmapped funds",
-      "amount": 2132994935,
+      "amount": 2615321382,
       "basis": "derived_from_printed_fund_totals",
       "values": {
-        "extrabudgetary": 2132994935
+        "extrabudgetary": 2615321382
       },
       "source": {
         "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
@@ -28073,10 +28076,10 @@
       "kind": "entity",
       "code": "OCHA",
       "label": "Office for the Coordination of Humanitarian Affairs",
-      "amount": 1411262942,
+      "amount": 1734343793,
       "basis": "derived_from_printed_fund_totals",
       "values": {
-        "extrabudgetary": 1411262942
+        "extrabudgetary": 1734343793
       },
       "unitType": "entity",
       "role": "source_node",
@@ -28093,12 +28096,12 @@
       },
       "financialPosition": {
         "asOf": "2018-12-31",
-        "fundCount": 3,
+        "fundCount": 4,
         "metrics": [
           {
             "key": "cash",
             "label": "Cash and cash equivalents",
-            "amount": 89746953,
+            "amount": null,
             "fundsCovered": 3,
             "supportingSources": [
               {
@@ -28134,13 +28137,12 @@
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
               }
-            ],
-            "components": []
+            ]
           },
           {
             "key": "investments",
             "label": "Investments",
-            "amount": 826720367,
+            "amount": null,
             "fundsCovered": 3,
             "supportingSources": [
               {
@@ -28208,24 +28210,14 @@
                 "pdfPage": 299,
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
-              }
-            ],
-            "components": [
-              {
-                "label": "Current",
-                "amount": 767289637
-              },
-              {
-                "label": "Non-current",
-                "amount": 59430730
               }
             ]
           },
           {
             "key": "contributionsReceivable",
             "label": "Contributions receivable",
-            "amount": 800719089,
-            "fundsCovered": 3,
+            "amount": 844292599,
+            "fundsCovered": 4,
             "supportingSources": [
               {
                 "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
@@ -28292,23 +28284,24 @@
                 "pdfPage": 299,
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
-              }
-            ],
-            "components": [
-              {
-                "label": "Current",
-                "amount": 264541310
               },
               {
-                "label": "Non-current",
-                "amount": 536177779
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2018"
               }
             ]
           },
           {
             "key": "otherReceivables",
             "label": "Other receivables",
-            "amount": 15046151,
+            "amount": null,
             "fundsCovered": 3,
             "supportingSources": [
               {
@@ -28377,22 +28370,12 @@
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
               }
-            ],
-            "components": [
-              {
-                "label": "Current",
-                "amount": 15046151
-              },
-              {
-                "label": "Non-current",
-                "amount": 0
-              }
             ]
           },
           {
             "key": "totalAssets",
             "label": "Total assets",
-            "amount": 1755920171,
+            "amount": null,
             "fundsCovered": 3,
             "supportingSources": [
               {
@@ -28428,13 +28411,12 @@
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
               }
-            ],
-            "components": []
+            ]
           },
           {
             "key": "totalLiabilities",
             "label": "Total liabilities",
-            "amount": 60999279,
+            "amount": null,
             "fundsCovered": 3,
             "supportingSources": [
               {
@@ -28470,14 +28452,13 @@
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
               }
-            ],
-            "components": []
+            ]
           },
           {
             "key": "netAssets",
             "label": "Net assets",
-            "amount": 1694920892,
-            "fundsCovered": 3,
+            "amount": 1907092835,
+            "fundsCovered": 4,
             "supportingSources": [
               {
                 "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
@@ -28511,12 +28492,62 @@
                 "pdfPage": 299,
                 "pdfPageScope": "row",
                 "pageStatus": "extracted_pdf_row"
+              },
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2018"
               }
-            ],
-            "components": []
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": null,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2018"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": null,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2018"
+              }
+            ]
           }
-        ]
+        ],
+        "scopeNote": "Fund-account balances before eliminations. Some balance categories are not itemized for every fund."
       },
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors. Contributor detail below covers the other funds only.",
       "sourceGroup": "volume_i"
     },
     {
@@ -59537,6 +59568,930 @@
           }
         ]
       },
+      "sourceGroup": "volume_i"
+    },
+    {
+      "id": "trust-fund-entity:OCHA:fund:mptf:common-humanitarian-fund",
+      "parentId": "trust-fund-entity:OCHA",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": null,
+      "fundAccountType": "mptf",
+      "label": "Common Humanitarian Fund",
+      "amount": 323080851,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 323080851
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+        "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+        "pdfPage": 416,
+        "pdfPageScope": "row",
+        "pageStatus": "extracted_pdf_row",
+        "tableTitle": "Schedule 8.1 — financial performance",
+        "rowLabel": "Total expenses",
+        "columnHeader": "Common Humanitarian Fund",
+        "label": "Common Humanitarian Fund — 2018"
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+          "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+          "pdfPage": 416,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row",
+          "tableTitle": "Schedule 8.1 — financial performance",
+          "rowLabel": "Total expenses",
+          "columnHeader": "Common Humanitarian Fund",
+          "label": "Common Humanitarian Fund — 2018"
+        }
+      ],
+      "financialPosition": {
+        "asOf": "2018-12-31",
+        "fundCount": 1,
+        "metrics": [
+          {
+            "key": "contributionsReceivable",
+            "label": "Contributions receivable",
+            "amount": 43573510,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2018"
+              }
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": 174916897,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2018"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": 6318464,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2018"
+              }
+            ]
+          },
+          {
+            "key": "netAssets",
+            "label": "Net assets",
+            "amount": 212171943,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "Common Humanitarian Fund",
+                "label": "Common Humanitarian Fund — 2018"
+              }
+            ]
+          }
+        ]
+      },
+      "contributorsAvailable": false,
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors.",
+      "note": "UN-controlled fund account administered by the UNDP Multi-Partner Trust Fund Office. Reported expenses include grants and transfers.",
+      "scheduleGroup": {
+        "code": "8",
+        "label": "United Nations trust funds managed by Multi-Partner Trust Fund",
+        "source": {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+          "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+          "pdfPage": 10,
+          "tableTitle": "Contents — schedule groups",
+          "rowLabel": "United Nations trust funds managed by Multi-Partner Trust Fund"
+        }
+      },
+      "description": "Multi-Partner trust funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The multi-partner trust funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The four (4) funds managed under this trust fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Multi-Partner Fund on Migration and d) UN Haiti Cholera Response Fund",
+      "descriptionBlocks": [
+        {
+          "type": "paragraph",
+          "text": "Multi-Partner trust funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The multi-partner trust funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The four (4) funds managed under this trust fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Multi-Partner Fund on Migration and d) UN Haiti Cholera Response Fund"
+        }
+      ],
+      "descriptionSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+          "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+          "pdfPage": 457,
+          "label": "Schedule 8.1 — Portfolio scope",
+          "pdfPageScope": "section"
+        }
+      ],
+      "sourceGroup": "volume_i"
+    },
+    {
+      "id": "trust-fund-entity:MPTF-PBF",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MPTF-PBF",
+      "label": "Peacebuilding Fund",
+      "amount": 156953190,
+      "values": {
+        "extrabudgetary": 156953190
+      },
+      "basis": "derived_from_printed_fund_totals",
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Peacebuilding Fund",
+        "acronym": null,
+        "relationship": "fund_account"
+      },
+      "contributorsAvailable": false,
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors.",
+      "note": "ARWO reports this fund-account grouping separately; it is not a Secretariat department.",
+      "financialPosition": {
+        "asOf": "2018-12-31",
+        "fundCount": 1,
+        "metrics": [
+          {
+            "key": "contributionsReceivable",
+            "label": "Contributions receivable",
+            "amount": 40517470,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2018"
+              }
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": 102263545,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2018"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": 1333496,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2018"
+              }
+            ]
+          },
+          {
+            "key": "netAssets",
+            "label": "Net assets",
+            "amount": 141447519,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2018"
+              }
+            ]
+          }
+        ],
+        "scopeNote": "Fund-account balances before eliminations. Some balance categories are not itemized for every fund."
+      },
+      "sourceGroup": "volume_i"
+    },
+    {
+      "id": "trust-fund-entity:MPTF-PBF:fund:mptf:peacebuilding-fund",
+      "parentId": "trust-fund-entity:MPTF-PBF",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": null,
+      "fundAccountType": "mptf",
+      "label": "UN Peacebuilding Fund",
+      "amount": 156953190,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 156953190
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+        "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+        "pdfPage": 416,
+        "pdfPageScope": "row",
+        "pageStatus": "extracted_pdf_row",
+        "tableTitle": "Schedule 8.1 — financial performance",
+        "rowLabel": "Total expenses",
+        "columnHeader": "UN Peacebuilding Fund",
+        "label": "UN Peacebuilding Fund — 2018"
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+          "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+          "pdfPage": 416,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row",
+          "tableTitle": "Schedule 8.1 — financial performance",
+          "rowLabel": "Total expenses",
+          "columnHeader": "UN Peacebuilding Fund",
+          "label": "UN Peacebuilding Fund — 2018"
+        }
+      ],
+      "financialPosition": {
+        "asOf": "2018-12-31",
+        "fundCount": 1,
+        "metrics": [
+          {
+            "key": "contributionsReceivable",
+            "label": "Contributions receivable",
+            "amount": 40517470,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2018"
+              }
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": 102263545,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2018"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": 1333496,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2018"
+              }
+            ]
+          },
+          {
+            "key": "netAssets",
+            "label": "Net assets",
+            "amount": 141447519,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "UN Peacebuilding Fund",
+                "label": "UN Peacebuilding Fund — 2018"
+              }
+            ]
+          }
+        ]
+      },
+      "contributorsAvailable": false,
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors.",
+      "note": "UN-controlled fund account administered by the UNDP Multi-Partner Trust Fund Office. Reported expenses include grants and transfers.",
+      "scheduleGroup": {
+        "code": "8",
+        "label": "United Nations trust funds managed by Multi-Partner Trust Fund",
+        "source": {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+          "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+          "pdfPage": 10,
+          "tableTitle": "Contents — schedule groups",
+          "rowLabel": "United Nations trust funds managed by Multi-Partner Trust Fund"
+        }
+      },
+      "description": "Multi-Partner trust funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The multi-partner trust funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The four (4) funds managed under this trust fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Multi-Partner Fund on Migration and d) UN Haiti Cholera Response Fund",
+      "descriptionBlocks": [
+        {
+          "type": "paragraph",
+          "text": "Multi-Partner trust funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The multi-partner trust funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The four (4) funds managed under this trust fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Multi-Partner Fund on Migration and d) UN Haiti Cholera Response Fund"
+        }
+      ],
+      "descriptionSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+          "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+          "pdfPage": 457,
+          "label": "Schedule 8.1 — Portfolio scope",
+          "pdfPageScope": "section"
+        }
+      ],
+      "sourceGroup": "volume_i"
+    },
+    {
+      "id": "trust-fund-entity:OSRSG Migration",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "OSRSG Migration",
+      "label": "OSRSG Migration",
+      "amount": 259491,
+      "values": {
+        "extrabudgetary": 259491
+      },
+      "basis": "derived_from_printed_fund_totals",
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "OSRSG Migration",
+        "acronym": "OSRSG Migration",
+        "relationship": "trust_fund_crosswalk"
+      },
+      "contributorsAvailable": false,
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors.",
+      "financialPosition": {
+        "asOf": "2018-12-31",
+        "fundCount": 1,
+        "metrics": [
+          {
+            "key": "contributionsReceivable",
+            "label": "Contributions receivable",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "UN MPTF on Migration",
+                "label": "UN MPTF on Migration — 2018"
+              }
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": 375792,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "UN MPTF on Migration",
+                "label": "UN MPTF on Migration — 2018"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "UN MPTF on Migration",
+                "label": "UN MPTF on Migration — 2018"
+              }
+            ]
+          },
+          {
+            "key": "netAssets",
+            "label": "Net assets",
+            "amount": 375792,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "UN MPTF on Migration",
+                "label": "UN MPTF on Migration — 2018"
+              }
+            ]
+          }
+        ],
+        "scopeNote": "Fund-account balances before eliminations. Some balance categories are not itemized for every fund."
+      },
+      "sourceGroup": "volume_i"
+    },
+    {
+      "id": "trust-fund-entity:OSRSG Migration:fund:mptf:migration-fund",
+      "parentId": "trust-fund-entity:OSRSG Migration",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": null,
+      "fundAccountType": "mptf",
+      "label": "UN MPTF on Migration",
+      "amount": 259491,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 259491
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+        "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+        "pdfPage": 416,
+        "pdfPageScope": "row",
+        "pageStatus": "extracted_pdf_row",
+        "tableTitle": "Schedule 8.1 — financial performance",
+        "rowLabel": "Total expenses",
+        "columnHeader": "UN MPTF on Migration",
+        "label": "UN MPTF on Migration — 2018"
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+          "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+          "pdfPage": 416,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row",
+          "tableTitle": "Schedule 8.1 — financial performance",
+          "rowLabel": "Total expenses",
+          "columnHeader": "UN MPTF on Migration",
+          "label": "UN MPTF on Migration — 2018"
+        }
+      ],
+      "financialPosition": {
+        "asOf": "2018-12-31",
+        "fundCount": 1,
+        "metrics": [
+          {
+            "key": "contributionsReceivable",
+            "label": "Contributions receivable",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "UN MPTF on Migration",
+                "label": "UN MPTF on Migration — 2018"
+              }
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": 375792,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "UN MPTF on Migration",
+                "label": "UN MPTF on Migration — 2018"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "UN MPTF on Migration",
+                "label": "UN MPTF on Migration — 2018"
+              }
+            ]
+          },
+          {
+            "key": "netAssets",
+            "label": "Net assets",
+            "amount": 375792,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "UN MPTF on Migration",
+                "label": "UN MPTF on Migration — 2018"
+              }
+            ]
+          }
+        ]
+      },
+      "contributorsAvailable": false,
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors.",
+      "note": "UN-controlled fund account administered by the UNDP Multi-Partner Trust Fund Office. Reported expenses include grants and transfers.",
+      "scheduleGroup": {
+        "code": "8",
+        "label": "United Nations trust funds managed by Multi-Partner Trust Fund",
+        "source": {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+          "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+          "pdfPage": 10,
+          "tableTitle": "Contents — schedule groups",
+          "rowLabel": "United Nations trust funds managed by Multi-Partner Trust Fund"
+        }
+      },
+      "description": "Multi-Partner trust funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The multi-partner trust funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The four (4) funds managed under this trust fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Multi-Partner Fund on Migration and d) UN Haiti Cholera Response Fund",
+      "descriptionBlocks": [
+        {
+          "type": "paragraph",
+          "text": "Multi-Partner trust funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The multi-partner trust funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The four (4) funds managed under this trust fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Multi-Partner Fund on Migration and d) UN Haiti Cholera Response Fund"
+        }
+      ],
+      "descriptionSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+          "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+          "pdfPage": 457,
+          "label": "Schedule 8.1 — Portfolio scope",
+          "pdfPageScope": "section"
+        }
+      ],
+      "sourceGroup": "volume_i"
+    },
+    {
+      "id": "trust-fund-entity:MPTF-HTI",
+      "parentId": "trust-funds~entities",
+      "tier": "budget_unit",
+      "kind": "entity",
+      "code": "MPTF-HTI",
+      "label": "Haiti Cholera Response Fund",
+      "amount": 2032915,
+      "values": {
+        "extrabudgetary": 2032915
+      },
+      "basis": "derived_from_printed_fund_totals",
+      "unitType": "entity",
+      "role": "source_node",
+      "entity": {
+        "name": "Haiti Cholera Response Fund",
+        "acronym": null,
+        "relationship": "fund_account"
+      },
+      "contributorsAvailable": false,
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors.",
+      "note": "ARWO reports this fund-account grouping separately; it is not a Secretariat department.",
+      "financialPosition": {
+        "asOf": "2018-12-31",
+        "fundCount": 1,
+        "metrics": [
+          {
+            "key": "contributionsReceivable",
+            "label": "Contributions receivable",
+            "amount": 750000,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2018"
+              }
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": 5254253,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2018"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2018"
+              }
+            ]
+          },
+          {
+            "key": "netAssets",
+            "label": "Net assets",
+            "amount": 6004253,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2018"
+              }
+            ]
+          }
+        ],
+        "scopeNote": "Fund-account balances before eliminations. Some balance categories are not itemized for every fund."
+      },
+      "sourceGroup": "volume_i"
+    },
+    {
+      "id": "trust-fund-entity:MPTF-HTI:fund:mptf:haiti-cholera-response-fund",
+      "parentId": "trust-fund-entity:MPTF-HTI",
+      "tier": "detail",
+      "kind": "allocation",
+      "code": null,
+      "fundAccountType": "mptf",
+      "label": "UN Haiti Cholera Response Fund",
+      "amount": 2032915,
+      "basis": "directly_printed",
+      "values": {
+        "extrabudgetary": 2032915
+      },
+      "source": {
+        "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+        "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+        "pdfPage": 416,
+        "pdfPageScope": "row",
+        "pageStatus": "extracted_pdf_row",
+        "tableTitle": "Schedule 8.1 — financial performance",
+        "rowLabel": "Total expenses",
+        "columnHeader": "UN Haiti Cholera Response Fund",
+        "label": "UN Haiti Cholera Response Fund — 2018"
+      },
+      "supportingSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+          "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+          "pdfPage": 416,
+          "pdfPageScope": "row",
+          "pageStatus": "extracted_pdf_row",
+          "tableTitle": "Schedule 8.1 — financial performance",
+          "rowLabel": "Total expenses",
+          "columnHeader": "UN Haiti Cholera Response Fund",
+          "label": "UN Haiti Cholera Response Fund — 2018"
+        }
+      ],
+      "financialPosition": {
+        "asOf": "2018-12-31",
+        "fundCount": 1,
+        "metrics": [
+          {
+            "key": "contributionsReceivable",
+            "label": "Contributions receivable",
+            "amount": 750000,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Voluntary contributions receivable",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2018"
+              }
+            ]
+          },
+          {
+            "key": "otherAssets",
+            "label": "Other assets",
+            "amount": 5254253,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Other assets",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2018"
+              }
+            ]
+          },
+          {
+            "key": "accountsPayable",
+            "label": "Accounts payable and accrued liabilities",
+            "amount": 0,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Accounts payable and accrued liabilities",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2018"
+              }
+            ]
+          },
+          {
+            "key": "netAssets",
+            "label": "Net assets",
+            "amount": 6004253,
+            "fundsCovered": 1,
+            "supportingSources": [
+              {
+                "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+                "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+                "pdfPage": 416,
+                "pdfPageScope": "row",
+                "pageStatus": "extracted_pdf_row",
+                "tableTitle": "Schedule 8.1 — financial position",
+                "rowLabel": "Net assets",
+                "columnHeader": "UN Haiti Cholera Response Fund",
+                "label": "UN Haiti Cholera Response Fund — 2018"
+              }
+            ]
+          }
+        ]
+      },
+      "contributorsAvailable": false,
+      "contributorCoverageNote": "Schedule 8.1 reports aggregate contributions but does not name contributors.",
+      "note": "UN-controlled fund account administered by the UNDP Multi-Partner Trust Fund Office. Reported expenses include grants and transfers.",
+      "scheduleGroup": {
+        "code": "8",
+        "label": "United Nations trust funds managed by Multi-Partner Trust Fund",
+        "source": {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+          "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+          "pdfPage": 10,
+          "tableTitle": "Contents — schedule groups",
+          "rowLabel": "United Nations trust funds managed by Multi-Partner Trust Fund"
+        }
+      },
+      "description": "Multi-Partner trust funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The multi-partner trust funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The four (4) funds managed under this trust fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Multi-Partner Fund on Migration and d) UN Haiti Cholera Response Fund",
+      "descriptionBlocks": [
+        {
+          "type": "paragraph",
+          "text": "Multi-Partner trust funds are pooled resources from multiple financial partners that are allocated to multiple implementing entities to support specific national, regional or global development priorities. They are administered by the United Nations Development Programme Multi-Partner Trust Fund Office. The multi-partner trust funds where the Organization has control and is the principal are therefore recorded in full in the Organization’s financial statements. The four (4) funds managed under this trust fund are: a) Common Humanitarian Fund b) UN Peacebuilding Fund c) UN Multi-Partner Fund on Migration and d) UN Haiti Cholera Response Fund"
+        }
+      ],
+      "descriptionSources": [
+        {
+          "symbol": "(DMSPC/OPPFB) FINANCIAL STATEMENTS FOR THE YEAR ENDED 31 DECEMBER 2018",
+          "url": "https://digitallibrary.un.org/record/3930166/files/%28DMSPC_OPPFB%29_FINANCIAL_STATEMENTS_FOR_THE_YEAR_ENDED_31_DECEMBER_2018-EN.pdf",
+          "pdfPage": 457,
+          "label": "Schedule 8.1 — Portfolio scope",
+          "pdfPageScope": "section"
+        }
+      ],
       "sourceGroup": "volume_i"
     }
   ]

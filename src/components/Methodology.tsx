@@ -509,6 +509,23 @@ function TrustFundsMethodologyNotes() {
         identified entity appear under Unmapped Trust Funds.
       </p>
       <p>
+        This includes the UN-controlled funds administered by UNDP’s
+        Multi-Partner Trust Fund Office and reported in Schedule 8.1. We retain
+        the selected year’s printed total expenses and fund names, including
+        negative corrections. These accounts form the MPTF group; the entity
+        view uses the ARWO fund assignments, with fund-account groupings
+        identified separately from departments. These amounts already appear in
+        the ARWO-based Overview and must not be added to it again.
+      </p>
+      <p>
+        Schedule 8.1 expenses can differ from the consolidated
+        financial-statement notes and from ARWO amounts in earlier years. We
+        preserve the schedule’s figures rather than replacing them with another
+        presentation. Its contribution totals do not identify individual
+        contributors, so those accounts are excluded from the named-contributor
+        view.
+      </p>
+      <p>
         Totals retain negative amounts. Funds with zero or negative expenditure
         are available in the selected-year data details. Fund-level accounts can
         include transfers between funds and overlap with other Secretariat
@@ -545,6 +562,12 @@ function TrustFundContributorsMethodologyNotes() {
         adjustments. These are accounting flows, including inter-agency and
         internal transfers, so the same funding can appear more than once.
         Receivable balances are kept separate.
+      </p>
+      <p>
+        Schedule 8.1 reports aggregate contributions to MPTF-managed funds
+        without naming contributors. The contributor view covers the
+        individually coded funds; it does not include those MPTF contribution
+        totals.
       </p>
       <p>
         Each contributor is linked to the funds listed in the schedules. We

@@ -29,7 +29,10 @@ import { useFocusTrap } from "@/hooks/useFocusTrap";
 import { useContributorSidebarYear } from "@/hooks/useContributorSidebarYear";
 import { collectBudgetHierarchySources } from "@/lib/budgetSourceCollection";
 import { sourcePageUrl } from "@/lib/sourceReferences";
-import { trustFundReportingData } from "@/lib/trustFundReporting";
+import {
+  findTrustFundYearNode,
+  trustFundReportingData,
+} from "@/lib/trustFundReporting";
 import { loadYearData } from "@/lib/data";
 import { formatBudget } from "@un-eosg/ui/format-budget";
 import type {
@@ -193,8 +196,12 @@ function FundPosition({
         Financial position
       </FinancialPanelHeading>
       <div className="mt-3 space-y-2">
-        {summary("totalAssets", assets)}
-        {summary("totalLiabilities", liabilities)}
+        {byKey.has("totalAssets")
+          ? summary("totalAssets", assets)
+          : detailRows(assets)}
+        {byKey.has("totalLiabilities")
+          ? summary("totalLiabilities", liabilities)
+          : detailRows(liabilities)}
         {summary("netAssets")}
       </div>
       {other.length > 0 && (
@@ -350,15 +357,7 @@ export function TrustFundSidebar({
   );
   const currentNode = selection.isInitialYear
     ? initialNode
-    : (visibleData?.nodes.find((item) => item.id === initialNode.id) ??
-      (initialNode.tier === "detail" && initialNode.code
-        ? visibleData?.nodes.find(
-            (item) =>
-              item.tier === "detail" &&
-              item.code === initialNode.code &&
-              item.sourceGroup === initialNode.sourceGroup,
-          )
-        : undefined));
+    : findTrustFundYearNode(visibleData?.nodes ?? [], initialNode);
   const node = currentNode ?? initialNode;
   const childrenByParent = useMemo(() => {
     if (selection.isInitialYear) return initialChildrenByParent;
@@ -412,16 +411,12 @@ export function TrustFundSidebar({
             const file = trustFundReportingData(
               await loadYearData<BudgetData>("budget-trust-funds", value),
             );
-            const matched =
-              file.nodes.find((item) => item.id === node.id) ??
-              (node.tier === "detail"
-                ? file.nodes.find(
-                    (item) =>
-                      item.tier === "detail" &&
-                      item.code === node.code &&
-                      item.sourceGroup === node.sourceGroup,
-                  )
-                : undefined);
+            const matched = findTrustFundYearNode(file.nodes, {
+              id: node.id,
+              code: node.code,
+              tier: node.tier,
+              sourceGroup: node.sourceGroup,
+            });
             const childNodes: Record<string, BudgetNode[]> = {};
             for (const item of file.nodes) {
               if (item.parentId) (childNodes[item.parentId] ??= []).push(item);
@@ -499,14 +494,7 @@ export function TrustFundSidebar({
   const expenseReferences =
     node.tier === "detail" || node.sourceGroup === "separate_entities"
       ? (node.supportingSources ?? [])
-      : nodes
-          .filter(
-            (item) =>
-              item.tier === "detail" &&
-              item.code &&
-              includedCodes.has(item.code),
-          )
-          .flatMap((item) => item.supportingSources ?? []);
+      : collectBudgetHierarchySources(node, childrenByParent);
   const contributionReferences =
     contributors?.contributors.flatMap((contributor) =>
       contributor.destinations
@@ -575,6 +563,11 @@ export function TrustFundSidebar({
                 className="space-y-3 text-sm leading-relaxed"
                 data-fund-description
               >
+                {node.fundAccountType === "mptf" && (
+                  <p className="text-xs text-gray-500">
+                    Schedule 8.1 portfolio scope
+                  </p>
+                )}
                 {node.descriptionBlocks?.length ? (
                   node.descriptionBlocks.map((block, index) =>
                     block.type === "paragraph" ? (
@@ -681,6 +674,8 @@ export function TrustFundSidebar({
                     }
                     compact
                     showLegend={false}
+                    allowNegative
+                    accessibleTableLabel="Fund expenditure history"
                     data={trend}
                     series={[
                       {
@@ -772,6 +767,11 @@ export function TrustFundSidebar({
               )}
               {node.xbEntity !== "UNEP" && (
                 <FinancialPanelSection heading="By contributor">
+                  {node.contributorCoverageNote && (
+                    <p className="mb-3 text-sm text-gray-500">
+                      {node.contributorCoverageNote}
+                    </p>
+                  )}
                   {node.sourceGroup === "separate_entities" ? (
                     <XBContributorPanel
                       key={`${node.id}:${year}`}

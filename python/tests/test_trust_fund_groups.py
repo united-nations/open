@@ -48,7 +48,7 @@ class TrustFundGroupsTests(unittest.TestCase):
             self.assertEqual(headings.schedule_group_name.tolist(), expected_names, year)
             exported = json.loads((ROOT / f"public/data/budget-trust-funds-{year}.json").read_text())
             nodes = {n["code"]: n for n in exported["nodes"]
-                     if n["tier"] == "detail" and n.get("sourceGroup") == "volume_i"}
+                     if n["tier"] == "detail" and n.get("sourceGroup") == "volume_i" and not n.get("fundAccountType")}
             selected = annual.loc[annual.calendar_year.eq(year)]
             self.assertEqual(set(nodes), set(selected.fund_code))
             for row in selected.itertuples():

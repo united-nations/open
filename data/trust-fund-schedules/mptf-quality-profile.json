@@ -1,0 +1,154 @@
+{
+  "status": "pass",
+  "tables": 32,
+  "statement_facts": 1144,
+  "current_expense_controls": [
+    {
+      "calendar_year": 2017,
+      "period_year": 2017,
+      "statement_type": "financial_performance",
+      "line_item": "Total expenses",
+      "page": 403,
+      "source_y": 330.64739990234375,
+      "reported_total_usd": 351465390,
+      "fund_sum_usd": 351465390,
+      "difference_usd": 0,
+      "missing_cells": 0
+    },
+    {
+      "calendar_year": 2018,
+      "period_year": 2018,
+      "statement_type": "financial_performance",
+      "line_item": "Total expenses",
+      "page": 416,
+      "source_y": 335.69000244140625,
+      "reported_total_usd": 482326447,
+      "fund_sum_usd": 482326447,
+      "difference_usd": 0,
+      "missing_cells": 0
+    },
+    {
+      "calendar_year": 2019,
+      "period_year": 2019,
+      "statement_type": "financial_performance",
+      "line_item": "Total expenses",
+      "page": 418,
+      "source_y": 347.157958984375,
+      "reported_total_usd": 584791664,
+      "fund_sum_usd": 584791664,
+      "difference_usd": 0,
+      "missing_cells": 0
+    },
+    {
+      "calendar_year": 2020,
+      "period_year": 2020,
+      "statement_type": "financial_performance",
+      "line_item": "Total expenses",
+      "page": 434,
+      "source_y": 332.88214111328125,
+      "reported_total_usd": 578584742,
+      "fund_sum_usd": 578584742,
+      "difference_usd": 0,
+      "missing_cells": 0
+    },
+    {
+      "calendar_year": 2021,
+      "period_year": 2021,
+      "statement_type": "financial_performance",
+      "line_item": "Total expenses",
+      "page": 408,
+      "source_y": 332.03704833984375,
+      "reported_total_usd": 533653391,
+      "fund_sum_usd": 533653391,
+      "difference_usd": 0,
+      "missing_cells": 0
+    },
+    {
+      "calendar_year": 2022,
+      "period_year": 2022,
+      "statement_type": "financial_performance",
+      "line_item": "Total expenses",
+      "page": 408,
+      "source_y": 339.3837890625,
+      "reported_total_usd": 908038775,
+      "fund_sum_usd": 908038775,
+      "difference_usd": 0,
+      "missing_cells": 0
+    },
+    {
+      "calendar_year": 2023,
+      "period_year": 2023,
+      "statement_type": "financial_performance",
+      "line_item": "Total expenses",
+      "page": 426,
+      "source_y": 305.50396728515625,
+      "reported_total_usd": 270299994,
+      "fund_sum_usd": 270299994,
+      "difference_usd": 0,
+      "missing_cells": 0
+    },
+    {
+      "calendar_year": 2024,
+      "period_year": 2024,
+      "statement_type": "financial_performance",
+      "line_item": "Total expenses",
+      "page": 431,
+      "source_y": 217.42660522460938,
+      "reported_total_usd": 163733038,
+      "fund_sum_usd": 163733038,
+      "difference_usd": 0,
+      "missing_cells": 0
+    }
+  ],
+  "source_exceptions": [
+    {
+      "calendar_year": 2019,
+      "period_year": 2019,
+      "statement_type": "financial_position",
+      "line_item": "Other liabilities",
+      "page": 418,
+      "source_y": 161.9665985107422,
+      "reported_total_usd": 3348214,
+      "fund_sum_usd": null,
+      "difference_usd": null,
+      "missing_cells": 1
+    },
+    {
+      "calendar_year": 2022,
+      "period_year": 2022,
+      "statement_type": "financial_performance",
+      "line_item": "Voluntary contributions",
+      "page": 408,
+      "source_y": 261.6238098144531,
+      "reported_total_usd": 646349697,
+      "fund_sum_usd": null,
+      "difference_usd": null,
+      "missing_cells": 1
+    },
+    {
+      "calendar_year": 2023,
+      "period_year": 2022,
+      "statement_type": "financial_performance",
+      "line_item": "Voluntary contributions",
+      "page": 426,
+      "source_y": 531.823974609375,
+      "reported_total_usd": 646587243,
+      "fund_sum_usd": 646349697,
+      "difference_usd": 237546,
+      "missing_cells": 0
+    },
+    {
+      "calendar_year": 2023,
+      "period_year": 2022,
+      "statement_type": "financial_performance",
+      "line_item": "Total revenue",
+      "page": 426,
+      "source_y": 557.0239868164062,
+      "reported_total_usd": 650843125,
+      "fund_sum_usd": 650605579,
+      "difference_usd": 237546,
+      "missing_cells": 0
+    }
+  ],
+  "policy": "Printed blanks remain unknown; printed dashes are zero. Comparative source discrepancies are retained, not corrected."
+}

@@ -726,6 +726,11 @@ def export_all(
     crosswalk = pd.read_csv(crosswalk_path)
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     fund_years, schedule_groups = annotate_groups(fund_years, manifest)
+    from trust_fund_mptf import extract_bundle, entity_crosswalk, extend_spending as extend_mptf
+    mptf_facts = extract_bundle(manifest, stage2)
+    mptf_crosswalk = entity_crosswalk()
+    (crosswalk_path.parent / "mptf-entity-crosswalk.json").write_text(
+        json.dumps(mptf_crosswalk, indent=2), encoding="utf-8")
     entities = json.loads(entities_path.read_text(encoding="utf-8"))
     entity_names = {
         item["entity"]: compact(item["entity_long"])
@@ -749,6 +754,9 @@ def export_all(
             })
         groups_by_fund = annual_funds.set_index("fund_code").to_dict("index")
         spending = build_entity_export(year, facts, crosswalk, source, entity_names, funds, descriptions, groups_by_fund)
+        mptf_scope = extract_descriptions(Path(source["pdf_path"]), {"mptf": "8.1"})["mptf"]
+        mptf_heading = schedule_groups.loc[schedule_groups.calendar_year.eq(year) & schedule_groups.schedule_group_code.eq("8")].iloc[0].to_dict()
+        spending = extend_mptf(spending, year, mptf_facts, source, mptf_heading, entity_names, mptf_scope, mptf_crosswalk)
         if xb_stage2 is not None:
             from secretariat_xb_frontend import extend_spending
             spending = extend_spending(spending, year, xb_stage2)

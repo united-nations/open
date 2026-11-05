@@ -67,7 +67,7 @@ class TrustFundDescriptionsTests(unittest.TestCase):
             self.assertEqual(set(result), set(schedules))
             exported = json.loads((ROOT / f"public/data/budget-trust-funds-{year}.json").read_text())
             nodes = {node["code"]: node for node in exported["nodes"]
-                     if node.get("sourceGroup") == "volume_i" and node["tier"] == "detail"}
+                     if node.get("sourceGroup") == "volume_i" and node["tier"] == "detail" and not node.get("fundAccountType")}
             self.assertEqual(set(nodes), set(result))
             for code, annotation in result.items():
                 self.assertEqual(nodes[code]["description"], annotation["description"])

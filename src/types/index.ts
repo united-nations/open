@@ -621,6 +621,9 @@ export interface BudgetNode {
   sourceMeasure?: string;
   detailLabel?: string;
   contributorsAvailable?: boolean;
+  /** Named-column accounts in Schedule 8.1 have no individual source fund code. */
+  fundAccountType?: "mptf";
+  contributorCoverageNote?: string;
   expenseReconciliation?: {
     detailTotal: number;
     eliminations: number;

@@ -1,0 +1,282 @@
+{
+  "mptf:common-humanitarian-fund": {
+    "entity_code": "OCHA",
+    "mapping_method": "reviewed_exact_arwo_note",
+    "evidence": [
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 190,
+        "YEAR": "2019",
+        "ENTITY": "OCHA",
+        "NOTE": "MPTF - Human Rights and Humanitarian Affairs"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 481,
+        "YEAR": "2021",
+        "ENTITY": "OCHA",
+        "NOTE": "MPTF - Human Rights and Humanitarian Affairs"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 908,
+        "YEAR": "2020",
+        "ENTITY": "OCHA",
+        "NOTE": "MPTF - Human Rights and Humanitarian Affairs"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 1150,
+        "YEAR": "2022",
+        "ENTITY": "OCHA",
+        "NOTE": "MPTF - Human Rights and Humanitarian Affairs"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 1627,
+        "YEAR": "2023",
+        "ENTITY": "OCHA",
+        "NOTE": "MPTF - Humananitarian Funds"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses-2024.csv",
+        "csv_row": 168,
+        "YEAR": "2024",
+        "ENTITY": "OCHA",
+        "NOTE": "MPTF - Humananitarian Funds"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses-2025.csv",
+        "csv_row": 151,
+        "YEAR": "2025",
+        "ENTITY": "OCHA",
+        "NOTE": "MPTF - Humananitarian Funds"
+      }
+    ]
+  },
+  "mptf:peacebuilding-fund": {
+    "entity_code": "MPTF-PBF",
+    "mapping_method": "reviewed_exact_arwo_note",
+    "evidence": [
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 184,
+        "YEAR": "2019",
+        "ENTITY": "MPTF-PBF",
+        "NOTE": "MPTF - Peacebuilding Fund"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 482,
+        "YEAR": "2021",
+        "ENTITY": "MPTF-PBF",
+        "NOTE": "MPTF - Peacebuilding Fund"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 970,
+        "YEAR": "2020",
+        "ENTITY": "MPTF-PBF",
+        "NOTE": "MPTF - Peacebuilding Fund"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 1151,
+        "YEAR": "2022",
+        "ENTITY": "MPTF-PBF",
+        "NOTE": "MPTF - Peacebuilding Fund"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 1630,
+        "YEAR": "2023",
+        "ENTITY": "MPTF-PBF",
+        "NOTE": "MPTF - Peacebuilding Fund"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses-2024.csv",
+        "csv_row": 171,
+        "YEAR": "2024",
+        "ENTITY": "MPTF-PBF",
+        "NOTE": "MPTF - Peacebuilding Fund"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses-2025.csv",
+        "csv_row": 154,
+        "YEAR": "2025",
+        "ENTITY": "MPTF-PBF",
+        "NOTE": "MPTF - Peacebuilding Fund"
+      }
+    ]
+  },
+  "mptf:migration-fund": {
+    "entity_code": "OSRSG Migration",
+    "mapping_method": "reviewed_exact_arwo_note",
+    "evidence": [
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 186,
+        "YEAR": "2019",
+        "ENTITY": "OSRSG Migration",
+        "NOTE": "MPTF on Migration"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 969,
+        "YEAR": "2020",
+        "ENTITY": "OSRSG Migration",
+        "NOTE": "MPTF on Migration"
+      }
+    ]
+  },
+  "mptf:haiti-cholera-response-fund": {
+    "entity_code": "MPTF-HTI",
+    "mapping_method": "reviewed_exact_arwo_note",
+    "evidence": [
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 188,
+        "YEAR": "2019",
+        "ENTITY": "MPTF-HTI",
+        "NOTE": "MPTF - Haiti Cholera Response Fund"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 480,
+        "YEAR": "2021",
+        "ENTITY": "MPTF-HTI",
+        "NOTE": "MPTF - Haiti Cholera Response Fund"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 968,
+        "YEAR": "2020",
+        "ENTITY": "MPTF-HTI",
+        "NOTE": "MPTF - Haiti Cholera Response Fund"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 1149,
+        "YEAR": "2022",
+        "ENTITY": "MPTF-HTI",
+        "NOTE": "MPTF - Haiti Cholera Response Fund"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 1631,
+        "YEAR": "2023",
+        "ENTITY": "MPTF-HTI",
+        "NOTE": "MPTF - Haiti Cholera Response Fund"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses-2024.csv",
+        "csv_row": 169,
+        "YEAR": "2024",
+        "ENTITY": "MPTF-HTI",
+        "NOTE": "MPTF - Haiti Cholera Response Fund"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses-2025.csv",
+        "csv_row": 152,
+        "YEAR": "2025",
+        "ENTITY": "MPTF-HTI",
+        "NOTE": "MPTF - Haiti Cholera Response Fund"
+      }
+    ]
+  },
+  "mptf:covid-19-response-and-recovery-fund": {
+    "entity_code": "MPTF-CVD",
+    "mapping_method": "reviewed_exact_arwo_note",
+    "evidence": [
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 479,
+        "YEAR": "2021",
+        "ENTITY": "MPTF-CVD",
+        "NOTE": "MPTF - COVID-19"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 907,
+        "YEAR": "2020",
+        "ENTITY": "MPTF-CVD",
+        "NOTE": "MPTF - COVID-19"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 1148,
+        "YEAR": "2022",
+        "ENTITY": "MPTF-CVD",
+        "NOTE": "MPTF - COVID-19"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 1632,
+        "YEAR": "2023",
+        "ENTITY": "MPTF-CVD",
+        "NOTE": "MPTF - UN COVID-19 Multi Partner Trust Fund"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses-2024.csv",
+        "csv_row": 167,
+        "YEAR": "2024",
+        "ENTITY": "MPTF-CVD",
+        "NOTE": "MPTF - UN COVID-19 Multi Partner Trust Fund"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses-2025.csv",
+        "csv_row": 150,
+        "YEAR": "2025",
+        "ENTITY": "MPTF-CVD",
+        "NOTE": "MPTF - UN COVID-19 Multi Partner Trust Fund"
+      }
+    ]
+  },
+  "mptf:digital-cooperation-fund": {
+    "entity_code": "ODET",
+    "mapping_method": "reviewed_exact_arwo_note",
+    "evidence": [
+      {
+        "input_path": "data/un-secretariat-expenses.csv",
+        "csv_row": 1589,
+        "YEAR": "2023",
+        "ENTITY": "OSET",
+        "NOTE": "MPTF - Digital Cooperation Fund"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses-2024.csv",
+        "csv_row": 170,
+        "YEAR": "2024",
+        "ENTITY": "OSET",
+        "NOTE": "MPTF - Digital Cooperation Fund"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses-2025.csv",
+        "csv_row": 153,
+        "YEAR": "2025",
+        "ENTITY": "ODET",
+        "NOTE": "MPTF - Digital Cooperation Fund"
+      }
+    ]
+  },
+  "mptf:spotlight-initiative-2-0-fund": {
+    "entity_code": "OTHER",
+    "mapping_method": "reviewed_exact_arwo_note",
+    "evidence": [
+      {
+        "input_path": "data/un-secretariat-expenses-2024.csv",
+        "csv_row": 172,
+        "YEAR": "2024",
+        "ENTITY": "OTHER",
+        "NOTE": "Spotlight Initiative 2.0 Trust Fund"
+      },
+      {
+        "input_path": "data/un-secretariat-expenses-2025.csv",
+        "csv_row": 155,
+        "YEAR": "2025",
+        "ENTITY": "OTHER",
+        "NOTE": "Spotlight Initiative 2.0 Trust Fund"
+      }
+    ]
+  }
+}

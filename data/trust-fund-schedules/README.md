@@ -11,9 +11,13 @@ for 2017–2024. Pipeline instructions and data definitions are in
 - `source-manifest.json`: source provenance, retrieval details and SHA-256 hashes.
 - `stage1/tables.jsonl`: literal extracted tables, including page and row coordinates.
 - `stage1/table-index.csv`: searchable index of those tables.
+- `stage1/mptf-tables.json`: literal Schedule 8.1 named-column matrices.
 - `stage2/*.csv`: canonical normalized funds, fund-years, statement facts and
   counterparty flows, consumed by downstream exports.
 - `quality-profile.json`: extraction validation results and known source exceptions.
+- `mptf-quality-profile.json`: Schedule 8.1 expense controls and source exceptions.
+- `crosswalk/mptf-entity-crosswalk.json`: ARWO attribution evidence for named
+  MPTF accounts; monetary values come from the schedule, not ARWO.
 - `crosswalk/*.csv`: entity assignments and unresolved cases.
 - `crosswalk/quality-profile.json`: mapping coverage and provenance.
 
