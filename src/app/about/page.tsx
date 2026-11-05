@@ -30,13 +30,6 @@ export default function AboutPage() {
           the UN System and the UN Secretariat. The sources and preparation of
           each dataset are described below.
         </p>
-        <nav
-          aria-label="Sources and methodology"
-          className="mb-10 flex flex-wrap gap-x-6 gap-y-2 text-sm text-un-blue underline underline-offset-2"
-        >
-          <a href="#ceb-methodology">UN System</a>
-          <a href="#secretariat-methodology">UN Secretariat</a>
-        </nav>
         <section
           id="ceb-methodology"
           className="space-y-6 text-sm leading-relaxed text-gray-600"
