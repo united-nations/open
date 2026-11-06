@@ -1,3 +1,4 @@
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Fragment } from "react";
 import {
@@ -126,16 +127,23 @@ function PageMethodologyLink({ href }: { href: string }) {
   return (
     <section
       className="mx-auto max-w-6xl px-6 pb-12 md:px-12 lg:px-16"
-      aria-label="Data references"
+      aria-labelledby="about-the-data-heading"
       data-page-references
     >
-      <div className="border-t border-gray-200 pt-4">
+      <div className="rounded-md border border-gray-200 bg-gray-50 px-4 py-3 text-sm">
+        <h2 id="about-the-data-heading" className="font-semibold text-gray-900">
+          About the data
+        </h2>
+        <p className="mt-1 text-gray-600">
+          See where the data comes from and how we present it.
+        </p>
         <Link
           href={href}
-          className="text-sm text-un-blue underline underline-offset-2"
+          className="mt-2 inline-flex items-center gap-1.5 font-medium text-un-blue underline underline-offset-2"
           data-methodology-link
         >
           Sources and methodology
+          <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
         </Link>
       </div>
     </section>
