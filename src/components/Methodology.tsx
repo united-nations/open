@@ -31,6 +31,18 @@ export function CebMethodology() {
           ))}{" "}
         Retrieved on {cebSource.retrievedAt}.
       </p>
+      <p>
+        The{" "}
+        <a
+          href="https://www.unsceb.org/data-standards-united-nations-system-wide-reporting-financial-data/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="underline underline-offset-2"
+        >
+          UN Data Standards for system-wide financial reporting
+        </a>{" "}
+        define which entities report and how their financial data is classified.
+      </p>
       <section aria-label="Notes published by CEB">
         <ExpandableCard id="ceb-source-notes" title="Notes published by CEB">
           <p className="mb-4">
