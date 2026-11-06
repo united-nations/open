@@ -780,3 +780,24 @@ export interface XBContributorsData {
   schemaVersion: number;
   series: XBContributorSeries[];
 }
+
+export type CebAssessmentRow = [
+  entity: string,
+  assessed: number | null,
+  current: number | null,
+  prior: number | null,
+];
+
+export interface CebAssessmentContributor {
+  id: string;
+  name: string;
+  aliases: string[];
+  rows: CebAssessmentRow[];
+}
+
+export interface CebAssessmentsData {
+  year: number;
+  source: string;
+  sha256: string;
+  contributors: CebAssessmentContributor[];
+}

@@ -1,5 +1,5 @@
 diff --git a/components/grouped-treemap.tsx b/components/grouped-treemap.tsx
-index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..050dcec0811aa02fc2b8ebb48f947b5aa48692ef 100644
+index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..bd02787f93552ff37463ea457dedcfb6bd979fbe 100644
 --- a/components/grouped-treemap.tsx
 +++ b/components/grouped-treemap.tsx
 @@ -44,6 +44,8 @@ export interface GroupedTreemapSegment<TSegment = unknown> {
@@ -20,7 +20,18 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..050dcec0811aa02fc2b8ebb48f947b5a
    /** Optional area weight; displayed values remain the published value. */
    layoutValue?: number;
    color?: string;
-@@ -75,6 +79,8 @@ export interface GroupedTreemapSubgroup<
+@@ -61,6 +65,10 @@ export interface GroupedTreemapLeaf<TLeaf = unknown, TSegment = unknown> {
+   paleFill?: boolean;
+   /** Optional inset outline for leaves with pale fills. */
+   borderColor?: string;
++  /** Width of the inset outline in pixels. Defaults to one. */
++  borderWidth?: number;
++  /** Optional fraction of the tile height outlined from the top. */
++  borderFraction?: number;
+   /** Localized context appended only to the assistive leaf description. */
+   accessibleDescription?: string;
+   data?: TLeaf;
+@@ -75,6 +83,8 @@ export interface GroupedTreemapSubgroup<
  > {
    key: string;
    label: string;
@@ -29,7 +40,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..050dcec0811aa02fc2b8ebb48f947b5a
    data?: TSubgroup;
    labelVisibility?: TreemapSubgroupLabelVisibility;
    leaves: readonly GroupedTreemapLeaf<TLeaf, TSegment>[];
-@@ -88,6 +94,8 @@ export interface GroupedTreemapRow<
+@@ -88,6 +98,8 @@ export interface GroupedTreemapRow<
  > {
    key: string;
    label: string;
@@ -38,7 +49,21 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..050dcec0811aa02fc2b8ebb48f947b5a
    labelColor?: string;
    /** Published group total when it differs from the sum of displayed leaves. */
    value?: number;
-@@ -340,12 +348,12 @@ function DefaultTooltip<TRow, TSubgroup, TLeaf, TSegment>({
+@@ -283,9 +295,10 @@ function normalizeRows<TRow, TSubgroup, TLeaf, TSegment>(
+           ),
+         }))
+         .filter((subgroup) =>
+-          subgroup.leaves.some(
+-            (leaf) => Number.isFinite(leaf.value) && leaf.value > 0,
+-          ),
++          subgroup.leaves.some((leaf) => {
++            const weight = leaf.layoutValue ?? leaf.value;
++            return Number.isFinite(weight) && weight > 0;
++          }),
+         );
+       return { ...row, subgroups };
+     })
+@@ -340,12 +353,12 @@ function DefaultTooltip<TRow, TSubgroup, TLeaf, TSegment>({
            label,
            color: index === 0 ? context.row.color : undefined,
          }))}
@@ -53,7 +78,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..050dcec0811aa02fc2b8ebb48f947b5a
            color: segment.color,
            share:
              segment.value >= 0 && context.leaf.value > 0
-@@ -593,6 +601,10 @@ export function GroupedTreemap<
+@@ -593,6 +606,10 @@ export function GroupedTreemap<
                        style={{
                          insetInlineStart: rowLayout.rect.x,
                          top: rowLayout.rect.y,
@@ -64,7 +89,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..050dcec0811aa02fc2b8ebb48f947b5a
                          minHeight: rowLabelSpace || undefined,
                          color:
                            row.labelColor ?? row.color ?? "var(--color-un-blue)",
-@@ -610,7 +622,7 @@ export function GroupedTreemap<
+@@ -610,7 +627,7 @@ export function GroupedTreemap<
                        />
                        {row.label}{" "}
                        <span className="font-normal tabular-nums">
@@ -73,7 +98,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..050dcec0811aa02fc2b8ebb48f947b5a
                            row.value ??
                              row.subgroups.reduce(
                                (sum, subgroup) =>
-@@ -650,7 +661,7 @@ export function GroupedTreemap<
+@@ -650,7 +667,7 @@ export function GroupedTreemap<
                            >
                              {subgroup.label}{" "}
                              <span className="font-normal tabular-nums">
@@ -82,7 +107,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..050dcec0811aa02fc2b8ebb48f947b5a
                                  subgroup.leaves.reduce(
                                    (sum, leaf) => sum + leaf.value,
                                    0,
-@@ -686,12 +697,12 @@ export function GroupedTreemap<
+@@ -686,12 +703,12 @@ export function GroupedTreemap<
                            const accessibleSegments = visibleSegments
                              .map(
                                (segment) =>
@@ -97,7 +122,32 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..050dcec0811aa02fc2b8ebb48f947b5a
                              accessibleSegments || null,
                              leaf.accessibleDescription?.trim() || null,
                            ]
-@@ -850,7 +861,7 @@ export function GroupedTreemap<
+@@ -815,15 +832,17 @@ export function GroupedTreemap<
+                                 className={cn(
+                                   "pointer-events-none absolute inset-0 z-[1] shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.8)]",
+                                   leaf.onActivate &&
++                                    leaf.borderFraction === undefined &&
+                                     treemapTileBaseBorderClassName,
+                                 )}
+-                                style={
+-                                  leaf.borderColor
+-                                    ? {
+-                                        boxShadow: `inset 0 0 0 1px ${leaf.borderColor}`,
+-                                      }
+-                                    : undefined
+-                                }
++                                style={{
++                                  height: leaf.borderFraction === undefined
++                                    ? undefined
++                                    : `${Math.max(0, Math.min(1, leaf.borderFraction)) * 100}%`,
++                                  boxShadow: leaf.borderColor
++                                    ? `inset 0 0 0 ${leaf.borderWidth ?? 1}px ${leaf.borderColor}`
++                                    : undefined,
++                                }}
+                               />
+                               {canShowLabel && (
+                                 <span
+@@ -850,7 +869,7 @@ export function GroupedTreemap<
                                              : "truncate",
                                          )}
                                        >

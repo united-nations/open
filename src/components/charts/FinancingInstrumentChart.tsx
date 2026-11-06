@@ -560,69 +560,71 @@ export function FinancingInstrumentChart({
         </p>
       )}
       {accessibleTableLabel && (
-        <table className="sr-only focus-within:not-sr-only focus-within:mt-3 focus-within:w-full focus-within:text-left focus-within:text-xs">
-          <caption>
-            {accessibleTableLabel}, {currencyLabel}
-            {showShare && " and shares of the annual total"}
-          </caption>
-          <thead>
-            <tr>
-              <th>Year</th>
-              {visibleSeries.map((item) => (
-                <th key={item.key}>
-                  {item.key === "Unresolved"
-                    ? getFinancingInstrumentLabel(item.key)
-                    : item.label}
-                </th>
-              ))}
-              <th>Total{tooltipSources && " (sum of displayed series)"}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {data.map((row, index) => (
-              <tr key={row.year}>
-                <th scope="row">{row.year}</th>
+        <div className="sr-only focus-within:not-sr-only focus-within:mt-3 focus-within:max-w-full focus-within:overflow-x-auto">
+          <table className="w-full text-left text-xs">
+            <caption>
+              {accessibleTableLabel}, {currencyLabel}
+              {showShare && " and shares of the annual total"}
+            </caption>
+            <thead>
+              <tr>
+                <th>Year</th>
                 {visibleSeries.map((item) => (
-                  <td key={item.key}>
-                    {typeof row[item.key] === "number"
+                  <th key={item.key}>
+                    {item.key === "Unresolved"
+                      ? getFinancingInstrumentLabel(item.key)
+                      : item.label}
+                  </th>
+                ))}
+                <th>Total{tooltipSources && " (sum of displayed series)"}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((row, index) => (
+                <tr key={row.year}>
+                  <th scope="row">{row.year}</th>
+                  {visibleSeries.map((item) => (
+                    <td key={item.key}>
+                      {typeof row[item.key] === "number"
+                        ? tableAmount(
+                            row.year,
+                            [item.key],
+                            Number(row[item.key]),
+                            item.label,
+                            showShare
+                              ? shareDetail(
+                                  Number(row[item.key]),
+                                  plotData[index][item.key],
+                                )
+                              : undefined,
+                          )
+                        : "Unavailable"}
+                    </td>
+                  ))}
+                  <td>
+                    {visibleSeries.every(
+                      (item) => typeof row[item.key] === "number",
+                    )
                       ? tableAmount(
                           row.year,
-                          [item.key],
-                          Number(row[item.key]),
-                          item.label,
-                          showShare
-                            ? shareDetail(
-                                Number(row[item.key]),
-                                plotData[index][item.key],
-                              )
-                            : undefined,
+                          visibleSeries.map((item) => item.key),
+                          visibleSeries.reduce(
+                            (sum, item) =>
+                              sum +
+                              (typeof row[item.key] === "number"
+                                ? Number(row[item.key])
+                                : 0),
+                            0,
+                          ),
+                          "Calculated total",
                         )
                       : "Unavailable"}
                   </td>
-                ))}
-                <td>
-                  {visibleSeries.every(
-                    (item) => typeof row[item.key] === "number",
-                  )
-                    ? tableAmount(
-                        row.year,
-                        visibleSeries.map((item) => item.key),
-                        visibleSeries.reduce(
-                          (sum, item) =>
-                            sum +
-                            (typeof row[item.key] === "number"
-                              ? Number(row[item.key])
-                              : 0),
-                          0,
-                        ),
-                        "Calculated total",
-                      )
-                    : "Unavailable"}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

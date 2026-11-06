@@ -4,6 +4,10 @@ import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
+import {
+  CEB_ASSESSMENTS_HASH,
+  CEB_ASSESSMENTS_SECTION,
+} from "@/lib/cebAssessments";
 import { FinancingInstrumentLabel } from "@/components/FinancingInstrumentLabel";
 
 import {
@@ -166,6 +170,17 @@ export function ContributorsTreemap() {
     sectionId: "donors",
     onNavigateAway: () => setSelectedContributor(null),
   });
+  const [assessmentLink, setAssessmentLink] = useDeepLink({
+    hashPrefix: CEB_ASSESSMENTS_HASH,
+    sectionId: CEB_ASSESSMENTS_SECTION,
+  });
+  const [assessmentId, assessmentYear] = assessmentLink?.split("@") ?? [];
+  const assessmentYears = yearRanges.cebAssessments;
+  const assessmentInitialYear = assessmentYears.years.includes(
+    Number(assessmentYear),
+  )
+    ? Number(assessmentYear)
+    : assessmentYears.default;
 
   useEffect(() => {
     if (!loading && pendingDeepLink && contributors.length > 0) {
@@ -237,13 +252,14 @@ export function ContributorsTreemap() {
 
   const open = useCallback(
     (contributor: Contributor) => {
+      setAssessmentLink(null);
       setSelectedContributor(
         contributors.find((item) => item.name === contributor.name) ??
           contributor,
       );
       replaceToSidebar("donor", contributor.name);
     },
-    [contributors],
+    [contributors, setAssessmentLink],
   );
 
   const signedContributors = useMemo(
@@ -550,12 +566,17 @@ export function ContributorsTreemap() {
         </div>
       )}
 
-      {selectedContributor && (
+      {(selectedContributor || assessmentId) && (
         <ContributorSidebar
-          contributor={selectedContributor}
-          initialYear={selectedYear}
+          key={assessmentLink ?? selectedContributor?.name}
+          contributor={
+            assessmentId ? undefined : (selectedContributor ?? undefined)
+          }
+          assessmentId={assessmentId}
+          initialYear={assessmentId ? assessmentInitialYear : selectedYear}
           onClose={() => {
             setSelectedContributor(null);
+            setAssessmentLink(null);
             clearSidebarHash();
           }}
         />

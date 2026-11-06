@@ -9,6 +9,8 @@ import {
 } from "@/components/Methodology";
 import { ExpandableCard } from "@/components/ExpandableCard";
 import { PageBody } from "@/components/PageBody";
+import { PageSourceLink } from "@/components/PageSources";
+import { CEB_ASSESSMENTS_SECTION } from "@/lib/cebAssessments";
 import { SHOW_FIELD_MISSIONS, SHOW_UNINFO } from "@/lib/featureFlags";
 import { isRouteEnabled } from "@/lib/navigation";
 
@@ -43,6 +45,39 @@ export default function AboutPage() {
           </h2>
           <div className="space-y-2">
             <CebMethodology />
+            <ExpandableCard
+              id={CEB_ASSESSMENTS_SECTION}
+              title="Assessments and payments"
+            >
+              <div className="space-y-3">
+                <p>
+                  The <PageSourceLink source="cebAssessments" /> reports
+                  assessments and receipts in nominal US dollars for the
+                  organizations and contributors covered by the workbook. The
+                  portal sums the workbook’s reported amounts and keeps these
+                  figures separate from assessed revenue in CEB Financial
+                  Statistics. A partial total sums the available amounts where
+                  the workbook has blanks. For 2022 and 2023, the workbook
+                  leaves current-year receipts blank for every UN Secretariat
+                  row. The Committee on Contributions publishes regular-budget
+                  payment dates in its{" "}
+                  <a
+                    href="https://www.un.org/en/ga/contributions/previous_honourrolls.shtml"
+                    className="underline underline-offset-2"
+                  >
+                    honour rolls
+                  </a>
+                  .
+                </p>
+                <p>
+                  The reported trend shows receipts in the year CEB records
+                  them, with payments toward that year and earlier years shown
+                  separately. Grey shows assessed amounts with blank
+                  current-year receipts. The workbook groups earlier-year
+                  receipts together by year received.
+                </p>
+              </div>
+            </ExpandableCard>
             {SHOW_UNINFO && (
               <section aria-labelledby="uninfo-methodology">
                 <ExpandableCard

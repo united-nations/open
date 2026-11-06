@@ -6,7 +6,7 @@ import { useEffect, useRef, useCallback } from "react";
  * Hook to trap focus within a container element.
  * Used for modals and sidebars to ensure accessibility.
  */
-export function useFocusTrap(isActive: boolean) {
+export function useFocusTrap(isActive: boolean, focusOnOpen = false) {
   const containerRef = useRef<HTMLDivElement>(null);
   const previousActiveElement = useRef<HTMLElement | null>(null);
 
@@ -59,6 +59,10 @@ export function useFocusTrap(isActive: boolean) {
     // Store the currently focused element to restore later
     previousActiveElement.current = document.activeElement as HTMLElement;
 
+    if (focusOnOpen) {
+      getFocusableElements()[0]?.focus({ preventScroll: true });
+    }
+
     // Add keydown listener for tab trapping
     document.addEventListener("keydown", handleKeyDown);
 
@@ -70,7 +74,7 @@ export function useFocusTrap(isActive: boolean) {
         previousActiveElement.current.focus();
       }
     };
-  }, [isActive, getFocusableElements, handleKeyDown]);
+  }, [isActive, focusOnOpen, getFocusableElements, handleKeyDown]);
 
   return containerRef;
 }

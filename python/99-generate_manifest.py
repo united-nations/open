@@ -18,6 +18,7 @@ def generate_manifest():
     
     manifest = {
         "donors": {"years": detect_years("donors"), "default": "latest"},
+        "cebAssessments": {"years": detect_years("ceb-assessments"), "default": "latest"},
         "entityRevenue": {"years": detect_years("entity-revenue"), "default": "latest"},
         "entitySpending": {"years": detect_years("entity-spending"), "default": "latest", "fusionYears": FUSION_YEARS },
         "functionGeography": {"years": detect_years("function-geography"), "default": "latest"},

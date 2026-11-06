@@ -3,6 +3,11 @@ import { revenueCoverage } from "@/lib/revenueCoverage";
 import { useYearResource } from "@/hooks/useYearResource";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
+import {
+  CebAssessmentSidebarContent,
+  useCebAssessmentHistory,
+} from "@/components/CebAssessmentSidebarContent";
+import { CEB_ASSESSMENTS_HASH } from "@/lib/cebAssessments";
 
 import { useCallback, useEffect, useState } from "react";
 import {
@@ -73,7 +78,8 @@ interface ContributorTrendsData {
 }
 
 interface ContributorSidebarProps {
-  contributor: Contributor | null;
+  contributor?: Contributor;
+  assessmentId?: string;
   initialYear: number;
   onClose: () => void;
 }
@@ -94,6 +100,7 @@ const formatBudgetFixed = sharedFormatBudget;
 
 export function ContributorSidebar({
   contributor,
+  assessmentId,
   initialYear,
   onClose,
 }: ContributorSidebarProps) {
@@ -110,6 +117,19 @@ export function ContributorSidebar({
     yearRanges.donors.max,
   ).reverse();
   const [selectedYear, setSelectedYear] = useState(initialYear);
+  const assessmentHistory = useCebAssessmentHistory(
+    assessmentId,
+    contributor?.record_kind === "reported_aggregate" ||
+      contributor?.record_kind === "calculated_balance"
+      ? undefined
+      : contributor?.name,
+  );
+  const assessmentContributor = assessmentHistory.value?.find(
+    ({ name }) => name,
+  );
+  const revenueName = contributor?.name ?? assessmentContributor?.name;
+  const revenueAliases = assessmentContributor?.aliases;
+  const title = revenueName ?? "Assessed contributor";
   const loadYear = useCallback(async (): Promise<Contributor | null> => {
     const data = await fetch(
       `${basePath}/data/donors-${selectedYear}.json`,
@@ -117,17 +137,19 @@ export function ContributorSidebar({
       if (!res.ok) throw new Error(String(res.status));
       return res.json() as Promise<Record<string, Contributor>>;
     });
-    const found = contributor ? data[contributor.name] : null;
-    return found && contributor ? { ...found, name: contributor.name } : null;
-  }, [selectedYear, contributor]);
+    const name = [revenueName, ...(revenueAliases ?? [])].find(
+      (candidate) => candidate && Object.hasOwn(data, candidate),
+    );
+    return name ? { ...data[name], name } : null;
+  }, [selectedYear, revenueName, revenueAliases]);
   const {
     value: yearContributor,
     loading: loadingYear,
     error: yearError,
   } = useYearResource<Contributor | null>(
-    `${contributor?.name}-${selectedYear}`,
-    contributor,
-    !contributor?.name || selectedYear === initialYear,
+    `${revenueName}-${selectedYear}`,
+    contributor ?? null,
+    !revenueName || (!!contributor && selectedYear === initialYear),
     loadYear,
     null,
   );
@@ -138,31 +160,39 @@ export function ContributorSidebar({
   );
 
   // Focus trap for accessibility
-  const focusTrapRef = useFocusTrap(!!contributor);
+  const focusTrapRef = useFocusTrap(!!(contributor || assessmentId), true);
 
   // Fetch contributor trends data on mount
+  const trendName = yearContributor?.name ?? revenueName;
+  const trendCategory = contributor?.category ?? yearContributor?.category;
   useEffect(() => {
-    if (!contributor?.name) return;
+    if (!trendName) return;
+    let active = true;
     fetch(`${basePath}/data/contributor-trends.json`)
       .then((res) => res.json())
       .then((data: ContributorTrendsData) => {
-        const contributorData = data.contributors[contributor.name];
-        if (contributorData) {
+        const contributorData = data.contributors[trendName];
+        if (active) {
           setTrendsData(
-            contributorData.map((item) =>
+            (contributorData ?? []).map((item) =>
               contributorFinancingPoint(
                 item,
                 !(
                   revenueCoverage(item.year)?.government === false &&
-                  contributor.category === "Government"
+                  trendCategory === "Government"
                 ),
               ),
             ),
           );
         }
       })
-      .catch(() => setTrendsData([]));
-  }, [contributor?.name, contributor?.category]);
+      .catch(() => {
+        if (active) setTrendsData([]);
+      });
+    return () => {
+      active = false;
+    };
+  }, [trendName, trendCategory]);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsVisible(true), 10);
@@ -210,19 +240,23 @@ export function ContributorSidebar({
     if (e.target === e.currentTarget) handleClose();
   };
 
-  if (!contributor) return null;
+  if (!contributor && !assessmentId) return null;
 
   // Use year-specific data when available
-  const displayContributor = yearContributor || contributor;
+  const displayContributor = yearContributor;
   const totalContributions = getTotalContributions(
-    displayContributor.contributions,
+    displayContributor?.contributions ?? {},
   );
-  const breakdown = getContributionBreakdown(displayContributor.contributions);
+  const breakdown = getContributionBreakdown(
+    displayContributor?.contributions ?? {},
+  );
   const breakdownEntries = Object.entries(breakdown).sort(
     (a, b) => getContributionTypeOrder(a[0]) - getContributionTypeOrder(b[0]),
   );
 
-  const entityContributions = Object.entries(displayContributor.contributions)
+  const entityContributions = Object.entries(
+    displayContributor?.contributions ?? {},
+  )
     .map(([entity, types]) => {
       const total = Object.values(types).reduce((sum, val) => sum + val, 0);
       return {
@@ -251,7 +285,7 @@ export function ContributorSidebar({
         onTouchEnd={onTouchEnd}
       >
         <FinancialDetailPanel
-          title={contributor.name}
+          title={title}
           titleId={sidebarTitleId}
           className="sm:w-full"
           yearSelectorPlacement="header"
@@ -265,14 +299,18 @@ export function ContributorSidebar({
           }}
           controls={
             <SidebarControls
-              shareHash={`donor=${encodeURIComponent(contributor.name)}`}
+              shareHash={
+                assessmentId
+                  ? `${CEB_ASSESSMENTS_HASH}=${encodeURIComponent(`${assessmentId}@${selectedYear}`)}`
+                  : `donor=${encodeURIComponent(title)}`
+              }
               onClose={handleClose}
               closeLabel="Close sidebar"
             />
           }
         >
           <div className="relative space-y-6">
-            {yearContributor &&
+            {displayContributor &&
               (displayContributor.record_kind === "reported_aggregate" ||
                 displayContributor.record_kind === "calculated_balance") && (
                 <p className="text-sm text-gray-600">
@@ -281,7 +319,7 @@ export function ContributorSidebar({
                     ". Calculated from reported control totals minus the available contributor detail; signed differences are retained."}
                 </p>
               )}
-            {yearContributor &&
+            {displayContributor &&
               displayContributor.categories &&
               displayContributor.categories.length > 1 && (
                 <div className="space-y-2 text-sm">
@@ -307,17 +345,16 @@ export function ContributorSidebar({
               pending={loadingYear}
               requestKey={selectedYear}
             />
-            {!yearContributor && selectedYear !== initialYear ? (
-              <>
-                <p className="text-sm text-gray-500 italic">
-                  {loadingYear
-                    ? "Loading…"
-                    : yearError
-                      ? `Data could not be loaded for ${selectedYear}.`
-                      : `No data available for ${contributor.name} in ${selectedYear}.`}
-                </p>
-              </>
-            ) : (
+            {revenueName && !displayContributor && (
+              <p className="text-sm text-gray-500 italic">
+                {loadingYear
+                  ? "Loading…"
+                  : yearError
+                    ? `Data could not be loaded for ${selectedYear}.`
+                    : `No revenue data available for ${title} in ${selectedYear}.`}
+              </p>
+            )}
+            {displayContributor && (
               <>
                 {!isGovernmentDonor(displayContributor.status) &&
                   displayContributor.category &&
@@ -491,6 +528,13 @@ export function ContributorSidebar({
                   </div>
                 </div>
               </>
+            )}
+            {(assessmentId ||
+              assessmentHistory.value?.some(({ rows }) => rows.length)) && (
+              <CebAssessmentSidebarContent
+                resource={assessmentHistory}
+                year={selectedYear}
+              />
             )}
           </div>
         </FinancialDetailPanel>

@@ -1,9 +1,14 @@
 import { SHOW_UNINFO } from "@/lib/featureFlags";
+import { CEB_ASSESSMENTS_SOURCE } from "@/lib/cebAssessments";
 
 const PAGE_SOURCES = {
   ceb: {
     href: "https://unsceb.org/statistics/financial-statistics/",
     label: "CEB Financial Statistics",
+  },
+  cebAssessments: {
+    href: CEB_ASSESSMENTS_SOURCE,
+    label: "CEB assessments and receipts workbook",
   },
   uninfo: { href: "https://uninfo.org/", label: "UNINFO" },
   annualReport: {
