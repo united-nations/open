@@ -199,7 +199,17 @@ export function CebAssessmentSidebarContent({
                     {
                       label: "Assessment",
                       value: assessmentLabel,
-                      color: colors.assessed,
+                      marker: (
+                        <span
+                          aria-hidden="true"
+                          className="flex w-2 shrink-0 justify-center"
+                        >
+                          <span
+                            className="h-3 w-0.5 rounded-full"
+                            style={{ backgroundColor: colors.assessed }}
+                          />
+                        </span>
+                      ),
                     },
                     ...receipts,
                   ];

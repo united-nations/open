@@ -5,6 +5,7 @@ import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { GroupedTreemap } from "@un-eosg/ui/components/grouped-treemap";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 import { SearchInput } from "@un-eosg/ui/components/search-input";
+import { formatAssessmentRate } from "@un-eosg/ui/format-budget";
 import { ChartFooter } from "@/components/ChartFooter";
 import { YearSlider } from "@/components/YearSlider";
 import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
@@ -30,7 +31,7 @@ export function CebAssessmentsTreemap() {
   const { years, default: defaultYear } = useYearRanges().cebAssessments;
   const [year, setYear] = useState(defaultYear);
   const [query, setQuery] = useState("");
-  const [showPrior, setShowPrior] = useState(false);
+  const [showPrior, setShowPrior] = useState(true);
   const load = useCallback(() => loadCebAssessments(year), [year]);
   const {
     value: data,
@@ -70,11 +71,15 @@ export function CebAssessmentsTreemap() {
       assessed - unknownFill,
     );
     const layoutValue = Math.max(assessed, fill + unknownFill + priorFill);
-    const darkFillBehindLabel =
-      priorFill / layoutValue >= 0.15 &&
-      (fill + unknownFill + priorFill) / layoutValue >= 0.9;
+    const darkFillBehindLabel = fill / layoutValue >= 0.85;
     const currentLabel = formatAssessmentAmount(contributor.current);
     const earlierLabel = formatAssessmentAmount(contributor.prior);
+    const assessedLabel = formatAssessmentAmount(contributor.assessed);
+    const paid = contributor.current.value;
+    const valueLabel =
+      assessed > 0 && paid !== null && paid >= 0
+        ? `${formatAssessmentRate((paid / assessed) * 100)} of ${assessedLabel} ${contributor.current.partial ? "reported paid" : "paid"} for this year`
+        : `${assessedLabel} assessed`;
     return [
       {
         key: contributor.id,
@@ -88,7 +93,7 @@ export function CebAssessmentsTreemap() {
           layoutValue > assessed ? assessed / layoutValue : undefined,
         paleFill: !darkFillBehindLabel,
         textColor: darkFillBehindLabel ? "#fff" : "var(--color-gray-900)",
-        valueLabel: formatAssessmentAmount(contributor.assessed),
+        valueLabel,
         accessibleDescription: [
           fill === 0 ? `Paid toward this year: ${currentLabel}.` : "",
           showPrior && priorFill === 0 ? `${priorLabel}: ${earlierLabel}.` : "",
@@ -125,14 +130,38 @@ export function CebAssessmentsTreemap() {
   });
   return (
     <div aria-busy={loading}>
+      <div className="mb-3 flex flex-wrap gap-2">
+        <LegendLabel
+          label="Assessed"
+          color={colors.assessed}
+          marker={
+            <span
+              aria-hidden="true"
+              className="size-2.5 shrink-0 border-2"
+              style={{ borderColor: colors.assessed }}
+            />
+          }
+        />
+        <LegendLabel label="Paid toward this year" color={colors.current} />
+        {unknown > 0 && (
+          <LegendLabel label="Payment status unknown" color={colors.unknown} />
+        )}
+        <LegendLabel
+          label={priorLabel}
+          color={colors.prior}
+          selected={showPrior}
+          onToggle={() => setShowPrior((current) => !current)}
+        />
+      </div>
       <GroupedTreemap
         rows={[{ key: "assessments", label: "Assessments", leaves }]}
         layout={{ leafGap: 1.5 }}
         showRowLabels={false}
         plotClassName={SYSTEM_TREEMAP_HEIGHT_CLASS}
         totalLabel="Assessments"
-        secondaryControls={
-          <div className="flex max-w-full min-w-0 items-center gap-3 pt-3">
+        controlsClassName="min-w-[min(100%,18rem)]"
+        controls={
+          <div className="flex max-w-full min-w-0 items-center gap-3">
             <div className="shrink-0">
               <YearSlider
                 years={years}
@@ -152,23 +181,6 @@ export function CebAssessmentsTreemap() {
                 className="min-w-0"
               />
             </div>
-          </div>
-        }
-        controls={
-          <div className="flex flex-wrap gap-2">
-            <LegendLabel label="Paid toward this year" color={colors.current} />
-            {unknown > 0 && (
-              <LegendLabel
-                label="Payment status unknown"
-                color={colors.unknown}
-              />
-            )}
-            <LegendLabel
-              label={priorLabel}
-              color={colors.prior}
-              selected={showPrior}
-              onToggle={() => setShowPrior((current) => !current)}
-            />
           </div>
         }
         summaries={[
@@ -247,11 +259,6 @@ export function CebAssessmentsTreemap() {
         footer={
           <div className="space-y-2">
             <ChartFooter hint="Click on a contributor to explore details" />
-            {showPrior && (
-              <p className="text-sm text-gray-600">
-                Earlier-year payments can extend beyond the assessment outline.
-              </p>
-            )}
             {exclusions.map((note) => (
               <p key={note} className="text-sm text-gray-600">
                 {note}

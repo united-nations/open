@@ -6,14 +6,15 @@ import type {
 } from "@/types";
 import { formatBudget } from "@/lib/contributors";
 import { FINANCING_INSTRUMENT_COLORS } from "@/lib/financingInstruments";
+import { REGULAR_BUDGET_STATUS_STYLES } from "@/lib/regularBudgetContributors";
 
 export const CEB_ASSESSMENTS_HASH = "assessment";
 export const CEB_ASSESSMENTS_SECTION = "ceb-assessments";
 export const CEB_ASSESSMENT_COLORS = {
   assessed: FINANCING_INSTRUMENT_COLORS.assessed,
-  current: "var(--color-un-blue)",
+  current: REGULAR_BUDGET_STATUS_STYLES.paid_on_time.color,
   unknown: "var(--color-gray-400)",
-  prior: "var(--color-smoky)",
+  prior: REGULAR_BUDGET_STATUS_STYLES.paid_late.color,
 };
 export const CEB_ASSESSMENTS_SOURCE =
   "https://unsceb.org/assessments-voted-assessments-received-current-year-and-prior-years-assessments-received/";

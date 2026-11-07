@@ -1,5 +1,72 @@
+diff --git a/components/chart-header.tsx b/components/chart-header.tsx
+index 2b2fb47858ab3bec4f0986038fe8c2343b33752e..dd38f7a4d8002e88b7d31809d415f21502aa80d4 100644
+--- a/components/chart-header.tsx
++++ b/components/chart-header.tsx
+@@ -5,6 +5,7 @@ import { typography } from "../lib/typography";
+ export interface ChartHeaderProps {
+   yearControl?: React.ReactNode;
+   controls?: React.ReactNode;
++  controlsClassName?: string;
+   search?: React.ReactNode;
+   summaries?: readonly {
+     key: string;
+@@ -16,12 +17,18 @@ export interface ChartHeaderProps {
+ export function ChartHeader({
+   yearControl,
+   controls,
++  controlsClassName,
+   search,
+   summaries = [],
+ }: ChartHeaderProps) {
+   return (
+     <div className="flex flex-wrap items-end gap-x-6 gap-y-3">
+-      <div className="flex min-w-0 flex-1 flex-wrap items-center gap-3">
++      <div
++        className={cn(
++          "flex min-w-0 flex-1 flex-wrap items-center gap-3",
++          controlsClassName,
++        )}
++      >
+         {controls}
+         {yearControl}
+         {search}
+diff --git a/components/financial-tooltip.tsx b/components/financial-tooltip.tsx
+index edd3c0c3ffc17fa14f3b15e8d15016211eabd556..acacdf6fadb914035658ba3456868eda0a851844 100644
+--- a/components/financial-tooltip.tsx
++++ b/components/financial-tooltip.tsx
+@@ -7,6 +7,7 @@ export interface FinancialTooltipRow {
+   label: string;
+   value: ReactNode;
+   color?: string;
++  marker?: ReactNode;
+   /** Share of the displayed total, from zero to one. Omit for negative values. */
+   share?: number;
+ }
+@@ -104,13 +105,15 @@ export function FinancialTooltip({
+           {rows.map((row, index) => (
+             <div key={`${index}-${row.label}`} className="contents">
+               <span className="flex min-w-0 items-center gap-1.5">
+-                {!bars && row.color && (
+-                  <span
+-                    aria-hidden="true"
+-                    className="size-2 shrink-0 rounded-full"
+-                    style={{ backgroundColor: row.color }}
+-                  />
+-                )}
++                {!bars &&
++                  (row.marker ??
++                    (row.color && (
++                      <span
++                        aria-hidden="true"
++                        className="size-2 shrink-0 rounded-full"
++                        style={{ backgroundColor: row.color }}
++                      />
++                    )))}
+                 <span className="whitespace-normal break-words">
+                   {row.label}
+                 </span>
 diff --git a/components/grouped-treemap.tsx b/components/grouped-treemap.tsx
-index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..bd02787f93552ff37463ea457dedcfb6bd979fbe 100644
+index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..26873998c3becfe370e138b76981f7b2cef93eff 100644
 --- a/components/grouped-treemap.tsx
 +++ b/components/grouped-treemap.tsx
 @@ -44,6 +44,8 @@ export interface GroupedTreemapSegment<TSegment = unknown> {
@@ -49,7 +116,15 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..bd02787f93552ff37463ea457dedcfb6
    labelColor?: string;
    /** Published group total when it differs from the sum of displayed leaves. */
    value?: number;
-@@ -283,9 +295,10 @@ function normalizeRows<TRow, TSubgroup, TLeaf, TSegment>(
+@@ -167,6 +179,7 @@ export interface GroupedTreemapProps<
+   searchAccessory?: React.ReactNode;
+   yearControl?: React.ReactNode;
+   controls?: React.ReactNode;
++  controlsClassName?: string;
+   /** Additional controls below the main toolbar. */
+   secondaryControls?: React.ReactNode;
+   hideHeader?: boolean;
+@@ -283,9 +296,10 @@ function normalizeRows<TRow, TSubgroup, TLeaf, TSegment>(
            ),
          }))
          .filter((subgroup) =>
@@ -63,7 +138,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..bd02787f93552ff37463ea457dedcfb6
          );
        return { ...row, subgroups };
      })
-@@ -340,12 +353,12 @@ function DefaultTooltip<TRow, TSubgroup, TLeaf, TSegment>({
+@@ -340,12 +354,12 @@ function DefaultTooltip<TRow, TSubgroup, TLeaf, TSegment>({
            label,
            color: index === 0 ? context.row.color : undefined,
          }))}
@@ -78,7 +153,23 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..bd02787f93552ff37463ea457dedcfb6
            color: segment.color,
            share:
              segment.value >= 0 && context.leaf.value > 0
-@@ -593,6 +606,10 @@ export function GroupedTreemap<
+@@ -376,6 +390,7 @@ export function GroupedTreemap<
+   searchAccessory,
+   yearControl,
+   controls,
++  controlsClassName,
+   secondaryControls,
+   hideHeader = false,
+   footer,
+@@ -526,6 +541,7 @@ export function GroupedTreemap<
+           <>
+             <ChartHeader
+               yearControl={yearControl}
++              controlsClassName={controlsClassName}
+               controls={
+                 <>
+                   {controls}
+@@ -593,6 +609,10 @@ export function GroupedTreemap<
                        style={{
                          insetInlineStart: rowLayout.rect.x,
                          top: rowLayout.rect.y,
@@ -89,7 +180,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..bd02787f93552ff37463ea457dedcfb6
                          minHeight: rowLabelSpace || undefined,
                          color:
                            row.labelColor ?? row.color ?? "var(--color-un-blue)",
-@@ -610,7 +627,7 @@ export function GroupedTreemap<
+@@ -610,7 +630,7 @@ export function GroupedTreemap<
                        />
                        {row.label}{" "}
                        <span className="font-normal tabular-nums">
@@ -98,7 +189,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..bd02787f93552ff37463ea457dedcfb6
                            row.value ??
                              row.subgroups.reduce(
                                (sum, subgroup) =>
-@@ -650,7 +667,7 @@ export function GroupedTreemap<
+@@ -650,7 +670,7 @@ export function GroupedTreemap<
                            >
                              {subgroup.label}{" "}
                              <span className="font-normal tabular-nums">
@@ -107,7 +198,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..bd02787f93552ff37463ea457dedcfb6
                                  subgroup.leaves.reduce(
                                    (sum, leaf) => sum + leaf.value,
                                    0,
-@@ -686,12 +703,12 @@ export function GroupedTreemap<
+@@ -686,12 +706,12 @@ export function GroupedTreemap<
                            const accessibleSegments = visibleSegments
                              .map(
                                (segment) =>
@@ -122,7 +213,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..bd02787f93552ff37463ea457dedcfb6
                              accessibleSegments || null,
                              leaf.accessibleDescription?.trim() || null,
                            ]
-@@ -815,15 +832,17 @@ export function GroupedTreemap<
+@@ -815,15 +835,17 @@ export function GroupedTreemap<
                                  className={cn(
                                    "pointer-events-none absolute inset-0 z-[1] shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.8)]",
                                    leaf.onActivate &&
@@ -147,7 +238,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..bd02787f93552ff37463ea457dedcfb6
                                />
                                {canShowLabel && (
                                  <span
-@@ -850,7 +869,7 @@ export function GroupedTreemap<
+@@ -850,7 +872,7 @@ export function GroupedTreemap<
                                              : "truncate",
                                          )}
                                        >
@@ -156,6 +247,56 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..bd02787f93552ff37463ea457dedcfb6
                                        </span>
                                      ) : null}
                                    </span>
+diff --git a/components/legend-label.tsx b/components/legend-label.tsx
+index 6f01a4697b06d32ac601f0c8a5d27fae05930549..d54d332b121f114dce5f8b3292e982d64fdb2ea9 100644
+--- a/components/legend-label.tsx
++++ b/components/legend-label.tsx
+@@ -9,6 +9,7 @@ import { typography } from "../lib/typography";
+ export interface LegendLabelProps {
+   color: string;
+   showMarker?: boolean;
++  marker?: React.ReactNode;
+   /** Optional patterned swatch, such as a striped CSS gradient. */
+   swatchBackground?: string;
+   label: string;
+@@ -26,6 +27,7 @@ export interface LegendLabelProps {
+ export function LegendLabel({
+   color,
+   showMarker = true,
++  marker,
+   swatchBackground,
+   label,
+   explanation,
+@@ -47,17 +49,18 @@ export function LegendLabel({
+   );
+   const content = (
+     <>
+-      {showMarker && (
+-        <span
+-          aria-hidden="true"
+-          className={cn(
+-            "shrink-0 rounded-full",
+-            variant === "pill" ? "size-2.5" : "size-2",
+-            onToggle && !selected && "opacity-35",
+-          )}
+-          style={{ backgroundColor: color, backgroundImage: swatchBackground }}
+-        />
+-      )}
++      {showMarker &&
++        (marker ?? (
++          <span
++            aria-hidden="true"
++            className={cn(
++              "shrink-0 rounded-full",
++              variant === "pill" ? "size-2.5" : "size-2",
++              onToggle && !selected && "opacity-35",
++            )}
++            style={{ backgroundColor: color, backgroundImage: swatchBackground }}
++          />
++        ))}
+       <span
+         className={cn(
+           variant === "inline" &&
 diff --git a/components/sankey-diagram.tsx b/components/sankey-diagram.tsx
 index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9927cb919 100644
 --- a/components/sankey-diagram.tsx
