@@ -383,33 +383,6 @@ export function ContributorTrendsChart() {
         </div>
       </div>
 
-      <div className="flex min-w-0 flex-col">
-        <div className="space-y-2 pb-3">
-          <h4 className="text-sm font-medium text-gray-700">
-            Revenue by financing instrument
-          </h4>
-          <div className="flex flex-wrap items-center gap-2">
-            <HierarchicalSingleSelect
-              groups={financingSingleSelectGroups}
-              selected={financingContributor}
-              onChange={setFinancingContributor}
-              getLabel={getFinancingLabel}
-            />
-          </div>
-        </div>
-        <div className="mt-auto">
-          <FinancingInstrumentChart
-            data={financingInstrumentData}
-            accessibleTableLabel="Revenue by financing instrument"
-            allowNegative
-            omitNegativeFromPlot
-            showShareToggle
-            height={TREND_CHART_HEIGHT}
-            filterable
-          />
-        </div>
-      </div>
-
       <div className="flex min-w-0 flex-col" data-money-chart>
         {/* Title and chips */}
         <div className="space-y-2 pb-3">
@@ -472,6 +445,33 @@ export function ContributorTrendsChart() {
               </LineChart>
             </ResponsiveContainer>
           )}
+        </div>
+      </div>
+
+      <div className="flex min-w-0 flex-col">
+        <div className="space-y-2 pb-3">
+          <h4 className="text-sm font-medium text-gray-700">
+            Revenue by financing instrument
+          </h4>
+          <div className="flex flex-wrap items-center gap-2">
+            <HierarchicalSingleSelect
+              groups={financingSingleSelectGroups}
+              selected={financingContributor}
+              onChange={setFinancingContributor}
+              getLabel={getFinancingLabel}
+            />
+          </div>
+        </div>
+        <div className="mt-auto">
+          <FinancingInstrumentChart
+            data={financingInstrumentData}
+            accessibleTableLabel="Revenue by financing instrument"
+            allowNegative
+            omitNegativeFromPlot
+            showShareToggle
+            height={TREND_CHART_HEIGHT}
+            filterable
+          />
         </div>
       </div>
     </div>
