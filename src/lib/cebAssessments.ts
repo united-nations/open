@@ -1,10 +1,20 @@
 import { loadYearData } from "@/lib/data";
-import type { CebAssessmentRow, CebAssessmentsData } from "@/types";
+import type {
+  CebAssessmentContributor,
+  CebAssessmentRow,
+  CebAssessmentsData,
+} from "@/types";
+import { formatBudget } from "@/lib/contributors";
+import { FINANCING_INSTRUMENT_COLORS } from "@/lib/financingInstruments";
 
 export const CEB_ASSESSMENTS_HASH = "assessment";
 export const CEB_ASSESSMENTS_SECTION = "ceb-assessments";
-export const UNKNOWN_ASSESSMENT_PAYMENT_COLOR = "var(--color-gray-400)";
-export const PRIOR_ASSESSMENT_PAYMENT_COLOR = "var(--color-smoky)";
+export const CEB_ASSESSMENT_COLORS = {
+  assessed: FINANCING_INSTRUMENT_COLORS.assessed,
+  current: "var(--color-un-blue)",
+  unknown: "var(--color-gray-400)",
+  prior: "var(--color-smoky)",
+};
 export const CEB_ASSESSMENTS_SOURCE =
   "https://unsceb.org/assessments-voted-assessments-received-current-year-and-prior-years-assessments-received/";
 
@@ -28,6 +38,45 @@ export function loadCebAssessments(year: number) {
 export interface AssessmentAmount {
   value: number | null;
   partial: boolean;
+}
+
+export function formatAssessmentAmount({ value, partial }: AssessmentAmount) {
+  if (value === null) return "Unknown";
+  return formatBudget(value) + (partial ? " (partial)" : "");
+}
+
+export function rowsWithAssessments(rows: readonly CebAssessmentRow[]) {
+  return rows.filter(([, assessed]) => assessed !== null);
+}
+
+export function assessmentExclusionNotes(
+  year: number,
+  contributors: readonly Pick<CebAssessmentContributor, "name" | "rows">[],
+) {
+  const covered = new Set<string>();
+  const missing = new Map<string, Set<string>>();
+  for (const { name, rows } of contributors) {
+    for (const [entity, assessed] of rows) {
+      if (assessed !== null) {
+        covered.add(entity);
+      } else {
+        const names = missing.get(entity) ?? new Set<string>();
+        names.add(name);
+        missing.set(entity, names);
+      }
+    }
+  }
+  return Array.from(missing)
+    .sort(([a], [b]) => a.localeCompare(b))
+    .map(([entity, names]) => {
+      const [name] = names;
+      if (!covered.has(entity)) {
+        const scope = contributors.length === 1 ? ` for ${name}` : "";
+        return `${entity} has no reported assessment amount${scope} in ${year}. Its data is excluded.`;
+      }
+      const who = names.size === 1 ? name : `${names.size} contributors`;
+      return `${entity} has missing assessment amounts for ${who} in ${year}. Those rows are excluded.`;
+    });
 }
 
 function sumColumn(
@@ -72,10 +121,15 @@ export function assessmentEntities(rows: readonly CebAssessmentRow[]) {
       0,
       (totals.assessed.value ?? 0) - Math.max(0, totals.current.value ?? 0),
     );
+    const unknownCurrent = Math.min(withBlankReceipts, remaining);
     return {
       entity,
       ...totals,
-      unknownCurrent: Math.min(withBlankReceipts, remaining),
+      unknownCurrent,
+      paidWithinAssessment: Math.min(
+        Math.max(0, totals.assessed.value ?? 0) - unknownCurrent,
+        Math.max(0, totals.current.value ?? 0),
+      ),
     };
   });
 }
@@ -85,4 +139,22 @@ export function unknownCurrentAssessments(rows: readonly CebAssessmentRow[]) {
     (sum, { unknownCurrent }) => sum + unknownCurrent,
     0,
   );
+}
+
+export function systemAssessmentTrendPoint({
+  year,
+  contributors,
+}: Pick<CebAssessmentsData, "year" | "contributors">) {
+  const assessedRowsByContributor = contributors.map(({ rows }) =>
+    rowsWithAssessments(rows),
+  );
+  return {
+    year,
+    ...sumAssessments(assessedRowsByContributor.flat()),
+    unknownCurrent: assessedRowsByContributor.reduce(
+      (sum, rows) => sum + unknownCurrentAssessments(rows),
+      0,
+    ),
+    notes: assessmentExclusionNotes(year, contributors),
+  };
 }

@@ -1,7 +1,7 @@
 "use client";
 
-import Link from "next/link";
 import { useCallback, useState } from "react";
+import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { formatAssessmentRate } from "@un-eosg/ui/format-budget";
 import {
   FinancialPanelBar,
@@ -14,26 +14,22 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { FINANCING_INSTRUMENT_COLORS } from "@/lib/financingInstruments";
 import { CebAssessmentTrendsChart } from "@/components/CebAssessmentTrendsChart";
-import { PageSourceLink } from "@/components/PageSources";
 import { useYearResource } from "@/hooks/useYearResource";
 import {
   assessmentEntities,
-  CEB_ASSESSMENTS_SECTION,
+  assessmentExclusionNotes,
+  CEB_ASSESSMENT_COLORS,
+  formatAssessmentAmount,
   loadCebAssessments,
+  rowsWithAssessments,
   sumAssessments,
   unknownCurrentAssessments,
-  type AssessmentAmount,
 } from "@/lib/cebAssessments";
 import { formatBudget } from "@/lib/contributors";
 import { useYearRanges } from "@/lib/useYearRanges";
 
-function amountLabel(amount: AssessmentAmount) {
-  return amount.value === null
-    ? "Unknown"
-    : formatBudget(amount.value) + (amount.partial ? "*" : "");
-}
+const colors = CEB_ASSESSMENT_COLORS;
 
 export function useCebAssessmentHistory(
   id: string | undefined,
@@ -68,34 +64,46 @@ export function CebAssessmentSidebarContent({
   year: number;
 }) {
   const [showAllEntities, setShowAllEntities] = useState(false);
-  const selectedRows =
-    history?.find((point) => point.year === year)?.rows ?? [];
-  const entities = assessmentEntities(selectedRows).sort(
-    (a, b) => (b.assessed.value ?? -Infinity) - (a.assessed.value ?? -Infinity),
-  );
-  const maxAssessment = Math.max(
+  const selected = history?.find((point) => point.year === year);
+  const selectedRows = rowsWithAssessments(selected?.rows ?? []);
+  const exclusions = selected?.name
+    ? assessmentExclusionNotes(year, [
+        { name: selected.name, rows: selected.rows },
+      ])
+    : [];
+  const entities = assessmentEntities(selectedRows)
+    .map((entity) => {
+      const currentFill = Math.max(0, entity.current.value ?? 0);
+      const priorFill = Math.max(0, entity.prior.value ?? 0);
+      return {
+        ...entity,
+        currentFill,
+        priorFill,
+        stack: currentFill + entity.unknownCurrent + priorFill,
+      };
+    })
+    .sort((a, b) => (b.assessed.value ?? 0) - (a.assessed.value ?? 0));
+  const maxBar = Math.max(
     1,
-    ...entities.map(({ assessed }) => assessed.value ?? 0),
+    ...entities.map(({ assessed, stack }) =>
+      Math.max(assessed.value ?? 0, stack),
+    ),
   );
   const visibleEntities = showAllEntities ? entities : entities.slice(0, 10);
-  const reported = (history ?? []).map((point) => ({
-    year: point.year,
-    ...sumAssessments(point.rows),
-    unknownCurrent: unknownCurrentAssessments(point.rows),
-  }));
-  const partialYears = reported
-    .filter(
-      (point) =>
-        point.assessed.partial || point.current.partial || point.prior.partial,
-    )
-    .map((point) => point.year);
+  const reported = (history ?? []).map((point) => {
+    const rows = rowsWithAssessments(point.rows);
+    return {
+      year: point.year,
+      ...sumAssessments(rows),
+      unknownCurrent: unknownCurrentAssessments(rows),
+    };
+  });
   const totals = sumAssessments(selectedRows);
-  const hasHistory = reported.some(
-    (point) =>
-      point.assessed.value !== null ||
-      point.current.value !== null ||
-      point.prior.value !== null,
+  const unknown = entities.reduce(
+    (sum, entity) => sum + entity.unknownCurrent,
+    0,
   );
+  const hasHistory = reported.some(({ assessed }) => assessed.value !== null);
 
   return (
     <section
@@ -103,6 +111,28 @@ export function CebAssessmentSidebarContent({
       aria-label="Assessments and payments"
     >
       <FinancialPanelHeading>Assessments and payments</FinancialPanelHeading>
+      {totals.assessed.value !== null && (
+        <div className="space-y-2">
+          <FinancialPanelTotalRow
+            label="Assessments"
+            value={formatAssessmentAmount(totals.assessed)}
+          />
+          <FinancialPanelTotalRow
+            label={`Paid toward ${year}`}
+            value={formatAssessmentAmount(totals.current)}
+          />
+          {unknown > 0 && (
+            <FinancialPanelTotalRow
+              label="Payment status unknown"
+              value={formatBudget(unknown)}
+            />
+          )}
+          <FinancialPanelTotalRow
+            label="Paid toward earlier years"
+            value={formatAssessmentAmount(totals.prior)}
+          />
+        </div>
+      )}
       {loading && (
         <p role="status" className="text-sm text-gray-600">
           Loading assessments…
@@ -118,110 +148,131 @@ export function CebAssessmentSidebarContent({
           {entities.length ? (
             <div className="space-y-2">
               <FinancialPanelHeading subheading>
-                By organization in {year}
+                By organization
               </FinancialPanelHeading>
-              <p className="text-xs text-gray-600">
-                Bar length shows the assessment. Dark blue shows reported
-                payments toward {year}. Hatching marks incomplete figures.
-              </p>
-              <div className="text-right text-xs font-medium text-gray-600">
-                Paid %
+              <div className="flex justify-end gap-2 text-right text-xs font-medium text-gray-600">
+                <span className="w-16">Assessment</span>
+                <span className="w-14">Paid %</span>
               </div>
-              {visibleEntities.map(({ entity, assessed, current, prior }) => {
-                const amount = Math.max(0, assessed.value ?? 0);
-                const barWidth = (amount / maxAssessment) * 100;
-                const incomplete = assessed.partial || current.partial;
-                const paidPercent =
-                  amount > 0 && current.value !== null
-                    ? (current.value / amount) * 100
-                    : null;
-                const paidLabel =
-                  !incomplete && paidPercent !== null
-                    ? formatAssessmentRate(paidPercent)
-                    : null;
-                const receiptDetails = [
-                  ["Assessed", assessed],
-                  [`Paid toward ${year}`, current],
-                  ["Paid toward earlier years", prior],
-                ] as const;
-                return (
-                  <div key={entity} className="flex items-center gap-2">
-                    <div className="min-w-0 flex-1">
-                      <FinancialPanelRankedRow
-                        label={entity}
-                        value={amountLabel(assessed)}
-                      >
-                        <Tooltip delayDuration={200}>
-                          <TooltipTrigger asChild>
-                            <div
-                              tabIndex={0}
-                              className="flex flex-1 cursor-help"
-                              aria-label={`${entity}. ${receiptDetails.map(([label, value]) => `${label}: ${amountLabel(value)}`).join(". ")}`}
-                            >
+              {visibleEntities.map(
+                ({
+                  entity,
+                  assessed,
+                  current,
+                  prior,
+                  unknownCurrent,
+                  currentFill,
+                  priorFill,
+                  stack,
+                }) => {
+                  const amount = assessed.value ?? 0;
+                  const assessmentPosition = `${(amount / maxBar) * 100}%`;
+                  const paidLabel =
+                    amount > 0 && current.value !== null && !current.partial
+                      ? formatAssessmentRate((current.value / amount) * 100)
+                      : null;
+                  const receipts = [
+                    {
+                      label: `Paid toward ${year}`,
+                      value: formatAssessmentAmount(current),
+                      amount: currentFill,
+                      color: colors.current,
+                    },
+                    {
+                      label: "Payment status unknown",
+                      value: formatBudget(unknownCurrent),
+                      amount: unknownCurrent,
+                      color: colors.unknown,
+                    },
+                    {
+                      label: "Paid toward earlier years",
+                      value: formatAssessmentAmount(prior),
+                      amount: priorFill,
+                      color: colors.prior,
+                    },
+                  ].filter(
+                    ({ label, amount }) =>
+                      label !== "Payment status unknown" || amount > 0,
+                  );
+                  const assessmentLabel = formatAssessmentAmount(assessed);
+                  const tooltipRows = [
+                    {
+                      label: "Assessment",
+                      value: assessmentLabel,
+                      color: colors.assessed,
+                    },
+                    ...receipts,
+                  ];
+                  return (
+                    <div key={entity} className="flex items-center gap-2">
+                      <div className="min-w-0 flex-1">
+                        <FinancialPanelRankedRow
+                          label={entity}
+                          value={assessmentLabel}
+                        >
+                          <Tooltip delayDuration={200}>
+                            <TooltipTrigger asChild>
                               <div
-                                className="flex rounded-sm"
-                                style={{
-                                  width: `${barWidth}%`,
-                                  backgroundImage: incomplete
-                                    ? "repeating-linear-gradient(135deg, var(--color-gray-100) 0 3px, var(--color-gray-300) 3px 5px)"
-                                    : undefined,
-                                }}
+                                tabIndex={0}
+                                className="relative isolate flex min-w-0 flex-1 cursor-help"
+                                aria-label={`${entity}. ${tooltipRows.map(({ label, value }) => `${label}: ${value}`).join(". ")}`}
                               >
+                                {amount > 0 && (
+                                  <span
+                                    aria-hidden="true"
+                                    className="pointer-events-none absolute top-1/2 left-0 -z-10 h-px -translate-y-1/2 bg-gray-300"
+                                    style={{ width: assessmentPosition }}
+                                  />
+                                )}
                                 <FinancialPanelBar
-                                  percent={100}
-                                  color={
-                                    incomplete
-                                      ? undefined
-                                      : "var(--color-gray-200)"
-                                  }
-                                  segments={[
-                                    {
-                                      id: "paid",
-                                      percent: Math.max(
-                                        0,
-                                        Math.min(100, paidPercent ?? 0),
-                                      ),
-                                      color:
-                                        FINANCING_INSTRUMENT_COLORS.assessed,
-                                    },
-                                  ]}
+                                  percent={(stack / maxBar) * 100}
+                                  segments={receipts.map(
+                                    ({ label, amount, color }) => ({
+                                      id: label,
+                                      percent:
+                                        stack > 0 ? (amount / stack) * 100 : 0,
+                                      color,
+                                    }),
+                                  )}
                                 />
+                                {amount >= 0 && (
+                                  <span
+                                    aria-hidden="true"
+                                    className="pointer-events-none absolute top-1/2 h-3 w-0.5 -translate-x-1/2 -translate-y-1/2 rounded-full"
+                                    style={{
+                                      left: assessmentPosition,
+                                      backgroundColor: colors.assessed,
+                                    }}
+                                  />
+                                )}
                               </div>
-                            </div>
-                          </TooltipTrigger>
-                          <TooltipContent
-                            side="top"
-                            className="border border-slate-200 bg-white text-slate-800 shadow-lg"
-                          >
-                            <p className="mb-1 font-medium">{entity}</p>
-                            {receiptDetails.map(([label, value]) => (
-                              <div
-                                key={label}
-                                className="flex justify-between gap-4"
-                              >
-                                <span>{label}</span>
-                                <span className="font-medium">
-                                  {amountLabel(value)}
-                                </span>
-                              </div>
-                            ))}
-                          </TooltipContent>
-                        </Tooltip>
-                      </FinancialPanelRankedRow>
+                            </TooltipTrigger>
+                            <TooltipContent
+                              side="top"
+                              className="border border-slate-200 bg-white text-slate-800 shadow-lg"
+                            >
+                              <FinancialTooltip
+                                title={entity}
+                                rows={tooltipRows}
+                              />
+                            </TooltipContent>
+                          </Tooltip>
+                        </FinancialPanelRankedRow>
+                      </div>
+                      <span className="w-14 shrink-0 text-right text-xs text-gray-600 tabular-nums">
+                        {paidLabel ?? (
+                          <>
+                            <span aria-hidden="true">—</span>
+                            <span className="sr-only">
+                              Payment percentage unavailable
+                            </span>
+                          </>
+                        )}
+                      </span>
                     </div>
-                    <span className="w-14 shrink-0 text-right text-xs text-gray-600 tabular-nums">
-                      {paidLabel ?? (
-                        <>
-                          <span aria-hidden="true">—</span>
-                          <span className="sr-only">
-                            Payment percentage unavailable
-                          </span>
-                        </>
-                      )}
-                    </span>
-                  </div>
-                );
-              })}
+                  );
+                },
+              )}
               {!showAllEntities && entities.length > visibleEntities.length && (
                 <button
                   type="button"
@@ -231,27 +282,10 @@ export function CebAssessmentSidebarContent({
                   Show all {entities.length} organizations
                 </button>
               )}
-              <FinancialPanelTotalRow
-                label="Assessments"
-                value={amountLabel(totals.assessed)}
-              />
-              <FinancialPanelTotalRow
-                label={`Paid toward ${year}`}
-                value={amountLabel(totals.current)}
-              />
-              <FinancialPanelTotalRow
-                label="Paid toward earlier years"
-                value={amountLabel(totals.prior)}
-              />
-              {Object.values(totals).some(({ partial }) => partial) && (
-                <p className="text-xs text-gray-600">
-                  * Partial amount. The workbook has blank cells.
-                </p>
-              )}
             </div>
           ) : (
             <p className="text-sm text-gray-600">
-              No assessments workbook data for {year}.
+              No assessment data for {year}.
             </p>
           )}
           {hasHistory && (
@@ -260,26 +294,15 @@ export function CebAssessmentSidebarContent({
                 Payments by year received
               </FinancialPanelHeading>
               <CebAssessmentTrendsChart data={reported} />
-              {partialYears.length > 0 && (
-                <p className="text-xs text-gray-600">
-                  The workbook has blank cells in {partialYears.join(", ")}.
-                  Reported totals can be partial. Grey shows assessed amounts
-                  with blank current-year receipts.
-                </p>
-              )}
             </div>
           )}
+          {exclusions.map((note) => (
+            <p key={note} className="text-xs text-gray-600">
+              {note}
+            </p>
+          ))}
         </>
       )}
-      <p className="text-xs text-gray-600">
-        Source: <PageSourceLink source="cebAssessments" />.{" "}
-        <Link
-          href={`/about/#${CEB_ASSESSMENTS_SECTION}`}
-          className="underline underline-offset-2"
-        >
-          Methodology
-        </Link>
-      </p>
     </section>
   );
 }

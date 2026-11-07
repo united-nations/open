@@ -12,26 +12,19 @@ import { navigateToSidebar } from "@/hooks/useDeepLink";
 import { useYearResource } from "@/hooks/useYearResource";
 import {
   assessmentEntities,
+  assessmentExclusionNotes,
+  CEB_ASSESSMENT_COLORS,
   CEB_ASSESSMENTS_HASH,
+  formatAssessmentAmount,
   loadCebAssessments,
-  PRIOR_ASSESSMENT_PAYMENT_COLOR,
+  rowsWithAssessments,
   sumAssessments,
-  UNKNOWN_ASSESSMENT_PAYMENT_COLOR,
 } from "@/lib/cebAssessments";
 import { formatBudget } from "@/lib/contributors";
-import { FINANCING_INSTRUMENT_COLORS } from "@/lib/financingInstruments";
 import { useYearRanges } from "@/lib/useYearRanges";
 
-const color = FINANCING_INSTRUMENT_COLORS.assessed;
+const colors = CEB_ASSESSMENT_COLORS;
 const priorLabel = "Paid toward earlier years";
-
-function receiptLabel({
-  value,
-  partial,
-}: ReturnType<typeof sumAssessments>["current"]) {
-  if (value === null) return "Unknown";
-  return formatBudget(value) + (partial ? " (partial)" : "");
-}
 
 export function CebAssessmentsTreemap() {
   const { years, default: defaultYear } = useYearRanges().cebAssessments;
@@ -44,30 +37,29 @@ export function CebAssessmentsTreemap() {
     loading,
     error,
   } = useYearResource(String(year), null, false, load, null);
-  const contributors = (data?.contributors ?? []).map((contributor) => {
-    const entities = assessmentEntities(contributor.rows);
+  const contributors = (data?.contributors ?? []).filter(({ name }) =>
+    name.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()),
+  );
+  const exclusions = assessmentExclusionNotes(year, contributors);
+  const matches = contributors.map((contributor) => {
+    const rows = rowsWithAssessments(contributor.rows);
+    const entities = assessmentEntities(rows);
     return {
       ...contributor,
-      ...sumAssessments(contributor.rows),
+      rows,
+      ...sumAssessments(rows),
       unknownCurrent: entities.reduce(
         (sum, entity) => sum + entity.unknownCurrent,
         0,
       ),
       paidWithinAssessment: entities.reduce(
-        (sum, { assessed, current }) =>
-          sum +
-          Math.min(
-            Math.max(0, assessed.value ?? 0),
-            Math.max(0, current.value ?? 0),
-          ),
+        (sum, entity) => sum + entity.paidWithinAssessment,
         0,
       ),
     };
   });
-  const matches = contributors.filter(({ name }) =>
-    name.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()),
-  );
   const totals = sumAssessments(matches.flatMap(({ rows }) => rows));
+  const unknown = matches.reduce((sum, match) => sum + match.unknownCurrent, 0);
   const leaves = matches.flatMap((contributor) => {
     const assessed = Math.max(0, contributor.assessed.value ?? 0);
     const priorFill = showPrior ? Math.max(0, contributor.prior.value ?? 0) : 0;
@@ -78,12 +70,11 @@ export function CebAssessmentsTreemap() {
       assessed - unknownFill,
     );
     const layoutValue = Math.max(assessed, fill + unknownFill + priorFill);
-    const contrast =
-      fill / layoutValue >= 0.85 ||
-      (priorFill / layoutValue >= 0.15 &&
-        (fill + unknownFill + priorFill) / layoutValue >= 0.9);
-    const currentLabel = receiptLabel(contributor.current);
-    const earlierLabel = receiptLabel(contributor.prior);
+    const darkFillBehindLabel =
+      priorFill / layoutValue >= 0.15 &&
+      (fill + unknownFill + priorFill) / layoutValue >= 0.9;
+    const currentLabel = formatAssessmentAmount(contributor.current);
+    const earlierLabel = formatAssessmentAmount(contributor.prior);
     return [
       {
         key: contributor.id,
@@ -91,13 +82,13 @@ export function CebAssessmentsTreemap() {
         value: assessed,
         layoutValue,
         color: "#fff",
-        borderColor: color,
+        borderColor: colors.assessed,
         borderWidth: 2,
         borderFraction:
           layoutValue > assessed ? assessed / layoutValue : undefined,
-        paleFill: !contrast,
-        textColor: contrast ? "#fff" : "var(--color-gray-900)",
-        valueLabel: receiptLabel(contributor.assessed),
+        paleFill: !darkFillBehindLabel,
+        textColor: darkFillBehindLabel ? "#fff" : "var(--color-gray-900)",
+        valueLabel: formatAssessmentAmount(contributor.assessed),
         accessibleDescription: [
           fill === 0 ? `Paid toward this year: ${currentLabel}.` : "",
           showPrior && priorFill === 0 ? `${priorLabel}: ${earlierLabel}.` : "",
@@ -109,20 +100,20 @@ export function CebAssessmentsTreemap() {
           {
             key: "current",
             label: "Paid toward this year",
-            color,
+            color: colors.current,
             value: fill,
             valueLabel: currentLabel,
           },
           {
             key: "unknownCurrent",
             label: "Payment status unknown",
-            color: UNKNOWN_ASSESSMENT_PAYMENT_COLOR,
+            color: colors.unknown,
             value: unknownFill,
           },
           {
             key: "prior",
             label: priorLabel,
-            color: PRIOR_ASSESSMENT_PAYMENT_COLOR,
+            color: colors.prior,
             value: priorFill,
             valueLabel: earlierLabel,
           },
@@ -165,14 +156,16 @@ export function CebAssessmentsTreemap() {
         }
         controls={
           <div className="flex flex-wrap gap-2">
-            <LegendLabel label="Paid toward this year" color={color} />
-            <LegendLabel
-              label="Payment status unknown"
-              color={UNKNOWN_ASSESSMENT_PAYMENT_COLOR}
-            />
+            <LegendLabel label="Paid toward this year" color={colors.current} />
+            {unknown > 0 && (
+              <LegendLabel
+                label="Payment status unknown"
+                color={colors.unknown}
+              />
+            )}
             <LegendLabel
               label={priorLabel}
-              color={PRIOR_ASSESSMENT_PAYMENT_COLOR}
+              color={colors.prior}
               selected={showPrior}
               onToggle={() => setShowPrior((current) => !current)}
             />
@@ -182,22 +175,27 @@ export function CebAssessmentsTreemap() {
           {
             key: "assessed",
             label: "Assessments",
-            value: receiptLabel(totals.assessed),
+            value: formatAssessmentAmount(totals.assessed),
           },
           {
             key: "current",
             label: "Paid toward this year",
-            value: receiptLabel(totals.current),
+            value: formatAssessmentAmount(totals.current),
           },
-          ...(showPrior
+          ...(unknown > 0
             ? [
                 {
-                  key: "prior",
-                  label: priorLabel,
-                  value: receiptLabel(totals.prior),
+                  key: "unknown",
+                  label: "Payment status unknown",
+                  value: formatBudget(unknown),
                 },
               ]
             : []),
+          {
+            key: "prior",
+            label: priorLabel,
+            value: formatAssessmentAmount(totals.prior),
+          },
         ]}
         showLeafValues
         formatValue={formatBudget}
@@ -216,12 +214,15 @@ export function CebAssessmentsTreemap() {
           return (
             <FinancialTooltip
               title={contributor.name}
-              total={{ label: "Assessed", value: receiptLabel(assessed) }}
+              total={{
+                label: "Assessed",
+                value: formatAssessmentAmount(assessed),
+              }}
               rows={[
                 {
                   label: "Paid toward this year",
-                  color,
-                  value: receiptLabel(current),
+                  color: colors.current,
+                  value: formatAssessmentAmount(current),
                   share: showShare ? paid / leaf.value : undefined,
                 },
                 ...(unknownCurrent > 0
@@ -229,14 +230,14 @@ export function CebAssessmentsTreemap() {
                       {
                         label: "Payment status unknown",
                         value: formatBudget(unknownCurrent),
-                        color: UNKNOWN_ASSESSMENT_PAYMENT_COLOR,
+                        color: colors.unknown,
                       },
                     ]
                   : []),
                 {
                   label: priorLabel,
-                  value: receiptLabel(prior),
-                  color: showPrior ? PRIOR_ASSESSMENT_PAYMENT_COLOR : undefined,
+                  value: formatAssessmentAmount(prior),
+                  color: showPrior ? colors.prior : undefined,
                 },
               ]}
               actionHint="Click to explore details"
@@ -248,10 +249,14 @@ export function CebAssessmentsTreemap() {
             <ChartFooter hint="Click on a contributor to explore details" />
             {showPrior && (
               <p className="text-sm text-gray-600">
-                The blue outline marks this year’s assessment. Earlier-year
-                payments can extend below it.
+                Earlier-year payments can extend beyond the assessment outline.
               </p>
             )}
+            {exclusions.map((note) => (
+              <p key={note} className="text-sm text-gray-600">
+                {note}
+              </p>
+            ))}
           </div>
         }
         emptyContent={

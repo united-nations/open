@@ -351,7 +351,7 @@ export function ContributorSidebar({
                   ? "Loading…"
                   : yearError
                     ? `Data could not be loaded for ${selectedYear}.`
-                    : `No revenue data available for ${title} in ${selectedYear}.`}
+                    : `No contribution data available for ${title} in ${selectedYear}.`}
               </p>
             )}
             {displayContributor && (
@@ -374,7 +374,7 @@ export function ContributorSidebar({
 
                 <div>
                   <FinancialPanelTotalRow
-                    label="Revenue"
+                    label="Contributions"
                     value={formatBudget(totalContributions)}
                   />
 

@@ -1,5 +1,6 @@
 "use client";
 
+import { useCallback } from "react";
 import {
   Area,
   CartesianGrid,
@@ -12,14 +13,20 @@ import {
 } from "recharts";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
-import { TREND_CHART_MARGIN } from "@/components/charts/trendLayout";
-import { formatBudget } from "@/lib/contributors";
-import { FINANCING_INSTRUMENT_COLORS } from "@/lib/financingInstruments";
 import {
-  PRIOR_ASSESSMENT_PAYMENT_COLOR,
-  UNKNOWN_ASSESSMENT_PAYMENT_COLOR,
+  TREND_CHART_HEIGHT,
+  TREND_CHART_MARGIN,
+} from "@/components/charts/trendLayout";
+import { useYearResource } from "@/hooks/useYearResource";
+import { formatBudget } from "@/lib/contributors";
+import {
+  CEB_ASSESSMENT_COLORS,
+  formatAssessmentAmount,
+  loadCebAssessments,
+  systemAssessmentTrendPoint,
   type AssessmentAmount,
 } from "@/lib/cebAssessments";
+import { useYearRanges } from "@/lib/useYearRanges";
 
 export interface AssessmentTrendPoint {
   year: number;
@@ -27,23 +34,19 @@ export interface AssessmentTrendPoint {
   current: AssessmentAmount;
   prior: AssessmentAmount;
   unknownCurrent: number;
+  notes?: string[];
 }
 
-const assessedColor = FINANCING_INSTRUMENT_COLORS.assessed;
-const currentColor = "var(--color-un-blue)";
-const priorColor = PRIOR_ASSESSMENT_PAYMENT_COLOR;
-
-function formatAssessmentAmount({ value, partial }: AssessmentAmount) {
-  if (value === null) return "Unknown";
-  return formatBudget(value) + (partial ? " (partial)" : "");
-}
+const colors = CEB_ASSESSMENT_COLORS;
 
 const unknownLabel = "Payment status unknown";
 
 export function CebAssessmentTrendsChart({
   data,
+  height = 225,
 }: {
   data: AssessmentTrendPoint[];
+  height?: number;
 }) {
   const priorLabel = "Paid toward earlier years";
   const currentLabel = "Paid toward assessment year";
@@ -60,17 +63,14 @@ export function CebAssessmentTrendsChart({
   return (
     <div className="space-y-2">
       <div className="flex flex-wrap gap-x-3 gap-y-1">
-        <LegendLabel label="Assessed" color={assessedColor} />
-        <LegendLabel label={currentLabel} color={currentColor} />
+        <LegendLabel label="Assessed" color={colors.assessed} />
+        <LegendLabel label={currentLabel} color={colors.current} />
         {hasUnknown && (
-          <LegendLabel
-            label={unknownLabel}
-            color={UNKNOWN_ASSESSMENT_PAYMENT_COLOR}
-          />
+          <LegendLabel label={unknownLabel} color={colors.unknown} />
         )}
-        <LegendLabel label={priorLabel} color={priorColor} />
+        <LegendLabel label={priorLabel} color={colors.prior} />
       </div>
-      <ResponsiveContainer width="100%" height={225}>
+      <ResponsiveContainer width="100%" height={height}>
         <ComposedChart
           data={plot}
           margin={TREND_CHART_MARGIN}
@@ -91,29 +91,34 @@ export function CebAssessmentTrendsChart({
                 <div className="max-w-sm rounded-md border border-gray-200 bg-white px-3 py-2 shadow-lg">
                   <FinancialTooltip
                     title={String(point.year)}
+                    notes={
+                      point.notes?.length
+                        ? point.notes.map((note) => <p key={note}>{note}</p>)
+                        : undefined
+                    }
                     rows={[
                       {
                         label: "Assessed",
-                        color: assessedColor,
+                        color: colors.assessed,
                         value: formatAssessmentAmount(point.assessed),
                       },
                       {
                         label: currentLabel,
-                        color: currentColor,
+                        color: colors.current,
                         value: formatAssessmentAmount(point.current),
                       },
                       ...(point.unknownCurrent > 0
                         ? [
                             {
                               label: unknownLabel,
-                              color: UNKNOWN_ASSESSMENT_PAYMENT_COLOR,
+                              color: colors.unknown,
                               value: formatBudget(point.unknownCurrent),
                             },
                           ]
                         : []),
                       {
                         label: priorLabel,
-                        color: priorColor,
+                        color: colors.prior,
                         value: formatAssessmentAmount(point.prior),
                       },
                     ]}
@@ -126,28 +131,31 @@ export function CebAssessmentTrendsChart({
             dataKey="current"
             name={currentLabel}
             stackId="receipts"
-            stroke={currentColor}
-            fill={currentColor}
+            stroke={colors.current}
+            fill={colors.current}
             fillOpacity={0.5}
             dot={{ r: 2 }}
             connectNulls={false}
             isAnimationActive={false}
           />
-          <Area
-            dataKey="unknownCurrent"
-            name={unknownLabel}
-            stackId="receipts"
-            stroke={UNKNOWN_ASSESSMENT_PAYMENT_COLOR}
-            fill={UNKNOWN_ASSESSMENT_PAYMENT_COLOR}
-            fillOpacity={0.5}
-            isAnimationActive={false}
-          />
+          {hasUnknown && (
+            <Area
+              dataKey="unknownCurrent"
+              name={unknownLabel}
+              stackId="receipts"
+              stroke={colors.unknown}
+              fill={colors.unknown}
+              fillOpacity={0.5}
+              dot={{ r: 2 }}
+              isAnimationActive={false}
+            />
+          )}
           <Area
             dataKey="prior"
             name={priorLabel}
             stackId="receipts"
-            stroke={priorColor}
-            fill={priorColor}
+            stroke={colors.prior}
+            fill={colors.prior}
             fillOpacity={0.5}
             dot={{ r: 2 }}
             connectNulls={false}
@@ -156,7 +164,7 @@ export function CebAssessmentTrendsChart({
           <Line
             dataKey="assessed"
             name="Assessed"
-            stroke={assessedColor}
+            stroke={colors.assessed}
             strokeWidth={2}
             dot={{ r: 2 }}
             connectNulls={false}
@@ -165,5 +173,35 @@ export function CebAssessmentTrendsChart({
         </ComposedChart>
       </ResponsiveContainer>
     </div>
+  );
+}
+
+export function CebSystemAssessmentTrends() {
+  const { years } = useYearRanges().cebAssessments;
+  const load = useCallback(async () => {
+    const datasets = await Promise.all(years.map(loadCebAssessments));
+    return datasets.map(systemAssessmentTrendPoint);
+  }, [years]);
+  const { value, loading, error } = useYearResource(
+    years.join(","),
+    null,
+    false,
+    load,
+    null,
+  );
+
+  if (loading || error) {
+    return (
+      <p role="status" className="text-sm text-gray-600">
+        {loading
+          ? "Loading assessment trends…"
+          : "Assessment trends could not be loaded."}
+      </p>
+    );
+  }
+  return value?.some(({ assessed }) => assessed.value !== null) ? (
+    <CebAssessmentTrendsChart data={value} height={TREND_CHART_HEIGHT} />
+  ) : (
+    <p className="text-sm text-gray-600">No assessment trends available.</p>
   );
 }

@@ -36,7 +36,9 @@ def export(workbook_bytes: bytes) -> None:
         for row_number, row in enumerate(sheet, start=2):
             entity, year, category, _, identifier, name, assessed, prior, current = row
             amounts = (assessed, current, prior)
-            if all(value is None for value in amounts):
+            if all(value is None for value in amounts) and not (
+                entity and (identifier or name)
+            ):
                 continue
             if not entity or not isinstance(year, int) or not (identifier or name):
                 raise ValueError(f"Missing observation identity at row {row_number}")

@@ -8,7 +8,8 @@ const PAGE_SOURCES = {
   },
   cebAssessments: {
     href: CEB_ASSESSMENTS_SOURCE,
-    label: "CEB assessments and receipts workbook",
+    label:
+      "CEB Financial Statistics on assessments voted and assessments received",
   },
   uninfo: { href: "https://uninfo.org/", label: "UNINFO" },
   annualReport: {

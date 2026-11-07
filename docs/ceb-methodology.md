@@ -75,7 +75,8 @@ The System contributors page includes the separately sourced
 [CEB assessments and receipts workbook](https://unsceb.org/assessments-voted-assessments-received-current-year-and-prior-years-assessments-received/).
 The exporter reads the Data sheet and preserves all financial observations,
 including repeated organization–contributor rows, signed amounts, zeroes and
-blanks. It groups contributors using the workbook's category and identifier.
+blanks. Identified contributor rows are retained even when all three dollar
+fields are blank. It groups contributors using the workbook's category and identifier.
 When a name is absent, the export uses a name reported for the same identifier
 elsewhere in the workbook, or labels the row with its source identifier. Display
 labels use the portal's existing entity and contributor mappings.
@@ -84,10 +85,12 @@ Run `uv run python/25-export_ceb_assessments.py` followed by
 `uv run python/99-generate_manifest.py`. The annual files record the workbook
 URL and SHA-256. The exporter accepts `--workbook PATH` for a local copy.
 
-The treemap and trends show assessed amounts with blank current-year receipts
-in grey. The grey amount is capped at the assessment less the reported
-current-year receipts for each contributor, organization and year. A blank
-assessment cannot be sized. The treemap can include positive reported
+The treemap, sidebar and trend exclude rows with blank assessment amounts,
+including any receipts reported on those rows. The selected year shows which
+organizations have excluded data. For rows with reported assessments, grey
+shows assessed amounts with blank current-year receipts. This amount is
+capped at the assessment less the reported current-year receipts for each
+contributor, organization and year. The treemap can include positive reported
 prior-year receipts as a separate fill. Tiles can expand to fit that fill
 while the blue outline marks the reported current-year assessment.
 The trend shows prior-year receipts in the year they were received,

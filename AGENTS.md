@@ -84,4 +84,5 @@ GitHub Actions (`.github/workflows/nextjs.yml`) builds the static export and dep
 - PascalCase for component filenames; kebab/snake_case for other files. Name similar components so they sort together.
 - Strict TypeScript, no `any`. Add shadcn components via `npx shadcn@latest add <component>`.
 - Design: left-align, minimal, clear hierarchy, UN color palette (especially `un-blue`).
+- In public interface copy, name the data or its source. Never use “workbook,” including in link labels, methodology text, and status messages.
 - Avoid parallel infrastructure — prefer the existing global mappings in `src/lib/` and `python/utils.py`.

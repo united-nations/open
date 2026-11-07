@@ -51,16 +51,16 @@ export default function AboutPage() {
             >
               <div className="space-y-3">
                 <p>
-                  The <PageSourceLink source="cebAssessments" /> reports
+                  The <PageSourceLink source="cebAssessments" /> report
                   assessments and receipts in nominal US dollars for the
-                  organizations and contributors covered by the workbook. The
-                  portal sums the workbook’s reported amounts and keeps these
+                  organizations and contributors covered. The portal keeps these
                   figures separate from assessed revenue in CEB Financial
-                  Statistics. A partial total sums the available amounts where
-                  the workbook has blanks. For 2022 and 2023, the workbook
-                  leaves current-year receipts blank for every UN Secretariat
-                  row. The Committee on Contributions publishes regular-budget
-                  payment dates in its{" "}
+                  Statistics. The charts and totals exclude rows with blank
+                  assessment amounts, including any payments on those rows. A
+                  partial payment total sums the available payments for the
+                  included rows. Current-year payment amounts are missing for
+                  the UN Secretariat in 2022 and 2023. The Committee on
+                  Contributions publishes regular-budget payment dates in its{" "}
                   <a
                     href="https://www.un.org/en/ga/contributions/previous_honourrolls.shtml"
                     className="underline underline-offset-2"
@@ -73,8 +73,8 @@ export default function AboutPage() {
                   The reported trend shows receipts in the year CEB records
                   them, with payments toward that year and earlier years shown
                   separately. Grey shows assessed amounts with blank
-                  current-year receipts. The workbook groups earlier-year
-                  receipts together by year received.
+                  current-year receipts. CEB groups earlier-year receipts
+                  together by year received.
                 </p>
               </div>
             </ExpandableCard>
