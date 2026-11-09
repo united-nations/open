@@ -32,7 +32,7 @@ The same branch supports three build profiles, configured centrally in
   regular-budget assessments; UNINFO is disabled.
 - `full`: every feature flag enabled, including UNINFO, outstanding regular-budget
   assessments, additional trust funds, Field Missions, sorting controls, entity
-  impacts, and the function/geography plot.
+  impacts. The function/geography plot is available in every profile.
 
 Set `SITE_VARIANT` to select a profile. An unset variable defaults to `public`;
 an invalid value fails the build. Selection happens at build time, so changing

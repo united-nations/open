@@ -60,7 +60,7 @@ for (const route of ["locations", "goals"]) {
 const locations = fs.readFileSync("out/system/locations/index.html", "utf8");
 assert.equal(
   locations.includes('id="function-geography"'),
-  FEATURES.functionGeography,
+  true,
   `${variant}: function/geography plot`,
 );
 assert.equal(

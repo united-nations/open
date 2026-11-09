@@ -1,6 +1,5 @@
 import { SystemPageSources } from "@/components/PageSources";
 import { FunctionGeographyChart } from "@/components/FunctionGeographyChart";
-import { FEATURES } from "@/lib/featureFlags";
 import type { Metadata } from "next";
 import { CountryMap } from "@/components/CountryMap";
 import { CebMethodologyLink } from "@/components/Methodology";
@@ -24,7 +23,7 @@ export default function SystemLocationsPage() {
       />
       <PageBody>
         <CountryMap />
-        {FEATURES.functionGeography && <FunctionGeographyChart />}
+        <FunctionGeographyChart />
       </PageBody>
       <CebMethodologyLink />
     </>

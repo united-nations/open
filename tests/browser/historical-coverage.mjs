@@ -119,7 +119,7 @@ try {
     await page.getByRole("dialog").innerText(),
     /Data could not be loaded/,
   );
-  if (profiles[process.env.SITE_VARIANT ?? "public"].functionGeography) {
+  {
     await page.goto(portalUrl + "/system/locations/", {
       waitUntil: "networkidle",
     });

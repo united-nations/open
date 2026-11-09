@@ -8,8 +8,7 @@
     "fieldMissions": false,
     "uninfo": false,
     "uninfoSortControls": false,
-    "entityImpacts": false,
-    "functionGeography": false
+    "entityImpacts": false
   },
   "preview": {
     "programmeBudget": true,
@@ -20,8 +19,7 @@
     "fieldMissions": false,
     "uninfo": false,
     "uninfoSortControls": false,
-    "entityImpacts": false,
-    "functionGeography": true
+    "entityImpacts": false
   },
   "full": {
     "programmeBudget": true,
@@ -32,8 +30,7 @@
     "fieldMissions": true,
     "uninfo": true,
     "uninfoSortControls": true,
-    "entityImpacts": true,
-    "functionGeography": true
+    "entityImpacts": true
   },
   "routes": {
     "/secretariat/programme-budget": "programmeBudget",
