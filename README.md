@@ -28,7 +28,8 @@ The same branch supports three build profiles, configured centrally in
 `config/features.json`:
 
 - `public`: the production profile for open.un.org (GitHub Pages).
-- `preview`: selected future features for the Vercel preview; UNINFO is disabled.
+- `preview`: selected future features for the Vercel preview, including outstanding
+  regular-budget assessments; UNINFO is disabled.
 - `full`: every feature flag enabled, including UNINFO, outstanding regular-budget
   assessments, additional trust funds, Field Missions, sorting controls, entity
   impacts, the budget sidebar mini treemap, and the function/geography plot.

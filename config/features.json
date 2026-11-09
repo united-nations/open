@@ -14,7 +14,7 @@
   },
   "preview": {
     "programmeBudget": true,
-    "regularBudgetOutstanding": false,
+    "regularBudgetOutstanding": true,
     "peacekeepingBudget": true,
     "trustFunds": true,
     "additionalTrustFunds": false,
