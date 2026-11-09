@@ -37,7 +37,9 @@ try {
     ...(flags.trustFunds
       ? ["/secretariat/trust-funds/", "/secretariat/trust-funds/contributors/"]
       : []),
-    ...(flags.fieldMissions ? ["/secretariat/field-missions/"] : []),
+    ...(flags.peaceOperations
+      ? ["/secretariat/peacekeeping-budget/peace-operations/"]
+      : []),
   ];
   for (const route of routes) {
     await page.goto(portalUrl + route, { waitUntil: "networkidle" });
@@ -87,7 +89,7 @@ try {
     }
     if (
       route === "/secretariat/peacekeeping-budget/" ||
-      route === "/secretariat/field-missions/"
+      route === "/secretariat/peacekeeping-budget/peace-operations/"
     ) {
       const notes = page.locator("[data-map-notes]");
       await notes.waitFor();
@@ -97,7 +99,7 @@ try {
         true,
       );
       assert.match(await notes.innerText(), /legal status/);
-      if (route.includes("peacekeeping-budget"))
+      if (route === "/secretariat/peacekeeping-budget/")
         assert.doesNotMatch(
           await notes.innerText(),
           /envoy|Syria|Yemen|Geneva|Amman|Nairobi/,

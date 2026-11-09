@@ -17,7 +17,7 @@ export const SHOW_TRUST_FUNDS = FEATURES.trustFunds;
 export const SHOW_REGULAR_BUDGET_OUTSTANDING =
   FEATURES.regularBudgetOutstanding;
 export const SHOW_ADDITIONAL_TRUST_FUNDS = FEATURES.additionalTrustFunds;
-export const SHOW_FIELD_MISSIONS = FEATURES.fieldMissions;
+export const SHOW_PEACE_OPERATIONS = FEATURES.peaceOperations;
 export const SHOW_UNINFO = FEATURES.uninfo;
 export const SHOW_UNINFO_SORT_CONTROLS =
   FEATURES.uninfo && FEATURES.uninfoSortControls;

@@ -95,9 +95,9 @@ try {
       );
       assert.equal(
         await page
-          .getByRole("heading", { name: "Field Missions", exact: true })
+          .getByRole("heading", { name: "Peace Operations", exact: true })
           .count(),
-        flags.fieldMissions ? 1 : 0,
+        flags.peaceOperations ? 1 : 0,
       );
       assert.equal(
         await page.locator("#uninfo-methodology").count(),

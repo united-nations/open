@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { usePathname, useRouter } from "next/navigation";
+import type { SectionNavItem } from "@/lib/navigation";
 import { SectionSubnav } from "@/components/SectionSubnav";
 
 export function BudgetSubviewNavigation({
@@ -9,11 +10,13 @@ export function BudgetSubviewNavigation({
   label,
   contributorHash,
   mainLabel = "Budget",
+  additionalItems = [],
 }: {
   basePath: string;
   label: string;
   contributorHash: string;
   mainLabel?: string;
+  additionalItems?: readonly SectionNavItem[];
 }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -39,6 +42,7 @@ export function BudgetSubviewNavigation({
       items={[
         { href: basePath, label: mainLabel },
         { href: `${basePath}/contributors`, label: "Contributors" },
+        ...additionalItems,
       ]}
     />
   );

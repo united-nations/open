@@ -5,7 +5,7 @@
     "peacekeepingBudget": false,
     "trustFunds": false,
     "additionalTrustFunds": false,
-    "fieldMissions": false,
+    "peaceOperations": false,
     "uninfo": false,
     "uninfoSortControls": false,
     "entityImpacts": false
@@ -16,7 +16,7 @@
     "peacekeepingBudget": true,
     "trustFunds": true,
     "additionalTrustFunds": false,
-    "fieldMissions": false,
+    "peaceOperations": false,
     "uninfo": false,
     "uninfoSortControls": false,
     "entityImpacts": false
@@ -27,7 +27,7 @@
     "peacekeepingBudget": true,
     "trustFunds": true,
     "additionalTrustFunds": true,
-    "fieldMissions": true,
+    "peaceOperations": true,
     "uninfo": true,
     "uninfoSortControls": true,
     "entityImpacts": true
@@ -36,6 +36,6 @@
     "/secretariat/programme-budget": "programmeBudget",
     "/secretariat/peacekeeping-budget": "peacekeepingBudget",
     "/secretariat/trust-funds": "trustFunds",
-    "/secretariat/field-missions": "fieldMissions"
+    "/secretariat/peacekeeping-budget/peace-operations": "peaceOperations"
   }
 }

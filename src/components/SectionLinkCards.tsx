@@ -12,7 +12,8 @@ export const LINK_DESCRIPTIONS: Record<string, string> = {
     "Detailed breakdown of the regular budget and its contributors.",
   "/secretariat/peacekeeping-budget":
     "Detailed breakdown of the peacekeeping budget.",
-  "/secretariat/field-missions": "How do field missions use their resources?",
+  "/secretariat/peacekeeping-budget/peace-operations":
+    "Peacekeeping operations and special political missions, across their separate budgets.",
   "/secretariat/trust-funds": "Trust-fund expenditure and contributions.",
 };
 

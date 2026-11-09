@@ -7,12 +7,12 @@ import { ChartFooter } from "@/components/ChartFooter";
 import { FieldMissionsMap } from "@/components/FieldMissionsMap";
 
 export const metadata: Metadata = {
-  title: "UN Secretariat Field Missions",
+  title: "UN Secretariat Peace Operations",
   description:
-    "Explore the geographic footprint of special political missions and peacekeeping missions.",
+    "Explore peacekeeping operations (PKO) and special political missions (SPM), with their separate peacekeeping and programme budget funding.",
 };
 
-export default function FieldMissionsPage() {
+export default function PeaceOperationsPage() {
   return (
     <>
       <PageHeading
@@ -22,15 +22,15 @@ export default function FieldMissionsPage() {
             <PageSourceLink source="annualReport" />.
           </>
         }
-        id="field-missions"
-        title="How do field missions use their resources?"
-        description="Explore the geographic footprint of special political missions and peacekeeping missions, together with the resources assigned to them."
+        id="peace-operations"
+        title="How do peace operations use their resources?"
+        description="Peace operations combine peacekeeping operations (PKO) and special political missions (SPM). PKO use the peacekeeping budget; SPM are funded through the programme budget (PPB), outside the peacekeeping budget. Explore their geographic footprint and expenditure together."
       />
       <PageBody>
         <FieldMissionsMap />
         <ChartFooter hint="Click on a mission to explore details" />
       </PageBody>
-      <SecretariatMethodologyLink page="field-missions" />
+      <SecretariatMethodologyLink page="peace-operations" />
     </>
   );
 }

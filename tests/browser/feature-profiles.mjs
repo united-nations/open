@@ -30,10 +30,15 @@ try {
     programmeBudget: "/secretariat/programme-budget/",
     peacekeepingBudget: "/secretariat/peacekeeping-budget/",
     trustFunds: "/secretariat/trust-funds/",
-    fieldMissions: "/secretariat/field-missions/",
+    peaceOperations: "/secretariat/peacekeeping-budget/peace-operations/",
   };
   await page.goto(portalUrl, { waitUntil: "networkidle" });
   for (const [feature, route] of Object.entries(routes)) {
+    if (feature === "peaceOperations" && flags.peacekeepingBudget) {
+      await page.goto(portalUrl + routes.peacekeepingBudget, {
+        waitUntil: "networkidle",
+      });
+    }
     assert.equal(
       (await page.locator(`a[href$="${route}"]`).count()) > 0,
       flags[feature],
@@ -43,7 +48,7 @@ try {
       waitUntil: "networkidle",
     });
     assert.equal(response.status(), flags[feature] ? 200 : 404, route);
-    if (feature !== "fieldMissions") {
+    if (feature !== "peaceOperations") {
       const child = await page.goto(portalUrl + route + "contributors/", {
         waitUntil: "networkidle",
       });
@@ -54,6 +59,38 @@ try {
       );
     }
     await page.goto(portalUrl, { waitUntil: "networkidle" });
+  }
+  if (flags.peaceOperations) {
+    await page.goto(portalUrl + routes.peaceOperations, {
+      waitUntil: "networkidle",
+    });
+    const sectionNav = page.getByRole("navigation", {
+      name: "UN Secretariat financials",
+    });
+    assert.equal(
+      await sectionNav
+        .getByRole("link", { name: "Peace Operations", exact: true })
+        .count(),
+      0,
+    );
+    assert.equal(
+      await sectionNav
+        .getByRole("link", { name: "Peacekeeping Budget", exact: true })
+        .getAttribute("aria-current"),
+      "page",
+    );
+    const subnav = page.getByRole("navigation", {
+      name: "Peacekeeping Budget views",
+    });
+    assert.equal(
+      await subnav
+        .getByRole("link", { name: "Peace Operations", exact: true })
+        .getAttribute("aria-current"),
+      "page",
+    );
+    await page
+      .getByText(/SPM are funded through the programme budget/)
+      .waitFor();
   }
   await page.goto(portalUrl + "/secretariat/", { waitUntil: "networkidle" });
   const fundingFlows = page.locator("#secretariat-flows");

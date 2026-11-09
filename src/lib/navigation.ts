@@ -29,11 +29,10 @@ export const SECRETARIAT_NAV = [
   {
     href: "/secretariat/peacekeeping-budget",
     label: "Peacekeeping Budget",
-    aliases: ["/secretariat/peacekeeping-budget/contributors"],
-  },
-  {
-    href: "/secretariat/field-missions",
-    label: "Field Missions",
+    aliases: [
+      "/secretariat/peacekeeping-budget/contributors",
+      "/secretariat/peacekeeping-budget/peace-operations",
+    ],
   },
   {
     href: "/secretariat/trust-funds",

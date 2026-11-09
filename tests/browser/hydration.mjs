@@ -14,7 +14,7 @@ const routes = [
   "/secretariat/programme-budget/contributors/",
   "/secretariat/peacekeeping-budget/",
   "/secretariat/peacekeeping-budget/contributors/",
-  "/secretariat/field-missions/",
+  "/secretariat/peacekeeping-budget/peace-operations/",
   "/secretariat/trust-funds/",
   "/secretariat/trust-funds/contributors/",
 ];

@@ -31,7 +31,7 @@ The same branch supports three build profiles, configured centrally in
 - `preview`: selected future features for the Vercel preview, including outstanding
   regular-budget assessments; UNINFO is disabled.
 - `full`: every feature flag enabled, including UNINFO, outstanding regular-budget
-  assessments, additional trust funds, Field Missions, sorting controls, entity
+  assessments, additional trust funds, Peace Operations, sorting controls, entity
   impacts. The function/geography plot is available in every profile.
 
 Set `SITE_VARIANT` to select a profile. An unset variable defaults to `public`;
@@ -57,7 +57,11 @@ in Locations and Goals; it is enabled only in `full`. The `additionalTrustFunds`
 flag includes separately reported UNEP, UNODC, UN-Habitat and ITC data in Trust
 Funds. It is disabled in `public` and `preview`: those profiles use only the
 Secretariat Volume I schedules and mention the excluded entities in the intro.
-The parent `trustFunds` flag controls the whole route. Source JSON remains
+The parent `trustFunds` flag controls the whole route.
+The `peaceOperations` flag enables a Peace Operations subtab under Peacekeeping
+Budget only in `full`. It combines peacekeeping operations (PKO) with special
+political missions (SPM); SPM are programme-budget-funded, outside the peacekeeping
+budget. Source JSON remains
 available regardless of the selected profile.
 
 GitHub Actions builds and checks all three profiles, then uploads only the public

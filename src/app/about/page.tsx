@@ -11,7 +11,7 @@ import { ExpandableCard } from "@/components/ExpandableCard";
 import { PageBody } from "@/components/PageBody";
 import { PageSourceLink } from "@/components/PageSources";
 import { CEB_ASSESSMENTS_SECTION } from "@/lib/cebAssessments";
-import { SHOW_FIELD_MISSIONS, SHOW_UNINFO } from "@/lib/featureFlags";
+import { SHOW_PEACE_OPERATIONS, SHOW_UNINFO } from "@/lib/featureFlags";
 import { isRouteEnabled } from "@/lib/navigation";
 
 export const metadata: Metadata = {
@@ -143,7 +143,7 @@ export default function AboutPage() {
           <div className="space-y-2 text-sm leading-relaxed text-gray-600">
             <SecretariatMethodology />
             {SECRETARIAT_METHODOLOGY_PAGES.filter(
-              (page) => page.id !== "field-missions" || SHOW_FIELD_MISSIONS,
+              (page) => page.id !== "peace-operations" || SHOW_PEACE_OPERATIONS,
             ).map((page) => (
               <section
                 key={page.id}

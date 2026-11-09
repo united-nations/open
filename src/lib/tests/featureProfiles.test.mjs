@@ -28,9 +28,10 @@ test("frontend resolves each build profile and its route visibility", () => {
           `
       import { moduleAt } from './src/lib/tests/moduleAt.mjs';
       const { SITE_VARIANT, FEATURES } = await moduleAt('src/lib/featureFlags.ts');
-      const { isRouteEnabled } = await moduleAt('src/lib/navigation.ts');
+      const { isRouteEnabled, visibleSecretariatNav } = await moduleAt('src/lib/navigation.ts');
       console.log(JSON.stringify({ variant: SITE_VARIANT, flags: FEATURES,
-        fieldMissions: isRouteEnabled('/secretariat/field-missions/') }));
+        nav: visibleSecretariatNav(),
+        peaceOperations: isRouteEnabled('/secretariat/peacekeeping-budget/peace-operations/') }));
     `,
         ],
         {
@@ -41,6 +42,22 @@ test("frontend resolves each build profile and its route visibility", () => {
     );
     assert.equal(actual.variant, variant);
     assert.deepEqual(actual.flags, profiles[variant]);
-    assert.equal(actual.fieldMissions, profiles[variant].fieldMissions);
+    assert.equal(
+      actual.peaceOperations,
+      profiles[variant].peaceOperations && profiles[variant].peacekeepingBudget,
+    );
+    assert.equal(
+      actual.nav.some((item) => item.label === "Peace Operations"),
+      false,
+    );
+    const budget = actual.nav.find(
+      (item) => item.label === "Peacekeeping Budget",
+    );
+    if (budget)
+      assert.ok(
+        budget.aliases.includes(
+          "/secretariat/peacekeeping-budget/peace-operations",
+        ),
+      );
   }
 });

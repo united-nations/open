@@ -15,6 +15,16 @@ export default function BudgetLayout({
         basePath="/secretariat/peacekeeping-budget"
         label="Peacekeeping Budget views"
         contributorHash="peacekeeping-contributor"
+        additionalItems={
+          isRouteEnabled("/secretariat/peacekeeping-budget/peace-operations")
+            ? [
+                {
+                  href: "/secretariat/peacekeeping-budget/peace-operations",
+                  label: "Peace Operations",
+                },
+              ]
+            : []
+        }
       />
       {children}
     </>

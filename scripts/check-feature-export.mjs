@@ -1,10 +1,14 @@
+import profiles from "../config/features.json" with { type: "json" };
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import path from "node:path";
 import { moduleAt } from "../src/lib/tests/moduleAt.mjs";
 
 const variant = process.env.SITE_VARIANT ?? "public";
-assert.ok(["public", "preview", "full"].includes(variant), "Invalid SITE_VARIANT");
+assert.ok(
+  ["public", "preview", "full"].includes(variant),
+  "Invalid SITE_VARIANT",
+);
 process.env.NEXT_PUBLIC_SITE_VARIANT = variant;
 const { SECRETARIAT_NAV, isRouteEnabled, visibleSecretariatNav } =
   await moduleAt("src/lib/navigation.ts");
@@ -49,6 +53,22 @@ for (const item of SECRETARIAT_NAV) {
     );
   }
 }
+for (const prefix of Object.keys(profiles.routes)) {
+  for (const route of pages.filter(
+    (route) => route === prefix || route.startsWith(prefix + "/"),
+  )) {
+    assert.equal(
+      fs.existsSync(path.join("out", route, "index.html")),
+      isRouteEnabled(route),
+      `${variant}: exported route ${route}`,
+    );
+  }
+}
+assert.equal(
+  fs.existsSync("out/secretariat/field-missions/index.html"),
+  false,
+  "Former Field Missions route is removed",
+);
 for (const route of ["locations", "goals"]) {
   const html = fs.readFileSync(`out/system/${route}/index.html`, "utf8");
   assert.equal(

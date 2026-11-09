@@ -238,9 +238,9 @@ export const SECRETARIAT_METHODOLOGY_PAGES = [
       : "UN Secretariat trust-fund schedules",
   },
   {
-    id: "field-missions",
-    href: "/secretariat/field-missions",
-    title: "Field Missions",
+    id: "peace-operations",
+    href: "/secretariat/peacekeeping-budget/peace-operations",
+    title: "Peace Operations",
     source: "UN Secretariat field-mission data",
   },
 ] as const;
@@ -268,7 +268,7 @@ export function SecretariatPageMethodologyContent({
       {page === "trust-fund-contributors" && (
         <TrustFundContributorsMethodologyNotes />
       )}
-      {page === "field-missions" && <FieldMissionsMethodologyNotes />}
+      {page === "peace-operations" && <PeaceOperationsMethodologyNotes />}
     </div>
   );
 }
@@ -663,14 +663,18 @@ function TrustFundContributorsMethodologyNotes() {
   );
 }
 
-function FieldMissionsMethodologyNotes() {
+function PeaceOperationsMethodologyNotes() {
   return (
     <p>
-      The map uses the annual-report compilation described in the Overview,
-      showing political and peacekeeping missions with approximate geographic
-      positions. Mission grouping follows the portal’s field-placement
-      convention, including residual spending for historical missions. Non-field
-      sanctions panels and envoys are grouped with Secretariat entities.
+      Peace operations combine peacekeeping operations (PKO), funded through the
+      peacekeeping budget, and special political missions (SPM), funded through
+      the programme budget (PPB). SPM expenditure is not part of the
+      peacekeeping budget. The map uses the annual-report compilation described
+      in the Overview, showing political and peacekeeping missions with
+      approximate geographic positions. Mission grouping follows the portal’s
+      field-placement convention, including residual spending for historical
+      missions. Non-field sanctions panels and envoys are grouped with
+      Secretariat entities.
     </p>
   );
 }
