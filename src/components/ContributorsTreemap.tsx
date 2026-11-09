@@ -4,10 +4,7 @@ import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
-import {
-  CEB_ASSESSMENTS_HASH,
-  CEB_ASSESSMENTS_SECTION,
-} from "@/lib/cebAssessments";
+import { CEB_ASSESSMENTS_HASH } from "@/lib/cebAssessments";
 import { FinancingInstrumentLabel } from "@/components/FinancingInstrumentLabel";
 
 import {
@@ -167,12 +164,10 @@ export function ContributorsTreemap() {
   const [loadedYear, setLoadedYear] = useState<number | null>(null);
   const [pendingDeepLink, setPendingDeepLink] = useDeepLink({
     hashPrefix: "donor",
-    sectionId: "donors",
     onNavigateAway: () => setSelectedContributor(null),
   });
   const [assessmentLink, setAssessmentLink] = useDeepLink({
     hashPrefix: CEB_ASSESSMENTS_HASH,
-    sectionId: CEB_ASSESSMENTS_SECTION,
   });
   const [assessmentId, assessmentYear] = assessmentLink?.split("@") ?? [];
   const assessmentYears = yearRanges.cebAssessments;

@@ -377,7 +377,6 @@ export function PeacekeepingBudgetView() {
 
   const [pending, setPending] = useDeepLink({
     hashPrefix: "pko-mission",
-    sectionId: "peacekeeping-spending",
     onNavigateAway: () => setSelectedCode(null),
   });
 

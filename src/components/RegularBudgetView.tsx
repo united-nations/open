@@ -159,7 +159,6 @@ export function RegularBudgetView() {
         }
         dataset={DATASETS[metric]}
         hashPrefix="regular-budget"
-        sectionId="regular-budget-spending"
         activeFundingSources={active}
         metric={metric}
         selectedYear={year}

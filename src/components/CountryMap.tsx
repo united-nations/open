@@ -91,7 +91,6 @@ export function CountryMap() {
   );
   const [pendingDeepLink, setPendingDeepLink] = useDeepLink({
     hashPrefix: "country",
-    sectionId: "countries",
     onNavigateAway: () => setSelectedCountry(null),
   });
 

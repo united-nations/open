@@ -49,7 +49,6 @@ export default function TrustFundsPage() {
         <BudgetTreemap
           dataset="budget-trust-funds"
           hashPrefix="trust-fund"
-          sectionId="trust-fund-spending"
           activeFundingSources={["extrabudgetary"]}
           trustFundLevel="fund"
         />

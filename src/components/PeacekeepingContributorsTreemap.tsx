@@ -92,7 +92,6 @@ export function PeacekeepingContributorsTreemap() {
   const [selectedName, setSelectedName] = useState<string | null>(null);
   const [pending, setPending] = useDeepLink({
     hashPrefix: "peacekeeping-contributor",
-    sectionId: "peacekeeping-contributors",
     onNavigateAway: () => setSelectedName(null),
   });
 

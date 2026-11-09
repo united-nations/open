@@ -5,8 +5,6 @@ import { useCallback, useEffect, useRef, useState } from "react";
 interface UseDeepLinkOptions<T> {
   /** The hash prefix to match (e.g., "donor", "entity", "country", "sdg") */
   hashPrefix: string;
-  /** The section ID to scroll to */
-  sectionId: string;
   /** Transform the hash value (default: identity function) */
   transform?: (value: string) => T;
   /** Callback when hash changes to a different type (for closing sidebars) */
@@ -43,14 +41,13 @@ export function clearSidebarHash() {
 
 /**
  * Hook for handling deep links with hash-based routing.
- * Parses URL hash, sets pending value, and scrolls to section.
+ * Parses URL hash and sets the pending value without scrolling the page.
  * Listens for hashchange and popstate events to handle runtime navigation.
  *
  * @returns The pending deep link value (or null if none)
  */
 export function useDeepLink<T = string>({
   hashPrefix,
-  sectionId,
   transform,
   onNavigateAway,
 }: UseDeepLinkOptions<T>): [T | null, (value: T | null) => void] {
@@ -74,19 +71,13 @@ export function useDeepLink<T = string>({
         : (rawValue as unknown as T);
       if (value !== null && value !== undefined && !Number.isNaN(value)) {
         setPendingDeepLink(value);
-        // Delay scroll to allow any closing sidebars to restore overflow first
-        setTimeout(() => {
-          document
-            .getElementById(sectionId)
-            ?.scrollIntoView({ behavior: "smooth" });
-        }, 350);
       }
     } else {
       setPendingDeepLink(null);
       // Hash changed to different type - close this component's sidebar
       onNavigateAwayRef.current?.();
     }
-  }, [hashPrefix, sectionId, transform]);
+  }, [hashPrefix, transform]);
 
   // Process hash on mount
   useEffect(() => {

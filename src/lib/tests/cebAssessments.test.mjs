@@ -4,6 +4,8 @@ import { moduleAt } from "./moduleAt.mjs";
 
 const {
   assessmentExclusionNotes,
+  assessmentOrganizationGroups,
+  assessmentTotals,
   rowsWithAssessments,
   sumAssessments,
   systemAssessmentTrendPoint,
@@ -77,5 +79,51 @@ test("system trends sum reported receipts without offsetting one contributor's u
     notes: [
       "B has no reported assessment amount in 2030. Its data is excluded.",
     ],
+  });
+});
+
+test("organization grouping preserves contributor identities, exclusions and unknown payments", () => {
+  const contributors = [
+    {
+      id: "One",
+      name: "Member",
+      aliases: [],
+      rows: [
+        ["A", 100, null, 10],
+        ["B", null, 300, 400],
+      ],
+    },
+    {
+      id: "Two",
+      name: "Member",
+      aliases: [],
+      rows: [
+        ["A", 100, 250, 20],
+        ["B", 50, 20, 0],
+      ],
+    },
+  ];
+  const groups = assessmentOrganizationGroups(contributors);
+  assert.deepEqual(
+    groups.map(({ name }) => name),
+    ["A", "B"],
+  );
+  assert.deepEqual(
+    groups[0].contributors.map(({ id }) => id),
+    ["One", "Two"],
+  );
+  assert.deepEqual(assessmentTotals(groups[0].contributors), {
+    assessed: { value: 200, partial: false },
+    current: { value: 250, partial: true },
+    prior: { value: 30, partial: false },
+    unknownCurrent: 100,
+    paidWithinAssessment: 100,
+  });
+  assert.deepEqual(assessmentTotals(groups[1].contributors), {
+    assessed: { value: 50, partial: false },
+    current: { value: 20, partial: false },
+    prior: { value: 0, partial: false },
+    unknownCurrent: 0,
+    paidWithinAssessment: 20,
   });
 });

@@ -32,7 +32,6 @@ export function FunctionsChart() {
   const [year, setYear] = useState<number | null>(null);
   const [pending, setSelected] = useDeepLink({
     hashPrefix: "function",
-    sectionId: "functions",
     onNavigateAway: (): void => setSelected(null),
   });
   const selected =

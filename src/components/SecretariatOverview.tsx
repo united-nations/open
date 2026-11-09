@@ -86,7 +86,6 @@ export function SecretariatOverview() {
   const [selectedCode, setSelectedCode] = useState<string | null>(null);
   const [pending, setPending] = useDeepLink({
     hashPrefix: "secretariat-entity",
-    sectionId: "priorities",
     onNavigateAway: () => setSelectedCode(null),
   });
 

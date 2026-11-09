@@ -227,7 +227,6 @@ export default function SDGsGrid({
 
   const [pendingDeepLink, setPendingDeepLink] = useDeepLink<number | null>({
     hashPrefix: "sdg",
-    sectionId: "sdgs",
     transform: parseSDGNumber,
     onNavigateAway: () => setSelectedSDG(null),
   });

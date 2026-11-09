@@ -726,8 +726,6 @@ interface BudgetTreemapProps {
     | "budget-trust-funds";
   /** Hash prefix for deep links, e.g. "secretariat" or "pko". */
   hashPrefix: string;
-  /** Section to scroll to when a deep link opens. */
-  sectionId: string;
   /** Funding sources included in the boxes, chart and sidebar. */
   activeFundingSources: BudgetFundingSource[];
   /** PPB value lens; other budget streams continue to use expenditure. */
@@ -754,7 +752,6 @@ interface BudgetTreemapProps {
 export function BudgetTreemap({
   dataset,
   hashPrefix,
-  sectionId,
   activeFundingSources,
   metric: requestedMetric = "expenditure",
   selectedYear,
@@ -833,7 +830,6 @@ export function BudgetTreemap({
 
   const [pendingDeepLink, setPendingDeepLink] = useDeepLink({
     hashPrefix,
-    sectionId,
     onNavigateAway: () => setSelectedId(null),
   });
 

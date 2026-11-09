@@ -136,7 +136,6 @@ export function EntitiesTreemap() {
   );
   const [pendingDeepLink, setPendingDeepLink] = useDeepLink({
     hashPrefix: "entity",
-    sectionId: "entities",
     onNavigateAway: () => setSelectedEntity(null),
   });
 
@@ -301,8 +300,9 @@ export function EntitiesTreemap() {
     )
       return;
     const timer = window.setTimeout(() => {
+      const [requestedEntity, linkedYear] = pendingDeepLink.split("@");
       const requestedYear = Number(
-        new URLSearchParams(window.location.search).get("year"),
+        linkedYear ?? new URLSearchParams(window.location.search).get("year"),
       );
       if (yearRanges.entitySpending.years.includes(requestedYear)) {
         if (currentYear !== requestedYear) {
@@ -315,13 +315,13 @@ export function EntitiesTreemap() {
       // Keep CEB's explicit non-reporting disclosures reachable as well.
       const nonReporting: Record<string, string[]> = cebSource.nonReporting;
       const hasFinancialRecord =
-        Object.hasOwn(budgetData, pendingDeepLink) ||
-        nonReporting[currentYear]?.includes(pendingDeepLink);
+        Object.hasOwn(budgetData, requestedEntity) ||
+        nonReporting[currentYear]?.includes(requestedEntity);
       const entity = hasFinancialRecord
         ? normalizeEntityForDisplay(
             entities.find(
-              (candidate) => candidate.entity === pendingDeepLink,
-            ) ?? createUncategorizedEntity(pendingDeepLink),
+              (candidate) => candidate.entity === requestedEntity,
+            ) ?? createUncategorizedEntity(requestedEntity),
           )
         : null;
       setSelectedEntity(entity);
@@ -558,6 +558,7 @@ export function EntitiesTreemap() {
 
       {selectedEntity && dataReady && dataAvailable && !loadError && (
         <EntitySidebar
+          key={`${selectedEntity.entity}@${currentYear}`}
           entity={selectedEntity}
           spending={
             loadedSpendingYear === currentYear

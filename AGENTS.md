@@ -72,7 +72,7 @@ Current CEB processing is defined by [data/ceb-methodology.json](data/ceb-method
 
 ### Deep linking (hash-based)
 
-Sidebar navigation is driven by the URL hash on the matching route (`/system/contributors/#donor=…`, `/system/organizations/#entity=…`, `/system/locations/#country=…`, `/system/goals/#sdg=…`), not by in-page section jumps across tabs. Use the helpers in [src/hooks/useDeepLink.ts](src/hooks/useDeepLink.ts): `navigateToSidebar` (pushes history), `replaceToSidebar` (no history entry), `clearSidebarHash`. The `useDeepLink` hook parses the hash, scrolls to the section, and listens for `hashchange`/`popstate`.
+Sidebar navigation is driven by the URL hash on the matching route (`/system/contributors/#donor=…`, `/system/organizations/#entity=…`, `/system/locations/#country=…`, `/system/goals/#sdg=…`), not by in-page section jumps across tabs. Use the helpers in [src/hooks/useDeepLink.ts](src/hooks/useDeepLink.ts): `navigateToSidebar` (pushes history), `replaceToSidebar` (no history entry), `clearSidebarHash`. The `useDeepLink` hook parses the hash and listens for `hashchange`/`popstate`. Opening a sidebar must preserve the page's scroll position; do not scroll to a chart or anchor.
 
 ## Deployment
 

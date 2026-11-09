@@ -71,7 +71,7 @@ implementation inventory.
 
 ## Assessments and receipts workbook
 
-The System contributors page includes the separately sourced
+The System contributors and organizations pages include the separately sourced
 [CEB assessments and receipts workbook](https://unsceb.org/assessments-voted-assessments-received-current-year-and-prior-years-assessments-received/).
 The exporter reads the Data sheet and preserves all financial observations,
 including repeated organization–contributor rows, signed amounts, zeroes and
@@ -96,3 +96,12 @@ while the blue outline marks the reported current-year assessment.
 The trend shows prior-year receipts in the year they were received,
 including signed adjustments. The workbook groups all earlier assessment
 years together.
+
+Both pages use the same observations: the organizations view groups the
+contributor observations by recipient organization. Organization sidebars show
+the contributor breakdown, and contributor sidebars show the organization
+breakdown. Unknown current-year payments and the capped current-year tile fill
+are calculated within each contributor–organization pair before aggregation, so
+one member's overpayment cannot offset another member's unknown payment status.
+Organization totals and trends are not calculated by reconciling these
+assessments against the separate CEB revenue series.

@@ -60,6 +60,17 @@ export function CebAssessmentTrendsChart({
       unknownCurrent: assessed.value === null ? null : unknownCurrent,
     }),
   );
+  const unknownGaps = data.flatMap((point, index) =>
+    point.current.value === null && point.unknownCurrent > 0
+      ? [
+          {
+            year: point.year,
+            start: data[index - 1]?.year ?? point.year,
+            end: data[index + 1]?.year ?? point.year,
+          },
+        ]
+      : [],
+  );
   return (
     <div className="space-y-2">
       <div className="flex flex-wrap gap-x-3 gap-y-1">
@@ -127,6 +138,27 @@ export function CebAssessmentTrendsChart({
               );
             }}
           />
+          {/* Green stops at missing observations. Extend grey to the baseline
+              across those gaps instead of tapering the paid fill toward zero. */}
+          {unknownGaps.map(({ year, start, end }) => (
+            <Area
+              key={year}
+              dataKey={(point: (typeof plot)[number]) =>
+                point.year >= start && point.year <= end
+                  ? Math.max(0, point.current ?? 0)
+                  : null
+              }
+              name={unknownLabel}
+              stroke="none"
+              fill={colors.unknown}
+              fillOpacity={0.5}
+              dot={false}
+              activeDot={false}
+              tooltipType="none"
+              connectNulls={false}
+              isAnimationActive={false}
+            />
+          ))}
           <Area
             dataKey="current"
             name={currentLabel}

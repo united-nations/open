@@ -7,7 +7,6 @@ import {
   FinancialPanelBar,
   FinancialPanelHeading,
   FinancialPanelRankedRow,
-  FinancialPanelTotalRow,
 } from "@un-eosg/ui/components/financial-panel-parts";
 import {
   Tooltip,
@@ -18,13 +17,15 @@ import { CebAssessmentTrendsChart } from "@/components/CebAssessmentTrendsChart"
 import { useYearResource } from "@/hooks/useYearResource";
 import {
   assessmentEntities,
+  assessmentContributorsForEntity,
+  assessmentTotals,
   assessmentExclusionNotes,
   CEB_ASSESSMENT_COLORS,
   formatAssessmentAmount,
   loadCebAssessments,
   rowsWithAssessments,
   sumAssessments,
-  unknownCurrentAssessments,
+  systemAssessmentTrendPoint,
 } from "@/lib/cebAssessments";
 import { formatBudget } from "@/lib/contributors";
 import { useYearRanges } from "@/lib/useYearRanges";
@@ -34,6 +35,7 @@ const colors = CEB_ASSESSMENT_COLORS;
 export function useCebAssessmentHistory(
   id: string | undefined,
   name: string | undefined,
+  entity?: string,
 ) {
   const { years } = useYearRanges().cebAssessments;
   const load = useCallback(async () => {
@@ -45,33 +47,64 @@ export function useCebAssessmentHistory(
           : contributor.name === name ||
             contributor.aliases.some((alias) => alias === name),
       );
+      const contributors = entity
+        ? assessmentContributorsForEntity(data.contributors, entity)
+        : contributor
+          ? [contributor]
+          : [];
       return {
         year: data.year,
-        name: contributor?.name,
+        name: entity ?? contributor?.name,
         aliases: contributor?.aliases,
-        rows: contributor?.rows ?? [],
+        contributors,
+        rows: contributors.flatMap(({ rows }) => rows),
       };
     });
-  }, [id, name, years]);
-  return useYearResource(id ?? name ?? "", null, !id && !name, load, null);
+  }, [id, name, entity, years]);
+  return useYearResource(
+    entity ?? id ?? name ?? "",
+    null,
+    !id && !name && !entity,
+    load,
+    null,
+  );
 }
 
 export function CebAssessmentSidebarContent({
   resource: { value: history, loading, error },
   year,
+  breakdown = "organizations",
 }: {
   resource: ReturnType<typeof useCebAssessmentHistory>;
   year: number;
+  breakdown?: "organizations" | "contributors";
 }) {
   const [showAllEntities, setShowAllEntities] = useState(false);
   const selected = history?.find((point) => point.year === year);
   const selectedRows = rowsWithAssessments(selected?.rows ?? []);
-  const exclusions = selected?.name
-    ? assessmentExclusionNotes(year, [
-        { name: selected.name, rows: selected.rows },
-      ])
-    : [];
-  const entities = assessmentEntities(selectedRows)
+  const exclusions = assessmentExclusionNotes(
+    year,
+    selected?.contributors ?? [],
+  );
+  const byContributor = breakdown === "contributors";
+  const groups = byContributor
+    ? (selected?.contributors ?? []).flatMap((contributor) => {
+        const totals = assessmentTotals([contributor]);
+        return totals.assessed.value === null
+          ? []
+          : [
+              {
+                entity: contributor.name,
+                key: contributor.id,
+                ...totals,
+              },
+            ];
+      })
+    : assessmentEntities(selectedRows).map((entry) => ({
+        ...entry,
+        key: entry.entity,
+      }));
+  const entities = groups
     .map((entity) => {
       const currentFill = Math.max(0, entity.current.value ?? 0);
       const priorFill = Math.max(0, entity.prior.value ?? 0);
@@ -90,14 +123,7 @@ export function CebAssessmentSidebarContent({
     ),
   );
   const visibleEntities = showAllEntities ? entities : entities.slice(0, 10);
-  const reported = (history ?? []).map((point) => {
-    const rows = rowsWithAssessments(point.rows);
-    return {
-      year: point.year,
-      ...sumAssessments(rows),
-      unknownCurrent: unknownCurrentAssessments(rows),
-    };
-  });
+  const reported = (history ?? []).map(systemAssessmentTrendPoint);
   const totals = sumAssessments(selectedRows);
   const unknown = entities.reduce(
     (sum, entity) => sum + entity.unknownCurrent,
@@ -112,26 +138,40 @@ export function CebAssessmentSidebarContent({
     >
       <FinancialPanelHeading>Assessments and payments</FinancialPanelHeading>
       {totals.assessed.value !== null && (
-        <div className="space-y-2">
-          <FinancialPanelTotalRow
-            label="Assessments"
-            value={formatAssessmentAmount(totals.assessed)}
-          />
-          <FinancialPanelTotalRow
-            label={`Paid toward ${year}`}
-            value={formatAssessmentAmount(totals.current)}
-          />
-          {unknown > 0 && (
-            <FinancialPanelTotalRow
-              label="Payment status unknown"
-              value={formatBudget(unknown)}
-            />
-          )}
-          <FinancialPanelTotalRow
-            label="Paid toward earlier years"
-            value={formatAssessmentAmount(totals.prior)}
-          />
-        </div>
+        <dl className="space-y-2 text-sm">
+          {[
+            {
+              label: "Assessments",
+              value: formatAssessmentAmount(totals.assessed),
+            },
+            {
+              label: `Paid toward ${year}`,
+              value: formatAssessmentAmount(totals.current),
+            },
+            ...(unknown > 0
+              ? [
+                  {
+                    label: "Payment status unknown",
+                    value: formatBudget(unknown),
+                  },
+                ]
+              : []),
+            {
+              label: "Paid toward earlier years",
+              value: formatAssessmentAmount(totals.prior),
+            },
+          ].map(({ label, value }) => (
+            <div
+              key={label}
+              className="flex items-baseline justify-between gap-4"
+            >
+              <dt className="min-w-0">{label}</dt>
+              <dd className="shrink-0 text-right font-medium tabular-nums">
+                {value}
+              </dd>
+            </div>
+          ))}
+        </dl>
       )}
       {loading && (
         <p role="status" className="text-sm text-gray-600">
@@ -148,7 +188,7 @@ export function CebAssessmentSidebarContent({
           {entities.length ? (
             <div className="space-y-2">
               <FinancialPanelHeading subheading>
-                By organization
+                By {byContributor ? "contributor" : "organization"}
               </FinancialPanelHeading>
               <div className="flex justify-end gap-2 text-right text-xs font-medium text-gray-600">
                 <span className="w-16">Assessment</span>
@@ -157,6 +197,7 @@ export function CebAssessmentSidebarContent({
               {visibleEntities.map(
                 ({
                   entity,
+                  key,
                   assessed,
                   current,
                   prior,
@@ -214,7 +255,7 @@ export function CebAssessmentSidebarContent({
                     ...receipts,
                   ];
                   return (
-                    <div key={entity} className="flex items-center gap-2">
+                    <div key={key} className="flex items-center gap-2">
                       <div className="min-w-0 flex-1">
                         <FinancialPanelRankedRow
                           label={entity}
@@ -289,7 +330,7 @@ export function CebAssessmentSidebarContent({
                   onClick={() => setShowAllEntities(true)}
                   className="text-xs text-gray-600 underline hover:text-gray-900"
                 >
-                  Show all {entities.length} organizations
+                  Show all {entities.length} {breakdown}
                 </button>
               )}
             </div>

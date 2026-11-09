@@ -127,7 +127,6 @@ export function RegularBudgetContributorsTreemap() {
   const [sidebarYear, setSidebarYear] = useState<number | undefined>();
   const [pending, setPending] = useDeepLink({
     hashPrefix: "regular-budget-contributor",
-    sectionId: "regular-budget-contributors",
     onNavigateAway: () => {
       setSelectedName(null);
       setSidebarYear(undefined);

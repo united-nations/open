@@ -3,6 +3,10 @@ import { useYearResource } from "@/hooks/useYearResource";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
+import {
+  CebAssessmentSidebarContent,
+  useCebAssessmentHistory,
+} from "@/components/CebAssessmentSidebarContent";
 
 import { ArrowRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
@@ -115,6 +119,11 @@ export function EntitySidebar({
     ]),
   ].sort((a, b) => b - a);
   const [selectedYear, setSelectedYear] = useState(initialYear);
+  const assessmentHistory = useCebAssessmentHistory(
+    undefined,
+    undefined,
+    entity?.entity,
+  );
   const nonReporting: Record<string, string[]> = cebSource.nonReporting;
   const didNotReport =
     !!entity &&
@@ -175,7 +184,7 @@ export function EntitySidebar({
   >([]);
 
   // Focus trap for accessibility
-  const focusTrapRef = useFocusTrap(!!entity);
+  const focusTrapRef = useFocusTrap(!!entity, true);
 
   // Fetch entity trends data on mount
   useEffect(() => {
@@ -428,7 +437,7 @@ export function EntitySidebar({
           }}
           controls={
             <SidebarControls
-              shareHash={`entity=${encodeURIComponent(entity.entity || "")}`}
+              shareHash={`entity=${encodeURIComponent(`${entity.entity}@${selectedYear}`)}`}
               onClose={handleClose}
               closeLabel="Close sidebar"
             />
@@ -794,6 +803,13 @@ export function EntitySidebar({
               </div>
             )}
 
+            {assessmentHistory.value?.some(({ rows }) => rows.length) && (
+              <CebAssessmentSidebarContent
+                resource={assessmentHistory}
+                year={selectedYear}
+                breakdown="contributors"
+              />
+            )}
             {/* Retained for a later, explicitly enabled impact view. */}
             {SHOW_ENTITY_IMPACTS && (
               <div>

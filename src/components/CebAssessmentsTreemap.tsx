@@ -12,14 +12,13 @@ import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 import { navigateToSidebar } from "@/hooks/useDeepLink";
 import { useYearResource } from "@/hooks/useYearResource";
 import {
-  assessmentEntities,
+  assessmentOrganizationGroups,
+  assessmentTotals,
   assessmentExclusionNotes,
   CEB_ASSESSMENT_COLORS,
   CEB_ASSESSMENTS_HASH,
   formatAssessmentAmount,
   loadCebAssessments,
-  rowsWithAssessments,
-  sumAssessments,
 } from "@/lib/cebAssessments";
 import { formatBudget } from "@/lib/contributors";
 import { useYearRanges } from "@/lib/useYearRanges";
@@ -27,7 +26,11 @@ import { useYearRanges } from "@/lib/useYearRanges";
 const colors = CEB_ASSESSMENT_COLORS;
 const priorLabel = "Paid toward earlier years";
 
-export function CebAssessmentsTreemap() {
+export function CebAssessmentsTreemap({
+  view = "contributors",
+}: {
+  view?: "contributors" | "organizations";
+}) {
   const { years, default: defaultYear } = useYearRanges().cebAssessments;
   const [year, setYear] = useState(defaultYear);
   const [query, setQuery] = useState("");
@@ -38,29 +41,23 @@ export function CebAssessmentsTreemap() {
     loading,
     error,
   } = useYearResource(String(year), null, false, load, null);
-  const contributors = (data?.contributors ?? []).filter(({ name }) =>
-    name.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()),
-  );
+  const organizationView = view === "organizations";
+  const groups = organizationView
+    ? assessmentOrganizationGroups(data?.contributors ?? [])
+    : (data?.contributors ?? []).map((contributor) => ({
+        id: contributor.id,
+        name: contributor.name,
+        contributors: [contributor],
+      }));
+  const matches = groups
+    .filter(({ name }) =>
+      name.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()),
+    )
+    .map((group) => ({ ...group, ...assessmentTotals(group.contributors) }));
+  const contributors = matches.flatMap((group) => group.contributors);
   const exclusions = assessmentExclusionNotes(year, contributors);
-  const matches = contributors.map((contributor) => {
-    const rows = rowsWithAssessments(contributor.rows);
-    const entities = assessmentEntities(rows);
-    return {
-      ...contributor,
-      rows,
-      ...sumAssessments(rows),
-      unknownCurrent: entities.reduce(
-        (sum, entity) => sum + entity.unknownCurrent,
-        0,
-      ),
-      paidWithinAssessment: entities.reduce(
-        (sum, entity) => sum + entity.paidWithinAssessment,
-        0,
-      ),
-    };
-  });
-  const totals = sumAssessments(matches.flatMap(({ rows }) => rows));
-  const unknown = matches.reduce((sum, match) => sum + match.unknownCurrent, 0);
+  const totals = assessmentTotals(contributors);
+  const unknown = totals.unknownCurrent;
   const leaves = matches.flatMap((contributor) => {
     const assessed = Math.max(0, contributor.assessed.value ?? 0);
     const priorFill = showPrior ? Math.max(0, contributor.prior.value ?? 0) : 0;
@@ -124,7 +121,10 @@ export function CebAssessmentsTreemap() {
           },
         ],
         onActivate: () =>
-          navigateToSidebar(CEB_ASSESSMENTS_HASH, `${contributor.id}@${year}`),
+          navigateToSidebar(
+            organizationView ? "entity" : CEB_ASSESSMENTS_HASH,
+            `${contributor.id}@${year}`,
+          ),
       },
     ];
   });
@@ -172,8 +172,8 @@ export function CebAssessmentsTreemap() {
             <div className="w-48 min-w-0">
               <SearchInput
                 variant="border-bottom"
-                aria-label="Search assessed contributors"
-                placeholder="Search assessed contributors…"
+                aria-label={`Search assessed ${view}`}
+                placeholder={`Search assessed ${view}…`}
                 value={query}
                 onChange={(event) => setQuery(event.currentTarget.value)}
                 showClear
@@ -258,7 +258,9 @@ export function CebAssessmentsTreemap() {
         }}
         footer={
           <div className="space-y-2">
-            <ChartFooter hint="Click on a contributor to explore details" />
+            <ChartFooter
+              hint={`Click on ${organizationView ? "an organization" : "a contributor"} to explore details`}
+            />
             {exclusions.map((note) => (
               <p key={note} className="text-sm text-gray-600">
                 {note}

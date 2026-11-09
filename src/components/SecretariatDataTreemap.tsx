@@ -283,7 +283,6 @@ export function SecretariatDataTreemap() {
               key="budget-trust-funds"
               dataset="budget-trust-funds"
               hashPrefix="trust-fund-entity"
-              sectionId="budget"
               activeFundingSources={activeFundingSources}
             />
           </section>
@@ -299,7 +298,6 @@ export function SecretariatDataTreemap() {
                 key={programmeDataset}
                 dataset={programmeDataset}
                 hashPrefix={BLOCK_DETAILS.programme.hashPrefix}
-                sectionId="budget"
                 activeFundingSources={activeFundingSources}
                 onTotalChange={recordProgrammeTotal}
               />
@@ -315,7 +313,6 @@ export function SecretariatDataTreemap() {
                 key={peacekeepingDataset}
                 dataset={peacekeepingDataset}
                 hashPrefix={BLOCK_DETAILS.peacekeeping.hashPrefix}
-                sectionId="budget"
                 activeFundingSources={activeFundingSources}
                 onTotalChange={recordPeacekeepingTotal}
               />

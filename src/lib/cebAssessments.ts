@@ -142,20 +142,58 @@ export function unknownCurrentAssessments(rows: readonly CebAssessmentRow[]) {
   );
 }
 
+export function assessmentContributorsForEntity(
+  contributors: readonly CebAssessmentContributor[],
+  entity: string,
+) {
+  return contributors.flatMap((contributor) => {
+    const rows = contributor.rows.filter(([name]) => name === entity);
+    return rows.length ? [{ ...contributor, rows }] : [];
+  });
+}
+
+export function assessmentTotals(
+  contributors: readonly Pick<CebAssessmentContributor, "rows">[],
+) {
+  const included = contributors.map(({ rows }) => rowsWithAssessments(rows));
+  const entities = included.flatMap(assessmentEntities);
+  return {
+    ...sumAssessments(included.flat()),
+    unknownCurrent: entities.reduce(
+      (sum, entity) => sum + entity.unknownCurrent,
+      0,
+    ),
+    paidWithinAssessment: entities.reduce(
+      (sum, entity) => sum + entity.paidWithinAssessment,
+      0,
+    ),
+  };
+}
+
+export function assessmentOrganizationGroups(
+  contributors: readonly CebAssessmentContributor[],
+) {
+  const entities = new Set(
+    contributors.flatMap(({ rows }) => rows.map(([entity]) => entity)),
+  );
+  return Array.from(entities, (entity) => ({
+    id: entity,
+    name: entity,
+    contributors: assessmentContributorsForEntity(contributors, entity),
+  }));
+}
+
 export function systemAssessmentTrendPoint({
   year,
   contributors,
 }: Pick<CebAssessmentsData, "year" | "contributors">) {
-  const assessedRowsByContributor = contributors.map(({ rows }) =>
-    rowsWithAssessments(rows),
-  );
+  const totals = assessmentTotals(contributors);
   return {
     year,
-    ...sumAssessments(assessedRowsByContributor.flat()),
-    unknownCurrent: assessedRowsByContributor.reduce(
-      (sum, rows) => sum + unknownCurrentAssessments(rows),
-      0,
-    ),
+    assessed: totals.assessed,
+    current: totals.current,
+    prior: totals.prior,
+    unknownCurrent: totals.unknownCurrent,
     notes: assessmentExclusionNotes(year, contributors),
   };
 }

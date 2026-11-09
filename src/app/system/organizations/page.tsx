@@ -1,4 +1,4 @@
-import { SystemPageSources } from "@/components/PageSources";
+import { PageSourceLink, SystemPageSources } from "@/components/PageSources";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { EntitiesTreemap } from "@/components/EntitiesTreemap";
@@ -7,6 +7,9 @@ import { EntityTrendsChart } from "@/components/EntityTrendsChart";
 import { CebMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
+import { CebAssessmentsTreemap } from "@/components/CebAssessmentsTreemap";
+import { CebSystemAssessmentTrends } from "@/components/CebAssessmentTrendsChart";
+import { CEB_ASSESSMENTS_SECTION } from "@/lib/cebAssessments";
 
 export const metadata: Metadata = {
   title: "UN System Organizations",
@@ -66,6 +69,39 @@ export default function SystemOrganizationsPage() {
         <div className="mt-10">
           <EntityTrendsChart />
         </div>
+        <section
+          id={CEB_ASSESSMENTS_SECTION}
+          className="mt-12 scroll-mt-20 space-y-4 border-t border-gray-200 pt-8"
+          aria-labelledby="ceb-assessments-title"
+        >
+          <h2
+            id="ceb-assessments-title"
+            className="text-2xl font-bold text-gray-900"
+          >
+            To what extent are assessments paid?
+          </h2>
+          <p className="max-w-3xl text-sm leading-relaxed text-gray-600">
+            Assessed contributions are amounts members are required to pay under
+            each organization’s rules. In practice, assessments are not always
+            paid in full and on time by every member. This overview shows the
+            amounts assessed by each organization and the payments it received
+            toward that year’s assessments and earlier years’ assessments. The
+            figures are based on <PageSourceLink source="cebAssessments" />.
+          </p>
+          <CebAssessmentsTreemap view="organizations" />
+          <section
+            aria-labelledby="ceb-assessment-trends-title"
+            className="mt-8 space-y-3 lg:w-1/2"
+          >
+            <h3
+              id="ceb-assessment-trends-title"
+              className="text-lg font-medium text-gray-900"
+            >
+              System-wide assessments and payments over time
+            </h3>
+            <CebSystemAssessmentTrends />
+          </section>
+        </section>
         <SystemFlows />
       </PageBody>
       <CebMethodologyLink />

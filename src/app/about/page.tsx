@@ -70,6 +70,12 @@ export default function AboutPage() {
                   .
                 </p>
                 <p>
+                  The organization and contributor views use the same assessment
+                  observations, grouped by organization or by contributor.
+                  Unknown payment amounts are calculated for each contributor
+                  and organization before aggregation.
+                </p>
+                <p>
                   The reported trend shows receipts in the year CEB records
                   them, with payments toward that year and earlier years shown
                   separately. Grey shows assessed amounts with blank
