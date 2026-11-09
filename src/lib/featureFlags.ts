@@ -22,4 +22,3 @@ export const SHOW_UNINFO = FEATURES.uninfo;
 export const SHOW_UNINFO_SORT_CONTROLS =
   FEATURES.uninfo && FEATURES.uninfoSortControls;
 export const SHOW_ENTITY_IMPACTS = FEATURES.entityImpacts;
-export const SHOW_SIDEBAR_MINI_TREEMAP = FEATURES.budgetSidebarMiniTreemap;

@@ -9,7 +9,6 @@
     "uninfo": false,
     "uninfoSortControls": false,
     "entityImpacts": false,
-    "budgetSidebarMiniTreemap": false,
     "functionGeography": false
   },
   "preview": {
@@ -22,7 +21,6 @@
     "uninfo": false,
     "uninfoSortControls": false,
     "entityImpacts": false,
-    "budgetSidebarMiniTreemap": false,
     "functionGeography": true
   },
   "full": {
@@ -35,7 +33,6 @@
     "uninfo": true,
     "uninfoSortControls": true,
     "entityImpacts": true,
-    "budgetSidebarMiniTreemap": true,
     "functionGeography": true
   },
   "routes": {

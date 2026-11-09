@@ -16,14 +16,6 @@ import {
   type FinancialPanelYearSelectorProps,
 } from "@un-eosg/ui/components/financial-panel-parts";
 import { useCallback, useEffect, useState } from "react";
-import {
-  GroupedTreemap,
-  type GroupedTreemapRow,
-  type GroupedTreemapLeaf,
-  type GroupedTreemapSegment,
-  type GroupedTreemapSubgroup,
-  type GroupedTreemapTooltipContext,
-} from "@un-eosg/ui/components/grouped-treemap";
 import type {
   BudgetFundingSource,
   BudgetData,
@@ -54,11 +46,9 @@ import {
   fiscalYearLabel,
   FUNDING_SOURCES,
 } from "@/lib/budgetGroupings";
-import { BAND_PALETTE } from "@/lib/secretariatGroupings";
 import { TrustFundSidebar } from "@/components/TrustFundSidebar";
 import { ProgrammeBudgetNodeTrend } from "@/components/ProgrammeBudgetNodeTrend";
 
-import { SHOW_SIDEBAR_MINI_TREEMAP } from "@/lib/featureFlags";
 
 interface BudgetSidebarProps {
   node: BudgetNode;
@@ -101,311 +91,6 @@ function positiveFundingValues(
     (source) =>
       [source, node.values?.[source] ?? 0] as [BudgetFundingSource, number],
   ).filter(([, amount]) => amount > 0);
-}
-
-interface MiniBudgetLeafData {
-  node?: BudgetNode;
-  parentAmount: number;
-  fundingSource?: BudgetFundingSource;
-  isGap?: boolean;
-}
-
-type MiniBudgetRow = GroupedTreemapRow<
-  BudgetNode,
-  BudgetNode,
-  MiniBudgetLeafData,
-  BudgetFundingSource
->;
-
-function miniLeafLabel(node: BudgetNode): string {
-  return node.entity?.name ?? node.label;
-}
-
-function miniFundingSegments(
-  node: BudgetNode,
-): GroupedTreemapSegment<BudgetFundingSource>[] {
-  return positiveFundingValues(node).map(([source, value]) => ({
-    key: source,
-    label: FUNDING_SOURCES[source]?.label ?? source,
-    value,
-    color: fundingSources[source].color,
-    valueLabel: formatBudgetFunding(node, source),
-    data: source,
-  }));
-}
-
-function miniNodeLeaf(
-  node: BudgetNode,
-  color: string,
-  parentAmount: number,
-): GroupedTreemapLeaf<MiniBudgetLeafData, BudgetFundingSource> {
-  return {
-    key: node.id,
-    label: miniLeafLabel(node),
-    value: node.amount,
-    valueLabel: formatBudgetNode(node),
-    color,
-    data: { node, parentAmount },
-    segments: miniFundingSegments(node),
-  };
-}
-
-function miniGapLeaf(
-  key: string,
-  label: string,
-  amount: number,
-  parentAmount: number,
-): GroupedTreemapLeaf<MiniBudgetLeafData, BudgetFundingSource> {
-  return {
-    key,
-    label,
-    value: amount,
-    color: "#d1d5db",
-    textColor: "#1f2937",
-    data: { parentAmount, isGap: true },
-  };
-}
-
-function miniChildSubgroup(
-  child: BudgetNode,
-  index: number,
-  childrenByParent: Record<string, BudgetNode[]>,
-  stream: BudgetMeta["stream"],
-): GroupedTreemapSubgroup<BudgetNode, MiniBudgetLeafData, BudgetFundingSource> {
-  const color = BAND_PALETTE[index % BAND_PALETTE.length].bg;
-  const descendants =
-    stream === "ppb" ? (childrenByParent[child.id] ?? []) : [];
-  const positive = descendants.filter((descendant) => descendant.amount > 0);
-  const leaves =
-    positive.length > 0
-      ? positive.map((descendant) =>
-          miniNodeLeaf(descendant, color, child.amount),
-        )
-      : [miniNodeLeaf(child, color, child.amount)];
-  const difference =
-    child.amount -
-    positive.reduce((sum, descendant) => sum + descendant.amount, 0);
-  if (
-    positive.length > 0 &&
-    !descendants.some((descendant) => descendant.amount < 0) &&
-    difference > 5000
-  ) {
-    leaves.push(
-      miniGapLeaf(
-        `${child.id}-not-itemized`,
-        "Not itemized below this level",
-        difference,
-        child.amount,
-      ),
-    );
-  }
-  return {
-    key: child.id,
-    label: miniLeafLabel(child),
-    data: child,
-    labelVisibility: "tooltip-only",
-    leaves,
-  };
-}
-
-function miniFundingRows(node: BudgetNode, meta: BudgetMeta): MiniBudgetRow[] {
-  const leaves = positiveFundingValues(node).map(([source, value]) => ({
-    key: source,
-    label:
-      meta.fundingLabels?.[source] ?? FUNDING_SOURCES[source]?.label ?? source,
-    value,
-    color: FUNDING_TREEMAP_COLORS[source],
-    textColor: source === "regular_budget" ? undefined : "#1f2937",
-    valueLabel: formatBudgetFunding(node, source),
-    data: { node, fundingSource: source, parentAmount: node.amount },
-  }));
-  return leaves.length > 0
-    ? [
-        {
-          key: node.id,
-          label: miniLeafLabel(node),
-          valueLabel: formatBudgetNode(node),
-          data: node,
-          leaves,
-        },
-      ]
-    : [];
-}
-
-function miniHierarchyRows(
-  node: BudgetNode,
-  childNodes: BudgetNode[],
-  childrenByParent: Record<string, BudgetNode[]>,
-  meta: BudgetMeta,
-): MiniBudgetRow[] {
-  const positive = childNodes.filter((child) => child.amount > 0);
-  if (positive.length === 0) return miniFundingRows(node, meta);
-  const subgroups = positive.map((child, index) =>
-    miniChildSubgroup(child, index, childrenByParent, meta.stream),
-  );
-  const difference =
-    node.amount - positive.reduce((sum, child) => sum + child.amount, 0);
-  if (!childNodes.some((child) => child.amount < 0) && difference > 5000) {
-    subgroups.push({
-      key: `${node.id}-not-itemized`,
-      label: "Not itemized",
-      labelVisibility: "tooltip-only",
-      leaves: [
-        miniGapLeaf(
-          `${node.id}-not-itemized-leaf`,
-          "Not itemized in the published breakdown",
-          difference,
-          node.amount,
-        ),
-      ],
-    });
-  }
-  return [
-    {
-      key: node.id,
-      label: miniLeafLabel(node),
-      data: node,
-      subgroups,
-    },
-  ];
-}
-
-function miniTreemapCaption(
-  node: BudgetNode,
-  childNodes: BudgetNode[],
-  rows: MiniBudgetRow[],
-): string {
-  if (!childNodes.some((child) => child.amount > 0)) {
-    return "Area shows the funding-source composition of this amount.";
-  }
-  const positiveTotal = childNodes
-    .filter((child) => child.amount > 0)
-    .reduce((sum, child) => sum + child.amount, 0);
-  let caption = childNodes.some((child) => child.amount < 0)
-    ? "Area compares the positive published lines; negative adjustments remain listed below."
-    : node.amount - positiveTotal > 5000
-      ? "Area shows the published lines; grey is the part not itemized below this level."
-      : node.amount - positiveTotal < -5000
-        ? "Area compares the published lines with one another; together they exceed the published parent total."
-        : "Area shows each published line's share of this amount.";
-  const leaves = rows.flatMap((row) =>
-    (row.subgroups ?? []).flatMap((subgroup) => subgroup.leaves),
-  );
-  if (
-    leaves.some(
-      (leaf) => leaf.data?.node && leaf.data.node.parentId !== node.id,
-    )
-  ) {
-    caption +=
-      " Subdivisions show the next published level; hover or focus them for details.";
-  }
-  if (leaves.some((leaf) => (leaf.segments?.length ?? 0) > 1)) {
-    caption += " Shades show funding sources in the order listed above.";
-  }
-  return caption;
-}
-
-function MiniBudgetTooltip({
-  metric,
-  context,
-  fundingLabels,
-}: {
-  context: GroupedTreemapTooltipContext<
-    BudgetNode,
-    BudgetNode,
-    MiniBudgetLeafData,
-    BudgetFundingSource
-  >;
-  metric: BudgetMetricKey;
-  fundingLabels?: BudgetMeta["fundingLabels"];
-}) {
-  const { leaf } = context;
-  const node = leaf.data?.node;
-  const kind = node ? KIND_NAMES[node.kind] : null;
-  const parentAmount = leaf.data?.parentAmount ?? 0;
-  const share = parentAmount > 0 ? (leaf.value / parentAmount) * 100 : 0;
-  const segments = positiveFundingValues(node);
-  return (
-    <FinancialTooltip
-      title={node?.label ?? leaf.label}
-      parents={context.breadcrumb
-        .filter((label) => label !== leaf.label)
-        .map((label) => ({ label }))}
-      context={kind}
-      total={{
-        label: "Total",
-        value: node
-          ? leaf.data?.fundingSource
-            ? formatBudgetFunding(node, leaf.data.fundingSource)
-            : formatBudgetNode(node)
-          : formatBudget(leaf.value),
-      }}
-      rows={segments.map(([source, amount]) => ({
-        label:
-          fundingLabels?.[source] ?? FUNDING_SOURCES[source]?.label ?? source,
-        value: node ? formatBudgetFunding(node, source) : formatBudget(amount),
-        color: FUNDING_TREEMAP_COLORS[source],
-        share: leaf.value > 0 && amount >= 0 ? amount / leaf.value : undefined,
-      }))}
-      notes={
-        <>
-          {parentAmount > 0
-            ? `${share.toFixed(1)}% of parent total`
-            : undefined}
-          <SourceReferenceLinks
-            references={node ? collectBudgetNodeSources(node, metric) : []}
-          />
-        </>
-      }
-    />
-  );
-}
-
-function MiniBudgetTreemap({
-  node,
-  childNodes,
-  childrenByParent,
-  meta,
-}: {
-  node: BudgetNode;
-  childNodes: BudgetNode[];
-  childrenByParent: Record<string, BudgetNode[]>;
-  meta: BudgetMeta;
-}) {
-  const rows = miniHierarchyRows(node, childNodes, childrenByParent, meta);
-  if (rows.length === 0) return null;
-  const caption = miniTreemapCaption(node, childNodes, rows);
-  return (
-    <div>
-      <GroupedTreemap<
-        BudgetNode,
-        BudgetNode,
-        MiniBudgetLeafData,
-        BudgetFundingSource
-      >
-        rows={rows}
-        totalLabel="Total"
-        height={176}
-        showLeafValues
-        formatValue={formatBudget}
-        formatAccessibleValue={formatBudget}
-        layout={{ rowOrder: "input", subgroupOrder: "input" }}
-        interactiveTooltip
-        renderTooltip={(context) => (
-          <MiniBudgetTooltip
-            context={context}
-            metric={
-              meta.measure === "approved" || meta.measure === "proposed"
-                ? meta.measure
-                : "expenditure"
-            }
-            fundingLabels={meta.fundingLabels}
-          />
-        )}
-      />
-      <p className="mt-1.5 text-xs leading-relaxed text-gray-500">{caption}</p>
-    </div>
-  );
 }
 
 function maximumHierarchyAmount(
@@ -1011,20 +696,12 @@ function BudgetDetailSidebar({
                 </div>
               )}
 
-              {/* Hierarchy or, for an undivided leaf, funding-source composition */}
+              {/* Published hierarchy and funding-source details */}
               {hasBreakdown && (
                 <div>
                   <FinancialPanelHeading subheading className="mb-3">
                     {breakdownHeading}
                   </FinancialPanelHeading>
-                  {SHOW_SIDEBAR_MINI_TREEMAP && (
-                    <MiniBudgetTreemap
-                      node={node}
-                      childNodes={childNodes}
-                      childrenByParent={childrenByParent}
-                      meta={meta}
-                    />
-                  )}
                   {childNodes.length > 0 && (
                     <>
                       <div className="mt-4">
