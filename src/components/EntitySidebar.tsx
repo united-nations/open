@@ -3,6 +3,7 @@ import { useYearResource } from "@/hooks/useYearResource";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
+import { CebAssessmentOutstandingSidebarContent } from "@/components/CebAssessmentOutstandingSidebarContent";
 import {
   CebAssessmentSidebarContent,
   useCebAssessmentHistory,
@@ -810,6 +811,10 @@ export function EntitySidebar({
                 breakdown="contributors"
               />
             )}
+            <CebAssessmentOutstandingSidebarContent
+              entity={entity.entity}
+              year={selectedYear}
+            />
             {/* Retained for a later, explicitly enabled impact view. */}
             {SHOW_ENTITY_IMPACTS && (
               <div>

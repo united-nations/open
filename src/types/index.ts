@@ -72,6 +72,49 @@ export interface RegularBudgetOutstandingContributor {
   basis: "reported_balance" | "complete_list_complement";
 }
 
+export interface CebAssessmentOutstandingRecord {
+  entity: string;
+  sourceEntity: string;
+  sourceRow: number;
+  sourceRowOccurrence: number;
+  outstanding: number | null;
+  asOf: string | null;
+  asOfBasis: "table_header" | "table_note" | "audited_statements" | "uncertain";
+  asOfSourcePdfPage: number;
+  reportedHeaderAsOf: string;
+  notes: string[];
+  pdfPage: number;
+  rawOutstanding: string;
+  dateSource?: { url: string; pdfPage: number };
+  accountingBasis?: {
+    kind: "gross" | "net";
+    note: string;
+    sourceUrl: string;
+    pdfPage: number;
+  };
+}
+
+export interface CebAssessmentOutstandingData {
+  schemaVersion: number;
+  year: number;
+  currency: "USD";
+  scope: string;
+  source: {
+    symbol: string;
+    url: string;
+    sha256: string;
+    table: number;
+    pdfPages: number[];
+    notes: {
+      marker: string;
+      text: string;
+      pdfPage: number;
+      years?: number[];
+    }[];
+  };
+  organizations: CebAssessmentOutstandingRecord[];
+}
+
 export interface RegularBudgetOutstandingData {
   meta: {
     year: number;

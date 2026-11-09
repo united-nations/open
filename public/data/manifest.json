@@ -34,6 +34,19 @@
     "min": 2020,
     "max": 2025
   },
+  "cebAssessmentOutstanding": {
+    "years": [
+      2020,
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "default": 2025,
+    "min": 2020,
+    "max": 2025
+  },
   "entityRevenue": {
     "years": [
       2011,

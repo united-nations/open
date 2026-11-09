@@ -34,6 +34,7 @@ import {
 } from "@/lib/financingInstruments";
 import { getSystemGroupingStyle } from "@/lib/systemGroupings";
 import { useYearRanges } from "@/lib/useYearRanges";
+import { loadCebAssessmentOutstanding } from "@/lib/cebAssessmentOutstanding";
 import type { BudgetEntry, Entity, EntityRevenue } from "@/types";
 import cebSource from "../../public/data/ceb-source.json";
 
@@ -299,7 +300,8 @@ export function EntitiesTreemap() {
       loadError
     )
       return;
-    const timer = window.setTimeout(() => {
+    let active = true;
+    const timer = window.setTimeout(async () => {
       const [requestedEntity, linkedYear] = pendingDeepLink.split("@");
       const requestedYear = Number(
         linkedYear ?? new URLSearchParams(window.location.search).get("year"),
@@ -317,18 +319,34 @@ export function EntitiesTreemap() {
       const hasFinancialRecord =
         Object.hasOwn(budgetData, requestedEntity) ||
         nonReporting[currentYear]?.includes(requestedEntity);
-      const entity = hasFinancialRecord
-        ? normalizeEntityForDisplay(
-            entities.find(
-              (candidate) => candidate.entity === requestedEntity,
-            ) ?? createUncategorizedEntity(requestedEntity),
-          )
-        : null;
+      const hasOutstandingRecord =
+        !hasFinancialRecord &&
+        yearRanges.cebAssessmentOutstanding.years.includes(currentYear)
+          ? await loadCebAssessmentOutstanding(currentYear).then(
+              (data) =>
+                data.organizations.some(
+                  ({ entity }) => entity === requestedEntity,
+                ),
+              () => false,
+            )
+          : false;
+      if (!active) return;
+      const entity =
+        hasFinancialRecord || hasOutstandingRecord
+          ? normalizeEntityForDisplay(
+              entities.find(
+                (candidate) => candidate.entity === requestedEntity,
+              ) ?? createUncategorizedEntity(requestedEntity),
+            )
+          : null;
       setSelectedEntity(entity);
       if (!entity) clearSidebarHash();
       setPendingDeepLink(null);
     }, 0);
-    return () => window.clearTimeout(timer);
+    return () => {
+      active = false;
+      window.clearTimeout(timer);
+    };
   }, [
     budgetData,
     dataReady,
@@ -341,6 +359,7 @@ export function EntitiesTreemap() {
     currentYear,
     loadedSpendingYear,
     yearRanges.entitySpending.years,
+    yearRanges.cebAssessmentOutstanding.years,
   ]);
 
   const openEntity = useCallback((entity: Entity) => {

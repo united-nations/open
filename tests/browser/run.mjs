@@ -9,6 +9,7 @@ const checks = [
   "page-notes",
   "data-disclosures",
   "ceb-refresh",
+  "ceb-assessment-outstanding",
   "sdg-trends",
   "sdg-groups",
   "historical-coverage",

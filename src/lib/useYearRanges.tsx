@@ -14,6 +14,7 @@ interface YearRange {
 interface YearRanges {
   donors: YearRange;
   cebAssessments: YearRange;
+  cebAssessmentOutstanding: YearRange;
   entityRevenue: YearRange;
   entitySpending: YearRange & { fusionYears?: number[] };
   countryExpenses: YearRange;

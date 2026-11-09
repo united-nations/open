@@ -82,6 +82,39 @@ export default function AboutPage() {
                   current-year receipts. CEB groups earlier-year receipts
                   together by year received.
                 </p>
+                <p>
+                  Reported outstanding assessments come from Table 7 of CEB’s
+                  reports on the budgetary and financial situation of the UN
+                  system. They include current and prior assessment years. The
+                  portal preserves CEB’s reported amounts and displays the
+                  original table footnotes for the selected year below the
+                  charts. Missing balances remain unavailable. Where CEB reports
+                  separate budget balances, they remain separate.
+                </p>
+                <p>
+                  Outstanding-balance sources:{" "}
+                  <a
+                    className="underline"
+                    href="https://unsceb.org/assets/media/reports/report-3755-A77507-Budgetary-and-financial-situation-of-the-organizations-of-the-UN-system-5-Oct-2022.pdf#page=140"
+                  >
+                    A/77/507 (2020–2021)
+                  </a>
+                  ,{" "}
+                  <a
+                    className="underline"
+                    href="https://unsceb.org/assets/media/reports/report-3825-A79494-Budgetary-and-financial-situation-of-the-organizations-of-the-UN-system-2024.pdf#page=29"
+                  >
+                    A/79/494 (2022–2023)
+                  </a>
+                  , and{" "}
+                  <a
+                    className="underline"
+                    href="https://www.unsceb.org/assets/media/reports/report-3983-A81408-Budgetary-and-financial-situation-of-the-organizations-of-the-UN-system-2026.pdf#page=28"
+                  >
+                    A/81/408 (2024–2025)
+                  </a>
+                  .
+                </p>
               </div>
             </ExpandableCard>
             {SHOW_UNINFO && (

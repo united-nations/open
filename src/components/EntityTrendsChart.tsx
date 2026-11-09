@@ -318,9 +318,9 @@ export function EntityTrendsChart() {
         <div className="flex flex-col" data-money-chart>
           {/* Title and selector */}
           <div className="space-y-2 pb-3">
-            <h2 className="text-2xl font-bold">
+            <h3 className="text-lg font-medium text-gray-900">
               Revenue and expenditure over time
-            </h2>
+            </h3>
             <div className="flex flex-wrap items-center gap-2">
               <HierarchicalSingleSelect
                 groups={singleSelectGroups}
@@ -422,9 +422,9 @@ export function EntityTrendsChart() {
         <div className="flex flex-col" data-money-chart>
           {/* Title and chips */}
           <div className="space-y-2 pb-3">
-            <h2 className="text-2xl font-bold">
+            <h3 className="text-lg font-medium text-gray-900">
               Compare expenditure over time
-            </h2>
+            </h3>
             <HierarchicalMultiSelect
               groups={compareGroups}
               selected={compareSelected}

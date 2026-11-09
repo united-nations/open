@@ -1,0 +1,176 @@
+{
+  "reviews": [
+    {
+      "entity": "IRMCT",
+      "year": 2024,
+      "reportedAmount": 26559000,
+      "kind": "net",
+      "sourceUrl": "https://documents.un.org/doc/undoc/gen/n26/149/61/pdf/n2614961.pdf",
+      "pdfPage": 64,
+      "note": "Net assessed-contribution receivables after loss allowance, including balances of the closed ICTR and ICTY tribunals. In 2025, gross receivables were $64.710M and the loss allowance was $28.583M; in 2024 they were $53.041M and $26.482M."
+    },
+    {
+      "entity": "IRMCT",
+      "year": 2025,
+      "reportedAmount": 36127000,
+      "kind": "net",
+      "sourceUrl": "https://documents.un.org/doc/undoc/gen/n26/149/61/pdf/n2614961.pdf",
+      "pdfPage": 64,
+      "note": "Net assessed-contribution receivables after loss allowance, including balances of the closed ICTR and ICTY tribunals. In 2025, gross receivables were $64.710M and the loss allowance was $28.583M; in 2024 they were $53.041M and $26.482M."
+    },
+    {
+      "entity": "ILO",
+      "year": 2024,
+      "reportedAmount": 154478749,
+      "kind": "gross",
+      "sourceUrl": "https://www.ilo.org/sites/default/files/2026-05/ILC114-FIN-EN.pdf",
+      "pdfPage": 57,
+      "note": "Gross assessed contributions due, before impairment and discounting. The 2025 net assessed-contribution receivable was $243.949M; the 2024 net balance was $111.092M."
+    },
+    {
+      "entity": "ILO",
+      "year": 2025,
+      "reportedAmount": 294285123,
+      "kind": "gross",
+      "sourceUrl": "https://www.ilo.org/sites/default/files/2026-05/ILC114-FIN-EN.pdf",
+      "pdfPage": 89,
+      "note": "Gross assessed contributions due, before impairment and discounting. The 2025 net assessed-contribution receivable was $243.949M; the 2024 net balance was $111.092M."
+    },
+    {
+      "entity": "WHO",
+      "year": 2024,
+      "reportedAmount": 215397880,
+      "kind": "gross",
+      "sourceUrl": "https://apps.who.int/gb/ebwha/pdf_files/WHA79/A79_14-en.pdf",
+      "pdfPage": 70,
+      "note": "Gross assessed-contribution receivables, including current and non-current balances. The audit presents rounded thousands; the 2025 loss allowance was $345.991M and the net balance was $35.227M."
+    },
+    {
+      "entity": "WHO",
+      "year": 2025,
+      "reportedAmount": 381218119,
+      "kind": "gross",
+      "sourceUrl": "https://apps.who.int/gb/ebwha/pdf_files/WHA79/A79_14-en.pdf",
+      "pdfPage": 70,
+      "note": "Gross assessed-contribution receivables, including current and non-current balances. The audit presents rounded thousands; the 2025 loss allowance was $345.991M and the net balance was $35.227M."
+    },
+    {
+      "entity": "IAEA",
+      "year": 2024,
+      "reportedAmount": 50842573,
+      "kind": "gross",
+      "sourceUrl": "https://www.iaea.org/sites/default/files/gc/gc70-5.pdf",
+      "pdfPage": 73,
+      "note": "Gross regular-budget assessed contributions receivable, converted from euros. The 2025 gross balance of EUR124,231,391 converts to approximately $146.155M at EUR0.85 per dollar. The 2024 basis is corroborated by rounded audit figures and year-end exchange rates."
+    },
+    {
+      "entity": "IAEA",
+      "year": 2025,
+      "reportedAmount": 146154578,
+      "kind": "gross",
+      "sourceUrl": "https://www.iaea.org/sites/default/files/gc/gc70-5.pdf",
+      "pdfPage": 145,
+      "note": "Gross regular-budget assessed contributions receivable, converted from euros. The 2025 gross balance of EUR124,231,391 converts to approximately $146.155M at EUR0.85 per dollar. The 2024 basis is corroborated by rounded audit figures and year-end exchange rates."
+    },
+    {
+      "entity": "UN Secretariat",
+      "year": 2024,
+      "reportedAmount": 760318672,
+      "kind": "gross",
+      "sourceUrl": "https://documents.un.org/doc/undoc/gen/n26/142/06/pdf/n2614206.pdf",
+      "pdfPage": 227,
+      "note": "Gross regular-budget assessments outstanding from current Member States. This excludes other assessed receivables included in the broader financial-statement balance."
+    },
+    {
+      "entity": "UN Secretariat",
+      "year": 2025,
+      "reportedAmount": 1568073936,
+      "kind": "gross",
+      "sourceUrl": "https://documents.un.org/doc/undoc/gen/n26/142/06/pdf/n2614206.pdf",
+      "pdfPage": 227,
+      "note": "Gross regular-budget assessments outstanding from current Member States. This excludes other assessed receivables included in the broader financial-statement balance."
+    },
+    {
+      "entity": "Peacekeeping Operations",
+      "year": 2024,
+      "reportedAmount": 2261836949,
+      "kind": "gross",
+      "sourceUrl": "https://documents.un.org/doc/undoc/gen/n26/008/40/pdf/n2600840.pdf",
+      "pdfPage": 183,
+      "note": "Gross assessed-contribution receivables for active and closed peacekeeping missions. The audited comparative balances refer to 30 June; the net balances after loss allowance were $1,499.225M in 2025 and $1,513.175M in 2024.",
+      "asOf": "2024-06-30"
+    },
+    {
+      "entity": "Peacekeeping Operations",
+      "year": 2025,
+      "reportedAmount": 2245149570,
+      "kind": "gross",
+      "sourceUrl": "https://documents.un.org/doc/undoc/gen/n26/008/40/pdf/n2600840.pdf",
+      "pdfPage": 183,
+      "note": "Gross assessed-contribution receivables for active and closed peacekeeping missions. The audited comparative balances refer to 30 June; the net balances after loss allowance were $1,499.225M in 2025 and $1,513.175M in 2024."
+    },
+    {
+      "entity": "IRMCT",
+      "year": 2022,
+      "reportedAmount": 51682000,
+      "kind": "net",
+      "sourceUrl": "https://documents.un.org/doc/undoc/gen/n24/182/33/pdf/n2418233.pdf",
+      "pdfPage": 85,
+      "note": "Net assessed-contribution receivables after loss allowance. Gross balances were $51.780M in 2022 and $54.134M in 2023; loss allowances were $0.098M and $0.068M respectively. The balance includes receivables of the closed ICTR and ICTY tribunals."
+    },
+    {
+      "entity": "IRMCT",
+      "year": 2023,
+      "reportedAmount": 54066000,
+      "kind": "net",
+      "sourceUrl": "https://documents.un.org/doc/undoc/gen/n24/182/33/pdf/n2418233.pdf",
+      "pdfPage": 85,
+      "note": "Net assessed-contribution receivables after loss allowance. Gross balances were $51.780M in 2022 and $54.134M in 2023; loss allowances were $0.098M and $0.068M respectively. The balance includes receivables of the closed ICTR and ICTY tribunals."
+    },
+    {
+      "entity": "WHO",
+      "year": 2022,
+      "reportedAmount": 149222770,
+      "kind": "gross",
+      "sourceUrl": "https://apps.who.int/gb/ebwha/pdf_files/WHA77/A77_20-en.pdf",
+      "pdfPage": 73,
+      "note": "Gross current and rescheduled non-current assessed-contribution receivables, before loss allowances. Published audit figures are rounded to thousands."
+    },
+    {
+      "entity": "WHO",
+      "year": 2023,
+      "reportedAmount": 188252117,
+      "kind": "gross",
+      "sourceUrl": "https://apps.who.int/gb/ebwha/pdf_files/WHA77/A77_20-en.pdf",
+      "pdfPage": 73,
+      "note": "Gross current and rescheduled non-current assessed-contribution receivables, before loss allowances. Published audit figures are rounded to thousands."
+    },
+    {
+      "entity": "WHO",
+      "year": 2020,
+      "reportedAmount": 320259235,
+      "kind": "gross",
+      "sourceUrl": "https://apps.who.int/gb/ebwha/pdf_files/WHA75/A75_33-en.pdf",
+      "pdfPage": 56,
+      "note": "Gross current and rescheduled non-current assessed-contribution receivables, before loss allowances. Published audit figures are rounded to thousands."
+    },
+    {
+      "entity": "WHO",
+      "year": 2021,
+      "reportedAmount": 213134704,
+      "kind": "gross",
+      "sourceUrl": "https://apps.who.int/gb/ebwha/pdf_files/WHA75/A75_33-en.pdf",
+      "pdfPage": 56,
+      "note": "Gross current and rescheduled non-current assessed-contribution receivables, before loss allowances. Published audit figures are rounded to thousands."
+    },
+    {
+      "entity": "WMO",
+      "year": 2025,
+      "reportedAmount": 56198061,
+      "kind": "gross",
+      "sourceUrl": "https://wmo.int/sites/default/files/2026-06/EC-80-INF05-7(1)-FINANCIAL-STATEMENTS-WMO-YEAR-2025_en.pdf",
+      "pdfPage": 51,
+      "note": "Gross current and non-current assessed-contribution receivables of CHF44.340M, before impairment. The net balance was CHF32.687M. The CEB dollar amount is consistent with gross receivables converted at CHF0.789 per dollar, allowing for rounded audit figures."
+    }
+  ]
+}
