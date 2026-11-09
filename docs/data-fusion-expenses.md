@@ -9,10 +9,10 @@ The shared user-facing methodology is maintained in
 
 System organization totals use CEB `expenses_sub_agency.csv`. They do not replace
 `UN`/`UN-DPO` with separately reconstructed Secretariat expenses, and they do not
-add Secretariat-assessed amounts for UNEP or UNODC. The historical fusion
-algorithm retained in step 06 is disabled (`FUSE_SECRETARIAT = False`) and is not
-the current accounting basis. Secretariat and UNINFO views remain separately
-sourced; their scopes and accounting bases are not interchangeable with CEB.
+add Secretariat-assessed amounts for UNEP or UNODC. Step 06
+(`python/06-export_ceb_expenses.py`) exports CEB organization totals directly;
+there is no Secretariat fusion mode. Secretariat and UNINFO views remain
+separately sourced; their scopes and accounting bases are not interchangeable with CEB.
 
 Adjusted organization labels and explicit parent relationships follow the shared
 maps described in [revenue processing](data-fusion-revenue.md#organization-identity-and-reporting-scope).

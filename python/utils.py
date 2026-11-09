@@ -1,11 +1,6 @@
 import json
 from pathlib import Path
 
-# Feature flag: fuse UN Secretariat sub-entity data into CEB expenses (steps 06 & 99).
-# Set to False to temporarily produce CEB-only expenses (keeps the UN/UN-DPO
-# aggregates, drops the ~150 Secretariat sub-entities). Re-run python/06, 07, 99.
-FUSE_SECRETARIAT = False
-
 # CEB Standard I, March 2024, printed pp.6–7, footnote 6: these units
 # report through UN. Use only when that year's source has no standalone control.
 CEB_SECRETARIAT_REPORTING_UNITS = {

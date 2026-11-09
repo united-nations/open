@@ -141,10 +141,10 @@ Review three mapping cases before promoting contributor detail:
 
 ### Dataset coverage and frontend behavior
 
-The live code has `FUSE_SECRETARIAT = False`, and the published manifest has no
-fusion years. Keep this setting. Repository prose describing 2019–2023 fusion
-does not describe the current build. CEB 2025 does not extend the independent
-Secretariat budget, audited-statement or trust-fund datasets, or UNINFO coverage.
+System expenses are CEB-only; the former Secretariat fusion flag, logic and
+manifest metadata have been removed. Preserve this source separation. Repository
+prose describing 2019–2023 fusion does not describe the current build. CEB 2025
+does not extend the independent Secretariat budget, audited-statement or trust-fund datasets, or UNINFO coverage.
 
 Step 19 currently intersects expense, geography and SDG years, so System Flows
 remains at 2024 even after adding 2025 expenses. Keep that behavior for the first

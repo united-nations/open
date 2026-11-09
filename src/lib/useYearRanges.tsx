@@ -8,7 +8,6 @@ interface YearRange {
   min: number;
   max: number;
   default: number;
-  fusionYears?: number[]; // Years with secretariat sub-entity breakdown
 }
 
 interface YearRanges {
@@ -16,7 +15,7 @@ interface YearRanges {
   cebAssessments: YearRange;
   cebAssessmentOutstanding: YearRange;
   entityRevenue: YearRange;
-  entitySpending: YearRange & { fusionYears?: number[] };
+  entitySpending: YearRange;
   countryExpenses: YearRange;
   geographicExpenses: YearRange;
   functionGeography: YearRange;

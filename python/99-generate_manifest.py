@@ -2,8 +2,6 @@
 import json
 from pathlib import Path
 
-from utils import FUSE_SECRETARIAT
-
 OUT = Path("public/data")
 
 def detect_years(pattern: str) -> list[int]:
@@ -12,16 +10,12 @@ def detect_years(pattern: str) -> list[int]:
     return sorted({int(f.stem.removeprefix(pattern + "-")) for f in files if f.stem.removeprefix(pattern + "-").isdigit()})
 
 def generate_manifest():
-    # Years with secretariat sub-entity breakdown (fused with CEB).
-    # Empty when fusion is disabled, so the frontend shows CEB aggregates for all years.
-    FUSION_YEARS = [2019, 2020, 2021, 2022, 2023] if FUSE_SECRETARIAT else []
-    
     manifest = {
         "donors": {"years": detect_years("donors"), "default": "latest"},
         "cebAssessments": {"years": detect_years("ceb-assessments"), "default": "latest"},
         "cebAssessmentOutstanding": {"years": detect_years("ceb-assessment-outstanding"), "default": "latest"},
         "entityRevenue": {"years": detect_years("entity-revenue"), "default": "latest"},
-        "entitySpending": {"years": detect_years("entity-spending"), "default": "latest", "fusionYears": FUSION_YEARS },
+        "entitySpending": {"years": detect_years("entity-spending"), "default": "latest"},
         "functionGeography": {"years": detect_years("function-geography"), "default": "latest"},
         "geographicExpenses": {"years": detect_years("geographic-expenses"), "default": "latest"},
         "countryExpenses": {"years": detect_years("country-expenses"), "default": "latest"},
@@ -77,8 +71,7 @@ def generate_manifest():
     
     print("Generated manifest.json:")
     for key, val in manifest.items():
-        fusion = f", fusion: {val['fusionYears']}" if 'fusionYears' in val else ""
-        print(f"  {key}: {val['min']}-{val['max']} (default: {val['default']}{fusion})")
+        print(f"  {key}: {val['min']}-{val['max']} (default: {val['default']})")
 
 if __name__ == "__main__":
     generate_manifest()
