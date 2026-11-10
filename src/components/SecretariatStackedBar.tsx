@@ -47,7 +47,7 @@ export function SecretariatStackedBar({
     <div>
       <div className="mb-1.5 flex items-center justify-between gap-4">
         <div className="flex items-center gap-1.5">
-          <h3 className="text-base font-semibold text-gray-900">{label}</h3>
+          <p className="text-base font-semibold text-gray-900">{label}</p>
           {info && (
             <Tooltip delayDuration={75}>
               <TooltipTrigger asChild>

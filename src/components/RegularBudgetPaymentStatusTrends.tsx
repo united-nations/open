@@ -1,4 +1,5 @@
 "use client";
+import { ChartHeading } from "@/components/ContentHeading";
 import { TREND_CHART_HEIGHT } from "@/components/charts/trendLayout";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import {
@@ -54,7 +55,11 @@ function completedRows(
   );
 }
 
-export function RegularBudgetPaymentStatusTrends() {
+export function RegularBudgetPaymentStatusTrends({
+  headingLevel = "h2",
+}: {
+  headingLevel?: "h2" | "h3";
+}) {
   const [measure, setMeasure] = useState("amount");
   const [hidden, setHidden] = useState<RegularBudgetPaymentStatus[]>([]);
   const sharedScale = usePaymentChartScale();
@@ -130,9 +135,9 @@ export function RegularBudgetPaymentStatusTrends() {
   if (rows === null) {
     return (
       <section className="min-w-0 lg:row-span-4 lg:grid lg:grid-rows-subgrid">
-        <h3 className="mb-3 text-lg font-medium text-gray-900">
+        <ChartHeading as={headingLevel} className="mb-3">
           Payment status over the years
-        </h3>
+        </ChartHeading>
         <div
           className="flex items-center justify-center text-sm text-gray-500"
           style={{ height: TREND_CHART_HEIGHT }}
@@ -146,9 +151,9 @@ export function RegularBudgetPaymentStatusTrends() {
   return (
     <section className="min-w-0 lg:row-span-4 lg:grid lg:grid-rows-subgrid">
       <div className="contents">
-        <h3 className="mb-3 text-lg font-medium text-gray-900">
+        <ChartHeading as={headingLevel} className="mb-3">
           Payment status over the years
-        </h3>
+        </ChartHeading>
 
         <div
           className="mb-3 flex flex-wrap content-start items-start gap-2"

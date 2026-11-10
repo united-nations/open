@@ -1,4 +1,5 @@
 "use client";
+import { ChartHeading } from "@/components/ContentHeading";
 
 import { useCallback, useState } from "react";
 import Link from "next/link";
@@ -47,10 +48,8 @@ export function FunctionGeographyChart() {
   );
   const columns = data ? functionGeographyColumns(data) : [];
   return (
-    <section id="function-geography" className="mt-12 scroll-mt-28 space-y-4">
-      <h2 className="text-2xl font-bold">
-        Expenditure by function and geographic level
-      </h2>
+    <section id="function-geography" className="mt-12 scroll-mt-40 space-y-4">
+      <ChartHeading>Expenditure by function and geographic level</ChartHeading>
       <p className="max-w-3xl text-sm text-gray-600">
         Column widths show each function’s share of reported expenditure. Within
         each column, the stacked areas show where that expenditure is reported.

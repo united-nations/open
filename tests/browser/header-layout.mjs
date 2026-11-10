@@ -33,7 +33,7 @@ try {
       `Sticky offsets follow the measured shared header height at ${width}`,
     );
     const headingPadding = await page
-      .locator("main h2")
+      .locator("main h1")
       .first()
       .evaluate((heading) =>
         parseFloat(getComputedStyle(heading.parentElement).paddingTop),

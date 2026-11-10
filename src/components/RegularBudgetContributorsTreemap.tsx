@@ -1,6 +1,6 @@
 "use client";
+import { SectionHeading } from "@/components/ContentHeading";
 import { SHOW_REGULAR_BUDGET_OUTSTANDING } from "@/lib/featureFlags";
-import { Link as LinkIcon } from "lucide-react";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { Tooltip } from "@un-eosg/ui/components/tooltip";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
@@ -235,18 +235,9 @@ export function RegularBudgetContributorsTreemap() {
       className="relative w-full scroll-mt-40"
     >
       {SHOW_REGULAR_BUDGET_OUTSTANDING && (
-        <h2 className="group mb-5 text-2xl font-medium">
-          <a
-            href="#regular-budget-contributors"
-            className="underline-offset-4 hover:underline focus-visible:underline"
-          >
-            Assessed contributions
-            <LinkIcon
-              aria-hidden="true"
-              className="ml-2 inline size-5 align-baseline text-gray-400 opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100"
-            />
-          </a>
-        </h2>
+        <SectionHeading anchor="regular-budget-contributors" className="mb-5">
+          Assessed contributions
+        </SectionHeading>
       )}
       <DelayedChartLoading
         pending={loadedData?.meta.year !== selectedYear}
@@ -351,10 +342,7 @@ export function RegularBudgetContributorsTreemap() {
                       />
                     }
                   >
-                    <span
-                      tabIndex={0}
-                      className="cursor-help"
-                    >
+                    <span tabIndex={0} className="cursor-help">
                       {formatCurrency(matchingTotal)}
                     </span>
                   </Tooltip>
@@ -418,8 +406,12 @@ export function RegularBudgetContributorsTreemap() {
       )}
       <PaymentChartScaleProvider>
         <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-x-6 lg:gap-y-0">
-          <RegularBudgetPaymentStatusTrends />
-          <RegularBudgetPaymentTimelineCard />
+          <RegularBudgetPaymentStatusTrends
+            headingLevel={SHOW_REGULAR_BUDGET_OUTSTANDING ? "h3" : "h2"}
+          />
+          <RegularBudgetPaymentTimelineCard
+            headingLevel={SHOW_REGULAR_BUDGET_OUTSTANDING ? "h3" : "h2"}
+          />
         </div>
       </PaymentChartScaleProvider>
       {SHOW_REGULAR_BUDGET_OUTSTANDING && (

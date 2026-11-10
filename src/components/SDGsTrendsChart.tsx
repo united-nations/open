@@ -1,3 +1,4 @@
+import { ChartHeading } from "@/components/ContentHeading";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import {
@@ -66,9 +67,9 @@ export async function SDGsTrendsChart() {
       aria-labelledby="sdg-trends-heading"
       className="mt-12 min-w-0 space-y-4 lg:w-1/2"
     >
-      <h2 id="sdg-trends-heading" className="text-xl font-bold text-gray-900">
+      <ChartHeading id="sdg-trends-heading">
         Expenditure by SDG classification over time
-      </h2>
+      </ChartHeading>
       <FinancingInstrumentChart
         accessibleTableLabel="Annual expenditure by SDG classification"
         data={data}

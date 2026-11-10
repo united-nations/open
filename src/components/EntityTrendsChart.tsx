@@ -1,4 +1,5 @@
 "use client";
+import { ChartHeading } from "@/components/ContentHeading";
 import {
   TREND_CHART_HEIGHT,
   TREND_CHART_MARGIN,
@@ -318,9 +319,7 @@ export function EntityTrendsChart() {
         <div className="flex flex-col" data-money-chart>
           {/* Title and selector */}
           <div className="space-y-2 pb-3">
-            <h3 className="text-lg font-medium text-gray-900">
-              Revenue and expenditure over time
-            </h3>
+            <ChartHeading>Revenue and expenditure over time</ChartHeading>
             <div className="flex flex-wrap items-center gap-2">
               <HierarchicalSingleSelect
                 groups={singleSelectGroups}
@@ -422,9 +421,7 @@ export function EntityTrendsChart() {
         <div className="flex flex-col" data-money-chart>
           {/* Title and chips */}
           <div className="space-y-2 pb-3">
-            <h3 className="text-lg font-medium text-gray-900">
-              Compare expenditure over time
-            </h3>
+            <ChartHeading>Compare expenditure over time</ChartHeading>
             <HierarchicalMultiSelect
               groups={compareGroups}
               selected={compareSelected}

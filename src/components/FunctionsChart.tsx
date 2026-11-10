@@ -1,4 +1,5 @@
 "use client";
+import { ChartHeading } from "@/components/ContentHeading";
 import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 import { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -146,7 +147,7 @@ export function FunctionsTrendsChart() {
     );
   return (
     <section className="min-w-0 space-y-4">
-      <h3 className="text-xl font-bold">Expenditure by function over time</h3>
+      <ChartHeading>Expenditure by function over time</ChartHeading>
       <FinancingInstrumentChart
         height={240}
         legendClassName="content-end items-start"

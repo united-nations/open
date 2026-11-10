@@ -1,5 +1,6 @@
 "use client";
 
+import { SectionHeading, ChartHeading } from "@/components/ContentHeading";
 import { useEffect, useMemo, useState } from "react";
 import {
   GroupedTreemap,
@@ -9,7 +10,7 @@ import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
 import { SearchInput } from "@un-eosg/ui/components/search-input";
 import { TableHead } from "@un-eosg/ui/components/data-table";
-import { ChevronDown, ChevronUp, Link as LinkIcon } from "lucide-react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { ChartFooter } from "@/components/ChartFooter";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { HierarchicalMultiSelect } from "@/components/ui/hierarchical-multi-select";
@@ -222,23 +223,17 @@ export function RegularBudgetOutstandingView({
   );
   return (
     <section
-      className="mt-12 scroll-mt-40 space-y-5 border-t border-gray-200 pt-8"
+      className="mt-12 scroll-mt-40 space-y-4 border-t border-gray-200 pt-8"
       aria-labelledby="outstanding-heading"
       id="regular-budget-outstanding"
     >
       <div>
-        <h2 id="outstanding-heading" className="group text-2xl font-medium">
-          <a
-            href="#regular-budget-outstanding"
-            className="underline-offset-4 hover:underline focus-visible:underline"
-          >
-            Outstanding contributions
-            <LinkIcon
-              aria-hidden="true"
-              className="ml-2 inline size-5 align-baseline text-gray-400 opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100"
-            />
-          </a>
-        </h2>
+        <SectionHeading
+          id="outstanding-heading"
+          anchor="regular-budget-outstanding"
+        >
+          Outstanding contributions
+        </SectionHeading>
         <p className="mt-2 text-gray-600">
           Amounts still owed to the regular budget, including previous years’
           arrears, after partial payments and credits. Annual autumn snapshots.
@@ -434,9 +429,9 @@ export function RegularBudgetOutstandingView({
       </ChartFrame>
       <div className="grid grid-cols-1 gap-8 pt-4 lg:grid-cols-2 lg:gap-6">
         <div className="min-w-0 space-y-3" data-outstanding-comparison>
-          <h3 className="text-lg font-medium">
+          <ChartHeading as="h3">
             Outstanding contributions over time
-          </h3>
+          </ChartHeading>
           <HierarchicalMultiSelect
             groups={[
               {

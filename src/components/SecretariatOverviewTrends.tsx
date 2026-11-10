@@ -1,4 +1,5 @@
 "use client";
+import { ChartHeading } from "@/components/ContentHeading";
 
 import { useEffect, useMemo, useState } from "react";
 import { HierarchicalMultiSelect } from "@/components/ui/hierarchical-multi-select";
@@ -115,12 +116,11 @@ export function SecretariatOverviewTrends() {
 
   return (
     <div className="mt-10">
-      <h3 className="mb-4 text-lg font-medium text-gray-900">Explore trends</h3>
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-6">
         <div className="flex flex-col">
-          <h4 className="mb-3 text-sm font-medium text-gray-700">
+          <ChartHeading className="mb-3">
             Expenditure by priority area
-          </h4>
+          </ChartHeading>
           <HierarchicalMultiSelect
             className="mb-3"
             selectionSummary={
@@ -157,9 +157,9 @@ export function SecretariatOverviewTrends() {
           />
         </div>
         <div className="flex flex-col">
-          <h4 className="mb-3 text-sm font-medium text-gray-700">
+          <ChartHeading className="mb-3">
             Expenditure by funding source
-          </h4>
+          </ChartHeading>
           <FinancingInstrumentChart
             data={fundingData}
             filterable

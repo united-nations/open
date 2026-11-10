@@ -1,7 +1,7 @@
 "use client";
+import { SectionHeading } from "@/components/ContentHeading";
 import { useYearRanges } from "@/lib/useYearRanges";
 import { revenueCoverage } from "@/lib/revenueCoverage";
-import { Link as LinkIcon } from "lucide-react";
 
 import { useEffect, useMemo, useState } from "react";
 import { FinancialFlowColumnSelect } from "./FinancialFlowColumnSelect";
@@ -226,18 +226,9 @@ export function SystemFlows() {
       aria-labelledby="system-flows-title"
       className="mt-12 scroll-mt-40 space-y-4"
     >
-      <h2 id="system-flows-title" className="group text-2xl font-bold">
-        <a
-          href="#system-flows"
-          className="underline-offset-4 hover:underline focus-visible:underline"
-        >
-          Financial flows
-          <LinkIcon
-            aria-hidden="true"
-            className="ml-2 inline size-5 align-baseline text-gray-400 opacity-0 transition-opacity group-focus-within:opacity-100 group-hover:opacity-100"
-          />
-        </a>
-      </h2>
+      <SectionHeading id="system-flows-title" anchor="system-flows">
+        Financial flows
+      </SectionHeading>
       <ChartHeader
         yearControl={
           sources && year !== null ? (

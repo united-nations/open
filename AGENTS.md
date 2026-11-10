@@ -83,6 +83,6 @@ GitHub Actions (`.github/workflows/nextjs.yml`) builds the static export and dep
 - Server Components by default; add `"use client"` only for interactive pieces.
 - PascalCase for component filenames; kebab/snake_case for other files. Name similar components so they sort together.
 - Strict TypeScript, no `any`. Add shadcn components via `npx shadcn@latest add <component>`.
-- Design: left-align, minimal, clear hierarchy, UN color palette (especially `un-blue`).
+- Design: left-align, minimal, clear hierarchy, UN color palette (especially `un-blue`). Data-route titles use `PageHeading` as the single H1; the shared section introduction is prominent prose. Use `SectionHeading` for major H2 sections and their anchors, and `ChartHeading` for peer chart titles (18px medium). Chart headings use H2 directly beneath the route title and H3 inside a major section. Preserve the compact heading scale in sidebars.
 - In public interface copy, name the data or its source. Never use “workbook,” including in link labels, methodology text, and status messages.
 - Avoid parallel infrastructure — prefer the existing global mappings in `src/lib/` and `python/utils.py`.

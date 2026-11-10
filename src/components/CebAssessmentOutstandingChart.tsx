@@ -1,4 +1,5 @@
 "use client";
+import { ChartHeading } from "@/components/ContentHeading";
 
 import { useCallback, useState } from "react";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
@@ -70,12 +71,9 @@ export function CebAssessmentOutstandingChart() {
       aria-busy={loading}
     >
       <div className="flex flex-wrap items-center justify-between gap-3">
-        <h3
-          id="ceb-outstanding-title"
-          className="text-lg font-medium text-gray-900"
-        >
+        <ChartHeading as="h3" id="ceb-outstanding-title">
           Reported outstanding assessments
-        </h3>
+        </ChartHeading>
         <YearSlider
           years={years}
           selectedYear={year}

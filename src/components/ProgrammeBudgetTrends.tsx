@@ -1,4 +1,5 @@
 "use client";
+import { ChartHeading } from "@/components/ContentHeading";
 import manifest from "../../public/data/manifest.json";
 import {
   TREND_CHART_HEIGHT,
@@ -172,9 +173,7 @@ export function ProgrammeBudgetTrends() {
 
   return (
     <div className="mt-10 w-full lg:w-1/2 lg:pe-3" data-money-chart>
-      <h3 className="mb-3 text-lg font-medium text-gray-900">
-        Programme budget over time
-      </h3>
+      <ChartHeading className="mb-3">Programme budget over time</ChartHeading>
       <div
         className="mb-3 flex flex-wrap items-center gap-2"
         role="group"

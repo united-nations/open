@@ -1,4 +1,5 @@
 "use client";
+import { ChartHeading } from "@/components/ContentHeading";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 
 import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
@@ -9,7 +10,11 @@ import { loadYearData } from "@/lib/data";
 import { useYearRanges } from "@/lib/useYearRanges";
 import type { RegularBudgetContributorsData } from "@/types";
 
-export function RegularBudgetPaymentTimelineCard() {
+export function RegularBudgetPaymentTimelineCard({
+  headingLevel = "h2",
+}: {
+  headingLevel?: "h2" | "h3";
+}) {
   const [measure, setMeasure] = useState("amount");
   const range = useYearRanges().regularBudgetContributors;
   const [selectedYear, setSelectedYear] = useState(range.default);
@@ -43,9 +48,9 @@ export function RegularBudgetPaymentTimelineCard() {
       <DelayedChartLoading pending={loading} requestKey={selectedYear} />
       <div className="contents">
         <div className="mb-3 flex flex-wrap items-center justify-between gap-3">
-          <h3 className="text-lg font-medium text-gray-900">
+          <ChartHeading as={headingLevel}>
             Payment status within the year
-          </h3>
+          </ChartHeading>
         </div>
 
         <div className="mb-3 flex items-start">

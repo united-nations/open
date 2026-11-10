@@ -1,4 +1,5 @@
 "use client";
+import { SectionHeading } from "@/components/ContentHeading";
 
 import { useEffect, useMemo, useState } from "react";
 import { FinancialFlowDiagram } from "./FinancialFlowDiagram";
@@ -99,8 +100,14 @@ export function SecretariatFlows() {
     setSelected({ ...entity, cells, total: sumRecords(members) });
   };
   return (
-    <section id="secretariat-flows" className="mt-12 space-y-4">
-      <h2 className="text-2xl font-bold">Financial flows</h2>
+    <section
+      id="secretariat-flows"
+      aria-labelledby="secretariat-flows-title"
+      className="mt-12 scroll-mt-40 space-y-4"
+    >
+      <SectionHeading id="secretariat-flows-title" anchor="secretariat-flows">
+        Financial flows
+      </SectionHeading>
       <ChartFrame
         header={
           <ChartHeader
