@@ -283,11 +283,23 @@ The contributor view includes three disjoint flow categories:
 - Internal transfers between accounts.
 
 The contributor treemap groups voluntary contributions as Government, Others,
-or Contributors unspecified for Schedule 8.1. It also displays
+or Category not reported when the source names the contributor without a
+category. Contributors unspecified is reserved for Schedule 8.1 amounts without
+contributor identities. It also displays
 Inter-organizational arrangements and Internal transfers. Classification follows
 each source row, so one contributor can appear in multiple groups. Tiles and
 their source links follow the selected category, while the sidebar shows the
 contributor across categories.
+
+Recognized category headings are retained on tall PDF pages and continuation
+pages. In the 2025 LLB contribution table, the missing opening Government
+heading is reconstructed only for the reviewed 16-row block closed by its
+printed $31,075,564 Total Government. Exact table identity, row boundaries,
+subtotal and signed row sum must match; changed evidence fails extraction.
+Source-reference labels disclose this subtotal basis. No categories are inferred
+from contributor names. OUN's two negative 2025 rows have no reported category
+and remain Category not reported. Negative-only categories keep their controls
+and signed totals without receiving artificial treemap area.
 
 All use signed printed amounts, net of the row's refunds and adjustments.
 Receivable balances, printed subtotals and grand totals are excluded from named

@@ -49,6 +49,11 @@ const GROUP_STYLES: Record<
     color: "#047857",
     textColor: "#ffffff",
   },
+  category_unknown: {
+    label: "Category not reported",
+    color: "#78716c",
+    textColor: "#ffffff",
+  },
   inter_organizational: {
     label: "Inter-organizational arrangements",
     color: "#4b7f82",
@@ -96,6 +101,11 @@ function ContributorTooltip({
           : "Contributions and transfers",
         value: currency(flow.amount_usd),
       }}
+      notes={
+        flow.group === "category_unknown"
+          ? "The source names this contributor without reporting a contributor category."
+          : undefined
+      }
       actionHint={
         isUnitemized
           ? "Click to explore recipient funds"
@@ -268,7 +278,7 @@ export function TrustFundContributorsTreemap({
                 {(Object.keys(GROUP_STYLES) as ContributorGroup[])
                   .filter(
                     (key) =>
-                      key !== "unitemized" ||
+                      (key !== "unitemized" && key !== "category_unknown") ||
                       tiles.some(({ flow }) => flow.group === key),
                   )
                   .map((key) => (
@@ -328,10 +338,7 @@ export function TrustFundContributorsTreemap({
                       </div>
                     }
                   >
-                    <span
-                      tabIndex={0}
-                      className="cursor-help"
-                    >
+                    <span tabIndex={0} className="cursor-help">
                       {currency(visibleTotal)}
                     </span>
                   </Tooltip>

@@ -243,6 +243,49 @@ class TrustFundFrontendExportTests(unittest.TestCase):
         self.assertEqual(sum(g["amount_usd"] for g in groups), 42)
         self.assertEqual([g["supportingSources"][0]["pdfPage"] for g in groups], [1, 2, 3, 4])
 
+    def test_unknown_voluntary_category_is_distinct_and_additive(self) -> None:
+        rows = pd.DataFrame([
+            {"flow_type": "voluntary_contribution", "counterparty_group": group,
+             "effective_amount_usd": amount, "total_usd": amount,
+             "fund_code": "AAA", "counterparty": "Same named contributor",
+             "page": page, "schedule_number": "1.1"}
+            for page, (group, amount) in enumerate([
+                ("Government", 10), ("Governments", 5), ("Others", 20),
+                (None, -3), ("", 2),
+            ], 1)
+        ])
+        groups = flow_breakdown(rows, {"symbol": "Source", "landing_page_url": "https://example.org"}, 2025)
+        self.assertEqual([(group["group"], group["amount_usd"]) for group in groups],
+                         [("governments", 15), ("other", 20), ("category_unknown", -1)])
+        self.assertEqual(sum(group["amount_usd"] for group in groups), rows.effective_amount_usd.sum())
+        unknown = groups[-1]
+        self.assertEqual(unknown["label"], "Category not reported")
+        self.assertEqual([source["pdfPage"] for source in unknown["supportingSources"]], [4, 5])
+        self.assertEqual([source["operand"]["amount"] for source in unknown["supportingSources"]], [-3, 2])
+        unexpected = rows.copy()
+        unexpected.loc[0, "counterparty_group"] = "Unexpected explicit category"
+        with self.assertRaisesRegex(ValueError, "categories require review"):
+            flow_breakdown(unexpected, {"symbol": "Source"}, 2025)
+
+    def test_llb_category_source_explains_reviewed_subtotal(self) -> None:
+        from trust_fund_schedules import normalize_flow_table
+        import json
+        path = Path(__file__).resolve().parents[2] / "data/trust-fund-schedules/stage1/tables.jsonl"
+        with path.open() as handle:
+            table = next(table for line in handle
+                         if (table := json.loads(line))["table_id"] ==
+                         "2025-p122-voluntary-contribution-1.44.1-y357")
+        rows = pd.DataFrame(normalize_flow_table(table))
+        germany = rows.loc[rows.counterparty.eq("Germany")].copy()
+        germany["effective_amount_usd"] = germany.total_usd
+        source, = row_references(germany,
+            {"symbol": "2025 schedules", "landing_page_url": "https://example.org"},
+            2025, contributions=True)
+        self.assertIn("printed Total Government on PDF p. 122", source["label"])
+        self.assertEqual(source["pdfPage"], 122)
+        self.assertEqual(source["rowLabel"], "Germany")
+        self.assertEqual(source["operand"]["amount"], 20_798_122)
+
     def test_known_case_and_typo_variants_collapse(self) -> None:
         self.assertEqual(
             canonical_counterparty("United States Of America"),

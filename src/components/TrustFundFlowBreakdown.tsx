@@ -61,11 +61,21 @@ export function TrustFundFlowBreakdown({ flows }: { flows: TrustFundFlow[] }) {
               percent={
                 maximum ? (Math.max(0, row.amount_usd) / maximum) * 100 : 0
               }
-              color="var(--color-un-blue)"
+              color={
+                row.group === "category_unknown"
+                  ? "#78716c"
+                  : "var(--color-un-blue)"
+              }
             />
           </FinancialPanelRankedRow>
         ))}
       </div>
+      {grouped.has("category_unknown") && (
+        <p className="mt-3 text-sm text-gray-500">
+          The source names these contributors without reporting a contributor
+          category.
+        </p>
+      )}
       <p className="mt-3 text-sm">
         Signed amounts include reported refunds and adjustments. Internal
         transfers move existing funding between accounts; these totals are not a

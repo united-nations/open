@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import sys
+import copy
+import json
 import unittest
 from pathlib import Path
 
@@ -19,6 +21,57 @@ def row(y: float, *words: tuple[float, float, str]) -> schedules.PhysicalRow:
 
 
 class TrustFundScheduleTests(unittest.TestCase):
+    def test_tall_page_headings_preserve_categories_and_signed_rows(self) -> None:
+        table = self.flow_table([
+            {"y": 845, "counterparty": "Government"},
+            {"y": 860, "counterparty": "Country A", "total": "100"},
+            {"y": 900, "counterparty": "Others"},
+            {"y": 910, "counterparty": "Foundation", "total": "(20)"},
+            # The word Others can also be a reported monetary counterparty.
+            {"y": 920, "counterparty": "Others", "total": "5"},
+            {"y": 950, "counterparty": "123"},
+        ])
+        original = copy.deepcopy(table)
+        rows = schedules.normalize_flow_table(table)
+        self.assertEqual([row["counterparty_group"] for row in rows],
+                         ["Government", "Others", "Others"])
+        self.assertEqual([row["total_usd"] for row in rows], [100, -20, 5])
+        self.assertEqual([row["source_y"] for row in rows], [860, 910, 920])
+        self.assertEqual(table, original)
+        continuation = schedules.normalize_flow_table(self.flow_table([
+            {"y": 100, "counterparty": "Next foundation", "total": "30"},
+        ]), rows[-1]["counterparty_group"])
+        self.assertEqual(continuation[0]["counterparty_group"], "Others")
+
+    def test_reviewed_llb_category_uses_its_printed_subtotal_only(self) -> None:
+        path = Path(__file__).resolve().parents[2] / "data/trust-fund-schedules/stage1/tables.jsonl"
+        with path.open() as handle:
+            table = next(table for line in handle
+                         if (table := json.loads(line))["table_id"] ==
+                         "2025-p122-voluntary-contribution-1.44.1-y357")
+        rows = schedules.normalize_flow_table(table)
+        government = [row for row in rows if row["counterparty_group"] == "Government"
+                      and not row["is_total"]]
+        self.assertEqual(len(government), 16)
+        self.assertEqual(sum(row["total_usd"] for row in government), 31_075_564)
+        self.assertIn(-97_873, [row["total_usd"] for row in government])
+        self.assertTrue(all(row["counterparty_group"] == "Others" for row in rows
+                            if row["counterparty"] == "European Union"))
+        for change in ["amount", "subtotal", "page", "identity", "heading"]:
+            changed = copy.deepcopy(table)
+            if change == "amount": changed["rows"][4]["total"] = "1"
+            if change == "subtotal": changed["rows"][20]["total"] = "1"
+            if change == "page": changed["page"] += 1
+            if change == "identity": changed["table_id"] += "-changed"
+            if change == "heading": changed["rows"][0]["counterparty"] = "Others"
+            with self.subTest(change=change), self.assertRaises(ValueError):
+                schedules.normalize_flow_table(changed)
+        unrelated = self.flow_table([
+            {"y": 100, "counterparty": "Country A", "total": "10"},
+            {"y": 110, "counterparty": "Total Government", "total": "10"},
+        ])
+        self.assertIsNone(schedules.normalize_flow_table(unrelated)[0]["counterparty_group"])
+
     def test_contributor_and_discount_rows_are_not_headers(self) -> None:
         for label, amount in [
             ("Other donors", "2 486 433"),

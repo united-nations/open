@@ -267,6 +267,7 @@ export interface TrustFundFlow {
   group:
     | "governments"
     | "other"
+    | "category_unknown"
     | "inter_organizational"
     | "internal"
     | "unitemized";

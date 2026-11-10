@@ -81,6 +81,23 @@ COUNTERPARTY_GROUPS = {
     "Foundations",
 }
 
+# The 2025 LLB contribution table omits its opening category heading but closes
+# this exact block with a printed Total Government. This is source evidence,
+# not a contributor-name classification or a category borrowed from receivables.
+REVIEWED_CATEGORY_SUBTOTALS = {
+    "2025-p122-voluntary-contribution-1.44.1-y357": {
+        "calendar_year": 2025,
+        "fund_code": "LLB",
+        "page": 122,
+        "table_kind": "voluntary_contribution",
+        "member_indexes": tuple(range(4, 20)),
+        "subtotal_index": 20,
+        "subtotal_label": "Total Government",
+        "subtotal_usd": 31_075_564,
+        "group": "Government",
+    },
+}
+
 FLOW_HEADER_TERMS = (
     "donor",
     "current",
@@ -1272,10 +1289,14 @@ def normalize_flow_table(table: dict, group: str | None = None) -> list[dict]:
     ]
     last_amount_index = amount_indexes[-1] if amount_indexes else None
     for literal_index, literal in enumerate(table["rows"]):
-        if float(literal.get("y", 0)) > 720 and not any(
+        # Category headings are table structure even on tall PDF pages. Keep
+        # monetary rows named "Others" as data, and retain footer screening for
+        # unrelated text. In particular, do not lose heading state on continuations.
+        if (literal.get("counterparty", "").strip() not in COUNTERPARTY_GROUPS
+            and float(literal.get("y", 0)) > 720 and not any(
             parse_amount(literal.get(column, ""))[0] is not None
             for column in measure_columns
-        ):
+        )):
             continue
         literal = dict(literal)
         label = literal.get("counterparty", "").strip()
@@ -1392,6 +1413,27 @@ def normalize_flow_table(table: dict, group: str | None = None) -> list[dict]:
             data[f"{column}_reported_as_dash"] = is_dash
         rows.append(data)
         last_data = data
+    if (table["calendar_year"], table["fund_code"], table["table_kind"]) == (
+        2025, "LLB", "voluntary_contribution"
+    ):
+        review = REVIEWED_CATEGORY_SUBTOTALS.get(table["table_id"])
+        if review is None or any(table[key] != review[key] for key in (
+            "calendar_year", "fund_code", "page", "table_kind"
+        )):
+            raise ValueError("Reviewed 2025 LLB contribution table identity changed")
+        by_index = {row["source_row_index"]: row for row in rows}
+        members = [by_index.get(index) for index in review["member_indexes"]]
+        subtotal = by_index.get(review["subtotal_index"])
+        if (any(row is None or row["is_total"]
+                or row["counterparty_group"] is not None
+                or row.get("total_usd") is None for row in members)
+            or subtotal is None or not subtotal["is_total"]
+            or subtotal["counterparty"] != review["subtotal_label"]
+            or subtotal.get("total_usd") != review["subtotal_usd"]
+            or sum(row["total_usd"] for row in members) != review["subtotal_usd"]):
+            raise ValueError("Reviewed 2025 LLB Government subtotal evidence changed")
+        for row in [*members, subtotal]:
+            row["counterparty_group"] = review["group"]
     return rows
 
 

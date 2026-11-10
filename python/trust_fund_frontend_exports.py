@@ -18,6 +18,7 @@ from typing import Any
 import pandas as pd
 from trust_fund_descriptions import extract_descriptions
 from trust_fund_groups import annotate_groups
+from trust_fund_schedules import COUNTERPARTY_GROUPS, REVIEWED_CATEGORY_SUBTOTALS
 from utils import clean_donor_name
 
 DEFAULT_STAGE2 = Path("data/trust-fund-schedules/stage2")
@@ -187,6 +188,15 @@ def row_references(
             "columnHeader": column,
             "tableTitle": f"Schedule {row['schedule_number']} — {table_title}",
         }
+        category_review = REVIEWED_CATEGORY_SUBTOTALS.get(row.get("source_table_id"))
+        if (contributions and category_review is not None
+            and year == category_review["calendar_year"]
+            and row.get("source_row_index") in category_review["member_indexes"]
+            and row.get("counterparty_group") == category_review["group"]):
+            reference["label"] += (
+                f"; category established by printed {category_review['subtotal_label']} "
+                f"on PDF p. {category_review['page']}"
+            )
         if pd.notna(row.get("page")):
             reference["pdfPage"] = int(row["page"])
             reference["pdfPageScope"] = "row"
@@ -625,9 +635,22 @@ def selected_funding_rows(
 
 
 def flow_breakdown(rows: pd.DataFrame, source: dict[str, Any], year: int) -> list[dict[str, Any]]:
+    voluntary = rows["flow_type"].eq("voluntary_contribution")
+    categories = rows["counterparty_group"]
+    unrecognized = (voluntary & categories.notna()
+                    & categories.astype(str).str.strip().ne("")
+                    & ~categories.isin(COUNTERPARTY_GROUPS))
+    if unrecognized.any():
+        raise ValueError(
+            "Unrecognized source contributor categories require review: "
+            f"{sorted(set(categories.loc[unrecognized]))}"
+        )
+    government = rows["counterparty_group"].isin({"Government", "Governments"})
+    other = rows["counterparty_group"].isin(COUNTERPARTY_GROUPS - {"Government", "Governments"})
     groups = [
-        ("governments", "Government contributions", rows["flow_type"].eq("voluntary_contribution") & rows["counterparty_group"].eq("Government")),
-        ("other", "Other voluntary contributions", rows["flow_type"].eq("voluntary_contribution") & ~rows["counterparty_group"].eq("Government")),
+        ("governments", "Government contributions", voluntary & government),
+        ("other", "Other voluntary contributions", voluntary & other),
+        ("category_unknown", "Category not reported", voluntary & ~(government | other)),
         ("inter_organizational", "Inter-organizational arrangements", rows["flow_type"].eq("other_transfer_allocation_contributions")),
         ("internal", "Internal transfers", rows["flow_type"].eq("other_transfer_allocation_internal_transfers")),
     ]
