@@ -1,5 +1,6 @@
 "use client";
 import { revenueCoverage } from "@/lib/revenueCoverage";
+import { useSidebarSectionScroll } from "@/hooks/useSidebarSectionScroll";
 import { useYearResource } from "@/hooks/useYearResource";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
@@ -21,7 +22,7 @@ import {
 } from "@/lib/contributors";
 import { SidebarControls } from "@/components/SidebarControls";
 import { useFocusTrap } from "@/hooks/useFocusTrap";
-import { navigateToSidebar } from "@/hooks/useDeepLink";
+import { useRouter } from "next/navigation";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
 import {
   FinancialPanelHeading,
@@ -81,6 +82,7 @@ interface ContributorSidebarProps {
   contributor?: Contributor;
   assessmentId?: string;
   initialYear: number;
+  initialSection?: "assessments";
   onClose: () => void;
 }
 
@@ -102,8 +104,10 @@ export function ContributorSidebar({
   contributor,
   assessmentId,
   initialYear,
+  initialSection,
   onClose,
 }: ContributorSidebarProps) {
+  const router = useRouter();
   const [isVisible, setIsVisible] = useState(false);
   const [isClosing, setIsClosing] = useState(false);
   const [touchStart, setTouchStart] = useState<number | null>(null);
@@ -161,6 +165,11 @@ export function ContributorSidebar({
 
   // Focus trap for accessibility
   const focusTrapRef = useFocusTrap(!!(contributor || assessmentId), true);
+  useSidebarSectionScroll(
+    focusTrapRef,
+    initialSection,
+    !loadingYear && !assessmentHistory.loading,
+  );
 
   // Fetch contributor trends data on mount
   const trendName = yearContributor?.name ?? revenueName;
@@ -268,6 +277,13 @@ export function ContributorSidebar({
     .sort((a, b) => b.total - a.total);
 
   const sidebarTitleId = `contributor-sidebar-title`;
+  const assessmentContent =
+    assessmentId || assessmentHistory.value?.some(({ rows }) => rows.length) ? (
+      <CebAssessmentSidebarContent
+        resource={assessmentHistory}
+        year={selectedYear}
+      />
+    ) : null;
 
   return (
     <div
@@ -285,6 +301,7 @@ export function ContributorSidebar({
         onTouchEnd={onTouchEnd}
       >
         <FinancialDetailPanel
+          contentClassName="sidebar-scroll-content"
           title={title}
           titleId={sidebarTitleId}
           className="sm:w-full"
@@ -342,7 +359,7 @@ export function ContributorSidebar({
                 </div>
               )}
             <DelayedChartLoading
-              pending={loadingYear}
+              pending={loadingYear && !initialSection}
               requestKey={selectedYear}
             />
             {revenueName && !displayContributor && (
@@ -451,7 +468,9 @@ export function ContributorSidebar({
                                   label={contrib.entity}
                                   value={formatBudgetFixed(contrib.total)}
                                   onClick={() =>
-                                    navigateToSidebar("entity", contrib.entity)
+                                    router.push(
+                                      `/system/organizations/?year=${selectedYear}#entity=${encodeURIComponent(`${contrib.entity}@${selectedYear}`)}`,
+                                    )
                                   }
                                 >
                                   <Tooltip delayDuration={200}>
@@ -529,13 +548,7 @@ export function ContributorSidebar({
                 </div>
               </>
             )}
-            {(assessmentId ||
-              assessmentHistory.value?.some(({ rows }) => rows.length)) && (
-              <CebAssessmentSidebarContent
-                resource={assessmentHistory}
-                year={selectedYear}
-              />
-            )}
+            {assessmentContent}
           </div>
         </FinancialDetailPanel>
       </div>

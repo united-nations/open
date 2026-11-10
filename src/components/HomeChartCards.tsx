@@ -1,3 +1,4 @@
+import { assessmentTotals, CEB_ASSESSMENT_COLORS } from "@/lib/cebAssessments";
 import { UN_FUNCTIONS, type FunctionExpenses } from "@/lib/functions";
 import { trustFundReportingData } from "@/lib/trustFundReporting";
 import { FEATURES } from "@/lib/featureFlags";
@@ -22,6 +23,7 @@ import {
 } from "@/lib/secretariatGroupings";
 import type {
   BudgetData,
+  CebAssessmentsData,
   BudgetFundingSource,
   Entity,
   SecretariatEntitiesData,
@@ -33,6 +35,12 @@ type Tile = {
   value: number;
   color?: string;
   children?: Tile[];
+  assessment?: {
+    assessed: number;
+    current: number;
+    unknown: number;
+    prior: number;
+  };
 };
 type Country = { lat: number; long: number; total: number };
 type FundingYear = {
@@ -85,6 +93,7 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
     funds,
     missionMetadata,
     functions,
+    assessments,
   ] = await Promise.all([
     readData<Entity[]>("entities.json"),
     readData<{ entity: string; amount: number }[]>(
@@ -110,6 +119,9 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
       ? readData<SecretariatEntitiesData>("secretariat-entities.json")
       : null,
     readData<FunctionExpenses>("function-expenses.json"),
+    readData<CebAssessmentsData>(
+      `ceb-assessments-${year("cebAssessments")}.json`,
+    ),
   ]);
   const entityGroups = new Map(
     entities.map((entity) => [entity.entity, entity.system_grouping]),
@@ -200,6 +212,25 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
           color: getFinancingInstrumentColor(series.label),
         })),
       },
+    },
+    "/system/assessments": {
+      bands: "entities",
+      tiles: assessments.contributors.map((contributor): Tile => {
+        const totals = assessmentTotals([contributor]);
+        const assessed = Math.max(0, totals.assessed.value ?? 0);
+        const unknown = Math.min(assessed, totals.unknownCurrent);
+        const current = Math.min(
+          assessed - unknown,
+          totals.paidWithinAssessment,
+        );
+        const prior = Math.max(0, totals.prior.value ?? 0);
+        return {
+          label: contributor.name,
+          value: Math.max(assessed, current + unknown + prior),
+          color: "white",
+          assessment: { assessed, current, unknown, prior },
+        };
+      }),
     },
     "/system/locations": { countries },
     "/system/functions": {
@@ -475,6 +506,42 @@ function MiniTreemap({
             rx="1.5"
             fill={tile.color}
           />
+          {tile.assessment &&
+            (() => {
+              const width = Math.max(0, tile.width - 2);
+              const height = Math.max(0, tile.height - 2);
+              const assessment = tile.assessment;
+              let top = tile.y + 1;
+              return (
+                <>
+                  {(["current", "unknown", "prior"] as const).map((key) => {
+                    const segmentHeight =
+                      (height * assessment[key]) / tile.value;
+                    const y = top;
+                    top += segmentHeight;
+                    return (
+                      <rect
+                        key={key}
+                        x={tile.x + 1}
+                        y={y}
+                        width={width}
+                        height={segmentHeight}
+                        fill={CEB_ASSESSMENT_COLORS[key]}
+                      />
+                    );
+                  })}
+                  <rect
+                    x={tile.x + 1}
+                    y={tile.y + 1}
+                    width={width}
+                    height={(height * assessment.assessed) / tile.value}
+                    fill="none"
+                    stroke={CEB_ASSESSMENT_COLORS.assessed}
+                    strokeWidth="1"
+                  />
+                </>
+              );
+            })()}
           {tile.children &&
             squarifyDense(
               tile.children.map((child) => ({

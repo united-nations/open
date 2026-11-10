@@ -133,7 +133,7 @@ export function CebAssessmentOutstandingChart() {
                         onClick={() =>
                           navigateToSidebar(
                             "entity",
-                            `${record.entity}@${year}`,
+                            `${record.entity}@${year}@outstanding`,
                           )
                         }
                         className="grid w-full grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_4.5rem_4rem] items-center gap-2 rounded-sm text-left hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-un-blue"

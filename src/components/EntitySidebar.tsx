@@ -1,4 +1,5 @@
 "use client";
+import { useSidebarSectionScroll } from "@/hooks/useSidebarSectionScroll";
 import { useYearResource } from "@/hooks/useYearResource";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
@@ -72,6 +73,7 @@ interface EntitySidebarProps {
   revenue: EntityRevenue | null;
   initialYear: number;
   initialDataComplete?: boolean;
+  initialSection?: "assessments" | "outstanding";
   onClose: () => void;
 }
 
@@ -87,6 +89,7 @@ export function EntitySidebar({
   revenue,
   initialYear,
   initialDataComplete = true,
+  initialSection,
   onClose,
 }: EntitySidebarProps) {
   const router = useRouter();
@@ -186,6 +189,11 @@ export function EntitySidebar({
 
   // Focus trap for accessibility
   const focusTrapRef = useFocusTrap(!!entity, true);
+  useSidebarSectionScroll(
+    focusTrapRef,
+    initialSection,
+    !loadingYear && !assessmentHistory.loading,
+  );
 
   // Fetch entity trends data on mount
   useEffect(() => {
@@ -406,6 +414,21 @@ export function EntitySidebar({
       : 0;
 
   const sidebarTitleId = `entity-sidebar-title`;
+  const assessmentContent = (
+    <>
+      {assessmentHistory.value?.some(({ rows }) => rows.length) && (
+        <CebAssessmentSidebarContent
+          resource={assessmentHistory}
+          year={selectedYear}
+          breakdown="contributors"
+        />
+      )}
+      <CebAssessmentOutstandingSidebarContent
+        entity={entity.entity}
+        year={selectedYear}
+      />
+    </>
+  );
 
   return (
     <div
@@ -423,6 +446,7 @@ export function EntitySidebar({
         onTouchEnd={onTouchEnd}
       >
         <FinancialDetailPanel
+          contentClassName="sidebar-scroll-content"
           title={entity.entity}
           subtitle={entity.entity_long}
           titleId={sidebarTitleId}
@@ -438,7 +462,7 @@ export function EntitySidebar({
           }}
           controls={
             <SidebarControls
-              shareHash={`entity=${encodeURIComponent(`${entity.entity}@${selectedYear}`)}`}
+              shareHash={`entity=${encodeURIComponent(`${entity.entity}@${selectedYear}${initialSection === "outstanding" ? "@outstanding" : ""}`)}`}
               onClose={handleClose}
               closeLabel="Close sidebar"
             />
@@ -447,7 +471,7 @@ export function EntitySidebar({
           {/* Content */}
           <div className="relative space-y-6">
             <DelayedChartLoading
-              pending={loadingYear}
+              pending={loadingYear && !initialSection}
               requestKey={selectedYear}
             />
             {yearError && (
@@ -804,17 +828,7 @@ export function EntitySidebar({
               </div>
             )}
 
-            {assessmentHistory.value?.some(({ rows }) => rows.length) && (
-              <CebAssessmentSidebarContent
-                resource={assessmentHistory}
-                year={selectedYear}
-                breakdown="contributors"
-              />
-            )}
-            <CebAssessmentOutstandingSidebarContent
-              entity={entity.entity}
-              year={selectedYear}
-            />
+            {assessmentContent}
             {/* Retained for a later, explicitly enabled impact view. */}
             {SHOW_ENTITY_IMPACTS && (
               <div>

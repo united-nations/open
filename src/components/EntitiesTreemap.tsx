@@ -13,6 +13,8 @@ import {
   type GroupedTreemapTooltipContext,
 } from "@un-eosg/ui/components/grouped-treemap";
 import { useCallback, useEffect, useMemo, useState } from "react";
+import { CebAssessmentRevenueNote } from "@/components/CebAssessmentRevenueNote";
+import type { ReactNode } from "react";
 import { EntitySidebar } from "@/components/EntitySidebar";
 import { YearSlider } from "@/components/YearSlider";
 import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
@@ -104,7 +106,7 @@ function EntityTooltip({
   );
 }
 
-export function EntitiesTreemap() {
+export function EntitiesTreemap({ children }: { children?: ReactNode }) {
   const yearRanges = useYearRanges();
   const spendingYears = yearRanges.entitySpending.years;
   const revenueYears = yearRanges.entityRevenue.years;
@@ -574,6 +576,11 @@ export function EntitiesTreemap() {
           </div>
         }
       />
+
+      <div className="mt-3 max-w-3xl space-y-2 text-sm leading-relaxed text-gray-600 [&_a]:underline [&_a]:underline-offset-2">
+        {showRevenue && <CebAssessmentRevenueNote className="" />}
+        {children}
+      </div>
 
       {selectedEntity && dataReady && dataAvailable && !loadError && (
         <EntitySidebar

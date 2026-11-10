@@ -14,6 +14,7 @@ export const SYSTEM_NAV = [
     aliases: ["/system"],
   },
   { href: "/system/contributors", label: "Contributors" },
+  { href: "/system/assessments", label: "Assessments" },
   { href: "/system/locations", label: "Locations" },
   { href: "/system/functions", label: "Functions" },
   { href: "/system/goals", label: "Goals" },

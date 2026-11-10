@@ -368,9 +368,9 @@ export function ContributorTrendsChart() {
   return (
     <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-6">
       <div className="flex min-w-0 flex-col">
-        <h4 className="text-sm font-medium text-gray-700">
+        <h3 className="text-lg font-medium text-gray-900">
           Revenue by contributor type
-        </h4>
+        </h3>
         <div className="mt-auto">
           <FinancingInstrumentChart
             data={contributorTypeData}
@@ -386,9 +386,9 @@ export function ContributorTrendsChart() {
       <div className="flex min-w-0 flex-col" data-money-chart>
         {/* Title and chips */}
         <div className="space-y-2 pb-3">
-          <h4 className="text-sm font-medium text-gray-700">
+          <h3 className="text-lg font-medium text-gray-900">
             Compare contributors
-          </h4>
+          </h3>
           <HierarchicalMultiSelect
             groups={groups}
             selected={selected}
@@ -450,9 +450,9 @@ export function ContributorTrendsChart() {
 
       <div className="flex min-w-0 flex-col">
         <div className="space-y-2 pb-3">
-          <h4 className="text-sm font-medium text-gray-700">
+          <h3 className="text-lg font-medium text-gray-900">
             Revenue by financing instrument
-          </h4>
+          </h3>
           <div className="flex flex-wrap items-center gap-2">
             <HierarchicalSingleSelect
               groups={financingSingleSelectGroups}

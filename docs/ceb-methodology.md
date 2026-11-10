@@ -71,7 +71,7 @@ implementation inventory.
 
 ## Assessments and receipts workbook
 
-The System contributors and organizations pages include the separately sourced
+The System Assessments tab includes the separately sourced
 [CEB assessments and receipts workbook](https://unsceb.org/assessments-voted-assessments-received-current-year-and-prior-years-assessments-received/).
 The exporter reads the Data sheet and preserves all financial observations,
 including repeated organization–contributor rows, signed amounts, zeroes and
@@ -97,7 +97,7 @@ The trend shows prior-year receipts in the year they were received,
 including signed adjustments. The workbook groups all earlier assessment
 years together.
 
-Both pages use the same observations: the organizations view groups the
+Both treemaps use the same observations: the organizations view groups the
 contributor observations by recipient organization. Organization sidebars show
 the contributor breakdown, and contributor sidebars show the organization
 breakdown. Unknown current-year payments and the capped current-year tile fill
@@ -105,6 +105,18 @@ are calculated within each contributor–organization pair before aggregation, s
 one member's overpayment cannot offset another member's unknown payment status.
 Organization totals and trends are not calculated by reconciling these
 assessments against the separate CEB revenue series.
+
+The Assessments tab contains a full-width contributor treemap followed by a
+full-width organization treemap, with a system-wide payment trend and reported
+outstanding balances in two columns below. Organizations and Contributors
+retain the revenue views and link to Assessments with a note that assessed
+revenue is recognized in organizations' accounts and can include unpaid amounts.
+The new tab reuses the existing combined sidebars in place; assessment details
+are scrolled into view inside the panel when opened there, with the same section
+order and broader financial information as on the other tabs. Contributor and
+entity hashes include the selected year, so sharing or
+reloading opens the same record without changing tabs or scrolling the page.
+Existing links on Organizations and Contributors remain supported.
 
 ## Outstanding assessments from financial-situation reports
 
@@ -121,8 +133,8 @@ These are organization-level stocks of uncollected assessed contributions for
 current and prior years, in full nominal US dollars. They are not annual
 assessments less annual receipts, and they do not identify member-state debts.
 They remain separate from the annual assessments-and-receipts dataset. The
-Organizations page shows these as a separate ranked bar chart beside the annual
-payment trend, after the financial-flows section. Each organization sidebar
+Assessments tab shows these as a separate ranked bar chart beside the annual
+payment trend, below the organization treemap. Each organization sidebar
 shows the selected reported balance and its history. The overview keeps dates
 in tooltips; sidebars show them next to the balance. The chart reuses the
 Secretariat outstanding-dues colour. A small collapsed expander below each

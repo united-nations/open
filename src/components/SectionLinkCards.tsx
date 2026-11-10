@@ -4,6 +4,8 @@ import { ArrowRight } from "lucide-react";
 export const LINK_DESCRIPTIONS: Record<string, string> = {
   "/system/organizations": "Revenue and expenditure across UN organizations.",
   "/system/contributors": "Who funds the UN System, and how.",
+  "/system/assessments":
+    "Assessments payable, payments received and outstanding balances.",
   "/system/locations": "Where funds are spent, by country and region.",
   "/system/functions": "Expenditure across the four UN System functions.",
   "/system/goals": "Expenditure across the 17 Sustainable Development Goals.",
