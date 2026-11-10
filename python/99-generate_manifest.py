@@ -11,6 +11,7 @@ def detect_years(pattern: str) -> list[int]:
 
 def generate_manifest():
     manifest = {
+        "personnel": {"years": detect_years("personnel"), "default": "latest"},
         "donors": {"years": detect_years("donors"), "default": "latest"},
         "cebAssessments": {"years": detect_years("ceb-assessments"), "default": "latest"},
         "cebAssessmentOutstanding": {"years": detect_years("ceb-assessment-outstanding"), "default": "latest"},

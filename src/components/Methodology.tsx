@@ -98,9 +98,9 @@ export function CebMethodology() {
             </p>
             <p>
               IOM’s reported SDG and Non-SDG amounts together exceed its
-              organization expenditure by $106.30 million. The bridge between budgetary and
-              accrual expenditure leaves the excess unexplained. The negative
-              Not specified balance shows the difference.
+              organization expenditure by $106.30 million. The bridge between
+              budgetary and accrual expenditure leaves the excess unexplained.
+              The negative Not specified balance shows the difference.
             </p>
           </div>
           <p>
@@ -164,6 +164,10 @@ function PageMethodologyLink({ href }: { href: string }) {
 
 export function CebMethodologyLink() {
   return <PageMethodologyLink href="/about/#ceb-methodology" />;
+}
+
+export function PersonnelMethodologyLink() {
+  return <PageMethodologyLink href="/about/#personnel-methodology" />;
 }
 
 export function UninfoMethodology() {
@@ -653,9 +657,9 @@ function TrustFundContributorsMethodologyNotes() {
           </p>
           <p>
             UNODC’s March 2025 snapshot of 2023 pledges totals $453,853,084.35.
-            The November 2025 report gives $453,869,467 for 2023. The contributor
-            detail uses the March snapshot. The later report provides the
-            aggregate comparison.
+            The November 2025 report gives $453,869,467 for 2023. The
+            contributor detail uses the March snapshot. The later report
+            provides the aggregate comparison.
           </p>
         </>
       )}

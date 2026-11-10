@@ -64,7 +64,8 @@ jobs:
         run: pnpm build
       - name: Verify feature availability
         run: |
-          node --test src/lib/tests/featureProfiles.test.mjs
+          node --test src/lib/tests/featureProfiles.test.mjs src/lib/tests/personnel.test.mjs
+          python3 -m unittest discover -s python/tests -p test_ceb_personnel.py
           node scripts/check-feature-export.mjs
       - name: Install browser
         run: pnpm exec playwright install --with-deps chromium
@@ -76,6 +77,7 @@ jobs:
           node tests/browser/feature-profiles.mjs
           node tests/browser/system-functions.mjs
           node tests/browser/function-geography.mjs
+          if [ "$SITE_VARIANT" = full ]; then node tests/browser/personnel.mjs; fi
       - name: Upload artifact
         if: matrix.variant == 'public'
         uses: actions/upload-pages-artifact@v3

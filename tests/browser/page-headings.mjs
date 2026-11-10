@@ -11,6 +11,7 @@ const routes = [
   "/system/locations/",
   "/system/functions/",
   "/system/goals/",
+  ...(profile.personnel ? ["/system/personnel/"] : []),
   "/secretariat/",
   ...(profile.programmeBudget
     ? [

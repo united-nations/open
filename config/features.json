@@ -1,5 +1,6 @@
 {
   "public": {
+    "personnel": false,
     "programmeBudget": false,
     "regularBudgetOutstanding": false,
     "peacekeepingBudget": false,
@@ -11,6 +12,7 @@
     "entityImpacts": false
   },
   "preview": {
+    "personnel": false,
     "programmeBudget": true,
     "regularBudgetOutstanding": true,
     "peacekeepingBudget": true,
@@ -22,6 +24,7 @@
     "entityImpacts": false
   },
   "full": {
+    "personnel": true,
     "programmeBudget": true,
     "regularBudgetOutstanding": true,
     "peacekeepingBudget": true,
@@ -33,6 +36,7 @@
     "entityImpacts": true
   },
   "routes": {
+    "/system/personnel": "personnel",
     "/secretariat/programme-budget": "programmeBudget",
     "/secretariat/peacekeeping-budget": "peacekeepingBudget",
     "/secretariat/trust-funds": "trustFunds",

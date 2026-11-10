@@ -11,6 +11,7 @@ interface YearRange {
 }
 
 interface YearRanges {
+  personnel: YearRange;
   donors: YearRange;
   cebAssessments: YearRange;
   cebAssessmentOutstanding: YearRange;

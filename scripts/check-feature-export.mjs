@@ -10,11 +10,38 @@ assert.ok(
   "Invalid SITE_VARIANT",
 );
 process.env.NEXT_PUBLIC_SITE_VARIANT = variant;
-const { SECRETARIAT_NAV, isRouteEnabled, visibleSecretariatNav } =
-  await moduleAt("src/lib/navigation.ts");
+const {
+  SECRETARIAT_NAV,
+  isRouteEnabled,
+  visibleSecretariatNav,
+  visibleSystemNav,
+} = await moduleAt("src/lib/navigation.ts");
 const { FEATURES } = await moduleAt("src/lib/featureFlags.ts");
 const home = fs.readFileSync("out/index.html", "utf8");
 const secretariat = fs.readFileSync("out/secretariat/index.html", "utf8");
+const organizations = fs.readFileSync(
+  "out/system/organizations/index.html",
+  "utf8",
+);
+const personnelEnabled = variant === "full";
+assert.equal(FEATURES.personnel, personnelEnabled);
+assert.equal(
+  visibleSystemNav().some((item) => item.href === "/system/personnel"),
+  personnelEnabled,
+);
+for (const html of [home, organizations]) {
+  assert.equal(
+    html.includes(`href="${process.env.BASE_PATH ?? ""}/system/personnel/"`),
+    personnelEnabled,
+    `${variant}: Personnel navigation`,
+  );
+}
+const about = fs.readFileSync("out/about/index.html", "utf8");
+assert.equal(
+  about.includes('id="personnel-methodology"'),
+  personnelEnabled,
+  `${variant}: Personnel methodology`,
+);
 const pages = [];
 function collect(directory) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {

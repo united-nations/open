@@ -28,9 +28,11 @@ test("frontend resolves each build profile and its route visibility", () => {
           `
       import { moduleAt } from './src/lib/tests/moduleAt.mjs';
       const { SITE_VARIANT, FEATURES } = await moduleAt('src/lib/featureFlags.ts');
-      const { isRouteEnabled, visibleSecretariatNav } = await moduleAt('src/lib/navigation.ts');
+      const { isRouteEnabled, visibleSecretariatNav, visibleSystemNav } = await moduleAt('src/lib/navigation.ts');
       console.log(JSON.stringify({ variant: SITE_VARIANT, flags: FEATURES,
-        nav: visibleSecretariatNav(),
+        nav: visibleSecretariatNav(), systemNav: visibleSystemNav(),
+        personnel: isRouteEnabled('/system/personnel/'),
+        personnelChild: isRouteEnabled('/system/personnel/future-subpage/'),
         peaceOperations: isRouteEnabled('/secretariat/peacekeeping-budget/peace-operations/') }));
     `,
         ],
@@ -42,6 +44,12 @@ test("frontend resolves each build profile and its route visibility", () => {
     );
     assert.equal(actual.variant, variant);
     assert.deepEqual(actual.flags, profiles[variant]);
+    assert.equal(actual.personnel, variant === "full");
+    assert.equal(actual.personnelChild, variant === "full");
+    assert.equal(
+      actual.systemNav.some((item) => item.href === "/system/personnel"),
+      variant === "full",
+    );
     assert.equal(
       actual.peaceOperations,
       profiles[variant].peaceOperations && profiles[variant].peacekeepingBudget,

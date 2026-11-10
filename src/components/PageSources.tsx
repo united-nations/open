@@ -2,6 +2,10 @@ import { SHOW_UNINFO } from "@/lib/featureFlags";
 import { CEB_ASSESSMENTS_SOURCE } from "@/lib/cebAssessments";
 
 const PAGE_SOURCES = {
+  personnel: {
+    href: "https://unsceb.org/statistics/human-resources-statistics/",
+    label: "CEB Human Resources Statistics",
+  },
   ceb: {
     href: "https://unsceb.org/statistics/financial-statistics/",
     label: "CEB Financial Statistics",

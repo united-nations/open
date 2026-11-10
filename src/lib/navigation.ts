@@ -18,6 +18,7 @@ export const SYSTEM_NAV = [
   { href: "/system/locations", label: "Locations" },
   { href: "/system/functions", label: "Functions" },
   { href: "/system/goals", label: "Goals" },
+  { href: "/system/personnel", label: "Personnel" },
 ] as const satisfies readonly SectionNavItem[];
 
 export const SECRETARIAT_NAV = [
@@ -54,4 +55,8 @@ export function isRouteEnabled(pathname: string): boolean {
 
 export function visibleSecretariatNav(): SectionNavItem[] {
   return SECRETARIAT_NAV.filter((item) => isRouteEnabled(item.href));
+}
+
+export function visibleSystemNav(): SectionNavItem[] {
+  return SYSTEM_NAV.filter((item) => isRouteEnabled(item.href));
 }

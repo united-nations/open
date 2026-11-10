@@ -4,6 +4,9 @@ import profiles from "../../config/features.json" with { type: "json" };
 import { portalUrl } from "./helpers.mjs";
 const checks = [
   "header-layout",
+  ...(profiles[process.env.SITE_VARIANT ?? "public"].personnel
+    ? ["personnel"]
+    : []),
   "page-headings",
   "treemap-search-labels",
   "ceb-methodology",

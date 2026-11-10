@@ -4,3 +4,7 @@ data/trust-fund-source-candidates/**/*.html binary
 
 # Canonical generated tables use consistent repository line endings.
 data/trust-fund-source-candidates/**/*.csv text eol=lf
+
+# Preserve downloaded CEB HR bytes for recorded SHA-256 provenance.
+data/ceb/hr/raw/*.csv -text whitespace=cr-at-eol
+data/ceb/hr/ceb_hr_codebook_v1.0.md -text

@@ -13,7 +13,7 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import { PageBody } from "@/components/PageBody";
 import { ResourceLink } from "@/components/ResourceLink";
-import { SYSTEM_NAV, visibleSecretariatNav } from "@/lib/navigation";
+import { visibleSystemNav, visibleSecretariatNav } from "@/lib/navigation";
 
 export const metadata: Metadata = {
   description:
@@ -27,7 +27,7 @@ export default function HomePage() {
       title: "UN System",
       description:
         "The UN System comprises the UN Secretariat, funds and programmes, specialized agencies, related organizations, research and training institutes, and other entities.",
-      links: SYSTEM_NAV,
+      links: visibleSystemNav(),
     },
     {
       href: "/secretariat",

@@ -33,6 +33,19 @@ try {
     peaceOperations: "/secretariat/peacekeeping-budget/peace-operations/",
   };
   await page.goto(portalUrl, { waitUntil: "networkidle" });
+  assert.equal(
+    (await page.locator('a[href$="/system/personnel/"]').count()) > 0,
+    flags.personnel,
+  );
+  const personnelResponse = await page.goto(portalUrl + "/system/personnel/", {
+    waitUntil: "networkidle",
+  });
+  assert.equal(
+    personnelResponse.status(),
+    flags.personnel ? 200 : 404,
+    "Personnel is full-only",
+  );
+  await page.goto(portalUrl, { waitUntil: "networkidle" });
   for (const [feature, route] of Object.entries(routes)) {
     if (feature === "peaceOperations" && flags.peacekeepingBudget) {
       await page.goto(portalUrl + routes.peacekeepingBudget, {
