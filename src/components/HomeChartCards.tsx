@@ -40,7 +40,6 @@ type Tile = {
     assessed: number;
     current: number;
     unknown: number;
-    prior: number;
   };
 };
 type Country = { lat: number; long: number; total: number };
@@ -262,22 +261,7 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
     },
     "/system/assessments": {
       bands: "entities",
-      tiles: assessments.contributors.map((contributor): Tile => {
-        const totals = assessmentTotals([contributor]);
-        const assessed = Math.max(0, totals.assessed.value ?? 0);
-        const unknown = Math.min(assessed, totals.unknownCurrent);
-        const current = Math.min(
-          assessed - unknown,
-          totals.paidWithinAssessment,
-        );
-        const prior = Math.max(0, totals.prior.value ?? 0);
-        return {
-          label: contributor.name,
-          value: Math.max(assessed, current + unknown + prior),
-          color: "white",
-          assessment: { assessed, current, unknown, prior },
-        };
-      }),
+      tiles: assessmentPreviewTiles(assessments),
     },
     "/system/locations": { countries },
     "/system/functions": {
@@ -319,6 +303,48 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
     },
   };
 });
+
+function assessmentPreviewTiles(data: CebAssessmentsData): Tile[] {
+  const tiles = data.contributors
+    .map((contributor): Tile => {
+      const totals = assessmentTotals([contributor]);
+      const assessed = Math.max(0, totals.assessed.value ?? 0);
+      const unknown = Math.min(assessed, totals.unknownCurrent);
+      const current = Math.min(assessed - unknown, totals.paidWithinAssessment);
+      return {
+        label: contributor.name,
+        value: assessed,
+        color: "white",
+        assessment: { assessed, current, unknown },
+      };
+    })
+    .filter((tile) => tile.value > 0)
+    .sort((a, b) => b.value - a.value);
+  const total = tiles.reduce((sum, tile) => sum + tile.value, 0);
+  const minimumIndividualValue = total * 0.001;
+  const large = tiles.filter((tile) => tile.value >= minimumIndividualValue);
+  const small = tiles.filter((tile) => tile.value < minimumIndividualValue);
+  if (!small.length) return large;
+
+  // Keep the combined tail last so the thumbnail's corner stays simple.
+  const assessment = small.reduce(
+    (sum, tile) => ({
+      assessed: sum.assessed + tile.assessment!.assessed,
+      current: sum.current + tile.assessment!.current,
+      unknown: sum.unknown + tile.assessment!.unknown,
+    }),
+    { assessed: 0, current: 0, unknown: 0 },
+  );
+  return [
+    ...large,
+    {
+      label: "Other contributors",
+      value: assessment.assessed,
+      color: "white",
+      assessment,
+    },
+  ];
+}
 
 function trustFundTiles(data: BudgetData | null): Tile[] {
   if (!data) return [];
@@ -492,7 +518,7 @@ function MiniTreemap({
   // corner for small groups; programme parts preserve their semantic order.
   // Reuse the existing percentage-coordinate band layout for these silhouettes.
   const orderedTiles =
-    bands === "programme" || bands === "trust-funds"
+    bands === "programme" || bands === "trust-funds" || bands === "entities"
       ? positiveTiles
       : positiveTiles.sort((a, b) => b.value - a.value);
   const rects =
@@ -555,13 +581,14 @@ function MiniTreemap({
           />
           {tile.assessment &&
             (() => {
-              const width = Math.max(0, tile.width - 2);
-              const height = Math.max(0, tile.height - 2);
+              // Leave room for the thicker outline on every edge at thumbnail scale.
+              const width = Math.max(0, tile.width - 4);
+              const height = Math.max(0, tile.height - 4);
               const assessment = tile.assessment;
-              let top = tile.y + 1;
+              let top = tile.y + 2;
               return (
                 <>
-                  {(["current", "unknown", "prior"] as const).map((key) => {
+                  {(["current", "unknown"] as const).map((key) => {
                     const segmentHeight =
                       (height * assessment[key]) / tile.value;
                     const y = top;
@@ -569,7 +596,7 @@ function MiniTreemap({
                     return (
                       <rect
                         key={key}
-                        x={tile.x + 1}
+                        x={tile.x + 2}
                         y={y}
                         width={width}
                         height={segmentHeight}
@@ -578,13 +605,13 @@ function MiniTreemap({
                     );
                   })}
                   <rect
-                    x={tile.x + 1}
-                    y={tile.y + 1}
+                    x={tile.x + 2}
+                    y={tile.y + 2}
                     width={width}
                     height={(height * assessment.assessed) / tile.value}
                     fill="none"
-                    stroke={CEB_ASSESSMENT_COLORS.assessed}
-                    strokeWidth="1"
+                    stroke={CEB_ASSESSMENT_COLORS.current}
+                    strokeWidth="3"
                   />
                 </>
               );
