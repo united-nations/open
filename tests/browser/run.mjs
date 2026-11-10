@@ -10,6 +10,7 @@ const checks = [
   "page-headings",
   "treemap-search-labels",
   "ceb-methodology",
+  "related-data-pages",
   "page-notes",
   "data-disclosures",
   "ceb-refresh",

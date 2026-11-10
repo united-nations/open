@@ -1,4 +1,5 @@
 export type PeacekeepingMetric = "expenditure" | "approved" | "proposed";
+export const PEACEKEEPING_ASSESSMENT_COLOR = "var(--color-un-blue-shade)";
 export const PEACEKEEPING_METRICS = {
   expenditure: "Expenditure",
   approved: "Approved budget",

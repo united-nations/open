@@ -1,5 +1,41 @@
 import { SHOW_ADDITIONAL_TRUST_FUNDS } from "@/lib/featureFlags";
-import type { BudgetData, BudgetNode } from "@/types";
+import type { BudgetData, BudgetNode, TrustFundFlow } from "@/types";
+
+export const TRUST_FUND_CONTRIBUTOR_GROUP_STYLES: Record<
+  TrustFundFlow["group"],
+  { label: string; color: string; textColor: string }
+> = {
+  governments: {
+    label: "Government",
+    color: "#009edb",
+    textColor: "#ffffff",
+  },
+  other: {
+    label: "Others",
+    color: "#047857",
+    textColor: "#ffffff",
+  },
+  category_unknown: {
+    label: "Category not reported",
+    color: "#78716c",
+    textColor: "#ffffff",
+  },
+  inter_organizational: {
+    label: "Inter-organizational arrangements",
+    color: "#4b7f82",
+    textColor: "#ffffff",
+  },
+  internal: {
+    label: "Internal transfers",
+    color: "#806491",
+    textColor: "#ffffff",
+  },
+  unitemized: {
+    label: "Contributors unspecified",
+    color: "#596579",
+    textColor: "#ffffff",
+  },
+};
 
 export type TrustFundGrouping = "group" | "entity";
 

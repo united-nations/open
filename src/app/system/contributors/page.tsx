@@ -1,3 +1,4 @@
+import { RelatedDataPages } from "@/components/RelatedDataPages";
 import { SystemPageSources } from "@/components/PageSources";
 import type { Metadata } from "next";
 import { ContributorTrendsChart } from "@/components/ContributorTrendsChart";
@@ -30,6 +31,7 @@ export default function SystemContributorsPage() {
         </div>
       </PageBody>
       <CebMethodologyLink />
+      <RelatedDataPages page="/system/contributors" />
     </>
   );
 }

@@ -28,6 +28,7 @@ import type {
 } from "@/types";
 
 import {
+  REGULAR_BUDGET_STATUS_ORDER as STATUS_ORDER,
   REGULAR_BUDGET_STATUS_STYLES as STATUS_STYLES,
   formatAssessmentCurrency as formatCurrency,
   formatAssessmentDate as formatDate,
@@ -42,12 +43,6 @@ import {
 } from "@/hooks/useDeepLink";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
-
-const STATUS_ORDER: RegularBudgetPaymentStatus[] = [
-  "paid_on_time",
-  "paid_late",
-  "not_paid_in_full",
-];
 
 function statusCount(
   data: RegularBudgetContributorsData,
@@ -209,10 +204,7 @@ export function RegularBudgetContributorsTreemap() {
           color: STATUS_STYLES[contributor.payment_status].color,
           paleFill: contributor.payment_status === "not_paid_in_full",
           textColor: STATUS_STYLES[contributor.payment_status].textColor,
-          borderColor:
-            contributor.payment_status === "not_paid_in_full"
-              ? "var(--color-un-green-shade)"
-              : undefined,
+          borderColor: STATUS_STYLES[contributor.payment_status].borderColor,
           data: contributor,
           onActivate: () => {
             setSidebarYear(data.meta.year);

@@ -1,3 +1,4 @@
+import { RelatedDataPages } from "@/components/RelatedDataPages";
 import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
 import { SecretariatMethodologyLink } from "@/components/Methodology";
@@ -31,6 +32,7 @@ export default function PeaceOperationsPage() {
         <ChartFooter hint="Click on a mission to explore details" />
       </PageBody>
       <SecretariatMethodologyLink page="peace-operations" />
+      <RelatedDataPages page="/secretariat/peacekeeping-budget/peace-operations" />
     </>
   );
 }

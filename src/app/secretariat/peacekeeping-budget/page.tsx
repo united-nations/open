@@ -1,3 +1,4 @@
+import { RelatedDataPages } from "@/components/RelatedDataPages";
 import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
 import { SecretariatMethodologyLink } from "@/components/Methodology";
@@ -30,6 +31,7 @@ export default function PeacekeepingBudgetPage() {
         <PeacekeepingBudgetView />
       </PageBody>
       <SecretariatMethodologyLink page="peacekeeping-budget" />
+      <RelatedDataPages page="/secretariat/peacekeeping-budget" />
     </>
   );
 }

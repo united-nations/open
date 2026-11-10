@@ -7,7 +7,11 @@ function secretariatIntro() {
   );
   const overview = "Get an overview of entities and priority areas";
   if (!sections.length) return `${overview}.`;
-  const labels = sections.map((item) => item.label.toLowerCase());
+  const labels = sections.map((item) =>
+    item.label === "Extrabudgetary"
+      ? "extrabudgetary resources"
+      : item.label.toLowerCase(),
+  );
   const list =
     labels.length > 1
       ? `${labels.slice(0, -1).join(", ")} and ${labels.at(-1)}`

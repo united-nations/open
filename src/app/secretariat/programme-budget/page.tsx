@@ -1,3 +1,4 @@
+import { RelatedDataPages } from "@/components/RelatedDataPages";
 import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
 import { SecretariatMethodologyLink } from "@/components/Methodology";
@@ -29,6 +30,7 @@ export default function ProgrammeBudgetPage() {
         <RegularBudgetView />
       </PageBody>
       <SecretariatMethodologyLink page="programme-budget" />
+      <RelatedDataPages page="/secretariat/programme-budget" />
     </>
   );
 }

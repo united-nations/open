@@ -13,12 +13,19 @@ export const LINK_DESCRIPTIONS: Record<string, string> = {
     "Staff by organization, location, grade, gender, age and length of service.",
   "/secretariat": "Overview of Secretariat expenditure across funding sources.",
   "/secretariat/programme-budget":
-    "Detailed breakdown of the regular budget and its contributors.",
+    "Allocations and expenditure by budget part, section and entity.",
+  "/secretariat/programme-budget/contributors":
+    "Member State assessments, payment status and reported outstanding balances.",
   "/secretariat/peacekeeping-budget":
     "Detailed breakdown of the peacekeeping budget.",
+  "/secretariat/peacekeeping-budget/contributors":
+    "Member State assessments by peacekeeping mission.",
   "/secretariat/peacekeeping-budget/peace-operations":
     "Peacekeeping operations and special political missions, across their separate budgets.",
-  "/secretariat/trust-funds": "Trust-fund expenditure and contributions.",
+  "/secretariat/trust-funds":
+    "Expenditure from trust-fund schedules and other available extrabudgetary sources.",
+  "/secretariat/trust-funds/contributors":
+    "Contributions and transfers from trust-fund schedules and other available sources.",
 };
 
 export function SectionLinkCards({

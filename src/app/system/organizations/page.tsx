@@ -1,3 +1,4 @@
+import { RelatedDataPages } from "@/components/RelatedDataPages";
 import { SystemPageSources } from "@/components/PageSources";
 import type { Metadata } from "next";
 import Link from "next/link";
@@ -68,6 +69,7 @@ export default function SystemOrganizationsPage() {
         <SystemFlows />
       </PageBody>
       <CebMethodologyLink />
+      <RelatedDataPages page="/system/organizations" />
     </>
   );
 }

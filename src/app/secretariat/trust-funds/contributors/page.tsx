@@ -1,3 +1,4 @@
+import { RelatedDataPages } from "@/components/RelatedDataPages";
 import { SHOW_ADDITIONAL_TRUST_FUNDS } from "@/lib/featureFlags";
 import {
   PageSourceLink,
@@ -10,7 +11,7 @@ import { PageHeading } from "@/components/PageHeading";
 import { TrustFundContributorsView } from "@/components/TrustFundContributorsView";
 
 export const metadata: Metadata = {
-  title: "UN Secretariat Trust Funds — Contributors",
+  title: "UN Secretariat Extrabudgetary Resources — Contributors",
 };
 
 export default function ContributorsPage() {
@@ -43,6 +44,7 @@ export default function ContributorsPage() {
         </PageBody>
       </section>
       <SecretariatMethodologyLink page="trust-fund-contributors" />
+      <RelatedDataPages page="/secretariat/trust-funds/contributors" />
     </>
   );
 }

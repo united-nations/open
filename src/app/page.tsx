@@ -58,7 +58,7 @@ export default function HomePage() {
             <section
               key={section.href}
               aria-labelledby={`column-${section.href.slice(1)}`}
-              className="grid min-w-0 grid-cols-1 gap-y-3 md:row-span-[calc(var(--card-rows)+1)] md:grid-rows-subgrid md:first:pr-6 md:last:border-l md:last:border-gray-200 md:last:pl-6"
+              className="grid min-w-0 grid-cols-1 gap-y-3 md:row-span-[calc(var(--card-rows)+1)] md:grid-rows-subgrid md:first:pr-8 md:last:border-l md:last:border-gray-200 md:last:pl-8 lg:first:pr-12 lg:last:pl-12"
             >
               <div className="pb-5">
                 <h2

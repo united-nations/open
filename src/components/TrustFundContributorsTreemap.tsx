@@ -21,6 +21,7 @@ import {
   useDeepLink,
 } from "@/hooks/useDeepLink";
 import { useYearRanges } from "@/lib/useYearRanges";
+import { TRUST_FUND_CONTRIBUTOR_GROUP_STYLES as GROUP_STYLES } from "@/lib/trustFundReporting";
 import type {
   TrustFundContributor,
   TrustFundContributorsData,
@@ -33,42 +34,6 @@ type ContributorGroup = TrustFundFlow["group"];
 type ContributorTile = {
   contributor: TrustFundContributor;
   flow: TrustFundFlow;
-};
-
-const GROUP_STYLES: Record<
-  ContributorGroup,
-  { label: string; color: string; textColor: string }
-> = {
-  governments: {
-    label: "Government",
-    color: "#009edb",
-    textColor: "#ffffff",
-  },
-  other: {
-    label: "Others",
-    color: "#047857",
-    textColor: "#ffffff",
-  },
-  category_unknown: {
-    label: "Category not reported",
-    color: "#78716c",
-    textColor: "#ffffff",
-  },
-  inter_organizational: {
-    label: "Inter-organizational arrangements",
-    color: "#4b7f82",
-    textColor: "#ffffff",
-  },
-  internal: {
-    label: "Internal transfers",
-    color: "#806491",
-    textColor: "#ffffff",
-  },
-  unitemized: {
-    label: "Contributors unspecified",
-    color: "#596579",
-    textColor: "#ffffff",
-  },
 };
 
 const currency = sharedFormatBudget;

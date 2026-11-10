@@ -1,3 +1,4 @@
+import { RelatedDataPages } from "@/components/RelatedDataPages";
 import { SHOW_ADDITIONAL_TRUST_FUNDS } from "@/lib/featureFlags";
 import {
   PageSourceLink,
@@ -10,7 +11,7 @@ import { PageHeading } from "@/components/PageHeading";
 import { BudgetTreemap } from "@/components/BudgetTreemap";
 
 export const metadata: Metadata = {
-  title: "UN Secretariat Trust Funds",
+  title: "UN Secretariat Extrabudgetary Resources",
   description: SHOW_ADDITIONAL_TRUST_FUNDS
     ? "Explore UN Secretariat trust-fund accounts and separately reported extrabudgetary expenditure."
     : "Explore UN Secretariat trust-fund accounts and expenditure.",
@@ -54,6 +55,7 @@ export default function TrustFundsPage() {
         />
       </PageBody>
       <SecretariatMethodologyLink page="trust-funds" />
+      <RelatedDataPages page="/secretariat/trust-funds" />
     </>
   );
 }

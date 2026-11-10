@@ -26,12 +26,16 @@ export function regularBudgetAssessmentSources(
   ];
 }
 
+export const REGULAR_BUDGET_STATUS_ORDER: readonly RegularBudgetPaymentStatus[] =
+  ["paid_on_time", "paid_late", "not_paid_in_full"];
+
 export const REGULAR_BUDGET_STATUS_STYLES: Record<
   RegularBudgetPaymentStatus,
   {
     label: string;
     color: string;
     textColor?: string;
+    borderColor?: string;
   }
 > = {
   paid_on_time: {
@@ -47,6 +51,7 @@ export const REGULAR_BUDGET_STATUS_STYLES: Record<
     label: "Not listed as paid in full",
     color: "var(--color-un-green-tint)",
     textColor: "var(--color-un-green-shade)",
+    borderColor: "var(--color-un-green-shade)",
   },
 };
 

@@ -26,6 +26,7 @@ import type {
 } from "@/types";
 
 import { peacekeepingContributorSources } from "@/lib/peacekeepingSources";
+import { PEACEKEEPING_ASSESSMENT_COLOR } from "@/lib/peacekeepingBudget";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -155,7 +156,7 @@ export function PeacekeepingContributorsTreemap() {
       {
         key: "member-states",
         label: "Member States",
-        color: "var(--color-un-blue-shade)",
+        color: PEACEKEEPING_ASSESSMENT_COLOR,
         data: "member-states" as const,
         subgroups: positiveContributors
           .slice()
@@ -173,7 +174,7 @@ export function PeacekeepingContributorsTreemap() {
                 key: contributor.name,
                 label: contributor.name,
                 value: contributor.net_assessment,
-                color: "var(--color-un-blue-shade)",
+                color: PEACEKEEPING_ASSESSMENT_COLOR,
                 textColor: "var(--color-un-white)",
                 data: contributor,
                 onActivate: () => open(contributor),

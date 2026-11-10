@@ -38,6 +38,10 @@ try {
       assert.equal(await link.getAttribute("href"), "/about/#ceb-methodology");
       assert.equal(await page.locator("[data-ceb-methodology]").count(), 0);
       assert.equal(
+        await page.locator("[data-extraction-disclaimer]").count(),
+        0,
+      );
+      assert.equal(
         await page
           .getByRole("region", { name: "Notes published by CEB", exact: true })
           .count(),
@@ -165,7 +169,7 @@ try {
   await page.getByRole("button", { name: "2011", exact: true }).click();
   await page
     .getByText(
-      "No data available for Private Donors / Private Sector in 2011.",
+      "No contribution data available for Private Donors / Private Sector in 2011.",
       { exact: true },
     )
     .waitFor();
@@ -225,6 +229,14 @@ try {
     await page.goto(portalUrl + route, { waitUntil: "networkidle" });
     const section = page.locator("[data-page-references]");
     assert.equal(await section.count(), 1);
+    assert.equal(
+      await section.locator("[data-extraction-disclaimer]").count(),
+      1,
+    );
+    assert.match(
+      await section.innerText(),
+      /automatically extracted.*not authoritative/s,
+    );
     assert.equal(
       await page.locator("[data-secretariat-methodology]").count(),
       0,

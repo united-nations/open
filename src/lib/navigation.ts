@@ -38,7 +38,7 @@ export const SECRETARIAT_NAV = [
   },
   {
     href: "/secretariat/trust-funds",
-    label: "Trust Funds",
+    label: "Extrabudgetary",
     aliases: ["/secretariat/trust-funds/contributors"],
   },
 ] as const satisfies readonly SectionNavItem[];

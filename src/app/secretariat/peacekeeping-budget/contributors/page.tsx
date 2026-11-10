@@ -1,3 +1,4 @@
+import { RelatedDataPages } from "@/components/RelatedDataPages";
 import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
 import { SecretariatMethodologyLink } from "@/components/Methodology";
@@ -28,6 +29,7 @@ export default function ContributorsPage() {
         </PageBody>
       </section>
       <SecretariatMethodologyLink page="peacekeeping-contributors" />
+      <RelatedDataPages page="/secretariat/peacekeeping-budget/contributors" />
     </>
   );
 }

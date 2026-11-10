@@ -1,3 +1,4 @@
+import { RelatedDataPages } from "@/components/RelatedDataPages";
 import type { Metadata } from "next";
 import { SecretariatMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
@@ -38,6 +39,7 @@ export default function SecretariatPage() {
         <SecretariatFlows />
       </PageBody>
       <SecretariatMethodologyLink page="overview" />
+      <RelatedDataPages page="/secretariat" />
     </>
   );
 }

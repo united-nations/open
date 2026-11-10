@@ -13,8 +13,8 @@ export default function BudgetLayout({
     <>
       <BudgetSubviewNavigation
         basePath="/secretariat/trust-funds"
-        mainLabel="Funds"
-        label="Trust Funds views"
+        mainLabel="Expenditure"
+        label="Extrabudgetary views"
         contributorHash="trust-fund-contributor"
       />
       {children}

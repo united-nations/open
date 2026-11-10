@@ -1,3 +1,4 @@
+import { RelatedDataPages } from "@/components/RelatedDataPages";
 import { SectionHeading, ChartHeading } from "@/components/ContentHeading";
 import type { Metadata } from "next";
 import { PageBody } from "@/components/PageBody";
@@ -74,7 +75,8 @@ export default function SystemAssessmentsPage() {
           </div>
         </section>
       </PageBody>
-      <CebMethodologyLink />
+      <CebMethodologyLink extractedOutstanding />
+      <RelatedDataPages page="/system/assessments" />
     </>
   );
 }

@@ -9,6 +9,7 @@ import cebSource from "../../public/data/ceb-source.json";
 import cebMethodology from "../../data/ceb-methodology.json";
 import { ExpandableCard } from "@/components/ExpandableCard";
 import { PageSourceLink } from "@/components/PageSources";
+import { DataExtractionNotice } from "@/components/ChartDataDisclaimer";
 
 /** The complete CEB note is rendered only on About. */
 export function CebMethodology() {
@@ -135,7 +136,15 @@ export function CebMethodology() {
 }
 
 /** Data pages link to the central source and scope notes on About. */
-function PageMethodologyLink({ href }: { href: string }) {
+function PageMethodologyLink({
+  href,
+  extracted = false,
+  extractionText,
+}: {
+  href: string;
+  extracted?: boolean;
+  extractionText?: string;
+}) {
   return (
     <section
       className="mx-auto max-w-6xl px-6 pb-12 md:px-12 lg:px-16"
@@ -157,13 +166,29 @@ function PageMethodologyLink({ href }: { href: string }) {
           Sources and methodology
           <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
         </Link>
+        {extracted && (
+          <DataExtractionNotice
+            text={extractionText}
+            className="text-gray-600"
+          />
+        )}
       </div>
     </section>
   );
 }
 
-export function CebMethodologyLink() {
-  return <PageMethodologyLink href="/about/#ceb-methodology" />;
+export function CebMethodologyLink({
+  extractedOutstanding = false,
+}: {
+  extractedOutstanding?: boolean;
+}) {
+  return (
+    <PageMethodologyLink
+      href="/about/#ceb-methodology"
+      extracted={extractedOutstanding}
+      extractionText="Only the reported outstanding balances on this page were automatically extracted from CEB’s financial-situation reports and are not authoritative. Consult the original reports for official figures."
+    />
+  );
 }
 
 export function PersonnelMethodologyLink() {
@@ -228,7 +253,7 @@ export const SECRETARIAT_METHODOLOGY_PAGES = [
   {
     id: "trust-funds",
     href: "/secretariat/trust-funds",
-    title: "Trust Funds",
+    title: "Extrabudgetary",
     source: SHOW_ADDITIONAL_TRUST_FUNDS
       ? "UN Secretariat trust-fund schedules and separate entity reports"
       : "UN Secretariat trust-fund schedules",
@@ -236,7 +261,7 @@ export const SECRETARIAT_METHODOLOGY_PAGES = [
   {
     id: "trust-fund-contributors",
     href: "/secretariat/trust-funds/contributors",
-    title: "Trust Funds — Contributors",
+    title: "Extrabudgetary — Contributors",
     source: SHOW_ADDITIONAL_TRUST_FUNDS
       ? "UN Secretariat trust-fund schedules and separate contributor reports"
       : "UN Secretariat trust-fund schedules",
@@ -282,7 +307,7 @@ export function SecretariatMethodologyLink({
 }: {
   page: SecretariatMethodologyPage;
 }) {
-  return <PageMethodologyLink href={`/about/#secretariat-${page}`} />;
+  return <PageMethodologyLink href={`/about/#secretariat-${page}`} extracted />;
 }
 
 function SourceLink({
@@ -398,7 +423,7 @@ function ProgrammeBudgetMethodologyNotes() {
           UNHCR
         </SourceLink>{" "}
         explicitly identify their 2024 expenditure as provisional. Coverage and
-        accounting treatment differ from the fund accounts on the Trust Funds
+        accounting treatment differ from the fund accounts on the Extrabudgetary
         page and the compilation used in the Overview.
       </p>
       <h4 className="font-semibold text-gray-900">

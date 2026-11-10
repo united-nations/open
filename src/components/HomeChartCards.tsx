@@ -1,6 +1,9 @@
 import { assessmentTotals, CEB_ASSESSMENT_COLORS } from "@/lib/cebAssessments";
 import { UN_FUNCTIONS, type FunctionExpenses } from "@/lib/functions";
-import { trustFundReportingData } from "@/lib/trustFundReporting";
+import {
+  TRUST_FUND_CONTRIBUTOR_GROUP_STYLES,
+  trustFundReportingData,
+} from "@/lib/trustFundReporting";
 import { FEATURES } from "@/lib/featureFlags";
 import type { PersonnelData } from "@/lib/personnel";
 import { readFile } from "node:fs/promises";
@@ -10,11 +13,21 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { LINK_DESCRIPTIONS } from "@/components/SectionLinkCards";
 import { getSystemGroupingStyle } from "@/lib/systemGroupings";
-import { layoutGroups, squarifyDense } from "@/lib/treemapLayout";
+import {
+  layoutGroups,
+  squarifyDense,
+  type Rect as TreemapBounds,
+} from "@/lib/treemapLayout";
 import { HOME_MAP_LAND_PATH, projectHomeMapPoint } from "@/lib/home-map";
 import { getFinancingInstrumentColor } from "@/lib/financingInstruments";
 import { FUNDING_SHADE_OPACITY } from "@/lib/budgetGroupings";
 import { SDG_COLORS } from "@/lib/sdgs";
+import {
+  REGULAR_BUDGET_STATUS_ORDER,
+  REGULAR_BUDGET_STATUS_STYLES,
+} from "@/lib/regularBudgetContributors";
+import { PEACEKEEPING_ASSESSMENT_COLOR } from "@/lib/peacekeepingBudget";
+import { buildFieldMissionModel } from "@/lib/fieldMissions";
 import {
   PALETTE,
   PART_BAND_COLORS,
@@ -29,12 +42,16 @@ import type {
   Entity,
   SecretariatEntitiesData,
   SecretariatOverviewData,
+  RegularBudgetContributorsData,
+  PeacekeepingContributorsData,
+  TrustFundContributorsData,
 } from "@/types";
 
 type Tile = {
   label: string;
   value: number;
   color?: string;
+  borderColor?: string;
   children?: Tile[];
   assessment?: {
     assessed: number;
@@ -65,12 +82,18 @@ type Preview = {
   countries?: Country[];
   goals?: boolean;
   trend?: Trend;
-  bands?: "categories" | "programme" | "entities" | "trust-funds";
+  bands?:
+    | "categories"
+    | "programme"
+    | "entities"
+    | "trust-funds"
+    | "payment-status"
+    | "contributor-groups";
 };
-type Rect = Tile & { x: number; y: number; width: number; height: number };
+type Rect = Tile & TreemapBounds & { key?: string };
 
 // Read the existing exports on the server so these navigation thumbnails add
-// neither chart-library JavaScript nor multi-megabyte data fetches to the home page.
+// neither chart-library JavaScript nor multi-megabyte data fetches to the page.
 // A static export freezes the previews alongside the rest of the site.
 async function readData<T>(filename: string): Promise<T> {
   return JSON.parse(
@@ -94,6 +117,9 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
     missionMetadata,
     functions,
     assessments,
+    regularContributors,
+    peacekeepingContributors,
+    trustFundContributors,
   ] = await Promise.all([
     readData<Entity[]>("entities.json"),
     readData<{ entity: string; amount: number }[]>(
@@ -122,6 +148,21 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
     readData<CebAssessmentsData>(
       `ceb-assessments-${year("cebAssessments")}.json`,
     ),
+    FEATURES.programmeBudget
+      ? readData<RegularBudgetContributorsData>(
+          `regular-budget-contributors-${year("regularBudgetContributors")}.json`,
+        )
+      : null,
+    FEATURES.peacekeepingBudget
+      ? readData<PeacekeepingContributorsData>(
+          `peacekeeping-contributors-${year("peacekeepingContributors")}.json`,
+        )
+      : null,
+    FEATURES.trustFunds
+      ? readData<TrustFundContributorsData>(
+          `trust-fund-contributors-${year("trustFundContributors")}.json`,
+        )
+      : null,
   ]);
   const entityGroups = new Map(
     entities.map((entity) => [entity.entity, entity.system_grouping]),
@@ -216,6 +257,14 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
         organization.total,
       );
   }
+  const trustFundFlows = (trustFundContributors?.contributors ?? []).flatMap(
+    (contributor) =>
+      (contributor.flows ?? []).map((flow) => ({
+        label: contributor.name,
+        value: flow.amount_usd,
+        group: flow.group,
+      })),
+  );
   return {
     ...(personnel
       ? {
@@ -294,15 +343,81 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
       bands: "programme",
       tiles: programme ? budgetTiles(programme, "part", "regular_budget") : [],
     },
+    "/secretariat/programme-budget/contributors": {
+      bands: "payment-status",
+      tiles: REGULAR_BUDGET_STATUS_ORDER.map((status) =>
+        contributorBand(
+          REGULAR_BUDGET_STATUS_STYLES[status],
+          (regularContributors?.contributors ?? [])
+            .filter((contributor) => contributor.payment_status === status)
+            .map((contributor) => ({
+              label: contributor.name,
+              value: contributor.assessment_amount,
+            })),
+        ),
+      ),
+    },
     "/secretariat/peacekeeping-budget": {
       countries: peacekeepingPoints,
+    },
+    "/secretariat/peacekeeping-budget/contributors": {
+      bands: "entities",
+      tiles: (peacekeepingContributors?.contributors ?? [])
+        .map((contributor) => ({
+          label: contributor.name,
+          value: contributor.net_assessment,
+          color: PEACEKEEPING_ASSESSMENT_COLOR,
+        }))
+        .sort((a, b) => b.value - a.value || a.label.localeCompare(b.label)),
+    },
+    "/secretariat/peacekeeping-budget/peace-operations": {
+      countries: missionMetadata
+        ? buildFieldMissionModel(overview, missionMetadata, [
+            "pko",
+            "spm",
+          ]).locatedMissions.map(({ location, amount }) => ({
+            lat: location.lat,
+            long: location.long,
+            total: amount,
+          }))
+        : [],
     },
     "/secretariat/trust-funds": {
       bands: "trust-funds",
       tiles: trustFundTiles(funds),
     },
+    "/secretariat/trust-funds/contributors": {
+      bands: "contributor-groups",
+      tiles: Object.entries(TRUST_FUND_CONTRIBUTOR_GROUP_STYLES).map(
+        ([group, style]) =>
+          contributorBand(
+            style,
+            trustFundFlows.filter((flow) => flow.group === group),
+          ),
+      ),
+    },
   };
 });
+
+function contributorBand(
+  style: { label: string; color: string; borderColor?: string },
+  tiles: Pick<Tile, "label" | "value">[],
+): Tile {
+  const children = tiles
+    .filter((tile) => Number.isFinite(tile.value) && tile.value > 0)
+    .sort((a, b) => b.value - a.value || a.label.localeCompare(b.label))
+    .map(({ label, value }) => ({
+      label,
+      value,
+      color: style.color,
+      borderColor: style.borderColor,
+    }));
+  return {
+    label: style.label,
+    value: children.reduce((sum, tile) => sum + tile.value, 0),
+    children,
+  };
+}
 
 function assessmentPreviewTiles(data: CebAssessmentsData): Tile[] {
   const tiles = data.contributors
@@ -423,51 +538,45 @@ function layoutTrustFundBands(groups: Tile[]): Rect[] {
   });
 }
 
-// A balanced binary treemap keeps small previews readable without a client-side
-// layout engine. Areas reflect positive amounts; signed corrections stay in the
-// full destination charts. These decorative previews intentionally show no totals.
-function layoutTiles(
+function layoutDensePreview(
   tiles: Tile[],
-  x = 0,
-  y = 0,
-  width = 320,
-  height = 168,
+  { x, y, width, height }: TreemapBounds,
 ): Rect[] {
-  if (!tiles.length) return [];
-  if (tiles.length === 1) return [{ ...tiles[0], x, y, width, height }];
-  const total = tiles.reduce((sum, tile) => sum + tile.value, 0);
-  let split = 1;
-  let first = tiles[0].value;
-  while (
-    split < tiles.length - 1 &&
-    Math.abs(first + tiles[split].value - total / 2) <
-      Math.abs(first - total / 2)
-  ) {
-    first += tiles[split].value;
-    split++;
-  }
-  const fraction = first / total;
-  return width >= height
-    ? [
-        ...layoutTiles(tiles.slice(0, split), x, y, width * fraction, height),
-        ...layoutTiles(
-          tiles.slice(split),
-          x + width * fraction,
-          y,
-          width * (1 - fraction),
-          height,
-        ),
-      ]
-    : [
-        ...layoutTiles(tiles.slice(0, split), x, y, width, height * fraction),
-        ...layoutTiles(
-          tiles.slice(split),
-          x,
-          y + height * fraction,
-          width,
-          height * (1 - fraction),
-        ),
-      ];
+  if (width <= 0 || height <= 0) return [];
+  return squarifyDense(
+    tiles.map((tile) => ({ value: tile.value, data: tile })),
+    x,
+    y,
+    width,
+    height,
+  ).map((rect) => ({
+    ...rect.data,
+    x: rect.x * 3.2,
+    y: rect.y * 1.68,
+    width: rect.width * 3.2,
+    height: rect.height * 1.68,
+  }));
+}
+
+function layoutContributorBands(
+  groups: Tile[],
+  preserveOrder: boolean,
+): Rect[] {
+  const groupsByLabel = new Map(groups.map((group) => [group.label, group]));
+  // Payment statuses stay in legend order. Trust-fund categories follow their
+  // positive amounts, with small categories sharing the bottom band.
+  const rows = layoutGroups(
+    groups.map((group) => ({ key: group.label, total: group.value })),
+    100,
+    100,
+    0.4,
+    preserveOrder ? 0 : 5,
+  );
+  return rows.flatMap((row) =>
+    layoutDensePreview(groupsByLabel.get(row.key)?.children ?? [], row).map(
+      (tile) => ({ ...tile, key: `${row.key}:${tile.label}` }),
+    ),
+  );
 }
 
 // Reproduce the programme page's orderedBands/minBandHeight rule at thumbnail
@@ -518,31 +627,20 @@ function MiniTreemap({
   // corner for small groups; programme parts preserve their semantic order.
   // Reuse the existing percentage-coordinate band layout for these silhouettes.
   const orderedTiles =
-    bands === "programme" || bands === "trust-funds" || bands === "entities"
+    bands === "programme" ||
+    bands === "trust-funds" ||
+    bands === "entities" ||
+    bands === "payment-status"
       ? positiveTiles
       : positiveTiles.sort((a, b) => b.value - a.value);
   const rects =
     bands === "trust-funds"
       ? layoutTrustFundBands(orderedTiles)
-      : bands === "entities"
-        ? squarifyDense(
-            orderedTiles.map((tile) => ({ value: tile.value, data: tile })),
-            0,
-            0,
-            100,
-            100,
-          ).map(
-            (rect): Rect => ({
-              ...rect.data,
-              x: rect.x * 3.2,
-              y: rect.y * 1.68,
-              width: rect.width * 3.2,
-              height: rect.height * 1.68,
-            }),
-          )
+      : bands === "payment-status" || bands === "contributor-groups"
+        ? layoutContributorBands(orderedTiles, bands === "payment-status")
         : bands === "programme"
           ? layoutProgrammeBands(orderedTiles)
-          : bands
+          : bands === "categories"
             ? layoutGroups(
                 orderedTiles.map((tile) => ({
                   key: tile.label,
@@ -561,7 +659,12 @@ function MiniTreemap({
                   height: rect.height * 1.68,
                 }),
               )
-            : layoutTiles(orderedTiles);
+            : layoutDensePreview(orderedTiles, {
+                x: 0,
+                y: 0,
+                width: 100,
+                height: 100,
+              });
   return (
     <svg
       viewBox="0 0 320 168"
@@ -570,7 +673,7 @@ function MiniTreemap({
       focusable="false"
     >
       {rects.map((tile) => (
-        <g key={tile.label}>
+        <g key={tile.key ?? tile.label}>
           <rect
             x={tile.x + 1}
             y={tile.y + 1}
@@ -578,6 +681,8 @@ function MiniTreemap({
             height={Math.max(0, tile.height - 2)}
             rx="1.5"
             fill={tile.color}
+            stroke={tile.borderColor}
+            strokeWidth={tile.borderColor ? 2 : undefined}
           />
           {tile.assessment &&
             (() => {
@@ -764,12 +869,21 @@ function MiniGoals() {
 
 export async function HomeChartCards({
   links,
+  layout = "home",
 }: {
-  links: readonly { href: string; label: string }[];
+  links: readonly { href: string; label: string; scope?: string }[];
+  layout?: "home" | "related";
 }) {
   const previews = await loadPreviews();
+  const compact = layout === "related";
   return (
-    <ul className="grid grid-cols-1 gap-3 md:row-span-[var(--card-rows)] md:grid-rows-subgrid">
+    <ul
+      className={
+        compact
+          ? "grid grid-cols-1 gap-3 md:grid-cols-2 lg:grid-cols-3"
+          : "grid grid-cols-1 gap-3 md:row-span-[var(--card-rows)] md:grid-rows-subgrid"
+      }
+    >
       {links.map((link) => {
         const preview = previews[link.href];
         return (
@@ -780,7 +894,7 @@ export async function HomeChartCards({
             >
               {preview && (
                 <div
-                  className="relative w-1/3 shrink-0 overflow-hidden border-r border-gray-100 bg-[#f6fafb] p-2 [&>svg]:opacity-60 [&>svg]:saturate-50 [&>svg]:transition-[opacity,filter] [&>svg]:duration-200 group-hover:[&>svg]:opacity-100 group-hover:[&>svg]:saturate-100 group-focus-visible:[&>svg]:opacity-100 group-focus-visible:[&>svg]:saturate-100"
+                  className={`relative ${compact ? "w-20" : "w-1/3"} shrink-0 overflow-hidden border-r border-gray-100 bg-[#f6fafb] p-2 [&>svg]:opacity-60 [&>svg]:saturate-50 [&>svg]:transition-[opacity,filter] [&>svg]:duration-200 group-hover:[&>svg]:opacity-100 group-hover:[&>svg]:saturate-100 group-focus-visible:[&>svg]:opacity-100 group-focus-visible:[&>svg]:saturate-100`}
                   aria-hidden="true"
                 >
                   {preview.trend ? (
@@ -797,9 +911,18 @@ export async function HomeChartCards({
                   )}
                 </div>
               )}
-              <div className="flex min-w-0 flex-1 flex-col p-3">
+              <div
+                className={`flex min-w-0 flex-1 flex-col ${compact ? "p-2" : "p-3"}`}
+              >
+                {link.scope && (
+                  <span className="mb-1 text-xs font-medium text-gray-500">
+                    {link.scope}
+                  </span>
+                )}
                 <div className="flex items-start justify-between gap-2">
-                  <span className="text-lg font-semibold text-gray-900 group-hover:text-un-blue-dark">
+                  <span
+                    className={`${compact ? "text-base leading-5" : "text-lg"} font-semibold text-gray-900 group-hover:text-un-blue-dark`}
+                  >
                     {link.label}
                   </span>
                   <ArrowRight
@@ -807,7 +930,9 @@ export async function HomeChartCards({
                     aria-hidden="true"
                   />
                 </div>
-                <span className="mt-1 text-sm leading-5 text-gray-600">
+                <span
+                  className={`mt-1 ${compact ? "text-xs" : "text-sm leading-5"} text-gray-600`}
+                >
                   {LINK_DESCRIPTIONS[link.href]}
                 </span>
               </div>
