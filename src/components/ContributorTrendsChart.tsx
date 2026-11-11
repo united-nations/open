@@ -369,7 +369,9 @@ export function ContributorTrendsChart() {
   return (
     <div className="mt-6 grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-6">
       <div className="flex min-w-0 flex-col">
-        <ChartHeading>Revenue by contributor type</ChartHeading>
+        <ChartHeading className="mb-3">
+          Revenue by contributor type
+        </ChartHeading>
         <div className="mt-auto">
           <FinancingInstrumentChart
             data={contributorTypeData}

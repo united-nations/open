@@ -7,8 +7,10 @@ import {
   SECRETARIAT_METHODOLOGY_PAGES,
   UninfoMethodology,
 } from "@/components/Methodology";
+import { SectionHeading } from "@/components/ContentHeading";
 import { ExpandableCard } from "@/components/ExpandableCard";
 import { PageBody } from "@/components/PageBody";
+import { PageTitle } from "@/components/PageHeading";
 import { PageSourceLink } from "@/components/PageSources";
 import { CEB_ASSESSMENTS_SECTION } from "@/lib/cebAssessments";
 import {
@@ -26,12 +28,10 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <PageBody>
+    <PageBody className="pt-8 md:pt-10">
       <div className="max-w-prose">
-        <h1 className="mb-4 text-4xl font-bold tracking-tight text-gray-900">
-          About this portal
-        </h1>
-        <p className="mb-10 max-w-3xl leading-7 text-gray-700">
+        <PageTitle className="mb-2">About this portal</PageTitle>
+        <p className="mb-12 max-w-3xl leading-relaxed text-gray-700">
           The UN Transparency Portal brings together financial information about
           the UN System and the UN Secretariat. The sources and preparation of
           each dataset are described below.
@@ -39,15 +39,12 @@ export default function AboutPage() {
         {FEATURES.personnel && (
           <section
             id="personnel-methodology"
-            className="mb-10 space-y-4 text-sm leading-relaxed text-gray-600"
+            className="mb-12 scroll-mt-20 space-y-3 text-sm leading-relaxed text-gray-600"
             aria-labelledby="personnel-methodology-title"
           >
-            <h2
-              id="personnel-methodology-title"
-              className="text-2xl font-bold text-gray-900"
-            >
+            <SectionHeading id="personnel-methodology-title">
               UN System Personnel
-            </h2>
+            </SectionHeading>
             <p>
               <PageSourceLink source="personnel" /> counts staff who, on 31
               December, held a contract of at least one year or had been
@@ -172,15 +169,12 @@ export default function AboutPage() {
         )}
         <section
           id="ceb-methodology"
-          className="space-y-6 text-sm leading-relaxed text-gray-600"
+          className="scroll-mt-20 space-y-3 text-sm leading-relaxed text-gray-600"
           aria-labelledby="ceb-methodology-title"
         >
-          <h2
-            id="ceb-methodology-title"
-            className="text-2xl font-bold text-gray-900"
-          >
+          <SectionHeading id="ceb-methodology-title">
             UN System Financials
-          </h2>
+          </SectionHeading>
           <div className="space-y-2">
             <CebMethodology />
             <ExpandableCard
@@ -269,15 +263,12 @@ export default function AboutPage() {
         </section>
         <section
           id="secretariat-methodology"
-          className="mt-12 space-y-4 border-t border-gray-200 pt-8"
+          className="mt-8 scroll-mt-20 space-y-3 border-t border-gray-200 pt-4"
           aria-labelledby="secretariat-methodology-title"
         >
-          <h2
-            id="secretariat-methodology-title"
-            className="text-2xl font-bold text-gray-900"
-          >
+          <SectionHeading id="secretariat-methodology-title">
             UN Secretariat Financials
-          </h2>
+          </SectionHeading>
           <div className="space-y-2 text-sm leading-relaxed text-gray-600">
             <SecretariatMethodology />
             {SECRETARIAT_METHODOLOGY_PAGES.filter(

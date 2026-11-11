@@ -108,7 +108,7 @@ export function SecretariatFlows() {
       tabIndex={-1}
       id="secretariat-flows"
       aria-labelledby="secretariat-flows-title"
-      className="mt-12 scroll-mt-40 space-y-4"
+      className="mt-12 scroll-mt-40 space-y-3"
     >
       <SectionHeading id="secretariat-flows-title" anchor="secretariat-flows">
         Financial flows

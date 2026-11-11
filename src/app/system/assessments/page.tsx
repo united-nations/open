@@ -31,17 +31,19 @@ export default function SystemAssessmentsPage() {
             payments toward earlier years.
           </>
         }
-      >
-        <p className="mt-2 max-w-3xl text-base leading-relaxed text-gray-700">
-          Figures come from <PageSourceLink source="cebAssessments" />. Reported
-          outstanding balances come from CEB’s financial-situation reports.
-        </p>
-      </PageHeading>
+        sources={
+          <>
+            Figures come from <PageSourceLink source="cebAssessments" />.
+            Reported outstanding balances come from CEB’s financial-situation
+            reports.
+          </>
+        }
+      />
       <PageBody>
         <CebAssessmentSidebars />
         <section
           id={CEB_ASSESSMENTS_SECTION}
-          className="scroll-mt-40 space-y-4"
+          className="scroll-mt-40 space-y-3"
           aria-labelledby="assessment-contributors-title"
         >
           <SectionHeading
@@ -54,7 +56,7 @@ export default function SystemAssessmentsPage() {
         </section>
         <section
           id="assessment-organizations"
-          className="mt-12 scroll-mt-40 space-y-4 border-t border-gray-200 pt-8"
+          className="mt-8 scroll-mt-40 space-y-3 border-t border-gray-200 pt-4"
           aria-labelledby="assessment-organizations-title"
         >
           <SectionHeading

@@ -27,7 +27,7 @@ export default function SystemContributorsPage() {
       <PageBody>
         <ContributorsTreemap />
         <CebAssessmentRevenueNote />
-        <div className="mt-10">
+        <div className="mt-12">
           <DeferredChart
             id="contributor-trends"
             label="Load contribution trends"

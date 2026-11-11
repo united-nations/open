@@ -224,7 +224,7 @@ export function RegularBudgetOutstandingView({
   );
   return (
     <section
-      className="mt-12 scroll-mt-40 space-y-4 border-t border-gray-200 pt-8"
+      className="mt-8 scroll-mt-40 space-y-3 border-t border-gray-200 pt-4"
       aria-labelledby="outstanding-heading"
       id="regular-budget-outstanding"
     >

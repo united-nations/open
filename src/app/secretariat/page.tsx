@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { SecretariatMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
+import { PageSourceLink } from "@/components/PageSources";
 import { SecretariatFlows } from "@/components/SecretariatFlows";
 import { SecretariatOverviewTrends } from "@/components/SecretariatOverviewTrends";
 import { secretariatTrendRows } from "@/lib/staticTrendData";
@@ -21,19 +22,11 @@ export default async function SecretariatPage() {
       <PageHeading
         id="priorities"
         title="How do UN Secretariat entities use their resources?"
-        description={
+        description="Explore UN Secretariat expenditure by priority area and entity."
+        sources={
           <>
-            Explore UN Secretariat expenditure by priority area and entity. This
-            simplified overview is based on data from the{" "}
-            <a
-              href="https://www.un.org/en/annualreport"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline underline-offset-2"
-            >
-              UN Secretariat annual report
-            </a>
-            .
+            This simplified overview is based on data from the{" "}
+            <PageSourceLink source="annualReport" />.
           </>
         }
       />

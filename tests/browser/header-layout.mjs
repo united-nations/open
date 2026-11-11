@@ -1,19 +1,47 @@
 import { browserOptions, portalUrl } from "./helpers.mjs";
 import { chromium } from "playwright";
 import assert from "node:assert/strict";
+import profiles from "../../config/features.json" with { type: "json" };
+
+const profile = profiles[process.env.SITE_VARIANT ?? "public"];
+const route = profile.peacekeepingBudget
+  ? "/secretariat/peacekeeping-budget/"
+  : "/secretariat/";
+
+function navigationBounds() {
+  return [
+    document.querySelector("header"),
+    ...document.querySelectorAll("main .section-subnav"),
+  ].map((element) => {
+    const { top, bottom } = element.getBoundingClientRect();
+    return { top, bottom };
+  });
+}
+
+function assertStacked(boxes, width) {
+  assert.equal(boxes.length, profile.peacekeepingBudget ? 3 : 2);
+  assert.ok(Math.abs(boxes[0].top) < 1, "Site header is at the viewport top");
+  for (let index = 1; index < boxes.length; index++) {
+    assert.ok(
+      Math.abs(boxes[index].top - boxes[index - 1].bottom) < 1,
+      `Navigation rows must neither overlap nor leave gaps at ${width}: ${JSON.stringify(boxes)}`,
+    );
+  }
+}
 
 const browser = await chromium.launch(browserOptions);
 try {
   const page = await browser.newPage();
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto(portalUrl + "/secretariat/peacekeeping-budget/", {
+  await page.goto(portalUrl + route, {
     waitUntil: "networkidle",
   });
   for (const width of [1440, 1280, 390, 1440]) {
     await page.setViewportSize({ width, height: 1000 });
     await page.evaluate(() => window.scrollTo(0, 0));
     await page.waitForTimeout(100);
+    assertStacked(await page.evaluate(navigationBounds), width);
     const headerHeight = await page
       .locator("header")
       .evaluate((header) => header.getBoundingClientRect().height);
@@ -54,25 +82,7 @@ try {
     }
     await page.evaluate(() => window.scrollTo(0, 600));
     await page.waitForTimeout(100);
-    const boxes = await page.evaluate(() =>
-      [
-        document.querySelector("header"),
-        ...Array.from(document.querySelectorAll("main nav"))
-          .slice(0, 2)
-          .map((nav) => nav.parentElement),
-      ].map((element) => {
-        const { top, bottom } = element.getBoundingClientRect();
-        return { top, bottom };
-      }),
-    );
-    assert.equal(boxes.length, 3);
-    assert.ok(Math.abs(boxes[0].top) < 1, "Site header remains sticky");
-    for (let index = 1; index < boxes.length; index++) {
-      assert.ok(
-        Math.abs(boxes[index].top - boxes[index - 1].bottom) < 1,
-        `Sticky navigation must neither overlap nor leave gaps at ${width}: ${JSON.stringify(boxes)}`,
-      );
-    }
+    assertStacked(await page.evaluate(navigationBounds), width);
   }
   assert.deepEqual(errors, []);
   await page.screenshot({ path: "audits/browser/header-layout.png" });

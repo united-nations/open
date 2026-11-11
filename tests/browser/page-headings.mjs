@@ -45,6 +45,35 @@ try {
       1,
       `${route}: one route title`,
     );
+    const sources = page.locator("main h1 + p + p");
+    assert.ok(
+      (await sources.getByRole("link").count()) > 0,
+      `${route}: source links follow the page summary`,
+    );
+    assert.equal(
+      await sources.evaluate((el) => getComputedStyle(el).fontSize),
+      "14px",
+      `${route}: secondary source text`,
+    );
+    const aboutData = page.getByRole("region", { name: "About the data" });
+    const aboutHeading = aboutData.locator(":scope > h2");
+    assert.equal(await aboutHeading.textContent(), "About the data", route);
+    const aboutStyle = await aboutHeading.evaluate((el) => ({
+      fontSize: getComputedStyle(el).fontSize,
+      fontWeight: getComputedStyle(el).fontWeight,
+      background: getComputedStyle(el.parentElement).backgroundColor,
+      border: getComputedStyle(el.parentElement).borderTopWidth,
+    }));
+    assert.deepEqual(
+      aboutStyle,
+      {
+        fontSize: "24px",
+        fontWeight: "700",
+        background: "rgba(0, 0, 0, 0)",
+        border: "0px",
+      },
+      `${route}: About the data is an unboxed section`,
+    );
     const headings = await page
       .locator("main h1, main h2, main h3, main h4")
       .evaluateAll((items) =>

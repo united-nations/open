@@ -3,15 +3,11 @@ import { ChartDataDisclaimer } from "@/components/ChartDataDisclaimer";
 import type { SectionNavItem } from "@/lib/navigation";
 
 export function SectionChrome({
-  title,
-  intro,
   navLabel,
   items,
   children,
   showDisclaimer = true,
 }: {
-  title: string;
-  intro: string;
   navLabel: string;
   items: readonly SectionNavItem[];
   children: React.ReactNode;
@@ -19,12 +15,6 @@ export function SectionChrome({
 }) {
   return (
     <>
-      <section className="mx-auto w-full max-w-6xl px-6 pt-8 pb-6 md:px-12 lg:px-16">
-        <p className="mb-2 text-4xl font-bold tracking-tight text-gray-900">
-          {title}
-        </p>
-        <p className="text-base leading-7 text-gray-700 md:text-lg">{intro}</p>
-      </section>
       <SectionSubnav items={items} label={navLabel} />
       {children}
       {showDisclaimer && <ChartDataDisclaimer />}

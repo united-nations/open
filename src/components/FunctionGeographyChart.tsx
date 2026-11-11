@@ -1,5 +1,5 @@
 "use client";
-import { ChartHeading } from "@/components/ContentHeading";
+import { ChartHeading, SubsectionHeading } from "@/components/ContentHeading";
 
 import { useCallback, useState } from "react";
 import Link from "next/link";
@@ -47,7 +47,7 @@ export function FunctionGeographyChart() {
   );
   const columns = data ? functionGeographyColumns(data) : [];
   return (
-    <section id="function-geography" className="mt-12 scroll-mt-40 space-y-4">
+    <section id="function-geography" className="mt-12 scroll-mt-40 space-y-3">
       <ChartHeading>Expenditure by function and geographic level</ChartHeading>
       <p className="hidden max-w-3xl text-sm text-gray-600 lg:block">
         Column widths show each function’s share of reported expenditure. Within
@@ -117,7 +117,7 @@ export function FunctionGeographyChart() {
             >
               {columns.map((column) => (
                 <section key={column.key} className="rounded-sm border p-3">
-                  <h3 className="font-medium">
+                  <SubsectionHeading>
                     {column.key === "unreported" ? (
                       column.label
                     ) : (
@@ -128,7 +128,7 @@ export function FunctionGeographyChart() {
                         {column.label}
                       </Link>
                     )}
-                  </h3>
+                  </SubsectionHeading>
                   <p className="mb-2 text-sm text-gray-600">
                     {formatBudget(column.total)} · {percent(column.share)} of
                     total

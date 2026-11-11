@@ -55,7 +55,7 @@ export function SecretariatOverviewTrends({
   );
 
   return (
-    <div className="mt-10">
+    <div className="mt-12">
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-6">
         <div className="flex flex-col">
           <ChartHeading className="mb-3">

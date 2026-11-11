@@ -176,7 +176,7 @@ export function ProgrammeBudgetTrends({
   }, [datasets, hiddenMetrics, selectedNode]);
 
   return (
-    <div className="mt-10 w-full lg:w-1/2 lg:pe-3" data-money-chart>
+    <div className="mt-12 w-full lg:w-1/2 lg:pe-3" data-money-chart>
       <ChartHeading className="mb-3">Programme budget over time</ChartHeading>
       <div
         className="mb-3 flex flex-wrap items-center gap-2"

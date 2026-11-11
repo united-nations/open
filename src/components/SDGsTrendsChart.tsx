@@ -65,7 +65,7 @@ export async function SDGsTrendsChart() {
   return (
     <section
       aria-labelledby="sdg-trends-heading"
-      className="mt-12 min-w-0 space-y-4 lg:w-1/2"
+      className="mt-12 min-w-0 space-y-3 lg:w-1/2"
     >
       <ChartHeading id="sdg-trends-heading">
         Expenditure by SDG classification over time

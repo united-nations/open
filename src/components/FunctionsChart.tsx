@@ -146,7 +146,7 @@ export function FunctionsTrendsChart() {
       </p>
     );
   return (
-    <section className="min-w-0 space-y-4">
+    <section className="min-w-0 space-y-3">
       <ChartHeading>Expenditure by function over time</ChartHeading>
       <FinancingInstrumentChart
         height={240}

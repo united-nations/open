@@ -63,7 +63,7 @@ export default function SystemOrganizationsPage() {
             and special political missions.
           </p>
         </EntitiesTreemap>
-        <div className="mt-10">
+        <div className="mt-12">
           <EntityTrendsChart />
         </div>
         <SystemFlows />

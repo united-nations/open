@@ -22,6 +22,19 @@ export function ChartHeading({
   );
 }
 
+export function SubsectionHeading({
+  as: Heading = "h3",
+  className,
+  ...props
+}: HTMLAttributes<HTMLHeadingElement> & { as?: "h3" | "h4" }) {
+  return (
+    <Heading
+      {...props}
+      className={cn(typography.subTitle, "text-gray-900", className)}
+    />
+  );
+}
+
 /** Major sections share typography and an optional link to their existing anchor. */
 export function SectionHeading({
   anchor,

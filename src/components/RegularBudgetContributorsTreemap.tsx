@@ -227,7 +227,7 @@ export function RegularBudgetContributorsTreemap() {
       className="relative w-full scroll-mt-40"
     >
       {SHOW_REGULAR_BUDGET_OUTSTANDING && (
-        <SectionHeading anchor="regular-budget-contributors" className="mb-5">
+        <SectionHeading anchor="regular-budget-contributors" className="mb-3">
           Assessed contributions
         </SectionHeading>
       )}

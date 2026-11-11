@@ -231,7 +231,7 @@ export function SystemFlows() {
       tabIndex={-1}
       id="system-flows"
       aria-labelledby="system-flows-title"
-      className="mt-12 scroll-mt-40 space-y-4"
+      className="mt-12 scroll-mt-40 space-y-3"
     >
       <SectionHeading id="system-flows-title" anchor="system-flows">
         Financial flows

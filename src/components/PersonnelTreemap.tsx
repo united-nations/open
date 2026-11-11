@@ -147,7 +147,7 @@ export function PersonnelTreemap({
     .reduce((sum, item) => sum + item.count, 0);
   const secretariat = organizations.find((item) => item.sourceOrg === "UN");
   return (
-    <section ref={container} className="space-y-4" id="personnel-organizations">
+    <section ref={container} className="space-y-3" id="personnel-organizations">
       <ChartHeading>People across the UN System</ChartHeading>
       <GroupedTreemap<string, string, PersonnelTile>
         yearControl={yearControl}

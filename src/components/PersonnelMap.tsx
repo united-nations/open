@@ -82,7 +82,7 @@ export function PersonnelMap({
         ],
   );
   return (
-    <section id="personnel-geography" className="space-y-4">
+    <section id="personnel-geography" className="space-y-3">
       <ChartHeading>
         {mode === "duty" ? "Where do staff work?" : "Where are staff from?"}
       </ChartHeading>

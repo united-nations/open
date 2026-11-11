@@ -10,6 +10,8 @@ import cebMethodology from "../../data/ceb-methodology.json";
 import { ExpandableCard } from "@/components/ExpandableCard";
 import { PageSourceLink } from "@/components/PageSources";
 import { DataExtractionNotice } from "@/components/ChartDataDisclaimer";
+import { SectionHeading, SubsectionHeading } from "@/components/ContentHeading";
+import { PageBody } from "@/components/PageBody";
 
 /** The complete CEB note is rendered only on About. */
 export function CebMethodology() {
@@ -84,14 +86,14 @@ export function CebMethodology() {
           </div>
           {financialNotes.map((item) => (
             <div key={item.id} className="space-y-2">
-              <h4 className="font-semibold text-gray-900">{item.title}</h4>
+              <SubsectionHeading as="h4">{item.title}</SubsectionHeading>
               <p>{item.text}</p>
             </div>
           ))}
           <div className="space-y-2">
-            <h4 className="font-semibold text-gray-900">
+            <SubsectionHeading as="h4">
               2025 SDG reconciliation
-            </h4>
+            </SubsectionHeading>
             <p>
               WMO’s $88.66 million Non-SDG record closely matches its final
               regular budget. The underlying survey entry is needed to confirm
@@ -146,34 +148,32 @@ function PageMethodologyLink({
   extractionText?: string;
 }) {
   return (
-    <section
-      className="mx-auto max-w-6xl px-6 pb-12 md:px-12 lg:px-16"
+    <PageBody
+      className="pt-0"
       aria-labelledby="about-the-data-heading"
       data-page-references
     >
-      <div className="rounded-md border border-gray-200 bg-gray-50 px-4 py-3 text-sm">
-        <h2 id="about-the-data-heading" className="font-semibold text-gray-900">
-          About the data
-        </h2>
-        <p className="mt-1 text-gray-600">
-          See where the data comes from and how we present it.
-        </p>
-        <Link
-          href={href}
-          className="mt-2 inline-flex items-center gap-1.5 font-medium text-un-blue underline underline-offset-2"
-          data-methodology-link
-        >
-          Sources and methodology
-          <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
-        </Link>
-        {extracted && (
-          <DataExtractionNotice
-            text={extractionText}
-            className="text-gray-600"
-          />
-        )}
-      </div>
-    </section>
+      <SectionHeading id="about-the-data-heading">
+        About the data
+      </SectionHeading>
+      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-600">
+        See where the data comes from and how we present it.
+      </p>
+      <Link
+        href={href}
+        className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-un-blue-text underline underline-offset-2"
+        data-methodology-link
+      >
+        Sources and methodology
+        <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
+      </Link>
+      {extracted && (
+        <DataExtractionNotice
+          text={extractionText}
+          className="max-w-3xl text-gray-600"
+        />
+      )}
+    </PageBody>
   );
 }
 
@@ -426,9 +426,9 @@ function ProgrammeBudgetMethodologyNotes() {
         accounting treatment differ from the fund accounts on the Extrabudgetary
         page and the compilation used in the Overview.
       </p>
-      <h4 className="font-semibold text-gray-900">
+      <SubsectionHeading as="h4">
         Entities with separate budgets
-      </h4>
+      </SubsectionHeading>
       <p>
         The programme-budget documents also cover UNHCR, UNRWA, UN-Women, UNEP,
         UN-Habitat and UNODC. These entities publish their own financial

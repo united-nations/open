@@ -53,7 +53,7 @@ export function PersonnelTrendsChart() {
       staff: org === "all" ? row.total : (row.organizations[org] ?? null),
     })) ?? [];
   return (
-    <section id="personnel-trends" className="space-y-4">
+    <section id="personnel-trends" className="space-y-3">
       <ChartHeading>How has the workforce changed?</ChartHeading>
       <ChartFrame>
         <div
