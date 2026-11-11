@@ -62,6 +62,13 @@ try {
       name: "Assessed contributions receivable and received by organization",
       exact: true,
     });
+    const sourceParagraph = page.locator("p + p").filter({
+      has: page.getByRole("link", {
+        name: "CEB Financial Statistics on assessments voted and assessments received",
+        exact: true,
+      }),
+    });
+    assert.match(await sourceParagraph.innerText(), /^Figures come from/);
     const china = contributors.getByRole("button", {
       name: "China",
       exact: true,
@@ -72,6 +79,41 @@ try {
     });
     await china.waitFor();
     await un.waitFor();
+    if (!mobile) {
+      for (const chart of [contributors, organizations]) {
+        const years = chart
+          .getByRole("combobox", { name: "Select year from list" })
+          .first();
+        const initialYear = await years.inputValue();
+        await years.selectOption("2024");
+        const legend = chart.getByRole("group", {
+          name: "Assessment measures",
+        });
+        for (const [label, explanation] of [
+          ["Assessed contributions payable", /required to pay.*2024/],
+          ["Paid in 2024 towards 2024", /received in 2024.*same year/],
+          [
+            "Paid in 2024 towards earlier years",
+            /received in 2024.*earlier years/,
+          ],
+        ]) {
+          await legend.getByText(label, { exact: true }).hover();
+          await page
+            .getByRole("tooltip")
+            .filter({ hasText: explanation })
+            .waitFor();
+        }
+        const prior = legend.getByRole("button", {
+          name: "Paid in 2024 towards earlier years",
+          exact: true,
+        });
+        await prior.click();
+        assert.equal(await prior.getAttribute("aria-pressed"), "false");
+        await prior.click();
+        assert.equal(await prior.getAttribute("aria-pressed"), "true");
+        await years.selectOption(initialYear);
+      }
+    }
     const a = await contributors.boundingBox(),
       b = await organizations.boundingBox();
     assert.ok(Math.abs(a.width - b.width) < 2 && a.y < b.y);
@@ -121,7 +163,17 @@ try {
       .getByRole("button", { name: "Select year", exact: true })
       .click();
     await page.getByRole("button", { name: "2023", exact: true }).click();
-    await assessment.getByText("Paid toward 2023", { exact: true }).waitFor();
+    const currentPayment = assessment.getByText("Paid in 2023 towards 2023", {
+      exact: true,
+    });
+    await currentPayment.waitFor();
+    if (!mobile) {
+      await currentPayment.locator("..").focus();
+      await page
+        .getByRole("tooltip")
+        .filter({ hasText: /received in 2023.*same year/ })
+        .waitFor();
+    }
     await dialog
       .getByRole("button", { name: "Copy link to clipboard", exact: true })
       .click();
@@ -132,7 +184,7 @@ try {
     await page
       .getByRole("dialog")
       .getByRole("region", { name: "Assessments and payments", exact: true })
-      .getByText("Paid toward 2023", { exact: true })
+      .getByText("Paid in 2023 towards 2023", { exact: true })
       .waitFor();
     await page
       .getByRole("dialog")

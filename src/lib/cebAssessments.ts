@@ -19,6 +19,30 @@ export const CEB_ASSESSMENT_COLORS = {
 export const CEB_ASSESSMENTS_SOURCE =
   "https://unsceb.org/assessments-voted-assessments-received-current-year-and-prior-years-assessments-received/";
 
+export function assessmentMeasures(year?: number) {
+  const paymentYear = year ?? "the year shown";
+  return {
+    assessed: {
+      label: "Assessed contributions payable",
+      explanation: `The amount members were required to pay in assessed contributions for ${paymentYear}.`,
+    },
+    current: {
+      label:
+        year === undefined
+          ? "Paid towards the same year"
+          : `Paid in ${year} towards ${year}`,
+      explanation: `Payments reported received in ${paymentYear} towards assessed contributions for that same year.`,
+    },
+    prior: {
+      label:
+        year === undefined
+          ? "Paid towards earlier years"
+          : `Paid in ${year} towards earlier years`,
+      explanation: `Payments reported received in ${paymentYear} towards assessed contributions for earlier years combined.`,
+    },
+  };
+}
+
 const assessmentRequests = new Map<number, Promise<CebAssessmentsData>>();
 
 export function loadCebAssessments(year: number) {

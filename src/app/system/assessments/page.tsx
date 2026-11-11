@@ -28,12 +28,15 @@ export default function SystemAssessmentsPage() {
             each organization’s rules. In practice, assessments are not always
             paid in full and on time by every member. Explore assessments
             payable and the payments organizations reported receiving, including
-            payments toward earlier years. Figures come from{" "}
-            <PageSourceLink source="cebAssessments" />; reported outstanding
-            balances come from CEB’s financial-situation reports.
+            payments toward earlier years.
           </>
         }
-      />
+      >
+        <p className="mt-2 max-w-3xl text-base leading-relaxed text-gray-700">
+          Figures come from <PageSourceLink source="cebAssessments" />. Reported
+          outstanding balances come from CEB’s financial-situation reports.
+        </p>
+      </PageHeading>
       <PageBody>
         <CebAssessmentSidebars />
         <section

@@ -15,6 +15,7 @@ import {
   assessmentOrganizationGroups,
   assessmentTotals,
   assessmentExclusionNotes,
+  assessmentMeasures,
   CEB_ASSESSMENT_COLORS,
   CEB_ASSESSMENTS_HASH,
   formatAssessmentAmount,
@@ -24,7 +25,6 @@ import { formatBudget } from "@/lib/contributors";
 import { useYearRanges } from "@/lib/useYearRanges";
 
 const colors = CEB_ASSESSMENT_COLORS;
-const priorLabel = "Paid toward earlier years";
 
 export function CebAssessmentsTreemap({
   view = "contributors",
@@ -35,6 +35,7 @@ export function CebAssessmentsTreemap({
   const [year, setYear] = useState(defaultYear);
   const [query, setQuery] = useState("");
   const [showPrior, setShowPrior] = useState(true);
+  const measures = assessmentMeasures(year);
   const load = useCallback(() => loadCebAssessments(year), [year]);
   const {
     value: data,
@@ -69,14 +70,14 @@ export function CebAssessmentsTreemap({
     );
     const layoutValue = Math.max(assessed, fill + unknownFill + priorFill);
     const darkFillBehindLabel = fill / layoutValue >= 0.85;
-    const currentLabel = formatAssessmentAmount(contributor.current);
-    const earlierLabel = formatAssessmentAmount(contributor.prior);
-    const assessedLabel = formatAssessmentAmount(contributor.assessed);
+    const currentAmount = formatAssessmentAmount(contributor.current);
+    const priorAmount = formatAssessmentAmount(contributor.prior);
+    const assessedAmount = formatAssessmentAmount(contributor.assessed);
     const paid = contributor.current.value;
     const valueLabel =
       assessed > 0 && paid !== null && paid >= 0
-        ? `${formatAssessmentRate((paid / assessed) * 100)} of ${assessedLabel} ${contributor.current.partial ? "reported paid" : "paid"} for this year`
-        : `${assessedLabel} assessed`;
+        ? `${formatAssessmentRate((paid / assessed) * 100)} of ${assessedAmount} ${contributor.current.partial ? "reported paid" : "paid"} in ${year} towards ${year}`
+        : `${assessedAmount} assessed`;
     return [
       {
         key: contributor.id,
@@ -91,13 +92,15 @@ export function CebAssessmentsTreemap({
         paleFill: !darkFillBehindLabel,
         textColor: darkFillBehindLabel ? "#fff" : "var(--color-gray-900)",
         valueLabel,
-        listValueLabel: assessedLabel,
+        listValueLabel: assessedAmount,
         listNote: showPrior
-          ? `${valueLabel}. ${priorLabel}: ${earlierLabel}.`
+          ? `${valueLabel}. ${measures.prior.label}: ${priorAmount}.`
           : valueLabel,
         accessibleDescription: [
-          fill === 0 ? `Paid toward this year: ${currentLabel}.` : "",
-          showPrior && priorFill === 0 ? `${priorLabel}: ${earlierLabel}.` : "",
+          fill === 0 ? `${measures.current.label}: ${currentAmount}.` : "",
+          showPrior && priorFill === 0
+            ? `${measures.prior.label}: ${priorAmount}.`
+            : "",
         ]
           .filter(Boolean)
           .join(" "),
@@ -105,10 +108,10 @@ export function CebAssessmentsTreemap({
         segments: [
           {
             key: "current",
-            label: "Paid toward this year",
+            label: measures.current.label,
             color: colors.current,
             value: fill,
-            valueLabel: currentLabel,
+            valueLabel: currentAmount,
           },
           {
             key: "unknownCurrent",
@@ -118,10 +121,10 @@ export function CebAssessmentsTreemap({
           },
           {
             key: "prior",
-            label: priorLabel,
+            label: measures.prior.label,
             color: colors.prior,
             value: priorFill,
-            valueLabel: earlierLabel,
+            valueLabel: priorAmount,
           },
         ],
         onActivate: () =>
@@ -134,9 +137,13 @@ export function CebAssessmentsTreemap({
   });
   return (
     <div aria-busy={loading}>
-      <div className="mb-3 flex flex-wrap gap-2">
+      <div
+        role="group"
+        aria-label="Assessment measures"
+        className="mb-3 flex flex-wrap gap-2"
+      >
         <LegendLabel
-          label="Assessed"
+          {...measures.assessed}
           color={colors.assessed}
           marker={
             <span
@@ -146,12 +153,12 @@ export function CebAssessmentsTreemap({
             />
           }
         />
-        <LegendLabel label="Paid toward this year" color={colors.current} />
+        <LegendLabel {...measures.current} color={colors.current} />
         {unknown > 0 && (
           <LegendLabel label="Payment status unknown" color={colors.unknown} />
         )}
         <LegendLabel
-          label={priorLabel}
+          {...measures.prior}
           color={colors.prior}
           selected={showPrior}
           onToggle={() => setShowPrior((current) => !current)}
@@ -162,7 +169,7 @@ export function CebAssessmentsTreemap({
         layout={{ leafGap: 1.5 }}
         showRowLabels={false}
         plotClassName={SYSTEM_TREEMAP_HEIGHT_CLASS}
-        totalLabel="Assessments"
+        totalLabel={measures.assessed.label}
         controlsClassName="min-w-[min(100%,18rem)]"
         controls={
           <div className="flex max-w-full min-w-0 items-center gap-3">
@@ -190,12 +197,12 @@ export function CebAssessmentsTreemap({
         summaries={[
           {
             key: "assessed",
-            label: "Assessments",
+            label: measures.assessed.label,
             value: formatAssessmentAmount(totals.assessed),
           },
           {
             key: "current",
-            label: "Paid toward this year",
+            label: measures.current.label,
             value: formatAssessmentAmount(totals.current),
           },
           ...(unknown > 0
@@ -209,7 +216,7 @@ export function CebAssessmentsTreemap({
             : []),
           {
             key: "prior",
-            label: priorLabel,
+            label: measures.prior.label,
             value: formatAssessmentAmount(totals.prior),
           },
         ]}
@@ -231,12 +238,12 @@ export function CebAssessmentsTreemap({
             <FinancialTooltip
               title={contributor.name}
               total={{
-                label: "Assessed",
+                label: measures.assessed.label,
                 value: formatAssessmentAmount(assessed),
               }}
               rows={[
                 {
-                  label: "Paid toward this year",
+                  label: measures.current.label,
                   color: colors.current,
                   value: formatAssessmentAmount(current),
                   share: showShare ? paid / leaf.value : undefined,
@@ -251,7 +258,7 @@ export function CebAssessmentsTreemap({
                     ]
                   : []),
                 {
-                  label: priorLabel,
+                  label: measures.prior.label,
                   value: formatAssessmentAmount(prior),
                   color: showPrior ? colors.prior : undefined,
                 },

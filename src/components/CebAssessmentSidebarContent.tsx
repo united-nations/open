@@ -2,6 +2,7 @@
 
 import { useCallback, useState } from "react";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
+import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 import { formatAssessmentRate } from "@un-eosg/ui/format-budget";
 import {
   FinancialPanelBar,
@@ -20,6 +21,7 @@ import {
   assessmentContributorsForEntity,
   assessmentTotals,
   assessmentExclusionNotes,
+  assessmentMeasures,
   CEB_ASSESSMENT_COLORS,
   formatAssessmentAmount,
   loadCebAssessments,
@@ -80,6 +82,7 @@ export function CebAssessmentSidebarContent({
   breakdown?: "organizations" | "contributors";
 }) {
   const [showAllEntities, setShowAllEntities] = useState(false);
+  const measures = assessmentMeasures(year);
   const selected = history?.find((point) => point.year === year);
   const selectedRows = rowsWithAssessments(selected?.rows ?? []);
   const exclusions = assessmentExclusionNotes(
@@ -141,31 +144,44 @@ export function CebAssessmentSidebarContent({
         <dl className="space-y-2 text-sm">
           {[
             {
-              label: "Assessments",
+              ...measures.assessed,
+              color: colors.assessed,
               value: formatAssessmentAmount(totals.assessed),
             },
             {
-              label: `Paid toward ${year}`,
+              ...measures.current,
+              color: colors.current,
               value: formatAssessmentAmount(totals.current),
             },
             ...(unknown > 0
               ? [
                   {
                     label: "Payment status unknown",
+                    explanation: undefined,
+                    color: colors.unknown,
                     value: formatBudget(unknown),
                   },
                 ]
               : []),
             {
-              label: "Paid toward earlier years",
+              ...measures.prior,
+              color: colors.prior,
               value: formatAssessmentAmount(totals.prior),
             },
-          ].map(({ label, value }) => (
+          ].map(({ label, explanation, color, value }) => (
             <div
               key={label}
               className="flex items-baseline justify-between gap-4"
             >
-              <dt className="min-w-0">{label}</dt>
+              <dt className="min-w-0">
+                <LegendLabel
+                  label={label}
+                  explanation={explanation}
+                  color={color}
+                  variant="inline"
+                  showMarker={false}
+                />
+              </dt>
               <dd className="shrink-0 text-right font-medium tabular-nums">
                 {value}
               </dd>
@@ -214,7 +230,7 @@ export function CebAssessmentSidebarContent({
                       : null;
                   const receipts = [
                     {
-                      label: `Paid toward ${year}`,
+                      label: measures.current.label,
                       value: formatAssessmentAmount(current),
                       amount: currentFill,
                       color: colors.current,
@@ -226,7 +242,7 @@ export function CebAssessmentSidebarContent({
                       color: colors.unknown,
                     },
                     {
-                      label: "Paid toward earlier years",
+                      label: measures.prior.label,
                       value: formatAssessmentAmount(prior),
                       amount: priorFill,
                       color: colors.prior,
@@ -238,7 +254,7 @@ export function CebAssessmentSidebarContent({
                   const assessmentLabel = formatAssessmentAmount(assessed);
                   const tooltipRows = [
                     {
-                      label: "Assessment",
+                      label: measures.assessed.label,
                       value: assessmentLabel,
                       marker: (
                         <span
