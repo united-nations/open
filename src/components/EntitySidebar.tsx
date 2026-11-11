@@ -14,7 +14,7 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SidebarControls } from "@/components/SidebarControls";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useRef, useMemo, useState } from "react";
 import {
   Entity,
   Impact,
@@ -30,7 +30,7 @@ import {
   getFinancingInstrumentColor,
   getFinancingInstrumentLabel,
 } from "@/lib/financingInstruments";
-import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { DetailDrawer, DrawerTitle } from "@/components/DetailDrawer";
 import { navigateToSidebar } from "@/hooks/useDeepLink";
 import {
   FinancialPanelHeading,
@@ -93,8 +93,6 @@ export function EntitySidebar({
   onClose,
 }: EntitySidebarProps) {
   const router = useRouter();
-  const [isVisible, setIsVisible] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
   const [impactResult, setImpactResult] = useState<{
     entity: string;
     data: Impact[];
@@ -107,8 +105,6 @@ export function EntitySidebar({
     SHOW_ENTITY_IMPACTS && !!entity && impactResult?.entity !== entity.entity;
   const [showAllDonors, setShowAllDonors] = useState(false);
   const [showAllCountries, setShowAllCountries] = useState(false);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [breakdownResult, setBreakdownResult] = useState<{
     key: string;
     data: EntitySpendingBreakdown;
@@ -187,8 +183,7 @@ export function EntitySidebar({
     FinancingInstrumentDataPoint[]
   >([]);
 
-  // Focus trap for accessibility
-  const focusTrapRef = useFocusTrap(!!entity, true);
+  const focusTrapRef = useRef<HTMLDivElement>(null);
   useSidebarSectionScroll(
     focusTrapRef,
     initialSection,
@@ -247,11 +242,6 @@ export function EntitySidebar({
     yearRanges.entityRevenue.min,
     yearRanges.entityRevenue.max,
   ]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 10);
-    return () => clearTimeout(timer);
-  }, []);
 
   useEffect(() => {
     if (!SHOW_ENTITY_IMPACTS || !entity?.entity) return;
@@ -345,47 +335,6 @@ export function EntitySidebar({
     yearRanges.countryExpenses.years,
   ]);
 
-  const handleClose = useCallback(() => {
-    setIsClosing(true);
-    setTimeout(() => onClose(), 300);
-  }, [onClose]);
-
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") handleClose();
-    };
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [handleClose]);
-
-  const minSwipeDistance = 50;
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-  const onTouchMove = (e: React.TouchEvent) =>
-    setTouchEnd(e.targetTouches[0].clientX);
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    if (touchStart - touchEnd < -minSwipeDistance) handleClose();
-  };
-
-  useEffect(() => {
-    const rootStyle = document.documentElement.style;
-    const previousOverflow = rootStyle.overflow;
-    const previousGutter = rootStyle.scrollbarGutter;
-    rootStyle.overflow = "hidden";
-    rootStyle.scrollbarGutter = "auto";
-    return () => {
-      rootStyle.overflow = previousOverflow;
-      rootStyle.scrollbarGutter = previousGutter;
-    };
-  }, []);
-
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) handleClose();
-  };
-
   if (!entity) return null;
 
   const description = entity.entity_description || entity.entity_long || "";
@@ -431,441 +380,431 @@ export function EntitySidebar({
   );
 
   return (
-    <div
-      className={`fixed inset-0 z-50 flex items-center justify-end bg-black/50 transition-all duration-300 ease-out ${isVisible && !isClosing ? "opacity-100" : "opacity-0"}`}
-      onClick={handleBackdropClick}
+    <DetailDrawer
+      titleId={sidebarTitleId}
+      onClose={onClose}
+      ref={focusTrapRef}
+      swipeToClose
+      className="overflow-hidden sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px]"
     >
-      <div
-        ref={focusTrapRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={sidebarTitleId}
-        className={`h-full w-full overflow-hidden bg-white shadow-2xl transition-transform duration-300 ease-out sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px] ${isVisible && !isClosing ? "translate-x-0" : "translate-x-full"}`}
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
+      <FinancialDetailPanel
+        contentClassName="sidebar-scroll-content"
+        title={<DrawerTitle>{entity.entity}</DrawerTitle>}
+        subtitle={entity.entity_long}
+        titleId={sidebarTitleId}
+        className="sm:w-full"
+        yearSelectorPlacement="header"
+        yearSelector={{
+          years: availableYears,
+          selected: selectedYear,
+          onChange: setSelectedYear,
+          label: "Select year",
+          pending: loadingYear,
+          pendingLabel: "Loading...",
+        }}
+        controls={
+          <SidebarControls
+            shareHash={`entity=${encodeURIComponent(`${entity.entity}@${selectedYear}${initialSection === "outstanding" ? "@outstanding" : ""}`)}`}
+            onClose={onClose}
+            closeLabel="Close sidebar"
+          />
+        }
       >
-        <FinancialDetailPanel
-          contentClassName="sidebar-scroll-content"
-          title={entity.entity}
-          subtitle={entity.entity_long}
-          titleId={sidebarTitleId}
-          className="sm:w-full"
-          yearSelectorPlacement="header"
-          yearSelector={{
-            years: availableYears,
-            selected: selectedYear,
-            onChange: setSelectedYear,
-            label: "Select year",
-            pending: loadingYear,
-            pendingLabel: "Loading...",
-          }}
-          controls={
-            <SidebarControls
-              shareHash={`entity=${encodeURIComponent(`${entity.entity}@${selectedYear}${initialSection === "outstanding" ? "@outstanding" : ""}`)}`}
-              onClose={handleClose}
-              closeLabel="Close sidebar"
-            />
-          }
-        >
-          {/* Content */}
-          <div className="relative space-y-6">
-            <DelayedChartLoading
-              pending={loadingYear && !initialSection}
-              requestKey={selectedYear}
-            />
-            {yearError && (
-              <p role="status" className="text-sm text-gray-500">
-                Data could not be loaded for {selectedYear}.
+        {/* Content */}
+        <div className="relative space-y-6">
+          <DelayedChartLoading
+            pending={loadingYear && !initialSection}
+            requestKey={selectedYear}
+          />
+          {yearError && (
+            <p role="status" className="text-sm text-gray-500">
+              Data could not be loaded for {selectedYear}.
+            </p>
+          )}
+          {/* Overview Section */}
+          <div>
+            {description && (
+              <p className="text-sm leading-relaxed text-gray-700">
+                {description}
               </p>
             )}
-            {/* Overview Section */}
-            <div>
-              {description && (
-                <p className="text-sm leading-relaxed text-gray-700">
-                  {description}
+
+            {/* Budget or System Chart link */}
+            <div className="mt-4">
+              {internalBudgetLink ? (
+                <Link
+                  href={internalBudgetLink}
+                  className="inline-flex items-center gap-1.5 text-sm text-un-blue hover:underline"
+                >
+                  View budget
+                  <ArrowRight className="h-3.5 w-3.5" />
+                </Link>
+              ) : (
+                <a
+                  href={`https://systemchart.un.org/?entity=${entity.entity?.toLowerCase()}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-sm text-un-blue hover:underline"
+                >
+                  View in UN System Chart
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              )}
+            </div>
+          </div>
+
+          {/* Financials Section */}
+          <div>
+            <FinancialPanelTotalRow
+              label="Total expenditure"
+              value={
+                loadingYear
+                  ? "Loading…"
+                  : yearError || didNotReport || yearSpending === null
+                    ? "Unavailable"
+                    : formatBudget(yearSpending)
+              }
+            />
+            {!loadingYear &&
+              !yearError &&
+              !didNotReport &&
+              yearSpending === null && (
+                <p className="mt-2 text-sm text-gray-500" role="status">
+                  Expenditure data unavailable for this entity and year.
                 </p>
               )}
-
-              {/* Budget or System Chart link */}
-              <div className="mt-4">
-                {internalBudgetLink ? (
-                  <Link
-                    href={internalBudgetLink}
-                    className="inline-flex items-center gap-1.5 text-sm text-un-blue hover:underline"
-                  >
-                    View budget
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
-                ) : (
-                  <a
-                    href={`https://systemchart.un.org/?entity=${entity.entity?.toLowerCase()}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-sm text-un-blue hover:underline"
-                  >
-                    View in UN System Chart
-                    <ExternalLink className="h-3.5 w-3.5" />
-                  </a>
-                )}
-              </div>
-            </div>
-
-            {/* Financials Section */}
-            <div>
+            <div className="mt-3">
               <FinancialPanelTotalRow
-                label="Total expenditure"
-                value={
-                  loadingYear
-                    ? "Loading…"
-                    : yearError || didNotReport || yearSpending === null
-                      ? "Unavailable"
-                      : formatBudget(yearSpending)
-                }
+                label="Total revenue"
+                value={yearRevenue ? formatBudget(yearRevenue.total) : "—"}
               />
-              {!loadingYear &&
-                !yearError &&
-                !didNotReport &&
-                yearSpending === null && (
-                  <p className="mt-2 text-sm text-gray-500" role="status">
-                    Expenditure data unavailable for this entity and year.
-                  </p>
-                )}
-              <div className="mt-3">
-                <FinancialPanelTotalRow
-                  label="Total revenue"
-                  value={yearRevenue ? formatBudget(yearRevenue.total) : "—"}
-                />
-                {!yearRevenue && (
-                  <p className="mt-1 text-sm text-gray-500">
-                    {didNotReport
-                      ? `CEB reports that ${entity.entity} did not submit data for ${selectedYear}.`
-                      : "Revenue data unavailable for this entity and year."}
-                  </p>
-                )}
-              </div>
-              {/* Revenue by financing instrument */}
-              {(yearRevenue && revenueByType.length > 0) ||
-              financingTrendData.length > 0 ? (
-                <div className="mt-4">
-                  <FinancialPanelHeading subheading>
-                    Revenue by financing instrument
-                  </FinancialPanelHeading>
-                  {yearRevenue && revenueByType.length > 0 && (
-                    <div className="mt-2 space-y-2">
-                      {revenueByType.map(([type, amount]) => (
-                        <FinancialPanelBreakdownRow
-                          key={type}
-                          label={
-                            <FinancingInstrumentLabel
-                              type={type}
-                              showMarker={false}
-                            />
-                          }
-                          value={formatBudget(amount)}
-                          color={getFinancingInstrumentColor(type)}
-                          percent={
-                            (Math.max(0, amount) /
-                              Math.max(
-                                1,
-                                ...revenueByType.map(([, value]) =>
-                                  Math.max(0, value),
-                                ),
-                              )) *
-                            100
-                          }
-                        />
-                      ))}
-                    </div>
-                  )}
-                  {financingTrendData.length > 0 && (
-                    <div className="mt-3">
-                      <FinancingInstrumentChart
-                        data={financingTrendData}
-                        compact
-                        showLegend={false}
-                      />
-                    </div>
-                  )}
-                </div>
-              ) : null}
-
-              {/* Revenue and expenditure Trend */}
-              {trendData.length > 0 && (
-                <div className="mt-4">
-                  <FinancialPanelHeading subheading>
-                    Revenue and expenditure
-                  </FinancialPanelHeading>
-                  <div className="mt-2">
-                    <EntityTrendChart data={trendData} compact />
-                  </div>
-                </div>
-              )}
-
-              {/* Revenue by contributor */}
-              {yearRevenue && donorContributions.length > 0 && (
-                <div className="mt-4">
-                  <FinancialPanelHeading subheading>
-                    Revenue by contributor
-                  </FinancialPanelHeading>
-                  <div className="mt-2 space-y-1.5">
-                    {displayedDonors.map((contrib) => {
-                      const typeEntries = Object.entries(contrib)
-                        .filter(
-                          ([key, value]) =>
-                            [
-                              "Assessed",
-                              "Voluntary un-earmarked",
-                              "Voluntary earmarked",
-                              "Other",
-                              "Unresolved",
-                            ].includes(key) && typeof value === "number",
-                        )
-                        .sort(
-                          (a, b) =>
-                            getContributionTypeOrder(a[0]) -
-                            getContributionTypeOrder(b[0]),
-                        ) as [string, number][];
-                      const normalizedWidth =
-                        (contrib.total / maxDonorTotal) * 100;
-
-                      return (
-                        <FinancialPanelRankedRow
-                          key={contrib.donor}
-                          title={contrib.donor}
-                          label={contrib.donor}
-                          value={formatBudgetFixed(contrib.total)}
-                          onClick={() =>
-                            router.push(
-                              `/system/contributors/?year=${selectedYear}#donor=${encodeURIComponent(contrib.donor)}`,
-                            )
-                          }
-                        >
-                          <Tooltip delayDuration={200}>
-                            <TooltipTrigger asChild>
-                              <div className="flex flex-1 cursor-help flex-col gap-px">
-                                <FinancialPanelBar
-                                  percent={normalizedWidth}
-                                  segments={typeEntries
-                                    .filter(([, amount]) => amount > 0)
-                                    .map(([type, amount]) => ({
-                                      id: type,
-                                      percent: (amount / contrib.total) * 100,
-                                      color: getFinancingInstrumentColor(type),
-                                    }))}
-                                />
-                              </div>
-                            </TooltipTrigger>
-                            <TooltipContent
-                              side="top"
-                              className="border border-slate-200 bg-white text-slate-800 shadow-lg"
-                            >
-                              <div className="space-y-1 text-xs">
-                                <p className="font-medium">{contrib.donor}</p>
-                                {typeEntries.map(([type, amount]) => (
-                                  <div
-                                    key={type}
-                                    className="flex items-center justify-between gap-4"
-                                  >
-                                    <span className="flex items-center gap-1.5">
-                                      <span
-                                        className="h-2 w-2 rounded-full"
-                                        style={{
-                                          backgroundColor:
-                                            getFinancingInstrumentColor(type),
-                                        }}
-                                      />
-                                      {getFinancingInstrumentLabel(type)}
-                                    </span>
-                                    <span className="font-medium">
-                                      {formatBudgetFixed(amount)}
-                                    </span>
-                                  </div>
-                                ))}
-                              </div>
-                            </TooltipContent>
-                          </Tooltip>
-                        </FinancialPanelRankedRow>
-                      );
-                    })}
-
-                    {!showAllDonors && donorContributions.length > 10 && (
-                      <button
-                        onClick={() => setShowAllDonors(true)}
-                        className="mt-2 text-xs text-gray-600 underline hover:text-gray-900"
-                      >
-                        Show all {donorContributions.length} contributors
-                      </button>
-                    )}
-                  </div>
-                </div>
+              {!yearRevenue && (
+                <p className="mt-1 text-sm text-gray-500">
+                  {didNotReport
+                    ? `CEB reports that ${entity.entity} did not submit data for ${selectedYear}.`
+                    : "Revenue data unavailable for this entity and year."}
+                </p>
               )}
             </div>
-
-            {/* Spending by Country Section */}
-            {spendingBreakdown && spendingBreakdown.byCountry.length > 0 && (
+            {/* Revenue by financing instrument */}
+            {(yearRevenue && revenueByType.length > 0) ||
+            financingTrendData.length > 0 ? (
               <div className="mt-4">
                 <FinancialPanelHeading subheading>
-                  Expenditure by country
+                  Revenue by financing instrument
                 </FinancialPanelHeading>
-                {loadingSpending ? (
-                  <p className="mt-2 text-sm text-gray-500">
-                    Loading expenditure data...
-                  </p>
-                ) : (
-                  <div className="mt-2 space-y-1.5">
-                    {(showAllCountries
-                      ? spendingBreakdown.byCountry
-                      : spendingBreakdown.byCountry.slice(0, 10)
-                    ).map((country) => {
-                      const maxAmount =
-                        spendingBreakdown.byCountry[0]?.amount || 1;
-                      const normalizedWidth =
-                        (country.amount / maxAmount) * 100;
-
-                      return (
-                        <FinancialPanelRankedRow
-                          key={country.iso3}
-                          label={country.name}
-                          value={formatBudgetFixed(country.amount)}
-                          onClick={() =>
-                            navigateToSidebar("country", country.iso3)
-                          }
-                        >
-                          <FinancialPanelBar
-                            percent={normalizedWidth}
-                            color="var(--color-un-blue)"
+                {yearRevenue && revenueByType.length > 0 && (
+                  <div className="mt-2 space-y-2">
+                    {revenueByType.map(([type, amount]) => (
+                      <FinancialPanelBreakdownRow
+                        key={type}
+                        label={
+                          <FinancingInstrumentLabel
+                            type={type}
+                            showMarker={false}
                           />
-                        </FinancialPanelRankedRow>
-                      );
-                    })}
-
-                    {!showAllCountries &&
-                      spendingBreakdown.byCountry.length > 10 && (
-                        <button
-                          onClick={() => setShowAllCountries(true)}
-                          className="mt-2 text-xs text-gray-600 underline hover:text-gray-900"
-                        >
-                          Show all {spendingBreakdown.byCountry.length}{" "}
-                          countries
-                        </button>
-                      )}
+                        }
+                        value={formatBudget(amount)}
+                        color={getFinancingInstrumentColor(type)}
+                        percent={
+                          (Math.max(0, amount) /
+                            Math.max(
+                              1,
+                              ...revenueByType.map(([, value]) =>
+                                Math.max(0, value),
+                              ),
+                            )) *
+                          100
+                        }
+                      />
+                    ))}
+                  </div>
+                )}
+                {financingTrendData.length > 0 && (
+                  <div className="mt-3">
+                    <FinancingInstrumentChart
+                      data={financingTrendData}
+                      compact
+                      showLegend={false}
+                    />
                   </div>
                 )}
               </div>
-            )}
+            ) : null}
 
-            <EntityFunctions entity={entity.entity} year={selectedYear} />
-
-            {/* Spending by SDG Section */}
-            {!sdgYearAvailable && (
-              <p className="text-sm text-gray-500">
-                SDG expenditure breakdown unavailable for {selectedYear}. Latest
-                CEB SDG data: {yearRanges.sdgExpenses.max}.
-              </p>
-            )}
-            {spendingBreakdown && spendingBreakdown.bySDG.length > 0 && (
+            {/* Revenue and expenditure Trend */}
+            {trendData.length > 0 && (
               <div className="mt-4">
                 <FinancialPanelHeading subheading>
-                  Expenditure by SDG
+                  Revenue and expenditure
                 </FinancialPanelHeading>
-                <p className="mt-1 text-xs text-gray-500">
-                  Non-SDG is reported by CEB. Not specified is a calculated
-                  remainder for missing SDG reporting and signed differences.
-                </p>
-                {selectedYear === 2025 &&
-                  (entity.entity === "WMO" || entity.entity === "IOM") && (
-                    <p className="mt-2 text-sm text-gray-600">
-                      {entity.entity === "WMO"
-                        ? "WMO’s Non-SDG amount closely matches its final regular budget. Its spending basis is unconfirmed."
-                        : "IOM’s reported SDG and Non-SDG amounts together exceed its organization expenditure by $106.30 million."}{" "}
-                      <Link
-                        href="/about/#ceb-presentation"
-                        className="text-un-blue underline underline-offset-2"
+                <div className="mt-2">
+                  <EntityTrendChart data={trendData} compact />
+                </div>
+              </div>
+            )}
+
+            {/* Revenue by contributor */}
+            {yearRevenue && donorContributions.length > 0 && (
+              <div className="mt-4">
+                <FinancialPanelHeading subheading>
+                  Revenue by contributor
+                </FinancialPanelHeading>
+                <div className="mt-2 space-y-1.5">
+                  {displayedDonors.map((contrib) => {
+                    const typeEntries = Object.entries(contrib)
+                      .filter(
+                        ([key, value]) =>
+                          [
+                            "Assessed",
+                            "Voluntary un-earmarked",
+                            "Voluntary earmarked",
+                            "Other",
+                            "Unresolved",
+                          ].includes(key) && typeof value === "number",
+                      )
+                      .sort(
+                        (a, b) =>
+                          getContributionTypeOrder(a[0]) -
+                          getContributionTypeOrder(b[0]),
+                      ) as [string, number][];
+                    const normalizedWidth =
+                      (contrib.total / maxDonorTotal) * 100;
+
+                    return (
+                      <FinancialPanelRankedRow
+                        key={contrib.donor}
+                        title={contrib.donor}
+                        label={contrib.donor}
+                        value={formatBudgetFixed(contrib.total)}
+                        onClick={() =>
+                          router.push(
+                            `/system/contributors/?year=${selectedYear}#donor=${encodeURIComponent(contrib.donor)}`,
+                          )
+                        }
                       >
-                        2025 source notes
-                      </Link>
-                    </p>
+                        <Tooltip delayDuration={200}>
+                          <TooltipTrigger asChild>
+                            <div className="flex flex-1 cursor-help flex-col gap-px">
+                              <FinancialPanelBar
+                                percent={normalizedWidth}
+                                segments={typeEntries
+                                  .filter(([, amount]) => amount > 0)
+                                  .map(([type, amount]) => ({
+                                    id: type,
+                                    percent: (amount / contrib.total) * 100,
+                                    color: getFinancingInstrumentColor(type),
+                                  }))}
+                              />
+                            </div>
+                          </TooltipTrigger>
+                          <TooltipContent
+                            side="top"
+                            className="border border-slate-200 bg-white text-slate-800 shadow-lg"
+                          >
+                            <div className="space-y-1 text-xs">
+                              <p className="font-medium">{contrib.donor}</p>
+                              {typeEntries.map(([type, amount]) => (
+                                <div
+                                  key={type}
+                                  className="flex items-center justify-between gap-4"
+                                >
+                                  <span className="flex items-center gap-1.5">
+                                    <span
+                                      className="h-2 w-2 rounded-full"
+                                      style={{
+                                        backgroundColor:
+                                          getFinancingInstrumentColor(type),
+                                      }}
+                                    />
+                                    {getFinancingInstrumentLabel(type)}
+                                  </span>
+                                  <span className="font-medium">
+                                    {formatBudgetFixed(amount)}
+                                  </span>
+                                </div>
+                              ))}
+                            </div>
+                          </TooltipContent>
+                        </Tooltip>
+                      </FinancialPanelRankedRow>
+                    );
+                  })}
+
+                  {!showAllDonors && donorContributions.length > 10 && (
+                    <button
+                      onClick={() => setShowAllDonors(true)}
+                      className="mt-2 text-xs text-gray-600 underline hover:text-gray-900"
+                    >
+                      Show all {donorContributions.length} contributors
+                    </button>
                   )}
-                {loadingSpending ? (
-                  <p className="mt-2 text-sm text-gray-500">
-                    Loading expenditure data...
-                  </p>
-                ) : (
-                  <div className="mt-2 space-y-1.5">
-                    {spendingBreakdown.bySDG.map((item) => {
-                      const maxAmount = Math.max(
-                        ...spendingBreakdown.bySDG.map((s) => s.amount),
-                      );
-                      const normalizedWidth = (item.amount / maxAmount) * 100;
-
-                      return (
-                        <FinancialPanelRankedRow
-                          key={item.sdg}
-                          label={getSDGLabel(item.sdg)}
-                          value={formatBudgetFixed(item.amount)}
-                          onClick={() =>
-                            router.push(
-                              `/system/goals/?year=${selectedYear}#sdg=${item.sdg}`,
-                            )
-                          }
-                          badge={
-                            <FinancialPanelGoalBadge
-                              label={item.sdg <= 0 ? "—" : String(item.sdg)}
-                              color={getSDGColor(item.sdg) ?? "#777777"}
-                            />
-                          }
-                        >
-                          <FinancialPanelBar
-                            percent={normalizedWidth}
-                            color={getSDGColor(item.sdg) ?? "#777777"}
-                          />
-                        </FinancialPanelRankedRow>
-                      );
-                    })}
-                  </div>
-                )}
-              </div>
-            )}
-
-            {assessmentContent}
-            {/* Retained for a later, explicitly enabled impact view. */}
-            {SHOW_ENTITY_IMPACTS && (
-              <div>
-                <FinancialPanelHeading className="mb-3">
-                  Impact
-                </FinancialPanelHeading>
-                {loadingImpacts ? (
-                  <p className="text-sm text-gray-500">Loading impacts...</p>
-                ) : impacts.length > 0 ? (
-                  <>
-                    <div className="space-y-3">
-                      {impacts.map((impact) => (
-                        <div
-                          key={impact.id}
-                          className="flex items-stretch gap-3 rounded-md bg-gray-50 p-3"
-                        >
-                          <div className="w-1.5 flex-shrink-0 rounded-sm bg-un-blue" />
-                          <p className="text-sm leading-relaxed text-gray-700">
-                            {impact.impact}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                    <p className="mt-3 text-xs text-gray-400">
-                      Impacts extracted from 2024 annual report.
-                    </p>
-                  </>
-                ) : (
-                  <p className="text-sm text-gray-500 italic">
-                    No impact data available for this entity.
-                  </p>
-                )}
+                </div>
               </div>
             )}
           </div>
-        </FinancialDetailPanel>
-      </div>
-    </div>
+
+          {/* Spending by Country Section */}
+          {spendingBreakdown && spendingBreakdown.byCountry.length > 0 && (
+            <div className="mt-4">
+              <FinancialPanelHeading subheading>
+                Expenditure by country
+              </FinancialPanelHeading>
+              {loadingSpending ? (
+                <p className="mt-2 text-sm text-gray-500">
+                  Loading expenditure data...
+                </p>
+              ) : (
+                <div className="mt-2 space-y-1.5">
+                  {(showAllCountries
+                    ? spendingBreakdown.byCountry
+                    : spendingBreakdown.byCountry.slice(0, 10)
+                  ).map((country) => {
+                    const maxAmount =
+                      spendingBreakdown.byCountry[0]?.amount || 1;
+                    const normalizedWidth = (country.amount / maxAmount) * 100;
+
+                    return (
+                      <FinancialPanelRankedRow
+                        key={country.iso3}
+                        label={country.name}
+                        value={formatBudgetFixed(country.amount)}
+                        onClick={() =>
+                          navigateToSidebar("country", country.iso3)
+                        }
+                      >
+                        <FinancialPanelBar
+                          percent={normalizedWidth}
+                          color="var(--color-un-blue)"
+                        />
+                      </FinancialPanelRankedRow>
+                    );
+                  })}
+
+                  {!showAllCountries &&
+                    spendingBreakdown.byCountry.length > 10 && (
+                      <button
+                        onClick={() => setShowAllCountries(true)}
+                        className="mt-2 text-xs text-gray-600 underline hover:text-gray-900"
+                      >
+                        Show all {spendingBreakdown.byCountry.length} countries
+                      </button>
+                    )}
+                </div>
+              )}
+            </div>
+          )}
+
+          <EntityFunctions entity={entity.entity} year={selectedYear} />
+
+          {/* Spending by SDG Section */}
+          {!sdgYearAvailable && (
+            <p className="text-sm text-gray-500">
+              SDG expenditure breakdown unavailable for {selectedYear}. Latest
+              CEB SDG data: {yearRanges.sdgExpenses.max}.
+            </p>
+          )}
+          {spendingBreakdown && spendingBreakdown.bySDG.length > 0 && (
+            <div className="mt-4">
+              <FinancialPanelHeading subheading>
+                Expenditure by SDG
+              </FinancialPanelHeading>
+              <p className="mt-1 text-xs text-gray-500">
+                Non-SDG is reported by CEB. Not specified is a calculated
+                remainder for missing SDG reporting and signed differences.
+              </p>
+              {selectedYear === 2025 &&
+                (entity.entity === "WMO" || entity.entity === "IOM") && (
+                  <p className="mt-2 text-sm text-gray-600">
+                    {entity.entity === "WMO"
+                      ? "WMO’s Non-SDG amount closely matches its final regular budget. Its spending basis is unconfirmed."
+                      : "IOM’s reported SDG and Non-SDG amounts together exceed its organization expenditure by $106.30 million."}{" "}
+                    <Link
+                      href="/about/#ceb-presentation"
+                      className="text-un-blue underline underline-offset-2"
+                    >
+                      2025 source notes
+                    </Link>
+                  </p>
+                )}
+              {loadingSpending ? (
+                <p className="mt-2 text-sm text-gray-500">
+                  Loading expenditure data...
+                </p>
+              ) : (
+                <div className="mt-2 space-y-1.5">
+                  {spendingBreakdown.bySDG.map((item) => {
+                    const maxAmount = Math.max(
+                      ...spendingBreakdown.bySDG.map((s) => s.amount),
+                    );
+                    const normalizedWidth = (item.amount / maxAmount) * 100;
+
+                    return (
+                      <FinancialPanelRankedRow
+                        key={item.sdg}
+                        label={getSDGLabel(item.sdg)}
+                        value={formatBudgetFixed(item.amount)}
+                        onClick={() =>
+                          router.push(
+                            `/system/goals/?year=${selectedYear}#sdg=${item.sdg}`,
+                          )
+                        }
+                        badge={
+                          <FinancialPanelGoalBadge
+                            label={item.sdg <= 0 ? "—" : String(item.sdg)}
+                            color={getSDGColor(item.sdg) ?? "#777777"}
+                          />
+                        }
+                      >
+                        <FinancialPanelBar
+                          percent={normalizedWidth}
+                          color={getSDGColor(item.sdg) ?? "#777777"}
+                        />
+                      </FinancialPanelRankedRow>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          )}
+
+          {assessmentContent}
+          {/* Retained for a later, explicitly enabled impact view. */}
+          {SHOW_ENTITY_IMPACTS && (
+            <div>
+              <FinancialPanelHeading className="mb-3">
+                Impact
+              </FinancialPanelHeading>
+              {loadingImpacts ? (
+                <p className="text-sm text-gray-500">Loading impacts...</p>
+              ) : impacts.length > 0 ? (
+                <>
+                  <div className="space-y-3">
+                    {impacts.map((impact) => (
+                      <div
+                        key={impact.id}
+                        className="flex items-stretch gap-3 rounded-md bg-gray-50 p-3"
+                      >
+                        <div className="w-1.5 flex-shrink-0 rounded-sm bg-un-blue" />
+                        <p className="text-sm leading-relaxed text-gray-700">
+                          {impact.impact}
+                        </p>
+                      </div>
+                    ))}
+                  </div>
+                  <p className="mt-3 text-xs text-gray-400">
+                    Impacts extracted from 2024 annual report.
+                  </p>
+                </>
+              ) : (
+                <p className="text-sm text-gray-500 italic">
+                  No impact data available for this entity.
+                </p>
+              )}
+            </div>
+          )}
+        </div>
+      </FinancialDetailPanel>
+    </DetailDrawer>
   );
 }

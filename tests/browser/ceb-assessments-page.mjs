@@ -226,6 +226,7 @@ try {
           .count(),
         0,
       );
+      await page.locator("#contributor-trends").scrollIntoViewIfNeeded();
       const heading = page.getByRole("heading", {
         name: "Compare contributors",
         exact: true,
@@ -280,7 +281,8 @@ try {
     .locator('a[href="/system/assessments/"]')
     .filter({ hasText: "Assessments payable" });
   assert.equal(await assessmentCard.count(), 1);
-  assert.ok((await assessmentCard.locator("svg rect[stroke]").count()) > 100);
+  assert.ok((await assessmentCard.locator("svg rect").count()) > 100);
+  assert.ok((await assessmentCard.locator("svg rect[stroke]").count()) > 0);
   assert.ok(
     (await assessmentCard
       .locator('svg rect[fill="var(--color-gray-400)"]')

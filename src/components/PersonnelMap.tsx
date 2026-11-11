@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
 import { FinancialBubbleMap } from "@/components/FinancialBubbleMap";
+import { RankedDetailList } from "@/components/RankedDetailList";
 import { ChartSearchInput } from "@/components/ui/chart-search-input";
 import { ChartHeading } from "@/components/ContentHeading";
 import { ChartFooter } from "@/components/ChartFooter";
@@ -28,6 +29,7 @@ export function PersonnelMap({
   onOpen: (mode: PersonnelMapMode, iso3: string) => void;
 }) {
   const [query, setQuery] = useState("");
+  const [showList, setShowList] = useState(false);
   const countries = useMemo(() => {
     const grouped = new Map<
       string,
@@ -90,6 +92,16 @@ export function PersonnelMap({
             className="flex flex-wrap items-center gap-3 lg:flex-nowrap"
             data-personnel-map-controls
           >
+            <BinaryToggle
+              variant="segmented"
+              label="Personnel geographic view"
+              options={[
+                { value: "map", label: "Map" },
+                { value: "list", label: "List" },
+              ]}
+              value={showList ? "list" : "map"}
+              onValueChange={(value) => setShowList(value === "list")}
+            />
             {organizationControl}
             <BinaryToggle
               variant="segmented"
@@ -122,6 +134,7 @@ export function PersonnelMap({
                 value={query}
                 onChange={setQuery}
                 placeholder="Search countries…"
+                label="Search countries"
                 className="!w-full"
               />
             </label>
@@ -130,7 +143,7 @@ export function PersonnelMap({
                 {formatPeople(total)} matching staff
               </span>
             )}
-            {
+            {!showList && (
               <span className="ml-auto inline-flex shrink-0 items-center gap-1.5 text-xs whitespace-nowrap text-gray-600">
                 <svg width="28" height="28" aria-hidden="true">
                   <circle
@@ -144,7 +157,7 @@ export function PersonnelMap({
                 </svg>
                 1,000 staff
               </span>
-            }
+            )}
           </div>
         }
         footer={
@@ -157,7 +170,18 @@ export function PersonnelMap({
           />
         }
       >
-        {countries.length === 0 ? (
+        {showList ? (
+          <RankedDetailList
+            label="Staff by country"
+            items={countries.map((row) => ({
+              id: row.iso3,
+              label: row.label,
+              amount: row.count,
+              value: `${formatPeople(row.count)} staff`,
+              onOpen: () => onOpen(mode, row.iso3),
+            }))}
+          />
+        ) : countries.length === 0 ? (
           <p className="flex h-80 items-center justify-center text-sm text-gray-600">
             No personnel records match these filters.
           </p>

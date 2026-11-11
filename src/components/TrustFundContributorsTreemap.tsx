@@ -234,7 +234,7 @@ export function TrustFundContributorsTreemap({
                 onChange={setYear}
               />
             }
-            controls={
+            filterControls={
               <div
                 className="flex flex-wrap gap-2"
                 role="group"

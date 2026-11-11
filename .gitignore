@@ -273,3 +273,6 @@ data/trust-fund-schedules/raw/*.docx
 data/trust-fund-schedules/stage1/tables/
 data/trust-fund-schedules/stage2/trust-fund-schedules.json
 data/trust-fund-schedules/crosswalk/trust-fund-entity-crosswalk.json
+
+# Per-year browser payloads derived from the canonical system flow export.
+public/data/system-flow-spending/

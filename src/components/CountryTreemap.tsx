@@ -191,6 +191,7 @@ export function CountryTreemap({
           .reduce((sum, item) => sum + item.total, 0),
       }))}
       hideHeader={hideHeader}
+      hideList={hideHeader}
       search={{
         value: searchQuery,
         onChange: onSearchChange,

@@ -101,9 +101,9 @@ export function CebAssessmentOutstandingChart() {
           >
             <li
               aria-hidden="true"
-              className="grid grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_4.5rem_4rem] items-end gap-2 text-right text-[11px] leading-tight text-gray-600"
+              className="grid grid-cols-[minmax(0,1fr)_4.5rem_4rem] items-end gap-2 text-right text-[11px] leading-tight text-gray-600 sm:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_4.5rem_4rem]"
             >
-              <span className="col-span-2" />
+              <span className="sm:col-span-2" />
               <span>Outstanding</span>
               <span>% of annual assessment</span>
             </li>
@@ -134,13 +134,16 @@ export function CebAssessmentOutstandingChart() {
                             `${record.entity}@${year}@outstanding`,
                           )
                         }
-                        className="grid w-full grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_4.5rem_4rem] items-center gap-2 rounded-sm text-left hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-un-blue"
+                        className="grid min-h-11 w-full grid-cols-[minmax(0,1fr)_4.5rem_4rem] items-center gap-2 rounded-sm text-left hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-un-blue sm:min-h-0 sm:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)_4.5rem_4rem]"
                         aria-label={`${record.label}: ${value}. ${percent} of annual assessments. ${outstandingDate(record)}. Open organization details`}
                       >
-                        <span className="min-w-0 truncate text-xs font-medium">
+                        <span className="min-w-0 text-sm font-medium break-words sm:truncate sm:text-xs">
                           {record.label}
                         </span>
-                        <span className="relative block h-2" aria-hidden="true">
+                        <span
+                          className="relative hidden h-2 sm:block"
+                          aria-hidden="true"
+                        >
                           {min < 0 && (
                             <span
                               className="absolute inset-y-0 w-px bg-gray-300"

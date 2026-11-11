@@ -596,9 +596,9 @@ function TrustFundsMethodologyNotes() {
         voluntary contribution totals under Contributors unspecified.
       </p>
       <p>
-        Totals retain negative amounts. Funds with zero or negative expenditure
-        are listed below the expenditure chart. Fund-level accounts can include
-        transfers between funds and overlap with other Secretariat views.
+        Totals retain negative amounts. The List view includes funds with zero
+        or negative expenditure. Fund-level accounts can include transfers
+        between funds and overlap with other Secretariat views.
       </p>
       <p>
         The Technology Bank trust fund’s 2024 current-asset lines sum to

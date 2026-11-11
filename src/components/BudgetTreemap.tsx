@@ -21,6 +21,7 @@ import {
 } from "@un-eosg/ui/components/treemap-tile-interaction";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFooter } from "@/components/ChartFooter";
+import type { RankedDetailItem } from "@un-eosg/ui/components/ranked-detail-list";
 
 // Budget-document treemap for /secretariat, in the layout of ../budget-explorer:
 // the groups are stacked as bands whose height is their share of the budget, the
@@ -861,7 +862,7 @@ export function BudgetTreemap({
   }, [dataset, isAlignedPpb, year]);
 
   useEffect(() => {
-    if (!years.includes(year - 1)) {
+    if (loadedRequest !== `${dataset}-${year}` || !years.includes(year - 1)) {
       setPrevious(null);
       return;
     }
@@ -877,7 +878,7 @@ export function BudgetTreemap({
     return () => {
       current = false;
     };
-  }, [dataset, year, years]);
+  }, [dataset, loadedRequest, year, years]);
 
   useEffect(() => {
     const updateLayout = () => {
@@ -1577,6 +1578,9 @@ export function BudgetTreemap({
     } => ({
       key,
       label,
+      listNote: note?.startsWith("Expenses before eliminations")
+        ? "Expenses before eliminations."
+        : note,
       value: node.amount,
       valueLabel: formatBudgetNode(node),
       layoutValue: node.amount,
@@ -2014,6 +2018,47 @@ export function BudgetTreemap({
       .toLocaleLowerCase()
       .includes(searchQuery.trim().toLocaleLowerCase());
   };
+  const signedFundListItems: RankedDetailItem[] = usesSharedTrustFundExpenses
+    ? accountingNodes
+        .filter((node) => node.amount <= 0 && matchesAccountingNode(node))
+        .map((node) => {
+          const source = node.sourceGroup ?? "volume_i";
+          const parent = node.parentId ? sidebarById[node.parentId] : undefined;
+          const entity = node.chartAsAggregate ? node : parent;
+          const schedule =
+            source === "volume_i" && trustFundGrouping === "group"
+              ? node.scheduleGroup
+              : undefined;
+          const group = schedule
+            ? { key: `schedule-group:${schedule.code}`, label: schedule.label }
+            : {
+                key: source,
+                label:
+                  meta?.sourceGroups?.find((item) => item.id === source)
+                    ?.label ?? "UN Secretariat trust-fund schedules",
+              };
+          return {
+            id: node.id,
+            label: node.label,
+            amount: node.amount,
+            value: formatBudgetNode(node),
+            description: schedule ? parent?.label : undefined,
+            group,
+            subgroup:
+              !schedule && entity
+                ? {
+                    key: entity.id,
+                    label:
+                      entity.entity?.acronym ?? entity.code ?? entity.label,
+                  }
+                : undefined,
+            color: schedule
+              ? (TRUST_FUND_GROUP_COLORS[schedule.code] ?? "#495057")
+              : TRUST_FUND_SOURCE_COLORS[source],
+            onOpen: () => openSidebar(node.id),
+          };
+        })
+    : [];
   const signedBudgetTotal =
     !usesSharedTrustFundExpenses && !searchQuery.trim()
       ? (filteredData?.meta.total ?? 0)
@@ -2068,10 +2113,7 @@ export function BudgetTreemap({
                   </div>
                 }
               >
-                <span
-                  tabIndex={0}
-                  className="cursor-help"
-                >
+                <span tabIndex={0} className="cursor-help">
                   {formatBudget(total)}
                 </span>
               </Tooltip>
@@ -2239,10 +2281,7 @@ export function BudgetTreemap({
               </div>
             }
           >
-            <span
-              tabIndex={0}
-              className="cursor-help"
-            >
+            <span tabIndex={0} className="cursor-help">
               {value}
             </span>
           </Tooltip>
@@ -2259,6 +2298,15 @@ export function BudgetTreemap({
         <ChartSearchInput
           value={searchQuery}
           onChange={setSearchQuery}
+          label={
+            isPko
+              ? "Search missions and cost items"
+              : isTrustFund
+                ? "Search entities and trust funds"
+                : isAlignedPpb && ppbGrouping === "entity"
+                  ? "Search entities"
+                  : "Search budget sections"
+          }
           placeholder={
             isPko
               ? "Search missions and cost items..."
@@ -2369,7 +2417,7 @@ export function BudgetTreemap({
   );
 
   if (usesSharedTreemap) {
-    const sourceControls =
+    const reportingSourceFilters =
       usesSharedTrustFundExpenses && SHOW_ADDITIONAL_TRUST_FUNDS ? (
         <div
           role="group"
@@ -2395,39 +2443,34 @@ export function BudgetTreemap({
             />
           ))}
         </div>
-      ) : isAlignedPpb && onPpbGroupingChange ? (
-        <BinaryToggle
-          variant="segmented"
-          label="Budget grouping"
-          options={[
-            { value: "section", label: "Sections" },
-            { value: "entity", label: "Entities" },
-          ]}
-          value={ppbGrouping}
-          onValueChange={(value) =>
-            onPpbGroupingChange(value === "section" ? "section" : "entity")
-          }
-        />
       ) : undefined;
-    const searchAccessory = usesSharedTrustFundExpenses ? (
-      <div className="flex flex-wrap items-center gap-3">
-        <BinaryToggle
-          variant="segmented"
-          label="Trust fund grouping"
-          options={[
-            { value: "group", label: "By group" },
-            { value: "entity", label: "By entity" },
-          ]}
-          value={trustFundGrouping}
-          onValueChange={(value) =>
-            setTrustFundGrouping(value === "entity" ? "entity" : "group")
-          }
-        />
-        {sourceControls}
-      </div>
-    ) : (
-      sourceControls
-    );
+    const groupingControl = usesSharedTrustFundExpenses ? (
+      <BinaryToggle
+        variant="segmented"
+        label="Trust fund grouping"
+        options={[
+          { value: "group", label: "By group" },
+          { value: "entity", label: "By entity" },
+        ]}
+        value={trustFundGrouping}
+        onValueChange={(value) =>
+          setTrustFundGrouping(value === "entity" ? "entity" : "group")
+        }
+      />
+    ) : isAlignedPpb && onPpbGroupingChange ? (
+      <BinaryToggle
+        variant="segmented"
+        label="Budget grouping"
+        options={[
+          { value: "section", label: "Sections" },
+          { value: "entity", label: "Entities" },
+        ]}
+        value={ppbGrouping}
+        onValueChange={(value) =>
+          onPpbGroupingChange(value === "section" ? "section" : "entity")
+        }
+      />
+    ) : undefined;
 
     return (
       <div className="relative w-full">
@@ -2461,7 +2504,7 @@ export function BudgetTreemap({
             <ChartFooter
               hint={
                 isTrustFund
-                  ? "Select a fund or entity to explore details"
+                  ? "Select a fund or entity to explore details. List includes zero and negative expenditure."
                   : ppbGrouping === "section"
                     ? "Click on a budget section to explore details"
                     : "Click on an entity to explore details"
@@ -2478,6 +2521,7 @@ export function BudgetTreemap({
               valueLabel: group.data ? formatBudgetNode(group.data) : undefined,
             })),
           }))}
+          additionalListItems={signedFundListItems}
           showRowLabels={
             !usesSharedTrustFundExpenses || trustFundGrouping === "group"
           }
@@ -2523,7 +2567,8 @@ export function BudgetTreemap({
               />
             ) : undefined)
           }
-          searchAccessory={searchAccessory}
+          filterControls={reportingSourceFilters}
+          searchAccessory={groupingControl}
           summaries={sharedProgrammeSummaries}
           totalLabel="Total"
           plotClassName={
@@ -2621,46 +2666,6 @@ export function BudgetTreemap({
             </div>
           }
         />
-
-        {usesSharedTrustFundExpenses &&
-          accountingNodes.some(
-            (item) => item.amount <= 0 && matchesAccountingNode(item),
-          ) && (
-            <details
-              className="mt-4"
-              aria-label="Funds with zero or negative expenditure"
-            >
-              <summary className="w-fit cursor-pointer text-sm font-semibold">
-                Funds with zero or negative expenditure
-              </summary>
-              <div className="divide-y">
-                {accountingNodes
-                  .filter(
-                    (item) => item.amount <= 0 && matchesAccountingNode(item),
-                  )
-                  .map((item) => (
-                    <button
-                      key={item.id}
-                      type="button"
-                      onClick={() => openSidebar(item.id)}
-                      className="flex w-full items-start justify-between gap-4 py-2 text-left text-sm hover:bg-gray-50"
-                    >
-                      <span>
-                        {item.label}
-                        <span className="block text-xs">
-                          {item.parentId
-                            ? sidebarById[item.parentId]?.label
-                            : "Unmapped Trust Funds"}
-                        </span>
-                      </span>
-                      <span className="shrink-0 tabular-nums">
-                        {formatBudget(item.amount)}
-                      </span>
-                    </button>
-                  ))}
-              </div>
-            </details>
-          )}
 
         {selected && (
           <BudgetSidebar

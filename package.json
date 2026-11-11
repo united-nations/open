@@ -7,8 +7,8 @@
     "node": "24.x"
   },
   "scripts": {
-    "dev": "next dev --webpack",
-    "build": "next build && node scripts/prune-feature-routes.mjs",
+    "dev": "node scripts/prepare-system-flow-data.mjs && next dev --webpack",
+    "build": "node scripts/prepare-system-flow-data.mjs && next build && node scripts/prune-feature-routes.mjs",
     "start": "next start",
     "typecheck": "tsc --noEmit",
     "lint": "eslint",

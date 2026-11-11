@@ -10,7 +10,7 @@ import {
 } from "@/components/CebAssessmentSidebarContent";
 import { CEB_ASSESSMENTS_HASH } from "@/lib/cebAssessments";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   contributorOriginLabel,
   contributorFinancingPoint,
@@ -21,7 +21,7 @@ import {
   isGovernmentDonor,
 } from "@/lib/contributors";
 import { SidebarControls } from "@/components/SidebarControls";
-import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { DetailDrawer, DrawerTitle } from "@/components/DetailDrawer";
 import { useRouter } from "next/navigation";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
 import {
@@ -108,10 +108,6 @@ export function ContributorSidebar({
   onClose,
 }: ContributorSidebarProps) {
   const router = useRouter();
-  const [isVisible, setIsVisible] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [showAllEntities, setShowAllEntities] = useState(false);
 
   // Year selection
@@ -163,8 +159,7 @@ export function ContributorSidebar({
     [],
   );
 
-  // Focus trap for accessibility
-  const focusTrapRef = useFocusTrap(!!(contributor || assessmentId), true);
+  const focusTrapRef = useRef<HTMLDivElement>(null);
   useSidebarSectionScroll(
     focusTrapRef,
     initialSection,
@@ -203,52 +198,6 @@ export function ContributorSidebar({
     };
   }, [trendName, trendCategory]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 10);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleClose = useCallback(() => {
-    setIsClosing(true);
-    setTimeout(() => onClose(), 300);
-  }, [onClose]);
-
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") handleClose();
-    };
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [handleClose]);
-
-  const minSwipeDistance = 50;
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-  const onTouchMove = (e: React.TouchEvent) =>
-    setTouchEnd(e.targetTouches[0].clientX);
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    if (touchStart - touchEnd < -minSwipeDistance) handleClose();
-  };
-
-  useEffect(() => {
-    const rootStyle = document.documentElement.style;
-    const previousOverflow = rootStyle.overflow;
-    const previousGutter = rootStyle.scrollbarGutter;
-    rootStyle.overflow = "hidden";
-    rootStyle.scrollbarGutter = "auto";
-    return () => {
-      rootStyle.overflow = previousOverflow;
-      rootStyle.scrollbarGutter = previousGutter;
-    };
-  }, []);
-
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) handleClose();
-  };
-
   if (!contributor && !assessmentId) return null;
 
   // Use year-specific data when available
@@ -286,272 +235,259 @@ export function ContributorSidebar({
     ) : null;
 
   return (
-    <div
-      className={`fixed inset-0 z-50 flex items-center justify-end bg-black/50 transition-all duration-300 ease-out ${isVisible && !isClosing ? "opacity-100" : "opacity-0"}`}
-      onClick={handleBackdropClick}
+    <DetailDrawer
+      titleId={sidebarTitleId}
+      onClose={onClose}
+      ref={focusTrapRef}
+      swipeToClose
+      className="overflow-hidden sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px]"
     >
-      <div
-        ref={focusTrapRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={sidebarTitleId}
-        className={`h-full w-full overflow-hidden bg-white shadow-2xl transition-transform duration-300 ease-out sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px] ${isVisible && !isClosing ? "translate-x-0" : "translate-x-full"}`}
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
+      <FinancialDetailPanel
+        contentClassName="sidebar-scroll-content"
+        title={<DrawerTitle>{title}</DrawerTitle>}
+        titleId={sidebarTitleId}
+        className="sm:w-full"
+        yearSelectorPlacement="header"
+        yearSelector={{
+          years: availableYears,
+          selected: selectedYear,
+          onChange: setSelectedYear,
+          label: "Select year",
+          pending: loadingYear,
+          pendingLabel: "Loading...",
+        }}
+        controls={
+          <SidebarControls
+            shareHash={
+              assessmentId
+                ? `${CEB_ASSESSMENTS_HASH}=${encodeURIComponent(`${assessmentId}@${selectedYear}`)}`
+                : `donor=${encodeURIComponent(title)}`
+            }
+            onClose={onClose}
+            closeLabel="Close sidebar"
+          />
+        }
       >
-        <FinancialDetailPanel
-          contentClassName="sidebar-scroll-content"
-          title={title}
-          titleId={sidebarTitleId}
-          className="sm:w-full"
-          yearSelectorPlacement="header"
-          yearSelector={{
-            years: availableYears,
-            selected: selectedYear,
-            onChange: setSelectedYear,
-            label: "Select year",
-            pending: loadingYear,
-            pendingLabel: "Loading...",
-          }}
-          controls={
-            <SidebarControls
-              shareHash={
-                assessmentId
-                  ? `${CEB_ASSESSMENTS_HASH}=${encodeURIComponent(`${assessmentId}@${selectedYear}`)}`
-                  : `donor=${encodeURIComponent(title)}`
-              }
-              onClose={handleClose}
-              closeLabel="Close sidebar"
-            />
-          }
-        >
-          <div className="relative space-y-6">
-            {displayContributor &&
-              (displayContributor.record_kind === "reported_aggregate" ||
-                displayContributor.record_kind === "calculated_balance") && (
-                <p className="text-sm text-gray-600">
-                  {contributorOriginLabel(displayContributor.record_kind)}
-                  {displayContributor.record_kind === "calculated_balance" &&
-                    ". Calculated from reported control totals minus the available contributor detail; signed differences are retained."}
-                </p>
-              )}
-            {displayContributor &&
-              displayContributor.categories &&
-              displayContributor.categories.length > 1 && (
-                <div className="space-y-2 text-sm">
-                  <FinancialPanelHeading subheading>
-                    CEB contributor categories
-                  </FinancialPanelHeading>
-                  {displayContributor.categories.map((category) => (
-                    <FinancialPanelTotalRow
-                      key={category}
-                      label={category}
-                      value={formatBudget(
-                        getTotalContributions(
-                          displayContributor.categoryContributions?.[
-                            category
-                          ] ?? {},
-                        ),
-                      )}
-                    />
-                  ))}
-                </div>
-              )}
-            <DelayedChartLoading
-              pending={loadingYear && !initialSection}
-              requestKey={selectedYear}
-            />
-            {revenueName && !displayContributor && (
-              <p className="text-sm text-gray-500 italic">
-                {loadingYear
-                  ? "Loading…"
-                  : yearError
-                    ? `Data could not be loaded for ${selectedYear}.`
-                    : `No contribution data available for ${title} in ${selectedYear}.`}
+        <div className="relative space-y-6">
+          {displayContributor &&
+            (displayContributor.record_kind === "reported_aggregate" ||
+              displayContributor.record_kind === "calculated_balance") && (
+              <p className="text-sm text-gray-600">
+                {contributorOriginLabel(displayContributor.record_kind)}
+                {displayContributor.record_kind === "calculated_balance" &&
+                  ". Calculated from reported control totals minus the available contributor detail; signed differences are retained."}
               </p>
             )}
-            {displayContributor && (
-              <>
-                {!isGovernmentDonor(displayContributor.status) &&
-                  displayContributor.category &&
-                  displayContributor.category !== "Non-Government" &&
-                  displayContributor.category !== "Multiple categories" && (
-                    <div>
-                      <span className="text-base font-semibold text-gray-900">
-                        Category
+          {displayContributor &&
+            displayContributor.categories &&
+            displayContributor.categories.length > 1 && (
+              <div className="space-y-2 text-sm">
+                <FinancialPanelHeading subheading>
+                  CEB contributor categories
+                </FinancialPanelHeading>
+                {displayContributor.categories.map((category) => (
+                  <FinancialPanelTotalRow
+                    key={category}
+                    label={category}
+                    value={formatBudget(
+                      getTotalContributions(
+                        displayContributor.categoryContributions?.[category] ??
+                          {},
+                      ),
+                    )}
+                  />
+                ))}
+              </div>
+            )}
+          <DelayedChartLoading
+            pending={loadingYear && !initialSection}
+            requestKey={selectedYear}
+          />
+          {revenueName && !displayContributor && (
+            <p className="text-sm text-gray-500 italic">
+              {loadingYear
+                ? "Loading…"
+                : yearError
+                  ? `Data could not be loaded for ${selectedYear}.`
+                  : `No contribution data available for ${title} in ${selectedYear}.`}
+            </p>
+          )}
+          {displayContributor && (
+            <>
+              {!isGovernmentDonor(displayContributor.status) &&
+                displayContributor.category &&
+                displayContributor.category !== "Non-Government" &&
+                displayContributor.category !== "Multiple categories" && (
+                  <div>
+                    <span className="text-base font-semibold text-gray-900">
+                      Category
+                    </span>
+                    <div className="mt-0.5">
+                      <span className="inline-block rounded-full bg-slate-200 px-3 py-1 text-sm font-medium text-slate-700">
+                        {displayContributor.category}
                       </span>
-                      <div className="mt-0.5">
-                        <span className="inline-block rounded-full bg-slate-200 px-3 py-1 text-sm font-medium text-slate-700">
-                          {displayContributor.category}
-                        </span>
-                      </div>
+                    </div>
+                  </div>
+                )}
+
+              <div>
+                <FinancialPanelTotalRow
+                  label="Contributions"
+                  value={formatBudget(totalContributions)}
+                />
+
+                <div className="mt-4">
+                  <FinancialPanelHeading subheading>
+                    By financing instrument
+                  </FinancialPanelHeading>
+                  <div className="mt-2 space-y-2">
+                    {breakdownEntries.map(([type, amount]) => (
+                      <FinancialPanelBreakdownRow
+                        key={type}
+                        label={
+                          <FinancingInstrumentLabel
+                            type={type}
+                            showMarker={false}
+                          />
+                        }
+                        value={formatBudget(amount)}
+                        color={getFinancingInstrumentColor(type)}
+                        percent={
+                          (Math.max(0, amount) /
+                            Math.max(
+                              1,
+                              ...breakdownEntries.map(([, value]) =>
+                                Math.max(0, value),
+                              ),
+                            )) *
+                          100
+                        }
+                      />
+                    ))}
+                  </div>
+                  {trendsData.length > 0 && (
+                    <div className="mt-3">
+                      <FinancingInstrumentChart
+                        data={trendsData}
+                        allowNegative
+                        compact
+                        showLegend={false}
+                      />
                     </div>
                   )}
+                </div>
 
-                <div>
-                  <FinancialPanelTotalRow
-                    label="Contributions"
-                    value={formatBudget(totalContributions)}
-                  />
+                <div className="mt-4">
+                  <FinancialPanelHeading subheading>
+                    By entity
+                  </FinancialPanelHeading>
+                  <div className="mt-2 space-y-1.5">
+                    {(() => {
+                      const displayedEntities = showAllEntities
+                        ? entityContributions
+                        : entityContributions.slice(0, 10);
+                      const maxTotal = Math.max(
+                        ...entityContributions.map((c) => c.total),
+                      );
 
-                  <div className="mt-4">
-                    <FinancialPanelHeading subheading>
-                      By financing instrument
-                    </FinancialPanelHeading>
-                    <div className="mt-2 space-y-2">
-                      {breakdownEntries.map(([type, amount]) => (
-                        <FinancialPanelBreakdownRow
-                          key={type}
-                          label={
-                            <FinancingInstrumentLabel
-                              type={type}
-                              showMarker={false}
-                            />
-                          }
-                          value={formatBudget(amount)}
-                          color={getFinancingInstrumentColor(type)}
-                          percent={
-                            (Math.max(0, amount) /
-                              Math.max(
-                                1,
-                                ...breakdownEntries.map(([, value]) =>
-                                  Math.max(0, value),
-                                ),
-                              )) *
-                            100
-                          }
-                        />
-                      ))}
-                    </div>
-                    {trendsData.length > 0 && (
-                      <div className="mt-3">
-                        <FinancingInstrumentChart
-                          data={trendsData}
-                          allowNegative
-                          compact
-                          showLegend={false}
-                        />
-                      </div>
-                    )}
-                  </div>
+                      return (
+                        <>
+                          {displayedEntities.map((contrib) => {
+                            const typeEntries = Object.entries(
+                              contrib.typeBreakdown,
+                            ).sort(
+                              (a, b) =>
+                                getContributionTypeOrder(a[0]) -
+                                getContributionTypeOrder(b[0]),
+                            );
+                            const normalizedWidth =
+                              (contrib.total / maxTotal) * 100;
 
-                  <div className="mt-4">
-                    <FinancialPanelHeading subheading>
-                      By entity
-                    </FinancialPanelHeading>
-                    <div className="mt-2 space-y-1.5">
-                      {(() => {
-                        const displayedEntities = showAllEntities
-                          ? entityContributions
-                          : entityContributions.slice(0, 10);
-                        const maxTotal = Math.max(
-                          ...entityContributions.map((c) => c.total),
-                        );
+                            return (
+                              <FinancialPanelRankedRow
+                                key={contrib.entity}
+                                label={contrib.entity}
+                                value={formatBudgetFixed(contrib.total)}
+                                onClick={() =>
+                                  router.push(
+                                    `/system/organizations/?year=${selectedYear}#entity=${encodeURIComponent(`${contrib.entity}@${selectedYear}`)}`,
+                                  )
+                                }
+                              >
+                                <Tooltip delayDuration={200}>
+                                  <TooltipTrigger asChild>
+                                    <div className="flex flex-1 cursor-help flex-col gap-px">
+                                      <FinancialPanelBar
+                                        percent={normalizedWidth}
+                                        segments={typeEntries
+                                          .filter(([, amount]) => amount > 0)
+                                          .map(([type, amount]) => ({
+                                            id: type,
+                                            percent:
+                                              (amount / contrib.total) * 100,
+                                            color:
+                                              getFinancingInstrumentColor(type),
+                                          }))}
+                                      />
+                                    </div>
+                                  </TooltipTrigger>
+                                  <TooltipContent
+                                    side="top"
+                                    className="border border-slate-200 bg-white text-slate-800 shadow-lg"
+                                  >
+                                    <div className="space-y-1 text-xs">
+                                      <p className="font-medium">
+                                        {contrib.entity}
+                                      </p>
+                                      {typeEntries.map(([type, amount]) => (
+                                        <div
+                                          key={type}
+                                          className="flex items-center justify-between gap-4"
+                                        >
+                                          <span className="flex items-center gap-1.5">
+                                            <span
+                                              className="h-2 w-2 rounded-full"
+                                              style={{
+                                                backgroundColor:
+                                                  getFinancingInstrumentColor(
+                                                    type,
+                                                  ),
+                                              }}
+                                            />
+                                            {getFinancingInstrumentLabel(type)}
+                                          </span>
+                                          <span className="font-medium">
+                                            {formatBudgetFixed(amount)}
+                                          </span>
+                                        </div>
+                                      ))}
+                                    </div>
+                                  </TooltipContent>
+                                </Tooltip>
+                              </FinancialPanelRankedRow>
+                            );
+                          })}
 
-                        return (
-                          <>
-                            {displayedEntities.map((contrib) => {
-                              const typeEntries = Object.entries(
-                                contrib.typeBreakdown,
-                              ).sort(
-                                (a, b) =>
-                                  getContributionTypeOrder(a[0]) -
-                                  getContributionTypeOrder(b[0]),
-                              );
-                              const normalizedWidth =
-                                (contrib.total / maxTotal) * 100;
-
-                              return (
-                                <FinancialPanelRankedRow
-                                  key={contrib.entity}
-                                  label={contrib.entity}
-                                  value={formatBudgetFixed(contrib.total)}
-                                  onClick={() =>
-                                    router.push(
-                                      `/system/organizations/?year=${selectedYear}#entity=${encodeURIComponent(`${contrib.entity}@${selectedYear}`)}`,
-                                    )
-                                  }
-                                >
-                                  <Tooltip delayDuration={200}>
-                                    <TooltipTrigger asChild>
-                                      <div className="flex flex-1 cursor-help flex-col gap-px">
-                                        <FinancialPanelBar
-                                          percent={normalizedWidth}
-                                          segments={typeEntries
-                                            .filter(([, amount]) => amount > 0)
-                                            .map(([type, amount]) => ({
-                                              id: type,
-                                              percent:
-                                                (amount / contrib.total) * 100,
-                                              color:
-                                                getFinancingInstrumentColor(
-                                                  type,
-                                                ),
-                                            }))}
-                                        />
-                                      </div>
-                                    </TooltipTrigger>
-                                    <TooltipContent
-                                      side="top"
-                                      className="border border-slate-200 bg-white text-slate-800 shadow-lg"
-                                    >
-                                      <div className="space-y-1 text-xs">
-                                        <p className="font-medium">
-                                          {contrib.entity}
-                                        </p>
-                                        {typeEntries.map(([type, amount]) => (
-                                          <div
-                                            key={type}
-                                            className="flex items-center justify-between gap-4"
-                                          >
-                                            <span className="flex items-center gap-1.5">
-                                              <span
-                                                className="h-2 w-2 rounded-full"
-                                                style={{
-                                                  backgroundColor:
-                                                    getFinancingInstrumentColor(
-                                                      type,
-                                                    ),
-                                                }}
-                                              />
-                                              {getFinancingInstrumentLabel(
-                                                type,
-                                              )}
-                                            </span>
-                                            <span className="font-medium">
-                                              {formatBudgetFixed(amount)}
-                                            </span>
-                                          </div>
-                                        ))}
-                                      </div>
-                                    </TooltipContent>
-                                  </Tooltip>
-                                </FinancialPanelRankedRow>
-                              );
-                            })}
-
-                            {!showAllEntities &&
-                              entityContributions.length > 10 && (
-                                <button
-                                  onClick={() => setShowAllEntities(true)}
-                                  className="mt-2 text-xs text-gray-600 underline hover:text-gray-900"
-                                >
-                                  Show all {entityContributions.length} entities
-                                </button>
-                              )}
-                          </>
-                        );
-                      })()}
-                    </div>
+                          {!showAllEntities &&
+                            entityContributions.length > 10 && (
+                              <button
+                                onClick={() => setShowAllEntities(true)}
+                                className="mt-2 text-xs text-gray-600 underline hover:text-gray-900"
+                              >
+                                Show all {entityContributions.length} entities
+                              </button>
+                            )}
+                        </>
+                      );
+                    })()}
                   </div>
                 </div>
-              </>
-            )}
-            {assessmentContent}
-          </div>
-        </FinancialDetailPanel>
-      </div>
-    </div>
+              </div>
+            </>
+          )}
+          {assessmentContent}
+        </div>
+      </FinancialDetailPanel>
+    </DetailDrawer>
   );
 }

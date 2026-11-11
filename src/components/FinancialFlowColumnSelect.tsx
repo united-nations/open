@@ -30,13 +30,17 @@ export function FinancialFlowColumnSelect({
           aria-label={label}
           className={cn(
             "inline-flex cursor-pointer items-center rounded-full border border-border bg-secondary text-xs font-medium text-black transition-colors hover:bg-gray-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-un-blue data-[state=open]:bg-gray-200",
+            "min-h-11 xl:min-h-0",
             isEmpty
-              ? "size-7 justify-center"
+              ? "gap-1.5 px-3 xl:size-7 xl:justify-center xl:px-0"
               : "w-max max-w-full gap-1.5 px-2 py-1",
           )}
         >
           {isEmpty ? (
-            <Plus aria-hidden="true" className="size-3.5" />
+            <>
+              <Plus aria-hidden="true" className="size-3.5" />
+              <span className="xl:hidden">Add column</span>
+            </>
           ) : (
             <>
               <span className="truncate">

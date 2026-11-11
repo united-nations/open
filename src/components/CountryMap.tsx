@@ -15,7 +15,11 @@ import {
 import type { Entity } from "@/types";
 import { getSystemGroupingStyle } from "@/lib/systemGroupings";
 import { useEffect, useState, useMemo } from "react";
-import { FinancialBubbleMap } from "@/components/FinancialBubbleMap";
+import {
+  FinancialBubbleMap,
+  MapBubbleLegendCircle,
+  mapBubbleLegendClassName,
+} from "@/components/FinancialBubbleMap";
 import { bubbleRadiusInput } from "@/lib/map-bubbles";
 import { CountrySidebar } from "@/components/CountrySidebar";
 import {
@@ -29,7 +33,9 @@ import {
   clearSidebarHash,
 } from "@/hooks/useDeepLink";
 import { ChartSearchInput } from "@/components/ui/chart-search-input";
-import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
+import { SegmentedControl } from "@un-eosg/ui/components/segmented-control";
+import { getRegionStyle } from "@/lib/regionGroupings";
+import { RankedDetailList } from "@/components/RankedDetailList";
 import { formatBudget, UNCATEGORIZED_SYSTEM_GROUP } from "@/lib/entities";
 import { useYearRanges } from "@/lib/useYearRanges";
 
@@ -79,7 +85,8 @@ export function CountryMap() {
   const [loading, setLoading] = useState(true);
   const [loadedYear, setLoadedYear] = useState<number | null>(null);
   const [errorYear, setErrorYear] = useState<number | null>(null);
-  const [showMap, setShowMap] = useState(true);
+  const [view, setView] = useState("map");
+  const showMap = view === "map";
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedYear, setSelectedYear] = useState<number>(
     yearRanges.geographicExpenses.default,
@@ -219,7 +226,7 @@ export function CountryMap() {
   );
   const filteredData = searchQuery.trim()
     ? scopedData.filter((country) => {
-        const term = searchQuery.toLowerCase();
+        const term = searchQuery.trim().toLowerCase();
         return (
           country.name.toLowerCase().includes(term) ||
           country.region.toLowerCase().includes(term) ||
@@ -326,6 +333,46 @@ export function CountryMap() {
     clearSidebarHash();
   };
 
+  const reportingLevels = (
+    <div
+      role="group"
+      aria-label="Reporting level"
+      className={
+        showMap
+          ? `${mapBubbleLegendClassName} grid grid-cols-2 gap-x-2`
+          : "flex min-w-0 flex-wrap items-center gap-2 border-l border-gray-200 pl-3"
+      }
+    >
+      {!showMap && (
+        <span className="text-xs whitespace-nowrap text-gray-600">
+          Reporting level
+        </span>
+      )}
+      {GEOGRAPHIC_LEVELS.map((level) => (
+        <button
+          key={level.key}
+          type="button"
+          aria-pressed={levels.includes(level.key)}
+          onClick={() =>
+            setLevels((current) =>
+              current.includes(level.key)
+                ? current.filter((key) => key !== level.key)
+                : [...current, level.key],
+            )
+          }
+          className={
+            showMap
+              ? "flex min-h-11 items-center gap-1.5 rounded px-1 text-start text-xs focus-visible:outline-2 focus-visible:outline-un-blue aria-pressed:font-medium aria-[pressed=false]:opacity-55 sm:min-h-7"
+              : `inline-flex min-h-11 items-center rounded-full border px-2 py-1 text-xs text-black sm:min-h-0 ${levels.includes(level.key) ? "border-gray-300 bg-gray-100" : "border-gray-200 bg-white opacity-50"}`
+          }
+        >
+          {showMap && <MapBubbleLegendCircle color={level.color} radius={5} />}
+          {level.label}
+        </button>
+      ))}
+    </div>
+  );
+
   return (
     <div className="relative w-full">
       <DelayedChartLoading
@@ -343,15 +390,15 @@ export function CountryMap() {
               />
             }
             controls={
-              <BinaryToggle
-                variant="segmented"
+              <SegmentedControl
                 label="Geographic view"
                 options={[
                   { value: "chart", label: "Chart" },
                   { value: "map", label: "Map" },
+                  { value: "list", label: "List" },
                 ]}
-                value={showMap ? "map" : "chart"}
-                onValueChange={(value) => setShowMap(value === "map")}
+                value={view}
+                onValueChange={setView}
               />
             }
             search={
@@ -359,24 +406,28 @@ export function CountryMap() {
                 value={searchQuery}
                 onChange={setSearchQuery}
                 placeholder="Search by country or region..."
+                label="Search by country or region"
               />
             }
             summaries={[
               {
                 key: "total",
                 label: searchQuery ? "Matching total" : "Total",
-                value: formatBudget(
-                  filteredData.reduce((sum, country) => sum + country.total, 0),
-                ),
+                value: filteredData.some(
+                  (row) => Object.keys(row.entities).length > 0,
+                )
+                  ? formatBudget(
+                      filteredData.reduce(
+                        (sum, country) => sum + country.total,
+                        0,
+                      ),
+                    )
+                  : "Unavailable",
               },
             ]}
           />
         }
-        footer={
-          <ChartFooter
-            hint="Click on a location to explore details"
-          />
-        }
+        footer={<ChartFooter hint="Select a location to explore details" />}
       >
         <div className="mb-4 flex flex-wrap items-center gap-3">
           <HierarchicalSingleSelect
@@ -392,90 +443,59 @@ export function CountryMap() {
                 : entityGroups.find((group) => group.id === id)?.label || id
             }
           />
-          <div
-            role="group"
-            aria-label="Reporting level"
-            className={
-              showMap
-                ? ""
-                : "flex min-w-0 flex-wrap items-center gap-2 border-l border-gray-200 pl-3"
-            }
-          >
-            {!showMap && (
-              <span className="text-xs whitespace-nowrap text-gray-600">
-                Reporting level
-              </span>
-            )}
-            <div className="flex flex-wrap items-center gap-2">
-              {GEOGRAPHIC_LEVELS.map((level) => (
-                <button
-                  key={level.key}
-                  type="button"
-                  aria-pressed={levels.includes(level.key)}
-                  onClick={() =>
-                    setLevels((current) =>
-                      current.includes(level.key)
-                        ? current.filter((key) => key !== level.key)
-                        : [...current, level.key],
-                    )
-                  }
-                  className={`inline-flex items-center gap-1.5 rounded-full border px-2 py-1 text-xs text-black ${levels.includes(level.key) ? "border-gray-300 bg-gray-100" : "border-gray-200 bg-white opacity-50"}`}
-                >
-                  {showMap && (
-                    <span
-                      className="size-2.5 rounded-full"
-                      style={{ backgroundColor: level.color }}
-                    />
-                  )}
-                  {level.label}
-                </button>
-              ))}
-            </div>
-          </div>
-          {showMap && (
-            <span
-              aria-label="Circle size reference"
-              className="ml-auto inline-flex items-center gap-1.5 text-xs text-gray-600"
-            >
-              <svg
-                width="28"
-                height="28"
-                viewBox="0 0 28 28"
-                aria-hidden="true"
-              >
-                <circle
-                  cx="14"
-                  cy="14"
-                  r={BUBBLE_REFERENCE_RADIUS}
-                  fill="#6b7280"
-                  fillOpacity="0.28"
-                  stroke="#6b7280"
-                />
-              </svg>
-              {formatBudget(bubbleReferenceAmount)}
-            </span>
-          )}
+          {!showMap && reportingLevels}
         </div>
         {/* Map or Treemap View */}
-        {showMap && mapData.length === 0 ? (
-          <div className="flex h-[650px] w-full items-center justify-center bg-gray-100">
-            <p className="text-lg text-gray-500">
-              No positive expenditure matches the selected filters
-            </p>
-          </div>
-        ) : showMap ? (
-          <FinancialBubbleMap
-            testId="locations-map"
-            ariaLabel={`Map of UN System geographic expenditure in ${selectedYear}`}
-            data={mapData}
-            colors={GEOGRAPHIC_LEVELS.map((item) => item.color)}
-            colorDomain={GEOGRAPHIC_LEVELS.map((item) => item.key)}
-            radius={BUBBLE_REFERENCE_RADIUS}
-            tooltip={(d: GeographicMapPoint) => (
-              <CountryFinancialTooltip country={d.data} />
-            )}
-            onSeriesMouseClick={handleClick}
+        {view === "list" ? (
+          <RankedDetailList
+            label="Expenditure by location"
+            items={filteredData
+              .filter((row) => Object.keys(row.entities).length > 0)
+              .map((row) => {
+                const region = row.region || "Unknown";
+                const style = getRegionStyle(region);
+                const subregion = geographicSubregion(row);
+                return {
+                  id: row.iso3,
+                  label: row.name,
+                  description: GEOGRAPHIC_LEVELS.find(
+                    (level) => level.key === row.level,
+                  )?.label,
+                  amount: row.total,
+                  value: formatBudget(row.total),
+                  group: { key: region, label: style.label },
+                  subgroup: subregion
+                    ? { key: subregion, label: subregion }
+                    : undefined,
+                  color: style.color,
+                  onOpen: () => handleTreemapClick(row),
+                };
+              })}
           />
+        ) : showMap ? (
+          <div className="relative">
+            {mapData.length === 0 ? (
+              <div className="flex h-[650px] w-full items-center justify-center bg-gray-100 px-4 text-center">
+                <p className="text-lg text-gray-500">
+                  No positive expenditure matches the selected filters
+                </p>
+              </div>
+            ) : (
+              <FinancialBubbleMap
+                testId="locations-map"
+                ariaLabel={`Map of UN System geographic expenditure in ${selectedYear}`}
+                data={mapData}
+                colors={GEOGRAPHIC_LEVELS.map((item) => item.color)}
+                colorDomain={GEOGRAPHIC_LEVELS.map((item) => item.key)}
+                radius={BUBBLE_REFERENCE_RADIUS}
+                tooltip={(d: GeographicMapPoint) => (
+                  <CountryFinancialTooltip country={d.data} />
+                )}
+                onSeriesMouseClick={handleClick}
+              />
+            )}
+            {reportingLevels}
+          </div>
         ) : (
           <>
             <CountryTreemap

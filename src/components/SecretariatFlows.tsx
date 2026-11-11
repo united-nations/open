@@ -6,6 +6,7 @@ import { FinancialFlowDiagram } from "./FinancialFlowDiagram";
 import { FinancialFlowColumnSelect } from "./FinancialFlowColumnSelect";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
+import { useNearViewport } from "@/hooks/useNearViewport";
 import { YearSlider } from "./YearSlider";
 import { SecretariatFlowDetails } from "./SecretariatFlowDetails";
 import { SecretariatEntitySidebar } from "./SecretariatEntitySidebar";
@@ -42,6 +43,7 @@ const columnOptions = {
   priority: [{ value: "priority", label: "Priority area" }],
 } as const;
 export function SecretariatFlows() {
+  const { ref, ready, activate } = useNearViewport<HTMLElement>();
   const [choices, setChoices] = useState<SecretariatFlowChoices>({
     funding: "mechanism",
     entity: "none",
@@ -57,6 +59,7 @@ export function SecretariatFlows() {
     null,
   );
   useEffect(() => {
+    if (!ready) return;
     const controller = new AbortController();
     fetch(`${basePath}/data/secretariat-overview-${year}.json`, {
       signal: controller.signal,
@@ -75,7 +78,7 @@ export function SecretariatFlows() {
         if (!controller.signal.aborted) setFailure(year);
       });
     return () => controller.abort();
-  }, [year, retry]);
+  }, [ready, year, retry]);
   const error = failure === year;
   const current = error ? null : data;
   const pending = !error && data?.meta.year !== year;
@@ -101,6 +104,8 @@ export function SecretariatFlows() {
   };
   return (
     <section
+      ref={ref}
+      tabIndex={-1}
       id="secretariat-flows"
       aria-labelledby="secretariat-flows-title"
       className="mt-12 scroll-mt-40 space-y-4"
@@ -108,75 +113,87 @@ export function SecretariatFlows() {
       <SectionHeading id="secretariat-flows-title" anchor="secretariat-flows">
         Financial flows
       </SectionHeading>
-      <ChartFrame
-        header={
-          <ChartHeader
-            yearControl={
-              <YearSlider
-                years={years.years}
-                selectedYear={year}
-                onChange={(next) => {
-                  setYear(next);
-                  setSelected(null);
-                }}
-              />
-            }
-            summaries={[
-              {
-                key: "expenditure",
-                label:
-                  pending && current
-                    ? `Total expenditure · ${current.meta.year}`
-                    : "Total expenditure",
-                value: current
-                  ? formatBudget(total)
-                  : error
-                    ? "Unavailable"
-                    : "Loading…",
-              },
-            ]}
-          />
-        }
-        footer={
-          <ChartFooter hint="Hover for amounts; click a bar or connection to open details." />
-        }
-      >
-        {/* The shared chart already sizes solid bars by net expenditure.
-            Show those bars without the additional gross-flow outline. */}
-        <div
-          className="relative min-h-96 [&_polygon[stroke-dasharray]]:stroke-none"
-          aria-busy={pending}
+      {!ready && (
+        <button
+          type="button"
+          onClick={activate}
+          data-deferred-chart-trigger=""
+          className="min-h-11 rounded-sm border border-gray-300 px-3 text-sm font-medium"
         >
-          <DelayedChartLoading
-            pending={pending}
-            requestKey={`${year}-${retry}`}
-          />
-          {pending && current && (
-            <p
-              role="status"
-              className="absolute end-0 top-0 z-10 bg-white px-2 text-xs text-gray-600"
-            >
-              Loading {year}; showing {current.meta.year} until ready…
-            </p>
-          )}
-          {error ? (
-            <p role="alert" className="py-12">
-              The flows could not be loaded.{" "}
-              <button
-                className="underline"
-                onClick={() => {
-                  setFailure(null);
-                  setRetry((value) => value + 1);
-                }}
+          Load financial flows
+        </button>
+      )}
+      {ready && (
+        <ChartFrame
+          header={
+            <ChartHeader
+              yearControl={
+                <YearSlider
+                  years={years.years}
+                  selectedYear={year}
+                  onChange={(next) => {
+                    setYear(next);
+                    setSelected(null);
+                  }}
+                />
+              }
+              summaries={[
+                {
+                  key: "expenditure",
+                  label:
+                    pending && current
+                      ? `Total expenditure · ${current.meta.year}`
+                      : "Total expenditure",
+                  value: current
+                    ? formatBudget(total)
+                    : error
+                      ? "Unavailable"
+                      : "Loading…",
+                },
+              ]}
+            />
+          }
+          footer={
+            <ChartFooter hint="Hover for amounts; click a bar or connection to open details." />
+          }
+        >
+          {/* The shared chart already sizes solid bars by net expenditure.
+            Show those bars without the additional gross-flow outline. */}
+          <div
+            className="relative min-h-96 [&_polygon[stroke-dasharray]]:stroke-none"
+            aria-busy={pending}
+          >
+            <DelayedChartLoading
+              pending={pending}
+              requestKey={`${year}-${retry}`}
+            />
+            {pending && current && (
+              <p
+                role="status"
+                className="absolute end-0 top-0 z-10 bg-white px-2 text-xs text-gray-600"
               >
-                Try again
-              </button>
-            </p>
-          ) : current && model ? (
-            <FinancialFlowDiagram
-              graph={model.graph}
-              columnControls={(["funding", "entity", "priority"] as const).map(
-                (column, index) => (
+                Loading {year}; showing {current.meta.year} until ready…
+              </p>
+            )}
+            {error ? (
+              <p role="alert" className="py-12">
+                The flows could not be loaded.{" "}
+                <button
+                  className="underline"
+                  onClick={() => {
+                    setFailure(null);
+                    setRetry((value) => value + 1);
+                  }}
+                >
+                  Try again
+                </button>
+              </p>
+            ) : current && model ? (
+              <FinancialFlowDiagram
+                graph={model.graph}
+                columnControls={(
+                  ["funding", "entity", "priority"] as const
+                ).map((column, index) => (
                   <FinancialFlowColumnSelect
                     key={column}
                     label={`${["Left", "Middle", "Right"][index]} column`}
@@ -190,90 +207,93 @@ export function SecretariatFlows() {
                       setSelected(null);
                     }}
                   />
-                ),
-              )}
-              columnNotes={
-                choices.entity === "category"
-                  ? [null, "Entity categories are preliminary.", null]
-                  : undefined
-              }
-              ariaLabel={`Annual-report expenditure by ${dimensions.map((dimension) => SECRETARIAT_FLOW_DIMENSIONS[dimension].label.toLowerCase()).join(" through ")}`}
-              sidebarDetails={(selection, onClose) => {
-                const rows = selectionRows(model, selection);
-                const label = (id: string) =>
-                  model.graph.nodes.find((node) => node.id === id)?.label ?? "";
-                return {
-                  title:
-                    selection.kind === "node"
-                      ? label(selection.id)
-                      : `${label(selection.source)} → ${label(selection.target)}`,
-                  year: current.meta.year,
-                  eyebrow: "Selected expenditure",
-                  subtitle: "All funding sources · selected source records",
-                  total: {
-                    label: "Net expenditure",
-                    value: formatBudget(sumRecords(rows)),
-                  },
-                  children: (
-                    <SecretariatFlowDetails
-                      model={model}
-                      dimensions={dimensions}
-                      selection={selection}
-                      compact={false}
-                      onEntity={(code, members) => {
-                        onClose();
-                        openEntity(code, members);
-                      }}
-                    />
-                  ),
-                };
-              }}
-              selectionLabel="Selected flow"
-              clearLabel="Clear selection"
-              formatValue={formatBudget}
-              describeNode={(id) =>
-                (model.graph.nodes.find((n) => n.id === id)?.label ?? "") +
-                ": " +
-                formatBudget(sumRecords(model.nodeRows.get(id) ?? []))
-              }
-              describeLink={(source, target, value, within) =>
-                (model.graph.nodes.find((n) => n.id === source)?.label ?? "") +
-                " to " +
-                (model.graph.nodes.find((n) => n.id === target)?.label ?? "") +
-                (within ? " selected portion: " : ": ") +
-                formatBudget(
-                  within
-                    ? sumRecords(
-                        selectionRows(
-                          model,
-                          { kind: "edge", source, target },
-                          within,
-                        ),
-                      )
-                    : value,
-                )
-              }
-              highlightedValue={(selection, source, target) =>
-                selectedLinkValue(model, selection, source, target)
-              }
-              renderDetails={(selection, compact, within) => (
-                <SecretariatFlowDetails
-                  within={within}
-                  model={model}
-                  dimensions={dimensions}
-                  selection={selection}
-                  compact={compact}
-                  onEntity={openEntity}
-                />
-              )}
-            />
-          ) : (
-            <p role="status" className="py-12">
-              Loading flows…
-            </p>
-          )}
-        </div>
-      </ChartFrame>
+                ))}
+                columnNotes={
+                  choices.entity === "category"
+                    ? [null, "Entity categories are preliminary.", null]
+                    : undefined
+                }
+                ariaLabel={`Annual-report expenditure by ${dimensions.map((dimension) => SECRETARIAT_FLOW_DIMENSIONS[dimension].label.toLowerCase()).join(" through ")}`}
+                sidebarDetails={(selection, onClose) => {
+                  const rows = selectionRows(model, selection);
+                  const label = (id: string) =>
+                    model.graph.nodes.find((node) => node.id === id)?.label ??
+                    "";
+                  return {
+                    title:
+                      selection.kind === "node"
+                        ? label(selection.id)
+                        : `${label(selection.source)} → ${label(selection.target)}`,
+                    year: current.meta.year,
+                    eyebrow: "Selected expenditure",
+                    subtitle: "All funding sources · selected source records",
+                    total: {
+                      label: "Net expenditure",
+                      value: formatBudget(sumRecords(rows)),
+                    },
+                    children: (
+                      <SecretariatFlowDetails
+                        model={model}
+                        dimensions={dimensions}
+                        selection={selection}
+                        compact={false}
+                        onEntity={(code, members) => {
+                          onClose();
+                          openEntity(code, members);
+                        }}
+                      />
+                    ),
+                  };
+                }}
+                selectionLabel="Selected flow"
+                clearLabel="Clear selection"
+                formatValue={formatBudget}
+                describeNode={(id) =>
+                  (model.graph.nodes.find((n) => n.id === id)?.label ?? "") +
+                  ": " +
+                  formatBudget(sumRecords(model.nodeRows.get(id) ?? []))
+                }
+                describeLink={(source, target, value, within) =>
+                  (model.graph.nodes.find((n) => n.id === source)?.label ??
+                    "") +
+                  " to " +
+                  (model.graph.nodes.find((n) => n.id === target)?.label ??
+                    "") +
+                  (within ? " selected portion: " : ": ") +
+                  formatBudget(
+                    within
+                      ? sumRecords(
+                          selectionRows(
+                            model,
+                            { kind: "edge", source, target },
+                            within,
+                          ),
+                        )
+                      : value,
+                  )
+                }
+                highlightedValue={(selection, source, target) =>
+                  selectedLinkValue(model, selection, source, target)
+                }
+                renderDetails={(selection, compact, within) => (
+                  <SecretariatFlowDetails
+                    within={within}
+                    model={model}
+                    dimensions={dimensions}
+                    selection={selection}
+                    compact={compact}
+                    onEntity={openEntity}
+                  />
+                )}
+              />
+            ) : (
+              <p role="status" className="py-12">
+                Loading flows…
+              </p>
+            )}
+          </div>
+        </ChartFrame>
+      )}
       {selected && current && (
         <SecretariatEntitySidebar
           key={selected.code + current.meta.year}

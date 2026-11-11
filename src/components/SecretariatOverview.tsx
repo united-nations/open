@@ -26,7 +26,6 @@ import {
   BUDGET_FUNDING_SOURCES,
   type BudgetFundingSource,
 } from "@/lib/budgetGroupings";
-import { SecretariatOverviewTrends } from "@/components/SecretariatOverviewTrends";
 import { priorityAreaColor } from "@/lib/secretariatGroupings";
 import { useYearRanges } from "@/lib/useYearRanges";
 import type {
@@ -221,6 +220,10 @@ export function SecretariatOverview() {
         key: tile.id,
         label:
           tile.entity.code === "STA" ? "Staff Assessment" : tile.entity.code,
+        listLabel:
+          tile.entity.name && tile.entity.name !== tile.entity.code
+            ? `${tile.entity.name} (${tile.entity.code})`
+            : undefined,
         value: tile.value,
         data: tile,
         onActivate: () => openEntity(tile.entity),
@@ -292,11 +295,7 @@ export function SecretariatOverview() {
         requestKey={year}
       />
       <GroupedTreemap<string, SecretariatGroup, OverviewTile, never>
-        footer={
-          <ChartFooter
-            hint="Click on an entity to explore details"
-          />
-        }
+        footer={<ChartFooter hint="Click on an entity to explore details" />}
         yearControl={
           <YearSlider
             years={years.years}
@@ -304,7 +303,7 @@ export function SecretariatOverview() {
             onChange={setYear}
           />
         }
-        controls={
+        filterControls={
           <FundingSourcePills
             neutral
             selected={activeFunding}
@@ -377,8 +376,6 @@ export function SecretariatOverview() {
           </div>
         }
       />
-
-      <SecretariatOverviewTrends />
 
       {selectedEntity && (
         <SecretariatEntitySidebar

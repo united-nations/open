@@ -127,6 +127,10 @@ try {
       }
     }
     if (view.route === "/secretariat/trust-funds/") {
+      await page
+        .getByRole("radio", { name: "By entity", exact: true })
+        .locator("..")
+        .click();
       // EOSG is small in the full dataset. Its group heading must return
       // when search expands its funds, independently of the leaf labels.
       const heading = page

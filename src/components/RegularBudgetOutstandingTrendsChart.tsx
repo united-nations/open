@@ -344,38 +344,53 @@ export function RegularBudgetOutstandingTrendsChart({
           No outstanding balance at any available autumn snapshot.
         </p>
       )}
-      <table className="sr-only">
-        <caption>
-          Outstanding regular-budget contributions at each autumn snapshot, US
-          dollars
-        </caption>
-        <thead>
-          <tr>
-            <th>Year</th>
-            <th>Reporting date</th>
-            {series.map((item) => (
-              <th key={item.key}>{item.label}</th>
-            ))}
-            <th>Source</th>
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row) => (
-            <tr key={row.meta.year}>
-              <th>{row.meta.year}</th>
-              <td>{row.meta.as_of}</td>
+      <div className="sr-only">
+        <table>
+          <caption>
+            Outstanding regular-budget contributions at each autumn snapshot, US
+            dollars
+          </caption>
+          <thead>
+            <tr>
+              <th>Year</th>
+              <th>Reporting date</th>
               {series.map((item) => (
-                <td key={item.key}>{displayAmount(row, item.names)}</td>
+                <th key={item.key}>{item.label}</th>
               ))}
-              <td>
-                <a href={outstandingSourceUrl(row)}>
-                  Financial situation presentation
-                </a>
-              </td>
+              <th>Source</th>
             </tr>
+          </thead>
+          <tbody>
+            {rows.map((row) => (
+              <tr key={row.meta.year}>
+                <th>{row.meta.year}</th>
+                <td>{row.meta.as_of}</td>
+                {series.map((item) => (
+                  <td key={item.key}>{displayAmount(row, item.names)}</td>
+                ))}
+                <td>Financial situation presentation</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+      <details className="text-sm">
+        <summary className="min-h-11 cursor-pointer py-3 font-medium underline underline-offset-2">
+          Financial situation presentations by year
+        </summary>
+        <ul className="space-y-1">
+          {rows.map((row) => (
+            <li key={row.meta.year}>
+              <a
+                href={outstandingSourceUrl(row)}
+                className="inline-flex min-h-11 items-center text-un-blue-text underline underline-offset-2"
+              >
+                {row.meta.year} · {row.meta.as_of}
+              </a>
+            </li>
           ))}
-        </tbody>
-      </table>
+        </ul>
+      </details>
     </div>
   );
 }

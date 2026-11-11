@@ -7,6 +7,7 @@ import { useEffect, useMemo, useState } from "react";
 import { FinancialFlowColumnSelect } from "./FinancialFlowColumnSelect";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
 import { SystemFlowDiagram } from "./SystemFlowDiagram";
+import { useNearViewport } from "@/hooks/useNearViewport";
 import { YearSlider } from "./YearSlider";
 import { ChartFooter } from "./ChartFooter";
 import { loadStaticData, loadYearData } from "@/lib/data";
@@ -53,8 +54,9 @@ const options = {
 
 export function SystemFlows() {
   const yearRanges = useYearRanges();
+  const { ref, ready, activate } = useNearViewport<HTMLElement>();
   const [sources, setSources] = useState<{
-    spending: FlowSpendingData;
+    spending: FlowSpendingData["meta"];
     functions: FunctionExpenses;
     entities: Entity[];
   } | null>(null);
@@ -70,16 +72,19 @@ export function SystemFlows() {
     limit: 12,
   });
   useEffect(() => {
+    if (!ready || sources) return;
     let cancelled = false;
     Promise.all([
-      loadStaticData<FlowSpendingData>("system-flow-spending.json"),
+      loadStaticData<FlowSpendingData["meta"]>(
+        "system-flow-spending/index.json",
+      ),
       loadStaticData<FunctionExpenses>("function-expenses.json"),
       loadStaticData<Entity[]>("entities.json"),
     ])
       .then(([spending, functions, entities]) => {
         if (!cancelled) {
           setSources({ spending, functions, entities });
-          setYear((current) => current ?? spending.meta.years.at(-1)!);
+          setYear((current) => current ?? spending.years.at(-1)!);
           setError(false);
         }
       })
@@ -89,7 +94,7 @@ export function SystemFlows() {
     return () => {
       cancelled = true;
     };
-  }, [retry]);
+  }, [ready, retry, sources]);
   useEffect(() => {
     if (!sources || year === null) return;
     let cancelled = false;
@@ -104,12 +109,12 @@ export function SystemFlows() {
         ? loadYearData<Record<string, ContributorData>>("donors", year)
         : Promise.resolve({} as Record<string, ContributorData>),
       loadYearData<CountryExpense[]>("country-expenses", year),
+      loadStaticData<SystemFlowInput["spending"]>(
+        `system-flow-spending/${year}.json`,
+      ),
     ])
-      .then(([revenue, contributors, countries]) => {
+      .then(([revenue, contributors, countries, spending]) => {
         if (cancelled) return;
-        const spending = sources.spending.data.find(
-          (row) => row.year === year,
-        )!;
         const functions =
           sources.functions.data.find((row) => row.year === year)?.entities ??
           {};
@@ -222,6 +227,8 @@ export function SystemFlows() {
   const pending = loaded?.year !== year;
   return (
     <section
+      ref={ref}
+      tabIndex={-1}
       id="system-flows"
       aria-labelledby="system-flows-title"
       className="mt-12 scroll-mt-40 space-y-4"
@@ -229,13 +236,21 @@ export function SystemFlows() {
       <SectionHeading id="system-flows-title" anchor="system-flows">
         Financial flows
       </SectionHeading>
+      {!ready && (
+        <button
+          type="button"
+          onClick={activate}
+          data-deferred-chart-trigger=""
+          className="min-h-11 rounded-sm border border-gray-300 px-3 text-sm font-medium"
+        >
+          Load financial flows
+        </button>
+      )}
       <ChartHeader
         yearControl={
           sources && year !== null ? (
             <YearSlider
-              years={sources.spending.meta.years.filter(
-                (year) => year !== 2010,
-              )}
+              years={sources.spending.years.filter((year) => year !== 2010)}
               selectedYear={year}
               onChange={(value) => {
                 setSlow(false);
@@ -293,7 +308,7 @@ export function SystemFlows() {
             " Function data uses the legacy classification before 2018."}
         </p>
       )}
-      {error ? (
+      {!ready ? null : error ? (
         <p role="alert">
           The flows could not be loaded.{" "}
           <button

@@ -8,7 +8,6 @@ import {
   FundingSourcePills,
   toggleFundingSource,
 } from "@/components/FundingSourcePills";
-import { ProgrammeBudgetTrends } from "@/components/ProgrammeBudgetTrends";
 import { YearSlider } from "@/components/YearSlider";
 import {
   BUDGET_FUNDING_SOURCES,
@@ -168,7 +167,6 @@ export function RegularBudgetView() {
         ppbGrouping={grouping}
         onPpbGroupingChange={setGrouping}
       />
-      <ProgrammeBudgetTrends />
     </div>
   );
 }

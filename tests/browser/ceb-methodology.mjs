@@ -186,10 +186,12 @@ try {
   await page.goto(portalUrl + "/system/contributors/", {
     waitUntil: "networkidle",
   });
+  await page.locator("#contributor-trends").scrollIntoViewIfNeeded();
   const financingTable = page.getByRole("table", {
     name: "Revenue by financing instrument, nominal US dollars",
     exact: true,
   });
+  await financingTable.waitFor({ state: "attached" });
   const total2015 = financingTable.getByRole("row").filter({
     has: page.getByRole("rowheader", { name: "2015", exact: true }),
   });
@@ -258,24 +260,12 @@ try {
       0,
     );
     if (route === "/secretariat/trust-funds/") {
-      const funds = page.locator(
-        'details[aria-label="Funds with zero or negative expenditure"]',
-      );
-      if (await funds.count()) {
-        assert.equal(
-          await funds.evaluate((node) =>
-            Boolean(node.parentElement.closest("details")),
-          ),
-          false,
-        );
-        await funds.locator(":scope > summary").click();
-        await funds.getByRole("button").first().click();
-        await page.getByRole("dialog").waitFor();
+      assert.equal(
         await page
-          .getByRole("button", { name: "Close fund details", exact: true })
-          .click();
-        await page.getByRole("dialog").waitFor({ state: "hidden" });
-      }
+          .getByText("Funds with zero or negative expenditure", { exact: true })
+          .count(),
+        0,
+      );
     }
     for (const hint of await page.locator("[data-chart-hint]").all())
       assert.equal(

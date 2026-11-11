@@ -4,6 +4,8 @@ import { SecretariatMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
 import { SecretariatFlows } from "@/components/SecretariatFlows";
+import { SecretariatOverviewTrends } from "@/components/SecretariatOverviewTrends";
+import { secretariatTrendRows } from "@/lib/staticTrendData";
 import { SecretariatOverview } from "@/components/SecretariatOverview";
 
 export const metadata: Metadata = {
@@ -12,7 +14,8 @@ export const metadata: Metadata = {
     "Explore which UN Secretariat entities spend funds toward which priority areas.",
 };
 
-export default function SecretariatPage() {
+export default async function SecretariatPage() {
+  const trends = await secretariatTrendRows();
   return (
     <>
       <PageHeading
@@ -36,6 +39,7 @@ export default function SecretariatPage() {
       />
       <PageBody>
         <SecretariatOverview />
+        <SecretariatOverviewTrends series={trends} />
         <SecretariatFlows />
       </PageBody>
       <SecretariatMethodologyLink page="overview" />

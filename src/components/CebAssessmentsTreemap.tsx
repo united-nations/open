@@ -91,6 +91,10 @@ export function CebAssessmentsTreemap({
         paleFill: !darkFillBehindLabel,
         textColor: darkFillBehindLabel ? "#fff" : "var(--color-gray-900)",
         valueLabel,
+        listValueLabel: assessedLabel,
+        listNote: showPrior
+          ? `${valueLabel}. ${priorLabel}: ${earlierLabel}.`
+          : valueLabel,
         accessibleDescription: [
           fill === 0 ? `Paid toward this year: ${currentLabel}.` : "",
           showPrior && priorFill === 0 ? `${priorLabel}: ${earlierLabel}.` : "",

@@ -193,6 +193,7 @@ const checkSidebar = async () => {
 try {
   await page.goto(portalUrl + "/secretariat/", { waitUntil: "networkidle" });
   const section = page.locator("#secretariat-flows");
+  await section.scrollIntoViewIfNeeded();
   await section.locator("svg g[role=button]").first().waitFor();
   assert.equal(
     await page.locator("#secretariat-funding-flows").count(),
@@ -241,8 +242,8 @@ try {
     0,
   );
   assert.ok(
-    fixedPositions.every((position) => position.inside),
-    "Selectors are inside the chart above their slots",
+    fixedPositions.every((position) => !position.inside),
+    "Selectors stay outside the diagram scroller",
   );
   await section
     .getByRole("button", { name: "Middle column", exact: true })
@@ -488,6 +489,7 @@ try {
     waitUntil: "networkidle",
   });
   const system = page.locator("#system-flows");
+  await system.scrollIntoViewIfNeeded();
   await system.locator("svg g[role=button]").first().waitFor();
   assert.equal(await columnCount(system), 3);
   await checkLabelLayout(system);

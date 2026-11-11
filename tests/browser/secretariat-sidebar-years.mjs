@@ -70,7 +70,9 @@ try {
       `${portalUrl}/secretariat/trust-funds/#trust-fund=${encodeURIComponent("xb-entity:UNODC")}`,
       { waitUntil: "networkidle" },
     );
-    dialog = page.locator('aside[role="dialog"]');
+    // The current trust-fund release has no separately reported UNODC data.
+    await chartYear(2024);
+    dialog = page.locator('[role="dialog"][aria-modal="true"]');
     await dialog.waitFor();
     const expense = (year) =>
       data("budget-trust-funds", year).nodes.find(
@@ -89,7 +91,10 @@ try {
       money(expense(2023)),
     );
     assert.equal(
-      await page.getByRole("slider").first().getAttribute("aria-valuenow"),
+      await page
+        .getByRole("slider", { includeHidden: true })
+        .first()
+        .getAttribute("aria-valuenow"),
       "2024",
     );
     await choose(dialog, 2022);
@@ -150,7 +155,7 @@ try {
       .locator('[data-xb-contributor-panel="ITC"]')
       .getByRole("button", { name: donor.name, exact: true })
       .click();
-    dialog = page.locator('aside[role="dialog"]');
+    dialog = page.locator('[role="dialog"][aria-modal="true"]');
     await dialog.waitFor();
     assert.equal(
       await total(dialog, series2023.measure).innerText(),
@@ -169,7 +174,9 @@ try {
       money(series2022.rows.find((row) => row.name === donor.name).amount),
     );
     assert.equal(
-      await page.getByRole("slider").getAttribute("aria-valuenow"),
+      await page
+        .getByRole("slider", { includeHidden: true })
+        .getAttribute("aria-valuenow"),
       "2023",
     );
     await choose(dialog, 2024);
@@ -233,7 +240,10 @@ try {
     0,
   );
   assert.equal(
-    await page.getByRole("slider").first().getAttribute("aria-valuenow"),
+    await page
+      .getByRole("slider", { includeHidden: true })
+      .first()
+      .getAttribute("aria-valuenow"),
     "2025",
   );
   await choose(dialog, 2025);
@@ -299,7 +309,10 @@ try {
       .first()
       .waitFor();
   assert.equal(
-    await page.getByRole("slider").first().getAttribute("aria-valuenow"),
+    await page
+      .getByRole("slider", { includeHidden: true })
+      .first()
+      .getAttribute("aria-valuenow"),
     "2024",
   );
   results.push(
@@ -337,7 +350,10 @@ try {
     money(missionAmount(2023)),
   );
   assert.equal(
-    await page.getByRole("slider").first().getAttribute("aria-valuenow"),
+    await page
+      .getByRole("slider", { includeHidden: true })
+      .first()
+      .getAttribute("aria-valuenow"),
     "2024",
   );
   await choose(dialog, 2024, { fiscal: true });
@@ -384,10 +400,12 @@ try {
     `${portalUrl}/secretariat/peacekeeping-budget/contributors/#peacekeeping-contributor=Germany`,
     { waitUntil: "networkidle" },
   );
-  dialog = page.locator('aside[role="dialog"]');
+  dialog = page.locator('[role="dialog"][aria-modal="true"]');
   await dialog.waitFor();
   const assessmentYear = Number(
-    await page.getByRole("slider").getAttribute("aria-valuenow"),
+    await page
+      .getByRole("slider", { includeHidden: true })
+      .getAttribute("aria-valuenow"),
   );
   const assessment = (year) =>
     data("peacekeeping-contributors", year).contributors.find(
@@ -420,7 +438,9 @@ try {
     "2023/24",
   );
   assert.equal(
-    await page.getByRole("slider").getAttribute("aria-valuenow"),
+    await page
+      .getByRole("slider", { includeHidden: true })
+      .getAttribute("aria-valuenow"),
     String(assessmentYear),
   );
   results.push(

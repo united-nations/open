@@ -7,7 +7,7 @@ import { formatBudget } from "@/lib/entities";
 import { SDG, SDGExpensesData, getSDGKey } from "@/lib/sdgs";
 import { useRouter } from "next/navigation";
 import { SidebarControls } from "@/components/SidebarControls";
-import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { DetailDrawer, DrawerTitle } from "@/components/DetailDrawer";
 import { navigateToSidebar } from "@/hooks/useDeepLink";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
 import {
@@ -57,10 +57,6 @@ export default function SDGModal({
   initialYear,
 }: SDGModalProps) {
   const router = useRouter();
-  const [isVisible, setIsVisible] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [showAllEntities, setShowAllEntities] = useState(false);
 
   // Year selection
@@ -98,9 +94,6 @@ export default function SDGModal({
   const [countryNames, setCountryNames] = useState<Record<string, string>>({});
   const [uninfoSort, setUninfoSort] = useState("available");
 
-  // Focus trap for accessibility
-  const focusTrapRef = useFocusTrap(!!sdg);
-
   // Load UNINFO data and country names
   useEffect(() => {
     if (!SHOW_UNINFO || !sdg || sdg.number <= 0) return;
@@ -114,54 +107,6 @@ export default function SDGModal({
       })
       .catch(() => setUninfoData(null));
   }, [sdg]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 10);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleClose = useCallback(() => {
-    setIsClosing(true);
-    setTimeout(() => onClose(), 300);
-  }, [onClose]);
-
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") handleClose();
-    };
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [handleClose]);
-
-  const minSwipeDistance = 50;
-
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-
-  const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
-  };
-
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    const distance = touchStart - touchEnd;
-    const isRightSwipe = distance < -minSwipeDistance;
-    if (isRightSwipe) handleClose();
-  };
-
-  useEffect(() => {
-    const rootStyle = document.documentElement.style;
-    const previousOverflow = rootStyle.overflow;
-    const previousGutter = rootStyle.scrollbarGutter;
-    rootStyle.overflow = "hidden";
-    rootStyle.scrollbarGutter = "auto";
-    return () => {
-      rootStyle.overflow = previousOverflow;
-      rootStyle.scrollbarGutter = previousGutter;
-    };
-  }, []);
 
   if (!sdg) return null;
 
@@ -190,329 +135,315 @@ export default function SDGModal({
   const modalTitleId = `sdg-modal-title-${sdg.number}`;
 
   return (
-    <div
-      className={`fixed inset-0 z-50 flex items-center justify-end bg-black/50 transition-all duration-300 ease-out ${isVisible && !isClosing ? "opacity-100" : "opacity-0"}`}
-      onClick={handleClose}
+    <DetailDrawer
+      titleId={modalTitleId}
+      onClose={onClose}
+      swipeToClose
+      className="overflow-hidden sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px]"
     >
-      <div
-        ref={focusTrapRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={modalTitleId}
-        className={`h-full w-full overflow-hidden bg-white shadow-2xl transition-transform duration-300 ease-out sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px] ${isVisible && !isClosing ? "translate-x-0" : "translate-x-full"}`}
-        onClick={(e) => e.stopPropagation()}
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-      >
-        <FinancialDetailPanel
-          titleId={modalTitleId}
-          className="sm:w-full"
-          title={
-            <span className="flex items-start gap-2">
-              {sdg.number > 0 && (
-                <span
-                  className="flex size-6 shrink-0 items-center justify-center font-bold text-white"
-                  style={{ backgroundColor: color }}
-                >
-                  {sdg.number}
-                </span>
-              )}
-              <span className="min-w-0">{sdg.shortTitle}</span>
-            </span>
-          }
-          subtitle={sdg.title}
-          yearSelectorPlacement="header"
-          yearSelector={{
-            years: availableYears,
-            selected: selectedYear,
-            onChange: setSelectedYear,
-            label: "Select year",
-            pending: loadingYear,
-            pendingLabel: "Loading...",
-          }}
-          controls={
-            <SidebarControls
-              shareHash={`sdg=${sdg.number}`}
-              onClose={handleClose}
-              closeLabel="Close modal"
-            />
-          }
-        >
-          <div className="relative space-y-6">
-            <DelayedChartLoading
-              pending={loadingYear}
-              requestKey={selectedYear}
-            />
-            {yearError && (
-              <p role="status" className="text-sm text-gray-500">
-                Data could not be loaded for {selectedYear}.
-              </p>
+      <FinancialDetailPanel
+        titleId={modalTitleId}
+        className="sm:w-full"
+        title={
+          <DrawerTitle className="flex items-start gap-2">
+            {sdg.number > 0 && (
+              <span
+                className="flex size-6 shrink-0 items-center justify-center font-bold text-white"
+                style={{ backgroundColor: color }}
+              >
+                {sdg.number}
+              </span>
             )}
-            {/* Entity Spending Breakdown */}
-            {(yearEntityExpenses !== undefined || loadingYear) && (
-              <div>
-                <FinancialPanelHeading className="mb-3">
-                  System-wide financials
+            <span className="min-w-0">{sdg.shortTitle}</span>
+          </DrawerTitle>
+        }
+        subtitle={sdg.title}
+        yearSelectorPlacement="header"
+        yearSelector={{
+          years: availableYears,
+          selected: selectedYear,
+          onChange: setSelectedYear,
+          label: "Select year",
+          pending: loadingYear,
+          pendingLabel: "Loading...",
+        }}
+        controls={
+          <SidebarControls
+            shareHash={`sdg=${sdg.number}`}
+            onClose={onClose}
+            closeLabel="Close modal"
+          />
+        }
+      >
+        <div className="relative space-y-6">
+          <DelayedChartLoading
+            pending={loadingYear}
+            requestKey={selectedYear}
+          />
+          {yearError && (
+            <p role="status" className="text-sm text-gray-500">
+              Data could not be loaded for {selectedYear}.
+            </p>
+          )}
+          {/* Entity Spending Breakdown */}
+          {(yearEntityExpenses !== undefined || loadingYear) && (
+            <div>
+              <FinancialPanelHeading className="mb-3">
+                System-wide financials
+              </FinancialPanelHeading>
+
+              <FinancialPanelTotalRow
+                label={
+                  sdg.number === -1 ? "Calculated balance" : "Total expenditure"
+                }
+                value={
+                  loadingYear
+                    ? "Loading…"
+                    : sortedEntities.length
+                      ? formatBudget(totalExpenses)
+                      : "Unavailable"
+                }
+              />
+
+              <div className="mt-4">
+                <FinancialPanelHeading subheading>
+                  {sdg.number === -1
+                    ? "Reconciliation by entity"
+                    : "Expenditure by entity"}
                 </FinancialPanelHeading>
-
-                <FinancialPanelTotalRow
-                  label={
-                    sdg.number === -1
-                      ? "Calculated balance"
-                      : "Total expenditure"
-                  }
-                  value={
-                    loadingYear
-                      ? "Loading…"
-                      : sortedEntities.length
-                        ? formatBudget(totalExpenses)
-                        : "Unavailable"
-                  }
-                />
-
-                <div className="mt-4">
-                  <FinancialPanelHeading subheading>
-                    {sdg.number === -1
-                      ? "Reconciliation by entity"
-                      : "Expenditure by entity"}
-                  </FinancialPanelHeading>
-                  <div className="mt-2 space-y-1.5">
-                    {displayedEntities.map((entity) => {
-                      const normalizedWidth =
-                        maxAmount > 0
-                          ? (Math.abs(entity.amount) / maxAmount) * 100
-                          : 0;
-                      return (
-                        <FinancialPanelRankedRow
-                          key={entity.name}
-                          label={entity.name}
-                          value={formatBudget(entity.amount)}
-                          onClick={() =>
-                            router.push(
-                              `/system/organizations/?year=${selectedYear}#entity=${encodeURIComponent(entity.name)}`,
-                            )
-                          }
-                        >
-                          <FinancialPanelBar
-                            percent={normalizedWidth}
-                            color={color}
-                          />
-                        </FinancialPanelRankedRow>
-                      );
-                    })}
-
-                    {!showAllEntities && sortedEntities.length > 10 && (
-                      <button
-                        onClick={() => setShowAllEntities(true)}
-                        className="mt-2 text-xs text-gray-600 underline hover:text-gray-900"
+                <div className="mt-2 space-y-1.5">
+                  {displayedEntities.map((entity) => {
+                    const normalizedWidth =
+                      maxAmount > 0
+                        ? (Math.abs(entity.amount) / maxAmount) * 100
+                        : 0;
+                    return (
+                      <FinancialPanelRankedRow
+                        key={entity.name}
+                        label={entity.name}
+                        value={formatBudget(entity.amount)}
+                        onClick={() =>
+                          router.push(
+                            `/system/organizations/?year=${selectedYear}#entity=${encodeURIComponent(entity.name)}`,
+                          )
+                        }
                       >
-                        Show all {sortedEntities.length} entities
-                      </button>
-                    )}
-                  </div>
-                  {!loadingYear && sortedEntities.length === 0 && (
-                    <p className="mt-2 text-sm text-gray-500">
-                      No entity breakdown is available for {selectedYear}.
-                    </p>
+                        <FinancialPanelBar
+                          percent={normalizedWidth}
+                          color={color}
+                        />
+                      </FinancialPanelRankedRow>
+                    );
+                  })}
+
+                  {!showAllEntities && sortedEntities.length > 10 && (
+                    <button
+                      onClick={() => setShowAllEntities(true)}
+                      className="mt-2 text-xs text-gray-600 underline hover:text-gray-900"
+                    >
+                      Show all {sortedEntities.length} entities
+                    </button>
                   )}
                 </div>
-              </div>
-            )}
-
-            {/* UNSDG Cooperation Framework Section */}
-            {SHOW_UNINFO && sdg.number > 0 && uninfoData && (
-              <div className="border-t border-gray-200 pt-4">
-                <FinancialPanelHeading className="mb-1">
-                  UNSDG Cooperation Framework financials
-                </FinancialPanelHeading>
-
-                {selectedYear !== 2024 ? (
-                  <p className="text-xs text-gray-500 italic">
-                    Data only available for 2024.
+                {!loadingYear && sortedEntities.length === 0 && (
+                  <p className="mt-2 text-sm text-gray-500">
+                    No entity breakdown is available for {selectedYear}.
                   </p>
-                ) : (
-                  <>
-                    <p className="mb-4 text-xs text-gray-500">
-                      Cooperation Framework programme data only, not
-                      representative of total expenditure.
-                      {uninfoData.year === null
-                        ? " The global source snapshot has no verified query period; country comparisons below include only verified 2024 country observations."
-                        : ` Global totals were queried for ${uninfoData.year}.`}
-                      Shared-workspace totals are excluded from country
-                      comparisons.
-                    </p>
-
-                    {/* Overall */}
-                    <div>
-                      <FinancialPanelHeading subheading>
-                        {uninfoData.year === null
-                          ? "Reported totals — period unverified"
-                          : "Overall"}
-                      </FinancialPanelHeading>
-                      <div className="mt-2">
-                        <UninfoFundingBar
-                          required={uninfoData.totals.required}
-                          available={uninfoData.totals.available}
-                          spent={uninfoData.totals.spent}
-                        />
-                      </div>
-                    </div>
-
-                    {/* By Country */}
-                    {Object.keys(uninfoData.countries).length > 0 && (
-                      <div className="mt-4">
-                        <div className="flex items-center justify-between">
-                          <FinancialPanelHeading subheading>
-                            By country
-                          </FinancialPanelHeading>
-                          {SHOW_UNINFO_SORT_CONTROLS && (
-                            <SortSelector
-                              options={UNINFO_SORT_OPTIONS}
-                              selected={uninfoSort}
-                              onChange={setUninfoSort}
-                            />
-                          )}
-                        </div>
-                        <div className="mt-2 space-y-1.5">
-                          {(() => {
-                            const entries = Object.entries(
-                              uninfoData.countries,
-                            );
-                            const sorted = entries.sort((a, b) => {
-                              const [, ma] = a,
-                                [, mb] = b;
-                              if (uninfoSort === "required")
-                                return mb.required - ma.required;
-                              if (uninfoSort === "available")
-                                return mb.available - ma.available;
-                              if (uninfoSort === "spent")
-                                return mb.spent - ma.spent;
-                              if (uninfoSort === "funding_gap")
-                                return (
-                                  mb.required -
-                                  mb.available -
-                                  (ma.required - ma.available)
-                                );
-                              if (uninfoSort === "spending_gap")
-                                return (
-                                  mb.available -
-                                  mb.spent -
-                                  (ma.available - ma.spent)
-                                );
-                              return 0;
-                            });
-                            const top10 = sorted.slice(0, 10);
-                            const maxVal = Math.max(
-                              1,
-                              ...top10.map(([, m]) =>
-                                Math.max(m.required, m.available, m.spent),
-                              ),
-                            );
-                            return top10.map(([iso3, metrics]) => {
-                              const barWidth =
-                                (Math.max(
-                                  0,
-                                  metrics.required,
-                                  metrics.available,
-                                  metrics.spent,
-                                ) /
-                                  maxVal) *
-                                100;
-                              const name = countryNames[iso3] || iso3;
-                              return (
-                                <Tooltip key={iso3} delayDuration={200}>
-                                  <TooltipTrigger asChild>
-                                    <button
-                                      onClick={() =>
-                                        navigateToSidebar("country", iso3)
-                                      }
-                                      className="group flex w-full items-center gap-2 rounded hover:bg-gray-50"
-                                    >
-                                      <span
-                                        className="w-20 flex-shrink-0 truncate text-left text-xs font-medium text-gray-700 group-hover:text-un-blue group-hover:underline"
-                                        title={name}
-                                      >
-                                        {name}
-                                      </span>
-                                      <div className="flex flex-1 flex-col gap-px">
-                                        <div style={{ width: `${barWidth}%` }}>
-                                          <UninfoFundingBar
-                                            required={metrics.required}
-                                            available={metrics.available}
-                                            spent={metrics.spent}
-                                            showLabels={false}
-                                          />
-                                        </div>
-                                      </div>
-                                    </button>
-                                  </TooltipTrigger>
-                                  <TooltipContent
-                                    side="top"
-                                    className="border border-slate-200 bg-white p-3 text-slate-800 shadow-lg"
-                                  >
-                                    <p className="mb-2 text-xs font-medium">
-                                      {name}
-                                    </p>
-                                    <UninfoFundingBar
-                                      required={metrics.required}
-                                      available={metrics.available}
-                                      spent={metrics.spent}
-                                      compact
-                                    />
-                                  </TooltipContent>
-                                </Tooltip>
-                              );
-                            });
-                          })()}
-                        </div>
-                      </div>
-                    )}
-                  </>
                 )}
               </div>
-            )}
+            </div>
+          )}
 
-            {/* Targets and Indicators */}
-            {sdg.number > 0 && (
-              <div className="border-t border-gray-200 pt-4">
-                <FinancialPanelHeading className="mb-3">
-                  Targets and indicators
-                </FinancialPanelHeading>
-                <div className="space-y-4">
-                  {sdg.targets.map((target) => (
-                    <div key={target.number}>
-                      <FinancialPanelHeading subheading className="mb-2">
-                        Target {target.number}
-                      </FinancialPanelHeading>
-                      <p className="mb-3 text-xs leading-relaxed text-gray-700 sm:text-sm">
-                        {target.description}
-                      </p>
-                      {target.indicators.length > 0 && (
-                        <div className="ml-3 space-y-2">
-                          {target.indicators.map((indicator) => (
-                            <div
-                              key={indicator.number}
-                              className="flex items-start gap-2 text-xs sm:text-sm"
-                            >
-                              <span className="font-semibold whitespace-nowrap text-gray-900">
-                                {indicator.number}
-                              </span>
-                              <span className="leading-relaxed text-gray-700">
-                                {indicator.description}
-                              </span>
-                            </div>
-                          ))}
-                        </div>
-                      )}
+          {/* UNSDG Cooperation Framework Section */}
+          {SHOW_UNINFO && sdg.number > 0 && uninfoData && (
+            <div className="border-t border-gray-200 pt-4">
+              <FinancialPanelHeading className="mb-1">
+                UNSDG Cooperation Framework financials
+              </FinancialPanelHeading>
+
+              {selectedYear !== 2024 ? (
+                <p className="text-xs text-gray-500 italic">
+                  Data only available for 2024.
+                </p>
+              ) : (
+                <>
+                  <p className="mb-4 text-xs text-gray-500">
+                    Cooperation Framework programme data only, not
+                    representative of total expenditure.
+                    {uninfoData.year === null
+                      ? " The global source snapshot has no verified query period; country comparisons below include only verified 2024 country observations."
+                      : ` Global totals were queried for ${uninfoData.year}.`}
+                    Shared-workspace totals are excluded from country
+                    comparisons.
+                  </p>
+
+                  {/* Overall */}
+                  <div>
+                    <FinancialPanelHeading subheading>
+                      {uninfoData.year === null
+                        ? "Reported totals — period unverified"
+                        : "Overall"}
+                    </FinancialPanelHeading>
+                    <div className="mt-2">
+                      <UninfoFundingBar
+                        required={uninfoData.totals.required}
+                        available={uninfoData.totals.available}
+                        spent={uninfoData.totals.spent}
+                      />
                     </div>
-                  ))}
-                </div>
+                  </div>
+
+                  {/* By Country */}
+                  {Object.keys(uninfoData.countries).length > 0 && (
+                    <div className="mt-4">
+                      <div className="flex items-center justify-between">
+                        <FinancialPanelHeading subheading>
+                          By country
+                        </FinancialPanelHeading>
+                        {SHOW_UNINFO_SORT_CONTROLS && (
+                          <SortSelector
+                            options={UNINFO_SORT_OPTIONS}
+                            selected={uninfoSort}
+                            onChange={setUninfoSort}
+                          />
+                        )}
+                      </div>
+                      <div className="mt-2 space-y-1.5">
+                        {(() => {
+                          const entries = Object.entries(uninfoData.countries);
+                          const sorted = entries.sort((a, b) => {
+                            const [, ma] = a,
+                              [, mb] = b;
+                            if (uninfoSort === "required")
+                              return mb.required - ma.required;
+                            if (uninfoSort === "available")
+                              return mb.available - ma.available;
+                            if (uninfoSort === "spent")
+                              return mb.spent - ma.spent;
+                            if (uninfoSort === "funding_gap")
+                              return (
+                                mb.required -
+                                mb.available -
+                                (ma.required - ma.available)
+                              );
+                            if (uninfoSort === "spending_gap")
+                              return (
+                                mb.available -
+                                mb.spent -
+                                (ma.available - ma.spent)
+                              );
+                            return 0;
+                          });
+                          const top10 = sorted.slice(0, 10);
+                          const maxVal = Math.max(
+                            1,
+                            ...top10.map(([, m]) =>
+                              Math.max(m.required, m.available, m.spent),
+                            ),
+                          );
+                          return top10.map(([iso3, metrics]) => {
+                            const barWidth =
+                              (Math.max(
+                                0,
+                                metrics.required,
+                                metrics.available,
+                                metrics.spent,
+                              ) /
+                                maxVal) *
+                              100;
+                            const name = countryNames[iso3] || iso3;
+                            return (
+                              <Tooltip key={iso3} delayDuration={200}>
+                                <TooltipTrigger asChild>
+                                  <button
+                                    onClick={() =>
+                                      navigateToSidebar("country", iso3)
+                                    }
+                                    className="group flex w-full items-center gap-2 rounded hover:bg-gray-50"
+                                  >
+                                    <span
+                                      className="w-20 flex-shrink-0 truncate text-left text-xs font-medium text-gray-700 group-hover:text-un-blue group-hover:underline"
+                                      title={name}
+                                    >
+                                      {name}
+                                    </span>
+                                    <div className="flex flex-1 flex-col gap-px">
+                                      <div style={{ width: `${barWidth}%` }}>
+                                        <UninfoFundingBar
+                                          required={metrics.required}
+                                          available={metrics.available}
+                                          spent={metrics.spent}
+                                          showLabels={false}
+                                        />
+                                      </div>
+                                    </div>
+                                  </button>
+                                </TooltipTrigger>
+                                <TooltipContent
+                                  side="top"
+                                  className="border border-slate-200 bg-white p-3 text-slate-800 shadow-lg"
+                                >
+                                  <p className="mb-2 text-xs font-medium">
+                                    {name}
+                                  </p>
+                                  <UninfoFundingBar
+                                    required={metrics.required}
+                                    available={metrics.available}
+                                    spent={metrics.spent}
+                                    compact
+                                  />
+                                </TooltipContent>
+                              </Tooltip>
+                            );
+                          });
+                        })()}
+                      </div>
+                    </div>
+                  )}
+                </>
+              )}
+            </div>
+          )}
+
+          {/* Targets and Indicators */}
+          {sdg.number > 0 && (
+            <div className="border-t border-gray-200 pt-4">
+              <FinancialPanelHeading className="mb-3">
+                Targets and indicators
+              </FinancialPanelHeading>
+              <div className="space-y-4">
+                {sdg.targets.map((target) => (
+                  <div key={target.number}>
+                    <FinancialPanelHeading subheading className="mb-2">
+                      Target {target.number}
+                    </FinancialPanelHeading>
+                    <p className="mb-3 text-xs leading-relaxed text-gray-700 sm:text-sm">
+                      {target.description}
+                    </p>
+                    {target.indicators.length > 0 && (
+                      <div className="ml-3 space-y-2">
+                        {target.indicators.map((indicator) => (
+                          <div
+                            key={indicator.number}
+                            className="flex items-start gap-2 text-xs sm:text-sm"
+                          >
+                            <span className="font-semibold whitespace-nowrap text-gray-900">
+                              {indicator.number}
+                            </span>
+                            <span className="leading-relaxed text-gray-700">
+                              {indicator.description}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
               </div>
-            )}
-          </div>
-        </FinancialDetailPanel>
-      </div>
-    </div>
+            </div>
+          )}
+        </div>
+      </FinancialDetailPanel>
+    </DetailDrawer>
   );
 }

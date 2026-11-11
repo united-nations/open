@@ -30,6 +30,13 @@ try {
     await grouped.waitFor();
     const slider = page.getByRole("slider", { name: "Select year" });
     await slider.press("ArrowLeft");
+    const separateSource = page
+      .getByRole("group", { name: "Reporting source" })
+      .getByRole("button", {
+        name: "Separately reported entities",
+        exact: true,
+      });
+    if (await separateSource.count()) await separateSource.click();
     await page
       .locator("dl dd")
       .getByText(
@@ -141,7 +148,9 @@ try {
     await page
       .getByRole("button", { name: selectedFund.label, exact: true })
       .click();
-    const panel = page.locator('aside[aria-labelledby="trust-fund-title"]');
+    const panel = page.locator(
+      '[role="dialog"][aria-labelledby="trust-fund-title"]',
+    );
     await panel.waitFor();
     const hash = new URL(page.url()).hash;
     assert.equal(decodeURIComponent(hash.split("=")[1]), selectedFund.id);
@@ -183,25 +192,72 @@ try {
       formatBudget(selectedFund.amount),
     );
     await search.fill("");
-    const legacySourceNotes = page
-      .locator("summary")
-      .filter({ hasText: /^Data for selected year$/ });
-    if (await legacySourceNotes.count()) await legacySourceNotes.click();
-    await page
-      .locator("summary")
-      .filter({ hasText: /^Funds with zero or negative expenditure$/ })
-      .click();
+    const dataView = page.getByRole("group", { name: "Data view" });
+    await dataView.getByRole("radio", { name: "List" }).locator("..").click();
+    const rankedFunds = page.getByRole("group", { name: "Ranked chart data" });
+    const largest = funds.reduce((a, b) => (a.amount > b.amount ? a : b));
+    const emergency = funds.find(
+      (fund) => fund.label === "Central Emergency Response Fund",
+    );
+    const measureBar = (label) =>
+      rankedFunds
+        .getByRole("button")
+        .filter({ has: page.getByText(label, { exact: true }) })
+        .evaluate((row) => {
+          const [name, bar, amount] = row.children;
+          const fill = bar.querySelector('[style*="width"]');
+          const bounds = bar.getBoundingClientRect();
+          const filled = fill.getBoundingClientRect();
+          const labelBounds = name.getBoundingClientRect();
+          const amountBounds = amount.getBoundingClientRect();
+          return {
+            inline:
+              labelBounds.right < bounds.left &&
+              bounds.right < amountBounds.left,
+            stacked:
+              labelBounds.right < amountBounds.left &&
+              bounds.top >= Math.max(labelBounds.bottom, amountBounds.bottom) &&
+              Math.abs(bounds.left - labelBounds.left) < 1 &&
+              Math.abs(bounds.right - amountBounds.right) < 1,
+            left: bounds.left,
+            right: bounds.right,
+            offset: filled.left - bounds.left,
+            ratio: filled.width / bounds.width,
+          };
+        });
+    const largestBar = await measureBar(largest.label);
+    const emergencyBar = await measureBar(emergency.label);
+    const layout = viewport.width < 640 ? "stacked" : "inline";
+    assert.ok(largestBar[layout] && emergencyBar[layout]);
+    assert.equal(largestBar.left, emergencyBar.left);
+    assert.equal(largestBar.right, emergencyBar.right);
+    assert.equal(largestBar.offset, 0);
+    assert.equal(emergencyBar.offset, 0);
+    assert.equal(largestBar.ratio, 1);
+    assert.ok(
+      Math.abs(emergencyBar.ratio - emergency.amount / largest.amount) < 0.001,
+    );
     const nonpositive = funds.find((fund) => fund.amount <= 0);
-    await page
+    await search.fill(nonpositive.label);
+    const row = rankedFunds
+      .getByRole("group", {
+        name: nonpositive.scheduleGroup.label,
+        exact: true,
+      })
       .getByRole("button")
-      .filter({ hasText: nonpositive.label })
-      .click();
+      .filter({ hasText: nonpositive.label });
+    assert.ok(
+      (await row.innerText()).includes(formatBudget(nonpositive.amount)),
+    );
+    assert.equal((await measureBar(nonpositive.label)).ratio, 0);
+    await row.click();
     await panel.waitFor();
     assert.equal(
       decodeURIComponent(new URL(page.url()).hash.split("=")[1]),
       nonpositive.id,
     );
     await page.keyboard.press("Escape");
+    await dataView.getByRole("radio", { name: "Chart" }).locator("..").click();
     // The annual heading follows the selected year, even for the same fund ID.
     await search.fill("SIM");
     await slider.press("Home");

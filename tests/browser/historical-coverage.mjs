@@ -21,6 +21,7 @@ try {
     waitUntil: "networkidle",
   });
   const flows = page.locator("#system-flows");
+  await flows.scrollIntoViewIfNeeded();
   const slider = flows.getByRole("slider");
   assert.equal(await slider.getAttribute("aria-valuenow"), "2025");
   await flows
@@ -126,11 +127,10 @@ try {
     const cross = page.locator("#function-geography");
     await cross.getByRole("slider").press("Home");
     await cross
-      .getByText(/Function attribution is incomplete for 2010/)
-      .waitFor();
-    await cross
-      .getByText("Function not reported", { exact: true })
-      .first()
+      .getByRole("heading", {
+        name: "Function not reported",
+        exact: true,
+      })
       .waitFor();
   }
   if (profiles[process.env.SITE_VARIANT ?? "public"].programmeBudget) {

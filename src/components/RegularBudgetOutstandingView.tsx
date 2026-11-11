@@ -7,11 +7,12 @@ import {
   type GroupedTreemapRow,
 } from "@un-eosg/ui/components/grouped-treemap";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
-import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
+import { SegmentedControl } from "@un-eosg/ui/components/segmented-control";
 import { SearchInput } from "@un-eosg/ui/components/search-input";
 import { TableHead } from "@un-eosg/ui/components/data-table";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { ChartFooter } from "@/components/ChartFooter";
+import { RankedDetailList } from "@/components/RankedDetailList";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { HierarchicalMultiSelect } from "@/components/ui/hierarchical-multi-select";
 import { TREND_CHART_HEIGHT } from "@/components/charts/trendLayout";
@@ -245,12 +246,12 @@ export function RegularBudgetOutstandingView({
             className="flex flex-wrap items-center gap-4"
             data-outstanding-controls
           >
-            <BinaryToggle
-              variant="segmented"
+            <SegmentedControl
               label="Outstanding contributions display"
               options={[
-                { value: "treemap", label: "Treemap" },
+                { value: "treemap", label: "Chart" },
                 { value: "table", label: "Table" },
+                { value: "list", label: "List" },
               ]}
               value={view}
               onValueChange={setView}
@@ -309,7 +310,7 @@ export function RegularBudgetOutstandingView({
           </div>
         }
         footer={
-          <ChartFooter hint="Click a country in the treemap or table to open its assessment and outstanding-balance history" />
+          <ChartFooter hint="Select a country to open its assessment and outstanding-balance history" />
         }
       >
         {view === "treemap" ? (
@@ -326,6 +327,7 @@ export function RegularBudgetOutstandingView({
             formatValue={money}
             formatAccessibleValue={money}
             hideHeader
+            hideList
             showRowLabels={false}
             layout={{ rowGap: 2, leafGap: 2 }}
             renderTooltip={({ leaf }) =>
@@ -355,6 +357,18 @@ export function RegularBudgetOutstandingView({
                 table to see zero balances.
               </p>
             }
+          />
+        ) : view === "list" ? (
+          <RankedDetailList
+            label="Outstanding balances by Member State"
+            items={tableRows.map((row) => ({
+              id: row.name,
+              label: row.name,
+              amount: row.amount,
+              value: money(row.amount),
+              color: "var(--color-au-chico)",
+              onOpen: () => onSelect(row.name, year),
+            }))}
           />
         ) : (
           <div className="overflow-x-auto rounded border border-gray-200">

@@ -186,6 +186,7 @@ export function PersonnelSidebar({
       <Dialog.Portal>
         <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50" />
         <Dialog.Content
+          aria-modal="true"
           onCloseAutoFocus={(event) => {
             event.preventDefault();
             onRestoreFocus();

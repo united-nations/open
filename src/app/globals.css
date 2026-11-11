@@ -249,7 +249,8 @@ html {
 
 /* DotDensityMap hard-codes circle fillOpacity. Keep overlapping geographic
    and PKO mission circles readable: light fill, solid outline. */
-.financial-bubble-map svg circle {
+.financial-bubble-map svg circle,
+svg[data-map-legend-circle] circle {
   fill-opacity: 0.28 !important;
   stroke-opacity: 1;
   stroke-width: 1.5px;
@@ -260,4 +261,43 @@ html {
   background-color: var(--color-un-white);
   color: var(--color-un-black);
   border: 1px solid var(--border);
+}
+
+.section-subnav[data-more-before]::before,
+.section-subnav[data-more-after]::after {
+  position: absolute;
+  z-index: 1;
+  inset-block: 0;
+  width: 1rem;
+  pointer-events: none;
+  content: "";
+}
+
+.section-subnav[data-more-before]::before {
+  inset-inline-start: 0;
+  background: linear-gradient(to right, #fff, transparent);
+}
+
+.section-subnav[data-more-after]::after {
+  inset-inline-end: 0;
+  background: linear-gradient(to left, #fff, transparent);
+}
+
+@media (max-height: 500px) {
+  .section-subnav-nested {
+    position: relative;
+    top: auto;
+  }
+}
+
+html:has([data-detail-drawer]) {
+  overflow: hidden;
+  scrollbar-gutter: auto;
+}
+
+@media (any-pointer: coarse) {
+  [data-financial-map] .zoom-buttons button {
+    min-width: 44px;
+    min-height: 44px;
+  }
 }

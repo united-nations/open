@@ -110,20 +110,33 @@ try {
   await page
     .getByRole("button", { name: "Service centres", exact: true })
     .click();
+  const view = page.getByRole("group", { name: "Peacekeeping view" });
+  assert.deepEqual(await view.locator("label").allTextContents(), [
+    "Chart",
+    "Map",
+    "List",
+  ]);
+  await view.getByRole("radio", { name: "List" }).locator("..").click();
+  const missions = page.getByRole("group", {
+    name: "Peacekeeping missions",
+  });
+  await missions.getByRole("listitem").first().waitFor();
+  await view.getByRole("radio", { name: "Chart" }).locator("..").click();
   await page
-    .getByRole("radio", { name: "Budget chart", exact: true })
-    .check({ force: true });
+    .locator(
+      "main [style*='--grouped-treemap-height'] button[aria-describedby]",
+    )
+    .first()
+    .waitFor();
   assert.doesNotMatch(
     await page.locator("body").innerText(),
     /Loading peacekeeping|Unavailable/,
   );
-  await page
-    .getByRole("radio", { name: "Map", exact: true })
-    .check({ force: true });
+  await view.getByRole("radio", { name: "Map" }).locator("..").click();
   await page
     .getByRole("button", { name: "Service centres", exact: true })
     .click();
-  results.push("View and mission filters keep the chart mounted");
+  results.push("List, chart, and map honor the active mission filters");
 
   // Reload to test a genuinely uncached request.
   await page.reload({ waitUntil: "networkidle" });

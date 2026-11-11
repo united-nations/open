@@ -12,7 +12,6 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { ChartFooter } from "@/components/ChartFooter";
 import { YearSlider } from "@/components/YearSlider";
 import { useYearResource } from "@/hooks/useYearResource";
 import { useYearRanges } from "@/lib/useYearRanges";
@@ -50,7 +49,7 @@ export function FunctionGeographyChart() {
   return (
     <section id="function-geography" className="mt-12 scroll-mt-40 space-y-4">
       <ChartHeading>Expenditure by function and geographic level</ChartHeading>
-      <p className="max-w-3xl text-sm text-gray-600">
+      <p className="hidden max-w-3xl text-sm text-gray-600 lg:block">
         Column widths show each function’s share of reported expenditure. Within
         each column, the stacked areas show where that expenditure is reported.
       </p>
@@ -77,9 +76,6 @@ export function FunctionGeographyChart() {
               },
             ]}
           />
-        }
-        footer={
-          <ChartFooter hint="Hover or focus a segment for amounts and shares." />
         }
       >
         <div
@@ -115,7 +111,71 @@ export function FunctionGeographyChart() {
           </div>
         ) : (
           <>
-            <div className="overflow-x-auto pb-2">
+            <div
+              className="space-y-4 lg:hidden"
+              aria-label="Expenditure by function and geographic level"
+            >
+              {columns.map((column) => (
+                <section key={column.key} className="rounded-sm border p-3">
+                  <h3 className="font-medium">
+                    {column.key === "unreported" ? (
+                      column.label
+                    ) : (
+                      <Link
+                        href={`/system/functions/?year=${year}#function=${column.key}`}
+                        className="inline-flex min-h-11 items-center underline underline-offset-2"
+                      >
+                        {column.label}
+                      </Link>
+                    )}
+                  </h3>
+                  <p className="mb-2 text-sm text-gray-600">
+                    {formatBudget(column.total)} · {percent(column.share)} of
+                    total
+                  </p>
+                  <dl className="divide-y">
+                    {column.cells.map((cell) => (
+                      <div
+                        key={cell.level}
+                        className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-2 py-2 text-sm"
+                      >
+                        <dt className="flex items-center gap-2">
+                          <span
+                            className="size-2.5 shrink-0 rounded-full"
+                            style={{ backgroundColor: cell.color }}
+                            aria-hidden
+                          />
+                          {cell.label}
+                        </dt>
+                        <dd className="text-right tabular-nums">
+                          <span className="block font-medium">
+                            {formatBudget(cell.amount)}
+                          </span>
+                          <span className="block text-xs text-gray-600">
+                            {percent(cell.share)} of function
+                          </span>
+                          <span className="block text-xs text-gray-600">
+                            {percent(
+                              data && data.total > 0
+                                ? cell.amount / data.total
+                                : null,
+                            )}{" "}
+                            of total
+                          </span>
+                        </dd>
+                        {cell.negativeAdjustments < 0 && (
+                          <dd className="col-span-2 text-xs text-gray-600">
+                            Includes {formatBudget(cell.negativeAdjustments)} in
+                            negative source amounts
+                          </dd>
+                        )}
+                      </div>
+                    ))}
+                  </dl>
+                </section>
+              ))}
+            </div>
+            <div className="hidden overflow-x-auto pb-2 lg:block">
               <div
                 className="flex min-w-[720px] gap-2"
                 role="group"

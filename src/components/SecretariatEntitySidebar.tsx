@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   FinancialDetailPanel,
   type FinancialDetailPanelFundingBreakdown,
@@ -17,7 +17,7 @@ import {
   type FinancingInstrumentDataPoint,
 } from "@/components/SidebarStackedTrend";
 import { FinancingInstrumentChart } from "@/components/charts/FinancingInstrumentChart";
-import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { DetailDrawer, DrawerTitle } from "@/components/DetailDrawer";
 import { loadYearData } from "@/lib/data";
 import { formatBudget } from "@/lib/entities";
 import { fundingSources } from "@un-eosg/ui/funding-sources";
@@ -86,8 +86,6 @@ export function SecretariatEntitySidebar({
   showFundingBreakdown = true,
   onClose,
 }: SecretariatEntitySidebarProps) {
-  const [visible, setVisible] = useState(false);
-  const [closing, setClosing] = useState(false);
   const [displayed, setDisplayed] = useState<DisplayedEntity>({
     entity,
     year,
@@ -99,7 +97,6 @@ export function SecretariatEntitySidebar({
     FinancingInstrumentDataPoint[] | null
   >(null);
   const [trendIncomplete, setTrendIncomplete] = useState(false);
-  const focusTrapRef = useFocusTrap(true);
   const years = useYearRanges().secretariatOverview.years;
 
   const priorities = useMemo(() => {
@@ -209,33 +206,6 @@ export function SecretariatEntitySidebar({
     };
   }, [entity, years, selectionScope]);
 
-  useEffect(() => {
-    const id = requestAnimationFrame(() => setVisible(true));
-    const rootStyle = document.documentElement.style;
-    const previousOverflow = rootStyle.overflow;
-    const previousGutter = rootStyle.scrollbarGutter;
-    rootStyle.overflow = "hidden";
-    rootStyle.scrollbarGutter = "auto";
-    return () => {
-      cancelAnimationFrame(id);
-      rootStyle.overflow = previousOverflow;
-      rootStyle.scrollbarGutter = previousGutter;
-    };
-  }, []);
-
-  const close = useCallback(() => {
-    setClosing(true);
-    window.setTimeout(onClose, 250);
-  }, [onClose]);
-
-  useEffect(() => {
-    const onKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") close();
-    };
-    document.addEventListener("keydown", onKeyDown);
-    return () => document.removeEventListener("keydown", onKeyDown);
-  }, [close]);
-
   const titleId = "secretariat-entity-sidebar-title";
   const hasTrend =
     fundingTrend !== null &&
@@ -327,106 +297,93 @@ export function SecretariatEntitySidebar({
     : undefined;
 
   return (
-    <div
-      className={`fixed inset-0 z-50 flex justify-end bg-black/50 transition-opacity duration-200 ${visible && !closing ? "opacity-100" : "opacity-0"}`}
-      onMouseDown={(event) => {
-        if (event.target === event.currentTarget) close();
-      }}
-    >
-      <aside
-        ref={focusTrapRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={titleId}
-        className={`h-full w-full bg-white shadow-2xl transition-transform duration-200 sm:w-[32rem] ${visible && !closing ? "translate-x-0" : "translate-x-full"}`}
-      >
-        <FinancialDetailPanel
-          title={displayed.entity.name || displayed.entity.code}
-          titleId={titleId}
-          subtitle={showFundingBreakdown ? undefined : selectionScope}
-          controls={
-            <SidebarControls
-              shareHash={
-                selectionScope
-                  ? undefined
-                  : `secretariat-entity=${encodeURIComponent(displayed.entity.code)}`
+    <DetailDrawer titleId={titleId} onClose={onClose} className="sm:w-[32rem]">
+      <FinancialDetailPanel
+        title={
+          <DrawerTitle>
+            {displayed.entity.name || displayed.entity.code}
+          </DrawerTitle>
+        }
+        titleId={titleId}
+        subtitle={showFundingBreakdown ? undefined : selectionScope}
+        controls={
+          <SidebarControls
+            shareHash={
+              selectionScope
+                ? undefined
+                : `secretariat-entity=${encodeURIComponent(displayed.entity.code)}`
+            }
+            onClose={onClose}
+            closeLabel="Close entity details"
+          />
+        }
+        total={{
+          label: selectionScope ? "Selected expenditure" : "Total expenditure",
+          value: formatBudget(displayed.entity.total),
+          details:
+            selectedPriority && selectedAmount !== null ? (
+              <>
+                {formatBudget(selectedAmount)} (
+                {displayed.entity.total > 0
+                  ? ((selectedAmount / displayed.entity.total) * 100).toFixed(1)
+                  : "0.0"}
+                %) was spent on {selectedPriority}.
+              </>
+            ) : undefined,
+        }}
+        yearSelectorPlacement="header"
+        yearSelector={
+          selectionScope
+            ? undefined
+            : {
+                years: [...years].sort((a, b) => b - a),
+                selected: displayed.year,
+                label: "Select year",
+                onChange: (nextYear) => {
+                  if (nextYear !== displayed.year) {
+                    setYearError(null);
+                    setRequestedYear(nextYear);
+                  }
+                },
+                pending: requestedYear !== null,
+                pendingLabel:
+                  requestedYear === null
+                    ? undefined
+                    : `Loading ${requestedYear}…`,
               }
-              onClose={close}
-              closeLabel="Close entity details"
-            />
-          }
-          total={{
-            label: selectionScope
-              ? "Selected expenditure"
-              : "Total expenditure",
-            value: formatBudget(displayed.entity.total),
-            details:
-              selectedPriority && selectedAmount !== null ? (
-                <>
-                  {formatBudget(selectedAmount)} (
-                  {displayed.entity.total > 0
-                    ? ((selectedAmount / displayed.entity.total) * 100).toFixed(
-                        1,
-                      )
-                    : "0.0"}
-                  %) was spent on {selectedPriority}.
-                </>
-              ) : undefined,
-          }}
-          yearSelectorPlacement="header"
-          yearSelector={
-            selectionScope
-              ? undefined
-              : {
-                  years: [...years].sort((a, b) => b - a),
-                  selected: displayed.year,
-                  label: "Select year",
-                  onChange: (nextYear) => {
-                    if (nextYear !== displayed.year) {
-                      setYearError(null);
-                      setRequestedYear(nextYear);
-                    }
-                  },
-                  pending: requestedYear !== null,
-                  pendingLabel:
-                    requestedYear === null
-                      ? undefined
-                      : `Loading ${requestedYear}…`,
-                }
-          }
-          fundingBreakdown={showFundingBreakdown ? fundingBreakdown : undefined}
-          busy={requestedYear !== null}
-          statusMessage={
-            requestedYear === null
-              ? undefined
-              : `Loading ${requestedYear} data. Showing ${displayed.year} until it is ready.`
-          }
-          notice={notice}
-          className="bg-white sm:w-full"
-        >
-          <FinancialPanelSection heading="Priority areas">
-            <div className="space-y-3">
-              {priorities.map(([label, amount]) => (
-                <FinancialPanelRankedRow
-                  key={label}
-                  label={label}
-                  labelClassName="w-1/2"
-                  value={formatBudget(amount)}
-                >
-                  <FinancialPanelBar
-                    percent={
-                      maxPriorityAmount > 0
-                        ? Math.max(0, amount / maxPriorityAmount) * 100
-                        : 0
-                    }
-                    color={priorityAreaColor(label)}
-                  />
-                </FinancialPanelRankedRow>
-              ))}
-            </div>
-          </FinancialPanelSection>
-        </FinancialDetailPanel>
-      </aside>
-    </div>
+        }
+        fundingBreakdown={showFundingBreakdown ? fundingBreakdown : undefined}
+        busy={requestedYear !== null}
+        statusMessage={
+          requestedYear === null
+            ? undefined
+            : `Loading ${requestedYear} data. Showing ${displayed.year} until it is ready.`
+        }
+        notice={notice}
+        className="bg-white sm:w-full"
+      >
+        <FinancialPanelSection heading="Priority areas">
+          <div className="space-y-3">
+            {priorities.map(([label, amount]) => (
+              <FinancialPanelRankedRow
+                key={label}
+                label={label}
+                labelClassName="w-1/2"
+                value={formatBudget(amount)}
+              >
+                <FinancialPanelBar
+                  percent={
+                    maxPriorityAmount > 0
+                      ? Math.max(0, amount / maxPriorityAmount) * 100
+                      : 0
+                  }
+                  color={priorityAreaColor(label)}
+                />
+              </FinancialPanelRankedRow>
+            ))}
+          </div>
+        </FinancialPanelSection>
+      </FinancialDetailPanel>
+    </DetailDrawer>
   );
 }

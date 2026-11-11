@@ -406,6 +406,10 @@ export function EntitiesTreemap({ children }: { children?: ReactNode }) {
             .map((entity) => ({
               key: entity.entity,
               label: entity.entity,
+              listLabel:
+                entity.entity_long && entity.entity_long !== entity.entity
+                  ? `${entity.entity_long} (${entity.entity})`
+                  : undefined,
               value: budgetData[entity.entity] ?? 0,
               color: style.hexColor,
               paleFill: style.textColor === "text-black",

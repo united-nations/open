@@ -96,9 +96,12 @@ try {
     await page.getByRole("group", { name: "Goals view", exact: true }).count(),
     1,
   );
-  const goalsToggle = page.getByRole("radio", { name: "Goals", exact: true });
+  const goalsToggle = page.getByRole("radio", {
+    name: "SDG overview",
+    exact: true,
+  });
   const expenditureToggle = page.getByRole("radio", {
-    name: "Expenditure",
+    name: "Chart",
     exact: true,
   });
   for (const width of [1440, 390]) {

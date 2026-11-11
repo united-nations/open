@@ -448,7 +448,7 @@ export function ContributorsTreemap() {
                 onChange={setSelectedYear}
               />
             }
-            controls={
+            filterControls={
               <div
                 className="flex flex-wrap gap-2"
                 role="group"

@@ -1,7 +1,7 @@
 "use client";
 import { ChartHeading } from "@/components/ContentHeading";
 import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useRouter } from "next/navigation";
 import { GroupedTreemap } from "@un-eosg/ui/components/grouped-treemap";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
@@ -17,7 +17,7 @@ import { YearSlider } from "@/components/YearSlider";
 import { SidebarControls } from "@/components/SidebarControls";
 import { FinancingInstrumentChart } from "@/components/charts/FinancingInstrumentChart";
 import { useFunctionExpenses } from "@/hooks/useFunctionExpenses";
-import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { DetailDrawer, DrawerTitle } from "@/components/DetailDrawer";
 import { useDeepLink, clearSidebarHash } from "@/hooks/useDeepLink";
 import {
   UN_FUNCTIONS,
@@ -188,25 +188,8 @@ function FunctionSidebar({
   const router = useRouter();
   const [year, setYear] = useState(initialYear);
   const [showAll, setShowAll] = useState(false);
-  const focusRef = useFocusTrap(true);
   const definition = UN_FUNCTIONS.find((item) => item.key === functionKey)!;
   const row = data.data.find((item) => item.year === year)!;
-  useEffect(() => {
-    const style = document.documentElement.style;
-    const overflow = style.overflow;
-    const gutter = style.scrollbarGutter;
-    style.overflow = "hidden";
-    style.scrollbarGutter = "auto";
-    const escape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", escape);
-    return () => {
-      style.overflow = overflow;
-      style.scrollbarGutter = gutter;
-      document.removeEventListener("keydown", escape);
-    };
-  }, [onClose]);
   const entities = Object.entries(row.entities)
     .map(([name, amounts]) => ({ name, amount: amounts[functionKey] ?? 0 }))
     .filter((item) => item.amount !== 0)
@@ -217,90 +200,78 @@ function FunctionSidebar({
     [functionKey]: item.functions[functionKey] ?? 0,
   }));
   return (
-    <div
-      className="fixed inset-0 z-50 flex justify-end bg-black/50"
-      onClick={onClose}
+    <DetailDrawer
+      titleId="function-panel-title"
+      onClose={onClose}
+      className="overflow-hidden sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px]"
     >
-      <div
-        ref={focusRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="function-panel-title"
-        className="h-full w-full overflow-hidden bg-white shadow-2xl sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px]"
-        onClick={(event) => event.stopPropagation()}
+      <FinancialDetailPanel
+        titleId="function-panel-title"
+        className="sm:w-full"
+        title={<DrawerTitle>{definition.label}</DrawerTitle>}
+        yearSelectorPlacement="header"
+        yearSelector={{
+          years: [...data.meta.years].reverse(),
+          selected: year,
+          onChange: setYear,
+          label: "Select year",
+        }}
+        controls={
+          <SidebarControls
+            shareHash={`function=${functionKey}`}
+            onClose={onClose}
+            closeLabel="Close function details"
+          />
+        }
       >
-        <FinancialDetailPanel
-          titleId="function-panel-title"
-          className="sm:w-full"
-          title={definition.label}
-          yearSelectorPlacement="header"
-          yearSelector={{
-            years: [...data.meta.years].reverse(),
-            selected: year,
-            onChange: setYear,
-            label: "Select year",
-          }}
-          controls={
-            <SidebarControls
-              shareHash={`function=${functionKey}`}
-              onClose={onClose}
-              closeLabel="Close function details"
-            />
-          }
-        >
-          <div className="space-y-6">
-            <p className="text-sm">{definition.description}</p>
-            <FinancialPanelTotalRow
-              label="Total expenditure"
-              value={formatBudget(row.functions[functionKey] ?? 0)}
-            />
-            <section className="space-y-3">
-              <FinancialPanelHeading>
-                Expenditure by entity
-              </FinancialPanelHeading>
-              {(showAll ? entities : entities.slice(0, 10)).map((item) => (
-                <FinancialPanelRankedRow
-                  key={item.name}
-                  label={item.name}
-                  value={formatBudget(item.amount)}
-                  onClick={() =>
-                    router.push(
-                      `/system/organizations/?year=${year}#entity=${encodeURIComponent(item.name)}`,
-                    )
-                  }
-                >
-                  <FinancialPanelBar
-                    percent={(Math.max(0, item.amount) / maximum) * 100}
-                    color={definition.color}
-                  />
-                </FinancialPanelRankedRow>
-              ))}
-              {entities.length > 10 && (
-                <button
-                  className="text-sm text-un-blue hover:underline"
-                  onClick={() => setShowAll(!showAll)}
-                >
-                  {showAll
-                    ? "Show fewer"
-                    : `Show all ${entities.length} entities`}
-                </button>
+        <div className="space-y-6">
+          <p className="text-sm">{definition.description}</p>
+          <FinancialPanelTotalRow
+            label="Total expenditure"
+            value={formatBudget(row.functions[functionKey] ?? 0)}
+          />
+          <section className="space-y-3">
+            <FinancialPanelHeading>Expenditure by entity</FinancialPanelHeading>
+            {(showAll ? entities : entities.slice(0, 10)).map((item) => (
+              <FinancialPanelRankedRow
+                key={item.name}
+                label={item.name}
+                value={formatBudget(item.amount)}
+                onClick={() =>
+                  router.push(
+                    `/system/organizations/?year=${year}#entity=${encodeURIComponent(item.name)}`,
+                  )
+                }
+              >
+                <FinancialPanelBar
+                  percent={(Math.max(0, item.amount) / maximum) * 100}
+                  color={definition.color}
+                />
+              </FinancialPanelRankedRow>
+            ))}
+            {entities.length > 10 && (
+              <button
+                className="text-sm text-un-blue hover:underline"
+                onClick={() => setShowAll(!showAll)}
+              >
+                {showAll
+                  ? "Show fewer"
+                  : `Show all ${entities.length} entities`}
+              </button>
+            )}
+          </section>
+          <section className="space-y-3">
+            <FinancialPanelHeading>Expenditure over time</FinancialPanelHeading>
+            <FinancingInstrumentChart
+              data={trends}
+              series={FUNCTION_SERIES.filter(
+                (item) => item.key === functionKey,
               )}
-            </section>
-            <section className="space-y-3">
-              <FinancialPanelHeading>
-                Expenditure over time
-              </FinancialPanelHeading>
-              <FinancingInstrumentChart
-                data={trends}
-                series={FUNCTION_SERIES.filter(
-                  (item) => item.key === functionKey,
-                )}
-                showLegend={false}
-              />
-            </section>
-          </div>
-        </FinancialDetailPanel>
-      </div>
-    </div>
+              showLegend={false}
+            />
+          </section>
+        </div>
+      </FinancialDetailPanel>
+    </DetailDrawer>
   );
 }

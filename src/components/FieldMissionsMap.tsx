@@ -6,6 +6,18 @@ import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { useEffect, useMemo, useState } from "react";
 import { DotDensityMap } from "@undp/data-viz/DotDensityMap";
 import { SecretariatGroupBar } from "@/components/SecretariatStackedBar";
+import { DetailDrawer, DrawerTitle } from "@/components/DetailDrawer";
+import { SidebarControls } from "@/components/SidebarControls";
+import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
+import { ChartSearchInput } from "@/components/ui/chart-search-input";
+import { RankedDetailList } from "@/components/RankedDetailList";
+import { MapInteraction } from "@/components/MapInteraction";
+import {
+  clearSidebarHash,
+  navigateToSidebar,
+  useDeepLink,
+} from "@/hooks/useDeepLink";
+import { useViewportMapHeight } from "@/hooks/useViewportMapHeight";
 import { YearSlider } from "@/components/YearSlider";
 import { loadStaticData, loadYearData } from "@/lib/data";
 import { formatBudget } from "@/lib/entities";
@@ -71,13 +83,32 @@ export function FieldMissionsMap({
 }: {
   kinds?: readonly MappedGroup[];
 }) {
+  const mapHeight = useViewportMapHeight(520);
   const years = useYearRanges().secretariatOverview;
-  const [year, setYear] = useState(years.default);
+  const [chartYear, setYear] = useState(years.default);
+  const [showList, setShowList] = useState(false);
+  const [query, setQuery] = useState("");
+  const [missionLink, setMissionLink] = useDeepLink({
+    hashPrefix: "field-mission",
+  });
+  const [selectedMission, linkedYear] = missionLink?.split("@") ?? [];
+  const year = years.years.includes(Number(linkedYear))
+    ? Number(linkedYear)
+    : chartYear;
+  const closeMission = () => {
+    setYear(year);
+    setMissionLink(null);
+    clearSidebarHash();
+  };
   const [entitiesData, setEntitiesData] =
     useState<SecretariatEntitiesData | null>(null);
   const [overview, setOverview] = useState<SecretariatOverviewData | null>(
     null,
   );
+  const hasSelectedYear = overview?.meta.year === year;
+  const openMission = (code: string) => {
+    if (hasSelectedYear) navigateToSidebar("field-mission", `${code}@${year}`);
+  };
   const [locationsError, setLocationsError] = useState<string | null>(null);
   const [overviewError, setOverviewError] = useState<string | null>(null);
 
@@ -90,6 +121,7 @@ export function FieldMissionsMap({
       .catch(() => {
         if (active) setLocationsError("Failed to load mission locations.");
       });
+
     return () => {
       active = false;
     };
@@ -139,14 +171,29 @@ export function FieldMissionsMap({
 
   const showComposition = kinds.includes("spm") && kinds.includes("pko");
   const kindColors = kinds.map((group) => model.groups[group].color);
+  const selectedPoint = hasSelectedYear
+    ? model.points.find((point) => point.label === selectedMission)
+    : undefined;
+  const missionList = [...model.points].filter((point) =>
+    `${point.label} ${point.data.location.name}`
+      .toLowerCase()
+      .includes(query.trim().toLowerCase()),
+  );
 
   return (
     <div className="relative w-full">
-      <DelayedChartLoading
-        pending={overview?.meta.year !== year}
-        requestKey={year}
-      />
-      <div className="mb-3 flex justify-end">
+      <DelayedChartLoading pending={!hasSelectedYear} requestKey={year} />
+      <div className="mb-3 flex flex-wrap items-center gap-3">
+        <BinaryToggle
+          variant="segmented"
+          label="Field mission view"
+          options={[
+            { value: "map", label: "Map" },
+            { value: "list", label: "List" },
+          ]}
+          value={showList ? "list" : "map"}
+          onValueChange={(value) => setShowList(value === "list")}
+        />
         <YearSlider
           years={years.years}
           selectedYear={year}
@@ -155,6 +202,14 @@ export function FieldMissionsMap({
             setYear(nextYear);
           }}
         />
+        {showList && (
+          <ChartSearchInput
+            label="Search missions"
+            placeholder="Search missions…"
+            value={query}
+            onChange={setQuery}
+          />
+        )}
       </div>
 
       {showComposition && (
@@ -199,72 +254,131 @@ export function FieldMissionsMap({
         </div>
       )}
 
-      <div className="relative border border-gray-200 bg-white">
-        <div
-          className="absolute bottom-3 left-3 z-10 flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-sm border border-gray-200 bg-white/95 px-3 py-2 text-xs text-gray-700 shadow-sm"
-          aria-label="Mission type legend"
-        >
-          {kinds.map((group) => (
-            <span key={group} className="flex items-center gap-1.5">
-              <span
-                className="size-2.5 shrink-0 rounded-full"
-                style={{ backgroundColor: model.groups[group].color }}
-                aria-hidden="true"
-              />
-              {model.groups[group].label}
-            </span>
-          ))}
-        </div>
-        <DotDensityMap
-          data={model.points}
-          colorDomain={[...kinds]}
-          colors={kindColors}
-          radius={MAX_MISSION_RADIUS_PX}
-          maxRadiusValue={1}
-          mapProjection="equalEarth"
-          scale={1.15}
-          centerPoint={[0, 6]}
-          zoomInteraction="button"
-          mapBorderWidth={0.5}
-          mapBorderColor="#d1d5db"
-          mapNoDataColor="#f3f4f6"
-          height={520}
-          padding="0px"
-          showAntarctica={false}
-          isWorldMap
-          showColorScale={false}
-          showLabels={false}
-          footNote=""
-          ariaLabel={
-            kinds.includes("spm") && kinds.includes("pko")
-              ? `Map of special political mission and peacekeeping operation expenditure in ${year}`
-              : kinds.includes("pko")
-                ? `Map of peacekeeping operation expenditure in ${year}`
-                : `Map of special political mission expenditure in ${year}`
-          }
-          tooltip={(point: MissionPoint) => (
-            <FinancialTooltip
-              title={`${point.data.location.code} · ${point.data.location.name}`}
-              parents={[{ label: model.groups[point.data.group].label }]}
-              context={missionLocationLabel(point.data.location)}
-              total={{
-                label: "Expenditure",
-                value: formatBudget(point.data.amount),
+      {showList ? (
+        <RankedDetailList
+          label="Field mission expenditure"
+          items={missionList.map((point) => ({
+            id: point.label,
+            label: point.data.location.name,
+            description: point.label,
+            amount: point.data.amount,
+            value: formatBudget(point.data.amount),
+            group: {
+              key: point.data.group,
+              label: model.groups[point.data.group].label,
+            },
+            color: model.groups[point.data.group].color,
+            onOpen: () => openMission(point.label),
+          }))}
+        />
+      ) : (
+        <MapInteraction>
+          <div className="relative border border-gray-200 bg-white">
+            <div
+              className="absolute bottom-3 left-3 z-10 flex flex-wrap items-center gap-x-4 gap-y-1.5 rounded-sm border border-gray-200 bg-white/95 px-3 py-2 text-xs text-gray-700 shadow-sm"
+              aria-label="Mission type legend"
+            >
+              {kinds.map((group) => (
+                <span key={group} className="flex items-center gap-1.5">
+                  <span
+                    className="size-2.5 shrink-0 rounded-full"
+                    style={{ backgroundColor: model.groups[group].color }}
+                    aria-hidden="true"
+                  />
+                  {model.groups[group].label}
+                </span>
+              ))}
+            </div>
+            <DotDensityMap
+              data={model.points}
+              colorDomain={[...kinds]}
+              colors={kindColors}
+              radius={MAX_MISSION_RADIUS_PX}
+              maxRadiusValue={1}
+              mapProjection="equalEarth"
+              scale={1.15}
+              centerPoint={[0, 6]}
+              zoomInteraction="button"
+              mapBorderWidth={0.5}
+              mapBorderColor="#d1d5db"
+              mapNoDataColor="#f3f4f6"
+              height={mapHeight}
+              padding="0px"
+              showAntarctica={false}
+              isWorldMap
+              showColorScale={false}
+              showLabels={false}
+              footNote=""
+              ariaLabel={
+                kinds.includes("spm") && kinds.includes("pko")
+                  ? `Map of special political mission and peacekeeping operation expenditure in ${year}`
+                  : kinds.includes("pko")
+                    ? `Map of peacekeeping operation expenditure in ${year}`
+                    : `Map of special political mission expenditure in ${year}`
+              }
+              onSeriesMouseClick={(point: MissionPoint | undefined) => {
+                if (point) openMission(point.label);
+              }}
+              tooltip={(point: MissionPoint) => (
+                <FinancialTooltip
+                  title={`${point.data.location.code} · ${point.data.location.name}`}
+                  parents={[{ label: model.groups[point.data.group].label }]}
+                  context={missionLocationLabel(point.data.location)}
+                  total={{
+                    label: "Expenditure",
+                    value: formatBudget(point.data.amount),
+                  }}
+                />
+              )}
+              styles={{
+                tooltip: {
+                  backgroundColor: "white",
+                  border: "1px solid #e2e8f0",
+                  borderRadius: "6px",
+                  padding: "8px 12px",
+                  boxShadow:
+                    "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)",
+                },
               }}
             />
-          )}
-          styles={{
-            tooltip: {
-              backgroundColor: "white",
-              border: "1px solid #e2e8f0",
-              borderRadius: "6px",
-              padding: "8px 12px",
-              boxShadow:
-                "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)",
-            },
-          }}
-        />
-      </div>
+          </div>
+        </MapInteraction>
+      )}
+
+      {selectedPoint && overview && (
+        <DetailDrawer
+          titleId="field-mission-title"
+          onClose={closeMission}
+          className="overflow-y-auto sm:w-[32rem]"
+        >
+          <div className="p-6">
+            <div className="flex items-start justify-between gap-3">
+              <h2 id="field-mission-title" className="text-xl font-bold">
+                <DrawerTitle>
+                  {selectedPoint.label} · {selectedPoint.data.location.name}
+                </DrawerTitle>
+              </h2>
+              <SidebarControls
+                onClose={closeMission}
+                closeLabel="Close mission details"
+                shareHash={`field-mission=${encodeURIComponent(missionLink ?? "")}`}
+              />
+            </div>
+            <p className="mt-2 text-sm text-gray-600">
+              {model.groups[selectedPoint.data.group].label}
+            </p>
+            <p className="mt-2 text-sm">
+              {missionLocationLabel(selectedPoint.data.location)}
+            </p>
+            <dl className="mt-4">
+              <dt>Expenditure in {overview.meta.year}</dt>
+              <dd className="text-xl font-bold tabular-nums">
+                {formatBudget(selectedPoint.data.amount)}
+              </dd>
+            </dl>
+          </div>
+        </DetailDrawer>
+      )}
 
       <div className="mt-3 text-xs leading-relaxed text-gray-500">
         <p className="mb-2 max-w-2xl">

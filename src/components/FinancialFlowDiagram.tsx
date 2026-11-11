@@ -27,6 +27,7 @@ export function FinancialFlowDiagram({
     <>
       <SankeyDiagram
         wrapLabels
+        responsiveControls
         {...props}
         renderSelection={(selection, onClose) => (
           <FinancialFlowSidebar

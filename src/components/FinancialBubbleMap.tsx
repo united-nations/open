@@ -3,7 +3,33 @@
 import { DotDensityMap } from "@undp/data-viz/DotDensityMap";
 import type { PointerEventHandler, ReactNode } from "react";
 import { useMapBubbleZoom } from "@/hooks/useMapBubbleZoom";
+import { MapInteraction } from "@/components/MapInteraction";
+import { useViewportMapHeight } from "@/hooks/useViewportMapHeight";
 import { cn } from "@/lib/utils";
+
+export const mapBubbleLegendClassName =
+  "absolute bottom-3 left-3 z-10 rounded border border-gray-200 bg-white/95 px-2 py-1 text-left text-xs shadow-sm";
+
+export function MapBubbleLegendCircle({
+  color,
+  radius,
+}: {
+  color: string;
+  radius: number;
+}) {
+  const center = radius + 1;
+  return (
+    <svg
+      data-map-legend-circle=""
+      aria-hidden="true"
+      className="shrink-0"
+      width={center * 2}
+      height={center * 2}
+    >
+      <circle cx={center} cy={center} r={radius} fill={color} stroke={color} />
+    </svg>
+  );
+}
 
 interface BubblePoint {
   lat: number;
@@ -37,6 +63,7 @@ export function FinancialBubbleMap<TPoint extends BubblePoint>({
   ...props
 }: FinancialBubbleMapProps<TPoint>) {
   const container = useMapBubbleZoom();
+  const mapHeight = useViewportMapHeight(height);
   return (
     <div
       ref={container}
@@ -44,36 +71,38 @@ export function FinancialBubbleMap<TPoint extends BubblePoint>({
       className={cn("financial-bubble-map relative w-full bg-white", className)}
       onPointerMoveCapture={onPointerMoveCapture}
     >
-      <DotDensityMap
-        {...props}
-        height={height}
-        maxRadiusValue={1}
-        mapProjection="equalEarth"
-        scale={1.15}
-        centerPoint={[0, 6]}
-        zoomInteraction="button"
-        mapBorderWidth={0.5}
-        mapBorderColor="#d1d5db"
-        mapNoDataColor="#f3f4f6"
-        padding="0px"
-        showAntarctica={false}
-        isWorldMap
-        showColorScale={false}
-        showLabels={false}
-        footNote=""
-        resetSelectionOnDoubleClick={false}
-        styles={{
-          tooltip: {
-            backgroundColor: "white",
-            border: "1px solid #e2e8f0",
-            borderRadius: "6px",
-            padding: "8px 12px",
-            boxShadow:
-              "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)",
-            maxWidth: "320px",
-          },
-        }}
-      />
+      <MapInteraction>
+        <DotDensityMap
+          {...props}
+          height={mapHeight}
+          maxRadiusValue={1}
+          mapProjection="equalEarth"
+          scale={1.15}
+          centerPoint={[0, 6]}
+          zoomInteraction="button"
+          mapBorderWidth={0.5}
+          mapBorderColor="#d1d5db"
+          mapNoDataColor="#f3f4f6"
+          padding="0px"
+          showAntarctica={false}
+          isWorldMap
+          showColorScale={false}
+          showLabels={false}
+          footNote=""
+          resetSelectionOnDoubleClick={false}
+          styles={{
+            tooltip: {
+              backgroundColor: "white",
+              border: "1px solid #e2e8f0",
+              borderRadius: "6px",
+              padding: "8px 12px",
+              boxShadow:
+                "0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1)",
+              maxWidth: "320px",
+            },
+          }}
+        />
+      </MapInteraction>
     </div>
   );
 }

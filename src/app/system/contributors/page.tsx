@@ -1,6 +1,7 @@
 import { RelatedDataPages } from "@/components/RelatedDataPages";
 import { SystemPageSources } from "@/components/PageSources";
 import type { Metadata } from "next";
+import { DeferredChart } from "@/components/DeferredChart";
 import { ContributorTrendsChart } from "@/components/ContributorTrendsChart";
 import { ContributorsTreemap } from "@/components/ContributorsTreemap";
 import { CebMethodologyLink } from "@/components/Methodology";
@@ -27,7 +28,12 @@ export default function SystemContributorsPage() {
         <ContributorsTreemap />
         <CebAssessmentRevenueNote />
         <div className="mt-10">
-          <ContributorTrendsChart />
+          <DeferredChart
+            id="contributor-trends"
+            label="Load contribution trends"
+          >
+            <ContributorTrendsChart />
+          </DeferredChart>
         </div>
       </PageBody>
       <CebMethodologyLink />

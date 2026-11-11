@@ -9,7 +9,7 @@ import { ChartHeader } from "@un-eosg/ui/components/chart-header";
 import { Tooltip } from "@un-eosg/ui/components/tooltip";
 import { ChartSearchInput } from "@/components/ui/chart-search-input";
 import { SegmentedControl } from "@un-eosg/ui/components/segmented-control";
-import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
+import { RankedDetailList } from "@/components/RankedDetailList";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 
 import {
@@ -293,6 +293,7 @@ function MissionCostClassTreemap({
     <div>
       <GroupedTreemap<MissionRow, never, MissionCostClassLeaf, never>
         hideHeader
+        hideList
         rows={treemapRows}
         totalLabel="Total"
         plotClassName="h-[34rem] sm:h-[42rem] lg:h-[48rem]"
@@ -333,7 +334,8 @@ export function PeacekeepingBudgetView() {
     failure?.key === requestKey || failure?.key === "locations"
       ? failure.message
       : null;
-  const [showMap, setShowMap] = useState(true);
+  const [view, setView] = useState("map");
+  const showMap = view === "map";
   const [query, setQuery] = useState("");
   const [hiddenKinds, setHiddenKinds] = useState<PointKind[]>([]);
   const [openedCode, setSelectedCode] = useState<string | null>(null);
@@ -575,16 +577,16 @@ export function PeacekeepingBudgetView() {
             </div>
             <ChartHeader
               controls={
-                <BinaryToggle
-                  variant="segmented"
+                <SegmentedControl
                   label="Peacekeeping view"
                   options={[
-                    { value: "treemap", label: "Budget chart" },
+                    { value: "treemap", label: "Chart" },
                     { value: "map", label: "Map" },
+                    { value: "list", label: "List" },
                   ]}
-                  value={showMap ? "map" : "treemap"}
+                  value={view}
                   onValueChange={(value) => {
-                    setShowMap(value === "map");
+                    setView(value);
                     setMapTooltip(null);
                   }}
                 />
@@ -602,6 +604,7 @@ export function PeacekeepingBudgetView() {
                   value={query}
                   onChange={setQuery}
                   placeholder="Search missions..."
+                  label="Search missions"
                 />
               }
               summaries={[
@@ -680,10 +683,36 @@ export function PeacekeepingBudgetView() {
               {error ?? "Loading peacekeeping budget…"}
             </p>
           )}
-          <section className="order-1" hidden={showMap}>
-            <MissionCostClassTreemap rows={visibleRows} onOpen={openMission} />
-          </section>
-
+          {view === "treemap" && (
+            <section className="order-1">
+              <MissionCostClassTreemap
+                rows={visibleRows}
+                onOpen={openMission}
+              />
+            </section>
+          )}
+          {view === "list" && (
+            <section className="order-1">
+              <RankedDetailList
+                label="Peacekeeping missions"
+                items={visibleRows.map((row) => ({
+                  id: row.code,
+                  label: row.name,
+                  description: row.code,
+                  amount: row.total,
+                  value: formatBudget(row.total),
+                  group: { key: row.kind, label: KIND_LABEL[row.kind] },
+                  color:
+                    row.kind === "support_office"
+                      ? "var(--color-un-purple)"
+                      : row.kind === "support"
+                        ? SUPPORT_COLOR
+                        : FIELD_COLOR,
+                  onOpen: () => openMission(row.code),
+                }))}
+              />
+            </section>
+          )}
           <section className="order-3" hidden={!showMap}>
             <FinancialBubbleMap
               className="pko-dot-map relative border border-gray-200 bg-white"

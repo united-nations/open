@@ -7,7 +7,7 @@ import { ExternalLink } from "lucide-react";
 import { SidebarControls } from "@/components/SidebarControls";
 import { useCallback, useEffect, useState } from "react";
 import { formatBudget } from "@/lib/entities";
-import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { DetailDrawer, DrawerTitle } from "@/components/DetailDrawer";
 import { navigateToSidebar } from "@/hooks/useDeepLink";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
 import {
@@ -79,11 +79,7 @@ export function CountrySidebar({
   initialYear,
   onClose,
 }: CountrySidebarProps) {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
   const [showAllEntities, setShowAllEntities] = useState(false);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
 
   // Year selection
   const yearRanges = useYearRanges();
@@ -119,9 +115,6 @@ export function CountrySidebar({
     uninfoResult?.iso3 === country.iso3 ? uninfoResult.data : null;
   const [uninfoSort, setUninfoSort] = useState("sdg_number");
 
-  // Focus trap for accessibility
-  const focusTrapRef = useFocusTrap(true);
-
   // Load UNINFO data (single file with SDGs + projects)
   useEffect(() => {
     if (!SHOW_UNINFO) return;
@@ -138,52 +131,6 @@ export function CountrySidebar({
     };
   }, [country.iso3]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 10);
-    return () => clearTimeout(timer);
-  }, []);
-
-  const handleClose = useCallback(() => {
-    setIsClosing(true);
-    setTimeout(() => onClose(), 300);
-  }, [onClose]);
-
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") handleClose();
-    };
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [handleClose]);
-
-  const minSwipeDistance = 50;
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-  const onTouchMove = (e: React.TouchEvent) =>
-    setTouchEnd(e.targetTouches[0].clientX);
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    if (touchStart - touchEnd < -minSwipeDistance) handleClose();
-  };
-
-  useEffect(() => {
-    const rootStyle = document.documentElement.style;
-    const previousOverflow = rootStyle.overflow;
-    const previousGutter = rootStyle.scrollbarGutter;
-    rootStyle.overflow = "hidden";
-    rootStyle.scrollbarGutter = "auto";
-    return () => {
-      rootStyle.overflow = previousOverflow;
-      rootStyle.scrollbarGutter = previousGutter;
-    };
-  }, []);
-
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) handleClose();
-  };
-
   // Sort entities by amount descending (use year-specific data)
   const sortedEntities = Object.entries(yearCountry?.entities ?? {}).sort(
     (a, b) => b[1] - a[1],
@@ -196,381 +143,365 @@ export function CountrySidebar({
   const sidebarTitleId = `country-sidebar-title`;
 
   return (
-    <div
-      className={`fixed inset-0 z-50 flex items-center justify-end bg-black/50 transition-all duration-300 ease-out ${isVisible && !isClosing ? "opacity-100" : "opacity-0"}`}
-      onClick={handleBackdropClick}
+    <DetailDrawer
+      titleId={sidebarTitleId}
+      onClose={onClose}
+      swipeToClose
+      className="overflow-hidden sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px]"
     >
-      <div
-        ref={focusTrapRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby={sidebarTitleId}
-        className={`h-full w-full overflow-hidden bg-white shadow-2xl transition-transform duration-300 ease-out sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px] ${isVisible && !isClosing ? "translate-x-0" : "translate-x-full"}`}
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
+      <FinancialDetailPanel
+        title={<DrawerTitle>{country.name}</DrawerTitle>}
+        titleId={sidebarTitleId}
+        className="sm:w-full"
+        yearSelectorPlacement="header"
+        yearSelector={{
+          years: availableYears,
+          selected: selectedYear,
+          onChange: setSelectedYear,
+          label: "Select year",
+          pending: loadingYear,
+          pendingLabel: "Loading...",
+        }}
+        controls={
+          <SidebarControls
+            shareHash={`country=${encodeURIComponent(country.iso3)}`}
+            onClose={onClose}
+            closeLabel="Close sidebar"
+          />
+        }
       >
-        <FinancialDetailPanel
-          title={country.name}
-          titleId={sidebarTitleId}
-          className="sm:w-full"
-          yearSelectorPlacement="header"
-          yearSelector={{
-            years: availableYears,
-            selected: selectedYear,
-            onChange: setSelectedYear,
-            label: "Select year",
-            pending: loadingYear,
-            pendingLabel: "Loading...",
-          }}
-          controls={
-            <SidebarControls
-              shareHash={`country=${encodeURIComponent(country.iso3)}`}
-              onClose={handleClose}
-              closeLabel="Close sidebar"
-            />
-          }
-        >
-          <div className="relative space-y-6">
-            <DelayedChartLoading
-              pending={loadingYear}
-              requestKey={selectedYear}
-            />
-            {yearError && (
-              <p role="status" className="text-sm text-gray-500">
-                Data could not be loaded for {selectedYear}.
+        <div className="relative space-y-6">
+          <DelayedChartLoading
+            pending={loadingYear}
+            requestKey={selectedYear}
+          />
+          {yearError && (
+            <p role="status" className="text-sm text-gray-500">
+              Data could not be loaded for {selectedYear}.
+            </p>
+          )}
+          {/* Summary stats */}
+          <div>
+            <FinancialPanelHeading className="mb-3">
+              System-wide financials
+            </FinancialPanelHeading>
+            <div className="space-y-3">
+              <FinancialPanelTotalRow
+                label="Total expenditure"
+                value={
+                  loadingYear
+                    ? "Loading…"
+                    : yearError || yearCountry === null
+                      ? "Unavailable"
+                      : formatBudget(yearCountry.total)
+                }
+              />
+              <FinancialPanelTotalRow
+                label="Entities active"
+                value={
+                  loadingYear || yearError || yearCountry === null
+                    ? "—"
+                    : sortedEntities.length
+                }
+              />
+            </div>
+            {!loadingYear && !yearError && yearCountry === null && (
+              <p className="mt-2 text-sm text-gray-500" role="status">
+                Expenditure data unavailable for this country and year.
               </p>
             )}
-            {/* Summary stats */}
-            <div>
-              <FinancialPanelHeading className="mb-3">
-                System-wide financials
-              </FinancialPanelHeading>
-              <div className="space-y-3">
-                <FinancialPanelTotalRow
-                  label="Total expenditure"
-                  value={
-                    loadingYear
-                      ? "Loading…"
-                      : yearError || yearCountry === null
-                        ? "Unavailable"
-                        : formatBudget(yearCountry.total)
-                  }
-                />
-                <FinancialPanelTotalRow
-                  label="Entities active"
-                  value={
-                    loadingYear || yearError || yearCountry === null
-                      ? "—"
-                      : sortedEntities.length
-                  }
-                />
-              </div>
-              {!loadingYear && !yearError && yearCountry === null && (
-                <p className="mt-2 text-sm text-gray-500" role="status">
-                  Expenditure data unavailable for this country and year.
-                </p>
-              )}
-              <FinancialPanelHeading subheading className="mt-4">
-                Expenditure by entity
-              </FinancialPanelHeading>
-              <div className="mt-2 space-y-2">
-                {displayedEntities.map(([entity, amount]) => {
-                  const normalizedWidth = (amount / maxEntityTotal) * 100;
-                  return (
-                    <FinancialPanelRankedRow
-                      key={entity}
-                      label={entity}
-                      value={formatBudgetFixed(amount)}
-                      onClick={() => navigateToSidebar("entity", entity)}
-                    >
-                      <FinancialPanelBar
-                        percent={normalizedWidth}
-                        color="var(--color-un-blue)"
-                      />
-                    </FinancialPanelRankedRow>
-                  );
-                })}
-
-                {!showAllEntities && sortedEntities.length > 10 && (
-                  <button
-                    onClick={() => setShowAllEntities(true)}
-                    className="mt-2 text-xs text-gray-600 underline hover:text-gray-900"
+            <FinancialPanelHeading subheading className="mt-4">
+              Expenditure by entity
+            </FinancialPanelHeading>
+            <div className="mt-2 space-y-2">
+              {displayedEntities.map(([entity, amount]) => {
+                const normalizedWidth = (amount / maxEntityTotal) * 100;
+                return (
+                  <FinancialPanelRankedRow
+                    key={entity}
+                    label={entity}
+                    value={formatBudgetFixed(amount)}
+                    onClick={() => navigateToSidebar("entity", entity)}
                   >
-                    Show all {sortedEntities.length} entities
-                  </button>
-                )}
-              </div>
+                    <FinancialPanelBar
+                      percent={normalizedWidth}
+                      color="var(--color-un-blue)"
+                    />
+                  </FinancialPanelRankedRow>
+                );
+              })}
+
+              {!showAllEntities && sortedEntities.length > 10 && (
+                <button
+                  onClick={() => setShowAllEntities(true)}
+                  className="mt-2 text-xs text-gray-600 underline hover:text-gray-900"
+                >
+                  Show all {sortedEntities.length} entities
+                </button>
+              )}
             </div>
+          </div>
 
-            {/* UN Cooperation Framework Section */}
-            {SHOW_UNINFO && (
-              <div className="border-t border-gray-200 pt-6">
-                <FinancialPanelHeading className="mb-1">
-                  UNSDG Cooperation Framework financials
-                </FinancialPanelHeading>
+          {/* UN Cooperation Framework Section */}
+          {SHOW_UNINFO && (
+            <div className="border-t border-gray-200 pt-6">
+              <FinancialPanelHeading className="mb-1">
+                UNSDG Cooperation Framework financials
+              </FinancialPanelHeading>
 
-                {!uninfoData ? (
-                  <p className="text-xs text-gray-500 italic">
-                    No Cooperation Framework data available. Frameworks are
-                    agreements between the UN and programme countries —
-                    developed countries and some others are not included.
+              {!uninfoData ? (
+                <p className="text-xs text-gray-500 italic">
+                  No Cooperation Framework data available. Frameworks are
+                  agreements between the UN and programme countries — developed
+                  countries and some others are not included.
+                </p>
+              ) : (
+                <>
+                  <p className="text-xs text-gray-500">
+                    {uninfoData.geographic_scope === "workspace"
+                      ? `Shared workspace totals for ${uninfoData.workspace_countries.join(", ")}; these are not allocations to this country.`
+                      : "Country programme data only, not representative of total expenditure."}
+                    {uninfoData.year === null
+                      ? " The source response has no verified reporting period. Annual 2024 figures are unavailable."
+                      : ` Financial totals were queried for ${uninfoData.year}.`}
                   </p>
-                ) : (
-                  <>
-                    <p className="text-xs text-gray-500">
-                      {uninfoData.geographic_scope === "workspace"
-                        ? `Shared workspace totals for ${uninfoData.workspace_countries.join(", ")}; these are not allocations to this country.`
-                        : "Country programme data only, not representative of total expenditure."}
-                      {uninfoData.year === null
-                        ? " The source response has no verified reporting period. Annual 2024 figures are unavailable."
-                        : ` Financial totals were queried for ${uninfoData.year}.`}
-                    </p>
-                    <div className="mt-2 mb-4 flex flex-wrap gap-x-4 gap-y-2">
-                      <a
-                        href={`https://uninfo.org/v2/location/${uninfoData.workspace_id}/programming/analysis/sdgs`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-xs text-un-blue hover:underline"
-                      >
-                        View on UNINFO <ExternalLink className="h-3 w-3" />
-                      </a>
-                      <a
-                        href={`https://unsdg.un.org/un-in-action/${country.name.toLowerCase().replace(/\s+/g, "-")}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 text-xs text-un-blue hover:underline"
-                      >
-                        UNSDG country page <ExternalLink className="h-3 w-3" />
-                      </a>
-                    </div>
+                  <div className="mt-2 mb-4 flex flex-wrap gap-x-4 gap-y-2">
+                    <a
+                      href={`https://uninfo.org/v2/location/${uninfoData.workspace_id}/programming/analysis/sdgs`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs text-un-blue hover:underline"
+                    >
+                      View on UNINFO <ExternalLink className="h-3 w-3" />
+                    </a>
+                    <a
+                      href={`https://unsdg.un.org/un-in-action/${country.name.toLowerCase().replace(/\s+/g, "-")}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1 text-xs text-un-blue hover:underline"
+                    >
+                      UNSDG country page <ExternalLink className="h-3 w-3" />
+                    </a>
+                  </div>
 
-                    {selectedYear !== 2024 &&
-                      cooperationFrameworkVisibility.financials && (
-                        <p className="text-xs text-gray-500 italic">
-                          Data only available for 2024.
-                        </p>
-                      )}
-                    {selectedYear === 2024 &&
-                      cooperationFrameworkVisibility.financials && (
-                        <>
-                          {/* Overall */}
-                          <div>
-                            <FinancialPanelHeading subheading>
-                              {uninfoData.year === null
-                                ? "Reported totals — period unverified"
-                                : "Overall"}
-                            </FinancialPanelHeading>
-                            <div className="mt-2">
-                              <UninfoFundingBar
-                                required={uninfoData.totals.required}
-                                available={uninfoData.totals.available}
-                                spent={uninfoData.totals.spent}
-                              />
-                            </div>
+                  {selectedYear !== 2024 &&
+                    cooperationFrameworkVisibility.financials && (
+                      <p className="text-xs text-gray-500 italic">
+                        Data only available for 2024.
+                      </p>
+                    )}
+                  {selectedYear === 2024 &&
+                    cooperationFrameworkVisibility.financials && (
+                      <>
+                        {/* Overall */}
+                        <div>
+                          <FinancialPanelHeading subheading>
+                            {uninfoData.year === null
+                              ? "Reported totals — period unverified"
+                              : "Overall"}
+                          </FinancialPanelHeading>
+                          <div className="mt-2">
+                            <UninfoFundingBar
+                              required={uninfoData.totals.required}
+                              available={uninfoData.totals.available}
+                              spent={uninfoData.totals.spent}
+                            />
                           </div>
+                        </div>
 
-                          {/* By SDG */}
-                          <div className="mt-4">
-                            <div className="flex items-center justify-between">
-                              <FinancialPanelHeading subheading>
-                                By SDG
-                              </FinancialPanelHeading>
-                              {SHOW_UNINFO_SORT_CONTROLS && (
-                                <SortSelector
-                                  options={UNINFO_SORT_OPTIONS}
-                                  selected={uninfoSort}
-                                  onChange={setUninfoSort}
-                                />
-                              )}
-                            </div>
-                            <div className="mt-2 space-y-1.5">
-                              {(() => {
-                                const entries = Object.entries(uninfoData.sdgs);
-                                const sorted = entries.sort((a, b) => {
-                                  const [, ma] = a,
-                                    [, mb] = b;
-                                  const goalOrder = (key: string) =>
-                                    key === "unclassified" ? 18 : Number(key);
-                                  if (uninfoSort === "sdg_number")
-                                    return goalOrder(a[0]) - goalOrder(b[0]);
-                                  if (uninfoSort === "required")
-                                    return mb.required - ma.required;
-                                  if (uninfoSort === "available")
-                                    return mb.available - ma.available;
-                                  if (uninfoSort === "spent")
-                                    return mb.spent - ma.spent;
-                                  if (uninfoSort === "funding_gap")
-                                    return (
-                                      mb.required -
-                                      mb.available -
-                                      (ma.required - ma.available)
-                                    );
-                                  if (uninfoSort === "spending_gap")
-                                    return (
-                                      mb.available -
-                                      mb.spent -
-                                      (ma.available - ma.spent)
-                                    );
+                        {/* By SDG */}
+                        <div className="mt-4">
+                          <div className="flex items-center justify-between">
+                            <FinancialPanelHeading subheading>
+                              By SDG
+                            </FinancialPanelHeading>
+                            {SHOW_UNINFO_SORT_CONTROLS && (
+                              <SortSelector
+                                options={UNINFO_SORT_OPTIONS}
+                                selected={uninfoSort}
+                                onChange={setUninfoSort}
+                              />
+                            )}
+                          </div>
+                          <div className="mt-2 space-y-1.5">
+                            {(() => {
+                              const entries = Object.entries(uninfoData.sdgs);
+                              const sorted = entries.sort((a, b) => {
+                                const [, ma] = a,
+                                  [, mb] = b;
+                                const goalOrder = (key: string) =>
+                                  key === "unclassified" ? 18 : Number(key);
+                                if (uninfoSort === "sdg_number")
                                   return goalOrder(a[0]) - goalOrder(b[0]);
-                                });
-                                const maxVal = Math.max(
-                                  1,
-                                  ...entries.map(([, m]) =>
-                                    Math.max(m.required, m.available, m.spent),
-                                  ),
-                                );
-                                return sorted.map(([sdgNum, metrics]) => {
-                                  const unclassified =
-                                    sdgNum === "unclassified";
-                                  const sdg = Number(sdgNum);
-                                  const label = unclassified
-                                    ? "Not classified by SDG"
-                                    : SDG_SHORT_TITLES[sdg];
-                                  const color = unclassified
-                                    ? "#6b7280"
-                                    : SDG_COLORS[sdg];
-                                  const Row = unclassified ? "div" : "button";
-                                  const barWidth =
-                                    (Math.max(
-                                      0,
-                                      metrics.required,
-                                      metrics.available,
-                                      metrics.spent,
-                                    ) /
-                                      maxVal) *
-                                    100;
+                                if (uninfoSort === "required")
+                                  return mb.required - ma.required;
+                                if (uninfoSort === "available")
+                                  return mb.available - ma.available;
+                                if (uninfoSort === "spent")
+                                  return mb.spent - ma.spent;
+                                if (uninfoSort === "funding_gap")
                                   return (
-                                    <Tooltip key={sdgNum} delayDuration={200}>
-                                      <TooltipTrigger asChild>
-                                        <Row
-                                          data-uninfo-sdg={sdgNum}
-                                          tabIndex={
-                                            unclassified ? 0 : undefined
-                                          }
-                                          onClick={
+                                    mb.required -
+                                    mb.available -
+                                    (ma.required - ma.available)
+                                  );
+                                if (uninfoSort === "spending_gap")
+                                  return (
+                                    mb.available -
+                                    mb.spent -
+                                    (ma.available - ma.spent)
+                                  );
+                                return goalOrder(a[0]) - goalOrder(b[0]);
+                              });
+                              const maxVal = Math.max(
+                                1,
+                                ...entries.map(([, m]) =>
+                                  Math.max(m.required, m.available, m.spent),
+                                ),
+                              );
+                              return sorted.map(([sdgNum, metrics]) => {
+                                const unclassified = sdgNum === "unclassified";
+                                const sdg = Number(sdgNum);
+                                const label = unclassified
+                                  ? "Not classified by SDG"
+                                  : SDG_SHORT_TITLES[sdg];
+                                const color = unclassified
+                                  ? "#6b7280"
+                                  : SDG_COLORS[sdg];
+                                const Row = unclassified ? "div" : "button";
+                                const barWidth =
+                                  (Math.max(
+                                    0,
+                                    metrics.required,
+                                    metrics.available,
+                                    metrics.spent,
+                                  ) /
+                                    maxVal) *
+                                  100;
+                                return (
+                                  <Tooltip key={sdgNum} delayDuration={200}>
+                                    <TooltipTrigger asChild>
+                                      <Row
+                                        data-uninfo-sdg={sdgNum}
+                                        tabIndex={unclassified ? 0 : undefined}
+                                        onClick={
+                                          unclassified
+                                            ? undefined
+                                            : () =>
+                                                navigateToSidebar("sdg", sdg)
+                                        }
+                                        className={`group flex w-full items-center gap-2 rounded ${unclassified ? "" : "hover:bg-gray-50"}`}
+                                      >
+                                        <span
+                                          className={
                                             unclassified
-                                              ? undefined
-                                              : () =>
-                                                  navigateToSidebar("sdg", sdg)
+                                              ? "w-28 flex-shrink-0 text-left text-xs text-gray-700"
+                                              : "w-20 flex-shrink-0 truncate text-left text-xs text-gray-700 group-hover:text-un-blue group-hover:underline"
                                           }
-                                          className={`group flex w-full items-center gap-2 rounded ${unclassified ? "" : "hover:bg-gray-50"}`}
+                                          title={label}
                                         >
-                                          <span
-                                            className={
-                                              unclassified
-                                                ? "w-28 flex-shrink-0 text-left text-xs text-gray-700"
-                                                : "w-20 flex-shrink-0 truncate text-left text-xs text-gray-700 group-hover:text-un-blue group-hover:underline"
-                                            }
-                                            title={label}
+                                          {label}
+                                        </span>
+                                        {!unclassified && (
+                                          <FinancialPanelGoalBadge
+                                            label={String(sdg)}
+                                            color={color}
+                                          />
+                                        )}
+                                        <div className="flex flex-1 flex-col gap-px">
+                                          <div
+                                            style={{ width: `${barWidth}%` }}
                                           >
-                                            {label}
-                                          </span>
-                                          {!unclassified && (
-                                            <FinancialPanelGoalBadge
-                                              label={String(sdg)}
+                                            <UninfoFundingBar
+                                              required={metrics.required}
+                                              available={metrics.available}
+                                              spent={metrics.spent}
+                                              showLabels={false}
                                               color={color}
                                             />
-                                          )}
-                                          <div className="flex flex-1 flex-col gap-px">
-                                            <div
-                                              style={{ width: `${barWidth}%` }}
-                                            >
-                                              <UninfoFundingBar
-                                                required={metrics.required}
-                                                available={metrics.available}
-                                                spent={metrics.spent}
-                                                showLabels={false}
-                                                color={color}
-                                              />
-                                            </div>
                                           </div>
-                                        </Row>
-                                      </TooltipTrigger>
-                                      <TooltipContent
-                                        side="top"
-                                        className="border border-slate-200 bg-white p-3 text-slate-800 shadow-lg"
-                                      >
-                                        <p className="mb-2 text-xs font-medium">
-                                          {unclassified
-                                            ? label
-                                            : `SDG ${sdg}: ${label}`}
-                                        </p>
-                                        <UninfoFundingBar
-                                          required={metrics.required}
-                                          available={metrics.available}
-                                          spent={metrics.spent}
-                                          color={color}
-                                          compact
-                                        />
-                                      </TooltipContent>
-                                    </Tooltip>
-                                  );
-                                });
-                              })()}
-                            </div>
-                          </div>
-                        </>
-                      )}
-                    {/* Results Framework */}
-                    {selectedYear === 2024 &&
-                      cooperationFrameworkVisibility.results &&
-                      uninfoData.framework &&
-                      uninfoData.framework.length > 0 && (
-                        <div className="mt-4">
-                          <FinancialPanelHeading subheading>
-                            Results Framework
-                          </FinancialPanelHeading>
-                          <div className="mt-2">
-                            <p className="mb-2 text-xs text-gray-500">
-                              {uninfoData.framework_year
-                                ? `Framework financials: ${uninfoData.framework_year}.`
-                                : "Framework financials have no verified reporting period in this source snapshot."}
-                            </p>
-                            <ResultsFramework
-                              framework={uninfoData.framework}
-                            />
+                                        </div>
+                                      </Row>
+                                    </TooltipTrigger>
+                                    <TooltipContent
+                                      side="top"
+                                      className="border border-slate-200 bg-white p-3 text-slate-800 shadow-lg"
+                                    >
+                                      <p className="mb-2 text-xs font-medium">
+                                        {unclassified
+                                          ? label
+                                          : `SDG ${sdg}: ${label}`}
+                                      </p>
+                                      <UninfoFundingBar
+                                        required={metrics.required}
+                                        available={metrics.available}
+                                        spent={metrics.spent}
+                                        color={color}
+                                        compact
+                                      />
+                                    </TooltipContent>
+                                  </Tooltip>
+                                );
+                              });
+                            })()}
                           </div>
                         </div>
-                      )}
+                      </>
+                    )}
+                  {/* Results Framework */}
+                  {selectedYear === 2024 &&
+                    cooperationFrameworkVisibility.results &&
+                    uninfoData.framework &&
+                    uninfoData.framework.length > 0 && (
+                      <div className="mt-4">
+                        <FinancialPanelHeading subheading>
+                          Results Framework
+                        </FinancialPanelHeading>
+                        <div className="mt-2">
+                          <p className="mb-2 text-xs text-gray-500">
+                            {uninfoData.framework_year
+                              ? `Framework financials: ${uninfoData.framework_year}.`
+                              : "Framework financials have no verified reporting period in this source snapshot."}
+                          </p>
+                          <ResultsFramework framework={uninfoData.framework} />
+                        </div>
+                      </div>
+                    )}
 
-                    {/* Top Projects */}
-                    {selectedYear === 2024 &&
-                      cooperationFrameworkVisibility.projects &&
-                      uninfoData.projects.length > 0 && (
-                        <div className="mt-4">
-                          <FinancialPanelHeading subheading>
-                            Projects (
-                            {
-                              new Set(
-                                uninfoData.projects.map(
-                                  (project) => project.id,
-                                ),
-                              ).size
-                            }
-                            )
-                          </FinancialPanelHeading>
-                          <div className="mt-2">
-                            <p className="mb-2 text-xs text-gray-500">
-                              {uninfoData.projects_year
-                                ? `Project financials: ${uninfoData.projects_year}.`
-                                : "Project financials have no verified reporting period in this source snapshot."}{" "}
-                              Rows describe agency participation in projects.
-                            </p>
-                            <UninfoProjectTable
-                              projects={uninfoData.projects}
-                              initialLimit={5}
-                            />
-                          </div>
+                  {/* Top Projects */}
+                  {selectedYear === 2024 &&
+                    cooperationFrameworkVisibility.projects &&
+                    uninfoData.projects.length > 0 && (
+                      <div className="mt-4">
+                        <FinancialPanelHeading subheading>
+                          Projects (
+                          {
+                            new Set(
+                              uninfoData.projects.map((project) => project.id),
+                            ).size
+                          }
+                          )
+                        </FinancialPanelHeading>
+                        <div className="mt-2">
+                          <p className="mb-2 text-xs text-gray-500">
+                            {uninfoData.projects_year
+                              ? `Project financials: ${uninfoData.projects_year}.`
+                              : "Project financials have no verified reporting period in this source snapshot."}{" "}
+                            Rows describe agency participation in projects.
+                          </p>
+                          <UninfoProjectTable
+                            projects={uninfoData.projects}
+                            initialLimit={5}
+                          />
                         </div>
-                      )}
-                  </>
-                )}
-              </div>
-            )}
-          </div>
-        </FinancialDetailPanel>
-      </div>
-    </div>
+                      </div>
+                    )}
+                </>
+              )}
+            </div>
+          )}
+        </div>
+      </FinancialDetailPanel>
+    </DetailDrawer>
   );
 }

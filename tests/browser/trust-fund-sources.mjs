@@ -2,6 +2,11 @@ import { browserOptions, portalUrl } from "./helpers.mjs";
 import { chromium } from "playwright";
 import assert from "node:assert/strict";
 import fs from "node:fs";
+import { moduleAt } from "../../src/lib/tests/moduleAt.mjs";
+
+const { formatBudget } = await moduleAt(
+  "node_modules/@un-eosg/ui/lib/format-budget.ts",
+);
 
 const browser = await chromium.launch(browserOptions);
 try {
@@ -151,6 +156,8 @@ try {
   await page.goto(`${portalUrl}/secretariat/trust-funds/`, {
     waitUntil: "networkidle",
   });
+  const yearSlider = page.getByRole("slider", { name: "Select year" });
+  await yearSlider.press("ArrowLeft");
   await page.getByText("By entity", { exact: true }).click();
   const source = page.getByRole("group", { name: "Reporting source" });
   const selectSource = async (key) => {
@@ -170,30 +177,33 @@ try {
     }
   };
   await source.waitFor();
-  const signedFunds = page.locator(
-    'details[aria-label="Funds with zero or negative expenditure"]',
-  );
-  assert.equal(await signedFunds.count(), 1);
-  assert.ok(
-    await signedFunds.evaluate(
-      (node) => !node.parentElement.closest("details"),
-    ),
-    "Zero and negative fund details remain on the data page",
-  );
   assert.equal(
     await page.getByText(/Negative amounts included in the total:/).count(),
     0,
-    "The interactive fund list replaces the duplicate generic negative-amount report",
+    "List includes signed funds without a duplicate negative-amount report",
   );
-  assert.equal(
-    await signedFunds.getAttribute("open"),
-    null,
-    "Zero and negative fund details must be collapsed by default",
-  );
-  assert.equal(
-    await signedFunds.getByRole("button").first().isVisible(),
-    false,
-  );
+  const view = page.getByRole("group", { name: "Data view" });
+  const search = page.getByRole("searchbox", {
+    name: "Search groups, entities and trust funds",
+  });
+  const list = page.getByRole("group", { name: "Ranked chart data" });
+  await view.getByRole("radio", { name: "List" }).locator("..").click();
+  for (const predicate of [(amount) => amount < 0, (amount) => amount === 0]) {
+    const fund = data.nodes.find(
+      (node) =>
+        node.sourceGroup === "volume_i" &&
+        node.tier === "detail" &&
+        predicate(node.amount),
+    );
+    await search.fill(fund.label);
+    const row = list.getByRole("button").filter({ hasText: fund.label });
+    assert.ok((await row.innerText()).includes(formatBudget(fund.amount)));
+    await selectSource("separate_entities");
+    assert.equal(await row.count(), 0);
+    await selectSource("all");
+  }
+  await search.fill("");
+  await view.getByRole("radio", { name: "Chart" }).locator("..").click();
   assert.equal(
     await source
       .getByRole("button", { name: "All sources", exact: true })
@@ -308,12 +318,7 @@ try {
     data.meta.sourceGroups.find((group) => group.id === "separate_entities")
       .amount,
   );
-  assert.equal(
-    await page
-      .locator('details[aria-label="Funds with zero or negative expenditure"]')
-      .count(),
-    0,
-  );
+
   assert.equal(
     await page
       .getByRole("button", { name: "Environment Fund segment", exact: true })
@@ -393,7 +398,7 @@ try {
   await page
     .getByRole("button", { name: "Environment Fund segment", exact: true })
     .click();
-  let dialog = page.locator('aside[role="dialog"]');
+  let dialog = page.locator('[role="dialog"][aria-modal="true"]');
   await dialog.waitFor();
   await assertSidebarReferences(dialog);
   await dialog
@@ -509,7 +514,7 @@ try {
   );
   await dialog
     .locator("#trust-fund-title")
-    .getByText("FEL", { exact: true })
+    .getByText(detail.label, { exact: true })
     .waitFor();
   assert.equal(
     await dialog
@@ -535,9 +540,6 @@ try {
   );
   await dialog.getByRole("button", { name: "Close fund details" }).click();
   await dialog.waitFor({ state: "detached" });
-  const search = page.getByRole("searchbox", {
-    name: "Search entities and trust funds",
-  });
   await search.fill(detail.code);
   assert.equal(
     await page
@@ -567,7 +569,7 @@ try {
       })
       .click();
     await dialog.waitFor();
-    await dialog.getByText("Expenditure", { exact: true }).waitFor();
+    await dialog.getByText("Expenditure", { exact: true }).first().waitFor();
     assert.ok((await dialog.locator('a[href*="#page="]').count()) > 0);
     const donors = dialog.locator(`[data-xb-contributor-panel="${code}"]`);
     await donors.waitFor();
@@ -749,7 +751,7 @@ try {
   const spending2024 = page.waitForResponse((response) =>
     response.url().includes("budget-trust-funds-2024.json"),
   );
-  await page.getByRole("slider").first().press("End");
+  await yearSlider.press("ArrowRight");
   await (await spending2024).finished();
   results.push(
     "Source controls, inline hierarchy, same-year contributors and collapsed accounting/provenance work",
@@ -765,7 +767,7 @@ try {
     `${portalUrl}/secretariat/trust-funds/#trust-fund=${encodeURIComponent(legacy.id)}`,
     { waitUntil: "networkidle" },
   );
-  dialog = page.locator('aside[role="dialog"]');
+  dialog = page.locator('[role="dialog"][aria-modal="true"]');
   await dialog.waitFor();
   assert.ok((await dialog.innerText()).includes(legacy.label));
   await dialog.getByRole("button", { name: "Close fund details" }).click();
@@ -813,6 +815,7 @@ try {
   await selectSource("all");
   await page.getByRole("slider").first().focus();
   await page.getByRole("slider").first().press("End");
+  await page.getByRole("slider").first().press("ArrowLeft");
   await page
     .getByRole("button", { name: "Environment Fund segment", exact: true })
     .waitFor();

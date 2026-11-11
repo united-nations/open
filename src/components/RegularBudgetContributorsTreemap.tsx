@@ -255,7 +255,7 @@ export function RegularBudgetContributorsTreemap() {
                 disabled={loading}
               />
             }
-            controls={
+            filterControls={
               <div
                 className="flex flex-wrap gap-2"
                 role="group"

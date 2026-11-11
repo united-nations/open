@@ -25,6 +25,7 @@ import React, {
   useRef,
 } from "react";
 import SDGModal from "./SDGModal";
+import { RankedDetailList } from "@/components/RankedDetailList";
 import { YearSlider } from "@/components/YearSlider";
 import {
   useDeepLink,
@@ -37,7 +38,7 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
-import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
+import { SegmentedControl } from "@un-eosg/ui/components/segmented-control";
 import { formatBudget } from "@/lib/entities";
 import { useYearRanges, generateYearRange } from "@/lib/useYearRanges";
 import {
@@ -71,34 +72,36 @@ const SDG_LABEL_INSET = 1;
 const SDG_TRANSITION_MS = 1400;
 const ITEMS_PER_ROW = 6;
 
-// Grid layout: equal square sizes, 6 per row.
+// Grid layout: equal squares with room for names on phones.
 // Positions are percentages of the container, so cellHeight must be scaled by
 // the container's width/height for the tiles to paint as squares.
 function gridLayout(
   items: TreemapItem[],
   containerAspect: number,
+  perRow = ITEMS_PER_ROW,
+  stackLabels = false,
 ): (Rect & { data: TreemapItem })[] {
   if (items.length === 0 || !(containerAspect > 0)) return [];
   const columnGap = SDG_GAP / containerAspect;
-  const numRows = Math.ceil(items.length / ITEMS_PER_ROW);
-  const cols = Math.min(ITEMS_PER_ROW, items.length);
+  const numRows = Math.ceil(items.length / perRow);
+  const cols = Math.min(perRow, items.length);
   const totalColGaps = (cols - 1) * columnGap;
   const totalRowGaps = (numRows - 1) * SDG_GAP;
 
-  let cellWidth = (100 - (ITEMS_PER_ROW - 1) * columnGap) / ITEMS_PER_ROW;
-  let cellHeight = cellWidth * containerAspect;
+  let cellWidth = (100 - (perRow - 1) * columnGap) / perRow;
+  let cellHeight = cellWidth * containerAspect * (stackLabels ? 1.25 : 1);
   const unscaledHeight = numRows * cellHeight + totalRowGaps;
   if (unscaledHeight > 100) {
     cellHeight = (100 - totalRowGaps) / numRows;
-    cellWidth = cellHeight / containerAspect;
+    if (!stackLabels) cellWidth = cellHeight / containerAspect;
   }
 
   const gridWidth = cols * cellWidth + totalColGaps;
   const xOffset = (100 - gridWidth) / 2;
 
   return items.map((item, i) => {
-    const row = Math.floor(i / ITEMS_PER_ROW);
-    const col = i % ITEMS_PER_ROW;
+    const row = Math.floor(i / perRow);
+    const col = i % perRow;
     return {
       x: xOffset + col * (cellWidth + columnGap),
       y: row * (cellHeight + SDG_GAP),
@@ -170,7 +173,9 @@ export default function SDGsGrid({
 
   const [sdgs, setSdgs] = useState<SDG[]>([]);
   const [selectedSDG, setSelectedSDG] = useState<SDG | null>(null);
-  const [showSpending, setShowSpending] = useState<boolean>(treemapOnly);
+  const [view, setView] = useState(treemapOnly ? "spending" : "goals");
+  const showList = view === "list";
+  const showSpending = view === "spending";
   const [hasScrollRevealed, setHasScrollRevealed] = useState<boolean>(false);
   const gridRef = useRef<HTMLDivElement>(null);
   const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
@@ -209,7 +214,7 @@ export default function SDGsGrid({
           gridRef.current.getBoundingClientRect().top < window.innerHeight * 0.4
         ) {
           setHasScrollRevealed(true);
-          setShowSpending(true);
+          setView((current) => (current === "goals" ? "spending" : current));
         }
         ticking = false;
       });
@@ -335,7 +340,7 @@ export default function SDGsGrid({
 
   // Both totals include Non-SDG and Not specified; only the money view draws them.
   const visibleSDGData = filteredSDGData.filter(
-    (row) => showSpending || row.sdgNumber > 0,
+    (row) => showSpending || showList || row.sdgNumber > 0,
   );
   const items: TreemapItem[] = filteredSDGData
     .filter((d) => d.total > 0)
@@ -360,11 +365,16 @@ export default function SDGsGrid({
     const observer = new ResizeObserver(update);
     observer.observe(element);
     return () => observer.disconnect();
-  }, [visibleSDGData.length]);
+  }, [visibleSDGData.length, showList]);
 
   const allocatedItems = items.filter((item) => Number(item.name) > 0);
   const remainderItems = items.filter((item) => Number(item.name) <= 0);
-  const gridRects = gridLayout(allocatedItems, containerAspect);
+  const gridRects = gridLayout(
+    allocatedItems,
+    containerAspect,
+    containerSize.width < 592 ? 3 : ITEMS_PER_ROW,
+    containerSize.width < 896,
+  );
   const total = items.reduce((sum, item) => sum + item.value, 0);
   const gapCount =
     Math.max(0, remainderItems.length - 1) +
@@ -402,6 +412,22 @@ export default function SDGsGrid({
     }
   }
 
+  const viewControl = (
+    <SegmentedControl
+      label="Goals view"
+      options={[
+        ...(!treemapOnly ? [{ value: "goals", label: "SDG overview" }] : []),
+        { value: "spending", label: "Chart" },
+        { value: "list", label: "List" },
+      ]}
+      value={view}
+      onValueChange={(value) => {
+        setHasScrollRevealed(true);
+        setView(value);
+      }}
+    />
+  );
+
   if (visibleSDGData.length === 0) {
     return (
       <>
@@ -414,27 +440,13 @@ export default function SDGsGrid({
                 onChange={setSelectedYear}
               />
             }
-            controls={
-              !treemapOnly && (
-                <BinaryToggle
-                  variant="segmented"
-                  label="Goals view"
-                  options={[
-                    { value: "goals", label: "Goals" },
-                    { value: "spending", label: "Expenditure" },
-                  ]}
-                  value={showSpending ? "spending" : "goals"}
-                  onValueChange={(value) =>
-                    setShowSpending(value === "spending")
-                  }
-                />
-              )
-            }
+            controls={viewControl}
             search={
               <ChartSearchInput
                 value={searchQuery}
                 onChange={setSearchQuery}
                 placeholder="Search by SDG or entity..."
+                label="Search by SDG or entity"
               />
             }
             summaries={[
@@ -473,27 +485,13 @@ export default function SDGsGrid({
                 onChange={setSelectedYear}
               />
             }
-            controls={
-              !treemapOnly && (
-                <BinaryToggle
-                  variant="segmented"
-                  label="Goals view"
-                  options={[
-                    { value: "goals", label: "Goals" },
-                    { value: "spending", label: "Expenditure" },
-                  ]}
-                  value={showSpending ? "spending" : "goals"}
-                  onValueChange={(value) =>
-                    setShowSpending(value === "spending")
-                  }
-                />
-              )
-            }
+            controls={viewControl}
             search={
               <ChartSearchInput
                 value={searchQuery}
                 onChange={setSearchQuery}
                 placeholder="Search by SDG or entity..."
+                label="Search by SDG or entity"
               />
             }
             summaries={[
@@ -515,207 +513,239 @@ export default function SDGsGrid({
           pending={loadedYear !== selectedYear}
           requestKey={selectedYear}
         />
-        <div
-          ref={gridRef}
-          className={`relative w-full ${SYSTEM_TREEMAP_HEIGHT_CLASS}`}
-        >
-          {filteredSDGData.map((sdgData) => {
-            const sdgNumber = sdgData.sdgNumber;
-            const sdg = getSDGDetail(sdgNumber, sdgs);
-            const color = getSDGColor(sdgNumber);
-            const shortTitle = getSDGLabel(sdgNumber);
-            const pos = positionLookup[sdgNumber.toString()];
-            if (!pos) return null;
-            const activate = sdg
-              ? () => {
-                  setSelectedSDG(sdg);
-                  replaceToSidebar("sdg", sdg.number);
-                }
-              : undefined;
-
-            // Entity sub-treemap (render while visible OR fading out)
-            const entityRects =
-              showSpending || showEntities
-                ? squarifyDense(
-                    Object.entries(sdgData.entities)
-                      .filter(([, value]) => value > 0)
-                      .map(([name, value]) => ({ value, data: { name } }))
-                      .sort((a, b) => b.value - a.value),
-                    0,
-                    0,
-                    100,
-                    100,
-                  )
+        {showList ? (
+          <RankedDetailList
+            label="Expenditure by Sustainable Development Goal"
+            items={filteredSDGData.flatMap((row) => {
+              const sdg = getSDGDetail(row.sdgNumber, sdgs);
+              return sdg
+                ? [
+                    {
+                      id: String(sdg.number),
+                      label: getSDGLabel(sdg.number),
+                      amount: row.total,
+                      value: formatBudget(row.total),
+                      color: getSDGColor(sdg.number),
+                      onOpen: () => {
+                        setSelectedSDG(sdg);
+                        replaceToSidebar("sdg", sdg.number);
+                      },
+                    },
+                  ]
                 : [];
+            })}
+          />
+        ) : (
+          <div
+            ref={gridRef}
+            className={`relative w-full ${SYSTEM_TREEMAP_HEIGHT_CLASS}`}
+          >
+            {filteredSDGData.map((sdgData) => {
+              const sdgNumber = sdgData.sdgNumber;
+              const sdg = getSDGDetail(sdgNumber, sdgs);
+              const color = getSDGColor(sdgNumber);
+              const shortTitle = getSDGLabel(sdgNumber);
+              const pos = positionLookup[sdgNumber.toString()];
+              if (!pos) return null;
+              const activate = sdg
+                ? () => {
+                    setSelectedSDG(sdg);
+                    replaceToSidebar("sdg", sdg.number);
+                  }
+                : undefined;
 
-            return (
-              <Tooltip key={sdgNumber} delayDuration={50}>
-                <TooltipTrigger asChild>
-                  <div
-                    className={`absolute overflow-hidden text-white ${treemapTileLayoutTransitionClassName} ${activate ? treemapTileInteractionClassName : "focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset"}`}
-                    role={activate ? "button" : undefined}
-                    tabIndex={sdgNumber <= 0 && !showSpending ? -1 : 0}
-                    aria-hidden={
-                      sdgNumber <= 0 && !showSpending ? true : undefined
-                    }
-                    aria-label={
-                      sdgNumber > 0
-                        ? `SDG ${sdgNumber}: ${shortTitle}`
-                        : shortTitle
-                    }
-                    style={{
-                      left: `${pos.x}%`,
-                      top: `${pos.y}%`,
-                      width: `${pos.width}%`,
-                      height: `${pos.height}%`,
-                      transitionDuration: `${SDG_TRANSITION_MS}ms`,
-                      pointerEvents:
-                        sdgNumber <= 0 && !showSpending ? "none" : undefined,
-                    }}
-                    onClick={activate}
-                    onKeyDown={
-                      activate
-                        ? (event) =>
-                            activateTreemapTileOnKeyDown(event, activate)
-                        : undefined
-                    }
-                  >
-                    <span
-                      aria-hidden="true"
-                      className={`pointer-events-none absolute inset-0 ${activate ? treemapTileFillInteractionClassName : "motion-safe:transition-[background-color] motion-reduce:transition-none"}`}
-                      style={{
-                        backgroundColor: color,
-                        transitionDuration: `${SDG_TRANSITION_MS}ms,150ms`,
-                      }}
-                    />
-                    {/* Entity sub-treemap with fade */}
+              // Entity sub-treemap (render while visible OR fading out)
+              const entityRects =
+                showSpending || showEntities
+                  ? squarifyDense(
+                      Object.entries(sdgData.entities)
+                        .filter(([, value]) => value > 0)
+                        .map(([name, value]) => ({ value, data: { name } }))
+                        .sort((a, b) => b.value - a.value),
+                      0,
+                      0,
+                      100,
+                      100,
+                    )
+                  : [];
+
+              return (
+                <Tooltip key={sdgNumber} delayDuration={50}>
+                  <TooltipTrigger asChild>
                     <div
-                      className="absolute inset-0 transition-opacity"
+                      className={`absolute overflow-hidden text-white ${treemapTileLayoutTransitionClassName} ${activate ? treemapTileInteractionClassName : "focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-inset"}`}
+                      role={activate ? "button" : undefined}
+                      tabIndex={sdgNumber <= 0 && !showSpending ? -1 : 0}
+                      aria-hidden={
+                        sdgNumber <= 0 && !showSpending ? true : undefined
+                      }
+                      aria-label={
+                        sdgNumber > 0
+                          ? `SDG ${sdgNumber}: ${shortTitle}`
+                          : shortTitle
+                      }
                       style={{
-                        opacity: showEntities ? 1 : 0,
-                        transitionDuration: "1000ms",
-                      }}
-                    >
-                      {entityRects.map((rect, i) => (
-                        <div
-                          key={`${sdgNumber}-entity-${i}`}
-                          className={styles.entityTile}
-                          style={
-                            {
-                              "--tile-left": `${rect.x}%`,
-                              "--tile-top": `${rect.y}%`,
-                              "--tile-right": `${rect.x + rect.width}%`,
-                              "--tile-bottom": `${rect.y + rect.height}%`,
-                            } as React.CSSProperties
-                          }
-                        >
-                          <span
-                            aria-hidden="true"
-                            className={`pointer-events-none absolute inset-0 ${activate ? treemapTileFillInteractionClassName : ""}`}
-                            style={{ backgroundColor: color }}
-                          />
-                          <span
-                            aria-hidden="true"
-                            className="pointer-events-none absolute inset-0 z-[1] shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.8)]"
-                          />
-                          <TreemapLabel
-                            data-entity-label
-                            minWidth={Math.max(40, containerSize.width * 0.04)}
-                            minHeight={Math.max(
-                              28,
-                              containerSize.height * 0.03,
-                            )}
-                            className="relative z-[2] flex h-full items-end overflow-hidden p-1.5"
-                          >
-                            <div className="text-xs leading-tight font-medium whitespace-nowrap">
-                              {rect.data.name}
-                            </div>
-                          </TreemapLabel>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* SDG label - full cell in grid mode, corner overlay in spending mode */}
-                    <TreemapLabel
-                      data-sdg-heading
-                      fit={false}
-                      className="absolute z-10 overflow-hidden transition-all"
-                      style={{
-                        left: showSpending ? SDG_LABEL_INSET : 0,
-                        top: showSpending ? SDG_LABEL_INSET : 0,
-                        maxWidth: showSpending
-                          ? `max(0px, calc(100% - ${2 * SDG_LABEL_INSET}px))`
-                          : undefined,
-                        maxHeight: showSpending
-                          ? `max(0px, calc(100% - ${2 * SDG_LABEL_INSET}px))`
-                          : undefined,
+                        left: `${pos.x}%`,
+                        top: `${pos.y}%`,
+                        width: `${pos.width}%`,
+                        height: `${pos.height}%`,
                         transitionDuration: `${SDG_TRANSITION_MS}ms`,
+                        pointerEvents:
+                          sdgNumber <= 0 && !showSpending ? "none" : undefined,
                       }}
+                      onClick={activate}
+                      onKeyDown={
+                        activate
+                          ? (event) =>
+                              activateTreemapTileOnKeyDown(event, activate)
+                          : undefined
+                      }
                     >
                       <span
                         aria-hidden="true"
-                        className={`pointer-events-none absolute inset-0 -z-10 ${activate ? treemapTileFillInteractionClassName : ""}`}
+                        className={`pointer-events-none absolute inset-0 ${activate ? treemapTileFillInteractionClassName : "motion-safe:transition-[background-color] motion-reduce:transition-none"}`}
                         style={{
-                          backgroundColor: showSpending ? color : "transparent",
+                          backgroundColor: color,
+                          transitionDuration: `${SDG_TRANSITION_MS}ms,150ms`,
                         }}
                       />
+                      {/* Entity sub-treemap with fade */}
                       <div
-                        className="flex"
-                        style={{ padding: showSpending ? "0.5rem" : "1rem" }}
+                        className="absolute inset-0 transition-opacity"
+                        style={{
+                          opacity: showEntities ? 1 : 0,
+                          transitionDuration: "1000ms",
+                        }}
                       >
-                        <span className="mr-2 flex-shrink-0 text-2xl leading-none font-bold sm:text-3xl">
-                          {sdgNumber > 0 ? sdgNumber : ""}
-                        </span>
-                        <div className="flex flex-col pt-0.5">
-                          <span className="text-left text-xs leading-tight font-semibold sm:text-sm">
-                            {shortTitle}
-                          </span>
-                          <span
-                            className="mt-0.5 text-xs opacity-90 transition-opacity sm:text-sm"
-                            style={{
-                              opacity: showSpending ? 1 : 0,
-                              transitionDuration: "600ms",
-                            }}
+                        {entityRects.map((rect, i) => (
+                          <div
+                            key={`${sdgNumber}-entity-${i}`}
+                            className={styles.entityTile}
+                            style={
+                              {
+                                "--tile-left": `${rect.x}%`,
+                                "--tile-top": `${rect.y}%`,
+                                "--tile-right": `${rect.x + rect.width}%`,
+                                "--tile-bottom": `${rect.y + rect.height}%`,
+                              } as React.CSSProperties
+                            }
                           >
-                            {formatBudget(sdgData.total)}
-                          </span>
-                        </div>
+                            <span
+                              aria-hidden="true"
+                              className={`pointer-events-none absolute inset-0 ${activate ? treemapTileFillInteractionClassName : ""}`}
+                              style={{ backgroundColor: color }}
+                            />
+                            <span
+                              aria-hidden="true"
+                              className="pointer-events-none absolute inset-0 z-[1] shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.8)]"
+                            />
+                            <TreemapLabel
+                              data-entity-label
+                              minWidth={Math.max(
+                                40,
+                                containerSize.width * 0.04,
+                              )}
+                              minHeight={Math.max(
+                                28,
+                                containerSize.height * 0.03,
+                              )}
+                              className="relative z-[2] flex h-full items-end overflow-hidden p-1.5"
+                            >
+                              <div className="text-xs leading-tight font-medium whitespace-nowrap">
+                                {rect.data.name}
+                              </div>
+                            </TreemapLabel>
+                          </div>
+                        ))}
                       </div>
-                    </TreemapLabel>
-                    <span
-                      aria-hidden="true"
-                      className={`pointer-events-none absolute inset-0 z-[1] shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.8)] ${activate ? treemapTileBaseBorderClassName : ""}`}
+
+                      {/* SDG label - full cell in grid mode, corner overlay in spending mode */}
+                      <TreemapLabel
+                        data-sdg-heading
+                        fit={false}
+                        className="absolute z-10 overflow-hidden transition-all"
+                        style={{
+                          left: showSpending ? SDG_LABEL_INSET : 0,
+                          top: showSpending ? SDG_LABEL_INSET : 0,
+                          maxWidth: showSpending
+                            ? `max(0px, calc(100% - ${2 * SDG_LABEL_INSET}px))`
+                            : undefined,
+                          maxHeight: showSpending
+                            ? `max(0px, calc(100% - ${2 * SDG_LABEL_INSET}px))`
+                            : undefined,
+                          transitionDuration: `${SDG_TRANSITION_MS}ms`,
+                        }}
+                      >
+                        <span
+                          aria-hidden="true"
+                          className={`pointer-events-none absolute inset-0 -z-10 ${activate ? treemapTileFillInteractionClassName : ""}`}
+                          style={{
+                            backgroundColor: showSpending
+                              ? color
+                              : "transparent",
+                          }}
+                        />
+                        <div
+                          className={
+                            showSpending
+                              ? "flex p-2"
+                              : "flex flex-col gap-0.5 p-1.5 lg:flex-row lg:gap-0 lg:p-4"
+                          }
+                        >
+                          <span className="mr-2 shrink-0 text-xl leading-none font-bold lg:text-3xl">
+                            {sdgNumber > 0 ? sdgNumber : ""}
+                          </span>
+                          <div className="flex flex-col pt-0.5">
+                            <span className="text-left text-xs leading-tight font-semibold break-words lg:text-sm">
+                              {shortTitle}
+                            </span>
+                            <span
+                              className="mt-0.5 text-xs opacity-90 transition-opacity sm:text-sm"
+                              style={{
+                                opacity: showSpending ? 1 : 0,
+                                transitionDuration: "600ms",
+                              }}
+                            >
+                              {formatBudget(sdgData.total)}
+                            </span>
+                          </div>
+                        </div>
+                      </TreemapLabel>
+                      <span
+                        aria-hidden="true"
+                        className={`pointer-events-none absolute inset-0 z-[1] shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.8)] ${activate ? treemapTileBaseBorderClassName : ""}`}
+                      />
+                      {activate && <TreemapTileInteractionCue />}
+                    </div>
+                  </TooltipTrigger>
+                  <TooltipContent
+                    side="top"
+                    sideOffset={8}
+                    className="max-w-xs border border-slate-200 bg-white text-slate-800 shadow-lg sm:max-w-sm"
+                  >
+                    <FinancialTooltip
+                      title={
+                        sdgNumber <= 0
+                          ? getSDGLabel(sdgNumber)
+                          : `SDG ${sdgNumber}: ${shortTitle}`
+                      }
+                      context={
+                        sdgNumber <= 0
+                          ? SDG_EXTRA_GROUPS[sdgNumber].description
+                          : sdg?.title
+                      }
+                      total={{
+                        label: "Expenditure",
+                        value: formatBudget(sdgData.total),
+                      }}
+                      actionHint="Click to explore details"
                     />
-                    {activate && <TreemapTileInteractionCue />}
-                  </div>
-                </TooltipTrigger>
-                <TooltipContent
-                  side="top"
-                  sideOffset={8}
-                  className="max-w-xs border border-slate-200 bg-white text-slate-800 shadow-lg sm:max-w-sm"
-                >
-                  <FinancialTooltip
-                    title={
-                      sdgNumber <= 0
-                        ? getSDGLabel(sdgNumber)
-                        : `SDG ${sdgNumber}: ${shortTitle}`
-                    }
-                    context={
-                      sdgNumber <= 0
-                        ? SDG_EXTRA_GROUPS[sdgNumber].description
-                        : sdg?.title
-                    }
-                    total={{
-                      label: "Expenditure",
-                      value: formatBudget(sdgData.total),
-                    }}
-                    actionHint="Click to explore details"
-                  />
-                </TooltipContent>
-              </Tooltip>
-            );
-          })}
-        </div>
+                  </TooltipContent>
+                </Tooltip>
+              );
+            })}
+          </div>
+        )}
       </ChartFrame>
 
       {selectedSDG && (

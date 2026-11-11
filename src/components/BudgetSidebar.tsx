@@ -15,7 +15,7 @@ import {
   FinancialPanelYearSelector,
   type FinancialPanelYearSelectorProps,
 } from "@un-eosg/ui/components/financial-panel-parts";
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import type {
   BudgetFundingSource,
   BudgetData,
@@ -35,7 +35,7 @@ import {
   uniqueBudgetSources,
 } from "@/lib/budgetSourceCollection";
 import { SourceReferenceList } from "@/components/SourceReferenceList";
-import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { DetailDrawer, DrawerTitle } from "@/components/DetailDrawer";
 import { useContributorSidebarYear } from "@/hooks/useContributorSidebarYear";
 import { SidebarControls } from "@/components/SidebarControls";
 import { FiscalYearSelector } from "@/components/FiscalYearSelector";
@@ -48,7 +48,6 @@ import {
 } from "@/lib/budgetGroupings";
 import { TrustFundSidebar } from "@/components/TrustFundSidebar";
 import { ProgrammeBudgetNodeTrend } from "@/components/ProgrammeBudgetNodeTrend";
-
 
 interface BudgetSidebarProps {
   node: BudgetNode;
@@ -338,11 +337,6 @@ function BudgetDetailSidebar({
   yearSelector: FinancialPanelYearSelectorProps;
   notice?: string;
 }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const [isClosing, setIsClosing] = useState(false);
-  const [touchStart, setTouchStart] = useState<number | null>(null);
-  const [touchEnd, setTouchEnd] = useState<number | null>(null);
-  const focusTrapRef = useFocusTrap(true);
   const metricLabel =
     meta.measure === "approved"
       ? "Approved budget"
@@ -350,47 +344,6 @@ function BudgetDetailSidebar({
         ? "Proposed budget"
         : (meta.metrics?.[meta.measure as BudgetMetricKey]?.label ??
           "Expenditure");
-
-  useEffect(() => {
-    const id = requestAnimationFrame(() => setIsVisible(true));
-    return () => cancelAnimationFrame(id);
-  }, []);
-
-  const handleClose = useCallback(() => {
-    setIsClosing(true);
-    setTimeout(() => onClose(), 300);
-  }, [onClose]);
-
-  useEffect(() => {
-    const handleEscape = (e: KeyboardEvent) => {
-      if (e.key === "Escape") handleClose();
-    };
-    document.addEventListener("keydown", handleEscape);
-    return () => document.removeEventListener("keydown", handleEscape);
-  }, [handleClose]);
-
-  useEffect(() => {
-    document.documentElement.style.overflow = "hidden";
-    return () => {
-      document.documentElement.style.overflow = "";
-    };
-  }, []);
-
-  const minSwipeDistance = 50;
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-  };
-  const onTouchMove = (e: React.TouchEvent) =>
-    setTouchEnd(e.targetTouches[0].clientX);
-  const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
-    if (touchStart - touchEnd < -minSwipeDistance) handleClose();
-  };
-
-  const handleBackdropClick = (e: React.MouseEvent) => {
-    if (e.target === e.currentTarget) handleClose();
-  };
 
   const childNodes = childrenByParent[node.id] ?? [];
   let breakdownNodes = childNodes;
@@ -477,308 +430,299 @@ function BudgetDetailSidebar({
   const breakdownHeading = "Breakdown";
 
   return (
-    <div
-      className={`fixed inset-0 z-50 flex items-center justify-end bg-black/50 transition-all duration-300 ease-out ${isVisible && !isClosing ? "opacity-100" : "opacity-0"}`}
-      onClick={handleBackdropClick}
+    <DetailDrawer
+      titleId={titleId}
+      onClose={onClose}
+      swipeToClose
+      aria-busy={yearSelector.pending || undefined}
+      className="overflow-y-auto sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px]"
     >
-      <div
-        ref={focusTrapRef}
-        role="dialog"
-        aria-modal="true"
-        aria-busy={yearSelector.pending || undefined}
-        aria-labelledby={titleId}
-        className={`h-full w-full overflow-y-auto bg-white shadow-2xl transition-transform duration-300 ease-out sm:w-2/3 sm:min-w-[400px] md:w-1/2 lg:w-1/3 lg:min-w-[500px] ${isVisible && !isClosing ? "translate-x-0" : "translate-x-full"}`}
-        onTouchStart={onTouchStart}
-        onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}
-      >
-        {/* Header */}
-        <div className="sticky top-0 z-10 border-b border-gray-300 bg-white px-6 pt-4 pb-2 sm:px-8 sm:pt-6 sm:pb-3">
-          <div className="flex items-start justify-between gap-4">
-            <div className="flex-1">
-              <h2
-                id={titleId}
-                className="text-xl leading-tight font-bold text-gray-900 sm:text-2xl"
-              >
+      {/* Header */}
+      <div className="sticky top-0 z-10 border-b border-gray-300 bg-white px-6 pt-4 pb-2 sm:px-8 sm:pt-6 sm:pb-3">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex-1">
+            <h2
+              id={titleId}
+              className="text-xl leading-tight font-bold text-gray-900 sm:text-2xl"
+            >
+              <DrawerTitle>
                 {node.tier === "mission" ? (node.code ?? node.label) : heading}
-              </h2>
-              <p className="mt-1 text-sm text-gray-600">
-                {node.entity?.acronym ? `${node.entity.acronym} · ` : ""}
-                {subtitle()} · {meta.fiscalYear}
-              </p>
-            </div>
-            <div className="flex items-center gap-2">
-              {meta.stream === "pko" ? (
-                <FiscalYearSelector
-                  {...yearSelector}
-                  label="Select fiscal year"
-                  formatLabel={
-                    dataset?.startsWith("budget-audited-")
-                      ? auditedFiscalYearLabel
-                      : fiscalYearLabel
-                  }
-                />
-              ) : (
-                <FinancialPanelYearSelector {...yearSelector} variant="pill" />
-              )}
-              <SidebarControls
-                shareHash={`${hashPrefix}=${encodeURIComponent(node.id)}`}
-                onClose={handleClose}
-                closeLabel="Close sidebar"
+              </DrawerTitle>
+            </h2>
+            <p className="mt-1 text-sm text-gray-600">
+              {node.entity?.acronym ? `${node.entity.acronym} · ` : ""}
+              {subtitle()} · {meta.fiscalYear}
+            </p>
+          </div>
+          <div className="flex items-center gap-2">
+            {meta.stream === "pko" ? (
+              <FiscalYearSelector
+                {...yearSelector}
+                label="Select fiscal year"
+                formatLabel={
+                  dataset?.startsWith("budget-audited-")
+                    ? auditedFiscalYearLabel
+                    : fiscalYearLabel
+                }
               />
-            </div>
+            ) : (
+              <FinancialPanelYearSelector {...yearSelector} variant="pill" />
+            )}
+            <SidebarControls
+              shareHash={`${hashPrefix}=${encodeURIComponent(node.id)}`}
+              onClose={onClose}
+              closeLabel="Close sidebar"
+            />
           </div>
         </div>
+      </div>
 
-        {/* Content */}
-        <div className="space-y-6 px-6 pt-4 pb-6 sm:px-8 sm:pt-5 sm:pb-8">
-          {notice ? (
-            <p role="status" className="text-sm text-gray-600">
-              {notice}
-            </p>
-          ) : (
-            <>
-              {/* The sidebar always shows the full published funding-source view,
-              independently of the filters applied to the main treemap. */}
-              {(fundingEntries.length > 0 ||
-                (meta.stream === "ppb" &&
-                  dataset?.startsWith("budget-ppb-") &&
-                  (years?.length ?? 0) > 0)) && (
-                <div>
-                  <FinancialPanelHeading subheading className="mb-2">
-                    {metricLabel} by funding source
-                  </FinancialPanelHeading>
-                  <div className="space-y-2">
-                    {fundingEntries.map(([key, amount]) => {
-                      const style = FUNDING_SOURCES[key];
-                      const label =
-                        meta.fundingLabels?.[key] ?? style?.label ?? key;
-                      const references =
-                        node.metricSources?.[sourceMetric]?.[key] ??
-                        (sourceMetric === "expenditure" && node.sources?.[key]
-                          ? [node.sources[key]!]
-                          : []);
-                      const provisionalPages =
-                        node.entity?.acronym === "OCHA"
-                          ? { first: 26, last: 28 }
-                          : node.entity?.acronym === "UNDRR"
-                            ? { first: 47, last: 48 }
-                            : undefined;
-                      const provisionalSource =
-                        meta.year === 2025 &&
-                        sourceMetric === "expenditure" &&
-                        provisionalPages
-                          ? references.find(
-                              (source) =>
-                                source.symbol === "A/81/6 (Sect. 27)" &&
-                                sourcePages(source).some(
-                                  (page) =>
-                                    page >= provisionalPages.first &&
-                                    page <= provisionalPages.last,
-                                ),
-                            )
+      {/* Content */}
+      <div className="space-y-6 px-6 pt-4 pb-6 sm:px-8 sm:pt-5 sm:pb-8">
+        {notice ? (
+          <p role="status" className="text-sm text-gray-600">
+            {notice}
+          </p>
+        ) : (
+          <>
+            {/* The sidebar always shows the full published funding-source view,
+            independently of the filters applied to the main treemap. */}
+            {(fundingEntries.length > 0 ||
+              (meta.stream === "ppb" &&
+                dataset?.startsWith("budget-ppb-") &&
+                (years?.length ?? 0) > 0)) && (
+              <div>
+                <FinancialPanelHeading subheading className="mb-2">
+                  {metricLabel} by funding source
+                </FinancialPanelHeading>
+                <div className="space-y-2">
+                  {fundingEntries.map(([key, amount]) => {
+                    const style = FUNDING_SOURCES[key];
+                    const label =
+                      meta.fundingLabels?.[key] ?? style?.label ?? key;
+                    const references =
+                      node.metricSources?.[sourceMetric]?.[key] ??
+                      (sourceMetric === "expenditure" && node.sources?.[key]
+                        ? [node.sources[key]!]
+                        : []);
+                    const provisionalPages =
+                      node.entity?.acronym === "OCHA"
+                        ? { first: 26, last: 28 }
+                        : node.entity?.acronym === "UNDRR"
+                          ? { first: 47, last: 48 }
                           : undefined;
-                      const chf =
-                        key === "extrabudgetary" ? node.chf : undefined;
-                      return (
-                        <FinancialPanelBreakdownRow
-                          key={key}
-                          label={
-                            <FundingSourceLabel
-                              source={key}
-                              variant="inline"
-                              label={label}
-                              showMarker={false}
-                            />
-                          }
-                          value={
-                            <div className="text-end">
-                              <Tooltip
-                                interactive
-                                content={
-                                  chf ? (
-                                    <>
-                                      <SourceCalculation
-                                        references={references.filter(
-                                          (source) =>
-                                            source.operand?.currency !== "CHF",
-                                        )}
-                                        amount={amount - chf.usdForLayout}
-                                      />
-                                      <SourceCalculation
-                                        references={[chf.source]}
-                                        amount={chf.amount}
-                                        currency="CHF"
-                                      />
-                                    </>
-                                  ) : (
+                    const provisionalSource =
+                      meta.year === 2025 &&
+                      sourceMetric === "expenditure" &&
+                      provisionalPages
+                        ? references.find(
+                            (source) =>
+                              source.symbol === "A/81/6 (Sect. 27)" &&
+                              sourcePages(source).some(
+                                (page) =>
+                                  page >= provisionalPages.first &&
+                                  page <= provisionalPages.last,
+                              ),
+                          )
+                        : undefined;
+                    const chf = key === "extrabudgetary" ? node.chf : undefined;
+                    return (
+                      <FinancialPanelBreakdownRow
+                        key={key}
+                        label={
+                          <FundingSourceLabel
+                            source={key}
+                            variant="inline"
+                            label={label}
+                            showMarker={false}
+                          />
+                        }
+                        value={
+                          <div className="text-end">
+                            <Tooltip
+                              interactive
+                              content={
+                                chf ? (
+                                  <>
                                     <SourceCalculation
-                                      references={references}
-                                      amount={amount}
+                                      references={references.filter(
+                                        (source) =>
+                                          source.operand?.currency !== "CHF",
+                                      )}
+                                      amount={amount - chf.usdForLayout}
                                     />
-                                  )
-                                }
+                                    <SourceCalculation
+                                      references={[chf.source]}
+                                      amount={chf.amount}
+                                      currency="CHF"
+                                    />
+                                  </>
+                                ) : (
+                                  <SourceCalculation
+                                    references={references}
+                                    amount={amount}
+                                  />
+                                )
+                              }
+                            >
+                              <span
+                                tabIndex={0}
+                                className="cursor-help text-gray-900 underline decoration-dotted underline-offset-4"
                               >
-                                <span
-                                  tabIndex={0}
-                                  className="cursor-help text-gray-900 underline decoration-dotted underline-offset-4"
-                                >
-                                  {formatBudgetFunding(node, key)}
-                                </span>
-                              </Tooltip>
-                              {provisionalSource && provisionalPages && (
-                                <a
-                                  href={sourcePageUrl(
-                                    provisionalSource.url,
-                                    provisionalPages.first,
-                                  )}
-                                  target="_blank"
-                                  rel="noopener noreferrer"
-                                  className="mt-1 block text-xs font-normal text-gray-600 underline"
-                                >
-                                  The source reports this figure as provisional
-                                </a>
-                              )}
-                            </div>
-                          }
-                          color={style?.color}
-                          percent={
-                            (Math.max(0, amount) /
-                              Math.max(
-                                1,
-                                ...fundingEntries.map(([, value]) =>
-                                  Math.max(0, value),
-                                ),
-                              )) *
-                            100
-                          }
-                        />
-                      );
-                    })}
-                  </div>
-                  {BUDGET_FUNDING_SOURCES.some(
-                    (source) =>
-                      meta.fundingSources?.includes(source) &&
-                      node.values?.[source] === undefined,
-                  ) && (
-                    <p className="mt-2 text-xs text-gray-500">
-                      Some funding-source amounts are unavailable for this item;
-                      missing amounts are not zero.
-                    </p>
-                  )}
-                  {node.chf && (
-                    <p className="mt-2 text-xs text-gray-500">
-                      CHF amounts are printed in the PPB. Tile areas use the{" "}
-                      {node.chf.year} time-weighted{" "}
-                      <a
-                        className="text-un-blue underline"
-                        href={node.chf.rateSourceUrl}
-                        target="_blank"
-                        rel="noreferrer"
-                      >
-                        UN Treasury operational rates
-                      </a>{" "}
-                      for comparison on the USD scale.
-                    </p>
-                  )}
-                  <div className="mt-4">
-                    {meta.stream === "ppb" &&
-                      dataset?.startsWith("budget-ppb-") &&
-                      years &&
-                      years.length > 0 && (
-                        <ProgrammeBudgetNodeTrend
-                          node={node}
-                          dataset={dataset}
-                          years={years}
-                        />
-                      )}
-                  </div>
+                                {formatBudgetFunding(node, key)}
+                              </span>
+                            </Tooltip>
+                            {provisionalSource && provisionalPages && (
+                              <a
+                                href={sourcePageUrl(
+                                  provisionalSource.url,
+                                  provisionalPages.first,
+                                )}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="mt-1 block text-xs font-normal text-gray-600 underline"
+                              >
+                                The source reports this figure as provisional
+                              </a>
+                            )}
+                          </div>
+                        }
+                        color={style?.color}
+                        percent={
+                          (Math.max(0, amount) /
+                            Math.max(
+                              1,
+                              ...fundingEntries.map(([, value]) =>
+                                Math.max(0, value),
+                              ),
+                            )) *
+                          100
+                        }
+                      />
+                    );
+                  })}
                 </div>
-              )}
-
-              {/* Published hierarchy and funding-source details */}
-              {hasBreakdown && (
-                <div>
-                  <FinancialPanelHeading subheading className="mb-3">
-                    {breakdownHeading}
-                  </FinancialPanelHeading>
-                  {childNodes.length > 0 && (
-                    <>
-                      <div className="mt-4">
-                        <BudgetHierarchy
-                          metric={
-                            meta.measure === "approved" ||
-                            meta.measure === "proposed"
-                              ? meta.measure
-                              : "expenditure"
-                          }
-                          nodes={breakdownNodes}
-                          childrenByParent={childrenByParent}
-                        />
-                      </div>
-                      {Math.abs(childGap) > Math.abs(node.amount) * 0.001 && (
-                        <p className="mt-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-900">
-                          The published parent total is{" "}
-                          {formatBudget(node.amount)}, but the published lines
-                          below add to {formatBudget(childSum)}— a difference of{" "}
-                          {formatBudget(Math.abs(childGap))}.
-                          {dataset?.startsWith("budget-ppb")
-                            ? " Tile areas are scaled to fill the parent using the available breakdown; displayed amounts remain as published."
-                            : " The parent total remains authoritative; this breakdown is flagged and is not used to size the main treemap."}
-                        </p>
-                      )}
-                    </>
-                  )}
-                </div>
-              )}
-
-              {/* Keep only references that take the reader to a concrete source. */}
-              {(sourceReferences.length > 0 || meta.documentUrl) && (
-                <details key={node.id} className="group/sources">
-                  <summary className="flex w-fit cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden">
-                    <FinancialPanelHeading subheading>
-                      Source references
-                    </FinancialPanelHeading>
-                    <ChevronRight
-                      aria-hidden="true"
-                      className="size-3 transition-transform group-open/sources:rotate-90"
-                    />
-                  </summary>
-                  <div className="mt-3 space-y-3">
-                    {sourceReferences.length > 0 && (
-                      <>
-                        <p className="text-sm text-gray-600">
-                          {hasBreakdown
-                            ? "References support this total and its breakdown."
-                            : "References support the funding-source figures above."}{" "}
-                          A calculated figure may combine several published
-                          rows; repeated citations are shown once per budget
-                          item.
-                        </p>
-                        <SourceReferenceList references={sourceReferences} />
-                      </>
-                    )}
-                    {sourceReferences.length === 0 && meta.documentUrl && (
-                      <SourceReferenceList
-                        references={[
-                          {
-                            symbol: meta.documentSymbol ?? "Source document",
-                            url: meta.documentUrl,
-                            budgetItem: node.label,
-                            label: metricLabel,
-                            rowLabel: "",
-                            columnHeader: meta.fiscalYear,
-                          },
-                        ]}
+                {BUDGET_FUNDING_SOURCES.some(
+                  (source) =>
+                    meta.fundingSources?.includes(source) &&
+                    node.values?.[source] === undefined,
+                ) && (
+                  <p className="mt-2 text-xs text-gray-500">
+                    Some funding-source amounts are unavailable for this item;
+                    missing amounts are not zero.
+                  </p>
+                )}
+                {node.chf && (
+                  <p className="mt-2 text-xs text-gray-500">
+                    CHF amounts are printed in the PPB. Tile areas use the{" "}
+                    {node.chf.year} time-weighted{" "}
+                    <a
+                      className="text-un-blue underline"
+                      href={node.chf.rateSourceUrl}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      UN Treasury operational rates
+                    </a>{" "}
+                    for comparison on the USD scale.
+                  </p>
+                )}
+                <div className="mt-4">
+                  {meta.stream === "ppb" &&
+                    dataset?.startsWith("budget-ppb-") &&
+                    years &&
+                    years.length > 0 && (
+                      <ProgrammeBudgetNodeTrend
+                        node={node}
+                        dataset={dataset}
+                        years={years}
                       />
                     )}
-                  </div>
-                </details>
-              )}
-            </>
-          )}
-        </div>
+                </div>
+              </div>
+            )}
+
+            {/* Published hierarchy and funding-source details */}
+            {hasBreakdown && (
+              <div>
+                <FinancialPanelHeading subheading className="mb-3">
+                  {breakdownHeading}
+                </FinancialPanelHeading>
+                {childNodes.length > 0 && (
+                  <>
+                    <div className="mt-4">
+                      <BudgetHierarchy
+                        metric={
+                          meta.measure === "approved" ||
+                          meta.measure === "proposed"
+                            ? meta.measure
+                            : "expenditure"
+                        }
+                        nodes={breakdownNodes}
+                        childrenByParent={childrenByParent}
+                      />
+                    </div>
+                    {Math.abs(childGap) > Math.abs(node.amount) * 0.001 && (
+                      <p className="mt-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs leading-relaxed text-amber-900">
+                        The published parent total is{" "}
+                        {formatBudget(node.amount)}, but the published lines
+                        below add to {formatBudget(childSum)}— a difference of{" "}
+                        {formatBudget(Math.abs(childGap))}.
+                        {dataset?.startsWith("budget-ppb")
+                          ? " Tile areas are scaled to fill the parent using the available breakdown; displayed amounts remain as published."
+                          : " The parent total remains authoritative; this breakdown is flagged and is not used to size the main treemap."}
+                      </p>
+                    )}
+                  </>
+                )}
+              </div>
+            )}
+
+            {/* Keep only references that take the reader to a concrete source. */}
+            {(sourceReferences.length > 0 || meta.documentUrl) && (
+              <details key={node.id} className="group/sources">
+                <summary className="flex w-fit cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden">
+                  <FinancialPanelHeading subheading>
+                    Source references
+                  </FinancialPanelHeading>
+                  <ChevronRight
+                    aria-hidden="true"
+                    className="size-3 transition-transform group-open/sources:rotate-90"
+                  />
+                </summary>
+                <div className="mt-3 space-y-3">
+                  {sourceReferences.length > 0 && (
+                    <>
+                      <p className="text-sm text-gray-600">
+                        {hasBreakdown
+                          ? "References support this total and its breakdown."
+                          : "References support the funding-source figures above."}{" "}
+                        A calculated figure may combine several published rows;
+                        repeated citations are shown once per budget item.
+                      </p>
+                      <SourceReferenceList references={sourceReferences} />
+                    </>
+                  )}
+                  {sourceReferences.length === 0 && meta.documentUrl && (
+                    <SourceReferenceList
+                      references={[
+                        {
+                          symbol: meta.documentSymbol ?? "Source document",
+                          url: meta.documentUrl,
+                          budgetItem: node.label,
+                          label: metricLabel,
+                          rowLabel: "",
+                          columnHeader: meta.fiscalYear,
+                        },
+                      ]}
+                    />
+                  )}
+                </div>
+              </details>
+            )}
+          </>
+        )}
       </div>
-    </div>
+    </DetailDrawer>
   );
 }

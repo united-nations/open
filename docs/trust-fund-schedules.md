@@ -193,8 +193,8 @@ The entity view uses current-period `Total expenses` for **every fund in the
 source schedule**, including funds with no approved crosswalk or no crosswalk
 row at all. Missing mappings use the stable pseudo-entity
 `trust-fund-entity:UNMAPPED`, labelled **Unmapped Trust Funds**. This is not a UN
-entity. Signed and zero expenses remain in the data; zero/negative funds appear
-in a clickable list below the treemap rather than receiving artificial area.
+entity. Signed and zero expenses remain in the data. The List view includes
+funds with zero or negative expenditure.
 Totals include all signed source amounts. Positive tile totals can therefore
 differ from the signed schedule total. RB and OA are unavailable for this source.
 
@@ -206,17 +206,16 @@ treemap packs small categories into a shared bottom block.
 identities, descriptions, amounts and source references under both lenses.
 Groups are independent of PPB parts and entity ownership: entities can span
 headings, and a fund can change headings across years (SIM moves from group 4
-to group 2 in 2020). Unmapped entities retain their reported schedule group;
-zero/negative funds remain accessible below the chart. Schedule 8.1 supplies the
-eighth group, including all named UN-controlled MPTF accounts
-printed in that year's matrix. This does not represent the entire UNDP MPTF
-portfolio.
+to group 2 in 2020). Unmapped entities retain their reported schedule group.
+Schedule 8.1 supplies the eighth group, including all named UN-controlled MPTF
+accounts printed in that year's matrix. This does not represent the entire UNDP
+MPTF portfolio.
 
 The matrix extractor reads each statement's headers independently, including
 rotated pages and changed comparative column orders. Across 2017–2025 it exports
 44 current-year account records. Current expense columns reconcile exactly to
 each printed total. The 2025 signed total is $152,450,936 across six accounts.
-Negative adjustments remain in the total and the nonpositive fund list.
+Negative adjustments remain in the total and are visible in List.
 An absent annual column does not create a zero observation. Printed
 blanks remain unknown, including Peacebuilding's 2019 other-liabilities cell;
 the 2023 publication's 2022 comparative revenue discrepancies are retained in

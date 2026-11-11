@@ -74,6 +74,7 @@ jobs:
           python3 -m http.server 8766 --bind 127.0.0.1 --directory out > /tmp/portal-http.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
+          node tests/browser/mobile-friendliness.mjs
           node tests/browser/feature-profiles.mjs
           node tests/browser/system-functions.mjs
           node tests/browser/function-geography.mjs

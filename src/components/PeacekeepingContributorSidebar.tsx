@@ -3,7 +3,7 @@ import { SourceCalculation } from "@/components/SourceCalculation";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
 import { ChevronRight, ExternalLink } from "lucide-react";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useMemo } from "react";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
 import {
   FinancialPanelSection,
@@ -17,7 +17,7 @@ import { peacekeepingContributorSources } from "@/lib/peacekeepingSources";
 import { SidebarControls } from "@/components/SidebarControls";
 import { FiscalYearSelector } from "@/components/FiscalYearSelector";
 import { useContributorSidebarYear } from "@/hooks/useContributorSidebarYear";
-import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { DetailDrawer, DrawerTitle } from "@/components/DetailDrawer";
 import type {
   PeacekeepingContributor,
   PeacekeepingContributorsData,
@@ -51,33 +51,6 @@ export function PeacekeepingContributorSidebar({
     ? initialMeta
     : (selection.data?.meta ?? initialMeta);
   const ready = !selection.loading && !selection.error && !!currentContributor;
-  const [visible, setVisible] = useState(false);
-  const [closing, setClosing] = useState(false);
-  const focusTrapRef = useFocusTrap(true);
-  const close = useCallback(() => {
-    setClosing(true);
-    setTimeout(onClose, 300);
-  }, [onClose]);
-
-  useEffect(() => {
-    const id = requestAnimationFrame(() => setVisible(true));
-    return () => cancelAnimationFrame(id);
-  }, []);
-  useEffect(() => {
-    const escape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") close();
-    };
-    document.addEventListener("keydown", escape);
-    const previousOverflow = document.documentElement.style.overflow;
-    const previousGutter = document.documentElement.style.scrollbarGutter;
-    document.documentElement.style.overflow = "hidden";
-    document.documentElement.style.scrollbarGutter = "auto";
-    return () => {
-      document.removeEventListener("keydown", escape);
-      document.documentElement.style.overflow = previousOverflow;
-      document.documentElement.style.scrollbarGutter = previousGutter;
-    };
-  }, [close]);
 
   const missions = useMemo(
     () =>
@@ -113,280 +86,271 @@ export function PeacekeepingContributorSidebar({
   );
 
   return (
-    <div
-      className={`fixed inset-0 z-50 flex justify-end bg-black/50 transition-opacity duration-300 ${visible && !closing ? "opacity-100" : "opacity-0"}`}
-      onClick={(event) => event.target === event.currentTarget && close()}
+    <DetailDrawer
+      titleId="peacekeeping-contributor-title"
+      onClose={onClose}
+      className="sm:w-[32rem]"
     >
-      <aside
-        ref={focusTrapRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="peacekeeping-contributor-title"
-        className={`h-full w-full bg-white shadow-2xl transition-transform duration-300 sm:w-[32rem] ${visible && !closing ? "translate-x-0" : "translate-x-full"}`}
-      >
-        <FinancialDetailPanel
-          title={contributor.name}
-          titleId="peacekeeping-contributor-title"
-          subtitle={`Peacekeeping assessments · ${selection.year}/${String(selection.year + 1).slice(-2)}`}
-          busy={selection.loading}
-          notice={
-            !ready
-              ? {
-                  tone: selection.error ? "error" : "empty",
-                  description:
-                    selection.error ??
-                    (selection.loading
-                      ? "Loading contributor details…"
-                      : "No contributor data is published for this year."),
-                }
-              : undefined
-          }
-          controls={
-            <>
-              <FiscalYearSelector
-                years={years}
-                selected={selection.year}
-                onChange={selection.setYear}
-                label="Select assessment cycle"
-                pending={selection.loading}
-                pendingLabel="Loading…"
-              />
-              <SidebarControls
-                shareHash={`peacekeeping-contributor=${encodeURIComponent(contributor.name)}`}
-                onClose={close}
-                closeLabel="Close sidebar"
-              />
-            </>
-          }
-          total={
-            ready
-              ? {
-                  label: "Net assessed amount",
-                  value: (
-                    <Tooltip
-                      interactive
-                      width={380}
-                      content={
-                        <div className="space-y-2">
-                          <p>
-                            Calculated across missions: assessment sections are
-                            added and credit sections subtracted. The linked
-                            pages show the component amounts, rather than this
-                            combined total.
-                          </p>
-                          <SourceCalculation
-                            references={references}
-                            amount={contributor.net_assessment}
-                          />
-                        </div>
-                      }
-                    >
-                      <span tabIndex={0}>
-                        {currency(contributor.net_assessment)}
-                      </span>
-                    </Tooltip>
-                  ),
-                }
-              : undefined
-          }
-          className="bg-white sm:w-full"
-        >
-          {ready && (
-            <>
-              <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
-                <dt className="text-gray-600">Gross assessment</dt>
-                <dd className="text-right text-gray-900">
+      <FinancialDetailPanel
+        title={<DrawerTitle>{contributor.name}</DrawerTitle>}
+        titleId="peacekeeping-contributor-title"
+        subtitle={`Peacekeeping assessments · ${selection.year}/${String(selection.year + 1).slice(-2)}`}
+        busy={selection.loading}
+        notice={
+          !ready
+            ? {
+                tone: selection.error ? "error" : "empty",
+                description:
+                  selection.error ??
+                  (selection.loading
+                    ? "Loading contributor details…"
+                    : "No contributor data is published for this year."),
+              }
+            : undefined
+        }
+        controls={
+          <>
+            <FiscalYearSelector
+              years={years}
+              selected={selection.year}
+              onChange={selection.setYear}
+              label="Select assessment cycle"
+              pending={selection.loading}
+              pendingLabel="Loading…"
+            />
+            <SidebarControls
+              shareHash={`peacekeeping-contributor=${encodeURIComponent(contributor.name)}`}
+              onClose={onClose}
+              closeLabel="Close sidebar"
+            />
+          </>
+        }
+        total={
+          ready
+            ? {
+                label: "Net assessed amount",
+                value: (
                   <Tooltip
                     interactive
                     width={380}
                     content={
                       <div className="space-y-2">
                         <p>
-                          Calculated from gross assessment sections, less gross
-                          credit sections, across the missions shown below.
+                          Calculated across missions: assessment sections are
+                          added and credit sections subtracted. The linked pages
+                          show the component amounts, rather than this combined
+                          total.
                         </p>
-                        <SourceCalculation
-                          references={grossReferences}
-                          amount={contributor.gross_assessment}
-                        />
-                      </div>
-                    }
-                  >
-                    <span tabIndex={0}>
-                      {currency(contributor.gross_assessment)}
-                    </span>
-                  </Tooltip>
-                </dd>
-                <dt className="text-gray-600">Tax equalization adjustment</dt>
-                <dd className="text-right text-gray-900">
-                  <Tooltip
-                    interactive
-                    width={380}
-                    content={
-                      <div className="space-y-2">
-                        <p>
-                          Calculated as net assessed amount minus gross
-                          assessment. The linked rows show the gross and net
-                          amounts used in the calculation.
-                        </p>
-                        <p>Net assessed amount</p>
                         <SourceCalculation
                           references={references}
                           amount={contributor.net_assessment}
                         />
-                        <p>Less gross assessment</p>
-                        <SourceCalculation
-                          references={grossReferences}
-                          amount={contributor.gross_assessment}
-                        />
                       </div>
                     }
                   >
                     <span tabIndex={0}>
-                      {currency(contributor.tax_equalization_adjustment)}
+                      {currency(contributor.net_assessment)}
                     </span>
                   </Tooltip>
-                </dd>
-              </dl>
-
-              <FinancialPanelSection heading="Mission assessments">
-                <div className="space-y-3">
-                  {missions.map((mission) => (
-                    <Tooltip
-                      interactive
-                      key={mission.code}
-                      width={380}
-                      content={
-                        <div className="space-y-2">
-                          <p className="font-medium">{mission.name}</p>
-                          <p>
-                            Net assessment: {currency(mission.net_assessment)}
-                          </p>
-                          <p>
-                            Gross assessment:{" "}
-                            {currency(mission.gross_assessment)}
-                          </p>
-                          <p>
-                            Calculated for the cycle by adding assessment
-                            sections and subtracting credits. The linked pages
-                            show the component amounts.
-                          </p>
-                          <SourceCalculation
-                            amount={mission.net_assessment}
-                            references={peacekeepingContributorSources(
-                              [mission],
-                              meta,
-                              contributor.name,
-                            )}
-                          />
-                          <SourceCalculation
-                            amount={mission.gross_assessment}
-                            references={peacekeepingContributorSources(
-                              [mission],
-                              meta,
-                              contributor.name,
-                              "gross",
-                            )}
-                          />
-                        </div>
-                      }
-                    >
-                      <div
-                        tabIndex={0}
-                        className="rounded-sm focus-visible:outline-2 focus-visible:outline-un-blue"
-                      >
-                        <FinancialPanelRankedRow
-                          label={mission.code}
-                          value={currency(mission.net_assessment)}
-                        >
-                          <FinancialPanelBar
-                            percent={
-                              largestMission > 0
-                                ? (mission.net_assessment / largestMission) *
-                                  100
-                                : 0
-                            }
-                            color="var(--color-un-blue)"
-                          />
-                        </FinancialPanelRankedRow>
-                      </div>
-                    </Tooltip>
-                  ))}
-                </div>
-              </FinancialPanelSection>
-
-              <details
-                key={`${contributor.name}-${meta.fiscal_year}`}
-                className="group/sources mt-4"
-              >
-                <summary className="flex w-fit cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden">
-                  <FinancialPanelHeading subheading>
-                    Source references
-                  </FinancialPanelHeading>
-                  <ChevronRight
-                    aria-hidden="true"
-                    className="size-3 transition-transform group-open/sources:rotate-90"
-                  />
-                </summary>
-                <div className="mt-3 space-y-3">
-                  <p className="text-sm text-gray-700">
-                    Assessment sections are added and credit sections are
-                    subtracted. These are amounts assessed for the cycle, not
-                    amounts paid or outstanding.
-                  </p>
-                  <p className="text-sm text-gray-600">
-                    Row references open the page containing this Member State.
-                    Section references locate the table when a row is absent or
-                    unavailable. Some credit tables omit Member States with no
-                    credit. Cycle totals combine the linked sections and may not
-                    be printed in any single source.
-                  </p>
-                  <SourceReferenceList references={references} />
-                  {(rateExceptions.length > 0 || derivedRows.length > 0) && (
-                    <div className="border-l-4 border-amber-500 bg-amber-50 p-4 text-sm text-amber-950">
-                      <p className="font-semibold">Source-data exception</p>
-                      {rateExceptions.map((exception) => (
-                        <p
-                          key={`${exception.symbol}-${exception.section}`}
-                          className="mt-1"
-                        >
-                          {exception.symbol}, section {exception.section},
-                          prints a peacekeeping rate of{" "}
-                          {exception.printed_peacekeeping_rate}
-                          %; the dollar amount implies{" "}
-                          {exception.implied_rate_from_gross_amount}%. The
-                          printed dollar amount is used.
-                        </p>
-                      ))}
-                      {derivedRows.map((exception) => (
-                        <p
-                          key={`${exception.symbol}-${exception.section}`}
-                          className="mt-1"
-                        >
-                          {exception.symbol}, section {exception.section}, omits
-                          this Member State row. Its{" "}
-                          {currency(exception.row.net)} net amount is the
-                          residual required to match the printed section total.
-                        </p>
-                      ))}
+                ),
+              }
+            : undefined
+        }
+        className="bg-white sm:w-full"
+      >
+        {ready && (
+          <>
+            <dl className="mt-3 grid grid-cols-2 gap-x-4 gap-y-1 text-sm">
+              <dt className="text-gray-600">Gross assessment</dt>
+              <dd className="text-right text-gray-900">
+                <Tooltip
+                  interactive
+                  width={380}
+                  content={
+                    <div className="space-y-2">
+                      <p>
+                        Calculated from gross assessment sections, less gross
+                        credit sections, across the missions shown below.
+                      </p>
+                      <SourceCalculation
+                        references={grossReferences}
+                        amount={contributor.gross_assessment}
+                      />
                     </div>
-                  )}
+                  }
+                >
+                  <span tabIndex={0}>
+                    {currency(contributor.gross_assessment)}
+                  </span>
+                </Tooltip>
+              </dd>
+              <dt className="text-gray-600">Tax equalization adjustment</dt>
+              <dd className="text-right text-gray-900">
+                <Tooltip
+                  interactive
+                  width={380}
+                  content={
+                    <div className="space-y-2">
+                      <p>
+                        Calculated as net assessed amount minus gross
+                        assessment. The linked rows show the gross and net
+                        amounts used in the calculation.
+                      </p>
+                      <p>Net assessed amount</p>
+                      <SourceCalculation
+                        references={references}
+                        amount={contributor.net_assessment}
+                      />
+                      <p>Less gross assessment</p>
+                      <SourceCalculation
+                        references={grossReferences}
+                        amount={contributor.gross_assessment}
+                      />
+                    </div>
+                  }
+                >
+                  <span tabIndex={0}>
+                    {currency(contributor.tax_equalization_adjustment)}
+                  </span>
+                </Tooltip>
+              </dd>
+            </dl>
 
-                  <a
-                    href={meta.source_page}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="mt-2 inline-flex items-center gap-1.5 text-sm text-un-blue hover:underline"
+            <FinancialPanelSection heading="Mission assessments">
+              <div className="space-y-3">
+                {missions.map((mission) => (
+                  <Tooltip
+                    interactive
+                    key={mission.code}
+                    width={380}
+                    content={
+                      <div className="space-y-2">
+                        <p className="font-medium">{mission.name}</p>
+                        <p>
+                          Net assessment: {currency(mission.net_assessment)}
+                        </p>
+                        <p>
+                          Gross assessment: {currency(mission.gross_assessment)}
+                        </p>
+                        <p>
+                          Calculated for the cycle by adding assessment sections
+                          and subtracting credits. The linked pages show the
+                          component amounts.
+                        </p>
+                        <SourceCalculation
+                          amount={mission.net_assessment}
+                          references={peacekeepingContributorSources(
+                            [mission],
+                            meta,
+                            contributor.name,
+                          )}
+                        />
+                        <SourceCalculation
+                          amount={mission.gross_assessment}
+                          references={peacekeepingContributorSources(
+                            [mission],
+                            meta,
+                            contributor.name,
+                            "gross",
+                          )}
+                        />
+                      </div>
+                    }
                   >
-                    Committee on Contributions source index
-                    <ExternalLink className="h-3.5 w-3.5" />
-                  </a>
-                </div>
-              </details>
-            </>
-          )}
-        </FinancialDetailPanel>
-      </aside>
-    </div>
+                    <div
+                      tabIndex={0}
+                      className="rounded-sm focus-visible:outline-2 focus-visible:outline-un-blue"
+                    >
+                      <FinancialPanelRankedRow
+                        label={mission.code}
+                        value={currency(mission.net_assessment)}
+                      >
+                        <FinancialPanelBar
+                          percent={
+                            largestMission > 0
+                              ? (mission.net_assessment / largestMission) * 100
+                              : 0
+                          }
+                          color="var(--color-un-blue)"
+                        />
+                      </FinancialPanelRankedRow>
+                    </div>
+                  </Tooltip>
+                ))}
+              </div>
+            </FinancialPanelSection>
+
+            <details
+              key={`${contributor.name}-${meta.fiscal_year}`}
+              className="group/sources mt-4"
+            >
+              <summary className="flex w-fit cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden">
+                <FinancialPanelHeading subheading>
+                  Source references
+                </FinancialPanelHeading>
+                <ChevronRight
+                  aria-hidden="true"
+                  className="size-3 transition-transform group-open/sources:rotate-90"
+                />
+              </summary>
+              <div className="mt-3 space-y-3">
+                <p className="text-sm text-gray-700">
+                  Assessment sections are added and credit sections are
+                  subtracted. These are amounts assessed for the cycle, not
+                  amounts paid or outstanding.
+                </p>
+                <p className="text-sm text-gray-600">
+                  Row references open the page containing this Member State.
+                  Section references locate the table when a row is absent or
+                  unavailable. Some credit tables omit Member States with no
+                  credit. Cycle totals combine the linked sections and may not
+                  be printed in any single source.
+                </p>
+                <SourceReferenceList references={references} />
+                {(rateExceptions.length > 0 || derivedRows.length > 0) && (
+                  <div className="border-l-4 border-amber-500 bg-amber-50 p-4 text-sm text-amber-950">
+                    <p className="font-semibold">Source-data exception</p>
+                    {rateExceptions.map((exception) => (
+                      <p
+                        key={`${exception.symbol}-${exception.section}`}
+                        className="mt-1"
+                      >
+                        {exception.symbol}, section {exception.section}, prints
+                        a peacekeeping rate of{" "}
+                        {exception.printed_peacekeeping_rate}
+                        %; the dollar amount implies{" "}
+                        {exception.implied_rate_from_gross_amount}%. The printed
+                        dollar amount is used.
+                      </p>
+                    ))}
+                    {derivedRows.map((exception) => (
+                      <p
+                        key={`${exception.symbol}-${exception.section}`}
+                        className="mt-1"
+                      >
+                        {exception.symbol}, section {exception.section}, omits
+                        this Member State row. Its {currency(exception.row.net)}{" "}
+                        net amount is the residual required to match the printed
+                        section total.
+                      </p>
+                    ))}
+                  </div>
+                )}
+
+                <a
+                  href={meta.source_page}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-2 inline-flex items-center gap-1.5 text-sm text-un-blue hover:underline"
+                >
+                  Committee on Contributions source index
+                  <ExternalLink className="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </details>
+          </>
+        )}
+      </FinancialDetailPanel>
+    </DetailDrawer>
   );
 }

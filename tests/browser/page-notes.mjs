@@ -69,23 +69,12 @@ try {
       route,
     );
     if (route === "/secretariat/trust-funds/") {
-      const funds = page.locator(
-        'details[aria-label="Funds with zero or negative expenditure"]',
-      );
-      assert.equal(await funds.count(), 1);
       assert.equal(
-        await funds.evaluate((node) =>
-          Boolean(node.parentElement.closest("details")),
-        ),
-        false,
+        await page
+          .getByText("Funds with zero or negative expenditure", { exact: true })
+          .count(),
+        0,
       );
-      await funds.locator("summary").click();
-      await funds.getByRole("button").first().click();
-      await page.getByRole("dialog").waitFor();
-      await page
-        .getByRole("button", { name: "Close fund details", exact: true })
-        .click();
-      await page.getByRole("dialog").waitFor({ state: "hidden" });
     }
     if (
       route === "/secretariat/peacekeeping-budget/" ||
@@ -109,13 +98,7 @@ try {
           await notes.innerText(),
           /envoy for Syria works from Geneva/,
         );
-      const map = page
-        .locator(
-          route.includes("peacekeeping-budget")
-            ? ".pko-dot-map"
-            : ".relative.border.border-gray-200.bg-white",
-        )
-        .first();
+      const map = page.locator("[data-financial-map]").first();
       const mapBounds = await map.boundingBox();
       const notesBounds = await notes.boundingBox();
       assert.ok(

@@ -15,7 +15,7 @@ import { RegularBudgetOutstandingSidebarHistory } from "@/components/RegularBudg
 import { FinancingInstrumentChart } from "@/components/charts/FinancingInstrumentChart";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { Tooltip } from "@un-eosg/ui/components/tooltip";
-import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { DetailDrawer, DrawerTitle } from "@/components/DetailDrawer";
 import { loadYearData } from "@/lib/data";
 import { useYearRanges } from "@/lib/useYearRanges";
 import type { RegularBudgetContributorsData } from "@/types";
@@ -51,7 +51,6 @@ export function RegularBudgetContributorSidebar({
     Record<number, RegularBudgetContributorsData | null>
   >({ [initialData.meta.year]: initialData });
   const [loading, setLoading] = useState(true);
-  const focusTrapRef = useFocusTrap(true);
   const yearKey = years.join(",");
   useEffect(() => {
     let active = true;
@@ -84,22 +83,6 @@ export function RegularBudgetContributorSidebar({
       active = false;
     };
   }, [yearKey]);
-  useEffect(() => {
-    const root = document.documentElement;
-    const overflow = root.style.overflow;
-    const gutter = root.style.scrollbarGutter;
-    root.style.overflow = "hidden";
-    root.style.scrollbarGutter = "auto";
-    const escape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", escape);
-    return () => {
-      root.style.overflow = overflow;
-      root.style.scrollbarGutter = gutter;
-      document.removeEventListener("keydown", escape);
-    };
-  }, [onClose]);
   const file = files[year];
   const member = file?.contributors.find((item) => item.name === name);
   const history = [...years]
@@ -119,94 +102,34 @@ export function RegularBudgetContributorSidebar({
     ? REGULAR_BUDGET_STATUS_STYLES[member.payment_status]
     : null;
   return (
-    <div
-      className="fixed inset-0 z-50 flex justify-end bg-black/50"
-      onMouseDown={(event) => {
-        if (event.target === event.currentTarget) onClose();
-      }}
+    <DetailDrawer
+      titleId="regular-budget-contributor-title"
+      onClose={onClose}
+      className="sm:w-[32rem]"
     >
-      <aside
-        ref={focusTrapRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="regular-budget-contributor-title"
-        className="h-full w-full bg-white shadow-2xl sm:w-[32rem]"
-      >
-        <FinancialDetailPanel
-          title={name}
-          titleId="regular-budget-contributor-title"
-          subtitle="Regular budget assessed contributions"
-          controls={
-            <SidebarControls
-              shareHash={`regular-budget-contributor=${encodeURIComponent(name)}`}
-              onClose={onClose}
-              closeLabel="Close contributor details"
-            />
-          }
-          yearSelectorPlacement="header"
-          yearSelector={{
-            years: availableYears,
-            selected: year,
-            label: "Select year",
-            onChange: setYear,
-          }}
-          total={
-            member && file
-              ? {
-                  label: "Assessed contributions",
-                  value: (
-                    <Tooltip
-                      interactive
-                      width={380}
-                      content={
-                        <SourceReferenceLinks
-                          references={regularBudgetAssessmentSources(
-                            member,
-                            file,
-                          )}
-                        />
-                      }
-                    >
-                      <span
-                        tabIndex={0}
-                        className="cursor-help underline decoration-dotted underline-offset-4"
-                      >
-                        {formatAssessmentCurrency(member.assessment_amount)}
-                      </span>
-                    </Tooltip>
-                  ),
-                }
-              : undefined
-          }
-          className="bg-white sm:w-full"
-        >
-          {!member && !loading && (
-            <p className="mt-3 text-sm text-gray-600">
-              Assessment and honour-roll status unavailable for {year}.
-            </p>
-          )}
-          {member && file && status && (
-            <>
-              {file.meta.amount_reconciliation.discrepancies
-                .filter((item) => item.name === member.name)
-                .map((item) => (
-                  <p
-                    key={item.name}
-                    className="mt-3 text-sm text-gray-500"
-                    data-assessment-discrepancy
-                  >
-                    The assessment circular reports{" "}
-                    {discrepancyCurrency.format(
-                      item.assessment_document_amount,
-                    )}
-                    ; the honour roll reports{" "}
-                    {discrepancyCurrency.format(item.honour_roll_amount)}. This
-                    view uses the assessment circular amount.
-                  </p>
-                ))}
-              <dl className="mt-3 grid grid-cols-[1fr_auto] gap-2 text-sm">
-                <dt>Assessment rate</dt>
-                <dd className="text-end">
+      <FinancialDetailPanel
+        title={<DrawerTitle>{name}</DrawerTitle>}
+        titleId="regular-budget-contributor-title"
+        subtitle="Regular budget assessed contributions"
+        controls={
+          <SidebarControls
+            shareHash={`regular-budget-contributor=${encodeURIComponent(name)}`}
+            onClose={onClose}
+            closeLabel="Close contributor details"
+          />
+        }
+        yearSelectorPlacement="header"
+        yearSelector={{
+          years: availableYears,
+          selected: year,
+          label: "Select year",
+          onChange: setYear,
+        }}
+        total={
+          member && file
+            ? {
+                label: "Assessed contributions",
+                value: (
                   <Tooltip
                     interactive
                     width={380}
@@ -223,190 +146,235 @@ export function RegularBudgetContributorSidebar({
                       tabIndex={0}
                       className="cursor-help underline decoration-dotted underline-offset-4"
                     >
-                      {formatAssessmentRate(member.assessment_rate)}
+                      {formatAssessmentCurrency(member.assessment_amount)}
                     </span>
                   </Tooltip>
-                </dd>
-                <dt>Payment status</dt>
+                ),
+              }
+            : undefined
+        }
+        className="bg-white sm:w-full"
+      >
+        {!member && !loading && (
+          <p className="mt-3 text-sm text-gray-600">
+            Assessment and honour-roll status unavailable for {year}.
+          </p>
+        )}
+        {member && file && status && (
+          <>
+            {file.meta.amount_reconciliation.discrepancies
+              .filter((item) => item.name === member.name)
+              .map((item) => (
+                <p
+                  key={item.name}
+                  className="mt-3 text-sm text-gray-500"
+                  data-assessment-discrepancy
+                >
+                  The assessment circular reports{" "}
+                  {discrepancyCurrency.format(item.assessment_document_amount)};
+                  the honour roll reports{" "}
+                  {discrepancyCurrency.format(item.honour_roll_amount)}. This
+                  view uses the assessment circular amount.
+                </p>
+              ))}
+            <dl className="mt-3 grid grid-cols-[1fr_auto] gap-2 text-sm">
+              <dt>Assessment rate</dt>
+              <dd className="text-end">
+                <Tooltip
+                  interactive
+                  width={380}
+                  content={
+                    <SourceReferenceLinks
+                      references={regularBudgetAssessmentSources(member, file)}
+                    />
+                  }
+                >
+                  <span
+                    tabIndex={0}
+                    className="cursor-help underline decoration-dotted underline-offset-4"
+                  >
+                    {formatAssessmentRate(member.assessment_rate)}
+                  </span>
+                </Tooltip>
+              </dd>
+              <dt>Payment status</dt>
+              <dd className="text-end">
+                <LegendLabel label={status.label} color={status.color} />
+              </dd>
+              <dt>Status as of</dt>
+              <dd className="text-end">
+                {formatAssessmentDate(file.meta.as_of)}
+              </dd>
+            </dl>
+            <FinancialPanelSection heading="Payment timing">
+              <dl className="grid grid-cols-[1fr_auto] gap-2 text-sm">
+                <dt>Payment deadline</dt>
                 <dd className="text-end">
-                  <LegendLabel label={status.label} color={status.color} />
+                  {formatAssessmentDate(file.meta.due_date)}
                 </dd>
-                <dt>Status as of</dt>
+                <dt>Paid in full</dt>
                 <dd className="text-end">
-                  {formatAssessmentDate(file.meta.as_of)}
+                  {member.payment_date
+                    ? formatAssessmentDate(member.payment_date)
+                    : "Not listed"}
                 </dd>
               </dl>
-              <FinancialPanelSection heading="Payment timing">
-                <dl className="grid grid-cols-[1fr_auto] gap-2 text-sm">
-                  <dt>Payment deadline</dt>
-                  <dd className="text-end">
-                    {formatAssessmentDate(file.meta.due_date)}
-                  </dd>
-                  <dt>Paid in full</dt>
-                  <dd className="text-end">
-                    {member.payment_date
-                      ? formatAssessmentDate(member.payment_date)
-                      : "Not listed"}
-                  </dd>
-                </dl>
+              <p className="mt-2 text-sm text-gray-500">
+                The honour roll records full settlement, not individual partial
+                payments.
+                {SHOW_REGULAR_BUDGET_OUTSTANDING &&
+                  " Outstanding balances below show the amount still owed at a separate autumn reporting date."}
+              </p>
+            </FinancialPanelSection>
+          </>
+        )}
+        {SHOW_REGULAR_BUDGET_OUTSTANDING && (
+          <RegularBudgetOutstandingSidebarHistory
+            name={name}
+            year={year}
+            assessments={files}
+          />
+        )}
+        <FinancialPanelSection heading="Assessment history">
+          {loading ? (
+            <p role="status" className="text-sm text-gray-500">
+              Loading assessment history…
+            </p>
+          ) : (
+            <>
+              <FinancingInstrumentChart
+                compact
+                showLegend={false}
+                data={history.map((item) => ({
+                  year: String(item.year),
+                  ...(item.member
+                    ? { assessed: item.member.assessment_amount }
+                    : {}),
+                }))}
+                series={[
+                  {
+                    key: "assessed",
+                    label: "Assessed contributions",
+                    color: "var(--color-un-blue)",
+                  },
+                ]}
+                tooltipValueFormatter={formatAssessmentCurrency}
+                tooltipSources={(value) => {
+                  const item = history.find(
+                    (row) => row.year === Number(value),
+                  );
+                  return item?.member && item.file
+                    ? regularBudgetAssessmentSources(item.member, item.file)
+                    : [];
+                }}
+              />
+              {history.some((item) => !item.member) && (
                 <p className="mt-2 text-sm text-gray-500">
-                  The honour roll records full settlement, not individual
-                  partial payments.
-                  {SHOW_REGULAR_BUDGET_OUTSTANDING &&
-                    " Outstanding balances below show the amount still owed at a separate autumn reporting date."}
+                  Some years are unavailable and appear as gaps.
                 </p>
-              </FinancialPanelSection>
+              )}
             </>
           )}
-          {SHOW_REGULAR_BUDGET_OUTSTANDING && (
-            <RegularBudgetOutstandingSidebarHistory
-              name={name}
-              year={year}
-              assessments={files}
-            />
-          )}
-          <FinancialPanelSection heading="Assessment history">
-            {loading ? (
-              <p role="status" className="text-sm text-gray-500">
-                Loading assessment history…
-              </p>
-            ) : (
-              <>
-                <FinancingInstrumentChart
-                  compact
-                  showLegend={false}
-                  data={history.map((item) => ({
-                    year: String(item.year),
-                    ...(item.member
-                      ? { assessed: item.member.assessment_amount }
-                      : {}),
-                  }))}
-                  series={[
-                    {
-                      key: "assessed",
-                      label: "Assessed contributions",
-                      color: "var(--color-un-blue)",
-                    },
-                  ]}
-                  tooltipValueFormatter={formatAssessmentCurrency}
-                  tooltipSources={(value) => {
-                    const item = history.find(
-                      (row) => row.year === Number(value),
-                    );
-                    return item?.member && item.file
-                      ? regularBudgetAssessmentSources(item.member, item.file)
-                      : [];
-                  }}
-                />
-                {history.some((item) => !item.member) && (
-                  <p className="mt-2 text-sm text-gray-500">
-                    Some years are unavailable and appear as gaps.
-                  </p>
-                )}
-              </>
-            )}
-            <p className="mt-2 text-sm text-gray-500">
-              Assessments are the amounts the Member State was required to pay
-              each year, not the payments actually received.
-            </p>
-          </FinancialPanelSection>
-          <FinancialPanelSection heading="Payment status history">
-            <div className="space-y-3">
-              {[...history].reverse().map((item) => (
-                <div
-                  key={item.year}
-                  className="grid grid-cols-[3rem_1fr] items-start gap-2 text-sm"
-                >
-                  <span>{item.year}</span>
-                  {item.member && item.file ? (
-                    <div>
-                      <a
-                        href={
-                          item.file.meta.sources.honour_roll.url ||
-                          item.file.meta.sources.honour_roll.archive_url
+          <p className="mt-2 text-sm text-gray-500">
+            Assessments are the amounts the Member State was required to pay
+            each year, not the payments actually received.
+          </p>
+        </FinancialPanelSection>
+        <FinancialPanelSection heading="Payment status history">
+          <div className="space-y-3">
+            {[...history].reverse().map((item) => (
+              <div
+                key={item.year}
+                className="grid grid-cols-[3rem_1fr] items-start gap-2 text-sm"
+              >
+                <span>{item.year}</span>
+                {item.member && item.file ? (
+                  <div>
+                    <a
+                      href={
+                        item.file.meta.sources.honour_roll.url ||
+                        item.file.meta.sources.honour_roll.archive_url
+                      }
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:underline"
+                      aria-label={`${item.year} payment status: Honour Roll (opens in a new tab)`}
+                    >
+                      <LegendLabel
+                        label={
+                          REGULAR_BUDGET_STATUS_STYLES[
+                            item.member.payment_status
+                          ].label
                         }
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:underline"
-                        aria-label={`${item.year} payment status: Honour Roll (opens in a new tab)`}
-                      >
-                        <LegendLabel
-                          label={
-                            REGULAR_BUDGET_STATUS_STYLES[
-                              item.member.payment_status
-                            ].label
-                          }
-                          color={
-                            REGULAR_BUDGET_STATUS_STYLES[
-                              item.member.payment_status
-                            ].color
-                          }
-                        />
-                      </a>
-                      <p className="mt-1 text-xs text-gray-500">
-                        {item.member.payment_date
-                          ? `Paid in full ${formatAssessmentDate(item.member.payment_date)} · `
-                          : ""}
-                        Status as of{" "}
-                        {formatAssessmentDate(item.file.meta.as_of)}
-                      </p>
-                    </div>
-                  ) : (
-                    <span className="text-gray-500">
-                      {loading ? "Loading…" : "Unavailable"}
-                    </span>
-                  )}
-                </div>
-              ))}
-            </div>
-          </FinancialPanelSection>
-          {file && (
-            <details key={year} className="group/sources mt-4">
-              <summary className="flex w-fit cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden">
-                <FinancialPanelHeading subheading>
-                  Source references
-                </FinancialPanelHeading>
-                <ChevronRight
-                  aria-hidden="true"
-                  className="size-3 group-open/sources:rotate-90"
-                />
-              </summary>
-              <div className="mt-3 flex flex-col gap-2 text-sm">
-                {member && (
-                  <SourceReferenceLinks
-                    references={regularBudgetAssessmentSources(member, file)}
-                  />
+                        color={
+                          REGULAR_BUDGET_STATUS_STYLES[
+                            item.member.payment_status
+                          ].color
+                        }
+                      />
+                    </a>
+                    <p className="mt-1 text-xs text-gray-500">
+                      {item.member.payment_date
+                        ? `Paid in full ${formatAssessmentDate(item.member.payment_date)} · `
+                        : ""}
+                      Status as of {formatAssessmentDate(item.file.meta.as_of)}
+                    </p>
+                  </div>
+                ) : (
+                  <span className="text-gray-500">
+                    {loading ? "Loading…" : "Unavailable"}
+                  </span>
                 )}
-                <a
-                  className="text-un-blue hover:underline"
-                  href={
-                    file.meta.sources.honour_roll.url ||
-                    file.meta.sources.honour_roll.archive_url
-                  }
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Payment status: Honour Roll
-                </a>
-                <a
-                  className="text-un-blue hover:underline"
-                  href={file.meta.sources.scale.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Scale of assessments
-                </a>
-                <p className="text-gray-500">
-                  Assessments use the source document’s{" "}
-                  {file.meta.assessment_amount_column.toLowerCase()} column.
-                  Historical payment statuses reflect each year’s reporting
-                  snapshot.
-                </p>
               </div>
-            </details>
-          )}
-        </FinancialDetailPanel>
-      </aside>
-    </div>
+            ))}
+          </div>
+        </FinancialPanelSection>
+        {file && (
+          <details key={year} className="group/sources mt-4">
+            <summary className="flex w-fit cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden">
+              <FinancialPanelHeading subheading>
+                Source references
+              </FinancialPanelHeading>
+              <ChevronRight
+                aria-hidden="true"
+                className="size-3 group-open/sources:rotate-90"
+              />
+            </summary>
+            <div className="mt-3 flex flex-col gap-2 text-sm">
+              {member && (
+                <SourceReferenceLinks
+                  references={regularBudgetAssessmentSources(member, file)}
+                />
+              )}
+              <a
+                className="text-un-blue hover:underline"
+                href={
+                  file.meta.sources.honour_roll.url ||
+                  file.meta.sources.honour_roll.archive_url
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Payment status: Honour Roll
+              </a>
+              <a
+                className="text-un-blue hover:underline"
+                href={file.meta.sources.scale.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Scale of assessments
+              </a>
+              <p className="text-gray-500">
+                Assessments use the source document’s{" "}
+                {file.meta.assessment_amount_column.toLowerCase()} column.
+                Historical payment statuses reflect each year’s reporting
+                snapshot.
+              </p>
+            </div>
+          </details>
+        )}
+      </FinancialDetailPanel>
+    </DetailDrawer>
   );
 }

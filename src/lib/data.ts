@@ -1,19 +1,30 @@
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-export async function loadYearData<T>(
-  dataset: string,
-  year: number,
-): Promise<T> {
-  const res = await fetch(`${basePath}/data/${dataset}-${year}.json`);
-  if (!res.ok)
-    throw new Error(`Failed to load ${dataset} data for year ${year}`);
-  return res.json();
+// Share concurrent requests while leaving long-lived data caching to callers.
+const pending = new Map<string, Promise<unknown>>();
+
+async function loadData<T>(filename: string, error: string): Promise<T> {
+  const existing = pending.get(filename);
+  if (existing) return existing as Promise<T>;
+  const request = fetch(`${basePath}/data/${filename}`)
+    .then((response) => {
+      if (!response.ok) throw new Error(error);
+      return response.json() as Promise<T>;
+    })
+    .finally(() => pending.delete(filename));
+  pending.set(filename, request);
+  return request;
 }
 
-export async function loadStaticData<T>(filename: string): Promise<T> {
-  const res = await fetch(`${basePath}/data/${filename}`);
-  if (!res.ok) throw new Error(`Failed to load ${filename}`);
-  return res.json();
+export function loadYearData<T>(dataset: string, year: number): Promise<T> {
+  return loadData(
+    `${dataset}-${year}.json`,
+    `Failed to load ${dataset} data for year ${year}`,
+  );
+}
+
+export function loadStaticData<T>(filename: string): Promise<T> {
+  return loadData(filename, `Failed to load ${filename}`);
 }
 
 // UNINFO Cooperation Framework types

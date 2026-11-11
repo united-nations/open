@@ -27,7 +27,7 @@ import {
   type FinancingInstrumentDataPoint,
 } from "@/components/charts/FinancingInstrumentChart";
 import { navigateToSidebar } from "@/hooks/useDeepLink";
-import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { DetailDrawer, DrawerTitle } from "@/components/DetailDrawer";
 import { useContributorSidebarYear } from "@/hooks/useContributorSidebarYear";
 import { collectBudgetHierarchySources } from "@/lib/budgetSourceCollection";
 import { sourcePageUrl } from "@/lib/sourceReferences";
@@ -376,7 +376,6 @@ export function TrustFundSidebar({
   const isSeparate = node.sourceGroup === "separate_entities";
   const showFinancialPosition =
     node.xbEntity !== "UNEP" && !node.id.startsWith("xb:UNEP:");
-  const focusTrapRef = useFocusTrap(true);
   const [showAllContributors, setShowAllContributors] = useState(false);
   const [trendSources, setTrendSources] = useState<
     Record<string, BudgetNodeSource[]>
@@ -466,22 +465,6 @@ export function TrustFundSidebar({
     yearKey,
     year,
   ]);
-  useEffect(() => {
-    const root = document.documentElement;
-    const overflow = root.style.overflow,
-      gutter = root.style.scrollbarGutter;
-    root.style.overflow = "hidden";
-    root.style.scrollbarGutter = "auto";
-    const escape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", escape);
-    return () => {
-      root.style.overflow = overflow;
-      root.style.scrollbarGutter = gutter;
-      document.removeEventListener("keydown", escape);
-    };
-  }, [onClose]);
   const includesFund = (fund: TrustFundDestination) =>
     fund.fund_code !== null && codes.has(fund.fund_code);
   const donorRows =
@@ -516,542 +499,521 @@ export function TrustFundSidebar({
     (a, b) => b.amount - a.amount,
   );
   return (
-    <div
-      className="fixed inset-0 z-50 flex justify-end bg-black/50"
-      onMouseDown={(event) => {
-        if (event.target === event.currentTarget) onClose();
-      }}
+    <DetailDrawer
+      titleId="trust-fund-title"
+      onClose={onClose}
+      className="sm:w-[32rem]"
     >
-      <aside
-        ref={focusTrapRef}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="trust-fund-title"
-        className="h-full w-full bg-white shadow-2xl sm:w-[32rem]"
-      >
-        <FinancialDetailPanel
-          title={node.label}
-          titleId="trust-fund-title"
-          subtitle={
-            node.code && node.code !== node.label ? node.code : undefined
-          }
-          yearSelectorPlacement="header"
-          yearSelector={{
-            years: sidebarYears,
-            selected: year,
-            onChange: selection.setYear,
-            label: "Select year",
-            pending: selection.loading,
-            pendingLabel: "Loading…",
-          }}
-          busy={selection.loading}
-          notice={
-            !ready
-              ? {
-                  tone: selection.error ? "error" : "empty",
-                  description:
-                    selection.error ??
-                    (selection.loading
-                      ? "Loading fund details…"
-                      : "No fund data is published for this year."),
-                }
-              : undefined
-          }
-          controls={
-            <SidebarControls
-              shareHash={`${hashPrefix}=${encodeURIComponent(node.id)}`}
-              onClose={onClose}
-              closeLabel="Close fund details"
-            />
-          }
-          metadata={
-            ready && node.description ? (
-              <div
-                className="space-y-3 text-sm leading-relaxed"
-                data-fund-description
-              >
-                {node.fundAccountType === "mptf" && (
-                  <p className="text-xs text-gray-500">
-                    Schedule 8.1 portfolio scope
-                  </p>
-                )}
-                {node.descriptionBlocks?.length ? (
-                  node.descriptionBlocks.map((block, index) =>
-                    block.type === "paragraph" ? (
-                      <p key={index}>
-                        <UNDocumentText text={block.text} />{" "}
-                      </p>
-                    ) : (
-                      <ol
-                        key={index}
-                        className="space-y-2 pl-2"
-                        aria-label="Fund description items"
-                      >
-                        {block.items.map((item) => (
-                          <li key={item.label} className="flex gap-2">
-                            <span className="shrink-0">({item.label}) </span>
-                            <span>
-                              <UNDocumentText text={item.text} />{" "}
-                            </span>
-                          </li>
-                        ))}
-                      </ol>
-                    ),
-                  )
-                ) : (
-                  <p>
-                    <UNDocumentText text={node.description} />
-                  </p>
-                )}
-              </div>
-            ) : undefined
-          }
-          total={
-            ready
-              ? {
-                  label: isSeparate
-                    ? "Expenditure"
-                    : (node.sourceMeasure ?? "Total expenditure"),
-                  value: (
-                    <Tooltip
-                      interactive
-                      width={380}
-                      content={
-                        <SourceCalculation
-                          amount={node.amount}
-                          references={
-                            expenseOperands.length &&
-                            expenseOperands.reduce(
-                              (sum, source) =>
-                                sum + (source.operand?.amount ?? 0),
-                              0,
-                            ) === node.amount
-                              ? expenseOperands
-                              : expenseReferences.length
-                                ? expenseReferences
-                                : node.source
-                                  ? [node.source]
-                                  : []
-                          }
-                        />
-                      }
+      <FinancialDetailPanel
+        title={<DrawerTitle>{node.label}</DrawerTitle>}
+        titleId="trust-fund-title"
+        subtitle={node.code && node.code !== node.label ? node.code : undefined}
+        yearSelectorPlacement="header"
+        yearSelector={{
+          years: sidebarYears,
+          selected: year,
+          onChange: selection.setYear,
+          label: "Select year",
+          pending: selection.loading,
+          pendingLabel: "Loading…",
+        }}
+        busy={selection.loading}
+        notice={
+          !ready
+            ? {
+                tone: selection.error ? "error" : "empty",
+                description:
+                  selection.error ??
+                  (selection.loading
+                    ? "Loading fund details…"
+                    : "No fund data is published for this year."),
+              }
+            : undefined
+        }
+        controls={
+          <SidebarControls
+            shareHash={`${hashPrefix}=${encodeURIComponent(node.id)}`}
+            onClose={onClose}
+            closeLabel="Close fund details"
+          />
+        }
+        metadata={
+          ready && node.description ? (
+            <div
+              className="space-y-3 text-sm leading-relaxed"
+              data-fund-description
+            >
+              {node.fundAccountType === "mptf" && (
+                <p className="text-xs text-gray-500">
+                  Schedule 8.1 portfolio scope
+                </p>
+              )}
+              {node.descriptionBlocks?.length ? (
+                node.descriptionBlocks.map((block, index) =>
+                  block.type === "paragraph" ? (
+                    <p key={index}>
+                      <UNDocumentText text={block.text} />{" "}
+                    </p>
+                  ) : (
+                    <ol
+                      key={index}
+                      className="space-y-2 pl-2"
+                      aria-label="Fund description items"
                     >
-                      <span
-                        tabIndex={0}
-                        className="cursor-help underline decoration-dotted underline-offset-4"
-                      >
-                        {formatBudget(node.amount)}
-                      </span>
-                    </Tooltip>
+                      {block.items.map((item) => (
+                        <li key={item.label} className="flex gap-2">
+                          <span className="shrink-0">({item.label}) </span>
+                          <span>
+                            <UNDocumentText text={item.text} />{" "}
+                          </span>
+                        </li>
+                      ))}
+                    </ol>
                   ),
-                }
-              : undefined
-          }
-          className="bg-white sm:w-full"
-        >
-          {ready && (
-            <>
-              {node.sourceGroup === "separate_entities" &&
-                backNode?.tier === "budget_unit" && (
-                  <button
-                    type="button"
-                    className="mb-3 text-sm text-un-blue underline"
-                    onClick={() => navigateToSidebar(hashPrefix, backNode!.id)}
+                )
+              ) : (
+                <p>
+                  <UNDocumentText text={node.description} />
+                </p>
+              )}
+            </div>
+          ) : undefined
+        }
+        total={
+          ready
+            ? {
+                label: isSeparate
+                  ? "Expenditure"
+                  : (node.sourceMeasure ?? "Total expenditure"),
+                value: (
+                  <Tooltip
+                    interactive
+                    width={380}
+                    content={
+                      <SourceCalculation
+                        amount={node.amount}
+                        references={
+                          expenseOperands.length &&
+                          expenseOperands.reduce(
+                            (sum, source) =>
+                              sum + (source.operand?.amount ?? 0),
+                            0,
+                          ) === node.amount
+                            ? expenseOperands
+                            : expenseReferences.length
+                              ? expenseReferences
+                              : node.source
+                                ? [node.source]
+                                : []
+                        }
+                      />
+                    }
                   >
-                    Back to {backNode.label}
-                  </button>
-                )}
-              {isSeparate ? (
-                <p className="mb-3 text-sm text-gray-500">
-                  {node.chartAsAggregate
-                    ? node.xbEntity === "ITC"
-                      ? "Gross extrabudgetary programme delivery."
-                      : "Excluding regular-budget expenditure."
-                    : node.sourceMeasure}
+                    <span
+                      tabIndex={0}
+                      className="cursor-help underline decoration-dotted underline-offset-4"
+                    >
+                      {formatBudget(node.amount)}
+                    </span>
+                  </Tooltip>
+                ),
+              }
+            : undefined
+        }
+        className="bg-white sm:w-full"
+      >
+        {ready && (
+          <>
+            {node.sourceGroup === "separate_entities" &&
+              backNode?.tier === "budget_unit" && (
+                <button
+                  type="button"
+                  className="mb-3 text-sm text-un-blue underline"
+                  onClick={() => navigateToSidebar(hashPrefix, backNode!.id)}
+                >
+                  Back to {backNode.label}
+                </button>
+              )}
+            {isSeparate ? (
+              <p className="mb-3 text-sm text-gray-500">
+                {node.chartAsAggregate
+                  ? node.xbEntity === "ITC"
+                    ? "Gross extrabudgetary programme delivery."
+                    : "Excluding regular-budget expenditure."
+                  : node.sourceMeasure}
+              </p>
+            ) : (
+              node.note && <p className="mb-3 text-sm">{node.note}</p>
+            )}
+            {showFinancialPosition && node.financialPosition && (
+              <FundPosition position={node.financialPosition} />
+            )}
+            <FinancialPanelSection heading="Expenditure history">
+              {trend === null ? (
+                <p role="status" className="text-sm text-gray-500">
+                  Loading trend…
                 </p>
               ) : (
-                node.note && <p className="mb-3 text-sm">{node.note}</p>
+                <FinancingInstrumentChart
+                  tooltipSources={(year, visibleKeys) =>
+                    visibleKeys.includes("expenses")
+                      ? (trendSources[year] ?? [])
+                      : []
+                  }
+                  compact
+                  showLegend={false}
+                  allowNegative
+                  accessibleTableLabel="Fund expenditure history"
+                  data={trend}
+                  series={[
+                    {
+                      key: "expenses",
+                      label: "Expenditure",
+                      color: "var(--color-un-blue)",
+                    },
+                  ]}
+                />
               )}
-              {showFinancialPosition && node.financialPosition && (
-                <FundPosition position={node.financialPosition} />
+              {trendIncomplete && (
+                <p className="mt-2 text-sm text-gray-500">
+                  Unavailable years appear as gaps.
+                </p>
               )}
-              <FinancialPanelSection heading="Expenditure history">
-                {trend === null ? (
-                  <p role="status" className="text-sm text-gray-500">
-                    Loading trend…
+            </FinancialPanelSection>
+            {children.length > 0 && (
+              <FinancialPanelSection heading={node.detailLabel ?? "Funds"}>
+                {node.expenseReconciliation && (
+                  <p className="mb-3 text-sm text-gray-500">
+                    Detail amounts are before eliminations and may exceed the
+                    entity total.
                   </p>
-                ) : (
-                  <FinancingInstrumentChart
-                    tooltipSources={(year, visibleKeys) =>
-                      visibleKeys.includes("expenses")
-                        ? (trendSources[year] ?? [])
-                        : []
-                    }
-                    compact
-                    showLegend={false}
-                    allowNegative
-                    accessibleTableLabel="Fund expenditure history"
-                    data={trend}
-                    series={[
-                      {
-                        key: "expenses",
-                        label: "Expenditure",
-                        color: "var(--color-un-blue)",
-                      },
-                    ]}
-                  />
                 )}
-                {trendIncomplete && (
-                  <p className="mt-2 text-sm text-gray-500">
-                    Unavailable years appear as gaps.
-                  </p>
+                {isSeparate ? (
+                  <TrustFundHierarchy
+                    nodes={children}
+                    childrenByParent={childrenByParent}
+                    hashPrefix={hashPrefix}
+                    showFinancialPosition={showFinancialPosition}
+                  />
+                ) : (
+                  <div className="space-y-3">
+                    {children.map((child) => (
+                      <Tooltip
+                        interactive
+                        key={child.id}
+                        width={380}
+                        content={
+                          <div>
+                            <p>
+                              {child.label}: {formatBudget(child.amount)}
+                            </p>
+                            <SourceReferenceLinks
+                              references={
+                                child.supportingSources ??
+                                (child.source ? [child.source] : [])
+                              }
+                            />
+                          </div>
+                        }
+                      >
+                        <button
+                          type="button"
+                          className="block w-full text-left"
+                          onClick={() =>
+                            navigateToSidebar(hashPrefix, child.id)
+                          }
+                        >
+                          <FinancialPanelRankedRow
+                            label={child.code ?? child.label}
+                            title={child.label}
+                            value={formatBudget(child.amount)}
+                          >
+                            <FinancialPanelBar
+                              percent={
+                                children[0].amount > 0
+                                  ? (child.amount / children[0].amount) * 100
+                                  : 0
+                              }
+                              color="var(--color-un-blue)"
+                            />
+                          </FinancialPanelRankedRow>
+                        </button>
+                      </Tooltip>
+                    ))}
+                  </div>
                 )}
               </FinancialPanelSection>
-              {children.length > 0 && (
-                <FinancialPanelSection heading={node.detailLabel ?? "Funds"}>
-                  {node.expenseReconciliation && (
-                    <p className="mb-3 text-sm text-gray-500">
-                      Detail amounts are before eliminations and may exceed the
-                      entity total.
-                    </p>
-                  )}
-                  {isSeparate ? (
-                    <TrustFundHierarchy
-                      nodes={children}
-                      childrenByParent={childrenByParent}
-                      hashPrefix={hashPrefix}
-                      showFinancialPosition={showFinancialPosition}
-                    />
-                  ) : (
+            )}
+            {contributorsEnabled && (
+              <TrustFundFlowBreakdown
+                flows={(contributors?.contributors ?? []).flatMap((item) =>
+                  item.destinations
+                    .filter(includesFund)
+                    .flatMap((fund) => fund.flows ?? []),
+                )}
+              />
+            )}
+            {year === 2020 && node.code === "HDM" && (
+              <Link
+                href="/about/#secretariat-trust-fund-contributors"
+                className="text-sm text-un-blue underline underline-offset-2"
+              >
+                2020 transfer schedule and statement reconciliation
+              </Link>
+            )}
+            {node.xbEntity !== "UNEP" && (
+              <FinancialPanelSection heading="By contributor">
+                {node.contributorCoverageNote && (
+                  <p className="mb-3 text-sm text-gray-500">
+                    {node.contributorCoverageNote}
+                  </p>
+                )}
+                {node.sourceGroup === "separate_entities" ? (
+                  <XBContributorPanel
+                    key={`${node.id}:${year}`}
+                    compact
+                    entity={node.xbEntity ?? node.code ?? ""}
+                    year={year}
+                    scope={node.contributorScope ?? "entity"}
+                    onSourceSeriesChange={setXbContributorSeries}
+                  />
+                ) : !contributorsEnabled ? (
+                  <p className="text-sm text-gray-500">
+                    Contributor data is unavailable for this reporting scope.
+                  </p>
+                ) : (
+                  <>
                     <div className="space-y-3">
-                      {children.map((child) => (
+                      {(showAllContributors
+                        ? donorRows
+                        : donorRows.slice(0, 10)
+                      ).map((donor) => (
                         <Tooltip
                           interactive
-                          key={child.id}
-                          width={380}
+                          key={donor.name}
                           content={
                             <div>
                               <p>
-                                {child.label}: {formatBudget(child.amount)}
+                                {donor.name}: {formatBudget(donor.amount)}
                               </p>
                               <SourceReferenceLinks
-                                references={
-                                  child.supportingSources ??
-                                  (child.source ? [child.source] : [])
-                                }
+                                references={donor.references}
                               />
                             </div>
                           }
                         >
-                          <button
-                            type="button"
-                            className="block w-full text-left"
-                            onClick={() =>
-                              navigateToSidebar(hashPrefix, child.id)
-                            }
-                          >
+                          <div tabIndex={0}>
                             <FinancialPanelRankedRow
-                              label={child.code ?? child.label}
-                              title={child.label}
-                              value={formatBudget(child.amount)}
+                              label={donor.name}
+                              value={formatBudget(donor.amount)}
                             >
                               <FinancialPanelBar
                                 percent={
-                                  children[0].amount > 0
-                                    ? (child.amount / children[0].amount) * 100
+                                  maximum > 0
+                                    ? (donor.amount / maximum) * 100
                                     : 0
                                 }
                                 color="var(--color-un-blue)"
                               />
                             </FinancialPanelRankedRow>
-                          </button>
+                          </div>
                         </Tooltip>
                       ))}
                     </div>
-                  )}
-                </FinancialPanelSection>
-              )}
-              {contributorsEnabled && (
-                <TrustFundFlowBreakdown
-                  flows={(contributors?.contributors ?? []).flatMap((item) =>
-                    item.destinations
-                      .filter(includesFund)
-                      .flatMap((fund) => fund.flows ?? []),
-                  )}
-                />
-              )}
-              {year === 2020 && node.code === "HDM" && (
-                <Link
-                  href="/about/#secretariat-trust-fund-contributors"
-                  className="text-sm text-un-blue underline underline-offset-2"
-                >
-                  2020 transfer schedule and statement reconciliation
-                </Link>
-              )}
-              {node.xbEntity !== "UNEP" && (
-                <FinancialPanelSection heading="By contributor">
-                  {node.contributorCoverageNote && (
-                    <p className="mb-3 text-sm text-gray-500">
-                      {node.contributorCoverageNote}
-                    </p>
-                  )}
-                  {node.sourceGroup === "separate_entities" ? (
-                    <XBContributorPanel
-                      key={`${node.id}:${year}`}
-                      compact
-                      entity={node.xbEntity ?? node.code ?? ""}
-                      year={year}
-                      scope={node.contributorScope ?? "entity"}
-                      onSourceSeriesChange={setXbContributorSeries}
-                    />
-                  ) : !contributorsEnabled ? (
-                    <p className="text-sm text-gray-500">
-                      Contributor data is unavailable for this reporting scope.
-                    </p>
-                  ) : (
-                    <>
-                      <div className="space-y-3">
-                        {(showAllContributors
-                          ? donorRows
-                          : donorRows.slice(0, 10)
-                        ).map((donor) => (
-                          <Tooltip
-                            interactive
-                            key={donor.name}
-                            content={
-                              <div>
-                                <p>
-                                  {donor.name}: {formatBudget(donor.amount)}
-                                </p>
-                                <SourceReferenceLinks
-                                  references={donor.references}
-                                />
-                              </div>
-                            }
-                          >
-                            <div tabIndex={0}>
-                              <FinancialPanelRankedRow
-                                label={donor.name}
-                                value={formatBudget(donor.amount)}
-                              >
-                                <FinancialPanelBar
-                                  percent={
-                                    maximum > 0
-                                      ? (donor.amount / maximum) * 100
-                                      : 0
-                                  }
-                                  color="var(--color-un-blue)"
-                                />
-                              </FinancialPanelRankedRow>
-                            </div>
-                          </Tooltip>
-                        ))}
-                      </div>
-                      {donorRows.length > 10 && (
-                        <button
-                          type="button"
-                          aria-expanded={showAllContributors}
-                          onClick={() =>
-                            setShowAllContributors((value) => !value)
-                          }
-                          className="mt-2 text-xs text-gray-600 underline hover:text-gray-900"
-                        >
-                          {showAllContributors
-                            ? "Show fewer contributors"
-                            : `Show all ${donorRows.length} contributors`}
-                        </button>
-                      )}
-                      {!contributors && (
-                        <p role="status" className="text-sm text-gray-500">
-                          {contributorsError
-                            ? "Contributor data is unavailable for this year."
-                            : "Loading contributors…"}
-                        </p>
-                      )}
-                      {contributors && donorRows.length === 0 && (
-                        <p className="text-sm text-gray-500">
-                          No named contributor amounts are available for this
-                          fund in this year.
-                        </p>
-                      )}
-                      <p className="mt-3 text-sm text-gray-500">
-                        Reported contributions and transfers; coverage may be
-                        incomplete.
+                    {donorRows.length > 10 && (
+                      <button
+                        type="button"
+                        aria-expanded={showAllContributors}
+                        onClick={() =>
+                          setShowAllContributors((value) => !value)
+                        }
+                        className="mt-2 text-xs text-gray-600 underline hover:text-gray-900"
+                      >
+                        {showAllContributors
+                          ? "Show fewer contributors"
+                          : `Show all ${donorRows.length} contributors`}
+                      </button>
+                    )}
+                    {!contributors && (
+                      <p role="status" className="text-sm text-gray-500">
+                        {contributorsError
+                          ? "Contributor data is unavailable for this year."
+                          : "Loading contributors…"}
                       </p>
-                    </>
-                  )}
-                </FinancialPanelSection>
-              )}
-              {node.expenseReconciliation && (
-                <details className="group/accounting mt-4">
-                  <summary className="flex w-fit cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden">
-                    <FinancialPanelHeading subheading>
-                      Accounting details
-                    </FinancialPanelHeading>
-                    <ChevronRight
-                      aria-hidden="true"
-                      className="size-3 group-open/accounting:rotate-90"
-                    />
-                  </summary>
-                  <div className="mt-3">
-                    <p className="mb-3 text-sm text-gray-500">
-                      Eliminations reconcile the reported detail to the entity
-                      total.
+                    )}
+                    {contributors && donorRows.length === 0 && (
+                      <p className="text-sm text-gray-500">
+                        No named contributor amounts are available for this fund
+                        in this year.
+                      </p>
+                    )}
+                    <p className="mt-3 text-sm text-gray-500">
+                      Reported contributions and transfers; coverage may be
+                      incomplete.
                     </p>
-                    <dl className="space-y-2 text-sm">
-                      {[
-                        [
-                          "Gross account / segment expenses",
-                          node.expenseReconciliation.detailTotal,
-                        ],
-                        [
-                          "Eliminations",
-                          node.expenseReconciliation.eliminations,
-                        ],
-                        [
-                          "Entity expenditure excluding regular budget",
-                          node.expenseReconciliation.entityTotal,
-                        ],
-                      ].map(([label, value]) => (
-                        <div key={label} className="flex justify-between gap-4">
-                          <dt>{label}</dt>
-                          <dd className="tabular-nums">
-                            {formatBudget(Number(value))}
-                          </dd>
-                        </div>
-                      ))}
-                    </dl>
-                    <SourceReferenceLinks
-                      references={node.expenseReconciliation.supportingSources}
-                    />
-                  </div>
-                </details>
-              )}
-              <details className="group/sources mt-4" data-expenditure-sources>
+                  </>
+                )}
+              </FinancialPanelSection>
+            )}
+            {node.expenseReconciliation && (
+              <details className="group/accounting mt-4">
                 <summary className="flex w-fit cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden">
                   <FinancialPanelHeading subheading>
-                    Source references
+                    Accounting details
                   </FinancialPanelHeading>
                   <ChevronRight
                     aria-hidden="true"
-                    className="size-3 group-open/sources:rotate-90"
+                    className="size-3 group-open/accounting:rotate-90"
                   />
                 </summary>
-                <div className="mt-3 space-y-3 text-sm">
-                  {node.scheduleGroup && (
+                <div className="mt-3">
+                  <p className="mb-3 text-sm text-gray-500">
+                    Eliminations reconcile the reported detail to the entity
+                    total.
+                  </p>
+                  <dl className="space-y-2 text-sm">
+                    {[
+                      [
+                        "Gross account / segment expenses",
+                        node.expenseReconciliation.detailTotal,
+                      ],
+                      ["Eliminations", node.expenseReconciliation.eliminations],
+                      [
+                        "Entity expenditure excluding regular budget",
+                        node.expenseReconciliation.entityTotal,
+                      ],
+                    ].map(([label, value]) => (
+                      <div key={label} className="flex justify-between gap-4">
+                        <dt>{label}</dt>
+                        <dd className="tabular-nums">
+                          {formatBudget(Number(value))}
+                        </dd>
+                      </div>
+                    ))}
+                  </dl>
+                  <SourceReferenceLinks
+                    references={node.expenseReconciliation.supportingSources}
+                  />
+                </div>
+              </details>
+            )}
+            <details className="group/sources mt-4" data-expenditure-sources>
+              <summary className="flex w-fit cursor-pointer list-none items-center gap-1 [&::-webkit-details-marker]:hidden">
+                <FinancialPanelHeading subheading>
+                  Source references
+                </FinancialPanelHeading>
+                <ChevronRight
+                  aria-hidden="true"
+                  className="size-3 group-open/sources:rotate-90"
+                />
+              </summary>
+              <div className="mt-3 space-y-3 text-sm">
+                {node.scheduleGroup && (
+                  <div>
+                    <p>Schedule group: {node.scheduleGroup.label}</p>
+                    <SourceReferenceList
+                      references={[node.scheduleGroup.source]}
+                    />
+                  </div>
+                )}
+                {!!node.descriptionSources?.length && (
+                  <>
+                    <FinancialPanelHeading subheading>
+                      Fund description
+                    </FinancialPanelHeading>
+                    <SourceReferenceList references={node.descriptionSources} />
+                  </>
+                )}
+                {isSeparate && node.sourceMeasure && (
+                  <p>{node.sourceMeasure}.</p>
+                )}
+                {isSeparate && (
+                  <FinancialPanelHeading subheading>
+                    Expenditure sources
+                  </FinancialPanelHeading>
+                )}
+                <SourceReferenceList
+                  references={
+                    expenseReferences.length
+                      ? expenseReferences
+                      : node.source
+                        ? [node.source]
+                        : []
+                  }
+                />
+                {showFinancialPosition && node.financialPosition && (
+                  <SourceReferenceList
+                    references={node.financialPosition.metrics.flatMap(
+                      (metric) => metric.supportingSources,
+                    )}
+                  />
+                )}
+                {contributors && (
+                  <>
+                    <SourceReferenceList
+                      references={
+                        contributionReferences.length
+                          ? contributionReferences
+                          : [
+                              {
+                                ...contributors.meta.source,
+                                rowLabel: "Contributions and transfers",
+                                columnHeader: String(year),
+                              },
+                            ]
+                      }
+                    />
+                    <p>
+                      {contributors.meta.method_note}{" "}
+                      {contributors.meta.mapping_note}
+                    </p>
+                  </>
+                )}
+                {isSeparate &&
+                  xbContributorSeries &&
+                  xbContributorSeries.entity === node.xbEntity &&
+                  xbContributorSeries.year === year && (
                     <div>
-                      <p>Schedule group: {node.scheduleGroup.label}</p>
-                      <SourceReferenceList
-                        references={[node.scheduleGroup.source]}
+                      <FinancialPanelHeading subheading>
+                        Contributor sources
+                      </FinancialPanelHeading>
+                      <ContributorSourceReferences
+                        series={xbContributorSeries}
+                        collapsible={false}
                       />
                     </div>
                   )}
-                  {!!node.descriptionSources?.length && (
-                    <>
-                      <FinancialPanelHeading subheading>
-                        Fund description
-                      </FinancialPanelHeading>
-                      <SourceReferenceList
-                        references={node.descriptionSources}
-                      />
-                    </>
-                  )}
-                  {isSeparate && node.sourceMeasure && (
-                    <p>{node.sourceMeasure}.</p>
-                  )}
-                  {isSeparate && (
-                    <FinancialPanelHeading subheading>
-                      Expenditure sources
-                    </FinancialPanelHeading>
-                  )}
-                  <SourceReferenceList
-                    references={
-                      expenseReferences.length
-                        ? expenseReferences
-                        : node.source
-                          ? [node.source]
-                          : []
-                    }
-                  />
-                  {showFinancialPosition && node.financialPosition && (
-                    <SourceReferenceList
-                      references={node.financialPosition.metrics.flatMap(
-                        (metric) => metric.supportingSources,
-                      )}
-                    />
-                  )}
-                  {contributors && (
-                    <>
-                      <SourceReferenceList
-                        references={
-                          contributionReferences.length
-                            ? contributionReferences
-                            : [
-                                {
-                                  ...contributors.meta.source,
-                                  rowLabel: "Contributions and transfers",
-                                  columnHeader: String(year),
-                                },
-                              ]
-                        }
-                      />
-                      <p>
-                        {contributors.meta.method_note}{" "}
-                        {contributors.meta.mapping_note}
-                      </p>
-                    </>
-                  )}
-                  {isSeparate &&
-                    xbContributorSeries &&
-                    xbContributorSeries.entity === node.xbEntity &&
-                    xbContributorSeries.year === year && (
-                      <div>
-                        <FinancialPanelHeading subheading>
-                          Contributor sources
-                        </FinancialPanelHeading>
-                        <ContributorSourceReferences
-                          series={xbContributorSeries}
-                          collapsible={false}
-                        />
-                      </div>
-                    )}
-                </div>
-              </details>
-              {!!node.referenceSources?.length && (
-                <div data-additional-resources>
-                  <FinancialPanelSection heading="Additional resources">
-                    <ul className="space-y-3 text-sm">
-                      {node.referenceSources.map((source) => (
-                        <li key={source.url}>
-                          <a
-                            className="text-un-blue underline"
-                            href={
-                              source.pdfPage
-                                ? sourcePageUrl(source.url, source.pdfPage)
-                                : source.url
-                            }
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {source.symbol}
-                            {source.pdfPage
-                              ? ` · PDF p. ${source.pdfPage}`
-                              : ""}
-                            <span className="sr-only">
-                              {" "}
-                              (opens in a new tab)
-                            </span>
-                          </a>
-                        </li>
-                      ))}
-                    </ul>
-                  </FinancialPanelSection>
-                </div>
-              )}
-            </>
-          )}
-        </FinancialDetailPanel>
-      </aside>
-    </div>
+              </div>
+            </details>
+            {!!node.referenceSources?.length && (
+              <div data-additional-resources>
+                <FinancialPanelSection heading="Additional resources">
+                  <ul className="space-y-3 text-sm">
+                    {node.referenceSources.map((source) => (
+                      <li key={source.url}>
+                        <a
+                          className="text-un-blue underline"
+                          href={
+                            source.pdfPage
+                              ? sourcePageUrl(source.url, source.pdfPage)
+                              : source.url
+                          }
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        >
+                          {source.symbol}
+                          {source.pdfPage ? ` · PDF p. ${source.pdfPage}` : ""}
+                          <span className="sr-only"> (opens in a new tab)</span>
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </FinancialPanelSection>
+              </div>
+            )}
+          </>
+        )}
+      </FinancialDetailPanel>
+    </DetailDrawer>
   );
 }

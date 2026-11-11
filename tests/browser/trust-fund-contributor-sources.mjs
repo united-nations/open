@@ -248,7 +248,7 @@ try {
   });
   await assertCleanTooltip(itcTile, "XB funding received");
   await itcTile.click();
-  let dialog = page.locator('aside[role="dialog"]');
+  let dialog = page.locator('[role="dialog"][aria-modal="true"]');
   await dialog.waitFor();
   assert.match(await dialog.innerText(), /XB funding received/);
   await dialog.getByText("Source references", { exact: true }).click();
@@ -323,7 +323,7 @@ try {
   await panel
     .getByRole("button", { name: unodc2024.rows[0].name, exact: true })
     .click();
-  dialog = page.locator('aside[role="dialog"]');
+  dialog = page.locator('[role="dialog"][aria-modal="true"]');
   await dialog.waitFor();
   assert.equal(
     await dialog

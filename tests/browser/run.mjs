@@ -4,6 +4,7 @@ import profiles from "../../config/features.json" with { type: "json" };
 import { portalUrl } from "./helpers.mjs";
 const checks = [
   "header-layout",
+  "mobile-friendliness",
   ...(profiles[process.env.SITE_VARIANT ?? "public"].personnel
     ? ["personnel"]
     : []),

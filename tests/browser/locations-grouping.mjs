@@ -14,13 +14,13 @@ try {
     waitUntil: "networkidle",
   });
   const levels = page.getByRole("group", { name: "Reporting level" });
-  assert.equal(await levels.locator('[style*="background-color"]').count(), 4);
+  assert.equal(await levels.locator("[data-map-legend-circle]").count(), 4);
   await page
     .getByRole("radio", { name: "Chart", exact: true })
     .locator("..")
     .click();
   assert.equal(await levels.getByRole("button").count(), 4);
-  assert.equal(await levels.locator('[style*="background-color"]').count(), 0);
+  assert.equal(await levels.locator("[data-map-legend-circle]").count(), 0);
   assert.equal(
     await page.getByText("Grouped by region", { exact: true }).count(),
     0,

@@ -1,5 +1,5 @@
 diff --git a/components/chart-header.tsx b/components/chart-header.tsx
-index 2b2fb47858ab3bec4f0986038fe8c2343b33752e..dd38f7a4d8002e88b7d31809d415f21502aa80d4 100644
+index 2b2fb47858ab3bec4f0986038fe8c2343b33752e..71524b7ad5d3dce5a64ff306cf5bd5fbe49ab890 100644
 --- a/components/chart-header.tsx
 +++ b/components/chart-header.tsx
 @@ -5,6 +5,7 @@ import { typography } from "../lib/typography";
@@ -23,13 +23,147 @@ index 2b2fb47858ab3bec4f0986038fe8c2343b33752e..dd38f7a4d8002e88b7d31809d415f215
 -      <div className="flex min-w-0 flex-1 flex-wrap items-center gap-3">
 +      <div
 +        className={cn(
-+          "flex min-w-0 flex-1 flex-wrap items-center gap-3",
++          "flex w-full min-w-0 flex-wrap items-center gap-3 sm:w-auto sm:flex-1",
 +          controlsClassName,
 +        )}
 +      >
          {controls}
          {yearControl}
          {search}
+diff --git a/components/detail-panel-controls.tsx b/components/detail-panel-controls.tsx
+index 689ddd3b8b5ec18f2386ffed073a59292aaa29ab..e799e1b7fb2e68f1eea747700ab8a9d2f4529e10 100644
+--- a/components/detail-panel-controls.tsx
++++ b/components/detail-panel-controls.tsx
+@@ -23,7 +23,7 @@ interface DetailPanelControlsProps {
+ 
+ function DetailPanelControl({ action }: { action: DetailPanelAction }) {
+   const className =
+-    "flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-secondary text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-un-blue/50 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50";
++    "flex size-11 shrink-0 sm:size-8 cursor-pointer items-center justify-center rounded-full bg-secondary text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-un-blue/50 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50";
+   if (action.href !== undefined && !action.disabled) {
+     return (
+       <a
+diff --git a/components/financial-panel-parts.tsx b/components/financial-panel-parts.tsx
+index 3010584d83a143ccb8e6f8d7286ddb398fb87e52..73e125825109f2a09d22acec34e18faa8eb2e4ee 100644
+--- a/components/financial-panel-parts.tsx
++++ b/components/financial-panel-parts.tsx
+@@ -93,6 +93,7 @@ export interface FinancialPanelYearSelectorProps {
+   label: string;
+   pending?: boolean;
+   pendingLabel?: string;
++  formatLabel?: (year: number) => string;
+ }
+ export function FinancialPanelYearSelector({
+   years,
+@@ -102,24 +103,35 @@ export function FinancialPanelYearSelector({
+   pending,
+   pendingLabel,
+   variant = "underline",
++  formatLabel = String,
+ }: FinancialPanelYearSelectorProps) {
+   const [open, setOpen] = React.useState(false);
++  const trigger = React.useRef<HTMLButtonElement>(null);
++  const [portalContainer, setPortalContainer] = React.useState<HTMLElement | null>(null);
++  const handleOpenChange = (next: boolean) => {
++    if (next) {
++      // Keep popup scrolling inside the modal's scroll lock.
++      setPortalContainer(trigger.current?.closest<HTMLElement>('[role="dialog"][aria-modal="true"]') ?? null);
++    }
++    setOpen(next);
++  };
+   return (
+     <div className="flex items-center gap-2">
+-      <Popover.Root open={open} onOpenChange={setOpen} modal={false}>
++      <Popover.Root open={open} onOpenChange={handleOpenChange} modal={false}>
+         <Popover.Trigger asChild>
+           <button
++            ref={trigger}
+             type="button"
+             aria-label={label}
+             className={cn(
+               typography.meta,
+-              "inline-flex shrink-0 items-center gap-1 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-un-blue/50",
++              "inline-flex min-h-11 shrink-0 items-center gap-1 transition-colors sm:min-h-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-un-blue/50",
+               variant === "pill"
+                 ? "h-8 rounded-full bg-secondary px-3 text-muted-foreground hover:bg-muted hover:text-foreground"
+                 : "border-b border-gray-400 text-gray-600 hover:text-foreground",
+             )}
+           >
+-            <span className="font-medium">{selected}</span>
++            <span className="font-medium">{formatLabel(selected)}</span>
+             <ChevronDown
+               className={cn(
+                 "size-3.5 transition-transform",
+@@ -128,11 +140,11 @@ export function FinancialPanelYearSelector({
+             />
+           </button>
+         </Popover.Trigger>
+-        <Popover.Portal>
++        <Popover.Portal container={portalContainer ?? undefined}>
+           <Popover.Content
+             align="start"
+             sideOffset={4}
+-            className="z-[100] min-w-20 rounded-md border border-border bg-white p-1 shadow-md"
++            className="z-[100] max-h-[var(--radix-popover-content-available-height)] min-w-20 overflow-y-auto overscroll-contain rounded-md border border-border bg-white p-1 shadow-md"
+           >
+             <div className="flex flex-col">
+               {years.map((year) => (
+@@ -146,13 +158,13 @@ export function FinancialPanelYearSelector({
+                   }}
+                   className={cn(
+                     typography.body,
+-                    "rounded px-3 py-1.5 text-start",
++                    "min-h-11 rounded px-3 py-1.5 text-start sm:min-h-0",
+                     year === selected
+                       ? "bg-secondary font-medium text-foreground"
+                       : "text-gray-600 hover:bg-muted",
+                   )}
+                 >
+-                  {year}
++                  {formatLabel(year)}
+                 </button>
+               ))}
+             </div>
+@@ -179,8 +191,8 @@ export function FinancialPanelBar({
+   segments?: readonly { id: string; percent: number; color: string }[];
+ }) {
+   return (
+-    <div className="flex flex-1 flex-col gap-px">
+-      <div
++    <span className="flex flex-1 flex-col gap-px">
++      <span
+         className="flex h-2 overflow-hidden rounded-sm"
+         style={{
+           width: `${Math.max(0, Math.min(100, percent))}%`,
+@@ -188,7 +200,7 @@ export function FinancialPanelBar({
+         }}
+       >
+         {segments?.map((s) => (
+-          <div
++          <span
+             key={s.id}
+             className="transition-all"
+             style={{
+@@ -197,8 +209,8 @@ export function FinancialPanelBar({
+             }}
+           />
+         ))}
+-      </div>
+-    </div>
++      </span>
++    </span>
+   );
+ }
+ 
+@@ -235,7 +247,7 @@ export function FinancialPanelRankedRow({
+           title={title ?? label}
+           className={cn(
+             typography.label,
+-            "w-24 shrink-0 truncate text-start text-foreground hover:text-un-blue-text hover:underline",
++            "min-h-11 w-24 shrink-0 break-words text-start text-foreground hover:text-un-blue-text hover:underline sm:min-h-0 sm:truncate",
+             labelClassName,
+           )}
+         >
 diff --git a/components/financial-tooltip.tsx b/components/financial-tooltip.tsx
 index edd3c0c3ffc17fa14f3b15e8d15016211eabd556..acacdf6fadb914035658ba3456868eda0a851844 100644
 --- a/components/financial-tooltip.tsx
@@ -66,10 +200,19 @@ index edd3c0c3ffc17fa14f3b15e8d15016211eabd556..acacdf6fadb914035658ba3456868eda
                    {row.label}
                  </span>
 diff --git a/components/grouped-treemap.tsx b/components/grouped-treemap.tsx
-index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..26873998c3becfe370e138b76981f7b2cef93eff 100644
+index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee86a292fe 100644
 --- a/components/grouped-treemap.tsx
 +++ b/components/grouped-treemap.tsx
-@@ -44,6 +44,8 @@ export interface GroupedTreemapSegment<TSegment = unknown> {
+@@ -12,6 +12,8 @@ import {
+ } from "../lib/grouped-treemap-layout";
+ import { typography } from "../lib/typography";
+ import { cn } from "../lib/utils";
++import { RankedDetailList, type RankedDetailItem } from "./ranked-detail-list";
++import { SegmentedControl } from "./segmented-control";
+ import { ChartHeader } from "./chart-header";
+ import { SearchInput } from "./search-input";
+ import {
+@@ -44,6 +46,8 @@ export interface GroupedTreemapSegment<TSegment = unknown> {
    key: string;
    label: string;
    value: number;
@@ -78,16 +221,20 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..26873998c3becfe370e138b76981f7b2
    color: string;
    data?: TSegment;
  }
-@@ -52,6 +54,8 @@ export interface GroupedTreemapLeaf<TLeaf = unknown, TSegment = unknown> {
+@@ -51,7 +55,12 @@ export interface GroupedTreemapSegment<TSegment = unknown> {
+ export interface GroupedTreemapLeaf<TLeaf = unknown, TSegment = unknown> {
    key: string;
    label: string;
++  listLabel?: string;
++  listNote?: string;
++  listValueLabel?: string;
    value: number;
 +  /** Printed value label when layout uses a common converted area scale. */
 +  valueLabel?: string;
    /** Optional area weight; displayed values remain the published value. */
    layoutValue?: number;
    color?: string;
-@@ -61,6 +65,10 @@ export interface GroupedTreemapLeaf<TLeaf = unknown, TSegment = unknown> {
+@@ -61,6 +70,10 @@ export interface GroupedTreemapLeaf<TLeaf = unknown, TSegment = unknown> {
    paleFill?: boolean;
    /** Optional inset outline for leaves with pale fills. */
    borderColor?: string;
@@ -98,7 +245,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..26873998c3becfe370e138b76981f7b2
    /** Localized context appended only to the assistive leaf description. */
    accessibleDescription?: string;
    data?: TLeaf;
-@@ -75,6 +83,8 @@ export interface GroupedTreemapSubgroup<
+@@ -75,6 +88,8 @@ export interface GroupedTreemapSubgroup<
  > {
    key: string;
    label: string;
@@ -107,7 +254,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..26873998c3becfe370e138b76981f7b2
    data?: TSubgroup;
    labelVisibility?: TreemapSubgroupLabelVisibility;
    leaves: readonly GroupedTreemapLeaf<TLeaf, TSegment>[];
-@@ -88,6 +98,8 @@ export interface GroupedTreemapRow<
+@@ -88,6 +103,8 @@ export interface GroupedTreemapRow<
  > {
    key: string;
    label: string;
@@ -116,15 +263,49 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..26873998c3becfe370e138b76981f7b2
    labelColor?: string;
    /** Published group total when it differs from the sum of displayed leaves. */
    value?: number;
-@@ -167,6 +179,7 @@ export interface GroupedTreemapProps<
+@@ -166,10 +183,16 @@ export interface GroupedTreemapProps<
+   /** Optional compact control rendered beside search in the plot toolbar. */
    searchAccessory?: React.ReactNode;
    yearControl?: React.ReactNode;
++  /** Filter pills above the row containing the view, year, and search controls. */
++  filterControls?: React.ReactNode;
    controls?: React.ReactNode;
 +  controlsClassName?: string;
    /** Additional controls below the main toolbar. */
    secondaryControls?: React.ReactNode;
    hideHeader?: boolean;
-@@ -283,9 +296,10 @@ function normalizeRows<TRow, TSubgroup, TLeaf, TSegment>(
++  hideList?: boolean;
++  /** Filtered records without chart geometry, such as nonpositive amounts. */
++  additionalListItems?: readonly RankedDetailItem[];
+   footer?: React.ReactNode;
+   /** Extra label space above each row; use with input order and no consolidation. */
+   rowLabelSpace?: number;
+@@ -212,11 +235,10 @@ function layoutLeafKey(rowKey: string, subgroupKey: string, leafKey: string) {
+ }
+ 
+ function useElementSize<T extends HTMLElement>() {
+-  const ref = React.useRef<T>(null);
++  const [element, setElement] = React.useState<T | null>(null);
+   const [size, setSize] = React.useState({ width: 0, height: 0 });
+ 
+   React.useEffect(() => {
+-    const element = ref.current;
+     if (!element) return;
+     const update = (width: number, height: number) => {
+       setSize((current) =>
+@@ -232,9 +254,9 @@ function useElementSize<T extends HTMLElement>() {
+     });
+     observer.observe(element);
+     return () => observer.disconnect();
+-  }, []);
++  }, [element]);
+ 
+-  return [ref, size] as const;
++  return [setElement, size] as const;
+ }
+ 
+ function rectStyle(rect: TreemapRect): React.CSSProperties {
+@@ -283,9 +305,10 @@ function normalizeRows<TRow, TSubgroup, TLeaf, TSegment>(
            ),
          }))
          .filter((subgroup) =>
@@ -138,7 +319,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..26873998c3becfe370e138b76981f7b2
          );
        return { ...row, subgroups };
      })
-@@ -340,12 +354,12 @@ function DefaultTooltip<TRow, TSubgroup, TLeaf, TSegment>({
+@@ -340,12 +363,12 @@ function DefaultTooltip<TRow, TSubgroup, TLeaf, TSegment>({
            label,
            color: index === 0 ? context.row.color : undefined,
          }))}
@@ -153,23 +334,108 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..26873998c3becfe370e138b76981f7b2
            color: segment.color,
            share:
              segment.value >= 0 && context.leaf.value > 0
-@@ -376,6 +390,7 @@ export function GroupedTreemap<
+@@ -375,9 +398,13 @@ export function GroupedTreemap<
+   search,
    searchAccessory,
    yearControl,
++  filterControls,
    controls,
 +  controlsClassName,
    secondaryControls,
    hideHeader = false,
++  hideList = false,
++  additionalListItems = [],
    footer,
-@@ -526,6 +541,7 @@ export function GroupedTreemap<
+   rowLabelSpace = 0,
+   showRowLabels = true,
+@@ -398,6 +425,8 @@ export function GroupedTreemap<
+   leafValueMinHeight,
+ }: GroupedTreemapProps<TRow, TSubgroup, TLeaf, TSegment>) {
+   const componentId = React.useId();
++  const [view, setView] = React.useState<"chart" | "list">("chart");
++  const showList = view === "list" && !hideList;
+   const [containerRef, size] = useElementSize<HTMLDivElement>();
+   const [activeTooltip, setActiveTooltip] = React.useState<{
+     key: string;
+@@ -517,6 +546,43 @@ export function GroupedTreemap<
+     [formatValue, renderTooltip, interactiveTooltip],
+   );
+ 
++  const listItems = showList
++    ? normalized.flatMap((row) =>
++        row.subgroups.flatMap((subgroup) =>
++          subgroup.leaves.flatMap((leaf) => {
++            const weight = leaf.layoutValue ?? leaf.value;
++            if (!Number.isFinite(leaf.value) || !Number.isFinite(weight) || weight <= 0) return [];
++            return [{
++              id: layoutLeafKey(row.key, subgroup.key, leaf.key),
++              label: leaf.listLabel ?? leaf.label,
++              description: leaf.listNote,
++              amount: leaf.value,
++              value: leaf.listValueLabel ?? leaf.valueLabel ?? formatValue(leaf.value),
++              weight,
++              color: row.color ?? leaf.borderColor ?? leaf.color,
++              group: { key: row.key, label: row.label },
++              subgroup: subgroup.implicit || subgroup.label === row.label ||
++                (subgroup.leaves.length === 1 && subgroup.label === leaf.label)
++                ? undefined
++                : { key: subgroup.key, label: subgroup.label },
++              onOpen: leaf.onActivate ? () => leaf.onActivate?.(leaf) : undefined,
++            }];
++          }),
++        ),
++      )
++    : [];
++  const viewControl = !hideList && (
++    <SegmentedControl
++      label="Data view"
++      options={[{ value: "chart", label: "Chart" }, { value: "list", label: "List" }]}
++      value={view}
++      onValueChange={(value) => {
++        setView(value === "list" ? "list" : "chart");
++        setActiveTooltip(null);
++      }}
++    />
++  );
++
+   return (
+     <ChartFrame
+       className={className}
+@@ -524,10 +590,13 @@ export function GroupedTreemap<
+       header={
+         !hideHeader && (
            <>
++            {filterControls && <div className="mb-3">{filterControls}</div>}
              <ChartHeader
                yearControl={yearControl}
 +              controlsClassName={controlsClassName}
                controls={
                  <>
++                  {viewControl}
                    {controls}
-@@ -593,6 +609,10 @@ export function GroupedTreemap<
+                   {searchAccessory}
+                 </>
+@@ -545,7 +614,7 @@ export function GroupedTreemap<
+                     }
+                     showClear
+                     onClear={() => search.onChange("")}
+-                    className="w-full sm:w-48"
++                    className="h-11 w-full text-base sm:h-9 sm:w-48 sm:text-sm"
+                   />
+                 ) : undefined
+               }
+@@ -555,6 +624,10 @@ export function GroupedTreemap<
+         )
+       }
+     >
++      {hideHeader && viewControl}
++      {showList ? (
++        <RankedDetailList label="Ranked chart data" items={[...listItems, ...additionalListItems]} empty={emptyContent} />
++      ) : (
+       <div
+         ref={containerRef}
+         className={cn(
+@@ -593,6 +666,10 @@ export function GroupedTreemap<
                        style={{
                          insetInlineStart: rowLayout.rect.x,
                          top: rowLayout.rect.y,
@@ -180,7 +446,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..26873998c3becfe370e138b76981f7b2
                          minHeight: rowLabelSpace || undefined,
                          color:
                            row.labelColor ?? row.color ?? "var(--color-un-blue)",
-@@ -610,7 +630,7 @@ export function GroupedTreemap<
+@@ -610,7 +687,7 @@ export function GroupedTreemap<
                        />
                        {row.label}{" "}
                        <span className="font-normal tabular-nums">
@@ -189,7 +455,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..26873998c3becfe370e138b76981f7b2
                            row.value ??
                              row.subgroups.reduce(
                                (sum, subgroup) =>
-@@ -650,7 +670,7 @@ export function GroupedTreemap<
+@@ -650,7 +727,7 @@ export function GroupedTreemap<
                            >
                              {subgroup.label}{" "}
                              <span className="font-normal tabular-nums">
@@ -198,7 +464,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..26873998c3becfe370e138b76981f7b2
                                  subgroup.leaves.reduce(
                                    (sum, leaf) => sum + leaf.value,
                                    0,
-@@ -686,12 +706,12 @@ export function GroupedTreemap<
+@@ -686,12 +763,12 @@ export function GroupedTreemap<
                            const accessibleSegments = visibleSegments
                              .map(
                                (segment) =>
@@ -213,7 +479,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..26873998c3becfe370e138b76981f7b2
                              accessibleSegments || null,
                              leaf.accessibleDescription?.trim() || null,
                            ]
-@@ -815,15 +835,17 @@ export function GroupedTreemap<
+@@ -815,15 +892,17 @@ export function GroupedTreemap<
                                  className={cn(
                                    "pointer-events-none absolute inset-0 z-[1] shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.8)]",
                                    leaf.onActivate &&
@@ -238,7 +504,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..26873998c3becfe370e138b76981f7b2
                                />
                                {canShowLabel && (
                                  <span
-@@ -850,7 +872,7 @@ export function GroupedTreemap<
+@@ -850,7 +929,7 @@ export function GroupedTreemap<
                                              : "truncate",
                                          )}
                                        >
@@ -247,6 +513,14 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..26873998c3becfe370e138b76981f7b2
                                        </span>
                                      ) : null}
                                    </span>
+@@ -902,6 +981,7 @@ export function GroupedTreemap<
+               );
+             })}
+       </div>
++      )}
+       {sources?.length ? (
+         <footer
+           className={cn(
 diff --git a/components/legend-label.tsx b/components/legend-label.tsx
 index 6f01a4697b06d32ac601f0c8a5d27fae05930549..d54d332b121f114dce5f8b3292e982d64fdb2ea9 100644
 --- a/components/legend-label.tsx
@@ -297,16 +571,184 @@ index 6f01a4697b06d32ac601f0c8a5d27fae05930549..d54d332b121f114dce5f8b3292e982d6
        <span
          className={cn(
            variant === "inline" &&
+diff --git a/components/ranked-detail-list.tsx b/components/ranked-detail-list.tsx
+new file mode 100644
+index 0000000000000000000000000000000000000000..9163ce21aa01ea401b8e0356a5f3bd1f9ca5401e
+--- /dev/null
++++ b/components/ranked-detail-list.tsx
+@@ -0,0 +1,162 @@
++"use client";
++
++import { useId, useRef, useState, type ReactNode } from "react";
++import { FinancialPanelBar } from "./financial-panel-parts";
++import { cn } from "../lib/utils";
++
++interface ListGroup {
++  key: string;
++  label: string;
++}
++
++export interface RankedDetailItem {
++  id: string;
++  label: string;
++  description?: string;
++  value: ReactNode;
++  amount: number;
++  /** Chart weight for ordering groups whose area uses a different scale. */
++  weight?: number;
++  color?: string;
++  group?: ListGroup;
++  subgroup?: ListGroup;
++  onOpen?: () => void;
++}
++
++function groupItems(
++  items: readonly RankedDetailItem[],
++  dimension: "group" | "subgroup",
++) {
++  const groups = new Map<string, { label?: string; weight: number; items: RankedDetailItem[] }>();
++  for (const item of items) {
++    const group = item[dimension];
++    const key = group?.key ?? "";
++    const entry = groups.get(key) ?? { label: group?.label, weight: 0, items: [] };
++    entry.items.push(item);
++    entry.weight += Math.max(0, item.weight ?? item.amount);
++    groups.set(key, entry);
++  }
++  return [...groups].sort(([keyA, a], [keyB, b]) => b.weight - a.weight || keyA.localeCompare(keyB));
++}
++
++const pageSize = 20;
++const textAction = "inline-flex min-h-11 items-center text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground focus-visible:outline-2 focus-visible:outline-un-blue";
++
++export function RankedDetailList({
++  label,
++  items,
++  empty = <p className="py-4 text-sm text-muted-foreground">No records match the selected filters.</p>,
++}: {
++  label: string;
++  items: readonly RankedDetailItem[];
++  empty?: ReactNode;
++}) {
++  const [limit, setLimit] = useState(pageSize);
++  const list = useRef<HTMLDivElement>(null);
++  const more = useRef<HTMLButtonElement>(null);
++  const id = useId();
++
++  if (!items.length) return empty;
++
++  const ranked = groupItems(items, "group").map(([key, group]) => ({
++    key,
++    label: group.label,
++    subgroups: groupItems(group.items, "subgroup").map(([key, subgroup]) => ({
++      key,
++      label: subgroup.label,
++      items: [...subgroup.items].sort((a, b) => b.amount - a.amount || a.label.localeCompare(b.label)),
++    })),
++  }));
++  const max = items.reduce((largest, { amount }) => Math.max(largest, amount), 0) || 1;
++  let remaining = limit;
++
++  return (
++    <>
++      <div ref={list} id={id} role="group" aria-label={label} className="space-y-3">
++        {ranked.map((group) => {
++          if (remaining <= 0) return null;
++          return (
++            <div key={group.key} role={group.label ? "group" : undefined} aria-label={group.label}>
++              {group.label && (
++                <p className="border-b px-2 py-2 text-sm font-semibold">{group.label}</p>
++              )}
++              {group.subgroups.map((subgroup) => {
++                if (remaining <= 0) return null;
++                const visible = subgroup.items.slice(0, remaining);
++                remaining -= visible.length;
++                return (
++                  <div key={subgroup.key}>
++                    {subgroup.label && (
++                      <p className="px-2 pt-2 text-xs font-medium text-muted-foreground">{subgroup.label}</p>
++                    )}
++                    <ol role="list" aria-label={subgroup.label ?? group.label ?? label} className="divide-y border-b">
++                      {visible.map((item) => {
++                        const Element = item.onOpen ? "button" : "div";
++                        const percent = (Math.max(0, item.amount) / max) * 100;
++                        const color = item.color ?? "var(--color-un-blue)";
++                        return (
++                          <li key={item.id}>
++                            <Element
++                              data-ranked-list-item=""
++                              type={item.onOpen ? "button" : undefined}
++                              tabIndex={item.onOpen ? undefined : -1}
++                              onClick={item.onOpen}
++                              className={cn(
++                                "flex min-h-11 w-full flex-wrap items-start gap-x-2 gap-y-1.5 px-2 py-2 text-start text-sm focus-visible:outline-2 focus-visible:outline-un-blue sm:flex-nowrap sm:items-center sm:gap-3",
++                                item.onOpen && "cursor-pointer hover:bg-muted",
++                              )}
++                            >
++                              <span className="min-w-0 flex-1 break-words">
++                                <span className="block font-medium">{item.label}</span>
++                                {item.description && <span className="block text-xs text-muted-foreground">{item.description}</span>}
++                              </span>
++                              <span aria-hidden="true" className="order-last w-full shrink-0 sm:order-none sm:w-1/5 sm:max-w-56">
++                                <FinancialPanelBar percent={percent} color={color} />
++                              </span>
++                              <span className="w-1/5 min-w-14 max-w-28 shrink-0 break-words text-end font-medium tabular-nums">{item.value}</span>
++                            </Element>
++                          </li>
++                        );
++                      })}
++                    </ol>
++                  </div>
++                );
++              })}
++            </div>
++          );
++        })}
++      </div>
++      {items.length > pageSize && (
++        <div className="mt-1 flex flex-wrap gap-x-4">
++          {items.length > limit && (
++            <button
++              ref={more}
++              type="button"
++              aria-controls={id}
++              className={textAction}
++              onClick={() => {
++                setLimit(limit + pageSize);
++                requestAnimationFrame(() => list.current?.querySelectorAll<HTMLElement>("[data-ranked-list-item]")[limit]?.focus());
++              }}
++            >
++              Show more ({items.length - limit} remaining)
++            </button>
++          )}
++          {limit > pageSize && (
++            <button
++              type="button"
++              aria-controls={id}
++              className={textAction}
++              onClick={() => {
++                setLimit(pageSize);
++                requestAnimationFrame(() => more.current?.focus());
++              }}
++            >
++              Show less
++            </button>
++          )}
++        </div>
++      )}
++    </>
++  );
++}
 diff --git a/components/sankey-diagram.tsx b/components/sankey-diagram.tsx
-index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9927cb919 100644
+index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..aa6113d38dff5a9088625c94c568ce3cfd658fd0 100644
 --- a/components/sankey-diagram.tsx
 +++ b/components/sankey-diagram.tsx
-@@ -1,29 +1,108 @@
+@@ -1,29 +1,150 @@
  "use client";
 -import { useEffect, useMemo, useState, type ReactNode } from "react";
 +import { typography } from "../lib/typography";
 +import { cn } from "../lib/utils";
-+import { useEffect, useLayoutEffect, useMemo, useRef, useState, type ReactNode } from "react";
++import { useEffect, useLayoutEffect, useMemo, useRef, useState, useId, type ReactNode } from "react";
  import { layoutSankey, columnPosition, ribbon, selectionKey as flowSelectionKey,
    type SankeySelection as FlowSelection, type SankeyGraph as FlowGraph } from "../lib/sankey";
  export interface SankeyDiagramProps {
@@ -325,6 +767,7 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9
    linkGap?: number;
 +  /** Wrap node labels and fit the viewport to the chart and its controls. */
 +  wrapLabels?: boolean;
++  responsiveControls?: boolean;
    /** Space for full, wrapped labels after the final column, in SVG units. */
    endLabelWidth?: number;
    highlightedValue?: (selection: FlowSelection, source: string, target: string) => number;
@@ -334,7 +777,7 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9
 +  graph, columnControls, columnNotes, ariaLabel, selectionLabel, clearLabel,
    formatValue: formatBudget, describeNode: nodeDescription, describeLink,
 -  renderDetails, highlightedValue, linkOpacity, linkGap = 0, endLabelWidth,
-+  renderDetails, renderSelection, highlightedValue, linkOpacity, linkGap = 0, endLabelWidth, wrapLabels = false,
++  renderDetails, renderSelection, highlightedValue, linkOpacity, linkGap = 0, endLabelWidth, wrapLabels = false, responsiveControls = false,
  }: SankeyDiagramProps) {
 -  const chartWidth = Math.max(1200, columnPosition(columnControls.length - 1, columnControls.length) + 48 + (endLabelWidth ?? 0) + 24);
 -  const layout = useMemo(() => layoutSankey(graph, columnControls.length), [graph, columnControls.length]);
@@ -343,9 +786,44 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9
 +  const defaultWidth = wrapLabels
 +    ? columnPosition(0, columnControls.length) + columnPosition(columnControls.length - 1, columnControls.length) + 40
 +    : Math.max(1200, columnPosition(columnControls.length - 1, columnControls.length) + 48 + (endLabelWidth ?? 0) + 24);
++  const scroller = useRef<HTMLDivElement>(null);
++  const scrollerId = useId();
++  const columns = [...new Set(graph.nodes.map((node) => node.column))].sort((a, b) => a - b);
++  const columnCount = columns.length;
++  const [scrollPosition, setScrollPosition] = useState(0);
++  const [canScroll, setCanScroll] = useState(false);
++  const lastPosition = Math.max(0, columnCount - 1);
++  const progress = scrollPosition * lastPosition;
++  const activeColumn = Math.round(progress);
++  const atStart = scrollPosition <= 0.01;
++  const atEnd = scrollPosition >= 0.99;
++  const scrollColumn = (step: -1 | 1) => {
++    const element = scroller.current;
++    if (!element || !lastPosition || (step < 0 ? atStart : atEnd)) return;
++    const next = step < 0
++      ? Math.max(0, Math.ceil(progress - 0.02) - 1)
++      : Math.min(lastPosition, Math.floor(progress + 0.02) + 1);
++    const distance = element.scrollWidth - element.clientWidth;
++    element.scrollLeft = distance * next / lastPosition;
++  };
 +  const svgRef = useRef<SVGSVGElement>(null);
 +  const controlsRef = useRef<HTMLDivElement>(null);
 +  const containerRef = useRef<HTMLDivElement>(null);
++  useLayoutEffect(() => {
++    const element = scroller.current;
++    const container = containerRef.current;
++    if (!responsiveControls || !element || !container) return;
++    const measure = () => {
++      const distance = element.scrollWidth - element.clientWidth;
++      setCanScroll(distance > 1);
++      setScrollPosition(distance > 1 ? element.scrollLeft / distance : 0);
++    };
++    measure();
++    const observer = new ResizeObserver(measure);
++    observer.observe(element);
++    observer.observe(container);
++    return () => observer.disconnect();
++  }, [responsiveControls]);
 +  const [viewport, setViewport] = useState<{ graph: FlowGraph; x: number; width: number } | null>(null);
 +  const currentViewport = wrapLabels && viewport?.graph === graph ? viewport : null;
 +  const viewX = currentViewport?.x ?? 0;
@@ -364,6 +842,11 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9
 +    columnControls.length,
 +    node => labels.get(node.id)!.length * 16 + 14,
 +  ), [graph, columnControls.length, labels]);
++  const focusColumn = () => {
++    const nodes = layout.nodes.filter((node) => node.column === columns[activeColumn]);
++    const top = nodes.sort((a, b) => a.y - b.y)[0];
++    if (top) document.getElementById(`${scrollerId}-${top.id}`)?.focus();
++  };
 +  useLayoutEffect(() => {
 +    if (!wrapLabels) return;
 +    const svg = svgRef.current;
@@ -378,7 +861,8 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9
 +      let left = graph.nodes.length ? content.x : Infinity;
 +      let right = graph.nodes.length ? content.x + content.width : -Infinity;
 +      // Dropdowns use CSS pixels, while their anchors share the SVG's column slots.
-+      Array.from(controls.children).forEach((control, index) => {
++      const measureControls = !responsiveControls || window.matchMedia("(min-width: 1280px)").matches;
++      if (measureControls) Array.from(controls.children).forEach((control, index) => {
 +        const center = columnPosition(index, columnControls.length) + 20;
 +        const halfWidth = control.getBoundingClientRect().width * chartWidth / container.clientWidth / 2;
 +        left = Math.min(left, center - halfWidth);
@@ -411,11 +895,11 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9
 +      cancelAnimationFrame(frame);
 +      observer.disconnect();
 +    };
-+  }, [graph, layout, columnControls.length, chartWidth, wrapLabels]);
++  }, [graph, layout, columnControls.length, chartWidth, wrapLabels, responsiveControls]);
    const [hoverState, setHover] = useState<{
      graph: FlowGraph;
      selection: FlowSelection;
-@@ -54,7 +133,12 @@ export function SankeyDiagram({
+@@ -54,7 +175,12 @@ export function SankeyDiagram({
      highlightState?.graph === graph ? highlightState.selection : null;
    const active = pinned ?? highlight;
    const tooltip = hover ? renderDetails(hover.selection, true, pinned ?? undefined) : null;
@@ -429,27 +913,36 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9
    const pin = (selection: FlowSelection) => {
      setPinned(
        pinned && flowSelectionKey(pinned) === flowSelectionKey(selection)
-@@ -95,22 +179,29 @@ export function SankeyDiagram({
+@@ -87,30 +213,82 @@ export function SankeyDiagram({
+     <div
+       className="space-y-3"
+       onKeyDown={(event) => {
+-        if (event.key === "Escape") {
++        if (event.key === "Escape" && !event.defaultPrevented && !(pinned && renderSelection)) {
+           setHover(null);
+           setPinned(null);
+           setHighlight(null);
+         }
        }}
      >
-       <div className="overflow-x-auto rounded border border-border">
+-      <div className="overflow-x-auto rounded border border-border">
 -        <div className="min-w-[1000px]">
 -          <div className="relative h-10">
-+        <div ref={containerRef} className="min-w-[1000px]">
-+          <div ref={controlsRef} className={columnNotes?.some(Boolean) ? "relative h-16" : "relative h-10"}>
++      <div className="rounded border border-border">
++          <div ref={controlsRef} className={cn("relative", columnNotes?.some(Boolean) ? "h-16" : "h-10", responsiveControls && "max-xl:flex max-xl:h-auto max-xl:flex-wrap max-xl:gap-2 max-xl:p-2")}>
              {columnControls?.map((control, index) => (
                <div
                  key={index}
 -                className="absolute bottom-0 w-max -translate-x-1/2"
 +                data-sankey-column={index}
-+                className="absolute top-0 flex w-max -translate-x-1/2 flex-col items-center"
++                className={cn("absolute top-0 flex w-max -translate-x-1/2 flex-col items-center", responsiveControls && "max-xl:static max-xl:max-w-full max-xl:translate-x-0 max-xl:items-start")}
                  style={{
 -                  left: `${((columnPosition(index, columnControls.length) + 20) / chartWidth) * 100}%`,
 +                  left: `${((columnPosition(index, columnControls.length) + 20 - viewX) / chartWidth) * 100}%`,
                  }}
                >
 -                {control}
-+                <div className="flex h-10 items-end">{control}</div>
++                <div className={cn("flex h-10 items-end", responsiveControls && "max-xl:h-auto")}>{control}</div>
 +                {columnNotes?.[index] && (
 +                  <div role="note" className={cn(typography.caption, "mt-1 max-w-56 text-center text-muted-foreground")}>
 +                    {columnNotes[index]}
@@ -458,6 +951,52 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9
                </div>
              ))}
            </div>
++        {canScroll && lastPosition > 0 && (
++          <div className="flex flex-wrap items-center justify-between gap-x-2 border-t px-2 text-xs">
++            <button
++              type="button"
++              aria-label="Show previous flow column"
++              aria-controls={scrollerId}
++              aria-disabled={atStart}
++              onClick={() => scrollColumn(-1)}
++              className="min-h-11 underline underline-offset-2 aria-disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-un-blue"
++            >
++              Previous
++            </button>
++            <span className="sr-only" aria-live="polite">Column {activeColumn + 1} of {columnCount}</span>
++            <button
++              type="button"
++              aria-controls={scrollerId}
++              onClick={focusColumn}
++              className="min-h-11 underline underline-offset-2 focus-visible:outline-2 focus-visible:outline-un-blue"
++            >
++              Explore column {activeColumn + 1} of {columnCount}
++            </button>
++            <button
++              type="button"
++              aria-label="Show next flow column"
++              aria-controls={scrollerId}
++              aria-disabled={atEnd}
++              onClick={() => scrollColumn(1)}
++              className="min-h-11 underline underline-offset-2 aria-disabled:opacity-50 focus-visible:outline-2 focus-visible:outline-un-blue"
++            >
++              Next
++            </button>
++          </div>
++        )}
++        <div
++          id={scrollerId}
++          ref={scroller}
++          className="overflow-x-auto focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-un-blue"
++          tabIndex={canScroll ? 0 : undefined}
++          aria-label={canScroll ? "Scrollable flow diagram" : undefined}
++          role={canScroll ? "region" : undefined}
++          onScroll={(event) => {
++            const { scrollLeft, scrollWidth, clientWidth } = event.currentTarget;
++            setScrollPosition(Math.max(0, Math.min(1, scrollLeft / Math.max(1, scrollWidth - clientWidth))));
++          }}
++        >
++            <div ref={containerRef} className="min-w-[1000px]">
            <svg
 -            viewBox={`0 0 ${chartWidth} ${layout.height}`}
 +            ref={svgRef}
@@ -465,7 +1004,7 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9
              className="w-full"
              role="group"
              aria-label={ariaLabel}
-@@ -142,7 +233,7 @@ export function SankeyDiagram({
+@@ -142,7 +320,7 @@ export function SankeyDiagram({
                    tabIndex={0}
                    aria-pressed={isPinned}
                    aria-label={describeLink(link.source, link.target, link.value, pinned ?? undefined)}
@@ -474,7 +1013,7 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9
                    onKeyDown={(event) => {
                      if (event.key === "Enter" || event.key === " ") {
                        event.preventDefault();
-@@ -177,20 +268,15 @@ export function SankeyDiagram({
+@@ -177,30 +355,26 @@ export function SankeyDiagram({
              })}
              {layout.nodes.map((node) => {
                const leftNet =
@@ -499,7 +1038,10 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9
                return (
                  <g
                    key={node.id}
-@@ -200,7 +286,7 @@ export function SankeyDiagram({
++                  id={`${scrollerId}-${node.id}`}
+                   tabIndex={0}
+                   role="button"
+                   aria-pressed={
                      pinned?.kind === "node" && pinned.id === node.id
                    }
                    opacity={relatedNode(node.id) ? 1 : 0.3}
@@ -508,7 +1050,7 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9
                    onKeyDown={(event) => {
                      if (event.key === "Enter" || event.key === " ") {
                        event.preventDefault();
-@@ -254,7 +340,7 @@ export function SankeyDiagram({
+@@ -254,7 +428,7 @@ export function SankeyDiagram({
                    <text
                      x={x}
                      y={node.y + 11}
@@ -517,7 +1059,7 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9
                      fontSize={14}
                      fill="currentColor"
                      stroke="var(--background)"
-@@ -267,7 +353,7 @@ export function SankeyDiagram({
+@@ -267,7 +441,7 @@ export function SankeyDiagram({
                    <text
                      x={x}
                      y={node.y + 25 + (labelLines.length - 1) * 16}
@@ -526,7 +1068,7 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9
                      fontSize={12}
                      fill="currentColor"
                      stroke="var(--background)"
-@@ -275,7 +361,7 @@ export function SankeyDiagram({
+@@ -275,13 +449,14 @@ export function SankeyDiagram({
                      paintOrder="stroke"
                    >
                      {formatBudget(
@@ -535,7 +1077,14 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9
                      )}
                    </text>
                  </g>
-@@ -295,6 +381,7 @@ export function SankeyDiagram({
+               );
+             })}
+           </svg>
++            </div>
+         </div>
+       </div>
+       {hover && tooltip && (
+@@ -295,6 +470,7 @@ export function SankeyDiagram({
            {tooltip}
          </div>
        )}
@@ -543,7 +1092,7 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9
        {details && (
          <section
            aria-label={selectionLabel}
-@@ -320,16 +407,22 @@ export function SankeyDiagram({
+@@ -320,16 +496,22 @@ export function SankeyDiagram({
      </div>
    );
  }
@@ -573,6 +1122,50 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..1eec8fc4e3e1f6ba484eb357fcc871a9
 -  return lines;
 +  return lines.length ? lines : [""];
  }
+diff --git a/components/search-input.tsx b/components/search-input.tsx
+index 494cc1204e55e4a2c3cbe1ebdc2eeb2569886c54..053c942364a0f4dab572c72eb14c54506875c109 100644
+--- a/components/search-input.tsx
++++ b/components/search-input.tsx
+@@ -58,7 +58,7 @@ export function SearchInput({
+         value={value}
+         className={cn(
+           "h-9 w-full ps-8 text-sm text-foreground transition-colors",
+-          showClear && hasValue ? "pe-8" : "pe-2",
++          showClear && hasValue ? "pe-12 sm:pe-8" : "pe-2",
+           "placeholder:text-muted-foreground",
+           "focus-visible:ring-focus-ring focus-visible:ring-un-blue/50 focus-visible:outline-none",
+           // The UA's own clear affordance would sit next to ours.
+@@ -73,7 +73,7 @@ export function SearchInput({
+           type="button"
+           onClick={onClear}
+           aria-label="Clear search"
+-          className="absolute end-2 rounded-sm text-muted-foreground transition-opacity hover:text-foreground focus-visible:ring-focus-ring focus-visible:ring-un-blue/50 focus-visible:outline-none"
++          className="absolute end-0 flex size-11 items-center justify-center rounded-sm sm:end-2 sm:size-5 text-muted-foreground transition-opacity hover:text-foreground focus-visible:ring-focus-ring focus-visible:ring-un-blue/50 focus-visible:outline-none"
+         >
+           <X className="size-4" />
+         </button>
+diff --git a/components/site-header.tsx b/components/site-header.tsx
+index d1772aa4e2a99a0656d7d085057a5a06ddeac9a2..dde3c121a3872dcce8bdf97c09ffb9f03f292c94 100644
+--- a/components/site-header.tsx
++++ b/components/site-header.tsx
+@@ -243,13 +243,11 @@ export function SiteHeader({
+                   type="button"
+                   aria-label={mobileMenuLabel}
+                   className={cn(
+-                    "inline-flex size-9 shrink-0 cursor-pointer items-center justify-center rounded-md text-foreground/80 transition-colors hover:text-foreground focus-visible:ring-focus-ring focus-visible:ring-un-blue/50 focus-visible:outline-none lg:hidden",
+-                    // A 36px target centers a 24px SVG. Menu's rounded 2px
+-                    // stroke ends 3px inside that SVG, so move the target
+-                    // outward by 6 + 3px to align its ink with the emblem.
++                    "inline-flex size-11 shrink-0 cursor-pointer items-center justify-center rounded-md text-foreground/80 transition-colors hover:text-foreground focus-visible:ring-focus-ring focus-visible:ring-un-blue/50 focus-visible:outline-none lg:hidden",
++                    // Offset the 44px target to align its 24px icon with the emblem.
+                     compact
+-                      ? "absolute -end-[9px] top-1/2 -translate-y-1/2"
+-                      : "-me-[9px]",
++                      ? "absolute -end-[13px] top-1/2 -translate-y-1/2"
++                      : "-me-[13px]",
+                   )}
+                 >
+                   <Menu aria-hidden className="size-6" />
 diff --git a/lib/sankey.ts b/lib/sankey.ts
 index e464f4a5521b4201691e53190ff0a57b0d866d55..8940eb55016377f7783ce0634ba780ff07d6a5a2 100644
 --- a/lib/sankey.ts

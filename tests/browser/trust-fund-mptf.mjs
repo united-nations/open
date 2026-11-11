@@ -45,8 +45,18 @@ try {
       .filter({ hasText: "Source references" })
       .click();
     assert.ok(await contributions.locator('a[href$="#page=436"]').count());
-    await page.goto(`${portalUrl}/secretariat/trust-funds/`);
+    await page.goto(`${portalUrl}/secretariat/trust-funds/`, {
+      waitUntil: "networkidle",
+    });
+    await page.getByRole("radio", { name: "By group", exact: true }).waitFor();
     await page.getByRole("slider", { name: "Select year" }).press("ArrowLeft");
+    const separateSource = page
+      .getByRole("group", { name: "Reporting source" })
+      .getByRole("button", {
+        name: "Separately reported entities",
+        exact: true,
+      });
+    if (await separateSource.count()) await separateSource.click();
     await page
       .locator("dl dd")
       .getByText(
@@ -69,7 +79,9 @@ try {
       .waitFor();
     const peace = funds.find((node) => node.label === "UN Peacebuilding Fund");
     await group.getByRole("button", { name: peace.label, exact: true }).click();
-    const panel = page.locator('aside[aria-labelledby="trust-fund-title"]');
+    const panel = page.locator(
+      '[role="dialog"][aria-labelledby="trust-fund-title"]',
+    );
     await panel.waitFor();
     await panel
       .getByText("Schedule 8.1 portfolio scope", { exact: true })
@@ -105,26 +117,23 @@ try {
       peace.id,
     );
     await page.keyboard.press("Escape");
-    const negatives = page.locator(
-      'details[aria-label="Funds with zero or negative expenditure"]',
-    );
-    await negatives.locator(":scope > summary").click();
+    await page
+      .getByRole("group", { name: "Data view" })
+      .getByRole("radio", { name: "List" })
+      .locator("..")
+      .click();
+    const list = page.getByRole("group", { name: "Ranked chart data" });
     for (const fund of funds.filter((node) => node.amount <= 0)) {
-      assert.equal(
-        await negatives
-          .getByRole("button")
-          .filter({ hasText: fund.label })
-          .count(),
-        1,
-      );
+      await search.fill(fund.label);
+      const row = list.getByRole("button").filter({ hasText: fund.label });
+      assert.ok((await row.innerText()).includes(formatBudget(fund.amount)));
+      assert.equal(await row.count(), 1);
     }
     const haiti = funds.find((node) =>
       node.id.endsWith("mptf:haiti-cholera-response-fund"),
     );
-    await negatives
-      .getByRole("button")
-      .filter({ hasText: haiti.label })
-      .click();
+    await search.fill(haiti.label);
+    await list.getByRole("button").filter({ hasText: haiti.label }).click();
     await panel.waitFor();
     assert.equal(
       decodeURIComponent(new URL(page.url()).hash.split("=")[1]),

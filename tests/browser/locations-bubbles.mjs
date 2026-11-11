@@ -23,6 +23,22 @@ try {
     fs.readFileSync(`public/data/geographic-expenses-${year}.json`, "utf8"),
   );
   const levels = page.getByRole("group", { name: "Reporting level" });
+  assert.deepEqual(await levels.getByRole("button").allTextContents(), [
+    "Global",
+    "Regional",
+    "Subregional",
+    "Country-level",
+  ]);
+  assert.equal(
+    await levels
+      .locator("circle")
+      .first()
+      .evaluate((circle) => {
+        const style = getComputedStyle(circle);
+        return `${style.fillOpacity} ${style.strokeWidth}`;
+      }),
+    "0.28 1.5px",
+  );
   const search = page.getByPlaceholder("Search by country or region...");
   const snapshot = () =>
     map

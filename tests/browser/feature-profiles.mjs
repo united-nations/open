@@ -113,6 +113,7 @@ try {
       exact: true,
     })
     .waitFor();
+  await fundingFlows.scrollIntoViewIfNeeded();
   await fundingFlows.locator("svg g[role=button]").first().waitFor();
   assert.equal(await page.locator("#secretariat-flows").count(), 1);
   const columns = await fundingFlows

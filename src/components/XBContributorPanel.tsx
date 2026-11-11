@@ -14,7 +14,7 @@ import {
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { SourceReferenceList } from "@/components/SourceReferenceList";
 import { SidebarControls } from "@/components/SidebarControls";
-import { useFocusTrap } from "@/hooks/useFocusTrap";
+import { DetailDrawer, DrawerTitle } from "@/components/DetailDrawer";
 import { loadStaticData } from "@/lib/data";
 import { formatBudget } from "@un-eosg/ui/format-budget";
 import type {
@@ -161,85 +161,62 @@ function ContributorDialog({
       item.year === year,
   );
   const row = series?.rows.find((item) => item.name === initialRow.name);
-  const ref = useFocusTrap(true);
-  useEffect(() => {
-    const overflow = document.documentElement.style.overflow;
-    document.documentElement.style.overflow = "hidden";
-    const close = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", close);
-    return () => {
-      document.documentElement.style.overflow = overflow;
-      document.removeEventListener("keydown", close);
-    };
-  }, [onClose]);
   return (
-    <div
-      className="fixed inset-0 z-50 flex justify-end bg-black/50"
-      onMouseDown={(event) => {
-        if (event.target === event.currentTarget) onClose();
-      }}
+    <DetailDrawer
+      titleId="xb-contributor-title"
+      onClose={onClose}
+      className="sm:w-[32rem]"
     >
-      <aside
-        ref={ref}
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="xb-contributor-title"
-        className="h-full w-full bg-white shadow-2xl sm:w-[32rem]"
+      <FinancialDetailPanel
+        title={<DrawerTitle>{initialRow.name}</DrawerTitle>}
+        titleId="xb-contributor-title"
+        subtitle={`${initialSeries.entity} · ${year}`}
+        yearSelectorPlacement="header"
+        yearSelector={{
+          years,
+          selected: year,
+          onChange: setYear,
+          label: "Select year",
+        }}
+        notice={
+          !row
+            ? {
+                tone: "empty",
+                description: "No contributor data is published for this year.",
+              }
+            : undefined
+        }
+        controls={
+          <SidebarControls
+            onClose={onClose}
+            closeLabel="Close contributor details"
+          />
+        }
+        total={
+          series && row
+            ? { label: series.measure, value: formatBudget(row.amount) }
+            : undefined
+        }
       >
-        <FinancialDetailPanel
-          title={initialRow.name}
-          titleId="xb-contributor-title"
-          subtitle={`${initialSeries.entity} · ${year}`}
-          yearSelectorPlacement="header"
-          yearSelector={{
-            years,
-            selected: year,
-            onChange: setYear,
-            label: "Select year",
-          }}
-          notice={
-            !row
-              ? {
-                  tone: "empty",
-                  description:
-                    "No contributor data is published for this year.",
-                }
-              : undefined
-          }
-          controls={
-            <SidebarControls
-              onClose={onClose}
-              closeLabel="Close contributor details"
-            />
-          }
-          total={
-            series && row
-              ? { label: series.measure, value: formatBudget(row.amount) }
-              : undefined
-          }
-        >
-          {series && row && (
-            <>
-              <p className="mb-3 text-sm">{measureNote(series)}</p>
-              {series.entity === "UNODC" ? (
-                row.grouped && (
-                  <p className="mb-3 text-sm">
-                    This is a grouped counterparty as reported by the source.
-                  </p>
-                )
-              ) : (
-                <FinancialPanelSection heading="Reported destinations">
-                  <ContributorDetails row={row} />
-                </FinancialPanelSection>
-              )}
-              <ContributorSourceReferences series={series} row={row} />
-            </>
-          )}
-        </FinancialDetailPanel>
-      </aside>
-    </div>
+        {series && row && (
+          <>
+            <p className="mb-3 text-sm">{measureNote(series)}</p>
+            {series.entity === "UNODC" ? (
+              row.grouped && (
+                <p className="mb-3 text-sm">
+                  This is a grouped counterparty as reported by the source.
+                </p>
+              )
+            ) : (
+              <FinancialPanelSection heading="Reported destinations">
+                <ContributorDetails row={row} />
+              </FinancialPanelSection>
+            )}
+            <ContributorSourceReferences series={series} row={row} />
+          </>
+        )}
+      </FinancialDetailPanel>
+    </DetailDrawer>
   );
 }
 
