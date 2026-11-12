@@ -5,6 +5,7 @@ import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { GroupedTreemap } from "@un-eosg/ui/components/grouped-treemap";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 import { SearchInput } from "@un-eosg/ui/components/search-input";
+import { SegmentedControl } from "@un-eosg/ui/components/segmented-control";
 import { formatAssessmentRate } from "@un-eosg/ui/format-budget";
 import { ChartFooter } from "@/components/ChartFooter";
 import { YearSlider } from "@/components/YearSlider";
@@ -26,15 +27,23 @@ import { useYearRanges } from "@/lib/useYearRanges";
 
 const colors = CEB_ASSESSMENT_COLORS;
 
-export function CebAssessmentsTreemap({
-  view = "contributors",
-}: {
-  view?: "contributors" | "organizations";
-}) {
+export function CebAssessmentsTreemap() {
   const { years, default: defaultYear } = useYearRanges().cebAssessments;
   const [year, setYear] = useState(defaultYear);
-  const [query, setQuery] = useState("");
+  const [view, setView] = useState<"contributors" | "organizations">(
+    "contributors",
+  );
+  const [queries, setQueries] = useState({
+    contributors: "",
+    organizations: "",
+  });
+  const [showCurrent, setShowCurrent] = useState(true);
   const [showPrior, setShowPrior] = useState(true);
+  const query = queries[view];
+  const setQuery = (value: string) =>
+    setQueries((current) => ({ ...current, [view]: value }));
+  const searchLabel =
+    view === "organizations" ? "Search organizations" : "Search member states";
   const measures = assessmentMeasures(year);
   const load = useCallback(() => loadCebAssessments(year), [year]);
   const {
@@ -50,10 +59,9 @@ export function CebAssessmentsTreemap({
         name: contributor.name,
         contributors: [contributor],
       }));
+  const searchTerm = query.trim().toLocaleLowerCase();
   const matches = groups
-    .filter(({ name }) =>
-      name.toLocaleLowerCase().includes(query.trim().toLocaleLowerCase()),
-    )
+    .filter(({ name }) => name.toLocaleLowerCase().includes(searchTerm))
     .map((group) => ({ ...group, ...assessmentTotals(group.contributors) }));
   const contributors = matches.flatMap((group) => group.contributors);
   const exclusions = assessmentExclusionNotes(year, contributors);
@@ -64,10 +72,9 @@ export function CebAssessmentsTreemap({
     const priorFill = showPrior ? Math.max(0, contributor.prior.value ?? 0) : 0;
     if (assessed === 0 && priorFill === 0) return [];
     const unknownFill = Math.min(contributor.unknownCurrent, assessed);
-    const fill = Math.min(
-      contributor.paidWithinAssessment,
-      assessed - unknownFill,
-    );
+    const fill = showCurrent
+      ? Math.min(contributor.paidWithinAssessment, assessed - unknownFill)
+      : 0;
     const layoutValue = Math.max(assessed, fill + unknownFill + priorFill);
     const darkFillBehindLabel = fill / layoutValue >= 0.85;
     const currentAmount = formatAssessmentAmount(contributor.current);
@@ -75,7 +82,7 @@ export function CebAssessmentsTreemap({
     const assessedAmount = formatAssessmentAmount(contributor.assessed);
     const paid = contributor.current.value;
     const valueLabel =
-      assessed > 0 && paid !== null && paid >= 0
+      showCurrent && assessed > 0 && paid !== null && paid >= 0
         ? `${formatAssessmentRate((paid / assessed) * 100)} of ${assessedAmount} ${contributor.current.partial ? "reported paid" : "paid"} in ${year} towards ${year}`
         : `${assessedAmount} assessed`;
     return [
@@ -97,7 +104,9 @@ export function CebAssessmentsTreemap({
           ? `${valueLabel}. ${measures.prior.label}: ${priorAmount}.`
           : valueLabel,
         accessibleDescription: [
-          fill === 0 ? `${measures.current.label}: ${currentAmount}.` : "",
+          showCurrent && fill === 0
+            ? `${measures.current.label}: ${currentAmount}.`
+            : "",
           showPrior && priorFill === 0
             ? `${measures.prior.label}: ${priorAmount}.`
             : "",
@@ -137,6 +146,24 @@ export function CebAssessmentsTreemap({
   });
   return (
     <div aria-busy={loading}>
+      <div className="mb-3 flex flex-wrap items-center gap-x-4 gap-y-1">
+        <SegmentedControl
+          label="Group assessments by"
+          options={[
+            { value: "contributors", label: "By member state" },
+            { value: "organizations", label: "By organization" },
+          ]}
+          value={view}
+          onValueChange={(value) =>
+            setView(
+              value === "organizations" ? "organizations" : "contributors",
+            )
+          }
+        />
+        <div className="max-sm:[&_[role=slider]]:hidden">
+          <YearSlider years={years} selectedYear={year} onChange={setYear} />
+        </div>
+      </div>
       <div
         role="group"
         aria-label="Assessment measures"
@@ -144,6 +171,7 @@ export function CebAssessmentsTreemap({
       >
         <LegendLabel
           {...measures.assessed}
+          label={`${measures.assessed.label} in ${year}`}
           color={colors.assessed}
           marker={
             <span
@@ -153,7 +181,12 @@ export function CebAssessmentsTreemap({
             />
           }
         />
-        <LegendLabel {...measures.current} color={colors.current} />
+        <LegendLabel
+          {...measures.current}
+          color={colors.current}
+          selected={showCurrent}
+          onToggle={() => setShowCurrent((current) => !current)}
+        />
         {unknown > 0 && (
           <LegendLabel label="Payment status unknown" color={colors.unknown} />
         )}
@@ -170,39 +203,30 @@ export function CebAssessmentsTreemap({
         showRowLabels={false}
         plotClassName={SYSTEM_TREEMAP_HEIGHT_CLASS}
         totalLabel={measures.assessed.label}
-        controlsClassName="min-w-[min(100%,18rem)]"
+        controlsClassName="sm:min-w-[19.5rem]"
         controls={
-          <div className="flex max-w-full min-w-0 items-center gap-3">
-            <div className="shrink-0">
-              <YearSlider
-                years={years}
-                selectedYear={year}
-                onChange={setYear}
-              />
-            </div>
-            <div className="w-48 min-w-0">
-              <SearchInput
-                variant="border-bottom"
-                aria-label={`Search assessed ${view}`}
-                placeholder={`Search assessed ${view}…`}
-                value={query}
-                onChange={(event) => setQuery(event.currentTarget.value)}
-                showClear
-                onClear={() => setQuery("")}
-                className="min-w-0"
-              />
-            </div>
+          <div className="min-w-0 flex-1 sm:flex-none">
+            <SearchInput
+              variant="border-bottom"
+              aria-label={searchLabel}
+              placeholder="Search…"
+              value={query}
+              onChange={(event) => setQuery(event.currentTarget.value)}
+              showClear
+              onClear={() => setQuery("")}
+              className="h-11 w-full text-base sm:h-9 sm:w-48 sm:text-sm"
+            />
           </div>
         }
         summaries={[
           {
             key: "assessed",
-            label: measures.assessed.label,
+            label: "Assessments payable",
             value: formatAssessmentAmount(totals.assessed),
           },
           {
             key: "current",
-            label: measures.current.label,
+            label: `Paid towards ${year}`,
             value: formatAssessmentAmount(totals.current),
           },
           ...(unknown > 0
@@ -216,7 +240,7 @@ export function CebAssessmentsTreemap({
             : []),
           {
             key: "prior",
-            label: measures.prior.label,
+            label: "Paid towards earlier years",
             value: formatAssessmentAmount(totals.prior),
           },
         ]}
@@ -244,7 +268,7 @@ export function CebAssessmentsTreemap({
               rows={[
                 {
                   label: measures.current.label,
-                  color: colors.current,
+                  color: showCurrent ? colors.current : undefined,
                   value: formatAssessmentAmount(current),
                   share: showShare ? paid / leaf.value : undefined,
                 },

@@ -54,13 +54,28 @@ try {
       labels.indexOf("Assessments"),
       labels.indexOf("Contributors") + 1,
     );
-    const contributors = page.getByRole("region", {
-      name: "Assessed contributions payable and paid by member state",
+    const chart = page.getByRole("region", {
+      name: "Assessed contributions and payments",
       exact: true,
     });
-    const organizations = page.getByRole("region", {
-      name: "Assessed contributions receivable and received by organization",
-      exact: true,
+    const grouping = chart.getByRole("group", { name: "Group assessments by" });
+    const byMemberState = grouping.getByRole("radio", {
+      name: "By member state",
+    });
+    const byOrganization = grouping.getByRole("radio", {
+      name: "By organization",
+    });
+    const years = chart
+      .getByRole("combobox", { name: "Select year from list" })
+      .first();
+    const initialYear = await years.inputValue();
+    const legend = chart.getByRole("group", { name: "Assessment measures" });
+    const display = chart.getByRole("group", { name: "Data view" });
+    const memberSearch = chart.getByRole("searchbox", {
+      name: "Search member states",
+    });
+    const organizationSearch = chart.getByRole("searchbox", {
+      name: "Search organizations",
     });
     const sourceParagraph = page.locator("p + p").filter({
       has: page.getByRole("link", {
@@ -69,59 +84,113 @@ try {
       }),
     });
     assert.match(await sourceParagraph.innerText(), /^Figures come from/);
-    const china = contributors.getByRole("button", {
+    const china = chart.getByRole("button", {
       name: "China",
       exact: true,
     });
-    const un = organizations.getByRole("button", {
+    const un = chart.getByRole("button", {
       name: "UN Secretariat",
       exact: true,
     });
     await china.waitFor();
-    await un.waitFor();
+    assert.ok(await byMemberState.isChecked());
+    assert.equal(await un.count(), 0);
+    await legend
+      .getByText(`Assessed contributions payable in ${initialYear}`, {
+        exact: true,
+      })
+      .waitFor();
+    const [groupBox, yearBox, legendBox, displayBox, searchBox, totalsBox] =
+      await Promise.all(
+        [
+          grouping,
+          years,
+          legend,
+          display,
+          memberSearch,
+          chart.locator("dl").first(),
+        ].map((control) => control.boundingBox()),
+      );
+    const centerY = ({ y, height }) => y + height / 2;
+    assert.ok(Math.abs(centerY(groupBox) - centerY(yearBox)) < 2);
+    assert.ok(groupBox.y + groupBox.height <= legendBox.y);
+    assert.ok(legendBox.y + legendBox.height <= searchBox.y);
+    assert.ok(Math.abs(centerY(displayBox) - centerY(searchBox)) < 2);
     if (!mobile) {
-      for (const chart of [contributors, organizations]) {
-        const years = chart
-          .getByRole("combobox", { name: "Select year from list" })
-          .first();
-        const initialYear = await years.inputValue();
-        await years.selectOption("2024");
-        const legend = chart.getByRole("group", {
-          name: "Assessment measures",
-        });
-        for (const [label, explanation] of [
-          ["Assessed contributions payable", /required to pay.*2024/],
-          ["Paid in 2024 towards 2024", /received in 2024.*same year/],
-          [
-            "Paid in 2024 towards earlier years",
-            /received in 2024.*earlier years/,
-          ],
-        ]) {
-          await legend.getByText(label, { exact: true }).hover();
-          await page
-            .getByRole("tooltip")
-            .filter({ hasText: explanation })
-            .waitFor();
-        }
-        const prior = legend.getByRole("button", {
-          name: "Paid in 2024 towards earlier years",
-          exact: true,
-        });
-        await prior.click();
-        assert.equal(await prior.getAttribute("aria-pressed"), "false");
-        await prior.click();
-        assert.equal(await prior.getAttribute("aria-pressed"), "true");
-        await years.selectOption(initialYear);
+      assert.ok(totalsBox.x > searchBox.x + searchBox.width);
+      assert.ok(
+        totalsBox.y <= centerY(searchBox) &&
+          centerY(searchBox) < totalsBox.y + totalsBox.height,
+      );
+    }
+    await years.selectOption("2024");
+    if (!mobile) {
+      for (const [label, explanation] of [
+        ["Assessed contributions payable in 2024", /required to pay.*2024/],
+        ["Paid in 2024 towards 2024", /received in 2024.*same year/],
+        [
+          "Paid in 2024 towards earlier years",
+          /received in 2024.*earlier years/,
+        ],
+      ]) {
+        await legend.getByText(label, { exact: true }).hover();
+        await page
+          .getByRole("tooltip")
+          .filter({ hasText: explanation })
+          .waitFor();
       }
     }
-    const a = await contributors.boundingBox(),
-      b = await organizations.boundingBox();
-    assert.ok(Math.abs(a.width - b.width) < 2 && a.y < b.y);
-    const trend = organizations.getByRole("region", {
+    const prior = legend.getByRole("button", {
+      name: "Paid in 2024 towards earlier years",
+      exact: true,
+    });
+    const current = legend.getByRole("button", {
+      name: "Paid in 2024 towards 2024",
+      exact: true,
+    });
+    const tileDescription = () =>
+      china.evaluate(
+        (tile) =>
+          document.getElementById(tile.getAttribute("aria-describedby"))
+            .textContent,
+      );
+    assert.match(await tileDescription(), /Paid in 2024 towards 2024:/);
+    await current.click();
+    assert.equal(await current.getAttribute("aria-pressed"), "false");
+    assert.doesNotMatch(await tileDescription(), /Paid in 2024 towards 2024:/);
+    await prior.click();
+    assert.equal(await prior.getAttribute("aria-pressed"), "false");
+    await memberSearch.fill("China");
+    await display.getByRole("radio", { name: "List" }).locator("..").click();
+    const list = chart.getByRole("group", { name: "Ranked chart data" });
+    const chinaListItem = list.getByRole("button", { name: /^China / });
+    await chinaListItem.waitFor();
+    assert.doesNotMatch(
+      await chinaListItem.innerText(),
+      /paid in 2024 towards 2024/,
+    );
+    await byOrganization.locator("..").click();
+    assert.equal(await years.inputValue(), "2024");
+    assert.equal(await current.getAttribute("aria-pressed"), "false");
+    assert.equal(await prior.getAttribute("aria-pressed"), "false");
+    assert.equal(await organizationSearch.inputValue(), "");
+    await organizationSearch.fill("UN Secretariat");
+    await list.getByText("UN Secretariat", { exact: true }).waitFor();
+    await byMemberState.locator("..").click();
+    assert.equal(await memberSearch.inputValue(), "China");
+    await current.click();
+    assert.equal(await current.getAttribute("aria-pressed"), "true");
+    await chinaListItem.getByText(/paid in 2024 towards 2024/).waitFor();
+    await memberSearch.fill("");
+    await prior.click();
+    assert.equal(await prior.getAttribute("aria-pressed"), "true");
+    await display.getByRole("radio", { name: "Chart" }).locator("..").click();
+    await years.selectOption(initialYear);
+    const trend = chart.getByRole("region", {
       name: "System-wide assessments and payments over time",
       exact: true,
     });
-    const balances = organizations.getByRole("region", {
+    const balances = chart.getByRole("region", {
       name: "Reported outstanding assessments",
       exact: true,
     });
@@ -191,6 +260,7 @@ try {
       .getByRole("button", { name: "Close sidebar", exact: true })
       .click();
     await page.getByRole("dialog").waitFor({ state: "hidden" });
+    await byOrganization.locator("..").click();
     await un.scrollIntoViewIfNeeded();
     await un.click();
     await page
@@ -237,7 +307,7 @@ try {
     assert.equal(
       await page
         .getByRole("heading", {
-          name: "Assessed contributions payable and paid by member state",
+          name: "Assessed contributions and payments",
           exact: true,
         })
         .count(),

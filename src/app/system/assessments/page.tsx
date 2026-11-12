@@ -44,29 +44,16 @@ export default function SystemAssessmentsPage() {
         <section
           id={CEB_ASSESSMENTS_SECTION}
           className="scroll-mt-40 space-y-3"
-          aria-labelledby="assessment-contributors-title"
+          aria-labelledby="assessment-chart-title"
         >
           <SectionHeading
-            id="assessment-contributors-title"
+            id="assessment-chart-title"
             anchor={CEB_ASSESSMENTS_SECTION}
           >
-            Assessed contributions payable and paid by member state
+            Assessed contributions and payments
           </SectionHeading>
           <CebAssessmentsTreemap />
-        </section>
-        <section
-          id="assessment-organizations"
-          className="mt-8 scroll-mt-40 space-y-3 border-t border-gray-200 pt-4"
-          aria-labelledby="assessment-organizations-title"
-        >
-          <SectionHeading
-            id="assessment-organizations-title"
-            anchor="assessment-organizations"
-          >
-            Assessed contributions receivable and received by organization
-          </SectionHeading>
-          <CebAssessmentsTreemap view="organizations" />
-          <div className="mt-8 grid items-start gap-8 lg:grid-cols-2">
+          <div className="mt-8 grid items-start gap-8 border-t border-gray-200 pt-4 lg:grid-cols-2">
             <section
               aria-labelledby="assessment-trends-title"
               className="min-w-0 space-y-3"
