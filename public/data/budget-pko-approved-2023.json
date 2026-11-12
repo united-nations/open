@@ -8,7 +8,7 @@
     "year": 2023,
     "fiscalYear": "2023/24",
     "currency": "USD",
-    "total": 5942183000,
+    "total": 6345442700,
     "costClasses": {
       "military_police_personnel": "Military and police personnel",
       "civilian_personnel": "Civilian personnel",
@@ -28,11 +28,11 @@
       "UNMIK": "United Nations Interim Administration Mission in Kosovo",
       "UNMISS": "United Nations Mission in South Sudan",
       "UNSOS": "United Nations Support Office in Somalia",
-      "UNSOH": "United Nations Support Office in Somalia (successor arrangement)"
+      "UNSOH": "United Nations Support Office in Haiti"
     },
     "partial": false,
-    "scopeLabel": "Peacekeeping missions included in the per-mission corpus",
-    "scopeWarning": "This is not the complete UN peacekeeping budget. The support account, enterprise items and some closed-mission accounts are outside this corpus.",
+    "scopeLabel": "Peacekeeping accounts in the consolidated UN budget tables",
+    "scopeWarning": "Gross resources for the displayed accounts. Budgeted voluntary contributions in kind are reported separately. Mission and account detail follows the cited documents.",
     "coverage": {
       "missionsInCycleReference": 13,
       "missionsDisplayed": 13,
@@ -7005,5 +7005,167 @@
         "pdfPageScope": "table"
       }
     }
-  ]
+  ],
+  "peacekeepingSupplement": {
+    "accounts": [
+      {
+        "code": "PK-SUPPORT",
+        "label": "Peacekeeping support account",
+        "category": "support_account",
+        "amount": 387808200,
+        "source": {
+          "symbol": "A/79/680",
+          "pdfPage": 3,
+          "tableTitle": "Performance of financial resources",
+          "columnHeader": "Apportionment",
+          "rowLabel": "Gross requirements",
+          "url": "https://digitallibrary.un.org/nanna/record/4078321/files/A_79_680-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+          "pdfPageScope": "table"
+        },
+        "note": "Shared support for United Nations peacekeeping operations.",
+        "breakdown": [
+          {
+            "label": "Post resources",
+            "amount": 268400700,
+            "source": {
+              "symbol": "A/79/680",
+              "pdfPage": 3,
+              "tableTitle": "Performance of financial resources",
+              "columnHeader": "Apportionment",
+              "rowLabel": "Post requirements",
+              "url": "https://digitallibrary.un.org/nanna/record/4078321/files/A_79_680-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Post resources"
+            }
+          },
+          {
+            "label": "Non-post resources",
+            "amount": 63303700,
+            "source": {
+              "symbol": "A/79/680",
+              "pdfPage": 3,
+              "tableTitle": "Performance of financial resources",
+              "columnHeader": "Apportionment",
+              "rowLabel": "Non-post requirements",
+              "url": "https://digitallibrary.un.org/nanna/record/4078321/files/A_79_680-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Non-post resources"
+            }
+          },
+          {
+            "label": "Corporate costs",
+            "amount": 56103800,
+            "source": {
+              "symbol": "A/79/680",
+              "pdfPage": 3,
+              "tableTitle": "Performance of financial resources",
+              "columnHeader": "Apportionment",
+              "rowLabel": "Subtotal of corporate costs",
+              "url": "https://digitallibrary.un.org/nanna/record/4078321/files/A_79_680-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Corporate costs"
+            }
+          }
+        ]
+      },
+      {
+        "code": "UNMISS",
+        "label": "United Nations Mission in South Sudan",
+        "category": "pko",
+        "amount": 1164288000,
+        "source": {
+          "symbol": "A/79/788",
+          "pdfPage": 82,
+          "tableTitle": "Table 27 \u00b7 Financial resources approved for 2023/24",
+          "columnHeader": "Final approved",
+          "rowLabel": "UNMISS",
+          "url": "https://digitallibrary.un.org/nanna/record/4081221/files/A_79_788-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+          "pdfPageScope": "table"
+        },
+        "note": "Includes the additional commitment authority approved during 2023/24.",
+        "breakdown": [
+          {
+            "label": "Military and police personnel",
+            "amount": 511894100,
+            "source": {
+              "symbol": "A/78/754",
+              "rowLabel": "Subtotal",
+              "columnHeader": "appropriation \u00b7 2023/24",
+              "pdfPage": 61,
+              "pageStatus": "row_label_and_amount_unique",
+              "pdfPageScope": "table",
+              "url": "https://documents.un.org/api/symbol/access?s=A%2F78%2F754&l=en&t=pdf",
+              "budgetItem": "Military and police personnel"
+            }
+          },
+          {
+            "label": "Civilian personnel",
+            "amount": 323013800,
+            "source": {
+              "symbol": "A/78/754",
+              "rowLabel": "Subtotal",
+              "columnHeader": "appropriation \u00b7 2023/24",
+              "pdfPage": 61,
+              "pageStatus": "row_label_and_amount_unique",
+              "pdfPageScope": "table",
+              "url": "https://documents.un.org/api/symbol/access?s=A%2F78%2F754&l=en&t=pdf",
+              "budgetItem": "Civilian personnel"
+            }
+          },
+          {
+            "label": "Operational costs",
+            "amount": 313928600,
+            "source": {
+              "symbol": "A/78/754",
+              "rowLabel": "Subtotal",
+              "columnHeader": "appropriation \u00b7 2023/24",
+              "pdfPage": 61,
+              "pageStatus": "row_label_and_amount_unique",
+              "pdfPageScope": "table",
+              "url": "https://documents.un.org/api/symbol/access?s=A%2F78%2F754&l=en&t=pdf",
+              "budgetItem": "Operational costs"
+            }
+          },
+          {
+            "label": "Additional commitment authority",
+            "amount": 15451500,
+            "source": {
+              "symbol": "A/79/788",
+              "pdfPage": 82,
+              "tableTitle": "Table 27 \u00b7 Financial resources approved for 2023/24",
+              "columnHeader": "Additional apportionment approved",
+              "rowLabel": "UNMISS",
+              "url": "https://digitallibrary.un.org/nanna/record/4081221/files/A_79_788-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Additional commitment authority"
+            }
+          }
+        ]
+      }
+    ],
+    "publishedTotal": {
+      "amount": 6345442700,
+      "source": {
+        "symbol": "A/79/788",
+        "pdfPage": 84,
+        "tableTitle": "Table 28 \u00b7 Financial position and performance for 2023/24",
+        "columnHeader": "Apportionment",
+        "rowLabel": "Subtotal",
+        "url": "https://digitallibrary.un.org/nanna/record/4081221/files/A_79_788-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    "inKind": {
+      "amount": 679100,
+      "source": {
+        "symbol": "A/79/788",
+        "pdfPage": 84,
+        "tableTitle": "Table 28 \u00b7 Financial position and performance for 2023/24",
+        "columnHeader": "Apportionment",
+        "rowLabel": "Voluntary contributions in kind (budgeted)",
+        "url": "https://digitallibrary.un.org/nanna/record/4081221/files/A_79_788-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    }
+  }
 }

@@ -9,7 +9,7 @@ import { PeacekeepingBudgetView } from "@/components/PeacekeepingBudgetView";
 export const metadata: Metadata = {
   title: "UN Peacekeeping Budget",
   description:
-    "Explore how peacekeeping missions spend funds and how Member States are assessed for peacekeeping operations.",
+    "Explore the budgets and expenditure of United Nations peacekeeping missions and support entities.",
 };
 
 export default function PeacekeepingBudgetPage() {
@@ -18,14 +18,15 @@ export default function PeacekeepingBudgetPage() {
       <PageHeading
         sources={
           <>
-            Figures are extracted from the Secretary-General’s{" "}
-            <PageSourceLink source="peacekeepingDocuments" />. Learn{" "}
+            Figures come from United Nations{" "}
+            <PageSourceLink source="peacekeepingDocuments" /> and General
+            Assembly decisions. Learn{" "}
             <PageSourceLink source="peacekeepingFunding" />.
           </>
         }
         id="peacekeeping-spending"
-        title="How do peacekeeping missions spend funds?"
-        description="Explore expenditure, approved budgets and proposals by mission, location and cost class. Financial years run from July to June."
+        title="How are peacekeeping resources used?"
+        description="Explore expenditure, approved budgets and proposals for peacekeeping missions, support offices, service centres and the support account. Financial years run from July to June."
       />
       <PageBody>
         <PeacekeepingBudgetView />

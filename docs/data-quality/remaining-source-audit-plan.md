@@ -17,11 +17,13 @@ On 2026-09-24 both the Committee on Contributions prior-year index and the direc
 
 ## Peacekeeping mission budgets
 
-The immutable financial-data-v1.8 source contains expenditure 2022/23–2024/25, appropriations 2023/24–2025/26 and proposals 2024/25–2026/27. Later source editions supersede earlier observations for the same fiscal year and measure. The portal exports every available stage and defaults to expenditure 2024/25.
+The immutable financial-data-v1.8 source supplies the detailed mission tables. The portal defaults to expenditure 2024/25. It covers expenditure 2022/23–2024/25, approvals 2023/24–2026/27 and proposals 2024/25–2026/27.
 
-The latest proposal lacks UNSOH canonical detail. All stages omit the support account, enterprise items and some closed-mission accounts. Root totals are source-provided sums of included missions, not the complete UN peacekeeping appropriation. Printed mission/class totals stay authoritative even when detail disagrees.
+The [supplementary extraction](../../data/peacekeeping-budget-supplement.json) records the support account, the missing MINUSMA drawdown and liquidation amounts, UNSOH, the 2023/24 UNMISS commitment authority, and the 2026/27 approved annex. Each amount retains its source document, physical PDF page, row and column. The exporter checks each stage against the official gross total and applies the separately cited $1,951,000 reduction to UNSOH for 2025/26 when replacing the commitment authority with the final appropriation. The gross charts carry voluntary contributions in kind separately. Account-level and cost-group figures are available where the official consolidated tables supply them. Some accounts lack detailed line items in the release.
 
-Independently inspect at least one original report per mission/edition and every selected stage column; verify fiscal period, gross versus net amounts, in-kind exclusions, unit multiplier and page links. For overlapping appropriations, reconcile revisions between editions. Expand any failing sample to all rows for that mission. Compare coverage to the official appropriation resolution separately from the arithmetic of this limited corpus.
+The ARWO peacekeeping and support-account rows reconcile to expenditure in 2022/23 and 2023/24 and to approved allocations in 2024/25. The comparison uses the source fiscal period, which ends in the ARWO reporting year. ARWO departmental amounts use a different presentation and remain separately sourced.
+
+Continue to audit the release's detailed mission lines against the original reports. Verify fiscal period, gross versus net amounts, in-kind exclusions, unit multiplier and page links. The annual gross totals do not include the separate financial positions of closed missions or peacekeeping missions funded by the regular budget.
 
 ## Honour-roll payment dates
 

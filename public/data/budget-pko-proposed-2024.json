@@ -8,7 +8,7 @@
     "year": 2024,
     "fiscalYear": "2024/25",
     "currency": "USD",
-    "total": 5304587300,
+    "total": 5690427000,
     "costClasses": {
       "military_police_personnel": "Military and police personnel",
       "civilian_personnel": "Civilian personnel",
@@ -28,11 +28,11 @@
       "UNMIK": "United Nations Interim Administration Mission in Kosovo",
       "UNMISS": "United Nations Mission in South Sudan",
       "UNSOS": "United Nations Support Office in Somalia",
-      "UNSOH": "United Nations Support Office in Somalia (successor arrangement)"
+      "UNSOH": "United Nations Support Office in Haiti"
     },
     "partial": false,
-    "scopeLabel": "Peacekeeping missions included in the per-mission corpus",
-    "scopeWarning": "This is not the complete UN peacekeeping budget. The support account, enterprise items and some closed-mission accounts are outside this corpus.",
+    "scopeLabel": "Peacekeeping accounts in the consolidated UN budget tables",
+    "scopeWarning": "Gross resources for the displayed accounts. Budgeted voluntary contributions in kind are reported separately. Mission and account detail follows the cited documents.",
     "coverage": {
       "missionsInCycleReference": 13,
       "missionsDisplayed": 13,
@@ -7005,5 +7005,93 @@
         "pdfPageScope": "table"
       }
     }
-  ]
+  ],
+  "peacekeepingSupplement": {
+    "accounts": [
+      {
+        "code": "PK-SUPPORT",
+        "label": "Peacekeeping support account",
+        "category": "support_account",
+        "amount": 385839700,
+        "source": {
+          "symbol": "A/78/746",
+          "pdfPage": 3,
+          "tableTitle": "Financial resources",
+          "columnHeader": "Cost estimates (2024/25)",
+          "rowLabel": "Gross requirements",
+          "url": "https://digitallibrary.un.org/nanna/record/4044755/files/A_78_746-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+          "pdfPageScope": "table"
+        },
+        "note": "Shared support for United Nations peacekeeping operations.",
+        "breakdown": [
+          {
+            "label": "Post resources",
+            "amount": 267429000,
+            "source": {
+              "symbol": "A/78/746",
+              "pdfPage": 3,
+              "tableTitle": "Financial resources",
+              "columnHeader": "Cost estimates (2024/25)",
+              "rowLabel": "I. Post resources",
+              "url": "https://digitallibrary.un.org/nanna/record/4044755/files/A_78_746-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Post resources"
+            }
+          },
+          {
+            "label": "Non-post resources",
+            "amount": 62552600,
+            "source": {
+              "symbol": "A/78/746",
+              "pdfPage": 3,
+              "tableTitle": "Financial resources",
+              "columnHeader": "Cost estimates (2024/25)",
+              "rowLabel": "Subtotal of non-post resources",
+              "url": "https://digitallibrary.un.org/nanna/record/4044755/files/A_78_746-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Non-post resources"
+            }
+          },
+          {
+            "label": "Corporate costs",
+            "amount": 55858100,
+            "source": {
+              "symbol": "A/78/746",
+              "pdfPage": 3,
+              "tableTitle": "Financial resources",
+              "columnHeader": "Cost estimates (2024/25)",
+              "rowLabel": "Subtotal of corporate costs",
+              "url": "https://digitallibrary.un.org/nanna/record/4044755/files/A_78_746-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Corporate costs"
+            }
+          }
+        ]
+      }
+    ],
+    "publishedTotal": {
+      "amount": 5690427000,
+      "source": {
+        "symbol": "A/78/726",
+        "pdfPage": 91,
+        "tableTitle": "Annex II, Table 3 \u00b7 Proposed requirements for 2024/25",
+        "columnHeader": "Proposed budget (2024/25)",
+        "rowLabel": "Subtotal",
+        "url": "https://digitallibrary.un.org/nanna/record/4045712/files/A_78_726-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    "inKind": {
+      "amount": 653200,
+      "source": {
+        "symbol": "A/78/726",
+        "pdfPage": 91,
+        "tableTitle": "Annex II, Table 3 \u00b7 Proposed requirements for 2024/25",
+        "columnHeader": "Proposed budget (2024/25)",
+        "rowLabel": "Voluntary contributions in kind (budgeted)",
+        "url": "https://digitallibrary.un.org/nanna/record/4045712/files/A_78_726-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    }
+  }
 }

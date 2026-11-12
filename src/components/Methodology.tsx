@@ -542,17 +542,26 @@ function PeacekeepingBudgetMethodologyNotes() {
   return (
     <>
       <p>
-        Figures come from <PageSourceLink source="peacekeepingDocuments" />. We
-        extract expenditure, approved appropriations and proposals for the
-        missions and service centres covered by these documents. Financial years
-        run from July to June.
+        Figures come from <PageSourceLink source="peacekeepingDocuments" /> and
+        General Assembly decisions. The totals cover the missions, support
+        offices, service centres and support account in the consolidated UN
+        budget tables. They include MINUSMA liquidation costs and the United
+        Nations Support Office in Haiti in the periods in which they are
+        reported. Financial years run from July to June.
       </p>
       <p>
-        Coverage includes RSCE, UNGSC and UNSOS. The support account, enterprise
-        items and some closed-mission accounts fall outside this collection.
-        UNTSO and UNMOGIP are financed from the regular budget. Member State
-        assessments are shown in the contributor view, whose coverage follows
-        the assessment circulars.
+        The chart uses gross amounts and reports voluntary contributions in kind
+        separately. Mission appropriations use the amounts for maintaining each
+        mission. The prorated shares used to finance central support are counted
+        in the corresponding support accounts. The 2025/26 approved total uses
+        the final Haiti appropriation in place of the earlier commitment
+        authority.
+      </p>
+      <p>
+        UNTSO and UNMOGIP are financed from the regular budget. The Secretariat
+        Overview follows the Annual Report compilation, which uses 2024/25
+        budget allocations for its 2025 peacekeeping records. The expenditure
+        view here follows the expenditure column of the performance reports.
       </p>
     </>
   );

@@ -788,6 +788,26 @@ export interface BudgetMeta {
 export interface BudgetData {
   meta: BudgetMeta;
   nodes: BudgetNode[];
+  peacekeepingSupplement?: {
+    accounts: PeacekeepingBudgetAccount[];
+    publishedTotal: { amount: number; source: BudgetNodeSource };
+    inKind?: { amount: number; source: BudgetNodeSource };
+    adjustments?: Array<{
+      amount: number;
+      previous: BudgetNodeSource;
+      source: BudgetNodeSource;
+    }>;
+  };
+}
+
+export interface PeacekeepingBudgetAccount {
+  code: string;
+  label: string;
+  category: "pko" | "support_office" | "support" | "support_account";
+  amount: number;
+  source: BudgetNodeSource;
+  note?: string;
+  breakdown: Array<{ label: string; amount: number; source: BudgetNodeSource }>;
 }
 
 /** Separately reported donor measures are never added to Volume I revenue. */

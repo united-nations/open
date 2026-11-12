@@ -7,9 +7,9 @@ import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { ChartFooter } from "@/components/ChartFooter";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
 import { Tooltip } from "@un-eosg/ui/components/tooltip";
+import { RankedDetailList } from "@/components/RankedDetailList";
 import { ChartSearchInput } from "@/components/ui/chart-search-input";
 import { SegmentedControl } from "@un-eosg/ui/components/segmented-control";
-import { RankedDetailList } from "@/components/RankedDetailList";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 
 import {
@@ -18,9 +18,14 @@ import {
 } from "@un-eosg/ui/components/grouped-treemap";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
-import { FinancialBubbleMap } from "@/components/FinancialBubbleMap";
+import {
+  FinancialBubbleMap,
+  MapBubbleLegendCircle,
+  mapBubbleLegendClassName,
+} from "@/components/FinancialBubbleMap";
 import { bubbleRadiusInput } from "@/lib/map-bubbles";
 import { PeacekeepingMissionSidebar } from "@/components/PeacekeepingMissionSidebar";
+import { PeacekeepingAccountSidebar } from "@/components/PeacekeepingAccountSidebar";
 import { YearSlider } from "@/components/YearSlider";
 import {
   clearSidebarHash,
@@ -41,24 +46,35 @@ import type {
   BudgetData,
   BudgetNode,
   BudgetNodeSource,
+  PeacekeepingBudgetAccount,
   SecretariatEntitiesData,
   SecretariatMissionLocation,
 } from "@/types";
 
 import {
   PEACEKEEPING_METRICS,
+  PEACEKEEPING_SIDEBAR_HASH,
+  parsePeacekeepingSidebarValue,
+  peacekeepingSidebarValue,
   type PeacekeepingMetric,
 } from "@/lib/peacekeepingBudget";
 
-type PointKind = "pko" | "support_office" | "support";
+type PointKind = PeacekeepingBudgetAccount["category"];
 
-const FIELD_COLOR = "#009edb";
-const SUPPORT_COLOR = "#a0665c";
 const KIND_LABEL: Record<PointKind, string> = {
-  pko: "Field missions",
-  support_office: "Support office",
+  pko: "Peacekeeping missions",
+  support_office: "Support offices",
   support: "Service centres",
+  support_account: "Peacekeeping support account",
 };
+const KIND_COLOR: Record<PointKind, string> = {
+  pko: "#009edb",
+  support_office: "var(--color-un-purple)",
+  support: "#a0665c",
+  support_account: "#287b69",
+};
+const GEOGRAPHIC_KINDS = ["pko", "support_office", "support"] as const;
+const SUPPORT_ACCOUNT_CODE = "PK-SUPPORT";
 
 const MAX_MISSION_RADIUS_PX = 28;
 const DOLLARS_PER_RADIUS_PIXEL_SQUARED = 1_500_000;
@@ -117,16 +133,27 @@ interface MissionRow {
   classes: Record<CostClassKey, number | null>;
   items: Record<CostClassKey, CostItem[]>;
   source: BudgetNode["source"];
+  account?: PeacekeepingBudgetAccount;
 }
 
 interface MissionCostClassLeaf {
   mission: MissionRow;
-  costClass: CostClassKey;
 }
 
 function buildRows(data: BudgetData, entities: SecretariatEntitiesData) {
+  const metricLabel =
+    data.meta.measure === "appropriation"
+      ? "Approved budget"
+      : data.meta.measure === "proposed"
+        ? "Proposed budget"
+        : "Expenditure";
+  const accounts = data.peacekeepingSupplement?.accounts ?? [];
+  const supplementalCodes = new Set(accounts.map(({ code }) => code));
   const missions = data.nodes.filter(
-    (node) => node.tier === "mission" && node.costClass === "total",
+    (node) =>
+      node.tier === "mission" &&
+      node.costClass === "total" &&
+      !supplementalCodes.has(node.code ?? node.mission ?? node.id),
   );
   const classNodes = data.nodes.filter((node) => node.tier === "class");
   const itemNodes = data.nodes.filter((node) => node.tier === "item");
@@ -166,12 +193,7 @@ function buildRows(data: BudgetData, entities: SecretariatEntitiesData) {
     ) as Record<CostClassKey, CostItem[]>;
     return {
       code,
-      metricLabel:
-        data.meta.measure === "appropriation"
-          ? "Approved budget"
-          : data.meta.measure === "proposed"
-            ? "Proposed budget"
-            : "Expenditure",
+      metricLabel,
       references: collectBudgetNodeSources(mission),
       classReferences,
       name: mission.label,
@@ -183,6 +205,34 @@ function buildRows(data: BudgetData, entities: SecretariatEntitiesData) {
       source: mission.source,
     };
   });
+  for (const account of accounts) {
+    rows.push({
+      code: account.code,
+      name: account.label,
+      metricLabel,
+      kind: account.category,
+      location: resolveLocation(account.code, entities),
+      total: account.amount,
+      source: account.source,
+      references: [account.source],
+      classReferences: {
+        military_police_personnel: [],
+        civilian_personnel: [],
+        operational_costs: [],
+      },
+      classes: {
+        military_police_personnel: null,
+        civilian_personnel: null,
+        operational_costs: null,
+      },
+      items: {
+        military_police_personnel: [],
+        civilian_personnel: [],
+        operational_costs: [],
+      },
+      account,
+    });
+  }
   rows.sort((a, b) => b.total - a.total || a.code.localeCompare(b.code));
   return rows;
 }
@@ -197,35 +247,43 @@ interface MapPoint {
 }
 
 function MissionTooltip({ mission }: { mission: MissionRow }) {
-  const color =
-    mission.kind === "support_office"
-      ? "var(--color-un-purple)"
-      : mission.kind === "support"
-        ? SUPPORT_COLOR
-        : FIELD_COLOR;
+  const color = KIND_COLOR[mission.kind];
+  const account = mission.account;
   return (
     <FinancialTooltip
       title={mission.name}
-      parents={[
-        { label: KIND_LABEL[mission.kind], color },
-        { label: mission.code },
-      ]}
-      context={missionLocationLabel(mission.location)}
+      parents={
+        mission.kind === "support_account"
+          ? []
+          : [
+              { label: KIND_LABEL[mission.kind], color },
+              { label: mission.code },
+            ]
+      }
+      context={account?.note ?? missionLocationLabel(mission.location)}
       total={{ label: mission.metricLabel, value: formatBudget(mission.total) }}
-      rows={COST_CLASS_KEYS.map((key) => ({
-        label: COST_CLASS_SHORT[key] ?? key,
-        value:
-          mission.classes[key] === null
-            ? "Not published"
-            : formatBudget(mission.classes[key]!),
-        color,
-        share:
-          mission.classes[key] !== null &&
-          mission.classes[key]! >= 0 &&
-          mission.total > 0
-            ? mission.classes[key]! / mission.total
-            : undefined,
-      }))}
+      rows={
+        account
+          ? account.breakdown.map(({ label, amount }) => ({
+              label,
+              value: formatBudget(amount),
+              color,
+            }))
+          : COST_CLASS_KEYS.map((key) => ({
+              label: COST_CLASS_SHORT[key] ?? key,
+              value:
+                mission.classes[key] === null
+                  ? "Not published"
+                  : formatBudget(mission.classes[key]!),
+              color,
+              share:
+                mission.classes[key] !== null &&
+                mission.classes[key]! >= 0 &&
+                mission.total > 0
+                  ? mission.classes[key]! / mission.total
+                  : undefined,
+            }))
+      }
       notes={
         <SourceReferenceLinks
           references={[
@@ -248,36 +306,52 @@ function MissionCostClassTreemap({
 }) {
   const treemapRows = rows.flatMap((mission) => {
     if (mission.total <= 0) return [];
-    const leaves = COST_CLASS_KEYS.flatMap((costClass) => {
-      const amount = mission.classes[costClass];
-      if (amount === null || amount <= 0) return [];
-      return [
-        {
-          key: costClass,
-          label: COST_CLASS_SHORT[costClass] ?? costClass,
-          value: amount,
-          color:
-            mission.kind === "support_office"
-              ? "var(--color-un-purple)"
-              : mission.kind === "support"
-                ? SUPPORT_COLOR
-                : FIELD_COLOR,
-          data: { mission, costClass },
-          onActivate: () => onOpen(mission.code),
-        },
-      ];
-    });
+    const color = KIND_COLOR[mission.kind];
+    const groups =
+      mission.account?.breakdown.map(({ label, amount }) => ({
+        label,
+        amount,
+        key: label,
+      })) ??
+      COST_CLASS_KEYS.flatMap((costClass) => {
+        const amount = mission.classes[costClass];
+        return amount === null
+          ? []
+          : [
+              {
+                key: costClass,
+                label: COST_CLASS_SHORT[costClass] ?? costClass,
+                amount,
+              },
+            ];
+      });
+    const leaves = groups
+      .filter(({ amount }) => amount > 0)
+      .map(({ key, label, amount }) => ({
+        key,
+        label,
+        value: amount,
+        color,
+        data: { mission },
+        onActivate: () => onOpen(mission.code),
+      }));
+    if (leaves.length === 0) {
+      leaves.push({
+        key: "total",
+        label: mission.name,
+        value: mission.total,
+        color,
+        data: { mission },
+        onActivate: () => onOpen(mission.code),
+      });
+    }
     return [
       {
         key: mission.code,
-        label: mission.code,
+        label:
+          mission.kind === "support_account" ? "Support account" : mission.code,
         value: mission.total,
-        color:
-          mission.kind === "support_office"
-            ? "var(--color-un-purple)"
-            : mission.kind === "support"
-              ? SUPPORT_COLOR
-              : FIELD_COLOR,
+        color,
         data: mission,
         leaves,
       } satisfies GroupedTreemapRow<
@@ -310,16 +384,30 @@ function MissionCostClassTreemap({
 
 export function PeacekeepingBudgetView() {
   const ranges = useYearRanges();
-  const [metric, setMetric] = useState<PeacekeepingMetric>("expenditure");
+  const [selectedMetric, setMetric] =
+    useState<PeacekeepingMetric>("expenditure");
+  const [selectedYear, setYear] = useState(ranges.budgetPko.default);
+  const [openedCode, setSelectedCode] = useState<string | null>(null);
+  const [pending, setPending] = useDeepLink({
+    hashPrefix: PEACEKEEPING_SIDEBAR_HASH,
+    transform: parsePeacekeepingSidebarValue,
+    onNavigateAway: () => setSelectedCode(null),
+  });
   const metricYears = {
     expenditure: ranges.budgetPko,
     approved: ranges.budgetPkoApproved,
     proposed: ranges.budgetPkoProposed,
   };
+  const linkedLens =
+    pending?.lens &&
+    metricYears[pending.lens.metric].years.includes(pending.lens.year)
+      ? pending.lens
+      : null;
+  const metric = linkedLens?.metric ?? selectedMetric;
+  const year = linkedLens?.year ?? selectedYear;
   const allYears = [
     ...new Set(Object.values(metricYears).flatMap((range) => range.years)),
   ].sort((a, b) => a - b);
-  const [year, setYear] = useState(ranges.budgetPko.default);
   const budgetCache = useRef(new Map<string, BudgetData>());
   const [budget, setBudget] = useState<BudgetData | null>(null);
   const [entities, setEntities] = useState<SecretariatEntitiesData | null>(
@@ -338,7 +426,6 @@ export function PeacekeepingBudgetView() {
   const showMap = view === "map";
   const [query, setQuery] = useState("");
   const [hiddenKinds, setHiddenKinds] = useState<PointKind[]>([]);
-  const [openedCode, setSelectedCode] = useState<string | null>(null);
   const [mapTooltip, setMapTooltip] = useState<{
     mission: MissionRow;
     x: number;
@@ -376,21 +463,6 @@ export function PeacekeepingBudgetView() {
       if (tooltipCloseTimer.current) clearTimeout(tooltipCloseTimer.current);
     };
   }, []);
-
-  const [pending, setPending] = useDeepLink({
-    hashPrefix: "pko-mission",
-    onNavigateAway: () => setSelectedCode(null),
-  });
-
-  const openMission = useCallback(
-    (code: string) => {
-      setMapTooltip(null);
-      setPending(null);
-      setSelectedCode(code);
-      replaceToSidebar("pko-mission", code);
-    },
-    [setPending, setMapTooltip, setSelectedCode],
-  );
 
   useEffect(() => {
     let active = true;
@@ -448,12 +520,33 @@ export function PeacekeepingBudgetView() {
         ? "proposed"
         : "expenditure";
   const metricLabel = PEACEKEEPING_METRICS[current ? displayedMetric : metric];
+  const displayedYear = current?.meta.year ?? year;
+  const openMission = useCallback(
+    (code: string) => {
+      setMapTooltip(null);
+      setPending(null);
+      setSelectedCode(code);
+      replaceToSidebar(
+        PEACEKEEPING_SIDEBAR_HASH,
+        peacekeepingSidebarValue(code, displayedMetric, displayedYear),
+      );
+    },
+    [setPending, displayedMetric, displayedYear],
+  );
+  const closeSidebar = () => {
+    setMetric(metric);
+    setYear(year);
+    setPending(null);
+    setSelectedCode(null);
+    clearSidebarHash();
+  };
   const rows = useMemo(() => {
     if (!current || !entities) return [];
     return buildRows(current, entities);
   }, [current, entities]);
 
-  const selectedCode = pending ?? openedCode;
+  const selectedCode =
+    linkedLens && waitingForData ? null : (pending?.code ?? openedCode);
 
   const visibleRows = useMemo(
     () =>
@@ -466,30 +559,24 @@ export function PeacekeepingBudgetView() {
       ),
     [rows, hiddenKinds, query],
   );
-  const missionFilters = (["pko", "support_office", "support"] as const).map(
-    (kind) => (
-      <LegendLabel
-        key={kind}
-        label={KIND_LABEL[kind]}
-        color={
-          kind === "support_office"
-            ? "var(--color-un-purple)"
-            : kind === "pko"
-              ? FIELD_COLOR
-              : SUPPORT_COLOR
-        }
-        selected={!hiddenKinds.includes(kind)}
-        onToggle={() => {
-          setMapTooltip(null);
-          setHiddenKinds((current) =>
-            current.includes(kind)
-              ? current.filter((item) => item !== kind)
-              : [...current, kind],
-          );
-        }}
-      />
-    ),
-  );
+  const missionFilters = (
+    [...GEOGRAPHIC_KINDS, "support_account"] as const
+  ).map((kind) => (
+    <LegendLabel
+      key={kind}
+      label={KIND_LABEL[kind]}
+      color={KIND_COLOR[kind]}
+      selected={!hiddenKinds.includes(kind)}
+      onToggle={() => {
+        setMapTooltip(null);
+        setHiddenKinds((current) =>
+          current.includes(kind)
+            ? current.filter((item) => item !== kind)
+            : [...current, kind],
+        );
+      }}
+    />
+  ));
 
   const points = useMemo<MapPoint[]>(() => {
     return visibleRows
@@ -513,6 +600,11 @@ export function PeacekeepingBudgetView() {
   }
 
   const selectedRow = rows.find((row) => row.code === selectedCode);
+  const supportAccount = visibleRows.find(
+    (row) => row.kind === "support_account",
+  );
+  const visibleTotal = visibleRows.reduce((sum, row) => sum + row.total, 0);
+  const inKind = current?.peacekeepingSupplement?.inKind;
   const selectedLocation =
     selectedCode && entities
       ? resolveLocation(selectedCode, entities)
@@ -569,7 +661,7 @@ export function PeacekeepingBudgetView() {
               />
               <div
                 role="group"
-                aria-label="Mission types"
+                aria-label="Peacekeeping budget categories"
                 className="flex flex-wrap gap-2"
               >
                 {missionFilters}
@@ -603,8 +695,8 @@ export function PeacekeepingBudgetView() {
                 <ChartSearchInput
                   value={query}
                   onChange={setQuery}
-                  placeholder="Search missions..."
-                  label="Search missions"
+                  placeholder="Search peacekeeping budget..."
+                  label="Search peacekeeping budget"
                 />
               }
               summaries={[
@@ -626,30 +718,41 @@ export function PeacekeepingBudgetView() {
                             {metricLabel} · {current.meta.fiscalYear}
                           </p>
                           <p>
-                            Calculated sum of the missions and service centres
+                            Sum of the peacekeeping accounts
                             {query || hiddenKinds.length
                               ? " matching the current filters"
                               : " in this view"}
                             . The source pages show the individual amounts.
                           </p>
+                          {inKind && (
+                            <p>
+                              Voluntary contributions in kind are reported
+                              separately ({formatBudget(inKind.amount)}).
+                            </p>
+                          )}
                           <SourceReferenceLinks
-                            references={visibleRows.flatMap(
-                              (row) => row.references,
-                            )}
+                            references={[
+                              ...visibleRows.flatMap((row) => row.references),
+                              ...(inKind ? [inKind.source] : []),
+                              ...(current.peacekeepingSupplement
+                                ? [
+                                    current.peacekeepingSupplement
+                                      .publishedTotal.source,
+                                    ...(
+                                      current.peacekeepingSupplement
+                                        .adjustments ?? []
+                                    ).flatMap(({ previous, source }) => [
+                                      previous,
+                                      source,
+                                    ]),
+                                  ]
+                                : []),
+                            ]}
                           />
                         </div>
                       }
                     >
-                      <span tabIndex={0}>
-                        {formatBudget(
-                          query || hiddenKinds.length
-                            ? visibleRows.reduce(
-                                (sum, row) => sum + row.total,
-                                0,
-                              )
-                            : current.meta.total,
-                        )}
-                      </span>
+                      <span tabIndex={0}>{formatBudget(visibleTotal)}</span>
                     </Tooltip>
                   ) : (
                     "Unavailable"
@@ -660,7 +763,7 @@ export function PeacekeepingBudgetView() {
           </div>
         }
         footer={
-          <ChartFooter hint="Click on a mission or service centre to explore details" />
+          <ChartFooter hint="Select a peacekeeping account to explore details" />
         }
       >
         <div className="relative" aria-busy={waitingForData && !error}>
@@ -694,60 +797,82 @@ export function PeacekeepingBudgetView() {
           {view === "list" && (
             <section className="order-1">
               <RankedDetailList
-                label="Peacekeeping missions"
+                label="Peacekeeping budget accounts"
                 items={visibleRows.map((row) => ({
                   id: row.code,
                   label: row.name,
-                  description: row.code,
+                  description: row.account?.note ?? row.code,
                   amount: row.total,
                   value: formatBudget(row.total),
                   group: { key: row.kind, label: KIND_LABEL[row.kind] },
-                  color:
-                    row.kind === "support_office"
-                      ? "var(--color-un-purple)"
-                      : row.kind === "support"
-                        ? SUPPORT_COLOR
-                        : FIELD_COLOR,
+                  color: KIND_COLOR[row.kind],
                   onOpen: () => openMission(row.code),
                 }))}
               />
             </section>
           )}
           <section className="order-3" hidden={!showMap}>
-            <FinancialBubbleMap
-              className="pko-dot-map relative border border-gray-200 bg-white"
-              onPointerMoveCapture={(event) => {
-                mapPointer.current = { x: event.clientX, y: event.clientY };
-              }}
-              data={points}
-              colorDomain={["pko", "support_office", "support"]}
-              colors={[FIELD_COLOR, "var(--color-un-purple)", SUPPORT_COLOR]}
-              radius={MAX_MISSION_RADIUS_PX}
-              height={520}
-              highlightedDataPoints={selectedCode ? [selectedCode] : []}
-              onSeriesMouseClick={(point: MapPoint | undefined) => {
-                const code =
-                  point?.data?.code ??
-                  (typeof point?.label === "string" ? point.label : undefined);
-                if (code) openMission(code);
-              }}
-              ariaLabel={`Map of peacekeeping ${metricLabel.toLowerCase()} in ${current?.meta.fiscalYear}`}
-              onSeriesMouseOver={(point: MapPoint | undefined) => {
-                if (!point) {
-                  closeMapTooltipSoon();
-                  return;
-                }
-                keepMapTooltip();
-                setMapTooltip({ mission: point.data, ...mapPointer.current });
-              }}
-            />
+            <div className="relative">
+              <FinancialBubbleMap
+                className="pko-dot-map relative border border-gray-200 bg-white"
+                onPointerMoveCapture={(event) => {
+                  mapPointer.current = { x: event.clientX, y: event.clientY };
+                }}
+                data={points}
+                colorDomain={[...GEOGRAPHIC_KINDS]}
+                colors={GEOGRAPHIC_KINDS.map((kind) => KIND_COLOR[kind])}
+                radius={MAX_MISSION_RADIUS_PX}
+                height={520}
+                highlightedDataPoints={selectedCode ? [selectedCode] : []}
+                onSeriesMouseClick={(point: MapPoint | undefined) => {
+                  const code =
+                    point?.data?.code ??
+                    (typeof point?.label === "string"
+                      ? point.label
+                      : undefined);
+                  if (code) openMission(code);
+                }}
+                ariaLabel={`Map of peacekeeping ${metricLabel.toLowerCase()} in ${current?.meta.fiscalYear}`}
+                onSeriesMouseOver={(point: MapPoint | undefined) => {
+                  if (!point) {
+                    closeMapTooltipSoon();
+                    return;
+                  }
+                  keepMapTooltip();
+                  setMapTooltip({ mission: point.data, ...mapPointer.current });
+                }}
+              />
+              {supportAccount && (
+                <Tooltip
+                  content={<MissionTooltip mission={supportAccount} />}
+                  interactive
+                  width={320}
+                >
+                  <button
+                    type="button"
+                    className={`${mapBubbleLegendClassName} flex min-h-11 items-center gap-2 focus-visible:outline-2 focus-visible:outline-un-blue`}
+                    onClick={() => openMission(supportAccount.code)}
+                  >
+                    <MapBubbleLegendCircle
+                      color={KIND_COLOR.support_account}
+                      radius={Math.sqrt(
+                        Math.max(0, supportAccount.total) /
+                          DOLLARS_PER_RADIUS_PIXEL_SQUARED,
+                      )}
+                    />
+                    Support account
+                  </button>
+                </Tooltip>
+              )}
+            </div>
             <div
               className="mt-3 max-w-2xl space-y-2 text-xs leading-relaxed text-gray-500"
               data-map-notes
             >
               <p>
-                Each dot marks a representative point in the area a mission
-                works in, rather than its office address.
+                Geographic dots show representative locations. The support
+                account marker represents shared support for peacekeeping
+                operations.
               </p>
               <p>{entities.map_notes.boundary_disclaimer}</p>
             </div>
@@ -789,34 +914,41 @@ export function PeacekeepingBudgetView() {
           </div>,
           document.body,
         )}
-      {selectedCode && current && (
-        <div className="order-4">
-          <PeacekeepingMissionSidebar
+      {selectedCode &&
+        current &&
+        (selectedRow?.account || selectedCode === SUPPORT_ACCOUNT_CODE ? (
+          <PeacekeepingAccountSidebar
             key={`${selectedCode}-${displayedMetric}-${current.meta.fiscalYear}`}
-            metric={displayedMetric}
             code={selectedCode}
-            name={selectedRow?.name ?? selectedLocation?.name ?? selectedCode}
-            locationLabel={
-              missionLocationLabel(selectedRow?.location ?? selectedLocation) ??
-              null
-            }
-            fiscalYear={current.meta.fiscalYear}
-            total={selectedRow ? selectedRow.total : null}
-            classes={selectedRow ? selectedRow.classes : null}
-            items={selectedRow ? selectedRow.items : null}
-            classReferences={selectedRow?.classReferences}
-            source={selectedRow?.source}
-            references={current.nodes
-              .filter((node) => node.mission === selectedCode)
-              .flatMap((node) => collectBudgetNodeSources(node))}
-            onClose={() => {
-              setPending(null);
-              setSelectedCode(null);
-              clearSidebarHash();
-            }}
+            metric={displayedMetric}
+            initialData={current}
+            onClose={closeSidebar}
           />
-        </div>
-      )}
+        ) : (
+          <div className="order-4">
+            <PeacekeepingMissionSidebar
+              key={`${selectedCode}-${displayedMetric}-${current.meta.fiscalYear}`}
+              metric={displayedMetric}
+              code={selectedCode}
+              name={selectedRow?.name ?? selectedLocation?.name ?? selectedCode}
+              locationLabel={
+                missionLocationLabel(
+                  selectedRow?.location ?? selectedLocation,
+                ) ?? null
+              }
+              fiscalYear={current.meta.fiscalYear}
+              total={selectedRow ? selectedRow.total : null}
+              classes={selectedRow ? selectedRow.classes : null}
+              items={selectedRow ? selectedRow.items : null}
+              classReferences={selectedRow?.classReferences}
+              source={selectedRow?.source}
+              references={current.nodes
+                .filter((node) => node.mission === selectedCode)
+                .flatMap((node) => collectBudgetNodeSources(node))}
+              onClose={closeSidebar}
+            />
+          </div>
+        ))}
     </div>
   );
 }

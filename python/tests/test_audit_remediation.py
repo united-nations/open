@@ -145,11 +145,59 @@ class AuditRemediationTests(unittest.TestCase):
                     self.assertEqual(node['source']['symbol'], observation['source']['symbol'])
         manifest = read('manifest.json')
         self.assertEqual(manifest['budgetPko']['default'], 2024)
-        self.assertEqual(manifest['budgetPkoApproved']['years'], [2023, 2024, 2025])
+        self.assertEqual(manifest['budgetPkoApproved']['years'], [2023, 2024, 2025, 2026])
         self.assertEqual(manifest['budgetPkoProposed']['years'], [2024, 2025, 2026])
         proposal = read('budget-pko-proposed-2026.json')
-        self.assertTrue(proposal['meta']['partial'])
+        self.assertFalse(proposal['meta']['partial'])
         self.assertEqual(proposal['meta']['coverage']['missingCanonicalDetail'], ['UNSOH'])
+
+    def test_pko_consolidated_accounts_and_arwo_basis(self):
+        controls = {
+            'expenditure-2022': 6_382_792_300, 'expenditure-2023': 6_187_007_400,
+            'expenditure-2024': 5_432_349_200, 'approved-2023': 6_345_442_700,
+            'approved-2024': 5_592_448_300, 'approved-2025': 5_654_830_700,
+            'approved-2026': 5_107_584_500, 'proposed-2024': 5_690_427_000,
+            'proposed-2025': 5_497_813_000, 'proposed-2026': 5_231_219_500,
+        }
+        for lens, expected in controls.items():
+            with self.subTest(lens=lens):
+                data = read(f'budget-pko-{lens}.json')
+                supplement = data['peacekeepingSupplement']
+                amounts = {node['code']: node['amount'] for node in data['nodes']
+                           if node['tier'] == 'mission' and node['costClass'] == 'total'}
+                for account in supplement['accounts']:
+                    amounts[account['code']] = account['amount']
+                    self.assertGreater(account['source']['pdfPage'], 0)
+                    if account['breakdown']:
+                        self.assertEqual(sum(row['amount'] for row in account['breakdown']), account['amount'])
+                self.assertEqual(sum(amounts.values()), expected)
+                self.assertEqual(data['meta']['total'], expected)
+                self.assertEqual(supplement['publishedTotal']['amount'] + sum(
+                    row['amount'] for row in supplement.get('adjustments', [])
+                ), expected)
+                self.assertGreater(amounts['PK-SUPPORT'], 0)
+                self.assertEqual(set(data['meta']['coverage']['displayedMissionCodes']),
+                                 set(amounts) - {'PK-SUPPORT'})
+                self.assertTrue(set(amounts).isdisjoint(data['meta']['coverage']['noPublishedValueForLens']))
+
+        # Physical PDF pages checked against the cited UN tables and resolution.
+        original = read('budget-pko-approved-2025.json')['peacekeepingSupplement']['accounts']
+        support = next(account for account in original if account['code'] == 'PK-SUPPORT')
+        self.assertEqual((support['source']['symbol'], support['source']['pdfPage']), ('A/RES/79/298', 3))
+        revised = read('budget-pko-approved-2023.json')['peacekeepingSupplement']['accounts']
+        unmiss = next(account for account in revised if account['code'] == 'UNMISS')
+        authority = next(row for row in unmiss['breakdown'] if row['label'] == 'Additional commitment authority')
+        self.assertEqual((unmiss['source']['pdfPage'], authority['source']['pdfPage']), (82, 82))
+
+        for path, references, reporting_year, lens in [
+            ('un-secretariat-expenses.csv', {'A/78/726', 'A/78/638'}, 2023, 'expenditure-2022'),
+            ('un-secretariat-expenses-2024.csv', {'A/79/788', 'A/79/680'}, 2024, 'expenditure-2023'),
+            ('un-secretariat-expenses-2025.csv', {'A/80/643', 'A/80/631'}, 2025, 'approved-2024'),
+        ]:
+            with (ROOT / 'data' / path).open() as stream:
+                arwo_total = sum(float(row['AMOUNT']) for row in csv.DictReader(stream)
+                                 if int(row['YEAR']) == reporting_year and row['REFERENCE'] in references)
+            self.assertAlmostEqual(arwo_total, controls[lens], places=2)
 
     def test_curacao_normalization(self):
         self.assertEqual(normalize_country_name('Cura├ºao'),'Curaçao')

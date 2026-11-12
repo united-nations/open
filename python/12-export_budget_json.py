@@ -93,6 +93,11 @@ from domain_taxonomies import load_secretariat_taxonomies
 from budget_source_exceptions import correct_ola_year, apply_annual_exceptions, correct_verified_pdf_pages
 from ppb_funding_coverage import validate_section1_funding
 from ppb_chf_layout import add_chf_layout
+from peacekeeping_budget_supplement import (
+    attach_supplement,
+    build_approved_summary,
+    load_supplement,
+)
 
 SRC = Path("data/references/programme-budget-data-financial-v1.8")
 OUT = Path("public/data")
@@ -1534,6 +1539,8 @@ def export() -> None:
                   f"{' It publishes ' + values + '.' if values else ''}")
 
     # Later editions supersede earlier observations for the same fiscal lens.
+    supplement = load_supplement()
+    pko_payloads = {}
     for cycle in sorted(PKO_CYCLES):
         cycle_data = json.loads((SRC / "pko" / f"{cycle}.json").read_text())
         for view in cycle_data["treemapViews"]:
@@ -1544,10 +1551,23 @@ def export() -> None:
             metric = "approved" if measure == "appropriation" else measure
             name = f"budget-pko-{metric}-{payload['meta']['year']}"
             check_tree(payload, name)
-            (OUT / f"{name}.json").write_text(json.dumps(payload, indent=2))
+            pko_payloads[f"{metric}-{payload['meta']['year']}"] = payload
             if metric == "expenditure":
                 (OUT / f"budget-pko-{payload['meta']['year']}.json").write_text(json.dumps(payload, indent=2))
-            print(f"{name}: {len(payload['nodes'])} nodes, ${payload['meta']['total'] / 1e9:.2f}B")
+
+    for key, view in supplement["views"].items():
+        if view.get("standalone"):
+            assert key.startswith("approved-") and key not in pko_payloads, key
+            year = int(key.removeprefix("approved-"))
+            pko_payloads[key] = build_approved_summary(year, view, supplement["documents"])
+        else:
+            attach_supplement(pko_payloads[key], view, supplement["documents"])
+
+    assert set(pko_payloads) == set(supplement["views"]), "Missing peacekeeping reconciliation controls"
+    for key, payload in pko_payloads.items():
+        name = f"budget-pko-{key}"
+        (OUT / f"{name}.json").write_text(json.dumps(payload, indent=2))
+        print(f"{name}: {len(payload['nodes'])} nodes, ${payload['meta']['total'] / 1e9:.2f}B")
 
 
 

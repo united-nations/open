@@ -8,7 +8,7 @@
     "year": 2022,
     "fiscalYear": "2022/23",
     "currency": "USD",
-    "total": 6014239400,
+    "total": 6382792300,
     "costClasses": {
       "military_police_personnel": "Military and police personnel",
       "civilian_personnel": "Civilian personnel",
@@ -28,11 +28,11 @@
       "UNMIK": "United Nations Interim Administration Mission in Kosovo",
       "UNMISS": "United Nations Mission in South Sudan",
       "UNSOS": "United Nations Support Office in Somalia",
-      "UNSOH": "United Nations Support Office in Somalia (successor arrangement)"
+      "UNSOH": "United Nations Support Office in Haiti"
     },
     "partial": false,
-    "scopeLabel": "Peacekeeping missions included in the per-mission corpus",
-    "scopeWarning": "This is not the complete UN peacekeeping budget. The support account, enterprise items and some closed-mission accounts are outside this corpus.",
+    "scopeLabel": "Peacekeeping accounts in the consolidated UN budget tables",
+    "scopeWarning": "Gross resources for the displayed accounts. Budgeted voluntary contributions in kind are reported separately. Mission and account detail follows the cited documents.",
     "coverage": {
       "missionsInCycleReference": 13,
       "missionsDisplayed": 13,
@@ -7005,5 +7005,93 @@
         "pdfPageScope": "table"
       }
     }
-  ]
+  ],
+  "peacekeepingSupplement": {
+    "accounts": [
+      {
+        "code": "PK-SUPPORT",
+        "label": "Peacekeeping support account",
+        "category": "support_account",
+        "amount": 368552900,
+        "source": {
+          "symbol": "A/78/638",
+          "pdfPage": 3,
+          "tableTitle": "Performance of financial resources",
+          "columnHeader": "Expenditure",
+          "rowLabel": "Gross requirements",
+          "url": "https://documents.un.org/doc/undoc/gen/n23/394/10/pdf/n2339410.pdf",
+          "pdfPageScope": "table"
+        },
+        "note": "Shared support for United Nations peacekeeping operations.",
+        "breakdown": [
+          {
+            "label": "Post resources",
+            "amount": 259198900,
+            "source": {
+              "symbol": "A/78/638",
+              "pdfPage": 3,
+              "tableTitle": "Performance of financial resources",
+              "columnHeader": "Expenditure",
+              "rowLabel": "Post requirements",
+              "url": "https://documents.un.org/doc/undoc/gen/n23/394/10/pdf/n2339410.pdf",
+              "pdfPageScope": "table",
+              "budgetItem": "Post resources"
+            }
+          },
+          {
+            "label": "Non-post resources",
+            "amount": 63030400,
+            "source": {
+              "symbol": "A/78/638",
+              "pdfPage": 3,
+              "tableTitle": "Performance of financial resources",
+              "columnHeader": "Expenditure",
+              "rowLabel": "Non-post requirements",
+              "url": "https://documents.un.org/doc/undoc/gen/n23/394/10/pdf/n2339410.pdf",
+              "pdfPageScope": "table",
+              "budgetItem": "Non-post resources"
+            }
+          },
+          {
+            "label": "Corporate costs",
+            "amount": 46323600,
+            "source": {
+              "symbol": "A/78/638",
+              "pdfPage": 3,
+              "tableTitle": "Performance of financial resources",
+              "columnHeader": "Expenditure",
+              "rowLabel": "Subtotal of corporate costs",
+              "url": "https://documents.un.org/doc/undoc/gen/n23/394/10/pdf/n2339410.pdf",
+              "pdfPageScope": "table",
+              "budgetItem": "Corporate costs"
+            }
+          }
+        ]
+      }
+    ],
+    "publishedTotal": {
+      "amount": 6382792300,
+      "source": {
+        "symbol": "A/78/726",
+        "pdfPage": 78,
+        "tableTitle": "Table 25 \u00b7 Financial position and performance for 2022/23",
+        "columnHeader": "Expenditure",
+        "rowLabel": "Subtotal",
+        "url": "https://digitallibrary.un.org/nanna/record/4045712/files/A_78_726-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    "inKind": {
+      "amount": 575700,
+      "source": {
+        "symbol": "A/78/726",
+        "pdfPage": 78,
+        "tableTitle": "Table 25 \u00b7 Financial position and performance for 2022/23",
+        "columnHeader": "Expenditure",
+        "rowLabel": "Voluntary contributions in kind (budgeted)",
+        "url": "https://digitallibrary.un.org/nanna/record/4045712/files/A_78_726-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    }
+  }
 }

@@ -8,7 +8,7 @@
     "year": 2024,
     "fiscalYear": "2024/25",
     "currency": "USD",
-    "total": 5005435200,
+    "total": 5592448300,
     "costClasses": {
       "military_police_personnel": "Military and police personnel",
       "civilian_personnel": "Civilian personnel",
@@ -28,17 +28,18 @@
       "UNMIK": "United Nations Interim Administration Mission in Kosovo",
       "UNMISS": "United Nations Mission in South Sudan",
       "UNSOS": "United Nations Support Office in Somalia",
-      "UNSOH": "United Nations Support Office in Somalia (successor arrangement)"
+      "UNSOH": "United Nations Support Office in Haiti"
     },
     "partial": false,
-    "scopeLabel": "Peacekeeping missions included in the per-mission corpus",
-    "scopeWarning": "This is not the complete UN peacekeeping budget. The support account, enterprise items and some closed-mission accounts are outside this corpus. No amount is published for UNSOH for this stage and financial year.",
+    "scopeLabel": "Peacekeeping accounts in the consolidated UN budget tables",
+    "scopeWarning": "Gross resources for the displayed accounts. Budgeted voluntary contributions in kind are reported separately. Mission and account detail follows the cited documents.",
     "coverage": {
-      "missionsInCycleReference": 13,
-      "missionsDisplayed": 12,
+      "missionsInCycleReference": 14,
+      "missionsDisplayed": 13,
       "displayedMissionCodes": [
         "MINURSO",
         "MINUSCA",
+        "MINUSMA",
         "MONUSCO",
         "RSCE",
         "UNDOF",
@@ -6268,5 +6269,153 @@
         "pdfPageScope": "table"
       }
     }
-  ]
+  ],
+  "peacekeepingSupplement": {
+    "accounts": [
+      {
+        "code": "PK-SUPPORT",
+        "label": "Peacekeeping support account",
+        "category": "support_account",
+        "amount": 384229600,
+        "source": {
+          "symbol": "A/80/631",
+          "pdfPage": 4,
+          "tableTitle": "Financial resources",
+          "columnHeader": "Apportionment (2024/25)",
+          "rowLabel": "Gross requirements",
+          "url": "https://digitallibrary.un.org/nanna/record/4109170/files/A_80_631-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+          "pdfPageScope": "table"
+        },
+        "note": "Shared support for United Nations peacekeeping operations.",
+        "breakdown": [
+          {
+            "label": "Post resources",
+            "amount": 267285300,
+            "source": {
+              "symbol": "A/80/631",
+              "pdfPage": 4,
+              "tableTitle": "Financial resources",
+              "columnHeader": "Apportionment (2024/25)",
+              "rowLabel": "I. Post resources",
+              "url": "https://digitallibrary.un.org/nanna/record/4109170/files/A_80_631-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Post resources"
+            }
+          },
+          {
+            "label": "Non-post resources",
+            "amount": 61086200,
+            "source": {
+              "symbol": "A/80/631",
+              "pdfPage": 4,
+              "tableTitle": "Financial resources",
+              "columnHeader": "Apportionment (2024/25)",
+              "rowLabel": "Subtotal II",
+              "url": "https://digitallibrary.un.org/nanna/record/4109170/files/A_80_631-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Non-post resources"
+            }
+          },
+          {
+            "label": "Corporate costs",
+            "amount": 55858100,
+            "source": {
+              "symbol": "A/80/631",
+              "pdfPage": 4,
+              "tableTitle": "Financial resources",
+              "columnHeader": "Apportionment (2024/25)",
+              "rowLabel": "Subtotal corporate costs",
+              "url": "https://digitallibrary.un.org/nanna/record/4109170/files/A_80_631-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Corporate costs"
+            }
+          }
+        ]
+      },
+      {
+        "code": "MINUSMA",
+        "label": "United Nations Multidimensional Integrated Stabilization Mission in Mali",
+        "category": "pko",
+        "amount": 202783500,
+        "source": {
+          "symbol": "A/80/590",
+          "pdfPage": 3,
+          "tableTitle": "Financial resources",
+          "columnHeader": "Apportionment",
+          "rowLabel": "Gross requirements",
+          "url": "https://digitallibrary.un.org/nanna/record/4100963/files/A_80_590-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+          "pdfPageScope": "table"
+        },
+        "note": "Appropriation for liquidation of the closed mission.",
+        "breakdown": [
+          {
+            "label": "Military and police personnel",
+            "amount": 37339000,
+            "source": {
+              "symbol": "A/80/590",
+              "pdfPage": 3,
+              "tableTitle": "Financial resources",
+              "columnHeader": "Apportionment",
+              "rowLabel": "Military and police personnel",
+              "url": "https://digitallibrary.un.org/nanna/record/4100963/files/A_80_590-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Military and police personnel"
+            }
+          },
+          {
+            "label": "Civilian personnel",
+            "amount": 68552000,
+            "source": {
+              "symbol": "A/80/590",
+              "pdfPage": 3,
+              "tableTitle": "Financial resources",
+              "columnHeader": "Apportionment",
+              "rowLabel": "Civilian personnel",
+              "url": "https://digitallibrary.un.org/nanna/record/4100963/files/A_80_590-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Civilian personnel"
+            }
+          },
+          {
+            "label": "Operational costs",
+            "amount": 96892500,
+            "source": {
+              "symbol": "A/80/590",
+              "pdfPage": 3,
+              "tableTitle": "Financial resources",
+              "columnHeader": "Apportionment",
+              "rowLabel": "Operational costs",
+              "url": "https://digitallibrary.un.org/nanna/record/4100963/files/A_80_590-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Operational costs"
+            }
+          }
+        ]
+      }
+    ],
+    "publishedTotal": {
+      "amount": 5592448300,
+      "source": {
+        "symbol": "A/80/643",
+        "pdfPage": 75,
+        "tableTitle": "Table 25 \u00b7 Financial position and performance for 2024/25",
+        "columnHeader": "Apportionment",
+        "rowLabel": "Subtotal",
+        "url": "https://digitallibrary.un.org/nanna/record/4109171/files/A_80_643-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    "inKind": {
+      "amount": 653200,
+      "source": {
+        "symbol": "A/80/643",
+        "pdfPage": 75,
+        "tableTitle": "Table 25 \u00b7 Financial position and performance for 2024/25",
+        "columnHeader": "Apportionment",
+        "rowLabel": "Voluntary contributions in kind (budgeted)",
+        "url": "https://digitallibrary.un.org/nanna/record/4109171/files/A_80_643-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    }
+  }
 }

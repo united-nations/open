@@ -8,7 +8,7 @@
     "year": 2025,
     "fiscalYear": "2025/26",
     "currency": "USD",
-    "total": 4959816500,
+    "total": 5654830700,
     "costClasses": {
       "military_police_personnel": "Military and police personnel",
       "civilian_personnel": "Civilian personnel",
@@ -28,14 +28,14 @@
       "UNMIK": "United Nations Interim Administration Mission in Kosovo",
       "UNMISS": "United Nations Mission in South Sudan",
       "UNSOS": "United Nations Support Office in Somalia",
-      "UNSOH": "United Nations Support Office in Somalia (successor arrangement)"
+      "UNSOH": "United Nations Support Office in Haiti"
     },
     "partial": false,
-    "scopeLabel": "Peacekeeping missions included in the per-mission corpus",
-    "scopeWarning": "This is not the complete UN peacekeeping budget. The support account, enterprise items and some closed-mission accounts are outside this corpus. No amount is published for UNSOH for this stage and financial year.",
+    "scopeLabel": "Peacekeeping accounts in the consolidated UN budget tables",
+    "scopeWarning": "Gross resources for the displayed accounts. Budgeted voluntary contributions in kind are reported separately. Mission and account detail follows the cited documents.",
     "coverage": {
       "missionsInCycleReference": 13,
-      "missionsDisplayed": 12,
+      "missionsDisplayed": 13,
       "displayedMissionCodes": [
         "MINURSO",
         "MINUSCA",
@@ -48,12 +48,11 @@
         "UNISFA",
         "UNMIK",
         "UNMISS",
+        "UNSOH",
         "UNSOS"
       ],
       "missingCanonicalDetail": [],
-      "noPublishedValueForLens": [
-        "UNSOH"
-      ],
+      "noPublishedValueForLens": [],
       "completeness": "complete_for_published_lens"
     },
     "verification": {
@@ -6268,5 +6267,133 @@
         "pdfPageScope": "table"
       }
     }
-  ]
+  ],
+  "peacekeepingSupplement": {
+    "accounts": [
+      {
+        "code": "PK-SUPPORT",
+        "label": "Peacekeeping support account",
+        "category": "support_account",
+        "amount": 425636500,
+        "source": {
+          "symbol": "A/RES/79/298",
+          "pdfPage": 3,
+          "tableTitle": "Budget estimates for 2025/26",
+          "columnHeader": "Approved",
+          "rowLabel": "Support account requirements",
+          "url": "https://digitallibrary.un.org/nanna/record/4084775/files/A_RES_79_298-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+          "pdfPageScope": "table"
+        },
+        "note": "Shared support for United Nations peacekeeping operations.",
+        "breakdown": [
+          {
+            "label": "Post resources",
+            "amount": 302892800,
+            "source": {
+              "symbol": "A/80/631",
+              "pdfPage": 4,
+              "tableTitle": "Financial resources",
+              "columnHeader": "Apportionment (2025/26)",
+              "rowLabel": "I. Post resources",
+              "url": "https://digitallibrary.un.org/nanna/record/4109170/files/A_80_631-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Post resources"
+            }
+          },
+          {
+            "label": "Non-post resources",
+            "amount": 64196400,
+            "source": {
+              "symbol": "A/80/631",
+              "pdfPage": 4,
+              "tableTitle": "Financial resources",
+              "columnHeader": "Apportionment (2025/26)",
+              "rowLabel": "Subtotal II",
+              "url": "https://digitallibrary.un.org/nanna/record/4109170/files/A_80_631-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Non-post resources"
+            }
+          },
+          {
+            "label": "Corporate costs",
+            "amount": 58547300,
+            "source": {
+              "symbol": "A/80/631",
+              "pdfPage": 4,
+              "tableTitle": "Financial resources",
+              "columnHeader": "Apportionment (2025/26)",
+              "rowLabel": "Subtotal corporate costs",
+              "url": "https://digitallibrary.un.org/nanna/record/4109170/files/A_80_631-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Corporate costs"
+            }
+          }
+        ]
+      },
+      {
+        "code": "UNSOH",
+        "label": "United Nations Support Office in Haiti",
+        "category": "support_office",
+        "amount": 269377700,
+        "source": {
+          "symbol": "A/RES/80/241 B",
+          "pdfPage": 3,
+          "tableTitle": "Paragraph 12",
+          "columnHeader": "Appropriation \u00b7 1 October 2025 to 30 June 2026",
+          "rowLabel": "Maintenance of the Support Office",
+          "url": "https://documents.un.org/api/symbol/access?s=A%2FRES%2F80%2F241%20B&l=en&t=pdf",
+          "pdfPageScope": "table"
+        },
+        "note": "Final nine-month appropriation, from 1 October 2025 through 30 June 2026.",
+        "breakdown": []
+      }
+    ],
+    "publishedTotal": {
+      "amount": 5656781700,
+      "source": {
+        "symbol": "A/C.5/80/17",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2025/26",
+        "columnHeader": "Total",
+        "rowLabel": "Gross requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4099086/files/A_C.5_80_17-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    "inKind": {
+      "amount": 704000,
+      "source": {
+        "symbol": "A/C.5/80/17",
+        "pdfPage": 4,
+        "tableTitle": "Annex \u00b7 Approved resources for 2025/26",
+        "columnHeader": "Total",
+        "rowLabel": "Voluntary contributions in kind (budgeted)",
+        "url": "https://digitallibrary.un.org/nanna/record/4099086/files/A_C.5_80_17-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    "adjustments": [
+      {
+        "amount": -1951000,
+        "previous": {
+          "symbol": "A/C.5/80/17",
+          "pdfPage": 3,
+          "tableTitle": "Annex \u00b7 Approved resources for 2025/26",
+          "columnHeader": "UNSOH",
+          "rowLabel": "Gross requirements",
+          "url": "https://digitallibrary.un.org/nanna/record/4099086/files/A_C.5_80_17-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+          "pdfPageScope": "table"
+        },
+        "source": {
+          "symbol": "A/RES/80/241 B",
+          "pdfPage": 3,
+          "tableTitle": "Paragraph 12",
+          "columnHeader": "Appropriation \u00b7 1 October 2025 to 30 June 2026",
+          "rowLabel": "Maintenance of the Support Office",
+          "url": "https://documents.un.org/api/symbol/access?s=A%2FRES%2F80%2F241%20B&l=en&t=pdf",
+          "pdfPageScope": "table"
+        }
+      }
+    ]
+  }
 }

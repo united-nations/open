@@ -23,7 +23,7 @@ try {
       .isChecked(),
   );
   assert.match(await page.locator("body").innerText(), /2024\/25/);
-  assert.match(await page.locator("body").innerText(), /\$4.9B/);
+  assert.match(await page.locator("body").innerText(), /\$5.4B/);
   const map = page.locator(".pko-dot-map");
   await map.locator("svg circle").first().waitFor({ state: "attached" });
   assert.equal(
@@ -51,6 +51,74 @@ try {
     "Programme Budget segmented control and two-row layout; default expenditure 2024/25",
   );
 
+  const supportMarker = page.getByRole("button", {
+    name: "Support account",
+    exact: true,
+  });
+  assert.equal(
+    await supportMarker.locator("circle").evaluate((circle) => {
+      const style = getComputedStyle(circle);
+      return `${style.fillOpacity} ${style.strokeWidth}`;
+    }),
+    "0.28 1.5px",
+  );
+  await supportMarker.click();
+  const supportDetails = page.getByRole("dialog", {
+    name: "Peacekeeping support account",
+  });
+  await supportDetails.waitFor();
+  assert.match(await supportDetails.innerText(), /Post resources/);
+  assert.match(await supportDetails.innerText(), /Corporate costs/);
+  assert.ok(
+    await supportDetails
+      .getByRole("link", { name: /A\/80\/631, PDF page 4/ })
+      .count(),
+  );
+  await supportDetails
+    .getByRole("button", { name: "Close account details" })
+    .click();
+  await page
+    .getByRole("button", { name: "Peacekeeping support account", exact: true })
+    .click();
+  await supportMarker.waitFor({ state: "hidden" });
+  await page
+    .getByRole("button", { name: "Peacekeeping support account", exact: true })
+    .click();
+  await supportMarker.waitFor();
+  results.push(
+    "Support account map marker, official citation, and category filter",
+  );
+
+  const view = page.getByRole("group", { name: "Peacekeeping view" });
+  assert.deepEqual(await view.locator("label").allTextContents(), [
+    "Chart",
+    "Map",
+    "List",
+  ]);
+  await view.getByRole("radio", { name: "List" }).locator("..").click();
+  await page
+    .getByText("Liquidation of the closed mission during 2024/25.", {
+      exact: true,
+    })
+    .click();
+  const liquidation = page.getByRole("dialog", {
+    name: /Stabilization Mission in Mali/,
+  });
+  await liquidation.waitFor();
+  assert.match(await liquidation.innerText(), /\$164\.8M/);
+  assert.ok(
+    await liquidation
+      .getByRole("link", { name: /A\/80\/590, PDF page 3/ })
+      .count(),
+  );
+  await liquidation
+    .getByRole("button", { name: "Close account details" })
+    .click();
+  await view.getByRole("radio", { name: "Map" }).locator("..").click();
+  results.push(
+    "MINUSMA liquidation list row, amount, and performance citation",
+  );
+
   await page.evaluate(() => {
     window.savedMap = document.querySelector(".pko-dot-map svg");
   });
@@ -62,7 +130,7 @@ try {
     .getByRole("radio", { name: "Approved", exact: true })
     .check({ force: true });
   await page.waitForTimeout(150);
-  assert.match(await page.locator("body").innerText(), /\$4.9B/);
+  assert.match(await page.locator("body").innerText(), /\$5.4B/);
   assert.equal(
     await page.evaluate(
       () => window.savedMap === document.querySelector(".pko-dot-map svg"),
@@ -77,9 +145,10 @@ try {
   );
 
   for (const [metric, year, total] of [
-    ["Approved", 2025, "$5B"],
-    ["Proposed", 2026, "$4.4B"],
-    ["Expenditure", 2024, "$4.9B"],
+    ["Approved", 2025, "$5.7B"],
+    ["Approved", 2026, "$5.1B"],
+    ["Proposed", 2026, "$5.2B"],
+    ["Expenditure", 2024, "$5.4B"],
   ]) {
     await selectYear(year);
     await page
@@ -96,6 +165,14 @@ try {
       .getByRole("radio", { name: "Expenditure", exact: true })
       .isDisabled(),
   );
+  await page
+    .getByRole("radio", { name: "Proposed", exact: true })
+    .check({ force: true });
+  await supportMarker.click();
+  await supportDetails.getByText("$383.4M", { exact: true }).first().waitFor();
+  await supportDetails
+    .getByRole("button", { name: "Close account details" })
+    .click();
   await page.evaluate(() => {
     history.pushState(null, "", "#pko-mission=MINURSO");
     window.dispatchEvent(new HashChangeEvent("hashchange"));
@@ -110,15 +187,9 @@ try {
   await page
     .getByRole("button", { name: "Service centres", exact: true })
     .click();
-  const view = page.getByRole("group", { name: "Peacekeeping view" });
-  assert.deepEqual(await view.locator("label").allTextContents(), [
-    "Chart",
-    "Map",
-    "List",
-  ]);
   await view.getByRole("radio", { name: "List" }).locator("..").click();
   const missions = page.getByRole("group", {
-    name: "Peacekeeping missions",
+    name: "Peacekeeping budget accounts",
   });
   await missions.getByRole("listitem").first().waitFor();
   await view.getByRole("radio", { name: "Chart" }).locator("..").click();
@@ -156,8 +227,71 @@ try {
     .getByRole("radio", { name: "Expenditure", exact: true })
     .check({ force: true });
   await page.waitForTimeout(400);
-  assert.match(await page.locator("body").innerText(), /\$4.9B/);
+  assert.match(await page.locator("body").innerText(), /\$5.4B/);
   results.push("Failure disclosure and recovery");
+  await page.setViewportSize({ width: 390, height: 844 });
+  await supportMarker.waitFor();
+  const mapBounds = await map.boundingBox();
+  const markerBounds = await supportMarker.boundingBox();
+  assert.ok(markerBounds.x >= mapBounds.x);
+  assert.ok(
+    markerBounds.x + markerBounds.width <= mapBounds.x + mapBounds.width,
+  );
+  assert.ok(
+    markerBounds.y + markerBounds.height <= mapBounds.y + mapBounds.height,
+  );
+  await supportMarker.press("Enter");
+  await supportDetails.waitFor();
+  await supportDetails
+    .getByRole("button", { name: "Close account details" })
+    .click();
+  results.push(
+    "Support account marker fits mobile and opens with the keyboard",
+  );
+
+  await page.goto(
+    `${portalUrl}/secretariat/peacekeeping-budget/#pko-mission=MINUSMA%7Cexpenditure%7C2022`,
+  );
+  const minusmaTrend = page
+    .getByRole("dialog", { name: "MINUSMA", exact: true })
+    .getByRole("table", { name: /Expenditure by budget group/ });
+  await minusmaTrend.waitFor({ state: "attached" });
+  for (const [fiscalYear, total] of [
+    ["2023/24", "$833.8M"],
+    ["2024/25", "$164.8M"],
+  ]) {
+    const row = minusmaTrend.getByRole("row").filter({ hasText: fiscalYear });
+    assert.ok((await row.textContent()).includes(total));
+  }
+  results.push(
+    "MINUSMA trend includes the sourced drawdown and liquidation years",
+  );
+
+  await page.context().grantPermissions(["clipboard-read", "clipboard-write"]);
+  await page.goto(
+    `${portalUrl}/secretariat/peacekeeping-budget/#pko-mission=UNSOH%7Capproved%7C2025`,
+  );
+  const haiti = page.getByRole("dialog", {
+    name: "United Nations Support Office in Haiti",
+  });
+  await haiti.getByText("$269.4M", { exact: true }).waitFor();
+  await haiti.getByRole("button", { name: "Copy link to clipboard" }).click();
+  await haiti.getByRole("status").filter({ hasText: "Link copied!" }).waitFor();
+  const sharedLink = await page.evaluate(() => navigator.clipboard.readText());
+  assert.equal(
+    new URL(sharedLink).hash,
+    "#pko-mission=UNSOH%7Capproved%7C2025",
+  );
+  const recipient = await browser.newPage();
+  await recipient.goto(sharedLink);
+  await recipient
+    .getByRole("dialog", { name: "United Nations Support Office in Haiti" })
+    .getByText("$269.4M", { exact: true })
+    .waitFor();
+  await recipient.close();
+  results.push(
+    "Shared Haiti account links restore the approved stage and fiscal year",
+  );
   assert.deepEqual(errors, []);
   await page.screenshot({
     path: "audits/browser/peacekeeping-stages.png",

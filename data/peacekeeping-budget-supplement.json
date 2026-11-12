@@ -1,0 +1,1697 @@
+{
+  "documents": {
+    "A/78/638": "https://documents.un.org/doc/undoc/gen/n23/394/10/pdf/n2339410.pdf",
+    "A/79/783": "https://documents.un.org/doc/undoc/gen/n25/037/67/pdf/n2503767.pdf",
+    "A/RES/80/241 B": "https://documents.un.org/api/symbol/access?s=A%2FRES%2F80%2F241%20B&l=en&t=pdf",
+    "A/78/726": "https://digitallibrary.un.org/nanna/record/4045712/files/A_78_726-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+    "A/78/746": "https://digitallibrary.un.org/nanna/record/4044755/files/A_78_746-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+    "A/79/680": "https://digitallibrary.un.org/nanna/record/4078321/files/A_79_680-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+    "A/79/788": "https://digitallibrary.un.org/nanna/record/4081221/files/A_79_788-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+    "A/79/817": "https://digitallibrary.un.org/nanna/record/4079683/files/A_79_817-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+    "A/80/590": "https://digitallibrary.un.org/nanna/record/4100963/files/A_80_590-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+    "A/80/631": "https://digitallibrary.un.org/nanna/record/4109170/files/A_80_631-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+    "A/80/643": "https://digitallibrary.un.org/nanna/record/4109171/files/A_80_643-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+    "A/C.5/80/17": "https://digitallibrary.un.org/nanna/record/4099086/files/A_C.5_80_17-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+    "A/C.5/80/18": "https://digitallibrary.un.org/nanna/record/4104940/files/A_C.5_80_18-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+    "A/C.5/80/20": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+    "A/RES/79/298": "https://digitallibrary.un.org/nanna/record/4084775/files/A_RES_79_298-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+    "A/78/754": "https://documents.un.org/api/symbol/access?s=A%2F78%2F754&l=en&t=pdf"
+  },
+  "views": {
+    "expenditure-2022": {
+      "publishedTotal": {
+        "amount": 6382792300,
+        "citation": {
+          "symbol": "A/78/726",
+          "pdfPage": 78,
+          "tableTitle": "Table 25 \u00b7 Financial position and performance for 2022/23",
+          "columnHeader": "Expenditure",
+          "rowLabel": "Subtotal"
+        }
+      },
+      "inKind": {
+        "amount": 575700,
+        "citation": {
+          "symbol": "A/78/726",
+          "pdfPage": 78,
+          "tableTitle": "Table 25 \u00b7 Financial position and performance for 2022/23",
+          "columnHeader": "Expenditure",
+          "rowLabel": "Voluntary contributions in kind (budgeted)"
+        }
+      },
+      "accounts": [
+        {
+          "code": "PK-SUPPORT",
+          "label": "Peacekeeping support account",
+          "category": "support_account",
+          "amount": 368552900,
+          "citation": {
+            "symbol": "A/78/638",
+            "pdfPage": 3,
+            "tableTitle": "Performance of financial resources",
+            "columnHeader": "Expenditure",
+            "rowLabel": "Gross requirements"
+          },
+          "note": "Shared support for United Nations peacekeeping operations.",
+          "breakdown": [
+            {
+              "label": "Post resources",
+              "amount": 259198900,
+              "citation": {
+                "symbol": "A/78/638",
+                "pdfPage": 3,
+                "tableTitle": "Performance of financial resources",
+                "columnHeader": "Expenditure",
+                "rowLabel": "Post requirements"
+              }
+            },
+            {
+              "label": "Non-post resources",
+              "amount": 63030400,
+              "citation": {
+                "symbol": "A/78/638",
+                "pdfPage": 3,
+                "tableTitle": "Performance of financial resources",
+                "columnHeader": "Expenditure",
+                "rowLabel": "Non-post requirements"
+              }
+            },
+            {
+              "label": "Corporate costs",
+              "amount": 46323600,
+              "citation": {
+                "symbol": "A/78/638",
+                "pdfPage": 3,
+                "tableTitle": "Performance of financial resources",
+                "columnHeader": "Expenditure",
+                "rowLabel": "Subtotal of corporate costs"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "expenditure-2023": {
+      "publishedTotal": {
+        "amount": 6187007400,
+        "citation": {
+          "symbol": "A/79/788",
+          "pdfPage": 84,
+          "tableTitle": "Table 28 \u00b7 Financial position and performance for 2023/24",
+          "columnHeader": "Expenditure",
+          "rowLabel": "Subtotal"
+        }
+      },
+      "inKind": {
+        "amount": 539000,
+        "citation": {
+          "symbol": "A/79/788",
+          "pdfPage": 84,
+          "tableTitle": "Table 28 \u00b7 Financial position and performance for 2023/24",
+          "columnHeader": "Expenditure",
+          "rowLabel": "Voluntary contributions in kind (budgeted)"
+        }
+      },
+      "accounts": [
+        {
+          "code": "PK-SUPPORT",
+          "label": "Peacekeeping support account",
+          "category": "support_account",
+          "amount": 386189000,
+          "citation": {
+            "symbol": "A/79/680",
+            "pdfPage": 3,
+            "tableTitle": "Performance of financial resources",
+            "columnHeader": "Expenditure",
+            "rowLabel": "Gross requirements"
+          },
+          "note": "Shared support for United Nations peacekeeping operations.",
+          "breakdown": [
+            {
+              "label": "Post resources",
+              "amount": 268742300,
+              "citation": {
+                "symbol": "A/79/680",
+                "pdfPage": 3,
+                "tableTitle": "Performance of financial resources",
+                "columnHeader": "Expenditure",
+                "rowLabel": "Post requirements"
+              }
+            },
+            {
+              "label": "Non-post resources",
+              "amount": 64036000,
+              "citation": {
+                "symbol": "A/79/680",
+                "pdfPage": 3,
+                "tableTitle": "Performance of financial resources",
+                "columnHeader": "Expenditure",
+                "rowLabel": "Non-post requirements"
+              }
+            },
+            {
+              "label": "Corporate costs",
+              "amount": 53410700,
+              "citation": {
+                "symbol": "A/79/680",
+                "pdfPage": 3,
+                "tableTitle": "Performance of financial resources",
+                "columnHeader": "Expenditure",
+                "rowLabel": "Subtotal of corporate costs"
+              }
+            }
+          ]
+        },
+        {
+          "code": "MINUSMA",
+          "label": "United Nations Multidimensional Integrated Stabilization Mission in Mali",
+          "category": "pko",
+          "amount": 833809900,
+          "citation": {
+            "symbol": "A/79/817",
+            "pdfPage": 3,
+            "tableTitle": "Financial resources",
+            "columnHeader": "Expenditure",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Military and police personnel",
+              "amount": 405481700,
+              "citation": {
+                "symbol": "A/79/817",
+                "pdfPage": 3,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Expenditure",
+                "rowLabel": "Military and police personnel"
+              }
+            },
+            {
+              "label": "Civilian personnel",
+              "amount": 184184100,
+              "citation": {
+                "symbol": "A/79/817",
+                "pdfPage": 3,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Expenditure",
+                "rowLabel": "Civilian personnel"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 244144100,
+              "citation": {
+                "symbol": "A/79/817",
+                "pdfPage": 3,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Expenditure",
+                "rowLabel": "Operational costs"
+              }
+            }
+          ],
+          "note": "Mission drawdown and liquidation during 2023/24."
+        }
+      ]
+    },
+    "expenditure-2024": {
+      "publishedTotal": {
+        "amount": 5432349200,
+        "citation": {
+          "symbol": "A/80/643",
+          "pdfPage": 75,
+          "tableTitle": "Table 25 \u00b7 Financial position and performance for 2024/25",
+          "columnHeader": "Expenditure",
+          "rowLabel": "Subtotal"
+        }
+      },
+      "inKind": {
+        "amount": 374700,
+        "citation": {
+          "symbol": "A/80/643",
+          "pdfPage": 75,
+          "tableTitle": "Table 25 \u00b7 Financial position and performance for 2024/25",
+          "columnHeader": "Expenditure",
+          "rowLabel": "Voluntary contributions in kind (budgeted)"
+        }
+      },
+      "accounts": [
+        {
+          "code": "PK-SUPPORT",
+          "label": "Peacekeeping support account",
+          "category": "support_account",
+          "amount": 379419200,
+          "citation": {
+            "symbol": "A/80/631",
+            "pdfPage": 4,
+            "tableTitle": "Financial resources",
+            "columnHeader": "Expenditure (2024/25)",
+            "rowLabel": "Gross requirements"
+          },
+          "note": "Shared support for United Nations peacekeeping operations.",
+          "breakdown": [
+            {
+              "label": "Post resources",
+              "amount": 270376800,
+              "citation": {
+                "symbol": "A/80/631",
+                "pdfPage": 4,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Expenditure (2024/25)",
+                "rowLabel": "I. Post resources"
+              }
+            },
+            {
+              "label": "Non-post resources",
+              "amount": 55958000,
+              "citation": {
+                "symbol": "A/80/631",
+                "pdfPage": 4,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Expenditure (2024/25)",
+                "rowLabel": "Subtotal II"
+              }
+            },
+            {
+              "label": "Corporate costs",
+              "amount": 53084400,
+              "citation": {
+                "symbol": "A/80/631",
+                "pdfPage": 4,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Expenditure (2024/25)",
+                "rowLabel": "Subtotal corporate costs"
+              }
+            }
+          ]
+        },
+        {
+          "code": "MINUSMA",
+          "label": "United Nations Multidimensional Integrated Stabilization Mission in Mali",
+          "category": "pko",
+          "amount": 164805900,
+          "citation": {
+            "symbol": "A/80/590",
+            "pdfPage": 3,
+            "tableTitle": "Financial resources",
+            "columnHeader": "Expenditure",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Military and police personnel",
+              "amount": 48442500,
+              "citation": {
+                "symbol": "A/80/590",
+                "pdfPage": 3,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Expenditure",
+                "rowLabel": "Military and police personnel"
+              }
+            },
+            {
+              "label": "Civilian personnel",
+              "amount": 50969800,
+              "citation": {
+                "symbol": "A/80/590",
+                "pdfPage": 3,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Expenditure",
+                "rowLabel": "Civilian personnel"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 65393600,
+              "citation": {
+                "symbol": "A/80/590",
+                "pdfPage": 3,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Expenditure",
+                "rowLabel": "Operational costs"
+              }
+            }
+          ],
+          "note": "Liquidation of the closed mission during 2024/25."
+        }
+      ]
+    },
+    "approved-2023": {
+      "publishedTotal": {
+        "amount": 6345442700,
+        "citation": {
+          "symbol": "A/79/788",
+          "pdfPage": 84,
+          "tableTitle": "Table 28 \u00b7 Financial position and performance for 2023/24",
+          "columnHeader": "Apportionment",
+          "rowLabel": "Subtotal"
+        }
+      },
+      "inKind": {
+        "amount": 679100,
+        "citation": {
+          "symbol": "A/79/788",
+          "pdfPage": 84,
+          "tableTitle": "Table 28 \u00b7 Financial position and performance for 2023/24",
+          "columnHeader": "Apportionment",
+          "rowLabel": "Voluntary contributions in kind (budgeted)"
+        }
+      },
+      "accounts": [
+        {
+          "code": "PK-SUPPORT",
+          "label": "Peacekeeping support account",
+          "category": "support_account",
+          "amount": 387808200,
+          "citation": {
+            "symbol": "A/79/680",
+            "pdfPage": 3,
+            "tableTitle": "Performance of financial resources",
+            "columnHeader": "Apportionment",
+            "rowLabel": "Gross requirements"
+          },
+          "note": "Shared support for United Nations peacekeeping operations.",
+          "breakdown": [
+            {
+              "label": "Post resources",
+              "amount": 268400700,
+              "citation": {
+                "symbol": "A/79/680",
+                "pdfPage": 3,
+                "tableTitle": "Performance of financial resources",
+                "columnHeader": "Apportionment",
+                "rowLabel": "Post requirements"
+              }
+            },
+            {
+              "label": "Non-post resources",
+              "amount": 63303700,
+              "citation": {
+                "symbol": "A/79/680",
+                "pdfPage": 3,
+                "tableTitle": "Performance of financial resources",
+                "columnHeader": "Apportionment",
+                "rowLabel": "Non-post requirements"
+              }
+            },
+            {
+              "label": "Corporate costs",
+              "amount": 56103800,
+              "citation": {
+                "symbol": "A/79/680",
+                "pdfPage": 3,
+                "tableTitle": "Performance of financial resources",
+                "columnHeader": "Apportionment",
+                "rowLabel": "Subtotal of corporate costs"
+              }
+            }
+          ]
+        },
+        {
+          "code": "UNMISS",
+          "label": "United Nations Mission in South Sudan",
+          "category": "pko",
+          "amount": 1164288000,
+          "citation": {
+            "symbol": "A/79/788",
+            "pdfPage": 82,
+            "tableTitle": "Table 27 \u00b7 Financial resources approved for 2023/24",
+            "columnHeader": "Final approved",
+            "rowLabel": "UNMISS"
+          },
+          "breakdown": [
+            {
+              "label": "Military and police personnel",
+              "amount": 511894100,
+              "citation": {
+                "symbol": "A/78/754",
+                "rowLabel": "Subtotal",
+                "columnHeader": "appropriation \u00b7 2023/24",
+                "pdfPage": 61,
+                "pageStatus": "row_label_and_amount_unique",
+                "pdfPageScope": "table"
+              }
+            },
+            {
+              "label": "Civilian personnel",
+              "amount": 323013800,
+              "citation": {
+                "symbol": "A/78/754",
+                "rowLabel": "Subtotal",
+                "columnHeader": "appropriation \u00b7 2023/24",
+                "pdfPage": 61,
+                "pageStatus": "row_label_and_amount_unique",
+                "pdfPageScope": "table"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 313928600,
+              "citation": {
+                "symbol": "A/78/754",
+                "rowLabel": "Subtotal",
+                "columnHeader": "appropriation \u00b7 2023/24",
+                "pdfPage": 61,
+                "pageStatus": "row_label_and_amount_unique",
+                "pdfPageScope": "table"
+              }
+            },
+            {
+              "label": "Additional commitment authority",
+              "amount": 15451500,
+              "citation": {
+                "symbol": "A/79/788",
+                "pdfPage": 82,
+                "tableTitle": "Table 27 \u00b7 Financial resources approved for 2023/24",
+                "columnHeader": "Additional apportionment approved",
+                "rowLabel": "UNMISS"
+              }
+            }
+          ],
+          "note": "Includes the additional commitment authority approved during 2023/24.",
+          "replacesAmount": 1148836500
+        }
+      ]
+    },
+    "approved-2024": {
+      "publishedTotal": {
+        "amount": 5592448300,
+        "citation": {
+          "symbol": "A/80/643",
+          "pdfPage": 75,
+          "tableTitle": "Table 25 \u00b7 Financial position and performance for 2024/25",
+          "columnHeader": "Apportionment",
+          "rowLabel": "Subtotal"
+        }
+      },
+      "inKind": {
+        "amount": 653200,
+        "citation": {
+          "symbol": "A/80/643",
+          "pdfPage": 75,
+          "tableTitle": "Table 25 \u00b7 Financial position and performance for 2024/25",
+          "columnHeader": "Apportionment",
+          "rowLabel": "Voluntary contributions in kind (budgeted)"
+        }
+      },
+      "accounts": [
+        {
+          "code": "PK-SUPPORT",
+          "label": "Peacekeeping support account",
+          "category": "support_account",
+          "amount": 384229600,
+          "citation": {
+            "symbol": "A/80/631",
+            "pdfPage": 4,
+            "tableTitle": "Financial resources",
+            "columnHeader": "Apportionment (2024/25)",
+            "rowLabel": "Gross requirements"
+          },
+          "note": "Shared support for United Nations peacekeeping operations.",
+          "breakdown": [
+            {
+              "label": "Post resources",
+              "amount": 267285300,
+              "citation": {
+                "symbol": "A/80/631",
+                "pdfPage": 4,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Apportionment (2024/25)",
+                "rowLabel": "I. Post resources"
+              }
+            },
+            {
+              "label": "Non-post resources",
+              "amount": 61086200,
+              "citation": {
+                "symbol": "A/80/631",
+                "pdfPage": 4,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Apportionment (2024/25)",
+                "rowLabel": "Subtotal II"
+              }
+            },
+            {
+              "label": "Corporate costs",
+              "amount": 55858100,
+              "citation": {
+                "symbol": "A/80/631",
+                "pdfPage": 4,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Apportionment (2024/25)",
+                "rowLabel": "Subtotal corporate costs"
+              }
+            }
+          ]
+        },
+        {
+          "code": "MINUSMA",
+          "label": "United Nations Multidimensional Integrated Stabilization Mission in Mali",
+          "category": "pko",
+          "amount": 202783500,
+          "citation": {
+            "symbol": "A/80/590",
+            "pdfPage": 3,
+            "tableTitle": "Financial resources",
+            "columnHeader": "Apportionment",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Military and police personnel",
+              "amount": 37339000,
+              "citation": {
+                "symbol": "A/80/590",
+                "pdfPage": 3,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Apportionment",
+                "rowLabel": "Military and police personnel"
+              }
+            },
+            {
+              "label": "Civilian personnel",
+              "amount": 68552000,
+              "citation": {
+                "symbol": "A/80/590",
+                "pdfPage": 3,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Apportionment",
+                "rowLabel": "Civilian personnel"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 96892500,
+              "citation": {
+                "symbol": "A/80/590",
+                "pdfPage": 3,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Apportionment",
+                "rowLabel": "Operational costs"
+              }
+            }
+          ],
+          "note": "Appropriation for liquidation of the closed mission."
+        }
+      ]
+    },
+    "approved-2025": {
+      "publishedTotal": {
+        "amount": 5656781700,
+        "citation": {
+          "symbol": "A/C.5/80/17",
+          "pdfPage": 3,
+          "tableTitle": "Annex \u00b7 Approved resources for 2025/26",
+          "columnHeader": "Total",
+          "rowLabel": "Gross requirements"
+        }
+      },
+      "inKind": {
+        "amount": 704000,
+        "citation": {
+          "symbol": "A/C.5/80/17",
+          "pdfPage": 4,
+          "tableTitle": "Annex \u00b7 Approved resources for 2025/26",
+          "columnHeader": "Total",
+          "rowLabel": "Voluntary contributions in kind (budgeted)"
+        }
+      },
+      "accounts": [
+        {
+          "code": "PK-SUPPORT",
+          "label": "Peacekeeping support account",
+          "category": "support_account",
+          "amount": 425636500,
+          "citation": {
+            "symbol": "A/RES/79/298",
+            "pdfPage": 3,
+            "tableTitle": "Budget estimates for 2025/26",
+            "columnHeader": "Approved",
+            "rowLabel": "Support account requirements"
+          },
+          "note": "Shared support for United Nations peacekeeping operations.",
+          "breakdown": [
+            {
+              "label": "Post resources",
+              "amount": 302892800,
+              "citation": {
+                "symbol": "A/80/631",
+                "pdfPage": 4,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Apportionment (2025/26)",
+                "rowLabel": "I. Post resources"
+              }
+            },
+            {
+              "label": "Non-post resources",
+              "amount": 64196400,
+              "citation": {
+                "symbol": "A/80/631",
+                "pdfPage": 4,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Apportionment (2025/26)",
+                "rowLabel": "Subtotal II"
+              }
+            },
+            {
+              "label": "Corporate costs",
+              "amount": 58547300,
+              "citation": {
+                "symbol": "A/80/631",
+                "pdfPage": 4,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Apportionment (2025/26)",
+                "rowLabel": "Subtotal corporate costs"
+              }
+            }
+          ]
+        },
+        {
+          "code": "UNSOH",
+          "label": "United Nations Support Office in Haiti",
+          "category": "support_office",
+          "amount": 269377700,
+          "citation": {
+            "symbol": "A/RES/80/241 B",
+            "pdfPage": 3,
+            "tableTitle": "Paragraph 12",
+            "columnHeader": "Appropriation \u00b7 1 October 2025 to 30 June 2026",
+            "rowLabel": "Maintenance of the Support Office"
+          },
+          "breakdown": [],
+          "note": "Final nine-month appropriation, from 1 October 2025 through 30 June 2026."
+        }
+      ],
+      "adjustments": [
+        {
+          "code": "UNSOH",
+          "previousAmount": 271328700,
+          "previousCitation": {
+            "symbol": "A/C.5/80/17",
+            "pdfPage": 3,
+            "tableTitle": "Annex \u00b7 Approved resources for 2025/26",
+            "columnHeader": "UNSOH",
+            "rowLabel": "Gross requirements"
+          }
+        }
+      ]
+    },
+    "proposed-2024": {
+      "publishedTotal": {
+        "amount": 5690427000,
+        "citation": {
+          "symbol": "A/78/726",
+          "pdfPage": 91,
+          "tableTitle": "Annex II, Table 3 \u00b7 Proposed requirements for 2024/25",
+          "columnHeader": "Proposed budget (2024/25)",
+          "rowLabel": "Subtotal"
+        }
+      },
+      "inKind": {
+        "amount": 653200,
+        "citation": {
+          "symbol": "A/78/726",
+          "pdfPage": 91,
+          "tableTitle": "Annex II, Table 3 \u00b7 Proposed requirements for 2024/25",
+          "columnHeader": "Proposed budget (2024/25)",
+          "rowLabel": "Voluntary contributions in kind (budgeted)"
+        }
+      },
+      "accounts": [
+        {
+          "code": "PK-SUPPORT",
+          "label": "Peacekeeping support account",
+          "category": "support_account",
+          "amount": 385839700,
+          "citation": {
+            "symbol": "A/78/746",
+            "pdfPage": 3,
+            "tableTitle": "Financial resources",
+            "columnHeader": "Cost estimates (2024/25)",
+            "rowLabel": "Gross requirements"
+          },
+          "note": "Shared support for United Nations peacekeeping operations.",
+          "breakdown": [
+            {
+              "label": "Post resources",
+              "amount": 267429000,
+              "citation": {
+                "symbol": "A/78/746",
+                "pdfPage": 3,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Cost estimates (2024/25)",
+                "rowLabel": "I. Post resources"
+              }
+            },
+            {
+              "label": "Non-post resources",
+              "amount": 62552600,
+              "citation": {
+                "symbol": "A/78/746",
+                "pdfPage": 3,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Cost estimates (2024/25)",
+                "rowLabel": "Subtotal of non-post resources"
+              }
+            },
+            {
+              "label": "Corporate costs",
+              "amount": 55858100,
+              "citation": {
+                "symbol": "A/78/746",
+                "pdfPage": 3,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Cost estimates (2024/25)",
+                "rowLabel": "Subtotal of corporate costs"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "proposed-2025": {
+      "publishedTotal": {
+        "amount": 5497813000,
+        "citation": {
+          "symbol": "A/79/788",
+          "pdfPage": 70,
+          "tableTitle": "Table 16 \u00b7 Proposed requirements for 2025/26",
+          "columnHeader": "Proposed (2025/26)",
+          "rowLabel": "Subtotal"
+        }
+      },
+      "inKind": {
+        "amount": 704000,
+        "citation": {
+          "symbol": "A/79/788",
+          "pdfPage": 70,
+          "tableTitle": "Table 16 \u00b7 Proposed requirements for 2025/26",
+          "columnHeader": "Proposed (2025/26)",
+          "rowLabel": "Voluntary contributions in kind (budgeted)"
+        }
+      },
+      "accounts": [
+        {
+          "code": "PK-SUPPORT",
+          "label": "Peacekeeping support account",
+          "category": "support_account",
+          "amount": 427118900,
+          "citation": {
+            "symbol": "A/79/783",
+            "pdfPage": 2,
+            "tableTitle": "Financial resources",
+            "columnHeader": "Cost estimates (2025/26)",
+            "rowLabel": "Gross requirements"
+          },
+          "note": "Shared support for United Nations peacekeeping operations.",
+          "breakdown": [
+            {
+              "label": "Post resources",
+              "amount": 302523000,
+              "citation": {
+                "symbol": "A/79/783",
+                "pdfPage": 2,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Cost estimates (2025/26)",
+                "rowLabel": "I. Post resources"
+              }
+            },
+            {
+              "label": "Non-post resources",
+              "amount": 66048600,
+              "citation": {
+                "symbol": "A/79/783",
+                "pdfPage": 2,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Cost estimates (2025/26)",
+                "rowLabel": "Subtotal of non-post resources"
+              }
+            },
+            {
+              "label": "Corporate costs",
+              "amount": 58547300,
+              "citation": {
+                "symbol": "A/79/783",
+                "pdfPage": 2,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Cost estimates (2025/26)",
+                "rowLabel": "Subtotal of corporate costs"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "proposed-2026": {
+      "publishedTotal": {
+        "amount": 5231219500,
+        "citation": {
+          "symbol": "A/C.5/80/18",
+          "pdfPage": 3,
+          "tableTitle": "Annex \u00b7 Proposed budgetary levels for 2026/27",
+          "columnHeader": "Total",
+          "rowLabel": "Gross requirements"
+        }
+      },
+      "inKind": {
+        "amount": 713900,
+        "citation": {
+          "symbol": "A/C.5/80/18",
+          "pdfPage": 3,
+          "tableTitle": "Annex \u00b7 Proposed budgetary levels for 2026/27",
+          "columnHeader": "Total",
+          "rowLabel": "Voluntary contributions in kind (budgeted)"
+        }
+      },
+      "accounts": [
+        {
+          "code": "PK-SUPPORT",
+          "label": "Peacekeeping support account",
+          "category": "support_account",
+          "amount": 383422300,
+          "citation": {
+            "symbol": "A/80/631",
+            "pdfPage": 4,
+            "tableTitle": "Financial resources",
+            "columnHeader": "Cost estimates (2026/27)",
+            "rowLabel": "Gross requirements"
+          },
+          "note": "Shared support for United Nations peacekeeping operations.",
+          "breakdown": [
+            {
+              "label": "Post resources",
+              "amount": 267475800,
+              "citation": {
+                "symbol": "A/80/631",
+                "pdfPage": 4,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Cost estimates (2026/27)",
+                "rowLabel": "I. Post resources"
+              }
+            },
+            {
+              "label": "Non-post resources",
+              "amount": 52501600,
+              "citation": {
+                "symbol": "A/80/631",
+                "pdfPage": 4,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Cost estimates (2026/27)",
+                "rowLabel": "Subtotal II"
+              }
+            },
+            {
+              "label": "Corporate costs",
+              "amount": 63444900,
+              "citation": {
+                "symbol": "A/80/631",
+                "pdfPage": 4,
+                "tableTitle": "Financial resources",
+                "columnHeader": "Cost estimates (2026/27)",
+                "rowLabel": "Subtotal corporate costs"
+              }
+            }
+          ]
+        },
+        {
+          "code": "UNSOH",
+          "label": "United Nations Support Office in Haiti",
+          "category": "support_office",
+          "amount": 403583200,
+          "citation": {
+            "symbol": "A/C.5/80/18",
+            "pdfPage": 3,
+            "tableTitle": "Annex \u00b7 Proposed budgetary levels for 2026/27",
+            "columnHeader": "UNSOH",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Military and police personnel",
+              "amount": 94628100,
+              "citation": {
+                "symbol": "A/C.5/80/18",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Proposed budgetary levels for 2026/27",
+                "columnHeader": "UNSOH",
+                "rowLabel": "Military and police personnel costs"
+              }
+            },
+            {
+              "label": "Civilian personnel",
+              "amount": 50691700,
+              "citation": {
+                "symbol": "A/C.5/80/18",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Proposed budgetary levels for 2026/27",
+                "columnHeader": "UNSOH",
+                "rowLabel": "Civilian personnel costs"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 258263400,
+              "citation": {
+                "symbol": "A/C.5/80/18",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Proposed budgetary levels for 2026/27",
+                "columnHeader": "UNSOH",
+                "rowLabel": "Operational requirements"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "approved-2026": {
+      "publishedTotal": {
+        "amount": 5107584500,
+        "citation": {
+          "symbol": "A/C.5/80/20",
+          "pdfPage": 3,
+          "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+          "columnHeader": "Total",
+          "rowLabel": "Gross requirements"
+        }
+      },
+      "inKind": {
+        "amount": 713900,
+        "citation": {
+          "symbol": "A/C.5/80/20",
+          "pdfPage": 3,
+          "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+          "columnHeader": "Total",
+          "rowLabel": "Voluntary contributions in kind (budgeted)"
+        }
+      },
+      "accounts": [
+        {
+          "code": "MINURSO",
+          "label": "United Nations Mission for the Referendum in Western Sahara",
+          "category": "pko",
+          "amount": 62552800,
+          "citation": {
+            "symbol": "A/C.5/80/20",
+            "pdfPage": 2,
+            "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+            "columnHeader": "MINURSO",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Military and police personnel",
+              "amount": 7064600,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "MINURSO",
+                "rowLabel": "Military and police personnel costs"
+              }
+            },
+            {
+              "label": "Civilian personnel",
+              "amount": 23620300,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "MINURSO",
+                "rowLabel": "Civilian personnel costs"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 31867900,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "MINURSO",
+                "rowLabel": "Operational requirements"
+              }
+            }
+          ]
+        },
+        {
+          "code": "MINUSCA",
+          "label": "United Nations Multidimensional Integrated Stabilization Mission in the Central African Republic",
+          "category": "pko",
+          "amount": 1018006100,
+          "citation": {
+            "symbol": "A/C.5/80/20",
+            "pdfPage": 2,
+            "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+            "columnHeader": "MINUSCA",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Military and police personnel",
+              "amount": 500029300,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "MINUSCA",
+                "rowLabel": "Military and police personnel costs"
+              }
+            },
+            {
+              "label": "Civilian personnel",
+              "amount": 238899400,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "MINUSCA",
+                "rowLabel": "Civilian personnel costs"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 279077400,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "MINUSCA",
+                "rowLabel": "Operational requirements"
+              }
+            }
+          ]
+        },
+        {
+          "code": "MONUSCO",
+          "label": "United Nations Organization Stabilization Mission in the Democratic Republic of the Congo",
+          "category": "pko",
+          "amount": 868348600,
+          "citation": {
+            "symbol": "A/C.5/80/20",
+            "pdfPage": 2,
+            "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+            "columnHeader": "MONUSCO",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Military and police personnel",
+              "amount": 380684400,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "MONUSCO",
+                "rowLabel": "Military and police personnel costs"
+              }
+            },
+            {
+              "label": "Civilian personnel",
+              "amount": 241146500,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "MONUSCO",
+                "rowLabel": "Civilian personnel costs"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 246517700,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "MONUSCO",
+                "rowLabel": "Operational requirements"
+              }
+            }
+          ]
+        },
+        {
+          "code": "UNDOF",
+          "label": "United Nations Disengagement Observer Force",
+          "category": "pko",
+          "amount": 61580000,
+          "citation": {
+            "symbol": "A/C.5/80/20",
+            "pdfPage": 2,
+            "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+            "columnHeader": "UNDOF",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Military and police personnel",
+              "amount": 36680100,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNDOF",
+                "rowLabel": "Military and police personnel costs"
+              }
+            },
+            {
+              "label": "Civilian personnel",
+              "amount": 15322700,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNDOF",
+                "rowLabel": "Civilian personnel costs"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 9577200,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNDOF",
+                "rowLabel": "Operational requirements"
+              }
+            }
+          ]
+        },
+        {
+          "code": "UNFICYP",
+          "label": "United Nations Peacekeeping Force in Cyprus",
+          "category": "pko",
+          "amount": 55828100,
+          "citation": {
+            "symbol": "A/C.5/80/20",
+            "pdfPage": 2,
+            "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+            "columnHeader": "UNFICYP",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Military and police personnel",
+              "amount": 23502900,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNFICYP",
+                "rowLabel": "Military and police personnel costs"
+              }
+            },
+            {
+              "label": "Civilian personnel",
+              "amount": 17036700,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNFICYP",
+                "rowLabel": "Civilian personnel costs"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 15288500,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNFICYP",
+                "rowLabel": "Operational requirements"
+              }
+            }
+          ]
+        },
+        {
+          "code": "UNIFIL",
+          "label": "United Nations Interim Force in Lebanon",
+          "category": "pko",
+          "amount": 407625000,
+          "citation": {
+            "symbol": "A/C.5/80/20",
+            "pdfPage": 2,
+            "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+            "columnHeader": "UNIFIL",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Military and police personnel",
+              "amount": 259142900,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNIFIL",
+                "rowLabel": "Military and police personnel costs"
+              }
+            },
+            {
+              "label": "Civilian personnel",
+              "amount": 114979800,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNIFIL",
+                "rowLabel": "Civilian personnel costs"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 33502300,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNIFIL",
+                "rowLabel": "Operational requirements"
+              }
+            }
+          ]
+        },
+        {
+          "code": "UNISFA",
+          "label": "United Nations Interim Security Force for Abyei",
+          "category": "pko",
+          "amount": 275839300,
+          "citation": {
+            "symbol": "A/C.5/80/20",
+            "pdfPage": 2,
+            "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+            "columnHeader": "UNISFA",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Military and police personnel",
+              "amount": 117294600,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNISFA",
+                "rowLabel": "Military and police personnel costs"
+              }
+            },
+            {
+              "label": "Civilian personnel",
+              "amount": 50960900,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNISFA",
+                "rowLabel": "Civilian personnel costs"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 107583800,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNISFA",
+                "rowLabel": "Operational requirements"
+              }
+            }
+          ]
+        },
+        {
+          "code": "UNMIK",
+          "label": "United Nations Interim Administration Mission in Kosovo",
+          "category": "pko",
+          "amount": 42022400,
+          "citation": {
+            "symbol": "A/C.5/80/20",
+            "pdfPage": 2,
+            "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+            "columnHeader": "UNMIK",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Military and police personnel",
+              "amount": 565800,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNMIK",
+                "rowLabel": "Military and police personnel costs"
+              }
+            },
+            {
+              "label": "Civilian personnel",
+              "amount": 32626300,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNMIK",
+                "rowLabel": "Civilian personnel costs"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 8830300,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 2,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNMIK",
+                "rowLabel": "Operational requirements"
+              }
+            }
+          ]
+        },
+        {
+          "code": "UNMISS",
+          "label": "United Nations Mission in South Sudan",
+          "category": "pko",
+          "amount": 976818600,
+          "citation": {
+            "symbol": "A/C.5/80/20",
+            "pdfPage": 3,
+            "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+            "columnHeader": "UNMISS",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Military and police personnel",
+              "amount": 410292200,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNMISS",
+                "rowLabel": "Military and police personnel costs"
+              }
+            },
+            {
+              "label": "Civilian personnel",
+              "amount": 282246500,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNMISS",
+                "rowLabel": "Civilian personnel costs"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 284279900,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNMISS",
+                "rowLabel": "Operational requirements"
+              }
+            }
+          ]
+        },
+        {
+          "code": "UNSOH",
+          "label": "United Nations Support Office in Haiti",
+          "category": "support_office",
+          "amount": 375768800,
+          "citation": {
+            "symbol": "A/C.5/80/20",
+            "pdfPage": 3,
+            "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+            "columnHeader": "UNSOH",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Military and police personnel",
+              "amount": 93128100,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNSOH",
+                "rowLabel": "Military and police personnel costs"
+              }
+            },
+            {
+              "label": "Civilian personnel",
+              "amount": 45361300,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNSOH",
+                "rowLabel": "Civilian personnel costs"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 237279400,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNSOH",
+                "rowLabel": "Operational requirements"
+              }
+            }
+          ]
+        },
+        {
+          "code": "UNSOS",
+          "label": "United Nations Support Office in Somalia",
+          "category": "support_office",
+          "amount": 481550400,
+          "citation": {
+            "symbol": "A/C.5/80/20",
+            "pdfPage": 3,
+            "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+            "columnHeader": "UNSOS",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Military and police personnel",
+              "amount": 112903800,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNSOS",
+                "rowLabel": "Military and police personnel costs"
+              }
+            },
+            {
+              "label": "Civilian personnel",
+              "amount": 104190300,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNSOS",
+                "rowLabel": "Civilian personnel costs"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 264456300,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "UNSOS",
+                "rowLabel": "Operational requirements"
+              }
+            }
+          ]
+        },
+        {
+          "code": "UNGSC",
+          "label": "United Nations Global Service Centre",
+          "category": "support",
+          "amount": 55446700,
+          "citation": {
+            "symbol": "A/C.5/80/20",
+            "pdfPage": 3,
+            "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+            "columnHeader": "United Nations Logistics Base at Brindisi, Italy",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Civilian personnel",
+              "amount": 36718600,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "United Nations Logistics Base at Brindisi, Italy",
+                "rowLabel": "Civilian personnel costs"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 18728100,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "United Nations Logistics Base at Brindisi, Italy",
+                "rowLabel": "Operational requirements"
+              }
+            }
+          ]
+        },
+        {
+          "code": "RSCE",
+          "label": "Regional Service Centre in Entebbe",
+          "category": "support",
+          "amount": 45911600,
+          "citation": {
+            "symbol": "A/C.5/80/20",
+            "pdfPage": 3,
+            "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+            "columnHeader": "Regional Service Centre in Entebbe, Uganda",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Civilian personnel",
+              "amount": 37289600,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "Regional Service Centre in Entebbe, Uganda",
+                "rowLabel": "Civilian personnel costs"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 8622000,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "Regional Service Centre in Entebbe, Uganda",
+                "rowLabel": "Operational requirements"
+              }
+            }
+          ]
+        },
+        {
+          "code": "PK-SUPPORT",
+          "label": "Peacekeeping support account",
+          "category": "support_account",
+          "amount": 380286100,
+          "citation": {
+            "symbol": "A/C.5/80/20",
+            "pdfPage": 3,
+            "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+            "columnHeader": "Support account",
+            "rowLabel": "Gross requirements"
+          },
+          "breakdown": [
+            {
+              "label": "Civilian personnel",
+              "amount": 278630100,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "Support account",
+                "rowLabel": "Civilian personnel costs"
+              }
+            },
+            {
+              "label": "Operational costs",
+              "amount": 38211100,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "Support account",
+                "rowLabel": "Operational requirements"
+              }
+            },
+            {
+              "label": "Enterprise resource planning",
+              "amount": 19870200,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "Support account",
+                "rowLabel": "Enterprise resource planning"
+              }
+            },
+            {
+              "label": "Death and disability claims for closed peacekeeping operations",
+              "amount": 477500,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "Support account",
+                "rowLabel": "Death and disability claims for closed peacekeeping operations"
+              }
+            },
+            {
+              "label": "Improved service delivery",
+              "amount": 832200,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "Support account",
+                "rowLabel": "Improved service delivery"
+              }
+            },
+            {
+              "label": "Peacekeeping capability readiness",
+              "amount": 4651400,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "Support account",
+                "rowLabel": "Peacekeeping capability readiness"
+              }
+            },
+            {
+              "label": "Umoja maintenance and support costs",
+              "amount": 19355600,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "Support account",
+                "rowLabel": "Umoja maintenance and support costs"
+              }
+            },
+            {
+              "label": "After-service health insurance",
+              "amount": 18258000,
+              "citation": {
+                "symbol": "A/C.5/80/20",
+                "pdfPage": 3,
+                "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+                "columnHeader": "Support account",
+                "rowLabel": "After-service health insurance"
+              }
+            }
+          ],
+          "note": "Shared support for United Nations peacekeeping operations."
+        }
+      ],
+      "standalone": true
+    }
+  }
+}

@@ -36,6 +36,7 @@ import type { BudgetData, BudgetNodeSource } from "@/types";
 
 import {
   PEACEKEEPING_METRICS,
+  peacekeepingSidebarHash,
   type PeacekeepingMetric,
 } from "@/lib/peacekeepingBudget";
 
@@ -46,6 +47,11 @@ const COST_CLASS_TREND_SERIES: FinancingSeries[] = COST_CLASS_KEYS.map(
     color: COST_CLASS_BAND_COLORS[key]?.bg ?? "#6b7280",
   }),
 );
+const ADDITIONAL_AUTHORITY: FinancingSeries = {
+  key: "commitment_authority",
+  label: "Additional commitment authority",
+  color: "#6b7280",
+};
 
 interface CostItem {
   references?: BudgetNodeSource[];
@@ -68,12 +74,38 @@ export interface PeacekeepingMissionSidebarProps {
   onClose: () => void;
 }
 
-function emptyClasses(): Record<CostClassKey, number> {
-  return {
-    military_police_personnel: 0,
-    civilian_personnel: 0,
-    operational_costs: 0,
-  };
+function missionTrendYear(data: BudgetData | null, code: string, year: number) {
+  const account = data?.peacekeepingSupplement?.accounts.find(
+    (row) => row.code === code,
+  );
+  const nodes = data?.nodes.filter((node) => node.mission === code) ?? [];
+  const hasTotal = !!account || nodes.some((node) => node.tier === "mission");
+  const point: FinancingInstrumentDataPoint = { year: fiscalYearLabel(year) };
+  const sources: Record<string, BudgetNodeSource[]> = {};
+  for (const key of COST_CLASS_KEYS) {
+    const supplement = account?.breakdown.find(
+      (row) => row.label === COST_CLASS_LABELS[key],
+    );
+    const node = nodes.find(
+      (item) => item.tier === "class" && item.costClass === key,
+    );
+    point[key] = account
+      ? (supplement?.amount ?? null)
+      : (node?.amount ?? null);
+    sources[key] = account
+      ? supplement
+        ? [supplement.source]
+        : []
+      : node
+        ? collectBudgetNodeSources(node)
+        : [];
+  }
+  const authority = account?.breakdown.find(
+    (row) => row.label === ADDITIONAL_AUTHORITY.label,
+  );
+  point[ADDITIONAL_AUTHORITY.key] = authority?.amount ?? (hasTotal ? 0 : null);
+  sources[ADDITIONAL_AUTHORITY.key] = authority ? [authority.source] : [];
+  return { point, sources };
 }
 
 function CostClassBreakdownRow({
@@ -190,17 +222,20 @@ export function PeacekeepingMissionSidebar({
       (node.code === code || node.mission === code) &&
       node.costClass === "total",
   );
+  const account = selection.data?.peacekeepingSupplement?.accounts.find(
+    (row) => row.code === code,
+  );
   const ready =
     !selection.loading &&
     !selection.error &&
-    (selection.isInitialYear || !!mission);
+    (selection.isInitialYear || !!mission || !!account);
   const fiscalYear = selection.isInitialYear
     ? initialFiscalYear
     : (selection.data?.meta.fiscalYear ?? fiscalYearLabel(selection.year));
   const total = ready
     ? selection.isInitialYear
       ? initialTotal
-      : (mission?.amount ?? null)
+      : (account?.amount ?? mission?.amount ?? null)
     : null;
   const classes = selection.isInitialYear
     ? initialClasses
@@ -239,12 +274,16 @@ export function PeacekeepingMissionSidebar({
             ),
         ]),
       ) as Record<CostClassKey, CostItem[]>);
-  const source = selection.isInitialYear ? initialSource : mission?.source;
+  const source = selection.isInitialYear
+    ? initialSource
+    : (account?.source ?? mission?.source);
   const references = selection.isInitialYear
     ? initialReferences
-    : missionNodes.flatMap((node) => collectBudgetNodeSources(node));
+    : account
+      ? [account.source, ...account.breakdown.map((row) => row.source)]
+      : missionNodes.flatMap((node) => collectBudgetNodeSources(node));
   const [trendSources, setTrendSources] = useState<
-    Record<string, Partial<Record<CostClassKey, BudgetNodeSource[]>>>
+    Record<string, Record<string, BudgetNodeSource[]>>
   >({});
   const [trend, setTrend] = useState<FinancingInstrumentDataPoint[] | null>(
     null,
@@ -260,50 +299,15 @@ export function PeacekeepingMissionSidebar({
       ),
     ).then((rows) => {
       if (!active) return;
+      const trendYears = rows.map(({ year, data }) =>
+        missionTrendYear(data, code, year),
+      );
       setTrendSources(
         Object.fromEntries(
-          rows.map(({ year: trendYear, data }) => [
-            fiscalYearLabel(trendYear),
-            Object.fromEntries(
-              COST_CLASS_KEYS.map((key) => [
-                key,
-                data?.nodes
-                  .filter(
-                    (node) =>
-                      node.tier === "class" &&
-                      node.mission === code &&
-                      node.costClass === key,
-                  )
-                  .flatMap((node) => collectBudgetNodeSources(node)) ?? [],
-              ]),
-            ),
-          ]),
+          trendYears.map(({ point, sources }) => [point.year, sources]),
         ),
       );
-      setTrend(
-        rows
-          .filter(({ data }) =>
-            data?.nodes.some(
-              (node) => node.tier === "mission" && node.code === code,
-            ),
-          )
-          .map(({ year: trendYear, data }) => {
-            const amounts = emptyClasses();
-            if (data) {
-              const classNodes = data.nodes.filter(
-                (node) => node.tier === "class" && node.mission === code,
-              );
-              for (const node of classNodes) {
-                const key = node.costClass as CostClassKey;
-                if (key in amounts) amounts[key] += node.amount;
-              }
-            }
-            return {
-              year: fiscalYearLabel(trendYear),
-              ...amounts,
-            };
-          }),
-      );
+      setTrend(trendYears.map(({ point }) => point));
     });
     return () => {
       active = false;
@@ -315,6 +319,12 @@ export function PeacekeepingMissionSidebar({
     const lines = items?.[key] ?? [];
     return { key, amount, lines };
   });
+  const hasAdditionalAuthority = trend?.some(
+    (point) => Number(point[ADDITIONAL_AUTHORITY.key]) > 0,
+  );
+  const trendSeries = hasAdditionalAuthority
+    ? [...COST_CLASS_TREND_SERIES, ADDITIONAL_AUTHORITY]
+    : COST_CLASS_TREND_SERIES;
   const titleId = "peacekeeping-mission-sidebar-title";
 
   return (
@@ -342,7 +352,7 @@ export function PeacekeepingMissionSidebar({
               pendingLabel="Loading…"
             />
             <SidebarControls
-              shareHash={`pko-mission=${encodeURIComponent(code)}`}
+              shareHash={peacekeepingSidebarHash(code, metric, selection.year)}
               onClose={onClose}
               closeLabel="Close mission details"
             />
@@ -390,7 +400,25 @@ export function PeacekeepingMissionSidebar({
       >
         {ready && (
           <>
-            {classRows.length > 0 && (
+            {account && account.breakdown.length > 0 && (
+              <FinancialPanelSection heading="Cost breakdown">
+                <ul className="mt-3 space-y-1">
+                  {account.breakdown.map((row) => (
+                    <CostClassBreakdownRow
+                      key={row.label}
+                      metricLabel={metricLabel}
+                      label={row.label}
+                      amount={row.amount}
+                      lines={[]}
+                      references={[row.source]}
+                      color="var(--color-un-blue)"
+                      maximum={account.amount}
+                    />
+                  ))}
+                </ul>
+              </FinancialPanelSection>
+            )}
+            {!account && classRows.length > 0 && (
               <FinancialPanelSection
                 heading={`${metricLabel} by budget group and class`}
               >
@@ -417,22 +445,19 @@ export function PeacekeepingMissionSidebar({
                     />
                   ))}
                 </ul>
-                <div className="mt-4">
-                  <SidebarStackedTrend
-                    accessibleTableLabel={`${metricLabel} by budget group`}
-                    tooltipSources={(year, visibleKeys) =>
-                      visibleKeys.flatMap(
-                        (key) =>
-                          trendSources[year]?.[key as CostClassKey] ?? [],
-                      )
-                    }
-                    showLegend={false}
-                    data={trend}
-                    series={COST_CLASS_TREND_SERIES}
-                  />
-                </div>
               </FinancialPanelSection>
             )}
+            <div className="mt-4">
+              <SidebarStackedTrend
+                accessibleTableLabel={`${metricLabel} by budget group`}
+                tooltipSources={(year, visibleKeys) =>
+                  visibleKeys.flatMap((key) => trendSources[year]?.[key] ?? [])
+                }
+                showLegend={Boolean(hasAdditionalAuthority)}
+                data={trend}
+                series={trendSeries}
+              />
+            </div>
 
             {Boolean(references?.length || (source?.url && source.symbol)) && (
               <details

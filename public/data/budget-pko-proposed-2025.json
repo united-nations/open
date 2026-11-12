@@ -8,7 +8,7 @@
     "year": 2025,
     "fiscalYear": "2025/26",
     "currency": "USD",
-    "total": 5070694100,
+    "total": 5497813000,
     "costClasses": {
       "military_police_personnel": "Military and police personnel",
       "civilian_personnel": "Civilian personnel",
@@ -28,11 +28,11 @@
       "UNMIK": "United Nations Interim Administration Mission in Kosovo",
       "UNMISS": "United Nations Mission in South Sudan",
       "UNSOS": "United Nations Support Office in Somalia",
-      "UNSOH": "United Nations Support Office in Somalia (successor arrangement)"
+      "UNSOH": "United Nations Support Office in Haiti"
     },
     "partial": false,
-    "scopeLabel": "Peacekeeping missions included in the per-mission corpus",
-    "scopeWarning": "This is not the complete UN peacekeeping budget. The support account, enterprise items and some closed-mission accounts are outside this corpus.",
+    "scopeLabel": "Peacekeeping accounts in the consolidated UN budget tables",
+    "scopeWarning": "Gross resources for the displayed accounts. Budgeted voluntary contributions in kind are reported separately. Mission and account detail follows the cited documents.",
     "coverage": {
       "missionsInCycleReference": 12,
       "missionsDisplayed": 12,
@@ -6434,5 +6434,93 @@
         "pdfPageScope": "table"
       }
     }
-  ]
+  ],
+  "peacekeepingSupplement": {
+    "accounts": [
+      {
+        "code": "PK-SUPPORT",
+        "label": "Peacekeeping support account",
+        "category": "support_account",
+        "amount": 427118900,
+        "source": {
+          "symbol": "A/79/783",
+          "pdfPage": 2,
+          "tableTitle": "Financial resources",
+          "columnHeader": "Cost estimates (2025/26)",
+          "rowLabel": "Gross requirements",
+          "url": "https://documents.un.org/doc/undoc/gen/n25/037/67/pdf/n2503767.pdf",
+          "pdfPageScope": "table"
+        },
+        "note": "Shared support for United Nations peacekeeping operations.",
+        "breakdown": [
+          {
+            "label": "Post resources",
+            "amount": 302523000,
+            "source": {
+              "symbol": "A/79/783",
+              "pdfPage": 2,
+              "tableTitle": "Financial resources",
+              "columnHeader": "Cost estimates (2025/26)",
+              "rowLabel": "I. Post resources",
+              "url": "https://documents.un.org/doc/undoc/gen/n25/037/67/pdf/n2503767.pdf",
+              "pdfPageScope": "table",
+              "budgetItem": "Post resources"
+            }
+          },
+          {
+            "label": "Non-post resources",
+            "amount": 66048600,
+            "source": {
+              "symbol": "A/79/783",
+              "pdfPage": 2,
+              "tableTitle": "Financial resources",
+              "columnHeader": "Cost estimates (2025/26)",
+              "rowLabel": "Subtotal of non-post resources",
+              "url": "https://documents.un.org/doc/undoc/gen/n25/037/67/pdf/n2503767.pdf",
+              "pdfPageScope": "table",
+              "budgetItem": "Non-post resources"
+            }
+          },
+          {
+            "label": "Corporate costs",
+            "amount": 58547300,
+            "source": {
+              "symbol": "A/79/783",
+              "pdfPage": 2,
+              "tableTitle": "Financial resources",
+              "columnHeader": "Cost estimates (2025/26)",
+              "rowLabel": "Subtotal of corporate costs",
+              "url": "https://documents.un.org/doc/undoc/gen/n25/037/67/pdf/n2503767.pdf",
+              "pdfPageScope": "table",
+              "budgetItem": "Corporate costs"
+            }
+          }
+        ]
+      }
+    ],
+    "publishedTotal": {
+      "amount": 5497813000,
+      "source": {
+        "symbol": "A/79/788",
+        "pdfPage": 70,
+        "tableTitle": "Table 16 \u00b7 Proposed requirements for 2025/26",
+        "columnHeader": "Proposed (2025/26)",
+        "rowLabel": "Subtotal",
+        "url": "https://digitallibrary.un.org/nanna/record/4081221/files/A_79_788-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    "inKind": {
+      "amount": 704000,
+      "source": {
+        "symbol": "A/79/788",
+        "pdfPage": 70,
+        "tableTitle": "Table 16 \u00b7 Proposed requirements for 2025/26",
+        "columnHeader": "Proposed (2025/26)",
+        "rowLabel": "Voluntary contributions in kind (budgeted)",
+        "url": "https://digitallibrary.un.org/nanna/record/4081221/files/A_79_788-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    }
+  }
 }

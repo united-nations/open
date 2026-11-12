@@ -1,0 +1,1299 @@
+{
+  "meta": {
+    "stream": "pko",
+    "title": "Peacekeeping operations",
+    "label": "Peacekeeping appropriation 2026/27 (USD)",
+    "cycle": 2026,
+    "measure": "appropriation",
+    "year": 2026,
+    "fiscalYear": "2026/27",
+    "currency": "USD",
+    "total": 5107584500,
+    "source": {
+      "repo": "United Nations",
+      "release": "A/C.5/80/20",
+      "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0"
+    },
+    "scopeLabel": "Peacekeeping accounts in the consolidated UN budget tables",
+    "scopeWarning": "Gross resources for the displayed accounts. Budgeted voluntary contributions in kind are reported separately. Mission and account detail follows the cited documents.",
+    "partial": false,
+    "coverage": {
+      "missionsInCycleReference": 13,
+      "missionsDisplayed": 13,
+      "displayedMissionCodes": [
+        "MINURSO",
+        "MINUSCA",
+        "MONUSCO",
+        "RSCE",
+        "UNDOF",
+        "UNFICYP",
+        "UNGSC",
+        "UNIFIL",
+        "UNISFA",
+        "UNMIK",
+        "UNMISS",
+        "UNSOH",
+        "UNSOS"
+      ],
+      "noPublishedValueForLens": [],
+      "completeness": "complete_for_published_lens"
+    }
+  },
+  "nodes": [
+    {
+      "id": "all-missions",
+      "parentId": null,
+      "tier": "whole",
+      "kind": "whole",
+      "code": null,
+      "label": "Peacekeeping missions and support entities",
+      "amount": 4727298400,
+      "basis": "sum_of_published_accounts"
+    },
+    {
+      "id": "MINURSO",
+      "parentId": "all-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "MINURSO",
+      "label": "United Nations Mission for the Referendum in Western Sahara",
+      "amount": 62552800,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "MINURSO",
+        "rowLabel": "Gross requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    {
+      "id": "MINURSO~military_police_personnel",
+      "parentId": "MINURSO",
+      "tier": "class",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 7064600,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "MINURSO",
+        "rowLabel": "Military and police personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Military and police personnel"
+      }
+    },
+    {
+      "id": "MINURSO~civilian_personnel",
+      "parentId": "MINURSO",
+      "tier": "class",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 23620300,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "MINURSO",
+        "rowLabel": "Civilian personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Civilian personnel"
+      }
+    },
+    {
+      "id": "MINURSO~operational_costs",
+      "parentId": "MINURSO",
+      "tier": "class",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 31867900,
+      "basis": "directly_printed",
+      "mission": "MINURSO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "MINURSO",
+        "rowLabel": "Operational requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Operational costs"
+      }
+    },
+    {
+      "id": "MINUSCA",
+      "parentId": "all-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "MINUSCA",
+      "label": "United Nations Multidimensional Integrated Stabilization Mission in the Central African Republic",
+      "amount": 1018006100,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "MINUSCA",
+        "rowLabel": "Gross requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    {
+      "id": "MINUSCA~military_police_personnel",
+      "parentId": "MINUSCA",
+      "tier": "class",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 500029300,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "MINUSCA",
+        "rowLabel": "Military and police personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Military and police personnel"
+      }
+    },
+    {
+      "id": "MINUSCA~civilian_personnel",
+      "parentId": "MINUSCA",
+      "tier": "class",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 238899400,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "MINUSCA",
+        "rowLabel": "Civilian personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Civilian personnel"
+      }
+    },
+    {
+      "id": "MINUSCA~operational_costs",
+      "parentId": "MINUSCA",
+      "tier": "class",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 279077400,
+      "basis": "directly_printed",
+      "mission": "MINUSCA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "MINUSCA",
+        "rowLabel": "Operational requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Operational costs"
+      }
+    },
+    {
+      "id": "MONUSCO",
+      "parentId": "all-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "MONUSCO",
+      "label": "United Nations Organization Stabilization Mission in the Democratic Republic of the Congo",
+      "amount": 868348600,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "MONUSCO",
+        "rowLabel": "Gross requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    {
+      "id": "MONUSCO~military_police_personnel",
+      "parentId": "MONUSCO",
+      "tier": "class",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 380684400,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "MONUSCO",
+        "rowLabel": "Military and police personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Military and police personnel"
+      }
+    },
+    {
+      "id": "MONUSCO~civilian_personnel",
+      "parentId": "MONUSCO",
+      "tier": "class",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 241146500,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "MONUSCO",
+        "rowLabel": "Civilian personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Civilian personnel"
+      }
+    },
+    {
+      "id": "MONUSCO~operational_costs",
+      "parentId": "MONUSCO",
+      "tier": "class",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 246517700,
+      "basis": "directly_printed",
+      "mission": "MONUSCO",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "MONUSCO",
+        "rowLabel": "Operational requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Operational costs"
+      }
+    },
+    {
+      "id": "UNDOF",
+      "parentId": "all-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNDOF",
+      "label": "United Nations Disengagement Observer Force",
+      "amount": 61580000,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNDOF",
+        "rowLabel": "Gross requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    {
+      "id": "UNDOF~military_police_personnel",
+      "parentId": "UNDOF",
+      "tier": "class",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 36680100,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNDOF",
+        "rowLabel": "Military and police personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Military and police personnel"
+      }
+    },
+    {
+      "id": "UNDOF~civilian_personnel",
+      "parentId": "UNDOF",
+      "tier": "class",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 15322700,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNDOF",
+        "rowLabel": "Civilian personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Civilian personnel"
+      }
+    },
+    {
+      "id": "UNDOF~operational_costs",
+      "parentId": "UNDOF",
+      "tier": "class",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 9577200,
+      "basis": "directly_printed",
+      "mission": "UNDOF",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNDOF",
+        "rowLabel": "Operational requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Operational costs"
+      }
+    },
+    {
+      "id": "UNFICYP",
+      "parentId": "all-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNFICYP",
+      "label": "United Nations Peacekeeping Force in Cyprus",
+      "amount": 55828100,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNFICYP",
+        "rowLabel": "Gross requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    {
+      "id": "UNFICYP~military_police_personnel",
+      "parentId": "UNFICYP",
+      "tier": "class",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 23502900,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNFICYP",
+        "rowLabel": "Military and police personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Military and police personnel"
+      }
+    },
+    {
+      "id": "UNFICYP~civilian_personnel",
+      "parentId": "UNFICYP",
+      "tier": "class",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 17036700,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNFICYP",
+        "rowLabel": "Civilian personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Civilian personnel"
+      }
+    },
+    {
+      "id": "UNFICYP~operational_costs",
+      "parentId": "UNFICYP",
+      "tier": "class",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 15288500,
+      "basis": "directly_printed",
+      "mission": "UNFICYP",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNFICYP",
+        "rowLabel": "Operational requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Operational costs"
+      }
+    },
+    {
+      "id": "UNIFIL",
+      "parentId": "all-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNIFIL",
+      "label": "United Nations Interim Force in Lebanon",
+      "amount": 407625000,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNIFIL",
+        "rowLabel": "Gross requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    {
+      "id": "UNIFIL~military_police_personnel",
+      "parentId": "UNIFIL",
+      "tier": "class",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 259142900,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNIFIL",
+        "rowLabel": "Military and police personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Military and police personnel"
+      }
+    },
+    {
+      "id": "UNIFIL~civilian_personnel",
+      "parentId": "UNIFIL",
+      "tier": "class",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 114979800,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNIFIL",
+        "rowLabel": "Civilian personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Civilian personnel"
+      }
+    },
+    {
+      "id": "UNIFIL~operational_costs",
+      "parentId": "UNIFIL",
+      "tier": "class",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 33502300,
+      "basis": "directly_printed",
+      "mission": "UNIFIL",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNIFIL",
+        "rowLabel": "Operational requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Operational costs"
+      }
+    },
+    {
+      "id": "UNISFA",
+      "parentId": "all-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNISFA",
+      "label": "United Nations Interim Security Force for Abyei",
+      "amount": 275839300,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNISFA",
+        "rowLabel": "Gross requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    {
+      "id": "UNISFA~military_police_personnel",
+      "parentId": "UNISFA",
+      "tier": "class",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 117294600,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNISFA",
+        "rowLabel": "Military and police personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Military and police personnel"
+      }
+    },
+    {
+      "id": "UNISFA~civilian_personnel",
+      "parentId": "UNISFA",
+      "tier": "class",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 50960900,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNISFA",
+        "rowLabel": "Civilian personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Civilian personnel"
+      }
+    },
+    {
+      "id": "UNISFA~operational_costs",
+      "parentId": "UNISFA",
+      "tier": "class",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 107583800,
+      "basis": "directly_printed",
+      "mission": "UNISFA",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNISFA",
+        "rowLabel": "Operational requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Operational costs"
+      }
+    },
+    {
+      "id": "UNMIK",
+      "parentId": "all-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNMIK",
+      "label": "United Nations Interim Administration Mission in Kosovo",
+      "amount": 42022400,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNMIK",
+        "rowLabel": "Gross requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    {
+      "id": "UNMIK~military_police_personnel",
+      "parentId": "UNMIK",
+      "tier": "class",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 565800,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNMIK",
+        "rowLabel": "Military and police personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Military and police personnel"
+      }
+    },
+    {
+      "id": "UNMIK~civilian_personnel",
+      "parentId": "UNMIK",
+      "tier": "class",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 32626300,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNMIK",
+        "rowLabel": "Civilian personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Civilian personnel"
+      }
+    },
+    {
+      "id": "UNMIK~operational_costs",
+      "parentId": "UNMIK",
+      "tier": "class",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 8830300,
+      "basis": "directly_printed",
+      "mission": "UNMIK",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 2,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNMIK",
+        "rowLabel": "Operational requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Operational costs"
+      }
+    },
+    {
+      "id": "UNMISS",
+      "parentId": "all-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNMISS",
+      "label": "United Nations Mission in South Sudan",
+      "amount": 976818600,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNMISS",
+        "rowLabel": "Gross requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    {
+      "id": "UNMISS~military_police_personnel",
+      "parentId": "UNMISS",
+      "tier": "class",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 410292200,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNMISS",
+        "rowLabel": "Military and police personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Military and police personnel"
+      }
+    },
+    {
+      "id": "UNMISS~civilian_personnel",
+      "parentId": "UNMISS",
+      "tier": "class",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 282246500,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNMISS",
+        "rowLabel": "Civilian personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Civilian personnel"
+      }
+    },
+    {
+      "id": "UNMISS~operational_costs",
+      "parentId": "UNMISS",
+      "tier": "class",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 284279900,
+      "basis": "directly_printed",
+      "mission": "UNMISS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNMISS",
+        "rowLabel": "Operational requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Operational costs"
+      }
+    },
+    {
+      "id": "UNSOH",
+      "parentId": "all-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNSOH",
+      "label": "United Nations Support Office in Haiti",
+      "amount": 375768800,
+      "basis": "directly_printed",
+      "mission": "UNSOH",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNSOH",
+        "rowLabel": "Gross requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    {
+      "id": "UNSOH~military_police_personnel",
+      "parentId": "UNSOH",
+      "tier": "class",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 93128100,
+      "basis": "directly_printed",
+      "mission": "UNSOH",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNSOH",
+        "rowLabel": "Military and police personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Military and police personnel"
+      }
+    },
+    {
+      "id": "UNSOH~civilian_personnel",
+      "parentId": "UNSOH",
+      "tier": "class",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 45361300,
+      "basis": "directly_printed",
+      "mission": "UNSOH",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNSOH",
+        "rowLabel": "Civilian personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Civilian personnel"
+      }
+    },
+    {
+      "id": "UNSOH~operational_costs",
+      "parentId": "UNSOH",
+      "tier": "class",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 237279400,
+      "basis": "directly_printed",
+      "mission": "UNSOH",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNSOH",
+        "rowLabel": "Operational requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Operational costs"
+      }
+    },
+    {
+      "id": "UNSOS",
+      "parentId": "all-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNSOS",
+      "label": "United Nations Support Office in Somalia",
+      "amount": 481550400,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNSOS",
+        "rowLabel": "Gross requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    {
+      "id": "UNSOS~military_police_personnel",
+      "parentId": "UNSOS",
+      "tier": "class",
+      "kind": "class",
+      "code": "military_police_personnel",
+      "label": "Military and police personnel",
+      "amount": 112903800,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "military_police_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNSOS",
+        "rowLabel": "Military and police personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Military and police personnel"
+      }
+    },
+    {
+      "id": "UNSOS~civilian_personnel",
+      "parentId": "UNSOS",
+      "tier": "class",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 104190300,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNSOS",
+        "rowLabel": "Civilian personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Civilian personnel"
+      }
+    },
+    {
+      "id": "UNSOS~operational_costs",
+      "parentId": "UNSOS",
+      "tier": "class",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 264456300,
+      "basis": "directly_printed",
+      "mission": "UNSOS",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "UNSOS",
+        "rowLabel": "Operational requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Operational costs"
+      }
+    },
+    {
+      "id": "UNGSC",
+      "parentId": "all-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "UNGSC",
+      "label": "United Nations Global Service Centre",
+      "amount": 55446700,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "United Nations Logistics Base at Brindisi, Italy",
+        "rowLabel": "Gross requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    {
+      "id": "UNGSC~civilian_personnel",
+      "parentId": "UNGSC",
+      "tier": "class",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 36718600,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "United Nations Logistics Base at Brindisi, Italy",
+        "rowLabel": "Civilian personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Civilian personnel"
+      }
+    },
+    {
+      "id": "UNGSC~operational_costs",
+      "parentId": "UNGSC",
+      "tier": "class",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 18728100,
+      "basis": "directly_printed",
+      "mission": "UNGSC",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "United Nations Logistics Base at Brindisi, Italy",
+        "rowLabel": "Operational requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Operational costs"
+      }
+    },
+    {
+      "id": "RSCE",
+      "parentId": "all-missions",
+      "tier": "mission",
+      "kind": "mission",
+      "code": "RSCE",
+      "label": "Regional Service Centre in Entebbe",
+      "amount": 45911600,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "total",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "Regional Service Centre in Entebbe, Uganda",
+        "rowLabel": "Gross requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    {
+      "id": "RSCE~civilian_personnel",
+      "parentId": "RSCE",
+      "tier": "class",
+      "kind": "class",
+      "code": "civilian_personnel",
+      "label": "Civilian personnel",
+      "amount": 37289600,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "civilian_personnel",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "Regional Service Centre in Entebbe, Uganda",
+        "rowLabel": "Civilian personnel costs",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Civilian personnel"
+      }
+    },
+    {
+      "id": "RSCE~operational_costs",
+      "parentId": "RSCE",
+      "tier": "class",
+      "kind": "class",
+      "code": "operational_costs",
+      "label": "Operational costs",
+      "amount": 8622000,
+      "basis": "directly_printed",
+      "mission": "RSCE",
+      "costClass": "operational_costs",
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "Regional Service Centre in Entebbe, Uganda",
+        "rowLabel": "Operational requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table",
+        "budgetItem": "Operational costs"
+      }
+    }
+  ],
+  "peacekeepingSupplement": {
+    "accounts": [
+      {
+        "code": "PK-SUPPORT",
+        "label": "Peacekeeping support account",
+        "category": "support_account",
+        "amount": 380286100,
+        "source": {
+          "symbol": "A/C.5/80/20",
+          "pdfPage": 3,
+          "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+          "columnHeader": "Support account",
+          "rowLabel": "Gross requirements",
+          "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+          "pdfPageScope": "table"
+        },
+        "note": "Shared support for United Nations peacekeeping operations.",
+        "breakdown": [
+          {
+            "label": "Civilian personnel",
+            "amount": 278630100,
+            "source": {
+              "symbol": "A/C.5/80/20",
+              "pdfPage": 3,
+              "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+              "columnHeader": "Support account",
+              "rowLabel": "Civilian personnel costs",
+              "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Civilian personnel"
+            }
+          },
+          {
+            "label": "Operational costs",
+            "amount": 38211100,
+            "source": {
+              "symbol": "A/C.5/80/20",
+              "pdfPage": 3,
+              "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+              "columnHeader": "Support account",
+              "rowLabel": "Operational requirements",
+              "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Operational costs"
+            }
+          },
+          {
+            "label": "Enterprise resource planning",
+            "amount": 19870200,
+            "source": {
+              "symbol": "A/C.5/80/20",
+              "pdfPage": 3,
+              "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+              "columnHeader": "Support account",
+              "rowLabel": "Enterprise resource planning",
+              "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Enterprise resource planning"
+            }
+          },
+          {
+            "label": "Death and disability claims for closed peacekeeping operations",
+            "amount": 477500,
+            "source": {
+              "symbol": "A/C.5/80/20",
+              "pdfPage": 3,
+              "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+              "columnHeader": "Support account",
+              "rowLabel": "Death and disability claims for closed peacekeeping operations",
+              "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Death and disability claims for closed peacekeeping operations"
+            }
+          },
+          {
+            "label": "Improved service delivery",
+            "amount": 832200,
+            "source": {
+              "symbol": "A/C.5/80/20",
+              "pdfPage": 3,
+              "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+              "columnHeader": "Support account",
+              "rowLabel": "Improved service delivery",
+              "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Improved service delivery"
+            }
+          },
+          {
+            "label": "Peacekeeping capability readiness",
+            "amount": 4651400,
+            "source": {
+              "symbol": "A/C.5/80/20",
+              "pdfPage": 3,
+              "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+              "columnHeader": "Support account",
+              "rowLabel": "Peacekeeping capability readiness",
+              "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Peacekeeping capability readiness"
+            }
+          },
+          {
+            "label": "Umoja maintenance and support costs",
+            "amount": 19355600,
+            "source": {
+              "symbol": "A/C.5/80/20",
+              "pdfPage": 3,
+              "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+              "columnHeader": "Support account",
+              "rowLabel": "Umoja maintenance and support costs",
+              "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "Umoja maintenance and support costs"
+            }
+          },
+          {
+            "label": "After-service health insurance",
+            "amount": 18258000,
+            "source": {
+              "symbol": "A/C.5/80/20",
+              "pdfPage": 3,
+              "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+              "columnHeader": "Support account",
+              "rowLabel": "After-service health insurance",
+              "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+              "pdfPageScope": "table",
+              "budgetItem": "After-service health insurance"
+            }
+          }
+        ]
+      }
+    ],
+    "publishedTotal": {
+      "amount": 5107584500,
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "Total",
+        "rowLabel": "Gross requirements",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    },
+    "inKind": {
+      "amount": 713900,
+      "source": {
+        "symbol": "A/C.5/80/20",
+        "pdfPage": 3,
+        "tableTitle": "Annex \u00b7 Approved resources for 2026/27",
+        "columnHeader": "Total",
+        "rowLabel": "Voluntary contributions in kind (budgeted)",
+        "url": "https://digitallibrary.un.org/nanna/record/4120548/files/A_C.5_80_20-EN.pdf?registerDownload=1&version=1&withMetadata=0&withWatermark=0",
+        "pdfPageScope": "table"
+      }
+    }
+  }
+}
