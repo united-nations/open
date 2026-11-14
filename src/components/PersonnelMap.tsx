@@ -1,5 +1,6 @@
 "use client";
 
+import { MapBoundaryDisclaimer } from "@/components/MapBoundaryDisclaimer";
 import { useMemo, useState } from "react";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
@@ -205,16 +206,22 @@ export function PersonnelMap({
           />
         )}
       </ChartFrame>
-      {
-        <p className="text-xs text-gray-500">
-          {unmapped > 0 &&
-            `${formatPeople(unmapped)} staff have no reported country coordinate and are not plotted. `}
-          The boundaries and names shown and the designations used on this map
-          do not imply official endorsement or acceptance by the United Nations.
-          References to Kosovo shall be understood in the context of Security
-          Council resolution 1244 (1999).
-        </p>
-      }
+      {!showList && countries.length > 0 && (
+        <>
+          {unmapped > 0 && (
+            <p className="text-xs text-gray-500">
+              {formatPeople(unmapped)} staff have no reported country coordinate
+              and are not plotted.
+            </p>
+          )}
+          <MapBoundaryDisclaimer>
+            <p className="mt-2">
+              References to Kosovo shall be understood in the context of
+              Security Council resolution 1244 (1999).
+            </p>
+          </MapBoundaryDisclaimer>
+        </>
+      )}
     </section>
   );
 }

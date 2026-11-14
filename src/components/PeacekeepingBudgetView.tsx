@@ -1,4 +1,5 @@
 "use client";
+import { MapBoundaryDisclaimer } from "@/components/MapBoundaryDisclaimer";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { missionLocationLabel } from "@/lib/missionLocations";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
@@ -874,7 +875,7 @@ export function PeacekeepingBudgetView() {
                 account marker represents shared support for peacekeeping
                 operations.
               </p>
-              <p>{entities.map_notes.boundary_disclaimer}</p>
+              <MapBoundaryDisclaimer />
             </div>
           </section>
         </div>

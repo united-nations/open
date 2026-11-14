@@ -1,3 +1,4 @@
+import { MapBoundaryDisclaimer } from "@/components/MapBoundaryDisclaimer";
 import { assessmentTotals, CEB_ASSESSMENT_COLORS } from "@/lib/cebAssessments";
 import { UN_FUNCTIONS, type FunctionExpenses } from "@/lib/functions";
 import {
@@ -888,10 +889,10 @@ export async function HomeChartCards({
       {links.map((link) => {
         const preview = previews[link.href];
         return (
-          <li key={link.href} className="min-w-0">
+          <li key={link.href} className="flex min-w-0 flex-col">
             <Link
               href={link.href}
-              className="group flex h-full flex-row overflow-hidden border border-gray-200 bg-white transition-colors hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-un-blue"
+              className="group flex flex-1 flex-row overflow-hidden border border-gray-200 bg-white transition-colors hover:bg-gray-50 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-un-blue"
             >
               {preview && (
                 <div
@@ -938,6 +939,7 @@ export async function HomeChartCards({
                 </span>
               </div>
             </Link>
+            {preview?.countries && <MapBoundaryDisclaimer />}
           </li>
         );
       })}

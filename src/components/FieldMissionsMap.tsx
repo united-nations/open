@@ -1,4 +1,5 @@
 "use client";
+import { MapBoundaryDisclaimer } from "@/components/MapBoundaryDisclaimer";
 import { missionLocationLabel } from "@/lib/missionLocations";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
@@ -388,10 +389,7 @@ export function FieldMissionsMap({
         </p>
         <div className="max-w-2xl space-y-2" data-map-notes>
           <p>{entitiesData.map_notes.placement}</p>
-          <p>{entitiesData.map_notes.boundary_disclaimer}</p>
-          {model.points.some(
-            (point) => point.data.location.code === "UNMOGIP",
-          ) && <p>{entitiesData.map_notes.kashmir_disclaimer}</p>}
+          {!showList && <MapBoundaryDisclaimer />}
         </div>
       </div>
     </div>

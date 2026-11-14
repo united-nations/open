@@ -82,12 +82,25 @@ try {
     ) {
       const notes = page.locator("[data-map-notes]");
       await notes.waitFor();
-      assert.equal(await notes.locator("details, summary").count(), 0);
+      const disclaimer = notes.locator("[data-map-boundary-disclaimer]");
+      assert.equal(await disclaimer.getAttribute("open"), null);
       assert.equal(
         await notes.evaluate((node) => Boolean(node.closest(".text-gray-500"))),
         true,
       );
-      assert.match(await notes.innerText(), /legal status/);
+      const boundaryText = disclaimer.getByText(
+        /The boundaries and names shown/,
+      );
+      assert.equal(await boundaryText.isVisible(), false);
+      const toggle = disclaimer.locator("summary");
+      await toggle.press("Enter");
+      assert.equal(await boundaryText.isVisible(), true);
+      assert.match(
+        await boundaryText.innerText(),
+        /Falkland Islands \(Malvinas\)/,
+      );
+      await toggle.click();
+      await boundaryText.waitFor({ state: "hidden" });
       if (route === "/secretariat/peacekeeping-budget/")
         assert.doesNotMatch(
           await notes.innerText(),
