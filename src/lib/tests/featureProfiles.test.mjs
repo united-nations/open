@@ -31,8 +31,6 @@ test("frontend resolves each build profile and its route visibility", () => {
       const { isRouteEnabled, visibleSecretariatNav, visibleSystemNav } = await moduleAt('src/lib/navigation.ts');
       console.log(JSON.stringify({ variant: SITE_VARIANT, flags: FEATURES,
         nav: visibleSecretariatNav(), systemNav: visibleSystemNav(),
-        personnel: isRouteEnabled('/system/personnel/'),
-        personnelChild: isRouteEnabled('/system/personnel/future-subpage/'),
         peaceOperations: isRouteEnabled('/secretariat/peacekeeping-budget/peace-operations/') }));
     `,
         ],
@@ -44,11 +42,9 @@ test("frontend resolves each build profile and its route visibility", () => {
     );
     assert.equal(actual.variant, variant);
     assert.deepEqual(actual.flags, profiles[variant]);
-    assert.equal(actual.personnel, variant === "full");
-    assert.equal(actual.personnelChild, variant === "full");
     assert.equal(
       actual.systemNav.some((item) => item.href === "/system/personnel"),
-      variant === "full",
+      false,
     );
     assert.equal(
       actual.peaceOperations,

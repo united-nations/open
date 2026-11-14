@@ -78,7 +78,7 @@ jobs:
           node tests/browser/feature-profiles.mjs
           node tests/browser/system-functions.mjs
           node tests/browser/function-geography.mjs
-          if [ "$SITE_VARIANT" = full ]; then node tests/browser/personnel.mjs; fi
+          node tests/browser/personnel.mjs
       - name: Upload artifact
         if: matrix.variant == 'public'
         uses: actions/upload-pages-artifact@v3

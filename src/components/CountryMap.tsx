@@ -4,9 +4,14 @@ import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { ChartFooter } from "@/components/ChartFooter";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
+import type { LocationView } from "@/components/LocationViewControl";
+import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 
 import { GeographicSidebar } from "./GeographicSidebar";
-import { HierarchicalSingleSelect } from "./ui/hierarchical-single-select";
+import {
+  OrganizationHierarchySelect,
+  organizationHierarchyGroups,
+} from "./OrganizationHierarchySelect";
 import {
   GEOGRAPHIC_LEVELS,
   geographicSubregion,
@@ -14,8 +19,7 @@ import {
   type GeographicLevel,
 } from "@/lib/geographicExpenses";
 import type { Entity } from "@/types";
-import { getSystemGroupingStyle } from "@/lib/systemGroupings";
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, type ReactNode } from "react";
 import {
   FinancialBubbleMap,
   MapBubbleLegendCircle,
@@ -34,11 +38,11 @@ import {
   clearSidebarHash,
 } from "@/hooks/useDeepLink";
 import { ChartSearchInput } from "@/components/ui/chart-search-input";
-import { SegmentedControl } from "@un-eosg/ui/components/segmented-control";
 import { getRegionStyle } from "@/lib/regionGroupings";
 import { RankedDetailList } from "@/components/RankedDetailList";
-import { formatBudget, UNCATEGORIZED_SYSTEM_GROUP } from "@/lib/entities";
+import { formatBudget } from "@/lib/entities";
 import { useYearRanges } from "@/lib/useYearRanges";
+import { useViewportMapHeight } from "@/hooks/useViewportMapHeight";
 
 type CountryExpense = GeographicExpense;
 interface GeographicMapPoint {
@@ -55,24 +59,35 @@ const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const BUBBLE_REFERENCE_AMOUNT = 1_000_000_000;
 const BUBBLE_REFERENCE_RADIUS = 12;
 
-export function CountryMap() {
-  const [entityMetadata, setEntityMetadata] = useState<Entity[]>([]);
-  const [entityFilter, setEntityFilter] = useState("all");
+export function CountryMap({
+  active,
+  controls,
+  view,
+  searchQuery,
+  setSearchQuery,
+  entityMetadata,
+  entityFilter,
+  setEntityFilter,
+  selectedYear,
+  setSelectedYear,
+}: {
+  active: boolean;
+  controls: ReactNode;
+  view: LocationView;
+  searchQuery: string;
+  setSearchQuery: (value: string) => void;
+  entityMetadata: Entity[];
+  entityFilter: string;
+  setEntityFilter: (selection: string) => void;
+  selectedYear: number;
+  setSelectedYear: (year: number) => void;
+}) {
   const [levels, setLevels] = useState<GeographicLevel[]>(
     GEOGRAPHIC_LEVELS.map((item) => item.key),
   );
   const [selectedGeography, setSelectedGeography] = useState<string | null>(
     null,
   );
-  useEffect(() => {
-    fetch(`${basePath}/data/entities.json`)
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
-      })
-      .then(setEntityMetadata)
-      .catch(console.error);
-  }, []);
   const yearRanges = useYearRanges();
   const COUNTRY_YEARS = yearRanges.geographicExpenses.years;
 
@@ -86,12 +101,10 @@ export function CountryMap() {
   const [loading, setLoading] = useState(true);
   const [loadedYear, setLoadedYear] = useState<number | null>(null);
   const [errorYear, setErrorYear] = useState<number | null>(null);
-  const [view, setView] = useState("map");
   const showMap = view === "map";
-  const [searchQuery, setSearchQuery] = useState("");
-  const [selectedYear, setSelectedYear] = useState<number>(
-    yearRanges.geographicExpenses.default,
-  );
+  const mapHeight = useViewportMapHeight(650);
+  const emptyHeight = view === "chart" ? SYSTEM_TREEMAP_HEIGHT_CLASS : "h-80";
+  const emptyStyle = showMap ? { height: mapHeight } : undefined;
   const loadError = errorYear === selectedYear;
   const countryData = useMemo(
     () => (loadedYear === selectedYear ? loadedCountryData : []),
@@ -99,11 +112,15 @@ export function CountryMap() {
   );
   const [pendingDeepLink, setPendingDeepLink] = useDeepLink({
     hashPrefix: "country",
-    onNavigateAway: () => setSelectedCountry(null),
+    onNavigateAway: () => {
+      setSelectedCountry(null);
+      setSelectedGeography(null);
+    },
   });
 
   // Open sidebar when data is loaded and there's a pending deep link
   useEffect(() => {
+    if (!active) return;
     const frame = requestAnimationFrame(() => {
       if (pendingDeepLink) {
         const requestedYear = Number(
@@ -132,11 +149,13 @@ export function CountryMap() {
     });
     return () => cancelAnimationFrame(frame);
   }, [
+    active,
     loading,
     pendingDeepLink,
     countryData,
     setPendingDeepLink,
     selectedYear,
+    setSelectedYear,
     loadedYear,
     yearRanges.geographicExpenses.years,
   ]);
@@ -168,52 +187,26 @@ export function CountryMap() {
     };
   }, [selectedYear]);
 
-  const entityGroups = useMemo(() => {
-    const metadata = new Map(
-      entityMetadata.map((entity) => [entity.entity, entity]),
-    );
-    // CEB records define membership; Airtable only supplies categories.
-    const codes = new Set(
-      countryData.flatMap((row) => Object.keys(row.entities)),
-    );
-    const groups = new Map<string, string[]>();
-    for (const code of codes) {
-      if (!code) continue;
-      const group =
-        metadata.get(code)?.system_grouping || UNCATEGORIZED_SYSTEM_GROUP;
-      const members = groups.get(group) ?? [];
-      members.push(code);
-      groups.set(group, members);
-    }
-    return [...groups]
-      .map(([group, members]) => ({
-        id: `group:${group}`,
-        label: group,
-        color: getSystemGroupingStyle(group).hexColor,
-        children: members.sort((a, b) => a.localeCompare(b)),
-      }))
-      .sort(
-        (a, b) =>
-          getSystemGroupingStyle(a.label).order -
-            getSystemGroupingStyle(b.label).order ||
-          a.label.localeCompare(b.label),
-      );
-  }, [countryData, entityMetadata]);
-  const appliedEntityFilter = entityGroups.some(
-    (group) =>
-      group.id === entityFilter || group.children.includes(entityFilter),
-  )
-    ? entityFilter
-    : "all";
+  const entityGroups = useMemo(
+    () =>
+      organizationHierarchyGroups(
+        countryData.flatMap((row) => Object.keys(row.entities)),
+        entityMetadata,
+      ),
+    [countryData, entityMetadata],
+  );
+  const filterGroup = entityGroups.find((group) => group.id === entityFilter);
+  const filterUnavailable =
+    entityFilter !== "all" &&
+    !filterGroup &&
+    !entityGroups.some((group) => group.children.includes(entityFilter));
   const entityScopedData = countryData.map((row) => {
     const entities = Object.fromEntries(
       Object.entries(row.entities).filter(
         ([entity]) =>
-          appliedEntityFilter === "all" ||
-          entity === appliedEntityFilter ||
-          entityGroups
-            .find((group) => group.id === appliedEntityFilter)
-            ?.children.includes(entity),
+          entityFilter === "all" ||
+          entity === entityFilter ||
+          filterGroup?.children.includes(entity),
       ),
     );
     return {
@@ -250,9 +243,7 @@ export function CountryMap() {
     0,
   );
   const bubbleReferenceAmount =
-    appliedEntityFilter === "all" ||
-    allPositiveTotal <= 0 ||
-    entityPositiveTotal <= 0
+    entityFilter === "all" || allPositiveTotal <= 0 || entityPositiveTotal <= 0
       ? BUBBLE_REFERENCE_AMOUNT
       : BUBBLE_REFERENCE_AMOUNT *
         Math.min(1, entityPositiveTotal / allPositiveTotal);
@@ -273,31 +264,6 @@ export function CountryMap() {
       label: country.iso3,
       data: country,
     }));
-
-  if (loading) {
-    return (
-      <div className="flex h-[650px] w-full items-center justify-center">
-        <p className="text-lg text-gray-500">Loading map...</p>
-      </div>
-    );
-  }
-
-  if (!countryData || countryData.length === 0) {
-    return (
-      <div className="flex h-[650px] w-full flex-col items-center justify-center gap-4 bg-gray-100">
-        <YearSlider
-          years={COUNTRY_YEARS}
-          selectedYear={selectedYear}
-          onChange={setSelectedYear}
-        />
-        <p className="text-lg text-gray-500">
-          {loadError
-            ? `Geographic data could not be loaded for ${selectedYear}.`
-            : `Loading geographic data for ${selectedYear}…`}
-        </p>
-      </div>
-    );
-  }
 
   const handleClick = (d: GeographicMapPoint | undefined) => {
     if (d && d.data) {
@@ -390,24 +356,14 @@ export function CountryMap() {
                 onChange={setSelectedYear}
               />
             }
-            controls={
-              <SegmentedControl
-                label="Geographic view"
-                options={[
-                  { value: "chart", label: "Chart" },
-                  { value: "map", label: "Map" },
-                  { value: "list", label: "List" },
-                ]}
-                value={view}
-                onValueChange={setView}
-              />
-            }
+            controls={controls}
             search={
               <ChartSearchInput
                 value={searchQuery}
                 onChange={setSearchQuery}
                 placeholder="Search by country or region..."
                 label="Search by country or region"
+                className="sm:w-48"
               />
             }
             summaries={[
@@ -431,23 +387,33 @@ export function CountryMap() {
         footer={<ChartFooter hint="Select a location to explore details" />}
       >
         <div className="mb-4 flex flex-wrap items-center gap-3">
-          <HierarchicalSingleSelect
-            groups={[
-              { id: "all", label: "All entities", children: [] },
-              ...entityGroups,
-            ]}
-            selected={appliedEntityFilter}
+          <OrganizationHierarchySelect
+            groups={entityGroups}
+            selected={entityFilter}
             onChange={setEntityFilter}
-            getLabel={(id) =>
-              id === "all"
-                ? "All entities"
-                : entityGroups.find((group) => group.id === id)?.label || id
-            }
+            allLabel="All entities"
           />
           {!showMap && reportingLevels}
         </div>
         {/* Map or Treemap View */}
-        {view === "list" ? (
+        {!countryData.length ? (
+          <p
+            className={`flex ${emptyHeight} items-center justify-center text-lg text-gray-500`}
+            style={emptyStyle}
+          >
+            {loadError
+              ? `Geographic data could not be loaded for ${selectedYear}.`
+              : `Loading geographic data for ${selectedYear}…`}
+          </p>
+        ) : filterUnavailable ? (
+          <p
+            className={`flex ${emptyHeight} items-center justify-center text-sm text-gray-600`}
+            style={emptyStyle}
+          >
+            No geographic expenditure is available for this selection in{" "}
+            {selectedYear}.
+          </p>
+        ) : view === "list" ? (
           <RankedDetailList
             label="Expenditure by location"
             items={filteredData
@@ -476,7 +442,10 @@ export function CountryMap() {
         ) : showMap ? (
           <div className="relative">
             {mapData.length === 0 ? (
-              <div className="flex h-[650px] w-full items-center justify-center bg-gray-100 px-4 text-center">
+              <div
+                className="flex w-full items-center justify-center bg-gray-100 px-4 text-center"
+                style={emptyStyle}
+              >
                 <p className="text-lg text-gray-500">
                   No positive expenditure matches the selected filters
                 </p>
@@ -513,7 +482,8 @@ export function CountryMap() {
       </ChartFrame>
       {showMap && mapData.length > 0 && <MapBoundaryDisclaimer />}
 
-      {selectedGeography &&
+      {active &&
+        selectedGeography &&
         scopedData.find((row) => row.iso3 === selectedGeography) && (
           <GeographicSidebar
             row={scopedData.find((row) => row.iso3 === selectedGeography)!}
@@ -523,7 +493,7 @@ export function CountryMap() {
             onClose={() => setSelectedGeography(null)}
           />
         )}
-      {selectedCountry && (
+      {active && selectedCountry && (
         <CountrySidebar
           country={selectedCountry}
           initialYear={selectedYear}

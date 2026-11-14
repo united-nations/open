@@ -10,8 +10,6 @@ export const LINK_DESCRIPTIONS: Record<string, string> = {
   "/system/locations": "Where funds are spent, by country and region.",
   "/system/functions": "Expenditure across the four UN System functions.",
   "/system/goals": "Expenditure across the 17 Sustainable Development Goals.",
-  "/system/personnel":
-    "Staff by organization, location, grade, gender, age and length of service.",
   "/secretariat": "Overview of Secretariat expenditure across funding sources.",
   "/secretariat/programme-budget":
     "Allocations and expenditure by budget part, section and entity.",

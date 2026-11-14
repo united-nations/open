@@ -8,6 +8,7 @@ const {
   personnelPyramidScale,
   personnelPyramidWidths,
   personnelCompositionTrend,
+  personnelTrendHeadcount,
 } = await moduleAt("src/lib/personnel.ts");
 
 function record(category, grade, sex, count, subcategory = "High") {
@@ -183,4 +184,37 @@ test("age and service trends ignore organization selection, order source bands, 
     }
     assert.equal(all.points[1].counts.NA, 0);
   }
+});
+
+test("group trends aggregate reported staff and keep unavailable years as gaps", () => {
+  const members = ["A", "B"];
+  assert.equal(
+    personnelTrendHeadcount(compositionHistory.years[0], members),
+    100,
+  );
+  assert.equal(
+    personnelTrendHeadcount(compositionHistory.years[1], members),
+    40,
+  );
+  assert.equal(
+    personnelTrendHeadcount(compositionHistory.years[1], ["A"]),
+    null,
+  );
+  const history = personnelCompositionTrend(
+    compositionHistory,
+    "gender",
+    members,
+  );
+  assert.deepEqual(history.points[0].counts, {
+    female: 60,
+    male: 30,
+    unknown: 10,
+  });
+  assert.equal(history.points[0].shares.unknown, 10);
+  assert.equal(history.points[1].total, 40);
+  assert.equal(
+    personnelCompositionTrend(compositionHistory, "gender", ["A"]).points[1]
+      .total,
+    null,
+  );
 });

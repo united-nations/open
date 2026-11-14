@@ -106,7 +106,15 @@ function EntityTooltip({
   );
 }
 
-export function EntitiesTreemap({ children }: { children?: ReactNode }) {
+export function EntitiesTreemap({
+  children,
+  overviewControl,
+  active = true,
+}: {
+  children?: ReactNode;
+  overviewControl?: ReactNode;
+  active?: boolean;
+}) {
   const yearRanges = useYearRanges();
   const spendingYears = yearRanges.entitySpending.years;
   const revenueYears = yearRanges.entityRevenue.years;
@@ -295,6 +303,7 @@ export function EntitiesTreemap({ children }: { children?: ReactNode }) {
 
   useEffect(() => {
     if (
+      !active ||
       loading ||
       !pendingDeepLink ||
       !dataReady ||
@@ -302,7 +311,7 @@ export function EntitiesTreemap({ children }: { children?: ReactNode }) {
       loadError
     )
       return;
-    let active = true;
+    let currentRequest = true;
     const timer = window.setTimeout(async () => {
       const [requestedEntity, linkedYear] = pendingDeepLink.split("@");
       const requestedYear = Number(
@@ -332,7 +341,7 @@ export function EntitiesTreemap({ children }: { children?: ReactNode }) {
               () => false,
             )
           : false;
-      if (!active) return;
+      if (!currentRequest) return;
       const entity =
         hasFinancialRecord || hasOutstandingRecord
           ? normalizeEntityForDisplay(
@@ -346,10 +355,11 @@ export function EntitiesTreemap({ children }: { children?: ReactNode }) {
       setPendingDeepLink(null);
     }, 0);
     return () => {
-      active = false;
+      currentRequest = false;
       window.clearTimeout(timer);
     };
   }, [
+    active,
     budgetData,
     dataReady,
     dataAvailable,
@@ -450,10 +460,13 @@ export function EntitiesTreemap({ children }: { children?: ReactNode }) {
 
   if (loading) {
     return (
-      <div
-        className={`flex w-full items-center justify-center bg-gray-100 ${SYSTEM_TREEMAP_HEIGHT_CLASS}`}
-      >
-        <p className="text-lg text-gray-500">Loading entities...</p>
+      <div>
+        {overviewControl}
+        <div
+          className={`flex w-full items-center justify-center bg-gray-100 ${SYSTEM_TREEMAP_HEIGHT_CLASS}`}
+        >
+          <p className="text-lg text-gray-500">Loading entities...</p>
+        </div>
       </div>
     );
   }
@@ -509,8 +522,9 @@ export function EntitiesTreemap({ children }: { children?: ReactNode }) {
             onChange={setCurrentYear}
           />
         }
-        controls={
+        leadingControls={
           <>
+            {overviewControl}
             <BinaryToggle
               variant="segmented"
               label="Financial measure"
@@ -586,7 +600,7 @@ export function EntitiesTreemap({ children }: { children?: ReactNode }) {
         {children}
       </div>
 
-      {selectedEntity && dataReady && dataAvailable && !loadError && (
+      {active && selectedEntity && dataReady && dataAvailable && !loadError && (
         <EntitySidebar
           key={`${selectedEntity.entity}@${currentYear}`}
           entity={selectedEntity}

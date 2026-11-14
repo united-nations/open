@@ -6,7 +6,6 @@ import {
   trustFundReportingData,
 } from "@/lib/trustFundReporting";
 import { FEATURES } from "@/lib/featureFlags";
-import type { PersonnelData } from "@/lib/personnel";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { cache } from "react";
@@ -224,41 +223,6 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
         ? [{ lat: location.lat, long: location.long, total: node.amount }]
         : [];
     });
-  const personnel = FEATURES.personnel
-    ? await readData<PersonnelData>(`personnel-${year("personnel")}.json`)
-    : null;
-  const personnelGroups = new Map<string, Tile>();
-  const addPersonnelTile = (category: string, label: string, count: number) => {
-    const style = getSystemGroupingStyle(category);
-    const group = personnelGroups.get(category) ?? {
-      label: style.label,
-      value: 0,
-      color: style.hexColor,
-      children: [],
-    };
-    group.value += count;
-    group.children!.push({
-      label,
-      value: count,
-    });
-    personnelGroups.set(category, group);
-  };
-  for (const organization of personnel?.organizations ?? []) {
-    if (organization.sourceOrg === "UN") {
-      for (const child of organization.entities) {
-        addPersonnelTile(
-          entityGroups.get(organization.org) ?? "Uncategorized",
-          child.entity,
-          child.count,
-        );
-      }
-    } else
-      addPersonnelTile(
-        entityGroups.get(organization.org) ?? "Uncategorized",
-        organization.org,
-        organization.total,
-      );
-  }
   const trustFundFlows = (trustFundContributors?.contributors ?? []).flatMap(
     (contributor) =>
       (contributor.flows ?? []).map((flow) => ({
@@ -268,17 +232,6 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
       })),
   );
   return {
-    ...(personnel
-      ? {
-          "/system/personnel": {
-            bands: "categories" as const,
-            tiles: [...personnelGroups.values()].map((group) => ({
-              ...group,
-              children: group.children!.sort((a, b) => b.value - a.value),
-            })),
-          },
-        }
-      : {}),
     "/system/organizations": {
       bands: "categories",
       tiles: [...categories].map(([category, value]) => ({

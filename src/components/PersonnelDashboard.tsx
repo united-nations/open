@@ -3,16 +3,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
-import { PersonnelOrganizationSelect } from "@/components/PersonnelOrganizationSelect";
 import { YearSlider } from "@/components/YearSlider";
 import { PersonnelTreemap } from "@/components/PersonnelTreemap";
-import { PersonnelMap, type PersonnelMapMode } from "@/components/PersonnelMap";
-import {
-  PersonnelGenderCharts,
-  PersonnelAgeTenureCharts,
-} from "@/components/PersonnelDemographics";
-import { PersonnelTrendsChart } from "@/components/PersonnelTrendsChart";
-import { PersonnelCompositionTrendsChart } from "@/components/PersonnelCompositionTrendsChart";
 import {
   PersonnelSidebar,
   type PersonnelDetail,
@@ -32,14 +24,18 @@ function detailHash(detail: PersonnelDetail, year: number) {
   return `${detail.kind}|${detail.key}|${detail.scope}@${year}`;
 }
 
-export function PersonnelDashboard() {
+export function PersonnelDashboard({
+  active,
+  overviewControl,
+}: {
+  active: boolean;
+  overviewControl?: React.ReactNode;
+}) {
   const years = useYearRanges().personnel;
   const [year, setYear] = useState(years.default);
-  const [org, setOrg] = useState("all");
-  const [mapOrg, setMapOrg] = useState("all");
-  const [mapMode, setMapMode] = useState<PersonnelMapMode>("duty");
   const [retry, setRetry] = useState(0);
   const [detail, setDetail] = useState<PersonnelDetail | null>(null);
+  const dashboard = useRef<HTMLDivElement>(null);
   const opener = useRef<HTMLElement | null>(null);
   const [previousData, setPreviousData] = useState<PersonnelData | null>(null);
   const [pending, setPending] = useDeepLink({
@@ -73,11 +69,7 @@ export function PersonnelDashboard() {
     null,
   );
   const displayedData = data ?? previousData;
-  const total = data
-    ? org === "all"
-      ? data.total
-      : (data.organizations.find((item) => item.org === org)?.total ?? null)
-    : null;
+  const total = data?.total ?? null;
   const close = () => {
     setDetail(null);
     setPending(null);
@@ -93,10 +85,7 @@ export function PersonnelDashboard() {
     const target = opener.current;
     if (target?.isConnected && !target.closest("[inert]"))
       target.focus({ preventScroll: true });
-    else
-      document
-        .querySelector<HTMLElement>("#personnel a[href]")
-        ?.focus({ preventScroll: true });
+    else dashboard.current?.focus({ preventScroll: true });
     opener.current = null;
   };
   const changeYear = (next: number) => {
@@ -106,14 +95,14 @@ export function PersonnelDashboard() {
     if (detail) replaceToSidebar("personnel", detailHash(detail, next));
   };
   useEffect(() => {
-    if (!pending) return;
+    if (!active || !pending) return;
     const frame = requestAnimationFrame(() => {
       const [target, linkedYear] = pending.split("@");
       const [kind, key, scope] = target.split("|");
       const nextYear = Number(linkedYear);
       if (
         !years.years.includes(nextYear) ||
-        !["org", "entity", "duty", "nationality"].includes(kind) ||
+        (kind !== "org" && kind !== "entity") ||
         !key ||
         !scope
       ) {
@@ -135,21 +124,12 @@ export function PersonnelDashboard() {
         validScope &&
         (kind === "org"
           ? data.organizations.some((item) => item.org === key)
-          : kind === "entity"
-            ? data.organizations
-                .find((item) => item.sourceOrg === "UN")
-                ?.entities.some((item) => item.entity === key) === true &&
-              (scope === "all" || scope === "UN Secretariat")
-            : (kind === "duty" ? data.dutyStations : data.nationalities).some(
-                (item) =>
-                  item.iso3 === key && (scope === "all" || item.org === scope),
-              ));
+          : data.organizations
+              .find((item) => item.sourceOrg === "UN")
+              ?.entities.some((item) => item.entity === key) === true &&
+            (scope === "all" || scope === "UN Secretariat"));
       if (valid) {
-        if (kind === "duty" || kind === "nationality") {
-          setMapOrg(scope);
-          setMapMode(kind);
-        } else setOrg(scope);
-        setDetail({ kind: kind as PersonnelDetail["kind"], key, scope });
+        setDetail({ kind, key, scope });
       } else {
         clearSidebarHash();
         setDetail(null);
@@ -157,20 +137,14 @@ export function PersonnelDashboard() {
       setPending(null);
     });
     return () => cancelAnimationFrame(frame);
-  }, [pending, setPending, data, previousData, year, years.years]);
-  const organizationControl = (
-    <PersonnelOrganizationSelect
-      label="Organization for organization chart"
-      organizations={displayedData?.organizations.map((item) => item.org) ?? []}
-      value={org}
-      onChange={(next) => {
-        setOrg(next);
-        close();
-      }}
-    />
+  }, [pending, setPending, data, previousData, active, year, years.years]);
+  const yearControl = (
+    <YearSlider years={years.years} selectedYear={year} onChange={changeYear} />
   );
   return (
     <div
+      ref={dashboard}
+      tabIndex={-1}
       className="space-y-12"
       style={{ overflowAnchor: "none" }}
       data-testid="personnel-dashboard"
@@ -180,14 +154,8 @@ export function PersonnelDashboard() {
           <ChartFrame
             header={
               <ChartHeader
-                yearControl={
-                  <YearSlider
-                    years={years.years}
-                    selectedYear={year}
-                    onChange={changeYear}
-                  />
-                }
-                controls={organizationControl}
+                yearControl={yearControl}
+                controls={overviewControl}
                 summaries={[
                   {
                     key: "staff",
@@ -203,7 +171,7 @@ export function PersonnelDashboard() {
               />
             }
           >
-            <span className="sr-only">Personnel controls</span>
+            <span className="sr-only">Select the personnel snapshot year.</span>
           </ChartFrame>
         </div>
       )}
@@ -256,52 +224,17 @@ export function PersonnelDashboard() {
             aria-hidden={loading || error}
           >
             <PersonnelTreemap
-              yearControl={
-                <YearSlider
-                  years={years.years}
-                  selectedYear={year}
-                  onChange={changeYear}
-                />
-              }
-              organizationControl={organizationControl}
+              yearControl={yearControl}
+              controls={overviewControl}
               data={displayedData}
               metadata={metadata ?? []}
-              org={org}
-              onOpen={(key) => open({ kind: "org", key, scope: org })}
-              onOpenEntity={(key) => open({ kind: "entity", key, scope: org })}
-            />
-            <div className="grid items-start gap-8 lg:grid-cols-2">
-              <PersonnelTrendsChart />
-              <PersonnelCompositionTrendsChart kind="gender" />
-            </div>
-            <PersonnelMap
-              data={displayedData}
-              org={mapOrg}
-              mode={mapMode}
-              onModeChange={setMapMode}
-              organizationControl={
-                <PersonnelOrganizationSelect
-                  organizations={displayedData.organizations.map(
-                    (item) => item.org,
-                  )}
-                  value={mapOrg}
-                  onChange={(next) => {
-                    setMapOrg(next);
-                    close();
-                  }}
-                  label="Organization for map"
-                />
+              onOpen={(key) => open({ kind: "org", key, scope: "all" })}
+              onOpenEntity={(key) =>
+                open({ kind: "entity", key, scope: "all" })
               }
-              onOpen={(kind, key) => open({ kind, key, scope: mapOrg })}
             />
-            <PersonnelGenderCharts data={displayedData} />
-            <PersonnelAgeTenureCharts data={displayedData} />
-            <div className="grid items-start gap-8 lg:grid-cols-2">
-              <PersonnelCompositionTrendsChart kind="age" />
-              <PersonnelCompositionTrendsChart kind="tenure" />
-            </div>
           </div>
-          {detail && (
+          {active && detail && (
             <PersonnelSidebar
               data={displayedData}
               selectedYear={year}

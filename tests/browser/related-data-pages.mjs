@@ -131,7 +131,6 @@ try {
     "/system/locations/",
     "/system/functions/",
     "/system/goals/",
-    ...(flags.personnel ? ["/system/personnel/"] : []),
   ]) {
     await page.goto(portalUrl + route, { waitUntil: "networkidle" });
     assert.equal(

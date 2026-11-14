@@ -1,6 +1,6 @@
 # CEB personnel data
 
-The Personnel tab uses the five public HR CSVs on the [CEB download page](https://unsceb.org/data-download/). It has a separate reporting scope and pipeline from CEB financial statistics. The current release covers 2017–2025. The `personnel` feature enables `/system/personnel` only in the `full` profile.
+The staff views use the five public HR CSVs on the [CEB download page](https://unsceb.org/data-download/). They have a separate reporting scope and pipeline from CEB financial statistics. The current release covers 2017–2025. Staff views on Organizations and Locations are available in all site profiles.
 
 ## Sources and reporting scope
 
@@ -9,12 +9,12 @@ The [CEB HR codebook v1.0, 27 October 2026](https://unsceb.org/assets/data/HR/ce
 | Source | Observation dimensions | Portal use |
 | --- | --- | --- |
 | [organization.csv](https://unsceb.org/assets/data/HR/organization.csv) | Organization, entity, year | Treemap, headcount history and entity detail |
-| [composition.csv](https://unsceb.org/assets/data/HR/composition.csv) | Organization, category, subcategory, grade, sex, year | Grade and organization gender balance |
-| [duty_station.csv](https://unsceb.org/assets/data/HR/duty_station.csv) | Organization, duty station, year | Duty-country map and station detail |
-| [nationality.csv](https://unsceb.org/assets/data/HR/nationality.csv) | Organization, nationality, year | Nationality map |
-| [others.csv](https://unsceb.org/assets/data/HR/others.csv) | Sex, age, age band, tenure, tenure band, year | System-wide age and service distributions |
+| [composition.csv](https://unsceb.org/assets/data/HR/composition.csv) | Organization, category, subcategory, grade, sex, year | Organization staff categories and gender trends |
+| [duty_station.csv](https://unsceb.org/assets/data/HR/duty_station.csv) | Organization, duty station, year | Duty-country map, chart, list and station detail |
+| [nationality.csv](https://unsceb.org/assets/data/HR/nationality.csv) | Organization, nationality, year | Nationality breakdown in organization sidebars |
+| [others.csv](https://unsceb.org/assets/data/HR/others.csv) | Sex, age, age band, tenure, tenure band, year | System-wide age and service trends |
 
-The annual reports contain additional appointment, funding, allowance and other tables absent from these CSVs. The portal covers all five machine-readable datasets; it does not reproduce every published report table. The public methodology and report links are in `/about/#personnel-methodology`.
+The annual reports contain additional appointment, funding, allowance and other tables absent from these CSVs. The exports retain all five machine-readable datasets. The public methodology and report links are in `/about/#personnel-methodology`.
 
 Important interpretation rules:
 
@@ -64,13 +64,11 @@ only: organization-level demographics and geography must not be allocated to
 children. The HR entry DPO is the Department of Peace Operations, not the
 financial UN-DPO aggregate.
 
-The treemap, map, grade balance, organization balance, workforce history and gender history keep independent organization selections. The shared snapshot year does not limit full-history trends. Age/service snapshots and histories remain system-wide. Country deep links restore their map measure and organization scope; organization/entity links restore the treemap scope. Closing a sidebar cancels pending deep links and restores focus. Loading failures retain usable recovery controls without presenting stale values as current.
+Organizations has a Financing / Staff switch for the overview and one workforce trend chart with Overall, Gender, Age and Length of service views. Locations has an Expenditure / Staff switch and offers Map, Chart, and List for staff. The organization hierarchy follows the reporting scope of the active source. Staff geography uses duty stations and reports organizations at the level available in that source.
 
-Gender bars default to absolute population pyramids with women left and men right. Their common symmetric scale includes collapsed rows; expanding does not rescale it. Outer caps are rounded and the centre edges are flat. Unknown sex uses a separate grey track on the same scale. Relative shares retain the full denominator. Counts remain accessible through row labels and tooltips.
+The standalone Personnel page is removed. The exports retain nationality, grade and demographic snapshots. Organization sidebars show staff categories and nationality. Age and length-of-service trends are system-wide. Country deep links restore the staff map and organization scope. Organization and entity links open the staff treemap. Closing a sidebar cancels pending deep links and restores focus.
 
-The bottom six charts use static pill legends: grade and organization gender balance, age and service snapshots, and age and service histories. Only the workforce and gender histories have toggleable legend pills; hiding a category does not recalculate percentages. The map has no list mode. A unique country-search match opens with Enter, including unplotted countries.
-
-The collapsed people-scale legend belongs to the treemap. Only its rightmost reference uses the chart's pixel area per staff member. Highlighted one-tenth subsets are magnified to the left (10,000 → 1,000 → 100 → 10 → 1). Preserve exact grid counts and zero treemap layout gaps so the area comparison remains valid.
+Age and service trends use static pill legends. Overall and Gender trends have toggleable legend pills. Hiding a category preserves the percentage denominator. A unique country-search match opens with Enter, including unplotted countries.
 
 ## Checks
 
@@ -79,12 +77,12 @@ python3 -m unittest discover -s python/tests -p test_ceb_personnel.py
 node --test src/lib/tests/personnel.test.mjs src/lib/tests/featureProfiles.test.mjs
 npm run typecheck
 npm run lint
-SITE_VARIANT=full npm run build
-SITE_VARIANT=full node scripts/check-feature-export.mjs
+npm run build
+node scripts/check-feature-export.mjs
 # Serve out/ locally, then run the Personnel interaction regression.
 PORTAL_URL=http://127.0.0.1:8766 node tests/browser/personnel.mjs
 ```
 
-Python tests cover source-grain/count preservation, reconciliation, unknowns, rejected refreshes, coverage loss and stale output removal. JavaScript tests cover grade order, scales, percentage denominators and feature profiles. Browser checks cover chart controls, unavailable years, static legends, deep links, cancellation, return focus, loading recovery and mobile layout. Check public/preview export exclusion when changing feature routing.
+Python tests cover source-grain/count preservation, reconciliation, unknowns, rejected refreshes, coverage loss and stale output removal. JavaScript tests cover grade order, scales, percentage denominators and feature profiles. Browser checks cover chart controls, unavailable years, static legends, deep links, cancellation, return focus, loading recovery and mobile layout. Check that staff views are available in every profile and the separate Personnel route is absent.
 
 Known verification limitation: during development, the broader `tests/browser/feature-profiles.mjs` suite completed route-availability checks but intermittently reported React hydration error #418 on non-Personnel pages. Its origin remains unresolved; the retained no-browser-errors assertion should not be weakened. The Personnel-specific regression passes independently.

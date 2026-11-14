@@ -263,12 +263,14 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
    labelColor?: string;
    /** Published group total when it differs from the sum of displayed leaves. */
    value?: number;
-@@ -166,10 +183,16 @@ export interface GroupedTreemapProps<
+@@ -166,10 +183,18 @@ export interface GroupedTreemapProps<
    /** Optional compact control rendered beside search in the plot toolbar. */
    searchAccessory?: React.ReactNode;
    yearControl?: React.ReactNode;
 +  /** Filter pills above the row containing the view, year, and search controls. */
 +  filterControls?: React.ReactNode;
++  /** Controls before the Chart/List selector in the main toolbar. */
++  leadingControls?: React.ReactNode;
    controls?: React.ReactNode;
 +  controlsClassName?: string;
    /** Additional controls below the main toolbar. */
@@ -280,7 +282,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
    footer?: React.ReactNode;
    /** Extra label space above each row; use with input order and no consolidation. */
    rowLabelSpace?: number;
-@@ -212,11 +235,10 @@ function layoutLeafKey(rowKey: string, subgroupKey: string, leafKey: string) {
+@@ -212,11 +237,10 @@ function layoutLeafKey(rowKey: string, subgroupKey: string, leafKey: string) {
  }
  
  function useElementSize<T extends HTMLElement>() {
@@ -293,7 +295,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
      if (!element) return;
      const update = (width: number, height: number) => {
        setSize((current) =>
-@@ -232,9 +254,9 @@ function useElementSize<T extends HTMLElement>() {
+@@ -232,9 +256,9 @@ function useElementSize<T extends HTMLElement>() {
      });
      observer.observe(element);
      return () => observer.disconnect();
@@ -305,7 +307,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
  }
  
  function rectStyle(rect: TreemapRect): React.CSSProperties {
-@@ -283,9 +305,10 @@ function normalizeRows<TRow, TSubgroup, TLeaf, TSegment>(
+@@ -283,9 +307,10 @@ function normalizeRows<TRow, TSubgroup, TLeaf, TSegment>(
            ),
          }))
          .filter((subgroup) =>
@@ -319,7 +321,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
          );
        return { ...row, subgroups };
      })
-@@ -340,12 +363,12 @@ function DefaultTooltip<TRow, TSubgroup, TLeaf, TSegment>({
+@@ -340,12 +365,12 @@ function DefaultTooltip<TRow, TSubgroup, TLeaf, TSegment>({
            label,
            color: index === 0 ? context.row.color : undefined,
          }))}
@@ -334,11 +336,12 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
            color: segment.color,
            share:
              segment.value >= 0 && context.leaf.value > 0
-@@ -375,9 +398,13 @@ export function GroupedTreemap<
+@@ -375,9 +400,14 @@ export function GroupedTreemap<
    search,
    searchAccessory,
    yearControl,
 +  filterControls,
++  leadingControls,
    controls,
 +  controlsClassName,
    secondaryControls,
@@ -348,7 +351,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
    footer,
    rowLabelSpace = 0,
    showRowLabels = true,
-@@ -398,6 +425,8 @@ export function GroupedTreemap<
+@@ -398,6 +428,8 @@ export function GroupedTreemap<
    leafValueMinHeight,
  }: GroupedTreemapProps<TRow, TSubgroup, TLeaf, TSegment>) {
    const componentId = React.useId();
@@ -357,7 +360,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
    const [containerRef, size] = useElementSize<HTMLDivElement>();
    const [activeTooltip, setActiveTooltip] = React.useState<{
      key: string;
-@@ -517,6 +546,43 @@ export function GroupedTreemap<
+@@ -517,6 +549,43 @@ export function GroupedTreemap<
      [formatValue, renderTooltip, interactiveTooltip],
    );
  
@@ -401,7 +404,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
    return (
      <ChartFrame
        className={className}
-@@ -524,10 +590,13 @@ export function GroupedTreemap<
+@@ -524,10 +593,14 @@ export function GroupedTreemap<
        header={
          !hideHeader && (
            <>
@@ -411,11 +414,12 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
 +              controlsClassName={controlsClassName}
                controls={
                  <>
++                  {leadingControls}
 +                  {viewControl}
                    {controls}
                    {searchAccessory}
                  </>
-@@ -545,7 +614,7 @@ export function GroupedTreemap<
+@@ -545,7 +618,7 @@ export function GroupedTreemap<
                      }
                      showClear
                      onClear={() => search.onChange("")}
@@ -424,7 +428,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
                    />
                  ) : undefined
                }
-@@ -555,6 +624,10 @@ export function GroupedTreemap<
+@@ -555,6 +628,10 @@ export function GroupedTreemap<
          )
        }
      >
@@ -435,7 +439,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
        <div
          ref={containerRef}
          className={cn(
-@@ -593,6 +666,10 @@ export function GroupedTreemap<
+@@ -593,6 +670,10 @@ export function GroupedTreemap<
                        style={{
                          insetInlineStart: rowLayout.rect.x,
                          top: rowLayout.rect.y,
@@ -446,7 +450,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
                          minHeight: rowLabelSpace || undefined,
                          color:
                            row.labelColor ?? row.color ?? "var(--color-un-blue)",
-@@ -610,7 +687,7 @@ export function GroupedTreemap<
+@@ -610,7 +691,7 @@ export function GroupedTreemap<
                        />
                        {row.label}{" "}
                        <span className="font-normal tabular-nums">
@@ -455,7 +459,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
                            row.value ??
                              row.subgroups.reduce(
                                (sum, subgroup) =>
-@@ -650,7 +727,7 @@ export function GroupedTreemap<
+@@ -650,7 +731,7 @@ export function GroupedTreemap<
                            >
                              {subgroup.label}{" "}
                              <span className="font-normal tabular-nums">
@@ -464,7 +468,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
                                  subgroup.leaves.reduce(
                                    (sum, leaf) => sum + leaf.value,
                                    0,
-@@ -686,12 +763,12 @@ export function GroupedTreemap<
+@@ -686,12 +767,12 @@ export function GroupedTreemap<
                            const accessibleSegments = visibleSegments
                              .map(
                                (segment) =>
@@ -479,7 +483,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
                              accessibleSegments || null,
                              leaf.accessibleDescription?.trim() || null,
                            ]
-@@ -815,15 +892,17 @@ export function GroupedTreemap<
+@@ -815,15 +896,17 @@ export function GroupedTreemap<
                                  className={cn(
                                    "pointer-events-none absolute inset-0 z-[1] shadow-[inset_0_0_0_0.5px_rgba(255,255,255,0.8)]",
                                    leaf.onActivate &&
@@ -504,7 +508,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
                                />
                                {canShowLabel && (
                                  <span
-@@ -850,7 +929,7 @@ export function GroupedTreemap<
+@@ -850,7 +933,7 @@ export function GroupedTreemap<
                                              : "truncate",
                                          )}
                                        >
@@ -513,7 +517,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
                                        </span>
                                      ) : null}
                                    </span>
-@@ -902,6 +981,7 @@ export function GroupedTreemap<
+@@ -902,6 +985,7 @@ export function GroupedTreemap<
                );
              })}
        </div>

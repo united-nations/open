@@ -192,6 +192,48 @@ export function personnelPyramidWidths(
 
 export type PersonnelCompositionTrendKind = "gender" | "age" | "tenure";
 
+type PersonnelTrendScope = string | readonly string[];
+
+/** A missing organization-year does not contribute to a group's reported total. */
+export function personnelTrendHeadcount(
+  row: PersonnelTrendsData["years"][number],
+  scope: PersonnelTrendScope,
+) {
+  if (typeof scope === "string")
+    return scope === "all" ? row.total : (row.organizations[scope] ?? null);
+
+  const counts = scope
+    .map((organization) => row.organizations[organization])
+    .filter((count) => count !== undefined);
+  return counts.length
+    ? counts.reduce((total, count) => total + count, 0)
+    : null;
+}
+
+function personnelTrendGender(
+  row: PersonnelTrendsData["years"][number],
+  scope: PersonnelTrendScope,
+) {
+  if (typeof scope === "string")
+    return scope === "all"
+      ? { female: row.female, male: row.male, unknown: row.unknown }
+      : row.genderByOrganization[scope];
+
+  const counts = scope
+    .map((organization) => row.genderByOrganization[organization])
+    .filter((count) => count !== undefined);
+  return counts.length
+    ? counts.reduce(
+        (total, count) => ({
+          female: total.female + count.female,
+          male: total.male + count.male,
+          unknown: total.unknown + count.unknown,
+        }),
+        { female: 0, male: 0, unknown: 0 },
+      )
+    : undefined;
+}
+
 export interface PersonnelCompositionTrendPoint {
   year: number;
   total: number | null;
@@ -223,7 +265,7 @@ function personnelBandOrder(label: string) {
 export function personnelCompositionTrend(
   data: PersonnelTrendsData,
   kind: PersonnelCompositionTrendKind,
-  org: string,
+  scope: PersonnelTrendScope,
 ) {
   const labels =
     kind === "gender"
@@ -264,9 +306,7 @@ export function personnelCompositionTrend(
   const points: PersonnelCompositionTrendPoint[] = data.years.map((row) => {
     const distribution: Record<string, number> | undefined =
       kind === "gender"
-        ? org === "all"
-          ? { female: row.female, male: row.male, unknown: row.unknown }
-          : row.genderByOrganization[org]
+        ? personnelTrendGender(row, scope)
         : kind === "age"
           ? row.ageBands
           : row.tenureBands;

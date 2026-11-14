@@ -35,15 +35,15 @@ try {
   await page.goto(portalUrl, { waitUntil: "networkidle" });
   assert.equal(
     (await page.locator('a[href$="/system/personnel/"]').count()) > 0,
-    flags.personnel,
+    false,
   );
   const personnelResponse = await page.goto(portalUrl + "/system/personnel/", {
     waitUntil: "networkidle",
   });
   assert.equal(
     personnelResponse.status(),
-    flags.personnel ? 200 : 404,
-    "Personnel is full-only",
+    404,
+    "The separate Personnel route is removed",
   );
   await page.goto(portalUrl, { waitUntil: "networkidle" });
   for (const [feature, route] of Object.entries(routes)) {

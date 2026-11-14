@@ -142,10 +142,12 @@ function PageMethodologyLink({
   href,
   extracted = false,
   extractionText,
+  description,
 }: {
   href: string;
   extracted?: boolean;
   extractionText?: string;
+  description?: string;
 }) {
   return (
     <PageBody
@@ -157,7 +159,7 @@ function PageMethodologyLink({
         About the data
       </SectionHeading>
       <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-600">
-        See where the data comes from and how we present it.
+        {description ?? "See where the data comes from and how we present it."}
       </p>
       <Link
         href={href}
@@ -179,20 +181,23 @@ function PageMethodologyLink({
 
 export function CebMethodologyLink({
   extractedOutstanding = false,
+  personnel = false,
 }: {
   extractedOutstanding?: boolean;
+  personnel?: boolean;
 }) {
   return (
     <PageMethodologyLink
       href="/about/#ceb-methodology"
       extracted={extractedOutstanding}
+      description={
+        personnel
+          ? "This page uses CEB Financial Statistics and CEB Human Resources Statistics."
+          : undefined
+      }
       extractionText="Only the reported outstanding balances on this page were automatically extracted from CEB’s financial-situation reports and are not authoritative. Consult the original reports for official figures."
     />
   );
-}
-
-export function PersonnelMethodologyLink() {
-  return <PageMethodologyLink href="/about/#personnel-methodology" />;
 }
 
 export function UninfoMethodology() {

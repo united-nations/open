@@ -1,14 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import {
   GroupedTreemap,
   type GroupedTreemapRow,
 } from "@un-eosg/ui/components/grouped-treemap";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
-import { ChartHeading } from "@/components/ContentHeading";
 import { ChartFooter } from "@/components/ChartFooter";
-import { PersonnelScaleLegend } from "@/components/PersonnelScaleLegend";
 import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 import {
   createUncategorizedEntity,
@@ -29,38 +27,20 @@ type PersonnelTile = {
 export function PersonnelTreemap({
   data,
   metadata,
-  org,
   onOpen,
   onOpenEntity,
   yearControl,
-  organizationControl,
+  controls,
 }: {
   data: PersonnelData;
   metadata: Entity[];
-  org: string;
   onOpen: (org: string) => void;
   onOpenEntity: (entity: string) => void;
   yearControl: React.ReactNode;
-  organizationControl: React.ReactNode;
+  controls?: React.ReactNode;
 }) {
   const [query, setQuery] = useState("");
-  const container = useRef<HTMLElement>(null);
-  const [plotSize, setPlotSize] = useState({ width: 0, height: 0 });
-  useEffect(() => {
-    const plot = container.current?.querySelector(".personnel-treemap-plot");
-    if (!plot) return;
-    const observer = new ResizeObserver(([entry]) => {
-      setPlotSize({
-        width: entry.contentRect.width,
-        height: entry.contentRect.height,
-      });
-    });
-    observer.observe(plot);
-    return () => observer.disconnect();
-  }, []);
-  const organizations = data.organizations.filter(
-    (item) => org === "all" || item.org === org,
-  );
+  const organizations = data.organizations;
   const available = organizations.length > 0;
   const entityFor = (code: string) =>
     normalizeEntityForDisplay(
@@ -147,13 +127,16 @@ export function PersonnelTreemap({
     .reduce((sum, item) => sum + item.count, 0);
   const secretariat = organizations.find((item) => item.sourceOrg === "UN");
   return (
-    <section ref={container} className="space-y-3" id="personnel-organizations">
-      <ChartHeading>People across the UN System</ChartHeading>
+    <section
+      aria-label="Staff by organization"
+      className="space-y-3"
+      id="personnel-organizations"
+    >
       <GroupedTreemap<string, string, PersonnelTile>
         yearControl={yearControl}
-        controls={organizationControl}
+        leadingControls={controls}
         rows={rows}
-        plotClassName={`${SYSTEM_TREEMAP_HEIGHT_CLASS} personnel-treemap-plot`}
+        plotClassName={SYSTEM_TREEMAP_HEIGHT_CLASS}
         layout={{ rowGap: 0, subgroupGap: 0, leafGap: 0 }}
         totalLabel="Staff"
         showLeafValues
@@ -188,7 +171,7 @@ export function PersonnelTreemap({
             className="flex h-full items-center justify-center text-sm text-gray-600"
           >
             {!available
-              ? `${org === "all" ? "Personnel data is" : `${org} personnel data is`} unavailable for ${data.year}.`
+              ? `Personnel data is unavailable for ${data.year}.`
               : query.trim()
                 ? "No organizations or UN entities match this search."
                 : "No staff are recorded for this selection."}
@@ -196,22 +179,7 @@ export function PersonnelTreemap({
         }
         footer={
           available && matchingTotal > 0 ? (
-            <>
-              <ChartFooter hint="Click on an organization, department or mission to explore its personnel" />
-              <details
-                className="mt-3 text-xs text-gray-600"
-                data-personnel-scale-expander
-              >
-                <summary className="w-fit cursor-pointer underline underline-offset-2">
-                  Understand the people scale
-                </summary>
-                <PersonnelScaleLegend
-                  total={matchingTotal}
-                  plotWidth={plotSize.width}
-                  plotHeight={plotSize.height}
-                />
-              </details>
-            </>
+            <ChartFooter hint="Click on an organization, department or mission to explore its personnel" />
           ) : undefined
         }
         renderTooltip={({ leaf, row }) => (

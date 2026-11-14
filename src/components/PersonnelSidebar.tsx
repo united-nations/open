@@ -33,6 +33,8 @@ export function PersonnelSidebar({
   onClose,
   onOpenSecretariat,
   onRestoreFocus,
+  organizationCodes,
+  scopeLabel,
 }: {
   data: PersonnelData;
   selectedYear: number;
@@ -43,8 +45,10 @@ export function PersonnelSidebar({
   years: number[];
   onYearChange: (year: number) => void;
   onClose: () => void;
-  onOpenSecretariat: () => void;
+  onOpenSecretariat?: () => void;
   onRestoreFocus: () => void;
+  organizationCodes?: readonly string[];
+  scopeLabel?: string;
 }) {
   const organization =
     detail.kind === "org"
@@ -52,10 +56,12 @@ export function PersonnelSidebar({
       : null;
   const geography =
     detail.kind === "duty" ? data.dutyStations : data.nationalities;
+  const inScope = (org: string) =>
+    organizationCodes
+      ? organizationCodes.includes(org)
+      : detail.scope === "all" || org === detail.scope;
   const records = geography.filter(
-    (item) =>
-      item.iso3 === detail.key &&
-      (detail.scope === "all" || item.org === detail.scope),
+    (item) => item.iso3 === detail.key && inScope(item.org),
   );
   const entity =
     detail.kind === "entity"
@@ -163,9 +169,7 @@ export function PersonnelSidebar({
                       data.dutyStations
                         .filter(
                           (item) =>
-                            item.iso3 === detail.key &&
-                            (detail.scope === "all" ||
-                              item.org === detail.scope),
+                            item.iso3 === detail.key && inScope(item.org),
                         )
                         .map((item) => ({
                           label: item.station,
@@ -203,7 +207,7 @@ export function PersonnelSidebar({
                 ? "Reported UN Secretariat entity"
                 : detail.kind === "org"
                   ? "CEB personnel statistics"
-                  : `${detail.kind === "duty" ? "Country of duty station" : "Nationality"} · ${detail.scope === "all" ? "All organizations" : detail.scope}`
+                  : `${detail.kind === "duty" ? "Country of duty station" : "Nationality"} · ${scopeLabel ?? (detail.scope === "all" ? "All organizations" : detail.scope)}`
             }
             className="sm:w-full"
             yearSelectorPlacement="header"

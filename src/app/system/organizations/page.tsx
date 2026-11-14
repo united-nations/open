@@ -1,10 +1,11 @@
 import { RelatedDataPages } from "@/components/RelatedDataPages";
-import { SystemPageSources } from "@/components/PageSources";
+import { PageSourceLink, SystemPageSources } from "@/components/PageSources";
 import type { Metadata } from "next";
 import Link from "next/link";
-import { EntitiesTreemap } from "@/components/EntitiesTreemap";
+import { OrganizationsOverview } from "@/components/OrganizationsOverview";
 import { SystemFlows } from "@/components/SystemFlows";
 import { EntityTrendsChart } from "@/components/EntityTrendsChart";
+import { PersonnelWorkforceTrendsChart } from "@/components/PersonnelWorkforceTrendsChart";
 import { CebMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
@@ -12,20 +13,32 @@ import { PageHeading } from "@/components/PageHeading";
 export const metadata: Metadata = {
   title: "UN System Organizations",
   description:
-    "Explore UN System organizations’ revenue and expenditure, including revenue sources and expenditure breakdowns.",
+    "Explore UN System organizations’ revenue and expenditure, including revenue sources, expenditure breakdowns, and staffing.",
 };
 
 export default function SystemOrganizationsPage() {
   return (
     <>
       <PageHeading
-        sources={<SystemPageSources />}
+        sources={
+          <>
+            <SystemPageSources /> Staff data comes from{" "}
+            <PageSourceLink source="personnel" />. See the{" "}
+            <Link
+              href="/about/#personnel-methodology"
+              className="underline underline-offset-2"
+            >
+              personnel methodology
+            </Link>
+            .
+          </>
+        }
         id="entities"
-        title="Which organizations are funded?"
-        description="The UN System comprises specialized agencies, funds, programmes, and the UN Secretariat with its departments, offices, and peacekeeping missions. Explore each organization’s revenue and expenditure, including revenue sources and expenditure breakdowns."
+        title="How are UN organizations funded and staffed?"
+        description="The UN System comprises specialized agencies, funds, programmes, and the UN Secretariat with its departments, offices, and peacekeeping missions. Explore each organization’s revenue, expenditure, and reported staff."
       />
       <PageBody>
-        <EntitiesTreemap>
+        <OrganizationsOverview>
           <p>
             The chart groups organizations using the official{" "}
             <a href="https://sdgs.un.org/sites/default/files/2025-05/un_system_chart.pdf">
@@ -62,13 +75,16 @@ export default function SystemOrganizationsPage() {
             figures for individual departments, offices, peacekeeping operations
             and special political missions.
           </p>
-        </EntitiesTreemap>
+        </OrganizationsOverview>
         <div className="mt-12">
           <EntityTrendsChart />
         </div>
+        <div className="mt-12 grid gap-8 lg:grid-cols-2 lg:gap-6">
+          <PersonnelWorkforceTrendsChart />
+        </div>
         <SystemFlows />
       </PageBody>
-      <CebMethodologyLink />
+      <CebMethodologyLink personnel />
       <RelatedDataPages page="/system/organizations" />
     </>
   );
