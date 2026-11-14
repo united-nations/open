@@ -7,14 +7,24 @@ export type SectionNavItem = {
   aliases?: readonly string[];
 };
 
+export const SYSTEM_CONTRIBUTORS_PATH = "/system/contributors";
+export const SYSTEM_ASSESSMENTS_PATH = `${SYSTEM_CONTRIBUTORS_PATH}/assessments`;
+export const SYSTEM_CONTRIBUTOR_NAV = [
+  { href: SYSTEM_CONTRIBUTORS_PATH, label: "Overview" },
+  { href: SYSTEM_ASSESSMENTS_PATH, label: "Assessed Contributions" },
+] as const satisfies readonly SectionNavItem[];
+
 export const SYSTEM_NAV = [
   {
     href: "/system/organizations",
     label: "Organizations",
     aliases: ["/system"],
   },
-  { href: "/system/contributors", label: "Contributors" },
-  { href: "/system/assessments", label: "Assessments" },
+  {
+    href: SYSTEM_CONTRIBUTORS_PATH,
+    label: "Contributors",
+    aliases: [SYSTEM_ASSESSMENTS_PATH],
+  },
   { href: "/system/locations", label: "Locations" },
   { href: "/system/functions", label: "Functions" },
   { href: "/system/goals", label: "Goals" },

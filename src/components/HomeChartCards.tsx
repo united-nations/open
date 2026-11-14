@@ -13,6 +13,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { LINK_DESCRIPTIONS } from "@/components/SectionLinkCards";
 import { getSystemGroupingStyle } from "@/lib/systemGroupings";
+import { SYSTEM_ASSESSMENTS_PATH } from "@/lib/navigation";
 import {
   layoutGroups,
   squarifyDense,
@@ -308,7 +309,7 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
         })),
       },
     },
-    "/system/assessments": {
+    [SYSTEM_ASSESSMENTS_PATH]: {
       bands: "entities",
       tiles: assessmentPreviewTiles(assessments),
     },

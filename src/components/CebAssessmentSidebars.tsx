@@ -8,6 +8,7 @@ import { useYearResource } from "@/hooks/useYearResource";
 import { CEB_ASSESSMENTS_HASH, loadCebAssessments } from "@/lib/cebAssessments";
 import { loadCebAssessmentOutstanding } from "@/lib/cebAssessmentOutstanding";
 import { loadStaticData } from "@/lib/data";
+import { SYSTEM_ASSESSMENTS_PATH } from "@/lib/navigation";
 import {
   createUncategorizedEntity,
   normalizeEntityForDisplay,
@@ -19,7 +20,7 @@ type Selection =
   | { kind: "contributor"; id: string; year: number }
   | { kind: "entity"; entity: Entity; year: number };
 
-/** Use the existing detail panels without leaving the Assessments tab. */
+/** Use the existing detail panels in the Assessed Contributions view. */
 export function CebAssessmentSidebars() {
   const ranges = useYearRanges();
   const [contributorLink, setContributorLink] = useDeepLink({
@@ -114,7 +115,7 @@ export function CebAssessmentSidebars() {
       if (
         window.location.pathname
           .replace(/\/+$/, "")
-          .endsWith("/system/assessments") &&
+          .endsWith(SYSTEM_ASSESSMENTS_PATH) &&
         window.location.hash.startsWith(prefix) &&
         decodeURIComponent(window.location.hash.slice(prefix.length)) ===
           expected

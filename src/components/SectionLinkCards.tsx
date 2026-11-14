@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { SYSTEM_ASSESSMENTS_PATH } from "@/lib/navigation";
 
 export const LINK_DESCRIPTIONS: Record<string, string> = {
   "/system/organizations": "Revenue and expenditure across UN organizations.",
   "/system/contributors": "Who funds the UN System, and how.",
-  "/system/assessments":
+  [SYSTEM_ASSESSMENTS_PATH]:
     "Assessments payable, payments received and outstanding balances.",
   "/system/locations": "Where funds are spent, by country and region.",
   "/system/functions": "Expenditure across the four UN System functions.",

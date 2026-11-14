@@ -79,7 +79,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <PageBody className="md:py-16">
+      <CebMethodologyLink />
+      <PageBody className="pt-0 md:pb-16">
         <h2 className="mb-8 text-2xl font-bold text-gray-900">
           Further Resources
         </h2>
@@ -122,7 +123,6 @@ export default function HomePage() {
           />
         </div>
       </PageBody>
-      <CebMethodologyLink />
     </>
   );
 }

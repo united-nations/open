@@ -7,7 +7,7 @@ const profile = profiles[process.env.SITE_VARIANT ?? "public"];
 const routes = [
   "/system/organizations/",
   "/system/contributors/",
-  "/system/assessments/",
+  "/system/contributors/assessments/",
   "/system/locations/",
   "/system/functions/",
   "/system/goals/",
@@ -120,7 +120,7 @@ try {
     }
   }
   await page.setViewportSize({ width: 390, height: 844 });
-  for (const route of ["/system/assessments/", "/secretariat/"]) {
+  for (const route of ["/system/contributors/assessments/", "/secretariat/"]) {
     await page.goto(`${portalUrl}${route}`, { waitUntil: "networkidle" });
     assert.ok(
       await page.evaluate(

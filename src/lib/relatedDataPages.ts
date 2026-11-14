@@ -1,4 +1,11 @@
-import { isRouteEnabled, SECRETARIAT_NAV, SYSTEM_NAV } from "@/lib/navigation";
+import {
+  isRouteEnabled,
+  SECRETARIAT_NAV,
+  SYSTEM_ASSESSMENTS_PATH,
+  SYSTEM_CONTRIBUTORS_PATH,
+  SYSTEM_CONTRIBUTOR_NAV,
+  SYSTEM_NAV,
+} from "@/lib/navigation";
 
 type RelatedGroup = {
   heading: string;
@@ -6,8 +13,8 @@ type RelatedGroup = {
 };
 
 const organizations = "/system/organizations";
-const contributors = "/system/contributors";
-const assessments = "/system/assessments";
+const contributors = SYSTEM_CONTRIBUTORS_PATH;
+const assessments = SYSTEM_ASSESSMENTS_PATH;
 const overview = "/secretariat";
 const programme = "/secretariat/programme-budget";
 const peacekeeping = "/secretariat/peacekeeping-budget";
@@ -101,9 +108,11 @@ export function relatedDataGroups(page: string) {
         const parent = isContributorPage
           ? href.slice(0, -"/contributors".length)
           : href;
-        const item = [...SYSTEM_NAV, ...SECRETARIAT_NAV].find(
-          (item) => item.href === href,
-        );
+        const item = [
+          ...SYSTEM_NAV,
+          ...SYSTEM_CONTRIBUTOR_NAV,
+          ...SECRETARIAT_NAV,
+        ].find((item) => item.href === href);
         const parentItem = SECRETARIAT_NAV.find((item) => item.href === parent);
         const label = item?.label ?? parentItem?.label ?? "Peace Operations";
         return {

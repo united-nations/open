@@ -2,24 +2,20 @@ import assert from "node:assert/strict";
 import { chromium, devices } from "playwright";
 import { browserOptions, portalUrl } from "./helpers.mjs";
 
-async function assertSidebarPosition(section) {
-  const position = await section.evaluate((el) => {
-    const content = el.closest(".sidebar-scroll-content");
-    return {
-      scroll: content.scrollTop,
-      max: content.scrollHeight - content.clientHeight,
-      delta:
-        el.getBoundingClientRect().top - content.getBoundingClientRect().top,
-    };
-  });
-  assert.ok(
-    position.scroll > 0,
-    "Sidebar content should scroll to assessments",
-  );
-  assert.ok(
-    position.delta >= 0 &&
-      (position.delta < 55 || Math.abs(position.scroll - position.max) < 3),
-    `Section should be near panel top: ${JSON.stringify(position)}`,
+async function assertSidebarPosition(page, section) {
+  await page.waitForFunction(
+    (el) => {
+      const content = el.closest(".sidebar-scroll-content");
+      const delta =
+        el.getBoundingClientRect().top - content.getBoundingClientRect().top;
+      const max = content.scrollHeight - content.clientHeight;
+      return (
+        content.scrollTop > 0 &&
+        delta >= 0 &&
+        (delta < 55 || Math.abs(content.scrollTop - max) < 3)
+      );
+    },
+    await section.elementHandle(),
   );
 }
 
@@ -42,18 +38,42 @@ try {
         },
       }),
     );
-    await page.goto(`${portalUrl}/system/assessments/`, {
+    await page.goto(`${portalUrl}/system/contributors/`, {
       waitUntil: "networkidle",
     });
     const nav = page.getByRole("navigation", {
       name: "UN System financials",
       exact: true,
     });
-    const labels = await nav.getByRole("link").allTextContents();
+    const contributors = nav.getByRole("link", {
+      name: "Contributors",
+      exact: true,
+    });
+    const subnav = page.getByRole("navigation", {
+      name: "UN System contributor views",
+      exact: true,
+    });
+    assert.deepEqual(await subnav.getByRole("link").allTextContents(), [
+      "Overview",
+      "Assessed Contributions",
+    ]);
     assert.equal(
-      labels.indexOf("Assessments"),
-      labels.indexOf("Contributors") + 1,
+      await nav.locator('a[href="/system/contributors/assessments/"]').count(),
+      0,
     );
+    const overview = subnav.getByRole("link", {
+      name: "Overview",
+      exact: true,
+    });
+    const assessments = subnav.getByRole("link", {
+      name: "Assessed Contributions",
+      exact: true,
+    });
+    assert.equal(await overview.getAttribute("aria-current"), "page");
+    await assessments.click();
+    await page.waitForURL(`${portalUrl}/system/contributors/assessments/`);
+    assert.equal(await assessments.getAttribute("aria-current"), "page");
+    assert.equal(await contributors.getAttribute("aria-current"), "page");
     const chart = page.getByRole("region", {
       name: "Assessed contributions and payments",
       exact: true,
@@ -224,10 +244,12 @@ try {
           ),
       ),
     );
-    await page.waitForTimeout(500);
-    await assertSidebarPosition(assessment);
+    await assertSidebarPosition(page, assessment);
     assert.ok(Math.abs((await page.evaluate(() => scrollY)) - before) < 4);
-    assert.equal(new URL(page.url()).pathname, "/system/assessments/");
+    assert.equal(
+      new URL(page.url()).pathname,
+      "/system/contributors/assessments/",
+    );
     await dialog
       .getByRole("button", { name: "Select year", exact: true })
       .click();
@@ -247,7 +269,7 @@ try {
       .getByRole("button", { name: "Copy link to clipboard", exact: true })
       .click();
     const share = await page.evaluate(() => window.copiedSidebarLink);
-    assert.ok(share.includes("/system/assessments/#assessment="));
+    assert.ok(share.includes("/system/contributors/assessments/#assessment="));
     assert.ok(share.endsWith("%402023"));
     await page.goto(share, { waitUntil: "networkidle" });
     await page
@@ -284,8 +306,8 @@ try {
           ),
       ),
     );
-    await page.waitForTimeout(500);
     await assertSidebarPosition(
+      page,
       page
         .getByRole("dialog")
         .getByRole("region", { name: "Assessments and payments", exact: true }),
@@ -360,9 +382,9 @@ try {
     }
     assert.equal(
       await note
-        .getByRole("link", { name: "Assessments", exact: true })
+        .getByRole("link", { name: "Assessed Contributions", exact: true })
         .getAttribute("href"),
-      "/system/assessments/",
+      "/system/contributors/assessments/",
     );
     if (route === "organizations") {
       await page
@@ -376,7 +398,7 @@ try {
     }
   }
   await page.goto(
-    `${portalUrl}/system/assessments/#assessment=C01%3ACN%402023`,
+    `${portalUrl}/system/contributors/assessments/#assessment=C01%3ACN%402023`,
     { waitUntil: "networkidle" },
   );
   await page
@@ -399,19 +421,22 @@ try {
     "2023",
   );
   await page.goto(`${portalUrl}/`, { waitUntil: "networkidle" });
-  const assessmentCard = page
-    .locator('a[href="/system/assessments/"]')
-    .filter({ hasText: "Assessments payable" });
-  assert.equal(await assessmentCard.count(), 1);
-  assert.ok((await assessmentCard.locator("svg rect").count()) > 100);
-  assert.ok((await assessmentCard.locator("svg rect[stroke]").count()) > 0);
-  assert.ok(
-    (await assessmentCard
-      .locator('svg rect[fill="var(--color-gray-400)"]')
-      .count()) > 0,
+  assert.equal(
+    await page.locator('a[href="/system/contributors/assessments/"]').count(),
+    0,
+    "The homepage lists main tabs only",
+  );
+  await page.locator('a[href="/system/contributors/"]').waitFor();
+  assert.equal(
+    await page
+      .locator("[data-page-references] + section")
+      .getByRole("heading", { name: "Further Resources", exact: true })
+      .count(),
+    1,
+    "About the data appears before Further Resources",
   );
   console.log(
-    "Dedicated Assessments tab: navigation, layout, contextual combined sidebars, year-specific share links, preserved scroll, mobile fit and links from revenue pages passed.",
+    "Assessed Contributions: contributor subtabs, layout, contextual combined sidebars, year-specific share links, preserved scroll, mobile fit and links from revenue pages passed.",
   );
 } finally {
   await browser.close();

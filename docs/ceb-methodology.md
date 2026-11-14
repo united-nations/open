@@ -71,7 +71,7 @@ implementation inventory.
 
 ## Assessments and receipts workbook
 
-The System Assessments tab includes the separately sourced
+The UN System's Contributors → Assessed Contributions view includes the separately sourced
 [CEB assessments and receipts workbook](https://unsceb.org/assessments-voted-assessments-received-current-year-and-prior-years-assessments-received/).
 The exporter reads the Data sheet and preserves all financial observations,
 including repeated organization–contributor rows, signed amounts, zeroes and
@@ -106,12 +106,12 @@ one member's overpayment cannot offset another member's unknown payment status.
 Organization totals and trends are not calculated by reconciling these
 assessments against the separate CEB revenue series.
 
-The Assessments tab contains a full-width contributor treemap followed by a
+The Assessed Contributions view contains a full-width contributor treemap followed by a
 full-width organization treemap, with a system-wide payment trend and reported
 outstanding balances in two columns below. Organizations and Contributors
-retain the revenue views and link to Assessments with a note that assessed
+retain the revenue views and link to Assessed Contributions with a note that assessed
 revenue is recognized in organizations' accounts and can include unpaid amounts.
-The new tab reuses the existing combined sidebars in place; assessment details
+The view reuses the existing combined sidebars in place; assessment details
 are scrolled into view inside the panel when opened there, with the same section
 order and broader financial information as on the other tabs. Contributor and
 entity hashes include the selected year, so sharing or
@@ -133,7 +133,7 @@ These are organization-level stocks of uncollected assessed contributions for
 current and prior years, in full nominal US dollars. They are not annual
 assessments less annual receipts, and they do not identify member-state debts.
 They remain separate from the annual assessments-and-receipts dataset. The
-Assessments tab shows these as a separate ranked bar chart beside the annual
+Assessed Contributions view shows these as a separate ranked bar chart beside the annual
 payment trend, below the organization treemap. Each organization sidebar
 shows the selected reported balance and its history. The overview keeps dates
 in tooltips; sidebars show them next to the balance. The chart reuses the

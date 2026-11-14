@@ -11,7 +11,7 @@ const enabled = (route) =>
   );
 const organizations = "/system/organizations";
 const contributors = "/system/contributors";
-const assessments = "/system/assessments";
+const assessments = "/system/contributors/assessments";
 const overview = "/secretariat";
 const programme = "/secretariat/programme-budget";
 const peacekeeping = "/secretariat/peacekeeping-budget";

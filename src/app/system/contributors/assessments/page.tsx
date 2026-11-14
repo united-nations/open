@@ -10,9 +10,10 @@ import { CebSystemAssessmentTrends } from "@/components/CebAssessmentTrendsChart
 import { CebAssessmentOutstandingChart } from "@/components/CebAssessmentOutstandingChart";
 import { CebAssessmentSidebars } from "@/components/CebAssessmentSidebars";
 import { CEB_ASSESSMENTS_SECTION } from "@/lib/cebAssessments";
+import { SYSTEM_ASSESSMENTS_PATH } from "@/lib/navigation";
 
 export const metadata: Metadata = {
-  title: "UN System Assessments",
+  title: "UN System Assessed Contributions",
   description:
     "Explore assessments payable, payments received and reported outstanding balances by contributor and UN organization.",
 };
@@ -68,7 +69,7 @@ export default function SystemAssessmentsPage() {
         </section>
       </PageBody>
       <CebMethodologyLink extractedOutstanding />
-      <RelatedDataPages page="/system/assessments" />
+      <RelatedDataPages page={SYSTEM_ASSESSMENTS_PATH} />
     </>
   );
 }

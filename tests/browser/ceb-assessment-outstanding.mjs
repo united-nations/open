@@ -9,7 +9,7 @@ try {
   });
   const errors = [];
   page.on("pageerror", (error) => errors.push(error.message));
-  await page.goto(`${portalUrl}/system/assessments/`, {
+  await page.goto(`${portalUrl}/system/contributors/assessments/`, {
     waitUntil: "networkidle",
   });
   const chart = page.getByRole("region", {
@@ -53,9 +53,12 @@ try {
   assert.match(page.url(), /#entity=ISA%402020%40outstanding$/);
   assert.equal(await outstanding.locator("details").getAttribute("open"), null);
 
-  await page.goto(`${portalUrl}/system/assessments/#entity=UNCCD%402020`, {
-    waitUntil: "networkidle",
-  });
+  await page.goto(
+    `${portalUrl}/system/contributors/assessments/#entity=UNCCD%402020`,
+    {
+      waitUntil: "networkidle",
+    },
+  );
   await page
     .getByRole("dialog")
     .getByRole("heading", { name: "UNCCD", exact: true })
@@ -68,9 +71,12 @@ try {
   assert.match(page.url(), /#entity=UNCCD%402020$/);
 
   // A directory entry without any same-year financial observation remains invalid.
-  await page.goto(`${portalUrl}/system/assessments/#entity=ACABQ%402020`, {
-    waitUntil: "networkidle",
-  });
+  await page.goto(
+    `${portalUrl}/system/contributors/assessments/#entity=ACABQ%402020`,
+    {
+      waitUntil: "networkidle",
+    },
+  );
   await page.waitForFunction(() => location.hash === "");
   assert.equal(await page.getByRole("dialog").count(), 0);
   // Existing organization links retain access to the same combined sidebar.
