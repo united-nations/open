@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import {
   SHOW_ADDITIONAL_TRUST_FUNDS,
   SHOW_REGULAR_BUDGET_OUTSTANDING,
+  SHOW_UNINFO,
 } from "@/lib/featureFlags";
 import cebSource from "../../public/data/ceb-source.json";
 import cebMethodology from "../../data/ceb-methodology.json";
@@ -140,14 +141,12 @@ export function CebMethodology() {
 /** Data pages link to the central source and scope notes on About. */
 function PageMethodologyLink({
   href,
+  disclaimer,
   extracted = false,
-  extractionText,
-  description,
 }: {
   href: string;
+  disclaimer?: string;
   extracted?: boolean;
-  extractionText?: string;
-  description?: string;
 }) {
   return (
     <PageBody
@@ -158,9 +157,16 @@ function PageMethodologyLink({
       <SectionHeading id="about-the-data-heading">
         About the data
       </SectionHeading>
-      <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-600">
-        {description ?? "See where the data comes from and how we present it."}
-      </p>
+      {extracted ? (
+        <DataExtractionNotice
+          text={disclaimer}
+          className="max-w-3xl text-gray-600"
+        />
+      ) : (
+        <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-600">
+          {disclaimer ?? "See where the data comes from and how we present it."}
+        </p>
+      )}
       <Link
         href={href}
         className="mt-2 inline-flex items-center gap-1.5 text-sm font-medium text-un-blue-text underline underline-offset-2"
@@ -169,33 +175,37 @@ function PageMethodologyLink({
         Sources and methodology
         <ArrowRight className="size-4 shrink-0" aria-hidden="true" />
       </Link>
-      {extracted && (
-        <DataExtractionNotice
-          text={extractionText}
-          className="max-w-3xl text-gray-600"
-        />
-      )}
     </PageBody>
   );
 }
 
 export function CebMethodologyLink({
+  showDisclaimer = true,
   extractedOutstanding = false,
+  uninfo = false,
   personnel = false,
 }: {
+  showDisclaimer?: boolean;
   extractedOutstanding?: boolean;
+  uninfo?: boolean;
   personnel?: boolean;
 }) {
+  const sources = [
+    "CEB Financial Statistics",
+    ...(personnel ? ["CEB Human Resources Statistics"] : []),
+    ...(uninfo && SHOW_UNINFO ? ["UNINFO"] : []),
+  ];
+  const datasets = new Intl.ListFormat("en", { type: "conjunction" }).format(
+    sources,
+  );
+  const disclaimer = extractedOutstanding
+    ? "Assessments and payments are compiled from CEB Financial Statistics. Only the reported outstanding balances were automatically extracted from CEB’s financial-situation reports. The portal’s figures are not authoritative. Consult the original dataset and reports for official figures."
+    : `This page uses data from ${datasets}. The portal’s figures are not authoritative. Consult the cited sources for the original figures.`;
   return (
     <PageMethodologyLink
       href="/about/#ceb-methodology"
+      disclaimer={showDisclaimer ? disclaimer : undefined}
       extracted={extractedOutstanding}
-      description={
-        personnel
-          ? "This page uses CEB Financial Statistics and CEB Human Resources Statistics."
-          : undefined
-      }
-      extractionText="Only the reported outstanding balances on this page were automatically extracted from CEB’s financial-situation reports and are not authoritative. Consult the original reports for official figures."
     />
   );
 }
@@ -312,7 +322,18 @@ export function SecretariatMethodologyLink({
 }: {
   page: SecretariatMethodologyPage;
 }) {
-  return <PageMethodologyLink href={`/about/#secretariat-${page}`} extracted />;
+  const usesAnnualReport = page === "overview" || page === "peace-operations";
+  return (
+    <PageMethodologyLink
+      href={`/about/#secretariat-${page}`}
+      disclaimer={
+        usesAnnualReport
+          ? "This page uses the financial compilation prepared for the Secretary-General’s annual report. The portal’s figures are not authoritative. Consult the original budget and financial documents for official figures."
+          : undefined
+      }
+      extracted={!usesAnnualReport}
+    />
+  );
 }
 
 function SourceLink({

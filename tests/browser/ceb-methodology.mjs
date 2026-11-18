@@ -41,6 +41,17 @@ try {
         await page.locator("[data-extraction-disclaimer]").count(),
         0,
       );
+      const references = page.locator("[data-page-references]");
+      if (route !== "/") {
+        const notice = await references.innerText();
+        assert.match(notice, /uses data from CEB Financial Statistics/);
+        assert.match(notice, /figures are not authoritative/);
+        assert.equal(
+          notice.includes("UNINFO"),
+          flags.uninfo &&
+            ["/system/locations/", "/system/goals/"].includes(route),
+        );
+      }
       assert.equal(
         await page
           .getByRole("region", { name: "Notes published by CEB", exact: true })
@@ -79,6 +90,20 @@ try {
         await page.locator("[data-ceb-methodology]").waitFor();
       }
     } else {
+      const disclaimer = page.getByRole("region", {
+        name: "Disclaimer",
+        exact: true,
+      });
+      assert.match(
+        await disclaimer.innerText(),
+        /downloads is not authoritative/,
+      );
+      assert.equal(
+        await disclaimer
+          .getByRole("link", { name: "United Nations Terms of Use" })
+          .getAttribute("href"),
+        "https://www.un.org/en/about-us/terms-of-use",
+      );
       const sourceNotes = page.getByRole("button", {
         name: "Notes published by CEB",
         exact: true,
@@ -233,11 +258,13 @@ try {
     assert.equal(await section.count(), 1);
     assert.equal(
       await section.locator("[data-extraction-disclaimer]").count(),
-      1,
+      anchor === "overview" ? 0 : 1,
     );
     assert.match(
       await section.innerText(),
-      /automatically extracted.*not authoritative/s,
+      anchor === "overview"
+        ? /financial compilation.*not authoritative/s
+        : /automatically extracted.*not authoritative/s,
     );
     assert.equal(
       await page.locator("[data-secretariat-methodology]").count(),

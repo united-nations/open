@@ -22,7 +22,7 @@ import { isRouteEnabled } from "@/lib/navigation";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Sources, methodology and data processing for the UN Transparency Portal.",
+    "Sources, methodology and data disclaimer for the UN Transparency Portal.",
 };
 
 export default function AboutPage() {
@@ -281,6 +281,50 @@ export default function AboutPage() {
                 </ExpandableCard>
               </section>
             ))}
+          </div>
+        </section>
+        <section
+          id="disclaimer"
+          className="mt-8 scroll-mt-20 space-y-3 border-t border-gray-200 pt-4"
+          aria-labelledby="disclaimer-title"
+        >
+          <SectionHeading id="disclaimer-title" anchor="disclaimer">
+            Disclaimer
+          </SectionHeading>
+          <div className="space-y-3 text-sm leading-relaxed text-gray-600">
+            <p>
+              Data on this website and in its downloads is not authoritative. As
+              described in the methodology notes above, the portal compiles
+              existing datasets and automatically extracts figures from source
+              documents. Consult the original datasets and documents for
+              authoritative figures, definitions, methodology and limitations.
+            </p>
+            <p>
+              The portal provides data and visualizations as is, without
+              guarantees of accuracy, completeness or timeliness. Source data
+              may be revised, and reporting coverage and methods may vary by
+              source and year.
+            </p>
+            <p>
+              When reusing data, cite the original source and follow its terms
+              of use. Acknowledge the UN Transparency Portal when reusing its
+              charts or calculations.
+            </p>
+            <p>
+              Geographic names, designations and boundaries are shown for
+              reference, without implying a United Nations position on legal
+              status or boundaries, or any official endorsement or acceptance.
+            </p>
+            <p>
+              See the{" "}
+              <a
+                className="underline underline-offset-2"
+                href="https://www.un.org/en/about-us/terms-of-use"
+              >
+                United Nations Terms of Use
+              </a>
+              .
+            </p>
           </div>
         </section>
       </div>

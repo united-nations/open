@@ -27,7 +27,7 @@ export default function SystemGoalsPage() {
         <SDGsGrid />
         <SDGsTrendsChart />
       </PageBody>
-      <CebMethodologyLink />
+      <CebMethodologyLink uninfo />
     </>
   );
 }

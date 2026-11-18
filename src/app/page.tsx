@@ -84,7 +84,7 @@ export default function HomePage() {
             </div>
           </section>
 
-          <CebMethodologyLink />
+          <CebMethodologyLink showDisclaimer={false} />
         </>
       ) : (
         <PublicTeaser />

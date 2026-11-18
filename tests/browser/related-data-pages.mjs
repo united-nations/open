@@ -89,13 +89,18 @@ try {
       assert.ok(await group.locator("a").count(), "No orphaned group headings");
     assert.equal(
       await page.locator("[data-extraction-disclaimer]").count(),
-      route.startsWith("/secretariat") || route === assessments ? 1 : 0,
+      (route.startsWith("/secretariat") &&
+        route !== overview &&
+        route !== operations) ||
+        route === assessments
+        ? 1
+        : 0,
       route,
     );
     if (route === assessments)
       assert.match(
         await page.locator("[data-extraction-disclaimer]").innerText(),
-        /Only the reported outstanding balances/,
+        /Assessments and payments are compiled from CEB Financial Statistics\. Only the reported outstanding balances were automatically extracted/,
       );
     assert.equal(
       await page

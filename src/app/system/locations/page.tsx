@@ -38,7 +38,7 @@ export default function SystemLocationsPage() {
         <LocationsMap />
         <FunctionGeographyChart />
       </PageBody>
-      <CebMethodologyLink personnel />
+      <CebMethodologyLink uninfo personnel />
     </>
   );
 }
