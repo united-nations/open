@@ -1,0 +1,7 @@
+.diagram svg[role="group"] g[role="button"] > text {
+  font-size: calc(var(--text-xs) * var(--label-scale, 1));
+}
+
+.diagram svg[role="group"] g[role="button"] > text:first-of-type {
+  font-size: calc(var(--text-sm) * var(--label-scale, 1));
+}

@@ -19,6 +19,7 @@ const checkLabelLayout = async (section) => {
   const geometry = await section.locator("svg[role=group]").evaluate((svg) => ({
     x: svg.viewBox.baseVal.x,
     width: svg.viewBox.baseVal.width,
+    scale: svg.getScreenCTM().a,
     nodes: [...svg.querySelectorAll("g[role=button]")].map((node) => {
       const [label, amount] = node.querySelectorAll("text");
       const labelBox = label.getBBox();
@@ -34,6 +35,8 @@ const checkLabelLayout = async (section) => {
           labelBox.y + labelBox.height,
           amountBox.y + amountBox.height,
         ),
+        labelFontSize: Number.parseFloat(getComputedStyle(label).fontSize),
+        amountFontSize: Number.parseFloat(getComputedStyle(amount).fontSize),
       };
     }),
   }));
@@ -60,6 +63,17 @@ const checkLabelLayout = async (section) => {
     for (const node of geometry.nodes
       .filter((node) => node.column === column)
       .sort((a, b) => a.top - b.top)) {
+      for (const [actual, target] of [
+        [node.labelFontSize, 14],
+        [node.amountFontSize, 12],
+      ]) {
+        assert.ok(
+          Math.abs(
+            actual * geometry.scale - target * Math.min(1, geometry.scale),
+          ) < 0.2,
+          `Sankey labels retain the normal text scale: ${node.text}`,
+        );
+      }
       assert.ok(
         node.left >= geometry.x && node.right <= geometry.x + geometry.width,
         `Label stays inside chart: ${node.text}`,
@@ -223,8 +237,9 @@ try {
     const centers = (await selectorPositions()).map((position) =>
       Number.parseFloat(position.left),
     );
+    // CSSOM rounds the percentage positions when serializing them.
     assert.ok(
-      Math.abs(centers[1] - centers[0] - (centers[2] - centers[1])) < 0.00001,
+      Math.abs(centers[1] - centers[0] - (centers[2] - centers[1])) < 0.001,
       "Column selectors remain equally spaced",
     );
     assert.ok(

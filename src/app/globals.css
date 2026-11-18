@@ -99,7 +99,9 @@
   --color-open-system-category-funds-programmes: var(--color-faded-jade);
   --color-open-system-category-research-training: var(--color-dusty-gray);
   --color-open-system-category-specialized-agencies: var(--color-au-chico);
-  --color-open-system-category-related-organizations: var(--color-camouflage-green);
+  --color-open-system-category-related-organizations: var(
+    --color-camouflage-green
+  );
   --color-open-system-category-other-entities: var(--color-smoky);
   --color-open-system-category-neutral: var(--color-dusty-gray);
 
