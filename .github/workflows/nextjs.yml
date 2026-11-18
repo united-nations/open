@@ -47,6 +47,7 @@ jobs:
           node-version: "24"
           cache: pnpm
       - name: Setup Pages
+        id: pages
         uses: actions/configure-pages@v5
       - name: Restore cache
         uses: actions/cache@v4
@@ -60,6 +61,16 @@ jobs:
             ${{ runner.os }}-nextjs-${{ matrix.variant }}-${{ hashFiles('**/pnpm-lock.yaml') }}-
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
+      # Match the actual Pages URL (including /open on github.io). Preview and
+      # full are validation builds served at the root of the local test server.
+      - name: Configure deployment path
+        env:
+          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: |
+          if [ "$SITE_VARIANT" = "public" ]; then
+            echo "BASE_PATH=$PAGES_BASE_PATH" >> "$GITHUB_ENV"
+            echo "PORTAL_URL=http://127.0.0.1:8766$PAGES_BASE_PATH" >> "$GITHUB_ENV"
+          fi
       - name: Build with Next.js
         run: pnpm build
       - name: Verify feature availability
@@ -71,7 +82,15 @@ jobs:
         run: pnpm exec playwright install --with-deps chromium
       - name: Verify routes and UNINFO in browser
         run: |
-          python3 -m http.server 8766 --bind 127.0.0.1 --directory out > /tmp/portal-http.log 2>&1 &
+          # Mount the export under its deployment path, as Pages does.
+          static_root="$RUNNER_TEMP/portal-static"
+          mkdir -p "$static_root$(dirname "${BASE_PATH:-/}")"
+          if [ -n "${BASE_PATH:-}" ]; then
+            ln -s "$PWD/out" "$static_root$BASE_PATH"
+          else
+            static_root="$PWD/out"
+          fi
+          python3 -m http.server 8766 --bind 127.0.0.1 --directory "$static_root" > /tmp/portal-http.log 2>&1 &
           server_pid=$!
           trap 'kill "$server_pid"' EXIT
           node tests/browser/feature-profiles.mjs

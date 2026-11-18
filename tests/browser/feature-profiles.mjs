@@ -22,6 +22,12 @@ try {
   const page = await browser.newPage();
   const errors = [];
   const requests = [];
+  const failedAssets = [];
+  page.on("response", (response) => {
+    if (response.url().includes("/_next/") && response.status() >= 400) {
+      failedAssets.push(`${response.status()} ${response.url()}`);
+    }
+  });
   page.on("pageerror", (error) =>
     errors.push(`${page.url()}: ${error.message}`),
   );
@@ -72,6 +78,11 @@ try {
       );
     }
     assert.deepEqual(errors, []);
+    assert.deepEqual(
+      failedAssets,
+      [],
+      "Next.js assets must load at the deployment path",
+    );
     await page.screenshot({
       path: "audits/browser/public-teaser.png",
       fullPage: true,
@@ -352,6 +363,11 @@ try {
       assert.equal(await uninfoHeading.isVisible(), flags.uninfo, route);
     }
     assert.deepEqual(errors, []);
+    assert.deepEqual(
+      failedAssets,
+      [],
+      "Next.js assets must load at the deployment path",
+    );
     console.log(`Feature browser checks passed (${variant}).`);
   }
 } finally {

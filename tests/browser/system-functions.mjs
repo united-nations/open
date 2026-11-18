@@ -55,7 +55,7 @@ try {
     { waitUntil: "networkidle" },
   );
   await page
-    .getByRole("dialog", { name: "Development assistance", exact: true })
+    .getByRole("dialog", { name: "Development Assistance", exact: true })
     .waitFor();
   await page
     .getByRole("button", { name: "Close function details", exact: true })
@@ -67,7 +67,7 @@ try {
     /\/system\/functions\/\?year=2023#function=development$/,
   );
   await page
-    .getByRole("dialog", { name: "Development assistance", exact: true })
+    .getByRole("dialog", { name: "Development Assistance", exact: true })
     .waitFor();
 
   const requests = [];
