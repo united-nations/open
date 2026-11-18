@@ -42,13 +42,19 @@ test("frontend resolves each build profile and its route visibility", () => {
     );
     assert.equal(actual.variant, variant);
     assert.deepEqual(actual.flags, profiles[variant]);
+    if (variant === "public") {
+      assert.deepEqual(actual.nav, []);
+      assert.deepEqual(actual.systemNav, []);
+    }
     assert.equal(
       actual.systemNav.some((item) => item.href === "/system/personnel"),
       false,
     );
     assert.equal(
       actual.peaceOperations,
-      profiles[variant].peaceOperations && profiles[variant].peacekeepingBudget,
+      profiles[variant].portal &&
+        profiles[variant].peaceOperations &&
+        profiles[variant].peacekeepingBudget,
     );
     assert.equal(
       actual.nav.some((item) => item.label === "Peace Operations"),

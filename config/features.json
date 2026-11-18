@@ -1,5 +1,6 @@
 {
   "public": {
+    "portal": false,
     "programmeBudget": false,
     "regularBudgetOutstanding": false,
     "peacekeepingBudget": false,
@@ -11,6 +12,7 @@
     "entityImpacts": false
   },
   "preview": {
+    "portal": true,
     "programmeBudget": true,
     "regularBudgetOutstanding": true,
     "peacekeepingBudget": true,
@@ -22,6 +24,7 @@
     "entityImpacts": false
   },
   "full": {
+    "portal": true,
     "programmeBudget": true,
     "regularBudgetOutstanding": true,
     "peacekeepingBudget": true,
@@ -33,6 +36,9 @@
     "entityImpacts": true
   },
   "routes": {
+    "/system": "portal",
+    "/secretariat": "portal",
+    "/about": "portal",
     "/secretariat/programme-budget": "programmeBudget",
     "/secretariat/peacekeeping-budget": "peacekeepingBudget",
     "/secretariat/trust-funds": "trustFunds",

@@ -14,6 +14,29 @@ const { SECRETARIAT_NAV, isRouteEnabled, visibleSecretariatNav } =
   await moduleAt("src/lib/navigation.ts");
 const { FEATURES } = await moduleAt("src/lib/featureFlags.ts");
 const home = fs.readFileSync("out/index.html", "utf8");
+if (variant === "public") {
+  assert.match(home, /Launching December 2026/);
+  assert.match(home, /Further Resources/);
+  for (const route of ["system", "secretariat", "about"]) {
+    assert.ok(!fs.existsSync(`out/${route}`), `Public excludes ${route}`);
+    assert.ok(
+      !home.includes(`href="${process.env.BASE_PATH ?? ""}/${route}/"`),
+    );
+  }
+  const manifest = JSON.parse(
+    fs.readFileSync("public/downloads/legacy/manifest.json", "utf8"),
+  );
+  for (const dataset of manifest.datasets) {
+    assert.ok(
+      home.includes(
+        `${process.env.BASE_PATH ?? ""}/downloads/legacy/${dataset.file}`,
+      ),
+    );
+    assert.ok(fs.existsSync(`out/downloads/legacy/${dataset.file}`));
+  }
+  console.log("Feature export checks passed (public teaser).");
+  process.exit(0);
+}
 const secretariat = fs.readFileSync("out/secretariat/index.html", "utf8");
 const organizations = fs.readFileSync(
   "out/system/organizations/index.html",

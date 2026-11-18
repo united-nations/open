@@ -55,6 +55,7 @@ export const SECRETARIAT_NAV = [
 /** Parent availability applies to every descendant route, including future subpages. */
 export function isRouteEnabled(pathname: string): boolean {
   const path = pathname.replace(/\/+$/, "");
+  if (!FEATURES.portal) return path === "";
   const routes = profiles.routes as Readonly<Record<string, Feature>>;
   return Object.entries(routes).every(
     ([route, feature]) =>

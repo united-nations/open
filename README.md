@@ -29,12 +29,13 @@ and organization revenue proportions are not treated as function financing.
 The same branch supports three build profiles, configured centrally in
 `config/features.json`:
 
-- `public`: the production profile for open.un.org (GitHub Pages).
+- `public`: a homepage-only teaser for open.un.org (GitHub Pages), announcing the
+  December 2026 launch and serving preserved legacy datasets.
 - `preview`: selected future features for the Vercel preview, including outstanding
   regular-budget assessments; UNINFO is disabled.
 - `full`: every feature flag enabled, including UNINFO, outstanding regular-budget
   assessments, additional trust funds, Peace Operations, sorting controls, entity
-  impacts. The function/geography plot is available in every profile.
+  impacts. The function/geography plot is available in preview and full.
 
 Set `SITE_VARIANT` to select a profile. An unset variable defaults to `public`;
 an invalid value fails the build. Selection happens at build time, so changing
@@ -48,7 +49,8 @@ SITE_VARIANT=full pnpm build
 SITE_VARIANT=full node scripts/check-feature-export.mjs
 ```
 
-To release a feature, enable it in `public` and rebuild. The `routes` map associates
+To launch the portal, enable `portal` and the desired feature flags in `public`
+and rebuild. Until then, all System, Secretariat and About routes are disabled. The `routes` map associates
 route prefixes with their flags. Page flags govern the entire route subtree,
 Secretariat navigation, and homepage shortcuts. Disabled routes return 404. Use
 `pnpm build` so post-export pruning removes disabled route files (Next.js otherwise

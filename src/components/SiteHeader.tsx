@@ -4,6 +4,8 @@ import { SiteHeader as UiSiteHeader } from "@un-eosg/ui/components/site-header";
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 
+import { FEATURES } from "@/lib/featureFlags";
+
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
 const navItems = [
@@ -55,7 +57,7 @@ export function SiteHeader() {
         descriptor="Transparency Portal"
         href={withBase("/")}
         homeLabel="UN Transparency Portal — home"
-        navItems={navItems.map((item) => ({
+        navItems={(FEATURES.portal ? navItems : []).map((item) => ({
           ...item,
           href: withBase(item.href),
         }))}

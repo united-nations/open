@@ -2,7 +2,7 @@ import { spawn } from "node:child_process";
 import fs from "node:fs";
 import profiles from "../../config/features.json" with { type: "json" };
 import { portalUrl } from "./helpers.mjs";
-const checks = [
+const portalChecks = [
   "header-layout",
   "mobile-friendliness",
   "personnel",
@@ -52,6 +52,9 @@ const checks = [
     : []),
   "hydration",
 ];
+const checks = profiles[process.env.SITE_VARIANT ?? "public"].portal
+  ? portalChecks
+  : ["feature-profiles"];
 function runCheck(name) {
   return new Promise((resolve, reject) => {
     const child = spawn(process.execPath, [`tests/browser/${name}.mjs`], {

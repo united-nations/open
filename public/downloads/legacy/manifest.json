@@ -1,0 +1,63 @@
+{
+  "capturedAt": "2026-11-18T18:45:21.369154+00:00",
+  "datasets": [
+    {
+      "file": "un-system-revenues.zip",
+      "source": "https://open.un.org/un-systems-financials/revenue",
+      "version": 68,
+      "years": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ],
+      "observations": 63113,
+      "sourceHtmlSha256": "8c1696cac9fb41f11b448b31bab59ab22abdc86d74f188c40388f17607d8249a",
+      "payloadSha256": "853a9627facab4bd5c88314b57f9181310ad9e653fc152cc6360ab11a35f3915",
+      "sha256": "44d3fb06ebaa2d7aa7d68dfedbf6d2db38dc265fefa5d969559c12706a280763"
+    },
+    {
+      "file": "un-system-expenses.zip",
+      "source": "https://open.un.org/un-systems-financials/expenses",
+      "version": 68,
+      "years": [
+        2013,
+        2014,
+        2015,
+        2016,
+        2017,
+        2018,
+        2019,
+        2020,
+        2021,
+        2022
+      ],
+      "observations": 27678,
+      "sourceHtmlSha256": "10a304ff4115d0d5e8051fdef6134a8045bf8e478084970fae3e453b784da4fa",
+      "payloadSha256": "249462158c053bd9835bfd9aad9be8f5690ac2c418ce266155840276152a62bf",
+      "sha256": "08078a7aeb4ca62e3e656cfa8b92be1304013655344d15703b4a8e640dea3999"
+    },
+    {
+      "file": "un-secretariat-expenses.zip",
+      "source": "https://open.un.org/un-secretariat-financials/expenses",
+      "version": 72,
+      "years": [
+        2019,
+        2020,
+        2021,
+        2022,
+        2023
+      ],
+      "observations": 1739,
+      "sourceHtmlSha256": "d520fa2a6c82736812467d4c28d0c99a8b322cb90b7fa14a38ea6c501fff4fd8",
+      "payloadSha256": "350a3a6a9fbc73f341bb82d51d07fdebc38f1bb74f1ff483f6ee1e1b288e1ae9",
+      "sha256": "e67bf71b60a702359e7d3aa85f058b3c067baea11b2c8e0026e6d0059c8380f8"
+    }
+  ]
+}
