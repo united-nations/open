@@ -95,10 +95,22 @@ export default function HomePage() {
         </h2>
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           <ResourceLink
-            title="UN System Chart"
-            description="Interactive organizational chart of the United Nations System"
-            href="https://systemchart.un.org/"
-            icon={Network}
+            title="CEB Financial Statistics"
+            description="Financial data from the UN Chief Executives Board for Coordination"
+            href="https://unsceb.org"
+            icon={Building2}
+          />
+          <ResourceLink
+            title="UN Info"
+            description="UN country-level planning and reporting platform"
+            href="https://uninfo.org"
+            icon={FileText}
+          />
+          <ResourceLink
+            title="Financing the UN Development System"
+            description="Reports and analysis on financing the UN Development System"
+            href="https://financingun.report"
+            icon={Globe}
           />
           <ResourceLink
             title="UN Mandates"
@@ -113,22 +125,10 @@ export default function HomePage() {
             icon={Target}
           />
           <ResourceLink
-            title="CEB Financial Statistics"
-            description="Financial data from the UN Chief Executives Board for Coordination"
-            href="https://unsceb.org"
-            icon={Building2}
-          />
-          <ResourceLink
-            title="UN Info"
-            description="UN country-level planning and reporting platform"
-            href="https://uninfo.org"
-            icon={FileText}
-          />
-          <ResourceLink
-            title="UN SDG"
-            description="United Nations Sustainable Development Group"
-            href="https://unsdg.un.org"
-            icon={Globe}
+            title="UN System Chart"
+            description="Interactive organizational chart of the United Nations System"
+            href="https://systemchart.un.org/"
+            icon={Network}
           />
         </div>
       </PageBody>
