@@ -1,0 +1,49 @@
+name: Validate preview and full profiles
+
+# Run separately while the extended portal is being refined.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        variant: [preview, full]
+    env:
+      SITE_VARIANT: ${{ matrix.variant }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v6
+      - name: Setup Node
+        uses: actions/setup-node@v7
+        with:
+          node-version: "24"
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Build with Next.js
+        run: pnpm build
+      - name: Verify feature availability and staff data
+        run: |
+          node --test src/lib/tests/featureProfiles.test.mjs src/lib/tests/personnel.test.mjs
+          python3 -m unittest discover -s python/tests -p test_ceb_personnel.py
+          node scripts/check-feature-export.mjs
+      - name: Install browser
+        run: pnpm exec playwright install --with-deps chromium
+      - name: Verify extended portal in browser
+        run: |
+          python3 -m http.server 8766 --bind 127.0.0.1 --directory out > /tmp/portal-http.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid"' EXIT
+          node tests/browser/feature-profiles.mjs
+          node tests/browser/mobile-friendliness.mjs
+          node tests/browser/system-functions.mjs
+          node tests/browser/function-geography.mjs
+          node tests/browser/personnel.mjs
