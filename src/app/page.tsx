@@ -107,7 +107,7 @@ export default function HomePage() {
             icon={FileText}
           />
           <ResourceLink
-            title="Financing the UN Development System"
+            title="UN Financing Reports"
             description="Reports and analysis on financing the UN Development System"
             href="https://financingun.report"
             icon={Globe}

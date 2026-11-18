@@ -37,8 +37,8 @@ export function PublicTeaser() {
         </h1>
         <p className="mt-6 text-lg leading-8 text-gray-700">
           We are preparing a new UN Transparency Portal to make financial
-          information across the United Nations easier to explore and
-          understand.
+          information across the UN System and UN Secretariat easier to explore
+          and understand.
         </p>
         <p className="mt-4 text-base leading-7 text-gray-700">
           The new portal will launch in December 2026. In the meantime, datasets
