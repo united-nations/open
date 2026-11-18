@@ -54,6 +54,16 @@ export function PublicTeaser() {
           November 2026. Each ZIP includes CSV files and the original dashboard
           data in JSON format, with source notes and reference tables.
         </p>
+        <p className="mt-3 text-sm leading-6 text-gray-600">
+          You can also explore the{" "}
+          <a
+            href="https://united-nations.github.io/open-legacy-website/"
+            className="text-un-blue underline underline-offset-4 hover:no-underline"
+          >
+            archived portal
+          </a>
+          , including its interactive dashboards.
+        </p>
         <div className="mt-6 grid gap-4 md:grid-cols-3">
           {datasets.map((dataset) => (
             <a
