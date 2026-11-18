@@ -1,7 +1,29 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import { createRequire } from "node:module";
+import { moduleAt } from "../../src/lib/tests/moduleAt.mjs";
+import manifest from "../../public/data/manifest.json" with { type: "json" };
 import { chromium } from "playwright";
 import { browserOptions, portalUrl } from "./helpers.mjs";
 
+const { formatBudget } = await moduleAt(
+  createRequire(import.meta.url).resolve("@un-eosg/ui/format-budget"),
+);
+async function selectGeometryYear(page) {
+  const slider = page.getByRole("slider");
+  while (Number(await slider.getAttribute("aria-valuenow")) !== 2024) {
+    const currentYear = Number(await slider.getAttribute("aria-valuenow"));
+    const loaded = page.waitForResponse((response) =>
+      response
+        .url()
+        .endsWith(
+          `/data/sdg-expenses-${currentYear > 2024 ? currentYear - 1 : currentYear + 1}.json`,
+        ),
+    );
+    await slider.press(currentYear > 2024 ? "ArrowLeft" : "ArrowRight");
+    await loaded;
+  }
+}
 const browser = await chromium.launch(browserOptions);
 try {
   const page = await browser.newPage({
@@ -72,26 +94,50 @@ try {
 
   const requests = [];
   page.on("request", (request) => requests.push(request.url()));
+  // Keep geometry checks on a year with positive Non-SDG and Not specified.
+  // The latest release can contain a signed reconciliation balance.
   await page.goto(portalUrl + "/system/goals/", { waitUntil: "networkidle" });
+  await selectGeometryYear(page);
   await page.getByRole("button", { name: /^SDG 1:/ }).waitFor();
   const sdgTrends = page.getByRole("region", {
     name: "Expenditure by SDG classification over time",
   });
   await sdgTrends.getByRole("table").waitFor({ state: "attached" });
-  assert.equal(await sdgTrends.locator("tbody tr").count(), 7);
+  const sdgYears = [...manifest.sdgExpenses.years].sort((a, b) => a - b);
+  assert.deepEqual(
+    await sdgTrends.locator("tbody th").allTextContents(),
+    sdgYears.map(String),
+  );
+  const latestYear = sdgYears.at(-1);
+  const expenses = JSON.parse(
+    await readFile(`public/data/sdg-expenses-${latestYear}.json`, "utf8"),
+  );
+  const classificationKeys = [
+    ...Array.from({ length: 17 }, (_, index) => String(index + 1)),
+    "non_sdg",
+    "sdg_not_specified",
+  ];
+  const amounts = classificationKeys.map((key) => expenses[key].total);
   assert.deepEqual(
     await sdgTrends
       .locator("tbody tr")
       .last()
       .locator("th, td")
       .allTextContents(),
-    ["2024", "$41.3B", "$10.2B", "$14.5B", "$66B"],
+    [
+      String(latestYear),
+      ...amounts.map(formatBudget),
+      formatBudget(amounts.reduce((total, amount) => total + amount, 0)),
+    ],
   );
   await sdgTrends
     .locator(".recharts-area")
     .nth(2)
     .waitFor({ state: "attached" });
-  assert.equal(await sdgTrends.getByRole("button").count(), 3);
+  assert.equal(
+    await sdgTrends.getByRole("button").count(),
+    classificationKeys.length,
+  );
   assert.equal(
     await page.getByRole("group", { name: "Goals view", exact: true }).count(),
     1,
@@ -127,9 +173,22 @@ try {
       "Goals grid must align to plot top",
     );
     assert.ok(
-      squares.every((tile) => Math.abs(tile.width - tile.height) < 1),
-      "Goal tiles must stay square",
+      squares.every(
+        (tile) =>
+          Math.abs(tile.width - squares[0].width) < 1 &&
+          Math.abs(tile.height - squares[0].height) < 1,
+      ),
+      "Goal tiles must keep equal dimensions",
     );
+    if (width === 1440) {
+      assert.ok(
+        squares.every((tile) => Math.abs(tile.width - tile.height) < 1),
+        "Desktop goal tiles must stay square",
+      );
+    } else {
+      assert.equal(new Set(squares.map((tile) => tile.top)).size, 6);
+      assert.equal(squares.filter((tile) => tile.top === 0).length, 3);
+    }
     assert.equal(
       await page.locator('[aria-label="Non-SDG"]').isVisible(),
       false,
@@ -277,6 +336,7 @@ try {
     .waitFor();
   await page.emulateMedia({ reducedMotion: "no-preference" });
   await page.goto(portalUrl + "/system/goals/", { waitUntil: "networkidle" });
+  await selectGeometryYear(page);
   await goalsToggle.locator("..").click();
   await page.waitForTimeout(1500);
   const animatedNonSdg = page.locator('[aria-label="Non-SDG"]');
