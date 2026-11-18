@@ -20,7 +20,9 @@ import {
 import { useYearResource } from "@/hooks/useYearResource";
 import { formatBudget } from "@/lib/contributors";
 import {
+  ASSESSMENT_ORGANIZATIONS_WITHOUT_ROWS,
   assessmentMeasures,
+  assessmentOrganizationNames,
   CEB_ASSESSMENT_COLORS,
   formatAssessmentAmount,
   loadCebAssessments,
@@ -213,7 +215,14 @@ export function CebSystemAssessmentTrends() {
   const { years } = useYearRanges().cebAssessments;
   const load = useCallback(async () => {
     const datasets = await Promise.all(years.map(loadCebAssessments));
-    return datasets.map(systemAssessmentTrendPoint);
+    return {
+      points: datasets.map(systemAssessmentTrendPoint),
+      coverage: datasets.map((data) => ({
+        year: data.year,
+        count: assessmentOrganizationNames(data).size,
+        absent: ASSESSMENT_ORGANIZATIONS_WITHOUT_ROWS[data.year] ?? [],
+      })),
+    };
   }, [years]);
   const { value, loading, error } = useYearResource(
     years.join(","),
@@ -232,8 +241,29 @@ export function CebSystemAssessmentTrends() {
       </p>
     );
   }
-  return value?.some(({ assessed }) => assessed.value !== null) ? (
-    <CebAssessmentTrendsChart data={value} height={TREND_CHART_HEIGHT} />
+  return value?.points.some(({ assessed, current, prior }) =>
+    [assessed, current, prior].some(({ value }) => value !== null),
+  ) ? (
+    <div className="space-y-2">
+      <CebAssessmentTrendsChart
+        data={value.points}
+        height={TREND_CHART_HEIGHT}
+      />
+      <p className="text-sm text-gray-600">
+        Totals include the amounts available for each year. Changes reflect
+        differences in reporting coverage as well as changes in assessments and
+        payments. The coverage notes compare the organizations reported in each
+        year against the 2020–2025 annual source.
+      </p>
+      {value.coverage.map(({ year, count, absent }) => (
+        <div key={year} className="text-sm text-gray-600">
+          {year} covers {count} organizations.
+          {absent.length > 0 && (
+            <> Absent from that year’s data: {absent.join(", ")}.</>
+          )}
+        </div>
+      ))}
+    </div>
   ) : (
     <p className="text-sm text-gray-600">No assessment trends available.</p>
   );

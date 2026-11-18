@@ -170,12 +170,12 @@ export default function AboutPage() {
                   assessments and receipts in nominal US dollars for the
                   organizations and contributors covered. The portal keeps these
                   figures separate from assessed revenue in CEB Financial
-                  Statistics. The charts and totals exclude rows with blank
-                  assessment amounts, including any payments on those rows. A
-                  partial payment total sums the available payments for the
-                  included rows. Current-year payment amounts are missing for
-                  the UN Secretariat in 2022 and 2023. The Committee on
-                  Contributions publishes regular-budget payment dates in its{" "}
+                  Statistics. The portal shows 2024 and 2025 and sums the
+                  reported amounts for each measure, including payments on rows
+                  with blank assessment amounts. Blank values are unknown. A
+                  total is marked partial if some observations are missing. The
+                  Committee on Contributions publishes regular-budget payment
+                  dates in its{" "}
                   <a
                     href="https://www.un.org/en/ga/contributions/previous_honourrolls.shtml"
                     className="underline underline-offset-2"
@@ -188,7 +188,31 @@ export default function AboutPage() {
                   The organization and contributor views use the same assessment
                   observations, grouped by organization or by contributor.
                   Unknown payment amounts are calculated for each contributor
-                  and organization before aggregation.
+                  and organization before aggregation. The treemap uses assessed
+                  amounts to size tiles and can expand them to show positive
+                  earlier-year payments. The list and totals include reported
+                  amounts that have no tile area.
+                </p>
+                <p>
+                  Annual reports cover 30 organizations in 2024 and 29 in 2025.
+                  PAHO and UN Women appear only in 2025. ITC, UNITAID and UNOPS
+                  appear only in 2024. UNITAR appears in the 2020–2025 source
+                  series and is absent in both years shown. Several
+                  organizations report partial figures. Changes over time can
+                  reflect differences in reporting coverage.
+                </p>
+                <p>
+                  IRMCT payment data is unavailable for both years. CEB leaves
+                  the payment fields blank in 2024 and records zeros in 2025.
+                  For 2025, the portal displays the payment fields as
+                  unavailable and preserves the original values in the data
+                  downloads.
+                </p>
+                <p>
+                  Totals sum the organizations’ reported figures. ITC and UN
+                  Women include allocations from assessments already reported
+                  under the UN Secretariat, so totals can include overlapping
+                  amounts.
                 </p>
                 <p>
                   The reported trend shows receipts in the year CEB records
@@ -203,8 +227,9 @@ export default function AboutPage() {
                   system. They include current and prior assessment years. The
                   portal preserves CEB’s reported amounts and displays the
                   original table footnotes for the selected year below the
-                  charts. Missing balances remain unavailable. Where CEB reports
-                  separate budget balances, they remain separate.
+                  charts for 2024 and 2025. Missing balances remain unavailable.
+                  Where CEB reports separate budget balances, they remain
+                  separate.
                 </p>
                 <p>
                   Outstanding-balance sources:{" "}

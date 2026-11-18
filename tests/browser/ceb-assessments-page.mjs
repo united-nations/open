@@ -80,7 +80,7 @@ try {
     });
     const grouping = chart.getByRole("group", { name: "Group assessments by" });
     const byMemberState = grouping.getByRole("radio", {
-      name: "By member state",
+      name: "By contributor",
     });
     const byOrganization = grouping.getByRole("radio", {
       name: "By organization",
@@ -89,10 +89,16 @@ try {
       .getByRole("combobox", { name: "Select year from list" })
       .first();
     const initialYear = await years.inputValue();
+    assert.deepEqual(
+      await years
+        .locator("option")
+        .evaluateAll((options) => options.map((option) => option.value).sort()),
+      ["2024", "2025"],
+    );
     const legend = chart.getByRole("group", { name: "Assessment measures" });
     const display = chart.getByRole("group", { name: "Data view" });
     const memberSearch = chart.getByRole("searchbox", {
-      name: "Search member states",
+      name: "Search contributors",
     });
     const organizationSearch = chart.getByRole("searchbox", {
       name: "Search organizations",
@@ -136,14 +142,30 @@ try {
     assert.ok(groupBox.y + groupBox.height <= legendBox.y);
     assert.ok(legendBox.y + legendBox.height <= searchBox.y);
     assert.ok(Math.abs(centerY(displayBox) - centerY(searchBox)) < 2);
-    if (!mobile) {
-      assert.ok(totalsBox.x > searchBox.x + searchBox.width);
+    if (!mobile)
       assert.ok(
-        totalsBox.y <= centerY(searchBox) &&
-          centerY(searchBox) < totalsBox.y + totalsBox.height,
+        totalsBox.x >= searchBox.x + searchBox.width - 1 ||
+          totalsBox.y >= searchBox.y + searchBox.height - 1,
       );
-    }
+    await years.selectOption("2025");
+    await chart
+      .getByText(/2025 — same-year payments unavailable: IRMCT/)
+      .waitFor();
+    const partialTileDescription = await china.evaluate(
+      (tile) =>
+        document.getElementById(tile.getAttribute("aria-describedby"))
+          .textContent,
+    );
+    assert.match(partialTileDescription, /China: .* assessed\./);
+    assert.doesNotMatch(
+      partialTileDescription,
+      /%/,
+      "Partial payments must not display a payment percentage",
+    );
     await years.selectOption("2024");
+    await chart
+      .getByText(/2024 — same-year payments unavailable: IRMCT/)
+      .waitFor();
     if (!mobile) {
       for (const [label, explanation] of [
         ["Assessed contributions payable in 2024", /required to pay.*2024/],
@@ -187,33 +209,41 @@ try {
     await chinaListItem.waitFor();
     assert.doesNotMatch(
       await chinaListItem.innerText(),
-      /paid in 2024 towards 2024/,
+      /paid in 2024 towards 2024/i,
     );
     await byOrganization.locator("..").click();
     assert.equal(await years.inputValue(), "2024");
     assert.equal(await current.getAttribute("aria-pressed"), "false");
     assert.equal(await prior.getAttribute("aria-pressed"), "false");
     assert.equal(await organizationSearch.inputValue(), "");
+    await organizationSearch.fill("UNITAID");
+    await list.getByText("UNITAID", { exact: true }).waitFor();
     await organizationSearch.fill("UN Secretariat");
     await list.getByText("UN Secretariat", { exact: true }).waitFor();
     await byMemberState.locator("..").click();
     assert.equal(await memberSearch.inputValue(), "China");
     await current.click();
     assert.equal(await current.getAttribute("aria-pressed"), "true");
-    await chinaListItem.getByText(/paid in 2024 towards 2024/).waitFor();
+    await chinaListItem.getByText(/paid in 2024 towards 2024/i).waitFor();
     await memberSearch.fill("");
     await prior.click();
     assert.equal(await prior.getAttribute("aria-pressed"), "true");
     await display.getByRole("radio", { name: "Chart" }).locator("..").click();
     await years.selectOption(initialYear);
     const trend = chart.getByRole("region", {
-      name: "System-wide assessments and payments over time",
+      name: "Reported assessments and payments over time",
       exact: true,
     });
     const balances = chart.getByRole("region", {
       name: "Reported outstanding assessments",
       exact: true,
     });
+    await trend
+      .getByText(/2024 covers 30 organizations.*PAHO, UN Women, UNITAR/)
+      .waitFor();
+    await trend
+      .getByText(/2025 covers 29 organizations.*ITC, UNITAID, UNITAR, UNOPS/)
+      .waitFor();
     const trendBox = await trend.boundingBox(),
       balanceBox = await balances.boundingBox();
     if (!mobile)
@@ -253,8 +283,8 @@ try {
     await dialog
       .getByRole("button", { name: "Select year", exact: true })
       .click();
-    await page.getByRole("button", { name: "2023", exact: true }).click();
-    const currentPayment = assessment.getByText("Paid in 2023 towards 2023", {
+    await page.getByRole("button", { name: "2024", exact: true }).click();
+    const currentPayment = assessment.getByText("Paid in 2024 towards 2024", {
       exact: true,
     });
     await currentPayment.waitFor();
@@ -262,7 +292,7 @@ try {
       await currentPayment.locator("..").focus();
       await page
         .getByRole("tooltip")
-        .filter({ hasText: /received in 2023.*same year/ })
+        .filter({ hasText: /received in 2024.*same year/ })
         .waitFor();
     }
     await dialog
@@ -270,12 +300,12 @@ try {
       .click();
     const share = await page.evaluate(() => window.copiedSidebarLink);
     assert.ok(share.includes("/system/contributors/assessments/#assessment="));
-    assert.ok(share.endsWith("%402023"));
+    assert.ok(share.endsWith("%402024"));
     await page.goto(share, { waitUntil: "networkidle" });
     await page
       .getByRole("dialog")
       .getByRole("region", { name: "Assessments and payments", exact: true })
-      .getByText("Paid in 2023 towards 2023", { exact: true })
+      .getByText("Paid in 2024 towards 2024", { exact: true })
       .waitFor();
     await page
       .getByRole("dialog")
@@ -398,7 +428,7 @@ try {
     }
   }
   await page.goto(
-    `${portalUrl}/system/contributors/assessments/#assessment=C01%3ACN%402023`,
+    `${portalUrl}/system/contributors/assessments/#assessment=C01%3ACN%402024`,
     { waitUntil: "networkidle" },
   );
   await page
@@ -410,7 +440,7 @@ try {
     .getByRole("button", { name: "UNDP", exact: true })
     .click();
   await page.waitForURL(
-    /\/system\/organizations\/\?year=2023#entity=UNDP%402023$/,
+    /\/system\/organizations\/\?year=2024#entity=UNDP%402024$/,
   );
   const recipient = page.getByRole("dialog");
   await recipient.getByRole("heading", { name: "UNDP", exact: true }).waitFor();
@@ -418,7 +448,7 @@ try {
     await recipient
       .getByRole("button", { name: "Select year", exact: true })
       .innerText(),
-    "2023",
+    "2024",
   );
   await page.goto(`${portalUrl}/`, { waitUntil: "networkidle" });
   assert.equal(

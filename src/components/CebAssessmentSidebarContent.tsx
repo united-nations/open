@@ -20,12 +20,11 @@ import {
   assessmentEntities,
   assessmentContributorsForEntity,
   assessmentTotals,
-  assessmentExclusionNotes,
+  assessmentCoverageNotes,
   assessmentMeasures,
   CEB_ASSESSMENT_COLORS,
   formatAssessmentAmount,
   loadCebAssessments,
-  rowsWithAssessments,
   sumAssessments,
   systemAssessmentTrendPoint,
 } from "@/lib/cebAssessments";
@@ -84,25 +83,15 @@ export function CebAssessmentSidebarContent({
   const [showAllEntities, setShowAllEntities] = useState(false);
   const measures = assessmentMeasures(year);
   const selected = history?.find((point) => point.year === year);
-  const selectedRows = rowsWithAssessments(selected?.rows ?? []);
-  const exclusions = assessmentExclusionNotes(
-    year,
-    selected?.contributors ?? [],
-  );
+  const selectedRows = selected?.rows ?? [];
+  const coverageNotes = assessmentCoverageNotes(year, selectedRows);
   const byContributor = breakdown === "contributors";
   const groups = byContributor
-    ? (selected?.contributors ?? []).flatMap((contributor) => {
-        const totals = assessmentTotals([contributor]);
-        return totals.assessed.value === null
-          ? []
-          : [
-              {
-                entity: contributor.name,
-                key: contributor.id,
-                ...totals,
-              },
-            ];
-      })
+    ? (selected?.contributors ?? []).map((contributor) => ({
+        entity: contributor.name,
+        key: contributor.id,
+        ...assessmentTotals([contributor]),
+      }))
     : assessmentEntities(selectedRows).map((entry) => ({
         ...entry,
         key: entry.entity,
@@ -132,7 +121,9 @@ export function CebAssessmentSidebarContent({
     (sum, entity) => sum + entity.unknownCurrent,
     0,
   );
-  const hasHistory = reported.some(({ assessed }) => assessed.value !== null);
+  const hasHistory = reported.some(({ assessed, current, prior }) =>
+    [assessed, current, prior].some(({ value }) => value !== null),
+  );
 
   return (
     <section
@@ -140,7 +131,7 @@ export function CebAssessmentSidebarContent({
       aria-label="Assessments and payments"
     >
       <FinancialPanelHeading>Assessments and payments</FinancialPanelHeading>
-      {totals.assessed.value !== null && (
+      {selectedRows.length > 0 && (
         <dl className="space-y-2 text-sm">
           {[
             {
@@ -225,7 +216,10 @@ export function CebAssessmentSidebarContent({
                   const amount = assessed.value ?? 0;
                   const assessmentPosition = `${(amount / maxBar) * 100}%`;
                   const paidLabel =
-                    amount > 0 && current.value !== null && !current.partial
+                    amount > 0 &&
+                    !assessed.partial &&
+                    current.value !== null &&
+                    !current.partial
                       ? formatAssessmentRate((current.value / amount) * 100)
                       : null;
                   const receipts = [
@@ -302,7 +296,7 @@ export function CebAssessmentSidebarContent({
                                     }),
                                   )}
                                 />
-                                {amount >= 0 && (
+                                {assessed.value !== null && amount >= 0 && (
                                   <span
                                     aria-hidden="true"
                                     className="pointer-events-none absolute top-1/2 h-3 w-0.5 -translate-x-1/2 -translate-y-1/2 rounded-full"
@@ -361,9 +355,13 @@ export function CebAssessmentSidebarContent({
                 Payments by year received
               </FinancialPanelHeading>
               <CebAssessmentTrendsChart data={reported} />
+              <p className="text-xs text-gray-600">
+                Figures reflect the amounts reported for each year. Coverage can
+                vary between years.
+              </p>
             </div>
           )}
-          {exclusions.map((note) => (
+          {coverageNotes.map((note) => (
             <p key={note} className="text-xs text-gray-600">
               {note}
             </p>

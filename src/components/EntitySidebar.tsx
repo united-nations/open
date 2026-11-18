@@ -114,8 +114,15 @@ export function EntitySidebar({
   const yearRanges = useYearRanges();
   const availableYears = [
     ...new Set([
-      ...yearRanges.entitySpending.years,
-      ...yearRanges.entityRevenue.years,
+      ...(initialSection
+        ? [
+            ...yearRanges.cebAssessments.years,
+            ...yearRanges.cebAssessmentOutstanding.years,
+          ]
+        : [
+            ...yearRanges.entitySpending.years,
+            ...yearRanges.entityRevenue.years,
+          ]),
     ]),
   ].sort((a, b) => b - a);
   const [selectedYear, setSelectedYear] = useState(initialYear);

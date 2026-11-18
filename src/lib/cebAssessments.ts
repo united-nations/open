@@ -19,6 +19,14 @@ export const CEB_ASSESSMENT_COLORS = {
 export const CEB_ASSESSMENTS_SOURCE =
   "https://unsceb.org/assessments-voted-assessments-received-current-year-and-prior-years-assessments-received/";
 
+// Compared with all organizations in the 2020–2025 annual CEB exports.
+export const ASSESSMENT_ORGANIZATIONS_WITHOUT_ROWS: Partial<
+  Record<number, readonly string[]>
+> = {
+  2024: ["PAHO", "UN Women", "UNITAR"],
+  2025: ["ITC", "UNITAID", "UNITAR", "UNOPS"],
+};
+
 export function assessmentMeasures(year?: number) {
   const paymentYear = year ?? "the year shown";
   return {
@@ -45,17 +53,32 @@ export function assessmentMeasures(year?: number) {
 
 const assessmentRequests = new Map<number, Promise<CebAssessmentsData>>();
 
+/** Apply the website's treatment of unavailable IRMCT receipts. */
+export function assessmentsForDisplay(
+  data: CebAssessmentsData,
+): CebAssessmentsData {
+  if (data.year !== 2025) return data;
+  return {
+    ...data,
+    contributors: data.contributors.map((contributor) => ({
+      ...contributor,
+      rows: contributor.rows.map((row) =>
+        row[0] === "IRMCT" ? [row[0], row[1], null, null] : row,
+      ),
+    })),
+  };
+}
+
 export function loadCebAssessments(year: number) {
   const existing = assessmentRequests.get(year);
   if (existing) return existing;
 
-  const request = loadYearData<CebAssessmentsData>(
-    "ceb-assessments",
-    year,
-  ).catch((error: unknown) => {
-    assessmentRequests.delete(year);
-    throw error;
-  });
+  const request = loadYearData<CebAssessmentsData>("ceb-assessments", year)
+    .then(assessmentsForDisplay)
+    .catch((error: unknown) => {
+      assessmentRequests.delete(year);
+      throw error;
+    });
   assessmentRequests.set(year, request);
   return request;
 }
@@ -70,38 +93,44 @@ export function formatAssessmentAmount({ value, partial }: AssessmentAmount) {
   return formatBudget(value) + (partial ? " (partial)" : "");
 }
 
-export function rowsWithAssessments(rows: readonly CebAssessmentRow[]) {
-  return rows.filter(([, assessed]) => assessed !== null);
+export function assessmentCoverageNotes(
+  year: number,
+  rows: readonly CebAssessmentRow[],
+) {
+  const groups = new Map<string, CebAssessmentRow[]>();
+  for (const row of rows) {
+    const observations = groups.get(row[0]) ?? [];
+    observations.push(row);
+    groups.set(row[0], observations);
+  }
+  const fields = [
+    ["assessments", "assessed"],
+    ["same-year payments", "current"],
+    ["earlier-year payments", "prior"],
+  ] as const;
+  const notes: string[] = [];
+  for (const [label, key] of fields) {
+    const unknown: string[] = [];
+    const partial: string[] = [];
+    for (const [entity, observations] of groups) {
+      const amount = sumAssessments(observations)[key];
+      if (amount.value === null) unknown.push(entity);
+      else if (amount.partial) partial.push(entity);
+    }
+    if (unknown.length)
+      notes.push(
+        `${year} — ${label} unavailable: ${unknown.sort().join(", ")}.`,
+      );
+    if (partial.length)
+      notes.push(`${year} — partial ${label}: ${partial.sort().join(", ")}.`);
+  }
+  return notes;
 }
 
-export function assessmentExclusionNotes(
-  year: number,
-  contributors: readonly Pick<CebAssessmentContributor, "name" | "rows">[],
-) {
-  const covered = new Set<string>();
-  const missing = new Map<string, Set<string>>();
-  for (const { name, rows } of contributors) {
-    for (const [entity, assessed] of rows) {
-      if (assessed !== null) {
-        covered.add(entity);
-      } else {
-        const names = missing.get(entity) ?? new Set<string>();
-        names.add(name);
-        missing.set(entity, names);
-      }
-    }
-  }
-  return Array.from(missing)
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([entity, names]) => {
-      const [name] = names;
-      if (!covered.has(entity)) {
-        const scope = contributors.length === 1 ? ` for ${name}` : "";
-        return `${entity} has no reported assessment amount${scope} in ${year}. Its data is excluded.`;
-      }
-      const who = names.size === 1 ? name : `${names.size} contributors`;
-      return `${entity} has missing assessment amounts for ${who} in ${year}. Those rows are excluded.`;
-    });
+export function assessmentOrganizationNames(data: CebAssessmentsData) {
+  return new Set(
+    data.contributors.flatMap(({ rows }) => rows.map(([entity]) => entity)),
+  );
 }
 
 function sumColumn(
@@ -142,9 +171,14 @@ export function assessmentEntities(rows: readonly CebAssessmentRow[]) {
         current === null ? sum + Math.max(0, assessed ?? 0) : sum,
       0,
     );
+    const comparableCurrent = observations.reduce(
+      (sum, [, assessed, current]) =>
+        assessed === null ? sum : sum + (current ?? 0),
+      0,
+    );
     const remaining = Math.max(
       0,
-      (totals.assessed.value ?? 0) - Math.max(0, totals.current.value ?? 0),
+      (totals.assessed.value ?? 0) - Math.max(0, comparableCurrent),
     );
     const unknownCurrent = Math.min(withBlankReceipts, remaining);
     return {
@@ -153,7 +187,7 @@ export function assessmentEntities(rows: readonly CebAssessmentRow[]) {
       unknownCurrent,
       paidWithinAssessment: Math.min(
         Math.max(0, totals.assessed.value ?? 0) - unknownCurrent,
-        Math.max(0, totals.current.value ?? 0),
+        Math.max(0, comparableCurrent),
       ),
     };
   });
@@ -179,10 +213,10 @@ export function assessmentContributorsForEntity(
 export function assessmentTotals(
   contributors: readonly Pick<CebAssessmentContributor, "rows">[],
 ) {
-  const included = contributors.map(({ rows }) => rowsWithAssessments(rows));
-  const entities = included.flatMap(assessmentEntities);
+  const observations = contributors.map(({ rows }) => rows);
+  const entities = observations.flatMap(assessmentEntities);
   return {
-    ...sumAssessments(included.flat()),
+    ...sumAssessments(observations.flat()),
     unknownCurrent: entities.reduce(
       (sum, entity) => sum + entity.unknownCurrent,
       0,
@@ -218,6 +252,9 @@ export function systemAssessmentTrendPoint({
     current: totals.current,
     prior: totals.prior,
     unknownCurrent: totals.unknownCurrent,
-    notes: assessmentExclusionNotes(year, contributors),
+    notes: assessmentCoverageNotes(
+      year,
+      contributors.flatMap(({ rows }) => rows),
+    ),
   };
 }

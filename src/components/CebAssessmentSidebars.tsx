@@ -42,38 +42,49 @@ export function CebAssessmentSidebars() {
         ];
   const year = years.includes(Number(rawYear))
     ? Number(rawYear)
-    : Math.max(...years);
+    : rawYear === undefined
+      ? Math.max(...years)
+      : null;
   const load = useCallback(async (): Promise<Selection | null> => {
-    if (!kind || !id) return null;
-    const [annualResult, balanceResult] = await Promise.allSettled([
-      ranges.cebAssessments.years.includes(year)
-        ? loadCebAssessments(year)
-        : Promise.resolve(null),
-      kind === "entity" && ranges.cebAssessmentOutstanding.years.includes(year)
-        ? loadCebAssessmentOutstanding(year)
-        : Promise.resolve(null),
+    if (!kind || !id || year === null) return null;
+    const [annualResult, balanceResult] = await Promise.all([
+      Promise.allSettled(ranges.cebAssessments.years.map(loadCebAssessments)),
+      Promise.allSettled(
+        kind === "entity"
+          ? ranges.cebAssessmentOutstanding.years.map(
+              loadCebAssessmentOutstanding,
+            )
+          : [],
+      ),
     ]);
-    const annual =
-      annualResult.status === "fulfilled" ? annualResult.value : null;
-    const balance =
-      balanceResult.status === "fulfilled" ? balanceResult.value : null;
+    const annual = annualResult.flatMap((result) =>
+      result.status === "fulfilled" ? [result.value] : [],
+    );
+    const balance = balanceResult.flatMap((result) =>
+      result.status === "fulfilled" ? [result.value] : [],
+    );
+    const failed = [...annualResult, ...balanceResult].some(
+      (result) => result.status === "rejected",
+    );
     if (kind === "contributor") {
-      if (annualResult.status === "rejected")
-        throw new Error("Assessment details could not be loaded.");
-      return annual?.contributors.some((row) => row.id === id)
-        ? { kind, id, year }
-        : null;
+      if (
+        annual.some(({ contributors }) =>
+          contributors.some((row) => row.id === id),
+        )
+      )
+        return { kind, id, year };
+      if (failed) throw new Error("Assessment details could not be loaded.");
+      return null;
     }
     const present =
-      annual?.contributors.some(({ rows }) =>
-        rows.some(([entity]) => entity === id),
-      ) || balance?.organizations.some(({ entity }) => entity === id);
+      annual.some(({ contributors }) =>
+        contributors.some(({ rows }) => rows.some(([entity]) => entity === id)),
+      ) ||
+      balance.some(({ organizations }) =>
+        organizations.some(({ entity }) => entity === id),
+      );
     if (!present) {
-      if (
-        annualResult.status === "rejected" ||
-        balanceResult.status === "rejected"
-      )
-        throw new Error("Organization details could not be loaded.");
+      if (failed) throw new Error("Organization details could not be loaded.");
       return null;
     }
     const directory = await loadStaticData<Entity[]>("entities.json").catch(

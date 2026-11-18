@@ -85,17 +85,27 @@ Run `uv run python/25-export_ceb_assessments.py` followed by
 `uv run python/99-generate_manifest.py`. The annual files record the workbook
 URL and SHA-256. The exporter accepts `--workbook PATH` for a local copy.
 
-The treemap, sidebar and trend exclude rows with blank assessment amounts,
-including any receipts reported on those rows. The selected year shows which
-organizations have excluded data. For rows with reported assessments, grey
-shows assessed amounts with blank current-year receipts. This amount is
-capped at the assessment less the reported current-year receipts for each
-contributor, organization and year. The treemap can include positive reported
-prior-year receipts as a separate fill. Tiles can expand to fit that fill
-while the blue outline marks the reported current-year assessment.
-The trend shows prior-year receipts in the year they were received,
-including signed adjustments. The workbook groups all earlier assessment
-years together.
+The portal displays 2024 and 2025. Annual exports retain the full source
+coverage. The treemap, sidebars and trend sum all reported values for each
+measure, including receipts reported on rows with blank assessments. Blank
+values remain unknown, and partial totals indicate missing observations.
+IRMCT reports an assessment but neither payment measure in 2024. The annual
+source covers 30 organizations in 2024 and 29 in 2025. PAHO and UN Women
+appear only in 2025, and ITC, UNITAID and UNOPS appear only in 2024. UNITAR
+appears elsewhere in the 2020–2025 source series and is absent in both years
+shown. Changes over time can reflect differences in reporting coverage.
+Totals sum reported organization figures. ITC and UN Women include allocations
+from assessments already reported under the UN Secretariat, so totals can
+include overlapping amounts.
+
+Grey shows assessed amounts with blank current-year receipts. This amount
+is capped at the assessment less current-year receipts reported on rows with
+an assessment, for each contributor, organization and year. Positive earlier-year
+receipts are shown as a separate fill, and tiles can expand to fit that fill.
+The blue outline marks the reported assessment. The list preserves all records,
+including those without a drawable area. The trend shows receipts in the year
+they were received, including signed adjustments. The source groups all
+earlier assessment years together.
 
 Both treemaps use the same observations: the organizations view groups the
 contributor observations by recipient organization. Organization sidebars show
@@ -106,9 +116,9 @@ one member's overpayment cannot offset another member's unknown payment status.
 Organization totals and trends are not calculated by reconciling these
 assessments against the separate CEB revenue series.
 
-The Assessed Contributions view contains a full-width contributor treemap followed by a
-full-width organization treemap, with a system-wide payment trend and reported
-outstanding balances in two columns below. Organizations and Contributors
+The Assessed Contributions view contains a treemap with contributor and
+organization views, with the reported payment trend and reported outstanding
+balances in two columns below. Organizations and Contributors
 retain the revenue views and link to Assessed Contributions with a note that assessed
 revenue is recognized in organizations' accounts and can include unpaid amounts.
 The view reuses the existing combined sidebars in place; assessment details
@@ -135,7 +145,7 @@ assessments less annual receipts, and they do not identify member-state debts.
 They remain separate from the annual assessments-and-receipts dataset. The
 Assessed Contributions view shows these as a separate ranked bar chart beside the annual
 payment trend, below the organization treemap. Each organization sidebar
-shows the selected reported balance and its history. The overview keeps dates
+shows the selected reported balance and its history for 2024 and 2025. The overview keeps dates
 in tooltips; sidebars show them next to the balance. The chart reuses the
 Secretariat outstanding-dues colour. A small collapsed expander below each
 chart shows the selected year's original CEB Table 7 footnotes, with markers
@@ -204,13 +214,12 @@ that the annual exporter preserves the observations exactly. The following
 upstream issues remain in the reported figures; no inferred corrections have
 been applied:
 
-- IRMCT 2025 has literal zero current- and prior-year receipts in all 193
-  contributor rows, despite UN reporting that members paid tribunal assessments
-  during 2025. The CEB financial-situation report leaves its collection rates
-  unavailable. Zero therefore must not be treated as independently verified
-  nonpayment. The [9 October 2025 briefing, PDF page 6](https://www.un.org/en/ga/fifth/80/C5_80_0m_2025_10_09_Item138_Improving_Financial_situation_USG_DMSPC.pdf#page=6)
-  covers the Mechanism and predecessor tribunals, and does not supply a matching
-  current/prior receipt split to repair the data.
+- IRMCT 2025 has literal zeros in both payment fields across all 193 contributor
+  rows. The exports preserve these source values. The website displays the
+  fields as unavailable. The CEB financial-situation report leaves collection
+  rates unavailable, and the [9 October 2025 briefing, PDF page 6](https://www.un.org/en/ga/fifth/80/C5_80_0m_2025_10_09_Item138_Improving_Financial_situation_USG_DMSPC.pdf#page=6)
+  reports payments across the Mechanism and predecessor tribunals without
+  supplying a matching current/prior receipt split.
 - OPCW 2022 current-year receipts appear misassigned among Tajikistan,
   Thailand, Timor-Leste, Togo, Trinidad and Tobago, Tunisia and Türkiye.
   Tajikistan's reported $621,248.14 equals Türkiye's assessment; Timor-Leste's

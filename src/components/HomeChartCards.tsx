@@ -1,5 +1,10 @@
 import { MapBoundaryDisclaimer } from "@/components/MapBoundaryDisclaimer";
-import { assessmentTotals, CEB_ASSESSMENT_COLORS } from "@/lib/cebAssessments";
+import {
+  assessmentsForDisplay,
+  assessmentTotals,
+  CEB_ASSESSMENT_COLORS,
+} from "@/lib/cebAssessments";
+import { CEB_ASSESSMENT_YEAR_RANGE } from "@/lib/useYearRanges";
 import { UN_FUNCTIONS, type FunctionExpenses } from "@/lib/functions";
 import {
   TRUST_FUND_CONTRIBUTOR_GROUP_STYLES,
@@ -147,8 +152,8 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
       : null,
     readData<FunctionExpenses>("function-expenses.json"),
     readData<CebAssessmentsData>(
-      `ceb-assessments-${year("cebAssessments")}.json`,
-    ),
+      `ceb-assessments-${CEB_ASSESSMENT_YEAR_RANGE.default}.json`,
+    ).then(assessmentsForDisplay),
     FEATURES.programmeBudget
       ? readData<RegularBudgetContributorsData>(
           `regular-budget-contributors-${year("regularBudgetContributors")}.json`,

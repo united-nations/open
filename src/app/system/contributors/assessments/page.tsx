@@ -29,7 +29,7 @@ export default function SystemAssessmentsPage() {
             each organization’s rules. In practice, assessments are not always
             paid in full and on time by every member. Explore assessments
             payable and the payments organizations reported receiving, including
-            payments toward earlier years.
+            payments toward earlier years. This view shows 2024 and 2025.
           </>
         }
         sources={
@@ -60,7 +60,7 @@ export default function SystemAssessmentsPage() {
               className="min-w-0 space-y-3"
             >
               <ChartHeading as="h3" id="assessment-trends-title">
-                System-wide assessments and payments over time
+                Reported assessments and payments over time
               </ChartHeading>
               <CebSystemAssessmentTrends />
             </section>

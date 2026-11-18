@@ -169,13 +169,16 @@ export function ContributorsTreemap() {
   const [assessmentLink, setAssessmentLink] = useDeepLink({
     hashPrefix: CEB_ASSESSMENTS_HASH,
   });
-  const [assessmentId, assessmentYear] = assessmentLink?.split("@") ?? [];
+  const [requestedAssessmentId, assessmentYear] =
+    assessmentLink?.split("@") ?? [];
   const assessmentYears = yearRanges.cebAssessments;
-  const assessmentInitialYear = assessmentYears.years.includes(
-    Number(assessmentYear),
-  )
-    ? Number(assessmentYear)
-    : assessmentYears.default;
+  const assessmentInitialYear =
+    assessmentYear === undefined
+      ? assessmentYears.default
+      : Number(assessmentYear);
+  const assessmentId = assessmentYears.years.includes(assessmentInitialYear)
+    ? requestedAssessmentId
+    : undefined;
 
   useEffect(() => {
     if (!loading && pendingDeepLink && contributors.length > 0) {
@@ -568,6 +571,7 @@ export function ContributorsTreemap() {
             assessmentId ? undefined : (selectedContributor ?? undefined)
           }
           assessmentId={assessmentId}
+          initialSection={assessmentId ? "assessments" : undefined}
           initialYear={assessmentId ? assessmentInitialYear : selectedYear}
           onClose={() => {
             setSelectedContributor(null);

@@ -13,9 +13,10 @@ import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 import { navigateToSidebar } from "@/hooks/useDeepLink";
 import { useYearResource } from "@/hooks/useYearResource";
 import {
+  ASSESSMENT_ORGANIZATIONS_WITHOUT_ROWS,
+  assessmentCoverageNotes,
   assessmentOrganizationGroups,
   assessmentTotals,
-  assessmentExclusionNotes,
   assessmentMeasures,
   CEB_ASSESSMENT_COLORS,
   CEB_ASSESSMENTS_HASH,
@@ -43,7 +44,7 @@ export function CebAssessmentsTreemap() {
   const setQuery = (value: string) =>
     setQueries((current) => ({ ...current, [view]: value }));
   const searchLabel =
-    view === "organizations" ? "Search organizations" : "Search member states";
+    view === "organizations" ? "Search organizations" : "Search contributors";
   const measures = assessmentMeasures(year);
   const load = useCallback(() => loadCebAssessments(year), [year]);
   const {
@@ -51,10 +52,11 @@ export function CebAssessmentsTreemap() {
     loading,
     error,
   } = useYearResource(String(year), null, false, load, null);
+  const sourceContributors = data?.contributors ?? [];
   const organizationView = view === "organizations";
   const groups = organizationView
-    ? assessmentOrganizationGroups(data?.contributors ?? [])
-    : (data?.contributors ?? []).map((contributor) => ({
+    ? assessmentOrganizationGroups(sourceContributors)
+    : sourceContributors.map((contributor) => ({
         id: contributor.id,
         name: contributor.name,
         contributors: [contributor],
@@ -64,13 +66,23 @@ export function CebAssessmentsTreemap() {
     .filter(({ name }) => name.toLocaleLowerCase().includes(searchTerm))
     .map((group) => ({ ...group, ...assessmentTotals(group.contributors) }));
   const contributors = matches.flatMap((group) => group.contributors);
-  const exclusions = assessmentExclusionNotes(year, contributors);
+  const sourceRows = sourceContributors.flatMap(({ rows }) => rows);
+  const coverageNotes = assessmentCoverageNotes(year, sourceRows);
+  const absent = ASSESSMENT_ORGANIZATIONS_WITHOUT_ROWS[year];
+  const organizationCount = new Set(sourceRows.map(([entity]) => entity)).size;
   const totals = assessmentTotals(contributors);
   const unknown = totals.unknownCurrent;
-  const leaves = matches.flatMap((contributor) => {
+  const open = (id: string) =>
+    navigateToSidebar(
+      organizationView ? "entity" : CEB_ASSESSMENTS_HASH,
+      `${id}@${year}`,
+    );
+  const hasArea = (group: (typeof matches)[number]) =>
+    (group.assessed.value ?? 0) > 0 ||
+    (showPrior && (group.prior.value ?? 0) > 0);
+  const leaves = matches.filter(hasArea).map((contributor) => {
     const assessed = Math.max(0, contributor.assessed.value ?? 0);
     const priorFill = showPrior ? Math.max(0, contributor.prior.value ?? 0) : 0;
-    if (assessed === 0 && priorFill === 0) return [];
     const unknownFill = Math.min(contributor.unknownCurrent, assessed);
     const fill = showCurrent
       ? Math.min(contributor.paidWithinAssessment, assessed - unknownFill)
@@ -81,68 +93,74 @@ export function CebAssessmentsTreemap() {
     const priorAmount = formatAssessmentAmount(contributor.prior);
     const assessedAmount = formatAssessmentAmount(contributor.assessed);
     const paid = contributor.current.value;
-    const valueLabel =
-      showCurrent && assessed > 0 && paid !== null && paid >= 0
-        ? `${formatAssessmentRate((paid / assessed) * 100)} of ${assessedAmount} ${contributor.current.partial ? "reported paid" : "paid"} in ${year} towards ${year}`
+    const showRate =
+      showCurrent &&
+      assessed > 0 &&
+      !contributor.assessed.partial &&
+      !contributor.current.partial &&
+      paid !== null &&
+      paid >= 0;
+    const valueLabel = showRate
+      ? `${formatAssessmentRate((paid / assessed) * 100)} of ${assessedAmount} paid in ${year} towards ${year}`
+      : contributor.assessed.value === null
+        ? "Assessment unknown"
         : `${assessedAmount} assessed`;
-    return [
-      {
-        key: contributor.id,
-        label: contributor.name,
-        value: assessed,
-        layoutValue,
-        color: "#fff",
-        borderColor: colors.assessed,
-        borderWidth: 2,
-        borderFraction:
-          layoutValue > assessed ? assessed / layoutValue : undefined,
-        paleFill: !darkFillBehindLabel,
-        textColor: darkFillBehindLabel ? "#fff" : "var(--color-gray-900)",
+    return {
+      key: contributor.id,
+      label: contributor.name,
+      value: assessed,
+      layoutValue,
+      color: "#fff",
+      borderColor: colors.assessed,
+      borderWidth: 2,
+      borderFraction:
+        layoutValue > assessed ? assessed / layoutValue : undefined,
+      paleFill: !darkFillBehindLabel,
+      textColor: darkFillBehindLabel ? "#fff" : "var(--color-gray-900)",
+      valueLabel,
+      listValueLabel: assessedAmount,
+      listNote: [
         valueLabel,
-        listValueLabel: assessedAmount,
-        listNote: showPrior
-          ? `${valueLabel}. ${measures.prior.label}: ${priorAmount}.`
-          : valueLabel,
-        accessibleDescription: [
-          showCurrent && fill === 0
-            ? `${measures.current.label}: ${currentAmount}.`
-            : "",
-          showPrior && priorFill === 0
-            ? `${measures.prior.label}: ${priorAmount}.`
-            : "",
-        ]
-          .filter(Boolean)
-          .join(" "),
-        data: contributor,
-        segments: [
-          {
-            key: "current",
-            label: measures.current.label,
-            color: colors.current,
-            value: fill,
-            valueLabel: currentAmount,
-          },
-          {
-            key: "unknownCurrent",
-            label: "Payment status unknown",
-            color: colors.unknown,
-            value: unknownFill,
-          },
-          {
-            key: "prior",
-            label: measures.prior.label,
-            color: colors.prior,
-            value: priorFill,
-            valueLabel: priorAmount,
-          },
-        ],
-        onActivate: () =>
-          navigateToSidebar(
-            organizationView ? "entity" : CEB_ASSESSMENTS_HASH,
-            `${contributor.id}@${year}`,
-          ),
-      },
-    ];
+        ...(showCurrent && !showRate
+          ? [`${measures.current.label}: ${currentAmount}`]
+          : []),
+        ...(showPrior ? [`${measures.prior.label}: ${priorAmount}`] : []),
+      ].join(". "),
+      accessibleDescription: [
+        showCurrent && fill === 0
+          ? `${measures.current.label}: ${currentAmount}.`
+          : "",
+        showPrior && priorFill === 0
+          ? `${measures.prior.label}: ${priorAmount}.`
+          : "",
+      ]
+        .filter(Boolean)
+        .join(" "),
+      data: contributor,
+      segments: [
+        {
+          key: "current",
+          label: measures.current.label,
+          color: colors.current,
+          value: fill,
+          valueLabel: currentAmount,
+        },
+        {
+          key: "unknownCurrent",
+          label: "Payment status unknown",
+          color: colors.unknown,
+          value: unknownFill,
+        },
+        {
+          key: "prior",
+          label: measures.prior.label,
+          color: colors.prior,
+          value: priorFill,
+          valueLabel: priorAmount,
+        },
+      ],
+      onActivate: () => open(contributor.id),
+    };
   });
   return (
     <div aria-busy={loading}>
@@ -150,7 +168,7 @@ export function CebAssessmentsTreemap() {
         <SegmentedControl
           label="Group assessments by"
           options={[
-            { value: "contributors", label: "By member state" },
+            { value: "contributors", label: "By contributor" },
             { value: "organizations", label: "By organization" },
           ]}
           value={view}
@@ -199,6 +217,27 @@ export function CebAssessmentsTreemap() {
       </div>
       <GroupedTreemap
         rows={[{ key: "assessments", label: "Assessments", leaves }]}
+        additionalListItems={matches
+          .filter((group) => !hasArea(group))
+          .map((group) => ({
+            id: group.id,
+            label: group.name,
+            amount: group.assessed.value ?? 0,
+            value: formatAssessmentAmount(group.assessed),
+            description: [
+              ...(showCurrent
+                ? [
+                    `${measures.current.label}: ${formatAssessmentAmount(group.current)}`,
+                  ]
+                : []),
+              ...(showPrior
+                ? [
+                    `${measures.prior.label}: ${formatAssessmentAmount(group.prior)}`,
+                  ]
+                : []),
+            ].join(". "),
+            onOpen: () => open(group.id),
+          }))}
         layout={{ leafGap: 1.5 }}
         showRowLabels={false}
         plotClassName={SYSTEM_TREEMAP_HEIGHT_CLASS}
@@ -296,7 +335,22 @@ export function CebAssessmentsTreemap() {
             <ChartFooter
               hint={`Click on ${organizationView ? "an organization" : "a contributor"} to explore details`}
             />
-            {exclusions.map((note) => (
+            {data && (
+              <p className="text-sm text-gray-600">
+                CEB reports data for {organizationCount} organizations in {year}
+                . Coverage varies by year. Totals include all reported amounts
+                and are marked partial if some amounts are missing. Same-year
+                payments need an assessed amount to appear in a tile. The List
+                view also includes records without drawable area.
+              </p>
+            )}
+            {data && absent && (
+              <p className="text-sm text-gray-600">
+                Absent from the {year} annual assessments and payments data
+                among organizations covered in 2020–2025: {absent.join(", ")}.
+              </p>
+            )}
+            {coverageNotes.map((note) => (
               <p key={note} className="text-sm text-gray-600">
                 {note}
               </p>

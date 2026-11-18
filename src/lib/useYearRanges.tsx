@@ -37,7 +37,28 @@ interface YearRanges {
   budgetPkoProposed: YearRange;
 }
 
-const YEAR_RANGES = manifest as YearRanges;
+const assessmentDisplayYears = [2024, 2025];
+
+function assessmentDisplayRange(range: YearRange): YearRange {
+  const years = range.years.filter((year) =>
+    assessmentDisplayYears.includes(year),
+  );
+  const min = years[0];
+  const max = years[years.length - 1];
+  return { years, min, max, default: max };
+}
+
+export const CEB_ASSESSMENT_YEAR_RANGE = assessmentDisplayRange(
+  manifest.cebAssessments,
+);
+
+const YEAR_RANGES: YearRanges = {
+  ...manifest,
+  cebAssessments: CEB_ASSESSMENT_YEAR_RANGE,
+  cebAssessmentOutstanding: assessmentDisplayRange(
+    manifest.cebAssessmentOutstanding,
+  ),
+};
 
 export function useYearRanges(): YearRanges {
   return YEAR_RANGES;

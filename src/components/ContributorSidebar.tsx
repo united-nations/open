@@ -112,10 +112,13 @@ export function ContributorSidebar({
 
   // Year selection
   const yearRanges = useYearRanges();
-  const availableYears = generateYearRange(
-    yearRanges.donors.min,
-    yearRanges.donors.max,
-  ).reverse();
+  const availableYears =
+    initialSection === "assessments"
+      ? [...yearRanges.cebAssessments.years].reverse()
+      : generateYearRange(
+          yearRanges.donors.min,
+          yearRanges.donors.max,
+        ).reverse();
   const [selectedYear, setSelectedYear] = useState(initialYear);
   const assessmentHistory = useCebAssessmentHistory(
     assessmentId,
