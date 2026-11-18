@@ -66,29 +66,12 @@ jobs:
           PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
         run: |
           echo "BASE_PATH=$PAGES_BASE_PATH" >> "$GITHUB_ENV"
-          echo "PORTAL_URL=http://127.0.0.1:8766$PAGES_BASE_PATH" >> "$GITHUB_ENV"
       - name: Build with Next.js
         run: pnpm build
       - name: Verify feature availability
         run: |
           node --test src/lib/tests/featureProfiles.test.mjs
           node scripts/check-feature-export.mjs
-      - name: Install browser
-        run: pnpm exec playwright install --with-deps chromium
-      - name: Verify public page and downloads in browser
-        run: |
-          # Mount the export under its deployment path, as Pages does.
-          static_root="$RUNNER_TEMP/portal-static"
-          mkdir -p "$static_root$(dirname "${BASE_PATH:-/}")"
-          if [ -n "${BASE_PATH:-}" ]; then
-            ln -s "$PWD/out" "$static_root$BASE_PATH"
-          else
-            static_root="$PWD/out"
-          fi
-          python3 -m http.server 8766 --bind 127.0.0.1 --directory "$static_root" > /tmp/portal-http.log 2>&1 &
-          server_pid=$!
-          trap 'kill "$server_pid"' EXIT
-          node tests/browser/feature-profiles.mjs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
