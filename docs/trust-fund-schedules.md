@@ -109,9 +109,12 @@ retaining the source wording. Fund nodes export `description` and
 `descriptionBlocks` and `descriptionSources`, including every physical PDF page containing the text.
 Consecutive lettered items at the start of source lines are displayed as lists,
 with wrapped lines joined within each item. Inline references such as “(a) … and
-(b) …” remain prose. Complete UN document symbols and explicit General Assembly
-or Security Council resolution references link to docs.un.org, preserving the
-source wording. Other references remain plain text.
+(b) …” remain prose. The exporter matches reviewed citation excerpts from
+`data/trust-fund-schedules/description-citations.csv` by fund code and saves
+link offsets and UN document URLs with each paragraph or list item. To add a
+citation, record the annex wording and the verified document URL in that table,
+then rerun the frontend export. The sidebar renders the stored links within
+the source wording.
 These citations remain separate from the financial statement evidence and are
 shown in the sidebar's existing Source references section. The sidebar displays
 the full fund name as its title and its code as the subtitle.

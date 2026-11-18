@@ -7,9 +7,9 @@ import {
 import { TrustFundFlowBreakdown } from "@/components/TrustFundFlowBreakdown";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { SourceCalculation } from "@/components/SourceCalculation";
-import { UNDocumentText } from "@/components/UNDocumentText";
+import { UNDocumentLink } from "@/components/UNDocumentText";
 
-import { useEffect, useId, useMemo, useState } from "react";
+import { Fragment, useEffect, useId, useMemo, useState } from "react";
 import { FinancialBreakdownRow } from "@un-eosg/ui/components/financial-breakdown-row";
 import { ChevronRight } from "lucide-react";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
@@ -43,9 +43,24 @@ import type {
   BudgetNode,
   BudgetNodeSource,
   TrustFundContributorsData,
+  TrustFundDescriptionText,
   TrustFundDestination,
   XBContributorSeries,
 } from "@/types";
+
+function FundDescriptionText({ text, links = [] }: TrustFundDescriptionText) {
+  return (
+    <>
+      {links.map(({ start, end, href }, index) => (
+        <Fragment key={start}>
+          {text.slice(links[index - 1]?.end ?? 0, start)}
+          <UNDocumentLink href={href}>{text.slice(start, end)}</UNDocumentLink>
+        </Fragment>
+      ))}
+      {text.slice(links.at(-1)?.end ?? 0)}
+    </>
+  );
+}
 
 function fundCodes(node: BudgetNode, nodes: BudgetNode[]): Set<string> {
   if (node.tier === "detail") return new Set(node.code ? [node.code] : []);
@@ -552,7 +567,10 @@ export function TrustFundSidebar({
                 node.descriptionBlocks.map((block, index) =>
                   block.type === "paragraph" ? (
                     <p key={index}>
-                      <UNDocumentText text={block.text} />{" "}
+                      <FundDescriptionText
+                        text={block.text}
+                        links={block.links}
+                      />{" "}
                     </p>
                   ) : (
                     <ol
@@ -564,7 +582,10 @@ export function TrustFundSidebar({
                         <li key={item.label} className="flex gap-2">
                           <span className="shrink-0">({item.label}) </span>
                           <span>
-                            <UNDocumentText text={item.text} />{" "}
+                            <FundDescriptionText
+                              text={item.text}
+                              links={item.links}
+                            />{" "}
                           </span>
                         </li>
                       ))}
@@ -572,9 +593,7 @@ export function TrustFundSidebar({
                   ),
                 )
               ) : (
-                <p>
-                  <UNDocumentText text={node.description} />
-                </p>
+                <p>{node.description}</p>
               )}
             </div>
           ) : undefined

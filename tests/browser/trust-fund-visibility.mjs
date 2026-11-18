@@ -178,6 +178,35 @@ if (flags.trustFunds && !flags.additionalTrustFunds) {
       "rgb(0, 119, 184)",
     );
     await page.keyboard.press("Escape");
+    for (const [code, label, href] of [
+      ["CER", "Resolution 60/124", "https://docs.un.org/A/RES/60/124"],
+      [
+        "DDN",
+        "General Assembly Resolution 3243 (XXIX)",
+        "https://docs.un.org/A/RES/3243(XXIX)",
+      ],
+    ]) {
+      const citedFund = data.nodes.find(
+        (node) => node.code === code && node.tier === "detail",
+      );
+      await page.goto(
+        `${portalUrl}/secretariat/trust-funds/#trust-fund=${encodeURIComponent(citedFund.id)}`,
+      );
+      const description = page
+        .getByRole("dialog", { name: citedFund.label, exact: true })
+        .locator("[data-fund-description]");
+      const citation = description.getByRole("link", {
+        name: label,
+        exact: true,
+      });
+      await citation.waitFor();
+      assert.equal(await citation.getAttribute("href"), href);
+      assert.equal(
+        (await description.textContent()).trim().replace(/\s+/g, " "),
+        citedFund.description,
+      );
+      await page.keyboard.press("Escape");
+    }
     await page.goto(
       `${portalUrl}/secretariat/trust-funds/#trust-fund=${encodeURIComponent("xb-entity:UNEP")}`,
       { waitUntil: "networkidle" },

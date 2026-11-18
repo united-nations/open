@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import csv
 import re
+from functools import cache
 from pathlib import Path
 
 import pymupdf
@@ -11,6 +13,7 @@ import pymupdf
 SCHEDULE = re.compile(r"^Schedule\s+(\d+(?:\.\d+)*)\s*$", re.I)
 PARAGRAPH = re.compile(r"^\d+\.\s*(.*)$")
 LIST_ITEM = re.compile(r"^\(([a-z])\)\s*(.*)$")
+CITATIONS_PATH = Path(__file__).resolve().parents[1] / "data/trust-fund-schedules/description-citations.csv"
 
 
 def join_lines(lines: list[str]) -> str:
@@ -66,6 +69,43 @@ def description_blocks(lines: list[str]) -> list[dict]:
     return blocks
 
 
+@cache
+def description_citations() -> dict[str, list[tuple[str, str]]]:
+    citations: dict[str, list[tuple[str, str]]] = {}
+    with CITATIONS_PATH.open(encoding="utf-8", newline="") as source:
+        for row in csv.DictReader(source):
+            citations.setdefault(row["fund_code"], []).append((row["text"], row["href"]))
+    return citations
+
+
+def add_citation_links(blocks: list[dict], code: str) -> None:
+    """Locate reviewed excerpts in each paragraph or list item, preserving source text."""
+    citations = description_citations().get(code, [])
+    for block in blocks:
+        for part in block["items"] if block["type"] == "list" else [block]:
+            text = part["text"]
+            matches = sorted(
+                (match.start(), match.end(), href)
+                for excerpt, href in citations
+                for match in re.finditer(rf"(?<![\w/]){re.escape(excerpt)}(?![\w/])", text, re.I)
+            )
+            if not matches:
+                continue
+            links = []
+            last_end = 0
+            for start, end, href in matches:
+                if start < last_end:
+                    raise ValueError(f"Overlapping trust-fund description citations for {code}")
+                # JavaScript slices strings by UTF-16 code unit.
+                links.append({
+                    "start": len(text[:start].encode("utf-16-le")) // 2,
+                    "end": len(text[:end].encode("utf-16-le")) // 2,
+                    "href": href,
+                })
+                last_end = end
+            part["links"] = links
+
+
 def descriptions_from_pages(pages: list[str], schedules: dict[str, str]) -> dict[str, dict]:
     """Match exact annual schedule numbers; never infer identities from fund names."""
     start = next((index for index, text in enumerate(pages)
@@ -103,9 +143,11 @@ def descriptions_from_pages(pages: list[str], schedules: dict[str, str]) -> dict
         description = join_lines([line for _, line in body if line])
         if len(description) < 40:
             raise ValueError(f"Incomplete annex description for {code}")
+        structured_description = description_blocks([line for _, line in body])
+        add_citation_links(structured_description, code)
         output[code] = {
             "description": description,
-            "description_blocks": description_blocks([line for _, line in body]),
+            "description_blocks": structured_description,
             "pdf_pages": sorted({page for page, line in body if line}),
         }
     return output

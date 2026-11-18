@@ -573,6 +573,12 @@ export interface BudgetChfLayout {
   source: BudgetNodeSource;
 }
 
+export interface TrustFundDescriptionText {
+  text: string;
+  /** UTF-16 offsets into this paragraph or list item's text. */
+  links?: { start: number; end: number; href: string }[];
+}
+
 export interface BudgetNode {
   id: string;
   parentId: string | null;
@@ -630,8 +636,8 @@ export interface BudgetNode {
   /** Fund purpose and authority, as printed in the selected year's schedule annex. */
   description?: string;
   descriptionBlocks?: (
-    | { type: "paragraph"; text: string }
-    | { type: "list"; items: { label: string; text: string }[] }
+    | ({ type: "paragraph" } & TrustFundDescriptionText)
+    | { type: "list"; items: ({ label: string } & TrustFundDescriptionText)[] }
   )[];
   descriptionSources?: BudgetNodeSource[];
   /** Selected-year heading from the trust-fund schedule's table of contents. */

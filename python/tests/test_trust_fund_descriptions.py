@@ -9,10 +9,34 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "python"))
-from trust_fund_descriptions import description_blocks, descriptions_from_pages, extract_descriptions
+from trust_fund_descriptions import add_citation_links, description_blocks, descriptions_from_pages, extract_descriptions
 
 
 class TrustFundDescriptionsTests(unittest.TestCase):
+    def test_reviewed_citations_preserve_list_text_and_combined_symbols(self):
+        blocks = description_blocks([
+            "Sources:",
+            "(a) 📄 The letter (A/69/389-S/2014/679).",
+            "(b) See Security Council resolution 2177 (2014).",
+        ])
+        add_citation_links(blocks, "EER")
+        first, second = blocks[1]["items"]
+        self.assertEqual(first["text"], "📄 The letter (A/69/389-S/2014/679).")
+        self.assertEqual(first["links"], [
+            {"start": 15, "end": 34, "href": "https://digitallibrary.un.org/record/779651"},
+        ])
+        self.assertEqual(second["links"][0]["href"], "https://docs.un.org/S/RES/2177(2014)")
+
+    def test_citation_excerpts_match_only_the_reviewed_fund_and_full_number(self):
+        text = "Resolution 60/124 applies. Resolution 60/1241 also appears."
+        blocks = description_blocks([text])
+        add_citation_links(blocks, "OTHER")
+        self.assertEqual(blocks, [{"type": "paragraph", "text": text}])
+        add_citation_links(blocks, "CER")
+        self.assertEqual(blocks[0]["links"], [
+            {"start": 0, "end": 17, "href": "https://docs.un.org/A/RES/60/124"},
+        ])
+
     def test_lettered_lists_keep_wrapping_and_subsequent_prose(self):
         blocks = description_blocks([
             "The sub-accounts under this Trust Fund are:",
