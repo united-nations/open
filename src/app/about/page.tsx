@@ -37,128 +37,11 @@ export default function AboutPage() {
           and preparation of each dataset are described below.
         </p>
         <section
-          id="personnel-methodology"
-          className="mb-12 scroll-mt-20 space-y-3 text-sm leading-relaxed text-gray-600"
-          aria-labelledby="personnel-methodology-title"
-        >
-          <SectionHeading id="personnel-methodology-title">
-            UN System Personnel
-          </SectionHeading>
-          <p>
-            <PageSourceLink source="personnel" /> counts staff who, on 31
-            December, held a contract of at least one year or had been employed
-            for at least one year. Temporary appointments are included after one
-            year of employment. Consultants, individual contractors and other
-            non-staff personnel are excluded. These figures therefore do not
-            describe every person working with the UN System.
-          </p>
-          <p>
-            The personnel exports use five{" "}
-            <a className="underline" href="https://unsceb.org/data-download/">
-              CEB HR downloads
-            </a>
-            :{" "}
-            <a
-              className="underline"
-              href="https://unsceb.org/assets/data/HR/organization.csv"
-            >
-              organizations
-            </a>
-            ,{" "}
-            <a
-              className="underline"
-              href="https://unsceb.org/assets/data/HR/composition.csv"
-            >
-              grade and gender
-            </a>
-            ,{" "}
-            <a
-              className="underline"
-              href="https://unsceb.org/assets/data/HR/duty_station.csv"
-            >
-              duty stations
-            </a>
-            ,{" "}
-            <a
-              className="underline"
-              href="https://unsceb.org/assets/data/HR/nationality.csv"
-            >
-              nationality
-            </a>
-            , and{" "}
-            <a
-              className="underline"
-              href="https://unsceb.org/assets/data/HR/others.csv"
-            >
-              age and length of service
-            </a>
-            . Definitions follow the{" "}
-            <a
-              className="underline"
-              href="https://unsceb.org/assets/data/HR/ceb_hr_codebook_v1.0.md?v=1.0"
-            >
-              CEB personnel data codebook
-            </a>
-            . Current source files supply every available historical year.
-            Organizations remain responsible for the accuracy and completeness
-            of their submissions.
-          </p>
-          <p>
-            HR reporting boundaries differ from financial reporting. UN
-            Secretariat staff include its reported departments, offices and
-            missions, including UNEP, UNODC and UN-Habitat. The CEB secretariat,
-            JIU, ICSC and UNJSPF remain separately reported as in the downloads.
-            CEB’s published personnel reports can group these differently.
-            Organization and country names follow the current source labels
-            across years. Changes in participation and reporting coverage can
-            affect trends.
-          </p>
-          <p>
-            The Staff treemap on Organizations shows the reported UN entities
-            directly within the Secretariat, without additional mission or
-            department groupings. Their headcounts are counted once within UN.
-            The HR entry DPO is the Department of Peace Operations, not the
-            financial UN-DPO aggregate. Entity-level grade, gender, duty station
-            and nationality are not inferred from Secretariat-wide breakdowns.
-          </p>
-          <p>
-            Locations groups staff by country of duty station. Age and length of
-            service are available only for the whole system. Length of service
-            means completed years in the reporting organization.
-          </p>
-          <p>
-            Relative stacked-area trends show each gender, age band or
-            length-of-service band as a share of all recorded staff in that
-            year, including unknown categories. Gender trends follow the
-            selected organization; an unavailable organization-year stays a gap.
-            Age and length-of-service trends cover the whole system.
-          </p>
-          <p>
-            Missing source values remain unknown. Under CEB’s codebook, an
-            absent combination records no staff for that combination; an
-            unavailable dataset or year is not a zero. Unmapped staff remain in
-            the data and can be found in the Locations list. Country markers
-            show illustrative country coordinates, rather than precise staff
-            locations. Counts from different HR dimensions are alternative
-            breakdowns of staff and are never added together. Additional
-            report-only HR tables are available in the{" "}
-            <a
-              className="underline"
-              href="https://unsceb.org/statistics/human-resources-statistics/"
-            >
-              annual CEB personnel reports
-            </a>
-            .
-          </p>
-        </section>
-        <section
           id="ceb-methodology"
           className="scroll-mt-20 space-y-3 text-sm leading-relaxed text-gray-600"
           aria-labelledby="ceb-methodology-title"
         >
-          <SectionHeading id="ceb-methodology-title">
-            UN System Financials
-          </SectionHeading>
+          <SectionHeading id="ceb-methodology-title">UN System</SectionHeading>
           <div className="space-y-2">
             <CebMethodology />
             <ExpandableCard
@@ -260,6 +143,124 @@ export default function AboutPage() {
                     href="https://www.unsceb.org/assets/media/reports/report-3983-A81408-Budgetary-and-financial-situation-of-the-organizations-of-the-UN-system-2026.pdf#page=28"
                   >
                     A/81/408 (2024–2025)
+                  </a>
+                  .
+                </p>
+              </div>
+            </ExpandableCard>
+            <ExpandableCard id="personnel-methodology" title="Personnel">
+              <div className="space-y-3">
+                <p>
+                  <PageSourceLink source="personnel" /> counts staff who, on 31
+                  December, held a contract of at least one year or had been
+                  employed for at least one year. Temporary appointments are
+                  included after one year of employment. Consultants, individual
+                  contractors and other non-staff personnel are excluded. These
+                  figures therefore do not describe every person working with
+                  the UN System.
+                </p>
+                <p>
+                  The personnel exports use five{" "}
+                  <a
+                    className="underline"
+                    href="https://unsceb.org/data-download/"
+                  >
+                    CEB HR downloads
+                  </a>
+                  :{" "}
+                  <a
+                    className="underline"
+                    href="https://unsceb.org/assets/data/HR/organization.csv"
+                  >
+                    organizations
+                  </a>
+                  ,{" "}
+                  <a
+                    className="underline"
+                    href="https://unsceb.org/assets/data/HR/composition.csv"
+                  >
+                    grade and gender
+                  </a>
+                  ,{" "}
+                  <a
+                    className="underline"
+                    href="https://unsceb.org/assets/data/HR/duty_station.csv"
+                  >
+                    duty stations
+                  </a>
+                  ,{" "}
+                  <a
+                    className="underline"
+                    href="https://unsceb.org/assets/data/HR/nationality.csv"
+                  >
+                    nationality
+                  </a>
+                  , and{" "}
+                  <a
+                    className="underline"
+                    href="https://unsceb.org/assets/data/HR/others.csv"
+                  >
+                    age and length of service
+                  </a>
+                  . Definitions follow the{" "}
+                  <a
+                    className="underline"
+                    href="https://unsceb.org/assets/data/HR/ceb_hr_codebook_v1.0.md?v=1.0"
+                  >
+                    CEB personnel data codebook
+                  </a>
+                  . Current source files supply every available historical year.
+                  Organizations remain responsible for the accuracy and
+                  completeness of their submissions.
+                </p>
+                <p>
+                  HR reporting boundaries differ from financial reporting. UN
+                  Secretariat staff include its reported departments, offices
+                  and missions, including UNEP, UNODC and UN-Habitat. The CEB
+                  secretariat, JIU, ICSC and UNJSPF remain separately reported
+                  as in the downloads. CEB’s published personnel reports can
+                  group these differently. Organization and country names follow
+                  the current source labels across years. Changes in
+                  participation and reporting coverage can affect trends.
+                </p>
+                <p>
+                  The Staff treemap on Organizations shows the reported UN
+                  entities directly within the Secretariat, without additional
+                  mission or department groupings. Their headcounts are counted
+                  once within UN. The HR entry DPO is the Department of Peace
+                  Operations, not the financial UN-DPO aggregate. Entity-level
+                  grade, gender, duty station and nationality are not inferred
+                  from Secretariat-wide breakdowns.
+                </p>
+                <p>
+                  Locations groups staff by country of duty station. Age and
+                  length of service are available only for the whole system.
+                  Length of service means completed years in the reporting
+                  organization.
+                </p>
+                <p>
+                  Relative stacked-area trends show each gender, age band or
+                  length-of-service band as a share of all recorded staff in
+                  that year, including unknown categories. Gender trends follow
+                  the selected organization; an unavailable organization-year
+                  stays a gap. Age and length-of-service trends cover the whole
+                  system.
+                </p>
+                <p>
+                  Missing source values remain unknown. Under CEB’s codebook, an
+                  absent combination records no staff for that combination; an
+                  unavailable dataset or year is not a zero. Unmapped staff
+                  remain in the data and can be found in the Locations list.
+                  Country markers show illustrative country coordinates, rather
+                  than precise staff locations. Counts from different HR
+                  dimensions are alternative breakdowns of staff and are never
+                  added together. Additional report-only HR tables are available
+                  in the{" "}
+                  <a
+                    className="underline"
+                    href="https://unsceb.org/statistics/human-resources-statistics/"
+                  >
+                    annual CEB personnel reports
                   </a>
                   .
                 </p>
