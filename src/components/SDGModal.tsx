@@ -3,6 +3,7 @@ import { useYearResource } from "@/hooks/useYearResource";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 
 import { useCallback, useEffect, useState } from "react";
+import { ExternalLink } from "lucide-react";
 import { formatBudget } from "@/lib/entities";
 import { SDG, SDGExpensesData, getSDGKey } from "@/lib/sdgs";
 import { useRouter } from "next/navigation";
@@ -146,6 +147,7 @@ export default function SDGModal({
         className="sm:w-full"
         title={
           <DrawerTitle className="flex items-start gap-2">
+            <span className="min-w-0">{sdg.shortTitle}</span>
             {sdg.number > 0 && (
               <span
                 className="flex size-6 shrink-0 items-center justify-center font-bold text-white"
@@ -154,7 +156,6 @@ export default function SDGModal({
                 {sdg.number}
               </span>
             )}
-            <span className="min-w-0">{sdg.shortTitle}</span>
           </DrawerTitle>
         }
         subtitle={sdg.title}
@@ -405,41 +406,17 @@ export default function SDGModal({
             </div>
           )}
 
-          {/* Targets and Indicators */}
           {sdg.number > 0 && (
             <div className="border-t border-gray-200 pt-4">
-              <FinancialPanelHeading className="mb-3">
+              <a
+                href={`https://sdgs.un.org/goals/goal${sdg.number}#targets_and_indicators`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 text-sm text-un-blue hover:underline"
+              >
                 Targets and indicators
-              </FinancialPanelHeading>
-              <div className="space-y-4">
-                {sdg.targets.map((target) => (
-                  <div key={target.number}>
-                    <FinancialPanelHeading subheading className="mb-2">
-                      Target {target.number}
-                    </FinancialPanelHeading>
-                    <p className="mb-3 text-xs leading-relaxed text-gray-700 sm:text-sm">
-                      {target.description}
-                    </p>
-                    {target.indicators.length > 0 && (
-                      <div className="ml-3 space-y-2">
-                        {target.indicators.map((indicator) => (
-                          <div
-                            key={indicator.number}
-                            className="flex items-start gap-2 text-xs sm:text-sm"
-                          >
-                            <span className="font-semibold whitespace-nowrap text-gray-900">
-                              {indicator.number}
-                            </span>
-                            <span className="leading-relaxed text-gray-700">
-                              {indicator.description}
-                            </span>
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
+                <ExternalLink className="h-3 w-3" aria-hidden="true" />
+              </a>
             </div>
           )}
         </div>
