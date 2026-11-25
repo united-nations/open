@@ -1,6 +1,6 @@
 "use client";
 
-import { Check, Maximize2, Share2, X } from "lucide-react";
+import { Check, Share2, X } from "lucide-react";
 import { useState } from "react";
 import {
   DetailPanelControls,
@@ -11,31 +11,31 @@ interface SidebarControlsProps {
   onClose: () => void;
   closeLabel: string;
   shareHash?: string;
-  onExpand?: () => void;
-  expandLabel?: string;
 }
 
 export function SidebarControls({
   onClose,
   closeLabel,
   shareHash,
-  onExpand,
-  expandLabel = "Expand details",
 }: SidebarControlsProps) {
   const [copied, setCopied] = useState(false);
   const share = useShareAction(shareHash, copied, setCopied);
-  const expand = onExpand
-    ? action(expandLabel, onExpand, <Maximize2 className="size-4" />)
-    : undefined;
   const close = action(closeLabel, onClose, <X className="size-4" />);
 
   return (
     <div className="relative">
-      <DetailPanelControls share={share} expand={expand} close={close} />
+      <DetailPanelControls
+        share={share}
+        resize={{
+          expandLabel: "Expand to full width",
+          collapseLabel: "Restore sidebar width",
+        }}
+        close={close}
+      />
       {copied && (
         <span
           role="status"
-          className="absolute end-0 top-full mt-2 whitespace-nowrap rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm text-slate-800 shadow-lg"
+          className="absolute end-0 top-full mt-2 rounded-md border border-slate-200 bg-white px-3 py-1.5 text-sm whitespace-nowrap text-slate-800 shadow-lg"
         >
           Link copied!
         </span>
@@ -55,7 +55,11 @@ function useShareAction(
 ) {
   if (!hash) return undefined;
   const label = copied ? "Link copied!" : "Copy link to clipboard";
-  const icon = copied ? <Check className="size-4" /> : <Share2 className="size-4" />;
+  const icon = copied ? (
+    <Check className="size-4" />
+  ) : (
+    <Share2 className="size-4" />
+  );
   return action(label, () => copySidebarLink(hash, setCopied), icon);
 }
 

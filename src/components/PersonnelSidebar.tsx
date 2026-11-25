@@ -1,6 +1,7 @@
 "use client";
 
 import * as Dialog from "@radix-ui/react-dialog";
+import { DetailPanelExpansion } from "@un-eosg/ui/components/detail-panel-expansion";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
 import {
   FinancialPanelTotalRow,
@@ -181,125 +182,112 @@ export function PersonnelSidebar({
               : []),
           ];
   return (
-    <Dialog.Root
-      open
-      onOpenChange={(open) => {
-        if (!open) onClose();
-      }}
-    >
-      <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50" />
-        <Dialog.Content
-          aria-modal="true"
-          onCloseAutoFocus={(event) => {
-            event.preventDefault();
-            onRestoreFocus();
+    <DetailPanelExpansion>
+      {({ style }) => (
+        <Dialog.Root
+          open
+          onOpenChange={(open) => {
+            if (!open) onClose();
           }}
-          aria-describedby={undefined}
-          className="fixed inset-y-0 right-0 z-50 w-full bg-white shadow-xl sm:w-2/3 lg:w-1/3 lg:min-w-[500px]"
         >
-          <Dialog.Title className="sr-only">{title} personnel</Dialog.Title>
-          <FinancialDetailPanel
-            title={title}
-            titleId="personnel-sidebar-title"
-            subtitle={
-              detail.kind === "entity"
-                ? "Reported UN Secretariat entity"
-                : detail.kind === "org"
-                  ? "CEB personnel statistics"
-                  : `${detail.kind === "duty" ? "Country of duty station" : "Nationality"} · ${scopeLabel ?? (detail.scope === "all" ? "All organizations" : detail.scope)}`
-            }
-            className="sm:w-full"
-            yearSelectorPlacement="header"
-            yearSelector={{
-              label: "Select personnel year",
-              years,
-              selected: selectedYear,
-              onChange: onYearChange,
-            }}
-            controls={
-              <SidebarControls
-                onClose={onClose}
-                closeLabel="Close personnel sidebar"
-                shareHash={`personnel=${encodeURIComponent(`${detail.kind}|${detail.key}|${detail.scope}@${selectedYear}`)}`}
-              />
-            }
-          >
-            {loading ? (
-              <p role="status" className="py-8 text-sm text-gray-600">
-                Loading personnel data for {selectedYear}…
-              </p>
-            ) : error ? (
-              <p role="alert" className="py-8 text-sm text-gray-600">
-                Personnel data could not be loaded for {selectedYear}.{" "}
-                <button type="button" className="underline" onClick={onRetry}>
-                  Try again
-                </button>
-              </p>
-            ) : (
-              <div className="space-y-5">
-                <FinancialPanelTotalRow
-                  label={`Staff at 31 December ${data.year}`}
-                  value={total === null ? "Unavailable" : formatPeople(total)}
-                />
-                {detail.kind === "entity" && total !== null && (
-                  <div className="space-y-3 text-sm text-gray-600">
-                    <p>Included once within UN Secretariat staff.</p>
-                    {detail.key === "DPO" && (
-                      <p>
-                        DPO here is the Department of Peace Operations. It is
-                        not the financial UN-DPO peacekeeping aggregate.
-                      </p>
-                    )}
-                    <p>
-                      CEB reports this entity’s headcount. Grade, gender, duty
-                      station and nationality data are published for the UN
-                      Secretariat as a whole, without this entity breakdown.
-                    </p>
+          <Dialog.Portal>
+            <Dialog.Overlay className="fixed inset-0 z-50 bg-black/50" />
+            <Dialog.Content
+              data-detail-drawer=""
+              style={style}
+              aria-modal="true"
+              onCloseAutoFocus={(event) => {
+                event.preventDefault();
+                onRestoreFocus();
+              }}
+              aria-describedby={undefined}
+              className="fixed inset-y-0 right-0 z-50 w-full bg-white shadow-xl sm:w-2/3 lg:w-1/3 lg:min-w-[500px]"
+            >
+              <Dialog.Title className="sr-only">{title} personnel</Dialog.Title>
+              <FinancialDetailPanel
+                title={title}
+                titleId="personnel-sidebar-title"
+                subtitle={
+                  detail.kind === "entity"
+                    ? "Reported UN Secretariat entity"
+                    : detail.kind === "org"
+                      ? "CEB personnel statistics"
+                      : `${detail.kind === "duty" ? "Country of duty station" : "Nationality"} · ${scopeLabel ?? (detail.scope === "all" ? "All organizations" : detail.scope)}`
+                }
+                className="sm:w-full"
+                yearSelectorPlacement="header"
+                yearSelector={{
+                  label: "Select personnel year",
+                  years,
+                  selected: selectedYear,
+                  onChange: onYearChange,
+                }}
+                controls={
+                  <SidebarControls
+                    onClose={onClose}
+                    closeLabel="Close personnel sidebar"
+                    shareHash={`personnel=${encodeURIComponent(`${detail.kind}|${detail.key}|${detail.scope}@${selectedYear}`)}`}
+                  />
+                }
+              >
+                {loading ? (
+                  <p role="status" className="py-8 text-sm text-gray-600">
+                    Loading personnel data for {selectedYear}…
+                  </p>
+                ) : error ? (
+                  <p role="alert" className="py-8 text-sm text-gray-600">
+                    Personnel data could not be loaded for {selectedYear}.{" "}
                     <button
                       type="button"
-                      className="underline underline-offset-2"
-                      onClick={onOpenSecretariat}
+                      className="underline"
+                      onClick={onRetry}
                     >
-                      Explore all UN Secretariat staff
+                      Try again
                     </button>
-                  </div>
-                )}
-                {total === null ? (
-                  <p className="text-sm text-gray-600">
-                    No personnel records are available for this selection.
                   </p>
                 ) : (
-                  sections.map((section) => (
-                    <section key={section.title}>
-                      <FinancialPanelHeading>
-                        {section.title}
-                      </FinancialPanelHeading>
-                      {section.rows.slice(0, 8).map((row) => (
-                        <FinancialPanelRankedRow
-                          key={row.label}
-                          label={row.label}
-                          value={formatPeople(row.count)}
+                  <div className="space-y-5">
+                    <FinancialPanelTotalRow
+                      label={`Staff at 31 December ${data.year}`}
+                      value={
+                        total === null ? "Unavailable" : formatPeople(total)
+                      }
+                    />
+                    {detail.kind === "entity" && total !== null && (
+                      <div className="space-y-3 text-sm text-gray-600">
+                        <p>Included once within UN Secretariat staff.</p>
+                        {detail.key === "DPO" && (
+                          <p>
+                            DPO here is the Department of Peace Operations. It
+                            is not the financial UN-DPO peacekeeping aggregate.
+                          </p>
+                        )}
+                        <p>
+                          CEB reports this entity’s headcount. Grade, gender,
+                          duty station and nationality data are published for
+                          the UN Secretariat as a whole, without this entity
+                          breakdown.
+                        </p>
+                        <button
+                          type="button"
+                          className="underline underline-offset-2"
+                          onClick={onOpenSecretariat}
                         >
-                          <FinancialPanelBar
-                            percent={
-                              (100 * row.count) /
-                              Math.max(
-                                1,
-                                ...section.rows.map((item) => item.count),
-                              )
-                            }
-                            color="#009edb"
-                          />
-                        </FinancialPanelRankedRow>
-                      ))}
-                      {section.rows.length > 8 && (
-                        <details className="mt-3 text-xs text-gray-600">
-                          <summary className="w-fit cursor-pointer underline underline-offset-2">
-                            Show all {section.rows.length}{" "}
-                            {section.title.toLocaleLowerCase()}
-                          </summary>
-                          {section.rows.slice(8).map((row) => (
+                          Explore all UN Secretariat staff
+                        </button>
+                      </div>
+                    )}
+                    {total === null ? (
+                      <p className="text-sm text-gray-600">
+                        No personnel records are available for this selection.
+                      </p>
+                    ) : (
+                      sections.map((section) => (
+                        <section key={section.title}>
+                          <FinancialPanelHeading>
+                            {section.title}
+                          </FinancialPanelHeading>
+                          {section.rows.slice(0, 8).map((row) => (
                             <FinancialPanelRankedRow
                               key={row.label}
                               label={row.label}
@@ -317,46 +305,74 @@ export function PersonnelSidebar({
                               />
                             </FinancialPanelRankedRow>
                           ))}
-                        </details>
-                      )}
-                    </section>
-                  ))
+                          {section.rows.length > 8 && (
+                            <details className="mt-3 text-xs text-gray-600">
+                              <summary className="w-fit cursor-pointer underline underline-offset-2">
+                                Show all {section.rows.length}{" "}
+                                {section.title.toLocaleLowerCase()}
+                              </summary>
+                              {section.rows.slice(8).map((row) => (
+                                <FinancialPanelRankedRow
+                                  key={row.label}
+                                  label={row.label}
+                                  value={formatPeople(row.count)}
+                                >
+                                  <FinancialPanelBar
+                                    percent={
+                                      (100 * row.count) /
+                                      Math.max(
+                                        1,
+                                        ...section.rows.map(
+                                          (item) => item.count,
+                                        ),
+                                      )
+                                    }
+                                    color="#009edb"
+                                  />
+                                </FinancialPanelRankedRow>
+                              ))}
+                            </details>
+                          )}
+                        </section>
+                      ))
+                    )}
+                    <p className="text-xs leading-relaxed text-gray-500">
+                      Staff with a contract of at least one year or at least one
+                      year of employment. Consultants, contractors and other
+                      non-staff personnel are excluded. HR reporting scope can
+                      differ from financial reporting.
+                    </p>
+                    <p className="text-xs text-gray-600">
+                      Source:{" "}
+                      <a
+                        className="underline"
+                        href={`https://unsceb.org/assets/data/HR/${detail.kind === "org" || detail.kind === "entity" ? "organization" : detail.kind === "duty" ? "duty_station" : "nationality"}.csv`}
+                      >
+                        CEB personnel data
+                      </a>
+                      ;{" "}
+                      <a
+                        className="underline"
+                        href="https://unsceb.org/assets/data/HR/composition.csv"
+                      >
+                        grade and gender
+                      </a>
+                      ;{" "}
+                      <a
+                        className="underline"
+                        href="https://unsceb.org/assets/data/HR/ceb_hr_codebook_v1.0.md?v=1.0"
+                      >
+                        definitions
+                      </a>
+                      .
+                    </p>
+                  </div>
                 )}
-                <p className="text-xs leading-relaxed text-gray-500">
-                  Staff with a contract of at least one year or at least one
-                  year of employment. Consultants, contractors and other
-                  non-staff personnel are excluded. HR reporting scope can
-                  differ from financial reporting.
-                </p>
-                <p className="text-xs text-gray-600">
-                  Source:{" "}
-                  <a
-                    className="underline"
-                    href={`https://unsceb.org/assets/data/HR/${detail.kind === "org" || detail.kind === "entity" ? "organization" : detail.kind === "duty" ? "duty_station" : "nationality"}.csv`}
-                  >
-                    CEB personnel data
-                  </a>
-                  ;{" "}
-                  <a
-                    className="underline"
-                    href="https://unsceb.org/assets/data/HR/composition.csv"
-                  >
-                    grade and gender
-                  </a>
-                  ;{" "}
-                  <a
-                    className="underline"
-                    href="https://unsceb.org/assets/data/HR/ceb_hr_codebook_v1.0.md?v=1.0"
-                  >
-                    definitions
-                  </a>
-                  .
-                </p>
-              </div>
-            )}
-          </FinancialDetailPanel>
-        </Dialog.Content>
-      </Dialog.Portal>
-    </Dialog.Root>
+              </FinancialDetailPanel>
+            </Dialog.Content>
+          </Dialog.Portal>
+        </Dialog.Root>
+      )}
+    </DetailPanelExpansion>
   );
 }

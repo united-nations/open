@@ -31,10 +31,9 @@ index 2b2fb47858ab3bec4f0986038fe8c2343b33752e..71524b7ad5d3dce5a64ff306cf5bd5fb
          {yearControl}
          {search}
 diff --git a/components/detail-panel-controls.tsx b/components/detail-panel-controls.tsx
-index 689ddd3b8b5ec18f2386ffed073a59292aaa29ab..e799e1b7fb2e68f1eea747700ab8a9d2f4529e10 100644
 --- a/components/detail-panel-controls.tsx
 +++ b/components/detail-panel-controls.tsx
-@@ -23,7 +23,7 @@ interface DetailPanelControlsProps {
+@@ -30,7 +30,7 @@
  
  function DetailPanelControl({ action }: { action: DetailPanelAction }) {
    const className =
@@ -44,23 +43,36 @@ index 689ddd3b8b5ec18f2386ffed073a59292aaa29ab..e799e1b7fb2e68f1eea747700ab8a9d2
      return (
        <a
 diff --git a/components/financial-panel-parts.tsx b/components/financial-panel-parts.tsx
-index 3010584d83a143ccb8e6f8d7286ddb398fb87e52..73e125825109f2a09d22acec34e18faa8eb2e4ee 100644
 --- a/components/financial-panel-parts.tsx
 +++ b/components/financial-panel-parts.tsx
-@@ -93,6 +93,7 @@ export interface FinancialPanelYearSelectorProps {
+@@ -93,6 +93,7 @@
    label: string;
    pending?: boolean;
    pendingLabel?: string;
 +  formatLabel?: (year: number) => string;
  }
- export function FinancialPanelYearSelector({
+ export interface FinancialPanelPeriodSelectorProps {
+   options: readonly { value: string; label: string }[];
+@@ -108,6 +109,7 @@
    years,
-@@ -102,24 +103,35 @@ export function FinancialPanelYearSelector({
-   pending,
-   pendingLabel,
-   variant = "underline",
+   selected,
+   onChange,
 +  formatLabel = String,
+   ...props
  }: FinancialPanelYearSelectorProps) {
+   return (
+@@ -115,7 +117,7 @@
+       {...props}
+       options={years.map((year) => ({
+         value: String(year),
+-        label: String(year),
++        label: formatLabel(year),
+       }))}
+       selected={String(selected)}
+       onChange={(value) => onChange(Number(value))}
+@@ -133,16 +135,26 @@
+   variant = "underline",
+ }: FinancialPanelPeriodSelectorProps) {
    const [open, setOpen] = React.useState(false);
 +  const trigger = React.useRef<HTMLButtonElement>(null);
 +  const [portalContainer, setPortalContainer] = React.useState<HTMLElement | null>(null);
@@ -87,14 +99,7 @@ index 3010584d83a143ccb8e6f8d7286ddb398fb87e52..73e125825109f2a09d22acec34e18faa
                variant === "pill"
                  ? "h-8 rounded-full bg-secondary px-3 text-muted-foreground hover:bg-muted hover:text-foreground"
                  : "border-b border-gray-400 text-gray-600 hover:text-foreground",
-             )}
-           >
--            <span className="font-medium">{selected}</span>
-+            <span className="font-medium">{formatLabel(selected)}</span>
-             <ChevronDown
-               className={cn(
-                 "size-3.5 transition-transform",
-@@ -128,11 +140,11 @@ export function FinancialPanelYearSelector({
+@@ -160,11 +172,11 @@
              />
            </button>
          </Popover.Trigger>
@@ -107,24 +112,17 @@ index 3010584d83a143ccb8e6f8d7286ddb398fb87e52..73e125825109f2a09d22acec34e18faa
 +            className="z-[100] max-h-[var(--radix-popover-content-available-height)] min-w-20 overflow-y-auto overscroll-contain rounded-md border border-border bg-white p-1 shadow-md"
            >
              <div className="flex flex-col">
-               {years.map((year) => (
-@@ -146,13 +158,13 @@ export function FinancialPanelYearSelector({
+               {options.map((option) => (
+@@ -178,7 +190,7 @@
                    }}
                    className={cn(
                      typography.body,
 -                    "rounded px-3 py-1.5 text-start",
 +                    "min-h-11 rounded px-3 py-1.5 text-start sm:min-h-0",
-                     year === selected
+                     option.value === selected
                        ? "bg-secondary font-medium text-foreground"
                        : "text-gray-600 hover:bg-muted",
-                   )}
-                 >
--                  {year}
-+                  {formatLabel(year)}
-                 </button>
-               ))}
-             </div>
-@@ -179,8 +191,8 @@ export function FinancialPanelBar({
+@@ -211,8 +223,8 @@
    segments?: readonly { id: string; percent: number; color: string }[];
  }) {
    return (
@@ -135,7 +133,7 @@ index 3010584d83a143ccb8e6f8d7286ddb398fb87e52..73e125825109f2a09d22acec34e18faa
          className="flex h-2 overflow-hidden rounded-sm"
          style={{
            width: `${Math.max(0, Math.min(100, percent))}%`,
-@@ -188,7 +200,7 @@ export function FinancialPanelBar({
+@@ -220,7 +232,7 @@
          }}
        >
          {segments?.map((s) => (
@@ -144,7 +142,7 @@ index 3010584d83a143ccb8e6f8d7286ddb398fb87e52..73e125825109f2a09d22acec34e18faa
              key={s.id}
              className="transition-all"
              style={{
-@@ -197,8 +209,8 @@ export function FinancialPanelBar({
+@@ -229,8 +241,8 @@
              }}
            />
          ))}
@@ -155,7 +153,7 @@ index 3010584d83a143ccb8e6f8d7286ddb398fb87e52..73e125825109f2a09d22acec34e18faa
    );
  }
  
-@@ -235,7 +247,7 @@ export function FinancialPanelRankedRow({
+@@ -267,7 +279,7 @@
            title={title ?? label}
            className={cn(
              typography.label,

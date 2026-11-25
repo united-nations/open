@@ -168,6 +168,7 @@ function ContributorDialog({
       className="sm:w-[32rem]"
     >
       <FinancialDetailPanel
+        className="sm:w-full"
         title={<DrawerTitle>{initialRow.name}</DrawerTitle>}
         titleId="xb-contributor-title"
         subtitle={`${initialSeries.entity} · ${year}`}
