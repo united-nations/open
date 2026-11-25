@@ -1,6 +1,7 @@
 "use client";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { SourceCalculation } from "@/components/SourceCalculation";
+import { BudgetChfConversionDetails } from "@/components/BudgetChfConversionDetails";
 import { sourcePageUrl, sourcePages } from "@/lib/sourceReferences";
 import { Tooltip } from "@un-eosg/ui/components/tooltip";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
@@ -549,13 +550,9 @@ function BudgetDetailSidebar({
                                         (source) =>
                                           source.operand?.currency !== "CHF",
                                       )}
-                                      amount={amount - chf.usdForLayout}
+                                      amount={amount - chf.usdEquivalent}
                                     />
-                                    <SourceCalculation
-                                      references={[chf.source]}
-                                      amount={chf.amount}
-                                      currency="CHF"
-                                    />
+                                    <BudgetChfConversionDetails chf={chf} />
                                   </>
                                 ) : (
                                   <SourceCalculation
@@ -614,17 +611,18 @@ function BudgetDetailSidebar({
                 )}
                 {node.chf && (
                   <p className="mt-2 text-xs text-gray-500">
-                    CHF amounts are printed in the PPB. Tile areas use the{" "}
-                    {node.chf.year} time-weighted{" "}
+                    USD equivalents include ITC expenditure printed in CHF,
+                    converted at the {node.chf.rateYear}{" "}
                     <a
                       className="text-un-blue underline"
-                      href={node.chf.rateSourceUrl}
+                      href={node.chf.rateSource.url}
                       target="_blank"
                       rel="noreferrer"
                     >
-                      UN Treasury operational rates
+                      UN budget rate
                     </a>{" "}
-                    for comparison on the USD scale.
+                    of CHF {node.chf.chfPerUsd} per USD. The funding-source
+                    tooltip retains the original CHF amount and calculation.
                   </p>
                 )}
                 <div className="mt-4">

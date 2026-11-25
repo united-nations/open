@@ -504,10 +504,20 @@ function ProgrammeBudgetMethodologyNotes() {
         </li>
       </ul>
       <p>
-        Amounts retain their printed currencies. For chart areas and shares,
-        Swiss-franc amounts are converted using UN Treasury operational rates,
-        weighted by calendar days in the expenditure year. The original amounts
-        and conversion rates are shown in the details.
+        Charts, shares, totals and trends use USD equivalents. ITC
+        extrabudgetary expenditure printed in Swiss francs is divided by the
+        following year’s published UN budget rate, following the rate-year
+        convention in the ARWO source notes. We apply the same convention to all
+        displayed expenditure years, including 2019–2021. For example, 2025 CHF
+        expenditure uses the{" "}
+        <SourceLink href="https://documents.un.org/doc/undoc/gen/n25/276/53/pdf/n2527653.pdf#page=3">
+          2026 budget rate of CHF 0.7737 per USD
+        </SourceLink>
+        . These rates reflect the UN’s forward currency purchases. The converted
+        figures are budget-rate equivalents, rather than transaction-date USD
+        expenditure. Original CHF amounts, the rate year and source citations
+        remain in the details. The USD UN grant is retained separately; we do
+        not add the joint CHF regular budget or the WTO share.
       </p>
     </>
   );

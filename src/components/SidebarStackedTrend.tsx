@@ -87,7 +87,7 @@ export function SidebarStackedTrend({
       ) && (
         <p className="mt-2 text-xs text-gray-500" role="status">
           Some observations are unavailable. Gaps do not represent zero
-          spending.
+          expenditure.
         </p>
       )}
     </section>

@@ -48,7 +48,9 @@ try {
     4,
   );
   assert.ok(
-    (await sidebar.innerText()).includes("Gaps do not represent zero spending"),
+    (await sidebar.innerText()).includes(
+      "Gaps do not represent zero expenditure",
+    ),
   );
   await sidebar.screenshot({ path: "audits/browser/eosg-2025-funding.png" });
   await sidebar
@@ -60,8 +62,8 @@ try {
       "regular-budget=section-32~section-special-purpose-allocations~bank-charges";
   });
   await sidebar.waitFor();
-  await sidebar.getByText(/476/).first().waitFor();
-  assert.ok((await sidebar.innerText()).match(/[-−]\$476\.5K/));
+  await sidebar.getByText(/477/).first().waitFor();
+  assert.ok((await sidebar.innerText()).match(/[-−]\$477K/));
   assert.deepEqual(errors, []);
   console.log(
     "EOSG 2025 XB, unavailable trend years, and signed bank-charge amounts verified.",

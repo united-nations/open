@@ -19,7 +19,7 @@ const code = ts.transpileModule(
 ).outputText;
 new Function("require", "exports", code)(
   (name) =>
-    name === "@/lib/entities"
+    name === "@/lib/entities" || name === "@un-eosg/ui/format-budget"
       ? formatExports
       : {
           BUDGET_FUNDING_SOURCES: [
@@ -70,7 +70,9 @@ assert.equal(data.meta.publishedUsdTotal, 12085071200);
 for (const funding of ["regular_budget", "other_assessed", "extrabudgetary"]) {
   assert.ok(eosg.metricSources.expenditure[funding].length > 0);
   assert.ok(
-    eosg.metricSources.expenditure[funding].every((ref) => ref.pdfPage === 34),
+    eosg.metricSources.expenditure[funding].every(
+      (ref) => ref.pdfPage === (funding === "regular_budget" ? 34 : 35),
+    ),
   );
 }
 console.log("Budget funding regression checks passed");
@@ -79,13 +81,14 @@ const itc = data.nodes.find(
   (node) => node.tier === "budget_unit" && node.entity?.acronym === "ITC",
 );
 assert.equal(itc.chf.amount, 109410100);
-assert.equal(formatBudgetFunding(itc, "extrabudgetary"), "CHF 109.4M");
-assert.equal(formatBudgetNode(itc), "$22.5M + CHF 109.4M");
-assert.ok(
-  !formatBudgetNode(itc).includes("131.5"),
-  "Converted layout weight must not be printed as USD expenditure",
-);
-assert.ok(itc.values.extrabudgetary > 131000000);
+assert.equal(itc.chf.usdEquivalent, 141411529.02);
+assert.equal(itc.chf.chfPerUsd, "0.7737");
+assert.equal(itc.chf.rateYear, 2026);
+assert.equal(formatBudgetFunding(itc, "extrabudgetary"), "$141M");
+assert.equal(formatBudgetNode(itc), "$164M");
+assert.equal(budgetFundingPoint(2025, itc).extrabudgetary, 141411529.02);
 const root = data.nodes.find((node) => node.parentId === null);
 assert.equal(root.chf.amount, itc.chf.amount);
-assert.equal(root.chf.usdForLayout, itc.chf.usdForLayout);
+assert.equal(root.chf.usdEquivalent, itc.chf.usdEquivalent);
+assert.equal(formatBudgetFunding(root, "extrabudgetary"), "$8.4B");
+assert.equal(formatBudgetNode(root), "$12.2B");

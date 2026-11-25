@@ -1,0 +1,57 @@
+{
+  "source": "United Nations programme-budget exchange rates",
+  "sourceUnits": "CHF per USD",
+  "method": "Divide printed CHF expenditure by the published UN budget rate for the following year, following the rate-year convention in ARWO's 2022–2025 ITC notes. Apply the same presentation convention to earlier PPB years. These are budget-rate USD equivalents, not transaction-date USD expenditure.",
+  "reviewedAt": "2026-11-25",
+  "ratesByBudgetYear": {
+    "2020": {
+      "chfPerUsd": "0.9740",
+      "symbol": "A/76/347",
+      "url": "https://documents.un.org/api/symbol/access?s=A/76/347&l=en&t=pdf#page=7",
+      "pdfPage": 7,
+      "location": "paragraph 14: forward purchases for 2020"
+    },
+    "2021": {
+      "chfPerUsd": "0.8960",
+      "symbol": "A/76/7",
+      "url": "https://da.desa.un.org/sites/default/files/dafiles/n2122530.pdf#page=156",
+      "pdfPage": 156,
+      "location": "paragraph IV.84: approved 2021 ITC budget rate"
+    },
+    "2022": {
+      "chfPerUsd": "0.9235",
+      "symbol": "A/77/632",
+      "url": "https://documents.un.org/doc/undoc/gen/n22/724/53/pdf/n2272453.pdf#page=37",
+      "pdfPage": 37,
+      "location": "appendix I.B: approved 2022 rate (more precise than the rounded 0.924 in A/76/593)"
+    },
+    "2023": {
+      "chfPerUsd": "0.9272",
+      "symbol": "A/77/632",
+      "url": "https://documents.un.org/doc/undoc/gen/n22/724/53/pdf/n2272453.pdf#page=11",
+      "pdfPage": 11,
+      "location": "paragraphs 41–42: forward purchases for 2023"
+    },
+    "2024": {
+      "chfPerUsd": "0.8758",
+      "symbol": "A/78/614",
+      "url": "https://documents.un.org/doc/undoc/gen/n23/371/91/pdf/n2337191.pdf#page=12",
+      "pdfPage": 12,
+      "location": "paragraph 45: forward purchases for 2024"
+    },
+    "2025": {
+      "chfPerUsd": "0.8220",
+      "symbol": "A/79/375",
+      "url": "https://documents.un.org/api/symbol/access?s=A/79/375&l=en&t=pdf#page=3",
+      "pdfPage": 3,
+      "location": "paragraph 4: purchased rate for 2025; forward-rate policy in paragraph 39"
+    },
+    "2026": {
+      "chfPerUsd": "0.7737",
+      "symbol": "A/80/480",
+      "url": "https://documents.un.org/doc/undoc/gen/n25/276/53/pdf/n2527653.pdf#page=3",
+      "pdfPage": 3,
+      "location": "paragraph 4: forward purchases for 2026"
+    }
+  }
+}

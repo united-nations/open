@@ -69,6 +69,7 @@ export function collectBudgetNodeSources(
     }
   };
   appendEvidence(node.supportingSources ?? []);
+  if (node.chf) appendEvidence([node.chf.source, node.chf.rateSource]);
   const totalSource = node.sources?.total_all_sources;
   if (totalSource) {
     appendEvidence([

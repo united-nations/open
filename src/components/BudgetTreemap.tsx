@@ -67,7 +67,6 @@ import { formatBudget } from "@/lib/entities";
 import {
   formatBudgetNode,
   formatBudgetFunding,
-  formatCurrencyParts,
   addChf,
 } from "@/lib/budgetFunding";
 import {
@@ -75,6 +74,7 @@ import {
   uniqueBudgetSources,
 } from "@/lib/budgetSourceCollection";
 import { BudgetSidebar } from "@/components/BudgetSidebar";
+import { BudgetChfConversionDetails } from "@/components/BudgetChfConversionDetails";
 import { ChartSearchInput } from "@/components/ui/chart-search-input";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 import { BinaryToggle } from "@un-eosg/ui/components/binary-toggle";
@@ -1172,9 +1172,7 @@ export function BudgetTreemap({
     const tileOf = (node: BudgetNode, caption: string): Tile => ({
       node,
       caption,
-      variance: node.chf
-        ? null
-        : percentChange(node.amount, previousAmounts[node.id]),
+      variance: percentChange(node.amount, previousAmounts[node.id]),
       appearsInMultipleLocations: node.entity
         ? (entityPlacements[node.entity.acronym ?? node.entity.name]?.size ??
             1) > 1
@@ -1235,9 +1233,7 @@ export function BudgetTreemap({
             caption: code,
             name: PART_SHORT_NAMES[code] ?? part.label,
             total,
-            variance: part.chf
-              ? null
-              : percentChange(part.amount, previousAmounts[part.id]),
+            variance: percentChange(part.amount, previousAmounts[part.id]),
             groups,
             colors:
               PART_BAND_COLORS[code] ??
@@ -1344,9 +1340,7 @@ export function BudgetTreemap({
           caption: code,
           name: PART_SHORT_NAMES[code] ?? part.label,
           total,
-          variance: part.chf
-            ? null
-            : percentChange(part.amount, previousAmounts[part.id]),
+          variance: percentChange(part.amount, previousAmounts[part.id]),
           groups: groups.sort((a, b) => b.total - a.total),
           colors:
             PART_BAND_COLORS[code] ?? BAND_PALETTE[index % BAND_PALETTE.length],
@@ -2124,8 +2118,7 @@ export function BudgetTreemap({
     if (!usesSharedProgrammeBudget) return undefined;
     const query = searchQuery.trim().toLocaleLowerCase();
     return activeFundingSources.map((source) => {
-      let drawnChf = 0;
-      let drawnChfUsd = 0;
+      let drawnChf: BudgetNode["chf"];
       const drawnSourceTotal = sharedRows.reduce(
         (rowSum, row) =>
           rowSum +
@@ -2153,8 +2146,7 @@ export function BudgetTreemap({
                   return leafSum;
                 }
                 if (source === "extrabudgetary" && item.data?.node.chf) {
-                  drawnChf += item.data.node.chf.amount;
-                  drawnChfUsd += item.data.node.chf.usdForLayout;
+                  drawnChf = addChf(drawnChf, item.data.node.chf);
                 }
                 return (
                   leafSum +
@@ -2221,16 +2213,9 @@ export function BudgetTreemap({
         source === "extrabudgetary"
           ? query
             ? drawnChf
-            : (root?.chf?.amount ?? 0)
-          : 0;
-      const usd =
-        amount -
-        (chf ? (query ? drawnChfUsd : (root?.chf?.usdForLayout ?? 0)) : 0);
-      const value = !evidence.length
-        ? "Not available"
-        : chf
-          ? formatCurrencyParts(usd, chf)
-          : formatBudget(usd);
+            : root?.chf
+          : undefined;
+      const value = !evidence.length ? "Not available" : formatBudget(amount);
       return {
         key: source,
         label: query
@@ -2263,21 +2248,15 @@ export function BudgetTreemap({
                   references={
                     chf
                       ? evidence.filter(
-                          (source) => source.operand?.currency !== "CHF",
+                          (source) =>
+                            source.operand?.currency !== "CHF" &&
+                            source.url !== chf.rateSource.url,
                         )
                       : evidence
                   }
-                  amount={usd}
+                  amount={amount - (chf?.usdEquivalent ?? 0)}
                 />
-                {chf !== 0 && (
-                  <SourceCalculation
-                    references={evidence.filter(
-                      (source) => source.operand?.currency === "CHF",
-                    )}
-                    amount={chf}
-                    currency="CHF"
-                  />
-                )}
+                {chf && <BudgetChfConversionDetails chf={chf} />}
               </div>
             }
           >
@@ -2479,6 +2458,14 @@ export function BudgetTreemap({
           requestKey={`${dataset}-${year}`}
         />
 
+        {usesSharedProgrammeBudget &&
+          activeFundingSet.has("extrabudgetary") && (
+            <p className="mb-3 text-xs text-gray-500">
+              USD equivalents; ITC expenditure reported in CHF uses the
+              following year’s UN budget rate. Original amounts and rates are in
+              the details.
+            </p>
+          )}
         {usesSharedTrustFundExpenses && (
           <div className="mb-3 space-y-1 text-sm text-gray-600">
             {meta.sourceGroups
@@ -2633,6 +2620,11 @@ export function BudgetTreemap({
               notes={
                 <>
                   {context.leaf.data?.note}
+                  {context.leaf.data?.node.chf && (
+                    <BudgetChfConversionDetails
+                      chf={context.leaf.data.node.chf}
+                    />
+                  )}
                   {!isTrustFund && (
                     <SourceReferenceLinks
                       references={
@@ -2747,20 +2739,11 @@ export function BudgetTreemap({
         ppbGrouping === "entity" &&
         entityProjection.unassignedAmount > 0 && (
           <p className="mb-3 border-l-2 border-amber-400 bg-amber-50 px-3 py-2 text-xs text-amber-900">
-            {filteredData?.nodes.find((node) => node.parentId === null)?.chf
-              ? formatCurrencyParts(
-                  entityProjection.namedAmount -
-                    filteredData.nodes.find((node) => node.parentId === null)!
-                      .chf!.usdForLayout,
-                  filteredData.nodes.find((node) => node.parentId === null)!
-                    .chf!.amount,
-                )
-              : formatBudget(entityProjection.namedAmount)}{" "}
-            is assigned to named entities.{" "}
-            {formatBudget(entityProjection.unassignedAmount)} remains “Not
-            assigned to a single entity” because the source identifies a shared
-            programme, accounting category, or unreconciled lower breakdown
-            rather than one owner.
+            {formatBudget(entityProjection.namedAmount)} is assigned to named
+            entities. {formatBudget(entityProjection.unassignedAmount)} remains
+            “Not assigned to a single entity” because the source identifies a
+            shared programme, accounting category, or unreconciled lower
+            breakdown rather than one owner.
           </p>
         )}
 

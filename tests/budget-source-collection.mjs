@@ -178,6 +178,7 @@ for (const file of fs
         .map(([, source]) => source),
       node.source,
       ...(node.supportingSources ?? []),
+      ...(node.chf ? [node.chf.source, node.chf.rateSource] : []),
     ]
       .filter(Boolean)
       .map(contextualize);

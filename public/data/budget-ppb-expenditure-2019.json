@@ -8,14 +8,14 @@
     "year": 2019,
     "fiscalYear": "2019",
     "currency": "USD",
-    "total": 11274163448.77,
+    "total": 11276133405.95,
     "metrics": {
       "expenditure": {
         "label": "Expenditure",
         "yearOffset": -2,
         "description": "Actual expenditure reported in this budget edition.",
         "dataYear": 2019,
-        "total": 11274163448.77,
+        "total": 11276133405.95,
         "sourceEdition": 2021,
         "sourceDocument": "A/75/6"
       }
@@ -88,7 +88,7 @@
     "sourceDocument": "A/75/6",
     "publishedUsdTotal": 11182360100,
     "publishedChfTotal": 91335200,
-    "currencyNote": "Amounts are displayed in their printed currencies. CHF tile areas and shares use calendar-day-weighted UN Treasury operational rates for the expenditure year, solely for comparison on the USD area scale. These conversions are not PPB-reported USD expenditure."
+    "currencyNote": "Charts, shares and totals use USD equivalents. ITC extrabudgetary expenditure printed in CHF is divided by the following year\u2019s published UN budget rate, following the ARWO rate-year convention. Original CHF amounts and rate citations remain in the details. These are budget-rate equivalents, not PPB-reported USD expenditure."
   },
   "nodes": [
     {
@@ -98,19 +98,19 @@
       "kind": "whole",
       "code": null,
       "label": "Programme budget",
-      "amount": 11274163448.77,
-      "basis": "visualization_weight_with_chf_conversion",
+      "amount": 11276133405.95,
+      "basis": "usd_equivalent_with_chf_budget_rate_conversion",
       "values": {
         "regular_budget": 3049819400,
         "other_assessed": 355669000,
-        "extrabudgetary": 7868675048.77
+        "extrabudgetary": 7870645005.95
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
           "regular_budget": 3049819400,
           "other_assessed": 355669000,
-          "extrabudgetary": 7868675048.77
+          "extrabudgetary": 7870645005.95
         }
       },
       "metricSources": {
@@ -2197,7 +2197,7 @@
           ]
         }
       },
-      "fundingBreakdownTotal": 11274163448.77,
+      "fundingBreakdownTotal": 11276133405.95,
       "breakdowns": {
         "regular_budget": {
           "childAmount": 3049819400,
@@ -2212,7 +2212,7 @@
           "completeness": "incomplete"
         },
         "extrabudgetary": {
-          "childAmount": 7868675048.77,
+          "childAmount": 7870645005.95,
           "difference": 0,
           "outcome": "exact",
           "completeness": "incomplete"
@@ -2224,7 +2224,7 @@
           "completeness": "not_published"
         },
         "selected_funding_sources": {
-          "childAmount": 11274163448.77,
+          "childAmount": 11276133405.95,
           "difference": 0,
           "outcome": "exact",
           "completeness": "incomplete"
@@ -2270,14 +2270,24 @@
       },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
-        "expenditure": 11274163448.77
+        "expenditure": 11276133405.95
       },
       "chf": {
         "amount": 91335200,
-        "usdForLayout": 91803348.77,
-        "usdPerChf": "1.005125611687229165377897018",
-        "rateSourceUrl": "https://treasury.un.org/operationalrates/OperationalRates.php",
-        "rateMethod": "Calendar-day-weighted mean of USD per CHF (reciprocal of each effective UN operational rate). Visualization only; not a UN-published annual average.",
+        "usdEquivalent": 93773305.95,
+        "chfPerUsd": "0.9740",
+        "rateYear": 2020,
+        "rateSource": {
+          "symbol": "A/76/347",
+          "url": "https://documents.un.org/api/symbol/access?s=A/76/347&l=en&t=pdf#page=7",
+          "pdfPage": 7,
+          "pdfPageScope": "row",
+          "pageStatus": "located",
+          "rowLabel": "paragraph 14: forward purchases for 2020",
+          "columnHeader": "2020 budget rate: CHF 0.9740 per USD",
+          "label": "CHF 91,335,200 \u00f7 0.9740 = USD 93,773,305.95 (budget-rate equivalent)"
+        },
+        "rateMethod": "Divide printed CHF expenditure by the published UN budget rate for the following year, following the rate-year convention in ARWO's 2022\u20132025 ITC notes. Apply the same presentation convention to earlier PPB years. These are budget-rate USD equivalents, not transaction-date USD expenditure.",
         "year": 2019,
         "sourceCell": "ppb2021:A_75_6 (SECT. 13)|word/document.xml|t0009|r0004|c0001",
         "source": {
@@ -29650,17 +29660,17 @@
       "kind": "part",
       "code": "IV",
       "label": "International cooperation for development",
-      "amount": 1773304648.77,
-      "basis": "visualization_weight_with_chf_conversion",
+      "amount": 1775274605.95,
+      "basis": "usd_equivalent_with_chf_budget_rate_conversion",
       "values": {
         "regular_budget": 250662600,
-        "extrabudgetary": 1522642048.77
+        "extrabudgetary": 1524612005.95
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
           "regular_budget": 250662600,
-          "extrabudgetary": 1522642048.77
+          "extrabudgetary": 1524612005.95
         }
       },
       "metricSources": {
@@ -29977,7 +29987,7 @@
           ]
         }
       },
-      "fundingBreakdownTotal": 1773304648.77,
+      "fundingBreakdownTotal": 1775274605.95,
       "breakdowns": {
         "regular_budget": {
           "childAmount": 250662600,
@@ -29992,7 +30002,7 @@
           "completeness": "not_published"
         },
         "extrabudgetary": {
-          "childAmount": 1522642048.77,
+          "childAmount": 1524612005.95,
           "difference": 0,
           "outcome": "exact",
           "completeness": "incomplete"
@@ -30004,7 +30014,7 @@
           "completeness": "not_published"
         },
         "selected_funding_sources": {
-          "childAmount": 1773304648.77,
+          "childAmount": 1775274605.95,
           "difference": 0,
           "outcome": "exact",
           "completeness": "incomplete"
@@ -30038,14 +30048,24 @@
       },
       "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
       "metricAmounts": {
-        "expenditure": 1773304648.77
+        "expenditure": 1775274605.95
       },
       "chf": {
         "amount": 91335200,
-        "usdForLayout": 91803348.77,
-        "usdPerChf": "1.005125611687229165377897018",
-        "rateSourceUrl": "https://treasury.un.org/operationalrates/OperationalRates.php",
-        "rateMethod": "Calendar-day-weighted mean of USD per CHF (reciprocal of each effective UN operational rate). Visualization only; not a UN-published annual average.",
+        "usdEquivalent": 93773305.95,
+        "chfPerUsd": "0.9740",
+        "rateYear": 2020,
+        "rateSource": {
+          "symbol": "A/76/347",
+          "url": "https://documents.un.org/api/symbol/access?s=A/76/347&l=en&t=pdf#page=7",
+          "pdfPage": 7,
+          "pdfPageScope": "row",
+          "pageStatus": "located",
+          "rowLabel": "paragraph 14: forward purchases for 2020",
+          "columnHeader": "2020 budget rate: CHF 0.9740 per USD",
+          "label": "CHF 91,335,200 \u00f7 0.9740 = USD 93,773,305.95 (budget-rate equivalent)"
+        },
+        "rateMethod": "Divide printed CHF expenditure by the published UN budget rate for the following year, following the rate-year convention in ARWO's 2022\u20132025 ITC notes. Apply the same presentation convention to earlier PPB years. These are budget-rate USD equivalents, not transaction-date USD expenditure.",
         "year": 2019,
         "sourceCell": "ppb2021:A_75_6 (SECT. 13)|word/document.xml|t0009|r0004|c0001",
         "source": {
@@ -35311,17 +35331,17 @@
       "kind": "section",
       "code": "13",
       "label": "International Trade Centre",
-      "amount": 110371248.77,
-      "basis": "visualization_weight_with_chf_conversion",
+      "amount": 112341205.95,
+      "basis": "usd_equivalent_with_chf_budget_rate_conversion",
       "values": {
         "regular_budget": 18567900,
-        "extrabudgetary": 91803348.77
+        "extrabudgetary": 93773305.95
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
           "regular_budget": 18567900,
-          "extrabudgetary": 91803348.77
+          "extrabudgetary": 93773305.95
         }
       },
       "metricSources": {
@@ -35366,7 +35386,7 @@
           ]
         }
       },
-      "fundingBreakdownTotal": 110371248.77,
+      "fundingBreakdownTotal": 112341205.95,
       "breakdowns": {
         "regular_budget": {
           "childAmount": 18567900,
@@ -35381,7 +35401,7 @@
           "completeness": "not_published"
         },
         "extrabudgetary": {
-          "childAmount": 91803348.77,
+          "childAmount": 93773305.95,
           "difference": 0,
           "outcome": "exact",
           "completeness": "complete"
@@ -35393,7 +35413,7 @@
           "completeness": "not_published"
         },
         "selected_funding_sources": {
-          "childAmount": 110371248.77,
+          "childAmount": 112341205.95,
           "difference": 0,
           "outcome": "exact",
           "completeness": "incomplete"
@@ -35439,16 +35459,26 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2013%29&l=en&t=docx"
       },
-      "note": "The canonical historical snapshot does not publish this funding stream at this structural node.",
+      "note": "Includes the UN regular-budget grant in USD and extrabudgetary expenditure converted from CHF at the following year\u2019s UN budget rate. This conversion does not establish complete lower-level allocations.",
       "metricAmounts": {
-        "expenditure": 110371248.77
+        "expenditure": 112341205.95
       },
       "chf": {
         "amount": 91335200,
-        "usdForLayout": 91803348.77,
-        "usdPerChf": "1.005125611687229165377897018",
-        "rateSourceUrl": "https://treasury.un.org/operationalrates/OperationalRates.php",
-        "rateMethod": "Calendar-day-weighted mean of USD per CHF (reciprocal of each effective UN operational rate). Visualization only; not a UN-published annual average.",
+        "usdEquivalent": 93773305.95,
+        "chfPerUsd": "0.9740",
+        "rateYear": 2020,
+        "rateSource": {
+          "symbol": "A/76/347",
+          "url": "https://documents.un.org/api/symbol/access?s=A/76/347&l=en&t=pdf#page=7",
+          "pdfPage": 7,
+          "pdfPageScope": "row",
+          "pageStatus": "located",
+          "rowLabel": "paragraph 14: forward purchases for 2020",
+          "columnHeader": "2020 budget rate: CHF 0.9740 per USD",
+          "label": "CHF 91,335,200 \u00f7 0.9740 = USD 93,773,305.95 (budget-rate equivalent)"
+        },
+        "rateMethod": "Divide printed CHF expenditure by the published UN budget rate for the following year, following the rate-year convention in ARWO's 2022\u20132025 ITC notes. Apply the same presentation convention to earlier PPB years. These are budget-rate USD equivalents, not transaction-date USD expenditure.",
         "year": 2019,
         "sourceCell": "ppb2021:A_75_6 (SECT. 13)|word/document.xml|t0009|r0004|c0001",
         "source": {
@@ -35478,17 +35508,17 @@
       "kind": "entity",
       "code": null,
       "label": "International Trade Centre",
-      "amount": 110371248.77,
-      "basis": "visualization_weight_with_chf_conversion",
+      "amount": 112341205.95,
+      "basis": "usd_equivalent_with_chf_budget_rate_conversion",
       "values": {
         "regular_budget": 18567900,
-        "extrabudgetary": 91803348.77
+        "extrabudgetary": 93773305.95
       },
       "completeness": "not_published",
       "metricValues": {
         "expenditure": {
           "regular_budget": 18567900,
-          "extrabudgetary": 91803348.77
+          "extrabudgetary": 93773305.95
         }
       },
       "metricSources": {
@@ -35533,7 +35563,7 @@
           ]
         }
       },
-      "fundingBreakdownTotal": 110371248.77,
+      "fundingBreakdownTotal": 112341205.95,
       "breakdowns": {
         "regular_budget": {
           "childAmount": null,
@@ -35600,16 +35630,26 @@
         "relationship": "section_owner",
         "evidenceUrl": "https://documents.un.org/api/symbol/access?s=A%2F75%2F6%20%28Sect.%2013%29&l=en&t=docx"
       },
-      "note": "This selected source outline does not publish a value for this funding stream.",
+      "note": "Includes the UN regular-budget grant in USD and extrabudgetary expenditure converted from CHF at the following year\u2019s UN budget rate. This conversion does not establish complete lower-level allocations.",
       "metricAmounts": {
-        "expenditure": 110371248.77
+        "expenditure": 112341205.95
       },
       "chf": {
         "amount": 91335200,
-        "usdForLayout": 91803348.77,
-        "usdPerChf": "1.005125611687229165377897018",
-        "rateSourceUrl": "https://treasury.un.org/operationalrates/OperationalRates.php",
-        "rateMethod": "Calendar-day-weighted mean of USD per CHF (reciprocal of each effective UN operational rate). Visualization only; not a UN-published annual average.",
+        "usdEquivalent": 93773305.95,
+        "chfPerUsd": "0.9740",
+        "rateYear": 2020,
+        "rateSource": {
+          "symbol": "A/76/347",
+          "url": "https://documents.un.org/api/symbol/access?s=A/76/347&l=en&t=pdf#page=7",
+          "pdfPage": 7,
+          "pdfPageScope": "row",
+          "pageStatus": "located",
+          "rowLabel": "paragraph 14: forward purchases for 2020",
+          "columnHeader": "2020 budget rate: CHF 0.9740 per USD",
+          "label": "CHF 91,335,200 \u00f7 0.9740 = USD 93,773,305.95 (budget-rate equivalent)"
+        },
+        "rateMethod": "Divide printed CHF expenditure by the published UN budget rate for the following year, following the rate-year convention in ARWO's 2022\u20132025 ITC notes. Apply the same presentation convention to earlier PPB years. These are budget-rate USD equivalents, not transaction-date USD expenditure.",
         "year": 2019,
         "sourceCell": "ppb2021:A_75_6 (SECT. 13)|word/document.xml|t0009|r0004|c0001",
         "source": {

@@ -120,19 +120,24 @@ are excluded from main selectors and trends: the 2020 pilot edition has a
 sparse expenditure hierarchy that also limits its projected budget measures.
 The manifest retains these years separately as `earlierPartialYears`.
 
-ITC's extrabudgetary expenditure remains displayed in the **CHF amounts printed
-in PPB section 13**. Its UN regular-budget grant remains in printed USD; the
-full CHF regular budget includes the WTO share and is not added. For the shared
-area scale only, the portal calculates a calendar-day-weighted mean of USD per
-CHF from the effective-dated [UN Treasury operational rates](https://treasury.un.org/operationalrates/OperationalRates.php)
-for each expenditure year. These are portal-derived annual area rates, not
-UN-published annual averages or PPB-reported USD expenditure. Source-currency
-labels, separate CHF trends and citations preserve the printed figures; mixed
-totals show USD and CHF separately. Source controls and PDF hashes live in
-`data/ppb-chf-source-controls.json`; the rate history and method live in
-`data/un-chf-operational-rates.json`. USD-equivalent weights are explicitly
-identified in `chf.usdForLayout`, while `publishedUsdAmount` and the meta
-`publishedUsdTotal` retain the pre-conversion USD amounts.
+ITC's extrabudgetary expenditure is printed in **CHF in PPB section 13**.
+Charts, shares, labels, totals and trends convert it to USD using the following
+year's published UN budget rate, following the rate-year convention in the
+ARWO notes. The same convention applies to every displayed year, including
+2019–2021. For 2025, CHF 109,410,100 / 0.7737 = USD 141,411,529.02, using the
+2026 budget rate. These are budget-rate equivalents, not PPB-reported or
+transaction-date USD expenditure. The rates reflect forward currency purchases.
+
+The UN regular-budget grant remains in printed USD; the full CHF regular budget
+includes the WTO share and is not added. Source controls and PDF hashes live in
+`data/ppb-chf-source-controls.json`; reviewed rates, budget years and citations
+live in `data/un-chf-budget-rates.json`. The original CHF amount, the conversion
+and its source remain in tooltips and sidebars. `chf.usdEquivalent` supplies the
+same value to every visual and sum, while `publishedUsdAmount` and
+`meta.publishedUsdTotal` retain the pre-conversion USD amounts. The previous
+operational-rate history remains an archival comparison, not an active input.
+See [the source reconciliation](research/arwo-chf-conversion.md) for ARWO's
+2022 and 2025 arithmetic discrepancies; these do not determine PPB conversions.
 
 The seven years 2019–2025 publish regular-budget, other-assessed and
 extrabudgetary expenditure. The 2020 PPB edition provides expenditure for 2018 as a separately

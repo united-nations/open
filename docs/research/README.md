@@ -43,6 +43,8 @@ have their own dates and scopes.
 
 - [ARWO source background](methodology-arwo-sources.md): reporting boundaries,
   the annual-report compilation, fund accounts and 2025 budget substitutions.
+- [ARWO CHF conversion](arwo-chf-conversion.md): published forward budget rates,
+  their year mapping, and reproducible checks of ITC's source calculations.
 - [Programme-budget source evidence](methodology-ppb-sources.md): expenditure
   published before final accounts and the financing of separately reporting entities.
 - [Independent review](methodology-adversarial-review.md): adversarial checks

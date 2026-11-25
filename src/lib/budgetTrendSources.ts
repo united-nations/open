@@ -38,9 +38,12 @@ export function budgetTrendSources(
       visit(child, funding, visited),
     );
   };
-  return uniqueBudgetSources(
-    fundingKeys.flatMap((funding) =>
+  return uniqueBudgetSources([
+    ...fundingKeys.flatMap((funding) =>
       visit(node, funding as BudgetFundingSource, new Set()),
     ),
-  );
+    ...(node.chf && fundingKeys.includes("extrabudgetary")
+      ? [node.chf.rateSource]
+      : []),
+  ]);
 }

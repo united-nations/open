@@ -633,12 +633,13 @@ export interface BudgetNodeBreakdown {
   completeness?: string;
 }
 
-export interface BudgetChfLayout {
-  /** Printed PPB amount, in CHF; the USD weight must never be a value label. */
+export interface BudgetChfConversion {
+  /** Original printed PPB amount, in CHF, retained alongside its USD equivalent. */
   amount: number;
-  usdForLayout: number;
-  usdPerChf: string;
-  rateSourceUrl: string;
+  usdEquivalent: number;
+  chfPerUsd: string;
+  rateYear: number;
+  rateSource: BudgetNodeSource;
   rateMethod: string;
   year: number;
   sourceCell: string;
@@ -660,14 +661,14 @@ export interface BudgetNode {
   kind: BudgetNodeKind;
   code: string | null;
   label: string;
-  /** USD area weight; CHF source amounts, when present, are retained separately. */
+  /** USD amount, including budget-rate equivalents of any CHF source amounts. */
   amount: number;
-  chf?: BudgetChfLayout;
-  /** Source USD amount before adding the explicitly identified CHF area weight. */
+  chf?: BudgetChfConversion;
+  /** Source USD amount before adding the explicitly identified CHF conversion. */
   publishedUsdAmount?: number;
   /** "printed"/"directly_printed" = in the source document; otherwise derived. */
   basis: string;
-  /** All-source area control before UI funding filters; CHF conversion is explicit in chf. */
+  /** All-source control before UI funding filters; CHF conversion is explicit in chf. */
   allSourcesAmount?: number;
   /** Sum of the separately published RB/OA/XB values. */
   fundingBreakdownTotal?: number;

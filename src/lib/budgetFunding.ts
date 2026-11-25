@@ -1,5 +1,9 @@
 import { formatCurrency } from "@un-eosg/ui/format-budget";
-import type { BudgetNode, BudgetFundingSource, BudgetChfLayout } from "@/types";
+import type {
+  BudgetNode,
+  BudgetFundingSource,
+  BudgetChfConversion,
+} from "@/types";
 import { formatBudget } from "@/lib/entities";
 import { BUDGET_FUNDING_SOURCES } from "@/lib/budgetGroupings";
 
@@ -31,30 +35,25 @@ export function formatCurrencyParts(usd: number, chf: number): string {
 }
 
 export function formatBudgetNode(node: BudgetNode): string {
-  return node.chf
-    ? formatCurrencyParts(node.amount - node.chf.usdForLayout, node.chf.amount)
-    : formatBudget(node.amount);
+  return formatBudget(node.amount);
 }
 
 export function formatBudgetFunding(
   node: BudgetNode,
   source: BudgetFundingSource,
 ): string {
-  const amount = node.values?.[source] ?? 0;
-  return source === "extrabudgetary" && node.chf
-    ? formatCurrencyParts(amount - node.chf.usdForLayout, node.chf.amount)
-    : formatBudget(amount);
+  return formatBudget(node.values?.[source] ?? 0);
 }
 
 export function addChf(
-  a: BudgetChfLayout | undefined,
-  b: BudgetChfLayout | undefined,
-): BudgetChfLayout | undefined {
+  a: BudgetChfConversion | undefined,
+  b: BudgetChfConversion | undefined,
+): BudgetChfConversion | undefined {
   if (!b) return a;
   if (!a) return { ...b };
   return {
     ...a,
     amount: a.amount + b.amount,
-    usdForLayout: a.usdForLayout + b.usdForLayout,
+    usdEquivalent: a.usdEquivalent + b.usdEquivalent,
   };
 }
