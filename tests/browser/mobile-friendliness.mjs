@@ -335,9 +335,8 @@ try {
   assert.ok(!requests.includes("/data/system-flow-spending.json"));
   const flow = diagram.locator("svg g[role=button]").first();
   await flow.press("Enter");
-  await dialog.waitFor();
-  await dialog.getByRole("button", { name: "Close flow details" }).tap();
-  await dialog.waitFor({ state: "hidden" });
+  assert.equal(await dialog.count(), 0);
+  await page.keyboard.press("Escape");
   await page.waitForFunction(
     (element) => document.activeElement === element,
     await flow.elementHandle(),

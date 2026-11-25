@@ -742,10 +742,10 @@ index 0000000000000000000000000000000000000000..9163ce21aa01ea401b8e0356a5f3bd1f
 +  );
 +}
 diff --git a/components/sankey-diagram.tsx b/components/sankey-diagram.tsx
-index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..aa6113d38dff5a9088625c94c568ce3cfd658fd0 100644
+index 2c259d4..22f83f9 100644
 --- a/components/sankey-diagram.tsx
 +++ b/components/sankey-diagram.tsx
-@@ -1,29 +1,150 @@
+@@ -1,29 +1,151 @@
  "use client";
 -import { useEffect, useMemo, useState, type ReactNode } from "react";
 +import { typography } from "../lib/typography";
@@ -770,6 +770,8 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..aa6113d38dff5a9088625c94c568ce3c
 +  /** Wrap node labels and fit the viewport to the chart and its controls. */
 +  wrapLabels?: boolean;
 +  responsiveControls?: boolean;
++  /** Show pointer tooltips and native SVG title tooltips. */
++  showTooltips?: boolean;
    /** Space for full, wrapped labels after the final column, in SVG units. */
    endLabelWidth?: number;
    highlightedValue?: (selection: FlowSelection, source: string, target: string) => number;
@@ -779,7 +781,7 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..aa6113d38dff5a9088625c94c568ce3c
 +  graph, columnControls, columnNotes, ariaLabel, selectionLabel, clearLabel,
    formatValue: formatBudget, describeNode: nodeDescription, describeLink,
 -  renderDetails, highlightedValue, linkOpacity, linkGap = 0, endLabelWidth,
-+  renderDetails, renderSelection, highlightedValue, linkOpacity, linkGap = 0, endLabelWidth, wrapLabels = false, responsiveControls = false,
++  renderDetails, renderSelection, highlightedValue, linkOpacity, linkGap = 0, endLabelWidth, wrapLabels = false, responsiveControls = false, showTooltips = true,
  }: SankeyDiagramProps) {
 -  const chartWidth = Math.max(1200, columnPosition(columnControls.length - 1, columnControls.length) + 48 + (endLabelWidth ?? 0) + 24);
 -  const layout = useMemo(() => layoutSankey(graph, columnControls.length), [graph, columnControls.length]);
@@ -863,8 +865,7 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..aa6113d38dff5a9088625c94c568ce3c
 +      let left = graph.nodes.length ? content.x : Infinity;
 +      let right = graph.nodes.length ? content.x + content.width : -Infinity;
 +      // Dropdowns use CSS pixels, while their anchors share the SVG's column slots.
-+      const measureControls = !responsiveControls || window.matchMedia("(min-width: 1280px)").matches;
-+      if (measureControls) Array.from(controls.children).forEach((control, index) => {
++      Array.from(controls.children).forEach((control, index) => {
 +        const center = columnPosition(index, columnControls.length) + 20;
 +        const halfWidth = control.getBoundingClientRect().width * chartWidth / container.clientWidth / 2;
 +        left = Math.min(left, center - halfWidth);
@@ -901,11 +902,13 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..aa6113d38dff5a9088625c94c568ce3c
    const [hoverState, setHover] = useState<{
      graph: FlowGraph;
      selection: FlowSelection;
-@@ -54,7 +175,12 @@ export function SankeyDiagram({
+@@ -53,8 +175,13 @@ export function SankeyDiagram({
+   const highlight =
      highlightState?.graph === graph ? highlightState.selection : null;
    const active = pinned ?? highlight;
-   const tooltip = hover ? renderDetails(hover.selection, true, pinned ?? undefined) : null;
+-  const tooltip = hover ? renderDetails(hover.selection, true, pinned ?? undefined) : null;
 -  const details = pinned ? renderDetails(pinned, false) : null;
++  const tooltip = showTooltips && hover ? renderDetails(hover.selection, true, pinned ?? undefined) : null;
 +  const clear = () => {
 +    setPinned(null);
 +    setHighlight(null);
@@ -915,7 +918,7 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..aa6113d38dff5a9088625c94c568ce3c
    const pin = (selection: FlowSelection) => {
      setPinned(
        pinned && flowSelectionKey(pinned) === flowSelectionKey(selection)
-@@ -87,30 +213,82 @@ export function SankeyDiagram({
+@@ -87,30 +214,83 @@ export function SankeyDiagram({
      <div
        className="space-y-3"
        onKeyDown={(event) => {
@@ -931,28 +934,6 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..aa6113d38dff5a9088625c94c568ce3c
 -        <div className="min-w-[1000px]">
 -          <div className="relative h-10">
 +      <div className="rounded border border-border">
-+          <div ref={controlsRef} className={cn("relative", columnNotes?.some(Boolean) ? "h-16" : "h-10", responsiveControls && "max-xl:flex max-xl:h-auto max-xl:flex-wrap max-xl:gap-2 max-xl:p-2")}>
-             {columnControls?.map((control, index) => (
-               <div
-                 key={index}
--                className="absolute bottom-0 w-max -translate-x-1/2"
-+                data-sankey-column={index}
-+                className={cn("absolute top-0 flex w-max -translate-x-1/2 flex-col items-center", responsiveControls && "max-xl:static max-xl:max-w-full max-xl:translate-x-0 max-xl:items-start")}
-                 style={{
--                  left: `${((columnPosition(index, columnControls.length) + 20) / chartWidth) * 100}%`,
-+                  left: `${((columnPosition(index, columnControls.length) + 20 - viewX) / chartWidth) * 100}%`,
-                 }}
-               >
--                {control}
-+                <div className={cn("flex h-10 items-end", responsiveControls && "max-xl:h-auto")}>{control}</div>
-+                {columnNotes?.[index] && (
-+                  <div role="note" className={cn(typography.caption, "mt-1 max-w-56 text-center text-muted-foreground")}>
-+                    {columnNotes[index]}
-+                  </div>
-+                )}
-               </div>
-             ))}
-           </div>
 +        {canScroll && lastPosition > 0 && (
 +          <div className="flex flex-wrap items-center justify-between gap-x-2 border-t px-2 text-xs">
 +            <button
@@ -999,6 +980,29 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..aa6113d38dff5a9088625c94c568ce3c
 +          }}
 +        >
 +            <div ref={containerRef} className="min-w-[1000px]">
++          <div ref={controlsRef} className={cn("relative", columnNotes?.some(Boolean) ? "h-16" : "h-10")}>
+             {columnControls?.map((control, index) => (
+               <div
+                 key={index}
+-                className="absolute bottom-0 w-max -translate-x-1/2"
++                data-sankey-column={index}
++                className={cn("absolute top-0 flex w-max -translate-x-1/2 flex-col items-center")}
+                 style={{
+-                  left: `${((columnPosition(index, columnControls.length) + 20) / chartWidth) * 100}%`,
++                  left: `${((columnPosition(index, columnControls.length) + 20 - viewX) / chartWidth) * 100}%`,
+                 }}
+               >
+-                {control}
++                <div className={cn("flex h-10 items-end")}>{control}</div>
++                {columnNotes?.[index] && (
++                  <div role="note" className={cn(typography.caption, "mt-1 max-w-56 text-center text-muted-foreground")}>
++                    {columnNotes[index]}
++                  </div>
++                )}
+               </div>
+             ))}
+           </div>
++
            <svg
 -            viewBox={`0 0 ${chartWidth} ${layout.height}`}
 +            ref={svgRef}
@@ -1006,7 +1010,7 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..aa6113d38dff5a9088625c94c568ce3c
              className="w-full"
              role="group"
              aria-label={ariaLabel}
-@@ -142,7 +320,7 @@ export function SankeyDiagram({
+@@ -142,7 +322,7 @@ export function SankeyDiagram({
                    tabIndex={0}
                    aria-pressed={isPinned}
                    aria-label={describeLink(link.source, link.target, link.value, pinned ?? undefined)}
@@ -1015,7 +1019,17 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..aa6113d38dff5a9088625c94c568ce3c
                    onKeyDown={(event) => {
                      if (event.key === "Enter" || event.key === " ") {
                        event.preventDefault();
-@@ -177,30 +355,26 @@ export function SankeyDiagram({
+@@ -169,38 +349,34 @@ export function SankeyDiagram({
+                   }
+                   onMouseLeave={() => setHover(null)}
+                 >
+-                  <title>
++                  {showTooltips && <title>
+                     {describeLink(link.source, link.target, link.value, pinned ?? undefined)}
+-                  </title>
++                  </title>}
+                 </path>
+               );
              })}
              {layout.nodes.map((node) => {
                const leftNet =
@@ -1052,7 +1066,7 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..aa6113d38dff5a9088625c94c568ce3c
                    onKeyDown={(event) => {
                      if (event.key === "Enter" || event.key === " ") {
                        event.preventDefault();
-@@ -254,7 +428,7 @@ export function SankeyDiagram({
+@@ -254,7 +430,7 @@ export function SankeyDiagram({
                    <text
                      x={x}
                      y={node.y + 11}
@@ -1061,7 +1075,7 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..aa6113d38dff5a9088625c94c568ce3c
                      fontSize={14}
                      fill="currentColor"
                      stroke="var(--background)"
-@@ -267,7 +441,7 @@ export function SankeyDiagram({
+@@ -267,7 +443,7 @@ export function SankeyDiagram({
                    <text
                      x={x}
                      y={node.y + 25 + (labelLines.length - 1) * 16}
@@ -1070,7 +1084,7 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..aa6113d38dff5a9088625c94c568ce3c
                      fontSize={12}
                      fill="currentColor"
                      stroke="var(--background)"
-@@ -275,13 +449,14 @@ export function SankeyDiagram({
+@@ -275,13 +451,14 @@ export function SankeyDiagram({
                      paintOrder="stroke"
                    >
                      {formatBudget(
@@ -1086,7 +1100,7 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..aa6113d38dff5a9088625c94c568ce3c
          </div>
        </div>
        {hover && tooltip && (
-@@ -295,6 +470,7 @@ export function SankeyDiagram({
+@@ -295,6 +472,7 @@ export function SankeyDiagram({
            {tooltip}
          </div>
        )}
@@ -1094,7 +1108,7 @@ index 2c259d4bfd29aa9ca5b926efc33b1100daa1da1e..aa6113d38dff5a9088625c94c568ce3c
        {details && (
          <section
            aria-label={selectionLabel}
-@@ -320,16 +496,22 @@ export function SankeyDiagram({
+@@ -320,16 +498,22 @@ export function SankeyDiagram({
      </div>
    );
  }

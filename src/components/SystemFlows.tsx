@@ -9,7 +9,6 @@ import { ChartHeader } from "@un-eosg/ui/components/chart-header";
 import { SystemFlowDiagram } from "./SystemFlowDiagram";
 import { useNearViewport } from "@/hooks/useNearViewport";
 import { YearSlider } from "./YearSlider";
-import { ChartFooter } from "./ChartFooter";
 import { loadStaticData, loadYearData } from "@/lib/data";
 import {
   buildSystemFlows,
@@ -335,12 +334,12 @@ export function SystemFlows() {
           )}
           <SystemFlowDiagram
             graph={graph}
-            year={loaded!.year}
             columnControls={(
               ["funding", "organization", "spending"] as const
             ).map((dimension) => (
               <FinancialFlowColumnSelect
                 key={dimension}
+                compact
                 label={
                   dimension === "funding"
                     ? "Revenue by"
@@ -361,7 +360,6 @@ export function SystemFlows() {
           />
         </div>
       )}
-      <ChartFooter hint="Hover for amounts; click a bar or connection to open details." />
     </section>
   );
 }

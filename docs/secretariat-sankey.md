@@ -15,8 +15,8 @@ selector leaves its slot empty and displays the selector as a + button. The
 outer columns keep their positions and ribbons span the gap. The default remains
 Funding mechanism → Priority area, with the middle slot empty. Every displayed node and adjacent link retains its exact ledger source
 occurrences. Changing dimensions never estimates allocations or changes scope.
-Detailed entity/arrangement columns always show the largest 12 entries plus an
-inspectable remainder, preserving every amount without an expansion toggle.
+Detailed entity/arrangement columns always show the largest 12 entries plus a
+remainder, preserving every amount without an expansion toggle.
 Arrangement families retain the existing reviewed classification, including
 unitemized extrabudgetary amounts grouped by reporting entity and trust funds
 shown together.
@@ -38,21 +38,13 @@ Node spacing reserves the full wrapped label and amount height, so neighboring
 labels do not overlap, including small or negative-only entries.
 
 Both the System and Secretariat Sankeys compose `FinancialFlowDiagram` over
-`@un-eosg/ui`'s `SankeyDiagram`. The existing pnpm UI patch adds an optional
-`renderSelection(selection, onClear)` slot; the shared diagram retains its
-original inline panel for callers that omit the slot. Hover details remain
-compact tooltips. Click/Enter/Space opens the shared `FinancialFlowSidebar`,
-using a modal dialog and the same `FinancialDetailPanel` and bar rows as other
-sidebars. Escape, outside click, or Close dismisses it and restores focus to the
-originating chart item. Flow sidebars show only the selected chart dimensions,
-using the same visible node labels, ordering and remainder groups. Funding
-mechanisms and arrangements do not appear together; entity categories do not
-expose an individual-entity breakdown. Raw source-record tables with hidden
-dimensions are omitted. Signed adjustments remain available alongside net totals.
-When individual entities are displayed, their detail links replace the flow
-sidebar with the existing entity view, preserving year and selection scope. That
-view also hides its funding-source breakdown when mechanisms are not displayed
-in the originating Sankey.
+`@un-eosg/ui`'s `SankeyDiagram`. Compact dropdowns sit directly above their fixed
+column slots and scroll horizontally with the diagram on smaller screens.
+Hover and keyboard focus highlight related flows. Click/Enter/Space pins the
+highlight; selecting the same item again or pressing Escape clears it. Neither
+chart opens a sidebar or an inline detail panel. Both pointer tooltips and native
+SVG title tooltips are disabled; node labels and accessible descriptions retain
+the financial amounts.
 
 The System chart retains all three existing dimension selectors and its current
 default. Revenue and expenditure remain distinct measures across organizations;
@@ -64,9 +56,9 @@ outgoing ribbons use the right expenditure destination colors.
 
 Seven groups are independent of financing: departments/offices, regional commissions, peacekeeping missions/support, operational SPMs, other bodies, common costs/central allocations and unallocated. The map's geographic classification stays separate. UNSOS is Support office between Field missions and Service centres on the peacekeeping-budget page.
 
-Funding families distinguish programme, peacekeeping, IRMCT assessed, trust funds, identified treaty financing, unitemized extrabudgetary and unresolved convention identity. A reviewed exact-name table preserves individual funds, named arrangements and source aggregates. Expansion replaces a parent; the largest 12 arrangements appear individually and remaining occurrences stay in an inspectable group.
+Funding families distinguish programme, peacekeeping, IRMCT assessed, trust funds, identified treaty financing, unitemized extrabudgetary and unresolved convention identity. A reviewed exact-name table preserves individual funds, named arrangements and source aggregates. Expansion replaces a parent; the largest 12 arrangements appear individually and remaining occurrences stay in a remainder group.
 
-Both cuts conserve signed expenditure. Ribbons show gross positive activity; totals and details retain corrections. Negative-only and net-zero activity remain selectable. Selection restricts downstream amounts by source IDs. Scoped entity details retain the originating year and filters; full-entity trends and share links are only available in the existing unfiltered treemap context.
+Both cuts conserve signed expenditure. Ribbons show gross positive activity; totals and node amounts retain corrections. Negative-only and net-zero activity remain selectable. Secretariat selection restricts downstream highlighting by source IDs. Entity details remain available through the overview treemap.
 
 Five historical SPM occurrences lack named same-year budget membership and explicitly carry null. Three convention-labelled ODA rows ($4,950,756) retain unresolved identities. Dated budget reporting labels do not establish operational succession dates. OSET and historical evaluation activities do not become today's successor offices. Mixed periods, source budget substitutes and redistributed Staff Assessment remain source facts.
 

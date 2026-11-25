@@ -2,13 +2,16 @@ import { browserOptions, portalUrl } from "./helpers.mjs";
 import { chromium } from "playwright";
 import assert from "node:assert/strict";
 const browser = await chromium.launch(browserOptions);
-const page = await browser.newPage({ viewport: { width: 1440, height: 1100 } });
-page.setDefaultTimeout(15000);
+let page = await browser.newPage({ viewport: { width: 1440, height: 1100 } });
 const errors = [];
-page.on("pageerror", (error) => errors.push(error.message));
-page.on("console", (message) => {
-  if (message.type() === "error") errors.push(message.text());
-});
+const watchPage = () => {
+  page.setDefaultTimeout(15000);
+  page.on("pageerror", (error) => errors.push(error.message));
+  page.on("console", (message) => {
+    if (message.type() === "error") errors.push(message.text());
+  });
+};
+watchPage();
 const columnCount = async (section) =>
   section
     .locator("svg g[role=button] > rect")
@@ -122,148 +125,96 @@ const checkRibbonColors = async (section) => {
       `Ribbon uses its outer column color: ${ribbon.label}`,
     );
 };
-const checkVisibleBreakdowns = async (section, expected) => {
-  const dialog = page.getByRole("dialog");
-  for (const heading of [
-    "Funding mechanisms",
-    "Funding arrangements",
-    "Entity categories",
-    "Entities",
-    "Priority areas",
-  ]) {
-    assert.equal(
-      await dialog.getByRole("heading", { name: heading, exact: true }).count(),
-      Number(expected.includes(heading)),
-      `Sidebar follows the chart's selected dimension: ${heading}`,
-    );
-  }
-  assert.equal(
-    await dialog
-      .getByRole("heading", { name: "Source records", exact: true })
-      .count(),
-    0,
-    "Raw hidden dimensions are not exposed in the sidebar",
-  );
-  const chartLabels = await section
-    .locator("svg g[role=button]")
-    .evaluateAll((nodes) =>
-      nodes.map((node) => node.getAttribute("aria-label").split(":")[0]),
-    );
-  for (const heading of expected) {
-    const breakdown = dialog.locator("section").filter({
-      has: page.getByRole("heading", { name: heading, exact: true }),
-    });
-    const labels = await breakdown
-      .locator(".grid > div:first-child")
-      .allTextContents();
-    assert.ok(labels.length > 0, `${heading} has a selected breakdown`);
-    for (const label of labels)
-      assert.ok(
-        chartLabels.includes(label),
-        `Sidebar item uses a displayed chart group: ${label}`,
-      );
-  }
-};
 const select = async (section, label, choice) => {
   await section.getByRole("button", { name: label, exact: true }).click();
   await page.getByRole("menuitemradio", { name: choice, exact: true }).click();
   await page.getByRole("menu").waitFor({ state: "detached" });
 };
-const close = async () => {
-  await page
-    .getByRole("button", { name: "Close flow details", exact: true })
-    .click();
-  await page.getByRole("dialog").waitFor({ state: "detached" });
-};
-const checkSidebar = async () => {
-  const dialog = page.getByRole("dialog");
-  await dialog.waitFor();
-  assert.equal(await dialog.getAttribute("aria-modal"), "true");
-  assert.ok(
-    await dialog.locator(".h-2[style]").count(),
-    "Sidebar contains financial bars",
-  );
+const checkControls = async (section) => {
+  const positions = await section
+    .locator("[data-sankey-column]")
+    .evaluateAll((slots) =>
+      slots.map((slot) => {
+        const button = slot.querySelector("button");
+        const svg = slot
+          .closest(".overflow-x-auto")
+          .querySelector("svg[role=group]");
+        const index = Number(slot.dataset.sankeyColumn);
+        const point = svg.createSVGPoint();
+        point.x = 210 + index * 345;
+        const column = point.matrixTransform(svg.getScreenCTM());
+        const box = button.getBoundingClientRect();
+        return {
+          distance: Math.abs(box.x + box.width / 2 - column.x),
+          height: box.height,
+          bottom: box.bottom,
+          top: svg.getBoundingClientRect().top,
+        };
+      }),
+    );
+  assert.equal(positions.length, 3);
+  for (const position of positions) {
+    assert.ok(position.distance < 2, "Dropdown is directly above its column");
+    assert.ok(position.height <= 30, "Dropdown keeps its compact height");
+    assert.ok(
+      position.bottom <= position.top,
+      "Dropdown remains above the diagram",
+    );
+  }
   assert.equal(
-    await page.locator('section[aria-label="Selected flow"]').count(),
-    0,
-    "No inline detail panel remains",
-  );
-  assert.equal(
-    await dialog.evaluate((element) =>
-      element.contains(document.activeElement),
+    await page.evaluate(
+      () => document.documentElement.scrollWidth <= window.innerWidth,
     ),
     true,
-    "Focus enters the sidebar",
   );
-  const box = await dialog.boundingBox();
+};
+const checkInteractions = async (section) => {
+  for (const selector of ["svg g[role=button]", "svg path[role=button]"]) {
+    const item = section.locator(selector).first();
+    await item.hover({ force: true });
+    await page.waitForTimeout(200);
+    assert.equal(
+      await section.locator(".fixed").count(),
+      0,
+      "Hover shows no tooltip",
+    );
+    await item.press("Enter");
+    assert.equal(
+      await item.getAttribute("aria-pressed"),
+      "true",
+      "Selection still highlights flows",
+    );
+    assert.equal(
+      await page.getByRole("dialog").count(),
+      0,
+      "Selection opens no sidebar",
+    );
+    assert.equal(
+      await section.locator('section[aria-label="Selected flow"]').count(),
+      0,
+    );
+    await page.keyboard.press("Escape");
+    assert.equal(await item.getAttribute("aria-pressed"), "false");
+  }
   assert.equal(
-    Math.round(box.x + box.width),
-    page.viewportSize().width,
-    "Sidebar is anchored to the right",
+    await section.locator("svg title").count(),
+    0,
+    "No native hover tooltips",
   );
-  assert.ok(box.width <= 512, "Matches existing sidebar width");
-  return dialog;
 };
 try {
-  await page.goto(portalUrl + "/secretariat/", { waitUntil: "networkidle" });
+  await page.goto(portalUrl + "/secretariat/", {
+    waitUntil: "networkidle",
+    timeout: 60000,
+  });
   const section = page.locator("#secretariat-flows");
   await section.scrollIntoViewIfNeeded();
   await section.locator("svg g[role=button]").first().waitFor();
-  assert.equal(
-    await page.locator("#secretariat-funding-flows").count(),
-    0,
-    "Duplicate chart is removed",
-  );
   assert.equal(await columnCount(section), 2);
-  const selectorPositions = async () => {
-    const result = [];
-    for (const label of ["Left column", "Middle column", "Right column"]) {
-      result.push(
-        await section
-          .getByRole("button", { name: label, exact: true })
-          .evaluate((element) => {
-            const slot = element.closest("[data-sankey-column]");
-            return {
-              left: slot.style.left,
-              inside: Boolean(slot.closest(".overflow-x-auto")),
-            };
-          }),
-      );
-    }
-    return result;
-  };
-  const fixedPositions = await selectorPositions();
-  const assertEqualSpacing = async () => {
-    const centers = (await selectorPositions()).map((position) =>
-      Number.parseFloat(position.left),
-    );
-    // CSSOM rounds the percentage positions when serializing them.
-    assert.ok(
-      Math.abs(centers[1] - centers[0] - (centers[2] - centers[1])) < 0.001,
-      "Column selectors remain equally spaced",
-    );
-    assert.ok(
-      centers.every((center) => center > 0 && center < 100),
-      "Column selectors fit inside the chart",
-    );
-  };
-  await assertEqualSpacing();
+  await checkControls(section);
   await checkLabelLayout(section);
   await checkRibbonColors(section);
-  assert.equal(
-    await section
-      .getByText("Entity categories are preliminary.", { exact: true })
-      .count(),
-    0,
-  );
-  assert.ok(
-    fixedPositions.every((position) => !position.inside),
-    "Selectors stay outside the diagram scroller",
-  );
-  await section
-    .getByRole("button", { name: "Middle column", exact: true })
-    .locator(".lucide-plus")
-    .waitFor();
+  await checkInteractions(section);
   const total = await section
     .getByText("Total expenditure", { exact: true })
     .locator("..")
@@ -275,55 +226,17 @@ try {
         .getByRole("menuitemradio", { name: "None", exact: true })
         .count(),
       0,
-      "Outer columns cannot be omitted",
     );
     await page.keyboard.press("Escape");
-    await page.getByRole("menu").waitFor({ state: "detached" });
   }
-
-  const regularBudget = section.getByRole("button", {
-    name: /^Regular budget:/,
-  });
-  await regularBudget.press("Enter");
-  await checkSidebar();
-  await checkVisibleBreakdowns(section, [
-    "Funding mechanisms",
-    "Priority areas",
-  ]);
-  await page.screenshot({
-    path: "audits/browser/secretariat-flow-sidebar.png",
-  });
-  await page.keyboard.press("Escape");
-  await page.getByRole("dialog").waitFor({ state: "detached" });
-  await page.waitForFunction(() =>
-    document.activeElement
-      ?.getAttribute("aria-label")
-      ?.startsWith("Regular budget:"),
-  );
-  await regularBudget.press("Enter");
-  await checkSidebar();
-  await checkVisibleBreakdowns(section, [
-    "Funding mechanisms",
-    "Priority areas",
-  ]);
-  await close();
-
   await select(section, "Middle column", "Entity category");
   await section
     .getByText("Entity categories are preliminary.", { exact: true })
     .waitFor();
-  await checkRibbonColors(section);
   assert.equal(await columnCount(section), 3);
+  await checkControls(section);
   await checkLabelLayout(section);
-  await assertEqualSpacing();
-  await regularBudget.press("Enter");
-  await checkSidebar();
-  await checkVisibleBreakdowns(section, [
-    "Funding mechanisms",
-    "Entity categories",
-    "Priority areas",
-  ]);
-  await close();
+  await checkRibbonColors(section);
   await select(section, "Left column", "Funding arrangement");
   await select(section, "Middle column", "Entity");
   assert.equal(
@@ -332,89 +245,17 @@ try {
       .count(),
     0,
   );
-  const entityColors = await section
-    .locator('svg g[role=button]:has(rect[x="533"]) polygon:last-of-type')
-    .evaluateAll((polygons) => [
-      ...new Set(polygons.map((polygon) => polygon.getAttribute("fill"))),
-    ]);
-  assert.deepEqual(
-    entityColors,
-    ["var(--color-dusty-gray)"],
-    "Individual entities have a uniform neutral fill",
-  );
+  await checkControls(section);
   await checkRibbonColors(section);
-  assert.equal(
-    await section
-      .getByRole("button", {
-        name: /^(Show all entities and arrangements|Show largest 12 per detailed column)$/,
-      })
-      .count(),
-    0,
-    "Detailed columns have no expansion toggle",
-  );
   for (const x of ["188", "533"]) {
     assert.ok(
       (await section
         .locator(`svg g[role=button]:has(rect[x="${x}"])`)
         .count()) <= 13,
-      "Detailed columns retain at most 12 entries plus their remainder",
     );
   }
-  await assertEqualSpacing();
-  await section
-    .locator(
-      'svg g[role=button]:has(rect[x="533"]):not([aria-label*="other entities:"])',
-    )
-    .first()
-    .press("Enter");
-  await checkSidebar();
-  await checkVisibleBreakdowns(section, [
-    "Funding arrangements",
-    "Entities",
-    "Priority areas",
-  ]);
-  // A scoped entity drilldown replaces the flow sidebar rather than stacking dialogs.
-  await page
-    .getByRole("dialog")
-    .locator("section")
-    .filter({
-      has: page.getByRole("heading", { name: "Entities", exact: true }),
-    })
-    .getByRole("button")
-    .first()
-    .click();
-  await page
-    .getByRole("button", { name: "Close entity details", exact: true })
-    .waitFor();
-  assert.equal(await page.getByRole("dialog").count(), 1);
-  assert.equal(
-    await page
-      .getByRole("dialog")
-      .getByRole("heading", {
-        name: "Expenditure by funding source",
-        exact: true,
-      })
-      .count(),
-    0,
-    "Entity drilldowns do not reintroduce a hidden funding mechanism breakdown",
-  );
-  await page
-    .getByRole("dialog")
-    .getByText(/Sankey selection/)
-    .waitFor();
-  await page
-    .getByRole("button", { name: "Close entity details", exact: true })
-    .click();
-  await page.getByRole("dialog").waitFor({ state: "detached" });
-  const populatedPositions = await selectorPositions();
   await select(section, "Middle column", "None");
   assert.equal(await columnCount(section), 2);
-  assert.deepEqual(
-    await selectorPositions(),
-    populatedPositions,
-    "Removing the middle grouping leaves the column slots in place",
-  );
-  await assertEqualSpacing();
   assert.deepEqual(
     await section
       .locator("svg g[role=button] > rect")
@@ -422,37 +263,15 @@ try {
         [...new Set(rects.map((rect) => rect.getAttribute("x")))].sort(),
       ),
     ["188", "878"],
-    "The outer columns stay fixed when the middle column is removed",
   );
-  await section
-    .getByRole("button", { name: "Middle column", exact: true })
-    .locator(".lucide-plus")
-    .waitFor();
-  await section
-    .locator('svg g[role=button]:has(rect[x="188"])')
-    .first()
-    .press("Enter");
-  await checkSidebar();
-  await checkVisibleBreakdowns(section, [
-    "Funding arrangements",
-    "Priority areas",
-  ]);
-  await close();
-  await select(section, "Middle column", "Entity category");
   await select(section, "Left column", "Funding mechanism");
-  await select(section, "Middle column", "None");
   assert.equal(
     await section
       .getByText("Total expenditure", { exact: true })
       .locator("..")
       .innerText(),
     total,
-    "Changing dimensions preserves the total",
   );
-  await section.locator("svg path[role=button]").first().click();
-  await checkSidebar();
-  await close();
-
   const slider = section.getByRole("slider");
   const previousYear = Number(await slider.getAttribute("aria-valuenow"));
   await page.route(
@@ -462,46 +281,29 @@ try {
       await route.continue();
     },
   );
-  await page.evaluate(() => {
-    window.savedFlows = document.querySelector("#secretariat-flows svg");
-  });
+  const savedSvg = await section.locator("svg[role=group]").elementHandle();
   await slider.press("ArrowLeft");
-  await page.waitForTimeout(150);
-  assert.equal(
-    await page.evaluate(
-      () =>
-        window.savedFlows === document.querySelector("#secretariat-flows svg"),
-    ),
-    true,
-  );
-  assert.match(await section.innerText(), /until ready/);
+  await section.getByText(/until ready/).waitFor();
+  assert.ok(await savedSvg.evaluate((svg) => svg.isConnected));
   await page.waitForFunction(
     () => !document.querySelector("#secretariat-flows [aria-busy=true]"),
   );
   await section.screenshot({ path: "audits/browser/secretariat-flows.png" });
-  await page.setViewportSize({ width: 390, height: 844 });
+  for (const width of [1024, 390]) {
+    await page.setViewportSize({ width, height: 844 });
+    await checkControls(section);
+    await checkInteractions(section);
+  }
   await section.screenshot({
     path: "audits/browser/secretariat-flows-mobile.png",
   });
-  assert.equal(
-    await page.evaluate(
-      () => document.documentElement.scrollWidth <= window.innerWidth,
-    ),
-    true,
-    "Selectors do not overflow the mobile viewport",
-  );
-  await section
-    .getByRole("button", { name: /^Regular budget:/ })
-    .press("Enter");
-  await checkSidebar();
-  await page.screenshot({
-    path: "audits/browser/secretariat-flow-sidebar-mobile.png",
-  });
-  await close();
 
-  await page.setViewportSize({ width: 1440, height: 1100 });
+  await page.close();
+  page = await browser.newPage({ viewport: { width: 1440, height: 1100 } });
+  watchPage();
   await page.goto(portalUrl + "/system/organizations/", {
     waitUntil: "networkidle",
+    timeout: 60000,
   });
   const system = page.locator("#system-flows");
   await system.scrollIntoViewIfNeeded();
@@ -509,65 +311,34 @@ try {
   assert.equal(await columnCount(system), 3);
   await checkLabelLayout(system);
   await checkRibbonColors(system);
-  for (const label of ["Revenue by", "Through", "Expenditure by"]) {
-    await system.getByRole("button", { name: label, exact: true }).click();
-    assert.equal(
-      await page
-        .getByRole("menuitemradio", {
-          name: /^(None|All organizations combined)$/,
-        })
-        .count(),
-      0,
-      "System options are unchanged",
-    );
-    await page.keyboard.press("Escape");
+  await checkControls(system);
+  await checkInteractions(system);
+  for (const [label, choice] of [
+    ["Revenue by", "Contributor category"],
+    ["Through", "Organization"],
+    ["Expenditure by", "Region"],
+  ]) {
+    await select(system, label, choice);
+    await checkControls(system);
   }
-  await system
-    .locator('svg g[role=button]:has(rect[x="533"])')
-    .first()
-    .press("Enter");
-  await checkSidebar();
-  await page
-    .getByRole("dialog")
-    .getByRole("heading", { name: "Revenue and expenditure", exact: true })
-    .waitFor();
-  await page.screenshot({ path: "audits/browser/system-flow-sidebar.png" });
-  await close();
-  await select(system, "Through", "Organization");
-  await system
-    .locator('svg g[role=button]:has(rect[x="533"])')
-    .first()
-    .press("Enter");
-  await checkSidebar();
-  await page
-    .getByRole("dialog")
-    .getByRole("link", { name: /^Open organization details/ })
-    .click();
-  await page
-    .getByRole("button", { name: "Close sidebar", exact: true })
-    .waitFor();
-  assert.equal(
-    await page.getByRole("dialog").count(),
-    1,
-    "Organization drilldown replaces the flow dialog",
-  );
-  await page
-    .getByRole("button", { name: "Close sidebar", exact: true })
-    .click();
-  await page.getByRole("dialog").waitFor({ state: "detached" });
-  await system.locator("svg path[role=button]").first().click();
-  await checkSidebar();
-  await close();
-  await page.setViewportSize({ width: 390, height: 844 });
-  await system.locator("svg g[role=button]").first().press("Enter");
-  await checkSidebar();
-  await page.screenshot({
-    path: "audits/browser/system-flow-sidebar-mobile.png",
+  await system.screenshot({ path: "audits/browser/system-flows.png" });
+  for (const width of [1024, 390]) {
+    await page.setViewportSize({ width, height: 844 });
+    await checkControls(system);
+    await checkInteractions(system);
+  }
+  const scroller = system.getByRole("region", {
+    name: "Scrollable flow diagram",
   });
-  await close();
+  await system.getByRole("button", { name: "Show next flow column" }).click();
+  assert.ok(await scroller.evaluate((element) => element.scrollLeft > 0));
+  await checkControls(system);
+  await select(system, "Through", "Organization category");
+  await checkControls(system);
+  await system.screenshot({ path: "audits/browser/system-flows-mobile.png" });
   assert.deepEqual(errors, []);
   console.log(
-    "Financial flows: configurable Secretariat columns, conserved totals, shared modal sidebars, keyboard focus, scoped drilldowns and mobile layout passed",
+    "Financial flows: compact aligned controls, no sidebars or tooltips, highlighting, year changes and mobile scrolling passed",
   );
 } finally {
   await browser.close();

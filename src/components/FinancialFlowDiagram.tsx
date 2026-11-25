@@ -1,29 +1,19 @@
 "use client";
 
-import { useLayoutEffect, useRef, type ReactNode } from "react";
+import { useLayoutEffect, useRef } from "react";
 import {
   SankeyDiagram,
   type SankeyDiagramProps,
 } from "@un-eosg/ui/components/sankey-diagram";
-import type { SankeySelection } from "@un-eosg/ui/sankey";
-import {
-  FinancialFlowSidebar,
-  type FinancialFlowSidebarContent,
-} from "./FinancialFlowSidebar";
 import styles from "./FinancialFlowDiagram.module.css";
 
-/** Shared interaction and sidebar presentation for both financial datasets. */
-export function FinancialFlowDiagram({
-  sidebarDetails,
-  footer,
-  ...props
-}: Omit<SankeyDiagramProps, "renderSelection"> & {
-  footer?: ReactNode;
-  sidebarDetails: (
-    selection: SankeySelection,
-    onClose: () => void,
-  ) => FinancialFlowSidebarContent;
-}) {
+/** Shared layout and highlighting for both financial datasets. */
+export function FinancialFlowDiagram(
+  props: Omit<
+    SankeyDiagramProps,
+    "renderDetails" | "renderSelection" | "showTooltips"
+  >,
+) {
   const diagramRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
@@ -49,21 +39,14 @@ export function FinancialFlowDiagram({
   }, []);
 
   return (
-    <>
-      <div ref={diagramRef} className={styles.diagram}>
-        <SankeyDiagram
-          wrapLabels
-          responsiveControls
-          {...props}
-          renderSelection={(selection, onClose) => (
-            <FinancialFlowSidebar
-              {...sidebarDetails(selection, onClose)}
-              onClose={onClose}
-            />
-          )}
-        />
-      </div>
-      {footer}
-    </>
+    <div ref={diagramRef} className={styles.diagram}>
+      <SankeyDiagram
+        wrapLabels
+        responsiveControls
+        {...props}
+        showTooltips={false}
+        renderDetails={() => null}
+      />
+    </div>
   );
 }

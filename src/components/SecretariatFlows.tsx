@@ -8,9 +8,6 @@ import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
 import { useNearViewport } from "@/hooks/useNearViewport";
 import { YearSlider } from "./YearSlider";
-import { SecretariatFlowDetails } from "./SecretariatFlowDetails";
-import { SecretariatEntitySidebar } from "./SecretariatEntitySidebar";
-import { ChartFooter } from "./ChartFooter";
 import { DelayedChartLoading } from "./DelayedChartLoading";
 import { useYearRanges } from "@/lib/useYearRanges";
 import {
@@ -21,13 +18,9 @@ import {
   selectedLinkValue,
   selectionRows,
   sumRecords,
-  type SecretariatRecord,
 } from "@/lib/secretariatFlows";
 import { formatBudget } from "@/lib/entities";
-import type {
-  SecretariatOverviewData,
-  SecretariatOverviewEntity,
-} from "@/types";
+import type { SecretariatOverviewData } from "@/types";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 const columnOptions = {
@@ -55,9 +48,6 @@ export function SecretariatFlows() {
   const [data, setData] = useState<SecretariatOverviewData | null>(null);
   const [failure, setFailure] = useState<number | null>(null);
   const [retry, setRetry] = useState(0);
-  const [selected, setSelected] = useState<SecretariatOverviewEntity | null>(
-    null,
-  );
   useEffect(() => {
     if (!ready) return;
     const controller = new AbortController();
@@ -87,21 +77,6 @@ export function SecretariatFlows() {
     [current, choices],
   );
   const total = current ? sumRecords(current.records) : 0;
-  const openEntity = (code: string, members: SecretariatRecord[]) => {
-    const entity = current?.entities.find((e) => e.code === code);
-    if (!entity) return;
-    const ids = new Set(members.map((r) => r.id));
-    const cells = entity.cells
-      .map((cell) => ({
-        ...cell,
-        amount: sumRecords(
-          members.filter((r) => cell.record_ids.includes(r.id)),
-        ),
-        record_ids: cell.record_ids.filter((id) => ids.has(id)),
-      }))
-      .filter((c) => c.record_ids.length);
-    setSelected({ ...entity, cells, total: sumRecords(members) });
-  };
   return (
     <section
       ref={ref}
@@ -131,10 +106,7 @@ export function SecretariatFlows() {
                 <YearSlider
                   years={years.years}
                   selectedYear={year}
-                  onChange={(next) => {
-                    setYear(next);
-                    setSelected(null);
-                  }}
+                  onChange={setYear}
                 />
               }
               summaries={[
@@ -152,9 +124,6 @@ export function SecretariatFlows() {
                 },
               ]}
             />
-          }
-          footer={
-            <ChartFooter hint="Hover for amounts; click a bar or connection to open details." />
           }
         >
           {/* The shared chart already sizes solid bars by net expenditure.
@@ -196,6 +165,7 @@ export function SecretariatFlows() {
                 ).map((column, index) => (
                   <FinancialFlowColumnSelect
                     key={column}
+                    compact
                     label={`${["Left", "Middle", "Right"][index]} column`}
                     value={choices[column]}
                     options={columnOptions[column]}
@@ -204,7 +174,6 @@ export function SecretariatFlows() {
                         ...previous,
                         [column]: value,
                       }));
-                      setSelected(null);
                     }}
                   />
                 ))}
@@ -214,37 +183,6 @@ export function SecretariatFlows() {
                     : undefined
                 }
                 ariaLabel={`Annual-report expenditure by ${dimensions.map((dimension) => SECRETARIAT_FLOW_DIMENSIONS[dimension].label.toLowerCase()).join(" through ")}`}
-                sidebarDetails={(selection, onClose) => {
-                  const rows = selectionRows(model, selection);
-                  const label = (id: string) =>
-                    model.graph.nodes.find((node) => node.id === id)?.label ??
-                    "";
-                  return {
-                    title:
-                      selection.kind === "node"
-                        ? label(selection.id)
-                        : `${label(selection.source)} → ${label(selection.target)}`,
-                    year: current.meta.year,
-                    eyebrow: "Selected expenditure",
-                    subtitle: "All funding sources · selected source records",
-                    total: {
-                      label: "Net expenditure",
-                      value: formatBudget(sumRecords(rows)),
-                    },
-                    children: (
-                      <SecretariatFlowDetails
-                        model={model}
-                        dimensions={dimensions}
-                        selection={selection}
-                        compact={false}
-                        onEntity={(code, members) => {
-                          onClose();
-                          openEntity(code, members);
-                        }}
-                      />
-                    ),
-                  };
-                }}
                 selectionLabel="Selected flow"
                 clearLabel="Clear selection"
                 formatValue={formatBudget}
@@ -275,16 +213,6 @@ export function SecretariatFlows() {
                 highlightedValue={(selection, source, target) =>
                   selectedLinkValue(model, selection, source, target)
                 }
-                renderDetails={(selection, compact, within) => (
-                  <SecretariatFlowDetails
-                    within={within}
-                    model={model}
-                    dimensions={dimensions}
-                    selection={selection}
-                    compact={compact}
-                    onEntity={openEntity}
-                  />
-                )}
               />
             ) : (
               <p role="status" className="py-12">
@@ -293,18 +221,6 @@ export function SecretariatFlows() {
             )}
           </div>
         </ChartFrame>
-      )}
-      {selected && current && (
-        <SecretariatEntitySidebar
-          key={selected.code + current.meta.year}
-          entity={selected}
-          year={current.meta.year}
-          source={current.meta.source}
-          selectedPriority={null}
-          selectionScope={`Sankey selection · ${current.meta.year} · ${dimensions.map((dimension) => SECRETARIAT_FLOW_DIMENSIONS[dimension].label).join(" → ")}`}
-          showFundingBreakdown={choices.funding === "mechanism"}
-          onClose={() => setSelected(null)}
-        />
       )}
     </section>
   );

@@ -257,10 +257,8 @@ try {
     );
   }
   await regularBudget.press("Enter");
-  await page.getByRole("dialog").waitFor();
-  await page
-    .getByRole("button", { name: "Close flow details", exact: true })
-    .click();
+  assert.equal(await page.getByRole("dialog").count(), 0);
+  await page.keyboard.press("Escape");
   await fundingFlows.getByRole("slider").press("ArrowLeft");
   await page.waitForFunction(
     () => !document.querySelector("#secretariat-flows [aria-busy=true]"),
