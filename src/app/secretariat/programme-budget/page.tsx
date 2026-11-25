@@ -21,13 +21,12 @@ export default async function ProgrammeBudgetPage() {
       <PageHeading
         sources={
           <>
-            Figures are extracted from the{" "}
-            <PageSourceLink source="programmeBudget" />.
+            Figures come from the <PageSourceLink source="programmeBudget" />.
           </>
         }
         id="regular-budget-spending"
         title="How is the programme budget allocated?"
-        description="Compare expenditure, approved and proposed budgets by budget part, section and entity."
+        description="Compare expenditure with approved and proposed budgets, by budget part, section and entity."
       />
       <PageBody>
         <RegularBudgetView />

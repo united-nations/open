@@ -17,23 +17,23 @@ export default function ContributorsPage() {
       <PageHeading
         sources={
           <>
-            Assessment amounts come from{" "}
-            <PageSourceLink source="regularAssessments" />; paid-in-full status
-            and dates come from the <PageSourceLink source="honourRoll" />.
+            Assessments come from <PageSourceLink source="regularAssessments" />
+            , payment status and dates from the{" "}
+            <PageSourceLink source="honourRoll" />
             {SHOW_REGULAR_BUDGET_OUTSTANDING && (
               <>
-                {" "}
-                Outstanding balances come from the{" "}
-                <PageSourceLink source="financialSituation" />.
+                , and outstanding balances from{" "}
+                <PageSourceLink source="financialSituation" />
               </>
             )}
+            .
           </>
         }
         title="Who funds the regular budget?"
         description={
           SHOW_REGULAR_BUDGET_OUTSTANDING
-            ? "Explore Member States’ assessed contributions to the UN regular budget, their payment status, and outstanding balances over time."
-            : "Explore Member States’ assessed contributions to the UN regular budget and their payment status over time."
+            ? "Compare Member States’ assessed contributions to the UN regular budget, track payment status and explore outstanding balances over time."
+            : "Compare Member States’ assessed contributions to the UN regular budget and track payment status over time."
         }
       />
       <section id="programme-budget-contributors" aria-label="Contributors">

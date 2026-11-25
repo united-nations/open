@@ -1,9 +1,6 @@
 import { RelatedDataPages } from "@/components/RelatedDataPages";
 import { SHOW_ADDITIONAL_TRUST_FUNDS } from "@/lib/featureFlags";
-import {
-  PageSourceLink,
-  SeparateEntityFinancialSources,
-} from "@/components/PageSources";
+import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
 import { SecretariatMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
@@ -23,15 +20,10 @@ export default function TrustFundsPage() {
       <PageHeading
         sources={
           <>
-            The fund schedules come from <PageSourceLink source="trustFunds" />.
-            {SHOW_ADDITIONAL_TRUST_FUNDS ? (
-              " Separate entity reports are linked on their figures."
-            ) : (
-              <>
-                {" "}
-                <SeparateEntityFinancialSources />
-              </>
-            )}
+            Expenditure figures come from the{" "}
+            <PageSourceLink source="trustFunds" />.
+            {SHOW_ADDITIONAL_TRUST_FUNDS &&
+              " Separate entity figures cite their own reports."}
           </>
         }
         id="trust-fund-spending"
@@ -42,8 +34,8 @@ export default function TrustFundsPage() {
         }
         description={
           SHOW_ADDITIONAL_TRUST_FUNDS
-            ? "Explore UN Secretariat trust-fund schedules and separately reported resources of UNEP, UNODC, UN-Habitat and ITC."
-            : "Explore expenditure reported in the UN Secretariat’s audited trust-fund schedules."
+            ? "Explore expenditure across UN Secretariat trust funds and the entities that manage them. Separate views cover resources reported by UNEP, UNODC, UN-Habitat and ITC."
+            : "Trust funds support specific UN activities through contributions set aside for those purposes. Explore expenditure across funds and the Secretariat entities that manage them."
         }
       />
       <PageBody>

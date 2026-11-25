@@ -56,10 +56,12 @@ const PAGE_SOURCES = {
 
 export function PageSourceLink({
   source,
+  label,
 }: {
   source: keyof typeof PAGE_SOURCES;
+  label?: string;
 }) {
-  const { href, label } = PAGE_SOURCES[source];
+  const { href, label: defaultLabel } = PAGE_SOURCES[source];
   return (
     <a
       href={href}
@@ -67,32 +69,34 @@ export function PageSourceLink({
       rel="noopener noreferrer"
       className="underline underline-offset-2"
     >
-      {label}
+      {label ?? defaultLabel}
     </a>
   );
 }
 
-export function SystemPageSources({ uninfo = false }: { uninfo?: boolean }) {
+export function SystemPageSources({
+  personnel = false,
+  uninfo = false,
+}: {
+  personnel?: boolean;
+  uninfo?: boolean;
+}) {
   return (
     <>
-      System-wide financial data comes from <PageSourceLink source="ceb" />.
+      Financial data comes from <PageSourceLink source="ceb" />
+      {personnel && (
+        <>
+          , and staff data comes from <PageSourceLink source="personnel" />
+        </>
+      )}
+      .
       {SHOW_UNINFO && uninfo && (
         <>
           {" "}
-          Cooperation Framework information in the sidebars comes from{" "}
-          <PageSourceLink source="uninfo" />.
+          Country programme details come from <PageSourceLink source="uninfo" />
+          .
         </>
       )}
-    </>
-  );
-}
-
-export function SeparateEntityFinancialSources() {
-  return (
-    <>
-      Next to these trust funds, the Secretariat manages the trust funds for
-      UNEP, UNODC, UN-Habitat and ITC; their financials are reported separately
-      and not included here.
     </>
   );
 }

@@ -1,5 +1,5 @@
 import { RelatedDataPages } from "@/components/RelatedDataPages";
-import { PageSourceLink, SystemPageSources } from "@/components/PageSources";
+import { SystemPageSources } from "@/components/PageSources";
 import type { Metadata } from "next";
 import Link from "next/link";
 import { OrganizationsOverview } from "@/components/OrganizationsOverview";
@@ -20,22 +20,10 @@ export default function SystemOrganizationsPage() {
   return (
     <>
       <PageHeading
-        sources={
-          <>
-            <SystemPageSources /> Staff data comes from{" "}
-            <PageSourceLink source="personnel" />. See the{" "}
-            <Link
-              href="/about/#personnel-methodology"
-              className="underline underline-offset-2"
-            >
-              personnel methodology
-            </Link>
-            .
-          </>
-        }
+        sources={<SystemPageSources personnel />}
         id="entities"
         title="How are UN organizations funded and staffed?"
-        description="The UN System comprises specialized agencies, funds, programmes, and the UN Secretariat with its departments, offices, and peacekeeping missions. Explore each organization’s revenue, expenditure, and reported staff."
+        description="The UN System brings together agencies, funds, programmes and the Secretariat. Compare their revenue, expenditure and staff, and see how these change over time."
       />
       <PageBody>
         <OrganizationsOverview>

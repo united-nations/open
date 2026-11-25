@@ -21,7 +21,7 @@ export default function SystemFunctionsPage() {
         sources={<SystemPageSources />}
         id="functions"
         title="Which functions do funds support?"
-        description="Explore expenditure across development assistance, humanitarian assistance, peace operations, and the global agenda and specialized assistance. Trends use the current CEB classification from 2018 onward."
+        description="UN organizations work on development, humanitarian assistance, peace operations and global issues. Compare expenditure across these areas and see how it changes over time."
       />
       <PageBody>
         <FunctionsChart />

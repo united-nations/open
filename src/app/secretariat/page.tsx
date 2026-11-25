@@ -22,7 +22,7 @@ export default async function SecretariatPage() {
       <PageHeading
         id="priorities"
         title="How do UN Secretariat entities use their resources?"
-        description="Explore UN Secretariat expenditure by priority area and entity."
+        description="The Secretariat includes departments, offices and missions. Explore their expenditure across priority areas and see how it changes over time."
         sources={
           <>
             This simplified overview is based on data from the{" "}

@@ -21,7 +21,7 @@ export default function SystemGoalsPage() {
         sources={<SystemPageSources uninfo />}
         id="sdgs"
         title="Reported expenditure by Sustainable Development Goal"
-        description="Explore reported expenditure by Sustainable Development Goal. Annual snapshots are not directly comparable because reporting coverage and allocations can change."
+        description="Explore reported expenditure across the Sustainable Development Goals. Select a goal to see which UN organizations report expenditure against it."
       />
       <PageBody>
         <SDGsGrid />

@@ -18,15 +18,14 @@ export default function PeacekeepingBudgetPage() {
       <PageHeading
         sources={
           <>
-            Figures come from United Nations{" "}
+            Figures come from UN{" "}
             <PageSourceLink source="peacekeepingDocuments" /> and General
-            Assembly decisions. Learn{" "}
-            <PageSourceLink source="peacekeepingFunding" />.
+            Assembly decisions.
           </>
         }
         id="peacekeeping-spending"
         title="How are peacekeeping resources used?"
-        description="Explore expenditure, approved budgets and proposals for peacekeeping missions, support offices, service centres and the support account. Financial years run from July to June."
+        description="Compare expenditure, approved budgets and proposals for peacekeeping missions, support offices, service centres and the support account."
       />
       <PageBody>
         <PeacekeepingBudgetView />

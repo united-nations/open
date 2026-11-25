@@ -105,11 +105,14 @@ try {
     });
     const sourceParagraph = page.locator("p + p").filter({
       has: page.getByRole("link", {
-        name: "CEB Financial Statistics on assessments voted and assessments received",
+        name: "CEB Financial Statistics",
         exact: true,
       }),
     });
-    assert.match(await sourceParagraph.innerText(), /^Figures come from/);
+    assert.match(
+      await sourceParagraph.innerText(),
+      /^Assessments and payments come from/,
+    );
     const china = chart.getByRole("button", {
       name: "China",
       exact: true,

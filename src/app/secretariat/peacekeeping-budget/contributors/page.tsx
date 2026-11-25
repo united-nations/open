@@ -16,12 +16,12 @@ export default function ContributorsPage() {
       <PageHeading
         sources={
           <>
-            Figures come from{" "}
+            Assessments come from{" "}
             <PageSourceLink source="peacekeepingAssessments" />.
           </>
         }
         title="Who funds UN peacekeeping?"
-        description="Explore the contributions assessed to Member States for peacekeeping budgets, by contributor and mission. These figures show assessments, not payments received."
+        description="Explore Member States’ assessed contributions to UN peacekeeping, by country and mission. These are the amounts countries are required to pay."
       />
       <section id="peacekeeping-contributors" aria-label="Contributors">
         <PageBody>

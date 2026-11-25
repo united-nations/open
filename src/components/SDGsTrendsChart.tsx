@@ -82,6 +82,10 @@ export async function SDGsTrendsChart() {
         showShareToggle
         stackOffset="none"
       />
+      <p className="text-sm text-gray-500">
+        Annual snapshots are not directly comparable because reporting coverage
+        and allocations can change.
+      </p>
     </section>
   );
 }

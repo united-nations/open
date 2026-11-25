@@ -649,6 +649,13 @@ function TrustFundsMethodologyNotes() {
         printed net assets. The financial position figures retain the statement
         totals in both cases.
       </p>
+      {!SHOW_ADDITIONAL_TRUST_FUNDS && (
+        <p>
+          The Secretariat also manages trust funds for UNEP, UNODC, UN-Habitat
+          and ITC. Their finances are reported separately and are not included
+          in this view.
+        </p>
+      )}
       {SHOW_ADDITIONAL_TRUST_FUNDS && (
         <>
           <p>

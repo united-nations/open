@@ -1,9 +1,6 @@
 import { RelatedDataPages } from "@/components/RelatedDataPages";
 import { SHOW_ADDITIONAL_TRUST_FUNDS } from "@/lib/featureFlags";
-import {
-  PageSourceLink,
-  SeparateEntityFinancialSources,
-} from "@/components/PageSources";
+import { PageSourceLink } from "@/components/PageSources";
 import type { Metadata } from "next";
 import { SecretariatMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
@@ -20,22 +17,17 @@ export default function ContributorsPage() {
       <PageHeading
         sources={
           <>
-            The schedule view uses <PageSourceLink source="trustFunds" />.
-            {SHOW_ADDITIONAL_TRUST_FUNDS ? (
-              " Separate entity views link their own source pages."
-            ) : (
-              <>
-                {" "}
-                <SeparateEntityFinancialSources />
-              </>
-            )}
+            Contributions and transfers come from the{" "}
+            <PageSourceLink source="trustFunds" />.
+            {SHOW_ADDITIONAL_TRUST_FUNDS &&
+              " Separate entity figures cite their own reports."}
           </>
         }
         title="Who contributes to UN Secretariat trust funds?"
         description={
           SHOW_ADDITIONAL_TRUST_FUNDS
-            ? "Explore contributions and transfers from the UN Secretariat trust-fund schedules, or select separately reported entity data. Source measures and partial coverage are shown within each view."
-            : "Explore contributions and transfers reported in the UN Secretariat trust-fund schedules."
+            ? "Explore contributions and transfers reported for UN Secretariat trust funds. Compare reported amounts by fund and contributor, or select separately reported entity data."
+            : "Explore contributions and transfers reported for UN Secretariat trust funds. Compare reported amounts by fund and contributor."
         }
       />
       <section id="trust-fund-contributors" aria-label="Contributors">

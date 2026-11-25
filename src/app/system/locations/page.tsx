@@ -1,5 +1,4 @@
-import Link from "next/link";
-import { PageSourceLink, SystemPageSources } from "@/components/PageSources";
+import { SystemPageSources } from "@/components/PageSources";
 import { FunctionGeographyChart } from "@/components/FunctionGeographyChart";
 import type { Metadata } from "next";
 import { LocationsMap } from "@/components/LocationsMap";
@@ -17,22 +16,10 @@ export default function SystemLocationsPage() {
   return (
     <>
       <PageHeading
-        sources={
-          <>
-            <SystemPageSources uninfo /> Duty station headcounts come from{" "}
-            <PageSourceLink source="personnel" />. See the{" "}
-            <Link
-              href="/about/#personnel-methodology"
-              className="underline underline-offset-2"
-            >
-              personnel methodology
-            </Link>
-            .
-          </>
-        }
+        sources={<SystemPageSources personnel uninfo />}
         id="countries"
         title="Where are funds spent and staff based?"
-        description="UN System organizations implement activities across the world. Explore expenditure from global programmes to country-level operations, and view staff by country of duty station."
+        description="Explore UN expenditure across countries, regions and global programmes. See where staff are based and how expenditure is divided among different areas of work."
       />
       <PageBody>
         <LocationsMap />

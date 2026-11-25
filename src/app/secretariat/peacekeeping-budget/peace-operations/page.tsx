@@ -25,7 +25,7 @@ export default function PeaceOperationsPage() {
         }
         id="peace-operations"
         title="How do peace operations use their resources?"
-        description="Peace operations combine peacekeeping operations (PKO) and special political missions (SPM). PKO use the peacekeeping budget; SPM are funded through the programme budget (PPB), outside the peacekeeping budget. Explore their geographic footprint and expenditure together."
+        description="Peace operations include peacekeeping and special political missions. Explore where they operate and compare expenditure across missions."
       />
       <PageBody>
         <FieldMissionsMap />

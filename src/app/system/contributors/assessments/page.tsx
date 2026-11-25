@@ -1,6 +1,7 @@
 import { RelatedDataPages } from "@/components/RelatedDataPages";
 import { SectionHeading, ChartHeading } from "@/components/ContentHeading";
 import type { Metadata } from "next";
+import Link from "next/link";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
 import { PageSourceLink } from "@/components/PageSources";
@@ -27,18 +28,25 @@ export default function SystemAssessmentsPage() {
         description={
           <>
             Assessed contributions are amounts members are required to pay under
-            each organization’s rules. In practice, assessments are not always
-            paid in full and on time by every member. Explore assessments
-            payable and the payments organizations reported receiving, including
-            payments toward earlier years. Assessments and payments cover 2024
-            and 2025; the outstanding-balances trend includes earlier years.
+            each organization’s rules. Explore assessments payable, payments
+            received and balances still owed, by contributor and organization.
           </>
         }
         sources={
           <>
-            Figures come from <PageSourceLink source="cebAssessments" />.
-            Reported outstanding balances come from CEB’s financial-situation
-            reports.
+            Assessments and payments come from{" "}
+            <PageSourceLink
+              source="cebAssessments"
+              label="CEB Financial Statistics"
+            />
+            ; outstanding balances come from{" "}
+            <Link
+              href="/about/#ceb-assessments"
+              className="underline underline-offset-2"
+            >
+              CEB’s financial-situation reports
+            </Link>
+            .
           </>
         }
       />

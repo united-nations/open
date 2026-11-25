@@ -4,7 +4,7 @@ This file provides guidance to AI coding agents when working with code in this r
 
 ## Project
 
-The **UN Transparency Portal** is a static Next.js app that visualizes financial data across the UN System and the UN Secretariat: contributions, entity spending, geographic deployment, SDG funding, Secretariat budgets, field missions, and trust funds. The frontend reads pre-processed static JSON; a separate Python pipeline produces that JSON from raw sources.
+The **UN Transparency Portal** is a static Next.js app that visualizes financial data across the UN System and the UN Secretariat: contributions, entity expenditure, geographic deployment, SDG funding, Secretariat budgets, field missions, and trust funds. The frontend reads pre-processed static JSON; a separate Python pipeline produces that JSON from raw sources.
 
 The portal currently previews at [open.unfck.org](https://open.unfck.org) but the production destination is **[open.un.org](https://open.un.org)** (the official UN transparency gateway).
 
@@ -41,9 +41,9 @@ Loading goes through helpers in [src/lib/data.ts](src/lib/data.ts): `loadYearDat
 
 The portal combines **three non-equivalent financial datasets** — they use different methodologies, scopes, and granularity, and must not be naively summed:
 
-- **CEB Financial Statistics** (coverage varies by dataset; the current release extends through 2025) — system-wide actuals from audited statements. The reconciled backbone for contributors, entity revenue/spending, countries, and SDG views. Annual-cycle, lagged. Critically, CEB does **not** net out inter-agency transfers, so totals are inflated by double-counting.
+- **CEB Financial Statistics** (coverage varies by dataset; the current release extends through 2025) — system-wide actuals from audited statements. The reconciled backbone for contributors, entity revenue/expenditure, countries, and SDG views. Annual-cycle, lagged. Critically, CEB does **not** net out inter-agency transfers, so totals are inflated by double-counting.
 - **UN Secretariat** (2019–2023, ~150 sub-entities) — granular breakdown of the CEB `UN` and `UN-DPO` aggregates into individual departments, offices, and peacekeeping/political missions (OCHA, DPPA, DSS, MONUSCO, etc.). Displayed separately from CEB System totals; mixed budget/financial-statement accounting bases; its reconstruction does not establish elimination of inter-entity transfers.
-- **UNINFO** (2022–2024, 127 programme countries) — Cooperation Framework data with per-project detail and the **SDG×country** cross-dimension the other two lack. Tracks Required, Available and Spent; source anomalies can violate their expected ordering and must be preserved and disclosed. Covers only ~40–45% of system spending (no HQ, peacekeeping, or donor countries). Powers per-country sidebars/projects/results-framework.
+- **UNINFO** (2022–2024, 127 programme countries) — Cooperation Framework data with per-project detail and the **SDG×country** cross-dimension the other two lack. Tracks Required, Available and Spent; source anomalies can violate their expected ordering and must be preserved and disclosed. Covers only ~40–45% of system expenditure (no HQ, peacekeeping, or donor countries). Powers per-country sidebars/projects/results-framework.
 
 Current CEB processing is defined by [data/ceb-methodology.json](data/ceb-methodology.json),
 [docs/ceb-methodology.md](docs/ceb-methodology.md),
@@ -86,4 +86,6 @@ GitHub Actions (`.github/workflows/nextjs.yml`) builds the static export and dep
 - Strict TypeScript, no `any`. Add shadcn components via `npx shadcn@latest add <component>`.
 - Design: left-align, minimal, clear hierarchy, UN color palette (especially `un-blue`). Data-route titles use `PageHeading` as the single H1; the shared section introduction is prominent prose. Use `SectionHeading` for major H2 sections and their anchors, and `ChartHeading` for peer chart titles (18px medium). Chart headings use H2 directly beneath the route title and H3 inside a major section. Preserve the compact heading scale in sidebars.
 - In public interface copy, name the data or its source. Never use “workbook,” including in link labels, methodology text, and status messages.
+- Always use “expenditure,” never “spending,” in prose, labels, and public interface copy.
+- Spell out “Multi-Partner Trust Fund Office” before using “MPTF Office” for the first time on a page.
 - Avoid parallel infrastructure — prefer the existing global mappings in `src/lib/` and `python/utils.py`.
