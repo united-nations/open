@@ -8,3 +8,7 @@ data/trust-fund-source-candidates/**/*.csv text eol=lf
 # Preserve downloaded CEB HR bytes for recorded SHA-256 provenance.
 data/ceb/hr/raw/*.csv -text whitespace=cr-at-eol
 data/ceb/hr/ceb_hr_codebook_v1.0.md -text
+
+# Retain exact official-source bytes for SHA-256 provenance.
+data/honour-roll/*.html -text -whitespace
+python/tests/fixtures/honour-roll-*.html -text -whitespace

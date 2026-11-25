@@ -12,14 +12,26 @@ on:
   push:
     branches: ["main"]
 
+  # Two opportunities each night; avoid GitHub's busy top-of-hour schedules.
+  # UTC: 04:23 and 07:23 (23:23/02:23 EST, 00:23/03:23 EDT).
+  schedule:
+    - cron: "23 4,7 * * *"
+
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
+    inputs:
+      sync_honour_roll:
+        description: Fetch and validate the current honour roll before building
+        type: boolean
+        default: false
+      dry_run:
+        description: Test the fetch and full site build without committing or deploying
+        type: boolean
+        default: false
 
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
-  pages: write
-  id-token: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
 # However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
@@ -31,15 +43,47 @@ jobs:
   # Build job
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 30
+    permissions:
+      contents: write
+      pages: read
     outputs:
       artifact_name: github-pages-${{ github.run_attempt }}
     env:
       SITE_VARIANT: public
       # The production custom domain serves the export from the domain root.
       BASE_PATH: ""
+      SYNC_HONOUR_ROLL: ${{ github.event_name == 'schedule' || inputs.sync_honour_roll }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # Queued schedules must use the latest baseline, not an older event SHA.
+          ref: ${{ github.ref }}
+      - name: Require main for production updates
+        if: ${{ !inputs.dry_run && github.ref != 'refs/heads/main' }}
+        run: |
+          echo "::error::Production updates must run on main. Use dry_run to test another branch."
+          exit 1
+      - name: Set honour-roll diagnostics path
+        if: env.SYNC_HONOUR_ROLL == 'true'
+        run: echo "HONOUR_ROLL_DIAGNOSTICS=$RUNNER_TEMP/honour-roll" >> "$GITHUB_ENV"
+      - name: Setup uv
+        if: env.SYNC_HONOUR_ROLL == 'true'
+        uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d # v10.4.0
+        with:
+          python-version: "3.13"
+          version: "0.12.3"
+          enable-cache: true
+      - name: Test honour-roll validation and failure safety
+        if: env.SYNC_HONOUR_ROLL == 'true'
+        run: |
+          uv run --frozen python -m unittest discover -s python/tests -p 'test_honour_roll*.py'
+          node --test scripts/tests/honour-roll-alert.test.cjs
+      - name: Fetch and validate honour roll
+        if: env.SYNC_HONOUR_ROLL == 'true'
+        timeout-minutes: 8
+        run: uv run --frozen python python/sync_honour_roll.py --diagnostics-dir "$HONOUR_ROLL_DIAGNOSTICS"
       - name: Setup pnpm
         uses: pnpm/action-setup@v6
       - name: Setup Node
@@ -48,6 +92,7 @@ jobs:
           node-version: "24"
           cache: pnpm
       - name: Setup Pages
+        if: ${{ !inputs.dry_run }}
         id: pages
         uses: actions/configure-pages@v5
       - name: Restore cache
@@ -69,28 +114,97 @@ jobs:
           node --test src/lib/tests/featureProfiles.test.mjs
           node scripts/check-feature-export.mjs
           python3 - <<'PYCODE'
+          import hashlib, json, os
           from pathlib import Path
           assert Path("out/CNAME").read_text().strip() == "open.un.org"
           home = Path("out/index.html").read_text()
           assert 'href="/_next/static/' in home, "Stylesheets must load from the domain root"
           assert 'src="/_next/static/' in home, "Scripts must load from the domain root"
+          if os.environ['SYNC_HONOUR_ROLL'] == 'true':
+              diagnostics = Path(os.environ['HONOUR_ROLL_DIAGNOSTICS'])
+              report = json.loads((diagnostics / 'report.json').read_text())
+              year = report['year']
+              filename = f'regular-budget-contributors-{year}.json'
+              source = Path('public/data', filename).read_bytes()
+              assert Path('out/data', filename).read_bytes() == source, 'Exported honour-roll data differs from validated input'
+              payload = json.loads(source)
+              assert payload['meta']['as_of'] == report['as_of']
+              if report['changed']:
+                  evidence = Path(f'data/honour-roll/honourroll-{year}.html').read_bytes()
+                  assert evidence == (diagnostics / 'source.html').read_bytes()
+                  assert hashlib.sha256(evidence).hexdigest() == payload['meta']['sources']['honour_roll']['sha256'] == report['source_sha256']
           PYCODE
       - name: Upload artifact
+        if: ${{ !inputs.dry_run }}
         uses: actions/upload-pages-artifact@v3
         with:
           name: github-pages-${{ github.run_attempt }}
           path: ./out
+      - name: Commit validated honour-roll data after successful build
+        if: ${{ env.SYNC_HONOUR_ROLL == 'true' && !inputs.dry_run }}
+        run: bash scripts/commit-honour-roll.sh
+      - name: Retain honour-roll evidence and diagnostics
+        if: ${{ always() && env.SYNC_HONOUR_ROLL == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: honour-roll-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/honour-roll/
+          if-no-files-found: warn
+          retention-days: 90
+      - name: Summarize honour-roll validation
+        if: ${{ always() && env.SYNC_HONOUR_ROLL == 'true' }}
+        env:
+          BUILD_STATUS: ${{ job.status }}
+          HONOUR_ROLL_DIAGNOSTICS: ${{ runner.temp }}/honour-roll
+        run: |
+          python3 - <<'PYCODE'
+          import json, os
+          from pathlib import Path
+          report = Path(os.environ['HONOUR_ROLL_DIAGNOSTICS']) / 'report.json'
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as summary:
+              summary.write('## Honour-roll sync\n\n')
+              if report.exists():
+                  result = json.loads(report.read_text())
+                  summary.write(f"Source date: {result['previous_as_of']} → {result['as_of']}. "
+                                f"Paid states: {result['previous_paid_in_full']} → {result['paid_in_full']}.\n\n")
+              summary.write(f"Build job: {os.environ['BUILD_STATUS']}. Deployment requires this job to pass.\n")
+          PYCODE
 
   # Deployment job
   deploy:
+    if: ${{ !inputs.dry_run }}
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     needs: build
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
         with:
           artifact_name: ${{ needs.build.outputs.artifact_name }}
+
+  honour-roll-alert:
+    name: Report honour-roll sync failures
+    needs: [build, deploy]
+    if: ${{ always() && (github.event_name == 'schedule' || inputs.sync_honour_roll) && !inputs.dry_run }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Open failure issue or close it after recovery
+        uses: actions/github-script@v8
+        env:
+          HONOUR_ROLL_BUILD_RESULT: ${{ needs.build.result }}
+          HONOUR_ROLL_DEPLOY_RESULT: ${{ needs.deploy.result }}
+        with:
+          script: |
+            await require('./scripts/honour-roll-alert.cjs')({github, context, core});
