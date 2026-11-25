@@ -150,12 +150,18 @@ These are organization-level stocks of uncollected assessed contributions for
 current and prior years, in full nominal US dollars. They are not annual
 assessments less annual receipts, and they do not identify member-state debts.
 They remain separate from the annual assessments-and-receipts dataset. The
-Assessed Contributions view shows these as a separate ranked bar chart beside the annual
-payment trend, below the organization treemap. Each organization sidebar
-shows the selected reported balance and its history for 2024 and 2025. The overview keeps dates
-in tooltips; sidebars show them next to the balance. The chart reuses the
-Secretariat outstanding-dues colour. A small collapsed expander below each
-chart shows the selected year's original CEB Table 7 footnotes, with markers
+Assessed Contributions view shows these as a separate ranked bar chart beside
+the annual payment trend, below the organization treemap. Each organization
+sidebar shows the selected reported balance and its history for 2024 and 2025.
+The overview keeps dates in tooltips. A separate half-width plot uses the full manifest coverage
+(2020–2025) and a searchable organization selector, initially showing the UN
+Secretariat. It reuses the sidebar plot, preserves missing observations as gaps,
+and displays repeated balances as separate points without connecting them across
+reports. IRMCT remains excluded throughout this trend and ICAO is excluded only
+in 2024. Reporting dates and source citations appear in point tooltips. Sidebars
+show dates next to the balance. The plots reuse the Secretariat outstanding-dues
+colour. A small collapsed expander below the ranked chart and in sidebars
+shows the selected year's original CEB Table 7 footnotes, with markers
 and a source-page link. Footnotes explicitly about one observation year are
 limited to that year; general notes and reporting-history notes apply to both
 years in a report. PDF-generated spaces inside words are suppressed during

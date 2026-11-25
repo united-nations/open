@@ -8,6 +8,7 @@ import { CebMethodologyLink } from "@/components/Methodology";
 import { CebAssessmentsTreemap } from "@/components/CebAssessmentsTreemap";
 import { CebSystemAssessmentTrends } from "@/components/CebAssessmentTrendsChart";
 import { CebAssessmentOutstandingChart } from "@/components/CebAssessmentOutstandingChart";
+import { CebAssessmentOutstandingTrendsChart } from "@/components/CebAssessmentOutstandingTrendsChart";
 import { CebAssessmentSidebars } from "@/components/CebAssessmentSidebars";
 import { CEB_ASSESSMENTS_SECTION } from "@/lib/cebAssessments";
 import { SYSTEM_ASSESSMENTS_PATH } from "@/lib/navigation";
@@ -29,7 +30,8 @@ export default function SystemAssessmentsPage() {
             each organization’s rules. In practice, assessments are not always
             paid in full and on time by every member. Explore assessments
             payable and the payments organizations reported receiving, including
-            payments toward earlier years. This view shows 2024 and 2025.
+            payments toward earlier years. Assessments and payments cover 2024
+            and 2025; the outstanding-balances trend includes earlier years.
           </>
         }
         sources={
@@ -65,6 +67,7 @@ export default function SystemAssessmentsPage() {
               <CebSystemAssessmentTrends />
             </section>
             <CebAssessmentOutstandingChart />
+            <CebAssessmentOutstandingTrendsChart />
           </div>
         </section>
       </PageBody>

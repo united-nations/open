@@ -52,6 +52,9 @@ export const CEB_ASSESSMENT_YEAR_RANGE = assessmentDisplayRange(
   manifest.cebAssessments,
 );
 
+export const CEB_ASSESSMENT_OUTSTANDING_HISTORY_YEAR_RANGE =
+  manifest.cebAssessmentOutstanding;
+
 const YEAR_RANGES: YearRanges = {
   ...manifest,
   cebAssessments: CEB_ASSESSMENT_YEAR_RANGE,

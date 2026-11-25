@@ -13,6 +13,14 @@ import type {
 
 const requests = new Map<number, Promise<CebAssessmentOutstandingData>>();
 
+interface OutstandingPlotPoint {
+  year: number;
+  amount: number | null;
+  trend: number | null;
+  record: ReturnType<typeof outstandingRows>[number] | null;
+  data: CebAssessmentOutstandingData;
+}
+
 export function annualAssessmentReferences(data: CebAssessmentsData) {
   return new Map(
     assessmentOrganizationGroups(data.contributors).map((group) => [
@@ -92,6 +100,38 @@ export function outstandingRows(data: CebAssessmentOutstandingData) {
         ? `${record.entity} — balance ${record.sourceRowOccurrence}`
         : record.entity,
   }));
+}
+
+export function outstandingHistory(
+  datasets: readonly CebAssessmentOutstandingData[],
+  entity: string,
+) {
+  return [...datasets]
+    .sort((a, b) => a.year - b.year)
+    .map((data) => ({
+      data,
+      rows: outstandingRows(data).filter((row) => row.entity === entity),
+    }));
+}
+
+export function outstandingTrend(
+  history: ReturnType<typeof outstandingHistory>,
+) {
+  // Repeated balances have report-local identities, so they cannot be joined
+  // across reports or summed into a single organization balance.
+  const multiple = history.some(({ rows }) => rows.length > 1);
+  const points = history.flatMap<OutstandingPlotPoint>(({ data, rows }) =>
+    rows.length
+      ? rows.map((record) => ({
+          year: data.year,
+          amount: record.outstanding,
+          trend: multiple ? null : record.outstanding,
+          record,
+          data,
+        }))
+      : [{ year: data.year, amount: null, trend: null, record: null, data }],
+  );
+  return { points, multiple };
 }
 
 export function outstandingSourceUrl(

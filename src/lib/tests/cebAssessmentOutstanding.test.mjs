@@ -9,7 +9,68 @@ const {
   outstandingRows,
   outstandingFootnotes,
   outstandingDate,
+  outstandingHistory,
+  outstandingTrend,
 } = await moduleAt("src/lib/cebAssessmentOutstanding.ts");
+
+test("outstanding trends sort reporting years and preserve missing, zero and signed balances", () => {
+  const data = (year, outstanding) => ({
+    year,
+    source: { symbol: `Report ${year}` },
+    organizations:
+      outstanding === undefined
+        ? []
+        : [{ entity: "A", sourceRow: 1, outstanding }],
+  });
+  const datasets = [
+    data(2023, -2),
+    data(2020, 0),
+    data(2022),
+    data(2021, null),
+  ];
+  const original = structuredClone(datasets);
+  const { points, multiple } = outstandingTrend(
+    outstandingHistory(datasets, "A"),
+  );
+  assert.equal(multiple, false);
+  assert.deepEqual(
+    points.map(({ year, amount, trend }) => ({ year, amount, trend })),
+    [
+      { year: 2020, amount: 0, trend: 0 },
+      { year: 2021, amount: null, trend: null },
+      { year: 2022, amount: null, trend: null },
+      { year: 2023, amount: -2, trend: -2 },
+    ],
+  );
+  assert.equal(points[2].record, null);
+  assert.deepEqual(datasets, original);
+});
+
+test("repeated reported balances remain separate and are not joined across reports", () => {
+  const datasets = [2022, 2023, 2024].map((year) => ({
+    year,
+    source: { symbol: year < 2024 ? "A/79/494" : "A/81/408" },
+    organizations: (year < 2024 ? [10, 20] : [30]).map(
+      (outstanding, index) => ({
+        entity: "UNFCCC",
+        sourceRow: index + 1,
+        sourceRowOccurrence: index + 1,
+        outstanding,
+      }),
+    ),
+  }));
+  const { points, multiple } = outstandingTrend(
+    outstandingHistory(datasets, "UNFCCC"),
+  );
+  assert.equal(multiple, true);
+  assert.deepEqual(
+    points.map(({ amount }) => amount),
+    [10, 20, 10, 20, 30],
+  );
+  assert.ok(points.every(({ trend }) => trend === null));
+  assert.notEqual(points[0].record.key, points[1].record.key);
+  assert.equal(points[0].record.label, "UNFCCC — balance 1");
+});
 
 test("outstanding balances use the same organization exclusions as annual assessments", () => {
   const source = {

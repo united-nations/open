@@ -231,9 +231,12 @@ export default function AboutPage() {
                   system. They include current and prior assessment years. The
                   portal preserves CEB’s reported amounts and displays the
                   original table footnotes for the selected year below the
-                  charts for 2024 and 2025. Missing balances remain unavailable.
-                  Where CEB reports separate budget balances, they remain
-                  separate.
+                  charts for 2024 and 2025. A separate organization-filtered
+                  trend shows reported balances for 2020–2025, with reporting
+                  dates and source citations in tooltips. IRMCT is excluded
+                  throughout this trend and ICAO is excluded in 2024. Missing
+                  balances remain gaps, and separate reported balances are shown
+                  as separate points without connecting them across reports.
                 </p>
                 <p>
                   Outstanding-balance sources:{" "}
