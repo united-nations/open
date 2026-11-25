@@ -196,7 +196,7 @@ try {
     .getByRole("row")
     .filter({ has: page.getByRole("button", { name: "Mexico", exact: true }) });
   assert.match(await mexico.innerText(), /2\.2%/);
-  assert.match(await mexico.innerText(), /64\.8%/);
+  assert.match(await mexico.innerText(), /65%/);
   const search = section.getByRole("searchbox", {
     name: "Search Member States",
   });

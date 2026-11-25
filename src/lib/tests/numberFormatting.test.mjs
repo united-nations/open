@@ -63,7 +63,15 @@ test("small money, signed adjustments, actual zero and unavailable stay distinct
 test("ordinary percentages preserve tiny amounts, signs and near-complete shares", () => {
   for (const [amount, expected] of [
     [42, "42%"],
-    [12.345, "12.3%"],
+    [98.6, "99%"],
+    [19.3, "19%"],
+    [45.6, "46%"],
+    [3.74, "3.7%"],
+    [9.96, "10%"],
+    [99.49, "99%"],
+    [99.5, "<100%"],
+    [100.49, ">100%"],
+    [12.345, "12%"],
     [0.4, "0.4%"],
     [0.001, "<0.1%"],
     [-0.001, "−(<0.1%)"],
@@ -103,6 +111,11 @@ test("staff counts are compact while small counts remain whole", () => {
   assert.equal(formatPeople(12_345), "12.3K");
   assert.equal(formatPeople(1_000), "1K");
   assert.equal(formatPeople(NaN), "—");
+});
+
+test("formatting comes from the shared UI package without a portal override", () => {
+  const patch = fs.readFileSync("patches/@un-eosg__ui@0.1.5.patch", "utf8");
+  assert.ok(!patch.includes("diff --git a/lib/format-budget.ts"));
 });
 
 test("the committed shared UI patch and dependency lock agree", () => {
