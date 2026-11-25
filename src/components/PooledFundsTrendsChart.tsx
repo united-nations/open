@@ -60,37 +60,39 @@ export function PooledFundsTrendsChart({
         : data.funds[fundId].name;
   return (
     <div className="mt-12 grid gap-8 lg:grid-cols-2">
-      <section className="min-w-0 space-y-3">
+      <section className="flex min-w-0 flex-col gap-3">
         <ChartHeading>
           {definition.shortLabel} by category over time
         </ChartHeading>
-        <FinancingInstrumentChart
-          data={data.annual.map((annual) => ({
-            year: String(annual.year),
-            ...Object.fromEntries(
-              categories.map((category) => {
-                const values = Object.values(annual.funds)
-                  .filter(
-                    (fund) => (fund.category ?? "Not specified") === category,
-                  )
-                  .map((fund) => fund[metric]);
-                return [category, sumPooledAmounts(values)];
-              }),
-            ),
-          }))}
-          series={categories.map((category) => ({
-            key: category,
-            label: category,
-            color: pooledFundColor(category),
-          }))}
-          allowNegative
-          filterable
-          showShareToggle
-          height={260}
-          accessibleTableLabel={`${definition.label} by fund category`}
-        />
+        <div className="mt-auto">
+          <FinancingInstrumentChart
+            data={data.annual.map((annual) => ({
+              year: String(annual.year),
+              ...Object.fromEntries(
+                categories.map((category) => {
+                  const values = Object.values(annual.funds)
+                    .filter(
+                      (fund) => (fund.category ?? "Not specified") === category,
+                    )
+                    .map((fund) => fund[metric]);
+                  return [category, sumPooledAmounts(values)];
+                }),
+              ),
+            }))}
+            series={categories.map((category) => ({
+              key: category,
+              label: category,
+              color: pooledFundColor(category),
+            }))}
+            allowNegative
+            filterable
+            showShareToggle
+            height={260}
+            accessibleTableLabel={`${definition.label} by fund category`}
+          />
+        </div>
       </section>
-      <section className="min-w-0 space-y-3">
+      <section className="flex min-w-0 flex-col gap-3">
         <ChartHeading>
           {definition.shortLabel} for a fund over time
         </ChartHeading>
@@ -104,36 +106,38 @@ export function PooledFundsTrendsChart({
             getLabel={() => selectedLabel}
           />
         </div>
-        <FinancingInstrumentChart
-          data={data.annual.map((annual) => ({
-            year: String(annual.year),
-            amount:
-              fundId === "all"
-                ? annual.totals[metric]
-                : fundId.startsWith("category:")
-                  ? sumPooledAmounts(
-                      Object.values(annual.funds)
-                        .filter(
-                          (fund) =>
-                            (fund.category ?? "Not specified") ===
-                            fundId.slice("category:".length),
-                        )
-                        .map((fund) => fund[metric]),
-                    )
-                  : (annual.funds[fundId]?.[metric] ?? null),
-          }))}
-          series={[
-            {
-              key: "amount",
-              label: definition.shortLabel,
-              color: definition.color,
-            },
-          ]}
-          allowNegative
-          showLegend={false}
-          height={224}
-          accessibleTableLabel={`${definition.label} for ${selectedLabel}`}
-        />
+        <div className="mt-auto">
+          <FinancingInstrumentChart
+            data={data.annual.map((annual) => ({
+              year: String(annual.year),
+              amount:
+                fundId === "all"
+                  ? annual.totals[metric]
+                  : fundId.startsWith("category:")
+                    ? sumPooledAmounts(
+                        Object.values(annual.funds)
+                          .filter(
+                            (fund) =>
+                              (fund.category ?? "Not specified") ===
+                              fundId.slice("category:".length),
+                          )
+                          .map((fund) => fund[metric]),
+                      )
+                    : (annual.funds[fundId]?.[metric] ?? null),
+            }))}
+            series={[
+              {
+                key: "amount",
+                label: definition.shortLabel,
+                color: definition.color,
+              },
+            ]}
+            allowNegative
+            showLegend={false}
+            height={260}
+            accessibleTableLabel={`${definition.label} for ${selectedLabel}`}
+          />
+        </div>
       </section>
     </div>
   );
