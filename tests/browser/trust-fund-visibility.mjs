@@ -144,6 +144,11 @@ if (flags.trustFunds && !flags.additionalTrustFunds) {
         .count(),
       0,
     );
+    const showMore = listedSidebar.getByRole("button", {
+      name: "Show more",
+      exact: true,
+    });
+    if (await showMore.count()) await showMore.click();
     const descriptionBounds = await listDescription.boundingBox();
     const financialBounds = await listedSidebar
       .getByText("Total expenditure", { exact: true })

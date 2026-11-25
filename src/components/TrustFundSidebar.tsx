@@ -8,6 +8,7 @@ import { TrustFundFlowBreakdown } from "@/components/TrustFundFlowBreakdown";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { SourceCalculation } from "@/components/SourceCalculation";
 import { UNDocumentLink } from "@/components/UNDocumentText";
+import { ExpandableText } from "@/components/ExpandableText";
 
 import { Fragment, useEffect, useId, useMemo, useState } from "react";
 import { FinancialBreakdownRow } from "@un-eosg/ui/components/financial-breakdown-row";
@@ -554,48 +555,50 @@ export function TrustFundSidebar({
         }
         metadata={
           ready && node.description ? (
-            <div
-              className="space-y-3 text-sm leading-relaxed"
-              data-fund-description
+            <ExpandableText
+              key={`${node.id}:${node.description}`}
+              className="text-sm leading-relaxed"
             >
-              {node.fundAccountType === "mptf" && (
-                <p className="text-xs text-gray-500">
-                  Schedule 8.1 portfolio scope
-                </p>
-              )}
-              {node.descriptionBlocks?.length ? (
-                node.descriptionBlocks.map((block, index) =>
-                  block.type === "paragraph" ? (
-                    <p key={index}>
-                      <FundDescriptionText
-                        text={block.text}
-                        links={block.links}
-                      />{" "}
-                    </p>
-                  ) : (
-                    <ol
-                      key={index}
-                      className="space-y-2 pl-2"
-                      aria-label="Fund description items"
-                    >
-                      {block.items.map((item) => (
-                        <li key={item.label} className="flex gap-2">
-                          <span className="shrink-0">({item.label}) </span>
-                          <span>
-                            <FundDescriptionText
-                              text={item.text}
-                              links={item.links}
-                            />{" "}
-                          </span>
-                        </li>
-                      ))}
-                    </ol>
-                  ),
-                )
-              ) : (
-                <p>{node.description}</p>
-              )}
-            </div>
+              <div className="space-y-3" data-fund-description>
+                {node.fundAccountType === "mptf" && (
+                  <p className="text-xs text-gray-500">
+                    Schedule 8.1 portfolio scope
+                  </p>
+                )}
+                {node.descriptionBlocks?.length ? (
+                  node.descriptionBlocks.map((block, index) =>
+                    block.type === "paragraph" ? (
+                      <p key={index}>
+                        <FundDescriptionText
+                          text={block.text}
+                          links={block.links}
+                        />{" "}
+                      </p>
+                    ) : (
+                      <ol
+                        key={index}
+                        className="space-y-2 pl-2"
+                        aria-label="Fund description items"
+                      >
+                        {block.items.map((item) => (
+                          <li key={item.label} className="flex gap-2">
+                            <span className="shrink-0">({item.label}) </span>
+                            <span>
+                              <FundDescriptionText
+                                text={item.text}
+                                links={item.links}
+                              />{" "}
+                            </span>
+                          </li>
+                        ))}
+                      </ol>
+                    ),
+                  )
+                ) : (
+                  <p>{node.description}</p>
+                )}
+              </div>
+            </ExpandableText>
           ) : undefined
         }
         total={

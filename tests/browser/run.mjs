@@ -28,6 +28,7 @@ const portalChecks = [
   "peacekeeping-stages",
   "secretariat-flows",
   "sidebar-years",
+  "sidebar-text",
   "data-integrity-fixes",
   "secretariat-sidebar-years",
   ...(profiles[process.env.SITE_VARIANT ?? "public"].regularBudgetOutstanding

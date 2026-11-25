@@ -14,6 +14,7 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { SidebarControls } from "@/components/SidebarControls";
+import { ExpandableText } from "@/components/ExpandableText";
 import { useCallback, useEffect, useRef, useMemo, useState } from "react";
 import {
   Entity,
@@ -431,9 +432,12 @@ export function EntitySidebar({
           {/* Overview Section */}
           <div>
             {description && (
-              <p className="text-sm leading-relaxed text-gray-700">
-                {description}
-              </p>
+              <ExpandableText
+                key={`${entity.entity}:${description}`}
+                className="text-sm leading-relaxed text-gray-700"
+              >
+                <p>{description}</p>
+              </ExpandableText>
             )}
 
             {/* Budget or System Chart link */}
@@ -793,9 +797,9 @@ export function EntitySidebar({
                         className="flex items-stretch gap-3 rounded-md bg-gray-50 p-3"
                       >
                         <div className="w-1.5 flex-shrink-0 rounded-sm bg-un-blue" />
-                        <p className="text-sm leading-relaxed text-gray-700">
-                          {impact.impact}
-                        </p>
+                        <ExpandableText className="min-w-0 text-sm leading-relaxed text-gray-700">
+                          <p>{impact.impact}</p>
+                        </ExpandableText>
                       </div>
                     ))}
                   </div>
