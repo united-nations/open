@@ -23,11 +23,13 @@ row per Member State.
 
 The treemap uses the annual assessment circular amount for every tile. Honour
 roll amounts are checked against that amount but are not used as a substitute.
-This matters because two source discrepancies are currently present: the 2022
+Two reviewed discrepancies illustrate why: the 2022
 honour roll gives Turkmenistan as $967,707 while `ST/ADM/SER.B/1038` gives
-$976,707, and the 2026 honour roll gives Malaysia as $10,371,474 while
-`ST/ADM/SER.B/1096` gives $10,371,574. The exporter records discrepancies in
-the JSON metadata.
+$976,707, and an earlier 2026 honour-roll snapshot gives Malaysia as $10,371,474
+while `ST/ADM/SER.B/1096` gives $10,371,574. The 10 November 2026 source snapshot
+retained in the regression fixtures agrees with the circular for Malaysia.
+The exporter records discrepancies for each accepted snapshot in the JSON
+metadata; a validated refresh may resolve a previously recorded difference.
 
 For 2019–2024 the displayed amount is the circular's `Net contributions`
 column. From 2025 it is `Total contributions`, the same amount described as the
@@ -49,8 +51,106 @@ the more precise “Not listed as paid in full” wording and displays the sourc
 `as_of` date.
 
 Historical honour rolls are late-December snapshots. The current-year page is
-updated during the year, so its status changes whenever the static data pipeline
-is rerun and deployed.
+updated during the year. Its payment status is refreshed by the nightly workflow
+described below; the interface continues to show the source's snapshot date.
+
+## Nightly honour-roll refresh
+
+`.github/workflows/nextjs.yml` fetches the current official honour roll at
+**04:23 and 07:23 UTC** every night (23:23/02:23 EST, 00:23/03:23 EDT). The
+second run provides another opportunity after a source, runner or deployment
+failure. GitHub cron is best effort and can be delayed or dropped; the two
+off-hour schedules reduce that risk. A successful no-change run makes an empty
+keepalive commit only if the latest repository commit is at least 30 days old,
+preventing GitHub's 60-day inactivity shutdown without changing website data.
+
+The sync uses `python/sync_honour_roll.py`. It refreshes only the calendar year's
+payment statuses, payment dates, source `as_of` date and reconciliation counts in
+`public/data/regular-budget-contributors-{year}.json`. The approved annual
+assessment roster, amounts, rates and PDF citations remain the controls.
+Historical files and the manifest are not regenerated. At year rollover the
+run fails until the new year's circular has been independently validated and its
+assessment export and manifest coverage have been reviewed and added.
+
+Before any published file is written, validation requires:
+
+- a complete, internally reconciled 193-state baseline, including printed dollar
+  controls, rates totalling 100%, payment counts and known source discrepancies;
+- one identifiable payment table, recognized headings/columns, consecutive row
+  numbers and exact counts for the complete list and each payment section;
+- no nonblank unrecognized rows, unknown/duplicate states, malformed amounts or
+  missing/invalid dates; payment dates must agree with the year, source snapshot
+  and the section's due-date rule;
+- a source date in the current year that is neither future-dated nor earlier than
+  the accepted snapshot, with the same due date;
+- no disappearance or revision of a previously published payment and no new
+  payment backdated before the previous snapshot; and
+- no new or changed assessment-amount discrepancy. An existing disclosed typo
+  may persist unchanged or resolve to the circular's exact amount. Other
+  corrections require source review rather than a relaxed validation rule.
+
+HTTP requests have bounded timeouts, transient-error retries and a response-size
+limit. HTTP errors, unexpected redirects, access-denied HTML, layout changes or
+failed validations return a nonzero exit status; no cached fallback is published.
+Unchanged financial content does not rewrite the JSON, evidence or its dates.
+An unchanged old source snapshot is valid: the honour roll need not publish a new
+snapshot every day, and a fetch date must not be presented as a fresh data date.
+
+After validation the workflow builds the production site with the candidate data
+and runs the existing export checks. Only then does it commit the current-year
+JSON and the exact accepted source HTML at
+`data/honour-roll/honourroll-{year}.html`. The JSON records the HTML's SHA-256 and
+its separate `retrieved_at` timestamp; Git history retains earlier accepted HTML.
+Git attributes preserve the raw HTML bytes across checkouts so line-ending
+normalization cannot invalidate those hashes.
+The workflow stages only these two files. A concurrent update to `main`, an
+unexpected tracked-file change or a rejected fast-forward push fails the run;
+it never rebases the candidate onto an untested baseline. The same workflow
+deploys the built artifact, because a `GITHUB_TOKEN` commit does not trigger a
+second push workflow. All deployments share the existing `pages` concurrency
+group. A validation or build failure leaves the repository data and live site
+unchanged; a deployment failure leaves the previous live site in place and the
+next run retries deployment even if the financial data has not changed.
+
+Every failed production sync/build/deployment raises an Actions error and opens
+an issue titled **[data sync] Honour-roll refresh failed**, or comments on the
+existing incident. It closes only after a successful sync, build and deployment.
+Source HTML, the baseline, candidate, report and error diagnostics (when available)
+are uploaded as a 90-day run artifact. The issue job uses `issues: write`;
+automatic commits use `contents: write`. No personal access token is needed.
+Repository rules must allow the Actions bot to fast-forward the data commit, and
+Issues must be enabled. A permissions error fails visibly rather than bypassing
+the rule. Maintainers should subscribe to Issues and Actions notifications for
+this repository so the incident reaches them.
+
+To exercise the actual fetch and production build on GitHub, run **Deploy Next.js
+site to Pages** manually with **sync_honour_roll = true** and **dry_run = true**.
+This writes only to the disposable runner checkout and uploads diagnostics; it
+does not commit, deploy or send an incident notification. After merging, run it
+once on `main` with sync enabled and dry run disabled to verify the repository's
+write and Pages permissions. The schedules run only from the default branch.
+
+Local read-only source validation:
+
+```bash
+uv run --frozen python python/sync_honour_roll.py --check --diagnostics-dir /tmp/honour-roll-check
+```
+
+Regression checks (also run by `honour-roll-tests.yml` on relevant pull requests,
+and before each nightly fetch):
+
+```bash
+uv run --frozen python -m unittest discover -s python/tests -p 'test_honour_roll*.py' -v
+node --test scripts/tests/honour-roll-alert.test.cjs
+```
+
+These use a frozen official HTML snapshot, adversarial source mutations,
+byte-and-timestamp preservation checks, disposable local Git remotes (including
+concurrent updates and rejected pushes), and mocked incident notifications.
+`honour-roll-tests.yml` also runs actionlint against the workflow definitions.
+
+GitHub behavior references: [scheduled events](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule)
+and [workflow triggers using GITHUB_TOKEN](https://docs.github.com/en/actions/how-tos/write-workflows/choose-when-workflows-run/trigger-a-workflow#triggering-a-workflow-from-a-workflow).
 
 ## Other sources considered
 

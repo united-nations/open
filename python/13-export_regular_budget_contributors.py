@@ -253,7 +253,7 @@ def parse_long_date(value: str) -> str:
 
 def parse_payment_date(value: str) -> str:
     value = compact(value).replace(".", "-").replace(" ", "-")
-    for date_format in ("%d-%b-%y", "%d-%B-%y"):
+    for date_format in ("%d-%b-%y", "%d-%B-%y", "%d-%b-%Y", "%d-%B-%Y"):
         try:
             return datetime.strptime(value, date_format).date().isoformat()
         except ValueError:
@@ -267,53 +267,120 @@ def parse_honour_roll(year: int) -> tuple[dict, dict[str, dict]]:
         if year == max(ASSESSMENT_DOCUMENTS)
         else f"https://www.un.org/en/ga/contributions/honourroll_{year}.shtml"
     )
-    soup = BeautifulSoup(fetch(url).content, "html.parser")
-    table = soup.find("table")
-    if table is None:
-        raise ValueError(f"{year} honour roll contains no table")
+    return parse_honour_roll_html(fetch(url).content, year, url)
 
+
+def parse_honour_roll_html(content: bytes, year: int, url: str) -> tuple[dict, dict[str, dict]]:
+    """Parse every source row; an unfamiliar nonblank row must never disappear.
+
+    The official HTML has a known unwrapped column header directly inside the
+    table. Accept that header, but require all payment cells to belong to rows.
+    Counts and row numbering are independently checked in both sections.
+    """
+    soup = BeautifulSoup(content, "html.parser")
+    # The same page also has a separate monthly-statistics table.
+    tables = [table for table in soup.find_all("table")
+              if re.search(r"As of .*?Member States", compact(table.get_text(" ", strip=True)))]
+    if len(tables) != 1:
+        raise ValueError(f"{year} honour roll: expected one payment table, found {len(tables)}")
+    table = tables[0]
+    header = ["", "member state", "net assessment (in us$)", "date of payment"]
+
+    def cell_text(cell) -> str:
+        return compact(cell.get_text(" ", strip=True))
+
+    orphan_cells = [cell for cell in table.find_all(["td", "th"])
+                    if cell.find_parent("tr") is None]
+    if orphan_cells and [cell_text(cell).lower() for cell in orphan_cells] != header:
+        raise ValueError(f"{year} honour roll has unexpected cells outside rows")
+    has_header = bool(orphan_cells)
     table_rows = table.find_all("tr")
-    summary = compact(table_rows[0].get_text(" ", strip=True))
-    on_time_heading = compact(table_rows[1].get_text(" ", strip=True))
-    reported_match = re.search(r"(\d+) Member States have paid", summary)
-    as_of_match = re.search(r"As of (.+?), \d+ Member States", summary)
-    due_match = re.search(r"\(by (\d{1,2} \w+ \d{4})\)", on_time_heading)
-    if not reported_match or not as_of_match or not due_match:
-        raise ValueError(f"Could not parse {year} honour-roll summary")
+    if len(table_rows) < 2:
+        raise ValueError(f"{year} honour roll is missing its summary and sections")
+    summary = cell_text(table_rows[0])
+    summary_match = re.fullmatch(
+        r"As of (.+?), (\d+) Member States have paid their regular budget assessments in full\.",
+        summary,
+    )
+    if not summary_match:
+        raise ValueError(f"Could not parse {year} honour-roll summary: {summary}")
+    as_of = parse_long_date(summary_match[1])
+    reported_count = int(summary_match[2])
+    if not 0 <= reported_count <= 193 or not as_of.startswith(f"{year}-"):
+        raise ValueError(f"{year} honour roll has an invalid count or snapshot year")
 
     payments: dict[str, dict] = {}
-    status = "paid_on_time"
+    section_counts: dict[str, int] = {}
+    observed = Counter()
+    status = None
+    due_date = None
     for row in table_rows[1:]:
-        cells = [compact(cell.get_text(" ", strip=True)) for cell in row.find_all("td")]
-        row_text = " ".join(cells)
+        cells = [cell_text(cell) for cell in row.find_all(["td", "th"], recursive=False)]
+        row_text = cell_text(row)
+        if not row_text:
+            continue
+        if row_text.startswith("I."):
+            match = re.fullmatch(
+                r"I\. The following (\d+) Member States have paid their regular budget assessments "
+                r"in full within the 30 day due period specified in Financial Regulation 3\.5 "
+                r"\(by (\d{1,2} \w+ \d{4})\)\.", row_text,
+            )
+            if not match or status is not None:
+                raise ValueError(f"{year} honour roll has an unexpected section I heading")
+            status = "paid_on_time"
+            due_date = parse_long_date(match[2])
+            if not due_date.startswith(f"{year}-"):
+                raise ValueError(f"{year} honour roll has a different due-date year")
+            section_counts[status] = int(match[1])
+            continue
         if row_text.startswith("II."):
+            match = re.fullmatch(
+                r"II\. Subsequent to the end of the 30 day due period \((\d{1,2} \w+ \d{4})\), "
+                r"(\d+) additional Member States have paid their (\d{4}) regular budget "
+                r"assessments? in full\.", row_text,
+            )
+            if (not match or status != "paid_on_time" or
+                    parse_long_date(match[1]) != due_date or int(match[3]) != year):
+                raise ValueError(f"{year} honour roll has an unexpected section II heading")
             status = "paid_late"
+            section_counts[status] = int(match[2])
             continue
-        if len(cells) != 4 or not cells[0].isdigit():
+        if [cell.lower() for cell in cells] == header:
+            has_header = True
             continue
+        if (status is None or len(cells) != 4 or not cells[0].isascii() or
+                not cells[0].isdigit() or int(cells[0]) != observed[status] + 1):
+            raise ValueError(f"{year} honour roll has an unexpected payment row: {row_text}")
         name = canonical_country(cells[1])
-        if name in payments:
-            raise ValueError(f"{year} honour roll lists {name} more than once")
+        if not name or name in payments:
+            raise ValueError(f"{year} honour roll has an empty or duplicate state: {name}")
+        if not re.fullmatch(r"(?:[1-9]\d*|[1-9]\d{0,2}(?:,\d{3})+)", cells[2]):
+            raise ValueError(f"{year} honour roll has an invalid amount for {name}: {cells[2]}")
+        payment_date = parse_payment_date(cells[3])
+        if (not payment_date.startswith(f"{year}-") or payment_date > as_of or
+                (status == "paid_on_time" and payment_date > due_date) or
+                (status == "paid_late" and payment_date <= due_date)):
+            raise ValueError(f"{year} honour roll has an invalid payment date/section for {name}")
         payments[name] = {
             "payment_status": status,
-            "payment_date": parse_payment_date(cells[3]),
+            "payment_date": payment_date,
             "honour_roll_amount": int(cells[2].replace(",", "")),
         }
+        observed[status] += 1
 
-    reported_count = int(reported_match.group(1))
-    if len(payments) != reported_count:
-        raise ValueError(
-            f"{year} honour roll reports {reported_count} paid states but lists "
-            f"{len(payments)}"
-        )
-
-    meta = {
-        "url": url,
-        "as_of": parse_long_date(as_of_match.group(1)),
-        "due_date": parse_long_date(due_match.group(1)),
+    if "paid_on_time" not in section_counts:
+        raise ValueError(f"{year} honour roll is missing section I")
+    if not has_header:
+        raise ValueError(f"{year} honour roll is missing its payment column header")
+    for section, count in section_counts.items():
+        if observed[section] != count:
+            raise ValueError(f"{year} honour roll {section}: reports {count}, lists {observed[section]}")
+    if len(payments) != reported_count or sum(section_counts.values()) != reported_count:
+        raise ValueError(f"{year} honour roll reports {reported_count} paid states but lists {len(payments)}")
+    return {
+        "url": url, "as_of": as_of, "due_date": due_date,
         "reported_paid_in_full": reported_count,
-    }
-    return meta, payments
+    }, payments
 
 
 def validate_scale_rates(

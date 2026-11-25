@@ -1,0 +1,57 @@
+name: Test honour-roll sync
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/nextjs.yml
+      - .github/workflows/honour-roll-tests.yml
+      - python/13-export_regular_budget_contributors.py
+      - python/sync_honour_roll.py
+      - python/regular_budget_assessment_controls.py
+      - python/tests/test_honour_roll*.py
+      - python/tests/fixtures/honour-roll-*
+      - scripts/commit-honour-roll.sh
+      - scripts/honour-roll-alert.cjs
+      - scripts/tests/honour-roll-alert.test.cjs
+      - pyproject.toml
+      - uv.lock
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/nextjs.yml
+      - .github/workflows/honour-roll-tests.yml
+      - python/13-export_regular_budget_contributors.py
+      - python/sync_honour_roll.py
+      - python/regular_budget_assessment_controls.py
+      - python/tests/test_honour_roll*.py
+      - python/tests/fixtures/honour-roll-*
+      - scripts/commit-honour-roll.sh
+      - scripts/honour-roll-alert.cjs
+      - scripts/tests/honour-roll-alert.test.cjs
+      - pyproject.toml
+      - uv.lock
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Lint GitHub Actions workflows
+        uses: docker://rhysd/actionlint:1.7.12
+        with:
+          args: -color
+      - name: Setup uv
+        uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d # v10.4.0
+        with:
+          python-version: "3.13"
+          version: "0.12.3"
+          enable-cache: true
+      - name: Test source parsing, preservation on failure, and Git publication
+        run: uv run --frozen python -m unittest discover -s python/tests -p 'test_honour_roll*.py' -v
+      - name: Test incident notifications and recovery
+        run: node --test scripts/tests/honour-roll-alert.test.cjs
