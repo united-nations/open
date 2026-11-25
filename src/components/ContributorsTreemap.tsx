@@ -5,6 +5,13 @@ import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { CEB_ASSESSMENTS_HASH } from "@/lib/cebAssessments";
 import { FinancingInstrumentLabel } from "@/components/FinancingInstrumentLabel";
+import {
+  OrganizationHierarchySelect,
+  organizationHierarchyGroups,
+} from "@/components/OrganizationHierarchySelect";
+import { useYearResource } from "@/hooks/useYearResource";
+import { loadStaticData } from "@/lib/data";
+import type { Entity } from "@/types";
 
 import {
   GroupedTreemap,
@@ -41,6 +48,8 @@ import {
 import { generateYearRange, useYearRanges } from "@/lib/useYearRanges";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
+const emptyMetadata: Entity[] = [];
+const loadMetadata = () => loadStaticData<Entity[]>("entities.json");
 
 type ContributorRow = "government" | "non-government" | "unattributed";
 
@@ -156,6 +165,14 @@ export function ContributorsTreemap() {
     useState<Contributor | null>(null);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState("");
+  const [organization, setOrganization] = useState("all");
+  const { value: metadata, loading: loadingMetadata } = useYearResource(
+    "contributor-organization-metadata",
+    emptyMetadata,
+    false,
+    loadMetadata,
+    emptyMetadata,
+  );
   const [selectedFunding, setSelectedFunding] = useState<string[]>(() =>
     CONTRIBUTION_TYPES.map(({ type }) => type),
   );
@@ -259,22 +276,47 @@ export function ContributorsTreemap() {
     [contributors, setAssessmentLink],
   );
 
+  const organizationGroups = useMemo(
+    () =>
+      organizationHierarchyGroups(
+        contributors.flatMap((contributor) =>
+          Object.keys(contributor.contributions),
+        ),
+        metadata,
+      ),
+    [contributors, metadata],
+  );
+  const organizationGroup = organizationGroups.find(
+    (group) => group.id === organization,
+  );
+  const organizationUnavailable =
+    organization !== "all" &&
+    !organizationGroup &&
+    !organizationGroups.some((group) => group.children.includes(organization));
+
   const signedContributors = useMemo(
     () =>
       contributors.flatMap(contributorCategoryViews).map((contributor) => ({
         ...contributor,
         contributions: Object.fromEntries(
-          Object.entries(contributor.contributions).map(([entity, amounts]) => [
-            entity,
-            Object.fromEntries(
-              Object.entries(amounts).filter(([type]) =>
-                selectedFunding.includes(type),
+          Object.entries(contributor.contributions)
+            .filter(
+              ([entity]) =>
+                organization === "all" ||
+                entity === organization ||
+                organizationGroup?.children.includes(entity),
+            )
+            .map(([entity, amounts]) => [
+              entity,
+              Object.fromEntries(
+                Object.entries(amounts).filter(([type]) =>
+                  selectedFunding.includes(type),
+                ),
               ),
-            ),
-          ]),
+            ]),
         ),
       })),
-    [contributors, selectedFunding],
+    [contributors, selectedFunding, organization, organizationGroup],
   );
 
   const positiveContributors = useMemo(
@@ -441,11 +483,21 @@ export function ContributorsTreemap() {
               rowGap: 3,
             }}
             yearControl={
-              <YearSlider
-                years={years}
-                selectedYear={selectedYear}
-                onChange={setSelectedYear}
-              />
+              <>
+                <YearSlider
+                  years={years}
+                  selectedYear={selectedYear}
+                  onChange={setSelectedYear}
+                />
+                {!loadingMetadata && (
+                  <OrganizationHierarchySelect
+                    groups={organizationGroups}
+                    selected={organization}
+                    onChange={setOrganization}
+                    allLabel="All organizations"
+                  />
+                )}
+              </>
             }
             filterControls={
               <div
@@ -508,16 +560,19 @@ export function ContributorsTreemap() {
                   : revenueCoverage(selectedYear)?.controls === false
                     ? "Partial reported revenue"
                     : "Total revenue",
-                value: formatBudget(
-                  visibleContributors.reduce(
-                    (sum, item) =>
-                      sum + getTotalContributions(item.contributions),
-                    0,
-                  ),
-                ),
+                value: organizationUnavailable
+                  ? "Unavailable"
+                  : formatBudget(
+                      visibleContributors.reduce(
+                        (sum, item) =>
+                          sum + getTotalContributions(item.contributions),
+                        0,
+                      ),
+                    ),
               },
             ]}
             totalLabel={
+              organization === "all" &&
               availableFunding.every(({ type }) =>
                 selectedFunding.includes(type),
               )
@@ -533,11 +588,13 @@ export function ContributorsTreemap() {
             )}
             emptyContent={
               <div className="flex h-full items-center justify-center text-sm text-gray-500">
-                {!availableFunding.some(({ type }) =>
-                  selectedFunding.includes(type),
-                )
-                  ? "Select a financing instrument to show revenue."
-                  : "No contributors match the selected financing instruments and search."}
+                {organizationUnavailable
+                  ? `No contribution data is available for this organization selection in ${selectedYear}.`
+                  : !availableFunding.some(({ type }) =>
+                        selectedFunding.includes(type),
+                      )
+                    ? "Select a financing instrument to show revenue."
+                    : "No contributors match the selected organizations, financing instruments and search."}
               </div>
             }
           />
