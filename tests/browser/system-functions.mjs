@@ -3,6 +3,7 @@ import { readFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import { moduleAt } from "../../src/lib/tests/moduleAt.mjs";
 import manifest from "../../public/data/manifest.json" with { type: "json" };
+import profiles from "../../config/features.json" with { type: "json" };
 import { chromium } from "playwright";
 import { browserOptions, portalUrl } from "./helpers.mjs";
 
@@ -46,6 +47,9 @@ try {
     "Locations",
     "Functions",
     "Goals",
+    ...(profiles[process.env.SITE_VARIANT ?? "public"].pooledFunds
+      ? ["Pooled Funds"]
+      : []),
   ]);
   await page
     .getByRole("heading", {

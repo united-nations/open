@@ -203,6 +203,7 @@ export function PersonnelMap({
               group: {
                 key: row.region,
                 label: getRegionStyle(row.region).label,
+                color: getRegionStyle(row.region).color,
               },
               subgroup: row.subregion
                 ? { key: row.subregion, label: row.subregion }

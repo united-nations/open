@@ -267,6 +267,7 @@ export function FieldMissionsMap({
             group: {
               key: point.data.group,
               label: model.groups[point.data.group].label,
+              color: model.groups[point.data.group].color,
             },
             color: model.groups[point.data.group].color,
             onOpen: () => openMission(point.label),

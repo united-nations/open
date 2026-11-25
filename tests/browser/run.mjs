@@ -9,6 +9,7 @@ const portalChecks = [
   "number-formatting",
   "page-headings",
   "treemap-search-labels",
+  "list-groups",
   "ceb-methodology",
   "related-data-pages",
   "page-notes",

@@ -428,7 +428,11 @@ export function CountryMap({
                   )?.label,
                   amount: row.total,
                   value: formatBudget(row.total),
-                  group: { key: region, label: style.label },
+                  group: {
+                    key: region,
+                    label: style.label,
+                    color: style.color,
+                  },
                   subgroup: subregion
                     ? { key: subregion, label: subregion }
                     : undefined,

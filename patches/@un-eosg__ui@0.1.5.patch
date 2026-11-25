@@ -34,7 +34,7 @@ diff --git a/components/detail-panel-controls.tsx b/components/detail-panel-cont
 --- a/components/detail-panel-controls.tsx
 +++ b/components/detail-panel-controls.tsx
 @@ -30,7 +30,7 @@
- 
+
  function DetailPanelControl({ action }: { action: DetailPanelAction }) {
    const className =
 -    "flex size-8 shrink-0 cursor-pointer items-center justify-center rounded-full bg-secondary text-muted-foreground transition-colors hover:bg-muted hover:text-foreground focus-visible:ring-2 focus-visible:ring-un-blue/50 focus-visible:outline-none disabled:pointer-events-none disabled:opacity-50";
@@ -152,7 +152,7 @@ diff --git a/components/financial-panel-parts.tsx b/components/financial-panel-p
 +    </span>
    );
  }
- 
+
 @@ -267,7 +279,7 @@
            title={title ?? label}
            className={cn(
@@ -282,12 +282,12 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
    rowLabelSpace?: number;
 @@ -212,11 +237,10 @@ function layoutLeafKey(rowKey: string, subgroupKey: string, leafKey: string) {
  }
- 
+
  function useElementSize<T extends HTMLElement>() {
 -  const ref = React.useRef<T>(null);
 +  const [element, setElement] = React.useState<T | null>(null);
    const [size, setSize] = React.useState({ width: 0, height: 0 });
- 
+
    React.useEffect(() => {
 -    const element = ref.current;
      if (!element) return;
@@ -299,11 +299,11 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
      return () => observer.disconnect();
 -  }, []);
 +  }, [element]);
- 
+
 -  return [ref, size] as const;
 +  return [setElement, size] as const;
  }
- 
+
  function rectStyle(rect: TreemapRect): React.CSSProperties {
 @@ -283,9 +307,10 @@ function normalizeRows<TRow, TSubgroup, TLeaf, TSegment>(
            ),
@@ -361,7 +361,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
 @@ -517,6 +549,43 @@ export function GroupedTreemap<
      [formatValue, renderTooltip, interactiveTooltip],
    );
- 
+
 +  const listItems = showList
 +    ? normalized.flatMap((row) =>
 +        row.subgroups.flatMap((subgroup) =>
@@ -376,7 +376,7 @@ index d2b1950e5aadafd8bcaf6ef7f64e78dcc2818f05..278e0649a00f0e6d8c1eaff375c862ee
 +              value: leaf.listValueLabel ?? leaf.valueLabel ?? formatValue(leaf.value),
 +              weight,
 +              color: row.color ?? leaf.borderColor ?? leaf.color,
-+              group: { key: row.key, label: row.label },
++              group: { key: row.key, label: row.label, color: row.color },
 +              subgroup: subgroup.implicit || subgroup.label === row.label ||
 +                (subgroup.leaves.length === 1 && subgroup.label === leaf.label)
 +                ? undefined
@@ -575,19 +575,21 @@ index 6f01a4697b06d32ac601f0c8a5d27fae05930549..d54d332b121f114dce5f8b3292e982d6
            variant === "inline" &&
 diff --git a/components/ranked-detail-list.tsx b/components/ranked-detail-list.tsx
 new file mode 100644
-index 0000000000000000000000000000000000000000..9163ce21aa01ea401b8e0356a5f3bd1f9ca5401e
 --- /dev/null
 +++ b/components/ranked-detail-list.tsx
-@@ -0,0 +1,162 @@
+@@ -0,0 +1,343 @@
 +"use client";
 +
 +import { useId, useRef, useState, type ReactNode } from "react";
++import { ChevronDownIcon } from "lucide-react";
 +import { FinancialPanelBar } from "./financial-panel-parts";
 +import { cn } from "../lib/utils";
++import { typography } from "../lib/typography";
 +
 +interface ListGroup {
 +  key: string;
 +  label: string;
++  color?: string;
 +}
 +
 +export interface RankedDetailItem {
@@ -608,108 +610,277 @@ index 0000000000000000000000000000000000000000..9163ce21aa01ea401b8e0356a5f3bd1f
 +  items: readonly RankedDetailItem[],
 +  dimension: "group" | "subgroup",
 +) {
-+  const groups = new Map<string, { label?: string; weight: number; items: RankedDetailItem[] }>();
++  const groups = new Map<
++    string,
++    {
++      label?: string;
++      color?: string;
++      weight: number;
++      items: RankedDetailItem[];
++    }
++  >();
 +  for (const item of items) {
 +    const group = item[dimension];
 +    const key = group?.key ?? "";
-+    const entry = groups.get(key) ?? { label: group?.label, weight: 0, items: [] };
++    const entry = groups.get(key) ?? {
++      label: group?.label,
++      color: group?.color,
++      weight: 0,
++      items: [],
++    };
 +    entry.items.push(item);
 +    entry.weight += Math.max(0, item.weight ?? item.amount);
 +    groups.set(key, entry);
 +  }
-+  return [...groups].sort(([keyA, a], [keyB, b]) => b.weight - a.weight || keyA.localeCompare(keyB));
++  return [...groups].sort(
++    ([keyA, a], [keyB, b]) => b.weight - a.weight || keyA.localeCompare(keyB),
++  );
 +}
 +
 +const pageSize = 20;
-+const textAction = "inline-flex min-h-11 items-center text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground focus-visible:outline-2 focus-visible:outline-un-blue";
++const textAction =
++  "inline-flex min-h-11 items-center text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground focus-visible:outline-2 focus-visible:outline-un-blue";
 +
 +export function RankedDetailList({
 +  label,
 +  items,
-+  empty = <p className="py-4 text-sm text-muted-foreground">No records match the selected filters.</p>,
++  empty = (
++    <p className="py-4 text-sm text-muted-foreground">
++      No records match the selected filters.
++    </p>
++  ),
 +}: {
 +  label: string;
 +  items: readonly RankedDetailItem[];
 +  empty?: ReactNode;
 +}) {
 +  const [limit, setLimit] = useState(pageSize);
++  const [collapsed, setCollapsed] = useState<{
++    itemsKey: string;
++    keys: ReadonlySet<string>;
++  }>({ itemsKey: "", keys: new Set() });
 +  const list = useRef<HTMLDivElement>(null);
 +  const more = useRef<HTMLButtonElement>(null);
 +  const id = useId();
++  // New search/filter results start expanded so matching records stay visible.
++  const itemsKey = JSON.stringify(
++    items.map((item) => [item.group?.key, item.subgroup?.key, item.id]),
++  );
++  const collapsedKeys =
++    collapsed.itemsKey === itemsKey ? collapsed.keys : new Set<string>();
++  const toggleGroup = (key: string) => {
++    setCollapsed((current) => {
++      const keys = new Set(current.itemsKey === itemsKey ? current.keys : []);
++      if (keys.has(key)) keys.delete(key);
++      else keys.add(key);
++      return { itemsKey, keys };
++    });
++  };
 +
 +  if (!items.length) return empty;
 +
 +  const ranked = groupItems(items, "group").map(([key, group]) => ({
 +    key,
 +    label: group.label,
++    color: group.color,
 +    subgroups: groupItems(group.items, "subgroup").map(([key, subgroup]) => ({
 +      key,
 +      label: subgroup.label,
-+      items: [...subgroup.items].sort((a, b) => b.amount - a.amount || a.label.localeCompare(b.label)),
++      items: [...subgroup.items].sort(
++        (a, b) => b.amount - a.amount || a.label.localeCompare(b.label),
++      ),
 +    })),
 +  }));
-+  const max = items.reduce((largest, { amount }) => Math.max(largest, amount), 0) || 1;
++  const max =
++    items.reduce((largest, { amount }) => Math.max(largest, amount), 0) || 1;
++  const expandedItemCount = ranked.reduce((total, group) => {
++    if (collapsedKeys.has(JSON.stringify([group.key]))) return total;
++    return (
++      total +
++      group.subgroups.reduce(
++        (count, subgroup) =>
++          count +
++          (collapsedKeys.has(JSON.stringify([group.key, subgroup.key]))
++            ? 0
++            : subgroup.items.length),
++        0,
++      )
++    );
++  }, 0);
 +  let remaining = limit;
 +
 +  return (
 +    <>
-+      <div ref={list} id={id} role="group" aria-label={label} className="space-y-3">
-+        {ranked.map((group) => {
++      <div
++        ref={list}
++        id={id}
++        role="group"
++        aria-label={label}
++        className="space-y-6"
++      >
++        {ranked.map((group, groupIndex) => {
 +          if (remaining <= 0) return null;
++          const groupKey = JSON.stringify([group.key]);
++          const groupCollapsed = collapsedKeys.has(groupKey);
++          const groupContentId = `${id}-group-${groupIndex}`;
 +          return (
-+            <div key={group.key} role={group.label ? "group" : undefined} aria-label={group.label}>
++            <div
++              key={group.key}
++              role={group.label ? "group" : undefined}
++              aria-label={group.label}
++            >
 +              {group.label && (
-+                <p className="border-b px-2 py-2 text-sm font-semibold">{group.label}</p>
-+              )}
-+              {group.subgroups.map((subgroup) => {
-+                if (remaining <= 0) return null;
-+                const visible = subgroup.items.slice(0, remaining);
-+                remaining -= visible.length;
-+                return (
-+                  <div key={subgroup.key}>
-+                    {subgroup.label && (
-+                      <p className="px-2 pt-2 text-xs font-medium text-muted-foreground">{subgroup.label}</p>
++                <button
++                  type="button"
++                  data-ranked-list-group-heading=""
++                  aria-expanded={!groupCollapsed}
++                  aria-controls={groupContentId}
++                  onClick={() => toggleGroup(groupKey)}
++                  className={cn(
++                    typography.subTitle,
++                    "flex min-h-11 w-full cursor-pointer items-center justify-between gap-3 border-s-4 px-3 py-3 text-start hover:brightness-95 focus-visible:outline-2 focus-visible:outline-un-blue",
++                  )}
++                  style={{
++                    borderInlineStartColor:
++                      group.color ?? "var(--color-border)",
++                    backgroundColor: group.color
++                      ? `color-mix(in srgb, ${group.color} 8%, var(--color-background))`
++                      : "var(--color-muted)",
++                  }}
++                >
++                  <span className="min-w-0 break-words">{group.label}</span>
++                  <ChevronDownIcon
++                    aria-hidden="true"
++                    className={cn(
++                      "size-4 shrink-0",
++                      groupCollapsed && "-rotate-90 rtl:rotate-90",
 +                    )}
-+                    <ol role="list" aria-label={subgroup.label ?? group.label ?? label} className="divide-y border-b">
-+                      {visible.map((item) => {
-+                        const Element = item.onOpen ? "button" : "div";
-+                        const percent = (Math.max(0, item.amount) / max) * 100;
-+                        const color = item.color ?? "var(--color-un-blue)";
-+                        return (
-+                          <li key={item.id}>
-+                            <Element
-+                              data-ranked-list-item=""
-+                              type={item.onOpen ? "button" : undefined}
-+                              tabIndex={item.onOpen ? undefined : -1}
-+                              onClick={item.onOpen}
++                  />
++                </button>
++              )}
++              <div
++                id={groupContentId}
++                hidden={groupCollapsed}
++                className={cn(
++                  group.label && "ms-3 border-s ps-1 sm:ms-4 sm:ps-2",
++                )}
++                style={
++                  group.color
++                    ? {
++                        borderInlineStartColor: `color-mix(in srgb, ${group.color} 30%, var(--color-background))`,
++                      }
++                    : undefined
++                }
++              >
++                {!groupCollapsed &&
++                  group.subgroups.map((subgroup, subgroupIndex) => {
++                    if (remaining <= 0) return null;
++                    const subgroupKey = JSON.stringify([
++                      group.key,
++                      subgroup.key,
++                    ]);
++                    const subgroupCollapsed = collapsedKeys.has(subgroupKey);
++                    const subgroupContentId = `${groupContentId}-subgroup-${subgroupIndex}`;
++                    const visible = subgroupCollapsed
++                      ? []
++                      : subgroup.items.slice(0, remaining);
++                    remaining -= visible.length;
++                    return (
++                      <div
++                        key={subgroup.key}
++                        role={subgroup.label ? "group" : undefined}
++                        aria-label={subgroup.label}
++                        className={cn(subgroup.label && "pt-3")}
++                      >
++                        {subgroup.label && (
++                          <button
++                            type="button"
++                            data-ranked-list-subgroup-heading=""
++                            aria-expanded={!subgroupCollapsed}
++                            aria-controls={subgroupContentId}
++                            onClick={() => toggleGroup(subgroupKey)}
++                            className={cn(
++                              typography.body,
++                              "flex min-h-11 w-full cursor-pointer items-center justify-between gap-3 border-b bg-muted/50 px-3 py-2 text-start font-medium hover:bg-muted focus-visible:outline-2 focus-visible:outline-un-blue",
++                            )}
++                          >
++                            <span className="min-w-0 break-words">
++                              {subgroup.label}
++                            </span>
++                            <ChevronDownIcon
++                              aria-hidden="true"
 +                              className={cn(
-+                                "flex min-h-11 w-full flex-wrap items-start gap-x-2 gap-y-1.5 px-2 py-2 text-start text-sm focus-visible:outline-2 focus-visible:outline-un-blue sm:flex-nowrap sm:items-center sm:gap-3",
-+                                item.onOpen && "cursor-pointer hover:bg-muted",
++                                "size-4 shrink-0",
++                                subgroupCollapsed && "-rotate-90 rtl:rotate-90",
 +                              )}
-+                            >
-+                              <span className="min-w-0 flex-1 break-words">
-+                                <span className="block font-medium">{item.label}</span>
-+                                {item.description && <span className="block text-xs text-muted-foreground">{item.description}</span>}
-+                              </span>
-+                              <span aria-hidden="true" className="order-last w-full shrink-0 sm:order-none sm:w-1/5 sm:max-w-56">
-+                                <FinancialPanelBar percent={percent} color={color} />
-+                              </span>
-+                              <span className="w-1/5 min-w-14 max-w-28 shrink-0 break-words text-end font-medium tabular-nums">{item.value}</span>
-+                            </Element>
-+                          </li>
-+                        );
-+                      })}
-+                    </ol>
-+                  </div>
-+                );
-+              })}
++                            />
++                          </button>
++                        )}
++                        <ol
++                          id={subgroupContentId}
++                          hidden={subgroupCollapsed}
++                          role="list"
++                          aria-label={subgroup.label ?? group.label ?? label}
++                          className={cn(
++                            "divide-y border-b",
++                            subgroup.label &&
++                              "ms-3 border-s ps-1 sm:ms-4 sm:ps-2",
++                          )}
++                        >
++                          {visible.map((item) => {
++                            const Element = item.onOpen ? "button" : "div";
++                            const percent =
++                              (Math.max(0, item.amount) / max) * 100;
++                            const color = item.color ?? "var(--color-un-blue)";
++                            return (
++                              <li key={item.id}>
++                                <Element
++                                  data-ranked-list-item=""
++                                  type={item.onOpen ? "button" : undefined}
++                                  tabIndex={item.onOpen ? undefined : -1}
++                                  onClick={item.onOpen}
++                                  className={cn(
++                                    "flex min-h-11 w-full flex-wrap items-start gap-x-2 gap-y-1.5 px-3 py-2 text-start text-sm focus-visible:outline-2 focus-visible:outline-un-blue sm:flex-nowrap sm:items-center sm:gap-3",
++                                    item.onOpen &&
++                                      "cursor-pointer hover:bg-muted",
++                                  )}
++                                >
++                                  <span className="min-w-0 flex-1 break-words">
++                                    <span className="block">{item.label}</span>
++                                    {item.description && (
++                                      <span className="block text-xs text-muted-foreground">
++                                        {item.description}
++                                      </span>
++                                    )}
++                                  </span>
++                                  <span
++                                    aria-hidden="true"
++                                    className="order-last w-full shrink-0 sm:order-none sm:w-1/5 sm:max-w-56"
++                                  >
++                                    <FinancialPanelBar
++                                      percent={percent}
++                                      color={color}
++                                    />
++                                  </span>
++                                  <span className="w-1/5 max-w-28 min-w-14 shrink-0 text-end font-medium break-words tabular-nums">
++                                    {item.value}
++                                  </span>
++                                </Element>
++                              </li>
++                            );
++                          })}
++                        </ol>
++                      </div>
++                    );
++                  })}
++              </div>
 +            </div>
 +          );
 +        })}
 +      </div>
-+      {items.length > pageSize && (
++      {(expandedItemCount > pageSize || limit > pageSize) && (
 +        <div className="mt-1 flex flex-wrap gap-x-4">
-+          {items.length > limit && (
++          {expandedItemCount > limit && (
 +            <button
 +              ref={more}
 +              type="button"
@@ -717,10 +888,14 @@ index 0000000000000000000000000000000000000000..9163ce21aa01ea401b8e0356a5f3bd1f
 +              className={textAction}
 +              onClick={() => {
 +                setLimit(limit + pageSize);
-+                requestAnimationFrame(() => list.current?.querySelectorAll<HTMLElement>("[data-ranked-list-item]")[limit]?.focus());
++                requestAnimationFrame(() =>
++                  list.current
++                    ?.querySelectorAll<HTMLElement>("[data-ranked-list-item]")
++                    [limit]?.focus(),
++                );
 +              }}
 +            >
-+              Show more ({items.length - limit} remaining)
++              Show more ({expandedItemCount - limit} remaining)
 +            </button>
 +          )}
 +          {limit > pageSize && (
@@ -730,7 +905,12 @@ index 0000000000000000000000000000000000000000..9163ce21aa01ea401b8e0356a5f3bd1f
 +              className={textAction}
 +              onClick={() => {
 +                setLimit(pageSize);
-+                requestAnimationFrame(() => more.current?.focus());
++                requestAnimationFrame(() =>
++                  (
++                    more.current ??
++                    list.current?.querySelector<HTMLElement>("button")
++                  )?.focus(),
++                );
 +              }}
 +            >
 +              Show less

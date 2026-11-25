@@ -801,7 +801,11 @@ export function PeacekeepingBudgetView() {
                   description: row.account?.note ?? row.code,
                   amount: row.total,
                   value: formatBudget(row.total),
-                  group: { key: row.kind, label: KIND_LABEL[row.kind] },
+                  group: {
+                    key: row.kind,
+                    label: KIND_LABEL[row.kind],
+                    color: KIND_COLOR[row.kind],
+                  },
                   color: KIND_COLOR[row.kind],
                   onOpen: () => openMission(row.code),
                 }))}
