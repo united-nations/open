@@ -40,7 +40,7 @@ export function PageHeading({
           {description}
         </p>
         {sources && (
-          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-gray-600">
+          <p className="mt-2 max-w-3xl text-base leading-relaxed text-gray-700 [&_a]:font-semibold">
             {sources}
           </p>
         )}

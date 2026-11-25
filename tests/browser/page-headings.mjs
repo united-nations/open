@@ -51,9 +51,18 @@ try {
     );
     assert.equal(
       await sources.evaluate((el) => getComputedStyle(el).fontSize),
-      "14px",
-      `${route}: secondary source text`,
+      await page
+        .locator("main h1 + p")
+        .evaluate((el) => getComputedStyle(el).fontSize),
+      `${route}: source text matches the page summary size`,
     );
+    for (const link of await sources.getByRole("link").all()) {
+      assert.equal(
+        await link.evaluate((el) => getComputedStyle(el).fontWeight),
+        "600",
+        `${route}: semibold source links`,
+      );
+    }
     const aboutData = page.getByRole("region", { name: "About the data" });
     const aboutHeading = aboutData.locator(":scope > h2");
     assert.equal(await aboutHeading.textContent(), "About the data", route);
