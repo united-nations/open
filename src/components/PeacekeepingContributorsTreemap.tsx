@@ -4,7 +4,6 @@ import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { Tooltip } from "@un-eosg/ui/components/tooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
-import { ChartFooter } from "@/components/ChartFooter";
 
 import {
   GroupedTreemap,
@@ -211,9 +210,6 @@ export function PeacekeepingContributorsTreemap() {
             PeacekeepingContributor,
             never
           >
-            footer={
-              <ChartFooter hint="Click on a contributor to explore details" />
-            }
             yearControl={
               <YearSlider
                 years={years.years}

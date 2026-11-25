@@ -4,7 +4,6 @@ import type { Metadata } from "next";
 import { SecretariatMethodologyLink } from "@/components/Methodology";
 import { PageBody } from "@/components/PageBody";
 import { PageHeading } from "@/components/PageHeading";
-import { ChartFooter } from "@/components/ChartFooter";
 import { FieldMissionsMap } from "@/components/FieldMissionsMap";
 
 export const metadata: Metadata = {
@@ -29,7 +28,6 @@ export default function PeaceOperationsPage() {
       />
       <PageBody>
         <FieldMissionsMap />
-        <ChartFooter hint="Click on a mission to explore details" />
       </PageBody>
       <SecretariatMethodologyLink page="peace-operations" />
       <RelatedDataPages page="/secretariat/peacekeeping-budget/peace-operations" />

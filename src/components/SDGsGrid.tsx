@@ -5,7 +5,6 @@ import styles from "./SDGsGrid.module.css";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
-import { ChartFooter } from "@/components/ChartFooter";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
 import {
   TreemapTileInteractionCue,
@@ -504,9 +503,6 @@ export default function SDGsGrid({
               },
             ]}
           />
-        }
-        footer={
-          <ChartFooter hint="Click a goal or expenditure group to explore details" />
         }
       >
         <DelayedChartLoading

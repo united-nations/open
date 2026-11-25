@@ -21,7 +21,6 @@ import {
   treemapTileInteractionClassName,
 } from "@un-eosg/ui/components/treemap-tile-interaction";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
-import { ChartFooter } from "@/components/ChartFooter";
 import type { RankedDetailItem } from "@un-eosg/ui/components/ranked-detail-list";
 
 // Budget-document treemap for /secretariat, in the layout of ../budget-explorer:
@@ -2502,15 +2501,11 @@ export function BudgetTreemap({
           BudgetFundingSource
         >
           footer={
-            <ChartFooter
-              hint={
-                isTrustFund
-                  ? "Select a fund or entity to explore details. List includes zero and negative expenditure."
-                  : ppbGrouping === "section"
-                    ? "Click on a budget section to explore details"
-                    : "Click on an entity to explore details"
-              }
-            />
+            isTrustFund ? (
+              <p className="text-sm text-gray-600">
+                List includes zero and negative expenditure.
+              </p>
+            ) : undefined
           }
           rows={sharedRows.map((row) => ({
             ...row,
@@ -3151,7 +3146,6 @@ export function BudgetTreemap({
             {filteredPrevious && " · the change is against the year before"}
           </p>
 
-          <ChartFooter hint="Click on an entity to explore details" />
           {(meta.omitted ?? []).length > 0 && (
             <p>
               Not drawn, because the budget prints no total for them:{" "}

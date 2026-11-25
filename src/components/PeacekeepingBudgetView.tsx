@@ -5,7 +5,6 @@ import { missionLocationLabel } from "@/lib/missionLocations";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
-import { ChartFooter } from "@/components/ChartFooter";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
 import { Tooltip } from "@un-eosg/ui/components/tooltip";
 import { RankedDetailList } from "@/components/RankedDetailList";
@@ -762,9 +761,6 @@ export function PeacekeepingBudgetView() {
               ]}
             />
           </div>
-        }
-        footer={
-          <ChartFooter hint="Select a peacekeeping account to explore details" />
         }
       >
         <div className="relative" aria-busy={waitingForData && !error}>

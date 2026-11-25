@@ -323,6 +323,7 @@ export function FieldMissionsMap({
               tooltip={(point: MissionPoint) => (
                 <FinancialTooltip
                   title={`${point.data.location.code} · ${point.data.location.name}`}
+                  actionHint="Click to explore details"
                   parents={[{ label: model.groups[point.data.group].label }]}
                   context={missionLocationLabel(point.data.location)}
                   total={{

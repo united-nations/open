@@ -28,33 +28,17 @@ try {
   const spacing = await section.evaluate((element) => {
     const plot = element.querySelector('[style*="--grouped-treemap-height"]');
     const controls = element.querySelector("[data-outstanding-controls]");
-    const hint = element.querySelector("[data-chart-hint]");
-    const originalPlot = document.querySelector(
-      '#regular-budget-contributors [style*="--grouped-treemap-height"]',
-    );
-    const originalHint =
-      originalPlot.parentElement.parentElement.querySelector(
-        "[data-chart-hint]",
-      );
     return {
       above:
         plot.getBoundingClientRect().top -
         controls.getBoundingClientRect().bottom,
-      below:
-        hint.getBoundingClientRect().top - plot.getBoundingClientRect().bottom,
-      originalBelow:
-        originalHint.getBoundingClientRect().top -
-        originalPlot.getBoundingClientRect().bottom,
     };
   });
   assert.ok(
     Math.abs(spacing.above - 12) < 1,
     "Toolbar gap should use the shared chart frame spacing",
   );
-  assert.ok(
-    Math.abs(spacing.below - spacing.originalBelow) < 1,
-    "Hint spacing should match the assessment treemap",
-  );
+  assert.equal(await page.locator("[data-chart-hint]").count(), 0);
 
   assert.equal(
     await section.locator("[data-outstanding-summary] dd").count(),

@@ -2,7 +2,6 @@
 import { MapBoundaryDisclaimer } from "@/components/MapBoundaryDisclaimer";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
-import { ChartFooter } from "@/components/ChartFooter";
 import { ChartHeader } from "@un-eosg/ui/components/chart-header";
 import type { LocationView } from "@/components/LocationViewControl";
 import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
@@ -384,7 +383,6 @@ export function CountryMap({
             ]}
           />
         }
-        footer={<ChartFooter hint="Select a location to explore details" />}
       >
         <div className="mb-4 flex flex-wrap items-center gap-3">
           <OrganizationHierarchySelect

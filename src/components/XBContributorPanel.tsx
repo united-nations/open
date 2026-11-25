@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { YearSlider } from "@/components/YearSlider";
-import { ChartFooter } from "@/components/ChartFooter";
 import { GroupedTreemap } from "@un-eosg/ui/components/grouped-treemap";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { FinancialDetailPanel } from "@un-eosg/ui/components/financial-detail-panel";
@@ -316,9 +315,6 @@ export function XBContributorPanel({
                 value: "Not available",
               },
             ]}
-            footer={
-              <ChartFooter hint="Select a reporting source and year to explore contributors" />
-            }
             search={{
               value: query,
               onChange: setQuery,
@@ -408,9 +404,6 @@ export function XBContributorPanel({
                   selectedYear={selectedYear}
                   onChange={changeYear}
                 />
-              }
-              footer={
-                <ChartFooter hint="Click on a contributor to explore details" />
               }
               totalLabel="Listed amounts"
               showRowLabels={false}

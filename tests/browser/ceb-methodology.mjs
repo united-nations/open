@@ -78,12 +78,7 @@ try {
         );
       });
       assert.ok(isAfterCharts, route + ": references follow charts");
-      for (const hint of await page.locator("[data-chart-hint]").all()) {
-        assert.equal(
-          await hint.locator("svg.lucide-mouse-pointer-click").count(),
-          1,
-        );
-      }
+      assert.equal(await page.locator("[data-chart-hint]").count(), 0);
       if (route === "/system/contributors/") {
         await link.click();
         await page.waitForURL("**/about/#ceb-methodology");
@@ -294,11 +289,7 @@ try {
         0,
       );
     }
-    for (const hint of await page.locator("[data-chart-hint]").all())
-      assert.equal(
-        await hint.locator("svg.lucide-mouse-pointer-click").count(),
-        1,
-      );
+    assert.equal(await page.locator("[data-chart-hint]").count(), 0);
     await link.click();
     await page.waitForURL("**/about/#secretariat-" + anchor);
     const target = page.locator('[id="secretariat-' + anchor + '"]');

@@ -14,7 +14,6 @@ import {
 import { RankedDetailList } from "@/components/RankedDetailList";
 import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 import { ChartSearchInput } from "@/components/ui/chart-search-input";
-import { ChartFooter } from "@/components/ChartFooter";
 import { bubbleRadiusInput } from "@/lib/map-bubbles";
 import { getRegionStyle } from "@/lib/regionGroupings";
 import { formatPeople, type PersonnelData } from "@/lib/personnel";
@@ -170,9 +169,6 @@ export function PersonnelMap({
             ]}
           />
         }
-        footer={
-          <ChartFooter hint="Select a country to explore organizations and duty stations" />
-        }
       >
         <div className="mb-4 flex flex-wrap items-center gap-3">
           {organizationControl}
@@ -253,6 +249,9 @@ export function PersonnelMap({
                 <div className="text-sm">
                   <strong>{point.label}</strong>
                   <p>{formatPeople(point.count)} staff</p>
+                  <p className="mt-1 text-xs text-gray-500">
+                    Click to explore organizations and duty stations
+                  </p>
                 </div>
               )}
               onSeriesMouseClick={(point) => {

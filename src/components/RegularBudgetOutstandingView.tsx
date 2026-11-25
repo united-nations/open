@@ -11,7 +11,6 @@ import { SegmentedControl } from "@un-eosg/ui/components/segmented-control";
 import { SearchInput } from "@un-eosg/ui/components/search-input";
 import { TableHead } from "@un-eosg/ui/components/data-table";
 import { ChevronDown, ChevronUp } from "lucide-react";
-import { ChartFooter } from "@/components/ChartFooter";
 import { RankedDetailList } from "@/components/RankedDetailList";
 import { ChartFrame } from "@un-eosg/ui/components/chart-frame";
 import { HierarchicalMultiSelect } from "@/components/ui/hierarchical-multi-select";
@@ -308,9 +307,6 @@ export function RegularBudgetOutstandingView({
               </div>
             </dl>
           </div>
-        }
-        footer={
-          <ChartFooter hint="Select a country to open its assessment and outstanding-balance history" />
         }
       >
         {view === "treemap" ? (

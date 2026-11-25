@@ -2,7 +2,6 @@
 import { orderFundingTooltipRows } from "@/lib/financingInstruments";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
-import { ChartFooter } from "@/components/ChartFooter";
 
 import {
   GroupedTreemap,
@@ -295,7 +294,6 @@ export function SecretariatOverview() {
         requestKey={year}
       />
       <GroupedTreemap<string, SecretariatGroup, OverviewTile, never>
-        footer={<ChartFooter hint="Click on an entity to explore details" />}
         yearControl={
           <YearSlider
             years={years.years}

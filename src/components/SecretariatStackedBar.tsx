@@ -70,11 +70,6 @@ export function SecretariatStackedBar({
               </TooltipContent>
             </Tooltip>
           )}
-          {onSelect && (
-            <span className="text-[10px] text-gray-400">
-              · click a segment to filter
-            </span>
-          )}
         </div>
         {onSelect && selected && (
           <button

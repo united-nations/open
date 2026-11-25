@@ -7,7 +7,6 @@ import {
   type GroupedTreemapRow,
 } from "@un-eosg/ui/components/grouped-treemap";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
-import { ChartFooter } from "@/components/ChartFooter";
 import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 import {
   createUncategorizedEntity,
@@ -178,14 +177,10 @@ export function PersonnelTreemap({
                 : "No staff are recorded for this selection."}
           </p>
         }
-        footer={
-          available && matchingTotal > 0 ? (
-            <ChartFooter hint="Click on an organization, department or mission to explore its personnel" />
-          ) : undefined
-        }
         renderTooltip={({ leaf, row }) => (
           <FinancialTooltip
             title={leaf.label}
+            actionHint="Click to explore personnel"
             parents={[{ label: row.label }]}
             total={{ label: "Staff", value: formatPeople(leaf.value) }}
             rows={[

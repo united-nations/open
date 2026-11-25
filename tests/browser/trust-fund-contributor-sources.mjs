@@ -63,10 +63,10 @@ try {
       "Standalone source notes belong in About",
     );
     assert.equal(await sourceFooter(contributorPanel).count(), 0);
-    await contributorPanel
-      .locator("[data-chart-hint]")
-      .getByText("Click on a contributor to explore details", { exact: true })
-      .waitFor();
+    assert.equal(
+      await contributorPanel.locator("[data-chart-hint]").count(),
+      0,
+    );
   };
   const assertCleanTooltip = async (tile, amountLabel) => {
     await tile.focus();
@@ -79,6 +79,10 @@ try {
     assert.equal(await tooltip.getByRole("link").count(), 0);
     assert.ok(!(await tooltip.innerText()).includes("Source references"));
     assert.ok((await tooltip.innerText()).includes("$"));
+    assert.match(
+      await tooltip.innerText(),
+      /Click to explore|Select for contributor details|Select to see reported destinations/,
+    );
     await tile.press("Escape");
   };
   page.on("pageerror", (error) => errors.push(error.message));

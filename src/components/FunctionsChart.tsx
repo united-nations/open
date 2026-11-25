@@ -12,7 +12,6 @@ import {
   FinancialPanelRankedRow,
   FinancialPanelTotalRow,
 } from "@un-eosg/ui/components/financial-panel-parts";
-import { ChartFooter } from "@/components/ChartFooter";
 import { YearSlider } from "@/components/YearSlider";
 import { SidebarControls } from "@/components/SidebarControls";
 import { FinancingInstrumentChart } from "@/components/charts/FinancingInstrumentChart";
@@ -109,9 +108,6 @@ export function FunctionsChart() {
             selectedYear={row.year}
             onChange={setYear}
           />
-        }
-        footer={
-          <ChartFooter hint="Click on an organization to explore details." />
         }
         renderTooltip={({ row: group, leaf }) => (
           <FinancialTooltip

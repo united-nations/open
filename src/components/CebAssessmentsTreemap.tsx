@@ -7,7 +7,6 @@ import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 import { SearchInput } from "@un-eosg/ui/components/search-input";
 import { SegmentedControl } from "@un-eosg/ui/components/segmented-control";
 import { formatPercent } from "@un-eosg/ui/format-budget";
-import { ChartFooter } from "@/components/ChartFooter";
 import { YearSlider } from "@/components/YearSlider";
 import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 import { navigateToSidebar } from "@/hooks/useDeepLink";
@@ -334,9 +333,6 @@ export function CebAssessmentsTreemap() {
         }}
         footer={
           <div className="space-y-2">
-            <ChartFooter
-              hint={`Click on ${organizationView ? "an organization" : "a contributor"} to explore details`}
-            />
             {data && (
               <p className="text-sm text-gray-600">
                 This view covers {organizationCount} organizations in {year}.

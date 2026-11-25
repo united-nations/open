@@ -3,7 +3,6 @@ import { revenueCoverage } from "@/lib/revenueCoverage";
 import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
-import { ChartFooter } from "@/components/ChartFooter";
 import { CEB_ASSESSMENTS_HASH } from "@/lib/cebAssessments";
 import { FinancingInstrumentLabel } from "@/components/FinancingInstrumentLabel";
 
@@ -441,9 +440,6 @@ export function ContributorsTreemap() {
               minBandHeight: 28,
               rowGap: 3,
             }}
-            footer={
-              <ChartFooter hint="Click on a contributor to explore details" />
-            }
             yearControl={
               <YearSlider
                 years={years}

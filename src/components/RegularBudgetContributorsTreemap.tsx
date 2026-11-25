@@ -8,7 +8,6 @@ import { SourceCalculation } from "@/components/SourceCalculation";
 import { formatAssessmentRate } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { PaymentChartScaleProvider } from "@/components/PaymentChartScale";
-import { ChartFooter } from "@/components/ChartFooter";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 
 import {
@@ -244,9 +243,6 @@ export function RegularBudgetContributorsTreemap() {
             never
           >
             interactiveTooltip
-            footer={
-              <ChartFooter hint="Click on a contributor to explore details" />
-            }
             yearControl={
               <YearSlider
                 years={years.years}

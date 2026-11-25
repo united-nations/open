@@ -4,7 +4,6 @@ import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
 import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
-import { ChartFooter } from "@/components/ChartFooter";
 import { FinancingInstrumentLabel } from "./FinancingInstrumentLabel";
 
 import {
@@ -511,9 +510,6 @@ export function EntitiesTreemap({
               </div>
             </div>
           </div>
-        }
-        footer={
-          <ChartFooter hint="Click on an organization to explore details" />
         }
         yearControl={
           <YearSlider

@@ -4,7 +4,6 @@ import { Tooltip } from "@un-eosg/ui/components/tooltip";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { DelayedChartLoading } from "@/components/DelayedChartLoading";
-import { ChartFooter } from "@/components/ChartFooter";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 
 import {
@@ -224,9 +223,6 @@ export function TrustFundContributorsTreemap({
       {current && (
         <>
           <GroupedTreemap<ContributorGroup, string, ContributorTile, never>
-            footer={
-              <ChartFooter hint="Click on a contributor to explore details" />
-            }
             yearControl={
               <YearSlider
                 years={years.years}
