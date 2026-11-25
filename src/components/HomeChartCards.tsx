@@ -1,4 +1,3 @@
-import { MapBoundaryDisclaimer } from "@/components/MapBoundaryDisclaimer";
 import {
   assessmentsForDisplay,
   assessmentTotals,
@@ -897,7 +896,6 @@ export async function HomeChartCards({
                 </span>
               </div>
             </Link>
-            {preview?.countries && <MapBoundaryDisclaimer />}
           </li>
         );
       })}
