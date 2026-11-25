@@ -1,11 +1,7 @@
 import type { RegularBudgetOutstandingData } from "@/types";
-import { formatAssessmentRate } from "@un-eosg/ui/format-budget";
+import { formatBudget, formatPercent } from "@un-eosg/ui/format-budget";
 
 export const OUTSTANDING_TOTAL_COLOR = "var(--color-au-chico)";
-
-const wholeDollars = new Intl.NumberFormat("en-US", {
-  maximumFractionDigits: 0,
-});
 
 const COUNTRY_COLORS = [
   "var(--color-un-blue-text)",
@@ -58,12 +54,9 @@ export function outstandingAmount(
 export function formatReportedOutstandingTotal(
   snapshot: RegularBudgetOutstandingData,
 ) {
-  const { reported_total, reported_total_tolerance, total_outstanding } =
-    snapshot.meta;
-  // A half-million tolerance denotes a headline printed in whole millions.
-  if (reported_total != null && reported_total_tolerance === 500_000)
-    return `$${wholeDollars.format(reported_total / 1_000_000)} million`;
-  return `$${wholeDollars.format(reported_total ?? total_outstanding)}`;
+  return formatBudget(
+    snapshot.meta.reported_total ?? snapshot.meta.total_outstanding,
+  );
 }
 
 export function outstandingChange(
@@ -87,8 +80,7 @@ export function percentageOf(amount: number | null, total: number | null) {
 
 export function formatOutstandingPercent(value: number | null, signed = false) {
   if (value === null) return "Unavailable";
-  const sign = value < 0 ? "−" : signed && value > 0 ? "+" : "";
-  return sign + formatAssessmentRate(Math.abs(value));
+  return formatPercent(value, { signed, bounded: !signed });
 }
 
 export function outstandingSourceUrl(snapshot: RegularBudgetOutstandingData) {

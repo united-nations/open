@@ -1,11 +1,11 @@
 "use client";
+import { formatBudgetTick } from "@un-eosg/ui/format-budget";
 import { ChartHeading } from "@/components/ContentHeading";
 import {
   TREND_CHART_HEIGHT,
   TREND_CHART_MARGIN,
 } from "@/components/charts/trendLayout";
 import { FinancialChartTooltip } from "./charts/FinancialChartTooltip";
-import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 
@@ -309,7 +309,6 @@ export function EntityTrendsChart() {
   );
 
   // Y-axis tick formatter
-  const formatYAxis = sharedFormatBudget;
 
   return (
     <>
@@ -383,7 +382,7 @@ export function EntityTrendsChart() {
                     tickLine={false}
                     axisLine={false}
                     domain={[0, "auto"]}
-                    tickFormatter={formatYAxis}
+                    tickFormatter={formatBudgetTick}
                     mirror
                   />
                   <Tooltip
@@ -461,7 +460,7 @@ export function EntityTrendsChart() {
                     tickLine={false}
                     axisLine={false}
                     domain={[0, "auto"]}
-                    tickFormatter={formatYAxis}
+                    tickFormatter={formatBudgetTick}
                     mirror
                   />
                   <Tooltip

@@ -1,9 +1,9 @@
 "use client";
+import { formatBudgetTick } from "@un-eosg/ui/format-budget";
 import { useState } from "react";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 import { TREND_CHART_MARGIN } from "@/components/charts/trendLayout";
 import { FinancialChartTooltip } from "./FinancialChartTooltip";
-import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
 import {
   LineChart,
@@ -26,8 +26,6 @@ interface EntityTrendChartProps {
   height?: number;
   compact?: boolean;
 }
-
-const formatYAxis = sharedFormatBudget;
 
 export function EntityTrendChart({
   data,
@@ -90,7 +88,7 @@ export function EntityTrendChart({
               tickLine={false}
               axisLine={false}
               domain={[0, "auto"]}
-              tickFormatter={formatYAxis}
+              tickFormatter={formatBudgetTick}
               mirror
             />
             <RechartsTooltip

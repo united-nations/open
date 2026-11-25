@@ -1,8 +1,11 @@
+import { createRequire } from "node:module";
+import { moduleAt } from "../../src/lib/tests/moduleAt.mjs";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { chromium } from "playwright";
 import { browserOptions, portalUrl } from "./helpers.mjs";
 
+const require = createRequire(import.meta.url);
 const manifest = JSON.parse(
   fs.readFileSync("public/data/manifest.json", "utf8"),
 ).personnel;
@@ -10,7 +13,9 @@ const source = (year) =>
   JSON.parse(fs.readFileSync(`public/data/personnel-${year}.json`, "utf8"));
 const latest = source(manifest.default);
 const previous = source(manifest.years.at(-2));
-const number = (value) => value.toLocaleString("en-US");
+const { formatCount: number, formatPercent } = await moduleAt(
+  require.resolve("@un-eosg/ui/format-budget"),
+);
 const browser = await chromium.launch(browserOptions);
 try {
   let page = await browser.newPage({
@@ -368,7 +373,7 @@ try {
   await sparseTooltip.waitFor({ state: "visible" });
   assert.ok(
     (await sparseTooltip.innerText()).includes(
-      `${((women / iccTotal) * 100).toFixed(1)}%`,
+      formatPercent((women / iccTotal) * 100),
     ),
   );
   assert.equal((await sparseTooltip.innerText()).includes("Men"), false);

@@ -1,4 +1,5 @@
 "use client";
+import { formatPercent, formatBudgetTick } from "@un-eosg/ui/format-budget";
 import {
   TREND_CHART_HEIGHT,
   TREND_CHART_MARGIN,
@@ -180,7 +181,7 @@ export function RegularBudgetPaymentTimeline({
               tickFormatter={(value: number) =>
                 measure === "count"
                   ? String(Math.round(value))
-                  : sharedFormatBudget(value)
+                  : formatBudgetTick(value)
               }
               tick={{ fontSize: 11, fill: "#6b7280", dx: -5, dy: -8 }}
               axisLine={false}
@@ -233,10 +234,10 @@ export function RegularBudgetPaymentTimeline({
       </div>
       <p className="mt-2 text-xs text-gray-500">
         As of {dateLabel(Date.parse(`${data.meta.as_of}T00:00:00Z`))},{" "}
-        {finalPoint?.percent.toFixed(1)}% of assessed dollars from{" "}
-        {finalPoint?.countries} Member States had been listed as paid in full.
-        Each full assessment is included on the date the Member State is listed
-        as paid in full. Partial payments are not shown.
+        {finalPoint ? formatPercent(finalPoint.percent) : "Unavailable"} of
+        assessed dollars from {finalPoint?.countries} Member States had been
+        listed as paid in full. Each full assessment is included on the date the
+        Member State is listed as paid in full. Partial payments are not shown.
       </p>
     </div>
   );

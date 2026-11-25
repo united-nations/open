@@ -105,7 +105,7 @@ try {
     name: /Stabilization Mission in Mali/,
   });
   await liquidation.waitFor();
-  assert.match(await liquidation.innerText(), /\$164\.8M/);
+  assert.match(await liquidation.innerText(), /\$165M/);
   assert.ok(
     await liquidation
       .getByRole("link", { name: /A\/80\/590, PDF page 3/ })
@@ -169,7 +169,7 @@ try {
     .getByRole("radio", { name: "Proposed", exact: true })
     .check({ force: true });
   await supportMarker.click();
-  await supportDetails.getByText("$383.4M", { exact: true }).first().waitFor();
+  await supportDetails.getByText("$383M", { exact: true }).first().waitFor();
   await supportDetails
     .getByRole("button", { name: "Close account details" })
     .click();
@@ -257,8 +257,8 @@ try {
     .getByRole("table", { name: /Expenditure by budget group/ });
   await minusmaTrend.waitFor({ state: "attached" });
   for (const [fiscalYear, total] of [
-    ["2023/24", "$833.8M"],
-    ["2024/25", "$164.8M"],
+    ["2023/24", "$834M"],
+    ["2024/25", "$165M"],
   ]) {
     const row = minusmaTrend.getByRole("row").filter({ hasText: fiscalYear });
     assert.ok((await row.textContent()).includes(total));
@@ -274,7 +274,7 @@ try {
   const haiti = page.getByRole("dialog", {
     name: "United Nations Support Office in Haiti",
   });
-  await haiti.getByText("$269.4M", { exact: true }).waitFor();
+  await haiti.getByText("$269M", { exact: true }).waitFor();
   await haiti.getByRole("button", { name: "Copy link to clipboard" }).click();
   await haiti.getByRole("status").filter({ hasText: "Link copied!" }).waitFor();
   const sharedLink = await page.evaluate(() => navigator.clipboard.readText());
@@ -286,7 +286,7 @@ try {
   await recipient.goto(sharedLink);
   await recipient
     .getByRole("dialog", { name: "United Nations Support Office in Haiti" })
-    .getByText("$269.4M", { exact: true })
+    .getByText("$269M", { exact: true })
     .waitFor();
   await recipient.close();
   results.push(

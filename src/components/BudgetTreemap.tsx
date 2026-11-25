@@ -1,4 +1,5 @@
 "use client";
+import { formatPercent } from "@un-eosg/ui/format-budget";
 import { SHOW_ADDITIONAL_TRUST_FUNDS } from "@/lib/featureFlags";
 import {
   trustFundReportingData,
@@ -703,7 +704,7 @@ function layoutBandLabels(
 function formatVariance(value: number | null): string {
   if (value === null) return "";
   const arrow = value > 0 ? "↗︎" : value < 0 ? "↘︎" : "→︎";
-  return `${arrow}${Math.abs(value).toFixed(1)}%`;
+  return `${arrow}${formatPercent(Math.abs(value), { bounded: false })}`;
 }
 
 function percentChange(

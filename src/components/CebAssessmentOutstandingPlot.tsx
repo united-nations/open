@@ -1,4 +1,5 @@
 "use client";
+import { formatBudgetTick } from "@un-eosg/ui/format-budget";
 
 import {
   CartesianGrid,
@@ -54,7 +55,7 @@ export function CebAssessmentOutstandingPlot({
           <YAxis
             type="number"
             dataKey="amount"
-            tickFormatter={formatBudget}
+            tickFormatter={formatBudgetTick}
             tick={{ fontSize: 11 }}
             width={58}
           />

@@ -41,7 +41,7 @@ test("unknown observations do not become zero or partial selected totals", () =>
   assert.equal(outstandingAmount(row), 100);
 });
 
-test("the reported headline retains its precision and country selections use their own balances", () => {
+test("reported amounts retain source precision internally and use compact display", () => {
   const snapshot = {
     meta: {
       reported_total: 1_255_000_000,
@@ -52,7 +52,7 @@ test("the reported headline retains its precision and country selections use the
   };
   assert.equal(outstandingAmount(snapshot), 1_255_000_000);
   assert.equal(outstandingAmount(snapshot, ["A"]), 1_254_267_798);
-  assert.equal(formatReportedOutstandingTotal(snapshot), "$1,255 million");
+  assert.equal(formatReportedOutstandingTotal(snapshot), "$1.3B");
   assert.equal(
     formatReportedOutstandingTotal({
       ...snapshot,
@@ -62,7 +62,7 @@ test("the reported headline retains its precision and country selections use the
         total_outstanding: 1_496_578_500,
       },
     }),
-    "$1,496,578,501",
+    "$1.5B",
   );
 });
 

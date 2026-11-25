@@ -1,3 +1,4 @@
+import { formatBudget } from "@un-eosg/ui/format-budget";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { Fragment } from "react";
@@ -96,15 +97,16 @@ export function CebMethodology() {
               2025 SDG reconciliation
             </SubsectionHeading>
             <p>
-              WMO’s $88.66 million Non-SDG record closely matches its final
-              regular budget. The underlying survey entry is needed to confirm
-              its basis. The portal retains the reported Non-SDG figure.
+              WMO’s {formatBudget(88_660_000)} Non-SDG record closely matches
+              its final regular budget. The underlying survey entry is needed to
+              confirm its basis. The portal retains the reported Non-SDG figure.
             </p>
             <p>
               IOM’s reported SDG and Non-SDG amounts together exceed its
-              organization expenditure by $106.30 million. The bridge between
-              budgetary and accrual expenditure leaves the excess unexplained.
-              The negative Not specified balance shows the difference.
+              organization expenditure by {formatBudget(106_300_000)}. The
+              bridge between budgetary and accrual expenditure leaves the excess
+              unexplained. The negative Not specified balance shows the
+              difference.
             </p>
           </div>
           <p>
@@ -117,10 +119,10 @@ export function CebMethodology() {
           </p>
           <p>
             Geographic totals use E06. In 2025, UNHCR’s financing detail shifts
-            about $12.53 million between two global locations while their
-            combined amounts agree within cents. The IMO financing detail also
-            differs by location. The geographic view uses the reported location
-            totals for both organizations.
+            about {formatBudget(12_530_000)} between two global locations while
+            their combined amounts agree within cents. The IMO financing detail
+            also differs by location. The geographic view uses the reported
+            location totals for both organizations.
           </p>
           <p>
             <a
@@ -545,18 +547,21 @@ function ProgrammeBudgetContributorsMethodologyNotes() {
             assessment ratio.
           </p>
           <p>
-            The overall total and trend use the amounts printed in the UN
-            presentations, at their published precision. Filtered totals add the
-            matching country balances. Shares use the printed total and may add
-            up to slightly more or less than 100%. The autumn balance snapshot
-            is independent of the honour roll’s later reporting date.
+            The overall total and trend are calculated from the amounts printed
+            in the UN presentations. Displayed figures are rounded for
+            readability. Filtered totals add the matching country balances.
+            Shares use the printed total and may add up to slightly more or less
+            than 100%. The autumn balance snapshot is independent of the honour
+            roll’s later reporting date.
           </p>
           <p>
-            In 2021, the 63 country balances add to $1,254,267,798. The{" "}
+            In 2021, the 63 country balances add to {formatBudget(1254267798)}.
+            The{" "}
             <SourceLink href="https://www.un.org/en/ga/contributions/Presentation%20October%202021.pdf#page=8">
               UN presentation
             </SourceLink>{" "}
-            reports $1,255 million, a difference of $732,202.
+            reports {formatBudget(1255000000)}, a difference of{" "}
+            {formatBudget(732202)}.
           </p>
         </>
       )}
@@ -636,11 +641,13 @@ function TrustFundsMethodologyNotes() {
         between funds and overlap with other Secretariat views.
       </p>
       <p>
-        The Technology Bank trust fund’s 2024 current-asset lines sum to
-        $5,297,950 against a printed subtotal of $5,301,546. The UN Peace and
-        Development Trust Fund’s 2022 assets less liabilities are $90,000 below
-        its printed net assets. The financial position figures retain the
-        statement totals in both cases.
+        The Technology Bank trust fund’s 2024 current-asset lines sum to{" "}
+        {formatBudget(5297950)} against a printed subtotal of{" "}
+        {formatBudget(5301546)}, a difference of{" "}
+        {formatBudget(5301546 - 5297950)}. The UN Peace and Development Trust
+        Fund’s 2022 assets less liabilities are {formatBudget(90000)} below its
+        printed net assets. The financial position figures retain the statement
+        totals in both cases.
       </p>
       {SHOW_ADDITIONAL_TRUST_FUNDS && (
         <>
@@ -689,9 +696,10 @@ function TrustFundContributorsMethodologyNotes() {
       </p>
       <p>
         In 2020, the ECA miscellaneous technical cooperation funds (HDM)
-        transfer schedule totals $1,852,540. Deducting its separately printed
-        $3,331 present-value adjustment gives the $1,849,209 reported in
-        statement revenue.{" "}
+        transfer schedule totals {formatBudget(1852540)}. Deducting its
+        separately printed {formatBudget(3331)} present-value adjustment gives
+        the {formatBudget(1849209)} reported in statement revenue. Both totals
+        round to the same displayed amount.{" "}
         <a
           className="underline underline-offset-2"
           href="https://documents.un.org/api/symbol/access?s=%28DMSPC%2FOPPFB%29%20FINANCIAL%20STATEMENTS%20FOR%20THE%20YEAR%20ENDED%2031%20DECEMBER%202020&l=en&t=pdf#page=227"
@@ -712,14 +720,17 @@ function TrustFundContributorsMethodologyNotes() {
           </p>
           <p>
             UN-Habitat’s 2023 Latin America and Caribbean technical cooperation
-            donor rows sum to $6,822,700. The region’s reported total is
-            $6,890,800. The $68,100 difference remains unallocated to donors.
+            donor rows sum to {formatBudget(6822700)}. The region’s reported
+            total is {formatBudget(6890800)}. The {formatBudget(68100)}{" "}
+            difference remains unallocated to donors.
           </p>
           <p>
-            UNODC’s March 2025 snapshot of 2023 pledges totals $453,853,084.35.
-            The November 2025 report gives $453,869,467 for 2023. The
-            contributor detail uses the March snapshot. The later report
-            provides the aggregate comparison.
+            UNODC’s March 2025 snapshot of 2023 pledges totals{" "}
+            {formatBudget(453853084.35)}. The November 2025 report gives{" "}
+            {formatBudget(453869467)} for 2023, an increase of{" "}
+            {formatBudget(453869467 - 453853084.35)}. Both totals round to the
+            same displayed amount. The contributor detail uses the March
+            snapshot. The later report provides the aggregate comparison.
           </p>
         </>
       )}

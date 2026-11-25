@@ -1,6 +1,9 @@
 "use client";
 import { SourceCalculation } from "@/components/SourceCalculation";
-import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
+import {
+  formatBudget as sharedFormatBudget,
+  formatAssessmentRate,
+} from "@un-eosg/ui/format-budget";
 
 import { ChevronRight, ExternalLink } from "lucide-react";
 import { useMemo } from "react";
@@ -317,10 +320,14 @@ export function PeacekeepingContributorSidebar({
                       >
                         {exception.symbol}, section {exception.section}, prints
                         a peacekeeping rate of{" "}
-                        {exception.printed_peacekeeping_rate}
-                        %; the dollar amount implies{" "}
-                        {exception.implied_rate_from_gross_amount}%. The printed
-                        dollar amount is used.
+                        {formatAssessmentRate(
+                          exception.printed_peacekeeping_rate,
+                        )}
+                        ; the dollar amount implies{" "}
+                        {formatAssessmentRate(
+                          exception.implied_rate_from_gross_amount,
+                        )}
+                        . The printed dollar amount is used.
                       </p>
                     ))}
                     {derivedRows.map((exception) => (

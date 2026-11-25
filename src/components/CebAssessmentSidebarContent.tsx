@@ -3,7 +3,7 @@
 import { useCallback, useState } from "react";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
-import { formatAssessmentRate } from "@un-eosg/ui/format-budget";
+import { formatPercent } from "@un-eosg/ui/format-budget";
 import {
   FinancialPanelBar,
   FinancialPanelHeading,
@@ -220,7 +220,7 @@ export function CebAssessmentSidebarContent({
                     !assessed.partial &&
                     current.value !== null &&
                     !current.partial
-                      ? formatAssessmentRate((current.value / amount) * 100)
+                      ? formatPercent((current.value / amount) * 100)
                       : null;
                   const receipts = [
                     {

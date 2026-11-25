@@ -1,4 +1,5 @@
 "use client";
+import { formatPercent, formatBudgetTick } from "@un-eosg/ui/format-budget";
 import {
   TREND_CHART_HEIGHT,
   TREND_CHART_MARGIN,
@@ -116,10 +117,7 @@ interface FinancingInstrumentChartProps {
 const formatYAxis = sharedFormatBudget;
 const NEGATIVE_NOTE_THRESHOLD = 0.01;
 const shareTicks = [0, 25, 50, 75, 100];
-const shareFormatter = new Intl.NumberFormat("en-GB", {
-  maximumFractionDigits: 1,
-});
-const formatShare = (value: number) => `${shareFormatter.format(value)}%`;
+const formatShare = (value: number) => formatPercent(value);
 
 function LegendChip({
   type,
@@ -471,9 +469,12 @@ export function FinancingInstrumentChart({
                       : undefined
                 }
                 tickFormatter={(value: number) =>
-                  (showShare ? formatShare : (valueFormatter ?? formatYAxis))(
-                    value,
-                  ).replaceAll(" ", "\u00a0")
+                  (showShare
+                    ? formatShare
+                    : (valueFormatter ?? formatBudgetTick))(value).replaceAll(
+                    " ",
+                    "\u00a0",
+                  )
                 }
                 mirror
               />

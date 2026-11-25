@@ -1,4 +1,5 @@
 "use client";
+import { formatBudgetTick } from "@un-eosg/ui/format-budget";
 import { ChartHeading } from "@/components/ContentHeading";
 import {
   TREND_CHART_HEIGHT,
@@ -7,7 +8,6 @@ import {
 import { SourceAwareTrendTooltip } from "./charts/SourceAwareTrendTooltip";
 import type { ProgrammeBudgetTrendRow } from "@/lib/staticTrendData";
 import { FinancialChartTooltip } from "./charts/FinancialChartTooltip";
-import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 import { HierarchicalSingleSelect } from "@un-eosg/ui/components/hierarchical-single-select";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 
@@ -46,8 +46,6 @@ const METRICS: Array<{
     color: "var(--color-un-purple)",
   },
 ];
-
-const formatYAxis = sharedFormatBudget;
 
 function ProgrammeBudgetTrendTooltip({
   year,
@@ -234,7 +232,7 @@ export function ProgrammeBudgetTrends({
                 tickLine={false}
                 axisLine={false}
                 domain={[0, "auto"]}
-                tickFormatter={formatYAxis}
+                tickFormatter={formatBudgetTick}
                 mirror
               />
               <SourceAwareTrendTooltip

@@ -47,8 +47,8 @@ try {
     has: page.getByRole("button", { name: "Select year", exact: true }),
   });
   await sidebar.waitFor();
-  await sidebar.getByText("CHF 109.4M", { exact: true }).first().waitFor();
-  assert.ok(!(await sidebar.innerText()).includes("$131.5M"));
+  await sidebar.getByText("CHF 109M", { exact: true }).first().waitFor();
+  assert.ok(!(await sidebar.innerText()).includes("$131M"));
   await sidebar
     .getByRole("heading", {
       name: "Extrabudgetary resources (CHF)",
@@ -59,7 +59,7 @@ try {
     name: "Funding-source trend, nominal Swiss francs",
   });
   await table.waitFor();
-  assert.ok((await table.innerText()).includes("CHF 109.4M"));
+  assert.ok((await table.innerText()).includes("CHF 109M"));
   await sidebar.getByText("Source references", { exact: true }).click();
   assert.ok((await sidebar.innerText()).includes("Subtotal, 2"));
   await page.waitForTimeout(1800); // Finish chart animation before recording evidence.
@@ -74,8 +74,8 @@ try {
     .first();
   await itc.waitFor();
   await itc.hover();
-  await page.getByText("CHF 109.4M", { exact: true }).last().waitFor();
-  assert.equal(await page.getByText("$131.5M", { exact: true }).count(), 0);
+  await page.getByText("CHF 109M", { exact: true }).last().waitFor();
+  assert.equal(await page.getByText("$131M", { exact: true }).count(), 0);
   await page.screenshot({ path: "audits/browser/itc-chf-treemap.png" });
   assert.deepEqual(errors, []);
   console.log("PPB metric ranges and source-currency CHF labels verified.");

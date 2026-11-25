@@ -6,7 +6,7 @@ import { GroupedTreemap } from "@un-eosg/ui/components/grouped-treemap";
 import { LegendLabel } from "@un-eosg/ui/components/legend-label";
 import { SearchInput } from "@un-eosg/ui/components/search-input";
 import { SegmentedControl } from "@un-eosg/ui/components/segmented-control";
-import { formatAssessmentRate } from "@un-eosg/ui/format-budget";
+import { formatPercent } from "@un-eosg/ui/format-budget";
 import { ChartFooter } from "@/components/ChartFooter";
 import { YearSlider } from "@/components/YearSlider";
 import { SYSTEM_TREEMAP_HEIGHT_CLASS } from "@/components/charts/treemapSizing";
@@ -101,7 +101,7 @@ export function CebAssessmentsTreemap() {
       paid !== null &&
       paid >= 0;
     const valueLabel = showRate
-      ? `${formatAssessmentRate((paid / assessed) * 100)} of ${assessedAmount} paid in ${year} towards ${year}`
+      ? `${formatPercent((paid / assessed) * 100)} of ${assessedAmount} paid in ${year} towards ${year}`
       : contributor.assessed.value === null
         ? "Assessment unknown"
         : `${assessedAmount} assessed`;

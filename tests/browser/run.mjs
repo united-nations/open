@@ -6,6 +6,7 @@ const portalChecks = [
   "header-layout",
   "mobile-friendliness",
   "personnel",
+  "number-formatting",
   "page-headings",
   "treemap-search-labels",
   "ceb-methodology",

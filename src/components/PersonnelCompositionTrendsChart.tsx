@@ -1,4 +1,5 @@
 "use client";
+import { formatPercent } from "@un-eosg/ui/format-budget";
 
 import { useState } from "react";
 import {
@@ -31,7 +32,7 @@ const TITLES = {
 };
 
 const percent = (value: number | null | undefined) =>
-  value == null ? "Unavailable" : `${value.toFixed(1)}%`;
+  value == null ? "Unavailable" : formatPercent(value);
 
 export function PersonnelCompositionTrendsPlot({
   kind,
@@ -142,7 +143,7 @@ export function PersonnelCompositionTrendsPlot({
               <YAxis
                 domain={[0, 100]}
                 ticks={[0, 25, 50, 75, 100]}
-                tickFormatter={(value) => `${value}%`}
+                tickFormatter={(value) => formatPercent(Number(value))}
                 tick={{ fill: "#6b7280", fontSize: 12 }}
                 tickLine={false}
                 axisLine={false}

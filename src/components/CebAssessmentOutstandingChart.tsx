@@ -3,7 +3,7 @@ import { ChartHeading } from "@/components/ContentHeading";
 
 import { useCallback, useState } from "react";
 import { FinancialTooltip } from "@un-eosg/ui/components/financial-tooltip";
-import { formatAssessmentRate } from "@un-eosg/ui/format-budget";
+import { formatPercent } from "@un-eosg/ui/format-budget";
 import { YearSlider } from "@/components/YearSlider";
 import { CebAssessmentOutstandingNotes } from "@/components/CebAssessmentOutstandingNotes";
 import {
@@ -119,9 +119,7 @@ export function CebAssessmentOutstandingChart() {
                 annual,
               );
               const percent =
-                relative === null
-                  ? "Unavailable"
-                  : formatAssessmentRate(relative);
+                relative === null ? "Unavailable" : formatPercent(relative);
               return (
                 <li key={record.key}>
                   <Tooltip>

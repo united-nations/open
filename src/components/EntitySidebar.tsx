@@ -725,7 +725,7 @@ export function EntitySidebar({
                   <p className="mt-2 text-sm text-gray-600">
                     {entity.entity === "WMO"
                       ? "WMO’s Non-SDG amount closely matches its final regular budget. Its spending basis is unconfirmed."
-                      : "IOM’s reported SDG and Non-SDG amounts together exceed its organization expenditure by $106.30 million."}{" "}
+                      : `IOM’s reported SDG and Non-SDG amounts together exceed its organization expenditure by ${formatBudget(106_300_000)}.`}{" "}
                     <Link
                       href="/about/#ceb-presentation"
                       className="text-un-blue underline underline-offset-2"

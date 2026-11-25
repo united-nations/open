@@ -1,3 +1,4 @@
+import { formatCurrency } from "@un-eosg/ui/format-budget";
 import { SourceReferenceLinks } from "@/components/SourceReferenceLinks";
 import {
   sourceDownloads,
@@ -28,12 +29,7 @@ export function SourceCalculation({
   if (!complete || Math.abs(sum - amount) >= 0.005) {
     return <SourceReferenceLinks references={references} />;
   }
-  const format = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency,
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
-  });
+  const format = (value: number) => formatCurrency(value, currency);
   const inputs = (
     <ul className="mt-2 max-h-48 space-y-2 overflow-y-auto text-start text-xs">
       {references.map((source, index) => (
@@ -59,11 +55,11 @@ export function SourceCalculation({
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block text-un-blue underline"
-                aria-label={`${format.format(source.operand!.amount)} · ${source.symbol} · ${source.label ?? source.rowLabel} · PDF page ${page}`}
+                aria-label={`${format(source.operand!.amount)} · ${source.symbol} · ${source.label ?? source.rowLabel} · PDF page ${page}`}
               >
                 {pageIndex === 0 && (
                   <span className="block">
-                    {format.format(source.operand!.amount)}
+                    {format(source.operand!.amount)}
                   </span>
                 )}
                 {sourceDownloads(source.url) ? "Download · " : ""}p. {page}
@@ -79,7 +75,7 @@ export function SourceCalculation({
   ) : (
     <details className="mt-2 border-t border-gray-200 pt-2 text-start text-xs">
       <summary tabIndex={0} className="cursor-pointer font-medium">
-        Calculation · {format.format(amount)} · {references.length} inputs
+        Calculation · {format(amount)} · {references.length} inputs
       </summary>
       {inputs}
     </details>

@@ -1,3 +1,4 @@
+import { formatCurrency } from "@un-eosg/ui/format-budget";
 import type { BudgetNode, BudgetFundingSource, BudgetChfLayout } from "@/types";
 import { formatBudget } from "@/lib/entities";
 import { BUDGET_FUNDING_SOURCES } from "@/lib/budgetGroupings";
@@ -20,7 +21,7 @@ export function budgetFundingPoint(year: number, node?: BudgetNode) {
 }
 
 export function formatChf(amount: number): string {
-  return formatBudget(amount).replace("$", "CHF ");
+  return formatCurrency(amount, "CHF");
 }
 
 export function formatCurrencyParts(usd: number, chf: number): string {

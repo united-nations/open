@@ -1,4 +1,5 @@
 "use client";
+import { formatPercent } from "@un-eosg/ui/format-budget";
 
 import { Info } from "lucide-react";
 import {
@@ -96,7 +97,7 @@ export function SecretariatStackedBar({
             const share =
               positiveTotal > 0 ? (segment.amount / positiveTotal) * 100 : 0;
             const active = !selected || selected === segment.key;
-            const description = `${segment.label}: ${formatBudget(segment.amount)} (${share.toFixed(1)}%)`;
+            const description = `${segment.label}: ${formatBudget(segment.amount)} (${formatPercent(share)})`;
             const visibleLabel =
               share >= 12
                 ? segment.label
@@ -154,7 +155,7 @@ export function SecretariatStackedBar({
                 >
                   <p className="font-medium">{segment.label}</p>
                   <p className="mt-0.5 text-slate-500">
-                    {formatBudget(segment.amount)} · {share.toFixed(1)}%
+                    {formatBudget(segment.amount)} · {formatPercent(share)}
                   </p>
                   {onSelect && (
                     <p className="mt-1 text-[10px] text-slate-400">

@@ -1,4 +1,5 @@
 "use client";
+import { formatPercent } from "@un-eosg/ui/format-budget";
 
 import { useState } from "react";
 import {
@@ -192,7 +193,7 @@ export function PersonnelTreemap({
                 label: "Share of chart",
                 value:
                   matchingTotal > 0
-                    ? `${((100 * leaf.value) / matchingTotal).toFixed(1)}%`
+                    ? formatPercent((100 * leaf.value) / matchingTotal)
                     : "Unavailable",
               },
             ]}

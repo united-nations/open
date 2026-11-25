@@ -73,7 +73,7 @@ try {
     .waitFor();
   const firstShare = await latest.getByRole("cell").first().innerText();
   assert.match(firstShare, /\$.* · \d.*%/);
-  assert.match(await latest.innerText(), /-\$63\.8M · Excluded from share/);
+  assert.match(await latest.innerText(), /−\$63\.8M · Excluded from share/);
   await goal.click();
   assert.equal(await latest.getByRole("cell").first().innerText(), firstShare);
   await goal.click();
@@ -89,7 +89,7 @@ try {
     name: "Annual expenditure details",
   });
   await shareDetails
-    .getByText("-$63.8M · Excluded from share", { exact: true })
+    .getByText("−$63.8M · Excluded from share", { exact: true })
     .waitFor();
   await units.getByText("$", { exact: true }).click();
   assert.doesNotMatch(await latest.innerText(), /Excluded from share/);

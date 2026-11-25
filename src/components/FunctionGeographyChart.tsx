@@ -1,4 +1,5 @@
 "use client";
+import { formatPercent } from "@un-eosg/ui/format-budget";
 import { ChartHeading, SubsectionHeading } from "@/components/ContentHeading";
 
 import { useCallback, useState } from "react";
@@ -24,7 +25,7 @@ import {
 } from "@/lib/functionGeography";
 
 const percent = (share: number | null) =>
-  share === null ? "Unavailable" : `${(share * 100).toFixed(1)}%`;
+  share === null ? "Unavailable" : formatPercent(share * 100);
 
 export function FunctionGeographyChart() {
   const years = useYearRanges().functionGeography;

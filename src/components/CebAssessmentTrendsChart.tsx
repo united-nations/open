@@ -1,4 +1,5 @@
 "use client";
+import { formatBudgetTick } from "@un-eosg/ui/format-budget";
 
 import { useCallback } from "react";
 import {
@@ -92,7 +93,7 @@ export function CebAssessmentTrendsChart({
           <CartesianGrid vertical={false} stroke="var(--color-gray-200)" />
           <XAxis dataKey="year" tick={{ fontSize: 11 }} />
           <YAxis
-            tickFormatter={formatBudget}
+            tickFormatter={formatBudgetTick}
             tick={{ fontSize: 11 }}
             width={58}
           />

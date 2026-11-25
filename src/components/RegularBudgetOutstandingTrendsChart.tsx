@@ -1,4 +1,5 @@
 "use client";
+import { formatBudgetTick } from "@un-eosg/ui/format-budget";
 
 import { useRef, useState } from "react";
 import {
@@ -216,7 +217,7 @@ export function RegularBudgetOutstandingTrendsChart({
             <CartesianGrid strokeDasharray="3 3" vertical={false} />
             <XAxis dataKey="year" tick={{ fontSize: 12 }} tickLine={false} />
             <YAxis
-              tickFormatter={money}
+              tickFormatter={formatBudgetTick}
               width={65}
               tick={{ fontSize: 11 }}
               axisLine={false}

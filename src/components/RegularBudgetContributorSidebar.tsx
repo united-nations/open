@@ -26,12 +26,6 @@ import {
   regularBudgetAssessmentSources,
 } from "@/lib/regularBudgetContributors";
 
-const discrepancyCurrency = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-  maximumFractionDigits: 0,
-});
-
 export function RegularBudgetContributorSidebar({
   name,
   initialData,
@@ -171,10 +165,21 @@ export function RegularBudgetContributorSidebar({
                   data-assessment-discrepancy
                 >
                   The assessment circular reports{" "}
-                  {discrepancyCurrency.format(item.assessment_document_amount)};
+                  {formatAssessmentCurrency(item.assessment_document_amount)};
                   the honour roll reports{" "}
-                  {discrepancyCurrency.format(item.honour_roll_amount)}. This
-                  view uses the assessment circular amount.
+                  {formatAssessmentCurrency(item.honour_roll_amount)}. The
+                  difference is{" "}
+                  {formatAssessmentCurrency(
+                    Math.abs(
+                      item.assessment_document_amount - item.honour_roll_amount,
+                    ),
+                  )}
+                  .
+                  {formatAssessmentCurrency(item.assessment_document_amount) ===
+                    formatAssessmentCurrency(item.honour_roll_amount) && (
+                    <> Both totals round to the same displayed amount.</>
+                  )}{" "}
+                  This view uses the assessment circular amount.
                 </p>
               ))}
             <dl className="mt-3 grid grid-cols-[1fr_auto] gap-2 text-sm">

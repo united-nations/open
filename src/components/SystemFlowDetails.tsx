@@ -1,4 +1,5 @@
 "use client";
+import { formatPercent } from "@un-eosg/ui/format-budget";
 import Link from "next/link";
 import { FinancialFlowBreakdown } from "./FinancialFlowBreakdown";
 import {
@@ -152,7 +153,7 @@ export function SystemFlowDetails({
           <FinancialTooltip
             rows={details.percentages.map((row) => ({
               label: row.label,
-              value: `${(row.share * 100).toFixed(1)}%`,
+              value: formatPercent(row.share * 100),
             }))}
           />
         ) : (
@@ -162,7 +163,7 @@ export function SystemFlowDetails({
                 <FinancialPanelBreakdownRow
                   key={row.label}
                   label={row.label}
-                  value={`${(row.share * 100).toFixed(1)}%`}
+                  value={formatPercent(row.share * 100)}
                   percent={row.share * 100}
                   color={details.color}
                 />

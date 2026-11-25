@@ -559,7 +559,7 @@ try {
       .locator("dt")
       .getByText("Matching expenditure (unconsolidated)", { exact: true }),
   });
-  assert.equal(await matchingTotal.locator("dd").innerText(), "$808.1M");
+  assert.equal(await matchingTotal.locator("dd").innerText(), "$808M");
   await search.fill("");
   for (const code of ["UNODC", "UN-HABITAT", "ITC"]) {
     await page

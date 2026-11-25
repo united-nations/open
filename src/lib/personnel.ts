@@ -1,3 +1,4 @@
+import { formatCount } from "@un-eosg/ui/format-budget";
 /** CEB HR dimensions retain their own organization scope, independent of finance. */
 export interface PersonnelOrganization {
   org: string;
@@ -81,8 +82,7 @@ export interface PersonnelSexTotals {
   total: number;
 }
 
-export const formatPeople = (count: number) =>
-  count.toLocaleString("en-US", { maximumFractionDigits: 0 });
+export const formatPeople = formatCount;
 
 export function personnelSexTotals(
   records: readonly { sex: string; count: number }[],

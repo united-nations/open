@@ -1,4 +1,5 @@
 "use client";
+import { formatBudgetTick } from "@un-eosg/ui/format-budget";
 import { ChartHeading } from "@/components/ContentHeading";
 import {
   contributorYearAvailable,
@@ -10,7 +11,6 @@ import {
   TREND_CHART_MARGIN,
 } from "@/components/charts/trendLayout";
 import { FinancialChartTooltip } from "./charts/FinancialChartTooltip";
-import { formatBudget as sharedFormatBudget } from "@un-eosg/ui/format-budget";
 
 import * as React from "react";
 import {
@@ -424,7 +424,7 @@ export function ContributorTrendsChart() {
                   tickLine={false}
                   axisLine={false}
                   domain={["auto", "auto"]}
-                  tickFormatter={sharedFormatBudget}
+                  tickFormatter={formatBudgetTick}
                   mirror
                 />
                 <Tooltip

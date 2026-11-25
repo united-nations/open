@@ -109,7 +109,7 @@ try {
     await snapshotYear.press("ArrowRight");
   await section
     .locator("[data-outstanding-summary]")
-    .getByText("$1,255 million", { exact: true })
+    .getByText("$1.3B", { exact: true })
     .waitFor();
   await snapshotYear.press("Home");
   await section.getByText("Sep 30", { exact: true }).waitFor();
@@ -311,7 +311,7 @@ try {
     .getByText("2025 · 30 September 2025", { exact: true })
     .waitFor();
   await tooltip.getByText("All Member States", { exact: true }).waitFor();
-  await tooltip.getByText("$1,870 million", { exact: true }).waitFor();
+  await tooltip.getByText("$1.9B", { exact: true }).waitFor();
   await tooltip.getByText("Mexico", { exact: true }).waitFor();
   await tooltip.getByText("China", { exact: true }).waitFor();
   assert.doesNotMatch(
@@ -375,7 +375,7 @@ try {
   });
 
   await page.setViewportSize({ width: 390, height: 844 });
-  await section.getByText("Treemap", { exact: true }).click();
+  await section.getByRole("radio", { name: "Chart", exact: true }).check({ force: true });
   await page.mouse.move(0, 0);
   await section.screenshot({
     path: "audits/browser/regular-budget-outstanding-mobile.png",

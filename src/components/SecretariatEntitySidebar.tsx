@@ -1,4 +1,5 @@
 "use client";
+import { formatPercent } from "@un-eosg/ui/format-budget";
 
 import { useEffect, useMemo, useState } from "react";
 import {
@@ -325,9 +326,11 @@ export function SecretariatEntitySidebar({
               <>
                 {formatBudget(selectedAmount)} (
                 {displayed.entity.total > 0
-                  ? ((selectedAmount / displayed.entity.total) * 100).toFixed(1)
-                  : "0.0"}
-                %) was spent on {selectedPriority}.
+                  ? formatPercent(
+                      (selectedAmount / displayed.entity.total) * 100,
+                    )
+                  : "Unavailable"}
+                ) was spent on {selectedPriority}.
               </>
             ) : undefined,
         }}

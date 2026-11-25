@@ -1,3 +1,5 @@
+import { createRequire } from "node:module";
+import { moduleAt } from "../../src/lib/tests/moduleAt.mjs";
 import assert from "node:assert/strict";
 import fs from "node:fs";
 import { chromium } from "playwright";
@@ -7,6 +9,7 @@ import manifest from "../../public/data/manifest.json" with { type: "json" };
 const flags = profiles[process.env.SITE_VARIANT ?? "public"];
 const read = (filename) =>
   JSON.parse(fs.readFileSync(`public/data/${filename}.json`, "utf8"));
+const require = createRequire(import.meta.url);
 const browser = await chromium.launch(browserOptions);
 const errors = [];
 try {
@@ -142,7 +145,7 @@ try {
     );
     await page
       .locator('[data-secretariat-methodology="programme-budget-contributors"]')
-      .getByText(/a difference of \$732,202/)
+      .getByText(/a difference of \$732K/)
       .waitFor();
   }
   if (flags.programmeBudget) {
@@ -160,18 +163,14 @@ try {
     await note.waitFor();
     assert.match(await note.innerText(), /assessment circular reports/);
     assert.match(await note.innerText(), /honour roll reports/);
-    const exactCurrency = new Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-      maximumFractionDigits: 0,
-    });
+    const { formatBudget } = await moduleAt(
+      require.resolve("@un-eosg/ui/format-budget"),
+    );
     for (const amount of [
       discrepancy.assessment_document_amount,
       discrepancy.honour_roll_amount,
     ]) {
-      assert.ok(
-        (await note.innerText()).includes(exactCurrency.format(amount)),
-      );
+      assert.ok((await note.innerText()).includes(formatBudget(amount)));
     }
     assert.equal(
       await page.locator("[data-assessment-discrepancy]").count(),
