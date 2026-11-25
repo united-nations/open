@@ -481,7 +481,9 @@ export function FinancingInstrumentChart({
               <SourceAwareTrendTooltip
                 key={`${visibleSeries.map((series) => series.key).join("|")}`}
                 interactive={Boolean(tooltipSources)}
-                constrainToViewport={visibleSeries.length > 10}
+                constrainToViewport={
+                  Boolean(tooltipSources) || visibleSeries.length > 10
+                }
                 filterNull={!showShare}
                 content={(props) => {
                   const year = String(props.label ?? "");

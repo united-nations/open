@@ -8,7 +8,7 @@ import {
   sourceDownloads,
 } from "@/lib/sourceReferences";
 
-/** Compact, page-specific evidence for financial tooltip content. */
+/** Compact, page-specific evidence. The containing tooltip or panel owns scrolling. */
 export function SourceReferenceLinks({
   references,
 }: {
@@ -47,7 +47,7 @@ export function SourceReferenceLinks({
   }
   return (
     <div
-      className="mt-2 max-h-40 space-y-1 overflow-y-auto border-t border-gray-200 pt-2 text-xs"
+      className="mt-2 space-y-1 border-t border-gray-200 pt-2 text-xs"
       onClick={(event) => event.stopPropagation()}
       onPointerDown={(event) => event.stopPropagation()}
     >

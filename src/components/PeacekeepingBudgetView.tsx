@@ -374,6 +374,7 @@ function MissionCostClassTreemap({
         formatValue={(value) => formatBudget(value)}
         formatAccessibleValue={(value) => formatBudget(value)}
         showLeafValues
+        interactiveTooltip
         renderTooltip={(context) => (
           <MissionTooltip mission={context.row.data!} />
         )}

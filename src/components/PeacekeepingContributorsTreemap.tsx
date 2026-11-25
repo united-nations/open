@@ -270,6 +270,7 @@ export function PeacekeepingContributorsTreemap() {
             plotClassName="h-[560px] sm:h-[680px] lg:h-[780px]"
             formatValue={(value) => currency(value)}
             formatAccessibleValue={(value) => currency(value)}
+            interactiveTooltip
             renderTooltip={(context) => (
               <ContributorTooltip context={context} meta={data.meta} />
             )}

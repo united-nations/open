@@ -30,8 +30,9 @@ export function SourceCalculation({
     return <SourceReferenceLinks references={references} />;
   }
   const format = (value: number) => formatCurrency(value, currency);
+  // Keep expanded inputs in the containing tooltip or panel's scroll area.
   const inputs = (
-    <ul className="mt-2 max-h-48 space-y-2 overflow-y-auto text-start text-xs">
+    <ul className="mt-2 space-y-2 text-start text-xs">
       {references.map((source, index) => (
         <li key={index} className="grid grid-cols-[1fr_auto] gap-x-3">
           <span>
