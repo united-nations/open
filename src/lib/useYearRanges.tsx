@@ -11,6 +11,7 @@ interface YearRange {
 }
 
 interface YearRanges {
+  pooledFunds: YearRange;
   personnel: YearRange;
   donors: YearRange;
   cebAssessments: YearRange;

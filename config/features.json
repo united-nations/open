@@ -1,5 +1,6 @@
 {
   "public": {
+    "pooledFunds": false,
     "portal": false,
     "programmeBudget": false,
     "regularBudgetOutstanding": false,
@@ -12,6 +13,7 @@
     "entityImpacts": false
   },
   "preview": {
+    "pooledFunds": true,
     "portal": true,
     "programmeBudget": true,
     "regularBudgetOutstanding": true,
@@ -24,6 +26,7 @@
     "entityImpacts": false
   },
   "full": {
+    "pooledFunds": true,
     "portal": true,
     "programmeBudget": true,
     "regularBudgetOutstanding": true,
@@ -36,6 +39,7 @@
     "entityImpacts": true
   },
   "routes": {
+    "/system/pooled-funds": "pooledFunds",
     "/system": "portal",
     "/secretariat": "portal",
     "/about": "portal",

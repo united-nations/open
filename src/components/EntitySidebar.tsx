@@ -78,7 +78,8 @@ interface EntitySidebarProps {
   onClose: () => void;
 }
 
-import { SHOW_ENTITY_IMPACTS } from "@/lib/featureFlags";
+import { SHOW_ENTITY_IMPACTS, SHOW_POOLED_FUNDS } from "@/lib/featureFlags";
+import { PooledFundsProfileSection } from "@/components/PooledFundsProfileSection";
 
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
@@ -780,6 +781,13 @@ export function EntitySidebar({
           )}
 
           {assessmentContent}
+          {SHOW_POOLED_FUNDS && (
+            <PooledFundsProfileSection
+              kind="organization"
+              name={entity.entity}
+              year={selectedYear}
+            />
+          )}
           {/* Retained for a later, explicitly enabled impact view. */}
           {SHOW_ENTITY_IMPACTS && (
             <div>

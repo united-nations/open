@@ -15,6 +15,7 @@ import { PageSourceLink } from "@/components/PageSources";
 import { CEB_ASSESSMENTS_SECTION } from "@/lib/cebAssessments";
 import {
   SHOW_PEACE_OPERATIONS,
+  SHOW_POOLED_FUNDS,
   SHOW_UNINFO,
 } from "@/lib/featureFlags";
 import { isRouteEnabled } from "@/lib/navigation";
@@ -315,6 +316,96 @@ export default function AboutPage() {
             ))}
           </div>
         </section>
+        {SHOW_POOLED_FUNDS && (
+          <section
+            id="pooled-funds-methodology"
+            className="mt-8 scroll-mt-20 space-y-3 border-t border-gray-200 pt-4"
+            aria-labelledby="pooled-funds-methodology-title"
+          >
+            <SectionHeading id="pooled-funds-methodology-title">
+              Pooled funds — MPTF Office
+            </SectionHeading>
+            <div className="space-y-3 text-sm leading-relaxed text-gray-600">
+              <p>
+                The{" "}
+                <a className="underline" href="https://mptf.undp.org/">
+                  MPTF Office Gateway
+                </a>{" "}
+                supplies annual financial observations for funds and joint
+                programmes administered by the UN Multi-Partner Trust Fund
+                Office. This portfolio includes several source-defined fund
+                typologies; it is not a complete inventory of UN inter-agency
+                pooled funding. OCHA’s{" "}
+                <a className="underline" href="https://pfdata.unocha.org/">
+                  Pooled Funds Data Hub
+                </a>{" "}
+                reports CERF and Country-based Pooled Funds separately.
+              </p>
+              <p>
+                Calendar-year amounts are nominal US dollars.{" "}
+                <a
+                  className="underline"
+                  href="https://mptf.undp.org/analyze-all-contributions"
+                >
+                  Contributor deposits
+                </a>{" "}
+                are cash received during the selected year, before separately
+                reported refunds. The main deposits measure excludes rows
+                explicitly classified by MPTF as feeder-fund contributions.
+                These transfers between funds remain visible in fund sidebars.
+                Commitments, recognized contribution revenue and cash deposits
+                are different measures.
+              </p>
+              <p>
+                <a
+                  className="underline"
+                  href="https://mptf.undp.org/analyze-all-projects"
+                >
+                  Recipient observations
+                </a>{" "}
+                provide net transfers, after refunds from participating
+                organizations, and reported expenditure. Transfers and
+                expenditure are unconsolidated: fund recipients can themselves
+                be pooled funds, so the same resources can appear at several
+                reporting levels. Participating organizations use their own
+                accounting bases. Interim expenditure reporting is voluntary;
+                consult the fund’s latest financial report for certified
+                figures.
+              </p>
+              <p>
+                Every annual import checks complete pagination and reconciles
+                fund, contributor and recipient rows to the Gateway’s controls.
+                Source classifications and source agency identities are
+                retained. Missing observations remain unavailable, reported
+                zeros stay zero, and signed adjustments are preserved. Annual
+                flows do not establish closing balances or comparable delivery
+                rates. Metadata absent in a year is shown as not specified.
+              </p>
+              <p>
+                Contributor and organization links use exact canonical
+                identities available in the corresponding year’s CEB data. These
+                relationships do not attribute a donor’s pooled deposit to a
+                particular recipient, project, country or SDG. MPTF amounts are
+                separate from CEB and Secretariat figures and must not be added
+                to them. No account-level reconciliation with Secretariat
+                trust-fund schedules is applied.
+              </p>
+              <p>
+                <Link className="underline" href="/system/pooled-funds/">
+                  Explore pooled funds
+                </Link>{" "}
+                or read the{" "}
+                <a
+                  className="underline"
+                  href="https://mptf.undp.org/page/un-pooled-funding-key-concepts-and-terms"
+                >
+                  MPTF definitions
+                </a>
+                .
+              </p>
+            </div>
+          </section>
+        )}
         <section
           id="disclaimer"
           className="mt-8 scroll-mt-20 space-y-3 border-t border-gray-200 pt-4"

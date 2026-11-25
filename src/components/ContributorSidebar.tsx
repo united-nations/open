@@ -1,4 +1,6 @@
 "use client";
+import { SHOW_POOLED_FUNDS } from "@/lib/featureFlags";
+import { PooledFundsProfileSection } from "@/components/PooledFundsProfileSection";
 import { revenueCoverage } from "@/lib/revenueCoverage";
 import { useSidebarSectionScroll } from "@/hooks/useSidebarSectionScroll";
 import { useYearResource } from "@/hooks/useYearResource";
@@ -489,6 +491,13 @@ export function ContributorSidebar({
             </>
           )}
           {assessmentContent}
+          {SHOW_POOLED_FUNDS && revenueName && (
+            <PooledFundsProfileSection
+              kind="contributor"
+              name={revenueName}
+              year={selectedYear}
+            />
+          )}
         </div>
       </FinancialDetailPanel>
     </DetailDrawer>

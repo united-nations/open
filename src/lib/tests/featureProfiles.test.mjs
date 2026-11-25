@@ -6,6 +6,9 @@ import profiles from "../../../config/features.json" with { type: "json" };
 test("full enables all flags; preview keeps UNINFO disabled", () => {
   const keys = Object.keys(profiles.public).sort();
   assert.equal(profiles.preview.uninfo, false);
+  assert.equal(profiles.public.pooledFunds, false);
+  assert.equal(profiles.preview.pooledFunds, true);
+  assert.equal(profiles.full.pooledFunds, true);
   for (const variant of ["public", "preview", "full"]) {
     assert.deepEqual(Object.keys(profiles[variant]).sort(), keys);
     assert.ok(
@@ -31,6 +34,7 @@ test("frontend resolves each build profile and its route visibility", () => {
       const { isRouteEnabled, visibleSecretariatNav, visibleSystemNav } = await moduleAt('src/lib/navigation.ts');
       console.log(JSON.stringify({ variant: SITE_VARIANT, flags: FEATURES,
         nav: visibleSecretariatNav(), systemNav: visibleSystemNav(),
+        pooledFunds: isRouteEnabled('/system/pooled-funds/'),
         peaceOperations: isRouteEnabled('/secretariat/peacekeeping-budget/peace-operations/') }));
     `,
         ],
@@ -41,6 +45,11 @@ test("frontend resolves each build profile and its route visibility", () => {
       ),
     );
     assert.equal(actual.variant, variant);
+    assert.equal(
+      actual.systemNav.some((item) => item.href === "/system/pooled-funds"),
+      variant !== "public",
+    );
+    assert.equal(actual.pooledFunds, variant !== "public");
     assert.deepEqual(actual.flags, profiles[variant]);
     if (variant === "public") {
       assert.deepEqual(actual.nav, []);

@@ -1,0 +1,242 @@
+[
+  {
+    "kind": "contributors",
+    "year": 2016,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllContributions/,donor_group_description,CONTRIBUTOR_PARTNER_ID,COUNTRY_CODE,CONTRIBUTOR_TYPE,FUND,PARENT_fund_code,DEPOSIT,COMMITMENT,donor_refund,/fromMonth:1,fromYear:2016,toMonth:12,toYear:2016,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:04.627575+00:00",
+    "sha256": "b58a9d7acfcd2fb92288fbfb3400fd0979f6dcbcc02bcfb2d3e2bb16838f993d",
+    "rows": 282
+  },
+  {
+    "kind": "funds",
+    "year": 2016,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllFunds/,FUND,PARENT_fund_code,COMMITMENT,DEPOSIT,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2016,toMonth:12,toYear:2016,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:04.862342+00:00",
+    "sha256": "5a9b8198096d0bc6037be061ee56fc7319aa921fbd0ef68e0351292f62ea3498",
+    "rows": 125
+  },
+  {
+    "kind": "organizations",
+    "year": 2016,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllProjects/,FUND,PARENT_fund_code,FUND_CATEGORY,TYPOLOGY,geo_description,implementing_agent_group_description,ORGANIZATION,agency_code,Country,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2016,toMonth:12,toYear:2016,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:07.137222+00:00",
+    "sha256": "16eac447d5ce893ce9578094450823af35c6eff7f88048937e8bb9fd8d9b61db",
+    "rows": 1129
+  },
+  {
+    "kind": "contributors",
+    "year": 2017,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllContributions/,donor_group_description,CONTRIBUTOR_PARTNER_ID,COUNTRY_CODE,CONTRIBUTOR_TYPE,FUND,PARENT_fund_code,DEPOSIT,COMMITMENT,donor_refund,/fromMonth:1,fromYear:2017,toMonth:12,toYear:2017,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:06.633636+00:00",
+    "sha256": "3694dcba172d40ef1c66235a92399137202d1e79c1bc179cb714f492d88a49f9",
+    "rows": 302
+  },
+  {
+    "kind": "funds",
+    "year": 2017,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllFunds/,FUND,PARENT_fund_code,COMMITMENT,DEPOSIT,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2017,toMonth:12,toYear:2017,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:06.019982+00:00",
+    "sha256": "d95947a83bc20599e996d93a6db80c748cb5583b5e576cb65ae735f5bacbbe97",
+    "rows": 135
+  },
+  {
+    "kind": "organizations",
+    "year": 2017,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllProjects/,FUND,PARENT_fund_code,FUND_CATEGORY,TYPOLOGY,geo_description,implementing_agent_group_description,ORGANIZATION,agency_code,Country,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2017,toMonth:12,toYear:2017,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:10.481177+00:00",
+    "sha256": "e8a1d807ec344cd4e08faa150dccb40186315dc6e0c282f597a9a08ab828ff6d",
+    "rows": 1164
+  },
+  {
+    "kind": "contributors",
+    "year": 2018,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllContributions/,donor_group_description,CONTRIBUTOR_PARTNER_ID,COUNTRY_CODE,CONTRIBUTOR_TYPE,FUND,PARENT_fund_code,DEPOSIT,COMMITMENT,donor_refund,/fromMonth:1,fromYear:2018,toMonth:12,toYear:2018,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:09.770224+00:00",
+    "sha256": "0a5179a8720ff4b9c4ee0f9d6000ccb2e0678b26d40d00fe85d7218e6367f119",
+    "rows": 314
+  },
+  {
+    "kind": "funds",
+    "year": 2018,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllFunds/,FUND,PARENT_fund_code,COMMITMENT,DEPOSIT,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2018,toMonth:12,toYear:2018,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:09.292974+00:00",
+    "sha256": "00bdd1da6c639dce0a0e7b011e3ec0e082767aab9195730b9d889353dbadd52a",
+    "rows": 136
+  },
+  {
+    "kind": "organizations",
+    "year": 2018,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllProjects/,FUND,PARENT_fund_code,FUND_CATEGORY,TYPOLOGY,geo_description,implementing_agent_group_description,ORGANIZATION,agency_code,Country,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2018,toMonth:12,toYear:2018,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:12.909017+00:00",
+    "sha256": "6671296c32c351af6e0833581751c4e7fd17d40a72ff7cec5b941bc52cb4041d",
+    "rows": 1143
+  },
+  {
+    "kind": "contributors",
+    "year": 2019,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllContributions/,donor_group_description,CONTRIBUTOR_PARTNER_ID,COUNTRY_CODE,CONTRIBUTOR_TYPE,FUND,PARENT_fund_code,DEPOSIT,COMMITMENT,donor_refund,/fromMonth:1,fromYear:2019,toMonth:12,toYear:2019,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:12.638741+00:00",
+    "sha256": "f18e2f284e40fd72f49e9371772ea0cfeecba9f731e51ab66a0652f578668e36",
+    "rows": 349
+  },
+  {
+    "kind": "funds",
+    "year": 2019,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllFunds/,FUND,PARENT_fund_code,COMMITMENT,DEPOSIT,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2019,toMonth:12,toYear:2019,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:12.402653+00:00",
+    "sha256": "8bee5f7d48f63d40a5c34228fbfd163c15be24763c994def09a1652388244428",
+    "rows": 144
+  },
+  {
+    "kind": "organizations",
+    "year": 2019,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllProjects/,FUND,PARENT_fund_code,FUND_CATEGORY,TYPOLOGY,geo_description,implementing_agent_group_description,ORGANIZATION,agency_code,Country,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2019,toMonth:12,toYear:2019,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:17.345388+00:00",
+    "sha256": "04697305cfeb1d5254e4efc31d28a5f0bfb3b6c3a073f223c55e1cb6946fabed",
+    "rows": 1267
+  },
+  {
+    "kind": "contributors",
+    "year": 2020,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllContributions/,donor_group_description,CONTRIBUTOR_PARTNER_ID,COUNTRY_CODE,CONTRIBUTOR_TYPE,FUND,PARENT_fund_code,DEPOSIT,COMMITMENT,donor_refund,/fromMonth:1,fromYear:2020,toMonth:12,toYear:2020,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:15.060233+00:00",
+    "sha256": "e5deb14311c9175852c9141635d4ca85a543ea5f30ed4682d7c74205c07122c4",
+    "rows": 362
+  },
+  {
+    "kind": "funds",
+    "year": 2020,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllFunds/,FUND,PARENT_fund_code,COMMITMENT,DEPOSIT,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2020,toMonth:12,toYear:2020,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:15.835539+00:00",
+    "sha256": "e5905c370d3a94f4175863b88cae2fabacd8a065320882cf9c0c0550019e0bfb",
+    "rows": 140
+  },
+  {
+    "kind": "organizations",
+    "year": 2020,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllProjects/,FUND,PARENT_fund_code,FUND_CATEGORY,TYPOLOGY,geo_description,implementing_agent_group_description,ORGANIZATION,agency_code,Country,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2020,toMonth:12,toYear:2020,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:19.236457+00:00",
+    "sha256": "9d1d96d97c86c96ee7b5c5301d443abe826cde8dab787223932b479873747201",
+    "rows": 1817
+  },
+  {
+    "kind": "contributors",
+    "year": 2021,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllContributions/,donor_group_description,CONTRIBUTOR_PARTNER_ID,COUNTRY_CODE,CONTRIBUTOR_TYPE,FUND,PARENT_fund_code,DEPOSIT,COMMITMENT,donor_refund,/fromMonth:1,fromYear:2021,toMonth:12,toYear:2021,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:18.122093+00:00",
+    "sha256": "76a0fdf6741e33c80b35ad56b0e42aed20e70e7136527accd0e50ffc0605df06",
+    "rows": 359
+  },
+  {
+    "kind": "funds",
+    "year": 2021,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllFunds/,FUND,PARENT_fund_code,COMMITMENT,DEPOSIT,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2021,toMonth:12,toYear:2021,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:19.076636+00:00",
+    "sha256": "136230a585c899f5c3349f47f1b9628afc39e9a787f9a8215345d9eae5ef6413",
+    "rows": 156
+  },
+  {
+    "kind": "organizations",
+    "year": 2021,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllProjects/,FUND,PARENT_fund_code,FUND_CATEGORY,TYPOLOGY,geo_description,implementing_agent_group_description,ORGANIZATION,agency_code,Country,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2021,toMonth:12,toYear:2021,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:23.582855+00:00",
+    "sha256": "4b04fdbf96b3476ac731bf6e6842bc373c753b0ce4b8485abff75f7ea89a1763",
+    "rows": 2072
+  },
+  {
+    "kind": "contributors",
+    "year": 2022,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllContributions/,donor_group_description,CONTRIBUTOR_PARTNER_ID,COUNTRY_CODE,CONTRIBUTOR_TYPE,FUND,PARENT_fund_code,DEPOSIT,COMMITMENT,donor_refund,/fromMonth:1,fromYear:2022,toMonth:12,toYear:2022,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:22.347308+00:00",
+    "sha256": "37ae6df8e6eb3c40a41ddc21a6daa2d596d0982f81fbaa1f90fd27464f59590d",
+    "rows": 334
+  },
+  {
+    "kind": "funds",
+    "year": 2022,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllFunds/,FUND,PARENT_fund_code,COMMITMENT,DEPOSIT,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2022,toMonth:12,toYear:2022,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:22.292185+00:00",
+    "sha256": "2c325c1060b98138272f912c690baa9a008113a6d1060d8ef1dd1f5ec3da27da",
+    "rows": 151
+  },
+  {
+    "kind": "organizations",
+    "year": 2022,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllProjects/,FUND,PARENT_fund_code,FUND_CATEGORY,TYPOLOGY,geo_description,implementing_agent_group_description,ORGANIZATION,agency_code,Country,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2022,toMonth:12,toYear:2022,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:25.461615+00:00",
+    "sha256": "fa1d903ce82de5907ba9b22017001c8db69836110c2307cfcc31d0d25e9ab5f0",
+    "rows": 2207
+  },
+  {
+    "kind": "contributors",
+    "year": 2023,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllContributions/,donor_group_description,CONTRIBUTOR_PARTNER_ID,COUNTRY_CODE,CONTRIBUTOR_TYPE,FUND,PARENT_fund_code,DEPOSIT,COMMITMENT,donor_refund,/fromMonth:1,fromYear:2023,toMonth:12,toYear:2023,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:24.182080+00:00",
+    "sha256": "e6607758aa6843e23ab15dbebb0faf3d7fc9ac605909a971dac7abc8cd6c6eeb",
+    "rows": 344
+  },
+  {
+    "kind": "funds",
+    "year": 2023,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllFunds/,FUND,PARENT_fund_code,COMMITMENT,DEPOSIT,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2023,toMonth:12,toYear:2023,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:25.936239+00:00",
+    "sha256": "7dc71941d33d817c4b56e5ee356f591d47e184d3cd572b1e1d98a512e79194f2",
+    "rows": 153
+  },
+  {
+    "kind": "organizations",
+    "year": 2023,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllProjects/,FUND,PARENT_fund_code,FUND_CATEGORY,TYPOLOGY,geo_description,implementing_agent_group_description,ORGANIZATION,agency_code,Country,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2023,toMonth:12,toYear:2023,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:34.537615+00:00",
+    "sha256": "19536dfd4b2ae5f08259e803bd01edec9c104cbfdbd6d4be88f68a1701a34370",
+    "rows": 2010
+  },
+  {
+    "kind": "contributors",
+    "year": 2024,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllContributions/,donor_group_description,CONTRIBUTOR_PARTNER_ID,COUNTRY_CODE,CONTRIBUTOR_TYPE,FUND,PARENT_fund_code,DEPOSIT,COMMITMENT,donor_refund,/fromMonth:1,fromYear:2024,toMonth:12,toYear:2024,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:29.425170+00:00",
+    "sha256": "5477c5e474db1e20bb83ba3b4f809472e017a4a506a3f3def08767f58f9da567",
+    "rows": 341
+  },
+  {
+    "kind": "funds",
+    "year": 2024,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllFunds/,FUND,PARENT_fund_code,COMMITMENT,DEPOSIT,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2024,toMonth:12,toYear:2024,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:30.041422+00:00",
+    "sha256": "5e765110954e4d521dc2b3c58fcb1a96aded4a52414c902991835c5e281e2620",
+    "rows": 164
+  },
+  {
+    "kind": "organizations",
+    "year": 2024,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllProjects/,FUND,PARENT_fund_code,FUND_CATEGORY,TYPOLOGY,geo_description,implementing_agent_group_description,ORGANIZATION,agency_code,Country,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2024,toMonth:12,toYear:2024,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:35.658324+00:00",
+    "sha256": "39ee3aeac1d2b1619bc0988fb97cfc919a05c5266068b4965813f927bea0cb90",
+    "rows": 2147
+  },
+  {
+    "kind": "contributors",
+    "year": 2025,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllContributions/,donor_group_description,CONTRIBUTOR_PARTNER_ID,COUNTRY_CODE,CONTRIBUTOR_TYPE,FUND,PARENT_fund_code,DEPOSIT,COMMITMENT,donor_refund,/fromMonth:1,fromYear:2025,toMonth:12,toYear:2025,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:30.280183+00:00",
+    "sha256": "27942d3c21fc3c49b26008de9273763d810e3f99b7d64527c416c8312abc9818",
+    "rows": 316
+  },
+  {
+    "kind": "funds",
+    "year": 2025,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllFunds/,FUND,PARENT_fund_code,COMMITMENT,DEPOSIT,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2025,toMonth:12,toYear:2025,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:34.128818+00:00",
+    "sha256": "da25b974760a235dbb561b4f8cb8ff3debe09917605156ebaf9b449754ce091a",
+    "rows": 178
+  },
+  {
+    "kind": "organizations",
+    "year": 2025,
+    "url": "https://mptf.undp.org/mptf_rest_api/getAnalyzeAllProjects/,FUND,PARENT_fund_code,FUND_CATEGORY,TYPOLOGY,geo_description,implementing_agent_group_description,ORGANIZATION,agency_code,Country,BUDGET,NET_FUNDED,EXPENDITURE,/fromMonth:1,fromYear:2025,toMonth:12,toYear:2025,pagination:a,",
+    "retrievedAt": "2026-11-24T02:41:30.652141+00:00",
+    "sha256": "2aff8be6d0ff459ea47ff1b4196fbbfe27e201c1b0ea6ed37d27cf0cd2f0a124",
+    "rows": 2234
+  }
+]

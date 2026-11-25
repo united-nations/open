@@ -22,6 +22,7 @@ const portalChecks = [
   "locations-grouping",
   "locations-bubbles",
   "system-functions",
+  "pooled-funds",
   "function-geography",
   "routes-and-financials",
   "uninfo-funding",

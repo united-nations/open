@@ -50,6 +50,7 @@ import type {
   RegularBudgetContributorsData,
   PeacekeepingContributorsData,
   TrustFundContributorsData,
+  PooledFundsIndex,
 } from "@/types";
 
 type Tile = {
@@ -125,6 +126,7 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
     regularContributors,
     peacekeepingContributors,
     trustFundContributors,
+    pooledFunds,
   ] = await Promise.all([
     readData<Entity[]>("entities.json"),
     readData<{ entity: string; amount: number }[]>(
@@ -167,6 +169,9 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
       ? readData<TrustFundContributorsData>(
           `trust-fund-contributors-${year("trustFundContributors")}.json`,
         )
+      : null,
+    FEATURES.pooledFunds
+      ? readData<PooledFundsIndex>("pooled-funds.json")
       : null,
   ]);
   const entityGroups = new Map(
@@ -289,6 +294,17 @@ const loadPreviews = cache(async (): Promise<Record<string, Preview>> => {
     },
     "/system/goals": {
       goals: true,
+    },
+    "/system/pooled-funds": {
+      trend: {
+        years: (pooledFunds?.annual ?? []).map((annual) => ({
+          year: annual.year,
+          values: [annual.totals.deposits ?? 0],
+        })),
+        series: [
+          { label: "Deposits excluding fund transfers", color: "#009edb" },
+        ],
+      },
     },
     "/secretariat": {
       bands: "categories",

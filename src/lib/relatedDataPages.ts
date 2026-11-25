@@ -13,6 +13,7 @@ type RelatedGroup = {
 };
 
 const organizations = "/system/organizations";
+const pooledFunds = "/system/pooled-funds";
 const contributors = SYSTEM_CONTRIBUTORS_PATH;
 const assessments = SYSTEM_ASSESSMENTS_PATH;
 const overview = "/secretariat";
@@ -25,6 +26,7 @@ const contributorPages = financingPages.map((href) => `${href}/contributors`);
 
 const relatedPages: Record<string, readonly RelatedGroup[]> = {
   [organizations]: [
+    { heading: "Joint funding", links: [pooledFunds] },
     { heading: "Amounts assessed and paid", links: [assessments] },
     {
       heading: "Secretariat departments, offices and missions",
@@ -32,6 +34,7 @@ const relatedPages: Record<string, readonly RelatedGroup[]> = {
     },
   ],
   [contributors]: [
+    { heading: "Joint funding", links: [pooledFunds] },
     { heading: "Amounts assessed and paid", links: [assessments] },
     {
       heading: "Who funds the Secretariat",
@@ -47,6 +50,9 @@ const relatedPages: Record<string, readonly RelatedGroup[]> = {
       heading: "UN Secretariat assessments and payment status",
       links: [`${programme}/contributors`],
     },
+  ],
+  [pooledFunds]: [
+    { heading: "The wider UN System", links: [organizations, contributors] },
   ],
   [overview]: [
     {

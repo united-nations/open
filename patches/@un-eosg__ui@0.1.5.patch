@@ -1344,3 +1344,102 @@ diff --git a/lib/format-budget.ts b/lib/format-budget.ts
 +  if (Math.abs(rate) < 0.001) return rate < 0 ? "−(<0.001%)" : "<0.001%";
 +  return (rate < 0 ? "−" : "") + rateNumber.format(Math.abs(rate)) + "%";
  }
+diff --git a/components/hierarchical-single-select.tsx b/components/hierarchical-single-select.tsx
+--- a/components/hierarchical-single-select.tsx
++++ b/components/hierarchical-single-select.tsx
+@@ -189,28 +189,17 @@
+                     {/* Group header (selectable for aggregate) */}
+                     <div
+                       className={cn(
+-                        "flex w-full items-center gap-2 px-3 py-2 transition-colors cursor-pointer",
++                        "flex w-full items-center gap-2 px-3 transition-colors",
+                         isGroupSelected ? "bg-secondary" : "hover:bg-muted",
+                       )}
+-                      role={hasChildren ? undefined : "button"}
+-                      tabIndex={hasChildren ? undefined : 0}
+-                      aria-pressed={hasChildren ? undefined : isGroupSelected}
+-                      onKeyDown={(event) => {
+-                        if (
+-                          !hasChildren &&
+-                          (event.key === "Enter" || event.key === " ")
+-                        ) {
+-                          event.preventDefault();
+-                          selectItem(group.id);
+-                        }
+-                      }}
+-                      onClick={() => selectItem(group.id)}
+                     >
+                       {/* Flat choices have no empty focusable expand button. */}
+                       {hasChildren && (
+                         <button
+                           type="button"
+                           className="flex-shrink-0 w-4"
++                          aria-label={`${isExpanded ? "Collapse" : "Expand"} ${group.label}`}
++                          aria-expanded={isExpanded}
+                           onClick={(e) => {
+                             e.stopPropagation();
+                             if (hasChildren) toggleExpanded(group.id, e);
+@@ -227,32 +216,39 @@
+                         </button>
+                       )}
+
+-                      {/* Color indicator */}
+-                      {group.color && (
++                      <button
++                        type="button"
++                        className="flex min-w-0 flex-1 items-center gap-2 py-2 text-left"
++                        aria-pressed={isGroupSelected}
++                        onClick={() => selectItem(group.id)}
++                      >
++                        {/* Color indicator */}
++                        {group.color && (
++                          <span
++                            className="h-3 w-3 flex-shrink-0 rounded-full"
++                            style={{ backgroundColor: group.color }}
++                          />
++                        )}
++
++                        {/* Label */}
+                         <span
+-                          className="h-3 w-3 flex-shrink-0 rounded-full"
+-                          style={{ backgroundColor: group.color }}
+-                        />
+-                      )}
+-
+-                      {/* Label */}
+-                      <span
+-                        className={cn(
+-                          "flex-1 min-w-0 text-sm truncate",
+-                          isGroupSelected
+-                            ? "font-medium text-foreground"
+-                            : "text-foreground",
++                          className={cn(
++                            "flex-1 min-w-0 text-sm truncate",
++                            isGroupSelected
++                              ? "font-medium text-foreground"
++                              : "text-foreground",
++                          )}
++                        >
++                          {group.label}
++                        </span>
++
++                        {/* Count */}
++                        {hasChildren && (
++                          <span className="flex-shrink-0 text-xs text-gray-400">
++                            ({group.children.length})
++                          </span>
+                         )}
+-                      >
+-                        {group.label}
+-                      </span>
+-
+-                      {/* Count */}
+-                      {hasChildren && (
+-                        <span className="flex-shrink-0 text-xs text-gray-400">
+-                          ({group.children.length})
+-                        </span>
+-                      )}
++                      </button>
+                     </div>
+
+                     {/* Children (expandable) */}

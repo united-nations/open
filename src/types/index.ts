@@ -1,3 +1,75 @@
+export type PooledFundMetric = "deposits" | "netTransfers" | "expenditure";
+export interface PooledFundAmounts {
+  deposits: number | null;
+  grossDeposits: number | null;
+  routedDeposits: number | null;
+  commitments: number | null;
+  refunds: number | null;
+  netTransfers: number | null;
+  expenditure: number | null;
+  budget: number | null;
+  category?: string | null;
+  typology?: string | null;
+  scope?: string | null;
+}
+export interface PooledFundIdentity {
+  id: string;
+  name: string;
+  url?: string;
+  category: string;
+  typology: string;
+  scope: string;
+  description?: string;
+  descriptionSource?: string;
+  descriptionRetrievedAt?: string;
+}
+export interface PooledFundContributor {
+  id: string | null;
+  name: string;
+  portalName: string | null;
+  sourceType: string | null;
+  deposit: number | null;
+  refund: number | null;
+  commitment: number | null;
+}
+export interface PooledFundOrganization {
+  id: string | null;
+  groupId: string | null;
+  name: string;
+  portalName: string | null;
+  netTransfers: number | null;
+  expenditure: number | null;
+  budget: number | null;
+}
+export interface PooledFundCountry {
+  id: string | null;
+  name: string;
+  netTransfers: number | null;
+  expenditure: number | null;
+}
+export interface PooledFundDetail extends PooledFundAmounts {
+  contributors: PooledFundContributor[];
+  organizations: PooledFundOrganization[];
+  countries: PooledFundCountry[];
+}
+export interface PooledFundYearSummary {
+  year: number;
+  snapshotAt: string;
+  totals: PooledFundAmounts;
+  funds: Record<string, PooledFundAmounts>;
+}
+export interface PooledFundYear {
+  year: number;
+  snapshotAt: string;
+  totals: PooledFundAmounts;
+  funds: Record<string, PooledFundDetail>;
+}
+export interface PooledFundsIndex {
+  meta: { years: number[]; snapshotAt: string; source: string };
+  funds: Record<string, PooledFundIdentity>;
+  annual: PooledFundYearSummary[];
+}
+
 export interface Entity {
   entity: string;
   entity_long: string;

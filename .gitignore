@@ -276,3 +276,6 @@ data/trust-fund-schedules/crosswalk/trust-fund-entity-crosswalk.json
 
 # Per-year browser payloads derived from the canonical system flow export.
 public/data/system-flow-spending/
+
+# MPTF full webpages are an optional cache; canonical profile metadata is tracked.
+/data/mptf/fund-pages/

@@ -16,12 +16,14 @@ export function FinancialFlowColumnSelect({
   options,
   onChange,
   compact = false,
+  contentClassName,
 }: {
   label: string;
   value: string;
   options: readonly { value: string; label: string; disabled?: boolean }[];
   onChange: (value: string) => void;
   compact?: boolean;
+  contentClassName?: string;
 }) {
   const isEmpty = value === "none";
   return (
@@ -57,7 +59,7 @@ export function FinancialFlowColumnSelect({
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="start"
-        className="border-gray-300 bg-white text-black"
+        className={cn("border-gray-300 bg-white text-black", contentClassName)}
       >
         <DropdownMenuRadioGroup value={value} onValueChange={onChange}>
           {options.map((option) => (

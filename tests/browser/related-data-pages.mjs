@@ -12,6 +12,7 @@ const enabled = (route) =>
 const organizations = "/system/organizations";
 const contributors = "/system/contributors";
 const assessments = "/system/contributors/assessments";
+const pooledFunds = "/system/pooled-funds";
 const overview = "/secretariat";
 const programme = "/secretariat/programme-budget";
 const peacekeeping = "/secretariat/peacekeeping-budget";
@@ -20,8 +21,8 @@ const operations = `${peacekeeping}/peace-operations`;
 const budgets = [programme, peacekeeping, extrabudgetary];
 const contributorsFor = budgets.map((href) => `${href}/contributors`);
 const expected = {
-  [organizations]: [assessments, overview],
-  [contributors]: [assessments, ...contributorsFor],
+  [organizations]: [pooledFunds, assessments, overview],
+  [contributors]: [pooledFunds, assessments, ...contributorsFor],
   [assessments]: [organizations, contributors, `${programme}/contributors`],
   [overview]: [...budgets, organizations],
   [operations]: [peacekeeping, programme, overview],
