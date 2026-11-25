@@ -23,6 +23,7 @@ import { formatBudget } from "@/lib/contributors";
 import {
   ASSESSMENT_ORGANIZATIONS_WITHOUT_ROWS,
   assessmentMeasures,
+  assessmentExcludedOrganizations,
   assessmentOrganizationNames,
   CEB_ASSESSMENT_COLORS,
   formatAssessmentAmount,
@@ -261,7 +262,9 @@ export function CebSystemAssessmentTrends() {
           {year} covers {count} organizations.
           {absent.length > 0 && (
             <> Absent from that year’s data: {absent.join(", ")}.</>
-          )}
+          )}{" "}
+          Excluded from this view because payment data is unavailable:{" "}
+          {assessmentExcludedOrganizations(year).join(", ")}.
         </div>
       ))}
     </div>

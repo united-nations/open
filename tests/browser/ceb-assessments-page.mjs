@@ -154,6 +154,12 @@ try {
     await chart
       .getByText(/This view covers 28 organizations in 2025/)
       .waitFor();
+    await chart
+      .getByText(
+        "Excluded from this view because payment data is unavailable: IRMCT.",
+        { exact: true },
+      )
+      .waitFor();
     const completeTileDescription = await china.evaluate(
       (tile) =>
         document.getElementById(tile.getAttribute("aria-describedby"))
@@ -170,6 +176,12 @@ try {
     await years.selectOption("2024");
     await chart
       .getByText(/This view covers 28 organizations in 2024/)
+      .waitFor();
+    await chart
+      .getByText(
+        "Excluded from this view because payment data is unavailable: ICAO, IRMCT.",
+        { exact: true },
+      )
       .waitFor();
     assert.equal(
       await chart.getByText("Payment status unknown", { exact: true }).count(),
@@ -252,10 +264,14 @@ try {
       exact: true,
     });
     await trend
-      .getByText(/2024 covers 28 organizations.*PAHO, UN Women, UNITAR/)
+      .getByText(
+        /2024 covers 28 organizations.*PAHO, UN Women, UNITAR.*Excluded.*ICAO, IRMCT/,
+      )
       .waitFor();
     await trend
-      .getByText(/2025 covers 28 organizations.*ITC, UNITAID, UNITAR, UNOPS/)
+      .getByText(
+        /2025 covers 28 organizations.*ITC, UNITAID, UNITAR, UNOPS.*Excluded.*IRMCT/,
+      )
       .waitFor();
     const trendBox = await trend.boundingBox(),
       balanceBox = await balances.boundingBox();

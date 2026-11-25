@@ -10,6 +10,7 @@ const portalChecks = [
   "page-headings",
   "treemap-search-labels",
   "list-groups",
+  "list-bars",
   "ceb-methodology",
   "related-data-pages",
   "page-notes",

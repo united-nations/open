@@ -11,7 +11,7 @@ import {
 } from "@/lib/cebAssessmentOutstanding";
 import { CEB_ASSESSMENT_OUTSTANDING_HISTORY_YEAR_RANGE } from "@/lib/useYearRanges";
 
-const { years, min, max } = CEB_ASSESSMENT_OUTSTANDING_HISTORY_YEAR_RANGE;
+const { years } = CEB_ASSESSMENT_OUTSTANDING_HISTORY_YEAR_RANGE;
 
 export function CebAssessmentOutstandingTrendsChart() {
   const [selected, setSelected] = useState("UN Secretariat");
@@ -82,9 +82,7 @@ export function CebAssessmentOutstandingTrendsChart() {
             </p>
           )}
           <p className="text-xs leading-relaxed text-gray-600">
-            CEB-reported balances, {min}–{max}, in nominal US dollars. Balances
-            include current and earlier assessment years. Missing values remain
-            gaps; separate reported balances remain separate points.
+            Balances include current and earlier assessment years.
           </p>
         </>
       )}

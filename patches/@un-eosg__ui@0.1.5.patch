@@ -575,9 +575,10 @@ index 6f01a4697b06d32ac601f0c8a5d27fae05930549..d54d332b121f114dce5f8b3292e982d6
            variant === "inline" &&
 diff --git a/components/ranked-detail-list.tsx b/components/ranked-detail-list.tsx
 new file mode 100644
+index 0000000000000000000000000000000000000000..3648a62a81ee490a25f9c78c5f413000334b52e0
 --- /dev/null
 +++ b/components/ranked-detail-list.tsx
-@@ -0,0 +1,343 @@
+@@ -0,0 +1,349 @@
 +"use client";
 +
 +import { useId, useRef, useState, type ReactNode } from "react";
@@ -638,6 +639,8 @@ new file mode 100644
 +}
 +
 +const pageSize = 20;
++// Share intrinsic label/value widths through nested groups; bars take the rest.
++const columnLayout = "sm:col-span-full sm:grid sm:grid-cols-subgrid";
 +const textAction =
 +  "inline-flex min-h-11 items-center text-xs text-muted-foreground underline underline-offset-2 hover:text-foreground focus-visible:outline-2 focus-visible:outline-un-blue";
 +
@@ -716,7 +719,7 @@ new file mode 100644
 +        id={id}
 +        role="group"
 +        aria-label={label}
-+        className="space-y-6"
++        className="space-y-6 sm:grid sm:grid-cols-[fit-content(50%)_minmax(0,1fr)_max-content] sm:gap-x-3 sm:gap-y-6 sm:space-y-0"
 +      >
 +        {ranked.map((group, groupIndex) => {
 +          if (remaining <= 0) return null;
@@ -726,6 +729,7 @@ new file mode 100644
 +          return (
 +            <div
 +              key={group.key}
++              className={columnLayout}
 +              role={group.label ? "group" : undefined}
 +              aria-label={group.label}
 +            >
@@ -738,7 +742,7 @@ new file mode 100644
 +                  onClick={() => toggleGroup(groupKey)}
 +                  className={cn(
 +                    typography.subTitle,
-+                    "flex min-h-11 w-full cursor-pointer items-center justify-between gap-3 border-s-4 px-3 py-3 text-start hover:brightness-95 focus-visible:outline-2 focus-visible:outline-un-blue",
++                    "sm:col-span-full flex min-h-11 w-full cursor-pointer items-center justify-between gap-3 border-s-4 px-3 py-3 text-start hover:brightness-95 focus-visible:outline-2 focus-visible:outline-un-blue",
 +                  )}
 +                  style={{
 +                    borderInlineStartColor:
@@ -762,6 +766,7 @@ new file mode 100644
 +                id={groupContentId}
 +                hidden={groupCollapsed}
 +                className={cn(
++                  !groupCollapsed && columnLayout,
 +                  group.label && "ms-3 border-s ps-1 sm:ms-4 sm:ps-2",
 +                )}
 +                style={
@@ -790,7 +795,7 @@ new file mode 100644
 +                        key={subgroup.key}
 +                        role={subgroup.label ? "group" : undefined}
 +                        aria-label={subgroup.label}
-+                        className={cn(subgroup.label && "pt-3")}
++                        className={cn(columnLayout, subgroup.label && "pt-3")}
 +                      >
 +                        {subgroup.label && (
 +                          <button
@@ -801,7 +806,7 @@ new file mode 100644
 +                            onClick={() => toggleGroup(subgroupKey)}
 +                            className={cn(
 +                              typography.body,
-+                              "flex min-h-11 w-full cursor-pointer items-center justify-between gap-3 border-b bg-muted/50 px-3 py-2 text-start font-medium hover:bg-muted focus-visible:outline-2 focus-visible:outline-un-blue",
++                              "sm:col-span-full flex min-h-11 w-full cursor-pointer items-center justify-between gap-3 border-b bg-muted/50 px-3 py-2 text-start font-medium hover:bg-muted focus-visible:outline-2 focus-visible:outline-un-blue",
 +                            )}
 +                          >
 +                            <span className="min-w-0 break-words">
@@ -823,6 +828,7 @@ new file mode 100644
 +                          aria-label={subgroup.label ?? group.label ?? label}
 +                          className={cn(
 +                            "divide-y border-b",
++                            !subgroupCollapsed && columnLayout,
 +                            subgroup.label &&
 +                              "ms-3 border-s ps-1 sm:ms-4 sm:ps-2",
 +                          )}
@@ -833,14 +839,15 @@ new file mode 100644
 +                              (Math.max(0, item.amount) / max) * 100;
 +                            const color = item.color ?? "var(--color-un-blue)";
 +                            return (
-+                              <li key={item.id}>
++                              <li key={item.id} className={columnLayout}>
 +                                <Element
 +                                  data-ranked-list-item=""
 +                                  type={item.onOpen ? "button" : undefined}
 +                                  tabIndex={item.onOpen ? undefined : -1}
 +                                  onClick={item.onOpen}
 +                                  className={cn(
-+                                    "flex min-h-11 w-full flex-wrap items-start gap-x-2 gap-y-1.5 px-3 py-2 text-start text-sm focus-visible:outline-2 focus-visible:outline-un-blue sm:flex-nowrap sm:items-center sm:gap-3",
++                                    "flex min-h-11 w-full flex-wrap items-start gap-x-2 gap-y-1.5 px-3 py-2 text-start text-sm focus-visible:outline-2 focus-visible:outline-un-blue sm:items-center sm:gap-3",
++                                    columnLayout,
 +                                    item.onOpen &&
 +                                      "cursor-pointer hover:bg-muted",
 +                                  )}
@@ -855,14 +862,14 @@ new file mode 100644
 +                                  </span>
 +                                  <span
 +                                    aria-hidden="true"
-+                                    className="order-last w-full shrink-0 sm:order-none sm:w-1/5 sm:max-w-56"
++                                    className="order-last w-full min-w-0 sm:order-none sm:w-auto"
 +                                  >
 +                                    <FinancialPanelBar
 +                                      percent={percent}
 +                                      color={color}
 +                                    />
 +                                  </span>
-+                                  <span className="w-1/5 max-w-28 min-w-14 shrink-0 text-end font-medium break-words tabular-nums">
++                                  <span className="w-1/5 max-w-28 min-w-14 shrink-0 text-end font-medium break-words tabular-nums sm:w-auto sm:max-w-none">
 +                                    {item.value}
 +                                  </span>
 +                                </Element>

@@ -14,6 +14,7 @@ import { useYearResource } from "@/hooks/useYearResource";
 import {
   ASSESSMENT_ORGANIZATIONS_WITHOUT_ROWS,
   assessmentCoverageNotes,
+  assessmentExcludedOrganizations,
   assessmentOrganizationGroups,
   assessmentTotals,
   assessmentMeasures,
@@ -347,6 +348,12 @@ export function CebAssessmentsTreemap() {
               <p className="text-sm text-gray-600">
                 Absent from the {year} annual assessments and payments data
                 among organizations covered in 2020–2025: {absent.join(", ")}.
+              </p>
+            )}
+            {data && (
+              <p className="text-sm text-gray-600">
+                Excluded from this view because payment data is unavailable:{" "}
+                {assessmentExcludedOrganizations(year).join(", ")}.
               </p>
             )}
             {coverageNotes.map((note) => (

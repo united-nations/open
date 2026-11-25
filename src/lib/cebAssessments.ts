@@ -53,9 +53,13 @@ export function assessmentMeasures(year?: number) {
 
 const assessmentRequests = new Map<number, Promise<CebAssessmentsData>>();
 
+export function assessmentExcludedOrganizations(year: number): string[] {
+  return year === 2024 ? ["ICAO", "IRMCT"] : ["IRMCT"];
+}
+
 /** Exclude organization-years without reliable payment reporting. */
 export function includeAssessmentOrganization(entity: string, year: number) {
-  return entity !== "IRMCT" && !(entity === "ICAO" && year === 2024);
+  return !assessmentExcludedOrganizations(year).includes(entity);
 }
 
 /** Keep source downloads intact while applying the assessment display scope. */

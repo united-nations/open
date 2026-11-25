@@ -414,12 +414,6 @@ export default function AboutPage() {
           </SectionHeading>
           <div className="space-y-3 text-sm leading-relaxed text-gray-600">
             <p>
-              Figures are rounded for readability. Totals and percentages are
-              calculated from unrounded data, so displayed figures may not add
-              up exactly. Full precision is retained in the underlying data and
-              the linked source documents.
-            </p>
-            <p>
               Data on this website and in its downloads is not authoritative. As
               described in the methodology notes above, the portal compiles
               existing datasets and automatically extracts figures from source

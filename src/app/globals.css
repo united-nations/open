@@ -13,6 +13,10 @@
 @import "@un-eosg/ui/theme.css";
 /* Track shared component utilities through the stable package path in dev too. */
 @source "../../node_modules/@un-eosg/ui/components";
+/* pnpm can replace the shared package path while the dev CSS scanner is running.
+   Keep the shared list's column layout available across those package updates. */
+/* prettier-ignore */
+@source inline("sm:grid sm:col-span-full sm:grid-cols-subgrid sm:grid-cols-[fit-content(50%)_minmax(0,1fr)_max-content] sm:gap-x-3 sm:gap-y-6 sm:space-y-0 sm:w-auto sm:max-w-none");
 
 /**
  * Root-level CSS Variables (Application Theme Tokens)
