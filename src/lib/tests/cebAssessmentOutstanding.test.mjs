@@ -3,12 +3,33 @@ import { test } from "node:test";
 import { moduleAt } from "./moduleAt.mjs";
 
 const {
+  assessmentOutstandingForDisplay,
   annualAssessmentReferences,
   outstandingAssessmentPercent,
   outstandingRows,
   outstandingFootnotes,
   outstandingDate,
 } = await moduleAt("src/lib/cebAssessmentOutstanding.ts");
+
+test("outstanding balances use the same organization exclusions as annual assessments", () => {
+  const source = {
+    year: 2024,
+    organizations: [
+      { entity: "ICAO", outstanding: 100 },
+      { entity: "IRMCT", outstanding: 200 },
+      { entity: "UN Secretariat", outstanding: 300 },
+    ],
+  };
+  const original = structuredClone(source);
+  assert.deepEqual(assessmentOutstandingForDisplay(source).organizations, [
+    source.organizations[2],
+  ]);
+  assert.deepEqual(
+    assessmentOutstandingForDisplay({ ...source, year: 2025 }).organizations,
+    [source.organizations[0], source.organizations[2]],
+  );
+  assert.deepEqual(source, original);
+});
 
 test("annual assessment comparisons remain unavailable for incomplete, missing or zero denominators", () => {
   const annual = annualAssessmentReferences({

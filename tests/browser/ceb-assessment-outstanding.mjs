@@ -85,15 +85,24 @@ try {
   await page.waitForFunction(() => location.hash === "");
   assert.equal(await page.getByRole("dialog").count(), 0);
 
-  // A directory entry without any same-year financial observation remains invalid.
+  // Directory-only entries and excluded organizations cannot open assessment details.
+  for (const entity of ["ACABQ", "IRMCT", "ICAO"]) {
+    await page.goto(
+      `${portalUrl}/system/contributors/assessments/#entity=${entity}%402024`,
+      { waitUntil: "networkidle" },
+    );
+    await page.waitForFunction(() => location.hash === "");
+    assert.equal(await page.getByRole("dialog").count(), 0);
+  }
   await page.goto(
-    `${portalUrl}/system/contributors/assessments/#entity=ACABQ%402024`,
-    {
-      waitUntil: "networkidle",
-    },
+    `${portalUrl}/system/contributors/assessments/#entity=ICAO%402025`,
+    { waitUntil: "networkidle" },
   );
-  await page.waitForFunction(() => location.hash === "");
-  assert.equal(await page.getByRole("dialog").count(), 0);
+  await page
+    .getByRole("dialog")
+    .getByRole("region", { name: "Assessments and payments", exact: true })
+    .getByText("Paid in 2025 towards 2025", { exact: true })
+    .waitFor();
   // Organizations still offers earlier years of expenditure data.
   await page.goto(`${portalUrl}/system/organizations/#entity=UNICEF%402020`, {
     waitUntil: "networkidle",

@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import fs from "node:fs";
 import { test } from "node:test";
 import { moduleAt } from "./moduleAt.mjs";
 
@@ -12,7 +13,7 @@ const {
   unknownCurrentAssessments,
 } = await moduleAt("src/lib/cebAssessments.ts");
 
-test("treats only 2025 IRMCT receipts as unavailable for display", () => {
+test("excludes IRMCT in both years and ICAO only in 2024 without altering source observations", () => {
   const contributors = [
     {
       id: "C01:X",
@@ -20,21 +21,55 @@ test("treats only 2025 IRMCT receipts as unavailable for display", () => {
       aliases: [],
       rows: [
         ["IRMCT", 300, 0, 0],
+        ["ICAO", 200, null, null],
         ["Another organization", 400, 0, 25],
       ],
     },
+    {
+      id: "C01:Y",
+      name: "Y",
+      aliases: [],
+      rows: [["IRMCT", 100, null, null]],
+    },
   ];
-  const input = { year: 2025, contributors };
-  const displayed = assessmentsForDisplay(input);
-  assert.deepEqual(displayed.contributors[0].rows, [
-    ["IRMCT", 300, null, null],
-    ["Another organization", 400, 0, 25],
-  ]);
-  assert.deepEqual(input.contributors[0].rows[0], ["IRMCT", 300, 0, 0]);
-  assert.deepEqual(assessmentsForDisplay({ ...input, year: 2024 }), {
-    ...input,
-    year: 2024,
-  });
+  for (const year of [2024, 2025]) {
+    const input = { year, contributors };
+    const original = structuredClone(input);
+    const displayed = assessmentsForDisplay(input);
+    assert.deepEqual(displayed.contributors, [
+      {
+        ...contributors[0],
+        rows:
+          year === 2024
+            ? [["Another organization", 400, 0, 25]]
+            : [
+                ["ICAO", 200, null, null],
+                ["Another organization", 400, 0, 25],
+              ],
+      },
+    ]);
+    assert.deepEqual(input, original);
+  }
+});
+
+test("retained 2024 and 2025 assessments have no unknown payment status", () => {
+  for (const [year, count] of [
+    [2024, 28],
+    [2025, 28],
+  ]) {
+    const source = JSON.parse(
+      fs.readFileSync(`public/data/ceb-assessments-${year}.json`, "utf8"),
+    );
+    const displayed = assessmentsForDisplay(source);
+    const groups = assessmentOrganizationGroups(displayed.contributors);
+    assert.equal(groups.length, count);
+    assert.equal(assessmentTotals(displayed.contributors).unknownCurrent, 0);
+    assert.ok(groups.every(({ id }) => id !== "IRMCT"));
+    assert.equal(
+      groups.some(({ id }) => id === "ICAO"),
+      year === 2025,
+    );
+  }
 });
 
 test("preserves partial totals, reported zeroes, and signed adjustments", () => {

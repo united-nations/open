@@ -3,6 +3,7 @@ import { formatAssessmentDate } from "@/lib/regularBudgetContributors";
 import {
   assessmentOrganizationGroups,
   assessmentTotals,
+  includeAssessmentOrganization,
 } from "@/lib/cebAssessments";
 import type {
   CebAssessmentOutstandingData,
@@ -38,16 +39,29 @@ export function outstandingAssessmentPercent(
     : null;
 }
 
+export function assessmentOutstandingForDisplay(
+  data: CebAssessmentOutstandingData,
+): CebAssessmentOutstandingData {
+  return {
+    ...data,
+    organizations: data.organizations.filter(({ entity }) =>
+      includeAssessmentOrganization(entity, data.year),
+    ),
+  };
+}
+
 export function loadCebAssessmentOutstanding(year: number) {
   const existing = requests.get(year);
   if (existing) return existing;
   const request = loadYearData<CebAssessmentOutstandingData>(
     "ceb-assessment-outstanding",
     year,
-  ).catch((error: unknown) => {
-    requests.delete(year);
-    throw error;
-  });
+  )
+    .then(assessmentOutstandingForDisplay)
+    .catch((error: unknown) => {
+      requests.delete(year);
+      throw error;
+    });
   requests.set(year, request);
   return request;
 }

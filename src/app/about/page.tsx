@@ -194,19 +194,23 @@ export default function AboutPage() {
                   amounts that have no tile area.
                 </p>
                 <p>
-                  Annual reports cover 30 organizations in 2024 and 29 in 2025.
-                  PAHO and UN Women appear only in 2025. ITC, UNITAID and UNOPS
-                  appear only in 2024. UNITAR appears in the 2020–2025 source
-                  series and is absent in both years shown. Several
-                  organizations report partial figures. Changes over time can
-                  reflect differences in reporting coverage.
+                  After the exclusions below, the assessment and payment views
+                  cover 28 organizations in each year. PAHO and UN Women appear
+                  only in 2025. ITC, UNITAID and UNOPS appear only in 2024.
+                  UNITAR appears in the 2020–2025 source series and is absent in
+                  both years shown. Several organizations report partial
+                  figures. Changes over time can reflect differences in
+                  reporting coverage.
                 </p>
                 <p>
-                  IRMCT payment data is unavailable for both years. CEB leaves
-                  the payment fields blank in 2024 and records zeros in 2025.
-                  For 2025, the portal displays the payment fields as
-                  unavailable and preserves the original values in the data
-                  downloads.
+                  The portal excludes IRMCT in both years and ICAO in 2024 from
+                  assessments, payments and outstanding-balance displays,
+                  including totals, trends and assessment details, because of
+                  unavailable payment data. IRMCT’s payment fields are blank in
+                  2024 and recorded as zeros in 2025 despite unavailable
+                  collection data. ICAO has blank same-year payment fields for
+                  36 contributors in 2024 and is included in 2025. The original
+                  observations remain in the data downloads.
                 </p>
                 <p>
                   Totals sum the organizations’ reported figures. ITC and UN

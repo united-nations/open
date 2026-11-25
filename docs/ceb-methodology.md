@@ -86,12 +86,19 @@ Run `uv run python/25-export_ceb_assessments.py` followed by
 URL and SHA-256. The exporter accepts `--workbook PATH` for a local copy.
 
 The portal displays 2024 and 2025. Annual exports retain the full source
-coverage. The treemap, sidebars and trend sum all reported values for each
-measure, including receipts reported on rows with blank assessments. Blank
-values remain unknown, and partial totals indicate missing observations.
-IRMCT reports an assessment but neither payment measure in 2024. The annual
-source covers 30 organizations in 2024 and 29 in 2025. PAHO and UN Women
-appear only in 2025, and ITC, UNITAID and UNOPS appear only in 2024. UNITAR
+coverage. The display excludes IRMCT in both years and ICAO in 2024 from
+assessments, receipts and outstanding balances, including totals, trends and
+assessment details, because of unavailable payment data. IRMCT has blank
+payment fields in 2024 and reported zeros in 2025 despite unavailable
+collection data. ICAO has blank same-year receipts for 36 contributors in 2024,
+covering $2,120,072.24 in assessments; ICAO is included in 2025. Original
+observations remain in the downloads. Among included organizations, the treemap, sidebars and trend sum
+all reported values for each measure, including receipts reported on rows with
+blank assessments. Blank values remain unknown, and partial totals indicate
+missing observations.
+The annual source covers 30 organizations in 2024 and 29 in 2025; after the
+exclusions, the assessment and receipt displays cover 28 in each year. PAHO
+and UN Women appear only in 2025, and ITC, UNITAID and UNOPS appear only in 2024. UNITAR
 appears elsewhere in the 2020–2025 source series and is absent in both years
 shown. Changes over time can reflect differences in reporting coverage.
 Totals sum reported organization figures. ITC and UN Women include allocations
@@ -215,9 +222,9 @@ upstream issues remain in the reported figures; no inferred corrections have
 been applied:
 
 - IRMCT 2025 has literal zeros in both payment fields across all 193 contributor
-  rows. The exports preserve these source values. The website displays the
-  fields as unavailable. The CEB financial-situation report leaves collection
-  rates unavailable, and the [9 October 2025 briefing, PDF page 6](https://www.un.org/en/ga/fifth/80/C5_80_0m_2025_10_09_Item138_Improving_Financial_situation_USG_DMSPC.pdf#page=6)
+  rows. The exports preserve these source values. The website excludes IRMCT
+  from assessment displays for both years shown. The CEB financial-situation
+  report leaves collection rates unavailable, and the [9 October 2025 briefing, PDF page 6](https://www.un.org/en/ga/fifth/80/C5_80_0m_2025_10_09_Item138_Improving_Financial_situation_USG_DMSPC.pdf#page=6)
   reports payments across the Mechanism and predecessor tribunals without
   supplying a matching current/prior receipt split.
 - OPCW 2022 current-year receipts appear misassigned among Tajikistan,

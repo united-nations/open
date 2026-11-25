@@ -88,7 +88,7 @@ export function CebAssessmentsTreemap() {
       ? Math.min(contributor.paidWithinAssessment, assessed - unknownFill)
       : 0;
     const layoutValue = Math.max(assessed, fill + unknownFill + priorFill);
-    const darkFillBehindLabel = fill / layoutValue >= 0.85;
+    const darkFillBehindLabel = fill > 0;
     const currentAmount = formatAssessmentAmount(contributor.current);
     const priorAmount = formatAssessmentAmount(contributor.prior);
     const assessedAmount = formatAssessmentAmount(contributor.assessed);
@@ -115,7 +115,7 @@ export function CebAssessmentsTreemap() {
       borderWidth: 2,
       borderFraction:
         layoutValue > assessed ? assessed / layoutValue : undefined,
-      paleFill: !darkFillBehindLabel,
+      paleFill: fill < layoutValue,
       textColor: darkFillBehindLabel ? "#fff" : "var(--color-gray-900)",
       valueLabel,
       listValueLabel: assessedAmount,
@@ -240,7 +240,9 @@ export function CebAssessmentsTreemap() {
           }))}
         layout={{ leafGap: 1.5 }}
         showRowLabels={false}
-        plotClassName={SYSTEM_TREEMAP_HEIGHT_CLASS}
+        // Reverse decorative fills only; keep tooltips in measure order. The
+        // fractional assessment outline follows the fill up from the bottom.
+        plotClassName={`${SYSTEM_TREEMAP_HEIGHT_CLASS} [&_[aria-hidden].flex-col]:flex-col-reverse [&_[aria-hidden][style*='box-shadow'][style*='height']]:top-auto [&_button:not([style*='--color-gray-900'])]:[text-shadow:0_1px_2px_rgba(0,0,0,.85),0_0_1px_rgba(0,0,0,.85)]`}
         totalLabel={measures.assessed.label}
         controlsClassName="sm:min-w-[19.5rem]"
         controls={
@@ -337,11 +339,12 @@ export function CebAssessmentsTreemap() {
             />
             {data && (
               <p className="text-sm text-gray-600">
-                CEB reports data for {organizationCount} organizations in {year}
-                . Coverage varies by year. Totals include all reported amounts
-                and are marked partial if some amounts are missing. Same-year
-                payments need an assessed amount to appear in a tile. The List
-                view also includes records without drawable area.
+                This view covers {organizationCount} organizations in {year}.
+                Coverage varies by year. Totals include all reported amounts for
+                included organizations and are marked partial if some amounts
+                are missing. Same-year payments need an assessed amount to
+                appear in a tile. The List view also includes records without
+                drawable area.
               </p>
             )}
             {data && absent && (

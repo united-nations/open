@@ -149,23 +149,29 @@ try {
       );
     await years.selectOption("2025");
     await chart
-      .getByText(/2025 — same-year payments unavailable: IRMCT/)
+      .getByText(/This view covers 28 organizations in 2025/)
       .waitFor();
-    const partialTileDescription = await china.evaluate(
+    const completeTileDescription = await china.evaluate(
       (tile) =>
         document.getElementById(tile.getAttribute("aria-describedby"))
           .textContent,
     );
-    assert.match(partialTileDescription, /China: .* assessed\./);
-    assert.doesNotMatch(
-      partialTileDescription,
-      /%/,
-      "Partial payments must not display a payment percentage",
+    assert.match(
+      completeTileDescription,
+      /China: .*%.*paid in 2025 towards 2025/,
+    );
+    assert.equal(
+      await chart.getByText("Payment status unknown", { exact: true }).count(),
+      0,
     );
     await years.selectOption("2024");
     await chart
-      .getByText(/2024 — same-year payments unavailable: IRMCT/)
+      .getByText(/This view covers 28 organizations in 2024/)
       .waitFor();
+    assert.equal(
+      await chart.getByText("Payment status unknown", { exact: true }).count(),
+      0,
+    );
     if (!mobile) {
       for (const [label, explanation] of [
         ["Assessed contributions payable in 2024", /required to pay.*2024/],
@@ -216,6 +222,10 @@ try {
     assert.equal(await current.getAttribute("aria-pressed"), "false");
     assert.equal(await prior.getAttribute("aria-pressed"), "false");
     assert.equal(await organizationSearch.inputValue(), "");
+    for (const excluded of ["IRMCT", "ICAO"]) {
+      await organizationSearch.fill(excluded);
+      assert.equal(await list.getByRole("button").count(), 0);
+    }
     await organizationSearch.fill("UNITAID");
     await list.getByText("UNITAID", { exact: true }).waitFor();
     await organizationSearch.fill("UN Secretariat");
@@ -239,10 +249,10 @@ try {
       exact: true,
     });
     await trend
-      .getByText(/2024 covers 30 organizations.*PAHO, UN Women, UNITAR/)
+      .getByText(/2024 covers 28 organizations.*PAHO, UN Women, UNITAR/)
       .waitFor();
     await trend
-      .getByText(/2025 covers 29 organizations.*ITC, UNITAID, UNITAR, UNOPS/)
+      .getByText(/2025 covers 28 organizations.*ITC, UNITAID, UNITAR, UNOPS/)
       .waitFor();
     const trendBox = await trend.boundingBox(),
       balanceBox = await balances.boundingBox();

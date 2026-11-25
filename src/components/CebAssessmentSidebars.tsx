@@ -5,7 +5,11 @@ import { ContributorSidebar } from "@/components/ContributorSidebar";
 import { EntitySidebar } from "@/components/EntitySidebar";
 import { clearSidebarHash, useDeepLink } from "@/hooks/useDeepLink";
 import { useYearResource } from "@/hooks/useYearResource";
-import { CEB_ASSESSMENTS_HASH, loadCebAssessments } from "@/lib/cebAssessments";
+import {
+  CEB_ASSESSMENTS_HASH,
+  includeAssessmentOrganization,
+  loadCebAssessments,
+} from "@/lib/cebAssessments";
 import { loadCebAssessmentOutstanding } from "@/lib/cebAssessmentOutstanding";
 import { loadStaticData } from "@/lib/data";
 import { SYSTEM_ASSESSMENTS_PATH } from "@/lib/navigation";
@@ -47,6 +51,8 @@ export function CebAssessmentSidebars() {
       : null;
   const load = useCallback(async (): Promise<Selection | null> => {
     if (!kind || !id || year === null) return null;
+    if (kind === "entity" && !includeAssessmentOrganization(id, year))
+      return null;
     const [annualResult, balanceResult] = await Promise.all([
       Promise.allSettled(ranges.cebAssessments.years.map(loadCebAssessments)),
       Promise.allSettled(

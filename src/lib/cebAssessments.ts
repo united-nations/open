@@ -53,19 +53,25 @@ export function assessmentMeasures(year?: number) {
 
 const assessmentRequests = new Map<number, Promise<CebAssessmentsData>>();
 
-/** Apply the website's treatment of unavailable IRMCT receipts. */
+/** Exclude organization-years without reliable payment reporting. */
+export function includeAssessmentOrganization(entity: string, year: number) {
+  return entity !== "IRMCT" && !(entity === "ICAO" && year === 2024);
+}
+
+/** Keep source downloads intact while applying the assessment display scope. */
 export function assessmentsForDisplay(
   data: CebAssessmentsData,
 ): CebAssessmentsData {
-  if (data.year !== 2025) return data;
   return {
     ...data,
-    contributors: data.contributors.map((contributor) => ({
-      ...contributor,
-      rows: contributor.rows.map((row) =>
-        row[0] === "IRMCT" ? [row[0], row[1], null, null] : row,
-      ),
-    })),
+    contributors: data.contributors
+      .map((contributor) => ({
+        ...contributor,
+        rows: contributor.rows.filter(([entity]) =>
+          includeAssessmentOrganization(entity, data.year),
+        ),
+      }))
+      .filter(({ rows }) => rows.length > 0),
   };
 }
 
